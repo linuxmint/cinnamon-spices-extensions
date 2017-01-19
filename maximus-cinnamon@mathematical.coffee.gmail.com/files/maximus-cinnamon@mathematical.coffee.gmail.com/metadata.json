@@ -1,0 +1,12 @@
+{
+ "extension-id": "maximus-cinnamon",
+ "uuid": "maximus-cinnamon@mathematical.coffee.gmail.com",
+ "name": "Maximus",
+ "description": "Undecorate maximized windows, like Ubuntu's old 'Maximus' package. See readme at extension homepage.",
+ "cinnamon-version": [ 
+     "1.4", "1.5", "1.5.1", "1.5.2"
+ ],
+ "url": "https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension",
+ "version": 5,
+ "dev-version": "2.0"
+}

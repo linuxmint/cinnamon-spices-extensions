@@ -1,0 +1,28 @@
+{
+ "head" : {
+    "type" : "header",
+    "description" : "Cinnamon-Maximus Settings"
+ },
+ "undecorateTile" : {
+      "type" : "checkbox",
+      "default" : false,
+      "description": "Undecorate when tile"
+   },
+ "undecorateAll" : {
+      "type" : "checkbox",
+      "default" : false,
+      "description": "Undecorate All Windows (Experimental, please close and re-open all windows)"
+ },
+ "blacklist" : {
+      "type" : "checkbox",
+      "default" : false,
+      "description": "Use Blacklist"
+   },
+  "blacklist_apps": {
+        "type": "entry", 
+        "description": "Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for seperate apps)", 
+        "default": "chromium"
+  }
+  
+ 
+}

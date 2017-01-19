@@ -1,0 +1,37 @@
+#
+msgid ""
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->description
+msgid ""
+"Activate demanding attention window with a keyboard shortcut or forced."
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->name
+msgid "Window demands attention behavior"
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->description
+msgid "Choose activation mode"
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->options
+msgid "Force windows demanding attention activation."
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->options
+msgid "Activate windows demanding attention with a shortcut."
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->options
+msgid "Disabled. System behavior."
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_keyboard_shortcut->description
+msgid "Set the keybinding to activate windows demanding attention: "
+msgstr ""

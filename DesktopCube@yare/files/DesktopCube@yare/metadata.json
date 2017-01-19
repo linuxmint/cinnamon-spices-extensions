@@ -1,0 +1,7 @@
+{
+    "cinnamon-version": ["2.0", "2.1", "2.2"],
+    "uuid": "DesktopCube@yare",
+    "name": "Desktop Cube",
+    "description": "Compiz Cube-like animation for workspace switching",
+    "url": "http://cinnamon-spices.linuxmint.com/"
+}

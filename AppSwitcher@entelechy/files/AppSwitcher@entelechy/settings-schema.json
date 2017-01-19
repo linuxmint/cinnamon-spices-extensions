@@ -1,0 +1,34 @@
+{
+  "head" : {
+     "type" : "header",
+     "description" : "Style"
+  },
+  "style" : {
+     "type" :  "combobox",
+     "default" : "timeline",
+     "options" : {
+        "Timeline" : "timeline",
+        "Coverflow" : "coverflow"
+     },
+     "description" : "3D switcher style"
+  },
+  "head2" : {
+     "type" : "header",
+     "description" : "Keybindings"
+  },
+  "switch-apps-keybinding" : {
+     "type": "keybinding",
+     "description": "Switch apps",
+     "default": "<Super>Tab"
+  },
+  "switch-windows-keybinding" : {
+     "type": "keybinding",
+     "description" : "Switch windows",
+     "default" : "<Super>grave"
+  },
+  "switch-app-windows-keybinding" : {
+     "type": "keybinding",
+     "description" : "Switch app's windows directly",
+     "default" : "<Control><Super>grave"
+  }
+}

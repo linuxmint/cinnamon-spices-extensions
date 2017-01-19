@@ -1,0 +1,20 @@
+{
+ "numCols" : {
+    "type": "spinbutton",
+    "default" : 2,
+    "min" : 1,
+    "max" : 12,
+    "step" : 1,
+    "units" : "desktops",
+    "description" : "Number of columns:"
+ },
+ "numRows" : {
+    "type": "spinbutton",
+    "default" : 2,
+    "min" : 1,
+    "max" : 6,
+    "step" : 1,
+    "units" : "desktops",
+    "description" : "Number of rows:"
+ }
+}

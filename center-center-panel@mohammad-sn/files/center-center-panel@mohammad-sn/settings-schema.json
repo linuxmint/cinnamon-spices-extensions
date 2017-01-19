@@ -1,0 +1,11 @@
+{
+    "max-width": {
+        "type": "spinbutton",
+        "description": "Disable if width of left box or right box exeeds ",
+        "min": 20,
+        "max": 45,
+        "step": 5,
+        "units": "percent of panel width.",
+        "default": 30
+    }
+}

@@ -1,0 +1,9 @@
+{
+ "cinnamon-version": [ "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.2" ],
+ "uuid": "droponnewworkspace-cinnamon@paolo.tranquilli.gmail.com",
+ "name": "Drag on New Workspace",
+ "description": "Dropping a window on the new workspace button when in expo mode will create a new workspace and put the window there.",
+ "url": "http://cs.unibo.it/~tranquil/hacking",
+ "version": "0.5",
+ "original-authors": [ "Paolo Tranquilli" ]
+}

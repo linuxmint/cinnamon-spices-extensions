@@ -1,0 +1,8 @@
+{
+ "uuid": "cinnadock@in-progress.org",
+ "name": "CinnaDock In Progress",
+ "description": "A dock in progress",
+ "cinnamon-version": [ "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.2" ],
+ "localedir": "/usr/share/locale",
+ "url": "https://github.com/linuxmint/cinnamon-extensions"
+}

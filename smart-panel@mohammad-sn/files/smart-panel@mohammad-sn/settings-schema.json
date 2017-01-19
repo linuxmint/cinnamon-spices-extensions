@@ -1,0 +1,252 @@
+{
+    "head1" : {
+        "type" : "header",
+        "description" : "Mouse scroll options: "
+    },
+    "scroll-action" : {
+        "type": "combobox",
+        "default" : "switch_workspace",
+        "description" : "Action on scrolling: ",
+        "options" : {
+            "Switch between workspaces" : "switch_workspace",
+            "Adjust opacity of windows" : "adjust_opacity",
+            "Toggle show desktop"       : "desktop",
+            "Switch between windows"    : "switch-windows",
+            "None"                      : "none"
+        },
+        "tooltip" : ""
+    },
+    "prev-fast-scroll" : {
+        "type" : "checkbox",
+        "default" : true,
+        "description" : "Prevent accidental workspace/window switching on rapid scrolling",
+        "tooltip" : ""
+    },
+    "scroll-delay": {
+        "type": "spinbutton",
+        "description": "Minimum delay between scrolls:",
+        "min": 1,
+        "max": 500,
+        "step": 25,
+        "units": "milliseconds",
+        "default": 175,
+        "dependency" : "prev-fast-scroll"
+    },
+    "sep-scroll-action" : {
+        "type" : "checkbox",
+        "default" : false,
+        "description" : "Independent actions for scrolling up and down",
+        "tooltip" : ""
+    },
+    "scroll-action-up" : {
+        "type": "combobox",
+        "default" : "none",
+        "description" : "Action on scrolling up: ",
+        "options" : {
+            "Expo"                  : "expo",
+            "Overview"              : "overview",
+            "Launch App Switcher"   : "appswitcher",
+            "Show Desktop"          : "desktop",
+            "Run 1st Custom Command": "cc1",
+            "Run 2nd Custom Command": "cc2",
+            "Run 3rd Custom Command": "cc3",
+            "None"                  : "none"
+        },
+        "indent": true,
+        "dependency" : "sep-scroll-action",
+        "tooltip" : ""
+    },
+    "scroll-action-down" : {
+        "type": "combobox",
+        "default" : "none",
+        "description" : "Action on scrolling down: ",
+        "options" : {
+            "Expo"                  : "expo",
+            "Overview"              : "overview",
+            "Launch App Switcher"   : "appswitcher",
+            "Show Desktop"          : "desktop",
+            "Run 1st Custom Command": "cc1",
+            "Run 2nd Custom Command": "cc2",
+            "Run 3rd Custom Command": "cc3",
+            "None"                  : "none"
+        },
+        "indent": true,
+        "dependency" : "sep-scroll-action",
+        "tooltip" : ""
+    },
+    "div1" : {
+        "type" : "separator"
+    },
+    "head2" : {
+        "type" : "header",
+        "description" : "Mouse click options: "
+    },
+    "dblclck-action" : {
+        "type": "combobox",
+        "default" : "desktop",
+        "description" : "Action on panel double click: ",
+        "options" : {
+            "Expo"                  : "expo",
+            "Overview"              : "overview",
+            "Launch App Switcher"   : "appswitcher",
+            "Show Desktop"          : "desktop",
+            "Run 1st Custom Command": "cc1",
+            "Run 2nd Custom Command": "cc2",
+            "Run 3rd Custom Command": "cc3",
+            "None"                  : "none"
+        },
+        "tooltip" : ""
+    },
+    "mdlclck-action" : {
+        "type": "combobox",
+        "default" : "expo",
+        "description" : "Action on panel middle click: ",
+        "options" : {
+            "Expo"                  : "expo",
+            "Overview"              : "overview",
+            "Launch App Switcher"   : "appswitcher",
+            "Show Desktop"          : "desktop",
+            "Run 1st Custom Command": "cc1",
+            "Run 2nd Custom Command": "cc2",
+            "Run 3rd Custom Command": "cc3",
+            "None"                  : "none"
+        },
+        "tooltip" : ""
+    },
+    "div2" : {
+        "type" : "separator"
+    },
+    "head3" : {
+        "type" : "header",
+        "description" : "Mouse gestures: "
+    },
+    "use-gestures" : {
+        "type" : "checkbox",
+        "default" : true,
+        "description" : "Use mouse gestures on the panel",
+        "tooltip" : ""
+    },
+    "to-right-action" : {
+        "type": "combobox",
+        "default" : "firstWS",
+        "description" : "↦ Dragging to the right: ",
+        "options" : {
+            "Go to left Workspace"  : "leftWS",
+            "Go to first Workspace" : "firstWS",
+            "Go to right Workspace" : "rightWS",
+            "Go to last Workspace"  : "lastWS",
+            "None"                  : "none"
+        },
+        "dependency" : "use-gestures",
+        "tooltip" : ""
+    },
+    "to-left-action" : {
+        "type": "combobox",
+        "default" : "lastWS",
+        "description" : "↤ Dragging to the left: ",
+        "options" : {
+            "Go to right Workspace" : "rightWS",
+            "Go to last Workspace"  : "lastWS",
+            "Go to left Workspace"  : "leftWS",
+            "Go to first Workspace" : "firstWS",
+            "None"                  : "none"
+        },
+        "dependency" : "use-gestures",
+        "tooltip" : ""
+    },
+    "vert-out-action" : {
+        "type": "combobox",
+        "default" : "overview",
+        "description" : "Click at the edge of the screen and drag away vertically: ",
+        "options" : {
+            "Expo"                  : "expo",
+            "Overview"              : "overview",
+            "Launch App Switcher"   : "appswitcher",
+            "Show Desktop"          : "desktop",
+            "Run 1st Custom Command": "cc1",
+            "Run 2nd Custom Command": "cc2",
+            "Run 3rd Custom Command": "cc3",
+            "None"                  : "none"
+        },
+        "dependency" : "use-gestures",
+        "tooltip" : ""
+    },
+    "div3" : {
+        "type" : "separator"
+    },
+    "head4" : {
+        "type" : "header",
+        "description" : "Custom Commands: "
+    },
+    "cc1-action": {
+        "type": "entry", 
+        "description": "1st Custom Command:", 
+        "default": "gnome-system-monitor"
+    },
+    "cc2-action": {
+        "type": "entry", 
+        "description": "2nd Custom Command:", 
+        "default": "gnome-terminal"
+    },
+    "cc3-action": {
+        "type": "entry", 
+        "description": "3rd Custom Command:", 
+        "default": ""
+    },
+    "div4" : {
+        "type" : "separator"
+    },
+    "head5" : {
+        "type" : "header",
+        "description" : "App Switcher Settings: "
+    },
+    "appswitcher-style" : {
+        "type": "combobox",
+        "default" : "overview",
+        "description" : "App switcher style: ",
+        "options" : {
+            "Icons only"                    : "icons",
+            "Thumbnails only"               : "thumbnails",
+            "Icons and thumbnails"          : "icons+thumbnails",
+            "Icons and window preview"      : "icons+preview",
+            "Window preview (no icons)"     : "preview",
+            "Coverflow (3D)"                : "coverflow",
+            "Timeline (3D)"                 : "timeline",
+            "System default"                : "default"
+        },
+        "tooltip" : ""
+    },
+    "appswitcher-scope" : {
+        "type": "combobox",
+        "default" : "switch-windows",
+        "description" : "Switch between windows from: ",
+        "options" : {
+            "Current workspace"     : "switch-windows",
+            "All workspaces"        : "switch-panels",
+            "Curret Application"    : "switch-group"
+        },
+        "tooltip" : ""
+    },
+    "scope-modified" : {
+        "type": "combobox",
+        "default" : "switch-panels",
+        "description" : "When a modifier key is pressed, switch between windows from: ",
+        "options" : {
+            "Current workspace"     : "switch-windows",
+            "All workspaces"        : "switch-panels",
+            "Curret Application"    : "switch-group"
+        },
+        "tooltip" : ""
+    },
+    "appswitcher-modifier" : {
+        "type": "combobox",
+        "default" : "4",
+        "description" : "Modifier key: ",
+        "options" : {
+            "Ctrl"              : "4",
+            "Shift"             : "1"
+        },
+        "dependency" : "use-gestures",
+        "tooltip" : ""
+    }
+}

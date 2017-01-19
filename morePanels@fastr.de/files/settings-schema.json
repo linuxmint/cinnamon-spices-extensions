@@ -1,0 +1,106 @@
+{
+"0":{
+    "type" : "header",
+		"description": "Monitor 1"
+},
+"0:1":{
+    "type" : "checkbox",
+		"default" : true,
+		"description": "Panel oben",
+		"indent": true
+},
+"0:2":{
+    "type" : "checkbox",
+		"default" : true,
+		"description": "Panel unten",
+		"indent": true
+},
+"1":{
+    "type" : "header",
+		"description": "Monitor 2"
+},
+"1:1":{
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel oben",
+		"indent": true
+},
+"1:2":{
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel unten",
+		"indent": true
+},
+"2":{
+    "type" : "header",
+		"description": "Monitor 3"
+},
+"2:1":{
+    "dependency" : "2",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel oben",
+		"indent": true
+},
+"2:2":{
+    "dependency" : "2",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel unten",
+		"indent": true
+},
+"3":{
+    "type" : "header",
+		"description": "Monitor 4"
+},
+"3:1":{
+    "dependency" : "3",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel oben",
+		"indent": true
+},
+"3:2":{
+    "dependency" : "3",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel unten",
+		"indent": true
+},
+"4":{
+    "type" : "header",
+		"description": "Monitor 5"
+},
+"4:1":{
+    "dependency" : "4",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel oben",
+		"indent": true
+},
+"4:2":{
+    "dependency" : "4",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel unten",
+		"indent": true
+},
+"5":{
+    "type" : "header",
+		"description": "Monitor 6"
+},
+"5:1":{
+    "dependency" : "5",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel oben",
+		"indent": true
+},
+"5:2":{
+    "dependency" : "5",
+    "type" : "checkbox",
+		"default" : false,
+		"description": "Panel unten",
+		"indent": true
+}
+}

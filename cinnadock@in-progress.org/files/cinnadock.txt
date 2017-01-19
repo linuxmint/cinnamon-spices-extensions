@@ -1,0 +1,54 @@
+KNOWN ISSUES: 
+1. Windows like Skype window that goes hide into panel notification area are not visible to dock
+
+Tricky behaviour that is not a bug:
+1. When you remove last app from dock and application is still open then you will get impression that remove action didnt work. It did but you need to close application to find this out, since by default every open application is placed at the end of dock (for same reason you will now have menu 'Pin to dock' available while app window is kept open)
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+CinnaDock 
+
+All thanks to oryginal author of dock as stated in credits file:
+Original author:
+tclaesson@gmail.com
+http://git.gnome.org/gnome-shell-extensions 
+
+
+Installation: 
+
+1. disable current dock extension (Cinnamon configuration->Extensions, untick Dock)
+2. extract cinnadock@in-progress.org into ~/.local/share/cinnamon/extensions/
+3. as root copy provided gschema.xml to /usr/share/glib-2.0/schemas/ 
+4. as root compile schema 
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
+5. logout and log back in
+-----------------------------------------
+before proceeding further please ensure cinnadock schema was loaded
+Alt-F2 dconf-editor
+please check if org.cinnamon.extensions.cinnadock exists and has settings similar to that on a picture
+if not repeat above steps
+-----------------------------------------------------------------
+
+6. Cinnamon configuration->Extensions, tick CinnaDock (dock should aprear on right with gnome-terminal icon in it, autohide flag should be off)
+7. Middle-mouse click anywhere on dock will open up settings submenu (in most cases button number 2 is under mouse wheel) - set autohide flag and position the way you like
+8. keep opening apps you plan to add to dock, when app is opened 'Pin to dock' Right-click will be availabe (for already pinned 'Remove' will be there) - using both menu options you can line up icons as needed
+
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+TODO:
+JS related:
+1. When Cinnamon core allows loading schemas from extensions, comply with defined way of doing so
+
+Theme related:
+1. Apply Cinnamon's panel theme to dock so all is nice and consistant
+
+2. Little led inicator when app window is opened to increase clarity (something like in docky) - if 2 windows of same app are opened maybe two little leds?? (or led with a little number??) - at the moment you have to look petty close at dock to find out what is going on and there is no way to say if two windows of same apps are opened by looking at dock only
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+Currently out of scope:
+1. drag and drop
+2. theming (would be nice if someone can pick this up - I can help with code changes to support theming if need be)
+3. extending settings menu of autohide effect/duration etc
+

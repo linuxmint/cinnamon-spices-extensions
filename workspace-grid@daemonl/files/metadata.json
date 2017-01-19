@@ -1,0 +1,7 @@
+{
+    "cinnamon-version": ["2.0", "2.1", "2.2"],
+	"uuid": "workspace-grid@daemonl",
+	"name": "Workspace grid",
+	"description": "Workspace grid, based on hernejj's one",
+	"url": "http://cinnamon-spices.linuxmint.com/"
+}

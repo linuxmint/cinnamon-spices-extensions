@@ -1,0 +1,16 @@
+.desktopscroller
+{
+	background:rgba(127,255,0,1);
+}
+
+.direction-label {
+    font-size: 64px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(10,10,10,0.7);
+    border-radius: 5px;
+    padding: .5em;
+}
+.direction-icon {
+    
+}

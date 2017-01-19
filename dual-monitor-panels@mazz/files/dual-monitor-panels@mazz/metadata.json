@@ -1,0 +1,7 @@
+{
+ "uuid": "dual-monitor-panels@mazz",
+ "name": "Dual Monitor Panels",
+ "description": "One panel on each monitor",
+ "cinnamon-version": ["2.0","2.2","2.4"],
+ "url": "http://extensions.cinnamon.org/dualmonitorpanels"
+}

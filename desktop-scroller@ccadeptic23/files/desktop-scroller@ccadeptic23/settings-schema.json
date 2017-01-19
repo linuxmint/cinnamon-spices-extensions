@@ -1,0 +1,27 @@
+{
+	"showDirectionArrow" :
+	{
+		"type" : "checkbox",
+		"default" : true,
+		"description": "Show direction arrow",
+		"tooltip": "Check this to show an arrow indicating scroll direction."
+	}, 
+	"activationAreaWidth" :
+	{
+		"type": "spinbutton",
+		"default" : 2,
+		"min" : 1,
+		"max" : 1000,
+		"step" : 1,
+		"units" : "pixels",
+		"description" : "Activation area width:",
+		"tooltip" : "Width of activation areas"
+	},
+	"showActivationAreas" :
+	{
+		"type" : "checkbox",
+		"default" : false,
+		"description": "Show activation areas",
+		"tooltip": "Check this to show the areas over which scrolling will switch the desktop."
+	}
+}

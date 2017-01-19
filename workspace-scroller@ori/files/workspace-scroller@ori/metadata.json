@@ -1,0 +1,12 @@
+{
+    "name": "Workspace Scroller", 
+    "version": "1.0.0", 
+    "description": "Switch workspaces using mouse scroll at screen edges.", 
+    "icon": "application-default-icon",
+    "cinnamon-version": [
+        "2.4", 
+        "2.6"
+    ], 
+    "url": "https://github.com/ori/cinnamon-workspace-scroller", 
+    "uuid": "workspace-scroller@ori"
+}

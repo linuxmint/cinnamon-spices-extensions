@@ -1,0 +1,107 @@
+# This is a template file for translating the Cinnamon extension called Maximus.
+# Copyright (C) 2016
+# This file is distributed under the same license as the Maximus extension.
+# Odyseus <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.3.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-27 11:27-0300\n"
+"PO-Revision-Date: 2016-09-27 11:32-0300\n"
+"Last-Translator: Odyseus\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "Eliminar decoraciones de ventanas maximizadas."
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr "Cinnamon Maximus (Fork by Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr "Eliminar decoraciones de ventanas ancladas."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
+msgstr "Solución de problemas"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+msgstr "Opciones de Cinnamon Maximus (Fork by Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelist->description
+msgid "Use Whitelist"
+msgstr "Usar lista blanca"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
+msgid ""
+"If enabled, only the applications specified bellow will have their titlebar removed when "
+"maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
+msgstr ""
+"Con esta opción activada, sólo las aplicaciones especificadas en el cuadro de abajo tendrán sus "
+"decoraciones eliminadas al estar maximizadas.\n"
+"Si está desactivada, todas las ventanas maximizadas tendrán sus decoraciones eliminadas."
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr "Activar o desactivar para reiniciar Cinnamon"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_restart_cinnamon->tooltip
+msgid ""
+"Check or uncheck this options to restart Cinnamon.\n"
+"Note: I couldn't make a proper button to work in this settings window, so I had to improvise and "
+"I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
+msgstr ""
+"Activar o desactivar esta opción para reiniciar Cinnamon.\n"
+"Note: No pude hacer funcionar un botón en esta ventana de configuración, así que tuve que "
+"improvisar y tuve que utilizar una casilla de verificación. Realmente no importa si está activada "
+"o desactivada."
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "Habilitar el registro de sucesos"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_logging_enabled->tooltip
+msgid ""
+"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be "
+"used to debug the extension."
+msgstr ""
+"Con esta opción activada, se registrará en el registro de Cinnamon (~/.cinnamon/glass.log) "
+"información que se podría utilizar para depurar la extensión."
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_undecorate_all->description
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Remover decoraciones de todas las ventanas (Experimental. Por favor, cerrar y re-abrir todas las "
+"ventanas)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
+msgstr "Lista de aplicaciones: "
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelisted_apps->tooltip
+msgid ""
+"\"Use Whitelist\" option must be checked.\n"
+"Use a \",\" (comma) to seperate applications."
+msgstr ""
+"La opción \"Usar lista blanca\" debe estar activada.\n"
+"Usar una \",\" (coma) para separar aplicaciones."

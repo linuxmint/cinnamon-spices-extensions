@@ -1,0 +1,26 @@
+{
+  "name": "Desktop Scroller",
+  "description": "Switch between desktops by scrolling at left and right edges of the screen.", 
+        "cinnamon-version": [
+        "1.1", 
+        "1.2", 
+        "1.3", 
+        "1.4", 
+        "1.5", 
+        "1.6", 
+        "1.7", 
+        "1.8", 
+        "1.9", 
+        "2.0", 
+        "2.1", 
+        "2.2", 
+        "2.4",
+	"2.5",
+	"2.6"
+    ], 
+  "uuid": "desktop-scroller@ccadeptic23", 
+  "version": 2.1,  
+  "url": "http://cinnamon-spices.linuxmint.com/extensions",
+  "switchPrevIcon": "my-go-prev.svg",
+  "switchNextIcon": "my-go-next.svg"
+}

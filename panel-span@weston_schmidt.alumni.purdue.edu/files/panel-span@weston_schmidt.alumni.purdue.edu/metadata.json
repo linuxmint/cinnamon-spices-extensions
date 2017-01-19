@@ -1,0 +1,8 @@
+{
+ "cinnamon-version": [ "1.4.0", "1.4.1", "1.4.2" ],
+ "uuid": "panel-span@weston_schmidt.alumni.purdue.edu",
+ "name": "Span the Panel(s) Across Monitors",
+ "description": "Enables spanning the top and bottom panels across all monitors with a matching edge.",
+ "version": "0.1",
+ "original-authors": [ "Weston Schmidt" ]
+}

@@ -1,0 +1,87 @@
+{
+    "animation-duration": {
+		"type": "spinbutton",
+		"default" : 500,
+		"min" : 100,
+		"max" : 1000,
+		"step" : 50,
+		"units" : "milliseconds",
+		"description" : "Animation Duration: ",
+		"tooltip" : ""
+	},
+    "animation-effect": {
+        "type": "combobox",
+        "description": "Animation Easing: ",
+        "default": "Slider",
+        "options": {
+            "Slider": "Slider",
+            "easeInQuad": "easeInQuad",
+            "easeOutQuad": "easeOutQuad",
+            "easeInOutQuad": "easeInOutQuad",
+            "easeInCubic": "easeInCubic",
+            "easeOutCubic": "easeOutCubic",
+            "easeInOutCubic": "easeInOutCubic",
+            "easeInQuart": "easeInQuart",
+            "easeOutQuart": "easeOutQuart",
+            "easeInOutQuart": "easeInOutQuart",
+            "easeInQuint": "easeInQuint",
+            "easeOutQuint": "easeOutQuint",
+            "easeInOutQuint": "easeInOutQuint",
+            "easeInSine": "easeInSine",
+            "easeOutSine": "easeOutSine",
+            "easeInOutSine": "easeInOutSine",
+            "easeInExpo": "easeInExpo",
+            "easeOutExpo": "easeOutExpo",
+            "easeInOutExpo": "easeInOutExpo",
+            "easeInCirc": "easeInCirc",
+            "easeOutCirc": "easeOutCirc",
+            "easeInOutCirc": "easeInOutCirc",
+            "easeInElastic": "easeInElastic",
+            "easeOutElastic": "easeOutElastic",
+            "easeInOutElastic": "easeInOutElastic",
+            "easeInBack": "easeInBack",
+            "easeOutBack": "easeOutBack",
+            "easeInOutBack": "easeInOutBack",
+            "easeInBounce": "easeInBounce",
+            "easeOutBounce": "easeOutBounce",
+            "easeInOutBounce": "easeInOutBounce"
+        }
+    },
+    "slip-factor": {
+        "type": "scale",
+        "description": "Slip Factor: ",
+        "min": -0.20,
+        "max": 2,
+        "step": 0.01,
+        "default": 0,
+        "tooltip" : ""
+    },
+    "sliding-background": {
+		"type": "checkbox",
+		"default" : true,
+		"description" : "Sliding Background",
+		"tooltip" : ""
+	},
+    "zoom-level": {
+        "type": "scale",
+        "description": "Background Zoom Level: ",
+        "min": 1.05,
+        "max": 4,
+        "step": 0.05,
+        "default": 1.5,
+        "dependency": "sliding-background",
+        "indent": true,
+        "tooltip" : ""
+    },
+    "vertical-position": {
+        "type": "scale",
+        "description": "Background Vertical Position: ",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "default": 0.5,
+        "dependency": "sliding-background",
+        "indent": true,
+        "tooltip" : ""
+    }
+}
