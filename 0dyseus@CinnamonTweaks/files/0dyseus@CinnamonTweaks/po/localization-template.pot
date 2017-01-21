@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 
-"Project-Id-Version: 1.05\n"
+"Project-Id-Version: 1.06\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-21 14:53-0300\n"
-"PO-Revision-Date: 2016-11-25 02:51-0300\n"
+"PO-Revision-Date: 2017-01-03 19:00-0300\n"
 "Last-Translator: Odyseus <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,17 +71,17 @@ msgid ""
 "Instance ID: %s"
 msgstr ""
 
-#: 3.2/extension.js:993 extension.js:1069
+#: 3.2/extension.js:1002 extension.js:1088
 msgid ""
 "If you updated this extension from an older version, <b>you must check its "
 "settings window</b>."
 msgstr ""
 
-#: 3.2/extension.js:994 extension.js:1070
+#: 3.2/extension.js:1003 extension.js:1089
 msgid "Some preferences may have been changed to their default values."
 msgstr ""
 
-#: 3.2/extension.js:995 extension.js:1071
+#: 3.2/extension.js:1004 extension.js:1090
 msgid "This message will not be displayed again."
 msgstr ""
 
