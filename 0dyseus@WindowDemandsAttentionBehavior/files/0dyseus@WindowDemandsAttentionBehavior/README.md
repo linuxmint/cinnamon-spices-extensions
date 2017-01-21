@@ -10,13 +10,15 @@ I found two Gnome Shell Extensions and I mixed their functions into one Cinnamon
 
 ## Compatibility
 
-Tested and working on Cinnamon version 3.0.7.
+- ![Cinnamon 2.8](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Cinnamon-2.8.svg) ![Linux Mint 17.3](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Linux_Mint-17.3.svg)
+- ![Cinnamon 3.0](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Cinnamon-3.0.svg) ![Linux Mint 18](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Linux_Mint-18.svg)
+- ![Cinnamon 3.2](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Cinnamon-3.2.svg) ![Linux Mint 18.1](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Linux_Mint-18.1.svg)
 
 ![Settings window](https://raw.githubusercontent.com/Odyseus/CinnamonTools/master/Extensions/0dyseus%40WindowDemandsAttentionBehavior/screenshot.png "Settings window")
 
 <h2 style="color:red;"> Bug report and feature request</h2>
 <span style="color:red;">
-Spices comments system is absolutely useless to report bugs with any king of legibility. In addition, there is no notifications system for new comments. So, if anyone has bugs to report or a feature request, do so on this applet GitHub page. Just click the **Website** button next to the **Download** button.
+Spices comments system is absolutely useless to report bugs with any king of legibility. In addition, there is no notifications system for new comments. So, if anyone has bugs to report or a feature request, do so on this xlet GitHub page. Just click the **Website** button next to the **Download** button.
 </span>
 
 ## Change Log

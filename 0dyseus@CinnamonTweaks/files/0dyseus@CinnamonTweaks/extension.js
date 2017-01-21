@@ -732,6 +732,11 @@ const CT_PopupMenuManagerPatch = {
             if (!Main.CT_PopupMenuManagerPatch_allAppletsMenus)
                 Main.CT_PopupMenuManagerPatch_allAppletsMenus = [];
 
+            // No need to override, just inject.
+            STG.PPMM._init = $.injectToFunction(PopupMenu.PopupMenuManager.prototype, "_init", function(menu) {
+                this._open_menu_id = null;
+            });
+
             STG.PPMM.addMenu = PopupMenu.PopupMenuManager.prototype["addMenu"];
             PopupMenu.PopupMenuManager.prototype["addMenu"] = function(menu, position) {
                 this._signals.connect(menu, 'open-state-changed', this._onMenuOpenState);
@@ -774,9 +779,9 @@ const CT_PopupMenuManagerPatch = {
                     if (menu == this._activeMenu)
                         return false;
 
-                    if (this._open_menu_id > 0) {
+                    if (this._open_menu_id) {
                         Mainloop.source_remove(this._open_menu_id);
-                        this._open_menu_id = 0;
+                        this._open_menu_id = null;
                     }
 
                     this._open_menu_id = Mainloop.timeout_add(50, Lang.bind(this, function() {
@@ -812,12 +817,13 @@ const CT_PopupMenuManagerPatch = {
             };
 
             // Doesn't exists by default. So go ahead and create it.
-            PopupMenu.PopupMenuManager.prototype["_onMenuSourceExit"] = function() {
-                if (this._open_menu_id > 0) {
-                    Mainloop.source_remove(this._open_menu_id);
-                    this._open_menu_id = 0;
-                }
-            };
+            PopupMenu.PopupMenuManager.prototype["_onMenuSourceExit"] =
+                Lang.bind(PopupMenu.PopupMenuManager.prototype, function() {
+                    if (this._open_menu_id) {
+                        Mainloop.source_remove(this._open_menu_id);
+                        this._open_menu_id = null;
+                    }
+                });
         }
     },
 
@@ -832,6 +838,9 @@ const CT_PopupMenuManagerPatch = {
         }
         if (STG.PPMM.removeMenu) {
             $.removeInjection(PopupMenu.PopupMenuManager.prototype, STG.PPMM, "removeMenu");
+        }
+        if (STG.PPMM._init) {
+            $.removeInjection(PopupMenu.PopupMenuManager.prototype, STG.PPMM, "_init");
         }
         if (STG.PPMM._onMenuSourceEnter) {
             PopupMenu.PopupMenuManager.prototype["_onMenuSourceEnter"] = STG.PPMM._onMenuSourceEnter;
@@ -986,10 +995,12 @@ function init(aExtensionMeta) {
     metadata = aExtensionMeta;
     settings = new SettingsHandler(metadata.uuid);
     Gettext.bindtextdomain(metadata.uuid, GLib.get_home_dir() + "/.local/share/locale");
+    let extension_dir = metadata.path;
+    let main_extension_dir = extension_dir;
 
-    let extensionImports = imports.ui.extensionSystem.extensions[metadata.uuid];
-    $ = extensionImports.extensionModules;
-    HotCornerPatched = extensionImports.hotCornerPatched;
+    imports.searchPath.push(main_extension_dir);
+
+    $ = imports[metadata.uuid];
 
     try {
         allowEnabling = $.versionCompare(CINNAMON_VERSION, "2.8.6") >= 0;

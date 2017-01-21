@@ -4,7 +4,9 @@ This extension adds some options to modify the default behaviour of certain Cinn
 
 ## Compatibility
 
-This extension is designed to work **only** on Cinnamon versions 2.8.6, 3.0.7 and 3.2.
+- ![Cinnamon 2.8](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Cinnamon-2.8.svg) ![Linux Mint 17.3](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Linux_Mint-17.3.svg)
+- ![Cinnamon 3.0](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Cinnamon-3.0.svg) ![Linux Mint 18](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Linux_Mint-18.svg)
+- ![Cinnamon 3.2](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Cinnamon-3.2.svg) ![Linux Mint 18.1](https://odyseus.github.io/CinnamonTools/lib/MyBadges/Linux_Mint-18.1.svg)
 
 <span style="color:red;font-size:large;">
 **Important note:** Do not try to install and force compatibility for any other version of Cinnamon older than 2.8.6. As a protection mechanism, the extension will auto-disable itself.
@@ -27,10 +29,13 @@ Spices comments system is absolutely useless to report bugs with any king of leg
 </span>
 
 ## Contributors
-
 - **[lestcape](https://github.com/lestcape):** He is the brain behind the popup menus and desktop tweaks.
+- **[Radek71](https://github.com/Radek71):** Czech localization.
 
 ## Change Log
+
+##### 1.06
+- Added Czech localization. Thanks to [Radek71](https://github.com/Radek71).
 
 ##### 1.05
 - Added popup menus tweaks. Allows to change the behaviour of the applets menus. Thanks to **[lestcape](https://github.com/lestcape)**.

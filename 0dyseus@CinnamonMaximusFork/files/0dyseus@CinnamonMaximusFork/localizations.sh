@@ -5,9 +5,9 @@ options+=("Install translations" "Uninstall translations" "Restart Cinnamon")
 
 
 echo "$(tput bold)$(tput setaf 11)"
-echo "This script has to be executed from inside this applet folder and after this applet is installed."
-echo "If you installed this applet via Cinnamon Settings, translations where already installed automatically by Cinnamon."
-echo "If you installed this applet manually, you need to install the translations."
+echo "This script has to be executed from inside this xlet folder and after this xlet is installed."
+echo "If you installed this xlet via Cinnamon Settings, translations where already installed automatically by Cinnamon."
+echo "If you installed this xlet manually, you need to install the translations."
 echo "$(tput sgr0)$(tput bold)"
 
 PS3="$prompt "
@@ -15,19 +15,19 @@ select opt in "${options[@]}" "Abort"; do
 	case "$REPLY" in
 		1 ) # Install translations
 			echo "$(tput setaf 10)"
-			cinnamon-json-makepot -i ./po/*
+			( set -xv ; cinnamon-json-makepot -i )
 			echo "$(tput setaf 9)Remember to restart Cinnamon!!!$(tput sgr0)"
 			echo "$(tput bold)"
 			;;
 		2 ) # Uninstall translations
 			echo "$(tput setaf 9)"
-			cinnamon-json-makepot -r ./po/*
+			( set -xv ; cinnamon-json-makepot -r )
 			echo "Remember to restart Cinnamon!!!$(tput sgr0)"
 			echo "$(tput bold)"
 			;;
 		3 ) # Restart Cinnamon
 			echo "$(tput sgr0)"
-			nohup cinnamon --replace > /dev/null 2>&1 &
+			( set -xv ; nohup cinnamon --replace > /dev/null 2>&1 & )
 			break
 			;;
 		$(( ${#options[@]}+1 )) )
