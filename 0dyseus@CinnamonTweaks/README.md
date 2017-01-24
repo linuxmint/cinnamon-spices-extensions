@@ -27,4 +27,4 @@ For detailed explanation of each option, see the **HELP.md** file inside this ex
 - **[lestcape](https://github.com/lestcape):** He is the brain behind the popup menus and desktop tweaks.
 - **[Radek71](https://github.com/Radek71):** Czech localization.
 
-[Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/Extensions/0dyseus%40CinnamonTweaks/CHANGELOG.md)
+[Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/Extensions/0dyseus%40CinnamonTweaks/files/0dyseus%40CinnamonTweaks/CHANGELOG.md)
