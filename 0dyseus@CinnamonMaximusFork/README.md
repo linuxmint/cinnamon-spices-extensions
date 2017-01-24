@@ -21,4 +21,4 @@ This extension is a fork of the [Cinnamon Maximus](https://cinnamon-spices.linux
 
 **Note:** Both commands are already available on Linux Mint. They are installed by the **x11-utils** package.
 
-[Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/Extensions/0dyseus%40CinnamonMaximusFork/CHANGELOG.md)
+[Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/Extensions/0dyseus%40CinnamonMaximusFork/files/0dyseus%40CinnamonMaximusFork/CHANGELOG.md)
