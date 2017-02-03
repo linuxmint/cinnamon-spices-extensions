@@ -14,12 +14,12 @@
  * Full transparency
  * ===================================================================*/
 
-.panel-transparent-full,
-#panel.panel-transparent-full,
-.panel-transparent-full #panelLeft,
-.panel-transparent-full #panelCenter,
-.panel-transparent-full #panelRight,
-#panel.panel-transparent-full:highlight {
+.panel-transparent-full__internal,
+#panel.panel-transparent-full__internal,
+.panel-transparent-full__internal #panelLeft,
+.panel-transparent-full__internal #panelCenter,
+.panel-transparent-full__internal #panelRight,
+#panel.panel-transparent-full__internal:highlight {
 	border-image: none;
 	border: none;
 	box-shadow: none;
@@ -33,12 +33,12 @@
  * Transparency with shadow
  * ===================================================================*/
 
-.panel-transparent-gradient,
-#panel.panel-transparent-gradient,
-.panel-transparent-gradient #panelLeft,
-.panel-transparent-gradient #panelCenter,
-.panel-transparent-gradient #panelRight,
-#panel.panel-transparent-gradient:highlight {
+.panel-transparent-gradient__internal,
+#panel.panel-transparent-gradient__internal,
+.panel-transparent-gradient__internal #panelLeft,
+.panel-transparent-gradient__internal #panelCenter,
+.panel-transparent-gradient__internal #panelRight,
+#panel.panel-transparent-gradient__internal:highlight {
 	border-image: none;
 	border: none;
 	box-shadow: none;
@@ -48,31 +48,31 @@
 	background: transparent;
 }
 
-.panel-transparent-gradient,
-.panel-bottom.panel-transparent-gradient,
-#panel.panel-transparent-gradient,
-#panel.panel-transparent-gradient:highlight {
+.panel-transparent-gradient__internal,
+.panel-bottom.panel-transparent-gradient__internal,
+#panel.panel-transparent-gradient__internal,
+#panel.panel-transparent-gradient__internal:highlight {
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
 	background-gradient-end: rgba(0,0,0,0.4);
 }
 
-.panel-transparent-gradient.panel-top,
-#panel.panel-transparent-gradient.panel-top,
-#panel.panel-transparent-gradient.panel-top:highlight,
-.panel-transparent-gradient.panel-left,
-#panel.panel-transparent-gradient.panel-left,
-#panel.panel-transparent-gradient.panel-left:highlight {
+.panel-transparent-gradient__internal.panel-top,
+#panel.panel-transparent-gradient__internal.panel-top,
+#panel.panel-transparent-gradient__internal.panel-top:highlight,
+.panel-transparent-gradient__internal.panel-left,
+#panel.panel-transparent-gradient__internal.panel-left,
+#panel.panel-transparent-gradient__internal.panel-left:highlight {
 	background-gradient-start: rgba(0,0,0,0.4);
 	background-gradient-end: transparent;
 }
 
-.panel-transparent-gradient.panel-right,
-#panel.panel-transparent-gradient.panel-right,
-#panel.panel-transparent-gradient.panel-right:highlight,
-.panel-transparent-gradient.panel-left,
-#panel.panel-transparent-gradient.panel-left,
-#panel.panel-transparent-gradient.panel-left:highlight {
+.panel-transparent-gradient__internal.panel-right,
+#panel.panel-transparent-gradient__internal.panel-right,
+#panel.panel-transparent-gradient__internal.panel-right:highlight,
+.panel-transparent-gradient__internal.panel-left,
+#panel.panel-transparent-gradient__internal.panel-left,
+#panel.panel-transparent-gradient__internal.panel-left:highlight {
 	background-gradient-direction: horizontal;
 }
 
@@ -80,12 +80,12 @@
  * Semy transparent
  * ===================================================================*/
 
-.panel-transparent-semi,
-#panel.panel-transparent-semi,
-.panel-transparent-semi #panelLeft,
-.panel-transparent-semi #panelCenter,
-.panel-transparent-semi #panelRight,
-#panel.panel-transparent-semi:highlight {
+.panel-transparent-semi__internal,
+#panel.panel-transparent-semi__internal,
+.panel-transparent-semi__internal #panelLeft,
+.panel-transparent-semi__internal #panelCenter,
+.panel-transparent-semi__internal #panelRight,
+#panel.panel-transparent-semi__internal:highlight {
 	border-image: none;
 	border: none;
 	background-gradient-direction: vertical;
@@ -94,9 +94,9 @@
 	background: transparent;
  }
 
-.panel-transparent-semi,
-#panel.panel-transparent-semi,
-#panel.panel-transparent-semi:highlight {
+.panel-transparent-semi__internal,
+#panel.panel-transparent-semi__internal,
+#panel.panel-transparent-semi__internal:highlight {
 	background-gradient-start: rgba(0,0,0,0.4);
 	background-gradient-end: rgba(0,0,0,0.4);
 	background-color: rgba(0,0,0,0.4);
