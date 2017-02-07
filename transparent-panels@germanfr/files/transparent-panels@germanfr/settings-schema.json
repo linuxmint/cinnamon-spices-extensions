@@ -1,20 +1,24 @@
 {
 	"transparency-type" : {
 		"type" : "combobox",
-		"default" : "panel-transparent-gradient",
+		"default" : "panel-transparent-gradient__internal",
 		"description" : "Type of transparency",
 		"options" : {
-			"With shadow" : "panel-transparent-gradient",
-			"Fully transparent" : "panel-transparent-full",
-			"Semi-transparent" : "panel-transparent-semi",
+			"With shadow" : "panel-transparent-gradient__internal",
+			"Fully transparent" : "panel-transparent-full__internal",
+			"Semi-transparent" : "panel-transparent-semi__internal",
 			"Defined by theme" : "panel-transparent"
 		},
 		"tooltip" : "Choose the type of transparency you want."
 	},
-
 	"opacify" : {
 		"type" : "checkbox",
 		"default" : false,
-		"description" : "Remove transparency when maximized (experimental)"
+		"description" : "Remove theme transparency (experimental)",
+		"tooltip" : "Remove panel transparency when it's not transparent."
+	},
+	"first-launch" : {
+		"type" : "generic",
+		"default" : true
 	}
 }
