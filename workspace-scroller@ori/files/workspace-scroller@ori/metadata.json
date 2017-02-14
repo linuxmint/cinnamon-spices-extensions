@@ -6,6 +6,8 @@
     "cinnamon-version": [
         "2.4", 
         "2.6",
+        "2.8"
+        "3.0",
         "3.2"
     ], 
     "url": "https://github.com/ori/cinnamon-workspace-scroller", 
