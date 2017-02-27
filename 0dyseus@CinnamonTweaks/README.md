@@ -1,3 +1,9 @@
+<span style="color:red;">
+<h2>Bug reports, feature requests and contributions</h2>
+
+<strong>If anyone has bugs to report, a feature request or a contribution, do so on <a href="https://github.com/Odyseus/CinnamonTools">this xlet GitHub page</a>.</strong>
+</span>
+
 ## Cinnamon Tweaks extension description
 
 This extension adds some options to modify the default behaviour of certain Cinnamon features.
@@ -22,12 +28,6 @@ For detailed explanation of each option, see the **HELP.md** file inside this ex
 - **Tooltips tweaks:** allows to tweak the position and show delay of Cinnamon's UI tooltips. The position of the tooltip is only available for Cinnamon versions lower than 3.2 (Cinnamon 3.2.x already has the position of the tooltips changed).
 - **Desktop tweaks:** Allows to drag applications from the menu or from the launchers applets into the desktop.
 - **Popup menus tweaks:** Allows to change the behaviour of the applets menus.
-
-<span style="color:red;">
-## Bug report and feature request
-
-**If anyone has bugs to report or a feature request, do so on [this xlet GitHub page](https://github.com/Odyseus/CinnamonTools).**
-</span>
 
 ## Contributors
 - **[lestcape](https://github.com/lestcape):** He is the brain behind the popup menus and desktop tweaks.
