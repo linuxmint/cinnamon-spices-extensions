@@ -1,3 +1,9 @@
+<span style="color:red;">
+<h2>Bug reports, feature requests and contributions</h2>
+
+<strong>If anyone has bugs to report, a feature request or a contribution, do so on <a href="https://github.com/Odyseus/CinnamonTools">this xlet GitHub page</a>.</strong>
+</span>
+
 ## Cinnamon Maximus Fork extension description
 
 This extension is a fork of the [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29) extension by Fatih Mete. The main difference with the original is that I removed the blacklist feature in favor of a whitelist feature. I also added a couple of options for troubleshooting and completely removed the top border of undecorated maximized windows.
@@ -20,11 +26,5 @@ This extension is a fork of the [Cinnamon Maximus](https://cinnamon-spices.linux
 - xwininfo
 
 **Note:** Both commands are already available on Linux Mint. They are installed by the **x11-utils** package.
-
-<span style="color:red;">
-## Bug report and feature request
-
-**If anyone has bugs to report or a feature request, do so on [this xlet GitHub page](https://github.com/Odyseus/CinnamonTools).**
-</span>
 
 [Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonMaximusFork/CHANGELOG.md)
