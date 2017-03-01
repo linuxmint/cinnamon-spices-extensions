@@ -1,0 +1,8 @@
+{
+    "dangerous": false, 
+    "description": "Customizable shadow parameters", 
+    "uuid": "ShadowParameters@ekzi", 
+    "name": "Custom Shadows",
+    "url": "linuxmint.com", 
+    "cinnamon-version": [ "3.2" ]
+}
