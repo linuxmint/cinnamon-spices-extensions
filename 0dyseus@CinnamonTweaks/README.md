@@ -30,7 +30,8 @@ For detailed explanation of each option, see the **HELP.md** file inside this ex
 - **Popup menus tweaks:** Allows to change the behaviour of the applets menus.
 
 ## Contributors
-- **[lestcape](https://github.com/lestcape):** He is the brain behind the popup menus and desktop tweaks.
-- **[Radek71](https://github.com/Radek71):** Czech localization.
+- [lestcape](https://github.com/lestcape): He is the brain behind the popup menus and desktop tweaks.
+- [Radek71](https://github.com/Radek71): Czech localization.
+- [muzena](https://github.com/muzena): Croatian localization.
 
 [Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonTweaks/CHANGELOG.md)

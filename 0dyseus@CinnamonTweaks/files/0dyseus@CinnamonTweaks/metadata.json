@@ -10,6 +10,7 @@
     "website": "https://github.com/Odyseus/CinnamonTools",
     "url": "https://github.com/Odyseus/CinnamonTools",
     "dangerous": true,
+    "contributors": "muzena: Croatian localization.",
     "uuid": "0dyseus@CinnamonTweaks",
     "description": "Several tweaks for Cinnamon."
 }
