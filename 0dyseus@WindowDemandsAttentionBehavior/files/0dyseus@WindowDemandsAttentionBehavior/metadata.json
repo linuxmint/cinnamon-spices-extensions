@@ -1,14 +1,15 @@
 {
-	"website": "https://github.com/Odyseus/CinnamonTools",
-	"url": "https://github.com/Odyseus/CinnamonTools",
-	"uuid": "0dyseus@WindowDemandsAttentionBehavior",
-	"cinnamon-version": [
-		"3.0"
-	],
-	"dangerous": false,
-	"description": "Activate demanding attention window with a keyboard shortcut or forced.",
-	"name": "Window demands attention behavior",
-	"version": "1.02",
-	"last-edited": "1471258756",
-	"icon": "window-manager"
+    "website": "https://github.com/Odyseus/CinnamonTools",
+    "url": "https://github.com/Odyseus/CinnamonTools",
+    "uuid": "0dyseus@WindowDemandsAttentionBehavior",
+    "cinnamon-version": [
+        "3.0"
+    ],
+    "dangerous": false,
+    "description": "Activate demanding attention window with a keyboard shortcut or forced.",
+    "name": "Window demands attention behavior",
+    "contributors": "muzena: Croatian localization.",
+    "version": "1.02",
+    "last-edited": "1471258756",
+    "icon": "window-manager"
 }
