@@ -1,0 +1,49 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Window demands attention behavior 1.02\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->description
+msgid "Activate demanding attention window with a keyboard shortcut or forced."
+msgstr ""
+"Aktivira zahtjev pozornosti prozora s prečacem tipkovnice ili prisilno."
+
+#. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->name
+msgid "Window demands attention behavior"
+msgstr "Prozor zahtjeva pozornost"
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->description
+msgid "Choose activation mode"
+msgstr "Odaberi način aktivacije:"
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->options
+msgid "Force windows demanding attention activation."
+msgstr "Prisili aktivaciju zahtjeva pozornosti prozora."
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->options
+msgid "Activate windows demanding attention with a shortcut."
+msgstr "Aktiviraj prozor zahtjeva pozornosti prečacem tipkovnice."
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_activation_mode->options
+msgid "Disabled. System behavior."
+msgstr "Onemogućeno. Zadano sustavom."
+
+#. 0dyseus@WindowDemandsAttentionBehavior->settings-
+#. schema.json->pref_keyboard_shortcut->description
+msgid "Set the keybinding to activate windows demanding attention: "
+msgstr "Postavi prečace tipkovnice za aktivaciju zahtjeva pozornosti prozora: "
