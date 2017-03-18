@@ -1,0 +1,1129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-18 05:08-0300\n"
+"PO-Revision-Date: 2017-03-18 05:09-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: __init__.js:202 settings.py:54
+msgid "Detect language"
+msgstr "Detectar idioma"
+
+#: __init__.js:203 settings.py:55
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: __init__.js:204 settings.py:56
+msgid "Amharic"
+msgstr "Amárico"
+
+#: __init__.js:205 settings.py:57
+msgid "Arabic"
+msgstr "Árabe"
+
+#: __init__.js:206 settings.py:58
+msgid "Azerbaijani"
+msgstr "Azerbaiyano"
+
+#: __init__.js:207 settings.py:59
+msgid "Belarusian"
+msgstr "Bielorruso"
+
+#: __init__.js:208 settings.py:60
+msgid "Bulgarian"
+msgstr "Búlgaro"
+
+#: __init__.js:209 settings.py:61
+msgid "Bengali"
+msgstr "Bengalí"
+
+#: __init__.js:210 settings.py:62
+msgid "Bosnian (Y)"
+msgstr "Bosnio (Y)"
+
+#: __init__.js:211 settings.py:63
+msgid "Catalan"
+msgstr "Catalán"
+
+#: __init__.js:212 settings.py:64
+msgid "Chichewa"
+msgstr "Chichewa"
+
+#: __init__.js:213 settings.py:65
+msgid "Corsican"
+msgstr "Corso"
+
+#: __init__.js:214 settings.py:66
+msgid "Czech"
+msgstr "Checo"
+
+#: __init__.js:215 settings.py:67
+msgid "Welsh"
+msgstr "Galés"
+
+#: __init__.js:216 settings.py:68
+msgid "Danish"
+msgstr "Danés"
+
+#: __init__.js:217 settings.py:69
+msgid "German"
+msgstr "Alemán"
+
+#: __init__.js:218 settings.py:70
+msgid "Greek"
+msgstr "Griego"
+
+#: __init__.js:219 settings.py:71
+msgid "English"
+msgstr "Inglés"
+
+#: __init__.js:220 settings.py:72
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: __init__.js:221 settings.py:73
+msgid "Spanish"
+msgstr "Español"
+
+#: __init__.js:222 settings.py:74
+msgid "Estonian"
+msgstr "Estonio"
+
+#: __init__.js:223 settings.py:75
+msgid "Basque"
+msgstr "Vasco"
+
+#: __init__.js:224 settings.py:76
+msgid "Persian"
+msgstr "Persa"
+
+#: __init__.js:225 settings.py:77
+msgid "Finnish"
+msgstr "Finlandés"
+
+#: __init__.js:226 settings.py:78
+msgid "French"
+msgstr "Francés"
+
+#: __init__.js:227 settings.py:79
+msgid "Frisian"
+msgstr "Frisón"
+
+#: __init__.js:228 settings.py:80
+msgid "Irish"
+msgstr "Irlandés"
+
+#: __init__.js:229 settings.py:81
+msgid "Scots Gaelic"
+msgstr "Gaélico escocés"
+
+#: __init__.js:230 settings.py:82
+msgid "Galician"
+msgstr "Gallego"
+
+#: __init__.js:231 settings.py:83
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: __init__.js:232 settings.py:84
+msgid "Hausa"
+msgstr "Hausa"
+
+#: __init__.js:233 settings.py:85
+msgid "Hawaiian"
+msgstr "Hawaiano"
+
+#: __init__.js:234 settings.py:86
+msgid "Hebrew (Y)"
+msgstr "Hebreo (Y)"
+
+#: __init__.js:235 settings.py:87
+msgid "Hindi"
+msgstr "Hindú"
+
+#: __init__.js:236 settings.py:88
+msgid "Hmong"
+msgstr "Hmong"
+
+#: __init__.js:237 settings.py:89
+msgid "Croatian"
+msgstr "Croata"
+
+#: __init__.js:238 settings.py:90
+msgid "Haitian Creole"
+msgstr "Creole haitiano"
+
+#: __init__.js:239 settings.py:91
+msgid "Hungarian"
+msgstr "Húngaro"
+
+#: __init__.js:240 settings.py:92
+msgid "Armenian"
+msgstr "Armenio"
+
+#: __init__.js:241 settings.py:93
+msgid "Indonesian"
+msgstr "Indonesio"
+
+#: __init__.js:242 settings.py:94
+msgid "Igbo"
+msgstr "Igbo"
+
+#: __init__.js:243 settings.py:95
+msgid "Icelandic"
+msgstr "Islandés"
+
+#: __init__.js:244 settings.py:96
+msgid "Italian"
+msgstr "Italiano"
+
+#: __init__.js:245 settings.py:97
+msgid "Hebrew"
+msgstr "Hebreo"
+
+#: __init__.js:246 settings.py:98
+msgid "Japanese"
+msgstr "Japonés"
+
+#: __init__.js:247 settings.py:99
+msgid "Javanese"
+msgstr "Javanés"
+
+#: __init__.js:248 settings.py:100
+msgid "Georgian"
+msgstr "Georgiano"
+
+#: __init__.js:249 settings.py:101
+msgid "Kazakh"
+msgstr "Kazakh"
+
+#: __init__.js:250 settings.py:102
+msgid "Khmer"
+msgstr "Jemer"
+
+#: __init__.js:251 settings.py:103
+msgid "Kannada"
+msgstr "Kannada"
+
+#: __init__.js:252 settings.py:104
+msgid "Korean"
+msgstr "Koreano"
+
+#: __init__.js:253 settings.py:105
+msgid "Kurdish (Kurmanji)"
+msgstr "Kurdo (Kurmanji)"
+
+#: __init__.js:254 settings.py:106
+msgid "Kyrgyz"
+msgstr "Kirguís"
+
+#: __init__.js:255 settings.py:107
+msgid "Latin"
+msgstr "Latín"
+
+#: __init__.js:256 settings.py:108
+msgid "Luxembourgish"
+msgstr "Luxemburgués"
+
+#: __init__.js:257 settings.py:109
+msgid "Lao"
+msgstr "Lao"
+
+#: __init__.js:258 settings.py:110
+msgid "Lithuanian"
+msgstr "Lituano"
+
+#: __init__.js:259 settings.py:111
+msgid "Latvian"
+msgstr "Letón"
+
+#: __init__.js:260 settings.py:112
+msgid "Malagasy"
+msgstr "Madagascarí"
+
+#: __init__.js:261 settings.py:113
+msgid "Maori"
+msgstr "Maorí"
+
+#: __init__.js:262 settings.py:114
+msgid "Macedonian"
+msgstr "Macedonio"
+
+#: __init__.js:263 settings.py:115
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: __init__.js:264 settings.py:116
+msgid "Mongolian"
+msgstr "Mongol"
+
+#: __init__.js:265 settings.py:117
+msgid "Marathi"
+msgstr "Maratí"
+
+#: __init__.js:266 settings.py:118
+msgid "Malay"
+msgstr "Malayo"
+
+#: __init__.js:267 settings.py:119
+msgid "Maltese"
+msgstr "Maltés"
+
+#: __init__.js:268 settings.py:120
+msgid "Myanmar (Burmese)"
+msgstr "Myanmar (Birmano)"
+
+#: __init__.js:269 settings.py:121
+msgid "Nepali"
+msgstr "Nepalí"
+
+#: __init__.js:270 settings.py:122
+msgid "Dutch"
+msgstr "Holandés"
+
+#: __init__.js:271 settings.py:123
+msgid "Norwegian"
+msgstr "Noruego"
+
+#: __init__.js:272 settings.py:124
+msgid "Cebuano"
+msgstr "Cebuano"
+
+#: __init__.js:273 settings.py:125
+msgid "Punjabi"
+msgstr "Punjabí"
+
+#: __init__.js:274 settings.py:126
+msgid "Polish"
+msgstr "Polaco"
+
+#: __init__.js:275 settings.py:127
+msgid "Pashto"
+msgstr "Pashto"
+
+#: __init__.js:276 settings.py:128
+msgid "Portuguese"
+msgstr "Portugués"
+
+#: __init__.js:277 settings.py:129
+msgid "Romanian"
+msgstr "Rumano"
+
+#: __init__.js:278 settings.py:130
+msgid "Russian"
+msgstr "Ruso"
+
+#: __init__.js:279 settings.py:131
+msgid "Sindhi"
+msgstr "Sindhi"
+
+#: __init__.js:280 settings.py:132
+msgid "Sinhala"
+msgstr "Sinhala"
+
+#: __init__.js:281 settings.py:133
+msgid "Slovak"
+msgstr "Eslovaco"
+
+#: __init__.js:282 settings.py:134
+msgid "Slovenian"
+msgstr "Esloveno"
+
+#: __init__.js:283 settings.py:135
+msgid "Samoan"
+msgstr "Samoano"
+
+#: __init__.js:284 settings.py:136
+msgid "Shona"
+msgstr "Shona"
+
+#: __init__.js:285 settings.py:137
+msgid "Somali"
+msgstr "Somalí"
+
+#: __init__.js:286 settings.py:138
+msgid "Albanian"
+msgstr "Albano"
+
+#: __init__.js:287 settings.py:139
+msgid "Serbian"
+msgstr "Serbio"
+
+#: __init__.js:288 settings.py:140
+msgid "Sesotho"
+msgstr "Sesotho"
+
+#: __init__.js:289 settings.py:141
+msgid "Sundanese"
+msgstr "Sundanese"
+
+#: __init__.js:290 settings.py:142
+msgid "Swedish"
+msgstr "Sueco"
+
+#: __init__.js:291 settings.py:143
+msgid "Swahili"
+msgstr "Swahili"
+
+#: __init__.js:292 settings.py:144
+msgid "Tamil"
+msgstr "Tamil"
+
+#: __init__.js:293 settings.py:145
+msgid "Telugu"
+msgstr "Telugu"
+
+#: __init__.js:294 settings.py:146
+msgid "Tajik"
+msgstr "Tajik"
+
+#: __init__.js:295 settings.py:147
+msgid "Thai"
+msgstr "Tailandés"
+
+#: __init__.js:296 settings.py:148
+msgid "Filipino"
+msgstr "Filipino"
+
+#: __init__.js:297 settings.py:149
+msgid "Turkish"
+msgstr "Turco"
+
+#: __init__.js:298 settings.py:150
+msgid "Ukrainian"
+msgstr "Ukraniano"
+
+#: __init__.js:299 settings.py:151
+msgid "Urdu"
+msgstr "Urdu"
+
+#: __init__.js:300 settings.py:152
+msgid "Uzbek"
+msgstr "Uzbeko"
+
+#: __init__.js:301 settings.py:153
+msgid "Vietnamese"
+msgstr "Vietnamita"
+
+#: __init__.js:302 settings.py:154
+msgid "Xhosa"
+msgstr "Xhosa"
+
+#: __init__.js:303 settings.py:155
+msgid "Yiddish"
+msgstr "Yídish"
+
+#: __init__.js:304 settings.py:156
+msgid "Yoruba"
+msgstr "Yoruba"
+
+#: __init__.js:305 settings.py:157
+msgid "Chinese (Y)"
+msgstr "Chino (Y)"
+
+#: __init__.js:306 settings.py:158
+msgid "Chinese Simplified"
+msgstr "Chino Simplificado"
+
+#: __init__.js:307 settings.py:159
+msgid "Chinese Traditional"
+msgstr "Chino Tradicional"
+
+#: __init__.js:308 settings.py:160
+msgid "Zulu"
+msgstr "Zulú"
+
+#: __init__.js:440
+#, javascript-format
+msgid "Schema %s could not be found for extension %s."
+msgstr "No se pudo encontrar el esquema %s para la extensión %s."
+
+#: __init__.js:441
+msgid "Please check your installation."
+msgstr "Compruebe su instalación."
+
+#: __init__.js:840
+msgid "Icon and label are both false."
+msgstr "El ícono y la etiqueta son ambos falsos."
+
+#: __init__.js:1244
+msgid "Shortcuts"
+msgstr "Accesos directos"
+
+#: __init__.js:1246
+msgid "Open translator dialog."
+msgstr "Abrir diálogo del traductor."
+
+#: __init__.js:1248
+msgid "Open translator dialog and translate text from clipboard."
+msgstr ""
+"Abra el diálogo del traductor y traducir el texto desde el portapapeles."
+
+#: __init__.js:1250
+msgid "Open translator dialog and translate from primary selection."
+msgstr "Abrir diálogo de traductor y traducir la selección primaria."
+
+#: __init__.js:1252
+msgid "Translate text."
+msgstr "Traducir texto."
+
+#: __init__.js:1254
+msgid "Force text translation. Ignores translation history."
+msgstr "Forzar la traducción del texto. Ignora el historial de traducción."
+
+#: __init__.js:1256
+msgid "Copy translated text to clipboard."
+msgstr "Copiar el texto traducido al portapapeles."
+
+#: __init__.js:1258
+msgid "Swap languages."
+msgstr "Cambiar idiomas."
+
+#: __init__.js:1260
+msgid "Reset languages to default."
+msgstr "Restablecer los idiomas predeterminados."
+
+#: __init__.js:1262
+msgid "Close dialog."
+msgstr "Cerrar diálogo."
+
+#: __init__.js:1409
+msgid "Type to search..."
+msgstr "Escribir para buscar..."
+
+#: __init__.js:1622
+msgid "Most used languages​​."
+msgstr "Idiomas más utilizados."
+
+#: __init__.js:2106
+#, javascript-format
+msgid "Can't load preferences for %s"
+msgstr "No se pueden cargar las preferencias de %s"
+
+#: __init__.js:2228 translation_providers/google_translation_provider.js:76
+#: translation_providers/transltr_translation_provider.js:66
+#: translation_providers/yandex_translation_provider.js:272
+msgid "Error"
+msgstr "Error"
+
+#. jshint ignore:line
+#: __init__.js:2286 __init__.js:2290
+msgid "Not implemented"
+msgstr "No implementado"
+
+#: __init__.js:2702 extension.js:1092 extension.js:1095 settings.py:318
+msgid "History"
+msgstr "Historial"
+
+#: __init__.js:3233
+msgid "Error executing translate-shell"
+msgstr "Error al ejecutar translate-shell"
+
+#: __init__.js:3422 __init__.js:3438
+msgid "Unmet dependencies found!!!"
+msgstr "¡Dependencias no satisfechas encontradas!"
+
+#: __init__.js:3424 translation_providers/yandex_translation_provider.js:334
+msgid "Check this extension help file for instructions."
+msgstr ""
+"Comprobar el archivo de ayuda de esta extensión para obtener instrucciones."
+
+#: __init__.js:3425
+msgid "It can be accessed from the translation dialog main menu."
+msgstr "Se puede acceder desde el menú principal del diálogo de traducción."
+
+#: __init__.js:3430
+msgid "All dependencies seem to be met."
+msgstr "Todas las dependencias parecen ser cumplidas."
+
+#: __init__.js:3439
+msgid "A detailed error has been logged into ~/.cinnamon/glass.log file."
+msgstr ""
+"Se ha registrado un error detallado en el archivo ~/.cinnamon/glass.log."
+
+#: __init__.js:3535
+msgid "Press <Esc> to close"
+msgstr "Presione <Esc> para cerrar"
+
+#: __init__.js:3587
+msgid "This translation provider doesn't require translate-shell to work."
+msgstr ""
+"Este proveedor de traducción no requiere translate-shell para trabajar."
+
+#: __init__.js:3590
+msgid "This translation provider requires translate-shell to work."
+msgstr "Este proveedor de traducción requiere translate-shell para trabajar."
+
+#: __init__.js:3591 settings.py:180
+msgid "See the extended help of this extension for more information."
+msgstr "Consulte la ayuda extendida de esta extensión para más información."
+
+#: translation_providers/google_ts_translation_provider.js:88
+#: translation_providers/apertium_ts_translation_provider.js:87
+#: translation_providers/bing_ts_translation_provider.js:87
+msgid "Error while parsing data"
+msgstr "Error al analizar datos"
+
+#: translation_providers/google_ts_translation_provider.js:122
+#: translation_providers/apertium_ts_translation_provider.js:120
+#: translation_providers/bing_ts_translation_provider.js:121
+msgid "Error while translating, check your internet connection"
+msgstr "Error al traducir, comprobar conexión a Internet"
+
+#: translation_providers/google_translation_provider.js:81
+#: translation_providers/transltr_translation_provider.js:71
+#: translation_providers/yandex_translation_provider.js:277
+msgid "Can't translate text, please try later."
+msgstr "No se puede traducir texto, intente más tarde."
+
+#: translation_providers/yandex_translation_provider.js:293
+msgid "API key is invalid"
+msgstr "La clave de la API no es válida"
+
+#: translation_providers/yandex_translation_provider.js:296
+msgid "Blocked API key"
+msgstr "Clave de API bloqueada"
+
+#: translation_providers/yandex_translation_provider.js:299
+msgid "Exceeded the daily limit on the amount of translated text"
+msgstr "Excedió el límite diario de la cantidad de texto traducido"
+
+#: translation_providers/yandex_translation_provider.js:302
+msgid "Exceeded the maximum text size"
+msgstr "Ha superado el tamaño máximo de texto"
+
+#: translation_providers/yandex_translation_provider.js:305
+msgid "The text cannot be translated"
+msgstr "El texto no puede ser traducido"
+
+#: translation_providers/yandex_translation_provider.js:308
+msgid "The specified translation direction is not supported"
+msgstr "No se admite la dirección de traducción especificada"
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->name
+#: translation_providers/yandex_translation_provider.js:332
+msgid "Multi Translator"
+msgstr "Multi Traductor"
+
+#: translation_providers/yandex_translation_provider.js:333
+msgid "No Yandex API keys were found!!!"
+msgstr "¡No se encontraron claves de API de Yandex!"
+
+#: extension.js:146 extension.js:402
+msgid "Choose source language"
+msgstr "Elegir idioma de origen"
+
+#: extension.js:153 extension.js:432
+msgid "Choose target language"
+msgstr "Elegir idioma de destino"
+
+#: extension.js:198
+msgid "There is nothing to copy."
+msgstr "No hay nada que copiar."
+
+#: extension.js:207
+msgid "Translated text copied to clipboard."
+msgstr "Texto traducido copiado al portapapeles."
+
+#: extension.js:257
+#, javascript-format
+msgid "Go to %s's website"
+msgstr "Ir al sitio de %s"
+
+#: extension.js:259
+#, javascript-format
+msgid "Service provided by %s"
+msgstr "Servicio proporcionado por %s"
+
+#. TO TRANSLATORS: Full sentence:
+#. "»From« source language to target language with service provider."
+#: extension.js:375 extension.js:399
+msgid "From"
+msgstr "Desde"
+
+#. TO TRANSLATORS: Full sentence:
+#. "From source language »to« target language with service provider."
+#: extension.js:384 extension.js:427
+msgid "to"
+msgstr "hacia"
+
+#: extension.js:457
+msgid "Swap languages"
+msgstr "Cambiar idiomas"
+
+#: extension.js:481
+msgid "Choose translation provider"
+msgstr "Elegir proveedor de traducción"
+
+#: extension.js:529
+msgid "Go!"
+msgstr "¡Ir!"
+
+#: extension.js:530
+msgid "Translate text (<Ctrl> + <Enter>)"
+msgstr "Traducir texto (<Ctrl> + <Intro>)"
+
+#: extension.js:547
+msgid "Main menu"
+msgstr "Menú principal"
+
+#: extension.js:561
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: extension.js:569
+msgid "Translation history"
+msgstr "Historial de traducción"
+
+#: extension.js:577
+msgid "Check dependencies"
+msgstr "Comprobar dependencias"
+
+#: extension.js:585
+msgid "Extended help"
+msgstr "Ayuda extendida"
+
+#: extension.js:621
+msgid "Quick help"
+msgstr "Ayuda rápida"
+
+#: extension.js:636
+msgid "Quit"
+msgstr "Salir"
+
+#. TO TRANSLATORS: Full sentence:
+#. "From source language to target language »with« service provider."
+#: extension.js:665
+msgid "with"
+msgstr "con"
+
+#: extension.js:731
+msgid "Translating..."
+msgstr "Traduciendo..."
+
+#: extension.js:790
+msgid "Clipboard is empty."
+msgstr "El portapapeles está vacío."
+
+#: extension.js:978
+msgid "Error trying to get theme"
+msgstr "Error al intentar obtener el tema"
+
+#: extension.js:985
+msgid "Stylesheet parse error"
+msgstr "Error de análisis de hoja de estilo"
+
+#: extension.js:994
+msgid "Error unloading stylesheet"
+msgstr "Error al descargar la hoja de estilos"
+
+#: extensionHelper.py:271
+msgid "Multi Translator history"
+msgstr "Historial de Multi Traductor"
+
+#: extensionHelper.py:295
+msgid "Date"
+msgstr "Fecha"
+
+#: extensionHelper.py:303
+msgid "Source text"
+msgstr "Texto de origen"
+
+#: extensionHelper.py:308
+msgid "Language pair"
+msgstr "Par de idiomas"
+
+#: extensionHelper.py:316
+msgid "Target text"
+msgstr "Texto de destino"
+
+#: settings.py:170
+msgid "Global"
+msgstr "Global"
+
+#: settings.py:172
+msgid "Global extension options"
+msgstr "Opciones globales de la extensión"
+
+#: settings.py:177
+msgid "Default translation provider"
+msgstr "Proveedor de traducción predeterminado"
+
+#: settings.py:178
+msgid "Select the default translation provider."
+msgstr "Seleccionar el proveedor de traducción predeterminado."
+
+#: settings.py:179
+msgid "Providers marked with (*) require translate-shell package to work."
+msgstr ""
+"Los proveedores marcados con (*) requieren el paquete de translate-shell "
+"para trabajar."
+
+#: settings.py:194
+msgid "Remember last translator"
+msgstr "Recordar el último traductor"
+
+#: settings.py:195
+msgid "Remember last used translation provider."
+msgstr "Recordar el último proveedor de traducción utilizado."
+
+#: settings.py:201
+msgid "Show most used languages"
+msgstr "Mostrar los idiomas más utilizados"
+
+#: settings.py:202
+msgid "Display a list of most used languages."
+msgstr "Mostrar una lista de los idiomas más utilizados."
+
+#: settings.py:208
+msgid "Synchronize scroll entries"
+msgstr "Sincronizar las entradas de desplazamiento"
+
+#: settings.py:209
+msgid "Make the source and target entries scroll synchronously."
+msgstr ""
+"Hacer que las entradas de origen y destino se desplacen de forma síncrona."
+
+#: settings.py:215
+msgid "Enable shortcuts"
+msgstr "Habilitar accesos directos"
+
+#: settings.py:216
+msgid "Enable/Disable the use of keyboard shortcuts."
+msgstr "Habilitar/Deshabilitar el uso de atajos de teclado."
+
+#: settings.py:223
+msgid "Open translator dialog"
+msgstr "Abrir diálogo del traductor"
+
+#: settings.py:224
+msgid "Translate text from clipboard"
+msgstr "Traducir desde el portapapeles"
+
+#: settings.py:225
+msgid "Translate from primary selection"
+msgstr "Traducir desde la selección principal."
+
+#: settings.py:233
+msgid "Translators"
+msgstr "Traductores"
+
+#: settings.py:235
+msgid "Set default settings for each available translation service"
+msgstr ""
+"Establecer la configuración predeterminada para cada servicio de traducción "
+"disponible"
+
+#: settings.py:246
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: settings.py:248
+msgid "Translation dialog appearance"
+msgstr "Apariencia del diálogo de traducción"
+
+#: settings.py:253
+msgid "Dialog theme"
+msgstr "Tema de diálogo"
+
+#: settings.py:254
+msgid "Select a theme for the translation dialog."
+msgstr "Seleccionar un tema para el diálogo de traducción."
+
+#: settings.py:256
+msgid "Custom"
+msgstr "Personalizado"
+
+#: settings.py:277
+msgid "Custom theme"
+msgstr "Tema personalizado"
+
+#: settings.py:278
+msgid "Select a custom theme for the translation dialog."
+msgstr "Seleccionar un tema personalizado para el diálogo de traducción."
+
+#: settings.py:284
+msgid "Font size"
+msgstr "Tamaño de fuente"
+
+#: settings.py:285
+msgid "Select a font size for the source text and target text entries."
+msgstr ""
+"Seleccionar tamaño de fuente para las entradas de texto de origen y de texto "
+"de destino."
+
+#: settings.py:295
+msgid "Percentage of screen width"
+msgstr "Porcentaje de ancho de pantalla"
+
+#: settings.py:296
+msgid "What percentage of screen width should the translation dialog fill."
+msgstr ""
+"¿Qué porcentaje de ancho de pantalla debe llenar el cuadro de diálogo de "
+"traducción?"
+
+#: settings.py:306
+msgid "Percentage of screen height"
+msgstr "Porcentaje de altura de la pantalla"
+
+#: settings.py:307
+msgid "What percentage of screen height should the translation dialog fill."
+msgstr ""
+"¿Qué porcentaje de altura de pantalla debe llenar el cuadro de diálogo de "
+"traducción?"
+
+#: settings.py:320
+msgid "Translation history settings"
+msgstr "Configuración del historial de traducción"
+
+#: settings.py:325
+msgid "Timestamp for history entries"
+msgstr "Marca de tiempo para las entradas del historial"
+
+#: settings.py:326
+msgid ""
+"Timestamp format for the translation history entries.\n"
+"Note: After changing this setting, only new entries in the translation "
+"history will be saved with the new timestamp format. Old entries will still "
+"have the previous timestamp format."
+msgstr ""
+"Formato de fecha y hora para las entradas del historial de traducción.\n"
+"Nota: Después de cambiar este ajuste, sólo las nuevas entradas en el "
+"historial de traducción se guardarán con el nuevo formato. Las entradas "
+"antiguas seguirán teniendo el formato de marca de hora anterior."
+
+#: settings.py:337
+msgid "Custom timestamp"
+msgstr "Marca de tiempo personalizada"
+
+#: settings.py:338
+msgid ""
+"Choose a custom timestamp for the translation history entries.\n"
+"YYYY: year\n"
+"MM: month\n"
+"DD: day\n"
+"hh: hours\n"
+"mm: minutes\n"
+"ss: seconds"
+msgstr ""
+"Elijir una marca de tiempo personalizada para las entradas del historial de "
+"traducción.\n"
+"YYYY: año\n"
+"MM: mes\n"
+"DD: día\n"
+"hh: horas\n"
+"mm: minutos\n"
+"ss: segundos"
+
+#: settings.py:344
+msgid "History window initial width"
+msgstr "Ancho inicial de la ventana de historial"
+
+#: settings.py:354
+msgid "History window initial height"
+msgstr "Altura inicial de la ventana del historial"
+
+#: settings.py:364
+msgid "Width to trigger word wrap"
+msgstr "Ancho para activar el ajuste de palabras"
+
+#: settings.py:365
+msgid ""
+"The \"Source text\" and \"Target text\" columns on the history window will "
+"wrap its text at the width defined by this setting."
+msgstr ""
+"Las columnas \"Texto de origen\" y \"Texto de destino\" de la ventana del "
+"historial contendrán el texto con el ancho definido por esta configuración."
+
+#: settings.py:376
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: settings.py:378
+msgid "Various advanced options"
+msgstr "Varias opciones avanzadas"
+
+#: settings.py:384
+msgid "Yandex API keys"
+msgstr "Claves de la API de Yandex"
+
+#: settings.py:385
+msgid ""
+"Enter one API key per line.\n"
+"Read the help file found inside this extension folder to know how to get "
+"free Yandex API keys."
+msgstr ""
+"Introduzca una clave de API por línea.\n"
+"Lea el archivo de ayuda (elemento Ayuda en el menú contextual de esta "
+"extensión) que se encuentra dentro de la carpeta de este applet para saber "
+"cómo obtener las claves de API gratuitas de Yandex."
+
+#: settings.py:390
+msgid "This options are only useful for the extension developer."
+msgstr "Estas opciones sólo son útiles para el desarrollador de la extensión"
+
+#: settings.py:398
+msgid "Enable logging"
+msgstr "Habilitar el registro"
+
+#: settings.py:399
+msgid ""
+"It enables the ability to log the output of several functions used by the "
+"extension."
+msgstr ""
+"Permite la capacidad de registrar la salida de varias funciones utilizadas "
+"por el applet."
+
+#: settings.py:405
+msgid "Indent translation history data"
+msgstr "Indentar los datos del historial de traducciones"
+
+#: settings.py:406
+msgid "It allows to save the translation history data with indentation."
+msgstr "Permite guardar los datos del historial de traducción con sangría."
+
+#: settings.py:851
+msgid "Select a directory to use"
+msgstr "Seleccionar un directorio para usarlo"
+
+#: settings.py:854
+msgid "Select a file"
+msgstr "Seleccionar un archivo"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:859 settings.py:1366 settings.py:1372
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:861 settings.py:1374
+msgid "_Open"
+msgstr "_Abrir"
+
+#: settings.py:864
+msgid "Directories"
+msgstr "Directorios"
+
+#: settings.py:924
+msgid "Shortcut action"
+msgstr "Acción del acceso directo"
+
+#: settings.py:938
+msgid "Shortcut"
+msgstr "Atajo"
+
+#: settings.py:954
+msgid "Click to set a new hotkey."
+msgstr "Haga clic para establecer una nueva tecla de acceso directo."
+
+#: settings.py:1015
+msgid "Default source language:"
+msgstr "Idioma de origen predeterminado:"
+
+#: settings.py:1027
+msgid "Default target language:"
+msgstr "Idioma de destino predeterminado:"
+
+#: settings.py:1038
+msgid "Remember the last used languages:"
+msgstr "Recordar los últimos idiomas usados:"
+
+#: settings.py:1242
+msgid "Multi Translator extension preferences"
+msgstr "Preferencias de la extensión Multi Translator"
+
+#: settings.py:1288
+msgid "Reset settings to defaults"
+msgstr "Restablecer preferencias a los valores predeterminados"
+
+#: settings.py:1290
+msgid "Import settings from a file"
+msgstr "Importar preferencias desde un archivo"
+
+#: settings.py:1292
+msgid "Export settings to a file"
+msgstr "Exportar preferencias a un archivo"
+
+#: settings.py:1297
+msgid "Remember window size"
+msgstr "Recordar tamaño de ventana"
+
+#: settings.py:1307
+msgid "Manage settings"
+msgstr "Administrar preferencias"
+
+#: settings.py:1349
+msgid "Warning: Trying to reset all Multi Translator settings!!!"
+msgstr ""
+"Advertencia: ¡¡¡Se está intentando restablecer todos los ajustes de Multi "
+"Translator!!!"
+
+#: settings.py:1351
+msgid "Reset all Multi Translator settings to default?"
+msgstr ""
+"Restablecer todos los valores de Multi Translator a los valores "
+"predeterminados?"
+
+#: settings.py:1364
+msgid "Select or enter file to export to"
+msgstr "Seleccionar o ingresar el archivo hacia el cual exportar"
+
+#: settings.py:1367
+msgid "_Save"
+msgstr "_Guardar"
+
+#: settings.py:1370
+msgid "Select a file to import"
+msgstr "Seleccionar un archivo desde el cual importar"
+
+#: settings.py:1386
+msgid "DCONF files"
+msgstr "Archivos DCONF"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:1438
+#, python-format
+msgid ""
+"Please enter your password to install the required settings schema for %s"
+msgstr ""
+"Por favor, introduzca su contraseña para instalar el esquema de "
+"configuración necesario para %s"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:1449
+#, python-format
+msgid ""
+"Could not install the settings schema for %s.  You will have to perform this "
+"step yourself."
+msgstr ""
+"No se ha podido instalar el esquema de configuración para %s. Tendrá que "
+"realizar este paso usted mismo."
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->comments
+msgid ""
+"Bug reports, feature requests and contributions should be done on this "
+"xlet's repository linked below."
+msgstr ""
+"Los reportes de fallos, peticiones de características y contribuciones deben "
+"hacerse en el repositorio de este xlet vinculado a continuación."
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->description
+msgid ""
+"Translation of text by different translation providers (currently Google, "
+"Yandex, Bing and Apertium)."
+msgstr ""
+"Traducción de texto proporcionado por diferentes proveedores de traducción "
+"(actualmente Google, Yandex, Bing, Translatr and Apertium)."
