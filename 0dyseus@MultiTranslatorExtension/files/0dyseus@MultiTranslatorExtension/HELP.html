@@ -268,6 +268,18 @@ $ sudo make install
 <li><strong><kbd>Escape</kbd>:</strong> Close dialog.</li>
 </ul>
 <hr>
+<h3>Extension's settings window</h3>
+<p>From this extension settings window, all options can be imported, exported and/or reseted to their defaults.</p>
+<ul>
+<li>To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:
+<ul>
+<li>Command to install the settings schema: <code>./settings.py install-schema</code></li>
+<li>Command to uninstall the settings schema: <code>./settings.py remove-schema</code></li>
+</ul>
+</li>
+<li>To import/export settings, the <strong>dconf</strong> command needs to be available on the system.</li>
+</ul>
+<hr>
 <h3>Extension localization</h3>
 <ul>
 <li>If this extension was installed from Cinnamon Settings, all of this extension's localizations were automatically installed.</li>

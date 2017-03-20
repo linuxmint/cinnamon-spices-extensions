@@ -775,11 +775,10 @@ TranslatorExtension.prototype = {
     },
 
     _translate_from_clipboard: function(aTranslateSelection) {
-        this.open();
-
         if (aTranslateSelection) {
             $.getSelection(Lang.bind(this, function(aSelection) {
                 this._dialog.source.text = aSelection;
+                this.open();
                 this._translate();
             }));
         } else {
@@ -796,6 +795,7 @@ TranslatorExtension.prototype = {
                 }
 
                 this._dialog.source.text = text;
+                this.open();
                 this._translate();
             }));
         }
@@ -889,7 +889,7 @@ TranslatorExtension.prototype = {
 
         this._dialog.open();
         this._dialog.source.clutter_text.set_selection(
-            0,
+            Settings.get_boolean($.P.KEEP_SOURCE_ENTRY_TEXT_SELECTED) ? 0 : -1,
             this._dialog.source.length
         );
         this._dialog.source.clutter_text.grab_key_focus();

@@ -44,7 +44,7 @@
     font-weight: bold;
 }
 
-.translator-buttons-bar-box {;
+.translator-buttons-bar-box {
 }
 
 .translator-buttons-bar-icon {
@@ -212,8 +212,7 @@
     color: rgb(70, 70, 70);
 }
 
-.translator-lang-button:hover {;
-}
+.translator-lang-button:hover {}
 
 .translator-lang-button:active {
     color: #398ee7;
@@ -229,5 +228,4 @@
     text-shadow: 0 0 10px #000;
 }
 
-.listen-button:active {;
-}
+.listen-button:active {}

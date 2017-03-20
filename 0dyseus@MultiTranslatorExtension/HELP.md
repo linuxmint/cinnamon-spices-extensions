@@ -66,6 +66,17 @@ Once installed and enabled, the following shortcuts will be available.
 
 ***
 
+### Extension's settings window
+
+From this extension settings window, all options can be imported, exported and/or reseted to their defaults.
+
+- To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:
+    - Command to install the settings schema: `./settings.py install-schema`
+    - Command to uninstall the settings schema: `./settings.py remove-schema`
+- To import/export settings, the **dconf** command needs to be available on the system.
+
+***
+
 ### Extension localization
 
 - If this extension was installed from Cinnamon Settings, all of this extension's localizations were automatically installed.

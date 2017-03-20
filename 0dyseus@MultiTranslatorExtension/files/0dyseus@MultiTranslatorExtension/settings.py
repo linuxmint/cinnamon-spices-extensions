@@ -16,8 +16,17 @@ CINNAMON_VERSION = GLib.getenv("CINNAMON_VERSION")
 HOME = os.path.expanduser("~")
 EXTENSION_DIR = os.path.dirname(os.path.abspath(__file__))
 EXTENSION_UUID = str(os.path.basename(EXTENSION_DIR))
-SCHEMA_NAME = "org.cinnamon.extensions.MultiTranslatorExtension"
-SCHEMA_PATH = "/org/cinnamon/extensions/MultiTranslatorExtension/"
+# NOTE TO SELF
+# - Application identifiers must contain only the ASCII characters "A-Z[0-9]_-." and must not begin with a digit.
+# - Application identifiers must contain at least one '.' (period) character (and thus at least three elements).
+# - Application identifiers must not begin or end with a '.' (period) character.
+# - Application identifiers must not contain consecutive '.' (period) characters.
+# - Application identifiers must not exceed 255 characters.
+# To which I add
+# - Application identifiers must not contain a '.' (period) character next to a number. ¬¬
+APPLICATION_ID = "org.cinnamon.extensions-0dyseus.MultiTranslatorExtension"
+SCHEMA_NAME = "org.cinnamon.extensions.0dyseus@MultiTranslatorExtension"
+SCHEMA_PATH = "/org/cinnamon/extensions/0dyseus@MultiTranslatorExtension/"
 TRANSLATIONS = {}
 
 
@@ -48,6 +57,7 @@ def _(string):
 
         if result != string:
             return result
+
     return gettext.gettext(string)
 
 LANGUAGES_LIST = {
@@ -193,6 +203,13 @@ MAIN_TAB = {
                 "key": "remember-last-translator",
                 "label": _("Remember last translator"),
                 "tooltip": _("Remember last used translation provider.")
+            }
+        }, {
+            "type": "switch",
+            "args": {
+                "key": "keep-source-entry-text-selected",
+                "label": _("Keep source entry text selected"),
+                "tooltip": _("Keep source entry text selected whenever the translation dialog is opened and the source entry box contains text.")
             }
         }, {
             "type": "switch",
@@ -1211,7 +1228,7 @@ class ExtensionPrefsApplication(Gtk.Application):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args,
-                         application_id=SCHEMA_NAME,
+                         application_id=APPLICATION_ID,
                          flags=Gio.ApplicationFlags.FLAGS_NONE,
                          **kwargs)
         self.application = Gtk.Application()
@@ -1226,14 +1243,15 @@ class ExtensionPrefsApplication(Gtk.Application):
         Gtk.Application.do_startup(self)
         self._buildUI()
 
+    # The only way I found to get the correct window size when closing the window.
     def on_delete_event(self, widget, data=None):
         [width, height] = self.window.get_size()
 
         settings = Settings().get_settings()
 
-        if (settings.get_boolean("pref-window-remember-size")):
-            settings.set_int("pref-window-width", width)
-            settings.set_int("pref-window-height", height)
+        if (settings.get_boolean("window-remember-size")):
+            settings.set_int("window-width", width)
+            settings.set_int("window-height", height)
 
         return False
 
@@ -1241,12 +1259,12 @@ class ExtensionPrefsApplication(Gtk.Application):
         self.window = ExtensionPrefsWindow(
             application=self, title=_("Multi Translator extension preferences"))
 
-        if (Settings().get_settings().get_boolean("pref-window-remember-size")):
-            width = Settings().get_settings().get_int("pref-window-width")
-            height = Settings().get_settings().get_int("pref-window-height")
+        if (Settings().get_settings().get_boolean("window-remember-size")):
+            width = Settings().get_settings().get_int("window-width")
+            height = Settings().get_settings().get_int("window-height")
             self.window.set_default_size(width, height)
         else:
-            self.window.set_default_size(700, 430)
+            self.window.set_default_size(700, 460)
 
         self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_size_request(width=-1, height=-1)
@@ -1294,7 +1312,7 @@ class ExtensionPrefsApplication(Gtk.Application):
         menu_popup.append(Gtk.SeparatorMenuItem())
 
         rem_win_size_check = self.createCheckMenuItem(
-            _("Remember window size"), key="pref-window-remember-size")
+            _("Remember window size"), key="window-remember-size")
 
         if rem_win_size_check is not None:
             menu_popup.append(rem_win_size_check)
@@ -1432,21 +1450,38 @@ def ui_error_message(msg, detail=None):
 
 
 def install_schema():
-    file = os.path.join(EXTENSION_DIR, "schemas", SCHEMA_NAME + ".gschema.xml")
-    if os.path.exists(file):
+    file_path = os.path.join(EXTENSION_DIR, "schemas", SCHEMA_NAME + ".gschema.xml")
+    if os.path.exists(file_path):
         # TO TRANSLATORS: Could be left blank.
         sentence = _("Please enter your password to install the required settings schema for %s") % (
             EXTENSION_UUID)
 
         if os.path.exists("/usr/bin/gksu") and os.path.exists("/usr/share/cinnamon/cinnamon-settings/bin/installSchema.py"):
             launcher = "gksu  --message \"<b>%s</b>\"" % sentence
-            tool = "/usr/share/cinnamon/cinnamon-settings/bin/installSchema.py %s" % file
+            tool = "/usr/share/cinnamon/cinnamon-settings/bin/installSchema.py %s" % file_path
             command = "%s %s" % (launcher, tool)
             os.system(command)
         else:
             ui_error_message(
                 # TO TRANSLATORS: Could be left blank.
                 msg=_("Could not install the settings schema for %s.  You will have to perform this step yourself.") % (EXTENSION_UUID))
+
+
+def remove_schema():
+    file_name = SCHEMA_NAME + ".gschema.xml"
+    # TO TRANSLATORS: Could be left blank.
+    sentence = _("Please enter your password to remove the settings schema for %s") % (
+        EXTENSION_UUID)
+
+    if os.path.exists("/usr/bin/gksu") and os.path.exists("/usr/share/cinnamon/cinnamon-settings/bin/removeSchema.py"):
+        launcher = "gksu  --message \"<b>%s</b>\"" % sentence
+        tool = "/usr/share/cinnamon/cinnamon-settings/bin/removeSchema.py %s" % (file_name)
+        command = "%s %s" % (launcher, tool)
+        os.system(command)
+    else:
+        # TO TRANSLATORS: Could be left blank.
+        self.errorMessage(
+            _("Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error.") % (EXTENSION_UUID))
 
 
 if __name__ == "__main__":
@@ -1459,6 +1494,8 @@ if __name__ == "__main__":
     # Leaving it because it just don't hurt.
     if arg == "install-schema":
         install_schema()
+    elif arg == "remove-schema":
+        remove_schema()
     else:
         # Initialize and load gsettings values
         Settings().set_settings(SCHEMA_NAME)

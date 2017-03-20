@@ -1,7 +1,7 @@
 ## Extension status
 
 - Extension ready to be translated.
-- Extension published on the Spices website on **March 18, 2017**.
+- Extension [published on the Spices repository](https://github.com/linuxmint/cinnamon-spices-extensions/pull/26) to be reviewed on **March 18, 2017**.
 
 The Multi Translator extension is an extension ported from a gnome-shell extension called [Text Translator](https://github.com/gufoe/text-translator) by [gufoe](https://github.com/gufoe).
 

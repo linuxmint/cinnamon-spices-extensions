@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="0dyseus@MultiTranslatorExtension">
 
-  <schema path="/org/cinnamon/extensions/MultiTranslatorExtension/" id="org.cinnamon.extensions.MultiTranslatorExtension">
+  <schema path="/org/cinnamon/extensions/0dyseus@MultiTranslatorExtension/" id="org.cinnamon.extensions.0dyseus@MultiTranslatorExtension">
 
     <key type="as" name="open-translator-dialog-keybinding">
         <default><![CDATA[['<Super>T']]]></default>
@@ -104,19 +104,23 @@
         <default>false</default>
     </key>
 
+    <key type="b" name="keep-source-entry-text-selected">
+        <default>true</default>
+    </key>
+
     <key type="b" name="all-dependencies-met">
         <default>false</default>
     </key>
 
-    <key type="b" name="pref-window-remember-size">
+    <key type="b" name="window-remember-size">
         <default>true</default>
     </key>
 
-    <key type="i" name="pref-window-width">
+    <key type="i" name="window-width">
         <default>700</default>
     </key>
 
-    <key type="i" name="pref-window-height">
+    <key type="i" name="window-height">
         <default>500</default>
     </key>
 

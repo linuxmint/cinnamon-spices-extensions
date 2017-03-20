@@ -106,6 +106,7 @@ const P = {
     TRANSLATORS_PREFS: "translators-prefs",
     WIDTH_PERCENTS: "width-percents",
     YANDEX_API_KEYS: "yandex-api-keys",
+    KEEP_SOURCE_ENTRY_TEXT_SELECTED: "keep-source-entry-text-selected",
 };
 
 const ICONS = {
@@ -416,12 +417,12 @@ const LANGUAGES_LIST_ENDONYMS = {
     "isiZulu": "Zulu"
 };
 
-const SETTINGS_SHECMA = "org.cinnamon.extensions.MultiTranslatorExtension";
+const SETTINGS_SCHEMA = "org.cinnamon.extensions.0dyseus@MultiTranslatorExtension";
 
 const Settings = getSettings();
 
 function getSettings(aSchema) {
-    let schema = aSchema || SETTINGS_SHECMA;
+    let schema = aSchema || SETTINGS_SCHEMA;
 
     let schemaDir = Gio.file_new_for_path(ExtensionPath + "/schemas");
     let schemaSource;
