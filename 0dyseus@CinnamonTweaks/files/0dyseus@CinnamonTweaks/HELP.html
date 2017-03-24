@@ -225,8 +225,32 @@ pre {
 <h3>Extension options details</h3>
 <h4>Applets/Desklets tweaks</h4>
 <ul>
-<li><strong>Ask for confirmation on applet/desklet removal:</strong> Intead of directly remove the applet/desklet from the context menus, it will ask for confirmation. This option doesn't affect the removal of applets/desklets from the Applets/Desklets manager in Cinnamon settings (there will be no confirmation).</li>
+<li><strong>Ask for confirmation on applet/desklet removal:</strong> Instead of directly remove the applet/desklet from the context menus, it will ask for confirmation. This option doesn't affect the removal of applets/desklets from the Applets/Desklets manager in Cinnamon settings (there will be no confirmation).</li>
 <li><strong>Display &quot;Open applet/desklet folder&quot; on context menu for applets/desklets</strong> and <strong>Display &quot;Edit applet/desklet main file&quot; on context menu for applets/desklet:</strong> These options will add new menu items to the applets/desklets context menus. The place where this items will be located is chosen by the option <strong>Where to place the menu item?</strong>.</li>
+</ul>
+<h4>Hot Corners tweaks</h4>
+<p>This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has hot corners delay activation.</p>
+<ul>
+<li><strong>Top left hot corner activation delay:</strong> Crystal clear.</li>
+<li><strong>Top right hot corner activation delay:</strong> Crystal clear.</li>
+<li><strong>Bottom left hot corner activation delay:</strong> Crystal clear.</li>
+<li><strong>Bottom right hot corner activation delay:</strong> Crystal clear.</li>
+</ul>
+<h4>Desktop area tweaks</h4>
+<ul>
+<li><strong>Enable applications drop to the Desktop:</strong> This tweak enables the ability to drag and drop applications from the menu applet and from the panel launchers applet into the desktop.</li>
+</ul>
+<h4>Popup menus tweaks</h4>
+<p><strong>Panel menus behavior</strong></p>
+<p><strong>Note:</strong> This setting affects only the behavior of menus that belongs to applets placed on any panel.</p>
+<ul>
+<li><strong>Emulate Gnome Shell behavior:</strong> When a menu is open on Genome Shell, and then the mouse cursor is moved to another button on the top panel, the menu of the hovered buttons will automatically open without the need to click on them. With this option enabled, that same behavior can be reproduced on Cinnamon.</li>
+<li><strong>Don't eat clicks:</strong> By default, when one opens an applet's menu on Cinnamon and then click on another applet to open its menu, the first click is used to close the first opened menu, and then another click has to be performed to open the menu of the second applet. With this option enabled, one can directly open the menu of any applet even if another applet has its menu open.</li>
+</ul>
+<h4>Tooltips tweaks</h4>
+<ul>
+<li><strong>Avoid mouse pointers overlapping tooltips:</strong> Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer to overlap the tooltip. This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has the position of the tooltips changed.</li>
+<li><strong>Tooltips show delay:</strong> Crystal clear.</li>
 </ul>
 <h4>Notifications tweaks</h4>
 <ul>
@@ -241,7 +265,7 @@ pre {
 <li><strong>Notification popup right margin:</strong> By default, the right margin of the notification popup is defined by the currently used theme. This option, set to any value other than 0 (zero), allows to set a custom right margin, ignoring the defined by the theme.</li>
 </ul>
 <h4>Window Focus tweaks</h4>
-<p>Some windows that demands attention will not gain focus regardless of the settings combination on Cinnamon settings. THis option will allow you to correct that.</p>
+<p>Some windows that demands attention will not gain focus regardless of the settings combination on Cinnamon settings. This option will allow you to correct that.</p>
 <ul>
 <li><strong>The activation of windows demanding attention...:</strong>
 <ul>
@@ -250,37 +274,17 @@ pre {
 <li><strong>...is performed with a keyboard shortcut:</strong> will focus windows demanding attention with a keyboard shortcut.</li>
 </ul>
 </li>
-<li><strong>Keyboard shortcut::</strong> Crystal clear.</li>
+<li><strong>Keyboard shortcut::</strong> Set a keyboard shortcut for the option <strong>...is performed with a keyboard shortcut</strong>.</li>
 </ul>
-<h4>Hot Corners tweaks</h4>
-<p>This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has hot corners delay activation.</p>
+<h4>Window Shadows tweaks</h4>
+<p>Tweak based on an extension called <a href="https://cinnamon-spices.linuxmint.com/extensions/view/43">Custom Shadows</a> created by <a href="https://github.com/mikhail-ekzi">mikhail-ekzi</a>. It allows to modify the shadows used by Cinnamon's window manager (Muffin).</p>
+<p><strong>Note:</strong> Client side decorated windows aren't affected by this tweak.</p>
+<p><strong>Shadow presets</strong></p>
 <ul>
-<li><strong>Top left hot corner activation delay:</strong> Crystal clear.</li>
-<li><strong>Top right hot corner activation delay:</strong> Crystal clear.</li>
-<li><strong>Bottom left hot corner activation delay:</strong> Crystal clear.</li>
-<li><strong>Bottom right hot corner activation delay:</strong> Crystal clear.</li>
-</ul>
-<h4>Tooltips tweaks</h4>
-<ul>
-<li><strong>Avoid mouse pointers overlapping tooltips:</strong> Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer to overlap the tooltip. This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has the position of the tooltips changed.</li>
-<li><strong>Tooltips show delay:</strong> Crystal clear.</li>
-</ul>
-<h4>Desktop tweaks</h4>
-<ul>
-<li><strong>Enable applications drop to the Desktop:</strong> This tweak enables the ability to drag and drop applications from the menu applet and from the panel launchers applet into the desktop.</li>
-</ul>
-<h4>Popup menus tweaks</h4>
-<ul>
-<li>
-<p><strong>Panel menus behavior:</strong>
-This setting affects only the behavior of menus that belongs to applets placed on any panel.</p>
-</li>
-<li>
-<p><strong>Emulate Gnome Shell behavior:</strong> When a menu is open on Genome Shell, and then the mouse cursor is moved to another button on the top panel, the menu of the hovered buttons will automatically open without the need to click on them. With this option enabled, that same behavior can be reproduced on Cinnamon.</p>
-</li>
-<li>
-<p><strong>Don't eat clicks:</strong> By default, when one opens an applet's menu on Cinnamon and then click on another applet to open its menu, the first click is used to close the first opened menu, and then another click has to be performed to open the menu of the second applet. With this option enabled, one can directly open the menu of any applet even if another applet has its menu open.</p>
-</li>
+<li><strong>Custom shadows</strong></li>
+<li><strong>Default shadows</strong></li>
+<li><strong>No shadows</strong></li>
+<li><strong>Windows 10 shadows</strong></li>
 </ul>
 <hr>
 <h3>Extension localization</h3>

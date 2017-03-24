@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="0dyseus@CinnamonTweaks">
+
+  <schema path="/org/cinnamon/extensions/0dyseus@CinnamonTweaks/" id="org.cinnamon.extensions.0dyseus@CinnamonTweaks">
+
+    <key type="b" name="desktop-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="desktop-tweaks-allow-drop-to-desktop">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="popup-menu-manager-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="s" name="popup-menu-manager-applets-menus-behavior">
+        <default>'default'</default>
+    </key>
+
+    <key type="b" name="applets-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="applets-ask-confirmation-applet-removal">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="applets-add-open-folder-item-to-context">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="applets-add-edit-file-item-to-context">
+        <default>false</default>
+    </key>
+
+    <key type="s" name="applets-add-open-folder-item-to-context-placement">
+        <default>'last'</default>
+    </key>
+
+    <key type="s" name="applets-add-edit-file-item-to-context-placement">
+        <default>'last'</default>
+    </key>
+
+    <key type="b" name="desklets-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="desklets-ask-confirmation-desklet-removal">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="desklets-add-open-folder-item-to-context">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="desklets-add-edit-file-item-to-context">
+        <default>false</default>
+    </key>
+
+    <key type="s" name="desklets-add-open-folder-item-to-context-placement">
+        <default>'last'</default>
+    </key>
+
+    <key type="s" name="desklets-add-edit-file-item-to-context-placement">
+        <default>'last'</default>
+    </key>
+
+    <key type="b" name="notifications-enable-tweaks">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="notifications-enable-animation">
+        <default>false</default>
+    </key>
+
+    <key type="s" name="notifications-position">
+        <default>'top'</default>
+    </key>
+
+    <key type="i" name="notifications-distance-from-panel">
+        <default>15</default>
+    </key>
+
+    <key type="i" name="notifications-right-margin">
+        <default>0</default>
+    </key>
+
+    <key type="s" name="win-demands-attention-activation-mode">
+        <default>'none'</default>
+    </key>
+
+    <key type="as" name="win-demands-attention-keyboard-shortcut">
+        <default><![CDATA[['<Super>W']]]></default>
+    </key>
+
+    <key type="b" name="hotcorners-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="i" name="hotcorners-delay-top-left">
+        <default>50</default>
+    </key>
+
+    <key type="i" name="hotcorners-delay-top-right">
+        <default>50</default>
+    </key>
+
+    <key type="i" name="hotcorners-delay-bottom-left">
+        <default>50</default>
+    </key>
+
+    <key type="i" name="hotcorners-delay-bottom-right">
+        <default>50</default>
+    </key>
+
+    <key type="b" name="tooltips-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="tooltips-alignment">
+        <default>false</default>
+    </key>
+
+    <key type="i" name="tooltips-delay">
+        <default>300</default>
+    </key>
+
+    <key type="b" name="initial-load">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="window-shadows-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="s" name="window-shadows-preset">
+        <default>'default'</default>
+    </key>
+
+    <key type="s" name="window-shadows-custom-preset">
+        <default>''</default>
+    </key>
+
+    <key type="b" name="window-remember-size">
+        <default>true</default>
+    </key>
+
+    <key type="i" name="window-width">
+        <default>700</default>
+    </key>
+
+    <key type="i" name="window-height">
+        <default>500</default>
+    </key>
+
+  </schema>
+</schemalist>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

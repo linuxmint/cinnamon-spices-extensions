@@ -1,16 +1,17 @@
 {
-    "name": "Cinnamon Tweaks",
-    "multiversion": true,
+    "external-configuration-app": "settings.py", 
+    "website": "https://github.com/Odyseus/CinnamonTools", 
+    "name": "Cinnamon Tweaks", 
+    "contributors": "muzena: Croatian localization.,muzena: Croatian localization.,lestcape: He is the brain behind the popup menus and desktop tweaks.", 
+    "url": "https://github.com/Odyseus/CinnamonTools", 
+    "dangerous": false, 
+    "description": "Several tweaks for Cinnamon.", 
+    "schema-file": "schemas/org.cinnamon.extensions.0dyseus@CinnamonTweaks.gschema.xml", 
+    "version": "1.07", 
     "cinnamon-version": [
-        "2.8",
-        "3.0",
+        "2.8", 
+        "3.0", 
         "3.2"
-    ],
-    "version": "1.06",
-    "website": "https://github.com/Odyseus/CinnamonTools",
-    "url": "https://github.com/Odyseus/CinnamonTools",
-    "dangerous": true,
-    "contributors": "muzena: Croatian localization.",
-    "uuid": "0dyseus@CinnamonTweaks",
-    "description": "Several tweaks for Cinnamon."
+    ], 
+    "uuid": "0dyseus@CinnamonTweaks"
 }
