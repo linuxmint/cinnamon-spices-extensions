@@ -1,7 +1,0 @@
-{
-  "uuid": "AppSwitcher@entelechy",
-  "name": "3D App Switcher",
-  "version": "3.5",
-  "cinnamon-version": ["2.0", "2.1", "2.2"],
-  "description": "Switch between running apps; select windows with a Timeline or Coverflow switcher"
-}
