@@ -1,0 +1,236 @@
+.translator-box {
+    background-color: #ececec;
+    padding: 20px;
+    color: rgb(70, 70, 70);
+    font-family: "Noto Sans", "sans-serif";
+    border-radius: 4px;
+    border: 1px solid rgba(40, 40, 40, 0.3);
+}
+
+.translator-source-text-box,
+.translator-target-text-box {
+    overflow: hidden;
+    padding: 3px;
+    color: rgb(70, 70, 70);
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 4px;
+    selected-color: #2b2b2b;
+    selection-background-color: #c15b58;
+}
+
+.translator-source-text-box {
+    margin-right: 10px;
+}
+
+.translator-target-text-box {
+    margin-left: 10px;
+}
+
+.translator-entry {
+    caret-color: #2b2b2b;
+    caret-size: 2px;
+    selected-color: #2b2b2b;
+    background: transparent;
+    color: rgb(70, 70, 70);
+}
+
+.translator-statusbar-box {
+    font-size: 14px;
+    color: rgb(70, 70, 70);
+}
+
+.translator-providerbar-box {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.translator-buttons-bar-box {
+}
+
+.translator-buttons-bar-icon {
+    icon-size: 18px;
+    padding: 4px;
+}
+
+.translator-buttons-bar-icon:hover,
+.translator-buttons-bar-icon:active {
+    color: #c15b58;
+}
+
+/*.translator-top-bar-box {
+}
+*/
+.translator-top-bar-button {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.translator-top-bar-button-reactive {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.translator-top-bar-button-reactive:hover,
+.translator-top-bar-button-reactive:active {
+    color: #c15b58;
+}
+
+.translator-top-bar-go-button {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 10px;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
+.translator-top-bar-go-button:hover,
+.translator-top-bar-go-button:active {
+    background-color: #c15b58;
+}
+
+.translator-dialog-menu-button {
+    font-size: 18px;
+    padding-top: 2px;
+    color: rgb(70, 70, 70);
+}
+
+.translator-dialog-menu-button:hover,
+.translator-dialog-menu-button:active {
+    color: #c15b58;
+}
+
+.translator-dialog-menu-toggle-button {
+    padding-top: 2px;
+    color: rgb(70, 70, 70);
+}
+
+.translator-dialog-menu-toggle-button:hover,
+.translator-dialog-menu-toggle-button:active {
+    color: #c15b58;
+}
+
+.translator-language-chooser {
+    background-color: #ececec;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid rgb(70, 70, 70);
+}
+
+.translator-language-chooser-box {
+    border: 1px solid rgb(70, 70, 70);
+    background-color: #ececec;
+    margin: 10px 0;
+}
+
+.translator-language-chooser-title {
+    color: rgb(70, 70, 70);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.translator-language-chooser-entry {
+    size: 10px;
+    color: #2b2b2b;
+    padding: 3px;
+    width: 100%;
+    background-color: #ececec;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 4px;
+    caret-size: 2px;
+    caret-color: #2b2b2b;
+    selection-background-color: #c15b58;
+    selected-color: white;
+}
+
+.translator-language-chooser-entry-placeholder {
+    color: rgb(70, 70, 70);
+}
+
+.translator-language-chooser-button {
+    padding: 3px;
+    font-size: 16px;
+    color: rgb(70, 70, 70);
+}
+
+.translator-language-chooser-button:active,
+.translator-language-chooser-button:hover {
+    color: #fff;
+    background-color: #c15b58;
+}
+
+.translator-language-chooser-button:active {
+    font-weight: bold;
+}
+
+.translator-chars-counter-box {
+    font-size: 14px;
+    padding-bottom: 8px;
+}
+
+.translator-chars-counter-text {
+    padding-bottom: 8px;
+}
+
+.translator-help-box {
+    border: 1px solid rgb(70, 70, 70);
+    background-color: #ececec;
+    margin: 10px 0;
+}
+
+.translator-help-text {
+    font-size: 15px;
+    padding: 15px;
+    color: rgb(70, 70, 70);
+}
+
+.translator-popup-escape-label {
+    padding-left: 10px;
+    padding-top: 5px;
+    size: 5px;
+    font-style: italic;
+    color: grey;
+}
+
+.translator-langs-buttons-label {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    font-style: italic;
+    color: rgb(160, 160, 160);
+    font-size: 15px;
+}
+
+.translator-langs-buttons-box {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.translator-lang-button-box {
+    padding: 0 5px;
+}
+
+.translator-lang-button {
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(70, 70, 70);
+}
+
+.translator-lang-button:hover {
+}
+
+.translator-lang-button:active {
+    color: #c15b58;
+}
+
+.listen-button {
+    margin-top: 10px;
+    color: rgb(70, 70, 70);
+}
+
+.listen-button:hover {
+    color: #c15b58;
+    text-shadow: 0 0 10px #000;
+}
+
+.listen-button:active {
+}
