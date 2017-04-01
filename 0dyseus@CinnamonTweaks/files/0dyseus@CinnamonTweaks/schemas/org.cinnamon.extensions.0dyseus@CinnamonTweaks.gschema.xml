@@ -143,16 +143,60 @@
         <default>''</default>
     </key>
 
+    <key type="b" name="window-auto-move-tweaks-enabled">
+        <default>false</default>
+    </key>
+
+    <key type="as" name="window-auto-move-application-list">
+        <default>['gnome-calculator.desktop:2']</default>
+    </key>
+
+    <key type="b" name="maximus-enable-tweak">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="maximus-undecorate-half-maximized">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="maximus-undecorate-tiled">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="maximus-is-blacklist">
+        <default>false</default>
+    </key>
+
+    <key type="as" name="maximus-app-list">
+        <default>[]</default>
+    </key>
+
+    <key type="b" name="maximus-enable-logging">
+        <default>false</default>
+    </key>
+
+    <key type="b" name="maximus-apply-settings">
+        <default>false</default>
+    </key>
+
     <key type="b" name="window-remember-size">
         <default>true</default>
     </key>
 
+    <key type="b" name="window-remember-last-category">
+        <default>true</default>
+    </key>
+
+    <key type="i" name="window-last-category-selected">
+        <default>0</default>
+    </key>
+
     <key type="i" name="window-width">
-        <default>700</default>
+        <default>800</default>
     </key>
 
     <key type="i" name="window-height">
-        <default>500</default>
+        <default>480</default>
     </key>
 
   </schema>
