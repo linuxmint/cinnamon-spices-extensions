@@ -1479,8 +1479,8 @@ def remove_schema():
         command = "%s %s" % (launcher, tool)
         os.system(command)
     else:
+        # TO TRANSLATORS: Could be left blank.
         self.errorMessage(
-            # TO TRANSLATORS: Could be left blank.
             _("Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error.") % (EXTENSION_UUID))
 
 
