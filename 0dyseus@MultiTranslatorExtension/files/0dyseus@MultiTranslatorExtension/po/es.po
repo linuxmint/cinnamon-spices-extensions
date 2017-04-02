@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-21 11:10-0300\n"
-"PO-Revision-Date: 2017-03-21 11:10-0300\n"
+"POT-Creation-Date: 2017-03-21 06:11-0300\n"
+"PO-Revision-Date: 2017-03-21 06:17-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -1133,7 +1133,6 @@ msgstr ""
 "Por favor, introduzca su contraseña para eliminar el esquema de "
 "configuración para %s"
 
-#. TO TRANSLATORS: Could be left blank.
 #: settings.py:1484
 #, python-format
 msgid ""

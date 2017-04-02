@@ -7,895 +7,901 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.00\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-01 03:11-0300\n"
-"PO-Revision-Date: 2017-03-21 06:10-0300\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2017-03-26 16:20+0800\n"
+"PO-Revision-Date: 2017-03-26 16:36+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.js:203 settings.py:64
 msgid "Detect language"
-msgstr ""
+msgstr "检测语言"
 
 #: __init__.js:204 settings.py:65
 msgid "Afrikaans"
-msgstr ""
+msgstr "南非语"
 
 #: __init__.js:205 settings.py:66
 msgid "Amharic"
-msgstr ""
+msgstr "阿姆哈拉语"
 
 #: __init__.js:206 settings.py:67
 msgid "Arabic"
-msgstr ""
+msgstr "阿拉伯语"
 
 #: __init__.js:207 settings.py:68
 msgid "Azerbaijani"
-msgstr ""
+msgstr "阿塞拜疆语"
 
 #: __init__.js:208 settings.py:69
 msgid "Belarusian"
-msgstr ""
+msgstr "白俄罗斯语"
 
 #: __init__.js:209 settings.py:70
 msgid "Bulgarian"
-msgstr ""
+msgstr "保加利亚语"
 
 #: __init__.js:210 settings.py:71
 msgid "Bengali"
-msgstr ""
+msgstr "孟加拉语"
 
 #: __init__.js:211 settings.py:72
 msgid "Bosnian (Y)"
-msgstr ""
+msgstr "波斯尼亚语(Y)"
 
 #: __init__.js:212 settings.py:73
 msgid "Catalan"
-msgstr ""
+msgstr "加泰罗尼亚语"
 
 #: __init__.js:213 settings.py:74
 msgid "Chichewa"
-msgstr ""
+msgstr "齐切瓦语"
 
 #: __init__.js:214 settings.py:75
 msgid "Corsican"
-msgstr ""
+msgstr "科西嘉语"
 
 #: __init__.js:215 settings.py:76
 msgid "Czech"
-msgstr ""
+msgstr "捷克语"
 
 #: __init__.js:216 settings.py:77
 msgid "Welsh"
-msgstr ""
+msgstr "威尔士语"
 
 #: __init__.js:217 settings.py:78
 msgid "Danish"
-msgstr ""
+msgstr "丹麦语"
 
 #: __init__.js:218 settings.py:79
 msgid "German"
-msgstr ""
+msgstr "德语"
 
 #: __init__.js:219 settings.py:80
 msgid "Greek"
-msgstr ""
+msgstr "希腊语"
 
 #: __init__.js:220 settings.py:81
 msgid "English"
-msgstr ""
+msgstr "英语"
 
 #: __init__.js:221 settings.py:82
 msgid "Esperanto"
-msgstr ""
+msgstr "世界语"
 
 #: __init__.js:222 settings.py:83
 msgid "Spanish"
-msgstr ""
+msgstr "西班牙语"
 
 #: __init__.js:223 settings.py:84
 msgid "Estonian"
-msgstr ""
+msgstr "爱沙尼亚语"
 
 #: __init__.js:224 settings.py:85
 msgid "Basque"
-msgstr ""
+msgstr "巴斯克语"
 
 #: __init__.js:225 settings.py:86
 msgid "Persian"
-msgstr ""
+msgstr "波斯语"
 
 #: __init__.js:226 settings.py:87
 msgid "Finnish"
-msgstr ""
+msgstr "芬兰语"
 
 #: __init__.js:227 settings.py:88
 msgid "French"
-msgstr ""
+msgstr "法语"
 
 #: __init__.js:228 settings.py:89
 msgid "Frisian"
-msgstr ""
+msgstr "弗里西语"
 
 #: __init__.js:229 settings.py:90
 msgid "Irish"
-msgstr ""
+msgstr "爱尔兰语"
 
 #: __init__.js:230 settings.py:91
 msgid "Scots Gaelic"
-msgstr ""
+msgstr "苏格兰语"
 
 #: __init__.js:231 settings.py:92
 msgid "Galician"
-msgstr ""
+msgstr "加利西亚语"
 
 #: __init__.js:232 settings.py:93
 msgid "Gujarati"
-msgstr ""
+msgstr "古吉拉特语"
 
 #: __init__.js:233 settings.py:94
 msgid "Hausa"
-msgstr ""
+msgstr "豪萨语"
 
 #: __init__.js:234 settings.py:95
 msgid "Hawaiian"
-msgstr ""
+msgstr "夏威夷语"
 
 #: __init__.js:235 settings.py:96
 msgid "Hebrew (Y)"
-msgstr ""
+msgstr "希伯来语(Y)"
 
 #: __init__.js:236 settings.py:97
 msgid "Hindi"
-msgstr ""
+msgstr "印地语"
 
 #: __init__.js:237 settings.py:98
 msgid "Hmong"
-msgstr ""
+msgstr "苗语"
 
 #: __init__.js:238 settings.py:99
 msgid "Croatian"
-msgstr ""
+msgstr "克罗地亚语"
 
 #: __init__.js:239 settings.py:100
 msgid "Haitian Creole"
-msgstr ""
+msgstr "海地克里奥尔语"
 
 #: __init__.js:240 settings.py:101
 msgid "Hungarian"
-msgstr ""
+msgstr "匈牙利语"
 
 #: __init__.js:241 settings.py:102
 msgid "Armenian"
-msgstr ""
+msgstr "亚美尼亚语"
 
 #: __init__.js:242 settings.py:103
 msgid "Indonesian"
-msgstr ""
+msgstr "印度尼西亚语"
 
 #: __init__.js:243 settings.py:104
 msgid "Igbo"
-msgstr ""
+msgstr "伊博语"
 
 #: __init__.js:244 settings.py:105
 msgid "Icelandic"
-msgstr ""
+msgstr "冰岛语"
 
 #: __init__.js:245 settings.py:106
 msgid "Italian"
-msgstr ""
+msgstr "意大利语"
 
 #: __init__.js:246 settings.py:107
 msgid "Hebrew"
-msgstr ""
+msgstr "希伯来语"
 
 #: __init__.js:247 settings.py:108
 msgid "Japanese"
-msgstr ""
+msgstr "日语"
 
 #: __init__.js:248 settings.py:109
 msgid "Javanese"
-msgstr ""
+msgstr "爪哇语"
 
 #: __init__.js:249 settings.py:110
 msgid "Georgian"
-msgstr ""
+msgstr "格鲁吉亚语"
 
 #: __init__.js:250 settings.py:111
 msgid "Kazakh"
-msgstr ""
+msgstr "哈萨克语"
 
 #: __init__.js:251 settings.py:112
 msgid "Khmer"
-msgstr ""
+msgstr "高棉语"
 
 #: __init__.js:252 settings.py:113
 msgid "Kannada"
-msgstr ""
+msgstr "卡纳达语"
 
 #: __init__.js:253 settings.py:114
 msgid "Korean"
-msgstr ""
+msgstr "朝鲜语"
 
 #: __init__.js:254 settings.py:115
 msgid "Kurdish (Kurmanji)"
-msgstr ""
+msgstr "库尔德语(北库尔德语)"
 
 #: __init__.js:255 settings.py:116
 msgid "Kyrgyz"
-msgstr ""
+msgstr "吉尔吉斯语"
 
 #: __init__.js:256 settings.py:117
 msgid "Latin"
-msgstr ""
+msgstr "拉丁语"
 
 #: __init__.js:257 settings.py:118
 msgid "Luxembourgish"
-msgstr ""
+msgstr "卢森堡语"
 
 #: __init__.js:258 settings.py:119
 msgid "Lao"
-msgstr ""
+msgstr "老挝语"
 
 #: __init__.js:259 settings.py:120
 msgid "Lithuanian"
-msgstr ""
+msgstr "立陶宛语"
 
 #: __init__.js:260 settings.py:121
 msgid "Latvian"
-msgstr ""
+msgstr "拉脱维亚语"
 
 #: __init__.js:261 settings.py:122
 msgid "Malagasy"
-msgstr ""
+msgstr "马达加斯语"
 
 #: __init__.js:262 settings.py:123
 msgid "Maori"
-msgstr ""
+msgstr "毛利语"
 
 #: __init__.js:263 settings.py:124
 msgid "Macedonian"
-msgstr ""
+msgstr "马其顿语"
 
 #: __init__.js:264 settings.py:125
 msgid "Malayalam"
-msgstr ""
+msgstr "马拉雅拉姆语"
 
 #: __init__.js:265 settings.py:126
 msgid "Mongolian"
-msgstr ""
+msgstr "蒙古语"
 
 #: __init__.js:266 settings.py:127
 msgid "Marathi"
-msgstr ""
+msgstr "马拉地语"
 
 #: __init__.js:267 settings.py:128
 msgid "Malay"
-msgstr ""
+msgstr "马来语"
 
 #: __init__.js:268 settings.py:129
 msgid "Maltese"
-msgstr ""
+msgstr "马耳他语"
 
 #: __init__.js:269 settings.py:130
 msgid "Myanmar (Burmese)"
-msgstr ""
+msgstr "缅甸(缅甸语)"
 
 #: __init__.js:270 settings.py:131
 msgid "Nepali"
-msgstr ""
+msgstr "尼泊尔语"
 
 #: __init__.js:271 settings.py:132
 msgid "Dutch"
-msgstr ""
+msgstr "荷兰语"
 
 #: __init__.js:272 settings.py:133
 msgid "Norwegian"
-msgstr ""
+msgstr "挪威语"
 
 #: __init__.js:273 settings.py:134
 msgid "Cebuano"
-msgstr ""
+msgstr "宿务语"
 
 #: __init__.js:274 settings.py:135
 msgid "Punjabi"
-msgstr ""
+msgstr "旁遮普语"
 
 #: __init__.js:275 settings.py:136
 msgid "Polish"
-msgstr ""
+msgstr "波兰语"
 
 #: __init__.js:276 settings.py:137
 msgid "Pashto"
-msgstr ""
+msgstr "普什图语"
 
 #: __init__.js:277 settings.py:138
 msgid "Portuguese"
-msgstr ""
+msgstr "葡萄牙语"
 
 #: __init__.js:278 settings.py:139
 msgid "Romanian"
-msgstr ""
+msgstr "罗马尼亚语"
 
 #: __init__.js:279 settings.py:140
 msgid "Russian"
-msgstr ""
+msgstr "俄语"
 
 #: __init__.js:280 settings.py:141
 msgid "Sindhi"
-msgstr ""
+msgstr "信德语"
 
 #: __init__.js:281 settings.py:142
 msgid "Sinhala"
-msgstr ""
+msgstr "僧伽罗语"
 
 #: __init__.js:282 settings.py:143
 msgid "Slovak"
-msgstr ""
+msgstr "斯洛伐克语"
 
 #: __init__.js:283 settings.py:144
 msgid "Slovenian"
-msgstr ""
+msgstr "斯洛文尼亚语"
 
 #: __init__.js:284 settings.py:145
 msgid "Samoan"
-msgstr ""
+msgstr "萨摩亚语"
 
 #: __init__.js:285 settings.py:146
 msgid "Shona"
-msgstr ""
+msgstr "绍纳语"
 
 #: __init__.js:286 settings.py:147
 msgid "Somali"
-msgstr ""
+msgstr "索马里语"
 
 #: __init__.js:287 settings.py:148
 msgid "Albanian"
-msgstr ""
+msgstr "阿尔巴尼亚语"
 
 #: __init__.js:288 settings.py:149
 msgid "Serbian"
-msgstr ""
+msgstr "塞尔维亚语"
 
 #: __init__.js:289 settings.py:150
 msgid "Sesotho"
-msgstr ""
+msgstr "塞索托语"
 
 #: __init__.js:290 settings.py:151
 msgid "Sundanese"
-msgstr ""
+msgstr "巽他语"
 
 #: __init__.js:291 settings.py:152
 msgid "Swedish"
-msgstr ""
+msgstr "瑞典语"
 
 #: __init__.js:292 settings.py:153
 msgid "Swahili"
-msgstr ""
+msgstr "斯瓦希里语"
 
 #: __init__.js:293 settings.py:154
 msgid "Tamil"
-msgstr ""
+msgstr "泰米尔语"
 
 #: __init__.js:294 settings.py:155
 msgid "Telugu"
-msgstr ""
+msgstr "泰卢固语"
 
 #: __init__.js:295 settings.py:156
 msgid "Tajik"
-msgstr ""
+msgstr "塔吉克语"
 
 #: __init__.js:296 settings.py:157
 msgid "Thai"
-msgstr ""
+msgstr "泰语"
 
 #: __init__.js:297 settings.py:158
 msgid "Filipino"
-msgstr ""
+msgstr "菲律宾语"
 
 #: __init__.js:298 settings.py:159
 msgid "Turkish"
-msgstr ""
+msgstr "土耳其语"
 
 #: __init__.js:299 settings.py:160
 msgid "Ukrainian"
-msgstr ""
+msgstr "乌克兰语"
 
 #: __init__.js:300 settings.py:161
 msgid "Urdu"
-msgstr ""
+msgstr "乌尔都语"
 
 #: __init__.js:301 settings.py:162
 msgid "Uzbek"
-msgstr ""
+msgstr "乌兹别克语"
 
 #: __init__.js:302 settings.py:163
 msgid "Vietnamese"
-msgstr ""
+msgstr "越南语"
 
 #: __init__.js:303 settings.py:164
 msgid "Xhosa"
-msgstr ""
+msgstr "科萨语"
 
 #: __init__.js:304 settings.py:165
 msgid "Yiddish"
-msgstr ""
+msgstr "意第绪语"
 
 #: __init__.js:305 settings.py:166
 msgid "Yoruba"
-msgstr ""
+msgstr "约鲁巴语"
 
 #: __init__.js:306 settings.py:167
 msgid "Chinese (Y)"
-msgstr ""
+msgstr "中文(Y)"
 
 #: __init__.js:307 settings.py:168
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "简体中文"
 
 #: __init__.js:308 settings.py:169
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "传统中文"
 
 #: __init__.js:309 settings.py:170
 msgid "Zulu"
-msgstr ""
+msgstr "祖鲁语"
 
 #: __init__.js:441
 #, javascript-format
 msgid "Schema %s could not be found for extension %s."
-msgstr ""
+msgstr "无法找到扩展%s的模式%s。"
 
 #: __init__.js:442
 msgid "Please check your installation."
-msgstr ""
+msgstr "请检查您的安装。"
 
 #: __init__.js:841
 msgid "Icon and label are both false."
-msgstr ""
+msgstr "图标和标签已禁用。"
 
 #: __init__.js:1245
 msgid "Shortcuts"
-msgstr ""
+msgstr "快捷键"
 
 #: __init__.js:1247
 msgid "Open translator dialog."
-msgstr ""
+msgstr "打开翻译器对话框。"
 
 #: __init__.js:1249
 msgid "Open translator dialog and translate text from clipboard."
-msgstr ""
+msgstr "打开翻译器对话框并从剪贴板翻译文本。"
 
 #: __init__.js:1251
 msgid "Open translator dialog and translate from primary selection."
-msgstr ""
+msgstr "打开翻译器并从主选择翻译。"
 
 #: __init__.js:1253
 msgid "Translate text."
-msgstr ""
+msgstr "翻译文本。"
 
 #: __init__.js:1255
 msgid "Force text translation. Ignores translation history."
-msgstr ""
+msgstr "强制文本翻译。忽略翻译历史。"
 
 #: __init__.js:1257
 msgid "Copy translated text to clipboard."
-msgstr ""
+msgstr "复制已翻译的文本到剪贴板。"
 
 #: __init__.js:1259
 msgid "Swap languages."
-msgstr ""
+msgstr "交换语言"
 
 #: __init__.js:1261
 msgid "Reset languages to default."
-msgstr ""
+msgstr "重置语言为默认。"
 
 #: __init__.js:1263
 msgid "Close dialog."
-msgstr ""
+msgstr "关闭对话框。"
 
 #: __init__.js:1410
 msgid "Type to search..."
-msgstr ""
+msgstr "键入以搜索..."
 
 #: __init__.js:1623
 msgid "Most used languages​​."
-msgstr ""
+msgstr "常用语言。"
 
 #: __init__.js:2107
 #, javascript-format
 msgid "Can't load preferences for %s"
-msgstr ""
+msgstr "无法加载%s的首选项"
 
 #: __init__.js:2229 translation_providers/google_translation_provider.js:76
 #: translation_providers/transltr_translation_provider.js:66
 #: translation_providers/yandex_translation_provider.js:272
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #. jshint ignore:line
 #: __init__.js:2287 __init__.js:2291
 msgid "Not implemented"
-msgstr ""
+msgstr "尚未实现"
 
 #: __init__.js:2703 extension.js:1092 extension.js:1095 settings.py:335
 msgid "History"
-msgstr ""
+msgstr "历史"
 
 #: __init__.js:3234
 msgid "Error executing translate-shell"
-msgstr ""
+msgstr "执行translate-shell出错"
 
 #: __init__.js:3423 __init__.js:3439
 msgid "Unmet dependencies found!!!"
-msgstr ""
+msgstr "发现未满足的依赖关系！！！"
 
 #: __init__.js:3425 translation_providers/yandex_translation_provider.js:334
 msgid "Check this extension help file for instructions."
-msgstr ""
+msgstr "检查此扩展帮助文件的说明。"
 
 #: __init__.js:3426
 msgid "It can be accessed from the translation dialog main menu."
-msgstr ""
+msgstr "可以从翻译对话框的主菜单访问。"
 
 #: __init__.js:3431
 msgid "All dependencies seem to be met."
-msgstr ""
+msgstr "所有的依赖关系似乎已满足。"
 
 #: __init__.js:3440
 msgid "A detailed error has been logged into ~/.cinnamon/glass.log file."
-msgstr ""
+msgstr "详细错误已经记录到~/.cinnamon/glass.log文件中。"
 
 #: __init__.js:3536
 msgid "Press <Esc> to close"
-msgstr ""
+msgstr "按<Esc>键关闭"
 
 #: __init__.js:3588
 msgid "This translation provider doesn't require translate-shell to work."
-msgstr ""
+msgstr "此翻译提供者不需要translate-shell即可工作。"
 
 #: __init__.js:3591
 msgid "This translation provider requires translate-shell to work."
-msgstr ""
+msgstr "此翻译提供者需要translate-shell才能工作。"
 
 #: __init__.js:3592 settings.py:190
 msgid "See the extended help of this extension for more information."
-msgstr ""
+msgstr "查看此扩展的扩展帮助获取更多信息。"
 
 #: translation_providers/google_ts_translation_provider.js:88
 #: translation_providers/apertium_ts_translation_provider.js:87
 #: translation_providers/bing_ts_translation_provider.js:87
 msgid "Error while parsing data"
-msgstr ""
+msgstr "解析数据时出错"
 
 #: translation_providers/google_ts_translation_provider.js:122
 #: translation_providers/apertium_ts_translation_provider.js:120
 #: translation_providers/bing_ts_translation_provider.js:121
 msgid "Error while translating, check your internet connection"
-msgstr ""
+msgstr "翻译时出错，请检查您的互联网连接"
 
 #: translation_providers/google_translation_provider.js:81
 #: translation_providers/transltr_translation_provider.js:71
 #: translation_providers/yandex_translation_provider.js:277
 msgid "Can't translate text, please try later."
-msgstr ""
+msgstr "无法翻译文本，请稍候再试。"
 
 #: translation_providers/yandex_translation_provider.js:293
 msgid "API key is invalid"
-msgstr ""
+msgstr "API密钥不可用"
 
 #: translation_providers/yandex_translation_provider.js:296
 msgid "Blocked API key"
-msgstr ""
+msgstr "已阻止的API密钥"
 
 #: translation_providers/yandex_translation_provider.js:299
 msgid "Exceeded the daily limit on the amount of translated text"
-msgstr ""
+msgstr "超出翻译文本数量的每日上限"
 
 #: translation_providers/yandex_translation_provider.js:302
 msgid "Exceeded the maximum text size"
-msgstr ""
+msgstr "超出最大文本大小"
 
 #: translation_providers/yandex_translation_provider.js:305
 msgid "The text cannot be translated"
-msgstr ""
+msgstr "文本无法翻译"
 
 #: translation_providers/yandex_translation_provider.js:308
 msgid "The specified translation direction is not supported"
-msgstr ""
+msgstr "指定的翻译方向不支持"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->name
 #: translation_providers/yandex_translation_provider.js:332
 msgid "Multi Translator"
-msgstr ""
+msgstr "Multi Translator"
 
 #: translation_providers/yandex_translation_provider.js:333
 msgid "No Yandex API keys were found!!!"
-msgstr ""
+msgstr "没有找到Yandex API密钥！！！"
 
 #: extension.js:146 extension.js:402
 msgid "Choose source language"
-msgstr ""
+msgstr "选择源语言"
 
 #: extension.js:153 extension.js:432
 msgid "Choose target language"
-msgstr ""
+msgstr "选择目标语言"
 
 #: extension.js:198
 msgid "There is nothing to copy."
-msgstr ""
+msgstr "没有可以复制的内容。"
 
 #: extension.js:207
 msgid "Translated text copied to clipboard."
-msgstr ""
+msgstr "翻译文本已复制到剪贴板。"
 
 #: extension.js:257
 #, javascript-format
 msgid "Go to %s's website"
-msgstr ""
+msgstr "前往%s的网站"
 
 #: extension.js:259
 #, javascript-format
 msgid "Service provided by %s"
-msgstr ""
+msgstr "服务由%s提供"
 
 #. TO TRANSLATORS: Full sentence:
 #. "»From« source language to target language with service provider."
 #: extension.js:375 extension.js:399
 msgid "From"
-msgstr ""
+msgstr "从"
 
 #. TO TRANSLATORS: Full sentence:
 #. "From source language »to« target language with service provider."
 #: extension.js:384 extension.js:427
 msgid "to"
-msgstr ""
+msgstr "到"
 
 #: extension.js:457
 msgid "Swap languages"
-msgstr ""
+msgstr "交换语言"
 
 #: extension.js:481
 msgid "Choose translation provider"
-msgstr ""
+msgstr "选择翻译提供者"
 
 #: extension.js:529
 msgid "Go!"
-msgstr ""
+msgstr "开始！"
 
 #: extension.js:530
 msgid "Translate text (<Ctrl> + <Enter>)"
-msgstr ""
+msgstr "翻译文本(<Ctrl> + <Enter>)"
 
 #: extension.js:547
 msgid "Main menu"
-msgstr ""
+msgstr "主菜单"
 
 #: extension.js:561
 msgid "Preferences"
-msgstr ""
+msgstr "首选项"
 
 #: extension.js:569
 msgid "Translation history"
-msgstr ""
+msgstr "翻译历史"
 
 #: extension.js:577
 msgid "Check dependencies"
-msgstr ""
+msgstr "检查依赖"
 
 #: extension.js:585
 msgid "Extended help"
-msgstr ""
+msgstr "扩展帮助"
 
 #: extension.js:621
 msgid "Quick help"
-msgstr ""
+msgstr "退出帮助"
 
 #: extension.js:636
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #. TO TRANSLATORS: Full sentence:
 #. "From source language to target language »with« service provider."
 #: extension.js:665
 msgid "with"
-msgstr ""
+msgstr "和"
 
 #: extension.js:731
 msgid "Translating..."
-msgstr ""
+msgstr "正在翻译..."
 
 #: extension.js:789
 msgid "Clipboard is empty."
-msgstr ""
+msgstr "剪贴板为空。"
 
 #: extension.js:978
 msgid "Error trying to get theme"
-msgstr ""
+msgstr "尝试获取主题出错"
 
 #: extension.js:985
 msgid "Stylesheet parse error"
-msgstr ""
+msgstr "解析样式表出错"
 
 #: extension.js:994
 msgid "Error unloading stylesheet"
-msgstr ""
+msgstr "卸载样式表出错"
 
 #: extensionHelper.py:271
 msgid "Multi Translator history"
-msgstr ""
+msgstr "Multi Translator 历史"
 
 #: extensionHelper.py:295
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #: extensionHelper.py:303
 msgid "Source text"
-msgstr ""
+msgstr "源文本"
 
 #: extensionHelper.py:308
 msgid "Language pair"
-msgstr ""
+msgstr "语言配对"
 
 #: extensionHelper.py:316
 msgid "Target text"
-msgstr ""
+msgstr "目标文本"
 
 #: settings.py:180
 msgid "Global"
-msgstr ""
+msgstr "全局"
 
 #: settings.py:182
 msgid "Global extension options"
-msgstr ""
+msgstr "全局扩展设置"
 
 #: settings.py:187
 msgid "Default translation provider"
-msgstr ""
+msgstr "默认翻译提供者"
 
 #: settings.py:188
 msgid "Select the default translation provider."
-msgstr ""
+msgstr "选择默认的翻译提供者。"
 
 #: settings.py:189
 msgid "Providers marked with (*) require translate-shell package to work."
-msgstr ""
+msgstr "标记(*)的提供者需要translate-shell软件包才能工作。"
 
 #: settings.py:204
 msgid "Remember last translator"
-msgstr ""
+msgstr "记住上次的翻译器"
 
 #: settings.py:205
 msgid "Remember last used translation provider."
-msgstr ""
+msgstr "记住上次使用的翻译提供者。"
 
 #: settings.py:211
 msgid "Keep source entry text selected"
-msgstr ""
+msgstr "保留选中的源条目文本"
 
 #: settings.py:212
 msgid ""
 "Keep source entry text selected whenever the translation dialog is opened "
 "and the source entry box contains text."
-msgstr ""
+msgstr "每当打开翻译对话框和包含文本的源条目框时，保留选中的源条目文本。"
 
 #: settings.py:218
 msgid "Show most used languages"
-msgstr ""
+msgstr "显示常用语言"
 
 #: settings.py:219
 msgid "Display a list of most used languages."
-msgstr ""
+msgstr "显示常用语言列表。"
 
 #: settings.py:225
 msgid "Synchronize scroll entries"
-msgstr ""
+msgstr "同步滚动条目"
 
 #: settings.py:226
 msgid "Make the source and target entries scroll synchronously."
-msgstr ""
+msgstr "使源和目标条目同步滚动。"
 
 #: settings.py:232
 msgid "Enable shortcuts"
-msgstr ""
+msgstr "启用快捷键"
 
 #: settings.py:233
 msgid "Enable/Disable the use of keyboard shortcuts."
-msgstr ""
+msgstr "启用/禁用键盘快捷键的使用。"
 
 #: settings.py:240
 msgid "Open translator dialog"
-msgstr ""
+msgstr "打开翻译器对话框"
 
 #: settings.py:241
 msgid "Translate text from clipboard"
-msgstr ""
+msgstr "从剪贴板翻译文本"
 
 #: settings.py:242
 msgid "Translate from primary selection"
-msgstr ""
+msgstr "从主选择翻译"
 
 #: settings.py:250
 msgid "Translators"
-msgstr ""
+msgstr "翻译器"
 
 #: settings.py:252
 msgid "Set default settings for each available translation service"
-msgstr ""
+msgstr "设置每个可用的翻译服务的默认设置"
 
 #: settings.py:263
 msgid "Appearance"
-msgstr ""
+msgstr "外观"
 
 #: settings.py:265
 msgid "Translation dialog appearance"
-msgstr ""
+msgstr "翻译对话框外观"
 
 #: settings.py:270
 msgid "Dialog theme"
-msgstr ""
+msgstr "对话框主题"
 
 #: settings.py:271
 msgid "Select a theme for the translation dialog."
-msgstr ""
+msgstr "选择翻译对话框的主题。"
 
 #: settings.py:273
 msgid "Custom"
-msgstr ""
+msgstr "自定义"
 
 #: settings.py:294
 msgid "Custom theme"
-msgstr ""
+msgstr "自定义主题"
 
 #: settings.py:295
 msgid "Select a custom theme for the translation dialog."
-msgstr ""
+msgstr "选择翻译对话框的自定义主题。"
 
 #: settings.py:301
 msgid "Font size"
-msgstr ""
+msgstr "字体大小"
 
 #: settings.py:302
 msgid "Select a font size for the source text and target text entries."
-msgstr ""
+msgstr "选择源文本和目标文本条目的字体大小。"
 
 #: settings.py:312
 msgid "Percentage of screen width"
-msgstr ""
+msgstr "屏幕宽度的百分比"
 
 #: settings.py:313
 msgid "What percentage of screen width should the translation dialog fill."
-msgstr ""
+msgstr "翻译对话框的屏幕宽度百分比。"
 
 #: settings.py:323
 msgid "Percentage of screen height"
-msgstr ""
+msgstr "屏幕宽度的百分比"
 
 #: settings.py:324
 msgid "What percentage of screen height should the translation dialog fill."
-msgstr ""
+msgstr "翻译对话框的屏幕高度百分比。"
 
 #: settings.py:337
 msgid "Translation history settings"
-msgstr ""
+msgstr "翻译历史设置"
 
 #: settings.py:342
 msgid "Timestamp for history entries"
-msgstr ""
+msgstr "历史条目的时间戳"
 
 #: settings.py:343
 msgid ""
 "Timestamp format for the translation history entries.\n"
-"Note: After changing this setting, only new entries in the translation history will be saved with the new timestamp format. Old entries will still have the previous timestamp format."
+"Note: After changing this setting, only new entries in the translation "
+"history will be saved with the new timestamp format. Old entries will still "
+"have the previous timestamp format."
 msgstr ""
+"翻译历史条目的时间戳格式。\n"
+"注意：更改此设置后，只有翻译历史中新的条目才会使用新的时间戳格式来保存。旧的"
+"条目仍然具有以前的时间戳格式。"
 
 #: settings.py:354
 msgid "Custom timestamp"
-msgstr ""
+msgstr "自定义时间戳"
 
 #: settings.py:355
 msgid ""
@@ -907,195 +913,205 @@ msgid ""
 "mm: minutes\n"
 "ss: seconds"
 msgstr ""
+"选择翻译历史条目的自定义时间戳。\n"
+"YYYY: 年\n"
+"MM: 月\n"
+"DD: 日\n"
+"hh: 时\n"
+"mm: 分\n"
+"ss: 秒"
 
 #: settings.py:361
 msgid "History window initial width"
-msgstr ""
+msgstr "历史窗口初始宽度"
 
 #: settings.py:371
 msgid "History window initial height"
-msgstr ""
+msgstr "历史窗口初始高度"
 
 #: settings.py:381
 msgid "Width to trigger word wrap"
-msgstr ""
+msgstr "触发自动换行的宽度"
 
 #: settings.py:382
 msgid ""
 "The \"Source text\" and \"Target text\" columns on the history window will "
 "wrap its text at the width defined by this setting."
-msgstr ""
+msgstr "历史窗口上的“源文本”和“目标文本”列将以此设置定义的宽度进行换行。"
 
 #: settings.py:393
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
 #: settings.py:395
 msgid "Various advanced options"
-msgstr ""
+msgstr "各种高级选项"
 
 #: settings.py:401
 msgid "Yandex API keys"
-msgstr ""
+msgstr "Yandex API密钥"
 
 #: settings.py:402
 msgid ""
 "Enter one API key per line.\n"
-"Read the help file found inside this extension folder to know how to get free Yandex API keys."
+"Read the help file found inside this extension folder to know how to get "
+"free Yandex API keys."
 msgstr ""
+"每行输入一个API密钥。\n"
+"请阅读扩展文件夹中的帮助文件了解如何获取免费的Yandex API密钥。"
 
 #: settings.py:407
 msgid "This options are only useful for the extension developer."
-msgstr ""
+msgstr "此选项只对扩展开发者有用。"
 
 #: settings.py:415
 msgid "Enable logging"
-msgstr ""
+msgstr "启用日志记录"
 
 #: settings.py:416
 msgid ""
 "It enables the ability to log the output of several functions used by the "
 "extension."
-msgstr ""
+msgstr "它能够记录扩展使用的一些函数的输出。"
 
 #: settings.py:422
 msgid "Indent translation history data"
-msgstr ""
+msgstr "缩进翻译历史数据"
 
 #: settings.py:423
 msgid "It allows to save the translation history data with indentation."
-msgstr ""
+msgstr "允许使用缩进保存翻译历史数据。"
 
 #: settings.py:868
 msgid "Select a directory to use"
-msgstr ""
+msgstr "选择要使用的目录"
 
 #: settings.py:871
 msgid "Select a file"
-msgstr ""
+msgstr "选择文件"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:876 settings.py:1384 settings.py:1390
 msgid "_Cancel"
-msgstr ""
+msgstr "_取消"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:878 settings.py:1392
 msgid "_Open"
-msgstr ""
+msgstr "_打开"
 
 #: settings.py:881
 msgid "Directories"
-msgstr ""
+msgstr "目录"
 
 #: settings.py:941
 msgid "Shortcut action"
-msgstr ""
+msgstr "快捷键动作"
 
 #: settings.py:955
 msgid "Shortcut"
-msgstr ""
+msgstr "快捷键"
 
 #: settings.py:971
 msgid "Click to set a new hotkey."
-msgstr ""
+msgstr "点击设置新的快捷键。"
 
 #: settings.py:1032
 msgid "Default source language:"
-msgstr ""
+msgstr "默认源语言："
 
 #: settings.py:1044
 msgid "Default target language:"
-msgstr ""
+msgstr "默认目标语言："
 
 #: settings.py:1055
 msgid "Remember the last used languages:"
-msgstr ""
+msgstr "记住上次使用的语言："
 
 #: settings.py:1260
 msgid "Multi Translator extension preferences"
-msgstr ""
+msgstr "Multi Translator 扩展首选项"
 
 #: settings.py:1306
 msgid "Reset settings to defaults"
-msgstr ""
+msgstr "重置设置为默认"
 
 #: settings.py:1308
 msgid "Import settings from a file"
-msgstr ""
+msgstr "从文件导入设置"
 
 #: settings.py:1310
 msgid "Export settings to a file"
-msgstr ""
+msgstr "导出设置到文件"
 
 #: settings.py:1315
 msgid "Remember window size"
-msgstr ""
+msgstr "记住窗口大小"
 
 #: settings.py:1325
 msgid "Manage settings"
-msgstr ""
+msgstr "管理设置"
 
 #: settings.py:1367
 msgid "Warning: Trying to reset all Multi Translator settings!!!"
-msgstr ""
+msgstr "警告：正在尝试重置所有的Multi Translator设置！！！"
 
 #: settings.py:1369
 msgid "Reset all Multi Translator settings to default?"
-msgstr ""
+msgstr "重置所有的Multi Translator设置为默认？"
 
 #: settings.py:1382
 msgid "Select or enter file to export to"
-msgstr ""
+msgstr "选择或输入导出的文件"
 
 #: settings.py:1385
 msgid "_Save"
-msgstr ""
+msgstr "_保存"
 
 #: settings.py:1388
 msgid "Select a file to import"
-msgstr ""
+msgstr "选择要导入的文件"
 
 #: settings.py:1404
 msgid "DCONF files"
-msgstr ""
+msgstr "DCONF文件"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1456
 #, python-format
 msgid ""
 "Please enter your password to install the required settings schema for %s"
-msgstr ""
+msgstr "请输入您的密码安装%s需要的设置模式"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1467
 #, python-format
 msgid ""
-"Could not install the settings schema for %s.  You will have to perform this"
-" step yourself."
-msgstr ""
+"Could not install the settings schema for %s.  You will have to perform this "
+"step yourself."
+msgstr "无法安装%s的设置模式。您必须亲自执行这个步骤。"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1473
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
-msgstr ""
+msgstr "请输入您的密码移除%s需要的设置模式"
 
 #: settings.py:1484
 #, python-format
 msgid ""
 "Could not remove the settings schema for %s.  You will have to perform this "
 "step yourself.  This is not a critical error."
-msgstr ""
+msgstr "无法移除%s的设置模式。您必须亲自执行这个步骤。这不是一个严重错误。"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->comments
 msgid ""
 "Bug reports, feature requests and contributions should be done on this "
 "xlet's repository linked below."
-msgstr ""
+msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->description
 msgid ""
 "Translation of text by different translation providers (currently Google, "
 "Yandex, Bing and Apertium)."
-msgstr ""
+msgstr "由不同翻译提供者提供的文本翻译(当前 Google, Yandex, Bing 和 Apertium)。"
