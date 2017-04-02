@@ -18,20 +18,31 @@ This extension adds some options to modify the default behaviour of certain Cinn
 </span>
 
 ## Features/Options
-For detailed explanation of each option, see the **HELP.md** file inside this extension folder.
+
+<span style="color:red;font-weight: bold;font-size: large;">Some tweaks have warnings, dependencies, limitations and or known issues that must be read and understood before a tweak is enabled. No worries, nothing <em>fatal</em> could ever happen.</span>
+
+For detailed explanations of each option/tweak, see this extension help (accessible from this extension settings window).
 
 - **Applets/Desklets tweaks:** confirmation dialogs can be added to applet/desklet removal to avoid accidental removal. New items can be added to applets/desklets context menus (**Open applet/desklet folder** and **Edit applet/desklet main file**).
-- **Hot corners tweaks:** allows to set a hover activation delay in milliseconds for each hot corner. This tweak is only available for Cinnamon versions lower than 3.2 (Cinnamon 3.2.x already has hot corners delay activation).
+- **Hot corners tweaks:** Allows to set a hover activation delay in milliseconds for each hot corner. This tweak is only available for Cinnamon versions lower than 3.2 (Cinnamon 3.2.x already has hot corners delay activation).
 - **Desktop area tweaks:** Allows to drag applications from the menu or from the launchers applets into the desktop.
 - **Popup menus tweaks:** Allows to change the behavior of the applets menus.
-- **Tooltips tweaks:** allows to tweak the position and show delay of Cinnamon's UI tooltips. The position of the tooltip is only available for Cinnamon versions lower than 3.2 (Cinnamon 3.2.x already has the position of the tooltips changed).
-- **Notifications tweaks:** allows changing the notification popups to the bottom of the screen and change its top/bottom/right margins.
-- **Window focus tweaks:** allows the activation of windows demanding attention with a keyboard shortcut or forced.
-- **Window shadows tweaks:** Allows to change the windows shadows to some predefined presets or completely customize the shadows of every single type of window.
+- **Tooltips tweaks:** Allows to tweak the position and show delay of Cinnamon's UI tooltips. The position of the tooltip is only available for Cinnamon versions lower than 3.2 (Cinnamon 3.2.x already has the position of the tooltips changed).
+- **Notifications tweaks:** Allows changing the notification popups to the bottom of the screen and change its top/bottom/right margins.
+- **Window focus tweaks:** Allows the activation of windows demanding attention with a keyboard shortcut or forced. Tweak based on the gnome-shell extension called [Steal My Focus](https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus) by [Valentin Dimitrov](https://github.com/v-dimitrov) and another gnome-shell extension called [Window Demands Attention Shortcut](https://github.com/awamper/window-demands-attention-shortcut) by [awamper](https://github.com/awamper).
+- **Auto move windows:** Enables the ability to set rules to open determined applications on specific workspaces. Tweak based on the gnome-shell extension called [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/) by [Florian Muellner](https://github.com/fmuellner).
+- **Window shadows tweaks:** Allows to change the windows shadows to some predefined presets or completely customize the shadows of every single type of window. Tweak based on an extension called [Custom Shadows](https://cinnamon-spices.linuxmint.com/extensions/view/43) created by [mikhail-ekzi](https://github.com/mikhail-ekzi).
+- **Windows decorations removal:** Allows to remove the windows decorations from maximized/half-maximized/tiled windows. Tweak based on the Cinnamon extension called [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29) by [Fatih Mete](https://github.com/fatihmete) with some options from the gnome-shell extension called [Maximus NG](https://github.com/luispabon/maximus-gnome-shell) by [Luis Pabon](https://github.com/luispabon).
 
-## Contributors
+## Contributors/Mentions
 - [lestcape](https://github.com/lestcape): He is the brain behind the popup menus and desktop tweaks.
 - [Radek71](https://github.com/Radek71): Czech localization.
 - [muzena](https://github.com/muzena): Croatian localization.
+- [mikhail-ekzi](https://github.com/mikhail-ekzi): Author of the Cinnamon extension called [Custom Shadows](https://cinnamon-spices.linuxmint.com/extensions/view/43).
+- [Fatih Mete](https://github.com/fatihmete): Author of the Cinnamon extension called [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29).
+- [Luis Pabon](https://github.com/luispabon): Author of the gnome-shell extension called [Maximus NG](https://github.com/luispabon/maximus-gnome-shell).
+- [Florian Muellner](https://github.com/fmuellner): Author of the gnome-shell extension called [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/).
+- [Valentin Dimitrov](https://github.com/v-dimitrov): Author of the gnome-shell extension called [Steal My Focus](https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus).
+- [awamper](https://github.com/awamper): Author of the gnome-shell extension called [Window Demands Attention Shortcut](https://github.com/awamper/window-demands-attention-shortcut).
 
 [Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonTweaks/CHANGELOG.md)

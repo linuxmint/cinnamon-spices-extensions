@@ -15,22 +15,18 @@ const Util = imports.misc.util;
 const Gio = imports.gi.Gio;
 const Tooltips = imports.ui.tooltips;
 const St = imports.gi.St;
-const HotCornerPatched = imports.extension.extra_modules.hotCornerPatched;
-const AppletManager = imports.ui.appletManager;
-const DeskletManager = imports.ui.deskletManager;
-const FileUtils = imports.misc.fileUtils;
-const Meta = imports.gi.Meta;
-const ShadowFactory = Meta.ShadowFactory.get_default();
-const DND = imports.ui.dnd;
 const Cinnamon = imports.gi.Cinnamon;
+const Meta = imports.gi.Meta;
 
 const CINNAMON_VERSION = GLib.getenv("CINNAMON_VERSION");
-const DESKTOP_SCHEMA = "org.cinnamon.desktop.interface";
-const CURSOR_SIZE_KEY = "cursor-size";
 
-const WDAE_SHORTCUT_ID = "cinnamon-tweaks-window-demands-attention-shortcut";
-
-// Import only when the tweaks that use them are enabled.
+// Imported only when needed in an attempt to gain performance.
+// Not that it's needed, but, the more tweaks I add, the more crap will I need to import.
+let HotCornerPatched = null;
+let AppletManager = null;
+let DeskletManager = null;
+let ShadowFactory = null;
+let WorkspaceTracker = null;
 
 let allowEnabling = false;
 
@@ -48,6 +44,8 @@ let CONNECTION_IDS = {
     WDAE_CONNECTION: 0, // CT_WindowDemandsAttentionBehavior connection ID.
     CWS: 0, // CT_CustomWindowShadows toggle ID.
     CWS_EXEC: 0, // CT_CustomWindowShadows execution ID.
+    AMW: 0, // CT_AutoMoveWindows toggle ID.
+    MAXNG: 0, // CT_MaximusNG toggle ID.
 };
 
 // Container for old attributes and functions for later restore.
@@ -57,7 +55,9 @@ let STG = {
     HCP: {},
     MTP: {},
     AMP: {},
-    DMP: {}
+    DMP: {},
+    AMW: {},
+    MAXNG: {}
 };
 
 function bindSettings() {
@@ -79,7 +79,12 @@ function bindSettings() {
                 case $.P.APPLETS_ADD_EDIT_FILE_ITEM_TO_CONTEXT:
                 case $.P.APPLETS_ADD_OPEN_FOLDER_ITEM_TO_CONTEXT_PLACEMENT:
                 case $.P.APPLETS_ADD_EDIT_FILE_ITEM_TO_CONTEXT_PLACEMENT:
-                    CT_AppletManagerPatch.toggle();
+                    try {
+                        if (!AppletManager)
+                            AppletManager = imports.ui.appletManager;
+                    } finally {
+                        CT_AppletManagerPatch.toggle();
+                    }
                     break;
                 case $.P.DESKLETS_TWEAKS_ENABLED:
                 case $.P.DESKLETS_ASK_CONFIRMATION_DESKLET_REMOVAL:
@@ -87,7 +92,12 @@ function bindSettings() {
                 case $.P.DESKLETS_ADD_EDIT_FILE_ITEM_TO_CONTEXT:
                 case $.P.DESKLETS_ADD_OPEN_FOLDER_ITEM_TO_CONTEXT_PLACEMENT:
                 case $.P.DESKLETS_ADD_EDIT_FILE_ITEM_TO_CONTEXT_PLACEMENT:
-                    CT_DeskletManagerPatch.toggle();
+                    try {
+                        if (!DeskletManager)
+                            DeskletManager = imports.ui.deskletManager;
+                    } finally {
+                        CT_DeskletManagerPatch.toggle();
+                    }
                     break;
                 case $.P.NOTIFICATIONS_ENABLE_TWEAKS:
                 case $.P.NOTIFICATIONS_ENABLE_ANIMATION:
@@ -105,7 +115,12 @@ function bindSettings() {
                 case $.P.HOTCORNERS_DELAY_TOP_RIGHT:
                 case $.P.HOTCORNERS_DELAY_BOTTOM_LEFT:
                 case $.P.HOTCORNERS_DELAY_BOTTOM_RIGHT:
-                    CT_HotCornersPatch.toggle(); // Mark for deletion on EOL.
+                    try {
+                        if (!HotCornerPatched)
+                            HotCornerPatched = imports.extension.extra_modules.hotCornerPatched;
+                    } finally {
+                        CT_HotCornersPatch.toggle(); // Mark for deletion on EOL.
+                    }
                     break;
                 case $.P.TOOLTIPS_TWEAKS_ENABLED:
                 case $.P.TOOLTIPS_ALIGNMENT: // Mark for deletion on EOL.
@@ -115,7 +130,33 @@ function bindSettings() {
                 case $.P.WINDOW_SHADOWS_TWEAKS_ENABLED:
                 case $.P.WINDOW_SHADOWS_PRESET:
                 case $.P.WINDOW_SHADOWS_CUSTOM_PRESET:
-                    CT_CustomWindowShadows.toggle();
+                    try {
+                        if (!ShadowFactory)
+                            ShadowFactory = Meta.ShadowFactory.get_default();
+                    } finally {
+                        CT_CustomWindowShadows.toggle();
+                    }
+                    break;
+                case $.P.WINDOW_AUTO_MOVE_TWEAKS_ENABLED:
+                    // case $.P.WINDOW_AUTO_MOVE_APPLICATION_LIST:
+                    try {
+                        if (!WorkspaceTracker)
+                            WorkspaceTracker = imports.extension.extra_modules.WorkspaceTracker;
+                    } finally {
+                        CT_AutoMoveWindows.toggle();
+                    }
+                    break;
+                    // case $.P.MAXIMUS_ENABLE_TWEAK:
+                    // case $.P.MAXIMUS_UNDECORATE_HALF_MAXIMIZED:
+                    // case $.P.MAXIMUS_UNDECORATE_TILED:
+                    // case $.P.MAXIMUS_IS_BLACKLIST:
+                    // case $.P.MAXIMUS_APP_LIST:
+                    // case $.P.MAXIMUS_ENABLE_LOGGING:
+                    // The following is more of a dummy setting.
+                    // I'm using it so I can trigger a JavaScript function from
+                    // the Python code on the settings window.
+                case $.P.MAXIMUS_APPLY_SETTINGS:
+                    CT_MaximusNG.toggle();
                     break;
             }
         })
@@ -228,7 +269,7 @@ const CT_AppletManagerPatch = {
                                 if (uuid == appletDefinition.uuid && applet_id == appletDefinition.applet_id) {
                                     let newEnabledApplets = enabledApplets.slice(0);
                                     newEnabledApplets.splice(i, 1);
-                                    global.settings.set_strv('enabled-applets', newEnabledApplets);
+                                    global.settings.set_strv("enabled-applets", newEnabledApplets);
                                     break;
                                 }
                             }
@@ -415,13 +456,13 @@ const CT_MessageTrayPatch = {
                 this._notificationExpandedId = 0;
             }
 
-            this._tween(this._notificationBin, '_notificationState', State.HIDDEN, {
+            this._tween(this._notificationBin, "_notificationState", State.HIDDEN, {
                 y: (position ?
                     Main.layoutManager.primaryMonitor.height :
                     Main.layoutManager.primaryMonitor.y),
                 opacity: 0,
                 time: ANIMATION_TIME,
-                transition: 'easeOutQuad',
+                transition: "easeOutQuad",
                 onComplete: this._hideNotificationCompleted,
                 onCompleteScope: this
             });
@@ -438,7 +479,7 @@ const CT_MessageTrayPatch = {
                 this._notification.actor._parent_container.remove_actor(this._notification.actor);
             }
 
-            this._notificationClickedId = this._notification.connect('done-displaying',
+            this._notificationClickedId = this._notification.connect("done-displaying",
                 Lang.bind(this, this._escapeTray));
             this._notificationBin.child = this._notification.actor;
             this._notificationBin.opacity = 0;
@@ -457,12 +498,12 @@ const CT_MessageTrayPatch = {
                 monitor.height - height / 2 :
                 monitor.y + height * 2;
 
-            let margin = this._notification._table.get_theme_node().get_length('margin-from-right-edge-of-screen');
+            let margin = this._notification._table.get_theme_node().get_length("margin-from-right-edge-of-screen");
 
             if (Settings.get_int($.P.NOTIFICATIONS_RIGHT_MARGIN) !== 0)
                 margin = Settings.get_int($.P.NOTIFICATIONS_RIGHT_MARGIN);
             this._notificationBin.x = monitor.x + monitor.width - this._notification._table.width - margin;
-            Main.soundManager.play('notification');
+            Main.soundManager.play("notification");
             this._notificationBin.show();
 
             this._updateShowingNotification();
@@ -496,10 +537,10 @@ const CT_MessageTrayPatch = {
             if (this._notificationBin.y < expandedY)
                 this._notificationBin.y = expandedY;
             else if (this._notification.y != expandedY)
-                this._tween(this._notificationBin, '_notificationState', State.SHOWN, {
+                this._tween(this._notificationBin, "_notificationState", State.SHOWN, {
                     y: newY,
                     time: ANIMATION_TIME,
-                    transition: 'easeOutQuad'
+                    transition: "easeOutQuad"
                 });
         };
     },
@@ -527,7 +568,8 @@ const CT_MessageTrayPatch = {
 };
 
 const WindowDemandsAttentionClass = new Lang.Class({
-    Name: "Window Demands Attention",
+    Name: "WindowDemandsAttention",
+    wdae_shortcut_id: "cinnamon-tweaks-window-demands-attention-shortcut",
 
     _init: function() {
         if (Settings.get_string($.P.WIN_DEMANDS_ATTENTION_ACTIVATION_MODE) === "hotkey") {
@@ -566,13 +608,13 @@ const WindowDemandsAttentionClass = new Lang.Class({
 
     _add_keybindings: function() {
         Main.keybindingManager.addHotKey(
-            WDAE_SHORTCUT_ID,
+            this.wdae_shortcut_id,
             Settings.get_strv($.P.WIN_DEMANDS_ATTENTION_KEYBOARD_SHORTCUT),
             Lang.bind(this, this._activate_last_window));
     },
 
     _remove_keybindings: function() {
-        Main.keybindingManager.removeHotKey(WDAE_SHORTCUT_ID);
+        Main.keybindingManager.removeHotKey(this.wdae_shortcut_id);
     },
 
     enable: function() {
@@ -660,19 +702,43 @@ const CT_TooltipsPatch = {
     enable: function() {
         if (this.shouldEnable("delay")) {
             if (Settings.get_int($.P.TOOLTIPS_DELAY) !== 300) {
-                STG.TTP._onMotionEvent = Tooltips.TooltipBase._onMotionEvent;
-                Tooltips.TooltipBase.prototype["_onMotionEvent"] = function(actor, event) {
-                    if (this._showTimer) {
-                        Mainloop.source_remove(this._showTimer);
-                        this._showTimer = null;
-                    }
+                if ($.versionCompare(CINNAMON_VERSION, "3.0.7") <= 0) {
+                    STG.TTP._onMotionEvent = Tooltips.TooltipBase._onMotionEvent;
+                    Tooltips.TooltipBase.prototype["_onMotionEvent"] = function(actor, event) {
+                        if (this._showTimer) {
+                            Mainloop.source_remove(this._showTimer);
+                            this._showTimer = null;
+                        }
 
-                    if (!this.visible) {
-                        this._showTimer = Mainloop.timeout_add(Settings.get_int($.P.TOOLTIPS_DELAY),
-                            Lang.bind(this, this._onTimerComplete));
-                        this.mousePosition = event.get_coords();
-                    }
-                };
+                        if (!this.visible) {
+                            this._showTimer = Mainloop.timeout_add(Settings.get_int($.P.TOOLTIPS_DELAY),
+                                Lang.bind(this, this._onTimerComplete));
+                            this.mousePosition = event.get_coords();
+                        }
+                    };
+                } else if ($.versionCompare(CINNAMON_VERSION, "3.2.0") >= 0) {
+                    STG.TTP._onMotionEvent = Tooltips.TooltipBase._onMotionEvent;
+                    Tooltips.TooltipBase.prototype["_onMotionEvent"] = function(actor, event) {
+                        if (this._showTimer) {
+                            Mainloop.source_remove(this._showTimer);
+                            this._showTimer = null;
+                        }
+
+                        if (this._hideTimer) {
+                            Mainloop.source_remove(this._hideTimer);
+                            this._hideTimer = null;
+                        }
+
+                        if (!this.visible) {
+                            this._showTimer = Mainloop.timeout_add(Settings.get_int($.P.TOOLTIPS_DELAY),
+                                Lang.bind(this, this._onShowTimerComplete));
+                            this.mousePosition = event.get_coords();
+                        } else {
+                            this._hideTimer = Mainloop.timeout_add(500,
+                                Lang.bind(this, this._onHideTimerComplete));
+                        }
+                    };
+                }
 
                 STG.TTP._onEnterEvent = Tooltips.TooltipBase._onEnterEvent;
                 Tooltips.TooltipBase.prototype["_onEnterEvent"] = function(actor, event) {
@@ -686,10 +752,10 @@ const CT_TooltipsPatch = {
         }
 
         // Mark for deletion on EOL.
-        if (this.shouldEnable("positioning")) {
-            if (Settings.get_boolean($.P.TOOLTIPS_ALIGNMENT)) {
+        if (Settings.get_boolean($.P.TOOLTIPS_ALIGNMENT)) {
+            if (this.shouldEnable("positioning")) {
                 this.desktop_settings = new Gio.Settings({
-                    schema_id: DESKTOP_SCHEMA
+                    schema_id: "org.cinnamon.desktop.interface"
                 });
 
                 STG.TTP.show = Tooltips.Tooltip.show;
@@ -702,7 +768,7 @@ const CT_TooltipsPatch = {
 
                     let monitor = Main.layoutManager.findMonitorForActor(this.item);
 
-                    let cursorSize = CT_TooltipsPatch.desktop_settings.get_int(CURSOR_SIZE_KEY);
+                    let cursorSize = CT_TooltipsPatch.desktop_settings.get_int("cursor-size");
                     let tooltipTop = this.mousePosition[1] + (cursorSize / 1.5);
                     var tooltipLeft = this.mousePosition[0] + (cursorSize / 2);
 
@@ -715,9 +781,10 @@ const CT_TooltipsPatch = {
                     this._tooltip.raise_top();
                     this.visible = true;
                 };
+            } else {
+                Settings.set_boolean($.P.TOOLTIPS_ALIGNMENT, false);
+                $.dealWithRejection(_("Avoid mouse pointer overlapping tooltips"));
             }
-        } else {
-            $.dealWithRejection(_("Avoid mouse pointer overlapping tooltips"));
         }
     },
 
@@ -810,21 +877,21 @@ const CT_PopupMenuManagerPatch = {
 
             STG.PPMM.addMenu = PopupMenu.PopupMenuManager.prototype["addMenu"];
             PopupMenu.PopupMenuManager.prototype["addMenu"] = function(menu, position) {
-                this._signals.connect(menu, 'open-state-changed', this._onMenuOpenState);
-                this._signals.connect(menu, 'child-menu-added', this._onChildMenuAdded);
-                this._signals.connect(menu, 'child-menu-removed', this._onChildMenuRemoved);
-                this._signals.connect(menu, 'destroy', this._onMenuDestroy);
+                this._signals.connect(menu, "open-state-changed", this._onMenuOpenState);
+                this._signals.connect(menu, "child-menu-added", this._onChildMenuAdded);
+                this._signals.connect(menu, "child-menu-removed", this._onChildMenuRemoved);
+                this._signals.connect(menu, "destroy", this._onMenuDestroy);
 
                 let source = menu.sourceActor;
 
                 if (source) {
-                    this._signals.connect(source, 'enter-event', function() {
+                    this._signals.connect(source, "enter-event", function() {
                         this._onMenuSourceEnter(menu);
                     });
-                    this._signals.connect(source, 'key-focus-in', function() {
+                    this._signals.connect(source, "key-focus-in", function() {
                         this._onMenuSourceEnter(menu);
                     });
-                    this._signals.connect(source, 'leave-event', Lang.bind(this, this._onMenuSourceExit));
+                    this._signals.connect(source, "leave-event", Lang.bind(this, this._onMenuSourceExit));
 
                     if (Main.CT_PopupMenuManagerPatch_allAppletsMenus.indexOf(menu) === -1 &&
                         source._applet &&
@@ -932,64 +999,11 @@ const CT_PopupMenuManagerPatch = {
     }
 };
 
-const CT_NemoDesktopAreaClass = new Lang.Class({
-    Name: "CT_NemoDesktopAreaClass",
-
-    _init: function() {
-        this.actor = global.stage;
-        if (!this.actor.hasOwnProperty("_delegate"))
-            this.actor._delegate = this;
-    },
-
-    acceptDrop: function(source, actor, x, y, time) { // jshint ignore:line
-        let app = source.app;
-
-        if (app === null || app.is_window_backed())
-            return false;
-
-        let backgroundActor = global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y);
-
-        if (backgroundActor != global.window_group)
-            return false;
-
-        let file = Gio.file_new_for_path(app.get_app_info().get_filename());
-        let fPath = FileUtils.getUserDesktopDir() + "/" + app.get_id();
-        let destFile = Gio.file_new_for_path(fPath);
-
-        try {
-            file.copy(destFile, 0, null, function() {});
-            if (FileUtils.hasOwnProperty("changeModeGFile"))
-                FileUtils.changeModeGFile(destFile, 755);
-            else
-                Util.spawnCommandLine('chmod +x "' + fPath + '"');
-        } catch (aErr) {
-            global.log(aErr);
-            return false;
-        }
-
-        return true;
-    },
-
-    handleDragOver: function(source, actor, x, y, time) { // jshint ignore:line
-        let app = source.app;
-
-        if (app === null || app.is_window_backed())
-            return DND.DragMotionResult.NO_DROP;
-
-        let backgroundActor = global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y);
-
-        if (backgroundActor != global.window_group)
-            return DND.DragMotionResult.NO_DROP;
-
-        return DND.DragMotionResult.COPY_DROP;
-    }
-});
-
 const CT_DropToDesktopPatch = {
     enable: function() {
         if (!Main.layoutManager.CT_DropToDesktopPatch_desktop &&
             Settings.get_boolean($.P.DESKTOP_TWEAKS_ALLOW_DROP_TO_DESKTOP))
-            Main.layoutManager.CT_DropToDesktopPatch_desktop = new CT_NemoDesktopAreaClass();
+            Main.layoutManager.CT_DropToDesktopPatch_desktop = new $.CT_NemoDesktopAreaClass();
     },
 
     disable: function() {
@@ -1060,6 +1074,65 @@ const CT_CustomWindowShadows = {
     }
 };
 
+const CT_AutoMoveWindows = {
+    _trackerExists: true,
+    _winMover: false,
+    enable: function() {
+        try {
+            if (!Main.wm._workspaceTracker) {
+                this._trackerExists = false;
+                Main.wm._workspaceTracker = new WorkspaceTracker.WorkspaceTracker();
+            }
+        } finally {
+            try {
+                STG.AMW._checkWorkspaces = Main.wm._workspaceTracker._checkWorkspaces;
+                Main.wm._workspaceTracker._checkWorkspaces = $.CT_MyCheckWorkspaces;
+
+                this._winMover = new $.CT_WindowMoverClass();
+            } catch (aErr) {
+                global.logError(aErr);
+            }
+        }
+    },
+
+    disable: function() {
+        if (this._winMover)
+            this._winMover.destroy();
+
+        if (STG.AMW._checkWorkspaces) {
+            Main.wm._workspaceTracker._checkWorkspaces = STG.AMW._checkWorkspaces;
+            delete STG.AMW._checkWorkspaces;
+        }
+
+        if (!this._trackerExists)
+            delete Main.wm._workspaceTracker;
+    },
+
+    toggle: function() {
+        togglePatch(CT_AutoMoveWindows, "AMW", Settings.get_boolean($.P.WINDOW_AUTO_MOVE_TWEAKS_ENABLED));
+    }
+};
+
+const CT_MaximusNG = {
+    maximus: null,
+
+    enable: function() {
+        this.maximus = new $.CT_MaximusNGClass();
+        this.maximus.startUndecorating();
+    },
+
+    disable: function() {
+        if (this.maximus) {
+            this.maximus.stopUndecorating();
+            this.maximus = null;
+        }
+    },
+
+    toggle: function() {
+        togglePatch(CT_MaximusNG, "MAXNG", Settings.get_boolean($.P.MAXIMUS_ENABLE_TWEAK));
+    },
+};
+
 // Patch template
 
 /*
@@ -1096,16 +1169,25 @@ function enable() {
     if (allowEnabling) {
         try {
             if (Settings.get_boolean($.P.APPLETS_TWEAKS_ENABLED)) {
-                CT_AppletManagerPatch.enable();
+                try {
+                    if (!AppletManager)
+                        AppletManager = imports.ui.appletManager;
+                } finally {
+                    CT_AppletManagerPatch.enable();
+                }
             }
         } catch (aErr) {
             global.logError(aErr.message);
         }
 
         try {
-            if (Settings.get_boolean($.P.DESKLETS_TWEAKS_ENABLED)) {
-                CT_DeskletManagerPatch.enable();
-            }
+            if (Settings.get_boolean($.P.DESKLETS_TWEAKS_ENABLED))
+                try {
+                    if (!DeskletManager)
+                        DeskletManager = imports.ui.appletManager;
+                } finally {
+                    CT_DeskletManagerPatch.enable();
+                }
         } catch (aErr) {
             global.logError(aErr.message);
         }
@@ -1118,9 +1200,8 @@ function enable() {
         }
 
         try {
-            if (Settings.get_string($.P.WIN_DEMANDS_ATTENTION_ACTIVATION_MODE) !== "none") {
+            if (Settings.get_string($.P.WIN_DEMANDS_ATTENTION_ACTIVATION_MODE) !== "none")
                 CT_WindowDemandsAttentionBehavior.enable();
-            }
         } catch (aErr) {
             global.logError(aErr.message);
         }
@@ -1128,7 +1209,11 @@ function enable() {
         // Mark for deletion on EOL.
         try {
             if (Settings.get_boolean($.P.HOTCORNERS_TWEAKS_ENABLED)) {
-                CT_HotCornersPatch.enable();
+                try {
+                    HotCornerPatched = imports.extension.extra_modules.hotCornerPatched;
+                } finally {
+                    CT_HotCornersPatch.enable();
+                }
             }
         } catch (aErr) {
             global.logError(aErr.message);
@@ -1158,22 +1243,52 @@ function enable() {
 
         try {
             if (Settings.get_boolean($.P.WINDOW_SHADOWS_TWEAKS_ENABLED)) {
-                CT_CustomWindowShadows.enable();
+                try {
+                    ShadowFactory = Meta.ShadowFactory.get_default();
+                } finally {
+                    CT_CustomWindowShadows.enable();
+                }
             }
         } catch (aErr) {
             global.logError(aErr.message);
         }
 
-        let msg = [
-            _("If you updated this extension from an older version, <b>you must check its settings window</b>."),
-            _("Some preferences may have been changed to their default values."),
-            _("This message will not be displayed again.")
-        ];
+        try {
+            if (Settings.get_boolean($.P.WINDOW_AUTO_MOVE_TWEAKS_ENABLED)) {
+                try {
+                    WorkspaceTracker = imports.extension.extra_modules.WorkspaceTracker;
+                } finally {
+                    CT_AutoMoveWindows.enable();
+                }
+            }
+        } catch (aErr) {
+            global.logError(aErr.message);
+        }
+
+        try {
+            if (Settings.get_boolean($.P.MAXIMUS_ENABLE_TWEAK))
+                CT_MaximusNG.enable();
+        } catch (aErr) {
+            global.logError(aErr.message);
+        }
 
         if (!Settings.get_boolean($.P.INITIAL_LOAD)) {
+            let msg = [
+                _("If you updated this extension from an older version, <b>you must check its settings window</b>."),
+                _("Some preferences may have been changed to their default values."),
+                _("This message will not be displayed again.")
+            ];
+            let icon = new St.Icon({
+                icon_name: "dialog-warning",
+                icon_type: St.IconType.FULLCOLOR,
+                icon_size: 48
+            });
             Mainloop.timeout_add(5000, function() {
-                Util.spawnCommandLine("notify-send --icon=dialog-information \"" + _(ExtensionMeta.name) +
-                    "\" \"" + msg.join(" ") + "\" -u critical");
+                Main.criticalNotify(
+                    _(ExtensionMeta.name),
+                    msg.join(" "),
+                    icon
+                );
                 Settings.set_boolean($.P.INITIAL_LOAD, true);
             });
         }
@@ -1190,15 +1305,27 @@ function disable() {
     if (CONNECTION_IDS.settings_bindings > 0)
         Settings.disconnect(CONNECTION_IDS.settings_bindings);
 
-    CT_AppletManagerPatch.disable();
-    CT_DeskletManagerPatch.disable();
-    CT_MessageTrayPatch.disable();
-    CT_WindowDemandsAttentionBehavior.disable();
-    CT_HotCornersPatch.disable(); // Mark for deletion on EOL.
-    CT_TooltipsPatch.disable();
-    CT_PopupMenuManagerPatch.disable();
-    CT_DropToDesktopPatch.disable();
-    CT_CustomWindowShadows.disable();
+    let patches = [
+        CT_AppletManagerPatch,
+        CT_DeskletManagerPatch,
+        CT_MessageTrayPatch,
+        CT_WindowDemandsAttentionBehavior,
+        CT_HotCornersPatch,
+        CT_TooltipsPatch,
+        CT_PopupMenuManagerPatch,
+        CT_DropToDesktopPatch,
+        CT_CustomWindowShadows,
+        CT_AutoMoveWindows,
+        CT_MaximusNG,
+    ];
+
+    for (let i = patches.length - 1; i >= 0; i--) {
+        try {
+            patches[i].disable();
+        } catch (aErr) {
+            continue;
+        }
+    }
 }
 
 /*

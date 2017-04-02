@@ -1,5 +1,11 @@
 ## Change Log
 
+##### 1.08
+- Added *Window decorations removal* option (a.k.a. Maximus). Allows to remove the windows decorations from maximized/half-maximized/tiled windows.
+- Added *Auto move windows* tweak. This tweak enables the ability to set rules to open determined applications on specific workspaces.
+- Fixed *Tooltips show delay* on Cinnamon 3.2.x. Now it actually works.
+- Redesigned again the settings window. This time, I changed from a vertical layout to an horizontal one to make better use of the available space.
+
 ##### 1.07
 - Redesigned extension to a custom settings system using gsettings. The reason behind this is that, with the introduction of the new windows shadows tweaks, the extension needed a custom widget to be able to configure the custom shadow values, something that the Cinnamon's native settings system isn't able to do just yet (at least, **not on all currently supported versions of Cinnamon**).
 - Removed *multiversion* option from extension. It's not needed anymore.

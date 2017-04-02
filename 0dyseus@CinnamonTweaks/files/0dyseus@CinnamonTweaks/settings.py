@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 
+import math
 import os
+import subprocess
 import gettext
 import sys
 import json
 import cgi
 import gi
 gi.require_version("Gtk", "3.0")
-gi.require_version('Notify', '0.7')
-from gi.repository import Gio, Gtk, GObject, GLib, Notify
+gi.require_version("Notify", "0.7")
+from gi.repository import Gio, Gtk, GObject, GLib, Gdk, Notify, GdkPixbuf
 from pkg_resources import parse_version
 
 gettext.install("cinnamon", "/usr/share/locale")
@@ -25,7 +27,7 @@ EXTENSION_UUID = str(os.path.basename(EXTENSION_DIR))
 # - Application identifiers must not exceed 255 characters.
 # To which I add
 # - Application identifiers must not contain a '.' (period) character next to a number. ¬¬
-APPLICATION_ID = "org.cinnamon.extensions-0dyseus.CinnamonTweaksTest"
+APPLICATION_ID = "org.cinnamon.extensions.odyseus.cinnamon.tweaks"
 SCHEMA_NAME = "org.cinnamon.extensions.0dyseus@CinnamonTweaks"
 SCHEMA_PATH = "/org/cinnamon/extensions/0dyseus@CinnamonTweaks/"
 TRANSLATIONS = {}
@@ -63,7 +65,7 @@ def _(string):
 
 
 APPLETS_TAB = {
-    "title": _("Applets"),
+    "title": _("Applets tweaks"),
     "sections": [{
         "title": _("Applets tweaks"),
         "widgets": [{
@@ -125,7 +127,7 @@ APPLETS_TAB = {
 }
 
 DESKLETS_TAB = {
-    "title": _("Desklets"),
+    "title": _("Desklets tweaks"),
     "sections": [{
         "title": _("Desklets tweaks"),
         "widgets": [{
@@ -188,10 +190,10 @@ DESKLETS_TAB = {
 }
 
 HOTCORNERS_TAB = {
-    "title": _("Hotcorners"),
+    "title": _("Hot corners tweaks"),
     "compatible": parse_version(CINNAMON_VERSION) < parse_version("3.2"),
     "sections": [{
-        "title": _("Hotcorners tweaks"),
+        "title": _("Hot corners tweaks"),
         "widgets": [{
             "type": "switch",
             "args": {
@@ -251,7 +253,7 @@ HOTCORNERS_TAB = {
 }
 
 DESKTOP_TAB = {
-    "title": _("Desktop"),
+    "title": _("Desktop tweaks"),
     "sections": [{
         "title": _("Desktop area tweaks"),
         "widgets": [{
@@ -291,7 +293,7 @@ DESKTOP_TAB = {
             "dep_key": "tooltips-tweaks-enabled",
             "args": {
                 "key": "tooltips-delay",
-                "label": "(*) " + _("Tooltips show delay"),
+                "label": _("Tooltips show delay"),
                 "tooltip": _("Set a delay in milliseconds to display Cinnamon's UI tooltips."),
                 "min": 100,
                 "max": 1000,
@@ -325,7 +327,7 @@ DESKTOP_TAB = {
 }
 
 NOTIFICATIONS_TAB = {
-    "title": _("Notifications"),
+    "title": _("Notifications tweaks"),
     "sections": [{
         "title": _("Notifications tweaks"),
         "widgets": [{
@@ -381,7 +383,7 @@ NOTIFICATIONS_TAB = {
 }
 
 WINDOWS_TAB = {
-    "title": _("Windows"),
+    "title": _("Windows tweaks"),
     "sections": [{
         "title": _("Window focus tweaks"),
         "widgets": [{
@@ -405,18 +407,13 @@ WINDOWS_TAB = {
         }]
     }, {
         "title": _("Window shadows tweaks"),
+        "warning_message": _("Client side decorated windows aren't affected by this tweak."),
         "widgets": [{
-            "type": "info_label",
-            "args": {
-                    "label": _("Client side decorated windows aren't affected by this tweak"),
-                    "bold": True,
-                    "italic": True
-            }
-        }, {
             "type": "switch",
             "args": {
                     "key": "window-shadows-tweaks-enabled",
-                    "label": _("Enable window shadows tweaks")
+                    "label": _("Enable window shadows tweaks"),
+                    "tooltip": _("This tweak allows us to customize the shadow of all windows.")
             }
         }, {
             "type": "combo",
@@ -436,81 +433,198 @@ WINDOWS_TAB = {
             "dep_key": "window-shadows-tweaks-enabled",
             "args": {
                 "key": "window-shadows-custom-preset",
-                "label": _("Edit custom shadows values"),
-                "data": {
-                    "default_shadow_values": {
-                        "focused": {
-                            "normal": [6, -1, 0, 3, 255],
-                            "dialog": [6, -1, 0, 3, 255],
-                            "modal_dialog": [6, -1, 0, 1, 255],
-                            "utility": [3, -1, 0, 1, 255],
-                            "border": [6, -1, 0, 3, 255],
-                            "menu": [6, -1, 0, 3, 255],
-                            "popup-menu": [1, -1, 0, 1, 128],
-                            "dropdown-menu": [1, 10, 0, 1, 128],
-                            "attached": [6, -1, 0, 1, 255]
-                        },
-                        "unfocused": {
-                            "normal": [3, -1, 0, 3, 128],
-                            "dialog": [3, -1, 0, 3, 128],
-                            "modal_dialog": [3, -1, 0, 3, 128],
-                            "utility": [3, -1, 0, 1, 128],
-                            "border": [3, -1, 0, 3, 128],
-                            "menu": [3, -1, 0, 0, 128],
-                            "popup-menu": [1, -1, 0, 1, 128],
-                            "dropdown-menu": [1, 10, 0, 1, 128],
-                            "attached": [3, -1, 0, 3, 128]
-                        }
-                    },
-                    "pages": [
-                        "focused",
-                        "unfocused"
-                    ],
-                    "pages_labels": {
-                        "focused": _("Focused windows"),
-                        "unfocused": _("Unfocused windows")
-                    },
-                    "shadow_classes": [
-                        "normal",
-                        "dialog",
-                        "modal_dialog",
-                        "utility",
-                        "border",
-                        "menu",
-                        "popup-menu",
-                        "dropdown-menu",
-                        "attached"
-                    ],
-                    "shadow_classes_labels": {
-                        "normal": _("Normal"),
-                        "dialog": _("Dialog"),
-                        "modal_dialog": _("Modal dialog"),
-                        "utility": _("Utility"),
-                        "border": _("Border"),
-                        "menu": _("Menu"),
-                        "popup-menu": _("Popup menu"),
-                        "dropdown-menu": _("Dropdown menu"),
-                        "attached": _("Attached"),
-                    },
-                    "shadow_values": [
-                        "radius",
-                        "top_fade",
-                        "x_offset",
-                        "y_offset",
-                        "opacity"
-                    ],
-                    "shadow_values_labels": {
-                        "radius": _("Radius"),
-                        "top_fade": _("Top fade"),
-                        "x_offset": _("X offset"),
-                        "y_offset": _("Y offset"),
-                        "opacity": _("Opacity")
-                    }
-                }
+                "label": _("Edit custom shadows values")
+            }
+        }]
+    }, {
+        "title": _("Auto move windows"),
+        "warning_message": _("Not all applications can be assigned to be moved. Most applications which can open multiple instances of themselves most likely cannot be configured to be automatically moved."),
+        "widgets": [{
+            "type": "switch",
+            "args": {
+                    "key": "window-auto-move-tweaks-enabled",
+                    "label": _("Enable auto move windows tweak"),
+                    "tooltip": _("This tweak enables the ability to set rules to open determined applications on specific workspaces.")
+            }
+        }, {
+            "type": "auto_moved_windows_setter",
+            "dep_key": "window-auto-move-tweaks-enabled",
+            "args": {
+                    "key": "window-auto-move-application-list",
+                    "label": _("Define auto move windows rules")
+            }
+        }]
+    }, {
+        "title": _("Windows decorations removal"),
+        "warning_message": "<b>⚫</b> " + _("This tweak settings are purposely NOT applied in real time. Click the »Apply windows decorations settings« button to save settings.") + "\n" +
+        "<b>⚫</b> " + _("Client side decorated windows and WINE applications aren't affected by this tweak.") + "\n" +
+        "<b>⚫</b> " + _("Close all windows that belongs to an application that is going to be added to the applications list and before applying the settings of this tweak.") + "\n" +
+        "<b>⚫ " +
+        _("Read this extension help for more detailed instructions, list of dependencies and known issues.") +
+        "</b>",
+        "widgets": [{
+            "type": "boolean_button",
+            "args": {
+                    "key": "maximus-apply-settings",
+                    "label": _("Apply windows decorations settings")
+            }
+        }, {
+            "type": "switch",
+            "args": {
+                    "key": "maximus-enable-tweak",
+                    "label": _("Enable maximized windows decoration removal")
+            }
+        }, {
+            "type": "switch",
+            "dep_key": "maximus-enable-tweak",
+            "args": {
+                    "key": "maximus-undecorate-half-maximized",
+                    "label": _("Undecorate half-maximized windows?")
+            }
+        }, {
+            "type": "switch",
+            "dep_key": "maximus-enable-tweak",
+            "args": {
+                    "key": "maximus-undecorate-tiled",
+                    "label": _("Undecorate tiled windows?")
+            }
+        }, {
+            "type": "switch",
+            "dep_key": "maximus-enable-tweak",
+            "args": {
+                    "key": "maximus-is-blacklist",
+                    "label": _("Applications list is a blacklist?"),
+                    "tooltip": _("If enabled, all applications will have their window decorations removed, except those listed in the list of applications.\n\nIf disabled, only the application from the list of applications will have their decorations removed.")
+            }
+        }, {
+            "type": "switch",
+            "dep_key": "maximus-enable-tweak",
+            "args": {
+                    "key": "maximus-enable-logging",
+                    "label": _("Enable logging"),
+                    "tooltip": _("For debugging purposes only.")
+            }
+        }, {
+            "type": "maximus_applications_chooser",
+            "dep_key": "window-auto-move-tweaks-enabled",
+            "args": {
+                    "key": "maximus-app-list",
+                    "label": _("Edit applications list")
             }
         }]
     }]
 }
+
+
+def populate_settings_box():
+    pages_object = sorted([
+        APPLETS_TAB,
+        DESKLETS_TAB,
+        DESKTOP_TAB,
+        HOTCORNERS_TAB,
+        NOTIFICATIONS_TAB,
+        WINDOWS_TAB,
+    ], key=lambda x: x["title"])
+
+    stack = app.window.stack
+    stack.set_transition_type(Gtk.StackTransitionType.SLIDE_UP_DOWN)
+    stack.set_transition_duration(150)
+    stack.set_property("margin", 0)
+    stack.set_property("expand", True)
+
+    def _make_items_sidebar(text):
+        lbl = Gtk.Label(label=text, xalign=0.0)
+        lbl.set_name("row")
+        row = Gtk.ListBoxRow()
+        row.get_style_context().add_class("cinnamon-tweaks-category")
+        row.add(lbl)
+        return row
+
+    for page_obj in pages_object:
+        # Possibility to hide entire pages
+        try:
+            if page_obj["compatible"] is False:
+                continue
+        except KeyError:  # If "compatible" key isn't set.
+            pass
+
+        page = BaseGrid()
+        page.set_spacing(15, 15)
+        page.set_property("expand", True)
+        page.set_property("margin-left", 15)
+        page.set_property("margin-right", 15)
+        page.set_property("margin-bottom", 15)
+        page.set_border_width(0)
+
+        section_count = 0
+        for section_obj in page_obj["sections"]:
+            # Possibility to hide entire sections
+            try:
+                if section_obj["compatible"] is False:
+                    continue
+            except KeyError:  # If "compatible" key isn't set.
+                pass
+
+            try:
+                warning_message = section_obj["warning_message"]
+            except KeyError:  # If "warning_message" key isn't set.
+                warning_message = None
+
+            section_container = SectionContainer(
+                section_obj["title"], warning_message=warning_message)
+
+            SECTION_WIDGETS = section_obj["widgets"]
+
+            row_pos = 1
+            for i in range(0, len(SECTION_WIDGETS)):
+                section_widget_obj = SECTION_WIDGETS[i]
+
+                # Possibility to hide individual widgets
+                try:
+                    if section_widget_obj["compatible"] is False:
+                        continue
+                except KeyError:  # If "compatible" key isn't set.
+                    pass
+
+                widget_obj = getattr(Widgets, section_widget_obj["type"])
+                widget = widget_obj(Widgets(), **section_widget_obj["args"])
+
+                if section_widget_obj["type"] is not "keybindings_tree":
+                    widget.set_border_width(5)
+                    widget.set_margin_left(15)
+                    widget.set_margin_right(15)
+
+                try:
+                    dep_key = section_widget_obj["dep_key"]
+
+                    if Settings().settings_has_key(dep_key):
+                        Settings().get_settings().bind(
+                            dep_key, widget, "sensitive", Gio.SettingsBindFlags.GET)
+                    else:
+                        print(
+                            "Ignoring dependency on key '%s': no such key in the schema" % dep_key)
+                except (NameError, KeyError):
+                    pass
+
+                section_container.add_row(widget, 0, i + 1, 1, 1)
+
+            if section_count is not 0:
+                row_pos = len(SECTION_WIDGETS) + row_pos
+            else:
+                row_pos = row_pos
+
+            page.attach(section_container, 0, row_pos, 2, 1)
+            row_pos += 1
+            section_count += 1
+
+        scrolledwindow = Gtk.ScrolledWindow(hadjustment=None, vadjustment=None)
+        scrolledwindow.set_size_request(width=-1, height=-1)
+        scrolledwindow.set_policy(hscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
+                                  vscrollbar_policy=Gtk.PolicyType.AUTOMATIC)
+        scrolledwindow.add(page)
+        sidebar_row = _make_items_sidebar(page_obj["title"])
+        app.window.sidebar.add(sidebar_row)
+        stack.add_named(scrolledwindow, page_obj["title"])
 
 
 class BaseGrid(Gtk.Grid):
@@ -547,7 +661,7 @@ class SettingsLabel(Gtk.Label):
 
 class SectionContainer(Gtk.Frame):
 
-    def __init__(self, title):
+    def __init__(self, title, warning_message=None):
         Gtk.Frame.__init__(self)
         self.set_shadow_type(Gtk.ShadowType.IN)
 
@@ -565,6 +679,28 @@ class SectionContainer(Gtk.Frame):
         title_holder = Gtk.ToolItem()
         title_holder.add(label)
         toolbar.add(title_holder)
+
+        dummy = BaseGrid()
+        dummy.set_property("hexpand", True)
+        dummy.set_property("vexpand", False)
+        dummy_holder = Gtk.ToolItem()
+        dummy_holder.set_expand(True)
+        dummy_holder.add(dummy)
+        toolbar.add(dummy_holder)
+
+        if warning_message is not None:
+            # Using set_image on button adds an un-removable padding.
+            # Setting the image as argument doesn't. ¬¬
+            button = Gtk.Button(image=Gtk.Image.new_from_icon_name(
+                "dialog-warning-symbolic", Gtk.IconSize.BUTTON))
+            button.get_style_context().add_class("cinnamon-tweaks-section-warning-button")
+            button.set_relief(Gtk.ReliefStyle.NONE)
+            button.set_tooltip_text(_("Warnings related to this specific section"))
+            button.connect("clicked", display_warning_message, title, warning_message)
+            button_holder = Gtk.ToolItem()
+            button_holder.add(button)
+            toolbar.add(button_holder)
+
         self.box.attach(toolbar, 0, 0, 2, 1)
 
         self.need_separator = False
@@ -588,154 +724,23 @@ class SectionContainer(Gtk.Frame):
         self.need_separator = True
 
 
-class SettingsBox(BaseGrid):
-
-    def __init__(self):
-        BaseGrid.__init__(self)
-        self.set_border_width(0)
-        self.set_spacing(0, 0)
-        self.set_property("expand", True)
-        self.set_property("margin", 0)
-
-        pages_object = [
-            APPLETS_TAB,
-            DESKLETS_TAB,
-            HOTCORNERS_TAB,
-            DESKTOP_TAB,
-            NOTIFICATIONS_TAB,
-            WINDOWS_TAB,
-        ]
-
-        stack = Gtk.Stack()
-        stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
-        stack.set_transition_duration(150)
-        stack.set_property("margin", 0)
-        stack.set_property("expand", True)
-
-        page_count = 0
-        for page_obj in pages_object:
-            # Possibility to hide entire pages
-            try:
-                if page_obj["compatible"] is False:
-                    continue
-            except KeyError:  # If "compatible" key isn't set.
-                pass
-
-            page = BaseGrid()
-            page.set_spacing(15, 15)
-            page.set_property("expand", True)
-            page.set_property("margin-top", 15)
-            page.set_property("margin-left", 15)
-            page.set_property("margin-right", 15)
-            page.set_border_width(0)
-
-            info_label = Widgets().info_label(
-                _("Settings marked with (*) needs Cinnamon restart to take effect"),
-                bold=True,
-                italic=True
-            )
-            info_label.set_valign(Gtk.Align.CENTER)
-
-            page.attach(info_label, 0, 0, 1, 1)
-
-            img_restart_cinn = Gtk.Image()
-            img_restart_cinn.set_from_stock(Gtk.STOCK_REFRESH, Gtk.IconSize.MENU)
-            btn_restart_cinn = Gtk.Button()
-            btn_restart_cinn.set_property("image", img_restart_cinn)
-            btn_restart_cinn.set_tooltip_text(_("Restart Cinnamon"))
-            btn_restart_cinn.connect("clicked", self._restart_cinnamon)
-
-            page.attach(btn_restart_cinn, 1, 0, 1, 1)
-
-            section_count = 0
-            for section_obj in page_obj["sections"]:
-                # Possibility to hide entire sections
-                try:
-                    if section_obj["compatible"] is False:
-                        continue
-                except KeyError:  # If "compatible" key isn't set.
-                    pass
-
-                section_container = SectionContainer(section_obj["title"])
-
-                SECTION_WIDGETS = section_obj["widgets"]
-
-                row_pos = 1
-                for i in range(0, len(SECTION_WIDGETS)):
-                    section_widget_obj = SECTION_WIDGETS[i]
-
-                    # Possibility to hide individual widgets
-                    try:
-                        if section_widget_obj["compatible"] is False:
-                            continue
-                    except KeyError:  # If "compatible" key isn't set.
-                        pass
-
-                    widget_obj = getattr(Widgets, section_widget_obj["type"])
-                    widget = widget_obj(Widgets(), **section_widget_obj["args"])
-
-                    if section_widget_obj["type"] is not "keybindings_tree":
-                        widget.set_border_width(5)
-                        widget.set_margin_left(15)
-                        widget.set_margin_right(15)
-
-                    try:
-                        dep_key = section_widget_obj["dep_key"]
-
-                        if Settings().settings_has_key(dep_key):
-                            Settings().get_settings().bind(
-                                dep_key, widget, "sensitive", Gio.SettingsBindFlags.GET)
-                        else:
-                            print(
-                                "Ignoring dependency on key '%s': no such key in the schema" % dep_key)
-                    except (NameError, KeyError):
-                        pass
-
-                    section_container.add_row(widget, 0, i + 1, 1, 1)
-
-                if section_count is not 0:
-                    row_pos = len(SECTION_WIDGETS) + row_pos
-                else:
-                    row_pos = row_pos
-
-                page.attach(section_container, 0, row_pos, 2, 1)
-                row_pos += 1
-                section_count += 1
-
-            page_count += 1
-            stack.add_titled(page, "stack_id_%s" % str(page_count), page_obj["title"])
-
-        stack_switcher = Gtk.StackSwitcher()
-        stack_switcher.set_stack(stack)
-        stack_switcher.set_halign(Gtk.Align.CENTER)
-        stack_switcher.set_homogeneous(False)
-        app.toolbar_box.attach(stack_switcher, 1, 0, 1, 1)
-
-        self.attach(stack, 0, 0, 1, 1)
-
-        self.show_all()
-
-    def _restart_cinnamon(self, widget):
-        os.system("nohup cinnamon --replace >/dev/null 2>&1&")
-
-
 class Settings(object):
 
-    ''' Get settings values using gsettings '''
+    """ Get settings values using gsettings """
 
     _settings = None
 
     def __new__(cls, *p, **k):
-        ''' Implementation of the borg pattern
+        """ Implementation of the borg pattern
         This way we make sure that all instances share the same state
         and that the schema is read from file only once.
-        '''
+        """
         if "_the_instance" not in cls.__dict__:
             cls._the_instance = object.__new__(cls)
         return cls._the_instance
 
     def set_settings(self, schema_name):
-        ''' Get settings values from corresponding schema file '''
+        """ Get settings values from corresponding schema file """
 
         # Try to get schema from local installation directory
         schemas_dir = "%s/schemas" % EXTENSION_DIR
@@ -757,10 +762,24 @@ class Settings(object):
 
 class Widgets():
 
-    ''' Build widgets associated with gsettings values '''
+    """ Build widgets associated with gsettings values """
+
+    def boolean_button(self, key, label, tooltip=""):
+        """ Styled label widget widget """
+        box = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
+        box.set_spacing(10, 10)
+
+        button = Gtk.Button(label)
+        button.set_property("expand", True)
+        button.connect("clicked", self.on_boolean_button_clicked, key)
+        box.attach(button, 0, 0, 2, 1)
+        return box
+
+    def on_boolean_button_clicked(self, widget, key):
+        Settings().get_settings().set_boolean(key, not Settings().get_settings().get_boolean(key))
 
     def info_label(self, label, bold=False, italic=False):
-        ''' Styled label widget widget '''
+        """ Styled label widget widget """
         box = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(10, 10)
 
@@ -786,7 +805,7 @@ class Widgets():
         return FileChooser(key, label, select_dir, tooltip)
 
     def entry(self, key, label, tooltip=""):
-        ''' Entry text widget '''
+        """ Entry text widget """
         box = BaseGrid(tooltip=tooltip, orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(10, 10)
 
@@ -805,15 +824,23 @@ class Widgets():
         Settings().get_settings().set_string(key, widget.get_text())
 
     def keybindings_tree(self, keybindings):
-        ''' Keybinding tree widget '''
+        """ Keybinding tree widget """
         return KeybindingsTreeViewWidget(keybindings)
 
-    def custom_shadow_setter(self, key, label, data):
-        ''' CustomShadowSetter widget '''
-        return CustomShadowSetter(key, label, data)
+    def custom_shadow_setter(self, key, label):
+        """ CustomShadowSetter widget """
+        return CustomShadowSetter(key, label)
+
+    def auto_moved_windows_setter(self, key, label):
+        """ AutoMovedWindowsSetter widget """
+        return AutoMovedWindowsSetter(key, label)
+
+    def maximus_applications_chooser(self, key, label):
+        """ MaximusApplicationSetter widget """
+        return MaximusApplicationSetter(key, label)
 
     def combo(self, key, label, values, tooltip=""):
-        ''' Combo box widget '''
+        """ Combo box widget """
         box = BaseGrid(tooltip=tooltip, orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(10, 10)
 
@@ -836,7 +863,7 @@ class Widgets():
         Settings().get_settings().set_string(key, widget.get_active_id())
 
     def slider(self, key, label, min, max, step, tooltip=""):
-        ''' Slider widget '''
+        """ Slider widget """
         box = BaseGrid(tooltip=tooltip, orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(10, 10)
 
@@ -857,7 +884,7 @@ class Widgets():
         Settings().get_settings().set_int(key, widget.get_value())
 
     def spin(self, key, label, min, max, step, units, tooltip=""):
-        ''' Spin widget '''
+        """ Spin widget """
         if units:
             label += " (%s)" % units
 
@@ -880,7 +907,7 @@ class Widgets():
         Settings().get_settings().set_int(key, widget.get_value())
 
     def textview(self, key, label, height=200, tooltip=""):
-        ''' Textview widget '''
+        """ Textview widget """
         box = BaseGrid(tooltip=tooltip, orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(10, 10)
 
@@ -916,7 +943,7 @@ class Widgets():
 
 class Switch(BaseGrid):
 
-    ''' Switch widget '''
+    """ Switch widget """
 
     def __init__(self, key, label, tooltip=""):
         BaseGrid.__init__(self, tooltip=tooltip, orientation=Gtk.Orientation.HORIZONTAL)
@@ -942,7 +969,7 @@ class Switch(BaseGrid):
 
 class FileChooser(BaseGrid):
 
-    ''' FileChooser widget '''
+    """ FileChooser widget """
 
     def __init__(self, key, label, select_dir=False, tooltip=""):
         BaseGrid.__init__(self, tooltip=tooltip, orientation=Gtk.Orientation.HORIZONTAL)
@@ -1014,18 +1041,84 @@ class FileChooser(BaseGrid):
 
 class CustomShadowSetter(Gtk.Button):
 
-    ''' CustomShadowSetter widget '''
+    """ CustomShadowSetter widget """
 
-    def __init__(self, key, label, data):
+    def __init__(self, key, label):
         Gtk.Button.__init__(self, label)
         self.connect("clicked", self.open_custom_shadows_editor)
 
         self.custom_preset = None
         self._key = key
-        self._shadow_classes = sorted(data["shadow_classes"])
-        self.data = data
+        self._shadow_classes = sorted([
+            "normal",
+            "dialog",
+            "modal_dialog",
+            "utility",
+            "border",
+            "menu",
+            "popup-menu",
+            "dropdown-menu",
+            "attached"
+        ])
+        self.default_shadow_values = {
+            "focused": {
+                "normal": [6, -1, 0, 3, 255],
+                "dialog": [6, -1, 0, 3, 255],
+                "modal_dialog": [6, -1, 0, 1, 255],
+                "utility": [3, -1, 0, 1, 255],
+                "border": [6, -1, 0, 3, 255],
+                "menu": [6, -1, 0, 3, 255],
+                "popup-menu": [1, -1, 0, 1, 128],
+                "dropdown-menu": [1, 10, 0, 1, 128],
+                "attached": [6, -1, 0, 1, 255]
+            },
+            "unfocused": {
+                "normal": [3, -1, 0, 3, 128],
+                "dialog": [3, -1, 0, 3, 128],
+                "modal_dialog": [3, -1, 0, 3, 128],
+                "utility": [3, -1, 0, 1, 128],
+                "border": [3, -1, 0, 3, 128],
+                "menu": [3, -1, 0, 0, 128],
+                "popup-menu": [1, -1, 0, 1, 128],
+                "dropdown-menu": [1, 10, 0, 1, 128],
+                "attached": [3, -1, 0, 3, 128]
+            }
+        }
+        self.pages = [
+            "focused",
+            "unfocused"
+        ]
+        self.pages_labels = {
+            "focused": _("Focused windows"),
+            "unfocused": _("Unfocused windows")
+        }
+        self.shadow_classes_labels = {
+            "normal": _("Normal"),
+            "dialog": _("Dialog"),
+            "modal_dialog": _("Modal dialog"),
+            "utility": _("Utility"),
+            "border": _("Border"),
+            "menu": _("Menu"),
+            "popup-menu": _("Popup menu"),
+            "dropdown-menu": _("Dropdown menu"),
+            "attached": _("Attached"),
+        }
+        self.shadow_values = [
+            "radius",
+            "top_fade",
+            "x_offset",
+            "y_offset",
+            "opacity"
+        ]
+        self.shadow_values_labels = {
+            "radius": _("Radius"),
+            "top_fade": _("Top fade"),
+            "x_offset": _("X offset"),
+            "y_offset": _("Y offset"),
+            "opacity": _("Opacity")
+        }
 
-        self.COLUMNS = {
+        self.columns = {
             "LABEL": 0,
             "RADIUS": 1,
             "TOP_FADE": 2,
@@ -1061,7 +1154,7 @@ class CustomShadowSetter(Gtk.Button):
         stack.set_property("expand", True)
 
         page_count = 0
-        for status in self.data["pages"]:
+        for status in self.pages:
             page = BaseGrid()
             page.set_property("margin", 0)
             page.set_spacing(15, 15)
@@ -1109,9 +1202,9 @@ class CustomShadowSetter(Gtk.Button):
 
             page.attach(button_box, 0, 1, 1, 1)
 
-            for i in range(0, len(self.data["shadow_values"])):
+            for i in range(0, len(self.shadow_values)):
                 spin_renderer = Gtk.CellRendererSpin()
-                shadow_value = self.data["shadow_values"][i]
+                shadow_value = self.shadow_values[i]
 
                 if shadow_value == "top_fade":
                     adjustment = Gtk.Adjustment(lower=-100, upper=100, step_increment=1)
@@ -1128,14 +1221,14 @@ class CustomShadowSetter(Gtk.Button):
                 spin_col = Gtk.TreeViewColumn()
                 spin_col.set_alignment(0.5)
                 spin_col.set_min_width(110)
-                spin_col.set_property("title", _(self.data["shadow_values_labels"][shadow_value]))
+                spin_col.set_property("title", _(self.shadow_values_labels[shadow_value]))
                 spin_col.pack_end(spin_renderer, False)
                 spin_col.add_attribute(spin_renderer, "text", i + 1)
                 t_v.append_column(spin_col)
 
             page_count += 1
             stack.add_titled(page, "stack_id_%s" %
-                             str(page_count), self.data["pages_labels"][status])
+                             str(page_count), self.pages_labels[status])
 
         stack_switcher = Gtk.StackSwitcher()
         stack_switcher.set_stack(stack)
@@ -1195,7 +1288,7 @@ class CustomShadowSetter(Gtk.Button):
         dialog.destroy()
 
         if response == Gtk.ResponseType.YES:
-            self.custom_preset[status] = self.data["default_shadow_values"][status]
+            self.custom_preset[status] = self.default_shadow_values[status]
 
             self.save_and_apply(self)
 
@@ -1235,7 +1328,7 @@ class CustomShadowSetter(Gtk.Button):
             pass
 
     def _populate(self):
-        for status in self.data["pages"]:
+        for status in self.pages:
             self.store[status].clear()
 
             for shadow_class in self._shadow_classes:
@@ -1244,15 +1337,15 @@ class CustomShadowSetter(Gtk.Button):
                 self.store[status].set(
                     iter,
                     [
-                        self.COLUMNS["LABEL"],
-                        self.COLUMNS["RADIUS"],
-                        self.COLUMNS["TOP_FADE"],
-                        self.COLUMNS["X_OFFSET"],
-                        self.COLUMNS["Y_OFFSET"],
-                        self.COLUMNS["OPACITY"]
+                        self.columns["LABEL"],
+                        self.columns["RADIUS"],
+                        self.columns["TOP_FADE"],
+                        self.columns["X_OFFSET"],
+                        self.columns["Y_OFFSET"],
+                        self.columns["OPACITY"]
                     ],
                     [
-                        self.data["shadow_classes_labels"][shadow_class],
+                        self.shadow_classes_labels[shadow_class],
                         values[0],
                         values[1],
                         values[2],
@@ -1261,9 +1354,672 @@ class CustomShadowSetter(Gtk.Button):
                     ])
 
 
+class AppChooserWidget(Gtk.Dialog):
+
+    """
+    Provide a dialog to select an application from all those installed.
+
+    The regular Gtk.AppChooserDialog does not seem to provide any way to allow
+    selection from all installed applications, so this dialog serves as a replacement.
+
+    Source:
+    http://stackoverflow.com/a/41985006
+    Can be reused.
+    Usage:
+
+    Open application chooser dialog.
+    app_chooser = AppChooserWidget()
+    applications = app_chooser.run()
+
+    applications is an array/list of Gio.AppInfo objects.
+
+    Launch application:
+    applications[index].launch()
+    """
+
+    def __init__(self, parent=None, multi_selection=False, show_no_display=True):
+        super().__init__(self,
+                         title=_("Application Chooser"),
+                         transient_for=parent,
+                         flags=Gtk.DialogFlags.MODAL)
+
+        self.set_default_size(350, 400)
+        self.set_icon_name("gtk-search")
+        self.multi_selection = multi_selection
+        self.show_no_display = show_no_display
+
+        content_box = self.get_content_area()
+        content_box.set_property("margin", 8)
+        content_box.set_spacing(8)
+        content_box_grid = BaseGrid()
+        content_box_grid.set_property("expand", True)
+        content_box_grid.set_spacing(0, 5)
+        content_box.add(content_box_grid)
+
+        self.button_box = self.get_action_area()
+        self.button_box.set_property("margin", 4)
+
+        # Can be programmatically changed if needed.
+        self.label = Gtk.Label(_("Choose An Application"))
+        content_box_grid.attach(self.label, 0, 0, 1, 1)
+
+        self.list_store = Gtk.ListStore()
+        # Switched from [str, str, int] model to the current one because I was
+        # having a lot of missing icons for applications.
+        self.list_store.set_column_types([GObject.TYPE_STRING, Gio.Icon, GObject.TYPE_INT])
+
+        pixbuf_renderer = Gtk.CellRendererPixbuf()
+        text_renderer = Gtk.CellRendererText()
+        icon_column = Gtk.TreeViewColumn()
+        icon_column.pack_start(pixbuf_renderer, False)
+        icon_column.add_attribute(pixbuf_renderer, "gicon", 1)
+        text_column = Gtk.TreeViewColumn("text", text_renderer, text=0)
+
+        self.tree_view = Gtk.TreeView()
+
+        if self.multi_selection:
+            self.tree_view.get_selection().set_mode(Gtk.SelectionMode.MULTIPLE)
+        else:
+            self.tree_view.get_selection().set_mode(Gtk.SelectionMode.SINGLE)
+
+        self.tree_view.set_model(self.list_store)
+        self.tree_view.set_headers_visible(False)
+        self.tree_view.append_column(icon_column)
+        self.tree_view.append_column(text_column)
+
+        scroll_window = Gtk.ScrolledWindow()
+        scroll_window.set_property("expand", True)
+        scroll_window.set_shadow_type(type=Gtk.ShadowType.IN)
+        scroll_window.add(self.tree_view)
+        content_box_grid.attach(scroll_window, 0, 1, 1, 1)
+
+        self.ok_button = self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        self.ok_button.connect("clicked", self.on_ok)
+
+        self.cancel_button = self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+
+        self.selected_apps = []
+        self.app_list = []
+
+    def populate_app_list(self):
+        """Populate the list of applications with all installed applications.
+
+        <strikethrough>Icons are provided by icon-name, however some applications may return a full
+        path to a custom icon rather than a themed-icon name, or even no name
+        at all. In these cases the generic "gtk-missing-icon" icon is used.</strikethrough>
+
+        Odyseus note: I switched to a Gio.Icon. Simply because that's what Gio.AppInfo provides.
+        And the icon is practically guaranteed to show up be it a named icon or a path to an image.
+
+        """
+
+        # I added this filter because there are more that 200 screen savers in Linux Mint. ¬¬
+        # They were unnecessarily slowing the heck out the loading of the list of applications.
+        # At this point in time, none of the tweaks that makes use of this AppChooserWidget
+        # would require to choose a screen saver from the list, so I happily ignore them for now.
+        def filter_list(x):
+            #  if "screensaver" in str(x.get_id()).lower():
+            # I think that is more precise to check the start of the app ID. (?)
+            # The following condition filters out all .desktop files that
+            # are inside a folder called "screensavers".
+            if str(x.get_id()).lower().startswith("screensavers-"):
+                return False
+
+            if self.show_no_display:
+                return True
+            else:
+                return not x.get_nodisplay()
+
+        self.app_list = list(filter(filter_list, Gio.AppInfo.get_all()))
+
+        for i in range(0, len(self.app_list)):
+            app = self.app_list[i]
+
+            if app.get_nodisplay():
+                continue
+
+            gio_icon = app.get_icon()
+
+            if gio_icon:
+                app_icon = gio_icon
+            else:
+                app_icon = Gio.Icon.new_for_string("gtk-missing-icon")
+
+            app_name = app.get_display_name()
+            iter = self.list_store.append()
+            self.list_store.set(iter,
+                                [0, 1, 2],
+                                [app_name, app_icon, i])
+
+        self.list_store.set_sort_column_id(0, Gtk.SortType.ASCENDING)
+
+    def run(self):
+        """Run the dialog to get a selected application."""
+        self.populate_app_list()
+        self.show_all()
+        super().run()
+        self.destroy()
+        return self.selected_apps
+
+    def set_label(self, text):
+        """Set the label text, \"Choose An Application\" by default."""
+        self.label.set_text(text)
+
+    def on_ok(self, button):
+        """Get Gio.AppInfo of selected application when user presses OK."""
+        selection = self.tree_view.get_selection()
+        tree_model, paths = selection.get_selected_rows()
+
+        for path in paths:
+            tree_iter = tree_model.get_iter(path)
+            app_index = tree_model.get_value(tree_iter, 2)
+            self.selected_apps.append(self.app_list[app_index])
+
+
+class MaximusApplicationSetter(Gtk.Button):
+
+    """ MaximusApplicationSetter widget"""
+
+    def __init__(self, key, label):
+        Gtk.Button.__init__(self, label)
+        self.connect("clicked", self.open_applications_list)
+        self._settings = Settings().get_settings()
+        self._key = key
+        self.columns = {
+            "APPINFO": 0,
+            "DISPLAY_NAME": 1,
+            "ICON": 2
+        }
+
+    def open_applications_list(self, widget):
+        dialog = Gtk.Dialog(transient_for=self.get_toplevel(),
+                            title=_("Applications list"),
+                            flags=Gtk.DialogFlags.MODAL)
+
+        content_area = dialog.get_content_area()
+        content_area_grid = BaseGrid()
+        content_area_grid.set_spacing(0, 0)
+        content_area_grid.set_property("margin", 10)
+        content_area.add(content_area_grid)
+
+        self._settings.connect("changed::%s" % self._key, self._refresh)
+        self._changedPermitted = False
+
+        self._store = Gtk.ListStore()
+        self._store.set_column_types([Gio.AppInfo, GObject.TYPE_STRING, Gio.Icon])
+
+        scrolled = Gtk.ScrolledWindow(hadjustment=None, vadjustment=None)
+        scrolled.set_size_request(width=300, height=300)
+        scrolled.set_shadow_type(type=Gtk.ShadowType.IN)
+        scrolled.set_policy(hscrollbar_policy=Gtk.PolicyType.NEVER,
+                            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC)
+        content_area_grid.attach(scrolled, 0, 0, 1, 1)
+
+        self._treeView = Gtk.TreeView()
+        self._treeView.set_property("model", self._store)
+        self._treeView.set_property("expand", True)
+        self._treeView.get_selection().set_mode(Gtk.SelectionMode.SINGLE)
+
+        appColumn = Gtk.TreeViewColumn()
+        appColumn.set_property("title", _("Application"))
+        appColumn.set_property("expand", True)
+        appColumn.set_sort_column_id(self.columns["DISPLAY_NAME"])
+        appColumn.set_sort_indicator(True)
+
+        iconRenderer = Gtk.CellRendererPixbuf()
+        appColumn.pack_start(iconRenderer, False)
+        appColumn.add_attribute(iconRenderer, "gicon", self.columns["ICON"])
+        nameRenderer = Gtk.CellRendererText()
+        appColumn.pack_start(nameRenderer, True)
+        appColumn.add_attribute(nameRenderer, "text", self.columns["DISPLAY_NAME"])
+        self._treeView.append_column(appColumn)
+
+        scrolled.add(self._treeView)
+
+        toolbar = Gtk.Toolbar()
+        toolbar.set_icon_size(Gtk.IconSize.SMALL_TOOLBAR)
+        toolbar.get_style_context().add_class(Gtk.STYLE_CLASS_INLINE_TOOLBAR)
+        content_area_grid.attach(toolbar, 0, 1, 1, 1)
+
+        newButton = Gtk.ToolButton()
+        newButton.set_icon_name("bookmark-new-symbolic")
+        newButton.set_label(_("Add Application"))
+        newButton.set_is_important(True)
+        newButton.connect("clicked", self._addApplication)
+        toolbar.add(newButton)
+
+        delButton = Gtk.ToolButton()
+        delButton.set_icon_name("edit-delete-symbolic")
+        delButton.connect("clicked", self._deleteSelected)
+        toolbar.add(delButton)
+
+        selection = self._treeView.get_selection()
+
+        def setDelButtonSensitive(sel):
+            delButton.sensitive = sel.count_selected_rows() > 0
+
+        selection.connect("changed", setDelButtonSensitive)
+        delButton.sensitive = selection.count_selected_rows() > 0
+
+        self._changedPermitted = True
+        self._refresh(self)
+
+        content_area.show_all()
+        dialog.run()
+
+        dialog.destroy()
+        return None
+
+    def _addApplication(self, widget):
+        """ I had to redesign this because Gtk.AppChooserWidget doesn't list even
+        half of the applications that are installed in the system!!! ¬¬
+        """
+        app_chooser = AppChooserWidget(
+            parent=self.get_toplevel(),
+            multi_selection=True)
+        app_chooser.set_label(_("Choose one or more applications (Hold Ctrl key)"))
+        appsInfo = app_chooser.run()
+
+        if appsInfo is not None and len(appsInfo) > 0:
+            self.on_add_app_dialog_response(appsInfo)
+
+    def _appendItem(self, id):
+        currentApplications = self._settings.get_strv(self._key)
+        currentApplications.append(str(id))
+        self._settings.set_strv(self._key, currentApplications)
+
+    def on_add_app_dialog_response(self, appsInfo):
+        if not appsInfo or len(appsInfo) <= 0:
+            return
+
+        self._changedPermitted = False
+
+        for a_i in appsInfo:
+            self._appendItem(a_i.get_id())
+
+            iter = self._store.append()
+
+            self._store.set(iter, [
+                self.columns["APPINFO"],
+                self.columns["ICON"],
+                self.columns["DISPLAY_NAME"]
+            ], [
+                a_i,
+                a_i.get_icon(),
+                a_i.get_display_name()
+            ])
+
+        self._changedPermitted = True
+
+    def _deleteSelected(self, widget):
+        [model, iter] = self._treeView.get_selection().get_selected()
+        # This doesn't work. ¬¬ Is the exact same method returning totally different
+        # values in JavaScript and in Python? Who knows!?
+        # [any, model, iter] = self._treeView.get_selection().get_selected()
+
+        # if any:
+        if iter:
+            appInfo = self._store.get_value(iter, self.columns["APPINFO"])
+
+            self._changedPermitted = False
+            self._removeItem(appInfo.get_id())
+            self._changedPermitted = True
+            self._store.remove(iter)
+
+    def _removeItem(self, id):
+        currentApplications = self._settings.get_strv(self._key)
+
+        index = currentApplications.index(id)
+
+        if (index < 0):
+            return
+
+        # currentApplications.splice(index, 1)
+        # I love how Python is designed to be readable. ¬¬
+        currentApplications = currentApplications[:index] + currentApplications[index + 1:]
+        self._settings.set_strv(self._key, currentApplications)
+
+    def _refresh(self, widget, data=None):
+        if not self._changedPermitted:
+            # Ignore this notification, model is being modified outside
+            return
+
+        self._store.clear()
+
+        currentApplications = self._settings.get_strv(self._key)
+        validApplications = []
+        for i in range(0, len(currentApplications)):
+            id = currentApplications[i]
+
+            # Needed just in case there is an application in the list and then
+            # that application is uninstalled.
+            # If the application doesn't exists anymore, the first dialog
+            # will fail to open.
+            try:
+                appInfo = Gio.DesktopAppInfo.new(id)
+            except:
+                appInfo = None
+
+            if not appInfo:
+                continue
+
+            validApplications.append(currentApplications[i])
+
+            iter = self._store.append()
+
+            self._store.set(iter, [
+                self.columns["APPINFO"],
+                self.columns["ICON"],
+                self.columns["DISPLAY_NAME"]
+            ], [
+                appInfo,
+                appInfo.get_icon(),
+                appInfo.get_display_name()
+            ])
+
+        if (len(validApplications) != len(currentApplications)):  # some items were filtered out
+            self._settings.set_strv(self._key, validApplications)
+
+        # The following line auto sorts the list at start up!!! Finally!!!
+        self._store.set_sort_column_id(self.columns["DISPLAY_NAME"], Gtk.SortType.ASCENDING)
+
+
+class AutoMovedWindowsSetter(Gtk.Button):
+
+    """ AutoMovedWindowsSetter widget
+
+    This class is based on the pref.js file found on the gnome-shell extension called Auto Move Windows.
+    https://github.com/GNOME/gnome-shell-extensions/blob/master/extensions/auto-move-windows/prefs.js
+    """
+
+    def __init__(self, key, label):
+        Gtk.Button.__init__(self, label)
+        self.connect("clicked", self.open_rules_editor)
+        self._settings = Settings().get_settings()
+        self._key = key
+        # compiled in limit of mutter - Original comment
+        # Which must mean that the maximum number of workspaces
+        # is hard-coded in mutter's/muffin's source code.
+        self.max_number_workspaces = 36
+        self.columns = {
+            "APPINFO": 0,
+            "DISPLAY_NAME": 1,
+            "ICON": 2,
+            "WORKSPACE": 3,
+            "ADJUSTMENT": 4
+        }
+
+    def open_rules_editor(self, widget):
+        dialog = Gtk.Dialog(transient_for=self.get_toplevel(),
+                            title=_("Auto move windows rules"),
+                            flags=Gtk.DialogFlags.MODAL)
+
+        content_area = dialog.get_content_area()
+        content_area_grid = BaseGrid()
+        content_area_grid.set_spacing(0, 0)
+        content_area_grid.set_property("margin", 10)
+        content_area.add(content_area_grid)
+
+        self._settings.connect("changed::window-auto-move-application-list", self._refresh)
+        self._changedPermitted = False
+
+        self._store = Gtk.ListStore()
+        self._store.set_column_types([Gio.AppInfo, GObject.TYPE_STRING, Gio.Icon, GObject.TYPE_INT,
+                                      Gtk.Adjustment])
+
+        scrolled = Gtk.ScrolledWindow(hadjustment=None, vadjustment=None)
+        scrolled.set_size_request(width=300, height=300)
+        scrolled.set_shadow_type(type=Gtk.ShadowType.IN)
+        scrolled.set_policy(hscrollbar_policy=Gtk.PolicyType.NEVER,
+                            vscrollbar_policy=Gtk.PolicyType.AUTOMATIC)
+        content_area_grid.attach(scrolled, 0, 0, 1, 1)
+
+        self._treeView = Gtk.TreeView()
+        self._treeView.set_property("model", self._store)
+        self._treeView.set_property("expand", True)
+        self._treeView.get_selection().set_mode(Gtk.SelectionMode.SINGLE)
+
+        appColumn = Gtk.TreeViewColumn()
+        appColumn.set_property("title", _("Application"))
+        appColumn.set_property("expand", True)
+        appColumn.set_sort_column_id(self.columns["DISPLAY_NAME"])
+        appColumn.set_sort_indicator(True)
+
+        iconRenderer = Gtk.CellRendererPixbuf()
+        appColumn.pack_start(iconRenderer, False)
+        appColumn.add_attribute(iconRenderer, "gicon", self.columns["ICON"])
+        nameRenderer = Gtk.CellRendererText()
+        appColumn.pack_start(nameRenderer, True)
+        appColumn.add_attribute(nameRenderer, "text", self.columns["DISPLAY_NAME"])
+        self._treeView.append_column(appColumn)
+
+        workspaceColumn = Gtk.TreeViewColumn()
+        workspaceColumn.set_property("title", _("Workspace"))
+        workspaceColumn.set_sort_column_id(self.columns["WORKSPACE"])
+        workspaceRenderer = Gtk.CellRendererSpin()
+        workspaceRenderer.set_property("editable", True)
+        workspaceRenderer.connect("edited", self._workspaceEdited)
+        workspaceColumn.pack_start(workspaceRenderer, True)
+        workspaceColumn.add_attribute(workspaceRenderer, "adjustment",
+                                      self.columns["ADJUSTMENT"])
+        workspaceColumn.add_attribute(workspaceRenderer, "text", self.columns["WORKSPACE"])
+        self._treeView.append_column(workspaceColumn)
+
+        scrolled.add(self._treeView)
+
+        toolbar = Gtk.Toolbar()
+        toolbar.set_icon_size(Gtk.IconSize.SMALL_TOOLBAR)
+        toolbar.get_style_context().add_class(Gtk.STYLE_CLASS_INLINE_TOOLBAR)
+        content_area_grid.attach(toolbar, 0, 1, 1, 1)
+
+        newButton = Gtk.ToolButton()
+        newButton.set_icon_name("bookmark-new-symbolic")
+        newButton.set_label(_("Add Rule"))
+        newButton.set_is_important(True)
+        newButton.connect("clicked", self._createNewRule)
+        toolbar.add(newButton)
+
+        delButton = Gtk.ToolButton()
+        delButton.set_icon_name("edit-delete-symbolic")
+        delButton.connect("clicked", self._deleteSelected)
+        toolbar.add(delButton)
+
+        selection = self._treeView.get_selection()
+
+        def setDelButtonSensitive(sel):
+            delButton.sensitive = sel.count_selected_rows() > 0
+
+        selection.connect("changed", setDelButtonSensitive)
+        delButton.sensitive = selection.count_selected_rows() > 0
+
+        self._changedPermitted = True
+        self._refresh(self)
+
+        content_area.show_all()
+        dialog.run()
+
+        dialog.destroy()
+        return None
+
+    def _createNewRule(self, widget):
+        """ I had to redesign this because Gtk.AppChooserWidget doesn't list even
+        half of the applications that are installed in the system!!! ¬¬
+        """
+        app_chooser = AppChooserWidget(
+            parent=self.get_toplevel(),
+            multi_selection=True)
+        app_chooser.set_label(_("Choose one or more applications (Hold Ctrl key)"))
+        appsInfo = app_chooser.run()
+
+        if appsInfo is not None and len(appsInfo) > 0:
+            self.on_add_app_dialog_response(appsInfo)
+
+    def on_add_app_dialog_response(self, appsInfo):
+        if not appsInfo or len(appsInfo) <= 0:
+            return
+
+        workspace = 1
+
+        self._changedPermitted = False
+
+        for a_i in appsInfo:
+            self._appendItem(a_i.get_id(), workspace)
+
+            iter = self._store.append()
+            adj = Gtk.Adjustment(lower=1,
+                                 upper=self.max_number_workspaces,
+                                 step_increment=1,
+                                 value=workspace)
+
+            self._store.set(iter, [
+                self.columns["APPINFO"],
+                self.columns["ICON"],
+                self.columns["DISPLAY_NAME"],
+                self.columns["WORKSPACE"],
+                self.columns["ADJUSTMENT"]
+            ], [
+                a_i,
+                a_i.get_icon(),
+                a_i.get_display_name(),
+                workspace,
+                adj
+            ])
+
+        self._changedPermitted = True
+
+    def _deleteSelected(self, widget):
+        [model, iter] = self._treeView.get_selection().get_selected()
+        # This doesn't work. ¬¬ Is the exact same method returning totally different
+        # values in JavaScript and in Python? Who knows!?
+        # [any, model, iter] = self._treeView.get_selection().get_selected()
+
+        # if any:
+        if iter:
+            appInfo = self._store.get_value(iter, self.columns["APPINFO"])
+
+            self._changedPermitted = False
+            self._removeItem(appInfo.get_id())
+            self._changedPermitted = True
+            self._store.remove(iter)
+
+    def _workspaceEdited(self, renderer, pathString, text):
+        try:
+            index = int(text)
+        except:
+            index = text
+
+        if (math.isnan(index) or index < 0):
+            index = 1
+
+        path = Gtk.TreePath.new_from_string(pathString)
+        iter = self._store.get_iter(path)
+        appInfo = self._store.get_value(iter, self.columns["APPINFO"])
+
+        self._changedPermitted = False
+        self._changeItem(appInfo.get_id(), index)
+        self._store.set_value(iter, self.columns["WORKSPACE"], index)
+        self._changedPermitted = True
+
+    def _refresh(self, widget, data=None):
+        if not self._changedPermitted:
+            # Ignore this notification, model is being modified outside
+            return
+
+        self._store.clear()
+
+        currentItems = self._settings.get_strv(self._key)
+        validItems = []
+        for i in range(0, len(currentItems)):
+            [id, workspace] = currentItems[i].split(":")
+
+            # Needed just in case there is an application in the list and then
+            # that application is uninstalled.
+            # If the application doesn't exists anymore, the first dialog
+            # will fail to open.
+            try:
+                appInfo = Gio.DesktopAppInfo.new(id)
+            except:
+                appInfo = None
+
+            if not appInfo:
+                continue
+
+            validItems.append(currentItems[i])
+
+            iter = self._store.append()
+            adj = Gtk.Adjustment(lower=1,
+                                 upper=self.max_number_workspaces,
+                                 step_increment=1,
+                                 value=int(workspace))
+
+            self._store.set(iter, [
+                self.columns["APPINFO"],
+                self.columns["ICON"],
+                self.columns["DISPLAY_NAME"],
+                self.columns["WORKSPACE"],
+                self.columns["ADJUSTMENT"]
+            ], [
+                appInfo,
+                appInfo.get_icon(),
+                appInfo.get_display_name(),
+                int(workspace),
+                adj
+            ])
+
+        if (len(validItems) != len(currentItems)):  # some items were filtered out
+            self._settings.set_strv(self._key, validItems)
+
+        # The following line auto sorts the list at start up!!! Finally!!!
+        self._store.set_sort_column_id(self.columns["DISPLAY_NAME"], Gtk.SortType.ASCENDING)
+
+    def _checkId(self, id):
+        items = self._settings.get_strv(self._key)
+        return not any(i.startswith(id + ":") for i in items)
+
+    def _appendItem(self, id, workspace):
+        currentItems = self._settings.get_strv(self._key)
+        currentItems.append(str(id) + ":" + str(workspace))
+        self._settings.set_strv(self._key, currentItems)
+
+    def _removeItem(self, id):
+        currentItems = self._settings.get_strv(self._key)
+
+        def get_app_ids_from_array(el):
+            return el.split(":")[0]
+
+        array = list(map(get_app_ids_from_array, currentItems))
+
+        index = array.index(id)
+
+        if (index < 0):
+            return
+
+        # currentItems.splice(index, 1)
+        # I love how Python is designed to be readable. ¬¬
+        currentItems = currentItems[:index] + currentItems[index + 1:]
+        self._settings.set_strv(self._key, currentItems)
+
+    def _changeItem(self, id, workspace):
+        currentItems = self._settings.get_strv(self._key)
+
+        def get_app_ids_from_array(el):
+            return el.split(":")[0]
+
+        array = list(map(get_app_ids_from_array, currentItems))
+
+        index = array.index(id)
+
+        if (index < 0):
+            currentItems.append(str(id) + ":" + str(workspace))
+        else:
+            currentItems[index] = str(id) + ":" + str(workspace)
+
+        self._settings.set_strv(self._key, currentItems)
+
+
 class KeybindingsTreeViewWidget(BaseGrid):
 
-    ''' KeybindingsTreeViewWidget tree widget '''
+    """ KeybindingsTreeViewWidget tree widget """
 
     def __init__(self, keybindings):
         BaseGrid.__init__(self)
@@ -1356,97 +2112,162 @@ class KeybindingsTreeViewWidget(BaseGrid):
             ])
 
 
+class AboutDialog(Gtk.AboutDialog):
+
+    def __init__(self):
+        logo = GdkPixbuf.Pixbuf.new_from_file_at_size(
+            os.path.join(EXTENSION_DIR, "icon.png"), 64, 64)
+
+        Gtk.AboutDialog.__init__(self, transient_for=app.window)
+        data = app.extension_meta
+        self.add_credit_section(_("Contributors/Mentions:"),
+                                sorted(data["contributors"].split(","), key=self.lowered))
+        self.set_version(data["version"])
+        self.set_comments(_(data["description"]))
+        self.set_website(data["website"])
+        self.set_website_label(_(data["name"]))
+        self.set_authors(["Odyseus"])
+        self.set_logo(logo)
+        self.connect("response", self.on_response)
+
+    def lowered(self, item):
+        return item.lower()
+
+    def on_response(self, dialog, response):
+        self.destroy()
+
+
 class ExtensionPrefsWindow(Gtk.ApplicationWindow):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.settings = Settings().get_settings()
 
-class ExtensionPrefsApplication(Gtk.Application):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args,
-                         application_id=APPLICATION_ID,
-                         flags=Gio.ApplicationFlags.FLAGS_NONE,
-                         **kwargs)
-        self.application = Gtk.Application()
-
-        self.application.connect("activate", self.do_activate)
-        self.application.connect("startup", self.do_startup)
-
-    def do_activate(self):
-        self.window.present()
-
-    def do_startup(self):
-        Gtk.Application.do_startup(self)
-        self._buildUI()
-
-    # The only way I found to get the correct window size when closing the window.
-    def on_delete_event(self, widget, data=None):
-        [width, height] = self.window.get_size()
-
-        settings = Settings().get_settings()
-
-        if (settings.get_boolean("window-remember-size")):
-            settings.set_int("window-width", width)
-            settings.set_int("window-height", height)
-
-        return False
-
-    def _buildUI(self):
-        self.window = ExtensionPrefsWindow(
-            application=self, title=_("Cinnamon Tweaks extension preferences"))
-
-        if (Settings().get_settings().get_boolean("window-remember-size")):
-            width = Settings().get_settings().get_int("window-width")
-            height = Settings().get_settings().get_int("window-height")
-            self.window.set_default_size(width, height)
+        if (self.settings.get_boolean("window-remember-size")):
+            width = self.settings.get_int("window-width")
+            height = self.settings.get_int("window-height")
+            self.set_default_size(width, height)
         else:
-            self.window.set_default_size(700, 520)
+            if Gdk.Screen.get_default().get_height() < 800:
+                self.maximize()
+            else:
+                self.set_default_size(800, 480)
 
-        self.window.set_position(Gtk.WindowPosition.CENTER)
-        self.window.set_size_request(width=-1, height=-1)
-        self.window.set_icon_from_file(os.path.join(EXTENSION_DIR, "icon.png"))
-        self.window.connect("destroy", self.on_quit)
-        self.window.connect("delete_event", self.on_delete_event)
+        self.set_position(Gtk.WindowPosition.CENTER)
+        self.set_icon_from_file(os.path.join(EXTENSION_DIR, "icon.png"))
 
-        main_box = BaseGrid()
-        main_box.set_spacing(0, 0)
-        main_box.set_property("margin", 0)
-        self.window.add(main_box)
+        main_box = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
 
-        toolbar = Gtk.Toolbar()
-        toolbar.get_style_context().add_class("primary-toolbar")
-        main_box.add(toolbar)
+        left_box = self.create_sidebar()
+        right_box = self.main_content()
 
-        toolitem = Gtk.ToolItem()
-        toolitem.set_expand(True)
-        toolbar.add(toolitem)
+        main_box.attach(left_box, 0, 0, 1, 1)
+        main_box.attach(Gtk.Separator(orientation=Gtk.Orientation.VERTICAL), 1, 0, 1, 1)
+        main_box.attach(right_box, 2, 0, 1, 1)
 
-        self.toolbar_box = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
-        self.toolbar_box.set_spacing(0, 0)
-        toolbar_box_scrolledwindow = Gtk.ScrolledWindow(hadjustment=None, vadjustment=None)
-        toolbar_box_scrolledwindow.set_policy(hscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
-                                              vscrollbar_policy=Gtk.PolicyType.NEVER)
-        toolbar_box_scrolledwindow.add(self.toolbar_box)
-        toolitem.add(toolbar_box_scrolledwindow)
+        self.load_css()
 
-        dummy_grid_1 = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
-        dummy_grid_1.set_property("hexpand", True)
-        self.toolbar_box.attach(dummy_grid_1, 0, 0, 1, 1)
+        self.add(main_box)
 
-        dummy_grid_2 = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
-        dummy_grid_2.set_property("hexpand", True)
-        self.toolbar_box.attach(dummy_grid_2, 2, 0, 1, 1)
+    def _on_select_row(self, listbox, row):
+        if row:
+            group = row.get_child().get_text()
+            self.stack.set_visible_child_name(group)
+
+            if self.settings.get_boolean("window-remember-last-category"):
+                self.settings.set_int("window-last-category-selected", int(row.get_index()))
+
+    def load_css(self):
+        css_provider = Gtk.CssProvider()
+        # css_provider.load_from_path(
+        #     os.path.join(EXTENSION_DIR, "stylesheet.css"))
+        # Loading from data so I don't have to deal with a style sheet file
+        # with just a couple of lines of code.
+        css_provider.load_from_data(str.encode(
+            """
+            .cinnamon-tweaks-category:not(:selected):not(:hover),
+            .cinnamon-tweaks-categories {
+                background-color: @theme_bg_color;
+            }
+            .cinnamon-tweaks-category {
+                font-weight: bold;
+                padding: 10px;
+            }
+            .cinnamon-tweaks-section-warning-button:hover,
+            .cinnamon-tweaks-section-warning-button {
+                /*-GtkButton-default-border : 0;
+                -GtkButton-default-outside-border : 0;
+                -GtkButton-inner-border: 0;
+                -GtkWidget-focus-line-width : 0;
+                -GtkWidget-focus-padding : 0;*/
+                padding: 0;
+            }
+            """
+        ))
+
+        screen = Gdk.Screen.get_default()
+        context = Gtk.StyleContext()
+        context.add_provider_for_screen(screen, css_provider,
+                                        Gtk.STYLE_PROVIDER_PRIORITY_USER)
+
+    def main_content(self):
+        right_box = BaseGrid(orientation=Gtk.Orientation.VERTICAL)
+
+        self.stack = Gtk.Stack()
+        toolbar = self.toolbar()
+
+        right_box.attach(toolbar, 0, 0, 1, 1)
+        right_box.attach(self.stack, 0, 1, 1, 1)
+
+        return right_box
+
+    def create_sidebar(self):
+        left_box = BaseGrid()
+        left_box.set_property("margin", 0)
+
+        self.sidebar = Gtk.ListBox()
+        self.sidebar.get_style_context().add_class("cinnamon-tweaks-categories")
+        self.sidebar.set_size_request(150, -1)
+        self.sidebar.set_property("vexpand", True)
+        self.sidebar.connect("row-selected", self._on_select_row)
+        self.sidebar.set_header_func(self._list_header_func, None)
+
+        scroll = Gtk.ScrolledWindow()
+        scroll.set_policy(Gtk.PolicyType.NEVER,
+                          Gtk.PolicyType.AUTOMATIC)
+        scroll.add(self.sidebar)
+
+        left_box.attach(scroll, 0, 0, 1, 1)
+
+        return left_box
+
+    def _list_header_func(self, row, before, user_data):
+        if before and not row.get_header():
+            row.set_header(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL))
+
+    def toolbar(self):
+        box = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
+        box.set_property("hexpand", True)
+        box.set_property("vexpand", False)
+        box.set_property("margin", 15)
+
+        info_label = Widgets().info_label(
+            _("Settings marked with (*) needs Cinnamon restart to take effect"),
+            bold=True,
+            italic=True
+        )
+        info_label.set_valign(Gtk.Align.CENTER)
+        info_label.set_property("hexpand", True)
 
         menu_popup = Gtk.Menu()
         menu_popup.set_halign(Gtk.Align.END)
-        menu_popup.append(self.createMenuItem(_("Reset settings to defaults"),
-                                              self._restore_default_values))
-        menu_popup.append(self.createMenuItem(_("Import settings from a file"),
-                                              self._import_export_settings, False))
-        menu_popup.append(self.createMenuItem(_("Export settings to a file"),
-                                              self._import_export_settings, True))
+        menu_popup.append(self.createMenuItem(text=_("Reset settings to defaults"),
+                                              callback=self._restore_default_values))
+        menu_popup.append(self.createMenuItem(text=_("Import settings from a file"),
+                                              callback=self._import_settings))
+        menu_popup.append(self.createMenuItem(text=_("Export settings to a file"),
+                                              callback=self._export_settings))
         menu_popup.append(Gtk.SeparatorMenuItem())
 
         rem_win_size_check = self.createCheckMenuItem(
@@ -1455,24 +2276,40 @@ class ExtensionPrefsApplication(Gtk.Application):
         if rem_win_size_check is not None:
             menu_popup.append(rem_win_size_check)
 
+        rem_last_cat_check = self.createCheckMenuItem(
+            _("Remember last category"), key="window-remember-last-category")
+
+        if rem_last_cat_check is not None:
+            menu_popup.append(rem_last_cat_check)
+            menu_popup.append(Gtk.SeparatorMenuItem())
+
+        menu_popup.append(self.createMenuItem(text=_("Restart Cinnamon"),
+                                              callback=self._restart_cinnamon))
+        menu_popup.append(Gtk.SeparatorMenuItem())
+
+        menu_popup.append(self.createMenuItem(text=_("Help"),
+                                              callback=self.open_help_page))
+        menu_popup.append(self.createMenuItem(text=_("About"),
+                                              callback=self.open_about_dialog))
+
         menu_popup.show_all()
         menu_button = Gtk.MenuButton()
         menu_button.set_popup(menu_popup)
-        menu_button.add(Gtk.Image.new_from_icon_name(
-            "open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR))
+        menu_button.add(Gtk.Image.new_from_icon_name("open-menu-symbolic", Gtk.IconSize.MENU))
         menu_button.set_tooltip_text(_("Manage settings"))
 
-        self.toolbar_box.attach(menu_button, 3, 0, 1, 1)
+        box.attach(info_label, 0, 0, 1, 1)
+        box.attach(menu_button, 3, 0, 1, 1)
 
-        main_boxscrolledwindow = Gtk.ScrolledWindow(hadjustment=None, vadjustment=None)
-        main_boxscrolledwindow.set_policy(hscrollbar_policy=Gtk.PolicyType.NEVER,
-                                          vscrollbar_policy=Gtk.PolicyType.AUTOMATIC)
-        main_boxscrolledwindow.set_shadow_type(type=Gtk.ShadowType.ETCHED_IN)
-        main_boxscrolledwindow.add(SettingsBox())
+        return box
 
-        main_box.add(main_boxscrolledwindow)
+    def open_about_dialog(self, widget):
+        if app.extension_meta is not None:
+            aboutdialog = AboutDialog()
+            aboutdialog.run()
 
-        self.window.show_all()
+    def open_help_page(self, widget):
+        subprocess.call(("xdg-open", os.path.join(EXTENSION_DIR, "HELP.html")))
 
     def createCheckMenuItem(self, text, key=None, *args):
         if Settings().settings_has_key(key) is False:
@@ -1488,11 +2325,12 @@ class ExtensionPrefsApplication(Gtk.Application):
         is_active = widget.get_active()
         Settings().get_settings().set_boolean(key, is_active is True)
 
-    def createMenuItem(self, text, callback, *args):
+    # A million thanks to the """geniuses""" ($%&½€#&) at Gnome for deprecating Gtk.ImageMenuItem!!! ¬¬
+    def createMenuItem(self, text, callback):
         item = Gtk.MenuItem(text)
 
         if (callback is not None):
-            item.connect("activate", callback, *args)
+            item.connect("activate", callback)
 
         return item
 
@@ -1512,7 +2350,13 @@ class ExtensionPrefsApplication(Gtk.Application):
 
         if response == Gtk.ResponseType.YES:
             os.system("gsettings reset-recursively %s &" % SCHEMA_NAME)
-            self.on_quit(self)
+            app.on_quit(self)
+
+    def _import_settings(self, widget):
+        self._import_export_settings(self, export=False)
+
+    def _export_settings(self, widget):
+        self._import_export_settings(self, export=True)
 
     def _import_export_settings(self, widget, export):
         if export:
@@ -1555,16 +2399,93 @@ class ExtensionPrefsApplication(Gtk.Application):
         if export is False and response == Gtk.ResponseType.OK:
             filename = dialog.get_filename()
             os.system("dconf load %s < %s" % (SCHEMA_PATH, filename))
-            self.on_quit(self)
+            app.on_quit(self)
 
         dialog.destroy()
+
+    def _restart_cinnamon(self, widget):
+        os.system("nohup cinnamon --replace >/dev/null 2>&1&")
+
+
+class ExtensionPrefsApplication(Gtk.Application):
+
+    def __init__(self, *args, **kwargs):
+        GLib.set_application_name(_("Cinnamon Tweaks"))
+        super().__init__(*args,
+                         application_id=APPLICATION_ID,
+                         flags=Gio.ApplicationFlags.FLAGS_NONE,
+                         **kwargs)
+
+        if os.path.exists("%s/metadata.json" % EXTENSION_DIR):
+            raw_data = open("%s/metadata.json" % EXTENSION_DIR).read()
+
+            try:
+                self.extension_meta = json.loads(raw_data)
+            except:
+                self.extension_meta = None
+        else:
+            self.extension_meta = None
+
+        self.application = Gtk.Application()
+        self.application.connect("activate", self.do_activate)
+        self.application.connect("startup", self.do_startup)
+        self.settings = Settings().get_settings()
+
+    def do_activate(self, data=None):
+        self.window.present()
+
+    def do_startup(self, data=None):
+        Gtk.Application.do_startup(self)
+        self._buildUI()
+
+    # The only way I found to get the correct window size when closing the window.
+    def on_delete_event(self, widget, data=None):
+        [width, height] = self.window.get_size()
+
+        if (self.settings.get_boolean("window-remember-size")):
+            self.settings.set_int("window-width", width)
+            self.settings.set_int("window-height", height)
+
+        return False
+
+    def _buildUI(self):
+        self.window = ExtensionPrefsWindow(
+            application=self, title=_("Cinnamon Tweaks extension preferences"))
+
+        self.window.connect("destroy", self.on_quit)
+        self.window.connect("delete_event", self.on_delete_event)
+
+        populate_settings_box()
+
+        if self.settings.get_boolean("window-remember-last-category"):
+            widget = self.window.sidebar.get_row_at_index(
+                self.settings.get_int("window-last-category-selected"))
+        else:
+            widget = self.window.sidebar.get_row_at_index(0)
+        self.window.sidebar.select_row(widget)
+
+        self.window.show_all()
 
     def on_quit(self, action):
         self.quit()
 
 
-def ui_thread_do(callback, *args):
-    GLib.idle_add(callback, *args, priority=GLib.PRIORITY_DEFAULT)
+def display_warning_message(widget, title, message):
+    dialog = Gtk.MessageDialog(transient_for=app.window,
+                               title=title,
+                               modal=True,
+                               message_type=Gtk.MessageType.WARNING,
+                               buttons=Gtk.ButtonsType.OK)
+
+    # try:
+    #     esc = cgi.escape(message)
+    # except:
+    esc = message
+
+    dialog.set_markup(esc)
+    dialog.show_all()
+    dialog.run()
+    dialog.destroy()
 
 
 def ui_error_message(msg, detail=None):
