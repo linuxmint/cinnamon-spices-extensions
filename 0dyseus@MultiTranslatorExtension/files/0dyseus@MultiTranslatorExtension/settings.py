@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 
 import os
+import subprocess
 import gettext
 import sys
 import json
 import cgi
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gio, Gtk, GObject, GLib
-from pkg_resources import parse_version
+from gi.repository import Gio, Gtk, GObject, GLib, GdkPixbuf
 
 gettext.install("cinnamon", "/usr/share/locale")
 
@@ -24,7 +24,7 @@ EXTENSION_UUID = str(os.path.basename(EXTENSION_DIR))
 # - Application identifiers must not exceed 255 characters.
 # To which I add
 # - Application identifiers must not contain a '.' (period) character next to a number. ¬¬
-APPLICATION_ID = "org.cinnamon.extensions-0dyseus.MultiTranslatorExtension"
+APPLICATION_ID = "org.cinnamon.extensions.odyseus-multi-translator-extension"
 SCHEMA_NAME = "org.cinnamon.extensions.0dyseus@MultiTranslatorExtension"
 SCHEMA_PATH = "/org/cinnamon/extensions/0dyseus@MultiTranslatorExtension/"
 TRANSLATIONS = {}
@@ -59,6 +59,7 @@ def _(string):
             return result
 
     return gettext.gettext(string)
+
 
 LANGUAGES_LIST = {
     "auto": _("Detect language"),
@@ -1218,6 +1219,51 @@ class TranslatorProvidersWidget(BaseGrid):
         return temp
 
 
+class AboutDialog(Gtk.AboutDialog):
+
+    def __init__(self):
+        logo = GdkPixbuf.Pixbuf.new_from_file_at_size(
+            os.path.join(EXTENSION_DIR, "icon.png"), 64, 64)
+
+        Gtk.AboutDialog.__init__(self, transient_for=app.window)
+        data = app.extension_meta
+
+        try:
+            contributors_translated = []
+            contributors = data["contributors"]
+
+            if isinstance(contributors, str):
+                contributors = contributors.split(",")
+
+            for contributor in contributors:
+                contributors_translated.append(_(contributor.strip()))
+
+            self.add_credit_section(_("Contributors/Mentions:"),
+                                    sorted(contributors_translated, key=self.lowered))
+        except:
+            pass
+
+        # TO TRANSLATORS:
+        # Here goes the name/s of the author/s of the translations.
+        # Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
+        self.set_translator_credits(_("translator-credits"))
+        self.set_license_type(Gtk.License.GPL_3_0)
+        self.set_wrap_license(True)
+        self.set_version(data["version"])
+        self.set_comments(_(data["description"]))
+        self.set_website(data["website"])
+        self.set_website_label(_(data["name"]))
+        self.set_authors(["Odyseus https://github.com/Odyseus"])
+        self.set_logo(logo)
+        self.connect("response", self.on_response)
+
+    def lowered(self, item):
+        return item.lower()
+
+    def on_response(self, dialog, response):
+        self.destroy()
+
+
 class ExtensionPrefsWindow(Gtk.ApplicationWindow):
 
     def __init__(self, *args, **kwargs):
@@ -1227,6 +1273,7 @@ class ExtensionPrefsWindow(Gtk.ApplicationWindow):
 class ExtensionPrefsApplication(Gtk.Application):
 
     def __init__(self, *args, **kwargs):
+        GLib.set_application_name(_("Cinnamon Tweaks"))
         super().__init__(*args,
                          application_id=APPLICATION_ID,
                          flags=Gio.ApplicationFlags.FLAGS_NONE,
@@ -1235,6 +1282,16 @@ class ExtensionPrefsApplication(Gtk.Application):
 
         self.application.connect("activate", self.do_activate)
         self.application.connect("startup", self.do_startup)
+
+        if os.path.exists("%s/metadata.json" % EXTENSION_DIR):
+            raw_data = open("%s/metadata.json" % EXTENSION_DIR).read()
+
+            try:
+                self.extension_meta = json.loads(raw_data)
+            except:
+                self.extension_meta = None
+        else:
+            self.extension_meta = None
 
     def do_activate(self):
         self.window.present()
@@ -1316,6 +1373,12 @@ class ExtensionPrefsApplication(Gtk.Application):
 
         if rem_win_size_check is not None:
             menu_popup.append(rem_win_size_check)
+            menu_popup.append(Gtk.SeparatorMenuItem())
+
+        menu_popup.append(self.createMenuItem(text=_("Help"),
+                                              callback=self.open_help_page))
+        menu_popup.append(self.createMenuItem(text=_("About"),
+                                              callback=self.open_about_dialog))
 
         menu_popup.show_all()
         menu_button = Gtk.MenuButton()
@@ -1335,6 +1398,14 @@ class ExtensionPrefsApplication(Gtk.Application):
         main_box.add(main_boxscrolledwindow)
 
         self.window.show_all()
+
+    def open_about_dialog(self, widget):
+        if app.extension_meta is not None:
+            aboutdialog = AboutDialog()
+            aboutdialog.run()
+
+    def open_help_page(self, widget):
+        subprocess.call(("xdg-open", os.path.join(EXTENSION_DIR, "HELP.html")))
 
     def createCheckMenuItem(self, text, key=None, *args):
         if Settings().settings_has_key(key) is False:
@@ -1428,10 +1499,6 @@ class ExtensionPrefsApplication(Gtk.Application):
         self.quit()
 
 
-def ui_thread_do(callback, *args):
-    GLib.idle_add(callback, *args, priority=GLib.PRIORITY_DEFAULT)
-
-
 def ui_error_message(msg, detail=None):
     dialog = Gtk.MessageDialog(transient_for=None,
                                modal=True,
@@ -1445,7 +1512,7 @@ def ui_error_message(msg, detail=None):
 
     dialog.set_markup(esc)
     dialog.show_all()
-    response = dialog.run()
+    dialog.run()
     dialog.destroy()
 
 
@@ -1479,9 +1546,9 @@ def remove_schema():
         command = "%s %s" % (launcher, tool)
         os.system(command)
     else:
-        # TO TRANSLATORS: Could be left blank.
-        self.errorMessage(
-            _("Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error.") % (EXTENSION_UUID))
+        ui_error_message(
+            # TO TRANSLATORS: Could be left blank.
+            msg=_("Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error.") % (EXTENSION_UUID))
 
 
 if __name__ == "__main__":
