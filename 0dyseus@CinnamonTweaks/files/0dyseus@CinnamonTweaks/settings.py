@@ -96,10 +96,10 @@ APPLETS_TAB = {
                 "key": "applets-add-edit-file-item-to-context-placement",
                 "label": "(*) " + _("Where to place the \"Edit applet main file\" item?"),
                 "values": {
-                    "last": "Last item on menu",
-                    "bfr_about": "Before \"About...\" item",
-                    "bfr_conf": "Before \"Configure...\" item",
-                    "bfr_rem": "Before \"Remove...\" item"
+                    "last": _("Last item on menu"),
+                    "bfr_about": _("Before \"About...\" item"),
+                    "bfr_conf": _("Before \"Configure...\" item"),
+                    "bfr_rem": _("Before \"Remove...\" item")
                 }
             }
         }, {
@@ -116,10 +116,10 @@ APPLETS_TAB = {
                 "key": "applets-add-open-folder-item-to-context-placement",
                 "label": "(*) " + _("Where to place the \"Open applet folder\" item?"),
                 "values": {
-                    "last": "Last item on menu",
-                    "bfr_about": "Before \"About...\" item",
-                    "bfr_conf": "Before \"Configure...\" item",
-                    "bfr_rem": "Before \"Remove...\" item"
+                    "last": _("Last item on menu"),
+                    "bfr_about": _("Before \"About...\" item"),
+                    "bfr_conf": _("Before \"Configure...\" item"),
+                    "bfr_rem": _("Before \"Remove...\" item")
                 }
             }
         }]
@@ -158,10 +158,10 @@ DESKLETS_TAB = {
                 "key": "desklets-add-edit-file-item-to-context-placement",
                 "label": "(*) " + _("Where to place the \"Edit desklet main file\" item?"),
                 "values": {
-                    "last": "Last item on menu",
-                    "bfr_about": "Before \"About...\" item",
-                    "bfr_conf": "Before \"Configure...\" item",
-                    "bfr_rem": "Before \"Remove...\" item"
+                    "last": _("Last item on menu"),
+                    "bfr_about": _("Before \"About...\" item"),
+                    "bfr_conf": _("Before \"Configure...\" item"),
+                    "bfr_rem": _("Before \"Remove...\" item")
                 }
             }
         }, {
@@ -178,10 +178,10 @@ DESKLETS_TAB = {
                 "key": "desklets-add-open-folder-item-to-context-placement",
                 "label": "(*) " + _("Where to place the \"Open desklet folder\" item?"),
                 "values": {
-                    "last": "Last item on menu",
-                    "bfr_about": "Before \"About...\" item",
-                    "bfr_conf": "Before \"Configure...\" item",
-                    "bfr_rem": "Before \"Remove...\" item"
+                    "last": _("Last item on menu"),
+                    "bfr_about": _("Before \"About...\" item"),
+                    "bfr_conf": _("Before \"Configure...\" item"),
+                    "bfr_rem": _("Before \"Remove...\" item")
                 }
             }
         }]
@@ -210,7 +210,7 @@ HOTCORNERS_TAB = {
                 "min": 0,
                 "max": 1000,
                 "step": 50,
-                "units": "milliseconds"
+                "units": _("milliseconds")
             }
         }, {
             "type": "spin",
@@ -222,7 +222,7 @@ HOTCORNERS_TAB = {
                 "min": 0,
                 "max": 1000,
                 "step": 50,
-                "units": "milliseconds"
+                "units": _("milliseconds")
             }
         }, {
             "type": "spin",
@@ -234,7 +234,7 @@ HOTCORNERS_TAB = {
                 "min": 0,
                 "max": 1000,
                 "step": 50,
-                "units": "milliseconds"
+                "units": _("milliseconds")
             }
         }, {
             "type": "spin",
@@ -246,7 +246,7 @@ HOTCORNERS_TAB = {
                 "min": 0,
                 "max": 1000,
                 "step": 50,
-                "units": "milliseconds"
+                "units": _("milliseconds")
             }
         }]
     }]
@@ -317,9 +317,9 @@ DESKTOP_TAB = {
                 "label": "(*) " + _("Panel menus behavior"),
                 "tooltip": _("This setting affects only the behavior of menus that belongs to applets placed on any panel.\n\nEmulate Gnome Shell behavior: When a menu is open on Genome Shell, and then the mouse cursor is moved to another button on the top panel, the menu of the hovered buttons will automatically open without the need to click on them. With this option enabled, that same behavior can be reproduced on Cinnamon.\n\nDon't eat clicks: By default, when one opens an applet's menu on Cinnamon and then click on another applet to open its menu, the first click is used to close the first opened menu, and then another click has to be performed to open the menu of the second applet. With this option enabled, one can directly open the menu of any applet even if another applet has its menu open."),
                 "values": {
-                    "default": "Default behavior",
-                    "gnome-shell": "Emulate Gnome Shell menus",
-                    "do-not-eat": "Don't \"eat\" clicks"
+                    "default": _("Default behavior"),
+                    "gnome-shell": _("Emulate Gnome Shell menus"),
+                    "do-not-eat": _("Don't \"eat\" clicks")
                 }
             }
         }]
@@ -350,8 +350,8 @@ NOTIFICATIONS_TAB = {
                 "key": "notifications-position",
                 "label": _("Notifications position"),
                 "values": {
-                    "top": "Top-right of screen (System default)",
-                    "bottom": "Bottom-right of screen"
+                    "top": _("Top-right of screen (System default)"),
+                    "bottom": _("Bottom-right of screen")
                 }
             }
         }, {
@@ -364,7 +364,7 @@ NOTIFICATIONS_TAB = {
                 "min": 0,
                 "max": 512,
                 "step": 1,
-                "units": "pixels"
+                "units": _("pixels")
             }
         }, {
             "type": "spin",
@@ -376,7 +376,7 @@ NOTIFICATIONS_TAB = {
                 "min": 0,
                 "max": 512,
                 "step": 1,
-                "units": "pixels"
+                "units": _("pixels")
             }
         }]
     }]
@@ -392,9 +392,9 @@ WINDOWS_TAB = {
                 "key": "win-demands-attention-activation-mode",
                 "label": _("The activation of windows demanding attention..."),
                 "values": {
-                    "none": "...is handled by the system",
-                    "force": "...is immediate",
-                    "hotkey": "...is performed with a keyboard shortcut"
+                    "none": _("...is handled by the system"),
+                    "force": _("...is immediate"),
+                    "hotkey": _("...is performed with a keyboard shortcut")
                 }
             }
         }, {
@@ -601,8 +601,7 @@ def populate_settings_box():
                         Settings().get_settings().bind(
                             dep_key, widget, "sensitive", Gio.SettingsBindFlags.GET)
                     else:
-                        print(
-                            "Ignoring dependency on key '%s': no such key in the schema" % dep_key)
+                        pass
                 except (NameError, KeyError):
                     pass
 
@@ -1768,7 +1767,7 @@ class AutoMovedWindowsSetter(Gtk.Button):
                                       Gtk.Adjustment])
 
         scrolled = Gtk.ScrolledWindow(hadjustment=None, vadjustment=None)
-        scrolled.set_size_request(width=300, height=300)
+        scrolled.set_size_request(width=500, height=300)
         scrolled.set_shadow_type(type=Gtk.ShadowType.IN)
         scrolled.set_policy(hscrollbar_policy=Gtk.PolicyType.NEVER,
                             vscrollbar_policy=Gtk.PolicyType.AUTOMATIC)
@@ -2120,13 +2119,33 @@ class AboutDialog(Gtk.AboutDialog):
 
         Gtk.AboutDialog.__init__(self, transient_for=app.window)
         data = app.extension_meta
-        self.add_credit_section(_("Contributors/Mentions:"),
-                                sorted(data["contributors"].split(","), key=self.lowered))
+
+        try:
+            contributors_translated = []
+            contributors = data["contributors"]
+
+            if isinstance(contributors, str):
+                contributors = contributors.split(",")
+
+            for contributor in contributors:
+                contributors_translated.append(_(contributor.strip()))
+
+            self.add_credit_section(_("Contributors/Mentions:"),
+                                    sorted(contributors_translated, key=self.lowered))
+        except:
+            pass
+
+        # TO TRANSLATORS:
+        # Here goes the name/s of the author/s of the translations.
+        # Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
+        self.set_translator_credits(_("translator-credits"))
+        self.set_license_type(Gtk.License.GPL_3_0)
+        self.set_wrap_license(True)
         self.set_version(data["version"])
         self.set_comments(_(data["description"]))
         self.set_website(data["website"])
         self.set_website_label(_(data["name"]))
-        self.set_authors(["Odyseus"])
+        self.set_authors(["Odyseus https://github.com/Odyseus"])
         self.set_logo(logo)
         self.connect("response", self.on_response)
 
@@ -2152,7 +2171,7 @@ class ExtensionPrefsWindow(Gtk.ApplicationWindow):
             if Gdk.Screen.get_default().get_height() < 800:
                 self.maximize()
             else:
-                self.set_default_size(800, 480)
+                self.set_default_size(800, 500)
 
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_icon_from_file(os.path.join(EXTENSION_DIR, "icon.png"))
@@ -2325,7 +2344,8 @@ class ExtensionPrefsWindow(Gtk.ApplicationWindow):
         is_active = widget.get_active()
         Settings().get_settings().set_boolean(key, is_active is True)
 
-    # A million thanks to the """geniuses""" ($%&½€#&) at Gnome for deprecating Gtk.ImageMenuItem!!! ¬¬
+    # A million thanks to the """geniuses""" ($%&½€#&) at Gnome for
+    # deprecating Gtk.ImageMenuItem!!! ¬¬
     def createMenuItem(self, text, callback):
         item = Gtk.MenuItem(text)
 
@@ -2501,7 +2521,7 @@ def ui_error_message(msg, detail=None):
 
     dialog.set_markup(esc)
     dialog.show_all()
-    response = dialog.run()
+    dialog.run()
     dialog.destroy()
 
 
@@ -2535,9 +2555,9 @@ def remove_schema():
         command = "%s %s" % (launcher, tool)
         os.system(command)
     else:
-        self.errorMessage(
+        ui_error_message(
             # TO TRANSLATORS: Could be left blank.
-            _("Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error.") % (EXTENSION_UUID))
+            msg=_("Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error.") % (EXTENSION_UUID))
 
 
 if __name__ == "__main__":

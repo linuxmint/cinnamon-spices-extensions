@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.06\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-28 00:22-0300\n"
-"PO-Revision-Date: 2017-03-28 00:25-0300\n"
+"POT-Creation-Date: 2017-04-05 04:40-0300\n"
+"PO-Revision-Date: 2017-04-05 04:40-0300\n"
 "Last-Translator: Odyseus\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -146,6 +146,22 @@ msgstr ""
 msgid "Where to place the \"Edit applet main file\" item?"
 msgstr "¿Dónde colocar el elemento \"Editar archivo principal del applet\"?"
 
+#: settings.py:99 settings.py:119 settings.py:161 settings.py:181
+msgid "Last item on menu"
+msgstr "Último ítem en el menú"
+
+#: settings.py:100 settings.py:120 settings.py:162 settings.py:182
+msgid "Before \"About...\" item"
+msgstr "Antes del ítem \"Acerca de...\""
+
+#: settings.py:101 settings.py:121 settings.py:163 settings.py:183
+msgid "Before \"Configure...\" item"
+msgstr "Antes del ítem \"Configurar...\""
+
+#: settings.py:102 settings.py:122 settings.py:164 settings.py:184
+msgid "Before \"Remove...\" item"
+msgstr "Antes del ítem \"Remover...\""
+
 #: settings.py:110
 msgid "Display \"Open applet folder\" on context menu"
 msgstr "Mostrar \"Abrir carpeta del applet\" en el menú contextual"
@@ -199,6 +215,11 @@ msgstr "Retardo de activación para la esquina superior izquierda"
 msgid "Set a delay in milliseconds to activate this hot corner."
 msgstr ""
 "Establecer un retardo en milisegundos para activar esta esquina activa."
+
+#: settings.py:213 settings.py:225 settings.py:237 settings.py:249
+#: settings.py:301
+msgid "milliseconds"
+msgstr "milisegundos"
 
 #: settings.py:220
 msgid "Top right hot corner activation delay"
@@ -270,10 +291,6 @@ msgstr ""
 "Establezca un retraso en milisegundos para mostrar información sobre "
 "herramientas de la interfaz de Cinnamon."
 
-#: settings.py:301
-msgid "milliseconds"
-msgstr "milisegundos"
-
 #: settings.py:305
 msgid "Popup menus tweaks"
 msgstr "Ajustes de menúes emergentes"
@@ -308,7 +325,7 @@ msgstr ""
 "applets colocados en cualquier panel.\n"
 "\n"
 "Emular el comportamiento de los menúes de Gnome Shell: Cuando un menú está "
-"abierto en Genome Shell y, a continuación, el cursor del ratón se mueve a "
+"abierto en Gnome Shell y, a continuación, el cursor del ratón se mueve a "
 "otro botón en el panel superior, el menú de los botones por los cuales el "
 "cursor del ratón está pasando se abrirán automáticamente sin necesidad de "
 "hacer clic en ellos. Con esta opción habilitada, ese mismo comportamiento se "
@@ -320,6 +337,18 @@ msgstr ""
 "continuación, se debe realizar otro clic para abrir el menú del segundo "
 "applet. Con esta opción habilitada, se puede abrir directamente el menú de "
 "cualquier applet incluso si otro applet tiene su menú abierto."
+
+#: settings.py:320
+msgid "Default behavior"
+msgstr "Comportamiento predeterminado"
+
+#: settings.py:321
+msgid "Emulate Gnome Shell menus"
+msgstr "Emular los menús de Gnome Shell"
+
+#: settings.py:322
+msgid "Don't \"eat\" clicks"
+msgstr "No \"consumir\" clics"
 
 #: settings.py:330 settings.py:332
 msgid "Notifications tweaks"
@@ -336,6 +365,14 @@ msgstr "Habilitar animación de notificaciones"
 #: settings.py:351
 msgid "Notifications position"
 msgstr "Posición de las notificaciones"
+
+#: settings.py:353
+msgid "Top-right of screen (System default)"
+msgstr "Parte superior derecha de la pantalla (por defecto del sistema)"
+
+#: settings.py:354
+msgid "Bottom-right of screen"
+msgstr "Parte inferior derecha de la pantalla"
 
 #: settings.py:362
 msgid "Distance from panel"
@@ -361,6 +398,10 @@ msgstr ""
 "pantalla: esta la distancia entre el borde superior del panel inferior (si "
 "no hay panel inferior, desde la parte inferior de la pantalla) hasta el "
 "borde inferior de la ventana emergente de notificación."
+
+#: settings.py:367 settings.py:379
+msgid "pixels"
+msgstr "pixeles"
 
 #: settings.py:374
 msgid "Notification popup right margin"
@@ -389,11 +430,23 @@ msgstr "Ajustes de foco de ventanas"
 msgid "The activation of windows demanding attention..."
 msgstr "La activación de ventanas que demandan atención..."
 
+#: settings.py:395
+msgid "...is handled by the system"
+msgstr "...es manejada por el sistema"
+
+#: settings.py:396
+msgid "...is immediate"
+msgstr "...es inmediata"
+
+#: settings.py:397
+msgid "...is performed with a keyboard shortcut"
+msgstr "...se lleva a cabo con un atajo de teclado"
+
 #: settings.py:404
 msgid "Activate window demanding attention"
 msgstr "Activar ventana exigiendo atención"
 
-#: settings.py:409 settings.py:1269
+#: settings.py:409 settings.py:1268
 msgid "Window shadows tweaks"
 msgstr "Ajustes de sombras de ventana"
 
@@ -431,7 +484,7 @@ msgstr "Sin sombras"
 msgid "Windows 10 shadows"
 msgstr "Sombras de Windows 10"
 
-#: settings.py:436 settings.py:1140
+#: settings.py:436 settings.py:1139
 msgid "Edit custom shadows values"
 msgstr "Editar valores personalizados de sombras"
 
@@ -501,8 +554,8 @@ msgid ""
 "Read this extension help for more detailed instructions, list of "
 "dependencies and known issues."
 msgstr ""
-"Lea ayuda de esta extensión para obtener instrucciones más detalladas, lista "
-"de dependencias y problemas conocidos."
+"Leer la ayuda de esta extensión para obtener instrucciones más detalladas, "
+"lista de dependencias y problemas conocidos."
 
 #: settings.py:469
 msgid "Apply windows decorations settings"
@@ -550,141 +603,141 @@ msgstr "Sólo para fines de depuración."
 msgid "Edit applications list"
 msgstr "Editar la lista de aplicaciones"
 
-#: settings.py:698
+#: settings.py:697
 msgid "Warnings related to this specific section"
 msgstr "Advertencias relacionadas con esta sección específica"
 
-#: settings.py:1001
+#: settings.py:1000
 msgid "Select a directory to use"
 msgstr "Seleccionar un directorio para usar"
 
-#: settings.py:1004
+#: settings.py:1003
 msgid "Select a file"
 msgstr "Seleccionar un archivo"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1009 settings.py:1142 settings.py:2330 settings.py:2336
+#: settings.py:1008 settings.py:1141 settings.py:2386 settings.py:2392
 msgid "_Cancel"
 msgstr "_Cancelar"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1011 settings.py:2338
+#: settings.py:1010 settings.py:2394
 msgid "_Open"
 msgstr "_Abrir"
 
-#: settings.py:1014
+#: settings.py:1013
 msgid "Directories"
 msgstr "Directorios"
 
-#: settings.py:1092
+#: settings.py:1091
 msgid "Focused windows"
 msgstr "Ventanas enfocadas"
 
-#: settings.py:1093
+#: settings.py:1092
 msgid "Unfocused windows"
 msgstr "Ventanas desenfocadas"
 
-#: settings.py:1096
+#: settings.py:1095
 msgid "Normal"
 msgstr "Normal"
 
-#: settings.py:1097
+#: settings.py:1096
 msgid "Dialog"
 msgstr "Diálogo"
 
-#: settings.py:1098
+#: settings.py:1097
 msgid "Modal dialog"
 msgstr "Diálogo modal"
 
-#: settings.py:1099
+#: settings.py:1098
 msgid "Utility"
 msgstr "Utilidad"
 
-#: settings.py:1100
+#: settings.py:1099
 msgid "Border"
 msgstr "Borde"
 
-#: settings.py:1101
+#: settings.py:1100
 msgid "Menu"
 msgstr "Menú"
 
-#: settings.py:1102
+#: settings.py:1101
 msgid "Popup menu"
 msgstr "Menú emergente"
 
-#: settings.py:1103
+#: settings.py:1102
 msgid "Dropdown menu"
 msgstr "Menú desplegable"
 
-#: settings.py:1104
+#: settings.py:1103
 msgid "Attached"
 msgstr "Adjunta"
 
-#: settings.py:1114
+#: settings.py:1113
 msgid "Radius"
 msgstr "Radio"
 
-#: settings.py:1115
+#: settings.py:1114
 msgid "Top fade"
 msgstr "Desvanecimiento superior"
 
-#: settings.py:1116
+#: settings.py:1115
 msgid "X offset"
 msgstr "X offset"
 
-#: settings.py:1117
+#: settings.py:1116
 msgid "Y offset"
 msgstr "Y offset"
 
-#: settings.py:1118
+#: settings.py:1117
 msgid "Opacity"
 msgstr "Opacidad"
 
-#: settings.py:1143 settings.py:2331
+#: settings.py:1142 settings.py:2387
 msgid "_Save"
 msgstr "_Guardar"
 
-#: settings.py:1180
+#: settings.py:1179
 msgid "Window type"
 msgstr "Tipo de ventana"
 
-#: settings.py:1191
+#: settings.py:1190
 msgid "Reset values"
 msgstr "Restablecer valores"
 
-#: settings.py:1193
+#: settings.py:1192
 msgid "Reset all values on the current view to their defaults."
 msgstr ""
 "Restablecer todos los valores de la vista actual a sus valores "
 "predeterminados."
 
-#: settings.py:1197
+#: settings.py:1196
 msgid "Apply custom shadow"
 msgstr "Aplicar sombra personalizada"
 
-#: settings.py:1199
+#: settings.py:1198
 msgid "Save and apply custom shadow values to see its effects in real time."
 msgstr ""
 "Guardar y aplicar valores de sombra personalizados para ver sus efectos en "
 "tiempo real."
 
-#: settings.py:1241 settings.py:1270
+#: settings.py:1240 settings.py:1269
 msgid "Remember to set »Shadow presets« option to »Custom shadows«"
 msgstr ""
 "Recordar ajustar la opción »Preajustes de sombra« al valor »Sombras "
 "personalizadas«"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->name
-#: settings.py:1268
+#: settings.py:1267 settings.py:2433
 msgid "Cinnamon Tweaks"
 msgstr "Ajustes de Cinnamon"
 
-#: settings.py:1281
+#: settings.py:1280
 msgid "Warning: Trying to reset custom shadows values!!!"
 msgstr ""
 "Advertencia: ¡Intentando restablecer valores de sombras personalizadas!"
 
-#: settings.py:1284
+#: settings.py:1283
 msgid ""
 "Are  you sure that you want to reset the shadows values of the current view "
 "to their defaults?"
@@ -692,120 +745,136 @@ msgstr ""
 "¿Está seguro de que desea restablecer los valores de sombras de la vista "
 "actual a sus valores predeterminados?"
 
-#: settings.py:1382
+#: settings.py:1381
 msgid "Application Chooser"
 msgstr "Selector de aplicaciones"
 
 #. Can be programmatically changed if needed.
-#: settings.py:1403
+#: settings.py:1402
 msgid "Choose An Application"
 msgstr "Elegir una aplicación"
 
-#: settings.py:1536
+#: settings.py:1535
 msgid "Applications list"
 msgstr "Lista de aplicaciones"
 
-#: settings.py:1564 settings.py:1783
+#: settings.py:1563 settings.py:1782
 msgid "Application"
 msgstr "Aplicación"
 
-#: settings.py:1586
+#: settings.py:1585
 msgid "Add Application"
 msgstr "Agregar aplicación"
 
-#: settings.py:1620 settings.py:1851
+#: settings.py:1619 settings.py:1850
 msgid "Choose one or more applications (Hold Ctrl key)"
 msgstr "Elegir una o más aplicaciones (Mantener pulsada la tecla Ctrl)"
 
-#: settings.py:1754
+#: settings.py:1753
 msgid "Auto move windows rules"
 msgstr "Reglas para mover ventanas automáticamente"
 
-#: settings.py:1797
+#: settings.py:1796
 msgid "Workspace"
 msgstr "Espacio de trabajo"
 
-#: settings.py:1817
+#: settings.py:1816
 msgid "Add Rule"
 msgstr "Agregar regla"
 
-#: settings.py:2052
+#: settings.py:2051
 msgid "Shortcut action"
 msgstr "Acción de acceso directo"
 
-#: settings.py:2066
+#: settings.py:2065
 msgid "Shortcut"
 msgstr "Acceso directo"
 
-#: settings.py:2082
+#: settings.py:2081
 msgid "Click to set a new hotkey."
 msgstr "Hacer clic para establecer un nuevo acceso directo."
 
-#: settings.py:2231
+#: settings.py:2133
+msgid "Contributors/Mentions:"
+msgstr "Colaboradores/Menciones:"
+
+#. TO TRANSLATORS:
+#. Here goes the name/s of the author/s of the translations.
+#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING
+#. MORE.
+#: settings.py:2141
+msgid "translator-credits"
+msgstr "Odyseus https://github.com/Odyseus"
+
+#: settings.py:2275
 msgid "Settings marked with (*) needs Cinnamon restart to take effect"
 msgstr ""
 "Los ajustes marcados con (*) necesitan que Cinnamon sea reiniciado para "
 "surtir efecto"
 
-#: settings.py:2240
+#: settings.py:2284
 msgid "Reset settings to defaults"
 msgstr "Restablecer los valores predeterminados"
 
-#: settings.py:2242
+#: settings.py:2286
 msgid "Import settings from a file"
 msgstr "Importar configuración desde un archivo"
 
-#: settings.py:2244
+#: settings.py:2288
 msgid "Export settings to a file"
 msgstr "Exportar configuración hacia un archivo"
 
-#: settings.py:2249
+#: settings.py:2293
 msgid "Remember window size"
 msgstr "Recordar tamaño de ventana"
 
-#: settings.py:2255
+#: settings.py:2299
 msgid "Remember last category"
 msgstr "Recordar la última categoría"
 
-#: settings.py:2261
+#: settings.py:2305
 msgid "Restart Cinnamon"
 msgstr "Reiniciar Cinnamon"
 
-#: settings.py:2269
-msgid "Manage settings"
-msgstr "Administrar configuración"
-
-#: settings.py:2273
+#: settings.py:2309
 msgid "Help"
 msgstr "Ayuda"
 
-#: settings.py:2313
+#: settings.py:2311
+msgid "About"
+msgstr "Acerca de"
+
+#: settings.py:2318
+msgid "Manage settings"
+msgstr "Administrar configuración"
+
+#: settings.py:2363
 msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
 msgstr ""
 "Advertencia: ¡Intentando restablecer todos los ajustes de Cinnamon Tweaks!"
 
-#: settings.py:2315
+#: settings.py:2365
 msgid "Reset all Cinnamon Tweaks settings to default?"
 msgstr "¿Restablecer todas las configuraciones de Cinnamon Tweaks por defecto?"
 
-#: settings.py:2328
+#: settings.py:2384
 msgid "Select or enter file to export to"
 msgstr "Seleccionar o ingresar el archivo hacia el cual exportar"
 
-#: settings.py:2334
+#: settings.py:2390
 msgid "Select a file to import"
 msgstr "Seleccionar un archivo para importar"
 
-#: settings.py:2350
+#: settings.py:2406
 msgid "DCONF files"
 msgstr "Archivos DCONF"
 
-#: settings.py:2405
+#: settings.py:2473
 msgid "Cinnamon Tweaks extension preferences"
 msgstr "Preferencias de la extensión Cinnamon Tweaks"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2468
+#: settings.py:2532
 #, python-format
 msgid ""
 "Please enter your password to install the required settings schema for %s"
@@ -814,7 +883,7 @@ msgstr ""
 "configuración necesario para %s"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2479
+#: settings.py:2543
 #, python-format
 msgid ""
 "Could not install the settings schema for %s.  You will have to perform this "
@@ -824,7 +893,7 @@ msgstr ""
 "realizar este paso usted mismo."
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2485
+#: settings.py:2549
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
 msgstr ""
@@ -832,7 +901,7 @@ msgstr ""
 "configuración para %s"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2496
+#: settings.py:2560
 #, python-format
 msgid ""
 "Could not remove the settings schema for %s.  You will have to perform this "
@@ -842,18 +911,80 @@ msgstr ""
 "este paso usted mismo. Esto no es un error crítico."
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid "muzena: Croatian localization."
-msgstr "muzena: Localización Croata."
+msgid ""
+"lestcape: The brain behind the popup menus and desktop tweaks https://github."
+"com/lestcape."
+msgstr ""
+"lestcape: El cerebro detrás de los ajustes de los menúes emergentes y "
+"ajustes de escritorio https://github.com/lestcape."
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid "lestcape: He is the brain behind the popup menus and desktop tweaks."
+msgid "Radek71: Czech localization https://github.com/Radek71."
+msgstr "Radek71: Localización Checa https://github.com/Radek71."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid "muzena: Croatian localization https://github.com/muzena."
+msgstr "muzena: Localización Croata https://github.com/muzena."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
 msgstr ""
-"lestcape: Él es el cerebro detrás de los ajustes del área del Escritorio y "
-"de los ajustes de los menúes."
+"mikhail-ekzi: Autor de la extensión Custom Shadows https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
+msgstr ""
+"Fatih Mete: Autor de la extensión Cinnamon Maximus https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Luis Pabon: Author of Maximus NG extension https://github.com/luispabon/"
+"maximus-gnome-shell."
+msgstr ""
+"Luis Pabon: Autor de la extensión Maximus NG https://github.com/luispabon/"
+"maximus-gnome-shell."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Florian Muellner: Author of Auto Move Windows extension https://extensions."
+"gnome.org/extension/16/auto-move-windows."
+msgstr ""
+"Florian Muellner: Autor de la extensión Auto Move Windows https://extensions."
+"gnome.org/extension/16/auto-move-windows."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Valentin Dimitrov: Author of Steal My Focus extension https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
+msgstr ""
+"Valentin Dimitrov: Autor de la extensión Steal My Focus https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"awamper: Author of Window Demands Attention Shortcut extension https://"
+"github.com/awamper/window-demands-attention-shortcut."
+msgstr ""
+"awamper: Autor de la extensión Window Demands Attention Shortcut https://"
+"github.com/awamper/window-demands-attention-shortcut."
 
 #. 0dyseus@CinnamonTweaks->metadata.json->description
 msgid "Several tweaks for Cinnamon."
 msgstr "Varios ajustes para Cinnamon."
+
+#~ msgid "muzena: Croatian localization."
+#~ msgstr "muzena: Localización Croata."
+
+#~ msgid "lestcape: He is the brain behind the popup menus and desktop tweaks."
+#~ msgstr ""
+#~ "lestcape: Él es el cerebro detrás de los ajustes del área del Escritorio "
+#~ "y de los ajustes de los menúes."
 
 #~ msgid "Tweak ativation aborted!!!"
 #~ msgstr "¡¡¡Activación del ajuste abortada!!!"

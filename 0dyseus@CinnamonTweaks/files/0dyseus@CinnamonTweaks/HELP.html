@@ -1,4 +1,112 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><title>Cinnamon Tweaks extension help</title><link rel="shortcut icon" type="image/x-icon" href="./icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><style type="text/css">/*!
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><title>Cinnamon Tweaks extension help</title><link rel="shortcut icon" type="image/x-icon" href="./icon.png"><meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/javascript">/*
+exported toggleLocalizationVisibility,
+         docCookies
+ */
+
+/**
+ * :: cookies.js ::
+ * A complete cookies reader/writer framework with full unicode support.
+ * Revision #1 - September 4, 2014
+ * https://developer.mozilla.org/en-US/docs/Web/API/document.cookie
+ * https://developer.mozilla.org/User:fusionchess
+ * This framework is released under the GNU Public License, version 3 or later.
+ * http://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * Syntaxes:
+ * docCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
+ * docCookies.getItem(name)
+ * docCookies.removeItem(name[, path[, domain]])
+ * docCookies.hasItem(name)
+ * docCookies.keys()
+ */
+
+var docCookies = {
+    getItem: function(aKey) {
+        if (!aKey)
+            return null;
+
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" +
+                encodeURIComponent(aKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"),
+            "$1")) || null;
+    },
+    setItem: function(aKey, aValue, aEnd, aPath, aDomain, aSecure) {
+        if (!aKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(aKey))
+            return false;
+
+        var sExpires = "";
+        if (aEnd) {
+            switch (aEnd.constructor) {
+                case Number:
+                    sExpires = aEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + aEnd;
+                    break;
+                case String:
+                    sExpires = "; expires=" + aEnd;
+                    break;
+                case Date:
+                    sExpires = "; expires=" + aEnd.toUTCString();
+                    break;
+            }
+        }
+        document.cookie = encodeURIComponent(aKey) + "=" + encodeURIComponent(aValue) + sExpires +
+            (aDomain ? "; domain=" + aDomain : "") +
+            (aPath ? "; path=" + aPath : "") +
+            (aSecure ? "; secure" : "");
+        return true;
+    },
+    removeItem: function(aKey, aPath, aDomain) {
+        if (!this.hasItem(aKey))
+            return false;
+
+        document.cookie = encodeURIComponent(aKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" +
+            (aDomain ? "; domain=" + aDomain : "") + (aPath ? "; path=" + aPath : "");
+        return true;
+    },
+    hasItem: function(aKey) {
+        if (!aKey)
+            return false;
+
+        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(aKey).replace(/[\-\.\+\*]/g, "\\$&") +
+            "\\s*\\=")).test(document.cookie);
+    },
+    keys: function() {
+        var keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "")
+            .split(/\s*(?:\=[^;]*)?;\s*/);
+        for (var nLen = keys.length, nIdx = 0; nIdx < nLen; nIdx++)
+            keys[nIdx] = decodeURIComponent(keys[nIdx]);
+
+        return keys;
+    }
+};
+
+function toggleLocalizationVisibility(aButton) {
+    var language = aButton ? aButton.getAttribute("data-id") : docCookies.getItem("language");
+
+    if (!Boolean(language))
+        return;
+
+    try {
+        Array.prototype.slice.call(document.getElementsByClassName("localization-content"))
+            .forEach(function(aEl) {
+                aEl && aEl.classList.add("hidden");
+            });
+
+        Array.prototype.slice.call(document.getElementsByClassName("localization-switch"))
+            .forEach(function(aEl) {
+                if (aEl) {
+                    aEl.classList.remove("btn-success");
+                    aEl.classList.add("btn-default");
+
+                    if (aEl.getAttribute("data-id") === language) {
+                        document.title = aEl.getAttribute("data-title");
+                        aEl.classList.add("btn-success");
+                    }
+                }
+            });
+    } finally {
+        document.getElementById(language).classList.remove("hidden");
+        docCookies.setItem("language", language);
+    }
+}
+</script><style type="text/css">/*!
  * bootswatch v3.3.7
  * Homepage: http://bootswatch.com
  * Copyright 2012-2016 Thomas Park
@@ -218,9 +326,48 @@ pre {
 	padding-right: 15px !important;
 }
 /* pre tag tweaks */
-</style></head><body><div id="mainarea"><div class="container boxed"><h1>Help for Cinnamon Tweaks extension</h1>
-<h2>IMPORTANT!!!</h2>
-<p>Never delete any of the files found inside this extension folder. It might break this extension functionality.</p>
+</style><style type="text/css">.localization-chooser {
+    padding: 1em !important;
+    width: 100% !important;
+}
+
+.localization-chooser input.btn {
+    font-weight: bold !important;
+    margin: 5px !important;
+    height: 100% !important;
+    display: inline-block !important;
+}
+</style></head><body><noscript><style type="text/css">#autohide_navbar {
+    display: none !important;
+}
+#noscript-navbar {
+    display: inline-block !important;
+}
+#noscript-navbar > li {
+    float: left !important;
+    margin: 2px !important;
+    padding: 2px !important;
+    top: 0 !important;
+    display: inline-block !important;
+}
+#noscript-navbar li > ul {
+    margin: 1px !important;
+    padding: 1px !important;
+}
+#noscript-navbar li {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+</style><div class="alert alert-warning"><p><strong>Oh snap! This page needs JavaScript enabled to display correctly.</strong></p><p><strong>This page uses JavaScript only to switch between the available languages.</strong></p><p><strong>There are no tracking services of any kind and never will be (at least, not from my side).</strong></p></div></noscript><div id="mainarea"><div class="localization-chooser" align="middle"><input class="btn btn-success btn-sm localization-switch" type="button" value="English" data-id="english" data-title="Cinnamon Tweaks extension help" onclick="self.toggleLocalizationVisibility(this);"><input class="btn btn-default btn-sm localization-switch" type="button" value="Español" data-id="spanish" data-title="Ayuda para la extensión Ajustes de Cinnamon" onclick="self.toggleLocalizationVisibility(this);"></div><div class="container boxed"><div class="localization-content" id="english"><!--
+Notes to translators:
+- Do not modify this file directly. Create a copy of it with a different name that contains the language code and always use the .md extension for the file. Example: HELP-es.md file will contain the content of the HELP.md file translated into Spanish.
+- This file is written in [markdown](https://guides.github.com/features/mastering-markdown/) and some "touches" of HTML.
+- Familiarize yourself with markdown and HTML languages before attempting to translate the content of this file.
+- These notes doesn't need to be translated and can be deleted from the translated file.
+-->
+<h1>Help for Cinnamon Tweaks extension</h1>
+<h3>IMPORTANT!!!</h3>
+<p>Never delete any of the files found inside this xlet folder. It might break this xlet functionality.</p>
 <hr>
 <h2 style="color:red;">Bug reports, feature requests and contributions</h2>
 <span style="color:red;">
@@ -255,7 +402,7 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 </ul>
 <h3>Tooltips tweaks</h3>
 <ul>
-<li><strong>Avoid mouse pointers overlapping tooltips:</strong> Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer to overlap the tooltip. This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has the position of the tooltips changed.</li>
+<li><strong>Avoid mouse pointer overlapping tooltips:</strong> Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer to overlap the tooltip. This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has the position of the tooltips changed.</li>
 <li><strong>Tooltips show delay:</strong> Crystal clear.</li>
 </ul>
 <h3>Notifications tweaks</h3>
@@ -270,7 +417,7 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 </li>
 <li><strong>Notification popup right margin:</strong> By default, the right margin of the notification popup is defined by the currently used theme. This option, set to any value other than 0 (zero), allows to set a custom right margin, ignoring the defined by the theme.</li>
 </ul>
-<h3>Window Focus tweaks</h3>
+<h3>Window focus tweaks</h3>
 <p>Tweak based on the gnome-shell extension called <a href="https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus">Steal My Focus</a> by <a href="https://github.com/v-dimitrov">Valentin Dimitrov</a> and another gnome-shell extension called <a href="https://github.com/awamper/window-demands-attention-shortcut">Window Demands Attention Shortcut</a> by <a href="https://github.com/awamper">awamper</a>.</p>
 <p>Some windows that demands attention will not gain focus regardless of the settings combination on Cinnamon settings. This option will allow you to correct that.</p>
 <ul>
@@ -281,7 +428,7 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 <li><strong>...is performed with a keyboard shortcut:</strong> will focus windows demanding attention with a keyboard shortcut.</li>
 </ul>
 </li>
-<li><strong>Keyboard shortcut::</strong> Set a keyboard shortcut for the option <strong>...is performed with a keyboard shortcut</strong>.</li>
+<li><strong>Keyboard shortcut:</strong> Set a keyboard shortcut for the option <strong>...is performed with a keyboard shortcut</strong>.</li>
 </ul>
 <h3>Window Shadows tweaks</h3>
 <p>Tweak based on a Cinnamon extension called <a href="https://cinnamon-spices.linuxmint.com/extensions/view/43">Custom Shadows</a> created by <a href="https://github.com/mikhail-ekzi">mikhail-ekzi</a>. It allows to modify the shadows used by Cinnamon's window manager (Muffin).</p>
@@ -307,7 +454,6 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 <li>Fedora based distributions: These commands are provided by the <strong>xorg-x11-utils</strong> package.</li>
 </ul>
 <h4>Warnings</h4>
-<p>To cut it short, this tweak is buggy as hell. Cinnamon, more specifically <strong>muffin</strong> (the window manager used by Cinnamon), doesn't have a native way to remove windows decorations as <strong>mutter</strong> (the window manager used by Gnome-shell and on which <strong>muffin</strong> is forked from) has. That's why a command line utility (<strong>xprop</strong>) is used to remove them. Until Cinnamon's developers regain their senses and re-add a feature that should have never been removed from <strong>muffin</strong>, we will have to learn to live with all the issues.</p>
 <ul>
 <li>Client side decorated windows and WINE applications aren't affected by this tweak.</li>
 <li>Close all windows that belongs to an application that is going to be added to the applications list and before applying the settings of this tweak.</li>
@@ -328,16 +474,16 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 <p>The application chooser dialog used by the settings window of this extension lists only those applications that have available .desktop files. Simply because these applications are the only ones that any of the tweaks that require an application ID (<strong>Auto move windows</strong> and <strong>Windows decorations removal</strong>) will recognize and handle.</p>
 <p>Following the <a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html">Desktop Entry Specification</a>, one can create a .desktop file for any application that doesn't appear in the applications list.</p>
 <hr>
-<h2>Extension localization</h2>
+<h3>Applets/Desklets/Extensions (a.k.a. xlets) localization</h3>
 <ul>
-<li>If this extension was installed from Cinnamon Settings, all of this extension's localizations were automatically installed.</li>
-<li>If this extension was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called <strong>localizations.sh</strong> from a terminal opened inside the extension's folder.</li>
-<li>If this extension has no locale available for your language, you could create it by following <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">these instructions</a> and send the .po file to me.
+<li>If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed.</li>
+<li>If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called <strong>localizations.sh</strong> from a terminal opened inside the xlet's folder.</li>
+<li>If this xlet has no locale available for your language, you could create it by following <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">these instructions</a> and send the .po file to me.
 <ul>
 <li>If you have a GitHub account:
 <ul>
 <li>You could send a pull request with the new locale file.</li>
-<li>If you don't want to clone the repository, just create a Gist and send me the link.</li>
+<li>If you don't want to clone the repository, just create a <a href="https://gist.github.com/">Gist</a> and send me the link.</li>
 </ul>
 </li>
 <li>If you don't have/want a GitHub account:
@@ -349,4 +495,137 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 </li>
 <li>If the source text (in English) and/or my translation to Spanish has errors/inconsistencies, feel free to report them.</li>
 </ul>
-</div></div></body></html>
+</div><div class="localization-content hidden" id="spanish"><h1>Ayuda para la extensión Ajustes de Cinnamon</h1>
+<h3>¡IMPORTANTE!</h3>
+<p>Jamás borrar ninguno de los archivos encontrados dentro de la carpeta de este xlet. Podría romper la funcionalidad del xlet.</p>
+<hr>
+<h2 style="color:red;">Reportes de fallos, peticiones de características y contribuciones</h2>
+<span style="color:red;">
+Si cualquiera tiene fallos que reportar, peticiones de características y contribuciones, deben realizarlas <a href="https://github.com/Odyseus/CinnamonTools">en la página de GitHub de este xlet</a>.
+</span>
+<hr>
+<h2>Detalles de las opciones de la extensión</h2>
+<p><span style="color:red;font-weight: bold;font-size: large;">Algunos ajustes tienen advertencias, dependencias, limitaciones y/o problemas conocidos que deben ser leídos y entendidos antes de habilitar un ajuste. No preocuparse, nada <em>fatal</em> podría suceder.</span></p>
+<h3>Ajustes de applets/desklets</h3>
+<ul>
+<li><strong>Pedir confirmación al eliminar applet/desklet:</strong> En vez de directamente remover un applet/desklet desde los menúes contextuales, un diálogo de confirmación será mostrado. Esta opción no afecta la eliminación de applets/desklets desde el administrador de applet/desklets dentro de Configuración de Cinnamon (diálogo de confirmación no será mostrado).</li>
+<li><strong>Mostrar &quot;Abrir carpeta del applet/desklet&quot; en el menú contextual</strong> y <strong>Mostrar &quot;Editar archivo principal del applet/desklet&quot; en el menú contextual:</strong> Estas opciones agregarán nuevos ítems a los menúes contextuales de applets/desklets. El lugar donde estos ítems serán colocados puede elegirse con la opción <strong>¿Dónde colocar el elemento...?</strong>.</li>
+</ul>
+<h3>Ajustes de esquinas activas</h3>
+<p>Este ajuste está disponible sólo para versiones de Cinnamon menores a 3.2.x. Cinnamon 3.2.x ya posee retardo de activación para esquinas activas.</p>
+<ul>
+<li><strong>Retardo de activación para la esquina superior izquierda:</strong> Claro como el cristal.</li>
+<li><strong>Retardo de activación para la esquina superior derecha:</strong> Claro como el cristal.</li>
+<li><strong>Retardo de activación para la esquina inferior izquierda:</strong> Claro como el cristal.</li>
+<li><strong>Retardo de activación para la esquina inferior derecha:</strong> Claro como el cristal.</li>
+</ul>
+<h3>Ajustes del área de escritorio</h3>
+<ul>
+<li><strong>Habilitar soltar aplicaciones en el escritorio:</strong> Este ajuste habilita a las aplicaciones para que se puedan arrastrar desde el menú y desde los lanzadores del panel y sean soltadas en el escritorio.</li>
+</ul>
+<h3>Ajustes de menúes emergentes</h3>
+<p><strong>Comportamiento de los menúes del panel</strong></p>
+<p><strong>Nota:</strong> Esta opción afecta solamente el comportamiento de los menúes que perteneces a applets colocados en cualquier panel.</p>
+<ul>
+<li><strong>Emular el comportamiento de los menúes de Gnome Shell:</strong> Cuando un menú está abierto en Gnome Shell y, a continuación, el cursor del ratón se mueve a otro botón en el panel superior, el menú de los botones por los cuales el cursor del ratón está pasando se abrirán automáticamente sin necesidad de hacer clic en ellos. Con esta opción habilitada, ese mismo comportamiento se puede reproducir en Cinnamon.</li>
+<li><strong>No consumir clics:</strong> De forma predeterminada, cuando se abre el menú de un applet en Cinnamon y luego se hace clic en otro applet para abrir su menú, el primer clic se utiliza para cerrar el primer menú abierto y, a continuación, se debe realizar otro clic para abrir el menú del segundo applet. Con esta opción habilitada, se puede abrir directamente el menú de cualquier applet incluso si otro applet tiene su menú abierto.</li>
+</ul>
+<h3>Ajustes de caja de herramientas</h3>
+<ul>
+<li><strong>Evitar la superposición de puntero del ratón sobre las cajas de información sobre herramientas:</strong> Las cajas de información en la interfaz de usuario de Cinnamon están alineadas con la esquina superior izquierda del puntero del ratón. Esto lleva a tener esta información superpuesta por el puntero del ratón. Este ajuste alinea la caja de información sobre herramientas en la esquina inferior derecha del puntero del ratón (aproximadamente), reduciendo la posibilidad de que el puntero del ratón se solape con la caja de información sobre herramientas.</li>
+<li><strong>Retardo para mostrar información sobre herramientas:</strong> Estableces un retraso en milisegundos para mostrar información sobre herramientas de la interfaz de Cinnamon.</li>
+</ul>
+<h3>Ajustes de notificaciones</h3>
+<ul>
+<li>
+<p><strong>Habilitar animación de notificaciones:</strong> Claro como el cristal.</p>
+</li>
+<li>
+<p><strong>Posición de las notificaciones:</strong> Notificaciones pueden ser mostradas en la esquina superior derecha de la pantalla (por defecto del sistema) o en la esquina inferior derecha de la pantalla.</p>
+</li>
+<li>
+<p><strong>Distancia desde el panel:</strong></p>
+<ul>
+<li><strong>Para las notificaciones que se muestran en la parte superior derecha de la pantalla:</strong> Esta la distancia entre el borde inferior del panel superior (si no hay panel superior, desde la parte superior de la pantalla) hasta el borde superior de la ventana emergente de notificación.</li>
+<li><strong>Para las notificaciones que se muestran en la parte inferior derecha de la pantalla:</strong> Esta la distancia entre el borde superior del panel inferior (si no hay panel inferior, desde la parte inferior de la pantalla) hasta el borde inferior de la ventana emergente de notificación.</li>
+</ul>
+</li>
+<li>
+<p><strong>Margen derecho del popup de las notificaciones:</strong> Por defecto, el margen derecho de la notificación es definido por el tema que se usa actualmente. Esta opción, con un valor distinto de 0 (cero), permite establecer un margen derecho personalizado, ignorando el definido por el tema.</p>
+</li>
+</ul>
+<h3>Ajustes de foco de ventanas</h3>
+<p>Ajuste basado en la extensión para Gnome Shell llamada <a href="https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus">Steal My Focus</a> por <a href="https://github.com/v-dimitrov">Valentin Dimitrov</a> y otra extensión para Gnome Shell llamada <a href="https://github.com/awamper/window-demands-attention-shortcut">Window Demands Attention Shortcut</a> por <a href="https://github.com/awamper">awamper</a>.</p>
+<p>Algunas ventanas que requieren atención no ganarán enfoque independientemente de la combinación de ajustes en la configuración de Cinnamon. Esta opción nos permitirá corregir esto.</p>
+<ul>
+<li><strong>La activación de ventanas que demandan atención...:</strong>
+<ul>
+<li><strong>...es manejada por el sistema:</strong> Claro como el cristal.</li>
+<li><strong>...es inmediata:</strong> Las ventanas que requieren atención serán enfocadas inmediatamente.</li>
+<li><strong>...se lleva a cabo con un atajo de teclado:</strong> Las ventanas que requieren atención serán enfocadas bajo demanda con un atajo de teclado.</li>
+</ul>
+</li>
+<li><strong>Atajo de teclado:</strong> Establecer un atajo de teclado para la opción <strong>...is performed with a keyboard shortcut</strong>.</li>
+</ul>
+<h3>Ajustes de sombras de ventana</h3>
+<p>Ajuste basado en la extensión para Cinnamon llamada <a href="https://cinnamon-spices.linuxmint.com/extensions/view/43">Custom Shadows</a> creada por <a href="https://github.com/mikhail-ekzi">mikhail-ekzi</a>. Permite modificar las sombras usadas por el gestor de ventanas de Cinnamon (Muffin).</p>
+<p><strong>Note:</strong> Las ventanas decoradas del lado del cliente no se ven afectadas por este ajuste.</p>
+<p><strong>Preajustes de sombra</strong></p>
+<ul>
+<li><strong>Sombras personalizadas</strong></li>
+<li><strong>Sombras por defecto</strong></li>
+<li><strong>Sin sombras</strong></li>
+<li><strong>Sombras de Windows 10</strong></li>
+</ul>
+<h3>Mover ventanas automáticamente</h3>
+<p>Ajuste basado en la extensión para Gnome Shell llamada <a href="https://extensions.gnome.org/extension/16/auto-move-windows/">Auto Move Windows</a> por <a href="https://github.com/fmuellner">Florian Muellner</a>. Permite la creación de reglas para abrir determinadas aplicaciones en áreas de trabajo específicas.</p>
+<p><strong>Nota:</strong> Si la aplicación que se quiere seleccionar no se muestra en el diálogo selector de aplicaciones, leer la sección de este archivo de ayuda llamada <strong>Aplicaciones que no aparecen en los cuadros de diálogo de selección de aplicaciones</strong>.</p>
+<h3>Eliminación de decoraciones de ventanas</h3>
+<p>Ajuste basado en la extensión para Cinnamon llamada <a href="https://cinnamon-spices.linuxmint.com/extensions/view/29">Cinnamon Maximus</a> por <a href="https://github.com/fatihmete">Fatih Mete</a> con algunas opciones extraídas de la extensión para Gnome Shell llamada <a href="https://github.com/luispabon/maximus-gnome-shell">Maximus NG</a> por <a href="https://github.com/luispabon">Luis Pabon</a>. Este ajuste permite remover las decoraciones de ventanas maximizadas/medio-maximizadas/en mosaico.</p>
+<p><strong>Nota:</strong> Si la aplicación que se quiere seleccionar no se muestra en el diálogo selector de aplicaciones, leer la sección de este archivo de ayuda llamada <strong>Aplicaciones que no aparecen en los cuadros de diálogo de selección de aplicaciones</strong>.</p>
+<h4>Dependencias</h4>
+<p>Este ajuste requiere dos comandos disponibles en el sistema (<strong>xprop</strong> y <strong>xwininfo</strong>) para que funcione.</p>
+<ul>
+<li>Distribuciones basadas en Debian: Estos comandos son proporcionados por el paquete <strong>x11-utils</strong>. Linux Mint ya tiene este paquete instalado.</li>
+<li>Distribuciones basadas en Archlinux: Estos comandos son proporcionados por los paquetes <strong>xorg-xprop</strong> y <strong>xorg-xwininfo</strong>.</li>
+<li>Distribuciones basadas en Fedora: Estos comandos son proporcionados por el paquete <strong>xorg-x11-utils</strong>.</li>
+</ul>
+<h4>Advertencias</h4>
+<ul>
+<li>Las ventanas decoradas del lado del cliente y las aplicaciones WINE no se ven afectadas por este ajuste.</li>
+<li>Cerrar todas las ventanas que pertenecen a una aplicación que se va a agregar a la lista de aplicaciones y antes de aplicar las configuraciones de este ajuste.</li>
+<li>Como regla general para evitar problemas, antes de activar y configurar este ajuste, cerrar todas las ventanas actualmente abiertas, activar y configurar este ajuste y luego cerrar la sesión y volver a entrar.</li>
+</ul>
+<h4>Problemas conocidos</h4>
+<ul>
+<li><strong>Ventanas invisibles:</strong> A veces, las ventanas de aplicaciones que están configuradas para que sus decoraciones sean removidas se pueden volver invisibles. El ícono de la aplicación todavía puede verse en el panel (barra de tareas) y cuando se le hace clic para enfocar su ventana respectiva, la ventana invisible va a bloquear los clics como si estuviera normalmente visible. Para arreglar esto, la ventana necesita ser des-maximizada (se volverá visible) y luego cerrada. Cuando se reabre la aplicación, su ventana debería comportarse normalmente.</li>
+<li><strong>Aplicaciones atascadas sin decoraciones:</strong> A veces, una aplicación queda atascada sin decoraciones incluso después de volver a maximizarla. Reiniciado la aplicación hará que su capacidad para cambiar su estado decorada y sin decorar sea recuperada.</li>
+</ul>
+<hr>
+<h2>Problemas generales de la extensión</h2>
+<h3>Aplicaciones no aparecen en los cuadros de diálogo de selección de aplicaciones</h3>
+<p>El selector de aplicaciones usado por la ventana de preferencias de esta extensión lista sólo las aplicaciones que tienen un archivo .desktop disponible. Simplemente porque estas son las aplicaciones que cualquiera de los ajustes que requieren una ID de aplicación (<strong>Mover ventanas automáticamente</strong> y <strong>Eliminación de decoraciones de ventanas</strong>) van a reconocer.</p>
+<p>Siguiendo la <a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html">Especificación para Entradas de Escritorio</a>, uno puede crear un archivo .desktop para cualquier aplicación que no aparece en la lista de aplicaciones.</p>
+<hr>
+<h3>Localización de applets/desklets/extensiones (también conocidos como xlets)</h3>
+<ul>
+<li>Si este xlet se instaló desde Configuración de Cinnamon, todas las localizaciones de este xlet se instalaron automáticamente.</li>
+<li>Si este xlet se instaló manualmente y no a través de Configuración de Cinnamon, las localizaciones se pueden instalar ejecutando el archivo llamado <strong>localizations.sh</strong> desde una terminal abierta dentro de la carpeta del xlet.</li>
+<li>Si este xlet no está disponible en su idioma, la localización puede ser creada siguiendo <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">estas instrucciones</a> y luego enviarme el archivo .po.
+<ul>
+<li>Si se posee una cuenta de GitHub:
+<ul>
+<li>Puede enviar una &quot;pull request&quot; con el nuevo archivo de localización.</li>
+<li>Si no se desea clonar el repositorio, simplemente crear un <a href="https://gist.github.com/">Gist</a> y enviarme el enlace.</li>
+</ul>
+</li>
+<li>Si no se posee o no se quiere una cuenta de GitHub:
+<ul>
+<li>Se puede enviar un <a href="http://pastebin.com/">Pastebin</a> (o servicio similar) a mi <a href="https://forums.linuxmint.com/memberlist.php?mode=viewprofile&amp;u=164858">cuenta en el for de Linux Mint</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Si el texto fuente (en Inglés) y/o mi traducción al Español contiene errores o inconsistencias, no dude en informarlos.</li>
+</ul>
+</div></div></div><script type="text/javascript">toggleLocalizationVisibility(null);</script></body></html>

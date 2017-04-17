@@ -1,5 +1,13 @@
 ## Change Log
 
+##### 1.09
+- Added some missing translatable strings.
+- Updated localizations.
+- Changed some default sizes for windows/dialogs to better accommodate strings from verbose languages.
+- Changed the contributors key on the metadata.json file from a string to an array for easier reviewing and better legibility.
+- Reworked the About dialog to add more information and to display the contributors section translated.
+- Added localized help.
+
 ##### 1.08
 - Added *Window decorations removal* option (a.k.a. Maximus). Allows to remove the windows decorations from maximized/half-maximized/tiled windows.
 - Added *Auto move windows* tweak. This tweak enables the ability to set rules to open determined applications on specific workspaces.
