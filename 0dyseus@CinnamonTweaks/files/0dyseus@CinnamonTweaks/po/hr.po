@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cinnamon Tweaks 1.06\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 16:38-0300\n"
-"PO-Revision-Date: 2017-03-07 16:38-0300\n"
+"POT-Creation-Date: 2017-04-05 20:22+0200\n"
+"PO-Revision-Date: 2017-04-05 22:30+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -19,31 +19,52 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: 3.2/extension.js:64 extension.js:67
-msgid "Tweak ativation aborted!!!"
-msgstr "Aktivacija prilagodbe prekinuta!"
+#: __init__.js:185
+#, javascript-format
+msgid "Schema %s could not be found for extension %s."
+msgstr "Shema %s se ne može pronaći za proširenje %s."
 
-#: 3.2/extension.js:65 3.2/extension.js:92 extension.js:68 extension.js:95
+#: __init__.js:186
+msgid "Please check your installation."
+msgstr "Provjerite svoju instalaciju."
+
+#: __init__.js:195
+msgid "Tweak activation aborted!!!"
+msgstr "Aktivacija prilagodbe prekinuta!!!"
+
+#: __init__.js:196 __init__.js:203
 msgid "Your Cinnamon version may not be compatible!!!"
 msgstr "Vaša Cinnamon inačica možda nije kompatibilna!!!"
 
-#: 3.2/extension.js:91 extension.js:94
-msgid "Extension ativation aborted!!!"
-msgstr "Aktivacija proširenja prekinuta!"
+#: __init__.js:202
+msgid "Extension activation aborted!!!"
+msgstr "Aktivacija proširenja prekinuta!!!"
 
-#: 3.2/extension.js:93 extension.js:96
+#: __init__.js:204
 msgid "Minimum Cinnamon version allowed: 2.8.6"
 msgstr "Dopušten je najmanje Cinnamon inačice: 2.8.6"
 
-#: 3.2/extension.js:141 extension.js:144
+#: __init__.js:481
+msgid "Cancel"
+msgstr "Odustani"
+
+#: __init__.js:487
+msgid "OK"
+msgstr "U redu"
+
+#: extra_modules/hotCornerPatched.js:40
+msgid "Invalid overview options: Incorrect number of corners"
+msgstr "Neispravne mogućnosti pregleda: pogrešan broj kutova"
+
+#: extension.js:224
 msgid "Open applet folder"
 msgstr "Otvori mapu apleta"
 
-#: 3.2/extension.js:155 extension.js:158
+#: extension.js:241
 msgid "Edit applet main file"
 msgstr "Uredi glavnu datoteku apleta"
 
-#: 3.2/extension.js:201 extension.js:204
+#: extension.js:290
 #, javascript-format
 msgid ""
 "Do you want to remove '%s' from your panel?\n"
@@ -52,23 +73,15 @@ msgstr ""
 "Želite li ukloniti '%s' s vašeg panela?\n"
 "ID primjerka: %s"
 
-#: 3.2/extension.js:203 3.2/extension.js:318 extension.js:206 extension.js:321
-msgid "OK"
-msgstr "U redu"
-
-#: 3.2/extension.js:204 3.2/extension.js:319 extension.js:207 extension.js:322
-msgid "Cancel"
-msgstr "Odustani"
-
-#: 3.2/extension.js:261 extension.js:264
+#: extension.js:351
 msgid "Open desklet folder"
 msgstr "Otvori mapu deskleta"
 
-#: 3.2/extension.js:274 extension.js:277
+#: extension.js:367
 msgid "Edit desklet main file"
 msgstr "Uredi glavnu datoteku deskleta"
 
-#: 3.2/extension.js:316 extension.js:319
+#: extension.js:413
 #, javascript-format
 msgid ""
 "Do you want to remove '%s' from your desktop?\n"
@@ -77,7 +90,15 @@ msgstr ""
 "Želite li ukloniti '%s' s vaše radne površine?\n"
 "ID primjerka: %s"
 
-#: 3.2/extension.js:1002 extension.js:1088
+#: extension.js:681
+msgid "Hotcorners tweaks"
+msgstr "Prilagodba kutova zaslona"
+
+#: extension.js:786 settings.py:288
+msgid "Avoid mouse pointer overlapping tooltips"
+msgstr "Izbjegni preklapanje pokazivača miša i napomena"
+
+#: extension.js:1277
 msgid ""
 "If you updated this extension from an older version, <b>you must check its "
 "settings window</b>."
@@ -85,285 +106,27 @@ msgstr ""
 "Ako ste nadopunili ovo proširenje sa starije inačice, <b>morate provjeriti "
 "postavke ovog proširenja</b>."
 
-#: 3.2/extension.js:1003 extension.js:1089
+#: extension.js:1278
 msgid "Some preferences may have been changed to their default values."
 msgstr "Neke osobitosti možda su postavljenje ne zadane vrijednosti."
 
-#: 3.2/extension.js:1004 extension.js:1090
+#: extension.js:1279
 msgid "This message will not be displayed again."
 msgstr "Ova poruka više neće biti ponovno prikazana."
 
-#: hotCornerPatched.js:43
-msgid "Invalid overview options: Incorrect number of corners"
-msgstr "Neispravne mogućnosti pregleda: pogrešan broj kutova"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->description
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->description
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->description
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->description
-msgid "(*) Where to place the menu item?"
-msgstr "(*) Gdje smjestiti izbornik stavki?"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Before \"Configure...\" item"
-msgstr "Prije \"Prilagodi...\" stavke"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Last item on menu"
-msgstr "Zadnja stavka u izborniku"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Before \"About...\" item"
-msgstr "Prije \"O programu\" stavke"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Before \"Remove...\" item"
-msgstr "Prije \"Ukloni...\" stavke"
-
-#. 3.2->settings-schema.json->pref_tooltips_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_tweaks_enabled->description
-msgid "Enable Tooltips tweaks"
-msgstr "Omogući prilagodbu napomena"
-
-#. 3.2->settings-schema.json->pref_tooltips_tweaks_enabled->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_tweaks_enabled->tooltip
-msgid "These tweaks affect only Cinnamon's UI tooltips."
-msgstr "Ove prilagodbe utječu na napomene Cinnamon korisničkog sučelja"
-
-#. 3.2->settings-schema.json->pref_desktop_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desktop_tweaks_enabled->description
-msgid "Enable Desktop tweaks"
-msgstr "Omogući prilagodbu radne površine"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context->description
-msgid "(*) Display \"Edit applet main file\" on context menu for applets"
-msgstr "(*) Prikaži \"Uredi glavnu datoteku apleta\" u izborniku apleta"
-
-#. 3.2->settings-schema.json->restart_cinnamon_button->description
-msgid "Restart Cinnamon"
-msgstr "Ponovno pokreni Cinnamon"
-
-#. 3.2->settings-schema.json->section_desklets_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head1->description
-msgid "Desklets tweaks"
-msgstr "Prilagodba deskleta"
-
-#. 3.2->settings-schema.json->section_tooltips_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head5->description
-msgid "Tooltips tweaks"
-msgstr "Prilagodba napomena"
-
-#. 3.2->settings-schema.json->section_restart_cinnamon->title
-msgid ""
-"After changing any option marked with asterisks (*), Cinnamon needs to be "
-"restarted."
-msgstr ""
-"Nakon promjene mogućnosti koje sadrže zvjezdicu (*), Cinnamon se treba "
-"ponovno pokrenuti"
-
-#. 3.2->settings-schema.json->section_applets_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head0->description
+#: settings.py:68 settings.py:70
 msgid "Applets tweaks"
 msgstr "Prilagodba apleta"
 
-#. 3.2->settings-schema.json->section_notifications_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head2->description
-msgid "Notifications tweaks"
-msgstr "Prilagodbe obavijesti"
-
-#. 3.2->settings-schema.json->section_win_focus_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head3->description
-msgid "Window Focus tweaks"
-msgstr "Prilagodba fokusa prozora"
-
-#. 3.2->settings-schema.json->page_02->title
-msgid "Page 2"
-msgstr "stranica 2"
-
-#. 3.2->settings-schema.json->page_01->title
-msgid "Page 1"
-msgstr "stranica 1"
-
-#. 3.2->settings-schema.json->section_desktop_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head6->description
-msgid "Desktop tweaks"
-msgstr "Prilagodba radne površine"
-
-#. 3.2->settings-schema.json->section_popups_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head7->description
-msgid "Popup menus tweaks"
-msgstr "Prilagodba skočnog prozora"
-
-#. 3.2->settings-schema.json->pref_applets_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_tweaks_enabled->description
+#: settings.py:75
 msgid "Enable Applets tweaks"
 msgstr "Omogući prilagodbu apleta"
 
-#. 3.2->settings-schema.json->pref_notifications_enable_animation->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_enable_animation->description
-msgid "Enable notifications open/close animation"
-msgstr "Omogući obavijesti otvori/zatvori animacije"
+#: settings.py:82
+msgid "Ask for confirmation on applet removal"
+msgstr "Upitaj za potvrdu pri uklanjanju apleta"
 
-#. 3.2->settings-schema.json->pref_notifications_right_margin->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_right_margin->description
-msgid "Notification popup right margin"
-msgstr "Desni rub obavijesti"
-
-#. 3.2->settings-schema.json->pref_notifications_right_margin->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_right_margin->tooltip
-msgid ""
-"By default, the right margin of the notification popup is defined by the "
-"currently used theme. This option, set to any value other than 0 (zero), "
-"allows to set a custom right margin, ignoring the defined by the theme."
-msgstr ""
-"Prema zadanome, desni rub obavijesti je određen trenutno korištenom temom. "
-"Ova mogućnost, postavljena na bilo koju vrijednost osim 0 (nule), dopušta "
-"postavljanje prilagođenog desnog ruba, zanemarujući vrijednost zadanu temom."
-
-#. 3.2->settings-schema.json->pref_notifications_right_margin->units
-#. 3.2->settings-schema.json->pref_notifications_distance_from_panel->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_right_margin->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_distance_from_panel->units
-msgid "pixels"
-msgstr "pikseli"
-
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_keyboard_shortcut->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_keyboard_shortcut->description
-msgid "Keyboard shortcut: "
-msgstr "Prečac tipkovnice"
-
-#. 3.2->settings-schema.json->pref_desklets_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_tweaks_enabled->description
-msgid "Enable Desklets tweaks"
-msgstr "Omogući prilagodbu deskleta"
-
-#. 3.2->settings-schema.json->pref_notifications_position->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_position->description
-msgid "Notifications position"
-msgstr "Položaj obavijesti"
-
-#. 3.2->settings-schema.json->pref_notifications_position->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_position->options
-msgid "Top-right of screen (System default)"
-msgstr "Gore-desno na zaslonu (Zadano sustavom)"
-
-#. 3.2->settings-schema.json->pref_notifications_position->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_position->options
-msgid "Bottom-right of screen"
-msgstr "Dolje-desno na zaslonu"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context->description
-msgid "(*) Display \"Open applet folder\" on context menu for applets"
-msgstr "(*) Prikaži \"Otvori mapu apleta\" u izborniku apleta"
-
-#. 3.2->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->description
-msgid "Ask for confirmation on desklet removal"
-msgstr "Upitaj za potvrdu pri uklanjanju deskleta"
-
-#. 3.2->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->tooltip
-#. 3.2->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->tooltip
+#: settings.py:83 settings.py:145
 msgid ""
 "Display a confirmation dialog on removal.\n"
 "Keeping the Ctrl key pressed will bypass the confirmation."
@@ -371,124 +134,116 @@ msgstr ""
 "Prikazuje dijalog potvrde pri uklanjanju.\n"
 "Držanje pritisnute Ctrl tipke zaobilazi taj dijalog potvrde."
 
-#. 3.2->settings-schema.json->pref_notifications_enable_tweaks->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_enable_tweaks->description
-msgid "Enable notifications tweaks"
-msgstr "Omogući prilagodbu obavijesti"
+#: settings.py:90
+msgid "Display \"Edit applet main file\" on context menu"
+msgstr "Prikaži \"Uredi glavnu datoteku apleta\" u izborniku apleta"
 
-#. 3.2->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->description
-msgid "Ask for confirmation on applet removal"
-msgstr "Upitaj za potvrdu pri uklanjanju apleta"
+#: settings.py:97
+msgid "Where to place the \"Edit applet main file\" item?"
+msgstr "Gdje smjestiti stavku \"Uredi glavnu datoteku apleta\"?"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_tweaks_enabled->description
-msgid "Enable Popup menus tweaks"
-msgstr "Omogući prilagodbu skočnog prozora"
+#: settings.py:99 settings.py:119 settings.py:161 settings.py:181
+msgid "Last item on menu"
+msgstr "Zadnja stavka u izborniku"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->description
-msgid "(*) Panel menus behavior"
-msgstr "(*) Ponašanje izbornika panela"
+#: settings.py:100 settings.py:120 settings.py:162 settings.py:182
+msgid "Before \"About...\" item"
+msgstr "Prije \"O programu\" stavke"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->tooltip
-msgid ""
-"This setting affects only the behavior of menus that belongs to applets "
-"placed on any panel.\n"
-"Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and then "
-"the mouse cursor is moved to another button on the top panel, the menu of "
-"the hovered buttons will automatically open without the need to click on "
-"them. With this option enabled, that same behavior can be reproduced on "
-"Cinnamon.\n"
-"Don't eat clicks: By default, when one opens an applet's menu on Cinnamon "
-"and then click on another applet to open its menu, the first click is used "
-"to close the first opened menu, and then another click has to be performed "
-"to open the menu of the second applet. With this option enabled, one can "
-"directly open the menu of any applet even if another applet has its menu "
-"open."
-msgstr ""
-"Ova postavka utječe samo na ponašanje izbornika koji pripadaju apletima "
-"smještenima na bilo kojem panelu.\n"
-"Emuliraj ponašanje Gnome ljuske: Kada je izbornik otvoren u Gnome ljusci, i "
-"zatim se pokazivač miša pomakne na drugu tipku panela, izbornik tipke na "
-"koju je pomaknut pokazivač miša će se automatski otvoriti bez potrebe klika "
-"na njega. Sa ovom omogućenom mogućnosti, to isto ponašanje se može "
-"reproducirati u Cinnamonu.\n"
-"Ne \"proždiri\" klikove: Po zadanome, kada jedan otvara izbornik apleta u "
-"Cinnamonu a zatim klik na drugi aplet otvara izbornik drugog apleta, prvi "
-"klik se koristi za zatvaranje prvog otvorenog izbornika a zatim drugi klik "
-"se treba izvesti za otvaranje izbornika drugog apleta. Sa ovom omogućenom "
-"mogućnosti, jedan klik može izravno otvoriti izbornik bilo kojeg apleta čak "
-"i ako drugi aplet ima otvoren izbornik."
+#: settings.py:101 settings.py:121 settings.py:163 settings.py:183
+msgid "Before \"Configure...\" item"
+msgstr "Prije \"Prilagodi...\" stavke"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-msgid "Emulate Gnome Shell menus"
-msgstr "Emuliraj ponašanje Gnome ljuske"
+#: settings.py:102 settings.py:122 settings.py:164 settings.py:184
+msgid "Before \"Remove...\" item"
+msgstr "Prije \"Ukloni...\" stavke"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-msgid "Don't \"eat\" clicks"
-msgstr "Ne \"proždiri\" klikove"
+#: settings.py:110
+msgid "Display \"Open applet folder\" on context menu"
+msgstr "Prikaži \"Otvori mapu apleta\" u izborniku apleta"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-msgid "Default behavior"
-msgstr "Zadano ponašanje"
+#: settings.py:117
+msgid "Where to place the \"Open applet folder\" item?"
+msgstr "Gdje smjestiti stavku \"Otvori mapu apleta\"?"
 
-#. 3.2->settings-
-#. schema.json->pref_notifications_distance_from_panel->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_distance_from_panel->description
-msgid "Distance from panel"
-msgstr "Udaljenost od panela"
+#: settings.py:130 settings.py:132
+msgid "Desklets tweaks"
+msgstr "Prilagodba deskleta"
 
-#. 3.2->settings-schema.json->pref_notifications_distance_from_panel->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_distance_from_panel->tooltip
-msgid ""
-"For notifications displayed at the top-right of screen: this is the distance "
-"between the bottom border of the top panel (if no top panel, from the top of "
-"the screen) to the top border of the notification popup.\n"
-"For notifications displayed at the bottom-right of screen: this is the "
-"distance between the top border of the bottom panel (if no bottom panel, "
-"from the bottom of the screen) to the bottom border of the notification "
-"popup."
-msgstr ""
-"Za obavijesti prikazane u gornjem-desnom kutu zaslona: to je udaljenost "
-"između donjeg ruba gornjeg panela (ako nema gornjeg panela, od vrha zaslona) "
-"do gornjeg ruba prozora obavijesti.\n"
-"Za obavijesti prikazane na donjem-desnom kutu zaslona to je udaljenost "
-"između gornjeg ruba donjeg panela (Ako nema donjeg panela, od dna zaslona) "
-"do donjeg ruba prozora obavijesti."
+#: settings.py:137
+msgid "Enable Desklets tweaks"
+msgstr "Omogući prilagodbu deskleta"
 
-#. 3.2->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->description
-msgid "(*) Enable applications drop to the Desktop"
-msgstr "(*) Omogući ispuštanje pokretača aplikacija na radnu površinu"
+#: settings.py:144
+msgid "Ask for confirmation on desklet removal"
+msgstr "Upitaj za potvrdu pri uklanjanju deskleta"
 
-#. 3.2->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->tooltip
+#: settings.py:152
+msgid "Display \"Edit desklet main file\" on context menu"
+msgstr "Prikaži \"Uredi glavnu datoteku deskleta\" u izborniku deskleta"
+
+#: settings.py:159
+msgid "Where to place the \"Edit desklet main file\" item?"
+msgstr "Gdje smjestiti stavku \"Uredi glavnu datoteku deskleta\"?"
+
+#: settings.py:172
+msgid "Display \"Open desklet folder\" on context menu"
+msgstr "Prikaži \"Otvori mapu deskleta\" u izborniku deskleta"
+
+#: settings.py:179
+msgid "Where to place the \"Open desklet folder\" item?"
+msgstr "Gdje smjestiti stavku \"Otvori mapu deskleta\"?"
+
+#: settings.py:193 settings.py:196
+msgid "Hot corners tweaks"
+msgstr "Prilagodba kutova zaslona"
+
+#: settings.py:201
+msgid "Enable Hot Corners tweaks"
+msgstr "Omogući prilagodbu kutova zaslona"
+
+#: settings.py:208
+msgid "Top left hot corner activation delay"
+msgstr "Odgoda aktivacije gornjeg lijevog kuta zaslona"
+
+#: settings.py:209 settings.py:221 settings.py:233 settings.py:245
+msgid "Set a delay in milliseconds to activate this hot corner."
+msgstr "Postavi odgodu u milisekundama za aktivaciju ovog kuta zaslona."
+
+#: settings.py:213 settings.py:225 settings.py:237 settings.py:249
+#: settings.py:301
+msgid "milliseconds"
+msgstr "milisekunde"
+
+#: settings.py:220
+msgid "Top right hot corner activation delay"
+msgstr "Odgoda aktivacije gornjeg desnog kuta zaslona"
+
+#: settings.py:232
+msgid "Bottom left hot corner activation delay"
+msgstr "Odgoda aktivacije donjeg lijevog kuta zaslona"
+
+#: settings.py:244
+msgid "Bottom right hot corner activation delay"
+msgstr "Odgoda aktivacije donjeg desnog kuta zaslona"
+
+#: settings.py:256
+msgid "Desktop tweaks"
+msgstr "Prilagodba radne površine"
+
+#: settings.py:258
+msgid "Desktop area tweaks"
+msgstr "Prilagodba radne površine"
+
+#: settings.py:263
+msgid "Enable Desktop area tweaks"
+msgstr "Omogući prilagodbu radne površine"
+
+#: settings.py:270
+msgid "Enable applications drop to the Desktop"
+msgstr "Omogući ispuštanje pokretača aplikacija na radnu površinu"
+
+#: settings.py:271
 msgid ""
 "With this option enabled, applications can be dragged from the menu applet "
 "and from the panel launchers applet and dropped into the desktop."
@@ -496,128 +251,15 @@ msgstr ""
 "Ako je ovo omogućeno, aplikacije se mogu odvući s izbornika apleta i s "
 "pokretača na panelima i ispustiti na radnu površinu."
 
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context->description
-msgid "(*) Display \"Edit desklet main file\" on context menu for desklets"
-msgstr "(*) Prikaži \"Uredi glavnu datoteku deskleta\" u izborniku deskleta"
+#: settings.py:275
+msgid "Tooltips tweaks"
+msgstr "Prilagodba napomena"
 
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context->description
-msgid "(*) Display \"Open desklet folder\" on context menu for desklets"
-msgstr "(*) Prikaži \"Otvori mapu deskleta\" u izborniku deskleta"
+#: settings.py:280
+msgid "Enable Tooltips tweaks"
+msgstr "Omogući prilagodbu napomena"
 
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->description
-msgid "The activation of windows demanding attention..."
-msgstr "Aktivacija prozora zahtijeva pozornost..."
-
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-msgid "...is performed with a keyboard shortcut"
-msgstr "...kada se izvodi prečacom tipkovnice"
-
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-msgid "...is handled by the system"
-msgstr "...kada je izvođena sustavom"
-
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-msgid "...is immediate"
-msgstr "...kada je neposredna"
-
-#. 3.2->settings-schema.json->pref_tooltips_delay->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_delay->description
-msgid "(*) Tooltips show delay"
-msgstr "(*) Odgoda prikaza napomena"
-
-#. 3.2->settings-schema.json->pref_tooltips_delay->tooltip
-#. 0dyseus@CinnamonTweaks->settings-schema.json->pref_tooltips_delay->tooltip
-msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
-msgstr ""
-"Postavi odgodu u milisekundama za prikaz napomena Cinnamon korisničkog "
-"sučelja."
-
-#. 3.2->settings-schema.json->pref_tooltips_delay->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_left->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_left->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_right->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_right->units
-#. 0dyseus@CinnamonTweaks->settings-schema.json->pref_tooltips_delay->units
-msgid "milliseconds"
-msgstr "milisekunde"
-
-#. 0dyseus@CinnamonTweaks->metadata.json->name
-msgid "Cinnamon Tweaks"
-msgstr "Cinnamon prilagoditelj"
-
-#. 0dyseus@CinnamonTweaks->metadata.json->description
-msgid "Several tweaks for Cinnamon."
-msgstr "Nekolcina prilagodbi za Cinnamon."
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_left->description
-msgid "Bottom left hot corner activation delay"
-msgstr "Odgoda aktivacije donjeg lijevog kuta zaslona"
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_left->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_left->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_right->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_right->tooltip
-msgid "Set a delay in milliseconds to activate this hot corner."
-msgstr "Postavi odgodu u milisekundama za aktivaciju ovog kuta zaslona."
-
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head00->description
-msgid ""
-"After changing any option marked with asterisks (*), Cinnamon needs to be "
-"restarted.\n"
-msgstr ""
-"Nakon promjene mogućnosti koje sadrže zvjezdicu (*), Cinnamon se treba "
-"ponovno pokrenuti.\n"
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_left->description
-msgid "Top left hot corner activation delay"
-msgstr "Odgoda aktivacije gornjeg lijevog kuta zaslona"
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_tweaks_enabled->description
-msgid "Enable Hot Corners tweaks"
-msgstr "Omogući prilagodbu kutova zaslona"
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_right->description
-msgid "Bottom right hot corner activation delay"
-msgstr "Odgoda aktivacije donjeg desnog kuta zaslona"
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_alignment->description
-msgid "(*) Avoid mouse pointers overlapping tooltips"
-msgstr "(*) Izbjegni preklapanje pokazivača miša i napomena"
-
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_alignment->tooltip
+#: settings.py:289
 msgid ""
 "Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse "
 "pointer. This leads to having tooltips overlapped by the mouse pointer. This "
@@ -630,11 +272,795 @@ msgstr ""
 "prilagodba poravnava napomenu u donji-desni kut pokazivača miša (približno). "
 "Smanjujući mogućnost preklapanja pokazivača miša s napomenom."
 
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head4->description
-msgid "Hot Corners tweaks"
-msgstr "Prilagodba kutova zaslona"
+#: settings.py:296
+msgid "Tooltips show delay"
+msgstr "Odgoda prikaza napomena"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_right->description
-msgid "Top right hot corner activation delay"
-msgstr "Odgoda aktivacije gornjeg desnog kuta zaslona"
+#: settings.py:297
+msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
+msgstr ""
+"Postavi odgodu u milisekundama za prikaz napomena Cinnamon korisničkog "
+"sučelja."
+
+#: settings.py:305
+msgid "Popup menus tweaks"
+msgstr "Prilagodba skočnog prozora"
+
+#: settings.py:310
+msgid "Enable Popup menus tweaks"
+msgstr "Omogući prilagodbu skočnog prozora"
+
+#: settings.py:317
+msgid "Panel menus behavior"
+msgstr "Ponašanje izbornika panela"
+
+#: settings.py:318
+msgid ""
+"This setting affects only the behavior of menus that belongs to applets "
+"placed on any panel.\n"
+"\n"
+"Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and then "
+"the mouse cursor is moved to another button on the top panel, the menu of "
+"the hovered buttons will automatically open without the need to click on "
+"them. With this option enabled, that same behavior can be reproduced on "
+"Cinnamon.\n"
+"\n"
+"Don't eat clicks: By default, when one opens an applet's menu on Cinnamon "
+"and then click on another applet to open its menu, the first click is used "
+"to close the first opened menu, and then another click has to be performed "
+"to open the menu of the second applet. With this option enabled, one can "
+"directly open the menu of any applet even if another applet has its menu "
+"open."
+msgstr ""
+"Ova postavka utječe samo na ponašanje izbornika koji pripadaju apletima "
+"smještenima na bilo kojem panelu.\n"
+"\n"
+"Emuliraj ponašanje Gnome ljuske: Kada je izbornik otvoren u Gnome ljusci, i "
+"zatim se pokazivač miša pomakne na drugu tipku panela, izbornik tipke na "
+"koju je pomaknut pokazivač miša će se automatski otvoriti bez potrebe klika "
+"na njega. Sa ovom omogućenom mogućnosti, to isto ponašanje se može "
+"reproducirati u Cinnamonu.\n"
+"\n"
+"Ne \"proždiri\" klikove: Po zadanome, kada jedan otvara izbornik apleta u "
+"Cinnamonu a zatim klik na drugi aplet otvara izbornik drugog apleta, prvi "
+"klik se koristi za zatvaranje prvog otvorenog izbornika a zatim drugi klik "
+"se treba izvesti za otvaranje izbornika drugog apleta. Sa ovom omogućenom "
+"mogućnosti, jedan klik može izravno otvoriti izbornik bilo kojeg apleta čak "
+"i ako drugi aplet ima otvoren izbornik."
+
+#: settings.py:320
+msgid "Default behavior"
+msgstr "Zadano ponašanje"
+
+#: settings.py:321
+msgid "Emulate Gnome Shell menus"
+msgstr "Emuliraj ponašanje Gnome ljuske"
+
+#: settings.py:322
+msgid "Don't \"eat\" clicks"
+msgstr "Ne \"proždiri\" klikove"
+
+#: settings.py:330 settings.py:332
+msgid "Notifications tweaks"
+msgstr "Prilagodbe obavijesti"
+
+#: settings.py:337
+msgid "Enable notifications tweaks"
+msgstr "Omogući prilagodbu obavijesti"
+
+#: settings.py:344
+msgid "Enable notifications open/close animation"
+msgstr "Omogući obavijesti otvori/zatvori animacije"
+
+#: settings.py:351
+msgid "Notifications position"
+msgstr "Položaj obavijesti"
+
+#: settings.py:353
+msgid "Top-right of screen (System default)"
+msgstr "Gore-desno na zaslonu (Zadano sustavom)"
+
+#: settings.py:354
+msgid "Bottom-right of screen"
+msgstr "Dolje-desno na zaslonu"
+
+#: settings.py:362
+msgid "Distance from panel"
+msgstr "Udaljenost od panela"
+
+#: settings.py:363
+msgid ""
+"For notifications displayed at the top-right of screen: this is the distance "
+"between the bottom border of the top panel (if no top panel, from the top of "
+"the screen) to the top border of the notification popup.\n"
+"\n"
+"For notifications displayed at the bottom-right of screen: this is the "
+"distance between the top border of the bottom panel (if no bottom panel, "
+"from the bottom of the screen) to the bottom border of the notification "
+"popup."
+msgstr ""
+"Za obavijesti prikazane u gornjem-desnom kutu zaslona: to je udaljenost "
+"između donjeg ruba gornjeg panela (ako nema gornjeg panela, od vrha zaslona) "
+"do gornjeg ruba prozora obavijesti.\n"
+"\n"
+"Za obavijesti prikazane na donjem-desnom kutu zaslona to je udaljenost "
+"između gornjeg ruba donjeg panela (Ako nema donjeg panela, od dna zaslona) "
+"do donjeg ruba prozora obavijesti."
+
+#: settings.py:367 settings.py:379
+msgid "pixels"
+msgstr "pikseli"
+
+#: settings.py:374
+msgid "Notification popup right margin"
+msgstr "Desni rub obavijesti"
+
+#: settings.py:375
+msgid ""
+"By default, the right margin of the notification popup is defined by the "
+"currently used theme. This option, set to any value other than 0 (zero), "
+"allows to set a custom right margin, ignoring the defined by the theme."
+msgstr ""
+"Prema zadanome, desni rub obavijesti je određen trenutno korištenom temom. "
+"Ova mogućnost, postavljena na bilo koju vrijednost osim 0 (nule), dopušta "
+"postavljanje prilagođenog desnog ruba, zanemarujući vrijednost zadanu temom."
+
+#: settings.py:386
+msgid "Windows tweaks"
+msgstr "Prilagodba prozora"
+
+#: settings.py:388
+msgid "Window focus tweaks"
+msgstr "Prilagodba fokusa prozora"
+
+#: settings.py:393
+msgid "The activation of windows demanding attention..."
+msgstr "Aktivacija prozora zahtijeva pozornost..."
+
+#: settings.py:395
+msgid "...is handled by the system"
+msgstr "...kada je izvođena sustavom"
+
+#: settings.py:396
+msgid "...is immediate"
+msgstr "...kada je neposredna"
+
+#: settings.py:397
+msgid "...is performed with a keyboard shortcut"
+msgstr "...kada se izvodi prečacom tipkovnice"
+
+#: settings.py:404
+msgid "Activate window demanding attention"
+msgstr "Aktiviraj pozornost zahtjeva prozora"
+
+#: settings.py:409 settings.py:1268
+msgid "Window shadows tweaks"
+msgstr "Prilagodba sjenki prozora"
+
+#: settings.py:410
+msgid "Client side decorated windows aren't affected by this tweak."
+msgstr "Prozori ukrašeni od strane klijenta nisu obuhvaćeni ovom prilagodbom."
+
+#: settings.py:415
+msgid "Enable window shadows tweaks"
+msgstr "Omogući prilagodbu sjenki prozora"
+
+#: settings.py:416
+msgid "This tweak allows us to customize the shadow of all windows."
+msgstr "Ova prilagodba omogućuje prilagodbu sjenki svih prozora."
+
+#: settings.py:423
+msgid "Shadow presets"
+msgstr "Predlošci sjenka"
+
+#: settings.py:425
+msgid "Custom shadows"
+msgstr "Prilagođene sjenke"
+
+#: settings.py:426
+msgid "Default shadows"
+msgstr "Zadane sjenke"
+
+#: settings.py:427
+msgid "No shadows"
+msgstr "Bez sjenki"
+
+#: settings.py:428
+msgid "Windows 10 shadows"
+msgstr "Windows 10 sjenke"
+
+#: settings.py:436 settings.py:1139
+msgid "Edit custom shadows values"
+msgstr "Uredi prilagođene vrijednosti sjenka"
+
+#: settings.py:440
+msgid "Auto move windows"
+msgstr "Automatski premjesti prozore"
+
+#: settings.py:441
+msgid ""
+"Not all applications can be assigned to be moved. Most applications which "
+"can open multiple instances of themselves most likely cannot be configured "
+"to be automatically moved."
+msgstr ""
+"Ne mogu se sve aplikacije odrediti za premještanje. Većina aplikacija koje "
+"mogu biti otvorene u više primjeraka najvjerojatnije se ne mogu podesiti da "
+"se automatski premjeste."
+
+#: settings.py:446
+msgid "Enable auto move windows tweak"
+msgstr "Omogući prilagodbu automatskog premještanja prozora"
+
+#: settings.py:447
+msgid ""
+"This tweak enables the ability to set rules to open determined applications "
+"on specific workspaces."
+msgstr ""
+"Ova prilagodba omogućuje sposobnost postavljanja pravila za otvaranje "
+"određene aplikacije na određenom radnom prostoru."
+
+#: settings.py:454
+msgid "Define auto move windows rules"
+msgstr "Odredi pravila automatskog premještanja prozora"
+
+#: settings.py:458
+msgid "Windows decorations removal"
+msgstr "Uklanjanje ukrasa prozora"
+
+#: settings.py:459
+msgid ""
+"This tweak settings are purposely NOT applied in real time. Click the »Apply "
+"windows decorations settings« button to save settings."
+msgstr ""
+"Ova postavka prilagodbe NIJE namjerno primijenjena u stvarnom vremenu. "
+"Kliknite na tipku »Primijeni postavke ukrasa prozora« kako bi spremili "
+"postavke."
+
+#: settings.py:460
+msgid ""
+"Client side decorated windows and WINE applications aren't affected by this "
+"tweak."
+msgstr ""
+"Ukrasi od strane klijenta i WINE aplikacija nisu obuhvaćene ovom prilagodbom."
+
+#: settings.py:461
+msgid ""
+"Close all windows that belongs to an application that is going to be added "
+"to the applications list and before applying the settings of this tweak."
+msgstr ""
+"Zatvorite sve prozore koji pripadaju aplikaciji koja će biti dodana na popis "
+"aplikacija prije primjenjivanja postavki za ovu prilagodbu."
+
+#: settings.py:463
+msgid ""
+"Read this extension help for more detailed instructions, list of "
+"dependencies and known issues."
+msgstr ""
+"Pročitajte pomoć ovog proširenje za opširnije upute, popis zavisnosti i "
+"poznate probleme."
+
+#: settings.py:469
+msgid "Apply windows decorations settings"
+msgstr "Primijeni postavke ukrasa prozora"
+
+#: settings.py:475
+msgid "Enable maximized windows decoration removal"
+msgstr "Omogući uklanjanje ukrasa uvećanih prozora"
+
+#: settings.py:482
+msgid "Undecorate half-maximized windows?"
+msgstr "Ukloni ukrase s poluuvećanih prozora?"
+
+#: settings.py:489
+msgid "Undecorate tiled windows?"
+msgstr "Ukloni ukrase s popločenih prozora?"
+
+#: settings.py:496
+msgid "Applications list is a blacklist?"
+msgstr "Popis aplikacija je na popisu nedopuštenih?"
+
+#: settings.py:497
+msgid ""
+"If enabled, all applications will have their window decorations removed, "
+"except those listed in the list of applications.\n"
+"\n"
+"If disabled, only the application from the list of applications will have "
+"their decorations removed."
+msgstr ""
+"Ako je omogućeno, sve aplikacije će imati uklonjene ukrase, osim onih "
+"navedenih u popisu aplikacija.\n"
+"\n"
+"If disabled, only the application from the list of applications will have "
+"their decorations removed."
+
+#: settings.py:504
+msgid "Enable logging"
+msgstr "Omogući zapisivanje"
+
+#: settings.py:505
+msgid "For debugging purposes only."
+msgstr "Samo u svrhe otklanjanja grešaka."
+
+#: settings.py:512
+msgid "Edit applications list"
+msgstr "Uredi popis aplikacija"
+
+#: settings.py:697
+msgid "Warnings related to this specific section"
+msgstr "Upozorenja koja se odnose na ovaj određeni odjeljak"
+
+#: settings.py:1000
+msgid "Select a directory to use"
+msgstr "Odaberite mapu za korištenje"
+
+#: settings.py:1003
+msgid "Select a file"
+msgstr "Odaberi datoteku"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:1008 settings.py:1141 settings.py:2386 settings.py:2392
+msgid "_Cancel"
+msgstr "_Odustani"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:1010 settings.py:2394
+msgid "_Open"
+msgstr "_Otvori"
+
+#: settings.py:1013
+msgid "Directories"
+msgstr "Mape"
+
+#: settings.py:1091
+msgid "Focused windows"
+msgstr "Fokusirani prozor"
+
+#: settings.py:1092
+msgid "Unfocused windows"
+msgstr "Nefokusirani prozor"
+
+#: settings.py:1095
+msgid "Normal"
+msgstr "Normaln"
+
+#: settings.py:1096
+msgid "Dialog"
+msgstr "Dijalog"
+
+#: settings.py:1097
+msgid "Modal dialog"
+msgstr "Modalni dijalog"
+
+#: settings.py:1098
+msgid "Utility"
+msgstr "Pomagalo"
+
+#: settings.py:1099
+msgid "Border"
+msgstr "Rub"
+
+#: settings.py:1100
+msgid "Menu"
+msgstr "Izbornik"
+
+#: settings.py:1101
+msgid "Popup menu"
+msgstr "Skočni izbornik"
+
+#: settings.py:1102
+msgid "Dropdown menu"
+msgstr "Padajući izbornik"
+
+#: settings.py:1103
+msgid "Attached"
+msgstr "Nepomičan"
+
+#: settings.py:1113
+msgid "Radius"
+msgstr "Polumjer"
+
+#: settings.py:1114
+msgid "Top fade"
+msgstr "Izblijedi vrh"
+
+#: settings.py:1115
+msgid "X offset"
+msgstr "Pomak po osi X"
+
+#: settings.py:1116
+msgid "Y offset"
+msgstr "Pomak po osi Y"
+
+#: settings.py:1117
+msgid "Opacity"
+msgstr "Prozirnost"
+
+#: settings.py:1142 settings.py:2387
+msgid "_Save"
+msgstr "_Spremi"
+
+#: settings.py:1179
+msgid "Window type"
+msgstr "Vrsta prozora"
+
+#: settings.py:1190
+msgid "Reset values"
+msgstr "Vrati izvorne vrijednosti"
+
+#: settings.py:1192
+msgid "Reset all values on the current view to their defaults."
+msgstr "Vrati sve izvorne vrijednosti trenutnog prikaza."
+
+#: settings.py:1196
+msgid "Apply custom shadow"
+msgstr "Primijeni prilagođenu sjenku"
+
+#: settings.py:1198
+msgid "Save and apply custom shadow values to see its effects in real time."
+msgstr ""
+"Spremi i primijeni vrijednosti prilagođene sjenke kako bi vidjeli učinak u "
+"stvarnom vremenu."
+
+#: settings.py:1240 settings.py:1269
+msgid "Remember to set »Shadow presets« option to »Custom shadows«"
+msgstr ""
+"Ne zaboravite postaviti »Predlošci sjenke« mogućnost za »Prilagođene sjenke«"
+
+#. 0dyseus@CinnamonTweaks->metadata.json->name
+#: settings.py:1267 settings.py:2433
+msgid "Cinnamon Tweaks"
+msgstr "Cinnamon prilagoditelj"
+
+#: settings.py:1280
+msgid "Warning: Trying to reset custom shadows values!!!"
+msgstr ""
+"Upozorenje: Pokušaj vraćanja izvornih vrijednosti prilagođenih sjenki!!!"
+
+#: settings.py:1283
+msgid ""
+"Are  you sure that you want to reset the shadows values of the current view "
+"to their defaults?"
+msgstr "Sigurno želite vratiti izvorne vrijednosti sjenka?"
+
+#: settings.py:1381
+msgid "Application Chooser"
+msgstr "Odabiratelj aplikacija"
+
+#. Can be programmatically changed if needed.
+#: settings.py:1402
+msgid "Choose An Application"
+msgstr "Odaberi aplikaciju"
+
+#: settings.py:1535
+msgid "Applications list"
+msgstr "Popis aplikacija"
+
+#: settings.py:1563 settings.py:1782
+msgid "Application"
+msgstr "Aplikacija"
+
+#: settings.py:1585
+msgid "Add Application"
+msgstr "Dodaj aplikaciju"
+
+#: settings.py:1619 settings.py:1850
+msgid "Choose one or more applications (Hold Ctrl key)"
+msgstr "Odaberi jednu ili više aplikacija (Pritisnite Ctrl tipku)"
+
+#: settings.py:1753
+msgid "Auto move windows rules"
+msgstr "Pravila automatskog premještanja prozora"
+
+#: settings.py:1796
+msgid "Workspace"
+msgstr "Radni prostor"
+
+#: settings.py:1816
+msgid "Add Rule"
+msgstr "Dodaj pravilo"
+
+#: settings.py:2051
+msgid "Shortcut action"
+msgstr "Radnja prečaca"
+
+#: settings.py:2065
+msgid "Shortcut"
+msgstr "Prečac"
+
+#: settings.py:2081
+msgid "Click to set a new hotkey."
+msgstr "Klikni za postavljanje novog prečaca tipkovnice."
+
+#: settings.py:2133
+msgid "Contributors/Mentions:"
+msgstr "Doprinositelji/Napomene:"
+
+#. TO TRANSLATORS:
+#. Here goes the name/s of the author/s of the translations.
+#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING
+#. MORE.
+#: settings.py:2141
+msgid "translator-credits"
+msgstr "muzena https://github.com/muzena"
+
+#: settings.py:2275
+msgid "Settings marked with (*) needs Cinnamon restart to take effect"
+msgstr ""
+"Postavke označene s (*) zahtijevaju ponovno pokretanje Cinnamona kako bi se "
+"primijenile"
+
+#: settings.py:2284
+msgid "Reset settings to defaults"
+msgstr "Vrati postavke na izvorne vrijednosti"
+
+#: settings.py:2286
+msgid "Import settings from a file"
+msgstr "Uvezi postavke iz datoteke"
+
+#: settings.py:2288
+msgid "Export settings to a file"
+msgstr "Izvezi postavke u datoteku"
+
+#: settings.py:2293
+msgid "Remember window size"
+msgstr "Zapamti veličinu prozora"
+
+#: settings.py:2299
+msgid "Remember last category"
+msgstr "Zapamti posljednju kategoriju"
+
+#: settings.py:2305
+msgid "Restart Cinnamon"
+msgstr "Ponovno pokreni Cinnamon"
+
+#: settings.py:2309
+msgid "Help"
+msgstr "Pomoć"
+
+#: settings.py:2311
+msgid "About"
+msgstr "O programu"
+
+#: settings.py:2318
+msgid "Manage settings"
+msgstr "Upravljajte postavkama"
+
+#: settings.py:2363
+msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
+msgstr ""
+"Upozorenje: Pokušaj vraćanja svih izvornih postavki Cinnamon prilagoditelja?"
+
+#: settings.py:2365
+msgid "Reset all Cinnamon Tweaks settings to default?"
+msgstr "Vrati sve izvorne postavke Cinnamon prilagoditelja?"
+
+#: settings.py:2384
+msgid "Select or enter file to export to"
+msgstr "Odaberi ili upiši datoteku za izvoz u"
+
+#: settings.py:2390
+msgid "Select a file to import"
+msgstr "Odaberite datoteku za uvoz"
+
+#: settings.py:2406
+msgid "DCONF files"
+msgstr "DCONF datoteke"
+
+#: settings.py:2473
+msgid "Cinnamon Tweaks extension preferences"
+msgstr "Osobitosti proširenja Cinnamon prilagoditelja"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2532
+#, python-format
+msgid ""
+"Please enter your password to install the required settings schema for %s"
+msgstr ""
+"Upišite svoju lozinku da biste instalirali potrebnu shemu postavki za %s"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2543
+#, python-format
+msgid ""
+"Could not install the settings schema for %s.  You will have to perform this "
+"step yourself."
+msgstr ""
+"Nemoguća instalacije sheme postavki za %s. Morat ćete obaviti ovaj korak "
+"sami."
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2549
+#, python-format
+msgid "Please enter your password to remove the settings schema for %s"
+msgstr "Upišite svoju lozinku da biste uklonili potrebnu shemu postavki za %s"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2560
+#, python-format
+msgid ""
+"Could not remove the settings schema for %s.  You will have to perform this "
+"step yourself.  This is not a critical error."
+msgstr ""
+"Nemoguće je uklanjanje sheme postavki za %s. Morat ćete obaviti ovaj korak "
+"sami. Ovo nije kritična greška."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"lestcape: The brain behind the popup menus and desktop tweaks https://github."
+"com/lestcape."
+msgstr ""
+"lestcape: Zaslužan za skočne izbornike i prilagodbe radne površine https://"
+"github.com/lestcape."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid "Radek71: Czech localization https://github.com/Radek71."
+msgstr "Radek71: Češka lokalizacija https://github.com/Radek71."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid "muzena: Croatian localization https://github.com/muzena."
+msgstr "muzena: Hrvatska lokalizacija https://github.com/muzena."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
+msgstr ""
+"mikhail-ekzi: Autor proširenja Prilagođene sjenke https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
+msgstr ""
+"Fatih Mete: Autor Cinnamon Maksimus proširenja https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Luis Pabon: Author of Maximus NG extension https://github.com/luispabon/"
+"maximus-gnome-shell."
+msgstr ""
+"Luis Pabon: Autor Maksimus NG proširenja https://github.com/luispabon/"
+"maximus-gnome-shell."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Florian Muellner: Author of Auto Move Windows extension https://extensions."
+"gnome.org/extension/16/auto-move-windows."
+msgstr ""
+"Florian Muellner: Autor Auto Move Windows proširenja https://extensions."
+"gnome.org/extension/16/auto-move-windows."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Valentin Dimitrov: Author of Steal My Focus extension https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
+msgstr ""
+"Valentin Dimitrov: Autor Steal My Focus proširenja https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"awamper: Author of Window Demands Attention Shortcut extension https://"
+"github.com/awamper/window-demands-attention-shortcut."
+msgstr ""
+"awamper: Autor Window Demands Attention Shortcut proširenja https://github."
+"com/awamper/window-demands-attention-shortcut."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->description
+msgid "Several tweaks for Cinnamon."
+msgstr "Nekolcina prilagodbi za Cinnamon."
+
+#~ msgid "Tweak ativation aborted!!!"
+#~ msgstr "Aktivacija prilagodbe prekinuta!"
+
+#~ msgid "Extension ativation aborted!!!"
+#~ msgstr "Aktivacija proširenja prekinuta!"
+
+#~ msgid "(*) Where to place the menu item?"
+#~ msgstr "(*) Gdje smjestiti izbornik stavki?"
+
+#~ msgid "These tweaks affect only Cinnamon's UI tooltips."
+#~ msgstr "Ove prilagodbe utječu na napomene Cinnamon korisničkog sučelja"
+
+#~ msgid "Enable Desktop tweaks"
+#~ msgstr "Omogući prilagodbu radne površine"
+
+#~ msgid "(*) Display \"Edit applet main file\" on context menu for applets"
+#~ msgstr "(*) Prikaži \"Uredi glavnu datoteku apleta\" u izborniku apleta"
+
+#~ msgid ""
+#~ "After changing any option marked with asterisks (*), Cinnamon needs to be "
+#~ "restarted."
+#~ msgstr ""
+#~ "Nakon promjene mogućnosti koje sadrže zvjezdicu (*), Cinnamon se treba "
+#~ "ponovno pokrenuti"
+
+#~ msgid "Window Focus tweaks"
+#~ msgstr "Prilagodba fokusa prozora"
+
+#~ msgid "Page 2"
+#~ msgstr "stranica 2"
+
+#~ msgid "Page 1"
+#~ msgstr "stranica 1"
+
+#~ msgid "Keyboard shortcut: "
+#~ msgstr "Prečac tipkovnice"
+
+#~ msgid "(*) Display \"Open applet folder\" on context menu for applets"
+#~ msgstr "(*) Prikaži \"Otvori mapu apleta\" u izborniku apleta"
+
+#~ msgid "(*) Panel menus behavior"
+#~ msgstr "(*) Ponašanje izbornika panela"
+
+#~ msgid ""
+#~ "This setting affects only the behavior of menus that belongs to applets "
+#~ "placed on any panel.\n"
+#~ "Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and "
+#~ "then the mouse cursor is moved to another button on the top panel, the "
+#~ "menu of the hovered buttons will automatically open without the need to "
+#~ "click on them. With this option enabled, that same behavior can be "
+#~ "reproduced on Cinnamon.\n"
+#~ "Don't eat clicks: By default, when one opens an applet's menu on Cinnamon "
+#~ "and then click on another applet to open its menu, the first click is "
+#~ "used to close the first opened menu, and then another click has to be "
+#~ "performed to open the menu of the second applet. With this option "
+#~ "enabled, one can directly open the menu of any applet even if another "
+#~ "applet has its menu open."
+#~ msgstr ""
+#~ "Ova postavka utječe samo na ponašanje izbornika koji pripadaju apletima "
+#~ "smještenima na bilo kojem panelu.\n"
+#~ "Emuliraj ponašanje Gnome ljuske: Kada je izbornik otvoren u Gnome ljusci, "
+#~ "i zatim se pokazivač miša pomakne na drugu tipku panela, izbornik tipke "
+#~ "na koju je pomaknut pokazivač miša će se automatski otvoriti bez potrebe "
+#~ "klika na njega. Sa ovom omogućenom mogućnosti, to isto ponašanje se može "
+#~ "reproducirati u Cinnamonu.\n"
+#~ "Ne \"proždiri\" klikove: Po zadanome, kada jedan otvara izbornik apleta u "
+#~ "Cinnamonu a zatim klik na drugi aplet otvara izbornik drugog apleta, prvi "
+#~ "klik se koristi za zatvaranje prvog otvorenog izbornika a zatim drugi "
+#~ "klik se treba izvesti za otvaranje izbornika drugog apleta. Sa ovom "
+#~ "omogućenom mogućnosti, jedan klik može izravno otvoriti izbornik bilo "
+#~ "kojeg apleta čak i ako drugi aplet ima otvoren izbornik."
+
+#~ msgid ""
+#~ "For notifications displayed at the top-right of screen: this is the "
+#~ "distance between the bottom border of the top panel (if no top panel, "
+#~ "from the top of the screen) to the top border of the notification popup.\n"
+#~ "For notifications displayed at the bottom-right of screen: this is the "
+#~ "distance between the top border of the bottom panel (if no bottom panel, "
+#~ "from the bottom of the screen) to the bottom border of the notification "
+#~ "popup."
+#~ msgstr ""
+#~ "Za obavijesti prikazane u gornjem-desnom kutu zaslona: to je udaljenost "
+#~ "između donjeg ruba gornjeg panela (ako nema gornjeg panela, od vrha "
+#~ "zaslona) do gornjeg ruba prozora obavijesti.\n"
+#~ "Za obavijesti prikazane na donjem-desnom kutu zaslona to je udaljenost "
+#~ "između gornjeg ruba donjeg panela (Ako nema donjeg panela, od dna "
+#~ "zaslona) do donjeg ruba prozora obavijesti."
+
+#~ msgid "(*) Enable applications drop to the Desktop"
+#~ msgstr "(*) Omogući ispuštanje pokretača aplikacija na radnu površinu"
+
+#~ msgid "(*) Display \"Edit desklet main file\" on context menu for desklets"
+#~ msgstr "(*) Prikaži \"Uredi glavnu datoteku deskleta\" u izborniku deskleta"
+
+#~ msgid "(*) Display \"Open desklet folder\" on context menu for desklets"
+#~ msgstr "(*) Prikaži \"Otvori mapu deskleta\" u izborniku deskleta"
+
+#~ msgid "(*) Tooltips show delay"
+#~ msgstr "(*) Odgoda prikaza napomena"
+
+#~ msgid ""
+#~ "After changing any option marked with asterisks (*), Cinnamon needs to be "
+#~ "restarted.\n"
+#~ msgstr ""
+#~ "Nakon promjene mogućnosti koje sadrže zvjezdicu (*), Cinnamon se treba "
+#~ "ponovno pokrenuti.\n"
+
+#~ msgid "(*) Avoid mouse pointers overlapping tooltips"
+#~ msgstr "(*) Izbjegni preklapanje pokazivača miša i napomena"
+
+#~ msgid "Hot Corners tweaks"
+#~ msgstr "Prilagodba kutova zaslona"

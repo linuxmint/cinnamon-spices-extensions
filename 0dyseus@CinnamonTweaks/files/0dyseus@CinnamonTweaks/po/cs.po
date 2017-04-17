@@ -1,14 +1,14 @@
-# This is a template file for translating the Cinnamon extension called Cinnamon Tweaks.
+# This is a template file for translating the Cinnamon applet called Extensions Manager.
 # Copyright (C) 2016
-# This file is distributed under the same license as the Cinnamon Tweaks extension.
+# This file is distributed under the same license as the Extensions Manager applet.
 # Odyseus <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.06\n"
+"Project-Id-Version: 1.08\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-31 23:18+0100\n"
-"PO-Revision-Date: 2017-01-03 18:17-0300\n"
+"POT-Creation-Date: 2017-04-05 20:10+0200\n"
+"PO-Revision-Date: 2017-04-05 20:51+0200\n"
 "Last-Translator: Radek Otáhal <radek.otahal@email.cz>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -18,31 +18,52 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: 3.2/extension.js:64 extension.js:67
-msgid "Tweak ativation aborted!!!"
+#: __init__.js:185
+#, javascript-format
+msgid "Schema %s could not be found for extension %s."
+msgstr "Schéma %s nemůže být nalezeno pro rozšíření %s."
+
+#: __init__.js:186
+msgid "Please check your installation."
+msgstr "Zkontrolujte prosím instalaci."
+
+#: __init__.js:195
+msgid "Tweak activation aborted!!!"
 msgstr "Aktivace vylepšení zrušena!!!"
 
-#: 3.2/extension.js:65 3.2/extension.js:92 extension.js:68 extension.js:95
+#: __init__.js:196 __init__.js:203
 msgid "Your Cinnamon version may not be compatible!!!"
 msgstr "Vaše verze Cinnamonu nemusí být kompatibilní!!!"
 
-#: 3.2/extension.js:91 extension.js:94
-msgid "Extension ativation aborted!!!"
+#: __init__.js:202
+msgid "Extension activation aborted!!!"
 msgstr "Aktivace rozšíření zrušena!!!"
 
-#: 3.2/extension.js:93 extension.js:96
+#: __init__.js:204
 msgid "Minimum Cinnamon version allowed: 2.8.6"
 msgstr "Minimální Cinnamon verze: 2.8.6"
 
-#: 3.2/extension.js:141 extension.js:144
+#: __init__.js:481
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: __init__.js:487
+msgid "OK"
+msgstr "OK"
+
+#: extra_modules/hotCornerPatched.js:40
+msgid "Invalid overview options: Incorrect number of corners"
+msgstr "Chybná vlastnost pohledu: špatný počet rohů"
+
+#: extension.js:224
 msgid "Open applet folder"
 msgstr "Otevřít složku apletu"
 
-#: 3.2/extension.js:155 extension.js:158
+#: extension.js:241
 msgid "Edit applet main file"
 msgstr "Upravit hlavní soubor apletu"
 
-#: 3.2/extension.js:201 extension.js:204
+#: extension.js:290
 #, javascript-format
 msgid ""
 "Do you want to remove '%s' from your panel?\n"
@@ -51,23 +72,15 @@ msgstr ""
 "Chcete odebrat '%s' z panelu?\n"
 "Instance ID: %s"
 
-#: 3.2/extension.js:203 3.2/extension.js:318 extension.js:206 extension.js:321
-msgid "OK"
-msgstr "OK"
-
-#: 3.2/extension.js:204 3.2/extension.js:319 extension.js:207 extension.js:322
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: 3.2/extension.js:261 extension.js:264
+#: extension.js:351
 msgid "Open desklet folder"
 msgstr "Otevřít složku deskletu"
 
-#: 3.2/extension.js:274 extension.js:277
+#: extension.js:367
 msgid "Edit desklet main file"
 msgstr "Upravit hlavní soubor deskletu"
 
-#: 3.2/extension.js:316 extension.js:319
+#: extension.js:413
 #, javascript-format
 msgid ""
 "Do you want to remove '%s' from your desktop?\n"
@@ -76,288 +89,43 @@ msgstr ""
 "Chcete odebrat '%s' z plochy?\n"
 "Instance ID: %s"
 
-#: 3.2/extension.js:993 extension.js:1069
-msgid ""
-"If you updated this extension from an older version, <b>you must check its settings window</b>."
-msgstr ""
-"Pokud máte aktualizované toto rozšíření ze starší verze,<b> je nutné zkontrolovat jeho okno s "
-"nastavením</b>."
+#: extension.js:681
+msgid "Hotcorners tweaks"
+msgstr "Vylepšení aktivních rohů"
 
-#: 3.2/extension.js:994 extension.js:1070
+#: extension.js:786 settings.py:288
+msgid "Avoid mouse pointer overlapping tooltips"
+msgstr "Zamezit překrývání ukazatele myši a bublinové nápovědy"
+
+#: extension.js:1277
+msgid ""
+"If you updated this extension from an older version, <b>you must check its "
+"settings window</b>."
+msgstr ""
+"Pokud máte aktualizované toto rozšíření ze starší verze,<b> je nutné "
+"zkontrolovat jeho okno s nastavením</b>."
+
+#: extension.js:1278
 msgid "Some preferences may have been changed to their default values."
 msgstr "Některá nastavení mohou být změněna na výchozí hodnoty."
 
-#: 3.2/extension.js:995 extension.js:1071
+#: extension.js:1279
 msgid "This message will not be displayed again."
 msgstr "Tato zpráva nebude znovu zobrazena."
 
-#: hotCornerPatched.js:43
-msgid "Invalid overview options: Incorrect number of corners"
-msgstr "Chybná vlastnost pohledu: špatný počet rohů"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->description
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->description
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->description
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->description
-msgid "(*) Where to place the menu item?"
-msgstr "(*) Kam umístit položku v menu?"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Before \"Configure...\" item"
-msgstr "Před položku \"Nastavit ...\""
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Last item on menu"
-msgstr "Poslední položka menu"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Before \"About...\" item"
-msgstr "Před položku \"O aplikaci ...\""
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context_placement->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context_placement->options
-msgid "Before \"Remove...\" item"
-msgstr "Před položku \"Odebrat ...\""
-
-#. 3.2->settings-schema.json->pref_tooltips_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_tweaks_enabled->description
-msgid "Enable Tooltips tweaks"
-msgstr "Povolit vylepšení bublinové nápovědy"
-
-#. 3.2->settings-schema.json->pref_tooltips_tweaks_enabled->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_tweaks_enabled->tooltip
-msgid "These tweaks affect only Cinnamon's UI tooltips."
-msgstr "Tato vylepšení ovlivní pouze bublinovou nápovědu prostředí Cinnamon."
-
-#. 3.2->settings-schema.json->pref_desktop_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desktop_tweaks_enabled->description
-msgid "Enable Desktop tweaks"
-msgstr "Povolit vylepšení pracovní plochy"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_edit_file_item_to_context->description
-msgid "(*) Display \"Edit applet main file\" on context menu for applets"
-msgstr "(*) Zobrazit \"Upravit hlavní soubor apletu\" v kontextové menu appletu"
-
-#. 3.2->settings-schema.json->restart_cinnamon_button->description
-msgid "Restart Cinnamon"
-msgstr "Restartovat Cinnamon"
-
-#. 3.2->settings-schema.json->section_desklets_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head1->description
-msgid "Desklets tweaks"
-msgstr "Vylepšení deskletů"
-
-#. 3.2->settings-schema.json->section_tooltips_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head5->description
-msgid "Tooltips tweaks"
-msgstr "Vylepšení bublinové nápovědy"
-
-#. 3.2->settings-schema.json->section_restart_cinnamon->title
-msgid "After changing any option marked with asterisks (*), Cinnamon needs to be restarted."
-msgstr "Po změně volby označené hvězdičkou (*), je nutné restartovat Cinnamon."
-
-#. 3.2->settings-schema.json->section_applets_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head0->description
+#: settings.py:68 settings.py:70
 msgid "Applets tweaks"
 msgstr "Vylepšení apletů"
 
-#. 3.2->settings-schema.json->section_notifications_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head2->description
-msgid "Notifications tweaks"
-msgstr "Vylepšení notifikací"
-
-#. 3.2->settings-schema.json->section_win_focus_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head3->description
-msgid "Window Focus tweaks"
-msgstr "Vylepšení zaměření okna"
-
-#. 3.2->settings-schema.json->page_02->title
-msgid "Page 2"
-msgstr "Strana 2"
-
-#. 3.2->settings-schema.json->page_01->title
-msgid "Page 1"
-msgstr "Strana 1"
-
-#. 3.2->settings-schema.json->section_desktop_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head6->description
-msgid "Desktop tweaks"
-msgstr "Vylepšení pracovní plochy"
-
-#. 3.2->settings-schema.json->section_popups_tweaks->title
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head7->description
-msgid "Popup menus tweaks"
-msgstr "Vylepšení Pop-up menu"
-
-#. 3.2->settings-schema.json->pref_applets_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_tweaks_enabled->description
+#: settings.py:75
 msgid "Enable Applets tweaks"
 msgstr "Povolit vylepšení apletů"
 
-#. 3.2->settings-schema.json->pref_notifications_enable_animation->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_enable_animation->description
-msgid "Enable notifications open/close animation"
-msgstr "Povolit animace při otevření/zavření notifikace"
+#: settings.py:82
+msgid "Ask for confirmation on applet removal"
+msgstr "Požadovat potvrzení při odstranění appletu"
 
-#. 3.2->settings-schema.json->pref_notifications_right_margin->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_right_margin->description
-msgid "Notification popup right margin"
-msgstr "Pravý okraj notifikačního okna"
-
-#. 3.2->settings-schema.json->pref_notifications_right_margin->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_right_margin->tooltip
-msgid ""
-"By default, the right margin of the notification popup is defined by the currently used theme. "
-"This option, set to any value other than 0 (zero), allows to set a custom right margin, ignoring "
-"the defined by the theme."
-msgstr ""
-"Ve výchozím nastavení je pravý okraj popup okna definován aktuálně používaným motivem. Nastavením "
-"na hodnotu jinou než 0 (nula), lze nastavit vlastní pravý okraj a ignoruje tak nastavení "
-"definované  motivem."
-
-#. 3.2->settings-schema.json->pref_notifications_right_margin->units
-#. 3.2->settings-schema.json->pref_notifications_distance_from_panel->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_right_margin->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_distance_from_panel->units
-msgid "pixels"
-msgstr "pixelů"
-
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_keyboard_shortcut->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_keyboard_shortcut->description
-msgid "Keyboard shortcut: "
-msgstr "Klávesová zkratka:"
-
-#. 3.2->settings-schema.json->pref_desklets_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_tweaks_enabled->description
-msgid "Enable Desklets tweaks"
-msgstr "Povolit vylepšení deskletů"
-
-#. 3.2->settings-schema.json->pref_notifications_position->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_position->description
-msgid "Notifications position"
-msgstr "Pozice  notifikačního okna"
-
-#. 3.2->settings-schema.json->pref_notifications_position->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_position->options
-msgid "Top-right of screen (System default)"
-msgstr "Pravý horní roh obrazovky (výchozí)"
-
-#. 3.2->settings-schema.json->pref_notifications_position->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_position->options
-msgid "Bottom-right of screen"
-msgstr "Pravý spodní roh obrazovky"
-
-#. 3.2->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_add_open_folder_item_to_context->description
-msgid "(*) Display \"Open applet folder\" on context menu for applets"
-msgstr "(*) Zobrazit \"Otevřít složku apletu\" v kontextové menu appletu"
-
-#. 3.2->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->description
-msgid "Ask for confirmation on desklet removal"
-msgstr "Požadovat potvrzení při odstranění deskletu"
-
-#. 3.2->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->tooltip
-#. 3.2->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_ask_confirmation_desklet_removal->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->tooltip
+#: settings.py:83 settings.py:145
 msgid ""
 "Display a confirmation dialog on removal.\n"
 "Keeping the Ctrl key pressed will bypass the confirmation."
@@ -365,255 +133,1022 @@ msgstr ""
 "Zobrazit dialogové okno s potvrzením o odstranění.\n"
 "Podržení stisknuté klávesy Ctrl se obejde potvrzení."
 
-#. 3.2->settings-schema.json->pref_notifications_enable_tweaks->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_enable_tweaks->description
-msgid "Enable notifications tweaks"
-msgstr "Povolit vylepšení notifikací"
+#: settings.py:90
+msgid "Display \"Edit applet main file\" on context menu"
+msgstr "Zobrazit \"Upravit hlavní soubor apletu\" v kontextové menu appletu"
 
-#. 3.2->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_applets_ask_confirmation_applet_removal->description
-msgid "Ask for confirmation on applet removal"
-msgstr "Požadovat potvrzení při odstranění appletu"
+#: settings.py:97
+msgid "Where to place the \"Edit applet main file\" item?"
+msgstr "Kam umístit položku  \"Upravit hlavní soubor apletu\" v menu?"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_tweaks_enabled->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_tweaks_enabled->description
-msgid "Enable Popup menus tweaks"
-msgstr "Povolit vylepšení pop-up menu "
+#: settings.py:99 settings.py:119 settings.py:161 settings.py:181
+msgid "Last item on menu"
+msgstr "Poslední položka menu"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->description
-msgid "(*) Panel menus behavior"
-msgstr "(*) Chování menu panelu"
+#: settings.py:100 settings.py:120 settings.py:162 settings.py:182
+msgid "Before \"About...\" item"
+msgstr "Před položku \"O aplikaci ...\""
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->tooltip
-msgid ""
-"This setting affects only the behavior of menus that belongs to applets placed on any panel.\n"
-"Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and then the mouse cursor is "
-"moved to another button on the top panel, the menu of the hovered buttons will automatically open "
-"without the need to click on them. With this option enabled, that same behavior can be reproduced "
-"on Cinnamon.\n"
-"Don't eat clicks: By default, when one opens an applet's menu on Cinnamon and then click on "
-"another applet to open its menu, the first click is used to close the first opened menu, and then "
-"another click has to be performed to open the menu of the second applet. With this option "
-"enabled, one can directly open the menu of any applet even if another applet has its menu open."
-msgstr ""
-"Toto nastavení má vliv pouze na chování menu, která patří k apletům umístěných na libovolném "
-"panelu.\n"
-"Emulovat Gnome Shell chování: Je-li na Genome Shell otevřeno menu, a pak se kurzor myši přesunune "
-"k jinému tlačítku na horním panelu, menu tohoto tlačítka se automaticky otevře aniž by bylo nutné "
-"na ně znovu klikat. Povolením této možnosti, lze dosáhnout stejného chování i v prostředí "
-"Cinnamon.\n"
-"Šetřit kliknutí: Ve výchozím nastavení, pokud otevřete menu apletu v prostředí Cinnamon a potom "
-"kliknete na jiný aplet a chcete otevřít jeho menu, první kliknutí se používá k uzavření prvního "
-"otevřeného menu a pak dalším kliknutí otevře menu druhého apletu. Povolením této možnosti, je "
-"možné přímo otevřít menu jakéhokoliv apletu, i když jiný aplet má své menu otevřené."
+#: settings.py:101 settings.py:121 settings.py:163 settings.py:183
+msgid "Before \"Configure...\" item"
+msgstr "Před položku \"Nastavit ...\""
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-msgid "Emulate Gnome Shell menus"
-msgstr "Emulovat Gnome Shell menu"
+#: settings.py:102 settings.py:122 settings.py:164 settings.py:184
+msgid "Before \"Remove...\" item"
+msgstr "Před položku \"Odebrat ...\""
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-msgid "Don't \"eat\" clicks"
-msgstr "Šetřit kliknutí"
+#: settings.py:110
+msgid "Display \"Open applet folder\" on context menu"
+msgstr "Zobrazit \"Otevřít složku apletu\" v kontextové menu appletu"
 
-#. 3.2->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_popup_menu_manager_applets_menus_behavior->options
-msgid "Default behavior"
-msgstr "Výchozí chování"
+#: settings.py:117
+msgid "Where to place the \"Open applet folder\" item?"
+msgstr "Kam umístit položku \"Otevřít složku apletu\" v menu?"
 
-#. 3.2->settings-
-#. schema.json->pref_notifications_distance_from_panel->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_distance_from_panel->description
-msgid "Distance from panel"
-msgstr "Vzdálenost od panelu"
+#: settings.py:130 settings.py:132
+msgid "Desklets tweaks"
+msgstr "Vylepšení deskletů"
 
-#. 3.2->settings-schema.json->pref_notifications_distance_from_panel->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_notifications_distance_from_panel->tooltip
-msgid ""
-"For notifications displayed at the top-right of screen: this is the distance between the bottom "
-"border of the top panel (if no top panel, from the top of the screen) to the top border of the "
-"notification popup.\n"
-"For notifications displayed at the bottom-right of screen: this is the distance between the top "
-"border of the bottom panel (if no bottom panel, from the bottom of the screen) to the bottom "
-"border of the notification popup."
-msgstr ""
-"U oznámení zobrazených v pravém horním rohu obrazovky: to je vzdálenost mezi spodním okraji "
-"horního panelu (není-li horní panel, tak od horní části obrazovky) na horní hranici vyskakovacího "
-"okna oznámení .\n"
-"U oznámení zobrazených v pravém dolním rohu obrazovky: to je vzdálenost mezi horním okraji "
-"spodního panelu (není-li spodní panel, tak od dolní části obrazovky) na spodní hranici "
-"vyskakovacího okna oznámení."
+#: settings.py:137
+msgid "Enable Desklets tweaks"
+msgstr "Povolit vylepšení deskletů"
 
-#. 3.2->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->description
-msgid "(*) Enable applications drop to the Desktop"
-msgstr "(*) Povolit aplikace přetáhnout na pracovní plochu"
+#: settings.py:144
+msgid "Ask for confirmation on desklet removal"
+msgstr "Požadovat potvrzení při odstranění deskletu"
 
-#. 3.2->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desktop_tweaks_allow_drop_to_desktop->tooltip
-msgid ""
-"With this option enabled, applications can be dragged from the menu applet and from the panel "
-"launchers applet and dropped into the desktop."
-msgstr ""
-"Povolením této možnosti, lze aplikace přetáhnout z menu apletu a ze spouštěče apletu  na pracovní "
-"plochu."
+#: settings.py:152
+msgid "Display \"Edit desklet main file\" on context menu"
+msgstr "Zobrazit \"Upravit hlavní soubor deskletu\" v kontextové menu"
 
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_edit_file_item_to_context->description
-msgid "(*) Display \"Edit desklet main file\" on context menu for desklets"
-msgstr "(*) Zobrazit \"Upravit hlavní soubor deskletu\" v kontextové menu deskletu"
+#: settings.py:159
+msgid "Where to place the \"Edit desklet main file\" item?"
+msgstr "Kam umístit položku \"Upravit hlavní soubor deskletu\" v menu?"
 
-#. 3.2->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_desklets_add_open_folder_item_to_context->description
-msgid "(*) Display \"Open desklet folder\" on context menu for desklets"
-msgstr "(*) Zobrazit \"Otevřít složku deskletu\" v kontextové menu deskletu"
+#: settings.py:172
+msgid "Display \"Open desklet folder\" on context menu"
+msgstr "Zobrazit \"Otevřít složku deskletu\" v kontextové menu"
 
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->description
-msgid "The activation of windows demanding attention..."
-msgstr "Aktivace oken vyžadujících pozornost ..."
+#: settings.py:179
+msgid "Where to place the \"Open desklet folder\" item?"
+msgstr "Kam umístit položku \"Otevřít složku deskletu\" v menu?"
 
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-msgid "...is performed with a keyboard shortcut"
-msgstr "... je vykonané klávesovou zkratkou"
+#: settings.py:193 settings.py:196
+msgid "Hot corners tweaks"
+msgstr "Vylepšení aktivních rohů"
 
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-msgid "...is handled by the system"
-msgstr "... je řízeno systémem"
+#: settings.py:201
+msgid "Enable Hot Corners tweaks"
+msgstr "Povolit vylepšení aktivních rohů"
 
-#. 3.2->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_win_demands_attention_activation_mode->options
-msgid "...is immediate"
-msgstr "... je okamžité"
+#: settings.py:208
+msgid "Top left hot corner activation delay"
+msgstr "Aktivační zpoždění pro horní levý aktivní roh"
 
-#. 3.2->settings-schema.json->pref_tooltips_delay->description
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_delay->description
-msgid "(*) Tooltips show delay"
-msgstr "(*) Zpoždění zobrazení bublinové nápovědy"
+#: settings.py:209 settings.py:221 settings.py:233 settings.py:245
+msgid "Set a delay in milliseconds to activate this hot corner."
+msgstr "Nastavit zpoždění v milisekundách pro aktivaci tohoto aktivního rohu."
 
-#. 3.2->settings-schema.json->pref_tooltips_delay->tooltip
-#. 0dyseus@CinnamonTweaks->settings-schema.json->pref_tooltips_delay->tooltip
-msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
-msgstr "Nastavit zpoždění v milisekundách pro zobrazení bublinové nápovědy prostředí Cinnamon.."
-
-#. 3.2->settings-schema.json->pref_tooltips_delay->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_left->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_left->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_right->units
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_right->units
-#. 0dyseus@CinnamonTweaks->settings-schema.json->pref_tooltips_delay->units
+#: settings.py:213 settings.py:225 settings.py:237 settings.py:249
+#: settings.py:301
 msgid "milliseconds"
 msgstr "milisekund"
 
+#: settings.py:220
+msgid "Top right hot corner activation delay"
+msgstr "Aktivační zpoždění pro horní pravý aktivní roh"
+
+#: settings.py:232
+msgid "Bottom left hot corner activation delay"
+msgstr "Aktivační zpoždění pro spodní levý aktivní roh"
+
+#: settings.py:244
+msgid "Bottom right hot corner activation delay"
+msgstr "Aktivační zpoždění pro spodní pravý aktivní roh"
+
+#: settings.py:256
+msgid "Desktop tweaks"
+msgstr "Vylepšení pracovní plochy"
+
+#: settings.py:258
+msgid "Desktop area tweaks"
+msgstr "Vylepšení pracovní plochy"
+
+#: settings.py:263
+msgid "Enable Desktop area tweaks"
+msgstr "Povolit vylepšení pracovní plochy"
+
+#: settings.py:270
+msgid "Enable applications drop to the Desktop"
+msgstr "Povolit aplikace přetáhnout na pracovní plochu"
+
+#: settings.py:271
+msgid ""
+"With this option enabled, applications can be dragged from the menu applet "
+"and from the panel launchers applet and dropped into the desktop."
+msgstr ""
+"Povolením této možnosti, lze aplikace přetáhnout z menu apletu a ze "
+"spouštěče apletu  na pracovní plochu."
+
+#: settings.py:275
+msgid "Tooltips tweaks"
+msgstr "Vylepšení bublinové nápovědy"
+
+#: settings.py:280
+msgid "Enable Tooltips tweaks"
+msgstr "Povolit vylepšení bublinové nápovědy"
+
+#: settings.py:289
+msgid ""
+"Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse "
+"pointer. This leads to having tooltips overlapped by the mouse pointer. This "
+"tweak aligns the tooltip to the bottom-right corner of the mouse pointer "
+"(approximately), reducing the possibility of the mouse pointer to overlap "
+"the tooltip."
+msgstr ""
+"Bublinová nápověda v prostředí Cinnamon je zarovnána k hornímu levému rohu "
+"ukazatele myši. To vede k překrývání bublinové nápovědy a ukazatele myši. "
+"Toto vylepšení zarovná bublinovou nápovědu ke spodnímu pravému rohu "
+"ukazatele myši (přibližně), čímž se zredujuje možnost nežádoucího překrývání."
+
+#: settings.py:296
+msgid "Tooltips show delay"
+msgstr "Zpoždění zobrazení bublinové nápovědy"
+
+#: settings.py:297
+msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
+msgstr ""
+"Nastavit zpoždění v milisekundách pro zobrazení bublinové nápovědy prostředí "
+"Cinnamon.."
+
+#: settings.py:305
+msgid "Popup menus tweaks"
+msgstr "Vylepšení Pop-up menu"
+
+#: settings.py:310
+msgid "Enable Popup menus tweaks"
+msgstr "Povolit vylepšení pop-up menu "
+
+#: settings.py:317
+msgid "Panel menus behavior"
+msgstr "Chování menu panelu"
+
+#: settings.py:318
+msgid ""
+"This setting affects only the behavior of menus that belongs to applets "
+"placed on any panel.\n"
+"\n"
+"Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and then "
+"the mouse cursor is moved to another button on the top panel, the menu of "
+"the hovered buttons will automatically open without the need to click on "
+"them. With this option enabled, that same behavior can be reproduced on "
+"Cinnamon.\n"
+"\n"
+"Don't eat clicks: By default, when one opens an applet's menu on Cinnamon "
+"and then click on another applet to open its menu, the first click is used "
+"to close the first opened menu, and then another click has to be performed "
+"to open the menu of the second applet. With this option enabled, one can "
+"directly open the menu of any applet even if another applet has its menu "
+"open."
+msgstr ""
+"Toto nastavení má vliv pouze na chování menu, která patří k apletům "
+"umístěných na libovolném panelu.\n"
+"Emulovat Gnome Shell chování: Je-li na Genome Shell otevřeno menu, a pak se "
+"kurzor myši přesunune k jinému tlačítku na horním panelu, menu tohoto "
+"tlačítka se automaticky otevře aniž by bylo nutné na ně znovu klikat. "
+"Povolením této možnosti, lze dosáhnout stejného chování i v prostředí "
+"Cinnamon.\n"
+"Šetřit kliknutí: Ve výchozím nastavení, pokud otevřete menu apletu v "
+"prostředí Cinnamon a potom kliknete na jiný aplet a chcete otevřít jeho "
+"menu, první kliknutí se používá k uzavření prvního otevřeného menu a pak "
+"dalším kliknutí otevře menu druhého apletu. Povolením této možnosti, je "
+"možné přímo otevřít menu jakéhokoliv apletu, i když jiný aplet má své menu "
+"otevřené."
+
+#: settings.py:320
+msgid "Default behavior"
+msgstr "Výchozí chování"
+
+#: settings.py:321
+msgid "Emulate Gnome Shell menus"
+msgstr "Emulovat Gnome Shell menu"
+
+#: settings.py:322
+msgid "Don't \"eat\" clicks"
+msgstr "Šetřit kliknutí"
+
+#: settings.py:330 settings.py:332
+msgid "Notifications tweaks"
+msgstr "Vylepšení notifikací"
+
+#: settings.py:337
+msgid "Enable notifications tweaks"
+msgstr "Povolit vylepšení notifikací"
+
+#: settings.py:344
+msgid "Enable notifications open/close animation"
+msgstr "Povolit animace při otevření/zavření notifikace"
+
+#: settings.py:351
+msgid "Notifications position"
+msgstr "Pozice  notifikačního okna"
+
+#: settings.py:353
+msgid "Top-right of screen (System default)"
+msgstr "Pravý horní roh obrazovky (výchozí)"
+
+#: settings.py:354
+msgid "Bottom-right of screen"
+msgstr "Pravý spodní roh obrazovky"
+
+#: settings.py:362
+msgid "Distance from panel"
+msgstr "Vzdálenost od panelu"
+
+#: settings.py:363
+msgid ""
+"For notifications displayed at the top-right of screen: this is the distance "
+"between the bottom border of the top panel (if no top panel, from the top of "
+"the screen) to the top border of the notification popup.\n"
+"\n"
+"For notifications displayed at the bottom-right of screen: this is the "
+"distance between the top border of the bottom panel (if no bottom panel, "
+"from the bottom of the screen) to the bottom border of the notification "
+"popup."
+msgstr ""
+"U oznámení zobrazených v pravém horním rohu obrazovky: to je vzdálenost mezi "
+"spodním okraji horního panelu (není-li horní panel, tak od horní části "
+"obrazovky) na horní hranici vyskakovacího okna oznámení .\n"
+"U oznámení zobrazených v pravém dolním rohu obrazovky: to je vzdálenost mezi "
+"horním okraji spodního panelu (není-li spodní panel, tak od dolní části "
+"obrazovky) na spodní hranici vyskakovacího okna oznámení."
+
+#: settings.py:367 settings.py:379
+msgid "pixels"
+msgstr "pixelů"
+
+#: settings.py:374
+msgid "Notification popup right margin"
+msgstr "Pravý okraj notifikačního okna"
+
+#: settings.py:375
+msgid ""
+"By default, the right margin of the notification popup is defined by the "
+"currently used theme. This option, set to any value other than 0 (zero), "
+"allows to set a custom right margin, ignoring the defined by the theme."
+msgstr ""
+"Ve výchozím nastavení je pravý okraj popup okna definován aktuálně "
+"používaným motivem. Nastavením na hodnotu jinou než 0 (nula), lze nastavit "
+"vlastní pravý okraj a ignoruje tak nastavení definované  motivem."
+
+#: settings.py:386
+msgid "Windows tweaks"
+msgstr "Vylepšení okna"
+
+#: settings.py:388
+msgid "Window focus tweaks"
+msgstr "Vylepšení zaměření okna"
+
+#: settings.py:393
+msgid "The activation of windows demanding attention..."
+msgstr "Aktivace oken vyžadujících pozornost ..."
+
+#: settings.py:395
+msgid "...is handled by the system"
+msgstr "... je řízeno systémem"
+
+#: settings.py:396
+msgid "...is immediate"
+msgstr "... je okamžité"
+
+#: settings.py:397
+msgid "...is performed with a keyboard shortcut"
+msgstr "... je vykonané klávesovou zkratkou"
+
+#: settings.py:404
+msgid "Activate window demanding attention"
+msgstr "Aktivace oken vyžadujících pozornost"
+
+#: settings.py:409 settings.py:1268
+msgid "Window shadows tweaks"
+msgstr "Vylepšení stínování okna"
+
+#: settings.py:410
+msgid "Client side decorated windows aren't affected by this tweak."
+msgstr "Client side dekorace oken nejsou ovlivněna tímto vylepšením."
+
+#: settings.py:415
+msgid "Enable window shadows tweaks"
+msgstr "Povolit vylepšení stínování okna"
+
+#: settings.py:416
+msgid "This tweak allows us to customize the shadow of all windows."
+msgstr "Toto vylepšení umožňuje přizpůsobit stín všech oken."
+
+#: settings.py:423
+msgid "Shadow presets"
+msgstr "Nastavení stínu"
+
+#: settings.py:425
+msgid "Custom shadows"
+msgstr "Uživatelské stínování"
+
+#: settings.py:426
+msgid "Default shadows"
+msgstr "Výchozí stínování"
+
+#: settings.py:427
+msgid "No shadows"
+msgstr "Žádné stíny"
+
+#: settings.py:428
+msgid "Windows 10 shadows"
+msgstr "Windows 10 stínování"
+
+#: settings.py:436 settings.py:1139
+msgid "Edit custom shadows values"
+msgstr "Upravit vlastní hodnoty stínování"
+
+#: settings.py:440
+msgid "Auto move windows"
+msgstr "Automatické přesouvání oken"
+
+#: settings.py:441
+msgid ""
+"Not all applications can be assigned to be moved. Most applications which "
+"can open multiple instances of themselves most likely cannot be configured "
+"to be automatically moved."
+msgstr ""
+"Ne všechny aplikace lze přiřadit k přesunu. Většinu aplikací, které lze "
+"otevřít ve více instancích s největší pravděpodobností nelze konfigurovat "
+"pro automatický přesun."
+
+#: settings.py:446
+msgid "Enable auto move windows tweak"
+msgstr "Povolit vylepšení pro automatický přesun oken"
+
+#: settings.py:447
+msgid ""
+"This tweak enables the ability to set rules to open determined applications "
+"on specific workspaces."
+msgstr ""
+"Toto vylepšení umožňuje nastavit pravidla pro otevření určené aplikace na "
+"konkrétní ploše."
+
+#: settings.py:454
+msgid "Define auto move windows rules"
+msgstr "Definovat pravidla pro automatický přesun oken"
+
+#: settings.py:458
+msgid "Windows decorations removal"
+msgstr "Odstranění dekorace okna"
+
+#: settings.py:459
+msgid ""
+"This tweak settings are purposely NOT applied in real time. Click the »Apply "
+"windows decorations settings« button to save settings."
+msgstr ""
+"Nastavení tohoto vylepšení NEJSOU záměrně aplikována v reálném čase. "
+"Klikněte na tlačítko » Použít nastavení dekorace okna « pro uložení "
+"nastavení."
+
+#: settings.py:460
+msgid ""
+"Client side decorated windows and WINE applications aren't affected by this "
+"tweak."
+msgstr ""
+"Client side dekorace oken a WINE aplikací nejsou ovlivněna tímto vylepšením."
+
+#: settings.py:461
+msgid ""
+"Close all windows that belongs to an application that is going to be added "
+"to the applications list and before applying the settings of this tweak."
+msgstr ""
+"Zavřete všechna okna, které patří k aplikaci přidávané do seznamu aplikací a "
+"před použitím nastavení tohoto vylepšení."
+
+#: settings.py:463
+msgid ""
+"Read this extension help for more detailed instructions, list of "
+"dependencies and known issues."
+msgstr ""
+"Přečtěte si nápovědu k tomuto rozšíření pro podrobnější pokyny, seznam "
+"závislostí a známé problémy."
+
+#: settings.py:469
+msgid "Apply windows decorations settings"
+msgstr "Použít nastavení dekorace okna"
+
+#: settings.py:475
+msgid "Enable maximized windows decoration removal"
+msgstr "Povolit odstranění dekorace maximizovaného okna"
+
+#: settings.py:482
+msgid "Undecorate half-maximized windows?"
+msgstr "Odstranit dekoraci napůl maximalizovaného okna?"
+
+#: settings.py:489
+msgid "Undecorate tiled windows?"
+msgstr "Odstranit dekoraci dlaždicově seřazených oken?"
+
+#: settings.py:496
+msgid "Applications list is a blacklist?"
+msgstr "Seznam aplikací je Blacklist?"
+
+#: settings.py:497
+msgid ""
+"If enabled, all applications will have their window decorations removed, "
+"except those listed in the list of applications.\n"
+"\n"
+"If disabled, only the application from the list of applications will have "
+"their decorations removed."
+msgstr ""
+"Je-li povoleno, budou mít všechny aplikace odstraněny dekorace oken, s "
+"výjimkou aplikací uvedených v seznamu.\n"
+"\n"
+"Je-li zakázáno, budou mít odstraněny dekorace oken pouze aplikace ze seznamu "
+"aplikací."
+
+#: settings.py:504
+msgid "Enable logging"
+msgstr "Povolit protokolování"
+
+#: settings.py:505
+msgid "For debugging purposes only."
+msgstr "Pouze pro účely ladění."
+
+#: settings.py:512
+msgid "Edit applications list"
+msgstr "Upravit seznam aplikací"
+
+#: settings.py:697
+msgid "Warnings related to this specific section"
+msgstr "Upozornění týkající se této konkrétní části"
+
+#: settings.py:1000
+msgid "Select a directory to use"
+msgstr "Vybrat adresář pro použití"
+
+#: settings.py:1003
+msgid "Select a file"
+msgstr "Vybrat soubor"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:1008 settings.py:1141 settings.py:2386 settings.py:2392
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:1010 settings.py:2394
+msgid "_Open"
+msgstr "_Otevřít"
+
+#: settings.py:1013
+msgid "Directories"
+msgstr "Adresáře"
+
+#: settings.py:1091
+msgid "Focused windows"
+msgstr "Zaměřená okna"
+
+#: settings.py:1092
+msgid "Unfocused windows"
+msgstr "Nezaměřená okna"
+
+#: settings.py:1095
+msgid "Normal"
+msgstr "Normální"
+
+#: settings.py:1096
+msgid "Dialog"
+msgstr "Dialog"
+
+#: settings.py:1097
+msgid "Modal dialog"
+msgstr "Modální dialog"
+
+#: settings.py:1098
+msgid "Utility"
+msgstr "Nástroje"
+
+#: settings.py:1099
+msgid "Border"
+msgstr "Okraj"
+
+#: settings.py:1100
+msgid "Menu"
+msgstr "Menu"
+
+#: settings.py:1101
+msgid "Popup menu"
+msgstr "Popup menu"
+
+#: settings.py:1102
+msgid "Dropdown menu"
+msgstr "Výsuvné menu"
+
+#: settings.py:1103
+msgid "Attached"
+msgstr "Připojený"
+
+#: settings.py:1113
+msgid "Radius"
+msgstr "Radius"
+
+#: settings.py:1114
+msgid "Top fade"
+msgstr "Slábnutí"
+
+#: settings.py:1115
+msgid "X offset"
+msgstr "X offset"
+
+#: settings.py:1116
+msgid "Y offset"
+msgstr "Y offset"
+
+#: settings.py:1117
+msgid "Opacity"
+msgstr "Průhlednost"
+
+#: settings.py:1142 settings.py:2387
+msgid "_Save"
+msgstr "_Uložit"
+
+#: settings.py:1179
+msgid "Window type"
+msgstr "Typ okna"
+
+#: settings.py:1190
+msgid "Reset values"
+msgstr "Resetovat hodnoty"
+
+#: settings.py:1192
+msgid "Reset all values on the current view to their defaults."
+msgstr "Resetovat všechny hodnoty v aktuálním pohledu na jejich výchozí stav."
+
+#: settings.py:1196
+msgid "Apply custom shadow"
+msgstr "Použít uživatelský stín"
+
+#: settings.py:1198
+msgid "Save and apply custom shadow values to see its effects in real time."
+msgstr ""
+"Uložit a použít vlastní hodnoty stínů aby byly vidět jeho efekty v reálném "
+"čase."
+
+#: settings.py:1240 settings.py:1269
+msgid "Remember to set »Shadow presets« option to »Custom shadows«"
+msgstr ""
+"Nezapomeňte nastavit »Nastavení stínu« na volbu »Uživatelské stínování«"
+
 #. 0dyseus@CinnamonTweaks->metadata.json->name
+#: settings.py:1267 settings.py:2433
 msgid "Cinnamon Tweaks"
 msgstr "Vylepšení Cinnamonu"
+
+#: settings.py:1280
+msgid "Warning: Trying to reset custom shadows values!!!"
+msgstr "Upozornění: Probíhá reset hodnot nastavení stínování!!!"
+
+#: settings.py:1283
+msgid ""
+"Are  you sure that you want to reset the shadows values of the current view "
+"to their defaults?"
+msgstr ""
+"Jste si jisti, že chcete obnovit hodnoty nastavení stínování z aktuální "
+"zobrazení na výchozí hodnoty?"
+
+#: settings.py:1381
+msgid "Application Chooser"
+msgstr "Výběr aplikace"
+
+#. Can be programmatically changed if needed.
+#: settings.py:1402
+msgid "Choose An Application"
+msgstr "Zvolte aplikaci"
+
+#: settings.py:1535
+msgid "Applications list"
+msgstr "Seznam aplikací"
+
+#: settings.py:1563 settings.py:1782
+msgid "Application"
+msgstr "Aplikace"
+
+#: settings.py:1585
+msgid "Add Application"
+msgstr "Přidat aplikaci"
+
+#: settings.py:1619 settings.py:1850
+msgid "Choose one or more applications (Hold Ctrl key)"
+msgstr "Vyberte jednu nebo více aplikací (podržte klávesu Ctrl)"
+
+#: settings.py:1753
+msgid "Auto move windows rules"
+msgstr "Pravidla pro automatický přesun oken"
+
+#: settings.py:1796
+msgid "Workspace"
+msgstr "Plocha"
+
+#: settings.py:1816
+msgid "Add Rule"
+msgstr "Přidat pravidlo"
+
+#: settings.py:2051
+msgid "Shortcut action"
+msgstr "Akce pro klávesovou zkratku"
+
+#: settings.py:2065
+msgid "Shortcut"
+msgstr "Klávesová zkratka"
+
+#: settings.py:2081
+msgid "Click to set a new hotkey."
+msgstr "Klepněte k nastavení nové klávesové zkratky."
+
+#: settings.py:2133
+msgid "Contributors/Mentions:"
+msgstr "Přispěvatelé/uznání:"
+
+#. TO TRANSLATORS:
+#. Here goes the name/s of the author/s of the translations.
+#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING
+#. MORE.
+#: settings.py:2141
+msgid "translator-credits"
+msgstr "překladatelé-zásluhy"
+
+#: settings.py:2275
+msgid "Settings marked with (*) needs Cinnamon restart to take effect"
+msgstr "Nastavení označená (*) vyžadují restartovat Cinnamon"
+
+#: settings.py:2284
+msgid "Reset settings to defaults"
+msgstr "Obnovit výchozí hodnoty"
+
+#: settings.py:2286
+msgid "Import settings from a file"
+msgstr "Importovat nastavení ze souboru"
+
+#: settings.py:2288
+msgid "Export settings to a file"
+msgstr "Exportovat nastavení do souboru"
+
+#: settings.py:2293
+msgid "Remember window size"
+msgstr "Pamatovat si velikost okna"
+
+#: settings.py:2299
+msgid "Remember last category"
+msgstr "Pamatovat si poslední kategorii"
+
+#: settings.py:2305
+msgid "Restart Cinnamon"
+msgstr "Restartovat Cinnamon"
+
+#: settings.py:2309
+msgid "Help"
+msgstr "Nápověda"
+
+#: settings.py:2311
+msgid "About"
+msgstr "O aplikaci"
+
+#: settings.py:2318
+msgid "Manage settings"
+msgstr "Spravovat nastavení"
+
+#: settings.py:2363
+msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
+msgstr "Upozornění: Probíhá reset všech nastavení vylepšení Cinnamonu!!!"
+
+#: settings.py:2365
+msgid "Reset all Cinnamon Tweaks settings to default?"
+msgstr ""
+"Resetovat všechna nastavení vylepšení Cinnamonu na jejich výchozí hodnoty?"
+
+#: settings.py:2384
+msgid "Select or enter file to export to"
+msgstr "Vyberte nebo zadejte soubor, do něhož se bude exportovat"
+
+#: settings.py:2390
+msgid "Select a file to import"
+msgstr "Vyberte soubor typu pro import"
+
+#: settings.py:2406
+msgid "DCONF files"
+msgstr "DCONF soubory"
+
+#: settings.py:2473
+msgid "Cinnamon Tweaks extension preferences"
+msgstr "Nastavení předvoleb pro Vylepšení Cinnamonu"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2532
+#, python-format
+msgid ""
+"Please enter your password to install the required settings schema for %s"
+msgstr ""
+"Prosím zadejte své heslo k instalaci vyžadovaných nastavení schémat pro %s"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2543
+#, python-format
+msgid ""
+"Could not install the settings schema for %s.  You will have to perform this "
+"step yourself."
+msgstr ""
+"Nelze nainstalovat nastavení schémat pro %s. Tyto kroky musíte provést "
+"osobně."
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2549
+#, python-format
+msgid "Please enter your password to remove the settings schema for %s"
+msgstr "Vložte prosím své heslo k odebrání nastavení schémat pro %s"
+
+#. TO TRANSLATORS: Could be left blank.
+#: settings.py:2560
+#, python-format
+msgid ""
+"Could not remove the settings schema for %s.  You will have to perform this "
+"step yourself.  This is not a critical error."
+msgstr ""
+"Nelze odebrat nastavení schémat pro %s. Tento krok budete muset provést "
+"osobně. Nejedná se o závažnou chybu."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"lestcape: The brain behind the popup menus and desktop tweaks https://github."
+"com/lestcape."
+msgstr ""
+"lestcape: The brain behind the popup menus and desktop tweaks https://github."
+"com/lestcape."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid "Radek71: Czech localization https://github.com/Radek71."
+msgstr "Radek71: Czech localization https://github.com/Radek71."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid "muzena: Croatian localization https://github.com/muzena."
+msgstr "muzena: Croatian localization https://github.com/muzena."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
+msgstr ""
+"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
+msgstr ""
+"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Luis Pabon: Author of Maximus NG extension https://github.com/luispabon/"
+"maximus-gnome-shell."
+msgstr ""
+"Luis Pabon: Author of Maximus NG extension https://github.com/luispabon/"
+"maximus-gnome-shell."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Florian Muellner: Author of Auto Move Windows extension https://extensions."
+"gnome.org/extension/16/auto-move-windows."
+msgstr ""
+"Florian Muellner: Author of Auto Move Windows extension https://extensions."
+"gnome.org/extension/16/auto-move-windows."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"Valentin Dimitrov: Author of Steal My Focus extension https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
+msgstr ""
+"Valentin Dimitrov: Author of Steal My Focus extension https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid ""
+"awamper: Author of Window Demands Attention Shortcut extension https://"
+"github.com/awamper/window-demands-attention-shortcut."
+msgstr ""
+"awamper: Author of Window Demands Attention Shortcut extension https://"
+"github.com/awamper/window-demands-attention-shortcut."
 
 #. 0dyseus@CinnamonTweaks->metadata.json->description
 msgid "Several tweaks for Cinnamon."
 msgstr "Různé vylepšení pro Cinnamon"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_left->description
-msgid "Bottom left hot corner activation delay"
-msgstr "Aktivační zpoždění pro spodní levý aktivní roh"
+#~ msgid "Applets"
+#~ msgstr "Aplety"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_left->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_left->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_right->tooltip
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_right->tooltip
-msgid "Set a delay in milliseconds to activate this hot corner."
-msgstr "Nastavit zpoždění v milisekundách pro aktivaci tohoto aktivního rohu."
+#~ msgid "Desklets"
+#~ msgstr "Desklety"
 
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head00->description
-msgid "After changing any option marked with asterisks (*), Cinnamon needs to be restarted.\n"
-msgstr "Po změně volby označené hvězdičkou (*), je nutné restartovat Cinnamon.\n"
+#~ msgid "Hotcorners"
+#~ msgstr "Aktivní rohy"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_left->description
-msgid "Top left hot corner activation delay"
-msgstr "Aktivační zpoždění pro horní levý aktivní roh"
+#~ msgid "Desktop"
+#~ msgstr "Plocha"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_tweaks_enabled->description
-msgid "Enable Hot Corners tweaks"
-msgstr "Povolit vylepšení aktivních rohů"
+#~ msgid "Notifications"
+#~ msgstr "Oznámení"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_bottom_right->description
-msgid "Bottom right hot corner activation delay"
-msgstr "Aktivační zpoždění pro spodní pravý aktivní roh"
+#~ msgid "Windows"
+#~ msgstr "Okna"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_alignment->description
-msgid "(*) Avoid mouse pointers overlapping tooltips"
-msgstr "(*) Zamezit překrývání ukazatele myši a bublinové nápovědy"
+#~ msgid "These tweaks affect only Cinnamon's UI tooltips."
+#~ msgstr ""
+#~ "Tato vylepšení ovlivní pouze bublinovou nápovědu prostředí Cinnamon."
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_tooltips_alignment->tooltip
-msgid ""
-"Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to "
-"having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-"
-"right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer "
-"to overlap the tooltip."
-msgstr ""
-"Bublinová nápověda v prostředí Cinnamon je zarovnána k hornímu levému rohu ukazatele myši. To "
-"vede k překrývání bublinové nápovědy a ukazatele myši. Toto vylepšení zarovná bublinovou nápovědu "
-"ke spodnímu pravému rohu ukazatele myši (přibližně), čímž se zredujuje možnost nežádoucího "
-"překrývání."
+#~ msgid ""
+#~ "After changing any option marked with asterisks (*), Cinnamon needs to be "
+#~ "restarted."
+#~ msgstr ""
+#~ "Po změně volby označené hvězdičkou (*), je nutné restartovat Cinnamon."
 
-#. 0dyseus@CinnamonTweaks->settings-schema.json->head4->description
-msgid "Hot Corners tweaks"
-msgstr "Vylepšení aktivních rohů"
+#~ msgid "Page 2"
+#~ msgstr "Strana 2"
 
-#. 0dyseus@CinnamonTweaks->settings-
-#. schema.json->pref_hotcorners_delay_top_right->description
-msgid "Top right hot corner activation delay"
-msgstr "Aktivační zpoždění pro horní pravý aktivní roh"
+#~ msgid "Page 1"
+#~ msgstr "Strana 1"
+
+#~ msgid "Keyboard shortcut: "
+#~ msgstr "Klávesová zkratka:"
+
+#~ msgid ""
+#~ "After changing any option marked with asterisks (*), Cinnamon needs to be "
+#~ "restarted.\n"
+#~ msgstr ""
+#~ "Po změně volby označené hvězdičkou (*), je nutné restartovat Cinnamon.\n"
+
+#~ msgid "Open settings window"
+#~ msgstr "Otevřít okno nastavení"
+
+#~ msgid "Spices page"
+#~ msgstr "Spices web"
+
+#~ msgid "Open extensions manager"
+#~ msgstr "Otevřít správce rozšíření"
+
+#~ msgid "Disable all extensions"
+#~ msgstr "Zakázat všechna rozšíření"
+
+#~ msgid ""
+#~ "This will disable all active extensions. Are you sure you want to do this?"
+#~ msgstr "Tímto vypnete všechna aktivní rozšíření. Chcete opravdu pokračovat?"
+
+#~ msgid "Refresh extension list"
+#~ msgstr "Obnovit seznam rozšíření"
+
+#~ msgid ""
+#~ "There aren't any extensions installed on your system. Or you may need to "
+#~ "refresh the list of extensions from this applet context menu."
+#~ msgstr ""
+#~ "Ve vašem systému nejsou nainstalována žádná rozšíření. Vyzkoušejte "
+#~ "obnovit seznam rozšíření z kontextového menu tohoto appletu."
+
+#~ msgid "Enabled extensions"
+#~ msgstr "Povolená rozšíření"
+
+#~ msgid "No enabled extensions"
+#~ msgstr "Žádná povolená rozšíření"
+
+#~ msgid "Disabled extensions"
+#~ msgstr "Zakázaná rozšíření"
+
+#~ msgid "No disabled extensions"
+#~ msgstr "Žádná zakázaná rozšíření"
+
+#~ msgid ""
+#~ "Extension %s is not compatible with current version of cinnamon. Using it "
+#~ "may break your system. Load anyway?"
+#~ msgstr ""
+#~ "Rozšíření %s není kompatibilní s aktuální verzí cinnamonu. Jeho použítí "
+#~ "může poškodit váš systém. Přesto pokračovat?"
+
+#~ msgid "Custom label"
+#~ msgstr "Uživatelský název"
+
+#~ msgid "Enter custom text to show in the panel."
+#~ msgstr "Vložte text, který se zobrazí na panelu."
+
+#~ msgid "Show \"Spices page\" button on extensions menu"
+#~ msgstr "Zobrazit \"Spices web\" tlačítko v menu rozšíření"
+
+#~ msgid ""
+#~ "If enabled, it will display a button in each extension menu item that "
+#~ "will open the extension's Spices page (if the extension is published on "
+#~ "Spices)."
+#~ msgstr ""
+#~ "Je-li povoleno, tak zobrazí u každé položky menu rozšíření tlačítko pro "
+#~ "otevření  webové stránky (pokud je rozšíření publikované na webu Spices)."
+
+#~ msgid "Set max height for the main menu"
+#~ msgstr "Nastavit maximální výšku pro hlavní menu"
+
+#~ msgid "Keep \"Disabled extensions\" menu open"
+#~ msgstr "Ponechat menu \"Zakázaná rozšíření\" otevřené"
+
+#~ msgid ""
+#~ "If enabled, every time that the menu is open, the \"Disabled extensions\" "
+#~ "sub menu will be open too."
+#~ msgstr ""
+#~ "Je-li povoleno, tak pokaždé při otevření menu bude otevřeno také sub menu "
+#~ "\"Zakázaná rozšíření\"."
+
+#~ msgid "Show \"Open extension folder\" button on extensions menu"
+#~ msgstr "Zobrazit \"Otevřít složku rozšíření\" tlačítko v menu rozšíření"
+
+#~ msgid ""
+#~ "If enabled, it will display a button in each extension menu item that "
+#~ "will open the location where the extension is installed."
+#~ msgstr ""
+#~ "Je-li povoleno, tak zobrazí u každé položky menu rozšíření tlačítko pro "
+#~ "otevření složky ve které je rozšíření nainstalováno."
+
+#~ msgid "Style for \"Disabled extensions\" sub-menu"
+#~ msgstr "Styl pro \"Zakázaná rozšíření\" sub-menu"
+
+#~ msgid "Use extension name as label"
+#~ msgstr "Použít název rozšíření jako jméno"
+
+#~ msgid ""
+#~ "If disabled, the extension UUID will be used as label for the menu items."
+#~ msgstr "Je-li zakázáno, tak bude pro položku menu použito UUID jako jméno."
+
+#~ msgid "Icon"
+#~ msgstr "Ikona"
+
+#~ msgid "Select an icon to show in the panel."
+#~ msgstr "Zvolte ikonu, která se zobrazí na panelu."
+
+#~ msgid "Style for \"Enabled extensions\" sub-menu"
+#~ msgstr "Styl pro \"Povolená rozšíření\" sub-menu"
+
+#~ msgid "Show \"Edit extension main file\" button on extensions menu"
+#~ msgstr ""
+#~ "Zobrazit \"Upravit hlavní soubor rozšíření\" tlačítko v menu rozšíření"
+
+#~ msgid ""
+#~ "If enabled, it will display a button in each extension menu item that "
+#~ "will open main extension file (extension.js) with a text editor."
+#~ msgstr ""
+#~ "Je-li povoleno, tak zobrazí u každé položky menu rozšíření tlačítko pro "
+#~ "otevření  hlavního souboru (extension.js) v textovém editoru."
+
+#~ msgid "Icon size for menu items"
+#~ msgstr "Velikost ikon pro položky menu"
+
+#~ msgid "Keep only one menu open at all times"
+#~ msgstr "Ponechat vždy otevřené pouze jedno menu"
+
+#~ msgid "Max width for menu items label"
+#~ msgstr "Maximální šířka pro názvy položek menu"
+
+#~ msgid "ems"
+#~ msgstr "ems"
+
+#~ msgid "Appearance"
+#~ msgstr "Vzhled"
+
+#~ msgid "Show \"Open settings window\" button on extensions menu"
+#~ msgstr "Zobrazit \"Otevřít okno nastavení\" tlačítko v menu rozšíření"
+
+#~ msgid ""
+#~ "If enabled, it will display a button in each extension menu item that "
+#~ "will open the extension's settings page (if the extension has a "
+#~ "configuration mechanism)."
+#~ msgstr ""
+#~ "Je-li povoleno, tak zobrazí u každé položky menu rozšíření tlačítko pro "
+#~ "otevření nastavení (pokud rozšíření umožňuje nastavení)."
+
+#~ msgid "Keep \"Enabled extensions\" menu open"
+#~ msgstr "Ponechat menu \"Povolená rozšíření\" otevřené"
+
+#~ msgid ""
+#~ "If enabled, every time that the menu is open, the \"Enabled extensions\" "
+#~ "sub menu will be open too."
+#~ msgstr ""
+#~ "Je-li povoleno, tak pokaždé při otevření menu bude otevřeno také sub menu "
+#~ "\"Povolená rozšíření\"."
+
+#~ msgid "Extensions menu settings"
+#~ msgstr "Nastavení menu rozšíření"
+
+#~ msgid "Show icons on menu items"
+#~ msgstr "Zobrazit ikony položek menu"
+
+#~ msgid "Allows enabling/disabling extensions (and other tasks) from a menu."
+#~ msgstr "Umožňuje povolit/zakázat rozšíření (a další činnosti) z menu."
+
+#~ msgid "Extensions Manager"
+#~ msgstr "Správce rozšíření"
