@@ -7,11 +7,17 @@
         "3.0",
         "3.2"
     ],
+    "contributors": [
+        "awamper: Original author of Text Translator gnome-shell extension https://github.com/awamper/text-translator.",
+        "gufoe: Author of the newer version of Text Translator gnome-shell extension https://github.com/gufoe/text-translator.",
+        "soimort: Author of the translate-shell script https://github.com/soimort/translate-shell.",
+        "muzena: Croatian localization https://github.com/muzena.",
+        "giwhub: Chinese localization https://github.com/giwhub."
+    ],
     "url": "https://github.com/Odyseus/CinnamonTools",
-    "dangerous": true,
     "description": "Translation of text by different translation providers (currently Google, Yandex, Bing and Apertium).",
     "comments": "Bug reports, feature requests and contributions should be done on this xlet's repository linked below.",
-    "version": "1.00",
+    "version": "1.01",
     "schema-file": "schemas/org.cinnamon.extensions.0dyseus@MultiTranslatorExtension.gschema.xml",
     "name": "Multi Translator"
 }
