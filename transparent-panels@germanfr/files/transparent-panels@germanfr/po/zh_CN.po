@@ -1,62 +1,69 @@
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
 
 #: extension.js:245
 #, c-format
 msgid "%s enabled"
-msgstr ""
+msgstr "%s已启用"
 
 #: extension.js:246
 msgid "Open the extension settings and customize your panels"
-msgstr ""
-
-#: extension.js:249
-msgid "Open settings"
-msgstr ""
+msgstr "打开扩展设置并自定义您的面板"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->description
 msgid "Type of transparency"
-msgstr ""
+msgstr "透明度类型"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->tooltip
 msgid "Choose the type of transparency you want."
-msgstr ""
+msgstr "选择您想要的透明度类型。"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "Defined by theme"
-msgstr ""
+msgstr "由主题定义"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "Fully transparent"
-msgstr ""
+msgstr "完全透明"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "Semi-transparent"
-msgstr ""
+msgstr "半透明"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "With shadow"
-msgstr ""
+msgstr "带有阴影"
 
 #. transparent-panels@germanfr->settings-schema.json->opacify->description
 msgid "Remove theme transparency (experimental)"
-msgstr ""
+msgstr "移除主题透明度（实验性）"
 
 #. transparent-panels@germanfr->settings-schema.json->opacify->tooltip
 msgid "Remove panel transparency when it's not transparent."
-msgstr ""
+msgstr "不透明时移除面板透明度。"
 
 #. transparent-panels@germanfr->metadata.json->name
 msgid "Transparent panels"
-msgstr ""
+msgstr "透明面板"
 
 #. transparent-panels@germanfr->metadata.json->description
 msgid "Transparentize your panels when there are no any maximized windows"
-msgstr ""
+msgstr "没有任何最大化的窗口时透明您的面板"
