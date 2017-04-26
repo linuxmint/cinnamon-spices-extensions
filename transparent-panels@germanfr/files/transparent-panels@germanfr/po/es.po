@@ -22,6 +22,10 @@ msgstr "%s activado"
 msgid "Open the extension settings and customize your panels"
 msgstr "Abre los austes de la extensión y personaliza los paneles"
 
+#: extension.js:249
+msgid "Open settings"
+msgstr "Abrir ajustes"
+
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->description
 msgid "Type of transparency"

@@ -246,7 +246,7 @@ MyExtension.prototype = {
 			_("Open the extension settings and customize your panels"),
 			params);
 
-		notification.addButton("open-settings", "Open settings");
+		notification.addButton("open-settings", _("Open settings"));
 		notification.connect("action-invoked", Lang.bind(this, this.launchSettings));
 
 		Main.messageTray.add(source);

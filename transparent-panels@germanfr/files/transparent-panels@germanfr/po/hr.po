@@ -1,62 +1,74 @@
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: Transparent panels 3.2-6\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: extension.js:245
 #, c-format
 msgid "%s enabled"
-msgstr ""
+msgstr "%s omogućeno"
 
 #: extension.js:246
 msgid "Open the extension settings and customize your panels"
-msgstr ""
+msgstr "Otvorite postavke proširenja i prilagodite svoje panele"
 
 #: extension.js:249
 msgid "Open settings"
-msgstr ""
+msgstr "Otvori postavke"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->description
 msgid "Type of transparency"
-msgstr ""
+msgstr "Vrsta prozirnosti"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->tooltip
 msgid "Choose the type of transparency you want."
-msgstr ""
+msgstr "Odaberite željenu vrstu prozirnosti."
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "Defined by theme"
-msgstr ""
+msgstr "Određena temom"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "Fully transparent"
-msgstr ""
+msgstr "Potpuna prozirnost"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "Semi-transparent"
-msgstr ""
+msgstr "Polovična prozirnost"
 
 #. transparent-panels@germanfr->settings-schema.json->transparency-
 #. type->options
 msgid "With shadow"
-msgstr ""
+msgstr "Sa sjenkama"
 
 #. transparent-panels@germanfr->settings-schema.json->opacify->description
 msgid "Remove theme transparency (experimental)"
-msgstr ""
+msgstr "Ukloni prozirnost teme (eksperimentalno)"
 
 #. transparent-panels@germanfr->settings-schema.json->opacify->tooltip
 msgid "Remove panel transparency when it's not transparent."
-msgstr ""
+msgstr "Ukloni prozirnost panela kada nije proziran."
 
 #. transparent-panels@germanfr->metadata.json->name
 msgid "Transparent panels"
-msgstr ""
+msgstr "Prozirni paneli"
 
 #. transparent-panels@germanfr->metadata.json->description
 msgid "Transparentize your panels when there are no any maximized windows"
-msgstr ""
+msgstr "Paneli su prozirni kada nema uvećanih prozora."
