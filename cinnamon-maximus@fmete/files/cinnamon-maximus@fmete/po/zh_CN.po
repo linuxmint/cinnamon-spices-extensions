@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#. cinnamon-maximus@fmete->metadata.json->description
+msgid "Undecorate windows its maximised."
+msgstr "窗口最大化时取消装饰。"
+
+#. cinnamon-maximus@fmete->metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. cinnamon-maximus@fmete->settings-schema.json->blacklist->description
+msgid "Use Blacklist"
+msgstr "使用黑名单"
+
+#. cinnamon-maximus@fmete->settings-schema.json->blacklist_apps->description
+msgid ""
+"Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for seperate "
+"apps)"
+msgstr "黑名单应用程序（“重新检查激活的黑名单”，请使用\",\"分隔应用程序）"
+
+#. cinnamon-maximus@fmete->settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Cinnamon-Maximus设置"
+
+#. cinnamon-maximus@fmete->settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr "取消装饰所有窗口（实验性，请关闭然后重新打开所有窗口）"
+
+#. cinnamon-maximus@fmete->settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "平铺时取消装饰"
