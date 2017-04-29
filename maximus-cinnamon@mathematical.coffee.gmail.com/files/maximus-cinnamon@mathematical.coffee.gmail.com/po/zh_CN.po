@@ -1,0 +1,26 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#. maximus-cinnamon@mathematical.coffee.gmail.com->metadata.json->description
+msgid ""
+"Undecorate maximized windows, like Ubuntu's old 'Maximus' package. See "
+"readme at extension homepage."
+msgstr ""
+"取消装饰最大化的窗口，类似Ubuntu的旧‘Maximus’软件包。在扩展页面查看说"
+"明。"
+
+#. maximus-cinnamon@mathematical.coffee.gmail.com->metadata.json->name
+msgid "Maximus"
+msgstr "Maximus"
