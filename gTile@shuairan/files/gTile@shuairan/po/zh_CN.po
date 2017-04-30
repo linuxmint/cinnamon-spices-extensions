@@ -1,0 +1,86 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#. gTile@shuairan->metadata.json->description
+msgid ""
+"Tile your windows as you like. It even supports multiscreen ! -EDIT: - See "
+"README.md file for configuration -"
+msgstr ""
+"按照您喜欢的方式平铺窗口。甚至支持多屏幕！-编辑：查看README.md文件获取配置 "
+"-"
+
+#. gTile@shuairan->metadata.json->name
+msgid "gTile"
+msgstr "gTile"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2x->description
+#. gTile@shuairan->settings-schema.json->gridbutton4x->description
+#. gTile@shuairan->settings-schema.json->gridbutton3x->description
+#. gTile@shuairan->settings-schema.json->gridbutton1x->description
+msgid "Cols "
+msgstr "列数"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2x->units
+#. gTile@shuairan->settings-schema.json->gridbutton4x->units
+#. gTile@shuairan->settings-schema.json->gridbutton3x->units
+#. gTile@shuairan->settings-schema.json->gridbutton1x->units
+msgid "x "
+msgstr "x "
+
+#. gTile@shuairan->settings-schema.json->gridbutton2y->description
+#. gTile@shuairan->settings-schema.json->gridbutton4y->description
+#. gTile@shuairan->settings-schema.json->gridbutton3y->description
+#. gTile@shuairan->settings-schema.json->gridbutton1y->description
+msgid "Rows"
+msgstr "行数"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2y->units
+#. gTile@shuairan->settings-schema.json->gridbutton4y->units
+#. gTile@shuairan->settings-schema.json->gridbutton3y->units
+#. gTile@shuairan->settings-schema.json->gridbutton1y->units
+msgid "y "
+msgstr "y "
+
+#. gTile@shuairan->settings-schema.json->header2->description
+msgid "Button 2:"
+msgstr "按钮2："
+
+#. gTile@shuairan->settings-schema.json->header3->description
+msgid "Button 3:"
+msgstr "按钮3："
+
+#. gTile@shuairan->settings-schema.json->header1->description
+msgid "Button 1:"
+msgstr "按钮1："
+
+#. gTile@shuairan->settings-schema.json->header4->description
+msgid "Button 4:"
+msgstr "按钮4："
+
+#. gTile@shuairan->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "自动关闭"
+
+#. gTile@shuairan->settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "热键："
+
+#. gTile@shuairan->settings-schema.json->hotkey->description
+msgid "Global Hotkey for gTile"
+msgstr "gTile的全局热键"
+
+#. gTile@shuairan->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "动画"
