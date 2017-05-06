@@ -412,10 +412,6 @@ class HistoryApplication(Gtk.Application):
         self.quit()
 
 
-# def module_exists(module_name):
-#     return module_name in (name for loader, name, ispkg in iter_modules())
-
-
 def main():
     arg = sys.argv[1]
 
@@ -430,22 +426,24 @@ def main():
         try:
             subprocess.check_call(["xsel", "--version"])
         except OSError:
-            msg += "# xsel command not found!!!\n"
+            # TO TRANSLATORS: "xsel" is a command, do not translate.
+            msg += "# %s\n" % _("xsel command not found!!!")
 
         try:
             subprocess.check_call(["xdg-open", "--version"])
         except OSError:
-            msg += "# xdg-open command not found!!!\n"
+            # TO TRANSLATORS: "xdg-open" is a command, do not translate.
+            msg += "# %s\n" % _("xdg-open command not found!!!")
 
         try:
             subprocess.check_call(["trans", "-V"])
         except OSError:
-            msg += "# trans command not found or it isn't in your path!!!\n"
-
-        # if not module_exists("requests"):
-        #     msg += "# requests Python module not found!!!\n"
+            # TO TRANSLATORS: "trans" is a command and "PATH" is an
+            # environmental variable, do not translate.
+            msg += "# %s\n" % _("trans command not found or it isn't in your PATH!!!")
 
         print(msg)
+
 
 if __name__ == "__main__":
     main()

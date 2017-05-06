@@ -21,12 +21,20 @@ const Main = imports.ui.main;
 const Clutter = imports.gi.Clutter;
 const Atk = imports.gi.Atk;
 const Lightbox = imports.ui.lightbox;
-
+const MessageTray = imports.ui.messageTray;
 const Tooltips = imports.ui.tooltips;
 const PopupMenu = imports.ui.popupMenu;
 const GioSSS = Gio.SettingsSchemaSource;
+
 const CINNAMON_VERSION = GLib.getenv("CINNAMON_VERSION");
 const CINN_2_8 = versionCompare(CINNAMON_VERSION, "2.8.8") <= 0;
+
+const NotificationUrgency = {
+    LOW: 0,
+    NORMAL: 1,
+    HIGH: 2,
+    CRITICAL: 3
+};
 
 Gettext.bindtextdomain(ExtensionUUID, GLib.get_home_dir() + "/.local/share/locale");
 
@@ -3198,9 +3206,9 @@ function get_unichar(keyval) {
 
 // http://stackoverflow.com/a/7654602
 var asyncLoop = function(o) { // jshint ignore:line
-    var i = -1;
+    let i = -1;
 
-    var loop = function() {
+    let loop = function() {
         i++;
         if (i == o.length) {
             o.callback();
@@ -3299,7 +3307,7 @@ function getKeyByValue(object, value) {
  * @license This function is in the public domain. Do what you want with it, no strings attached.
  */
 function versionCompare(v1, v2, options) {
-    var lexicographical = options && options.lexicographical,
+    let lexicographical = options && options.lexicographical,
         zeroExtend = options && options.zeroExtend,
         v1parts = v1.split('.'),
         v2parts = v2.split('.');
@@ -3322,7 +3330,7 @@ function versionCompare(v1, v2, options) {
         v2parts = v2parts.map(Number);
     }
 
-    for (var i = 0; i < v1parts.length; ++i) {
+    for (let i = 0; i < v1parts.length; ++i) {
         if (v2parts.length == i) {
             return 1;
         }
@@ -3406,7 +3414,7 @@ function checkDependencies() {
             ExtensionPath + "/extensionHelper.py",
             "check-dependencies"
         ],
-        Lang.bind(this, function(aResponse) {
+        function(aResponse) {
             if (Settings.get_boolean(P.LOGGIN_ENABLED))
                 global.logError("\ncheckDependencies()>aResponse:\n" + aResponse);
 
@@ -3425,97 +3433,48 @@ function checkDependencies() {
                     "# " + _("Check this extension help file for instructions.") + "\n" +
                     "# " + _("It can be accessed from the translation dialog main menu.")
                 );
-                informAboutMissingDependencies();
+                informAboutMissingDependencies(res);
                 Settings.set_boolean(P.ALL_DEPENDENCIES_MET, false);
             } else {
                 Main.notify(_(ExtensionMeta.name), _("All dependencies seem to be met."));
                 Settings.set_boolean(P.ALL_DEPENDENCIES_MET, true);
             }
-        }));
+        });
 }
 
-function informAboutMissingDependencies() {
-    Main.criticalNotify(_(ExtensionMeta.name),
+function informAboutMissingDependencies(aRes) {
+    customNotify(
+        _(ExtensionMeta.name),
         _("Unmet dependencies found!!!") + "\n" +
-        _("A detailed error has been logged into ~/.cinnamon/glass.log file."));
+        "<b>" + aRes + "</b>" + "\n\n" +
+        _("Check this extension help file for instructions.") + "\n" +
+        _("This information has also been logged into the ~/.cinnamon/glass.log file."),
+        "dialog-warning",
+        NotificationUrgency.CRITICAL, [{
+            label: _("Help"), // Just in case.
+            tooltip: _("Extended help"),
+            iconName: ICONS.help,
+            callback: function() {
+                Util.spawn_async([
+                    "xdg-open",
+                    ExtensionPath + "/HELP.html"
+                ], null);
+            }
+        }, {
+            label: "~/.cinnamon/glass.log", // Just in case.
+            tooltip: "~/.cinnamon/glass.log",
+            iconName: ICONS.find,
+            callback: function() {
+                Util.spawn_async([
+                    "xdg-open",
+                    GLib.get_home_dir() + "/.cinnamon/glass.log"
+                ], null);
+            }
+        }]);
 }
 /**
  * END utils.js
  */
-
-function ShellOutputProcess(command_argv) {
-    this._init(command_argv);
-}
-
-ShellOutputProcess.prototype = {
-
-    _init: function(command_argv) {
-        this.command_argv = command_argv;
-        this.flags = GLib.SpawnFlags.SEARCH_PATH;
-        this.success = false;
-        this.standard_output_content = "";
-        this.standard_error_content = "";
-        this.pid = -1;
-        this.standard_input_file_descriptor = -1;
-        this.standard_output_file_descriptor = -1;
-        this.standard_error_file_descriptor = -1;
-    },
-
-    spawn_sync_and_get_output: function() {
-        this.spawn_sync();
-        let output = this.get_standard_output_content();
-        return output;
-    },
-
-    spawn_sync: function() {
-        let [success, standard_output_content, standard_error_content] = GLib.spawn_sync(
-            null,
-            this.command_argv,
-            null,
-            this.flags,
-            null);
-        this.success = success;
-        this.standard_output_content = standard_output_content;
-        this.standard_error_content = standard_error_content;
-    },
-
-    get_standard_output_content: function() {
-        return this.standard_output_content.toString();
-    },
-
-    spawn_sync_and_get_error: function() {
-        this.spawn_sync();
-        let output = this.get_standard_error_content();
-        return output;
-    },
-
-    get_standard_error_content: function() {
-        return this.standard_error_content.toString();
-    },
-
-    spawn_async: function() {
-        let [
-            success,
-            pid,
-            standard_input_file_descriptor,
-            standard_output_file_descriptor,
-            standard_error_file_descriptor
-        ] = GLib.spawn_async_with_pipes(
-            null,
-            this.command_argv,
-            null,
-            this.flags,
-            null,
-            null);
-
-        this.success = success;
-        this.pid = pid;
-        this.standard_input_file_descriptor = standard_input_file_descriptor;
-        this.standard_output_file_descriptor = standard_output_file_descriptor;
-        this.standard_error_file_descriptor = standard_error_file_descriptor;
-    },
-
-};
 
 function DialogPopup(button, dialog) {
     this._init(button, dialog);
@@ -3623,6 +3582,96 @@ DialogPopup.prototype = {
     }
 };
 
+function customNotify(aTitle, aBody, aIconName, aUrgency, aButtons) {
+    let icon = new St.Icon({
+        icon_name: aIconName,
+        icon_type: St.IconType.SYMBOLIC,
+        icon_size: 24
+    });
+    let source = new MessageTray.SystemNotificationSource();
+    Main.messageTray.add(source);
+    let notification = new MessageTray.Notification(source, aTitle, aBody, {
+        icon: icon,
+        bodyMarkup: true,
+        titleMarkup: true,
+        bannerMarkup: true
+    });
+    notification.setTransient(aUrgency === NotificationUrgency.LOW);
+
+    if (aUrgency !== NotificationUrgency.LOW && typeof aUrgency === "number") {
+        notification.setUrgency(aUrgency);
+    }
+
+    try {
+        if (aButtons && typeof aButtons === "object") {
+            let i = 0,
+                iLen = aButtons.length;
+            for (; i < iLen; i++) {
+                let btnObj = aButtons[i];
+                try {
+                    if (!notification._buttonBox) {
+
+                        let box = new St.BoxLayout({
+                            name: "notification-actions"
+                        });
+                        notification.setActionArea(box, {
+                            x_expand: true,
+                            y_expand: false,
+                            x_fill: true,
+                            y_fill: false,
+                            x_align: St.Align.START
+                        });
+                        notification._buttonBox = box;
+                    }
+
+                    let button = new St.Button({
+                        can_focus: true
+                    });
+
+                    if (btnObj.iconName) {
+                        notification.setUseActionIcons(true);
+                        button.add_style_class_name("notification-icon-button");
+                        button.child = new St.Icon({
+                            icon_name: btnObj.iconName,
+                            icon_type: St.IconType.SYMBOLIC,
+                            icon_size: 16
+                        });
+                    } else {
+                        button.add_style_class_name("notification-button");
+                        button.label = btnObj.label;
+                    }
+
+                    button.connect("clicked", btnObj.callback);
+
+                    if (btnObj.tooltip) {
+                        button.tooltip = new Tooltips.Tooltip(
+                            button,
+                            btnObj.tooltip
+                        );
+                        button.connect("destroy", function() {
+                            button.tooltip.destroy();
+                        });
+                    }
+
+                    if (notification._buttonBox.get_n_children() > 0)
+                        notification._buttonFocusManager.remove_group(notification._buttonBox);
+
+                    notification._buttonBox.add(button);
+                    notification._buttonFocusManager.add_group(notification._buttonBox);
+                    notification._inhibitTransparency = true;
+                    notification.updateFadeOnMouseover();
+                    notification._updated();
+                } catch (aErr) {
+                    global.logError(aErr);
+                    continue;
+                }
+            }
+        }
+    } finally {
+        source.notify(notification);
+    }
+}
+
 // This is just a "whitelist" for jshint.
 // It's a list of function/constants that are
 // defined in this file but are used in other file/s.
@@ -3642,5 +3691,6 @@ exported STATS_TYPE_SOURCE,
          replaceAll,
          getSelection,
          getTimeStamp,
-         checkDependencies
+         checkDependencies,
+         customNotify
 */

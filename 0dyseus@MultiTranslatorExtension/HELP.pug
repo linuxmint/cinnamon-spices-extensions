@@ -60,6 +60,7 @@ html
             .localization-chooser(align="middle")
                 input(type='button', class='btn btn-success btn-sm localization-switch' value='English' data-id='english' data-title='Multi Translator extension help' onclick='self.toggleLocalizationVisibility(this);')
                 input(type='button', class='btn btn-default btn-sm localization-switch' value='Español' data-id='spanish' data-title='Ayuda para la extensión Multi Traductor' onclick='self.toggleLocalizationVisibility(this);')
+                input(type='button', class='btn btn-default btn-sm localization-switch' value='Deutsch' data-id='german' data-title='Hilfe für die Erweiterung Multi-Übersetzer' onclick='self.toggleLocalizationVisibility(this);')
                 //- Example:
                 //- input(type='button', class='btn btn-default btn-sm localization-switch' value='language-endonym' data-id='language-name' data-title='page-title' onclick='self.toggleLocalizationVisibility(this);')
                 //- language-endonym = Language name in the language tongue in capital case (if apply).
@@ -70,6 +71,8 @@ html
                     include:markdown-it(html) docs/HELP.md
                 #spanish.localization-content.hidden
                     include:markdown-it(html) docs/HELP-es.md
+                #german.localization-content.hidden
+                    include:markdown-it(html) docs/HELP-de.md
                 //- Example:
                 //- #language-name.localization-content.hidden
                 //-     include:markdown-it(html) docs/HELP-language-code.md

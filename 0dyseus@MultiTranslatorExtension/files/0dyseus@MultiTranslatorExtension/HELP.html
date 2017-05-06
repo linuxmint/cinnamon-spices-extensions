@@ -358,7 +358,7 @@ pre {
     list-style: none !important;
     list-style-type: none !important;
 }
-</style><div class="alert alert-warning"><p><strong>Oh snap! This page needs JavaScript enabled to display correctly.</strong></p><p><strong>This page uses JavaScript only to switch between the available languages.</strong></p><p><strong>There are no tracking services of any kind and never will be (at least, not from my side).</strong></p></div></noscript><div id="mainarea"><div class="localization-chooser" align="middle"><input class="btn btn-success btn-sm localization-switch" type="button" value="English" data-id="english" data-title="Multi Translator extension help" onclick="self.toggleLocalizationVisibility(this);"><input class="btn btn-default btn-sm localization-switch" type="button" value="Español" data-id="spanish" data-title="Ayuda para la extensión Multi Traductor" onclick="self.toggleLocalizationVisibility(this);"></div><div class="container boxed"><div class="localization-content" id="english"><!--
+</style><div class="alert alert-warning"><p><strong>Oh snap! This page needs JavaScript enabled to display correctly.</strong></p><p><strong>This page uses JavaScript only to switch between the available languages.</strong></p><p><strong>There are no tracking services of any kind and never will be (at least, not from my side).</strong></p></div></noscript><div id="mainarea"><div class="localization-chooser" align="middle"><input class="btn btn-success btn-sm localization-switch" type="button" value="English" data-id="english" data-title="Multi Translator extension help" onclick="self.toggleLocalizationVisibility(this);"><input class="btn btn-default btn-sm localization-switch" type="button" value="Español" data-id="spanish" data-title="Ayuda para la extensión Multi Traductor" onclick="self.toggleLocalizationVisibility(this);"><input class="btn btn-default btn-sm localization-switch" type="button" value="Deutsch" data-id="german" data-title="Hilfe für die Erweiterung Multi-Übersetzer" onclick="self.toggleLocalizationVisibility(this);"></div><div class="container boxed"><div class="localization-content" id="english"><!--
 Notes to translators:
 - Do not modify this file directly. Create a copy of it with a different name that contains the language code and always use the .md extension for the file. Example: HELP-es.md file will contain the content of the HELP.md file translated into Spanish.
 - This file is written in [markdown](https://guides.github.com/features/mastering-markdown/) and some "touches" of HTML.
@@ -538,11 +538,99 @@ $ sudo make install
 </li>
 <li>Si no se posee o no se quiere una cuenta de GitHub:
 <ul>
-<li>Se puede enviar un <a href="http://pastebin.com/">Pastebin</a> (o servicio similar) a mi <a href="https://forums.linuxmint.com/memberlist.php?mode=viewprofile&amp;u=164858">cuenta en el for de Linux Mint</a>.</li>
+<li>Se puede enviar un <a href="http://pastebin.com/">Pastebin</a> (o servicio similar) a mi <a href="https://forums.linuxmint.com/memberlist.php?mode=viewprofile&amp;u=164858">cuenta en el foro de Linux Mint</a>.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Si el texto fuente (en Inglés) y/o mi traducción al Español contiene errores o inconsistencias, no dude en informarlos.</li>
+</ul>
+</div><div class="localization-content hidden" id="german"><h1>Hilfe für die Erweiterung Multi-Übersetzer</h1>
+<h3>WICHTIG!!!</h3>
+<p>Niemals irgendeine der Dateien löschen, die sich in dem Ordner dieser Erweiterung befinden. Es könnte das Funktionieren dieser Erweiterung beeinträchtigen.</p>
+<hr>
+<h2 style="color:red;">Fehlerberichte, Feature-Anfragen und Beiträge</h2>
+<span style="color:red;">
+Wenn jemand einen Fehler melden will, eine Feature-Anfrage hat oder einen Beitrag leisten möchte, dann soll er dies bitte auf der <a href="https://github.com/Odyseus/CinnamonTools">GitHub-Seite dieser Erweiterung</a> tun.
+</span>
+<hr>
+<h3>Abhängigkeiten</h3>
+<p><strong>Wenn eine oder mehrere dieser Abhängigkeiten auf dem Rechner fehlen, kann diese Erweiterung nicht verwendet werden.</strong></p>
+<ul>
+<li><strong>xsel</strong> Befehl: XSel ist ein Befehlszeilenprogramm, das der Verwaltung der Zwischenablage(n), sprich des X11-Clipboards, dient.</li>
+<li><strong>trans</strong> Befehl: Ein Befehl, der durch das Paket translate-shell zur Verfügung gestellt wird. Es ist eine einfache Befehlszeilenschnittstelle für mehrere Übersetzungsdienstleister (Google Übersetzer, Yandex Übersetzer, Bing Übersetzer und Apertium), welche das Übersetzen von Zeichenfolgen im Terminal ermöglicht.
+<ul>
+<li>Überprüfe <a href="https://github.com/soimort/translate-shell#dependencies">Abhängigkeiten</a> und <a href="https://github.com/soimort/translate-shell#recommended-dependencies">empfohlene Abhängigkeiten</a> für translate-shell.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Bemerkung:</strong> Das Paket translate-shell in den Ubuntu 16.04.x/Linux Mint 18.x-Repositories ist veraltet und defekt. Es kann trotzdem installiert werden, so dass auch die Abhängigkeiten installiert werden. Aber das Aktualisieren auf die neueste Version sollte wie unten beschrieben durchgeführt werden.</p>
+<h3>Wie man die neueste Version von translate-shell installiert</h3>
+<h4>Möglichkeit 1. Direkter Download</h4>
+<p>Diese Methode wird nur das trans-Skript an die angegebenen Orte installieren.</p>
+<p>Nur für den aktuellen Benutzer. Der Pfad <strong>~/.local/bin</strong> muss existieren.</p>
+<pre><code class="language-shell">$ wget -O ~/.local/bin/trans git.io/trans &amp;&amp; chmod ugo+rx ~/.local/bin/trans
+</code></pre>
+<p>Für alle Benutzer ohne Überschreiben der installierten Version.</p>
+<pre><code class="language-shell">$ sudo wget -O /usr/local/bin/trans git.io/trans &amp;&amp; sudo chmod ugo+rx /usr/local/bin/trans
+</code></pre>
+<h4>Möglichkeit 2. Von Git - <a href="https://github.com/soimort/translate-shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-hackers">Mehr Details</a></h4>
+<p>Diese Methode wird nicht nur das trans-Skript installieren, sondern auch dessen Man-Pages (Hilfe- und Dokumentationsseiten). Weitere Informationen finden Sie im obigen Link.</p>
+<pre><code class="language-shell">$ git clone https://github.com/soimort/translate-shell
+$ cd translate-shell
+$ make
+$ sudo make install
+</code></pre>
+<hr>
+<h3>Benutzung der Erweiterung</h3>
+<p>Nach der Installation und Aktivierung stehen folgende Tasaturkürzel zur Verfügung.</p>
+<h4>Globale Tastaturkürzel (konfigurierbar in den Einstellungen der Erweiterung)</h4>
+<ul>
+<li><strong><kbd>Super</kbd> + <kbd>T</kbd>:</strong> Den Übersetzer-Dialog öffnen.</li>
+<li><strong><kbd>Super</kbd> + <kbd>⇧</kbd> + <kbd>T</kbd>:</strong> Übersetzer-Dialog öffnen und den Text aus der Zwischenablage übersetzen.</li>
+<li><strong><kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>:</strong> Übersetzer-Dialog öffnen und primäre Auswahl übersetzen.</li>
+</ul>
+<h4>Auf dem Übersetzer-Dialog verfügbare Tastaturkürzel</h4>
+<ul>
+<li><strong><kbd>Strg</kbd> + <kbd>↵</kbd>:</strong> Text übersetzen.</li>
+<li><strong><kbd>⇧</kbd> + <kbd>↵</kbd>:</strong> Text-Übersetzung erzwingen. Ignoriert den Übersetzungsverlauf.</li>
+<li><strong><kbd>Strg</kbd> + <kbd>⇧</kbd> + <kbd>C</kbd>:</strong> Text in die Zwischenablage kopieren.</li>
+<li><strong><kbd>Strg</kbd> + <kbd>S</kbd>:</strong> Sprachen vertauschen.</li>
+<li><strong><kbd>Strg</kbd> + <kbd>D</kbd>:</strong> Sprache auf den Standard zurücksetzen.</li>
+<li><strong><kbd>Esc</kbd>:</strong> Dialog schließen.</li>
+</ul>
+<hr>
+<h3>Einstellungsfenster der Erweiterung</h3>
+<p>In den Einstellungen dieser Erweiterung können alle Optionen importiert, exportiert und/oder auf ihre Standardwerte zurückgesetzt werden.</p>
+<ul>
+<li>Um diese Aktionen durchführen zu können, muss das Einstellungsschema auf dem Rechner installiert sein. Dies geschieht automatisch, wenn die Erweiterung vom Cinnamon-Erweiterungsmanager installiert wird. Wenn die Erweiterung jedoch manuell installiert wurde, muss das Einstellungsschema auch manuell installiert werden. Dies wird erreicht, indem man einfach zum Ordner dieser Erweiterung geht und den folgenden Befehl ausführt:
+<ul>
+<li>Befehl zum Installieren des Einstellungsschemas: <code>./settings.py install-schema</code></li>
+<li>Befehl zum Deinstallieren des Einstellungsschemas: <code>./settings.py remove-schema</code></li>
+</ul>
+</li>
+<li>Zum Importieren/Exportieren der Einstellungen, muss der Befehl <strong>dconf</strong> auf dem Rechner verfügbar sein.</li>
+</ul>
+<hr>
+<h3>Übersetzungen von Applets/Desklets/Erweiterungen (auch bekannt als Xlets)</h3>
+<ul>
+<li>Wenn diese Xlet aus den Systemeinstellungen von Cinnamon installiert wurde, sind alle Übersetzungen dieses Xlets automatisch installiert worden.</li>
+<li>Wenn dieses Xlet manuell installiert wurde, können die Übersetzungen installiert werden, indem das Skript namens <strong>localizations.sh</strong> von einem Terminal ausgeführt wird, das im Ordner des Xlets geöffnet ist.</li>
+<li>Wenn keine Übersetzung dieses Xlets in Ihrer Sprachen vorhanden ist, können Sie eine Übersetzung erstellen, indem Sie <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">dieser Anleitung</a> folgen und die .po Datei an mich senden.
+<ul>
+<li>Wenn Sie einen GitHub-Account haben:
+<ul>
+<li>Sie können ein Pull Request mit der neuen Lokalisierungdatei erstellen.</li>
+<li>Wenn Sie das Repository nicht klonen möchten, erstellen Sie einfach ein <a href="https://gist.github.com/">Gist</a> und senden mir den Link.</li>
+</ul>
+</li>
+<li>Wenn Sie keinen GitHub-Account haben/wollen:
+<ul>
+<li>Sie können mir ein <a href="http://pastebin.com/">Pastebin</a> (or similar service) auf meinen <a href="https://forums.linuxmint.com/memberlist.php?mode=viewprofile&amp;u=164858">Mint Forums Account</a> senden.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Wenn der Quelltext (in Englisch) und/oder meine Übersetzung auf Spanisch Fehler/Inkonsistenzen hat, können Sie mir diese melden.</li>
 </ul>
 </div></div></div><script type="text/javascript">toggleLocalizationVisibility(null);</script></body></html>
