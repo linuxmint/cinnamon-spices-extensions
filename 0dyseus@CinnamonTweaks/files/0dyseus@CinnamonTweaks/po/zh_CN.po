@@ -5,62 +5,63 @@
 #
 msgid ""
 msgstr ""
-
 "Project-Id-Version: 1.09\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-21 14:53-0300\n"
-"PO-Revision-Date: 2017-04-05 03:23-0300\n"
-"Last-Translator: Odyseus <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2017-04-26 22:36+0800\n"
+"PO-Revision-Date: 2017-04-27 01:02+0800\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
 
 #: __init__.js:185
 #, javascript-format
 msgid "Schema %s could not be found for extension %s."
-msgstr ""
+msgstr "无法找到扩展%s的模式%s。"
 
 #: __init__.js:186
 msgid "Please check your installation."
-msgstr ""
+msgstr "请检查您的安装。"
 
 #: __init__.js:195
 msgid "Tweak activation aborted!!!"
-msgstr ""
+msgstr "调整激活停止！！！"
 
 #: __init__.js:196 __init__.js:203
 msgid "Your Cinnamon version may not be compatible!!!"
-msgstr ""
+msgstr "您的Cinnamon版本可能不兼容！！！"
 
 #: __init__.js:202
 msgid "Extension activation aborted!!!"
-msgstr ""
+msgstr "扩展调整激活停止！！！"
 
 #: __init__.js:204
 msgid "Minimum Cinnamon version allowed: 2.8.6"
-msgstr ""
+msgstr "允许的Cinnamon最低版本：2.8.6"
 
 #: __init__.js:481
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: __init__.js:487
 msgid "OK"
-msgstr ""
+msgstr "确定"
 
 #: extra_modules/hotCornerPatched.js:40
 msgid "Invalid overview options: Incorrect number of corners"
-msgstr ""
+msgstr "概览选项无效：角数不正确"
 
 #: extension.js:224
 msgid "Open applet folder"
-msgstr ""
+msgstr "打开小程序文件夹"
 
 #: extension.js:241
 msgid "Edit applet main file"
-msgstr ""
+msgstr "编辑小程序主文件"
 
 #: extension.js:290
 #, javascript-format
@@ -68,14 +69,16 @@ msgid ""
 "Do you want to remove '%s' from your panel?\n"
 "Instance ID: %s"
 msgstr ""
+"您想要从您的面板移除'%s'吗？\n"
+"实例ID: %s"
 
 #: extension.js:351
 msgid "Open desklet folder"
-msgstr ""
+msgstr "打开桌面小工具文件夹"
 
 #: extension.js:367
 msgid "Edit desklet main file"
-msgstr ""
+msgstr "编辑桌面小工具主文件"
 
 #: extension.js:413
 #, javascript-format
@@ -83,262 +86,299 @@ msgid ""
 "Do you want to remove '%s' from your desktop?\n"
 "Instance ID: %s"
 msgstr ""
+"您想要从您的桌面移除'%s'吗？\n"
+"实例ID: %s"
 
 #: extension.js:681
 msgid "Hotcorners tweaks"
-msgstr ""
+msgstr "热角调整"
 
 #: extension.js:786 settings.py:288
 msgid "Avoid mouse pointer overlapping tooltips"
-msgstr ""
+msgstr "避免鼠标指针与提示重叠"
 
 #: extension.js:1277
 msgid ""
 "If you updated this extension from an older version, <b>you must check its "
 "settings window</b>."
-msgstr ""
+msgstr "如果您从旧的版本更新此扩展，<b>您必须检查其设置窗口</b>。"
 
 #: extension.js:1278
 msgid "Some preferences may have been changed to their default values."
-msgstr ""
+msgstr "某些首选项可能已经被更改为其默认值。"
 
 #: extension.js:1279
 msgid "This message will not be displayed again."
-msgstr ""
+msgstr "此消息将不再显示。"
 
 #: settings.py:68 settings.py:70
 msgid "Applets tweaks"
-msgstr ""
+msgstr "小程序调整"
 
 #: settings.py:75
 msgid "Enable Applets tweaks"
-msgstr ""
+msgstr "启用小程序调整"
 
 #: settings.py:82
 msgid "Ask for confirmation on applet removal"
-msgstr ""
+msgstr "移除小程序时询问确认"
 
 #: settings.py:83 settings.py:145
 msgid ""
 "Display a confirmation dialog on removal.\n"
 "Keeping the Ctrl key pressed will bypass the confirmation."
 msgstr ""
+"移除时显示一个确认对话框。\n"
+"按住Ctrl键将会绕过确认。"
 
 #: settings.py:90
 msgid "Display \"Edit applet main file\" on context menu"
-msgstr ""
+msgstr "在右键菜单显示“编辑小程序主文件”"
 
 #: settings.py:97
 msgid "Where to place the \"Edit applet main file\" item?"
-msgstr ""
+msgstr "在哪里放置“编辑小程序主文件”条目？"
 
 #: settings.py:99 settings.py:119 settings.py:161 settings.py:181
 msgid "Last item on menu"
-msgstr ""
+msgstr "菜单最后一个条目"
 
 #: settings.py:100 settings.py:120 settings.py:162 settings.py:182
 msgid "Before \"About...\" item"
-msgstr ""
+msgstr "在“关于”条目之前"
 
 #: settings.py:101 settings.py:121 settings.py:163 settings.py:183
 msgid "Before \"Configure...\" item"
-msgstr ""
+msgstr "在“配置”条目之前"
 
 #: settings.py:102 settings.py:122 settings.py:164 settings.py:184
 msgid "Before \"Remove...\" item"
-msgstr ""
+msgstr "在“移除”条目之前"
 
 #: settings.py:110
 msgid "Display \"Open applet folder\" on context menu"
-msgstr ""
+msgstr "在右键菜单显示“打开小程序文件夹”"
 
 #: settings.py:117
 msgid "Where to place the \"Open applet folder\" item?"
-msgstr ""
+msgstr "在哪里放置“打开小程序文件夹”条目？"
 
 #: settings.py:130 settings.py:132
 msgid "Desklets tweaks"
-msgstr ""
+msgstr "桌面小工具调整"
 
 #: settings.py:137
 msgid "Enable Desklets tweaks"
-msgstr ""
+msgstr "启用桌面小工具调整"
 
 #: settings.py:144
 msgid "Ask for confirmation on desklet removal"
-msgstr ""
+msgstr "移除桌面小工具时询问确认"
 
 #: settings.py:152
 msgid "Display \"Edit desklet main file\" on context menu"
-msgstr ""
+msgstr "在右键菜单显示“编辑桌面小工具主文件”"
 
 #: settings.py:159
 msgid "Where to place the \"Edit desklet main file\" item?"
-msgstr ""
+msgstr "在哪里放置“编辑桌面小工具主文件”条目？"
 
 #: settings.py:172
 msgid "Display \"Open desklet folder\" on context menu"
-msgstr ""
+msgstr "在右键菜单显示“打开桌面小工具文件夹”"
 
 #: settings.py:179
 msgid "Where to place the \"Open desklet folder\" item?"
-msgstr ""
+msgstr "在哪里放置“打开桌面小工具文件夹”条目？"
 
 #: settings.py:193 settings.py:196
 msgid "Hot corners tweaks"
-msgstr ""
+msgstr "热角调整"
 
 #: settings.py:201
 msgid "Enable Hot Corners tweaks"
-msgstr ""
+msgstr "启用热角调整"
 
 #: settings.py:208
 msgid "Top left hot corner activation delay"
-msgstr ""
+msgstr "左上方热角激活延迟"
 
 #: settings.py:209 settings.py:221 settings.py:233 settings.py:245
 msgid "Set a delay in milliseconds to activate this hot corner."
-msgstr ""
+msgstr "以毫秒为单位设置激活此热角的延迟。"
 
 #: settings.py:213 settings.py:225 settings.py:237 settings.py:249
 #: settings.py:301
 msgid "milliseconds"
-msgstr ""
+msgstr "毫秒"
 
 #: settings.py:220
 msgid "Top right hot corner activation delay"
-msgstr ""
+msgstr "右上方热角激活延迟"
 
 #: settings.py:232
 msgid "Bottom left hot corner activation delay"
-msgstr ""
+msgstr "左下方热角激活延迟"
 
 #: settings.py:244
 msgid "Bottom right hot corner activation delay"
-msgstr ""
+msgstr "右下方热角激活延迟"
 
 #: settings.py:256
 msgid "Desktop tweaks"
-msgstr ""
+msgstr "桌面调整"
 
 #: settings.py:258
 msgid "Desktop area tweaks"
-msgstr ""
+msgstr "桌面区域调整"
 
 #: settings.py:263
 msgid "Enable Desktop area tweaks"
-msgstr ""
+msgstr "启用桌面区域调整"
 
 #: settings.py:270
 msgid "Enable applications drop to the Desktop"
-msgstr ""
+msgstr "启用应用程序拖放到桌面"
 
 #: settings.py:271
 msgid ""
 "With this option enabled, applications can be dragged from the menu applet "
 "and from the panel launchers applet and dropped into the desktop."
-msgstr ""
+msgstr "启用此项后，可以从菜单小程序和面板启动器小程序拖放应用程序到桌面中。"
 
 #: settings.py:275
 msgid "Tooltips tweaks"
-msgstr ""
+msgstr "提示调整"
 
 #: settings.py:280
 msgid "Enable Tooltips tweaks"
-msgstr ""
+msgstr "启用提示调整"
 
 #: settings.py:289
 msgid ""
 "Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse "
-"pointer. This leads to having tooltips overlapped by the mouse pointer. This"
-" tweak aligns the tooltip to the bottom-right corner of the mouse pointer "
+"pointer. This leads to having tooltips overlapped by the mouse pointer. This "
+"tweak aligns the tooltip to the bottom-right corner of the mouse pointer "
 "(approximately), reducing the possibility of the mouse pointer to overlap "
 "the tooltip."
 msgstr ""
+"Cinnamon用户界面上的提示与鼠标指针的左上角对齐。这导致提示与鼠标指针重叠。此"
+"调整将提示对齐到鼠标指针的右下角（大概），从而减少鼠标指针与提示重叠的可能"
+"性。"
 
 #: settings.py:296
 msgid "Tooltips show delay"
-msgstr ""
+msgstr "提示显示延迟"
 
 #: settings.py:297
 msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
-msgstr ""
+msgstr "以毫秒为单位设置显示Cinnamon用户界面提示的延迟。"
 
 #: settings.py:305
 msgid "Popup menus tweaks"
-msgstr ""
+msgstr "弹出菜单调整"
 
 #: settings.py:310
 msgid "Enable Popup menus tweaks"
-msgstr ""
+msgstr "启用弹出菜单调整"
 
 #: settings.py:317
 msgid "Panel menus behavior"
-msgstr ""
+msgstr "面板菜单行为"
 
 #: settings.py:318
 msgid ""
-"This setting affects only the behavior of menus that belongs to applets placed on any panel.\n"
+"This setting affects only the behavior of menus that belongs to applets "
+"placed on any panel.\n"
 "\n"
-"Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and then the mouse cursor is moved to another button on the top panel, the menu of the hovered buttons will automatically open without the need to click on them. With this option enabled, that same behavior can be reproduced on Cinnamon.\n"
+"Emulate Gnome Shell behavior: When a menu is open on Genome Shell, and then "
+"the mouse cursor is moved to another button on the top panel, the menu of "
+"the hovered buttons will automatically open without the need to click on "
+"them. With this option enabled, that same behavior can be reproduced on "
+"Cinnamon.\n"
 "\n"
-"Don't eat clicks: By default, when one opens an applet's menu on Cinnamon and then click on another applet to open its menu, the first click is used to close the first opened menu, and then another click has to be performed to open the menu of the second applet. With this option enabled, one can directly open the menu of any applet even if another applet has its menu open."
+"Don't eat clicks: By default, when one opens an applet's menu on Cinnamon "
+"and then click on another applet to open its menu, the first click is used "
+"to close the first opened menu, and then another click has to be performed "
+"to open the menu of the second applet. With this option enabled, one can "
+"directly open the menu of any applet even if another applet has its menu "
+"open."
 msgstr ""
+"此设置仅影响属于位于任何面板上的小程序的菜单的行为。\n"
+"\n"
+"模拟Gnome Shell行为：当在Genome Shell上打开菜单，然后将鼠标光标移动到顶部面板"
+"上的另一个按钮时，所悬停按钮的菜单将自动打开而无需点击。启用此选项后，可以"
+"在Cinnamon上重现相同的行为。\n"
+"\n"
+"不要吃掉点击：默认情况下，当在Cinnamon上打开一个小程序的菜单，然后点击另一个"
+"小程序要打开其菜单时，第一次点击用于关闭第一个小程序打开的菜单，然后必须再执"
+"行一次点击才能打开第二个小程序的菜单。启用此选项后，即使打开了另一个小程序的"
+"菜单，也可以直接打开任何小程序的菜单。"
 
 #: settings.py:320
 msgid "Default behavior"
-msgstr ""
+msgstr "默认行为"
 
 #: settings.py:321
 msgid "Emulate Gnome Shell menus"
-msgstr ""
+msgstr "模拟Gnome Shell菜单"
 
 #: settings.py:322
 msgid "Don't \"eat\" clicks"
-msgstr ""
+msgstr "不要“吃掉”点击"
 
 #: settings.py:330 settings.py:332
 msgid "Notifications tweaks"
-msgstr ""
+msgstr "通知调整"
 
 #: settings.py:337
 msgid "Enable notifications tweaks"
-msgstr ""
+msgstr "启用通知调整"
 
 #: settings.py:344
 msgid "Enable notifications open/close animation"
-msgstr ""
+msgstr "启用通知开/关动画"
 
 #: settings.py:351
 msgid "Notifications position"
-msgstr ""
+msgstr "通知位置"
 
 #: settings.py:353
 msgid "Top-right of screen (System default)"
-msgstr ""
+msgstr "屏幕右上方（系统默认）"
 
 #: settings.py:354
 msgid "Bottom-right of screen"
-msgstr ""
+msgstr "屏幕右下方"
 
 #: settings.py:362
 msgid "Distance from panel"
-msgstr ""
+msgstr "面板距离"
 
 #: settings.py:363
 msgid ""
-"For notifications displayed at the top-right of screen: this is the distance between the bottom border of the top panel (if no top panel, from the top of the screen) to the top border of the notification popup.\n"
+"For notifications displayed at the top-right of screen: this is the distance "
+"between the bottom border of the top panel (if no top panel, from the top of "
+"the screen) to the top border of the notification popup.\n"
 "\n"
-"For notifications displayed at the bottom-right of screen: this is the distance between the top border of the bottom panel (if no bottom panel, from the bottom of the screen) to the bottom border of the notification popup."
+"For notifications displayed at the bottom-right of screen: this is the "
+"distance between the top border of the bottom panel (if no bottom panel, "
+"from the bottom of the screen) to the bottom border of the notification "
+"popup."
 msgstr ""
+"对于屏幕右上方显示的通知：这是顶部面板的底部边框（如果没有顶部面板，则从屏幕"
+"顶部）到通知弹窗的顶部边框之间的距离。\n"
+"\n"
+"对于屏幕右下角显示的通知：这是底部面板的顶部边框（如果没有底部面板，则从屏幕"
+"底部）到通知弹窗的底部边框之间的距离。"
 
 #: settings.py:367 settings.py:379
 msgid "pixels"
-msgstr ""
+msgstr "像素"
 
 #: settings.py:374
 msgid "Notification popup right margin"
-msgstr ""
+msgstr "通知弹窗右侧边距"
 
 #: settings.py:375
 msgid ""
@@ -346,78 +386,80 @@ msgid ""
 "currently used theme. This option, set to any value other than 0 (zero), "
 "allows to set a custom right margin, ignoring the defined by the theme."
 msgstr ""
+"默认情况下，通知弹窗的右侧边距是由当前使用的主题所定义的。此选项，设为任何其"
+"他大于0（零）的值，允许设置自定义右侧边距，忽略由主题所定义的右侧边距。"
 
 #: settings.py:386
 msgid "Windows tweaks"
-msgstr ""
+msgstr "窗口调整"
 
 #: settings.py:388
 msgid "Window focus tweaks"
-msgstr ""
+msgstr "窗口焦点调整"
 
 #: settings.py:393
 msgid "The activation of windows demanding attention..."
-msgstr ""
+msgstr "激活需要关注的窗口..."
 
 #: settings.py:395
 msgid "...is handled by the system"
-msgstr ""
+msgstr "...交由系统处理"
 
 #: settings.py:396
 msgid "...is immediate"
-msgstr ""
+msgstr "...即时"
 
 #: settings.py:397
 msgid "...is performed with a keyboard shortcut"
-msgstr ""
+msgstr "...使用键盘快捷键执行"
 
 #: settings.py:404
 msgid "Activate window demanding attention"
-msgstr ""
+msgstr "激活需要关注的窗口"
 
 #: settings.py:409 settings.py:1268
 msgid "Window shadows tweaks"
-msgstr ""
+msgstr "窗口阴影调整"
 
 #: settings.py:410
 msgid "Client side decorated windows aren't affected by this tweak."
-msgstr ""
+msgstr "客户端装饰的窗口不受此调整的影响。"
 
 #: settings.py:415
 msgid "Enable window shadows tweaks"
-msgstr ""
+msgstr "启用窗口阴影调整"
 
 #: settings.py:416
 msgid "This tweak allows us to customize the shadow of all windows."
-msgstr ""
+msgstr "此调整允许我们自定义所有窗口的阴影。"
 
 #: settings.py:423
 msgid "Shadow presets"
-msgstr ""
+msgstr "阴影预设值"
 
 #: settings.py:425
 msgid "Custom shadows"
-msgstr ""
+msgstr "自定义阴影"
 
 #: settings.py:426
 msgid "Default shadows"
-msgstr ""
+msgstr "默认阴影"
 
 #: settings.py:427
 msgid "No shadows"
-msgstr ""
+msgstr "没有阴影"
 
 #: settings.py:428
 msgid "Windows 10 shadows"
-msgstr ""
+msgstr "Windows 10阴影"
 
 #: settings.py:436 settings.py:1139
 msgid "Edit custom shadows values"
-msgstr ""
+msgstr "编辑自定义阴影值"
 
 #: settings.py:440
 msgid "Auto move windows"
-msgstr ""
+msgstr "自动移动窗口"
 
 #: settings.py:441
 msgid ""
@@ -425,273 +467,281 @@ msgid ""
 "can open multiple instances of themselves most likely cannot be configured "
 "to be automatically moved."
 msgstr ""
+"不是所有的应用程序可以分配为移动的。大多数可以打开多个自身实例的应用程序很可"
+"能无法配置为自动移动。"
 
 #: settings.py:446
 msgid "Enable auto move windows tweak"
-msgstr ""
+msgstr "启动自动移动窗口调整"
 
 #: settings.py:447
 msgid ""
 "This tweak enables the ability to set rules to open determined applications "
 "on specific workspaces."
-msgstr ""
+msgstr "此调整启用设置规则的能力以在指定的工作区上打开确定的应用程序。"
 
 #: settings.py:454
 msgid "Define auto move windows rules"
-msgstr ""
+msgstr "定义自动移动窗口规则"
 
 #: settings.py:458
 msgid "Windows decorations removal"
-msgstr ""
+msgstr "窗口装饰移除"
 
 #: settings.py:459
 msgid ""
-"This tweak settings are purposely NOT applied in real time. Click the »Apply"
-" windows decorations settings« button to save settings."
-msgstr ""
+"This tweak settings are purposely NOT applied in real time. Click the »Apply "
+"windows decorations settings« button to save settings."
+msgstr "此调整设置有意不实时应用。点击»应用窗口装饰设置«按钮保存设置。"
 
 #: settings.py:460
 msgid ""
 "Client side decorated windows and WINE applications aren't affected by this "
 "tweak."
-msgstr ""
+msgstr "客户端装饰的窗口和WINE应用程序不受此调整的影响。"
 
 #: settings.py:461
 msgid ""
 "Close all windows that belongs to an application that is going to be added "
 "to the applications list and before applying the settings of this tweak."
 msgstr ""
+"关闭属于要添加到应用程序列表的应用程序的所有窗口，然后应用此调整的设置。"
 
 #: settings.py:463
 msgid ""
 "Read this extension help for more detailed instructions, list of "
 "dependencies and known issues."
-msgstr ""
+msgstr "阅读此扩展的帮助获取更多详细说明、依赖关系列表和已知问题。"
 
 #: settings.py:469
 msgid "Apply windows decorations settings"
-msgstr ""
+msgstr "应用窗口装饰设置"
 
 #: settings.py:475
 msgid "Enable maximized windows decoration removal"
-msgstr ""
+msgstr "启用移除最大化的窗口的装饰"
 
 #: settings.py:482
 msgid "Undecorate half-maximized windows?"
-msgstr ""
+msgstr "取消装饰半最大化的窗口？"
 
 #: settings.py:489
 msgid "Undecorate tiled windows?"
-msgstr ""
+msgstr "取消装饰平铺的窗口？"
 
 #: settings.py:496
 msgid "Applications list is a blacklist?"
-msgstr ""
+msgstr "应用程序列表是黑名单？"
 
 #: settings.py:497
 msgid ""
-"If enabled, all applications will have their window decorations removed, except those listed in the list of applications.\n"
+"If enabled, all applications will have their window decorations removed, "
+"except those listed in the list of applications.\n"
 "\n"
-"If disabled, only the application from the list of applications will have their decorations removed."
+"If disabled, only the application from the list of applications will have "
+"their decorations removed."
 msgstr ""
+"如果启用，所有的应用程序将会移除其窗口装饰，应用程序列表中列出的那些除外。\n"
+"\n"
+"如果禁用，只有应用程序列表中的应用程序才会移除其装饰。"
 
 #: settings.py:504
 msgid "Enable logging"
-msgstr ""
+msgstr "启用日志记录"
 
 #: settings.py:505
 msgid "For debugging purposes only."
-msgstr ""
+msgstr "仅用于调试目的。"
 
 #: settings.py:512
 msgid "Edit applications list"
-msgstr ""
+msgstr "编辑应用程序列表"
 
 #: settings.py:697
 msgid "Warnings related to this specific section"
-msgstr ""
+msgstr "与该具体部分相关的警告"
 
 #: settings.py:1000
 msgid "Select a directory to use"
-msgstr ""
+msgstr "选择要使用的目录"
 
 #: settings.py:1003
 msgid "Select a file"
-msgstr ""
+msgstr "选择文件"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1008 settings.py:1141 settings.py:2386 settings.py:2392
 msgid "_Cancel"
-msgstr ""
+msgstr "取消(_C)"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1010 settings.py:2394
 msgid "_Open"
-msgstr ""
+msgstr "打开(_O)"
 
 #: settings.py:1013
 msgid "Directories"
-msgstr ""
+msgstr "目录"
 
 #: settings.py:1091
 msgid "Focused windows"
-msgstr ""
+msgstr "焦点窗口"
 
 #: settings.py:1092
 msgid "Unfocused windows"
-msgstr ""
+msgstr "没有焦点的窗口"
 
 #: settings.py:1095
 msgid "Normal"
-msgstr ""
+msgstr "正常"
 
 #: settings.py:1096
 msgid "Dialog"
-msgstr ""
+msgstr "对话框"
 
 #: settings.py:1097
 msgid "Modal dialog"
-msgstr ""
+msgstr "模式对话框"
 
 #: settings.py:1098
 msgid "Utility"
-msgstr ""
+msgstr "工具"
 
 #: settings.py:1099
 msgid "Border"
-msgstr ""
+msgstr "边框"
 
 #: settings.py:1100
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
 #: settings.py:1101
 msgid "Popup menu"
-msgstr ""
+msgstr "弹出式菜单"
 
 #: settings.py:1102
 msgid "Dropdown menu"
-msgstr ""
+msgstr "下拉式菜单"
 
 #: settings.py:1103
 msgid "Attached"
-msgstr ""
+msgstr "附加"
 
 #: settings.py:1113
 msgid "Radius"
-msgstr ""
+msgstr "半径"
 
 #: settings.py:1114
 msgid "Top fade"
-msgstr ""
+msgstr "顶部淡出"
 
 #: settings.py:1115
 msgid "X offset"
-msgstr ""
+msgstr "X轴偏移量"
 
 #: settings.py:1116
 msgid "Y offset"
-msgstr ""
+msgstr "Y轴偏移量"
 
 #: settings.py:1117
 msgid "Opacity"
-msgstr ""
+msgstr "不透明度"
 
 #: settings.py:1142 settings.py:2387
 msgid "_Save"
-msgstr ""
+msgstr "保存(_S)"
 
 #: settings.py:1179
 msgid "Window type"
-msgstr ""
+msgstr "窗口类型"
 
 #: settings.py:1190
 msgid "Reset values"
-msgstr ""
+msgstr "重置值"
 
 #: settings.py:1192
 msgid "Reset all values on the current view to their defaults."
-msgstr ""
+msgstr "重置当前视图中的所有值为其默认。"
 
 #: settings.py:1196
 msgid "Apply custom shadow"
-msgstr ""
+msgstr "应用自定义窗口"
 
 #: settings.py:1198
 msgid "Save and apply custom shadow values to see its effects in real time."
-msgstr ""
+msgstr "保存和应用自定义阴影值实时查看其效果。"
 
 #: settings.py:1240 settings.py:1269
 msgid "Remember to set »Shadow presets« option to »Custom shadows«"
-msgstr ""
+msgstr "记得设置»阴影预设值«选项到»自定义阴影«"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->name
 #: settings.py:1267 settings.py:2433
 msgid "Cinnamon Tweaks"
-msgstr ""
+msgstr "Cinnamon调整"
 
 #: settings.py:1280
 msgid "Warning: Trying to reset custom shadows values!!!"
-msgstr ""
+msgstr "警告：正在尝试重置自定义阴影值！！！"
 
 #: settings.py:1283
 msgid ""
 "Are  you sure that you want to reset the shadows values of the current view "
 "to their defaults?"
-msgstr ""
+msgstr "您确定要重置当前视图的阴影值为其默认吗？"
 
 #: settings.py:1381
 msgid "Application Chooser"
-msgstr ""
+msgstr "应用程序选择器"
 
 #. Can be programmatically changed if needed.
 #: settings.py:1402
 msgid "Choose An Application"
-msgstr ""
+msgstr "选择应用程序"
 
 #: settings.py:1535
 msgid "Applications list"
-msgstr ""
+msgstr "应用程序列表"
 
 #: settings.py:1563 settings.py:1782
 msgid "Application"
-msgstr ""
+msgstr "应用程序"
 
 #: settings.py:1585
 msgid "Add Application"
-msgstr ""
+msgstr "添加应用程序"
 
 #: settings.py:1619 settings.py:1850
 msgid "Choose one or more applications (Hold Ctrl key)"
-msgstr ""
+msgstr "选择一个或更多应用程序（按住Ctrl键）"
 
 #: settings.py:1753
 msgid "Auto move windows rules"
-msgstr ""
+msgstr "自动移动窗口规则"
 
 #: settings.py:1796
 msgid "Workspace"
-msgstr ""
+msgstr "工作区"
 
 #: settings.py:1816
 msgid "Add Rule"
-msgstr ""
+msgstr "添加规则"
 
 #: settings.py:2051
 msgid "Shortcut action"
-msgstr ""
+msgstr "快捷键动作"
 
 #: settings.py:2065
 msgid "Shortcut"
-msgstr ""
+msgstr "快捷键"
 
 #: settings.py:2081
 msgid "Click to set a new hotkey."
-msgstr ""
+msgstr "点击设置新的快捷键。"
 
 #: settings.py:2133
 msgid "Contributors/Mentions:"
-msgstr ""
+msgstr "贡献者/提供者："
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
@@ -699,92 +749,92 @@ msgstr ""
 #. MORE.
 #: settings.py:2141
 msgid "translator-credits"
-msgstr ""
+msgstr "giwhub"
 
 #: settings.py:2275
 msgid "Settings marked with (*) needs Cinnamon restart to take effect"
-msgstr ""
+msgstr "标记有(*)的设置需要重新启动Cinnamon才能生效"
 
 #: settings.py:2284
 msgid "Reset settings to defaults"
-msgstr ""
+msgstr "重置设置为默认"
 
 #: settings.py:2286
 msgid "Import settings from a file"
-msgstr ""
+msgstr "从文件导入设置"
 
 #: settings.py:2288
 msgid "Export settings to a file"
-msgstr ""
+msgstr "导出设置到文件"
 
 #: settings.py:2293
 msgid "Remember window size"
-msgstr ""
+msgstr "记住窗口大小"
 
 #: settings.py:2299
 msgid "Remember last category"
-msgstr ""
+msgstr "记住上次的类别"
 
 #: settings.py:2305
 msgid "Restart Cinnamon"
-msgstr ""
+msgstr "重新启动Cinnamon"
 
 #: settings.py:2309
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: settings.py:2311
 msgid "About"
-msgstr ""
+msgstr "关于"
 
 #: settings.py:2318
 msgid "Manage settings"
-msgstr ""
+msgstr "管理设置"
 
 #: settings.py:2363
 msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
-msgstr ""
+msgstr "警告：正在尝试重置所有的Cinnamon调整设置！！！"
 
 #: settings.py:2365
 msgid "Reset all Cinnamon Tweaks settings to default?"
-msgstr ""
+msgstr "重置所有的Cinnamon调整设置为默认吗？"
 
 #: settings.py:2384
 msgid "Select or enter file to export to"
-msgstr ""
+msgstr "选择或输入导出的文件"
 
 #: settings.py:2390
 msgid "Select a file to import"
-msgstr ""
+msgstr "选择要导入的文件"
 
 #: settings.py:2406
 msgid "DCONF files"
-msgstr ""
+msgstr "DCONF文件"
 
 #: settings.py:2473
 msgid "Cinnamon Tweaks extension preferences"
-msgstr ""
+msgstr "Cinnamon调整扩展首选项"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2532
 #, python-format
 msgid ""
 "Please enter your password to install the required settings schema for %s"
-msgstr ""
+msgstr "请输入您的密码安装%s需要的设置模式"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2543
 #, python-format
 msgid ""
-"Could not install the settings schema for %s.  You will have to perform this"
-" step yourself."
-msgstr ""
+"Could not install the settings schema for %s.  You will have to perform this "
+"step yourself."
+msgstr "无法安装%s的设置模式。您必须亲自执行这个步骤。"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2549
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
-msgstr ""
+msgstr "请输入您的密码移除%s需要的设置模式"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2560
@@ -792,58 +842,70 @@ msgstr ""
 msgid ""
 "Could not remove the settings schema for %s.  You will have to perform this "
 "step yourself.  This is not a critical error."
-msgstr ""
+msgstr "无法移除%s的设置模式。您必须亲自执行这个步骤。这不是一个严重错误。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"lestcape: The brain behind the popup menus and desktop tweaks "
-"https://github.com/lestcape."
-msgstr ""
+"lestcape: The brain behind the popup menus and desktop tweaks https://github."
+"com/lestcape."
+msgstr "lestcape：弹出菜单和桌面调整背后的智囊 https://github.com/lestcape。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid "Radek71: Czech localization https://github.com/Radek71."
-msgstr ""
+msgstr "Radek71：捷克语本地化 https://github.com/Radek71。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid "muzena: Croatian localization https://github.com/muzena."
-msgstr ""
+msgstr "muzena：克罗地亚语本地化 https://github.com/muzena。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-"
-"spices.linuxmint.com/extensions/view/43."
+"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/43."
 msgstr ""
+"mikhail-ekzi：Custom Shadows扩展的作者 https://cinnamon-spices.linuxmint.com/"
+"extensions/view/43。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-"
-"spices.linuxmint.com/extensions/view/29."
+"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-spices."
+"linuxmint.com/extensions/view/29."
 msgstr ""
+"Fatih Mete：Cinnamon Maximus扩展的作者 https://cinnamon-spices.linuxmint.com/"
+"extensions/view/29。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"Luis Pabon: Author of Maximus NG extension https://github.com/luispabon"
-"/maximus-gnome-shell."
+"Luis Pabon: Author of Maximus NG extension https://github.com/luispabon/"
+"maximus-gnome-shell."
 msgstr ""
+"Luis Pabon：Maximus NG扩展的作者 https://github.com/luispabon/maximus-gnome-"
+"shell。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"Florian Muellner: Author of Auto Move Windows extension "
-"https://extensions.gnome.org/extension/16/auto-move-windows."
+"Florian Muellner: Author of Auto Move Windows extension https://extensions."
+"gnome.org/extension/16/auto-move-windows."
 msgstr ""
+"Florian Muellner：Auto Move Windows扩展的作者 https://extensions.gnome.org/"
+"extension/16/auto-move-windows。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"Valentin Dimitrov: Author of Steal My Focus extension "
-"https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus."
+"Valentin Dimitrov: Author of Steal My Focus extension https://github.com/v-"
+"dimitrov/gnome-shell-extension-stealmyfocus."
 msgstr ""
+"Valentin Dimitrov：Steal My Focus扩展的作者 https://github.com/v-dimitrov/"
+"gnome-shell-extension-stealmyfocus。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid ""
-"awamper: Author of Window Demands Attention Shortcut extension "
-"https://github.com/awamper/window-demands-attention-shortcut."
+"awamper: Author of Window Demands Attention Shortcut extension https://"
+"github.com/awamper/window-demands-attention-shortcut."
 msgstr ""
+"awamper：Window Demands Attention Shortcut扩展的作者 https://github.com/"
+"awamper/window-demands-attention-shortcut。"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->description
 msgid "Several tweaks for Cinnamon."
-msgstr ""
+msgstr "Cinnamon的一些调整。"

@@ -179,6 +179,10 @@
         <default>false</default>
     </key>
 
+    <key type="b" name="test-notifications">
+        <default>false</default>
+    </key>
+
     <key type="b" name="window-remember-size">
         <default>true</default>
     </key>

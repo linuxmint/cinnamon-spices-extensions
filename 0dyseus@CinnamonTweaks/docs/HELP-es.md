@@ -112,6 +112,42 @@ Este ajuste requiere dos comandos disponibles en el sistema (**xprop** y **xwini
 - **Ventanas invisibles:** A veces, las ventanas de aplicaciones que están configuradas para que sus decoraciones sean removidas se pueden volver invisibles. El ícono de la aplicación todavía puede verse en el panel (barra de tareas) y cuando se le hace clic para enfocar su ventana respectiva, la ventana invisible va a bloquear los clics como si estuviera normalmente visible. Para arreglar esto, la ventana necesita ser des-maximizada (se volverá visible) y luego cerrada. Cuando se reabre la aplicación, su ventana debería comportarse normalmente.
 - **Aplicaciones atascadas sin decoraciones:** A veces, una aplicación queda atascada sin decoraciones incluso después de volver a maximizarla. Reiniciado la aplicación hará que su capacidad para cambiar su estado decorada y sin decorar sea recuperada.
 
+#### Alternativa
+Existe una manera alternativa de remover la barra de título de absolutamente todas las ventanas maximizadas. Editando su tema Metacity (el tema de las decoraciones de ventana). Funciona infinitamente mejor y sin los problemas que este ajuste de esta extensión tiene.
+
+- Simplemente ir a la carpeta `/Ruta/Hacia/Su/Tema/metacity-1` y editar con cualquier editor de textos el archivo llamado **metacity-theme-3.xml**. Si ese archivo no existe en su tema, entonces deberñia existir un archivo llamado **metacity-theme-2.xml** o **metacity-theme-1.xml**. Elegir el archivo que contiene el número mayor.
+- Encontrar el elemento **frame_geometry** con el nombre (name) **max** (o **maximized** o **normal_max** o **normal_maximized**). Su nombre exacto puede variar dependiendo del tema.
+- Básicamente, uno tiene que establecer en ese elemento el atributo **has_title** como falso (false), y luego establecer todas las medidas de todas las propiedades de ese elemento a 0 (cero). Algunos temas puede que requieran agregar otras propiedades y establecerlas a 0 (cero) para remover la barra de título por completo.
+- A continuación hay ejemplos de cómo editar los temas Metacity de los temas **Mint-X** y **Mint-Y**.
+
+##### Para el tema Metacity encontrado en el tema Mint-X
+```xml
+<frame_geometry name="maximized" has_title="false" title_scale="medium" parent="normal" rounded_top_left="false" rounded_top_right="false">
+    <distance name="right_width" value="0" />
+    <distance name="left_titlebar_edge" value="0"/>
+    <distance name="right_titlebar_edge" value="0"/>
+    <distance name="title_vertical_pad" value="0"/>
+    <border name="title_border" left="0" right="0" top="0" bottom="0"/>
+    <border name="button_border" left="0" right="0" top="0" bottom="0"/>
+    <distance name="bottom_height" value="0" />
+</frame_geometry>
+```
+
+##### Para el tema Metacity encontrado en el tema Mint-Y
+```xml
+<frame_geometry name="max" has_title="false" title_scale="medium" parent="normal" rounded_top_left="false" rounded_top_right="false">
+    <distance name="right_width" value="0" />
+    <distance name="left_titlebar_edge" value="0"/>
+    <distance name="right_titlebar_edge" value="0"/>
+    <distance name="title_vertical_pad" value="0"/>
+    <border name="title_border" left="0" right="0" top="0" bottom="0"/>
+    <border name="button_border" left="0" right="0" top="0" bottom="0"/>
+    <distance name="bottom_height" value="0" />
+    <distance name="button_width" value="0"/>
+    <distance name="button_height" value="0"/>
+</frame_geometry>
+```
+
 ***
 
 ## Problemas generales de la extensión
@@ -133,5 +169,5 @@ Siguiendo la [Especificación para Entradas de Escritorio](https://specification
         - Puede enviar una "pull request" con el nuevo archivo de localización.
         - Si no se desea clonar el repositorio, simplemente crear un [Gist](https://gist.github.com/) y enviarme el enlace.
     - Si no se posee o no se quiere una cuenta de GitHub:
-        - Se puede enviar un [Pastebin](http://pastebin.com/) (o servicio similar) a mi [cuenta en el for de Linux Mint](https://forums.linuxmint.com/memberlist.php?mode=viewprofile&u=164858).
+        - Se puede enviar un [Pastebin](http://pastebin.com/) (o servicio similar) a mi [cuenta en el foro de Linux Mint](https://forums.linuxmint.com/memberlist.php?mode=viewprofile&u=164858).
 - Si el texto fuente (en Inglés) y/o mi traducción al Español contiene errores o inconsistencias, no dude en informarlos.

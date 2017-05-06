@@ -468,6 +468,38 @@ If anyone has bugs to report, a feature request or a contribution, do so on <a h
 <p><strong>Applications stuck undecorated:</strong> Some times, an application will get stuck undecorated even after unmaximizing it. Restarting the application will recover its ability to decorate and undecorate itself.</p>
 </li>
 </ul>
+<h4>Alternative</h4>
+<p>There is an alternative way of hiding the title bar of absolutely all maximized windows without exceptions. By editing your Metacity theme (window decorations theme). It works infinitely better and without any of the issues this tweak on this extension has.</p>
+<ul>
+<li>Simply go to <code>/Path/To/Your/Theme/metacity-1</code> folder and edit with any text editor the file called <strong>metacity-theme-3.xml</strong>. If that file doesn't exists in your theme, then it should exist one called <strong>metacity-theme-2.xml</strong> or <strong>metacity-theme-1.xml</strong>. Choose the one with the bigger number.</li>
+<li>Find the <strong>frame_geometry</strong> element named <strong>max</strong> (or <strong>maximized</strong> or <strong>normal_max</strong> or <strong>normal_maximized</strong>). Its exact name may vary depending on the theme.</li>
+<li>Basically, one has to set to that element the attribute <strong>has_title</strong> to false, and then set all sizes of all its properties to 0 (zero). Some themes might require to add more properties and set them to 0 (zero) to completely get rid of the title bar.</li>
+<li>Next you will find examples on how to edit the Metacity themes found on the <strong>Mint-X</strong> and <strong>Mint-Y</strong> themes.</li>
+</ul>
+<h5>For the Metacity theme found on the Mint-X theme</h5>
+<pre><code class="language-xml">&lt;frame_geometry name=&quot;maximized&quot; has_title=&quot;false&quot; title_scale=&quot;medium&quot; parent=&quot;normal&quot; rounded_top_left=&quot;false&quot; rounded_top_right=&quot;false&quot;&gt;
+    &lt;distance name=&quot;right_width&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;left_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;right_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;title_vertical_pad&quot; value=&quot;0&quot;/&gt;
+    &lt;border name=&quot;title_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;border name=&quot;button_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;bottom_height&quot; value=&quot;0&quot; /&gt;
+&lt;/frame_geometry&gt;
+</code></pre>
+<h5>For the Metacity theme found on Mint-Y theme</h5>
+<pre><code class="language-xml">&lt;frame_geometry name=&quot;max&quot; has_title=&quot;false&quot; title_scale=&quot;medium&quot; parent=&quot;normal&quot; rounded_top_left=&quot;false&quot; rounded_top_right=&quot;false&quot;&gt;
+    &lt;distance name=&quot;right_width&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;left_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;right_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;title_vertical_pad&quot; value=&quot;0&quot;/&gt;
+    &lt;border name=&quot;title_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;border name=&quot;button_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;bottom_height&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;button_width&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;button_height&quot; value=&quot;0&quot;/&gt;
+&lt;/frame_geometry&gt;
+</code></pre>
 <hr>
 <h2>General extension issues</h2>
 <h3>Applications not showing up on the applications chooser dialogs</h3>
@@ -601,6 +633,38 @@ Si cualquiera tiene fallos que reportar, peticiones de características y contri
 <li><strong>Ventanas invisibles:</strong> A veces, las ventanas de aplicaciones que están configuradas para que sus decoraciones sean removidas se pueden volver invisibles. El ícono de la aplicación todavía puede verse en el panel (barra de tareas) y cuando se le hace clic para enfocar su ventana respectiva, la ventana invisible va a bloquear los clics como si estuviera normalmente visible. Para arreglar esto, la ventana necesita ser des-maximizada (se volverá visible) y luego cerrada. Cuando se reabre la aplicación, su ventana debería comportarse normalmente.</li>
 <li><strong>Aplicaciones atascadas sin decoraciones:</strong> A veces, una aplicación queda atascada sin decoraciones incluso después de volver a maximizarla. Reiniciado la aplicación hará que su capacidad para cambiar su estado decorada y sin decorar sea recuperada.</li>
 </ul>
+<h4>Alternativa</h4>
+<p>Existe una manera alternativa de remover la barra de título de absolutamente todas las ventanas maximizadas. Editando su tema Metacity (el tema de las decoraciones de ventana). Funciona infinitamente mejor y sin los problemas que este ajuste de esta extensión tiene.</p>
+<ul>
+<li>Simplemente ir a la carpeta <code>/Ruta/Hacia/Su/Tema/metacity-1</code> y editar con cualquier editor de textos el archivo llamado <strong>metacity-theme-3.xml</strong>. Si ese archivo no existe en su tema, entonces deberñia existir un archivo llamado <strong>metacity-theme-2.xml</strong> o <strong>metacity-theme-1.xml</strong>. Elegir el archivo que contiene el número mayor.</li>
+<li>Encontrar el elemento <strong>frame_geometry</strong> con el nombre (name) <strong>max</strong> (o <strong>maximized</strong> o <strong>normal_max</strong> o <strong>normal_maximized</strong>). Su nombre exacto puede variar dependiendo del tema.</li>
+<li>Básicamente, uno tiene que establecer en ese elemento el atributo <strong>has_title</strong> como falso (false), y luego establecer todas las medidas de todas las propiedades de ese elemento a 0 (cero). Algunos temas puede que requieran agregar otras propiedades y establecerlas a 0 (cero) para remover la barra de título por completo.</li>
+<li>A continuación hay ejemplos de cómo editar los temas Metacity de los temas <strong>Mint-X</strong> y <strong>Mint-Y</strong>.</li>
+</ul>
+<h5>Para el tema Metacity encontrado en el tema Mint-X</h5>
+<pre><code class="language-xml">&lt;frame_geometry name=&quot;maximized&quot; has_title=&quot;false&quot; title_scale=&quot;medium&quot; parent=&quot;normal&quot; rounded_top_left=&quot;false&quot; rounded_top_right=&quot;false&quot;&gt;
+    &lt;distance name=&quot;right_width&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;left_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;right_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;title_vertical_pad&quot; value=&quot;0&quot;/&gt;
+    &lt;border name=&quot;title_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;border name=&quot;button_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;bottom_height&quot; value=&quot;0&quot; /&gt;
+&lt;/frame_geometry&gt;
+</code></pre>
+<h5>Para el tema Metacity encontrado en el tema Mint-Y</h5>
+<pre><code class="language-xml">&lt;frame_geometry name=&quot;max&quot; has_title=&quot;false&quot; title_scale=&quot;medium&quot; parent=&quot;normal&quot; rounded_top_left=&quot;false&quot; rounded_top_right=&quot;false&quot;&gt;
+    &lt;distance name=&quot;right_width&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;left_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;right_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;title_vertical_pad&quot; value=&quot;0&quot;/&gt;
+    &lt;border name=&quot;title_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;border name=&quot;button_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;bottom_height&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;button_width&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;button_height&quot; value=&quot;0&quot;/&gt;
+&lt;/frame_geometry&gt;
+</code></pre>
 <hr>
 <h2>Problemas generales de la extensión</h2>
 <h3>Aplicaciones no aparecen en los cuadros de diálogo de selección de aplicaciones</h3>
@@ -621,7 +685,7 @@ Si cualquiera tiene fallos que reportar, peticiones de características y contri
 </li>
 <li>Si no se posee o no se quiere una cuenta de GitHub:
 <ul>
-<li>Se puede enviar un <a href="http://pastebin.com/">Pastebin</a> (o servicio similar) a mi <a href="https://forums.linuxmint.com/memberlist.php?mode=viewprofile&amp;u=164858">cuenta en el for de Linux Mint</a>.</li>
+<li>Se puede enviar un <a href="http://pastebin.com/">Pastebin</a> (o servicio similar) a mi <a href="https://forums.linuxmint.com/memberlist.php?mode=viewprofile&amp;u=164858">cuenta en el foro de Linux Mint</a>.</li>
 </ul>
 </li>
 </ul>

@@ -378,6 +378,13 @@ NOTIFICATIONS_TAB = {
                 "step": 1,
                 "units": _("pixels")
             }
+        }, {
+            "type": "boolean_button",
+            "args": {
+                    "key": "test-notifications",
+                    # TO TRANSLATORS: Could be left blank.
+                    "label": _("Display a test notification")
+            }
         }]
     }]
 }
@@ -506,7 +513,7 @@ WINDOWS_TAB = {
             }
         }, {
             "type": "maximus_applications_chooser",
-            "dep_key": "window-auto-move-tweaks-enabled",
+            "dep_key": "maximus-enable-tweak",
             "args": {
                     "key": "maximus-app-list",
                     "label": _("Edit applications list")
@@ -764,7 +771,8 @@ class Widgets():
     """ Build widgets associated with gsettings values """
 
     def boolean_button(self, key, label, tooltip=""):
-        """ Styled label widget widget """
+        """ Toggle a setting so it can trigger a callback from outside
+            the context of this script. """
         box = BaseGrid(orientation=Gtk.Orientation.HORIZONTAL)
         box.set_spacing(10, 10)
 

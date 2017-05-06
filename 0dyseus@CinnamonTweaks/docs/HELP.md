@@ -99,7 +99,6 @@ This tweak requires two commands available on the system (**xprop** and **xwinin
 - Fedora based distributions: These commands are provided by the **xorg-x11-utils** package.
 
 #### Warnings
-
 - Client side decorated windows and WINE applications aren't affected by this tweak.
 - Close all windows that belongs to an application that is going to be added to the applications list and before applying the settings of this tweak.
 - As a general rule to avoid issues, before enabling and configuring this tweak, close all windows currently opened, enable and configure this tweak and then log out and log back in.
@@ -108,6 +107,42 @@ This tweak requires two commands available on the system (**xprop** and **xwinin
 - **Invisible windows:** Sometimes, windows of applications that are configured to remove their decorations can become invisible. The application's icon can still be seen in the panel (taskbar) and when clicked to focus its respective window, the invisible window will block the clicks as if it were visible. To fix this, the window needs to be unmaximized (it will become visible again) and then closed. When reopened, the window should behave normally.
 
 - **Applications stuck undecorated:** Some times, an application will get stuck undecorated even after unmaximizing it. Restarting the application will recover its ability to decorate and undecorate itself.
+
+#### Alternative
+There is an alternative way of hiding the title bar of absolutely all maximized windows without exceptions. By editing your Metacity theme (window decorations theme). It works infinitely better and without any of the issues this tweak on this extension has.
+
+- Simply go to `/Path/To/Your/Theme/metacity-1` folder and edit with any text editor the file called **metacity-theme-3.xml**. If that file doesn't exists in your theme, then it should exist one called **metacity-theme-2.xml** or **metacity-theme-1.xml**. Choose the one with the bigger number.
+- Find the **frame_geometry** element named **max** (or **maximized** or **normal_max** or **normal_maximized**). Its exact name may vary depending on the theme.
+- Basically, one has to set to that element the attribute **has_title** to false, and then set all sizes of all its properties to 0 (zero). Some themes might require to add more properties and set them to 0 (zero) to completely get rid of the title bar.
+- Next you will find examples on how to edit the Metacity themes found on the **Mint-X** and **Mint-Y** themes.
+
+##### For the Metacity theme found on the Mint-X theme
+```xml
+<frame_geometry name="maximized" has_title="false" title_scale="medium" parent="normal" rounded_top_left="false" rounded_top_right="false">
+    <distance name="right_width" value="0" />
+    <distance name="left_titlebar_edge" value="0"/>
+    <distance name="right_titlebar_edge" value="0"/>
+    <distance name="title_vertical_pad" value="0"/>
+    <border name="title_border" left="0" right="0" top="0" bottom="0"/>
+    <border name="button_border" left="0" right="0" top="0" bottom="0"/>
+    <distance name="bottom_height" value="0" />
+</frame_geometry>
+```
+
+##### For the Metacity theme found on Mint-Y theme
+```xml
+<frame_geometry name="max" has_title="false" title_scale="medium" parent="normal" rounded_top_left="false" rounded_top_right="false">
+    <distance name="right_width" value="0" />
+    <distance name="left_titlebar_edge" value="0"/>
+    <distance name="right_titlebar_edge" value="0"/>
+    <distance name="title_vertical_pad" value="0"/>
+    <border name="title_border" left="0" right="0" top="0" bottom="0"/>
+    <border name="button_border" left="0" right="0" top="0" bottom="0"/>
+    <distance name="bottom_height" value="0" />
+    <distance name="button_width" value="0"/>
+    <distance name="button_height" value="0"/>
+</frame_geometry>
+```
 
 ***
 
