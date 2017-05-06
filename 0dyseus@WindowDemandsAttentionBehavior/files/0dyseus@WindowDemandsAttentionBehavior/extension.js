@@ -4,13 +4,13 @@ const Cinnamon = imports.gi.Cinnamon;
 const Settings = imports.ui.settings;
 const Mainloop = imports.mainloop;
 
-var CONNECTION_IDS = {
+let CONNECTION_IDS = {
 	WDAE: 0
 };
 
 const SHORTCUT_ID = "window-demands-attention-extension";
 
-var changeSettingsTimeout;
+let changeSettingsTimeout;
 
 const WindowDemandsAttentionExtension = new Lang.Class({
 	Name: "WindowDemandsAttentionExtension",
