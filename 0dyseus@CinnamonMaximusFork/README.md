@@ -28,6 +28,7 @@ This extension is a fork of the [Cinnamon Maximus](https://cinnamon-spices.linux
 
 ## Contributors
 
-- [muzena](https://github.com/muzena): Croatian localization.
+- **[muzena](https://github.com/muzena):** Croatian localization.
+- **[giwhub](https://github.com/giwhub):** Chinese localization.
 
 [Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonMaximusFork/CHANGELOG.md)
