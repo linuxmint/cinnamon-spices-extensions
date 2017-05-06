@@ -88,6 +88,7 @@ const P = {
     MAXIMUS_APP_LIST: "maximus-app-list",
     MAXIMUS_ENABLE_LOGGING: "maximus-enable-logging",
     MAXIMUS_APPLY_SETTINGS: "maximus-apply-settings",
+    TEST_NOTIFICATIONS: "test-notifications",
 };
 
 const SHADOW_VALUES = {
@@ -194,6 +195,24 @@ function dealWithRejection(aTweakDescription) {
     Main.warningNotify(_(ExtensionMeta.name), _(aTweakDescription) + "\n" +
         _("Tweak activation aborted!!!") + "\n" +
         _("Your Cinnamon version may not be compatible!!!"));
+}
+
+function testNotifications() {
+    Main.warningNotify(
+        _("This is a test notification"),
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n" +
+        "Suspendisse eleifend, lacus ut tempor vehicula, lorem tortor\n" +
+        "suscipit libero, sit amet congue odio libero vitae lacus.\n" +
+        "Sed est nibh, lacinia ac magna non, blandit aliquet est.\n" +
+        "Mauris volutpat est vel lacinia faucibus. Pellentesque\n" +
+        "pulvinar eros at dolor pretium, eget hendrerit leo rhoncus.\n" +
+        "Sed nisl leo, posuere eget risus vel, euismod egestas metus.\n" +
+        "Praesent interdum, dui sit amet convallis rutrum, velit nunc\n" +
+        "sollicitudin erat, ac viverra leo eros in nulla. Morbi feugiat\n" +
+        "feugiat est. Nam non libero dolor. Duis egestas sodales massa\n" +
+        "sit amet lobortis. Donec sit amet nisi turpis. Morbi aliquet\n" +
+        "aliquam ullamcorper."
+    );
 }
 
 function informAndDisable() {
@@ -399,10 +418,10 @@ const CT_WindowMoverClass = new Lang.Class({
         if (!app) {
             if (!noRecurse) {
                 // window is not tracked yet
-                Mainloop.idle_add(function() {
+                Mainloop.idle_add(Lang.bind(this, function() {
                     this._findAndMove(display, window, true);
                     return false;
-                });
+                }));
             } else {
                 // It's just freaking annoying!!!
                 // global.logWarning(_("Cannot find application for window"));
@@ -524,7 +543,7 @@ ConfirmationDialog.prototype = {
  * @license This function is in the public domain. Do what you want with it, no strings attached.
  */
 function versionCompare(v1, v2, options) {
-    var lexicographical = options && options.lexicographical,
+    let lexicographical = options && options.lexicographical,
         zeroExtend = options && options.zeroExtend,
         v1parts = v1.split('.'),
         v2parts = v2.split('.');
@@ -547,7 +566,7 @@ function versionCompare(v1, v2, options) {
         v2parts = v2parts.map(Number);
     }
 
-    for (var i = 0; i < v1parts.length; ++i) {
+    for (let i = 0; i < v1parts.length; ++i) {
         if (v2parts.length == i) {
             return 1;
         }
@@ -1098,10 +1117,11 @@ const CT_MaximusNGClass = new Lang.Class({
             /* we need to add a Mainloop.idle_add, or else in onWindowAdded the
              * window's maximized state is not correct yet.
              */
-            ws._MaximusWindowAddedId = ws.connect("window-added", Lang.bind(this, function(ws, win) {
+            ws._MaximusWindowAddedId = ws.connect("window-added", Lang.bind(this, function(ws, win) { // jshint ignore:line
                 let self = this;
                 Mainloop.idle_add(function() {
                     self.onWindowAdded(ws, win);
+                    self.changeWorkspaceID = 0;
                     return false;
                 });
             }));
@@ -1172,6 +1192,9 @@ const CT_MaximusNGClass = new Lang.Class({
             }
 
             self.onChangeNWorkspaces();
+            // Attempt to remove the following warning:
+            // Invalid or null source id used when attempting to run Mainloop.source_remove()
+            this.onetime = 0;
             return false;
         });
     },
@@ -1269,5 +1292,6 @@ exported SHADOW_VALUES,
          CT_NemoDesktopAreaClass,
          CT_MyCheckWorkspaces,
          CT_WindowMoverClass,
-         CT_MaximusNGClass
+         CT_MaximusNGClass,
+         testNotifications
 */

@@ -1,5 +1,14 @@
 ## Change Log
 
+##### 1.10
+- Added a button to display a test notification to the **Notifications Tweaks** section of the settings window. This will allow us to test the notifications when we are tweaking the notification's position.
+- Added to the help file instructions about an alternate method to remove maximized window decorations.
+- Fixed spelling error on Spanish localization.
+- Fixed error on *Tooltips show delay* function for Cinnamon 3.2.x caused by a wrong callback call.
+- Fixed an error on the *Auto move windows* tweak caused by lack of context.
+- Fixed the keybinding registration for the *Window focus tweaks* caused by the move from Cinnamon's native settings system to gsettings.
+- Fixed the wrong dependency key assigned to the wrong element of the settings window.
+
 ##### 1.09
 - Added some missing translatable strings.
 - Updated localizations.
