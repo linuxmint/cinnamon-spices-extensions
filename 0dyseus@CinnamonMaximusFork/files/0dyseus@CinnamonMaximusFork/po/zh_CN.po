@@ -1,0 +1,105 @@
+# This is a template file for translating the Cinnamon extension called Maximus.
+# Copyright (C) 2016
+# This file is distributed under the same license as the Maximus extension.
+# Odyseus <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.3.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-26 20:52+0800\n"
+"PO-Revision-Date: 2017-04-26 21:06+0800\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "从最大化的窗口移除窗口装饰。"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr "Cinnamon Maximus (Fork by Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr "平铺时去除装饰"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+msgstr "Cinnamon Maximus (Fork by Odyseus)设置"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelist->description
+msgid "Use Whitelist"
+msgstr "使用白名单"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
+msgid ""
+"If enabled, only the applications specified bellow will have their titlebar "
+"removed when maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
+msgstr ""
+"如果启用，最大化时仅在下方指定的的应用程序会移除其标题栏。\n"
+"如果禁用，所有最大化的窗口都会移除其标题栏。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr "选中或取消选中重启Cinnamon"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_restart_cinnamon->tooltip
+msgid ""
+"Check or uncheck this options to restart Cinnamon.\n"
+"Note: I couldn't make a proper button to work in this settings window, so I "
+"had to improvise and I had to use a checkbox. It doesn't really matter if "
+"it's checked or unchecked."
+msgstr ""
+"选中或取消选中此项重启Cinnamon。\n"
+"注意：我无法在这个设置窗口制作一个合适的按钮，所以我不得不临时拼凑并使用一个"
+"复选框。这其实并不重要是否已经选中。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "启用日志记录"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_logging_enabled->tooltip
+msgid ""
+"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
+"information that could be used to debug the extension."
+msgstr ""
+"如果启用，将会记录到Cinnamon日志(~/.cinnamon/glass.log)信息，可以用于调试扩"
+"展。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_undecorate_all->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr "取消装饰所有窗口（实验性，请关闭然后重新打开所有窗口）"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
+msgstr "应用程序列表："
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelisted_apps->tooltip
+msgid ""
+"\"Use Whitelist\" option must be checked.\n"
+"Use a \",\" (comma) to seperate applications."
+msgstr ""
+"必须选中“使用白名单”选项。\n"
+"使用\",\"（逗号）分隔应用程序。"
