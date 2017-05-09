@@ -1,0 +1,110 @@
+# This is a template file for translating the Cinnamon extension called Maximus.
+# Copyright (C) 2016
+# This file is distributed under the same license as the Maximus extension.
+# Odyseus <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.3.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-09 19:36+0200\n"
+"PO-Revision-Date: 2017-05-09 20:01+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "Fjern maksimerede vinduers titellinjer"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr "Cinnamon Maximus (forgrening af Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr "Fjern titellinjer når udlagt side om side"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
+msgstr "Fejlfinding"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+msgstr "Indstillinger for Cinnamon Maximus (forgrening af Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelist->description
+msgid "Use Whitelist"
+msgstr "Anvend godkendt-liste"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
+msgid ""
+"If enabled, only the applications specified bellow will have their titlebar "
+"removed when maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
+msgstr ""
+"Når aktiveret vil kun programmer angivet nedenfor få deres titellinje "
+"fjernet i maksimeret tilstand.\n"
+"Hvis deaktiveret vil alle maksimerede vinduer få deres titellinje fjernet."
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr "Markér eller fjern markering for at genstarte Cinnamon"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_restart_cinnamon->tooltip
+msgid ""
+"Check or uncheck this options to restart Cinnamon.\n"
+"Note: I couldn't make a proper button to work in this settings window, so I "
+"had to improvise and I had to use a checkbox. It doesn't really matter if "
+"it's checked or unchecked."
+msgstr ""
+"Markér eller fjern markering for denne indstilling for at genstarte "
+"Cinnamon.\n"
+"Bemærk: Jeg kunne ikke få en rigtig knap til at virke i indstillingsvinduet, "
+"så jeg måtte improvisere og bruge et afkrydsningsfelt. Det betyder ikke "
+"noget, om den er markeret eller ej."
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "Aktivér logning"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_logging_enabled->tooltip
+msgid ""
+"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
+"information that could be used to debug the extension."
+msgstr ""
+"Når aktiveret vil information, som kan bruges til at fejlsøge udvidelsen, "
+"bilve logget i Cinnamons log (~/.cinnamon/glass.log)."
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_undecorate_all->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Fjern titellinjen i alle vinduer (eksperimentel, luk og åbn alle vinduer "
+"igen)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
+msgstr "Oversigt over programmer: "
+
+#. 0dyseus@CinnamonMaximusFork->settings-
+#. schema.json->pref_whitelisted_apps->tooltip
+msgid ""
+"\"Use Whitelist\" option must be checked.\n"
+"Use a \",\" (comma) to seperate applications."
+msgstr ""
+"Indstillingen \"Anvend godkendt-liste\" skal være markeret.\n"
+"Brug et \",\" (komma) til at adskille vinduer."
