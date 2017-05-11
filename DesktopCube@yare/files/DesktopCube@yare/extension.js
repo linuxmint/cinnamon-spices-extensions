@@ -25,7 +25,7 @@ Cube.prototype = {
         this.is_animating = false;
         this.destroy_requested = false;
         this.monitor = Main.layoutManager.primaryMonitor;
-        
+
         let [binding_type,,,direction] = binding.get_name().split('-');
         let direction = Meta.MotionDirection[direction.toUpperCase()];
         this.direction = direction;
@@ -34,7 +34,7 @@ Cube.prototype = {
         if (direction != Meta.MotionDirection.RIGHT &&
             direction != Meta.MotionDirection.LEFT)
             return;
-        
+
         let active_workspace = global.screen.get_active_workspace();
         let new_workspace = active_workspace.get_neighbor(direction);
         if (active_workspace.index() == new_workspace.index())
@@ -54,12 +54,12 @@ Cube.prototype = {
             Lang.bind(this, this._keyReleaseEvent));
         this.actor.connect('key-press-event',
             Lang.bind(this, this._keyPressEvent));
-        
+
         this.initBackground();
         this.dimBackground();
 
         Main.pushModal(this.actor);
-        
+
         let mask = binding.get_mask();
         this._modifierMask =
             imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
@@ -220,7 +220,7 @@ Cube.prototype = {
                     panel.visible)) {
                     let chromeClone = new Clutter.Clone(
                         {source: panel.actor ? panel.actor : panel,
-                        x : panel.actor ? panel.actor.x : panel.x, 
+                        x : panel.actor ? panel.actor.x : panel.x,
                         y: panel.actor ? (panel.bottomPosition ?
                         Main.layoutManager.bottomMonitor.y +
                         Main.layoutManager.bottomMonitor.height -
@@ -346,7 +346,7 @@ Cube.prototype = {
         this.sortWindowClones(this.to);
         this.prepare(from_workspace, to_workspace, direction, needScale);
     },
-    
+
     prepare: function(from, to, direction, needScale) {
         from.show();
         to.show();
@@ -602,7 +602,7 @@ Cube.prototype = {
 
         return true;
     },
-    
+
     initBackground: function() {
         this._backgroundGroup = new St.Group({});
         Main.uiGroup.add_actor(this._backgroundGroup);
@@ -612,7 +612,7 @@ Cube.prototype = {
         this._backgroundGroup.raise_top();
         this._backgroundGroup.lower(this.actor);
     },
-    
+
     dimBackground: function() {
         this._backgroundGroup.show();
         let background = this._backgroundGroup.get_children()[0];
@@ -622,7 +622,7 @@ Cube.prototype = {
             transition: 'easeOutQuad'
         });
     },
-    
+
     /*undimBackground: function() {
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
@@ -631,7 +631,7 @@ Cube.prototype = {
             transition: 'easeOutQuad',
         });
     },*/
-    
+
     onDestroy: function() {
         this.unscale(this.from, this.to, this.direction);
     },
@@ -644,7 +644,7 @@ Cube.prototype = {
         global.window_group.show();
         this.actor.destroy();
     }
-   
+
 };
 
 function onSwitch(display, screen, window, binding) {
