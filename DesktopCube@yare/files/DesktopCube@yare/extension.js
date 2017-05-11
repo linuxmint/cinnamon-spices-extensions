@@ -300,8 +300,6 @@ Cube.prototype = {
     startAnimate: function(direction, window) {
         let active_workspace = global.screen.get_active_workspace();
         let new_workspace = active_workspace.get_neighbor(direction);
-        let active_index = active_workspace.index();
-        let new_index = new_workspace.index();
 
         let from_workspace;
         let to_workspace;
@@ -560,7 +558,7 @@ Cube.prototype = {
         case Meta.KeyBindingAction.MOVE_TO_WORKSPACE_LEFT:
              this.direction = Meta.MotionDirection.LEFT;
              workspace = global.screen.get_active_workspace().index();
-             windows = this.getWorkspaceWindows(workspace)
+             windows = this.getWorkspaceWindows(workspace);
              window = windows[windows.length - 1];
              this.moveWindow(window, this.direction);
                  this.startAnimate(this.direction, window);
@@ -671,7 +669,7 @@ CubeSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "unrotateEffect", "unrotateEffect", function(){});
     }
-}
+};
 
 function init(metadata) {
     settings = new CubeSettings(metadata.uuid);
