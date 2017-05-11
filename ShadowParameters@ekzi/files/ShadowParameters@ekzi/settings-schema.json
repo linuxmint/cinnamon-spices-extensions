@@ -1,0 +1,45 @@
+{
+	"h1": {
+		"type": "header",
+		"description": "Custom Shadows"
+	},
+
+	"preset": {
+		"type": "combobox",
+		"default": "default",
+		"description": "Shadow presets",
+		"options": {
+			"Default": "default",
+			"No Shadows": "no_shadows",
+			"Windows 10": "windows_10"
+		}
+	},
+
+	"h2": {
+		"type": "header",
+		"description": "You could manually edit prefs.json to add your custom shadows presets."
+
+	},
+
+	"apply_changes_button": {
+		"type": "button",
+		"description": "Apply Changes",
+		"callback": "apply_changes"
+	},
+
+	"restart_cinnamon_button": {
+		"type": "button",
+		"description": "Restart Cinnamon",
+		"callback": "restart_cinnamon"
+	},
+
+	"first_launch": {
+		"type": "generic",
+		"default": true
+	},
+
+    "current_active": {
+		"type": "generic",
+		"default": "default"
+	}
+}
