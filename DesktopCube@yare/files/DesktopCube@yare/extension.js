@@ -27,7 +27,7 @@ Cube.prototype = {
         this.monitor = Main.layoutManager.primaryMonitor;
 
         let [binding_type,,,direction] = binding.get_name().split('-');
-        let direction = Meta.MotionDirection[direction.toUpperCase()];
+        direction = Meta.MotionDirection[direction.toUpperCase()];
         this.direction = direction;
         this.last_direction = direction;
 
@@ -590,7 +590,7 @@ Cube.prototype = {
     },
 
     _keyReleaseEvent: function(actor, event) {
-        let [_, _, mods] = global.get_pointer();
+        let [x, y, mods] = global.get_pointer();
         let state = mods & this._modifierMask;
 
         if (state == 0) {
@@ -680,7 +680,7 @@ function init(metadata) {
 function enable() {
     for (let i in bindings) {
         Meta.keybindings_set_custom_handler(bindings[i],
-            Lang.bind(this, onSwitch));
+            onSwitch);
     }
 }
 
