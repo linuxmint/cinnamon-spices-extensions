@@ -269,7 +269,6 @@ Flipper.prototype = {
     cloneMetaWindow: function(metaWindow) {
         let texture =
             metaWindow.get_compositor_private().get_texture();
-        let actor = metaWindow.get_compositor_private();
 
         let rect = metaWindow.get_input_rect();
         let windowClone = new Clutter.Clone(
@@ -336,8 +335,6 @@ Flipper.prototype = {
       // Main.wm.showWorkspaceOSD();
       let active_workspace = global.screen.get_active_workspace();
       let new_workspace = active_workspace.get_neighbor(direction);
-      let active_index = active_workspace.index();
-      let new_index = new_workspace.index();
 
       let from_workspace;
       let to_workspace;
@@ -394,8 +391,8 @@ Flipper.prototype = {
     },
 
     getEasing: function(animationStart) {
-      var effect = settings.rotateEffect;
-      var dir;
+      let effect = settings.rotateEffect;
+      let dir;
 
       // CLone code much? Abstract this shit.
       if( effect == "EndBounce" ) {
@@ -579,16 +576,13 @@ Flipper.prototype = {
     // STACK
     ///////////////////////////////////////////
     stack_end: function(from, to, direction) {
-      let angle_from;
-      let angle_to;
-      let x_pos;
       let tween = {
         scale_x: 1.0,
         scale_y: 1.0,
         transition: this.getEasing(false),
         onComplete: this.unsetIsAnimating,
         onCompleteScope: this
-      }
+      };
 
       from.hide();
       to.show();
@@ -804,7 +798,6 @@ Flipper.prototype = {
     // SLIDE
     ///////////////////////////////////////////
     slide_end: function(from, to, direction) {
-      let toTransition;
       let fromTransition;
       to.raise_top();
       this.new_workspace.activate(global.get_current_time());
@@ -849,19 +842,19 @@ Flipper.prototype = {
 
       if (direction == Meta.MotionDirection.LEFT) {
         from.set_position(0, this.monitor.height/2);
-        from.rotation_angle_y = 0
+        from.rotation_angle_y = 0;
 
         to.set_position(-this.monitor.width, this.monitor.height/2);
-        to.rotation_angle_y = 0
+        to.rotation_angle_y = 0;
 
         toTransition = -this.monitor.width/2;
         fromTransition = this.monitor.width/2;
       } else {
         from.set_position(0, this.monitor.height/2);
-        from.rotation_angle_y = 0
+        from.rotation_angle_y = 0;
 
         to.set_position(this.monitor.width, this.monitor.height/2);
-        to.rotation_angle_y = 0
+        to.rotation_angle_y = 0;
 
         toTransition = this.monitor.width/2;
         fromTransition = -this.monitor.width/2;
@@ -896,8 +889,6 @@ Flipper.prototype = {
     // DECK
     ///////////////////////////////////////////
     deck_end: function(from, to, direction) {
-      let toTransition;
-      let fromTransition;
       this.new_workspace.activate(global.get_current_time());
       to.show();
 
@@ -966,7 +957,7 @@ Flipper.prototype = {
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
           time: this.getTime()
-        })
+        });
 
         Tweener.addTween(to, {
             x: toTransition,
@@ -985,7 +976,7 @@ Flipper.prototype = {
         from.rotation_angle_y = 0;
 
         to.set_position(0, this.monitor.height/2);
-        to.rotation_angle_y = 0
+        to.rotation_angle_y = 0;
 
         fromTransition = -this.monitor.width/2;
         to.set_opacity(0);
@@ -1021,8 +1012,6 @@ Flipper.prototype = {
     // CUBE
     ///////////////////////////////////////////
     cube_end: function(from, to, direction) {
-      let toTransition;
-      let fromTransition;
       this.new_workspace.activate(global.get_current_time());
       to.raise_top();
 
@@ -1070,7 +1059,6 @@ Flipper.prototype = {
 
     cube_start: function(from, to, direction) {
       let toTransition;
-      let fromTransition;
 
       from.show();
       to.show();
@@ -1450,7 +1438,7 @@ FlipperSettings.prototype = {
         // this.settings.bindProperty(Settings.BindingDirection.IN,
         //     "easeDirection", "easeDirection", function(){});
     }
-}
+};
 
 function init(metadata) {
     settings = new FlipperSettings(metadata.uuid);
