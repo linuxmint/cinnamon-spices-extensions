@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-28 19:22-0300\n"
+"PO-Revision-Date: 2017-05-28 19:43-0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt_BR\n"
+
+#. workspace-grid@daemonl->metadata.json->description
+msgid "Workspace grid, based on hernejj's one"
+msgstr "Grade de espaço de trabalho, com base no código de hernejj"
+
+#. workspace-grid@daemonl->metadata.json->name
+msgid "Workspace grid"
+msgstr "Grade de espaço de trabalho"
+
+#. workspace-grid@daemonl->settings-schema.json->numRows->description
+msgid "Number of rows:"
+msgstr "Número de linhas:"
+
+#. workspace-grid@daemonl->settings-schema.json->numRows->units
+#. workspace-grid@daemonl->settings-schema.json->numCols->units
+msgid "desktops"
+msgstr "desktops"
+
+#. workspace-grid@daemonl->settings-schema.json->numCols->description
+msgid "Number of columns:"
+msgstr "Número de colunas:"
