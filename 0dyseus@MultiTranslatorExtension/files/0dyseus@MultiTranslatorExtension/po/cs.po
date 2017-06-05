@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.01\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-18 18:33+0200\n"
+"POT-Creation-Date: 2017-05-13 20:35-0300\n"
 "PO-Revision-Date: 2017-04-18 18:40+0200\n"
 "Last-Translator: Radek Otáhal <radek.otahal@email.cz>\n"
 "Language-Team: \n"
@@ -18,556 +18,567 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: __init__.js:203 settings.py:65
+#: __init__.js:211 settings.py:67
 msgid "Detect language"
 msgstr "Rozpoznat  jazyk"
 
-#: __init__.js:204 settings.py:66
+#: __init__.js:212 settings.py:68
 msgid "Afrikaans"
 msgstr ""
 
-#: __init__.js:205 settings.py:67
+#: __init__.js:213 settings.py:69
 msgid "Amharic"
 msgstr ""
 
-#: __init__.js:206 settings.py:68
+#: __init__.js:214 settings.py:70
 msgid "Arabic"
 msgstr ""
 
-#: __init__.js:207 settings.py:69
+#: __init__.js:215 settings.py:71
 msgid "Azerbaijani"
 msgstr ""
 
-#: __init__.js:208 settings.py:70
+#: __init__.js:216 settings.py:72
 msgid "Belarusian"
 msgstr ""
 
-#: __init__.js:209 settings.py:71
+#: __init__.js:217 settings.py:73
 msgid "Bulgarian"
 msgstr ""
 
-#: __init__.js:210 settings.py:72
+#: __init__.js:218 settings.py:74
 msgid "Bengali"
 msgstr ""
 
-#: __init__.js:211 settings.py:73
+#: __init__.js:219 settings.py:75
 msgid "Bosnian (Y)"
 msgstr ""
 
-#: __init__.js:212 settings.py:74
+#: __init__.js:220 settings.py:76
 msgid "Catalan"
 msgstr ""
 
-#: __init__.js:213 settings.py:75
+#: __init__.js:221 settings.py:77
 msgid "Chichewa"
 msgstr ""
 
-#: __init__.js:214 settings.py:76
+#: __init__.js:222 settings.py:78
 msgid "Corsican"
 msgstr ""
 
-#: __init__.js:215 settings.py:77
+#: __init__.js:223 settings.py:79
 msgid "Czech"
 msgstr ""
 
-#: __init__.js:216 settings.py:78
+#: __init__.js:224 settings.py:80
 msgid "Welsh"
 msgstr ""
 
-#: __init__.js:217 settings.py:79
+#: __init__.js:225 settings.py:81
 msgid "Danish"
 msgstr ""
 
-#: __init__.js:218 settings.py:80
+#: __init__.js:226 settings.py:82
 msgid "German"
 msgstr ""
 
-#: __init__.js:219 settings.py:81
+#: __init__.js:227 settings.py:83
 msgid "Greek"
 msgstr ""
 
-#: __init__.js:220 settings.py:82
+#: __init__.js:228 settings.py:84
 msgid "English"
 msgstr ""
 
-#: __init__.js:221 settings.py:83
+#: __init__.js:229 settings.py:85
 msgid "Esperanto"
 msgstr ""
 
-#: __init__.js:222 settings.py:84
+#: __init__.js:230 settings.py:86
 msgid "Spanish"
 msgstr ""
 
-#: __init__.js:223 settings.py:85
+#: __init__.js:231 settings.py:87
 msgid "Estonian"
 msgstr ""
 
-#: __init__.js:224 settings.py:86
+#: __init__.js:232 settings.py:88
 msgid "Basque"
 msgstr ""
 
-#: __init__.js:225 settings.py:87
+#: __init__.js:233 settings.py:89
 msgid "Persian"
 msgstr ""
 
-#: __init__.js:226 settings.py:88
+#: __init__.js:234 settings.py:90
 msgid "Finnish"
 msgstr ""
 
-#: __init__.js:227 settings.py:89
+#: __init__.js:235 settings.py:91
 msgid "French"
 msgstr ""
 
-#: __init__.js:228 settings.py:90
+#: __init__.js:236 settings.py:92
 msgid "Frisian"
 msgstr ""
 
-#: __init__.js:229 settings.py:91
+#: __init__.js:237 settings.py:93
 msgid "Irish"
 msgstr ""
 
-#: __init__.js:230 settings.py:92
+#: __init__.js:238 settings.py:94
 msgid "Scots Gaelic"
 msgstr ""
 
-#: __init__.js:231 settings.py:93
+#: __init__.js:239 settings.py:95
 msgid "Galician"
 msgstr ""
 
-#: __init__.js:232 settings.py:94
+#: __init__.js:240 settings.py:96
 msgid "Gujarati"
 msgstr ""
 
-#: __init__.js:233 settings.py:95
+#: __init__.js:241 settings.py:97
 msgid "Hausa"
 msgstr ""
 
-#: __init__.js:234 settings.py:96
+#: __init__.js:242 settings.py:98
 msgid "Hawaiian"
 msgstr ""
 
-#: __init__.js:235 settings.py:97
+#: __init__.js:243 settings.py:99
 msgid "Hebrew (Y)"
 msgstr ""
 
-#: __init__.js:236 settings.py:98
+#: __init__.js:244 settings.py:100
 msgid "Hindi"
 msgstr ""
 
-#: __init__.js:237 settings.py:99
+#: __init__.js:245 settings.py:101
 msgid "Hmong"
 msgstr ""
 
-#: __init__.js:238 settings.py:100
+#: __init__.js:246 settings.py:102
 msgid "Croatian"
 msgstr ""
 
-#: __init__.js:239 settings.py:101
+#: __init__.js:247 settings.py:103
 msgid "Haitian Creole"
 msgstr ""
 
-#: __init__.js:240 settings.py:102
+#: __init__.js:248 settings.py:104
 msgid "Hungarian"
 msgstr ""
 
-#: __init__.js:241 settings.py:103
+#: __init__.js:249 settings.py:105
 msgid "Armenian"
 msgstr ""
 
-#: __init__.js:242 settings.py:104
+#: __init__.js:250 settings.py:106
 msgid "Indonesian"
 msgstr ""
 
-#: __init__.js:243 settings.py:105
+#: __init__.js:251 settings.py:107
 msgid "Igbo"
 msgstr ""
 
-#: __init__.js:244 settings.py:106
+#: __init__.js:252 settings.py:108
 msgid "Icelandic"
 msgstr ""
 
-#: __init__.js:245 settings.py:107
+#: __init__.js:253 settings.py:109
 msgid "Italian"
 msgstr ""
 
-#: __init__.js:246 settings.py:108
+#: __init__.js:254 settings.py:110
 msgid "Hebrew"
 msgstr ""
 
-#: __init__.js:247 settings.py:109
+#: __init__.js:255 settings.py:111
 msgid "Japanese"
 msgstr ""
 
-#: __init__.js:248 settings.py:110
+#: __init__.js:256 settings.py:112
 msgid "Javanese"
 msgstr ""
 
-#: __init__.js:249 settings.py:111
+#: __init__.js:257 settings.py:113
 msgid "Georgian"
 msgstr ""
 
-#: __init__.js:250 settings.py:112
+#: __init__.js:258 settings.py:114
 msgid "Kazakh"
 msgstr ""
 
-#: __init__.js:251 settings.py:113
+#: __init__.js:259 settings.py:115
 msgid "Khmer"
 msgstr ""
 
-#: __init__.js:252 settings.py:114
+#: __init__.js:260 settings.py:116
 msgid "Kannada"
 msgstr ""
 
-#: __init__.js:253 settings.py:115
+#: __init__.js:261 settings.py:117
 msgid "Korean"
 msgstr ""
 
-#: __init__.js:254 settings.py:116
+#: __init__.js:262 settings.py:118
 msgid "Kurdish (Kurmanji)"
 msgstr ""
 
-#: __init__.js:255 settings.py:117
+#: __init__.js:263 settings.py:119
 msgid "Kyrgyz"
 msgstr ""
 
-#: __init__.js:256 settings.py:118
+#: __init__.js:264 settings.py:120
 msgid "Latin"
 msgstr ""
 
-#: __init__.js:257 settings.py:119
+#: __init__.js:265 settings.py:121
 msgid "Luxembourgish"
 msgstr ""
 
-#: __init__.js:258 settings.py:120
+#: __init__.js:266 settings.py:122
 msgid "Lao"
 msgstr ""
 
-#: __init__.js:259 settings.py:121
+#: __init__.js:267 settings.py:123
 msgid "Lithuanian"
 msgstr ""
 
-#: __init__.js:260 settings.py:122
+#: __init__.js:268 settings.py:124
 msgid "Latvian"
 msgstr ""
 
-#: __init__.js:261 settings.py:123
+#: __init__.js:269 settings.py:125
 msgid "Malagasy"
 msgstr ""
 
-#: __init__.js:262 settings.py:124
+#: __init__.js:270 settings.py:126
 msgid "Maori"
 msgstr ""
 
-#: __init__.js:263 settings.py:125
+#: __init__.js:271 settings.py:127
 msgid "Macedonian"
 msgstr ""
 
-#: __init__.js:264 settings.py:126
+#: __init__.js:272 settings.py:128
 msgid "Malayalam"
 msgstr ""
 
-#: __init__.js:265 settings.py:127
+#: __init__.js:273 settings.py:129
 msgid "Mongolian"
 msgstr ""
 
-#: __init__.js:266 settings.py:128
+#: __init__.js:274 settings.py:130
 msgid "Marathi"
 msgstr ""
 
-#: __init__.js:267 settings.py:129
+#: __init__.js:275 settings.py:131
 msgid "Malay"
 msgstr ""
 
-#: __init__.js:268 settings.py:130
+#: __init__.js:276 settings.py:132
 msgid "Maltese"
 msgstr ""
 
-#: __init__.js:269 settings.py:131
+#: __init__.js:277 settings.py:133
 msgid "Myanmar (Burmese)"
 msgstr ""
 
-#: __init__.js:270 settings.py:132
+#: __init__.js:278 settings.py:134
 msgid "Nepali"
 msgstr ""
 
-#: __init__.js:271 settings.py:133
+#: __init__.js:279 settings.py:135
 msgid "Dutch"
 msgstr ""
 
-#: __init__.js:272 settings.py:134
+#: __init__.js:280 settings.py:136
 msgid "Norwegian"
 msgstr ""
 
-#: __init__.js:273 settings.py:135
+#: __init__.js:281 settings.py:137
 msgid "Cebuano"
 msgstr ""
 
-#: __init__.js:274 settings.py:136
+#: __init__.js:282 settings.py:138
 msgid "Punjabi"
 msgstr ""
 
-#: __init__.js:275 settings.py:137
+#: __init__.js:283 settings.py:139
 msgid "Polish"
 msgstr ""
 
-#: __init__.js:276 settings.py:138
+#: __init__.js:284 settings.py:140
 msgid "Pashto"
 msgstr ""
 
-#: __init__.js:277 settings.py:139
+#: __init__.js:285 settings.py:141
 msgid "Portuguese"
 msgstr ""
 
-#: __init__.js:278 settings.py:140
+#: __init__.js:286 settings.py:142
 msgid "Romanian"
 msgstr ""
 
-#: __init__.js:279 settings.py:141
+#: __init__.js:287 settings.py:143
 msgid "Russian"
 msgstr ""
 
-#: __init__.js:280 settings.py:142
+#: __init__.js:288 settings.py:144
 msgid "Sindhi"
 msgstr ""
 
-#: __init__.js:281 settings.py:143
+#: __init__.js:289 settings.py:145
 msgid "Sinhala"
 msgstr ""
 
-#: __init__.js:282 settings.py:144
+#: __init__.js:290 settings.py:146
 msgid "Slovak"
 msgstr ""
 
-#: __init__.js:283 settings.py:145
+#: __init__.js:291 settings.py:147
 msgid "Slovenian"
 msgstr ""
 
-#: __init__.js:284 settings.py:146
+#: __init__.js:292 settings.py:148
 msgid "Samoan"
 msgstr ""
 
-#: __init__.js:285 settings.py:147
+#: __init__.js:293 settings.py:149
 msgid "Shona"
 msgstr ""
 
-#: __init__.js:286 settings.py:148
+#: __init__.js:294 settings.py:150
 msgid "Somali"
 msgstr ""
 
-#: __init__.js:287 settings.py:149
+#: __init__.js:295 settings.py:151
 msgid "Albanian"
 msgstr ""
 
-#: __init__.js:288 settings.py:150
+#: __init__.js:296 settings.py:152
 msgid "Serbian"
 msgstr ""
 
-#: __init__.js:289 settings.py:151
+#: __init__.js:297 settings.py:153
 msgid "Sesotho"
 msgstr ""
 
-#: __init__.js:290 settings.py:152
+#: __init__.js:298 settings.py:154
 msgid "Sundanese"
 msgstr ""
 
-#: __init__.js:291 settings.py:153
+#: __init__.js:299 settings.py:155
 msgid "Swedish"
 msgstr ""
 
-#: __init__.js:292 settings.py:154
+#: __init__.js:300 settings.py:156
 msgid "Swahili"
 msgstr ""
 
-#: __init__.js:293 settings.py:155
+#: __init__.js:301 settings.py:157
 msgid "Tamil"
 msgstr ""
 
-#: __init__.js:294 settings.py:156
+#: __init__.js:302 settings.py:158
 msgid "Telugu"
 msgstr ""
 
-#: __init__.js:295 settings.py:157
+#: __init__.js:303 settings.py:159
 msgid "Tajik"
 msgstr ""
 
-#: __init__.js:296 settings.py:158
+#: __init__.js:304 settings.py:160
 msgid "Thai"
 msgstr ""
 
-#: __init__.js:297 settings.py:159
+#: __init__.js:305 settings.py:161
 msgid "Filipino"
 msgstr ""
 
-#: __init__.js:298 settings.py:160
+#: __init__.js:306 settings.py:162
 msgid "Turkish"
 msgstr ""
 
-#: __init__.js:299 settings.py:161
+#: __init__.js:307 settings.py:163
 msgid "Ukrainian"
 msgstr ""
 
-#: __init__.js:300 settings.py:162
+#: __init__.js:308 settings.py:164
 msgid "Urdu"
 msgstr ""
 
-#: __init__.js:301 settings.py:163
+#: __init__.js:309 settings.py:165
 msgid "Uzbek"
 msgstr ""
 
-#: __init__.js:302 settings.py:164
+#: __init__.js:310 settings.py:166
 msgid "Vietnamese"
 msgstr ""
 
-#: __init__.js:303 settings.py:165
+#: __init__.js:311 settings.py:167
 msgid "Xhosa"
 msgstr ""
 
-#: __init__.js:304 settings.py:166
+#: __init__.js:312 settings.py:168
 msgid "Yiddish"
 msgstr ""
 
-#: __init__.js:305 settings.py:167
+#: __init__.js:313 settings.py:169
 msgid "Yoruba"
 msgstr ""
 
-#: __init__.js:306 settings.py:168
+#: __init__.js:314 settings.py:170
 msgid "Chinese (Y)"
 msgstr ""
 
-#: __init__.js:307 settings.py:169
+#: __init__.js:315 settings.py:171
 msgid "Chinese Simplified"
 msgstr ""
 
-#: __init__.js:308 settings.py:170
+#: __init__.js:316 settings.py:172
 msgid "Chinese Traditional"
 msgstr ""
 
-#: __init__.js:309 settings.py:171
+#: __init__.js:317 settings.py:173
 msgid "Zulu"
 msgstr ""
 
-#: __init__.js:441
+#: __init__.js:449
 #, javascript-format
 msgid "Schema %s could not be found for extension %s."
 msgstr "Schéma %s nemůže být nalezeno pro rozšíření %s."
 
-#: __init__.js:442
+#: __init__.js:450
 msgid "Please check your installation."
 msgstr "Zkontrolujte prosím instalaci."
 
-#: __init__.js:841
+#: __init__.js:849
 msgid "Icon and label are both false."
 msgstr "Ikona a popisek jsou chybné."
 
-#: __init__.js:1245
+#: __init__.js:1253
 msgid "Shortcuts"
 msgstr "Zkratky"
 
-#: __init__.js:1247
+#: __init__.js:1255
 msgid "Open translator dialog."
 msgstr "Otevřít dialog překladače."
 
-#: __init__.js:1249
+#: __init__.js:1257
 msgid "Open translator dialog and translate text from clipboard."
 msgstr "Otevřete dialog překladače a přeložit text ze schránky."
 
-#: __init__.js:1251
+#: __init__.js:1259
 msgid "Open translator dialog and translate from primary selection."
 msgstr "Otevřít dialog překladače a přeložit vybraný text."
 
-#: __init__.js:1253
+#: __init__.js:1261
 msgid "Translate text."
 msgstr "Přeložit text."
 
-#: __init__.js:1255
+#: __init__.js:1263
 msgid "Force text translation. Ignores translation history."
 msgstr "Vynuťte překlad textu. Ignoruje historii překladů."
 
-#: __init__.js:1257
+#: __init__.js:1265
 msgid "Copy translated text to clipboard."
 msgstr "Kopírovat přeložený text do schránky."
 
-#: __init__.js:1259
+#: __init__.js:1267
 msgid "Swap languages."
 msgstr "Prohodit jazyky."
 
-#: __init__.js:1261
+#: __init__.js:1269
 msgid "Reset languages to default."
 msgstr "Resetovat jazyky do výchozího stavu."
 
-#: __init__.js:1263
+#: __init__.js:1271
 msgid "Close dialog."
 msgstr "Zavřít dialog."
 
-#: __init__.js:1410
+#: __init__.js:1418
 msgid "Type to search..."
 msgstr "Vyhledávejte psaním..."
 
-#: __init__.js:1623
+#: __init__.js:1631
 msgid "Most used languages​​."
 msgstr "Nejčastěji používané jazyky."
 
-#: __init__.js:2107
+#: __init__.js:2115
 #, javascript-format
 msgid "Can't load preferences for %s"
 msgstr "Nelze načíst nastavení pro %s"
 
-#: __init__.js:2229 translation_providers/google_translation_provider.js:76
+#: __init__.js:2237 translation_providers/google_translation_provider.js:76
 #: translation_providers/transltr_translation_provider.js:66
 #: translation_providers/yandex_translation_provider.js:272
 msgid "Error"
 msgstr "Chyba"
 
 #. jshint ignore:line
-#: __init__.js:2287 __init__.js:2291
+#: __init__.js:2295 __init__.js:2299
 msgid "Not implemented"
 msgstr "Není implementováno"
 
-#: __init__.js:2703 extension.js:1092 extension.js:1095 settings.py:336
+#: __init__.js:2711 extension.js:1092 extension.js:1095 settings.py:339
 msgid "History"
 msgstr "Historie"
 
-#: __init__.js:3234
+#: __init__.js:3242
 msgid "Error executing translate-shell"
 msgstr "Vyskytla se chyba při spuštění translate-shell"
 
-#: __init__.js:3423 __init__.js:3439
+#: __init__.js:3431 __init__.js:3448
 msgid "Unmet dependencies found!!!"
 msgstr "Nalezeny nesplněné závislosti!!!"
 
-#: __init__.js:3425 translation_providers/yandex_translation_provider.js:334
+#: __init__.js:3433 __init__.js:3450
+#: translation_providers/yandex_translation_provider.js:334
 msgid "Check this extension help file for instructions."
 msgstr ""
 "Zkontrolujte soubor s nápovědou tohoto rozšíření pro získání instrukcí."
 
-#: __init__.js:3426
+#: __init__.js:3434
 msgid "It can be accessed from the translation dialog main menu."
 msgstr "Je přístupná z hlavní nabídky dialogového okna překladu."
 
-#: __init__.js:3431
+#: __init__.js:3439
 msgid "All dependencies seem to be met."
 msgstr "Všechny závislosti jsou splněny."
 
-#: __init__.js:3440
-msgid "A detailed error has been logged into ~/.cinnamon/glass.log file."
-msgstr "Podrobnosti chyby byly zaznamenány do ~/.cinnamon/glass.log souboru."
+#: __init__.js:3451
+msgid ""
+"This information has also been logged into the ~/.cinnamon/glass.log file."
+msgstr ""
 
-#: __init__.js:3536
+#: __init__.js:3454 settings.py:1385
+msgid "Help"
+msgstr "Nápověda"
+
+#. Just in case.
+#: __init__.js:3455 extension.js:585
+msgid "Extended help"
+msgstr "Rozšířená nápověda"
+
+#: __init__.js:3495
 msgid "Press <Esc> to close"
 msgstr "Stiskněte <Esc> pro zavření"
 
-#: __init__.js:3588
+#: __init__.js:3547
 msgid "This translation provider doesn't require translate-shell to work."
 msgstr ""
 "Tento zprostředkovatel překladu nevyžaduje pro svou funkčnost translate-"
 "shell."
 
-#: __init__.js:3591
+#: __init__.js:3550
 msgid "This translation provider requires translate-shell to work."
 msgstr ""
 "Tento zprostředkovatel překladu vyžaduje pro svou funkčnost translate-shell."
 
-#: __init__.js:3592 settings.py:191
+#: __init__.js:3551 settings.py:193
 msgid "See the extended help of this extension for more information."
 msgstr "V podrobné nápovědě tohoto rozšíření naleznete další informace."
 
@@ -614,7 +625,7 @@ msgid "The specified translation direction is not supported"
 msgstr "Vybraný směr překladu není podporován"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->name
-#: translation_providers/yandex_translation_provider.js:332
+#: translation_providers/yandex_translation_provider.js:332 settings.py:64
 msgid "Multi Translator"
 msgstr "Multi Translator"
 
@@ -692,10 +703,6 @@ msgstr "Historie překladu"
 msgid "Check dependencies"
 msgstr "Zkontrolovat závislosti"
 
-#: extension.js:585
-msgid "Extended help"
-msgstr "Rozšířená nápověda"
-
 #: extension.js:621
 msgid "Quick help"
 msgstr "Rychlá nápověda"
@@ -750,40 +757,56 @@ msgstr "Vybrané jazyky"
 msgid "Target text"
 msgstr "Cílový text"
 
-#: settings.py:181
+#. TO TRANSLATORS: "xsel" is a command, do not translate.
+#: extensionHelper.py:430
+msgid "xsel command not found!!!"
+msgstr ""
+
+#. TO TRANSLATORS: "xdg-open" is a command, do not translate.
+#: extensionHelper.py:436
+msgid "xdg-open command not found!!!"
+msgstr ""
+
+#. TO TRANSLATORS: "trans" is a command and "PATH" is an
+#. environmental variable, do not translate.
+#: extensionHelper.py:443
+msgid "trans command not found or it isn't in your PATH!!!"
+msgstr ""
+
+#: settings.py:183
 msgid "Global"
 msgstr "Globální"
 
-#: settings.py:183
+#: settings.py:185
 msgid "Global extension options"
 msgstr "Globální volby rozšíření"
 
-#: settings.py:188
+#: settings.py:190
 msgid "Default translation provider"
 msgstr "Výchozí poskytovatel služby překladu."
 
-#: settings.py:189
+#: settings.py:191
 msgid "Select the default translation provider."
 msgstr "Zvolit výchozího poskytovatele služby překladu."
 
-#: settings.py:190
+#: settings.py:192
 msgid "Providers marked with (*) require translate-shell package to work."
 msgstr ""
 "Poskytovatelé označení (*) vyžadují pro funkčnost balíček translate-shell."
 
-#: settings.py:205
+#: settings.py:207
 msgid "Remember last translator"
 msgstr "Pamatovat si poslední překladač"
 
-#: settings.py:206
+#: settings.py:208
 msgid "Remember last used translation provider."
 msgstr "Pamatovat si posledního poskytovatele služby překladu."
 
-#: settings.py:212
+#: settings.py:214
 msgid "Keep source entry text selected"
 msgstr "Zachovat zdrojový text vybraný"
 
-#: settings.py:213
+#: settings.py:215
 msgid ""
 "Keep source entry text selected whenever the translation dialog is opened "
 "and the source entry box contains text."
@@ -791,123 +814,123 @@ msgstr ""
 "Zachovat zdrojový text vybraný vždy, když je dialogové okno překladu "
 "otevřené a box pro zdrojový text obsahuje text."
 
-#: settings.py:219
+#: settings.py:221
 msgid "Show most used languages"
 msgstr "Zobrazit nejpoužívanější jazyky"
 
-#: settings.py:220
+#: settings.py:222
 msgid "Display a list of most used languages."
 msgstr "Zobrazit seznam s nejpoužívanějšími jazyky."
 
-#: settings.py:226
+#: settings.py:228
 msgid "Synchronize scroll entries"
 msgstr "Synchronizovat posun položek"
 
-#: settings.py:227
+#: settings.py:229
 msgid "Make the source and target entries scroll synchronously."
 msgstr "Umožnit synchronizovaný posun zdrojových a cílových položek."
 
-#: settings.py:233
+#: settings.py:235
 msgid "Enable shortcuts"
 msgstr "Povolit klávesové zkratky"
 
-#: settings.py:234
+#: settings.py:236
 msgid "Enable/Disable the use of keyboard shortcuts."
 msgstr "Povolit/zakázat použití klávesových zkratek."
 
-#: settings.py:241
+#: settings.py:243
 msgid "Open translator dialog"
 msgstr "Otevřít dialog překladače"
 
-#: settings.py:242
+#: settings.py:244
 msgid "Translate text from clipboard"
 msgstr "Přeložit text ze schránky"
 
-#: settings.py:243
+#: settings.py:245
 msgid "Translate from primary selection"
 msgstr "Přeložit vybraný text"
 
-#: settings.py:251
+#: settings.py:253
 msgid "Translators"
 msgstr "Překladače"
 
-#: settings.py:253
+#: settings.py:255
 msgid "Set default settings for each available translation service"
 msgstr "Výchozí nastavení pro každou dostupnou službu překladu"
 
-#: settings.py:264
+#: settings.py:266
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: settings.py:266
+#: settings.py:268
 msgid "Translation dialog appearance"
 msgstr "Vzhled dialogového okna překladu"
 
-#: settings.py:271
+#: settings.py:273
 msgid "Dialog theme"
 msgstr "Motiv dialogu"
 
-#: settings.py:272
+#: settings.py:274
 msgid "Select a theme for the translation dialog."
 msgstr "Vybrat motiv pro dialogové okno překladu."
 
-#: settings.py:274 settings.py:346
+#: settings.py:276 settings.py:349
 msgid "Custom"
 msgstr "Vlastní"
 
-#: settings.py:275
+#: settings.py:277
 msgid "Default"
 msgstr "Výchozí"
 
-#: settings.py:295
+#: settings.py:298
 msgid "Custom theme"
 msgstr "Vlastní motiv"
 
-#: settings.py:296
+#: settings.py:299
 msgid "Select a custom theme for the translation dialog."
 msgstr "Vybrat vlastní motiv pro dialogové okno překladu."
 
-#: settings.py:302
+#: settings.py:305
 msgid "Font size"
 msgstr "Velikost písma"
 
-#: settings.py:303
+#: settings.py:306
 msgid "Select a font size for the source text and target text entries."
 msgstr "Vybrat velikost písma pro zdrojový a cílový text."
 
-#: settings.py:307 settings.py:368 settings.py:378 settings.py:389
+#: settings.py:310 settings.py:371 settings.py:381 settings.py:392
 msgid "pixels"
 msgstr "pixelů"
 
-#: settings.py:313
+#: settings.py:316
 msgid "Percentage of screen width"
 msgstr "Procento šířky obrazovky"
 
-#: settings.py:314
+#: settings.py:317
 msgid "What percentage of screen width should the translation dialog fill."
 msgstr "Nastavit kolik procent šířky obrazovky vyplní dialogové okno překladu."
 
-#: settings.py:318 settings.py:329
+#: settings.py:321 settings.py:332
 msgid "percentage"
 msgstr "procenta"
 
-#: settings.py:324
+#: settings.py:327
 msgid "Percentage of screen height"
 msgstr "Procento výšky obrazovky"
 
-#: settings.py:325
+#: settings.py:328
 msgid "What percentage of screen height should the translation dialog fill."
 msgstr "Nastavit kolik procent výšky obrazovky vyplní dialogové okno překladu."
 
-#: settings.py:338
+#: settings.py:341
 msgid "Translation history settings"
 msgstr "Nastavení historie překladu"
 
-#: settings.py:343
+#: settings.py:346
 msgid "Timestamp for history entries"
 msgstr "Časové razítko pro záznamy v historii překladů"
 
-#: settings.py:344
+#: settings.py:347
 msgid ""
 "Timestamp format for the translation history entries.\n"
 "Note: After changing this setting, only new entries in the translation "
@@ -919,17 +942,17 @@ msgstr ""
 "historii překladu s novým formátem časového razítka. Staré záznamy budou mít "
 "i nadále předchozí formát časového razítka. "
 
-#: settings.py:348
+#: settings.py:351
 msgid "European"
 msgstr "Evropské"
 
-#: settings.py:355
+#: settings.py:358
 msgid "Custom timestamp"
 msgstr "Uživatelské časové razítko"
 
 #. TO TRANSLATORS: The following strings shouldn't be translated:
 #. YYYY, MM, DD, hh, mm and ss.
-#: settings.py:358
+#: settings.py:361
 msgid ""
 "Choose a custom timestamp for the translation history entries.\n"
 "YYYY: year\n"
@@ -947,19 +970,19 @@ msgstr ""
 "mm: minuty\n"
 "ss: sekundy"
 
-#: settings.py:364
+#: settings.py:367
 msgid "History window initial width"
 msgstr "Výchozí šířka okna historie"
 
-#: settings.py:374
+#: settings.py:377
 msgid "History window initial height"
 msgstr "Výchozí výška okna historie"
 
-#: settings.py:384
+#: settings.py:387
 msgid "Width to trigger word wrap"
 msgstr "Šířka pro zalomení řádků"
 
-#: settings.py:385
+#: settings.py:388
 msgid ""
 "The \"Source text\" and \"Target text\" columns on the history window will "
 "wrap its text at the width defined by this setting."
@@ -967,19 +990,19 @@ msgstr ""
 "Text ve sloupcích \"Zdrojový text\" a \"Cílový text\" v okně historie bude "
 "zalomen na šířku definovanou tímto nastavením."
 
-#: settings.py:396
+#: settings.py:399
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: settings.py:398
+#: settings.py:401
 msgid "Various advanced options"
 msgstr "Pokročilé volby"
 
-#: settings.py:404
+#: settings.py:407
 msgid "Yandex API keys"
 msgstr "Yandex API klíče"
 
-#: settings.py:405
+#: settings.py:408
 msgid ""
 "Enter one API key per line.\n"
 "Read the help file found inside this extension folder to know how to get "
@@ -989,152 +1012,149 @@ msgstr ""
 "Přečtěte si soubor s nápovědou ve složce tohoto rozšíření pro získání "
 "informací, jak se získat zdarma Yandex API klíče."
 
-#: settings.py:410
+#: settings.py:413
 msgid "This options are only useful for the extension developer."
 msgstr "Tyto volby jsou užitečné pouze pro vývojáře rozšíření."
 
-#: settings.py:418
+#: settings.py:421
 msgid "Enable logging"
 msgstr "Povolit protokolování"
 
-#: settings.py:419
+#: settings.py:422
 msgid ""
 "It enables the ability to log the output of several functions used by the "
 "extension."
 msgstr ""
 "Povoluje možnost logovat výstup z několika funkcí používaných rozšířením."
 
-#: settings.py:425
+#: settings.py:428
 msgid "Indent translation history data"
 msgstr "Odsadit data historie překladu"
 
-#: settings.py:426
+#: settings.py:429
 msgid "It allows to save the translation history data with indentation."
 msgstr "Umožňuje ukládat data o historii překladu s odsazením."
 
-#: settings.py:871
+#: settings.py:874
 msgid "Select a directory to use"
 msgstr "Vybrat adresář pro použití"
 
-#: settings.py:874
+#: settings.py:877
 msgid "Select a file"
 msgstr "Vybrat soubor"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:879 settings.py:1457 settings.py:1463
+#: settings.py:882 settings.py:1466 settings.py:1472
 msgid "_Cancel"
 msgstr "_Zrušit"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:881 settings.py:1465
+#: settings.py:884 settings.py:1474
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: settings.py:884
+#: settings.py:887
 msgid "Directories"
 msgstr "Adresáře"
 
-#: settings.py:944
+#: settings.py:947
 msgid "Shortcut action"
 msgstr "Akce pro klávesovou zkratku"
 
-#: settings.py:958
+#: settings.py:961
 msgid "Shortcut"
 msgstr "Klávesová zkratka"
 
-#: settings.py:974
+#: settings.py:977
 msgid "Click to set a new hotkey."
 msgstr "Klepněte k nastavení nové klávesové zkratky."
 
-#: settings.py:1035
+#: settings.py:1038
 msgid "Default source language:"
 msgstr "Výchozí zdrojový jazyk:"
 
-#: settings.py:1047
+#: settings.py:1050
 msgid "Default target language:"
 msgstr "Výchozí cílový jazyk:"
 
-#: settings.py:1058
+#: settings.py:1061
 msgid "Remember the last used languages:"
 msgstr "Pamatovat si poslední použité jazyky:"
 
-#: settings.py:1243
+#: settings.py:1246
 msgid "Contributors/Mentions:"
 msgstr "Přispěvatelé/uznání:"
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
-#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING
-#. MORE.
-#: settings.py:1251
+#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
+#: settings.py:1254
 msgid "translator-credits"
 msgstr "překladatelé-zásluhy"
 
-#: settings.py:1278
-msgid "Cinnamon Tweaks"
-msgstr "Vylepšení Cinnamonu"
+#. TO TRANSLATORS: Full sentence:
+#. ExtensionName extension preferences
+#: settings.py:1324
+#, python-format
+msgid "%s extension preferences"
+msgstr ""
 
-#: settings.py:1319
-msgid "Multi Translator extension preferences"
-msgstr "Nastavení předvoleb pro Multi Translator rozšíření"
-
-#: settings.py:1365
+#: settings.py:1370
 msgid "Reset settings to defaults"
 msgstr "Obnovit výchozí hodnoty"
 
-#: settings.py:1367
+#: settings.py:1372
 msgid "Import settings from a file"
 msgstr "Importovat nastavení ze souboru"
 
-#: settings.py:1369
+#: settings.py:1374
 msgid "Export settings to a file"
 msgstr "Exportovat nastavení do souboru"
 
-#: settings.py:1374
+#: settings.py:1379
 msgid "Remember window size"
 msgstr "Pamatovat si velikost okna"
 
-#: settings.py:1380
-msgid "Help"
-msgstr "Nápověda"
-
-#: settings.py:1382
+#: settings.py:1387
 msgid "About"
 msgstr "O aplikaci"
 
-#: settings.py:1390
+#: settings.py:1395
 msgid "Manage settings"
 msgstr "Spravovat nastavení"
 
-#: settings.py:1440
-msgid "Warning: Trying to reset all Multi Translator settings!!!"
+#. TO TRANSLATORS: Full sentence:
+#. Warning: Trying to reset all ExtensionName settings!!!
+#: settings.py:1447
+#, python-format
+msgid "Warning: Trying to reset all %s settings!!!"
 msgstr ""
-"Upozornění: Probíhá reset všech nastavení Multi Translator rozšířené!!!"
 
-#: settings.py:1442
-msgid "Reset all Multi Translator settings to default?"
+#. TO TRANSLATORS: Full sentence:
+#. Reset all ExtensionName settings to default?
+#: settings.py:1451
+#, python-format
+msgid "Reset all %s settings to default?"
 msgstr ""
-"Resetovat všechna nastavení Multi Translator rozšíření na jejich výchozí "
-"hodnoty?"
 
-#: settings.py:1455
+#: settings.py:1464
 msgid "Select or enter file to export to"
 msgstr "Vyberte nebo zadejte soubor, do něhož se bude exportovat"
 
-#: settings.py:1458
+#: settings.py:1467
 msgid "_Save"
 msgstr "_Uložit"
 
-#: settings.py:1461
+#: settings.py:1470
 msgid "Select a file to import"
 msgstr "Vyberte soubor pro import"
 
-#: settings.py:1477
+#: settings.py:1486
 msgid "DCONF files"
 msgstr "DCONF soubory"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1525
+#: settings.py:1534
 #, python-format
 msgid ""
 "Please enter your password to install the required settings schema for %s"
@@ -1142,7 +1162,7 @@ msgstr ""
 "Prosím zadejte své heslo k instalaci vyžadovaných nastavení schémat pro %s"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1536
+#: settings.py:1545
 #, python-format
 msgid ""
 "Could not install the settings schema for %s.  You will have to perform this "
@@ -1152,13 +1172,13 @@ msgstr ""
 "osobně."
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1542
+#: settings.py:1551
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
 msgstr "Vložte prosím své heslo k odebrání nastavení schémat pro %s"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1553
+#: settings.py:1562
 #, python-format
 msgid ""
 "Could not remove the settings schema for %s.  You will have to perform this "
@@ -1167,13 +1187,262 @@ msgstr ""
 "Nelze odebrat nastavení schémat pro %s. Tento krok budete muset provést "
 "osobně. Nejedná se o závažnou chybu."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->description
-msgid ""
-"Translation of text by different translation providers (currently Google, "
-"Yandex, Bing and Apertium)."
+#: ../../create_localized_help.py:63
+msgid "Dependencies"
 msgstr ""
-"Překlad textu různými poskytovateli překladu (v současné době Google, "
-"Yandex, Bing a Apertium)."
+
+#: ../../create_localized_help.py:64
+msgid ""
+"If one or more of these dependencies are missing in your system, you will "
+"not be able to use this extension."
+msgstr ""
+
+#: ../../create_localized_help.py:65
+msgid "xsel command:"
+msgstr ""
+
+#: ../../create_localized_help.py:66
+msgid ""
+"XSel is a command-line program for getting and setting the contents of the X "
+"selection."
+msgstr ""
+
+#: ../../create_localized_help.py:67
+msgid "trans command:"
+msgstr ""
+
+#: ../../create_localized_help.py:68
+msgid ""
+"Command provided by the package translate-shell. Is a simple command line "
+"interface for several translation providers (Google Translate, Yandex "
+"Translate, Bing Translate and Apertium) which allows you to translate "
+"strings in your terminal."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:70
+msgid ""
+"Check translate-shell [dependencies](https://github.com/soimort/translate-"
+"shell#dependencies) and [recommended dependencies](https://github.com/"
+"soimort/translate-shell#recommended-dependencies)."
+msgstr ""
+
+#: ../../create_localized_help.py:72
+msgid "Note:"
+msgstr ""
+
+#: ../../create_localized_help.py:72
+msgid ""
+"The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x "
+"repositories is outdated and broken. It can be installed anyway so it will "
+"also install its dependencies. But updating to the latest version should be "
+"done as described bellow."
+msgstr ""
+
+#: ../../create_localized_help.py:74
+msgid "How to install latest version of translate-shell"
+msgstr ""
+
+#: ../../create_localized_help.py:75
+msgid "Option 1. Direct Download"
+msgstr ""
+
+#: ../../create_localized_help.py:76
+msgid ""
+"This method will only install the trans script into the specified locations."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:79
+msgid "For the current user only. **~/.local/bin** needs to be in your PATH."
+msgstr ""
+
+#: ../../create_localized_help.py:85
+msgid "For all users without overwriting the installed version."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:93
+msgid ""
+"Option 2. From Git - [More details](https://github.com/soimort/translate-"
+"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
+"hackers)"
+msgstr ""
+
+#: ../../create_localized_help.py:94
+msgid ""
+"This method will not just install the trans script but also its man pages. "
+"Refer to the link above for more installation details."
+msgstr ""
+
+#: ../../create_localized_help.py:104
+msgid "Extension usage"
+msgstr ""
+
+#: ../../create_localized_help.py:105
+msgid "Once installed and enabled, the following shortcuts will be available."
+msgstr ""
+
+#: ../../create_localized_help.py:106
+msgid "Global shortcuts (configurable from the extension settings)"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:108
+msgid "**[[Super]] + [[T]]:** Open translator dialog."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:110
+msgid ""
+"**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text "
+"from clipboard."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:112
+msgid ""
+"**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from "
+"primary selection."
+msgstr ""
+
+#: ../../create_localized_help.py:114
+msgid "Shortcuts available on the translation dialog"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:116
+msgid "**[[Ctrl]] + [[Enter]]:** Translate text."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:118
+msgid ""
+"**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation "
+"history."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:120
+msgid "**[[Ctrl]] + [[Shift]] + [[C]]:** Copy translated text to clipboard."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:122
+msgid "**[[Ctrl]] + [[S]]:** Swap languages."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:124
+msgid "**[[Ctrl]] + [[D]]:** Reset languages to default."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:126
+msgid "**[[Escape]]:** Close dialog."
+msgstr ""
+
+#: ../../create_localized_help.py:129
+msgid "Extension's settings window"
+msgstr ""
+
+#: ../../create_localized_help.py:130
+msgid ""
+"From this extension settings window, all options can be imported, exported "
+"and/or reseted to their defaults."
+msgstr ""
+
+#: ../../create_localized_help.py:132
+msgid ""
+"To be able to perform any of these actions, the settings schema needs to be "
+"installed in the system. This is done automatically when the extension is "
+"installed from the Cinnamon extensions manager. But if the extension was "
+"installed manually, the settings schema also needs to be installed manually. "
+"This is achieved by simply going to the extension folder and launch the "
+"following command:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:134
+msgid "Command to install the settings schema:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:136
+msgid "Command to uninstall the settings schema:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:138
+msgid ""
+"To import/export settings, the **dconf** command needs to be available on "
+"the system."
+msgstr ""
+
+#. TO TRANSLATORS: This is a placeholder.
+#. Here goes your language name in your own language (a.k.a. endonym).
+#: ../../create_localized_help.py:166 ../../create_localized_help.py:235
+msgid "language-name"
+msgstr ""
+
+#: ../../create_localized_help.py:238
+msgid "Choose language"
+msgstr ""
+
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:239 ../../create_localized_help.py:246
+#, python-format
+msgid "Help for %s"
+msgstr ""
+
+#: ../../create_localized_help.py:247
+msgid "IMPORTANT!!!"
+msgstr ""
+
+#: ../../create_localized_help.py:248
+msgid ""
+"Never delete any of the files found inside this xlet folder. It might break "
+"this xlet functionality."
+msgstr ""
+
+#: ../../create_localized_help.py:249
+msgid ""
+"Bug reports, feature requests and contributions should be done on this "
+"xlet's repository linked next."
+msgstr ""
+
+#: ../../create_localized_help.py:255
+msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
+msgstr ""
+
+#: ../../create_localized_help.py:256
+msgid ""
+"If this xlet was installed from Cinnamon Settings, all of this xlet's "
+"localizations were automatically installed."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:258
+msgid ""
+"If this xlet was installed manually and not trough Cinnamon Settings, "
+"localizations can be installed by executing the script called "
+"**localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr ""
+
+#: ../../create_localized_help.py:259
+msgid ""
+"If this xlet has no locale available for your language, you could create it "
+"by following the following instructions."
+msgstr ""
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->comments
+msgid ""
+"Bug reports, feature requests and contributions should be done on this "
+"xlet's repository linked below."
+msgstr ""
+"Zprávy o chybách, požadavky na funkce a příspěvky by měly být prováděny v "
+"repozitáři tohoto xletu, na který je odkaz níže."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
 msgid ""
@@ -1201,10 +1470,39 @@ msgstr ""
 msgid "giwhub: Chinese localization https://github.com/giwhub."
 msgstr ""
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->comments
+#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
 msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked below."
+"Radek71: Czech localization and author of Thunderbolt theme https://github."
+"com/Radek71."
 msgstr ""
-"Zprávy o chybách, požadavky na funkce a příspěvky by měly být prováděny v "
-"repozitáři tohoto xletu, na který je odkaz níže."
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
+msgid "NikoKrause: German localization https://github.com/NikoKrause."
+msgstr ""
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->description
+msgid ""
+"Translation of text by different translation providers (currently Google, "
+"Yandex, Bing and Apertium)."
+msgstr ""
+"Překlad textu různými poskytovateli překladu (v současné době Google, "
+"Yandex, Bing a Apertium)."
+
+#~ msgid "A detailed error has been logged into ~/.cinnamon/glass.log file."
+#~ msgstr ""
+#~ "Podrobnosti chyby byly zaznamenány do ~/.cinnamon/glass.log souboru."
+
+#~ msgid "Cinnamon Tweaks"
+#~ msgstr "Vylepšení Cinnamonu"
+
+#~ msgid "Multi Translator extension preferences"
+#~ msgstr "Nastavení předvoleb pro Multi Translator rozšíření"
+
+#~ msgid "Warning: Trying to reset all Multi Translator settings!!!"
+#~ msgstr ""
+#~ "Upozornění: Probíhá reset všech nastavení Multi Translator rozšířené!!!"
+
+#~ msgid "Reset all Multi Translator settings to default?"
+#~ msgstr ""
+#~ "Resetovat všechna nastavení Multi Translator rozšíření na jejich výchozí "
+#~ "hodnoty?"

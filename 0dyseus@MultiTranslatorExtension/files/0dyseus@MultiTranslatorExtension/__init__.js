@@ -16,7 +16,6 @@ const CinnamonEntry = imports.ui.cinnamonEntry;
 const Soup = imports.gi.Soup;
 const _httpSession = new Soup.SessionAsync();
 const Mainloop = imports.mainloop;
-const Gst = imports.gi.Gst;
 const Main = imports.ui.main;
 const Clutter = imports.gi.Clutter;
 const Atk = imports.gi.Atk;
@@ -25,6 +24,15 @@ const MessageTray = imports.ui.messageTray;
 const Tooltips = imports.ui.tooltips;
 const PopupMenu = imports.ui.popupMenu;
 const GioSSS = Gio.SettingsSchemaSource;
+
+let Gst;
+
+try {
+    imports.gi.versions.Gst = "1.0";
+    Gst = imports.gi.Gst;
+} catch (aErr) {
+    global.logError(aErr);
+}
 
 const CINNAMON_VERSION = GLib.getenv("CINNAMON_VERSION");
 const CINN_2_8 = versionCompare(CINNAMON_VERSION, "2.8.8") <= 0;
@@ -41,7 +49,7 @@ Gettext.bindtextdomain(ExtensionUUID, GLib.get_home_dir() + "/.local/share/local
 function _(aStr) {
     let customTrans = Gettext.dgettext(ExtensionUUID, aStr);
 
-    if (customTrans != aStr)
+    if (customTrans !== aStr && aStr !== "")
         return customTrans;
 
     return Gettext.gettext(aStr);
@@ -1189,7 +1197,7 @@ function GoogleTTS() {
 
 GoogleTTS.prototype = {
     _init: function() {
-        Gst.init(null, 0);
+        Gst.init(null);
 
         this._player = Gst.ElementFactory.make("playbin", "player");
         this._bus = this._player.get_bus();
@@ -2094,12 +2102,6 @@ TranslationProviderPrefs.prototype = {
             "changed::" + P.TRANSLATORS_PREFS,
             Lang.bind(this, this._load_prefs)
         );
-
-        this._last_source;
-        this._last_target;
-        this._default_source;
-        this._default_target;
-        this._remember_last_lang;
 
         this._load_prefs();
     },

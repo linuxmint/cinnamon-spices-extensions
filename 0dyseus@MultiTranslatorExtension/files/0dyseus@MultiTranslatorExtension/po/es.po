@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-06 10:37-0300\n"
-"PO-Revision-Date: 2017-05-06 10:37-0300\n"
+"POT-Creation-Date: 2017-06-02 17:08-0300\n"
+"PO-Revision-Date: 2017-06-02 17:08-0300\n"
 "Last-Translator: Odyseus\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -18,725 +18,326 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.js:211 settings.py:67
-msgid "Detect language"
-msgstr "Detectar idioma"
+#: ../../create_localized_help.py:64
+msgid "Dependencies"
+msgstr "Dependencias"
 
-#: __init__.js:212 settings.py:68
-msgid "Afrikaans"
-msgstr "Afrikaans"
+#: ../../create_localized_help.py:65
+msgid ""
+"If one or more of these dependencies are missing in your system, you will "
+"not be able to use this extension."
+msgstr ""
+"Si una o más de estas dependencias faltan en su sistema, no podrá utilizar "
+"esta extensión."
 
-#: __init__.js:213 settings.py:69
-msgid "Amharic"
-msgstr "Amárico"
+#: ../../create_localized_help.py:66
+msgid "xsel command:"
+msgstr "Comando xsel"
 
-#: __init__.js:214 settings.py:70
-msgid "Arabic"
-msgstr "Árabe"
+#: ../../create_localized_help.py:67
+msgid ""
+"XSel is a command-line program for getting and setting the contents of the X "
+"selection."
+msgstr ""
+"XSel es un programa de la consola para obtener y asignar los contenidos de "
+"una selección en X."
 
-#: __init__.js:215 settings.py:71
-msgid "Azerbaijani"
-msgstr "Azerbaiyano"
+#: ../../create_localized_help.py:68
+msgid "trans command:"
+msgstr "Comando trans:"
 
-#: __init__.js:216 settings.py:72
-msgid "Belarusian"
-msgstr "Bielorruso"
+#: ../../create_localized_help.py:69
+msgid ""
+"Command provided by the package translate-shell. Is a simple command line "
+"interface for several translation providers (Google Translate, Yandex "
+"Translate, Bing Translate and Apertium) which allows you to translate "
+"strings in your terminal."
+msgstr ""
+"Comando proporcionado por **translate-shell**. Es una simple interfaz de "
+"línea de comandos para varios proveedores de traducción (Google Translate, "
+"Yandex Translate, Bing Translate and Apertium) que permite traducir cadenas "
+"de texto desde la terminal."
 
-#: __init__.js:217 settings.py:73
-msgid "Bulgarian"
-msgstr "Búlgaro"
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:71
+msgid ""
+"Check translate-shell [dependencies](https://github.com/soimort/translate-"
+"shell#dependencies) and [recommended dependencies](https://github.com/"
+"soimort/translate-shell#recommended-dependencies)."
+msgstr ""
+"Comprobar [dependencias](https://github.com/soimort/translate-"
+"shell#dependencies) y [dependencias recomendadas](https://github.com/soimort/"
+"translate-shell#recommended-dependencies) de translate-shell."
 
-#: __init__.js:218 settings.py:74
-msgid "Bengali"
-msgstr "Bengalí"
+#: ../../create_localized_help.py:73
+msgid "Note:"
+msgstr "Nota:"
 
-#: __init__.js:219 settings.py:75
-msgid "Bosnian (Y)"
-msgstr "Bosnio (Y)"
+#: ../../create_localized_help.py:73
+msgid ""
+"The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x "
+"repositories is outdated and broken. It can be installed anyway so it will "
+"also install its dependencies. But updating to the latest version should be "
+"done as described bellow."
+msgstr ""
+"El paquete **translate-shell** disponible en los repositorios de Ubuntu "
+"16.04.x/Linux Mint 18.x es anticuado y roto. Puede ser instalado de todas "
+"maneras así también se instalan sus dependencias. Pero actualizar el script "
+"a su última versión debe hacerse como se describe a continuación."
 
-#: __init__.js:220 settings.py:76
-msgid "Catalan"
-msgstr "Catalán"
+#: ../../create_localized_help.py:75
+msgid "How to install latest version of translate-shell"
+msgstr "Cómo instalar la última versión de translate-shell"
 
-#: __init__.js:221 settings.py:77
-msgid "Chichewa"
-msgstr "Chichewa"
+#: ../../create_localized_help.py:76
+msgid "Option 1. Direct Download"
+msgstr "Opción 1. Descarga directa"
 
-#: __init__.js:222 settings.py:78
-msgid "Corsican"
-msgstr "Corso"
+#: ../../create_localized_help.py:77
+msgid ""
+"This method will only install the trans script into the specified locations."
+msgstr ""
+"Este método sólo instalará el script **trans** en la ubicación especificada."
 
-#: __init__.js:223 settings.py:79
-msgid "Czech"
-msgstr "Checo"
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:80
+msgid "For the current user only. **~/.local/bin** needs to be in your PATH."
+msgstr ""
+"Sólo para el usuario actual. **~/.local/bin** necesita estar en su PATH."
 
-#: __init__.js:224 settings.py:80
-msgid "Welsh"
-msgstr "Galés"
+#: ../../create_localized_help.py:86
+msgid "For all users without overwriting the installed version."
+msgstr "Para todos los usuarios sin sobre-escribir la versión instalada."
 
-#: __init__.js:225 settings.py:81
-msgid "Danish"
-msgstr "Danés"
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:94
+msgid ""
+"Option 2. From Git - [More details](https://github.com/soimort/translate-"
+"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
+"hackers)"
+msgstr ""
+"Opción 2. Desde Git - [Más detalles](https://github.com/soimort/translate-"
+"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
+"hackers)"
 
-#: __init__.js:226 settings.py:82
-msgid "German"
-msgstr "Alemán"
+#: ../../create_localized_help.py:95
+msgid ""
+"This method will not just install the trans script but also its man pages. "
+"Refer to the link above for more installation details."
+msgstr ""
+"Este método no sólo instalará el script **trans**, sino también sus páginas "
+"man. Consultar el enlace anterior para obtener más detalles sobre la "
+"instalación."
 
-#: __init__.js:227 settings.py:83
-msgid "Greek"
-msgstr "Griego"
+#: ../../create_localized_help.py:105
+msgid "Extension usage"
+msgstr "Uso de la extensión"
 
-#: __init__.js:228 settings.py:84
-msgid "English"
-msgstr "Inglés"
+#: ../../create_localized_help.py:106
+msgid "Once installed and enabled, the following shortcuts will be available."
+msgstr ""
+"Una vez instalada y activada, los siguientes atajos de teclado estarán "
+"disponibles."
 
-#: __init__.js:229 settings.py:85
-msgid "Esperanto"
-msgstr "Esperanto"
+#: ../../create_localized_help.py:107
+msgid "Global shortcuts (configurable from the extension settings)"
+msgstr "Atajos globales (Configurable desde las preferencias de la extensión)"
 
-#: __init__.js:230 settings.py:86
-msgid "Spanish"
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:109
+msgid "**[[Super]] + [[T]]:** Open translator dialog."
+msgstr "**[[Súper]] + [[T]]:** Abre el diálogo de traducción."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:111
+msgid ""
+"**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text "
+"from clipboard."
+msgstr ""
+"**[[Súper]] + [[Shift]] + [[T]]:** Abre el diálogo de traducción y traduce "
+"el texto desde el porta papeles."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:113
+msgid ""
+"**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from "
+"primary selection."
+msgstr ""
+"**[[Súper]] + [[Alt]] + [[T]]:** Abre el diálogo de traducción y traduce el "
+"texto desde la selección primaria."
+
+#: ../../create_localized_help.py:115
+msgid "Shortcuts available on the translation dialog"
+msgstr "Atajos disponibles en el diálogo de traducción"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:117
+msgid "**[[Ctrl]] + [[Enter]]:** Translate text."
+msgstr "**[[Ctrl]] + [[Enter]]:** Traduce el texto."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:119
+msgid ""
+"**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation "
+"history."
+msgstr ""
+"**[[Shift]] + [[Enter]]:** Fuerza la traducción de texto. Ignora el "
+"historial de traducción."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:121
+msgid "**[[Ctrl]] + [[Shift]] + [[C]]:** Copy translated text to clipboard."
+msgstr ""
+"**[[Ctrl]] + [[Shift]] + [[C]]:** Copia el texto traducido al porta papeles."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:123
+msgid "**[[Ctrl]] + [[S]]:** Swap languages."
+msgstr "**[[Ctrl]] + [[S]]:** Cambia idiomas."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:125
+msgid "**[[Ctrl]] + [[D]]:** Reset languages to default."
+msgstr "**[[Ctrl]] + [[D]]:** Restablece los idiomas predeterminados."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:127
+msgid "**[[Escape]]:** Close dialog."
+msgstr "**[[Escape]]:** Cierra el diálogo."
+
+#: ../../create_localized_help.py:130
+msgid "Extension's settings window"
+msgstr "Ventana de preferencias de la extensión"
+
+#: ../../create_localized_help.py:131
+msgid ""
+"From this extension settings window, all options can be imported, exported "
+"and/or reseted to their defaults."
+msgstr ""
+"Desde la ventana de preferencias de la extensión, todas las opciones pueden "
+"ser importadas, exportadas y/o restablecidas a sus valores por defecto."
+
+#: ../../create_localized_help.py:133
+msgid ""
+"To be able to perform any of these actions, the settings schema needs to be "
+"installed in the system. This is done automatically when the extension is "
+"installed from the Cinnamon extensions manager. But if the extension was "
+"installed manually, the settings schema also needs to be installed manually. "
+"This is achieved by simply going to the extension folder and launch the "
+"following command:"
+msgstr ""
+"Para poder realizar cualquiera de estas tareas, el esquema de las "
+"preferencias necesita estar instalado en el sistema. Esto es realizado "
+"automáticamente cuando la extensión es instalada desde el administrador de "
+"extensiones de Cinnamon. Pero si la extensión fue instalada manualmente, el "
+"esquema de las preferencias necesita ser instalado manualmente. Esto se "
+"logra simplemente con ir a la carpeta de la extensión y ejecutar el "
+"siguiente comando:"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:135
+msgid "Command to install the settings schema:"
+msgstr "Comando para instalar el esquema de preferencias:"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:138
+msgid "Command to uninstall the settings schema:"
+msgstr "Comando para desinstalar el esquema de preferencias:"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:141
+msgid ""
+"To import/export settings, the **dconf** command needs to be available on "
+"the system."
+msgstr ""
+"Para importar/exportar preferencias, el comando **dconf** necesita estar "
+"disponible en el sistema."
+
+#: ../../create_localized_help.py:164
+msgid "The following two sections are available only in English."
+msgstr "Las siguientes dos secciones están disponibles sólo en Inglés."
+
+#. TO TRANSLATORS: This is a placeholder.
+#. Here goes your language name in your own language (a.k.a. endonym).
+#: ../../create_localized_help.py:189 ../../create_localized_help.py:261
+msgid "language-name"
 msgstr "Español"
 
-#: __init__.js:231 settings.py:87
-msgid "Estonian"
-msgstr "Estonio"
-
-#: __init__.js:232 settings.py:88
-msgid "Basque"
-msgstr "Vasco"
-
-#: __init__.js:233 settings.py:89
-msgid "Persian"
-msgstr "Persa"
-
-#: __init__.js:234 settings.py:90
-msgid "Finnish"
-msgstr "Finlandés"
-
-#: __init__.js:235 settings.py:91
-msgid "French"
-msgstr "Francés"
-
-#: __init__.js:236 settings.py:92
-msgid "Frisian"
-msgstr "Frisón"
-
-#: __init__.js:237 settings.py:93
-msgid "Irish"
-msgstr "Irlandés"
-
-#: __init__.js:238 settings.py:94
-msgid "Scots Gaelic"
-msgstr "Gaélico escocés"
-
-#: __init__.js:239 settings.py:95
-msgid "Galician"
-msgstr "Gallego"
-
-#: __init__.js:240 settings.py:96
-msgid "Gujarati"
-msgstr "Gujarati"
-
-#: __init__.js:241 settings.py:97
-msgid "Hausa"
-msgstr "Hausa"
-
-#: __init__.js:242 settings.py:98
-msgid "Hawaiian"
-msgstr "Hawaiano"
-
-#: __init__.js:243 settings.py:99
-msgid "Hebrew (Y)"
-msgstr "Hebreo (Y)"
-
-#: __init__.js:244 settings.py:100
-msgid "Hindi"
-msgstr "Hindú"
-
-#: __init__.js:245 settings.py:101
-msgid "Hmong"
-msgstr "Hmong"
-
-#: __init__.js:246 settings.py:102
-msgid "Croatian"
-msgstr "Croata"
-
-#: __init__.js:247 settings.py:103
-msgid "Haitian Creole"
-msgstr "Creole haitiano"
-
-#: __init__.js:248 settings.py:104
-msgid "Hungarian"
-msgstr "Húngaro"
-
-#: __init__.js:249 settings.py:105
-msgid "Armenian"
-msgstr "Armenio"
-
-#: __init__.js:250 settings.py:106
-msgid "Indonesian"
-msgstr "Indonesio"
-
-#: __init__.js:251 settings.py:107
-msgid "Igbo"
-msgstr "Igbo"
-
-#: __init__.js:252 settings.py:108
-msgid "Icelandic"
-msgstr "Islandés"
-
-#: __init__.js:253 settings.py:109
-msgid "Italian"
-msgstr "Italiano"
-
-#: __init__.js:254 settings.py:110
-msgid "Hebrew"
-msgstr "Hebreo"
-
-#: __init__.js:255 settings.py:111
-msgid "Japanese"
-msgstr "Japonés"
-
-#: __init__.js:256 settings.py:112
-msgid "Javanese"
-msgstr "Javanés"
-
-#: __init__.js:257 settings.py:113
-msgid "Georgian"
-msgstr "Georgiano"
-
-#: __init__.js:258 settings.py:114
-msgid "Kazakh"
-msgstr "Kazakh"
-
-#: __init__.js:259 settings.py:115
-msgid "Khmer"
-msgstr "Jemer"
-
-#: __init__.js:260 settings.py:116
-msgid "Kannada"
-msgstr "Kannada"
-
-#: __init__.js:261 settings.py:117
-msgid "Korean"
-msgstr "Koreano"
-
-#: __init__.js:262 settings.py:118
-msgid "Kurdish (Kurmanji)"
-msgstr "Kurdo (Kurmanji)"
-
-#: __init__.js:263 settings.py:119
-msgid "Kyrgyz"
-msgstr "Kirguís"
-
-#: __init__.js:264 settings.py:120
-msgid "Latin"
-msgstr "Latín"
-
-#: __init__.js:265 settings.py:121
-msgid "Luxembourgish"
-msgstr "Luxemburgués"
-
-#: __init__.js:266 settings.py:122
-msgid "Lao"
-msgstr "Lao"
-
-#: __init__.js:267 settings.py:123
-msgid "Lithuanian"
-msgstr "Lituano"
-
-#: __init__.js:268 settings.py:124
-msgid "Latvian"
-msgstr "Letón"
-
-#: __init__.js:269 settings.py:125
-msgid "Malagasy"
-msgstr "Madagascarí"
-
-#: __init__.js:270 settings.py:126
-msgid "Maori"
-msgstr "Maorí"
-
-#: __init__.js:271 settings.py:127
-msgid "Macedonian"
-msgstr "Macedonio"
-
-#: __init__.js:272 settings.py:128
-msgid "Malayalam"
-msgstr "Malayalam"
-
-#: __init__.js:273 settings.py:129
-msgid "Mongolian"
-msgstr "Mongol"
-
-#: __init__.js:274 settings.py:130
-msgid "Marathi"
-msgstr "Maratí"
-
-#: __init__.js:275 settings.py:131
-msgid "Malay"
-msgstr "Malayo"
-
-#: __init__.js:276 settings.py:132
-msgid "Maltese"
-msgstr "Maltés"
-
-#: __init__.js:277 settings.py:133
-msgid "Myanmar (Burmese)"
-msgstr "Myanmar (Birmano)"
-
-#: __init__.js:278 settings.py:134
-msgid "Nepali"
-msgstr "Nepalí"
-
-#: __init__.js:279 settings.py:135
-msgid "Dutch"
-msgstr "Holandés"
-
-#: __init__.js:280 settings.py:136
-msgid "Norwegian"
-msgstr "Noruego"
-
-#: __init__.js:281 settings.py:137
-msgid "Cebuano"
-msgstr "Cebuano"
-
-#: __init__.js:282 settings.py:138
-msgid "Punjabi"
-msgstr "Punjabí"
-
-#: __init__.js:283 settings.py:139
-msgid "Polish"
-msgstr "Polaco"
-
-#: __init__.js:284 settings.py:140
-msgid "Pashto"
-msgstr "Pashto"
-
-#: __init__.js:285 settings.py:141
-msgid "Portuguese"
-msgstr "Portugués"
-
-#: __init__.js:286 settings.py:142
-msgid "Romanian"
-msgstr "Rumano"
-
-#: __init__.js:287 settings.py:143
-msgid "Russian"
-msgstr "Ruso"
-
-#: __init__.js:288 settings.py:144
-msgid "Sindhi"
-msgstr "Sindhi"
-
-#: __init__.js:289 settings.py:145
-msgid "Sinhala"
-msgstr "Sinhala"
-
-#: __init__.js:290 settings.py:146
-msgid "Slovak"
-msgstr "Eslovaco"
-
-#: __init__.js:291 settings.py:147
-msgid "Slovenian"
-msgstr "Esloveno"
-
-#: __init__.js:292 settings.py:148
-msgid "Samoan"
-msgstr "Samoano"
-
-#: __init__.js:293 settings.py:149
-msgid "Shona"
-msgstr "Shona"
-
-#: __init__.js:294 settings.py:150
-msgid "Somali"
-msgstr "Somalí"
-
-#: __init__.js:295 settings.py:151
-msgid "Albanian"
-msgstr "Albano"
-
-#: __init__.js:296 settings.py:152
-msgid "Serbian"
-msgstr "Serbio"
-
-#: __init__.js:297 settings.py:153
-msgid "Sesotho"
-msgstr "Sesotho"
-
-#: __init__.js:298 settings.py:154
-msgid "Sundanese"
-msgstr "Sundanese"
-
-#: __init__.js:299 settings.py:155
-msgid "Swedish"
-msgstr "Sueco"
-
-#: __init__.js:300 settings.py:156
-msgid "Swahili"
-msgstr "Swahili"
-
-#: __init__.js:301 settings.py:157
-msgid "Tamil"
-msgstr "Tamil"
-
-#: __init__.js:302 settings.py:158
-msgid "Telugu"
-msgstr "Telugu"
-
-#: __init__.js:303 settings.py:159
-msgid "Tajik"
-msgstr "Tajik"
-
-#: __init__.js:304 settings.py:160
-msgid "Thai"
-msgstr "Tailandés"
-
-#: __init__.js:305 settings.py:161
-msgid "Filipino"
-msgstr "Filipino"
-
-#: __init__.js:306 settings.py:162
-msgid "Turkish"
-msgstr "Turco"
-
-#: __init__.js:307 settings.py:163
-msgid "Ukrainian"
-msgstr "Ukraniano"
-
-#: __init__.js:308 settings.py:164
-msgid "Urdu"
-msgstr "Urdu"
-
-#: __init__.js:309 settings.py:165
-msgid "Uzbek"
-msgstr "Uzbeko"
-
-#: __init__.js:310 settings.py:166
-msgid "Vietnamese"
-msgstr "Vietnamita"
-
-#: __init__.js:311 settings.py:167
-msgid "Xhosa"
-msgstr "Xhosa"
-
-#: __init__.js:312 settings.py:168
-msgid "Yiddish"
-msgstr "Yídish"
-
-#: __init__.js:313 settings.py:169
-msgid "Yoruba"
-msgstr "Yoruba"
-
-#: __init__.js:314 settings.py:170
-msgid "Chinese (Y)"
-msgstr "Chino (Y)"
-
-#: __init__.js:315 settings.py:171
-msgid "Chinese Simplified"
-msgstr "Chino Simplificado"
-
-#: __init__.js:316 settings.py:172
-msgid "Chinese Traditional"
-msgstr "Chino Tradicional"
-
-#: __init__.js:317 settings.py:173
-msgid "Zulu"
-msgstr "Zulú"
-
-#: __init__.js:449
-#, javascript-format
-msgid "Schema %s could not be found for extension %s."
-msgstr "No se pudo encontrar el esquema %s para la extensión %s."
-
-#: __init__.js:450
-msgid "Please check your installation."
-msgstr "Compruebe su instalación."
-
-#: __init__.js:849
-msgid "Icon and label are both false."
-msgstr "El ícono y la etiqueta son ambos falsos."
-
-#: __init__.js:1253
-msgid "Shortcuts"
-msgstr "Accesos directos"
-
-#: __init__.js:1255
-msgid "Open translator dialog."
-msgstr "Abrir diálogo del traductor."
-
-#: __init__.js:1257
-msgid "Open translator dialog and translate text from clipboard."
-msgstr ""
-"Abra el diálogo del traductor y traducir el texto desde el portapapeles."
-
-#: __init__.js:1259
-msgid "Open translator dialog and translate from primary selection."
-msgstr "Abrir diálogo de traductor y traducir la selección primaria."
-
-#: __init__.js:1261
-msgid "Translate text."
-msgstr "Traducir texto."
-
-#: __init__.js:1263
-msgid "Force text translation. Ignores translation history."
-msgstr "Forzar la traducción del texto. Ignora el historial de traducción."
-
-#: __init__.js:1265
-msgid "Copy translated text to clipboard."
-msgstr "Copiar el texto traducido al portapapeles."
-
-#: __init__.js:1267
-msgid "Swap languages."
-msgstr "Cambiar idiomas."
-
-#: __init__.js:1269
-msgid "Reset languages to default."
-msgstr "Restablecer los idiomas predeterminados."
-
-#: __init__.js:1271
-msgid "Close dialog."
-msgstr "Cerrar diálogo."
-
-#: __init__.js:1418
-msgid "Type to search..."
-msgstr "Escribir para buscar..."
-
-#: __init__.js:1631
-msgid "Most used languages​​."
-msgstr "Idiomas más utilizados."
-
-#: __init__.js:2115
-#, javascript-format
-msgid "Can't load preferences for %s"
-msgstr "No se pueden cargar las preferencias de %s"
-
-#: __init__.js:2237 translation_providers/google_translation_provider.js:76
-#: translation_providers/transltr_translation_provider.js:66
-#: translation_providers/yandex_translation_provider.js:272
-msgid "Error"
-msgstr "Error"
-
-#. jshint ignore:line
-#: __init__.js:2295 __init__.js:2299
-msgid "Not implemented"
-msgstr "No implementado"
-
-#: __init__.js:2711 extension.js:1092 extension.js:1095 settings.py:339
-msgid "History"
-msgstr "Historial"
-
-#: __init__.js:3242
-msgid "Error executing translate-shell"
-msgstr "Error al ejecutar translate-shell"
-
-#: __init__.js:3431 __init__.js:3448
-msgid "Unmet dependencies found!!!"
-msgstr "¡Dependencias no satisfechas encontradas!"
-
-#: __init__.js:3433 __init__.js:3450
-#: translation_providers/yandex_translation_provider.js:334
-msgid "Check this extension help file for instructions."
-msgstr ""
-"Comprobar el archivo de ayuda de esta extensión para obtener instrucciones."
-
-#: __init__.js:3434
-msgid "It can be accessed from the translation dialog main menu."
-msgstr "Se puede acceder desde el menú principal del diálogo de traducción."
-
-#: __init__.js:3439
-msgid "All dependencies seem to be met."
-msgstr "Todas las dependencias parecen ser cumplidas."
-
-#: __init__.js:3451
-msgid ""
-"This information has also been logged into the ~/.cinnamon/glass.log file."
-msgstr ""
-"Esta información también ha sido registrada en el archivo ~/.cinnamon/glass."
-"log."
-
-#: __init__.js:3454 settings.py:1385
+#: ../../create_localized_help.py:264 settings.py:1385 __init__.js:3456
 msgid "Help"
 msgstr "Ayuda"
 
-#. Just in case.
-#: __init__.js:3455 extension.js:585
-msgid "Extended help"
-msgstr "Ayuda extendida"
+#: ../../create_localized_help.py:265
+msgid "Contributors"
+msgstr "Colaboradores"
 
-#: __init__.js:3495
-msgid "Press <Esc> to close"
-msgstr "Presione <Esc> para cerrar"
+#: ../../create_localized_help.py:266
+msgid "Changelog"
+msgstr "Registro de cambios"
 
-#: __init__.js:3547
-msgid "This translation provider doesn't require translate-shell to work."
+#: ../../create_localized_help.py:267
+msgid "Choose language"
+msgstr "Elegir idioma"
+
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:268 ../../create_localized_help.py:275
+#, python-format
+msgid "Help for %s"
+msgstr "Ayuda para %s"
+
+#: ../../create_localized_help.py:276
+msgid "IMPORTANT!!!"
+msgstr "¡IMPORTANTE!"
+
+#: ../../create_localized_help.py:277
+msgid ""
+"Never delete any of the files found inside this xlet folder. It might break "
+"this xlet functionality."
 msgstr ""
-"Este proveedor de traducción no requiere translate-shell para trabajar."
+"Jamás borrar ninguno de los archivos encontrados dentro de la carpeta de "
+"este xlet. Podría romper la funcionalidad del xlet."
 
-#: __init__.js:3550
-msgid "This translation provider requires translate-shell to work."
-msgstr "Este proveedor de traducción requiere translate-shell para trabajar."
+#: ../../create_localized_help.py:278
+msgid ""
+"Bug reports, feature requests and contributions should be done on this "
+"xlet's repository linked next."
+msgstr ""
+"Los reportes de fallos, peticiones de características y contribuciones deben "
+"hacerse en el repositorio de este xlet vinculado a continuación."
 
-#: __init__.js:3551 settings.py:193
-msgid "See the extended help of this extension for more information."
-msgstr "Consulte la ayuda extendida de esta extensión para más información."
+#: ../../create_localized_help.py:284
+msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
+msgstr ""
+"Localización de applets/desklets/extensiones (también conocidos como xlets)"
 
-#: translation_providers/google_ts_translation_provider.js:88
-#: translation_providers/apertium_ts_translation_provider.js:87
-#: translation_providers/bing_ts_translation_provider.js:87
-msgid "Error while parsing data"
-msgstr "Error al analizar datos"
+#: ../../create_localized_help.py:285
+msgid ""
+"If this xlet was installed from Cinnamon Settings, all of this xlet's "
+"localizations were automatically installed."
+msgstr ""
+"Si este xlet se instaló desde Configuración de Cinnamon, todas las "
+"localizaciones de este xlet se instalaron automáticamente."
 
-#: translation_providers/google_ts_translation_provider.js:122
-#: translation_providers/apertium_ts_translation_provider.js:120
-#: translation_providers/bing_ts_translation_provider.js:121
-msgid "Error while translating, check your internet connection"
-msgstr "Error al traducir, comprobar conexión a Internet"
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:287
+msgid ""
+"If this xlet was installed manually and not trough Cinnamon Settings, "
+"localizations can be installed by executing the script called "
+"**localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr ""
+"Si este xlet se instaló manualmente y no a través de Configuración de "
+"Cinnamon, las localizaciones se pueden instalar ejecutando el archivo "
+"llamado **localizations.sh** desde una terminal abierta dentro de la carpeta "
+"del xlet."
 
-#: translation_providers/google_translation_provider.js:81
-#: translation_providers/transltr_translation_provider.js:71
-#: translation_providers/yandex_translation_provider.js:277
-msgid "Can't translate text, please try later."
-msgstr "No se puede traducir texto, intente más tarde."
-
-#: translation_providers/yandex_translation_provider.js:293
-msgid "API key is invalid"
-msgstr "La clave de la API no es válida"
-
-#: translation_providers/yandex_translation_provider.js:296
-msgid "Blocked API key"
-msgstr "Clave de API bloqueada"
-
-#: translation_providers/yandex_translation_provider.js:299
-msgid "Exceeded the daily limit on the amount of translated text"
-msgstr "Excedió el límite diario de la cantidad de texto traducido"
-
-#: translation_providers/yandex_translation_provider.js:302
-msgid "Exceeded the maximum text size"
-msgstr "Ha superado el tamaño máximo de texto"
-
-#: translation_providers/yandex_translation_provider.js:305
-msgid "The text cannot be translated"
-msgstr "El texto no puede ser traducido"
-
-#: translation_providers/yandex_translation_provider.js:308
-msgid "The specified translation direction is not supported"
-msgstr "No se admite la dirección de traducción especificada"
-
-#. 0dyseus@MultiTranslatorExtension->metadata.json->name
-#: translation_providers/yandex_translation_provider.js:332 settings.py:64
-msgid "Multi Translator"
-msgstr "Multi Traductor"
-
-#: translation_providers/yandex_translation_provider.js:333
-msgid "No Yandex API keys were found!!!"
-msgstr "¡No se encontraron claves de API de Yandex!"
-
-#: extension.js:146 extension.js:402
-msgid "Choose source language"
-msgstr "Elegir idioma de origen"
-
-#: extension.js:153 extension.js:432
-msgid "Choose target language"
-msgstr "Elegir idioma de destino"
-
-#: extension.js:198
-msgid "There is nothing to copy."
-msgstr "No hay nada que copiar."
-
-#: extension.js:207
-msgid "Translated text copied to clipboard."
-msgstr "Texto traducido copiado al portapapeles."
-
-#: extension.js:257
-#, javascript-format
-msgid "Go to %s's website"
-msgstr "Ir al sitio de %s"
-
-#: extension.js:259
-#, javascript-format
-msgid "Service provided by %s"
-msgstr "Servicio proporcionado por %s"
-
-#. TO TRANSLATORS: Full sentence:
-#. "»From« source language to target language with service provider."
-#: extension.js:375 extension.js:399
-msgid "From"
-msgstr "Desde"
-
-#. TO TRANSLATORS: Full sentence:
-#. "From source language »to« target language with service provider."
-#: extension.js:384 extension.js:427
-msgid "to"
-msgstr "hacia"
-
-#: extension.js:457
-msgid "Swap languages"
-msgstr "Cambiar idiomas"
-
-#: extension.js:481
-msgid "Choose translation provider"
-msgstr "Elegir proveedor de traducción"
-
-#: extension.js:529
-msgid "Go!"
-msgstr "¡Ir!"
-
-#: extension.js:530
-msgid "Translate text (<Ctrl> + <Enter>)"
-msgstr "Traducir texto (<Ctrl> + <Intro>)"
-
-#: extension.js:547
-msgid "Main menu"
-msgstr "Menú principal"
-
-#: extension.js:561
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: extension.js:569
-msgid "Translation history"
-msgstr "Historial de traducción"
-
-#: extension.js:577
-msgid "Check dependencies"
-msgstr "Comprobar dependencias"
-
-#: extension.js:621
-msgid "Quick help"
-msgstr "Ayuda rápida"
-
-#: extension.js:636
-msgid "Quit"
-msgstr "Salir"
-
-#. TO TRANSLATORS: Full sentence:
-#. "From source language to target language »with« service provider."
-#: extension.js:665
-msgid "with"
-msgstr "con"
-
-#: extension.js:731
-msgid "Translating..."
-msgstr "Traduciendo..."
-
-#: extension.js:789
-msgid "Clipboard is empty."
-msgstr "El portapapeles está vacío."
-
-#: extension.js:978
-msgid "Error trying to get theme"
-msgstr "Error al intentar obtener el tema"
-
-#: extension.js:985
-msgid "Stylesheet parse error"
-msgstr "Error de análisis de hoja de estilo"
-
-#: extension.js:994
-msgid "Error unloading stylesheet"
-msgstr "Error al descargar la hoja de estilos"
+#: ../../create_localized_help.py:288
+msgid ""
+"If this xlet has no locale available for your language, you could create it "
+"by following the following instructions."
+msgstr ""
+"Si este xlet no está disponible en su idioma, la localización puede ser "
+"creada siguiendo las siguientes instrucciones."
 
 #: extensionHelper.py:271
 msgid "Multi Translator history"
@@ -774,6 +375,439 @@ msgstr "¡Comando xdg-open no encontrado!"
 msgid "trans command not found or it isn't in your PATH!!!"
 msgstr "¡Comando trans no encontrado o no se encuentra en su PATH!"
 
+#. 0dyseus@MultiTranslatorExtension->metadata.json->name
+#: settings.py:64 translation_providers/yandex_translation_provider.js:332
+msgid "Multi Translator"
+msgstr "Multi Traductor"
+
+#: settings.py:67 __init__.js:219
+msgid "Detect language"
+msgstr "Detectar idioma"
+
+#: settings.py:68 __init__.js:220
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: settings.py:69 __init__.js:221
+msgid "Amharic"
+msgstr "Amárico"
+
+#: settings.py:70 __init__.js:222
+msgid "Arabic"
+msgstr "Árabe"
+
+#: settings.py:71 __init__.js:223
+msgid "Azerbaijani"
+msgstr "Azerbaiyano"
+
+#: settings.py:72 __init__.js:224
+msgid "Belarusian"
+msgstr "Bielorruso"
+
+#: settings.py:73 __init__.js:225
+msgid "Bulgarian"
+msgstr "Búlgaro"
+
+#: settings.py:74 __init__.js:226
+msgid "Bengali"
+msgstr "Bengalí"
+
+#: settings.py:75 __init__.js:227
+msgid "Bosnian (Y)"
+msgstr "Bosnio (Y)"
+
+#: settings.py:76 __init__.js:228
+msgid "Catalan"
+msgstr "Catalán"
+
+#: settings.py:77 __init__.js:229
+msgid "Chichewa"
+msgstr "Chichewa"
+
+#: settings.py:78 __init__.js:230
+msgid "Corsican"
+msgstr "Corso"
+
+#: settings.py:79 __init__.js:231
+msgid "Czech"
+msgstr "Checo"
+
+#: settings.py:80 __init__.js:232
+msgid "Welsh"
+msgstr "Galés"
+
+#: settings.py:81 __init__.js:233
+msgid "Danish"
+msgstr "Danés"
+
+#: settings.py:82 __init__.js:234
+msgid "German"
+msgstr "Alemán"
+
+#: settings.py:83 __init__.js:235
+msgid "Greek"
+msgstr "Griego"
+
+#: settings.py:84 __init__.js:236
+msgid "English"
+msgstr "Inglés"
+
+#: settings.py:85 __init__.js:237
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: settings.py:86 __init__.js:238
+msgid "Spanish"
+msgstr "Español"
+
+#: settings.py:87 __init__.js:239
+msgid "Estonian"
+msgstr "Estonio"
+
+#: settings.py:88 __init__.js:240
+msgid "Basque"
+msgstr "Vasco"
+
+#: settings.py:89 __init__.js:241
+msgid "Persian"
+msgstr "Persa"
+
+#: settings.py:90 __init__.js:242
+msgid "Finnish"
+msgstr "Finlandés"
+
+#: settings.py:91 __init__.js:243
+msgid "French"
+msgstr "Francés"
+
+#: settings.py:92 __init__.js:244
+msgid "Frisian"
+msgstr "Frisón"
+
+#: settings.py:93 __init__.js:245
+msgid "Irish"
+msgstr "Irlandés"
+
+#: settings.py:94 __init__.js:246
+msgid "Scots Gaelic"
+msgstr "Gaélico escocés"
+
+#: settings.py:95 __init__.js:247
+msgid "Galician"
+msgstr "Gallego"
+
+#: settings.py:96 __init__.js:248
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: settings.py:97 __init__.js:249
+msgid "Hausa"
+msgstr "Hausa"
+
+#: settings.py:98 __init__.js:250
+msgid "Hawaiian"
+msgstr "Hawaiano"
+
+#: settings.py:99 __init__.js:251
+msgid "Hebrew (Y)"
+msgstr "Hebreo (Y)"
+
+#: settings.py:100 __init__.js:252
+msgid "Hindi"
+msgstr "Hindú"
+
+#: settings.py:101 __init__.js:253
+msgid "Hmong"
+msgstr "Hmong"
+
+#: settings.py:102 __init__.js:254
+msgid "Croatian"
+msgstr "Croata"
+
+#: settings.py:103 __init__.js:255
+msgid "Haitian Creole"
+msgstr "Creole haitiano"
+
+#: settings.py:104 __init__.js:256
+msgid "Hungarian"
+msgstr "Húngaro"
+
+#: settings.py:105 __init__.js:257
+msgid "Armenian"
+msgstr "Armenio"
+
+#: settings.py:106 __init__.js:258
+msgid "Indonesian"
+msgstr "Indonesio"
+
+#: settings.py:107 __init__.js:259
+msgid "Igbo"
+msgstr "Igbo"
+
+#: settings.py:108 __init__.js:260
+msgid "Icelandic"
+msgstr "Islandés"
+
+#: settings.py:109 __init__.js:261
+msgid "Italian"
+msgstr "Italiano"
+
+#: settings.py:110 __init__.js:262
+msgid "Hebrew"
+msgstr "Hebreo"
+
+#: settings.py:111 __init__.js:263
+msgid "Japanese"
+msgstr "Japonés"
+
+#: settings.py:112 __init__.js:264
+msgid "Javanese"
+msgstr "Javanés"
+
+#: settings.py:113 __init__.js:265
+msgid "Georgian"
+msgstr "Georgiano"
+
+#: settings.py:114 __init__.js:266
+msgid "Kazakh"
+msgstr "Kazakh"
+
+#: settings.py:115 __init__.js:267
+msgid "Khmer"
+msgstr "Jemer"
+
+#: settings.py:116 __init__.js:268
+msgid "Kannada"
+msgstr "Kannada"
+
+#: settings.py:117 __init__.js:269
+msgid "Korean"
+msgstr "Koreano"
+
+#: settings.py:118 __init__.js:270
+msgid "Kurdish (Kurmanji)"
+msgstr "Kurdo (Kurmanji)"
+
+#: settings.py:119 __init__.js:271
+msgid "Kyrgyz"
+msgstr "Kirguís"
+
+#: settings.py:120 __init__.js:272
+msgid "Latin"
+msgstr "Latín"
+
+#: settings.py:121 __init__.js:273
+msgid "Luxembourgish"
+msgstr "Luxemburgués"
+
+#: settings.py:122 __init__.js:274
+msgid "Lao"
+msgstr "Lao"
+
+#: settings.py:123 __init__.js:275
+msgid "Lithuanian"
+msgstr "Lituano"
+
+#: settings.py:124 __init__.js:276
+msgid "Latvian"
+msgstr "Letón"
+
+#: settings.py:125 __init__.js:277
+msgid "Malagasy"
+msgstr "Madagascarí"
+
+#: settings.py:126 __init__.js:278
+msgid "Maori"
+msgstr "Maorí"
+
+#: settings.py:127 __init__.js:279
+msgid "Macedonian"
+msgstr "Macedonio"
+
+#: settings.py:128 __init__.js:280
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: settings.py:129 __init__.js:281
+msgid "Mongolian"
+msgstr "Mongol"
+
+#: settings.py:130 __init__.js:282
+msgid "Marathi"
+msgstr "Maratí"
+
+#: settings.py:131 __init__.js:283
+msgid "Malay"
+msgstr "Malayo"
+
+#: settings.py:132 __init__.js:284
+msgid "Maltese"
+msgstr "Maltés"
+
+#: settings.py:133 __init__.js:285
+msgid "Myanmar (Burmese)"
+msgstr "Myanmar (Birmano)"
+
+#: settings.py:134 __init__.js:286
+msgid "Nepali"
+msgstr "Nepalí"
+
+#: settings.py:135 __init__.js:287
+msgid "Dutch"
+msgstr "Holandés"
+
+#: settings.py:136 __init__.js:288
+msgid "Norwegian"
+msgstr "Noruego"
+
+#: settings.py:137 __init__.js:289
+msgid "Cebuano"
+msgstr "Cebuano"
+
+#: settings.py:138 __init__.js:290
+msgid "Punjabi"
+msgstr "Punjabí"
+
+#: settings.py:139 __init__.js:291
+msgid "Polish"
+msgstr "Polaco"
+
+#: settings.py:140 __init__.js:292
+msgid "Pashto"
+msgstr "Pashto"
+
+#: settings.py:141 __init__.js:293
+msgid "Portuguese"
+msgstr "Portugués"
+
+#: settings.py:142 __init__.js:294
+msgid "Romanian"
+msgstr "Rumano"
+
+#: settings.py:143 __init__.js:295
+msgid "Russian"
+msgstr "Ruso"
+
+#: settings.py:144 __init__.js:296
+msgid "Sindhi"
+msgstr "Sindhi"
+
+#: settings.py:145 __init__.js:297
+msgid "Sinhala"
+msgstr "Sinhala"
+
+#: settings.py:146 __init__.js:298
+msgid "Slovak"
+msgstr "Eslovaco"
+
+#: settings.py:147 __init__.js:299
+msgid "Slovenian"
+msgstr "Esloveno"
+
+#: settings.py:148 __init__.js:300
+msgid "Samoan"
+msgstr "Samoano"
+
+#: settings.py:149 __init__.js:301
+msgid "Shona"
+msgstr "Shona"
+
+#: settings.py:150 __init__.js:302
+msgid "Somali"
+msgstr "Somalí"
+
+#: settings.py:151 __init__.js:303
+msgid "Albanian"
+msgstr "Albano"
+
+#: settings.py:152 __init__.js:304
+msgid "Serbian"
+msgstr "Serbio"
+
+#: settings.py:153 __init__.js:305
+msgid "Sesotho"
+msgstr "Sesotho"
+
+#: settings.py:154 __init__.js:306
+msgid "Sundanese"
+msgstr "Sundanese"
+
+#: settings.py:155 __init__.js:307
+msgid "Swedish"
+msgstr "Sueco"
+
+#: settings.py:156 __init__.js:308
+msgid "Swahili"
+msgstr "Swahili"
+
+#: settings.py:157 __init__.js:309
+msgid "Tamil"
+msgstr "Tamil"
+
+#: settings.py:158 __init__.js:310
+msgid "Telugu"
+msgstr "Telugu"
+
+#: settings.py:159 __init__.js:311
+msgid "Tajik"
+msgstr "Tajik"
+
+#: settings.py:160 __init__.js:312
+msgid "Thai"
+msgstr "Tailandés"
+
+#: settings.py:161 __init__.js:313
+msgid "Filipino"
+msgstr "Filipino"
+
+#: settings.py:162 __init__.js:314
+msgid "Turkish"
+msgstr "Turco"
+
+#: settings.py:163 __init__.js:315
+msgid "Ukrainian"
+msgstr "Ukraniano"
+
+#: settings.py:164 __init__.js:316
+msgid "Urdu"
+msgstr "Urdu"
+
+#: settings.py:165 __init__.js:317
+msgid "Uzbek"
+msgstr "Uzbeko"
+
+#: settings.py:166 __init__.js:318
+msgid "Vietnamese"
+msgstr "Vietnamita"
+
+#: settings.py:167 __init__.js:319
+msgid "Xhosa"
+msgstr "Xhosa"
+
+#: settings.py:168 __init__.js:320
+msgid "Yiddish"
+msgstr "Yídish"
+
+#: settings.py:169 __init__.js:321
+msgid "Yoruba"
+msgstr "Yoruba"
+
+#: settings.py:170 __init__.js:322
+msgid "Chinese (Y)"
+msgstr "Chino (Y)"
+
+#: settings.py:171 __init__.js:323
+msgid "Chinese Simplified"
+msgstr "Chino Simplificado"
+
+#: settings.py:172 __init__.js:324
+msgid "Chinese Traditional"
+msgstr "Chino Tradicional"
+
+#: settings.py:173 __init__.js:325
+msgid "Zulu"
+msgstr "Zulú"
+
 #: settings.py:183
 msgid "Global"
 msgstr "Global"
@@ -795,6 +829,10 @@ msgid "Providers marked with (*) require translate-shell package to work."
 msgstr ""
 "Los proveedores marcados con (*) requieren el paquete de translate-shell "
 "para trabajar."
+
+#: settings.py:193 __init__.js:3553
+msgid "See the extended help of this extension for more information."
+msgstr "Consulte la ayuda extendida de esta extensión para más información."
 
 #: settings.py:207
 msgid "Remember last translator"
@@ -933,6 +971,10 @@ msgid "What percentage of screen height should the translation dialog fill."
 msgstr ""
 "¿Qué porcentaje de altura de pantalla debe llenar el cuadro de diálogo de "
 "traducción?"
+
+#: settings.py:339 __init__.js:2713 extension.js:1096 extension.js:1099
+msgid "History"
+msgstr "Historial"
 
 #: settings.py:341
 msgid "Translation history settings"
@@ -1102,8 +1144,7 @@ msgstr "Colaboradores/Menciones:"
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
-#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING
-#. MORE.
+#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
 #: settings.py:1254
 msgid "translator-credits"
 msgstr "Odyseus https://github.com/Odyseus"
@@ -1206,6 +1247,281 @@ msgstr ""
 "No se pudo eliminar el esquema de configuración para %s. Tendrá que realizar "
 "este paso usted mismo. Esto no es un error crítico."
 
+#: __init__.js:457
+#, javascript-format
+msgid "Schema %s could not be found for extension %s."
+msgstr "No se pudo encontrar el esquema %s para la extensión %s."
+
+#: __init__.js:458
+msgid "Please check your installation."
+msgstr "Compruebe su instalación."
+
+#: __init__.js:857
+msgid "Icon and label are both false."
+msgstr "El ícono y la etiqueta son ambos falsos."
+
+#: __init__.js:1261
+msgid "Shortcuts"
+msgstr "Accesos directos"
+
+#: __init__.js:1263
+msgid "Open translator dialog."
+msgstr "Abrir diálogo del traductor."
+
+#: __init__.js:1265
+msgid "Open translator dialog and translate text from clipboard."
+msgstr ""
+"Abra el diálogo del traductor y traducir el texto desde el portapapeles."
+
+#: __init__.js:1267
+msgid "Open translator dialog and translate from primary selection."
+msgstr "Abrir diálogo de traductor y traducir la selección primaria."
+
+#: __init__.js:1269
+msgid "Translate text."
+msgstr "Traducir texto."
+
+#: __init__.js:1271
+msgid "Force text translation. Ignores translation history."
+msgstr "Forzar la traducción del texto. Ignora el historial de traducción."
+
+#: __init__.js:1273
+msgid "Copy translated text to clipboard."
+msgstr "Copiar el texto traducido al portapapeles."
+
+#: __init__.js:1275
+msgid "Swap languages."
+msgstr "Cambiar idiomas."
+
+#: __init__.js:1277
+msgid "Reset languages to default."
+msgstr "Restablecer los idiomas predeterminados."
+
+#: __init__.js:1279
+msgid "Close dialog."
+msgstr "Cerrar diálogo."
+
+#: __init__.js:1426
+msgid "Type to search..."
+msgstr "Escribir para buscar..."
+
+#: __init__.js:1639
+msgid "Most used languages​​."
+msgstr "Idiomas más utilizados."
+
+#: __init__.js:2117
+#, javascript-format
+msgid "Can't load preferences for %s"
+msgstr "No se pueden cargar las preferencias de %s"
+
+#: __init__.js:2239 translation_providers/google_translation_provider.js:76
+#: translation_providers/transltr_translation_provider.js:66
+#: translation_providers/yandex_translation_provider.js:272
+msgid "Error"
+msgstr "Error"
+
+#. jshint ignore:line
+#: __init__.js:2297 __init__.js:2301
+msgid "Not implemented"
+msgstr "No implementado"
+
+#: __init__.js:3244
+msgid "Error executing translate-shell"
+msgstr "Error al ejecutar translate-shell"
+
+#: __init__.js:3433 __init__.js:3450
+msgid "Unmet dependencies found!!!"
+msgstr "¡Dependencias no satisfechas encontradas!"
+
+#: __init__.js:3435 __init__.js:3452
+#: translation_providers/yandex_translation_provider.js:334
+msgid "Check this extension help file for instructions."
+msgstr ""
+"Comprobar el archivo de ayuda de esta extensión para obtener instrucciones."
+
+#: __init__.js:3436
+msgid "It can be accessed from the translation dialog main menu."
+msgstr "Se puede acceder desde el menú principal del diálogo de traducción."
+
+#: __init__.js:3441
+msgid "All dependencies seem to be met."
+msgstr "Todas las dependencias parecen ser cumplidas."
+
+#: __init__.js:3453
+msgid ""
+"This information has also been logged into the ~/.cinnamon/glass.log file."
+msgstr ""
+"Esta información también ha sido registrada en el archivo ~/.cinnamon/glass."
+"log."
+
+#. Just in case.
+#: __init__.js:3457 extension.js:589
+msgid "Extended help"
+msgstr "Ayuda extendida"
+
+#: __init__.js:3497
+msgid "Press <Esc> to close"
+msgstr "Presione <Esc> para cerrar"
+
+#: __init__.js:3549
+msgid "This translation provider doesn't require translate-shell to work."
+msgstr ""
+"Este proveedor de traducción no requiere translate-shell para trabajar."
+
+#: __init__.js:3552
+msgid "This translation provider requires translate-shell to work."
+msgstr "Este proveedor de traducción requiere translate-shell para trabajar."
+
+#: extension.js:148 extension.js:406
+msgid "Choose source language"
+msgstr "Elegir idioma de origen"
+
+#: extension.js:155 extension.js:436
+msgid "Choose target language"
+msgstr "Elegir idioma de destino"
+
+#: extension.js:200
+msgid "There is nothing to copy."
+msgstr "No hay nada que copiar."
+
+#: extension.js:209
+msgid "Translated text copied to clipboard."
+msgstr "Texto traducido copiado al portapapeles."
+
+#: extension.js:259
+#, javascript-format
+msgid "Go to %s's website"
+msgstr "Ir al sitio de %s"
+
+#: extension.js:261
+#, javascript-format
+msgid "Service provided by %s"
+msgstr "Servicio proporcionado por %s"
+
+#. TO TRANSLATORS: Full sentence:
+#. "»From« source language to target language with service provider."
+#: extension.js:377 extension.js:401
+msgid "From"
+msgstr "Desde"
+
+#. TO TRANSLATORS: Full sentence:
+#. "From source language »to« target language with service provider."
+#: extension.js:386 extension.js:431
+msgid "to"
+msgstr "hacia"
+
+#: extension.js:461
+msgid "Swap languages"
+msgstr "Cambiar idiomas"
+
+#: extension.js:485
+msgid "Choose translation provider"
+msgstr "Elegir proveedor de traducción"
+
+#: extension.js:533
+msgid "Go!"
+msgstr "¡Ir!"
+
+#: extension.js:534
+msgid "Translate text (<Ctrl> + <Enter>)"
+msgstr "Traducir texto (<Ctrl> + <Intro>)"
+
+#: extension.js:551
+msgid "Main menu"
+msgstr "Menú principal"
+
+#: extension.js:565
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: extension.js:573
+msgid "Translation history"
+msgstr "Historial de traducción"
+
+#: extension.js:581
+msgid "Check dependencies"
+msgstr "Comprobar dependencias"
+
+#: extension.js:625
+msgid "Quick help"
+msgstr "Ayuda rápida"
+
+#: extension.js:640
+msgid "Quit"
+msgstr "Salir"
+
+#. TO TRANSLATORS: Full sentence:
+#. "From source language to target language »with« service provider."
+#: extension.js:669
+msgid "with"
+msgstr "con"
+
+#: extension.js:735
+msgid "Translating..."
+msgstr "Traduciendo..."
+
+#: extension.js:793
+msgid "Clipboard is empty."
+msgstr "El portapapeles está vacío."
+
+#: extension.js:982
+msgid "Error trying to get theme"
+msgstr "Error al intentar obtener el tema"
+
+#: extension.js:989
+msgid "Stylesheet parse error"
+msgstr "Error de análisis de hoja de estilo"
+
+#: extension.js:998
+msgid "Error unloading stylesheet"
+msgstr "Error al descargar la hoja de estilos"
+
+#: translation_providers/apertium_ts_translation_provider.js:87
+#: translation_providers/bing_ts_translation_provider.js:87
+#: translation_providers/google_ts_translation_provider.js:88
+msgid "Error while parsing data"
+msgstr "Error al analizar datos"
+
+#: translation_providers/apertium_ts_translation_provider.js:120
+#: translation_providers/bing_ts_translation_provider.js:121
+#: translation_providers/google_ts_translation_provider.js:122
+msgid "Error while translating, check your internet connection"
+msgstr "Error al traducir, comprobar conexión a Internet"
+
+#: translation_providers/google_translation_provider.js:81
+#: translation_providers/transltr_translation_provider.js:71
+#: translation_providers/yandex_translation_provider.js:277
+msgid "Can't translate text, please try later."
+msgstr "No se puede traducir texto, intente más tarde."
+
+#: translation_providers/yandex_translation_provider.js:293
+msgid "API key is invalid"
+msgstr "La clave de la API no es válida"
+
+#: translation_providers/yandex_translation_provider.js:296
+msgid "Blocked API key"
+msgstr "Clave de API bloqueada"
+
+#: translation_providers/yandex_translation_provider.js:299
+msgid "Exceeded the daily limit on the amount of translated text"
+msgstr "Excedió el límite diario de la cantidad de texto traducido"
+
+#: translation_providers/yandex_translation_provider.js:302
+msgid "Exceeded the maximum text size"
+msgstr "Ha superado el tamaño máximo de texto"
+
+#: translation_providers/yandex_translation_provider.js:305
+msgid "The text cannot be translated"
+msgstr "El texto no puede ser traducido"
+
+#: translation_providers/yandex_translation_provider.js:308
+msgid "The specified translation direction is not supported"
+msgstr "No se admite la dirección de traducción especificada"
+
+#: translation_providers/yandex_translation_provider.js:333
+msgid "No Yandex API keys were found!!!"
+msgstr "¡No se encontraron claves de API de Yandex!"
+
 #. 0dyseus@MultiTranslatorExtension->metadata.json->description
 msgid ""
 "Translation of text by different translation providers (currently Google, "
@@ -1213,6 +1529,10 @@ msgid ""
 msgstr ""
 "Traducción de texto proporcionado por diferentes proveedores de traducción "
 "(actualmente Google, Yandex, Bing, Translatr and Apertium)."
+
+#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
+msgid "See this xlet help file."
+msgstr "Ver el archivo de ayuda de este xlet."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->comments
 msgid ""
@@ -1222,49 +1542,51 @@ msgstr ""
 "Los reportes de fallos, peticiones de características y contribuciones deben "
 "hacerse en el repositorio de este xlet vinculado a continuación."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"awamper: Original author of Text Translator gnome-shell extension https://"
-"github.com/awamper/text-translator."
-msgstr ""
-"awamper: Autor original de la extensión Text Translator para gnome-shell "
-"https://github.com/awamper/text-translator."
+#~ msgid "Read CONTRIBUTORS.md file inside this xlet folder."
+#~ msgstr "Leer el archivo CONTRIBUTORS.md dentro de la carpeta de este xlet."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"gufoe: Author of the newer version of Text Translator gnome-shell extension "
-"https://github.com/gufoe/text-translator."
-msgstr ""
-"gufoe: Autor de la nueva versión de la extensión Text Translator https://"
-"github.com/gufoe/text-translator."
+#~ msgid ""
+#~ "awamper: Original author of Text Translator gnome-shell extension https://"
+#~ "github.com/awamper/text-translator."
+#~ msgstr ""
+#~ "awamper: Autor original de la extensión Text Translator para gnome-shell "
+#~ "https://github.com/awamper/text-translator."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"soimort: Author of the translate-shell script https://github.com/soimort/"
-"translate-shell."
-msgstr ""
-"soimort: Autor del script translate-shell https://github.com/soimort/"
-"translate-shell."
+#~ msgid ""
+#~ "gufoe: Author of the newer version of Text Translator gnome-shell "
+#~ "extension https://github.com/gufoe/text-translator."
+#~ msgstr ""
+#~ "gufoe: Autor de la nueva versión de la extensión Text Translator https://"
+#~ "github.com/gufoe/text-translator."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid "muzena: Croatian localization https://github.com/muzena."
-msgstr "muzena: Localización Croata https://github.com/muzena."
+#~ msgid ""
+#~ "soimort: Author of the translate-shell script https://github.com/soimort/"
+#~ "translate-shell."
+#~ msgstr ""
+#~ "soimort: Autor del script translate-shell https://github.com/soimort/"
+#~ "translate-shell."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid "giwhub: Chinese localization https://github.com/giwhub."
-msgstr "giwhub: Localización China https://github.com/giwhub."
+#~ msgid "muzena: Croatian localization https://github.com/muzena."
+#~ msgstr "muzena: Localización Croata https://github.com/muzena."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"Radek71: Czech localization and author of Thunderbolt theme https://github."
-"com/Radek71."
-msgstr ""
-"Radek71: Localización Checa y autor del tema Thunderbolt https://github.com/"
-"Radek71."
+#~ msgid "giwhub: Chinese localization https://github.com/giwhub."
+#~ msgstr "giwhub: Localización China https://github.com/giwhub."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid "NikoKrause: German localization https://github.com/NikoKrause."
-msgstr "NikoKrause: Localización alemana https://github.com/NikoKrause."
+#~ msgid ""
+#~ "Radek71: Czech localization and author of Thunderbolt theme https://"
+#~ "github.com/Radek71."
+#~ msgstr ""
+#~ "Radek71: Localización Checa y autor del tema Thunderbolt https://github."
+#~ "com/Radek71."
+
+#~ msgid "NikoKrause: German localization https://github.com/NikoKrause."
+#~ msgstr "NikoKrause: Localización alemana https://github.com/NikoKrause."
+
+#~ msgid "eson57: Swedish localization."
+#~ msgstr "eson57: Localización Sueca."
+
+#~ msgid "Help for {xlet_name}"
+#~ msgstr "Ayuda para {xlet_name}"
 
 #~ msgid "This error has also been logged into the ~/.cinnamon/glass.log file."
 #~ msgstr "Este error"

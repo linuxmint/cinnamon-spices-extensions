@@ -46,6 +46,8 @@ TranslatorExtension.prototype = {
                 }
             }));
 
+            this._current_source_lang = null;
+            this._current_target_lang = null;
             this.theme = null;
             this.stylesheet = null;
             this.forceTranslation = false;
@@ -397,7 +399,9 @@ TranslatorExtension.prototype = {
             false,
             "<i>%s: %s</i>".format(
                 _("From"),
-                this._translators_manager.current.get_language_name(this._current_source_lang)
+                this._translators_manager.current.get_language_name(
+                    this._current_source_lang || ""
+                )
             ),
             _("Choose source language"),
             button_params,
@@ -426,7 +430,7 @@ TranslatorExtension.prototype = {
             "<i>%s: %s</i>".format(
                 _("to"),
                 this._translators_manager.current.get_language_name(
-                    this._current_target_lang
+                    this._current_target_lang || ""
                 )
             ),
             _("Choose target language"),
