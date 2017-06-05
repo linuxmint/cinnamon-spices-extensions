@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@CinnamonTweaks 1.10\n"
-"POT-Creation-Date: 2017-05-06 08:18-0300\n"
+"Project-Id-Version: 0dyseus@CinnamonTweaks 1.11\n"
+"POT-Creation-Date: 2017-06-02 17:05-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,97 +15,484 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: make-xlet-pot.py 1.0.32\n"
 
-#: __init__.js:186
-#, javascript-format
-msgid "Schema %s could not be found for extension %s."
+#: ../../create_localized_help.py:65
+msgid "Extension options details"
 msgstr ""
 
-#: __init__.js:187
-msgid "Please check your installation."
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:68
+msgid "Some tweaks have warnings, dependencies, limitations and or known issues that must be read and understood before a tweak is enabled. No worries, nothing *fatal* could ever happen."
 msgstr ""
 
-#: __init__.js:196
-msgid "Tweak activation aborted!!!"
+#: ../../create_localized_help.py:70
+msgid "Applets/Desklets tweaks"
 msgstr ""
 
-#: __init__.js:197 __init__.js:222
-msgid "Your Cinnamon version may not be compatible!!!"
+#: ../../create_localized_help.py:71
+msgid "Ask for confirmation on applet/desklet removal:"
 msgstr ""
 
-#: __init__.js:202
-msgid "This is a test notification"
+#: ../../create_localized_help.py:72
+msgid "Instead of directly remove the applet/desklet from the context menus, it will ask for confirmation. This option doesn't affect the removal of applets/desklets from the Applets/Desklets manager in Cinnamon settings (there will be no confirmation)."
 msgstr ""
 
-#: __init__.js:221
-msgid "Extension activation aborted!!!"
+#: ../../create_localized_help.py:73
+msgid "Display \"Edit applet/desklet main file\" on context menu for applets/desklet:"
 msgstr ""
 
-#: __init__.js:223
-msgid "Minimum Cinnamon version allowed: 2.8.6"
+#: ../../create_localized_help.py:73
+msgid "Display \"Open applet/desklet folder\" on context menu for applets/desklets"
 msgstr ""
 
-#: __init__.js:500
-msgid "Cancel"
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:75
+msgid "These options will add new menu items to the applets/desklets context menus. The place where this items will be located is chosen by the option **Where to place the menu item?**."
 msgstr ""
 
-#: __init__.js:506
-msgid "OK"
+#: ../../create_localized_help.py:77
+msgid "Hot Corners tweaks"
 msgstr ""
 
-#: extra_modules/hotCornerPatched.js:40
-msgid "Invalid overview options: Incorrect number of corners"
+#: ../../create_localized_help.py:78
+msgid "This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has hot corners delay activation."
 msgstr ""
 
-#: extension.js:233
-msgid "Open applet folder"
+#: ../../create_localized_help.py:79 ../../create_localized_help.py:80 ../../create_localized_help.py:81 ../../create_localized_help.py:82 ../../create_localized_help.py:98 ../../create_localized_help.py:101 ../../create_localized_help.py:119
+msgid "Crystal clear."
 msgstr ""
 
-#: extension.js:250
-msgid "Edit applet main file"
+#: ../../create_localized_help.py:79
+msgid "Top left hot corner activation delay:"
 msgstr ""
 
-#: extension.js:299
-#, javascript-format
-msgid ""
-"Do you want to remove '%s' from your panel?\n"
-"Instance ID: %s"
+#: ../../create_localized_help.py:80
+msgid "Top right hot corner activation delay:"
 msgstr ""
 
-#: extension.js:360
-msgid "Open desklet folder"
+#: ../../create_localized_help.py:81
+msgid "Bottom left hot corner activation delay:"
 msgstr ""
 
-#: extension.js:376
-msgid "Edit desklet main file"
+#: ../../create_localized_help.py:82
+msgid "Bottom right hot corner activation delay:"
 msgstr ""
 
-#: extension.js:422
-#, javascript-format
-msgid ""
-"Do you want to remove '%s' from your desktop?\n"
-"Instance ID: %s"
+#: ../../create_localized_help.py:84 settings.py:258
+msgid "Desktop area tweaks"
 msgstr ""
 
-#: extension.js:690
-msgid "Hotcorners tweaks"
+#: ../../create_localized_help.py:85
+msgid "Enable applications drop to the Desktop:"
 msgstr ""
 
-#: extension.js:804 settings.py:288
-msgid "Avoid mouse pointer overlapping tooltips"
+#: ../../create_localized_help.py:86
+msgid "This tweak enables the ability to drag and drop applications from the menu applet and from the panel launchers applet into the desktop."
 msgstr ""
 
-#: extension.js:1295
-msgid ""
-"If you updated this extension from an older version, <b>you must check its "
-"settings window</b>."
+#: ../../create_localized_help.py:88 settings.py:305
+msgid "Popup menus tweaks"
 msgstr ""
 
-#: extension.js:1296
-msgid "Some preferences may have been changed to their default values."
+#: ../../create_localized_help.py:89 settings.py:317
+msgid "Panel menus behavior"
 msgstr ""
 
-#: extension.js:1297
-msgid "This message will not be displayed again."
+#: ../../create_localized_help.py:90 ../../create_localized_help.py:131 ../../create_localized_help.py:143 ../../create_localized_help.py:150
+msgid "Note:"
+msgstr ""
+
+#: ../../create_localized_help.py:91
+msgid "This setting affects only the behavior of menus that belongs to applets placed on any panel."
+msgstr ""
+
+#: ../../create_localized_help.py:93
+msgid "Emulate Gnome Shell behavior:"
+msgstr ""
+
+#: ../../create_localized_help.py:93
+msgid "When a menu is open on Genome Shell, and then the mouse cursor is moved to another button on the top panel, the menu of the hovered buttons will automatically open without the need to click on them. With this option enabled, that same behavior can be reproduced on Cinnamon."
+msgstr ""
+
+#: ../../create_localized_help.py:94
+msgid "By default, when one opens an applet's menu on Cinnamon and then click on another applet to open its menu, the first click is used to close the first opened menu, and then another click has to be performed to open the menu of the second applet. With this option enabled, one can directly open the menu of any applet even if another applet has its menu open."
+msgstr ""
+
+#: ../../create_localized_help.py:94
+msgid "Don't eat clicks:"
+msgstr ""
+
+#: ../../create_localized_help.py:96 settings.py:275
+msgid "Tooltips tweaks"
+msgstr ""
+
+#: ../../create_localized_help.py:97
+msgid "Avoid mouse pointer overlapping tooltips:"
+msgstr ""
+
+#: ../../create_localized_help.py:97
+msgid "Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer to overlap the tooltip. This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon 3.2.x already has the position of the tooltips changed."
+msgstr ""
+
+#: ../../create_localized_help.py:98
+msgid "Tooltips show delay:"
+msgstr ""
+
+#: ../../create_localized_help.py:100 settings.py:330 settings.py:332
+msgid "Notifications tweaks"
+msgstr ""
+
+#: ../../create_localized_help.py:101
+msgid "Enable notifications open/close animation:"
+msgstr ""
+
+#: ../../create_localized_help.py:102
+msgid "Notifications position:"
+msgstr ""
+
+#: ../../create_localized_help.py:103
+msgid "Notifications can be displayed at the top-right of screen (system default) or at the bottom-right of screen."
+msgstr ""
+
+#: ../../create_localized_help.py:104
+msgid "Distance from panel:"
+msgstr ""
+
+#: ../../create_localized_help.py:105
+msgid "For notifications displayed at the top-right of screen:"
+msgstr ""
+
+#: ../../create_localized_help.py:106
+msgid "This is the distance between the bottom border of the top panel (if no top panel, from the top of the screen) to the top border of the notification popup."
+msgstr ""
+
+#: ../../create_localized_help.py:107
+msgid "For notifications displayed at the bottom-right of screen:"
+msgstr ""
+
+#: ../../create_localized_help.py:108
+msgid "This is the distance between the top border of the bottom panel (if no bottom panel, from the bottom of the screen) to the bottom border of the notification popup."
+msgstr ""
+
+#: ../../create_localized_help.py:109
+msgid "Notification popup right margin:"
+msgstr ""
+
+#: ../../create_localized_help.py:110 settings.py:375
+msgid "By default, the right margin of the notification popup is defined by the currently used theme. This option, set to any value other than 0 (zero), allows to set a custom right margin, ignoring the defined by the theme."
+msgstr ""
+
+#: ../../create_localized_help.py:112 settings.py:395
+msgid "Window focus tweaks"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:114
+msgid "Tweak based on the gnome-shell extension called [Steal My Focus](https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus) by [Valentin Dimitrov](https://github.com/v-dimitrov) and another gnome-shell extension called [Window Demands Attention Shortcut](https://github.com/awamper/window-demands-attention-shortcut) by [awamper](https://github.com/awamper)."
+msgstr ""
+
+#: ../../create_localized_help.py:116
+msgid "Some windows that demands attention will not gain focus regardless of the settings combination on Cinnamon settings. This option will allow you to correct that."
+msgstr ""
+
+#: ../../create_localized_help.py:118
+msgid "The activation of windows demanding attention...:"
+msgstr ""
+
+#: ../../create_localized_help.py:119
+msgid "...is handled by the system:"
+msgstr ""
+
+#: ../../create_localized_help.py:120
+msgid "...is immediate:"
+msgstr ""
+
+#: ../../create_localized_help.py:121
+msgid "will force windows demanding attention to be focused immediately."
+msgstr ""
+
+#: ../../create_localized_help.py:122
+msgid "...is performed with a keyboard shortcut:"
+msgstr ""
+
+#: ../../create_localized_help.py:123
+msgid "will focus windows demanding attention with a keyboard shortcut."
+msgstr ""
+
+#: ../../create_localized_help.py:124
+msgid "Keyboard shortcut:"
+msgstr ""
+
+#: ../../create_localized_help.py:125
+msgid "Set a keyboard shortcut for the option **...is performed with a keyboard shortcut**."
+msgstr ""
+
+#: ../../create_localized_help.py:127
+msgid "Window Shadows tweaks"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:129
+msgid "Tweak based on a Cinnamon extension called [Custom Shadows](https://cinnamon-spices.linuxmint.com/extensions/view/43) created by [mikhail-ekzi](https://github.com/mikhail-ekzi). It allows to modify the shadows used by Cinnamon's window manager (Muffin)."
+msgstr ""
+
+#: ../../create_localized_help.py:131 settings.py:417
+msgid "Client side decorated windows aren't affected by this tweak."
+msgstr ""
+
+#: ../../create_localized_help.py:133 settings.py:430
+msgid "Shadow presets"
+msgstr ""
+
+#: ../../create_localized_help.py:134 settings.py:432
+msgid "Custom shadows"
+msgstr ""
+
+#: ../../create_localized_help.py:135 settings.py:433
+msgid "Default shadows"
+msgstr ""
+
+#: ../../create_localized_help.py:136 settings.py:434
+msgid "No shadows"
+msgstr ""
+
+#: ../../create_localized_help.py:137 settings.py:435
+msgid "Windows 10 shadows"
+msgstr ""
+
+#: ../../create_localized_help.py:139 settings.py:447
+msgid "Auto move windows"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:141
+msgid "Tweak based on the gnome-shell extension called [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/) by [Florian Muellner](https://github.com/fmuellner). It enables the ability to set rules to open determined applications on specific workspaces."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:145 ../../create_localized_help.py:152
+msgid "If the application that you want to select doesn't show up on the application chooser dialog, read the section on this help file called **Applications not showing up on the applications chooser dialogs**."
+msgstr ""
+
+#: ../../create_localized_help.py:146 settings.py:465
+msgid "Windows decorations removal"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:148
+msgid "Tweak based on the extension called [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29) by [Fatih Mete](https://github.com/fatihmete) with some options from the gnome-shell extension called [Maximus NG](https://github.com/luispabon/maximus-gnome-shell) by [Luis Pabon](https://github.com/luispabon). This tweak allows to remove the windows decorations from maximized/half-maximized/tiled windows."
+msgstr ""
+
+#: ../../create_localized_help.py:153
+msgid "Dependencies"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:155
+msgid "This tweak requires two commands available on the system (**xprop** and **xwininfo**) for it to work."
+msgstr ""
+
+#: ../../create_localized_help.py:156
+msgid "Debian based distributions:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:158
+msgid "These commands are provided by the **x11-utils** package. Linux Mint already has this package installed."
+msgstr ""
+
+#: ../../create_localized_help.py:159
+msgid "Archlinux based distributions:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:161
+msgid "These commands are provided by the **xorg-xprop** and **xorg-xwininfo** packages."
+msgstr ""
+
+#: ../../create_localized_help.py:162
+msgid "Fedora based distributions:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:164
+msgid "These commands are provided by the **xorg-x11-utils** package."
+msgstr ""
+
+#: ../../create_localized_help.py:166
+msgid "Warnings"
+msgstr ""
+
+#: ../../create_localized_help.py:167 settings.py:467
+msgid "Client side decorated windows and WINE applications aren't affected by this tweak."
+msgstr ""
+
+#: ../../create_localized_help.py:168 settings.py:468
+msgid "Close all windows that belongs to an application that is going to be added to the applications list and before applying the settings of this tweak."
+msgstr ""
+
+#: ../../create_localized_help.py:169
+msgid "As a general rule to avoid issues, before enabling and configuring this tweak, close all windows currently opened, enable and configure this tweak and then log out and log back in."
+msgstr ""
+
+#: ../../create_localized_help.py:171
+msgid "Known issues"
+msgstr ""
+
+#: ../../create_localized_help.py:172
+msgid "Invisible windows:"
+msgstr ""
+
+#: ../../create_localized_help.py:172
+msgid "Sometimes, windows of applications that are configured to remove their decorations can become invisible. The application's icon can still be seen in the panel (taskbar) and when clicked to focus its respective window, the invisible window will block the clicks as if it were visible. To fix this, the window needs to be unmaximized (it will become visible again) and then closed. When reopened, the window should behave normally."
+msgstr ""
+
+#: ../../create_localized_help.py:173
+msgid "Applications stuck undecorated:"
+msgstr ""
+
+#: ../../create_localized_help.py:174
+msgid "Some times, an application will get stuck undecorated even after unmaximizing it. Restarting the application will recover its ability to decorate and undecorate itself."
+msgstr ""
+
+#: ../../create_localized_help.py:176
+msgid "Alternative"
+msgstr ""
+
+#: ../../create_localized_help.py:177
+msgid "There is an alternative way of hiding the title bar of absolutely all maximized windows without exceptions. By editing your Metacity theme (window decorations theme). It works infinitely better and without any of the issues this tweak on this extension has."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:179
+msgid "Simply go to `/Path/To/Your/Theme/metacity-1` folder and edit with any text editor the file called **metacity-theme-3.xml**. If that file doesn't exists in your theme, then it should exist one called **metacity-theme-2.xml** or **metacity-theme-1.xml**. Choose the one with the bigger number."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:181
+msgid "Find the **frame_geometry** element named **max** (or **maximized** or **normal_max** or **normal_maximized**). Its exact name may vary depending on the theme."
+msgstr ""
+
+#: ../../create_localized_help.py:182
+msgid "Basically, one has to set to that element the attribute **has_title** to false, and then set all sizes of all its properties to 0 (zero). Some themes might require to add more properties and set them to 0 (zero) to completely get rid of the title bar."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:184
+msgid "Next you will find examples on how to edit the Metacity themes found on the **Mint-X** and **Mint-Y** themes."
+msgstr ""
+
+#: ../../create_localized_help.py:186
+msgid "For the Metacity theme found on the Mint-X theme"
+msgstr ""
+
+#: ../../create_localized_help.py:201
+msgid "For the Metacity theme found on Mint-Y theme"
+msgstr ""
+
+#: ../../create_localized_help.py:219
+msgid "General extension issues"
+msgstr ""
+
+#: ../../create_localized_help.py:220
+msgid "Applications not showing up on the applications chooser dialogs"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:222
+msgid "The application chooser dialog used by the settings window of this extension lists only those applications that have available .desktop files. Simply because these applications are the only ones that any of the tweaks that require an application ID (**Auto move windows** and **Windows decorations removal**) will recognize and handle."
+msgstr ""
+
+#: ../../create_localized_help.py:224
+msgid "Following the [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html), one can create a .desktop file for any application that doesn't appear in the applications list."
+msgstr ""
+
+#: ../../create_localized_help.py:226
+msgid "Extension's settings window"
+msgstr ""
+
+#: ../../create_localized_help.py:227
+msgid "From this extension settings window, all options can be imported, exported and/or reseted to their defaults."
+msgstr ""
+
+#: ../../create_localized_help.py:229
+msgid "To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:231
+msgid "Command to install the settings schema:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:234
+msgid "Command to uninstall the settings schema:"
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:237
+msgid "To import/export settings, the **dconf** command needs to be available on the system."
+msgstr ""
+
+#: ../../create_localized_help.py:260
+msgid "The following two sections are available only in English."
+msgstr ""
+
+#. TO TRANSLATORS: This is a placeholder.
+#. Here goes your language name in your own language (a.k.a. endonym).
+#: ../../create_localized_help.py:285 ../../create_localized_help.py:357
+msgid "language-name"
+msgstr ""
+
+#: ../../create_localized_help.py:360 settings.py:2317
+msgid "Help"
+msgstr ""
+
+#: ../../create_localized_help.py:361
+msgid "Contributors"
+msgstr ""
+
+#: ../../create_localized_help.py:362
+msgid "Changelog"
+msgstr ""
+
+#: ../../create_localized_help.py:363
+msgid "Choose language"
+msgstr ""
+
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:364 ../../create_localized_help.py:371
+#, python-format
+msgid "Help for %s"
+msgstr ""
+
+#: ../../create_localized_help.py:372
+msgid "IMPORTANT!!!"
+msgstr ""
+
+#: ../../create_localized_help.py:373
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
+msgstr ""
+
+#: ../../create_localized_help.py:374
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
+msgstr ""
+
+#: ../../create_localized_help.py:380
+msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
+msgstr ""
+
+#: ../../create_localized_help.py:381
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:383
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr ""
+
+#: ../../create_localized_help.py:384
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
 
 #: settings.py:68 settings.py:70
@@ -202,8 +589,7 @@ msgstr ""
 msgid "Set a delay in milliseconds to activate this hot corner."
 msgstr ""
 
-#: settings.py:213 settings.py:225 settings.py:237 settings.py:249
-#: settings.py:301
+#: settings.py:213 settings.py:225 settings.py:237 settings.py:249 settings.py:301
 msgid "milliseconds"
 msgstr ""
 
@@ -223,10 +609,6 @@ msgstr ""
 msgid "Desktop tweaks"
 msgstr ""
 
-#: settings.py:258
-msgid "Desktop area tweaks"
-msgstr ""
-
 #: settings.py:263
 msgid "Enable Desktop area tweaks"
 msgstr ""
@@ -236,26 +618,19 @@ msgid "Enable applications drop to the Desktop"
 msgstr ""
 
 #: settings.py:271
-msgid ""
-"With this option enabled, applications can be dragged from the menu applet "
-"and from the panel launchers applet and dropped into the desktop."
-msgstr ""
-
-#: settings.py:275
-msgid "Tooltips tweaks"
+msgid "With this option enabled, applications can be dragged from the menu applet and from the panel launchers applet and dropped into the desktop."
 msgstr ""
 
 #: settings.py:280
 msgid "Enable Tooltips tweaks"
 msgstr ""
 
+#: settings.py:288 extension.js:815
+msgid "Avoid mouse pointer overlapping tooltips"
+msgstr ""
+
 #: settings.py:289
-msgid ""
-"Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse "
-"pointer. This leads to having tooltips overlapped by the mouse pointer. This"
-" tweak aligns the tooltip to the bottom-right corner of the mouse pointer "
-"(approximately), reducing the possibility of the mouse pointer to overlap "
-"the tooltip."
+msgid "Tooltips on Cinnamon's UI are aligned to the top-left corner of the mouse pointer. This leads to having tooltips overlapped by the mouse pointer. This tweak aligns the tooltip to the bottom-right corner of the mouse pointer (approximately), reducing the possibility of the mouse pointer to overlap the tooltip."
 msgstr ""
 
 #: settings.py:296
@@ -266,16 +641,8 @@ msgstr ""
 msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
 msgstr ""
 
-#: settings.py:305
-msgid "Popup menus tweaks"
-msgstr ""
-
 #: settings.py:310
 msgid "Enable Popup menus tweaks"
-msgstr ""
-
-#: settings.py:317
-msgid "Panel menus behavior"
 msgstr ""
 
 #: settings.py:318
@@ -297,10 +664,6 @@ msgstr ""
 
 #: settings.py:322
 msgid "Don't \"eat\" clicks"
-msgstr ""
-
-#: settings.py:330 settings.py:332
-msgid "Notifications tweaks"
 msgstr ""
 
 #: settings.py:337
@@ -342,13 +705,6 @@ msgstr ""
 msgid "Notification popup right margin"
 msgstr ""
 
-#: settings.py:375
-msgid ""
-"By default, the right margin of the notification popup is defined by the "
-"currently used theme. This option, set to any value other than 0 (zero), "
-"allows to set a custom right margin, ignoring the defined by the theme."
-msgstr ""
-
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:386
 msgid "Display a test notification"
@@ -356,10 +712,6 @@ msgstr ""
 
 #: settings.py:393
 msgid "Windows tweaks"
-msgstr ""
-
-#: settings.py:395
-msgid "Window focus tweaks"
 msgstr ""
 
 #: settings.py:400
@@ -386,10 +738,6 @@ msgstr ""
 msgid "Window shadows tweaks"
 msgstr ""
 
-#: settings.py:417
-msgid "Client side decorated windows aren't affected by this tweak."
-msgstr ""
-
 #: settings.py:422
 msgid "Enable window shadows tweaks"
 msgstr ""
@@ -398,39 +746,12 @@ msgstr ""
 msgid "This tweak allows us to customize the shadow of all windows."
 msgstr ""
 
-#: settings.py:430
-msgid "Shadow presets"
-msgstr ""
-
-#: settings.py:432
-msgid "Custom shadows"
-msgstr ""
-
-#: settings.py:433
-msgid "Default shadows"
-msgstr ""
-
-#: settings.py:434
-msgid "No shadows"
-msgstr ""
-
-#: settings.py:435
-msgid "Windows 10 shadows"
-msgstr ""
-
 #: settings.py:443 settings.py:1147
 msgid "Edit custom shadows values"
 msgstr ""
 
-#: settings.py:447
-msgid "Auto move windows"
-msgstr ""
-
 #: settings.py:448
-msgid ""
-"Not all applications can be assigned to be moved. Most applications which "
-"can open multiple instances of themselves most likely cannot be configured "
-"to be automatically moved."
+msgid "Not all applications can be assigned to be moved. Most applications which can open multiple instances of themselves most likely cannot be configured to be automatically moved."
 msgstr ""
 
 #: settings.py:453
@@ -438,41 +759,19 @@ msgid "Enable auto move windows tweak"
 msgstr ""
 
 #: settings.py:454
-msgid ""
-"This tweak enables the ability to set rules to open determined applications "
-"on specific workspaces."
+msgid "This tweak enables the ability to set rules to open determined applications on specific workspaces."
 msgstr ""
 
 #: settings.py:461
 msgid "Define auto move windows rules"
 msgstr ""
 
-#: settings.py:465
-msgid "Windows decorations removal"
-msgstr ""
-
 #: settings.py:466
-msgid ""
-"This tweak settings are purposely NOT applied in real time. Click the »Apply"
-" windows decorations settings« button to save settings."
-msgstr ""
-
-#: settings.py:467
-msgid ""
-"Client side decorated windows and WINE applications aren't affected by this "
-"tweak."
-msgstr ""
-
-#: settings.py:468
-msgid ""
-"Close all windows that belongs to an application that is going to be added "
-"to the applications list and before applying the settings of this tweak."
+msgid "This tweak settings are purposely NOT applied in real time. Click the »Apply windows decorations settings« button to save settings."
 msgstr ""
 
 #: settings.py:470
-msgid ""
-"Read this extension help for more detailed instructions, list of "
-"dependencies and known issues."
+msgid "Read this extension help for more detailed instructions, list of dependencies and known issues."
 msgstr ""
 
 #: settings.py:476
@@ -642,9 +941,7 @@ msgid "Warning: Trying to reset custom shadows values!!!"
 msgstr ""
 
 #: settings.py:1291
-msgid ""
-"Are  you sure that you want to reset the shadows values of the current view "
-"to their defaults?"
+msgid "Are  you sure that you want to reset the shadows values of the current view to their defaults?"
 msgstr ""
 
 #: settings.py:1389
@@ -702,8 +999,7 @@ msgstr ""
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
-#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING
-#. MORE.
+#. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
 #: settings.py:2149
 msgid "translator-credits"
 msgstr ""
@@ -734,10 +1030,6 @@ msgstr ""
 
 #: settings.py:2313
 msgid "Restart Cinnamon"
-msgstr ""
-
-#: settings.py:2317
-msgid "Help"
 msgstr ""
 
 #: settings.py:2319
@@ -775,16 +1067,13 @@ msgstr ""
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2540
 #, python-format
-msgid ""
-"Please enter your password to install the required settings schema for %s"
+msgid "Please enter your password to install the required settings schema for %s"
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2551
 #, python-format
-msgid ""
-"Could not install the settings schema for %s.  You will have to perform this"
-" step yourself."
+msgid "Could not install the settings schema for %s.  You will have to perform this step yourself."
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
@@ -796,61 +1085,100 @@ msgstr ""
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2568
 #, python-format
+msgid "Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error."
+msgstr ""
+
+#: __init__.js:186
+#, javascript-format
+msgid "Schema %s could not be found for extension %s."
+msgstr ""
+
+#: __init__.js:187
+msgid "Please check your installation."
+msgstr ""
+
+#: __init__.js:196
+msgid "Tweak activation aborted!!!"
+msgstr ""
+
+#: __init__.js:197 __init__.js:222
+msgid "Your Cinnamon version may not be compatible!!!"
+msgstr ""
+
+#: __init__.js:202
+msgid "This is a test notification"
+msgstr ""
+
+#: __init__.js:221
+msgid "Extension activation aborted!!!"
+msgstr ""
+
+#: __init__.js:223
+msgid "Minimum Cinnamon version allowed: 2.8.6"
+msgstr ""
+
+#: __init__.js:500
+msgid "Cancel"
+msgstr ""
+
+#: __init__.js:506
+msgid "OK"
+msgstr ""
+
+#: extension.js:233
+msgid "Open applet folder"
+msgstr ""
+
+#: extension.js:250
+msgid "Edit applet main file"
+msgstr ""
+
+#: extension.js:299
+#, javascript-format
 msgid ""
-"Could not remove the settings schema for %s.  You will have to perform this "
-"step yourself.  This is not a critical error."
+"Do you want to remove '%s' from your panel?\n"
+"Instance ID: %s"
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+#: extension.js:360
+msgid "Open desklet folder"
+msgstr ""
+
+#: extension.js:376
+msgid "Edit desklet main file"
+msgstr ""
+
+#: extension.js:422
+#, javascript-format
 msgid ""
-"lestcape: The brain behind the popup menus and desktop tweaks "
-"https://github.com/lestcape."
+"Do you want to remove '%s' from your desktop?\n"
+"Instance ID: %s"
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid "Radek71: Czech localization https://github.com/Radek71."
+#: extension.js:701
+msgid "Hotcorners tweaks"
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid "muzena: Croatian localization https://github.com/muzena."
+#: extension.js:1306
+msgid "If you updated this extension from an older version, <b>you must check its settings window</b>."
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid ""
-"mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-"
-"spices.linuxmint.com/extensions/view/43."
+#: extension.js:1307
+msgid "Some preferences may have been changed to their default values."
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid ""
-"Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-"
-"spices.linuxmint.com/extensions/view/29."
+#: extension.js:1308
+msgid "This message will not be displayed again."
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid ""
-"Luis Pabon: Author of Maximus NG extension "
-"https://github.com/luispabon/maximus-gnome-shell."
-msgstr ""
-
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid ""
-"Florian Muellner: Author of Auto Move Windows extension "
-"https://extensions.gnome.org/extension/16/auto-move-windows."
-msgstr ""
-
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid ""
-"Valentin Dimitrov: Author of Steal My Focus extension "
-"https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus."
-msgstr ""
-
-#. 0dyseus@CinnamonTweaks->metadata.json->contributors
-msgid ""
-"awamper: Author of Window Demands Attention Shortcut extension "
-"https://github.com/awamper/window-demands-attention-shortcut."
+#: extra_modules/hotCornerPatched.js:40
+msgid "Invalid overview options: Incorrect number of corners"
 msgstr ""
 
 #. 0dyseus@CinnamonTweaks->metadata.json->description
 msgid "Several tweaks for Cinnamon."
+msgstr ""
+
+#. 0dyseus@CinnamonTweaks->metadata.json->contributors
+msgid "See this xlet help file."
 msgstr ""

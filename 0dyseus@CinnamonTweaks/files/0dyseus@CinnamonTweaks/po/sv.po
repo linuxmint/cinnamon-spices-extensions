@@ -1,26 +1,26 @@
-# This is a template file for translating the Cinnamon extension called Cinnamon Tweaks.
-# Copyright (C) 2017
-# This file is distributed under the same license as the Cinnamon Tweaks extension.
-# Odyseus <EMAIL@ADDRESS>, 2017.
+# This is a Swedish translation for the 0dyseus@CinnamonTweaks package.
+# Copyright (C) 2016-2017
+# This file is distributed under the same license as the 0dyseus@CinnamonTweaks package.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.09\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-04 19:46+0800\n"
-"PO-Revision-Date: 2017-06-04 19:46+0800\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: zh_CN\n"
+"Project-Id-Version: 0dyseus@CinnamonTweaks 1.11\n"
+"POT-Creation-Date: 2017-06-03 08:27+0200\n"
+"PO-Revision-Date: 2017-06-03 08:30+0200\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: make-xlet-pot.py 1.0.32\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../create_localized_help.py:65
 msgid "Extension options details"
-msgstr "扩展选项详情"
+msgstr "Tilläggsalternativ"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:68
@@ -29,16 +29,17 @@ msgid ""
 "that must be read and understood before a tweak is enabled. No worries, "
 "nothing *fatal* could ever happen."
 msgstr ""
-"一些调整在启用调整之前会有必须阅读和理解的警告、依赖、限制和已知问题。不用担"
-"心，不会发生致命错误。"
+"Vissa justeringar har varningar, beroenden, begränsningar och kända problem "
+"som man måste känna till innan en justering aktiveras. Inget att oroa sig "
+"för, inget *allvarligt* kan hända."
 
 #: ../../create_localized_help.py:70
 msgid "Applets/Desklets tweaks"
-msgstr "小程序/桌面小工具调整"
+msgstr "Justera panel-/skrivbordsprogram"
 
 #: ../../create_localized_help.py:71
 msgid "Ask for confirmation on applet/desklet removal:"
-msgstr "移除小程序/桌面小工具时询问确认："
+msgstr "Bekräfta borttagning av panel-/skrivbordsprogram:"
 
 #: ../../create_localized_help.py:72
 msgid ""
@@ -47,20 +48,25 @@ msgid ""
 "desklets from the Applets/Desklets manager in Cinnamon settings (there will "
 "be no confirmation)."
 msgstr ""
-"而不是从右键菜单中直接删除小程序/桌面小工具，它将询问确认。此选项不影响从"
-"Cinnamon设置中的小程序/桌面小工具管理器中删除小程序/桌面小工具（将没有确"
-"认）。"
+"Istället för att direkt  ta bort panel-/skrivbordsprogrammet från "
+"kontextmenyn, måste det först bekräftas. Detta alternativ påverkar inte "
+"borttagning av panel-/skrivbordsprogram från hanteraren i Cinnamons "
+"inställningar (behöver inte bekräftas)."
 
 #: ../../create_localized_help.py:73
 msgid ""
 "Display \"Edit applet/desklet main file\" on context menu for applets/"
 "desklet:"
-msgstr "在小程序/桌面小工具右键菜单上显示“编辑小程序/桌面小工具主文件”："
+msgstr ""
+"Visa \"Redigera panel-/skrivbordsprogrammets huvudfil\" i kontextmenyn för "
+"panel-/skrivbordsprogram:"
 
 #: ../../create_localized_help.py:73
 msgid ""
 "Display \"Open applet/desklet folder\" on context menu for applets/desklets"
-msgstr "在小程序/桌面小工具右键菜单上显示“打开小程序/桌面小工具文件夹”"
+msgstr ""
+"Visa \"Öppna panel-/skrivbordsprogrammets mapp\" i kontextmenyn för panel-/"
+"skrivbordsprogram"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:75
@@ -69,79 +75,83 @@ msgid ""
 "The place where this items will be located is chosen by the option **Where "
 "to place the menu item?**."
 msgstr ""
-"这些选项将会添加新的菜单条目添加到小程序/桌面小工具右键菜单中。该条目所在的位"
-"置由选项**在哪里放置菜单条目？**选择。"
+"Dessa alternativ lägger till nya menyposter i panel-/skrivbordsprogrammens "
+"kontextmeny. Placeringen i menyn, bestäms av alternativet **Var skall "
+"menyposten placeras?**."
 
 #: ../../create_localized_help.py:77
 msgid "Hot Corners tweaks"
-msgstr "热角调整"
+msgstr "Justering av aktiva hörn"
 
 #: ../../create_localized_help.py:78
 msgid ""
 "This tweak is only available for Cinnamon versions lower than 3.2. Cinnamon "
 "3.2.x already has hot corners delay activation."
 msgstr ""
-"此调整仅适用于低于3.2的Cinnamon版本。Cinnamon3.2.x已经包含热角延迟激活。"
+"Denna justering är tillgänglig endast för Cinnamon-versioner lägre än 3.2. "
+"Cinnamon 3.2.x har redan möjligheter till fördröjd aktivering av aktiva hörn."
 
 #: ../../create_localized_help.py:79 ../../create_localized_help.py:80
 #: ../../create_localized_help.py:81 ../../create_localized_help.py:82
 #: ../../create_localized_help.py:98 ../../create_localized_help.py:101
 #: ../../create_localized_help.py:119
 msgid "Crystal clear."
-msgstr "浅显易懂。"
+msgstr "Kristallklar."
 
 #: ../../create_localized_help.py:79
 msgid "Top left hot corner activation delay:"
-msgstr "左上方热角激活延迟："
+msgstr "Aktiveringsfördröjning för övre vänstra hörnet:"
 
 #: ../../create_localized_help.py:80
 msgid "Top right hot corner activation delay:"
-msgstr "右上方热角激活延迟："
+msgstr "Aktiveringsfördröjning för övre högra hörnet:"
 
 #: ../../create_localized_help.py:81
 msgid "Bottom left hot corner activation delay:"
-msgstr "左下方热角激活延迟："
+msgstr "Aktiveringsfördröjning för undre vänstra hörnet:"
 
 #: ../../create_localized_help.py:82
 msgid "Bottom right hot corner activation delay:"
-msgstr "右下方热角激活延迟："
+msgstr "Aktiveringsfördröjning för undre högra hörnet:"
 
 #: ../../create_localized_help.py:84 settings.py:258
 msgid "Desktop area tweaks"
-msgstr "桌面区域调整"
+msgstr "Justera skrivbordsområdet"
 
 #: ../../create_localized_help.py:85
 msgid "Enable applications drop to the Desktop:"
-msgstr "启用应用程序拖放到桌面："
+msgstr "Aktivera programsläpp på skrivbordet:"
 
 #: ../../create_localized_help.py:86
 msgid ""
 "This tweak enables the ability to drag and drop applications from the menu "
 "applet and from the panel launchers applet into the desktop."
-msgstr "此调整使得能够将应用程序从菜单小程序和面板启动器小程序拖放到桌面中。"
+msgstr ""
+"Med denna justering aktiverad, kan du dra och släppa program från panelmenyn "
+"och från programstartaren till skrivbordet."
 
 #: ../../create_localized_help.py:88 settings.py:305
 msgid "Popup menus tweaks"
-msgstr "弹出菜单调整"
+msgstr "Justera popup-menyer"
 
 #: ../../create_localized_help.py:89 settings.py:317
 msgid "Panel menus behavior"
-msgstr "面板菜单行为"
+msgstr "Beteende för panelmenyer"
 
 #: ../../create_localized_help.py:90 ../../create_localized_help.py:131
 #: ../../create_localized_help.py:143 ../../create_localized_help.py:150
 msgid "Note:"
-msgstr "注意："
+msgstr "Notis:"
 
 #: ../../create_localized_help.py:91
 msgid ""
 "This setting affects only the behavior of menus that belongs to applets "
 "placed on any panel."
-msgstr "此设置仅影响属于位于任何面板上的小程序的菜单的行为。"
+msgstr "Denna inställning påverkar endast menyer tillhörande panelprogram."
 
 #: ../../create_localized_help.py:93
 msgid "Emulate Gnome Shell behavior:"
-msgstr "模拟Gnome Shell行为："
+msgstr "Emulera Gnome Shell-beteendet:"
 
 #: ../../create_localized_help.py:93
 msgid ""
@@ -150,9 +160,9 @@ msgid ""
 "automatically open without the need to click on them. With this option "
 "enabled, that same behavior can be reproduced on Cinnamon."
 msgstr ""
-"当在Genome Shell上打开菜单，然后将鼠标光标移动到顶部面板上的另一个按钮时，所"
-"悬停的按钮的菜单将会自动打开而无需点击。启用此选项后，可以在Cinnamon上重现相"
-"同的行为。"
+"När en meny öppnas i Gnome och muspekaren sedan flyttas till en annan knapp "
+"i toppanelen, öppnas den hovrade knappens meny automatiskt, utan att klicka "
+"på den. Med detta alternativ aktiverat, får du samma beteende i Cinnamon."
 
 #: ../../create_localized_help.py:94
 msgid ""
@@ -162,22 +172,23 @@ msgid ""
 "the second applet. With this option enabled, one can directly open the menu "
 "of any applet even if another applet has its menu open."
 msgstr ""
-"默认情况下，当在Cinnamon上打开一个小程序的菜单，然后点击另一个小程序要打开其"
-"菜单时，第一次点击用于关闭第一次打开的菜单，然后必须再执行一次点击才能打开第"
-"二个小程序的菜单。启用此选项后，即使打开了另一个小程序的菜单，也可以直接打开"
-"任何小程序的菜单。"
+"Standardbeteendet när man öppnar en panelmeny i Cinnamon och sedan klickar "
+"på ett annat panelprogram för att öppna den menyn, är att det första klicket "
+"används för att stänga den först öppnade menyn och man måste sedan klicka "
+"igen, för att öppna den andra menyn. Med detta alternativ aktiverat, kan man "
+"direkt öppna en andra meny, även om en annan meny redan är öppen."
 
 #: ../../create_localized_help.py:94
 msgid "Don't eat clicks:"
-msgstr "不要“吃掉”点击："
+msgstr "Ät inte klick:"
 
 #: ../../create_localized_help.py:96 settings.py:275
 msgid "Tooltips tweaks"
-msgstr "提示调整"
+msgstr "Justera verktygsbeskrivningar"
 
 #: ../../create_localized_help.py:97
 msgid "Avoid mouse pointer overlapping tooltips:"
-msgstr "避免鼠标指针与提示重叠："
+msgstr "Undvik att muspekaren överlappar verktygsbeskrivningar:"
 
 #: ../../create_localized_help.py:97
 msgid ""
@@ -188,40 +199,45 @@ msgid ""
 "the tooltip. This tweak is only available for Cinnamon versions lower than "
 "3.2. Cinnamon 3.2.x already has the position of the tooltips changed."
 msgstr ""
-"Cinnamon用户界面上的提示与鼠标指针的左上角对齐。这导致提示与鼠标指针重叠。此"
-"调整将提示对齐到鼠标指针的右下角（大约），从而减少鼠标指针与提示重叠的可能"
-"性。此调整仅适用于低于3.2的Cinnamon版本。Cinnamon3.2.x已经可以更改工具提示的"
-"位置。"
+"Verktygsbeskrivningar i Cinnamon,  anpassas mot muspekarens övre "
+"vänsterhörn. Detta kan leda till att muspekaren överlappar "
+"verktygsbeskrivningen. Denna justering anpassar verktygsbeskrivningen mot "
+"muspekarens undre högerhörn (ungefärligt) och reducerar risken för "
+"överlappning. Denna justering är endast tillgänglig i Cinnamon-versioner "
+"lägre än 3.2. Cinnamon 3.2.x har redan ändrad position på "
+"verktygsbeskrivningar."
 
 #: ../../create_localized_help.py:98
 msgid "Tooltips show delay:"
-msgstr "提示显示延迟："
+msgstr "Fördröjd visning av verktygsbeskrivningar:"
 
 #: ../../create_localized_help.py:100 settings.py:330 settings.py:332
 msgid "Notifications tweaks"
-msgstr "通知调整"
+msgstr "Justera aviseringar"
 
 #: ../../create_localized_help.py:101
 msgid "Enable notifications open/close animation:"
-msgstr "启用通知开/关动画："
+msgstr "Aktivera animering av aviseringsrutor:"
 
 #: ../../create_localized_help.py:102
 msgid "Notifications position:"
-msgstr "通知位置："
+msgstr "Aviseringsposition:"
 
 #: ../../create_localized_help.py:103
 msgid ""
 "Notifications can be displayed at the top-right of screen (system default) "
 "or at the bottom-right of screen."
-msgstr "通知可以在屏幕的右上方（系统默认）或右下方显示。"
+msgstr ""
+"Aviseringar kan visas i skärmens övre högra hörn (systemstandard), eller i "
+"undre högra hörnet."
 
 #: ../../create_localized_help.py:104
 msgid "Distance from panel:"
-msgstr "面板距离："
+msgstr "Avstånd från panelen:"
 
 #: ../../create_localized_help.py:105
 msgid "For notifications displayed at the top-right of screen:"
-msgstr "对于屏幕右上方显示的通知："
+msgstr "För aviseringar som visas i övre högra skärmhörnet:"
 
 #: ../../create_localized_help.py:106
 msgid ""
@@ -229,12 +245,12 @@ msgid ""
 "panel, from the top of the screen) to the top border of the notification "
 "popup."
 msgstr ""
-"这是指顶部面板的底部边框（如果没有顶部面板，则从屏幕顶部）到通知弹窗的顶部边"
-"框之间的距离。"
+"Detta är avståndet mellan underkant på toppanelen (skärmens överkant om "
+"toppanel saknas) och överkant på aviseringsrutan."
 
 #: ../../create_localized_help.py:107
 msgid "For notifications displayed at the bottom-right of screen:"
-msgstr "对于屏幕右下角显示的通知："
+msgstr "För aviseringar som visas i undre högra skärmhörnet:"
 
 #: ../../create_localized_help.py:108
 msgid ""
@@ -242,12 +258,12 @@ msgid ""
 "bottom panel, from the bottom of the screen) to the bottom border of the "
 "notification popup."
 msgstr ""
-"这是指底部面板的顶部边框（如果没有底部面板，则从屏幕底部）到通知弹窗的底部边"
-"框之间的距离。"
+"Detta är avståndet mellan överkant på bottenpanelen (skärmens underkant om "
+"bottenpanel saknas) och underkant på aviseringsrutan."
 
 #: ../../create_localized_help.py:109
 msgid "Notification popup right margin:"
-msgstr "通知弹窗右侧边距："
+msgstr "Högermarginal för aviseringsrutor:"
 
 #: ../../create_localized_help.py:110 settings.py:375
 msgid ""
@@ -255,12 +271,13 @@ msgid ""
 "currently used theme. This option, set to any value other than 0 (zero), "
 "allows to set a custom right margin, ignoring the defined by the theme."
 msgstr ""
-"默认情况下，通知弹窗的右侧边距是由当前使用的主题所定义的。此选项，设为任何其"
-"他大于0（零）的值，允许设置自定义右侧边距，忽略由主题所定义的右侧边距。"
+"Som standard anges högermarginalen för aviseringsrutor av det aktuella "
+"temat. Om detta alternativ anges som något annat än 0 (noll), ställer du in "
+"en anpassad högermarginal och åsidosätter den som definieras av temat."
 
 #: ../../create_localized_help.py:112 settings.py:395
 msgid "Window focus tweaks"
-msgstr "窗口焦点调整"
+msgstr "Justera fönsterfokus"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:114
@@ -271,11 +288,11 @@ msgid ""
 "called [Window Demands Attention Shortcut](https://github.com/awamper/window-"
 "demands-attention-shortcut) by [awamper](https://github.com/awamper)."
 msgstr ""
-"调整基于[Valentin Dimitrov](https://github.com/v-dimitrov)的[Steal My Focus]"
-"(https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus)gnome-shell"
-"扩展和[awamper](https://github.com/awamper)的[Window Demands Attention "
-"Shortcut](https://github.com/awamper/window-demands-attention-shortcut)gnome-"
-"shell扩展。"
+"Justering baserad på ett Gnome-tillägg kallat [Steal My Focus](https://"
+"github.com/v-dimitrov/gnome-shell-extension-stealmyfocus) av [Valentin "
+"Dimitrov](https://github.com/v-dimitrov) och ett annat Gnome-tillägg kallat "
+"[Window Demands Attention Shortcut](https://github.com/awamper/window-"
+"demands-attention-shortcut) av [awamper](https://github.com/awamper)."
 
 #: ../../create_localized_help.py:116
 msgid ""
@@ -283,46 +300,50 @@ msgid ""
 "settings combination on Cinnamon settings. This option will allow you to "
 "correct that."
 msgstr ""
-"无论Cinnamon设置上的设置组合如何，某些要求关注的窗口不会获得焦点。此选项将允"
-"许您进行更正。"
+"Vissa fönster som kräver uppmärksamhet får inte fokus, oavsett "
+"inställningskombination i Cinnamons inställningar. Detta alternativ låter "
+"dig korrigera det."
 
 #: ../../create_localized_help.py:118
 msgid "The activation of windows demanding attention...:"
-msgstr "激活需要关注的窗口..."
+msgstr "Aktivering av fönster som kräver uppmärksamhet...:"
 
 #: ../../create_localized_help.py:119
 msgid "...is handled by the system:"
-msgstr "...交由系统处理："
+msgstr "...hanteras av systemet:"
 
 #: ../../create_localized_help.py:120
 msgid "...is immediate:"
-msgstr "...即时："
+msgstr "...sker omedelbart:"
 
 #: ../../create_localized_help.py:121
 msgid "will force windows demanding attention to be focused immediately."
-msgstr "将会立即强制激活需要关注的窗口。"
+msgstr "sätter omedelbart fokus på fönster som kräver uppmärksamhet."
 
 #: ../../create_localized_help.py:122
 msgid "...is performed with a keyboard shortcut:"
-msgstr "...使用键盘快捷键执行："
+msgstr "...utförs med en tangentbordsgenväg:"
 
 #: ../../create_localized_help.py:123
 msgid "will focus windows demanding attention with a keyboard shortcut."
-msgstr "将会使用键盘快捷键激活需要关注的窗口。"
+msgstr ""
+"sätter fokus på fönster som kräver uppmärksamhet, med en tangentbordsgenväg."
 
 #: ../../create_localized_help.py:124
 msgid "Keyboard shortcut:"
-msgstr "键盘快捷键："
+msgstr "Tangentbordsgenväg:"
 
 #: ../../create_localized_help.py:125
 msgid ""
 "Set a keyboard shortcut for the option **...is performed with a keyboard "
 "shortcut**."
-msgstr "设置选项的键盘快捷键**...使用键盘快捷键执行**。"
+msgstr ""
+"Ange en tangentbordsgenväg för alternativet **utförs med en "
+"tangentbordsgenväg**."
 
 #: ../../create_localized_help.py:127
 msgid "Window Shadows tweaks"
-msgstr "窗口阴影调整"
+msgstr "Justera fönsterskuggor"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:129
@@ -332,37 +353,39 @@ msgid ""
 "github.com/mikhail-ekzi). It allows to modify the shadows used by Cinnamon's "
 "window manager (Muffin)."
 msgstr ""
-"调整基于[mikhail-ekzi](https://github.com/mikhail-ekzi)所创建的一个名为"
-"[Custom Shadows](https://cinnamon-spices.linuxmint.com/extensions/view/43)的"
-"Cinnamon扩展。它允许修改Cinnamon窗口管理器(Muffin)使用的阴影。"
+"Justering baserad på ett Cinnamon-tillägg kallat [Custom Shadows](https://"
+"cinnamon-spices.linuxmint.com/extensions/view/43) skapat av [mikhail-ekzi]"
+"(https://github.com/mikhail-ekzi). Det låter oss modifiera skuggor som "
+"används av Cinnamons fönsterhanterare (Muffin)."
 
 #: ../../create_localized_help.py:131 settings.py:417
 msgid "Client side decorated windows aren't affected by this tweak."
-msgstr "客户端装饰的窗口不受此调整的影响。"
+msgstr ""
+"Programfönster dekorerade av klientsidan, påverkas inte av denna justering."
 
 #: ../../create_localized_help.py:133 settings.py:430
 msgid "Shadow presets"
-msgstr "阴影预设值"
+msgstr "Förinställd skugga"
 
 #: ../../create_localized_help.py:134 settings.py:432
 msgid "Custom shadows"
-msgstr "自定义阴影"
+msgstr "Anpassad skugga"
 
 #: ../../create_localized_help.py:135 settings.py:433
 msgid "Default shadows"
-msgstr "默认阴影"
+msgstr "Standardskugga"
 
 #: ../../create_localized_help.py:136 settings.py:434
 msgid "No shadows"
-msgstr "没有阴影"
+msgstr "Ingen skugga"
 
 #: ../../create_localized_help.py:137 settings.py:435
 msgid "Windows 10 shadows"
-msgstr "Windows 10阴影"
+msgstr "Windows 10-skugga"
 
 #: ../../create_localized_help.py:139 settings.py:447
 msgid "Auto move windows"
-msgstr "自动移动窗口"
+msgstr "Flytta fönster automatiskt"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:141
@@ -372,9 +395,10 @@ msgid ""
 "(https://github.com/fmuellner). It enables the ability to set rules to open "
 "determined applications on specific workspaces."
 msgstr ""
-"调整基于[Florian Muellner](https://github.com/fmuellner)的[Auto Move Windows]"
-"(https://extensions.gnome.org/extension/16/auto-move-windows/)gnome-shell扩"
-"展。他能够设置规则以在特定的工作区打开确定的窗口。"
+"Justering baserad på ett Gnome-tillägg kallat [Auto Move Windows](https://"
+"extensions.gnome.org/extension/16/auto-move-windows/) av [Florian Muellner]"
+"(https://github.com/fmuellner). Det låter oss ange regler för att "
+"automatiskt öppna angivna program på specifik arbetsyta."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:145 ../../create_localized_help.py:152
@@ -383,12 +407,13 @@ msgid ""
 "application chooser dialog, read the section on this help file called "
 "**Applications not showing up on the applications chooser dialogs**."
 msgstr ""
-"如果您要选择的应用程序没有显示在应用程序选择器对话框中，请阅读此帮助文件中名"
-"为“应用程序未显示在应用程序选择器对话框**”的部分。"
+"Om programmet du vill välja inte visas i programväljardialogen, kan du "
+"konsultera den här hjälpfilens sektion **Program som inte visas i "
+"programväljardialoger**."
 
 #: ../../create_localized_help.py:146 settings.py:465
 msgid "Windows decorations removal"
-msgstr "窗口装饰移除"
+msgstr "Borttagning av fönsterdekorationer"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:148
@@ -400,70 +425,80 @@ msgid ""
 "(https://github.com/luispabon). This tweak allows to remove the windows "
 "decorations from maximized/half-maximized/tiled windows."
 msgstr ""
-"调整基于[Fatih Mete](https://github.com/fatihmete)的[Cinnamon Maximus]"
-"(https://cinnamon-spices.linuxmint.com/extensions/view/29)扩展和[Luis Pabon]"
-"(https://github.com/luispabon)的[Maximus NG](https://github.com/luispabon/"
-"maximus-gnome-shell)gnome-shell扩展中的一些功能。此调整允许从最大化/半最大化/"
-"平铺的窗口中移除窗口装饰。"
+"Justering baserad på tillägget kallat [Cinnamon Maximus](https://cinnamon-"
+"spices.linuxmint.com/extensions/view/29) av [Fatih Mete](https://github.com/"
+"fatihmete) med några alternativ från gnome-tillägget [Maximus NG](https://"
+"github.com/luispabon/maximus-gnome-shell) av [Luis Pabon](https://github.com/"
+"luispabon). Denna justering låter oss ta bort fönsterdekorationer från "
+"maximerade, halvmaximerade, och storleksanpassade fönster."
 
 #: ../../create_localized_help.py:153
 msgid "Dependencies"
-msgstr "依赖关系"
+msgstr "Beroenden"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:155
 msgid ""
 "This tweak requires two commands available on the system (**xprop** and "
 "**xwininfo**) for it to work."
-msgstr "此调整需要(**xprop**和**xwininfo**)两个命令在系统上可用才能工作。"
+msgstr ""
+"För att fungera kräver den här justeringen att två kommandon finns "
+"tillgängliga i systemet (**xprop** och **xwininfo**)"
 
 #: ../../create_localized_help.py:156
 msgid "Debian based distributions:"
-msgstr "Debian系发行版："
+msgstr "Debian-baserade distributioner:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:158
 msgid ""
 "These commands are provided by the **x11-utils** package. Linux Mint already "
 "has this package installed."
-msgstr "这些命令由**x11-utils**软件包提供。Linux Mint已经安装了该软件包。"
+msgstr ""
+"Dessa kommandon tillhandahålls av paketet **x11-utils**. Linux Mint har "
+"redan detta paket installerat."
 
 #: ../../create_localized_help.py:159
 msgid "Archlinux based distributions:"
-msgstr "Archlinux系发行版："
+msgstr "Archlinux-baserade distributioner:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:161
 msgid ""
 "These commands are provided by the **xorg-xprop** and **xorg-xwininfo** "
 "packages."
-msgstr "这些命令由**xorg-xprop**和**xorg-xwininfo**软件包提供。"
+msgstr ""
+"Dessa kommandon tillhandahålls av paketen **xorg-xprop** och **xorg-"
+"xwininfo**."
 
 #: ../../create_localized_help.py:162
 msgid "Fedora based distributions:"
-msgstr "Fedora系发行版："
+msgstr "Fedora-baserade distributioner:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:164
 msgid "These commands are provided by the **xorg-x11-utils** package."
-msgstr "这些命令由**xorg-x11-utils**软件包提供。"
+msgstr "Dessa kommandon tillhandahålls av paketet **xorg-x11-utils**."
 
 #: ../../create_localized_help.py:166
 msgid "Warnings"
-msgstr "警告"
+msgstr "Varningar"
 
 #: ../../create_localized_help.py:167 settings.py:467
 msgid ""
 "Client side decorated windows and WINE applications aren't affected by this "
 "tweak."
-msgstr "客户端装饰的窗口和WINE应用程序不受此调整的影响。"
+msgstr ""
+"Programfönster dekorerade av klientsidan och WINE-program, påverkas inte av "
+"denna justering."
 
 #: ../../create_localized_help.py:168 settings.py:468
 msgid ""
 "Close all windows that belongs to an application that is going to be added "
 "to the applications list and before applying the settings of this tweak."
 msgstr ""
-"关闭属于要添加到应用程序列表的应用程序的所有窗口，然后应用此调整的设置。"
+"Stäng alla fönster som tillhör de program som skall läggas till i "
+"programlistan, innan du tillämpar inställningarna i den här justeringen."
 
 #: ../../create_localized_help.py:169
 msgid ""
@@ -471,16 +506,17 @@ msgid ""
 "tweak, close all windows currently opened, enable and configure this tweak "
 "and then log out and log back in."
 msgstr ""
-"作为避免问题的通用规则，在启用和配置此调整之前，关闭当前打开的所有窗口，启用"
-"并配置此调整，然后注销并重新登录。"
+"Som generell regel för att undvika problem, bör du stänga alla öppna fönster "
+"innan du aktiverar och konfigurerar denna justering och sedan logga ut/in "
+"när du är klar."
 
 #: ../../create_localized_help.py:171
 msgid "Known issues"
-msgstr "已知问题"
+msgstr "Kända problem"
 
 #: ../../create_localized_help.py:172
 msgid "Invisible windows:"
-msgstr "窗口不可见："
+msgstr "Osynliga fönster:"
 
 #: ../../create_localized_help.py:172
 msgid ""
@@ -491,14 +527,16 @@ msgid ""
 "the window needs to be unmaximized (it will become visible again) and then "
 "closed. When reopened, the window should behave normally."
 msgstr ""
-"有时，配置为移除其装饰的应用程序窗口可能会变得不可见。应用程序的图标仍然可以"
-"在面板（任务栏）中看到，当单击以聚焦到其各自的窗口时，不可见的窗口将阻止点"
-"击，就像它是可见的。为了解决这个问题，窗口需要取消最大化（它将会再次变得可"
-"见）然后关闭。重新打开时，窗口应该会正常运行。"
+"Ibland kan programfönster som konfigurerats att ta bort dekorationen, bli "
+"osynliga. Programikonen kan fortfarande ses i panelen (aktivitetsfältet) och "
+"när den klickas för att fokusera respektive fönster, blockerar det osynliga "
+"fönstret klicken som om det var synligt. För att fixa detta, måste fönstret "
+"avmaximeras (det blir då synligt igen) och sedan stängas. När det öppnas "
+"igen, bör det uppföra sig normalt."
 
 #: ../../create_localized_help.py:173
 msgid "Applications stuck undecorated:"
-msgstr "应用程序卡住时取消装饰："
+msgstr "Programfönster som fastnat utan dekoration:"
 
 #: ../../create_localized_help.py:174
 msgid ""
@@ -506,12 +544,13 @@ msgid ""
 "unmaximizing it. Restarting the application will recover its ability to "
 "decorate and undecorate itself."
 msgstr ""
-"有些时候，一个应用程序即使在取消最大化之后也会卡住。重新启动应用程序将会恢复"
-"装饰和取消装饰其自身的能力。"
+"Ibland kan ett programfönster fastna i odekorerat läge efter återgång från "
+"maximering. Omstart av programmet återställer förmågan att ta bort och "
+"återställa dekorationen."
 
 #: ../../create_localized_help.py:176
 msgid "Alternative"
-msgstr "替代"
+msgstr "Alternativ"
 
 #: ../../create_localized_help.py:177
 msgid ""
@@ -520,8 +559,10 @@ msgid ""
 "decorations theme). It works infinitely better and without any of the issues "
 "this tweak on this extension has."
 msgstr ""
-"有一种替代方法是彻底隐藏所有最大化窗口的标题栏。通过编辑您的Metacity主题（窗"
-"口装饰主题）。它工作得非常好，在这个扩展上没有任何此调整的问题。"
+"Det finns ett alternativt sätt att dölja namnfältet på absolut alla "
+"maximerade fönster, utan undantag. Genom att redigera ditt Metacity-tema "
+"(fönsterdekorationstemat). Det fungerar oändligt mycket bättre och utan "
+"något av de problem som denna justering i tilläggsmodulen har."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:179
@@ -531,10 +572,10 @@ msgid ""
 "in your theme, then it should exist one called **metacity-theme-2.xml** or "
 "**metacity-theme-1.xml**. Choose the one with the bigger number."
 msgstr ""
-"只需转到`/您/的/主题/路径/metacity-1`文件夹，并使用任何文本编辑器编辑名为"
-"**metacity-theme-3.xml**的文件。如果您的主题中没有该文件，则应该有一个名为"
-"**metacity-theme-2.xml**或**metacity-theme-1.xml**的文件。选择其中数字更大的"
-"那一个。"
+"Gå till \"/sökväg/till/ditt/tema/metacity-1\" och redigera filen **metacity-"
+"theme-3.xml** med valfri textredigerare. Om filen inte finns i ditt tema, "
+"bör det finnas en som heter **metacity-theme-2.xml** eller **metacity-"
+"theme-1.xml**. Välj den med högst nummer."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:181
@@ -543,8 +584,9 @@ msgid ""
 "**normal_max** or **normal_maximized**). Its exact name may vary depending "
 "on the theme."
 msgstr ""
-"查找名为**max**（或**maximized**或**normal_max**或**normal_maximized**）的"
-"**frame_geometry**元素。其确切名称可能因主题而异。"
+"Hitta **frame_geometry**-elementet kallat **max** (eller **maximized** eller "
+"**normal_max** eller **normal_maximized**). Det exakta namnet kan variera "
+"beroende på tema."
 
 #: ../../create_localized_help.py:182
 msgid ""
@@ -553,8 +595,10 @@ msgid ""
 "might require to add more properties and set them to 0 (zero) to completely "
 "get rid of the title bar."
 msgstr ""
-"基本上，必须将属性**has_title**设置为false，然后将其所有属性的所有大小设置为"
-"0（零）。某些主题可能需要添加更多属性并将其设置为0（零）以完全摆脱标题栏。"
+"I grund och botten måste man ange elementattributet **has_title** som falskt "
+"och sedan ställa in alla egenskapsstorlekar som 0 (noll). Vissa teman kan "
+"kräva att man lägger till fler egenskaper och anger dem som 0 (noll), för "
+"att helt bli av med namnfältet."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:184
@@ -562,24 +606,24 @@ msgid ""
 "Next you will find examples on how to edit the Metacity themes found on the "
 "**Mint-X** and **Mint-Y** themes."
 msgstr ""
-"接下来您会找到编辑在**Mint-X** and **Mint-Y**主题所找到的Metacity主题的方法的"
-"示例。"
+"Nedan hittar du exempel på hur du redigerar Metacity-teman som hittas i "
+"**Mint-X**- och **Mint-Y**-teman."
 
 #: ../../create_localized_help.py:186
 msgid "For the Metacity theme found on the Mint-X theme"
-msgstr "在Mint-X主题中找到Metacity主题"
+msgstr "För Metacity-temat som hittas i Mint-X-temat"
 
 #: ../../create_localized_help.py:201
 msgid "For the Metacity theme found on Mint-Y theme"
-msgstr "在Mint-Y主题中找到Metacity主题"
+msgstr "För Metacity-temat som hittas i Mint-Y-temat"
 
 #: ../../create_localized_help.py:219
 msgid "General extension issues"
-msgstr "常见扩展问题"
+msgstr "Allmänna tilläggsproblem"
 
 #: ../../create_localized_help.py:220
 msgid "Applications not showing up on the applications chooser dialogs"
-msgstr "应用程序没有在应用程序选择器对话框上显示"
+msgstr "Program som inte visas i programväljardialoger"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:222
@@ -590,9 +634,11 @@ msgid ""
 "require an application ID (**Auto move windows** and **Windows decorations "
 "removal**) will recognize and handle."
 msgstr ""
-"此扩展的设置窗口使用的应用程序选择器对话框仅列出包含可用的.desktop文件的应用"
-"程序。只是因为这些应用程序是唯一的，任何需要应用程序ID的调整（**自动移动窗口"
-"**和** 移除窗口装饰**）将会被识别和处理。"
+"Programväljardialogen som används i det här tilläggets inställningar, listar "
+"endast de program som har tillgängliga .desktop-filer. Helt enkelt för att "
+"dessa program är de enda som kan hanteras av de justeringar som kräver ett "
+"applikations-ID (**Flytta fönster automatiskt** och **Borttagning av "
+"fönsterdekorationer**)."
 
 #: ../../create_localized_help.py:224
 msgid ""
@@ -601,19 +647,21 @@ msgid ""
 "desktop file for any application that doesn't appear in the applications "
 "list."
 msgstr ""
-"按照[桌面输入规范](https://specifications.freedesktop.org/desktop-entry-spec/"
-"latest/index.html)，可以为未出现在应用程序列表中的任何应用程序创建.desktop文"
-"件。"
+"Om man följer [Desktop Entry Specification](https://specifications."
+"freedesktop.org/desktop-entry-spec/latest/index.html), kan man skapa en ."
+"desktop-fil för ett program som inte visas i programlistan."
 
 #: ../../create_localized_help.py:226
 msgid "Extension's settings window"
-msgstr "扩展的窗口设置"
+msgstr "Inställningsfönster för tilläggsmoduler"
 
 #: ../../create_localized_help.py:227
 msgid ""
 "From this extension settings window, all options can be imported, exported "
 "and/or reseted to their defaults."
-msgstr "在此扩展设置窗口中，所有选项都可以导入，导出和/或重置为默认值。"
+msgstr ""
+"Från denna tilläggsmoduls inställningsfönster kan alla alternativ "
+"importeras, exporteras och/eller återställas till standardinställning."
 
 #: ../../create_localized_help.py:229
 msgid ""
@@ -624,85 +672,95 @@ msgid ""
 "This is achieved by simply going to the extension folder and launch the "
 "following command:"
 msgstr ""
-"要能够执行任何这些操作，需要在系统中安装设置模式。从Cinnamon扩展管理器安装扩"
-"展时，这是自动完成的。但是如果手动安装扩展，则还需要手动安装设置模式。这是通"
-"过简单地转到扩展文件夹并启动以下命令来实现的："
+"För att kunna utföra någon av dessa åtgärder, måste inställningsschemat "
+"installeras i systemet. Detta görs automatiskt när tillägget installeras "
+"från Cinnamons tilläggshanterare, men om tillägget installeras manuellt, "
+"måste också inställningsschemat installeras manuellt. Detta görs genom att "
+"gå till tilläggets installationsmapp och köra följande kommando:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:231
 msgid "Command to install the settings schema:"
-msgstr "安装设置模式的命令："
+msgstr "Kommando för att installera inställningsschema:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:234
 msgid "Command to uninstall the settings schema:"
-msgstr "卸载设置模式的命令："
+msgstr "Kommando för att avinstallera inställningsschema:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:237
 msgid ""
 "To import/export settings, the **dconf** command needs to be available on "
 "the system."
-msgstr "要导入/导出设置，**dconf**命令需要在系统上可用。"
+msgstr ""
+"För att importera/exportera inställningar, måste **dconf**-kommandot finnas "
+"tillgängligt i systemet."
 
 #: ../../create_localized_help.py:260
 msgid "The following two sections are available only in English."
-msgstr "以下两个部分仅使用英语。"
+msgstr "Följande två sektioner är endast tillgängliga på Engelska."
 
 #. TO TRANSLATORS: This is a placeholder.
 #. Here goes your language name in your own language (a.k.a. endonym).
 #: ../../create_localized_help.py:285 ../../create_localized_help.py:357
 msgid "language-name"
-msgstr "简体中文"
+msgstr "Svenska"
 
 #: ../../create_localized_help.py:360 settings.py:2317
 msgid "Help"
-msgstr "帮助"
+msgstr "Hjälp"
 
 #: ../../create_localized_help.py:361
 msgid "Contributors"
-msgstr "贡献者"
+msgstr "Medhjälpare"
 
 #: ../../create_localized_help.py:362
 msgid "Changelog"
-msgstr "变更日志"
+msgstr "Ändringslogg"
 
 #: ../../create_localized_help.py:363
 msgid "Choose language"
-msgstr "选择语言"
+msgstr "Välj språk"
 
 #. TO TRANSLATORS: Full sentence:
 #. "Help for <xlet_name>"
 #: ../../create_localized_help.py:364 ../../create_localized_help.py:371
 #, python-format
 msgid "Help for %s"
-msgstr "%s的帮助"
+msgstr "Hjälp för %s"
 
 #: ../../create_localized_help.py:372
 msgid "IMPORTANT!!!"
-msgstr "重要！！！"
+msgstr "VIKTIGT!!!"
 
 #: ../../create_localized_help.py:373
 msgid ""
 "Never delete any of the files found inside this xlet folder. It might break "
 "this xlet functionality."
-msgstr "不要删除该xlet文件夹内的任何文件。可能会损坏该xlet的功能。"
+msgstr ""
+"Ta aldrig bort någon av filerna i den här xlet-mappen. Det kan förstöra "
+"programmets funktioner."
 
 #: ../../create_localized_help.py:374
 msgid ""
 "Bug reports, feature requests and contributions should be done on this "
 "xlet's repository linked next."
-msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。"
+msgstr ""
+"Felrapporter, funktionsönskemål och kodbidrag kan lämnas i denna xlets "
+"kodförråd, på följande länk."
 
 #: ../../create_localized_help.py:380
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
-msgstr "小程序/桌面小工具/扩展（也称为xlets）本地化"
+msgstr "Applets/Desklets/Extensions (xlets) översättning"
 
 #: ../../create_localized_help.py:381
 msgid ""
 "If this xlet was installed from Cinnamon Settings, all of this xlet's "
 "localizations were automatically installed."
-msgstr "如果该xlet安装自Cinnamon设置，该xlet的所有本地化已经自动安装。"
+msgstr ""
+"Om denna xlet installerades från Cinnamons inställningar, installerades "
+"också alla översättningar automatiskt."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:383
@@ -711,153 +769,158 @@ msgid ""
 "localizations can be installed by executing the script called "
 "**localizations.sh** from a terminal opened inside the xlet's folder."
 msgstr ""
-"如果该xlet是通过手动安装而不是Cinnamon设置，可以通过打开终端执行xlet文件夹内"
-"名为**localizations.sh**的脚本安装本地化。"
+"Om denna xlet installerades manuellt och inte via Cinnamons inställningar, "
+"kan översättningar installeras genom att köra skriptet **localizations.sh** "
+"från en terminal öppnad i programmappen."
 
 #: ../../create_localized_help.py:384
 msgid ""
 "If this xlet has no locale available for your language, you could create it "
 "by following the following instructions."
-msgstr "如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。"
+msgstr ""
+"Om ditt språk saknas i denna xlet, kan du översätta den med hjälp av "
+"följande instruktioner."
 
 #: settings.py:68 settings.py:70
 msgid "Applets tweaks"
-msgstr "小程序调整"
+msgstr "Justera panelprogram"
 
 #: settings.py:75
 msgid "Enable Applets tweaks"
-msgstr "启用小程序调整"
+msgstr "Aktivera justering av panelprogram"
 
 #: settings.py:82
 msgid "Ask for confirmation on applet removal"
-msgstr "移除小程序时询问确认"
+msgstr "Bekräfta borttagning av panelprogram"
 
 #: settings.py:83 settings.py:145
 msgid ""
 "Display a confirmation dialog on removal.\n"
 "Keeping the Ctrl key pressed will bypass the confirmation."
 msgstr ""
-"移除时显示一个确认对话框。\n"
-"按住Ctrl键将会绕过确认。"
+"Visa en bekräftelsedialog vid borttagning.\n"
+"Håll ner [Ctrl] för att kringgå bekräftelsedialogen."
 
 #: settings.py:90
 msgid "Display \"Edit applet main file\" on context menu"
-msgstr "在右键菜单显示“编辑小程序主文件”"
+msgstr "Visa \"Redigera panelprogrammets huvudfil\" på kontextmenyn"
 
 #: settings.py:97
 msgid "Where to place the \"Edit applet main file\" item?"
-msgstr "在哪里放置“编辑小程序主文件”条目？"
+msgstr "Var skall \"Redigera panelprogrammets huvudfil\" placeras?"
 
 #: settings.py:99 settings.py:119 settings.py:161 settings.py:181
 msgid "Last item on menu"
-msgstr "菜单最后一个条目"
+msgstr "Sist på menyn"
 
 #: settings.py:100 settings.py:120 settings.py:162 settings.py:182
 msgid "Before \"About...\" item"
-msgstr "在“关于”条目之前"
+msgstr "Före \"Om...\""
 
 #: settings.py:101 settings.py:121 settings.py:163 settings.py:183
 msgid "Before \"Configure...\" item"
-msgstr "在“配置”条目之前"
+msgstr "Före \"Konfigurera...\""
 
 #: settings.py:102 settings.py:122 settings.py:164 settings.py:184
 msgid "Before \"Remove...\" item"
-msgstr "在“移除”条目之前"
+msgstr "Före \"Ta bort...\""
 
 #: settings.py:110
 msgid "Display \"Open applet folder\" on context menu"
-msgstr "在右键菜单显示“打开小程序文件夹”"
+msgstr "Visa \"Öppna panelprogrammets mapp\" på kontextmenyn"
 
 #: settings.py:117
 msgid "Where to place the \"Open applet folder\" item?"
-msgstr "在哪里放置“打开小程序文件夹”条目？"
+msgstr "Var skall \"Öppna panelprogrammets mapp\" placeras?"
 
 #: settings.py:130 settings.py:132
 msgid "Desklets tweaks"
-msgstr "桌面小工具调整"
+msgstr "Justera skrivbordsprogram"
 
 #: settings.py:137
 msgid "Enable Desklets tweaks"
-msgstr "启用桌面小工具调整"
+msgstr "Aktivera justering av skrivbordsprogram"
 
 #: settings.py:144
 msgid "Ask for confirmation on desklet removal"
-msgstr "移除桌面小工具时询问确认"
+msgstr "Bekräfta borttagning av skrivbordsprogram"
 
 #: settings.py:152
 msgid "Display \"Edit desklet main file\" on context menu"
-msgstr "在右键菜单显示“编辑桌面小工具主文件”"
+msgstr "Visa \"Redigera skrivbordsprogrammets huvudfil\" på kontextmenyn"
 
 #: settings.py:159
 msgid "Where to place the \"Edit desklet main file\" item?"
-msgstr "在哪里放置“编辑桌面小工具主文件”条目？"
+msgstr "Var skall \"Redigera skrivbordsprogrammets huvudfil\" placeras?"
 
 #: settings.py:172
 msgid "Display \"Open desklet folder\" on context menu"
-msgstr "在右键菜单显示“打开桌面小工具文件夹”"
+msgstr "Visa \"Öppna skrivbordsprogrammets mapp\" på kontextmenyn"
 
 #: settings.py:179
 msgid "Where to place the \"Open desklet folder\" item?"
-msgstr "在哪里放置“打开桌面小工具文件夹”条目？"
+msgstr "Var skall \"Öppna skrivbordsprogrammets mapp\" placeras?"
 
 #: settings.py:193 settings.py:196
 msgid "Hot corners tweaks"
-msgstr "热角调整"
+msgstr "Justera aktiva hörn"
 
 #: settings.py:201
 msgid "Enable Hot Corners tweaks"
-msgstr "启用热角调整"
+msgstr "Aktivera justering av aktiva hörn"
 
 #: settings.py:208
 msgid "Top left hot corner activation delay"
-msgstr "左上方热角激活延迟"
+msgstr "Aktiveringsfördröjning för övre vänstra hörnet"
 
 #: settings.py:209 settings.py:221 settings.py:233 settings.py:245
 msgid "Set a delay in milliseconds to activate this hot corner."
-msgstr "以毫秒为单位设置激活此热角的延迟。"
+msgstr "Ange en fördröjning i millisekunder, för aktivering av detta hörn."
 
 #: settings.py:213 settings.py:225 settings.py:237 settings.py:249
 #: settings.py:301
 msgid "milliseconds"
-msgstr "毫秒"
+msgstr "millisekunder"
 
 #: settings.py:220
 msgid "Top right hot corner activation delay"
-msgstr "右上方热角激活延迟"
+msgstr "Aktiveringsfördröjning för övre högra hörnet"
 
 #: settings.py:232
 msgid "Bottom left hot corner activation delay"
-msgstr "左下方热角激活延迟"
+msgstr "Aktiveringsfördröjning för undre vänstra hörnet"
 
 #: settings.py:244
 msgid "Bottom right hot corner activation delay"
-msgstr "右下方热角激活延迟"
+msgstr "Aktiveringsfördröjning för undre högra hörnet"
 
 #: settings.py:256
 msgid "Desktop tweaks"
-msgstr "桌面调整"
+msgstr "Justera skrivbordet"
 
 #: settings.py:263
 msgid "Enable Desktop area tweaks"
-msgstr "启用桌面区域调整"
+msgstr "Aktivera justering av skrivbordsområdet"
 
 #: settings.py:270
 msgid "Enable applications drop to the Desktop"
-msgstr "启用应用程序拖放到桌面"
+msgstr "Aktivera programsläpp på skrivbordet"
 
 #: settings.py:271
 msgid ""
 "With this option enabled, applications can be dragged from the menu applet "
 "and from the panel launchers applet and dropped into the desktop."
-msgstr "启用此项后，可以从菜单小程序和面板启动器小程序拖放应用程序到桌面中。"
+msgstr ""
+"Med detta alternativ aktiverat, kan du dra och släppa program från "
+"panelmenyn och från programstartaren till skrivbordet."
 
 #: settings.py:280
 msgid "Enable Tooltips tweaks"
-msgstr "启用提示调整"
+msgstr "Aktivera justering av verktygsbeskrivningar"
 
 #: settings.py:288 extension.js:815
 msgid "Avoid mouse pointer overlapping tooltips"
-msgstr "避免鼠标指针与提示重叠"
+msgstr "Undvik att muspekaren överlappar verktygsbeskrivningar"
 
 #: settings.py:289
 msgid ""
@@ -867,21 +930,25 @@ msgid ""
 "(approximately), reducing the possibility of the mouse pointer to overlap "
 "the tooltip."
 msgstr ""
-"Cinnamon用户界面上的提示与鼠标指针的左上角对齐。这导致提示与鼠标指针重叠。此"
-"调整将提示对齐到鼠标指针的右下角（大概），从而减少鼠标指针与提示重叠的可能"
-"性。"
+"Verktygsbeskrivningar i Cinnamon,  anpassas mot muspekarens övre "
+"vänsterhörn. Detta kan leda till att muspekaren överlappar "
+"verktygsbeskrivningen. Denna justering anpassar verktygsbeskrivningen mot "
+"muspekarens undre högerhörn (ungefärligt) och reducerar risken för "
+"överlappning."
 
 #: settings.py:296
 msgid "Tooltips show delay"
-msgstr "提示显示延迟"
+msgstr "Fördröjd visning av verktygsbeskrivningar"
 
 #: settings.py:297
 msgid "Set a delay in milliseconds to display Cinnamon's UI tooltips."
-msgstr "以毫秒为单位设置显示Cinnamon用户界面提示的延迟。"
+msgstr ""
+"Ange en fördröjning i millisekunder, för visning av Cinnamons "
+"verktygsbeskrivningar."
 
 #: settings.py:310
 msgid "Enable Popup menus tweaks"
-msgstr "启用弹出菜单调整"
+msgstr "Aktivera justering av popup-menyer"
 
 #: settings.py:318
 msgid ""
@@ -901,52 +968,55 @@ msgid ""
 "directly open the menu of any applet even if another applet has its menu "
 "open."
 msgstr ""
-"此设置仅影响属于位于任何面板上的小程序的菜单的行为。\n"
+"Den här inställningen påverkar endast menyer placerade i någon panel.\n"
 "\n"
-"模拟Gnome Shell行为：当在Genome Shell上打开菜单，然后将鼠标光标移动到顶部面板"
-"上的另一个按钮时，所悬停按钮的菜单将自动打开而无需点击。启用此选项后，可以在"
-"Cinnamon上重现相同的行为。\n"
+"Emulera Gnome-beteende: När en meny öppnas i Gnome och muspekaren sedan "
+"flyttas till en annan knapp i toppanelen, öppnas den hovrade knappens meny "
+"automatiskt, utan att klicka på den. Med detta alternativ aktiverat, får du "
+"samma beteende i Cinnamon.\n"
 "\n"
-"不要吃掉点击：默认情况下，当在Cinnamon上打开一个小程序的菜单，然后点击另一个"
-"小程序要打开其菜单时，第一次点击用于关闭第一个小程序打开的菜单，然后必须再执"
-"行一次点击才能打开第二个小程序的菜单。启用此选项后，即使打开了另一个小程序的"
-"菜单，也可以直接打开任何小程序的菜单。"
+"Ät inte klick: Standardbeteendet när man öppnar en panelmeny i Cinnamon och "
+"sedan klickar på ett annat panelprogram för att öppna den menyn, är att det "
+"första klicket används för att stänga den först öppnade menyn och man måste "
+"sedan klicka igen, för att öppna den andra menyn. Med detta alternativ "
+"aktiverat, kan man direkt öppna en andra meny, även om en annan meny redan "
+"är öppen."
 
 #: settings.py:320
 msgid "Default behavior"
-msgstr "默认行为"
+msgstr "Standardbeteende"
 
 #: settings.py:321
 msgid "Emulate Gnome Shell menus"
-msgstr "模拟Gnome Shell菜单"
+msgstr "Emulera Gnome Shell-menyer"
 
 #: settings.py:322
 msgid "Don't \"eat\" clicks"
-msgstr "不要“吃掉”点击"
+msgstr "\"Ät\" inte klick"
 
 #: settings.py:337
 msgid "Enable notifications tweaks"
-msgstr "启用通知调整"
+msgstr "Aktivera justering av aviseringar"
 
 #: settings.py:344
 msgid "Enable notifications open/close animation"
-msgstr "启用通知开/关动画"
+msgstr "Aktivera animering av aviseringsrutor"
 
 #: settings.py:351
 msgid "Notifications position"
-msgstr "通知位置"
+msgstr "Aviseringsposition"
 
 #: settings.py:353
 msgid "Top-right of screen (System default)"
-msgstr "屏幕右上方（系统默认）"
+msgstr "Övre högra skärmhörnet (Systemstandard)"
 
 #: settings.py:354
 msgid "Bottom-right of screen"
-msgstr "屏幕右下方"
+msgstr "Undre högra skärmhörnet"
 
 #: settings.py:362
 msgid "Distance from panel"
-msgstr "面板距离"
+msgstr "Avstånd från panelen"
 
 #: settings.py:363
 msgid ""
@@ -959,64 +1029,66 @@ msgid ""
 "from the bottom of the screen) to the bottom border of the notification "
 "popup."
 msgstr ""
-"对于屏幕右上方显示的通知：这是顶部面板的底部边框（如果没有顶部面板，则从屏幕"
-"顶部）到通知弹窗的顶部边框之间的距离。\n"
+"För aviseringar som visas i övre högra hörnet på skärmen: Detta är avståndet "
+"mellan underkant på toppanelen (skärmens överkant om toppanel saknas) och "
+"överkant på aviseringsrutan.\n"
 "\n"
-"对于屏幕右下角显示的通知：这是底部面板的顶部边框（如果没有底部面板，则从屏幕"
-"底部）到通知弹窗的底部边框之间的距离。"
+"För aviseringar som visas i undre högra hörnet på skärmen: Detta är "
+"avståndet mellan överkant på bottenpanelen (skärmens underkant om "
+"bottenpanel saknas) och underkant på aviseringsrutan."
 
 #: settings.py:367 settings.py:379
 msgid "pixels"
-msgstr "像素"
+msgstr "pixlar"
 
 #: settings.py:374
 msgid "Notification popup right margin"
-msgstr "通知弹窗右侧边距"
+msgstr "Högermarginal för aviseringsrutor"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:386
 msgid "Display a test notification"
-msgstr "显示测试通知"
+msgstr "Visa en testavisering"
 
 #: settings.py:393
 msgid "Windows tweaks"
-msgstr "窗口调整"
+msgstr "Fönsterjustering"
 
 #: settings.py:400
 msgid "The activation of windows demanding attention..."
-msgstr "激活需要关注的窗口..."
+msgstr "Aktivering av fönster som kräver uppmärksamhet..."
 
 #: settings.py:402
 msgid "...is handled by the system"
-msgstr "...交由系统处理"
+msgstr "...hanteras av systemet"
 
 #: settings.py:403
 msgid "...is immediate"
-msgstr "...即时"
+msgstr "...sker omedelbart"
 
 #: settings.py:404
 msgid "...is performed with a keyboard shortcut"
-msgstr "...使用键盘快捷键执行"
+msgstr "...utförs med en tangentbordsgenväg"
 
 #: settings.py:411
 msgid "Activate window demanding attention"
-msgstr "激活需要关注的窗口"
+msgstr "Aktivera fönster som kräver uppmärksamhet"
 
 #: settings.py:416 settings.py:1276
 msgid "Window shadows tweaks"
-msgstr "窗口阴影调整"
+msgstr "Justera fönsterskuggor"
 
 #: settings.py:422
 msgid "Enable window shadows tweaks"
-msgstr "启用窗口阴影调整"
+msgstr "Aktivera justering av fönsterskuggor"
 
 #: settings.py:423
 msgid "This tweak allows us to customize the shadow of all windows."
-msgstr "此调整允许我们自定义所有窗口的阴影。"
+msgstr "Denna justering låter oss anpassa alla fönsterskuggor."
 
 #: settings.py:443 settings.py:1147
 msgid "Edit custom shadows values"
-msgstr "编辑自定义阴影值"
+msgstr "Redigera anpassad skugga"
 
 #: settings.py:448
 msgid ""
@@ -1024,54 +1096,60 @@ msgid ""
 "can open multiple instances of themselves most likely cannot be configured "
 "to be automatically moved."
 msgstr ""
-"不是所有的应用程序可以分配为移动的。大多数可以打开多个自身实例的应用程序很可"
-"能无法配置为自动移动。"
+"Det är inte alla program som kan flyttas automatiskt. De flesta program som "
+"kan öppnas i flera instanser, kan troligen inte flyttas automatiskt."
 
 #: settings.py:453
 msgid "Enable auto move windows tweak"
-msgstr "启动自动移动窗口调整"
+msgstr "Aktivera automatisk fönsterflytt"
 
 #: settings.py:454
 msgid ""
 "This tweak enables the ability to set rules to open determined applications "
 "on specific workspaces."
-msgstr "此调整启用设置规则的能力以在指定的工作区上打开确定的应用程序。"
+msgstr ""
+"Denna justering låter oss ange regler för att automatiskt öppna angivna "
+"program på specifik arbetsyta."
 
 #: settings.py:461
 msgid "Define auto move windows rules"
-msgstr "定义自动移动窗口规则"
+msgstr "Definiera regler för automatisk fönsterflytt"
 
 #: settings.py:466
 msgid ""
 "This tweak settings are purposely NOT applied in real time. Click the »Apply "
 "windows decorations settings« button to save settings."
-msgstr "此调整设置有意不实时应用。点击»应用窗口装饰设置«按钮保存设置。"
+msgstr ""
+"Denna justering tillämpas medvetet INTE i realtid. Klicka på »Tillämpa "
+"inställningarna för fönsterdekoration« för att spara inställningarna."
 
 #: settings.py:470
 msgid ""
 "Read this extension help for more detailed instructions, list of "
 "dependencies and known issues."
-msgstr "阅读此扩展的帮助获取更多详细说明、依赖关系列表和已知问题。"
+msgstr ""
+"Läs det här tilläggets hjälp för mer detaljerade instruktioner, lista över "
+"beroenden och kända problem."
 
 #: settings.py:476
 msgid "Apply windows decorations settings"
-msgstr "应用窗口装饰设置"
+msgstr "Tillämpa inställningarna för fönsterdekoration"
 
 #: settings.py:482
 msgid "Enable maximized windows decoration removal"
-msgstr "启用移除最大化的窗口的装饰"
+msgstr "Aktivera borttagning av dekorationer på maximerade fönster"
 
 #: settings.py:489
 msgid "Undecorate half-maximized windows?"
-msgstr "取消装饰半最大化的窗口？"
+msgstr "Vill du ta bort dekorationen från halvmaximerade fönster?"
 
 #: settings.py:496
 msgid "Undecorate tiled windows?"
-msgstr "取消装饰平铺的窗口？"
+msgstr "Vill du ta bort dekorationen från storleksanpassade fönster?"
 
 #: settings.py:503
 msgid "Applications list is a blacklist?"
-msgstr "应用程序列表是黑名单？"
+msgstr "Är programlistan en svartlista?"
 
 #: settings.py:504
 msgid ""
@@ -1081,281 +1159,290 @@ msgid ""
 "If disabled, only the application from the list of applications will have "
 "their decorations removed."
 msgstr ""
-"如果启用，所有的应用程序将会移除其窗口装饰，应用程序列表中列出的那些除外。\n"
+"Vid aktivering kommer alla program att få sina fönsterdekorationer "
+"borttagna, utom de som listas i programlistan.\n"
 "\n"
-"如果禁用，只有应用程序列表中的应用程序才会移除其装饰。"
+"Vid inaktivering kommer endast program i programlistan, att få sina "
+"fönsterdekorationer borttagna."
 
 #: settings.py:511
 msgid "Enable logging"
-msgstr "启用日志记录"
+msgstr "Aktivera loggning"
 
 #: settings.py:512
 msgid "For debugging purposes only."
-msgstr "仅用于调试目的。"
+msgstr "Endast för felsökningsändamål."
 
 #: settings.py:519
 msgid "Edit applications list"
-msgstr "编辑应用程序列表"
+msgstr "Redigera programlistan"
 
 #: settings.py:704
 msgid "Warnings related to this specific section"
-msgstr "与该具体部分相关的警告"
+msgstr "Varningar relaterade till denna specifika sektion"
 
 #: settings.py:1008
 msgid "Select a directory to use"
-msgstr "选择要使用的目录"
+msgstr "Välj en mapp"
 
 #: settings.py:1011
 msgid "Select a file"
-msgstr "选择文件"
+msgstr "Välj en fil"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1016 settings.py:1149 settings.py:2394 settings.py:2400
 msgid "_Cancel"
-msgstr "取消(_C)"
+msgstr "_Avbryt"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1018 settings.py:2402
 msgid "_Open"
-msgstr "打开(_O)"
+msgstr "_Öppna"
 
 #: settings.py:1021
 msgid "Directories"
-msgstr "目录"
+msgstr "Mappar"
 
 #: settings.py:1099
 msgid "Focused windows"
-msgstr "焦点窗口"
+msgstr "Fokuserat fönster"
 
 #: settings.py:1100
 msgid "Unfocused windows"
-msgstr "没有焦点的窗口"
+msgstr "Ej fokuserat fönster"
 
 #: settings.py:1103
 msgid "Normal"
-msgstr "正常"
+msgstr "Normal"
 
 #: settings.py:1104
 msgid "Dialog"
-msgstr "对话框"
+msgstr "Dialog"
 
 #: settings.py:1105
 msgid "Modal dialog"
-msgstr "模式对话框"
+msgstr "Modal dialog"
 
 #: settings.py:1106
 msgid "Utility"
-msgstr "工具"
+msgstr "Verktyg"
 
 #: settings.py:1107
 msgid "Border"
-msgstr "边框"
+msgstr "Kant"
 
 #: settings.py:1108
 msgid "Menu"
-msgstr "菜单"
+msgstr "Meny"
 
 #: settings.py:1109
 msgid "Popup menu"
-msgstr "弹出式菜单"
+msgstr "Popup-meny"
 
 #: settings.py:1110
 msgid "Dropdown menu"
-msgstr "下拉式菜单"
+msgstr "Ridåmeny"
 
 #: settings.py:1111
 msgid "Attached"
-msgstr "附加"
+msgstr "Bifogad"
 
 #: settings.py:1121
 msgid "Radius"
-msgstr "半径"
+msgstr "Radie"
 
 #: settings.py:1122
+#, fuzzy
 msgid "Top fade"
-msgstr "顶部淡出"
+msgstr "Topptoning"
 
 #: settings.py:1123
 msgid "X offset"
-msgstr "X轴偏移量"
+msgstr "X-förskjutning"
 
 #: settings.py:1124
 msgid "Y offset"
-msgstr "Y轴偏移量"
+msgstr "Y-förskjutning"
 
 #: settings.py:1125
 msgid "Opacity"
-msgstr "不透明度"
+msgstr "Opacitet"
 
 #: settings.py:1150 settings.py:2395
 msgid "_Save"
-msgstr "保存(_S)"
+msgstr "_Spara"
 
 #: settings.py:1187
 msgid "Window type"
-msgstr "窗口类型"
+msgstr "Fönstertyp"
 
 #: settings.py:1198
 msgid "Reset values"
-msgstr "重置值"
+msgstr "Återställ värden"
 
 #: settings.py:1200
 msgid "Reset all values on the current view to their defaults."
-msgstr "重置当前视图中的所有值为其默认。"
+msgstr "Återställ alla värden i aktuell vy, till sina standardvärden."
 
 #: settings.py:1204
 msgid "Apply custom shadow"
-msgstr "应用自定义窗口"
+msgstr "Tillämpa anpassad skugga"
 
 #: settings.py:1206
 msgid "Save and apply custom shadow values to see its effects in real time."
-msgstr "保存和应用自定义阴影值实时查看其效果。"
+msgstr ""
+"Spara och tillämpa anpassade skuggvärden, för att se effekten i realtid."
 
 #: settings.py:1248 settings.py:1277
 msgid "Remember to set »Shadow presets« option to »Custom shadows«"
-msgstr "记得设置»阴影预设值«选项到»自定义阴影«"
+msgstr ""
+"Kom ihåg att ange alternativet »Förinställd skugga« som »Anpassad skugga«"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->name
 #: settings.py:1275 settings.py:2441
 msgid "Cinnamon Tweaks"
-msgstr "Cinnamon调整"
+msgstr "Cinnamon Tweaks"
 
 #: settings.py:1288
 msgid "Warning: Trying to reset custom shadows values!!!"
-msgstr "警告：正在尝试重置自定义阴影值！！！"
+msgstr "Varning! Du försöker återställa anpassade skuggvärden!!!"
 
 #: settings.py:1291
 msgid ""
 "Are  you sure that you want to reset the shadows values of the current view "
 "to their defaults?"
-msgstr "您确定要重置当前视图的阴影值为其默认吗？"
+msgstr "Vill du verkligen återställa aktuella skuggvärden till standardvärde?"
 
 #: settings.py:1389
 msgid "Application Chooser"
-msgstr "应用程序选择器"
+msgstr "Programväljare"
 
 #. Can be programmatically changed if needed.
 #: settings.py:1410
 msgid "Choose An Application"
-msgstr "选择应用程序"
+msgstr "Välj ett program"
 
 #: settings.py:1543
 msgid "Applications list"
-msgstr "应用程序列表"
+msgstr "Programlista"
 
 #: settings.py:1571 settings.py:1790
 msgid "Application"
-msgstr "应用程序"
+msgstr "Program"
 
 #: settings.py:1593
 msgid "Add Application"
-msgstr "添加应用程序"
+msgstr "Lägg till program"
 
 #: settings.py:1627 settings.py:1858
 msgid "Choose one or more applications (Hold Ctrl key)"
-msgstr "选择一个或更多应用程序（按住Ctrl键）"
+msgstr "Välj ett eller flera program (Håll ner [Ctrl])"
 
 #: settings.py:1761
 msgid "Auto move windows rules"
-msgstr "自动移动窗口规则"
+msgstr "Regler för automatisk fönsterflytt"
 
 #: settings.py:1804
 msgid "Workspace"
-msgstr "工作区"
+msgstr "Arbetsyta"
 
 #: settings.py:1824
 msgid "Add Rule"
-msgstr "添加规则"
+msgstr "Lägg till regel"
 
 #: settings.py:2059
 msgid "Shortcut action"
-msgstr "快捷键动作"
+msgstr "Genvägsåtgärd"
 
 #: settings.py:2073
 msgid "Shortcut"
-msgstr "快捷键"
+msgstr "Genväg"
 
 #: settings.py:2089
 msgid "Click to set a new hotkey."
-msgstr "点击设置新的快捷键。"
+msgstr "Klicka för att ange en ny snabbtangent"
 
 #: settings.py:2141
 msgid "Contributors/Mentions:"
-msgstr "贡献者/提供者："
+msgstr "Bidragsgivare/Omnämnanden:"
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
 #. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
 #: settings.py:2149
 msgid "translator-credits"
-msgstr "giwhub"
+msgstr "Åke Engelbrektson"
 
 #: settings.py:2283
 msgid "Settings marked with (*) needs Cinnamon restart to take effect"
-msgstr "标记有(*)的设置需要重新启动Cinnamon才能生效"
+msgstr ""
+"Inställningar markerade med asterisk (*) tillämpas först efter omstart av "
+"Cinnamon."
 
 #: settings.py:2292
 msgid "Reset settings to defaults"
-msgstr "重置设置为默认"
+msgstr "Återställ inställningarna till standard"
 
 #: settings.py:2294
 msgid "Import settings from a file"
-msgstr "从文件导入设置"
+msgstr "Importera inställningar från en fil"
 
 #: settings.py:2296
 msgid "Export settings to a file"
-msgstr "导出设置到文件"
+msgstr "Exportera inställningarna till en fil"
 
 #: settings.py:2301
 msgid "Remember window size"
-msgstr "记住窗口大小"
+msgstr "Kom ihåg fönsterstorlek"
 
 #: settings.py:2307
 msgid "Remember last category"
-msgstr "记住上次的类别"
+msgstr "Kom ihåg senaste kategorin"
 
 #: settings.py:2313
 msgid "Restart Cinnamon"
-msgstr "重新启动Cinnamon"
+msgstr "Starta om Cinnamon"
 
 #: settings.py:2319
 msgid "About"
-msgstr "关于"
+msgstr "Om"
 
 #: settings.py:2326
 msgid "Manage settings"
-msgstr "管理设置"
+msgstr "Hantera inställningar"
 
 #: settings.py:2371
 msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
-msgstr "警告：正在尝试重置所有的Cinnamon调整设置！！！"
+msgstr "Varning! Du försöker återställa alla Cinnamon-justeringar!!!"
 
 #: settings.py:2373
 msgid "Reset all Cinnamon Tweaks settings to default?"
-msgstr "重置所有的Cinnamon调整设置为默认吗？"
+msgstr "Vill du återställa alla Cinnamon-justeringar till standardinställning?"
 
 #: settings.py:2392
 msgid "Select or enter file to export to"
-msgstr "选择或输入导出的文件"
+msgstr "Välj eller ange en fil att exportera till"
 
 #: settings.py:2398
 msgid "Select a file to import"
-msgstr "选择要导入的文件"
+msgstr "Välj en fil att importera"
 
 #: settings.py:2414
 msgid "DCONF files"
-msgstr "DCONF文件"
+msgstr "DCONF-filer"
 
 #: settings.py:2481
 msgid "Cinnamon Tweaks extension preferences"
-msgstr "Cinnamon调整扩展首选项"
+msgstr "Inställningar för Cinnamon Tweaks"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2540
 #, python-format
 msgid ""
 "Please enter your password to install the required settings schema for %s"
-msgstr "请输入您的密码安装%s需要的设置模式"
+msgstr ""
+"Ange ditt lösenord för att installera det obligatoriska inställningsschemat "
+"för %s"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2551
@@ -1363,13 +1450,15 @@ msgstr "请输入您的密码安装%s需要的设置模式"
 msgid ""
 "Could not install the settings schema for %s.  You will have to perform this "
 "step yourself."
-msgstr "无法安装%s的设置模式。您必须亲自执行这个步骤。"
+msgstr ""
+"Kunde inte installera inställningsschemat för %s. Du måste utföra detta steg "
+"manuellt."
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2557
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
-msgstr "请输入您的密码移除%s需要的设置模式"
+msgstr "Ange ditt lösenord för att ta bort inställningsschemat för %s"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:2568
@@ -1377,52 +1466,54 @@ msgstr "请输入您的密码移除%s需要的设置模式"
 msgid ""
 "Could not remove the settings schema for %s.  You will have to perform this "
 "step yourself.  This is not a critical error."
-msgstr "无法移除%s的设置模式。您必须亲自执行这个步骤。这不是一个严重错误。"
+msgstr ""
+"Kunde inte ta bort inställningsschemat för %s. Du måste utföra detta steg "
+"manuellt. Detta är inget allvarligt fel."
 
 #: __init__.js:186
 #, javascript-format
 msgid "Schema %s could not be found for extension %s."
-msgstr "无法找到扩展%s的模式%s。"
+msgstr "Schema %s kunde inte hittas för tillägg %s."
 
 #: __init__.js:187
 msgid "Please check your installation."
-msgstr "请检查您的安装。"
+msgstr "Kontrollera din installation."
 
 #: __init__.js:196
 msgid "Tweak activation aborted!!!"
-msgstr "调整激活停止！！！"
+msgstr "Justeringsaktivering avbruten!!!"
 
 #: __init__.js:197 __init__.js:222
 msgid "Your Cinnamon version may not be compatible!!!"
-msgstr "您的Cinnamon版本可能不兼容！！！"
+msgstr "Din Cinnamon-version kanske inte är kompatibel!!!"
 
 #: __init__.js:202
 msgid "This is a test notification"
-msgstr "这是一个测试通知"
+msgstr "Detta är en testavisering"
 
 #: __init__.js:221
 msgid "Extension activation aborted!!!"
-msgstr "扩展调整激活停止！！！"
+msgstr "Tilläggsaktivering avbruten!!!"
 
 #: __init__.js:223
 msgid "Minimum Cinnamon version allowed: 2.8.6"
-msgstr "允许的Cinnamon最低版本：2.8.6"
+msgstr "Lägsta Cinnamon-version som stöds: 2.8.6"
 
 #: __init__.js:500
 msgid "Cancel"
-msgstr "取消"
+msgstr "Avbryt"
 
 #: __init__.js:506
 msgid "OK"
-msgstr "确定"
+msgstr "OK"
 
 #: extension.js:233
 msgid "Open applet folder"
-msgstr "打开小程序文件夹"
+msgstr "Öppna panelprogrammets mapp"
 
 #: extension.js:250
 msgid "Edit applet main file"
-msgstr "编辑小程序主文件"
+msgstr "Redigera panelprogrammets huvudfil"
 
 #: extension.js:299
 #, javascript-format
@@ -1430,16 +1521,16 @@ msgid ""
 "Do you want to remove '%s' from your panel?\n"
 "Instance ID: %s"
 msgstr ""
-"您想要从您的面板移除'%s'吗？\n"
-"实例ID: %s"
+"Vill du ta bort \"%s\" från panelen?\n"
+"Instans-ID: %s"
 
 #: extension.js:360
 msgid "Open desklet folder"
-msgstr "打开桌面小工具文件夹"
+msgstr "Öppna skrivbordsprogrammets mapp"
 
 #: extension.js:376
 msgid "Edit desklet main file"
-msgstr "编辑桌面小工具主文件"
+msgstr "Redigera skrivbordsprogrammets huvudfil"
 
 #: extension.js:422
 #, javascript-format
@@ -1447,92 +1538,92 @@ msgid ""
 "Do you want to remove '%s' from your desktop?\n"
 "Instance ID: %s"
 msgstr ""
-"您想要从您的桌面移除'%s'吗？\n"
-"实例ID: %s"
+"Vill du ta bort \"%s\" från skrivbordet?\n"
+"Instans-ID: %s"
 
 #: extension.js:701
 msgid "Hotcorners tweaks"
-msgstr "热角调整"
+msgstr "Justera aktiva hörn"
 
 #: extension.js:1306
 msgid ""
 "If you updated this extension from an older version, <b>you must check its "
 "settings window</b>."
-msgstr "如果您从旧的版本更新此扩展，<b>您必须检查其设置窗口</b>。"
+msgstr ""
+"Om du uppdaterade den här tilläggsmodulen från en tidigare version, måste du "
+"<b>kontrollera inställningarna</b>."
 
 #: extension.js:1307
 msgid "Some preferences may have been changed to their default values."
-msgstr "某些首选项可能已经被更改为其默认值。"
+msgstr "Vissa inställningar kan ha ändrats till sitt standardvärde."
 
 #: extension.js:1308
 msgid "This message will not be displayed again."
-msgstr "此消息将不再显示。"
+msgstr "Detta meddelande visas inte igen."
 
 #: extra_modules/hotCornerPatched.js:40
 msgid "Invalid overview options: Incorrect number of corners"
-msgstr "概览选项无效：角数不正确"
+msgstr "Ogiltiga översiktsalternativ: Felaktigt antal hörn"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->description
 msgid "Several tweaks for Cinnamon."
-msgstr "Cinnamon的一些调整。"
+msgstr "Ett flertal justeringar i Cinnamon"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid "See this xlet help file."
-msgstr "查看该xlet帮助文件。"
+msgstr "Se hjälpfilen för denna xlet."
 
 #~ msgid ""
 #~ "lestcape: The brain behind the popup menus and desktop tweaks https://"
 #~ "github.com/lestcape."
 #~ msgstr ""
-#~ "lestcape：弹出菜单和桌面调整背后的智囊 https://github.com/lestcape。"
+#~ "lestcape: Hjärnan bakom popup-menyer och skrivbordsjusteringar https://"
+#~ "github.com/lestcape."
 
 #~ msgid "Radek71: Czech localization https://github.com/Radek71."
-#~ msgstr "Radek71：捷克语本地化 https://github.com/Radek71。"
+#~ msgstr "Radek71: Tjeckisk översättning https://github.com/Radek71."
 
 #~ msgid "muzena: Croatian localization https://github.com/muzena."
-#~ msgstr "muzena：克罗地亚语本地化 https://github.com/muzena。"
+#~ msgstr "muzena: Kroatisk översättning https://github.com/muzena."
 
 #~ msgid ""
 #~ "mikhail-ekzi: Author of Custom Shadows extension https://cinnamon-spices."
 #~ "linuxmint.com/extensions/view/43."
 #~ msgstr ""
-#~ "mikhail-ekzi：Custom Shadows扩展的作者 https://cinnamon-spices.linuxmint."
-#~ "com/extensions/view/43。"
+#~ "mikhail-ekzi: Utvecklare av \"Custom Shadows\" https://cinnamon-spices."
+#~ "linuxmint.com/extensions/view/43."
 
 #~ msgid ""
 #~ "Fatih Mete: Author of Cinnamon Maximus extension https://cinnamon-spices."
 #~ "linuxmint.com/extensions/view/29."
 #~ msgstr ""
-#~ "Fatih Mete：Cinnamon Maximus扩展的作者 https://cinnamon-spices.linuxmint."
-#~ "com/extensions/view/29。"
+#~ "Fatih Mete: Utvecklare av tillägget \"Cinnamon Maximus\" https://cinnamon-"
+#~ "spices.linuxmint.com/extensions/view/29."
 
 #~ msgid ""
 #~ "Luis Pabon: Author of Maximus NG extension https://github.com/luispabon/"
 #~ "maximus-gnome-shell."
 #~ msgstr ""
-#~ "Luis Pabon：Maximus NG扩展的作者 https://github.com/luispabon/maximus-"
-#~ "gnome-shell。"
+#~ "Luis Pabon: Utvecklare av tillägget \"Maximus NG\" https://github.com/"
+#~ "luispabon/maximus-gnome-shell."
 
 #~ msgid ""
 #~ "Florian Muellner: Author of Auto Move Windows extension https://"
 #~ "extensions.gnome.org/extension/16/auto-move-windows."
 #~ msgstr ""
-#~ "Florian Muellner：Auto Move Windows扩展的作者 https://extensions.gnome."
-#~ "org/extension/16/auto-move-windows。"
+#~ "Florian Muellner: Utvecklare av tillägget \"Auto Move Windows\" https://"
+#~ "extensions.gnome.org/extension/16/auto-move-windows."
 
 #~ msgid ""
 #~ "Valentin Dimitrov: Author of Steal My Focus extension https://github.com/"
 #~ "v-dimitrov/gnome-shell-extension-stealmyfocus."
 #~ msgstr ""
-#~ "Valentin Dimitrov：Steal My Focus扩展的作者 https://github.com/v-dimitrov/"
-#~ "gnome-shell-extension-stealmyfocus。"
+#~ "Valentin Dimitrov: Utvecklare av \"Steal My Focus\" https://github.com/v-"
+#~ "dimitrov/gnome-shell-extension-stealmyfocus."
 
 #~ msgid ""
 #~ "awamper: Author of Window Demands Attention Shortcut extension https://"
 #~ "github.com/awamper/window-demands-attention-shortcut."
 #~ msgstr ""
-#~ "awamper：Window Demands Attention Shortcut扩展的作者 https://github.com/"
-#~ "awamper/window-demands-attention-shortcut。"
-
-#~ msgid "giwhub:: Chinese localization https://github.com/giwhub."
-#~ msgstr "giwhub:: 中文本地化 https://github.com/giwhub。"
+#~ "awamper: Utvecklare av tillägget \"Window Demands Attention Shortcut\" "
+#~ "https://github.com/awamper/window-demands-attention-shortcut."

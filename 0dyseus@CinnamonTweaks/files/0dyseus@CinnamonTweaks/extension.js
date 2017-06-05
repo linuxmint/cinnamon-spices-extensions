@@ -526,7 +526,12 @@ const CT_MessageTrayPatch = {
         // Patch _onNotificationExpanded to allow correct showing animation and custom top/bottom margins.
         STG.MTP._onNotificationExpanded = mt._onNotificationExpanded;
         mt._onNotificationExpanded = function() {
-            let expandedY = this._notification.actor.height - this._notificationBin.height;
+            // FIXME PART 1:
+            // I had to add the condition to set ths variable to force expandedY to be
+            // different than 
+            let expandedY = position ?
+                this._notification.actor.height + this._notificationBin.height :
+                this._notification.actor.height - this._notificationBin.height;
 
             let monitor = Main.layoutManager.primaryMonitor;
             let panel = Main.panelManager.getPanel(0, position); // If Cinnamon 3.0.7 stable and older
@@ -543,14 +548,20 @@ const CT_MessageTrayPatch = {
                 monitor.height - this._notificationBin.height - height - distanceFromPanel :
                 monitor.y + height + distanceFromPanel;
 
-            if (this._notificationBin.y < expandedY)
+            // FIXME PART 2:
+            // The fix of the upstream bug (this._notification.y changed to this._notification.actor.y)
+            // exposed a bug on this extension.
+            // Until I undestand what the heck the following conditions actually do,
+            // I will force to always use an animation.
+            if (this._notificationBin.y < expandedY) {
                 this._notificationBin.y = expandedY;
-            else if (this._notification.y != expandedY)
-                this._tween(this._notificationBin, "_notificationState", State.SHOWN, {
+            } else if (this._notification.actor.y != expandedY) {
+                this._tween(this._notificationBin, '_notificationState', State.SHOWN, {
                     y: newY,
                     time: ANIMATION_TIME,
-                    transition: "easeOutQuad"
+                    transition: 'easeOutQuad'
                 });
+            }
         };
     },
 

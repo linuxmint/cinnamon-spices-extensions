@@ -24,7 +24,7 @@ Gettext.bindtextdomain(ExtensionUUID, GLib.get_home_dir() + "/.local/share/local
 function _(aStr) {
     let customTrans = Gettext.dgettext(ExtensionUUID, aStr);
 
-    if (customTrans != aStr)
+    if (customTrans !== aStr && aStr !== "")
         return customTrans;
 
     return Gettext.gettext(aStr);
@@ -653,7 +653,7 @@ const CT_MaximusNGClass = new Lang.Class({
         // Use xwininfo, take first child.
         let act = win.get_compositor_private();
 
-        if (act) {
+        if (act && act["x-window"]) {
             id = GLib.spawn_command_line_sync("xwininfo -children -id 0x%x".format(act["x-window"]));
             if (id[0]) {
                 let str = id[1].toString();
