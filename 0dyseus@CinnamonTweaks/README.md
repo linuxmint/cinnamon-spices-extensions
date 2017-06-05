@@ -9,9 +9,10 @@ This extension adds some options to modify the default behaviour of certain Cinn
 
 ## Compatibility
 
-- ![Cinnamon 2.8](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-2.8.svg) ![Linux Mint 17.3](https://odyseus.github.io/CinnamonTools/lib/badges/lm-17.3.svg)
-- ![Cinnamon 3.0](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-3.0.svg) ![Linux Mint 18](https://odyseus.github.io/CinnamonTools/lib/badges/lm-18.svg)
-- ![Cinnamon 3.2](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-3.2.svg) ![Linux Mint 18.1](https://odyseus.github.io/CinnamonTools/lib/badges/lm-18.1.svg)
+![Cinnamon 2.8](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-2.8.svg)
+![Cinnamon 3.0](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-3.0.svg)
+![Cinnamon 3.2](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-3.2.svg)
+![Cinnamon 3.4](https://odyseus.github.io/CinnamonTools/lib/badges/cinn-3.4.svg)
 
 <span style="color:red;font-size:large;">
 **Important note:** Do not try to install and force compatibility for any other version of Cinnamon older than 2.8.6. As a protection mechanism, the extension will auto-disable itself.
@@ -34,15 +35,6 @@ For detailed explanations of each option/tweak, see this extension help (accessi
 - **Window shadows tweaks:** Allows to change the windows shadows to some predefined presets or completely customize the shadows of every single type of window. Tweak based on an extension called [Custom Shadows](https://cinnamon-spices.linuxmint.com/extensions/view/43) created by [mikhail-ekzi](https://github.com/mikhail-ekzi).
 - **Windows decorations removal:** Allows to remove the windows decorations from maximized/half-maximized/tiled windows. Tweak based on the Cinnamon extension called [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29) by [Fatih Mete](https://github.com/fatihmete) with some options from the gnome-shell extension called [Maximus NG](https://github.com/luispabon/maximus-gnome-shell) by [Luis Pabon](https://github.com/luispabon).
 
-## Contributors/Mentions
-- [lestcape](https://github.com/lestcape): He is the brain behind the popup menus and desktop tweaks.
-- [Radek71](https://github.com/Radek71): Czech localization.
-- [muzena](https://github.com/muzena): Croatian localization.
-- [mikhail-ekzi](https://github.com/mikhail-ekzi): Author of the Cinnamon extension called [Custom Shadows](https://cinnamon-spices.linuxmint.com/extensions/view/43).
-- [Fatih Mete](https://github.com/fatihmete): Author of the Cinnamon extension called [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29).
-- [Luis Pabon](https://github.com/luispabon): Author of the gnome-shell extension called [Maximus NG](https://github.com/luispabon/maximus-gnome-shell).
-- [Florian Muellner](https://github.com/fmuellner): Author of the gnome-shell extension called [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/).
-- [Valentin Dimitrov](https://github.com/v-dimitrov): Author of the gnome-shell extension called [Steal My Focus](https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus).
-- [awamper](https://github.com/awamper): Author of the gnome-shell extension called [Window Demands Attention Shortcut](https://github.com/awamper/window-demands-attention-shortcut).
+[Contributors/Mentions](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonTweaks/files/0dyseus%40CinnamonTweaks/CONTRIBUTORS.md)
 
 [Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonTweaks/CHANGELOG.md)
