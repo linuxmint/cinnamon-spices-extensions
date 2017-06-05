@@ -1,48 +1,45 @@
-# This is a template file for translating the Cinnamon extension called Maximus.
-# Copyright (C) 2016
-# This file is distributed under the same license as the Maximus extension.
-# Odyseus <EMAIL@ADDRESS>, 2016.
+# This is a template file for translating the 0dyseus@CinnamonMaximusFork package.
+# Copyright (C) 2016-2017
+# This file is distributed under the same license as the 0dyseus@CinnamonMaximusFork package.
+# Odyseus <EMAIL@ADDRESS>, 2016-2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.3.5\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-09 19:36+0200\n"
-"PO-Revision-Date: 2017-05-09 20:01+0200\n"
+"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.6\n"
+"POT-Creation-Date: 2017-05-26 22:01+0200\n"
+"PO-Revision-Date: 2017-05-27 21:06+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: make-xlet-pot.py 1.0.32\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: da\n"
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->description
-msgid "Remove windows decorations from maximized windows."
-msgstr "Fjern maksimerede vinduers titellinjer"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
+msgid ""
+"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
+"information that could be used to debug the extension."
+msgstr ""
+"Når aktiveret vil information, som kan bruges til at fejlsøge udvidelsen, "
+"bilve logget i Cinnamons log (~/.cinnamon/glass.log)."
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->name
-msgid "Cinnamon Maximus (Fork by Odyseus)"
-msgstr "Cinnamon Maximus (forgrening af Odyseus)"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "Aktivér logning"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_undecorate_when_tiled->description
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Fjern titellinjen i alle vinduer (eksperimentel, luk og åbn alle vinduer "
+"igen)"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
 msgid "Undecorate when tiled"
 msgstr "Fjern titellinjer når udlagt side om side"
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
-msgid "Troubleshooting"
-msgstr "Fejlfinding"
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
-msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
-msgstr "Indstillinger for Cinnamon Maximus (forgrening af Odyseus)"
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_whitelist->description
-msgid "Use Whitelist"
-msgstr "Anvend godkendt-liste"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
 msgid ""
@@ -54,13 +51,11 @@ msgstr ""
 "fjernet i maksimeret tilstand.\n"
 "Hvis deaktiveret vil alle maksimerede vinduer få deres titellinje fjernet."
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_restart_cinnamon->description
-msgid "Check or uncheck to restart Cinnamon"
-msgstr "Markér eller fjern markering for at genstarte Cinnamon"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
+msgid "Use Whitelist"
+msgstr "Anvend godkendt-liste"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_restart_cinnamon->tooltip
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
 msgid ""
 "Check or uncheck this options to restart Cinnamon.\n"
 "Note: I couldn't make a proper button to work in this settings window, so I "
@@ -73,38 +68,114 @@ msgstr ""
 "så jeg måtte improvisere og bruge et afkrydsningsfelt. Det betyder ikke "
 "noget, om den er markeret eller ej."
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_logging_enabled->description
-msgid "Enable logging"
-msgstr "Aktivér logning"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr "Markér eller fjern markering for at genstarte Cinnamon"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_logging_enabled->tooltip
-msgid ""
-"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
-"information that could be used to debug the extension."
-msgstr ""
-"Når aktiveret vil information, som kan bruges til at fejlsøge udvidelsen, "
-"bilve logget i Cinnamons log (~/.cinnamon/glass.log)."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+msgstr "Indstillinger for Cinnamon Maximus (forgrening af Odyseus)"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_undecorate_all->description
-msgid ""
-"Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr ""
-"Fjern titellinjen i alle vinduer (eksperimentel, luk og åbn alle vinduer "
-"igen)"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
+msgstr "Fejlfinding"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_whitelisted_apps->description
-msgid "List of applications: "
-msgstr "Oversigt over programmer: "
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_whitelisted_apps->tooltip
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->tooltip
 msgid ""
 "\"Use Whitelist\" option must be checked.\n"
 "Use a \",\" (comma) to seperate applications."
 msgstr ""
 "Indstillingen \"Anvend godkendt-liste\" skal være markeret.\n"
-"Brug et \",\" (komma) til at adskille vinduer."
+"Brug et \",\" (komma) til at adskille programmer."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
+msgstr "Oversigt over programmer: "
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "Alan01: Danish localization."
+msgstr "Alan01: Dansk oversættelse."
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "giwhub: Chinese localization."
+msgstr "giwhub: Kinesisk oversættelse."
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "muzena: Croatian localization."
+msgstr "muzena: Kroatisk oversættelse."
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr "Cinnamon Maximus (forgrening af Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "Fjern maksimerede vinduers titellinjer."
+
+#. TO TRANSLATORS: This is a placeholder.
+#. Here goes your language name in your own language (a.k.a. endonym).
+#: ../../create_localized_help.py:94 ../../create_localized_help.py:163
+msgid "language-name"
+msgstr "Dansk"
+
+#: ../../create_localized_help.py:166
+msgid "Choose language"
+msgstr "Vælg sprog"
+
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:167 ../../create_localized_help.py:174
+#, python-format
+msgid "Help for %s"
+msgstr "Hjælp til %s"
+
+#: ../../create_localized_help.py:175
+msgid "IMPORTANT!!!"
+msgstr "Vigtigt!!!"
+
+#: ../../create_localized_help.py:176
+msgid ""
+"Never delete any of the files found inside this xlet folder. It might break "
+"this xlet functionality."
+msgstr ""
+"Slet aldrig nogen filer i denne udvidelses mappe. Det kan ødelægge "
+"udvidelsens funktionalitet."
+
+#: ../../create_localized_help.py:177
+msgid ""
+"Bug reports, feature requests and contributions should be done on this "
+"xlet's repository linked next."
+msgstr ""
+"Fejlrapporter, forslag til nye funktioner og bidrag bør ske i denne "
+"udvidelses arkiv, som der er linket til efterfølgende."
+
+#: ../../create_localized_help.py:183
+msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
+msgstr "Oversættelse af panelprogrammer, skrivebordsprogrammer og udvidelser"
+
+#: ../../create_localized_help.py:184
+msgid ""
+"If this xlet was installed from Cinnamon Settings, all of this xlet's "
+"localizations were automatically installed."
+msgstr ""
+"Hvis denne udvidelse blev installeret gennem Cinnamons indstillinger, blev "
+"alle oversættelser automatisk installeret."
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:186
+msgid ""
+"If this xlet was installed manually and not trough Cinnamon Settings, "
+"localizations can be installed by executing the script called "
+"**localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr ""
+"Hvis denne udvidelse blev installeret manuelt og ikke gennem Cinnamons "
+"indstillinger, kan alle oversættelser installeres ved at køre skriptet "
+"**localizations.sh** i en terminal åbnet i udvidelsens mappe."
+
+#: ../../create_localized_help.py:187
+msgid ""
+"If this xlet has no locale available for your language, you could create it "
+"by following the following instructions."
+msgstr ""
+"Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit "
+"sprog, kan du oprette en ved at følge de efterfølgende instruktioner."

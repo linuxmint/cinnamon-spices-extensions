@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cinnamon Maximus (Fork by Odyseus) 0.3.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 16:37-0300\n"
+"POT-Creation-Date: 2017-05-13 20:35-0300\n"
 "PO-Revision-Date: 2017-03-07 16:37-0300\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -19,29 +19,100 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->description
-msgid "Remove windows decorations from maximized windows."
-msgstr "Uklonite naslovnu traku prozora s uvećanih prozora."
+#. TO TRANSLATORS: This is a placeholder.
+#. Here goes your language name in your own language (a.k.a. endonym).
+#: ../../create_localized_help.py:119 ../../create_localized_help.py:201
+#: ../../create_localized_help.py:203 ../../create_localized_help.py:94
+#: ../../create_localized_help.py:163
+msgid "language-name"
+msgstr ""
+
+#: ../../create_localized_help.py:204 ../../create_localized_help.py:206
+#: ../../create_localized_help.py:166
+msgid "Choose language"
+msgstr ""
+
+#. TO TRANSLATORS: {xlet_name} is a Python placeholder. Do not modify.
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:205 ../../create_localized_help.py:211
+#: ../../create_localized_help.py:207 ../../create_localized_help.py:213
+#: ../../create_localized_help.py:214
+#, python-brace-format
+msgid "Help for {xlet_name}"
+msgstr ""
+
+#: ../../create_localized_help.py:212 ../../create_localized_help.py:214
+#: ../../create_localized_help.py:215 ../../create_localized_help.py:175
+msgid "IMPORTANT!!!"
+msgstr ""
+
+#: ../../create_localized_help.py:213 ../../create_localized_help.py:215
+#: ../../create_localized_help.py:216 ../../create_localized_help.py:176
+msgid ""
+"Never delete any of the files found inside this xlet folder. It might break "
+"this xlet functionality."
+msgstr ""
+
+#: ../../create_localized_help.py:214 ../../create_localized_help.py:216
+#: ../../create_localized_help.py:217 ../../create_localized_help.py:177
+msgid ""
+"Bug reports, feature requests and contributions should be done on this "
+"xlet's repository linked next."
+msgstr ""
+
+#: ../../create_localized_help.py:220 ../../create_localized_help.py:222
+#: ../../create_localized_help.py:223 ../../create_localized_help.py:183
+msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
+msgstr ""
+
+#: ../../create_localized_help.py:221 ../../create_localized_help.py:223
+#: ../../create_localized_help.py:224 ../../create_localized_help.py:184
+msgid ""
+"If this xlet was installed from Cinnamon Settings, all of this xlet's "
+"localizations were automatically installed."
+msgstr ""
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:223 ../../create_localized_help.py:225
+#: ../../create_localized_help.py:226 ../../create_localized_help.py:186
+msgid ""
+"If this xlet was installed manually and not trough Cinnamon Settings, "
+"localizations can be installed by executing the script called "
+"**localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr ""
+
+#: ../../create_localized_help.py:224 ../../create_localized_help.py:226
+#: ../../create_localized_help.py:227 ../../create_localized_help.py:187
+msgid ""
+"If this xlet has no locale available for your language, you could create it "
+"by following the following instructions."
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "muzena: Croatian localization."
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "giwhub: Chinese localization."
+msgstr ""
 
 #. 0dyseus@CinnamonMaximusFork->metadata.json->name
 msgid "Cinnamon Maximus (Fork by Odyseus)"
 msgstr "Cinnamon Maksimus (Fork od Odyseusa)"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_undecorate_when_tiled->description
-msgid "Undecorate when tiled"
-msgstr "Ukloni naslovnu traku u popločenom prikazu"
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "Uklonite naslovnu traku prozora s uvećanih prozora."
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
-msgid "Troubleshooting"
-msgstr "Rješavanje grešaka"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Ukloni naslovnu traku sa svih prozora (Eksperimentalno, zatvorite i ponovno "
+"otvorite sve prozore)"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
-msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
-msgstr "Cinnamon Maksimus (Fork od Odyseusa) postavke"
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_whitelist->description
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
 msgid "Use Whitelist"
 msgstr "Koristi popis dopuštenih aplikacija"
 
@@ -56,13 +127,47 @@ msgstr ""
 "Ako je onemogućeno, svi uvećani prozori imati će svoje naslovne trake "
 "uklonjene."
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_restart_cinnamon->description
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "Omogući zapisivanje"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
+msgid ""
+"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
+"information that could be used to debug the extension."
+msgstr ""
+"Ako je omogućeno, zapisivati će se u Cinnamon zapis (~/.cinnamon/glass.log) "
+"informacije koje se mogu iskoristiti za otklanjanje grešaka proširenja."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr "Ukloni naslovnu traku u popločenom prikazu"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+msgstr "Cinnamon Maksimus (Fork od Odyseusa) postavke"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
+msgstr "Rješavanje grešaka"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->tooltip
+msgid ""
+"\"Use Whitelist\" option must be checked.\n"
+"Use a \",\" (comma) to seperate applications."
+msgstr ""
+"Mogućnost \"Koristi popis dopuštenih aplikacija\" mora biti odabrana.\n"
+"Koristite \",\" (zarez) za odvajanje aplikacija."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
+msgstr "Popis dopuštenih aplikacija: "
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
 msgid "Check or uncheck to restart Cinnamon"
 msgstr "Odaberi ili ne za ponovno pokretanje Cinnamona"
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_restart_cinnamon->tooltip
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
 msgid ""
 "Check or uncheck this options to restart Cinnamon.\n"
 "Note: I couldn't make a proper button to work in this settings window, so I "
@@ -74,38 +179,10 @@ msgstr ""
 "postavku prozora, stoga sam morao improvizirati i upotrijebio sam preklopnu "
 "tipku. Ustvari nije važno je li uključena ili ne."
 
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_logging_enabled->description
-msgid "Enable logging"
-msgstr "Omogući zapisivanje"
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_logging_enabled->tooltip
-msgid ""
-"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
-"information that could be used to debug the extension."
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:207 ../../create_localized_help.py:214
+#: ../../create_localized_help.py:167 ../../create_localized_help.py:174
+#, python-format
+msgid "Help for %s"
 msgstr ""
-"Ako je omogućeno, zapisivati će se u Cinnamon zapis (~/.cinnamon/glass.log) "
-"informacije koje se mogu iskoristiti za otklanjanje grešaka proširenja."
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_undecorate_all->description
-msgid ""
-"Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr ""
-"Ukloni naslovnu traku sa svih prozora (Eksperimentalno, zatvorite i ponovno "
-"otvorite sve prozore)"
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_whitelisted_apps->description
-msgid "List of applications: "
-msgstr "Popis dopuštenih aplikacija: "
-
-#. 0dyseus@CinnamonMaximusFork->settings-
-#. schema.json->pref_whitelisted_apps->tooltip
-msgid ""
-"\"Use Whitelist\" option must be checked.\n"
-"Use a \",\" (comma) to seperate applications."
-msgstr ""
-"Mogućnost \"Koristi popis dopuštenih aplikacija\" mora biti odabrana.\n"
-"Koristite \",\" (zarez) za odvajanje aplikacija."

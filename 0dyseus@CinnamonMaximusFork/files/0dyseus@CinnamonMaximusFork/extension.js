@@ -94,25 +94,14 @@ const Meta = imports.gi.Meta;
 const Cinnamon = imports.gi.Cinnamon;
 const Util = imports.misc.util;
 const Settings = imports.ui.settings;
-const Main = imports.ui.main;
-const Lang = imports.lang;
-const Clutter = imports.gi.Clutter;
-/*
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const Convenience = Me.imports.convenience;
-
-const Prefs = Me.imports.prefs;
-*/
 
 Meta.MaximizeFlags.BOTH = (Meta.MaximizeFlags.VERTICAL | Meta.MaximizeFlags.HORIZONTAL);
 
 let maxID = null,
-	minID = null,
-	settingsChangedID = null,
-	changeWorkspaceID = null,
-	grabID = null,
-	tileID = null;
+    minID = null,
+    changeWorkspaceID = null,
+    grabID = null,
+    tileID = null;
 let workspaces = [];
 let oldFullscreenPref = null;
 let settings = null;
@@ -122,8 +111,8 @@ let APP_LIST;
 let IS_WHITELIST;
 
 function LOG(message) {
-	if (settings.pref_logging_enabled)
-		global.log(message);
+    if (settings.pref_logging_enabled)
+        global.log(message);
 }
 
 /** Guesses the X ID of a window.
@@ -145,46 +134,46 @@ function LOG(message) {
  * success if the window's actor (`win.get_compositor_private()`) exists.
  */
 function guessWindowXID(win) {
-	let id = null;
-	/* if window title has non-utf8 characters, get_description() complains
-	 * "Failed to convert UTF-8 string to JS string: Invalid byte sequence in conversion input",
-	 * event though get_title() works.
-	 */
-	try {
-		id = win.get_description().match(/0x[0-9a-f]+/);
-		if (id) {
-			id = id[0];
-			return id;
-		}
-	} catch (err) {}
+    let id = null;
+    /* if window title has non-utf8 characters, get_description() complains
+     * "Failed to convert UTF-8 string to JS string: Invalid byte sequence in conversion input",
+     * event though get_title() works.
+     */
+    try {
+        id = win.get_description().match(/0x[0-9a-f]+/);
+        if (id) {
+            id = id[0];
+            return id;
+        }
+    } catch (err) {}
 
-	// use xwininfo, take first child.
-	let act = win.get_compositor_private();
-	if (act) {
-		id = GLib.spawn_command_line_sync('xwininfo -children -id 0x%x'.format(act['x-window']));
-		if (id[0]) {
-			let str = id[1].toString();
+    // use xwininfo, take first child.
+    let act = win.get_compositor_private();
+    if (act) {
+        id = GLib.spawn_command_line_sync('xwininfo -children -id 0x%x'.format(act['x-window']));
+        if (id[0]) {
+            let str = id[1].toString();
 
-			/* The X ID of the window is the one preceding the target window's title.
-			 * This is to handle cases where the window has no frame and so
-			 * act['x-window'] is actually the X ID we want, not the child.
-			 */
-			let regexp = new RegExp('(0x[0-9a-f]+) +"%s"'.format(win.title));
-			id = str.match(regexp);
-			if (id) {
-				return id[1];
-			}
+            /* The X ID of the window is the one preceding the target window's title.
+             * This is to handle cases where the window has no frame and so
+             * act['x-window'] is actually the X ID we want, not the child.
+             */
+            let regexp = new RegExp('(0x[0-9a-f]+) +"%s"'.format(win.title));
+            id = str.match(regexp);
+            if (id) {
+                return id[1];
+            }
 
-			/* Otherwise, just grab the child and hope for the best */
-			id = str.split(/child(?:ren)?:/)[1].match(/0x[0-9a-f]+/);
-			if (id) {
-				return id[0];
-			}
-		}
-	}
-	// debugging for when people find bugs..
-	LOG("[maximus]: Could not find XID for window with title %s".format(win.title));
-	return null;
+            /* Otherwise, just grab the child and hope for the best */
+            id = str.split(/child(?:ren)?:/)[1].match(/0x[0-9a-f]+/);
+            if (id) {
+                return id[0];
+            }
+        }
+    }
+    // debugging for when people find bugs..
+    LOG("[maximus]: Could not find XID for window with title %s".format(win.title));
+    return null;
 }
 
 /** Undecorates a window.
@@ -215,43 +204,43 @@ function guessWindowXID(win) {
  * @param {Meta.Window} win - window to undecorate.
  */
 function undecorate(win) {
-	/* Undecorate with xprop */
-	let id = guessWindowXID(win),
-		cmd = ['xprop', '-id', id,
-			'-f', '_MOTIF_WM_HINTS', '32c',
-			'-set', '_MOTIF_WM_HINTS',
-			'0x2, 0x0, 0x0, 0x0, 0x0'
-			// '0x2, 0x0, 0x2, 0x0, 0x0'
-		];
-	/* _MOTIF_WM_HINTS: see MwmUtil.h from OpenMotif source (cvs.openmotif.org),
-	 *  or rudimentary documentation here:
-	 * http://odl.sysworks.biz/disk$cddoc04sep11/decw$book/d3b0aa63.p264.decw$book
-	 *
-	 * Struct { flags, functions, decorations, input_mode, status }.
-	 * Flags: what the hints are for. (functions, decorations, input mode and/or status).
-	 * Functions: minimize, maximize, close, ...
-	 * Decorations: title, border, all, none, ...
-	 * Input Mode: modeless, application modal, system model, ..
-	 * Status: tearoff window.
-	 */
+    /* Undecorate with xprop */
+    let id = guessWindowXID(win),
+        cmd = ['xprop', '-id', id,
+            '-f', '_MOTIF_WM_HINTS', '32c',
+            '-set', '_MOTIF_WM_HINTS',
+            '0x2, 0x0, 0x0, 0x0, 0x0'
+            // '0x2, 0x0, 0x2, 0x0, 0x0'
+        ];
+    /* _MOTIF_WM_HINTS: see MwmUtil.h from OpenMotif source (cvs.openmotif.org),
+     *  or rudimentary documentation here:
+     * http://odl.sysworks.biz/disk$cddoc04sep11/decw$book/d3b0aa63.p264.decw$book
+     *
+     * Struct { flags, functions, decorations, input_mode, status }.
+     * Flags: what the hints are for. (functions, decorations, input mode and/or status).
+     * Functions: minimize, maximize, close, ...
+     * Decorations: title, border, all, none, ...
+     * Input Mode: modeless, application modal, system model, ..
+     * Status: tearoff window.
+     */
 
-	// fallback: if couldn't get id for some reason, use the window's name
-	if (!id) {
-		cmd[1] = '-name';
-		cmd[2] = win.get_title();
-	}
-	LOG(cmd.join(' '));
-	Util.spawn(cmd);
-	// #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
-	// However, is there a use case where this would happen legitimately?
-	// For some reaons the Qt apps seem to take a while to be refocused.
-	Meta.later_add(Meta.LaterType.IDLE, function() {
-		if (win.focus) {
-			win.focus(global.get_current_time());
-		} else {
-			win.activate(global.get_current_time());
-		}
-	});
+    // fallback: if couldn't get id for some reason, use the window's name
+    if (!id) {
+        cmd[1] = '-name';
+        cmd[2] = win.get_title();
+    }
+    LOG(cmd.join(' '));
+    Util.spawn(cmd);
+    // #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
+    // However, is there a use case where this would happen legitimately?
+    // For some reaons the Qt apps seem to take a while to be refocused.
+    Meta.later_add(Meta.LaterType.IDLE, function() {
+        if (win.focus) {
+            win.focus(global.get_current_time());
+        } else {
+            win.activate(global.get_current_time());
+        }
+    });
 }
 
 /** Decorates a window by setting its `_MOTIF_WM_HINTS` property to ask for
@@ -260,30 +249,30 @@ function undecorate(win) {
  * @param {Meta.Window} win - window to undecorate.
  */
 function decorate(win) {
-	/* Decorate with xprop: 1 == DECOR_ALL */
-	let id = guessWindowXID(win),
-		cmd = ['xprop', '-id', id,
-			'-f', '_MOTIF_WM_HINTS', '32c',
-			'-set', '_MOTIF_WM_HINTS',
-			'0x2, 0x0, 0x1, 0x0, 0x0'
-		];
-	// fallback: if couldn't get id for some reason, use the window's name
-	if (!id) {
-		cmd[1] = '-name';
-		cmd[2] = win.get_title();
-	}
-	LOG(cmd.join(' '));
-	Util.spawn(cmd);
-	// #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
-	// However, is there a use case where this would happen legitimately?
-	// For some reaons the Qt apps seem to take a while to be refocused.
-	Meta.later_add(Meta.LaterType.IDLE, function() {
-		if (win.focus) {
-			win.focus(global.get_current_time());
-		} else {
-			win.activate(global.get_current_time());
-		}
-	});
+    /* Decorate with xprop: 1 == DECOR_ALL */
+    let id = guessWindowXID(win),
+        cmd = ['xprop', '-id', id,
+            '-f', '_MOTIF_WM_HINTS', '32c',
+            '-set', '_MOTIF_WM_HINTS',
+            '0x2, 0x0, 0x1, 0x0, 0x0'
+        ];
+    // fallback: if couldn't get id for some reason, use the window's name
+    if (!id) {
+        cmd[1] = '-name';
+        cmd[2] = win.get_title();
+    }
+    LOG(cmd.join(' '));
+    Util.spawn(cmd);
+    // #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
+    // However, is there a use case where this would happen legitimately?
+    // For some reaons the Qt apps seem to take a while to be refocused.
+    Meta.later_add(Meta.LaterType.IDLE, function() {
+        if (win.focus) {
+            win.focus(global.get_current_time());
+        } else {
+            win.activate(global.get_current_time());
+        }
+    });
 }
 
 /** Tells the window manager to hide the titlebar on maximised windows.
@@ -306,38 +295,38 @@ function decorate(win) {
  * is `true`. Internal use.
  */
 function setHideTitlebar(win, hide, stopAdding) {
-	LOG('setHideTitlebar: ' + win.get_title() + ': ' + hide + (stopAdding ? ' (2)' : ''));
+    LOG('setHideTitlebar: ' + win.get_title() + ': ' + hide + (stopAdding ? ' (2)' : ''));
 
-	let id = guessWindowXID(win);
-	/* Newly-created windows are added to the workspace before
-	 * the compositor knows about them: get_compositor_private() is null.
-	 * Additionally things like .get_maximized() aren't properly done yet.
-	 * (see workspace.js _doAddWindow)
-	 */
-	if (!id && !win.get_compositor_private() && !stopAdding) {
-		Mainloop.idle_add(function() {
-			setHideTitlebar(null, win, true); // only try once more.
-			return false; // define as one-time event
-		});
-		return;
-	}
+    let id = guessWindowXID(win);
+    /* Newly-created windows are added to the workspace before
+     * the compositor knows about them: get_compositor_private() is null.
+     * Additionally things like .get_maximized() aren't properly done yet.
+     * (see workspace.js _doAddWindow)
+     */
+    if (!id && !win.get_compositor_private() && !stopAdding) {
+        Mainloop.idle_add(function() {
+            setHideTitlebar(null, win, true); // only try once more.
+            return false; // define as one-time event
+        });
+        return;
+    }
 
-	/* Undecorate with xprop. Use _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED.
-	 * See (eg) mutter/src/window-props.c
-	 */
-	let cmd = ['xprop', '-id', id,
-		'-f', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED', '32c',
-		'-set', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED',
-		(hide ? '0x1' : '0x0')
-	];
+    /* Undecorate with xprop. Use _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED.
+     * See (eg) mutter/src/window-props.c
+     */
+    let cmd = ['xprop', '-id', id,
+        '-f', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED', '32c',
+        '-set', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED',
+        (hide ? '0x1' : '0x0')
+    ];
 
-	// fallback: if couldn't get id for some reason, use the window's name
-	if (!id) {
-		cmd[1] = '-name';
-		cmd[2] = win.get_title();
-	}
-	LOG(cmd.join(' '));
-	Util.spawn(cmd);
+    // fallback: if couldn't get id for some reason, use the window's name
+    if (!id) {
+        cmd[1] = '-name';
+        cmd[2] = win.get_title();
+    }
+    LOG(cmd.join(' '));
+    Util.spawn(cmd);
 }
 
 /** Returns whether we should affect `win`'s decorationa t all.
@@ -353,28 +342,28 @@ function setHideTitlebar(win, hide, stopAdding) {
  */
 function shouldAffect(win) {
 
-	if (!win._maximusDecoratedOriginal) {
-		return false;
-	} else {
+    if (!win._maximusDecoratedOriginal) {
+        return false;
+    } else {
 
-		LOG('whitelist etkin=' + IS_WHITELIST);
-		LOG('whitelist =' + APP_LIST);
+        LOG('whitelist etkin=' + IS_WHITELIST);
+        LOG('whitelist =' + APP_LIST);
 
-		if (IS_WHITELIST) {
-			let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
-			let appid = (app ? app.get_id() : -1);
-			let activeApp = appid.split(".");
-			let appsInList = APP_LIST.split(',');
-			LOG('appid=' + activeApp[0]);
-			//APP_LIST=APP_LIST.split(',');
-			let inList = appsInList.length > 0 && appsInList.indexOf(activeApp[0]) >= 0;
-			LOG(inList);
-			return ((IS_WHITELIST && inList) || (IS_WHITELIST && inList));
-			// return !(!((IS_WHITELIST && inList) || (!IS_WHITELIST && !inList)));
-		} else {
-			return true;
-		}
-	}
+        if (IS_WHITELIST) {
+            let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
+            let appid = (app ? app.get_id() : -1);
+            let activeApp = appid.split(".");
+            let appsInList = APP_LIST.split(',');
+            LOG('appid=' + activeApp[0]);
+            //APP_LIST=APP_LIST.split(',');
+            let inList = appsInList.length > 0 && appsInList.indexOf(activeApp[0]) >= 0;
+            LOG(inList);
+            return ((IS_WHITELIST && inList) || (IS_WHITELIST && inList));
+            // return !(!((IS_WHITELIST && inList) || (!IS_WHITELIST && !inList)));
+        } else {
+            return true;
+        }
+    }
 
 }
 
@@ -387,38 +376,38 @@ function shouldAffect(win) {
  * Use with `shouldAffect` to get a full check..
  */
 function shouldBeUndecorated(win) {
-	let max = win.get_maximized();
-	return ((max === Meta.MaximizeFlags.BOTH));
+    let max = win.get_maximized();
+    return ((max === Meta.MaximizeFlags.BOTH));
 }
 
 /** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
  * If so, undecorates the window. */
 function possiblyUndecorate(win) {
-	if (shouldBeUndecorated(win)) {
-		if (!win.get_compositor_private()) {
-			Mainloop.idle_add(function() {
-				undecorate(win);
-				return false; // define as one-time event
-			});
-		} else {
-			undecorate(win);
-		}
-	}
+    if (shouldBeUndecorated(win)) {
+        if (!win.get_compositor_private()) {
+            Mainloop.idle_add(function() {
+                undecorate(win);
+                return false; // define as one-time event
+            });
+        } else {
+            undecorate(win);
+        }
+    }
 }
 
 /** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
  * If *NOT*, redecorates the window. */
 function possiblyRedecorate(win) {
-	if (!shouldBeUndecorated(win)) {
-		if (!win.get_compositor_private()) {
-			Mainloop.idle_add(function() {
-				decorate(win);
-				return false; // define as one-time event
-			});
-		} else {
-			decorate(win);
-		}
-	}
+    if (!shouldBeUndecorated(win)) {
+        if (!win.get_compositor_private()) {
+            Mainloop.idle_add(function() {
+                decorate(win);
+                return false; // define as one-time event
+            });
+        } else {
+            decorate(win);
+        }
+    }
 }
 
 /**** Callbacks ****/
@@ -432,23 +421,23 @@ function possiblyRedecorate(win) {
  * not check before undecorating.
  */
 function onMaximise(shellwm, actor) {
-	if (!actor) {
-		return;
-	}
-	let win = actor.get_meta_window();
-	if (!shouldAffect(win)) {
-		return;
-	}
-	// note: window is maximized by this point.
-	let max = win.get_maximized();
-	LOG('onMaximise: ' + win.get_title() + ' [' + win.get_wm_class() + ']');
-	// if this is a partial maximization, and we do not wish to undecorate
-	// half-maximized windows, make sure the window is decorated.
-	if (max !== Meta.MaximizeFlags.BOTH) {
-		undecorate(win);
-		return;
-	}
-	undecorate(win);
+    if (!actor) {
+        return;
+    }
+    let win = actor.get_meta_window();
+    if (!shouldAffect(win)) {
+        return;
+    }
+    // note: window is maximized by this point.
+    let max = win.get_maximized();
+    LOG('onMaximise: ' + win.get_title() + ' [' + win.get_wm_class() + ']');
+    // if this is a partial maximization, and we do not wish to undecorate
+    // half-maximized windows, make sure the window is decorated.
+    if (max !== Meta.MaximizeFlags.BOTH) {
+        undecorate(win);
+        return;
+    }
+    undecorate(win);
 }
 
 /** Called when a window is unmaximized.
@@ -461,38 +450,38 @@ function onMaximise(shellwm, actor) {
  */
 function onUnmaximise(shellwm, actor) {
 
-	if (!actor) {
-		return;
-	}
-	let win = actor.meta_window;
-	if (!shouldAffect(win)) {
-		return;
-	}
-	LOG('onUnmaximise: ' + win.get_title());
-	// if the user is unmaximizing by dragging, we wait to decorate until they
-	// have dropped the window, so that we don't force the user to drop
-	// the window prematurely with the redecorate (which stops the grab).
-	//
-	// This is only necessary if USE_SET_HIDE_TITLEBAR is `false` (otherwise
-	// this is not an issue).
-	if (!USE_SET_HIDE_TITLEBAR && global.display.get_grab_op() === Meta.GrabOp.MOVING) {
-		if (grabID) {
-			// shouldn't happen, but oh well.
-			global.display.disconnect(grabID);
-			grabID = 0;
-		}
-		grabID = global.display.connect('grab-op-end', function() {
-			if (settings.pref_undecorate_when_tiled && (win.tile_type == Meta.WindowTileType.TILED || win.tile_type == Meta.WindowTileType.SNAPPED)) {
-				return;
-			} else {
-				possiblyRedecorate(win);
-				global.display.disconnect(grabID);
-				grabID = 0;
-			}
-		});
-	} else {
-		decorate(win);
-	}
+    if (!actor) {
+        return;
+    }
+    let win = actor.meta_window;
+    if (!shouldAffect(win)) {
+        return;
+    }
+    LOG('onUnmaximise: ' + win.get_title());
+    // if the user is unmaximizing by dragging, we wait to decorate until they
+    // have dropped the window, so that we don't force the user to drop
+    // the window prematurely with the redecorate (which stops the grab).
+    //
+    // This is only necessary if USE_SET_HIDE_TITLEBAR is `false` (otherwise
+    // this is not an issue).
+    if (!USE_SET_HIDE_TITLEBAR && global.display.get_grab_op() === Meta.GrabOp.MOVING) {
+        if (grabID) {
+            // shouldn't happen, but oh well.
+            global.display.disconnect(grabID);
+            grabID = 0;
+        }
+        grabID = global.display.connect('grab-op-end', function() {
+            if (settings.pref_undecorate_when_tiled && (win.tile_type == Meta.WindowTileType.TILED || win.tile_type == Meta.WindowTileType.SNAPPED)) {
+                return;
+            } else {
+                possiblyRedecorate(win);
+                global.display.disconnect(grabID);
+                grabID = 0;
+            }
+        });
+    } else {
+        decorate(win);
+    }
 }
 
 /** Callback for a window's 'notify::maximized-horizontally' and
@@ -510,15 +499,15 @@ function onUnmaximise(shellwm, actor) {
  *
  * @see onWindowAdded
  */
-function onWindowChangesMaximiseState(win) {
-	if ((win.maximized_horizontally && !win.maximized_vertically) ||
-		(!win.maximized_horizontally && win.maximized_vertically)) {
-		setHideTitlebar(win, false);
-		decorate(win);
-	} else {
-		setHideTitlebar(win, true);
-	}
-}
+// function onWindowChangesMaximiseState(win) {
+//     if ((win.maximized_horizontally && !win.maximized_vertically) ||
+//         (!win.maximized_horizontally && win.maximized_vertically)) {
+//         setHideTitlebar(win, false);
+//         decorate(win);
+//     } else {
+//         setHideTitlebar(win, true);
+//     }
+// }
 
 /** Callback when a window is added in any of the workspaces.
  * This includes a window switching to another workspace.
@@ -545,42 +534,42 @@ function onWindowChangesMaximiseState(win) {
  * @see undecorate
  */
 function onWindowAdded(ws, win) {
-	// if the window is simply switching workspaces, it will trigger a
-	// window-added signal. We don't want to reprocess it then because we already
-	// have.
-	if (settings.pref_undecorate_all) {
+    // if the window is simply switching workspaces, it will trigger a
+    // window-added signal. We don't want to reprocess it then because we already
+    // have.
+    if (settings.pref_undecorate_all) {
 
-		undecorate(win);
+        undecorate(win);
 
-	} else {
-		if (win._maximusDecoratedOriginal !== undefined) {
-			return;
-		}
+    } else {
+        if (win._maximusDecoratedOriginal !== undefined) {
+            return;
+        }
 
-		/* Newly-created windows are added to the workspace before
-		 * the compositor knows about them: get_compositor_private() is null.
-		 * Additionally things like .get_maximized() aren't properly done yet.
-		 * (see workspace.js _doAddWindow)
-		 */
-		win._maximusDecoratedOriginal = win.decorated !== false || false;
-		LOG('onWindowAdded: ' + win.get_title() + ' initially decorated? ' + win._maximusDecoratedOriginal);
+        /* Newly-created windows are added to the workspace before
+         * the compositor knows about them: get_compositor_private() is null.
+         * Additionally things like .get_maximized() aren't properly done yet.
+         * (see workspace.js _doAddWindow)
+         */
+        win._maximusDecoratedOriginal = win.decorated !== false || false;
+        LOG('onWindowAdded: ' + win.get_title() + ' initially decorated? ' + win._maximusDecoratedOriginal);
 
-		if (!shouldAffect(win)) {
-			return;
-		}
+        if (!shouldAffect(win)) {
+            return;
+        }
 
-		// with set_hide_titlebar, set the window hint when the window is added and
-		// there is no further need to listen to maximize/unmaximize on the window.
-		if (USE_SET_HIDE_TITLEBAR) {
-			setHideTitlebar(win, true);
-			// set_hide_titlebar undecorates half maximized, so if we wish not to we
-			// will have to manually redo it ourselves
-		} else {
-			// if it is added initially maximized, we undecorate it.
-			possiblyUndecorate(win);
-		}
+        // with set_hide_titlebar, set the window hint when the window is added and
+        // there is no further need to listen to maximize/unmaximize on the window.
+        if (USE_SET_HIDE_TITLEBAR) {
+            setHideTitlebar(win, true);
+            // set_hide_titlebar undecorates half maximized, so if we wish not to we
+            // will have to manually redo it ourselves
+        } else {
+            // if it is added initially maximized, we undecorate it.
+            possiblyUndecorate(win);
+        }
 
-	}
+    }
 }
 
 /** Callback whenever the number of workspaces changes.
@@ -591,227 +580,214 @@ function onWindowAdded(ws, win) {
  * @see onWindowAdded
  */
 function onChangeNWorkspaces() {
-	let ws,
-		i = workspaces.length;
-	while (i--) {
-		workspaces[i].disconnect(workspaces[i]._MaximusWindowAddedId);
-	}
+    let ws,
+        i = workspaces.length;
+    while (i--) {
+        workspaces[i].disconnect(workspaces[i]._MaximusWindowAddedId);
+    }
 
-	workspaces = [];
-	i = global.screen.n_workspaces;
-	while (i--) {
-		ws = global.screen.get_workspace_by_index(i);
-		workspaces.push(ws);
-		// we need to add a Mainloop.idle_add, or else in onWindowAdded the
-		// window's maximized state is not correct yet.
-		//ws._MaximusWindowAddedId = ws.connect('window-added', onWindowAdded);
-		ws._MaximusWindowAddedId = ws.connect('window-added', function(ws, win) {
-			Mainloop.idle_add(function() {
-				onWindowAdded(ws, win);
-				return false;
-			});
-		});
-	}
+    workspaces = [];
+    i = global.screen.n_workspaces;
+    while (i--) {
+        ws = global.screen.get_workspace_by_index(i);
+        workspaces.push(ws);
+        // we need to add a Mainloop.idle_add, or else in onWindowAdded the
+        // window's maximized state is not correct yet.
+        //ws._MaximusWindowAddedId = ws.connect('window-added', onWindowAdded);
+        ws._MaximusWindowAddedId = ws.connect('window-added', function(ws, win) {
+            Mainloop.idle_add(function() {
+                onWindowAdded(ws, win);
+                return false;
+            });
+        });
+    }
 }
 
 /** Start listening to events and undecorate already-existing windows. */
 function startUndecorating() {
-	// cache some variables for convenience
-	IS_WHITELIST = settings.pref_whitelist;
-	APP_LIST = settings.pref_whitelisted_apps;
-	USE_SET_HIDE_TITLEBAR = false;
-	if (USE_SET_HIDE_TITLEBAR && Meta.prefs_get_theme().match(/^(?:Ambiance|Radiance)$/)) {
-		USE_SET_HIDE_TITLEBAR = false;
-	}
+    // cache some variables for convenience
+    IS_WHITELIST = settings.pref_whitelist;
+    APP_LIST = settings.pref_whitelisted_apps;
+    USE_SET_HIDE_TITLEBAR = false;
+    if (USE_SET_HIDE_TITLEBAR && Meta.prefs_get_theme().match(/^(?:Ambiance|Radiance)$/)) {
+        USE_SET_HIDE_TITLEBAR = false;
+    }
 
-	/* Connect events */
-	changeWorkspaceID = global.screen.connect('notify::n-workspaces', onChangeNWorkspaces);
-	// if we are not using the set_hide_titlebar hint, we must listen to maximize and unmaximize events.
-	if (!USE_SET_HIDE_TITLEBAR) {
+    /* Connect events */
+    changeWorkspaceID = global.screen.connect('notify::n-workspaces', onChangeNWorkspaces);
+    // if we are not using the set_hide_titlebar hint, we must listen to maximize and unmaximize events.
+    if (!USE_SET_HIDE_TITLEBAR) {
 
-		maxID = global.window_manager.connect('maximize', onMaximise);
-		minID = global.window_manager.connect('unmaximize', onUnmaximise);
-		if (settings.pref_undecorate_when_tiled === true) {
-			tileID = global.window_manager.connect('tile', onMaximise);
+        maxID = global.window_manager.connect('maximize', onMaximise);
+        minID = global.window_manager.connect('unmaximize', onUnmaximise);
+        if (settings.pref_undecorate_when_tiled === true) {
+            tileID = global.window_manager.connect('tile', onMaximise);
 
-		}
-		/* this is needed to prevent Metacity from interpreting an attempted drag
-		 * of an undecorated window as a fullscreen request. Otherwise thunderbird
-		 * (in particular) has no way to get out of fullscreen, resulting in the user
-		 * being stuck there.
-		 * See issue #6
-		 * https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/issue/6
-		 *
-		 * Once we can properly set the window's hide_titlebar_when_maximized property
-		 * this will no loner be necessary.
-		 */
-		oldFullscreenPref = Meta.prefs_get_force_fullscreen();
-		Meta.prefs_set_force_fullscreen(false);
-	}
+        }
+        /* this is needed to prevent Metacity from interpreting an attempted drag
+         * of an undecorated window as a fullscreen request. Otherwise thunderbird
+         * (in particular) has no way to get out of fullscreen, resulting in the user
+         * being stuck there.
+         * See issue #6
+         * https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/issue/6
+         *
+         * Once we can properly set the window's hide_titlebar_when_maximized property
+         * this will no loner be necessary.
+         */
+        oldFullscreenPref = Meta.prefs_get_force_fullscreen();
+        Meta.prefs_set_force_fullscreen(false);
+    }
 
-	/* Go through already-maximised windows & undecorate.
-	 * This needs a delay as the window list is not yet loaded
-	 *  when the extension is loaded.
-	 * Also, connect up the 'window-added' event.
-	 * Note that we do not connect this before the onMaximise loop
-	 *  because when one restarts the gnome-shell, window-added gets
-	 *  fired for every currently-existing window, and then
-	 *  these windows will have onMaximise called twice on them.
-	 */
-	onetime = Mainloop.idle_add(function() {
-		let winList = global.get_window_actors().map(function(w) {
-				return w.meta_window;
-			}),
-			i = winList.length;
-		while (i--) {
-			let win = winList[i];
-			if (win.window_type === Meta.WindowType.DESKTOP) {
-				continue;
-			}
-			onWindowAdded(null, win);
-		}
-		onChangeNWorkspaces();
-		return false; // define as one-time event
-	});
+    /* Go through already-maximised windows & undecorate.
+     * This needs a delay as the window list is not yet loaded
+     *  when the extension is loaded.
+     * Also, connect up the 'window-added' event.
+     * Note that we do not connect this before the onMaximise loop
+     *  because when one restarts the gnome-shell, window-added gets
+     *  fired for every currently-existing window, and then
+     *  these windows will have onMaximise called twice on them.
+     */
+    onetime = Mainloop.idle_add(function() {
+        let winList = global.get_window_actors().map(function(w) {
+                return w.meta_window;
+            }),
+            i = winList.length;
+        while (i--) {
+            let win = winList[i];
+            if (win.window_type === Meta.WindowType.DESKTOP) {
+                continue;
+            }
+            onWindowAdded(null, win);
+        }
+        onChangeNWorkspaces();
+        return false; // define as one-time event
+    });
 }
 
 /** Stop listening to events, restore all windows back to their original
  * decoration state. */
 function stopUndecorating() {
-	if (maxID)
-		global.window_manager.disconnect(maxID);
-	if (minID)
-		global.window_manager.disconnect(minID);
-	if (tileID)
-		global.window_manager.disconnect(tileID);
-	if (changeWorkspaceID)
-		global.window_manager.disconnect(changeWorkspaceID);
-	if (grabID)
-		global.display.disconnect(grabID);
-	maxID = 0;
-	minID = 0;
-	tileID = 0;
-	changeWorkspaceID = 0;
-	grabID = 0;
+    if (maxID)
+        global.window_manager.disconnect(maxID);
+    if (minID)
+        global.window_manager.disconnect(minID);
+    if (tileID)
+        global.window_manager.disconnect(tileID);
+    if (changeWorkspaceID)
+        global.window_manager.disconnect(changeWorkspaceID);
+    if (grabID)
+        global.display.disconnect(grabID);
+    maxID = 0;
+    minID = 0;
+    tileID = 0;
+    changeWorkspaceID = 0;
+    grabID = 0;
 
-	/* disconnect window-added from workspaces */
-	let i = workspaces.length;
-	while (i--) {
-		workspaces[i].disconnect(workspaces[i]._MaximusWindowAddedId);
-		delete workspaces[i]._MaximusWindowAddedId;
-	}
-	workspaces = [];
+    /* disconnect window-added from workspaces */
+    let i = workspaces.length;
+    while (i--) {
+        workspaces[i].disconnect(workspaces[i]._MaximusWindowAddedId);
+        delete workspaces[i]._MaximusWindowAddedId;
+    }
+    workspaces = [];
 
-	/* redecorate undecorated windows we screwed with */
-	if (onetime) {
-		Mainloop.source_remove(onetime);
-		onetime = 0;
-	}
-	let winList = global.get_window_actors().map(function(w) {
-		return w.meta_window;
-	});
-	i = winList.length;
-	while (i--) {
-		let win = winList[i];
-		if (win.window_type === Meta.WindowType.DESKTOP) {
-			continue;
-		}
+    /* redecorate undecorated windows we screwed with */
+    if (onetime) {
+        Mainloop.source_remove(onetime);
+        onetime = 0;
+    }
+    let winList = global.get_window_actors().map(function(w) {
+        return w.meta_window;
+    });
+    i = winList.length;
+    while (i--) {
+        let win = winList[i];
+        if (win.window_type === Meta.WindowType.DESKTOP) {
+            continue;
+        }
 
-		LOG('stopUndecorating: ' + win.title);
-		// if it wasn't decorated originally, we haven't done anything to it so
-		// don't need to undo anything.
-		if (win._maximusDecoratedOriginal) {
-			if (USE_SET_HIDE_TITLEBAR) {
-				setHideTitlebar(win, false);
+        LOG('stopUndecorating: ' + win.title);
+        // if it wasn't decorated originally, we haven't done anything to it so
+        // don't need to undo anything.
+        if (win._maximusDecoratedOriginal) {
+            if (USE_SET_HIDE_TITLEBAR) {
+                setHideTitlebar(win, false);
 
-				if (win._maxHStateId) {
-					win.disconnect(win._maxHStateId);
-					delete win._maxHStateId;
-				}
+                if (win._maxHStateId) {
+                    win.disconnect(win._maxHStateId);
+                    delete win._maxHStateId;
+                }
 
-				if (win._maxVStateId) {
-					win.disconnect(win._maxVStateId);
-					delete win._maxVStateId;
-				}
-			}
-			decorate(win);
-		}
-		delete win._maximusDecoratedOriginal;
-	}
+                if (win._maxVStateId) {
+                    win.disconnect(win._maxVStateId);
+                    delete win._maxVStateId;
+                }
+            }
+            decorate(win);
+        }
+        delete win._maximusDecoratedOriginal;
+    }
 
-	if (oldFullscreenPref !== null) {
-		/* restore old meta force fullscreen pref */
-		Meta.prefs_set_force_fullscreen(oldFullscreenPref);
-		oldFullscreenPref = null;
-	}
+    if (oldFullscreenPref !== null) {
+        /* restore old meta force fullscreen pref */
+        Meta.prefs_set_force_fullscreen(oldFullscreenPref);
+        oldFullscreenPref = null;
+    }
 }
 
 function SettingsHandler(aUUID) {
-	this._init(aUUID);
+    this._init(aUUID);
 }
 
 SettingsHandler.prototype = {
-	_init: function(aUUID) {
-		this.settings = new Settings.ExtensionSettings(this, aUUID);
-		this.settings.bindProperty(Settings.BindingDirection.IN,
-			"pref_whitelist", "pref_whitelist",
-			function() {
-				toggle_decorations();
-			});
-		this.settings.bindProperty(Settings.BindingDirection.IN,
-			"pref_whitelisted_apps", "pref_whitelisted_apps",
-			function() {});
-		this.settings.bindProperty(Settings.BindingDirection.IN,
-			"pref_undecorate_when_tiled", "pref_undecorate_when_tiled",
-			function() {
-				toggle_decorations();
-			});
-		this.settings.bindProperty(Settings.BindingDirection.IN,
-			"pref_undecorate_all", "pref_undecorate_all",
-			function() {
-				toggle_decorations();
-			});
-		this.settings.bindProperty(Settings.BindingDirection.IN,
-			"pref_logging_enabled", "pref_logging_enabled",
-			function() {
-				// toggle_decorations();
-			});
-		this.settings.bindProperty(Settings.BindingDirection.IN,
-			"pref_restart_cinnamon", "pref_restart_cinnamon",
-			function() {
-				global.reexec_self();
-			});
-	}
+    _init: function(aUUID) {
+        this.settings = new Settings.ExtensionSettings(this, aUUID);
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "pref_whitelist", "pref_whitelist",
+            function() {
+                toggle_decorations();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "pref_whitelisted_apps", "pref_whitelisted_apps",
+            function() {});
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "pref_undecorate_when_tiled", "pref_undecorate_when_tiled",
+            function() {
+                toggle_decorations();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "pref_undecorate_all", "pref_undecorate_all",
+            function() {
+                toggle_decorations();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "pref_logging_enabled", "pref_logging_enabled",
+            function() {
+                // toggle_decorations();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "pref_restart_cinnamon", "pref_restart_cinnamon",
+            function() {
+                global.reexec_self();
+            });
+    }
 };
 
 function toggle_decorations() {
-	stopUndecorating();
-	Mainloop.timeout_add(2000, Lang.bind(this, function() {
-		startUndecorating();
-	}));
+    stopUndecorating();
+    Mainloop.timeout_add(2000, function() {
+        startUndecorating();
+    });
 }
 
 function enable() {
-	startUndecorating();
-	/* Monitor settings changes */
-	/* settingsChangedID = settings.connect('changed', function () {
-	     // redecorate every window and undecorate again according to the
-	     // new settings.
-	     stopUndecorating();
-
-	     startUndecorating();
-	 });*/
+    startUndecorating();
 }
 
 function disable() {
-	stopUndecorating();
-	/* disconnect settings changes */
-	/*
-	if (settingsChangedID) {
-	    settings.disconnect(settingsChangedID);
-	}*/
+    stopUndecorating();
 }
 
 function init(aMetaddata) {
-	settings = new SettingsHandler(aMetaddata.uuid);
+    settings = new SettingsHandler(aMetaddata.uuid);
 }
