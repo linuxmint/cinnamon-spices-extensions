@@ -6,7 +6,7 @@
 //          Email: fatihmete@live.com
 
 //This extension adopted for cinnamon, maximus-gnome-shell-extension
-//https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/overview 
+//https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/overview
 /*global global, log */ // <-- jshint
 /*jshint unused:true */
 /*
@@ -341,7 +341,7 @@ function shouldAffect(win) {
     if (!win._maximusDecoratedOriginal) {
 	return false;
     }else{
-    
+
     LOG('blacklist etkin='+IS_BLACKLIST);
     LOG('blacklist ='+APP_LIST);
 
@@ -535,9 +535,9 @@ function onWindowAdded(ws, win) {
     // window-added signal. We don't want to reprocess it then because we already
     // have.
     if(settings.undecorateAll){
-    		
+
     		undecorate(win);
-    
+
     }else{
 	    if (win._maximusDecoratedOriginal !== undefined) {
 		return;
@@ -565,7 +565,7 @@ function onWindowAdded(ws, win) {
 		// if it is added initially maximized, we undecorate it.
 		possiblyUndecorate(win);
 	    }
-    
+
     }
 }
 
@@ -611,12 +611,12 @@ function startUndecorating() {
     changeWorkspaceID = global.screen.connect('notify::n-workspaces', onChangeNWorkspaces);
     // if we are not using the set_hide_titlebar hint, we must listen to maximize and unmaximize events.
     if (!USE_SET_HIDE_TITLEBAR) {
-    	
+
         maxID = global.window_manager.connect('maximize', onMaximise);
         minID = global.window_manager.connect('unmaximize', onUnmaximise);
         if(settings.undecorateTile==true){
         	tileID=global.window_manager.connect('tile', onMaximise);
-        
+
         }
         /* this is needed to prevent Metacity from interpreting an attempted drag
          * of an undecorated window as a fullscreen request. Otherwise thunderbird
@@ -683,26 +683,26 @@ function stopUndecorating() {
         Mainloop.source_remove(onetime);
         onetime = 0;
     }
-    let winList = global.get_window_actors().map(function (w) { return w.meta_window; }),
-        i       = winList.length;
-    while (i--) {
-        let win = winList[i];
+    let winList = global.get_window_actors().map(function (w) { return w.meta_window; });
+    let j = winList.length;
+    while (j--) {
+        let win = winList[j];
         if (win.window_type === Meta.WindowType.DESKTOP) {
             continue;
         }
-	
+
         LOG('stopUndecorating: ' + win.title);
         // if it wasn't decorated originally, we haven't done anything to it so
         // don't need to undo anything.
         if (win._maximusDecoratedOriginal) {
             if (USE_SET_HIDE_TITLEBAR) {
                 setHideTitlebar(win, false);
-                
+
                 if (win._maxHStateId) {
                     win.disconnect(win._maxHStateId);
                     delete win._maxHStateId;
                 }
-                
+
                 if (win._maxVStateId) {
                     win.disconnect(win._maxVStateId);
                     delete win._maxVStateId;
@@ -776,4 +776,3 @@ function disable() {
         settings.disconnect(settingsChangedID);
     }*/
 }
-
