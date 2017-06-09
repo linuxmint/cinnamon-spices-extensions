@@ -25,16 +25,16 @@ Cube.prototype = {
         this.is_animating = false;
         this.destroy_requested = false;
         this.monitor = Main.layoutManager.primaryMonitor;
-        
+
         let [binding_type,,,direction] = binding.get_name().split('-');
-        let direction = Meta.MotionDirection[direction.toUpperCase()];
+        direction = Meta.MotionDirection[direction.toUpperCase()];
         this.direction = direction;
         this.last_direction = direction;
 
         if (direction != Meta.MotionDirection.RIGHT &&
             direction != Meta.MotionDirection.LEFT)
             return;
-        
+
         let active_workspace = global.screen.get_active_workspace();
         let new_workspace = active_workspace.get_neighbor(direction);
         if (active_workspace.index() == new_workspace.index())
@@ -54,12 +54,12 @@ Cube.prototype = {
             Lang.bind(this, this._keyReleaseEvent));
         this.actor.connect('key-press-event',
             Lang.bind(this, this._keyPressEvent));
-        
+
         this.initBackground();
         this.dimBackground();
 
         Main.pushModal(this.actor);
-        
+
         let mask = binding.get_mask();
         this._modifierMask =
             imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
@@ -220,7 +220,7 @@ Cube.prototype = {
                     panel.visible)) {
                     let chromeClone = new Clutter.Clone(
                         {source: panel.actor ? panel.actor : panel,
-                        x : panel.actor ? panel.actor.x : panel.x, 
+                        x : panel.actor ? panel.actor.x : panel.x,
                         y: panel.actor ? (panel.bottomPosition ?
                         Main.layoutManager.bottomMonitor.y +
                         Main.layoutManager.bottomMonitor.height -
@@ -300,8 +300,6 @@ Cube.prototype = {
     startAnimate: function(direction, window) {
         let active_workspace = global.screen.get_active_workspace();
         let new_workspace = active_workspace.get_neighbor(direction);
-        let active_index = active_workspace.index();
-        let new_index = new_workspace.index();
 
         let from_workspace;
         let to_workspace;
@@ -346,7 +344,7 @@ Cube.prototype = {
         this.sortWindowClones(this.to);
         this.prepare(from_workspace, to_workspace, direction, needScale);
     },
-    
+
     prepare: function(from, to, direction, needScale) {
         from.show();
         to.show();
@@ -560,7 +558,7 @@ Cube.prototype = {
         case Meta.KeyBindingAction.MOVE_TO_WORKSPACE_LEFT:
              this.direction = Meta.MotionDirection.LEFT;
              workspace = global.screen.get_active_workspace().index();
-             windows = this.getWorkspaceWindows(workspace)
+             windows = this.getWorkspaceWindows(workspace);
              window = windows[windows.length - 1];
              this.moveWindow(window, this.direction);
                  this.startAnimate(this.direction, window);
@@ -590,7 +588,7 @@ Cube.prototype = {
     },
 
     _keyReleaseEvent: function(actor, event) {
-        let [_, _, mods] = global.get_pointer();
+        let [x, y, mods] = global.get_pointer();
         let state = mods & this._modifierMask;
 
         if (state == 0) {
@@ -602,7 +600,7 @@ Cube.prototype = {
 
         return true;
     },
-    
+
     initBackground: function() {
         this._backgroundGroup = new St.Group({});
         Main.uiGroup.add_actor(this._backgroundGroup);
@@ -612,7 +610,7 @@ Cube.prototype = {
         this._backgroundGroup.raise_top();
         this._backgroundGroup.lower(this.actor);
     },
-    
+
     dimBackground: function() {
         this._backgroundGroup.show();
         let background = this._backgroundGroup.get_children()[0];
@@ -622,7 +620,7 @@ Cube.prototype = {
             transition: 'easeOutQuad'
         });
     },
-    
+
     /*undimBackground: function() {
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
@@ -631,7 +629,7 @@ Cube.prototype = {
             transition: 'easeOutQuad',
         });
     },*/
-    
+
     onDestroy: function() {
         this.unscale(this.from, this.to, this.direction);
     },
@@ -644,7 +642,7 @@ Cube.prototype = {
         global.window_group.show();
         this.actor.destroy();
     }
-   
+
 };
 
 function onSwitch(display, screen, window, binding) {
@@ -671,7 +669,7 @@ CubeSettings.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "unrotateEffect", "unrotateEffect", function(){});
     }
-}
+};
 
 function init(metadata) {
     settings = new CubeSettings(metadata.uuid);
@@ -680,7 +678,7 @@ function init(metadata) {
 function enable() {
     for (let i in bindings) {
         Meta.keybindings_set_custom_handler(bindings[i],
-            Lang.bind(this, onSwitch));
+            onSwitch);
     }
 }
 
