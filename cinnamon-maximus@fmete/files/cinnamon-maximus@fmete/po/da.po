@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-11 19:11+0200\n"
+"PO-Revision-Date: 2017-06-11 19:16+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+#. cinnamon-maximus@fmete->metadata.json->description
+msgid "Undecorate windows its maximised."
+msgstr "Fjern titellinjer i maksimerede vinduer."
+
+#. cinnamon-maximus@fmete->metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. cinnamon-maximus@fmete->settings-schema.json->blacklist->description
+msgid "Use Blacklist"
+msgstr "Anvend sortliste"
+
+#. cinnamon-maximus@fmete->settings-schema.json->blacklist_apps->description
+msgid ""
+"Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for seperate "
+"apps)"
+msgstr ""
+"Sortlistede programmer (Aktivér \"Anvend sortliste\". Brug \",\" til at "
+"adskille programmer)"
+
+#. cinnamon-maximus@fmete->settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Indstillinger for Cinnamon Maximus"
+
+#. cinnamon-maximus@fmete->settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Fjern titellinjen i alle vinduer (eksperimentel, luk og åbn alle vinduer "
+"igen)"
+
+#. cinnamon-maximus@fmete->settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Fjern titellinje når udlagt side om side"
