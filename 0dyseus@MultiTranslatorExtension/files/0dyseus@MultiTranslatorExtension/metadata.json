@@ -12,7 +12,7 @@
         "3.2",
         "3.4"
     ],
-    "version": "1.04",
+    "version": "1.05",
     "schema-file": "schemas/org.cinnamon.extensions.0dyseus@MultiTranslatorExtension.gschema.xml",
     "name": "Multi Translator"
 }
