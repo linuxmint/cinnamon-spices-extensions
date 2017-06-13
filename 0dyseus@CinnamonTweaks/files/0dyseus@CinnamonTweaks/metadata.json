@@ -6,7 +6,7 @@
     "url": "https://github.com/Odyseus/CinnamonTools",
     "description": "Several tweaks for Cinnamon.",
     "schema-file": "schemas/org.cinnamon.extensions.0dyseus@CinnamonTweaks.gschema.xml",
-    "version": "1.11",
+    "version": "1.12",
     "cinnamon-version": [
         "2.8",
         "3.0",

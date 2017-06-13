@@ -12,6 +12,102 @@ exported toggleLocalizationVisibility
 
 /* jshint varstmt: false */
 
+// Source: https://github.com/julienetie/smooth-scroll
+(function(window, document) {
+    var prefixes = ['moz', 'webkit', 'o'],
+        animationFrame;
+
+    // Modern rAF prefixing without setTimeout
+    function requestAnimationFrameNative() {
+        prefixes.map(function(prefix) {
+            if (!window.requestAnimationFrame) {
+                animationFrame = window[prefix + 'RequestAnimationFrame'];
+            } else {
+                animationFrame = requestAnimationFrame;
+            }
+        });
+    }
+    requestAnimationFrameNative();
+
+    function getOffsetTop(el) {
+        if (!el) {
+            return 0;
+        }
+
+        var yOffset = el.offsetTop,
+            parent = el.offsetParent;
+
+        yOffset += getOffsetTop(parent);
+
+        return yOffset;
+    }
+
+    function getScrollTop(scrollable) {
+        return scrollable.scrollTop || document.body.scrollTop || document.documentElement.scrollTop;
+    }
+
+    function scrollTo(scrollable, coords, millisecondsToTake) {
+        var currentY = getScrollTop(scrollable),
+            diffY = coords.y - currentY,
+            startTimestamp = null;
+
+        if (coords.y === currentY || typeof scrollable.scrollTo !== 'function') {
+            return;
+        }
+
+        function doScroll(currentTimestamp) {
+            if (startTimestamp === null) {
+                startTimestamp = currentTimestamp;
+            }
+
+            var progress = currentTimestamp - startTimestamp,
+                fractionDone = (progress / millisecondsToTake),
+                pointOnSineWave = Math.sin(fractionDone * Math.PI / 2);
+            scrollable.scrollTo(0, currentY + (diffY * pointOnSineWave));
+
+            if (progress < millisecondsToTake) {
+                animationFrame(doScroll);
+            } else {
+                // Ensure we're at our destination
+                scrollable.scrollTo(coords.x, coords.y);
+            }
+        }
+
+        animationFrame(doScroll);
+    }
+
+    // Declaire scroll duration, (before script)
+    var speed = window.smoothScrollSpeed || 750;
+
+    function smoothScroll(e) { // no smooth scroll class to ignore links
+        if (e.target.className === 'no-ss') {
+            return;
+        }
+
+        var source = e.target,
+            targetHref = source.hash,
+            target = null;
+
+        if (!source || !targetHref) {
+            return;
+        }
+
+        targetHref = targetHref.substring(1);
+        target = document.getElementById(targetHref);
+        if (!target) {
+            return;
+        }
+
+        scrollTo(window, {
+            x: 0,
+            y: getOffsetTop(target)
+        }, speed);
+    }
+
+    // Uses target's hash for scroll
+    document.addEventListener('click', smoothScroll, false);
+}(window, document));
+
 if (!window.localStorage) {
     /*
     Storage objects are a recent addition to the standard. As such they may not be present
@@ -449,7 +545,7 @@ body {
 <noscript>
 <div class="alert alert-warning">
 <p><strong>Oh snap! This page needs JavaScript enabled to display correctly.</strong></p>
-<p><strong>This page uses JavaScript only to switch between the available languages.</strong></p>
+<p><strong>This page uses JavaScript only to switch between the available languages and/or display images.</strong></p>
 <p><strong>There are no tracking services of any kind and never will be (at least, not from my side).</strong></p>
 </div> <!-- .alert.alert-warning -->
 </noscript>
@@ -458,16 +554,17 @@ body {
     <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-            <li><a id="nav-xlet-help" class="navbar-brand" href="#xlet-help"></a></li>
-            <li><a id="nav-xlet-contributors" class="navbar-brand" href="#xlet-contributors"></a></li>
-            <li><a id="nav-xlet-changelog" class="navbar-brand" href="#xlet-changelog"></a></li>
+            <li><a id="nav-xlet-help" class="js_smoothScroll navbar-brand" href="#xlet-help"></a></li>
+            <li><a id="nav-xlet-contributors" class="js_smoothScroll navbar-brand" href="#xlet-contributors"></a></li>
+            <li><a id="nav-xlet-changelog" class="js_smoothScroll navbar-brand" href="#xlet-changelog"></a></li>
         </ul>
     </div>
     <form class="navbar-form navbar-collapse collapse navbar-right">
         <div class="form-group">
             <label id="localization-chooser-label" class="control-label" for="localization-switch"></label>
             <select class="form-control input-sm" id="localization-switch" onchange="self.toggleLocalizationVisibility(value, this);">
-                <!-- Dansk --><option data-title="Hjælp til Cinnamon Tweaks" data-language-chooser-label="Vælg sprog" data-xlet-help="Hjælp" data-xlet-contributors="Contributors" data-xlet-changelog="Changelog" value="da">Dansk</option>
+                <!-- Česky --><option data-title="Nápověda pro Cinnamon Tweaks" data-language-chooser-label="Zvolte jazyk" data-xlet-help="Nápověda" data-xlet-contributors="Přispěvatelé" data-xlet-changelog="Changelog" value="cs">Česky</option>
+<!-- Dansk --><option data-title="Hjælp til Cinnamon Tweaks" data-language-chooser-label="Vælg sprog" data-xlet-help="Hjælp" data-xlet-contributors="Contributors" data-xlet-changelog="Changelog" value="da">Dansk</option>
 <!-- English --><option selected data-title="Help for Cinnamon Tweaks" data-language-chooser-label="Choose language" data-xlet-help="Help" data-xlet-contributors="Contributors" data-xlet-changelog="Changelog" value="en">English</option>
 <!-- Español --><option data-title="Ayuda para Cinnamon Tweaks" data-language-chooser-label="Elegir idioma" data-xlet-help="Ayuda" data-xlet-contributors="Colaboradores" data-xlet-changelog="Registro de cambios" value="es">Español</option>
 <!-- Svenska --><option data-title="Hjälp för Cinnamon Tweaks" data-language-chooser-label="Välj språk" data-xlet-help="Hjälp" data-xlet-contributors="Medhjälpare" data-xlet-changelog="Ändringslogg" value="sv">Svenska</option>
@@ -477,7 +574,7 @@ body {
     </form>
     </div>
 </nav>
-<span id="xlet-help">
+<span id="xlet-help" style="padding-top:70px;">
 <div class="container boxed">
 
 <div id="da" class="localization-content hidden">
@@ -641,6 +738,7 @@ Nogle tilpasninger har advarsler, afhængigheder, begrænsninger og andre kendte
 <li>Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit sprog, kan du oprette en ved at følge de efterfølgende instruktioner. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">The following two sections are available only in English.</div>
 </div> <!-- .localization-content -->
 
 
@@ -805,6 +903,7 @@ Nogle tilpasninger har advarsler, afhængigheder, begrænsninger og andre kendte
 <li>如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。 <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">以下两个部分仅使用英语。</div>
 </div> <!-- .localization-content -->
 
 
@@ -969,6 +1068,172 @@ Algunos ajustes tienen advertencias, dependencias, limitaciones y/o problemas co
 <li>Si este xlet no está disponible en su idioma, la localización puede ser creada siguiendo las siguientes instrucciones. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">Las siguientes dos secciones están disponibles sólo en Inglés.</div>
+</div> <!-- .localization-content -->
+
+
+<div id="cs" class="localization-content hidden">
+
+<h1>Nápověda pro Cinnamon Tweaks</h1>
+
+<div style="font-weight:bold;" class="alert alert-warning">
+<h2>DŮLEŽITÉ!!!</h2>
+
+<p>Nikdy neodstraňujte soubory ze složky tohoto xletu. Mohlo by to narušit funkčnost xletu.</p>
+
+<p>Zprávy o chybách, požadavky na funkce a příspěvky by měly být prováděny v repozitáři tohoto xletu, na který je odkaz dále. <a href="https://github.com/Odyseus/CinnamonTools">GitHub</a></p>
+
+</div>
+<hr>
+
+<h2>Možnosti rozšíření podrobněji</h2>
+<p><span style="color:red;font-weight: bold;font-size: large;">
+Některá vylepšení obsahují varování, závislosti, omezení a nebo známé problémy, se kterými je potřeba se seznámit a pochopit předtím, než je povoleno dané vylepšení. Nicméně není nutné mít starosti, nic *fatálního* se nemůže stát. 
+</span></p>
+<h3>Vylepšení apletů/deskletů</h3>
+<ul>
+<li><strong>Požadovat potvrzení při odstranění apletu/deskletu:</strong> Namísto přímého odebrání apletu/deskletu z kontextových menu bude požádováno potvrzení. Tato volba nemá vliv na odstranění apletů/deskletů ze Správce apletů/deskletů v nastavení Cinnamonu (tam nebude vyžadováno žádné potvrzení). </li>
+<li><strong>Zobrazit "Otevřít složku apletu/deskletu" v kontextovém menu</strong> &amp; <strong>Zobrazit "Upravit hlavní soubor apletu/deskletu" v kontextovém menu:</strong> Tyto volby přidávají nové položky nabídky do kontextových menu apletů/deskletů. Místo, kde se tyto položky umístí, je vybráno volbou <strong>Kam umístit položku v menu?</strong>. </li>
+</ul>
+<h3>Vylepšení aktivních rohů</h3>
+<p>Toto vylepšení je k dispozici pouze pro verze Cinnamonu nižší než 3.2. Cinnamon 3.2.x již obsahuje aktivaci zpoždění.</p>
+<ul>
+<li><strong>Aktivační zpoždění pro horní levý aktivní roh</strong> Jasný význam.</li>
+<li><strong>Aktivační zpoždění pro horní pravý aktivní roh</strong> Jasný význam.</li>
+<li><strong>Aktivační zpoždění pro spodní levý aktivní roh</strong> Jasný význam.</li>
+<li><strong>Aktivační zpoždění pro spodní pravý aktivní roh</strong> Jasný význam.</li>
+</ul>
+<h3>Vylepšení pracovní plochy</h3>
+<ul>
+<li><strong>Povolit aplikace přetáhnout na pracovní plochu</strong> Povolením této možnosti, lze aplikace přetáhnout z menu apletu a ze spouštěče apletu  na pracovní plochu.</li>
+</ul>
+<h3>Vylepšení Pop-up menu</h3>
+<h5>Chování menu panelu</h5>
+<p><strong>Poznámka:</strong> Toto nastavení má vliv pouze na chování menu, která patří k apletům umístěných na libovolném panelu.</p>
+<ul>
+<li><strong>Emulovat Gnome Shell menu:</strong> Je-li na Genome Shell otevřeno menu, a pak se kurzor myši přesune k jinému tlačítku na horním panelu, menu tohoto tlačítka se automaticky otevře aniž by bylo nutné na ně znovu klikat. Povolením této možnosti, lze dosáhnout stejného chování i v prostředí Cinnamon.</li>
+<li><strong>Šetřit kliknutí:</strong> Ve výchozím nastavení, pokud otevřete menu apletu v prostředí Cinnamon a potom kliknete na jiný aplet a chcete otevřít jeho menu, první kliknutí se používá k uzavření prvního otevřeného menu a pak dalším kliknutí otevře menu druhého apletu. Povolením této možnosti, je možné přímo otevřít menu jakéhokoliv apletu, i když jiný aplet má své menu otevřené.</li>
+</ul>
+<h3>Vylepšení bublinové nápovědy</h3>
+<ul>
+<li><strong>Zamezit překrývání ukazatele myši a bublinové nápovědy:</strong> Bublinová nápověda v prostředí Cinnamon je zarovnána k hornímu levému rohu ukazatele myši. To vede k překrývání bublinové nápovědy a ukazatele myši. Toto vylepšení zarovná bublinovou nápovědu ke spodnímu pravému rohu ukazatele myši (přibližně), čímž se zredukuje možnost nežádoucího překrývání. Toto vylepšení je k dispozici pouze pro verze Cinnamonu nižší než 3.2. Cinnamon 3.2.x má již změněnou polohu bublinové nápovědy. </li>
+<li><strong>Zpoždění zobrazení bublinové nápovědy:</strong> Jasný význam.</li>
+</ul>
+<h3>Vylepšení notifikací</h3>
+<ul>
+<li><strong>Povolit animace při otevření/zavření notifikace:</strong> Jasný význam.</li>
+<li><strong>Pozice  notifikačního okna:</strong> Oznámení lze zobrazit v pravém horním rohu obrazovky (výchozí nastavení systému) nebo v pravém dolním rohu obrazovky.</li>
+<li><strong>Vzdálenost od panelu:</strong><ul>
+<li><strong>U oznámení zobrazených v pravém horním rohu obrazovky: </strong> Je to vzdálenost mezi spodním okraji horního panelu (není-li horní panel, tak od horní části obrazovky) na horní hranici vyskakovacího okna oznámení .</li>
+<li><strong>U oznámení zobrazených v pravém dolním rohu obrazovky:</strong> Je to vzdálenost mezi horním okraji spodního panelu (není-li spodní panel, tak od dolní části obrazovky) na spodní hranici vyskakovacího okna oznámení.</li>
+</ul>
+</li>
+<li><strong>Pravý okraj notifikačního okna:</strong> Ve výchozím nastavení je pravý okraj popup okna definován aktuálně používaným motivem. Nastavením na hodnotu jinou než 0 (nula), lze nastavit vlastní pravý okraj a ignoruje tak nastavení definované  motivem.</li>
+</ul>
+<h3>Vylepšení zaměření okna</h3>
+<p>Vylepšení založené na rozšíření gnome-shell nazvaného <a href="https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus">Steal My Focus</a> od <a href="https://github.com/v -dimitrov">Valentin Dimitrov</a> a další rozšíření gnome-shell s názvem <a href="https://github.com/awamper/window-demands-attention-shortcut">Window Demands Attention Shortcut</a> od <a href="https://github.com/awamper">awamper</a> .</p>
+<p>Některá okna, která vyžadují pozornost, nebudou zaostřena bez ohledu na nastavení Cinnamonu. Tato možnost vám to  umožní opravit.</p>
+<ul>
+<li><strong>Aktivace oken vyžadujících pozornost ...:</strong><ul>
+<li><strong>... je řízeno systémem:</strong> Jasný význam.</li>
+<li><strong>... je okamžité:</strong> Vyvolá okamžitě zaostření oken vyžadujících pozornost.</li>
+<li><strong>... je vykonané klávesovou zkratkou:</strong> Vyvolá zaostření oken vyžadujících pozornost pomocí klávesové zkratky.</li>
+</ul>
+</li>
+<li><strong>Klávesová zkratka:</strong> Nastavte klávesovou zkratku pro možnost <strong>.... je vykonané klávesovou zkratkou</strong>.</li>
+</ul>
+<h3>Vylepšení stínování okna</h3>
+<p>Vylepšení založené na rozšíření  Cinnamonu nazvaném <a href="https://cinnamon-spices.linuxmint.com/extensions/view/43">Custom Shadows</a> created od <a href="https://github.com/mikhail-ekzi">mikhail-ekzi</a>. Umožňuje upravovat stíny používané správcem oken Cinnamonu (Muffin).</p>
+<p><strong>Poznámka:</strong> Client side dekorace oken nejsou ovlivněna tímto vylepšením.</p>
+<h5>Nastavení stínu</h5>
+<ul>
+<li><strong>Uživatelské stínování</strong></li>
+<li><strong>Výchozí stínování</strong></li>
+<li><strong>Žádné stíny</strong></li>
+<li><strong>Windows 10 stínování</strong></li>
+</ul>
+<h3>Automatické přesouvání oken</h3>
+<p>Vylepšení založené na rozšíření gnome-shell nazvaného<a href="https://extensions.gnome.org/extension/16/auto-move-windows/">Auto Move Windows</a> od <a href="https://github.com/ Fmuellner">Florian Muellner</a>. Umožňuje nastavit pravidla pro otevření určených aplikací na konkrétních pracovních plochách.</p>
+<p><strong>Poznámka:</strong> Pokud se aplikace, kterou chcete vybrat nezobrazuje v dialogovém okně pro výběr aplikací, přečtěte si sekci tohoto souboru nápovědy s názvem <strong>Aplikace, které se nezobrazují v dialogových oknech výběru aplikací</strong>.</p>
+<h3>Odstranění dekorace okna</h3>
+<p>Vylepšení založené na rozšíření  Cinnamonu nazvaném <a href="https://cinnamon-spices.linuxmint.com/extensions/view/29">Cinnamon Maximus</a> od <a href="https://github.com/fatihmete">Fatih Mete</a> s některými možnostmi z rozšíření gnome-shell nazvaného <a href="https://github.com/luispabon/maximus-gnome-shell">Maximus NG</a> od <a href="https://github.com/luispabon">Luis Pabon</a>. Toto vylepšení umožňuje odstranit okenní dekorace z maximalizovaných/napůl maximalizovaných/dlaždicově uspořádaných oken.</p>
+<p><strong>Poznámka:</strong> Pokud se aplikace, kterou chcete vybrat nezobrazuje v dialogovém okně pro výběr aplikací, přečtěte si sekci tohoto souboru nápovědy s názvem <strong>Aplikace, které se nezobrazují v dialogových oknech výběru aplikací</strong>.</p>
+<h4>Závislosti</h4>
+<p>Toto vylepšení vyžaduje pro svou funkčnost dva příkazy dostupné v systému (<strong>xprop</strong> a <strong>xwininfo</strong>).</p>
+<ul>
+<li>Distribuce založené na Debianu: Tyto příkazy jsou poskytovány balíčkem <strong>x11-utils</strong>. Linux Mint již má tento balíček nainstalován. </li>
+<li>Distribuce založené na Archlinuxu: Tyto příkazy jsou poskytovány balíčky <strong>xorg-xprop</strong> a <strong>xorg-xwininfo</strong>.</li>
+<li>Distribuce založené na Fedoře: Tyto příkazy jsou poskytovány balíčkem <strong>xorg-x11-utils</strong>.</li>
+</ul>
+<h4>Upozornění</h4>
+<ul>
+<li>Client side dekorace oken a WINE aplikací nejsou ovlivněna tímto vylepšením.</li>
+<li>Zavřete všechna okna, které patří k aplikaci přidávané do seznamu aplikací a před použitím nastavení tohoto vylepšení.</li>
+<li>Jako obecné pravidlo pro vyhnutí se problémům, předtím než povolíte a nakonfigurujete toto vylepšení: zavřete všechna otevřená okna, povolte a nakonfigurujte toto vylepšení a poté se odhlaste a přihlaste se zpět.</li>
+</ul>
+<h4>Známé problémy</h4>
+<ul>
+<li><strong>Neviditelná okna:</strong> Někdy se mohou okna aplikací, které jsou nakonfigurovány s odstraněním jejich dekorací, stát neviditelnými. Ikona aplikací je stále viditelná v panelu (panelu úloh) a po kliknutí za účelem zaostření příslušného okna, neviditelné okno zablokuje kliknutí jako by bylo viditelné. Chcete-li to vyřešit, musí být u okna zrušena maximalizace (znovu se zobrazí) a pak musí být zavřeno. Při opětovném otevření by se okno mělo chovat normálně. </li>
+<li><strong>Aplikace zůstaly bez dekorace:</strong> Někdy zůstane aplikace bez dekorace i po zrušení její maximalizace. Restartováním aplikace se obnoví její schopnost povolit a zakázat dekorace okna. </li>
+</ul>
+<h4>Alternativa</h4>
+<p>Existuje alternativní způsob, jak skrýt titulní lištu všech maximalizovaných oken bez výjimek. Upravením motivu Metacity (motiv dekorace oken). Funguje to rozhodně lépe a bez jakýchkoli problémů, které má toto vylepšení v tomto rozšíření.</p>
+<ul>
+<li>Jednoduše přejděte do složky <code>/Path/To/Your/Theme/metacity-1</code> a upravte libovolným textovým editorem soubor s názvem <strong>metacity-theme-3.xml</strong>. Pokud tento soubor neexistuje ve vašem motivu, měl by existovat jeden názvem <strong>metacity-theme-2.xml</strong> nebo <strong>metacity-theme-1.xml</strong>. Vyberte ten s větším číslem. </li>
+<li>Najděte element <strong>frame_geometry</strong> s názvem <strong>max</strong> (nebo <strong>maximized</strong> nebo <strong>normal_max</strong> nebo <strong>normal_maximized</strong>). Přesný název se může lišit v závislosti na tématu. </li>
+<li>V podstatě je třeba nastavit tomuto elementu atribut <strong>has_title</strong> na hodnotu false a pak nastavit všechny velikosti všech jeho vlastností na 0 (nula). Některé motivy mohou vyžadovat přidání dalších vlastností a nastavit je na 0 (nula), abyste se úplně zbavili titulní lišty/záhlaví. </li>
+<li>Dále jsou uvedeny příklady úprav motivů Metacity nalezených v motivech <strong>Mint-X</strong> a <strong>Mint-Y</strong>.</li>
+</ul>
+<h5>Pro motiv Metacity z Mint-X</h5>
+<pre><code class="lang-xml">&lt;frame_geometry name=&quot;maximized&quot; has_title=&quot;false&quot; title_scale=&quot;medium&quot; parent=&quot;normal&quot; rounded_top_left=&quot;false&quot; rounded_top_right=&quot;false&quot;&gt;
+    &lt;distance name=&quot;right_width&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;left_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;right_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;title_vertical_pad&quot; value=&quot;0&quot;/&gt;
+    &lt;border name=&quot;title_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;border name=&quot;button_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;bottom_height&quot; value=&quot;0&quot; /&gt;
+&lt;/frame_geometry&gt;
+</code></pre>
+<h5>Pro motiv Metacity z Mint-Y</h5>
+<pre><code class="lang-xml">&lt;frame_geometry name=&quot;max&quot; has_title=&quot;false&quot; title_scale=&quot;medium&quot; parent=&quot;normal&quot; rounded_top_left=&quot;false&quot; rounded_top_right=&quot;false&quot;&gt;
+    &lt;distance name=&quot;right_width&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;left_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;right_titlebar_edge&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;title_vertical_pad&quot; value=&quot;0&quot;/&gt;
+    &lt;border name=&quot;title_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;border name=&quot;button_border&quot; left=&quot;0&quot; right=&quot;0&quot; top=&quot;0&quot; bottom=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;bottom_height&quot; value=&quot;0&quot; /&gt;
+    &lt;distance name=&quot;button_width&quot; value=&quot;0&quot;/&gt;
+    &lt;distance name=&quot;button_height&quot; value=&quot;0&quot;/&gt;
+&lt;/frame_geometry&gt;
+</code></pre>
+<hr>
+<h2>Obecné problémy s rozšířením</h2>
+<h3>Aplikace, které se nezobrazují v dialogových oknech výběru aplikací</h3>
+<p>Dialogové okno výběru aplikací, které používá okno nastavení tohoto rozšíření, uvádí pouze ty aplikace, které mají k dispozici soubory .desktop. Jednoduše proto, že tyto aplikace jsou jediné, které rozšíření vyžadující ID aplikace (<strong>Automatické přesunutí oken</strong> a <strong>Odstranění dekorace okna</strong>) dokáže rozpoznat a zpracovat.</p>
+<p>Podle specifikace <a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html">Desktop Entry Specification</a> lze vytvořit soubor .desktop pro libovolnou aplikaci, která se nezobrazuje v seznamu aplikací.</p>
+<hr>
+<h2>Okno nastavení rozšíření</h2>
+<p>Z tohoto okna nastavení rozšíření lze všechny volby importovat, exportovat a/nebo je resetovat na výchozí hodnoty.</p>
+<ul>
+<li>Chcete-li provést některé z těchto akcí, musí být v systému nainstalováno schéma nastavení. To se provede automaticky, když je rozšíření nainstalováno ze správce rozšíření Cinnamonu. Ale pokud bylo rozšíření nainstalováno ručně, schéma nastavení musí být také nainstalováno ručně. Toho lze dosáhnout pouhým přechodem do složky rozšíření a spuštěním následujícího příkazu: <ul>
+<li>Příkaz pro instalaci schématu nastavení: <code>./settings.py install-schema</code></li>
+<li>Příkaz k odinstalování schématu nastavení: <code>./settings.py remove-schema</code></li>
+</ul>
+</li>
+<li>Chcete-li importovat/exportovat nastavení, musí být v systému k dispozici příkaz <strong>dconf</strong>.</li>
+</ul>
+<hr>
+
+<h2>Lokalizace apletů/deskletů/rozšíření (a.k.a. xlety)</h2>
+<ul>
+<li>Pokud byl tento xlet nainstalován z nastavení systému v Cinnamonu, byly všechny tyto lokalizace xletu automaticky nainstalovány.</li>
+<li>Pokud byl tento xlet nainstalován ručně a nikoliv pomocí nastavení systému v Cinnamonu, mohou být lokalizace instalovány spuštěním skriptu nazvaného <strong> localizations.sh </strong> z terminálu otevřeného uvnitř složky xletu.</li>
+<li>Pokud tento xlet nemá k dispozici překlad pro váš jazyk, můžete jej vytvořit podle následujících pokynů. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
+</ul>
+
+<div style="font-weight:bold;" class="alert alert-info">Následující dvě části jsou k dispozici pouze v angličtině.</div>
 </div> <!-- .localization-content -->
 
 
@@ -1133,6 +1398,7 @@ Vissa justeringar har varningar, beroenden, begränsningar och kända problem so
 <li>Om ditt språk saknas i denna xlet, kan du översätta den med hjälp av följande instruktioner. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">Följande två sektioner är endast tillgängliga på Engelska.</div>
 </div> <!-- .localization-content -->
 
 
@@ -1297,11 +1563,11 @@ Some tweaks have warnings, dependencies, limitations and or known issues that mu
 <li>If this xlet has no locale available for your language, you could create it by following the following instructions. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">The following two sections are available only in English.</div>
 </div> <!-- .localization-content -->
 
 </div> <!-- .container.boxed -->
-<div style="font-weight:bold;" class="container alert alert-info">The following two sections are available only in English.</div>
-<span id="xlet-contributors">
+<span id="xlet-contributors" style="padding-top:140px;">
 <div class="container boxed">
 <h2>Contributors/Mentions</h2>
 <ul>
@@ -1321,10 +1587,44 @@ Some tweaks have warnings, dependencies, limitations and or known issues that mu
 
 </div> <!-- .container.boxed -->
 
-<span id="xlet-changelog">
+<span id="xlet-changelog" style="padding-top:70px;">
 <div class="container boxed">
 <h2>Cinnamon Tweaks changelog</h2>
 <h4>This change log is only valid for the version of the xlet hosted on <a href="https://github.com/Odyseus/CinnamonTools">its original repository</a></h4>
+<hr>
+<ul>
+<li><strong>Date:</strong> Thu, 8 Jun 2017 01:36:50 -0300</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/385d917">385d917</a></li>
+<li><strong>Author:</strong> Odyseus</li>
+</ul>
+<pre><code>Cinnamon Tweaks extension
+- Corrected Markdown formatting on some links of the Czech localization.
+</code></pre>
+<hr>
+<ul>
+<li><strong>Date:</strong> Thu, 8 Jun 2017 00:58:34 -0300</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/403a55c">403a55c</a></li>
+<li><strong>Author:</strong> Odyseus</li>
+</ul>
+<pre><code>Cinnamon Tweaks extension
+- Updated Czech localization.
+</code></pre>
+<hr>
+<ul>
+<li><strong>Date:</strong> Tue, 6 Jun 2017 22:32:31 -0300</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/be1479c">be1479c</a></li>
+<li><strong>Author:</strong> Odyseus</li>
+</ul>
+<pre><code>Cinnamon Tweaks extension
+- Better handling of **Settings.BindingDirection**. Just to avoid surprises when that constant is
+removed on future versions of Cinnamon.
+- Windows decorations removal tweak. Added option to handle invisible windows problem. On the
+original Maximus extension (by fmete) I changed one of the _MOTIF_WM_HINTS flags from 0x2 to 0x0 to
+avoid having a border at the top of a maximized window with its title bar removed. This was working
+perfectly fine until Cinnamon 3.4. On Cinnamon 3.4, setting that flag to 0x0 would result on windows
+that started maximized and with their title bars removed to become invisible. I simply added an
+option for people using Cinnamon 3.4 or greater to change that flag.
+</code></pre>
 <hr>
 <ul>
 <li><strong>Date:</strong> Mon, 5 Jun 2017 16:45:00 -0300</li>
@@ -1808,6 +2108,8 @@ README.
 </div> <!-- .container.boxed -->
 
 </div> <!-- #mainarea -->
-<script type="text/javascript">toggleLocalizationVisibility(null);</script>
+<script type="text/javascript">toggleLocalizationVisibility(null);
+
+</script>
 </body>
 </html>

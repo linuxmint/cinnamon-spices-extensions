@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@CinnamonTweaks 1.11\n"
-"POT-Creation-Date: 2017-06-02 17:05-0300\n"
+"Project-Id-Version: 0dyseus@CinnamonTweaks 1.12\n"
+"POT-Creation-Date: 2017-06-12 22:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -433,65 +433,65 @@ msgstr ""
 msgid "To import/export settings, the **dconf** command needs to be available on the system."
 msgstr ""
 
-#: ../../create_localized_help.py:260
-msgid "The following two sections are available only in English."
-msgstr ""
-
 #. TO TRANSLATORS: This is a placeholder.
 #. Here goes your language name in your own language (a.k.a. endonym).
-#: ../../create_localized_help.py:285 ../../create_localized_help.py:357
+#: ../../create_localized_help.py:289 ../../create_localized_help.py:365
 msgid "language-name"
 msgstr ""
 
-#: ../../create_localized_help.py:360 settings.py:2317
+#: ../../create_localized_help.py:295
+msgid "The following two sections are available only in English."
+msgstr ""
+
+#: ../../create_localized_help.py:368 settings.py:2325
 msgid "Help"
 msgstr ""
 
-#: ../../create_localized_help.py:361
+#: ../../create_localized_help.py:369
 msgid "Contributors"
 msgstr ""
 
-#: ../../create_localized_help.py:362
+#: ../../create_localized_help.py:370
 msgid "Changelog"
 msgstr ""
 
-#: ../../create_localized_help.py:363
+#: ../../create_localized_help.py:371
 msgid "Choose language"
 msgstr ""
 
 #. TO TRANSLATORS: Full sentence:
 #. "Help for <xlet_name>"
-#: ../../create_localized_help.py:364 ../../create_localized_help.py:371
+#: ../../create_localized_help.py:372 ../../create_localized_help.py:379
 #, python-format
 msgid "Help for %s"
 msgstr ""
 
-#: ../../create_localized_help.py:372
+#: ../../create_localized_help.py:380
 msgid "IMPORTANT!!!"
 msgstr ""
 
-#: ../../create_localized_help.py:373
+#: ../../create_localized_help.py:381
 msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
 msgstr ""
 
-#: ../../create_localized_help.py:374
+#: ../../create_localized_help.py:382
 msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
 msgstr ""
 
-#: ../../create_localized_help.py:380
+#: ../../create_localized_help.py:388
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr ""
 
-#: ../../create_localized_help.py:381
+#: ../../create_localized_help.py:389
 msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:383
+#: ../../create_localized_help.py:391
 msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
 msgstr ""
 
-#: ../../create_localized_help.py:384
+#: ../../create_localized_help.py:392
 msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
 
@@ -734,7 +734,7 @@ msgstr ""
 msgid "Activate window demanding attention"
 msgstr ""
 
-#: settings.py:416 settings.py:1276
+#: settings.py:416 settings.py:1284
 msgid "Window shadows tweaks"
 msgstr ""
 
@@ -746,7 +746,7 @@ msgstr ""
 msgid "This tweak allows us to customize the shadow of all windows."
 msgstr ""
 
-#: settings.py:443 settings.py:1147
+#: settings.py:443 settings.py:1155
 msgid "Edit custom shadows values"
 msgstr ""
 
@@ -802,326 +802,334 @@ msgid ""
 msgstr ""
 
 #: settings.py:511
-msgid "Enable logging"
+msgid "Enable hack for invisible windows"
 msgstr ""
 
 #: settings.py:512
-msgid "For debugging purposes only."
+msgid "On Cinnamon 3.4 or greater, the windows of the applications configured so that their decorations are removed when maximized, may become invisible. Enabling this option might prevent that, but it might also add a border of about 1 pixel in place of the title bar (it might depend on the metacity theme (Window borders) used)."
 msgstr ""
 
 #: settings.py:519
+msgid "Enable logging"
+msgstr ""
+
+#: settings.py:520
+msgid "For debugging purposes only."
+msgstr ""
+
+#: settings.py:527
 msgid "Edit applications list"
 msgstr ""
 
-#: settings.py:704
+#: settings.py:712
 msgid "Warnings related to this specific section"
 msgstr ""
 
-#: settings.py:1008
+#: settings.py:1016
 msgid "Select a directory to use"
 msgstr ""
 
-#: settings.py:1011
+#: settings.py:1019
 msgid "Select a file"
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1016 settings.py:1149 settings.py:2394 settings.py:2400
+#: settings.py:1024 settings.py:1157 settings.py:2402 settings.py:2408
 msgid "_Cancel"
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1018 settings.py:2402
+#: settings.py:1026 settings.py:2410
 msgid "_Open"
 msgstr ""
 
-#: settings.py:1021
+#: settings.py:1029
 msgid "Directories"
 msgstr ""
 
-#: settings.py:1099
+#: settings.py:1107
 msgid "Focused windows"
 msgstr ""
 
-#: settings.py:1100
+#: settings.py:1108
 msgid "Unfocused windows"
 msgstr ""
 
-#: settings.py:1103
+#: settings.py:1111
 msgid "Normal"
 msgstr ""
 
-#: settings.py:1104
+#: settings.py:1112
 msgid "Dialog"
 msgstr ""
 
-#: settings.py:1105
+#: settings.py:1113
 msgid "Modal dialog"
 msgstr ""
 
-#: settings.py:1106
+#: settings.py:1114
 msgid "Utility"
 msgstr ""
 
-#: settings.py:1107
+#: settings.py:1115
 msgid "Border"
 msgstr ""
 
-#: settings.py:1108
+#: settings.py:1116
 msgid "Menu"
 msgstr ""
 
-#: settings.py:1109
+#: settings.py:1117
 msgid "Popup menu"
 msgstr ""
 
-#: settings.py:1110
+#: settings.py:1118
 msgid "Dropdown menu"
 msgstr ""
 
-#: settings.py:1111
+#: settings.py:1119
 msgid "Attached"
 msgstr ""
 
-#: settings.py:1121
+#: settings.py:1129
 msgid "Radius"
 msgstr ""
 
-#: settings.py:1122
+#: settings.py:1130
 msgid "Top fade"
 msgstr ""
 
-#: settings.py:1123
+#: settings.py:1131
 msgid "X offset"
 msgstr ""
 
-#: settings.py:1124
+#: settings.py:1132
 msgid "Y offset"
 msgstr ""
 
-#: settings.py:1125
+#: settings.py:1133
 msgid "Opacity"
 msgstr ""
 
-#: settings.py:1150 settings.py:2395
+#: settings.py:1158 settings.py:2403
 msgid "_Save"
 msgstr ""
 
-#: settings.py:1187
+#: settings.py:1195
 msgid "Window type"
 msgstr ""
 
-#: settings.py:1198
+#: settings.py:1206
 msgid "Reset values"
 msgstr ""
 
-#: settings.py:1200
+#: settings.py:1208
 msgid "Reset all values on the current view to their defaults."
 msgstr ""
 
-#: settings.py:1204
+#: settings.py:1212
 msgid "Apply custom shadow"
 msgstr ""
 
-#: settings.py:1206
+#: settings.py:1214
 msgid "Save and apply custom shadow values to see its effects in real time."
 msgstr ""
 
-#: settings.py:1248 settings.py:1277
+#: settings.py:1256 settings.py:1285
 msgid "Remember to set »Shadow presets« option to »Custom shadows«"
 msgstr ""
 
 #. 0dyseus@CinnamonTweaks->metadata.json->name
-#: settings.py:1275 settings.py:2441
+#: settings.py:1283 settings.py:2449
 msgid "Cinnamon Tweaks"
 msgstr ""
 
-#: settings.py:1288
+#: settings.py:1296
 msgid "Warning: Trying to reset custom shadows values!!!"
 msgstr ""
 
-#: settings.py:1291
+#: settings.py:1299
 msgid "Are  you sure that you want to reset the shadows values of the current view to their defaults?"
 msgstr ""
 
-#: settings.py:1389
+#: settings.py:1397
 msgid "Application Chooser"
 msgstr ""
 
 #. Can be programmatically changed if needed.
-#: settings.py:1410
+#: settings.py:1418
 msgid "Choose An Application"
 msgstr ""
 
-#: settings.py:1543
+#: settings.py:1551
 msgid "Applications list"
 msgstr ""
 
-#: settings.py:1571 settings.py:1790
+#: settings.py:1579 settings.py:1798
 msgid "Application"
 msgstr ""
 
-#: settings.py:1593
+#: settings.py:1601
 msgid "Add Application"
 msgstr ""
 
-#: settings.py:1627 settings.py:1858
+#: settings.py:1635 settings.py:1866
 msgid "Choose one or more applications (Hold Ctrl key)"
 msgstr ""
 
-#: settings.py:1761
+#: settings.py:1769
 msgid "Auto move windows rules"
 msgstr ""
 
-#: settings.py:1804
+#: settings.py:1812
 msgid "Workspace"
 msgstr ""
 
-#: settings.py:1824
+#: settings.py:1832
 msgid "Add Rule"
 msgstr ""
 
-#: settings.py:2059
+#: settings.py:2067
 msgid "Shortcut action"
 msgstr ""
 
-#: settings.py:2073
+#: settings.py:2081
 msgid "Shortcut"
 msgstr ""
 
-#: settings.py:2089
+#: settings.py:2097
 msgid "Click to set a new hotkey."
 msgstr ""
 
-#: settings.py:2141
+#: settings.py:2149
 msgid "Contributors/Mentions:"
 msgstr ""
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
 #. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
-#: settings.py:2149
+#: settings.py:2157
 msgid "translator-credits"
 msgstr ""
 
-#: settings.py:2283
+#: settings.py:2291
 msgid "Settings marked with (*) needs Cinnamon restart to take effect"
 msgstr ""
 
-#: settings.py:2292
+#: settings.py:2300
 msgid "Reset settings to defaults"
 msgstr ""
 
-#: settings.py:2294
+#: settings.py:2302
 msgid "Import settings from a file"
 msgstr ""
 
-#: settings.py:2296
+#: settings.py:2304
 msgid "Export settings to a file"
 msgstr ""
 
-#: settings.py:2301
+#: settings.py:2309
 msgid "Remember window size"
 msgstr ""
 
-#: settings.py:2307
+#: settings.py:2315
 msgid "Remember last category"
 msgstr ""
 
-#: settings.py:2313
+#: settings.py:2321
 msgid "Restart Cinnamon"
 msgstr ""
 
-#: settings.py:2319
+#: settings.py:2327
 msgid "About"
 msgstr ""
 
-#: settings.py:2326
+#: settings.py:2334
 msgid "Manage settings"
 msgstr ""
 
-#: settings.py:2371
+#: settings.py:2379
 msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
 msgstr ""
 
-#: settings.py:2373
+#: settings.py:2381
 msgid "Reset all Cinnamon Tweaks settings to default?"
 msgstr ""
 
-#: settings.py:2392
+#: settings.py:2400
 msgid "Select or enter file to export to"
 msgstr ""
 
-#: settings.py:2398
+#: settings.py:2406
 msgid "Select a file to import"
 msgstr ""
 
-#: settings.py:2414
+#: settings.py:2422
 msgid "DCONF files"
 msgstr ""
 
-#: settings.py:2481
+#: settings.py:2489
 msgid "Cinnamon Tweaks extension preferences"
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2540
+#: settings.py:2548
 #, python-format
 msgid "Please enter your password to install the required settings schema for %s"
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2551
+#: settings.py:2559
 #, python-format
 msgid "Could not install the settings schema for %s.  You will have to perform this step yourself."
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2557
+#: settings.py:2565
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
 msgstr ""
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2568
+#: settings.py:2576
 #, python-format
 msgid "Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error."
 msgstr ""
 
-#: __init__.js:186
+#: __init__.js:187
 #, javascript-format
 msgid "Schema %s could not be found for extension %s."
 msgstr ""
 
-#: __init__.js:187
+#: __init__.js:188
 msgid "Please check your installation."
 msgstr ""
 
-#: __init__.js:196
+#: __init__.js:197
 msgid "Tweak activation aborted!!!"
 msgstr ""
 
-#: __init__.js:197 __init__.js:222
+#: __init__.js:198 __init__.js:223
 msgid "Your Cinnamon version may not be compatible!!!"
 msgstr ""
 
-#: __init__.js:202
+#: __init__.js:203
 msgid "This is a test notification"
 msgstr ""
 
-#: __init__.js:221
+#: __init__.js:222
 msgid "Extension activation aborted!!!"
 msgstr ""
 
-#: __init__.js:223
+#: __init__.js:224
 msgid "Minimum Cinnamon version allowed: 2.8.6"
 msgstr ""
 
-#: __init__.js:500
+#: __init__.js:501
 msgid "Cancel"
 msgstr ""
 
-#: __init__.js:506
+#: __init__.js:507
 msgid "OK"
 msgstr ""
 
@@ -1175,10 +1183,10 @@ msgstr ""
 msgid "Invalid overview options: Incorrect number of corners"
 msgstr ""
 
-#. 0dyseus@CinnamonTweaks->metadata.json->description
-msgid "Several tweaks for Cinnamon."
-msgstr ""
-
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid "See this xlet help file."
+msgstr ""
+
+#. 0dyseus@CinnamonTweaks->metadata.json->description
+msgid "Several tweaks for Cinnamon."
 msgstr ""
