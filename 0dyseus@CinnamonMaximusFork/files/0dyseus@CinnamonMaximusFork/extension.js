@@ -209,8 +209,7 @@ function undecorate(win) {
         cmd = ['xprop', '-id', id,
             '-f', '_MOTIF_WM_HINTS', '32c',
             '-set', '_MOTIF_WM_HINTS',
-            '0x2, 0x0, 0x0, 0x0, 0x0'
-            // '0x2, 0x0, 0x2, 0x0, 0x0'
+            '0x2, 0x0, %s, 0x0, 0x0'.format(settings.pref_invisible_windows_hack ? "0x2" : "0x0")
         ];
     /* _MOTIF_WM_HINTS: see MwmUtil.h from OpenMotif source (cvs.openmotif.org),
      *  or rudimentary documentation here:
@@ -742,34 +741,35 @@ function SettingsHandler(aUUID) {
 SettingsHandler.prototype = {
     _init: function(aUUID) {
         this.settings = new Settings.ExtensionSettings(this, aUUID);
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pref_whitelist", "pref_whitelist",
-            function() {
-                toggle_decorations();
-            });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pref_whitelisted_apps", "pref_whitelisted_apps",
-            function() {});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pref_undecorate_when_tiled", "pref_undecorate_when_tiled",
-            function() {
-                toggle_decorations();
-            });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pref_undecorate_all", "pref_undecorate_all",
-            function() {
-                toggle_decorations();
-            });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pref_logging_enabled", "pref_logging_enabled",
-            function() {
-                // toggle_decorations();
-            });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pref_restart_cinnamon", "pref_restart_cinnamon",
-            function() {
-                global.reexec_self();
-            });
+        this._bindSettings();
+    },
+
+    _bindSettings: function() {
+        // Needed for retro-compatibility.
+        // Mark for deletion on EOL.
+        let bD = {
+            IN: 1,
+            OUT: 2,
+            BIDIRECTIONAL: 3
+        };
+        let settingsArray = [
+            [bD.IN, "pref_whitelist", toggle_decorations],
+            [bD.IN, "pref_whitelisted_apps", null],
+            [bD.IN, "pref_undecorate_when_tiled", toggle_decorations],
+            [bD.IN, "pref_undecorate_all", toggle_decorations],
+            [bD.IN, "pref_invisible_windows_hack", toggle_decorations],
+            [bD.IN, "pref_logging_enabled", null],
+            [bD.IN, "pref_restart_cinnamon", global.reexec_self],
+        ];
+        let newBinding = typeof this.settings.bind === "function";
+        for (let [binding, property_name, callback] of settingsArray) {
+            // Condition needed for retro-compatibility.
+            // Mark for deletion on EOL.
+            if (newBinding)
+                this.settings.bind(property_name, property_name, callback);
+            else
+                this.settings.bindProperty(binding, property_name, property_name, callback, null);
+        }
     }
 };
 

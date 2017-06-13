@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.3.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-02 17:08-0300\n"
-"PO-Revision-Date: 2017-06-02 17:08-0300\n"
+"POT-Creation-Date: 2017-06-06 22:14-0300\n"
+"PO-Revision-Date: 2017-06-06 22:14-0300\n"
 "Last-Translator: Odyseus\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -18,40 +18,45 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
-msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
-msgstr "Opciones de Cinnamon Maximus (Fork by Odyseus)"
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr "Cinnamon Maximus (Fork by Odyseus)"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "See this xlet help file."
+msgstr "Ver el archivo de ayuda de este xlet."
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "Eliminar decoraciones de ventanas maximizadas."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr "Eliminar decoraciones de ventanas ancladas."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
 msgid ""
-"If enabled, only the applications specified bellow will have their titlebar "
-"removed when maximized.\n"
-"If disabled, all maximized windows will have their titlebar removed."
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
 msgstr ""
-"Con esta opción activada, sólo las aplicaciones especificadas en el cuadro "
-"de abajo tendrán sus decoraciones eliminadas al estar maximizadas.\n"
-"Si está desactivada, todas las ventanas maximizadas tendrán sus decoraciones "
-"eliminadas."
+"Remover decoraciones de todas las ventanas (Experimental. Por favor, cerrar "
+"y re-abrir todas las ventanas)"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
-msgid "Use Whitelist"
-msgstr "Usar lista blanca"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "Habilitar el registro de sucesos"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
-msgid "Troubleshooting"
-msgstr "Solución de problemas"
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
-msgid "List of applications: "
-msgstr "Lista de aplicaciones: "
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->tooltip
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
 msgid ""
-"\"Use Whitelist\" option must be checked.\n"
-"Use a \",\" (comma) to seperate applications."
+"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
+"information that could be used to debug the extension."
 msgstr ""
-"La opción \"Usar lista blanca\" debe estar activada.\n"
-"Usar una \",\" (coma) para separar aplicaciones."
+"Con esta opción activada, se registrará en el registro de Cinnamon (~/."
+"cinnamon/glass.log) información que se podría utilizar para depurar la "
+"extensión."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr "Activar o desactivar para reiniciar Cinnamon"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
 msgid ""
@@ -65,45 +70,40 @@ msgstr ""
 "que tuve que improvisar y tuve que utilizar una casilla de verificación. "
 "Realmente no importa si está activada o desactivada."
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
-msgid "Check or uncheck to restart Cinnamon"
-msgstr "Activar o desactivar para reiniciar Cinnamon"
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->tooltip
 msgid ""
-"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
-"information that could be used to debug the extension."
+"\"Use Whitelist\" option must be checked.\n"
+"Use a \",\" (comma) to seperate applications."
 msgstr ""
-"Con esta opción activada, se registrará en el registro de Cinnamon (~/."
-"cinnamon/glass.log) información que se podría utilizar para depurar la "
-"extensión."
+"La opción \"Usar lista blanca\" debe estar activada.\n"
+"Usar una \",\" (coma) para separar aplicaciones."
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
-msgid "Enable logging"
-msgstr "Habilitar el registro de sucesos"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
+msgstr "Lista de aplicaciones: "
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
+msgstr "Solución de problemas"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
+msgid "Use Whitelist"
+msgstr "Usar lista blanca"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
 msgid ""
-"Undecorate All Windows (Experimental, please close and re-open all windows)"
+"If enabled, only the applications specified bellow will have their titlebar "
+"removed when maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
 msgstr ""
-"Remover decoraciones de todas las ventanas (Experimental. Por favor, cerrar "
-"y re-abrir todas las ventanas)"
+"Con esta opción activada, sólo las aplicaciones especificadas en el cuadro "
+"de abajo tendrán sus decoraciones eliminadas al estar maximizadas.\n"
+"Si está desactivada, todas las ventanas maximizadas tendrán sus decoraciones "
+"eliminadas."
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
-msgid "Undecorate when tiled"
-msgstr "Eliminar decoraciones de ventanas ancladas."
-
-#. 0dyseus@CinnamonMaximusFork->metadata.json->description
-msgid "Remove windows decorations from maximized windows."
-msgstr "Eliminar decoraciones de ventanas maximizadas."
-
-#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
-msgid "See this xlet help file."
-msgstr "Ver el archivo de ayuda de este xlet."
-
-#. 0dyseus@CinnamonMaximusFork->metadata.json->name
-msgid "Cinnamon Maximus (Fork by Odyseus)"
-msgstr "Cinnamon Maximus (Fork by Odyseus)"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+msgstr "Opciones de Cinnamon Maximus (Fork by Odyseus)"
 
 #: ../../create_localized_help.py:90
 msgid "The following two sections are available only in English."
@@ -190,6 +190,25 @@ msgid ""
 msgstr ""
 "Si este xlet no está disponible en su idioma, la localización puede ser "
 "creada siguiendo las siguientes instrucciones."
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->description
+msgid "Enable hack for invisible windows"
+msgstr "Habilitar hack para ventanas invisibles"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->tooltip
+msgid ""
+"On Cinnamon 3.4 or greater, the windows of the applications configured so "
+"that their decorations are removed when maximized, may become invisible. "
+"Enabling this option might prevent that, but it might also add a border of "
+"about 1 pixel in place of the title bar (it might depend on the metacity "
+"theme (Window borders) used)."
+msgstr ""
+"En Cinnamon 3.4 o superior, las ventanas de las aplicaciones configuradas "
+"para que sus decoraciones sean removidas al ser maximizadas, puede que se "
+"vuelvan invisibles. La habilitación de esta opción puede evitarlo, pero "
+"también puede agregar un borde de aproximadamente 1 píxel en lugar de la "
+"barra de título (puede depender del tema de metacity (bordes de ventana) "
+"utilizado)."
 
 #~ msgid "Read CONTRIBUTORS.md file inside this xlet folder."
 #~ msgstr "Leer el archivo CONTRIBUTORS.md dentro de la carpeta de este xlet."
