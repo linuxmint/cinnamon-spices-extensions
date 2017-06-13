@@ -88,6 +88,7 @@ const P = {
     MAXIMUS_APP_LIST: "maximus-app-list",
     MAXIMUS_ENABLE_LOGGING: "maximus-enable-logging",
     MAXIMUS_APPLY_SETTINGS: "maximus-apply-settings",
+    MAXIMUS_INVISIBLE_WIN_HACK: "maximus-invisible-windows-hack",
     TEST_NOTIFICATIONS: "test-notifications",
 };
 
@@ -713,7 +714,8 @@ const CT_MaximusNGClass = new Lang.Class({
         let cmd = ["xprop", "-id", id,
             "-f", "_MOTIF_WM_HINTS", "32c",
             "-set", "_MOTIF_WM_HINTS",
-            "0x2, 0x0, 0x0, 0x0, 0x0"
+            "0x2, 0x0, %s, 0x0, 0x0"
+            .format(this._settings.get_boolean(P.MAXIMUS_INVISIBLE_WIN_HACK) ? "0x2" : "0x0")
         ];
 
         /* _MOTIF_WM_HINTS: see MwmUtil.h from OpenMotif source (cvs.openmotif.org),

@@ -507,6 +507,14 @@ WINDOWS_TAB = {
             "type": "switch",
             "dep_key": "maximus-enable-tweak",
             "args": {
+                    "key": "maximus-invisible-windows-hack",
+                    "label": _("Enable hack for invisible windows"),
+                    "tooltip": _("On Cinnamon 3.4 or greater, the windows of the applications configured so that their decorations are removed when maximized, may become invisible. Enabling this option might prevent that, but it might also add a border of about 1 pixel in place of the title bar (it might depend on the metacity theme (Window borders) used).")
+            }
+        }, {
+            "type": "switch",
+            "dep_key": "maximus-enable-tweak",
+            "args": {
                     "key": "maximus-enable-logging",
                     "label": _("Enable logging"),
                     "tooltip": _("For debugging purposes only.")

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.06\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-02 17:08-0300\n"
-"PO-Revision-Date: 2017-06-02 17:08-0300\n"
+"POT-Creation-Date: 2017-06-06 22:10-0300\n"
+"PO-Revision-Date: 2017-06-06 22:12-0300\n"
 "Last-Translator: Odyseus\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -736,7 +736,7 @@ msgstr "Las siguientes dos secciones están disponibles sólo en Inglés."
 msgid "language-name"
 msgstr "Español"
 
-#: ../../create_localized_help.py:360 settings.py:2317
+#: ../../create_localized_help.py:360 settings.py:2325
 msgid "Help"
 msgstr "Ayuda"
 
@@ -1117,7 +1117,7 @@ msgstr "...se lleva a cabo con un atajo de teclado"
 msgid "Activate window demanding attention"
 msgstr "Activar ventana exigiendo atención"
 
-#: settings.py:416 settings.py:1276
+#: settings.py:416 settings.py:1284
 msgid "Window shadows tweaks"
 msgstr "Ajustes de sombras de ventana"
 
@@ -1129,7 +1129,7 @@ msgstr "Habilitar ajustes de sombras de ventana"
 msgid "This tweak allows us to customize the shadow of all windows."
 msgstr "Este ajuste nos permite personalizar la sombra de todas las ventanas."
 
-#: settings.py:443 settings.py:1147
+#: settings.py:443 settings.py:1155
 msgid "Edit custom shadows values"
 msgstr "Editar valores personalizados de sombras"
 
@@ -1212,152 +1212,171 @@ msgstr ""
 "aplicación se encuentra en la lista de aplicaciones."
 
 #: settings.py:511
+msgid "Enable hack for invisible windows"
+msgstr "Habilitar hack para ventanas invisibles"
+
+#: settings.py:512
+msgid ""
+"On Cinnamon 3.4 or greater, the windows of the applications configured so "
+"that their decorations are removed when maximized, may become invisible. "
+"Enabling this option might prevent that, but it might also add a border of "
+"about 1 pixel in place of the title bar (it might depend on the metacity "
+"theme (Window borders) used)."
+msgstr ""
+"En Cinnamon 3.4 o superior, las ventanas de las aplicaciones configuradas "
+"para que sus decoraciones sean removidas al ser maximizadas, puede que se "
+"vuelvan invisibles. La habilitación de esta opción puede evitarlo, pero "
+"también puede agregar un borde de aproximadamente 1 píxel en lugar de la "
+"barra de título (puede depender del tema de metacity (bordes de ventana) "
+"utilizado)."
+
+#: settings.py:519
 msgid "Enable logging"
 msgstr "Habilitar el registro"
 
-#: settings.py:512
+#: settings.py:520
 msgid "For debugging purposes only."
 msgstr "Sólo para fines de depuración."
 
-#: settings.py:519
+#: settings.py:527
 msgid "Edit applications list"
 msgstr "Editar la lista de aplicaciones"
 
-#: settings.py:704
+#: settings.py:712
 msgid "Warnings related to this specific section"
 msgstr "Advertencias relacionadas con esta sección específica"
 
-#: settings.py:1008
+#: settings.py:1016
 msgid "Select a directory to use"
 msgstr "Seleccionar un directorio para usar"
 
-#: settings.py:1011
+#: settings.py:1019
 msgid "Select a file"
 msgstr "Seleccionar un archivo"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1016 settings.py:1149 settings.py:2394 settings.py:2400
+#: settings.py:1024 settings.py:1157 settings.py:2402 settings.py:2408
 msgid "_Cancel"
 msgstr "_Cancelar"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:1018 settings.py:2402
+#: settings.py:1026 settings.py:2410
 msgid "_Open"
 msgstr "_Abrir"
 
-#: settings.py:1021
+#: settings.py:1029
 msgid "Directories"
 msgstr "Directorios"
 
-#: settings.py:1099
+#: settings.py:1107
 msgid "Focused windows"
 msgstr "Ventanas enfocadas"
 
-#: settings.py:1100
+#: settings.py:1108
 msgid "Unfocused windows"
 msgstr "Ventanas desenfocadas"
 
-#: settings.py:1103
+#: settings.py:1111
 msgid "Normal"
 msgstr "Normal"
 
-#: settings.py:1104
+#: settings.py:1112
 msgid "Dialog"
 msgstr "Diálogo"
 
-#: settings.py:1105
+#: settings.py:1113
 msgid "Modal dialog"
 msgstr "Diálogo modal"
 
-#: settings.py:1106
+#: settings.py:1114
 msgid "Utility"
 msgstr "Utilidad"
 
-#: settings.py:1107
+#: settings.py:1115
 msgid "Border"
 msgstr "Borde"
 
-#: settings.py:1108
+#: settings.py:1116
 msgid "Menu"
 msgstr "Menú"
 
-#: settings.py:1109
+#: settings.py:1117
 msgid "Popup menu"
 msgstr "Menú emergente"
 
-#: settings.py:1110
+#: settings.py:1118
 msgid "Dropdown menu"
 msgstr "Menú desplegable"
 
-#: settings.py:1111
+#: settings.py:1119
 msgid "Attached"
 msgstr "Adjunta"
 
-#: settings.py:1121
+#: settings.py:1129
 msgid "Radius"
 msgstr "Radio"
 
-#: settings.py:1122
+#: settings.py:1130
 msgid "Top fade"
 msgstr "Desvanecimiento superior"
 
-#: settings.py:1123
+#: settings.py:1131
 msgid "X offset"
 msgstr "X offset"
 
-#: settings.py:1124
+#: settings.py:1132
 msgid "Y offset"
 msgstr "Y offset"
 
-#: settings.py:1125
+#: settings.py:1133
 msgid "Opacity"
 msgstr "Opacidad"
 
-#: settings.py:1150 settings.py:2395
+#: settings.py:1158 settings.py:2403
 msgid "_Save"
 msgstr "_Guardar"
 
-#: settings.py:1187
+#: settings.py:1195
 msgid "Window type"
 msgstr "Tipo de ventana"
 
-#: settings.py:1198
+#: settings.py:1206
 msgid "Reset values"
 msgstr "Restablecer valores"
 
-#: settings.py:1200
+#: settings.py:1208
 msgid "Reset all values on the current view to their defaults."
 msgstr ""
 "Restablecer todos los valores de la vista actual a sus valores "
 "predeterminados."
 
-#: settings.py:1204
+#: settings.py:1212
 msgid "Apply custom shadow"
 msgstr "Aplicar sombra personalizada"
 
-#: settings.py:1206
+#: settings.py:1214
 msgid "Save and apply custom shadow values to see its effects in real time."
 msgstr ""
 "Guardar y aplicar valores de sombra personalizados para ver sus efectos en "
 "tiempo real."
 
-#: settings.py:1248 settings.py:1277
+#: settings.py:1256 settings.py:1285
 msgid "Remember to set »Shadow presets« option to »Custom shadows«"
 msgstr ""
 "Recordar ajustar la opción »Preajustes de sombra« al valor »Sombras "
 "personalizadas«"
 
 #. 0dyseus@CinnamonTweaks->metadata.json->name
-#: settings.py:1275 settings.py:2441
+#: settings.py:1283 settings.py:2449
 msgid "Cinnamon Tweaks"
 msgstr "Ajustes de Cinnamon"
 
-#: settings.py:1288
+#: settings.py:1296
 msgid "Warning: Trying to reset custom shadows values!!!"
 msgstr ""
 "Advertencia: ¡Intentando restablecer valores de sombras personalizadas!"
 
-#: settings.py:1291
+#: settings.py:1299
 msgid ""
 "Are  you sure that you want to reset the shadows values of the current view "
 "to their defaults?"
@@ -1365,131 +1384,131 @@ msgstr ""
 "¿Está seguro de que desea restablecer los valores de sombras de la vista "
 "actual a sus valores predeterminados?"
 
-#: settings.py:1389
+#: settings.py:1397
 msgid "Application Chooser"
 msgstr "Selector de aplicaciones"
 
 #. Can be programmatically changed if needed.
-#: settings.py:1410
+#: settings.py:1418
 msgid "Choose An Application"
 msgstr "Elegir una aplicación"
 
-#: settings.py:1543
+#: settings.py:1551
 msgid "Applications list"
 msgstr "Lista de aplicaciones"
 
-#: settings.py:1571 settings.py:1790
+#: settings.py:1579 settings.py:1798
 msgid "Application"
 msgstr "Aplicación"
 
-#: settings.py:1593
+#: settings.py:1601
 msgid "Add Application"
 msgstr "Agregar aplicación"
 
-#: settings.py:1627 settings.py:1858
+#: settings.py:1635 settings.py:1866
 msgid "Choose one or more applications (Hold Ctrl key)"
 msgstr "Elegir una o más aplicaciones (Mantener pulsada la tecla Ctrl)"
 
-#: settings.py:1761
+#: settings.py:1769
 msgid "Auto move windows rules"
 msgstr "Reglas para mover ventanas automáticamente"
 
-#: settings.py:1804
+#: settings.py:1812
 msgid "Workspace"
 msgstr "Espacio de trabajo"
 
-#: settings.py:1824
+#: settings.py:1832
 msgid "Add Rule"
 msgstr "Agregar regla"
 
-#: settings.py:2059
+#: settings.py:2067
 msgid "Shortcut action"
 msgstr "Acción de acceso directo"
 
-#: settings.py:2073
+#: settings.py:2081
 msgid "Shortcut"
 msgstr "Acceso directo"
 
-#: settings.py:2089
+#: settings.py:2097
 msgid "Click to set a new hotkey."
 msgstr "Hacer clic para establecer un nuevo acceso directo."
 
-#: settings.py:2141
+#: settings.py:2149
 msgid "Contributors/Mentions:"
 msgstr "Colaboradores/Menciones:"
 
 #. TO TRANSLATORS:
 #. Here goes the name/s of the author/s of the translations.
 #. Only e-mail addresses and links to GitHub accounts are allowed. NOTHING MORE.
-#: settings.py:2149
+#: settings.py:2157
 msgid "translator-credits"
 msgstr "Odyseus https://github.com/Odyseus"
 
-#: settings.py:2283
+#: settings.py:2291
 msgid "Settings marked with (*) needs Cinnamon restart to take effect"
 msgstr ""
 "Los ajustes marcados con (*) necesitan que Cinnamon sea reiniciado para "
 "surtir efecto"
 
-#: settings.py:2292
+#: settings.py:2300
 msgid "Reset settings to defaults"
 msgstr "Restablecer los valores predeterminados"
 
-#: settings.py:2294
+#: settings.py:2302
 msgid "Import settings from a file"
 msgstr "Importar configuración desde un archivo"
 
-#: settings.py:2296
+#: settings.py:2304
 msgid "Export settings to a file"
 msgstr "Exportar configuración hacia un archivo"
 
-#: settings.py:2301
+#: settings.py:2309
 msgid "Remember window size"
 msgstr "Recordar tamaño de ventana"
 
-#: settings.py:2307
+#: settings.py:2315
 msgid "Remember last category"
 msgstr "Recordar la última categoría"
 
-#: settings.py:2313
+#: settings.py:2321
 msgid "Restart Cinnamon"
 msgstr "Reiniciar Cinnamon"
 
-#: settings.py:2319
+#: settings.py:2327
 msgid "About"
 msgstr "Acerca de"
 
-#: settings.py:2326
+#: settings.py:2334
 msgid "Manage settings"
 msgstr "Administrar configuración"
 
-#: settings.py:2371
+#: settings.py:2379
 msgid "Warning: Trying to reset all Cinnamon Tweaks settings!!!"
 msgstr ""
 "Advertencia: ¡Intentando restablecer todos los ajustes de Cinnamon Tweaks!"
 
-#: settings.py:2373
+#: settings.py:2381
 msgid "Reset all Cinnamon Tweaks settings to default?"
 msgstr "¿Restablecer todas las configuraciones de Cinnamon Tweaks por defecto?"
 
-#: settings.py:2392
+#: settings.py:2400
 msgid "Select or enter file to export to"
 msgstr "Seleccionar o ingresar el archivo hacia el cual exportar"
 
-#: settings.py:2398
+#: settings.py:2406
 msgid "Select a file to import"
 msgstr "Seleccionar un archivo para importar"
 
-#: settings.py:2414
+#: settings.py:2422
 msgid "DCONF files"
 msgstr "Archivos DCONF"
 
-#: settings.py:2481
+#: settings.py:2489
 msgid "Cinnamon Tweaks extension preferences"
 msgstr "Preferencias de la extensión Cinnamon Tweaks"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2540
+#: settings.py:2548
 #, python-format
 msgid ""
 "Please enter your password to install the required settings schema for %s"
@@ -1498,7 +1517,7 @@ msgstr ""
 "configuración necesario para %s"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2551
+#: settings.py:2559
 #, python-format
 msgid ""
 "Could not install the settings schema for %s.  You will have to perform this "
@@ -1508,7 +1527,7 @@ msgstr ""
 "realizar este paso usted mismo."
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2557
+#: settings.py:2565
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
 msgstr ""
@@ -1516,7 +1535,7 @@ msgstr ""
 "configuración para %s"
 
 #. TO TRANSLATORS: Could be left blank.
-#: settings.py:2568
+#: settings.py:2576
 #, python-format
 msgid ""
 "Could not remove the settings schema for %s.  You will have to perform this "
@@ -1525,40 +1544,40 @@ msgstr ""
 "No se pudo eliminar el esquema de configuración para %s. Tendrá que realizar "
 "este paso usted mismo. Esto no es un error crítico."
 
-#: __init__.js:186
+#: __init__.js:187
 #, javascript-format
 msgid "Schema %s could not be found for extension %s."
 msgstr "No se pudo encontrar el esquema %s para la extensión %s."
 
-#: __init__.js:187
+#: __init__.js:188
 msgid "Please check your installation."
 msgstr "Compruebe su instalación."
 
-#: __init__.js:196
+#: __init__.js:197
 msgid "Tweak activation aborted!!!"
 msgstr "¡¡¡Activación del ajuste abortada!!!"
 
-#: __init__.js:197 __init__.js:222
+#: __init__.js:198 __init__.js:223
 msgid "Your Cinnamon version may not be compatible!!!"
 msgstr "¡¡¡Su versión de Cinnamon puede que no sea compatible!!!"
 
-#: __init__.js:202
+#: __init__.js:203
 msgid "This is a test notification"
 msgstr "Esta es una notificación de prueba"
 
-#: __init__.js:221
+#: __init__.js:222
 msgid "Extension activation aborted!!!"
 msgstr "¡¡¡Activación de la extensión abortada!!!"
 
-#: __init__.js:223
+#: __init__.js:224
 msgid "Minimum Cinnamon version allowed: 2.8.6"
 msgstr "Versión mínima de CInnamon permitida: 2.8.6"
 
-#: __init__.js:500
+#: __init__.js:501
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: __init__.js:506
+#: __init__.js:507
 msgid "OK"
 msgstr "Aceptar"
 
@@ -1622,13 +1641,13 @@ msgstr "Este mensaje no se volverá a mostrar."
 msgid "Invalid overview options: Incorrect number of corners"
 msgstr "Opciones de resumen no válidas: número incorrecto de esquinas"
 
-#. 0dyseus@CinnamonTweaks->metadata.json->description
-msgid "Several tweaks for Cinnamon."
-msgstr "Varios ajustes para Cinnamon."
-
 #. 0dyseus@CinnamonTweaks->metadata.json->contributors
 msgid "See this xlet help file."
 msgstr "Ver el archivo de ayuda de este xlet."
+
+#. 0dyseus@CinnamonTweaks->metadata.json->description
+msgid "Several tweaks for Cinnamon."
+msgstr "Varios ajustes para Cinnamon."
 
 #~ msgid "Read CONTRIBUTORS.md file inside this xlet folder."
 #~ msgstr "Leer el archivo CONTRIBUTORS.md dentro de la carpeta de este xlet."

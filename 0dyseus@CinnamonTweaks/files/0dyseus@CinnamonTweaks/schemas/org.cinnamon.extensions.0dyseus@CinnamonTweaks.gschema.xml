@@ -179,6 +179,10 @@
         <default>false</default>
     </key>
 
+    <key type="b" name="maximus-invisible-windows-hack">
+        <default>false</default>
+    </key>
+
     <key type="b" name="test-notifications">
         <default>false</default>
     </key>
