@@ -16,10 +16,17 @@ const WindowDemandsAttentionExtension = new Lang.Class({
     Name: "WindowDemandsAttentionExtension",
 
     _init: function() {
+        // Needed for retro-compatibility.
+        // Mark for deletion on EOL.
+        let bD = {
+            IN: 1,
+            OUT: 2,
+            BIDIRECTIONAL: 3
+        };
         this.settings = new Settings.ExtensionSettings(this, "0dyseus@WindowDemandsAttentionBehavior");
-        this.settings.bindProperty(Settings.BindingDirection.IN,
+        this.settings.bindProperty(bD.IN,
             "pref_keyboard_shortcut", "pref_keyboard_shortcut", this._toggleEnabled);
-        this.settings.bindProperty(Settings.BindingDirection.IN,
+        this.settings.bindProperty(bD.IN,
             "pref_activation_mode", "pref_activation_mode", this._toggleEnabled);
 
         if (this.pref_activation_mode === "hotkey") {

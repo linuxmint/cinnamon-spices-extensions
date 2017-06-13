@@ -12,6 +12,102 @@ exported toggleLocalizationVisibility
 
 /* jshint varstmt: false */
 
+// Source: https://github.com/julienetie/smooth-scroll
+(function(window, document) {
+    var prefixes = ['moz', 'webkit', 'o'],
+        animationFrame;
+
+    // Modern rAF prefixing without setTimeout
+    function requestAnimationFrameNative() {
+        prefixes.map(function(prefix) {
+            if (!window.requestAnimationFrame) {
+                animationFrame = window[prefix + 'RequestAnimationFrame'];
+            } else {
+                animationFrame = requestAnimationFrame;
+            }
+        });
+    }
+    requestAnimationFrameNative();
+
+    function getOffsetTop(el) {
+        if (!el) {
+            return 0;
+        }
+
+        var yOffset = el.offsetTop,
+            parent = el.offsetParent;
+
+        yOffset += getOffsetTop(parent);
+
+        return yOffset;
+    }
+
+    function getScrollTop(scrollable) {
+        return scrollable.scrollTop || document.body.scrollTop || document.documentElement.scrollTop;
+    }
+
+    function scrollTo(scrollable, coords, millisecondsToTake) {
+        var currentY = getScrollTop(scrollable),
+            diffY = coords.y - currentY,
+            startTimestamp = null;
+
+        if (coords.y === currentY || typeof scrollable.scrollTo !== 'function') {
+            return;
+        }
+
+        function doScroll(currentTimestamp) {
+            if (startTimestamp === null) {
+                startTimestamp = currentTimestamp;
+            }
+
+            var progress = currentTimestamp - startTimestamp,
+                fractionDone = (progress / millisecondsToTake),
+                pointOnSineWave = Math.sin(fractionDone * Math.PI / 2);
+            scrollable.scrollTo(0, currentY + (diffY * pointOnSineWave));
+
+            if (progress < millisecondsToTake) {
+                animationFrame(doScroll);
+            } else {
+                // Ensure we're at our destination
+                scrollable.scrollTo(coords.x, coords.y);
+            }
+        }
+
+        animationFrame(doScroll);
+    }
+
+    // Declaire scroll duration, (before script)
+    var speed = window.smoothScrollSpeed || 750;
+
+    function smoothScroll(e) { // no smooth scroll class to ignore links
+        if (e.target.className === 'no-ss') {
+            return;
+        }
+
+        var source = e.target,
+            targetHref = source.hash,
+            target = null;
+
+        if (!source || !targetHref) {
+            return;
+        }
+
+        targetHref = targetHref.substring(1);
+        target = document.getElementById(targetHref);
+        if (!target) {
+            return;
+        }
+
+        scrollTo(window, {
+            x: 0,
+            y: getOffsetTop(target)
+        }, speed);
+    }
+
+    // Uses target's hash for scroll
+    document.addEventListener('click', smoothScroll, false);
+}(window, document));
+
 if (!window.localStorage) {
     /*
     Storage objects are a recent addition to the standard. As such they may not be present
@@ -449,7 +545,7 @@ body {
 <noscript>
 <div class="alert alert-warning">
 <p><strong>Oh snap! This page needs JavaScript enabled to display correctly.</strong></p>
-<p><strong>This page uses JavaScript only to switch between the available languages.</strong></p>
+<p><strong>This page uses JavaScript only to switch between the available languages and/or display images.</strong></p>
 <p><strong>There are no tracking services of any kind and never will be (at least, not from my side).</strong></p>
 </div> <!-- .alert.alert-warning -->
 </noscript>
@@ -458,16 +554,17 @@ body {
     <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-            <li><a id="nav-xlet-help" class="navbar-brand" href="#xlet-help"></a></li>
-            <li><a id="nav-xlet-contributors" class="navbar-brand" href="#xlet-contributors"></a></li>
-            <li><a id="nav-xlet-changelog" class="navbar-brand" href="#xlet-changelog"></a></li>
+            <li><a id="nav-xlet-help" class="js_smoothScroll navbar-brand" href="#xlet-help"></a></li>
+            <li><a id="nav-xlet-contributors" class="js_smoothScroll navbar-brand" href="#xlet-contributors"></a></li>
+            <li><a id="nav-xlet-changelog" class="js_smoothScroll navbar-brand" href="#xlet-changelog"></a></li>
         </ul>
     </div>
     <form class="navbar-form navbar-collapse collapse navbar-right">
         <div class="form-group">
             <label id="localization-chooser-label" class="control-label" for="localization-switch"></label>
             <select class="form-control input-sm" id="localization-switch" onchange="self.toggleLocalizationVisibility(value, this);">
-                <!-- English --><option selected data-title="Help for Window demands attention behavior" data-language-chooser-label="Choose language" data-xlet-help="Help" data-xlet-contributors="Contributors" data-xlet-changelog="Changelog" value="en">English</option>
+                <!-- Dansk --><option data-title="Hjælp til Window demands attention behavior" data-language-chooser-label="Vælg sprog" data-xlet-help="Hjælp" data-xlet-contributors="Bidragydere" data-xlet-changelog="Ændringslog" value="da">Dansk</option>
+<!-- English --><option selected data-title="Help for Window demands attention behavior" data-language-chooser-label="Choose language" data-xlet-help="Help" data-xlet-contributors="Contributors" data-xlet-changelog="Changelog" value="en">English</option>
 <!-- Español --><option data-title="Ayuda para Window demands attention behavior" data-language-chooser-label="Elegir idioma" data-xlet-help="Ayuda" data-xlet-contributors="Colaboradores" data-xlet-changelog="Registro de cambios" value="es">Español</option>
 <!-- Svenska --><option data-title="Hjälp för Window demands attention behavior" data-language-chooser-label="Välj språk" data-xlet-help="Hjälp" data-xlet-contributors="Medhjälpare" data-xlet-changelog="Ändringslogg" value="sv">Svenska</option>
 <!-- 简体中文 --><option data-title="Window demands attention behavior的帮助" data-language-chooser-label="选择语言" data-xlet-help="帮助" data-xlet-contributors="贡献者" data-xlet-changelog="变更日志" value="zh_CN">简体中文</option>
@@ -476,8 +573,34 @@ body {
     </form>
     </div>
 </nav>
-<span id="xlet-help">
+<span id="xlet-help" style="padding-top:70px;">
 <div class="container boxed">
+
+<div id="da" class="localization-content hidden">
+
+<h1>Hjælp til Window demands attention behavior</h1>
+
+<div style="font-weight:bold;" class="alert alert-warning">
+<h2>VIGTIGT!!!</h2>
+
+<p>Slet aldrig nogen af filerne i denne udvidelses mappe. Det kan ødelægge udvidelsens funktionalitet.</p>
+
+<p>Fejlrapporter, forslag til nye funktioner og bidrag bør ske i denne udvidelses arkiv, som der er linket til efterfølgende. <a href="https://github.com/Odyseus/CinnamonTools">GitHub</a></p>
+
+</div>
+<hr>
+
+
+<h2>Oversættelser af panelprogrammer, skrivebordsprogrammer og udvidelser</h2>
+<ul>
+<li>Hvis denne udvidelse blev installeret gennem Cinnamons indstillinger, blev alle oversættelser automatisk installeret.</li>
+<li>Hvis denne udvidelse blev installeret manuelt og ikke gennem Cinnamons indstillinger, kan alle oversættelser installeres ved at køre skriptet <strong>localizations.sh</strong> i en terminal åbnet i udvidelsens mappe.</li>
+<li>Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit sprog, kan du oprette en ved at følge de efterfølgende instruktioner. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
+</ul>
+
+<div style="font-weight:bold;" class="alert alert-info">De næste to afsnit er kun tilgængelig på engelsk.</div>
+</div> <!-- .localization-content -->
+
 
 <div id="zh_CN" class="localization-content hidden">
 
@@ -501,6 +624,7 @@ body {
 <li>如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。 <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">以下两个部分仅使用英语。</div>
 </div> <!-- .localization-content -->
 
 
@@ -526,6 +650,7 @@ body {
 <li>Si este xlet no está disponible en su idioma, la localización puede ser creada siguiendo las siguientes instrucciones. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">Las siguientes dos secciones están disponibles sólo en Inglés.</div>
 </div> <!-- .localization-content -->
 
 
@@ -551,6 +676,7 @@ body {
 <li>Om ditt språk saknas i denna xlet, kan du översätta den med hjälp av följande instruktioner. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">Följande två sektioner är endast tillgängliga på Engelska.</div>
 </div> <!-- .localization-content -->
 
 
@@ -576,25 +702,54 @@ body {
 <li>If this xlet has no locale available for your language, you could create it by following the following instructions. <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
 </ul>
 
+<div style="font-weight:bold;" class="alert alert-info">The following two sections are available only in English.</div>
 </div> <!-- .localization-content -->
 
 </div> <!-- .container.boxed -->
-<div style="font-weight:bold;" class="container alert alert-info">The following two sections are available only in English.</div>
-<span id="xlet-contributors">
+<span id="xlet-contributors" style="padding-top:140px;">
 <div class="container boxed">
 <h2>Contributors/Mentions</h2>
 <ul>
 <li><strong><a href="https://github.com/muzena">muzena</a>:</strong> Croatian localization.</li>
 <li><strong><a href="https://github.com/giwhub">giwhub</a>:</strong> Chinese localization.</li>
 <li><strong><a href="https://github.com/eson57">eson57</a>:</strong> Swedish localization.</li>
+<li><strong><a href="https://github.com/Alan01">Alan01</a>:</strong> Danish localization.</li>
 </ul>
 
 </div> <!-- .container.boxed -->
 
-<span id="xlet-changelog">
+<span id="xlet-changelog" style="padding-top:70px;">
 <div class="container boxed">
 <h2>Window demands attention behavior changelog</h2>
 <h4>This change log is only valid for the version of the xlet hosted on <a href="https://github.com/Odyseus/CinnamonTools">its original repository</a></h4>
+<hr>
+<ul>
+<li><strong>Date:</strong> Thu, 8 Jun 2017 18:57:18 -0300</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/c6f5ec9">c6f5ec9</a></li>
+<li><strong>Author:</strong> Odyseus</li>
+</ul>
+<pre><code>Window demands attention behavior extension
+- Added Danish localization.
+</code></pre>
+<hr>
+<ul>
+<li><strong>Date:</strong> Thu, 8 Jun 2017 19:19:47 +0200</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/b02a23f">b02a23f</a></li>
+<li><strong>Author:</strong> Alan01</li>
+</ul>
+<pre><code>Create da.po
+</code></pre>
+<hr>
+<ul>
+<li><strong>Date:</strong> Tue, 6 Jun 2017 22:34:01 -0300</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/25428af">25428af</a></li>
+<li><strong>Author:</strong> Odyseus</li>
+</ul>
+<pre><code>Window demands attention behavior extension
+- Better handling of **Settings.BindingDirection**. Just to avoid surprises when that constant is
+removed on future versions of Cinnamon.
+- Changed tabs to spaces on the settings-schema.json file.
+</code></pre>
 <hr>
 <ul>
 <li><strong>Date:</strong> Mon, 5 Jun 2017 16:48:09 -0300</li>
@@ -818,6 +973,8 @@ hr.po     12
 </div> <!-- .container.boxed -->
 
 </div> <!-- #mainarea -->
-<script type="text/javascript">toggleLocalizationVisibility(null);</script>
+<script type="text/javascript">toggleLocalizationVisibility(null);
+
+</script>
 </body>
 </html>
