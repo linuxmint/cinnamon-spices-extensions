@@ -27,6 +27,6 @@ This extension is a fork of the [Cinnamon Maximus](https://cinnamon-spices.linux
 
 **Note:** Both commands are already available on Linux Mint. They are installed by the **x11-utils** package.
 
-[Contributors/Mentions](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonMaximusFork/CONTRIBUTORS.md)
-
-[Full change log](https://github.com/Odyseus/CinnamonTools/blob/master/extensions/0dyseus%40CinnamonMaximusFork/CHANGELOG.md)
+#### [Localized help](https://odyseus.github.io/CinnamonTools/help_files/0dyseus@CinnamonMaximusFork.html)
+#### [Contributors/Mentions](https://odyseus.github.io/CinnamonTools/help_files/0dyseus@CinnamonMaximusFork.html#xlet-contributors)
+#### [Full change log](https://odyseus.github.io/CinnamonTools/help_files/0dyseus@CinnamonMaximusFork.html#xlet-changelog)

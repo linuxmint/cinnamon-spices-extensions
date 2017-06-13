@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.6\n"
-"POT-Creation-Date: 2017-06-02 17:05-0300\n"
+"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.7\n"
+"POT-Creation-Date: 2017-06-12 22:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,32 +15,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: make-xlet-pot.py 1.0.32\n"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
-msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
-msgid ""
-"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
-"If disabled, all maximized windows will have their titlebar removed."
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "See this xlet help file."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
-msgid "Use Whitelist"
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
-msgid "Troubleshooting"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
-msgid "List of applications: "
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->tooltip
-msgid ""
-"\"Use Whitelist\" option must be checked.\n"
-"Use a \",\" (comma) to seperate applications."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
+msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
 msgstr ""
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
@@ -49,96 +53,100 @@ msgid ""
 "Note: I couldn't make a proper button to work in this settings window, so I had to improvise and I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
-msgid "Check or uncheck to restart Cinnamon"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->tooltip
+msgid ""
+"\"Use Whitelist\" option must be checked.\n"
+"Use a \",\" (comma) to seperate applications."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
-msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
+msgid "List of applications: "
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
-msgid "Enable logging"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
-msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
+msgid "Use Whitelist"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
-msgid "Undecorate when tiled"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
+msgid ""
+"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->description
-msgid "Remove windows decorations from maximized windows."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
+msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
-msgid "See this xlet help file."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->description
+msgid "Enable hack for invisible windows"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->name
-msgid "Cinnamon Maximus (Fork by Odyseus)"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->tooltip
+msgid "On Cinnamon 3.4 or greater, the windows of the applications configured so that their decorations are removed when maximized, may become invisible. Enabling this option might prevent that, but it might also add a border of about 1 pixel in place of the title bar (it might depend on the metacity theme (Window borders) used)."
 msgstr ""
 
-#: ../../create_localized_help.py:90
+#: ../../create_localized_help.py:90 ../../create_localized_help.py:96 ../../create_localized_help.py:125
 msgid "The following two sections are available only in English."
 msgstr ""
 
 #. TO TRANSLATORS: This is a placeholder.
 #. Here goes your language name in your own language (a.k.a. endonym).
-#: ../../create_localized_help.py:115 ../../create_localized_help.py:187
+#: ../../create_localized_help.py:115 ../../create_localized_help.py:119 ../../create_localized_help.py:121 ../../create_localized_help.py:187 ../../create_localized_help.py:194 ../../create_localized_help.py:195
 msgid "language-name"
 msgstr ""
 
-#: ../../create_localized_help.py:190
+#: ../../create_localized_help.py:190 ../../create_localized_help.py:197 ../../create_localized_help.py:198
 msgid "Help"
 msgstr ""
 
-#: ../../create_localized_help.py:191
+#: ../../create_localized_help.py:191 ../../create_localized_help.py:198 ../../create_localized_help.py:199
 msgid "Contributors"
 msgstr ""
 
-#: ../../create_localized_help.py:192
+#: ../../create_localized_help.py:192 ../../create_localized_help.py:199 ../../create_localized_help.py:200
 msgid "Changelog"
 msgstr ""
 
-#: ../../create_localized_help.py:193
+#: ../../create_localized_help.py:193 ../../create_localized_help.py:200 ../../create_localized_help.py:201
 msgid "Choose language"
 msgstr ""
 
 #. TO TRANSLATORS: Full sentence:
 #. "Help for <xlet_name>"
-#: ../../create_localized_help.py:194 ../../create_localized_help.py:201
+#: ../../create_localized_help.py:194 ../../create_localized_help.py:201 ../../create_localized_help.py:202 ../../create_localized_help.py:208 ../../create_localized_help.py:209
 #, python-format
 msgid "Help for %s"
 msgstr ""
 
-#: ../../create_localized_help.py:202
+#: ../../create_localized_help.py:202 ../../create_localized_help.py:209 ../../create_localized_help.py:210
 msgid "IMPORTANT!!!"
 msgstr ""
 
-#: ../../create_localized_help.py:203
+#: ../../create_localized_help.py:203 ../../create_localized_help.py:210 ../../create_localized_help.py:211
 msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
 msgstr ""
 
-#: ../../create_localized_help.py:204
+#: ../../create_localized_help.py:204 ../../create_localized_help.py:211 ../../create_localized_help.py:212
 msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
 msgstr ""
 
-#: ../../create_localized_help.py:210
+#: ../../create_localized_help.py:210 ../../create_localized_help.py:217 ../../create_localized_help.py:218
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr ""
 
-#: ../../create_localized_help.py:211
+#: ../../create_localized_help.py:211 ../../create_localized_help.py:218 ../../create_localized_help.py:219
 msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:213
+#: ../../create_localized_help.py:213 ../../create_localized_help.py:220 ../../create_localized_help.py:221
 msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
 msgstr ""
 
-#: ../../create_localized_help.py:214
+#: ../../create_localized_help.py:214 ../../create_localized_help.py:221 ../../create_localized_help.py:222
 msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
