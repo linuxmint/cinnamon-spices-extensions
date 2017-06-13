@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.04\n"
-"POT-Creation-Date: 2017-06-02 17:05-0300\n"
+"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.05\n"
+"POT-Creation-Date: 2017-06-12 22:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,65 +170,65 @@ msgstr ""
 msgid "To import/export settings, the **dconf** command needs to be available on the system."
 msgstr ""
 
-#: ../../create_localized_help.py:164
-msgid "The following two sections are available only in English."
-msgstr ""
-
 #. TO TRANSLATORS: This is a placeholder.
 #. Here goes your language name in your own language (a.k.a. endonym).
-#: ../../create_localized_help.py:189 ../../create_localized_help.py:261
+#: ../../create_localized_help.py:193 ../../create_localized_help.py:269
 msgid "language-name"
 msgstr ""
 
-#: ../../create_localized_help.py:264 settings.py:1385 __init__.js:3456
+#: ../../create_localized_help.py:199
+msgid "The following two sections are available only in English."
+msgstr ""
+
+#: ../../create_localized_help.py:272 settings.py:1385 __init__.js:3456
 msgid "Help"
 msgstr ""
 
-#: ../../create_localized_help.py:265
+#: ../../create_localized_help.py:273
 msgid "Contributors"
 msgstr ""
 
-#: ../../create_localized_help.py:266
+#: ../../create_localized_help.py:274
 msgid "Changelog"
 msgstr ""
 
-#: ../../create_localized_help.py:267
+#: ../../create_localized_help.py:275
 msgid "Choose language"
 msgstr ""
 
 #. TO TRANSLATORS: Full sentence:
 #. "Help for <xlet_name>"
-#: ../../create_localized_help.py:268 ../../create_localized_help.py:275
+#: ../../create_localized_help.py:276 ../../create_localized_help.py:283
 #, python-format
 msgid "Help for %s"
 msgstr ""
 
-#: ../../create_localized_help.py:276
+#: ../../create_localized_help.py:284
 msgid "IMPORTANT!!!"
 msgstr ""
 
-#: ../../create_localized_help.py:277
+#: ../../create_localized_help.py:285
 msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
 msgstr ""
 
-#: ../../create_localized_help.py:278
+#: ../../create_localized_help.py:286
 msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
 msgstr ""
 
-#: ../../create_localized_help.py:284
+#: ../../create_localized_help.py:292
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr ""
 
-#: ../../create_localized_help.py:285
+#: ../../create_localized_help.py:293
 msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:287
+#: ../../create_localized_help.py:295
 msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
 msgstr ""
 
-#: ../../create_localized_help.py:288
+#: ../../create_localized_help.py:296
 msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
 
