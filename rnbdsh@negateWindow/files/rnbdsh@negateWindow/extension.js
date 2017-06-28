@@ -2,6 +2,10 @@ const Lang = imports.lang;
 const Main = imports.ui.main;
 const Clutter = imports.gi.Clutter;
 
+//change this to the key combination you wish
+HOTKEY = "<Super>i::"
+
+//TODO: idea for additional new plugin: invert if overall color average < 50%, onWindowOpen
 
 /* Used as a template: 0dyseus@CinnamonTweaks
 Code for inversion shader: https://github.com/maiself/gnome-shell-extension-invert-color; 
@@ -42,7 +46,7 @@ function disable() { Main.keybindingManager.removeHotKey(super_unique_id_for_neg
 function enable() {
 	Main.keybindingManager.addHotKey(
 		"super_unique_id_for_negate_window",
-		"<Super>i::",
+		HOTKEY,
 			Lang.bind(this, function() {
 				//search all existing windows to find the focussed one
 				global.get_window_actors().forEach(function(actor) {
