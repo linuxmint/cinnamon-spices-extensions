@@ -12,5 +12,6 @@
         "3.2", 
         "3.4"
     ], 
-    "name": "Negate Window on Ctrl+I"
+    "name": "Negate Window on Ctrl+I", 
+    "uuid": "rnbdsh@negateWindow"
 }
