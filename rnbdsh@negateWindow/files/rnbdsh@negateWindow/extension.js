@@ -3,7 +3,7 @@ const Main = imports.ui.main;
 const Clutter = imports.gi.Clutter;
 
 //change this to the key combination you wish
-HOTKEY = "<Super>i::"
+const HOTKEY = "<Super>i::"
 
 //TODO: idea for additional new plugin: invert if overall color average < 50%, onWindowOpen
 
