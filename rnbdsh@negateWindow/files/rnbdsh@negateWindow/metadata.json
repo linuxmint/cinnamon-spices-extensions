@@ -1,0 +1,16 @@
+{
+    "external-configuration-app": "extension.js", 
+    "website": "https://github.com/rnbdsh/negateWindow", 
+    "last-edited": 1497360303, 
+    "contributors": "See this xlet help file.", 
+    "url": "https://github.com/rnbdsh/negateWindow", 
+    "description": "A Cinnamon extension that allows to negate the window-color when you press windows+i.", 
+    "version": "0.01", 
+    "cinnamon-version": [
+        "2.8", 
+        "3.0", 
+        "3.2", 
+        "3.4"
+    ], 
+    "name": "Negate Window on Ctrl+I"
+}
