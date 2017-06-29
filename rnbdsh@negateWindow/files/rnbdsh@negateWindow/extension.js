@@ -42,12 +42,12 @@ const InvertWindowEffect = new Lang.Class({
 
 //every extension.js must have init+enable+disable
 function init() { }
-function disable() { Main.keybindingManager.removeHotKey(super_unique_id_for_negate_window); }
+function disable() { Main.keybindingManager.removeHotKey("super_unique_id_for_negate_window"); }
 function enable() {
 	Main.keybindingManager.addHotKey(
 		"super_unique_id_for_negate_window",
 		HOTKEY,
-			Lang.bind(this, function() {
+		function() {
 				//search all existing windows to find the focussed one
 				global.get_window_actors().forEach(function(actor) {
 				let meta_window = actor.get_meta_window();
@@ -59,6 +59,8 @@ function enable() {
 						//however, doing this 1000 times could cause some load due to stacked shaders
 						actor.add_effect_with_name('invert-color', effect);
 					}
-				})
-		}))
+				}
+			)
+		}
+	)
 }
