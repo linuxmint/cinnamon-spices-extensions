@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@WindowDemandsAttentionBehavior 1.02\n"
+"Project-Id-Version: 0dyseus@WindowDemandsAttentionBehavior 1.04\n"
+"Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
 "POT-Creation-Date: 2017-06-03 06:56+0200\n"
 "PO-Revision-Date: 2017-06-03 07:17+0200\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: make-xlet-pot.py 1.0.32\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: sv\n"
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_activation_mode->options
 msgid "Force windows demanding attention activation."
@@ -36,8 +37,7 @@ msgstr "Välj aktiveringsläge"
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_keyboard_shortcut->description
 msgid "Set the keybinding to activate windows demanding attention: "
-msgstr ""
-"Ange tangentbordsgenväg för att aktivera fönster som kräver uppmärksamhet: "
+msgstr "Ange tangentbordsgenväg för att aktivera fönster som kräver uppmärksamhet: "
 
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->contributors
 msgid "See this xlet help file."
@@ -45,9 +45,7 @@ msgstr "Se programmets hjälpfil."
 
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->description
 msgid "Activate demanding attention window with a keyboard shortcut or forced."
-msgstr ""
-"Aktivera fönster som kräver uppmärksamhet, med en tangentbordsgenväg eller "
-"automatiskt."
+msgstr "Aktivera fönster som kräver uppmärksamhet, med en tangentbordsgenväg eller automatiskt."
 
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->name
 msgid "Window demands attention behavior"
@@ -91,48 +89,26 @@ msgid "IMPORTANT!!!"
 msgstr "VIKTIGT!!!"
 
 #: ../../create_localized_help.py:203
-msgid ""
-"Never delete any of the files found inside this xlet folder. It might break "
-"this xlet functionality."
-msgstr ""
-"Ta aldrig bort någon av filerna i den här xlet-mappen. Det kan förstöra "
-"programmets funktioner."
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
+msgstr "Ta aldrig bort någon av filerna i den här xlet-mappen. Det kan förstöra programmets funktioner."
 
 #: ../../create_localized_help.py:204
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked next."
-msgstr ""
-"Felrapporter, funktionsönskemål och kodbidrag kan lämnas i denna xlets "
-"kodförråd, på följande länk."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
+msgstr "Felrapporter, funktionsönskemål och kodbidrag kan lämnas i denna xlets kodförråd, på följande länk."
 
 #: ../../create_localized_help.py:210
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr "Applets/Desklets/Extensions (xlets) översättning"
 
 #: ../../create_localized_help.py:211
-msgid ""
-"If this xlet was installed from Cinnamon Settings, all of this xlet's "
-"localizations were automatically installed."
-msgstr ""
-"Om denna xlet installerades från Cinnamons inställningar, installerades "
-"också alla översättningar automatiskt."
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
+msgstr "Om denna xlet installerades från Cinnamons inställningar, installerades också alla översättningar automatiskt."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:213
-msgid ""
-"If this xlet was installed manually and not trough Cinnamon Settings, "
-"localizations can be installed by executing the script called "
-"**localizations.sh** from a terminal opened inside the xlet's folder."
-msgstr ""
-"Om denna xlet installerades manuellt och inte via Cinnamons inställningar, "
-"kan översättningar installeras genom att köra skriptet **localizations.sh** "
-"från en terminal öppnad i programmappen."
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr "Om denna xlet installerades manuellt och inte via Cinnamons inställningar, kan översättningar installeras genom att köra skriptet **localizations.sh** från en terminal öppnad i programmappen."
 
 #: ../../create_localized_help.py:214
-msgid ""
-"If this xlet has no locale available for your language, you could create it "
-"by following the following instructions."
-msgstr ""
-"Om ditt språk saknas i denna xlet, kan du översätta den med hjälp av "
-"följande instruktioner."
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
+msgstr "Om ditt språk saknas i denna xlet, kan du översätta den med hjälp av följande instruktioner."
