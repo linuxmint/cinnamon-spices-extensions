@@ -2,8 +2,6 @@
     "website": "https://github.com/Odyseus/CinnamonTools",
     "description": "Remove windows decorations from maximized windows.",
     "cinnamon-version": [
-        "1.8",
-        "1.9",
         "2.0",
         "2.1",
         "2.2",
@@ -16,7 +14,7 @@
     ],
     "url": "https://github.com/Odyseus/CinnamonTools",
     "uuid": "0dyseus@CinnamonMaximusFork",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "contributors": "See this xlet help file.",
     "name": "Cinnamon Maximus (Fork by Odyseus)"
 }

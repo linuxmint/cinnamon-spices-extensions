@@ -5,37 +5,31 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.6\n"
+"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.8\n"
+"Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
 "POT-Creation-Date: 2017-05-26 22:01+0200\n"
 "PO-Revision-Date: 2017-05-27 21:06+0200\n"
-"Language-Team: \n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: Danish\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: make-xlet-pot.py 1.0.32\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: da\n"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
-msgid ""
-"If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) "
-"information that could be used to debug the extension."
-msgstr ""
-"Når aktiveret vil information, som kan bruges til at fejlsøge udvidelsen, "
-"bilve logget i Cinnamons log (~/.cinnamon/glass.log)."
+msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
+msgstr "Når aktiveret vil information, som kan bruges til at fejlsøge udvidelsen, bilve logget i Cinnamons log (~/.cinnamon/glass.log)."
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
 msgid "Enable logging"
 msgstr "Aktivér logning"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
-msgid ""
-"Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr ""
-"Fjern titellinjen i alle vinduer (eksperimentel, luk og åbn alle vinduer "
-"igen)"
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr "Fjern titellinjen i alle vinduer (eksperimentel, luk og åbn alle vinduer igen)"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
 msgid "Undecorate when tiled"
@@ -43,12 +37,10 @@ msgstr "Fjern titellinjer når udlagt side om side"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
 msgid ""
-"If enabled, only the applications specified bellow will have their titlebar "
-"removed when maximized.\n"
+"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
 "If disabled, all maximized windows will have their titlebar removed."
 msgstr ""
-"Når aktiveret vil kun programmer angivet nedenfor få deres titellinje "
-"fjernet i maksimeret tilstand.\n"
+"Når aktiveret vil kun programmer angivet nedenfor få deres titellinje fjernet i maksimeret tilstand.\n"
 "Hvis deaktiveret vil alle maksimerede vinduer få deres titellinje fjernet."
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
@@ -58,15 +50,10 @@ msgstr "Anvend godkendt-liste"
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
 msgid ""
 "Check or uncheck this options to restart Cinnamon.\n"
-"Note: I couldn't make a proper button to work in this settings window, so I "
-"had to improvise and I had to use a checkbox. It doesn't really matter if "
-"it's checked or unchecked."
+"Note: I couldn't make a proper button to work in this settings window, so I had to improvise and I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
 msgstr ""
-"Markér eller fjern markering for denne indstilling for at genstarte "
-"Cinnamon.\n"
-"Bemærk: Jeg kunne ikke få en rigtig knap til at virke i indstillingsvinduet, "
-"så jeg måtte improvisere og bruge et afkrydsningsfelt. Det betyder ikke "
-"noget, om den er markeret eller ej."
+"Markér eller fjern markering for denne indstilling for at genstarte Cinnamon.\n"
+"Bemærk: Jeg kunne ikke få en rigtig knap til at virke i indstillingsvinduet, så jeg måtte improvisere og bruge et afkrydsningsfelt. Det betyder ikke noget, om den er markeret eller ej."
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
 msgid "Check or uncheck to restart Cinnamon"
@@ -134,48 +121,26 @@ msgid "IMPORTANT!!!"
 msgstr "Vigtigt!!!"
 
 #: ../../create_localized_help.py:176
-msgid ""
-"Never delete any of the files found inside this xlet folder. It might break "
-"this xlet functionality."
-msgstr ""
-"Slet aldrig nogen filer i denne udvidelses mappe. Det kan ødelægge "
-"udvidelsens funktionalitet."
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
+msgstr "Slet aldrig nogen filer i denne udvidelses mappe. Det kan ødelægge udvidelsens funktionalitet."
 
 #: ../../create_localized_help.py:177
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked next."
-msgstr ""
-"Fejlrapporter, forslag til nye funktioner og bidrag bør ske i denne "
-"udvidelses arkiv, som der er linket til efterfølgende."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
+msgstr "Fejlrapporter, forslag til nye funktioner og bidrag bør ske i denne udvidelses arkiv, som der er linket til efterfølgende."
 
 #: ../../create_localized_help.py:183
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr "Oversættelse af panelprogrammer, skrivebordsprogrammer og udvidelser"
 
 #: ../../create_localized_help.py:184
-msgid ""
-"If this xlet was installed from Cinnamon Settings, all of this xlet's "
-"localizations were automatically installed."
-msgstr ""
-"Hvis denne udvidelse blev installeret gennem Cinnamons indstillinger, blev "
-"alle oversættelser automatisk installeret."
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
+msgstr "Hvis denne udvidelse blev installeret gennem Cinnamons indstillinger, blev alle oversættelser automatisk installeret."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:186
-msgid ""
-"If this xlet was installed manually and not trough Cinnamon Settings, "
-"localizations can be installed by executing the script called "
-"**localizations.sh** from a terminal opened inside the xlet's folder."
-msgstr ""
-"Hvis denne udvidelse blev installeret manuelt og ikke gennem Cinnamons "
-"indstillinger, kan alle oversættelser installeres ved at køre skriptet "
-"**localizations.sh** i en terminal åbnet i udvidelsens mappe."
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr "Hvis denne udvidelse blev installeret manuelt og ikke gennem Cinnamons indstillinger, kan alle oversættelser installeres ved at køre skriptet **localizations.sh** i en terminal åbnet i udvidelsens mappe."
 
 #: ../../create_localized_help.py:187
-msgid ""
-"If this xlet has no locale available for your language, you could create it "
-"by following the following instructions."
-msgstr ""
-"Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit "
-"sprog, kan du oprette en ved at følge de efterfølgende instruktioner."
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
+msgstr "Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit sprog, kan du oprette en ved at følge de efterfølgende instruktioner."
