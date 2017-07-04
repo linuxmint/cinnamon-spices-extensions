@@ -5,339 +5,249 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-02 17:08-0300\n"
-"PO-Revision-Date: 2017-06-02 17:08-0300\n"
+"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.06\n"
+"Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
+"POT-Creation-Date: 2017-06-25 16:05-0300\n"
+"PO-Revision-Date: 2017-06-19 00:40-0300\n"
 "Last-Translator: Odyseus\n"
-"Language-Team: \n"
+"Language-Team: Spanish\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../../create_localized_help.py:64
+#: ../../create_localized_help.py:72
+msgid "Description"
+msgstr "Descripción"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:75
+msgid "The Multi Translator extension is an extension ported from a gnome-shell extension called [Text Translator](https://github.com/gufoe/text-translator) by [gufoe](https://github.com/gufoe). It provides translation of text by different translation providers (currently [Google](https://translate.google.com), [Yandex](https://translate.yandex.net), [Bing](https://www.bing.com/translator), [Apertium](https://www.apertium.org) and [Transltr](http://transltr.org))."
+msgstr "La extensión Multi Traductor está basada en una extensión para gnome-shell llamada [Text Translator](https://github.com/gufoe/text-translator) por [gufoe](https://github.com/gufoe). Proporciona traducción de texto por diferentes proveedores de traducción (actualmente [Google](https://translate.google.com), [Yandex](https://translate.yandex.net), [Bing](https://www.bing.com/translator), [Apertium](https://www.apertium.org) and [Transltr](http://transltr.org))."
+
+#: ../../create_localized_help.py:77
 msgid "Dependencies"
 msgstr "Dependencias"
 
-#: ../../create_localized_help.py:65
-msgid ""
-"If one or more of these dependencies are missing in your system, you will "
-"not be able to use this extension."
-msgstr ""
-"Si una o más de estas dependencias faltan en su sistema, no podrá utilizar "
-"esta extensión."
+#: ../../create_localized_help.py:79
+msgid "If one or more of these dependencies are missing in your system, you will not be able to use this extension."
+msgstr "Si una o más de estas dependencias faltan en su sistema, no podrá utilizar esta extensión."
 
-#: ../../create_localized_help.py:66
+#: ../../create_localized_help.py:81
 msgid "xsel command:"
 msgstr "Comando xsel"
 
-#: ../../create_localized_help.py:67
-msgid ""
-"XSel is a command-line program for getting and setting the contents of the X "
-"selection."
-msgstr ""
-"XSel es un programa de la consola para obtener y asignar los contenidos de "
-"una selección en X."
+#: ../../create_localized_help.py:82
+msgid "XSel is a command-line program for getting and setting the contents of the X selection."
+msgstr "XSel es un programa de la consola para obtener y asignar los contenidos de una selección en X."
 
-#: ../../create_localized_help.py:68
+#: ../../create_localized_help.py:83
 msgid "trans command:"
 msgstr "Comando trans:"
 
-#: ../../create_localized_help.py:69
-msgid ""
-"Command provided by the package translate-shell. Is a simple command line "
-"interface for several translation providers (Google Translate, Yandex "
-"Translate, Bing Translate and Apertium) which allows you to translate "
-"strings in your terminal."
-msgstr ""
-"Comando proporcionado por **translate-shell**. Es una simple interfaz de "
-"línea de comandos para varios proveedores de traducción (Google Translate, "
-"Yandex Translate, Bing Translate and Apertium) que permite traducir cadenas "
-"de texto desde la terminal."
+#: ../../create_localized_help.py:84
+msgid "Command provided by the package translate-shell. Is a simple command line interface for several translation providers (Google Translate, Yandex Translate, Bing Translate and Apertium) which allows you to translate strings in your terminal."
+msgstr "Comando proporcionado por **translate-shell**. Es una simple interfaz de línea de comandos para varios proveedores de traducción (Google Translate, Yandex Translate, Bing Translate and Apertium) que permite traducir cadenas de texto desde la terminal."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:71
-msgid ""
-"Check translate-shell [dependencies](https://github.com/soimort/translate-"
-"shell#dependencies) and [recommended dependencies](https://github.com/"
-"soimort/translate-shell#recommended-dependencies)."
-msgstr ""
-"Comprobar [dependencias](https://github.com/soimort/translate-"
-"shell#dependencies) y [dependencias recomendadas](https://github.com/soimort/"
-"translate-shell#recommended-dependencies) de translate-shell."
+#: ../../create_localized_help.py:86
+msgid "Check translate-shell [dependencies](https://github.com/soimort/translate-shell#dependencies) and [recommended dependencies](https://github.com/soimort/translate-shell#recommended-dependencies)."
+msgstr "Comprobar [dependencias](https://github.com/soimort/translate-shell#dependencies) y [dependencias recomendadas](https://github.com/soimort/translate-shell#recommended-dependencies) de translate-shell."
 
-#: ../../create_localized_help.py:73
+#: ../../create_localized_help.py:88
 msgid "Note:"
 msgstr "Nota:"
 
-#: ../../create_localized_help.py:73
-msgid ""
-"The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x "
-"repositories is outdated and broken. It can be installed anyway so it will "
-"also install its dependencies. But updating to the latest version should be "
-"done as described bellow."
-msgstr ""
-"El paquete **translate-shell** disponible en los repositorios de Ubuntu "
-"16.04.x/Linux Mint 18.x es anticuado y roto. Puede ser instalado de todas "
-"maneras así también se instalan sus dependencias. Pero actualizar el script "
-"a su última versión debe hacerse como se describe a continuación."
+#: ../../create_localized_help.py:88
+msgid "The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x repositories is outdated and broken. It can be installed anyway so it will also install its dependencies. But updating to the latest version should be done as described bellow."
+msgstr "El paquete **translate-shell** disponible en los repositorios de Ubuntu 16.04.x/Linux Mint 18.x es anticuado y roto. Puede ser instalado de todas maneras así también se instalan sus dependencias. Pero actualizar el script a su última versión debe hacerse como se describe a continuación."
 
-#: ../../create_localized_help.py:75
+#: ../../create_localized_help.py:101
 msgid "How to install latest version of translate-shell"
 msgstr "Cómo instalar la última versión de translate-shell"
 
-#: ../../create_localized_help.py:76
+#: ../../create_localized_help.py:102
 msgid "Option 1. Direct Download"
 msgstr "Opción 1. Descarga directa"
 
-#: ../../create_localized_help.py:77
-msgid ""
-"This method will only install the trans script into the specified locations."
-msgstr ""
-"Este método sólo instalará el script **trans** en la ubicación especificada."
+#: ../../create_localized_help.py:103
+msgid "This method will only install the trans script into the specified locations."
+msgstr "Este método sólo instalará el script **trans** en la ubicación especificada."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:80
+#: ../../create_localized_help.py:106
 msgid "For the current user only. **~/.local/bin** needs to be in your PATH."
-msgstr ""
-"Sólo para el usuario actual. **~/.local/bin** necesita estar en su PATH."
+msgstr "Sólo para el usuario actual. **~/.local/bin** necesita estar en su PATH."
 
-#: ../../create_localized_help.py:86
+#: ../../create_localized_help.py:112
 msgid "For all users without overwriting the installed version."
 msgstr "Para todos los usuarios sin sobre-escribir la versión instalada."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:94
-msgid ""
-"Option 2. From Git - [More details](https://github.com/soimort/translate-"
-"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
-"hackers)"
-msgstr ""
-"Opción 2. Desde Git - [Más detalles](https://github.com/soimort/translate-"
-"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
-"hackers)"
+#: ../../create_localized_help.py:120
+msgid "Option 2. From Git - [More details](https://github.com/soimort/translate-shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-hackers)"
+msgstr "Opción 2. Desde Git - [Más detalles](https://github.com/soimort/translate-shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-hackers)"
 
-#: ../../create_localized_help.py:95
-msgid ""
-"This method will not just install the trans script but also its man pages. "
-"Refer to the link above for more installation details."
-msgstr ""
-"Este método no sólo instalará el script **trans**, sino también sus páginas "
-"man. Consultar el enlace anterior para obtener más detalles sobre la "
-"instalación."
+#: ../../create_localized_help.py:121
+msgid "This method will not just install the trans script but also its man pages. Refer to the link above for more installation details."
+msgstr "Este método no sólo instalará el script **trans**, sino también sus páginas man. Consultar el enlace anterior para obtener más detalles sobre la instalación."
 
-#: ../../create_localized_help.py:105
+#: ../../create_localized_help.py:130
 msgid "Extension usage"
 msgstr "Uso de la extensión"
 
-#: ../../create_localized_help.py:106
+#: ../../create_localized_help.py:131
 msgid "Once installed and enabled, the following shortcuts will be available."
-msgstr ""
-"Una vez instalada y activada, los siguientes atajos de teclado estarán "
-"disponibles."
+msgstr "Una vez instalada y activada, los siguientes atajos de teclado estarán disponibles."
 
-#: ../../create_localized_help.py:107
+#: ../../create_localized_help.py:132
 msgid "Global shortcuts (configurable from the extension settings)"
 msgstr "Atajos globales (Configurable desde las preferencias de la extensión)"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:109
+#: ../../create_localized_help.py:134
 msgid "**[[Super]] + [[T]]:** Open translator dialog."
 msgstr "**[[Súper]] + [[T]]:** Abre el diálogo de traducción."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:111
-msgid ""
-"**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text "
-"from clipboard."
-msgstr ""
-"**[[Súper]] + [[Shift]] + [[T]]:** Abre el diálogo de traducción y traduce "
-"el texto desde el porta papeles."
+#: ../../create_localized_help.py:136
+msgid "**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text from clipboard."
+msgstr "**[[Súper]] + [[Shift]] + [[T]]:** Abre el diálogo de traducción y traduce el texto desde el porta papeles."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:113
-msgid ""
-"**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from "
-"primary selection."
-msgstr ""
-"**[[Súper]] + [[Alt]] + [[T]]:** Abre el diálogo de traducción y traduce el "
-"texto desde la selección primaria."
+#: ../../create_localized_help.py:138
+msgid "**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from primary selection."
+msgstr "**[[Súper]] + [[Alt]] + [[T]]:** Abre el diálogo de traducción y traduce el texto desde la selección primaria."
 
-#: ../../create_localized_help.py:115
+#: ../../create_localized_help.py:140
 msgid "Shortcuts available on the translation dialog"
 msgstr "Atajos disponibles en el diálogo de traducción"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:117
+#: ../../create_localized_help.py:142
 msgid "**[[Ctrl]] + [[Enter]]:** Translate text."
 msgstr "**[[Ctrl]] + [[Enter]]:** Traduce el texto."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:119
-msgid ""
-"**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation "
-"history."
-msgstr ""
-"**[[Shift]] + [[Enter]]:** Fuerza la traducción de texto. Ignora el "
-"historial de traducción."
+#: ../../create_localized_help.py:144
+msgid "**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation history."
+msgstr "**[[Shift]] + [[Enter]]:** Fuerza la traducción de texto. Ignora el historial de traducción."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:121
+#: ../../create_localized_help.py:146
 msgid "**[[Ctrl]] + [[Shift]] + [[C]]:** Copy translated text to clipboard."
-msgstr ""
-"**[[Ctrl]] + [[Shift]] + [[C]]:** Copia el texto traducido al porta papeles."
+msgstr "**[[Ctrl]] + [[Shift]] + [[C]]:** Copia el texto traducido al porta papeles."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:123
+#: ../../create_localized_help.py:148
 msgid "**[[Ctrl]] + [[S]]:** Swap languages."
 msgstr "**[[Ctrl]] + [[S]]:** Cambia idiomas."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:125
+#: ../../create_localized_help.py:150
 msgid "**[[Ctrl]] + [[D]]:** Reset languages to default."
 msgstr "**[[Ctrl]] + [[D]]:** Restablece los idiomas predeterminados."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:127
+#: ../../create_localized_help.py:152
 msgid "**[[Escape]]:** Close dialog."
 msgstr "**[[Escape]]:** Cierra el diálogo."
 
-#: ../../create_localized_help.py:130
+#: ../../create_localized_help.py:154
 msgid "Extension's settings window"
 msgstr "Ventana de preferencias de la extensión"
 
-#: ../../create_localized_help.py:131
-msgid ""
-"From this extension settings window, all options can be imported, exported "
-"and/or reseted to their defaults."
-msgstr ""
-"Desde la ventana de preferencias de la extensión, todas las opciones pueden "
-"ser importadas, exportadas y/o restablecidas a sus valores por defecto."
+#: ../../create_localized_help.py:155
+msgid "From this extension settings window, all options can be imported, exported and/or reseted to their defaults."
+msgstr "Desde la ventana de preferencias de la extensión, todas las opciones pueden ser importadas, exportadas y/o restablecidas a sus valores por defecto."
 
-#: ../../create_localized_help.py:133
-msgid ""
-"To be able to perform any of these actions, the settings schema needs to be "
-"installed in the system. This is done automatically when the extension is "
-"installed from the Cinnamon extensions manager. But if the extension was "
-"installed manually, the settings schema also needs to be installed manually. "
-"This is achieved by simply going to the extension folder and launch the "
-"following command:"
-msgstr ""
-"Para poder realizar cualquiera de estas tareas, el esquema de las "
-"preferencias necesita estar instalado en el sistema. Esto es realizado "
-"automáticamente cuando la extensión es instalada desde el administrador de "
-"extensiones de Cinnamon. Pero si la extensión fue instalada manualmente, el "
-"esquema de las preferencias necesita ser instalado manualmente. Esto se "
-"logra simplemente con ir a la carpeta de la extensión y ejecutar el "
-"siguiente comando:"
+#: ../../create_localized_help.py:157
+msgid "To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:"
+msgstr "Para poder realizar cualquiera de estas tareas, el esquema de las preferencias necesita estar instalado en el sistema. Esto es realizado automáticamente cuando la extensión es instalada desde el administrador de extensiones de Cinnamon. Pero si la extensión fue instalada manualmente, el esquema de las preferencias necesita ser instalado manualmente. Esto se logra simplemente con ir a la carpeta de la extensión y ejecutar el siguiente comando:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:135
+#: ../../create_localized_help.py:159
 msgid "Command to install the settings schema:"
 msgstr "Comando para instalar el esquema de preferencias:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:138
+#: ../../create_localized_help.py:162
 msgid "Command to uninstall the settings schema:"
 msgstr "Comando para desinstalar el esquema de preferencias:"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:141
-msgid ""
-"To import/export settings, the **dconf** command needs to be available on "
-"the system."
-msgstr ""
-"Para importar/exportar preferencias, el comando **dconf** necesita estar "
-"disponible en el sistema."
-
-#: ../../create_localized_help.py:164
-msgid "The following two sections are available only in English."
-msgstr "Las siguientes dos secciones están disponibles sólo en Inglés."
+#: ../../create_localized_help.py:165
+msgid "To import/export settings, the **dconf** command needs to be available on the system."
+msgstr "Para importar/exportar preferencias, el comando **dconf** necesita estar disponible en el sistema."
 
 #. TO TRANSLATORS: This is a placeholder.
 #. Here goes your language name in your own language (a.k.a. endonym).
-#: ../../create_localized_help.py:189 ../../create_localized_help.py:261
+#: ../../create_localized_help.py:227 ../../create_localized_help.py:318
 msgid "language-name"
 msgstr "Español"
 
-#: ../../create_localized_help.py:264 settings.py:1385 __init__.js:3456
+#: ../../create_localized_help.py:233
+msgid "The following two sections are available only in English."
+msgstr "Las siguientes dos secciones están disponibles sólo en Inglés."
+
+#: ../../create_localized_help.py:237
+msgid "Do not install on any other version of Cinnamon."
+msgstr "No instalar en ninguna otra versión de Cinnamon."
+
+#: ../../create_localized_help.py:243
+msgid "Compatibility"
+msgstr "Copatibilidad"
+
+#: ../../create_localized_help.py:321 settings.py:1385 __init__.js:3456
 msgid "Help"
 msgstr "Ayuda"
 
-#: ../../create_localized_help.py:265
+#: ../../create_localized_help.py:322
 msgid "Contributors"
 msgstr "Colaboradores"
 
-#: ../../create_localized_help.py:266
+#: ../../create_localized_help.py:323
 msgid "Changelog"
 msgstr "Registro de cambios"
 
-#: ../../create_localized_help.py:267
-msgid "Choose language"
-msgstr "Elegir idioma"
-
 #. TO TRANSLATORS: Full sentence:
 #. "Help for <xlet_name>"
-#: ../../create_localized_help.py:268 ../../create_localized_help.py:275
+#: ../../create_localized_help.py:324 ../../create_localized_help.py:331
 #, python-format
 msgid "Help for %s"
 msgstr "Ayuda para %s"
 
-#: ../../create_localized_help.py:276
+#: ../../create_localized_help.py:332
 msgid "IMPORTANT!!!"
 msgstr "¡IMPORTANTE!"
 
-#: ../../create_localized_help.py:277
-msgid ""
-"Never delete any of the files found inside this xlet folder. It might break "
-"this xlet functionality."
-msgstr ""
-"Jamás borrar ninguno de los archivos encontrados dentro de la carpeta de "
-"este xlet. Podría romper la funcionalidad del xlet."
+#: ../../create_localized_help.py:333
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
+msgstr "Jamás borrar ninguno de los archivos encontrados dentro de la carpeta de este xlet. Podría romper la funcionalidad del xlet."
 
-#: ../../create_localized_help.py:278
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked next."
-msgstr ""
-"Los reportes de fallos, peticiones de características y contribuciones deben "
-"hacerse en el repositorio de este xlet vinculado a continuación."
+#. 0dyseus@MultiTranslatorExtension->metadata.json->comments
+#: ../../create_localized_help.py:334
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
+msgstr "Los reportes de fallos, peticiones de características y contribuciones deben hacerse en el repositorio de este xlet vinculado a continuación."
 
-#: ../../create_localized_help.py:284
+#: ../../create_localized_help.py:340
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
-msgstr ""
-"Localización de applets/desklets/extensiones (también conocidos como xlets)"
+msgstr "Localización de applets/desklets/extensiones (también conocidos como xlets)"
 
-#: ../../create_localized_help.py:285
-msgid ""
-"If this xlet was installed from Cinnamon Settings, all of this xlet's "
-"localizations were automatically installed."
-msgstr ""
-"Si este xlet se instaló desde Configuración de Cinnamon, todas las "
-"localizaciones de este xlet se instalaron automáticamente."
+#: ../../create_localized_help.py:341
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
+msgstr "Si este xlet se instaló desde Configuración de Cinnamon, todas las localizaciones de este xlet se instalaron automáticamente."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:287
-msgid ""
-"If this xlet was installed manually and not trough Cinnamon Settings, "
-"localizations can be installed by executing the script called "
-"**localizations.sh** from a terminal opened inside the xlet's folder."
-msgstr ""
-"Si este xlet se instaló manualmente y no a través de Configuración de "
-"Cinnamon, las localizaciones se pueden instalar ejecutando el archivo "
-"llamado **localizations.sh** desde una terminal abierta dentro de la carpeta "
-"del xlet."
+#: ../../create_localized_help.py:343
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr "Si este xlet se instaló manualmente y no a través de Configuración de Cinnamon, las localizaciones se pueden instalar ejecutando el archivo llamado **localizations.sh** desde una terminal abierta dentro de la carpeta del xlet."
 
-#: ../../create_localized_help.py:288
-msgid ""
-"If this xlet has no locale available for your language, you could create it "
-"by following the following instructions."
-msgstr ""
-"Si este xlet no está disponible en su idioma, la localización puede ser "
-"creada siguiendo las siguientes instrucciones."
+#: ../../create_localized_help.py:344
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
+msgstr "Si este xlet no está disponible en su idioma, la localización puede ser creada siguiendo las siguientes instrucciones."
 
 #: extensionHelper.py:271
 msgid "Multi Translator history"
@@ -826,9 +736,7 @@ msgstr "Seleccionar el proveedor de traducción predeterminado."
 
 #: settings.py:192
 msgid "Providers marked with (*) require translate-shell package to work."
-msgstr ""
-"Los proveedores marcados con (*) requieren el paquete de translate-shell "
-"para trabajar."
+msgstr "Los proveedores marcados con (*) requieren el paquete de translate-shell para trabajar."
 
 #: settings.py:193 __init__.js:3553
 msgid "See the extended help of this extension for more information."
@@ -847,13 +755,8 @@ msgid "Keep source entry text selected"
 msgstr "Mantener el texto de entrada de origen seleccionado"
 
 #: settings.py:215
-msgid ""
-"Keep source entry text selected whenever the translation dialog is opened "
-"and the source entry box contains text."
-msgstr ""
-"Mantener el texto del cuadro de entrada de origen seleccionado siempre que "
-"se abra el cuadro de diálogo de traducción y el cuadro de entrada de origen "
-"contenga texto."
+msgid "Keep source entry text selected whenever the translation dialog is opened and the source entry box contains text."
+msgstr "Mantener el texto del cuadro de entrada de origen seleccionado siempre que se abra el cuadro de diálogo de traducción y el cuadro de entrada de origen contenga texto."
 
 #: settings.py:221
 msgid "Show most used languages"
@@ -869,8 +772,7 @@ msgstr "Sincronizar las entradas de desplazamiento"
 
 #: settings.py:229
 msgid "Make the source and target entries scroll synchronously."
-msgstr ""
-"Hacer que las entradas de origen y destino se desplacen de forma síncrona."
+msgstr "Hacer que las entradas de origen y destino se desplacen de forma síncrona."
 
 #: settings.py:235
 msgid "Enable shortcuts"
@@ -898,9 +800,7 @@ msgstr "Traductores"
 
 #: settings.py:255
 msgid "Set default settings for each available translation service"
-msgstr ""
-"Establecer la configuración predeterminada para cada servicio de traducción "
-"disponible"
+msgstr "Establecer la configuración predeterminada para cada servicio de traducción disponible"
 
 #: settings.py:266
 msgid "Appearance"
@@ -940,9 +840,7 @@ msgstr "Tamaño de fuente"
 
 #: settings.py:306
 msgid "Select a font size for the source text and target text entries."
-msgstr ""
-"Seleccionar tamaño de fuente para las entradas de texto de origen y de texto "
-"de destino."
+msgstr "Seleccionar tamaño de fuente para las entradas de texto de origen y de texto de destino."
 
 #: settings.py:310 settings.py:371 settings.py:381 settings.py:392
 msgid "pixels"
@@ -954,9 +852,7 @@ msgstr "Porcentaje de ancho de pantalla"
 
 #: settings.py:317
 msgid "What percentage of screen width should the translation dialog fill."
-msgstr ""
-"¿Qué porcentaje de ancho de pantalla debe llenar el cuadro de diálogo de "
-"traducción?"
+msgstr "¿Qué porcentaje de ancho de pantalla debe llenar el cuadro de diálogo de traducción?"
 
 #: settings.py:321 settings.py:332
 msgid "percentage"
@@ -968,9 +864,7 @@ msgstr "Porcentaje de altura de la pantalla"
 
 #: settings.py:328
 msgid "What percentage of screen height should the translation dialog fill."
-msgstr ""
-"¿Qué porcentaje de altura de pantalla debe llenar el cuadro de diálogo de "
-"traducción?"
+msgstr "¿Qué porcentaje de altura de pantalla debe llenar el cuadro de diálogo de traducción?"
 
 #: settings.py:339 __init__.js:2713 extension.js:1096 extension.js:1099
 msgid "History"
@@ -987,14 +881,10 @@ msgstr "Marca de tiempo para las entradas del historial"
 #: settings.py:347
 msgid ""
 "Timestamp format for the translation history entries.\n"
-"Note: After changing this setting, only new entries in the translation "
-"history will be saved with the new timestamp format. Old entries will still "
-"have the previous timestamp format."
+"Note: After changing this setting, only new entries in the translation history will be saved with the new timestamp format. Old entries will still have the previous timestamp format."
 msgstr ""
 "Formato de fecha y hora para las entradas del historial de traducción.\n"
-"Nota: Después de cambiar este ajuste, sólo las nuevas entradas en el "
-"historial de traducción se guardarán con el nuevo formato. Las entradas "
-"antiguas seguirán teniendo el formato de marca de hora anterior."
+"Nota: Después de cambiar este ajuste, sólo las nuevas entradas en el historial de traducción se guardarán con el nuevo formato. Las entradas antiguas seguirán teniendo el formato de marca de hora anterior."
 
 #: settings.py:351
 msgid "European"
@@ -1016,8 +906,7 @@ msgid ""
 "mm: minutes\n"
 "ss: seconds"
 msgstr ""
-"Elijir una marca de tiempo personalizada para las entradas del historial de "
-"traducción.\n"
+"Elijir una marca de tiempo personalizada para las entradas del historial de traducción.\n"
 "YYYY: año\n"
 "MM: mes\n"
 "DD: día\n"
@@ -1038,12 +927,8 @@ msgid "Width to trigger word wrap"
 msgstr "Ancho para activar el ajuste de palabras"
 
 #: settings.py:388
-msgid ""
-"The \"Source text\" and \"Target text\" columns on the history window will "
-"wrap its text at the width defined by this setting."
-msgstr ""
-"Las columnas \"Texto de origen\" y \"Texto de destino\" de la ventana del "
-"historial contendrán el texto con el ancho definido por esta configuración."
+msgid "The \"Source text\" and \"Target text\" columns on the history window will wrap its text at the width defined by this setting."
+msgstr "Las columnas \"Texto de origen\" y \"Texto de destino\" de la ventana del historial contendrán el texto con el ancho definido por esta configuración."
 
 #: settings.py:399
 msgid "Advanced"
@@ -1060,13 +945,10 @@ msgstr "Claves de la API de Yandex"
 #: settings.py:408
 msgid ""
 "Enter one API key per line.\n"
-"Read the help file found inside this extension folder to know how to get "
-"free Yandex API keys."
+"Read the help file found inside this extension folder to know how to get free Yandex API keys."
 msgstr ""
 "Introduzca una clave de API por línea.\n"
-"Lea el archivo de ayuda (elemento Ayuda en el menú contextual de esta "
-"extensión) que se encuentra dentro de la carpeta de este applet para saber "
-"cómo obtener las claves de API gratuitas de Yandex."
+"Lea el archivo de ayuda (elemento Ayuda en el menú contextual de esta extensión) que se encuentra dentro de la carpeta de este applet para saber cómo obtener las claves de API gratuitas de Yandex."
 
 #: settings.py:413
 msgid "This options are only useful for the extension developer."
@@ -1077,12 +959,8 @@ msgid "Enable logging"
 msgstr "Habilitar el registro"
 
 #: settings.py:422
-msgid ""
-"It enables the ability to log the output of several functions used by the "
-"extension."
-msgstr ""
-"Permite la capacidad de registrar la salida de varias funciones utilizadas "
-"por el applet."
+msgid "It enables the ability to log the output of several functions used by the extension."
+msgstr "Permite la capacidad de registrar la salida de varias funciones utilizadas por el applet."
 
 #: settings.py:428
 msgid "Indent translation history data"
@@ -1213,39 +1091,26 @@ msgstr "Archivos DCONF"
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1534
 #, python-format
-msgid ""
-"Please enter your password to install the required settings schema for %s"
-msgstr ""
-"Por favor, introduzca su contraseña para instalar el esquema de "
-"configuración necesario para %s"
+msgid "Please enter your password to install the required settings schema for %s"
+msgstr "Por favor, introduzca su contraseña para instalar el esquema de configuración necesario para %s"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1545
 #, python-format
-msgid ""
-"Could not install the settings schema for %s.  You will have to perform this "
-"step yourself."
-msgstr ""
-"No se ha podido instalar el esquema de configuración para %s. Tendrá que "
-"realizar este paso usted mismo."
+msgid "Could not install the settings schema for %s.  You will have to perform this step yourself."
+msgstr "No se ha podido instalar el esquema de configuración para %s. Tendrá que realizar este paso usted mismo."
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1551
 #, python-format
 msgid "Please enter your password to remove the settings schema for %s"
-msgstr ""
-"Por favor, introduzca su contraseña para eliminar el esquema de "
-"configuración para %s"
+msgstr "Por favor, introduzca su contraseña para eliminar el esquema de configuración para %s"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1562
 #, python-format
-msgid ""
-"Could not remove the settings schema for %s.  You will have to perform this "
-"step yourself.  This is not a critical error."
-msgstr ""
-"No se pudo eliminar el esquema de configuración para %s. Tendrá que realizar "
-"este paso usted mismo. Esto no es un error crítico."
+msgid "Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error."
+msgstr "No se pudo eliminar el esquema de configuración para %s. Tendrá que realizar este paso usted mismo. Esto no es un error crítico."
 
 #: __init__.js:457
 #, javascript-format
@@ -1270,8 +1135,7 @@ msgstr "Abrir diálogo del traductor."
 
 #: __init__.js:1265
 msgid "Open translator dialog and translate text from clipboard."
-msgstr ""
-"Abra el diálogo del traductor y traducir el texto desde el portapapeles."
+msgstr "Abra el diálogo del traductor y traducir el texto desde el portapapeles."
 
 #: __init__.js:1267
 msgid "Open translator dialog and translate from primary selection."
@@ -1314,9 +1178,7 @@ msgstr "Idiomas más utilizados."
 msgid "Can't load preferences for %s"
 msgstr "No se pueden cargar las preferencias de %s"
 
-#: __init__.js:2239 translation_providers/google_translation_provider.js:76
-#: translation_providers/transltr_translation_provider.js:66
-#: translation_providers/yandex_translation_provider.js:272
+#: __init__.js:2239 translation_providers/google_translation_provider.js:76 translation_providers/transltr_translation_provider.js:66 translation_providers/yandex_translation_provider.js:272
 msgid "Error"
 msgstr "Error"
 
@@ -1333,11 +1195,9 @@ msgstr "Error al ejecutar translate-shell"
 msgid "Unmet dependencies found!!!"
 msgstr "¡Dependencias no satisfechas encontradas!"
 
-#: __init__.js:3435 __init__.js:3452
-#: translation_providers/yandex_translation_provider.js:334
+#: __init__.js:3435 __init__.js:3452 translation_providers/yandex_translation_provider.js:334
 msgid "Check this extension help file for instructions."
-msgstr ""
-"Comprobar el archivo de ayuda de esta extensión para obtener instrucciones."
+msgstr "Comprobar el archivo de ayuda de esta extensión para obtener instrucciones."
 
 #: __init__.js:3436
 msgid "It can be accessed from the translation dialog main menu."
@@ -1348,11 +1208,8 @@ msgid "All dependencies seem to be met."
 msgstr "Todas las dependencias parecen ser cumplidas."
 
 #: __init__.js:3453
-msgid ""
-"This information has also been logged into the ~/.cinnamon/glass.log file."
-msgstr ""
-"Esta información también ha sido registrada en el archivo ~/.cinnamon/glass."
-"log."
+msgid "This information has also been logged into the ~/.cinnamon/glass.log file."
+msgstr "Esta información también ha sido registrada en el archivo ~/.cinnamon/glass.log."
 
 #. Just in case.
 #: __init__.js:3457 extension.js:589
@@ -1365,8 +1222,7 @@ msgstr "Presione <Esc> para cerrar"
 
 #: __init__.js:3549
 msgid "This translation provider doesn't require translate-shell to work."
-msgstr ""
-"Este proveedor de traducción no requiere translate-shell para trabajar."
+msgstr "Este proveedor de traducción no requiere translate-shell para trabajar."
 
 #: __init__.js:3552
 msgid "This translation provider requires translate-shell to work."
@@ -1476,21 +1332,15 @@ msgstr "Error de análisis de hoja de estilo"
 msgid "Error unloading stylesheet"
 msgstr "Error al descargar la hoja de estilos"
 
-#: translation_providers/apertium_ts_translation_provider.js:87
-#: translation_providers/bing_ts_translation_provider.js:87
-#: translation_providers/google_ts_translation_provider.js:88
+#: translation_providers/apertium_ts_translation_provider.js:87 translation_providers/bing_ts_translation_provider.js:87 translation_providers/google_ts_translation_provider.js:88
 msgid "Error while parsing data"
 msgstr "Error al analizar datos"
 
-#: translation_providers/apertium_ts_translation_provider.js:120
-#: translation_providers/bing_ts_translation_provider.js:121
-#: translation_providers/google_ts_translation_provider.js:122
+#: translation_providers/apertium_ts_translation_provider.js:120 translation_providers/bing_ts_translation_provider.js:121 translation_providers/google_ts_translation_provider.js:122
 msgid "Error while translating, check your internet connection"
 msgstr "Error al traducir, comprobar conexión a Internet"
 
-#: translation_providers/google_translation_provider.js:81
-#: translation_providers/transltr_translation_provider.js:71
-#: translation_providers/yandex_translation_provider.js:277
+#: translation_providers/google_translation_provider.js:81 translation_providers/transltr_translation_provider.js:71 translation_providers/yandex_translation_provider.js:277
 msgid "Can't translate text, please try later."
 msgstr "No se puede traducir texto, intente más tarde."
 
@@ -1523,48 +1373,30 @@ msgid "No Yandex API keys were found!!!"
 msgstr "¡No se encontraron claves de API de Yandex!"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->description
-msgid ""
-"Translation of text by different translation providers (currently Google, "
-"Yandex, Bing and Apertium)."
-msgstr ""
-"Traducción de texto proporcionado por diferentes proveedores de traducción "
-"(actualmente Google, Yandex, Bing, Translatr and Apertium)."
+msgid "Translation of text by different translation providers (currently Google, Yandex, Bing and Apertium)."
+msgstr "Traducción de texto proporcionado por diferentes proveedores de traducción (actualmente Google, Yandex, Bing, Translatr and Apertium)."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
 msgid "See this xlet help file."
 msgstr "Ver el archivo de ayuda de este xlet."
 
-#. 0dyseus@MultiTranslatorExtension->metadata.json->comments
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked below."
-msgstr ""
-"Los reportes de fallos, peticiones de características y contribuciones deben "
-"hacerse en el repositorio de este xlet vinculado a continuación."
+#~ msgid "Choose language"
+#~ msgstr "Elegir idioma"
+
+#~ msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked below."
+#~ msgstr "Los reportes de fallos, peticiones de características y contribuciones deben hacerse en el repositorio de este xlet vinculado a continuación."
 
 #~ msgid "Read CONTRIBUTORS.md file inside this xlet folder."
 #~ msgstr "Leer el archivo CONTRIBUTORS.md dentro de la carpeta de este xlet."
 
-#~ msgid ""
-#~ "awamper: Original author of Text Translator gnome-shell extension https://"
-#~ "github.com/awamper/text-translator."
-#~ msgstr ""
-#~ "awamper: Autor original de la extensión Text Translator para gnome-shell "
-#~ "https://github.com/awamper/text-translator."
+#~ msgid "awamper: Original author of Text Translator gnome-shell extension https://github.com/awamper/text-translator."
+#~ msgstr "awamper: Autor original de la extensión Text Translator para gnome-shell https://github.com/awamper/text-translator."
 
-#~ msgid ""
-#~ "gufoe: Author of the newer version of Text Translator gnome-shell "
-#~ "extension https://github.com/gufoe/text-translator."
-#~ msgstr ""
-#~ "gufoe: Autor de la nueva versión de la extensión Text Translator https://"
-#~ "github.com/gufoe/text-translator."
+#~ msgid "gufoe: Author of the newer version of Text Translator gnome-shell extension https://github.com/gufoe/text-translator."
+#~ msgstr "gufoe: Autor de la nueva versión de la extensión Text Translator https://github.com/gufoe/text-translator."
 
-#~ msgid ""
-#~ "soimort: Author of the translate-shell script https://github.com/soimort/"
-#~ "translate-shell."
-#~ msgstr ""
-#~ "soimort: Autor del script translate-shell https://github.com/soimort/"
-#~ "translate-shell."
+#~ msgid "soimort: Author of the translate-shell script https://github.com/soimort/translate-shell."
+#~ msgstr "soimort: Autor del script translate-shell https://github.com/soimort/translate-shell."
 
 #~ msgid "muzena: Croatian localization https://github.com/muzena."
 #~ msgstr "muzena: Localización Croata https://github.com/muzena."
@@ -1572,12 +1404,8 @@ msgstr ""
 #~ msgid "giwhub: Chinese localization https://github.com/giwhub."
 #~ msgstr "giwhub: Localización China https://github.com/giwhub."
 
-#~ msgid ""
-#~ "Radek71: Czech localization and author of Thunderbolt theme https://"
-#~ "github.com/Radek71."
-#~ msgstr ""
-#~ "Radek71: Localización Checa y autor del tema Thunderbolt https://github."
-#~ "com/Radek71."
+#~ msgid "Radek71: Czech localization and author of Thunderbolt theme https://github.com/Radek71."
+#~ msgstr "Radek71: Localización Checa y autor del tema Thunderbolt https://github.com/Radek71."
 
 #~ msgid "NikoKrause: German localization https://github.com/NikoKrause."
 #~ msgstr "NikoKrause: Localización alemana https://github.com/NikoKrause."
@@ -1592,8 +1420,7 @@ msgstr ""
 #~ msgstr "Este error"
 
 #~ msgid "A detailed error has been logged into ~/.cinnamon/glass.log file."
-#~ msgstr ""
-#~ "Se ha registrado un error detallado en el archivo ~/.cinnamon/glass.log."
+#~ msgstr "Se ha registrado un error detallado en el archivo ~/.cinnamon/glass.log."
 
 #~ msgid "Cinnamon Tweaks"
 #~ msgstr "Ajustes de Cinnamon"
@@ -1602,11 +1429,7 @@ msgstr ""
 #~ msgstr "Preferencias de la extensión Multi Translator"
 
 #~ msgid "Warning: Trying to reset all Multi Translator settings!!!"
-#~ msgstr ""
-#~ "Advertencia: ¡¡¡Se está intentando restablecer todos los ajustes de Multi "
-#~ "Translator!!!"
+#~ msgstr "Advertencia: ¡¡¡Se está intentando restablecer todos los ajustes de Multi Translator!!!"
 
 #~ msgid "Reset all Multi Translator settings to default?"
-#~ msgstr ""
-#~ "Restablecer todos los valores de Multi Translator a los valores "
-#~ "predeterminados?"
+#~ msgstr "Restablecer todos los valores de Multi Translator a los valores predeterminados?"
