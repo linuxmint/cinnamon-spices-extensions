@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@WindowDemandsAttentionBehavior 1.02\n"
+"Project-Id-Version: 0dyseus@WindowDemandsAttentionBehavior 1.04\n"
+"Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
 "POT-Creation-Date: 2017-06-08 19:11+0200\n"
 "PO-Revision-Date: 2017-06-08 19:18+0200\n"
-"Language-Team: \n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: Danish\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: make-xlet-pot.py 1.0.32\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: da\n"
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_activation_mode->options
 msgid "Force windows demanding attention activation."
@@ -44,9 +45,7 @@ msgstr "Se denne udvidelses hjælpfil."
 
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->description
 msgid "Activate demanding attention window with a keyboard shortcut or forced."
-msgstr ""
-"Aktivér vinduer, som kræver opmærksomhed, med en tastaturgenvej eller "
-"gennemtvunget."
+msgstr "Aktivér vinduer, som kræver opmærksomhed, med en tastaturgenvej eller gennemtvunget."
 
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->name
 msgid "Window demands attention behavior"
@@ -90,48 +89,26 @@ msgid "IMPORTANT!!!"
 msgstr "VIGTIGT!!!"
 
 #: ../../create_localized_help.py:203
-msgid ""
-"Never delete any of the files found inside this xlet folder. It might break "
-"this xlet functionality."
-msgstr ""
-"Slet aldrig nogen af filerne i denne udvidelses mappe. Det kan ødelægge "
-"udvidelsens funktionalitet."
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
+msgstr "Slet aldrig nogen af filerne i denne udvidelses mappe. Det kan ødelægge udvidelsens funktionalitet."
 
 #: ../../create_localized_help.py:204
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked next."
-msgstr ""
-"Fejlrapporter, forslag til nye funktioner og bidrag bør ske i denne "
-"udvidelses arkiv, som der er linket til efterfølgende."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
+msgstr "Fejlrapporter, forslag til nye funktioner og bidrag bør ske i denne udvidelses arkiv, som der er linket til efterfølgende."
 
 #: ../../create_localized_help.py:210
 msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr "Oversættelser af panelprogrammer, skrivebordsprogrammer og udvidelser"
 
 #: ../../create_localized_help.py:211
-msgid ""
-"If this xlet was installed from Cinnamon Settings, all of this xlet's "
-"localizations were automatically installed."
-msgstr ""
-"Hvis denne udvidelse blev installeret gennem Cinnamons indstillinger, blev "
-"alle oversættelser automatisk installeret."
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
+msgstr "Hvis denne udvidelse blev installeret gennem Cinnamons indstillinger, blev alle oversættelser automatisk installeret."
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:213
-msgid ""
-"If this xlet was installed manually and not trough Cinnamon Settings, "
-"localizations can be installed by executing the script called "
-"**localizations.sh** from a terminal opened inside the xlet's folder."
-msgstr ""
-"Hvis denne udvidelse blev installeret manuelt og ikke gennem Cinnamons "
-"indstillinger, kan alle oversættelser installeres ved at køre skriptet "
-"**localizations.sh** i en terminal åbnet i udvidelsens mappe."
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr "Hvis denne udvidelse blev installeret manuelt og ikke gennem Cinnamons indstillinger, kan alle oversættelser installeres ved at køre skriptet **localizations.sh** i en terminal åbnet i udvidelsens mappe."
 
 #: ../../create_localized_help.py:214
-msgid ""
-"If this xlet has no locale available for your language, you could create it "
-"by following the following instructions."
-msgstr ""
-"Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit "
-"sprog, kan du oprette en ved at følge de efterfølgende instruktioner."
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
+msgstr "Hvis der ikke er nogen oversættelse til denne udvidelse tilgængelig på dit sprog, kan du oprette en ved at følge de efterfølgende instruktioner."
