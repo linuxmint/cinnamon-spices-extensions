@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: MultiTranslatorExtension 1.00\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.06\n"
+"Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
 "POT-Creation-Date: 2017-05-13 20:35-0300\n"
 "PO-Revision-Date: 2017-05-08 13:33+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.js:211 settings.py:67
 msgid "Detect language"
@@ -513,9 +512,7 @@ msgstr "Najčešće korišteni jezici."
 msgid "Can't load preferences for %s"
 msgstr "Nemoguće učitavanje osobitosti za %s"
 
-#: __init__.js:2237 translation_providers/google_translation_provider.js:76
-#: translation_providers/transltr_translation_provider.js:66
-#: translation_providers/yandex_translation_provider.js:272
+#: __init__.js:2237 translation_providers/google_translation_provider.js:76 translation_providers/transltr_translation_provider.js:66 translation_providers/yandex_translation_provider.js:272
 msgid "Error"
 msgstr "Greška"
 
@@ -536,8 +533,7 @@ msgstr "Greška pokretanja translate-shell"
 msgid "Unmet dependencies found!!!"
 msgstr "Nerazrješive zavisnosti pronađene!!!"
 
-#: __init__.js:3433 __init__.js:3450
-#: translation_providers/yandex_translation_provider.js:334
+#: __init__.js:3433 __init__.js:3450 translation_providers/yandex_translation_provider.js:334
 msgid "Check this extension help file for instructions."
 msgstr "Provjerite datoteku pomoći ovog proširenja za daljnje upute."
 
@@ -550,8 +546,7 @@ msgid "All dependencies seem to be met."
 msgstr "Sve zavisnosti su zadovljene."
 
 #: __init__.js:3451
-msgid ""
-"This information has also been logged into the ~/.cinnamon/glass.log file."
+msgid "This information has also been logged into the ~/.cinnamon/glass.log file."
 msgstr "Opširniji zapis greške je zapisan u ~/.cinnamon/glass.log datoteku."
 
 #: __init__.js:3454 settings.py:1385
@@ -569,33 +564,25 @@ msgstr "Pritisnite <ESC> za zatvaranje"
 
 #: __init__.js:3547
 msgid "This translation provider doesn't require translate-shell to work."
-msgstr ""
-"Ovaj pružatelj usluge prevođenja ne zahtijeva translate-shell kako bi radio."
+msgstr "Ovaj pružatelj usluge prevođenja ne zahtijeva translate-shell kako bi radio."
 
 #: __init__.js:3550
 msgid "This translation provider requires translate-shell to work."
-msgstr ""
-"Ovaj pružatelj usluge prevođenja zahtijeva translate-shell kako bi radio."
+msgstr "Ovaj pružatelj usluge prevođenja zahtijeva translate-shell kako bi radio."
 
 #: __init__.js:3551 settings.py:193
 msgid "See the extended help of this extension for more information."
 msgstr "Pogledajte opširniju pomoć ovog proširenja za više informacija."
 
-#: translation_providers/google_ts_translation_provider.js:88
-#: translation_providers/apertium_ts_translation_provider.js:87
-#: translation_providers/bing_ts_translation_provider.js:87
+#: translation_providers/google_ts_translation_provider.js:88 translation_providers/apertium_ts_translation_provider.js:87 translation_providers/bing_ts_translation_provider.js:87
 msgid "Error while parsing data"
 msgstr "Greška obrade podataka."
 
-#: translation_providers/google_ts_translation_provider.js:122
-#: translation_providers/apertium_ts_translation_provider.js:120
-#: translation_providers/bing_ts_translation_provider.js:121
+#: translation_providers/google_ts_translation_provider.js:122 translation_providers/apertium_ts_translation_provider.js:120 translation_providers/bing_ts_translation_provider.js:121
 msgid "Error while translating, check your internet connection"
 msgstr "Greška pri prevođenju, provjerite svoj pristup intertnetu"
 
-#: translation_providers/google_translation_provider.js:81
-#: translation_providers/transltr_translation_provider.js:71
-#: translation_providers/yandex_translation_provider.js:277
+#: translation_providers/google_translation_provider.js:81 translation_providers/transltr_translation_provider.js:71 translation_providers/yandex_translation_provider.js:277
 msgid "Can't translate text, please try later."
 msgstr "Nemoguće prevođenje teksta, pokušajte kasnije."
 
@@ -790,9 +777,7 @@ msgstr "Odaberite zadanog pružatelja usluge prevođenja."
 
 #: settings.py:192
 msgid "Providers marked with (*) require translate-shell package to work."
-msgstr ""
-"Pružatelji usluge prevođenja označeni s (*) zahtijevaju translate-shell "
-"paket kako bi radili."
+msgstr "Pružatelji usluge prevođenja označeni s (*) zahtijevaju translate-shell paket kako bi radili."
 
 #: settings.py:207
 msgid "Remember last translator"
@@ -807,12 +792,8 @@ msgid "Keep source entry text selected"
 msgstr "Zadrži tekst izvora odabranim"
 
 #: settings.py:215
-msgid ""
-"Keep source entry text selected whenever the translation dialog is opened "
-"and the source entry box contains text."
-msgstr ""
-"Zadrži tekst izvora odabranim svaki puta kada je dijalog prevođenja otvoren "
-"i okvir izvora sadrži tekst."
+msgid "Keep source entry text selected whenever the translation dialog is opened and the source entry box contains text."
+msgstr "Zadrži tekst izvora odabranim svaki puta kada je dijalog prevođenja otvoren i okvir izvora sadrži tekst."
 
 #: settings.py:221
 msgid "Show most used languages"
@@ -933,14 +914,10 @@ msgstr "Vremenska oznaka za unose povijesti prevođenja"
 #: settings.py:347
 msgid ""
 "Timestamp format for the translation history entries.\n"
-"Note: After changing this setting, only new entries in the translation "
-"history will be saved with the new timestamp format. Old entries will still "
-"have the previous timestamp format."
+"Note: After changing this setting, only new entries in the translation history will be saved with the new timestamp format. Old entries will still have the previous timestamp format."
 msgstr ""
 "Vremenski format za unose povijesti prevođenja.\n"
-"Napomena: Nakon promjene ove postavke samo novi unosi u povijesti prevođenja "
-"će biti spremljeni u novom vremenskom formatu. Stari unosi će zadržati "
-"prijašnji vremenski format."
+"Napomena: Nakon promjene ove postavke samo novi unosi u povijesti prevođenja će biti spremljeni u novom vremenskom formatu. Stari unosi će zadržati prijašnji vremenski format."
 
 #: settings.py:351
 msgid "European"
@@ -983,12 +960,8 @@ msgid "Width to trigger word wrap"
 msgstr "Širina pokretanja prijeloma riječi"
 
 #: settings.py:388
-msgid ""
-"The \"Source text\" and \"Target text\" columns on the history window will "
-"wrap its text at the width defined by this setting."
-msgstr ""
-"Stupci \"Tekst izvora\" i \"Tekst prijevoda\" u prozoru povijesti će "
-"prelomiti tekst po širini određenoj u ovoj postavki."
+msgid "The \"Source text\" and \"Target text\" columns on the history window will wrap its text at the width defined by this setting."
+msgstr "Stupci \"Tekst izvora\" i \"Tekst prijevoda\" u prozoru povijesti će prelomiti tekst po širini određenoj u ovoj postavki."
 
 #: settings.py:399
 msgid "Advanced"
@@ -1005,12 +978,10 @@ msgstr "Yandex API ključevi"
 #: settings.py:408
 msgid ""
 "Enter one API key per line.\n"
-"Read the help file found inside this extension folder to know how to get "
-"free Yandex API keys."
+"Read the help file found inside this extension folder to know how to get free Yandex API keys."
 msgstr ""
 "Upišite jedan API ključ po redku.\n"
-"Pročitajte datoteku pomoći koja se nalazi u mapi proširenja kako bi saznali "
-"kako nabaviti Yandex API ključeve."
+"Pročitajte datoteku pomoći koja se nalazi u mapi proširenja kako bi saznali kako nabaviti Yandex API ključeve."
 
 #: settings.py:413
 msgid "This options are only useful for the extension developer."
@@ -1021,12 +992,8 @@ msgid "Enable logging"
 msgstr "Omogući zapisivanje"
 
 #: settings.py:422
-msgid ""
-"It enables the ability to log the output of several functions used by the "
-"extension."
-msgstr ""
-"Omogućuje mogućnost zapisivanja nekoliko izlaznih funkcija koje koristi "
-"proširenje."
+msgid "It enables the ability to log the output of several functions used by the extension."
+msgstr "Omogućuje mogućnost zapisivanja nekoliko izlaznih funkcija koje koristi proširenje."
 
 #: settings.py:428
 msgid "Indent translation history data"
@@ -1157,20 +1124,14 @@ msgstr "DCONF datoteke"
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1534
 #, python-format
-msgid ""
-"Please enter your password to install the required settings schema for %s"
-msgstr ""
-"Upišite svoju lozinku da biste instalirali potrebnu shemu postavki za %s"
+msgid "Please enter your password to install the required settings schema for %s"
+msgstr "Upišite svoju lozinku da biste instalirali potrebnu shemu postavki za %s"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1545
 #, python-format
-msgid ""
-"Could not install the settings schema for %s.  You will have to perform this "
-"step yourself."
-msgstr ""
-"Nemoguća instalacije sheme postavki za %s. Morat ćete obaviti ovaj korak "
-"sami."
+msgid "Could not install the settings schema for %s.  You will have to perform this step yourself."
+msgstr "Nemoguća instalacije sheme postavki za %s. Morat ćete obaviti ovaj korak sami."
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1551
@@ -1181,21 +1142,15 @@ msgstr "Upišite svoju lozinku da biste uklonili potrebnu shemu postavki za %s"
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1562
 #, python-format
-msgid ""
-"Could not remove the settings schema for %s.  You will have to perform this "
-"step yourself.  This is not a critical error."
-msgstr ""
-"Nemoguće je uklanjanje sheme postavki za %s. Morat ćete obaviti ovaj korak "
-"sami. Ovo nije kritična greška."
+msgid "Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error."
+msgstr "Nemoguće je uklanjanje sheme postavki za %s. Morat ćete obaviti ovaj korak sami. Ovo nije kritična greška."
 
 #: ../../create_localized_help.py:63
 msgid "Dependencies"
 msgstr ""
 
 #: ../../create_localized_help.py:64
-msgid ""
-"If one or more of these dependencies are missing in your system, you will "
-"not be able to use this extension."
+msgid "If one or more of these dependencies are missing in your system, you will not be able to use this extension."
 msgstr ""
 
 #: ../../create_localized_help.py:65
@@ -1203,9 +1158,7 @@ msgid "xsel command:"
 msgstr ""
 
 #: ../../create_localized_help.py:66
-msgid ""
-"XSel is a command-line program for getting and setting the contents of the X "
-"selection."
+msgid "XSel is a command-line program for getting and setting the contents of the X selection."
 msgstr ""
 
 #: ../../create_localized_help.py:67
@@ -1213,19 +1166,12 @@ msgid "trans command:"
 msgstr ""
 
 #: ../../create_localized_help.py:68
-msgid ""
-"Command provided by the package translate-shell. Is a simple command line "
-"interface for several translation providers (Google Translate, Yandex "
-"Translate, Bing Translate and Apertium) which allows you to translate "
-"strings in your terminal."
+msgid "Command provided by the package translate-shell. Is a simple command line interface for several translation providers (Google Translate, Yandex Translate, Bing Translate and Apertium) which allows you to translate strings in your terminal."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:70
-msgid ""
-"Check translate-shell [dependencies](https://github.com/soimort/translate-"
-"shell#dependencies) and [recommended dependencies](https://github.com/"
-"soimort/translate-shell#recommended-dependencies)."
+msgid "Check translate-shell [dependencies](https://github.com/soimort/translate-shell#dependencies) and [recommended dependencies](https://github.com/soimort/translate-shell#recommended-dependencies)."
 msgstr ""
 
 #: ../../create_localized_help.py:72
@@ -1233,11 +1179,7 @@ msgid "Note:"
 msgstr ""
 
 #: ../../create_localized_help.py:72
-msgid ""
-"The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x "
-"repositories is outdated and broken. It can be installed anyway so it will "
-"also install its dependencies. But updating to the latest version should be "
-"done as described bellow."
+msgid "The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x repositories is outdated and broken. It can be installed anyway so it will also install its dependencies. But updating to the latest version should be done as described bellow."
 msgstr ""
 
 #: ../../create_localized_help.py:74
@@ -1249,8 +1191,7 @@ msgid "Option 1. Direct Download"
 msgstr ""
 
 #: ../../create_localized_help.py:76
-msgid ""
-"This method will only install the trans script into the specified locations."
+msgid "This method will only install the trans script into the specified locations."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
@@ -1264,16 +1205,11 @@ msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:93
-msgid ""
-"Option 2. From Git - [More details](https://github.com/soimort/translate-"
-"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
-"hackers)"
+msgid "Option 2. From Git - [More details](https://github.com/soimort/translate-shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-hackers)"
 msgstr ""
 
 #: ../../create_localized_help.py:94
-msgid ""
-"This method will not just install the trans script but also its man pages. "
-"Refer to the link above for more installation details."
+msgid "This method will not just install the trans script but also its man pages. Refer to the link above for more installation details."
 msgstr ""
 
 #: ../../create_localized_help.py:104
@@ -1295,16 +1231,12 @@ msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:110
-msgid ""
-"**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text "
-"from clipboard."
+msgid "**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text from clipboard."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:112
-msgid ""
-"**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from "
-"primary selection."
+msgid "**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from primary selection."
 msgstr ""
 
 #: ../../create_localized_help.py:114
@@ -1318,9 +1250,7 @@ msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:118
-msgid ""
-"**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation "
-"history."
+msgid "**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation history."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
@@ -1348,19 +1278,11 @@ msgid "Extension's settings window"
 msgstr ""
 
 #: ../../create_localized_help.py:130
-msgid ""
-"From this extension settings window, all options can be imported, exported "
-"and/or reseted to their defaults."
+msgid "From this extension settings window, all options can be imported, exported and/or reseted to their defaults."
 msgstr ""
 
 #: ../../create_localized_help.py:132
-msgid ""
-"To be able to perform any of these actions, the settings schema needs to be "
-"installed in the system. This is done automatically when the extension is "
-"installed from the Cinnamon extensions manager. But if the extension was "
-"installed manually, the settings schema also needs to be installed manually. "
-"This is achieved by simply going to the extension folder and launch the "
-"following command:"
+msgid "To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:"
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
@@ -1375,9 +1297,7 @@ msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:138
-msgid ""
-"To import/export settings, the **dconf** command needs to be available on "
-"the system."
+msgid "To import/export settings, the **dconf** command needs to be available on the system."
 msgstr ""
 
 #. TO TRANSLATORS: This is a placeholder.
@@ -1402,15 +1322,11 @@ msgid "IMPORTANT!!!"
 msgstr ""
 
 #: ../../create_localized_help.py:248
-msgid ""
-"Never delete any of the files found inside this xlet folder. It might break "
-"this xlet functionality."
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
 msgstr ""
 
 #: ../../create_localized_help.py:249
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked next."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
 msgstr ""
 
 #: ../../create_localized_help.py:255
@@ -1418,56 +1334,33 @@ msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr ""
 
 #: ../../create_localized_help.py:256
-msgid ""
-"If this xlet was installed from Cinnamon Settings, all of this xlet's "
-"localizations were automatically installed."
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:258
-msgid ""
-"If this xlet was installed manually and not trough Cinnamon Settings, "
-"localizations can be installed by executing the script called "
-"**localizations.sh** from a terminal opened inside the xlet's folder."
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
 msgstr ""
 
 #: ../../create_localized_help.py:259
-msgid ""
-"If this xlet has no locale available for your language, you could create it "
-"by following the following instructions."
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->comments
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked below."
-msgstr ""
-"Izvještaji grešaka, zahtjevi novih značajki i doprinosi trebali bi biti "
-"podneseni na poveznici xlet repozitorija ispod."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked below."
+msgstr "Izvještaji grešaka, zahtjevi novih značajki i doprinosi trebali bi biti podneseni na poveznici xlet repozitorija ispod."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"awamper: Original author of Text Translator gnome-shell extension https://"
-"github.com/awamper/text-translator."
-msgstr ""
-"awamper: Izvorni autor Text Translator gnome-shell proširenja https://github."
-"com/awamper/text-translator."
+msgid "awamper: Original author of Text Translator gnome-shell extension https://github.com/awamper/text-translator."
+msgstr "awamper: Izvorni autor Text Translator gnome-shell proširenja https://github.com/awamper/text-translator."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"gufoe: Author of the newer version of Text Translator gnome-shell extension "
-"https://github.com/gufoe/text-translator."
-msgstr ""
-"gufoe: Autor novije inačice Text Translator gnome-shell proširenja https://"
-"github.com/gufoe/text-translator."
+msgid "gufoe: Author of the newer version of Text Translator gnome-shell extension https://github.com/gufoe/text-translator."
+msgstr "gufoe: Autor novije inačice Text Translator gnome-shell proširenja https://github.com/gufoe/text-translator."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"soimort: Author of the translate-shell script https://github.com/soimort/"
-"translate-shell."
-msgstr ""
-"soimort: Autor translate-shell skripte https://github.com/soimort/translate-"
-"shell."
+msgid "soimort: Author of the translate-shell script https://github.com/soimort/translate-shell."
+msgstr "soimort: Autor translate-shell skripte https://github.com/soimort/translate-shell."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
 msgid "muzena: Croatian localization https://github.com/muzena."
@@ -1478,24 +1371,16 @@ msgid "giwhub: Chinese localization https://github.com/giwhub."
 msgstr "giwhub: Kineska lokalizacija https://github.com/giwhub."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
-msgid ""
-"Radek71: Czech localization and author of Thunderbolt theme https://github."
-"com/Radek71."
-msgstr ""
-"Radek71: Češka lokalizacija i autor Thunderbolt teme https://github.com/"
-"Radek71."
+msgid "Radek71: Czech localization and author of Thunderbolt theme https://github.com/Radek71."
+msgstr "Radek71: Češka lokalizacija i autor Thunderbolt teme https://github.com/Radek71."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
 msgid "NikoKrause: German localization https://github.com/NikoKrause."
 msgstr "NikoKrause: Njemačka lokalizacija https://github.com/NikoKrause."
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->description
-msgid ""
-"Translation of text by different translation providers (currently Google, "
-"Yandex, Bing and Apertium)."
-msgstr ""
-"Prevođenje teksta pomoću raznih pružatelja usluge prevođenja (trenutno je "
-"podržan Google, Yandex, Bing i Apertium)."
+msgid "Translation of text by different translation providers (currently Google, Yandex, Bing and Apertium)."
+msgstr "Prevođenje teksta pomoću raznih pružatelja usluge prevođenja (trenutno je podržan Google, Yandex, Bing i Apertium)."
 
 #~ msgid "A detailed error has been logged into ~/.cinnamon/glass.log file."
 #~ msgstr "Opširniji zapis greške je zapisan u ~/.cinnamon/glass.log datoteku."

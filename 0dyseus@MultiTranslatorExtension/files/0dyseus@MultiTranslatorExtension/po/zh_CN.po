@@ -5,27 +5,25 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.00\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.06\n"
+"Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
 "POT-Creation-Date: 2017-06-04 19:48+0800\n"
 "PO-Revision-Date: 2017-06-04 19:48+0800\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: ../../create_localized_help.py:64
 msgid "Dependencies"
 msgstr "依赖关系"
 
 #: ../../create_localized_help.py:65
-msgid ""
-"If one or more of these dependencies are missing in your system, you will "
-"not be able to use this extension."
+msgid "If one or more of these dependencies are missing in your system, you will not be able to use this extension."
 msgstr "如果您的系统缺少其中一个或多个依赖，您将不能够使用该扩展。"
 
 #: ../../create_localized_help.py:66
@@ -33,9 +31,7 @@ msgid "xsel command:"
 msgstr "xsel命令："
 
 #: ../../create_localized_help.py:67
-msgid ""
-"XSel is a command-line program for getting and setting the contents of the X "
-"selection."
+msgid "XSel is a command-line program for getting and setting the contents of the X selection."
 msgstr "XSel是一个获取和设置X选择的内容的命令行程序。"
 
 #: ../../create_localized_help.py:68
@@ -43,41 +39,21 @@ msgid "trans command:"
 msgstr "trans命令："
 
 #: ../../create_localized_help.py:69
-msgid ""
-"Command provided by the package translate-shell. Is a simple command line "
-"interface for several translation providers (Google Translate, Yandex "
-"Translate, Bing Translate and Apertium) which allows you to translate "
-"strings in your terminal."
-msgstr ""
-"命令由软件包translate-shell提供。是几个翻译提供商（Google Translate、Yandex "
-"Translate、Bing Translate和Apertium）的简单命令行界面，允许您在终端中的翻译字"
-"符串。"
+msgid "Command provided by the package translate-shell. Is a simple command line interface for several translation providers (Google Translate, Yandex Translate, Bing Translate and Apertium) which allows you to translate strings in your terminal."
+msgstr "命令由软件包translate-shell提供。是几个翻译提供商（Google Translate、Yandex Translate、Bing Translate和Apertium）的简单命令行界面，允许您在终端中的翻译字符串。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:71
-msgid ""
-"Check translate-shell [dependencies](https://github.com/soimort/translate-"
-"shell#dependencies) and [recommended dependencies](https://github.com/"
-"soimort/translate-shell#recommended-dependencies)."
-msgstr ""
-"检查translate-shell[依赖](https://github.com/soimort/translate-"
-"shell#dependencies)和[推荐依赖](https://github.com/soimort/translate-"
-"shell#recommended-dependencies)。"
+msgid "Check translate-shell [dependencies](https://github.com/soimort/translate-shell#dependencies) and [recommended dependencies](https://github.com/soimort/translate-shell#recommended-dependencies)."
+msgstr "检查translate-shell[依赖](https://github.com/soimort/translate-shell#dependencies)和[推荐依赖](https://github.com/soimort/translate-shell#recommended-dependencies)。"
 
 #: ../../create_localized_help.py:73
 msgid "Note:"
 msgstr "注意："
 
 #: ../../create_localized_help.py:73
-msgid ""
-"The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x "
-"repositories is outdated and broken. It can be installed anyway so it will "
-"also install its dependencies. But updating to the latest version should be "
-"done as described bellow."
-msgstr ""
-"Ubuntu 16.04.x/Linux Mint 18.x存储库中提供的translate-shell软件包已经过时和破"
-"损。它可以安装，所以它也将会安装它的依赖。但是更新到最新版本应该如下所述完"
-"成。"
+msgid "The translate-shell package available on Ubuntu 16.04.x/Linux Mint 18.x repositories is outdated and broken. It can be installed anyway so it will also install its dependencies. But updating to the latest version should be done as described bellow."
+msgstr "Ubuntu 16.04.x/Linux Mint 18.x存储库中提供的translate-shell软件包已经过时和破损。它可以安装，所以它也将会安装它的依赖。但是更新到最新版本应该如下所述完成。"
 
 #: ../../create_localized_help.py:75
 msgid "How to install latest version of translate-shell"
@@ -88,8 +64,7 @@ msgid "Option 1. Direct Download"
 msgstr "选项1.直接下载"
 
 #: ../../create_localized_help.py:77
-msgid ""
-"This method will only install the trans script into the specified locations."
+msgid "This method will only install the trans script into the specified locations."
 msgstr "此方法将仅安装trans脚本到指定的位置。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
@@ -103,21 +78,12 @@ msgstr "对于所有用户，不覆盖已安装的版本。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:94
-msgid ""
-"Option 2. From Git - [More details](https://github.com/soimort/translate-"
-"shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-"
-"hackers)"
-msgstr ""
-"选项2.从Git - [更多详情](https://github.com/soimort/translate-shell/blob/"
-"develop/README.md#option-3-from-git-recommended-for-seasoned-hackers)"
+msgid "Option 2. From Git - [More details](https://github.com/soimort/translate-shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-hackers)"
+msgstr "选项2.从Git - [更多详情](https://github.com/soimort/translate-shell/blob/develop/README.md#option-3-from-git-recommended-for-seasoned-hackers)"
 
 #: ../../create_localized_help.py:95
-msgid ""
-"This method will not just install the trans script but also its man pages. "
-"Refer to the link above for more installation details."
-msgstr ""
-"这种方法不仅仅是安装trans脚本，还有其手册页。有关更多安装细节，请参阅上面的链"
-"接。"
+msgid "This method will not just install the trans script but also its man pages. Refer to the link above for more installation details."
+msgstr "这种方法不仅仅是安装trans脚本，还有其手册页。有关更多安装细节，请参阅上面的链接。"
 
 #: ../../create_localized_help.py:105
 msgid "Extension usage"
@@ -138,17 +104,12 @@ msgstr "**[[Super]] + [[T]]:**打开翻译器对话框。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:111
-msgid ""
-"**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text "
-"from clipboard."
-msgstr ""
-"**[[Super]] + [[Shift]] + [[T]]:**打开翻译器对话框并翻译剪贴板中的文本。"
+msgid "**[[Super]] + [[Shift]] + [[T]]:** Open translator dialog and translate text from clipboard."
+msgstr "**[[Super]] + [[Shift]] + [[T]]:**打开翻译器对话框并翻译剪贴板中的文本。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:113
-msgid ""
-"**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from "
-"primary selection."
+msgid "**[[Super]] + [[Alt]] + [[T]]:** Open translator dialog and translate from primary selection."
 msgstr "**[[Super]] + [[Alt]] + [[T]]:**打开翻译器对话框并从主选择翻译。"
 
 #: ../../create_localized_help.py:115
@@ -162,9 +123,7 @@ msgstr "**[[Ctrl]] + [[Enter]]:**翻译文本。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:119
-msgid ""
-"**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation "
-"history."
+msgid "**[[Shift]] + [[Enter]]:** Force text translation. Ignores translation history."
 msgstr "**[[Shift]] + [[Enter]]:**强制文本翻译。忽略翻译历史。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
@@ -192,23 +151,12 @@ msgid "Extension's settings window"
 msgstr "扩展的窗口设置"
 
 #: ../../create_localized_help.py:131
-msgid ""
-"From this extension settings window, all options can be imported, exported "
-"and/or reseted to their defaults."
+msgid "From this extension settings window, all options can be imported, exported and/or reseted to their defaults."
 msgstr "在此扩展设置窗口中，所有选项都可以导入，导出和/或重置为默认值。"
 
 #: ../../create_localized_help.py:133
-msgid ""
-"To be able to perform any of these actions, the settings schema needs to be "
-"installed in the system. This is done automatically when the extension is "
-"installed from the Cinnamon extensions manager. But if the extension was "
-"installed manually, the settings schema also needs to be installed manually. "
-"This is achieved by simply going to the extension folder and launch the "
-"following command:"
-msgstr ""
-"要能够执行任何这些操作，需要在系统中安装设置模式。从Cinnamon扩展管理器安装扩"
-"展时，这是自动完成的。但是如果手动安装扩展，则还需要手动安装设置模式。这是通"
-"过简单地转到扩展文件夹并启动以下命令来实现的："
+msgid "To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:"
+msgstr "要能够执行任何这些操作，需要在系统中安装设置模式。从Cinnamon扩展管理器安装扩展时，这是自动完成的。但是如果手动安装扩展，则还需要手动安装设置模式。这是通过简单地转到扩展文件夹并启动以下命令来实现的："
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:135
@@ -222,9 +170,7 @@ msgstr "卸载设置模式的命令："
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:141
-msgid ""
-"To import/export settings, the **dconf** command needs to be available on "
-"the system."
+msgid "To import/export settings, the **dconf** command needs to be available on the system."
 msgstr "要导入/导出设置，**dconf**命令需要在系统上可用。"
 
 #: ../../create_localized_help.py:164
@@ -265,15 +211,11 @@ msgid "IMPORTANT!!!"
 msgstr "重要！！！"
 
 #: ../../create_localized_help.py:277
-msgid ""
-"Never delete any of the files found inside this xlet folder. It might break "
-"this xlet functionality."
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
 msgstr "不要删除该xlet文件夹内的任何文件。可能会损坏该xlet的功能。"
 
 #: ../../create_localized_help.py:278
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked next."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
 msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。"
 
 #: ../../create_localized_help.py:284
@@ -281,25 +223,16 @@ msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
 msgstr "小程序/桌面小工具/扩展（也称为xlets）本地化"
 
 #: ../../create_localized_help.py:285
-msgid ""
-"If this xlet was installed from Cinnamon Settings, all of this xlet's "
-"localizations were automatically installed."
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
 msgstr "如果该xlet安装自Cinnamon设置，该xlet的所有本地化已经自动安装。"
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.
 #: ../../create_localized_help.py:287
-msgid ""
-"If this xlet was installed manually and not trough Cinnamon Settings, "
-"localizations can be installed by executing the script called "
-"**localizations.sh** from a terminal opened inside the xlet's folder."
-msgstr ""
-"如果该xlet是通过手动安装而不是Cinnamon设置，可以通过打开终端执行xlet文件夹内"
-"名为**localizations.sh**的脚本安装本地化。"
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr "如果该xlet是通过手动安装而不是Cinnamon设置，可以通过打开终端执行xlet文件夹内名为**localizations.sh**的脚本安装本地化。"
 
 #: ../../create_localized_help.py:288
-msgid ""
-"If this xlet has no locale available for your language, you could create it "
-"by following the following instructions."
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr "如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。"
 
 #: extensionHelper.py:271
@@ -808,9 +741,7 @@ msgid "Keep source entry text selected"
 msgstr "保留选中的源条目文本"
 
 #: settings.py:215
-msgid ""
-"Keep source entry text selected whenever the translation dialog is opened "
-"and the source entry box contains text."
+msgid "Keep source entry text selected whenever the translation dialog is opened and the source entry box contains text."
 msgstr "每当打开翻译对话框和包含文本的源条目框时，保留选中的源条目文本。"
 
 #: settings.py:221
@@ -936,13 +867,10 @@ msgstr "历史条目的时间戳"
 #: settings.py:347
 msgid ""
 "Timestamp format for the translation history entries.\n"
-"Note: After changing this setting, only new entries in the translation "
-"history will be saved with the new timestamp format. Old entries will still "
-"have the previous timestamp format."
+"Note: After changing this setting, only new entries in the translation history will be saved with the new timestamp format. Old entries will still have the previous timestamp format."
 msgstr ""
 "翻译历史条目的时间戳格式。\n"
-"注意：更改此设置后，只有翻译历史中新的条目才会使用新的时间戳格式来保存。旧的"
-"条目仍然具有以前的时间戳格式。"
+"注意：更改此设置后，只有翻译历史中新的条目才会使用新的时间戳格式来保存。旧的条目仍然具有以前的时间戳格式。"
 
 #: settings.py:351
 msgid "European"
@@ -985,9 +913,7 @@ msgid "Width to trigger word wrap"
 msgstr "触发自动换行的宽度"
 
 #: settings.py:388
-msgid ""
-"The \"Source text\" and \"Target text\" columns on the history window will "
-"wrap its text at the width defined by this setting."
+msgid "The \"Source text\" and \"Target text\" columns on the history window will wrap its text at the width defined by this setting."
 msgstr "历史窗口上的“源文本”和“目标文本”列将以此设置定义的宽度进行换行。"
 
 #: settings.py:399
@@ -1005,8 +931,7 @@ msgstr "Yandex API密钥"
 #: settings.py:408
 msgid ""
 "Enter one API key per line.\n"
-"Read the help file found inside this extension folder to know how to get "
-"free Yandex API keys."
+"Read the help file found inside this extension folder to know how to get free Yandex API keys."
 msgstr ""
 "每行输入一个API密钥。\n"
 "请阅读扩展文件夹中的帮助文件了解如何获取免费的Yandex API密钥。"
@@ -1020,9 +945,7 @@ msgid "Enable logging"
 msgstr "启用日志记录"
 
 #: settings.py:422
-msgid ""
-"It enables the ability to log the output of several functions used by the "
-"extension."
+msgid "It enables the ability to log the output of several functions used by the extension."
 msgstr "它能够记录扩展使用的一些函数的输出。"
 
 #: settings.py:428
@@ -1154,16 +1077,13 @@ msgstr "DCONF文件"
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1534
 #, python-format
-msgid ""
-"Please enter your password to install the required settings schema for %s"
+msgid "Please enter your password to install the required settings schema for %s"
 msgstr "请输入您的密码安装%s需要的设置模式"
 
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1545
 #, python-format
-msgid ""
-"Could not install the settings schema for %s.  You will have to perform this "
-"step yourself."
+msgid "Could not install the settings schema for %s.  You will have to perform this step yourself."
 msgstr "无法安装%s的设置模式。您必须亲自执行这个步骤。"
 
 #. TO TRANSLATORS: Could be left blank.
@@ -1175,9 +1095,7 @@ msgstr "请输入您的密码移除%s的设置模式"
 #. TO TRANSLATORS: Could be left blank.
 #: settings.py:1562
 #, python-format
-msgid ""
-"Could not remove the settings schema for %s.  You will have to perform this "
-"step yourself.  This is not a critical error."
+msgid "Could not remove the settings schema for %s.  You will have to perform this step yourself.  This is not a critical error."
 msgstr "无法移除%s的设置模式。您必须亲自执行这个步骤。这不是一个严重错误。"
 
 #: __init__.js:457
@@ -1246,9 +1164,7 @@ msgstr "常用语言。"
 msgid "Can't load preferences for %s"
 msgstr "无法加载%s的首选项"
 
-#: __init__.js:2239 translation_providers/google_translation_provider.js:76
-#: translation_providers/transltr_translation_provider.js:66
-#: translation_providers/yandex_translation_provider.js:272
+#: __init__.js:2239 translation_providers/google_translation_provider.js:76 translation_providers/transltr_translation_provider.js:66 translation_providers/yandex_translation_provider.js:272
 msgid "Error"
 msgstr "错误"
 
@@ -1265,8 +1181,7 @@ msgstr "执行translate-shell出错"
 msgid "Unmet dependencies found!!!"
 msgstr "发现未满足的依赖关系！！！"
 
-#: __init__.js:3435 __init__.js:3452
-#: translation_providers/yandex_translation_provider.js:334
+#: __init__.js:3435 __init__.js:3452 translation_providers/yandex_translation_provider.js:334
 msgid "Check this extension help file for instructions."
 msgstr "检查此扩展帮助文件的说明。"
 
@@ -1279,8 +1194,7 @@ msgid "All dependencies seem to be met."
 msgstr "所有的依赖关系似乎已满足。"
 
 #: __init__.js:3453
-msgid ""
-"This information has also been logged into the ~/.cinnamon/glass.log file."
+msgid "This information has also been logged into the ~/.cinnamon/glass.log file."
 msgstr "信息已经记录到~/.cinnamon/glass.log文件中。"
 
 #. Just in case.
@@ -1404,21 +1318,15 @@ msgstr "解析样式表出错"
 msgid "Error unloading stylesheet"
 msgstr "卸载样式表出错"
 
-#: translation_providers/apertium_ts_translation_provider.js:87
-#: translation_providers/bing_ts_translation_provider.js:87
-#: translation_providers/google_ts_translation_provider.js:88
+#: translation_providers/apertium_ts_translation_provider.js:87 translation_providers/bing_ts_translation_provider.js:87 translation_providers/google_ts_translation_provider.js:88
 msgid "Error while parsing data"
 msgstr "解析数据时出错"
 
-#: translation_providers/apertium_ts_translation_provider.js:120
-#: translation_providers/bing_ts_translation_provider.js:121
-#: translation_providers/google_ts_translation_provider.js:122
+#: translation_providers/apertium_ts_translation_provider.js:120 translation_providers/bing_ts_translation_provider.js:121 translation_providers/google_ts_translation_provider.js:122
 msgid "Error while translating, check your internet connection"
 msgstr "翻译时出错，请检查您的互联网连接"
 
-#: translation_providers/google_translation_provider.js:81
-#: translation_providers/transltr_translation_provider.js:71
-#: translation_providers/yandex_translation_provider.js:277
+#: translation_providers/google_translation_provider.js:81 translation_providers/transltr_translation_provider.js:71 translation_providers/yandex_translation_provider.js:277
 msgid "Can't translate text, please try later."
 msgstr "无法翻译文本，请稍候再试。"
 
@@ -1451,42 +1359,25 @@ msgid "No Yandex API keys were found!!!"
 msgstr "没有找到Yandex API密钥！！！"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->description
-msgid ""
-"Translation of text by different translation providers (currently Google, "
-"Yandex, Bing and Apertium)."
-msgstr ""
-"由不同翻译提供者提供的文本翻译(当前 Google, Yandex, Bing 和 Apertium)。"
+msgid "Translation of text by different translation providers (currently Google, Yandex, Bing and Apertium)."
+msgstr "由不同翻译提供者提供的文本翻译(当前 Google, Yandex, Bing 和 Apertium)。"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->contributors
 msgid "See this xlet help file."
 msgstr "查看该xlet帮助文件。"
 
 #. 0dyseus@MultiTranslatorExtension->metadata.json->comments
-msgid ""
-"Bug reports, feature requests and contributions should be done on this "
-"xlet's repository linked below."
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked below."
 msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。"
 
-#~ msgid ""
-#~ "awamper: Original author of Text Translator gnome-shell extension https://"
-#~ "github.com/awamper/text-translator."
-#~ msgstr ""
-#~ "awamper：Text Translator gnome-shell扩展的原作者 https://github.com/"
-#~ "awamper/text-translator。"
+#~ msgid "awamper: Original author of Text Translator gnome-shell extension https://github.com/awamper/text-translator."
+#~ msgstr "awamper：Text Translator gnome-shell扩展的原作者 https://github.com/awamper/text-translator。"
 
-#~ msgid ""
-#~ "gufoe: Author of the newer version of Text Translator gnome-shell "
-#~ "extension https://github.com/gufoe/text-translator."
-#~ msgstr ""
-#~ "gufoe：Text Translator gnome-shell新版本的作者 https://github.com/gufoe/"
-#~ "text-translator。"
+#~ msgid "gufoe: Author of the newer version of Text Translator gnome-shell extension https://github.com/gufoe/text-translator."
+#~ msgstr "gufoe：Text Translator gnome-shell新版本的作者 https://github.com/gufoe/text-translator。"
 
-#~ msgid ""
-#~ "soimort: Author of the translate-shell script https://github.com/soimort/"
-#~ "translate-shell."
-#~ msgstr ""
-#~ "soimort：translate-shell脚本的作者 https://github.com/soimort/translate-"
-#~ "shell。"
+#~ msgid "soimort: Author of the translate-shell script https://github.com/soimort/translate-shell."
+#~ msgstr "soimort：translate-shell脚本的作者 https://github.com/soimort/translate-shell。"
 
 #~ msgid "muzena: Croatian localization https://github.com/muzena."
 #~ msgstr "muzena：克罗地亚语本地化 https://github.com/muzena。"
@@ -1494,11 +1385,8 @@ msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓�
 #~ msgid "giwhub: Chinese localization https://github.com/giwhub."
 #~ msgstr "giwhub：中文本地化 https://github.com/giwhub。"
 
-#~ msgid ""
-#~ "Radek71: Czech localization and author of Thunderbolt theme https://"
-#~ "github.com/Radek71."
-#~ msgstr ""
-#~ "Radek71：捷克语本地化和Thunderbolt主题的作者 https://github.com/Radek71。"
+#~ msgid "Radek71: Czech localization and author of Thunderbolt theme https://github.com/Radek71."
+#~ msgstr "Radek71：捷克语本地化和Thunderbolt主题的作者 https://github.com/Radek71。"
 
 #~ msgid "NikoKrause: German localization https://github.com/NikoKrause."
 #~ msgstr "NikoKrause：德语本地化 https://github.com/NikoKrause。"
