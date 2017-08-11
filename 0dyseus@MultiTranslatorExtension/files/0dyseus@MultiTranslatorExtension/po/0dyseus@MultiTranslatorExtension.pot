@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.05\n"
-"POT-Creation-Date: 2017-06-30 23:10-0300\n"
+"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.07\n"
+"POT-Creation-Date: 2017-08-11 17:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,15 +153,15 @@ msgid "**[[Escape]]:** Close dialog."
 msgstr ""
 
 #: ../../create_localized_help.py:158
-msgid "Extension's settings window"
+msgid "Xlet's settings window"
 msgstr ""
 
 #: ../../create_localized_help.py:159
-msgid "From this extension settings window, all options can be imported, exported and/or reseted to their defaults."
+msgid "From this xlet settings window, all options can be imported, exported and/or reseted to their defaults."
 msgstr ""
 
 #: ../../create_localized_help.py:161
-msgid "To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the extension is installed from the Cinnamon extensions manager. But if the extension was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the extension folder and launch the following command:"
+msgid "To be able to perform any of these actions, the settings schema needs to be installed in the system. This is done automatically when the xlet is installed from the Cinnamon xlets manager. But if the xlet was installed manually, the settings schema also needs to be installed manually. This is achieved by simply going to the xlet folder and launch the following command:"
 msgstr ""
 
 #. TO TRANSLATORS: MARKDOWN string. Respect formatting.

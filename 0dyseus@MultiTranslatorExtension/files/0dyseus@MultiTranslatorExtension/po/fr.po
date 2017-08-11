@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.06\n"
+"Project-Id-Version: 0dyseus@MultiTranslatorExtension 1.07\n"
 "Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
 "PO-Revision-Date: 2017-06-26 20:25-0300\n"
 "Last-Translator: \n"
