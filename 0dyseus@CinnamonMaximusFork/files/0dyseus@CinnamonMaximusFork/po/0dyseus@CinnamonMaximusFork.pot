@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.7\n"
-"POT-Creation-Date: 2017-06-30 23:10-0300\n"
+"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.9\n"
+"POT-Creation-Date: 2017-08-11 17:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,58 +122,46 @@ msgstr ""
 msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->metadata.json->description
-msgid "Remove windows decorations from maximized windows."
-msgstr ""
-
 #. 0dyseus@CinnamonMaximusFork->metadata.json->name
 msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
 msgstr ""
 
 #. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
 msgid "See this xlet help file."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
-msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
+msgid "Use Whitelist"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
-msgid "Enable logging"
-msgstr ""
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
-msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr ""
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->tooltip
-msgid "On Cinnamon 3.4 or greater, the windows of the applications configured so that their decorations are removed when maximized, may become invisible. Enabling this option might prevent that, but it might also add a border of about 1 pixel in place of the title bar (it might depend on the metacity theme (Window borders) used)."
-msgstr ""
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->description
-msgid "Enable hack for invisible windows"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
+msgid ""
+"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
 msgstr ""
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
 msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
-msgid "Undecorate when tiled"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
+msgid "Enable logging"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
-msgid ""
-"Check or uncheck this options to restart Cinnamon.\n"
-"Note: I couldn't make a proper button to work in this settings window, so I had to improvise and I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
+msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
-msgid "Check or uncheck to restart Cinnamon"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->description
+msgid "Enable hack for invisible windows"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
-msgid "Troubleshooting"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->tooltip
+msgid "On Cinnamon 3.4 or greater, the windows of the applications configured so that their decorations are removed when maximized, may become invisible. Enabling this option might prevent that, but it might also add a border of about 1 pixel in place of the title bar (it might depend on the metacity theme (Window borders) used)."
 msgstr ""
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelisted_apps->description
@@ -186,12 +174,24 @@ msgid ""
 "Use a \",\" (comma) to seperate applications."
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
-msgid ""
-"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
-"If disabled, all maximized windows will have their titlebar removed."
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
+msgid "Troubleshooting"
 msgstr ""
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
-msgid "Use Whitelist"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr ""
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
+msgid ""
+"Check or uncheck this options to restart Cinnamon.\n"
+"Note: I couldn't make a proper button to work in this settings window, so I had to improvise and I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
 msgstr ""

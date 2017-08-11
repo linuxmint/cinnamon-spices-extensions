@@ -615,6 +615,7 @@ body {
             <select class="form-control input-sm" id="localization-switch" onchange="self.toggleLocalizationVisibility(value, this);">
                 <!-- English --><option selected data-title="Help for Cinnamon Maximus (Fork by Odyseus)" data-xlet-help="Help" data-xlet-contributors="Contributors" data-xlet-changelog="Changelog" value="en">English (English)</option>
 <!-- Español --><option data-title="Ayuda para Cinnamon Maximus (Fork by Odyseus)" data-xlet-help="Ayuda" data-xlet-contributors="Colaboradores" data-xlet-changelog="Registro de cambios" value="es">Español (Spanish)</option>
+<!-- 简体中文 --><option data-title="Cinnamon Maximus (Fork by Odyseus)的帮助" data-xlet-help="帮助" data-xlet-contributors="贡献者" data-xlet-changelog="变更日志" value="zh_CN">简体中文 (Chinese Simplified)</option>
             </select>
         </div>
     </form>
@@ -622,6 +623,61 @@ body {
 </nav>
 <span id="xlet-help" style="padding-top:70px;">
 <div class="container boxed">
+
+<div id="zh_CN" class="localization-content hidden">
+
+<h1>Cinnamon Maximus (Fork by Odyseus)的帮助</h1>
+
+<div style="font-weight:bold;" class="alert alert-warning">
+<h2>重要！！！</h2>
+
+<p>不要删除该xlet文件夹内的任何文件。可能会损坏该xlet的功能。</p>
+
+<p>错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。 <a href="https://github.com/Odyseus/CinnamonTools">GitHub</a></p>
+
+</div>
+
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">兼容性</h3>
+    </div>
+    <div class="panel-body compatibility">
+        <span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-warning">2.0</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-warning">2.1</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-warning">2.2</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-warning">2.4</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-warning">2.6</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-warning">2.8</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-success">3.0</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-success">3.2</span></span>
+<span class="compatibility-badge"><span class="label label-primary">Cinnamon</span><span class="label label-success">3.4</span></span>
+
+<br/><p class="text-danger compatibility-disclaimer">不要在其他的Cinnamon版本上安装。</p>
+    </div>
+</div>
+
+<h2>说明</h2>
+<p>本扩展是Fatih Mete的扩展<a href="https://cinnamon-spices.linuxmint.com/extensions/view/29">Cinnamon Maximus</a>的分支。与原来的主要区别是我移除了黑名单功能，并支持白名单功能。我还添加了几个故障排除选项，并完全移除了未装饰的最大化窗口的顶部边框。</p>
+<h2>依赖关系</h2>
+<p><strong>xprop</strong>和<strong>xwininfo</strong>命令需要在系统上可用。</p>
+<ul>
+<li>Debian系发行版： 这些命令由<strong>x11-utils</strong>软件包提供。Linux Mint已经安装了该软件包。</li>
+<li>Archlinux系发行版： 这些命令由<strong>xorg-xprop</strong>和<strong>xorg-xwininfo</strong>软件包提供。</li>
+<li>Fedora系发行版： 这些命令由<strong>xorg-x11-utils</strong>软件包提供。</li>
+</ul>
+
+
+<h2>小程序/桌面小工具/扩展（也称为xlets）本地化</h2>
+<ul>
+<li>如果该xlet安装自Cinnamon设置，该xlet的所有本地化已经自动安装。</li>
+<li>如果该xlet是通过手动安装而不是Cinnamon设置，可以通过打开终端执行xlet文件夹内名为<strong>localizations.sh</strong>的脚本安装本地化。</li>
+<li>如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。 <a href="https://github.com/Odyseus/CinnamonTools/wiki/Xlet-localization">Wiki</a></li>
+</ul>
+
+<div style="font-weight:bold;" class="alert alert-info">以下两个章节仅提供英文版本。</div>
+</div> <!-- .localization-content -->
+
 
 <div id="es" class="localization-content hidden">
 
@@ -749,6 +805,14 @@ body {
 <div class="container boxed">
 <h2>Cinnamon Maximus (Fork by Odyseus) changelog</h2>
 <h4>This change log is only valid for the version of the xlet hosted on <a href="https://github.com/Odyseus/CinnamonTools">its original repository</a></h4>
+<hr>
+<ul>
+<li><strong>Date:</strong> Sat, 29 Jul 2017 22:13:34 +0800</li>
+<li><strong>Commit:</strong> <a href="https://github.com/Odyseus/CinnamonTools/commit/46ff522">46ff522</a></li>
+<li><strong>Author:</strong> giwhub</li>
+</ul>
+<pre><code>Update zh_CN.po
+</code></pre>
 <hr>
 <ul>
 <li><strong>Date:</strong> Tue, 6 Jun 2017 22:31:44 -0300</li>

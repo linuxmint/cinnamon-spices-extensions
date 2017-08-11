@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.8\n"
+"Project-Id-Version: 0dyseus@CinnamonMaximusFork 0.3.9\n"
 "Report-Msgid-Bugs-To: https://github.com/Odyseus/CinnamonTools\n"
-"POT-Creation-Date: 2017-06-04 19:45+0800\n"
-"PO-Revision-Date: 2017-06-04 19:45+0800\n"
+"POT-Creation-Date: 2017-07-29 19:54+0800\n"
+"PO-Revision-Date: 2017-07-29 22:12+0800\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -16,23 +16,166 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
+
+#: ../../create_localized_help.py:76
+msgid "Description"
+msgstr "说明"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:79
+msgid "This extension is a fork of the [Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29) extension by Fatih Mete. The main difference with the original is that I removed the blacklist feature in favor of a whitelist feature. I also added a couple of options for troubleshooting and completely removed the top border of undecorated maximized windows."
+msgstr "本扩展是Fatih Mete的扩展[Cinnamon Maximus](https://cinnamon-spices.linuxmint.com/extensions/view/29)的分支。与原来的主要区别是我移除了黑名单功能，并支持白名单功能。我还添加了几个故障排除选项，并完全移除了未装饰的最大化窗口的顶部边框。"
+
+#: ../../create_localized_help.py:81
+msgid "Dependencies"
+msgstr "依赖关系"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:83
+msgid "The **xprop** and **xwininfo** commands needs to be available on the system."
+msgstr "**xprop**和**xwininfo**命令需要在系统上可用。"
+
+#: ../../create_localized_help.py:85
+msgid "Debian based distributions:"
+msgstr "Debian系发行版："
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:87
+msgid "These commands are provided by the **x11-utils** package. Linux Mint already has this package installed."
+msgstr "这些命令由**x11-utils**软件包提供。Linux Mint已经安装了该软件包。"
+
+#: ../../create_localized_help.py:88
+msgid "Archlinux based distributions:"
+msgstr "Archlinux系发行版："
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:90
+msgid "These commands are provided by the **xorg-xprop** and **xorg-xwininfo** packages."
+msgstr "这些命令由**xorg-xprop**和**xorg-xwininfo**软件包提供。"
+
+#: ../../create_localized_help.py:91
+msgid "Fedora based distributions:"
+msgstr "Fedora系发行版："
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:93
+msgid "These commands are provided by the **xorg-x11-utils** package."
+msgstr "这些命令由**xorg-x11-utils**软件包提供。"
+
+#: ../../create_localized_help.py:173
+msgid "The following two sections are available only in English."
+msgstr "以下两个章节仅提供英文版本。"
+
+#: ../../create_localized_help.py:177
+msgid "Do not install on any other version of Cinnamon."
+msgstr "不要在其他的Cinnamon版本上安装。"
+
+#: ../../create_localized_help.py:183
+msgid "Compatibility"
+msgstr "兼容性"
+
+#. Define them first before self.get_language_stats() is called so these
+#. strings are also counted.
+#: ../../create_localized_help.py:289
+msgid "Help"
+msgstr "帮助"
+
+#: ../../create_localized_help.py:290
+msgid "Contributors"
+msgstr "贡献者"
+
+#: ../../create_localized_help.py:291
+msgid "Changelog"
+msgstr "变更日志"
+
+#. TO TRANSLATORS: Full sentence:
+#. "Help for <xlet_name>"
+#: ../../create_localized_help.py:292 ../../create_localized_help.py:311
+#, python-format
+msgid "Help for %s"
+msgstr "%s的帮助"
+
+#: ../../create_localized_help.py:312
+msgid "IMPORTANT!!!"
+msgstr "重要！！！"
+
+#: ../../create_localized_help.py:313
+msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
+msgstr "不要删除该xlet文件夹内的任何文件。可能会损坏该xlet的功能。"
+
+#: ../../create_localized_help.py:314
+msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
+msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。"
+
+#: ../../create_localized_help.py:320
+msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
+msgstr "小程序/桌面小工具/扩展（也称为xlets）本地化"
+
+#: ../../create_localized_help.py:321
+msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
+msgstr "如果该xlet安装自Cinnamon设置，该xlet的所有本地化已经自动安装。"
+
+#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
+#: ../../create_localized_help.py:323
+msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
+msgstr "如果该xlet是通过手动安装而不是Cinnamon设置，可以通过打开终端执行xlet文件夹内名为**localizations.sh**的脚本安装本地化。"
+
+#: ../../create_localized_help.py:324
+msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
+msgstr "如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->description
+msgid "Remove windows decorations from maximized windows."
+msgstr "从最大化的窗口移除窗口装饰。"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->name
+msgid "Cinnamon Maximus (Fork by Odyseus)"
+msgstr "Cinnamon Maximus (Fork by Odyseus)"
+
+#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
+msgid "See this xlet help file."
+msgstr "查看该xlet帮助文件。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
+msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
+msgstr "如果启用，将会记录到Cinnamon日志(~/.cinnamon/glass.log)信息，可以用于调试扩展。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
+msgid "Enable logging"
+msgstr "启用日志记录"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr "取消装饰所有窗口（实验性，请关闭然后重新打开所有窗口）"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->tooltip
+msgid "On Cinnamon 3.4 or greater, the windows of the applications configured so that their decorations are removed when maximized, may become invisible. Enabling this option might prevent that, but it might also add a border of about 1 pixel in place of the title bar (it might depend on the metacity theme (Window borders) used)."
+msgstr "在Cinnamon3.4或更高版本上，应用程序配置的窗口使其装饰在最大化时被删除，可能会变得不可见。启用此选项可能可以阻止，但也可能会添加大约1个像素的边框来代替标题栏（可能取决于使用的Metacity主题（窗口边框））。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_invisible_windows_hack->description
+msgid "Enable hack for invisible windows"
+msgstr "启用破解隐藏的窗口"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->head1->description
 msgid "Cinnamon Maximus (Fork by Odyseus) Settings"
 msgstr "Cinnamon Maximus (Fork by Odyseus)设置"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
-msgid ""
-"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
-"If disabled, all maximized windows will have their titlebar removed."
-msgstr ""
-"如果启用，最大化时仅在下方指定的的应用程序会移除其标题栏。\n"
-"如果禁用，所有最大化的窗口都会移除其标题栏。"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
+msgid "Undecorate when tiled"
+msgstr "平铺时去除装饰"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
-msgid "Use Whitelist"
-msgstr "使用白名单"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
+msgid ""
+"Check or uncheck this options to restart Cinnamon.\n"
+"Note: I couldn't make a proper button to work in this settings window, so I had to improvise and I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
+msgstr ""
+"选中或取消选中此项重启Cinnamon。\n"
+"注意：我无法在这个设置窗口制作一个合适的按钮，所以我不得不临时拼凑并使用一个复选框。这其实并不重要是否已经选中。"
+
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
+msgid "Check or uncheck to restart Cinnamon"
+msgstr "选中或取消选中重启Cinnamon"
 
 #. 0dyseus@CinnamonMaximusFork->settings-schema.json->head2->description
 msgid "Troubleshooting"
@@ -50,107 +193,23 @@ msgstr ""
 "必须选中“使用白名单”选项。\n"
 "使用\",\"（逗号）分隔应用程序。"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->tooltip
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->tooltip
 msgid ""
-"Check or uncheck this options to restart Cinnamon.\n"
-"Note: I couldn't make a proper button to work in this settings window, so I had to improvise and I had to use a checkbox. It doesn't really matter if it's checked or unchecked."
+"If enabled, only the applications specified bellow will have their titlebar removed when maximized.\n"
+"If disabled, all maximized windows will have their titlebar removed."
 msgstr ""
-"选中或取消选中此项重启Cinnamon。\n"
-"注意：我无法在这个设置窗口制作一个合适的按钮，所以我不得不临时拼凑并使用一个复选框。这其实并不重要是否已经选中。"
+"如果启用，最大化时仅在下方指定的的应用程序会移除其标题栏。\n"
+"如果禁用，所有最大化的窗口都会移除其标题栏。"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_restart_cinnamon->description
-msgid "Check or uncheck to restart Cinnamon"
-msgstr "选中或取消选中重启Cinnamon"
+#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_whitelist->description
+msgid "Use Whitelist"
+msgstr "使用白名单"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->tooltip
-msgid "If enabled, it will log to the Cinnamon log (~/.cinnamon/glass.log) information that could be used to debug the extension."
-msgstr "如果启用，将会记录到Cinnamon日志(~/.cinnamon/glass.log)信息，可以用于调试扩展。"
+#~ msgid "language-name"
+#~ msgstr "简体中文"
 
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_logging_enabled->description
-msgid "Enable logging"
-msgstr "启用日志记录"
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_all->description
-msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr "取消装饰所有窗口（实验性，请关闭然后重新打开所有窗口）"
-
-#. 0dyseus@CinnamonMaximusFork->settings-schema.json->pref_undecorate_when_tiled->description
-msgid "Undecorate when tiled"
-msgstr "平铺时去除装饰"
-
-#. 0dyseus@CinnamonMaximusFork->metadata.json->description
-msgid "Remove windows decorations from maximized windows."
-msgstr "从最大化的窗口移除窗口装饰。"
-
-#. 0dyseus@CinnamonMaximusFork->metadata.json->contributors
-msgid "See this xlet help file."
-msgstr "查看该xlet帮助文件。"
-
-#. 0dyseus@CinnamonMaximusFork->metadata.json->name
-msgid "Cinnamon Maximus (Fork by Odyseus)"
-msgstr "Cinnamon Maximus (Fork by Odyseus)"
-
-#: ../../create_localized_help.py:90
-msgid "The following two sections are available only in English."
-msgstr "以下两个部分仅使用英语。"
-
-#. TO TRANSLATORS: This is a placeholder.
-#. Here goes your language name in your own language (a.k.a. endonym).
-#: ../../create_localized_help.py:115 ../../create_localized_help.py:187
-msgid "language-name"
-msgstr "简体中文"
-
-#: ../../create_localized_help.py:190
-msgid "Help"
-msgstr "帮助"
-
-#: ../../create_localized_help.py:191
-msgid "Contributors"
-msgstr "贡献者"
-
-#: ../../create_localized_help.py:192
-msgid "Changelog"
-msgstr "变更日志"
-
-#: ../../create_localized_help.py:193
-msgid "Choose language"
-msgstr "选择语言"
-
-#. TO TRANSLATORS: Full sentence:
-#. "Help for <xlet_name>"
-#: ../../create_localized_help.py:194 ../../create_localized_help.py:201
-#, python-format
-msgid "Help for %s"
-msgstr "%s的帮助"
-
-#: ../../create_localized_help.py:202
-msgid "IMPORTANT!!!"
-msgstr "重要！！！"
-
-#: ../../create_localized_help.py:203
-msgid "Never delete any of the files found inside this xlet folder. It might break this xlet functionality."
-msgstr "不要删除该xlet文件夹内的任何文件。可能会损坏该xlet的功能。"
-
-#: ../../create_localized_help.py:204
-msgid "Bug reports, feature requests and contributions should be done on this xlet's repository linked next."
-msgstr "错误报告，功能请求和贡献应该在下方链接的xlet的仓库上完成。"
-
-#: ../../create_localized_help.py:210
-msgid "Applets/Desklets/Extensions (a.k.a. xlets) localization"
-msgstr "小程序/桌面小工具/扩展（也称为xlets）本地化"
-
-#: ../../create_localized_help.py:211
-msgid "If this xlet was installed from Cinnamon Settings, all of this xlet's localizations were automatically installed."
-msgstr "如果该xlet安装自Cinnamon设置，该xlet的所有本地化已经自动安装。"
-
-#. TO TRANSLATORS: MARKDOWN string. Respect formatting.
-#: ../../create_localized_help.py:213
-msgid "If this xlet was installed manually and not trough Cinnamon Settings, localizations can be installed by executing the script called **localizations.sh** from a terminal opened inside the xlet's folder."
-msgstr "如果该xlet是通过手动安装而不是Cinnamon设置，可以通过打开终端执行xlet文件夹内名为**localizations.sh**的脚本安装本地化。"
-
-#: ../../create_localized_help.py:214
-msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
-msgstr "如果该xlet没有您的语言的本地化，您可以按照以下说明进行创建。"
+#~ msgid "Choose language"
+#~ msgstr "选择语言"
 
 #~ msgid "Alan01: Danish localization."
 #~ msgstr "Alan01：丹麦语本地化。"
