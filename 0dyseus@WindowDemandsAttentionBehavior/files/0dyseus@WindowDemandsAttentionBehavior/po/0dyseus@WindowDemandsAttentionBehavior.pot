@@ -5,8 +5,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0dyseus@WindowDemandsAttentionBehavior 1.03\n"
-"POT-Creation-Date: 2017-06-30 23:10-0300\n"
+"Project-Id-Version: 0dyseus@WindowDemandsAttentionBehavior 1.05\n"
+"POT-Creation-Date: 2017-08-11 17:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,12 +85,12 @@ msgstr ""
 msgid "If this xlet has no locale available for your language, you could create it by following the following instructions."
 msgstr ""
 
-#. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->description
-msgid "Activate demanding attention window with a keyboard shortcut or forced."
-msgstr ""
-
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->contributors
 msgid "See this xlet help file."
+msgstr ""
+
+#. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->description
+msgid "Activate demanding attention window with a keyboard shortcut or forced."
 msgstr ""
 
 #. 0dyseus@WindowDemandsAttentionBehavior->metadata.json->name
@@ -102,7 +102,7 @@ msgid "Choose activation mode"
 msgstr ""
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_activation_mode->options
-msgid "Activate windows demanding attention with a shortcut."
+msgid "Disabled. System behavior."
 msgstr ""
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_activation_mode->options
@@ -110,7 +110,7 @@ msgid "Force windows demanding attention activation."
 msgstr ""
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_activation_mode->options
-msgid "Disabled. System behavior."
+msgid "Activate windows demanding attention with a shortcut."
 msgstr ""
 
 #. 0dyseus@WindowDemandsAttentionBehavior->settings-schema.json->pref_keyboard_shortcut->description
