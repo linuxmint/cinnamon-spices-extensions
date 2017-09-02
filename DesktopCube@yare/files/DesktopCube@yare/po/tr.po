@@ -1,0 +1,269 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-01 18:30+0300\n"
+"PO-Revision-Date: 2017-09-01 18:36+0300\n"
+"Language-Team: Linux Mint Türkiye\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: tr\n"
+
+#. DesktopCube@yare->metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Çalışma alanı geçişi için Compiz benzeri küp animasyonu"
+
+#. DesktopCube@yare->metadata.json->name
+msgid "Desktop Cube"
+msgstr "Masaüstü Küpü"
+
+#. DesktopCube@yare->settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Animasyon süresi"
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Ölçeksizlik efekti"
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutBounce"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutExpo"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutCubic"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutCubic"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInQuart"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInBounce"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutQuad"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInQuint"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutElastic"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutQuint"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutCirc"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutElastic"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInExpo"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutSine"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutQuad"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInQuad"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutSine"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutExpo"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutBounce"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutBack"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutQuint"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutCirc"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInCirc"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInElastic"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInBack"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInSine"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeOutQuart"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutQuart"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInCubic"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->unscaleEffect->options
+#. DesktopCube@yare->settings-schema.json->scaleEffect->options
+#. DesktopCube@yare->settings-schema.json->rotateEffect->options
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->options
+msgid "easeInOutBack"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Ölçeklendirme efekti"
+
+#. DesktopCube@yare->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efektler"
+
+#. DesktopCube@yare->settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Dönmeye başlama efekti"
+
+#. DesktopCube@yare->settings-schema.json->header1->description
+msgid "General"
+msgstr "Genel"
+
+#. DesktopCube@yare->settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Dönme bitiş efekti"
+
+#. DesktopCube@yare->settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Ekrandan uzaklaşma oranı"
