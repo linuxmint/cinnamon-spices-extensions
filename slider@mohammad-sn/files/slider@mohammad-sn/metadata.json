@@ -1,10 +1,7 @@
 {
-    "last-edited": "1441090749", 
-    "cinnamon-version": [
-        "2.6"
-    ], 
-    "description": "Yet another nice transition effect for ws switching.", 
-    "name": "Slider", 
-    "version": 0.7, 
+    "cinnamon-version": ["2.6", "2.8", "3.0", "3.2", "3.4"],
+    "description": "Yet another nice transition effect for ws switching.",
+    "name": "Slider",
+    "version": 0.7,
     "uuid": "slider@mohammad-sn"
 }
