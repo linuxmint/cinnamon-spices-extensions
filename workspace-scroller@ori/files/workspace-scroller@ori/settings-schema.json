@@ -11,7 +11,7 @@
     "LeftUp": {
         "type": "combobox",
         "default": "Left",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -24,7 +24,7 @@
     "LeftDown": {
         "type": "combobox",
         "default": "Right",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -42,7 +42,7 @@
     "RightUp": {
         "type": "combobox",
         "default": "Left",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -55,7 +55,7 @@
     "RightDown": {
         "type": "combobox",
         "default": "Right",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -73,7 +73,7 @@
     "TopUp": {
         "type": "combobox",
         "default": "None",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -86,7 +86,7 @@
     "TopDown": {
         "type": "combobox",
         "default": "None",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -104,7 +104,7 @@
     "BottomUp": {
         "type": "combobox",
         "default": "None",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -117,7 +117,7 @@
     "BottomDown": {
         "type": "combobox",
         "default": "None",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -143,7 +143,7 @@
     "TopLeftUp": {
         "type": "combobox",
         "default": "None",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -156,7 +156,7 @@
     "TopLeftDown": {
         "type": "combobox",
         "default": "None",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -174,7 +174,7 @@
     "TopRightUp": {
         "type": "combobox",
         "default": "None",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -187,7 +187,7 @@
     "TopRightDown": {
         "type": "combobox",
         "default": "None",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -205,7 +205,7 @@
     "BottomLeftUp": {
         "type": "combobox",
         "default": "None",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -218,7 +218,7 @@
     "BottomLeftDown": {
         "type": "combobox",
         "default": "Expo",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -236,7 +236,7 @@
     "BottomRightUp": {
         "type": "combobox",
         "default": "None",
-        "description": "     Scroll up: ",
+        "description": " — Scroll up: ",
         "options": {
             "None": "None",
             "Switch left": "Left",
@@ -249,7 +249,7 @@
     "BottomRightDown": {
         "type": "combobox",
         "default": "Expo",
-        "description": "Scroll down: ",
+        "description": " — Scroll down: ",
         "options": {
             "None": "None",
             "Switch left": "Left",

@@ -1,9 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Extension for Cinnamon desktop environment developed by Linux Mint team. It can be found at Cinnamon Spices page and installed via Cinnamon extensions manager.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -33,7 +28,7 @@ msgstr ""
 #. workspace-scroller@ori->settings-schema.json->TopUp->description
 #. workspace-scroller@ori->settings-schema.json->TopRightUp->description
 #. workspace-scroller@ori->settings-schema.json->LeftUp->description
-msgid "     Scroll up: "
+msgid " — Scroll up: "
 msgstr ""
 
 #. workspace-scroller@ori->settings-schema.json->RightUp->options
@@ -136,7 +131,7 @@ msgstr ""
 #. workspace-scroller@ori->settings-schema.json->BottomLeftDown->description
 #. workspace-scroller@ori->settings-schema.json->LeftDown->description
 #. workspace-scroller@ori->settings-schema.json->TopRightDown->description
-msgid "Scroll down: "
+msgid " — Scroll down: "
 msgstr ""
 
 #. workspace-scroller@ori->settings-schema.json->TopLeft->description

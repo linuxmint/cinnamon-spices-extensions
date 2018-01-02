@@ -1,12 +1,15 @@
 {
-    "name": "Workspace Scroller", 
-    "version": "1.0.0", 
-    "description": "Switch workspaces using mouse scroll at screen edges.", 
-    "icon": "application-default-icon",
+    "name": "Workspace Scroller",
+    "version": "1.0.1",
+    "description": "Switch workspaces using mouse scroll at screen edges.",
     "cinnamon-version": [
-        "2.4", 
-        "2.6"
-    ], 
-    "url": "https://github.com/ori/cinnamon-workspace-scroller", 
+        "2.4",
+        "2.6",
+        "3.0",
+        "3.2",
+        "3.4",
+        "3.6"
+    ],
+    "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/workspace-scroller%40ori",
     "uuid": "workspace-scroller@ori"
 }
