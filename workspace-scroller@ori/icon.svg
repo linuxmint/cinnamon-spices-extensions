@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" version="1.1">
+    <defs>
+        <clipPath id="shadow-clip">
+            <rect width="6" height="4" x="2" y="42"/>
+            <rect width="6" height="4" x="40" y="42"/>
+        </clipPath>
+        <linearGradient id="shadow" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#181818" stop-opacity="0"/>
+            <stop offset="0.5" stop-color="#181818" stop-opacity="1"/>
+            <stop offset="1" stop-color="#181818" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="shadow-ellipse" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+            <stop offset="0" stop-color="#181818" stop-opacity="1"/>
+            <stop offset="1" stop-color="#181818" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="background" cx="0.5" cy="0.2" r="1.15" fx="0.5" fy="0.05">
+            <stop offset="0" stop-color="#000000"/>
+            <stop offset="0.26" stop-color="#000000"/>
+            <stop offset="0.7" stop-color="#000"/>
+            <stop offset="1" stop-color="#000000"/>
+        </radialGradient>
+        <linearGradient id="stroke" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="0.05" stop-color="#fff" stop-opacity="0.24"/>
+            <stop offset="0.95" stop-color="#fff" stop-opacity="0.16"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0.4"/>
+        </linearGradient>
+    </defs>
+    <g>
+        <rect width="32" height="4" x="8" y="42" fill="url(#shadow)"/>
+        <ellipse cx="8" cy="44" fill="url(#shadow-ellipse)" clip-path="url(#shadow-clip)" rx="6" ry="2"/>
+        <ellipse cx="40" cy="44" fill="url(#shadow-ellipse)" clip-path="url(#shadow-clip)" rx="6" ry="2"/>
+    </g>
+    <g>
+        <rect width="39" height="39" x="4.5" y="5.5" fill="url(#background)" rx="2" ry="2"/>
+        <rect width="39" height="39" x="4.5" y="5.5" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1" rx="2" ry="2"/>
+        <rect width="37" height="37" x="5.5" y="6.5" fill="none" stroke="url(#stroke)" stroke-opacity="0.25" stroke-width="1" rx="1" ry="1"/>
+    </g>
+    <g fill="none" stroke="#fff">
+        <rect width="13" height="18" x="17.5" y="16.5" stroke-linecap="round" rx="6" ry="4"/>
+        <line x1="24" x2="24" y1="21" y2="23" stroke-linecap="round" stroke-width="2"/>
+    </g>
+    <g fill="none" stroke="#aaa">
+        <path stroke-linecap="square" d="M13,23 l-3,3 l3,3"/>
+        <path stroke-linecap="square" d="M35,23 l3,3 l-3,3"/>
+    </g>
+</svg>

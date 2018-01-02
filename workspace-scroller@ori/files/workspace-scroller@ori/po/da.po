@@ -1,8 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Extension for Cinnamon desktop environment developed by Linux Mint team. It can be found at Cinnamon Spices page and installed via Cinnamon extensions manager.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -34,8 +30,8 @@ msgstr "Skift arbejdsområde ved at rulle med musen på skærmkanterne."
 #. workspace-scroller@ori->settings-schema.json->TopUp->description
 #. workspace-scroller@ori->settings-schema.json->TopRightUp->description
 #. workspace-scroller@ori->settings-schema.json->LeftUp->description
-msgid "     Scroll up: "
-msgstr "     Rul op: "
+msgid " — Scroll up: "
+msgstr " — Rul op: "
 
 #. workspace-scroller@ori->settings-schema.json->RightUp->options
 #. workspace-scroller@ori->settings-schema.json->BottomRightDown->options
@@ -137,8 +133,8 @@ msgstr "Hjørne"
 #. workspace-scroller@ori->settings-schema.json->BottomLeftDown->description
 #. workspace-scroller@ori->settings-schema.json->LeftDown->description
 #. workspace-scroller@ori->settings-schema.json->TopRightDown->description
-msgid "Scroll down: "
-msgstr "    Rul ned: "
+msgid " — Scroll down: "
+msgstr " — Rul ned: "
 
 #. workspace-scroller@ori->settings-schema.json->TopLeft->description
 msgid "Use top left corner"

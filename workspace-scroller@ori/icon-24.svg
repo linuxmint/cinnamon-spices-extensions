@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" version="1.1">
+    <defs>
+        <radialGradient id="background" cx="0.5" cy="0.2" r="1.15" fx="0.5" fy="0.05">
+            <stop offset="0" stop-color="#000000"/>
+            <stop offset="0.26" stop-color="#000000"/>
+            <stop offset="0.7" stop-color="#000"/>
+            <stop offset="1" stop-color="#000000"/>
+        </radialGradient>
+        <linearGradient id="stroke" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="0.05" stop-color="#fff" stop-opacity="0.24"/>
+            <stop offset="0.95" stop-color="#fff" stop-opacity="0.16"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0.4"/>
+        </linearGradient>
+    </defs>
+    <g>
+        <rect width="23" height="23" x="0.5" y="0.5" fill="url(#background)" rx="2" ry="2"/>
+        <rect width="23" height="23" x="0.5" y="0.5" fill="none" stroke="rgba(30,30,30,1)" stroke-width="1" rx="2" ry="2"/>
+        <rect width="21" height="21" x="1.5" y="1.5" fill="none" stroke="url(#stroke)" stroke-opacity="0.25" stroke-width="1" rx="1" ry="1"/>
+    </g>
+    <g fill="none" stroke="#fff">
+        <rect width="9" height="13" x="7.5" y="6.5" stroke-linecap="round" rx="6" ry="4"/>
+        <line x1="12" x2="12" y1="10" y2="12" stroke-linecap="round" stroke-width="2"/>
+    </g>
+    <g fill="none" stroke="#999">
+        <path stroke-linecap="square" d="M4,11 l-2,2 l2,2"/>
+        <path stroke-linecap="square" d="M20,11 l2,2 l-2,2"/>
+    </g>
+</svg>
