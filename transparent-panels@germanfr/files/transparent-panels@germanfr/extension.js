@@ -17,20 +17,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const Meta = imports.gi.Meta;
-const Settings = imports.ui.settings;
-const Main = imports.ui.main;
-const SignalManager = imports.misc.signalManager;
-const Util = imports.misc.util;
-const MessageTray = imports.ui.messageTray;
-const St = imports.gi.St;
-const Lang = imports.lang;
+const UUID = "transparent-panels@germanfr";
+
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
+const Main = imports.ui.main;
+const MessageTray = imports.ui.messageTray;
+const Panel = imports.ui.panel;
+const Settings = imports.ui.settings;
+const St = imports.gi.St;
+const Util = imports.misc.util;
 
-const META_WINDOW_MAXIMIZED = (Meta.MaximizeFlags.VERTICAL | Meta.MaximizeFlags.HORIZONTAL);
+const Self = imports.extensions[UUID];
+const Filter = Self.filter;
+const Policies = Self.policies;
+
 const ANIMATIONS_DURATION = 200;
-let UUID;
 
 function log(msg) {
 	global.log(UUID + ": " + msg);
@@ -49,191 +51,111 @@ function MyExtension(meta) {
 }
 
 MyExtension.prototype = {
-
 	_init: function (meta) {
-		this._meta = meta;
+		this.meta = meta;
 		this._signals = null;
-		this.transparent = false;
+		this._panel_status = new Array(Main.panelManager.panelCount);
+		for(let i = 0; i < this._panel_status.length; i++)
+			this._panel_status[i] = false;
+
+		this._filter = new Filter.PanelFilter();
+		this.policy = new Policies.MaximizedPolicy(this);
 
 		this.settings = new Settings.ExtensionSettings(this, meta.uuid);
-		this._settings_bind_property("transparency-type", "transparency_type", this.onSettingsUpdated);
-		this._settings_bind_property("first-launch", "firstLaunch");
-		this._classname = this.transparency_type ? this.transparency_type : "panel-transparent-gradient";
-		this._settings_bind_property("opacify", "opacify");
+		this.settings.bind("transparency-type", "transparency_type", this.on_settings_changed);
+		this.settings.bind("first-launch", "firstLaunch");
+		this.settings.bind("opacify", "opacify");
 
-		UUID = meta.uuid;
-		Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+		this.settings.bind("panel-top", "enable_position_top", this.on_settings_changed);
+		this.settings.bind("panel-right", "enable_position_right", this.on_settings_changed);
+		this.settings.bind("panel-bottom", "enable_position_bottom", this.on_settings_changed);
+		this.settings.bind("panel-left", "enable_position_left", this.on_settings_changed);
+
+		this._classname = this.transparency_type ? this.transparency_type : "panel-transparent-gradient";
+
+		Gettext.bindtextdomain(meta.uuid, GLib.get_home_dir() + "/.local/share/locale");
 	},
 
 	enable: function () {
-		this._signals = new SignalManager.SignalManager(this);
-		this._signals.connect(global.window_manager, "maximize", this._onWindowAppeared);
-		this._signals.connect(global.window_manager, "map", this._onWindowAppeared);
-
-		this._signals.connect(global.window_manager, "minimize", this.onWindowsStateChange);
-		this._signals.connect(global.window_manager, "unmaximize", this.onWindowsStateChange);
-		this._signals.connect(global.screen, "window-removed", this.onWindowsStateChange);
-		this._signals.connect(global.window_manager, "switch-workspace", this.onWindowsStateChange);
-
-		this._makePanelsTransparent();
-		this._detectWindows();
+		this._update_filter();
+		this.policy.enable();
 
 		if(this.firstLaunch) {
-			this.showStartupNotification();
+			this._show_startup_notification();
 			this.firstLaunch = false;
 		}
 	},
 
 	disable: function () {
-		this._signals.disconnectAllSignals();
-		this._signals = null;
-
+		this.policy.disable();
 		this.settings.finalize();
 		this.settings = null;
 
-		this._makePanelsOpaque();
+		Main.getPanels().forEach(panel => this.make_transparent(panel, false));
 	},
 
-	// No windows present at startup, but we need to connect to desktops somehow.
-	// Listen to a window-created when they don"t exist yet until any
-	// window gains focus, when all are supposed to be created (can be improved).
-	_detectWindows: function () {
-		let windows = global.display.list_windows(0);
-
-		if (windows.length == 0) { // When the extension is loaded at startup
-			this._signals.connect(global.display, "window-created", this._onWindowAddedStartup);
-			this._signals.connect(global.display, "notify::focus-window", this._disconnectStartupEvents);
-		} else { // When the extension is loaded in the middle of a session
-			windows.forEach(function (win) {
-				this._onWindowAddedStartup(global.display, win);
-			}, this);
-		}
+	on_state_change: function (monitor) {
+		this._filter.for_each_panel(panel => {
+			let transparentize = this.policy.is_transparent(panel);
+			this.make_transparent(panel, transparentize);
+		}, monitor);
 	},
 
-	_onDesktopFocused: function (desktop) {
-		if (desktop.get_window_type() !== Meta.WindowType.DESKTOP)
+	make_transparent: function (panel, transparent) {
+		if(transparent === this._panel_status[panel.panelId-1])
 			return;
-
-		this._makePanelsTransparent();
-
-		// Listen to focus on other windows since desktop is focused until another
-		// window gains focus, to avoid innecesary overhead each time focus changes.
-		this._signals.connect(global.display, "notify::focus-window",
-			function onUnfocus (display) {
-				if (desktop === display.get_focus_window())
-					return;
-				this._signals.disconnect("notify::focus-window", display, onUnfocus);
-				this.onWindowsStateChange();
-			});
-	},
-
-	// Parse windows status at startup
-	_onWindowAddedStartup: function (display, win) {
-		if (win.get_window_type() === Meta.WindowType.DESKTOP) {
-			this._signals.connect(win, "focus", this._onDesktopFocused);
-		} else if (this._isWindowMaximized(win)) {
-			this._makePanelsOpaque();
-		}
-	},
-
-	_disconnectStartupEvents: function () {
-		this._signals.disconnect("window-created", global.display, this._onWindowAddedStartup);
-		this._signals.disconnect("notify::focus-window", global.display, this._disconnectStartupEvents);
-	},
-
-	_onWindowAppeared: function (wm, win) {
-		let metawin = win.get_meta_window();
-		if (this._isWindowMaximized(metawin)) {
-			this._makePanelsOpaque();
-		}
-	},
-
-	onWindowsStateChange: function () {
-		if (this._checkAnyWindowMaximized()) {
-			this._makePanelsOpaque();
+		if(transparent) {
+			if(this.opacify)
+				this._set_background_opacity(panel, 0);
+			panel.actor.add_style_class_name(this._classname);
 		} else {
-			this._makePanelsTransparent();
+			if(this.opacify)
+				this._set_background_opacity(panel, 255);
+			panel.actor.remove_style_class_name(this._classname);
 		}
+		this._panel_status[panel.panelId-1] = transparent;
 	},
 
-	_checkAnyWindowMaximized: function () {
-		let workspace = global.screen.get_active_workspace();
-		let windows = workspace.list_windows();
-
-		for(let i=0, n_wins = windows.length; i < n_wins; ++i) {
-			if (this._isWindowMaximized(windows[i])) {
-				return true;
-			}
-		}
-		return false;
-	},
-
-	_isWindowMaximized: function (win) {
-		return !win.minimized &&
-			(win.get_maximized() & META_WINDOW_MAXIMIZED) === META_WINDOW_MAXIMIZED &&
-			win.get_window_type() !== Meta.WindowType.DESKTOP;
-	},
-
-	_makePanelsTransparent: function () {
-		if (this.transparent)
-			return;
-
-		if (this.opacify) {
-			Main.getPanels().forEach(function (panel) {
-				this._setBackgroundOpacity(panel, 0);
-				panel.actor.add_style_class_name(this._classname);
-			}, this);
-		} else {
-			Main.getPanels().forEach(function (panel) {
-				panel.actor.add_style_class_name(this._classname);
-			}, this);
-		}
-		this.transparent = true;
-	},
-
-	_makePanelsOpaque: function () {
-		if (this.transparent) {
-			if (this.opacify) {
-				Main.getPanels().forEach(function (panel) {
-					this._setBackgroundOpacity(panel, 255);
-					panel.actor.remove_style_class_name(this._classname);
-				}, this);
-			} else {
-				Main.getPanels().forEach(function (panel) {
-					panel.actor.remove_style_class_name(this._classname);
-				}, this);
-			}
-
-			this.transparent = false;
-		}
-	},
-
-	_setBackgroundOpacity: function (panel, alpha) {
-		let p_actor = panel.actor;
-		let color = p_actor.get_background_color();
+	_set_background_opacity: function (panel, alpha) {
+		let actor = panel.actor;
+		let color = actor.get_background_color();
 		color.alpha = alpha;
-		p_actor.save_easing_state();
-		p_actor.set_easing_duration(ANIMATIONS_DURATION);
-		p_actor.set_background_color(color);
-		p_actor.restore_easing_state();
+		actor.save_easing_state();
+		actor.set_easing_duration(ANIMATIONS_DURATION);
+		actor.set_background_color(color);
+		actor.restore_easing_state();
 	},
 
-	onSettingsUpdated: function () {
+	_update_filter: function () {
+		if(this.enable_position_top) this._filter.add(Panel.PanelLoc.top);
+		else this._filter.remove(Panel.PanelLoc.top);
+
+		if(this.enable_position_right) this._filter.add(Panel.PanelLoc.right);
+		else this._filter.remove(Panel.PanelLoc.right);
+
+		if(this.enable_position_bottom) this._filter.add(Panel.PanelLoc.bottom);
+		else this._filter.remove(Panel.PanelLoc.bottom);
+
+		if(this.enable_position_left) this._filter.add(Panel.PanelLoc.left);
+		else this._filter.remove(Panel.PanelLoc.left);
+	},
+
+	on_settings_changed: function () {
 		// Remove old classes
-		this.transparent = true;
-		this._makePanelsOpaque();
+		Main.getPanels().forEach(panel => this.make_transparent(panel, false));
 
-		if (this.transparency_type) {
+		if(this.transparency_type)
 			this._classname = this.transparency_type;
-		}
-		this.onWindowsStateChange();
+
+		this._update_filter();
+
+		this.on_state_change(-1);
 	},
 
-	// This will be called only once the first
-	// time the extension is loaded. It"s not worth it to
-	// create a separate class, so we build everything here.
-	showStartupNotification: function() {
-		let source = new MessageTray.Source(this._meta.name);
+	// This will be called only once, the first time the extension is loaded.
+	// It's not worth it to create a separate class, so we build everything here.
+	_show_startup_notification: function () {
+		let source = new MessageTray.Source(this.meta.name);
 		let params = {
 			icon: new St.Icon({
 					icon_name: "transparent-panels",
@@ -242,31 +164,19 @@ MyExtension.prototype = {
 		};
 
 		let notification = new MessageTray.Notification(source,
-			_("%s enabled").format(this._meta.name),
+			_("%s enabled").format(_(this.meta.name)),
 			_("Open the extension settings and customize your panels"),
 			params);
 
 		notification.addButton("open-settings", _("Open settings"));
-		notification.connect("action-invoked", Lang.bind(this, this.launchSettings));
+		notification.connect("action-invoked", () => this.launch_settngs());
 
 		Main.messageTray.add(source);
 		source.notify(notification);
 	},
 
-	launchSettings: function() {
-		Util.spawnCommandLine("xlet-settings extension " + this._meta.uuid);
-	},
-
-	// Keep backwards compatibility with 3.0.x for now
-	// but keep working if bindProperty was removed.
-	// To be removed soon
-	_settings_bind_property: function (key, applet_prop, callback) {
-		if (this.settings.bind) {
-			this.settings.bind(key, applet_prop, callback, null);
-		} else {
-			this.settings.bindProperty( Settings.BindingDirection.BIDIRECTIONAL,
-				key, applet_prop, callback, null);
-		}
+	launch_settngs: function () {
+		Util.spawnCommandLine("xlet-settings extension " + this.meta.uuid);
 	}
 };
 
@@ -293,6 +203,5 @@ function disable() {
 }
 
 function init(metadata) {
-	if (extension === null)
-		extension = new MyExtension(metadata);
+	extension = new MyExtension(metadata);
 }

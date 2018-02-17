@@ -1,4 +1,8 @@
 {
+	"section1": {
+		"type": "section",
+		"description" : "General"
+	},
 	"transparency-type" : {
 		"type" : "combobox",
 		"default" : "panel-transparent-gradient__internal",
@@ -12,7 +16,7 @@
 		"tooltip" : "Choose the type of transparency you want."
 	},
 	"opacify" : {
-		"type" : "checkbox",
+		"type" : "switch",
 		"default" : false,
 		"description" : "Remove theme transparency (experimental)",
 		"tooltip" : "Remove panel transparency when it's not transparent."
@@ -20,5 +24,34 @@
 	"first-launch" : {
 		"type" : "generic",
 		"default" : true
+	},
+
+	"section2": {
+		"type": "section",
+		"description" : "Filter panels"
+	},
+	"label2" : {
+		"type" : "label",
+		"description" : "Select the panels that will be affected by this extension."
+	},
+	"panel-top" : {
+		"type" : "switch",
+		"default" : true,
+		"description" : "Top panel"
+	},
+	"panel-right" : {
+		"type" : "switch",
+		"default" : true,
+		"description" : "Right panel"
+	},
+	"panel-bottom" : {
+		"type" : "switch",
+		"default" : true,
+		"description" : "Bottom panel"
+	},
+	"panel-left" : {
+		"type" : "switch",
+		"default" : true,
+		"description" : "Left panel"
 	}
 }
