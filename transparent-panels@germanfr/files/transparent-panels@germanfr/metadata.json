@@ -1,6 +1,6 @@
 {
 	"name": "Transparent panels",
-	"version": "3.2-6",
+	"version": "3.6",
 	"description": "Transparentize your panels when there are no any maximized windows",
 	"url": "https://github.com/germanfr/cinnamon-transparent-panels",
 	"cinnamon-version": [

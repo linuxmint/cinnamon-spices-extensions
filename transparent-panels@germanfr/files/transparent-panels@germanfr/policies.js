@@ -64,8 +64,8 @@ MaximizedPolicy.prototype = {
 
 		this._signals.connect(global.window_manager, "minimize", this._on_window_disappeared);
 		this._signals.connect(global.window_manager, "unmaximize", this._on_window_disappeared);
-		this._signals.connect(global.screen, "window-removed", this._on_window_disappeared);
-		this._signals.connect(global.window_manager, "switch-workspace", this._lookup_all_monitors);
+		this._signals.connect(global.screen, "window-removed", this.lookup_all_monitors);
+		this._signals.connect(global.window_manager, "switch-workspace", this.lookup_all_monitors);
 
 		this._set_up_startup_signals();
 	},
@@ -139,7 +139,7 @@ MaximizedPolicy.prototype = {
 	_on_window_disappeared: function (wm, win) {
 		if(win.get_meta_window)
 			win = win.get_meta_window();
-		this._lookup_windows_state(win.get_monitor());
+		this.lookup_windows_state(win.get_monitor());
 	},
 
 	_on_desktop_focused: function (desktop) {
@@ -158,16 +158,8 @@ MaximizedPolicy.prototype = {
 				if(desktop === focused || focused.get_monitor() !== monitor)
 					return;
 				this._signals.disconnect("notify::focus-window", display, focus_lost);
-				this._lookup_windows_state(monitor);
+				this.lookup_all_monitors();
 			});
-	},
-
-	_lookup_windows_state: function (monitor) {
-		let maximized = this._any_maximized_window(monitor);
-		if(maximized === this.transparent[monitor]) {
-			this.transparent[monitor] = !maximized;
-			this.controller.on_state_change(monitor);
-		}
 	},
 
 	_any_maximized_window: function (monitor) {
@@ -181,10 +173,17 @@ MaximizedPolicy.prototype = {
 		return false;
 	},
 
-	_lookup_all_monitors: function () {
-		let monitors = global.screen.get_n_monitors();
-		for(let i = 0; i < monitors; i++) {
-			this._lookup_windows_state(i);
+	lookup_windows_state: function (monitor) {
+		let maximized = this._any_maximized_window(monitor);
+		if(maximized === this.transparent[monitor]) {
+			this.transparent[monitor] = !maximized;
+			this.controller.on_state_change(monitor);
 		}
+	},
+
+	lookup_all_monitors: function () {
+		let monitors = global.screen.get_n_monitors();
+		for(let i = 0; i < monitors; i++)
+			this.lookup_windows_state(i);
 	}
 };
