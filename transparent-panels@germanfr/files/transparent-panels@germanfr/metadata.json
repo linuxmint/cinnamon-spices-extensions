@@ -6,7 +6,8 @@
 	"cinnamon-version": [
 		"3.2",
 		"3.4",
-		"3.6"
+		"3.6",
+		"3.8"
 	],
 	"uuid": "transparent-panels@germanfr"
 }
