@@ -21,7 +21,7 @@
 .panel-transparent-full__internal #panelRight,
 #panel.panel-transparent-full__internal:highlight {
 	border-image: none;
-	border: none;
+	border-color: transparent;
 	box-shadow: none;
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
@@ -40,7 +40,7 @@
 .panel-transparent-gradient__internal #panelRight,
 #panel.panel-transparent-gradient__internal:highlight {
 	border-image: none;
-	border: none;
+	border-color: transparent;
 	box-shadow: none;
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
@@ -87,7 +87,7 @@
 .panel-transparent-semi__internal #panelRight,
 #panel.panel-transparent-semi__internal:highlight {
 	border-image: none;
-	border: none;
+	border-color: transparent;
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
 	background-gradient-end: transparent;
