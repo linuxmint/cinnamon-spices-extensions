@@ -155,7 +155,7 @@ MaximizedPolicy.prototype = {
 		this._signals.connect(global.display, "notify::focus-window",
 			function focus_lost (display) {
 				let focused = display.get_focus_window();
-				if(desktop === focused || focused.get_monitor() !== monitor)
+				if(!focused || desktop === focused || focused.get_monitor() !== monitor)
 					return;
 				this._signals.disconnect("notify::focus-window", display, focus_lost);
 				this.lookup_all_monitors();
