@@ -28,9 +28,15 @@ const Settings = imports.ui.settings;
 const St = imports.gi.St;
 const Util = imports.misc.util;
 
-const Self = imports.extensions[UUID];
-const Filter = Self.filter;
-const Policies = Self.policies;
+let Filter, Policies;
+if (typeof require !== 'undefined') {
+	Filter = require('./filter');
+	Policies = require('./policies');
+} else {
+	const Self = imports.ui.extensionSystem.extensions[UUID];
+	Filter = Self.filter;
+	Policies = Self.policies;
+}
 
 const ANIMATIONS_DURATION = 200;
 
