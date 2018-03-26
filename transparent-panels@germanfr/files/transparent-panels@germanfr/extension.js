@@ -69,7 +69,6 @@ MyExtension.prototype = {
 
 		this.settings = new Settings.ExtensionSettings(this, meta.uuid);
 		this.settings.bind("transparency-type", "transparency_type", this.on_settings_changed);
-		this.settings.bind("first-launch", "firstLaunch");
 		this.settings.bind("opacify", "opacify");
 
 		this.settings.bind("panel-top", "enable_position_top", this.on_settings_changed);
@@ -86,9 +85,9 @@ MyExtension.prototype = {
 		this._update_filter();
 		this.policy.enable();
 
-		if(this.firstLaunch) {
+		if(this.settings.getValue("first-launch")) {
 			this._show_startup_notification();
-			this.firstLaunch = false;
+			this.settings.setValue("first-launch", false);
 		}
 	},
 
