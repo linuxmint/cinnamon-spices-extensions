@@ -1,0 +1,66 @@
+{
+	"section0": {
+		"type": "section",
+		"description": "Appearance"
+	},
+
+	"path-name": {
+		"type": "iconfilechooser",
+		"description": "Watermark icon or image",
+		"default": "Cinnamon"
+	},
+
+	"alpha": {
+		"type": "scale",
+		"description" : "Opacity (%)",
+		"default" : 20,
+		"min": 5,
+		"max": 100,
+		"step": 1
+	},
+
+	"section1": {
+		"type": "section",
+		"description": "Position"
+	},
+
+	"position-x": {
+		"type": "scale",
+		"description" : "Position x (%)",
+		"default": 50,
+		"min": 0,
+		"max": 100,
+		"step": 1
+	},
+
+	"position-y": {
+		"type": "scale",
+		"description" : "Position y (%)",
+		"default": 50,
+		"min": 0,
+		"max": 100,
+		"step": 1
+	},
+
+	"section2": {
+		"type": "section",
+		"description": "Size"
+	},
+
+	"use-custom-size": {
+	    "type": "switch",
+	    "description": "Use a custom size, scaling the image",
+	    "default": false
+	},
+
+	"size": {
+		"type": "spinbutton",
+		"description" : "Size",
+		"default": 128,
+		"min": 16,
+		"max": 512,
+		"step": 1,
+		"units": "px",
+		"dependency": "use-custom-size"
+	}
+}
