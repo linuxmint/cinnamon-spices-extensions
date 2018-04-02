@@ -1,0 +1,12 @@
+{
+	"name": "Watermark",
+	"uuid": "watermark@germanfr",
+	"version": 3.6,
+	"description": "Place a watermark on the desktop.",
+	"url": "https://github.com/germanfr/watermark-cinnamon",
+	"cinnamon-version": [
+		"3.4",
+		"3.6"
+	],
+	"prevent-decorations": true
+}

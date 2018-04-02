@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="48" height="48" version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="linearGradient840" x2="0" y1="48" y2="4.8941e-7" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#1b628b" offset="0"/>
+   <stop stop-color="#bc263f" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient886" x1="8" x2="7.6499" y1="40" y2="8" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ffe3ea" offset="0"/>
+   <stop stop-color="#ffffff" offset="1"/>
+  </linearGradient>
+ </defs>
+ <rect y="4.8941e-7" width="48" height="48" rx="8" color="#000000" color-rendering="auto" fill="url(#linearGradient840)" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+ <path d="m25 9c-8.8201 0-16 7.1799-16 16s7.1799 16 16 16 16-7.1799 16-16-7.1799-16-16-16zm0 2.7826c7.3162 0 13.218 5.9011 13.218 13.217 0 1.1104-0.15144 2.1825-0.40761 3.212l-6.269-6.9674-8.0706 9.1821 3.894-7.7907-1.9456-3.4782-11.459 13.111c-1.3728-2.0845-2.1766-4.5788-2.1766-7.269 0-7.3162 5.9011-13.217 13.217-13.217z" fill="#000000" opacity=".2"/>
+ <path d="m24 8c-8.8201 0-16 7.1799-16 16s7.1799 16 16 16 16-7.1799 16-16-7.1799-16-16-16zm0 2.7826c7.3162 0 13.218 5.9011 13.218 13.217 0 1.1104-0.15144 2.1825-0.40761 3.212l-6.269-6.9674-8.0706 9.1821 3.894-7.7907-1.9456-3.4782-11.459 13.111c-1.3728-2.0845-2.1766-4.5788-2.1766-7.269 0-7.3162 5.9011-13.217 13.217-13.217z" fill="url(#linearGradient886)"/>
+ <rect x=".5" y=".5" width="47" height="47" rx="7.5" ry="7.5" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" opacity=".4" shape-rendering="auto" solid-color="#000000" stroke="#000000" stroke-opacity=".95833" style="isolation:auto;mix-blend-mode:normal"/>
+ <rect x="1.5" y="1.5" width="45" height="45" rx="6.5" ry="6.5" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" opacity=".15" shape-rendering="auto" solid-color="#000000" stroke="#f8f8f8" stroke-opacity=".95833" style="isolation:auto;mix-blend-mode:normal"/>
+</svg>
