@@ -49,7 +49,6 @@ MyExtension.prototype = {
 		this.settings.bind('use-custom-size', 'use_custom_size', this.on_settings_updated);
 		this.settings.bind('size', 'size', this.on_settings_updated);
 
-		// FIXME: Not firing!
 		this.monitorsChangedId = global.screen.connect('monitors-changed', () => {
 			this._clear_watermarks();
 			this._init_watermarks();
@@ -119,20 +118,21 @@ Watermark.prototype = {
 	},
 
 	get_watermark: function(path_name, size) {
-		if(Gtk.IconTheme.get_default().has_icon(path_name)) { // Icon name
-			let icon_size = this.manager.use_custom_size ? size : DEFAULT_ICON_SIZE;
-			return new St.Icon({ icon_name: path_name, icon_size, icon_type: St.IconType.SYMBOLIC });
-		} else { // Image path
-			if(GLib.file_test(path_name, GLib.FileTest.IS_REGULAR)) {
-				let image = this.get_image(path_name, size);
-				if(image) return image;
-			}
+		if(GLib.file_test(path_name, GLib.FileTest.IS_REGULAR)) {
+			let image = this.get_image(path_name, size);
+			if(image) return image;
+		}
 
-			let xlet_path = this.manager.meta.path + '/icons/' + path_name.toLowerCase().replace(' ', '-') + '-symbolic.svg';
-			if(GLib.file_test(xlet_path, GLib.FileTest.IS_REGULAR)) {
-				let image = this.get_image(xlet_path, size);
-				if(image) return image;
-			}
+		let xlet_path = this.manager.meta.path + '/icons/' + path_name.toLowerCase().replace(' ', '-') + '.svg';
+		if(GLib.file_test(xlet_path, GLib.FileTest.IS_REGULAR)) {
+			let image = this.get_image(xlet_path, size);
+			if(image) return image;
+		}
+
+		let icon_name = path_name.endsWith('-symbolic') ? path_name : path_name + '-symbolic';
+		if(Gtk.IconTheme.get_default().has_icon(icon_name)) { // Icon name
+			let icon_size = this.manager.use_custom_size ? size : DEFAULT_ICON_SIZE;
+			return new St.Icon({ icon_name, icon_size, icon_type: St.IconType.SYMBOLIC });
 		}
 
 		global.logError(this.manager.meta.uuid + ": watermark file not found (" + path_name + ")");

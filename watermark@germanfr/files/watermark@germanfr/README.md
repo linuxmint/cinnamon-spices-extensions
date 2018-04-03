@@ -26,7 +26,7 @@ Please, do not post issues in the comments of the Cinnamon Spices website becaus
 This extension is free software and it's licensed under GPL3.
 You should have received an unobfuscated copy of the source code. If you don't, you can get it on [https://github.com/germanfr/watermark-cinnamon][repo].
 
-The included watermark logos are property of their creators.
+The included watermark logos are property of their creators. They are not part of this program, so this license doesn't apply to them unless otherwise specified. See the ATTRIBUTIONS file.
 
 ```
 Watermark - Cinnamon desktop extension
