@@ -25,6 +25,7 @@ const Gtk = imports.gi.Gtk;
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
 const St = imports.gi.St;
+const Util = imports.misc.util;
 
 const ERROR_ICON_NAME = 'face-sad-symbolic';
 const DEFAULT_ICON_SIZE = 128;
@@ -44,6 +45,7 @@ MyExtension.prototype = {
 		this.settings = new Settings.ExtensionSettings(this, this.meta.uuid);
 		this.settings.bind('path-name', 'path_name', this.on_settings_updated);
 		this.settings.bind('alpha', 'alpha', this.on_settings_updated);
+		this.settings.bind('invert', 'invert', this.on_settings_updated);
 		this.settings.bind('position-x', 'position_x', this.on_settings_updated);
 		this.settings.bind('position-y', 'position_y', this.on_settings_updated);
 		this.settings.bind('use-custom-size', 'use_custom_size', this.on_settings_updated);
@@ -53,6 +55,11 @@ MyExtension.prototype = {
 			this._clear_watermarks();
 			this._init_watermarks();
 		});
+
+		if(this.settings.getValue('first-launch')) {
+			this.settings.setValue('first-launch', false);
+			this._detect_os();
+		}
 
 		this._init_watermarks();
 	},
@@ -73,11 +80,22 @@ MyExtension.prototype = {
 
 	disable: function() {
 		this._clear_watermarks();
+		global.screen.disconnect(this.monitorsChangedId);
 	},
 
 	on_settings_updated: function() {
 		for(let wm of this.watermarks)
 			wm.update();
+	},
+
+	_detect_os: function() {
+		let cmd = [this.meta.path + '/os-detection.sh', this.meta.path + '/icons'];
+		Util.spawn_async(cmd, os_name => {
+			if(os_name) {
+				this.path_name = os_name;
+				this.on_settings_updated();
+			}
+		});
 	}
 };
 
@@ -91,7 +109,6 @@ Watermark.prototype = {
 		this.monitor = monitor;
 
 		this.actor = new St.Bin();
-		this.actor.style = 'color: white;';
 		this.watermark = null;
 
 		global.bottom_window_group.insert_child_at_index(this.actor, 0);
@@ -109,6 +126,7 @@ Watermark.prototype = {
 		this.actor.set_child(this.watermark);
 
 		this.actor.set_opacity(this.manager.alpha * 255 / 100);
+		this.actor.style = this.manager.invert ? 'color: black' : 'color: white';
 	},
 
 	update_position: function() {
@@ -151,7 +169,7 @@ Watermark.prototype = {
 		}
 
 		let image = new Clutter.Image();
-		image.set_data(pixbuf.get_pixels(),
+		image.set_data(this.manager.invert ? this.invert_pixels(pixbuf) : pixbuf.get_pixels(),
 		               pixbuf.get_has_alpha() ? Cogl.PixelFormat.RGBA_8888 : Cogl.PixelFormat.RGB_888,
 		               pixbuf.get_width(),
 		               pixbuf.get_height(),
@@ -160,6 +178,18 @@ Watermark.prototype = {
 		return new Clutter.Actor({ content: image,
 		                           width: pixbuf.get_width(),
 		                           height: pixbuf.get_height() });
+	},
+
+	invert_pixels: function(pixbuf) {
+		let pixels = pixbuf.get_pixels();
+		let bps = pixbuf.get_has_alpha() ? 4 : 3;
+
+		for(let i = 0; i < pixels.length; i+=bps) {
+			pixels[i]   = 0xff - pixels[i];
+			pixels[i+1] = 0xff - pixels[i+1];
+			pixels[i+2] = 0xff - pixels[i+2];
+		}
+		return pixels;
 	},
 
 	destroy: function() {

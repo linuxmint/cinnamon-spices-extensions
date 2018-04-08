@@ -19,6 +19,13 @@
 		"step": 1
 	},
 
+	"invert": {
+		"type": "switch",
+		"description": "Invert colors",
+		"default": false,
+		"tooltip": "This completely inverts the image colors. Useful on light backgrounds."
+	},
+
 	"section1": {
 		"type": "section",
 		"description": "Position"
@@ -48,9 +55,9 @@
 	},
 
 	"use-custom-size": {
-	    "type": "switch",
-	    "description": "Use a custom size, scaling the image",
-	    "default": false
+		"type": "switch",
+		"description": "Use a custom size, scaling the image",
+		"default": false
 	},
 
 	"size": {
@@ -62,5 +69,10 @@
 		"step": 1,
 		"units": "px",
 		"dependency": "use-custom-size"
+	},
+
+	"first-launch": {
+		"type": "generic",
+		"default": true
 	}
 }
