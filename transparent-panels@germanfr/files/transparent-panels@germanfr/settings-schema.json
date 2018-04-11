@@ -1,57 +1,71 @@
 {
-	"section1": {
-		"type": "section",
+	"section-general" : {
+		"type" : "section",
 		"description" : "General"
 	},
+
 	"transparency-type" : {
 		"type" : "combobox",
-		"default" : "panel-transparent-gradient__internal",
+		"default" : "panel-transparent-with-shadow",
 		"description" : "Type of transparency",
 		"options" : {
-			"With shadow" : "panel-transparent-gradient__internal",
-			"Fully transparent" : "panel-transparent-full__internal",
-			"Semi-transparent" : "panel-transparent-semi__internal",
-			"Defined by theme" : "panel-transparent"
+			"With shadow" : "panel-transparent-with-shadow",
+			"Fully transparent" : "panel-transparent",
+			"Semi-transparent" : "panel-semi-transparent"
 		},
 		"tooltip" : "Choose the type of transparency you want."
 	},
+
 	"opacify" : {
 		"type" : "switch",
 		"default" : false,
 		"description" : "Remove theme transparency (experimental)",
 		"tooltip" : "Remove panel transparency when it's not transparent."
 	},
-	"first-launch" : {
-		"type" : "generic",
-		"default" : true
+
+	"theme-defined" : {
+		"type" : "switch",
+		"default" : false,
+		"description" : "Use current theme styles",
+		"tooltip" : "Let the theme style the panels instead of using the the extension presets. Use this in case the panels transparency is icorrectly set."
 	},
 
-	"section2": {
-		"type": "section",
+	"section-filters" : {
+		"type" : "section",
 		"description" : "Filter panels"
 	},
-	"label2" : {
+
+	"filters-description" : {
 		"type" : "label",
 		"description" : "Select the panels that will be affected by this extension."
 	},
+
 	"panel-top" : {
 		"type" : "switch",
 		"default" : true,
 		"description" : "Top panel"
 	},
+
 	"panel-right" : {
 		"type" : "switch",
 		"default" : true,
 		"description" : "Right panel"
 	},
+
 	"panel-bottom" : {
 		"type" : "switch",
 		"default" : true,
 		"description" : "Bottom panel"
 	},
+
 	"panel-left" : {
 		"type" : "switch",
 		"default" : true,
 		"description" : "Left panel"
+	},
+
+	"first-launch" : {
+		"type" : "generic",
+		"default" : true
 	}
 }

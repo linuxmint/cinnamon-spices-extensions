@@ -39,10 +39,8 @@ if (typeof require !== 'undefined') {
 }
 
 const ANIMATIONS_DURATION = 200;
+const INTERNAL_PREFIX = "__internal";
 
-function log(msg) {
-	global.log(UUID + ": " + msg);
-}
 
 function _(str) {
 	let customTranslation = Gettext.dgettext(UUID, str);
@@ -69,14 +67,15 @@ MyExtension.prototype = {
 
 		this.settings = new Settings.ExtensionSettings(this, meta.uuid);
 		this.settings.bind("transparency-type", "transparency_type", this.on_settings_changed);
-		this.settings.bind("opacify", "opacify");
+		this.settings.bind("opacify", "opacify", this.on_settings_changed);
+		this.settings.bind("theme-defined", "theme_defined", this.on_settings_changed);
 
 		this.settings.bind("panel-top", "enable_position_top", this.on_settings_changed);
 		this.settings.bind("panel-right", "enable_position_right", this.on_settings_changed);
 		this.settings.bind("panel-bottom", "enable_position_bottom", this.on_settings_changed);
 		this.settings.bind("panel-left", "enable_position_left", this.on_settings_changed);
 
-		this._classname = this.transparency_type ? this.transparency_type : "panel-transparent-gradient";
+		this._classname = this.theme_defined ? this.transparency_type : this.transparency_type + INTERNAL_PREFIX;
 
 		Gettext.bindtextdomain(meta.uuid, GLib.get_home_dir() + "/.local/share/locale");
 	},
@@ -86,8 +85,8 @@ MyExtension.prototype = {
 		this.policy.enable();
 
 		if(this.settings.getValue("first-launch")) {
-			this._show_startup_notification();
 			this.settings.setValue("first-launch", false);
+			this._show_startup_notification();
 		}
 	},
 
@@ -149,8 +148,9 @@ MyExtension.prototype = {
 		// Remove old classes
 		Main.getPanels().forEach(panel => this.make_transparent(panel, false));
 
-		if(this.transparency_type)
-			this._classname = this.transparency_type;
+		this._classname = this.transparency_type;
+		if(!this.theme_defined)
+			this._classname += INTERNAL_PREFIX;
 
 		this._update_filter();
 
