@@ -18,7 +18,6 @@
 */
 
 const Main = imports.ui.main;
-const Panel = imports.ui.panel;
 
 function PanelFilter() {
 	this._init();

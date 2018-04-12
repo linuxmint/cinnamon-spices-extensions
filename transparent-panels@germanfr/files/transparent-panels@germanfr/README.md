@@ -1,4 +1,4 @@
-# Transparent panels - A Cinnamon extension
+# [Transparent panels - A Cinnamon extension][repo]
 
 Transparentize your panels when there are no any maximized windows
 
@@ -27,6 +27,9 @@ If you find any bug you can file an issue in the Github project page: [https://g
 Make sure you have an updated version of Cinnamon and try to explain the more detailed you can what the problem is (don't just say _"it doesn't work"_ because that doesn't help at all).
 
 Please, do not post issues in the comments of the Cinnamon Spices website because it doesn't have a notification system and I rarely see it.
+
+## Contributing
+Contributions are welcome, also in form of translations. Please, submit pull requests [to the repository][repo] not the spices repository, which is only a distribution channel (not even a mirror). What is in there is automatically generated and overwritten.
 
 ## FAQ
 #### 1) Is it possible to keep transparency always?
