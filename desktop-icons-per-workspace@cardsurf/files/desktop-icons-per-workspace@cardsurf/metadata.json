@@ -1,0 +1,11 @@
+{
+    "version": "1.0.0",
+    "cinnamon-version": [
+        "2.6",
+        "3.6"
+    ],
+    "url": "http://cinnamon-spices.linuxmint.com/extensions",
+    "description": "Set positions of desktop icons per workspace",
+    "name": "Desktop icons per workspace",
+    "uuid": "desktop-icons-per-workspace@cardsurf"
+}
