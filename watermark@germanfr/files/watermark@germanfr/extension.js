@@ -90,6 +90,7 @@ MyExtension.prototype = {
 
 	_detect_os: function() {
 		let cmd = [this.meta.path + '/os-detection.sh', this.meta.path + '/icons'];
+		Util.spawn(['chmod', 'u+x', cmd[0]]);
 		Util.spawn_async(cmd, os_name => {
 			if(os_name) {
 				this.path_name = os_name;
