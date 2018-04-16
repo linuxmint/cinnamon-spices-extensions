@@ -1,0 +1,65 @@
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-04-09 19:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr ""
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr ""
+
+#. settings-schema.json->section0->description
+msgid "Appearance"
+msgstr ""
+
+#. settings-schema.json->path-name->description
+msgid "Watermark icon or image"
+msgstr ""
+
+#. settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr ""
+
+#. settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr ""
+
+#. settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr ""
+
+#. settings-schema.json->section1->description
+msgid "Position"
+msgstr ""
+
+#. settings-schema.json->position-x->description
+msgid "Position x (%)"
+msgstr ""
+
+#. settings-schema.json->position-y->description
+msgid "Position y (%)"
+msgstr ""
+
+#. settings-schema.json->section2->description
+#. settings-schema.json->size->description
+msgid "Size"
+msgstr ""
+
+#. settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr ""
+
+#. settings-schema.json->size->units
+msgid "px"
+msgstr ""

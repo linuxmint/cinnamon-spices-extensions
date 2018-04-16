@@ -123,7 +123,7 @@ Watermark.prototype = {
 		if(this.watermark) {
 			this.watermark.destroy();
 		}
-		this.watermark = this.get_watermark(this.manager.path_name, this.manager.size);
+		this.watermark = this.get_watermark(this.manager.path_name, this.manager.size * global.ui_scale);
 		this.actor.set_child(this.watermark);
 
 		this.actor.set_opacity(this.manager.alpha * 255 / 100);
