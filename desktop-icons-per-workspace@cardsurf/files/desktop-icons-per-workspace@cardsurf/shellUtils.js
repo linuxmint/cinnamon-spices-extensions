@@ -92,7 +92,6 @@ ShellOutputProcess.prototype = {
              this.command_argv,
              null,
              this.flags,
-             null,
              null);
 
         this.success = success;
