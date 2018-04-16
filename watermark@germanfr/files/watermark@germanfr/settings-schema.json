@@ -56,7 +56,7 @@
 
 	"use-custom-size": {
 		"type": "switch",
-		"description": "Use a custom size, scaling the image",
+		"description": "Use a custom size",
 		"default": false
 	},
 
