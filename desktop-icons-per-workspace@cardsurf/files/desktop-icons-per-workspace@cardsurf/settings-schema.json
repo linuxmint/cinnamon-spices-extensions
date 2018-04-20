@@ -1,0 +1,44 @@
+{
+    "configuration_start": {
+        "type": "header",
+        "description": "Configuration"
+    },
+    "refresh_delay_start": {
+        "type": "spinbutton",
+        "default": 3000,
+        "min": 0,
+        "max": 10000,
+        "units": "milliseconds",
+        "step": 1,
+        "description": "Desktop refresh delay on start",
+        "tooltip": "A number of milliseconds to wait for initial desktop refresh after the extension is started"
+    },
+    "refresh_delay_switch": {
+        "type": "spinbutton",
+        "default": 500,
+        "min": 0,
+        "max": 10000,
+        "units": "milliseconds",
+        "step": 1,
+        "description": "Desktop refresh completed delay",
+        "tooltip": "A number of milliseconds to wait before completing desktop refresh"
+    },
+    "save_every": {
+        "type": "spinbutton",
+        "default": 600,
+        "min": 0,
+        "max": 85800,
+        "units": "seconds",
+        "step": 1,
+        "description": "Save every",
+        "tooltip": "How often to save desktop icon positions to the file. 0 means no saving to the file."
+    },
+    "configuration_end" : {
+        "type" : "separator"
+    },
+
+    "is_dialog_shown": {
+        "type": "generic",
+        "default": false
+    }
+}
