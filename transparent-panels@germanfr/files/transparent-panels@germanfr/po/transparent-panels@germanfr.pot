@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 19:23+0200\n"
+"POT-Creation-Date: 2018-04-28 20:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:169
+#: extension.js:166
 #, javascript-format
 msgid "%s enabled"
 msgstr ""
 
-#: extension.js:170
+#: extension.js:167
 msgid "Open the extension settings and customize your panels"
 msgstr ""
 
-#: extension.js:173
+#: extension.js:170
 msgid "Open settings"
 msgstr ""
 
@@ -54,22 +54,23 @@ msgstr ""
 msgid "Choose the type of transparency you want."
 msgstr ""
 
-#. settings-schema.json->opacify->description
-msgid "Remove theme transparency (experimental)"
-msgstr ""
-
-#. settings-schema.json->opacify->tooltip
-msgid "Remove panel transparency when it's not transparent."
-msgstr ""
-
 #. settings-schema.json->theme-defined->description
 msgid "Use current theme styles"
 msgstr ""
 
 #. settings-schema.json->theme-defined->tooltip
 msgid ""
-"Let the theme style the panels instead of using the the extension presets. "
-"Use this in case the panels transparency is icorrectly set."
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr ""
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
 msgstr ""
 
 #. settings-schema.json->section-filters->description
