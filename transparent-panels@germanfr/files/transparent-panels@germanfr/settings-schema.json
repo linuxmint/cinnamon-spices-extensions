@@ -16,18 +16,18 @@
 		"tooltip" : "Choose the type of transparency you want."
 	},
 
+	"theme-defined" : {
+		"type" : "switch",
+		"default" : false,
+		"description" : "Use current theme styles",
+		"tooltip" : "Only for supported themes. Let the theme style the panels instead of using the extension presets. Use this in case the panels transparency is icorrectly set."
+	},
+
 	"opacify" : {
 		"type" : "switch",
 		"default" : false,
 		"description" : "Remove theme transparency (experimental)",
 		"tooltip" : "Remove panel transparency when it's not transparent."
-	},
-
-	"theme-defined" : {
-		"type" : "switch",
-		"default" : false,
-		"description" : "Use current theme styles",
-		"tooltip" : "Let the theme style the panels instead of using the the extension presets. Use this in case the panels transparency is icorrectly set."
 	},
 
 	"section-filters" : {
