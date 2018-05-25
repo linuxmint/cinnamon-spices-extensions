@@ -92,7 +92,7 @@ function createWindowClone(metaWindow, size, withTransients, withPositions) {
       scale = Math.min(size/Math.max(maxWidth, maxHeight), 1);
     }
   }
-  for (i in textures) {
+  for (let i in textures) {
     let data = textures[i];
     let [texture, width, height, x, y] =
       [data.t, data.w, data.h, data.x, data.y];
@@ -156,7 +156,7 @@ function getTabList(all, group, window, workspaceOpt, screenOpt) {
     }
   }
   // from cinnamon_app_compare_windows()
-  windows.sort(Lang.bind(this, function(w1, w2) {
+  windows.sort(function(w1, w2) {
     let ws_1 = w1.get_workspace() == global.screen.get_active_workspace();
     let ws_2 = w2.get_workspace() == global.screen.get_active_workspace();
 
@@ -174,7 +174,7 @@ function getTabList(all, group, window, workspaceOpt, screenOpt) {
       return 1;
 
     return (w2.get_user_time() - w1.get_user_time());
-  }));
+  });
   return windows;
 }
 
@@ -558,7 +558,7 @@ AltTabPopup.prototype = {
       doDestroy();
     }
     let windows = global.get_window_actors();
-    for (i in windows) {
+    for (let i in windows) {
       if (windows[i].get_meta_window().get_window_type ()
         !== Meta.WindowType.DESKTOP)
         Tweener.addTween(windows[i], {
@@ -650,7 +650,7 @@ AltTabPopup.prototype = {
     this._displayPreviewTimeoutId =
       Mainloop.timeout_add(delay, Lang.bind(this, showPreview));
     let windows = global.get_window_actors();
-    for (i in windows) {
+    for (let i in windows) {
       if (windows[i].get_meta_window().get_window_type ()
         !== Meta.WindowType.DESKTOP)
         Tweener.addTween(windows[i], {
@@ -924,7 +924,7 @@ AppIcon.prototype = {
   resize: function(size){
     this.icon = new St.Group();
     let clones = createWindowClone(this.window, size, true, true);
-    for (i in clones) {
+    for (let i in clones) {
       let clone = clones[i];
       this.icon.add_actor(clone.actor);
       clone.actor.set_position(clone.x, clone.y);
