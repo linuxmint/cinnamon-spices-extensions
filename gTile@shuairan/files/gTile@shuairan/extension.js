@@ -60,7 +60,6 @@ let focusMetaWindow = false;
 let focusWindowActor = false;
 let focusMetaWindowConnections = new Array();
 let focusMetaWindowPrivateConnections = new Array();
-let tracker;
 let gridSettings = new Object();
 let gridSettingsButton = new Array();
 let toggleSettingListener;
