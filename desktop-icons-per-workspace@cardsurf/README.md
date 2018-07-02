@@ -19,4 +19,4 @@ The extension does not set positions of the following desktop icons per workspac
 - Trash
 
 ## Source code
-Browse the source of the extension in the [original repository](https://github.com/cardsurf/desktop-icons-per-workspace)
+Browse the source of the extension in the [original repository](https://gitlab.com/cardsurf/desktop-icons-per-workspace)
