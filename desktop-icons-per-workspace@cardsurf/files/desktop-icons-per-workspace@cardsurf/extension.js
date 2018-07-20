@@ -35,7 +35,7 @@ MyExtension.prototype = {
 
         this.settings = new Settings.ExtensionSettings(this, metadata.uuid);
         this.is_dialog_shown = false;
-        this.refresh_delay_start = 3000;
+        this.refresh_delay_start = 5000;
         this.refresh_delay_switch = 500;
         this.save_every = 0;
 

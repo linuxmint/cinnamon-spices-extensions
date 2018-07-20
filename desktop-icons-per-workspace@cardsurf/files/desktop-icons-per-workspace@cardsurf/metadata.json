@@ -2,7 +2,8 @@
     "version": "1.0.0",
     "cinnamon-version": [
         "2.6",
-        "3.6"
+        "3.6",
+        "3.8"
     ],
     "url": "http://cinnamon-spices.linuxmint.com/extensions",
     "description": "Set positions of desktop icons per workspace",
