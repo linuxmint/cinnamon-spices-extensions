@@ -13,6 +13,12 @@ if hash xdg-user-dir 2>/dev/null; then
     desktop_directory=$(xdg-user-dir DESKTOP)
 fi
 
+# Use gio tool if it is available
+is_gio=false
+if hash gio 2>/dev/null; then
+    is_gio=true
+fi
+
 # Automatically split array elements in for loops on newline only
 IFS=$'\n'
 
@@ -35,15 +41,24 @@ function run {
     for desktop_path in $desktop_directory/*; do
         line="";
 
-        # Add desktop file configuration
-        attributes=$(gvfs-info -a 'metadata::nemo-icon-position' "$desktop_path") # Read icon attributes
-        position=$(echo $attributes | gawk '{split($0, substrings, "metadata::nemo-icon-position:"); print substrings[2]}' ) # Get icon position
-        position=$(echo $position | gawk '{gsub(/\s+/,"",$0); print}') # Remove whitespaces
-        x=$(echo $position | gawk '{split($0, substrings, ","); print substrings[1]}' ) # Get x position
-        y=$(echo $position | gawk '{split($0, substrings, ","); print substrings[2]}' ) # Get y position
-        line=$desktop_path$delimeter$x$delimeter$y
+        # If file exists
+        if [ -e "$desktop_path" ]; then
 
-        lines+=("$line")
+            # Add desktop file configuration
+            if [ "$is_gio" = true ] ; then
+                attributes=$(gio info -a 'metadata::nemo-icon-position' "$desktop_path") # Read icon attributes
+            else
+                attributes=$(gvfs-info -a 'metadata::nemo-icon-position' "$desktop_path") # Read icon attributes
+            fi
+            position=$(echo $attributes | gawk '{split($0, substrings, "metadata::nemo-icon-position:"); print substrings[2]}' ) # Get icon position
+            position=$(echo $position | gawk '{gsub(/\s+/,"",$0); print}') # Remove whitespaces
+            x=$(echo $position | gawk '{split($0, substrings, ","); print substrings[1]}' ) # Get x position
+            y=$(echo $position | gawk '{split($0, substrings, ","); print substrings[2]}' ) # Get y position
+            line=$desktop_path$delimeter$x$delimeter$y
+
+            lines+=("$line")
+        fi
+
     done
 
     # If mktemp command is available
