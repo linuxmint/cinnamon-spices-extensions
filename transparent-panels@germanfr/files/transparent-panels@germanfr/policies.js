@@ -58,14 +58,14 @@ MaximizedPolicy.prototype = {
 	},
 
 	enable: function () {
-		this._signals = new SignalManager.SignalManager(this);
-		this._signals.connect(global.window_manager, "maximize", this._on_window_appeared);
-		this._signals.connect(global.window_manager, "map", this._on_window_appeared);
+		this._signals = new SignalManager.SignalManager(null);
+		this._signals.connect(global.window_manager, "maximize", this._on_window_appeared, this);
+		this._signals.connect(global.window_manager, "map", this._on_window_appeared, this);
 
-		this._signals.connect(global.window_manager, "minimize", this._on_window_disappeared);
-		this._signals.connect(global.window_manager, "unmaximize", this._on_window_disappeared);
-		this._signals.connect(global.screen, "window-removed", this.lookup_all_monitors);
-		this._signals.connect(global.window_manager, "switch-workspace", this.lookup_all_monitors);
+		this._signals.connect(global.window_manager, "minimize", this._on_window_disappeared, this);
+		this._signals.connect(global.window_manager, "unmaximize", this._on_window_disappeared, this);
+		this._signals.connect(global.screen, "window-removed", this.lookup_all_monitors, this);
+		this._signals.connect(global.window_manager, "switch-workspace", this.lookup_all_monitors, this);
 
 		this._set_up_startup_signals();
 	},
@@ -93,9 +93,9 @@ MaximizedPolicy.prototype = {
 		let windows = global.display.list_windows(0);
 
 		if(windows.length == 0) { // When the extension is loaded at startup
-			this._startup_signals = new SignalManager.SignalManager(this);
-			this._startup_signals.connect(global.display, "window-created", this._on_window_added_startup);
-			this._startup_signals.connect(global.display, "notify::focus-window", this._disconnect_startup_signals);
+			this._startup_signals = new SignalManager.SignalManager(null);
+			this._startup_signals.connect(global.display, "window-created", this._on_window_added_startup, this);
+			this._startup_signals.connect(global.display, "notify::focus-window", this._disconnect_startup_signals, this);
 		} else { // When the extension is loaded in the middle of a session
 			for(let win of windows)
 				this._on_window_added_startup(global.display, win);
@@ -111,7 +111,7 @@ MaximizedPolicy.prototype = {
 	// Parse windows status at startup
 	_on_window_added_startup: function (display, win) {
 		if(win.get_window_type() === Meta.WindowType.DESKTOP) {
-			this._signals.connect(win, "focus", this._on_desktop_focused);
+			this._signals.connect(win, "focus", this._on_desktop_focused, this);
 		} else if(this._is_window_maximized(win)) {
 			let monitor = win.get_monitor();
 			if(this.transparent[monitor]) {
@@ -152,14 +152,14 @@ MaximizedPolicy.prototype = {
 
 		// Listen to focus on other windows since desktop is focused until another
 		// window gains focus, to avoid innecesary overhead each time focus changes.
-		this._signals.connect(global.display, "notify::focus-window",
-			function focus_lost (display) {
-				let focused = display.get_focus_window();
-				if(!focused || desktop === focused || focused.get_monitor() !== monitor)
-					return;
-				this._signals.disconnect("notify::focus-window", display, focus_lost);
-				this.lookup_all_monitors();
-			});
+		const focus_lost = (display) => {
+			let focused = display.get_focus_window();
+			if(desktop === focused || focused.get_monitor() !== monitor)
+				return;
+			this._signals.disconnect("notify::focus-window", display, focus_lost);
+			this.lookup_all_monitors();
+		};
+		this._signals.connect(global.display, "notify::focus-window", focus_lost);
 	},
 
 	_any_maximized_window: function (monitor) {
