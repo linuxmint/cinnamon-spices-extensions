@@ -14,9 +14,9 @@ Download it [from here][spices] or search for _"Transparent panels"_ in your Cin
 To download the source and install it, execute the following as a normal user (you will need [git](https://git-scm.com/)).
 ``` shell
 $ git clone https://github.com/germanfr/cinnamon-transparent-panels.git
-$ cd cinnamon-transparent-panels/ && ./install.sh
+$ cd cinnamon-transparent-panels/ && ./utils.sh install
 ```
-The above will download the source from Github and it will be copied to your `~/.local/share/cinnamon/extensions/` folder. If you don't have git installed, you can download a zip [from here](https://github.com/germanfr/cinnamon-transparent-panels/archive/master.zip). Run `./install.sh` from the folder extracted from the zip.
+The above will download the source from Github and it will be copied to your `~/.local/share/cinnamon/extensions/` folder. If you don't have git installed, you can download a zip [from here](https://github.com/germanfr/cinnamon-transparent-panels/archive/master.zip), extract it and run `$ ./utils.sh install`.
 
 ## Changelog
 See the list of changes on Github:  [https://github.com/germanfr/cinnamon-transparent-panels/commits/master][commits]
