@@ -3,7 +3,7 @@ gTile
 
 ### Usage
 
-  - `Super` + `Space` open gTile
+  - `Super` + `G` open gTile
   - `Esc` close gTile
   - `ARROWS` move with keyboard
   - `Shift` + `ARROWS` select area
