@@ -6,7 +6,7 @@
 
  "hotkey": {
     "type" : "keybinding",
-    "default" : "<Super>space",
+    "default" : "<Super>g",
     "description" : "Global Hotkey for gTile"
  },
  "seperator1" : {
