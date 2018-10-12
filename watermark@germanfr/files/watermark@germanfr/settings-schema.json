@@ -32,21 +32,45 @@
 	},
 
 	"position-x": {
-		"type": "scale",
-		"description" : "Position x (%)",
+		"type": "combobox",
+		"description" : "Horizontal align",
 		"default": 50,
+		"options": {
+			"Left": 0,
+			"Center": 50,
+			"Right": 100
+		}
+	},
+
+	"margin-x": {
+		"type": "spinbutton",
+		"description" : "Horizontal margin",
+		"default": 64,
 		"min": 0,
-		"max": 100,
-		"step": 1
+		"max": 512,
+		"step": 1,
+		"units": "px"
 	},
 
 	"position-y": {
-		"type": "scale",
-		"description" : "Position y (%)",
+		"type": "combobox",
+		"description" : "Vertical align",
 		"default": 50,
+		"options": {
+			"Top": 0,
+			"Center": 50,
+			"Bottom": 100
+		}
+	},
+
+	"margin-y": {
+		"type": "spinbutton",
+		"description" : "Vertical margin",
+		"default": 64,
 		"min": 0,
-		"max": 100,
-		"step": 1
+		"max": 512,
+		"step": 1,
+		"units": "px"
 	},
 
 	"section2": {
