@@ -10,13 +10,14 @@
 /*****************************************************************
                          CONST & VARS
 *****************************************************************/
-const St = imports.gi.St;
-const Main = imports.ui.main;
+const GObject = imports.gi.GObject;
 const Cinnamon = imports.gi.Cinnamon;
-const Lang = imports.lang;
+const St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
+const Lang = imports.lang;
 const Signals = imports.signals;
+const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
@@ -54,6 +55,10 @@ let gridSettingsButton = [];
 let toggleSettingListener;
 let preferences = {};
 let settings;
+
+const isFinalized = function(obj) {
+  return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
+}
 
 /*****************************************************************
                             SETTINGS
@@ -1393,14 +1398,17 @@ GridElement.prototype = {
   },
 
   _onHoverChanged: function() {
+    if (!this.actor || isFinalized(this.actor)) return;
     this.actor._delegate._onHoverChanged(this);
   },
 
   _activate: function() {
+    if (!this.actor || isFinalized(this.actor)) return;
     this.actor.add_style_pseudo_class('activate');
   },
 
   _deactivate: function() {
+    if (!this.actor || isFinalized(this.actor)) return;
     this.actor.remove_style_pseudo_class('activate');
   },
 
