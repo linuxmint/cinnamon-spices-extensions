@@ -2,7 +2,7 @@
 
              This extension has been developped by
             vibou and forked to cinnamon by shuairan
-                                
+
            With the help of the gnome-shell community
 
 ******************************************************************/
@@ -48,13 +48,12 @@ for (let type in KEYCONTROL) {
 	let key = KEYCONTROL[type];
 	KEYCONTROL[type+"-meta"] = metaKey+key;
 }
-			
+
 
 
 let status;
 let grids;
 let monitors;
-let tracker;
 let area;
 let focusMetaWindow = false;
 let focusWindowActor = false;
@@ -67,6 +66,7 @@ let toggleSettingListener;
 let preferences = {};
 
 let window_dragging=true;
+let settings;
 
 
 /*****************************************************************
@@ -77,27 +77,27 @@ let window_dragging=true;
 function initSettings()
 {
 
-	this.settings = new Settings.ExtensionSettings(preferences, "gTile@shuairan");
+	settings = new Settings.ExtensionSettings(preferences, "gTile@shuairan");
 	//hotkey
-	this.settings.bindProperty(Settings.BindingDirection.IN,
+	settings.bindProperty(Settings.BindingDirection.IN,
                          "hotkey",
                          "hotkey",
                          enableHotkey,
                          null);
 	//grid (nbCols and nbRows)
-	this.settings.bindProperty(Settings.BindingDirection.OUT,
+	settings.bindProperty(Settings.BindingDirection.OUT,
                          "lastGridRows",
                          "nbCols");
-	this.settings.bindProperty(Settings.BindingDirection.OUT,
+	settings.bindProperty(Settings.BindingDirection.OUT,
                          "lastGridCols",
                          "nbRows");
 
-	this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL,
+	settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL,
                          "animation",
                          "animation",
 						 updateSettings,
 						 null);
-	this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL,
+	settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL,
                          "autoclose",
                          "autoclose",
 						 updateSettings,
@@ -111,11 +111,11 @@ function initSettings()
 	for (let i = 1; i <= 4; i++) {
 		let sgbx = basestr + i + "x";
 		let sgby = basestr + i + "y";
-		this.settings.bindProperty(Settings.BindingDirection.IN,
+		settings.bindProperty(Settings.BindingDirection.IN,
                          sgbx,
                          sgbx,
 						 updateGridSettings, null);
-		this.settings.bindProperty(Settings.BindingDirection.IN,
+		settings.bindProperty(Settings.BindingDirection.IN,
                          sgby,
                          sgby,
 						 updateGridSettings, null);
@@ -164,27 +164,28 @@ function enable() {
     Main.uiGroup.add_actor(area);
 
     initSettings();
-    initGrids(); 
+    initGrids();
 
-    enableHotkey();
+	enableHotkey();
 
-    tracker.connect('notify::focus-app', Lang.bind(this, this._onFocus));
-	global.screen.connect('monitors-changed', Lang.bind(this, reinitalize));
+
+    tracker.connect('notify::focus-app', _onFocus);
+	global.screen.connect('monitors-changed', reinitalize);
     //global.log("KEY BINDNGS");
 }
 
-function disable() 
+function disable()
 {
     // Key Bindings
 	disableHotkey();
-     
+
     destroyGrids();
     resetFocusMetaWindow();
 }
 
 function enableHotkey() {
 	disableHotkey();
-	Main.keybindingManager.addHotKey("gTile", preferences.hotkey, Lang.bind(this, toggleTiling));
+	Main.keybindingManager.addHotKey("gTile", preferences.hotkey, toggleTiling);
 }
 
 function disableHotkey() {
@@ -206,7 +207,7 @@ function resetFocusMetaWindow()
             focusMetaWindow.disconnect(focusMetaWindowConnections[idx]);
         }
     }
-    
+
     if(focusMetaWindowPrivateConnections.length>0)
     {
         let actor = focusMetaWindow.get_compositor_private();
@@ -218,7 +219,7 @@ function resetFocusMetaWindow()
             }
         }
     }
-    
+
     focusMetaWindow = false;
     focusMetaWindowConnections = new Array();
     focusMetaWindowPrivateConnections = new Array();
@@ -235,11 +236,11 @@ function initGrids()
 		let grid = new Grid(monitorIdx,monitor,"gTile", preferences.nbCols, preferences.nbRows);
 		let key = getMonitorKey(monitor);
 		grids[key] = grid;
-		
+
 		Main.layoutManager.addChrome(grid.actor, { visibleInFullscreen: true });
 		grid.actor.set_opacity(0);
 		grid.hide(true);
-		grid.connect('hide-tiling',Lang.bind(this,this.hideTiling));
+		grid.connect('hide-tiling', hideTiling);
 	}
 }
 
@@ -265,7 +266,7 @@ function refreshGrids()
         let grid = grids[gridIdx];
         grid.refresh();
     }
-    
+
     Main.layoutManager._chrome.updateRegions();
 }
 
@@ -275,7 +276,7 @@ function moveGrids()
     {
         return;
     }
-    
+
     let window = focusMetaWindow;
     if(window)
     {
@@ -284,7 +285,7 @@ function moveGrids()
             let grid = grids[gridIdx];
             let pos_x;
 	        let pos_y;
-	        
+
 	        let monitor = grid.monitor;
 	        if(window.get_monitor() == grid.monitor_idx)
 	        {
@@ -295,11 +296,11 @@ function moveGrids()
 	        {
 	            pos_x =monitor.x + monitor.width/2;
 	            pos_y = monitor.y + monitor.height/2;
-	        }        
-	        
+	        }
+
 	        pos_x = Math.floor(pos_x - grid.actor.width / 2);
 	        pos_y = Math.floor(pos_y - grid.actor.height / 2);
-	        
+
 	        if(window.get_monitor() == grid.monitor_idx)
 	        {
 	            pos_x = (pos_x < monitor.x) ? monitor.x : pos_x;
@@ -307,16 +308,16 @@ function moveGrids()
 	            pos_y = (pos_y < monitor.y) ? monitor.y : pos_y;
 	            pos_y = ((pos_y + grid.actor.height) > (monitor.height+monitor.y)) ? monitor.y + monitor.height - grid.actor.height : pos_y;
 	        }
-	        
+
 	        let time = (preferences.animation) ? 0.3 : 0.1;
-	        
+
 			Tweener.addTween(grid.actor,
-                         { 
+                         {
                            time: time,
                            x:pos_x,
                            y:pos_y,
                            transition: 'easeOutQuad',
-                           onComplete:this.updateRegions});
+                           onComplete: updateRegions});
         }
     }
 }
@@ -334,7 +335,7 @@ function updateRegions()
 
 function reset_window(metaWindow)
 {
-    metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL); 
+    metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
     metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
     metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 }
@@ -344,10 +345,10 @@ function _getInvisibleBorderPadding(metaWindow) {
         let inputRect = metaWindow.get_input_rect();
         let [borderX, borderY] = [outerRect.x - inputRect.x,
                                   outerRect.y - inputRect.y];
-    
+
         return [borderX, borderY];
 }
-    
+
 function _getVisibleBorderPadding (metaWindow) {
         let clientRect = metaWindow.get_rect();
         let outerRect = metaWindow.get_outer_rect();
@@ -361,11 +362,11 @@ function _getVisibleBorderPadding (metaWindow) {
 function move_maximize_window(metaWindow,x,y)
 {
     let borderX,borderY,vBorderX,vBorderY;
-    [borderX,borderY] = this._getInvisibleBorderPadding(metaWindow);
+    [borderX,borderY] = _getInvisibleBorderPadding(metaWindow);
 
     x = x - borderX;
     y = y - borderY;
-   
+
 
     metaWindow.move_frame(true,x,y);
     metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
@@ -374,11 +375,11 @@ function move_maximize_window(metaWindow,x,y)
 function move_resize_window(metaWindow,x,y,width,height)
 {
     let borderX,borderY,vBorderX,vBorderY;
-    [vBorderX,vBorderY] = this._getVisibleBorderPadding(metaWindow);
-    
+    [vBorderX,vBorderY] = _getVisibleBorderPadding(metaWindow);
+
     x = x; //- borderX;
     y = y; //- borderY;
-    
+
     width = width - vBorderX;
     height = height - vBorderY ;
 
@@ -389,14 +390,14 @@ function move_resize_window(metaWindow,x,y,width,height)
 function _isMyWindow(win)
 {
     //global.log("meta-window: "+this.focusMetaWindow+" : "+win.meta_window);
-    return (this.focusMetaWindow == win.meta_window);
+    return focusMetaWindow == win.meta_window;
 }
 
 function getWindowActor()
 {
-    let windows = global.get_window_actors().filter(this._isMyWindow, this);
+    let windows = global.get_window_actors().filter(_isMyWindow);
     focusWindowActor = windows[0];
-    
+
     //global.log("window actor: "+focusWindowActor+":"+focusMetaWindow.get_compositor_private() );
 }
 
@@ -411,7 +412,7 @@ function getNotFocusedWindowsOfMonitor(monitor)
 			if (w.minimized) { return false; }
 			if (w_monitor != monitor) { return false; }
 
-			return focusMetaWindow != w && w.get_wm_class() != null;	
+			return focusMetaWindow != w && w.get_wm_class() != null;
 		});
 }
 
@@ -434,25 +435,25 @@ function _onFocus()
 {
     let window = getFocusApp();
     if(window)
-    {   
+    {
         resetFocusMetaWindow();
 
         //global.log("Connect window: "+window.get_title());
         focusMetaWindow = window;
         //focusMetaWindowConnections.push(focusMetaWindow.connect('notify::title',Lang.bind(this,this._onFocus)));
-        
+
         let actor = focusMetaWindow.get_compositor_private();
         if(actor)
         {
-            focusMetaWindowPrivateConnections.push(actor.connect('size-changed',Lang.bind(this,this.moveGrids)));
-            focusMetaWindowPrivateConnections.push(actor.connect('position-changed',Lang.bind(this,this.moveGrids)));
+            focusMetaWindowPrivateConnections.push(actor.connect('size-changed', moveGrids));
+            focusMetaWindowPrivateConnections.push(actor.connect('position-changed', moveGrids));
         }
-       
+
         //global.log("End Connect window: "+window.get_title());
 
         let app = tracker.get_window_app(focusMetaWindow);
         let title = focusMetaWindow.get_title();
-        
+
         for(let monitorIdx in monitors)
 	    {
 		    let monitor = monitors[monitorIdx];
@@ -473,7 +474,7 @@ function _onFocus()
             let grid = grids[gridIdx];
             grid.topbar._set_title('gTile');
         }
-        
+
     }
 }
 
@@ -484,19 +485,19 @@ function showTiling()
     let wm_class = focusMetaWindow.get_wm_class();
     let wm_type = focusMetaWindow.get_window_type();
     let layer = focusMetaWindow.get_layer();
-        
+
     //global.log("type:"+wm_type+" class:"+wm_class+" layer:"+layer);
     //global.log("focus app: "+focusMetaWindow);
-    this.area.visible = true;
+    area.visible = true;
 	if(focusMetaWindow && wm_type != 1 && layer > 0)
-	{	    
+	{
 	     for(let monitorIdx in monitors)
 	    {
 	        let monitor = monitors[monitorIdx];
 	        let key = getMonitorKey(monitor);
 	        let grid = grids[key];
 	        //global.log("ancestor: "+grid.actor.get_parent());
-	        
+
 	        let window = getFocusApp();
 	        let pos_x;
 	        let pos_y;
@@ -509,39 +510,39 @@ function showTiling()
 	        {
 	            pos_x =monitor.x + monitor.width/2;
 	            pos_y = monitor.y + monitor.height/2;
-	        }        
-            
+	        }
+
             grid.set_position(
-	            Math.floor(pos_x - grid.actor.width / 2), 
+	            Math.floor(pos_x - grid.actor.width / 2),
 	            Math.floor(pos_y - grid.actor.height / 2)
                 );
-            
-	        
-            grid.show(); 
+
+
+            grid.show();
 	    }
-	    
-	    this._onFocus();
+
+	    _onFocus();
 		status = true;
 	}
-	
+
 	moveGrids();
 }
 
 function hideTiling()
-{	
+{
 	for(let gridIdx in grids)
 	{
 	    let grid = grids[gridIdx];
 	    grid.elementsDelegate.reset();
 	    grid.hide(false);
 	}
-	
-	this.area.visible = false;
-	
+
+	area.visible = false;
+
     resetFocusMetaWindow();
-    
-    status = false; 
-    
+
+    status = false;
+
     Main.layoutManager._chrome.updateRegions();
 }
 
@@ -565,7 +566,7 @@ function getMonitorKey(monitor)
 }
 
 function getFocusApp()
-{ 
+{
 	return global.display.focus_window;
 }
 
@@ -584,7 +585,7 @@ function TopBar(title)
 }
 
 TopBar.prototype = {
-      
+
     _init: function(title) {
    	this.actor = new St.BoxLayout({style_class:'top-box'});
         this._title = title;
@@ -593,26 +594,26 @@ TopBar.prototype = {
 	this._closeButton = new St.Button({style_class: 'close-button'});
 
 	this._closeButton.connect('button-release-event', Lang.bind(this, this._onCloseButtonClicked));
-        
+
         this.actor.add(this._iconBin);
         this.actor.add(this._stlabel,{x_fill: true,expand: true});
         this.actor.add(this._closeButton, {x_fill: false, expand: false});
     },
-    
+
     _set_title : function(title)
     {
          this._title = title;
          this._stlabel.text = this._title;
     },
-    
+
     _set_app : function(app,title)
     {
-       
+
          this._title = app.get_name()+" - "+title;
           //global.log("title: "+this._title);
          this._stlabel.text = this._title;
          this._icon = app.create_icon_texture(24);
-         
+
          this._iconBin.set_size(24, 24);
          this._iconBin.child = this._icon;
     },
@@ -632,13 +633,13 @@ ToggleSettingsButtonListener.prototype = {
     {
         this.actors = new Array();
     },
-    
+
     addActor : function(actor)
     {
         actor.connect('update-toggle', Lang.bind(this,this._updateToggle));
         this.actors.push(actor);
     },
-    
+
     _updateToggle: function()
     {
         for(let actorIdx in this.actors)
@@ -652,7 +653,7 @@ ToggleSettingsButtonListener.prototype = {
 function ToggleSettingsButton(text,property)
 {
     this._init(text,property);
-    
+
 };
 
 ToggleSettingsButton.prototype = {
@@ -668,16 +669,16 @@ ToggleSettingsButton.prototype = {
         this.actor.add_actor(this.icon);
         this.property = property;
         this._update();
-        this.actor.add_actor(this.icon,{x_fill:true, y_fill:true});
+        this.actor.add_actor(this.icon);
         this.actor.connect('button-press-event', Lang.bind(this,this._onButtonPress));
         this.connect('update-toggle', Lang.bind(this,this._update));
-        
+
         if (TOOLTIPS[property]) {
-            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]); 
+            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
         }
 
     },
-    
+
     _update : function()
     {
         if(preferences[this.property])
@@ -689,7 +690,7 @@ ToggleSettingsButton.prototype = {
             this.actor.remove_style_pseudo_class('activate');
         }
     },
-    
+
      _onButtonPress : function()
     {
         preferences[this.property] = !preferences[this.property];
@@ -703,7 +704,7 @@ Signals.addSignalMethods(ToggleSettingsButton.prototype);
 function ActionButton(grid,classname)
 {
     this._init(grid,classname);
-    
+
 };
 
 ActionButton.prototype = {
@@ -714,18 +715,18 @@ ActionButton.prototype = {
                                                   reactive: true,
                                                   can_focus:true,
                                                   track_hover: true});
-        
+
         this.icon = new St.BoxLayout({style_class: classname, reactive:true, can_focus:true, track_hover:true });
         this.actor.add_actor(this.icon);
-       
+
         this.actor.add_actor(this.icon);
         this.actor.connect('button-press-event', Lang.bind(this,this._onButtonPress));
-        
+
         if (TOOLTIPS[classname]) {
-            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]); 
+            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
         }
     },
-    
+
      _onButtonPress : function()
     {
         this.emit('button-press-event');
@@ -741,49 +742,49 @@ function AutoTileMainAndList(grid)
 
 AutoTileMainAndList.prototype = {
      __proto__: ActionButton.prototype,
-     
+
      _init : function(grid,classname)
      {
         ActionButton.prototype._init.call(this, grid,classname);
         this.classname = classname;
         this.connect('button-press-event',Lang.bind(this,this._onButtonPress));
      },
-     
+
     _onButtonPress : function()
     {
         if(!focusMetaWindow)
         {
             return;
         }
-                
+
         reset_window(focusMetaWindow);
-        
+
         let monitor = this.grid.monitor;
         let offsetY = (isPrimaryMonitor(monitor) && !Main.panel.isHideable()) ? Main.panel.actor.height : 0;
         let offsetY2 = (isPrimaryMonitor(monitor) && Main.panel2 && !Main.panel2.isHideable()) ? Main.panel2.actor.height : 0;
         let offsetTotal = offsetY + offsetY2;
 
         let windows = getNotFocusedWindowsOfMonitor(monitor);
-        
+
         let startY = (Main.panel.bottomPosition) ? 0 : offsetY;
-        
+
         move_resize_window(focusMetaWindow,monitor.x,monitor.y+startY,monitor.width/2,monitor.height);
-        
+
         let winHeight = (monitor.height - offsetTotal)/(windows.length );
         let countWin = 0;
-    
+
         for(let windowIdx in windows)
         {
             let metaWindow = windows[windowIdx];
-            
+
             let newOffset = startY + (countWin * winHeight);
-            
+
             reset_window(metaWindow);
-            
+
             move_resize_window(metaWindow,monitor.x+monitor.width/2,monitor.y+newOffset,monitor.width/2,winHeight);
             countWin++;
         }
-        
+
         this.emit('resize-done');
     }
 }
@@ -797,55 +798,55 @@ function AutoTileTwoList(grid)
 
 AutoTileTwoList.prototype = {
      __proto__: ActionButton.prototype,
-     
+
      _init : function(grid,classname)
      {
         ActionButton.prototype._init.call(this, grid, classname);
         this.classname = classname;
         this.connect('button-press-event',Lang.bind(this,this._onButtonPress));
      },
-     
+
     _onButtonPress : function()
     {
        if(!focusMetaWindow)
         {
             return;
         }
-                
+
         reset_window(focusMetaWindow);
-        
+
         let monitor = this.grid.monitor;
         let offsetY = (isPrimaryMonitor(monitor) && !Main.panel.isHideable()) ? Main.panel.actor.height : 0;
         let offsetY2 = (isPrimaryMonitor(monitor) && Main.panel2 && !Main.panel2.isHideable()) ? Main.panel2.actor.height : 0;
         let offsetTotal = offsetY + offsetY2;
         let startY = (Main.panel.bottomPosition) ? 0 : offsetY;
-        
+
         let windows = getNotFocusedWindowsOfMonitor(monitor);
         let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
         let winHeight = (monitor.height - offsetTotal)/nbWindowOnEachSide;
-        
+
         let countWin = 0;
-        
+
         let xOffset = countWin%2 * monitor.width/2;
         let yOffset = startY + (Math.floor(countWin/2) * winHeight);
-        
+
         move_resize_window(focusMetaWindow,monitor.x+xOffset,monitor.y+yOffset,monitor.width/2,winHeight);
-        
+
         countWin++;
-    
+
         for(let windowIdx in windows)
         {
             let metaWindow = windows[windowIdx];
-            
+
             xOffset = countWin%2 * monitor.width/2;
             yOffset = startY + (Math.floor(countWin/2) * winHeight);
-            
+
             reset_window(metaWindow);
-            
+
             move_resize_window(metaWindow,monitor.x+xOffset,monitor.y+yOffset,monitor.width/2,winHeight);
             countWin++;
         }
-        
+
         this.emit('resize-done');
     }
 }
@@ -859,14 +860,14 @@ function ActionScale(grid)
 
 ActionScale.prototype = {
      __proto__: ActionButton.prototype,
-     
+
      _init : function(grid,classname)
      {
         ActionButton.prototype._init.call(this, grid, classname);
         this.classname = classname;
         this.connect('button-press-event',Lang.bind(this,this._onButtonPress));
      },
-     
+
     _onButtonPress : function()
     {
        //global.log(this.classname + "pressed");
@@ -884,22 +885,22 @@ GridSettingsButton.prototype = {
         this.cols = cols;
         this.rows = rows;
         this.text = text;
-        
+
         this.actor = new St.Button({style_class: 'settings-button',
                                                   reactive: true,
                                                   can_focus:true,
                                                   track_hover: true});
-                                                  
+
         this.label = new St.Label({style_class: 'settings-label', reactive:true, can_focus:true, track_hover:true, text:this.text});
-        
+
         this.actor.add_actor(this.label);
-        
-        
+
+
         this.actor.connect('button-press-event', Lang.bind(this,this._onButtonPress));
-        
+
     },
-    
-    
+
+
     _onButtonPress : function()
     {
         preferences.nbCols = this.cols;
@@ -924,12 +925,12 @@ Grid.prototype = {
 		this.rowKey = -1;
 		this.colKey = -1;
 
-		this.actor = new St.BoxLayout({ vertical:true, 
+		this.actor = new St.BoxLayout({ vertical:true,
 		                                style_class: 'grid-panel',
 		                                reactive:true,
 		                                can_focus:true,
 		                                track_hover:true});
-		
+
 		this.actor.connect('enter-event',Lang.bind(this,this._onMouseEnter));
 		this.actor.connect('leave-event',Lang.bind(this,this._onMouseLeave));
 
@@ -938,7 +939,7 @@ Grid.prototype = {
 		//global.stage.connect('key-press-event', Lang.bind(this, this._globalKeyPressEvent));
 
 		this.topbar = new TopBar(title);
-		
+
 		this.bottombar = new St.Table({ homogeneous: true,
                                     style_class: 'bottom-box',
                                     can_focus: true,
@@ -946,7 +947,7 @@ Grid.prototype = {
                                     reactive: true,
                                     width:this.tableWidth,
                                     });
-        
+
         this.veryBottomBar = new St.Table({ homogeneous: true,
                                     style_class: 'bottom-box',
                                     can_focus: true,
@@ -954,9 +955,9 @@ Grid.prototype = {
                                     reactive: true,
                                     width:this.tableWidth,
                                     });
-                                    
+
 		this._initGridSettingsButtons();
-		
+
 		this.table = new St.Table({ homogeneous: true,
                                     style_class: 'table',
                                     can_focus: true,
@@ -964,75 +965,75 @@ Grid.prototype = {
                                     reactive: true,
                                     width:this.tableWidth,
                                     height:this.tableHeight
-                                    });  
-                                    
+                                    });
+
 		this.actor.add(this.topbar.actor,{x_fill:true});
 		this.actor.add(this.table,{x_fill:false});
-		this.actor.add(this.bottombar,{x_fill:true});		
+		this.actor.add(this.bottombar,{x_fill:true});
 		this.actor.add(this.veryBottomBar,{x_fill:true});
-		
-				
+
+
 		this.monitor = monitor;
 		this.monitor_idx = monitor_idx;
 		this.rows = rows;
 		this.title = title;
 		this.cols = cols;
-		
+
 		this.isEntered = false;
-		
+
 		if(true)
 		{
 		    let nbTotalSettings = 4;
-		
+
 		    if(!toggleSettingListener)
 		    {
 		        toggleSettingListener = new ToggleSettingsButtonListener();
             }
-            
+
 		    let toggle = new ToggleSettingsButton("animation",SETTINGS_ANIMATION);
 		    toggle.actor.width = (this.tableWidth / nbTotalSettings) - this.borderwidth*2;
 		    this.veryBottomBar.add(toggle.actor,{row:0, col:0,x_fill:false,y_fill:false});
             toggleSettingListener.addActor(toggle);
-            
+
 		    toggle = new ToggleSettingsButton("auto-close",SETTINGS_AUTO_CLOSE);
 		    toggle.actor.width = (this.tableWidth / nbTotalSettings) - this.borderwidth*2;
 		    this.veryBottomBar.add(toggle.actor,{row:0, col:1,x_fill:false,y_fill:false});
             toggleSettingListener.addActor(toggle);
-            
+
             let action = new AutoTileMainAndList(this);
             action.actor.width = (this.tableWidth / nbTotalSettings) - this.borderwidth*2;
             this.veryBottomBar.add(action.actor,{row:0, col:2,x_fill:false,y_fill:false});
-            
+
             action.connect('resize-done', Lang.bind(this,this._onResize));
-            
+
             action = new AutoTileTwoList(this);
             action.actor.width = (this.tableWidth / nbTotalSettings) - this.borderwidth*2;
             this.veryBottomBar.add(action.actor,{row:0, col:3,x_fill:false,y_fill:false});
-            
+
             action.connect('resize-done', Lang.bind(this,this._onResize));
-            
+
 		}
-		
-		
+
+
 		this.x = 0;
 	    this.y = 0;
-	    
+
 	    this.interceptHide = false;
-		
+
 		this._displayElements();
-		
+
 		this.normalScaleY = this.actor.scale_y;
 		this.normalScaleX = this.actor.scale_x;
 	},
-	
-	_initGridSettingsButtons : function () 
+
+	_initGridSettingsButtons : function ()
 	{
 		this.bottombar.destroy_children();
 
 		let rowNum = 0;
 		let colNum = 0;
 		let maxPerRow = 4;
-		
+
 
 		for(var index=0; index<gridSettingsButton.length;index++)
 		{
@@ -1041,22 +1042,22 @@ Grid.prototype = {
 		        colNum = 0;
 		        rowNum += 2;
 		    }
-		    
+
 		    let button = gridSettingsButton[index];
 		    button = new GridSettingsButton(button.text,button.cols,button.rows);
 		    this.bottombar.add(button.actor,{row:rowNum, col:colNum,x_fill:false,y_fill:false});
 		    button.actor.connect('notify::hover',Lang.bind(this,this._onSettingsButton));
 		    colNum++;
-		}	
+		}
 	},
 
 	_displayElements : function()
 	{
 	    this.elements = new Array();
-		
+
 		let width = (this.tableWidth / this.cols) - 2*this.borderwidth;
 		let height = (this.tableHeight / this.rows) - 2*this.borderwidth;
-	    
+
 	   	this.elementsDelegate = new GridElementDelegate();
 	   	this.elementsDelegate.connect('resize-done', Lang.bind(this, this._onResize));
 		for(let r = 0; r < this.rows; r++)
@@ -1065,7 +1066,7 @@ Grid.prototype = {
 			{
                 if(c == 0)
                 {
-	                this.elements[r] = new Array();					
+	                this.elements[r] = new Array();
                 }
 
                 let element = new GridElement(this.monitor,width,height,c,r);
@@ -1075,9 +1076,9 @@ Grid.prototype = {
                 this.table.add(element.actor,{row: r, col: c,x_fill:false, y_fill:false});
                 element.show();
 			}
-		}		
+		}
 	},
-	
+
 	refresh : function()
 	{
         this.table.destroy_all_children();
@@ -1085,30 +1086,30 @@ Grid.prototype = {
         this.rows = preferences.nbRows;
         this._displayElements();
 	},
-	
+
 	set_position : function (x,y)
 	{
 	    this.x = x;
 	    this.y = y;
 	    this.actor.set_position(x,y);
 	},
-	
+
 	show : function()
 	{
 	    this.interceptHide = true;
 	    this.elementsDelegate.reset();
 	    let time = (preferences.animation) ? 0.3 : 0 ;
-	    
+
         this.actor.raise_top();
         Main.layoutManager.removeChrome(this.actor);
         Main.layoutManager.addChrome(this.actor);
-        //this.actor.y = 0 ;       
+        //this.actor.y = 0 ;
         this.actor.scale_y= 0;
         //this.actor.scale_x= 0;
         if(time > 0 )
         {
             Tweener.addTween(this.actor,
-                         { 
+                         {
                            time: time,
                            opacity: 255,
                            visible: true,
@@ -1122,11 +1123,11 @@ Grid.prototype = {
             this.actor.visible = true;
             this.actor.scale_y = this.normalScaleY;
         }
-        
+
          this.interceptHide = false;
 		 this._bindKeyControls();
 	},
-	
+
 	hide : function(immediate)
 	{
 	    this._removeKeyControls();
@@ -1136,7 +1137,7 @@ Grid.prototype = {
 	    if(time > 0 )
 	    {
 	         Tweener.addTween(this.actor,
-                         { 
+                         {
                            time: time,
                            opacity: 0,
                            visible: false,
@@ -1147,31 +1148,31 @@ Grid.prototype = {
 	    }
 	    else
 	    {
-	        
+
 	        this.actor.opacity = 0;
-            this.actor.visible = false;   
-            //this.actor.y = 0; 
-            this.actor.scale_y = 0; 
+            this.actor.visible = false;
+            //this.actor.y = 0;
+            this.actor.scale_y = 0;
 	    }
-	
+
 	},
-	
+
 	_onHideComplete : function()
 	{
 	    if(!this.interceptHide && this.actor)
 	    {
 	        Main.layoutManager.removeChrome(this.actor);
-	        
+
 	    }
-	    
+
 	    Main.layoutManager._chrome.updateRegions();
 	},
-	
+
 	_onShowComplete : function()
 	{
 	    Main.layoutManager._chrome.updateRegions();
 	},
-	
+
 	 _onResize: function(actor, event)
 	 {
 	    refreshGrids();
@@ -1180,7 +1181,7 @@ Grid.prototype = {
             this.emit('hide-tiling');
         }
      },
-     
+
      _onMouseEnter : function()
      {
         if(!this.isEntered)
@@ -1189,7 +1190,7 @@ Grid.prototype = {
              this.isEntered = true;
         }
      },
-   
+
 	_onMouseLeave : function()
 	{
 	    let [x, y, mask] = global.get_pointer();
@@ -1200,25 +1201,25 @@ Grid.prototype = {
 
 	        refreshGrids();
 	    }
-	    
+
 	},
-	
+
 	_globalKeyPressEvent : function(actor, event) {
         let symbol = event.get_key_symbol();
         //global.log("Escape pressed: "+symbol);
         if (symbol == Clutter.Escape) {
-            
-            hideTiling();    
-            return true; 
+
+            hideTiling();
+            return true;
         }
         return false;
     },
-	
+
 	_onSettingsButton : function()
 	{
-        this.elementsDelegate.reset();   
+        this.elementsDelegate.reset();
 	},
-	
+
 	_bindKeyControls : function() {
 		Main.keybindingManager.addHotKey("gTile-close", 'Escape', Lang.bind(this, toggleTiling));
 		for (let index in KEYCONTROL) {
@@ -1253,7 +1254,7 @@ Grid.prototype = {
 		//global.log("Key pressed: " + type + " - " + key);
 
 		let modifier = type.indexOf('meta', type.length - 'meta'.length) !== -1;
-		
+
 		if (modifier && this.keyElement) {
 			//global.log("MODIFIER pressed!");
 			this._bindKeyControlsTile();
@@ -1300,10 +1301,10 @@ Grid.prototype = {
 			this.rowKey = -1;
 		}
 	},
-	
+
 	_keyTileSwitch : function() {
 		let key = getMonitorKey(this.monitor);
-		
+
 		let candidate = false;
 		let cindex = false;
 		// find other grids //TODO: improve to loop around all grids!
@@ -1327,7 +1328,7 @@ Grid.prototype = {
 	            this.elements[r][c]._destroy();
 	        }
 	    }
-	    
+
 	    this.elementsDelegate._destroy();
 	    this.topbar._destroy();
 	    this._removeKeyControls();
@@ -1336,7 +1337,7 @@ Grid.prototype = {
 		this.title = null;
 		this.cols = null;
 	}
-	
+
 };
 
 Signals.addSignalMethods(Grid.prototype);
@@ -1356,12 +1357,12 @@ GridElementDelegate.prototype = {
         this.currentElement = false;
         this.activatedActors=false;
     },
-    
+
     _allSelected : function()
     {
         return (this.activatedActors.length == (preferences.nbCols * preferences.nbRows));
     },
-    
+
     _onButtonPress : function(gridElement)
 	{
 	    if(this.activated==false)
@@ -1381,41 +1382,41 @@ GridElementDelegate.prototype = {
 	        //if so move the window then maximize instead of change size
 	        //if not move the window and change size
 	        reset_window(focusMetaWindow);
-            
+
             //focusMetaWindow.move_anchor_point_from_gravity(Clutter.Gravity.CENTER);
-	        
+
             let areaWidth,areaHeight,areaX,areaY;
             [areaX,areaY,areaWidth,areaHeight] = this._computeAreaPositionSize(this.first,gridElement);
-            
+
             if(this._allSelected())
             {
                 move_maximize_window(focusMetaWindow,areaX,areaY);
             }
             else
             {
-                 move_resize_window(focusMetaWindow,areaX,areaY,areaWidth,areaHeight);  
+                 move_resize_window(focusMetaWindow,areaX,areaY,areaWidth,areaHeight);
             }
             //focusMetaWindow.configure_notify();
-                     
+
             this._resizeDone();
 	    }
 	},
-	
+
 	_resizeDone: function()
 	{
 	    this.emit('resize-done');
 	},
-	
+
 	reset: function()
 	{
         this._resetGrid();
-        
+
         this.activated = false;
         this.first = false;
         this.last = false;
         this.currentElement = false;
 	},
-	
+
 	_resetGrid: function()
 	{
 	    this._hideArea();
@@ -1430,7 +1431,7 @@ GridElementDelegate.prototype = {
         }
         this.activatedActors= new Array();
 	},
-	
+
 	_getVarFromGridElement: function(fromGridElement, toGridElement)
 	{
         let maxX = (fromGridElement.coordx >= toGridElement.coordx) ? fromGridElement.coordx : toGridElement.coordx;
@@ -1441,28 +1442,28 @@ GridElementDelegate.prototype = {
 
         return [minX,maxX,minY,maxY];
 	},
-	
+
 	refreshGrid : function(fromGridElement,toGridElement)
 	{
 	     this._resetGrid();
 	     let minX,maxX,minY,maxY;
 	     [minX,maxX,minY,maxY] = this._getVarFromGridElement(fromGridElement,toGridElement);
-	     
+
 	     let key = getMonitorKey(fromGridElement.monitor);
 	     let grid = grids[key];
 	     for(let r=minY; r <= maxY; r++)
 	     {
 	        for(let c=minX; c <= maxX; c++)
 	        {
-	            let element = grid.elements[r][c];	            
+	            let element = grid.elements[r][c];
 	            element._activate();
 	            this.activatedActors.push(element);
 	        }
 	     }
-	     
+
 	     this._displayArea(fromGridElement,toGridElement);
 	},
-	
+
 	_computeAreaPositionSize : function (fromGridElement,toGridElement)
 	{
 	    let minX,maxX,minY,maxY;
@@ -1471,40 +1472,40 @@ GridElementDelegate.prototype = {
 		let nbCols = preferences.nbCols;
 
 	    let monitor = fromGridElement.monitor;
-	    
+
 	    let offsetY = (isPrimaryMonitor(monitor) && !Main.panel.isHideable()) ? Main.panel.actor.height : 0;
 	    let offsetY2 = (isPrimaryMonitor(monitor) && Main.panel2 && !Main.panel.isHideable()) ? Main.panel2.actor.height : 0;
         let offsetTotal = offsetY + offsetY2;
-        
+
         let areaWidth = (monitor.width/nbCols)*((maxX-minX)+1);
 		let areaHeight = ((monitor.height-offsetTotal)/nbRows)*((maxY-minY)+1);
 		let areaX = monitor.x + (minX*(monitor.width/nbCols));
 		let areaY = monitor.y + (minY*((monitor.height-offsetTotal)/nbRows));
-        
+
         if (Main.panel.bottomPosition == false) { //panel-position is top
             areaY += offsetY;
         }
 
 		return [areaX,areaY,areaWidth,areaHeight];
 	},
-	
+
 	_displayArea : function (fromGridElement, toGridElement)
 	{
 	    let areaWidth,areaHeight,areaX,areaY;
 	    [areaX,areaY,areaWidth,areaHeight] = this._computeAreaPositionSize(fromGridElement,toGridElement);
-				    
+
 		area.add_style_pseudo_class('activate');
-		
+
 		if(preferences.animation)
 		{
 		    Tweener.addTween(area,
-                         { 
+                         {
                            time: 0.2,
                            x:areaX,
                            y:areaY,
                            width:areaWidth,
                            height: areaHeight,
-                           transition: 'easeOutQuad'}); 
+                           transition: 'easeOutQuad'});
 		}
 		else
 		{
@@ -1513,16 +1514,16 @@ GridElementDelegate.prototype = {
 		    area.x = areaX;
 		    area.y = areaY;
 		}
-		
-				                    
-		
+
+
+
 	},
-	
+
 	_hideArea : function()
 	{
 	   area.remove_style_pseudo_class('activate');
 	},
-	
+
 	_onHoverChanged : function(gridElement)
 	{
 	    if(this.activated)
@@ -1533,13 +1534,13 @@ GridElementDelegate.prototype = {
 	    {
 	        if(this.currentElement)
 	            this.currentElement._deactivate();
-	        
+
 	        this.currentElement = gridElement;
 	        this._displayArea(this.currentElement,this.currentElement);
 	        this.currentElement._activate();
 	    }
 	},
-	
+
 	_destroy : function()
 	{
 	    this.activated = null;
@@ -1559,12 +1560,12 @@ function GridElement(monitor,width,height,coordx,coordy)
 
 
 GridElement.prototype = {
-     
+
 	_init: function(monitor,width,height,coordx,coordy) {
         this.actor = new St.Button({style_class: 'table-element',
                                                   width: width,
                                                   height: height,reactive: true,can_focus:true,track_hover: true})
-		
+
 		this.actor.visible = false;
 		this.actor.opacity = 0;
 		this.monitor = monitor;
@@ -1572,50 +1573,50 @@ GridElement.prototype = {
 		this.coordy = coordy;
 		this.width = width;
 		this.height = height;
-		
+
 		this.actor.connect('button-press-event', Lang.bind(this, this._onButtonPress));
 		this.actor.connect('notify::hover', Lang.bind(this, this._onHoverChanged));
-		
+
 		this.active = false;
 	},
-	
+
 	show : function ()
 	{
 	    this.actor.opacity = 255;
         this.actor.visible = true;
 	},
-	
+
 	hide : function ()
 	{
         this.actor.opacity = 0;
         this.actor.visible = false;
 	},
-	
+
 	_onButtonPress : function()
 	{
 	   this.actor._delegate._onButtonPress(this);
 	},
-	
+
 	_onHoverChanged : function()
 	{
 	    this.actor._delegate._onHoverChanged(this);
 	},
-	
+
 	_activate: function()
 	{
 	   this.actor.add_style_pseudo_class('activate');
 	},
-	
+
 	_deactivate: function()
 	{
 	    this.actor.remove_style_pseudo_class('activate');
 	},
-	
+
 	_clean : function()
 	{
-	    Main.uiGroup.remove_actor(this.area);
+	    Main.uiGroup.remove_actor(area);
 	},
-	
+
 	_destroy : function()
 	{
 		this.monitor = null;
@@ -1623,9 +1624,9 @@ GridElement.prototype = {
 		this.coordy = null;
 		this.width = null;
 		this.height = null;
-		
-		this.active = null;	
+
+		this.active = null;
 	}
-	
+
 };
 
