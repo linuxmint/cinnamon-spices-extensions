@@ -244,8 +244,8 @@ function moveGrids() {
     let pos_x;
     let pos_y;
 
-	let monitor = grid.monitor;
-	let isGridMonitor = window.get_monitor() == grid.monitor_idx;
+    let monitor = grid.monitor;
+    let isGridMonitor = window.get_monitor() == grid.monitor_idx;
     if (isGridMonitor) {
       pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
       pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
@@ -580,8 +580,8 @@ ToggleSettingsButton.prototype = {
       style_class: 'settings-button',
       reactive: true,
       can_focus: true,
-	    track_hover: true,
-	    label: this.text
+      track_hover: true,
+      label: this.text
     });
     this.icon = new St.BoxLayout({style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true});
     this.actor.set_child(this.icon);
