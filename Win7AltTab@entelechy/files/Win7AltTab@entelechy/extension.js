@@ -591,6 +591,10 @@ AltTabPopup.prototype = {
     this._currentIndex = index;
     if (this._winIcons.length < 1) return;
     this._appSwitcher.highlight(index);
+    this._appSwitcher.thumbGrid._setTitle(
+      this._winIcons[index].label,
+      this._winIcons[index]._demandsAttention
+    );
     this._doWindowPreview();
   },
 
@@ -649,7 +653,10 @@ AltTabPopup.prototype = {
       } else {
         this._select(1);
       }
-      this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
+      this._appSwitcher.thumbGrid._setTitle(
+        this._winIcons[this._currentIndex].label,
+        this._winIcons[this._currentIndex]._demandsAttention
+      );
       this._changedWS = false;
     }
 
