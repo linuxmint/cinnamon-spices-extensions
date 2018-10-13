@@ -43,14 +43,6 @@ msgstr ""
 msgid "Position"
 msgstr ""
 
-#. settings-schema.json->position-x->description
-msgid "Position x (%)"
-msgstr ""
-
-#. settings-schema.json->position-y->description
-msgid "Position y (%)"
-msgstr ""
-
 #. settings-schema.json->section2->description
 #. settings-schema.json->size->description
 msgid "Size"
@@ -61,5 +53,44 @@ msgid "Use a custom size"
 msgstr ""
 
 #. settings-schema.json->size->units
+#. settings-schema.json->margin-x->units
+#. settings-schema.json->margin-y->units
 msgid "px"
+msgstr ""
+
+#. settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr ""
+
+#. settings-schema.json->position-x->options
+msgid "Left"
+msgstr ""
+
+#. settings-schema.json->position-x->options
+#. settings-schema.json->position-y->options
+msgid "Center"
+msgstr ""
+
+#. settings-schema.json->position-x->options
+msgid "Right"
+msgstr ""
+
+#. settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr ""
+
+#. settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr ""
+
+#. settings-schema.json->position-y->options
+msgid "Top"
+msgstr ""
+
+#. settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr ""
+
+#. settings-schema.json->margin-y->description
+msgid "Vertical margin"
 msgstr ""

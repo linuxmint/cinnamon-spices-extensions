@@ -2,15 +2,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-04-14 23:30+0200\n"
-"PO-Revision-Date: 2018-04-14 23:31+0200\n"
+"POT-Creation-Date: 2018-04-09 19:23+0200\n"
+"PO-Revision-Date: 2018-10-12 19:49+0200\n"
 "Last-Translator: Germán Franco <dev.germanfr@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. metadata.json->name
@@ -47,14 +47,6 @@ msgstr ""
 msgid "Position"
 msgstr "Posición"
 
-#. settings-schema.json->position-x->description
-msgid "Position x (%)"
-msgstr "Posición x (%)"
-
-#. settings-schema.json->position-y->description
-msgid "Position y (%)"
-msgstr "Posición y (%)"
-
 #. settings-schema.json->section2->description
 #. settings-schema.json->size->description
 msgid "Size"
@@ -65,8 +57,44 @@ msgid "Use a custom size"
 msgstr "Usar tamaño personalizado"
 
 #. settings-schema.json->size->units
+#. settings-schema.json->margin-x->units
+#. settings-schema.json->margin-y->units
 msgid "px"
 msgstr "px"
 
-#~ msgid "Use a custom size, scaling the image"
-#~ msgstr "Usar tamaño personalizado, escalando la imagen"
+#. settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "Alineación horizontal"
+
+#. settings-schema.json->position-x->options
+msgid "Left"
+msgstr "Izquierda"
+
+#. settings-schema.json->position-x->options
+#. settings-schema.json->position-y->options
+msgid "Center"
+msgstr "Centro"
+
+#. settings-schema.json->position-x->options
+msgid "Right"
+msgstr "Derecha"
+
+#. settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "Margen horizontal"
+
+#. settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "Alineación vertical"
+
+#. settings-schema.json->position-y->options
+msgid "Top"
+msgstr "Arriba"
+
+#. settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "Abajo"
+
+#. settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "Margen vertical"
