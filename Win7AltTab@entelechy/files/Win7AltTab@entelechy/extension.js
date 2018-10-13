@@ -18,13 +18,13 @@ const POPUP_FADE_OUT_TIME = 0.1; // seconds
 const DISABLE_HOVER_TIMEOUT = 500; // milliseconds
 const CHECK_DESTROYED_TIMEOUT = 100; // milliseconds
 const PREVIEW_DELAY_TIMEOUT = 150; // milliseconds
-var PREVIEW_SWITCHER_FADEOUT_TIME = 0.5; // seconds
+const PREVIEW_SWITCHER_FADEOUT_TIME = 0.5; // seconds
 
-function mod(a, b) {
+const mod = function(a, b) {
   return (a + b) % b;
 }
 
-function primaryModifier(mask) {
+const primaryModifier = function(mask) {
   if (mask === 0) return 0;
 
   let primary = 1;
@@ -35,19 +35,19 @@ function primaryModifier(mask) {
   return primary;
 }
 
-function isWindows(binding) {
+const isWindows = function(binding) {
   return binding === 'switch-windows' || binding === 'switch-windows-backward' || binding === 'switch-applications' || binding === 'switch-applications-backward';
 }
 
-function isGroup(binding) {
+const isGroup = function(binding) {
   return binding === 'switch-group' || binding === 'switch-group-backward';
 }
 
-function isPanels(binding) {
+const isPanels = function(binding) {
   return binding === 'switch-panels' || binding === 'switch-panels-backward';
 }
 
-function createWindowClone(metaWindow, size, withTransients, withPositions) {
+const createWindowClone = function(metaWindow, size, withTransients, withPositions) {
   let clones = [];
   let textures = [];
 
@@ -110,7 +110,7 @@ function createWindowClone(metaWindow, size, withTransients, withPositions) {
   return clones;
 }
 
-function getTabList(all, group, window, workspaceOpt, screenOpt) {
+const getTabList = function(all, group, window, workspaceOpt, screenOpt) {
   let screen = screenOpt || global.screen;
   let display = screen.get_display();
   let workspace = workspaceOpt || screen.get_active_workspace();
@@ -209,18 +209,9 @@ ThumbnailGrid.prototype = {
     this.actor.add(this.titleBin);
     this.actor.add(this.grid, {expand: true, y_align: St.Align.START});
 
-    this.grid.connect(
-      'get-preferred-width',
-      Lang.bind(this, this._getPreferredWidth)
-    );
-    this.grid.connect(
-      'get-preferred-height',
-      Lang.bind(this, this._getPreferredHeight)
-    );
-    this.grid.connect(
-      'allocate',
-      Lang.bind(this, this._allocate)
-    );
+    this.grid.connect('get-preferred-width', Lang.bind(this, this._getPreferredWidth));
+    this.grid.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
+    this.grid.connect('allocate', Lang.bind(this, this._allocate));
   },
 
   _setTitle: function(text, demandsAttention) {
@@ -290,7 +281,7 @@ ThumbnailGrid.prototype = {
   _allocate: function(grid, box, flags) {
     let children = this._getVisibleChildren();
     let availWidth = box.x2 - box.x1;
-    let availHeight = box.y2 - box.y1;
+    //let availHeight = box.y2 - box.y1;
 
     this._calcTSize();
     let [nColumns, usedWidth] = this._computeLayout(availWidth);
@@ -353,15 +344,11 @@ ThumbnailGrid.prototype = {
   },
 
   removeAll: function() {
-    this.grid.get_children().forEach(
-      Lang.bind(this, function(child) {
-        child.destroy();
-      })
-    );
+    this.grid.destroy_all_children();
   },
 
   addItem: function(actor) {
-    this.grid.add_actor(actor);
+    this.grid.add_child(actor);
   }
 };
 
@@ -377,23 +364,10 @@ AltTabPopup.prototype = {
       visible: false
     });
 
-    this.actor.connect(
-      'get-preferred-width',
-      Lang.bind(this, this._getPreferredWidth)
-    );
-    this.actor.connect(
-      'get-preferred-height',
-      Lang.bind(this, this._getPreferredHeight)
-    );
-    this.actor.connect(
-      'allocate',
-      Lang.bind(this, this._allocate)
-    );
-
-    this.actor.connect(
-      'destroy',
-      Lang.bind(this, this._onDestroy)
-    );
+    this.actor.connect('get-preferred-width', Lang.bind(this, this._getPreferredWidth));
+    this.actor.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
+    this.actor.connect('allocate', Lang.bind(this, this._allocate));
+    this.actor.connect('destroy', Lang.bind(this, this._onDestroy));
 
     this._haveModal = false;
     this._modifierMask = 0;
@@ -407,7 +381,7 @@ AltTabPopup.prototype = {
     // the switcher appears underneath the current pointer location
     this._disableHover();
 
-    Main.uiGroup.add_actor(this.actor);
+    Main.uiGroup.add_child(this.actor);
 
     this._previewEnabled = true;
     this._iconsEnabled = false;
@@ -419,14 +393,8 @@ AltTabPopup.prototype = {
     this._changedBinding = false;
     this._windowManager = global.window_manager;
 
-    this._dcid = this._windowManager.connect(
-      'destroy',
-      Lang.bind(this, this._windowDestroyed)
-    );
-    this._mcid = this._windowManager.connect(
-      'map',
-      Lang.bind(this, this._activateSelected)
-    );
+    this._dcid = this._windowManager.connect('destroy', Lang.bind(this, this._windowDestroyed));
+    this._mcid = this._windowManager.connect('map', Lang.bind(this, this._activateSelected));
   },
 
   _getPreferredWidth: function(actor, forHeight, alloc) {
@@ -459,7 +427,10 @@ AltTabPopup.prototype = {
   },
 
   _checkDestroyed: function(window) {
-    this._checkDestroyedTimeoutId = 0;
+    if (this._checkDestroyedTimeoutId) {
+      Mainloop.source_remove(this._checkDestroyedTimeoutId);
+      this._checkDestroyedTimeoutId = 0;
+    }
     this._removeDestroyedWindow(window);
   },
 
@@ -468,20 +439,19 @@ AltTabPopup.prototype = {
   },
 
   _removeDestroyedWindow: function(window) {
-    for (let i in this._winIcons) {
-      if (window === this._winIcons[i].window) {
-        if (this._winIcons.length === 1) this.destroy();
-        else {
-          this._winIcons.splice(i, 1)[0].actor.destroy();
-          this._appSwitcher._items.splice(i, 1)[0].destroy();
-          if (i < this._currentIndex) this._currentIndex--;
-          else this._currentIndex %= this._winIcons.length;
-          this._select(this._currentIndex);
-          this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
-        }
-
-        return;
+    for (let i = 0; i < this._winIcons.length; i++) {
+      if (window !== this._winIcons[i].window) continue;
+      if (this._winIcons.length === 1) this.destroy();
+      else {
+        this._winIcons.splice(i, 1)[0].actor.destroy();
+        this._appSwitcher._items.splice(i, 1)[0].destroy();
+        if (i < this._currentIndex) this._currentIndex--;
+        else this._currentIndex %= this._winIcons.length;
+        this._select(this._currentIndex);
+        this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
       }
+
+      return;
     }
   },
 
@@ -514,10 +484,6 @@ AltTabPopup.prototype = {
     } else if (direction === Clutter.ScrollDirection.DOWN) {
       this._select(this._nextWindow());
     }
-  },
-
-  _clickedOutside: function() {
-    this.destroy();
   },
 
   _windowActivated: function(appSwitcher, n) {
@@ -557,7 +523,7 @@ AltTabPopup.prototype = {
     this._clearPreview();
     let doDestroy = () => {
       if (isFinalized(this.actor)) return;
-      Main.uiGroup.remove_actor(this.actor);
+      Main.uiGroup.remove_child(this.actor);
       this.actor.destroy();
     };
 
@@ -590,16 +556,10 @@ AltTabPopup.prototype = {
     if (this._displayPreviewTimeoutId) Mainloop.source_remove(this._displayPreviewTimeoutId);
     this._windowManager.disconnect(this._dcid);
     this._windowManager.disconnect(this._mcid);
-    /*if (this._checkDestroyedTimeoutId !== 0) {
-      Mainloop.source_remove(this._checkDestroyedTimeoutId);
-      this._checkDestroyedTimeoutId = 0;
-    }*/
   },
 
   _clearPreview: function() {
-    if (!this.overlayPreview) {
-      return;
-    }
+    if (!this.overlayPreview) return;
     global.overlay_group.remove_child(this.overlayPreview);
     this.overlayPreview.destroy();
     this.overlayPreview = null;
@@ -633,7 +593,7 @@ AltTabPopup.prototype = {
   refresh: function(binding, backward) {
     if (this._appSwitcher) {
       this._clearPreview();
-      this.actor.remove_actor(this._appSwitcher.actor);
+      this.actor.remove_child(this._appSwitcher.actor);
       this._appSwitcher.thumbGrid.removeAll();
       this._appSwitcher.actor.destroy();
     }
@@ -661,16 +621,10 @@ AltTabPopup.prototype = {
     }
 
     this._appSwitcher = new AppSwitcher(windows, this);
-    this.actor.add_actor(this._appSwitcher.actor);
+    this.actor.add_child(this._appSwitcher.actor);
 
-    this._appSwitcher.connect(
-      'item-activated',
-      Lang.bind(this, this._windowActivated)
-    );
-    this._appSwitcher.connect(
-      'item-entered',
-      Lang.bind(this, this._windowEntered)
-    );
+    this._appSwitcher.connect('item-activated', Lang.bind(this, this._windowActivated));
+    this._appSwitcher.connect('item-entered', Lang.bind(this, this._windowEntered));
 
     this._winIcons = this._appSwitcher.icons;
 
@@ -715,10 +669,10 @@ AltTabPopup.prototype = {
     // disturbed by the popup briefly flashing.
     this._initialDelayTimeoutId = Mainloop.timeout_add(
       POPUP_DELAY_TIMEOUT,
-      Lang.bind(this, function() {
+      () => {
         this._appSwitcher.actor.opacity = 255;
         this._initialDelayTimeoutId = 0;
-      })
+      }
     );
 
     return true;
@@ -735,23 +689,10 @@ AltTabPopup.prototype = {
       return false;
     }
 
-    this.actor.connect(
-      'key-press-event',
-      Lang.bind(this, this._keyPressEvent)
-    );
-    this.actor.connect(
-      'key-release-event',
-      Lang.bind(this, this._keyReleaseEvent)
-    );
-
-    this.actor.connect(
-      'button-press-event',
-      Lang.bind(this, this._clickedOutside)
-    );
-    this.actor.connect(
-      'scroll-event',
-      Lang.bind(this, this._onScroll)
-    );
+    this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
+    this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
+    this.actor.connect('button-press-event', Lang.bind(this, this.destroy));
+    this.actor.connect('scroll-event', Lang.bind(this, this._onScroll));
 
     return true;
   },
@@ -768,7 +709,7 @@ AltTabPopup.prototype = {
   },
 
   _keyPressEvent: function(actor, event) {
-    var switchWorkspace = (direction) => {
+    let switchWorkspace = (direction) => {
       if (global.screen.n_workspaces < 2) {
         return false;
       }
@@ -795,7 +736,10 @@ AltTabPopup.prototype = {
       this.destroy();
     } else if (action === Meta.KeyBindingAction.CLOSE) {
       this._winIcons[this._currentIndex].window.delete(global.get_current_time());
-      this._checkDestroyedTimeoutId = Mainloop.timeout_add(CHECK_DESTROYED_TIMEOUT, Lang.bind(this, this._checkDestroyed, this._winIcons[this._currentIndex]));
+      this._checkDestroyedTimeoutId = Mainloop.timeout_add(
+        CHECK_DESTROYED_TIMEOUT,
+        Lang.bind(this, this._checkDestroyed, this._winIcons[this._currentIndex])
+      );
       return false;
     } else if (keysym === Clutter.Return) {
       this._finish();
@@ -875,7 +819,7 @@ AppIcon.prototype = {
     let clones = createWindowClone(this.window, size, true, true);
     for (let i in clones) {
       let clone = clones[i];
-      this.icon.add_actor(clone.actor);
+      this.icon.add_child(clone.actor);
       clone.actor.set_position(clone.x, clone.y);
     }
     this._iconBin.set_size(size, size);
@@ -938,21 +882,12 @@ function AppSwitcher() {
 AppSwitcher.prototype = {
   _init: function(windows, altTabPopup) {
     this.actor = new Cinnamon.GenericContainer({style_class: 'switcher-list'});
-    this.actor.connect(
-      'get-preferred-width',
-      Lang.bind(this, this._getPreferredWidth)
-    );
-    this.actor.connect(
-      'get-preferred-height',
-      Lang.bind(this, this._getPreferredHeight)
-    );
-    this.actor.connect(
-      'allocate',
-      Lang.bind(this, this._allocate)
-    );
+    this.actor.connect( 'get-preferred-width', Lang.bind(this, this._getPreferredWidth));
+    this.actor.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
+    this.actor.connect('allocate', Lang.bind(this, this._allocate));
 
     this._clipBin = new St.Bin({style_class: 'cbin'});
-    this.actor.add_actor(this._clipBin);
+    this.actor.add_child(this._clipBin);
 
     this._items = [];
     this._highlighted = -1;
@@ -1018,18 +953,8 @@ AppSwitcher.prototype = {
     bbox.set_child(item);
 
     let n = this._items.length;
-    bbox.connect(
-      'clicked',
-      Lang.bind(this, function() {
-        this._onItemClicked(n);
-      })
-    );
-    bbox.connect(
-      'enter-event',
-      Lang.bind(this, function() {
-        this._onItemEnter(n);
-      })
-    );
+    bbox.connect('clicked', () => this._onItemClicked(n));
+    bbox.connect('enter-event', () => this._onItemEnter(n));
 
     this.thumbGrid.addItem(bbox);
     this._items.push(bbox);
@@ -1037,14 +962,12 @@ AppSwitcher.prototype = {
 
   highlight: function(index) {
     if (this._highlighted !== -1 && this._items[this._highlighted]) {
-      //this._items[this._highlighted].remove_style_pseudo_class('outlined');
       this._items[this._highlighted].remove_style_pseudo_class('selected');
     }
 
     this._highlighted = index;
 
     if (this._highlighted !== -1) {
-      //this._items[this._highlighted].add_style_pseudo_class('outlined');
       this._items[this._highlighted].add_style_pseudo_class('selected');
     }
     //Add scrolling here later on
