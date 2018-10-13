@@ -1,7 +1,7 @@
 {
 "uuid": "Win7AltTab@entelechy",
 "name": "Win7 Alt-Tab",
-"cinnamon-version": [ "1.8", "1.9", "2.0", "2.1", "2.2" ],
+"cinnamon-version": ["1.8", "1.9", "2.0", "2.1", "2.2", "3.8", "4.0"],
 "description": "Replaces icons with thumbnails in the Alt-Tab and shows window previews, a la Win7",
 "url": "http://cinnamon-spices.linuxmint.com/extensions/view/22"
 }
