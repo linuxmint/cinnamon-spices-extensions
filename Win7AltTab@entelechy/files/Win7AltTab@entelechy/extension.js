@@ -144,7 +144,7 @@ function getTabList(all, group, window, workspaceOpt, screenOpt) {
     }
   }
 
-  let registry = {}; // to avoid duplicates 
+  let registry = {}; // to avoid duplicates
   for (let i = 0; i < winlist.length; ++i) {
     let win = winlist[i];
     if (Main.isInteresting(win)) {
@@ -456,7 +456,7 @@ AltTabPopup.prototype = {
             this._currentIndex %= this._winIcons.length;
           this._select(this._currentIndex);
           this._appSwitcher.thumbGrid._setTitle
-            (this._winIcons[this._currentIndex]._title,
+            (this._winIcons[this._currentIndex].label,
               this._winIcons[this._currentIndex]._demandsAttention);
         }
 
@@ -635,7 +635,7 @@ AltTabPopup.prototype = {
         }
         lastClone = clone.actor;
       }
- 
+
       this._clearPreview();
       this._previewClones = previewClones;
 
@@ -730,7 +730,7 @@ AltTabPopup.prototype = {
         this._select(1);
       }
       this._appSwitcher.thumbGrid._setTitle
-        (this._winIcons[this._currentIndex]._title,
+        (this._winIcons[this._currentIndex].label,
           this._winIcons[this._currentIndex]._demandsAttention);
       this._changedWS = false;
     }
@@ -884,7 +884,7 @@ AltTabPopup.prototype = {
 
     if (this._winIcons.length > 0)
       this._appSwitcher.thumbGrid._setTitle
-        (this._winIcons[this._currentIndex]._title,
+        (this._winIcons[this._currentIndex].label,
           this._winIcons[this._currentIndex]._demandsAttention);
     return true;
   }
@@ -905,8 +905,8 @@ AppIcon.prototype = {
     this._iconBin = new St.Bin();
 
     this.actor.add(this._iconBin, { x_fill: false, y_fill: false } );
-    this._title = window.get_title() ? window.get_title() :
-      (this.app ? this.app.get_name() : " ");
+    let windowTitle = window
+    this.label = window.get_title() || (this.app ? this.app.get_name() : " ")
     this._demandsAttention = (window.is_urgent &&
       (window.is_demanding_attention() || window.is_urgent()));
     this.win = window.get_compositor_private().get_texture();
@@ -1013,7 +1013,7 @@ AppSwitcher.prototype = {
     this.icons = [];
 
     this.thumbGrid = new ThumbnailGrid({colLimit: 6, rowLimit: 3, spacing: 0});
- 
+
     this._scrollableRight = false;
     this._clipBin.child = this.thumbGrid.actor;
 
@@ -1052,8 +1052,13 @@ AppSwitcher.prototype = {
   },
 
   addItem: function(item, label) {
-    let bbox = new St.Button({ style_class: 'item-box', reactive: true,
-      x_align: St.Align.MIDDLE, y_align: St.Align.MIDDLE });
+    let bbox = new St.Button({
+      style_class: 'item-box',
+      reactive: true,
+      x_align: St.Align.MIDDLE,
+      y_align: St.Align.MIDDLE,
+      label: label
+    });
 
     bbox.set_child(item);
 
