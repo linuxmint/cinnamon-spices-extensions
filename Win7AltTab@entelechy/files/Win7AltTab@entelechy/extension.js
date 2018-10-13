@@ -16,7 +16,7 @@ const POPUP_FADE_OUT_TIME = 0.1; // seconds
 
 const DISABLE_HOVER_TIMEOUT = 500; // milliseconds
 const CHECK_DESTROYED_TIMEOUT = 100; // milliseconds
-const PREVIEW_DELAY_TIMEOUT = 180; // milliseconds
+const PREVIEW_DELAY_TIMEOUT = 150; // milliseconds
 var PREVIEW_SWITCHER_FADEOUT_TIME = 0.5; // seconds
 
 function mod(a, b) {
@@ -165,6 +165,19 @@ function getTabList(all, group, window, workspaceOpt, screenOpt) {
   });
   return windows;
 }
+
+const convertRange = function(value, r1, r2) {
+  return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+};
+
+const setOpacity = (peekTime, window_actor, targetOpacity) => {
+  const opacity = convertRange(targetOpacity, [0, 100], [0, 255]);
+  Tweener.addTween(window_actor, {
+    time: peekTime * 0.001,
+    transition: 'easeOutQuad',
+    opacity: opacity > 255 ? 255 : opacity
+  });
+};
 
 function ThumbnailGrid(params) {
   this._init(params);
@@ -536,6 +549,7 @@ AltTabPopup.prototype = {
   },
 
   destroy: function() {
+    this._clearPreview();
     var doDestroy = Lang.bind(this, function() {
       Main.uiGroup.remove_actor(this.actor);
       this.actor.destroy();
@@ -577,22 +591,12 @@ AltTabPopup.prototype = {
   },
 
   _clearPreview: function() {
-    if (this._previewClones) {
-      for (let i = 0; i < this._previewClones.length; ++i) {
-        let clone = this._previewClones[i];
-        Tweener.addTween(clone, {
-          opacity: 0,
-          time: PREVIEW_SWITCHER_FADEOUT_TIME / 4,
-          transition: 'linear',
-          onCompleteScope: this,
-          onComplete: function() {
-            this.actor.remove_actor(clone);
-            clone.destroy();
-          }
-        });
-      }
-      this._previewClones = null;
+    if (!this.overlayPreview) {
+      return;
     }
+    global.overlay_group.remove_child(this.overlayPreview);
+    this.overlayPreview.destroy();
+    this.overlayPreview = null;
   },
 
   _doWindowPreview: function() {
@@ -600,57 +604,22 @@ AltTabPopup.prototype = {
       return;
     }
 
-    let showPreview = function() {
-      this._displayPreviewTimeoutId = null;
-      let childBox = new Clutter.ActorBox();
-
-      let lastClone = null;
-      let previewClones = [];
-      let window = this._winIcons[this._currentIndex].window;
-      let clones = createWindowClone(window, null, true, false);
-      for (let i = 0; i < clones.length; i++) {
-        let clone = clones[i];
-        previewClones.push(clone.actor);
-        this.actor.add_actor(clone.actor);
-        let [width, height] = clone.actor.get_size();
-        childBox.x1 = clone.x;
-        childBox.x2 = clone.x + width;
-        childBox.y1 = clone.y;
-        childBox.y2 = clone.y + height;
-        clone.actor.allocate(childBox, 0);
-        clone.actor.lower(this._appSwitcher.actor);
-        if (lastClone) {
-          lastClone.lower(clone.actor);
-        }
-        lastClone = clone.actor;
-      }
-
-      this._clearPreview();
-      this._previewClones = previewClones;
-    }; // show preview
-
-    // Use a cancellable timeout to avoid flickering effect
-    // when tabbing rapidly through the set.
-    if (this._displayPreviewTimeoutId) {
-      Mainloop.source_remove(this._displayPreviewTimeoutId);
-    }
-    let delay = PREVIEW_DELAY_TIMEOUT;
-    this._displayPreviewTimeoutId = Mainloop.timeout_add(delay, Lang.bind(this, showPreview));
-    let windows = global.get_window_actors();
-    for (let i in windows) {
-      if (windows[i].get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP)
-        Tweener.addTween(windows[i], {
-          opacity: 20,
-          time: PREVIEW_SWITCHER_FADEOUT_TIME / 4
-        });
-    }
+    this.metaWindowActor = this._winIcons[this._currentIndex].window.get_compositor_private();
+    this.overlayPreview = new Clutter.Clone({
+      source: this.metaWindowActor.get_texture(),
+      opacity: 0
+    });
+    let [x, y] = this.metaWindowActor.get_position();
+    this.overlayPreview.set_position(x, y);
+    global.overlay_group.add_child(this.overlayPreview);
+    global.overlay_group.set_child_above_sibling(this.overlayPreview, null);
+    setOpacity(PREVIEW_DELAY_TIMEOUT, this.overlayPreview, 92);
   },
 
   _select: function(index) {
+    this._clearPreview();
     this._currentIndex = index;
-    if (this._winIcons.length < 1) {
-      return;
-    }
+    if (this._winIcons.length < 1) return;
     this._appSwitcher.highlight(index);
     this._doWindowPreview();
   },
