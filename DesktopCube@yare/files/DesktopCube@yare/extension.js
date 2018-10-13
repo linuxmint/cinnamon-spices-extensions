@@ -1,5 +1,6 @@
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
+const GObject = imports.gi.GObject;
 const St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
@@ -16,6 +17,17 @@ let bindings = [
     'move-to-workspace-right'
 ];
 
+const isFinalized = function(obj) {
+    return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
+}
+
+const setPanelsOpacity = function(opacity) {
+    let panels = Main.getPanels();
+    for (let i = 0; i < panels.length; i++) {
+        if (!panels[i]) continue;
+        panels[i].actor.opacity = opacity;
+    }
+};
 
 function Cube() {
     this._init.apply(this, arguments);
@@ -67,7 +79,7 @@ Cube.prototype = {
         this._modifierMask = imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
         global.window_group.hide();
 
-        Main.getPanels().forEach(function(panel){panel.actor.opacity = 0;});
+        setPanelsOpacity(0);
 
         if (binding_type === "move" && window.get_window_type() !== Meta.WindowType.DESKTOP)
             this.moveWindow(window, direction);
@@ -594,12 +606,12 @@ Cube.prototype = {
 
     initBackground: function() {
         this._backgroundGroup = new St.Group({});
-        Main.uiGroup.add_actor(this._backgroundGroup);
+        Main.uiGroup.add_child(this._backgroundGroup);
         this._backgroundGroup.hide();
-        this._backgroundGroup.add_actor
-            (Meta.BackgroundActor.new_for_screen(global.screen));
-        this._backgroundGroup.raise_top();
-        this._backgroundGroup.lower(this.actor);
+        this.metaBackgroundActor = Meta.BackgroundActor.new_for_screen(global.screen);
+        this._backgroundGroup.add_child(this.metaBackgroundActor);
+        Main.uiGroup.set_child_above_sibling(this._backgroundGroup, null);
+        Main.uiGroup.set_child_below_sibling(this._backgroundGroup, this.actor);
     },
 
     dimBackground: function() {
@@ -622,16 +634,21 @@ Cube.prototype = {
     },*/
 
     onDestroy: function() {
+        if (isFinalized(this.from) || isFinalized(this.to)) return;
         this.unscale(this.from, this.to, this.direction);
     },
 
     destroy: function() {
-        Main.uiGroup.remove_actor(this._backgroundGroup);
-        Main.uiGroup.remove_actor(this.actor);
+        this._backgroundGroup.remove_child(this.metaBackgroundActor);
+        Main.uiGroup.remove_child(this._backgroundGroup);
+        Main.uiGroup.remove_child(this.actor);
 
-        Main.getPanels().forEach(function(panel){panel.actor.opacity = 255;});
+        setPanelsOpacity(255);
         global.window_group.show();
-        this.actor.destroy();
+
+        if (!isFinalized(this.actor)) this.actor.destroy();
+        if (!isFinalized(this.metaBackgroundActor)) this.metaBackgroundActor.destroy();
+        if (!isFinalized(this._backgroundGroup)) this._backgroundGroup.destroy();
     }
 
 };
