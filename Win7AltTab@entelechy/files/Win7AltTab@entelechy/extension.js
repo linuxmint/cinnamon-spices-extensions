@@ -395,10 +395,9 @@ AltTabPopup.prototype = {
     this._changeWS = false;
     this._changedWS = false;
     this._changedBinding = false;
-    this._windowManager = global.window_manager;
 
-    this._dcid = this._windowManager.connect('destroy', Lang.bind(this, this._windowDestroyed));
-    this._mcid = this._windowManager.connect('map', Lang.bind(this, this._activateSelected));
+    this._dcid = global.window_manager.connect('destroy', Lang.bind(this, this._windowDestroyed));
+    this._mcid = global.window_manager.connect('map', Lang.bind(this, this._activateSelected));
   },
 
   _getPreferredWidth: function(actor, forHeight, alloc) {
@@ -544,11 +543,12 @@ AltTabPopup.prototype = {
     }
     let windows = global.get_window_actors();
     for (let i = 0; i < windows.length; i++) {
-      if (windows[i].get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP)
+      if (windows[i].get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP) {
         Tweener.addTween(windows[i], {
           opacity: 255,
           time: PREVIEW_SWITCHER_FADEOUT_TIME / 4
         });
+      }
     }
   },
 
@@ -558,8 +558,8 @@ AltTabPopup.prototype = {
     if (this._motionTimeoutId) Mainloop.source_remove(this._motionTimeoutId);
     if (this._initialDelayTimeoutId) Mainloop.source_remove(this._initialDelayTimeoutId);
     if (this._displayPreviewTimeoutId) Mainloop.source_remove(this._displayPreviewTimeoutId);
-    this._windowManager.disconnect(this._dcid);
-    this._windowManager.disconnect(this._mcid);
+    global.window_manager.disconnect(this._dcid);
+    global.window_manager.disconnect(this._mcid);
   },
 
   _clearPreview: function() {
@@ -924,7 +924,6 @@ AppSwitcher.prototype = {
     this._iconSize = 0;
     this._altTabPopup = altTabPopup;
     this._tracker = Cinnamon.WindowTracker.get_default();
-    this._windowManager = global.window_manager;
   },
 
   _allocate: function(actor, box, flags) {
