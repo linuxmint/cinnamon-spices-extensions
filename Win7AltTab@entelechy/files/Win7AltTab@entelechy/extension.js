@@ -1,3 +1,4 @@
+const GObject = imports.gi.GObject;
 const Cinnamon = imports.gi.Cinnamon;
 const Clutter = imports.gi.Clutter;
 const Meta = imports.gi.Meta;
@@ -178,6 +179,10 @@ const setOpacity = (peekTime, window_actor, targetOpacity) => {
     opacity: opacity > 255 ? 255 : opacity
   });
 };
+
+const isFinalized = function(obj) {
+  return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
+}
 
 function ThumbnailGrid(params) {
   this._init(params);
@@ -550,10 +555,11 @@ AltTabPopup.prototype = {
 
   destroy: function() {
     this._clearPreview();
-    var doDestroy = Lang.bind(this, function() {
+    let doDestroy = () => {
+      if (isFinalized(this.actor)) return;
       Main.uiGroup.remove_actor(this.actor);
       this.actor.destroy();
-    });
+    };
 
     this._popModal();
     if (this.actor.visible) {
@@ -762,8 +768,7 @@ AltTabPopup.prototype = {
   },
 
   _keyPressEvent: function(actor, event) {
-    let that = this;
-    var switchWorkspace = function(direction) {
+    var switchWorkspace = (direction) => {
       if (global.screen.n_workspaces < 2) {
         return false;
       }
@@ -774,8 +779,8 @@ AltTabPopup.prototype = {
         return false;
       }
       Main.wm.showWorkspaceOSD();
-      that._changeWS = true;
-      that.refresh('no-switch-windows');
+      this._changeWS = true;
+      this.refresh('no-switch-windows');
       return true;
     };
     let keysym = event.get_key_symbol();
@@ -796,10 +801,10 @@ AltTabPopup.prototype = {
       this._finish();
       return true;
     } else if (action === Meta.KeyBindingAction.SWITCH_WINDOWS || action === Meta.KeyBindingAction.SWITCH_GROUP || action === Meta.KeyBindingAction.SWITCH_PANELS) {
-      if ((isWindows(that._oldBinding) || isPanels(that._oldBinding)) && action === Meta.KeyBindingAction.SWITCH_GROUP && !this._changedBinding) {
-        that._changedBinding = true;
-        that._window = this._winIcons[this._currentIndex].window;
-        that.refresh('switch-group', backwards);
+      if ((isWindows(this._oldBinding) || isPanels(this._oldBinding)) && action === Meta.KeyBindingAction.SWITCH_GROUP && !this._changedBinding) {
+        this._changedBinding = true;
+        this._window = this._winIcons[this._currentIndex].window;
+        this.refresh('switch-group', backwards);
         return false;
       }
       this._select(backwards ? this._previousWindow() : this._nextWindow());
