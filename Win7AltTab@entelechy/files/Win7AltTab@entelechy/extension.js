@@ -1000,7 +1000,7 @@ AppSwitcher.prototype = {
 
   _getPreferredHeight: function(actor, forWidth, alloc) {
     let colLimit = this._getColLimit();
-    let rowLimit = this.thumbGrid.rowLimit;
+    let rowLimit = this.thumbGrid.rowLimit = this._getRowLimit();
     let nRows = Math.min(rowLimit, Math.ceil(this.thumbGrid._getVisibleChildren().length / colLimit));
     alloc.natural_size = alloc.min_size =
       this.thumbGrid.tHeight * nRows + this.thumbGrid.spacing * Math.max(nRows - 1, 0) + this.thumbGrid.titleLabel.height + this._altTabPopup.actor.get_theme_node().get_vertical_padding();
