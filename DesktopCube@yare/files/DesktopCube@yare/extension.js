@@ -162,13 +162,13 @@ Cube.prototype = {
     get_workspace_clone_scaled: function(workspaceIndex, direction) {
         let clone = this.get_workspace_clone(workspaceIndex);
         clone.set_scale(1 - 2*settings.pullaway, 1 - 2*settings.pullaway);
-        clone.x = this.monitor.width / 2;
+        clone.x = global.stage.width / 2;
         return clone;
     },
 
     get_workspace_clone: function(workspaceIndex) {
         let clone = new St.Group({clip_to_allocation: true});
-        clone.set_size(this.monitor.width, this.monitor.height);
+        clone.set_size(global.stage.width, global.stage.height);
 
         let background = new St.Group();
         background.add_actor
@@ -352,24 +352,24 @@ Cube.prototype = {
         if (direction == Meta.MotionDirection.LEFT) {
             let x_pos = 0;
             if (!needScale)
-                x_pos = this.monitor.width * settings.pullaway;
+                x_pos = global.stage.width * settings.pullaway;
             from.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
-            from.set_position(x_pos, this.monitor.height / 2);
+            from.set_position(x_pos, global.stage.height / 2);
 
             to.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
-            to.set_position(this.monitor.width * settings.pullaway,
-                this.monitor.height / 2);
+            to.set_position(global.stage.width * settings.pullaway,
+                global.stage.height / 2);
             to.rotation_angle_y = -90;
         } else {
-            let x_pos = this.monitor.width;
+            let x_pos = global.stage.width;
             if (!needScale)
                 x_pos = x_pos * (1 - settings.pullaway);
             from.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
-            from.set_position(x_pos, this.monitor.height / 2);
+            from.set_position(x_pos, global.stage.height / 2);
 
             to.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
-            to.set_position(this.monitor.width * (1 - settings.pullaway),
-                this.monitor.height / 2);
+            to.set_position(global.stage.width * (1 - settings.pullaway),
+                global.stage.height / 2);
             to.rotation_angle_y = 90;
         }
 
@@ -386,9 +386,9 @@ Cube.prototype = {
 
         let x_pos;
         if (direction == Meta.MotionDirection.LEFT) {
-            x_pos = this.monitor.width * settings.pullaway;
+            x_pos = global.stage.width * settings.pullaway;
         } else {
-            x_pos = this.monitor.width * (1 - settings.pullaway);
+            x_pos = global.stage.width * (1 - settings.pullaway);
         }
 
         if (settings.pullaway > 0.2) {
@@ -423,14 +423,14 @@ Cube.prototype = {
         }
 
         Tweener.addTween(from, {
-            x: this.monitor.width / 2,
+            x: global.stage.width / 2,
             rotation_angle_y: angle_from,
             transition: settings.rotateEffect,
             time: settings.animationTime,
         });
 
         Tweener.addTween(to, {
-            x: this.monitor.width / 2,
+            x: global.stage.width / 2,
             rotation_angle_y: angle_to,
             transition: settings.rotateEffect,
             time: settings.animationTime,
@@ -445,10 +445,10 @@ Cube.prototype = {
         let x_pos;
         let angle_from;
         if (direction == Meta.MotionDirection.LEFT) {
-            x_pos = this.monitor.width * (1- settings.pullaway);
+            x_pos = global.stage.width * (1- settings.pullaway);
             angle_from = 90;
         } else {
-            x_pos = this.monitor.width * settings.pullaway;
+            x_pos = global.stage.width * settings.pullaway;
             angle_from = -90;
         }
 
@@ -475,13 +475,13 @@ Cube.prototype = {
         let x_pos;
         if (direction == Meta.MotionDirection.LEFT) {
             to.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
-            to.set_position(this.monitor.width * (1 - settings.pullaway),
-                this.monitor.height / 2);
-            x_pos = this.monitor.width;
+            to.set_position(global.stage.width * (1 - settings.pullaway),
+                global.stage.height / 2);
+            x_pos = global.stage.width;
         } else {
             to.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
-            to.set_position(this.monitor.width * settings.pullaway,
-                this.monitor.height / 2);
+            to.set_position(global.stage.width * settings.pullaway,
+                global.stage.height / 2);
             x_pos = 0;
         }
 
@@ -505,7 +505,7 @@ Cube.prototype = {
         this.from.hide();
 
         workspace.move_anchor_point_from_gravity(Clutter.Gravity.CENTER);
-        workspace.x = this.monitor.width / 2;
+        workspace.x = global.stage.width / 2;
 
         let angle;
         if (direction == Meta.MotionDirection.LEFT)
