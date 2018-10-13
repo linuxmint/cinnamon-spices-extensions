@@ -8,7 +8,9 @@
         "2.8",
         "3.0",
         "3.2",
-        "3.4"
+        "3.4",
+        "3.8",
+        "4.0"
     ],
     "uuid": "DesktopCube@yare",
     "name": "Desktop Cube",
