@@ -19,6 +19,7 @@ const DISABLE_HOVER_TIMEOUT = 500; // milliseconds
 const CHECK_DESTROYED_TIMEOUT = 100; // milliseconds
 const PREVIEW_DELAY_TIMEOUT = 150; // milliseconds
 const PREVIEW_SWITCHER_FADEOUT_TIME = 0.5; // seconds
+let tabPopup, currentAppSwitcher;
 
 const mod = function(a, b) {
   return (a + b) % b;
@@ -185,8 +186,18 @@ const setOpacity = (peekTime, window_actor, targetOpacity) => {
 };
 
 const isFinalized = function(obj) {
-  return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
+  return obj
+    && obj instanceof GObject.Object
+    && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 }
+
+const unref = function(object) {
+  let keys = Object.keys(object);
+  for (let i = 0; i < keys.length; i++) {
+    object[keys[i]] = null;
+  }
+};
+
 
 function ThumbnailGrid(params) {
   this._init(params);
@@ -348,6 +359,7 @@ ThumbnailGrid.prototype = {
   },
 
   removeAll: function() {
+    if (isFinalized(this.grid)) return;
     this.grid.destroy_all_children();
   },
 
@@ -420,13 +432,13 @@ AltTabPopup.prototype = {
 
     // Allocate the appSwitcher
     // We select a size based on an icon size that does not overflow the screen
-    let [childMinHeight, childNaturalHeight] = this._appSwitcher.actor.get_preferred_height(primary.width - hPadding);
-    let [childMinWidth, childNaturalWidth] = this._appSwitcher.actor.get_preferred_width(childNaturalHeight);
+    let [childMinHeight, childNaturalHeight] = currentAppSwitcher.actor.get_preferred_height(primary.width - hPadding);
+    let [childMinWidth, childNaturalWidth] = currentAppSwitcher.actor.get_preferred_width(childNaturalHeight);
     childBox.x1 = Math.max(primary.x + leftPadding, primary.x + Math.floor((primary.width - childNaturalWidth) / 2));
     childBox.x2 = Math.min(primary.x + primary.width - rightPadding, childBox.x1 + childNaturalWidth);
     childBox.y1 = primary.y + Math.floor((primary.height - childNaturalHeight) / 2);
     childBox.y2 = childBox.y1 + childNaturalHeight;
-    this._appSwitcher.actor.allocate(childBox, flags);
+    currentAppSwitcher.actor.allocate(childBox, flags);
   },
 
   _checkDestroyed: function(window) {
@@ -447,11 +459,11 @@ AltTabPopup.prototype = {
       if (this._winIcons.length === 1) this.destroy();
       else {
         this._winIcons.splice(i, 1)[0].actor.destroy();
-        this._appSwitcher._items.splice(i, 1)[0].destroy();
+        currentAppSwitcher._items.splice(i, 1)[0].destroy();
         if (i < this._currentIndex) this._currentIndex--;
         else this._currentIndex %= this._winIcons.length;
         this._select(this._currentIndex);
-        this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
+        currentAppSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
       }
 
       return;
@@ -590,8 +602,8 @@ AltTabPopup.prototype = {
     this._clearPreview();
     this._currentIndex = index;
     if (this._winIcons.length < 1) return;
-    this._appSwitcher.highlight(index);
-    this._appSwitcher.thumbGrid._setTitle(
+    currentAppSwitcher.highlight(index);
+    currentAppSwitcher.thumbGrid._setTitle(
       this._winIcons[index].label,
       this._winIcons[index]._demandsAttention
     );
@@ -599,11 +611,9 @@ AltTabPopup.prototype = {
   },
 
   refresh: function(binding, backward) {
-    if (this._appSwitcher) {
+    if (currentAppSwitcher) {
       this._clearPreview();
-      this.actor.remove_child(this._appSwitcher.actor);
-      this._appSwitcher.thumbGrid.removeAll();
-      this._appSwitcher.actor.destroy();
+      currentAppSwitcher.finalize();
     }
 
     this._currentIndex = 0;
@@ -628,15 +638,15 @@ AltTabPopup.prototype = {
       this._oldBinding = binding;
     }
 
-    this._appSwitcher = new AppSwitcher(windows, this);
-    this.actor.add_child(this._appSwitcher.actor);
+    currentAppSwitcher = new AppSwitcher(windows);
+    this.actor.add_child(currentAppSwitcher.actor);
 
-    this._appSwitcher.connect('item-activated', Lang.bind(this, this._windowActivated));
-    this._appSwitcher.connect('item-entered', Lang.bind(this, this._windowEntered));
+    currentAppSwitcher.connect('item-activated', Lang.bind(this, this._windowActivated));
+    currentAppSwitcher.connect('item-entered', Lang.bind(this, this._windowEntered));
 
-    this._winIcons = this._appSwitcher.icons;
+    this._winIcons = currentAppSwitcher.icons;
 
-    this._appSwitcher.actor.opacity = 0;
+    currentAppSwitcher.actor.opacity = 0;
     if (windows.length < 1 || this._winIcons.length === 0) {
       this._finish();
       return false;
@@ -653,7 +663,7 @@ AltTabPopup.prototype = {
       } else {
         this._select(1);
       }
-      this._appSwitcher.thumbGrid._setTitle(
+      currentAppSwitcher.thumbGrid._setTitle(
         this._winIcons[this._currentIndex].label,
         this._winIcons[this._currentIndex]._demandsAttention
       );
@@ -670,7 +680,7 @@ AltTabPopup.prototype = {
       this._finish();
       return false;
     }
-    Tweener.addTween(this._appSwitcher.actor, {
+    Tweener.addTween(currentAppSwitcher.actor, {
       opacity: 255,
       time: POPUP_FADE_OUT_TIME,
       transition: 'easeInQuad'
@@ -681,7 +691,7 @@ AltTabPopup.prototype = {
     this._initialDelayTimeoutId = Mainloop.timeout_add(
       POPUP_DELAY_TIMEOUT,
       () => {
-        this._appSwitcher.actor.opacity = 255;
+        currentAppSwitcher.actor.opacity = 255;
         this._initialDelayTimeoutId = 0;
       }
     );
@@ -741,8 +751,8 @@ AltTabPopup.prototype = {
     let action = global.display.get_keybinding_action(event.get_key_code(), event_state);
 
     this._disableHover();
-    let nRows = this._appSwitcher.thumbGrid.nRows;
-    let nColumns = this._appSwitcher.thumbGrid.nColumns;
+    let nRows = currentAppSwitcher.thumbGrid.nRows;
+    let nColumns = currentAppSwitcher.thumbGrid.nColumns;
     if (keysym === Clutter.Escape) {
       this.destroy();
     } else if (action === Meta.KeyBindingAction.CLOSE) {
@@ -790,8 +800,13 @@ AltTabPopup.prototype = {
       }
     }
 
-    if (this._winIcons.length > 0) this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
+    if (this._winIcons.length > 0) currentAppSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
     return true;
+  },
+
+  finalize: function() {
+    currentAppSwitcher.finalize();
+    unref(this);
   }
 };
 
@@ -891,7 +906,7 @@ function AppSwitcher() {
 }
 
 AppSwitcher.prototype = {
-  _init: function(windows, altTabPopup) {
+  _init: function(windows) {
     this.actor = new Cinnamon.GenericContainer({style_class: 'switcher-list'});
     this.actor.connect( 'get-preferred-width', Lang.bind(this, this._getPreferredWidth));
     this.actor.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
@@ -922,7 +937,6 @@ AppSwitcher.prototype = {
     for (let i = 0; i < thumbnails.length; i++) this._addThumbnail(thumbnails[i]);
 
     this._iconSize = 0;
-    this._altTabPopup = altTabPopup;
     this._tracker = Cinnamon.WindowTracker.get_default();
   },
 
@@ -985,14 +999,14 @@ AppSwitcher.prototype = {
 
   _getColLimit: function() {
     this.thumbGrid._calcTSize();
-    let node = this._altTabPopup.actor.get_theme_node();
+    let node = tabPopup.actor.get_theme_node();
     this.padFactor = node.get_horizontal_padding() + node.get_length('spacing');
     return this.thumbGrid._computeLayout(global.screen_width - this.padFactor)[0];
   },
 
   _getRowLimit: function() {
     this.thumbGrid._calcTSize();
-    let node = this._altTabPopup.actor.get_theme_node();
+    let node = tabPopup.actor.get_theme_node();
     this.padFactor = node.get_vertical_padding() + node.get_length('spacing');
     return this.thumbGrid._computeLayout(global.screen_height - this.padFactor)[1];
   },
@@ -1009,13 +1023,27 @@ AppSwitcher.prototype = {
     let rowLimit = this.thumbGrid.rowLimit = this._getRowLimit();
     let nRows = Math.min(rowLimit, Math.ceil(this.thumbGrid._getVisibleChildren().length / colLimit));
     alloc.natural_size = alloc.min_size =
-      this.thumbGrid.tHeight * nRows + this.thumbGrid.spacing * Math.max(nRows - 1, 0) + this.thumbGrid.titleLabel.height + this._altTabPopup.actor.get_theme_node().get_vertical_padding();
+      this.thumbGrid.tHeight * nRows + this.thumbGrid.spacing * Math.max(nRows - 1, 0) + this.thumbGrid.titleLabel.height + tabPopup.actor.get_theme_node().get_vertical_padding();
   },
 
   _enterItem: function(index) {
     let [x, y, mask] = global.get_pointer();
     let pickedActor = global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y);
     if (this._items[index].contains(pickedActor)) this._itemEntered(index);
+  },
+
+  finalize: function() {
+    for (let i = 0; i < this._items.length; i++) {
+      this._items[i].destroy();
+    }
+    for (let i = 0; i < this.icons.length; i++) {
+      this.icons[i].actor.destroy();
+      unref(this.icons[i]);
+    }
+    this.thumbGrid.actor.destroy();
+    this.actor.destroy();
+    unref(this.thumbGrid);
+    unref(this);
   }
 };
 Signals.addSignalMethods(AppSwitcher.prototype);
@@ -1023,7 +1051,7 @@ Signals.addSignalMethods(AppSwitcher.prototype);
 function startTab(display, screen, window, binding) {
   let modifiers = binding.get_modifiers();
   let backwards = modifiers & Meta.VirtualModifier.SHIFT_MASK;
-  let tabPopup = new AltTabPopup();
+  tabPopup = new AltTabPopup();
   if (!tabPopup.show(backwards, binding.get_name(), binding.get_mask())) tabPopup.destroy();
 }
 
@@ -1040,10 +1068,15 @@ function enable() {
 }
 
 function disable() {
+  if (tabPopup) {
+    tabPopup.finalize();
+    tabPopup = null;
+    currentAppSwitcher = null;
+  }
   Meta.keybindings_set_custom_handler('switch-applications', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
   Meta.keybindings_set_custom_handler('switch-windows', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
   Meta.keybindings_set_custom_handler('switch-group', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
-  Meta.keybindings_set_custom_handler('switch-panels', Lang.bind(Main.wm, Main.wm._startA11ySwitcher));
+  Meta.keybindings_set_custom_handler('switch-panels', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
   Meta.keybindings_set_custom_handler('switch-applications-backward', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
   Meta.keybindings_set_custom_handler('switch-windows-backward', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
   Meta.keybindings_set_custom_handler('switch-group-backward', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
