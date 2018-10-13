@@ -481,13 +481,11 @@ Cube.prototype = {
         let x_pos;
         if (direction === Meta.MotionDirection.LEFT) {
             to.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
-            to.set_position(global.stage.width * (1 - settings.pullaway),
-                global.stage.height / 2);
+            to.set_position(global.stage.width * (1 - settings.pullaway), global.stage.height / 2);
             x_pos = global.stage.width;
         } else {
             to.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
-            to.set_position(global.stage.width * settings.pullaway,
-                global.stage.height / 2);
+            to.set_position(global.stage.width * settings.pullaway, global.stage.height / 2);
             x_pos = 0;
         }
 
