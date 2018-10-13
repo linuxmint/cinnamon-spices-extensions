@@ -6,15 +6,16 @@ const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
 const Cinnamon = imports.gi.Cinnamon;
 const Main = imports.ui.main;
+const Panel = imports.ui.panel;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
 
 let settings;
 let bindings = [
-    'switch-to-workspace-left',
-    'switch-to-workspace-right',
-    'move-to-workspace-left',
-    'move-to-workspace-right'
+    ['switch-to-workspace-left', '_showWorkspaceSwitcher'],
+    ['switch-to-workspace-right', '_showWorkspaceSwitcher'],
+    ['move-to-workspace-left', '_moveWindowToWorkspaceLeft'],
+    ['move-to-workspace-right', '_moveWindowToWorkspaceRight']
 ];
 
 const isFinalized = function(obj) {
@@ -37,7 +38,7 @@ Cube.prototype = {
     _init: function(display, screen, window, binding) {
         this.from = null;
         this.to = null;
-        this.is_animating = false;
+        this.isAnimating = false;
         this.destroy_requested = false;
         this.monitor = Main.layoutManager.primaryMonitor;
 
@@ -46,15 +47,14 @@ Cube.prototype = {
         this.direction = direction;
         this.last_direction = direction;
 
-        if (direction !== Meta.MotionDirection.RIGHT &&
-            direction !== Meta.MotionDirection.LEFT)
+        if (direction !== Meta.MotionDirection.RIGHT
+            && direction !== Meta.MotionDirection.LEFT)
             return;
 
         let active_workspace = global.screen.get_active_workspace();
         let new_workspace = active_workspace.get_neighbor(direction);
 
-        if (active_workspace.index() === new_workspace.index())
-            return;
+        if (active_workspace.index() === new_workspace.index()) return;
 
         this.actor = new St.Group({
             reactive: true,
@@ -81,8 +81,9 @@ Cube.prototype = {
 
         setPanelsOpacity(0);
 
-        if (binding_type === "move" && window.get_window_type() !== Meta.WindowType.DESKTOP)
+        if (binding_type === 'move' && window.get_window_type() !== Meta.WindowType.DESKTOP) {
             this.moveWindow(window, direction);
+        }
         this.startAnimate(direction);
         this.actor.show();
     },
@@ -93,11 +94,10 @@ Cube.prototype = {
             if (i === -1) return false;
             let j;
             let done = false;
-            for (j = 0; j < workspace_clone.workspaceWindows.length &&
-                !done; j++) {
-                if (window.get_stable_sequence() ===
-                    workspace_clone.workspaceWindowActors[j].i)
+            for (j = 0; j < workspace_clone.workspaceWindows.length && !done; j++) {
+                if (window.get_stable_sequence() === workspace_clone.workspaceWindowActors[j].i) {
                     done = true;
+                }
             }
             workspace_clone.remove_child(workspace_clone.workspaceWindowActors[j-1]);
             workspace_clone.workspaceWindows.splice(i, 1);
@@ -111,8 +111,6 @@ Cube.prototype = {
         if (workspace_clone && (workspace_clone.index === index)) {
             let windowClone = this.cloneMetaWindow(window);
             workspace_clone.add_child(windowClone);
-            //windowClone.raise_top();
-            //workspace_clone.chromeGroup.raise_top();
             workspace_clone.workspaceWindowActors.push(windowClone);
             workspace_clone.workspaceWindows.push(window);
             workspace_clone.workspaceWindows.sort(Lang.bind(this, this._sortWindow));
@@ -123,31 +121,36 @@ Cube.prototype = {
 
     sortWindowClones: function (workspace_clone) {
         workspace_clone.workspaceWindowActors.sort((actor1, actor2) => {
-            let time = this._sortWindow(actor1.win, actor1.win);
-            time > 0 ? actor1.raise(actor2) : actor2.raise(actor1);
+            if (this._sortWindow(actor1.win, actor1.win) > 0) {
+                actor1.get_parent().set_child_above_sibling(actor1, actor2)
+            } else {
+                actor2.get_parent().set_child_above_sibling(actor2, actor1)
+            }
             return 0;
         });
-        workspace_clone.chromeGroup.raise_top();
+        workspace_clone.chromeGroup.get_parent()
+            .set_child_above_sibling(workspace_clone.chromeGroup, null);
     },
 
     moveWindowClone: function(window, active_index, new_index) {
         if (this.removeWindowActor(this.from, window, new_index)) {
             this.addWindowActor(this.to, window, active_index);
-        } //else
+        }
         if (this.removeWindowActor(this.from, window, active_index)) {
             this.addWindowActor(this.to, window, new_index);
-        } //else
+        }
         if (this.removeWindowActor(this.to, window, active_index)) {
             this.addWindowActor(this.from, window, new_index);
-        } //else
+        }
         if (this.removeWindowActor(this.to, window, new_index)) {
             this.addWindowActor(this.from, window, active_index);
         }
     },
 
     moveWindow: function(window, direction) {
-        if (!window ||
-            window.get_window_type() === Meta.WindowType.DESKTOP) return false;
+        if (!window || window.get_window_type() === Meta.WindowType.DESKTOP) {
+            return false;
+        }
 
         let active_workspace = global.screen.get_active_workspace();
         let new_workspace = active_workspace.get_neighbor(direction);
@@ -168,14 +171,14 @@ Cube.prototype = {
         return true;
     },
 
-    get_workspace_clone_scaled: function(workspaceIndex, direction) {
-        let clone = this.get_workspace_clone(workspaceIndex);
-        clone.set_scale(1 - 2*settings.pullaway, 1 - 2*settings.pullaway);
+    getWorkspaceCloneScaled: function(workspaceIndex, direction) {
+        let clone = this.getWorkspaceCLone(workspaceIndex);
+        clone.set_scale(1 - 2 * settings.pullaway, 1 - 2 * settings.pullaway);
         clone.x = global.stage.width / 2;
         return clone;
     },
 
-    get_workspace_clone: function(workspaceIndex) {
+    getWorkspaceCLone: function(workspaceIndex) {
         let clone = new St.Group({clip_to_allocation: true});
         clone.set_size(global.stage.width, global.stage.height);
 
@@ -187,22 +190,26 @@ Cube.prototype = {
         clone.add_child(deskletClone);
 
         clone.desktopClones = [];
-        global.get_window_actors().forEach(function(w){
-            if (w.get_meta_window().get_window_type() === Meta.WindowType.DESKTOP) {
-                let texture = w.get_meta_window().get_compositor_private().get_texture();
-                let rect = w.get_meta_window().get_input_rect();
-                let windowClone = new Clutter.Clone(
-                    {source: texture,
-                     reactive: true,
-                     x: rect.x,
-                     y: rect.y,
-                    });
+
+        let windowActors = global.get_window_actors();
+        for (let i = 0; i < windowActors.length; i++) {
+            let w = windowActors[i];
+            let metaWindow = w.get_meta_window();
+            if (metaWindow.get_window_type() === Meta.WindowType.DESKTOP) {
+                let texture = metaWindow.get_compositor_private().get_texture();
+                let rect = metaWindow.get_input_rect();
+                let windowClone = new Clutter.Clone({
+                    source: texture,
+                    reactive: true,
+                    x: rect.x,
+                    y: rect.y,
+                });
 
                 clone.add_child(windowClone);
-                windowClone.lower(deskletClone);
+                windowClone.get_parent().set_child_below_sibling(windowClone, deskletClone);
                 clone.desktopClones.push(windowClone);
             }
-        });
+        }
 
         let workspaceWindows = this.getWorkspaceWindows(workspaceIndex);
         clone.workspaceWindowActors = [];
@@ -215,43 +222,46 @@ Cube.prototype = {
         clone.workspaceWindows = workspaceWindows;
 
         let chromeGroup = new St.Group();
-        Main.getPanels().concat(Main.uiGroup.get_children()).forEach(
-            function (panel) {
-                // Is it a non-autohideable panel, or is it a visible, tracked
-                // chrome object? TODO: Make more human-readable the logic
-                // below in clone.add_child().
-                if ((panel.actor && !panel._hideable) || (panel &&
-                    Main.layoutManager.isTrackingChrome(panel) &&
-                    panel.visible)) {
-                    let chromeClone = new Clutter.Clone(
-                        {source: panel.actor ? panel.actor : panel,
-                        x : panel.actor ? panel.actor.x : panel.x,
-                        y: panel.actor ? (panel.bottomPosition ?
-                        Main.layoutManager.bottomMonitor.y +
-                        Main.layoutManager.bottomMonitor.height -
-                        panel.actor.height :
-                        Main.layoutManager.primaryMonitor.y) : panel.y});
-                    chromeGroup.add_child(chromeClone);
-                    chromeClone.raise_top();
-                }
-            });
+        let panels = Main.getPanels().concat(Main.uiGroup.get_children());
+        for (let i = 0; i < panels.length; i++) {
+            if (!panels[i]) continue;
+            let panel = panels[i];
+            // Is it a non-autohideable panel, or is it a visible, tracked
+            // chrome object? TODO: Make more human-readable the logic
+            // below in clone.add_child().
+            if ((panel.actor && !panel._hideable)
+                || (panel && Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
+                let chromeClone = new Clutter.Clone({
+                    source: panel.actor ? panel.actor : panel,
+                    x : panel.actor ? panel.actor.x : panel.x,
+                    y: panel.actor ? panel.panelPosition === Panel.PanelLoc.bottom ?
+                        Main.layoutManager.bottomMonitor.y
+                            + Main.layoutManager.bottomMonitor.height
+                            - panel.actor.height
+                        : Main.layoutManager.primaryMonitor.y
+                        : panel.y
+                });
+                chromeGroup.add_child(chromeClone);
+                chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
+            }
+        }
+
         clone.add_child(chromeGroup);
-        chromeGroup.raise_top();
+        chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
         clone.chromeGroup = chromeGroup;
         clone.index = workspaceIndex;
         return clone;
     },
 
     cloneMetaWindow: function(metaWindow) {
-        let texture =
-            metaWindow.get_compositor_private().get_texture();
+        let texture = metaWindow.get_compositor_private().get_texture();
         let rect = metaWindow.get_input_rect();
-        let windowClone = new Clutter.Clone(
-            {source: texture,
-             reactive: true,
-             x: rect.x,
-             y: rect.y,
-            });
+        let windowClone = new Clutter.Clone({
+            source: texture,
+            reactive: true,
+            x: rect.x,
+            y: rect.y,
+        });
         windowClone.i = metaWindow.i;
         windowClone.win = metaWindow;
         return windowClone;
@@ -276,30 +286,30 @@ Cube.prototype = {
     _sortWindow : function(window1, window2) {
         let t1 = window1.get_user_time();
         let t2 = window2.get_user_time();
-        if (t2 < t1) {
-            return 1;
-        } else {
-            return -1;
-        }
+        if (t2 < t1) return 1;
+        else return -1;
     },
 
     // I hide the desktop icons for now while rotating until a solution to
     // the artifacts may be found.
     setDesktopClonesVisible: function(workspace_clone, visible) {
-        workspace_clone.desktopClones.forEach(Lang.bind(this, function(clone) {
-            if (visible)//show
+        let desktopClones = workspace_clone.desktopClones;
+        for (let i = 0; i < desktopClones.length; i++) {
+            let clone = desktopClones[i];
+            if (visible) {
                 Tweener.addTween(clone, {
                     opacity: 255,
                     transition: settings.unrotateEffect,
                     time: settings.animationTime * 0.3333,
                 });
-            else//hide
+            } else {
                 Tweener.addTween(clone, {
                     opacity: 0,
                     transition: settings.rotateEffect,
                     time: settings.animationTime * 0.3333,
                 });
-        }));
+            }
+        }
     },
 
     startAnimate: function(direction, window) {
@@ -315,24 +325,24 @@ Cube.prototype = {
             needScale = false;
             if (active_workspace.index() === new_workspace.index()) {
                 //this.bounce(from_workspace, direction);
-                this.is_animating = true;
+                this.isAnimating = true;
                 this.from.hide();
 
                 this.unsetIsAnimating();
                 return;
             }
         } else {
-            from_workspace = this.get_workspace_clone(active_workspace.index());
+            from_workspace = this.getWorkspaceCLone(active_workspace.index());
             this.actor.add_child(from_workspace);
         }
 
         if (direction === this.last_direction) {
             if (this.from != null) {
-                to_workspace = this.get_workspace_clone_scaled(new_workspace.index(), direction);
+                to_workspace = this.getWorkspaceCloneScaled(new_workspace.index(), direction);
                 this.actor.remove_child(this.from);
                 this.from.destroy();
             } else {
-                to_workspace = this.get_workspace_clone(new_workspace.index());
+                to_workspace = this.getWorkspaceCLone(new_workspace.index());
             }
             this.actor.add_child(to_workspace);
         } else {
@@ -355,38 +365,32 @@ Cube.prototype = {
 
         if (direction === Meta.MotionDirection.LEFT) {
             let x_pos = 0;
-            if (!needScale)
-                x_pos = global.stage.width * settings.pullaway;
+            if (!needScale) x_pos = global.stage.width * settings.pullaway;
             from.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
             from.set_position(x_pos, global.stage.height / 2);
 
             to.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
-            to.set_position(global.stage.width * settings.pullaway,
-                global.stage.height / 2);
+            to.set_position(global.stage.width * settings.pullaway, global.stage.height / 2);
             to.rotation_angle_y = -90;
         } else {
             let x_pos = global.stage.width;
-            if (!needScale)
-                x_pos = x_pos * (1 - settings.pullaway);
+            if (!needScale) x_pos = x_pos * (1 - settings.pullaway);
             from.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
             from.set_position(x_pos, global.stage.height / 2);
 
             to.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
-            to.set_position(global.stage.width * (1 - settings.pullaway),
-                global.stage.height / 2);
+            to.set_position(global.stage.width * (1 - settings.pullaway), global.stage.height / 2);
             to.rotation_angle_y = 90;
         }
 
-        to.set_scale(1 - 2*settings.pullaway, 1 - 2*settings.pullaway);
-        from.raise_top();
-        if (needScale)
-            this.scale(from, to, direction);
-        else
-            this.rotate_mid(from, to, direction);
+        to.set_scale(1 - 2 * settings.pullaway, 1 - 2 * settings.pullaway);
+        from.get_parent().set_child_above_sibling(from, null);
+        if (needScale) this.scale(from, to, direction);
+        else this.rotate_mid(from, to, direction);
     },
 
     scale: function(from, to, direction) {
-        this.is_animating = true;
+        this.isAnimating = true;
 
         let x_pos;
         if (direction === Meta.MotionDirection.LEFT) {
@@ -400,8 +404,8 @@ Cube.prototype = {
             this.setDesktopClonesVisible(to, false);
         }
         Tweener.addTween(from, {
-            scale_x: 1 - 2*settings.pullaway,
-            scale_y: 1 - 2*settings.pullaway,
+            scale_x: 1 - 2 * settings.pullaway,
+            scale_y: 1 - 2 * settings.pullaway,
             x: x_pos,
             transition: settings.scaleEffect,
             time: settings.animationTime,
@@ -412,7 +416,7 @@ Cube.prototype = {
     },
 
     rotate_mid: function(from, to, direction) {
-        this.is_animating = true;
+        this.isAnimating = true;
         this.setDesktopClonesVisible(from, false);
         this.setDesktopClonesVisible(to, false);
 
@@ -445,7 +449,7 @@ Cube.prototype = {
     },
 
     rotate_end: function(from, to, direction) {
-        to.raise_top();
+        to.get_parent().set_child_above_sibling(to, null);
         let x_pos;
         let angle_from;
         if (direction === Meta.MotionDirection.LEFT) {
@@ -505,7 +509,7 @@ Cube.prototype = {
     },
 
     /*bounce: function(workspace, direction) {
-        this.is_animating = true;
+        this.isAnimating = true;
         this.from.hide();
 
         workspace.move_anchor_point_from_gravity(Clutter.Gravity.CENTER);
@@ -543,14 +547,12 @@ Cube.prototype = {
             this.setDesktopClonesVisible(this.to, true);
         }
         Main.wm.showWorkspaceOSD();
-        this.is_animating = false;
-        if (this.destroy_requested)
-            this.onDestroy();
+        this.isAnimating = false;
+        if (this.destroy_requested) this.onDestroy();
     },
 
     _keyPressEvent: function(actor, event) {
-        if (this.is_animating)
-            return true;
+        if (this.isAnimating) return true;
 
         let workspace;
         let windows;
@@ -595,10 +597,11 @@ Cube.prototype = {
         let state = mods & this._modifierMask;
 
         if (state === 0) {
-            if (this.is_animating)
+            if (this.isAnimating) {
                 this.destroy_requested = true;
-            else
+            } else {
                 this.onDestroy();
+            }
         }
 
         return true;
@@ -619,7 +622,7 @@ Cube.prototype = {
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
             dim_factor: 0.0,
-            time: settings.animationTime*0,
+            time: settings.animationTime * 0,
             transition: 'easeOutQuad'
         });
     },
@@ -664,18 +667,12 @@ function CubeSettings(uuid) {
 CubeSettings.prototype = {
     _init: function(uuid) {
         this.settings = new Settings.ExtensionSettings(this, uuid);
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "animationTime", "animationTime", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pullaway", "pullaway", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "scaleEffect", "scaleEffect", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "unscaleEffect", "unscaleEffect", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "rotateEffect", "rotateEffect", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "unrotateEffect", "unrotateEffect", function(){});
+        this.settings.bindProperty( Settings.BindingDirection.IN, 'animationTime', 'animationTime', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'pullaway', 'pullaway', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'scaleEffect', 'scaleEffect', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'unscaleEffect', 'unscaleEffect', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'rotateEffect', 'rotateEffect', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'unrotateEffect', 'unrotateEffect', null);
     }
 };
 
@@ -684,19 +681,19 @@ function init(metadata) {
 }
 
 function enable() {
-    for (let i in bindings) {
-        Meta.keybindings_set_custom_handler(bindings[i],
-            onSwitch);
+    for (let i = 0; i < bindings.length; i++) {
+        Meta.keybindings_set_custom_handler(bindings[i][0], onSwitch);
     }
 }
 
 function disable() {
-    Meta.keybindings_set_custom_handler('switch-to-workspace-left',
-        Lang.bind(Main.wm, Main.wm._showWorkspaceSwitcher));
-    Meta.keybindings_set_custom_handler('switch-to-workspace-right',
-        Lang.bind(Main.wm, Main.wm._showWorkspaceSwitcher));
-    Meta.keybindings_set_custom_handler('move-to-workspace-left',
-        Lang.bind(Main.wm, Main.wm._moveWindowToWorkspaceLeft));
-    Meta.keybindings_set_custom_handler('move-to-workspace-right',
-        Lang.bind(Main.wm, Main.wm._moveWindowToWorkspaceRight));
+    for (let i = 0; i < bindings.length; i++) {
+        Meta.keybindings_set_custom_handler(
+            bindings[i][0],
+            Lang.bind(
+                Main.wm,
+                Main.wm[bindings[i][1]]
+            )
+        );
+    }
 }
