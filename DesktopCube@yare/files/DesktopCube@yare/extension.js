@@ -98,9 +98,9 @@ Cube.prototype = {
                     done = true;
                 }
             }
-            workspace_clone.remove_child(workspace_clone.workspaceWindowActors[j-1]);
+            workspace_clone.remove_child(workspace_clone.workspaceWindowActors[j - 1]);
             workspace_clone.workspaceWindows.splice(i, 1);
-            workspace_clone.workspaceWindowActors.splice(j-1, 1)[0].destroy();
+            workspace_clone.workspaceWindowActors.splice(j - 1, 1)[0].destroy();
             return true;
         }
         return false;
@@ -171,13 +171,13 @@ Cube.prototype = {
     },
 
     getWorkspaceCloneScaled: function(workspaceIndex, direction) {
-        let clone = this.getWorkspaceCLone(workspaceIndex);
+        let clone = this.getWorkspaceClone(workspaceIndex);
         clone.set_scale(1 - 2 * settings.pullaway, 1 - 2 * settings.pullaway);
         clone.x = global.stage.width / 2;
         return clone;
     },
 
-    getWorkspaceCLone: function(workspaceIndex) {
+    getWorkspaceClone: function(workspaceIndex) {
         let clone = new St.Group({clip_to_allocation: true});
         clone.set_size(global.stage.width, global.stage.height);
 
@@ -226,8 +226,7 @@ Cube.prototype = {
             if (!panels[i]) continue;
             let panel = panels[i];
             // Is it a non-autohideable panel, or is it a visible, tracked
-            // chrome object? TODO: Make more human-readable the logic
-            // below in clone.add_child().
+            // chrome object?
             if ((panel.actor && !panel._hideable)
                 || (panel && Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
                 let chromeClone = new Clutter.Clone({
@@ -331,7 +330,7 @@ Cube.prototype = {
                 return;
             }
         } else {
-            from_workspace = this.getWorkspaceCLone(active_workspace.index());
+            from_workspace = this.getWorkspaceClone(active_workspace.index());
             this.actor.add_child(from_workspace);
         }
 
@@ -341,7 +340,7 @@ Cube.prototype = {
                 this.actor.remove_child(this.from);
                 this.from.destroy();
             } else {
-                to_workspace = this.getWorkspaceCLone(new_workspace.index());
+                to_workspace = this.getWorkspaceClone(new_workspace.index());
             }
             this.actor.add_child(to_workspace);
         } else {
@@ -452,7 +451,7 @@ Cube.prototype = {
         let x_pos;
         let angle_from;
         if (direction === Meta.MotionDirection.LEFT) {
-            x_pos = global.stage.width * (1- settings.pullaway);
+            x_pos = global.stage.width * (1 - settings.pullaway);
             angle_from = 90;
         } else {
             x_pos = global.stage.width * settings.pullaway;
