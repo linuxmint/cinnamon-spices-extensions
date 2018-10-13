@@ -65,7 +65,9 @@ const createWindowClone = function(metaWindow, size, withTransients, withPositio
   let [x, y] = metaWindowActor.get_position();
   let [minX, minY] = [x, y];
   let [maxX, maxY] = [minX + width, minY + height];
+
   textures.push({t: texture, x: x, y: y, w: width, h: height});
+
   if (withTransients) {
     metaWindow.foreach_transient(function(win) {
       let metaWindowActor = win.get_compositor_private();
@@ -81,6 +83,7 @@ const createWindowClone = function(metaWindow, size, withTransients, withPositio
       textures.push({t: texture, x: x, y: y, w: width, h: height});
     });
   }
+
   let scale = 1;
   if (size) {
     if (withPositions) {
@@ -89,7 +92,8 @@ const createWindowClone = function(metaWindow, size, withTransients, withPositio
       scale = Math.min(size / Math.max(maxWidth, maxHeight), 1);
     }
   }
-  for (let i in textures) {
+
+  for (let i = 0; i < textures.length; i++) {
     let data = textures[i];
     let [texture, width, height, x, y] = [data.t, data.w, data.h, data.x, data.y];
     if (withPositions) {
@@ -539,7 +543,7 @@ AltTabPopup.prototype = {
       doDestroy();
     }
     let windows = global.get_window_actors();
-    for (let i in windows) {
+    for (let i = 0; i < windows.length; i++) {
       if (windows[i].get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP)
         Tweener.addTween(windows[i], {
           opacity: 255,
@@ -817,7 +821,7 @@ AppIcon.prototype = {
   resize: function(size) {
     this.icon = new St.Group();
     let clones = createWindowClone(this.window, size, true, true);
-    for (let i in clones) {
+    for (let i = 0; i < clones.length; i++) {
       let clone = clones[i];
       this.icon.add_child(clone.actor);
       clone.actor.set_position(clone.x, clone.y);
@@ -845,9 +849,9 @@ AppIcon.prototype = {
       this._appIcon.destroy();
     }
 
-    this._appIcon = this.app
-      ? this.window.minimized
-        ? this.app.get_faded_icon(iconSize)
+    this._appIcon = this.app ?
+      this.window.minimized ?
+        this.app.get_faded_icon(iconSize)
         : this.app.create_icon_texture(iconSize)
       : new St.Icon({
           icon_name: 'application-default-icon',
