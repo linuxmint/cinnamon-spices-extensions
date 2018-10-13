@@ -40,7 +40,6 @@ Cube.prototype = {
         this.to = null;
         this.isAnimating = false;
         this.destroy_requested = false;
-        this.monitor = Main.layoutManager.primaryMonitor;
 
         let [binding_type, , , direction] = binding.get_name().split('-');
         direction = Meta.MotionDirection[direction.toUpperCase()];
