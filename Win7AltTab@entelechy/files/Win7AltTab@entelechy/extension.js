@@ -24,8 +24,7 @@ function mod(a, b) {
 }
 
 function primaryModifier(mask) {
-  if (mask == 0)
-    return 0;
+  if (mask === 0) return 0;
 
   let primary = 1;
   while (mask > 1) {
@@ -36,18 +35,15 @@ function primaryModifier(mask) {
 }
 
 function isWindows(binding) {
-  return (binding == 'switch-windows' ||
-          binding == 'switch-windows-backward' ||
-          binding == 'switch-applications' ||
-          binding == 'switch-applications-backward');
+  return binding === 'switch-windows' || binding === 'switch-windows-backward' || binding === 'switch-applications' || binding === 'switch-applications-backward';
 }
 
 function isGroup(binding) {
-  return (binding == 'switch-group' || binding == 'switch-group-backward');
+  return binding === 'switch-group' || binding === 'switch-group-backward';
 }
 
 function isPanels(binding) {
-  return (binding == 'switch-panels' || binding == 'switch-panels-backward');
+  return binding === 'switch-panels' || binding === 'switch-panels-backward';
 }
 
 function createWindowClone(metaWindow, size, withTransients, withPositions) {
@@ -87,22 +83,21 @@ function createWindowClone(metaWindow, size, withTransients, withPositions) {
   let scale = 1;
   if (size) {
     if (withPositions) {
-      scale = Math.min(size/Math.max(maxX - minX, maxY - minY), 1);
+      scale = Math.min(size / Math.max(maxX - minX, maxY - minY), 1);
     } else {
-      scale = Math.min(size/Math.max(maxWidth, maxHeight), 1);
+      scale = Math.min(size / Math.max(maxWidth, maxHeight), 1);
     }
   }
   for (let i in textures) {
     let data = textures[i];
-    let [texture, width, height, x, y] =
-      [data.t, data.w, data.h, data.x, data.y];
+    let [texture, width, height, x, y] = [data.t, data.w, data.h, data.x, data.y];
     if (withPositions) {
       x -= minX;
       y -= minY;
     }
     let params = {};
     params.source = texture;
-    if (scale != 1) {
+    if (scale !== 1) {
       params.width = Math.round(width * scale);
       params.height = Math.round(height * scale);
       x = Math.round(x * scale);
@@ -132,15 +127,12 @@ function getTabList(all, group, window, workspaceOpt, screenOpt) {
       } else {
         app = winlist.length > 0 ? tracker.get_window_app(winlist[0]) : null;
       }
-      winlist = app ? app.get_windows() :
-        (window && Main.isInteresting(window) ?
-          [window] : (winlist[0] ? [winlist[0]] : []));
+      winlist = app ? app.get_windows() : window && Main.isInteresting(window) ? [window] : winlist[0] ? [winlist[0]] : [];
     }
   } else {
     let n = screen.get_n_workspaces();
-    for (let i = 0; i < n; i ++) {
-      winlist = winlist.concat(display.get_tab_list(Meta.TabList.NORMAL_ALL,
-        screen, screen.get_workspace_by_index(i)));
+    for (let i = 0; i < n; i++) {
+      winlist = winlist.concat(display.get_tab_list(Meta.TabList.NORMAL_ALL, screen, screen.get_workspace_by_index(i)));
     }
   }
 
@@ -157,23 +149,19 @@ function getTabList(all, group, window, workspaceOpt, screenOpt) {
   }
   // from cinnamon_app_compare_windows()
   windows.sort(function(w1, w2) {
-    let ws_1 = w1.get_workspace() == global.screen.get_active_workspace();
-    let ws_2 = w2.get_workspace() == global.screen.get_active_workspace();
+    let ws_1 = w1.get_workspace() === global.screen.get_active_workspace();
+    let ws_2 = w2.get_workspace() === global.screen.get_active_workspace();
 
-    if (ws_1 && !ws_2)
-      return -1;
-    else if (!ws_1 && ws_2)
-      return 1;
+    if (ws_1 && !ws_2) return -1;
+    else if (!ws_1 && ws_2) return 1;
 
-    let vis_1= w1.showing_on_its_workspace();
+    let vis_1 = w1.showing_on_its_workspace();
     let vis_2 = w2.showing_on_its_workspace();
 
-    if (vis_1 && !vis_2)
-      return -1;
-    else if (!vis_1 && vis_2)
-      return 1;
+    if (vis_1 && !vis_2) return -1;
+    else if (!vis_1 && vis_2) return 1;
 
-    return (w2.get_user_time() - w1.get_user_time());
+    return w2.get_user_time() - w1.get_user_time();
   });
   return windows;
 }
@@ -184,28 +172,37 @@ function ThumbnailGrid(params) {
 
 ThumbnailGrid.prototype = {
   _init: function(params) {
-    params = Params.parse(params, { rowLimit: null,
-      colLimit: null, spacing: 10 });
+    params = Params.parse(params, {
+      rowLimit: null,
+      colLimit: null,
+      spacing: 10
+    });
     this.rowLimit = params.rowLimit;
     this.colLimit = params.colLimit;
     this.spacing = params.spacing;
 
-    this.actor = new St.BoxLayout({ vertical: true });
+    this.actor = new St.BoxLayout({vertical: true});
     this.tWidth = 1;
     this.tHeight = 1;
     this.grid = new Cinnamon.GenericContainer();
-    this.titleLabel = new St.Label({ style: 'font-weight: bold' });
+    this.titleLabel = new St.Label({style: 'font-weight: bold'});
     this.titleBin = new St.Bin();
     this.titleBin.set_child(this.titleLabel);
     this.actor.add(this.titleBin);
-    this.actor.add(this.grid, { expand: true, y_align: St.Align.START });
+    this.actor.add(this.grid, {expand: true, y_align: St.Align.START});
 
-    this.grid.connect('get-preferred-width',
-      Lang.bind(this, this._getPreferredWidth));
-    this.grid.connect('get-preferred-height',
-      Lang.bind(this, this._getPreferredHeight));
-    this.grid.connect('allocate',
-      Lang.bind(this, this._allocate));
+    this.grid.connect(
+      'get-preferred-width',
+      Lang.bind(this, this._getPreferredWidth)
+    );
+    this.grid.connect(
+      'get-preferred-height',
+      Lang.bind(this, this._getPreferredHeight)
+    );
+    this.grid.connect(
+      'allocate',
+      Lang.bind(this, this._allocate)
+    );
   },
 
   _setTitle: function(text, demandsAttention) {
@@ -213,25 +210,30 @@ ThumbnailGrid.prototype = {
     this.titleBin.set_child(this.titleLabel);
     this.titleLabel.clutter_text.ellipsize = Pango.EllipsizeMode.END;
     let parentnode = this.actor.get_parent() ?
-      this.actor.get_parent().get_parent().get_theme_node() : null;
-    this.titleLabel.clutter_text.width =
-      Math.min(this.titleLabel.clutter_text.width,
-      Math.floor(this.grid.width +
-      (parentnode ? parentnode.get_horizontal_padding() : 0)));
-    this.titleBin.set_position
-      (Math.floor((this.grid.width - this.titleLabel.width) / 2),
-      Math.floor(-(parentnode ? parentnode.get_padding(St.Side.TOP) : 0) +
-      this.titleLabel.height / 8));
+      this.actor
+        .get_parent()
+        .get_parent()
+        .get_theme_node()
+      : null;
+    this.titleLabel.clutter_text.width = Math.min(
+      this.titleLabel.clutter_text.width,
+      Math.floor(this.grid.width + (parentnode ? parentnode.get_horizontal_padding() : 0))
+    );
+    this.titleBin.set_position(
+      Math.floor(
+        (this.grid.width - this.titleLabel.width) / 2),
+        Math.floor(-(parentnode ? parentnode.get_padding(St.Side.TOP) : 0) + this.titleLabel.height / 8
+      )
+    );
   },
 
   _calcTSize: function() {
     let children = this.grid.get_children();
-    children.forEach(Lang.bind(this, function(child) {
-      this.tWidth = Math.max(this.tWidth, child.get_preferred_size()[2]);
-    }));
-    children.forEach(Lang.bind(this, function(child) {
-      this.tHeight = Math.max(this.tHeight, child.get_preferred_size()[3]);
-    }));
+    for (let i = 0; i < children.length; i++) {
+      let size = children[i].get_preferred_size();
+      this.tWidth = Math.max(this.tWidth, size[2]);
+      this.tHeight = Math.max(this.tHeight, size[3]);
+    }
     this.tWidth = Math.ceil(this.tWidth);
     this.tHeight = Math.ceil(this.tHeight);
   },
@@ -239,8 +241,7 @@ ThumbnailGrid.prototype = {
   _getPreferredWidth: function(actor, forHeight, alloc) {
     let children = this.grid.get_children();
     this._calcTSize();
-    let nColumns = this.colLimit ? Math.min(this.colLimit,
-      children.length) : children.length;
+    let nColumns = this.colLimit ? Math.min(this.colLimit, children.length) : children.length;
     let totalSpacing = Math.max(0, nColumns - 1) * this.spacing;
     alloc.min_size = this.tWidth;
     alloc.natural_size = nColumns * this.tWidth + totalSpacing;
@@ -259,12 +260,9 @@ ThumbnailGrid.prototype = {
     this._calcTSize();
     let [nColumns, usedWidth] = this._computeLayout(forWidth);
     let nRows;
-    if (nColumns > 0)
-      nRows = Math.ceil(children.length / nColumns);
-    else
-      nRows = 0;
-    if (this.rowLimit)
-      nRows = Math.min(nRows, this.rowLimit);
+    if (nColumns > 0) nRows = Math.ceil(children.length / nColumns);
+    else nRows = 0;
+    if (this.rowLimit) nRows = Math.min(nRows, this.rowLimit);
     let totalSpacing = Math.max(0, nRows - 1) * this.spacing;
     let height = nRows * this.tHeight + totalSpacing;
     alloc.min_size = height;
@@ -288,7 +286,7 @@ ThumbnailGrid.prototype = {
 
     for (let i = 0; i < children.length; i++) {
       let childBox = new Clutter.ActorBox();
-      if (St.Widget.get_default_direction() == St.TextDirection.RTL) {
+      if (St.Widget.get_default_direction() === St.TextDirection.RTL) {
         let _x = box.x2 - (x + this.tWidth);
         childBox.x1 = Math.floor(_x);
       } else {
@@ -306,12 +304,12 @@ ThumbnailGrid.prototype = {
       }
 
       columnIndex++;
-      if (columnIndex == nColumns) {
+      if (columnIndex === nColumns) {
         columnIndex = 0;
         rowIndex++;
       }
 
-      if (columnIndex == 0) {
+      if (columnIndex === 0) {
         y += this.tHeight + this.spacing;
         x = box.x1 + leftPadding;
       } else {
@@ -319,29 +317,29 @@ ThumbnailGrid.prototype = {
       }
     }
     this.nColumns = nColumns;
-    this.nRows = rowIndex + (columnIndex == 0 ? 0 : 1);
+    this.nRows = rowIndex + (columnIndex === 0 ? 0 : 1);
   },
 
   _computeLayout: function(forWidth) {
     let nColumns = 0;
     let usedWidth = 0;
 
-    while ((this.colLimit == null || nColumns < this.colLimit) &&
-        (usedWidth + this.tWidth <= forWidth)) {
+    while ((this.colLimit == null || nColumns < this.colLimit) && usedWidth + this.tWidth <= forWidth) {
       usedWidth += this.tWidth + this.spacing;
       nColumns += 1;
     }
 
-    if (nColumns > 0)
-      usedWidth -= this.spacing;
+    if (nColumns > 0) usedWidth -= this.spacing;
 
     return [nColumns, usedWidth];
   },
 
   removeAll: function() {
-    this.grid.get_children().forEach(Lang.bind(this, function(child) {
-      child.destroy();
-    }));
+    this.grid.get_children().forEach(
+      Lang.bind(this, function(child) {
+        child.destroy();
+      })
+    );
   },
 
   addItem: function(actor) {
@@ -355,17 +353,29 @@ function AltTabPopup() {
 
 AltTabPopup.prototype = {
   _init: function() {
-    this.actor = new Cinnamon.GenericContainer({ name: 'altTabPopup',
-                                              reactive: true,
-                                              visible: false });
+    this.actor = new Cinnamon.GenericContainer({
+      name: 'altTabPopup',
+      reactive: true,
+      visible: false
+    });
 
-    this.actor.connect('get-preferred-width',
-      Lang.bind(this, this._getPreferredWidth));
-    this.actor.connect('get-preferred-height',
-      Lang.bind(this, this._getPreferredHeight));
-    this.actor.connect('allocate', Lang.bind(this, this._allocate));
+    this.actor.connect(
+      'get-preferred-width',
+      Lang.bind(this, this._getPreferredWidth)
+    );
+    this.actor.connect(
+      'get-preferred-height',
+      Lang.bind(this, this._getPreferredHeight)
+    );
+    this.actor.connect(
+      'allocate',
+      Lang.bind(this, this._allocate)
+    );
 
-    this.actor.connect('destroy', Lang.bind(this, this._onDestroy));
+    this.actor.connect(
+      'destroy',
+      Lang.bind(this, this._onDestroy)
+    );
 
     this._haveModal = false;
     this._modifierMask = 0;
@@ -391,10 +401,14 @@ AltTabPopup.prototype = {
     this._changedBinding = false;
     this._windowManager = global.window_manager;
 
-    this._dcid = this._windowManager.connect('destroy',
-        Lang.bind(this, this._windowDestroyed));
-    this._mcid = this._windowManager.connect('map',
-        Lang.bind(this, this._activateSelected));
+    this._dcid = this._windowManager.connect(
+      'destroy',
+      Lang.bind(this, this._windowDestroyed)
+    );
+    this._mcid = this._windowManager.connect(
+      'map',
+      Lang.bind(this, this._activateSelected)
+    );
   },
 
   _getPreferredWidth: function(actor, forHeight, alloc) {
@@ -413,22 +427,15 @@ AltTabPopup.prototype = {
 
     let leftPadding = this.actor.get_theme_node().get_padding(St.Side.LEFT);
     let rightPadding = this.actor.get_theme_node().get_padding(St.Side.RIGHT);
-    let bottomPadding = this.actor.get_theme_node().get_padding(St.Side.BOTTOM);
-    let vPadding = this.actor.get_theme_node().get_vertical_padding();
     let hPadding = leftPadding + rightPadding;
 
     // Allocate the appSwitcher
     // We select a size based on an icon size that does not overflow the screen
-    let [childMinHeight, childNaturalHeight] =
-      this._appSwitcher.actor.get_preferred_height(primary.width - hPadding);
-    let [childMinWidth, childNaturalWidth] =
-      this._appSwitcher.actor.get_preferred_width(childNaturalHeight);
-    childBox.x1 = Math.max(primary.x + leftPadding,
-      primary.x + Math.floor((primary.width - childNaturalWidth) / 2));
-    childBox.x2 = Math.min(primary.x + primary.width - rightPadding,
-      childBox.x1 + childNaturalWidth);
-    childBox.y1 = primary.y +
-      Math.floor((primary.height - childNaturalHeight) / 2);
+    let [childMinHeight, childNaturalHeight] = this._appSwitcher.actor.get_preferred_height(primary.width - hPadding);
+    let [childMinWidth, childNaturalWidth] = this._appSwitcher.actor.get_preferred_width(childNaturalHeight);
+    childBox.x1 = Math.max(primary.x + leftPadding, primary.x + Math.floor((primary.width - childNaturalWidth) / 2));
+    childBox.x2 = Math.min(primary.x + primary.width - rightPadding, childBox.x1 + childNaturalWidth);
+    childBox.y1 = primary.y + Math.floor((primary.height - childNaturalHeight) / 2);
     childBox.y2 = childBox.y1 + childNaturalHeight;
     this._appSwitcher.actor.allocate(childBox, flags);
   },
@@ -444,33 +451,26 @@ AltTabPopup.prototype = {
 
   _removeDestroyedWindow: function(window) {
     for (let i in this._winIcons) {
-      if (window == this._winIcons[i].window) {
-        if (this._winIcons.length == 1)
-          this.destroy();
+      if (window === this._winIcons[i].window) {
+        if (this._winIcons.length === 1) this.destroy();
         else {
           this._winIcons.splice(i, 1)[0].actor.destroy();
           this._appSwitcher._items.splice(i, 1)[0].destroy();
-          if (i < this._currentIndex)
-            this._currentIndex--;
-          else
-            this._currentIndex %= this._winIcons.length;
+          if (i < this._currentIndex) this._currentIndex--;
+          else this._currentIndex %= this._winIcons.length;
           this._select(this._currentIndex);
-          this._appSwitcher.thumbGrid._setTitle
-            (this._winIcons[this._currentIndex].label,
-              this._winIcons[this._currentIndex]._demandsAttention);
+          this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
         }
 
-      return;
+        return;
       }
     }
   },
 
   _activateSelected: function() {
-    Main.activateWindow(this._winIcons[this._currentIndex].window,
-      global.get_current_time());
+    Main.activateWindow(this._winIcons[this._currentIndex].window, global.get_current_time());
     this.destroy();
   },
-
 
   _nextWindow: function() {
     return mod(this._currentIndex + 1, this._winIcons.length);
@@ -480,39 +480,37 @@ AltTabPopup.prototype = {
     return mod(this._currentIndex - 1, this._winIcons.length);
   },
 
-  _keyReleaseEvent: function(actor, event) {
+  _keyReleaseEvent: function() {
     let [x, y, mods] = global.get_pointer();
     let state = mods & this._modifierMask;
 
-    if (state == 0)
-      this._finish();
+    if (state === 0) this._finish();
 
     return true;
   },
 
   _onScroll: function(actor, event) {
     let direction = event.get_scroll_direction();
-    if (direction == Clutter.ScrollDirection.UP) {
+    if (direction === Clutter.ScrollDirection.UP) {
       this._select(this._previousWindow());
-    } else if (direction == Clutter.ScrollDirection.DOWN) {
+    } else if (direction === Clutter.ScrollDirection.DOWN) {
       this._select(this._nextWindow());
     }
   },
 
-  _clickedOutside: function(actor, event) {
+  _clickedOutside: function() {
     this.destroy();
   },
 
   _windowActivated: function(appSwitcher, n) {
-    if (n == this._currentIndex) {
+    if (n === this._currentIndex) {
       Main.activateWindow(this._winIcons[this._currentIndex].window);
     }
     this.destroy();
   },
 
   _windowEntered: function(appSwitcher, n) {
-    if (!this._mouseActive)
-      return;
+    if (!this._mouseActive) return;
 
     this._select(n);
   },
@@ -520,12 +518,9 @@ AltTabPopup.prototype = {
   _disableHover: function() {
     this._mouseActive = false;
 
-    if (this._motionTimeoutId != 0)
-      Mainloop.source_remove(this._motionTimeoutId);
+    if (this._motionTimeoutId !== 0) Mainloop.source_remove(this._motionTimeoutId);
 
-    this._motionTimeoutId =
-      Mainloop.timeout_add(DISABLE_HOVER_TIMEOUT,
-        Lang.bind(this, this._mouseTimedOut));
+    this._motionTimeoutId = Mainloop.timeout_add(DISABLE_HOVER_TIMEOUT, Lang.bind(this, this._mouseTimedOut));
   },
 
   _mouseTimedOut: function() {
@@ -548,38 +543,34 @@ AltTabPopup.prototype = {
 
     this._popModal();
     if (this.actor.visible) {
-      Tweener.addTween(this.actor,
-        { opacity: 0,
-          time: POPUP_FADE_OUT_TIME,
-          transition: 'easeOutQuad',
-          onComplete: doDestroy
-        });
+      Tweener.addTween(this.actor, {
+        opacity: 0,
+        time: POPUP_FADE_OUT_TIME,
+        transition: 'easeOutQuad',
+        onComplete: doDestroy
+      });
     } else {
       doDestroy();
     }
     let windows = global.get_window_actors();
     for (let i in windows) {
-      if (windows[i].get_meta_window().get_window_type ()
-        !== Meta.WindowType.DESKTOP)
+      if (windows[i].get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP)
         Tweener.addTween(windows[i], {
           opacity: 255,
           time: PREVIEW_SWITCHER_FADEOUT_TIME / 4
         });
-    };
+    }
   },
 
   _onDestroy: function() {
     this._popModal();
 
-    if (this._motionTimeoutId)
-      Mainloop.source_remove(this._motionTimeoutId);
-    if (this._initialDelayTimeoutId)
-      Mainloop.source_remove(this._initialDelayTimeoutId);
-    if (this._displayPreviewTimeoutId)
-      Mainloop.source_remove(this._displayPreviewTimeoutId);
+    if (this._motionTimeoutId) Mainloop.source_remove(this._motionTimeoutId);
+    if (this._initialDelayTimeoutId) Mainloop.source_remove(this._initialDelayTimeoutId);
+    if (this._displayPreviewTimeoutId) Mainloop.source_remove(this._displayPreviewTimeoutId);
     this._windowManager.disconnect(this._dcid);
     this._windowManager.disconnect(this._mcid);
-    /*if (this._checkDestroyedTimeoutId != 0) {
+    /*if (this._checkDestroyedTimeoutId !== 0) {
       Mainloop.source_remove(this._checkDestroyedTimeoutId);
       this._checkDestroyedTimeoutId = 0;
     }*/
@@ -605,9 +596,7 @@ AltTabPopup.prototype = {
   },
 
   _doWindowPreview: function() {
-    if (!this._previewEnabled || this._winIcons.length < 1 ||
-        !this._winIcons[this._currentIndex].window)
-    {
+    if (!this._previewEnabled || this._winIcons.length < 1 || !this._winIcons[this._currentIndex].window) {
       return;
     }
 
@@ -638,8 +627,7 @@ AltTabPopup.prototype = {
 
       this._clearPreview();
       this._previewClones = previewClones;
-
-    };// show preview
+    }; // show preview
 
     // Use a cancellable timeout to avoid flickering effect
     // when tabbing rapidly through the set.
@@ -647,18 +635,15 @@ AltTabPopup.prototype = {
       Mainloop.source_remove(this._displayPreviewTimeoutId);
     }
     let delay = PREVIEW_DELAY_TIMEOUT;
-    this._displayPreviewTimeoutId =
-      Mainloop.timeout_add(delay, Lang.bind(this, showPreview));
+    this._displayPreviewTimeoutId = Mainloop.timeout_add(delay, Lang.bind(this, showPreview));
     let windows = global.get_window_actors();
     for (let i in windows) {
-      if (windows[i].get_meta_window().get_window_type ()
-        !== Meta.WindowType.DESKTOP)
+      if (windows[i].get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP)
         Tweener.addTween(windows[i], {
           opacity: 20,
           time: PREVIEW_SWITCHER_FADEOUT_TIME / 4
         });
-    };
-
+    }
   },
 
   _select: function(index) {
@@ -688,8 +673,7 @@ AltTabPopup.prototype = {
       this._changeWS = false;
       this._changedWS = true;
       binding = this._oldBinding;
-      if (this._oldWindows.length > 0 && !isWindows(binding))
-        windows = this._oldWindows;
+      if (this._oldWindows.length > 0 && !isWindows(binding)) windows = this._oldWindows;
     }
     if (this._changedBinding && isGroup(binding)) {
       windows = getTabList(false, true, this._window);
@@ -704,15 +688,19 @@ AltTabPopup.prototype = {
     this._appSwitcher = new AppSwitcher(windows, this);
     this.actor.add_actor(this._appSwitcher.actor);
 
-    this._appSwitcher.connect('item-activated',
-      Lang.bind(this, this._windowActivated));
-    this._appSwitcher.connect('item-entered',
-      Lang.bind(this, this._windowEntered));
+    this._appSwitcher.connect(
+      'item-activated',
+      Lang.bind(this, this._windowActivated)
+    );
+    this._appSwitcher.connect(
+      'item-entered',
+      Lang.bind(this, this._windowEntered)
+    );
 
     this._winIcons = this._appSwitcher.icons;
 
     this._appSwitcher.actor.opacity = 0;
-    if (windows.length < 1 || this._winIcons.length == 0) {
+    if (windows.length < 1 || this._winIcons.length === 0) {
       this._finish();
       return false;
     }
@@ -721,17 +709,14 @@ AltTabPopup.prototype = {
 
     // Make the initial selection
     if (this._winIcons.length > 0) {
-      if (binding == 'no-switch-windows' || this._changedWS
-          || this._winIcons.length == 1) {
+      if (binding === 'no-switch-windows' || this._changedWS || this._winIcons.length === 1) {
         this._select(0);
       } else if (backward) {
         this._select(this._winIcons.length - 1);
       } else {
         this._select(1);
       }
-      this._appSwitcher.thumbGrid._setTitle
-        (this._winIcons[this._currentIndex].label,
-          this._winIcons[this._currentIndex]._demandsAttention);
+      this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
       this._changedWS = false;
     }
 
@@ -753,11 +738,13 @@ AltTabPopup.prototype = {
 
     // We delay showing the popup so that fast Alt+Tab users aren't
     // disturbed by the popup briefly flashing.
-    this._initialDelayTimeoutId = Mainloop.timeout_add(POPUP_DELAY_TIMEOUT,
+    this._initialDelayTimeoutId = Mainloop.timeout_add(
+      POPUP_DELAY_TIMEOUT,
       Lang.bind(this, function() {
         this._appSwitcher.actor.opacity = 255;
         this._initialDelayTimeoutId = 0;
-      }));
+      })
+    );
 
     return true;
   },
@@ -765,8 +752,7 @@ AltTabPopup.prototype = {
   show: function(backward, binding, mask) {
     this._thumbnailsEnabled = false;
     this._previewEnabled = true;
-    if (!Main.pushModal(this.actor))
-      return false;
+    if (!Main.pushModal(this.actor)) return false;
     this._haveModal = true;
     this._modifierMask = primaryModifier(mask);
 
@@ -774,15 +760,23 @@ AltTabPopup.prototype = {
       return false;
     }
 
-    this.actor.connect('key-press-event',
-      Lang.bind(this, this._keyPressEvent));
-    this.actor.connect('key-release-event',
-      Lang.bind(this, this._keyReleaseEvent));
+    this.actor.connect(
+      'key-press-event',
+      Lang.bind(this, this._keyPressEvent)
+    );
+    this.actor.connect(
+      'key-release-event',
+      Lang.bind(this, this._keyReleaseEvent)
+    );
 
-    this.actor.connect('button-press-event',
-      Lang.bind(this, this._clickedOutside));
-    this.actor.connect('scroll-event',
-      Lang.bind(this, this._onScroll));
+    this.actor.connect(
+      'button-press-event',
+      Lang.bind(this, this._clickedOutside)
+    );
+    this.actor.connect(
+      'scroll-event',
+      Lang.bind(this, this._onScroll)
+    );
 
     return true;
   },
@@ -791,10 +785,8 @@ AltTabPopup.prototype = {
     let showOSD = false;
     if (this._winIcons.length > 0) {
       let icon = this._winIcons[this._currentIndex];
-      showOSD = (icon.window.get_workspace()
-        != global.screen.get_active_workspace());
-      if (icon.window.get_workspace() !== null)
-        Main.activateWindow(icon.window);
+      showOSD = icon.window.get_workspace() !== global.screen.get_active_workspace();
+      if (icon.window.get_workspace() != null) Main.activateWindow(icon.window);
     }
     this.destroy();
     if (showOSD) Main.wm.showWorkspaceOSD();
@@ -807,11 +799,9 @@ AltTabPopup.prototype = {
         return false;
       }
       let current = global.screen.get_active_workspace_index();
-      let nextIndex = (global.screen.n_workspaces + current + direction)
-        % global.screen.n_workspaces;
-      global.screen.get_workspace_by_index(nextIndex).activate
-        (global.get_current_time());
-      if (current == global.screen.get_active_workspace_index()) {
+      let nextIndex = (global.screen.n_workspaces + current + direction) % global.screen.n_workspaces;
+      global.screen.get_workspace_by_index(nextIndex).activate(global.get_current_time());
+      if (current === global.screen.get_active_workspace_index()) {
         return false;
       }
       Main.wm.showWorkspaceOSD();
@@ -822,31 +812,22 @@ AltTabPopup.prototype = {
     let keysym = event.get_key_symbol();
     let event_state = Cinnamon.get_event_state(event);
     let backwards = event_state & Clutter.ModifierType.SHIFT_MASK;
-    let action = global.display.get_keybinding_action(event.get_key_code(),
-      event_state);
+    let action = global.display.get_keybinding_action(event.get_key_code(), event_state);
 
     this._disableHover();
     let nRows = this._appSwitcher.thumbGrid.nRows;
     let nColumns = this._appSwitcher.thumbGrid.nColumns;
-    if (keysym == Clutter.Escape) {
+    if (keysym === Clutter.Escape) {
       this.destroy();
-    } else if (action == Meta.KeyBindingAction.CLOSE) {
-      this._winIcons[this._currentIndex].window.delete
-        (global.get_current_time());
-      this._checkDestroyedTimeoutId = Mainloop.timeout_add
-        (CHECK_DESTROYED_TIMEOUT,
-          Lang.bind(this, this._checkDestroyed,
-            this._winIcons[this._currentIndex]));
+    } else if (action === Meta.KeyBindingAction.CLOSE) {
+      this._winIcons[this._currentIndex].window.delete(global.get_current_time());
+      this._checkDestroyedTimeoutId = Mainloop.timeout_add(CHECK_DESTROYED_TIMEOUT, Lang.bind(this, this._checkDestroyed, this._winIcons[this._currentIndex]));
       return false;
-    } else if (keysym == Clutter.Return) {
+    } else if (keysym === Clutter.Return) {
       this._finish();
       return true;
-    } else if (action == Meta.KeyBindingAction.SWITCH_WINDOWS ||
-        action == Meta.KeyBindingAction.SWITCH_GROUP ||
-        action == Meta.KeyBindingAction.SWITCH_PANELS) {
-      if ((isWindows(that._oldBinding) || isPanels(that._oldBinding))
-          && action == Meta.KeyBindingAction.SWITCH_GROUP &&
-          !this._changedBinding) {
+    } else if (action === Meta.KeyBindingAction.SWITCH_WINDOWS || action === Meta.KeyBindingAction.SWITCH_GROUP || action === Meta.KeyBindingAction.SWITCH_PANELS) {
+      if ((isWindows(that._oldBinding) || isPanels(that._oldBinding)) && action === Meta.KeyBindingAction.SWITCH_GROUP && !this._changedBinding) {
         that._changedBinding = true;
         that._window = this._winIcons[this._currentIndex].window;
         that.refresh('switch-group', backwards);
@@ -855,37 +836,32 @@ AltTabPopup.prototype = {
       this._select(backwards ? this._previousWindow() : this._nextWindow());
     } else {
       let ctrlDown = event_state & Clutter.ModifierType.CONTROL_MASK;
-      if (keysym == Clutter.Left) {
+      if (keysym === Clutter.Left) {
         if (ctrlDown) {
           if (switchWorkspace(-1)) {
             return false;
           }
         }
         this._select(this._previousWindow());
-      } else if (keysym == Clutter.Right) {
+      } else if (keysym === Clutter.Right) {
         if (ctrlDown) {
           if (switchWorkspace(1)) {
             return false;
           }
         }
         this._select(this._nextWindow());
-      } else if (keysym == Clutter.Down) {
-        this._select(Math.min(mod(this._currentIndex + nColumns,
-          nColumns * nRows), this._winIcons.length - 1));
-      } else if (keysym == Clutter.Up) {
-        this._select(Math.min(mod(this._currentIndex - nColumns,
-          nColumns * nRows), this._winIcons.length - 1));
-      } else if (keysym == Clutter.Home) {
+      } else if (keysym === Clutter.Down) {
+        this._select(Math.min(mod(this._currentIndex + nColumns, nColumns * nRows), this._winIcons.length - 1));
+      } else if (keysym === Clutter.Up) {
+        this._select(Math.min(mod(this._currentIndex - nColumns, nColumns * nRows), this._winIcons.length - 1));
+      } else if (keysym === Clutter.Home) {
         this._select(0);
-      } else if (keysym == Clutter.End) {
+      } else if (keysym === Clutter.End) {
         this._select(this._winIcons.length - 1);
       }
     }
 
-    if (this._winIcons.length > 0)
-      this._appSwitcher.thumbGrid._setTitle
-        (this._winIcons[this._currentIndex].label,
-          this._winIcons[this._currentIndex]._demandsAttention);
+    if (this._winIcons.length > 0) this._appSwitcher.thumbGrid._setTitle(this._winIcons[this._currentIndex].label, this._winIcons[this._currentIndex]._demandsAttention);
     return true;
   }
 };
@@ -899,16 +875,16 @@ AppIcon.prototype = {
     this.window = window;
     let tracker = Cinnamon.WindowTracker.get_default();
     this.app = tracker.get_window_app(window);
-    this.actor = new St.BoxLayout({ style_class: 'alt-tab-app',
-                                    vertical: true });
+    this.actor = new St.BoxLayout({
+      style_class: 'alt-tab-app',
+      vertical: true
+    });
     this.icon = null;
     this._iconBin = new St.Bin();
 
-    this.actor.add(this._iconBin, { x_fill: false, y_fill: false } );
-    let windowTitle = window
-    this.label = window.get_title() || (this.app ? this.app.get_name() : " ")
-    this._demandsAttention = (window.is_urgent &&
-      (window.is_demanding_attention() || window.is_urgent()));
+    this.actor.add(this._iconBin, {x_fill: false, y_fill: false});
+    this.label = window.get_title() || (this.app ? this.app.get_name() : ' ');
+    this._demandsAttention = window.is_urgent && (window.is_demanding_attention() || window.is_urgent());
     this.win = window.get_compositor_private().get_texture();
     let [width, height] = this.win.get_size();
     this.set_scale(width, height);
@@ -917,11 +893,10 @@ AppIcon.prototype = {
 
   set_scale: function(width, height) {
     let monitor = Main.layoutManager.primaryMonitor;
-    this.scale = Math.min(1.0, monitor.width * THUMBNAIL_SCALE / width,
-      monitor.height * THUMBNAIL_SCALE / height);
+    this.scale = Math.min(1.0, (monitor.width * THUMBNAIL_SCALE) / width, (monitor.height * THUMBNAIL_SCALE) / height);
   },
 
-  resize: function(size){
+  resize: function(size) {
     this.icon = new St.Group();
     let clones = createWindowClone(this.window, size, true, true);
     for (let i in clones) {
@@ -941,8 +916,7 @@ AppIcon.prototype = {
     let [width, height] = this.getSize();
     if (this.icon.get_children().length > 1) {
       this.set_scale(width / this.scale, height / this.scale);
-      this.resize(Math.round(Math.max(this.win.width, this.win.height) *
-        this.scale));
+      this.resize(Math.round(Math.max(this.win.width, this.win.height) * this.scale));
       [width, height] = this.getSize();
     }
     let iconLeft = width - (iconSize - iconOverlap);
@@ -953,12 +927,15 @@ AppIcon.prototype = {
       this._appIcon.destroy();
     }
 
-    this._appIcon = this.app ? (this.window.minimized ?
-      this.app.get_faded_icon(iconSize) :
-      this.app.create_icon_texture(iconSize)) :
-      new St.Icon({ icon_name: 'application-default-icon',
-        icon_type: St.IconType.FULLCOLOR,
-        icon_size: iconSize });
+    this._appIcon = this.app
+      ? this.window.minimized
+        ? this.app.get_faded_icon(iconSize)
+        : this.app.create_icon_texture(iconSize)
+      : new St.Icon({
+          icon_name: 'application-default-icon',
+          icon_type: St.IconType.FULLCOLOR,
+          icon_size: iconSize
+        });
     this._appIcon.set_position(iconLeft, iconTop);
     this.actor.add(this._appIcon);
     this._iconBin.set_size(width, height);
@@ -986,14 +963,19 @@ function AppSwitcher() {
 
 AppSwitcher.prototype = {
   _init: function(windows, altTabPopup) {
-    this.actor =
-      new Cinnamon.GenericContainer({ style_class: 'switcher-list' });
-    this.actor.connect('get-preferred-width',
-      Lang.bind(this, this._getPreferredWidth));
-    this.actor.connect('get-preferred-height',
-      Lang.bind(this, this._getPreferredHeight));
-    this.actor.connect('allocate',
-      Lang.bind(this, this._allocate));
+    this.actor = new Cinnamon.GenericContainer({style_class: 'switcher-list'});
+    this.actor.connect(
+      'get-preferred-width',
+      Lang.bind(this, this._getPreferredWidth)
+    );
+    this.actor.connect(
+      'get-preferred-height',
+      Lang.bind(this, this._getPreferredHeight)
+    );
+    this.actor.connect(
+      'allocate',
+      Lang.bind(this, this._allocate)
+    );
 
     this._clipBin = new St.Bin({style_class: 'cbin'});
     this.actor.add_actor(this._clipBin);
@@ -1017,8 +999,7 @@ AppSwitcher.prototype = {
     this._scrollableRight = false;
     this._clipBin.child = this.thumbGrid.actor;
 
-    for (let i = 0; i < thumbnails.length; i++)
-      this._addThumbnail(thumbnails[i]);
+    for (let i = 0; i < thumbnails.length; i++) this._addThumbnail(thumbnails[i]);
 
     this._iconSize = 0;
     this._altTabPopup = altTabPopup;
@@ -1063,24 +1044,32 @@ AppSwitcher.prototype = {
     bbox.set_child(item);
 
     let n = this._items.length;
-    bbox.connect('clicked',
-      Lang.bind(this, function() { this._onItemClicked(n); }));
-    bbox.connect('enter-event',
-      Lang.bind(this, function() { this._onItemEnter(n); }));
+    bbox.connect(
+      'clicked',
+      Lang.bind(this, function() {
+        this._onItemClicked(n);
+      })
+    );
+    bbox.connect(
+      'enter-event',
+      Lang.bind(this, function() {
+        this._onItemEnter(n);
+      })
+    );
 
     this.thumbGrid.addItem(bbox);
     this._items.push(bbox);
   },
 
   highlight: function(index) {
-    if (this._highlighted != -1 && this._items[this._highlighted]) {
+    if (this._highlighted !== -1 && this._items[this._highlighted]) {
       //this._items[this._highlighted].remove_style_pseudo_class('outlined');
       this._items[this._highlighted].remove_style_pseudo_class('selected');
     }
 
     this._highlighted = index;
 
-    if (this._highlighted != -1) {
+    if (this._highlighted !== -1) {
       //this._items[this._highlighted].add_style_pseudo_class('outlined');
       this._items[this._highlighted].add_style_pseudo_class('selected');
     }
@@ -1091,58 +1080,47 @@ AppSwitcher.prototype = {
     this.thumbGrid._calcTSize();
     let node = this._altTabPopup.actor.get_theme_node();
     this.padFactor = node.get_horizontal_padding() + node.get_length('spacing');
-    return this.thumbGrid._computeLayout(global.screen_width -
-      this.padFactor)[0];
+    return this.thumbGrid._computeLayout(global.screen_width - this.padFactor)[0];
   },
 
   _getRowLimit: function() {
     this.thumbGrid._calcTSize();
     let node = this._altTabPopup.actor.get_theme_node();
     this.padFactor = node.get_vertical_padding() + node.get_length('spacing');
-    return this.thumbGrid._computeLayout
-      (global.screen_height - this.padFactor)[1];
+    return this.thumbGrid._computeLayout(global.screen_height - this.padFactor)[1];
   },
 
   _getPreferredWidth: function(actor, forHeight, alloc) {
     let colLimit = this._getColLimit();
     this.thumbGrid.colLimit = colLimit;
-    let nColumns = Math.min(colLimit,
-      this.thumbGrid._getVisibleChildren().length);
-    alloc.natural_size = alloc.min_size = nColumns * this.thumbGrid.tWidth +
-      Math.max(0, nColumns - 1) * this.thumbGrid.spacing + this.padFactor;
+    let nColumns = Math.min(colLimit, this.thumbGrid._getVisibleChildren().length);
+    alloc.natural_size = alloc.min_size = nColumns * this.thumbGrid.tWidth + Math.max(0, nColumns - 1) * this.thumbGrid.spacing + this.padFactor;
   },
 
   _getPreferredHeight: function(actor, forWidth, alloc) {
     let colLimit = this._getColLimit();
     let rowLimit = this.thumbGrid.rowLimit;
-    let nRows = Math.min(rowLimit,
-      Math.ceil(this.thumbGrid._getVisibleChildren().length / colLimit));
-    alloc.natural_size = alloc.min_size = this.thumbGrid.tHeight * nRows +
-      this.thumbGrid.spacing * Math.max(nRows - 1, 0) +
-      this.thumbGrid.titleLabel.height +
-      this._altTabPopup.actor.get_theme_node().get_vertical_padding();
+    let nRows = Math.min(rowLimit, Math.ceil(this.thumbGrid._getVisibleChildren().length / colLimit));
+    alloc.natural_size = alloc.min_size =
+      this.thumbGrid.tHeight * nRows + this.thumbGrid.spacing * Math.max(nRows - 1, 0) + this.thumbGrid.titleLabel.height + this._altTabPopup.actor.get_theme_node().get_vertical_padding();
   },
 
   _enterItem: function(index) {
     let [x, y, mask] = global.get_pointer();
     let pickedActor = global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y);
-    if (this._items[index].contains(pickedActor))
-      this._itemEntered(index);
+    if (this._items[index].contains(pickedActor)) this._itemEntered(index);
   }
-
 };
 Signals.addSignalMethods(AppSwitcher.prototype);
 
 function startTab(display, screen, window, binding) {
-  let modifiers = binding.get_modifiers ();
+  let modifiers = binding.get_modifiers();
   let backwards = modifiers & Meta.VirtualModifier.SHIFT_MASK;
   let tabPopup = new AltTabPopup();
-  if (!tabPopup.show(backwards, binding.get_name(), binding.get_mask()))
-    tabPopup.destroy();
+  if (!tabPopup.show(backwards, binding.get_name(), binding.get_mask())) tabPopup.destroy();
 }
 
-function init() {
-}
+function init() {}
 
 function enable() {
   Meta.keybindings_set_custom_handler('switch-applications', startTab);
@@ -1155,18 +1133,11 @@ function enable() {
 }
 
 function disable() {
-  Meta.keybindings_set_custom_handler('switch-applications',
-    Lang.bind(Main.wm, Main.wm._startAppSwitcher));
-  Meta.keybindings_set_custom_handler('switch-windows',
-    Lang.bind(Main.wm, Main.wm._startAppSwitcher));
-  Meta.keybindings_set_custom_handler('switch-group',
-    Lang.bind(Main.wm, Main.wm._startAppSwitcher));
-  Meta.keybindings_set_custom_handler('switch-panels',
-    Lang.bind(Main.wm, Main.wm._startA11ySwitcher));
-  Meta.keybindings_set_custom_handler('switch-applications-backward',
-    Lang.bind(Main.wm, Main.wm._startAppSwitcher));
-  Meta.keybindings_set_custom_handler('switch-windows-backward',
-    Lang.bind(Main.wm, Main.wm._startAppSwitcher));
-  Meta.keybindings_set_custom_handler('switch-group-backward',
-    Lang.bind(Main.wm, Main.wm._startAppSwitcher));
+  Meta.keybindings_set_custom_handler('switch-applications', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
+  Meta.keybindings_set_custom_handler('switch-windows', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
+  Meta.keybindings_set_custom_handler('switch-group', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
+  Meta.keybindings_set_custom_handler('switch-panels', Lang.bind(Main.wm, Main.wm._startA11ySwitcher));
+  Meta.keybindings_set_custom_handler('switch-applications-backward', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
+  Meta.keybindings_set_custom_handler('switch-windows-backward', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
+  Meta.keybindings_set_custom_handler('switch-group-backward', Lang.bind(Main.wm, Main.wm._startAppSwitcher));
 }
