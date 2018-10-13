@@ -1,6 +1,6 @@
 ### 1.0.0
 
-  * Fixed for compatibility with modern versions of Cinnamon.
+  * Added compatibility for Cinnamon 3.8+.
 
 ## Original Changelog
 
