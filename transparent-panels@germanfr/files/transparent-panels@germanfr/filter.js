@@ -33,9 +33,11 @@ PanelFilter.prototype = {
 	},
 
 	for_each_panel: function (callback, monitor) {
-		for(let panel of this.panels)
+		for(let i = 0; i < this.panels.length; i++) {
+			let panel = this.panels[i];
 			if(panel.monitorIndex === monitor || monitor < 0)
-				callback.call(null, panel, monitor);
+				callback(panel, monitor);
+		}
 	},
 
 	add: function (loc) {
