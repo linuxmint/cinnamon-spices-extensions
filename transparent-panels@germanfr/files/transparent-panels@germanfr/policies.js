@@ -97,8 +97,8 @@ MaximizedPolicy.prototype = {
 			this._startup_signals.connect(global.display, "window-created", this._on_window_added_startup, this);
 			this._startup_signals.connect(global.display, "notify::focus-window", this._disconnect_startup_signals, this);
 		} else { // When the extension is loaded in the middle of a session
-			for(let win of windows)
-				this._on_window_added_startup(global.display, win);
+			for(let i = 0; i < windows.length; i++)
+				this._on_window_added_startup(global.display, windows[i]);
 		}
 		this.controller.on_state_change(-1);
 	},
@@ -166,7 +166,8 @@ MaximizedPolicy.prototype = {
 		let workspace = global.screen.get_active_workspace();
 		let windows = workspace.list_windows();
 
-		for(let win of windows) {
+		for(let i = 0; i < windows.length; i++) {
+			let win = windows[i];
 			if(this._is_window_maximized(win) && win.get_monitor() == monitor)
 				return true;
 		}
