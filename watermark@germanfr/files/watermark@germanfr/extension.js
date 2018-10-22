@@ -127,7 +127,7 @@ Watermark.prototype = {
 		this.actor = new St.Bin();
 		this.watermark = null;
 
-		global.bottom_window_group.insert_child_at_index(this.actor, 0);
+		global.background_actor.add_actor(this.actor);
 
 		/* Position can't be calculated until size is set, and that is async */
 		this.actor.connect('queue-redraw', () => this.update_position());
