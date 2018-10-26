@@ -154,7 +154,7 @@ MaximizedPolicy.prototype = {
 		// window gains focus, to avoid innecesary overhead each time focus changes.
 		const focus_lost = (display) => {
 			let focused = display.get_focus_window();
-			if(desktop === focused || focused.get_monitor() !== monitor)
+			if(!focused || desktop === focused || focused.get_monitor() !== monitor)
 				return;
 			this._signals.disconnect("notify::focus-window", display, focus_lost);
 			this.lookup_all_monitors();
