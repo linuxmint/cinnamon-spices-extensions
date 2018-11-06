@@ -1,6 +1,6 @@
 {
 	"name": "Transparent panels",
-	"version": "3.8",
+	"version": "4.0~20181106",
 	"description": "Transparentize your panels when there are no any maximized windows",
 	"url": "https://github.com/germanfr/cinnamon-transparent-panels",
 	"website": "https://github.com/germanfr/cinnamon-transparent-panels",
@@ -8,7 +8,8 @@
 		"3.2",
 		"3.4",
 		"3.6",
-		"3.8"
+		"3.8",
+		"4.0"
 	],
 	"uuid": "transparent-panels@germanfr"
 }
