@@ -20,11 +20,9 @@ msgstr ""
 
 #. gTile@shuairan->metadata.json->description
 msgid ""
-"Tile your windows as you like. It even supports multiscreen ! -EDIT: - See "
-"README.md file for configuration -"
+"Tile your windows as you like."
 msgstr ""
-"Udlæg dine vinduer, som du synes. Understøtter endda flere skærme! Se filen "
-"README.md for brug."
+"Udlæg dine vinduer, som du synes."
 
 #. gTile@shuairan->metadata.json->name
 msgid "gTile"
