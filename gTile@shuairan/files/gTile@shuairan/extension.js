@@ -189,7 +189,7 @@ function initGrids() {
   grids = {};
   for (let monitorIdx in monitors) {
     let monitor = monitors[monitorIdx];
-    let grid = new Grid(monitorIdx, monitor, 'gTile', preferences.nbCols, preferences.nbRows);
+    let grid = new Grid(parseInt(monitorIdx), monitor, 'gTile', preferences.nbCols, preferences.nbRows);
     let key = getMonitorKey(monitor);
     grids[key] = grid;
 
@@ -400,7 +400,7 @@ function showTiling() {
       let window = getFocusApp();
       let pos_x;
       let pos_y;
-      if (window.get_monitor() === monitorIdx) {
+      if (window.get_monitor() === parseInt(monitorIdx)) {
         pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
         pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
       } else {
