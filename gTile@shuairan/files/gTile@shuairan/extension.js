@@ -322,6 +322,36 @@ function move_resize_window(metaWindow, x, y, width, height) {
   metaWindow.move_frame(true, x, y);
 }
 
+function getUsableScreenArea(monitor) {
+  let top = monitor.y;
+  let bottom = monitor.y + monitor.height;
+  let left = monitor.x;
+  let right = monitor.x + monitor.width;
+
+  for (let panel of Main.panelManager.getPanelsInMonitor(monitor.index)) {
+    if (!panel.isHideable()) {
+      switch (panel.panelPosition) {
+        case Panel.PanelLoc.top:
+          top += panel.height;
+          break;
+        case Panel.PanelLoc.bottom:
+          bottom -= panel.height;
+          break;
+        case Panel.PanelLoc.left:
+          left += panel.height; // even vertical panels use 'height'
+          break;
+        case Panel.PanelLoc.right:
+          right -= panel.height;
+          break;
+      }
+    }
+  }
+
+  let width = right > left ? right - left : 0;
+  let height = bottom > top ? bottom - top : 0;
+  return [left, top, width, height];
+}
+
 function getNotFocusedWindowsOfMonitor(monitor) {
   return Main.getTabList().filter(function(w) {
     let app = tracker.get_window_app(w);
@@ -630,27 +660,22 @@ AutoTileMainAndList.prototype = {
     reset_window(focusMetaWindow);
 
     let monitor = this.grid.monitor;
-    let offsetY = isPrimaryMonitor(monitor) && !Main.panel.isHideable() ? Main.panel.actor.height : 0;
-    let offsetY2 = isPrimaryMonitor(monitor) && Main.panel2 && !Main.panel2.isHideable() ? Main.panel2.actor.height : 0;
-    let offsetTotal = offsetY + offsetY2;
-
+    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
     let windows = getNotFocusedWindowsOfMonitor(monitor);
 
-    let startY = Main.panel.bottomPosition ? 0 : offsetY;
+    move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
 
-    move_resize_window(focusMetaWindow, monitor.x, monitor.y + startY, monitor.width / 2, monitor.height);
-
-    let winHeight = (monitor.height - offsetTotal) / windows.length;
+    let winHeight = screenHeight / windows.length;
     let countWin = 0;
 
     for (let windowIdx in windows) {
       let metaWindow = windows[windowIdx];
 
-      let newOffset = startY + countWin * winHeight;
+      let newOffset = countWin * winHeight;
 
       reset_window(metaWindow);
 
-      move_resize_window(metaWindow, monitor.x + monitor.width / 2, monitor.y + newOffset, monitor.width / 2, winHeight);
+      move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
       countWin++;
     }
 
@@ -682,33 +707,29 @@ AutoTileTwoList.prototype = {
     reset_window(focusMetaWindow);
 
     let monitor = this.grid.monitor;
-    let offsetY = isPrimaryMonitor(monitor) && !Main.panel.isHideable() ? Main.panel.actor.height : 0;
-    let offsetY2 = isPrimaryMonitor(monitor) && Main.panel2 && !Main.panel2.isHideable() ? Main.panel2.actor.height : 0;
-    let offsetTotal = offsetY + offsetY2;
-    let startY = Main.panel.bottomPosition ? 0 : offsetY;
-
+    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
     let windows = getNotFocusedWindowsOfMonitor(monitor);
     let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
-    let winHeight = (monitor.height - offsetTotal) / nbWindowOnEachSide;
+    let winHeight = screenHeight / nbWindowOnEachSide;
 
     let countWin = 0;
 
-    let xOffset = ((countWin % 2) * monitor.width) / 2;
-    let yOffset = startY + Math.floor(countWin / 2) * winHeight;
+    let xOffset = ((countWin % 2) * screenWidth) / 2;
+    let yOffset = Math.floor(countWin / 2) * winHeight;
 
-    move_resize_window(focusMetaWindow, monitor.x + xOffset, monitor.y + yOffset, monitor.width / 2, winHeight);
+    move_resize_window(focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
 
     countWin++;
 
     for (let windowIdx in windows) {
       let metaWindow = windows[windowIdx];
 
-      xOffset = ((countWin % 2) * monitor.width) / 2;
-      yOffset = startY + Math.floor(countWin / 2) * winHeight;
+      xOffset = ((countWin % 2) * screenWidth) / 2;
+      yOffset = Math.floor(countWin / 2) * winHeight;
 
       reset_window(metaWindow);
 
-      move_resize_window(metaWindow, monitor.x + xOffset, monitor.y + yOffset, monitor.width / 2, winHeight);
+      move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
       countWin++;
     }
 
@@ -1281,19 +1302,12 @@ GridElementDelegate.prototype = {
     let nbCols = preferences.nbCols;
 
     let monitor = fromGridElement.monitor;
+    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
 
-    let offsetY = isPrimaryMonitor(monitor) && !Main.panel.isHideable() ? Main.panel.actor.height : 0;
-    let offsetY2 = isPrimaryMonitor(monitor) && Main.panel2 && !Main.panel.isHideable() ? Main.panel2.actor.height : 0;
-    let offsetTotal = offsetY + offsetY2;
-
-    let areaWidth = (monitor.width / nbCols) * (maxX - minX + 1);
-    let areaHeight = ((monitor.height - offsetTotal) / nbRows) * (maxY - minY + 1);
-    let areaX = monitor.x + minX * (monitor.width / nbCols);
-    let areaY = monitor.y + minY * ((monitor.height - offsetTotal) / nbRows);
-
-    if (Main.panel.panelPosition === Panel.PanelLoc.top) {
-      areaY += offsetY;
-    }
+    let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
+    let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
+    let areaX = screenX + minX * (screenWidth / nbCols);
+    let areaY = screenY + minY * (screenHeight / nbRows);
 
     return [areaX, areaY, areaWidth, areaHeight];
   },
