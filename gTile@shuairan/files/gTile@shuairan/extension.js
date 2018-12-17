@@ -282,6 +282,7 @@ function reset_window(metaWindow) {
   metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
   metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
   metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
+  metaWindow.tile(Meta.WindowTileType.NONE, false);
 }
 
 function _getInvisibleBorderPadding(metaWindow) {
