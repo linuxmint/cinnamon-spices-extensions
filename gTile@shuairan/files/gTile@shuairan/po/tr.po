@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Gökhan GÖKKAYA <gokhanlnx@gmail.com>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-30 12:00+0800\n"
+"PO-Revision-Date: 2018-12-25 15:01+0300\n"
+"Language-Team: Linux Mint Türkiye <gokhanlnx@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: tr\n"
+
+#. gTile@shuairan->metadata.json->description
+msgid "Tile your windows as you like."
+msgstr "Pencerelerinizi istediğiniz şekilde döşeyin."
+
+#. gTile@shuairan->metadata.json->name
+msgid "gTile"
+msgstr "gTile"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2x->description
+#. gTile@shuairan->settings-schema.json->gridbutton4x->description
+#. gTile@shuairan->settings-schema.json->gridbutton3x->description
+#. gTile@shuairan->settings-schema.json->gridbutton1x->description
+msgid "Cols "
+msgstr "Sütunlar"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2x->units
+#. gTile@shuairan->settings-schema.json->gridbutton4x->units
+#. gTile@shuairan->settings-schema.json->gridbutton3x->units
+#. gTile@shuairan->settings-schema.json->gridbutton1x->units
+msgid "x "
+msgstr "x "
+
+#. gTile@shuairan->settings-schema.json->gridbutton2y->description
+#. gTile@shuairan->settings-schema.json->gridbutton4y->description
+#. gTile@shuairan->settings-schema.json->gridbutton3y->description
+#. gTile@shuairan->settings-schema.json->gridbutton1y->description
+msgid "Rows"
+msgstr "Satırlar"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2y->units
+#. gTile@shuairan->settings-schema.json->gridbutton4y->units
+#. gTile@shuairan->settings-schema.json->gridbutton3y->units
+#. gTile@shuairan->settings-schema.json->gridbutton1y->units
+msgid "y "
+msgstr "y "
+
+#. gTile@shuairan->settings-schema.json->header2->description
+msgid "Button 2:"
+msgstr "Düğme 2:"
+
+#. gTile@shuairan->settings-schema.json->header3->description
+msgid "Button 3:"
+msgstr "Düğme 3:"
+
+#. gTile@shuairan->settings-schema.json->header1->description
+msgid "Button 1:"
+msgstr "Düğme 1:"
+
+#. gTile@shuairan->settings-schema.json->header4->description
+msgid "Button 4:"
+msgstr "Düğme 4:"
+
+#. gTile@shuairan->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "Otomatik Kapat"
+
+#. gTile@shuairan->settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "Kısayol tuşları:"
+
+#. gTile@shuairan->settings-schema.json->hotkey->description
+msgid "Global Hotkey for gTile"
+msgstr "gTile için genel kısayol tuşu"
+
+#. gTile@shuairan->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "Animasyon"
