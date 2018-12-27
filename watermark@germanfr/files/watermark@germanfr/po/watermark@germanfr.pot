@@ -19,78 +19,150 @@ msgstr ""
 msgid "Place a watermark on the desktop."
 msgstr ""
 
-#. settings-schema.json->section0->description
+#. 3.8->settings-schema.json->section0->description
+#. 3.2->settings-schema.json->section0->description
 msgid "Appearance"
 msgstr ""
 
-#. settings-schema.json->path-name->description
-msgid "Watermark icon or image"
+#. 3.8->settings-schema.json->icon->description
+#. 3.2->settings-schema.json->icon->description
+msgid "Watermark logo"
 msgstr ""
 
-#. settings-schema.json->alpha->description
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Cinnamon"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Antergos"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Arch"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Debian"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux Mint"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro (with text)"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Custom..."
+msgstr ""
+
+#. 3.8->settings-schema.json->custom-icon->description
+#. 3.2->settings-schema.json->custom-icon->description
+msgid "Custom icon or image"
+msgstr ""
+
+#. 3.8->settings-schema.json->alpha->description
+#. 3.2->settings-schema.json->alpha->description
 msgid "Opacity (%)"
 msgstr ""
 
-#. settings-schema.json->invert->description
+#. 3.8->settings-schema.json->invert->description
+#. 3.2->settings-schema.json->invert->description
 msgid "Invert colors"
 msgstr ""
 
-#. settings-schema.json->invert->tooltip
+#. 3.8->settings-schema.json->invert->tooltip
+#. 3.2->settings-schema.json->invert->tooltip
 msgid "This completely inverts the image colors. Useful on light backgrounds."
 msgstr ""
 
-#. settings-schema.json->section1->description
+#. 3.8->settings-schema.json->section1->description
+#. 3.2->settings-schema.json->section1->description
 msgid "Position"
 msgstr ""
 
-#. settings-schema.json->section2->description
-#. settings-schema.json->size->description
-msgid "Size"
-msgstr ""
-
-#. settings-schema.json->use-custom-size->description
-msgid "Use a custom size"
-msgstr ""
-
-#. settings-schema.json->size->units
-#. settings-schema.json->margin-x->units
-#. settings-schema.json->margin-y->units
-msgid "px"
-msgstr ""
-
-#. settings-schema.json->position-x->description
+#. 3.8->settings-schema.json->position-x->description
+#. 3.2->settings-schema.json->position-x->description
 msgid "Horizontal align"
 msgstr ""
 
-#. settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
 msgid "Left"
 msgstr ""
 
-#. settings-schema.json->position-x->options
-#. settings-schema.json->position-y->options
+#. 3.8->settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-y->options
 msgid "Center"
 msgstr ""
 
-#. settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
 msgid "Right"
 msgstr ""
 
-#. settings-schema.json->margin-x->description
+#. 3.8->settings-schema.json->margin-x->description
+#. 3.2->settings-schema.json->margin-x->description
 msgid "Horizontal margin"
 msgstr ""
 
-#. settings-schema.json->position-y->description
+#. 3.8->settings-schema.json->margin-x->units
+#. 3.8->settings-schema.json->margin-y->units
+#. 3.8->settings-schema.json->size->units
+#. 3.2->settings-schema.json->margin-x->units
+#. 3.2->settings-schema.json->margin-y->units
+#. 3.2->settings-schema.json->size->units
+msgid "px"
+msgstr ""
+
+#. 3.8->settings-schema.json->position-y->description
+#. 3.2->settings-schema.json->position-y->description
 msgid "Vertical align"
 msgstr ""
 
-#. settings-schema.json->position-y->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
 msgid "Top"
 msgstr ""
 
-#. settings-schema.json->position-y->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
 msgid "Bottom"
 msgstr ""
 
-#. settings-schema.json->margin-y->description
+#. 3.8->settings-schema.json->margin-y->description
+#. 3.2->settings-schema.json->margin-y->description
 msgid "Vertical margin"
+msgstr ""
+
+#. 3.8->settings-schema.json->section2->description
+#. 3.8->settings-schema.json->size->description
+#. 3.2->settings-schema.json->section2->description
+#. 3.2->settings-schema.json->size->description
+msgid "Size"
+msgstr ""
+
+#. 3.8->settings-schema.json->use-custom-size->description
+#. 3.2->settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
 msgstr ""
