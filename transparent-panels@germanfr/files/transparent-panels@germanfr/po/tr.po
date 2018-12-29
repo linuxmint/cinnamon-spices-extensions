@@ -1,73 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Gökhan GÖKKAYA <gokhanlnx@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Language-Team: Linux Mint Türkiye\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-28 20:37+0200\n"
+"PO-Revision-Date: 2018-12-27 13:30+0300\n"
+"Last-Translator: Gökhan GÖKKAYA <gokhanlnx@gmail.com>\n"
+"Language-Team: Linux Mint Türkiye <gokhanlnx@gmail.com>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: tr\n"
 
-#: extension.js:245
-#, c-format
+#: extension.js:166
+#, javascript-format
 msgid "%s enabled"
 msgstr "%s etkin"
 
-#: extension.js:246
+#: extension.js:167
 msgid "Open the extension settings and customize your panels"
 msgstr "Eklenti ayarlarını açın ve panellerinizi özelleştirin"
 
-#: extension.js:249
+#: extension.js:170
 msgid "Open settings"
 msgstr "Ayarları aç"
 
-#. transparent-panels@germanfr->settings-schema.json->transparency-
-#. type->description
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Genel"
+
+#. settings-schema.json->transparency-type->description
 msgid "Type of transparency"
 msgstr "Saydamlık türü"
 
-#. transparent-panels@germanfr->settings-schema.json->transparency-
-#. type->tooltip
-msgid "Choose the type of transparency you want."
-msgstr "İstediğiniz saydamlık türünü seçiniz."
-
-#. transparent-panels@germanfr->settings-schema.json->transparency-
-#. type->options
-msgid "Defined by theme"
-msgstr "Tema tanımlı"
-
-#. transparent-panels@germanfr->settings-schema.json->transparency-
-#. type->options
-msgid "Fully transparent"
-msgstr "Tam saydam"
-
-#. transparent-panels@germanfr->settings-schema.json->transparency-
-#. type->options
-msgid "Semi-transparent"
-msgstr "Yarı saydam"
-
-#. transparent-panels@germanfr->settings-schema.json->transparency-
-#. type->options
+#. settings-schema.json->transparency-type->options
 msgid "With shadow"
 msgstr "Gölgeli"
 
-#. transparent-panels@germanfr->settings-schema.json->opacify->description
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Tam saydam"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Yarı saydam"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "İstediğiniz saydamlık türünü seçiniz."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Mevcut temanın stilini kullan"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Sadece desteklenen temalar içindir. Tema, uzantı hazır ayarları kullanmak "
+"yerine panellerin stilleri kullanılır. Panellerin şeffaflığının doğru "
+"ayarlanmadığı durumlarda bunu kullanabilirsiniz."
+
+#. settings-schema.json->opacify->description
 msgid "Remove theme transparency (experimental)"
 msgstr "Tema şeffaflığını kaldır (deneysel)"
 
-#. transparent-panels@germanfr->settings-schema.json->opacify->tooltip
+#. settings-schema.json->opacify->tooltip
 msgid "Remove panel transparency when it's not transparent."
 msgstr "Saydam olmadığında, panel saydamlığını siler."
 
-#. transparent-panels@germanfr->metadata.json->name
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Panelleri filtrele"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "Bu eklentinin etkileyeceği panelleri seçin."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Üst panel"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Sağ panel"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Alt panel"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Sol panel"
+
+#. metadata.json->name
 msgid "Transparent panels"
 msgstr "Saydam paneller"
 
-#. transparent-panels@germanfr->metadata.json->description
+#. metadata.json->description
 msgid "Transparentize your panels when there are no any maximized windows"
 msgstr "Pencereler ekranı kaplamadığında panellerinizi şeffaf hale getirir"
+
+#~ msgid "Defined by theme"
+#~ msgstr "Tema tanımlı"
