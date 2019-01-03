@@ -233,8 +233,8 @@ Cube.prototype = {
                     source: panel.actor ? panel.actor : panel,
                     x : panel.actor ? panel.actor.x : panel.x,
                     y: panel.actor ? panel.panelPosition === Panel.PanelLoc.bottom ?
-                        Main.layoutManager.bottomMonitor.y
-                            + Main.layoutManager.bottomMonitor.height
+                        Main.layoutManager.primaryMonitor.y
+                            + Main.layoutManager.primaryMonitor.height
                             - panel.actor.height
                         : Main.layoutManager.primaryMonitor.y
                         : panel.y
