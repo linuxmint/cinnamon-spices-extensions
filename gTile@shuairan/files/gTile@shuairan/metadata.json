@@ -1,5 +1,5 @@
 {
-    "cinnamon-version": ["1.8", "2.0", "2.2", "2.4", "3.8", "4.0"],
+    "cinnamon-version": ["3.6", "3.8", "4.0"],
     "uuid": "gTile@shuairan",
     "name": "gTile",
     "description": "Tile your windows as you like.",
