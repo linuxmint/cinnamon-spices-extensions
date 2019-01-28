@@ -1,0 +1,119 @@
+{
+	"section0": {
+		"type": "section",
+		"description": "Appearance"
+	},
+
+	"icon": {
+		"type": "combobox",
+		"description" : "Watermark logo",
+		"default": "cinnamon",
+		"options": {
+			"Cinnamon": "cinnamon",
+			"Antergos": "antergos",
+			"Arch": "arch",
+			"Debian": "debian",
+			"Linux": "linux",
+			"Linux Mint": "linuxmint",
+			"Manjaro": "manjaro",
+			"Manjaro (with text)": "manjaro-text",
+			"Custom...": "other"
+		}
+	},
+
+	"custom-icon": {
+		"type": "iconfilechooser",
+		"description": "Custom icon or image",
+		"default": "start-here-symbolic"
+	},
+
+	"alpha": {
+		"type": "scale",
+		"description" : "Opacity (%)",
+		"default" : 40,
+		"min": 5,
+		"max": 100,
+		"step": 1
+	},
+
+	"invert": {
+		"type": "switch",
+		"description": "Invert colors",
+		"default": false,
+		"tooltip": "This completely inverts the image colors. Useful on light backgrounds."
+	},
+
+	"section1": {
+		"type": "section",
+		"description": "Position"
+	},
+
+	"position-x": {
+		"type": "combobox",
+		"description" : "Horizontal align",
+		"default": 50,
+		"options": {
+			"Left": 0,
+			"Center": 50,
+			"Right": 100
+		}
+	},
+
+	"margin-x": {
+		"type": "spinbutton",
+		"description" : "Horizontal margin",
+		"default": 64,
+		"min": 0,
+		"max": 512,
+		"step": 1,
+		"units": "px"
+	},
+
+	"position-y": {
+		"type": "combobox",
+		"description" : "Vertical align",
+		"default": 50,
+		"options": {
+			"Top": 0,
+			"Center": 50,
+			"Bottom": 100
+		}
+	},
+
+	"margin-y": {
+		"type": "spinbutton",
+		"description" : "Vertical margin",
+		"default": 64,
+		"min": 0,
+		"max": 512,
+		"step": 1,
+		"units": "px"
+	},
+
+	"section2": {
+		"type": "section",
+		"description": "Size"
+	},
+
+	"use-custom-size": {
+		"type": "switch",
+		"description": "Use a custom size",
+		"default": false
+	},
+
+	"size": {
+		"type": "spinbutton",
+		"description" : "Size",
+		"default": 128,
+		"min": 16,
+		"max": 512,
+		"step": 1,
+		"units": "px",
+		"dependency": "use-custom-size"
+	},
+
+	"first-launch": {
+		"type": "generic",
+		"default": true
+	}
+}

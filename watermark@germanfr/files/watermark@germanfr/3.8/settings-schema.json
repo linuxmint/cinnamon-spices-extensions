@@ -4,10 +4,28 @@
 		"description": "Appearance"
 	},
 
-	"path-name": {
+	"icon": {
+		"type": "combobox",
+		"description" : "Watermark logo",
+		"default": "cinnamon",
+		"options": {
+			"Cinnamon": "cinnamon",
+			"Antergos": "antergos",
+			"Arch": "arch",
+			"Debian": "debian",
+			"Linux": "linux",
+			"Linux Mint": "linuxmint",
+			"Manjaro": "manjaro",
+			"Manjaro (with text)": "manjaro-text",
+			"Custom...": "other"
+		}
+	},
+
+	"custom-icon": {
 		"type": "iconfilechooser",
-		"description": "Watermark icon or image",
-		"default": "Cinnamon"
+		"description": "Custom icon or image",
+		"default": "start-here-symbolic",
+		"dependency": "icon=other"
 	},
 
 	"alpha": {
@@ -49,7 +67,8 @@
 		"min": 0,
 		"max": 512,
 		"step": 1,
-		"units": "px"
+		"units": "px",
+		"dependency": "position-x!=50"
 	},
 
 	"position-y": {
@@ -70,7 +89,8 @@
 		"min": 0,
 		"max": 512,
 		"step": 1,
-		"units": "px"
+		"units": "px",
+		"dependency": "position-y!=50"
 	},
 
 	"section2": {

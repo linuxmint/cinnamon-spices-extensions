@@ -1,0 +1,98 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-04-09 19:23+0200\n"
+"PO-Revision-Date: 2018-11-08 18:13+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr "Vandmærke"
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr "Placér et vandmærke på skrivebordet."
+
+#. settings-schema.json->section0->description
+msgid "Appearance"
+msgstr "Udseende"
+
+#. settings-schema.json->path-name->description
+msgid "Watermark icon or image"
+msgstr "Vandmærkeikon eller billede"
+
+#. settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr "Uigennemsigtighed (%)"
+
+#. settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr "Invertér farver"
+
+#. settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr "Inverterer billedets farver — nyttigt på lyse baggrunde."
+
+#. settings-schema.json->section1->description
+msgid "Position"
+msgstr "Placering"
+
+#. settings-schema.json->section2->description
+#. settings-schema.json->size->description
+msgid "Size"
+msgstr "Størrelse"
+
+#. settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr "Anvend en tilpasset størrelse"
+
+#. settings-schema.json->size->units
+#. settings-schema.json->margin-x->units
+#. settings-schema.json->margin-y->units
+msgid "px"
+msgstr "pixel"
+
+#. settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "Vandret justering"
+
+#. settings-schema.json->position-x->options
+msgid "Left"
+msgstr "Venstre"
+
+#. settings-schema.json->position-x->options
+#. settings-schema.json->position-y->options
+msgid "Center"
+msgstr "Midten"
+
+#. settings-schema.json->position-x->options
+msgid "Right"
+msgstr "Højre"
+
+#. settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "Vandret margen"
+
+#. settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "Lodret justering"
+
+#. settings-schema.json->position-y->options
+msgid "Top"
+msgstr "Øverst"
+
+#. settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "Nederst"
+
+#. settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "Lodret margen"
