@@ -266,3 +266,11 @@ msgstr ""
 #. DesktopCube@yare->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->header3->description
+msgid "System Settings"
+msgstr ""
+
+#. DesktopCube@yare->settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr ""
