@@ -9,9 +9,7 @@ const Main = imports.ui.main;
 const Panel = imports.ui.panel;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
-const GLib = imports.gi.GLib; // ++ Needed for starting programs and translations
-const Gio = imports.gi.Gio; // Needed for file infos
-//const Util = imports.misc.util; // Needed for spawnCommandLine()
+const Util = imports.misc.util; // Needed for spawnCommandLine()
 
 let settings;
 let bindings = [
@@ -35,8 +33,7 @@ const setPanelsOpacity = function(opacity) {
 
 const Callbacks = {
     on_btn_cs_workspaces_pressed: function() {
-        global.log("!!!!!!!!!!!!!OK!!!!!!!!!!!!!!");
-        GLib.spawn_command_line_async('bash -c \'cinnamon-settings workspaces\'');
+        Util.spawnCommandLine('bash -c \'cinnamon-settings workspaces\'');
     } // End of on_btn_cs_workspaces_pressed
 }
 
