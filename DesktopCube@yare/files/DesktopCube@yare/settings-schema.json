@@ -173,5 +173,14 @@
       "easeOutBounce": "easeOutBounce",
       "easeInOutBounce": "easeInOutBounce"
     }
+  },
+  "header3": {
+    "type" : "header",
+    "description" : "System Settings"
+  },
+  "workspaces_btn": {
+    "type": "button",
+    "description": "Open Cinnamon Settings to manage Workspaces",
+    "callback": "on_btn_cs_workspaces_pressed"
   }
 }
