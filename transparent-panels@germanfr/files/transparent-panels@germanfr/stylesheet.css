@@ -24,7 +24,7 @@
 #panel.panel-transparent__internal:highlight {
 	border-image: none;
 	border-color: transparent;
-	box-shadow: none;
+	box-shadow: 0 0 transparent;
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
 	background-gradient-end: transparent;
@@ -43,7 +43,7 @@
 #panel.panel-transparent-with-shadow__internal:highlight {
 	border-image: none;
 	border-color: transparent;
-	box-shadow: none;
+	box-shadow: 0 0 transparent;
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
 	background-gradient-end: transparent;
@@ -79,7 +79,7 @@
 }
 
 /* ===================================================================
- * Semy transparent
+ * Semi-transparent
  * ===================================================================*/
 
 .panel-semi-transparent__internal,
@@ -90,6 +90,7 @@
 #panel.panel-semi-transparent__internal:highlight {
 	border-image: none;
 	border-color: transparent;
+	box-shadow: 0 0 transparent;
 	background-gradient-direction: vertical;
 	background-gradient-start: transparent;
 	background-gradient-end: transparent;
