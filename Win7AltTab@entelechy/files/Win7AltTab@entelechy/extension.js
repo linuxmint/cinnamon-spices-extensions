@@ -123,6 +123,7 @@ const getTabList = function(all, group, window, workspaceOpt, screenOpt) {
 
   let windows = []; // the array to return
   let winlist = []; // the candidate windows
+  let showAllWorkspaces = global.settings.get_boolean("alttab-switcher-show-all-workspaces");
 
   if (!all) {
     winlist = display.get_tab_list(Meta.TabList.NORMAL_ALL, screen, workspace);
@@ -135,7 +136,9 @@ const getTabList = function(all, group, window, workspaceOpt, screenOpt) {
       }
       winlist = app ? app.get_windows() : window && Main.isInteresting(window) ? [window] : winlist[0] ? [winlist[0]] : [];
     }
-  } else {
+  }
+
+  if (showAllWorkspaces) {
     let n = screen.get_n_workspaces();
     for (let i = 0; i < n; i++) {
       winlist = winlist.concat(display.get_tab_list(Meta.TabList.NORMAL_ALL, screen, screen.get_workspace_by_index(i)));
