@@ -99,7 +99,7 @@ const uuid = "cinnamon-maximus@fmete";
 
 Meta.MaximizeFlags.BOTH = (Meta.MaximizeFlags.VERTICAL | Meta.MaximizeFlags.HORIZONTAL);
 
-let maxID = null, minID = null, settingsChangedID = null, changeWorkspaceID = null, grabID = null;
+let maxID = null, minID = null, tileID = null, settingsChangedID = null, changeWorkspaceID = null, grabID = null;
 let workspaces = [];
 let oldFullscreenPref = null;
 let settings = null;
