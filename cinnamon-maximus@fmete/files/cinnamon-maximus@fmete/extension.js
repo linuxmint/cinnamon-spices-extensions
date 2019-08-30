@@ -663,7 +663,7 @@ function stopUndecorating() {
     if (maxID) global.window_manager.disconnect(maxID);
     if (minID) global.window_manager.disconnect(minID);
     if (tileID) global.window_manager.disconnect(tileID);
-    if (changeWorkspaceID) global.window_manager.disconnect(changeWorkspaceID);
+    if (changeWorkspaceID) global.screen.disconnect(changeWorkspaceID);
     if (grabID) global.display.disconnect(grabID);
     maxID = 0;
     minID = 0;
