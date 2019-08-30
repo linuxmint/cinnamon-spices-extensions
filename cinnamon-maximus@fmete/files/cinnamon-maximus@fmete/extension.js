@@ -103,7 +103,7 @@ let maxID = null, minID = null, tileID = null, settingsChangedID = null, changeW
 let workspaces = [];
 let oldFullscreenPref = null;
 let settings = null;
-let onetime = 0;
+let idleTimerID = 0;
 let USE_SET_HIDE_TITLEBAR;
 let APP_LIST;
 let IS_BLACKLIST;
@@ -641,7 +641,7 @@ function startUndecorating() {
      *  fired for every currently-existing window, and then
      *  these windows will have onMaximise called twice on them.
      */
-    onetime = Mainloop.idle_add(function () {
+    idleTimerID = Mainloop.idle_add(function () {
         let winList = global.get_window_actors().map(function (w) { return w.meta_window; }),
             i       = winList.length;
         while (i--) {
@@ -652,6 +652,7 @@ function startUndecorating() {
             onWindowAdded(null, win);
         }
         onChangeNWorkspaces();
+        idleTimerID = 0;
         return false; // define as one-time event
     });
 }
@@ -679,9 +680,9 @@ function stopUndecorating() {
     workspaces = [];
 
     /* redecorate undecorated windows we screwed with */
-    if (onetime) {
-        Mainloop.source_remove(onetime);
-        onetime = 0;
+    if (idleTimerID) {
+        Mainloop.source_remove(idleTimerID);
+        idleTimerID = 0;
     }
     let winList = global.get_window_actors().map(function (w) { return w.meta_window; });
     let j = winList.length;
