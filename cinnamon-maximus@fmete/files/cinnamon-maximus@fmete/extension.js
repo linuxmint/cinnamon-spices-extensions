@@ -99,19 +99,25 @@ const uuid = "cinnamon-maximus@fmete";
 
 Meta.MaximizeFlags.BOTH = (Meta.MaximizeFlags.VERTICAL | Meta.MaximizeFlags.HORIZONTAL);
 
-let maxID = null, minID = null, tileID = null, settingsChangedID = null, changeWorkspaceID = null, grabID = null;
+let changeNWorkspacesEventID = 0;
+let grabEventID = 0;
+let idleTimerID = 0;
+let maximizeEventID = 0;
+let minimizeEventID = 0;
+let tileEventID = 0;
+
 let workspaces = [];
+
 let oldFullscreenPref = null;
 let settings = null;
-let idleTimerID = 0;
-let USE_SET_HIDE_TITLEBAR;
+
 let APP_LIST;
 let IS_BLACKLIST;
-
+let USE_SET_HIDE_TITLEBAR;
 
 
 function LOG(message) {
-  //  log(message);
+    // global.log(message);
 }
 
 /** Guesses the X ID of a window.
@@ -172,7 +178,7 @@ function guessWindowXID(win) {
         }
     }
     // debugging for when people find bugs..
-    log("[maximus]: Could not find XID for window with title %s".format(win.title));
+    LOG("[maximus]: Could not find XID for window with title %s".format(win.title));
     return null;
 }
 
@@ -339,25 +345,24 @@ function setHideTitlebar(win, hide, stopAdding) {
 function shouldAffect(win) {
 
     if (!win._maximusDecoratedOriginal) {
-	return false;
-    }else{
+        return false;
+    } else {
+        LOG('blacklist etkin = ' + IS_BLACKLIST);
+        LOG('blacklist = ' + APP_LIST);
 
-    LOG('blacklist etkin='+IS_BLACKLIST);
-    LOG('blacklist ='+APP_LIST);
-
-    	if(IS_BLACKLIST){
-	    let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
-		appid = (app ? app.get_id() : -1);
-		activeApp=appid.split(".");
-		appsInList=APP_LIST.split(',');
-		LOG('appid='+activeApp[0]);
-		//APP_LIST=APP_LIST.split(',');
-	inList =appsInList.length > 0 && appsInList.indexOf(activeApp[0]) >= 0;
-	LOG(inList);
-    return !((IS_BLACKLIST && inList) || (!IS_BLACKLIST && !inList));
-    	}else{
-    		return true;
-    	}
+        if (IS_BLACKLIST) {
+            let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
+            appid = (app ? app.get_id() : -1);
+            activeApp = appid.split(".");
+            appsInList = APP_LIST.split(',');
+            LOG('appid = ' + activeApp[0]);
+            //APP_LIST = APP_LIST.split(',');
+            inList = appsInList.length > 0 && appsInList.indexOf(activeApp[0]) >= 0;
+            LOG(inList);
+            return !((IS_BLACKLIST && inList) || (!IS_BLACKLIST && !inList));
+        } else {
+            return true;
+        }
     }
 
 }
@@ -445,8 +450,6 @@ function onMaximise(shellwm, actor) {
  */
 function onUnmaximise(shellwm, actor) {
 
-
-
     if (!actor) {
         return;
     }
@@ -462,18 +465,18 @@ function onUnmaximise(shellwm, actor) {
     // This is only necessary if USE_SET_HIDE_TITLEBAR is `false` (otherwise
     // this is not an issue).
     if (!USE_SET_HIDE_TITLEBAR && global.display.get_grab_op() === Meta.GrabOp.MOVING) {
-        if (grabID) {
+        if (grabEventID) {
             // shouldn't happen, but oh well.
-            global.display.disconnect(grabID);
-            grabID = 0;
+            global.display.disconnect(grabEventID);
+            grabEventID = 0;
         }
-        grabID = global.display.connect('grab-op-end', function () {
-            if(settings.undecorateTile && (win.tile_type == Meta.WindowTileType.TILED || win.tile_type == Meta.WindowTileType.SNAPPED)){
-                  return;
-            }else{
-		    possiblyRedecorate(win);
-		    global.display.disconnect(grabID);
-		    grabID = 0;
+        grabEventID = global.display.connect('grab-op-end', function () {
+            if (settings.undecorateTile && (win.tile_type == Meta.WindowTileType.TILED || win.tile_type == Meta.WindowTileType.SNAPPED)) {
+                return;
+            } else {
+                possiblyRedecorate(win);
+                global.display.disconnect(grabEventID);
+                grabEventID = 0;
             }
         });
     } else {
@@ -534,37 +537,35 @@ function onWindowAdded(ws, win) {
     // if the window is simply switching workspaces, it will trigger a
     // window-added signal. We don't want to reprocess it then because we already
     // have.
-    if(settings.undecorateAll){
+    if (settings.undecorateAll) {
+        undecorate(win);
+    } else {
+        if (win._maximusDecoratedOriginal !== undefined) {
+            return;
+        }
 
-    		undecorate(win);
+        /* Newly-created windows are added to the workspace before
+         * the compositor knows about them: get_compositor_private() is null.
+         * Additionally things like .get_maximized() aren't properly done yet.
+         * (see workspace.js _doAddWindow)
+         */
+        win._maximusDecoratedOriginal = win.decorated !== false || false;
+        LOG('onWindowAdded: ' + win.get_title() + ' initially decorated? ' + win._maximusDecoratedOriginal);
 
-    }else{
-	    if (win._maximusDecoratedOriginal !== undefined) {
-		return;
-	    }
+        if (!shouldAffect(win)) {
+            return;
+        }
 
-	    /* Newly-created windows are added to the workspace before
-	     * the compositor knows about them: get_compositor_private() is null.
-	     * Additionally things like .get_maximized() aren't properly done yet.
-	     * (see workspace.js _doAddWindow)
-	     */
-	    win._maximusDecoratedOriginal = win.decorated !== false || false;
-	    LOG('onWindowAdded: ' + win.get_title() + ' initially decorated? ' + win._maximusDecoratedOriginal);
-
-	    if (!shouldAffect(win)) {
-		return;
-	    }
-
-	    // with set_hide_titlebar, set the window hint when the window is added and
-	    // there is no further need to listen to maximize/unmaximize on the window.
-	    if (USE_SET_HIDE_TITLEBAR) {
-		setHideTitlebar(win, true);
-		// set_hide_titlebar undecorates half maximized, so if we wish not to we
-		// will have to manually redo it ourselves
-	    } else {
-		// if it is added initially maximized, we undecorate it.
-		possiblyUndecorate(win);
-	    }
+        // with set_hide_titlebar, set the window hint when the window is added and
+        // there is no further need to listen to maximize/unmaximize on the window.
+        if (USE_SET_HIDE_TITLEBAR) {
+            setHideTitlebar(win, true);
+            // set_hide_titlebar undecorates half maximized, so if we wish not to we
+            // will have to manually redo it ourselves
+        } else {
+            // if it is added initially maximized, we undecorate it.
+            possiblyUndecorate(win);
+        }
 
     }
 }
@@ -590,7 +591,7 @@ function onChangeNWorkspaces() {
         workspaces.push(ws);
         // we need to add a Mainloop.idle_add, or else in onWindowAdded the
         // window's maximized state is not correct yet.
-        //ws._MaximusWindowAddedId = ws.connect('window-added', onWindowAdded);
+        // ws._MaximusWindowAddedId = ws.connect('window-added', onWindowAdded);
         ws._MaximusWindowAddedId = ws.connect('window-added', function (ws, win) {
             Mainloop.idle_add(function () { onWindowAdded(ws, win); return false; })
         });
@@ -601,22 +602,21 @@ function onChangeNWorkspaces() {
 function startUndecorating() {
     // cache some variables for convenience
     IS_BLACKLIST = settings.blacklist;
-    APP_LIST=settings.blacklist_apps;
+    APP_LIST = settings.blacklist_apps;
     USE_SET_HIDE_TITLEBAR = false;
     if (USE_SET_HIDE_TITLEBAR && Meta.prefs_get_theme().match(/^(?:Ambiance|Radiance)$/)) {
         USE_SET_HIDE_TITLEBAR = false;
     }
 
     /* Connect events */
-    changeWorkspaceID = global.screen.connect('notify::n-workspaces', onChangeNWorkspaces);
+    changeNWorkspacesEventID = global.screen.connect('notify::n-workspaces', onChangeNWorkspaces);
     // if we are not using the set_hide_titlebar hint, we must listen to maximize and unmaximize events.
     if (!USE_SET_HIDE_TITLEBAR) {
 
-        maxID = global.window_manager.connect('maximize', onMaximise);
-        minID = global.window_manager.connect('unmaximize', onUnmaximise);
-        if(settings.undecorateTile==true){
-        	tileID=global.window_manager.connect('tile', onMaximise);
-
+        maximizeEventID = global.window_manager.connect('maximize', onMaximise);
+        minimizeEventID = global.window_manager.connect('unmaximize', onUnmaximise);
+        if (settings.undecorateTile == true) {
+            tileEventID = global.window_manager.connect('tile', onMaximise);
         }
         /* this is needed to prevent Metacity from interpreting an attempted drag
          * of an undecorated window as a fullscreen request. Otherwise thunderbird
@@ -660,16 +660,16 @@ function startUndecorating() {
 /** Stop listening to events, restore all windows back to their original
  * decoration state. */
 function stopUndecorating() {
-    if (maxID) global.window_manager.disconnect(maxID);
-    if (minID) global.window_manager.disconnect(minID);
-    if (tileID) global.window_manager.disconnect(tileID);
-    if (changeWorkspaceID) global.screen.disconnect(changeWorkspaceID);
-    if (grabID) global.display.disconnect(grabID);
-    maxID = 0;
-    minID = 0;
-    tileID=0;
-    changeWorkspaceID = 0;
-    grabID = 0;
+    if (maximizeEventID) global.window_manager.disconnect(maximizeEventID);
+    if (minimizeEventID) global.window_manager.disconnect(minimizeEventID);
+    if (tileEventID) global.window_manager.disconnect(tileEventID);
+    if (changeNWorkspacesEventID) global.screen.disconnect(changeNWorkspacesEventID);
+    if (grabEventID) global.display.disconnect(grabEventID);
+    maximizeEventID = 0;
+    minimizeEventID = 0;
+    tileEventID = 0;
+    changeNWorkspacesEventID = 0;
+    grabEventID = 0;
 
     /* disconnect window-added from workspaces */
     let i = workspaces.length;
@@ -735,45 +735,29 @@ SettingsHandler.prototype = {
         this.settings = new Settings.ExtensionSettings(this, uuid);
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "blacklist", "blacklist", function(){
-                    stopUndecorating();
-	            startUndecorating();
+                stopUndecorating();
+                startUndecorating();
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "blacklist_apps", "blacklist_apps", function(){
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "undecorateTile", "undecorateTile", function(){
-                    stopUndecorating();
-	            startUndecorating();
+                stopUndecorating();
+                startUndecorating();
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "undecorateAll", "undecorateAll", function(){
-                    stopUndecorating();
-	            startUndecorating();
+                stopUndecorating();
+                startUndecorating();
             });
     }
 }
 
 function enable() {
-
     startUndecorating();
-
-    /* Monitor settings changes */
-   /* settingsChangedID = settings.connect('changed', function () {
-        // redecorate every window and undecorate again according to the
-        // new settings.
-        stopUndecorating();
-
-        startUndecorating();
-    });*/
 }
 
 function disable() {
     stopUndecorating();
-
-    /* disconnect settings changes */
-    /*
-    if (settingsChangedID) {
-        settings.disconnect(settingsChangedID);
-    }*/
 }
