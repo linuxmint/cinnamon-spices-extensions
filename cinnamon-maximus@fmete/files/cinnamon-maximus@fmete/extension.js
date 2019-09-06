@@ -145,38 +145,12 @@ function guessWindowXID(win) {
      * event though get_title() works.
      */
     try {
-        id = win.get_description().match(/0x[0-9a-f]+/);
-        if (id) {
-            id = id[0];
+        id = win.get_xwindow();
+        if (id)
             return id;
-        }
     } catch (err) {
     }
 
-    // use xwininfo, take first child.
-    let act = win.get_compositor_private();
-    if (act) {
-        id = GLib.spawn_command_line_sync('xwininfo -children -id 0x%x'.format(act['x-window']));
-        if (id[0]) {
-            let str = id[1].toString();
-
-            /* The X ID of the window is the one preceding the target window's title.
-             * This is to handle cases where the window has no frame and so
-             * act['x-window'] is actually the X ID we want, not the child.
-             */
-            let regexp = new RegExp('(0x[0-9a-f]+) +"%s"'.format(win.title));
-            id = str.match(regexp);
-            if (id) {
-                return id[1];
-            }
-
-            /* Otherwise, just grab the child and hope for the best */
-            id = str.split(/child(?:ren)?:/)[1].match(/0x[0-9a-f]+/);
-            if (id) {
-                return id[0];
-            }
-        }
-    }
     // debugging for when people find bugs..
     LOG("[maximus]: Could not find XID for window with title %s".format(win.title));
     return null;
@@ -212,10 +186,11 @@ function guessWindowXID(win) {
 function undecorate(win) {
     /* Undecorate with xprop */
     let id = guessWindowXID(win),
-        cmd = ['xprop', '-id', id,
-               '-f', '_MOTIF_WM_HINTS', '32c',
-               '-set', '_MOTIF_WM_HINTS',
-                '0x2, 0x0, 0x2, 0x0, 0x0'];
+        cmd = [ 'xprop',
+                '-id', "0x%x".format(id),
+                '-f', '_MOTIF_WM_HINTS', '32c',
+                '-set', '_MOTIF_WM_HINTS', '0x2, 0x0, 0x2, 0x0, 0x0' ];
+
     /* _MOTIF_WM_HINTS: see MwmUtil.h from OpenMotif source (cvs.openmotif.org),
      *  or rudimentary documentation here:
      * http://odl.sysworks.biz/disk$cddoc04sep11/decw$book/d3b0aa63.p264.decw$book
@@ -255,10 +230,10 @@ function undecorate(win) {
 function decorate(win) {
     /* Decorate with xprop: 1 == DECOR_ALL */
     let id = guessWindowXID(win),
-        cmd = ['xprop', '-id', id,
-               '-f', '_MOTIF_WM_HINTS', '32c',
-               '-set', '_MOTIF_WM_HINTS',
-                '0x2, 0x0, 0x1, 0x0, 0x0'];
+        cmd = [ 'xprop',
+                '-id', "0x%x".format(id),
+                '-f', '_MOTIF_WM_HINTS', '32c',
+                '-set', '_MOTIF_WM_HINTS', '0x2, 0x0, 0x1, 0x0, 0x0' ];
     // fallback: if couldn't get id for some reason, use the window's name
     if (!id) {
         cmd[1] = '-name';
@@ -317,10 +292,11 @@ function setHideTitlebar(win, hide, stopAdding) {
     /* Undecorate with xprop. Use _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED.
      * See (eg) mutter/src/window-props.c
      */
-    let cmd = ['xprop', '-id', id,
-           '-f', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED', '32c',
-           '-set', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED',
-           (hide ? '0x1' : '0x0')];
+    let cmd = [ 'xprop',
+                '-id', "0x%x".format(id),
+                '-f', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED', '32c',
+                '-set', '_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED',
+                (hide ? '0x1' : '0x0') ];
 
     // fallback: if couldn't get id for some reason, use the window's name
     if (!id) {
