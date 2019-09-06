@@ -113,7 +113,7 @@ let settings = null;
 
 let APP_LIST;
 let IS_BLACKLIST;
-let USE_SET_HIDE_TITLEBAR;
+let USE_SET_HIDE_TITLEBAR = false;
 
 
 function LOG(message) {
