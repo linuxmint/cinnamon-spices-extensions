@@ -123,35 +123,18 @@ function logMessage(message, logEnable = false) {
 
 /** Guesses the X ID of a window.
  *
- * It is often in the window's title, being `"0x%x %10s".format(XID, window.title)`.
- * (See `mutter/src/core/window-props.c`).
- *
- * If we couldn't find it there, we use `win`'s actor, `win.get_compositor_private()`.
- * The actor's `x-window` property is the X ID of the window *actor*'s frame
- * (as opposed to the window itself).
- *
- * However, the child window of the window actor is the window itself, so by
- * using `xwininfo -children -id [actor's XID]` we can attempt to deduce the
- * window's X ID.
- *
- * It is not always foolproof, but works good enough for now.
- *
- * @param {Meta.Window} win - the window to guess the XID of. You wil get better
- * success if the window's actor (`win.get_compositor_private()`) exists.
+ * After muffin 2.4 the get_xwindow() returns the integer value
+ * instead Window object. So no need use a lot of hacks.
  */
 function guessWindowXID(win) {
     let id = null;
-    /* if window title has non-utf8 characters, get_description() complains
-     * "Failed to convert UTF-8 string to JS string: Invalid byte sequence in conversion input",
-     * event though get_title() works.
-     */
     try {
         id = win.get_xwindow();
         if (id)
             return id;
     } catch (err) {
     }
-    // debugging for when people find bugs..
+    // debugging for when people find bugs.. always logging this message.
     logMessage("[maximus]: Could not find XID for window with title %s".format(win.title), true);
     return null;
 }
@@ -171,12 +154,6 @@ function guessWindowXID(win) {
  * We can use xprop using the window's title to identify the window, but
  *  prefer to use the window's X ID (in case the title changes, or there are
  *  multiple windows with the same title).
- *
- * The Meta.Window object does *not* have a way to access a window's XID.
- * However, the window's description seems to have it.
- * Alternatively, a window's actor's 'x-window' property returns the XID
- *  of the window *frame*, and so if we parse `xwininfo -children -id [frame_id]`
- *  we can extract the child XID being the one we want.
  *
  * See here for xprop usage for undecoration:
  * http://xrunhprof.wordpress.com/2009/04/13/removing-decorations-in-metacity/
@@ -312,11 +289,10 @@ function setHideTitlebar(win, hide, stopAdding) {
  * If the window was originally undecorated we do not do anything with it
  *  (decorate or undecorate),
  *
- * Also if it's in the blacklist, or if it's NOT in the whitelist, we don't
- * do anything with it.
+ * Also if it's in the blacklist we don't do anything with it.
  *
  * @returns {boolean} whether the window is originally decorated and not in
- * the blacklist (or in the whitelist).
+ * the blacklist.
  */
 function shouldAffect(win) {
 
@@ -325,9 +301,6 @@ function shouldAffect(win) {
     if (!win._maximusDecoratedOriginal) {
         verdict = false;
     } else {
-        logMessage("blacklist enabled = " + blacklistEnabled);
-        logMessage("blacklist = " + blacklistApps);
-
         if (blacklistEnabled && (blacklistApps.length > 0)) {
             let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
             if (app) {
@@ -578,6 +551,10 @@ function startUndecorating() {
     // cache some variables for convenience
     blacklistEnabled = settings.blacklist;
     blacklistApps = settings.blacklist_apps.split(",");
+
+    logMessage("blacklist enabled = " + blacklistEnabled);
+    logMessage("blacklist = " + blacklistApps);
+
     useHideTitlebarHint = false;
     if (useHideTitlebarHint && Meta.prefs_get_theme().match(/^(?:Ambiance|Radiance)$/)) {
         useHideTitlebarHint = false;
