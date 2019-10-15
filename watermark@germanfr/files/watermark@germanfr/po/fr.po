@@ -19,7 +19,7 @@ msgstr "Filigrane (Watermark)"
 
 #. metadata.json->description
 msgid "Place a watermark on the desktop."
-msgstr "Place un filigrane sur le bureau."
+msgstr "Place une image ou une icône en filigrane sur le bureau."
 
 #. 3.8->settings-schema.json->section0->description
 #. 3.2->settings-schema.json->section0->description
