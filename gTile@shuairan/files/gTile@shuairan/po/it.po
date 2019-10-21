@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-30 12:00+0800\n"
+"PO-Revision-Date: 2019-10-21 20:55+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+
+#. gTile@shuairan->metadata.json->description
+msgid "Tile your windows as you like."
+msgstr "Affianca le finestre come preferisci."
+
+#. gTile@shuairan->metadata.json->name
+msgid "gTile"
+msgstr "gTile"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2x->description
+#. gTile@shuairan->settings-schema.json->gridbutton4x->description
+#. gTile@shuairan->settings-schema.json->gridbutton3x->description
+#. gTile@shuairan->settings-schema.json->gridbutton1x->description
+msgid "Cols "
+msgstr "Colonne "
+
+#. gTile@shuairan->settings-schema.json->gridbutton2x->units
+#. gTile@shuairan->settings-schema.json->gridbutton4x->units
+#. gTile@shuairan->settings-schema.json->gridbutton3x->units
+#. gTile@shuairan->settings-schema.json->gridbutton1x->units
+msgid "x "
+msgstr "x "
+
+#. gTile@shuairan->settings-schema.json->gridbutton2y->description
+#. gTile@shuairan->settings-schema.json->gridbutton4y->description
+#. gTile@shuairan->settings-schema.json->gridbutton3y->description
+#. gTile@shuairan->settings-schema.json->gridbutton1y->description
+msgid "Rows"
+msgstr "Righe"
+
+#. gTile@shuairan->settings-schema.json->gridbutton2y->units
+#. gTile@shuairan->settings-schema.json->gridbutton4y->units
+#. gTile@shuairan->settings-schema.json->gridbutton3y->units
+#. gTile@shuairan->settings-schema.json->gridbutton1y->units
+msgid "y "
+msgstr "y "
+
+#. gTile@shuairan->settings-schema.json->header2->description
+msgid "Button 2:"
+msgstr "Tasto 2:"
+
+#. gTile@shuairan->settings-schema.json->header3->description
+msgid "Button 3:"
+msgstr "Tasto 3:"
+
+#. gTile@shuairan->settings-schema.json->header1->description
+msgid "Button 1:"
+msgstr "Tasto 1:"
+
+#. gTile@shuairan->settings-schema.json->header4->description
+msgid "Button 4:"
+msgstr "Tasto 4:"
+
+#. gTile@shuairan->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "Auto-Chiudi"
+
+#. gTile@shuairan->settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "Tasti di scelta rapida:"
+
+#. gTile@shuairan->settings-schema.json->hotkey->description
+msgid "Global Hotkey for gTile"
+msgstr "Tasto di scelta rapida globale per gTile"
+
+#. gTile@shuairan->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "Animazione"
