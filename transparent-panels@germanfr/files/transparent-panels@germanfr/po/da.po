@@ -61,7 +61,7 @@ msgid ""
 "the extension presets. Use this in case the panels transparency is "
 "icorrectly set."
 msgstr ""
-"Kun til understøttede temaer. Lad temaet bestemme panelernes stil i stedet "
+"Kun for understøttede temaer. Lad temaet bestemme panelernes stil i stedet "
 "for at bruge udvidelsens forudindstillinger. Brug denne, hvis panelernes "
 "gennemsigtighed er sat forkert."
 
@@ -104,7 +104,7 @@ msgstr "Gennemsigtige paneler"
 #. metadata.json->description
 msgid "Transparentize your panels when there are no any maximized windows"
 msgstr ""
-"Gør dine paneler gennemsigtige, når der ikke er nogen maksimerede vinduer"
+"Gør dine paneler gennemsigtige, når der ikke er nogen maksimerede vinduer."
 
 #~ msgid "Defined by theme"
 #~ msgstr "Defineret af tema"

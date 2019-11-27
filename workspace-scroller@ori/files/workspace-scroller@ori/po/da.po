@@ -1,18 +1,22 @@
-# Extension for Cinnamon desktop environment developed by Linux Mint team. It can be found at Cinnamon Spices page and installed via Cinnamon extensions manager.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 20:06+0200\n"
-"PO-Revision-Date: 2017-06-12 20:13+0200\n"
+"POT-Creation-Date: 2017-04-29 22:34+0800\n"
+"PO-Revision-Date: 2019-11-23 16:57+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: da\n"
 
 #. workspace-scroller@ori->metadata.json->name
 msgid "Workspace Scroller"
@@ -31,7 +35,7 @@ msgstr "Skift arbejdsområde ved at rulle med musen på skærmkanterne."
 #. workspace-scroller@ori->settings-schema.json->TopRightUp->description
 #. workspace-scroller@ori->settings-schema.json->LeftUp->description
 msgid " — Scroll up: "
-msgstr " — Rul op: "
+msgstr " —Rul op: "
 
 #. workspace-scroller@ori->settings-schema.json->RightUp->options
 #. workspace-scroller@ori->settings-schema.json->BottomRightDown->options
@@ -134,7 +138,7 @@ msgstr "Hjørne"
 #. workspace-scroller@ori->settings-schema.json->LeftDown->description
 #. workspace-scroller@ori->settings-schema.json->TopRightDown->description
 msgid " — Scroll down: "
-msgstr " — Rul ned: "
+msgstr " —Rul ned: "
 
 #. workspace-scroller@ori->settings-schema.json->TopLeft->description
 msgid "Use top left corner"
