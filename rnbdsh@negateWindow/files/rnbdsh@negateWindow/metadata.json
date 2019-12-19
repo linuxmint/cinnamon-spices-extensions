@@ -7,7 +7,12 @@
         "2.8", 
         "3.0", 
         "3.2", 
-        "3.4"
+        "3.4",
+        "3.6",
+        "3.8",
+        "4.0",
+        "4.2",
+        "4.4"
     ], 
     "name": "Negate Window on Super+I", 
     "uuid": "rnbdsh@negateWindow"
