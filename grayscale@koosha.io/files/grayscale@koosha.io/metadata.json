@@ -1,0 +1,6 @@
+{
+    "uuid": "grayscale@koosha.io",
+    "name": "Grayscale",
+    "description": "Make the entire cinnamon workspace grayscale",
+    "icon": "gnome-panel-workspace-switcher"
+}
