@@ -8,7 +8,8 @@
         "3.0",
         "3.2",
         "3.4",
-        "3.6"
+        "3.6",
+        "4.4"
     ],
     "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/workspace-scroller%40ori",
     "uuid": "workspace-scroller@ori"
