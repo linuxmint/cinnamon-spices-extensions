@@ -11,10 +11,11 @@
         "3.8",
         "4.0",
         "4.2",
-        "4.4"
+        "4.4",
+        "4.6"
     ],
     "url": "linuxmint.com",
     "description": "Undecorate windows its maximised.",
-    "last-edited": "1567774600",
+    "last-edited": "1589528491",
     "uuid": "cinnamon-maximus@fmete"
 }
