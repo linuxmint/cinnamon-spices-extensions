@@ -135,7 +135,7 @@ function guessWindowXID(win) {
     } catch (err) {
     }
     // debugging for when people find bugs.. always logging this message.
-    logMessage("[maximus]: Could not find XID for window with title %s".format(win.title), true);
+    logMessage("[maximus]: Could not find XID for window with title %s".format(win.title), settings.enableLogs);
     return null;
 }
 
@@ -284,7 +284,7 @@ function setHideTitlebar(win, hide, stopAdding) {
     Util.spawn(cmd);
 }
 
-/** Returns whether we should affect `win`'s decorationa t all.
+/** Returns whether we should affect `win`'s decoration at all.
  *
  * If the window was originally undecorated we do not do anything with it
  *  (decorate or undecorate),
@@ -647,7 +647,7 @@ function stopUndecorating() {
         logMessage("stopUndecorating: " + win.title);
         // if it wasn't decorated originally, we haven't done anything to it so
         // don't need to undo anything.
-        if (win._maximusDecoratedOriginal) {
+        if (win._maximusDecoratedOriginal || win._maximusUndecorated) {
             if (useHideTitlebarHint) {
                 setHideTitlebar(win, false);
 
@@ -664,6 +664,7 @@ function stopUndecorating() {
             decorate(win);
         }
         delete win._maximusDecoratedOriginal;
+        delete win._maximusUndecorated;
     }
 
     if (oldFullscreenPref !== null) {
@@ -671,6 +672,35 @@ function stopUndecorating() {
         Meta.prefs_set_force_fullscreen(oldFullscreenPref);
         oldFullscreenPref = null;
     }
+}
+
+function toggleDecorActiveWindow() {
+    let win = global.display.focus_window;
+    if (win) {
+        if (win._maximusUndecorated !== true) {
+            logMessage("undecorate: win " + win.get_title(), " _maximusDecoratedState: " + win._maximusUndecorated, settings.enableLogs);
+            undecorate(win);
+            win._maximusUndecorated = true;
+        } else {
+            logMessage("decorate: win " + win.get_title(), " _maximusDecoratedState: " + win._maximusUndecorated, settings.enableLogs);
+            decorate(win);
+            win._maximusUndecorated = false;
+        }
+    } else {
+        logMessage("active window not found!", settings.enableLogs);
+    }
+    return true;
+}
+
+function enableHotkey() {
+    disableHotkey();
+    if (settings.useHotkey) {
+        Main.keybindingManager.addHotKey('toggleDecor', settings.hotkey, toggleDecorActiveWindow);
+    }
+}
+
+function disableHotkey() {
+    Main.keybindingManager.removeHotKey('toggleDecor');
 }
 
 function init(metadata)
@@ -694,22 +724,35 @@ SettingsHandler.prototype = {
             "blacklist_apps", "blacklist_apps", function(){
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
-            "undecorateTile", "undecorateTile", function(){
-                stopUndecorating();
-                startUndecorating();
+            "enableLogs", "enableLogs", function(){
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "hotkey", "hotkey", function(){
+                enableHotkey();
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "undecorateAll", "undecorateAll", function(){
                 stopUndecorating();
                 startUndecorating();
             });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "undecorateTile", "undecorateTile", function(){
+                stopUndecorating();
+                startUndecorating();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "useHotkey", "useHotkey", function(){
+                enableHotkey();
+            });
     }
 }
 
 function enable() {
     startUndecorating();
+    enableHotkey();
 }
 
 function disable() {
+    disableHotkey();
     stopUndecorating();
 }
