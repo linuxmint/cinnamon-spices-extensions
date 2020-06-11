@@ -10,7 +10,7 @@ const Tweener = imports.ui.tweener;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 const Signals = imports.signals;
-const THUMBNAIL_SCALE = 0.09;
+const THUMBNAIL_SCALE = 0.18;
 
 const POPUP_DELAY_TIMEOUT = 150; // milliseconds
 const POPUP_FADE_OUT_TIME = 0.1; // seconds
