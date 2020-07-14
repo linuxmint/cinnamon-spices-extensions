@@ -323,7 +323,7 @@ function move_resize_window(metaWindow, x, y, width, height) {
   metaWindow.move_frame(true, x, y);
 }
 
-function getHeight(panel) {
+function getPanelHeight(panel) {
   return panel.height
       || panel.actor.get_height();  // fallback for old versions of Cinnamon
 }
