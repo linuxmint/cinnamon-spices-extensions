@@ -331,14 +331,7 @@ function onMaximise(shellwm, actor) {
         return;
     }
     // note: window is maximized by this point.
-    let max = win.get_maximized();
     logMessage("onMaximise: " + win.get_title() + " [" + win.get_wm_class() + "]");
-    // if this is a partial maximization, and we do not wish to undecorate
-    // half-maximized windows, make sure the window is decorated.
-    if (max !== Meta.MaximizeFlags.BOTH) {
-        undecorate(win);
-        return;
-    }
     undecorate(win);
 }
 
