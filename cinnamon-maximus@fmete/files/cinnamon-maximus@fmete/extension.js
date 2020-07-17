@@ -111,7 +111,7 @@ let workspaces = [];
 let oldFullscreenPref = null;
 let settings = null;
 
-let blacklistApps;
+let blacklistAppsRegexp;
 let blacklistEnabled;
 
 /** Logging helper function
@@ -252,11 +252,12 @@ function shouldAffect(win) {
     if (!win._maximusDecoratedOriginal) {
         verdict = false;
     } else {
-        if (blacklistEnabled && (blacklistApps.length > 0)) {
+        if (blacklistEnabled) {
             let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
             if (app) {
                 let activeAppName = app.get_id().split(".")[0];
-                let blacklisted = (blacklistApps.indexOf(activeAppName) >= 0);
+
+                let blacklisted = blacklistAppsRegexp.test(activeAppName);
                 logMessage("app name = " + activeAppName + " blacklisted = " + blacklisted);
                 verdict = !blacklisted;
             }
@@ -459,10 +460,18 @@ function onChangeNWorkspaces() {
 function startUndecorating() {
     // cache some variables for convenience
     blacklistEnabled = settings.blacklist;
-    blacklistApps = settings.blacklist_apps.split(",");
-
+    if (blacklistEnabled && (settings.blacklist_apps.length > 0)) {
+        try {
+            blacklistAppsRegexp = new RegExp(settings.blacklist_apps.split(",").join("|"), "i");
+            logMessage("regexp '" + settings.blacklist_apps + "' has been compiled successfully");
+        } catch(e) {
+            logMessage("exception on regexp '" + settings.blacklist_apps.split(",").join("|") + "'' compile: " + e.message, true);
+            blacklistEnabled = false;
+        }
+    } else {
+        blacklistEnabled = false;
+    }
     logMessage("blacklist enabled = " + blacklistEnabled);
-    logMessage("blacklist = " + blacklistApps);
 
     /* Connect events */
     changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
