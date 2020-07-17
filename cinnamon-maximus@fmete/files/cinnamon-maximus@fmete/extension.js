@@ -116,9 +116,10 @@ let blacklistEnabled;
 let useHideTitlebarHint = false;
 
 
-function logMessage(message, logEnable = false) {
-    if (logEnable)
-        global.log(message);
+function logMessage(message, alwaysLog = false) {
+    if (alwaysLog || settings.enableLogs) {
+        global.log("[maximus] " + message);
+    }
 }
 
 /** Guesses the X ID of a window.
@@ -135,7 +136,7 @@ function guessWindowXID(win) {
     } catch (err) {
     }
     // debugging for when people find bugs.. always logging this message.
-    logMessage("[maximus]: Could not find XID for window with title %s".format(win.title), settings.enableLogs);
+    logMessage("[maximus]: Could not find XID for window with title %s".format(win.title), true);
     return null;
 }
 
@@ -687,16 +688,16 @@ function toggleDecorActiveWindow() {
     let win = global.display.focus_window;
     if (win) {
         if (win._maximusUndecorated !== true) {
-            logMessage("undecorate: win " + win.get_title(), " _maximusDecoratedState: " + win._maximusUndecorated, settings.enableLogs);
+            logMessage("undecorate: win " + win.get_title() + " _maximusDecoratedState: " + win._maximusUndecorated);
             undecorate(win);
             win._maximusUndecorated = true;
         } else {
-            logMessage("decorate: win " + win.get_title(), " _maximusDecoratedState: " + win._maximusUndecorated, settings.enableLogs);
+            logMessage("decorate: win " + win.get_title() + " _maximusDecoratedState: " + win._maximusUndecorated);
             decorate(win);
             win._maximusUndecorated = false;
         }
     } else {
-        logMessage("active window not found!", settings.enableLogs);
+        logMessage("active window not found!");
     }
     return true;
 }
