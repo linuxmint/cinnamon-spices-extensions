@@ -30,7 +30,7 @@
   },
   "blacklist_apps": {
     "type": "entry",
-    "description": "Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for seperate apps)",
+    "description": "Blacklist Apps (use \",\" for seperate apps, partial match!)",
     "default": "chromium"
   },
   "enableLogs" : {
