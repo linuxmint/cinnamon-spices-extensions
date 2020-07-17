@@ -114,6 +114,12 @@ let settings = null;
 let blacklistApps;
 let blacklistEnabled;
 
+/** Logging helper function
+ *
+ * Writes the log message with additional prefix depends on settings.
+ * If the log message should be write unconditionally, just pass `true`
+ * in the second parameter.
+ */
 function logMessage(message, alwaysLog = false) {
     if (alwaysLog || settings.enableLogs) {
         global.log("[maximus] " + message);
@@ -267,8 +273,7 @@ function shouldAffect(win) {
 /** Checks if `win` should be undecorated, based *purely* off its maximised
  * state (doesn't incorporate blacklist).
  *
- * If it's fully-maximized or half-maximised and undecorateHalfMaximised is true,
- * this returns true.
+ * If it's fully-maximized this returns true.
  *
  * Use with `shouldAffect` to get a full check..
  */
@@ -277,6 +282,9 @@ function shouldBeUndecorated(win) {
     return ((max === Meta.MaximizeFlags.BOTH));
 }
 
+/** Checks if `win` is half-maximized (only vertically or horizontally)
+ *
+ */
 function isHalfMaximized(win) {
     let max = win.get_maximized();
     return ((max === Meta.MaximizeFlags.VERTICAL) || (max === Meta.MaximizeFlags.HORIZONTAL));
