@@ -19,7 +19,7 @@
  * This extension attempts to emulate the Maximus package[1] that
  * Ubuntu Netbook Remix had, back when people still used that.
  *
- * Basically whenever a window is maximised, its window decorations (title
+ * Basically whenever a window is maximized, its window decorations (title
  * bar, etc) are hidden so as to space a bit of vertical screen real-estate.
  *
  * This may sound petty, but believe me, on a 10" netbook it's fantastic!
@@ -27,19 +27,19 @@
  * you already have the current application's name in the top bar and can
  * even get the window's title with the StatusTitleBar extension[2].
  *
- * Note that since the title bar for the window is gone when it's maximised,
- * you might find it difficult to unmaximise the window.
+ * Note that since the title bar for the window is gone when it's maximized,
+ * you might find it difficult to unmaximize the window.
  * In this case, I recommend either the Window Options shell extension[3] which
- * adds the minimise/restore/maximise/etc window menu to your title bar (NOTE:
+ * adds the minimize/restore/maximize/etc window menu to your title bar (NOTE:
  * I wrote that, so it's a shameless plug),  OR
- * refresh your memory on your system's keyboard shortcut for unmaximising a window
- * (for me it's Ctrl + Super + Down to unmaximise, Ctrl + Super + Up to maximise).
+ * refresh your memory on your system's keyboard shortcut for unmaximizing a window
+ * (for me it's Ctrl + Super + Down to unmaximize, Ctrl + Super + Up to maximize).
  *
  * Small idiosyncracies:
  * Note - these are simple enough for me to implement so if enough people let
  * me know that they want this behaviour, I'll do it.
  *
- * * the original Maximus also maximised all windows on startup.
+ * * the original Maximus also maximized all windows on startup.
  *   This doesn't (it was annoying).
  *
  * Help! It didn't work/I found a bug!
@@ -65,7 +65,7 @@
  *
  *
  * Note:
- * It's actually possible to get the undecorate-on-maximise behaviour without
+ * It's actually possible to get the undecorate-on-maximize behaviour without
  * needing this extension. See the link [5] and in particular, the bit on editing
  * your metacity theme metacity-theme-3.xml. ("Method 2: editing the theme").
  *
@@ -270,7 +270,7 @@ function shouldAffect(win) {
     return verdict;
 }
 
-/** Checks if `win` should be undecorated, based *purely* off its maximised
+/** Checks if `win` should be undecorated, based *purely* off its maximized
  * state (doesn't incorporate blacklist).
  *
  * If it's fully-maximized this returns true.
@@ -290,7 +290,7 @@ function isHalfMaximized(win) {
     return ((max === Meta.MaximizeFlags.VERTICAL) || (max === Meta.MaximizeFlags.HORIZONTAL));
 }
 
-/** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
+/** Checks if `win` is fully maximized, or half-maximized + undecorateHalfMaximized.
  * If so, undecorates the window. */
 function possiblyUndecorate(win) {
     if (isFullyMaximized(win)) {
@@ -305,7 +305,7 @@ function possiblyUndecorate(win) {
     }
 }
 
-/** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
+/** Checks if `win` is fully maximized, or half-maximized + undecorateHalfMaximized.
  * If *NOT*, redecorates the window. */
 function possiblyRedecorate(win) {
     if (!isFullyMaximized(win)) {
@@ -487,7 +487,7 @@ function startUndecorating() {
     Meta.prefs_set_force_fullscreen(false);
 
 
-    /* Go through already-maximised windows & undecorate.
+    /* Go through already-maximized windows & undecorate.
      * This needs a delay as the window list is not yet loaded
      *  when the extension is loaded.
      * Also, connect up the 'window-added' event.
