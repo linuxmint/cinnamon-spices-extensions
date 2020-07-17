@@ -1,15 +1,15 @@
-//Cinnamon Extension: Cinnamon-Maximus v0.3.1
-//Release Date: 22 Nov 2014
-//
-//Author: Fatih Mete
-//
-//          Email: fatihmete@live.com
-
-//This extension adopted for cinnamon, maximus-gnome-shell-extension
-//https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/overview
-/*global global, log */ // <-- jshint
-/*jshint unused:true */
-/*
+/* Cinnamon Extension: Cinnamon-Maximus v0.4.0
+ * Release Date: 2020.07.17
+ *
+ * Author:
+ * - Fatih Mete <fatihmete@live.com>
+ *
+ * Other contributors:
+ * - Anton Danilov <littlesmilingcloud@gmail.com>
+ *
+ * This extension adopted for cinnamon, maximus-gnome-shell-extension
+ * https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/overview
+ *
  * Maximus v2.1
  * Amy Chan <mathematical.coffee@gmail.com>
  * Other contributors:
