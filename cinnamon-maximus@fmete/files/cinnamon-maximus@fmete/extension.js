@@ -113,8 +113,6 @@ let settings = null;
 
 let blacklistApps;
 let blacklistEnabled;
-let useHideTitlebarHint = false;
-
 
 function logMessage(message, alwaysLog = false) {
     if (alwaysLog || settings.enableLogs) {
@@ -229,60 +227,6 @@ function decorate(win) {
             win.activate(global.get_current_time());
         }
     });
-}
-
-/** Tells the window manager to hide the titlebar on maximised windows.
- * TODO: GNOME 3.2?
- *
- * Note - no checking of blacklists etc is done in the function. You should do
- * it prior to calling the function (same with {@link decorate} and {@link undecorate}).
- *
- * Does this by setting the _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED hint - means
- * I can do it once and forget about it, rather than tracking maximize/unmaximize
- * events.
- *
- * **Caveat**: doesn't work with Ubuntu's Ambiance and Radiance window themes -
- * my guess is they don't respect or implement this property.
- *
- * @param {Meta.Window} win - window to set the HIDE_TITLEBAR_WHEN_MAXIMIZED property of.
- * @param {boolean} hide - whether to hide the titlebar or not.
- * @param {boolean} [stopAdding] - if `win` does not have an actor and we couldn't
- * find the window's XID, we try one more time to detect the XID, unless this
- * is `true`. Internal use.
- */
-function setHideTitlebar(win, hide, stopAdding) {
-    logMessage("setHideTitlebar: " + win.get_title() + ": " + hide + (stopAdding ? " (2)" : ""));
-
-    let id = guessWindowXID(win);
-    /* Newly-created windows are added to the workspace before
-     * the compositor knows about them: get_compositor_private() is null.
-     * Additionally things like .get_maximized() aren't properly done yet.
-     * (see workspace.js _doAddWindow)
-     */
-    if (!id && !win.get_compositor_private() && !stopAdding) {
-        Mainloop.idle_add(function () {
-            setHideTitlebar(null, win, true); // only try once more.
-            return false; // define as one-time event
-        });
-        return;
-    }
-
-    /* Undecorate with xprop. Use _GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED.
-     * See (eg) mutter/src/window-props.c
-     */
-    let cmd = [ "xprop",
-                "-id", "0x%x".format(id),
-                "-f", "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED", "32c",
-                "-set", "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED",
-                (hide ? "0x1" : "0x0") ];
-
-    // fallback: if couldn't get id for some reason, use the window's name
-    if (!id) {
-        cmd[1] = "-name";
-        cmd[2] = win.get_title();
-    }
-    logMessage(cmd.join(" "));
-    Util.spawn(cmd);
 }
 
 /** Returns whether we should affect `win`'s decoration at all.
@@ -419,10 +363,7 @@ function onUnmaximise(shellwm, actor) {
     // if the user is unmaximizing by dragging, we wait to decorate until they
     // have dropped the window, so that we don't force the user to drop
     // the window prematurely with the redecorate (which stops the grab).
-    //
-    // This is only necessary if useHideTitlebarHint is `false` (otherwise
-    // this is not an issue).
-    if (!useHideTitlebarHint && global.display.get_grab_op() === Meta.GrabOp.MOVING) {
+    if (global.display.get_grab_op() === Meta.GrabOp.MOVING) {
         if (grabEventID) {
             // shouldn't happen, but oh well.
             global.display.disconnect(grabEventID);
@@ -442,31 +383,6 @@ function onUnmaximise(shellwm, actor) {
     }
 }
 
-/** Callback for a window's 'notify::maximized-horizontally' and
- * 'notify::maximized-vertically' signals.
- *
- * If the window is half-maximised we force it to show its titlebar.
- * Otherwise we set it to hide if it is maximized.
- *
- * Only used if using the SET_HIDE_TITLEBAR method AND we wish half-maximized
- * windows to be *decorated* (the GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED atom will
- * hide the titlebar of half-maximized windows too).
- *
- * @param {Meta.Window} win - the window whose maximized-horizontally or
- * maximized-vertically properties has changed.
- *
- * @see onWindowAdded
- */
-function onWindowChangesMaximiseState(win) {
-    if ((win.maximized_horizontally && !win.maximized_vertically) ||
-        (!win.maximized_horizontally && win.maximized_vertically)) {
-        setHideTitlebar(win, false);
-        decorate(win);
-    } else {
-        setHideTitlebar(win, true);
-    }
-}
-
 /** Callback when a window is added in any of the workspaces.
  * This includes a window switching to another workspace.
  *
@@ -476,16 +392,7 @@ function onWindowChangesMaximiseState(win) {
  *
  * * record the window as on we know about.
  * * store whether the window was initially decorated (e.g. Chrome windows aren't usually).
- * * if using the SET_HIDE_TITLEBAR method, we:
- *  + set the GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED atom on the window.
- *  + if we wish to keep half-maximised windows decorated, we connect up some signals
- *    to ensure that half-maximised windows remain decorated (the GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED
- *    atom will automatically undecorated half-maximised windows).
- *    See {@link onWindowChangesMaximiseState}.
- * * otherwise (not using SET_HIDE_TITLEBAR):
  *  + if the window is maximized, we undecorate it (see {@link undecorate});
- *  + if the window is half-maximized and we wish to undecorate half-maximised
- *    windows, we also undecorate it.
  *
  * @param {Meta.Window} win - the window that was added.
  *
@@ -514,17 +421,8 @@ function onWindowAdded(ws, win) {
             return;
         }
 
-        // with set_hide_titlebar, set the window hint when the window is added and
-        // there is no further need to listen to maximize/unmaximize on the window.
-        if (useHideTitlebarHint) {
-            setHideTitlebar(win, true);
-            // set_hide_titlebar undecorates half maximized, so if we wish not to we
-            // will have to manually redo it ourselves
-        } else {
-            // if it is added initially maximized, we undecorate it.
-            possiblyUndecorate(win);
-        }
-
+        // if it is added initially maximized, we undecorate it.
+        possiblyUndecorate(win);
     }
 }
 
@@ -565,34 +463,28 @@ function startUndecorating() {
     logMessage("blacklist enabled = " + blacklistEnabled);
     logMessage("blacklist = " + blacklistApps);
 
-    useHideTitlebarHint = false;
-    if (useHideTitlebarHint && Meta.prefs_get_theme().match(/^(?:Ambiance|Radiance)$/)) {
-        useHideTitlebarHint = false;
-    }
-
     /* Connect events */
     changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
-    // if we are not using the set_hide_titlebar hint, we must listen to maximize and unmaximize events.
-    if (!useHideTitlebarHint) {
 
-        maximizeEventID = global.window_manager.connect("maximize", onMaximise);
-        minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximise);
-        if (settings.undecorateTile == true) {
-            tileEventID = global.window_manager.connect("tile", onMaximise);
-        }
-        /* this is needed to prevent Metacity from interpreting an attempted drag
-         * of an undecorated window as a fullscreen request. Otherwise thunderbird
-         * (in particular) has no way to get out of fullscreen, resulting in the user
-         * being stuck there.
-         * See issue #6
-         * https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/issue/6
-         *
-         * Once we can properly set the window's hide_titlebar_when_maximized property
-         * this will no loner be necessary.
-         */
-        oldFullscreenPref = Meta.prefs_get_force_fullscreen();
-        Meta.prefs_set_force_fullscreen(false);
+    // we must listen to maximize and unmaximize events.
+    maximizeEventID = global.window_manager.connect("maximize", onMaximise);
+    minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximise);
+    if (settings.undecorateTile == true) {
+        tileEventID = global.window_manager.connect("tile", onMaximise);
     }
+    /* this is needed to prevent Metacity from interpreting an attempted drag
+     * of an undecorated window as a fullscreen request. Otherwise thunderbird
+     * (in particular) has no way to get out of fullscreen, resulting in the user
+     * being stuck there.
+     * See issue #6
+     * https://bitbucket.org/mathematicalcoffee/maximus-gnome-shell-extension/issue/6
+     *
+     * Once we can properly set the window's hide_titlebar_when_maximized property
+     * this will no loner be necessary.
+     */
+    oldFullscreenPref = Meta.prefs_get_force_fullscreen();
+    Meta.prefs_set_force_fullscreen(false);
+
 
     /* Go through already-maximised windows & undecorate.
      * This needs a delay as the window list is not yet loaded
@@ -658,19 +550,6 @@ function stopUndecorating() {
         // if it wasn't decorated originally, we haven't done anything to it so
         // don't need to undo anything.
         if (win._maximusDecoratedOriginal || win._maximusUndecorated) {
-            if (useHideTitlebarHint) {
-                setHideTitlebar(win, false);
-
-                if (win._maxHStateId) {
-                    win.disconnect(win._maxHStateId);
-                    delete win._maxHStateId;
-                }
-
-                if (win._maxVStateId) {
-                    win.disconnect(win._maxVStateId);
-                    delete win._maxVStateId;
-                }
-            }
             decorate(win);
         }
         delete win._maximusDecoratedOriginal;
