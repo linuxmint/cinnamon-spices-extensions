@@ -277,7 +277,7 @@ function shouldAffect(win) {
  *
  * Use with `shouldAffect` to get a full check..
  */
-function shouldBeUndecorated(win) {
+function isFullyMaximized(win) {
     let max = win.get_maximized();
     return ((max === Meta.MaximizeFlags.BOTH));
 }
@@ -293,7 +293,7 @@ function isHalfMaximized(win) {
 /** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
  * If so, undecorates the window. */
 function possiblyUndecorate(win) {
-    if (shouldBeUndecorated(win)) {
+    if (isFullyMaximized(win)) {
         if (!win.get_compositor_private()) {
             Mainloop.idle_add(function () {
                 undecorate(win);
@@ -308,7 +308,7 @@ function possiblyUndecorate(win) {
 /** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
  * If *NOT*, redecorates the window. */
 function possiblyRedecorate(win) {
-    if (!shouldBeUndecorated(win)) {
+    if (!isFullyMaximized(win)) {
         if (!win.get_compositor_private()) {
             Mainloop.idle_add(function () {
                 decorate(win);
