@@ -330,7 +330,7 @@ function possiblyRedecorate(win) {
  * It is expected to be maximized (in at least one direction) already - we will
  * not check before undecorating.
  */
-function onMaximise(shellwm, actor) {
+function onMaximize(shellwm, actor) {
     if (!actor) {
         return;
     }
@@ -339,7 +339,7 @@ function onMaximise(shellwm, actor) {
         return;
     }
     // note: window is maximized by this point.
-    logMessage("onMaximise: " + win.get_title() + " [" + win.get_wm_class() + "]");
+    logMessage("onMaximize: " + win.get_title() + " [" + win.get_wm_class() + "]");
     undecorate(win);
 }
 
@@ -351,7 +351,7 @@ function onMaximise(shellwm, actor) {
  * @param {Meta.WindowActor} actor - the window actor for the unmaximized window.
  * It is expected to be unmaximized - we will not check before decorating.
  */
-function onUnmaximise(shellwm, actor) {
+function onUnmaximize(shellwm, actor) {
 
     if (!actor) {
         return;
@@ -360,7 +360,7 @@ function onUnmaximise(shellwm, actor) {
     if (!shouldAffect(win)) {
         return;
     }
-    logMessage("onUnmaximise: " + win.get_title());
+    logMessage("onUnmaximize: " + win.get_title());
     // if the user is unmaximizing by dragging, we wait to decorate until they
     // have dropped the window, so that we don't force the user to drop
     // the window prematurely with the redecorate (which stops the grab).
@@ -468,10 +468,10 @@ function startUndecorating() {
     changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
 
     // we must listen to maximize and unmaximize events.
-    maximizeEventID = global.window_manager.connect("maximize", onMaximise);
-    minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximise);
+    maximizeEventID = global.window_manager.connect("maximize", onMaximize);
+    minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximize);
     if (settings.undecorateTile == true) {
-        tileEventID = global.window_manager.connect("tile", onMaximise);
+        tileEventID = global.window_manager.connect("tile", onMaximize);
     }
     /* this is needed to prevent Metacity from interpreting an attempted drag
      * of an undecorated window as a fullscreen request. Otherwise thunderbird
@@ -491,10 +491,10 @@ function startUndecorating() {
      * This needs a delay as the window list is not yet loaded
      *  when the extension is loaded.
      * Also, connect up the 'window-added' event.
-     * Note that we do not connect this before the onMaximise loop
+     * Note that we do not connect this before the onMaximize loop
      *  because when one restarts the gnome-shell, window-added gets
      *  fired for every currently-existing window, and then
-     *  these windows will have onMaximise called twice on them.
+     *  these windows will have onMaximize called twice on them.
      */
     idleTimerID = Mainloop.idle_add(function () {
         let winList = global.get_window_actors().map(function (w) { return w.meta_window; }),
