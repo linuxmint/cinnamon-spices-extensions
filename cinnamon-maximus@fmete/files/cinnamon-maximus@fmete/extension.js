@@ -312,6 +312,10 @@ function shouldAffect(win) {
         }
     }
 
+    if (isHalfMaximized(win)) {
+        verdict = false;
+    }
+
     return verdict;
 }
 
@@ -326,6 +330,11 @@ function shouldAffect(win) {
 function shouldBeUndecorated(win) {
     let max = win.get_maximized();
     return ((max === Meta.MaximizeFlags.BOTH));
+}
+
+function isHalfMaximized(win) {
+    let max = win.get_maximized();
+    return ((max === Meta.MaximizeFlags.VERTICAL) || (max === Meta.MaximizeFlags.HORIZONTAL));
 }
 
 /** Checks if `win` is fully maximised, or half-maximised + undecorateHalfMaximised.
