@@ -144,7 +144,7 @@ function guessWindowXID(win) {
     return null;
 }
 
-/** Undecorates a window.
+/** Decorates/Undecorates a window.
  *
  * If I use set_decorations(0) from within the GNOME shell extension (i.e.
  *  from within the compositor process), the window dies.
@@ -165,13 +165,17 @@ function guessWindowXID(win) {
  *
  * @param {Meta.Window} win - window to undecorate.
  */
-function undecorate(win) {
-    /* Undecorate with xprop */
+function setDecorated(win, decorated) {
+    /* Undecorate with xprop
+     * 1 == DECOR_ALL
+     */
     let id = guessWindowXID(win),
         cmd = [ "xprop",
                 "-id", "0x%x".format(id),
                 "-f", "_MOTIF_WM_HINTS", "32c",
-                "-set", "_MOTIF_WM_HINTS", "0x2, 0x0, 0x2, 0x0, 0x0" ];
+                "-set", "_MOTIF_WM_HINTS",
+                ( decorated ? "0x2, 0x0, 0x1, 0x0, 0x0" : "0x2, 0x0, 0x2, 0x0, 0x0" )
+        ];
 
     /* _MOTIF_WM_HINTS: see MwmUtil.h from OpenMotif source (cvs.openmotif.org),
      *  or rudimentary documentation here:
@@ -195,44 +199,15 @@ function undecorate(win) {
     // #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
     // However, is there a use case where this would happen legitimately?
     // For some reaons the Qt apps seem to take a while to be refocused.
-    Meta.later_add(Meta.LaterType.IDLE, function () {
-        if (win.focus) {
-            win.focus(global.get_current_time());
-        } else {
-            win.activate(global.get_current_time());
-        }
-    });
-}
-
-/** Decorates a window by setting its `_MOTIF_WM_HINTS` property to ask for
- * decoration.
- *
- * @param {Meta.Window} win - window to undecorate.
- */
-function decorate(win) {
-    /* Decorate with xprop: 1 == DECOR_ALL */
-    let id = guessWindowXID(win),
-        cmd = [ "xprop",
-                "-id", "0x%x".format(id),
-                "-f", "_MOTIF_WM_HINTS", "32c",
-                "-set", "_MOTIF_WM_HINTS", "0x2, 0x0, 0x1, 0x0, 0x0" ];
-    // fallback: if couldn't get id for some reason, use the window's name
-    if (!id) {
-        cmd[1] = "-name";
-        cmd[2] = win.get_title();
+    if (settings.keepQTAppsFocus) {
+        Meta.later_add(Meta.LaterType.IDLE, function () {
+            if (win.focus) {
+                win.focus(global.get_current_time());
+            } else {
+                win.activate(global.get_current_time());
+            }
+        });
     }
-    logMessage(cmd.join(" "));
-    Util.spawn(cmd);
-    // #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
-    // However, is there a use case where this would happen legitimately?
-    // For some reaons the Qt apps seem to take a while to be refocused.
-    Meta.later_add(Meta.LaterType.IDLE, function () {
-        if (win.focus) {
-            win.focus(global.get_current_time());
-        } else {
-            win.activate(global.get_current_time());
-        }
-    });
 }
 
 /** Returns whether we should affect `win`'s decoration at all.
@@ -297,11 +272,11 @@ function possiblyUndecorate(win) {
     if (isFullyMaximized(win)) {
         if (!win.get_compositor_private()) {
             Mainloop.idle_add(function () {
-                undecorate(win);
+                setDecorated(win, false);
                 return false; // define as one-time event
             });
         } else {
-            undecorate(win);
+            setDecorated(win, false);
         }
     }
 }
@@ -312,11 +287,11 @@ function possiblyRedecorate(win) {
     if (!isFullyMaximized(win)) {
         if (!win.get_compositor_private()) {
             Mainloop.idle_add(function () {
-                decorate(win);
+                setDecorated(win, true);
                 return false; // define as one-time event
             });
         } else {
-            decorate(win);
+            setDecorated(win, true);
         }
     }
 }
@@ -341,7 +316,7 @@ function onMaximize(shellwm, actor) {
     }
     // note: window is maximized by this point.
     logMessage("onMaximize: " + win.get_title() + " [" + win.get_wm_class() + "]");
-    undecorate(win);
+    setDecorated(win, false);
 }
 
 /** Called when a window is unmaximized.
@@ -381,7 +356,7 @@ function onUnmaximize(shellwm, actor) {
             }
         });
     } else {
-        decorate(win);
+        setDecorated(win, true);
     }
 }
 
@@ -405,7 +380,7 @@ function onWindowAdded(ws, win) {
     // window-added signal. We don't want to reprocess it then because we already
     // have.
     if (settings.undecorateAll) {
-        undecorate(win);
+        setDecorated(win, false);
     } else {
         if (win._maximusDecoratedOriginal !== undefined) {
             return;
@@ -560,7 +535,7 @@ function stopUndecorating() {
         // if it wasn't decorated originally, we haven't done anything to it so
         // don't need to undo anything.
         if (win._maximusDecoratedOriginal || win._maximusUndecorated) {
-            decorate(win);
+            setDecorated(win, true);
         }
         delete win._maximusDecoratedOriginal;
         delete win._maximusUndecorated;
@@ -578,11 +553,11 @@ function toggleDecorActiveWindow() {
     if (win) {
         if (win._maximusUndecorated !== true) {
             logMessage("undecorate: win " + win.get_title() + " _maximusDecoratedState: " + win._maximusUndecorated);
-            undecorate(win);
+            setDecorated(win, false);
             win._maximusUndecorated = true;
         } else {
             logMessage("decorate: win " + win.get_title() + " _maximusDecoratedState: " + win._maximusUndecorated);
-            decorate(win);
+            setDecorated(win, true);
             win._maximusUndecorated = false;
         }
     } else {
@@ -642,6 +617,9 @@ SettingsHandler.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "useHotkey", "useHotkey", function(){
                 enableHotkey();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "keepQTAppsFocus", "keepQTAppsFocus", function(){
             });
     }
 }
