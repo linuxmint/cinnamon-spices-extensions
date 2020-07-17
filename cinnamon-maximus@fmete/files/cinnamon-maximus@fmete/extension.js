@@ -290,7 +290,7 @@ function isHalfMaximized(win) {
     return ((max === Meta.MaximizeFlags.VERTICAL) || (max === Meta.MaximizeFlags.HORIZONTAL));
 }
 
-/** Checks if `win` is fully maximized, or half-maximized + undecorateHalfMaximized.
+/** Checks if `win` is fully maximized.
  * If so, undecorates the window. */
 function possiblyUndecorate(win) {
     if (isFullyMaximized(win)) {
@@ -305,7 +305,7 @@ function possiblyUndecorate(win) {
     }
 }
 
-/** Checks if `win` is fully maximized, or half-maximized + undecorateHalfMaximized.
+/** Checks if `win` is fully maximized.
  * If *NOT*, redecorates the window. */
 function possiblyRedecorate(win) {
     if (!isFullyMaximized(win)) {
