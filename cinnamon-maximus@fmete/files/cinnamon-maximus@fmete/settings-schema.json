@@ -30,8 +30,13 @@
   },
   "blacklist_apps": {
     "type": "entry",
-    "description": "Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for seperate apps)",
+    "description": "Blacklist Apps (use \",\" for seperate apps, partial match!)",
     "default": "chromium"
+  },
+  "keepQTAppsFocus" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Keep the focus for QT Apps (Experimental)"
   },
   "enableLogs" : {
     "type" : "checkbox",
