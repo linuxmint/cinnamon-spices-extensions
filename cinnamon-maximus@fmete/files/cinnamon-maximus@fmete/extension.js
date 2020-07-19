@@ -323,6 +323,7 @@ function onMaximize(shellwm, actor) {
  *
  * If the window is not in the blacklist (or is in the whitelist), we decorate
  * it.
+ * If the window has been undecorated by hotkey, we keep it undecorated.
  *
  * @param {Meta.WindowActor} actor - the window actor for the unmaximized window.
  * It is expected to be unmaximized - we will not check before decorating.
@@ -333,7 +334,7 @@ function onUnmaximize(shellwm, actor) {
         return;
     }
     let win = actor.meta_window;
-    if (!shouldAffect(win)) {
+    if (!shouldAffect(win) || win._maximusUndecorated === true) {
         return;
     }
     logMessage("onUnmaximize: " + win.get_title());
@@ -561,7 +562,7 @@ function toggleDecorActiveWindow() {
             win._maximusUndecorated = false;
         }
     } else {
-        logMessage("active window not found!");
+        logMessage("active window not found!", true);
     }
     return true;
 }
