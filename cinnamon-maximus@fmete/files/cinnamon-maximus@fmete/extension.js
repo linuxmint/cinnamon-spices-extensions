@@ -111,8 +111,11 @@ let workspaces = [];
 let oldFullscreenPref = null;
 let settings = null;
 
-let blacklistAppsRegexp;
-let blacklistEnabled;
+let useAutoUndecorList = false;
+let autoUndecorAppsRegexp;
+
+let useIgnoreList = false;
+let ignoreAppsRegexp;
 
 /** Logging helper function
  *
@@ -122,7 +125,7 @@ let blacklistEnabled;
  */
 function logMessage(message, alwaysLog = false) {
     if (alwaysLog || settings.enableLogs) {
-        global.log("[maximus] " + message);
+        global.log(`[maximus] ${message}`);
     }
 }
 
@@ -140,7 +143,7 @@ function guessWindowXID(win) {
     } catch (err) {
     }
     // debugging for when people find bugs.. always logging this message.
-    logMessage("[maximus]: Could not find XID for window with title %s".format(win.title), true);
+    logMessage(`Could not find XID for window with title '${win.title}`, true);
     return null;
 }
 
@@ -192,7 +195,7 @@ function setDecorated(win, decorated) {
     // fallback: if couldn't get id for some reason, use the window's name
     if (!id) {
         cmd[1] = "-name";
-        cmd[2] = win.get_title();
+        cmd[2] = win.title;
     }
     logMessage(cmd.join(" "));
     Util.spawn(cmd);
@@ -227,14 +230,12 @@ function shouldAffect(win) {
     if (!win._maximusDecoratedOriginal) {
         verdict = false;
     } else {
-        if (blacklistEnabled) {
-            let app = Cinnamon.WindowTracker.get_default().get_window_app(win);
-            if (app) {
-                let activeAppName = app.get_id().split(".")[0];
-
-                let blacklisted = blacklistAppsRegexp.test(activeAppName);
-                logMessage("app name = " + activeAppName + " blacklisted = " + blacklisted);
-                verdict = !blacklisted;
+        if (useIgnoreList && ignoreAppsRegexp) {
+            let activeAppName = win.get_wm_class_instance();
+            if (activeAppName) {
+                let ignoredFlag = ignoreAppsRegexp.test(activeAppName);
+                logMessage(`app name = ${activeAppName} ignored = ${ignoredFlag}`);
+                verdict = !ignoredFlag;
             }
         }
     }
@@ -315,7 +316,7 @@ function onMaximize(shellwm, actor) {
         return;
     }
     // note: window is maximized by this point.
-    logMessage("onMaximize: " + win.get_title() + " [" + win.get_wm_class() + "]");
+    logMessage(`onMaximize: ${win.title} [${win.get_wm_class_instance()}]`);
     setDecorated(win, false);
 }
 
@@ -337,7 +338,7 @@ function onUnmaximize(shellwm, actor) {
     if (!shouldAffect(win) || win._maximusUndecorated === true) {
         return;
     }
-    logMessage("onUnmaximize: " + win.get_title());
+    logMessage(`onUnmaximize: ${win.title} [${win.get_wm_class_instance()}]`);
     // if the user is unmaximizing by dragging, we wait to decorate until they
     // have dropped the window, so that we don't force the user to drop
     // the window prematurely with the redecorate (which stops the grab).
@@ -380,8 +381,17 @@ function onWindowAdded(ws, win) {
     // if the window is simply switching workspaces, it will trigger a
     // window-added signal. We don't want to reprocess it then because we already
     // have.
+    logMessage(
+        `onWindowAdded:
+            ${win.title}/${win.get_wm_class_instance()}
+            initially decorated? ${win._maximusDecoratedOriginal}`
+    );
+
     if (settings.undecorateAll) {
         setDecorated(win, false);
+    } else if (useAutoUndecorList && autoUndecorAppsRegexp.test(win.get_wm_class_instance())) {
+        setDecorated(win, false);
+        win._maximusUndecorated = true;
     } else {
         if (win._maximusDecoratedOriginal !== undefined) {
             return;
@@ -393,7 +403,6 @@ function onWindowAdded(ws, win) {
          * (see workspace.js _doAddWindow)
          */
         win._maximusDecoratedOriginal = win.decorated !== false || false;
-        logMessage("onWindowAdded: " + win.get_title() + " initially decorated? " + win._maximusDecoratedOriginal);
 
         if (!shouldAffect(win)) {
             return;
@@ -434,20 +443,39 @@ function onChangeNWorkspaces() {
 
 /** Start listening to events and undecorate already-existing windows. */
 function startUndecorating() {
+    logMessage("startUndecorating", true);
     // cache some variables for convenience
-    blacklistEnabled = settings.blacklist;
-    if (blacklistEnabled && (settings.blacklist_apps.length > 0)) {
+    useIgnoreList = settings.useIgnoreList;
+    let ignoreRegexpStr = settings.ignoreAppsList.replace(",", "|");
+    if (useIgnoreList && ignoreRegexpStr) {
         try {
-            blacklistAppsRegexp = new RegExp(settings.blacklist_apps.split(",").join("|"), "i");
-            logMessage("regexp '" + settings.blacklist_apps + "' has been compiled successfully");
+            ignoreAppsRegexp = new RegExp(ignoreRegexpStr, "i");
+            logMessage(`ignore list regexp '${ignoreRegexpStr}' has been compiled successfully`);
         } catch(e) {
-            logMessage("exception on regexp '" + settings.blacklist_apps.split(",").join("|") + "'' compile: " + e.message, true);
-            blacklistEnabled = false;
+            logMessage(`exception on ignore list regexp '${ignoreRegexpStr}' compile: ${e.message}`, true);
+            useIgnoreList = false;
         }
     } else {
-        blacklistEnabled = false;
+        useIgnoreList = false;
     }
-    logMessage("blacklist enabled = " + blacklistEnabled);
+
+    logMessage(`ignore list enabled = ${useIgnoreList}`);
+
+    useAutoUndecorList = settings.useAutoUndecorList;
+    let autoUndecorRegexpStr = settings.autoUndecorAppsList.replace(",", "|");
+    if (useAutoUndecorList && autoUndecorRegexpStr) {
+        try {
+            autoUndecorAppsRegexp = new RegExp(autoUndecorRegexpStr, "i");
+            logMessage(`auto undecor regexp '${autoUndecorRegexpStr}' has been compiled successfully`);
+        } catch(e) {
+            logMessage(`exception on auto undecor regexp '${autoUndecorRegexpStr}' compile: ${e.message}`, true);
+            useAutoUndecorList = false;
+        }
+    } else {
+        useAutoUndecorList = false;
+    }
+
+    logMessage(`auto undecorate enabled = ${useAutoUndecorList}`);
 
     /* Connect events */
     changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
@@ -532,7 +560,7 @@ function stopUndecorating() {
             continue;
         }
 
-        logMessage("stopUndecorating: " + win.title);
+        logMessage(`stopUndecorating: ${win.title}`);
         // if it wasn't decorated originally, we haven't done anything to it so
         // don't need to undo anything.
         if (win._maximusDecoratedOriginal || win._maximusUndecorated) {
@@ -553,11 +581,11 @@ function toggleDecorActiveWindow() {
     let win = global.display.focus_window;
     if (win) {
         if (win._maximusUndecorated !== true) {
-            logMessage("undecorate: win " + win.get_title() + " _maximusDecoratedState: " + win._maximusUndecorated);
+            logMessage(`undecorate: win ${win.title} _maximusDecoratedState: ${win._maximusUndecorated}`);
             setDecorated(win, false);
             win._maximusUndecorated = true;
         } else {
-            logMessage("decorate: win " + win.get_title() + " _maximusDecoratedState: " + win._maximusUndecorated);
+            logMessage(`decorate: win ${win.title} _maximusDecoratedState: ${win._maximusUndecorated}`);
             setDecorated(win, true);
             win._maximusUndecorated = false;
         }
@@ -590,38 +618,56 @@ function SettingsHandler(uuid) {
 SettingsHandler.prototype = {
     _init: function(uuid) {
         this.settings = new Settings.ExtensionSettings(this, uuid);
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
-            "blacklist", "blacklist", function(){
-                stopUndecorating();
-                startUndecorating();
-            });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "blacklist_apps", "blacklist_apps", function(){
-            });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "enableLogs", "enableLogs", function(){
+            "useHotkey", "useHotkey", function(){
+                enableHotkey();
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "hotkey", "hotkey", function(){
                 enableHotkey();
             });
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "undecorateAll", "undecorateAll", function(){
-                stopUndecorating();
-                startUndecorating();
-            });
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "undecorateTile", "undecorateTile", function(){
                 stopUndecorating();
                 startUndecorating();
             });
         this.settings.bindProperty(Settings.BindingDirection.IN,
-            "useHotkey", "useHotkey", function(){
-                enableHotkey();
+            "undecorateAll", "undecorateAll", function(){
+                stopUndecorating();
+                startUndecorating();
             });
+
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "useIgnoreList", "useIgnoreList", function(){
+                stopUndecorating();
+                startUndecorating();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "ignoreAppsList", "ignoreAppsList", function(){
+            });
+
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "useAutoUndecorList", "useAutoUndecorList", function(){
+                stopUndecorating();
+                startUndecorating();
+            });
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "autoUndecorAppsList", "autoUndecorAppsList", function(){
+            });
+
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "keepQTAppsFocus", "keepQTAppsFocus", function(){
             });
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "enableLogs", "enableLogs", function(){
+            });
+
     }
 }
 
