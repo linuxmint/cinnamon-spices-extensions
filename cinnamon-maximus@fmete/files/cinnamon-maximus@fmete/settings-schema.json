@@ -23,15 +23,25 @@
     "default" : false,
     "description": "Undecorate All Windows (Experimental, please close and re-open all windows)"
   },
-  "blacklist" : {
+  "useIgnoreList" : {
     "type" : "checkbox",
     "default" : false,
-    "description": "Use Blacklist"
+    "description": "Use Ignoring List"
   },
-  "blacklist_apps": {
+  "ignoreAppsList": {
     "type": "entry",
-    "description": "Blacklist Apps (use \",\" for seperate apps, partial match!)",
+    "description": "Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)",
     "default": "chromium"
+  },
+  "useAutoUndecorList" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Use Auto Undecorating"
+  },
+  "autoUndecorAppsList": {
+    "type": "entry",
+    "description": "Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp allowed)",
+    "default": "gnome-terminal"
   },
   "keepQTAppsFocus" : {
     "type" : "checkbox",
