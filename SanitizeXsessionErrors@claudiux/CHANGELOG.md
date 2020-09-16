@@ -1,0 +1,1 @@
+files/SanitizeXsessionErrors@claudiux/CHANGELOG.md
