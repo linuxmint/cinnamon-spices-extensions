@@ -6,7 +6,7 @@
 
   "forbidden_words": {
     "type": "list",
-    "description" : "Words list",
+    "description" : "Word list",
     "columns": [
       {
         "id": "word",
