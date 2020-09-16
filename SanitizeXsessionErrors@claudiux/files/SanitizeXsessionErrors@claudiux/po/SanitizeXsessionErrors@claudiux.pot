@@ -1,0 +1,37 @@
+#
+msgid ""
+msgstr ""
+
+#. metadata.json->name
+msgid "Sanitize ~/.xsession-errors"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Filter messages sent to ~/.xsession-errors, to avoid flooding and save your "
+"SSD."
+msgstr ""
+
+#. settings-schema.json->section0->description
+msgid "Filter \"Log level 128\" messages starting with these words"
+msgstr ""
+
+#. settings-schema.json->forbidden_words->description
+msgid "Word list"
+msgstr ""
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "Words"
+msgstr ""
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "To filter?"
+msgstr ""
+
+#. settings-schema.json->section1->description
+msgid "~/.xsession-errors monitor"
+msgstr ""
+
+#. settings-schema.json->open_log->description
+msgid "Show the contents of ~/.xsession-errors in real time"
+msgstr ""
