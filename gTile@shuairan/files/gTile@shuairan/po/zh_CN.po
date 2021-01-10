@@ -29,15 +29,15 @@ msgstr "gTile"
 #. gTile@shuairan->settings-schema.json->gridbutton4x->description
 #. gTile@shuairan->settings-schema.json->gridbutton3x->description
 #. gTile@shuairan->settings-schema.json->gridbutton1x->description
-msgid "Cols "
+msgid "Columns"
 msgstr "列数"
 
 #. gTile@shuairan->settings-schema.json->gridbutton2x->units
 #. gTile@shuairan->settings-schema.json->gridbutton4x->units
 #. gTile@shuairan->settings-schema.json->gridbutton3x->units
 #. gTile@shuairan->settings-schema.json->gridbutton1x->units
-msgid "x "
-msgstr "x "
+msgid "x"
+msgstr "x"
 
 #. gTile@shuairan->settings-schema.json->gridbutton2y->description
 #. gTile@shuairan->settings-schema.json->gridbutton4y->description
@@ -50,23 +50,23 @@ msgstr "行数"
 #. gTile@shuairan->settings-schema.json->gridbutton4y->units
 #. gTile@shuairan->settings-schema.json->gridbutton3y->units
 #. gTile@shuairan->settings-schema.json->gridbutton1y->units
-msgid "y "
-msgstr "y "
+msgid "y"
+msgstr "y"
 
 #. gTile@shuairan->settings-schema.json->header2->description
-msgid "Button 2:"
+msgid "Layout for Button 2:"
 msgstr "按钮2："
 
 #. gTile@shuairan->settings-schema.json->header3->description
-msgid "Button 3:"
+msgid "Layout for Button 3:"
 msgstr "按钮3："
 
 #. gTile@shuairan->settings-schema.json->header1->description
-msgid "Button 1:"
+msgid "Layout for Button 1:"
 msgstr "按钮1："
 
 #. gTile@shuairan->settings-schema.json->header4->description
-msgid "Button 4:"
+msgid "Layout for Button 4:"
 msgstr "按钮4："
 
 #. gTile@shuairan->settings-schema.json->autoclose->description

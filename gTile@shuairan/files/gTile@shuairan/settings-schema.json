@@ -1,7 +1,16 @@
 {
+ "lastGridCols" : {
+    "type" : "generic",
+    "default" : 4
+ },
+ "lastGridRows" : {
+    "type" : "generic",
+    "default" : 4
+ },
+
  "headerKeys" : {
-	"type" : "header",
-	"description" : "Hotkeys:"
+    "type" : "header",
+    "description" : "Hotkeys:"
  },
 
  "hotkey": {
@@ -9,133 +18,134 @@
     "default" : "<Super>g",
     "description" : "Global Hotkey for gTile"
  },
+
+ "seperator0" : {
+    "type" : "separator"
+ },
+ "headerBehavior" : {
+    "type" : "header",
+    "description" : "Behavior:"
+ },
+ "animation" : {
+    "type" : "checkbox",
+    "default" : "true",
+    "description" : "Animation"
+ },
+ "autoclose" : {
+    "type" : "checkbox",
+    "default" : "true",
+    "description" : "Auto-Close"
+ },
+
  "seperator1" : {
-	"type" : "separator"
+    "type" : "separator"
  },
  "header1" : {
-	"type" : "header",
-	"description" : "Button 1:"
+    "type" : "header",
+    "description" : "Layout for Button 1:"
  },
  "gridbutton1x": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 2,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
-	"step" : 1,
-    "description" : "Cols "
+    "units" : "x",
+    "step" : 1,
+    "description" : "Columns"
  },
  "gridbutton1y": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 2,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
-	"step" : 1,
+    "units" : "y",
+    "step" : 1,
     "description" : "Rows"
  },
+ 
  "seperator2" : {
-	"type" : "separator"
+    "type" : "separator"
  },
  "header2" : {
-	"type" : "header",
-	"description" : "Button 2:"
+    "type" : "header",
+    "description" : "Layout for Button 2:"
  },
  "gridbutton2x": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 3,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
-	"step" : 1,
-    "description" : "Cols "
+    "units" : "x",
+    "step" : 1,
+    "description" : "Columns"
  },
  "gridbutton2y": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 2,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
-	"step" : 1,
+    "units" : "y",
+    "step" : 1,
     "description" : "Rows"
  },
+ 
  "seperator3" : {
-	"type" : "separator"
+    "type" : "separator"
  },
  "header3" : {
-	"type" : "header",
-	"description" : "Button 3:"
+    "type" : "header",
+    "description" : "Layout for Button 3:"
  },
  "gridbutton3x": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 4,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
-	"step" : 1,
-    "description" : "Cols "
+    "units" : "x",
+    "step" : 1,
+    "description" : "Columns"
  },
  "gridbutton3y": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 4,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
-	"step" : 1,
+    "units" : "y",
+    "step" : 1,
     "description" : "Rows"
  },
+ 
  "seperator4" : {
-	"type" : "separator"
+    "type" : "separator"
  },
  "header4" : {
-	"type" : "header",
-	"description" : "Button 4:"
+    "type" : "header",
+    "description" : "Layout for Button 4:"
  },
  "gridbutton4x": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 6,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
-	"step" : 1,
-    "description" : "Cols "
+    "units" : "x",
+    "step" : 1,
+    "description" : "Columns"
  },
  "gridbutton4y": {
     "type" : "spinbutton",
-	"indent" : "true",
+    "indent" : "true",
     "default" : 6,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
-	"step" : 1,
+    "units" : "y",
+    "step" : 1,
     "description" : "Rows"
- },
- "seperator5" : {
-	"type" : "separator"
- },
- "autoclose" : {
-	"type" : "checkbox",
-	"default" : "true",
-	"description" : "Auto-Close"
- },
- "animation" : {
-	"type" : "checkbox",
-	"default" : "true",
-	"description" : "Animation"
- },
- "lastGridCols" : {
-	"type" : "generic",
-	"default" : 4
- },
- "lastGridRows" : {
-	"type" : "generic",
-	"default" : 4
  }
 }
