@@ -50,9 +50,9 @@
     "default" : 2,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
-	"step" : 1,
-    "description" : "Cols "
+    "units" : "x",
+    "step" : 1,
+    "description" : "Columns"
  },
  "gridbutton1y": {
     "type" : "spinbutton",
@@ -60,7 +60,7 @@
     "default" : 2,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
+    "units" : "y",
     "step" : 1,
     "description" : "Rows"
  },
@@ -78,9 +78,9 @@
     "default" : 3,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
+    "units" : "x",
     "step" : 1,
-    "description" : "Cols "
+    "description" : "Columns"
  },
  "gridbutton2y": {
     "type" : "spinbutton",
@@ -88,7 +88,7 @@
     "default" : 2,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
+    "units" : "y",
     "step" : 1,
     "description" : "Rows"
  },
@@ -106,9 +106,9 @@
     "default" : 4,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
+    "units" : "x",
     "step" : 1,
-    "description" : "Cols "
+    "description" : "Columns"
  },
  "gridbutton3y": {
     "type" : "spinbutton",
@@ -116,7 +116,7 @@
     "default" : 4,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
+    "units" : "y",
     "step" : 1,
     "description" : "Rows"
  },
@@ -134,9 +134,9 @@
     "default" : 6,
     "min" : 1,
     "max" : 20,
-    "units" : "x ",
+    "units" : "x",
     "step" : 1,
-    "description" : "Cols "
+    "description" : "Columns"
  },
  "gridbutton4y": {
     "type" : "spinbutton",
@@ -144,7 +144,7 @@
     "default" : 6,
     "min" : 1,
     "max" : 20,
-    "units" : "y ",
+    "units" : "y",
     "step" : 1,
     "description" : "Rows"
  }
