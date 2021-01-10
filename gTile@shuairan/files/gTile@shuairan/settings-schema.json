@@ -42,7 +42,7 @@
  },
  "header1" : {
     "type" : "header",
-    "description" : "Layout 1:"
+    "description" : "Layout for Button 1:"
  },
  "gridbutton1x": {
     "type" : "spinbutton",
@@ -70,7 +70,7 @@
  },
  "header2" : {
     "type" : "header",
-    "description" : "Layout 2:"
+    "description" : "Layout for Button 2:"
  },
  "gridbutton2x": {
     "type" : "spinbutton",
@@ -98,7 +98,7 @@
  },
  "header3" : {
     "type" : "header",
-    "description" : "Layout 3:"
+    "description" : "Layout for Button 3:"
  },
  "gridbutton3x": {
     "type" : "spinbutton",
@@ -126,7 +126,7 @@
  },
  "header4" : {
     "type" : "header",
-    "description" : "Layout 4:"
+    "description" : "Layout for Button 4:"
  },
  "gridbutton4x": {
     "type" : "spinbutton",
