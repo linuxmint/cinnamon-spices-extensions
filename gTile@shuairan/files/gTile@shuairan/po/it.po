@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-30 12:00+0800\n"
-"PO-Revision-Date: 2019-10-21 20:55+0200\n"
+"PO-Revision-Date: 2021-01-11 19:54+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,19 +56,19 @@ msgstr "y"
 
 #. gTile@shuairan->settings-schema.json->header2->description
 msgid "Layout for Button 2:"
-msgstr "Tasto 2:"
+msgstr "Stile per il Tasto 2:"
 
 #. gTile@shuairan->settings-schema.json->header3->description
 msgid "Layout for Button 3:"
-msgstr "Tasto 3:"
+msgstr "Stile per il Tasto 3:"
 
 #. gTile@shuairan->settings-schema.json->header1->description
 msgid "Layout for Button 1:"
-msgstr "Tasto 1:"
+msgstr "Stile per il Tasto 1:"
 
 #. gTile@shuairan->settings-schema.json->header4->description
 msgid "Layout for Button 4:"
-msgstr "Tasto 4:"
+msgstr "Stile per il Tasto 4:"
 
 #. gTile@shuairan->settings-schema.json->autoclose->description
 msgid "Auto-Close"
