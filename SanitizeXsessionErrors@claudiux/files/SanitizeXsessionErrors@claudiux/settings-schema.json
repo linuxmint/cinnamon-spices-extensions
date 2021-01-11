@@ -1,0 +1,55 @@
+{
+  "section0": {
+    "type": "section",
+    "description": "Filter \"Log level 128\" messages starting with these words"
+  },
+
+  "forbidden_words": {
+    "type": "list",
+    "description" : "Word list",
+    "columns": [
+      {
+        "id": "word",
+        "title": "Words",
+        "type": "string"
+      },
+      {
+        "id": "is_forbidden",
+        "title": "To filter?",
+        "align": 0.5,
+        "type": "boolean",
+        "default": false
+      }
+    ],
+    "default": [
+      {
+        "word": "posix_spawn",
+        "is_forbidden": true
+      },
+      {
+        "word": "setenv()/putenv()",
+        "is_forbidden": true
+      },
+      {
+        "word": "unsetenv()",
+        "is_forbidden": true
+      }
+    ]
+  },
+
+  "section1": {
+    "type": "section",
+    "description": "~/.xsession-errors monitor"
+  },
+
+  "open_log": {
+    "type": "button",
+    "description" : "Show the contents of ~/.xsession-errors in real time",
+    "callback": "on_open_xsession_errors"
+  },
+
+  "first_launch": {
+    "type": "generic",
+    "default": true
+  }
+}

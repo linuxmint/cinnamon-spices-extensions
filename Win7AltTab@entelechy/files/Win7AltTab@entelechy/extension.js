@@ -10,7 +10,7 @@ const Tweener = imports.ui.tweener;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 const Signals = imports.signals;
-const THUMBNAIL_SCALE = 0.09;
+const THUMBNAIL_SCALE = 0.18;
 
 const POPUP_DELAY_TIMEOUT = 150; // milliseconds
 const POPUP_FADE_OUT_TIME = 0.1; // seconds
@@ -800,6 +800,13 @@ AltTabPopup.prototype = {
         this._select(0);
       } else if (keysym === Clutter.End) {
         this._select(this._winIcons.length - 1);
+      } else if (keysym >= Clutter.KEY_0 && keysym <= Clutter.KEY_9) {
+        /* windows positions: 0 1 2 3 4 5 6 7 8 9, num keys positions: 1 2 3 4 5 6 7 8 9 0, so we need some mapping logic */
+        let windowIndex = (keysym === Clutter.KEY_0) ? (9) : (keysym - Clutter.KEY_1);
+        /* switch to other window only if index is valid and differs from current */
+        if ((windowIndex >= 0) && (windowIndex < this._winIcons.length) && (windowIndex !== this._currentIndex)) {
+          this._select(windowIndex);
+        }
       }
     }
 

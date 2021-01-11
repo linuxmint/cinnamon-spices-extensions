@@ -323,6 +323,11 @@ function move_resize_window(metaWindow, x, y, width, height) {
   metaWindow.move_frame(true, x, y);
 }
 
+function getPanelHeight(panel) {
+  return panel.height
+      || panel.actor.get_height();  // fallback for old versions of Cinnamon
+}
+
 function getUsableScreenArea(monitor) {
   let top = monitor.y;
   let bottom = monitor.y + monitor.height;
@@ -333,16 +338,16 @@ function getUsableScreenArea(monitor) {
     if (!panel.isHideable()) {
       switch (panel.panelPosition) {
         case Panel.PanelLoc.top:
-          top += panel.height;
+          top += getPanelHeight(panel);
           break;
         case Panel.PanelLoc.bottom:
-          bottom -= panel.height;
+          bottom -= getPanelHeight(panel);
           break;
         case Panel.PanelLoc.left:
-          left += panel.height; // even vertical panels use 'height'
+          left += getPanelHeight(panel); // even vertical panels use 'height'
           break;
         case Panel.PanelLoc.right:
-          right -= panel.height;
+          right -= getPanelHeight(panel);
           break;
       }
     }

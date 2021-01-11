@@ -1,28 +1,56 @@
 {
- "head" : {
+  "head" : {
     "type" : "header",
     "description" : "Cinnamon-Maximus Settings"
- },
- "undecorateTile" : {
-      "type" : "checkbox",
-      "default" : false,
-      "description": "Undecorate when tile"
-   },
- "undecorateAll" : {
-      "type" : "checkbox",
-      "default" : false,
-      "description": "Undecorate All Windows (Experimental, please close and re-open all windows)"
- },
- "blacklist" : {
-      "type" : "checkbox",
-      "default" : false,
-      "description": "Use Blacklist"
-   },
-  "blacklist_apps": {
-        "type": "entry", 
-        "description": "Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for seperate apps)", 
-        "default": "chromium"
+  },
+  "useHotkey" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Use Hotkey to toggle decoration of current window"
+  },
+  "hotkey": {
+    "type" : "keybinding",
+    "default" : "<Super>u",
+    "description" : "Global Hotkey to toggle decoration of current window (Experimental)"
+  },
+  "undecorateTile" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Undecorate when tile"
+  },
+  "undecorateAll" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Undecorate All Windows (Experimental, please close and re-open all windows)"
+  },
+  "useIgnoreList" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Use Ignoring List"
+  },
+  "ignoreAppsList": {
+    "type": "entry",
+    "description": "Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)",
+    "default": "chromium"
+  },
+  "useAutoUndecorList" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Use Auto Undecorating"
+  },
+  "autoUndecorAppsList": {
+    "type": "entry",
+    "description": "Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp allowed)",
+    "default": "gnome-terminal"
+  },
+  "keepQTAppsFocus" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Keep the focus for QT Apps (Experimental)"
+  },
+  "enableLogs" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description": "Logging (see Melange - Log)"
   }
-  
- 
 }

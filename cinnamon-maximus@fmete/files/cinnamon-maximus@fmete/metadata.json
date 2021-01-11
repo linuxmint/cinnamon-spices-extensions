@@ -10,10 +10,12 @@
         "3.6",
         "3.8",
         "4.0",
-        "4.2"
+        "4.2",
+        "4.4",
+        "4.6"
     ],
-    "url": "linuxmint.com",
-    "description": "Undecorate windows its maximised.",
-    "last-edited": "1567774600",
-    "uuid": "cinnamon-maximus@fmete"
+    "description": "Undecorate windows as you like.",
+    "version": "0.4.4",
+    "uuid": "cinnamon-maximus@fmete",
+    "url": "https://cinnamon-spices.linuxmint.com/extensions"
 }
