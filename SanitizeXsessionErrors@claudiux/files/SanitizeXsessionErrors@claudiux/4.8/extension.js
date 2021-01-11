@@ -75,7 +75,7 @@ MyExtension.prototype = {
     icon.set_icon_type(IconType.SYMBOLIC);
     icon.set_icon_size(24);
 
-    let msg = "Sanitize ~/xsession-errors";
+    let msg = "Sanitize ~/.xsession-errors";
     let submsg = "This extension has been disabled because it was no longer needed since Cinnamon 4.8."
 
     let notification = new Notification(source, msg, submsg, { icon: icon, silent: false });
