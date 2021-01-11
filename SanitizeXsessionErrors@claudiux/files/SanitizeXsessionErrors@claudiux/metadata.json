@@ -13,11 +13,13 @@
         "4.0",
         "4.2",
         "4.4",
-        "4.6"
+        "4.6",
+        "4.8"
     ],
+    "multiversion": true,
     "name": "Sanitize ~/.xsession-errors",
     "uuid": "SanitizeXsessionErrors@claudiux",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Filter messages sent to ~/.xsession-errors, to avoid flooding and save your SSD.",
     "url": "http://cinnamon-spices.linuxmint.com/extensions/"
 }
