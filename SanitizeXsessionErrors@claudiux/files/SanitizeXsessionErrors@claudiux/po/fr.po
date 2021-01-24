@@ -2,20 +2,30 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-24 20:53+0100\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Claudiux <claude.clerc@gmail.com>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: Claudiux <claude.clerc@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: fr\n"
 
 #. metadata.json->name
+#: 4.8/extension.js:72
 msgid "Sanitize ~/.xsession-errors"
 msgstr "Assainir ~/.xsession-errors"
+
+#: 4.8/extension.js:73
+msgid ""
+"This extension has been disabled because it was no longer needed since "
+"Cinnamon 4.8."
+msgstr ""
+"Cette extension a été désactivée parce qu'elle n'est plus nécessaire depuis "
+"Cinnamon 4.8."
 
 #. metadata.json->description
 msgid ""
@@ -27,8 +37,7 @@ msgstr ""
 
 #. settings-schema.json->section0->description
 msgid "Filter \"Log level 128\" messages starting with these words"
-msgstr ""
-"Filtrer les messages du type \"Log level 128\" commençant par ces mots"
+msgstr "Filtrer les messages du type \"Log level 128\" commençant par ces mots"
 
 #. settings-schema.json->forbidden_words->description
 msgid "Word list"
