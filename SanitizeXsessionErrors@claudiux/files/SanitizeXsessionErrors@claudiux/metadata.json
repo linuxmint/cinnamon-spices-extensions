@@ -19,7 +19,7 @@
     "multiversion": true,
     "name": "Sanitize ~/.xsession-errors",
     "uuid": "SanitizeXsessionErrors@claudiux",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Filter messages sent to ~/.xsession-errors, to avoid flooding and save your SSD.",
-    "url": "http://cinnamon-spices.linuxmint.com/extensions/"
+    "url": "http://cinnamon-spices.linuxmint.com/extensions/view/87"
 }

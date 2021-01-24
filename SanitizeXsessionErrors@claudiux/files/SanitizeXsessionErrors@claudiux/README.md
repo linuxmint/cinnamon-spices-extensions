@@ -1,5 +1,7 @@
 # Sanitize ~/.xsession-errors
 
+**Please note that this extension is no longer useful since Cinnamon 4.8, because the messages polluting the `~/.xsession-errors` file have been removed upstream.**
+
 The `~/.xsession-errors` file logs all errors that occur in your Linux graphical environment.
 
 This _SanitizeXsessionErrors@claudiux_ Cinnamon extension prevents some very repetitive "Log level 128" messages like these from being written to the `~/.xsession-errors` file:
