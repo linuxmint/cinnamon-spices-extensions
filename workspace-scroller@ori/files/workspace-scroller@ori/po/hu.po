@@ -1,0 +1,168 @@
+# Extension for Cinnamon desktop environment developed by Linux Mint team. It can be found at Cinnamon Spices page and installed via Cinnamon extensions manager.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-29 22:34+0800\n"
+"PO-Revision-Date: 2021-02-19 09:08+0100\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.3\n"
+
+#. workspace-scroller@ori->metadata.json->name
+msgid "Workspace Scroller"
+msgstr "Munkaterület görgető"
+
+#. workspace-scroller@ori->metadata.json->description
+msgid "Switch workspaces using mouse scroll at screen edges."
+msgstr "Munkaterület váltása a képernyő éleinél történő egérgörgő használattal."
+
+#. workspace-scroller@ori->settings-schema.json->RightUp->description
+#. workspace-scroller@ori->settings-schema.json->BottomRightUp->description
+#. workspace-scroller@ori->settings-schema.json->BottomUp->description
+#. workspace-scroller@ori->settings-schema.json->BottomLeftUp->description
+#. workspace-scroller@ori->settings-schema.json->TopLeftUp->description
+#. workspace-scroller@ori->settings-schema.json->TopUp->description
+#. workspace-scroller@ori->settings-schema.json->TopRightUp->description
+#. workspace-scroller@ori->settings-schema.json->LeftUp->description
+msgid " â Scroll up: "
+msgstr "Görgetés felfelé: "
+
+#. workspace-scroller@ori->settings-schema.json->RightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->TopDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->RightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftDown->options
+#. workspace-scroller@ori->settings-schema.json->TopRightUp->options
+#. workspace-scroller@ori->settings-schema.json->TopRightDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftUp->options
+msgid "Show expo"
+msgstr "Közszemle megjelenítése"
+
+#. workspace-scroller@ori->settings-schema.json->RightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->TopDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->RightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftDown->options
+#. workspace-scroller@ori->settings-schema.json->TopRightUp->options
+#. workspace-scroller@ori->settings-schema.json->TopRightDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftUp->options
+msgid "None"
+msgstr "Nincs"
+
+#. workspace-scroller@ori->settings-schema.json->RightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->TopDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->RightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftDown->options
+#. workspace-scroller@ori->settings-schema.json->TopRightUp->options
+#. workspace-scroller@ori->settings-schema.json->TopRightDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftUp->options
+msgid "Switch left"
+msgstr "Váltás a bal oldali munkaterületre"
+
+#. workspace-scroller@ori->settings-schema.json->RightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomRightUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomDown->options
+#. workspace-scroller@ori->settings-schema.json->BottomUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->TopDown->options
+#. workspace-scroller@ori->settings-schema.json->TopLeftUp->options
+#. workspace-scroller@ori->settings-schema.json->RightDown->options
+#. workspace-scroller@ori->settings-schema.json->TopUp->options
+#. workspace-scroller@ori->settings-schema.json->BottomLeftDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftDown->options
+#. workspace-scroller@ori->settings-schema.json->TopRightUp->options
+#. workspace-scroller@ori->settings-schema.json->TopRightDown->options
+#. workspace-scroller@ori->settings-schema.json->LeftUp->options
+msgid "Switch right"
+msgstr "Váltás a jobb oldali munkaterületre"
+
+#. workspace-scroller@ori->settings-schema.json->BottomLeft->description
+msgid "Use bottom left corner"
+msgstr "Bal alsó él használata"
+
+#. workspace-scroller@ori->settings-schema.json->Bottom->description
+msgid "Use bottom edge"
+msgstr "Alsó él használata"
+
+#. workspace-scroller@ori->settings-schema.json->Top->description
+msgid "Use top edge"
+msgstr "Felső él használata"
+
+#. workspace-scroller@ori->settings-schema.json->cornersHeader->description
+msgid "Corner"
+msgstr "Sarok"
+
+#. workspace-scroller@ori->settings-schema.json->BottomRightDown->description
+#. workspace-scroller@ori->settings-schema.json->TopLeftDown->description
+#. workspace-scroller@ori->settings-schema.json->BottomDown->description
+#. workspace-scroller@ori->settings-schema.json->TopDown->description
+#. workspace-scroller@ori->settings-schema.json->RightDown->description
+#. workspace-scroller@ori->settings-schema.json->BottomLeftDown->description
+#. workspace-scroller@ori->settings-schema.json->LeftDown->description
+#. workspace-scroller@ori->settings-schema.json->TopRightDown->description
+msgid " â Scroll down: "
+msgstr "Görgetés lefelé: "
+
+#. workspace-scroller@ori->settings-schema.json->TopLeft->description
+msgid "Use top left corner"
+msgstr "Bals felső él használata"
+
+#. workspace-scroller@ori->settings-schema.json->cornerSize->description
+msgid "Corners areas size: "
+msgstr "Lekerekített sarkok mérete: "
+
+#. workspace-scroller@ori->settings-schema.json->cornerSize->units
+msgid "pixels"
+msgstr "képpont"
+
+#. workspace-scroller@ori->settings-schema.json->Left->description
+msgid "Use left edge"
+msgstr "Bal oldali él használata"
+
+#. workspace-scroller@ori->settings-schema.json->BottomRight->description
+msgid "Use bottom right corner"
+msgstr "Jobb alsó él használata"
+
+#. workspace-scroller@ori->settings-schema.json->TopRight->description
+msgid "Use top right corner"
+msgstr "Jobb felső él használata"
+
+#. workspace-scroller@ori->settings-schema.json->Right->description
+msgid "Use right edge"
+msgstr "Jobb oldali él használata"
+
+#. workspace-scroller@ori->settings-schema.json->edgesHeader->description
+msgid "Edges"
+msgstr "Élek"
