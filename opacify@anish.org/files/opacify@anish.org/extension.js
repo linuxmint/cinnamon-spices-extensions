@@ -68,8 +68,8 @@ function onEndGrabOp(display, screen, window, op) {
     { 
         Tweener.addTween(actor, { 
         opacity: 255, 
-        time: settings.beginTime/1000, 
-        transition: settings.beginEffect }); 
+        time: settings.endTime/1000, 
+        transition: settings.endEffect }); 
     } 
 }
 
