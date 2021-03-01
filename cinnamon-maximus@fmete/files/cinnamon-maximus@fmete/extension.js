@@ -143,7 +143,7 @@ function guessWindowXID(win) {
     } catch (err) {
     }
     // debugging for when people find bugs.. always logging this message.
-    logMessage(`Could not find XID for window with title '${win.title}`, true);
+    logMessage("Could not find XID for window with title '${win.title}", true);
     return null;
 }
 
