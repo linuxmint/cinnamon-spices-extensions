@@ -2,170 +2,140 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 21:59+0000\n"
 "PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"Last-Translator: \n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: zh_CN\n"
 
-#. slider@mohammad-sn->metadata.json->name
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "Slider"
-msgstr "滑动器"
-
-#. slider@mohammad-sn->metadata.json->description
+#. metadata.json->description
 msgid "Yet another nice transition effect for ws switching."
 msgstr "另一个用于工作区切换的漂亮过渡特效。"
 
-#. slider@mohammad-sn->settings-schema.json->animation-effect->description
-msgid "Animation Easing: "
-msgstr "动画缓动："
+#. metadata.json->name
+msgid "Slider"
+msgstr "滑动器"
 
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutBounce"
-msgstr "easeInOutBounce"
+#. settings-schema.json->animation-duration->units
+msgid "milliseconds"
+msgstr "毫秒"
 
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutExpo"
-msgstr "easeInOutExpo"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutCubic"
-msgstr "easeOutCubic"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutCubic"
-msgstr "easeInOutCubic"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutCirc"
-msgstr "easeInOutCirc"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInQuart"
-msgstr "easeInQuart"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInBounce"
-msgstr "easeInBounce"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutQuad"
-msgstr "easeOutQuad"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInQuint"
-msgstr "easeInQuint"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutElastic"
-msgstr "easeOutElastic"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutQuint"
-msgstr "easeOutQuint"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutElastic"
-msgstr "easeInOutElastic"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInExpo"
-msgstr "easeInExpo"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutSine"
-msgstr "easeInOutSine"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutQuad"
-msgstr "easeInOutQuad"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInQuad"
-msgstr "easeInQuad"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutSine"
-msgstr "easeOutSine"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutExpo"
-msgstr "easeOutExpo"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutBounce"
-msgstr "easeOutBounce"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutBack"
-msgstr "easeOutBack"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutQuint"
-msgstr "easeInOutQuint"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutCirc"
-msgstr "easeOutCirc"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInCirc"
-msgstr "easeInCirc"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInElastic"
-msgstr "easeInElastic"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInBack"
-msgstr "easeInBack"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInSine"
-msgstr "easeInSine"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeOutQuart"
-msgstr "easeOutQuart"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutQuart"
-msgstr "easeInOutQuart"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInCubic"
-msgstr "easeInCubic"
-
-#. slider@mohammad-sn->settings-schema.json->animation-effect->options
-msgid "easeInOutBack"
-msgstr "easeInOutBack"
-
-#. slider@mohammad-sn->settings-schema.json->animation-duration->description
-msgid "Animation Duration: "
+#. settings-schema.json->animation-duration->description
+msgid "Animation Duration:"
 msgstr "动画时长："
 
-#. slider@mohammad-sn->settings-schema.json->animation-duration->units
-msgid "milliseconds"
-msgstr "毫秒："
+#. settings-schema.json->animation-effect->description
+msgid "Animation Easing:"
+msgstr "动画缓动："
 
-#. slider@mohammad-sn->settings-schema.json->sliding-background->description
+#. settings-schema.json->slip-factor->description
+msgid "Slip Factor:"
+msgstr "滑动系数："
+
+#. settings-schema.json->sliding-background->description
 msgid "Sliding Background"
 msgstr "滑动背景"
 
-#. slider@mohammad-sn->settings-schema.json->slip-factor->description
-msgid "Slip Factor: "
-msgstr "滑动系数："
-
-#. slider@mohammad-sn->settings-schema.json->zoom-level->description
-msgid "Background Zoom Level: "
+#. settings-schema.json->zoom-level->description
+msgid "Background Zoom Level:"
 msgstr "背景缩放级别："
 
-#. slider@mohammad-sn->settings-schema.json->vertical-position->description
-msgid "Background Vertical Position: "
+#. settings-schema.json->vertical-position->description
+msgid "Background Vertical Position:"
 msgstr "背景垂直位置："
+
+#~ msgid "easeInOutBounce"
+#~ msgstr "easeInOutBounce"
+
+#~ msgid "easeInOutExpo"
+#~ msgstr "easeInOutExpo"
+
+#~ msgid "easeOutCubic"
+#~ msgstr "easeOutCubic"
+
+#~ msgid "easeInOutCubic"
+#~ msgstr "easeInOutCubic"
+
+#~ msgid "easeInOutCirc"
+#~ msgstr "easeInOutCirc"
+
+#~ msgid "easeInQuart"
+#~ msgstr "easeInQuart"
+
+#~ msgid "easeInBounce"
+#~ msgstr "easeInBounce"
+
+#~ msgid "easeOutQuad"
+#~ msgstr "easeOutQuad"
+
+#~ msgid "easeInQuint"
+#~ msgstr "easeInQuint"
+
+#~ msgid "easeOutElastic"
+#~ msgstr "easeOutElastic"
+
+#~ msgid "easeOutQuint"
+#~ msgstr "easeOutQuint"
+
+#~ msgid "easeInOutElastic"
+#~ msgstr "easeInOutElastic"
+
+#~ msgid "easeInExpo"
+#~ msgstr "easeInExpo"
+
+#~ msgid "easeInOutSine"
+#~ msgstr "easeInOutSine"
+
+#~ msgid "easeInOutQuad"
+#~ msgstr "easeInOutQuad"
+
+#~ msgid "easeInQuad"
+#~ msgstr "easeInQuad"
+
+#~ msgid "easeOutSine"
+#~ msgstr "easeOutSine"
+
+#~ msgid "easeOutExpo"
+#~ msgstr "easeOutExpo"
+
+#~ msgid "easeOutBounce"
+#~ msgstr "easeOutBounce"
+
+#~ msgid "easeOutBack"
+#~ msgstr "easeOutBack"
+
+#~ msgid "easeInOutQuint"
+#~ msgstr "easeInOutQuint"
+
+#~ msgid "easeOutCirc"
+#~ msgstr "easeOutCirc"
+
+#~ msgid "easeInCirc"
+#~ msgstr "easeInCirc"
+
+#~ msgid "easeInElastic"
+#~ msgstr "easeInElastic"
+
+#~ msgid "easeInBack"
+#~ msgstr "easeInBack"
+
+#~ msgid "easeInSine"
+#~ msgstr "easeInSine"
+
+#~ msgid "easeOutQuart"
+#~ msgstr "easeOutQuart"
+
+#~ msgid "easeInOutQuart"
+#~ msgstr "easeInOutQuart"
+
+#~ msgid "easeInCubic"
+#~ msgstr "easeInCubic"
+
+#~ msgid "easeInOutBack"
+#~ msgstr "easeInOutBack"

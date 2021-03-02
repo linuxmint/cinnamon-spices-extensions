@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:49+0000\n"
-"PO-Revision-Date: 2021-03-02 22:50+0100\n"
+"POT-Creation-Date: 2021-03-02 21:31+0000\n"
+"PO-Revision-Date: 2021-03-02 22:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -19,52 +19,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. metadata.json->name
-msgid "Desktop Cube"
-msgstr "Desktop-Würfel"
+msgid "Opacify Windows"
+msgstr "Durchsichtige Fenster"
 
 #. metadata.json->description
-msgid "Compiz Cube-like animation for workspace switching"
-msgstr "»Compiz-Würfel«-ähnliche Animationen beim Wechsel der Arbeitsflächen"
+msgid "Fade out the current window that the user is resizing or dragging."
+msgstr "Aktuelles Fenster beim Verschieben oder bei Größenänderung durchsichtig machen."
 
-#. settings-schema.json->header1->description
-msgid "General"
-msgstr "Allgemein"
+#. settings-schema.json->opacity->description
+msgid "Opacity"
+msgstr "Deckkraft"
 
-#. settings-schema.json->animationTime->description
-msgid "Animation duration"
-msgstr "Animationsdauer"
+#. settings-schema.json->h1->description
+msgid "Start of Drag"
+msgstr "Start des Fensterziehens"
 
-#. settings-schema.json->pullaway->description
-msgid "Pullaway proportion from screen"
-msgstr "Wegzieh-Entfernung vom Bildschirm"
+#. settings-schema.json->beginTime->description
+#. settings-schema.json->endTime->description
+msgid "Transition time"
+msgstr "Dauer des Effektübergangs"
 
-#. settings-schema.json->header2->description
-msgid "Effects"
+#. settings-schema.json->beginTime->units
+#. settings-schema.json->endTime->units
+msgid "milliseconds"
+msgstr "Millisekunden"
+
+#. settings-schema.json->beginEffect->description
+#. settings-schema.json->endEffect->description
+msgid "Effect"
 msgstr "Effekte"
 
-#. settings-schema.json->scaleEffect->description
-msgid "Scale effect"
-msgstr "Wegzieh-Effekt"
-
-#. settings-schema.json->unscaleEffect->description
-msgid "Unscale effect"
-msgstr "Heranzieh-Effekt"
-
-#. settings-schema.json->rotateEffect->description
-msgid "Begin rotate effect"
-msgstr "Beginn des Dreheffekts"
-
-#. settings-schema.json->unrotateEffect->description
-msgid "End rotate effect"
-msgstr "Ende des Dreheffekts"
-
-#. settings-schema.json->header3->description
-msgid "System Settings"
-msgstr "Systemeinstellungen"
-
-#. settings-schema.json->workspaces_btn->description
-msgid "Open Cinnamon Settings to manage Workspaces"
-msgstr "Cinnamon-Einstellungen öffnen, um Arbeitsflächen zu verwalten"
+#. settings-schema.json->h2->description
+msgid "End of Drag"
+msgstr "Ende des Fensterziehens"
 
 #~ msgid "easeInQuad"
 #~ msgstr "easeInQuad"

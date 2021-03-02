@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 20:37+0200\n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: NikoKrause\n"
 "Language-Team: \n"
@@ -14,18 +14,26 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:166
+#: extension.js:172
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s aktiviert"
 
-#: extension.js:167
+#: extension.js:173
 msgid "Open the extension settings and customize your panels"
 msgstr "Einstellungen der Erweiterung öffnen und Leisten anpassen"
 
-#: extension.js:170
+#: extension.js:176
 msgid "Open settings"
 msgstr "Einstellungen öffnen"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Transparente Leisten"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr "Macht Leisten durchsichtig, wenn Fenster nicht maximiert sind"
 
 #. settings-schema.json->section-general->description
 msgid "General"
@@ -97,14 +105,6 @@ msgstr "Untere Leiste"
 #. settings-schema.json->panel-left->description
 msgid "Left panel"
 msgstr "Linke Leiste"
-
-#. metadata.json->name
-msgid "Transparent panels"
-msgstr "Transparente Leisten"
-
-#. metadata.json->description
-msgid "Transparentize your panels when there are no any maximized windows"
-msgstr "Macht Leisten durchsichtig, wenn Fenster nicht maximiert sind"
 
 #~ msgid "Defined by theme"
 #~ msgstr "Definiert nach Thema"
