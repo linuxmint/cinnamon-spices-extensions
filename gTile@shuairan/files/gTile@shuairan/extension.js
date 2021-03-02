@@ -23,14 +23,27 @@ const Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 
+const GLib = imports.gi.GLib;
+const Gettext = imports.gettext;
+const UUID = 'gTile@shuairan';
+Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
+
+function _(str) {
+    let customTranslation = Gettext.dgettext(UUID, str);
+    if(customTranslation != str) {
+        return customTranslation;
+    }
+    return Gettext.gettext(str);
+}
+
 const SETTINGS_AUTO_CLOSE = 'autoclose';
 const SETTINGS_ANIMATION = 'animation';
 
 const TOOLTIPS = [];
-TOOLTIPS[SETTINGS_AUTO_CLOSE] = 'Auto close';
-TOOLTIPS[SETTINGS_ANIMATION] = 'Animations';
-TOOLTIPS['action-main-list'] = 'Auto tile main and list';
-TOOLTIPS['action-two-list'] = 'Auto tile two lists';
+TOOLTIPS[SETTINGS_AUTO_CLOSE] = _("Auto close");
+TOOLTIPS[SETTINGS_ANIMATION] = _("Animations");
+TOOLTIPS['action-main-list'] = _("Auto tile main and list");
+TOOLTIPS['action-two-list'] = _("Auto tile two lists");
 
 const KEYCONTROL = [];
 KEYCONTROL['gTile-k-left'] = 'Left';
