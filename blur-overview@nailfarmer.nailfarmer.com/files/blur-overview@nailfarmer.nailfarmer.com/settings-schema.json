@@ -1,0 +1,10 @@
+{
+    "opacity" : {
+        "type": "scale",
+        "description": "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])",
+        "min": 0,
+        "max": 255,
+        "default": 100,
+        "step": 1
+    }
+}

@@ -1,7 +1,17 @@
 {
-    "cinnamon-version": [ "1.3.0", "1.3.1", "1.3.2", "1.4.0", "1.4.1", "1.4.2" ],
     "uuid": "blur-overview@nailfarmer.nailfarmer.com",
     "name": "Blur Overview",
-    "url": "https://github.com/nailfarmer/gnome-shell-blur-overview-extension",
-    "description": "Blur background in overview"
+    "description": "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])",
+    "cinnamon-version": [
+        "3.4",
+        "3.6",
+        "3.8",
+        "4.0",
+        "4.2",
+        "4.4",
+        "4.6",
+        "4.8",
+        "5.0",
+        "5.2"
+    ]
 }

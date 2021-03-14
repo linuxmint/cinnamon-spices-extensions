@@ -23,10 +23,13 @@
 const Clutter = imports.gi.Clutter;
 const Tweener = imports.ui.tweener;
 const Overview = imports.ui.overview;
+const Settings = imports.ui.settings;
 
 const ANIMATION_TIME = 0.25;
 
 let originalAnimate, fx;
+
+let settings;
 
 function _animateVisible() {
     if (this.visible || this.animationInProgress)
@@ -34,25 +37,33 @@ function _animateVisible() {
     
     this._oldAnimateVisible();
 
-    if ( ! fx ) {
-        fx = new Clutter.BlurEffect();
-        this._background.add_effect_with_name('blur',fx);
-    }
-
-    Tweener.addTween(fx,
-                     { factor: 10,
+    Tweener.addTween(this._background,
+                     { opacity: settings.opacity,
                        time: ANIMATION_TIME,
-                       transition: 'easeOutQuad'
+                       transition: 'easeNone'
                      });
 }
 
+function BlurSettings(uuid) {
+    this._init(uuid);
+}
+
+BlurSettings.prototype = {
+    _init: function(uuid) {
+        this.settings = new Settings.ExtensionSettings(this, uuid);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'opacity', 'opacity', null);
+    }
+};
+
 function init(extensionMeta) {
+    settings = new BlurSettings(extensionMeta.uuid);
+
     originalAnimate = Overview.Overview.prototype._animateVisible;
 }
 
 function enable() {
     // Monkey patch the original animation
-    Overview.Overview.prototype._animateVisible = _animateVisible;
+    Overview.Overview.prototype._animateVisible = this._animateVisible;
     Overview.Overview.prototype._oldAnimateVisible = originalAnimate;
 }
 
