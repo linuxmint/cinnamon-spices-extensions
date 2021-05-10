@@ -446,7 +446,7 @@ function startUndecorating() {
     logMessage("startUndecorating", true);
     // cache some variables for convenience
     useIgnoreList = settings.useIgnoreList;
-    let ignoreRegexpStr = settings.ignoreAppsList.replace(",", "|");
+    let ignoreRegexpStr = settings.ignoreAppsList.replace(/,/g, "|");
     if (useIgnoreList && ignoreRegexpStr) {
         try {
             ignoreAppsRegexp = new RegExp(ignoreRegexpStr, "i");
@@ -462,7 +462,7 @@ function startUndecorating() {
     logMessage(`ignore list enabled = ${useIgnoreList}`);
 
     useAutoUndecorList = settings.useAutoUndecorList;
-    let autoUndecorRegexpStr = settings.autoUndecorAppsList.replace(",", "|");
+    let autoUndecorRegexpStr = settings.autoUndecorAppsList.replace(/,/g, "|");
     if (useAutoUndecorList && autoUndecorRegexpStr) {
         try {
             autoUndecorAppsRegexp = new RegExp(autoUndecorRegexpStr, "i");
