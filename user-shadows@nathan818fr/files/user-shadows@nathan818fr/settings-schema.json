@@ -1,0 +1,28 @@
+{
+    "preset": {
+        "description": "Shadows preset",
+        "type": "combobox",
+        "options": {
+            "Default": "default",
+            "No Shadows": "no-shadow",
+            "Arc Theme (Dark)": "arc-theme-dark",
+            "Arc Theme (Light)": "arc-theme-light",
+            "Custom": "_custom"
+        },
+        "default": "default"
+    },
+    "customClasses": {
+        "type": "generic",
+        "default": {}
+    },
+    "_customClassesWidget": {
+        "type": "custom",
+        "file": "custom-settings-widgets.py",
+        "widget": "CustomClassesWidget",
+        "dependency": "preset=_custom"
+    },
+    "_extensionVars": {
+        "type": "generic",
+        "default": {}
+    }
+}
