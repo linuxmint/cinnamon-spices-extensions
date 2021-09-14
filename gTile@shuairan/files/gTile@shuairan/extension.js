@@ -1118,7 +1118,6 @@ Grid.prototype = {
     Main.keybindingManager.removeHotKey('gTile-close');
     Main.keybindingManager.removeHotKey('gTile-tile1');
     Main.keybindingManager.removeHotKey('gTile-tile2');
-    this._removeKeyControlsTile();
     for (let type in KEYCONTROL) {
       Main.keybindingManager.removeHotKey(type);
     }
