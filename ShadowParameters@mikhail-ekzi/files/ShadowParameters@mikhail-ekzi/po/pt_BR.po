@@ -50,7 +50,7 @@ msgstr "Windows 10"
 #. ShadowParameters@mikhail-ekzi->settings-
 #. schema.json->apply_changes_button->description
 msgid "Apply Changes"
-msgstr "Aplicar as alterações"
+msgstr "Aplicar alterações"
 
 #. ShadowParameters@mikhail-ekzi->settings-
 #. schema.json->restart_cinnamon_button->description
