@@ -7,29 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 20:37+0200\n"
-"PO-Revision-Date: 2021-02-20 16:25+0100\n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2021-09-26 08:37+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
 "Language-Team: \n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: hu\n"
 
-#: extension.js:166
+#: extension.js:172
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s engedélyezett"
 
-#: extension.js:167
+#: extension.js:173
 msgid "Open the extension settings and customize your panels"
 msgstr "Nyissa meg a kiegészítő beállításait és szabja testre paneljait"
 
-#: extension.js:170
+#: extension.js:176
 msgid "Open settings"
 msgstr "Beállítások megnyitása"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Áttetsző panel"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr "Átlátszóvá teheti a paneleket, ha nincsenek maximalizált ablakok"
 
 #. settings-schema.json->section-general->description
 msgid "General"
@@ -66,8 +74,8 @@ msgid ""
 "icorrectly set."
 msgstr ""
 "Csak támogatott témákhoz. Hagyja, hogy a téma stílusozza a paneleket a "
-"bővítmény előre beállított stílusa helyett. Ezt abban az esetben "
-"használja, ha a panelek átlátszósága nem megfelelően van beállítva."
+"bővítmény előre beállított stílusa helyett. Ezt abban az esetben használja, "
+"ha a panelek átlátszósága nem megfelelően van beállítva."
 
 #. settings-schema.json->opacify->description
 msgid "Remove theme transparency (experimental)"
@@ -100,11 +108,3 @@ msgstr "Alsó panel"
 #. settings-schema.json->panel-left->description
 msgid "Left panel"
 msgstr "Bal panel"
-
-#. metadata.json->name
-msgid "Transparent panels"
-msgstr "Áttetsző panel"
-
-#. metadata.json->description
-msgid "Transparentize your panels when there are no any maximized windows"
-msgstr "Átlátszóvá teheti a paneleket, ha nincsenek maximalizált ablakok"

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-26 22:14+0800\n"
-"PO-Revision-Date: 2021-04-12 18:48+0200\n"
+"PO-Revision-Date: 2021-09-26 08:19+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Balazs Bosak <bossbob88@gmail.com>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 #. ShadowParameters@mikhail-ekzi->metadata.json->name
@@ -28,7 +28,9 @@ msgstr "Testreszabható árnyék paraméterei"
 
 #. ShadowParameters@mikhail-ekzi->settings-schema.json->h2->description
 msgid "You could manually edit prefs.json to add your custom shadows presets."
-msgstr "Kézzel is szerkesztheti a prefs.json fájlt, az egyéni árnyék előbeállítások hozzáadásához."
+msgstr ""
+"Kézzel is szerkesztheti a prefs.json fájlt, az egyéni árnyék előbeállítások "
+"hozzáadásához."
 
 #. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->description
 msgid "Shadow presets"
