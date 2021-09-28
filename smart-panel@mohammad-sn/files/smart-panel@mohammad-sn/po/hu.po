@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-29 23:06+0800\n"
-"PO-Revision-Date: 2021-02-19 09:36+0100\n"
+"PO-Revision-Date: 2021-09-26 08:38+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 #. smart-panel@mohammad-sn->metadata.json->name
@@ -255,8 +255,8 @@ msgstr "Egérgörgő művelet: "
 #. scroll->description
 msgid "Prevent accidental workspace/window switching on rapid scrolling"
 msgstr ""
-"Megakadályozza a gyors görgetés miatt bekövetkező nem szándékos "
-"munkaterület és ablak váltásokat"
+"Megakadályozza a gyors görgetés miatt bekövetkező nem szándékos munkaterület "
+"és ablak váltásokat"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scope-modified->description
 msgid "When a modifier key is pressed, switch between windows from: "
