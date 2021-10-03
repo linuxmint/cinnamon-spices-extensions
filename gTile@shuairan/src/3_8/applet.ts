@@ -50,6 +50,8 @@ export interface Preferences {
   gridbutton3y: number;
   gridbutton4x: number;
   gridbutton4y: number;
+  nbRows: number;
+  nbCols: number;
 }
 
 const preferences: Preferences = {} as Preferences;
@@ -209,6 +211,7 @@ function initGrids() {
     Main.layoutManager.addChrome(grid.actor, { visibleInFullscreen: true });
     grid.actor.set_opacity(0);
     grid.hide(true);
+    //@ts-ignore
     grid.connect(
       'hide-tiling',
       hideTiling
@@ -235,7 +238,7 @@ function refreshGrids() {
     grid.refresh();
   }
 
-  Main.layoutManager._chrome.updateRegions();
+  Main.layoutManager["_chrome"].updateRegions();
 }
 
 function moveGrids() {
@@ -283,22 +286,26 @@ function moveGrids() {
 }
 
 function updateRegions() {
-  Main.layoutManager._chrome.updateRegions();
+  Main.layoutManager["_chrome"].updateRegions();
   refreshGrids();
   for (let idx in grids) {
     let grid = grids[idx];
-    grid.elementsDelegate.reset();
+    grid.elementsDelegate?.reset();
   }
 }
 
-function reset_window(metaWindow) {
-  metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
-  metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
-  metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-  metaWindow.tile(Meta.WindowTileType.NONE, false);
+function reset_window(metaWindow: imports.gi.Meta.Window | null) {
+  metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
+  metaWindow?.unmaximize(Meta.MaximizeFlags.VERTICAL);
+  metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
+  /**
+   * TODO: Check if functions exist
+   */
+  metaWindow?.tile(Meta.WindowTileType.NONE, false);
 }
 
-function _getInvisibleBorderPadding(metaWindow) {
+function _getInvisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
+  // TODO: Check if functions exist
   let outerRect = metaWindow.get_outer_rect();
   let inputRect = metaWindow.get_input_rect();
   let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
@@ -306,7 +313,8 @@ function _getInvisibleBorderPadding(metaWindow) {
   return [borderX, borderY];
 }
 
-function _getVisibleBorderPadding(metaWindow) {
+function _getVisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
+  // TODO: Check if functions exist
   let clientRect = metaWindow.get_rect();
   let outerRect = metaWindow.get_outer_rect();
 
@@ -316,7 +324,10 @@ function _getVisibleBorderPadding(metaWindow) {
   return [borderX, borderY];
 }
 
-function move_maximize_window(metaWindow, x, y) {
+function move_maximize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number) {
+  if (metaWindow == null)
+    return;
+
   let [borderX, borderY] = _getInvisibleBorderPadding(metaWindow);
 
   x = x - borderX;
@@ -326,22 +337,26 @@ function move_maximize_window(metaWindow, x, y) {
   metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 }
 
-function move_resize_window(metaWindow, x, y, width, height) {
+function move_resize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) {
+  if (metaWindow == null)
+    return;
+
   let [vBorderX, vBorderY] = _getVisibleBorderPadding(metaWindow);
 
   width = width - vBorderX;
   height = height - vBorderY;
 
+  //TODO: Check if exists
   metaWindow.resize(true, width, height);
   metaWindow.move_frame(true, x, y);
 }
 
-function getPanelHeight(panel) {
+function getPanelHeight(panel: imports.ui.panel.Panel) {
   return panel.height
     || panel.actor.get_height();  // fallback for old versions of Cinnamon
 }
 
-function getUsableScreenArea(monitor) {
+function getUsableScreenArea(monitor: imports.ui.layout.Monitor) {
   let top = monitor.y;
   let bottom = monitor.y + monitor.height;
   let left = monitor.x;
@@ -371,7 +386,7 @@ function getUsableScreenArea(monitor) {
   return [left, top, width, height];
 }
 
-function getNotFocusedWindowsOfMonitor(monitor) {
+function getNotFocusedWindowsOfMonitor(monitor: imports.ui.layout.Monitor) {
   return Main.getTabList().filter(function (w) {
     let app = tracker.get_window_app(w);
     let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
@@ -386,6 +401,7 @@ function getNotFocusedWindowsOfMonitor(monitor) {
       return false;
     }
 
+    // TODO: Check if exists
     return focusMetaWindow !== w && w.get_wm_class() != null;
   });
 }
@@ -422,6 +438,7 @@ function _onFocus() {
   }
 
   let app = tracker.get_window_app(focusMetaWindow);
+  // TODO: Check if exists
   let title = focusMetaWindow.get_title();
 
   for (let monitorIdx in monitors) {
@@ -482,7 +499,7 @@ function hideTiling() {
 
   status = false;
 
-  Main.layoutManager._chrome.updateRegions();
+  Main.layoutManager["_chrome"].updateRegions();
 }
 
 function toggleTiling() {
@@ -494,7 +511,7 @@ function toggleTiling() {
   return status;
 }
 
-function getMonitorKey(monitor) {
+function getMonitorKey(monitor: imports.ui.layout.Monitor) {
   return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 }
 
@@ -502,7 +519,7 @@ function getFocusApp() {
   return global.display.focus_window;
 }
 
-function isPrimaryMonitor(monitor) {
+function isPrimaryMonitor(monitor: imports.ui.layout.Monitor) {
   return Main.layoutManager.primaryMonitor === monitor;
 }
 
@@ -536,12 +553,12 @@ class TopBar {
     this.actor.add(this._closeButton, { x_fill: false, expand: false });
   }
 
-  private _set_title(title: string) {
+  public _set_title(title: string) {
     this._title = title;
     this._stlabel.text = this._title;
   }
 
-  private _set_app(app: any, title: string) {
+  public _set_app(app: any, title: string) {
     this._title = app.get_name() + ' - ' + title;
     this._stlabel.text = this._title;
     this._icon = app.create_icon_texture(24);
@@ -557,25 +574,25 @@ class TopBar {
 }
 
 class ToggleSettingsButtonListener {
-  actors: imports.gi.Clutter.Actor[] = [];
+  actors: ToggleSettingsButton[] = [];
 
-  constructor() {}
+  constructor() { }
 
   public addActor(actor: ToggleSettingsButton) {
-      // @ts-ignore
-      actor.connect(
-          'update-toggle',
-          this._updateToggle
-      );
-      this.actors.push(actor);
+    // @ts-ignore
+    actor.connect(
+      'update-toggle',
+      this._updateToggle
+    );
+    this.actors.push(actor);
   }
 
   public _updateToggle = () => {
-      for (let actorIdx in this.actors) {
-          let actor = this.actors[actorIdx];
-          // @ts-ignore
-          actor._update();
-      }
+    for (let actorIdx in this.actors) {
+      let actor = this.actors[actorIdx];
+      // @ts-ignore
+      actor._update();
+    }
   }
 };
 
@@ -588,49 +605,49 @@ class ToggleSettingsButton {
   private _tooltip?: imports.ui.tooltips.Tooltip;
 
   constructor(text: string, property: keyof Preferences | TooltipKeys) {
-      this.text = text;
-      this.actor = new St.Button({
-          style_class: 'settings-button',
-          reactive: true,
-          can_focus: true,
-          track_hover: true,
-          label: this.text
-      });
-      this.icon = new St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
-      this.actor.set_child(this.icon);
-      this.property = property;
-      this._update();
-      this.actor.connect(
-          'button-press-event',
-          this._onButtonPress
-      );
-      //@ts-ignore
-      this.connect(
-          'update-toggle',
-          this, this._update
-      );
+    this.text = text;
+    this.actor = new St.Button({
+      style_class: 'settings-button',
+      reactive: true,
+      can_focus: true,
+      track_hover: true,
+      label: this.text
+    });
+    this.icon = new St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
+    this.actor.set_child(this.icon);
+    this.property = property;
+    this._update();
+    this.actor.connect(
+      'button-press-event',
+      this._onButtonPress
+    );
+    //@ts-ignore
+    this.connect(
+      'update-toggle',
+      this, this._update
+    );
 
-      if (objHasKey(TOOLTIPS, property)) {
-          this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
-      }
+    if (objHasKey(TOOLTIPS, property)) {
+      this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
+    }
   }
 
   private _update = () => {
-      if (objHasKey(this.preferences, this.property)) {
-          this.actor.add_style_pseudo_class('activate');
-      } else {
-          this.actor.remove_style_pseudo_class('activate');
-      }
+    if (objHasKey(preferences, this.property)) {
+      this.actor.add_style_pseudo_class('activate');
+    } else {
+      this.actor.remove_style_pseudo_class('activate');
+    }
   }
 
   private _onButtonPress = () => {
-      if (!objHasKey(this.preferences, this.property))
-          return;
+    if (!objHasKey(preferences, this.property))
+      return;
 
-      // @ts-ignore
-      preferences[this.property] = !preferences[this.property];
-      // @ts-ignore
-      this.emit('update-toggle');
+    // @ts-ignore
+    preferences[this.property] = !preferences[this.property];
+    // @ts-ignore
+    this.emit('update-toggle');
   }
 };
 
@@ -652,7 +669,7 @@ class ActionButton {
       track_hover: true
     });
 
-    this.icon = new St.BoxLayout({style_class: classname, reactive: true, can_focus: true, track_hover: true});
+    this.icon = new St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
     this.actor.add_actor(this.icon);
     this.actor.connect(
       'button-press-event',
@@ -660,12 +677,12 @@ class ActionButton {
     );
 
     if (TOOLTIPS[classname]) {
-      this._tooltip = new Tooltip(this.actor, TOOLTIPS[classname]);
+      this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
     }
   }
 
   protected _onButtonPress = () => {
-      // @ts-ignore
+    // @ts-ignore
     this.emit('button-press-event');
   }
 };
@@ -676,42 +693,42 @@ class AutoTileMainAndList extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
-      super(grid, 'action-main-list');
-      this.classname = 'action-main-list';
-      // @ts-ignore
-      this.connect(
-          'button-press-event',
-          this._onButtonPress
-      );
+    super(grid, 'action-main-list');
+    this.classname = 'action-main-list';
+    // @ts-ignore
+    this.connect(
+      'button-press-event',
+      this._onButtonPress
+    );
   }
 
   protected override _onButtonPress = () => {
-      if (!focusMetaWindow) return;
+    if (!focusMetaWindow) return;
 
-      reset_window(focusMetaWindow);
+    reset_window(focusMetaWindow);
 
-      let monitor = this.grid.monitor;
-      let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-      let windows = getNotFocusedWindowsOfMonitor(monitor);
+    let monitor = this.grid.monitor;
+    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
+    let windows = getNotFocusedWindowsOfMonitor(monitor);
 
-      move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+    move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
 
-      let winHeight = screenHeight / windows.length;
-      let countWin = 0;
+    let winHeight = screenHeight / windows.length;
+    let countWin = 0;
 
-      for (let windowIdx in windows) {
-          let metaWindow = windows[windowIdx];
+    for (let windowIdx in windows) {
+      let metaWindow = windows[windowIdx];
 
-          let newOffset = countWin * winHeight;
+      let newOffset = countWin * winHeight;
 
-          reset_window(metaWindow);
+      reset_window(metaWindow);
 
-          move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
-          countWin++;
-      }
+      move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
+      countWin++;
+    }
 
-      //@ts-ignore
-      this.emit('resize-done');
+    //@ts-ignore
+    this.emit('resize-done');
   }
 };
 
@@ -721,49 +738,49 @@ class AutoTileTwoList extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
-      super(grid, 'action-two-list');
-      this.classname = 'action-two-list';
-      // @ts-ignore
-      this.connect(
-          'button-press-event',
-          this._onButtonPress
-      );
+    super(grid, 'action-two-list');
+    this.classname = 'action-two-list';
+    // @ts-ignore
+    this.connect(
+      'button-press-event',
+      this._onButtonPress
+    );
   }
 
   protected override _onButtonPress = () => {
-      if (!focusMetaWindow) return;
+    if (!focusMetaWindow) return;
 
-      reset_window(focusMetaWindow);
+    reset_window(focusMetaWindow);
 
-      let monitor = this.grid.monitor;
-      let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-      let windows = getNotFocusedWindowsOfMonitor(monitor);
-      let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
-      let winHeight = screenHeight / nbWindowOnEachSide;
+    let monitor = this.grid.monitor;
+    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
+    let windows = getNotFocusedWindowsOfMonitor(monitor);
+    let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
+    let winHeight = screenHeight / nbWindowOnEachSide;
 
-      let countWin = 0;
+    let countWin = 0;
 
-      let xOffset = ((countWin % 2) * screenWidth) / 2;
-      let yOffset = Math.floor(countWin / 2) * winHeight;
+    let xOffset = ((countWin % 2) * screenWidth) / 2;
+    let yOffset = Math.floor(countWin / 2) * winHeight;
 
-      move_resize_window(focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+    move_resize_window(focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
 
+    countWin++;
+
+    for (let windowIdx in windows) {
+      let metaWindow = windows[windowIdx];
+
+      xOffset = ((countWin % 2) * screenWidth) / 2;
+      yOffset = Math.floor(countWin / 2) * winHeight;
+
+      reset_window(metaWindow);
+
+      move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
       countWin++;
+    }
 
-      for (let windowIdx in windows) {
-          let metaWindow = windows[windowIdx];
-
-          xOffset = ((countWin % 2) * screenWidth) / 2;
-          yOffset = Math.floor(countWin / 2) * winHeight;
-
-          reset_window(metaWindow);
-
-          move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
-          countWin++;
-      }
-
-      // @ts-ignore
-      this.emit('resize-done');
+    // @ts-ignore
+    this.emit('resize-done');
   }
 };
 
@@ -773,14 +790,15 @@ class ActionScale extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
-      super(grid, 'action-scale')
-      this.classname = 'action-scale';
+    // @ts-ignore
+    super(grid, 'action-scale')
+    this.classname = 'action-scale';
 
-      // @ts-ignore
-      this.connect(
-          'button-press-event',
-          this._onButtonPress
-      );
+    // @ts-ignore
+    this.connect(
+      'button-press-event',
+      this._onButtonPress
+    );
   }
 
   protected override _onButtonPress = () => { }
@@ -794,36 +812,36 @@ class GridSettingsButton {
   label: imports.gi.St.Label;
 
   constructor(text: string, cols: number, rows: number) {
-      this.cols = cols;
-      this.rows = rows;
-      this.text = text;
+    this.cols = cols;
+    this.rows = rows;
+    this.text = text;
 
-      this.actor = new St.Button({
-          style_class: 'settings-button',
-          reactive: true,
-          can_focus: true,
-          track_hover: true
-      });
+    this.actor = new St.Button({
+      style_class: 'settings-button',
+      reactive: true,
+      can_focus: true,
+      track_hover: true
+    });
 
-      this.label = new St.Label({
-          style_class: 'settings-label',
-          reactive: true, can_focus: true,
-          track_hover: true,
-          text: this.text
-      });
+    this.label = new St.Label({
+      style_class: 'settings-label',
+      reactive: true, can_focus: true,
+      track_hover: true,
+      text: this.text
+    });
 
-      this.actor.add_actor(this.label);
+    this.actor.add_actor(this.label);
 
-      this.actor.connect(
-          'button-press-event',
-          this._onButtonPress
-      );
+    this.actor.connect(
+      'button-press-event',
+      this._onButtonPress
+    );
   }
 
   private _onButtonPress = () => {
-      preferences.nbCols = this.cols;
-      preferences.nbRows = this.rows;
-      refreshGrids();
+    preferences.nbCols = this.cols;
+    preferences.nbRows = this.rows;
+    refreshGrids();
   }
 }
 
@@ -841,7 +859,7 @@ class Grid {
   veryBottomBar: imports.gi.St.Table;
   table: imports.gi.St.Table;
 
-  monitor: mports.ui.layout.Monitor;
+  monitor: imports.ui.layout.Monitor;
   monitor_idx: number;
   rows: number;
   title: string;
@@ -856,10 +874,11 @@ class Grid {
   normalScaleY: number;
   normalScaleX: number;
 
-  elementsDelegate: GridElementsDelegate | null = null;
-  elements: GridElements[] | null = null;
+  elementsDelegate!: GridElementDelegate;
+  elements!: GridElement[][];
+  keyElement?: GridElement | null;
 
-  constructor(monitor_idx: number, monitor: mports.ui.layout.Monitor, title: string, cols: number, rows: number) {
+  constructor(monitor_idx: number, monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
     this.tableWidth = 220;
     this.tableHeight = 200;
     this.borderwidth = 2;
@@ -956,12 +975,12 @@ class Grid {
         Lang.bind(this, this._onResize)
       );
 
-      action = new AutoTileTwoList(this);
-      action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(action.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
+      let actionTwo = new AutoTileTwoList(this);
+      actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+      this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
       //@ts-ignore
-      action.connect(
+      actionTwo.connect(
         'resize-done',
         Lang.bind(this, this._onResize)
       );
@@ -979,6 +998,7 @@ class Grid {
   }
 
   public _initGridSettingsButtons = () => {
+    // TODO: Check if exists
     this.bottombar.destroy_children();
 
     let rowNum = 0;
@@ -1008,6 +1028,7 @@ class Grid {
     let height = this.tableHeight / this.rows - 2 * this.borderwidth;
 
     this.elementsDelegate = new GridElementDelegate();
+    // @ts-ignore
     this.elementsDelegate.connect(
       'resize-done',
       Lang.bind(this, this._onResize)
@@ -1021,6 +1042,7 @@ class Grid {
         let element = new GridElement(this.monitor, width, height, c, r);
 
         this.elements[r][c] = element;
+        // @ts-ignore
         element.actor._delegate = this.elementsDelegate;
         this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
         element.show();
@@ -1046,6 +1068,7 @@ class Grid {
     this.elementsDelegate.reset();
     let time = preferences.animation ? 0.3 : 0;
 
+    // TODO: Test if exists
     this.actor.raise_top();
     Main.layoutManager.removeChrome(this.actor);
     Main.layoutManager.addChrome(this.actor);
@@ -1094,16 +1117,17 @@ class Grid {
       Main.layoutManager.removeChrome(this.actor);
     }
 
-    Main.layoutManager._chrome.updateRegions();
+    Main.layoutManager["_chrome"].updateRegions();
   }
 
   private _onShowComplete = () => {
-    Main.layoutManager._chrome.updateRegions();
+    Main.layoutManager["_chrome"].updateRegions();
   }
 
   private _onResize = () => {
     refreshGrids();
     if (preferences.autoclose) {
+      // @ts-ignore
       this.emit('hide-tiling');
     }
   }
@@ -1126,6 +1150,7 @@ class Grid {
   }
 
   private _globalKeyPressEvent = (actor: imports.gi.Clutter.Actor, event: imports.gi.Clutter.Event) => {
+    // TODO: Check if exists
     if (event.get_key_symbol() === Clutter.Escape) {
       hideTiling();
       return true;
@@ -1142,13 +1167,15 @@ class Grid {
     Main.keybindingManager.addHotKey('gTile-tile1', 'space', Lang.bind(this, this._keyTile));
     Main.keybindingManager.addHotKey('gTile-tile2', 'Return', Lang.bind(this, this._keyTile));
     for (let index in KEYCONTROL) {
-      let key = KEYCONTROL[index];
-      let type = index;
-      Main.keybindingManager.addHotKey(
-        type,
-        key,
-        () => this._onKeyPressEvent(type, key)
-      );
+      if (objHasKey(KEYCONTROL, index)) {
+        let key = KEYCONTROL[index];
+        let type = index;
+        Main.keybindingManager.addHotKey(
+          type,
+          key,
+          () => this._onKeyPressEvent(type, key)
+        );
+      }
     }
   }
 
@@ -1163,7 +1190,7 @@ class Grid {
     }
   }
 
-  private _onKeyPressEvent = (type: string) => {
+  private _onKeyPressEvent = (type: string, key?: string) => {
     let modifier = type.indexOf('meta', type.length - 4) !== -1;
 
     if (modifier && this.keyElement) {
@@ -1216,7 +1243,7 @@ class Grid {
   private _keyTileSwitch = () => {
     let key = getMonitorKey(this.monitor);
 
-    let candidate = false;
+    let candidate: Grid | null = null;
     // find other grids //TODO: improve to loop around all grids!
     for (let k in grids) {
       if (k === key) {
@@ -1237,35 +1264,37 @@ class Grid {
     }
 
     this.elementsDelegate._destroy();
+    // TODO: Check if needed
+    // @ts-ignore
     this.topbar._destroy();
     this._removeKeyControls();
+    // @ts-ignore
     this.monitor = null;
+    // @ts-ignore
     this.rows = null;
+    // @ts-ignore
     this.title = null;
+    // @ts-ignore
     this.cols = null;
   }
 };
 
 Signals.addSignalMethods(Grid.prototype);
 
-function GridElementDelegate() {
-  this._init();
-}
+class GridElementDelegate {
+  activated = false;
+  first: GridElement | null = null;
+  last: GridElement | null = null;
+  currentElement: GridElement | null = null;
+  activatedActors: GridElement[] | null = null;
 
-GridElementDelegate.prototype = {
-  _init: function () {
-    this.activated = false;
-    this.first = false;
-    this.last = false;
-    this.currentElement = false;
-    this.activatedActors = false;
-  },
+  constructor() { }
 
-  _allSelected: function () {
-    return this.activatedActors.length === (preferences.nbCols * preferences.nbRows);
-  },
+  private _allSelected = () => {
+    return this.activatedActors?.length === (preferences.nbCols * preferences.nbRows);
+  }
 
-  _onButtonPress: function (gridElement) {
+  public _onButtonPress(gridElement: GridElement) {
     if (!this.activated) {
       this.activated = true;
       this.activatedActors = [];
@@ -1281,6 +1310,8 @@ GridElementDelegate.prototype = {
       reset_window(focusMetaWindow);
 
       let areaWidth, areaHeight, areaX, areaY;
+      // TODO: check this
+      // @ts-ignore
       [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
 
       if (this._allSelected()) {
@@ -1291,34 +1322,37 @@ GridElementDelegate.prototype = {
 
       this._resizeDone();
     }
-  },
+  }
 
-  _resizeDone: function () {
+  private _resizeDone = () => {
+    // @ts-ignore
     this.emit('resize-done');
-  },
+  }
 
-  reset: function () {
+  public reset = () => {
     this._resetGrid();
 
     this.activated = false;
-    this.first = false;
-    this.last = false;
-    this.currentElement = false;
-  },
+    this.first = null;
+    this.last = null;
+    this.currentElement = null;
+  }
 
-  _resetGrid: function () {
+  private _resetGrid = () => {
     this._hideArea();
     if (this.currentElement) {
       this.currentElement._deactivate();
     }
 
-    for (let act in this.activatedActors) {
-      this.activatedActors[act]._deactivate();
+    if (this.activatedActors != null) {
+      for (let index = 0; index < this.activatedActors.length; index++) {
+        this.activatedActors[index]._deactivate();
+      }
     }
     this.activatedActors = [];
-  },
+  }
 
-  _getVarFromGridElement: function (fromGridElement, toGridElement) {
+  private _getVarFromGridElement = (fromGridElement: GridElement, toGridElement: GridElement) => {
     let maxX = fromGridElement.coordx >= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
     let minX = fromGridElement.coordx <= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
 
@@ -1326,9 +1360,9 @@ GridElementDelegate.prototype = {
     let minY = fromGridElement.coordy <= toGridElement.coordy ? fromGridElement.coordy : toGridElement.coordy;
 
     return [minX, maxX, minY, maxY];
-  },
+  }
 
-  refreshGrid: function (fromGridElement, toGridElement) {
+  public refreshGrid = (fromGridElement: GridElement, toGridElement: GridElement) => {
     this._resetGrid();
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
@@ -1337,16 +1371,16 @@ GridElementDelegate.prototype = {
     let grid = grids[key];
     for (let r = minY; r <= maxY; r++) {
       for (let c = minX; c <= maxX; c++) {
-        let element = grid.elements[r][c];
+        let element = grid?.elements[r][c];
         element._activate();
-        this.activatedActors.push(element);
+        this.activatedActors?.push(element);
       }
     }
 
     this._displayArea(fromGridElement, toGridElement);
-  },
+  }
 
-  _computeAreaPositionSize: function (fromGridElement, toGridElement) {
+  private _computeAreaPositionSize = (fromGridElement: GridElement, toGridElement: GridElement) => {
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
     let nbRows = preferences.nbRows;
@@ -1361,9 +1395,9 @@ GridElementDelegate.prototype = {
     let areaY = screenY + minY * (screenHeight / nbRows);
 
     return [areaX, areaY, areaWidth, areaHeight];
-  },
+  }
 
-  _displayArea: function (fromGridElement, toGridElement) {
+  private _displayArea = (fromGridElement: GridElement, toGridElement: GridElement) => {
     let areaWidth, areaHeight, areaX, areaY;
     [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
 
@@ -1384,15 +1418,16 @@ GridElementDelegate.prototype = {
       area.x = areaX;
       area.y = areaY;
     }
-  },
+  }
 
-  _hideArea: function () {
+  private _hideArea = () => {
     area.remove_style_pseudo_class('activate');
-  },
+  }
 
-  _onHoverChanged: function (gridElement) {
+  private _onHoverChanged = (gridElement: GridElement) => {
     if (this.activated) {
-      this.refreshGrid(this.first, gridElement);
+      if (this.first != null)
+        this.refreshGrid(this.first, gridElement);
     } else {
       if (this.currentElement) this.currentElement._deactivate();
 
@@ -1400,9 +1435,10 @@ GridElementDelegate.prototype = {
       this._displayArea(this.currentElement, this.currentElement);
       this.currentElement._activate();
     }
-  },
+  }
 
-  _destroy: function () {
+  public _destroy = () => {
+    // @ts-ignore
     this.activated = null;
     this.first = null;
     this.last = null;
@@ -1413,12 +1449,17 @@ GridElementDelegate.prototype = {
 
 Signals.addSignalMethods(GridElementDelegate.prototype);
 
-function GridElement(monitor, width, height, coordx, coordy) {
-  this._init(monitor, width, height, coordx, coordy);
-}
+class GridElement {
+  actor: imports.gi.St.Button;
+  monitor: imports.ui.layout.Monitor;
+  coordx: number;
+  coordy: number;
+  width: number;
+  height: number;
+  active: boolean;
 
-GridElement.prototype = {
-  _init: function (monitor, width, height, coordx, coordy) {
+
+  constructor(monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number) {
     this.actor = new St.Button({
       style_class: 'table-element',
       width: width,
@@ -1446,47 +1487,55 @@ GridElement.prototype = {
     );
 
     this.active = false;
-  },
+  }
 
-  show: function () {
+  public show = () => {
     this.actor.opacity = 255;
     this.actor.visible = true;
-  },
+  }
 
-  hide: function () {
+  public hide = () => {
     this.actor.opacity = 0;
     this.actor.visible = false;
-  },
+  }
 
-  _onButtonPress: function () {
+  public _onButtonPress = () => {
+    // @ts-ignore
     this.actor._delegate._onButtonPress(this);
-  },
+  }
 
-  _onHoverChanged: function () {
+  public _onHoverChanged = () => {
     if (!this.actor || isFinalized(this.actor)) return;
+    // @ts-ignore
     this.actor._delegate._onHoverChanged(this);
-  },
+  }
 
-  _activate: function () {
+  public _activate = () => {
     if (!this.actor || isFinalized(this.actor)) return;
     this.actor.add_style_pseudo_class('activate');
-  },
+  }
 
-  _deactivate: function () {
+  public _deactivate = () => {
     if (!this.actor || isFinalized(this.actor)) return;
     this.actor.remove_style_pseudo_class('activate');
-  },
+  }
 
-  _clean: function () {
+  public _clean = () => {
     Main.uiGroup.remove_actor(area);
-  },
+  }
 
-  _destroy: function () {
+  public _destroy = () => {
+    // @ts-ignore
     this.monitor = null;
+    // @ts-ignore
     this.coordx = null;
+    // @ts-ignore
     this.coordy = null;
+    // @ts-ignore
     this.width = null;
+    // @ts-ignore
     this.height = null;
+    // @ts-ignore
     this.active = null;
   }
-};
+}
