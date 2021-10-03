@@ -1,0 +1,44 @@
+{
+    "folders": [
+      {
+        "path": "../gTile@shuairan",
+        "name": "gTile",
+      }
+    ],
+    "settings": {
+      "cSpell.ignoreWords": [
+        "Gettext",
+        "bindtextdomain",
+        "dgettext"
+      ]
+    },
+    "tasks": {
+      "version": "2.0.0",
+      "tasks": [
+        {
+          "type": "npm",
+          "script": "install",
+          "path": "${workspaceFolder:gTile}",
+          "problemMatcher": [],
+          "label": "npm: install",
+          "detail": "install dependencies from package",
+          "group": "build"
+        },
+        {
+          "type": "shell",
+          "command": "${workspaceFolder:gTile}/build.sh",
+          "problemMatcher": [],
+          "label": "npx webpack + translation generation",
+          "group": {
+            "kind": "build",
+            "isDefault": true
+          }
+        }
+      ]
+    },
+    "extensions": {
+      "recommendations": [
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
