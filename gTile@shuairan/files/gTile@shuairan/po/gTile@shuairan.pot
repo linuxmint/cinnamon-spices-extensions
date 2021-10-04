@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-03 18:53+0100\n"
+"POT-Creation-Date: 2021-10-04 08:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:43 3.8/gTile.js:129
+#: extension.js:43 3.8/gTile.js:84
 msgid "Auto close"
 msgstr ""
 
-#: extension.js:44 3.8/gTile.js:130
+#: extension.js:44 3.8/gTile.js:85
 msgid "Animations"
 msgstr ""
 
-#: extension.js:45 3.8/gTile.js:131
+#: extension.js:45 3.8/gTile.js:86
 msgid "Auto tile main and list"
 msgstr ""
 
-#: extension.js:46 3.8/gTile.js:132
+#: extension.js:46 3.8/gTile.js:87
 msgid "Auto tile two lists"
 msgstr ""
 

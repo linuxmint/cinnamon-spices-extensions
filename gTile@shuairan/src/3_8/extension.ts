@@ -26,16 +26,16 @@ const Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 
-export let status: boolean;
-export let grids: Record<string, Grid>;
-export let monitors: imports.ui.layout.Monitor[];
-export let area: imports.gi.St.BoxLayout;
-export let focusMetaWindow: imports.gi.Meta.Window | null = null;
-export let focusMetaWindowConnections: Record<string, any> = {};
-export let focusMetaWindowPrivateConnections: Record<string, any> = {};
-export let tracker: imports.gi.Cinnamon.WindowTracker;
-export let gridSettingsButton: GridSettingsButton[] = [];
-export let toggleSettingListener: ToggleSettingsButtonListener;
+let status: boolean;
+let grids: Record<string, Grid>;
+let monitors: imports.ui.layout.Monitor[];
+let area: imports.gi.St.BoxLayout;
+let focusMetaWindow: imports.gi.Meta.Window | null = null;
+let focusMetaWindowConnections: Record<string, any> = {};
+let focusMetaWindowPrivateConnections: Record<string, any> = {};
+let tracker: imports.gi.Cinnamon.WindowTracker;
+let gridSettingsButton: GridSettingsButton[] = [];
+let toggleSettingListener: ToggleSettingsButtonListener;
 export interface Preferences {
   hotkey: string;
   lastGridRows: number;
@@ -54,15 +54,15 @@ export interface Preferences {
   nbCols: number;
 }
 
-export const preferences: Preferences = {} as Preferences;
-export let settings: imports.ui.settings.ExtensionSettings;
+const preferences: Preferences = {} as Preferences;
+let settings: imports.ui.settings.ExtensionSettings;
 
-export const GLib = imports.gi.GLib;
-export const Gettext = imports.gettext;
-export const UUID = 'gTile@shuairan';
+const GLib = imports.gi.GLib;
+const Gettext = imports.gettext;
+const UUID = 'gTile@shuairan';
 Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
 
-export function _(str: string) {
+export const _ = (str: string) => {
   let customTranslation = Gettext.dgettext(UUID, str);
   if (customTranslation != str) {
     return customTranslation;
@@ -71,7 +71,7 @@ export function _(str: string) {
 }
 
 
-export const isFinalized = function (obj: any) {
+const isFinalized = (obj: any) => {
   return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 }
 
@@ -80,7 +80,7 @@ export const isFinalized = function (obj: any) {
 *****************************************************************/
 /*INIT SETTINGS HERE TO ADD OR REMOVE SETTINGS BUTTON*/
 /*new GridSettingsButton(LABEL, NBCOL, NBROW) */
-export function initSettings() {
+const initSettings = () => {
   settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
   //hotkey
   settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', enableHotkey, null);
@@ -103,11 +103,11 @@ export function initSettings() {
   }
 }
 
-export function updateSettings() {
+const updateSettings = () => {
   toggleSettingListener._updateToggle();
 }
 
-export function initGridSettings() {
+const initGridSettings = () => {
   let basestr = 'gridbutton';
   for (let i = 1; i <= 4; i++) {
     let sgbx = basestr + i + 'x';
@@ -118,7 +118,7 @@ export function initGridSettings() {
   }
 }
 
-export function updateGridSettings() {
+const updateGridSettings = () => {
   gridSettingsButton = [];
   initGridSettings();
   for (var gridIdx in grids) {
@@ -130,33 +130,39 @@ export function updateGridSettings() {
 /*****************************************************************
                             FUNCTIONS
 *****************************************************************/
-export function init() { }
+export const init = () => { }
 
-export function enable() {
-  status = false;
-  monitors = Main.layoutManager.monitors;
-  tracker = Cinnamon.WindowTracker.get_default();
+export const enable = () => {
+  try {
+    status = false;
+    monitors = Main.layoutManager.monitors;
+    tracker = Cinnamon.WindowTracker.get_default();
 
-  area = new St.BoxLayout({ style_class: 'grid-preview' });
-  Main.uiGroup.add_actor(area);
+    area = new St.BoxLayout({ style_class: 'grid-preview' });
+    Main.uiGroup.add_actor(area);
 
-  initSettings();
-  initGrids();
+    initSettings();
+    initGrids();
 
-  enableHotkey();
+    enableHotkey();
 
-  /*tracker.connect(
-    'notify::focus-app',
-    _onFocus
-  );
-  global.screen.connect(
-    'monitors-changed',
-    reinitalize
-  );*/
-  //global.log("KEY BINDNGS");
+    tracker.connect(
+      'notify::focus-app',
+      _onFocus
+    );
+    global.screen.connect(
+      'monitors-changed',
+      reinitalize
+    );
+    //global.log("KEY BINDNGS");
+  }
+  catch(e) {
+    global.logError(e);
+    global.logError(e?.stack)
+  }
 }
 
-export function disable() {
+export const disable = () => {
   // Key Bindings
   disableHotkey();
 
@@ -164,22 +170,22 @@ export function disable() {
   resetFocusMetaWindow();
 }
 
-export function enableHotkey() {
+const enableHotkey = () => {
   disableHotkey();
   Main.keybindingManager.addHotKey('gTile', preferences.hotkey, toggleTiling);
 }
 
-export function disableHotkey() {
+const disableHotkey = () => {
   Main.keybindingManager.removeHotKey('gTile');
 }
 
-export function reinitalize() {
+const reinitalize = () => {
   monitors = Main.layoutManager.monitors;
   destroyGrids();
   initGrids();
 }
 
-export function resetFocusMetaWindow() {
+const resetFocusMetaWindow = () => {
   if (focusMetaWindowConnections.length > 0) {
     for (var idx in focusMetaWindowConnections) {
       focusMetaWindow?.disconnect(focusMetaWindowConnections[idx]);
@@ -200,7 +206,7 @@ export function resetFocusMetaWindow() {
   focusMetaWindowPrivateConnections = [];
 }
 
-export function initGrids() {
+const initGrids = () => {
   grids = {};
   for (let monitorIdx in monitors) {
     let monitor = monitors[monitorIdx];
@@ -219,7 +225,7 @@ export function initGrids() {
   }
 }
 
-export function destroyGrids() {
+const destroyGrids = () => {
   for (let monitorIdx in monitors) {
     let monitor = monitors[monitorIdx];
     let key = getMonitorKey(monitor);
@@ -231,7 +237,7 @@ export function destroyGrids() {
   }
 }
 
-export function refreshGrids() {
+const refreshGrids = () => {
   //global.log("RefreshGrids");
   for (let gridIdx in grids) {
     let grid = grids[gridIdx];
@@ -241,7 +247,7 @@ export function refreshGrids() {
   Main.layoutManager["_chrome"].updateRegions();
 }
 
-export function moveGrids() {
+const moveGrids = () => {
   if (!status) {
     return;
   }
@@ -285,7 +291,7 @@ export function moveGrids() {
   }
 }
 
-export function updateRegions() {
+const updateRegions = () => {
   Main.layoutManager["_chrome"].updateRegions();
   refreshGrids();
   for (let idx in grids) {
@@ -294,7 +300,7 @@ export function updateRegions() {
   }
 }
 
-export function reset_window(metaWindow: imports.gi.Meta.Window | null) {
+const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.VERTICAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
@@ -304,7 +310,7 @@ export function reset_window(metaWindow: imports.gi.Meta.Window | null) {
   metaWindow?.tile(Meta.WindowTileType.NONE, false);
 }
 
-export function _getInvisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
+const _getInvisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
   // TODO: Check if functions exist
   let outerRect = metaWindow.get_outer_rect();
   let inputRect = metaWindow.get_input_rect();
@@ -313,7 +319,7 @@ export function _getInvisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
   return [borderX, borderY];
 }
 
-export function _getVisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
+const _getVisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
   // TODO: Check if functions exist
   let clientRect = metaWindow.get_rect();
   let outerRect = metaWindow.get_outer_rect();
@@ -324,7 +330,7 @@ export function _getVisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
   return [borderX, borderY];
 }
 
-export function move_maximize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number) {
+const move_maximize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number) => {
   if (metaWindow == null)
     return;
 
@@ -337,7 +343,7 @@ export function move_maximize_window(metaWindow: imports.gi.Meta.Window | null, 
   metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 }
 
-export function move_resize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) {
+const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) => {
   if (metaWindow == null)
     return;
 
@@ -351,12 +357,12 @@ export function move_resize_window(metaWindow: imports.gi.Meta.Window | null, x:
   metaWindow.move_frame(true, x, y);
 }
 
-export function getPanelHeight(panel: imports.ui.panel.Panel) {
+const getPanelHeight = (panel: imports.ui.panel.Panel) => {
   return panel.height
     || panel.actor.get_height();  // fallback for old versions of Cinnamon
 }
 
-export function getUsableScreenArea(monitor: imports.ui.layout.Monitor) {
+const getUsableScreenArea = (monitor: imports.ui.layout.Monitor) => {
   let top = monitor.y;
   let bottom = monitor.y + monitor.height;
   let left = monitor.x;
@@ -386,7 +392,7 @@ export function getUsableScreenArea(monitor: imports.ui.layout.Monitor) {
   return [left, top, width, height];
 }
 
-export function getNotFocusedWindowsOfMonitor(monitor: imports.ui.layout.Monitor) {
+const getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
   return Main.getTabList().filter(function (w) {
     let app = tracker.get_window_app(w);
     let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
@@ -406,7 +412,7 @@ export function getNotFocusedWindowsOfMonitor(monitor: imports.ui.layout.Monitor
   });
 }
 
-export function _onFocus() {
+const _onFocus = () => {
   let window = getFocusApp();
   if (!window) {
     resetFocusMetaWindow();
@@ -451,7 +457,7 @@ export function _onFocus() {
   moveGrids();
 }
 
-export function showTiling() {
+const showTiling = () => {
   focusMetaWindow = getFocusApp();
   let wm_type = focusMetaWindow.get_window_type();
   let layer = focusMetaWindow.get_layer();
@@ -486,7 +492,7 @@ export function showTiling() {
   moveGrids();
 }
 
-export function hideTiling() {
+const hideTiling = () => {
   for (let gridIdx in grids) {
     let grid = grids[gridIdx];
     grid.elementsDelegate.reset();
@@ -502,7 +508,7 @@ export function hideTiling() {
   Main.layoutManager["_chrome"].updateRegions();
 }
 
-export function toggleTiling() {
+const toggleTiling = () => {
   if (status) {
     hideTiling();
   } else {
@@ -511,15 +517,15 @@ export function toggleTiling() {
   return status;
 }
 
-export function getMonitorKey(monitor: imports.ui.layout.Monitor) {
+const getMonitorKey = (monitor: imports.ui.layout.Monitor) => {
   return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 }
 
-export function getFocusApp() {
+const getFocusApp = () => {
   return global.display.focus_window;
 }
 
-export function isPrimaryMonitor(monitor: imports.ui.layout.Monitor) {
+const isPrimaryMonitor = (monitor: imports.ui.layout.Monitor) => {
   return Main.layoutManager.primaryMonitor === monitor;
 }
 
@@ -528,7 +534,7 @@ export function isPrimaryMonitor(monitor: imports.ui.layout.Monitor) {
 *****************************************************************/
 
 
-export class TopBar {
+class TopBar {
   actor: imports.gi.St.BoxLayout;
   private _title: string;
   private _stlabel: imports.gi.St.Label;
@@ -545,7 +551,7 @@ export class TopBar {
 
     this._closeButton.connect(
       'button-release-event',
-      Lang.bind(this, this._onCloseButtonClicked)
+      this._onCloseButtonClicked
     );
 
     this.actor.add(this._iconBin);
@@ -624,7 +630,7 @@ export class ToggleSettingsButton {
     //@ts-ignore
     this.connect(
       'update-toggle',
-      this, this._update
+      this._update
     );
 
     if (objHasKey(TOOLTIPS, property)) {
@@ -894,13 +900,14 @@ export class Grid {
       track_hover: true
     });
 
+    
     this.actor.connect(
       'enter-event',
-      Lang.bind(this, this._onMouseEnter)
+      this._onMouseEnter
     );
     this.actor.connect(
       'leave-event',
-      Lang.bind(this, this._onMouseLeave)
+      this._onMouseLeave
     );
 
     this.topbar = new TopBar(title);
@@ -972,7 +979,7 @@ export class Grid {
       // @ts-ignore
       action.connect(
         'resize-done',
-        Lang.bind(this, this._onResize)
+        this._onResize
       );
 
       let actionTwo = new AutoTileTwoList(this);
@@ -982,7 +989,7 @@ export class Grid {
       //@ts-ignore
       actionTwo.connect(
         'resize-done',
-        Lang.bind(this, this._onResize)
+        this._onResize
       );
     }
 
@@ -1015,7 +1022,7 @@ export class Grid {
       this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
       button.actor.connect(
         'notify::hover',
-        Lang.bind(this, this._onSettingsButton)
+        this._onSettingsButton
       );
       colNum++;
     }
@@ -1031,7 +1038,7 @@ export class Grid {
     // @ts-ignore
     this.elementsDelegate.connect(
       'resize-done',
-      Lang.bind(this, this._onResize)
+      this._onResize
     );
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
@@ -1163,9 +1170,9 @@ export class Grid {
   }
 
   private _bindKeyControls = () => {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', Lang.bind(this, toggleTiling));
-    Main.keybindingManager.addHotKey('gTile-tile1', 'space', Lang.bind(this, this._keyTile));
-    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', Lang.bind(this, this._keyTile));
+    Main.keybindingManager.addHotKey('gTile-close', 'Escape', toggleTiling);
+    Main.keybindingManager.addHotKey('gTile-tile1', 'space', this._keyTile);
+    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this._keyTile);
     for (let index in KEYCONTROL) {
       if (objHasKey(KEYCONTROL, index)) {
         let key = KEYCONTROL[index];
@@ -1479,11 +1486,11 @@ export class GridElement {
 
     this.actor.connect(
       'button-press-event',
-      Lang.bind(this, this._onButtonPress)
+      this._onButtonPress
     );
     this.actor.connect(
       'notify::hover',
-      Lang.bind(this, this._onHoverChanged)
+      this._onHoverChanged
     );
 
     this.active = false;
