@@ -40,15 +40,72 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
+  "ActionButton": () => (/* binding */ ActionButton),
+  "ActionScale": () => (/* binding */ ActionScale),
+  "AutoTileMainAndList": () => (/* binding */ AutoTileMainAndList),
+  "AutoTileTwoList": () => (/* binding */ AutoTileTwoList),
+  "GLib": () => (/* binding */ extension_GLib),
+  "Gettext": () => (/* binding */ extension_Gettext),
+  "Grid": () => (/* binding */ Grid),
+  "GridElement": () => (/* binding */ GridElement),
+  "GridElementDelegate": () => (/* binding */ GridElementDelegate),
+  "GridSettingsButton": () => (/* binding */ GridSettingsButton),
+  "ToggleSettingsButton": () => (/* binding */ ToggleSettingsButton),
+  "ToggleSettingsButtonListener": () => (/* binding */ ToggleSettingsButtonListener),
+  "TopBar": () => (/* binding */ TopBar),
+  "UUID": () => (/* binding */ extension_UUID),
+  "_": () => (/* binding */ extension_),
+  "_getInvisibleBorderPadding": () => (/* binding */ _getInvisibleBorderPadding),
+  "_getVisibleBorderPadding": () => (/* binding */ _getVisibleBorderPadding),
+  "_onFocus": () => (/* binding */ _onFocus),
+  "area": () => (/* binding */ extension_area),
+  "destroyGrids": () => (/* binding */ destroyGrids),
+  "disable": () => (/* binding */ disable),
+  "disableHotkey": () => (/* binding */ disableHotkey),
+  "enable": () => (/* binding */ enable),
+  "enableHotkey": () => (/* binding */ enableHotkey),
   "focusMetaWindow": () => (/* binding */ focusMetaWindow),
-  "toggleSettingListener": () => (/* binding */ toggleSettingListener)
+  "focusMetaWindowConnections": () => (/* binding */ focusMetaWindowConnections),
+  "focusMetaWindowPrivateConnections": () => (/* binding */ focusMetaWindowPrivateConnections),
+  "getFocusApp": () => (/* binding */ getFocusApp),
+  "getMonitorKey": () => (/* binding */ getMonitorKey),
+  "getNotFocusedWindowsOfMonitor": () => (/* binding */ getNotFocusedWindowsOfMonitor),
+  "getPanelHeight": () => (/* binding */ getPanelHeight),
+  "getUsableScreenArea": () => (/* binding */ getUsableScreenArea),
+  "gridSettingsButton": () => (/* binding */ gridSettingsButton),
+  "grids": () => (/* binding */ grids),
+  "hideTiling": () => (/* binding */ hideTiling),
+  "init": () => (/* binding */ init),
+  "initGridSettings": () => (/* binding */ initGridSettings),
+  "initGrids": () => (/* binding */ initGrids),
+  "initSettings": () => (/* binding */ initSettings),
+  "isFinalized": () => (/* binding */ extension_isFinalized),
+  "isPrimaryMonitor": () => (/* binding */ isPrimaryMonitor),
+  "monitors": () => (/* binding */ monitors),
+  "moveGrids": () => (/* binding */ moveGrids),
+  "move_maximize_window": () => (/* binding */ move_maximize_window),
+  "move_resize_window": () => (/* binding */ move_resize_window),
+  "preferences": () => (/* binding */ preferences),
+  "refreshGrids": () => (/* binding */ refreshGrids),
+  "reinitalize": () => (/* binding */ reinitalize),
+  "resetFocusMetaWindow": () => (/* binding */ resetFocusMetaWindow),
+  "reset_window": () => (/* binding */ reset_window),
+  "settings": () => (/* binding */ settings),
+  "showTiling": () => (/* binding */ showTiling),
+  "status": () => (/* binding */ extension_status),
+  "toggleSettingListener": () => (/* binding */ toggleSettingListener),
+  "toggleTiling": () => (/* binding */ toggleTiling),
+  "tracker": () => (/* binding */ tracker),
+  "updateGridSettings": () => (/* binding */ updateGridSettings),
+  "updateRegions": () => (/* binding */ updateRegions),
+  "updateSettings": () => (/* binding */ updateSettings)
 });
 
 ;// CONCATENATED MODULE: ./src/3_8/utils.ts
-
 const { Object: utils_Object } = imports.gi.GObject;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
+const UUID = 'gTile@shuairan';
 const isFinalized = function (obj) {
     return obj && utils_Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 };
@@ -66,7 +123,6 @@ function objHasKey(obj, key) {
 
 ;// CONCATENATED MODULE: ./src/3_8/constants.ts
 
-const UUID = 'gTile@shuairan';
 const SETTINGS_AUTO_CLOSE = 'autoclose';
 const SETTINGS_ANIMATION = 'animation';
 const TOOLTIPS = {
@@ -86,7 +142,7 @@ const KEYCONTROL = {
     'gTile-k-down-meta': '<Shift>Down',
 };
 
-;// CONCATENATED MODULE: ./src/3_8/applet.ts
+;// CONCATENATED MODULE: ./src/3_8/extension.ts
 
 
 const GObject = imports.gi.GObject;
@@ -101,10 +157,10 @@ const Tweener = imports.ui.tweener;
 const Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
-let applet_status;
+let extension_status;
 let grids;
 let monitors;
-let applet_area;
+let extension_area;
 let focusMetaWindow = null;
 let focusMetaWindowConnections = {};
 let focusMetaWindowPrivateConnections = {};
@@ -113,18 +169,18 @@ let gridSettingsButton = [];
 let toggleSettingListener;
 const preferences = {};
 let settings;
-const applet_GLib = imports.gi.GLib;
-const applet_Gettext = imports.gettext;
-const applet_UUID = 'gTile@shuairan';
-applet_Gettext.bindtextdomain(applet_UUID, applet_GLib.get_home_dir() + '/.local/share/locale');
-function applet_(str) {
-    let customTranslation = applet_Gettext.dgettext(applet_UUID, str);
+const extension_GLib = imports.gi.GLib;
+const extension_Gettext = imports.gettext;
+const extension_UUID = 'gTile@shuairan';
+extension_Gettext.bindtextdomain(extension_UUID, extension_GLib.get_home_dir() + '/.local/share/locale');
+function extension_(str) {
+    let customTranslation = extension_Gettext.dgettext(extension_UUID, str);
     if (customTranslation != str) {
         return customTranslation;
     }
-    return applet_Gettext.gettext(str);
+    return extension_Gettext.gettext(str);
 }
-const applet_isFinalized = function (obj) {
+const extension_isFinalized = function (obj) {
     return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 };
 function initSettings() {
@@ -166,16 +222,14 @@ function updateGridSettings() {
 }
 function init() { }
 function enable() {
-    applet_status = false;
+    extension_status = false;
     monitors = Main.layoutManager.monitors;
     tracker = Cinnamon.WindowTracker.get_default();
-    applet_area = new St.BoxLayout({ style_class: 'grid-preview' });
-    Main.uiGroup.add_actor(applet_area);
+    extension_area = new St.BoxLayout({ style_class: 'grid-preview' });
+    Main.uiGroup.add_actor(extension_area);
     initSettings();
     initGrids();
     enableHotkey();
-    tracker.connect('notify::focus-app', _onFocus);
-    global.screen.connect('monitors-changed', reinitalize);
 }
 function disable() {
     disableHotkey();
@@ -244,7 +298,7 @@ function refreshGrids() {
     Main.layoutManager["_chrome"].updateRegions();
 }
 function moveGrids() {
-    if (!applet_status) {
+    if (!extension_status) {
         return;
     }
     let window = focusMetaWindow;
@@ -409,7 +463,7 @@ function showTiling() {
     focusMetaWindow = getFocusApp();
     let wm_type = focusMetaWindow.get_window_type();
     let layer = focusMetaWindow.get_layer();
-    applet_area.visible = true;
+    extension_area.visible = true;
     if (focusMetaWindow && wm_type !== 1 && layer > 0) {
         for (let monitorIdx in monitors) {
             let monitor = monitors[monitorIdx];
@@ -430,7 +484,7 @@ function showTiling() {
             grid.show();
         }
         _onFocus();
-        applet_status = true;
+        extension_status = true;
     }
     moveGrids();
 }
@@ -440,19 +494,19 @@ function hideTiling() {
         grid.elementsDelegate.reset();
         grid.hide(false);
     }
-    applet_area.visible = false;
+    extension_area.visible = false;
     resetFocusMetaWindow();
-    applet_status = false;
+    extension_status = false;
     Main.layoutManager["_chrome"].updateRegions();
 }
 function toggleTiling() {
-    if (applet_status) {
+    if (extension_status) {
         hideTiling();
     }
     else {
         showTiling();
     }
-    return applet_status;
+    return extension_status;
 }
 function getMonitorKey(monitor) {
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
@@ -626,7 +680,7 @@ class AutoTileTwoList extends ActionButton {
 }
 ;
 Signals.addSignalMethods(AutoTileTwoList.prototype);
-class ActionScale extends (/* unused pure expression or super */ null && (ActionButton)) {
+class ActionScale extends ActionButton {
     constructor(grid) {
         super(grid, 'action-scale');
         this._onButtonPress = () => { };
@@ -1054,9 +1108,9 @@ class GridElementDelegate {
         this._displayArea = (fromGridElement, toGridElement) => {
             let areaWidth, areaHeight, areaX, areaY;
             [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
-            applet_area.add_style_pseudo_class('activate');
+            extension_area.add_style_pseudo_class('activate');
             if (preferences.animation) {
-                Tweener.addTween(applet_area, {
+                Tweener.addTween(extension_area, {
                     time: 0.2,
                     x: areaX,
                     y: areaY,
@@ -1066,14 +1120,14 @@ class GridElementDelegate {
                 });
             }
             else {
-                applet_area.width = areaWidth;
-                applet_area.height = areaHeight;
-                applet_area.x = areaX;
-                applet_area.y = areaY;
+                extension_area.width = areaWidth;
+                extension_area.height = areaHeight;
+                extension_area.x = areaX;
+                extension_area.y = areaY;
             }
         };
         this._hideArea = () => {
-            applet_area.remove_style_pseudo_class('activate');
+            extension_area.remove_style_pseudo_class('activate');
         };
         this._onHoverChanged = (gridElement) => {
             if (this.activated) {
@@ -1135,22 +1189,22 @@ class GridElement {
             this.actor._delegate._onButtonPress(this);
         };
         this._onHoverChanged = () => {
-            if (!this.actor || applet_isFinalized(this.actor))
+            if (!this.actor || extension_isFinalized(this.actor))
                 return;
             this.actor._delegate._onHoverChanged(this);
         };
         this._activate = () => {
-            if (!this.actor || applet_isFinalized(this.actor))
+            if (!this.actor || extension_isFinalized(this.actor))
                 return;
             this.actor.add_style_pseudo_class('activate');
         };
         this._deactivate = () => {
-            if (!this.actor || applet_isFinalized(this.actor))
+            if (!this.actor || extension_isFinalized(this.actor))
                 return;
             this.actor.remove_style_pseudo_class('activate');
         };
         this._clean = () => {
-            Main.uiGroup.remove_actor(applet_area);
+            Main.uiGroup.remove_actor(extension_area);
         };
         this._destroy = () => {
             this.monitor = null;

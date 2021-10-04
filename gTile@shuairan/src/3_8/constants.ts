@@ -1,7 +1,5 @@
 import { _ } from "./utils";
 
-export const UUID = 'gTile@shuairan';
-
 export const SETTINGS_AUTO_CLOSE = 'autoclose';
 export const SETTINGS_ANIMATION = 'animation';
 

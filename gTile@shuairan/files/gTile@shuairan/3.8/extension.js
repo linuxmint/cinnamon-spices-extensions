@@ -5,7 +5,6 @@ const { gtile } = require('./gTile');
  */
 function init(extensionMeta) {
     //extensionMeta holds your metadata.json info
-    const UUID = extensionMeta['uuid'];
     gtile.init();
 }
 

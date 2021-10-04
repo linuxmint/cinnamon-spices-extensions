@@ -26,15 +26,15 @@ const Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 
-let status: boolean;
-let grids: Record<string, Grid>;
-let monitors: imports.ui.layout.Monitor[];
-let area: imports.gi.St.BoxLayout;
+export let status: boolean;
+export let grids: Record<string, Grid>;
+export let monitors: imports.ui.layout.Monitor[];
+export let area: imports.gi.St.BoxLayout;
 export let focusMetaWindow: imports.gi.Meta.Window | null = null;
-let focusMetaWindowConnections: Record<string, any> = {};
-let focusMetaWindowPrivateConnections: Record<string, any> = {};
-let tracker: imports.gi.Cinnamon.WindowTracker;
-let gridSettingsButton: GridSettingsButton[] = [];
+export let focusMetaWindowConnections: Record<string, any> = {};
+export let focusMetaWindowPrivateConnections: Record<string, any> = {};
+export let tracker: imports.gi.Cinnamon.WindowTracker;
+export let gridSettingsButton: GridSettingsButton[] = [];
 export let toggleSettingListener: ToggleSettingsButtonListener;
 export interface Preferences {
   hotkey: string;
@@ -54,15 +54,15 @@ export interface Preferences {
   nbCols: number;
 }
 
-const preferences: Preferences = {} as Preferences;
-let settings: imports.ui.settings.ExtensionSettings;
+export const preferences: Preferences = {} as Preferences;
+export let settings: imports.ui.settings.ExtensionSettings;
 
-const GLib = imports.gi.GLib;
-const Gettext = imports.gettext;
-const UUID = 'gTile@shuairan';
+export const GLib = imports.gi.GLib;
+export const Gettext = imports.gettext;
+export const UUID = 'gTile@shuairan';
 Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
 
-function _(str: string) {
+export function _(str: string) {
   let customTranslation = Gettext.dgettext(UUID, str);
   if (customTranslation != str) {
     return customTranslation;
@@ -71,7 +71,7 @@ function _(str: string) {
 }
 
 
-const isFinalized = function (obj: any) {
+export const isFinalized = function (obj: any) {
   return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 }
 
@@ -80,7 +80,7 @@ const isFinalized = function (obj: any) {
 *****************************************************************/
 /*INIT SETTINGS HERE TO ADD OR REMOVE SETTINGS BUTTON*/
 /*new GridSettingsButton(LABEL, NBCOL, NBROW) */
-function initSettings() {
+export function initSettings() {
   settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
   //hotkey
   settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', enableHotkey, null);
@@ -103,11 +103,11 @@ function initSettings() {
   }
 }
 
-function updateSettings() {
+export function updateSettings() {
   toggleSettingListener._updateToggle();
 }
 
-function initGridSettings() {
+export function initGridSettings() {
   let basestr = 'gridbutton';
   for (let i = 1; i <= 4; i++) {
     let sgbx = basestr + i + 'x';
@@ -118,7 +118,7 @@ function initGridSettings() {
   }
 }
 
-function updateGridSettings() {
+export function updateGridSettings() {
   gridSettingsButton = [];
   initGridSettings();
   for (var gridIdx in grids) {
@@ -130,9 +130,9 @@ function updateGridSettings() {
 /*****************************************************************
                             FUNCTIONS
 *****************************************************************/
-function init() { }
+export function init() { }
 
-function enable() {
+export function enable() {
   status = false;
   monitors = Main.layoutManager.monitors;
   tracker = Cinnamon.WindowTracker.get_default();
@@ -145,18 +145,18 @@ function enable() {
 
   enableHotkey();
 
-  tracker.connect(
+  /*tracker.connect(
     'notify::focus-app',
     _onFocus
   );
   global.screen.connect(
     'monitors-changed',
     reinitalize
-  );
+  );*/
   //global.log("KEY BINDNGS");
 }
 
-function disable() {
+export function disable() {
   // Key Bindings
   disableHotkey();
 
@@ -164,22 +164,22 @@ function disable() {
   resetFocusMetaWindow();
 }
 
-function enableHotkey() {
+export function enableHotkey() {
   disableHotkey();
   Main.keybindingManager.addHotKey('gTile', preferences.hotkey, toggleTiling);
 }
 
-function disableHotkey() {
+export function disableHotkey() {
   Main.keybindingManager.removeHotKey('gTile');
 }
 
-function reinitalize() {
+export function reinitalize() {
   monitors = Main.layoutManager.monitors;
   destroyGrids();
   initGrids();
 }
 
-function resetFocusMetaWindow() {
+export function resetFocusMetaWindow() {
   if (focusMetaWindowConnections.length > 0) {
     for (var idx in focusMetaWindowConnections) {
       focusMetaWindow?.disconnect(focusMetaWindowConnections[idx]);
@@ -200,7 +200,7 @@ function resetFocusMetaWindow() {
   focusMetaWindowPrivateConnections = [];
 }
 
-function initGrids() {
+export function initGrids() {
   grids = {};
   for (let monitorIdx in monitors) {
     let monitor = monitors[monitorIdx];
@@ -219,7 +219,7 @@ function initGrids() {
   }
 }
 
-function destroyGrids() {
+export function destroyGrids() {
   for (let monitorIdx in monitors) {
     let monitor = monitors[monitorIdx];
     let key = getMonitorKey(monitor);
@@ -231,7 +231,7 @@ function destroyGrids() {
   }
 }
 
-function refreshGrids() {
+export function refreshGrids() {
   //global.log("RefreshGrids");
   for (let gridIdx in grids) {
     let grid = grids[gridIdx];
@@ -241,7 +241,7 @@ function refreshGrids() {
   Main.layoutManager["_chrome"].updateRegions();
 }
 
-function moveGrids() {
+export function moveGrids() {
   if (!status) {
     return;
   }
@@ -285,7 +285,7 @@ function moveGrids() {
   }
 }
 
-function updateRegions() {
+export function updateRegions() {
   Main.layoutManager["_chrome"].updateRegions();
   refreshGrids();
   for (let idx in grids) {
@@ -294,7 +294,7 @@ function updateRegions() {
   }
 }
 
-function reset_window(metaWindow: imports.gi.Meta.Window | null) {
+export function reset_window(metaWindow: imports.gi.Meta.Window | null) {
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.VERTICAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
@@ -304,7 +304,7 @@ function reset_window(metaWindow: imports.gi.Meta.Window | null) {
   metaWindow?.tile(Meta.WindowTileType.NONE, false);
 }
 
-function _getInvisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
+export function _getInvisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
   // TODO: Check if functions exist
   let outerRect = metaWindow.get_outer_rect();
   let inputRect = metaWindow.get_input_rect();
@@ -313,7 +313,7 @@ function _getInvisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
   return [borderX, borderY];
 }
 
-function _getVisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
+export function _getVisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
   // TODO: Check if functions exist
   let clientRect = metaWindow.get_rect();
   let outerRect = metaWindow.get_outer_rect();
@@ -324,7 +324,7 @@ function _getVisibleBorderPadding(metaWindow: imports.gi.Meta.Window) {
   return [borderX, borderY];
 }
 
-function move_maximize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number) {
+export function move_maximize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number) {
   if (metaWindow == null)
     return;
 
@@ -337,7 +337,7 @@ function move_maximize_window(metaWindow: imports.gi.Meta.Window | null, x: numb
   metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 }
 
-function move_resize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) {
+export function move_resize_window(metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) {
   if (metaWindow == null)
     return;
 
@@ -351,12 +351,12 @@ function move_resize_window(metaWindow: imports.gi.Meta.Window | null, x: number
   metaWindow.move_frame(true, x, y);
 }
 
-function getPanelHeight(panel: imports.ui.panel.Panel) {
+export function getPanelHeight(panel: imports.ui.panel.Panel) {
   return panel.height
     || panel.actor.get_height();  // fallback for old versions of Cinnamon
 }
 
-function getUsableScreenArea(monitor: imports.ui.layout.Monitor) {
+export function getUsableScreenArea(monitor: imports.ui.layout.Monitor) {
   let top = monitor.y;
   let bottom = monitor.y + monitor.height;
   let left = monitor.x;
@@ -386,7 +386,7 @@ function getUsableScreenArea(monitor: imports.ui.layout.Monitor) {
   return [left, top, width, height];
 }
 
-function getNotFocusedWindowsOfMonitor(monitor: imports.ui.layout.Monitor) {
+export function getNotFocusedWindowsOfMonitor(monitor: imports.ui.layout.Monitor) {
   return Main.getTabList().filter(function (w) {
     let app = tracker.get_window_app(w);
     let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
@@ -406,7 +406,7 @@ function getNotFocusedWindowsOfMonitor(monitor: imports.ui.layout.Monitor) {
   });
 }
 
-function _onFocus() {
+export function _onFocus() {
   let window = getFocusApp();
   if (!window) {
     resetFocusMetaWindow();
@@ -451,7 +451,7 @@ function _onFocus() {
   moveGrids();
 }
 
-function showTiling() {
+export function showTiling() {
   focusMetaWindow = getFocusApp();
   let wm_type = focusMetaWindow.get_window_type();
   let layer = focusMetaWindow.get_layer();
@@ -486,7 +486,7 @@ function showTiling() {
   moveGrids();
 }
 
-function hideTiling() {
+export function hideTiling() {
   for (let gridIdx in grids) {
     let grid = grids[gridIdx];
     grid.elementsDelegate.reset();
@@ -502,7 +502,7 @@ function hideTiling() {
   Main.layoutManager["_chrome"].updateRegions();
 }
 
-function toggleTiling() {
+export function toggleTiling() {
   if (status) {
     hideTiling();
   } else {
@@ -511,15 +511,15 @@ function toggleTiling() {
   return status;
 }
 
-function getMonitorKey(monitor: imports.ui.layout.Monitor) {
+export function getMonitorKey(monitor: imports.ui.layout.Monitor) {
   return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 }
 
-function getFocusApp() {
+export function getFocusApp() {
   return global.display.focus_window;
 }
 
-function isPrimaryMonitor(monitor: imports.ui.layout.Monitor) {
+export function isPrimaryMonitor(monitor: imports.ui.layout.Monitor) {
   return Main.layoutManager.primaryMonitor === monitor;
 }
 
@@ -528,7 +528,7 @@ function isPrimaryMonitor(monitor: imports.ui.layout.Monitor) {
 *****************************************************************/
 
 
-class TopBar {
+export class TopBar {
   actor: imports.gi.St.BoxLayout;
   private _title: string;
   private _stlabel: imports.gi.St.Label;
@@ -573,7 +573,7 @@ class TopBar {
   }
 }
 
-class ToggleSettingsButtonListener {
+export class ToggleSettingsButtonListener {
   actors: ToggleSettingsButton[] = [];
 
   constructor() { }
@@ -596,7 +596,7 @@ class ToggleSettingsButtonListener {
   }
 };
 
-class ToggleSettingsButton {
+export class ToggleSettingsButton {
   text: string;
   actor: imports.gi.St.Button;
   icon: imports.gi.St.BoxLayout;
@@ -653,7 +653,7 @@ class ToggleSettingsButton {
 
 Signals.addSignalMethods(ToggleSettingsButton.prototype);
 
-class ActionButton {
+export class ActionButton {
   grid: Grid;
   actor: imports.gi.St.Button;
   icon: imports.gi.St.BoxLayout;
@@ -689,7 +689,7 @@ class ActionButton {
 
 Signals.addSignalMethods(ActionButton.prototype);
 
-class AutoTileMainAndList extends ActionButton {
+export class AutoTileMainAndList extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
@@ -734,7 +734,7 @@ class AutoTileMainAndList extends ActionButton {
 
 Signals.addSignalMethods(AutoTileMainAndList.prototype);
 
-class AutoTileTwoList extends ActionButton {
+export class AutoTileTwoList extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
@@ -786,7 +786,7 @@ class AutoTileTwoList extends ActionButton {
 
 Signals.addSignalMethods(AutoTileTwoList.prototype);
 
-class ActionScale extends ActionButton {
+export class ActionScale extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
@@ -804,7 +804,7 @@ class ActionScale extends ActionButton {
   protected override _onButtonPress = () => { }
 }
 
-class GridSettingsButton {
+export class GridSettingsButton {
   cols: number;
   rows: number;
   text: string;
@@ -845,7 +845,7 @@ class GridSettingsButton {
   }
 }
 
-class Grid {
+export class Grid {
   tableWidth = 220;
   tableHeight = 200;
   borderwidth = 2;
@@ -1281,7 +1281,7 @@ class Grid {
 
 Signals.addSignalMethods(Grid.prototype);
 
-class GridElementDelegate {
+export class GridElementDelegate {
   activated = false;
   first: GridElement | null = null;
   last: GridElement | null = null;
@@ -1449,7 +1449,7 @@ class GridElementDelegate {
 
 Signals.addSignalMethods(GridElementDelegate.prototype);
 
-class GridElement {
+export class GridElement {
   actor: imports.gi.St.Button;
   monitor: imports.ui.layout.Monitor;
   coordx: number;

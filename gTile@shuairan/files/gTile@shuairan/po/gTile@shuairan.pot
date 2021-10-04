@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:25+0100\n"
+"POT-Creation-Date: 2021-10-03 18:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:43
+#: extension.js:43 3.8/gTile.js:129
 msgid "Auto close"
 msgstr ""
 
-#: extension.js:44
+#: extension.js:44 3.8/gTile.js:130
 msgid "Animations"
 msgstr ""
 
-#: extension.js:45
+#: extension.js:45 3.8/gTile.js:131
 msgid "Auto tile main and list"
 msgstr ""
 
-#: extension.js:46
+#: extension.js:46 3.8/gTile.js:132
 msgid "Auto tile two lists"
 msgstr ""
 
@@ -42,26 +42,32 @@ msgid "Tile your windows as you like."
 msgstr ""
 
 #. settings-schema.json->headerKeys->description
+#. 3.8->settings-schema.json->headerKeys->description
 msgid "Hotkeys:"
 msgstr ""
 
 #. settings-schema.json->hotkey->description
+#. 3.8->settings-schema.json->hotkey->description
 msgid "Global Hotkey for gTile"
 msgstr ""
 
 #. settings-schema.json->headerBehavior->description
+#. 3.8->settings-schema.json->headerBehavior->description
 msgid "Behavior:"
 msgstr ""
 
 #. settings-schema.json->animation->description
+#. 3.8->settings-schema.json->animation->description
 msgid "Animation"
 msgstr ""
 
 #. settings-schema.json->autoclose->description
+#. 3.8->settings-schema.json->autoclose->description
 msgid "Auto-Close"
 msgstr ""
 
 #. settings-schema.json->header1->description
+#. 3.8->settings-schema.json->header1->description
 msgid "Layout for Button 1:"
 msgstr ""
 
@@ -69,6 +75,10 @@ msgstr ""
 #. settings-schema.json->gridbutton2x->units
 #. settings-schema.json->gridbutton3x->units
 #. settings-schema.json->gridbutton4x->units
+#. 3.8->settings-schema.json->gridbutton1x->units
+#. 3.8->settings-schema.json->gridbutton2x->units
+#. 3.8->settings-schema.json->gridbutton3x->units
+#. 3.8->settings-schema.json->gridbutton4x->units
 msgid "x"
 msgstr ""
 
@@ -76,6 +86,10 @@ msgstr ""
 #. settings-schema.json->gridbutton2x->description
 #. settings-schema.json->gridbutton3x->description
 #. settings-schema.json->gridbutton4x->description
+#. 3.8->settings-schema.json->gridbutton1x->description
+#. 3.8->settings-schema.json->gridbutton2x->description
+#. 3.8->settings-schema.json->gridbutton3x->description
+#. 3.8->settings-schema.json->gridbutton4x->description
 msgid "Columns"
 msgstr ""
 
@@ -83,6 +97,10 @@ msgstr ""
 #. settings-schema.json->gridbutton2y->units
 #. settings-schema.json->gridbutton3y->units
 #. settings-schema.json->gridbutton4y->units
+#. 3.8->settings-schema.json->gridbutton1y->units
+#. 3.8->settings-schema.json->gridbutton2y->units
+#. 3.8->settings-schema.json->gridbutton3y->units
+#. 3.8->settings-schema.json->gridbutton4y->units
 msgid "y"
 msgstr ""
 
@@ -90,17 +108,24 @@ msgstr ""
 #. settings-schema.json->gridbutton2y->description
 #. settings-schema.json->gridbutton3y->description
 #. settings-schema.json->gridbutton4y->description
+#. 3.8->settings-schema.json->gridbutton1y->description
+#. 3.8->settings-schema.json->gridbutton2y->description
+#. 3.8->settings-schema.json->gridbutton3y->description
+#. 3.8->settings-schema.json->gridbutton4y->description
 msgid "Rows"
 msgstr ""
 
 #. settings-schema.json->header2->description
+#. 3.8->settings-schema.json->header2->description
 msgid "Layout for Button 2:"
 msgstr ""
 
 #. settings-schema.json->header3->description
+#. 3.8->settings-schema.json->header3->description
 msgid "Layout for Button 3:"
 msgstr ""
 
 #. settings-schema.json->header4->description
+#. 3.8->settings-schema.json->header4->description
 msgid "Layout for Button 4:"
 msgstr ""

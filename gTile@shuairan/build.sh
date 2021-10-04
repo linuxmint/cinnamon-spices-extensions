@@ -17,5 +17,5 @@ path=${PWD}
 cd $DIR
 npx webpack
 cd ..
-./cinnamon-spices-makepot gTile@shuarian
+./cinnamon-spices-makepot gTile@shuairan
 cd $PWD

@@ -3,6 +3,14 @@
       {
         "path": "../gTile@shuairan",
         "name": "gTile",
+      },
+      {
+        "path": "../../types-cjs",
+        "name": "cjs",
+      },
+      {
+        "path": "../../types-gjs",
+        "name": "gjs",
       }
     ],
     "settings": {
