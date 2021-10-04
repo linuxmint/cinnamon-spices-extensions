@@ -540,7 +540,7 @@ class TopBar {
   private _stlabel: imports.gi.St.Label;
   private _iconBin: imports.gi.St.Bin;
   private _closeButton: imports.gi.St.Button;
-  private _icon?: imports.gi.St.Icon;
+  private _icon?: imports.gi.Clutter.Actor;
 
   constructor(title: string) {
     this.actor = new St.BoxLayout({ style_class: 'top-box' });
@@ -564,14 +564,14 @@ class TopBar {
     this._stlabel.text = this._title;
   }
 
-  public _set_app(app: any, title: string) {
+  public _set_app(app: imports.gi.Cinnamon.CinnamonApp, title: string) {
     this._title = app.get_name() + ' - ' + title;
     this._stlabel.text = this._title;
     this._icon = app.create_icon_texture(24);
 
     this._iconBin.set_size(24, 24);
-    // @ts-ignore
-    this._iconBin.child = this._icon;
+    // TODO: proper null check
+    this._iconBin.set_child(<imports.gi.St.Icon>this._icon);
   }
 
   private _onCloseButtonClicked = () => {
@@ -579,7 +579,7 @@ class TopBar {
   }
 }
 
-export class ToggleSettingsButtonListener {
+class ToggleSettingsButtonListener {
   actors: ToggleSettingsButton[] = [];
 
   constructor() { }
@@ -602,7 +602,7 @@ export class ToggleSettingsButtonListener {
   }
 };
 
-export class ToggleSettingsButton {
+class ToggleSettingsButton {
   text: string;
   actor: imports.gi.St.Button;
   icon: imports.gi.St.BoxLayout;
@@ -659,7 +659,7 @@ export class ToggleSettingsButton {
 
 Signals.addSignalMethods(ToggleSettingsButton.prototype);
 
-export class ActionButton {
+class ActionButton {
   grid: Grid;
   actor: imports.gi.St.Button;
   icon: imports.gi.St.BoxLayout;
@@ -695,7 +695,7 @@ export class ActionButton {
 
 Signals.addSignalMethods(ActionButton.prototype);
 
-export class AutoTileMainAndList extends ActionButton {
+class AutoTileMainAndList extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
@@ -740,7 +740,7 @@ export class AutoTileMainAndList extends ActionButton {
 
 Signals.addSignalMethods(AutoTileMainAndList.prototype);
 
-export class AutoTileTwoList extends ActionButton {
+class AutoTileTwoList extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {
@@ -792,7 +792,7 @@ export class AutoTileTwoList extends ActionButton {
 
 Signals.addSignalMethods(AutoTileTwoList.prototype);
 
-export class ActionScale extends ActionButton {
+class ActionScale extends ActionButton {
   classname: string;
 
   constructor(grid: Grid) {

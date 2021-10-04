@@ -40,16 +40,10 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "ActionButton": () => (/* binding */ ActionButton),
-  "ActionScale": () => (/* binding */ ActionScale),
-  "AutoTileMainAndList": () => (/* binding */ AutoTileMainAndList),
-  "AutoTileTwoList": () => (/* binding */ AutoTileTwoList),
   "Grid": () => (/* binding */ Grid),
   "GridElement": () => (/* binding */ GridElement),
   "GridElementDelegate": () => (/* binding */ GridElementDelegate),
   "GridSettingsButton": () => (/* binding */ GridSettingsButton),
-  "ToggleSettingsButton": () => (/* binding */ ToggleSettingsButton),
-  "ToggleSettingsButtonListener": () => (/* binding */ ToggleSettingsButtonListener),
   "_": () => (/* binding */ extension_),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
@@ -504,7 +498,7 @@ class TopBar {
         this._stlabel.text = this._title;
         this._icon = app.create_icon_texture(24);
         this._iconBin.set_size(24, 24);
-        this._iconBin.child = this._icon;
+        this._iconBin.set_child(this._icon);
     }
 }
 class ToggleSettingsButtonListener {
@@ -643,7 +637,7 @@ class AutoTileTwoList extends ActionButton {
 }
 ;
 Signals.addSignalMethods(AutoTileTwoList.prototype);
-class ActionScale extends ActionButton {
+class ActionScale extends (/* unused pure expression or super */ null && (ActionButton)) {
     constructor(grid) {
         super(grid, 'action-scale');
         this._onButtonPress = () => { };
