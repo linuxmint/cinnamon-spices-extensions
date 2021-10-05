@@ -44,7 +44,6 @@ __webpack_require__.d(__webpack_exports__, {
   "GridElement": () => (/* binding */ GridElement),
   "GridElementDelegate": () => (/* binding */ GridElementDelegate),
   "GridSettingsButton": () => (/* binding */ GridSettingsButton),
-  "_": () => (/* binding */ extension_),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
   "init": () => (/* binding */ init)
@@ -99,7 +98,6 @@ const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
-const Lang = imports.lang;
 const Signals = imports.signals;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
@@ -118,20 +116,6 @@ let gridSettingsButton = [];
 let toggleSettingListener;
 const preferences = {};
 let settings;
-const extension_GLib = imports.gi.GLib;
-const extension_Gettext = imports.gettext;
-const extension_UUID = 'gTile@shuairan';
-extension_Gettext.bindtextdomain(extension_UUID, extension_GLib.get_home_dir() + '/.local/share/locale');
-const extension_ = (str) => {
-    let customTranslation = extension_Gettext.dgettext(extension_UUID, str);
-    if (customTranslation != str) {
-        return customTranslation;
-    }
-    return extension_Gettext.gettext(str);
-};
-const extension_isFinalized = (obj) => {
-    return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
-};
 const initSettings = () => {
     settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
     settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', enableHotkey, null);
@@ -164,7 +148,7 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    for (var gridIdx in grids) {
+    for (const gridIdx in grids) {
         let grid = grids[gridIdx];
         grid._initGridSettingsButtons();
     }
@@ -708,9 +692,8 @@ class Grid {
                     if (c === 0) {
                         this.elements[r] = [];
                     }
-                    let element = new GridElement(this.monitor, width, height, c, r);
+                    let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
                     this.elements[r][c] = element;
-                    element.actor._delegate = this.elementsDelegate;
                     this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
                     element.show();
                 }
@@ -1133,7 +1116,7 @@ class GridElementDelegate {
 ;
 Signals.addSignalMethods(GridElementDelegate.prototype);
 class GridElement {
-    constructor(monitor, width, height, coordx, coordy) {
+    constructor(monitor, width, height, coordx, coordy, delegate) {
         this.show = () => {
             this.actor.opacity = 255;
             this.actor.visible = true;
@@ -1143,20 +1126,20 @@ class GridElement {
             this.actor.visible = false;
         };
         this._onButtonPress = () => {
-            this.actor._delegate._onButtonPress(this);
+            this.delegate._onButtonPress(this);
         };
         this._onHoverChanged = () => {
-            if (!this.actor || extension_isFinalized(this.actor))
+            if (!this.actor || isFinalized(this.actor))
                 return;
-            this.actor._delegate._onHoverChanged(this);
+            this.delegate._onHoverChanged(this);
         };
         this._activate = () => {
-            if (!this.actor || extension_isFinalized(this.actor))
+            if (!this.actor || isFinalized(this.actor))
                 return;
             this.actor.add_style_pseudo_class('activate');
         };
         this._deactivate = () => {
-            if (!this.actor || extension_isFinalized(this.actor))
+            if (!this.actor || isFinalized(this.actor))
                 return;
             this.actor.remove_style_pseudo_class('activate');
         };
@@ -1186,6 +1169,7 @@ class GridElement {
         this.coordy = coordy;
         this.width = width;
         this.height = height;
+        this.delegate = delegate;
         this.actor.connect('button-press-event', this._onButtonPress);
         this.actor.connect('notify::hover', this._onHoverChanged);
         this.active = false;

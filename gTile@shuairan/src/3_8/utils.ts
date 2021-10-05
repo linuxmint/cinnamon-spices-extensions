@@ -3,6 +3,7 @@ const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
 
 export const UUID = 'gTile@shuairan';
+
 export const isFinalized = function(obj: any) {
     return obj && Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 }

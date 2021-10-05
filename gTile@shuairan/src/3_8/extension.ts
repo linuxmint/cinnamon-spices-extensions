@@ -8,7 +8,7 @@
 ******************************************************************/
 
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE, TooltipKeys, TOOLTIPS } from "./constants";
-import { objHasKey } from "./utils";
+import { isFinalized, objHasKey } from "./utils";
 
 /*****************************************************************
                          CONST & VARS
@@ -18,7 +18,6 @@ const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
-const Lang = imports.lang;
 const Signals = imports.signals;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
@@ -36,6 +35,8 @@ let focusMetaWindowPrivateConnections: Record<string, any> = {};
 let tracker: imports.gi.Cinnamon.WindowTracker;
 let gridSettingsButton: GridSettingsButton[] = [];
 let toggleSettingListener: ToggleSettingsButtonListener;
+
+
 export interface Preferences {
   hotkey: string;
   lastGridRows: number;
@@ -56,24 +57,6 @@ export interface Preferences {
 
 const preferences: Preferences = {} as Preferences;
 let settings: imports.ui.settings.ExtensionSettings;
-
-const GLib = imports.gi.GLib;
-const Gettext = imports.gettext;
-const UUID = 'gTile@shuairan';
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
-
-export const _ = (str: string) => {
-  let customTranslation = Gettext.dgettext(UUID, str);
-  if (customTranslation != str) {
-    return customTranslation;
-  }
-  return Gettext.gettext(str);
-}
-
-
-const isFinalized = (obj: any) => {
-  return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
-}
 
 /*****************************************************************
                             SETTINGS
@@ -121,7 +104,7 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
   gridSettingsButton = [];
   initGridSettings();
-  for (var gridIdx in grids) {
+  for (const gridIdx in grids) {
     let grid = grids[gridIdx];
     grid._initGridSettingsButtons();
   }
@@ -156,7 +139,7 @@ export const enable = () => {
     );
     //global.log("KEY BINDNGS");
   }
-  catch(e) {
+  catch (e) {
     global.logError(e);
     global.logError(e?.stack)
   }
@@ -900,7 +883,7 @@ export class Grid {
       track_hover: true
     });
 
-    
+
     this.actor.connect(
       'enter-event',
       this._onMouseEnter
@@ -1046,11 +1029,9 @@ export class Grid {
           this.elements[r] = [];
         }
 
-        let element = new GridElement(this.monitor, width, height, c, r);
+        let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
 
         this.elements[r][c] = element;
-        // @ts-ignore
-        element.actor._delegate = this.elementsDelegate;
         this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
         element.show();
       }
@@ -1431,7 +1412,7 @@ export class GridElementDelegate {
     area.remove_style_pseudo_class('activate');
   }
 
-  private _onHoverChanged = (gridElement: GridElement) => {
+  public _onHoverChanged = (gridElement: GridElement) => {
     if (this.activated) {
       if (this.first != null)
         this.refreshGrid(this.first, gridElement);
@@ -1464,9 +1445,9 @@ export class GridElement {
   width: number;
   height: number;
   active: boolean;
+  delegate: GridElementDelegate;
 
-
-  constructor(monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number) {
+  constructor(monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
     this.actor = new St.Button({
       style_class: 'table-element',
       width: width,
@@ -1483,6 +1464,7 @@ export class GridElement {
     this.coordy = coordy;
     this.width = width;
     this.height = height;
+    this.delegate = delegate;
 
     this.actor.connect(
       'button-press-event',
@@ -1507,14 +1489,13 @@ export class GridElement {
   }
 
   public _onButtonPress = () => {
-    // @ts-ignore
-    this.actor._delegate._onButtonPress(this);
+    this.delegate._onButtonPress(this);
   }
 
   public _onHoverChanged = () => {
     if (!this.actor || isFinalized(this.actor)) return;
-    // @ts-ignore
-    this.actor._delegate._onHoverChanged(this);
+    
+    this.delegate._onHoverChanged(this);
   }
 
   public _activate = () => {
