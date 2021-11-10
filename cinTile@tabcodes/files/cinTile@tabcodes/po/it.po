@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-30 12:00+0800\n"
+"PO-Revision-Date: 2021-01-11 19:54+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+
+#. cinTile@tabcodes->metadata.json->description
+msgid "Tile your windows as you like."
+msgstr "Affianca le finestre come preferisci."
+
+#. cinTile@tabcodes->metadata.json->name
+msgid "cinTile"
+msgstr "cinTile"
+
+#. cinTile@tabcodes->settings-schema.json->gridbutton2x->description
+#. cinTile@tabcodes->settings-schema.json->gridbutton4x->description
+#. cinTile@tabcodes->settings-schema.json->gridbutton3x->description
+#. cinTile@tabcodes->settings-schema.json->gridbutton1x->description
+msgid "Columns"
+msgstr "Colonne"
+
+#. cinTile@tabcodes->settings-schema.json->gridbutton2x->units
+#. cinTile@tabcodes->settings-schema.json->gridbutton4x->units
+#. cinTile@tabcodes->settings-schema.json->gridbutton3x->units
+#. cinTile@tabcodes->settings-schema.json->gridbutton1x->units
+msgid "x"
+msgstr "x"
+
+#. cinTile@tabcodes->settings-schema.json->gridbutton2y->description
+#. cinTile@tabcodes->settings-schema.json->gridbutton4y->description
+#. cinTile@tabcodes->settings-schema.json->gridbutton3y->description
+#. cinTile@tabcodes->settings-schema.json->gridbutton1y->description
+msgid "Rows"
+msgstr "Righe"
+
+#. cinTile@tabcodes->settings-schema.json->gridbutton2y->units
+#. cinTile@tabcodes->settings-schema.json->gridbutton4y->units
+#. cinTile@tabcodes->settings-schema.json->gridbutton3y->units
+#. cinTile@tabcodes->settings-schema.json->gridbutton1y->units
+msgid "y"
+msgstr "y"
+
+#. cinTile@tabcodes->settings-schema.json->header2->description
+msgid "Layout for Button 2:"
+msgstr "Stile per il Tasto 2:"
+
+#. cinTile@tabcodes->settings-schema.json->header3->description
+msgid "Layout for Button 3:"
+msgstr "Stile per il Tasto 3:"
+
+#. cinTile@tabcodes->settings-schema.json->header1->description
+msgid "Layout for Button 1:"
+msgstr "Stile per il Tasto 1:"
+
+#. cinTile@tabcodes->settings-schema.json->header4->description
+msgid "Layout for Button 4:"
+msgstr "Stile per il Tasto 4:"
+
+#. cinTile@tabcodes->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "Auto-Chiudi"
+
+#. cinTile@tabcodes->settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "Tasti di scelta rapida:"
+
+#. cinTile@tabcodes->settings-schema.json->hotkey->description
+msgid "Global Hotkey for cinTile"
+msgstr "Tasto di scelta rapida globale per cinTile"
+
+#. cinTile@tabcodes->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "Animazione"

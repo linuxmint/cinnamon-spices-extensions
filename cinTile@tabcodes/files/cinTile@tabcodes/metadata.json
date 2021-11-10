@@ -1,0 +1,15 @@
+{
+    "cinnamon-version": [
+        "1.8",
+        "2.0",
+        "2.2",
+        "2.4",
+        "2.6",
+        "4.8",
+        "5.0"
+    ],
+    "uuid": "cinTile@tabcodes",
+    "name": "cinTile",
+    "description": "Updated window-tiling manager for Cinnamon 5.x. - supports multiple monitors!",
+    "url": "https://github.com/tabcodes/cinTile"
+}
