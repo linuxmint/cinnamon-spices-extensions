@@ -170,11 +170,11 @@ msgid "Show Desktop"
 msgstr "Asztal megjelenítése"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
-msgid "â¦ Dragging to the right: "
+msgid "↦ Dragging to the right: "
 msgstr "Áthúzás balra: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
-msgid "â¤ Dragging to the left: "
+msgid "↤ Dragging to the left: "
 msgstr "Áthúzás jobbra: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options

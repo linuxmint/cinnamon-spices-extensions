@@ -174,12 +174,12 @@ msgid "Show Desktop"
 msgstr "Mostrar a área de trabalho"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
-msgid "â¦ Dragging to the right: "
-msgstr "â¦ Ao arrastar para a direita: "
+msgid "↦ Dragging to the right: "
+msgstr "↦ Ao arrastar para a direita: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
-msgid "â¤ Dragging to the left: "
-msgstr "â¤ Ao arrastar para a esquerda: "
+msgid "↤ Dragging to the left: "
+msgstr "↤ Ao arrastar para a esquerda: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
