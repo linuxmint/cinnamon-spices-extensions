@@ -1,0 +1,12 @@
+{
+  "rememberState": {
+    "description": "Remember window locations based on monitor connection",
+    "type": "switch",
+    "default": true
+  },
+  "minimize": {
+    "description": "Minimize windows when a monitor is disconnected",
+    "type": "switch",
+    "default": true
+  }
+}
