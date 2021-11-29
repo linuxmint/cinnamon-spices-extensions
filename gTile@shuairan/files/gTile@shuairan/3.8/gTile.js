@@ -164,7 +164,7 @@ const enable = () => {
         initSettings();
         initGrids();
         enableHotkey();
-        tracker.connect('notify::focus-app', _onFocus);
+        tracker.connect("notify::focus_app", _onFocus);
         global.screen.connect('monitors-changed', reinitalize);
     }
     catch (e) {
@@ -290,7 +290,7 @@ const reset_window = (metaWindow) => {
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.tile(Meta.WindowTileType.NONE, false);
+    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.tile(Meta.TileMode.NONE, false);
 };
 const _getInvisibleBorderPadding = (metaWindow) => {
     let outerRect = metaWindow.get_outer_rect();
@@ -462,6 +462,7 @@ class TopBar {
     constructor(title) {
         this._onCloseButtonClicked = () => {
             toggleTiling();
+            return false;
         };
         this.actor = new St.BoxLayout({ style_class: 'top-box' });
         this._title = title;
@@ -513,9 +514,10 @@ class ToggleSettingsButton {
         };
         this._onButtonPress = () => {
             if (!objHasKey(preferences, this.property))
-                return;
+                return false;
             preferences[this.property] = !preferences[this.property];
             this.emit('update-toggle');
+            return false;
         };
         this.text = text;
         this.actor = new St.Button({
@@ -542,6 +544,7 @@ class ActionButton {
     constructor(grid, classname) {
         this._onButtonPress = () => {
             this.emit('button-press-event');
+            return false;
         };
         this.grid = grid;
         this.actor = new St.Button({
@@ -565,7 +568,7 @@ class AutoTileMainAndList extends ActionButton {
         super(grid, 'action-main-list');
         this._onButtonPress = () => {
             if (!focusMetaWindow)
-                return;
+                return false;
             reset_window(focusMetaWindow);
             let monitor = this.grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
@@ -581,6 +584,7 @@ class AutoTileMainAndList extends ActionButton {
                 countWin++;
             }
             this.emit('resize-done');
+            return false;
         };
         this.classname = 'action-main-list';
         this.connect('button-press-event', this._onButtonPress);
@@ -593,7 +597,7 @@ class AutoTileTwoList extends ActionButton {
         super(grid, 'action-two-list');
         this._onButtonPress = () => {
             if (!focusMetaWindow)
-                return;
+                return false;
             reset_window(focusMetaWindow);
             let monitor = this.grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
@@ -614,6 +618,7 @@ class AutoTileTwoList extends ActionButton {
                 countWin++;
             }
             this.emit('resize-done');
+            return false;
         };
         this.classname = 'action-two-list';
         this.connect('button-press-event', this._onButtonPress);
@@ -624,7 +629,7 @@ Signals.addSignalMethods(AutoTileTwoList.prototype);
 class ActionScale extends (/* unused pure expression or super */ null && (ActionButton)) {
     constructor(grid) {
         super(grid, 'action-scale');
-        this._onButtonPress = () => { };
+        this._onButtonPress = () => false;
         this.classname = 'action-scale';
         this.connect('button-press-event', this._onButtonPress);
     }
@@ -635,6 +640,7 @@ class GridSettingsButton {
             preferences.nbCols = this.cols;
             preferences.nbRows = this.rows;
             refreshGrids();
+            return false;
         };
         this.cols = cols;
         this.rows = rows;
@@ -725,6 +731,7 @@ class Grid {
                 this.elementsDelegate.reset();
                 this.isEntered = true;
             }
+            return false;
         };
         this._onMouseLeave = () => {
             let [x, y, mask] = global.get_pointer();
@@ -733,6 +740,7 @@ class Grid {
                 this.elementsDelegate.reset();
                 refreshGrids();
             }
+            return false;
         };
         this._globalKeyPressEvent = (actor, event) => {
             if (event.get_key_symbol() === Clutter.Escape) {
@@ -1127,11 +1135,13 @@ class GridElement {
         };
         this._onButtonPress = () => {
             this.delegate._onButtonPress(this);
+            return false;
         };
         this._onHoverChanged = () => {
             if (!this.actor || isFinalized(this.actor))
                 return;
             this.delegate._onHoverChanged(this);
+            return false;
         };
         this._activate = () => {
             if (!this.actor || isFinalized(this.actor))

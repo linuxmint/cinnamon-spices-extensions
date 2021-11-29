@@ -130,7 +130,7 @@ export const enable = () => {
     enableHotkey();
 
     tracker.connect(
-      "notify::focus-app",
+      "notify::focus_app",
       _onFocus
     );
     global.screen.connect(
@@ -287,14 +287,10 @@ const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.VERTICAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-  /**
-   * TODO: Check if functions exist
-   */
   metaWindow?.tile(Meta.TileMode.NONE, false);
 }
 
 const _getInvisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
-  // TODO: Check if functions exist
   let outerRect = metaWindow.get_outer_rect();
   let inputRect = metaWindow.get_input_rect();
   let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
@@ -303,7 +299,6 @@ const _getInvisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
 }
 
 const _getVisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
-  // TODO: Check if functions exist
   let clientRect = metaWindow.get_rect();
   let outerRect = metaWindow.get_outer_rect();
 
@@ -335,7 +330,6 @@ const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x: number
   width = width - vBorderX;
   height = height - vBorderY;
 
-  //TODO: Check if exists
   metaWindow.resize(true, width, height);
   metaWindow.move_frame(true, x, y);
 }
@@ -390,7 +384,6 @@ const getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
       return false;
     }
 
-    // TODO: Check if exists
     return focusMetaWindow !== w && w.get_wm_class() != null;
   });
 }
@@ -427,7 +420,6 @@ const _onFocus = () => {
   }
 
   let app = tracker.get_window_app(focusMetaWindow);
-  // TODO: Check if exists
   let title = focusMetaWindow.get_title();
 
   for (let monitorIdx in monitors) {
@@ -994,7 +986,6 @@ export class Grid {
   }
 
   public _initGridSettingsButtons = () => {
-    // TODO: Check if exists
     this.bottombar.destroy_children();
 
     let rowNum = 0;
@@ -1062,7 +1053,6 @@ export class Grid {
     this.elementsDelegate.reset();
     let time = preferences.animation ? 0.3 : 0;
 
-    // TODO: Test if exists
     this.actor.raise_top();
     Main.layoutManager.removeChrome(this.actor);
     Main.layoutManager.addChrome(this.actor);
@@ -1146,7 +1136,6 @@ export class Grid {
   }
 
   private _globalKeyPressEvent = (actor: imports.gi.Clutter.Actor, event: imports.gi.Clutter.Event) => {
-    // TODO: Check if exists
     if (event.get_key_symbol() === Clutter.Escape) {
       hideTiling();
       return true;
@@ -1306,9 +1295,8 @@ export class GridElementDelegate {
       reset_window(focusMetaWindow);
 
       let areaWidth, areaHeight, areaX, areaY;
-      // TODO: check this
-      // @ts-ignore
-      [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
+      // First is never null here?
+      [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(<GridElement>this.first, gridElement);
 
       if (this._allSelected()) {
         move_maximize_window(focusMetaWindow, areaX, areaY);
