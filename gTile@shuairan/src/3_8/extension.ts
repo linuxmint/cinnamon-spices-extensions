@@ -130,7 +130,7 @@ export const enable = () => {
     enableHotkey();
 
     tracker.connect(
-      'notify::focus-app',
+      "notify::focus-app",
       _onFocus
     );
     global.screen.connect(
@@ -290,7 +290,7 @@ const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
   /**
    * TODO: Check if functions exist
    */
-  metaWindow?.tile(Meta.WindowTileType.NONE, false);
+  metaWindow?.tile(Meta.TileMode.NONE, false);
 }
 
 const _getInvisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
@@ -547,7 +547,7 @@ class TopBar {
     this._stlabel.text = this._title;
   }
 
-  public _set_app(app: imports.gi.Cinnamon.CinnamonApp, title: string) {
+  public _set_app(app: imports.gi.Cinnamon.App, title: string) {
     this._title = app.get_name() + ' - ' + title;
     this._stlabel.text = this._title;
     this._icon = app.create_icon_texture(24);
@@ -559,6 +559,7 @@ class TopBar {
 
   private _onCloseButtonClicked = () => {
     toggleTiling();
+    return false;
   }
 }
 
@@ -631,12 +632,13 @@ class ToggleSettingsButton {
 
   private _onButtonPress = () => {
     if (!objHasKey(preferences, this.property))
-      return;
+      return false;
 
     // @ts-ignore
     preferences[this.property] = !preferences[this.property];
     // @ts-ignore
     this.emit('update-toggle');
+    return false;
   }
 };
 
@@ -673,6 +675,7 @@ class ActionButton {
   protected _onButtonPress = () => {
     // @ts-ignore
     this.emit('button-press-event');
+    return false;
   }
 };
 
@@ -692,7 +695,7 @@ class AutoTileMainAndList extends ActionButton {
   }
 
   protected override _onButtonPress = () => {
-    if (!focusMetaWindow) return;
+    if (!focusMetaWindow) return false;
 
     reset_window(focusMetaWindow);
 
@@ -718,6 +721,7 @@ class AutoTileMainAndList extends ActionButton {
 
     //@ts-ignore
     this.emit('resize-done');
+    return false;
   }
 };
 
@@ -737,7 +741,7 @@ class AutoTileTwoList extends ActionButton {
   }
 
   protected override _onButtonPress = () => {
-    if (!focusMetaWindow) return;
+    if (!focusMetaWindow) return false;
 
     reset_window(focusMetaWindow);
 
@@ -770,6 +774,7 @@ class AutoTileTwoList extends ActionButton {
 
     // @ts-ignore
     this.emit('resize-done');
+    return false;
   }
 };
 
@@ -790,7 +795,7 @@ class ActionScale extends ActionButton {
     );
   }
 
-  protected override _onButtonPress = () => { }
+  protected override _onButtonPress = () => false;
 }
 
 export class GridSettingsButton {
@@ -831,6 +836,7 @@ export class GridSettingsButton {
     preferences.nbCols = this.cols;
     preferences.nbRows = this.rows;
     refreshGrids();
+    return false;
   }
 }
 
@@ -1125,6 +1131,7 @@ export class Grid {
       this.elementsDelegate.reset();
       this.isEntered = true;
     }
+    return false;
   }
 
   private _onMouseLeave = () => {
@@ -1135,6 +1142,7 @@ export class Grid {
 
       refreshGrids();
     }
+    return false;
   }
 
   private _globalKeyPressEvent = (actor: imports.gi.Clutter.Actor, event: imports.gi.Clutter.Event) => {
@@ -1490,12 +1498,14 @@ export class GridElement {
 
   public _onButtonPress = () => {
     this.delegate._onButtonPress(this);
+    return false;
   }
 
   public _onHoverChanged = () => {
     if (!this.actor || isFinalized(this.actor)) return;
     
     this.delegate._onHoverChanged(this);
+    return false;
   }
 
   public _activate = () => {
