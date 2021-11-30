@@ -41,7 +41,6 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   "Grid": () => (/* binding */ Grid),
-  "GridSettingsButton": () => (/* binding */ GridSettingsButton),
   "area": () => (/* binding */ extension_area),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
@@ -55,6 +54,7 @@ __webpack_require__.d(__webpack_exports__, {
   "move_maximize_window": () => (/* binding */ move_maximize_window),
   "move_resize_window": () => (/* binding */ move_resize_window),
   "preferences": () => (/* binding */ preferences),
+  "refreshGrids": () => (/* binding */ refreshGrids),
   "resetFocusMetaWindow": () => (/* binding */ resetFocusMetaWindow),
   "reset_window": () => (/* binding */ reset_window),
   "toggleTiling": () => (/* binding */ toggleTiling)
@@ -118,7 +118,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 const Tooltips = imports.ui.tooltips;
 const St = imports.gi.St;
-let ActionButton_ActionButton = class ActionButton {
+let ActionButton = class ActionButton {
     constructor(grid, classname) {
         this._onButtonPress = () => {
             this.emit('button-press-event');
@@ -139,9 +139,9 @@ let ActionButton_ActionButton = class ActionButton {
         }
     }
 };
-ActionButton_ActionButton = __decorate([
+ActionButton = __decorate([
     addSignals
-], ActionButton_ActionButton);
+], ActionButton);
 
 ;
 
@@ -155,7 +155,7 @@ var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || functi
 
 
 
-let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton_ActionButton {
+let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
     constructor(grid) {
         super(grid, 'action-main-list');
         this._onButtonPress = () => {
@@ -198,7 +198,7 @@ var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (
 
 
 
-let AutoTileTwoList = class AutoTileTwoList extends ActionButton_ActionButton {
+let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
     constructor(grid) {
         super(grid, 'action-two-list');
         this._onButtonPress = () => {
@@ -457,6 +457,109 @@ GridElementDelegate = GridElementDelegate_decorate([
 
 ;
 
+;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
+
+const GridSettingsButton_St = imports.gi.St;
+class GridSettingsButton {
+    constructor(text, cols, rows) {
+        this._onButtonPress = () => {
+            preferences.nbCols = this.cols;
+            preferences.nbRows = this.rows;
+            refreshGrids();
+            return false;
+        };
+        this.cols = cols;
+        this.rows = rows;
+        this.text = text;
+        this.actor = new GridSettingsButton_St.Button({
+            style_class: 'settings-button',
+            reactive: true,
+            can_focus: true,
+            track_hover: true
+        });
+        this.label = new GridSettingsButton_St.Label({
+            style_class: 'settings-label',
+            reactive: true, can_focus: true,
+            track_hover: true,
+            text: this.text
+        });
+        this.actor.add_actor(this.label);
+        this.actor.connect('button-press-event', this._onButtonPress);
+    }
+}
+
+;// CONCATENATED MODULE: ./src/3_8/ui/ToggleSettingsButton.ts
+var ToggleSettingsButton_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+const ToggleSettingsButton_St = imports.gi.St;
+const ToggleSettingsButton_Tooltips = imports.ui.tooltips;
+let ToggleSettingsButton = class ToggleSettingsButton {
+    constructor(text, property) {
+        this._update = () => {
+            if (objHasKey(preferences, this.property)) {
+                this.actor.add_style_pseudo_class('activate');
+            }
+            else {
+                this.actor.remove_style_pseudo_class('activate');
+            }
+        };
+        this._onButtonPress = () => {
+            if (!objHasKey(preferences, this.property))
+                return false;
+            preferences[this.property] = !preferences[this.property];
+            this.emit('update-toggle');
+            return false;
+        };
+        this.text = text;
+        this.actor = new ToggleSettingsButton_St.Button({
+            style_class: 'settings-button',
+            reactive: true,
+            can_focus: true,
+            track_hover: true,
+            label: this.text
+        });
+        this.icon = new ToggleSettingsButton_St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
+        this.actor.set_child(this.icon);
+        this.property = property;
+        this._update();
+        this.actor.connect('button-press-event', this._onButtonPress);
+        this.connect('update-toggle', this._update);
+        if (objHasKey(TOOLTIPS, property)) {
+            this._tooltip = new ToggleSettingsButton_Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
+        }
+    }
+};
+ToggleSettingsButton = ToggleSettingsButton_decorate([
+    addSignals
+], ToggleSettingsButton);
+
+;
+
+;// CONCATENATED MODULE: ./src/3_8/ui/ToggleSettingsButtonListener.ts
+class ToggleSettingsButtonListener {
+    constructor() {
+        this.actors = [];
+        this._updateToggle = () => {
+            for (let actorIdx in this.actors) {
+                let actor = this.actors[actorIdx];
+                actor["_update"]();
+            }
+        };
+    }
+    addActor(actor) {
+        actor.connect('update-toggle', this._updateToggle);
+        this.actors.push(actor);
+    }
+}
+;
+
 ;// CONCATENATED MODULE: ./src/3_8/ui/TopBar.ts
 
 const TopBar_St = imports.gi.St;
@@ -496,6 +599,8 @@ var extension_decorate = (undefined && undefined.__decorate) || function (decora
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -869,97 +974,6 @@ const getFocusApp = () => {
 const isPrimaryMonitor = (monitor) => {
     return extension_Main.layoutManager.primaryMonitor === monitor;
 };
-class ToggleSettingsButtonListener {
-    constructor() {
-        this.actors = [];
-        this._updateToggle = () => {
-            for (let actorIdx in this.actors) {
-                let actor = this.actors[actorIdx];
-                actor._update();
-            }
-        };
-    }
-    addActor(actor) {
-        actor.connect('update-toggle', this._updateToggle);
-        this.actors.push(actor);
-    }
-}
-;
-let ToggleSettingsButton = class ToggleSettingsButton {
-    constructor(text, property) {
-        this._update = () => {
-            if (objHasKey(preferences, this.property)) {
-                this.actor.add_style_pseudo_class('activate');
-            }
-            else {
-                this.actor.remove_style_pseudo_class('activate');
-            }
-        };
-        this._onButtonPress = () => {
-            if (!objHasKey(preferences, this.property))
-                return false;
-            preferences[this.property] = !preferences[this.property];
-            this.emit('update-toggle');
-            return false;
-        };
-        this.text = text;
-        this.actor = new extension_St.Button({
-            style_class: 'settings-button',
-            reactive: true,
-            can_focus: true,
-            track_hover: true,
-            label: this.text
-        });
-        this.icon = new extension_St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
-        this.actor.set_child(this.icon);
-        this.property = property;
-        this._update();
-        this.actor.connect('button-press-event', this._onButtonPress);
-        this.connect('update-toggle', this._update);
-        if (objHasKey(TOOLTIPS, property)) {
-            this._tooltip = new extension_Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
-        }
-    }
-};
-ToggleSettingsButton = extension_decorate([
-    addSignals
-], ToggleSettingsButton);
-;
-class ActionScale extends (/* unused pure expression or super */ null && (ActionButton)) {
-    constructor(grid) {
-        super(grid, 'action-scale');
-        this._onButtonPress = () => false;
-        this.classname = 'action-scale';
-        this.connect('button-press-event', this._onButtonPress);
-    }
-}
-class GridSettingsButton {
-    constructor(text, cols, rows) {
-        this._onButtonPress = () => {
-            preferences.nbCols = this.cols;
-            preferences.nbRows = this.rows;
-            refreshGrids();
-            return false;
-        };
-        this.cols = cols;
-        this.rows = rows;
-        this.text = text;
-        this.actor = new extension_St.Button({
-            style_class: 'settings-button',
-            reactive: true,
-            can_focus: true,
-            track_hover: true
-        });
-        this.label = new extension_St.Label({
-            style_class: 'settings-label',
-            reactive: true, can_focus: true,
-            track_hover: true,
-            text: this.text
-        });
-        this.actor.add_actor(this.label);
-        this.actor.connect('button-press-event', this._onButtonPress);
-    }
-}
 let Grid = class Grid {
     constructor(monitor_idx, monitor, title, cols, rows) {
         this.tableWidth = 220;

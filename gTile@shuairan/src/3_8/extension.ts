@@ -13,6 +13,9 @@ import { AutoTileMainAndList } from "./ui/AutoTileMainAndList";
 import { AutoTileTwoList } from "./ui/AutoTileTwoList";
 import { GridElement } from "./ui/GridElement";
 import { GridElementDelegate } from "./ui/GridElementDelegate";
+import { GridSettingsButton } from "./ui/GridSettingsButton";
+import { ToggleSettingsButton } from "./ui/ToggleSettingsButton";
+import { ToggleSettingsButtonListener } from "./ui/ToggleSettingsButtonListener";
 import { TopBar } from "./ui/TopBar";
 import { addSignals, isFinalized, objHasKey } from "./utils";
 
@@ -226,7 +229,7 @@ const destroyGrids = () => {
   }
 }
 
-const refreshGrids = () => {
+export const refreshGrids = () => {
   //global.log("RefreshGrids");
   for (let gridIdx in grids) {
     let grid = grids[gridIdx];
@@ -514,150 +517,6 @@ const isPrimaryMonitor = (monitor: imports.ui.layout.Monitor) => {
                             PROTOTYPES
 *****************************************************************/
 
-class ToggleSettingsButtonListener {
-  actors: ToggleSettingsButton[] = [];
-
-  constructor() { }
-
-  public addActor(actor: ToggleSettingsButton) {
-    // @ts-ignore
-    actor.connect(
-      'update-toggle',
-      this._updateToggle
-    );
-    this.actors.push(actor);
-  }
-
-  public _updateToggle = () => {
-    for (let actorIdx in this.actors) {
-      let actor = this.actors[actorIdx];
-      // @ts-ignore
-      actor._update();
-    }
-  }
-};
-
-interface Signals {
-  emit: (signal: string) => void;
-  connect: (signal: string, callback: () => void) => void;
-}
-
-@addSignals
-class ToggleSettingsButton {
-  text: string;
-  actor: imports.gi.St.Button;
-  icon: imports.gi.St.BoxLayout;
-  property: TooltipKeys | keyof Preferences
-
-  private _tooltip?: imports.ui.tooltips.Tooltip;
-
-  constructor(text: string, property: keyof Preferences | TooltipKeys) {
-    this.text = text;
-    this.actor = new St.Button({
-      style_class: 'settings-button',
-      reactive: true,
-      can_focus: true,
-      track_hover: true,
-      label: this.text
-    });
-    this.icon = new St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
-    this.actor.set_child(this.icon);
-    this.property = property;
-    this._update();
-    this.actor.connect(
-      'button-press-event',
-      this._onButtonPress
-    );
-    //@ts-ignore
-    this.connect(
-      'update-toggle',
-      this._update
-    );
-
-    if (objHasKey(TOOLTIPS, property)) {
-      this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
-    }
-  }
-
-  private _update = () => {
-    if (objHasKey(preferences, this.property)) {
-      this.actor.add_style_pseudo_class('activate');
-    } else {
-      this.actor.remove_style_pseudo_class('activate');
-    }
-  }
-
-  private _onButtonPress = () => {
-    if (!objHasKey(preferences, this.property))
-      return false;
-
-    // @ts-ignore
-    preferences[this.property] = !preferences[this.property];
-    // @ts-ignore
-    this.emit('update-toggle');
-    return false;
-  }
-};
-
-class ActionScale extends ActionButton {
-  classname: string;
-
-  constructor(grid: Grid) {
-    // @ts-ignore
-    super(grid, 'action-scale')
-    this.classname = 'action-scale';
-
-    // @ts-ignore
-    this.connect(
-      'button-press-event',
-      this._onButtonPress
-    );
-  }
-
-  protected override _onButtonPress = () => false;
-}
-
-export class GridSettingsButton {
-  cols: number;
-  rows: number;
-  text: string;
-  actor: imports.gi.St.Button;
-  label: imports.gi.St.Label;
-
-  constructor(text: string, cols: number, rows: number) {
-    this.cols = cols;
-    this.rows = rows;
-    this.text = text;
-
-    this.actor = new St.Button({
-      style_class: 'settings-button',
-      reactive: true,
-      can_focus: true,
-      track_hover: true
-    });
-
-    this.label = new St.Label({
-      style_class: 'settings-label',
-      reactive: true, can_focus: true,
-      track_hover: true,
-      text: this.text
-    });
-
-    this.actor.add_actor(this.label);
-
-    this.actor.connect(
-      'button-press-event',
-      this._onButtonPress
-    );
-  }
-
-  private _onButtonPress = () => {
-    preferences.nbCols = this.cols;
-    preferences.nbRows = this.rows;
-    refreshGrids();
-    return false;
-  }
-}
 
 @addSignals
 export class Grid {
