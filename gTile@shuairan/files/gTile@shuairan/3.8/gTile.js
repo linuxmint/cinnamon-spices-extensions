@@ -46,7 +46,14 @@ __webpack_require__.d(__webpack_exports__, {
   "GridSettingsButton": () => (/* binding */ GridSettingsButton),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
-  "init": () => (/* binding */ init)
+  "focusMetaWindow": () => (/* binding */ focusMetaWindow),
+  "getNotFocusedWindowsOfMonitor": () => (/* binding */ getNotFocusedWindowsOfMonitor),
+  "getUsableScreenArea": () => (/* binding */ getUsableScreenArea),
+  "init": () => (/* binding */ init),
+  "move_maximize_window": () => (/* binding */ move_maximize_window),
+  "move_resize_window": () => (/* binding */ move_resize_window),
+  "resetFocusMetaWindow": () => (/* binding */ resetFocusMetaWindow),
+  "reset_window": () => (/* binding */ reset_window)
 });
 
 ;// CONCATENATED MODULE: ./src/3_8/utils.ts
@@ -96,7 +103,7 @@ const KEYCONTROL = {
     'gTile-k-down-meta': '<Shift>Down',
 };
 
-;// CONCATENATED MODULE: ./src/3_8/extension.ts
+;// CONCATENATED MODULE: ./src/3_8/ui/ActionButton.ts
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -105,15 +112,147 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
+const Tooltips = imports.ui.tooltips;
+const St = imports.gi.St;
+let ActionButton_ActionButton = class ActionButton {
+    constructor(grid, classname) {
+        this._onButtonPress = () => {
+            this.emit('button-press-event');
+            return false;
+        };
+        this.grid = grid;
+        this.actor = new St.Button({
+            style_class: 'settings-button',
+            reactive: true,
+            can_focus: true,
+            track_hover: true
+        });
+        this.icon = new St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
+        this.actor.add_actor(this.icon);
+        this.actor.connect('button-press-event', this._onButtonPress);
+        if (TOOLTIPS[classname]) {
+            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
+        }
+    }
+};
+ActionButton_ActionButton = __decorate([
+    addSignals
+], ActionButton_ActionButton);
+
+;
+
+;// CONCATENATED MODULE: ./src/3_8/ui/AutoTileMainAndList.ts
+var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton_ActionButton {
+    constructor(grid) {
+        super(grid, 'action-main-list');
+        this._onButtonPress = () => {
+            if (!focusMetaWindow)
+                return false;
+            reset_window(focusMetaWindow);
+            let monitor = this.grid.monitor;
+            let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
+            let windows = getNotFocusedWindowsOfMonitor(monitor);
+            move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+            let winHeight = screenHeight / windows.length;
+            let countWin = 0;
+            for (let windowIdx in windows) {
+                let metaWindow = windows[windowIdx];
+                let newOffset = countWin * winHeight;
+                reset_window(metaWindow);
+                move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
+                countWin++;
+            }
+            this.emit('resize-done');
+            return false;
+        };
+        this.classname = 'action-main-list';
+        this.connect('button-press-event', this._onButtonPress);
+    }
+};
+AutoTileMainAndList = AutoTileMainAndList_decorate([
+    addSignals
+], AutoTileMainAndList);
+
+;
+
+;// CONCATENATED MODULE: ./src/3_8/ui/AutoTileTwoList.ts
+var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+let AutoTileTwoList = class AutoTileTwoList extends ActionButton_ActionButton {
+    constructor(grid) {
+        super(grid, 'action-two-list');
+        this._onButtonPress = () => {
+            if (!focusMetaWindow)
+                return false;
+            reset_window(focusMetaWindow);
+            let monitor = this.grid.monitor;
+            let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
+            let windows = getNotFocusedWindowsOfMonitor(monitor);
+            let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
+            let winHeight = screenHeight / nbWindowOnEachSide;
+            let countWin = 0;
+            let xOffset = ((countWin % 2) * screenWidth) / 2;
+            let yOffset = Math.floor(countWin / 2) * winHeight;
+            move_resize_window(focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+            countWin++;
+            for (let windowIdx in windows) {
+                let metaWindow = windows[windowIdx];
+                xOffset = ((countWin % 2) * screenWidth) / 2;
+                yOffset = Math.floor(countWin / 2) * winHeight;
+                reset_window(metaWindow);
+                move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+                countWin++;
+            }
+            this.emit('resize-done');
+            return false;
+        };
+        this.classname = 'action-two-list';
+        this.connect('button-press-event', this._onButtonPress);
+    }
+};
+AutoTileTwoList = AutoTileTwoList_decorate([
+    addSignals
+], AutoTileTwoList);
+
+;
+
+;// CONCATENATED MODULE: ./src/3_8/extension.ts
+var extension_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
 const GObject = imports.gi.GObject;
 const Cinnamon = imports.gi.Cinnamon;
-const St = imports.gi.St;
+const extension_St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
 const extension_Signals = imports.signals;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
-const Tooltips = imports.ui.tooltips;
+const extension_Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 let extension_status;
@@ -171,7 +310,7 @@ const enable = () => {
         extension_status = false;
         monitors = Main.layoutManager.monitors;
         tracker = Cinnamon.WindowTracker.get_default();
-        extension_area = new St.BoxLayout({ style_class: 'grid-preview' });
+        extension_area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
         Main.uiGroup.add_actor(extension_area);
         initSettings();
         initGrids();
@@ -476,11 +615,11 @@ class TopBar {
             toggleTiling();
             return false;
         };
-        this.actor = new St.BoxLayout({ style_class: 'top-box' });
+        this.actor = new extension_St.BoxLayout({ style_class: 'top-box' });
         this._title = title;
-        this._stlabel = new St.Label({ style_class: 'grid-title', text: this._title });
-        this._iconBin = new St.Bin({ x_fill: false, y_fill: true });
-        this._closeButton = new St.Button({ style_class: 'close-button' });
+        this._stlabel = new extension_St.Label({ style_class: 'grid-title', text: this._title });
+        this._iconBin = new extension_St.Bin({ x_fill: false, y_fill: true });
+        this._closeButton = new extension_St.Button({ style_class: 'close-button' });
         this._closeButton.connect('button-release-event', this._onCloseButtonClicked);
         this.actor.add(this._iconBin);
         this.actor.add(this._stlabel, { x_fill: true, expand: true });
@@ -532,119 +671,27 @@ let ToggleSettingsButton = class ToggleSettingsButton {
             return false;
         };
         this.text = text;
-        this.actor = new St.Button({
+        this.actor = new extension_St.Button({
             style_class: 'settings-button',
             reactive: true,
             can_focus: true,
             track_hover: true,
             label: this.text
         });
-        this.icon = new St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
+        this.icon = new extension_St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
         this.actor.set_child(this.icon);
         this.property = property;
         this._update();
         this.actor.connect('button-press-event', this._onButtonPress);
         this.connect('update-toggle', this._update);
         if (objHasKey(TOOLTIPS, property)) {
-            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
+            this._tooltip = new extension_Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
         }
     }
 };
-ToggleSettingsButton = __decorate([
+ToggleSettingsButton = extension_decorate([
     addSignals
 ], ToggleSettingsButton);
-;
-let ActionButton = class ActionButton {
-    constructor(grid, classname) {
-        this._onButtonPress = () => {
-            this.emit('button-press-event');
-            return false;
-        };
-        this.grid = grid;
-        this.actor = new St.Button({
-            style_class: 'settings-button',
-            reactive: true,
-            can_focus: true,
-            track_hover: true
-        });
-        this.icon = new St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
-        this.actor.add_actor(this.icon);
-        this.actor.connect('button-press-event', this._onButtonPress);
-        if (TOOLTIPS[classname]) {
-            this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
-        }
-    }
-};
-ActionButton = __decorate([
-    addSignals
-], ActionButton);
-;
-let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
-    constructor(grid) {
-        super(grid, 'action-main-list');
-        this._onButtonPress = () => {
-            if (!focusMetaWindow)
-                return false;
-            reset_window(focusMetaWindow);
-            let monitor = this.grid.monitor;
-            let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let windows = getNotFocusedWindowsOfMonitor(monitor);
-            move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
-            let winHeight = screenHeight / windows.length;
-            let countWin = 0;
-            for (let windowIdx in windows) {
-                let metaWindow = windows[windowIdx];
-                let newOffset = countWin * winHeight;
-                reset_window(metaWindow);
-                move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
-                countWin++;
-            }
-            this.emit('resize-done');
-            return false;
-        };
-        this.classname = 'action-main-list';
-        this.connect('button-press-event', this._onButtonPress);
-    }
-};
-AutoTileMainAndList = __decorate([
-    addSignals
-], AutoTileMainAndList);
-;
-let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
-    constructor(grid) {
-        super(grid, 'action-two-list');
-        this._onButtonPress = () => {
-            if (!focusMetaWindow)
-                return false;
-            reset_window(focusMetaWindow);
-            let monitor = this.grid.monitor;
-            let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let windows = getNotFocusedWindowsOfMonitor(monitor);
-            let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
-            let winHeight = screenHeight / nbWindowOnEachSide;
-            let countWin = 0;
-            let xOffset = ((countWin % 2) * screenWidth) / 2;
-            let yOffset = Math.floor(countWin / 2) * winHeight;
-            move_resize_window(focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
-            countWin++;
-            for (let windowIdx in windows) {
-                let metaWindow = windows[windowIdx];
-                xOffset = ((countWin % 2) * screenWidth) / 2;
-                yOffset = Math.floor(countWin / 2) * winHeight;
-                reset_window(metaWindow);
-                move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
-                countWin++;
-            }
-            this.emit('resize-done');
-            return false;
-        };
-        this.classname = 'action-two-list';
-        this.connect('button-press-event', this._onButtonPress);
-    }
-};
-AutoTileTwoList = __decorate([
-    addSignals
-], AutoTileTwoList);
 ;
 class ActionScale extends (/* unused pure expression or super */ null && (ActionButton)) {
     constructor(grid) {
@@ -665,13 +712,13 @@ class GridSettingsButton {
         this.cols = cols;
         this.rows = rows;
         this.text = text;
-        this.actor = new St.Button({
+        this.actor = new extension_St.Button({
             style_class: 'settings-button',
             reactive: true,
             can_focus: true,
             track_hover: true
         });
-        this.label = new St.Label({
+        this.label = new extension_St.Label({
             style_class: 'settings-label',
             reactive: true, can_focus: true,
             track_hover: true,
@@ -875,7 +922,7 @@ let Grid = class Grid {
         this.bindFns = {};
         this.rowKey = -1;
         this.colKey = -1;
-        this.actor = new St.BoxLayout({
+        this.actor = new extension_St.BoxLayout({
             vertical: true,
             style_class: 'grid-panel',
             reactive: true,
@@ -885,7 +932,7 @@ let Grid = class Grid {
         this.actor.connect('enter-event', this._onMouseEnter);
         this.actor.connect('leave-event', this._onMouseLeave);
         this.topbar = new TopBar(title);
-        this.bottombar = new St.Table({
+        this.bottombar = new extension_St.Table({
             homogeneous: true,
             style_class: 'bottom-box',
             can_focus: true,
@@ -893,7 +940,7 @@ let Grid = class Grid {
             reactive: true,
             width: this.tableWidth
         });
-        this.veryBottomBar = new St.Table({
+        this.veryBottomBar = new extension_St.Table({
             homogeneous: true,
             style_class: 'bottom-box',
             can_focus: true,
@@ -902,7 +949,7 @@ let Grid = class Grid {
             width: this.tableWidth
         });
         this._initGridSettingsButtons();
-        this.table = new St.Table({
+        this.table = new extension_St.Table({
             homogeneous: true,
             style_class: 'table',
             can_focus: true,
@@ -1002,7 +1049,7 @@ let Grid = class Grid {
         }
     }
 };
-Grid = __decorate([
+Grid = extension_decorate([
     addSignals
 ], Grid);
 
@@ -1144,7 +1191,7 @@ let GridElementDelegate = class GridElementDelegate {
         }
     }
 };
-GridElementDelegate = __decorate([
+GridElementDelegate = extension_decorate([
     addSignals
 ], GridElementDelegate);
 
@@ -1190,7 +1237,7 @@ class GridElement {
             this.height = null;
             this.active = null;
         };
-        this.actor = new St.Button({
+        this.actor = new extension_St.Button({
             style_class: 'table-element',
             width: width,
             height: height,

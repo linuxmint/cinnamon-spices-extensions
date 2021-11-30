@@ -8,6 +8,9 @@
 ******************************************************************/
 
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE, TooltipKeys, TOOLTIPS } from "./constants";
+import { ActionButton } from "./ui/ActionButton";
+import { AutoTileMainAndList } from "./ui/AutoTileMainAndList";
+import { AutoTileTwoList } from "./ui/AutoTileTwoList";
 import { addSignals, isFinalized, objHasKey } from "./utils";
 
 /*****************************************************************
@@ -29,7 +32,7 @@ let status: boolean;
 let grids: Record<string, Grid>;
 let monitors: imports.ui.layout.Monitor[];
 let area: imports.gi.St.BoxLayout;
-let focusMetaWindow: imports.gi.Meta.Window | null = null;
+export let focusMetaWindow: imports.gi.Meta.Window | null = null;
 let focusMetaWindowConnections: Record<string, any> = {};
 let focusMetaWindowPrivateConnections: Record<string, any> = {};
 let tracker: imports.gi.Cinnamon.WindowTracker;
@@ -168,7 +171,7 @@ const reinitalize = () => {
   initGrids();
 }
 
-const resetFocusMetaWindow = () => {
+export const resetFocusMetaWindow = () => {
   if (focusMetaWindowConnections.length > 0) {
     for (var idx in focusMetaWindowConnections) {
       focusMetaWindow?.disconnect(focusMetaWindowConnections[idx]);
@@ -283,7 +286,7 @@ const updateRegions = () => {
   }
 }
 
-const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
+export const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.VERTICAL);
   metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
@@ -308,7 +311,7 @@ const _getVisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
   return [borderX, borderY];
 }
 
-const move_maximize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number) => {
+export const move_maximize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number) => {
   if (metaWindow == null)
     return;
 
@@ -321,7 +324,7 @@ const move_maximize_window = (metaWindow: imports.gi.Meta.Window | null, x: numb
   metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 }
 
-const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) => {
+export const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) => {
   if (metaWindow == null)
     return;
 
@@ -339,7 +342,7 @@ const getPanelHeight = (panel: imports.ui.panel.Panel) => {
     || panel.actor.get_height();  // fallback for old versions of Cinnamon
 }
 
-const getUsableScreenArea = (monitor: imports.ui.layout.Monitor) => {
+export const getUsableScreenArea = (monitor: imports.ui.layout.Monitor) => {
   let top = monitor.y;
   let bottom = monitor.y + monitor.height;
   let left = monitor.x;
@@ -369,7 +372,7 @@ const getUsableScreenArea = (monitor: imports.ui.layout.Monitor) => {
   return [left, top, width, height];
 }
 
-const getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
+export const getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
   return Main.getTabList().filter(function (w) {
     let app = tracker.get_window_app(w);
     let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
@@ -578,6 +581,11 @@ class ToggleSettingsButtonListener {
   }
 };
 
+interface Signals {
+  emit: (signal: string) => void;
+  connect: (signal: string, callback: () => void) => void;
+}
+
 @addSignals
 class ToggleSettingsButton {
   text: string;
@@ -631,139 +639,6 @@ class ToggleSettingsButton {
     preferences[this.property] = !preferences[this.property];
     // @ts-ignore
     this.emit('update-toggle');
-    return false;
-  }
-};
-
-@addSignals
-class ActionButton {
-  grid: Grid;
-  actor: imports.gi.St.Button;
-  icon: imports.gi.St.BoxLayout;
-
-  private _tooltip?: imports.ui.tooltips.Tooltip;
-
-  constructor(grid: Grid, classname: TooltipKeys) {
-    this.grid = grid;
-    this.actor = new St.Button({
-      style_class: 'settings-button',
-      reactive: true,
-      can_focus: true,
-      track_hover: true
-    });
-
-    this.icon = new St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
-    this.actor.add_actor(this.icon);
-    this.actor.connect(
-      'button-press-event',
-      this._onButtonPress
-    );
-
-    if (TOOLTIPS[classname]) {
-      this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
-    }
-  }
-
-  protected _onButtonPress = () => {
-    // @ts-ignore
-    this.emit('button-press-event');
-    return false;
-  }
-};
-
-@addSignals
-class AutoTileMainAndList extends ActionButton {
-  classname: string;
-
-  constructor(grid: Grid) {
-    super(grid, 'action-main-list');
-    this.classname = 'action-main-list';
-    // @ts-ignore
-    this.connect(
-      'button-press-event',
-      this._onButtonPress
-    );
-  }
-
-  protected override _onButtonPress = () => {
-    if (!focusMetaWindow) return false;
-
-    reset_window(focusMetaWindow);
-
-    let monitor = this.grid.monitor;
-    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-    let windows = getNotFocusedWindowsOfMonitor(monitor);
-
-    move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
-
-    let winHeight = screenHeight / windows.length;
-    let countWin = 0;
-
-    for (let windowIdx in windows) {
-      let metaWindow = windows[windowIdx];
-
-      let newOffset = countWin * winHeight;
-
-      reset_window(metaWindow);
-
-      move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
-      countWin++;
-    }
-
-    //@ts-ignore
-    this.emit('resize-done');
-    return false;
-  }
-};
-
-@addSignals
-class AutoTileTwoList extends ActionButton {
-  classname: string;
-
-  constructor(grid: Grid) {
-    super(grid, 'action-two-list');
-    this.classname = 'action-two-list';
-    // @ts-ignore
-    this.connect(
-      'button-press-event',
-      this._onButtonPress
-    );
-  }
-
-  protected override _onButtonPress = () => {
-    if (!focusMetaWindow) return false;
-
-    reset_window(focusMetaWindow);
-
-    let monitor = this.grid.monitor;
-    let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-    let windows = getNotFocusedWindowsOfMonitor(monitor);
-    let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
-    let winHeight = screenHeight / nbWindowOnEachSide;
-
-    let countWin = 0;
-
-    let xOffset = ((countWin % 2) * screenWidth) / 2;
-    let yOffset = Math.floor(countWin / 2) * winHeight;
-
-    move_resize_window(focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
-
-    countWin++;
-
-    for (let windowIdx in windows) {
-      let metaWindow = windows[windowIdx];
-
-      xOffset = ((countWin % 2) * screenWidth) / 2;
-      yOffset = Math.floor(countWin / 2) * winHeight;
-
-      reset_window(metaWindow);
-
-      move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
-      countWin++;
-    }
-
-    // @ts-ignore
-    this.emit('resize-done');
     return false;
   }
 };
@@ -954,9 +829,7 @@ export class Grid {
       action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
       this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
 
-      // @ts-ignore
-      action.connect(
-        'resize-done',
+      action.connect('resize-done',
         this._onResize
       );
 
@@ -964,9 +837,7 @@ export class Grid {
       actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
       this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
-      //@ts-ignore
-      actionTwo.connect(
-        'resize-done',
+      actionTwo.connect('resize-done',
         this._onResize
       );
     }

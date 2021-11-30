@@ -32,3 +32,8 @@ export function addSignals<T extends { new (...args: any[]): {} }>(constructor: 
     Signals.addSignalMethods(constructor.prototype);
     return class extends constructor {}
 }
+
+export interface SignalOverload<T extends string> {
+    connect(signal: T, callback: () => void): void;
+    emit(signal: T): void;
+}
