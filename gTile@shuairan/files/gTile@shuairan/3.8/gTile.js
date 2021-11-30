@@ -53,6 +53,7 @@ __webpack_require__.d(__webpack_exports__, {
 const { Object: utils_Object } = imports.gi.GObject;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
+const Signals = imports.signals;
 const UUID = 'gTile@shuairan';
 const isFinalized = function (obj) {
     return obj && utils_Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
@@ -67,6 +68,11 @@ function _(str) {
 }
 function objHasKey(obj, key) {
     return utils_Object.prototype.hasOwnProperty.call(obj, key);
+}
+function addSignals(constructor) {
+    Signals.addSignalMethods(constructor.prototype);
+    return class extends constructor {
+    };
 }
 
 ;// CONCATENATED MODULE: ./src/3_8/constants.ts
@@ -91,6 +97,12 @@ const KEYCONTROL = {
 };
 
 ;// CONCATENATED MODULE: ./src/3_8/extension.ts
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 
 
 const GObject = imports.gi.GObject;
@@ -98,7 +110,7 @@ const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
-const Signals = imports.signals;
+const extension_Signals = imports.signals;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Tooltips = imports.ui.tooltips;
@@ -502,7 +514,7 @@ class ToggleSettingsButtonListener {
     }
 }
 ;
-class ToggleSettingsButton {
+let ToggleSettingsButton = class ToggleSettingsButton {
     constructor(text, property) {
         this._update = () => {
             if (objHasKey(preferences, this.property)) {
@@ -537,10 +549,12 @@ class ToggleSettingsButton {
             this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
         }
     }
-}
+};
+ToggleSettingsButton = __decorate([
+    addSignals
+], ToggleSettingsButton);
 ;
-Signals.addSignalMethods(ToggleSettingsButton.prototype);
-class ActionButton {
+let ActionButton = class ActionButton {
     constructor(grid, classname) {
         this._onButtonPress = () => {
             this.emit('button-press-event');
@@ -560,10 +574,12 @@ class ActionButton {
             this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
         }
     }
-}
+};
+ActionButton = __decorate([
+    addSignals
+], ActionButton);
 ;
-Signals.addSignalMethods(ActionButton.prototype);
-class AutoTileMainAndList extends ActionButton {
+let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
     constructor(grid) {
         super(grid, 'action-main-list');
         this._onButtonPress = () => {
@@ -589,10 +605,12 @@ class AutoTileMainAndList extends ActionButton {
         this.classname = 'action-main-list';
         this.connect('button-press-event', this._onButtonPress);
     }
-}
+};
+AutoTileMainAndList = __decorate([
+    addSignals
+], AutoTileMainAndList);
 ;
-Signals.addSignalMethods(AutoTileMainAndList.prototype);
-class AutoTileTwoList extends ActionButton {
+let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
     constructor(grid) {
         super(grid, 'action-two-list');
         this._onButtonPress = () => {
@@ -623,9 +641,11 @@ class AutoTileTwoList extends ActionButton {
         this.classname = 'action-two-list';
         this.connect('button-press-event', this._onButtonPress);
     }
-}
+};
+AutoTileTwoList = __decorate([
+    addSignals
+], AutoTileTwoList);
 ;
-Signals.addSignalMethods(AutoTileTwoList.prototype);
 class ActionScale extends (/* unused pure expression or super */ null && (ActionButton)) {
     constructor(grid) {
         super(grid, 'action-scale');
@@ -661,7 +681,7 @@ class GridSettingsButton {
         this.actor.connect('button-press-event', this._onButtonPress);
     }
 }
-class Grid {
+let Grid = class Grid {
     constructor(monitor_idx, monitor, title, cols, rows) {
         this.tableWidth = 220;
         this.tableHeight = 200;
@@ -981,10 +1001,13 @@ class Grid {
             this.actor.scale_y = 0;
         }
     }
-}
+};
+Grid = __decorate([
+    addSignals
+], Grid);
+
 ;
-Signals.addSignalMethods(Grid.prototype);
-class GridElementDelegate {
+let GridElementDelegate = class GridElementDelegate {
     constructor() {
         this.activated = false;
         this.first = null;
@@ -1120,9 +1143,12 @@ class GridElementDelegate {
             this._resizeDone();
         }
     }
-}
+};
+GridElementDelegate = __decorate([
+    addSignals
+], GridElementDelegate);
+
 ;
-Signals.addSignalMethods(GridElementDelegate.prototype);
 class GridElement {
     constructor(monitor, width, height, coordx, coordy, delegate) {
         this.show = () => {

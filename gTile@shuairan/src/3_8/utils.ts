@@ -1,6 +1,7 @@
 const { Object } = imports.gi.GObject;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
+const Signals = imports.signals;
 
 export const UUID = 'gTile@shuairan';
 
@@ -25,4 +26,9 @@ export function _(str: string) {
  */
 export function objHasKey<T>(obj: T, key: PropertyKey): key is keyof T {
     return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+export function addSignals<T extends { new (...args: any[]): {} }>(constructor: T) {
+    Signals.addSignalMethods(constructor.prototype);
+    return class extends constructor {}
 }

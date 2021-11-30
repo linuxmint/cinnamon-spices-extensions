@@ -8,7 +8,7 @@
 ******************************************************************/
 
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE, TooltipKeys, TOOLTIPS } from "./constants";
-import { isFinalized, objHasKey } from "./utils";
+import { addSignals, isFinalized, objHasKey } from "./utils";
 
 /*****************************************************************
                          CONST & VARS
@@ -578,6 +578,7 @@ class ToggleSettingsButtonListener {
   }
 };
 
+@addSignals
 class ToggleSettingsButton {
   text: string;
   actor: imports.gi.St.Button;
@@ -634,8 +635,7 @@ class ToggleSettingsButton {
   }
 };
 
-Signals.addSignalMethods(ToggleSettingsButton.prototype);
-
+@addSignals
 class ActionButton {
   grid: Grid;
   actor: imports.gi.St.Button;
@@ -671,8 +671,7 @@ class ActionButton {
   }
 };
 
-Signals.addSignalMethods(ActionButton.prototype);
-
+@addSignals
 class AutoTileMainAndList extends ActionButton {
   classname: string;
 
@@ -717,8 +716,7 @@ class AutoTileMainAndList extends ActionButton {
   }
 };
 
-Signals.addSignalMethods(AutoTileMainAndList.prototype);
-
+@addSignals
 class AutoTileTwoList extends ActionButton {
   classname: string;
 
@@ -769,8 +767,6 @@ class AutoTileTwoList extends ActionButton {
     return false;
   }
 };
-
-Signals.addSignalMethods(AutoTileTwoList.prototype);
 
 class ActionScale extends ActionButton {
   classname: string;
@@ -832,6 +828,7 @@ export class GridSettingsButton {
   }
 }
 
+@addSignals
 export class Grid {
   tableWidth = 220;
   tableHeight = 200;
@@ -1264,8 +1261,7 @@ export class Grid {
   }
 };
 
-Signals.addSignalMethods(Grid.prototype);
-
+@addSignals
 export class GridElementDelegate {
   activated = false;
   first: GridElement | null = null;
@@ -1309,7 +1305,7 @@ export class GridElementDelegate {
   }
 
   private _resizeDone = () => {
-    // @ts-ignore
+    //@ts-ignore
     this.emit('resize-done');
   }
 
@@ -1430,8 +1426,6 @@ export class GridElementDelegate {
     this.activatedActors = null;
   }
 };
-
-Signals.addSignalMethods(GridElementDelegate.prototype);
 
 export class GridElement {
   actor: imports.gi.St.Button;
