@@ -7,31 +7,17 @@
 
 ******************************************************************/
 
-import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE, TooltipKeys, TOOLTIPS } from "./constants";
-import { ActionButton } from "./ui/ActionButton";
-import { AutoTileMainAndList } from "./ui/AutoTileMainAndList";
-import { AutoTileTwoList } from "./ui/AutoTileTwoList";
 import { Grid, toggleSettingListener } from "./ui/Grid";
-import { GridElement } from "./ui/GridElement";
-import { GridElementDelegate } from "./ui/GridElementDelegate";
 import { GridSettingsButton } from "./ui/GridSettingsButton";
-import { ToggleSettingsButton } from "./ui/ToggleSettingsButton";
-import { ToggleSettingsButtonListener } from "./ui/ToggleSettingsButtonListener";
-import { TopBar } from "./ui/TopBar";
-import { addSignals, isFinalized, objHasKey } from "./utils";
 
 /*****************************************************************
                          CONST & VARS
 *****************************************************************/
-const GObject = imports.gi.GObject;
 const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
 const Meta = imports.gi.Meta;
-const Clutter = imports.gi.Clutter;
-const Signals = imports.signals;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
-const Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 

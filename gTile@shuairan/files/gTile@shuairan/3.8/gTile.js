@@ -946,15 +946,11 @@ Grid = Grid_decorate([
 ;// CONCATENATED MODULE: ./src/3_8/extension.ts
 
 
-const GObject = imports.gi.GObject;
 const Cinnamon = imports.gi.Cinnamon;
 const extension_St = imports.gi.St;
 const Meta = imports.gi.Meta;
-const extension_Clutter = imports.gi.Clutter;
-const extension_Signals = imports.signals;
 const extension_Main = imports.ui.main;
 const extension_Tweener = imports.ui.tweener;
-const extension_Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 let extension_status;
