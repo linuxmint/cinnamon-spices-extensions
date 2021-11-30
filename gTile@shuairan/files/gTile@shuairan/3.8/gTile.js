@@ -41,19 +41,23 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   "Grid": () => (/* binding */ Grid),
-  "GridElement": () => (/* binding */ GridElement),
-  "GridElementDelegate": () => (/* binding */ GridElementDelegate),
   "GridSettingsButton": () => (/* binding */ GridSettingsButton),
+  "area": () => (/* binding */ extension_area),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
   "focusMetaWindow": () => (/* binding */ focusMetaWindow),
+  "getFocusApp": () => (/* binding */ getFocusApp),
+  "getMonitorKey": () => (/* binding */ getMonitorKey),
   "getNotFocusedWindowsOfMonitor": () => (/* binding */ getNotFocusedWindowsOfMonitor),
   "getUsableScreenArea": () => (/* binding */ getUsableScreenArea),
+  "grids": () => (/* binding */ grids),
   "init": () => (/* binding */ init),
   "move_maximize_window": () => (/* binding */ move_maximize_window),
   "move_resize_window": () => (/* binding */ move_resize_window),
+  "preferences": () => (/* binding */ preferences),
   "resetFocusMetaWindow": () => (/* binding */ resetFocusMetaWindow),
-  "reset_window": () => (/* binding */ reset_window)
+  "reset_window": () => (/* binding */ reset_window),
+  "toggleTiling": () => (/* binding */ toggleTiling)
 });
 
 ;// CONCATENATED MODULE: ./src/3_8/utils.ts
@@ -232,6 +236,259 @@ AutoTileTwoList = AutoTileTwoList_decorate([
 
 ;
 
+;// CONCATENATED MODULE: ./src/3_8/ui/GridElement.ts
+
+
+const Main = imports.ui.main;
+const GridElement_St = imports.gi.St;
+class GridElement {
+    constructor(monitor, width, height, coordx, coordy, delegate) {
+        this.show = () => {
+            this.actor.opacity = 255;
+            this.actor.visible = true;
+        };
+        this.hide = () => {
+            this.actor.opacity = 0;
+            this.actor.visible = false;
+        };
+        this._onButtonPress = () => {
+            this.delegate._onButtonPress(this);
+            return false;
+        };
+        this._onHoverChanged = () => {
+            if (!this.actor || isFinalized(this.actor))
+                return;
+            this.delegate._onHoverChanged(this);
+            return false;
+        };
+        this._activate = () => {
+            if (!this.actor || isFinalized(this.actor))
+                return;
+            this.actor.add_style_pseudo_class('activate');
+        };
+        this._deactivate = () => {
+            if (!this.actor || isFinalized(this.actor))
+                return;
+            this.actor.remove_style_pseudo_class('activate');
+        };
+        this._clean = () => {
+            Main.uiGroup.remove_actor(extension_area);
+        };
+        this._destroy = () => {
+            this.monitor = null;
+            this.coordx = null;
+            this.coordy = null;
+            this.width = null;
+            this.height = null;
+            this.active = null;
+        };
+        this.actor = new GridElement_St.Button({
+            style_class: 'table-element',
+            width: width,
+            height: height,
+            reactive: true,
+            can_focus: true,
+            track_hover: true
+        });
+        this.actor.visible = false;
+        this.actor.opacity = 0;
+        this.monitor = monitor;
+        this.coordx = coordx;
+        this.coordy = coordy;
+        this.width = width;
+        this.height = height;
+        this.delegate = delegate;
+        this.actor.connect('button-press-event', this._onButtonPress);
+        this.actor.connect('notify::hover', this._onHoverChanged);
+        this.active = false;
+    }
+}
+
+;// CONCATENATED MODULE: ./src/3_8/ui/GridElementDelegate.ts
+var GridElementDelegate_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+const Tweener = imports.ui.tweener;
+let GridElementDelegate = class GridElementDelegate {
+    constructor() {
+        this.activated = false;
+        this.first = null;
+        this.last = null;
+        this.currentElement = null;
+        this.activatedActors = null;
+        this._allSelected = () => {
+            var _a;
+            return ((_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.length) === (preferences.nbCols * preferences.nbRows);
+        };
+        this._resizeDone = () => {
+            this.emit('resize-done');
+        };
+        this.reset = () => {
+            this._resetGrid();
+            this.activated = false;
+            this.first = null;
+            this.last = null;
+            this.currentElement = null;
+        };
+        this._resetGrid = () => {
+            this._hideArea();
+            if (this.currentElement) {
+                this.currentElement._deactivate();
+            }
+            if (this.activatedActors != null) {
+                for (let index = 0; index < this.activatedActors.length; index++) {
+                    this.activatedActors[index]._deactivate();
+                }
+            }
+            this.activatedActors = [];
+        };
+        this._getVarFromGridElement = (fromGridElement, toGridElement) => {
+            let maxX = fromGridElement.coordx >= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
+            let minX = fromGridElement.coordx <= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
+            let maxY = fromGridElement.coordy >= toGridElement.coordy ? fromGridElement.coordy : toGridElement.coordy;
+            let minY = fromGridElement.coordy <= toGridElement.coordy ? fromGridElement.coordy : toGridElement.coordy;
+            return [minX, maxX, minY, maxY];
+        };
+        this.refreshGrid = (fromGridElement, toGridElement) => {
+            var _a;
+            this._resetGrid();
+            let minX, maxX, minY, maxY;
+            [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
+            let key = getMonitorKey(fromGridElement.monitor);
+            let grid = grids[key];
+            for (let r = minY; r <= maxY; r++) {
+                for (let c = minX; c <= maxX; c++) {
+                    let element = grid === null || grid === void 0 ? void 0 : grid.elements[r][c];
+                    element._activate();
+                    (_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.push(element);
+                }
+            }
+            this._displayArea(fromGridElement, toGridElement);
+        };
+        this._computeAreaPositionSize = (fromGridElement, toGridElement) => {
+            let minX, maxX, minY, maxY;
+            [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
+            let nbRows = preferences.nbRows;
+            let nbCols = preferences.nbCols;
+            let monitor = fromGridElement.monitor;
+            let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
+            let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
+            let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
+            let areaX = screenX + minX * (screenWidth / nbCols);
+            let areaY = screenY + minY * (screenHeight / nbRows);
+            return [areaX, areaY, areaWidth, areaHeight];
+        };
+        this._displayArea = (fromGridElement, toGridElement) => {
+            let areaWidth, areaHeight, areaX, areaY;
+            [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
+            extension_area.add_style_pseudo_class('activate');
+            if (preferences.animation) {
+                Tweener.addTween(extension_area, {
+                    time: 0.2,
+                    x: areaX,
+                    y: areaY,
+                    width: areaWidth,
+                    height: areaHeight,
+                    transition: 'easeOutQuad'
+                });
+            }
+            else {
+                extension_area.width = areaWidth;
+                extension_area.height = areaHeight;
+                extension_area.x = areaX;
+                extension_area.y = areaY;
+            }
+        };
+        this._hideArea = () => {
+            extension_area.remove_style_pseudo_class('activate');
+        };
+        this._onHoverChanged = (gridElement) => {
+            if (this.activated) {
+                if (this.first != null)
+                    this.refreshGrid(this.first, gridElement);
+            }
+            else {
+                if (this.currentElement)
+                    this.currentElement._deactivate();
+                this.currentElement = gridElement;
+                this._displayArea(this.currentElement, this.currentElement);
+                this.currentElement._activate();
+            }
+        };
+        this._destroy = () => {
+            this.activated = null;
+            this.first = null;
+            this.last = null;
+            this.currentElement = null;
+            this.activatedActors = null;
+        };
+    }
+    _onButtonPress(gridElement) {
+        if (!this.activated) {
+            this.activated = true;
+            this.activatedActors = [];
+            this.activatedActors.push(gridElement);
+            this.first = gridElement;
+            gridElement.actor.add_style_pseudo_class('activate');
+            gridElement.active = true;
+        }
+        else {
+            reset_window(focusMetaWindow);
+            let areaWidth, areaHeight, areaX, areaY;
+            [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
+            if (this._allSelected()) {
+                move_maximize_window(focusMetaWindow, areaX, areaY);
+            }
+            else {
+                move_resize_window(focusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+            }
+            this._resizeDone();
+        }
+    }
+};
+GridElementDelegate = GridElementDelegate_decorate([
+    addSignals
+], GridElementDelegate);
+
+;
+
+;// CONCATENATED MODULE: ./src/3_8/ui/TopBar.ts
+
+const TopBar_St = imports.gi.St;
+class TopBar {
+    constructor(title) {
+        this._onCloseButtonClicked = () => {
+            toggleTiling();
+            return false;
+        };
+        this.actor = new TopBar_St.BoxLayout({ style_class: 'top-box' });
+        this._title = title;
+        this._stlabel = new TopBar_St.Label({ style_class: 'grid-title', text: this._title });
+        this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: true });
+        this._closeButton = new TopBar_St.Button({ style_class: 'close-button' });
+        this._closeButton.connect('button-release-event', this._onCloseButtonClicked);
+        this.actor.add(this._iconBin);
+        this.actor.add(this._stlabel, { x_fill: true, expand: true });
+        this.actor.add(this._closeButton, { x_fill: false, expand: false });
+    }
+    _set_title(title) {
+        this._title = title;
+        this._stlabel.text = this._title;
+    }
+    _set_app(app, title) {
+        this._title = app.get_name() + ' - ' + title;
+        this._stlabel.text = this._title;
+        this._icon = app.create_icon_texture(24);
+        this._iconBin.set_size(24, 24);
+        this._iconBin.set_child(this._icon);
+    }
+}
+
 ;// CONCATENATED MODULE: ./src/3_8/extension.ts
 var extension_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -244,14 +501,17 @@ var extension_decorate = (undefined && undefined.__decorate) || function (decora
 
 
 
+
+
+
 const GObject = imports.gi.GObject;
 const Cinnamon = imports.gi.Cinnamon;
 const extension_St = imports.gi.St;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
 const extension_Signals = imports.signals;
-const Main = imports.ui.main;
-const Tweener = imports.ui.tweener;
+const extension_Main = imports.ui.main;
+const extension_Tweener = imports.ui.tweener;
 const extension_Tooltips = imports.ui.tooltips;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
@@ -308,10 +568,10 @@ const init = () => { };
 const enable = () => {
     try {
         extension_status = false;
-        monitors = Main.layoutManager.monitors;
+        monitors = extension_Main.layoutManager.monitors;
         tracker = Cinnamon.WindowTracker.get_default();
         extension_area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
-        Main.uiGroup.add_actor(extension_area);
+        extension_Main.uiGroup.add_actor(extension_area);
         initSettings();
         initGrids();
         enableHotkey();
@@ -330,13 +590,13 @@ const disable = () => {
 };
 const enableHotkey = () => {
     disableHotkey();
-    Main.keybindingManager.addHotKey('gTile', preferences.hotkey, toggleTiling);
+    extension_Main.keybindingManager.addHotKey('gTile', preferences.hotkey, toggleTiling);
 };
 const disableHotkey = () => {
-    Main.keybindingManager.removeHotKey('gTile');
+    extension_Main.keybindingManager.removeHotKey('gTile');
 };
 const reinitalize = () => {
-    monitors = Main.layoutManager.monitors;
+    monitors = extension_Main.layoutManager.monitors;
     destroyGrids();
     initGrids();
 };
@@ -365,7 +625,7 @@ const initGrids = () => {
         let grid = new Grid(parseInt(monitorIdx), monitor, 'gTile', preferences.nbCols, preferences.nbRows);
         let key = getMonitorKey(monitor);
         grids[key] = grid;
-        Main.layoutManager.addChrome(grid.actor, { visibleInFullscreen: true });
+        extension_Main.layoutManager.addChrome(grid.actor, { visibleInFullscreen: true });
         grid.actor.set_opacity(0);
         grid.hide(true);
         grid.connect('hide-tiling', hideTiling);
@@ -378,7 +638,7 @@ const destroyGrids = () => {
         let grid = grids[key];
         if (typeof grid != 'undefined') {
             grid.hide(true);
-            Main.layoutManager.removeChrome(grid.actor);
+            extension_Main.layoutManager.removeChrome(grid.actor);
         }
     }
 };
@@ -387,7 +647,7 @@ const refreshGrids = () => {
         let grid = grids[gridIdx];
         grid.refresh();
     }
-    Main.layoutManager["_chrome"].updateRegions();
+    extension_Main.layoutManager["_chrome"].updateRegions();
 };
 const moveGrids = () => {
     if (!extension_status) {
@@ -419,7 +679,7 @@ const moveGrids = () => {
             pos_y = pos_y + grid.actor.height > monitor.height + monitor.y ? monitor.y + monitor.height - grid.actor.height : pos_y;
         }
         let time = preferences.animation ? 0.3 : 0.1;
-        Tweener.addTween(grid.actor, {
+        extension_Tweener.addTween(grid.actor, {
             time: time,
             x: pos_x,
             y: pos_y,
@@ -430,7 +690,7 @@ const moveGrids = () => {
 };
 const updateRegions = () => {
     var _a;
-    Main.layoutManager["_chrome"].updateRegions();
+    extension_Main.layoutManager["_chrome"].updateRegions();
     refreshGrids();
     for (let idx in grids) {
         let grid = grids[idx];
@@ -483,7 +743,7 @@ const getUsableScreenArea = (monitor) => {
     let bottom = monitor.y + monitor.height;
     let left = monitor.x;
     let right = monitor.x + monitor.width;
-    for (let panel of Main.panelManager.getPanelsInMonitor(monitor.index)) {
+    for (let panel of extension_Main.panelManager.getPanelsInMonitor(monitor.index)) {
         if (!panel.isHideable()) {
             switch (panel.panelPosition) {
                 case Panel.PanelLoc.top:
@@ -506,9 +766,9 @@ const getUsableScreenArea = (monitor) => {
     return [left, top, width, height];
 };
 const getNotFocusedWindowsOfMonitor = (monitor) => {
-    return Main.getTabList().filter(function (w) {
+    return extension_Main.getTabList().filter(function (w) {
         let app = tracker.get_window_app(w);
-        let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
+        let w_monitor = extension_Main.layoutManager.monitors[w.get_monitor()];
         if (app == null) {
             return false;
         }
@@ -589,7 +849,7 @@ const hideTiling = () => {
     extension_area.visible = false;
     resetFocusMetaWindow();
     extension_status = false;
-    Main.layoutManager["_chrome"].updateRegions();
+    extension_Main.layoutManager["_chrome"].updateRegions();
 };
 const toggleTiling = () => {
     if (extension_status) {
@@ -607,36 +867,8 @@ const getFocusApp = () => {
     return global.display.focus_window;
 };
 const isPrimaryMonitor = (monitor) => {
-    return Main.layoutManager.primaryMonitor === monitor;
+    return extension_Main.layoutManager.primaryMonitor === monitor;
 };
-class TopBar {
-    constructor(title) {
-        this._onCloseButtonClicked = () => {
-            toggleTiling();
-            return false;
-        };
-        this.actor = new extension_St.BoxLayout({ style_class: 'top-box' });
-        this._title = title;
-        this._stlabel = new extension_St.Label({ style_class: 'grid-title', text: this._title });
-        this._iconBin = new extension_St.Bin({ x_fill: false, y_fill: true });
-        this._closeButton = new extension_St.Button({ style_class: 'close-button' });
-        this._closeButton.connect('button-release-event', this._onCloseButtonClicked);
-        this.actor.add(this._iconBin);
-        this.actor.add(this._stlabel, { x_fill: true, expand: true });
-        this.actor.add(this._closeButton, { x_fill: false, expand: false });
-    }
-    _set_title(title) {
-        this._title = title;
-        this._stlabel.text = this._title;
-    }
-    _set_app(app, title) {
-        this._title = app.get_name() + ' - ' + title;
-        this._stlabel.text = this._title;
-        this._icon = app.create_icon_texture(24);
-        this._iconBin.set_size(24, 24);
-        this._iconBin.set_child(this._icon);
-    }
-}
 class ToggleSettingsButtonListener {
     constructor() {
         this.actors = [];
@@ -780,12 +1012,12 @@ let Grid = class Grid {
         };
         this._onHideComplete = () => {
             if (!this.interceptHide && this.actor) {
-                Main.layoutManager.removeChrome(this.actor);
+                extension_Main.layoutManager.removeChrome(this.actor);
             }
-            Main.layoutManager["_chrome"].updateRegions();
+            extension_Main.layoutManager["_chrome"].updateRegions();
         };
         this._onShowComplete = () => {
-            Main.layoutManager["_chrome"].updateRegions();
+            extension_Main.layoutManager["_chrome"].updateRegions();
         };
         this._onResize = () => {
             refreshGrids();
@@ -820,25 +1052,25 @@ let Grid = class Grid {
             this.elementsDelegate.reset();
         };
         this._bindKeyControls = () => {
-            Main.keybindingManager.addHotKey('gTile-close', 'Escape', toggleTiling);
-            Main.keybindingManager.addHotKey('gTile-tile1', 'space', this._keyTile);
-            Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this._keyTile);
+            extension_Main.keybindingManager.addHotKey('gTile-close', 'Escape', toggleTiling);
+            extension_Main.keybindingManager.addHotKey('gTile-tile1', 'space', this._keyTile);
+            extension_Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this._keyTile);
             for (let index in KEYCONTROL) {
                 if (objHasKey(KEYCONTROL, index)) {
                     let key = KEYCONTROL[index];
                     let type = index;
-                    Main.keybindingManager.addHotKey(type, key, () => this._onKeyPressEvent(type, key));
+                    extension_Main.keybindingManager.addHotKey(type, key, () => this._onKeyPressEvent(type, key));
                 }
             }
         };
         this._removeKeyControls = () => {
             this.rowKey = -1;
             this.colKey = -1;
-            Main.keybindingManager.removeHotKey('gTile-close');
-            Main.keybindingManager.removeHotKey('gTile-tile1');
-            Main.keybindingManager.removeHotKey('gTile-tile2');
+            extension_Main.keybindingManager.removeHotKey('gTile-close');
+            extension_Main.keybindingManager.removeHotKey('gTile-tile1');
+            extension_Main.keybindingManager.removeHotKey('gTile-tile2');
             for (let type in KEYCONTROL) {
-                Main.keybindingManager.removeHotKey(type);
+                extension_Main.keybindingManager.removeHotKey(type);
             }
         };
         this._onKeyPressEvent = (type, key) => {
@@ -1007,11 +1239,11 @@ let Grid = class Grid {
         this.elementsDelegate.reset();
         let time = preferences.animation ? 0.3 : 0;
         this.actor.raise_top();
-        Main.layoutManager.removeChrome(this.actor);
-        Main.layoutManager.addChrome(this.actor);
+        extension_Main.layoutManager.removeChrome(this.actor);
+        extension_Main.layoutManager.addChrome(this.actor);
         this.actor.scale_y = 0;
         if (time > 0) {
-            Tweener.addTween(this.actor, {
+            extension_Tweener.addTween(this.actor, {
                 time: time,
                 opacity: 255,
                 visible: true,
@@ -1033,7 +1265,7 @@ let Grid = class Grid {
         this.elementsDelegate.reset();
         let time = preferences.animation && !immediate ? 0.3 : 0;
         if (time > 0) {
-            Tweener.addTween(this.actor, {
+            extension_Tweener.addTween(this.actor, {
                 time: time,
                 opacity: 0,
                 visible: false,
@@ -1054,210 +1286,6 @@ Grid = extension_decorate([
 ], Grid);
 
 ;
-let GridElementDelegate = class GridElementDelegate {
-    constructor() {
-        this.activated = false;
-        this.first = null;
-        this.last = null;
-        this.currentElement = null;
-        this.activatedActors = null;
-        this._allSelected = () => {
-            var _a;
-            return ((_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.length) === (preferences.nbCols * preferences.nbRows);
-        };
-        this._resizeDone = () => {
-            this.emit('resize-done');
-        };
-        this.reset = () => {
-            this._resetGrid();
-            this.activated = false;
-            this.first = null;
-            this.last = null;
-            this.currentElement = null;
-        };
-        this._resetGrid = () => {
-            this._hideArea();
-            if (this.currentElement) {
-                this.currentElement._deactivate();
-            }
-            if (this.activatedActors != null) {
-                for (let index = 0; index < this.activatedActors.length; index++) {
-                    this.activatedActors[index]._deactivate();
-                }
-            }
-            this.activatedActors = [];
-        };
-        this._getVarFromGridElement = (fromGridElement, toGridElement) => {
-            let maxX = fromGridElement.coordx >= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
-            let minX = fromGridElement.coordx <= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
-            let maxY = fromGridElement.coordy >= toGridElement.coordy ? fromGridElement.coordy : toGridElement.coordy;
-            let minY = fromGridElement.coordy <= toGridElement.coordy ? fromGridElement.coordy : toGridElement.coordy;
-            return [minX, maxX, minY, maxY];
-        };
-        this.refreshGrid = (fromGridElement, toGridElement) => {
-            var _a;
-            this._resetGrid();
-            let minX, maxX, minY, maxY;
-            [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
-            let key = getMonitorKey(fromGridElement.monitor);
-            let grid = grids[key];
-            for (let r = minY; r <= maxY; r++) {
-                for (let c = minX; c <= maxX; c++) {
-                    let element = grid === null || grid === void 0 ? void 0 : grid.elements[r][c];
-                    element._activate();
-                    (_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.push(element);
-                }
-            }
-            this._displayArea(fromGridElement, toGridElement);
-        };
-        this._computeAreaPositionSize = (fromGridElement, toGridElement) => {
-            let minX, maxX, minY, maxY;
-            [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
-            let nbRows = preferences.nbRows;
-            let nbCols = preferences.nbCols;
-            let monitor = fromGridElement.monitor;
-            let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
-            let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
-            let areaX = screenX + minX * (screenWidth / nbCols);
-            let areaY = screenY + minY * (screenHeight / nbRows);
-            return [areaX, areaY, areaWidth, areaHeight];
-        };
-        this._displayArea = (fromGridElement, toGridElement) => {
-            let areaWidth, areaHeight, areaX, areaY;
-            [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
-            extension_area.add_style_pseudo_class('activate');
-            if (preferences.animation) {
-                Tweener.addTween(extension_area, {
-                    time: 0.2,
-                    x: areaX,
-                    y: areaY,
-                    width: areaWidth,
-                    height: areaHeight,
-                    transition: 'easeOutQuad'
-                });
-            }
-            else {
-                extension_area.width = areaWidth;
-                extension_area.height = areaHeight;
-                extension_area.x = areaX;
-                extension_area.y = areaY;
-            }
-        };
-        this._hideArea = () => {
-            extension_area.remove_style_pseudo_class('activate');
-        };
-        this._onHoverChanged = (gridElement) => {
-            if (this.activated) {
-                if (this.first != null)
-                    this.refreshGrid(this.first, gridElement);
-            }
-            else {
-                if (this.currentElement)
-                    this.currentElement._deactivate();
-                this.currentElement = gridElement;
-                this._displayArea(this.currentElement, this.currentElement);
-                this.currentElement._activate();
-            }
-        };
-        this._destroy = () => {
-            this.activated = null;
-            this.first = null;
-            this.last = null;
-            this.currentElement = null;
-            this.activatedActors = null;
-        };
-    }
-    _onButtonPress(gridElement) {
-        if (!this.activated) {
-            this.activated = true;
-            this.activatedActors = [];
-            this.activatedActors.push(gridElement);
-            this.first = gridElement;
-            gridElement.actor.add_style_pseudo_class('activate');
-            gridElement.active = true;
-        }
-        else {
-            reset_window(focusMetaWindow);
-            let areaWidth, areaHeight, areaX, areaY;
-            [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
-            if (this._allSelected()) {
-                move_maximize_window(focusMetaWindow, areaX, areaY);
-            }
-            else {
-                move_resize_window(focusMetaWindow, areaX, areaY, areaWidth, areaHeight);
-            }
-            this._resizeDone();
-        }
-    }
-};
-GridElementDelegate = extension_decorate([
-    addSignals
-], GridElementDelegate);
-
-;
-class GridElement {
-    constructor(monitor, width, height, coordx, coordy, delegate) {
-        this.show = () => {
-            this.actor.opacity = 255;
-            this.actor.visible = true;
-        };
-        this.hide = () => {
-            this.actor.opacity = 0;
-            this.actor.visible = false;
-        };
-        this._onButtonPress = () => {
-            this.delegate._onButtonPress(this);
-            return false;
-        };
-        this._onHoverChanged = () => {
-            if (!this.actor || isFinalized(this.actor))
-                return;
-            this.delegate._onHoverChanged(this);
-            return false;
-        };
-        this._activate = () => {
-            if (!this.actor || isFinalized(this.actor))
-                return;
-            this.actor.add_style_pseudo_class('activate');
-        };
-        this._deactivate = () => {
-            if (!this.actor || isFinalized(this.actor))
-                return;
-            this.actor.remove_style_pseudo_class('activate');
-        };
-        this._clean = () => {
-            Main.uiGroup.remove_actor(extension_area);
-        };
-        this._destroy = () => {
-            this.monitor = null;
-            this.coordx = null;
-            this.coordy = null;
-            this.width = null;
-            this.height = null;
-            this.active = null;
-        };
-        this.actor = new extension_St.Button({
-            style_class: 'table-element',
-            width: width,
-            height: height,
-            reactive: true,
-            can_focus: true,
-            track_hover: true
-        });
-        this.actor.visible = false;
-        this.actor.opacity = 0;
-        this.monitor = monitor;
-        this.coordx = coordx;
-        this.coordy = coordy;
-        this.width = width;
-        this.height = height;
-        this.delegate = delegate;
-        this.actor.connect('button-press-event', this._onButtonPress);
-        this.actor.connect('notify::hover', this._onHoverChanged);
-        this.active = false;
-    }
-}
 
 gtile = __webpack_exports__;
 /******/ })()
