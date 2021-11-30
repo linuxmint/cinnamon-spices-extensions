@@ -1,6 +1,6 @@
 import { TooltipKeys, TOOLTIPS } from "../constants";
-import { Grid } from "../extension";
 import { addSignals, SignalOverload } from "../utils";
+import { Grid } from "./Grid";
 const Tooltips = imports.ui.tooltips;
 const St = imports.gi.St;
 

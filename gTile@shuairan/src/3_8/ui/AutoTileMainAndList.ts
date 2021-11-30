@@ -1,6 +1,7 @@
-import { focusMetaWindow, getNotFocusedWindowsOfMonitor, getUsableScreenArea, Grid, move_resize_window, reset_window } from "../extension";
+import { focusMetaWindow, getNotFocusedWindowsOfMonitor, getUsableScreenArea, move_resize_window, reset_window } from "../extension";
 import { addSignals, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
+import { Grid } from "./Grid";
 
 @addSignals
 export class AutoTileMainAndList extends ActionButton<"resize-done"> {
