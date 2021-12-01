@@ -16,21 +16,27 @@ import { getFocusApp, getMonitorKey } from "./utils";
 *****************************************************************/
 const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
-const Meta = imports.gi.Meta;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
-const Settings = imports.ui.settings;
-const Panel = imports.ui.panel;
 
 class App {
-  status = false;
-  private tracker = Cinnamon.WindowTracker.get_default();
+  private status = false;
+  private readonly tracker = Cinnamon.WindowTracker.get_default();
   private monitors = Main.layoutManager.monitors;
-  public area = new St.BoxLayout({ style_class: 'grid-preview' });
-  public grids: Record<string, Grid> = {};
-  private focusMetaWindowConnections: Record<string, any> = {};
-  private focusMetaWindowPrivateConnections: Record<string, any> = {};
-  public focusMetaWindow: imports.gi.Meta.Window | null = null;
+  private focusMetaWindowConnections: number[] = [];
+  private focusMetaWindowPrivateConnections: number[] = [];
+
+  public readonly area = new St.BoxLayout({ style_class: 'grid-preview' });
+
+  private focusMetaWindow: imports.gi.Meta.Window | null = null;
+  public get FocusMetaWindow() {
+    return this.focusMetaWindow;
+  }
+
+  private grids: Record<string, Grid> = {};
+  public get Grids() {
+    return this.grids;
+  }
 
   constructor() {
     try {

@@ -33,16 +33,16 @@ export class GridElementDelegate {
       //before doing anything with the window it must be unmaximized
       //if so move the window then maximize instead of change size
       //if not move the window and change size
-      reset_window(app.focusMetaWindow);
+      reset_window(app.FocusMetaWindow);
 
       let areaWidth, areaHeight, areaX, areaY;
       // First is never null here?
       [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(<GridElement>this.first, gridElement);
 
       if (this._allSelected()) {
-        move_maximize_window(app.focusMetaWindow, areaX, areaY);
+        move_maximize_window(app.FocusMetaWindow, areaX, areaY);
       } else {
-        move_resize_window(app.focusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+        move_resize_window(app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
       }
 
       this._resizeDone();
@@ -92,7 +92,7 @@ export class GridElementDelegate {
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
 
     let key = getMonitorKey(fromGridElement.monitor);
-    let grid = app.grids[key];
+    let grid = app.Grids[key];
     for (let r = minY; r <= maxY; r++) {
       for (let c = minX; c <= maxX; c++) {
         let element = grid?.elements[r][c];

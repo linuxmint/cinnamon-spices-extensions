@@ -17,15 +17,15 @@ export class AutoTileMainAndList extends ActionButton<"resize-done"> {
   }
 
   protected override _onButtonPress = () => {
-    if (!app.focusMetaWindow) return false;
+    if (!app.FocusMetaWindow) return false;
 
-    reset_window(app.focusMetaWindow);
+    reset_window(app.FocusMetaWindow);
 
     let monitor = this.grid.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
     let windows = app.getNotFocusedWindowsOfMonitor(monitor);
 
-    move_resize_window(app.focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+    move_resize_window(app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
 
     let winHeight = screenHeight / windows.length;
     let countWin = 0;

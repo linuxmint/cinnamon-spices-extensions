@@ -74,8 +74,8 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    for (const gridIdx in app.grids) {
-        let grid = app.grids[gridIdx];
+    for (const gridIdx in app.Grids) {
+        let grid = app.Grids[gridIdx];
         grid._initGridSettingsButtons();
     }
 }

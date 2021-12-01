@@ -415,11 +415,11 @@ export class Grid {
 
     let candidate: Grid | null = null;
     // find other grids //TODO: improve to loop around all grids!
-    for (let k in app.grids) {
+    for (let k in app.Grids) {
       if (k === key) {
         continue;
       }
-      candidate = app.grids[k];
+      candidate = app.Grids[k];
     }
     if (candidate) {
       candidate._bindKeyControls();

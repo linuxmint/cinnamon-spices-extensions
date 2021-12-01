@@ -225,13 +225,13 @@ let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
     constructor(grid) {
         super(grid, 'action-main-list');
         this._onButtonPress = () => {
-            if (!app.focusMetaWindow)
+            if (!app.FocusMetaWindow)
                 return false;
-            reset_window(app.focusMetaWindow);
+            reset_window(app.FocusMetaWindow);
             let monitor = this.grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
             let windows = app.getNotFocusedWindowsOfMonitor(monitor);
-            move_resize_window(app.focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+            move_resize_window(app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
             let winHeight = screenHeight / windows.length;
             let countWin = 0;
             for (let windowIdx in windows) {
@@ -268,9 +268,9 @@ let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
     constructor(grid) {
         super(grid, 'action-two-list');
         this._onButtonPress = () => {
-            if (!app.focusMetaWindow)
+            if (!app.FocusMetaWindow)
                 return false;
-            reset_window(app.focusMetaWindow);
+            reset_window(app.FocusMetaWindow);
             let monitor = this.grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
             let windows = app.getNotFocusedWindowsOfMonitor(monitor);
@@ -279,7 +279,7 @@ let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
             let countWin = 0;
             let xOffset = ((countWin % 2) * screenWidth) / 2;
             let yOffset = Math.floor(countWin / 2) * winHeight;
-            move_resize_window(app.focusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+            move_resize_window(app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
             countWin++;
             for (let windowIdx in windows) {
                 let metaWindow = windows[windowIdx];
@@ -427,7 +427,7 @@ let GridElementDelegate = class GridElementDelegate {
             let minX, maxX, minY, maxY;
             [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
             let key = getMonitorKey(fromGridElement.monitor);
-            let grid = app.grids[key];
+            let grid = app.Grids[key];
             for (let r = minY; r <= maxY; r++) {
                 for (let c = minX; c <= maxX; c++) {
                     let element = grid === null || grid === void 0 ? void 0 : grid.elements[r][c];
@@ -505,14 +505,14 @@ let GridElementDelegate = class GridElementDelegate {
             gridElement.active = true;
         }
         else {
-            reset_window(app.focusMetaWindow);
+            reset_window(app.FocusMetaWindow);
             let areaWidth, areaHeight, areaX, areaY;
             [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
             if (this._allSelected()) {
-                move_maximize_window(app.focusMetaWindow, areaX, areaY);
+                move_maximize_window(app.FocusMetaWindow, areaX, areaY);
             }
             else {
-                move_resize_window(app.focusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+                move_resize_window(app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
             }
             this._resizeDone();
         }
@@ -848,11 +848,11 @@ let Grid = class Grid {
         this._keyTileSwitch = () => {
             let key = getMonitorKey(this.monitor);
             let candidate = null;
-            for (let k in app.grids) {
+            for (let k in app.Grids) {
                 if (k === key) {
                     continue;
                 }
-                candidate = app.grids[k];
+                candidate = app.Grids[k];
             }
             if (candidate) {
                 candidate._bindKeyControls();
@@ -1051,8 +1051,8 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    for (const gridIdx in app.grids) {
-        let grid = app.grids[gridIdx];
+    for (const gridIdx in app.Grids) {
+        let grid = app.Grids[gridIdx];
         grid._initGridSettingsButtons();
     }
 };
@@ -1063,21 +1063,18 @@ const updateGridSettings = () => {
 
 const Cinnamon = imports.gi.Cinnamon;
 const extension_St = imports.gi.St;
-const extension_Meta = imports.gi.Meta;
 const extension_Main = imports.ui.main;
 const extension_Tweener = imports.ui.tweener;
-const extension_Settings = imports.ui.settings;
-const extension_Panel = imports.ui.panel;
 class App {
     constructor() {
         this.status = false;
         this.tracker = Cinnamon.WindowTracker.get_default();
         this.monitors = extension_Main.layoutManager.monitors;
+        this.focusMetaWindowConnections = [];
+        this.focusMetaWindowPrivateConnections = [];
         this.area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
-        this.grids = {};
-        this.focusMetaWindowConnections = {};
-        this.focusMetaWindowPrivateConnections = {};
         this.focusMetaWindow = null;
+        this.grids = {};
         this.destroyGrids = () => {
             for (let monitorIdx in this.monitors) {
                 let monitor = this.monitors[monitorIdx];
@@ -1282,6 +1279,12 @@ class App {
             global.logError(e);
             global.logError(e === null || e === void 0 ? void 0 : e.stack);
         }
+    }
+    get FocusMetaWindow() {
+        return this.focusMetaWindow;
+    }
+    get Grids() {
+        return this.grids;
     }
     initGrids() {
         this.grids = {};
