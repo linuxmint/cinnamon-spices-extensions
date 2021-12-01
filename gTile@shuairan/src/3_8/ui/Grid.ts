@@ -1,7 +1,7 @@
 import { gridSettingsButton, preferences } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
-import { getMonitorKey, grids, hideTiling, refreshGrids, toggleTiling } from "../extension";
-import { addSignals, objHasKey, SignalOverload } from "../utils";
+import { app } from "../extension";
+import { addSignals, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";
 import { GridElement } from "./GridElement";
@@ -295,7 +295,7 @@ export class Grid {
   }
 
   private _onResize = () => {
-    refreshGrids();
+    app.refreshGrids();
     if (preferences.autoclose) {
       this.emit('hide-tiling');
     }
@@ -315,14 +315,14 @@ export class Grid {
       this.isEntered = false;
       this.elementsDelegate.reset();
 
-      refreshGrids();
+      app.refreshGrids();
     }
     return false;
   }
 
   private _globalKeyPressEvent = (actor: imports.gi.Clutter.Actor, event: imports.gi.Clutter.Event) => {
     if (event.get_key_symbol() === Clutter.Escape) {
-      hideTiling();
+      app.hideTiling();
       return true;
     }
     return false;
@@ -333,7 +333,7 @@ export class Grid {
   }
 
   private _bindKeyControls = () => {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', toggleTiling);
+    Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.toggleTiling);
     Main.keybindingManager.addHotKey('gTile-tile1', 'space', this._keyTile);
     Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this._keyTile);
     for (let index in KEYCONTROL) {
@@ -415,11 +415,11 @@ export class Grid {
 
     let candidate: Grid | null = null;
     // find other grids //TODO: improve to loop around all grids!
-    for (let k in grids) {
+    for (let k in app.grids) {
       if (k === key) {
         continue;
       }
-      candidate = grids[k];
+      candidate = app.grids[k];
     }
     if (candidate) {
       candidate._bindKeyControls();

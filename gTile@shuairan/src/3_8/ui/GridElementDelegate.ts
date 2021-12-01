@@ -1,6 +1,6 @@
 import { preferences } from "../config";
-import { area, focusMetaWindow, getMonitorKey, getUsableScreenArea, grids, move_maximize_window, move_resize_window, reset_window } from "../extension";
-import { addSignals, SignalOverload } from "../utils";
+import { app } from "../extension";
+import { addSignals, getMonitorKey, getUsableScreenArea, move_maximize_window, move_resize_window, reset_window, SignalOverload } from "../utils";
 import { GridElement } from "./GridElement";
 const Tweener = imports.ui.tweener;
 
@@ -33,16 +33,16 @@ export class GridElementDelegate {
       //before doing anything with the window it must be unmaximized
       //if so move the window then maximize instead of change size
       //if not move the window and change size
-      reset_window(focusMetaWindow);
+      reset_window(app.focusMetaWindow);
 
       let areaWidth, areaHeight, areaX, areaY;
       // First is never null here?
       [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(<GridElement>this.first, gridElement);
 
       if (this._allSelected()) {
-        move_maximize_window(focusMetaWindow, areaX, areaY);
+        move_maximize_window(app.focusMetaWindow, areaX, areaY);
       } else {
-        move_resize_window(focusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+        move_resize_window(app.focusMetaWindow, areaX, areaY, areaWidth, areaHeight);
       }
 
       this._resizeDone();
@@ -92,7 +92,7 @@ export class GridElementDelegate {
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
 
     let key = getMonitorKey(fromGridElement.monitor);
-    let grid = grids[key];
+    let grid = app.grids[key];
     for (let r = minY; r <= maxY; r++) {
       for (let c = minX; c <= maxX; c++) {
         let element = grid?.elements[r][c];
@@ -125,10 +125,10 @@ export class GridElementDelegate {
     let areaWidth, areaHeight, areaX, areaY;
     [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
 
-    area.add_style_pseudo_class('activate');
+    app.area.add_style_pseudo_class('activate');
 
     if (preferences.animation) {
-      Tweener.addTween(area, {
+      Tweener.addTween(app.area, {
         time: 0.2,
         x: areaX,
         y: areaY,
@@ -137,15 +137,15 @@ export class GridElementDelegate {
         transition: 'easeOutQuad'
       });
     } else {
-      area.width = areaWidth;
-      area.height = areaHeight;
-      area.x = areaX;
-      area.y = areaY;
+      app.area.width = areaWidth;
+      app.area.height = areaHeight;
+      app.area.x = areaX;
+      app.area.y = areaY;
     }
   }
 
   private _hideArea = () => {
-    area.remove_style_pseudo_class('activate');
+    app.area.remove_style_pseudo_class('activate');
   }
 
   public _onHoverChanged = (gridElement: GridElement) => {

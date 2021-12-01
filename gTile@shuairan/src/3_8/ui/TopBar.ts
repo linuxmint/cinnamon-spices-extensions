@@ -1,4 +1,4 @@
-import { toggleTiling } from "../extension";
+import { app } from "../extension";
 
 const St = imports.gi.St;
 
@@ -43,7 +43,7 @@ export class TopBar {
     }
   
     private _onCloseButtonClicked = () => {
-      toggleTiling();
+      app.toggleTiling();
       return false;
     }
   }

@@ -1,4 +1,4 @@
-import { area } from "../extension";
+import { app } from "../extension";
 import { isFinalized } from "../utils";
 import { GridElementDelegate } from "./GridElementDelegate";
 const Main = imports.ui.main;
@@ -78,7 +78,7 @@ export class GridElement {
     }
 
     public _clean = () => {
-        Main.uiGroup.remove_actor(area);
+        Main.uiGroup.remove_actor(app.area);
     }
 
     public _destroy = () => {

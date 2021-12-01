@@ -1,4 +1,4 @@
-import { enableHotkey, grids } from "./extension";
+import { app } from "./extension";
 import { toggleSettingListener } from "./ui/Grid";
 import { GridSettingsButton } from "./ui/GridSettingsButton";
 
@@ -36,7 +36,7 @@ export let gridSettingsButton: GridSettingsButton[] = [];
 export const initSettings = () => {
     settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
     //hotkey
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', enableHotkey, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.enableHotkey, null);
     //grid (nbCols and nbRows)
     settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
     settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
@@ -74,8 +74,8 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    for (const gridIdx in grids) {
-        let grid = grids[gridIdx];
+    for (const gridIdx in app.grids) {
+        let grid = app.grids[gridIdx];
         grid._initGridSettingsButtons();
     }
 }

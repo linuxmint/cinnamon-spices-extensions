@@ -1,5 +1,5 @@
 import { preferences } from "../config";
-import { refreshGrids } from "../extension";
+import { app } from "../extension";
 
 const St = imports.gi.St;
 
@@ -40,7 +40,7 @@ export class GridSettingsButton {
     private _onButtonPress = () => {
       preferences.nbCols = this.cols;
       preferences.nbRows = this.rows;
-      refreshGrids();
+      app.refreshGrids();
       return false;
     }
   }

@@ -1,5 +1,5 @@
-import { focusMetaWindow, getNotFocusedWindowsOfMonitor, getUsableScreenArea, move_resize_window, reset_window } from "../extension";
-import { addSignals, SignalOverload } from "../utils";
+import { app } from "../extension";
+import { addSignals, getUsableScreenArea, move_resize_window, reset_window, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
 import { Grid } from "./Grid";
 
@@ -17,15 +17,15 @@ export class AutoTileMainAndList extends ActionButton<"resize-done"> {
   }
 
   protected override _onButtonPress = () => {
-    if (!focusMetaWindow) return false;
+    if (!app.focusMetaWindow) return false;
 
-    reset_window(focusMetaWindow);
+    reset_window(app.focusMetaWindow);
 
     let monitor = this.grid.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-    let windows = getNotFocusedWindowsOfMonitor(monitor);
+    let windows = app.getNotFocusedWindowsOfMonitor(monitor);
 
-    move_resize_window(focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+    move_resize_window(app.focusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
 
     let winHeight = screenHeight / windows.length;
     let countWin = 0;
