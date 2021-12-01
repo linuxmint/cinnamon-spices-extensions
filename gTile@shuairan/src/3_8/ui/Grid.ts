@@ -1,5 +1,6 @@
+import { gridSettingsButton, preferences } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
-import { getMonitorKey, grids, gridSettingsButton, hideTiling, preferences, refreshGrids, toggleTiling } from "../extension";
+import { getMonitorKey, grids, hideTiling, refreshGrids, toggleTiling } from "../extension";
 import { addSignals, objHasKey, SignalOverload } from "../utils";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";

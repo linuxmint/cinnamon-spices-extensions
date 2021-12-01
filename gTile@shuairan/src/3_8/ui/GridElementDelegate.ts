@@ -1,4 +1,5 @@
-import { area, focusMetaWindow, getMonitorKey, getUsableScreenArea, grids, move_maximize_window, move_resize_window, preferences, reset_window } from "../extension";
+import { preferences } from "../config";
+import { area, focusMetaWindow, getMonitorKey, getUsableScreenArea, grids, move_maximize_window, move_resize_window, reset_window } from "../extension";
 import { addSignals, SignalOverload } from "../utils";
 import { GridElement } from "./GridElement";
 const Tweener = imports.ui.tweener;

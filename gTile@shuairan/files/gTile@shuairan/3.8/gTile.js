@@ -43,18 +43,17 @@ __webpack_require__.d(__webpack_exports__, {
   "area": () => (/* binding */ extension_area),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
+  "enableHotkey": () => (/* binding */ enableHotkey),
   "focusMetaWindow": () => (/* binding */ focusMetaWindow),
   "getFocusApp": () => (/* binding */ getFocusApp),
   "getMonitorKey": () => (/* binding */ getMonitorKey),
   "getNotFocusedWindowsOfMonitor": () => (/* binding */ getNotFocusedWindowsOfMonitor),
   "getUsableScreenArea": () => (/* binding */ getUsableScreenArea),
-  "gridSettingsButton": () => (/* binding */ gridSettingsButton),
   "grids": () => (/* binding */ grids),
   "hideTiling": () => (/* binding */ hideTiling),
   "init": () => (/* binding */ init),
   "move_maximize_window": () => (/* binding */ move_maximize_window),
   "move_resize_window": () => (/* binding */ move_resize_window),
-  "preferences": () => (/* binding */ preferences),
   "refreshGrids": () => (/* binding */ refreshGrids),
   "resetFocusMetaWindow": () => (/* binding */ resetFocusMetaWindow),
   "reset_window": () => (/* binding */ reset_window),
@@ -314,6 +313,7 @@ var GridElementDelegate_decorate = (undefined && undefined.__decorate) || functi
 };
 
 
+
 const Tweener = imports.ui.tweener;
 let GridElementDelegate = class GridElementDelegate {
     constructor() {
@@ -460,6 +460,7 @@ GridElementDelegate = GridElementDelegate_decorate([
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
 
+
 const GridSettingsButton_St = imports.gi.St;
 class GridSettingsButton {
     constructor(text, cols, rows) {
@@ -600,6 +601,7 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -943,27 +945,14 @@ Grid = Grid_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/extension.ts
+;// CONCATENATED MODULE: ./src/3_8/config.ts
 
 
-const Cinnamon = imports.gi.Cinnamon;
-const extension_St = imports.gi.St;
-const Meta = imports.gi.Meta;
-const extension_Main = imports.ui.main;
-const extension_Tweener = imports.ui.tweener;
-const Settings = imports.ui.settings;
-const Panel = imports.ui.panel;
-let extension_status;
-let grids;
-let monitors;
-let extension_area;
-let focusMetaWindow = null;
-let focusMetaWindowConnections = {};
-let focusMetaWindowPrivateConnections = {};
-let tracker;
-let gridSettingsButton = [];
+
 const preferences = {};
+const Settings = imports.ui.settings;
 let settings;
+let gridSettingsButton = [];
 const initSettings = () => {
     settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
     settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', enableHotkey, null);
@@ -1001,6 +990,25 @@ const updateGridSettings = () => {
         grid._initGridSettingsButtons();
     }
 };
+
+;// CONCATENATED MODULE: ./src/3_8/extension.ts
+
+
+const Cinnamon = imports.gi.Cinnamon;
+const extension_St = imports.gi.St;
+const Meta = imports.gi.Meta;
+const extension_Main = imports.ui.main;
+const extension_Tweener = imports.ui.tweener;
+const extension_Settings = imports.ui.settings;
+const Panel = imports.ui.panel;
+let extension_status;
+let grids;
+let monitors;
+let extension_area;
+let focusMetaWindow = null;
+let focusMetaWindowConnections = {};
+let focusMetaWindowPrivateConnections = {};
+let tracker;
 const init = () => { };
 const enable = () => {
     try {

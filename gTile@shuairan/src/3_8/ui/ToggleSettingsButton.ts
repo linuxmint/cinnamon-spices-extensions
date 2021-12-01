@@ -1,5 +1,5 @@
+import { Preferences, preferences } from "../config";
 import { TooltipKeys, TOOLTIPS } from "../constants";
-import { preferences, Preferences } from "../extension";
 import { addSignals, objHasKey, SignalOverload } from "../utils";
 const St = imports.gi.St;
 const Tooltips = imports.ui.tooltips;

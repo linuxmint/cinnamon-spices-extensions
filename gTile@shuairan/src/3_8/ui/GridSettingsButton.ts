@@ -1,4 +1,5 @@
-import { preferences, refreshGrids } from "../extension";
+import { preferences } from "../config";
+import { refreshGrids } from "../extension";
 
 const St = imports.gi.St;
 
