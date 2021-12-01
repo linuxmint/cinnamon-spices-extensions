@@ -63,7 +63,72 @@ class App {
     }
   }
 
-  initGrids() {
+  public destroy() {
+    this.disableHotkey();
+    this.destroyGrids();
+    this.resetFocusMetaWindow();
+  }
+
+  public enableHotkey = () => {
+    this.disableHotkey();
+    Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.toggleTiling);
+  }
+
+  public refreshGrids = () => {
+    //global.log("RefreshGrids");
+    for (let gridIdx in this.grids) {
+      let grid = this.grids[gridIdx];
+      grid.refresh();
+    }
+  
+    Main.layoutManager["_chrome"].updateRegions();
+  }
+
+  public getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
+    return Main.getTabList().filter((w) => {
+      let app = this.tracker.get_window_app(w);
+      let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
+  
+      if (app == null) {
+        return false;
+      }
+      if (w.minimized) {
+        return false;
+      }
+      if (w_monitor !== monitor) {
+        return false;
+      }
+  
+      return this.focusMetaWindow !== w && w.get_wm_class() != null;
+    });
+  }
+
+  public hideTiling = () => {
+    for (let gridIdx in this.grids) {
+      let grid = this.grids[gridIdx];
+      grid.elementsDelegate.reset();
+      grid.hide(false);
+    }
+  
+    this.area.visible = false;
+  
+    this.resetFocusMetaWindow();
+  
+    this.status = false;
+  
+    Main.layoutManager["_chrome"].updateRegions();
+  }
+  
+  public toggleTiling = () => {
+    if (this.status) {
+      this.hideTiling();
+    } else {
+      this.showTiling();
+    }
+    return this.status;
+  }
+
+  private initGrids() {
     this.grids = {};
     for (let monitorIdx in this.monitors) {
       let monitor = this.monitors[monitorIdx];
@@ -81,7 +146,7 @@ class App {
     }
   }
 
-  destroyGrids = () => {
+  private destroyGrids = () => {
     for (let monitorIdx in this.monitors) {
       let monitor = this.monitors[monitorIdx];
       let key = getMonitorKey(monitor);
@@ -93,22 +158,17 @@ class App {
     }
   }
 
-  disableHotkey = () => {
+  private disableHotkey = () => {
     Main.keybindingManager.removeHotKey('gTile');
   }
 
-  reinitalize = () => {
+  private reinitalize = () => {
     this.monitors = Main.layoutManager.monitors;
     this.destroyGrids();
     this.initGrids();
   }
 
-  enableHotkey = () => {
-    this.disableHotkey();
-    Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.toggleTiling);
-  }
-
-  resetFocusMetaWindow = () => {
+  private resetFocusMetaWindow = () => {
     if (this.focusMetaWindowConnections.length > 0) {
       for (var idx in this.focusMetaWindowConnections) {
         this.focusMetaWindow?.disconnect(this.focusMetaWindowConnections[idx]);
@@ -129,17 +189,7 @@ class App {
     this.focusMetaWindowPrivateConnections = [];
   }
 
-  refreshGrids = () => {
-    //global.log("RefreshGrids");
-    for (let gridIdx in this.grids) {
-      let grid = this.grids[gridIdx];
-      grid.refresh();
-    }
-  
-    Main.layoutManager["_chrome"].updateRegions();
-  }
-
-  moveGrids = () => {
+  private moveGrids = () => {
     if (!this.status) {
       return;
     }
@@ -183,7 +233,7 @@ class App {
     }
   }
   
-  updateRegions = () => {
+  private updateRegions = () => {
     Main.layoutManager["_chrome"].updateRegions();
     this.refreshGrids();
     for (let idx in this.grids) {
@@ -191,27 +241,8 @@ class App {
       grid.elementsDelegate?.reset();
     }
   }
-
-  getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
-    return Main.getTabList().filter((w) => {
-      let app = this.tracker.get_window_app(w);
-      let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
   
-      if (app == null) {
-        return false;
-      }
-      if (w.minimized) {
-        return false;
-      }
-      if (w_monitor !== monitor) {
-        return false;
-      }
-  
-      return this.focusMetaWindow !== w && w.get_wm_class() != null;
-    });
-  }
-  
-  _onFocus = () => {
+  private _onFocus = () => {
     let window = getFocusApp();
     if (!window) {
       this.resetFocusMetaWindow();
@@ -255,7 +286,7 @@ class App {
     this.moveGrids();
   }
   
-  showTiling = () => {
+  private showTiling = () => {
     this.focusMetaWindow = getFocusApp();
     let wm_type = this.focusMetaWindow.get_window_type();
     let layer = this.focusMetaWindow.get_layer();
@@ -289,38 +320,6 @@ class App {
   
     this.moveGrids();
   }
-  
-  hideTiling = () => {
-    for (let gridIdx in this.grids) {
-      let grid = this.grids[gridIdx];
-      grid.elementsDelegate.reset();
-      grid.hide(false);
-    }
-  
-    this.area.visible = false;
-  
-    this.resetFocusMetaWindow();
-  
-    this.status = false;
-  
-    Main.layoutManager["_chrome"].updateRegions();
-  }
-  
-  toggleTiling = () => {
-    if (this.status) {
-      this.hideTiling();
-    } else {
-      this.showTiling();
-    }
-    return this.status;
-  }
-
-  destroy() {
-    this.disableHotkey();
-    this.destroyGrids();
-    this.resetFocusMetaWindow();
-  }
-  
 }
 
 export let app: App = new App();
