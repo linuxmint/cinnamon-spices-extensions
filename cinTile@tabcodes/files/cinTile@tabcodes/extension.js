@@ -309,12 +309,13 @@ function updateRegions() {
 }
 
 function reset_window(metaWindow) {
-  if (metaWindow) {
-    metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
-    metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
-    metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-    metaWindow.tile(Meta.WindowTileType.NONE, false);
-  }
+  if (!metaWindow)
+    return;
+
+  metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
+  metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
+  metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
+  metaWindow.tile(Meta.WindowTileType.NONE, false);
 }
 
 function _getInvisibleBorderPadding(metaWindow) {
@@ -325,17 +326,11 @@ function _getInvisibleBorderPadding(metaWindow) {
   return [borderX, borderY];
 }
 
-function _getVisibleBorderPadding(metaWindow) {
-  let clientRect = metaWindow.get_rect();
-  let outerRect = metaWindow.get_outer_rect();
-
-  let borderX = outerRect.width - clientRect.width;
-  let borderY = outerRect.height - clientRect.height;
-
-  return [borderX, borderY];
-}
 
 function move_maximize_window(metaWindow, x, y) {
+  if (!metaWindow)
+    return;
+
   let [borderX, borderY] = _getInvisibleBorderPadding(metaWindow);
 
   x = x - borderX;
@@ -346,10 +341,28 @@ function move_maximize_window(metaWindow, x, y) {
 }
 
 function move_resize_window(metaWindow, x, y, width, height) {
-  let [vBorderX, vBorderY] = _getVisibleBorderPadding(metaWindow);
+  if (!metaWindow)
+    return;
 
-  width = width - vBorderX;
-  height = height - vBorderY;
+  // Fix for client-decorated window positioning by @mtwebster
+  // See here for more info
+  // https://github.com/linuxmint/cinnamon-spices-extensions/commit/fda3a2b0c6adfc79ba65c6bd9a174795223523b9
+  
+  let clientRect = metaWindow.get_rect();
+  let outerRect = metaWindow.get_outer_rect();
+
+  let client_deco = clientRect.width > outerRect.width &&
+    clientRect.height > outerRect.height;
+
+  if (client_deco) {
+    x -= outerRect.x - clientRect.x;
+    y -= outerRect.y - clientRect.y;
+    width += (clientRect.width - outerRect.width);
+    height += (clientRect.height - outerRect.height);
+  } else {
+    width -= (outerRect.width - clientRect.width);
+    height -= (outerRect.height - clientRect.height);
+  }
 
   metaWindow.resize(true, width, height);
   metaWindow.move_frame(true, x, y);
@@ -1272,7 +1285,7 @@ Grid.prototype = {
         break;
     }
 
-    if(type.indexOf('switch') == -1) {
+    if (type.indexOf('switch') == -1) {
       this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
       if (this.keyElement) this.keyElement._onHoverChanged();
     }
