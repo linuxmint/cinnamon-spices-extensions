@@ -9,8 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "author": "Attila Greguss",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
     "@types/luxon": "^1.27.0",
@@ -21,6 +20,6 @@
     "webpack": "^5.42.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
-    "@ci-types/cjs": "^1.0.5"
+    "@ci-types/cjs": "^1.0.11"
   }
 }
