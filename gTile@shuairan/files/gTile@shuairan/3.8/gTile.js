@@ -62,11 +62,13 @@ class GridSettingsButton {
         this.rows = rows;
         this.text = text;
         this.actor = new St.Button({
+            style_class: 'settings-button',
             reactive: true,
             can_focus: true,
             track_hover: true
         });
         this.label = new St.Label({
+            style_class: 'settings-label',
             reactive: true, can_focus: true,
             track_hover: true,
             text: this.text
@@ -248,6 +250,8 @@ const KEYCONTROL = {
     'gTile-k-right-meta': '<Shift>Right',
     'gTile-k-up-meta': '<Shift>Up',
     'gTile-k-down-meta': '<Shift>Down',
+    'gTile-k-left-alt': '<Alt>Left',
+    'gTile-k-right-alt': '<Alt>Right'
 };
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/ActionButton.ts
@@ -632,6 +636,7 @@ let ToggleSettingsButton = class ToggleSettingsButton {
         };
         this.text = text;
         this.actor = new ToggleSettingsButton_St.Button({
+            style_class: 'settings-button',
             reactive: true,
             can_focus: true,
             track_hover: true,

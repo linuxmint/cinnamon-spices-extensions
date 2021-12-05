@@ -16,14 +16,14 @@ export class GridSettingsButton {
       this.text = text;
   
       this.actor = new St.Button({
-        //style_class: 'settings-button',
+        style_class: 'settings-button',
         reactive: true,
         can_focus: true,
         track_hover: true
       });
   
       this.label = new St.Label({
-        //style_class: 'settings-label',
+        style_class: 'settings-label',
         reactive: true, can_focus: true,
         track_hover: true,
         text: this.text

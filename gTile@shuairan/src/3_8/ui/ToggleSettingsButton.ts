@@ -18,7 +18,7 @@ export class ToggleSettingsButton {
   constructor(text: string, property: keyof Preferences | TooltipKeys) {
     this.text = text;
     this.actor = new St.Button({
-      //style_class: 'settings-button',
+      style_class: 'settings-button',
       reactive: true,
       can_focus: true,
       track_hover: true,
