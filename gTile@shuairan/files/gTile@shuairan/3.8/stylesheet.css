@@ -66,48 +66,6 @@
     padding:3px
 }
 
-.settings-button
-{
-    background-color: rgba(0,120,255,0.4);
-    color: rgba(255,255,255,0.4);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
-    border:1px rgba(0,200,255,0.4);
-    max-height:30px;
-    min-height:30px;
-}
-
-.settings-button:activate
-{
-   background-color: rgba(0,120,255,0.7);
-    color: rgba(255,255,255,1);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
-    border:1px rgba(0,200,255,0.7);
-}
-
-.settings-button:activate:hover
-{
-    background-color: rgba(30,150,255,0.7);
-    color: rgba(255,255,255,1);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
-    border:1px rgba(0,200,255,0.7);
-}
-
-.settings-button:hover
-{
-    background-color: rgba(0,120,255,0.7);
-    color: rgba(255,255,255,1);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
-    border:1px rgba(0,200,255,0.7);
-}
-
 .animation-icon
 {
     background-image: url("../images/animation-icon.png");

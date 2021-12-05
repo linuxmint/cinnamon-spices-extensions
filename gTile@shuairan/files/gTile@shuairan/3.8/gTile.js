@@ -46,6 +46,83 @@ __webpack_require__.d(__webpack_exports__, {
   "init": () => (/* binding */ init)
 });
 
+;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
+
+
+const St = imports.gi.St;
+class GridSettingsButton {
+    constructor(text, cols, rows) {
+        this._onButtonPress = () => {
+            preferences.nbCols = this.cols;
+            preferences.nbRows = this.rows;
+            app.refreshGrids();
+            return false;
+        };
+        this.cols = cols;
+        this.rows = rows;
+        this.text = text;
+        this.actor = new St.Button({
+            reactive: true,
+            can_focus: true,
+            track_hover: true
+        });
+        this.label = new St.Label({
+            reactive: true, can_focus: true,
+            track_hover: true,
+            text: this.text
+        });
+        this.actor.add_actor(this.label);
+        this.actor.connect('button-press-event', this._onButtonPress);
+    }
+}
+
+;// CONCATENATED MODULE: ./src/3_8/config.ts
+
+
+const preferences = {};
+const Settings = imports.ui.settings;
+let settings;
+let gridSettingsButton = [];
+const initSettings = () => {
+    settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
+    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.enableHotkey, null);
+    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
+    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
+    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', updateSettings, null);
+    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', updateSettings, null);
+    let basestr = 'gridbutton';
+    initGridSettings();
+    for (let i = 1; i <= 4; i++) {
+        let sgbx = basestr + i + 'x';
+        let sgby = basestr + i + 'y';
+        settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, updateGridSettings, null);
+        settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, updateGridSettings, null);
+    }
+};
+const updateSettings = () => {
+    for (const grid in app.Grids) {
+        app.Grids[grid].UpdateSettingsButtons();
+    }
+};
+const initGridSettings = () => {
+    let basestr = 'gridbutton';
+    for (let i = 1; i <= 4; i++) {
+        let sgbx = basestr + i + 'x';
+        let sgby = basestr + i + 'y';
+        let gbx = settings.getValue(sgbx);
+        let gby = settings.getValue(sgby);
+        gridSettingsButton.push(new GridSettingsButton(gbx + 'x' + gby, gbx, gby));
+    }
+};
+const updateGridSettings = () => {
+    gridSettingsButton = [];
+    initGridSettings();
+    for (const gridIdx in app.Grids) {
+        let grid = app.Grids[gridIdx];
+        grid._initGridSettingsButtons();
+    }
+};
+
 ;// CONCATENATED MODULE: ./src/3_8/utils.ts
 const { Object: utils_Object } = imports.gi.GObject;
 const Gettext = imports.gettext;
@@ -183,7 +260,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 const Tooltips = imports.ui.tooltips;
-const St = imports.gi.St;
+const ActionButton_St = imports.gi.St;
 let ActionButton = class ActionButton {
     constructor(grid, classname) {
         this._onButtonPress = () => {
@@ -191,13 +268,13 @@ let ActionButton = class ActionButton {
             return false;
         };
         this.grid = grid;
-        this.actor = new St.Button({
+        this.actor = new ActionButton_St.Button({
             style_class: 'settings-button',
             reactive: true,
             can_focus: true,
             track_hover: true
         });
-        this.icon = new St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
+        this.icon = new ActionButton_St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
         this.actor.add_actor(this.icon);
         this.actor.connect('button-press-event', this._onButtonPress);
         if (TOOLTIPS[classname]) {
@@ -524,38 +601,6 @@ GridElementDelegate = GridElementDelegate_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
-
-
-const GridSettingsButton_St = imports.gi.St;
-class GridSettingsButton {
-    constructor(text, cols, rows) {
-        this._onButtonPress = () => {
-            preferences.nbCols = this.cols;
-            preferences.nbRows = this.rows;
-            app.refreshGrids();
-            return false;
-        };
-        this.cols = cols;
-        this.rows = rows;
-        this.text = text;
-        this.actor = new GridSettingsButton_St.Button({
-            style_class: 'settings-button',
-            reactive: true,
-            can_focus: true,
-            track_hover: true
-        });
-        this.label = new GridSettingsButton_St.Label({
-            style_class: 'settings-label',
-            reactive: true, can_focus: true,
-            track_hover: true,
-            text: this.text
-        });
-        this.actor.add_actor(this.label);
-        this.actor.connect('button-press-event', this._onButtonPress);
-    }
-}
-
 ;// CONCATENATED MODULE: ./src/3_8/ui/ToggleSettingsButton.ts
 var ToggleSettingsButton_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -587,7 +632,6 @@ let ToggleSettingsButton = class ToggleSettingsButton {
         };
         this.text = text;
         this.actor = new ToggleSettingsButton_St.Button({
-            style_class: 'settings-button',
             reactive: true,
             can_focus: true,
             track_hover: true,
@@ -608,24 +652,6 @@ ToggleSettingsButton = ToggleSettingsButton_decorate([
     addSignals
 ], ToggleSettingsButton);
 
-;
-
-;// CONCATENATED MODULE: ./src/3_8/ui/ToggleSettingsButtonListener.ts
-class ToggleSettingsButtonListener {
-    constructor() {
-        this.actors = [];
-        this._updateToggle = () => {
-            for (let actorIdx in this.actors) {
-                let actor = this.actors[actorIdx];
-                actor["_update"]();
-            }
-        };
-    }
-    addActor(actor) {
-        actor.connect('update-toggle', this._updateToggle);
-        this.actors.push(actor);
-    }
-}
 ;
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/TopBar.ts
@@ -678,12 +704,10 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
 
 
 
-
 const Grid_St = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const Clutter = imports.gi.Clutter;
-let toggleSettingListener;
 let Grid = class Grid {
     constructor(monitor_idx, monitor, title, cols, rows) {
         this.tableWidth = 220;
@@ -694,6 +718,7 @@ let Grid = class Grid {
         this.colKey = -1;
         this.isEntered = false;
         this.interceptHide = false;
+        this.toggleSettingButtons = [];
         this._initGridSettingsButtons = () => {
             this.bottombar.destroy_children();
             let rowNum = 0;
@@ -926,17 +951,14 @@ let Grid = class Grid {
         this.isEntered = false;
         if (true) {
             let nbTotalSettings = 4;
-            if (!toggleSettingListener) {
-                toggleSettingListener = new ToggleSettingsButtonListener();
-            }
             let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
             toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
             this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
-            toggleSettingListener.addActor(toggle);
+            this.toggleSettingButtons.push(toggle);
             toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
             toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
             this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
-            toggleSettingListener.addActor(toggle);
+            this.toggleSettingButtons.push(toggle);
             let action = new AutoTileMainAndList(this);
             action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
             this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
@@ -952,6 +974,11 @@ let Grid = class Grid {
         this._displayElements();
         this.normalScaleY = this.actor.scale_y;
         this.normalScaleX = this.actor.scale_x;
+    }
+    UpdateSettingsButtons() {
+        for (const button of this.toggleSettingButtons) {
+            button["_update"]();
+        }
     }
     set_position(x, y) {
         this.x = x;
@@ -1010,52 +1037,6 @@ Grid = Grid_decorate([
 ], Grid);
 
 ;
-
-;// CONCATENATED MODULE: ./src/3_8/config.ts
-
-
-
-const preferences = {};
-const Settings = imports.ui.settings;
-let settings;
-let gridSettingsButton = [];
-const initSettings = () => {
-    settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.enableHotkey, null);
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', updateSettings, null);
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', updateSettings, null);
-    let basestr = 'gridbutton';
-    initGridSettings();
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, updateGridSettings, null);
-        settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, updateGridSettings, null);
-    }
-};
-const updateSettings = () => {
-    toggleSettingListener._updateToggle();
-};
-const initGridSettings = () => {
-    let basestr = 'gridbutton';
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        let gbx = settings.getValue(sgbx);
-        let gby = settings.getValue(sgby);
-        gridSettingsButton.push(new GridSettingsButton(gbx + 'x' + gby, gbx, gby));
-    }
-};
-const updateGridSettings = () => {
-    gridSettingsButton = [];
-    initGridSettings();
-    for (const gridIdx in app.Grids) {
-        let grid = app.Grids[gridIdx];
-        grid._initGridSettingsButtons();
-    }
-};
 
 ;// CONCATENATED MODULE: ./src/3_8/extension.ts
 

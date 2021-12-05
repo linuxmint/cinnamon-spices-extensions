@@ -8,15 +8,12 @@ import { GridElement } from "./GridElement";
 import { GridElementDelegate } from "./GridElementDelegate";
 import { GridSettingsButton } from "./GridSettingsButton";
 import { ToggleSettingsButton } from "./ToggleSettingsButton";
-import { ToggleSettingsButtonListener } from "./ToggleSettingsButtonListener";
 import { TopBar } from "./TopBar";
 
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Clutter = imports.gi.Clutter;
-
-export let toggleSettingListener: ToggleSettingsButtonListener;
 
 export interface Grid extends SignalOverload<"hide-tiling"> {
     
@@ -55,6 +52,7 @@ export class Grid {
   elementsDelegate!: GridElementDelegate;
   elements!: GridElement[][];
   keyElement?: GridElement | null;
+  toggleSettingButtons: ToggleSettingsButton[] = [];
 
   constructor(monitor_idx: number, monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
     this.tableWidth = 220;
@@ -130,19 +128,15 @@ export class Grid {
     if (true) {
       let nbTotalSettings = 4;
 
-      if (!toggleSettingListener) {
-        toggleSettingListener = new ToggleSettingsButtonListener();
-      }
-
       let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
       toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
       this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
-      toggleSettingListener.addActor(toggle);
+      this.toggleSettingButtons.push(toggle);
 
       toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
       toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
       this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
-      toggleSettingListener.addActor(toggle);
+      this.toggleSettingButtons.push(toggle);
 
       let action = new AutoTileMainAndList(this);
       action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
@@ -170,6 +164,12 @@ export class Grid {
 
     this.normalScaleY = this.actor.scale_y;
     this.normalScaleX = this.actor.scale_x;
+  }
+
+  public UpdateSettingsButtons() {
+    for (const button of this.toggleSettingButtons) {
+      button["_update"]();
+    }
   }
 
   public _initGridSettingsButtons = () => {

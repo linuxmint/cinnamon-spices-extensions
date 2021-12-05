@@ -1,5 +1,4 @@
 import { app } from "./extension";
-import { toggleSettingListener } from "./ui/Grid";
 import { GridSettingsButton } from "./ui/GridSettingsButton";
 
 
@@ -57,7 +56,9 @@ export const initSettings = () => {
 }
 
 const updateSettings = () => {
-    toggleSettingListener._updateToggle();
+    for (const grid in app.Grids) {
+        app.Grids[grid].UpdateSettingsButtons();
+    }
 }
 
 const initGridSettings = () => {
