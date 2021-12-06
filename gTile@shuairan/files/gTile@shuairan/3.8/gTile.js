@@ -844,7 +844,7 @@ let Grid = class Grid {
         };
         this._onMouseLeave = () => {
             let [x, y, mask] = global.get_pointer();
-            if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight)) {
+            if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight + this.topbar.actor.height)) {
                 this.isEntered = false;
                 this.elementsDelegate.reset();
                 app.refreshGrids();
