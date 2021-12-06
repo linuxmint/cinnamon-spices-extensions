@@ -374,7 +374,20 @@ export class Grid {
   }
 
   private _onKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
-    let modifier = type.indexOf('meta', type.length - 4) !== -1;
+    let modifier = false;
+    switch(type) {
+      case 'gTile-k-right-meta':
+      case 'gTile-k-left-meta':
+      case 'gTile-k-up-meta':
+      case 'gTile-k-down-meta':
+      case 'gTile-k-right-monitor-move':
+      case 'gTile-k-left-monitor-move':
+      case 'gTile-k-up-monitor-move':
+      case 'gTile-k-down-monitor-move':
+        modifier = true;
+        break;
+    }
+
 
     if (modifier && this.keyElement) {
       if (!this.elementsDelegate.activated) {
@@ -403,16 +416,16 @@ export class Grid {
         this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
-      case 'gTile-k-left-alt':
+      case 'gTile-k-left-monitor-move':
         this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
         break;
-      case 'gTile-k-right-alt':
+      case 'gTile-k-right-monitor-move':
         this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.RIGHT));
         break;
-      case 'gTile-k-up-alt':
+      case 'gTile-k-up-monitor-move':
         this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.TOP));
         break;
-      case 'gTile-k-down-alt':
+      case 'gTile-k-down-monitor-move':
         this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
         break;
       case 'gTile-k-first-grid':
@@ -429,7 +442,8 @@ export class Grid {
         break;
     }
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
-    if (this.keyElement) this.keyElement._onHoverChanged();
+    if (this.keyElement)
+        this.keyElement._onHoverChanged();
   }
 
   private _keyTile = () => {

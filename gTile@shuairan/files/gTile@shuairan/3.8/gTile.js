@@ -297,10 +297,10 @@ const KEYCONTROL = {
     'gTile-k-right-meta': '<Shift>Right',
     'gTile-k-up-meta': '<Shift>Up',
     'gTile-k-down-meta': '<Shift>Down',
-    'gTile-k-left-alt': '<Alt>Left',
-    'gTile-k-right-alt': '<Alt>Right',
-    'gTile-k-up-alt': '<Alt>Up',
-    'gTile-k-down-alt': '<Alt>Down',
+    'gTile-k-left-monitor-move': '<Alt>Left',
+    'gTile-k-right-monitor-move': '<Alt>Right',
+    'gTile-k-up-monitor-move': '<Alt>Up',
+    'gTile-k-down-monitor-move': '<Alt>Down',
     'gTile-k-first-grid': '1',
     'gTile-k-second-grid': '2',
     'gTile-k-third-grid': '3',
@@ -781,7 +781,7 @@ let Grid = class Grid {
             this.bottombar.destroy_children();
             let rowNum = 0;
             let colNum = 0;
-            for (var index = 0; index < gridSettingsButton.length; index++) {
+            for (let index = 0; index < gridSettingsButton.length; index++) {
                 if (colNum >= 4) {
                     colNum = 0;
                     rowNum += 2;
@@ -882,7 +882,19 @@ let Grid = class Grid {
         };
         this._onKeyPressEvent = (type, key) => {
             var _a, _b, _c, _d;
-            let modifier = type.indexOf('meta', type.length - 4) !== -1;
+            let modifier = false;
+            switch (type) {
+                case 'gTile-k-right-meta':
+                case 'gTile-k-left-meta':
+                case 'gTile-k-up-meta':
+                case 'gTile-k-down-meta':
+                case 'gTile-k-right-monitor-move':
+                case 'gTile-k-left-monitor-move':
+                case 'gTile-k-up-monitor-move':
+                case 'gTile-k-down-monitor-move':
+                    modifier = true;
+                    break;
+            }
             if (modifier && this.keyElement) {
                 if (!this.elementsDelegate.activated) {
                     this.keyElement._onButtonPress();
@@ -910,16 +922,16 @@ let Grid = class Grid {
                     this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
                     this.colKey = this.colKey === -1 ? 0 : this.colKey;
                     break;
-                case 'gTile-k-left-alt':
+                case 'gTile-k-left-monitor-move':
                     this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
                     break;
-                case 'gTile-k-right-alt':
+                case 'gTile-k-right-monitor-move':
                     this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.RIGHT));
                     break;
-                case 'gTile-k-up-alt':
+                case 'gTile-k-up-monitor-move':
                     this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.TOP));
                     break;
-                case 'gTile-k-down-alt':
+                case 'gTile-k-down-monitor-move':
                     this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
                     break;
                 case 'gTile-k-first-grid':
@@ -1250,10 +1262,7 @@ class App {
             });
         };
         this.updateRegions = () => {
-            var _a;
             extension_Main.layoutManager["_chrome"].updateRegions();
-            this.refreshGrids();
-            (_a = this.grid.elementsDelegate) === null || _a === void 0 ? void 0 : _a.reset();
         };
         this._onFocus = () => {
             let window = getFocusApp();

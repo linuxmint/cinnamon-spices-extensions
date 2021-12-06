@@ -218,8 +218,6 @@ class App {
 
   private updateRegions = () => {
     Main.layoutManager["_chrome"].updateRegions();
-    this.refreshGrids();
-    this.grid.elementsDelegate?.reset();
   }
 
   private _onFocus = () => {
