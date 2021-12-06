@@ -190,7 +190,7 @@ export class Grid {
     let rowNum = 0;
     let colNum = 0;
 
-    for (var index = 0; index < gridSettingsButton.length; index++) {
+    for (let index = 0; index < gridSettingsButton.length; index++) {
       if (colNum >= 4) {
         colNum = 0;
         rowNum += 2;

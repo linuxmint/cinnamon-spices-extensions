@@ -58,8 +58,10 @@ class App {
       //global.log("KEY BINDNGS");
     }
     catch (e) {
-      global.logError(e);
-      global.logError(e?.stack)
+      if (e instanceof Error) {
+        global.logError(e);
+        global.logError(e?.stack)
+      }
     }
   }
 

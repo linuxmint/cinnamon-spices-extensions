@@ -1313,8 +1313,10 @@ class App {
             global.screen.connect('monitors-changed', this.reinitalize);
         }
         catch (e) {
-            global.logError(e);
-            global.logError(e === null || e === void 0 ? void 0 : e.stack);
+            if (e instanceof Error) {
+                global.logError(e);
+                global.logError(e === null || e === void 0 ? void 0 : e.stack);
+            }
         }
     }
     get FocusMetaWindow() {

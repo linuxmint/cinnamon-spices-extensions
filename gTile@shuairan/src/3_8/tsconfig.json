@@ -1,27 +1,5 @@
 {
-	"compilerOptions": {
-		"lib": [
-			"es2017"
-		],
-		//"module": "CommonJS",
-		"target": "es2017",
-		"moduleResolution": "node",
-		"noImplicitAny": true,
-		"removeComments": true,
-		//"preserveConstEnums": false,
-		"sourceMap": true,
-		"noImplicitThis": true,
-		"strictBindCallApply": true,
-		"strictFunctionTypes": true,
-		"alwaysStrict": true,
-		"noImplicitReturns": true,
-		"noImplicitOverride": true,
-		"noFallthroughCasesInSwitch": true,
-		"strictNullChecks": true,
-		"strictPropertyInitialization": true,
-		"experimentalDecorators": true,
-		"types": []
-	},
+	"extends": "../../tsconfig.json",
 	"include": [
 		"./**/*"
 	],
