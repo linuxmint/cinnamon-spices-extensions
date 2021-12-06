@@ -1,7 +1,7 @@
 import { gridSettingsButton, preferences } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { app } from "../extension";
-import { addSignals, getMonitorKey, objHasKey, SignalOverload } from "../utils";
+import { addSignals, getAdjacentMonitor, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";
 import { GridElement } from "./GridElement";
@@ -14,9 +14,10 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Clutter = imports.gi.Clutter;
+const { Side } = imports.gi.Meta;
 
 export interface Grid extends SignalOverload<"hide-tiling"> {
-    
+
 }
 
 @addSignals
@@ -360,7 +361,7 @@ export class Grid {
     }
   }
 
-  private _onKeyPressEvent = (type: string, key?: string) => {
+  private _onKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
     let modifier = type.indexOf('meta', type.length - 4) !== -1;
 
     if (modifier && this.keyElement) {
@@ -396,6 +397,18 @@ export class Grid {
         this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
+      case 'gTile-k-left-alt':
+        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.LEFT)));
+        break;
+      case 'gTile-k-right-alt':
+        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.RIGHT)));
+        break;
+      case 'gTile-k-up-alt':
+        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.TOP)));
+        break;
+      case 'gTile-k-down-alt':
+        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.BOTTOM)));
+        break;
     }
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
     if (this.keyElement) this.keyElement._onHoverChanged();
@@ -410,8 +423,8 @@ export class Grid {
     }
   }
 
-  private _keyTileSwitch = () => {
-    let key = getMonitorKey(this.monitor);
+  private _keyTileSwitch = (monitorKey?: string) => {
+    let key = monitorKey ?? getMonitorKey(this.monitor);
 
     let candidate: Grid | null = null;
     // find other grids //TODO: improve to loop around all grids!

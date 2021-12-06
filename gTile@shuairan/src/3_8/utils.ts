@@ -128,7 +128,57 @@ export const getUsableScreenArea = (monitor: imports.ui.layout.Monitor) => {
 }
 
 export const getMonitorKey = (monitor: imports.ui.layout.Monitor) => {
+    global.log(monitor.x, monitor.width, monitor.y, monitor.height)
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
+}
+
+export const getAdjacentMonitor = (monitor: imports.ui.layout.Monitor, side: imports.gi.Meta.Side): imports.ui.layout.Monitor => {
+    const monitors = Main.layoutManager.monitors;
+    const contactsOnSide: [monitor: imports.ui.layout.Monitor, contactSurface: number][] = [];
+    for (const mon of monitors) {
+        if (isEqual(mon, monitor))
+            continue;
+
+        const verticalContact = rangeToContactSurface([mon.y, mon.y + mon.height], [monitor.y, monitor.y + monitor.height]);
+        const horizontalContact = rangeToContactSurface([mon.x, mon.x + mon.width], [monitor.x, monitor.x + monitor.width]);
+        switch(side) {
+            case Meta.Side.LEFT:
+                if (monitor.x == mon.x + mon.width) 
+                    contactsOnSide.push([mon, verticalContact]);
+                break;
+            case Meta.Side.RIGHT:
+                if (monitor.x + monitor.width == mon.x)
+                    contactsOnSide.push([mon, verticalContact]);
+                break;
+            case Meta.Side.TOP:
+                if (monitor.y == mon.y + mon.height)
+                    contactsOnSide.push([mon, horizontalContact]);
+                break;
+            case Meta.Side.BOTTOM:
+                if (monitor.y + monitor.height == mon.y)
+                    contactsOnSide.push([mon, horizontalContact]);
+                break;
+        }
+    }
+
+    if (contactsOnSide.length == 0)
+        return monitor;
+
+    // Return the monitor with the most contact
+    return contactsOnSide.reduce(
+        (max, current) => (current[1] > max[1] ? current : max),
+        contactsOnSide[0]
+    )[0];
+    
+}
+
+function isEqual(monitor1: imports.ui.layout.Monitor, monitor2: imports.ui.layout.Monitor) : boolean {
+    return (
+        monitor1.x == monitor2.x &&
+        monitor1.y == monitor2.y &&
+        monitor1.height == monitor2.height &&
+        monitor1.width == monitor2.width
+    );
 }
 
 export const getFocusApp = () => {
@@ -137,4 +187,23 @@ export const getFocusApp = () => {
 
 const isPrimaryMonitor = (monitor: imports.ui.layout.Monitor) => {
     return Main.layoutManager.primaryMonitor === monitor;
+}
+
+type Range = [start: number, end: number];
+
+function intersection(a: Range, b: Range): Range | null {
+    //get the range with the smaller starting point (min) and greater start (max)
+    let min: Range = (a[0] < b[0] ? a : b)
+    let max: Range = (min == a ? b : a)
+
+    //min ends before max starts -> no intersection
+    if (min[1] < max[0])
+        return null //the ranges don't intersect
+
+    return [max[0], (min[1] < max[1] ? min[1] : max[1])]
+}
+
+function rangeToContactSurface(a: Range, b: Range): number {
+    const range = intersection(a, b);
+    return range ? range[1] - range[0] : 0;
 }

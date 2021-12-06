@@ -222,14 +222,63 @@ const getUsableScreenArea = (monitor) => {
     return [left, top, width, height];
 };
 const getMonitorKey = (monitor) => {
+    global.log(monitor.x, monitor.width, monitor.y, monitor.height);
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 };
+const getAdjacentMonitor = (monitor, side) => {
+    const monitors = Main.layoutManager.monitors;
+    const contactsOnSide = [];
+    for (const mon of monitors) {
+        if (isEqual(mon, monitor))
+            continue;
+        const verticalContact = rangeToContactSurface([mon.y, mon.y + mon.height], [monitor.y, monitor.y + monitor.height]);
+        const horizontalContact = rangeToContactSurface([mon.x, mon.x + mon.width], [monitor.x, monitor.x + monitor.width]);
+        switch (side) {
+            case Meta.Side.LEFT:
+                if (monitor.x == mon.x + mon.width)
+                    contactsOnSide.push([mon, verticalContact]);
+                break;
+            case Meta.Side.RIGHT:
+                if (monitor.x + monitor.width == mon.x)
+                    contactsOnSide.push([mon, verticalContact]);
+                break;
+            case Meta.Side.TOP:
+                if (monitor.y == mon.y + mon.height)
+                    contactsOnSide.push([mon, horizontalContact]);
+                break;
+            case Meta.Side.BOTTOM:
+                if (monitor.y + monitor.height == mon.y)
+                    contactsOnSide.push([mon, horizontalContact]);
+                break;
+        }
+    }
+    if (contactsOnSide.length == 0)
+        return monitor;
+    return contactsOnSide.reduce((max, current) => (current[1] > max[1] ? current : max), contactsOnSide[0])[0];
+};
+function isEqual(monitor1, monitor2) {
+    return (monitor1.x == monitor2.x &&
+        monitor1.y == monitor2.y &&
+        monitor1.height == monitor2.height &&
+        monitor1.width == monitor2.width);
+}
 const getFocusApp = () => {
     return global.display.focus_window;
 };
 const isPrimaryMonitor = (monitor) => {
     return Main.layoutManager.primaryMonitor === monitor;
 };
+function intersection(a, b) {
+    let min = (a[0] < b[0] ? a : b);
+    let max = (min == a ? b : a);
+    if (min[1] < max[0])
+        return null;
+    return [max[0], (min[1] < max[1] ? min[1] : max[1])];
+}
+function rangeToContactSurface(a, b) {
+    const range = intersection(a, b);
+    return range ? range[1] - range[0] : 0;
+}
 
 ;// CONCATENATED MODULE: ./src/3_8/constants.ts
 
@@ -251,7 +300,9 @@ const KEYCONTROL = {
     'gTile-k-up-meta': '<Shift>Up',
     'gTile-k-down-meta': '<Shift>Down',
     'gTile-k-left-alt': '<Alt>Left',
-    'gTile-k-right-alt': '<Alt>Right'
+    'gTile-k-right-alt': '<Alt>Right',
+    'gTile-k-up-alt': '<Alt>Up',
+    'gTile-k-down-alt': '<Alt>Down'
 };
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/ActionButton.ts
@@ -713,6 +764,7 @@ const Grid_St = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const Clutter = imports.gi.Clutter;
+const { Side } = imports.gi.Meta;
 let Grid = class Grid {
     constructor(monitor_idx, monitor, title, cols, rows) {
         this.tableWidth = 220;
@@ -862,6 +914,18 @@ let Grid = class Grid {
                     this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
                     this.colKey = this.colKey === -1 ? 0 : this.colKey;
                     break;
+                case 'gTile-k-left-alt':
+                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.LEFT)));
+                    break;
+                case 'gTile-k-right-alt':
+                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.RIGHT)));
+                    break;
+                case 'gTile-k-up-alt':
+                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.TOP)));
+                    break;
+                case 'gTile-k-down-alt':
+                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.BOTTOM)));
+                    break;
             }
             this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
             if (this.keyElement)
@@ -875,8 +939,8 @@ let Grid = class Grid {
                 this.rowKey = -1;
             }
         };
-        this._keyTileSwitch = () => {
-            let key = getMonitorKey(this.monitor);
+        this._keyTileSwitch = (monitorKey) => {
+            let key = monitorKey !== null && monitorKey !== void 0 ? monitorKey : getMonitorKey(this.monitor);
             let candidate = null;
             for (let k in app.Grids) {
                 if (k === key) {
