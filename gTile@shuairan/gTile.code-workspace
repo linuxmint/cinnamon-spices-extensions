@@ -3,14 +3,6 @@
       {
         "path": "../gTile@shuairan",
         "name": "gTile",
-      },
-      {
-        "path": "../../types-cjs",
-        "name": "cjs",
-      },
-      {
-        "path": "../../types-gjs",
-        "name": "gjs",
       }
     ],
     "settings": {
@@ -18,7 +10,26 @@
         "Gettext",
         "bindtextdomain",
         "dgettext"
-      ]
+      ],
+      "todo-tree.highlights.useColourScheme": true,
+        "todo-tree.highlights.foregroundColourScheme": [
+            "white",
+            "black",
+            "black",
+            "white",
+            "white",
+            "white",
+            "black"
+        ],
+        "todo-tree.highlights.backgroundColourScheme": [
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "indigo",
+            "violet"
+        ],
     },
     "tasks": {
       "version": "2.0.0",
@@ -46,7 +57,10 @@
     },
     "extensions": {
       "recommendations": [
-        "streetsidesoftware.code-spell-checker"
+        "streetsidesoftware.code-spell-checker",
+        "wix.vscode-import-cost",
+        "eg2.vscode-npm-script",
+        "gruntfuggly.todo-tree"
       ]
     }
   }
