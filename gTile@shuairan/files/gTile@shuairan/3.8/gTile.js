@@ -165,13 +165,6 @@ const _getInvisibleBorderPadding = (metaWindow) => {
     let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
     return [borderX, borderY];
 };
-const _getVisibleBorderPadding = (metaWindow) => {
-    let clientRect = metaWindow.get_rect();
-    let outerRect = metaWindow.get_outer_rect();
-    let borderX = outerRect.width - clientRect.width;
-    let borderY = outerRect.height - clientRect.height;
-    return [borderX, borderY];
-};
 const move_maximize_window = (metaWindow, x, y) => {
     if (metaWindow == null)
         return;
@@ -182,11 +175,24 @@ const move_maximize_window = (metaWindow, x, y) => {
     metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
 };
 const move_resize_window = (metaWindow, x, y, width, height) => {
-    if (metaWindow == null)
+    if (!metaWindow)
         return;
-    let [vBorderX, vBorderY] = _getVisibleBorderPadding(metaWindow);
-    width = width - vBorderX;
-    height = height - vBorderY;
+    let clientRect = metaWindow.get_rect();
+    let outerRect = metaWindow.get_outer_rect();
+    let shiftX = 0;
+    let shiftY = 0;
+    let client_deco = clientRect.width > outerRect.width &&
+        clientRect.height > outerRect.height;
+    if (client_deco) {
+        x -= outerRect.x - clientRect.x;
+        y -= outerRect.y - clientRect.y;
+        width += (clientRect.width - outerRect.width);
+        height += (clientRect.height - outerRect.height);
+    }
+    else {
+        width -= (outerRect.width - clientRect.width);
+        height -= (outerRect.height - clientRect.height);
+    }
     metaWindow.resize(true, width, height);
     metaWindow.move_frame(true, x, y);
 };

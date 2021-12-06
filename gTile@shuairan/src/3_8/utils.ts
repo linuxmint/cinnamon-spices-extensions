@@ -56,16 +56,6 @@ const _getInvisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
     return [borderX, borderY];
 }
 
-const _getVisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
-    let clientRect = metaWindow.get_rect();
-    let outerRect = metaWindow.get_outer_rect();
-
-    let borderX = outerRect.width - clientRect.width;
-    let borderY = outerRect.height - clientRect.height;
-
-    return [borderX, borderY];
-}
-
 export const move_maximize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number) => {
     if (metaWindow == null)
         return;
@@ -80,13 +70,27 @@ export const move_maximize_window = (metaWindow: imports.gi.Meta.Window | null, 
 }
 
 export const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x: number, y: number, width: number, height: number) => {
-    if (metaWindow == null)
+    if (!metaWindow)
         return;
 
-    let [vBorderX, vBorderY] = _getVisibleBorderPadding(metaWindow);
+    let clientRect = metaWindow.get_rect();
+    let outerRect = metaWindow.get_outer_rect();
 
-    width = width - vBorderX;
-    height = height - vBorderY;
+    let shiftX = 0;
+    let shiftY = 0;
+
+    let client_deco = clientRect.width > outerRect.width &&
+        clientRect.height > outerRect.height;
+
+    if (client_deco) {
+        x -= outerRect.x - clientRect.x;
+        y -= outerRect.y - clientRect.y;
+        width += (clientRect.width - outerRect.width);
+        height += (clientRect.height - outerRect.height);
+    } else {
+        width -= (outerRect.width - clientRect.width);
+        height -= (outerRect.height - clientRect.height);
+    }
 
     metaWindow.resize(true, width, height);
     metaWindow.move_frame(true, x, y);
@@ -141,9 +145,9 @@ export const getAdjacentMonitor = (monitor: imports.ui.layout.Monitor, side: imp
 
         const verticalContact = rangeToContactSurface([mon.y, mon.y + mon.height], [monitor.y, monitor.y + monitor.height]);
         const horizontalContact = rangeToContactSurface([mon.x, mon.x + mon.width], [monitor.x, monitor.x + monitor.width]);
-        switch(side) {
+        switch (side) {
             case Meta.Side.LEFT:
-                if (monitor.x == mon.x + mon.width) 
+                if (monitor.x == mon.x + mon.width)
                     contactsOnSide.push([mon, verticalContact]);
                 break;
             case Meta.Side.RIGHT:
@@ -169,10 +173,10 @@ export const getAdjacentMonitor = (monitor: imports.ui.layout.Monitor, side: imp
         (max, current) => (current[1] > max[1] ? current : max),
         contactsOnSide[0]
     )[0];
-    
+
 }
 
-function isEqual(monitor1: imports.ui.layout.Monitor, monitor2: imports.ui.layout.Monitor) : boolean {
+function isEqual(monitor1: imports.ui.layout.Monitor, monitor2: imports.ui.layout.Monitor): boolean {
     return (
         monitor1.x == monitor2.x &&
         monitor1.y == monitor2.y &&
