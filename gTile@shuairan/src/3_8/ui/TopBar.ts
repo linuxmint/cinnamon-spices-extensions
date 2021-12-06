@@ -43,7 +43,7 @@ export class TopBar {
     }
   
     private _onCloseButtonClicked = () => {
-      app.toggleTiling();
+      app.ToggleUI();
       return false;
     }
   }

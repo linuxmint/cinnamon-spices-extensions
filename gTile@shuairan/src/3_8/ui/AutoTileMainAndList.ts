@@ -23,7 +23,7 @@ export class AutoTileMainAndList extends ActionButton<"resize-done"> {
 
     let monitor = this.grid.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-    let windows = app.getNotFocusedWindowsOfMonitor(monitor);
+    let windows = app.GetNotFocusedWindowsOfMonitor(monitor);
 
     move_resize_window(app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
 

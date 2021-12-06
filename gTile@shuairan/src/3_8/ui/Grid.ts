@@ -319,7 +319,7 @@ export class Grid {
   }
 
   private BindKeyControls = () => {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.toggleTiling);
+    Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.ToggleUI);
     Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
     Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
     for (let index in KEYCONTROL) {

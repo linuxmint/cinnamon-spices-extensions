@@ -364,7 +364,7 @@ let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
             reset_window(app.FocusMetaWindow);
             let monitor = this.grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let windows = app.getNotFocusedWindowsOfMonitor(monitor);
+            let windows = app.GetNotFocusedWindowsOfMonitor(monitor);
             move_resize_window(app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
             let winHeight = screenHeight / windows.length;
             let countWin = 0;
@@ -407,7 +407,7 @@ let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
             reset_window(app.FocusMetaWindow);
             let monitor = this.grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let windows = app.getNotFocusedWindowsOfMonitor(monitor);
+            let windows = app.GetNotFocusedWindowsOfMonitor(monitor);
             let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
             let winHeight = screenHeight / nbWindowOnEachSide;
             let countWin = 0;
@@ -717,7 +717,7 @@ const TopBar_St = imports.gi.St;
 class TopBar {
     constructor(title) {
         this._onCloseButtonClicked = () => {
-            app.toggleTiling();
+            app.ToggleUI();
             return false;
         };
         this.actor = new TopBar_St.BoxLayout({ style_class: 'top-box' });
@@ -817,7 +817,7 @@ let Grid = class Grid {
             }
         };
         this.BindKeyControls = () => {
-            Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.toggleTiling);
+            Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.ToggleUI);
             Grid_Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
             Grid_Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
             for (let index in KEYCONTROL) {
@@ -1136,14 +1136,14 @@ class App {
         this.area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
         this.focusMetaWindow = null;
         this.EnableHotkey = () => {
-            this.disableHotkey();
-            extension_Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.toggleTiling);
+            this.DisableHotkey();
+            extension_Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.ToggleUI);
         };
         this.RefreshGrid = () => {
             this.grid.RefreshGridElements();
             extension_Main.layoutManager["_chrome"].updateRegions();
         };
-        this.getNotFocusedWindowsOfMonitor = (monitor) => {
+        this.GetNotFocusedWindowsOfMonitor = (monitor) => {
             return extension_Main.getTabList().filter((w) => {
                 let app = this.tracker.get_window_app(w);
                 let w_monitor = extension_Main.layoutManager.monitors[w.get_monitor()];
@@ -1159,38 +1159,62 @@ class App {
                 return this.focusMetaWindow !== w && w.get_wm_class() != null;
             });
         };
-        this.hideTiling = () => {
-            this.grid.elementsDelegate.reset();
-            this.grid.Hide(false);
-            this.area.visible = false;
-            this.resetFocusMetaWindow();
-            this.visible = false;
-            extension_Main.layoutManager["_chrome"].updateRegions();
-        };
-        this.toggleTiling = () => {
+        this.ToggleUI = () => {
             if (this.visible) {
-                this.hideTiling();
+                this.HideUI();
             }
             else {
-                this.ShowTiling();
+                this.ShowUI();
             }
             return this.visible;
         };
-        this.destroyGrids = () => {
+        this.MoveToMonitor = async (current, newMonitor) => {
+            if (current.index == newMonitor.index)
+                return;
+            this.grid.ChangeCurrentMonitor(newMonitor);
+            this.MoveUIActor();
+        };
+        this.ShowUI = () => {
+            var _a;
+            this.focusMetaWindow = getFocusApp();
+            let wm_type = this.focusMetaWindow.get_window_type();
+            let layer = this.focusMetaWindow.get_layer();
+            this.area.visible = true;
+            if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
+                let grid = this.grid;
+                let window = getFocusApp();
+                grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : extension_Main.layoutManager.primaryMonitor);
+                let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+                let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
+                this.OnFocus();
+                this.visible = true;
+            }
+            this.MoveUIActor();
+        };
+        this.HideUI = () => {
+            this.grid.elementsDelegate.reset();
+            this.grid.Hide(false);
+            this.area.visible = false;
+            this.ResetFocusMetaWindow();
+            this.visible = false;
+            extension_Main.layoutManager["_chrome"].updateRegions();
+        };
+        this.DestroyGrid = () => {
             if (typeof this.grid != 'undefined') {
                 this.grid.Hide(true);
                 extension_Main.layoutManager.removeChrome(this.grid.actor);
             }
         };
-        this.disableHotkey = () => {
+        this.DisableHotkey = () => {
             extension_Main.keybindingManager.removeHotKey('gTile');
         };
-        this.reinitalize = () => {
+        this.ReInitialize = () => {
             this.monitors = extension_Main.layoutManager.monitors;
-            this.destroyGrids();
-            this.initGrids();
+            this.DestroyGrid();
+            this.InitGrid();
         };
-        this.resetFocusMetaWindow = () => {
+        this.ResetFocusMetaWindow = () => {
             var _a, _b;
             if (this.focusMetaWindowConnections.length > 0) {
                 for (var idx in this.focusMetaWindowConnections) {
@@ -1209,7 +1233,7 @@ class App {
             this.focusMetaWindowConnections = [];
             this.focusMetaWindowPrivateConnections = [];
         };
-        this.moveGrids = () => {
+        this.MoveUIActor = () => {
             if (!this.visible) {
                 return;
             }
@@ -1249,19 +1273,20 @@ class App {
         this.updateRegions = () => {
             extension_Main.layoutManager["_chrome"].updateRegions();
         };
-        this._onFocus = () => {
+        this.OnFocus = () => {
+            global.log("FOCUS CHANGED");
             let window = getFocusApp();
             if (!window) {
-                this.resetFocusMetaWindow();
+                this.ResetFocusMetaWindow();
                 this.grid.topbar._set_title('gTile');
                 return;
             }
-            this.resetFocusMetaWindow();
+            this.ResetFocusMetaWindow();
             this.focusMetaWindow = window;
             let actor = this.focusMetaWindow.get_compositor_private();
             if (actor) {
-                this.focusMetaWindowPrivateConnections.push(actor.connect('size-changed', this.moveGrids));
-                this.focusMetaWindowPrivateConnections.push(actor.connect('position-changed', this.moveGrids));
+                this.focusMetaWindowPrivateConnections.push(actor.connect('size-changed', this.MoveUIActor));
+                this.focusMetaWindowPrivateConnections.push(actor.connect('position-changed', this.MoveUIActor));
             }
             let app = this.tracker.get_window_app(this.focusMetaWindow);
             let title = this.focusMetaWindow.get_title();
@@ -1269,39 +1294,16 @@ class App {
                 this.grid.topbar._set_app(app, title);
             else
                 this.grid.topbar._set_title(title);
-            this.moveGrids();
-        };
-        this.MoveToMonitor = async (current, newMonitor) => {
-            if (current.index == newMonitor.index)
-                return;
-            this.grid.ChangeCurrentMonitor(newMonitor);
-            this.moveGrids();
-        };
-        this.ShowTiling = () => {
-            var _a;
-            this.focusMetaWindow = getFocusApp();
-            let wm_type = this.focusMetaWindow.get_window_type();
-            let layer = this.focusMetaWindow.get_layer();
-            this.area.visible = true;
-            if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
-                let grid = this.grid;
-                let window = getFocusApp();
-                grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : extension_Main.layoutManager.primaryMonitor);
-                let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
-                grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
-                this._onFocus();
-                this.visible = true;
-            }
-            this.moveGrids();
+            this.MoveUIActor();
         };
         try {
             extension_Main.uiGroup.add_actor(this.area);
             initSettings();
-            this.initGrids();
+            this.InitGrid();
             this.EnableHotkey();
-            this.tracker.connect("notify::focus_app", this._onFocus);
-            global.screen.connect('monitors-changed', this.reinitalize);
+            global.display.connect("notify::focus_window", this.OnFocus);
+            this.tracker.connect("notify::focus_app", this.OnFocus);
+            global.screen.connect('monitors-changed', this.ReInitialize);
         }
         catch (e) {
             if (e instanceof Error) {
@@ -1317,16 +1319,16 @@ class App {
         return this.grid;
     }
     destroy() {
-        this.disableHotkey();
-        this.destroyGrids();
-        this.resetFocusMetaWindow();
+        this.DisableHotkey();
+        this.DestroyGrid();
+        this.ResetFocusMetaWindow();
     }
-    initGrids() {
+    InitGrid() {
         this.grid = new Grid(extension_Main.layoutManager.primaryMonitor.index, extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
         extension_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
         this.grid.actor.set_opacity(0);
         this.grid.Hide(true);
-        this.grid.connect('hide-tiling', this.hideTiling);
+        this.grid.connect('hide-tiling', this.HideUI);
     }
 }
 let app = new App();

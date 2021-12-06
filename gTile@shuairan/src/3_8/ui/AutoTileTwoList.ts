@@ -24,7 +24,7 @@ export class AutoTileTwoList extends ActionButton<"resize-done"> {
 
     let monitor = this.grid.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-    let windows = app.getNotFocusedWindowsOfMonitor(monitor);
+    let windows = app.GetNotFocusedWindowsOfMonitor(monitor);
     let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
     let winHeight = screenHeight / nbWindowOnEachSide;
 

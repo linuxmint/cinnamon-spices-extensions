@@ -43,17 +43,17 @@ class App {
       Main.uiGroup.add_actor(this.area);
 
       initSettings();
-      this.initGrids();
+      this.InitGrid();
 
       this.EnableHotkey();
 
-      this.tracker.connect(
-        "notify::focus_app",
-        this._onFocus
-      );
+      // TODO: These don't work, check why
+      global.display.connect("notify::focus_window", this.OnFocusedWindowChanged);
+      this.tracker.connect("notify::focus_app", this.OnFocusedWindowChanged);
+
       global.screen.connect(
         'monitors-changed',
-        this.reinitalize
+        this.ReInitialize
       );
       //global.log("KEY BINDNGS");
     }
@@ -66,14 +66,18 @@ class App {
   }
 
   public destroy() {
-    this.disableHotkey();
-    this.destroyGrids();
-    this.resetFocusMetaWindow();
+    this.DisableHotkey();
+    this.DestroyGrid();
+    this.ResetFocusedWindow();
   }
 
   public EnableHotkey = () => {
-    this.disableHotkey();
-    Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.toggleTiling);
+    this.DisableHotkey();
+    Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.ToggleUI);
+  }
+
+  private DisableHotkey = () => {
+    Main.keybindingManager.removeHotKey('gTile');
   }
 
   public RefreshGrid = () => {
@@ -82,7 +86,7 @@ class App {
     Main.layoutManager["_chrome"].updateRegions();
   }
 
-  public getNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
+  public GetNotFocusedWindowsOfMonitor = (monitor: imports.ui.layout.Monitor) => {
     return Main.getTabList().filter((w) => {
       let app = this.tracker.get_window_app(w);
       let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
@@ -101,29 +105,69 @@ class App {
     });
   }
 
-  public hideTiling = () => {
+  public ToggleUI = () => {
+    if (this.visible) {
+      this.HideUI();
+    } else {
+      this.ShowUI();
+    }
+    return this.visible;
+  }
+
+  public MoveToMonitor = async (current: imports.ui.layout.Monitor, newMonitor: imports.ui.layout.Monitor) => {
+    if (current.index == newMonitor.index)
+      return;
+
+    this.grid.ChangeCurrentMonitor(newMonitor);
+    this.MoveUIActor();
+  }
+
+  private ShowUI = () => {
+    this.focusMetaWindow = getFocusApp();
+    let wm_type = this.focusMetaWindow.get_window_type();
+    let layer = this.focusMetaWindow.get_layer();
+
+    this.area.visible = true;
+    if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
+        let grid = this.grid;
+
+        let window = getFocusApp();
+        grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
+
+        let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+        let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+
+        grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
+
+      this.OnFocusedWindowChanged();
+      this.visible = true;
+    }
+
+    this.MoveUIActor();
+  }
+
+  private HideUI = () => {
     this.grid.elementsDelegate.reset();
     this.grid.Hide(false);
 
     this.area.visible = false;
 
-    this.resetFocusMetaWindow();
+    this.ResetFocusedWindow();
 
     this.visible = false;
 
     Main.layoutManager["_chrome"].updateRegions();
   }
 
-  public toggleTiling = () => {
-    if (this.visible) {
-      this.hideTiling();
-    } else {
-      this.ShowTiling();
-    }
-    return this.visible;
+  //#region Init
+
+  private ReInitialize = () => {
+    this.monitors = Main.layoutManager.monitors;
+    this.DestroyGrid();
+    this.InitGrid();
   }
 
-  private initGrids() {
+  private InitGrid() {
     this.grid = new Grid(Main.layoutManager.primaryMonitor.index, Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
 
     Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
@@ -131,49 +175,24 @@ class App {
     this.grid.Hide(true);
     this.grid.connect(
       'hide-tiling',
-      this.hideTiling
+      this.HideUI
     );
   }
 
-  private destroyGrids = () => {
+  private DestroyGrid = () => {
     if (typeof this.grid != 'undefined') {
       this.grid.Hide(true);
       Main.layoutManager.removeChrome(this.grid.actor);
     }
   }
 
-  private disableHotkey = () => {
-    Main.keybindingManager.removeHotKey('gTile');
-  }
+  //#endregion
 
-  private reinitalize = () => {
-    this.monitors = Main.layoutManager.monitors;
-    this.destroyGrids();
-    this.initGrids();
-  }
-
-  private resetFocusMetaWindow = () => {
-    if (this.focusMetaWindowConnections.length > 0) {
-      for (var idx in this.focusMetaWindowConnections) {
-        this.focusMetaWindow?.disconnect(this.focusMetaWindowConnections[idx]);
-      }
-    }
-
-    if (this.focusMetaWindowPrivateConnections.length > 0) {
-      let actor = this.focusMetaWindow?.get_compositor_private();
-      if (actor) {
-        for (let idx in this.focusMetaWindowPrivateConnections) {
-          actor.disconnect(this.focusMetaWindowPrivateConnections[idx]);
-        }
-      }
-    }
-
-    this.focusMetaWindow = null;
-    this.focusMetaWindowConnections = [];
-    this.focusMetaWindowPrivateConnections = [];
-  }
-
-  private moveGrids = () => {
+  /**
+   * Moves the UI to it's desired position based on it's current monitor;
+   * @returns 
+   */
+  private MoveUIActor = () => {
     if (!this.visible) {
       return;
     }
@@ -219,15 +238,15 @@ class App {
     Main.layoutManager["_chrome"].updateRegions();
   }
 
-  private _onFocus = () => {
+  private OnFocusedWindowChanged = () => {
     let window = getFocusApp();
     if (!window) {
-      this.resetFocusMetaWindow();
+      this.ResetFocusedWindow();
       this.grid.topbar._set_title('gTile');
       return;
     }
 
-    this.resetFocusMetaWindow();
+    this.ResetFocusedWindow();
 
     this.focusMetaWindow = window;
 
@@ -236,13 +255,13 @@ class App {
       this.focusMetaWindowPrivateConnections.push(
         actor.connect(
           'size-changed',
-          this.moveGrids
+          this.MoveUIActor
         )
       );
       this.focusMetaWindowPrivateConnections.push(
         actor.connect(
           'position-changed',
-          this.moveGrids
+          this.MoveUIActor
         )
       );
     }
@@ -252,39 +271,32 @@ class App {
 
     if (app) this.grid.topbar._set_app(app, title);
     else this.grid.topbar._set_title(title);
-    this.moveGrids();
+    this.MoveUIActor();
   }
 
-  public MoveToMonitor = async (current: imports.ui.layout.Monitor, newMonitor: imports.ui.layout.Monitor) => {
-    if (current.index == newMonitor.index)
-      return;
 
-    this.grid.ChangeCurrentMonitor(newMonitor);
-    this.moveGrids();
-  }
-
-  private ShowTiling = () => {
-    this.focusMetaWindow = getFocusApp();
-    let wm_type = this.focusMetaWindow.get_window_type();
-    let layer = this.focusMetaWindow.get_layer();
-
-    this.area.visible = true;
-    if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
-        let grid = this.grid;
-
-        let window = getFocusApp();
-        grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
-
-        let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-        let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
-
-        grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
-
-      this._onFocus();
-      this.visible = true;
+  /**
+   * Disconnects from all subscribed events for the Previous Window
+   */
+   private ResetFocusedWindow = () => {
+    if (this.focusMetaWindowConnections.length > 0) {
+      for (var idx in this.focusMetaWindowConnections) {
+        this.focusMetaWindow?.disconnect(this.focusMetaWindowConnections[idx]);
+      }
     }
 
-    this.moveGrids();
+    if (this.focusMetaWindowPrivateConnections.length > 0) {
+      let actor = this.focusMetaWindow?.get_compositor_private();
+      if (actor) {
+        for (let idx in this.focusMetaWindowPrivateConnections) {
+          actor.disconnect(this.focusMetaWindowPrivateConnections[idx]);
+        }
+      }
+    }
+
+    this.focusMetaWindow = null;
+    this.focusMetaWindowConnections = [];
+    this.focusMetaWindowPrivateConnections = [];
   }
 }
 
