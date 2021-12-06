@@ -171,12 +171,12 @@ msgid "Show Desktop"
 msgstr "Vis skrivebord"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
-msgid "â¦ Dragging to the right: "
-msgstr "â¦ Trække til højre: "
+msgid "↦ Dragging to the right: "
+msgstr "↦ Trække til højre: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
-msgid "â¤ Dragging to the left: "
-msgstr "â¦ Trække til venstre: "
+msgid "↤ Dragging to the left: "
+msgstr "↤ Trække til venstre: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options

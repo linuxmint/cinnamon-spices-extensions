@@ -1,10 +1,13 @@
 /*****************************************************************
 
-             This extension has been developped by
+             This extension has been developed by
             vibou and forked to cinnamon by shuairan
-
            With the help of the gnome-shell community
 
+            It was further forked by tabcodes in order to
+              provide some small updates, including
+            improved multi-monitor and hotkey support
+2ggg
 ******************************************************************/
 
 /*****************************************************************
@@ -25,15 +28,15 @@ const Panel = imports.ui.panel;
 
 const GLib = imports.gi.GLib;
 const Gettext = imports.gettext;
-const UUID = 'gTile@shuairan';
+const UUID = 'cinTile@tabcodes';
 Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
 
 function _(str) {
-    let customTranslation = Gettext.dgettext(UUID, str);
-    if(customTranslation != str) {
-        return customTranslation;
-    }
-    return Gettext.gettext(str);
+  let customTranslation = Gettext.dgettext(UUID, str);
+  if (customTranslation != str) {
+    return customTranslation;
+  }
+  return Gettext.gettext(str);
 }
 
 const SETTINGS_AUTO_CLOSE = 'autoclose';
@@ -46,15 +49,25 @@ TOOLTIPS['action-main-list'] = _("Auto tile main and list");
 TOOLTIPS['action-two-list'] = _("Auto tile two lists");
 
 const KEYCONTROL = [];
-KEYCONTROL['gTile-k-left'] = 'Left';
-KEYCONTROL['gTile-k-right'] = 'Right';
-KEYCONTROL['gTile-k-up'] = 'Up';
-KEYCONTROL['gTile-k-down'] = 'Down';
+KEYCONTROL['cinTile-k-left'] = 'Left';
+KEYCONTROL['cinTile-k-right'] = 'Right';
+KEYCONTROL['cinTile-k-up'] = 'Up';
+KEYCONTROL['cinTile-k-down'] = 'Down';
+
+
+
+
 let metaKey = '<Shift>';
 for (let type in KEYCONTROL) {
   let key = KEYCONTROL[type];
   KEYCONTROL[type + '-meta'] = metaKey + key;
 }
+
+// Key controls for switching to different tile organizations
+KEYCONTROL['cinTile-k-switch-1'] = '1';
+KEYCONTROL['cinTile-k-switch-2'] = '2';
+KEYCONTROL['cinTile-k-switch-3'] = '3';
+KEYCONTROL['cinTile-k-switch-4'] = '4';
 
 let status;
 let grids;
@@ -69,7 +82,7 @@ let toggleSettingListener;
 let preferences = {};
 let settings;
 
-const isFinalized = function(obj) {
+const isFinalized = function (obj) {
   return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 }
 
@@ -79,7 +92,7 @@ const isFinalized = function(obj) {
 /*INIT SETTINGS HERE TO ADD OR REMOVE SETTINGS BUTTON*/
 /*new GridSettingsButton(LABEL, NBCOL, NBROW) */
 function initSettings() {
-  settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
+  settings = new Settings.ExtensionSettings(preferences, 'cinTile@tabcodes');
   //hotkey
   settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', enableHotkey, null);
   //grid (nbCols and nbRows)
@@ -135,7 +148,9 @@ function enable() {
   monitors = Main.layoutManager.monitors;
   tracker = Cinnamon.WindowTracker.get_default();
 
-  area = new St.BoxLayout({style_class: 'grid-preview'});
+  area = new St.BoxLayout({
+    style_class: 'grid-preview'
+  });
   Main.uiGroup.add_actor(area);
 
   initSettings();
@@ -151,7 +166,7 @@ function enable() {
     'monitors-changed',
     reinitalize
   );
-  //global.log("KEY BINDNGS");
+
 }
 
 function disable() {
@@ -164,11 +179,11 @@ function disable() {
 
 function enableHotkey() {
   disableHotkey();
-  Main.keybindingManager.addHotKey('gTile', preferences.hotkey, toggleTiling);
+  Main.keybindingManager.addHotKey('cinTile', preferences.hotkey, toggleTiling);
 }
 
 function disableHotkey() {
-  Main.keybindingManager.removeHotKey('gTile');
+  Main.keybindingManager.removeHotKey('cinTile');
 }
 
 function reinitalize() {
@@ -202,11 +217,13 @@ function initGrids() {
   grids = {};
   for (let monitorIdx in monitors) {
     let monitor = monitors[monitorIdx];
-    let grid = new Grid(parseInt(monitorIdx), monitor, 'gTile', preferences.nbCols, preferences.nbRows);
+    let grid = new Grid(parseInt(monitorIdx), monitor, 'cinTile', preferences.nbCols, preferences.nbRows);
     let key = getMonitorKey(monitor);
     grids[key] = grid;
 
-    Main.layoutManager.addChrome(grid.actor, {visibleInFullscreen: true});
+    Main.layoutManager.addChrome(grid.actor, {
+      visibleInFullscreen: true
+    });
     grid.actor.set_opacity(0);
     grid.hide(true);
     grid.connect(
@@ -309,6 +326,7 @@ function _getInvisibleBorderPadding(metaWindow) {
   return [borderX, borderY];
 }
 
+
 function move_maximize_window(metaWindow, x, y) {
   if (!metaWindow)
     return;
@@ -326,14 +344,15 @@ function move_resize_window(metaWindow, x, y, width, height) {
   if (!metaWindow)
     return;
 
+  // Fix for client-decorated window positioning by @mtwebster
+  // See here for more info
+  // https://github.com/linuxmint/cinnamon-spices-extensions/commit/fda3a2b0c6adfc79ba65c6bd9a174795223523b9
+  
   let clientRect = metaWindow.get_rect();
   let outerRect = metaWindow.get_outer_rect();
 
-  let shiftX = 0;
-  let shiftY = 0;
-
   let client_deco = clientRect.width > outerRect.width &&
-                    clientRect.height > outerRect.height;
+    clientRect.height > outerRect.height;
 
   if (client_deco) {
     x -= outerRect.x - clientRect.x;
@@ -350,8 +369,8 @@ function move_resize_window(metaWindow, x, y, width, height) {
 }
 
 function getPanelHeight(panel) {
-  return panel.height
-      || panel.actor.get_height();  // fallback for old versions of Cinnamon
+  return panel.height ||
+    panel.actor.get_height(); // fallback for old versions of Cinnamon
 }
 
 function getUsableScreenArea(monitor) {
@@ -385,7 +404,7 @@ function getUsableScreenArea(monitor) {
 }
 
 function getNotFocusedWindowsOfMonitor(monitor) {
-  return Main.getTabList().filter(function(w) {
+  return Main.getTabList().filter(function (w) {
     let app = tracker.get_window_app(w);
     let w_monitor = Main.layoutManager.monitors[w.get_monitor()];
 
@@ -409,7 +428,7 @@ function _onFocus() {
     resetFocusMetaWindow();
     for (let gridIdx in grids) {
       let grid = grids[gridIdx];
-      grid.topbar._set_title('gTile');
+      grid.topbar._set_title('cinTile');
     }
     return;
   }
@@ -462,13 +481,16 @@ function showTiling() {
       let window = getFocusApp();
       let pos_x;
       let pos_y;
-      if (window.get_monitor() === parseInt(monitorIdx)) {
-        pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-        pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
-      } else {
-        pos_x = monitor.x + monitor.width / 2;
-        pos_y = monitor.y + monitor.height / 2;
+
+      // If we're not currently looking at the currently-active monitor,
+      // skip it -- effectively only showing the grid menu on one active monitor
+      // instead of all of them
+
+      if (window.get_monitor() !== parseInt(monitorIdx)) {
+        continue;
       }
+      pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+      pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
 
       grid.set_position(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
@@ -528,12 +550,22 @@ function TopBar(title) {
 }
 
 TopBar.prototype = {
-  _init: function(title) {
-    this.actor = new St.BoxLayout({style_class: 'top-box'});
+  _init: function (title) {
+    this.actor = new St.BoxLayout({
+      style_class: 'top-box'
+    });
     this._title = title;
-    this._stlabel = new St.Label({style_class: 'grid-title', text: this._title});
-    this._iconBin = new St.Bin({x_fill: false, y_fill: true});
-    this._closeButton = new St.Button({style_class: 'close-button'});
+    this._stlabel = new St.Label({
+      style_class: 'grid-title',
+      text: this._title
+    });
+    this._iconBin = new St.Bin({
+      x_fill: false,
+      y_fill: true
+    });
+    this._closeButton = new St.Button({
+      style_class: 'close-button'
+    });
 
     this._closeButton.connect(
       'button-release-event',
@@ -541,16 +573,22 @@ TopBar.prototype = {
     );
 
     this.actor.add(this._iconBin);
-    this.actor.add(this._stlabel, {x_fill: true, expand: true});
-    this.actor.add(this._closeButton, {x_fill: false, expand: false});
+    this.actor.add(this._stlabel, {
+      x_fill: true,
+      expand: true
+    });
+    this.actor.add(this._closeButton, {
+      x_fill: false,
+      expand: false
+    });
   },
 
-  _set_title: function(title) {
+  _set_title: function (title) {
     this._title = title;
     this._stlabel.text = this._title;
   },
 
-  _set_app: function(app, title) {
+  _set_app: function (app, title) {
     this._title = app.get_name() + ' - ' + title;
     this._stlabel.text = this._title;
     this._icon = app.create_icon_texture(24);
@@ -559,7 +597,7 @@ TopBar.prototype = {
     this._iconBin.child = this._icon;
   },
 
-  _onCloseButtonClicked: function() {
+  _onCloseButtonClicked: function () {
     toggleTiling();
   }
 };
@@ -569,11 +607,11 @@ function ToggleSettingsButtonListener() {
 }
 
 ToggleSettingsButtonListener.prototype = {
-  _init: function() {
+  _init: function () {
     this.actors = [];
   },
 
-  addActor: function(actor) {
+  addActor: function (actor) {
     actor.connect(
       'update-toggle',
       Lang.bind(this, this._updateToggle)
@@ -581,7 +619,7 @@ ToggleSettingsButtonListener.prototype = {
     this.actors.push(actor);
   },
 
-  _updateToggle: function() {
+  _updateToggle: function () {
     for (let actorIdx in this.actors) {
       let actor = this.actors[actorIdx];
       actor._update();
@@ -594,7 +632,7 @@ function ToggleSettingsButton(text, property) {
 }
 
 ToggleSettingsButton.prototype = {
-  _init: function(text, property) {
+  _init: function (text, property) {
     this.text = text;
     this.actor = new St.Button({
       style_class: 'settings-button',
@@ -603,7 +641,12 @@ ToggleSettingsButton.prototype = {
       track_hover: true,
       label: this.text
     });
-    this.icon = new St.BoxLayout({style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true});
+    this.icon = new St.BoxLayout({
+      style_class: this.text + '-icon',
+      reactive: true,
+      can_focus: true,
+      track_hover: true
+    });
     this.actor.set_child(this.icon);
     this.property = property;
     this._update();
@@ -621,7 +664,7 @@ ToggleSettingsButton.prototype = {
     }
   },
 
-  _update: function() {
+  _update: function () {
     if (preferences[this.property]) {
       this.actor.add_style_pseudo_class('activate');
     } else {
@@ -629,7 +672,7 @@ ToggleSettingsButton.prototype = {
     }
   },
 
-  _onButtonPress: function() {
+  _onButtonPress: function () {
     preferences[this.property] = !preferences[this.property];
     this.emit('update-toggle');
   }
@@ -642,7 +685,7 @@ function ActionButton(grid, classname) {
 }
 
 ActionButton.prototype = {
-  _init: function(grid, classname) {
+  _init: function (grid, classname) {
     this.grid = grid;
     this.actor = new St.Button({
       style_class: 'settings-button',
@@ -651,7 +694,12 @@ ActionButton.prototype = {
       track_hover: true
     });
 
-    this.icon = new St.BoxLayout({style_class: classname, reactive: true, can_focus: true, track_hover: true});
+    this.icon = new St.BoxLayout({
+      style_class: classname,
+      reactive: true,
+      can_focus: true,
+      track_hover: true
+    });
     this.actor.add_actor(this.icon);
     this.actor.connect(
       'button-press-event',
@@ -663,7 +711,7 @@ ActionButton.prototype = {
     }
   },
 
-  _onButtonPress: function() {
+  _onButtonPress: function () {
     this.emit('button-press-event');
   }
 };
@@ -677,7 +725,7 @@ function AutoTileMainAndList(grid) {
 AutoTileMainAndList.prototype = {
   __proto__: ActionButton.prototype,
 
-  _init: function(grid, classname) {
+  _init: function (grid, classname) {
     ActionButton.prototype._init.call(this, grid, classname);
     this.classname = classname;
     this.connect(
@@ -686,7 +734,7 @@ AutoTileMainAndList.prototype = {
     );
   },
 
-  _onButtonPress: function() {
+  _onButtonPress: function () {
     if (!focusMetaWindow) return;
 
     reset_window(focusMetaWindow);
@@ -724,7 +772,7 @@ function AutoTileTwoList(grid) {
 AutoTileTwoList.prototype = {
   __proto__: ActionButton.prototype,
 
-  _init: function(grid, classname) {
+  _init: function (grid, classname) {
     ActionButton.prototype._init.call(this, grid, classname);
     this.classname = classname;
     this.connect(
@@ -733,7 +781,7 @@ AutoTileTwoList.prototype = {
     );
   },
 
-  _onButtonPress: function() {
+  _onButtonPress: function () {
     if (!focusMetaWindow) return;
 
     reset_window(focusMetaWindow);
@@ -778,7 +826,7 @@ function ActionScale(grid) {
 ActionScale.prototype = {
   __proto__: ActionButton.prototype,
 
-  _init: function(grid, classname) {
+  _init: function (grid, classname) {
     ActionButton.prototype._init.call(this, grid, classname);
     this.classname = classname;
     this.connect(
@@ -787,7 +835,7 @@ ActionScale.prototype = {
     );
   },
 
-  _onButtonPress: function() {}
+  _onButtonPress: function () {}
 };
 
 function GridSettingsButton(text, cols, rows) {
@@ -795,10 +843,12 @@ function GridSettingsButton(text, cols, rows) {
 }
 
 GridSettingsButton.prototype = {
-  _init: function(text, cols, rows) {
+  _init: function (text, cols, rows) {
+
     this.cols = cols;
     this.rows = rows;
     this.text = text;
+
 
     this.actor = new St.Button({
       style_class: 'settings-button',
@@ -809,7 +859,8 @@ GridSettingsButton.prototype = {
 
     this.label = new St.Label({
       style_class: 'settings-label',
-      reactive: true, can_focus: true,
+      reactive: true,
+      can_focus: true,
       track_hover: true,
       text: this.text
     });
@@ -820,13 +871,17 @@ GridSettingsButton.prototype = {
       'button-press-event',
       Lang.bind(this, this._onButtonPress)
     );
+
+
   },
 
-  _onButtonPress: function() {
+  _onButtonPress: function () {
     preferences.nbCols = this.cols;
     preferences.nbRows = this.rows;
     refreshGrids();
-  }
+  },
+
+
 };
 
 function Grid(monitor_idx, screen, title, cols, rows) {
@@ -834,7 +889,7 @@ function Grid(monitor_idx, screen, title, cols, rows) {
 }
 
 Grid.prototype = {
-  _init: function(monitor_idx, monitor, title, cols, rows) {
+  _init: function (monitor_idx, monitor, title, cols, rows) {
     this.tableWidth = 220;
     this.tableHeight = 200;
     this.borderwidth = 2;
@@ -891,10 +946,18 @@ Grid.prototype = {
       height: this.tableHeight
     });
 
-    this.actor.add(this.topbar.actor, {x_fill: true});
-    this.actor.add(this.table, {x_fill: false});
-    this.actor.add(this.bottombar, {x_fill: true});
-    this.actor.add(this.veryBottomBar, {x_fill: true});
+    this.actor.add(this.topbar.actor, {
+      x_fill: true
+    });
+    this.actor.add(this.table, {
+      x_fill: false
+    });
+    this.actor.add(this.bottombar, {
+      x_fill: true
+    });
+    this.actor.add(this.veryBottomBar, {
+      x_fill: true
+    });
 
     this.monitor = monitor;
     this.monitor_idx = monitor_idx;
@@ -913,17 +976,32 @@ Grid.prototype = {
 
       let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
       toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(toggle.actor, {row: 0, col: 0, x_fill: false, y_fill: false});
+      this.veryBottomBar.add(toggle.actor, {
+        row: 0,
+        col: 0,
+        x_fill: false,
+        y_fill: false
+      });
       toggleSettingListener.addActor(toggle);
 
       toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
       toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(toggle.actor, {row: 0, col: 1, x_fill: false, y_fill: false});
+      this.veryBottomBar.add(toggle.actor, {
+        row: 0,
+        col: 1,
+        x_fill: false,
+        y_fill: false
+      });
       toggleSettingListener.addActor(toggle);
 
       let action = new AutoTileMainAndList(this);
       action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(action.actor, {row: 0, col: 2, x_fill: false, y_fill: false});
+      this.veryBottomBar.add(action.actor, {
+        row: 0,
+        col: 2,
+        x_fill: false,
+        y_fill: false
+      });
 
       action.connect(
         'resize-done',
@@ -932,7 +1010,12 @@ Grid.prototype = {
 
       action = new AutoTileTwoList(this);
       action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(action.actor, {row: 0, col: 3, x_fill: false, y_fill: false});
+      this.veryBottomBar.add(action.actor, {
+        row: 0,
+        col: 3,
+        x_fill: false,
+        y_fill: false
+      });
 
       action.connect(
         'resize-done',
@@ -951,7 +1034,7 @@ Grid.prototype = {
     this.normalScaleX = this.actor.scale_x;
   },
 
-  _initGridSettingsButtons: function() {
+  _initGridSettingsButtons: function () {
     this.bottombar.destroy_children();
 
     let rowNum = 0;
@@ -965,7 +1048,12 @@ Grid.prototype = {
 
       let button = gridSettingsButton[index];
       button = new GridSettingsButton(button.text, button.cols, button.rows);
-      this.bottombar.add(button.actor, {row: rowNum, col: colNum, x_fill: false, y_fill: false});
+      this.bottombar.add(button.actor, {
+        row: rowNum,
+        col: colNum,
+        x_fill: false,
+        y_fill: false
+      });
       button.actor.connect(
         'notify::hover',
         Lang.bind(this, this._onSettingsButton)
@@ -974,7 +1062,7 @@ Grid.prototype = {
     }
   },
 
-  _displayElements: function() {
+  _displayElements: function () {
     this.elements = [];
 
     let width = this.tableWidth / this.cols - 2 * this.borderwidth;
@@ -995,26 +1083,31 @@ Grid.prototype = {
 
         this.elements[r][c] = element;
         element.actor._delegate = this.elementsDelegate;
-        this.table.add(element.actor, {row: r, col: c, x_fill: false, y_fill: false});
+        this.table.add(element.actor, {
+          row: r,
+          col: c,
+          x_fill: false,
+          y_fill: false
+        });
         element.show();
       }
     }
   },
 
-  refresh: function() {
+  refresh: function () {
     this.table.destroy_all_children();
     this.cols = preferences.nbCols;
     this.rows = preferences.nbRows;
     this._displayElements();
   },
 
-  set_position: function(x, y) {
+  set_position: function (x, y) {
     this.x = x;
     this.y = y;
     this.actor.set_position(x, y);
   },
 
-  show: function() {
+  show: function () {
     this.interceptHide = true;
     this.elementsDelegate.reset();
     let time = preferences.animation ? 0.3 : 0;
@@ -1042,7 +1135,7 @@ Grid.prototype = {
     this._bindKeyControls();
   },
 
-  hide: function(immediate) {
+  hide: function (immediate) {
     this._removeKeyControls();
     this.elementsDelegate.reset();
     let time = preferences.animation && !immediate ? 0.3 : 0;
@@ -1062,7 +1155,7 @@ Grid.prototype = {
     }
   },
 
-  _onHideComplete: function() {
+  _onHideComplete: function () {
     if (!this.interceptHide && this.actor) {
       Main.layoutManager.removeChrome(this.actor);
     }
@@ -1070,25 +1163,25 @@ Grid.prototype = {
     Main.layoutManager._chrome.updateRegions();
   },
 
-  _onShowComplete: function() {
+  _onShowComplete: function () {
     Main.layoutManager._chrome.updateRegions();
   },
 
-  _onResize: function() {
+  _onResize: function () {
     refreshGrids();
     if (preferences.autoclose) {
       this.emit('hide-tiling');
     }
   },
 
-  _onMouseEnter: function() {
+  _onMouseEnter: function () {
     if (!this.isEntered) {
       this.elementsDelegate.reset();
       this.isEntered = true;
     }
   },
 
-  _onMouseLeave: function() {
+  _onMouseLeave: function () {
     let [x, y, mask] = global.get_pointer();
     if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight)) {
       this.isEntered = false;
@@ -1098,7 +1191,7 @@ Grid.prototype = {
     }
   },
 
-  _globalKeyPressEvent: function(actor, event) {
+  _globalKeyPressEvent: function (actor, event) {
     if (event.get_key_symbol() === Clutter.Escape) {
       hideTiling();
       return true;
@@ -1106,14 +1199,15 @@ Grid.prototype = {
     return false;
   },
 
-  _onSettingsButton: function() {
+  _onSettingsButton: function () {
     this.elementsDelegate.reset();
   },
 
-  _bindKeyControls: function() {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', Lang.bind(this, toggleTiling));
-    Main.keybindingManager.addHotKey('gTile-tile1', 'space', Lang.bind(this, this._keyTile));
-    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', Lang.bind(this, this._keyTile));
+  _bindKeyControls: function () {
+    Main.keybindingManager.addHotKey('cinTile-close', 'Escape', Lang.bind(this, toggleTiling));
+    Main.keybindingManager.addHotKey('cinTile-tile1', 'space', Lang.bind(this, this._keyTile));
+    Main.keybindingManager.addHotKey('cinTile-tile2', 'Return', Lang.bind(this, this._keyTile));
+
     for (let index in KEYCONTROL) {
       let key = KEYCONTROL[index];
       let type = index;
@@ -1125,18 +1219,23 @@ Grid.prototype = {
     }
   },
 
-  _removeKeyControls: function() {
+  _removeKeyControls: function () {
     this.rowKey = -1;
     this.colKey = -1;
-    Main.keybindingManager.removeHotKey('gTile-close');
-    Main.keybindingManager.removeHotKey('gTile-tile1');
-    Main.keybindingManager.removeHotKey('gTile-tile2');
+    Main.keybindingManager.removeHotKey('cinTile-close');
+    Main.keybindingManager.removeHotKey('cinTile-tile1');
+    Main.keybindingManager.removeHotKey('cinTile-tile2');
+    Main.keybindingManager.removeHotKey('cinTile-k-switch-1');
+    Main.keybindingManager.removeHotKey('cinTile-k-switch-2');
+    Main.keybindingManager.removeHotKey('cinTile-k-switch-3');
+    Main.keybindingManager.removeHotKey('cinTile-k-switch-4');
+
     for (let type in KEYCONTROL) {
       Main.keybindingManager.removeHotKey(type);
     }
   },
 
-  _onKeyPressEvent: function(type) {
+  _onKeyPressEvent: function (type) {
     let modifier = type.indexOf('meta', type.length - 4) !== -1;
 
     if (modifier && this.keyElement) {
@@ -1148,36 +1247,51 @@ Grid.prototype = {
     }
 
     switch (type) {
-      case 'gTile-k-right':
-      case 'gTile-k-right-meta':
+      case 'cinTile-k-right':
+      case 'cinTile-k-right-meta':
         if (this.colKey === this.cols - 1) {
           this._keyTileSwitch();
         }
         this.colKey = Math.min(this.colKey + 1, this.cols - 1);
         this.rowKey = this.rowKey === -1 ? 0 : this.rowKey; //leave initial state
         break;
-      case 'gTile-k-left':
-      case 'gTile-k-left-meta':
+      case 'cinTile-k-left':
+      case 'cinTile-k-left-meta':
         if (this.colKey === 0) {
           this._keyTileSwitch();
         }
         this.colKey = Math.max(0, this.colKey - 1);
         break;
-      case 'gTile-k-up':
-      case 'gTile-k-up-meta':
+      case 'cinTile-k-up':
+      case 'cinTile-k-up-meta':
         this.rowKey = Math.max(0, this.rowKey - 1);
         break;
-      case 'gTile-k-down':
-      case 'gTile-k-down-meta':
+      case 'cinTile-k-down':
+      case 'cinTile-k-down-meta':
         this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
+      case 'cinTile-k-switch-1':
+        this._keyGrid(1);
+        break;
+      case 'cinTile-k-switch-2':
+        this._keyGrid(2);
+        break;
+      case 'cinTile-k-switch-3':
+        this._keyGrid(3);
+        break;
+      case 'cinTile-k-switch-4':
+        this._keyGrid(4);
+        break;
     }
-    this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
-    if (this.keyElement) this.keyElement._onHoverChanged();
+
+    if (type.indexOf('switch') == -1) {
+      this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
+      if (this.keyElement) this.keyElement._onHoverChanged();
+    }
   },
 
-  _keyTile: function() {
+  _keyTile: function () {
     if (this.keyElement) {
       this.keyElement._onButtonPress();
       this.keyElement._onButtonPress();
@@ -1186,11 +1300,11 @@ Grid.prototype = {
     }
   },
 
-  _keyTileSwitch: function() {
+  _keyTileSwitch: function () {
     let key = getMonitorKey(this.monitor);
 
     let candidate = false;
-    // find other grids //TODO: improve to loop around all grids!
+
     for (let k in grids) {
       if (k === key) {
         continue;
@@ -1202,7 +1316,19 @@ Grid.prototype = {
     }
   },
 
-  _destroy: function() {
+  _keyGrid: function (index) {
+    this.table.destroy_all_children();
+
+    let gridPropX = 'gridbutton' + index + 'x';
+    let gridPropY = 'gridbutton' + index + 'y';
+
+    preferences.nbRows = preferences[gridPropY];
+    preferences.nbCols = preferences[gridPropX];
+
+    this.refresh();
+  },
+
+  _destroy: function () {
     for (let r in this.elements) {
       for (let c in this.elements[r]) {
         this.elements[r][c]._destroy();
@@ -1226,7 +1352,7 @@ function GridElementDelegate() {
 }
 
 GridElementDelegate.prototype = {
-  _init: function() {
+  _init: function () {
     this.activated = false;
     this.first = false;
     this.last = false;
@@ -1234,11 +1360,11 @@ GridElementDelegate.prototype = {
     this.activatedActors = false;
   },
 
-  _allSelected: function() {
+  _allSelected: function () {
     return this.activatedActors.length === (preferences.nbCols * preferences.nbRows);
   },
 
-  _onButtonPress: function(gridElement) {
+  _onButtonPress: function (gridElement) {
     if (!this.activated) {
       this.activated = true;
       this.activatedActors = [];
@@ -1266,11 +1392,11 @@ GridElementDelegate.prototype = {
     }
   },
 
-  _resizeDone: function() {
+  _resizeDone: function () {
     this.emit('resize-done');
   },
 
-  reset: function() {
+  reset: function () {
     this._resetGrid();
 
     this.activated = false;
@@ -1279,7 +1405,7 @@ GridElementDelegate.prototype = {
     this.currentElement = false;
   },
 
-  _resetGrid: function() {
+  _resetGrid: function () {
     this._hideArea();
     if (this.currentElement) {
       this.currentElement._deactivate();
@@ -1291,7 +1417,7 @@ GridElementDelegate.prototype = {
     this.activatedActors = [];
   },
 
-  _getVarFromGridElement: function(fromGridElement, toGridElement) {
+  _getVarFromGridElement: function (fromGridElement, toGridElement) {
     let maxX = fromGridElement.coordx >= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
     let minX = fromGridElement.coordx <= toGridElement.coordx ? fromGridElement.coordx : toGridElement.coordx;
 
@@ -1301,7 +1427,7 @@ GridElementDelegate.prototype = {
     return [minX, maxX, minY, maxY];
   },
 
-  refreshGrid: function(fromGridElement, toGridElement) {
+  refreshGrid: function (fromGridElement, toGridElement) {
     this._resetGrid();
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
@@ -1319,7 +1445,7 @@ GridElementDelegate.prototype = {
     this._displayArea(fromGridElement, toGridElement);
   },
 
-  _computeAreaPositionSize: function(fromGridElement, toGridElement) {
+  _computeAreaPositionSize: function (fromGridElement, toGridElement) {
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
     let nbRows = preferences.nbRows;
@@ -1336,7 +1462,7 @@ GridElementDelegate.prototype = {
     return [areaX, areaY, areaWidth, areaHeight];
   },
 
-  _displayArea: function(fromGridElement, toGridElement) {
+  _displayArea: function (fromGridElement, toGridElement) {
     let areaWidth, areaHeight, areaX, areaY;
     [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
 
@@ -1359,11 +1485,11 @@ GridElementDelegate.prototype = {
     }
   },
 
-  _hideArea: function() {
+  _hideArea: function () {
     area.remove_style_pseudo_class('activate');
   },
 
-  _onHoverChanged: function(gridElement) {
+  _onHoverChanged: function (gridElement) {
     if (this.activated) {
       this.refreshGrid(this.first, gridElement);
     } else {
@@ -1375,7 +1501,7 @@ GridElementDelegate.prototype = {
     }
   },
 
-  _destroy: function() {
+  _destroy: function () {
     this.activated = null;
     this.first = null;
     this.last = null;
@@ -1391,7 +1517,7 @@ function GridElement(monitor, width, height, coordx, coordy) {
 }
 
 GridElement.prototype = {
-  _init: function(monitor, width, height, coordx, coordy) {
+  _init: function (monitor, width, height, coordx, coordy) {
     this.actor = new St.Button({
       style_class: 'table-element',
       width: width,
@@ -1421,40 +1547,40 @@ GridElement.prototype = {
     this.active = false;
   },
 
-  show: function() {
+  show: function () {
     this.actor.opacity = 255;
     this.actor.visible = true;
   },
 
-  hide: function() {
+  hide: function () {
     this.actor.opacity = 0;
     this.actor.visible = false;
   },
 
-  _onButtonPress: function() {
+  _onButtonPress: function () {
     this.actor._delegate._onButtonPress(this);
   },
 
-  _onHoverChanged: function() {
+  _onHoverChanged: function () {
     if (!this.actor || isFinalized(this.actor)) return;
     this.actor._delegate._onHoverChanged(this);
   },
 
-  _activate: function() {
+  _activate: function () {
     if (!this.actor || isFinalized(this.actor)) return;
     this.actor.add_style_pseudo_class('activate');
   },
 
-  _deactivate: function() {
+  _deactivate: function () {
     if (!this.actor || isFinalized(this.actor)) return;
     this.actor.remove_style_pseudo_class('activate');
   },
 
-  _clean: function() {
+  _clean: function () {
     Main.uiGroup.remove_actor(area);
   },
 
-  _destroy: function() {
+  _destroy: function () {
     this.monitor = null;
     this.coordx = null;
     this.coordy = null;

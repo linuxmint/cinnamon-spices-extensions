@@ -171,12 +171,12 @@ msgid "Show Desktop"
 msgstr "Mostra Desktop"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
-msgid "â¦ Dragging to the right: "
-msgstr "â¦ Trascinamento verso destra:"
+msgid "↦ Dragging to the right: "
+msgstr "↦ Trascinamento verso destra:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
-msgid "â¤ Dragging to the left: "
-msgstr "â¤ Trascinamento verso sinistra:"
+msgid "↤ Dragging to the left: "
+msgstr "↤ Trascinamento verso sinistra:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
