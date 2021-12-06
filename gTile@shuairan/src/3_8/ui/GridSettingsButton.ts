@@ -40,7 +40,7 @@ export class GridSettingsButton {
     public _onButtonPress = () => {
       preferences.nbCols = this.cols;
       preferences.nbRows = this.rows;
-      app.refreshGrids();
+      app.RefreshGrid();
       return false;
     }
   }

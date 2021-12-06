@@ -55,7 +55,7 @@ class GridSettingsButton {
         this._onButtonPress = () => {
             preferences.nbCols = this.cols;
             preferences.nbRows = this.rows;
-            app.refreshGrids();
+            app.RefreshGrid();
             return false;
         };
         this.cols = cols;
@@ -87,7 +87,7 @@ let settings;
 let gridSettingsButton = [];
 const initSettings = () => {
     settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.enableHotkey, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.EnableHotkey, null);
     settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
     settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
     settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', updateSettings, null);
@@ -117,7 +117,7 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    app.Grid._initGridSettingsButtons();
+    app.Grid.RebuildGridSettingsButtons();
 };
 
 ;// CONCATENATED MODULE: ./src/3_8/utils.ts
@@ -761,10 +761,9 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
 
 
 
-const Grid_St = imports.gi.St;
+const { BoxLayout, Table } = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
-const Clutter = imports.gi.Clutter;
 const { Side } = imports.gi.Meta;
 let Grid = class Grid {
     constructor(monitor_idx, monitor, title, cols, rows) {
@@ -777,7 +776,7 @@ let Grid = class Grid {
         this.isEntered = false;
         this.interceptHide = false;
         this.toggleSettingButtons = [];
-        this._initGridSettingsButtons = () => {
+        this.RebuildGridSettingsButtons = () => {
             this.bottombar.destroy_children();
             let rowNum = 0;
             let colNum = 0;
@@ -789,16 +788,22 @@ let Grid = class Grid {
                 let button = gridSettingsButton[index];
                 button = new GridSettingsButton(button.text, button.cols, button.rows);
                 this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
-                button.actor.connect('notify::hover', this._onSettingsButton);
+                button.actor.connect('notify::hover', () => this.elementsDelegate.reset());
                 colNum++;
             }
         };
-        this._displayElements = () => {
+        this.RefreshGridElements = () => {
+            this.table.destroy_all_children();
+            this.cols = preferences.nbCols;
+            this.rows = preferences.nbRows;
+            this.RebuildGridElements();
+        };
+        this.RebuildGridElements = () => {
             this.elements = [];
             let width = this.tableWidth / this.cols - 2 * this.borderwidth;
             let height = this.tableHeight / this.rows - 2 * this.borderwidth;
             this.elementsDelegate = new GridElementDelegate();
-            this.elementsDelegate.connect('resize-done', this._onResize);
+            this.elementsDelegate.connect('resize-done', this.OnResize);
             for (let r = 0; r < this.rows; r++) {
                 for (let c = 0; c < this.cols; c++) {
                     if (c === 0) {
@@ -811,66 +816,19 @@ let Grid = class Grid {
                 }
             }
         };
-        this.refresh = () => {
-            this.table.destroy_all_children();
-            this.cols = preferences.nbCols;
-            this.rows = preferences.nbRows;
-            this._displayElements();
-        };
-        this._onHideComplete = () => {
-            if (!this.interceptHide && this.actor) {
-                Grid_Main.layoutManager.removeChrome(this.actor);
-            }
-            Grid_Main.layoutManager["_chrome"].updateRegions();
-        };
-        this._onShowComplete = () => {
-            Grid_Main.layoutManager["_chrome"].updateRegions();
-        };
-        this._onResize = () => {
-            app.refreshGrids();
-            if (preferences.autoclose) {
-                this.emit('hide-tiling');
-            }
-        };
-        this._onMouseEnter = () => {
-            if (!this.isEntered) {
-                this.elementsDelegate.reset();
-                this.isEntered = true;
-            }
-            return false;
-        };
-        this._onMouseLeave = () => {
-            let [x, y, mask] = global.get_pointer();
-            if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight + this.topbar.actor.height)) {
-                this.isEntered = false;
-                this.elementsDelegate.reset();
-                app.refreshGrids();
-            }
-            return false;
-        };
-        this._globalKeyPressEvent = (actor, event) => {
-            if (event.get_key_symbol() === Clutter.Escape) {
-                app.hideTiling();
-                return true;
-            }
-            return false;
-        };
-        this._onSettingsButton = () => {
-            this.elementsDelegate.reset();
-        };
-        this._bindKeyControls = () => {
+        this.BindKeyControls = () => {
             Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.toggleTiling);
-            Grid_Main.keybindingManager.addHotKey('gTile-tile1', 'space', this._keyTile);
-            Grid_Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this._keyTile);
+            Grid_Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
+            Grid_Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
             for (let index in KEYCONTROL) {
                 if (objHasKey(KEYCONTROL, index)) {
                     let key = KEYCONTROL[index];
                     let type = index;
-                    Grid_Main.keybindingManager.addHotKey(type, key, () => this._onKeyPressEvent(type, key));
+                    Grid_Main.keybindingManager.addHotKey(type, key, () => this.OnKeyPressEvent(type, key));
                 }
             }
         };
-        this._removeKeyControls = () => {
+        this.RemoveKeyControls = () => {
             this.rowKey = -1;
             this.colKey = -1;
             Grid_Main.keybindingManager.removeHotKey('gTile-close');
@@ -880,7 +838,37 @@ let Grid = class Grid {
                 Grid_Main.keybindingManager.removeHotKey(type);
             }
         };
-        this._onKeyPressEvent = (type, key) => {
+        this.OnHideComplete = () => {
+            if (!this.interceptHide && this.actor) {
+                Grid_Main.layoutManager.removeChrome(this.actor);
+            }
+            Grid_Main.layoutManager["_chrome"].updateRegions();
+        };
+        this.OnShowComplete = () => {
+            Grid_Main.layoutManager["_chrome"].updateRegions();
+        };
+        this.OnResize = () => {
+            app.RefreshGrid();
+            if (preferences.autoclose) {
+                this.emit('hide-tiling');
+            }
+        };
+        this.OnMouseEnter = () => {
+            if (!this.isEntered) {
+                this.elementsDelegate.reset();
+                this.isEntered = true;
+            }
+            return false;
+        };
+        this.OnMouseLeave = () => {
+            let [x, y, mask] = global.get_pointer();
+            if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight + this.topbar.actor.height)) {
+                this.isEntered = false;
+                this.elementsDelegate.reset();
+            }
+            return false;
+        };
+        this.OnKeyPressEvent = (type, key) => {
             var _a, _b, _c, _d;
             let modifier = false;
             switch (type) {
@@ -951,22 +939,20 @@ let Grid = class Grid {
             if (this.keyElement)
                 this.keyElement._onHoverChanged();
         };
-        this._keyTile = () => {
+        this.BeginTiling = () => {
             if (this.keyElement) {
-                this.keyElement._onButtonPress();
                 this.keyElement._onButtonPress();
                 this.colKey = -1;
                 this.rowKey = -1;
             }
         };
         this.MoveToMonitor = (monitor) => {
-            let key = monitor ? getMonitorKey(monitor) : getMonitorKey(this.monitor);
-            let currentKey = getMonitorKey(this.monitor);
-            if (key == currentKey)
+            monitor = monitor ? monitor : this.monitor;
+            if (monitor.index == this.monitor.index)
                 return;
             app.MoveToMonitor(this.monitor, monitor !== null && monitor !== void 0 ? monitor : this.monitor);
         };
-        this._destroy = () => {
+        this.destroy = () => {
             for (let r in this.elements) {
                 for (let c in this.elements[r]) {
                     this.elements[r][c]._destroy();
@@ -974,7 +960,7 @@ let Grid = class Grid {
             }
             this.elementsDelegate._destroy();
             this.topbar._destroy();
-            this._removeKeyControls();
+            this.RemoveKeyControls();
             this.monitor = null;
             this.rows = null;
             this.title = null;
@@ -986,17 +972,17 @@ let Grid = class Grid {
         this.bindFns = {};
         this.rowKey = -1;
         this.colKey = -1;
-        this.actor = new Grid_St.BoxLayout({
+        this.actor = new BoxLayout({
             vertical: true,
             style_class: 'grid-panel',
             reactive: true,
             can_focus: true,
             track_hover: true
         });
-        this.actor.connect('enter-event', this._onMouseEnter);
-        this.actor.connect('leave-event', this._onMouseLeave);
+        this.actor.connect('enter-event', this.OnMouseEnter);
+        this.actor.connect('leave-event', this.OnMouseLeave);
         this.topbar = new TopBar(title);
-        this.bottombar = new Grid_St.Table({
+        this.bottombar = new Table({
             homogeneous: true,
             style_class: 'bottom-box',
             can_focus: true,
@@ -1004,7 +990,7 @@ let Grid = class Grid {
             reactive: true,
             width: this.tableWidth
         });
-        this.veryBottomBar = new Grid_St.Table({
+        this.veryBottomBar = new Table({
             homogeneous: true,
             style_class: 'bottom-box',
             can_focus: true,
@@ -1012,8 +998,8 @@ let Grid = class Grid {
             reactive: true,
             width: this.tableWidth
         });
-        this._initGridSettingsButtons();
-        this.table = new Grid_St.Table({
+        this.RebuildGridSettingsButtons();
+        this.table = new Table({
             homogeneous: true,
             style_class: 'table',
             can_focus: true,
@@ -1032,33 +1018,31 @@ let Grid = class Grid {
         this.title = title;
         this.cols = cols;
         this.isEntered = false;
-        if (true) {
-            let nbTotalSettings = 4;
-            let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
-            toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-            this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
-            this.toggleSettingButtons.push(toggle);
-            toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
-            toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-            this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
-            this.toggleSettingButtons.push(toggle);
-            let action = new AutoTileMainAndList(this);
-            action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-            this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
-            action.connect('resize-done', this._onResize);
-            let actionTwo = new AutoTileTwoList(this);
-            actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-            this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
-            actionTwo.connect('resize-done', this._onResize);
-        }
+        let nbTotalSettings = 4;
+        let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
+        toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+        this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
+        this.toggleSettingButtons.push(toggle);
+        toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
+        toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+        this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
+        this.toggleSettingButtons.push(toggle);
+        let action = new AutoTileMainAndList(this);
+        action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+        this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
+        action.connect('resize-done', this.OnResize);
+        let actionTwo = new AutoTileTwoList(this);
+        actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+        this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
+        actionTwo.connect('resize-done', this.OnResize);
         this.x = 0;
         this.y = 0;
         this.interceptHide = false;
-        this._displayElements();
+        this.RebuildGridElements();
         this.normalScaleY = this.actor.scale_y;
         this.normalScaleX = this.actor.scale_x;
     }
-    SwitchToMonitor(monitor) {
+    ChangeCurrentMonitor(monitor) {
         this.monitor = monitor;
         this.monitor_idx = monitor.index;
         for (const row of this.elements) {
@@ -1072,12 +1056,9 @@ let Grid = class Grid {
             button["_update"]();
         }
     }
-    set_position(x, y) {
-        this.x = x;
-        this.y = y;
-        this.actor.set_position(x, y);
-    }
-    async show() {
+    async Show(x, y) {
+        if (x != null && y != null)
+            this.SetPosition(x, y);
         this.interceptHide = true;
         this.elementsDelegate.reset();
         let time = preferences.animation ? 0.3 : 0;
@@ -1093,7 +1074,7 @@ let Grid = class Grid {
                     visible: true,
                     transition: 'easeOutQuad',
                     scale_y: this.normalScaleY,
-                    onComplete: () => { resolve(); this._onShowComplete(); }
+                    onComplete: () => { resolve(); this.OnShowComplete(); }
                 });
             });
         }
@@ -1103,10 +1084,10 @@ let Grid = class Grid {
             this.actor.scale_y = this.normalScaleY;
         }
         this.interceptHide = false;
-        this._bindKeyControls();
+        this.BindKeyControls();
     }
-    hide(immediate) {
-        this._removeKeyControls();
+    Hide(immediate) {
+        this.RemoveKeyControls();
         this.elementsDelegate.reset();
         let time = preferences.animation && !immediate ? 0.3 : 0;
         if (time > 0) {
@@ -1116,7 +1097,7 @@ let Grid = class Grid {
                 visible: false,
                 scale_y: 0,
                 transition: 'easeOutQuad',
-                onComplete: this._onHideComplete
+                onComplete: this.OnHideComplete
             });
         }
         else {
@@ -1124,6 +1105,11 @@ let Grid = class Grid {
             this.actor.visible = false;
             this.actor.scale_y = 0;
         }
+    }
+    SetPosition(x, y) {
+        this.x = x;
+        this.y = y;
+        this.actor.set_position(x, y);
     }
 };
 Grid = Grid_decorate([
@@ -1149,13 +1135,12 @@ class App {
         this.focusMetaWindowPrivateConnections = [];
         this.area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
         this.focusMetaWindow = null;
-        this.enableHotkey = () => {
+        this.EnableHotkey = () => {
             this.disableHotkey();
             extension_Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.toggleTiling);
         };
-        this.refreshGrids = () => {
-            var _a;
-            (_a = this.grid) === null || _a === void 0 ? void 0 : _a.refresh();
+        this.RefreshGrid = () => {
+            this.grid.RefreshGridElements();
             extension_Main.layoutManager["_chrome"].updateRegions();
         };
         this.getNotFocusedWindowsOfMonitor = (monitor) => {
@@ -1176,7 +1161,7 @@ class App {
         };
         this.hideTiling = () => {
             this.grid.elementsDelegate.reset();
-            this.grid.hide(false);
+            this.grid.Hide(false);
             this.area.visible = false;
             this.resetFocusMetaWindow();
             this.visible = false;
@@ -1187,13 +1172,13 @@ class App {
                 this.hideTiling();
             }
             else {
-                this.showTiling();
+                this.ShowTiling();
             }
             return this.visible;
         };
         this.destroyGrids = () => {
             if (typeof this.grid != 'undefined') {
-                this.grid.hide(true);
+                this.grid.Hide(true);
                 extension_Main.layoutManager.removeChrome(this.grid.actor);
             }
         };
@@ -1289,10 +1274,10 @@ class App {
         this.MoveToMonitor = async (current, newMonitor) => {
             if (current.index == newMonitor.index)
                 return;
-            this.grid.SwitchToMonitor(newMonitor);
+            this.grid.ChangeCurrentMonitor(newMonitor);
             this.moveGrids();
         };
-        this.showTiling = () => {
+        this.ShowTiling = () => {
             var _a;
             this.focusMetaWindow = getFocusApp();
             let wm_type = this.focusMetaWindow.get_window_type();
@@ -1301,13 +1286,10 @@ class App {
             if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
                 let grid = this.grid;
                 let window = getFocusApp();
-                grid.SwitchToMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : extension_Main.layoutManager.primaryMonitor);
-                let pos_x;
-                let pos_y;
-                pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
-                grid.set_position(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
-                grid.show();
+                grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : extension_Main.layoutManager.primaryMonitor);
+                let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+                let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
                 this._onFocus();
                 this.visible = true;
             }
@@ -1317,7 +1299,7 @@ class App {
             extension_Main.uiGroup.add_actor(this.area);
             initSettings();
             this.initGrids();
-            this.enableHotkey();
+            this.EnableHotkey();
             this.tracker.connect("notify::focus_app", this._onFocus);
             global.screen.connect('monitors-changed', this.reinitalize);
         }
@@ -1343,7 +1325,7 @@ class App {
         this.grid = new Grid(extension_Main.layoutManager.primaryMonitor.index, extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
         extension_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
         this.grid.actor.set_opacity(0);
-        this.grid.hide(true);
+        this.grid.Hide(true);
         this.grid.connect('hide-tiling', this.hideTiling);
     }
 }

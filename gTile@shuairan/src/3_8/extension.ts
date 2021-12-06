@@ -45,7 +45,7 @@ class App {
       initSettings();
       this.initGrids();
 
-      this.enableHotkey();
+      this.EnableHotkey();
 
       this.tracker.connect(
         "notify::focus_app",
@@ -71,14 +71,13 @@ class App {
     this.resetFocusMetaWindow();
   }
 
-  public enableHotkey = () => {
+  public EnableHotkey = () => {
     this.disableHotkey();
     Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.toggleTiling);
   }
 
-  public refreshGrids = () => {
-    //global.log("RefreshGrids");
-    this.grid?.refresh();
+  public RefreshGrid = () => {
+    this.grid.RefreshGridElements();
 
     Main.layoutManager["_chrome"].updateRegions();
   }
@@ -104,7 +103,7 @@ class App {
 
   public hideTiling = () => {
     this.grid.elementsDelegate.reset();
-    this.grid.hide(false);
+    this.grid.Hide(false);
 
     this.area.visible = false;
 
@@ -119,7 +118,7 @@ class App {
     if (this.visible) {
       this.hideTiling();
     } else {
-      this.showTiling();
+      this.ShowTiling();
     }
     return this.visible;
   }
@@ -129,7 +128,7 @@ class App {
 
     Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
     this.grid.actor.set_opacity(0);
-    this.grid.hide(true);
+    this.grid.Hide(true);
     this.grid.connect(
       'hide-tiling',
       this.hideTiling
@@ -138,7 +137,7 @@ class App {
 
   private destroyGrids = () => {
     if (typeof this.grid != 'undefined') {
-      this.grid.hide(true);
+      this.grid.Hide(true);
       Main.layoutManager.removeChrome(this.grid.actor);
     }
   }
@@ -260,11 +259,11 @@ class App {
     if (current.index == newMonitor.index)
       return;
 
-    this.grid.SwitchToMonitor(newMonitor);
+    this.grid.ChangeCurrentMonitor(newMonitor);
     this.moveGrids();
   }
 
-  private showTiling = () => {
+  private ShowTiling = () => {
     this.focusMetaWindow = getFocusApp();
     let wm_type = this.focusMetaWindow.get_window_type();
     let layer = this.focusMetaWindow.get_layer();
@@ -274,16 +273,12 @@ class App {
         let grid = this.grid;
 
         let window = getFocusApp();
-        grid.SwitchToMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
-        let pos_x;
-        let pos_y;
+        grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
-        pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-        pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+        let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+        let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
 
-        grid.set_position(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
-
-        grid.show();
+        grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
       this._onFocus();
       this.visible = true;

@@ -10,10 +10,9 @@ import { GridSettingsButton } from "./GridSettingsButton";
 import { ToggleSettingsButton } from "./ToggleSettingsButton";
 import { TopBar } from "./TopBar";
 
-const St = imports.gi.St;
+const { BoxLayout, Table } = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
-const Clutter = imports.gi.Clutter;
 const { Side } = imports.gi.Meta;
 
 export interface Grid extends SignalOverload<"hide-tiling"> {
@@ -63,7 +62,7 @@ export class Grid {
     this.rowKey = -1;
     this.colKey = -1;
 
-    this.actor = new St.BoxLayout({
+    this.actor = new BoxLayout({
       vertical: true,
       style_class: 'grid-panel',
       reactive: true,
@@ -74,16 +73,16 @@ export class Grid {
 
     this.actor.connect(
       'enter-event',
-      this._onMouseEnter
+      this.OnMouseEnter
     );
     this.actor.connect(
       'leave-event',
-      this._onMouseLeave
+      this.OnMouseLeave
     );
 
     this.topbar = new TopBar(title);
 
-    this.bottombar = new St.Table({
+    this.bottombar = new Table({
       homogeneous: true,
       style_class: 'bottom-box',
       can_focus: true,
@@ -92,7 +91,7 @@ export class Grid {
       width: this.tableWidth
     });
 
-    this.veryBottomBar = new St.Table({
+    this.veryBottomBar = new Table({
       homogeneous: true,
       style_class: 'bottom-box',
       can_focus: true,
@@ -101,9 +100,9 @@ export class Grid {
       width: this.tableWidth
     });
 
-    this._initGridSettingsButtons();
+    this.RebuildGridSettingsButtons();
 
-    this.table = new St.Table({
+    this.table = new Table({
       homogeneous: true,
       style_class: 'table',
       can_focus: true,
@@ -126,48 +125,52 @@ export class Grid {
 
     this.isEntered = false;
 
-    if (true) {
-      let nbTotalSettings = 4;
+    // Build Bottom Bar Buttons
+    let nbTotalSettings = 4;
 
-      let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
-      toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
-      this.toggleSettingButtons.push(toggle);
+    let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
+    toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+    this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
+    this.toggleSettingButtons.push(toggle);
 
-      toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
-      toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
-      this.toggleSettingButtons.push(toggle);
+    toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
+    toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+    this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
+    this.toggleSettingButtons.push(toggle);
 
-      let action = new AutoTileMainAndList(this);
-      action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
+    let action = new AutoTileMainAndList(this);
+    action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+    this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
 
-      action.connect('resize-done',
-        this._onResize
-      );
+    action.connect('resize-done',
+      this.OnResize
+    );
 
-      let actionTwo = new AutoTileTwoList(this);
-      actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
-      this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
+    let actionTwo = new AutoTileTwoList(this);
+    actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
+    this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
-      actionTwo.connect('resize-done',
-        this._onResize
-      );
-    }
+    actionTwo.connect('resize-done',
+      this.OnResize
+    );
 
     this.x = 0;
     this.y = 0;
 
     this.interceptHide = false;
 
-    this._displayElements();
+    this.RebuildGridElements();
 
     this.normalScaleY = this.actor.scale_y;
     this.normalScaleX = this.actor.scale_x;
   }
 
-  public SwitchToMonitor(monitor: imports.ui.layout.Monitor) {
+  /**
+   * Changes all references to the current monitor to a new one,
+   * including GridElements
+   * @param monitor 
+   */
+  public ChangeCurrentMonitor(monitor: imports.ui.layout.Monitor) {
     this.monitor = monitor;
     this.monitor_idx = monitor.index;
 
@@ -178,13 +181,20 @@ export class Grid {
     }
   }
 
+  /**
+   * Update ToggleSettingsButtons, for example when 
+   * settings was changed for them
+   */
   public UpdateSettingsButtons() {
     for (const button of this.toggleSettingButtons) {
       button["_update"]();
     }
   }
 
-  public _initGridSettingsButtons = () => {
+  /** Rebuilds Grid Settings Buttons independently from 
+   * the rest of the UI. FOr example if config was changed for them.
+   */
+  public RebuildGridSettingsButtons = () => {
     this.bottombar.destroy_children();
 
     let rowNum = 0;
@@ -201,51 +211,36 @@ export class Grid {
       this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
       button.actor.connect(
         'notify::hover',
-        this._onSettingsButton
+        () => this.elementsDelegate.reset()
       );
       colNum++;
     }
   }
 
-  private _displayElements = () => {
-    this.elements = [];
-
-    let width = this.tableWidth / this.cols - 2 * this.borderwidth;
-    let height = this.tableHeight / this.rows - 2 * this.borderwidth;
-
-    this.elementsDelegate = new GridElementDelegate();
-    this.elementsDelegate.connect(
-      'resize-done',
-      this._onResize
-    );
-    for (let r = 0; r < this.rows; r++) {
-      for (let c = 0; c < this.cols; c++) {
-        if (c === 0) {
-          this.elements[r] = [];
-        }
-
-        let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
-        this.elements[r][c] = element;
-        this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
-        element.show();
-      }
-    }
-  }
-
-  public refresh = () => {
+  /**
+   * Rebuilds Grid Elements, for example if nXn buttons sere clicked.
+   */
+  public RefreshGridElements = () => {
     this.table.destroy_all_children();
     this.cols = preferences.nbCols;
     this.rows = preferences.nbRows;
-    this._displayElements();
+    this.RebuildGridElements();
   }
 
-  public set_position(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-    this.actor.set_position(x, y);
-  }
+  /**
+   * Show the Grid UI.
+   */
+  public async Show(): Promise<void>;
+  /**
+   * Shows the Grid UI at a specific position.
+   * @param x 
+   * @param y 
+   */
+  public async Show(x: number, y: number): Promise<void>;
+  public async Show(x?: number, y?: number): Promise<void> {
+    if (x != null && y != null)
+      this.SetPosition(x, y);
 
-  public async show() {
     this.interceptHide = true;
     this.elementsDelegate.reset();
     let time = preferences.animation ? 0.3 : 0;
@@ -262,7 +257,7 @@ export class Grid {
           visible: true,
           transition: 'easeOutQuad',
           scale_y: this.normalScaleY,
-          onComplete: () => { resolve(); this._onShowComplete()}
+          onComplete: () => { resolve(); this.OnShowComplete() }
         });
       })
     } else {
@@ -272,11 +267,11 @@ export class Grid {
     }
 
     this.interceptHide = false;
-    this._bindKeyControls();
+    this.BindKeyControls();
   }
 
-  public hide(immediate: boolean) {
-    this._removeKeyControls();
+  public Hide(immediate: boolean) {
+    this.RemoveKeyControls();
     this.elementsDelegate.reset();
     let time = preferences.animation && !immediate ? 0.3 : 0;
     if (time > 0) {
@@ -286,7 +281,7 @@ export class Grid {
         visible: false,
         scale_y: 0,
         transition: 'easeOutQuad',
-        onComplete: this._onHideComplete
+        onComplete: this.OnHideComplete
       });
     } else {
       this.actor.opacity = 0;
@@ -295,60 +290,38 @@ export class Grid {
     }
   }
 
-  private _onHideComplete = () => {
-    if (!this.interceptHide && this.actor) {
-      Main.layoutManager.removeChrome(this.actor);
+  /**
+   * Rebuilds Grid Elements, called when nXn configs have changed.
+   */
+  private RebuildGridElements = () => {
+    this.elements = [];
+
+    let width = this.tableWidth / this.cols - 2 * this.borderwidth;
+    let height = this.tableHeight / this.rows - 2 * this.borderwidth;
+
+    this.elementsDelegate = new GridElementDelegate();
+    this.elementsDelegate.connect(
+      'resize-done',
+      this.OnResize
+    );
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.cols; c++) {
+        if (c === 0) {
+          this.elements[r] = [];
+        }
+
+        let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
+        this.elements[r][c] = element;
+        this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
+        element.show();
+      }
     }
-
-    Main.layoutManager["_chrome"].updateRegions();
   }
 
-  private _onShowComplete = () => {
-    Main.layoutManager["_chrome"].updateRegions();
-  }
-
-  private _onResize = () => {
-    app.refreshGrids();
-    if (preferences.autoclose) {
-      this.emit('hide-tiling');
-    }
-  }
-
-  private _onMouseEnter = () => {
-    if (!this.isEntered) {
-      this.elementsDelegate.reset();
-      this.isEntered = true;
-    }
-    return false;
-  }
-
-  private _onMouseLeave = () => {
-    let [x, y, mask] = global.get_pointer();
-    if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight + this.topbar.actor.height)) {
-      this.isEntered = false;
-      this.elementsDelegate.reset();
-
-      app.refreshGrids();
-    }
-    return false;
-  }
-
-  private _globalKeyPressEvent = (actor: imports.gi.Clutter.Actor, event: imports.gi.Clutter.Event) => {
-    if (event.get_key_symbol() === Clutter.Escape) {
-      app.hideTiling();
-      return true;
-    }
-    return false;
-  }
-
-  private _onSettingsButton = () => {
-    this.elementsDelegate.reset();
-  }
-
-  private _bindKeyControls = () => {
+  private BindKeyControls = () => {
     Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.toggleTiling);
-    Main.keybindingManager.addHotKey('gTile-tile1', 'space', this._keyTile);
-    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this._keyTile);
+    Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
+    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
     for (let index in KEYCONTROL) {
       if (objHasKey(KEYCONTROL, index)) {
         let key = KEYCONTROL[index];
@@ -356,13 +329,13 @@ export class Grid {
         Main.keybindingManager.addHotKey(
           type,
           key,
-          () => this._onKeyPressEvent(type, key)
+          () => this.OnKeyPressEvent(type, key)
         );
       }
     }
   }
 
-  private _removeKeyControls = () => {
+  private RemoveKeyControls = () => {
     this.rowKey = -1;
     this.colKey = -1;
     Main.keybindingManager.removeHotKey('gTile-close');
@@ -373,9 +346,65 @@ export class Grid {
     }
   }
 
-  private _onKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
+  //#region Events
+  /**
+   * Called when Hide animation is complete
+   */
+  private OnHideComplete = () => {
+    if (!this.interceptHide && this.actor) {
+      Main.layoutManager.removeChrome(this.actor);
+    }
+
+    Main.layoutManager["_chrome"].updateRegions();
+  }
+
+  /**
+   * Called when Show animation is complete
+   */
+  private OnShowComplete = () => {
+    Main.layoutManager["_chrome"].updateRegions();
+  }
+
+  private OnResize = () => {
+    app.RefreshGrid();
+    if (preferences.autoclose) {
+      this.emit('hide-tiling');
+    }
+  }
+
+  /**
+   * Handles when the mouse enters the UI. Resets the Grid Overlay on the monitor.
+   * @returns 
+   */
+  private OnMouseEnter = () => {
+    if (!this.isEntered) {
+      this.elementsDelegate.reset();
+      this.isEntered = true;
+    }
+    return false;
+  }
+
+  /**
+   * Handles when the mouse leaves the UI. Resets grid overlay on monitor. 
+   * @returns 
+   */
+  private OnMouseLeave = () => {
+    let [x, y, mask] = global.get_pointer();
+    if ((this.elementsDelegate && (x <= this.actor.x || x >= this.actor.x + this.actor.width)) || (y <= this.actor.y || y >= this.actor.y + this.tableHeight + this.topbar.actor.height)) {
+      this.isEntered = false;
+      this.elementsDelegate.reset();
+    }
+    return false;
+  }
+
+  /**
+   * Handles KeyPresses for the shown Grid.
+   * @param type 
+   * @param key 
+   */
+  private OnKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
     let modifier = false;
-    switch(type) {
+    switch (type) {
       case 'gTile-k-right-meta':
       case 'gTile-k-left-meta':
       case 'gTile-k-up-meta':
@@ -443,30 +472,50 @@ export class Grid {
     }
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
     if (this.keyElement)
-        this.keyElement._onHoverChanged();
+      this.keyElement._onHoverChanged();
   }
 
-  private _keyTile = () => {
+  //#endregion
+
+  //#region Utils
+
+  /**
+   * Force Set position of current grid, this only really need to be used
+   * when the grid is shown from a hidden state 
+   */
+  private SetPosition(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+    this.actor.set_position(x, y);
+  }
+
+  /**
+   * Commits to tiling the focused window.
+   */
+  private BeginTiling = () => {
     if (this.keyElement) {
-      this.keyElement._onButtonPress();
       this.keyElement._onButtonPress();
       this.colKey = -1;
       this.rowKey = -1;
     }
   }
 
+  /**
+   * Requests the app to move to a different monitor
+   * @param monitor can be null, if so the current monitor will be used (for nothing)
+   * @returns 
+   */
   private MoveToMonitor = (monitor?: imports.ui.layout.Monitor) => {
-    let key = monitor ? getMonitorKey(monitor) : getMonitorKey(this.monitor);
-    let currentKey = getMonitorKey(this.monitor);
+    monitor = monitor ? monitor : this.monitor;
 
     // Same monitor, abort
-    if (key == currentKey)
+    if (monitor.index == this.monitor.index)
       return;
 
     app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
   }
 
-  private _destroy = () => {
+  public destroy = () => {
     for (let r in this.elements) {
       for (let c in this.elements[r]) {
         this.elements[r][c]._destroy();
@@ -477,7 +526,7 @@ export class Grid {
     // TODO: Check if needed
     // @ts-ignore
     this.topbar._destroy();
-    this._removeKeyControls();
+    this.RemoveKeyControls();
     // @ts-ignore
     this.monitor = null;
     // @ts-ignore
@@ -487,4 +536,6 @@ export class Grid {
     // @ts-ignore
     this.cols = null;
   }
+
+  //#endregion
 };

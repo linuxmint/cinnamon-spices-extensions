@@ -35,7 +35,7 @@ export let gridSettingsButton: GridSettingsButton[] = [];
 export const initSettings = () => {
     settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
     //hotkey
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.enableHotkey, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.EnableHotkey, null);
     //grid (nbCols and nbRows)
     settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
     settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
@@ -73,5 +73,5 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    app.Grid._initGridSettingsButtons();
+    app.Grid.RebuildGridSettingsButtons();
 }
