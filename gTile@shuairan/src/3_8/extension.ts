@@ -21,7 +21,7 @@ const Tweener = imports.ui.tweener;
 
 class App {
   private visible = false;
-  private readonly tracker = Cinnamon.WindowTracker.get_default();
+  public readonly tracker = Cinnamon.WindowTracker.get_default();
   private monitors = Main.layoutManager.monitors;
   private focusMetaWindowConnections: number[] = [];
   private focusMetaWindowPrivateConnections: number[] = [];
@@ -39,30 +39,7 @@ class App {
   }
 
   constructor() {
-    try {
       Main.uiGroup.add_actor(this.area);
-
-      initSettings();
-      this.InitGrid();
-
-      this.EnableHotkey();
-
-      // TODO: These don't work, check why
-      global.display.connect("notify::focus_window", this.OnFocusedWindowChanged);
-      this.tracker.connect("notify::focus_app", this.OnFocusedWindowChanged);
-
-      global.screen.connect(
-        'monitors-changed',
-        this.ReInitialize
-      );
-      //global.log("KEY BINDNGS");
-    }
-    catch (e) {
-      if (e instanceof Error) {
-        global.logError(e);
-        global.logError(e?.stack)
-      }
-    }
   }
 
   public destroy() {
@@ -161,13 +138,13 @@ class App {
 
   //#region Init
 
-  private ReInitialize = () => {
+  public ReInitialize = () => {
     this.monitors = Main.layoutManager.monitors;
     this.DestroyGrid();
     this.InitGrid();
   }
 
-  private InitGrid() {
+  public InitGrid() {
     this.grid = new Grid(Main.layoutManager.primaryMonitor.index, Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
 
     Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
@@ -238,7 +215,7 @@ class App {
     Main.layoutManager["_chrome"].updateRegions();
   }
 
-  private OnFocusedWindowChanged = () => {
+  public OnFocusedWindowChanged = () => {
     let window = getFocusApp();
     if (!window) {
       this.ResetFocusedWindow();
@@ -300,7 +277,7 @@ class App {
   }
 }
 
-export let app: App = new App();
+export let app: App;
 
 /*****************************************************************
                             FUNCTIONS
@@ -309,6 +286,12 @@ export const init = () => { }
 
 export const enable = () => {
   app = new App();
+  initSettings();
+  app.InitGrid();
+  //TODO: connect does not work for some reason
+  app.tracker.connect("notify::focus_app", app.OnFocusedWindowChanged);
+  global.screen.connect('monitors-changed', app.ReInitialize);
+  app.EnableHotkey();
 }
 
 export const disable = () => {
