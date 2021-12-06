@@ -56,9 +56,7 @@ export const initSettings = () => {
 }
 
 const updateSettings = () => {
-    for (const grid in app.Grids) {
-        app.Grids[grid].UpdateSettingsButtons();
-    }
+    app.Grid.UpdateSettingsButtons();
 }
 
 const initGridSettings = () => {
@@ -75,8 +73,5 @@ const initGridSettings = () => {
 const updateGridSettings = () => {
     gridSettingsButton = [];
     initGridSettings();
-    for (const gridIdx in app.Grids) {
-        let grid = app.Grids[gridIdx];
-        grid._initGridSettingsButtons();
-    }
+    app.Grid._initGridSettingsButtons();
 }

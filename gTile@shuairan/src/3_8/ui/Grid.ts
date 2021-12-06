@@ -167,6 +167,17 @@ export class Grid {
     this.normalScaleX = this.actor.scale_x;
   }
 
+  public SwitchToMonitor(monitor: imports.ui.layout.Monitor) {
+    this.monitor = monitor;
+    this.monitor_idx = monitor.index;
+
+    for (const row of this.elements) {
+      for (const element of row) {
+        element.monitor = this.monitor;
+      }
+    }
+  }
+
   public UpdateSettingsButtons() {
     for (const button of this.toggleSettingButtons) {
       button["_update"]();
@@ -214,7 +225,6 @@ export class Grid {
         }
 
         let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
-
         this.elements[r][c] = element;
         this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
         element.show();
@@ -235,7 +245,7 @@ export class Grid {
     this.actor.set_position(x, y);
   }
 
-  public show() {
+  public async show() {
     this.interceptHide = true;
     this.elementsDelegate.reset();
     let time = preferences.animation ? 0.3 : 0;
@@ -245,14 +255,16 @@ export class Grid {
     Main.layoutManager.addChrome(this.actor);
     this.actor.scale_y = 0;
     if (time > 0) {
-      Tweener.addTween(this.actor, {
-        time: time,
-        opacity: 255,
-        visible: true,
-        transition: 'easeOutQuad',
-        scale_y: this.normalScaleY,
-        onComplete: this._onShowComplete
-      });
+      await new Promise<void>((resolve) => {
+        Tweener.addTween(this.actor, {
+          time: time,
+          opacity: 255,
+          visible: true,
+          transition: 'easeOutQuad',
+          scale_y: this.normalScaleY,
+          onComplete: () => { resolve(); this._onShowComplete()}
+        });
+      })
     } else {
       this.actor.opacity = 255;
       this.actor.visible = true;
@@ -392,16 +404,16 @@ export class Grid {
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
       case 'gTile-k-left-alt':
-        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
+        this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
         break;
       case 'gTile-k-right-alt':
-        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.RIGHT));
+        this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.RIGHT));
         break;
       case 'gTile-k-up-alt':
-        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.TOP));
+        this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.TOP));
         break;
       case 'gTile-k-down-alt':
-        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
+        this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
         break;
       case 'gTile-k-first-grid':
         gridSettingsButton?.[0]?._onButtonPress();
@@ -429,7 +441,7 @@ export class Grid {
     }
   }
 
-  private SwitchToMonitor = (monitor?: imports.ui.layout.Monitor) => {
+  private MoveToMonitor = (monitor?: imports.ui.layout.Monitor) => {
     let key = monitor ? getMonitorKey(monitor) : getMonitorKey(this.monitor);
     let currentKey = getMonitorKey(this.monitor);
 

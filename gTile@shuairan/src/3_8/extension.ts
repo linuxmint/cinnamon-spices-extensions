@@ -20,7 +20,7 @@ const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 
 class App {
-  private status = false;
+  private visible = false;
   private readonly tracker = Cinnamon.WindowTracker.get_default();
   private monitors = Main.layoutManager.monitors;
   private focusMetaWindowConnections: number[] = [];
@@ -33,9 +33,9 @@ class App {
     return this.focusMetaWindow;
   }
 
-  private grids: Record<string, Grid> = {};
-  public get Grids() {
-    return this.grids;
+  private grid!: Grid;
+  public get Grid() {
+    return this.grid;
   }
 
   constructor() {
@@ -76,10 +76,7 @@ class App {
 
   public refreshGrids = () => {
     //global.log("RefreshGrids");
-    for (let gridIdx in this.grids) {
-      let grid = this.grids[gridIdx];
-      grid.refresh();
-    }
+    this.grid?.refresh();
 
     Main.layoutManager["_chrome"].updateRegions();
   }
@@ -104,57 +101,43 @@ class App {
   }
 
   public hideTiling = () => {
-    for (let gridIdx in this.grids) {
-      let grid = this.grids[gridIdx];
-      grid.elementsDelegate.reset();
-      grid.hide(false);
-    }
+    this.grid.elementsDelegate.reset();
+    this.grid.hide(false);
 
     this.area.visible = false;
 
     this.resetFocusMetaWindow();
 
-    this.status = false;
+    this.visible = false;
 
     Main.layoutManager["_chrome"].updateRegions();
   }
 
   public toggleTiling = () => {
-    if (this.status) {
+    if (this.visible) {
       this.hideTiling();
     } else {
       this.showTiling();
     }
-    return this.status;
+    return this.visible;
   }
 
   private initGrids() {
-    this.grids = {};
-    for (let monitorIdx in this.monitors) {
-      let monitor = this.monitors[monitorIdx];
-      let grid = new Grid(parseInt(monitorIdx), monitor, 'gTile', preferences.nbCols, preferences.nbRows);
-      let key = getMonitorKey(monitor);
-      this.grids[key] = grid;
+    this.grid = new Grid(Main.layoutManager.primaryMonitor.index, Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
 
-      Main.layoutManager.addChrome(grid.actor, { visibleInFullscreen: true });
-      grid.actor.set_opacity(0);
-      grid.hide(true);
-      grid.connect(
-        'hide-tiling',
-        this.hideTiling
-      );
-    }
+    Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
+    this.grid.actor.set_opacity(0);
+    this.grid.hide(true);
+    this.grid.connect(
+      'hide-tiling',
+      this.hideTiling
+    );
   }
 
   private destroyGrids = () => {
-    for (let monitorIdx in this.monitors) {
-      let monitor = this.monitors[monitorIdx];
-      let key = getMonitorKey(monitor);
-      let grid = this.grids[key];
-      if (typeof grid != 'undefined') {
-        grid.hide(true);
-        Main.layoutManager.removeChrome(grid.actor);
-      }
+    if (typeof this.grid != 'undefined') {
+      this.grid.hide(true);
+      Main.layoutManager.removeChrome(this.grid.actor);
     }
   }
 
@@ -190,18 +173,18 @@ class App {
   }
 
   private moveGrids = () => {
-    if (!this.status) {
+    if (!this.visible) {
       return;
     }
 
     let window = this.focusMetaWindow;
     if (!window) return;
-    for (let gridIdx in this.grids) {
-      let grid = this.grids[gridIdx];
+      let grid = this.grid;
       let pos_x;
       let pos_y;
 
       let monitor = grid.monitor;
+      global.log(window.get_monitor(), grid.monitor_idx);
       let isGridMonitor = window.get_monitor() === grid.monitor_idx;
       if (isGridMonitor) {
         pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
@@ -230,26 +213,19 @@ class App {
         transition: 'easeOutQuad',
         onComplete: this.updateRegions
       });
-    }
   }
 
   private updateRegions = () => {
     Main.layoutManager["_chrome"].updateRegions();
     this.refreshGrids();
-    for (let idx in this.grids) {
-      let grid = this.grids[idx];
-      grid.elementsDelegate?.reset();
-    }
+    this.grid.elementsDelegate?.reset();
   }
 
   private _onFocus = () => {
     let window = getFocusApp();
     if (!window) {
       this.resetFocusMetaWindow();
-      for (let gridIdx in this.grids) {
-        let grid = this.grids[gridIdx];
-        grid.topbar._set_title('gTile');
-      }
+      this.grid.topbar._set_title('gTile');
       return;
     }
 
@@ -276,28 +252,18 @@ class App {
     let app = this.tracker.get_window_app(this.focusMetaWindow);
     let title = this.focusMetaWindow.get_title();
 
-    for (let monitorIdx in this.monitors) {
-      let monitor = this.monitors[monitorIdx];
-      let key = getMonitorKey(monitor);
-      let grid = this.grids[key];
-      if (app) grid.topbar._set_app(app, title);
-      else grid.topbar._set_title(title);
-    }
+    if (app) this.grid.topbar._set_app(app, title);
+    else this.grid.topbar._set_title(title);
     this.moveGrids();
   }
 
-  public MoveToMonitor = (current: imports.ui.layout.Monitor, newMonitor: imports.ui.layout.Monitor) => {
-    const oldMonitorID = getMonitorKey(current);
-    const monitorID = getMonitorKey(newMonitor);
-    if (oldMonitorID == monitorID)
+  public MoveToMonitor = async (current: imports.ui.layout.Monitor, newMonitor: imports.ui.layout.Monitor) => {
+    if (current.index == newMonitor.index)
       return;
 
-    let grid = this.grids[monitorID];
-    let oldGrid = this.grids[oldMonitorID];
-    grid.set_position(Math.floor(newMonitor.x - newMonitor.width / 2), Math.floor(newMonitor.y - newMonitor.height / 2));
-    oldGrid.hide(false);
-    grid.show();
-
+    global.log(newMonitor.x, newMonitor.y, newMonitor.width, newMonitor.height);
+    this.grid.SwitchToMonitor(newMonitor);
+    this.grid.set_position(Math.floor(newMonitor.x - newMonitor.width / 2), Math.floor(newMonitor.y - newMonitor.height / 2));
     this.moveGrids();
   }
 
@@ -308,32 +274,22 @@ class App {
 
     this.area.visible = true;
     if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
-      for (let monitorIdx in this.monitors) {
-        let monitor = this.monitors[monitorIdx];
-        let key = getMonitorKey(monitor);
-        let grid = this.grids[key];
+        let grid = this.grid;
 
         let window = getFocusApp();
+        grid.SwitchToMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
         let pos_x;
         let pos_y;
 
-        // If we're not currently looking at the currently-active monitor,
-        // skip it -- effectively only showing the grid menu on one active monitor
-        // instead of all of them
-
-        if (window.get_monitor() !== monitor.index) {
-          continue;
-        }
         pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
         pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
 
         grid.set_position(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
         grid.show();
-      }
 
       this._onFocus();
-      this.status = true;
+      this.visible = true;
     }
 
     this.moveGrids();
