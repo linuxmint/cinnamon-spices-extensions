@@ -226,7 +226,6 @@ const getUsableScreenArea = (monitor) => {
     return [left, top, width, height];
 };
 const getMonitorKey = (monitor) => {
-    global.log(monitor.x, monitor.width, monitor.y, monitor.height);
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 };
 const getAdjacentMonitor = (monitor, side) => {
@@ -306,7 +305,11 @@ const KEYCONTROL = {
     'gTile-k-left-alt': '<Alt>Left',
     'gTile-k-right-alt': '<Alt>Right',
     'gTile-k-up-alt': '<Alt>Up',
-    'gTile-k-down-alt': '<Alt>Down'
+    'gTile-k-down-alt': '<Alt>Down',
+    'gTile-k-first-grid': '1',
+    'gTile-k-second-grid': '2',
+    'gTile-k-third-grid': '3',
+    'gTile-k-fourth-grid': '4',
 };
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/ActionButton.ts
@@ -884,6 +887,7 @@ let Grid = class Grid {
             }
         };
         this._onKeyPressEvent = (type, key) => {
+            var _a, _b, _c, _d;
             let modifier = type.indexOf('meta', type.length - 4) !== -1;
             if (modifier && this.keyElement) {
                 if (!this.elementsDelegate.activated) {
@@ -923,6 +927,18 @@ let Grid = class Grid {
                     break;
                 case 'gTile-k-down-alt':
                     this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
+                    break;
+                case 'gTile-k-first-grid':
+                    (_a = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[0]) === null || _a === void 0 ? void 0 : _a._onButtonPress();
+                    break;
+                case 'gTile-k-second-grid':
+                    (_b = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[1]) === null || _b === void 0 ? void 0 : _b._onButtonPress();
+                    break;
+                case 'gTile-k-third-grid':
+                    (_c = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[2]) === null || _c === void 0 ? void 0 : _c._onButtonPress();
+                    break;
+                case 'gTile-k-fourth-grid':
+                    (_d = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[3]) === null || _d === void 0 ? void 0 : _d._onButtonPress();
                     break;
             }
             this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;

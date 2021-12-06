@@ -38,7 +38,11 @@ export const KEYCONTROL = {
   'gTile-k-left-alt': '<Alt>Left',
   'gTile-k-right-alt': '<Alt>Right',
   'gTile-k-up-alt': '<Alt>Up',
-  'gTile-k-down-alt': '<Alt>Down'
+  'gTile-k-down-alt': '<Alt>Down',
+  'gTile-k-first-grid': '1',
+  'gTile-k-second-grid': '2',
+  'gTile-k-third-grid': '3',
+  'gTile-k-fourth-grid': '4',
 };
 
 /*let metaKey = '<Shift>';

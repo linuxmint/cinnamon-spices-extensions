@@ -133,7 +133,6 @@ export const getUsableScreenArea = (monitor: imports.ui.layout.Monitor) => {
 }
 
 export const getMonitorKey = (monitor: imports.ui.layout.Monitor) => {
-    global.log(monitor.x, monitor.width, monitor.y, monitor.height)
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 }
 

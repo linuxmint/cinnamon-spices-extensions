@@ -403,6 +403,18 @@ export class Grid {
       case 'gTile-k-down-alt':
         this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
         break;
+      case 'gTile-k-first-grid':
+        gridSettingsButton?.[0]?._onButtonPress();
+        break;
+      case 'gTile-k-second-grid':
+        gridSettingsButton?.[1]?._onButtonPress();
+        break;
+      case 'gTile-k-third-grid':
+        gridSettingsButton?.[2]?._onButtonPress();
+        break;
+      case 'gTile-k-fourth-grid':
+        gridSettingsButton?.[3]?._onButtonPress();
+        break;
     }
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
     if (this.keyElement) this.keyElement._onHoverChanged();
