@@ -1223,7 +1223,6 @@ class App {
             let pos_x;
             let pos_y;
             let monitor = grid.monitor;
-            global.log(window.get_monitor(), grid.monitor_idx);
             let isGridMonitor = window.get_monitor() === grid.monitor_idx;
             if (isGridMonitor) {
                 pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
@@ -1281,9 +1280,7 @@ class App {
         this.MoveToMonitor = async (current, newMonitor) => {
             if (current.index == newMonitor.index)
                 return;
-            global.log(newMonitor.x, newMonitor.y, newMonitor.width, newMonitor.height);
             this.grid.SwitchToMonitor(newMonitor);
-            this.grid.set_position(Math.floor(newMonitor.x - newMonitor.width / 2), Math.floor(newMonitor.y - newMonitor.height / 2));
             this.moveGrids();
         };
         this.showTiling = () => {

@@ -180,11 +180,10 @@ class App {
     let window = this.focusMetaWindow;
     if (!window) return;
       let grid = this.grid;
-      let pos_x;
-      let pos_y;
+      let pos_x: number;
+      let pos_y: number;
 
       let monitor = grid.monitor;
-      global.log(window.get_monitor(), grid.monitor_idx);
       let isGridMonitor = window.get_monitor() === grid.monitor_idx;
       if (isGridMonitor) {
         pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
@@ -261,9 +260,7 @@ class App {
     if (current.index == newMonitor.index)
       return;
 
-    global.log(newMonitor.x, newMonitor.y, newMonitor.width, newMonitor.height);
     this.grid.SwitchToMonitor(newMonitor);
-    this.grid.set_position(Math.floor(newMonitor.x - newMonitor.width / 2), Math.floor(newMonitor.y - newMonitor.height / 2));
     this.moveGrids();
   }
 
