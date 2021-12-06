@@ -179,8 +179,6 @@ const move_resize_window = (metaWindow, x, y, width, height) => {
         return;
     let clientRect = metaWindow.get_rect();
     let outerRect = metaWindow.get_outer_rect();
-    let shiftX = 0;
-    let shiftY = 0;
     let client_deco = clientRect.width > outerRect.width &&
         clientRect.height > outerRect.height;
     if (client_deco) {
@@ -898,17 +896,11 @@ let Grid = class Grid {
             switch (type) {
                 case 'gTile-k-right':
                 case 'gTile-k-right-meta':
-                    if (this.colKey === this.cols - 1) {
-                        this._keyTileSwitch();
-                    }
                     this.colKey = Math.min(this.colKey + 1, this.cols - 1);
                     this.rowKey = this.rowKey === -1 ? 0 : this.rowKey;
                     break;
                 case 'gTile-k-left':
                 case 'gTile-k-left-meta':
-                    if (this.colKey === 0) {
-                        this._keyTileSwitch();
-                    }
                     this.colKey = Math.max(0, this.colKey - 1);
                     break;
                 case 'gTile-k-up':
@@ -921,16 +913,16 @@ let Grid = class Grid {
                     this.colKey = this.colKey === -1 ? 0 : this.colKey;
                     break;
                 case 'gTile-k-left-alt':
-                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.LEFT)));
+                    this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
                     break;
                 case 'gTile-k-right-alt':
-                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.RIGHT)));
+                    this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.RIGHT));
                     break;
                 case 'gTile-k-up-alt':
-                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.TOP)));
+                    this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.TOP));
                     break;
                 case 'gTile-k-down-alt':
-                    this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.BOTTOM)));
+                    this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
                     break;
             }
             this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
@@ -945,18 +937,12 @@ let Grid = class Grid {
                 this.rowKey = -1;
             }
         };
-        this._keyTileSwitch = (monitorKey) => {
-            let key = monitorKey !== null && monitorKey !== void 0 ? monitorKey : getMonitorKey(this.monitor);
-            let candidate = null;
-            for (let k in app.Grids) {
-                if (k === key) {
-                    continue;
-                }
-                candidate = app.Grids[k];
-            }
-            if (candidate) {
-                candidate._bindKeyControls();
-            }
+        this.SwitchToMonitor = (monitor) => {
+            let key = monitor ? getMonitorKey(monitor) : getMonitorKey(this.monitor);
+            let currentKey = getMonitorKey(this.monitor);
+            if (key == currentKey)
+                return;
+            app.MoveToMonitor(this.monitor, monitor !== null && monitor !== void 0 ? monitor : this.monitor);
         };
         this._destroy = () => {
             for (let r in this.elements) {
@@ -1294,6 +1280,18 @@ class App {
             }
             this.moveGrids();
         };
+        this.MoveToMonitor = (current, newMonitor) => {
+            const oldMonitorID = getMonitorKey(current);
+            const monitorID = getMonitorKey(newMonitor);
+            if (oldMonitorID == monitorID)
+                return;
+            let grid = this.grids[monitorID];
+            let oldGrid = this.grids[oldMonitorID];
+            grid.set_position(Math.floor(newMonitor.x - newMonitor.width / 2), Math.floor(newMonitor.y - newMonitor.height / 2));
+            oldGrid.hide(false);
+            grid.show();
+            this.moveGrids();
+        };
         this.showTiling = () => {
             this.focusMetaWindow = getFocusApp();
             let wm_type = this.focusMetaWindow.get_window_type();
@@ -1307,14 +1305,11 @@ class App {
                     let window = getFocusApp();
                     let pos_x;
                     let pos_y;
-                    if (window.get_monitor() === parseInt(monitorIdx)) {
-                        pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                        pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                    if (window.get_monitor() !== monitor.index) {
+                        continue;
                     }
-                    else {
-                        pos_x = monitor.x + monitor.width / 2;
-                        pos_y = monitor.y + monitor.height / 2;
-                    }
+                    pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+                    pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
                     grid.set_position(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
                     grid.show();
                 }

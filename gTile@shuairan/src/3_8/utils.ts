@@ -73,11 +73,12 @@ export const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x:
     if (!metaWindow)
         return;
 
+    // Fix for client-decorated window positioning by @mtwebster
+    // See here for more info
+    // https://github.com/linuxmint/cinnamon-spices-extensions/commit/fda3a2b0c6adfc79ba65c6bd9a174795223523b9
+
     let clientRect = metaWindow.get_rect();
     let outerRect = metaWindow.get_outer_rect();
-
-    let shiftX = 0;
-    let shiftY = 0;
 
     let client_deco = clientRect.width > outerRect.width &&
         clientRect.height > outerRect.height;

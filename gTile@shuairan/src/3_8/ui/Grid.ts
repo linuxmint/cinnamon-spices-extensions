@@ -375,17 +375,11 @@ export class Grid {
     switch (type) {
       case 'gTile-k-right':
       case 'gTile-k-right-meta':
-        if (this.colKey === this.cols - 1) {
-          this._keyTileSwitch();
-        }
         this.colKey = Math.min(this.colKey + 1, this.cols - 1);
         this.rowKey = this.rowKey === -1 ? 0 : this.rowKey; //leave initial state
         break;
       case 'gTile-k-left':
       case 'gTile-k-left-meta':
-        if (this.colKey === 0) {
-          this._keyTileSwitch();
-        }
         this.colKey = Math.max(0, this.colKey - 1);
         break;
       case 'gTile-k-up':
@@ -398,16 +392,16 @@ export class Grid {
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
       case 'gTile-k-left-alt':
-        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.LEFT)));
+        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
         break;
       case 'gTile-k-right-alt':
-        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.RIGHT)));
+        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.RIGHT));
         break;
       case 'gTile-k-up-alt':
-        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.TOP)));
+        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.TOP));
         break;
       case 'gTile-k-down-alt':
-        this._keyTileSwitch(getMonitorKey(getAdjacentMonitor(this.monitor, Side.BOTTOM)));
+        this.SwitchToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
         break;
     }
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
@@ -423,20 +417,15 @@ export class Grid {
     }
   }
 
-  private _keyTileSwitch = (monitorKey?: string) => {
-    let key = monitorKey ?? getMonitorKey(this.monitor);
+  private SwitchToMonitor = (monitor?: imports.ui.layout.Monitor) => {
+    let key = monitor ? getMonitorKey(monitor) : getMonitorKey(this.monitor);
+    let currentKey = getMonitorKey(this.monitor);
 
-    let candidate: Grid | null = null;
-    // find other grids //TODO: improve to loop around all grids!
-    for (let k in app.Grids) {
-      if (k === key) {
-        continue;
-      }
-      candidate = app.Grids[k];
-    }
-    if (candidate) {
-      candidate._bindKeyControls();
-    }
+    // Same monitor, abort
+    if (key == currentKey)
+      return;
+
+    app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
   }
 
   private _destroy = () => {
