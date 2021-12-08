@@ -40,6 +40,9 @@ class App {
 
   constructor() {
       Main.uiGroup.add_actor(this.area);
+
+      this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
+      global.screen.connect('monitors-changed', this.ReInitialize);
   }
 
   public destroy() {
@@ -227,6 +230,8 @@ class App {
 
     this.focusMetaWindow = window;
 
+    this.grid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
+
     let actor = this.focusMetaWindow.get_compositor_private();
     if (actor) {
       this.focusMetaWindowPrivateConnections.push(
@@ -288,9 +293,6 @@ export const enable = () => {
   app = new App();
   initSettings();
   app.InitGrid();
-  //TODO: connect does not work for some reason
-  app.tracker.connect("notify::focus_app", app.OnFocusedWindowChanged);
-  global.screen.connect('monitors-changed', app.ReInitialize);
   app.EnableHotkey();
 }
 

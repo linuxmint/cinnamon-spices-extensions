@@ -1263,6 +1263,7 @@ class App {
             }
             this.ResetFocusedWindow();
             this.focusMetaWindow = window;
+            this.grid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
             let actor = this.focusMetaWindow.get_compositor_private();
             if (actor) {
                 this.focusMetaWindowPrivateConnections.push(actor.connect('size-changed', this.MoveUIActor));
@@ -1296,6 +1297,8 @@ class App {
             this.focusMetaWindowPrivateConnections = [];
         };
         extension_Main.uiGroup.add_actor(this.area);
+        this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
+        global.screen.connect('monitors-changed', this.ReInitialize);
     }
     get FocusMetaWindow() {
         return this.focusMetaWindow;
@@ -1322,8 +1325,6 @@ const enable = () => {
     app = new App();
     initSettings();
     app.InitGrid();
-    app.tracker.connect("notify::focus_app", app.OnFocusedWindowChanged);
-    global.screen.connect('monitors-changed', app.ReInitialize);
     app.EnableHotkey();
 };
 const disable = () => {
