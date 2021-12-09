@@ -790,7 +790,7 @@ const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
 let Grid = class Grid {
-    constructor(monitor_idx, monitor, title, cols, rows) {
+    constructor(monitor, title, cols, rows) {
         this.tableWidth = 220;
         this.tableHeight = 200;
         this.borderwidth = 2;
@@ -1037,7 +1037,6 @@ let Grid = class Grid {
         this.actor.add(this.bottombar, { x_fill: true });
         this.actor.add(this.veryBottomBar, { x_fill: true });
         this.monitor = monitor;
-        this.monitor_idx = monitor_idx;
         this.rows = rows;
         this.title = title;
         this.cols = cols;
@@ -1068,7 +1067,6 @@ let Grid = class Grid {
     }
     ChangeCurrentMonitor(monitor) {
         this.monitor = monitor;
-        this.monitor_idx = monitor.index;
         for (const row of this.elements) {
             for (const element of row) {
                 element.monitor = this.monitor;
@@ -1250,7 +1248,7 @@ class App {
             let pos_x;
             let pos_y;
             let monitor = grid.monitor;
-            let isGridMonitor = window.get_monitor() === grid.monitor_idx;
+            let isGridMonitor = window.get_monitor() === grid.monitor.index;
             if (isGridMonitor) {
                 pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
                 pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
@@ -1337,7 +1335,7 @@ class App {
         this.ResetFocusedWindow();
     }
     InitGrid() {
-        this.grid = new Grid(extension_Main.layoutManager.primaryMonitor.index, extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
+        this.grid = new Grid(extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
         extension_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
         this.grid.actor.set_opacity(0);
         this.grid.Hide(true);

@@ -35,7 +35,6 @@ export class Grid {
   table: imports.gi.St.Table;
 
   monitor: imports.ui.layout.Monitor;
-  monitor_idx: number;
   rows: number;
   title: string;
   cols: number;
@@ -54,7 +53,7 @@ export class Grid {
   keyElement?: GridElement | null;
   toggleSettingButtons: ToggleSettingsButton[] = [];
 
-  constructor(monitor_idx: number, monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
+  constructor(monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
     this.tableWidth = 220;
     this.tableHeight = 200;
     this.borderwidth = 2;
@@ -118,7 +117,6 @@ export class Grid {
     this.actor.add(this.veryBottomBar, { x_fill: true });
 
     this.monitor = monitor;
-    this.monitor_idx = monitor_idx;
     this.rows = rows;
     this.title = title;
     this.cols = cols;
@@ -172,7 +170,6 @@ export class Grid {
    */
   public ChangeCurrentMonitor(monitor: imports.ui.layout.Monitor) {
     this.monitor = monitor;
-    this.monitor_idx = monitor.index;
 
     for (const row of this.elements) {
       for (const element of row) {

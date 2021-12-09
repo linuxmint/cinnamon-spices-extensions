@@ -149,7 +149,7 @@ class App {
   }
 
   public InitGrid() {
-    this.grid = new Grid(Main.layoutManager.primaryMonitor.index, Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
+    this.grid = new Grid(Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
 
     Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
     this.grid.actor.set_opacity(0);
@@ -185,7 +185,7 @@ class App {
       let pos_y: number;
 
       let monitor = grid.monitor;
-      let isGridMonitor = window.get_monitor() === grid.monitor_idx;
+      let isGridMonitor = window.get_monitor() === grid.monitor.index;
       if (isGridMonitor) {
         pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
         pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
