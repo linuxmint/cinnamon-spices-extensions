@@ -20,6 +20,7 @@ export class ToggleSettingsButton {
   constructor(text: string, property: keyof Preferences | TooltipKeys, icon: CustomIcons) {
     this.text = text;
     this.actor = new Button({
+      style_class: "settings-button",
       reactive: true,
       can_focus: true,
       track_hover: true,
@@ -53,6 +54,10 @@ export class ToggleSettingsButton {
     this.active = preferences[this.property]
     if (this.active) {
       this.actor.opacity = 255;
+      this.actor.add_style_pseudo_class('activate');
+    }
+    else {
+      this.actor.remove_style_pseudo_class('activate');
     }
   }
 

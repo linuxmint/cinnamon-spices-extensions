@@ -326,7 +326,7 @@ let ActionButton = class ActionButton {
         };
         this.grid = grid;
         this.actor = new ActionButton_St.Button({
-            style_class: "menu-favorites-button",
+            style_class: "settings-button",
             reactive: true,
             can_focus: true,
             track_hover: true,
@@ -683,6 +683,10 @@ let ToggleSettingsButton = class ToggleSettingsButton {
             this.active = preferences[this.property];
             if (this.active) {
                 this.actor.opacity = 255;
+                this.actor.add_style_pseudo_class('activate');
+            }
+            else {
+                this.actor.remove_style_pseudo_class('activate');
             }
         };
         this._onButtonPress = () => {
@@ -694,6 +698,7 @@ let ToggleSettingsButton = class ToggleSettingsButton {
         };
         this.text = text;
         this.actor = new Button({
+            style_class: "settings-button",
             reactive: true,
             can_focus: true,
             track_hover: true,

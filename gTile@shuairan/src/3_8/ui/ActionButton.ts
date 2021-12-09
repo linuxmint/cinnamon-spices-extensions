@@ -16,7 +16,7 @@ export class ActionButton<T extends string = ""> {
     constructor(grid: Grid, classname: TooltipKeys, icon: string) {
         this.grid = grid;
         this.actor = new St.Button({
-            style_class: "menu-favorites-button",
+            style_class: "settings-button",
             reactive: true,
             can_focus: true,
             track_hover: true,
