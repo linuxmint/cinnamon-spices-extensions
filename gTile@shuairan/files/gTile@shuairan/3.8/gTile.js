@@ -678,12 +678,11 @@ const ToggleSettingsButton_Tooltips = imports.ui.tooltips;
 const { IconTheme } = imports.gi.Gtk;
 let ToggleSettingsButton = class ToggleSettingsButton {
     constructor(text, property, icon) {
+        this.active = false;
         this._update = () => {
-            if (objHasKey(preferences, this.property)) {
-                this.actor.add_style_pseudo_class('activate');
-            }
-            else {
-                this.actor.remove_style_pseudo_class('activate');
+            this.active = preferences[this.property];
+            if (this.active) {
+                this.actor.opacity = 255;
             }
         };
         this._onButtonPress = () => {
@@ -695,10 +694,10 @@ let ToggleSettingsButton = class ToggleSettingsButton {
         };
         this.text = text;
         this.actor = new Button({
-            style_class: "menu-favorites-button",
             reactive: true,
             can_focus: true,
             track_hover: true,
+            opacity: 128,
             child: new Icon({
                 icon_name: icon,
                 icon_type: IconType.SYMBOLIC,
@@ -709,6 +708,8 @@ let ToggleSettingsButton = class ToggleSettingsButton {
         this._update();
         this.actor.connect('button-press-event', this._onButtonPress);
         this.connect('update-toggle', this._update);
+        this.actor.connect('notify::hover', () => { if (!this.active)
+            this.actor.opacity = this.actor.hover ? 255 : 128; });
         if (objHasKey(TOOLTIPS, property)) {
             this._tooltip = new ToggleSettingsButton_Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
         }
@@ -734,14 +735,15 @@ class TopBar {
         this._stlabel = new TopBar_St.Label({ style_class: 'grid-title', text: this._title });
         this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: true });
         this._closeButton = new TopBar_St.Button({
-            style_class: "menu-favorites-button",
             style: "padding:0;",
+            opacity: 128,
             child: new TopBar_St.Icon({
                 icon_type: TopBar_St.IconType.SYMBOLIC,
                 icon_size: 24,
-                icon_name: "close-symbolic"
+                icon_name: "window-close"
             })
         });
+        this._closeButton.connect('notify::hover', () => { this._closeButton.opacity = this._closeButton.hover ? 255 : 128; });
         this._closeButton.connect('button-release-event', this._onCloseButtonClicked);
         this.actor.add(this._iconBin);
         this.actor.add(this._stlabel, { x_fill: true, expand: true, y_align: TopBar_St.Align.MIDDLE, y_fill: true });

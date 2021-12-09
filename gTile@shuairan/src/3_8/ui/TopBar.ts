@@ -16,14 +16,16 @@ export class TopBar {
       this._stlabel = new St.Label({ style_class: 'grid-title', text: this._title });
       this._iconBin = new St.Bin({ x_fill: false, y_fill: true });
       this._closeButton = new St.Button({
-        style_class: "menu-favorites-button",
         style:"padding:0;",
+        opacity: 128,
         child: new St.Icon({
           icon_type: St.IconType.SYMBOLIC,
           icon_size: 24,
-          icon_name: "close-symbolic"
+          icon_name: "window-close"
         })
       });
+
+      this._closeButton.connect('notify::hover', () => { this._closeButton.opacity = this._closeButton.hover ? 255 : 128; });
   
       this._closeButton.connect(
         'button-release-event',
@@ -46,8 +48,7 @@ export class TopBar {
       this._icon = app.create_icon_texture(24);
   
       this._iconBin.set_size(24, 24);
-      // TODO: proper null check
-      this._iconBin.set_child(<imports.gi.St.Icon>this._icon);
+      this._iconBin.set_child(this._icon);
     }
   
     private _onCloseButtonClicked = () => {

@@ -12,17 +12,18 @@ export interface ToggleSettingsButton extends SignalOverload<'update-toggle'> {}
 export class ToggleSettingsButton {
   text: string;
   actor: imports.gi.St.Button;
-  property: TooltipKeys | keyof Preferences
+  property: TooltipKeys | keyof Preferences;
+  active: boolean = false;
 
   private _tooltip?: imports.ui.tooltips.Tooltip;
 
   constructor(text: string, property: keyof Preferences | TooltipKeys, icon: CustomIcons) {
     this.text = text;
     this.actor = new Button({
-      style_class: "menu-favorites-button",
       reactive: true,
       can_focus: true,
       track_hover: true,
+      opacity: 128,
       child: new Icon({
         icon_name: icon,
         icon_type: IconType.SYMBOLIC,
@@ -40,16 +41,18 @@ export class ToggleSettingsButton {
       this._update
     );
 
+    this.actor.connect('notify::hover', () => { if (!this.active) this.actor.opacity = this.actor.hover ? 255 : 128; });
+
     if (objHasKey(TOOLTIPS, property)) {
       this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
     }
   }
 
   private _update = () => {
-    if (objHasKey(preferences, this.property)) {
-      this.actor.add_style_pseudo_class('activate');
-    } else {
-      this.actor.remove_style_pseudo_class('activate');
+    // @ts-ignore
+    this.active = preferences[this.property]
+    if (this.active) {
+      this.actor.opacity = 255;
     }
   }
 
