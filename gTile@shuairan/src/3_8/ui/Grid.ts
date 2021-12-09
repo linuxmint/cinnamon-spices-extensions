@@ -1,7 +1,7 @@
 import { gridSettingsButton, preferences } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { app } from "../extension";
-import { addSignals, getAdjacentMonitor, getMonitorKey, objHasKey, SignalOverload } from "../utils";
+import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";
@@ -168,10 +168,27 @@ export class Grid {
         element.monitor = this.monitor;
       }
     }
+  }
 
-    const aspectRatio = monitor.width / monitor.height;
-    //this.tableWidth = this.tableHeight * aspectRatio;
-    // this.table.set_width(this.tableWidth);
+  public AdjustTableSize = (time: number, width: number, height: number) => {
+    this.tableWidth = width;
+    this.tableHeight = height;
+    Tweener.addTween(this.table, {
+      time: time,
+      width: width,
+      height: height,
+      transition: 'easeOutQuad',
+    });
+    for (const row of this.elements) {
+      for (const element of row) {
+        Tweener.addTween(element.actor, {
+          time: time,
+          width: (width / this.cols - 2 * this.borderwidth),
+          height: (height / this.rows - 2 * this.borderwidth),
+          transition: 'easeOutQuad',
+        });
+      }
+    }
   }
 
   /**

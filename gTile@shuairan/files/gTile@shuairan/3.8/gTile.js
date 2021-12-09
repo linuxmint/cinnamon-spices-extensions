@@ -277,6 +277,13 @@ function rangeToContactSurface(a, b) {
     const range = intersection(a, b);
     return range ? range[1] - range[0] : 0;
 }
+const GetMonitorAspectRatio = (monitor) => {
+    const aspectRatio = Math.max(monitor.width, monitor.height) / Math.min(monitor.width, monitor.height);
+    return {
+        ratio: aspectRatio,
+        widthIsLonger: monitor.width > monitor.height
+    };
+};
 
 ;// CONCATENATED MODULE: ./src/3_8/constants.ts
 
@@ -799,6 +806,26 @@ let Grid = class Grid {
         this.isEntered = false;
         this.interceptHide = false;
         this.toggleSettingButtons = [];
+        this.AdjustTableSize = (time, width, height) => {
+            this.tableWidth = width;
+            this.tableHeight = height;
+            Grid_Tweener.addTween(this.table, {
+                time: time,
+                width: width,
+                height: height,
+                transition: 'easeOutQuad',
+            });
+            for (const row of this.elements) {
+                for (const element of row) {
+                    Grid_Tweener.addTween(element.actor, {
+                        time: time,
+                        width: (width / this.cols - 2 * this.borderwidth),
+                        height: (height / this.rows - 2 * this.borderwidth),
+                        transition: 'easeOutQuad',
+                    });
+                }
+            }
+        };
         this.RebuildGridSettingsButtons = () => {
             this.bottombar.destroy_children();
             let rowNum = 0;
@@ -1063,7 +1090,6 @@ let Grid = class Grid {
                 element.monitor = this.monitor;
             }
         }
-        const aspectRatio = monitor.width / monitor.height;
     }
     UpdateSettingsButtons() {
         for (const button of this.toggleSettingButtons) {
@@ -1237,6 +1263,11 @@ class App {
             if (!window)
                 return;
             let grid = this.grid;
+            const aspect = GetMonitorAspectRatio(grid.monitor);
+            const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
+            const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+            const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
+            const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
             let pos_x;
             let pos_y;
             let monitor = grid.monitor;
@@ -1249,15 +1280,16 @@ class App {
                 pos_x = monitor.x + monitor.width / 2;
                 pos_y = monitor.y + monitor.height / 2;
             }
-            pos_x = Math.floor(pos_x - grid.actor.width / 2);
-            pos_y = Math.floor(pos_y - grid.actor.height / 2);
+            pos_x = Math.floor(pos_x - gridWidth / 2);
+            pos_y = Math.floor(pos_y - gridHeight / 2);
             if (isGridMonitor) {
                 pos_x = pos_x < monitor.x ? monitor.x : pos_x;
-                pos_x = pos_x + grid.actor.width > monitor.width + monitor.x ? monitor.x + monitor.width - grid.actor.width : pos_x;
+                pos_x = pos_x + gridWidth > monitor.width + monitor.x ? monitor.x + monitor.width - gridWidth : pos_x;
                 pos_y = pos_y < monitor.y ? monitor.y : pos_y;
-                pos_y = pos_y + grid.actor.height > monitor.height + monitor.y ? monitor.y + monitor.height - grid.actor.height : pos_y;
+                pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
             }
             let time = preferences.animation ? 0.3 : 0.1;
+            grid.AdjustTableSize(time, newTableWidth, newTableHeight);
             extension_Tweener.addTween(grid.actor, {
                 time: time,
                 x: pos_x,

@@ -13,8 +13,8 @@
 }
 
 .table{
-    /* padding-left: 10px; */
-    /* padding-right: 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .table-element{
@@ -26,41 +26,6 @@
 {
     background-color: rgba(240,240,240,0.8);
     border-radius: 3px;
-}
-
-.tiling-icon
-{
-    width: 24px;
-    height: 24px;
-    background-image: url("../images/launcher_16.png");
-}
-
-.tiling-icon:hover
-{
-	width: 24px;
-    height: 24px;
-    background-image: url("../images/launcher_16_hover.png");
-}
-
-.tiling-icon:activate
-{
-    width: 24px;
-    height: 24px;
-    background-image: url("../images/launcher_16_activated.png");
-}
-
-.close-button
-{
-    width:24px;
-    height:24px;
-    background-image: url("../images/close_button.png");
-}
-
-.close-button:hover
-{
-    width:24px;
-    height:24px;
-    background-image: url("../images/close_button_hover.png");
 }
 
 .top-box
@@ -110,41 +75,6 @@
     border:1px rgba(0,200,255,0.7);
 }
 
-.animation-icon
-{
-    background-image: url("../images/animation-icon.png");
-    width:48px;
-    height:48px;
-}
-
-.auto-close-icon
-{
-    background-image: url("../images/auto-close-icon.png");
-    width:48px;
-    height:48px;
-}
-
-.action-main-list
-{
-    background-image: url("../images/autoTile_0.png");
-    width:48px;
-    height:48px;
-}
-
-.action-two-list
-{
-    background-image: url("../images/autoTile_1.png");
-    width:48px;
-    height:48px;
-}
-
-.action-scale
-{
-    background-image: url("../images/scale-icon.png");
-    width:48px;
-    height:48px;
-}
-
 .settings-label
 {
     
@@ -172,11 +102,5 @@
 .bottom-box
 {
     padding:10px;
-    display:block;
-}
-
-.very-bottom-box
-{
-    padding:60px;
     display:block;
 }

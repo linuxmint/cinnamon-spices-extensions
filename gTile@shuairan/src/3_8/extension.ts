@@ -9,7 +9,7 @@
 
 import { initSettings, preferences } from "./config";
 import { Grid } from "./ui/Grid";
-import { getFocusApp, getMonitorKey } from "./utils";
+import { getFocusApp, GetMonitorAspectRatio, getMonitorKey } from "./utils";
 
 /*****************************************************************
                          CONST & VARS
@@ -110,15 +110,15 @@ class App {
 
     this.area.visible = true;
     if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
-        let grid = this.grid;
+      let grid = this.grid;
 
-        let window = getFocusApp();
-        grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
+      let window = getFocusApp();
+      grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
-        let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-        let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+      let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+      let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
 
-        grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
+      grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
       this.OnFocusedWindowChanged();
       this.visible = true;
@@ -179,40 +179,55 @@ class App {
     }
 
     let window = this.focusMetaWindow;
-    if (!window) return;
-      let grid = this.grid;
-      let pos_x: number;
-      let pos_y: number;
+    if (!window) 
+      return;
+    
+    let grid = this.grid;
+    // Calculate new ui width and height in case we are moving to a different monitor
+    // We retain the size and the aspect ratio of the new monitor 
+    const aspect = GetMonitorAspectRatio(grid.monitor);
+    const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
+    const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+    const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
+    const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
 
-      let monitor = grid.monitor;
-      let isGridMonitor = window.get_monitor() === grid.monitor.index;
-      if (isGridMonitor) {
-        pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-        pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
-      } else {
-        pos_x = monitor.x + monitor.width / 2;
-        pos_y = monitor.y + monitor.height / 2;
-      }
 
-      pos_x = Math.floor(pos_x - grid.actor.width / 2);
-      pos_y = Math.floor(pos_y - grid.actor.height / 2);
+    let pos_x: number;
+    let pos_y: number;
 
-      if (isGridMonitor) {
-        pos_x = pos_x < monitor.x ? monitor.x : pos_x;
-        pos_x = pos_x + grid.actor.width > monitor.width + monitor.x ? monitor.x + monitor.width - grid.actor.width : pos_x;
-        pos_y = pos_y < monitor.y ? monitor.y : pos_y;
-        pos_y = pos_y + grid.actor.height > monitor.height + monitor.y ? monitor.y + monitor.height - grid.actor.height : pos_y;
-      }
+    // Get center of where we want to be
+    let monitor = grid.monitor;
+    let isGridMonitor = window.get_monitor() === grid.monitor.index;
+    if (isGridMonitor) {
+      pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+      pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+    } else {
+      pos_x = monitor.x + monitor.width / 2;
+      pos_y = monitor.y + monitor.height / 2;
+    }
 
-      let time = preferences.animation ? 0.3 : 0.1;
+    // Offset by UI and window sizes
+    pos_x = Math.floor(pos_x - gridWidth / 2);
+    pos_y = Math.floor(pos_y - gridHeight / 2);
 
-      Tweener.addTween(grid.actor, {
-        time: time,
-        x: pos_x,
-        y: pos_y,
-        transition: 'easeOutQuad',
-        onComplete: this.updateRegions
-      });
+    if (isGridMonitor) {
+      pos_x = pos_x < monitor.x ? monitor.x : pos_x;
+      pos_x = pos_x + gridWidth > monitor.width + monitor.x ? monitor.x + monitor.width - gridWidth : pos_x;
+      pos_y = pos_y < monitor.y ? monitor.y : pos_y;
+      pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
+    }
+
+    let time = preferences.animation ? 0.3 : 0.1;   
+
+    grid.AdjustTableSize(time, newTableWidth, newTableHeight);
+
+    Tweener.addTween(grid.actor, {
+      time: time,
+      x: pos_x,
+      y: pos_y,
+      transition: 'easeOutQuad',
+      onComplete: this.updateRegions
+    });
   }
 
   private updateRegions = () => {

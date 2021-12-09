@@ -211,3 +211,11 @@ function rangeToContactSurface(a: Range, b: Range): number {
     const range = intersection(a, b);
     return range ? range[1] - range[0] : 0;
 }
+
+export const GetMonitorAspectRatio = (monitor: imports.ui.layout.Monitor) => {
+    const aspectRatio = Math.max(monitor.width, monitor.height) / Math.min(monitor.width, monitor.height);
+    return {
+        ratio: aspectRatio,
+        widthIsLonger: monitor.width > monitor.height
+    }
+}
