@@ -4,15 +4,17 @@
     color: #ffffff;
     padding: .5em;
     text-align:center;
+    max-width: 150px;
 }
 
 .grid-panel{
     background-color: rgba(10,10,10,0.7);
-    width:240px;
     border-radius: 10px;
 }
 
 .table{
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
 }
 
 .table-element{

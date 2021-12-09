@@ -794,7 +794,6 @@ let Grid = class Grid {
         this.tableWidth = 220;
         this.tableHeight = 200;
         this.borderwidth = 2;
-        this.bindFns = {};
         this.rowKey = -1;
         this.colKey = -1;
         this.isEntered = false;
@@ -990,10 +989,9 @@ let Grid = class Grid {
             this.title = null;
             this.cols = null;
         };
-        this.tableWidth = 220;
         this.tableHeight = 200;
+        this.tableWidth = 220;
         this.borderwidth = 2;
-        this.bindFns = {};
         this.rowKey = -1;
         this.colKey = -1;
         this.actor = new BoxLayout({
@@ -1012,7 +1010,6 @@ let Grid = class Grid {
             can_focus: true,
             track_hover: true,
             reactive: true,
-            width: this.tableWidth
         });
         this.veryBottomBar = new Table({
             homogeneous: true,
@@ -1020,7 +1017,6 @@ let Grid = class Grid {
             can_focus: true,
             track_hover: true,
             reactive: true,
-            width: this.tableWidth
         });
         this.RebuildGridSettingsButtons();
         this.table = new Table({
@@ -1041,21 +1037,16 @@ let Grid = class Grid {
         this.title = title;
         this.cols = cols;
         this.isEntered = false;
-        let nbTotalSettings = 4;
         let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
-        toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
         toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
-        toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
         let action = new AutoTileMainAndList(this);
-        action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
         this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
         action.connect('resize-done', this.OnResize);
         let actionTwo = new AutoTileTwoList(this);
-        actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
         this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
         actionTwo.connect('resize-done', this.OnResize);
         this.x = 0;
@@ -1072,6 +1063,7 @@ let Grid = class Grid {
                 element.monitor = this.monitor;
             }
         }
+        const aspectRatio = monitor.width / monitor.height;
     }
     UpdateSettingsButtons() {
         for (const button of this.toggleSettingButtons) {

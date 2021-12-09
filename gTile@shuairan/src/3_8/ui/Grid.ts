@@ -2,6 +2,7 @@ import { gridSettingsButton, preferences } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { app } from "../extension";
 import { addSignals, getAdjacentMonitor, getMonitorKey, objHasKey, SignalOverload } from "../utils";
+import { ActionButton } from "./ActionButton";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";
 import { GridElement } from "./GridElement";
@@ -24,7 +25,6 @@ export class Grid {
   tableWidth = 220;
   tableHeight = 200;
   borderwidth = 2;
-  bindFns = {};
   rowKey = -1;
   colKey = -1;
 
@@ -54,10 +54,9 @@ export class Grid {
   toggleSettingButtons: ToggleSettingsButton[] = [];
 
   constructor(monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
-    this.tableWidth = 220;
     this.tableHeight = 200;
+    this.tableWidth = 220;
     this.borderwidth = 2;
-    this.bindFns = {};
     this.rowKey = -1;
     this.colKey = -1;
 
@@ -87,7 +86,6 @@ export class Grid {
       can_focus: true,
       track_hover: true,
       reactive: true,
-      width: this.tableWidth
     });
 
     this.veryBottomBar = new Table({
@@ -96,7 +94,6 @@ export class Grid {
       can_focus: true,
       track_hover: true,
       reactive: true,
-      width: this.tableWidth
     });
 
     this.RebuildGridSettingsButtons();
@@ -124,20 +121,16 @@ export class Grid {
     this.isEntered = false;
 
     // Build Bottom Bar Buttons
-    let nbTotalSettings = 4;
 
     let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
-    toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
     toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
-    toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
     let action = new AutoTileMainAndList(this);
-    action.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
     this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
 
     action.connect('resize-done',
@@ -145,7 +138,6 @@ export class Grid {
     );
 
     let actionTwo = new AutoTileTwoList(this);
-    actionTwo.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
     this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
     actionTwo.connect('resize-done',
@@ -176,6 +168,10 @@ export class Grid {
         element.monitor = this.monitor;
       }
     }
+
+    const aspectRatio = monitor.width / monitor.height;
+    //this.tableWidth = this.tableHeight * aspectRatio;
+    // this.table.set_width(this.tableWidth);
   }
 
   /**
