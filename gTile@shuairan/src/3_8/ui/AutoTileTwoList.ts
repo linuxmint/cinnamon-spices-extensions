@@ -9,7 +9,7 @@ export class AutoTileTwoList extends ActionButton<"resize-done"> {
   classname: string;
 
   constructor(grid: Grid) {
-    super(grid, 'action-two-list');
+    super(grid, 'action-two-list', 'action-two-list');
     this.classname = 'action-two-list';
     this.connect(
       'button-press-event',

@@ -128,12 +128,12 @@ export class Grid {
     // Build Bottom Bar Buttons
     let nbTotalSettings = 4;
 
-    let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
+    let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
     toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
-    toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
+    toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
     toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);

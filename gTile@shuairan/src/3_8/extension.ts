@@ -18,6 +18,7 @@ const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
+let metadata: any;
 
 class App {
   private visible = false;
@@ -287,7 +288,10 @@ export let app: App;
 /*****************************************************************
                             FUNCTIONS
 *****************************************************************/
-export const init = () => { }
+export const init = (meta: any) => {
+  metadata = meta;
+  imports.gi.Gtk.IconTheme.get_default().append_search_path(metadata.path + "/../icons");
+}
 
 export const enable = () => {
   app = new App();

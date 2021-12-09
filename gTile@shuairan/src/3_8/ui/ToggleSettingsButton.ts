@@ -1,8 +1,10 @@
 import { Preferences, preferences } from "../config";
 import { TooltipKeys, TOOLTIPS } from "../constants";
+import { CustomIcons } from "../types";
 import { addSignals, objHasKey, SignalOverload } from "../utils";
-const St = imports.gi.St;
+const { Icon, IconType, Button } = imports.gi.St;
 const Tooltips = imports.ui.tooltips;
+const { IconTheme } = imports.gi.Gtk;
 
 export interface ToggleSettingsButton extends SignalOverload<'update-toggle'> {}
 
@@ -10,22 +12,23 @@ export interface ToggleSettingsButton extends SignalOverload<'update-toggle'> {}
 export class ToggleSettingsButton {
   text: string;
   actor: imports.gi.St.Button;
-  icon: imports.gi.St.BoxLayout;
   property: TooltipKeys | keyof Preferences
 
   private _tooltip?: imports.ui.tooltips.Tooltip;
 
-  constructor(text: string, property: keyof Preferences | TooltipKeys) {
+  constructor(text: string, property: keyof Preferences | TooltipKeys, icon: CustomIcons) {
     this.text = text;
-    this.actor = new St.Button({
-      style_class: 'settings-button',
+    this.actor = new Button({
+      style_class: "menu-favorites-button",
       reactive: true,
       can_focus: true,
       track_hover: true,
-      label: this.text
+      child: new Icon({
+        icon_name: icon,
+        icon_type: IconType.SYMBOLIC,
+        icon_size: 24,
+      })
     });
-    this.icon = new St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
-    this.actor.set_child(this.icon);
     this.property = property;
     this._update();
     this.actor.connect(

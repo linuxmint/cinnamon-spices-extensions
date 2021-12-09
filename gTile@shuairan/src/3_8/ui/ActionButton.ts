@@ -10,21 +10,26 @@ export interface ActionButton<T extends string = ""> extends SignalOverload<T | 
 export class ActionButton<T extends string = ""> {
     grid: Grid;
     actor: imports.gi.St.Button;
-    icon: imports.gi.St.BoxLayout;
 
     private _tooltip?: imports.ui.tooltips.Tooltip;
 
-    constructor(grid: Grid, classname: TooltipKeys) {
+    constructor(grid: Grid, classname: TooltipKeys, icon: string) {
         this.grid = grid;
         this.actor = new St.Button({
-            style_class: 'settings-button',
+            style_class: "menu-favorites-button",
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            child: new St.Icon({ 
+                reactive: true,
+                icon_name: icon,
+                icon_size: 24,
+                icon_type: St.IconType.SYMBOLIC,
+                can_focus: true,
+                track_hover: true 
+            })
         });
 
-        this.icon = new St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
-        this.actor.add_actor(this.icon);
         this.actor.connect(
             'button-press-event',
             this._onButtonPress

@@ -319,20 +319,26 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 const Tooltips = imports.ui.tooltips;
 const ActionButton_St = imports.gi.St;
 let ActionButton = class ActionButton {
-    constructor(grid, classname) {
+    constructor(grid, classname, icon) {
         this._onButtonPress = () => {
             this.emit('button-press-event');
             return false;
         };
         this.grid = grid;
         this.actor = new ActionButton_St.Button({
-            style_class: 'settings-button',
+            style_class: "menu-favorites-button",
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            child: new ActionButton_St.Icon({
+                reactive: true,
+                icon_name: icon,
+                icon_size: 24,
+                icon_type: ActionButton_St.IconType.SYMBOLIC,
+                can_focus: true,
+                track_hover: true
+            })
         });
-        this.icon = new ActionButton_St.BoxLayout({ style_class: classname, reactive: true, can_focus: true, track_hover: true });
-        this.actor.add_actor(this.icon);
         this.actor.connect('button-press-event', this._onButtonPress);
         if (TOOLTIPS[classname]) {
             this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[classname]);
@@ -357,7 +363,7 @@ var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || functi
 
 let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
     constructor(grid) {
-        super(grid, 'action-main-list');
+        super(grid, 'action-main-list', 'action-main-list');
         this._onButtonPress = () => {
             if (!app.FocusMetaWindow)
                 return false;
@@ -400,7 +406,7 @@ var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (
 
 let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
     constructor(grid) {
-        super(grid, 'action-two-list');
+        super(grid, 'action-two-list', 'action-two-list');
         this._onButtonPress = () => {
             if (!app.FocusMetaWindow)
                 return false;
@@ -667,10 +673,11 @@ var ToggleSettingsButton_decorate = (undefined && undefined.__decorate) || funct
 
 
 
-const ToggleSettingsButton_St = imports.gi.St;
+const { Icon, IconType, Button } = imports.gi.St;
 const ToggleSettingsButton_Tooltips = imports.ui.tooltips;
+const { IconTheme } = imports.gi.Gtk;
 let ToggleSettingsButton = class ToggleSettingsButton {
-    constructor(text, property) {
+    constructor(text, property, icon) {
         this._update = () => {
             if (objHasKey(preferences, this.property)) {
                 this.actor.add_style_pseudo_class('activate');
@@ -687,15 +694,17 @@ let ToggleSettingsButton = class ToggleSettingsButton {
             return false;
         };
         this.text = text;
-        this.actor = new ToggleSettingsButton_St.Button({
-            style_class: 'settings-button',
+        this.actor = new Button({
+            style_class: "menu-favorites-button",
             reactive: true,
             can_focus: true,
             track_hover: true,
-            label: this.text
+            child: new Icon({
+                icon_name: icon,
+                icon_type: IconType.SYMBOLIC,
+                icon_size: 24,
+            })
         });
-        this.icon = new ToggleSettingsButton_St.BoxLayout({ style_class: this.text + '-icon', reactive: true, can_focus: true, track_hover: true });
-        this.actor.set_child(this.icon);
         this.property = property;
         this._update();
         this.actor.connect('button-press-event', this._onButtonPress);
@@ -724,10 +733,18 @@ class TopBar {
         this._title = title;
         this._stlabel = new TopBar_St.Label({ style_class: 'grid-title', text: this._title });
         this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: true });
-        this._closeButton = new TopBar_St.Button({ style_class: 'close-button' });
+        this._closeButton = new TopBar_St.Button({
+            style_class: "menu-favorites-button",
+            style: "padding:0;",
+            child: new TopBar_St.Icon({
+                icon_type: TopBar_St.IconType.SYMBOLIC,
+                icon_size: 24,
+                icon_name: "close-symbolic"
+            })
+        });
         this._closeButton.connect('button-release-event', this._onCloseButtonClicked);
         this.actor.add(this._iconBin);
-        this.actor.add(this._stlabel, { x_fill: true, expand: true });
+        this.actor.add(this._stlabel, { x_fill: true, expand: true, y_align: TopBar_St.Align.MIDDLE, y_fill: true });
         this.actor.add(this._closeButton, { x_fill: false, expand: false });
     }
     _set_title(title) {
@@ -1019,11 +1036,11 @@ let Grid = class Grid {
         this.cols = cols;
         this.isEntered = false;
         let nbTotalSettings = 4;
-        let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION);
+        let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
         toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
-        toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE);
+        toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
         toggle.actor.width = this.tableWidth / nbTotalSettings - this.borderwidth * 2;
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
@@ -1126,6 +1143,7 @@ const Cinnamon = imports.gi.Cinnamon;
 const extension_St = imports.gi.St;
 const extension_Main = imports.ui.main;
 const extension_Tweener = imports.ui.tweener;
+let metadata;
 class App {
     constructor() {
         this.visible = false;
@@ -1320,7 +1338,10 @@ class App {
     }
 }
 let app;
-const init = () => { };
+const init = (meta) => {
+    metadata = meta;
+    imports.gi.Gtk.IconTheme.get_default().append_search_path(metadata.path + "/../icons");
+};
 const enable = () => {
     app = new App();
     initSettings();

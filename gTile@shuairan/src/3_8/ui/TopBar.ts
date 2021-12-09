@@ -15,7 +15,15 @@ export class TopBar {
       this._title = title;
       this._stlabel = new St.Label({ style_class: 'grid-title', text: this._title });
       this._iconBin = new St.Bin({ x_fill: false, y_fill: true });
-      this._closeButton = new St.Button({ style_class: 'close-button' });
+      this._closeButton = new St.Button({
+        style_class: "menu-favorites-button",
+        style:"padding:0;",
+        child: new St.Icon({
+          icon_type: St.IconType.SYMBOLIC,
+          icon_size: 24,
+          icon_name: "close-symbolic"
+        })
+      });
   
       this._closeButton.connect(
         'button-release-event',
@@ -23,7 +31,7 @@ export class TopBar {
       );
   
       this.actor.add(this._iconBin);
-      this.actor.add(this._stlabel, { x_fill: true, expand: true });
+      this.actor.add(this._stlabel, { x_fill: true, expand: true, y_align: St.Align.MIDDLE, y_fill: true });
       this.actor.add(this._closeButton, { x_fill: false, expand: false });
     }
   
