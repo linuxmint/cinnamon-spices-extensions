@@ -90,7 +90,7 @@ export class Grid {
 
     this.veryBottomBar = new Table({
       homogeneous: true,
-      style_class: 'bottom-box',
+      style_class: 'bottom-box very-bottom-box',
       can_focus: true,
       track_hover: true,
       reactive: true,
@@ -110,8 +110,8 @@ export class Grid {
 
     this.actor.add(this.topbar.actor, { x_fill: true });
     this.actor.add(this.table, { x_fill: false });
-    this.actor.add(this.bottombar, { x_fill: true });
-    this.actor.add(this.veryBottomBar, { x_fill: true });
+    this.actor.add(this.bottombar, { x_fill: false });
+    this.actor.add(this.veryBottomBar, { x_fill: false });
 
     this.monitor = monitor;
     this.rows = rows;

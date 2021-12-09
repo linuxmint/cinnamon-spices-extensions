@@ -40,6 +40,8 @@
     min-width:40px;
     border-radius:5px;
     padding:3px;
+    margin-left: 2px;
+    margin-right: 2px;
     border:1px rgba(0,200,255,0.4);
     max-height:30px;
     min-height:30px;
@@ -49,9 +51,6 @@
 {
    background-color: rgba(0,120,255,0.7);
     color: rgba(255,255,255,1);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
     border:1px rgba(0,200,255,0.7);
 }
 
@@ -59,9 +58,6 @@
 {
     background-color: rgba(30,150,255,0.7);
     color: rgba(255,255,255,1);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
     border:1px rgba(0,200,255,0.7);
 }
 
@@ -69,20 +65,7 @@
 {
     background-color: rgba(0,120,255,0.7);
     color: rgba(255,255,255,1);
-    min-width:40px;
-    border-radius:5px;
-    padding:3px;
     border:1px rgba(0,200,255,0.7);
-}
-
-.settings-label
-{
-    
-}
-
-.settings-label:hover
-{
-   
 }
 
 .grid-preview
@@ -101,6 +84,10 @@
 
 .bottom-box
 {
-    padding:10px;
+    padding-top:10px;
     display:block;
+}
+
+.very-bottom-box {
+    padding-bottom:10px;
 }
