@@ -24,7 +24,7 @@ export class ToggleSettingsButton {
       reactive: true,
       can_focus: true,
       track_hover: true,
-      opacity: 128,
+      //opacity: 128,
       child: new Icon({
         icon_name: icon,
         icon_type: IconType.SYMBOLIC,
@@ -42,7 +42,7 @@ export class ToggleSettingsButton {
       this._update
     );
 
-    this.actor.connect('notify::hover', () => { if (!this.active) this.actor.opacity = this.actor.hover ? 255 : 128; });
+    //this.actor.connect('notify::hover', () => { if (!this.active) this.actor.opacity = this.actor.hover ? 255 : 128; });
 
     if (objHasKey(TOOLTIPS, property)) {
       this._tooltip = new Tooltips.Tooltip(this.actor, TOOLTIPS[property]);

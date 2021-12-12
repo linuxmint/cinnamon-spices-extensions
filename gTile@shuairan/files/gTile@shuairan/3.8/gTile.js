@@ -340,7 +340,7 @@ let ActionButton = class ActionButton {
             child: new ActionButton_St.Icon({
                 reactive: true,
                 icon_name: icon,
-                icon_size: 24,
+                icon_size: 36,
                 icon_type: ActionButton_St.IconType.SYMBOLIC,
                 can_focus: true,
                 track_hover: true
@@ -370,7 +370,7 @@ var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || functi
 
 let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
     constructor(grid) {
-        super(grid, 'action-main-list', 'action-main-list');
+        super(grid, 'action-main-list', "auto_tile_0-symbolic");
         this._onButtonPress = () => {
             if (!app.FocusMetaWindow)
                 return false;
@@ -413,7 +413,7 @@ var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (
 
 let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
     constructor(grid) {
-        super(grid, 'action-two-list', 'action-two-list');
+        super(grid, 'action-two-list', "auto_tile_1-symbolic");
         this._onButtonPress = () => {
             if (!app.FocusMetaWindow)
                 return false;
@@ -709,7 +709,6 @@ let ToggleSettingsButton = class ToggleSettingsButton {
             reactive: true,
             can_focus: true,
             track_hover: true,
-            opacity: 128,
             child: new Icon({
                 icon_name: icon,
                 icon_type: IconType.SYMBOLIC,
@@ -720,8 +719,6 @@ let ToggleSettingsButton = class ToggleSettingsButton {
         this._update();
         this.actor.connect('button-press-event', this._onButtonPress);
         this.connect('update-toggle', this._update);
-        this.actor.connect('notify::hover', () => { if (!this.active)
-            this.actor.opacity = this.actor.hover ? 255 : 128; });
         if (objHasKey(TOOLTIPS, property)) {
             this._tooltip = new ToggleSettingsButton_Tooltips.Tooltip(this.actor, TOOLTIPS[property]);
         }

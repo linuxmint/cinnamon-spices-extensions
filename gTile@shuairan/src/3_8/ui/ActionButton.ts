@@ -1,4 +1,5 @@
 import { TooltipKeys, TOOLTIPS } from "../constants";
+import { CustomIcons } from "../types";
 import { addSignals, SignalOverload } from "../utils";
 import { Grid } from "./Grid";
 const Tooltips = imports.ui.tooltips;
@@ -13,7 +14,7 @@ export class ActionButton<T extends string = ""> {
 
     private _tooltip?: imports.ui.tooltips.Tooltip;
 
-    constructor(grid: Grid, classname: TooltipKeys, icon: string) {
+    constructor(grid: Grid, classname: TooltipKeys, icon: CustomIcons) {
         this.grid = grid;
         this.actor = new St.Button({
             style_class: "settings-button",
@@ -23,7 +24,7 @@ export class ActionButton<T extends string = ""> {
             child: new St.Icon({ 
                 reactive: true,
                 icon_name: icon,
-                icon_size: 24,
+                icon_size: 36,
                 icon_type: St.IconType.SYMBOLIC,
                 can_focus: true,
                 track_hover: true 

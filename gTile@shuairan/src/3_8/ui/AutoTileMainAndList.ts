@@ -8,7 +8,7 @@ export class AutoTileMainAndList extends ActionButton<"resize-done"> {
   classname: string;
 
   constructor(grid: Grid) {
-    super(grid, 'action-main-list', 'action-main-list');
+    super(grid, 'action-main-list', "auto_tile_0-symbolic");
     this.classname = 'action-main-list';
     this.connect(
       'button-press-event',
