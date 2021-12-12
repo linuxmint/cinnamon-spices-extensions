@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-12 16:08+0000\n"
+"POT-Creation-Date: 2021-12-12 17:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,6 @@ msgid "Tile your windows as you like."
 msgstr ""
 
 #. settings-schema.json->headerKeys->description
-#. 3.8->settings-schema.json->headerKeys->description
 msgid "Hotkeys:"
 msgstr ""
 
@@ -52,7 +51,6 @@ msgid "Global Hotkey for gTile"
 msgstr ""
 
 #. settings-schema.json->headerBehavior->description
-#. 3.8->settings-schema.json->headerBehavior->description
 msgid "Behavior:"
 msgstr ""
 
@@ -67,7 +65,6 @@ msgid "Auto-Close"
 msgstr ""
 
 #. settings-schema.json->header1->description
-#. 3.8->settings-schema.json->header1->description
 msgid "Layout for Button 1:"
 msgstr ""
 
@@ -116,16 +113,80 @@ msgid "Rows"
 msgstr ""
 
 #. settings-schema.json->header2->description
-#. 3.8->settings-schema.json->header2->description
 msgid "Layout for Button 2:"
 msgstr ""
 
 #. settings-schema.json->header3->description
-#. 3.8->settings-schema.json->header3->description
 msgid "Layout for Button 3:"
 msgstr ""
 
 #. settings-schema.json->header4->description
-#. 3.8->settings-schema.json->header4->description
 msgid "Layout for Button 4:"
+msgstr ""
+
+#. 3.8->settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr ""
+
+#. 3.8->settings-schema.json->behaviour-tab->title
+#. 3.8->settings-schema.json->behaviour-section->title
+msgid "Behavior"
+msgstr ""
+
+#. 3.8->settings-schema.json->layout-tab->title
+msgid "Layout"
+msgstr ""
+
+#. 3.8->settings-schema.json->help->title
+msgid "Help"
+msgstr ""
+
+#. 3.8->settings-schema.json->hotkey-section->title
+msgid "Global Hotkey"
+msgstr ""
+
+#. 3.8->settings-schema.json->keybindings-legend-section->title
+msgid "Keybindings Legend (when open)"
+msgstr ""
+
+#. 3.8->settings-schema.json->grid1-section->title
+msgid "Layout For Button 1"
+msgstr ""
+
+#. 3.8->settings-schema.json->grid2-section->title
+msgid "Layout For Button 2"
+msgstr ""
+
+#. 3.8->settings-schema.json->grid3-section->title
+msgid "Layout For Button 3"
+msgstr ""
+
+#. 3.8->settings-schema.json->grid4-section->title
+msgid "Layout For Button 4"
+msgstr ""
+
+#. 3.8->settings-schema.json->help-section->title
+msgid "More Info"
+msgstr ""
+
+#. 3.8->settings-schema.json->hotkeys-legend->description
+msgid ""
+"Escape:\t\t\tHide gTile\n"
+"Enter or Space:\tCommit current selection\n"
+"Left:\t\t\tMove Left inside Grid\n"
+"Right:\t\t\tMove Right inside Grid\n"
+"Up:\t\t\t\tMove Up inside Grid\n"
+"Down:\t\t\tMove Down inside Grid\n"
+"<Shift>Left:\t\tInclude column to the Left in selection\n"
+"<Shift>Right:\t\tInclude column to the Right in selection\n"
+"<Shift>Up:\t\tInclude row Above in selection\n"
+"<Shift>Down:\tInclude row Below in selection\n"
+"<Alt>Left:\t\tMove to the monitor on the Left\n"
+"<Alt>Right:\t\tMove to the monitor on the Right\n"
+"<Alt>Up:\t\t\tMove to the monitor Above\n"
+"<Alt>Down:\t\tMove to the monitor Below\n"
+"1:\t\t\t\tSelect the first grid layout\n"
+"2:\t\t\t\tSelect the second grid layout\n"
+"3:\t\t\t\tSelect the third grid layout\n"
+"4:\t\t\t\tSelect the fourth grid layout"
 msgstr ""
