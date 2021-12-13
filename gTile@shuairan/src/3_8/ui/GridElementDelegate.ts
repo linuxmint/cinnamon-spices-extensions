@@ -167,5 +167,6 @@ export class GridElementDelegate {
     this.last = null;
     this.currentElement = null;
     this.activatedActors = null;
+    this._hideArea();
   }
 };

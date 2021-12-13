@@ -37,7 +37,8 @@ export function addSignals<T extends { new(...args: any[]): {} }>(constructor: T
 }
 
 export interface SignalOverload<T extends string> {
-    connect(signal: T, callback: () => void): void;
+    connect(signal: T, callback: () => void): number;
+    disconnect(signalID: number): void;
     emit(signal: T): void;
 }
 

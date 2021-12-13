@@ -49,6 +49,7 @@ export class Grid {
   normalScaleX: number;
 
   elementsDelegate!: GridElementDelegate;
+  elementsDelegateSignals: number[] = [];
   elements!: GridElement[][];
   keyElement?: GridElement | null;
   toggleSettingButtons: ToggleSettingsButton[] = [];
@@ -57,8 +58,6 @@ export class Grid {
     this.tableHeight = 200;
     this.tableWidth = 220;
     this.borderwidth = 2;
-    this.rowKey = -1;
-    this.colKey = -1;
 
     this.actor = new BoxLayout({
       vertical: true,
@@ -227,6 +226,13 @@ export class Grid {
     }
   }
 
+  private Reset() {
+    this.colKey = -1;
+    this.rowKey = -1;
+    this.keyElement = null;
+    this.elementsDelegate.reset();
+  }
+
   /**
    * Rebuilds Grid Elements, for example if nXn buttons sere clicked.
    */
@@ -234,6 +240,9 @@ export class Grid {
     this.table.destroy_all_children();
     this.cols = preferences.nbCols;
     this.rows = preferences.nbRows;
+    if (this.cols <= this.colKey || this.rows <= this.colKey)
+      this.Reset();
+
     this.RebuildGridElements();
   }
 
@@ -282,7 +291,7 @@ export class Grid {
 
   public Hide(immediate: boolean) {
     this.RemoveKeyControls();
-    this.elementsDelegate.reset();
+    this.Reset();
     let time = preferences.animation && !immediate ? 0.3 : 0;
     if (time > 0) {
       Tweener.addTween(this.actor, {
@@ -309,11 +318,17 @@ export class Grid {
     let width = this.tableWidth / this.cols - 2 * this.borderwidth;
     let height = this.tableHeight / this.rows - 2 * this.borderwidth;
 
+    this.elementsDelegateSignals.forEach(element => {
+      this.elementsDelegate?.disconnect(element)
+    });
+
+    this.elementsDelegate?._destroy();
     this.elementsDelegate = new GridElementDelegate();
-    this.elementsDelegate.connect(
+    this.elementsDelegateSignals = [];
+    this.elementsDelegateSignals.push(this.elementsDelegate.connect(
       'resize-done',
       this.OnResize
-    );
+    ));
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         if (c === 0) {
@@ -346,8 +361,6 @@ export class Grid {
   }
 
   private RemoveKeyControls = () => {
-    this.rowKey = -1;
-    this.colKey = -1;
     Main.keybindingManager.removeHotKey('gTile-close');
     Main.keybindingManager.removeHotKey('gTile-tile1');
     Main.keybindingManager.removeHotKey('gTile-tile2');
@@ -444,10 +457,16 @@ export class Grid {
         break;
       case 'gTile-k-left':
       case 'gTile-k-left-meta':
+        // Nothing is selected yet and trying to got further left, abort
+        if (this.colKey == -1)
+          return;
         this.colKey = Math.max(0, this.colKey - 1);
         break;
       case 'gTile-k-up':
       case 'gTile-k-up-meta':
+        // Nothing is selected yet and trying to got further up, abort
+        if (this.rowKey == -1)
+          return;
         this.rowKey = Math.max(0, this.rowKey - 1);
         break;
       case 'gTile-k-down':
@@ -480,6 +499,7 @@ export class Grid {
         gridSettingsButton?.[3]?._onButtonPress();
         break;
     }
+
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
     if (this.keyElement)
       this.keyElement._onHoverChanged();
@@ -499,14 +519,13 @@ export class Grid {
     this.actor.set_position(x, y);
   }
 
-  /**
+  /**`
    * Commits to tiling the focused window.
    */
   private BeginTiling = () => {
     if (this.keyElement) {
       this.keyElement._onButtonPress();
-      this.colKey = -1;
-      this.rowKey = -1;
+      this.Reset();
     }
   }
 
@@ -537,6 +556,7 @@ export class Grid {
     // @ts-ignore
     this.topbar._destroy();
     this.RemoveKeyControls();
+    this.Reset();
     // @ts-ignore
     this.monitor = null;
     // @ts-ignore

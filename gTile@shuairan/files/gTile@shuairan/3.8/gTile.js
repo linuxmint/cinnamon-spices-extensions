@@ -639,6 +639,7 @@ let GridElementDelegate = class GridElementDelegate {
             this.last = null;
             this.currentElement = null;
             this.activatedActors = null;
+            this._hideArea();
         };
     }
     _onButtonPress(gridElement) {
@@ -802,6 +803,7 @@ let Grid = class Grid {
         this.colKey = -1;
         this.isEntered = false;
         this.interceptHide = false;
+        this.elementsDelegateSignals = [];
         this.toggleSettingButtons = [];
         this.AdjustTableSize = (time, width, height) => {
             this.tableWidth = width;
@@ -843,14 +845,23 @@ let Grid = class Grid {
             this.table.destroy_all_children();
             this.cols = preferences.nbCols;
             this.rows = preferences.nbRows;
+            if (this.cols <= this.colKey || this.rows <= this.colKey)
+                this.Reset();
             this.RebuildGridElements();
         };
         this.RebuildGridElements = () => {
+            var _a;
             this.elements = [];
             let width = this.tableWidth / this.cols - 2 * this.borderwidth;
             let height = this.tableHeight / this.rows - 2 * this.borderwidth;
+            this.elementsDelegateSignals.forEach(element => {
+                var _a;
+                (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a.disconnect(element);
+            });
+            (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a._destroy();
             this.elementsDelegate = new GridElementDelegate();
-            this.elementsDelegate.connect('resize-done', this.OnResize);
+            this.elementsDelegateSignals = [];
+            this.elementsDelegateSignals.push(this.elementsDelegate.connect('resize-done', this.OnResize));
             for (let r = 0; r < this.rows; r++) {
                 for (let c = 0; c < this.cols; c++) {
                     if (c === 0) {
@@ -876,8 +887,6 @@ let Grid = class Grid {
             }
         };
         this.RemoveKeyControls = () => {
-            this.rowKey = -1;
-            this.colKey = -1;
             Grid_Main.keybindingManager.removeHotKey('gTile-close');
             Grid_Main.keybindingManager.removeHotKey('gTile-tile1');
             Grid_Main.keybindingManager.removeHotKey('gTile-tile2');
@@ -946,10 +955,14 @@ let Grid = class Grid {
                     break;
                 case 'gTile-k-left':
                 case 'gTile-k-left-meta':
+                    if (this.colKey == -1)
+                        return;
                     this.colKey = Math.max(0, this.colKey - 1);
                     break;
                 case 'gTile-k-up':
                 case 'gTile-k-up-meta':
+                    if (this.rowKey == -1)
+                        return;
                     this.rowKey = Math.max(0, this.rowKey - 1);
                     break;
                 case 'gTile-k-down':
@@ -989,8 +1002,7 @@ let Grid = class Grid {
         this.BeginTiling = () => {
             if (this.keyElement) {
                 this.keyElement._onButtonPress();
-                this.colKey = -1;
-                this.rowKey = -1;
+                this.Reset();
             }
         };
         this.MoveToMonitor = (monitor) => {
@@ -1008,6 +1020,7 @@ let Grid = class Grid {
             this.elementsDelegate._destroy();
             this.topbar._destroy();
             this.RemoveKeyControls();
+            this.Reset();
             this.monitor = null;
             this.rows = null;
             this.title = null;
@@ -1016,8 +1029,6 @@ let Grid = class Grid {
         this.tableHeight = 200;
         this.tableWidth = 220;
         this.borderwidth = 2;
-        this.rowKey = -1;
-        this.colKey = -1;
         this.actor = new BoxLayout({
             vertical: true,
             style_class: 'grid-panel',
@@ -1093,6 +1104,12 @@ let Grid = class Grid {
             button["_update"]();
         }
     }
+    Reset() {
+        this.colKey = -1;
+        this.rowKey = -1;
+        this.keyElement = null;
+        this.elementsDelegate.reset();
+    }
     async Show(x, y) {
         if (x != null && y != null)
             this.SetPosition(x, y);
@@ -1125,7 +1142,7 @@ let Grid = class Grid {
     }
     Hide(immediate) {
         this.RemoveKeyControls();
-        this.elementsDelegate.reset();
+        this.Reset();
         let time = preferences.animation && !immediate ? 0.3 : 0;
         if (time > 0) {
             Grid_Tweener.addTween(this.actor, {
