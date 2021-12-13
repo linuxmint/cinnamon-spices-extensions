@@ -240,6 +240,7 @@ export class Grid {
     this.table.destroy_all_children();
     this.cols = preferences.nbCols;
     this.rows = preferences.nbRows;
+    // New grid is smaller than currently selected element, Reset selection
     if (this.cols <= this.colKey || this.rows <= this.colKey)
       this.Reset();
 
