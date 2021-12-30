@@ -1,3 +1,22 @@
+### 2.0.0
+
+#### Structural
+
+* Using Typescript (WIP, should enable stricter type checking)
+* Uses webpack for build (was not necessary, but I didn't want to bother with fixing recursive imports)
+* Enables multiversion support (I won't modify anything under Cinnamon version 3.8)
+* Factor ui elements out into their own files
+
+#### Enhancements
+
+* UI facelift (using symbolic icons)
+* Port enhancement from cinTile where grid is only show on the monitor the focused window is on
+* Resolves [#299](https://github.com/linuxmint/cinnamon-spices-extensions/issues/299) - Port fix for sizing issues with windows with client headers
+* Resolves [#367](https://github.com/linuxmint/cinnamon-spices-extensions/issues/367)
+* Resolves [#336](https://github.com/linuxmint/cinnamon-spices-extensions/issues/336)
+* Resolves [#191](https://github.com/linuxmint/cinnamon-spices-extensions/issues/191) - Add Support for move windows between monitors (essentially move the singular grid ui from window to window.) Animations are a still weird as grids come in from the top left, always.
+* Add Keybindings Legend to settings for current available keybindings
+
 ### 1.0.0
 
   * Added compatibility for Cinnamon 3.8+.

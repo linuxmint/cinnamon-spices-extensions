@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "es2017"
+        ],
+        "target": "es2017",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "experimentalDecorators": true,
+    }
+}
