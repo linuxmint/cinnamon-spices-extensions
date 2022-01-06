@@ -1,0 +1,9 @@
+{
+  "cinnamon-version": [
+    "5.0"
+  ],
+  "uuid": "fine-volume-control@melissaautumn.com",
+  "name": "Fine Volume Control",
+  "description": "One messy, but functional volume controller with OSD!",
+  "url" : "https://github.com/MelissaAutumn/fine-volume-control"
+}

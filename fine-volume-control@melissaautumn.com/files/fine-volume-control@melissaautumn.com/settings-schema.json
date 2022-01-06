@@ -1,0 +1,29 @@
+{
+	"section-general" : {
+		"type" : "section",
+		"description" : "General"
+	},
+	"volume-steps" : {
+		"type" : "spinbutton",
+		"description" : "Volume Adjustment Steps (1 - 100)",
+		"min" : 1,
+		"max" : 100,
+		"step" : 1,
+		"units" : "",
+		"default" : 1
+	},
+	"section-keybinds" : {
+		"type" : "section",
+		"description" : "Keybinds"
+	},
+	"volume-up" : {
+		"type" : "keybinding",
+		"description" : "Volume Up",
+		"default" : "AudioRaiseVolume"
+	},
+	"volume-down" : {
+		"type" : "keybinding",
+		"description" : "Volume Down",
+		"default" : "AudioLowerVolume"
+	}
+}
