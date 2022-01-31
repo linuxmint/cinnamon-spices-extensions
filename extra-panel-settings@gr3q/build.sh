@@ -1,6 +1,4 @@
 #!/bin/bash
-# REQUIREMENTS:
-# - typescript installed
 
 # Getting bash script file location
 SOURCE="${BASH_SOURCE[0]}"

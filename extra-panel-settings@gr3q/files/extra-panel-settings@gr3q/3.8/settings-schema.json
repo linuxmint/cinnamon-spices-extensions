@@ -2,208 +2,26 @@
    "layout": {
       "type": "layout",
       "pages": [
-         "hotkeys-tab",
-         "behaviour-tab",
-         "layout-tab"
+         "global-tab"
       ],
-      "hotkeys-tab": {
+      "global-tab": {
          "type": "page",
-         "title": "Hotkeys",
+         "title": "Global Panel Settings",
          "sections": [
-            "hotkey-section",
-            "keybindings-legend-section"
+            "font-section"
          ]
       },
-      "behaviour-tab": {
-         "type": "page",
-         "title": "Behavior",
-         "sections": [
-            "behaviour-section"
-         ]
-      },
-      "layout-tab": {
-         "type": "page",
-         "title": "Layout",
-         "sections": [
-            "grid1-section",
-            "grid2-section",
-            "grid3-section",
-            "grid4-section"
-         ]
-      },
-      "help": {
-         "type": "page",
-         "title": "Help",
-         "sections": [
-            "help-section"
-         ]
-      },
-      "hotkey-section": {
+      "font-section": {
          "type": "section",
-         "title": "Global Hotkey",
+         "title": "Font Settings",
          "keys": [
-            "hotkey"
-         ]
-      },
-      "keybindings-legend-section": {
-         "type": "section",
-         "title": "Keybindings Legend (when open)",
-         "keys": [
-            "hotkeys-legend"
-         ]
-      },
-      "behaviour-section": {
-         "type": "section",
-         "title": "Behavior",
-         "keys": [
-            "animation",
-            "autoclose"
-         ]
-      },
-      "grid1-section": {
-         "type": "section",
-         "title": "Layout For Button 1",
-         "keys": [
-            "gridbutton1x",
-            "gridbutton1y"
-         ]
-      },
-      "grid2-section": {
-         "type": "section",
-         "title": "Layout For Button 2",
-         "keys": [
-            "gridbutton2x",
-            "gridbutton2y"
-         ]
-      },
-      "grid3-section": {
-         "type": "section",
-         "title": "Layout For Button 3",
-         "keys": [
-            "gridbutton3x",
-            "gridbutton3y"
-         ]
-      },
-      "grid4-section": {
-         "type": "section",
-         "title": "Layout For Button 4",
-         "keys": [
-            "gridbutton4x",
-            "gridbutton4y"
-         ]
-      },
-      "help-section": {
-         "type": "section",
-         "title": "More Info",
-         "keys": [
+            "panelFont"
          ]
       }
    },
-   "hotkeys-legend": {
-		"type": "label",
-		"description": "Escape:\t\t\tHide gTile\nEnter or Space:\tCommit current selection\nLeft:\t\t\tMove Left inside Grid\nRight:\t\t\tMove Right inside Grid\nUp:\t\t\t\tMove Up inside Grid\nDown:\t\t\tMove Down inside Grid\n<Shift>Left:\t\tInclude column to the Left in selection\n<Shift>Right:\t\tInclude column to the Right in selection\n<Shift>Up:\t\tInclude row Above in selection\n<Shift>Down:\tInclude row Below in selection\n<Alt>Left:\t\tMove to the monitor on the Left\n<Alt>Right:\t\tMove to the monitor on the Right\n<Alt>Up:\t\t\tMove to the monitor Above\n<Alt>Down:\t\tMove to the monitor Below\n1:\t\t\t\tSelect the first grid layout\n2:\t\t\t\tSelect the second grid layout\n3:\t\t\t\tSelect the third grid layout\n4:\t\t\t\tSelect the fourth grid layout"
-	},
-   "lastGridCols": {
-      "type": "generic",
-      "default": 4
-   },
-   "lastGridRows": {
-      "type": "generic",
-      "default": 4
-   },
-   "hotkey": {
-      "type": "keybinding",
-      "default": "<Super>g",
-      "description": "Global Hotkey for gTile"
-   },
-   "animation": {
-      "type": "checkbox",
-      "default": "true",
-      "description": "Animation"
-   },
-   "autoclose": {
-      "type": "checkbox",
-      "default": "true",
-      "description": "Auto-Close"
-   },
-   "gridbutton1x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 2,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton1y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 2,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   },
-   "gridbutton2x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 3,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton2y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 2,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   },
-   "gridbutton3x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton3y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   },
-   "gridbutton4x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 6,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton4y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 6,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
+   "panelFont": {
+      "type" : "fontchooser",
+      "description" : "Font used in Panels",
+      "default" : ""
    }
 }

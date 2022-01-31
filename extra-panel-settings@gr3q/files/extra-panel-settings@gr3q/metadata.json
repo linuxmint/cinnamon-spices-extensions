@@ -4,5 +4,6 @@
     "name": "Extra Panel Settings",
     "description": "Extra configuration options for your Panels",
     "version": "1.0.0",
+    "url": "",
     "multiversion": true
 }

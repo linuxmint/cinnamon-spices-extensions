@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-31 08:52+0000\n"
+"POT-Creation-Date: 2022-01-31 09:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,6 @@ msgid "Hotkeys:"
 msgstr ""
 
 #. settings-schema.json->hotkey->description
-#. 3.8->settings-schema.json->hotkey->description
 msgid "Global Hotkey for gTile"
 msgstr ""
 
@@ -39,12 +38,10 @@ msgid "Behavior:"
 msgstr ""
 
 #. settings-schema.json->animation->description
-#. 3.8->settings-schema.json->animation->description
 msgid "Animation"
 msgstr ""
 
 #. settings-schema.json->autoclose->description
-#. 3.8->settings-schema.json->autoclose->description
 msgid "Auto-Close"
 msgstr ""
 
@@ -56,10 +53,6 @@ msgstr ""
 #. settings-schema.json->gridbutton2x->units
 #. settings-schema.json->gridbutton3x->units
 #. settings-schema.json->gridbutton4x->units
-#. 3.8->settings-schema.json->gridbutton1x->units
-#. 3.8->settings-schema.json->gridbutton2x->units
-#. 3.8->settings-schema.json->gridbutton3x->units
-#. 3.8->settings-schema.json->gridbutton4x->units
 msgid "x"
 msgstr ""
 
@@ -67,10 +60,6 @@ msgstr ""
 #. settings-schema.json->gridbutton2x->description
 #. settings-schema.json->gridbutton3x->description
 #. settings-schema.json->gridbutton4x->description
-#. 3.8->settings-schema.json->gridbutton1x->description
-#. 3.8->settings-schema.json->gridbutton2x->description
-#. 3.8->settings-schema.json->gridbutton3x->description
-#. 3.8->settings-schema.json->gridbutton4x->description
 msgid "Columns"
 msgstr ""
 
@@ -78,10 +67,6 @@ msgstr ""
 #. settings-schema.json->gridbutton2y->units
 #. settings-schema.json->gridbutton3y->units
 #. settings-schema.json->gridbutton4y->units
-#. 3.8->settings-schema.json->gridbutton1y->units
-#. 3.8->settings-schema.json->gridbutton2y->units
-#. 3.8->settings-schema.json->gridbutton3y->units
-#. 3.8->settings-schema.json->gridbutton4y->units
 msgid "y"
 msgstr ""
 
@@ -89,10 +74,6 @@ msgstr ""
 #. settings-schema.json->gridbutton2y->description
 #. settings-schema.json->gridbutton3y->description
 #. settings-schema.json->gridbutton4y->description
-#. 3.8->settings-schema.json->gridbutton1y->description
-#. 3.8->settings-schema.json->gridbutton2y->description
-#. 3.8->settings-schema.json->gridbutton3y->description
-#. 3.8->settings-schema.json->gridbutton4y->description
 msgid "Rows"
 msgstr ""
 
@@ -108,69 +89,14 @@ msgstr ""
 msgid "Layout for Button 4:"
 msgstr ""
 
-#. 3.8->settings-schema.json->hotkeys-tab->title
-msgid "Hotkeys"
+#. 3.8->settings-schema.json->global-tab->title
+msgid "Global Panel Settings"
 msgstr ""
 
-#. 3.8->settings-schema.json->behaviour-tab->title
-#. 3.8->settings-schema.json->behaviour-section->title
-msgid "Behavior"
+#. 3.8->settings-schema.json->font-section->title
+msgid "Font Settings"
 msgstr ""
 
-#. 3.8->settings-schema.json->layout-tab->title
-msgid "Layout"
-msgstr ""
-
-#. 3.8->settings-schema.json->help->title
-msgid "Help"
-msgstr ""
-
-#. 3.8->settings-schema.json->hotkey-section->title
-msgid "Global Hotkey"
-msgstr ""
-
-#. 3.8->settings-schema.json->keybindings-legend-section->title
-msgid "Keybindings Legend (when open)"
-msgstr ""
-
-#. 3.8->settings-schema.json->grid1-section->title
-msgid "Layout For Button 1"
-msgstr ""
-
-#. 3.8->settings-schema.json->grid2-section->title
-msgid "Layout For Button 2"
-msgstr ""
-
-#. 3.8->settings-schema.json->grid3-section->title
-msgid "Layout For Button 3"
-msgstr ""
-
-#. 3.8->settings-schema.json->grid4-section->title
-msgid "Layout For Button 4"
-msgstr ""
-
-#. 3.8->settings-schema.json->help-section->title
-msgid "More Info"
-msgstr ""
-
-#. 3.8->settings-schema.json->hotkeys-legend->description
-msgid ""
-"Escape:\t\t\tHide gTile\n"
-"Enter or Space:\tCommit current selection\n"
-"Left:\t\t\tMove Left inside Grid\n"
-"Right:\t\t\tMove Right inside Grid\n"
-"Up:\t\t\t\tMove Up inside Grid\n"
-"Down:\t\t\tMove Down inside Grid\n"
-"<Shift>Left:\t\tInclude column to the Left in selection\n"
-"<Shift>Right:\t\tInclude column to the Right in selection\n"
-"<Shift>Up:\t\tInclude row Above in selection\n"
-"<Shift>Down:\tInclude row Below in selection\n"
-"<Alt>Left:\t\tMove to the monitor on the Left\n"
-"<Alt>Right:\t\tMove to the monitor on the Right\n"
-"<Alt>Up:\t\t\tMove to the monitor Above\n"
-"<Alt>Down:\t\tMove to the monitor Below\n"
-"1:\t\t\t\tSelect the first grid layout\n"
-"2:\t\t\t\tSelect the second grid layout\n"
-"3:\t\t\t\tSelect the third grid layout\n"
-"4:\t\t\t\tSelect the fourth grid layout"
+#. 3.8->settings-schema.json->panelFont->description
+msgid "Font used in Panels"
 msgstr ""

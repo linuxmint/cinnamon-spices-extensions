@@ -35,19 +35,129 @@ var extraPanelSettings;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "init": () => (/* binding */ init),
-/* harmony export */   "enable": () => (/* binding */ enable),
-/* harmony export */   "disable": () => (/* binding */ disable)
-/* harmony export */ });
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Extension": () => (/* binding */ Extension),
+  "disable": () => (/* binding */ disable),
+  "enable": () => (/* binding */ enable),
+  "init": () => (/* binding */ init)
+});
+
+;// CONCATENATED MODULE: ./src/3_8/config.ts
+const { ExtensionSettings } = imports.ui.settings;
+const CONFIG_KEYS = {
+    CUSTOM_FONT: "panelFont"
+};
+class Config {
+    constructor(app) {
+        this.panelFont = null;
+        this.panelFontSize = null;
+        this.settings = new ExtensionSettings(this, 'extra-panel-settings@gr3q');
+        this.app = app;
+    }
+    get PanelFont() {
+        return this.panelFont;
+    }
+    get PanelFontSize() {
+        return this.panelFontSize;
+    }
+    Enable() {
+        this.settings.bind(CONFIG_KEYS.CUSTOM_FONT, "_" + CONFIG_KEYS.CUSTOM_FONT, () => {
+            this.ProcessSelectedFont();
+            this.app.UpdateCurrentFont();
+        });
+        this.ProcessSelectedFont();
+    }
+    Disable() {
+        let key;
+        for (key in CONFIG_KEYS) {
+            this.settings.unbindAll(CONFIG_KEYS[key]);
+        }
+    }
+    ProcessSelectedFont() {
+        if (this._panelFont == "") {
+            this.panelFont = null;
+            this.panelFontSize = null;
+            return;
+        }
+        const words = this._panelFont.split(" ");
+        this.panelFontSize = parseFloat(words[words.length - 1]);
+        const fontName = [];
+        for (const word of words.slice(0, words.length - 1)) {
+            if (word.includes("=")) {
+                continue;
+            }
+            fontName.push(word);
+        }
+        this.panelFont = fontName.join(" ");
+    }
+}
+
+;// CONCATENATED MODULE: ./src/3_8/extension.ts
+
+const { panelManager } = imports.ui.main;
+class Extension {
+    constructor() {
+        this.backupPanelStyles = [];
+        this.enabled = false;
+        this.panelsChangedKey = null;
+        this.UpdateCurrentFont = () => {
+            var _a;
+            if (this.settings.PanelFont == null) {
+                this.CleanupCurrentFont();
+            }
+            else {
+                for (const panel of panelManager.getPanels()) {
+                    if (panel == null)
+                        continue;
+                    global.log(panel.panelId);
+                    if (this.backupPanelStyles[panel.panelId] == null) {
+                        this.backupPanelStyles[panel.panelId] = panel.actor.style;
+                    }
+                    panel.actor.style = ((_a = this.backupPanelStyles[panel.panelId]) !== null && _a !== void 0 ? _a : "") + `font-family: ${this.settings.PanelFont};`;
+                }
+            }
+        };
+        this.CleanupCurrentFont = () => {
+            for (const panel of panelManager.getPanels()) {
+                if (panel == null)
+                    continue;
+                panel.actor.style = this.backupPanelStyles[panel.panelId];
+            }
+            this.backupPanelStyles = [];
+        };
+        this.settings = new Config(this);
+    }
+    Enable() {
+        this.enabled = true;
+        this.settings.Enable();
+        this.UpdateCurrentFont();
+        this.panelsChangedKey = global.settings.connect("changed::panels-enabled", () => {
+            global.log("Panels changed");
+            this.UpdateCurrentFont();
+        });
+    }
+    Disable() {
+        this.settings.Disable();
+        this.CleanupCurrentFont();
+        if (this.panelsChangedKey != null) {
+            global.settings.disconnect(this.panelsChangedKey);
+            this.panelsChangedKey = null;
+        }
+    }
+}
+let app;
 const init = (meta) => {
+    app = new Extension();
 };
 const enable = () => {
-    global.log("ENABLED");
+    app.Enable();
 };
 const disable = () => {
-    global.log("DISABLED");
+    app.Disable();
 };
 
 extraPanelSettings = __webpack_exports__;
