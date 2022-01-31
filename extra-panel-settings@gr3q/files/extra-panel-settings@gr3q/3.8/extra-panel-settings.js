@@ -101,7 +101,7 @@ class Config {
 const { panelManager } = imports.ui.main;
 class Extension {
     constructor() {
-        this.backupPanelStyles = [];
+        this.originalPanelStyles = [];
         this.enabled = false;
         this.panelsChangedKey = null;
         this.UpdateCurrentFont = () => {
@@ -113,11 +113,10 @@ class Extension {
                 for (const panel of panelManager.getPanels()) {
                     if (panel == null)
                         continue;
-                    global.log(panel.panelId);
-                    if (this.backupPanelStyles[panel.panelId] == null) {
-                        this.backupPanelStyles[panel.panelId] = panel.actor.style;
+                    if (this.originalPanelStyles[panel.panelId] == null) {
+                        this.originalPanelStyles[panel.panelId] = panel.actor.style;
                     }
-                    panel.actor.style = ((_a = this.backupPanelStyles[panel.panelId]) !== null && _a !== void 0 ? _a : "") + `font-family: ${this.settings.PanelFont};`;
+                    panel.actor.style = ((_a = this.originalPanelStyles[panel.panelId]) !== null && _a !== void 0 ? _a : "") + `font-family: ${this.settings.PanelFont};`;
                 }
             }
         };
@@ -125,9 +124,9 @@ class Extension {
             for (const panel of panelManager.getPanels()) {
                 if (panel == null)
                     continue;
-                panel.actor.style = this.backupPanelStyles[panel.panelId];
+                panel.actor.style = this.originalPanelStyles[panel.panelId];
             }
-            this.backupPanelStyles = [];
+            this.originalPanelStyles = [];
         };
         this.settings = new Config(this);
     }
