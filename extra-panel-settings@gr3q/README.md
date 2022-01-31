@@ -1,3 +1,5 @@
 # Extra Panel Settings
 
-Currently the only functionality is to set the Panel Font to a different one from the default.
+## Functionality
+
+* Set the Panel Font explicitly instead of using the Default Font.

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-31 10:02+0000\n"
+"POT-Creation-Date: 2022-01-31 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,70 +23,6 @@ msgstr ""
 
 #. metadata.json->description
 msgid "Extra configuration options for your Panels"
-msgstr ""
-
-#. settings-schema.json->headerKeys->description
-msgid "Hotkeys:"
-msgstr ""
-
-#. settings-schema.json->hotkey->description
-msgid "Global Hotkey for gTile"
-msgstr ""
-
-#. settings-schema.json->headerBehavior->description
-msgid "Behavior:"
-msgstr ""
-
-#. settings-schema.json->animation->description
-msgid "Animation"
-msgstr ""
-
-#. settings-schema.json->autoclose->description
-msgid "Auto-Close"
-msgstr ""
-
-#. settings-schema.json->header1->description
-msgid "Layout for Button 1:"
-msgstr ""
-
-#. settings-schema.json->gridbutton1x->units
-#. settings-schema.json->gridbutton2x->units
-#. settings-schema.json->gridbutton3x->units
-#. settings-schema.json->gridbutton4x->units
-msgid "x"
-msgstr ""
-
-#. settings-schema.json->gridbutton1x->description
-#. settings-schema.json->gridbutton2x->description
-#. settings-schema.json->gridbutton3x->description
-#. settings-schema.json->gridbutton4x->description
-msgid "Columns"
-msgstr ""
-
-#. settings-schema.json->gridbutton1y->units
-#. settings-schema.json->gridbutton2y->units
-#. settings-schema.json->gridbutton3y->units
-#. settings-schema.json->gridbutton4y->units
-msgid "y"
-msgstr ""
-
-#. settings-schema.json->gridbutton1y->description
-#. settings-schema.json->gridbutton2y->description
-#. settings-schema.json->gridbutton3y->description
-#. settings-schema.json->gridbutton4y->description
-msgid "Rows"
-msgstr ""
-
-#. settings-schema.json->header2->description
-msgid "Layout for Button 2:"
-msgstr ""
-
-#. settings-schema.json->header3->description
-msgid "Layout for Button 3:"
-msgstr ""
-
-#. settings-schema.json->header4->description
-msgid "Layout for Button 4:"
 msgstr ""
 
 #. 3.8->settings-schema.json->global-tab->title
