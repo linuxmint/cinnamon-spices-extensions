@@ -1,0 +1,8 @@
+{
+    "cinnamon-version": ["3.8", "4.0", "4.2", "4.4","4.6"],
+    "uuid": "extra-panel-settings@gr3q",
+    "name": "Extra Panel Settings",
+    "description": "Extra configuration options for your Panels",
+    "version": "1.0.0",
+    "multiversion": true
+}
