@@ -18,7 +18,6 @@ export class Extension {
     this.settings.Enable();
     this.UpdateCurrentFont();
     this.panelsChangedKey = global.settings.connect("changed::panels-enabled", () => {
-      global.log("Panels changed")
       this.UpdateCurrentFont();
     });
   }
