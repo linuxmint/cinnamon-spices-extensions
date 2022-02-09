@@ -8,29 +8,29 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-02 21:25+0100\n"
-"PO-Revision-Date: 2021-09-24 12:39-0300\n"
+"PO-Revision-Date: 2022-02-09 15:35-0300\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "Last-Translator: Marcelo Aof\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: pt_BR\n"
 
-#: extension.js:43
+#: extension.js:43 3.8/gTile.js:293
 msgid "Auto close"
 msgstr "Fechar automaticamente"
 
-#: extension.js:44
+#: extension.js:44 3.8/gTile.js:294
 msgid "Animations"
 msgstr "Animações"
 
-#: extension.js:45
+#: extension.js:45 3.8/gTile.js:295
 msgid "Auto tile main and list"
 msgstr "Posicionar as janelas em um bloco e uma lista"
 
-#: extension.js:46
+#: extension.js:46 3.8/gTile.js:296
 msgid "Auto tile two lists"
 msgstr "Posicionar as janelas em duas listas"
 
@@ -47,6 +47,7 @@ msgid "Hotkeys:"
 msgstr "Atalhos de teclado:"
 
 #. settings-schema.json->hotkey->description
+#. 3.8->settings-schema.json->hotkey->description
 msgid "Global Hotkey for gTile"
 msgstr "Atalhos de teclado para utilizar o gTile"
 
@@ -55,10 +56,12 @@ msgid "Behavior:"
 msgstr "Opções diversas:"
 
 #. settings-schema.json->animation->description
+#. 3.8->settings-schema.json->animation->description
 msgid "Animation"
 msgstr "Animação"
 
 #. settings-schema.json->autoclose->description
+#. 3.8->settings-schema.json->autoclose->description
 msgid "Auto-Close"
 msgstr "Fechar automaticamente"
 
@@ -70,6 +73,10 @@ msgstr "Aparência do botão 1:"
 #. settings-schema.json->gridbutton2x->units
 #. settings-schema.json->gridbutton3x->units
 #. settings-schema.json->gridbutton4x->units
+#. 3.8->settings-schema.json->gridbutton1x->units
+#. 3.8->settings-schema.json->gridbutton2x->units
+#. 3.8->settings-schema.json->gridbutton3x->units
+#. 3.8->settings-schema.json->gridbutton4x->units
 msgid "x"
 msgstr "x"
 
@@ -77,6 +84,10 @@ msgstr "x"
 #. settings-schema.json->gridbutton2x->description
 #. settings-schema.json->gridbutton3x->description
 #. settings-schema.json->gridbutton4x->description
+#. 3.8->settings-schema.json->gridbutton1x->description
+#. 3.8->settings-schema.json->gridbutton2x->description
+#. 3.8->settings-schema.json->gridbutton3x->description
+#. 3.8->settings-schema.json->gridbutton4x->description
 msgid "Columns"
 msgstr "Colunas"
 
@@ -84,6 +95,10 @@ msgstr "Colunas"
 #. settings-schema.json->gridbutton2y->units
 #. settings-schema.json->gridbutton3y->units
 #. settings-schema.json->gridbutton4y->units
+#. 3.8->settings-schema.json->gridbutton1y->units
+#. 3.8->settings-schema.json->gridbutton2y->units
+#. 3.8->settings-schema.json->gridbutton3y->units
+#. 3.8->settings-schema.json->gridbutton4y->units
 msgid "y"
 msgstr "y"
 
@@ -91,6 +106,10 @@ msgstr "y"
 #. settings-schema.json->gridbutton2y->description
 #. settings-schema.json->gridbutton3y->description
 #. settings-schema.json->gridbutton4y->description
+#. 3.8->settings-schema.json->gridbutton1y->description
+#. 3.8->settings-schema.json->gridbutton2y->description
+#. 3.8->settings-schema.json->gridbutton3y->description
+#. 3.8->settings-schema.json->gridbutton4y->description
 msgid "Rows"
 msgstr "Linhas"
 
@@ -105,3 +124,88 @@ msgstr "Aparência do botão 3:"
 #. settings-schema.json->header4->description
 msgid "Layout for Button 4:"
 msgstr "Aparência do botão 4:"
+
+#. 3.8->settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Atalhos de teclado"
+
+#. 3.8->settings-schema.json->behaviour-tab->title
+#. 3.8->settings-schema.json->behaviour-section->title
+msgid "Behavior"
+msgstr "Opções diversas"
+
+#. 3.8->settings-schema.json->layout-tab->title
+msgid "Layout"
+msgstr "Aparência"
+
+#. 3.8->settings-schema.json->help->title
+msgid "Help"
+msgstr "Ajuda"
+
+#. 3.8->settings-schema.json->hotkey-section->title
+msgid "Global Hotkey"
+msgstr "Atalhos de teclado"
+
+#. 3.8->settings-schema.json->keybindings-legend-section->title
+msgid "Keybindings Legend (when open)"
+msgstr "Atalhos de teclado secundários (funcionam quando a janela do gTile está aberta)"
+
+#. 3.8->settings-schema.json->grid1-section->title
+msgid "Layout For Button 1"
+msgstr "Aparência do botão 1"
+
+#. 3.8->settings-schema.json->grid2-section->title
+msgid "Layout For Button 2"
+msgstr "Aparência do botão 2"
+
+#. 3.8->settings-schema.json->grid3-section->title
+msgid "Layout For Button 3"
+msgstr "Aparência do botão 3"
+
+#. 3.8->settings-schema.json->grid4-section->title
+msgid "Layout For Button 4"
+msgstr "Aparência do botão 4"
+
+#. 3.8->settings-schema.json->help-section->title
+msgid "More Info"
+msgstr "Mais informações"
+
+#. 3.8->settings-schema.json->hotkeys-legend->description
+msgid ""
+"Escape:\t\t\tHide gTile\n"
+"Enter or Space:\tCommit current selection\n"
+"Left:\t\t\tMove Left inside Grid\n"
+"Right:\t\t\tMove Right inside Grid\n"
+"Up:\t\t\t\tMove Up inside Grid\n"
+"Down:\t\t\tMove Down inside Grid\n"
+"<Shift>Left:\t\tInclude column to the Left in selection\n"
+"<Shift>Right:\t\tInclude column to the Right in selection\n"
+"<Shift>Up:\t\tInclude row Above in selection\n"
+"<Shift>Down:\tInclude row Below in selection\n"
+"<Alt>Left:\t\tMove to the monitor on the Left\n"
+"<Alt>Right:\t\tMove to the monitor on the Right\n"
+"<Alt>Up:\t\t\tMove to the monitor Above\n"
+"<Alt>Down:\t\tMove to the monitor Below\n"
+"1:\t\t\t\tSelect the first grid layout\n"
+"2:\t\t\t\tSelect the second grid layout\n"
+"3:\t\t\t\tSelect the third grid layout\n"
+"4:\t\t\t\tSelect the fourth grid layout"
+msgstr ""
+"Esc:\t\t\tEsconde o gTile\n"
+"Enter ou Espaço:\tConfirma a seleção atual\n"
+"Esquerda:\t\t\tMove para a esquerda dentro da grade\n"
+"Direita:\t\t\tMove para a direita dentro da grade\n"
+"Acima:\t\t\t\tMove para cima dentro da grade\n"
+"Embaixo:\t\t\tMove para baixo dentro da grade\n"
+"<Shift>Esquerda:\t\tInclui coluna à esquerda da seleção\n"
+"<Shift>Direita:\t\tInclui coluna à direita da seleção\n"
+"<Shift>Acima:\t\tInclui linha acima da seleção\n"
+"<Shift>Embaixo:\tInclui linha abaixo da seleção\n"
+"<Alt>Esquerda:\t\tMove para o monitor à esquerda\n"
+"<Alt>Direita:\t\tMove para o monitor à direita\n"
+"<Alt>Acima:\t\t\tMove para o monitor acima\n"
+"<Alt>Embaixo:\t\tMove para o monitor abaixo\n"
+"1:\t\t\t\tSeleciona o primeiro modelo de grade\n"
+"2:\t\t\t\tSeleciona o segundo modelo de grade\n"
+"3:\t\t\t\tSeleciona o terceiro modelo de grade\n"
+"4:\t\t\t\tSeleciona o quarto modelo de grade"
