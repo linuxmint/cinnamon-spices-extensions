@@ -1,0 +1,27 @@
+{
+   "layout": {
+      "type": "layout",
+      "pages": [
+         "global-tab"
+      ],
+      "global-tab": {
+         "type": "page",
+         "title": "Global Panel Settings",
+         "sections": [
+            "font-section"
+         ]
+      },
+      "font-section": {
+         "type": "section",
+         "title": "Font Settings",
+         "keys": [
+            "panelFont"
+         ]
+      }
+   },
+   "panelFont": {
+      "type" : "fontchooser",
+      "description" : "Font used in Panels",
+      "default" : ""
+   }
+}
