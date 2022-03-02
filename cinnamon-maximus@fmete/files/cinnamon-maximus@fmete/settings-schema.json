@@ -3,6 +3,11 @@
     "type" : "header",
     "description" : "Cinnamon-Maximus Settings"
   },
+  "onlyManual" : {
+    "type" : "checkbox",
+    "default" : false,
+    "description" : "Undecorating only with hotkey"
+  },
   "useHotkey" : {
     "type" : "checkbox",
     "default" : false,
@@ -36,7 +41,7 @@
   "useAutoUndecorList" : {
     "type" : "checkbox",
     "default" : false,
-    "description": "Use Auto Undecorating"
+    "description": "Use Auto Undecorating for apps"
   },
   "autoUndecorAppsList": {
     "type": "entry",
