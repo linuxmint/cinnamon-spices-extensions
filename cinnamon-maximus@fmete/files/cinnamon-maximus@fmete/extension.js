@@ -231,19 +231,19 @@ function shouldAffect(win) {
 
     if (!win._maximusDecoratedOriginal) {
         verdict = false;
-    } else {
-        if (useIgnoreList && ignoreAppsRegexp) {
-            let activeAppName = win.get_wm_class_instance();
-            if (activeAppName) {
-                let ignoredFlag = ignoreAppsRegexp.test(activeAppName);
-                logMessage(`app name = ${activeAppName} ignored = ${ignoredFlag}`);
-                verdict = !ignoredFlag;
-            }
-        }
     }
 
     if (isHalfMaximized(win)) {
         verdict = false;
+    }
+
+    if (useIgnoreList && ignoreAppsRegexp) {
+        let activeAppName = win.get_wm_class_instance();
+        if (activeAppName) {
+            let ignoredFlag = ignoreAppsRegexp.test(activeAppName);
+            logMessage(`app name = ${activeAppName} ignored = ${ignoredFlag}`);
+            verdict = !ignoredFlag;
+        }
     }
 
     return verdict;
@@ -389,7 +389,7 @@ function onWindowAdded(ws, win) {
             initially decorated? ${win._maximusDecoratedOriginal}`
     );
 
-    if (settings.undecorateAll) {
+    if (settings.undecorateAll && !ignoreAppsRegexp.test(win.get_wm_class_instance())) {
         setDecorated(win, false);
     } else if (useAutoUndecorList && autoUndecorAppsRegexp.test(win.get_wm_class_instance())) {
         setDecorated(win, false);
