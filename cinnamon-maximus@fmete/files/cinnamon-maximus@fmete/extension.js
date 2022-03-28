@@ -111,6 +111,8 @@ let workspaces = [];
 let oldFullscreenPref = null;
 let settings = null;
 
+let commaRegexp = new RegExp(/,/, "g");
+
 let useAutoUndecorList = false;
 let autoUndecorAppsRegexp;
 
@@ -229,19 +231,19 @@ function shouldAffect(win) {
 
     if (!win._maximusDecoratedOriginal) {
         verdict = false;
-    } else {
-        if (useIgnoreList && ignoreAppsRegexp) {
-            let activeAppName = win.get_wm_class_instance();
-            if (activeAppName) {
-                let ignoredFlag = ignoreAppsRegexp.test(activeAppName);
-                logMessage(`app name = ${activeAppName} ignored = ${ignoredFlag}`);
-                verdict = !ignoredFlag;
-            }
-        }
     }
 
     if (isHalfMaximized(win)) {
         verdict = false;
+    }
+
+    if (useIgnoreList && ignoreAppsRegexp) {
+        let activeAppName = win.get_wm_class_instance();
+        if (activeAppName) {
+            let ignoredFlag = ignoreAppsRegexp.test(activeAppName);
+            logMessage(`app name = ${activeAppName} ignored = ${ignoredFlag}`);
+            verdict = !ignoredFlag;
+        }
     }
 
     return verdict;
@@ -387,7 +389,7 @@ function onWindowAdded(ws, win) {
             initially decorated? ${win._maximusDecoratedOriginal}`
     );
 
-    if (settings.undecorateAll) {
+    if (settings.undecorateAll && !ignoreAppsRegexp.test(win.get_wm_class_instance())) {
         setDecorated(win, false);
     } else if (useAutoUndecorList && autoUndecorAppsRegexp.test(win.get_wm_class_instance())) {
         setDecorated(win, false);
@@ -446,7 +448,7 @@ function startUndecorating() {
     logMessage("startUndecorating", true);
     // cache some variables for convenience
     useIgnoreList = settings.useIgnoreList;
-    let ignoreRegexpStr = settings.ignoreAppsList.replace(/,/g, "|");
+    let ignoreRegexpStr = settings.ignoreAppsList.replace(commaRegexp, "|");
     if (useIgnoreList && ignoreRegexpStr) {
         try {
             ignoreAppsRegexp = new RegExp(ignoreRegexpStr, "i");
@@ -462,10 +464,10 @@ function startUndecorating() {
     logMessage(`ignore list enabled = ${useIgnoreList}`);
 
     useAutoUndecorList = settings.useAutoUndecorList;
-    let autoUndecorRegexpStr = settings.autoUndecorAppsList.replace(/,/g, "|");
+    let autoUndecorRegexpStr = settings.autoUndecorAppsList.replace(commaRegexp, "|");
     if (useAutoUndecorList && autoUndecorRegexpStr) {
         try {
-            autoUndecorAppsRegexp = new RegExp(autoUndecorRegexpStr, "i");
+            autoUndecorAppsRegexp = new RegExp(autoUndecorRegexpStr, "iu");
             logMessage(`auto undecor regexp '${autoUndecorRegexpStr}' has been compiled successfully`);
         } catch(e) {
             logMessage(`exception on auto undecor regexp '${autoUndecorRegexpStr}' compile: ${e.message}`, true);
@@ -477,14 +479,15 @@ function startUndecorating() {
 
     logMessage(`auto undecorate enabled = ${useAutoUndecorList}`);
 
-    /* Connect events */
-    changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
-
-    // we must listen to maximize and unmaximize events.
-    maximizeEventID = global.window_manager.connect("maximize", onMaximize);
-    minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximize);
-    if (settings.undecorateTile == true) {
-        tileEventID = global.window_manager.connect("tile", onMaximize);
+    if (settings.onlyManual == false) {
+        /* Connect events */
+        changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
+        // we must listen to maximize and unmaximize events.
+        maximizeEventID = global.window_manager.connect("maximize", onMaximize);
+        minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximize);
+        if (settings.undecorateTile == true) {
+            tileEventID = global.window_manager.connect("tile", onMaximize);
+        }
     }
     /* this is needed to prevent Metacity from interpreting an attempted drag
      * of an undecorated window as a fullscreen request. Otherwise thunderbird
@@ -517,9 +520,13 @@ function startUndecorating() {
             if (win.window_type === Meta.WindowType.DESKTOP) {
                 continue;
             }
-            onWindowAdded(null, win);
+            if (settings.onlyManual == false) {
+                onWindowAdded(null, win);
+            }
         }
-        onChangeNWorkspaces();
+        if (settings.onlyManual == false) {
+            onChangeNWorkspaces();
+        }
         idleTimerID = 0;
         return false; // define as one-time event
     });
@@ -620,9 +627,17 @@ SettingsHandler.prototype = {
         this.settings = new Settings.ExtensionSettings(this, uuid);
 
         this.settings.bindProperty(Settings.BindingDirection.IN,
+            "onlyManual", "onlyManual", function(){
+                stopUndecorating();
+                enableHotkey();
+                startUndecorating();
+            });
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
             "useHotkey", "useHotkey", function(){
                 enableHotkey();
             });
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "hotkey", "hotkey", function(){
                 enableHotkey();
@@ -633,32 +648,32 @@ SettingsHandler.prototype = {
                 stopUndecorating();
                 startUndecorating();
             });
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "undecorateAll", "undecorateAll", function(){
                 stopUndecorating();
                 startUndecorating();
             });
 
-
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "useIgnoreList", "useIgnoreList", function(){
                 stopUndecorating();
                 startUndecorating();
             });
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "ignoreAppsList", "ignoreAppsList", function(){
             });
-
 
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "useAutoUndecorList", "useAutoUndecorList", function(){
                 stopUndecorating();
                 startUndecorating();
             });
+
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "autoUndecorAppsList", "autoUndecorAppsList", function(){
             });
-
 
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "keepQTAppsFocus", "keepQTAppsFocus", function(){
@@ -667,7 +682,6 @@ SettingsHandler.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "enableLogs", "enableLogs", function(){
             });
-
     }
 }
 
