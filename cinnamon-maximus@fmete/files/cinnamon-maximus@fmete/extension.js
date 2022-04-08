@@ -238,7 +238,7 @@ function shouldAffect(win) {
     }
 
     if (useIgnoreList && ignoreAppsRegexp) {
-        let activeAppName = win.get_wm_class_instance();
+        let activeAppName = win.get_wm_class();
         if (activeAppName) {
             let ignoredFlag = ignoreAppsRegexp.test(activeAppName);
             logMessage(`app name = ${activeAppName} ignored = ${ignoredFlag}`);
@@ -318,7 +318,7 @@ function onMaximize(shellwm, actor) {
         return;
     }
     // note: window is maximized by this point.
-    logMessage(`onMaximize: ${win.title} [${win.get_wm_class_instance()}]`);
+    logMessage(`onMaximize: ${win.title} [${win.get_wm_class()}]`);
     setDecorated(win, false);
 }
 
@@ -340,7 +340,7 @@ function onUnmaximize(shellwm, actor) {
     if (!shouldAffect(win) || win._maximusUndecorated === true) {
         return;
     }
-    logMessage(`onUnmaximize: ${win.title} [${win.get_wm_class_instance()}]`);
+    logMessage(`onUnmaximize: ${win.title} [${win.get_wm_class()}]`);
     // if the user is unmaximizing by dragging, we wait to decorate until they
     // have dropped the window, so that we don't force the user to drop
     // the window prematurely with the redecorate (which stops the grab).
@@ -385,13 +385,13 @@ function onWindowAdded(ws, win) {
     // have.
     logMessage(
         `onWindowAdded:
-            ${win.title}/${win.get_wm_class_instance()}
+            ${win.title}/${win.get_wm_class()}
             initially decorated? ${win._maximusDecoratedOriginal}`
     );
 
-    if (settings.undecorateAll && !ignoreAppsRegexp.test(win.get_wm_class_instance())) {
+    if (settings.undecorateAll && !ignoreAppsRegexp.test(win.get_wm_class())) {
         setDecorated(win, false);
-    } else if (useAutoUndecorList && autoUndecorAppsRegexp.test(win.get_wm_class_instance())) {
+    } else if (useAutoUndecorList && autoUndecorAppsRegexp.test(win.get_wm_class())) {
         setDecorated(win, false);
         win._maximusUndecorated = true;
     } else {
