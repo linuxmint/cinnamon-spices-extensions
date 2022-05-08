@@ -1,0 +1,10 @@
+{
+    "description": "Compiz wobbly windows effect thanks to compiz plugin engine",
+    "name": "Compiz windows effect",
+    "cinnamon-version": [
+        "5.2"
+    ],
+    "url": "https://github.com/linuxmint/cinnamon-spices-extensions",
+    "uuid": "compiz-windows-effect@hermes83.github.com",
+    "version": 1
+}
