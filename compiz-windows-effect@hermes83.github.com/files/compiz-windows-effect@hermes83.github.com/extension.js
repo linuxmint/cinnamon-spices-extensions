@@ -292,6 +292,7 @@ const WobblyEffect = new Lang.Class({
 
     destroy: function() {
         if (this.timerId) {
+            this.timerId.stop();
             if (this.completedEvent) {
                 this.timerId.disconnect(this.completedEvent);
                 this.completedEvent = null;
