@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.14.7",
     "babel-loader": "^8.2.2",
     "ts-loader": "^9.2.3",
-    "typescript": "^4.4.2",
+    "typescript": "4.6.4",
     "webpack": "^5.42.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",

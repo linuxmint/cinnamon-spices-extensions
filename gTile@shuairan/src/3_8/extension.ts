@@ -20,7 +20,7 @@ const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 let metadata: any;
 
-class App {
+export class App {
   private visible = false;
   public readonly tracker = Cinnamon.WindowTracker.get_default();
   private monitors = Main.layoutManager.monitors;
@@ -149,7 +149,7 @@ class App {
   }
 
   public InitGrid() {
-    this.grid = new Grid(Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
+    this.grid = new Grid(this, Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
 
     Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
     this.grid.actor.set_opacity(0);

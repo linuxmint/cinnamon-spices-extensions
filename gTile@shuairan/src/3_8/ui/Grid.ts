@@ -1,6 +1,5 @@
 import { gridSettingsButton, preferences } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
-import { app } from "../extension";
 import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
@@ -10,6 +9,7 @@ import { GridElementDelegate } from "./GridElementDelegate";
 import { GridSettingsButton } from "./GridSettingsButton";
 import { ToggleSettingsButton } from "./ToggleSettingsButton";
 import { TopBar } from "./TopBar";
+import { App } from "../extension";
 
 const { BoxLayout, Table } = imports.gi.St;
 const Main = imports.ui.main;
@@ -54,7 +54,10 @@ export class Grid {
   keyElement?: GridElement | null;
   toggleSettingButtons: ToggleSettingsButton[] = [];
 
-  constructor(monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
+  app: App;
+
+  constructor(app: App, monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
+    this.app = app;
     this.tableHeight = 200;
     this.tableWidth = 220;
     this.borderwidth = 2;
@@ -345,7 +348,7 @@ export class Grid {
   }
 
   private BindKeyControls = () => {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.ToggleUI);
+    Main.keybindingManager.addHotKey('gTile-close', 'Escape', this.app.ToggleUI);
     Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
     Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
     for (let index in KEYCONTROL) {
@@ -390,7 +393,7 @@ export class Grid {
   }
 
   private OnResize = () => {
-    app.RefreshGrid();
+    this.app.RefreshGrid();
     if (preferences.autoclose) {
       this.emit('hide-tiling');
     }
@@ -542,7 +545,7 @@ export class Grid {
     if (monitor.index == this.monitor.index)
       return;
 
-    app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
+    this.app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
   }
 
   public destroy = () => {

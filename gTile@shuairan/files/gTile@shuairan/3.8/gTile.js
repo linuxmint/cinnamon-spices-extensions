@@ -40,6 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
+  "App": () => (/* binding */ App),
   "app": () => (/* binding */ app),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
@@ -789,13 +790,12 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
 
 
 
-
 const { BoxLayout, Table } = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
 let Grid = class Grid {
-    constructor(monitor, title, cols, rows) {
+    constructor(app, monitor, title, cols, rows) {
         this.tableWidth = 220;
         this.tableHeight = 200;
         this.borderwidth = 2;
@@ -875,7 +875,7 @@ let Grid = class Grid {
             }
         };
         this.BindKeyControls = () => {
-            Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.ToggleUI);
+            Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', this.app.ToggleUI);
             Grid_Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
             Grid_Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
             for (let index in KEYCONTROL) {
@@ -904,7 +904,7 @@ let Grid = class Grid {
             Grid_Main.layoutManager["_chrome"].updateRegions();
         };
         this.OnResize = () => {
-            app.RefreshGrid();
+            this.app.RefreshGrid();
             if (preferences.autoclose) {
                 this.emit('hide-tiling');
             }
@@ -1009,7 +1009,7 @@ let Grid = class Grid {
             monitor = monitor ? monitor : this.monitor;
             if (monitor.index == this.monitor.index)
                 return;
-            app.MoveToMonitor(this.monitor, monitor !== null && monitor !== void 0 ? monitor : this.monitor);
+            this.app.MoveToMonitor(this.monitor, monitor !== null && monitor !== void 0 ? monitor : this.monitor);
         };
         this.destroy = () => {
             for (let r in this.elements) {
@@ -1026,6 +1026,7 @@ let Grid = class Grid {
             this.title = null;
             this.cols = null;
         };
+        this.app = app;
         this.tableHeight = 200;
         this.tableWidth = 220;
         this.borderwidth = 2;
@@ -1373,7 +1374,7 @@ class App {
         this.ResetFocusedWindow();
     }
     InitGrid() {
-        this.grid = new Grid(extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
+        this.grid = new Grid(this, extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
         extension_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
         this.grid.actor.set_opacity(0);
         this.grid.Hide(true);
