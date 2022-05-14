@@ -4,7 +4,8 @@
   "description": "",
   "main": "extension.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch"
   },
   "sideEffects": false,
   "license": "MIT",

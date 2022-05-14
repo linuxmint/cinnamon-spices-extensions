@@ -1,4 +1,4 @@
-import { gridSettingsButton, preferences } from "../config";
+import { Config } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
@@ -80,7 +80,7 @@ export class Grid {
       this.OnMouseLeave
     );
 
-    this.topbar = new TopBar(title);
+    this.topbar = new TopBar(this.app, title);
 
     this.bottombar = new Table({
       homogeneous: true,
@@ -124,22 +124,22 @@ export class Grid {
 
     // Build Bottom Bar Buttons
 
-    let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
+    let toggle = new ToggleSettingsButton(this.app.config, 'animation', SETTINGS_ANIMATION, "animation_black-symbolic");
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
-    toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
+    toggle = new ToggleSettingsButton(this.app.config, 'auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
-    let action = new AutoTileMainAndList(this);
+    let action = new AutoTileMainAndList(this.app, this);
     this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
 
     action.connect('resize-done',
       this.OnResize
     );
 
-    let actionTwo = new AutoTileTwoList(this);
+    let actionTwo = new AutoTileTwoList(this.app, this);
     this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
     actionTwo.connect('resize-done',
@@ -212,14 +212,14 @@ export class Grid {
     let rowNum = 0;
     let colNum = 0;
 
-    for (let index = 0; index < gridSettingsButton.length; index++) {
+    for (let index = 0; index < this.app.config.gridSettingsButton.length; index++) {
       if (colNum >= 4) {
         colNum = 0;
         rowNum += 2;
       }
 
-      let button = gridSettingsButton[index];
-      button = new GridSettingsButton(button.text, button.cols, button.rows);
+      let button = this.app.config.gridSettingsButton[index];
+      button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
       this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
       button.actor.connect(
         'notify::hover',
@@ -241,8 +241,8 @@ export class Grid {
    */
   public RefreshGridElements = () => {
     this.table.destroy_all_children();
-    this.cols = preferences.nbCols;
-    this.rows = preferences.nbRows;
+    this.cols = this.app.config.nbCols;
+    this.rows = this.app.config.nbRows;
     // New grid is smaller than currently selected element, Reset selection
     if (this.cols <= this.colKey || this.rows <= this.colKey)
       this.Reset();
@@ -266,7 +266,7 @@ export class Grid {
 
     this.interceptHide = true;
     this.elementsDelegate.reset();
-    let time = preferences.animation ? 0.3 : 0;
+    let time = this.app.config.animation ? 0.3 : 0;
 
     this.actor.raise_top();
     Main.layoutManager.removeChrome(this.actor);
@@ -296,7 +296,7 @@ export class Grid {
   public Hide(immediate: boolean) {
     this.RemoveKeyControls();
     this.Reset();
-    let time = preferences.animation && !immediate ? 0.3 : 0;
+    let time = this.app.config.animation && !immediate ? 0.3 : 0;
     if (time > 0) {
       Tweener.addTween(this.actor, {
         time: time,
@@ -327,7 +327,7 @@ export class Grid {
     });
 
     this.elementsDelegate?._destroy();
-    this.elementsDelegate = new GridElementDelegate();
+    this.elementsDelegate = new GridElementDelegate(this.app, this.app.config);
     this.elementsDelegateSignals = [];
     this.elementsDelegateSignals.push(this.elementsDelegate.connect(
       'resize-done',
@@ -339,7 +339,7 @@ export class Grid {
           this.elements[r] = [];
         }
 
-        let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
+        let element = new GridElement(this.app, this.monitor, width, height, c, r, this.elementsDelegate);
         this.elements[r][c] = element;
         this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
         element.show();
@@ -394,7 +394,7 @@ export class Grid {
 
   private OnResize = () => {
     this.app.RefreshGrid();
-    if (preferences.autoclose) {
+    if (this.app.config.autoclose) {
       this.emit('hide-tiling');
     }
   }
@@ -491,16 +491,16 @@ export class Grid {
         this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
         break;
       case 'gTile-k-first-grid':
-        gridSettingsButton?.[0]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[0]?._onButtonPress();
         break;
       case 'gTile-k-second-grid':
-        gridSettingsButton?.[1]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[1]?._onButtonPress();
         break;
       case 'gTile-k-third-grid':
-        gridSettingsButton?.[2]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[2]?._onButtonPress();
         break;
       case 'gTile-k-fourth-grid':
-        gridSettingsButton?.[3]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[3]?._onButtonPress();
         break;
     }
 

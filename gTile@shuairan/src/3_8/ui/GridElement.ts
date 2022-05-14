@@ -1,4 +1,4 @@
-import { app } from "../extension";
+import { App } from "../extension";
 import { isFinalized } from "../utils";
 import { GridElementDelegate } from "./GridElementDelegate";
 const Main = imports.ui.main;
@@ -13,8 +13,10 @@ export class GridElement {
     height: number;
     active: boolean;
     delegate: GridElementDelegate;
+    private app: App;
 
-    constructor(monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
+    constructor(app: App, monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
+        this.app = app;
         this.actor = new St.Button({
             style_class: 'table-element',
             width: width,
@@ -78,7 +80,7 @@ export class GridElement {
     }
 
     public _clean = () => {
-        Main.uiGroup.remove_actor(app.area);
+        Main.uiGroup.remove_actor(this.app.area);
     }
 
     public _destroy = () => {

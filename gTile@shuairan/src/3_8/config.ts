@@ -1,77 +1,72 @@
-import { app } from "./extension";
+import { App } from "./extension";
 import { GridSettingsButton } from "./ui/GridSettingsButton";
-
-
-export interface Preferences {
-    hotkey: string;
-    lastGridRows: number;
-    lastGridCols: number;
-    animation: boolean;
-    autoclose: boolean;
-    gridbutton1x: number;
-    gridbutton1y: number;
-    gridbutton2x: number;
-    gridbutton2y: number;
-    gridbutton3x: number;
-    gridbutton3y: number;
-    gridbutton4x: number;
-    gridbutton4y: number;
-    nbRows: number;
-    nbCols: number;
-}
-
-export const preferences: Preferences = {} as Preferences;
 
 const Settings = imports.ui.settings;
 
-let settings: imports.ui.settings.ExtensionSettings;
-export let gridSettingsButton: GridSettingsButton[] = [];
+export class Config {
+    private app: App;
+    public gridSettingsButton: GridSettingsButton[] = [];
+    private settings: imports.ui.settings.ExtensionSettings;
 
-/*****************************************************************
-                            SETTINGS
-*****************************************************************/
-/*INIT SETTINGS HERE TO ADD OR REMOVE SETTINGS BUTTON*/
-/*new GridSettingsButton(LABEL, NBCOL, NBROW) */
-export const initSettings = () => {
-    settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
-    //hotkey
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.EnableHotkey, null);
-    //grid (nbCols and nbRows)
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
+    public readonly hotkey!: string;
+    public readonly lastGridRows!: number;
+    public readonly lastGridCols!: number;
+    public readonly animation!: boolean;
+    public readonly autoclose!: boolean;
+    public readonly gridbutton1x!: number;
+    public readonly gridbutton1y!: number;
+    public readonly gridbutton2x!: number;
+    public readonly gridbutton2y!: number;
+    public readonly gridbutton3x!: number;
+    public readonly gridbutton3y!: number;
+    public readonly gridbutton4x!: number;
+    public readonly gridbutton4y!: number;
+    public readonly nbRows!: number;
+    public readonly nbCols!: number;
 
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', updateSettings, null);
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', updateSettings, null);
+    constructor(app: App) {
+        this.app = app;
 
-    let basestr = 'gridbutton';
+        this.settings = new Settings.ExtensionSettings(this, 'gTile@shuairan');
+        //hotkey
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', this.app.EnableHotkey, null);
+        //grid (nbCols and nbRows)
+        this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
+        this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
 
-    initGridSettings();
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
 
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, updateGridSettings, null);
-        settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, updateGridSettings, null);
+        let basestr = 'gridbutton';
+
+        this.initGridSettings();
+
+        for (let i = 1; i <= 4; i++) {
+            let sgbx = basestr + i + 'x';
+            let sgby = basestr + i + 'y';
+            this.settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, this.updateGridSettings, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
+        }
     }
-}
 
-const updateSettings = () => {
-    app.Grid.UpdateSettingsButtons();
-}
-
-const initGridSettings = () => {
-    let basestr = 'gridbutton';
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        let gbx = settings.getValue(sgbx);
-        let gby = settings.getValue(sgby);
-        gridSettingsButton.push(new GridSettingsButton(gbx + 'x' + gby, gbx, gby));
+    private updateSettings = () => {
+        this.app.Grid.UpdateSettingsButtons();
     }
-}
-
-const updateGridSettings = () => {
-    gridSettingsButton = [];
-    initGridSettings();
-    app.Grid.RebuildGridSettingsButtons();
+    
+    private initGridSettings = () => {
+        let basestr = 'gridbutton';
+        for (let i = 1; i <= 4; i++) {
+            let sgbx = basestr + i + 'x';
+            let sgby = basestr + i + 'y';
+            let gbx = this.settings.getValue(sgbx);
+            let gby = this.settings.getValue(sgby);
+            this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx + 'x' + gby, gbx, gby));
+        }
+    }
+    
+    private updateGridSettings = () => {
+        this.gridSettingsButton = [];
+        this.initGridSettings();
+        this.app.Grid.RebuildGridSettingsButtons();
+    }
 }

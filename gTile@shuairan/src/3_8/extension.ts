@@ -7,7 +7,7 @@
 
 ******************************************************************/
 
-import { initSettings, preferences } from "./config";
+import { Config } from "./config";
 import { Grid } from "./ui/Grid";
 import { getFocusApp, GetMonitorAspectRatio, getMonitorKey } from "./utils";
 
@@ -39,9 +39,12 @@ export class App {
     return this.grid;
   }
 
+  public readonly config: Config;
+
   constructor() {
       Main.uiGroup.add_actor(this.area);
-
+      this.config = new Config(this);
+      this.InitGrid();
       this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
       global.screen.connect('monitors-changed', this.ReInitialize);
   }
@@ -54,7 +57,7 @@ export class App {
 
   public EnableHotkey = () => {
     this.DisableHotkey();
-    Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.ToggleUI);
+    Main.keybindingManager.addHotKey('gTile', this.config.hotkey, this.ToggleUI);
   }
 
   private DisableHotkey = () => {
@@ -149,7 +152,7 @@ export class App {
   }
 
   public InitGrid() {
-    this.grid = new Grid(this, Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
+    this.grid = new Grid(this, Main.layoutManager.primaryMonitor, 'gTile', this.config.nbCols, this.config.nbRows);
 
     Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
     this.grid.actor.set_opacity(0);
@@ -217,7 +220,7 @@ export class App {
       pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
     }
 
-    let time = preferences.animation ? 0.3 : 0.1;   
+    let time = this.config.animation ? 0.3 : 0.1;   
 
     grid.AdjustTableSize(time, newTableWidth, newTableHeight);
 
@@ -298,7 +301,7 @@ export class App {
   }
 }
 
-export let app: App;
+let app: App;
 
 /*****************************************************************
                             FUNCTIONS
@@ -310,8 +313,6 @@ export const init = (meta: any) => {
 
 export const enable = () => {
   app = new App();
-  initSettings();
-  app.InitGrid();
   app.EnableHotkey();
 }
 
