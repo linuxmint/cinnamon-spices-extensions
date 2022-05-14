@@ -50,18 +50,9 @@ export class App {
   }
 
   public destroy() {
-    this.DisableHotkey();
+    this.config.destroy();
     this.DestroyGrid();
     this.ResetFocusedWindow();
-  }
-
-  public EnableHotkey = () => {
-    this.DisableHotkey();
-    Main.keybindingManager.addHotKey('gTile', this.config.hotkey, this.ToggleUI);
-  }
-
-  private DisableHotkey = () => {
-    Main.keybindingManager.removeHotKey('gTile');
   }
 
   public RefreshGrid = () => {
@@ -313,7 +304,6 @@ export const init = (meta: any) => {
 
 export const enable = () => {
   app = new App();
-  app.EnableHotkey();
 }
 
 export const disable = () => {

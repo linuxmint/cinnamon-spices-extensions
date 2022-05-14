@@ -81,9 +81,17 @@ class GridSettingsButton {
 ;// CONCATENATED MODULE: ./src/3_8/config.ts
 
 const Settings = imports.ui.settings;
+const Main = imports.ui.main;
 class Config {
     constructor(app) {
         this.gridSettingsButton = [];
+        this.EnableHotkey = () => {
+            this.DisableHotkey();
+            Main.keybindingManager.addHotKey('gTile', this.hotkey, this.app.ToggleUI);
+        };
+        this.DisableHotkey = () => {
+            Main.keybindingManager.removeHotKey('gTile');
+        };
         this.updateSettings = () => {
             this.app.Grid.UpdateSettingsButtons();
         };
@@ -102,9 +110,12 @@ class Config {
             this.initGridSettings();
             this.app.Grid.RebuildGridSettingsButtons();
         };
+        this.destroy = () => {
+            this.DisableHotkey();
+        };
         this.app = app;
         this.settings = new Settings.ExtensionSettings(this, 'gTile@shuairan');
-        this.settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', this.app.EnableHotkey, null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', this.EnableHotkey, null);
         this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
         this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
@@ -117,6 +128,7 @@ class Config {
             this.settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, this.updateGridSettings, null);
             this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
         }
+        this.EnableHotkey();
     }
 }
 
@@ -127,7 +139,7 @@ const GLib = imports.gi.GLib;
 const Signals = imports.signals;
 const Meta = imports.gi.Meta;
 const Panel = imports.ui.panel;
-const Main = imports.ui.main;
+const utils_Main = imports.ui.main;
 const UUID = 'gTile@shuairan';
 const isFinalized = function (obj) {
     return obj && utils_Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
@@ -198,7 +210,7 @@ const getUsableScreenArea = (monitor) => {
     let bottom = monitor.y + monitor.height;
     let left = monitor.x;
     let right = monitor.x + monitor.width;
-    for (let panel of Main.panelManager.getPanelsInMonitor(monitor.index)) {
+    for (let panel of utils_Main.panelManager.getPanelsInMonitor(monitor.index)) {
         if (!panel.isHideable()) {
             switch (panel.panelPosition) {
                 case Panel.PanelLoc.top:
@@ -224,7 +236,7 @@ const getMonitorKey = (monitor) => {
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 };
 const getAdjacentMonitor = (monitor, side) => {
-    const monitors = Main.layoutManager.monitors;
+    const monitors = utils_Main.layoutManager.monitors;
     const contactsOnSide = [];
     for (const mon of monitors) {
         if (isEqual(mon, monitor))
@@ -264,7 +276,7 @@ const getFocusApp = () => {
     return global.display.focus_window;
 };
 const isPrimaryMonitor = (monitor) => {
-    return Main.layoutManager.primaryMonitor === monitor;
+    return utils_Main.layoutManager.primaryMonitor === monitor;
 };
 function intersection(a, b) {
     let min = (a[0] < b[0] ? a : b);
@@ -1189,13 +1201,6 @@ class App {
         this.focusMetaWindowPrivateConnections = [];
         this.area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
         this.focusMetaWindow = null;
-        this.EnableHotkey = () => {
-            this.DisableHotkey();
-            extension_Main.keybindingManager.addHotKey('gTile', this.config.hotkey, this.ToggleUI);
-        };
-        this.DisableHotkey = () => {
-            extension_Main.keybindingManager.removeHotKey('gTile');
-        };
         this.RefreshGrid = () => {
             this.grid.RefreshGridElements();
             extension_Main.layoutManager["_chrome"].updateRegions();
@@ -1369,7 +1374,7 @@ class App {
         return this.grid;
     }
     destroy() {
-        this.DisableHotkey();
+        this.config.destroy();
         this.DestroyGrid();
         this.ResetFocusedWindow();
     }
@@ -1388,7 +1393,6 @@ const init = (meta) => {
 };
 const enable = () => {
     app = new App();
-    app.EnableHotkey();
 };
 const disable = () => {
     app.destroy();
