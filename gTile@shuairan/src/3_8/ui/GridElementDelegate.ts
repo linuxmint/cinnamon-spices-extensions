@@ -23,7 +23,7 @@ export class GridElementDelegate {
   }
 
   private _allSelected = () => {
-    return this.activatedActors?.length === (this.settings.nbCols * this.settings.nbRows);
+    return this.activatedActors?.length === (this.settings.nbCols.length * this.settings.nbRows.length);
   }
 
   public _onButtonPress(gridElement: GridElement) {
@@ -118,10 +118,32 @@ export class GridElementDelegate {
     let monitor = fromGridElement.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
 
-    let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
-    let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
-    let areaX = screenX + minX * (screenWidth / nbCols);
-    let areaY = screenY + minY * (screenHeight / nbRows);
+    const widthUnit = screenWidth / nbCols.map(r => r.span).reduce((p, c) => p+=c);
+    const heightUnit = screenHeight / nbRows.map(r => r.span).reduce((p, c) => p+=c);
+
+    let areaWidth = 0;
+    for (let index = minX; index <= maxX; index++) {
+      const element = nbCols[index];
+      areaWidth+= element.span * widthUnit;
+    }
+
+    let areaHeight = 0;
+    for (let index = minY; index <= maxY; index++) {
+      const element = nbRows[index];
+      areaHeight+= element.span * heightUnit;
+    }
+
+    let areaX = screenX;
+    for (let index = 0; index < minX; index++) {
+      const element = nbCols[index];
+      areaX+= element.span * widthUnit;
+    }
+
+    let areaY = screenY;
+    for (let index = 0; index < minY; index++) {
+      const element = nbRows[index];
+      areaY+= element.span * heightUnit;
+    }
 
     return [areaX, areaY, areaWidth, areaHeight];
   }

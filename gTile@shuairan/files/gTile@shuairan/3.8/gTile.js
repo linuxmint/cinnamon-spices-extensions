@@ -51,8 +51,7 @@ const St = imports.gi.St;
 class GridSettingsButton {
     constructor(app, text, cols, rows) {
         this._onButtonPress = () => {
-            this.settings.nbCols = this.cols;
-            this.settings.nbRows = this.rows;
+            this.settings.SetGridConfig(this.cols, this.rows);
             this.app.RefreshGrid();
             return false;
         };
@@ -118,6 +117,10 @@ class Config {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', this.EnableHotkey, null);
         this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
         this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
+        if (this.nbCols == null || !Array.isArray(this.nbCols))
+            this.nbCols = this.InitialGridItems();
+        if (this.nbRows == null || !Array.isArray(this.nbRows))
+            this.nbRows = this.InitialGridItems();
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
         let basestr = 'gridbutton';
@@ -129,6 +132,18 @@ class Config {
             this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
         }
         this.EnableHotkey();
+    }
+    SetGridConfig(columns, rows) {
+        this.nbRows = rows;
+        this.nbCols = columns;
+    }
+    InitialGridItems() {
+        return [
+            { span: 1 },
+            { span: 1 },
+            { span: 1 },
+            { span: 1 }
+        ];
     }
 }
 
@@ -546,7 +561,7 @@ let GridElementDelegate = class GridElementDelegate {
         this.activatedActors = null;
         this._allSelected = () => {
             var _a;
-            return ((_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.length) === (this.settings.nbCols * this.settings.nbRows);
+            return ((_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.length) === (this.settings.nbCols.length * this.settings.nbRows.length);
         };
         this._resizeDone = () => {
             this.emit('resize-done');
@@ -599,10 +614,28 @@ let GridElementDelegate = class GridElementDelegate {
             let nbCols = this.settings.nbCols;
             let monitor = fromGridElement.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
-            let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
-            let areaX = screenX + minX * (screenWidth / nbCols);
-            let areaY = screenY + minY * (screenHeight / nbRows);
+            const widthUnit = screenWidth / nbCols.map(r => r.span).reduce((p, c) => p += c);
+            const heightUnit = screenHeight / nbRows.map(r => r.span).reduce((p, c) => p += c);
+            let areaWidth = 0;
+            for (let index = minX; index <= maxX; index++) {
+                const element = nbCols[index];
+                areaWidth += element.span * widthUnit;
+            }
+            let areaHeight = 0;
+            for (let index = minY; index <= maxY; index++) {
+                const element = nbRows[index];
+                areaHeight += element.span * heightUnit;
+            }
+            let areaX = screenX;
+            for (let index = 0; index < minX; index++) {
+                const element = nbCols[index];
+                areaX += element.span * widthUnit;
+            }
+            let areaY = screenY;
+            for (let index = 0; index < minY; index++) {
+                const element = nbRows[index];
+                areaY += element.span * heightUnit;
+            }
             return [areaX, areaY, areaWidth, areaHeight];
         };
         this._displayArea = (fromGridElement, toGridElement) => {
@@ -827,8 +860,8 @@ let Grid = class Grid {
                 for (const element of row) {
                     Grid_Tweener.addTween(element.actor, {
                         time: time,
-                        width: (width / this.cols - 2 * this.borderwidth),
-                        height: (height / this.rows - 2 * this.borderwidth),
+                        width: (width / this.cols.length - 2 * this.borderwidth),
+                        height: (height / this.rows.length - 2 * this.borderwidth),
                         transition: 'easeOutQuad',
                     });
                 }
@@ -854,15 +887,17 @@ let Grid = class Grid {
             this.table.destroy_all_children();
             this.cols = this.app.config.nbCols;
             this.rows = this.app.config.nbRows;
-            if (this.cols <= this.colKey || this.rows <= this.colKey)
+            if (this.cols.length <= this.colKey || this.rows.length <= this.colKey)
                 this.Reset();
             this.RebuildGridElements();
         };
         this.RebuildGridElements = () => {
             var _a;
             this.elements = [];
-            let width = this.tableWidth / this.cols - 2 * this.borderwidth;
-            let height = this.tableHeight / this.rows - 2 * this.borderwidth;
+            const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p += c);
+            const colSpans = this.cols.map(r => r.span).reduce((p, c) => p += c);
+            let width = (this.tableWidth / colSpans - (2 * this.borderwidth));
+            let height = (this.tableHeight / rowSpans - (2 * this.borderwidth));
             this.elementsDelegateSignals.forEach(element => {
                 var _a;
                 (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a.disconnect(element);
@@ -871,12 +906,14 @@ let Grid = class Grid {
             this.elementsDelegate = new GridElementDelegate(this.app);
             this.elementsDelegateSignals = [];
             this.elementsDelegateSignals.push(this.elementsDelegate.connect('resize-done', this.OnResize));
-            for (let r = 0; r < this.rows; r++) {
-                for (let c = 0; c < this.cols; c++) {
+            for (let r = 0; r < this.rows.length; r++) {
+                for (let c = 0; c < this.cols.length; c++) {
                     if (c === 0) {
                         this.elements[r] = [];
                     }
-                    let element = new GridElement(this.app, this.monitor, width, height, c, r, this.elementsDelegate);
+                    const finalWidth = width * this.cols[c].span;
+                    const finalHeight = height * this.rows[r].span;
+                    let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
                     this.elements[r][c] = element;
                     this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
                     element.show();
@@ -959,7 +996,7 @@ let Grid = class Grid {
             switch (type) {
                 case 'gTile-k-right':
                 case 'gTile-k-right-meta':
-                    this.colKey = Math.min(this.colKey + 1, this.cols - 1);
+                    this.colKey = Math.min(this.colKey + 1, this.cols.length - 1);
                     this.rowKey = this.rowKey === -1 ? 0 : this.rowKey;
                     break;
                 case 'gTile-k-left':
@@ -976,7 +1013,7 @@ let Grid = class Grid {
                     break;
                 case 'gTile-k-down':
                 case 'gTile-k-down-meta':
-                    this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
+                    this.rowKey = Math.min(this.rowKey + 1, this.rows.length - 1);
                     this.colKey = this.colKey === -1 ? 0 : this.colKey;
                     break;
                 case 'gTile-k-left-monitor-move':
@@ -1065,7 +1102,7 @@ let Grid = class Grid {
         });
         this.RebuildGridSettingsButtons();
         this.table = new Table({
-            homogeneous: true,
+            homogeneous: false,
             style_class: 'table',
             can_focus: true,
             track_hover: true,

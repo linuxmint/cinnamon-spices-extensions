@@ -105,11 +105,11 @@
 	},
    "lastGridCols": {
       "type": "generic",
-      "default": 4
+      "default": null
    },
    "lastGridRows": {
       "type": "generic",
-      "default": 4
+      "default": null
    },
    "hotkey": {
       "type": "keybinding",

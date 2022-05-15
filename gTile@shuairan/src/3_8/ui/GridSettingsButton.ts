@@ -1,18 +1,18 @@
-import { Config } from "../config";
+import { Column, Config, Row } from "../config";
 import { App } from "../extension";
 
 const St = imports.gi.St;
 
 export class GridSettingsButton {
-    cols: number;
-    rows: number;
+    cols: Column[];
+    rows: Row[];
     text: string;
     actor: imports.gi.St.Button;
     label: imports.gi.St.Label;
     private settings: Config;
     private app: App;
   
-    constructor(app: App, text: string, cols: number, rows: number) {
+    constructor(app: App, text: string, cols: Column[], rows: Row[]) {
       this.app = app;
       this.settings = this.app.config;
       this.cols = cols;
@@ -42,10 +42,7 @@ export class GridSettingsButton {
     }
   
     public _onButtonPress = () => {
-      //@ts-ignore
-      this.settings.nbCols = this.cols;
-      //@ts-ignore
-      this.settings.nbRows = this.rows;
+      this.settings.SetGridConfig(this.cols, this.rows);
       this.app.RefreshGrid();
       return false;
     }

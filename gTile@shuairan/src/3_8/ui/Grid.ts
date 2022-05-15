@@ -1,4 +1,4 @@
-import { Config } from "../config";
+import { Column, Config, Row } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
@@ -34,9 +34,9 @@ export class Grid {
   table: imports.gi.St.Table;
 
   monitor: imports.ui.layout.Monitor;
-  rows: number;
+  rows: Row[];
   title: string;
-  cols: number;
+  cols: Column[];
 
   isEntered = false;
 
@@ -55,7 +55,7 @@ export class Grid {
 
   app: App;
 
-  constructor(app: App, monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
+  constructor(app: App, monitor: imports.ui.layout.Monitor, title: string, cols: Column[], rows: Row[]) {
     this.app = app;
     this.tableHeight = 200;
     this.tableWidth = 220;
@@ -100,7 +100,7 @@ export class Grid {
     this.RebuildGridSettingsButtons();
 
     this.table = new Table({
-      homogeneous: true,
+      homogeneous: false,
       style_class: 'table',
       can_focus: true,
       track_hover: true,
@@ -184,8 +184,8 @@ export class Grid {
       for (const element of row) {
         Tweener.addTween(element.actor, {
           time: time,
-          width: (width / this.cols - 2 * this.borderwidth),
-          height: (height / this.rows - 2 * this.borderwidth),
+          width: (width / this.cols.length - 2 * this.borderwidth),
+          height: (height / this.rows.length - 2 * this.borderwidth),
           transition: 'easeOutQuad',
         });
       }
@@ -243,7 +243,7 @@ export class Grid {
     this.cols = this.app.config.nbCols;
     this.rows = this.app.config.nbRows;
     // New grid is smaller than currently selected element, Reset selection
-    if (this.cols <= this.colKey || this.rows <= this.colKey)
+    if (this.cols.length <= this.colKey || this.rows.length <= this.colKey)
       this.Reset();
 
     this.RebuildGridElements();
@@ -318,8 +318,11 @@ export class Grid {
   private RebuildGridElements = () => {
     this.elements = [];
 
-    let width = this.tableWidth / this.cols - 2 * this.borderwidth;
-    let height = this.tableHeight / this.rows - 2 * this.borderwidth;
+    const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p+= c);
+    const colSpans = this.cols.map(r => r.span).reduce((p, c) => p+= c);
+
+    let width = (this.tableWidth / colSpans - (2 * this.borderwidth));
+    let height = (this.tableHeight / rowSpans - (2 * this.borderwidth));
 
     this.elementsDelegateSignals.forEach(element => {
       this.elementsDelegate?.disconnect(element)
@@ -332,13 +335,17 @@ export class Grid {
       'resize-done',
       this.OnResize
     ));
-    for (let r = 0; r < this.rows; r++) {
-      for (let c = 0; c < this.cols; c++) {
+    for (let r = 0; r < this.rows.length; r++) {
+      for (let c = 0; c < this.cols.length; c++) {
         if (c === 0) {
           this.elements[r] = [];
         }
 
-        let element = new GridElement(this.app, this.monitor, width, height, c, r, this.elementsDelegate);
+        const finalWidth = width * this.cols[c].span;
+        const finalHeight = height * this.rows[r].span;
+
+        // TODO: Fix table drawing
+        let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
         this.elements[r][c] = element;
         this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
         element.show();
@@ -455,7 +462,7 @@ export class Grid {
     switch (type) {
       case 'gTile-k-right':
       case 'gTile-k-right-meta':
-        this.colKey = Math.min(this.colKey + 1, this.cols - 1);
+        this.colKey = Math.min(this.colKey + 1, this.cols.length - 1);
         this.rowKey = this.rowKey === -1 ? 0 : this.rowKey; //leave initial state
         break;
       case 'gTile-k-left':
@@ -474,7 +481,7 @@ export class Grid {
         break;
       case 'gTile-k-down':
       case 'gTile-k-down-meta':
-        this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
+        this.rowKey = Math.min(this.rowKey + 1, this.rows.length - 1);
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
       case 'gTile-k-left-monitor-move':
