@@ -23,11 +23,13 @@ export class GridElement {
             height: height,
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            x_expand: false,
+            y_expand: false,
+            y_fill: false,
+            x_fill: false,
         });
 
-        this.actor.visible = false;
-        this.actor.opacity = 0;
         this.monitor = monitor;
         this.coordx = coordx;
         this.coordy = coordy;
@@ -45,16 +47,6 @@ export class GridElement {
         );
 
         this.active = false;
-    }
-
-    public show = () => {
-        this.actor.opacity = 255;
-        this.actor.visible = true;
-    }
-
-    public hide = () => {
-        this.actor.opacity = 0;
-        this.actor.visible = false;
     }
 
     public _onButtonPress = () => {

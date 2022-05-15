@@ -481,14 +481,6 @@ const GridElement_Main = imports.ui.main;
 const GridElement_St = imports.gi.St;
 class GridElement {
     constructor(app, monitor, width, height, coordx, coordy, delegate) {
-        this.show = () => {
-            this.actor.opacity = 255;
-            this.actor.visible = true;
-        };
-        this.hide = () => {
-            this.actor.opacity = 0;
-            this.actor.visible = false;
-        };
         this._onButtonPress = () => {
             this.delegate._onButtonPress(this);
             return false;
@@ -527,10 +519,12 @@ class GridElement {
             height: height,
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            x_expand: false,
+            y_expand: false,
+            y_fill: false,
+            x_fill: false,
         });
-        this.actor.visible = false;
-        this.actor.opacity = 0;
         this.monitor = monitor;
         this.coordx = coordx;
         this.coordy = coordy;
@@ -836,6 +830,7 @@ const { BoxLayout, Table } = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
+const { Color } = imports.gi.Clutter;
 let Grid = class Grid {
     constructor(app, monitor, title, cols, rows) {
         this.tableWidth = 220;
@@ -856,12 +851,17 @@ let Grid = class Grid {
                 height: height,
                 transition: 'easeOutQuad',
             });
-            for (const row of this.elements) {
-                for (const element of row) {
+            const [widthUnit, heightUnit] = this.GetTableUnits(width, height);
+            for (let index = 0; index < this.elements.length; index++) {
+                const row = this.elements[index];
+                for (let j = 0; j < row.length; j++) {
+                    const element = row[j];
+                    const finalWidth = widthUnit * this.cols[j].span;
+                    const finalHeight = heightUnit * this.rows[index].span;
                     Grid_Tweener.addTween(element.actor, {
                         time: time,
-                        width: (width / this.cols.length - 2 * this.borderwidth),
-                        height: (height / this.rows.length - 2 * this.borderwidth),
+                        width: finalWidth,
+                        height: finalHeight,
                         transition: 'easeOutQuad',
                     });
                 }
@@ -894,10 +894,7 @@ let Grid = class Grid {
         this.RebuildGridElements = () => {
             var _a;
             this.elements = [];
-            const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p += c);
-            const colSpans = this.cols.map(r => r.span).reduce((p, c) => p += c);
-            let width = (this.tableWidth / colSpans - (2 * this.borderwidth));
-            let height = (this.tableHeight / rowSpans - (2 * this.borderwidth));
+            const [widthUnit, heightUnit] = this.GetTableUnits(this.tableWidth, this.tableHeight);
             this.elementsDelegateSignals.forEach(element => {
                 var _a;
                 (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a.disconnect(element);
@@ -907,17 +904,18 @@ let Grid = class Grid {
             this.elementsDelegateSignals = [];
             this.elementsDelegateSignals.push(this.elementsDelegate.connect('resize-done', this.OnResize));
             for (let r = 0; r < this.rows.length; r++) {
+                const row = new BoxLayout();
                 for (let c = 0; c < this.cols.length; c++) {
                     if (c === 0) {
                         this.elements[r] = [];
                     }
-                    const finalWidth = width * this.cols[c].span;
-                    const finalHeight = height * this.rows[r].span;
+                    const finalWidth = widthUnit * this.cols[c].span;
+                    const finalHeight = heightUnit * this.rows[r].span;
                     let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
                     this.elements[r][c] = element;
-                    this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
-                    element.show();
+                    row.add(element.actor);
                 }
+                this.table.add(row);
             }
         };
         this.BindKeyControls = () => {
@@ -1101,12 +1099,12 @@ let Grid = class Grid {
             reactive: true,
         });
         this.RebuildGridSettingsButtons();
-        this.table = new Table({
-            homogeneous: false,
+        this.table = new BoxLayout({
             style_class: 'table',
             can_focus: true,
             track_hover: true,
             reactive: true,
+            vertical: true,
             width: this.tableWidth,
             height: this.tableHeight
         });
@@ -1145,6 +1143,13 @@ let Grid = class Grid {
                 element.monitor = this.monitor;
             }
         }
+    }
+    GetTableUnits(width, height) {
+        const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p += c);
+        const colSpans = this.cols.map(r => r.span).reduce((p, c) => p += c);
+        let widthUnit = (width / colSpans - (2 * this.borderwidth));
+        let heightUnit = (height / rowSpans - (2 * this.borderwidth));
+        return [widthUnit, heightUnit];
     }
     UpdateSettingsButtons() {
         for (const button of this.toggleSettingButtons) {

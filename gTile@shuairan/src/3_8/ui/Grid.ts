@@ -14,6 +14,7 @@ const { BoxLayout, Table } = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
+const { Color } = imports.gi.Clutter;
 
 export interface Grid extends SignalOverload<"hide-tiling"> {
 
@@ -31,7 +32,7 @@ export class Grid {
   topbar: TopBar;
   bottombar: imports.gi.St.Table;
   veryBottomBar: imports.gi.St.Table;
-  table: imports.gi.St.Table;
+  table: imports.gi.St.BoxLayout;
 
   monitor: imports.ui.layout.Monitor;
   rows: Row[];
@@ -99,12 +100,12 @@ export class Grid {
 
     this.RebuildGridSettingsButtons();
 
-    this.table = new Table({
-      homogeneous: false,
+    this.table = new BoxLayout({
       style_class: 'table',
       can_focus: true,
       track_hover: true,
       reactive: true,
+      vertical: true,
       width: this.tableWidth,
       height: this.tableHeight
     });
@@ -171,6 +172,15 @@ export class Grid {
     }
   }
 
+  private GetTableUnits(width: number, height: number): [widthUnit: number, heightUnit: number] {
+    const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p+= c);
+    const colSpans = this.cols.map(r => r.span).reduce((p, c) => p+= c);
+
+    let widthUnit = (width / colSpans - (2 * this.borderwidth));
+    let heightUnit = (height / rowSpans - (2 * this.borderwidth));
+    return [widthUnit, heightUnit];
+  }
+
   public AdjustTableSize = (time: number, width: number, height: number) => {
     this.tableWidth = width;
     this.tableHeight = height;
@@ -180,12 +190,19 @@ export class Grid {
       height: height,
       transition: 'easeOutQuad',
     });
-    for (const row of this.elements) {
-      for (const element of row) {
+
+    const [widthUnit, heightUnit] = this.GetTableUnits(width, height);
+
+    for (let index = 0; index < this.elements.length; index++) {
+      const row = this.elements[index];
+      for (let j = 0; j < row.length; j++) {
+        const element = row[j];
+        const finalWidth = widthUnit * this.cols[j].span;
+        const finalHeight = heightUnit * this.rows[index].span;
         Tweener.addTween(element.actor, {
           time: time,
-          width: (width / this.cols.length - 2 * this.borderwidth),
-          height: (height / this.rows.length - 2 * this.borderwidth),
+          width: finalWidth,
+          height: finalHeight,
           transition: 'easeOutQuad',
         });
       }
@@ -317,12 +334,7 @@ export class Grid {
    */
   private RebuildGridElements = () => {
     this.elements = [];
-
-    const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p+= c);
-    const colSpans = this.cols.map(r => r.span).reduce((p, c) => p+= c);
-
-    let width = (this.tableWidth / colSpans - (2 * this.borderwidth));
-    let height = (this.tableHeight / rowSpans - (2 * this.borderwidth));
+    const [widthUnit, heightUnit] = this.GetTableUnits(this.tableWidth, this.tableHeight);
 
     this.elementsDelegateSignals.forEach(element => {
       this.elementsDelegate?.disconnect(element)
@@ -336,20 +348,20 @@ export class Grid {
       this.OnResize
     ));
     for (let r = 0; r < this.rows.length; r++) {
+      const row = new BoxLayout();
       for (let c = 0; c < this.cols.length; c++) {
         if (c === 0) {
           this.elements[r] = [];
         }
 
-        const finalWidth = width * this.cols[c].span;
-        const finalHeight = height * this.rows[r].span;
+        const finalWidth = widthUnit * this.cols[c].span;
+        const finalHeight = heightUnit * this.rows[r].span;
 
-        // TODO: Fix table drawing
         let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
         this.elements[r][c] = element;
-        this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
-        element.show();
+        row.add(element.actor);
       }
+      this.table.add(row);
     }
   }
 
