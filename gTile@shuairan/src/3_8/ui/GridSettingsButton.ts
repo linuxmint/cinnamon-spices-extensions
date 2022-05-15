@@ -12,9 +12,9 @@ export class GridSettingsButton {
     private settings: Config;
     private app: App;
   
-    constructor(app: App, config: Config, text: string, cols: number, rows: number) {
+    constructor(app: App, text: string, cols: number, rows: number) {
       this.app = app;
-      this.settings = config;
+      this.settings = this.app.config;
       this.cols = cols;
       this.rows = rows;
       this.text = text;

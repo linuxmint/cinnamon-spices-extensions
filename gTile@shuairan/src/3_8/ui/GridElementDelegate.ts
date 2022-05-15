@@ -17,9 +17,9 @@ export class GridElementDelegate {
   private settings: Config;
   private app: App;
 
-  constructor(app: App, settings: Config) {
+  constructor(app: App) {
     this.app = app;
-    this.settings = settings;
+    this.settings = this.app.config;
   }
 
   private _allSelected = () => {

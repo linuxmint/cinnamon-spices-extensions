@@ -49,7 +49,7 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
 const St = imports.gi.St;
 class GridSettingsButton {
-    constructor(app, config, text, cols, rows) {
+    constructor(app, text, cols, rows) {
         this._onButtonPress = () => {
             this.settings.nbCols = this.cols;
             this.settings.nbRows = this.rows;
@@ -57,7 +57,7 @@ class GridSettingsButton {
             return false;
         };
         this.app = app;
-        this.settings = config;
+        this.settings = this.app.config;
         this.cols = cols;
         this.rows = rows;
         this.text = text;
@@ -102,7 +102,7 @@ class Config {
                 let sgby = basestr + i + 'y';
                 let gbx = this.settings.getValue(sgbx);
                 let gby = this.settings.getValue(sgby);
-                this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx + 'x' + gby, gbx, gby));
+                this.gridSettingsButton.push(new GridSettingsButton(this.app, gbx + 'x' + gby, gbx, gby));
             }
         };
         this.updateGridSettings = () => {
@@ -338,12 +338,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 const Tooltips = imports.ui.tooltips;
 const ActionButton_St = imports.gi.St;
 let ActionButton = class ActionButton {
-    constructor(grid, classname, icon) {
+    constructor(classname, icon) {
         this._onButtonPress = () => {
             this.emit('button-press-event');
             return false;
         };
-        this.grid = grid;
         this.actor = new ActionButton_St.Button({
             style_class: "settings-button",
             reactive: true,
@@ -380,13 +379,13 @@ var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || functi
 
 
 let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
-    constructor(app, grid) {
-        super(grid, 'action-main-list', "auto_tile_0-symbolic");
+    constructor(app) {
+        super('action-main-list', "auto_tile_0-symbolic");
         this._onButtonPress = () => {
             if (!this.app.FocusMetaWindow)
                 return false;
             reset_window(this.app.FocusMetaWindow);
-            let monitor = this.grid.monitor;
+            let monitor = this.app.Grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
             let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
             move_resize_window(this.app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
@@ -423,13 +422,13 @@ var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (
 
 
 let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
-    constructor(app, grid) {
-        super(grid, 'action-two-list', "auto_tile_1-symbolic");
+    constructor(app) {
+        super('action-two-list', "auto_tile_1-symbolic");
         this._onButtonPress = () => {
             if (!this.app.FocusMetaWindow)
                 return false;
             reset_window(this.app.FocusMetaWindow);
-            let monitor = this.grid.monitor;
+            let monitor = this.app.Grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
             let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
             let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
@@ -539,7 +538,7 @@ var GridElementDelegate_decorate = (undefined && undefined.__decorate) || functi
 
 const Tweener = imports.ui.tweener;
 let GridElementDelegate = class GridElementDelegate {
-    constructor(app, settings) {
+    constructor(app) {
         this.activated = false;
         this.first = null;
         this.last = null;
@@ -652,7 +651,7 @@ let GridElementDelegate = class GridElementDelegate {
             this._hideArea();
         };
         this.app = app;
-        this.settings = settings;
+        this.settings = this.app.config;
     }
     _onButtonPress(gridElement) {
         if (!this.activated) {
@@ -845,7 +844,7 @@ let Grid = class Grid {
                     rowNum += 2;
                 }
                 let button = this.app.config.gridSettingsButton[index];
-                button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
+                button = new GridSettingsButton(this.app, button.text, button.cols, button.rows);
                 this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
                 button.actor.connect('notify::hover', () => this.elementsDelegate.reset());
                 colNum++;
@@ -869,7 +868,7 @@ let Grid = class Grid {
                 (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a.disconnect(element);
             });
             (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a._destroy();
-            this.elementsDelegate = new GridElementDelegate(this.app, this.app.config);
+            this.elementsDelegate = new GridElementDelegate(this.app);
             this.elementsDelegateSignals = [];
             this.elementsDelegateSignals.push(this.elementsDelegate.connect('resize-done', this.OnResize));
             for (let r = 0; r < this.rows; r++) {
@@ -1089,10 +1088,10 @@ let Grid = class Grid {
         toggle = new ToggleSettingsButton(this.app.config, 'auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
-        let action = new AutoTileMainAndList(this.app, this);
+        let action = new AutoTileMainAndList(this.app);
         this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
         action.connect('resize-done', this.OnResize);
-        let actionTwo = new AutoTileTwoList(this.app, this);
+        let actionTwo = new AutoTileTwoList(this.app);
         this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
         actionTwo.connect('resize-done', this.OnResize);
         this.x = 0;

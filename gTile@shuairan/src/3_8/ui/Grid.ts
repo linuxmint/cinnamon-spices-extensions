@@ -1,7 +1,6 @@
 import { Config } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
-import { ActionButton } from "./ActionButton";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";
 import { GridElement } from "./GridElement";
@@ -132,14 +131,14 @@ export class Grid {
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
-    let action = new AutoTileMainAndList(this.app, this);
+    let action = new AutoTileMainAndList(this.app);
     this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
 
     action.connect('resize-done',
       this.OnResize
     );
 
-    let actionTwo = new AutoTileTwoList(this.app, this);
+    let actionTwo = new AutoTileTwoList(this.app);
     this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
     actionTwo.connect('resize-done',
@@ -219,7 +218,7 @@ export class Grid {
       }
 
       let button = this.app.config.gridSettingsButton[index];
-      button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
+      button = new GridSettingsButton(this.app, button.text, button.cols, button.rows);
       this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
       button.actor.connect(
         'notify::hover',
@@ -327,7 +326,7 @@ export class Grid {
     });
 
     this.elementsDelegate?._destroy();
-    this.elementsDelegate = new GridElementDelegate(this.app, this.app.config);
+    this.elementsDelegate = new GridElementDelegate(this.app);
     this.elementsDelegateSignals = [];
     this.elementsDelegateSignals.push(this.elementsDelegate.connect(
       'resize-done',

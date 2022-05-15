@@ -72,7 +72,7 @@ export class Config {
             let sgby = basestr + i + 'y';
             let gbx = this.settings.getValue(sgbx);
             let gby = this.settings.getValue(sgby);
-            this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx + 'x' + gby, gbx, gby));
+            this.gridSettingsButton.push(new GridSettingsButton(this.app, gbx + 'x' + gby, gbx, gby));
         }
     }
     

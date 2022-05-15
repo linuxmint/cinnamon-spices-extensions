@@ -1,15 +1,14 @@
 import { App } from "../extension";
 import { addSignals, getUsableScreenArea, move_resize_window, reset_window, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
-import { Grid } from "./Grid";
 
 @addSignals
 export class AutoTileMainAndList extends ActionButton<"resize-done"> {
   classname: string;
   private app: App;
 
-  constructor(app: App, grid: Grid) {
-    super(grid, 'action-main-list', "auto_tile_0-symbolic");
+  constructor(app: App) {
+    super('action-main-list', "auto_tile_0-symbolic");
     this.app = app;
     this.classname = 'action-main-list';
     this.connect(
@@ -23,7 +22,7 @@ export class AutoTileMainAndList extends ActionButton<"resize-done"> {
 
     reset_window(this.app.FocusMetaWindow);
 
-    let monitor = this.grid.monitor;
+    let monitor = this.app.Grid.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
     let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
 

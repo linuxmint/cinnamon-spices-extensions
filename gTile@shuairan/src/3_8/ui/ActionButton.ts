@@ -9,13 +9,11 @@ export interface ActionButton<T extends string = ""> extends SignalOverload<T | 
 
 @addSignals
 export class ActionButton<T extends string = ""> {
-    grid: Grid;
     actor: imports.gi.St.Button;
 
     private _tooltip?: imports.ui.tooltips.Tooltip;
 
-    constructor(grid: Grid, classname: TooltipKeys, icon: CustomIcons) {
-        this.grid = grid;
+    constructor(classname: TooltipKeys, icon: CustomIcons) {
         this.actor = new St.Button({
             style_class: "settings-button",
             reactive: true,
