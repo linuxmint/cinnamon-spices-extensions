@@ -10,14 +10,14 @@ export type SettingKeys =
     "lastGridCols" |
     "animation" |
     "autoclose" |
-    "gridbutton1x" |
-    "gridbutton1y" |
-    "gridbutton2x" |
-    "gridbutton2y" |
-    "gridbutton3x" |
-    "gridbutton3y" |
-    "gridbutton4x" |
-    "gridbutton4y";
+    "grid1x" |
+    "grid1y" |
+    "grid2x" |
+    "grid2y" |
+    "grid3x" |
+    "grid3y" |
+    "grid4x" |
+    "grid4y";
 
 export const TOOLTIPS: Record<TooltipKeys, string> = {
   [SETTINGS_AUTO_CLOSE]: _("Auto close"),

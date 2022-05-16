@@ -10,7 +10,7 @@ import { ToggleSettingsButton } from "./ToggleSettingsButton";
 import { TopBar } from "./TopBar";
 import { App } from "../extension";
 
-const { BoxLayout, Table } = imports.gi.St;
+const { BoxLayout, Table, Bin } = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
@@ -176,9 +176,10 @@ export class Grid {
     const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p+= c);
     const colSpans = this.cols.map(r => r.span).reduce((p, c) => p+= c);
 
-    let widthUnit = (width / colSpans - (2 * this.borderwidth));
-    let heightUnit = (height / rowSpans - (2 * this.borderwidth));
-    return [widthUnit, heightUnit];
+    const widthUnit = width / colSpans - (2 * this.borderwidth);
+    const heightUnit = height / rowSpans - (2 * this.borderwidth);
+
+    return [Math.round(widthUnit), Math.round(heightUnit)];
   }
 
   public AdjustTableSize = (time: number, width: number, height: number) => {
@@ -235,7 +236,7 @@ export class Grid {
       }
 
       let button = this.app.config.gridSettingsButton[index];
-      button = new GridSettingsButton(this.app, button.text, button.cols, button.rows);
+      button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
       this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
       button.actor.connect(
         'notify::hover',
@@ -359,9 +360,12 @@ export class Grid {
 
         let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
         this.elements[r][c] = element;
-        row.add(element.actor);
+        // bin for better positioning for artificial margin
+        const bin = new Bin();
+        bin.add_actor(element.actor);
+        row.add(bin, {expand: true});
       }
-      this.table.add(row);
+      this.table.add(row, {expand: true});
     }
   }
 

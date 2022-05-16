@@ -21,14 +21,14 @@ export class Config {
     public readonly animation!: boolean;
     public readonly autoclose!: boolean;
     // TODO: MAke sure these are actual lists!
-    public readonly gridbutton1x!: Row[];
-    public readonly gridbutton1y!: Column[];
-    public readonly gridbutton2x!: Row[];
-    public readonly gridbutton2y!: Column[];
-    public readonly gridbutton3x!: Row[];
-    public readonly gridbutton3y!: Column[];
-    public readonly gridbutton4x!: Row[];
-    public readonly gridbutton4y!: Column[];
+    public readonly grid1x!: Row[];
+    public readonly grid1y!: Column[];
+    public readonly grid2x!: Row[];
+    public readonly grid2y!: Column[];
+    public readonly grid3x!: Row[];
+    public readonly grid3y!: Column[];
+    public readonly grid4x!: Row[];
+    public readonly grid4y!: Column[];
     public nbRows!: Row[];
     public nbCols!: Column[];
 
@@ -51,7 +51,7 @@ export class Config {
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
 
-        let basestr = 'gridbutton';
+        let basestr = 'grid';
 
         this.initGridSettings();
 
@@ -84,14 +84,14 @@ export class Config {
     }
     
     private initGridSettings = () => {
-        let basestr = 'gridbutton';
+        let basestr = 'grid';
         for (let i = 1; i <= 4; i++) {
             let sgbx = basestr + i + 'x';
             let sgby = basestr + i + 'y';
             // TODO: same here
             let gbx = this.settings.getValue<Row[]>(sgbx);
             let gby = this.settings.getValue<Column[]>(sgby);
-            this.gridSettingsButton.push(new GridSettingsButton(this.app, gbx + 'x' + gby, gbx, gby));
+            this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx.length + 'x' + gby.length, gbx, gby));
         }
     }
     

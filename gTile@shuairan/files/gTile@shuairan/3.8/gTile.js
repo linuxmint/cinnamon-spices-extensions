@@ -49,14 +49,14 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
 const St = imports.gi.St;
 class GridSettingsButton {
-    constructor(app, text, cols, rows) {
+    constructor(app, settings, text, cols, rows) {
         this._onButtonPress = () => {
             this.settings.SetGridConfig(this.cols, this.rows);
             this.app.RefreshGrid();
             return false;
         };
         this.app = app;
-        this.settings = this.app.config;
+        this.settings = settings;
         this.cols = cols;
         this.rows = rows;
         this.text = text;
@@ -95,13 +95,13 @@ class Config {
             this.app.Grid.UpdateSettingsButtons();
         };
         this.initGridSettings = () => {
-            let basestr = 'gridbutton';
+            let basestr = 'grid';
             for (let i = 1; i <= 4; i++) {
                 let sgbx = basestr + i + 'x';
                 let sgby = basestr + i + 'y';
                 let gbx = this.settings.getValue(sgbx);
                 let gby = this.settings.getValue(sgby);
-                this.gridSettingsButton.push(new GridSettingsButton(this.app, gbx + 'x' + gby, gbx, gby));
+                this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx.length + 'x' + gby.length, gbx, gby));
             }
         };
         this.updateGridSettings = () => {
@@ -123,7 +123,7 @@ class Config {
             this.nbRows = this.InitialGridItems();
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
-        let basestr = 'gridbutton';
+        let basestr = 'grid';
         this.initGridSettings();
         for (let i = 1; i <= 4; i++) {
             let sgbx = basestr + i + 'x';
@@ -826,7 +826,7 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
 
 
 
-const { BoxLayout, Table } = imports.gi.St;
+const { BoxLayout, Table, Bin } = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
@@ -877,7 +877,7 @@ let Grid = class Grid {
                     rowNum += 2;
                 }
                 let button = this.app.config.gridSettingsButton[index];
-                button = new GridSettingsButton(this.app, button.text, button.cols, button.rows);
+                button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
                 this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
                 button.actor.connect('notify::hover', () => this.elementsDelegate.reset());
                 colNum++;
@@ -913,9 +913,11 @@ let Grid = class Grid {
                     const finalHeight = heightUnit * this.rows[r].span;
                     let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
                     this.elements[r][c] = element;
-                    row.add(element.actor);
+                    const bin = new Bin();
+                    bin.add_actor(element.actor);
+                    row.add(bin, { expand: true });
                 }
-                this.table.add(row);
+                this.table.add(row, { expand: true });
             }
         };
         this.BindKeyControls = () => {
@@ -1147,9 +1149,9 @@ let Grid = class Grid {
     GetTableUnits(width, height) {
         const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p += c);
         const colSpans = this.cols.map(r => r.span).reduce((p, c) => p += c);
-        let widthUnit = (width / colSpans - (2 * this.borderwidth));
-        let heightUnit = (height / rowSpans - (2 * this.borderwidth));
-        return [widthUnit, heightUnit];
+        const widthUnit = width / colSpans - (2 * this.borderwidth);
+        const heightUnit = height / rowSpans - (2 * this.borderwidth);
+        return [Math.round(widthUnit), Math.round(heightUnit)];
     }
     UpdateSettingsButtons() {
         for (const button of this.toggleSettingButtons) {
