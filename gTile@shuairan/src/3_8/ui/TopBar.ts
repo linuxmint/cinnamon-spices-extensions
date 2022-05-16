@@ -17,7 +17,7 @@ export class TopBar {
       this.actor = new St.BoxLayout({ style_class: 'top-box' });
       this._title = title;
       this._stlabel = new St.Label({ style_class: 'grid-title', text: this._title });
-      this._iconBin = new St.Bin({ x_fill: false, y_fill: true });
+      this._iconBin = new St.Bin({ x_fill: false, y_fill: false });
       this._closeButton = new St.Button({
         style:"padding:0;",
         opacity: 128,

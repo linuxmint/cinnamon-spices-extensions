@@ -781,7 +781,7 @@ class TopBar {
         this.actor = new TopBar_St.BoxLayout({ style_class: 'top-box' });
         this._title = title;
         this._stlabel = new TopBar_St.Label({ style_class: 'grid-title', text: this._title });
-        this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: true });
+        this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: false });
         this._closeButton = new TopBar_St.Button({
             style: "padding:0;",
             opacity: 128,
