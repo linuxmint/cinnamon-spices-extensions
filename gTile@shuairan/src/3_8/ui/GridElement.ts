@@ -39,7 +39,7 @@ export class GridElement {
 
         this.actor.connect(
             'button-press-event',
-            this._onButtonPress
+            () => this._onButtonPress(false)
         );
         this.actor.connect(
             'notify::hover',
@@ -49,8 +49,8 @@ export class GridElement {
         this.active = false;
     }
 
-    public _onButtonPress = () => {
-        this.delegate._onButtonPress(this);
+    public _onButtonPress = (final: boolean) => {
+        this.delegate._onButtonPress(this, final);
         return false;
     }
 

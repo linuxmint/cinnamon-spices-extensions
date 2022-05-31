@@ -26,7 +26,18 @@ export class GridElementDelegate {
     return this.activatedActors?.length === (this.settings.nbCols.length * this.settings.nbRows.length);
   }
 
-  public _onButtonPress(gridElement: GridElement) {
+  public _onButtonPress(gridElement: GridElement, final: boolean) {
+    if (final)
+    {
+      this.activated = true;
+      if (this.first == null) {
+        this.first = gridElement;
+        this.activatedActors = [];
+        this.activatedActors.push(gridElement);
+        gridElement.actor.add_style_pseudo_class('activate');
+        gridElement.active = true;
+      }
+    }
     if (!this.activated) {
       this.activated = true;
       this.activatedActors = [];

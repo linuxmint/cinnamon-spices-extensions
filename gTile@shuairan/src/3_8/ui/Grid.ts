@@ -469,7 +469,7 @@ export class Grid {
 
     if (modifier && this.keyElement) {
       if (!this.elementsDelegate.activated) {
-        this.keyElement._onButtonPress();
+        this.keyElement._onButtonPress(false);
       }
     } else if (this.keyElement) {
       this.elementsDelegate.reset();
@@ -550,7 +550,7 @@ export class Grid {
    */
   private BeginTiling = () => {
     if (this.keyElement) {
-      this.keyElement._onButtonPress();
+      this.keyElement._onButtonPress(true);
       this.Reset();
     }
   }

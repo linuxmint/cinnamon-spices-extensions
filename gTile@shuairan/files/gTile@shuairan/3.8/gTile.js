@@ -481,8 +481,8 @@ const GridElement_Main = imports.ui.main;
 const GridElement_St = imports.gi.St;
 class GridElement {
     constructor(app, monitor, width, height, coordx, coordy, delegate) {
-        this._onButtonPress = () => {
-            this.delegate._onButtonPress(this);
+        this._onButtonPress = (final) => {
+            this.delegate._onButtonPress(this, final);
             return false;
         };
         this._onHoverChanged = () => {
@@ -531,7 +531,7 @@ class GridElement {
         this.width = width;
         this.height = height;
         this.delegate = delegate;
-        this.actor.connect('button-press-event', this._onButtonPress);
+        this.actor.connect('button-press-event', () => this._onButtonPress(false));
         this.actor.connect('notify::hover', this._onHoverChanged);
         this.active = false;
     }
@@ -680,7 +680,17 @@ let GridElementDelegate = class GridElementDelegate {
         this.app = app;
         this.settings = this.app.config;
     }
-    _onButtonPress(gridElement) {
+    _onButtonPress(gridElement, final) {
+        if (final) {
+            this.activated = true;
+            if (this.first == null) {
+                this.first = gridElement;
+                this.activatedActors = [];
+                this.activatedActors.push(gridElement);
+                gridElement.actor.add_style_pseudo_class('activate');
+                gridElement.active = true;
+            }
+        }
         if (!this.activated) {
             this.activated = true;
             this.activatedActors = [];
@@ -987,7 +997,7 @@ let Grid = class Grid {
             }
             if (modifier && this.keyElement) {
                 if (!this.elementsDelegate.activated) {
-                    this.keyElement._onButtonPress();
+                    this.keyElement._onButtonPress(false);
                 }
             }
             else if (this.keyElement) {
@@ -1047,7 +1057,7 @@ let Grid = class Grid {
         };
         this.BeginTiling = () => {
             if (this.keyElement) {
-                this.keyElement._onButtonPress();
+                this.keyElement._onButtonPress(true);
                 this.Reset();
             }
         };
