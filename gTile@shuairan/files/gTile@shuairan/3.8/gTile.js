@@ -179,12 +179,10 @@ const reset_window = (metaWindow) => {
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.tile(Meta.TileMode.NONE, false);
 };
 const _getInvisibleBorderPadding = (metaWindow) => {
-    let outerRect = metaWindow.get_outer_rect();
-    let inputRect = metaWindow.get_input_rect();
-    let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
+    let outerRect = metaWindow.get_frame_rect();
+    let [borderX, borderY] = [outerRect.x, outerRect.y];
     return [borderX, borderY];
 };
 const move_maximize_window = (metaWindow, x, y) => {
@@ -199,22 +197,7 @@ const move_maximize_window = (metaWindow, x, y) => {
 const move_resize_window = (metaWindow, x, y, width, height) => {
     if (!metaWindow)
         return;
-    let clientRect = metaWindow.get_rect();
-    let outerRect = metaWindow.get_outer_rect();
-    let client_deco = clientRect.width > outerRect.width &&
-        clientRect.height > outerRect.height;
-    if (client_deco) {
-        x -= outerRect.x - clientRect.x;
-        y -= outerRect.y - clientRect.y;
-        width += (clientRect.width - outerRect.width);
-        height += (clientRect.height - outerRect.height);
-    }
-    else {
-        width -= (outerRect.width - clientRect.width);
-        height -= (outerRect.height - clientRect.height);
-    }
-    metaWindow.resize(true, width, height);
-    metaWindow.move_frame(true, x, y);
+    metaWindow.move_resize_frame(true, x, y, width, height);
 };
 const getPanelHeight = (panel) => {
     return panel.height
@@ -1180,7 +1163,6 @@ let Grid = class Grid {
         this.interceptHide = true;
         this.elementsDelegate.reset();
         let time = this.app.config.animation ? 0.3 : 0;
-        this.actor.raise_top();
         Grid_Main.layoutManager.removeChrome(this.actor);
         Grid_Main.layoutManager.addChrome(this.actor);
         this.actor.scale_y = 0;
@@ -1299,8 +1281,8 @@ class App {
                 let grid = this.grid;
                 let window = getFocusApp();
                 grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : extension_Main.layoutManager.primaryMonitor);
-                let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                let pos_x = window.get_frame_rect().width / 2 + window.get_frame_rect().x;
+                let pos_y = window.get_frame_rect().height / 2 + window.get_frame_rect().y;
                 grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
                 this.OnFocusedWindowChanged();
                 this.visible = true;
@@ -1344,8 +1326,8 @@ class App {
             let monitor = grid.monitor;
             let isGridMonitor = window.get_monitor() === grid.monitor.index;
             if (isGridMonitor) {
-                pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                pos_x = window.get_frame_rect().width / 2 + window.get_frame_rect().x;
+                pos_y = window.get_frame_rect().height / 2 + window.get_frame_rect().y;
             }
             else {
                 pos_x = monitor.x + monitor.width / 2;
@@ -1384,8 +1366,8 @@ class App {
             this.grid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
             let actor = this.focusMetaWindow.get_compositor_private();
             if (actor) {
-                this.focusMetaWindowPrivateConnections.push(actor.connect('size-changed', this.MoveUIActor));
-                this.focusMetaWindowPrivateConnections.push(actor.connect('position-changed', this.MoveUIActor));
+                this.focusMetaWindowPrivateConnections.push(this.focusMetaWindow.connect('size-changed', this.MoveUIActor));
+                this.focusMetaWindowPrivateConnections.push(this.focusMetaWindow.connect('position-changed', this.MoveUIActor));
             }
             let app = this.tracker.get_window_app(this.focusMetaWindow);
             let title = this.focusMetaWindow.get_title();

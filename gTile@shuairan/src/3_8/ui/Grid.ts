@@ -285,7 +285,6 @@ export class Grid {
     this.elementsDelegate.reset();
     let time = this.app.config.animation ? 0.3 : 0;
 
-    this.actor.raise_top();
     Main.layoutManager.removeChrome(this.actor);
     Main.layoutManager.addChrome(this.actor);
     this.actor.scale_y = 0;
