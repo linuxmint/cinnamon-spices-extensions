@@ -109,8 +109,8 @@ export class App {
       let window = getFocusApp();
       grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
-      let pos_x = window.get_frame_rect().width / 2 + window.get_frame_rect().x;
-      let pos_y = window.get_frame_rect().height / 2 + window.get_frame_rect().y;
+      let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+      let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
 
       grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
@@ -193,8 +193,8 @@ export class App {
     let monitor = grid.monitor;
     let isGridMonitor = window.get_monitor() === grid.monitor.index;
     if (isGridMonitor) {
-      pos_x = window.get_frame_rect().width / 2 + window.get_frame_rect().x;
-      pos_y = window.get_frame_rect().height / 2 + window.get_frame_rect().y;
+      pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+      pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
     } else {
       pos_x = monitor.x + monitor.width / 2;
       pos_y = monitor.y + monitor.height / 2;
@@ -245,13 +245,13 @@ export class App {
     let actor = this.focusMetaWindow.get_compositor_private();
     if (actor) {
       this.focusMetaWindowPrivateConnections.push(
-        this.focusMetaWindow.connect(
+        actor.connect(
           'size-changed',
           this.MoveUIActor
         )
       );
       this.focusMetaWindowPrivateConnections.push(
-        this.focusMetaWindow.connect(
+        actor.connect(
           'position-changed',
           this.MoveUIActor
         )
