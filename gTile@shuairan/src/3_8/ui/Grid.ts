@@ -1,8 +1,6 @@
-import { gridSettingsButton, preferences } from "../config";
+import { Column, Config, Row } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
-import { app } from "../extension";
 import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
-import { ActionButton } from "./ActionButton";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
 import { AutoTileTwoList } from "./AutoTileTwoList";
 import { GridElement } from "./GridElement";
@@ -10,11 +8,13 @@ import { GridElementDelegate } from "./GridElementDelegate";
 import { GridSettingsButton } from "./GridSettingsButton";
 import { ToggleSettingsButton } from "./ToggleSettingsButton";
 import { TopBar } from "./TopBar";
+import { App } from "../extension";
 
-const { BoxLayout, Table } = imports.gi.St;
+const { BoxLayout, Table, Bin } = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
+const { Color } = imports.gi.Clutter;
 
 export interface Grid extends SignalOverload<"hide-tiling"> {
 
@@ -32,12 +32,12 @@ export class Grid {
   topbar: TopBar;
   bottombar: imports.gi.St.Table;
   veryBottomBar: imports.gi.St.Table;
-  table: imports.gi.St.Table;
+  table: imports.gi.St.BoxLayout;
 
   monitor: imports.ui.layout.Monitor;
-  rows: number;
+  rows: Row[];
   title: string;
-  cols: number;
+  cols: Column[];
 
   isEntered = false;
 
@@ -54,7 +54,10 @@ export class Grid {
   keyElement?: GridElement | null;
   toggleSettingButtons: ToggleSettingsButton[] = [];
 
-  constructor(monitor: imports.ui.layout.Monitor, title: string, cols: number, rows: number) {
+  app: App;
+
+  constructor(app: App, monitor: imports.ui.layout.Monitor, title: string, cols: Column[], rows: Row[]) {
+    this.app = app;
     this.tableHeight = 200;
     this.tableWidth = 220;
     this.borderwidth = 2;
@@ -77,7 +80,7 @@ export class Grid {
       this.OnMouseLeave
     );
 
-    this.topbar = new TopBar(title);
+    this.topbar = new TopBar(this.app, title);
 
     this.bottombar = new Table({
       homogeneous: true,
@@ -97,12 +100,12 @@ export class Grid {
 
     this.RebuildGridSettingsButtons();
 
-    this.table = new Table({
-      homogeneous: true,
+    this.table = new BoxLayout({
       style_class: 'table',
       can_focus: true,
       track_hover: true,
       reactive: true,
+      vertical: true,
       width: this.tableWidth,
       height: this.tableHeight
     });
@@ -121,22 +124,22 @@ export class Grid {
 
     // Build Bottom Bar Buttons
 
-    let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
+    let toggle = new ToggleSettingsButton(this.app.config, 'animation', SETTINGS_ANIMATION, "animation_black-symbolic");
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
-    toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
+    toggle = new ToggleSettingsButton(this.app.config, 'auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
     this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
     this.toggleSettingButtons.push(toggle);
 
-    let action = new AutoTileMainAndList(this);
+    let action = new AutoTileMainAndList(this.app);
     this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
 
     action.connect('resize-done',
       this.OnResize
     );
 
-    let actionTwo = new AutoTileTwoList(this);
+    let actionTwo = new AutoTileTwoList(this.app);
     this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
     actionTwo.connect('resize-done',
@@ -169,6 +172,16 @@ export class Grid {
     }
   }
 
+  private GetTableUnits(width: number, height: number): [widthUnit: number, heightUnit: number] {
+    const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p+= c);
+    const colSpans = this.cols.map(r => r.span).reduce((p, c) => p+= c);
+
+    const widthUnit = width / colSpans - (2 * this.borderwidth);
+    const heightUnit = height / rowSpans - (2 * this.borderwidth);
+
+    return [Math.round(widthUnit), Math.round(heightUnit)];
+  }
+
   public AdjustTableSize = (time: number, width: number, height: number) => {
     this.tableWidth = width;
     this.tableHeight = height;
@@ -178,12 +191,19 @@ export class Grid {
       height: height,
       transition: 'easeOutQuad',
     });
-    for (const row of this.elements) {
-      for (const element of row) {
+
+    const [widthUnit, heightUnit] = this.GetTableUnits(width, height);
+
+    for (let index = 0; index < this.elements.length; index++) {
+      const row = this.elements[index];
+      for (let j = 0; j < row.length; j++) {
+        const element = row[j];
+        const finalWidth = widthUnit * this.cols[j].span;
+        const finalHeight = heightUnit * this.rows[index].span;
         Tweener.addTween(element.actor, {
           time: time,
-          width: (width / this.cols - 2 * this.borderwidth),
-          height: (height / this.rows - 2 * this.borderwidth),
+          width: finalWidth,
+          height: finalHeight,
           transition: 'easeOutQuad',
         });
       }
@@ -209,14 +229,14 @@ export class Grid {
     let rowNum = 0;
     let colNum = 0;
 
-    for (let index = 0; index < gridSettingsButton.length; index++) {
+    for (let index = 0; index < this.app.config.gridSettingsButton.length; index++) {
       if (colNum >= 4) {
         colNum = 0;
         rowNum += 2;
       }
 
-      let button = gridSettingsButton[index];
-      button = new GridSettingsButton(button.text, button.cols, button.rows);
+      let button = this.app.config.gridSettingsButton[index];
+      button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
       this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
       button.actor.connect(
         'notify::hover',
@@ -238,10 +258,10 @@ export class Grid {
    */
   public RefreshGridElements = () => {
     this.table.destroy_all_children();
-    this.cols = preferences.nbCols;
-    this.rows = preferences.nbRows;
+    this.cols = this.app.config.nbCols;
+    this.rows = this.app.config.nbRows;
     // New grid is smaller than currently selected element, Reset selection
-    if (this.cols <= this.colKey || this.rows <= this.colKey)
+    if (this.cols.length <= this.colKey || this.rows.length <= this.colKey)
       this.Reset();
 
     this.RebuildGridElements();
@@ -263,7 +283,7 @@ export class Grid {
 
     this.interceptHide = true;
     this.elementsDelegate.reset();
-    let time = preferences.animation ? 0.3 : 0;
+    let time = this.app.config.animation ? 0.3 : 0;
 
     this.actor.raise_top();
     Main.layoutManager.removeChrome(this.actor);
@@ -293,7 +313,7 @@ export class Grid {
   public Hide(immediate: boolean) {
     this.RemoveKeyControls();
     this.Reset();
-    let time = preferences.animation && !immediate ? 0.3 : 0;
+    let time = this.app.config.animation && !immediate ? 0.3 : 0;
     if (time > 0) {
       Tweener.addTween(this.actor, {
         time: time,
@@ -315,37 +335,42 @@ export class Grid {
    */
   private RebuildGridElements = () => {
     this.elements = [];
-
-    let width = this.tableWidth / this.cols - 2 * this.borderwidth;
-    let height = this.tableHeight / this.rows - 2 * this.borderwidth;
+    const [widthUnit, heightUnit] = this.GetTableUnits(this.tableWidth, this.tableHeight);
 
     this.elementsDelegateSignals.forEach(element => {
       this.elementsDelegate?.disconnect(element)
     });
 
     this.elementsDelegate?._destroy();
-    this.elementsDelegate = new GridElementDelegate();
+    this.elementsDelegate = new GridElementDelegate(this.app);
     this.elementsDelegateSignals = [];
     this.elementsDelegateSignals.push(this.elementsDelegate.connect(
       'resize-done',
       this.OnResize
     ));
-    for (let r = 0; r < this.rows; r++) {
-      for (let c = 0; c < this.cols; c++) {
+    for (let r = 0; r < this.rows.length; r++) {
+      const row = new BoxLayout();
+      for (let c = 0; c < this.cols.length; c++) {
         if (c === 0) {
           this.elements[r] = [];
         }
 
-        let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
+        const finalWidth = widthUnit * this.cols[c].span;
+        const finalHeight = heightUnit * this.rows[r].span;
+
+        let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
         this.elements[r][c] = element;
-        this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
-        element.show();
+        // bin for better positioning for artificial margin
+        const bin = new Bin();
+        bin.add_actor(element.actor);
+        row.add(bin, {expand: true});
       }
+      this.table.add(row, {expand: true});
     }
   }
 
   private BindKeyControls = () => {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.ToggleUI);
+    Main.keybindingManager.addHotKey('gTile-close', 'Escape', this.app.ToggleUI);
     Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
     Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
     for (let index in KEYCONTROL) {
@@ -390,8 +415,8 @@ export class Grid {
   }
 
   private OnResize = () => {
-    app.RefreshGrid();
-    if (preferences.autoclose) {
+    this.app.RefreshGrid();
+    if (this.app.config.autoclose) {
       this.emit('hide-tiling');
     }
   }
@@ -444,7 +469,7 @@ export class Grid {
 
     if (modifier && this.keyElement) {
       if (!this.elementsDelegate.activated) {
-        this.keyElement._onButtonPress();
+        this.keyElement._onButtonPress(false);
       }
     } else if (this.keyElement) {
       this.elementsDelegate.reset();
@@ -453,7 +478,7 @@ export class Grid {
     switch (type) {
       case 'gTile-k-right':
       case 'gTile-k-right-meta':
-        this.colKey = Math.min(this.colKey + 1, this.cols - 1);
+        this.colKey = Math.min(this.colKey + 1, this.cols.length - 1);
         this.rowKey = this.rowKey === -1 ? 0 : this.rowKey; //leave initial state
         break;
       case 'gTile-k-left':
@@ -472,7 +497,7 @@ export class Grid {
         break;
       case 'gTile-k-down':
       case 'gTile-k-down-meta':
-        this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
+        this.rowKey = Math.min(this.rowKey + 1, this.rows.length - 1);
         this.colKey = this.colKey === -1 ? 0 : this.colKey; //leave initial state
         break;
       case 'gTile-k-left-monitor-move':
@@ -488,16 +513,16 @@ export class Grid {
         this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
         break;
       case 'gTile-k-first-grid':
-        gridSettingsButton?.[0]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[0]?._onButtonPress();
         break;
       case 'gTile-k-second-grid':
-        gridSettingsButton?.[1]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[1]?._onButtonPress();
         break;
       case 'gTile-k-third-grid':
-        gridSettingsButton?.[2]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[2]?._onButtonPress();
         break;
       case 'gTile-k-fourth-grid':
-        gridSettingsButton?.[3]?._onButtonPress();
+        this.app.config.gridSettingsButton?.[3]?._onButtonPress();
         break;
     }
 
@@ -525,7 +550,7 @@ export class Grid {
    */
   private BeginTiling = () => {
     if (this.keyElement) {
-      this.keyElement._onButtonPress();
+      this.keyElement._onButtonPress(true);
       this.Reset();
     }
   }
@@ -542,7 +567,7 @@ export class Grid {
     if (monitor.index == this.monitor.index)
       return;
 
-    app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
+    this.app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
   }
 
   public destroy = () => {

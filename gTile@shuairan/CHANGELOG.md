@@ -1,3 +1,8 @@
+### 2.1.0
+
+* Change Settings and Grid so they can be initialized from inside the app itself.
+* Add support for uneven rows and columns
+
 ### 2.0.0
 
 #### Structural

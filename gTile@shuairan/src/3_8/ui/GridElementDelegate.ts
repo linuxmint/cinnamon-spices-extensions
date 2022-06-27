@@ -1,5 +1,5 @@
-import { preferences } from "../config";
-import { app } from "../extension";
+import { Config } from "../config";
+import { App } from "../extension";
 import { addSignals, getMonitorKey, getUsableScreenArea, move_maximize_window, move_resize_window, reset_window, SignalOverload } from "../utils";
 import { GridElement } from "./GridElement";
 const Tweener = imports.ui.tweener;
@@ -14,13 +14,30 @@ export class GridElementDelegate {
   currentElement: GridElement | null = null;
   activatedActors: GridElement[] | null = null;
 
-  constructor() { }
+  private settings: Config;
+  private app: App;
 
-  private _allSelected = () => {
-    return this.activatedActors?.length === (preferences.nbCols * preferences.nbRows);
+  constructor(app: App) {
+    this.app = app;
+    this.settings = this.app.config;
   }
 
-  public _onButtonPress(gridElement: GridElement) {
+  private _allSelected = () => {
+    return this.activatedActors?.length === (this.settings.nbCols.length * this.settings.nbRows.length);
+  }
+
+  public _onButtonPress(gridElement: GridElement, final: boolean) {
+    if (final)
+    {
+      this.activated = true;
+      if (this.first == null) {
+        this.first = gridElement;
+        this.activatedActors = [];
+        this.activatedActors.push(gridElement);
+        gridElement.actor.add_style_pseudo_class('activate');
+        gridElement.active = true;
+      }
+    }
     if (!this.activated) {
       this.activated = true;
       this.activatedActors = [];
@@ -33,16 +50,16 @@ export class GridElementDelegate {
       //before doing anything with the window it must be unmaximized
       //if so move the window then maximize instead of change size
       //if not move the window and change size
-      reset_window(app.FocusMetaWindow);
+      reset_window(this.app.FocusMetaWindow);
 
       let areaWidth, areaHeight, areaX, areaY;
       // First is never null here?
       [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(<GridElement>this.first, gridElement);
 
       if (this._allSelected()) {
-        move_maximize_window(app.FocusMetaWindow, areaX, areaY);
+        move_maximize_window(this.app.FocusMetaWindow, areaX, areaY);
       } else {
-        move_resize_window(app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+        move_resize_window(this.app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
       }
 
       this._resizeDone();
@@ -91,7 +108,7 @@ export class GridElementDelegate {
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
 
-    let grid = app.Grid;
+    let grid = this.app.Grid;
     for (let r = minY; r <= maxY; r++) {
       for (let c = minX; c <= maxX; c++) {
         let element = grid?.elements[r][c];
@@ -106,16 +123,38 @@ export class GridElementDelegate {
   private _computeAreaPositionSize = (fromGridElement: GridElement, toGridElement: GridElement) => {
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
-    let nbRows = preferences.nbRows;
-    let nbCols = preferences.nbCols;
+    let nbRows = this.settings.nbRows;
+    let nbCols = this.settings.nbCols;
 
     let monitor = fromGridElement.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
 
-    let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
-    let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
-    let areaX = screenX + minX * (screenWidth / nbCols);
-    let areaY = screenY + minY * (screenHeight / nbRows);
+    const widthUnit = screenWidth / nbCols.map(r => r.span).reduce((p, c) => p+=c);
+    const heightUnit = screenHeight / nbRows.map(r => r.span).reduce((p, c) => p+=c);
+
+    let areaWidth = 0;
+    for (let index = minX; index <= maxX; index++) {
+      const element = nbCols[index];
+      areaWidth+= element.span * widthUnit;
+    }
+
+    let areaHeight = 0;
+    for (let index = minY; index <= maxY; index++) {
+      const element = nbRows[index];
+      areaHeight+= element.span * heightUnit;
+    }
+
+    let areaX = screenX;
+    for (let index = 0; index < minX; index++) {
+      const element = nbCols[index];
+      areaX+= element.span * widthUnit;
+    }
+
+    let areaY = screenY;
+    for (let index = 0; index < minY; index++) {
+      const element = nbRows[index];
+      areaY+= element.span * heightUnit;
+    }
 
     return [areaX, areaY, areaWidth, areaHeight];
   }
@@ -124,10 +163,10 @@ export class GridElementDelegate {
     let areaWidth, areaHeight, areaX, areaY;
     [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
 
-    app.area.add_style_pseudo_class('activate');
+    this.app.area.add_style_pseudo_class('activate');
 
-    if (preferences.animation) {
-      Tweener.addTween(app.area, {
+    if (this.settings.animation) {
+      Tweener.addTween(this.app.area, {
         time: 0.2,
         x: areaX,
         y: areaY,
@@ -136,15 +175,15 @@ export class GridElementDelegate {
         transition: 'easeOutQuad'
       });
     } else {
-      app.area.width = areaWidth;
-      app.area.height = areaHeight;
-      app.area.x = areaX;
-      app.area.y = areaY;
+      this.app.area.width = areaWidth;
+      this.app.area.height = areaHeight;
+      this.app.area.x = areaX;
+      this.app.area.y = areaY;
     }
   }
 
   private _hideArea = () => {
-    app.area.remove_style_pseudo_class('activate');
+    this.app.area.remove_style_pseudo_class('activate');
   }
 
   public _onHoverChanged = (gridElement: GridElement) => {

@@ -1,4 +1,4 @@
-import { app } from "../extension";
+import { App } from "../extension";
 import { isFinalized } from "../utils";
 import { GridElementDelegate } from "./GridElementDelegate";
 const Main = imports.ui.main;
@@ -13,19 +13,23 @@ export class GridElement {
     height: number;
     active: boolean;
     delegate: GridElementDelegate;
+    private app: App;
 
-    constructor(monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
+    constructor(app: App, monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
+        this.app = app;
         this.actor = new St.Button({
             style_class: 'table-element',
             width: width,
             height: height,
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            x_expand: false,
+            y_expand: false,
+            y_fill: false,
+            x_fill: false,
         });
 
-        this.actor.visible = false;
-        this.actor.opacity = 0;
         this.monitor = monitor;
         this.coordx = coordx;
         this.coordy = coordy;
@@ -35,7 +39,7 @@ export class GridElement {
 
         this.actor.connect(
             'button-press-event',
-            this._onButtonPress
+            () => this._onButtonPress(false)
         );
         this.actor.connect(
             'notify::hover',
@@ -45,18 +49,8 @@ export class GridElement {
         this.active = false;
     }
 
-    public show = () => {
-        this.actor.opacity = 255;
-        this.actor.visible = true;
-    }
-
-    public hide = () => {
-        this.actor.opacity = 0;
-        this.actor.visible = false;
-    }
-
-    public _onButtonPress = () => {
-        this.delegate._onButtonPress(this);
+    public _onButtonPress = (final: boolean) => {
+        this.delegate._onButtonPress(this, final);
         return false;
     }
 
@@ -78,7 +72,7 @@ export class GridElement {
     }
 
     public _clean = () => {
-        Main.uiGroup.remove_actor(app.area);
+        Main.uiGroup.remove_actor(this.app.area);
     }
 
     public _destroy = () => {

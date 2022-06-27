@@ -1,77 +1,116 @@
-import { app } from "./extension";
+import { App } from "./extension";
 import { GridSettingsButton } from "./ui/GridSettingsButton";
 
-
-export interface Preferences {
-    hotkey: string;
-    lastGridRows: number;
-    lastGridCols: number;
-    animation: boolean;
-    autoclose: boolean;
-    gridbutton1x: number;
-    gridbutton1y: number;
-    gridbutton2x: number;
-    gridbutton2y: number;
-    gridbutton3x: number;
-    gridbutton3y: number;
-    gridbutton4x: number;
-    gridbutton4y: number;
-    nbRows: number;
-    nbCols: number;
-}
-
-export const preferences: Preferences = {} as Preferences;
-
 const Settings = imports.ui.settings;
+const Main = imports.ui.main;
 
-let settings: imports.ui.settings.ExtensionSettings;
-export let gridSettingsButton: GridSettingsButton[] = [];
+export interface Row {
+    span: number;
+}
 
-/*****************************************************************
-                            SETTINGS
-*****************************************************************/
-/*INIT SETTINGS HERE TO ADD OR REMOVE SETTINGS BUTTON*/
-/*new GridSettingsButton(LABEL, NBCOL, NBROW) */
-export const initSettings = () => {
-    settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
-    //hotkey
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.EnableHotkey, null);
-    //grid (nbCols and nbRows)
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
+export interface Column {
+    span: number;
+}
 
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', updateSettings, null);
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', updateSettings, null);
+export class Config {
+    private app: App;
+    public gridSettingsButton: GridSettingsButton[] = [];
+    private settings: imports.ui.settings.ExtensionSettings;
 
-    let basestr = 'gridbutton';
+    public readonly hotkey!: string;
+    public readonly animation!: boolean;
+    public readonly autoclose!: boolean;
+    // TODO: MAke sure these are actual lists!
+    public readonly grid1x!: Row[];
+    public readonly grid1y!: Column[];
+    public readonly grid2x!: Row[];
+    public readonly grid2y!: Column[];
+    public readonly grid3x!: Row[];
+    public readonly grid3y!: Column[];
+    public readonly grid4x!: Row[];
+    public readonly grid4y!: Column[];
+    public nbRows!: Row[];
+    public nbCols!: Column[];
 
-    initGridSettings();
+    constructor(app: App) {
+        this.app = app;
 
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, updateGridSettings, null);
-        settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, updateGridSettings, null);
+        this.settings = new Settings.ExtensionSettings(this, 'gTile@shuairan');
+        //hotkey
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', this.EnableHotkey, null);
+        //grid (nbCols and nbRows)
+        this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
+        this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
+
+        // Validate
+        if (this.nbCols == null || !Array.isArray(this.nbCols))
+            this.nbCols = this.InitialGridItems();
+        if (this.nbRows == null || !Array.isArray(this.nbRows))
+            this.nbRows = this.InitialGridItems();
+
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
+
+        let basestr = 'grid';
+
+        this.initGridSettings();
+
+        for (let i = 1; i <= 4; i++) {
+            let sgbx = basestr + i + 'x';
+            let sgby = basestr + i + 'y';
+            this.settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, this.updateGridSettings, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
+        }
+
+        this.EnableHotkey();
     }
-}
 
-const updateSettings = () => {
-    app.Grid.UpdateSettingsButtons();
-}
-
-const initGridSettings = () => {
-    let basestr = 'gridbutton';
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        let gbx = settings.getValue(sgbx);
-        let gby = settings.getValue(sgby);
-        gridSettingsButton.push(new GridSettingsButton(gbx + 'x' + gby, gbx, gby));
+    public SetGridConfig(columns: Column[], rows: Row[]) {
+        this.nbRows = rows;
+        this.nbCols = columns;
     }
-}
 
-const updateGridSettings = () => {
-    gridSettingsButton = [];
-    initGridSettings();
-    app.Grid.RebuildGridSettingsButtons();
+    private EnableHotkey = () => {
+        this.DisableHotkey();
+        Main.keybindingManager.addHotKey('gTile', this.hotkey, this.app.ToggleUI);
+    }
+    
+    private DisableHotkey = () => {
+        Main.keybindingManager.removeHotKey('gTile');
+    }
+
+    private updateSettings = () => {
+        this.app.Grid.UpdateSettingsButtons();
+    }
+    
+    private initGridSettings = () => {
+        let basestr = 'grid';
+        for (let i = 1; i <= 4; i++) {
+            let sgbx = basestr + i + 'x';
+            let sgby = basestr + i + 'y';
+            // TODO: same here
+            let gbx = this.settings.getValue<Row[]>(sgbx);
+            let gby = this.settings.getValue<Column[]>(sgby);
+            this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx.length + 'x' + gby.length, gbx, gby));
+        }
+    }
+    
+    private updateGridSettings = () => {
+        this.gridSettingsButton = [];
+        this.initGridSettings();
+        this.app.Grid.RebuildGridSettingsButtons();
+    }
+
+    public destroy = () => {
+        this.DisableHotkey();
+    }
+
+    private InitialGridItems(): Row[] | Column[] {
+        return [
+            { span: 1 },
+            { span: 1 },
+            { span: 1 },
+            { span: 1 }
+        ]
+    }
 }

@@ -40,24 +40,23 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "app": () => (/* binding */ app),
+  "App": () => (/* binding */ App),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
   "init": () => (/* binding */ init)
 });
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
-
-
 const St = imports.gi.St;
 class GridSettingsButton {
-    constructor(text, cols, rows) {
+    constructor(app, settings, text, cols, rows) {
         this._onButtonPress = () => {
-            preferences.nbCols = this.cols;
-            preferences.nbRows = this.rows;
-            app.RefreshGrid();
+            this.settings.SetGridConfig(this.cols, this.rows);
+            this.app.RefreshGrid();
             return false;
         };
+        this.app = app;
+        this.settings = settings;
         this.cols = cols;
         this.rows = rows;
         this.text = text;
@@ -80,45 +79,73 @@ class GridSettingsButton {
 
 ;// CONCATENATED MODULE: ./src/3_8/config.ts
 
-
-const preferences = {};
 const Settings = imports.ui.settings;
-let settings;
-let gridSettingsButton = [];
-const initSettings = () => {
-    settings = new Settings.ExtensionSettings(preferences, 'gTile@shuairan');
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', app.EnableHotkey, null);
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
-    settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', updateSettings, null);
-    settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', updateSettings, null);
-    let basestr = 'gridbutton';
-    initGridSettings();
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, updateGridSettings, null);
-        settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, updateGridSettings, null);
+const Main = imports.ui.main;
+class Config {
+    constructor(app) {
+        this.gridSettingsButton = [];
+        this.EnableHotkey = () => {
+            this.DisableHotkey();
+            Main.keybindingManager.addHotKey('gTile', this.hotkey, this.app.ToggleUI);
+        };
+        this.DisableHotkey = () => {
+            Main.keybindingManager.removeHotKey('gTile');
+        };
+        this.updateSettings = () => {
+            this.app.Grid.UpdateSettingsButtons();
+        };
+        this.initGridSettings = () => {
+            let basestr = 'grid';
+            for (let i = 1; i <= 4; i++) {
+                let sgbx = basestr + i + 'x';
+                let sgby = basestr + i + 'y';
+                let gbx = this.settings.getValue(sgbx);
+                let gby = this.settings.getValue(sgby);
+                this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx.length + 'x' + gby.length, gbx, gby));
+            }
+        };
+        this.updateGridSettings = () => {
+            this.gridSettingsButton = [];
+            this.initGridSettings();
+            this.app.Grid.RebuildGridSettingsButtons();
+        };
+        this.destroy = () => {
+            this.DisableHotkey();
+        };
+        this.app = app;
+        this.settings = new Settings.ExtensionSettings(this, 'gTile@shuairan');
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', this.EnableHotkey, null);
+        this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridRows', 'nbCols');
+        this.settings.bindProperty(Settings.BindingDirection.OUT, 'lastGridCols', 'nbRows');
+        if (this.nbCols == null || !Array.isArray(this.nbCols))
+            this.nbCols = this.InitialGridItems();
+        if (this.nbRows == null || !Array.isArray(this.nbRows))
+            this.nbRows = this.InitialGridItems();
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
+        let basestr = 'grid';
+        this.initGridSettings();
+        for (let i = 1; i <= 4; i++) {
+            let sgbx = basestr + i + 'x';
+            let sgby = basestr + i + 'y';
+            this.settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, this.updateGridSettings, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
+        }
+        this.EnableHotkey();
     }
-};
-const updateSettings = () => {
-    app.Grid.UpdateSettingsButtons();
-};
-const initGridSettings = () => {
-    let basestr = 'gridbutton';
-    for (let i = 1; i <= 4; i++) {
-        let sgbx = basestr + i + 'x';
-        let sgby = basestr + i + 'y';
-        let gbx = settings.getValue(sgbx);
-        let gby = settings.getValue(sgby);
-        gridSettingsButton.push(new GridSettingsButton(gbx + 'x' + gby, gbx, gby));
+    SetGridConfig(columns, rows) {
+        this.nbRows = rows;
+        this.nbCols = columns;
     }
-};
-const updateGridSettings = () => {
-    gridSettingsButton = [];
-    initGridSettings();
-    app.Grid.RebuildGridSettingsButtons();
-};
+    InitialGridItems() {
+        return [
+            { span: 1 },
+            { span: 1 },
+            { span: 1 },
+            { span: 1 }
+        ];
+    }
+}
 
 ;// CONCATENATED MODULE: ./src/3_8/utils.ts
 const { Object: utils_Object } = imports.gi.GObject;
@@ -127,7 +154,7 @@ const GLib = imports.gi.GLib;
 const Signals = imports.signals;
 const Meta = imports.gi.Meta;
 const Panel = imports.ui.panel;
-const Main = imports.ui.main;
+const utils_Main = imports.ui.main;
 const UUID = 'gTile@shuairan';
 const isFinalized = function (obj) {
     return obj && utils_Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
@@ -198,7 +225,7 @@ const getUsableScreenArea = (monitor) => {
     let bottom = monitor.y + monitor.height;
     let left = monitor.x;
     let right = monitor.x + monitor.width;
-    for (let panel of Main.panelManager.getPanelsInMonitor(monitor.index)) {
+    for (let panel of utils_Main.panelManager.getPanelsInMonitor(monitor.index)) {
         if (!panel.isHideable()) {
             switch (panel.panelPosition) {
                 case Panel.PanelLoc.top:
@@ -224,7 +251,7 @@ const getMonitorKey = (monitor) => {
     return monitor.x + ':' + monitor.width + ':' + monitor.y + ':' + monitor.height;
 };
 const getAdjacentMonitor = (monitor, side) => {
-    const monitors = Main.layoutManager.monitors;
+    const monitors = utils_Main.layoutManager.monitors;
     const contactsOnSide = [];
     for (const mon of monitors) {
         if (isEqual(mon, monitor))
@@ -264,7 +291,7 @@ const getFocusApp = () => {
     return global.display.focus_window;
 };
 const isPrimaryMonitor = (monitor) => {
-    return Main.layoutManager.primaryMonitor === monitor;
+    return utils_Main.layoutManager.primaryMonitor === monitor;
 };
 function intersection(a, b) {
     let min = (a[0] < b[0] ? a : b);
@@ -326,12 +353,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 const Tooltips = imports.ui.tooltips;
 const ActionButton_St = imports.gi.St;
 let ActionButton = class ActionButton {
-    constructor(grid, classname, icon) {
+    constructor(classname, icon) {
         this._onButtonPress = () => {
             this.emit('button-press-event');
             return false;
         };
-        this.grid = grid;
         this.actor = new ActionButton_St.Button({
             style_class: "settings-button",
             reactive: true,
@@ -367,18 +393,17 @@ var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || functi
 };
 
 
-
 let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
-    constructor(grid) {
-        super(grid, 'action-main-list', "auto_tile_0-symbolic");
+    constructor(app) {
+        super('action-main-list', "auto_tile_0-symbolic");
         this._onButtonPress = () => {
-            if (!app.FocusMetaWindow)
+            if (!this.app.FocusMetaWindow)
                 return false;
-            reset_window(app.FocusMetaWindow);
-            let monitor = this.grid.monitor;
+            reset_window(this.app.FocusMetaWindow);
+            let monitor = this.app.Grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let windows = app.GetNotFocusedWindowsOfMonitor(monitor);
-            move_resize_window(app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+            let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
+            move_resize_window(this.app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
             let winHeight = screenHeight / windows.length;
             let countWin = 0;
             for (let windowIdx in windows) {
@@ -391,6 +416,7 @@ let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
             this.emit('resize-done');
             return false;
         };
+        this.app = app;
         this.classname = 'action-main-list';
         this.connect('button-press-event', this._onButtonPress);
     }
@@ -410,23 +436,22 @@ var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (
 };
 
 
-
 let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
-    constructor(grid) {
-        super(grid, 'action-two-list', "auto_tile_1-symbolic");
+    constructor(app) {
+        super('action-two-list', "auto_tile_1-symbolic");
         this._onButtonPress = () => {
-            if (!app.FocusMetaWindow)
+            if (!this.app.FocusMetaWindow)
                 return false;
-            reset_window(app.FocusMetaWindow);
-            let monitor = this.grid.monitor;
+            reset_window(this.app.FocusMetaWindow);
+            let monitor = this.app.Grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let windows = app.GetNotFocusedWindowsOfMonitor(monitor);
+            let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
             let nbWindowOnEachSide = Math.ceil((windows.length + 1) / 2);
             let winHeight = screenHeight / nbWindowOnEachSide;
             let countWin = 0;
             let xOffset = ((countWin % 2) * screenWidth) / 2;
             let yOffset = Math.floor(countWin / 2) * winHeight;
-            move_resize_window(app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+            move_resize_window(this.app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
             countWin++;
             for (let windowIdx in windows) {
                 let metaWindow = windows[windowIdx];
@@ -439,6 +464,7 @@ let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
             this.emit('resize-done');
             return false;
         };
+        this.app = app;
         this.classname = 'action-two-list';
         this.connect('button-press-event', this._onButtonPress);
     }
@@ -451,21 +477,12 @@ AutoTileTwoList = AutoTileTwoList_decorate([
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/GridElement.ts
 
-
 const GridElement_Main = imports.ui.main;
 const GridElement_St = imports.gi.St;
 class GridElement {
-    constructor(monitor, width, height, coordx, coordy, delegate) {
-        this.show = () => {
-            this.actor.opacity = 255;
-            this.actor.visible = true;
-        };
-        this.hide = () => {
-            this.actor.opacity = 0;
-            this.actor.visible = false;
-        };
-        this._onButtonPress = () => {
-            this.delegate._onButtonPress(this);
+    constructor(app, monitor, width, height, coordx, coordy, delegate) {
+        this._onButtonPress = (final) => {
+            this.delegate._onButtonPress(this, final);
             return false;
         };
         this._onHoverChanged = () => {
@@ -485,7 +502,7 @@ class GridElement {
             this.actor.remove_style_pseudo_class('activate');
         };
         this._clean = () => {
-            GridElement_Main.uiGroup.remove_actor(app.area);
+            GridElement_Main.uiGroup.remove_actor(this.app.area);
         };
         this._destroy = () => {
             this.monitor = null;
@@ -495,23 +512,26 @@ class GridElement {
             this.height = null;
             this.active = null;
         };
+        this.app = app;
         this.actor = new GridElement_St.Button({
             style_class: 'table-element',
             width: width,
             height: height,
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            x_expand: false,
+            y_expand: false,
+            y_fill: false,
+            x_fill: false,
         });
-        this.actor.visible = false;
-        this.actor.opacity = 0;
         this.monitor = monitor;
         this.coordx = coordx;
         this.coordy = coordy;
         this.width = width;
         this.height = height;
         this.delegate = delegate;
-        this.actor.connect('button-press-event', this._onButtonPress);
+        this.actor.connect('button-press-event', () => this._onButtonPress(false));
         this.actor.connect('notify::hover', this._onHoverChanged);
         this.active = false;
     }
@@ -525,11 +545,9 @@ var GridElementDelegate_decorate = (undefined && undefined.__decorate) || functi
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
-
-
 const Tweener = imports.ui.tweener;
 let GridElementDelegate = class GridElementDelegate {
-    constructor() {
+    constructor(app) {
         this.activated = false;
         this.first = null;
         this.last = null;
@@ -537,7 +555,7 @@ let GridElementDelegate = class GridElementDelegate {
         this.activatedActors = null;
         this._allSelected = () => {
             var _a;
-            return ((_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.length) === (preferences.nbCols * preferences.nbRows);
+            return ((_a = this.activatedActors) === null || _a === void 0 ? void 0 : _a.length) === (this.settings.nbCols.length * this.settings.nbRows.length);
         };
         this._resizeDone = () => {
             this.emit('resize-done');
@@ -573,7 +591,7 @@ let GridElementDelegate = class GridElementDelegate {
             this._resetGrid();
             let minX, maxX, minY, maxY;
             [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
-            let grid = app.Grid;
+            let grid = this.app.Grid;
             for (let r = minY; r <= maxY; r++) {
                 for (let c = minX; c <= maxX; c++) {
                     let element = grid === null || grid === void 0 ? void 0 : grid.elements[r][c];
@@ -586,22 +604,40 @@ let GridElementDelegate = class GridElementDelegate {
         this._computeAreaPositionSize = (fromGridElement, toGridElement) => {
             let minX, maxX, minY, maxY;
             [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
-            let nbRows = preferences.nbRows;
-            let nbCols = preferences.nbCols;
+            let nbRows = this.settings.nbRows;
+            let nbCols = this.settings.nbCols;
             let monitor = fromGridElement.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
-            let areaWidth = (screenWidth / nbCols) * (maxX - minX + 1);
-            let areaHeight = (screenHeight / nbRows) * (maxY - minY + 1);
-            let areaX = screenX + minX * (screenWidth / nbCols);
-            let areaY = screenY + minY * (screenHeight / nbRows);
+            const widthUnit = screenWidth / nbCols.map(r => r.span).reduce((p, c) => p += c);
+            const heightUnit = screenHeight / nbRows.map(r => r.span).reduce((p, c) => p += c);
+            let areaWidth = 0;
+            for (let index = minX; index <= maxX; index++) {
+                const element = nbCols[index];
+                areaWidth += element.span * widthUnit;
+            }
+            let areaHeight = 0;
+            for (let index = minY; index <= maxY; index++) {
+                const element = nbRows[index];
+                areaHeight += element.span * heightUnit;
+            }
+            let areaX = screenX;
+            for (let index = 0; index < minX; index++) {
+                const element = nbCols[index];
+                areaX += element.span * widthUnit;
+            }
+            let areaY = screenY;
+            for (let index = 0; index < minY; index++) {
+                const element = nbRows[index];
+                areaY += element.span * heightUnit;
+            }
             return [areaX, areaY, areaWidth, areaHeight];
         };
         this._displayArea = (fromGridElement, toGridElement) => {
             let areaWidth, areaHeight, areaX, areaY;
             [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
-            app.area.add_style_pseudo_class('activate');
-            if (preferences.animation) {
-                Tweener.addTween(app.area, {
+            this.app.area.add_style_pseudo_class('activate');
+            if (this.settings.animation) {
+                Tweener.addTween(this.app.area, {
                     time: 0.2,
                     x: areaX,
                     y: areaY,
@@ -611,14 +647,14 @@ let GridElementDelegate = class GridElementDelegate {
                 });
             }
             else {
-                app.area.width = areaWidth;
-                app.area.height = areaHeight;
-                app.area.x = areaX;
-                app.area.y = areaY;
+                this.app.area.width = areaWidth;
+                this.app.area.height = areaHeight;
+                this.app.area.x = areaX;
+                this.app.area.y = areaY;
             }
         };
         this._hideArea = () => {
-            app.area.remove_style_pseudo_class('activate');
+            this.app.area.remove_style_pseudo_class('activate');
         };
         this._onHoverChanged = (gridElement) => {
             if (this.activated) {
@@ -641,8 +677,20 @@ let GridElementDelegate = class GridElementDelegate {
             this.activatedActors = null;
             this._hideArea();
         };
+        this.app = app;
+        this.settings = this.app.config;
     }
-    _onButtonPress(gridElement) {
+    _onButtonPress(gridElement, final) {
+        if (final) {
+            this.activated = true;
+            if (this.first == null) {
+                this.first = gridElement;
+                this.activatedActors = [];
+                this.activatedActors.push(gridElement);
+                gridElement.actor.add_style_pseudo_class('activate');
+                gridElement.active = true;
+            }
+        }
         if (!this.activated) {
             this.activated = true;
             this.activatedActors = [];
@@ -652,14 +700,14 @@ let GridElementDelegate = class GridElementDelegate {
             gridElement.active = true;
         }
         else {
-            reset_window(app.FocusMetaWindow);
+            reset_window(this.app.FocusMetaWindow);
             let areaWidth, areaHeight, areaX, areaY;
             [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
             if (this._allSelected()) {
-                move_maximize_window(app.FocusMetaWindow, areaX, areaY);
+                move_maximize_window(this.app.FocusMetaWindow, areaX, areaY);
             }
             else {
-                move_resize_window(app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+                move_resize_window(this.app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
             }
             this._resizeDone();
         }
@@ -680,15 +728,14 @@ var ToggleSettingsButton_decorate = (undefined && undefined.__decorate) || funct
 };
 
 
-
 const { Icon, IconType, Button } = imports.gi.St;
 const ToggleSettingsButton_Tooltips = imports.ui.tooltips;
 const { IconTheme } = imports.gi.Gtk;
 let ToggleSettingsButton = class ToggleSettingsButton {
-    constructor(text, property, icon) {
+    constructor(setting, text, property, icon) {
         this.active = false;
         this._update = () => {
-            this.active = preferences[this.property];
+            this.active = this.settings[this.property];
             if (this.active) {
                 this.actor.opacity = 255;
                 this.actor.add_style_pseudo_class('activate');
@@ -698,12 +745,13 @@ let ToggleSettingsButton = class ToggleSettingsButton {
             }
         };
         this._onButtonPress = () => {
-            if (!objHasKey(preferences, this.property))
+            if (!objHasKey(this.settings, this.property))
                 return false;
-            preferences[this.property] = !preferences[this.property];
+            this.settings[this.property] = !this.settings[this.property];
             this.emit('update-toggle');
             return false;
         };
+        this.settings = setting;
         this.text = text;
         this.actor = new Button({
             style_class: "settings-button",
@@ -732,18 +780,18 @@ ToggleSettingsButton = ToggleSettingsButton_decorate([
 ;
 
 ;// CONCATENATED MODULE: ./src/3_8/ui/TopBar.ts
-
 const TopBar_St = imports.gi.St;
 class TopBar {
-    constructor(title) {
+    constructor(app, title) {
         this._onCloseButtonClicked = () => {
-            app.ToggleUI();
+            this.app.ToggleUI();
             return false;
         };
+        this.app = app;
         this.actor = new TopBar_St.BoxLayout({ style_class: 'top-box' });
         this._title = title;
         this._stlabel = new TopBar_St.Label({ style_class: 'grid-title', text: this._title });
-        this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: true });
+        this._iconBin = new TopBar_St.Bin({ x_fill: false, y_fill: false });
         this._closeButton = new TopBar_St.Button({
             style: "padding:0;",
             opacity: 128,
@@ -788,14 +836,13 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
 
 
 
-
-
-const { BoxLayout, Table } = imports.gi.St;
+const { BoxLayout, Table, Bin } = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
+const { Color } = imports.gi.Clutter;
 let Grid = class Grid {
-    constructor(monitor, title, cols, rows) {
+    constructor(app, monitor, title, cols, rows) {
         this.tableWidth = 220;
         this.tableHeight = 200;
         this.borderwidth = 2;
@@ -814,12 +861,17 @@ let Grid = class Grid {
                 height: height,
                 transition: 'easeOutQuad',
             });
-            for (const row of this.elements) {
-                for (const element of row) {
+            const [widthUnit, heightUnit] = this.GetTableUnits(width, height);
+            for (let index = 0; index < this.elements.length; index++) {
+                const row = this.elements[index];
+                for (let j = 0; j < row.length; j++) {
+                    const element = row[j];
+                    const finalWidth = widthUnit * this.cols[j].span;
+                    const finalHeight = heightUnit * this.rows[index].span;
                     Grid_Tweener.addTween(element.actor, {
                         time: time,
-                        width: (width / this.cols - 2 * this.borderwidth),
-                        height: (height / this.rows - 2 * this.borderwidth),
+                        width: finalWidth,
+                        height: finalHeight,
                         transition: 'easeOutQuad',
                     });
                 }
@@ -829,13 +881,13 @@ let Grid = class Grid {
             this.bottombar.destroy_children();
             let rowNum = 0;
             let colNum = 0;
-            for (let index = 0; index < gridSettingsButton.length; index++) {
+            for (let index = 0; index < this.app.config.gridSettingsButton.length; index++) {
                 if (colNum >= 4) {
                     colNum = 0;
                     rowNum += 2;
                 }
-                let button = gridSettingsButton[index];
-                button = new GridSettingsButton(button.text, button.cols, button.rows);
+                let button = this.app.config.gridSettingsButton[index];
+                button = new GridSettingsButton(this.app, this.app.config, button.text, button.cols, button.rows);
                 this.bottombar.add(button.actor, { row: rowNum, col: colNum, x_fill: false, y_fill: false });
                 button.actor.connect('notify::hover', () => this.elementsDelegate.reset());
                 colNum++;
@@ -843,39 +895,43 @@ let Grid = class Grid {
         };
         this.RefreshGridElements = () => {
             this.table.destroy_all_children();
-            this.cols = preferences.nbCols;
-            this.rows = preferences.nbRows;
-            if (this.cols <= this.colKey || this.rows <= this.colKey)
+            this.cols = this.app.config.nbCols;
+            this.rows = this.app.config.nbRows;
+            if (this.cols.length <= this.colKey || this.rows.length <= this.colKey)
                 this.Reset();
             this.RebuildGridElements();
         };
         this.RebuildGridElements = () => {
             var _a;
             this.elements = [];
-            let width = this.tableWidth / this.cols - 2 * this.borderwidth;
-            let height = this.tableHeight / this.rows - 2 * this.borderwidth;
+            const [widthUnit, heightUnit] = this.GetTableUnits(this.tableWidth, this.tableHeight);
             this.elementsDelegateSignals.forEach(element => {
                 var _a;
                 (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a.disconnect(element);
             });
             (_a = this.elementsDelegate) === null || _a === void 0 ? void 0 : _a._destroy();
-            this.elementsDelegate = new GridElementDelegate();
+            this.elementsDelegate = new GridElementDelegate(this.app);
             this.elementsDelegateSignals = [];
             this.elementsDelegateSignals.push(this.elementsDelegate.connect('resize-done', this.OnResize));
-            for (let r = 0; r < this.rows; r++) {
-                for (let c = 0; c < this.cols; c++) {
+            for (let r = 0; r < this.rows.length; r++) {
+                const row = new BoxLayout();
+                for (let c = 0; c < this.cols.length; c++) {
                     if (c === 0) {
                         this.elements[r] = [];
                     }
-                    let element = new GridElement(this.monitor, width, height, c, r, this.elementsDelegate);
+                    const finalWidth = widthUnit * this.cols[c].span;
+                    const finalHeight = heightUnit * this.rows[r].span;
+                    let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
                     this.elements[r][c] = element;
-                    this.table.add(element.actor, { row: r, col: c, x_fill: false, y_fill: false });
-                    element.show();
+                    const bin = new Bin();
+                    bin.add_actor(element.actor);
+                    row.add(bin, { expand: true });
                 }
+                this.table.add(row, { expand: true });
             }
         };
         this.BindKeyControls = () => {
-            Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', app.ToggleUI);
+            Grid_Main.keybindingManager.addHotKey('gTile-close', 'Escape', this.app.ToggleUI);
             Grid_Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
             Grid_Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
             for (let index in KEYCONTROL) {
@@ -904,8 +960,8 @@ let Grid = class Grid {
             Grid_Main.layoutManager["_chrome"].updateRegions();
         };
         this.OnResize = () => {
-            app.RefreshGrid();
-            if (preferences.autoclose) {
+            this.app.RefreshGrid();
+            if (this.app.config.autoclose) {
                 this.emit('hide-tiling');
             }
         };
@@ -925,7 +981,7 @@ let Grid = class Grid {
             return false;
         };
         this.OnKeyPressEvent = (type, key) => {
-            var _a, _b, _c, _d;
+            var _a, _b, _c, _d, _e, _f, _g, _h;
             let modifier = false;
             switch (type) {
                 case 'gTile-k-right-meta':
@@ -941,7 +997,7 @@ let Grid = class Grid {
             }
             if (modifier && this.keyElement) {
                 if (!this.elementsDelegate.activated) {
-                    this.keyElement._onButtonPress();
+                    this.keyElement._onButtonPress(false);
                 }
             }
             else if (this.keyElement) {
@@ -950,7 +1006,7 @@ let Grid = class Grid {
             switch (type) {
                 case 'gTile-k-right':
                 case 'gTile-k-right-meta':
-                    this.colKey = Math.min(this.colKey + 1, this.cols - 1);
+                    this.colKey = Math.min(this.colKey + 1, this.cols.length - 1);
                     this.rowKey = this.rowKey === -1 ? 0 : this.rowKey;
                     break;
                 case 'gTile-k-left':
@@ -967,7 +1023,7 @@ let Grid = class Grid {
                     break;
                 case 'gTile-k-down':
                 case 'gTile-k-down-meta':
-                    this.rowKey = Math.min(this.rowKey + 1, this.rows - 1);
+                    this.rowKey = Math.min(this.rowKey + 1, this.rows.length - 1);
                     this.colKey = this.colKey === -1 ? 0 : this.colKey;
                     break;
                 case 'gTile-k-left-monitor-move':
@@ -983,16 +1039,16 @@ let Grid = class Grid {
                     this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.BOTTOM));
                     break;
                 case 'gTile-k-first-grid':
-                    (_a = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[0]) === null || _a === void 0 ? void 0 : _a._onButtonPress();
+                    (_b = (_a = this.app.config.gridSettingsButton) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b._onButtonPress();
                     break;
                 case 'gTile-k-second-grid':
-                    (_b = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[1]) === null || _b === void 0 ? void 0 : _b._onButtonPress();
+                    (_d = (_c = this.app.config.gridSettingsButton) === null || _c === void 0 ? void 0 : _c[1]) === null || _d === void 0 ? void 0 : _d._onButtonPress();
                     break;
                 case 'gTile-k-third-grid':
-                    (_c = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[2]) === null || _c === void 0 ? void 0 : _c._onButtonPress();
+                    (_f = (_e = this.app.config.gridSettingsButton) === null || _e === void 0 ? void 0 : _e[2]) === null || _f === void 0 ? void 0 : _f._onButtonPress();
                     break;
                 case 'gTile-k-fourth-grid':
-                    (_d = gridSettingsButton === null || gridSettingsButton === void 0 ? void 0 : gridSettingsButton[3]) === null || _d === void 0 ? void 0 : _d._onButtonPress();
+                    (_h = (_g = this.app.config.gridSettingsButton) === null || _g === void 0 ? void 0 : _g[3]) === null || _h === void 0 ? void 0 : _h._onButtonPress();
                     break;
             }
             this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
@@ -1001,7 +1057,7 @@ let Grid = class Grid {
         };
         this.BeginTiling = () => {
             if (this.keyElement) {
-                this.keyElement._onButtonPress();
+                this.keyElement._onButtonPress(true);
                 this.Reset();
             }
         };
@@ -1009,7 +1065,7 @@ let Grid = class Grid {
             monitor = monitor ? monitor : this.monitor;
             if (monitor.index == this.monitor.index)
                 return;
-            app.MoveToMonitor(this.monitor, monitor !== null && monitor !== void 0 ? monitor : this.monitor);
+            this.app.MoveToMonitor(this.monitor, monitor !== null && monitor !== void 0 ? monitor : this.monitor);
         };
         this.destroy = () => {
             for (let r in this.elements) {
@@ -1026,6 +1082,7 @@ let Grid = class Grid {
             this.title = null;
             this.cols = null;
         };
+        this.app = app;
         this.tableHeight = 200;
         this.tableWidth = 220;
         this.borderwidth = 2;
@@ -1038,7 +1095,7 @@ let Grid = class Grid {
         });
         this.actor.connect('enter-event', this.OnMouseEnter);
         this.actor.connect('leave-event', this.OnMouseLeave);
-        this.topbar = new TopBar(title);
+        this.topbar = new TopBar(this.app, title);
         this.bottombar = new Table({
             homogeneous: true,
             style_class: 'bottom-box',
@@ -1054,12 +1111,12 @@ let Grid = class Grid {
             reactive: true,
         });
         this.RebuildGridSettingsButtons();
-        this.table = new Table({
-            homogeneous: true,
+        this.table = new BoxLayout({
             style_class: 'table',
             can_focus: true,
             track_hover: true,
             reactive: true,
+            vertical: true,
             width: this.tableWidth,
             height: this.tableHeight
         });
@@ -1072,16 +1129,16 @@ let Grid = class Grid {
         this.title = title;
         this.cols = cols;
         this.isEntered = false;
-        let toggle = new ToggleSettingsButton('animation', SETTINGS_ANIMATION, "animation_black-symbolic");
+        let toggle = new ToggleSettingsButton(this.app.config, 'animation', SETTINGS_ANIMATION, "animation_black-symbolic");
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 0, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
-        toggle = new ToggleSettingsButton('auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
+        toggle = new ToggleSettingsButton(this.app.config, 'auto-close', SETTINGS_AUTO_CLOSE, "auto_close_black-symbolic");
         this.veryBottomBar.add(toggle.actor, { row: 0, col: 1, x_fill: false, y_fill: false });
         this.toggleSettingButtons.push(toggle);
-        let action = new AutoTileMainAndList(this);
+        let action = new AutoTileMainAndList(this.app);
         this.veryBottomBar.add(action.actor, { row: 0, col: 2, x_fill: false, y_fill: false });
         action.connect('resize-done', this.OnResize);
-        let actionTwo = new AutoTileTwoList(this);
+        let actionTwo = new AutoTileTwoList(this.app);
         this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
         actionTwo.connect('resize-done', this.OnResize);
         this.x = 0;
@@ -1099,6 +1156,13 @@ let Grid = class Grid {
             }
         }
     }
+    GetTableUnits(width, height) {
+        const rowSpans = this.rows.map(r => r.span).reduce((p, c) => p += c);
+        const colSpans = this.cols.map(r => r.span).reduce((p, c) => p += c);
+        const widthUnit = width / colSpans - (2 * this.borderwidth);
+        const heightUnit = height / rowSpans - (2 * this.borderwidth);
+        return [Math.round(widthUnit), Math.round(heightUnit)];
+    }
     UpdateSettingsButtons() {
         for (const button of this.toggleSettingButtons) {
             button["_update"]();
@@ -1115,7 +1179,7 @@ let Grid = class Grid {
             this.SetPosition(x, y);
         this.interceptHide = true;
         this.elementsDelegate.reset();
-        let time = preferences.animation ? 0.3 : 0;
+        let time = this.app.config.animation ? 0.3 : 0;
         this.actor.raise_top();
         Grid_Main.layoutManager.removeChrome(this.actor);
         Grid_Main.layoutManager.addChrome(this.actor);
@@ -1143,7 +1207,7 @@ let Grid = class Grid {
     Hide(immediate) {
         this.RemoveKeyControls();
         this.Reset();
-        let time = preferences.animation && !immediate ? 0.3 : 0;
+        let time = this.app.config.animation && !immediate ? 0.3 : 0;
         if (time > 0) {
             Grid_Tweener.addTween(this.actor, {
                 time: time,
@@ -1190,13 +1254,6 @@ class App {
         this.focusMetaWindowPrivateConnections = [];
         this.area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
         this.focusMetaWindow = null;
-        this.EnableHotkey = () => {
-            this.DisableHotkey();
-            extension_Main.keybindingManager.addHotKey('gTile', preferences.hotkey, this.ToggleUI);
-        };
-        this.DisableHotkey = () => {
-            extension_Main.keybindingManager.removeHotKey('gTile');
-        };
         this.RefreshGrid = () => {
             this.grid.RefreshGridElements();
             extension_Main.layoutManager["_chrome"].updateRegions();
@@ -1302,7 +1359,7 @@ class App {
                 pos_y = pos_y < monitor.y ? monitor.y : pos_y;
                 pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
             }
-            let time = preferences.animation ? 0.3 : 0.1;
+            let time = this.config.animation ? 0.3 : 0.1;
             grid.AdjustTableSize(time, newTableWidth, newTableHeight);
             extension_Tweener.addTween(grid.actor, {
                 time: time,
@@ -1358,6 +1415,8 @@ class App {
             this.focusMetaWindowPrivateConnections = [];
         };
         extension_Main.uiGroup.add_actor(this.area);
+        this.config = new Config(this);
+        this.InitGrid();
         this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
         global.screen.connect('monitors-changed', this.ReInitialize);
     }
@@ -1368,12 +1427,12 @@ class App {
         return this.grid;
     }
     destroy() {
-        this.DisableHotkey();
+        this.config.destroy();
         this.DestroyGrid();
         this.ResetFocusedWindow();
     }
     InitGrid() {
-        this.grid = new Grid(extension_Main.layoutManager.primaryMonitor, 'gTile', preferences.nbCols, preferences.nbRows);
+        this.grid = new Grid(this, extension_Main.layoutManager.primaryMonitor, 'gTile', this.config.nbCols, this.config.nbRows);
         extension_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
         this.grid.actor.set_opacity(0);
         this.grid.Hide(true);
@@ -1387,9 +1446,6 @@ const init = (meta) => {
 };
 const enable = () => {
     app = new App();
-    initSettings();
-    app.InitGrid();
-    app.EnableHotkey();
 };
 const disable = () => {
     app.destroy();

@@ -1,4 +1,4 @@
-import { Preferences, preferences } from "../config";
+import { Config } from "../config";
 import { TooltipKeys, TOOLTIPS } from "../constants";
 import { CustomIcons } from "../types";
 import { addSignals, objHasKey, SignalOverload } from "../utils";
@@ -12,12 +12,15 @@ export interface ToggleSettingsButton extends SignalOverload<'update-toggle'> {}
 export class ToggleSettingsButton {
   text: string;
   actor: imports.gi.St.Button;
-  property: TooltipKeys | keyof Preferences;
+  property: TooltipKeys | keyof Config;
   active: boolean = false;
 
   private _tooltip?: imports.ui.tooltips.Tooltip;
 
-  constructor(text: string, property: keyof Preferences | TooltipKeys, icon: CustomIcons) {
+  private settings: Config;
+
+  constructor(setting: Config, text: string, property: keyof Config | TooltipKeys, icon: CustomIcons) {
+    this.settings = setting;
     this.text = text;
     this.actor = new Button({
       style_class: "settings-button",
@@ -51,7 +54,7 @@ export class ToggleSettingsButton {
 
   private _update = () => {
     // @ts-ignore
-    this.active = preferences[this.property]
+    this.active = this.settings[this.property]
     if (this.active) {
       this.actor.opacity = 255;
       this.actor.add_style_pseudo_class('activate');
@@ -62,11 +65,11 @@ export class ToggleSettingsButton {
   }
 
   private _onButtonPress = () => {
-    if (!objHasKey(preferences, this.property))
+    if (!objHasKey(this.settings, this.property))
       return false;
 
     // @ts-ignore
-    preferences[this.property] = !preferences[this.property];
+    this.settings[this.property] = !this.settings[this.property];
     this.emit('update-toggle');
     return false;
   }

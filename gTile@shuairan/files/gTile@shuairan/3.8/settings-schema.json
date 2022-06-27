@@ -64,32 +64,40 @@
          "type": "section",
          "title": "Layout For Button 1",
          "keys": [
-            "gridbutton1x",
-            "gridbutton1y"
+            "columns",
+            "grid1x",
+            "rows",
+            "grid1y"
          ]
       },
       "grid2-section": {
          "type": "section",
          "title": "Layout For Button 2",
          "keys": [
-            "gridbutton2x",
-            "gridbutton2y"
+            "columns",
+            "grid2x",
+            "rows",
+            "grid2y"
          ]
       },
       "grid3-section": {
          "type": "section",
          "title": "Layout For Button 3",
          "keys": [
-            "gridbutton3x",
-            "gridbutton3y"
+            "columns",
+            "grid3x",
+            "rows",
+            "grid3y"
          ]
       },
       "grid4-section": {
          "type": "section",
          "title": "Layout For Button 4",
          "keys": [
-            "gridbutton4x",
-            "gridbutton4y"
+            "columns",
+            "grid4x",
+            "rows",
+            "grid4y"
          ]
       },
       "help-section": {
@@ -105,11 +113,11 @@
 	},
    "lastGridCols": {
       "type": "generic",
-      "default": 4
+      "default": null
    },
    "lastGridRows": {
       "type": "generic",
-      "default": 4
+      "default": null
    },
    "hotkey": {
       "type": "keybinding",
@@ -126,84 +134,235 @@
       "default": "true",
       "description": "Auto-Close"
    },
-   "gridbutton1x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 2,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton1y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 2,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   },
-   "gridbutton2x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 3,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton2y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 2,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   },
-   "gridbutton3x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton3y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 4,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   },
-   "gridbutton4x": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 6,
-      "min": 1,
-      "max": 20,
-      "units": "x",
-      "step": 1,
-      "description": "Columns"
-   },
-   "gridbutton4y": {
-      "type": "spinbutton",
-      "indent": "true",
-      "default": 6,
-      "min": 1,
-      "max": 20,
-      "units": "y",
-      "step": 1,
-      "description": "Rows"
-   }
+   "columns": {
+		"type": "label",
+		"description": "Columns"
+	},
+   "rows": {
+		"type": "label",
+		"description": "Rows"
+	},
+   "grid1x": {
+		"type": "list",
+		"description": "Columns",
+		"tooltip": "Each row represents a column. Span is how much space a column should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid1y": {
+		"type": "list",
+		"description": "Rows",
+		"tooltip": "Each row represents a row. Span is how much space a row should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid2x": {
+		"type": "list",
+		"description": "Columns",
+		"tooltip": "Each row represents a column. Span is how much space a column should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 2
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid2y": {
+		"type": "list",
+		"description": "Rows",
+		"tooltip": "Each row represents a row. Span is how much space a row should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid3x": {
+		"type": "list",
+		"description": "Columns",
+		"tooltip": "Each row represents a column. Span is how much space a column should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid3y": {
+		"type": "list",
+		"description": "Rows",
+		"tooltip": "Each row represents a row. Span is how much space a row should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid4x": {
+		"type": "list",
+		"description": "Columns",
+		"tooltip": "Each row represents a column. Span is how much space a column should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	},
+   "grid4y": {
+		"type": "list",
+		"description": "Rows",
+		"tooltip": "Each row represents a row. Span is how much space a row should take up compared to the other columns. Default is 1.",
+		"columns": [
+			{
+				"id": "span",
+				"title": "Span",
+				"type": "float",
+				"min": 0,
+				"max": 1000,
+				"step": 0.01
+			}
+		],
+		"default": [
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         },
+         {
+            "span": 1
+         }
+      ]
+	}
 }

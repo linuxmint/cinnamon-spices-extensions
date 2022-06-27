@@ -1,4 +1,4 @@
-import { app } from "../extension";
+import { App } from "../extension";
 
 const St = imports.gi.St;
 
@@ -9,12 +9,15 @@ export class TopBar {
     private _iconBin: imports.gi.St.Bin;
     private _closeButton: imports.gi.St.Button;
     private _icon?: imports.gi.Clutter.Actor;
+
+    private app: App;
   
-    constructor(title: string) {
+    constructor(app: App, title: string) {
+      this.app = app;
       this.actor = new St.BoxLayout({ style_class: 'top-box' });
       this._title = title;
       this._stlabel = new St.Label({ style_class: 'grid-title', text: this._title });
-      this._iconBin = new St.Bin({ x_fill: false, y_fill: true });
+      this._iconBin = new St.Bin({ x_fill: false, y_fill: false });
       this._closeButton = new St.Button({
         style:"padding:0;",
         opacity: 128,
@@ -52,7 +55,7 @@ export class TopBar {
     }
   
     private _onCloseButtonClicked = () => {
-      app.ToggleUI();
+      this.app.ToggleUI();
       return false;
     }
   }

@@ -25,7 +25,6 @@
 .table-element:hover, .table-element:activate
 {
     background-color: rgba(240,240,240,0.8);
-    border-radius: 3px;
 }
 
 .top-box
