@@ -19,6 +19,6 @@
     "webpack": "^5.42.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
-    "@ci-types/cjs": "1.0.24"
+    "@ci-types/cjs": "5.4.1"
   }
 }
