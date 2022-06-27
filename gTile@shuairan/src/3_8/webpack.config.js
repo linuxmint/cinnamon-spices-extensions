@@ -10,7 +10,7 @@ const appletName = root.split('/').slice(-1)[0]
 /** @type {import('webpack').Configuration} */
 module.exports = {
     mode: 'production',
-    entry: './src/3_8/extension.ts',
+    entry: './extension.ts',
     //devtool: "eval-source-map",
     target: 'node', // without webpack renames 'global'
     optimization: {

@@ -294,9 +294,9 @@ export class Grid {
         Tweener.addTween(this.actor, {
           time: time,
           opacity: 255,
-          visible: true,
           transition: 'easeOutQuad',
           scale_y: this.normalScaleY,
+          onStart: () => this.actor.visible = true,
           onComplete: () => { resolve(); this.OnShowComplete() }
         });
       })
@@ -318,10 +318,9 @@ export class Grid {
       Tweener.addTween(this.actor, {
         time: time,
         opacity: 0,
-        visible: false,
         scale_y: 0,
         transition: 'easeOutQuad',
-        onComplete: this.OnHideComplete
+        onComplete: () => { this.actor.visible = false; this.OnHideComplete();}
       });
     } else {
       this.actor.opacity = 0;

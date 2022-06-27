@@ -46,7 +46,7 @@ __webpack_require__.d(__webpack_exports__, {
   "init": () => (/* binding */ init)
 });
 
-;// CONCATENATED MODULE: ./src/3_8/ui/GridSettingsButton.ts
+;// CONCATENATED MODULE: ./ui/GridSettingsButton.ts
 const St = imports.gi.St;
 class GridSettingsButton {
     constructor(app, settings, text, cols, rows) {
@@ -77,7 +77,7 @@ class GridSettingsButton {
     }
 }
 
-;// CONCATENATED MODULE: ./src/3_8/config.ts
+;// CONCATENATED MODULE: ./config.ts
 
 const Settings = imports.ui.settings;
 const Main = imports.ui.main;
@@ -147,7 +147,7 @@ class Config {
     }
 }
 
-;// CONCATENATED MODULE: ./src/3_8/utils.ts
+;// CONCATENATED MODULE: ./utils.ts
 const { Object: utils_Object } = imports.gi.GObject;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
@@ -312,7 +312,7 @@ const GetMonitorAspectRatio = (monitor) => {
     };
 };
 
-;// CONCATENATED MODULE: ./src/3_8/constants.ts
+;// CONCATENATED MODULE: ./constants.ts
 
 const SETTINGS_AUTO_CLOSE = 'autoclose';
 const SETTINGS_ANIMATION = 'animation';
@@ -341,7 +341,7 @@ const KEYCONTROL = {
     'gTile-k-fourth-grid': '4',
 };
 
-;// CONCATENATED MODULE: ./src/3_8/ui/ActionButton.ts
+;// CONCATENATED MODULE: ./ui/ActionButton.ts
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -384,7 +384,7 @@ ActionButton = __decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/ui/AutoTileMainAndList.ts
+;// CONCATENATED MODULE: ./ui/AutoTileMainAndList.ts
 var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -427,7 +427,7 @@ AutoTileMainAndList = AutoTileMainAndList_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/ui/AutoTileTwoList.ts
+;// CONCATENATED MODULE: ./ui/AutoTileTwoList.ts
 var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -475,7 +475,7 @@ AutoTileTwoList = AutoTileTwoList_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/ui/GridElement.ts
+;// CONCATENATED MODULE: ./ui/GridElement.ts
 
 const GridElement_Main = imports.ui.main;
 const GridElement_St = imports.gi.St;
@@ -537,7 +537,7 @@ class GridElement {
     }
 }
 
-;// CONCATENATED MODULE: ./src/3_8/ui/GridElementDelegate.ts
+;// CONCATENATED MODULE: ./ui/GridElementDelegate.ts
 var GridElementDelegate_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -719,7 +719,7 @@ GridElementDelegate = GridElementDelegate_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/ui/ToggleSettingsButton.ts
+;// CONCATENATED MODULE: ./ui/ToggleSettingsButton.ts
 var ToggleSettingsButton_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -779,7 +779,7 @@ ToggleSettingsButton = ToggleSettingsButton_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/ui/TopBar.ts
+;// CONCATENATED MODULE: ./ui/TopBar.ts
 const TopBar_St = imports.gi.St;
 class TopBar {
     constructor(app, title) {
@@ -820,7 +820,7 @@ class TopBar {
     }
 }
 
-;// CONCATENATED MODULE: ./src/3_8/ui/Grid.ts
+;// CONCATENATED MODULE: ./ui/Grid.ts
 var Grid_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1189,9 +1189,9 @@ let Grid = class Grid {
                 Grid_Tweener.addTween(this.actor, {
                     time: time,
                     opacity: 255,
-                    visible: true,
                     transition: 'easeOutQuad',
                     scale_y: this.normalScaleY,
+                    onStart: () => this.actor.visible = true,
                     onComplete: () => { resolve(); this.OnShowComplete(); }
                 });
             });
@@ -1212,10 +1212,9 @@ let Grid = class Grid {
             Grid_Tweener.addTween(this.actor, {
                 time: time,
                 opacity: 0,
-                visible: false,
                 scale_y: 0,
                 transition: 'easeOutQuad',
-                onComplete: this.OnHideComplete
+                onComplete: () => { this.actor.visible = false; this.OnHideComplete(); }
             });
         }
         else {
@@ -1236,7 +1235,7 @@ Grid = Grid_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./src/3_8/extension.ts
+;// CONCATENATED MODULE: ./extension.ts
 
 
 
