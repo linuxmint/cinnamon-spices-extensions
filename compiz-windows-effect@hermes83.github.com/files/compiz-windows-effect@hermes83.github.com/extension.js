@@ -57,6 +57,7 @@ class SettingsHandler {
         this.settings.bindProperty(Settings.BindingDirection.IN, "mass", "mass", function(){});
         this.settings.bindProperty(Settings.BindingDirection.IN, "xTiles", "xTiles", function(){});
         this.settings.bindProperty(Settings.BindingDirection.IN, "yTiles", "yTiles", function(){});
+        this.settings.bindProperty(Settings.BindingDirection.IN, "maxUnmaxFactor", "maxUnmaxFactor", function(){});
     }    
 }
 
@@ -75,18 +76,26 @@ class CompizWindowsEffectExtension {
     enable() {
         this.beginGrabOpId = global.display.connect('grab-op-begin', this.onBeginGrabOp.bind(this));
         this.endGrabOpId = global.display.connect('grab-op-end', this.onEndGrabOp.bind(this));
-        this.unmaximizeOpId = global.window_manager.connect("unmaximize", this.onUnmaximize.bind(this));
-        this.maximizeOpId = global.window_manager.connect("maximize", this.onMaximize.bind(this));
-        this.tileOpId = global.window_manager.connect("tile", this.onTile.bind(this));
+        if (settings.maxUnmaxFactor) {
+            this.unmaximizeOpId = global.window_manager.connect("unmaximize", this.onUnmaximize.bind(this));
+            this.maximizeOpId = global.window_manager.connect("maximize", this.onMaximize.bind(this));
+            this.tileOpId = global.window_manager.connect("tile", this.onTile.bind(this));
+        }
     }
 
     disable() {
         global.display.disconnect(this.beginGrabOpId);
         global.display.disconnect(this.endGrabOpId);
 
-        global.window_manager.disconnect(this.unmaximizeOpId);
-        global.window_manager.disconnect(this.maximizeOpId);
-        global.window_manager.disconnect(this.tileOpId);
+        if (this.unmaximizeOpId != null) {
+            global.window_manager.disconnect(this.unmaximizeOpId);
+        }
+        if (this.maximizeOpId != null) {
+            global.window_manager.disconnect(this.maximizeOpId);
+        }
+        if (this.tileOpId != null) {
+            global.window_manager.disconnect(this.tileOpId);
+        }
         
         global.get_window_actors().forEach(function (actor) {
             if (actor) {
@@ -270,10 +279,10 @@ const WobblyEffect = new Lang.Class({
             this.wobblyModel = new WobblyModel({ friction: this.FRICTION, springK: this.SPRING_K, mass: this.MASS, sizeX: this.width, sizeY: this.height });
 
             if ('unmaximized' == this.operationType) {
-                this.wobblyModel.unmaximize();
+                this.wobblyModel.unmaximize(settings.maxUnmaxFactor);
                 this.ended = true;
             } else if ('maximized' == this.operationType) {                    
-                this.wobblyModel.maximize();
+                this.wobblyModel.maximize(settings.maxUnmaxFactor);
                 this.ended = true;
             } else {
                 this.wobblyModel.grab(this.mouseX - this.newX, this.mouseY - this.newY);
@@ -560,8 +569,8 @@ class WobblyModel {
         this.immobileObjects = [immobileObject];
     }
 
-    maximize() {
-        var intensity = 0.8;
+    maximize(maxUnmaxFactor) {
+        var intensity = maxUnmaxFactor / 10;
 
         var topLeft = this.nearestObject(0, 0), topRight = this.nearestObject(this.width, 0), bottomLeft = this.nearestObject(0, this.height), bottomRight = this.nearestObject(this.width, this.height);
         [topLeft.immobile, topRight.immobile, bottomLeft.immobile, bottomRight.immobile] = [true, true, true, true];
@@ -604,8 +613,8 @@ class WobblyModel {
         this.step(0);
     }
 
-    unmaximize() {
-        var intensity = 0.8;
+    unmaximize(maxUnmaxFactor) {
+        var intensity = maxUnmaxFactor / 10;
 
         var immobileObject = this.nearestObject(this.width / 2, this.height / 2);
         immobileObject.immobile = true;

@@ -46,5 +46,13 @@
     "max" : 20,
     "default" : 6,
     "step" : 1
+  },
+  "maxUnmaxFactor" : {
+    "type" : "scale",
+    "description" : "Maximizing and Unmaximizing Factor",
+    "min" : 0,
+    "max" : 10,
+    "default" : 3,
+    "step" : 1
   }
 }

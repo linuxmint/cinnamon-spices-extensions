@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. metadata.json->description
-msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
-msgstr ""
-
 #. metadata.json->name
 msgid "Compiz windows effect"
+msgstr ""
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
 msgstr ""
 
 #. settings-schema.json->friction->description
@@ -47,4 +47,8 @@ msgstr ""
 
 #. settings-schema.json->yTiles->description
 msgid "Y Tiles"
+msgstr ""
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
 msgstr ""
