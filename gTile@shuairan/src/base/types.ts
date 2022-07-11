@@ -1,5 +1,3 @@
-import { type App } from "./app";
-
 export type CustomIcons = 
     "animation_black-symbolic" |
     "auto_close_black-symbolic" |
@@ -11,6 +9,7 @@ export interface IApp {
     platform: Platform;
 }
 
+/** Interface to implement platform (version-specific) code using dependency-injection */
 export interface Platform {
     reset_window: (metaWindow: imports.gi.Meta.Window | null) => void;
     move_maximize_window: (metaWindow: imports.gi.Meta.Window | null, x: number, y: number) => void;
