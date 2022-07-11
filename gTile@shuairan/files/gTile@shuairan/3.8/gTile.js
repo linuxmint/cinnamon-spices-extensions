@@ -174,47 +174,6 @@ function addSignals(constructor) {
     return class extends constructor {
     };
 }
-const reset_window = (metaWindow) => {
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.VERTICAL);
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.tile(Meta.TileMode.NONE, false);
-};
-const _getInvisibleBorderPadding = (metaWindow) => {
-    let outerRect = metaWindow.get_outer_rect();
-    let inputRect = metaWindow.get_input_rect();
-    let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
-    return [borderX, borderY];
-};
-const move_maximize_window = (metaWindow, x, y) => {
-    if (metaWindow == null)
-        return;
-    let [borderX, borderY] = _getInvisibleBorderPadding(metaWindow);
-    x = x - borderX;
-    y = y - borderY;
-    metaWindow.move_frame(true, x, y);
-    metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-};
-const move_resize_window = (metaWindow, x, y, width, height) => {
-    if (!metaWindow)
-        return;
-    let clientRect = metaWindow.get_rect();
-    let outerRect = metaWindow.get_outer_rect();
-    let client_deco = clientRect.width > outerRect.width &&
-        clientRect.height > outerRect.height;
-    if (client_deco) {
-        x -= outerRect.x - clientRect.x;
-        y -= outerRect.y - clientRect.y;
-        width += (clientRect.width - outerRect.width);
-        height += (clientRect.height - outerRect.height);
-    }
-    else {
-        width -= (outerRect.width - clientRect.width);
-        height -= (outerRect.height - clientRect.height);
-    }
-    metaWindow.resize(true, width, height);
-    metaWindow.move_frame(true, x, y);
-};
 const getPanelHeight = (panel) => {
     return panel.height
         || panel.actor.get_height();
@@ -398,18 +357,18 @@ let AutoTileMainAndList = class AutoTileMainAndList extends ActionButton {
         this._onButtonPress = () => {
             if (!this.app.FocusMetaWindow)
                 return false;
-            reset_window(this.app.FocusMetaWindow);
+            this.app.platform.reset_window(this.app.FocusMetaWindow);
             let monitor = this.app.Grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
             let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
-            move_resize_window(this.app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
+            this.app.platform.move_resize_window(this.app.FocusMetaWindow, screenX, screenY, screenWidth / 2, screenHeight);
             let winHeight = screenHeight / windows.length;
             let countWin = 0;
             for (let windowIdx in windows) {
                 let metaWindow = windows[windowIdx];
                 let newOffset = countWin * winHeight;
-                reset_window(metaWindow);
-                move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
+                this.app.platform.reset_window(metaWindow);
+                this.app.platform.move_resize_window(metaWindow, screenX + screenWidth / 2, screenY + newOffset, screenWidth / 2, winHeight);
                 countWin++;
             }
             this.emit('resize-done');
@@ -441,7 +400,7 @@ let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
         this._onButtonPress = () => {
             if (!this.app.FocusMetaWindow)
                 return false;
-            reset_window(this.app.FocusMetaWindow);
+            this.app.platform.reset_window(this.app.FocusMetaWindow);
             let monitor = this.app.Grid.monitor;
             let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
             let windows = this.app.GetNotFocusedWindowsOfMonitor(monitor);
@@ -450,14 +409,14 @@ let AutoTileTwoList = class AutoTileTwoList extends ActionButton {
             let countWin = 0;
             let xOffset = ((countWin % 2) * screenWidth) / 2;
             let yOffset = Math.floor(countWin / 2) * winHeight;
-            move_resize_window(this.app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+            this.app.platform.move_resize_window(this.app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
             countWin++;
             for (let windowIdx in windows) {
                 let metaWindow = windows[windowIdx];
                 xOffset = ((countWin % 2) * screenWidth) / 2;
                 yOffset = Math.floor(countWin / 2) * winHeight;
-                reset_window(metaWindow);
-                move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+                this.app.platform.reset_window(metaWindow);
+                this.app.platform.move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
                 countWin++;
             }
             this.emit('resize-done');
@@ -699,14 +658,14 @@ let GridElementDelegate = class GridElementDelegate {
             gridElement.active = true;
         }
         else {
-            reset_window(this.app.FocusMetaWindow);
+            this.app.platform.reset_window(this.app.FocusMetaWindow);
             let areaWidth, areaHeight, areaX, areaY;
             [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(this.first, gridElement);
             if (this._allSelected()) {
-                move_maximize_window(this.app.FocusMetaWindow, areaX, areaY);
+                this.app.platform.move_maximize_window(this.app.FocusMetaWindow, areaX, areaY);
             }
             else {
-                move_resize_window(this.app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+                this.app.platform.move_resize_window(this.app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
             }
             this._resizeDone();
         }
@@ -1179,7 +1138,6 @@ let Grid = class Grid {
         this.interceptHide = true;
         this.elementsDelegate.reset();
         let time = this.app.config.animation ? 0.3 : 0;
-        this.actor.raise_top();
         Grid_Main.layoutManager.removeChrome(this.actor);
         Grid_Main.layoutManager.addChrome(this.actor);
         this.actor.scale_y = 0;
@@ -1244,7 +1202,7 @@ const app_Main = imports.ui.main;
 const app_Tweener = imports.ui.tweener;
 let metadata;
 class App {
-    constructor() {
+    constructor(platform) {
         this.visible = false;
         this.tracker = Cinnamon.WindowTracker.get_default();
         this.monitors = app_Main.layoutManager.monitors;
@@ -1297,8 +1255,7 @@ class App {
                 let grid = this.grid;
                 let window = getFocusApp();
                 grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor);
-                let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                const [pos_x, pos_y] = this.platform.get_window_center(window);
                 grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
                 this.OnFocusedWindowChanged();
                 this.visible = true;
@@ -1342,8 +1299,7 @@ class App {
             let monitor = grid.monitor;
             let isGridMonitor = window.get_monitor() === grid.monitor.index;
             if (isGridMonitor) {
-                pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-                pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+                [pos_x, pos_y] = this.platform.get_window_center(window);
             }
             else {
                 pos_x = monitor.x + monitor.width / 2;
@@ -1412,6 +1368,7 @@ class App {
             this.focusMetaWindowConnections = [];
             this.focusMetaWindowPrivateConnections = [];
         };
+        this.platform = platform;
         app_Main.uiGroup.add_actor(this.area);
         this.config = new Config(this);
         this.InitGrid();
@@ -1438,16 +1395,72 @@ class App {
     }
 }
 
+;// CONCATENATED MODULE: ./utils.ts
+const utils_Meta = imports.gi.Meta;
+const reset_window = (metaWindow) => {
+    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(utils_Meta.MaximizeFlags.HORIZONTAL);
+    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(utils_Meta.MaximizeFlags.VERTICAL);
+    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(utils_Meta.MaximizeFlags.HORIZONTAL | utils_Meta.MaximizeFlags.VERTICAL);
+    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.tile(utils_Meta.TileMode.NONE, false);
+};
+const _getInvisibleBorderPadding = (metaWindow) => {
+    let outerRect = metaWindow.get_outer_rect();
+    let inputRect = metaWindow.get_input_rect();
+    let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
+    return [borderX, borderY];
+};
+const move_maximize_window = (metaWindow, x, y) => {
+    if (metaWindow == null)
+        return;
+    let [borderX, borderY] = _getInvisibleBorderPadding(metaWindow);
+    x = x - borderX;
+    y = y - borderY;
+    metaWindow.move_frame(true, x, y);
+    metaWindow.maximize(utils_Meta.MaximizeFlags.HORIZONTAL | utils_Meta.MaximizeFlags.VERTICAL);
+};
+const move_resize_window = (metaWindow, x, y, width, height) => {
+    if (!metaWindow)
+        return;
+    let clientRect = metaWindow.get_rect();
+    let outerRect = metaWindow.get_outer_rect();
+    let client_deco = clientRect.width > outerRect.width &&
+        clientRect.height > outerRect.height;
+    if (client_deco) {
+        x -= outerRect.x - clientRect.x;
+        y -= outerRect.y - clientRect.y;
+        width += (clientRect.width - outerRect.width);
+        height += (clientRect.height - outerRect.height);
+    }
+    else {
+        width -= (outerRect.width - clientRect.width);
+        height -= (outerRect.height - clientRect.height);
+    }
+    metaWindow.resize(true, width, height);
+    metaWindow.move_frame(true, x, y);
+};
+const get_window_center = (window) => {
+    const pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
+    const pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+    return [pos_x, pos_y];
+};
+
 ;// CONCATENATED MODULE: ./extension.ts
+
 
 let extension_metadata;
 let app;
+const platform = {
+    move_maximize_window: move_maximize_window,
+    move_resize_window: move_resize_window,
+    reset_window: reset_window,
+    get_window_center: get_window_center
+};
 const init = (meta) => {
     extension_metadata = meta;
     imports.gi.Gtk.IconTheme.get_default().append_search_path(extension_metadata.path + "/../icons");
 };
 const enable = () => {
-    app = new App();
+    app = new App(platform);
 };
 const disable = () => {
     app.destroy();

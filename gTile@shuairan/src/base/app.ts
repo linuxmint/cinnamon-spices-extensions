@@ -1,5 +1,6 @@
 import { Config } from "./config";
 import { Grid } from "./ui/Grid";
+import { IApp, Platform } from "./types";
 import { getFocusApp, GetMonitorAspectRatio, getMonitorKey } from "./utils";
 
 /*****************************************************************
@@ -11,9 +12,10 @@ const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 let metadata: any;
 
-export class App {
+export class App implements IApp {
   private visible = false;
   public readonly tracker = Cinnamon.WindowTracker.get_default();
+  public readonly platform: Platform;
   private monitors = Main.layoutManager.monitors;
   private focusMetaWindowConnections: number[] = [];
   private focusMetaWindowPrivateConnections: number[] = [];
@@ -32,7 +34,8 @@ export class App {
 
   public readonly config: Config;
 
-  constructor() {
+  constructor(platform: Platform) {
+      this.platform = platform;
       Main.uiGroup.add_actor(this.area);
       this.config = new Config(this);
       this.InitGrid();
@@ -100,8 +103,7 @@ export class App {
       let window = getFocusApp();
       grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
-      let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-      let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+      const [pos_x, pos_y] = this.platform.get_window_center(window);
 
       grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
@@ -184,8 +186,7 @@ export class App {
     let monitor = grid.monitor;
     let isGridMonitor = window.get_monitor() === grid.monitor.index;
     if (isGridMonitor) {
-      pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-      pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+      [pos_x, pos_y] = this.platform.get_window_center(window);
     } else {
       pos_x = monitor.x + monitor.width / 2;
       pos_y = monitor.y + monitor.height / 2;
