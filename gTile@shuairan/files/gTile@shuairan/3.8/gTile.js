@@ -40,13 +40,12 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "App": () => (/* binding */ App),
   "disable": () => (/* binding */ disable),
   "enable": () => (/* binding */ enable),
   "init": () => (/* binding */ init)
 });
 
-;// CONCATENATED MODULE: ./ui/GridSettingsButton.ts
+;// CONCATENATED MODULE: ../base/ui/GridSettingsButton.ts
 const St = imports.gi.St;
 class GridSettingsButton {
     constructor(app, settings, text, cols, rows) {
@@ -77,7 +76,7 @@ class GridSettingsButton {
     }
 }
 
-;// CONCATENATED MODULE: ./config.ts
+;// CONCATENATED MODULE: ../base/config.ts
 
 const Settings = imports.ui.settings;
 const Main = imports.ui.main;
@@ -147,7 +146,7 @@ class Config {
     }
 }
 
-;// CONCATENATED MODULE: ./utils.ts
+;// CONCATENATED MODULE: ../base/utils.ts
 const { Object: utils_Object } = imports.gi.GObject;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
@@ -312,7 +311,7 @@ const GetMonitorAspectRatio = (monitor) => {
     };
 };
 
-;// CONCATENATED MODULE: ./constants.ts
+;// CONCATENATED MODULE: ../base/constants.ts
 
 const SETTINGS_AUTO_CLOSE = 'autoclose';
 const SETTINGS_ANIMATION = 'animation';
@@ -341,7 +340,7 @@ const KEYCONTROL = {
     'gTile-k-fourth-grid': '4',
 };
 
-;// CONCATENATED MODULE: ./ui/ActionButton.ts
+;// CONCATENATED MODULE: ../base/ui/ActionButton.ts
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -384,7 +383,7 @@ ActionButton = __decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./ui/AutoTileMainAndList.ts
+;// CONCATENATED MODULE: ../base/ui/AutoTileMainAndList.ts
 var AutoTileMainAndList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -427,7 +426,7 @@ AutoTileMainAndList = AutoTileMainAndList_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./ui/AutoTileTwoList.ts
+;// CONCATENATED MODULE: ../base/ui/AutoTileTwoList.ts
 var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -475,7 +474,7 @@ AutoTileTwoList = AutoTileTwoList_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./ui/GridElement.ts
+;// CONCATENATED MODULE: ../base/ui/GridElement.ts
 
 const GridElement_Main = imports.ui.main;
 const GridElement_St = imports.gi.St;
@@ -537,7 +536,7 @@ class GridElement {
     }
 }
 
-;// CONCATENATED MODULE: ./ui/GridElementDelegate.ts
+;// CONCATENATED MODULE: ../base/ui/GridElementDelegate.ts
 var GridElementDelegate_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -719,7 +718,7 @@ GridElementDelegate = GridElementDelegate_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./ui/ToggleSettingsButton.ts
+;// CONCATENATED MODULE: ../base/ui/ToggleSettingsButton.ts
 var ToggleSettingsButton_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -779,7 +778,7 @@ ToggleSettingsButton = ToggleSettingsButton_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./ui/TopBar.ts
+;// CONCATENATED MODULE: ../base/ui/TopBar.ts
 const TopBar_St = imports.gi.St;
 class TopBar {
     constructor(app, title) {
@@ -820,7 +819,7 @@ class TopBar {
     }
 }
 
-;// CONCATENATED MODULE: ./ui/Grid.ts
+;// CONCATENATED MODULE: ../base/ui/Grid.ts
 var Grid_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1235,32 +1234,32 @@ Grid = Grid_decorate([
 
 ;
 
-;// CONCATENATED MODULE: ./extension.ts
+;// CONCATENATED MODULE: ../base/app.ts
 
 
 
 const Cinnamon = imports.gi.Cinnamon;
-const extension_St = imports.gi.St;
-const extension_Main = imports.ui.main;
-const extension_Tweener = imports.ui.tweener;
+const app_St = imports.gi.St;
+const app_Main = imports.ui.main;
+const app_Tweener = imports.ui.tweener;
 let metadata;
 class App {
     constructor() {
         this.visible = false;
         this.tracker = Cinnamon.WindowTracker.get_default();
-        this.monitors = extension_Main.layoutManager.monitors;
+        this.monitors = app_Main.layoutManager.monitors;
         this.focusMetaWindowConnections = [];
         this.focusMetaWindowPrivateConnections = [];
-        this.area = new extension_St.BoxLayout({ style_class: 'grid-preview' });
+        this.area = new app_St.BoxLayout({ style_class: 'grid-preview' });
         this.focusMetaWindow = null;
         this.RefreshGrid = () => {
             this.grid.RefreshGridElements();
-            extension_Main.layoutManager["_chrome"].updateRegions();
+            app_Main.layoutManager["_chrome"].updateRegions();
         };
         this.GetNotFocusedWindowsOfMonitor = (monitor) => {
-            return extension_Main.getTabList().filter((w) => {
+            return app_Main.getTabList().filter((w) => {
                 let app = this.tracker.get_window_app(w);
-                let w_monitor = extension_Main.layoutManager.monitors[w.get_monitor()];
+                let w_monitor = app_Main.layoutManager.monitors[w.get_monitor()];
                 if (app == null) {
                     return false;
                 }
@@ -1297,7 +1296,7 @@ class App {
             if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
                 let grid = this.grid;
                 let window = getFocusApp();
-                grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : extension_Main.layoutManager.primaryMonitor);
+                grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor);
                 let pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
                 let pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
                 grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
@@ -1312,17 +1311,17 @@ class App {
             this.area.visible = false;
             this.ResetFocusedWindow();
             this.visible = false;
-            extension_Main.layoutManager["_chrome"].updateRegions();
+            app_Main.layoutManager["_chrome"].updateRegions();
         };
         this.ReInitialize = () => {
-            this.monitors = extension_Main.layoutManager.monitors;
+            this.monitors = app_Main.layoutManager.monitors;
             this.DestroyGrid();
             this.InitGrid();
         };
         this.DestroyGrid = () => {
             if (typeof this.grid != 'undefined') {
                 this.grid.Hide(true);
-                extension_Main.layoutManager.removeChrome(this.grid.actor);
+                app_Main.layoutManager.removeChrome(this.grid.actor);
             }
         };
         this.MoveUIActor = () => {
@@ -1360,7 +1359,7 @@ class App {
             }
             let time = this.config.animation ? 0.3 : 0.1;
             grid.AdjustTableSize(time, newTableWidth, newTableHeight);
-            extension_Tweener.addTween(grid.actor, {
+            app_Tweener.addTween(grid.actor, {
                 time: time,
                 x: pos_x,
                 y: pos_y,
@@ -1369,7 +1368,7 @@ class App {
             });
         };
         this.updateRegions = () => {
-            extension_Main.layoutManager["_chrome"].updateRegions();
+            app_Main.layoutManager["_chrome"].updateRegions();
         };
         this.OnFocusedWindowChanged = () => {
             let window = getFocusApp();
@@ -1413,7 +1412,7 @@ class App {
             this.focusMetaWindowConnections = [];
             this.focusMetaWindowPrivateConnections = [];
         };
-        extension_Main.uiGroup.add_actor(this.area);
+        app_Main.uiGroup.add_actor(this.area);
         this.config = new Config(this);
         this.InitGrid();
         this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
@@ -1431,17 +1430,21 @@ class App {
         this.ResetFocusedWindow();
     }
     InitGrid() {
-        this.grid = new Grid(this, extension_Main.layoutManager.primaryMonitor, 'gTile', this.config.nbCols, this.config.nbRows);
-        extension_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
+        this.grid = new Grid(this, app_Main.layoutManager.primaryMonitor, 'gTile', this.config.nbCols, this.config.nbRows);
+        app_Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
         this.grid.actor.set_opacity(0);
         this.grid.Hide(true);
         this.grid.connect('hide-tiling', this.HideUI);
     }
 }
+
+;// CONCATENATED MODULE: ./extension.ts
+
+let extension_metadata;
 let app;
 const init = (meta) => {
-    metadata = meta;
-    imports.gi.Gtk.IconTheme.get_default().append_search_path(metadata.path + "/../icons");
+    extension_metadata = meta;
+    imports.gi.Gtk.IconTheme.get_default().append_search_path(extension_metadata.path + "/../icons");
 };
 const enable = () => {
     app = new App();

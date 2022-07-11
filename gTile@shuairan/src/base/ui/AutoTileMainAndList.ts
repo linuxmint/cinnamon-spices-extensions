@@ -1,4 +1,4 @@
-import { App } from "../extension";
+import { App } from "../app";
 import { addSignals, getUsableScreenArea, move_resize_window, reset_window, SignalOverload } from "../utils";
 import { ActionButton } from "./ActionButton";
 

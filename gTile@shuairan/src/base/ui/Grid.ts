@@ -8,7 +8,7 @@ import { GridElementDelegate } from "./GridElementDelegate";
 import { GridSettingsButton } from "./GridSettingsButton";
 import { ToggleSettingsButton } from "./ToggleSettingsButton";
 import { TopBar } from "./TopBar";
-import { App } from "../extension";
+import { App } from "../app";
 
 const { BoxLayout, Table, Bin } = imports.gi.St;
 const Main = imports.ui.main;

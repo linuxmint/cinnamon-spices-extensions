@@ -1,5 +1,5 @@
 import { Config } from "../config";
-import { App } from "../extension";
+import { App } from "../app";
 import { addSignals, getMonitorKey, getUsableScreenArea, move_maximize_window, move_resize_window, reset_window, SignalOverload } from "../utils";
 import { GridElement } from "./GridElement";
 const Tweener = imports.ui.tweener;
