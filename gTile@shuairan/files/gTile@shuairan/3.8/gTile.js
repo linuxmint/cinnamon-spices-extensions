@@ -1336,11 +1336,7 @@ class App {
             this.ResetFocusedWindow();
             this.focusMetaWindow = window;
             this.grid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
-            let actor = this.focusMetaWindow.get_compositor_private();
-            if (actor) {
-                this.focusMetaWindowPrivateConnections.push(actor.connect('size-changed', this.MoveUIActor));
-                this.focusMetaWindowPrivateConnections.push(actor.connect('position-changed', this.MoveUIActor));
-            }
+            this.focusMetaWindowPrivateConnections.push(...this.platform.subscribe_to_focused_window_changes(this.focusMetaWindow, this.MoveUIActor));
             let app = this.tracker.get_window_app(this.focusMetaWindow);
             let title = this.focusMetaWindow.get_title();
             if (app)
@@ -1443,6 +1439,15 @@ const get_window_center = (window) => {
     const pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
     return [pos_x, pos_y];
 };
+const subscribe_to_focused_window_changes = (window, callback) => {
+    const connections = [];
+    let actor = window.get_compositor_private();
+    if (actor) {
+        connections.push(actor.connect('size-changed', callback));
+        connections.push(actor.connect('position-changed', callback));
+    }
+    return connections;
+};
 
 ;// CONCATENATED MODULE: ./extension.ts
 
@@ -1453,7 +1458,8 @@ const platform = {
     move_maximize_window: move_maximize_window,
     move_resize_window: move_resize_window,
     reset_window: reset_window,
-    get_window_center: get_window_center
+    get_window_center: get_window_center,
+    subscribe_to_focused_window_changes: subscribe_to_focused_window_changes
 };
 const init = (meta) => {
     extension_metadata = meta;

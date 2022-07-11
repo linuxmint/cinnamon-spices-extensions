@@ -234,21 +234,9 @@ export class App implements IApp {
 
     this.grid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
 
-    let actor = this.focusMetaWindow.get_compositor_private();
-    if (actor) {
-      this.focusMetaWindowPrivateConnections.push(
-        actor.connect(
-          'size-changed',
-          this.MoveUIActor
-        )
-      );
-      this.focusMetaWindowPrivateConnections.push(
-        actor.connect(
-          'position-changed',
-          this.MoveUIActor
-        )
-      );
-    }
+    this.focusMetaWindowPrivateConnections.push(
+        ...this.platform.subscribe_to_focused_window_changes(this.focusMetaWindow, this.MoveUIActor)
+    );
 
     let app = this.tracker.get_window_app(this.focusMetaWindow);
     let title = this.focusMetaWindow.get_title();

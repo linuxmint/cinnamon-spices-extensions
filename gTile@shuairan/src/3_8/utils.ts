@@ -62,3 +62,24 @@ export const get_window_center = (window: imports.gi.Meta.Window): [pos_x: numbe
 
     return [pos_x, pos_y];
 }
+
+export const subscribe_to_focused_window_changes = (window: imports.gi.Meta.Window, callback: () => void): number[] => {
+    const connections: number[] = [];
+    let actor = window.get_compositor_private();
+    if (actor) {
+        connections.push(
+        actor.connect(
+          'size-changed',
+          callback
+        )
+      );
+      connections.push(
+        actor.connect(
+          'position-changed',
+          callback
+        )
+      );
+    }
+
+    return connections;
+};

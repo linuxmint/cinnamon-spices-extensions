@@ -9,7 +9,7 @@
 
 import { App } from "../base/app";
 import { Platform } from "../base/types";
-import { get_window_center, move_maximize_window, move_resize_window, reset_window } from "./utils";
+import { get_window_center, move_maximize_window, move_resize_window, reset_window, subscribe_to_focused_window_changes } from "./utils";
 
 /*****************************************************************
                          CONST & VARS
@@ -21,7 +21,8 @@ const platform: Platform = {
   move_maximize_window: move_maximize_window,
   move_resize_window: move_resize_window,
   reset_window: reset_window,
-  get_window_center: get_window_center
+  get_window_center: get_window_center,
+  subscribe_to_focused_window_changes: subscribe_to_focused_window_changes
 }
 
 /*****************************************************************
