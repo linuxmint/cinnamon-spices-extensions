@@ -1,4 +1,4 @@
-### 2.20
+### 2.2.0
 
 * Split codebase after Cinnamon version 5.4 because of breaking changes and fix breakages.
 
