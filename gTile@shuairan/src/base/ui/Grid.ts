@@ -182,9 +182,23 @@ export class Grid {
     return [Math.round(widthUnit), Math.round(heightUnit)];
   }
 
-  public AdjustTableSize = (time: number, width: number, height: number) => {
+  public GetTableSize(): [width: number, height: number] {
+    // Calculate new ui width and height in case we are moving to a different monitor
+    // We retain the size and the aspect ratio of the new monitor 
+    const aspect = GetMonitorAspectRatio(this.monitor);
+    if (!this.app.config.aspectRatio) 
+        return [220, 200];
+    
+    const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
+    const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+
+    return [newTableWidth, newTableHeight];
+  }
+
+  public AdjustTableSize = (width: number, height: number) => {
     this.tableWidth = width;
     this.tableHeight = height;
+    const time = this.app.config.AnimationTime;
     Tweener.addTween(this.table, {
       time: time,
       width: width,

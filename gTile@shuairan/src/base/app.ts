@@ -170,11 +170,8 @@ export class App implements IApp {
       return;
     
     let grid = this.grid;
-    // Calculate new ui width and height in case we are moving to a different monitor
-    // We retain the size and the aspect ratio of the new monitor 
-    const aspect = GetMonitorAspectRatio(grid.monitor);
-    const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
-    const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+
+    const [newTableWidth, newTableHeight] = grid.GetTableSize();
     const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
     const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
 
@@ -201,14 +198,12 @@ export class App implements IApp {
       pos_x = pos_x + gridWidth > monitor.width + monitor.x ? monitor.x + monitor.width - gridWidth : pos_x;
       pos_y = pos_y < monitor.y ? monitor.y : pos_y;
       pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
-    }
+    }  
 
-    let time = this.config.animation ? 0.3 : 0.1;   
-
-    grid.AdjustTableSize(time, newTableWidth, newTableHeight);
+    grid.AdjustTableSize(newTableWidth, newTableHeight);
 
     Tweener.addTween(grid.actor, {
-      time: time,
+      time: this.config.AnimationTime,
       x: pos_x,
       y: pos_y,
       transition: 'easeOutQuad',

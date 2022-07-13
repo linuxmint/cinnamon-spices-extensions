@@ -108,6 +108,10 @@ class Config {
             this.initGridSettings();
             this.app.Grid.RebuildGridSettingsButtons();
         };
+        this.UpdateGridTableSize = () => {
+            const [width, height] = this.app.Grid.GetTableSize();
+            this.app.Grid.AdjustTableSize(width, height);
+        };
         this.destroy = () => {
             this.DisableHotkey();
         };
@@ -122,6 +126,7 @@ class Config {
             this.nbRows = this.InitialGridItems();
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
         let basestr = 'grid';
         this.initGridSettings();
         for (let i = 1; i <= 4; i++) {
@@ -131,6 +136,9 @@ class Config {
             this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
         }
         this.EnableHotkey();
+    }
+    get AnimationTime() {
+        return this.animation ? 0.3 : 0.1;
     }
     SetGridConfig(columns, rows) {
         this.nbRows = rows;
@@ -810,9 +818,10 @@ let Grid = class Grid {
         this.interceptHide = false;
         this.elementsDelegateSignals = [];
         this.toggleSettingButtons = [];
-        this.AdjustTableSize = (time, width, height) => {
+        this.AdjustTableSize = (width, height) => {
             this.tableWidth = width;
             this.tableHeight = height;
+            const time = this.app.config.AnimationTime;
             Grid_Tweener.addTween(this.table, {
                 time: time,
                 width: width,
@@ -1121,6 +1130,14 @@ let Grid = class Grid {
         const heightUnit = height / rowSpans - (2 * this.borderwidth);
         return [Math.round(widthUnit), Math.round(heightUnit)];
     }
+    GetTableSize() {
+        const aspect = GetMonitorAspectRatio(this.monitor);
+        if (!this.app.config.aspectRatio)
+            return [220, 200];
+        const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
+        const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+        return [newTableWidth, newTableHeight];
+    }
     UpdateSettingsButtons() {
         for (const button of this.toggleSettingButtons) {
             button["_update"]();
@@ -1289,9 +1306,7 @@ class App {
             if (!window)
                 return;
             let grid = this.grid;
-            const aspect = GetMonitorAspectRatio(grid.monitor);
-            const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
-            const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+            const [newTableWidth, newTableHeight] = grid.GetTableSize();
             const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
             const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
             let pos_x;
@@ -1313,10 +1328,9 @@ class App {
                 pos_y = pos_y < monitor.y ? monitor.y : pos_y;
                 pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
             }
-            let time = this.config.animation ? 0.3 : 0.1;
-            grid.AdjustTableSize(time, newTableWidth, newTableHeight);
+            grid.AdjustTableSize(newTableWidth, newTableHeight);
             app_Tweener.addTween(grid.actor, {
-                time: time,
+                time: this.config.AnimationTime,
                 x: pos_x,
                 y: pos_y,
                 transition: 'easeOutQuad',

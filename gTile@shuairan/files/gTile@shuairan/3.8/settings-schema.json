@@ -57,7 +57,8 @@
          "title": "Behavior",
          "keys": [
             "animation",
-            "autoclose"
+            "autoclose",
+            "aspect-ratio"
          ]
       },
       "grid1-section": {
@@ -133,6 +134,12 @@
       "type": "checkbox",
       "default": "true",
       "description": "Auto-Close"
+   },
+   "aspect-ratio": {
+      "type": "checkbox",
+      "default": "true",
+      "description": "Use monitor aspect ratio",
+      "tooltip": "Should the popup's grid reflect the current monitor's aspect ratio or not."
    },
    "columns": {
 		"type": "label",

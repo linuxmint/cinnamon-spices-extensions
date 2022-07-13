@@ -20,6 +20,7 @@ export class Config {
     public readonly hotkey!: string;
     public readonly animation!: boolean;
     public readonly autoclose!: boolean;
+    public readonly aspectRatio!: boolean;
     // TODO: MAke sure these are actual lists!
     public readonly grid1x!: Row[];
     public readonly grid1y!: Column[];
@@ -31,6 +32,11 @@ export class Config {
     public readonly grid4y!: Column[];
     public nbRows!: Row[];
     public nbCols!: Column[];
+
+    /** in seconds */
+    public get AnimationTime(): number {
+        return this.animation ? 0.3 : 0.1;
+    }
 
     constructor(app: App) {
         this.app = app;
@@ -50,6 +56,7 @@ export class Config {
 
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
 
         let basestr = 'grid';
 
@@ -99,6 +106,11 @@ export class Config {
         this.gridSettingsButton = [];
         this.initGridSettings();
         this.app.Grid.RebuildGridSettingsButtons();
+    }
+
+    private UpdateGridTableSize = () => {
+        const [width, height] = this.app.Grid.GetTableSize();
+        this.app.Grid.AdjustTableSize(width, height);
     }
 
     public destroy = () => {
