@@ -1346,19 +1346,14 @@ class App {
             this.MoveUIActor();
         };
         this.ResetFocusedWindow = () => {
-            var _a, _b;
+            var _a;
             if (this.focusMetaWindowConnections.length > 0) {
                 for (var idx in this.focusMetaWindowConnections) {
                     (_a = this.focusMetaWindow) === null || _a === void 0 ? void 0 : _a.disconnect(this.focusMetaWindowConnections[idx]);
                 }
             }
-            if (this.focusMetaWindowPrivateConnections.length > 0) {
-                let actor = (_b = this.focusMetaWindow) === null || _b === void 0 ? void 0 : _b.get_compositor_private();
-                if (actor) {
-                    for (let idx in this.focusMetaWindowPrivateConnections) {
-                        actor.disconnect(this.focusMetaWindowPrivateConnections[idx]);
-                    }
-                }
+            if (this.focusMetaWindow != null && this.focusMetaWindowPrivateConnections.length > 0) {
+                this.platform.unsubscribe_from_focused_window_changes(this.focusMetaWindow, ...this.focusMetaWindowPrivateConnections);
             }
             this.focusMetaWindow = null;
             this.focusMetaWindowConnections = [];
@@ -1448,6 +1443,12 @@ const subscribe_to_focused_window_changes = (window, callback) => {
     }
     return connections;
 };
+const unsubscribe_from_focused_window_changes = (window, ...signals) => {
+    let actor = window.get_compositor_private();
+    for (const idx of signals) {
+        actor.disconnect(idx);
+    }
+};
 
 ;// CONCATENATED MODULE: ./extension.ts
 
@@ -1459,7 +1460,8 @@ const platform = {
     move_resize_window: move_resize_window,
     reset_window: reset_window,
     get_window_center: get_window_center,
-    subscribe_to_focused_window_changes: subscribe_to_focused_window_changes
+    subscribe_to_focused_window_changes: subscribe_to_focused_window_changes,
+    unsubscribe_from_focused_window_changes: unsubscribe_from_focused_window_changes
 };
 const init = (meta) => {
     extension_metadata = meta;

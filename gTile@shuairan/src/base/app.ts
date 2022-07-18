@@ -257,13 +257,8 @@ export class App implements IApp {
       }
     }
 
-    if (this.focusMetaWindowPrivateConnections.length > 0) {
-      let actor = this.focusMetaWindow?.get_compositor_private();
-      if (actor) {
-        for (let idx in this.focusMetaWindowPrivateConnections) {
-          actor.disconnect(this.focusMetaWindowPrivateConnections[idx]);
-        }
-      }
+    if (this.focusMetaWindow != null && this.focusMetaWindowPrivateConnections.length > 0) {
+      this.platform.unsubscribe_from_focused_window_changes(this.focusMetaWindow, ...this.focusMetaWindowPrivateConnections);
     }
 
     this.focusMetaWindow = null;

@@ -69,18 +69,24 @@ export const subscribe_to_focused_window_changes = (window: imports.gi.Meta.Wind
     let actor = window.get_compositor_private();
     if (actor) {
         connections.push(
-        window.connect(
-          'size-changed',
-          callback
-        )
-      );
-      connections.push(
-        window.connect(
-          'position-changed',
-          callback
-        )
-      );
+            window.connect(
+                'size-changed',
+                callback
+            )
+        );
+        connections.push(
+            window.connect(
+                'position-changed',
+                callback
+            )
+        );
     }
 
     return connections;
+};
+
+export const unsubscribe_from_focused_window_changes = (window: imports.gi.Meta.Window, ...signals: number[]): void => {
+    for (const idx of signals) {
+        window.disconnect(idx);
+    }
 };
