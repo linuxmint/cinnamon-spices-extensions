@@ -1251,9 +1251,9 @@ class App {
             let wm_type = this.focusMetaWindow.get_window_type();
             let layer = this.focusMetaWindow.get_layer();
             this.area.visible = true;
-            if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
+            const window = this.focusMetaWindow;
+            if (window != null && wm_type !== 1 && layer > 0) {
                 let grid = this.grid;
-                let window = getFocusApp();
                 grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor);
                 const [pos_x, pos_y] = this.platform.get_window_center(window);
                 grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
@@ -1395,7 +1395,8 @@ const reset_window = (metaWindow) => {
 };
 const _getInvisibleBorderPadding = (metaWindow) => {
     let outerRect = metaWindow.get_frame_rect();
-    let [borderX, borderY] = [outerRect.x, outerRect.y];
+    let inputRect = metaWindow.get_buffer_rect();
+    let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
     return [borderX, borderY];
 };
 const move_maximize_window = (metaWindow, x, y) => {

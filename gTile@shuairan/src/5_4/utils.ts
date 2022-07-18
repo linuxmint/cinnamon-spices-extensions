@@ -9,8 +9,8 @@ export const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
 
 const _getInvisibleBorderPadding = (metaWindow: imports.gi.Meta.Window) => {
     let outerRect = metaWindow.get_frame_rect();
-    // let inputRect = metaWindow.get_input_rect();
-    let [borderX, borderY] = [outerRect.x/* - inputRect.x*/, outerRect.y/* - inputRect.y*/];
+    let inputRect = metaWindow.get_buffer_rect();
+    let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
 
     return [borderX, borderY];
 }
@@ -38,8 +38,8 @@ export const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x:
     // https://github.com/linuxmint/cinnamon-spices-extensions/commit/fda3a2b0c6adfc79ba65c6bd9a174795223523b9
 
     // TODO: See if this is still needed
-    // let clientRect = metaWindow.get_rect();
-    // let outerRect = metaWindow.get_outer_rect();
+    // let clientRect = metaWindow.get_buffer_rect();
+    // let outerRect = metaWindow.get_frame_rect();
 
     // let client_deco = clientRect.width > outerRect.width &&
     //     clientRect.height > outerRect.height;
