@@ -104,6 +104,7 @@ let grabEventID = 0;
 let idleTimerID = 0;
 let maximizeEventID = 0;
 let minimizeEventID = 0;
+let sizeChangeEventID = 0;
 let tileEventID = 0;
 
 let workspaces = [];
@@ -300,6 +301,18 @@ function possiblyRedecorate(win) {
 }
 
 /**** Callbacks ****/
+
+/** Recent versions of Cinnamon use this function
+ */
+function onSizeChange(shellwm, actor, change) {
+    if (change === Meta.SizeChange.MAXIMIZE) {
+        onMaximize(shellwm, actor);
+    }
+    if (change === Meta.SizeChange.UNMAXIMIZE) {
+        onUnmaximize(shellwm, actor);
+    }
+}
+
 /** Called when a window is maximized, including half-maximization.
  *
  * If the window is not in the blacklist (or is in the whitelist), we undecorate
@@ -482,9 +495,18 @@ function startUndecorating() {
     if (settings.onlyManual == false) {
         /* Connect events */
         changeNWorkspacesEventID = global.screen.connect("notify::n-workspaces", onChangeNWorkspaces);
-        // we must listen to maximize and unmaximize events.
-        maximizeEventID = global.window_manager.connect("maximize", onMaximize);
-        minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximize);
+        try {
+            // Cinnamon 5.4 requires using size-change instead of maximize and unmaximize
+            sizeChangeEventID = global.window_manager.connect("size-change", onSizeChange);
+        } catch (e) {
+            if (e.message === "No signal 'size-change' on object 'CinnamonWM'") {
+                // we must listen to maximize and unmaximize events when size-change is not available (Cinnamon versions older than 5.4)
+                maximizeEventID = global.window_manager.connect("maximize", onMaximize);
+                minimizeEventID = global.window_manager.connect("unmaximize", onUnmaximize);
+            } else {
+                throw e;
+            }
+        }
         if (settings.undecorateTile == true) {
             tileEventID = global.window_manager.connect("tile", onMaximize);
         }
@@ -537,11 +559,13 @@ function startUndecorating() {
 function stopUndecorating() {
     if (maximizeEventID) global.window_manager.disconnect(maximizeEventID);
     if (minimizeEventID) global.window_manager.disconnect(minimizeEventID);
+    if (sizeChangeEventID) global.window_manager.disconnect(sizeChangeEventID);
     if (tileEventID) global.window_manager.disconnect(tileEventID);
     if (changeNWorkspacesEventID) global.screen.disconnect(changeNWorkspacesEventID);
     if (grabEventID) global.display.disconnect(grabEventID);
     maximizeEventID = 0;
     minimizeEventID = 0;
+    sizeChangeEventID = 0;
     tileEventID = 0;
     changeNWorkspacesEventID = 0;
     grabEventID = 0;
