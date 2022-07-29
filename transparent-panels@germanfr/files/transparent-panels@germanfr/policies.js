@@ -149,6 +149,14 @@ MaximizedPolicy.prototype = {
 		this.lookup_windows_state(win.get_monitor());
 	},
 
+	_on_window_size_changed: function (wm, win, change) {
+		if (change === Meta.SizeChange.MAXIMIZE) {
+			this._on_window_appeared(wm, win);
+		} else if (change === Meta.SizeChange.UNMAXIMIZE) {
+			this._on_window_disappeared(wm, win);
+		}
+	},
+
 	_on_desktop_focused: function (desktop) {
 		if(desktop.get_window_type() !== Meta.WindowType.DESKTOP)
 			return;
