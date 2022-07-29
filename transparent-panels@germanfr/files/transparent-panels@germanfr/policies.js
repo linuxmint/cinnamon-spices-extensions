@@ -64,6 +64,8 @@ MaximizedPolicy.prototype = {
 		if (config.PACKAGE_VERSION < "5.4") {
 			this._signals.connect(global.window_manager, "maximize", this._on_window_appeared, this);
 			this._signals.connect(global.window_manager, "unmaximize", this._on_window_disappeared, this);
+		} else {
+			this._signals.connect(global.window_manager, "size-change", this._on_window_size_changed, this);
 		}
 
 		this._signals.connect(global.window_manager, "map", this._on_window_appeared, this);
