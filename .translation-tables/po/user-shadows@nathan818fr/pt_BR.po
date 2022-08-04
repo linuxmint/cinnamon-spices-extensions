@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-24 17:04+0200\n"
+"PO-Revision-Date: 2021-09-24 12:05-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: custom-settings-widgets.py:12
+msgid "Radius"
+msgstr "Raio"
+
+#: custom-settings-widgets.py:13
+msgid "Top Fade"
+msgstr "Esmaecimento superior"
+
+#: custom-settings-widgets.py:14
+msgid "X Offset"
+msgstr "Deslocamento em X"
+
+#: custom-settings-widgets.py:15
+msgid "Y Offset"
+msgstr "Deslocamento em Y"
+
+#: custom-settings-widgets.py:16
+msgid "Opacity"
+msgstr "Opacidade"
+
+#: custom-settings-widgets.py:39
+msgid "Class Name"
+msgstr "Nome da classe"
+
+#: custom-settings-widgets.py:42
+msgid "State"
+msgstr "Estado"
+
+#: custom-settings-widgets.py:102
+msgid "Import"
+msgstr "Importar"
+
+#: custom-settings-widgets.py:106
+msgid "Export"
+msgstr "Exportar"
+
+#: custom-settings-widgets.py:110
+msgid "Set from..."
+msgstr "Definir de..."
+
+#: custom-settings-widgets.py:169
+msgid "Choose where to save your configuration"
+msgstr "Escolha onde salvar o seu ajuste"
+
+#: custom-settings-widgets.py:169
+msgid "Choose a configuration to load"
+msgstr "Escolha uma configuração para carregar"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Sombras preferidas"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Ajuste as sombras das janelas no Cinnamon"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Sugestões de sombra"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Padrão"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Nenhuma sombra"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Personalizada"

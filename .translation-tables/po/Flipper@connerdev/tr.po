@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Gökhan Gökkaya <gokhanlnx@gmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:44+0000\n"
+"PO-Revision-Date: 2021-03-15 20:55+0300\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr "Değiştirici"
+
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "Çalışma alanı değiştirmek için hoş bir eklenti"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Genel"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Animasyon süresi"
+
+#. settings-schema.json->pullaway->description
+msgid "Zoom Amount"
+msgstr "Yakınlaştırma Miktarı"
+
+#. settings-schema.json->fade->description
+msgid "Fade Transition"
+msgstr "Kaybolma Geçişi"
+
+#. settings-schema.json->dim_factor->description
+msgid "Background Dim Amount"
+msgstr "Arkaplan Donuklaşma Miktarı"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efektler"
+
+#. settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "Kaybolma Efekti"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr "Küp"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr "Deste"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr "Çevir"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr "Patlama"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr "Döndür"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr "Kaydır"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr "Yığma"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Transition Easing"
+msgstr "Geçiş Yardımcısı"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr "Geri"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr "Titreme"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr "Daire"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr "Küpsel"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr "Küpsel-Geri"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr "Küpsel-Titreme"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr "Küpsel-Esnek"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr "Esnek"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr "Sergi"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr "Eğrisel"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr "Dörtlü"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr "Çeyrek"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr "Art arda"
+
+#. settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "Arkaplan Dahil"

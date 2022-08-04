@@ -1,0 +1,173 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 22:20+0000\n"
+"PO-Revision-Date: 2018-11-08 18:13+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr "Vandmærke"
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr "Placér et vandmærke på skrivebordet."
+
+#. 3.8->settings-schema.json->section0->description
+#. 3.2->settings-schema.json->section0->description
+msgid "Appearance"
+msgstr "Udseende"
+
+#. 3.8->settings-schema.json->icon->description
+#. 3.2->settings-schema.json->icon->description
+#, fuzzy
+msgid "Watermark logo"
+msgstr "Vandmærke"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Cinnamon"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Antergos"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Arch"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Debian"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux Mint"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro (with text)"
+msgstr ""
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Custom..."
+msgstr ""
+
+#. 3.8->settings-schema.json->custom-icon->description
+#. 3.2->settings-schema.json->custom-icon->description
+#, fuzzy
+msgid "Custom icon or image"
+msgstr "Vandmærkeikon eller billede"
+
+#. 3.8->settings-schema.json->alpha->description
+#. 3.2->settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr "Uigennemsigtighed (%)"
+
+#. 3.8->settings-schema.json->invert->description
+#. 3.2->settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr "Invertér farver"
+
+#. 3.8->settings-schema.json->invert->tooltip
+#. 3.2->settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr "Inverterer billedets farver — nyttigt på lyse baggrunde."
+
+#. 3.8->settings-schema.json->section1->description
+#. 3.2->settings-schema.json->section1->description
+msgid "Position"
+msgstr "Placering"
+
+#. 3.8->settings-schema.json->position-x->description
+#. 3.2->settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "Vandret justering"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Left"
+msgstr "Venstre"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Center"
+msgstr "Midten"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Right"
+msgstr "Højre"
+
+#. 3.8->settings-schema.json->margin-x->description
+#. 3.2->settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "Vandret margen"
+
+#. 3.8->settings-schema.json->margin-x->units
+#. 3.8->settings-schema.json->margin-y->units
+#. 3.8->settings-schema.json->size->units
+#. 3.2->settings-schema.json->margin-x->units
+#. 3.2->settings-schema.json->margin-y->units
+#. 3.2->settings-schema.json->size->units
+msgid "px"
+msgstr "pixel"
+
+#. 3.8->settings-schema.json->position-y->description
+#. 3.2->settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "Lodret justering"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Top"
+msgstr "Øverst"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "Nederst"
+
+#. 3.8->settings-schema.json->margin-y->description
+#. 3.2->settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "Lodret margen"
+
+#. 3.8->settings-schema.json->section2->description
+#. 3.8->settings-schema.json->size->description
+#. 3.2->settings-schema.json->section2->description
+#. 3.2->settings-schema.json->size->description
+msgid "Size"
+msgstr "Størrelse"
+
+#. 3.8->settings-schema.json->use-custom-size->description
+#. 3.2->settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr "Anvend en tilpasset størrelse"

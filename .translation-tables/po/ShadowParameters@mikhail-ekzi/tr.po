@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Gökhan GÖKKAYA <gokhanlnx@gmail.com>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-26 22:14+0800\n"
+"PO-Revision-Date: 2018-04-05 20:06+0300\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"Language-Team: Linux Mint Türkiye\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. ShadowParameters@mikhail-ekzi->metadata.json->name
+#. ShadowParameters@mikhail-ekzi->settings-schema.json->h1->description
+msgid "Custom Shadows"
+msgstr "Özel Gölgeler"
+
+#. ShadowParameters@mikhail-ekzi->metadata.json->description
+msgid "Customizable shadow parameters"
+msgstr "Özelleştirilebilir gölge değişkenleri"
+
+#. ShadowParameters@mikhail-ekzi->settings-schema.json->h2->description
+msgid "You could manually edit prefs.json to add your custom shadows presets."
+msgstr ""
+"Özel gölge ön-ayarları eklemek için prefs.json dosyasını elle "
+"düzenleyebilirsiniz."
+
+#. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->description
+msgid "Shadow presets"
+msgstr "Gölge ön-ayarları"
+
+#. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->options
+msgid "Default"
+msgstr "Varsayılan"
+
+#. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Gölge Yok"
+
+#. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->options
+msgid "Windows 10"
+msgstr "Windows 10"
+
+#. ShadowParameters@mikhail-ekzi->settings-
+#. schema.json->apply_changes_button->description
+msgid "Apply Changes"
+msgstr "Değişiklikleri Uygula"
+
+#. ShadowParameters@mikhail-ekzi->settings-
+#. schema.json->restart_cinnamon_button->description
+msgid "Restart Cinnamon"
+msgstr "Cinnamon'u Yenile"

@@ -1,0 +1,300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-29 23:06+0800\n"
+"PO-Revision-Date: 2021-09-26 08:38+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+#. smart-panel@mohammad-sn->metadata.json->name
+msgid "Smart Panel"
+msgstr "Intelligens panel"
+
+#. smart-panel@mohammad-sn->metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Váltás a panel üres helyén egérgörgetéssel, dupla kattintással, "
+"egérgesztusokkal a munkaterületek között, megjeleníti az Asztalt, az "
+"Áttekintő vagy a Közszemle nézetet."
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->description
+msgid "Modifier key: "
+msgstr "Módosítóbillentyű: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Shift"
+msgstr "Shift"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. scope->description
+msgid "Switch between windows from: "
+msgstr "Váltás a következő ablakok között: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Aktuális alkalmazás"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Aktuális munkaterület"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Minden munkaterület"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "Harmadik egyéni parancs:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "Második egyéni parancs:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Görgetési művelet: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "None"
+msgstr "Nincs"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Váltás a munkaterületek között"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Asztal megjelenítése"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Ablak átlátszatlanság állítás"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Váltás az ablakok között"
+
+#. smart-panel@mohammad-sn->settings-schema.json->sep-scroll-
+#. action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Független műveletek fel vagy le egérgörgetésnél"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Panelen való dupla kattintás művelete: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Launch App Switcher"
+msgstr "Alkalmazásváltó elindítása"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 1st Custom Command"
+msgstr "Első egyéni parancs futtatása"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Overview"
+msgstr "Áttekintés"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Harmadik egyéni parancs futtatása"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Második egyéni parancs futtatása"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Expo"
+msgstr "Közszemle"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Show Desktop"
+msgstr "Asztal megjelenítése"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "Áthúzás balra: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "Áthúzás jobbra: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Váltás a jobb oldali munkaterületre"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Váltás a bal oldali munkaterületre"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Váltás az utolsó munkaterületre"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Váltás az első munkaterületre"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Minimális időköz a görgetések között:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "ezredmásodperc"
+
+#. smart-panel@mohammad-sn->settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Egérgesztusok használata a panelen"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. down->description
+msgid "Action on scrolling down: "
+msgstr "Lefelé görgetési művelet: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. up->description
+msgid "Action on scrolling up: "
+msgstr "Felfelé görgetési művelet: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "Első egyéni parancs:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Kattintson az a képernyő élére és húzza el függőlegesen: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Panelen való középső egérgomb kattintás művelete: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Alkalmazásváltó beállítások: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Egyéni parancsok: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Egérgesztusok: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Egérgomb kattintás művelet: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Egérgörgő művelet: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->prev-fast-
+#. scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Megakadályozza a gyors görgetés miatt bekövetkező nem szándékos munkaterület "
+"és ablak váltásokat"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "Módosítóbillentyű lenyomásakor váltás a következő ablakok között: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. style->description
+msgid "App switcher style: "
+msgstr "Alkalmazásváltó stílusa: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Csak ikonok"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Ikonok és ablak előnézet"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Csak előnézeti képek"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Rendszer alapértelmezés"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Idővonal (3D)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Ablak előnézet (ikonok nélkül)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Ikonok és előnézetek"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Coverflow (3D)"

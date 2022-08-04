@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"PO-Revision-Date: 2021-03-02 20:43+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Desktop Scroller"
+msgstr "Arbeitsflächen-Scroller"
+
+#. metadata.json->description
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Wechseln der Arbeitsfläche durch Scrollen am linken und rechten "
+"Bildschirmrand."
+
+#. settings-schema.json->showDirectionArrow->description
+msgid "Show direction arrow"
+msgstr "Richtungspfeil anzeigen"
+
+#. settings-schema.json->showDirectionArrow->tooltip
+msgid "Check this to show an arrow indicating scroll direction."
+msgstr ""
+"Aktivieren, um einen Pfeil einzublenden, der die Scrollrichtung anzeigt."
+
+#. settings-schema.json->activationAreaWidth->units
+msgid "pixels"
+msgstr "Pixel"
+
+#. settings-schema.json->activationAreaWidth->description
+msgid "Activation area width:"
+msgstr "Breite des Aktivierungsbereichs:"
+
+#. settings-schema.json->activationAreaWidth->tooltip
+msgid "Width of activation areas"
+msgstr "Breite der Aktivierungsbereiche"
+
+#. settings-schema.json->showActivationAreas->description
+msgid "Show activation areas"
+msgstr "Aktivierungsbereiche anzeigen"
+
+#. settings-schema.json->showActivationAreas->tooltip
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Aktivieren, um die Bereiche anzuzeigen, über die beim Scrollen die "
+"Arbeitsfläche gewechselt wird."

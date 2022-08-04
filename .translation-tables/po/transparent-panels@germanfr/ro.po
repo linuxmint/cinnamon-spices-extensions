@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2020-06-12 23:08+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s activat"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "Deschide setările extensiei și personalizează-ți panourile"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "Deschide setări"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Panouri transparente"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr "Transparentizează panourile tale când nu sunt ferestre maximizate"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "General"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "Tip de transparență"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "Cu umbră"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Complet transparent"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Semi-transparent"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "Alege tipul de transparență pe care îl dorești."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Folosește stilul temei curente"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Numai pentru temele permise. Lasă tema să configureze stilul panourilor în "
+"locul pre-setărilor extensiei. Folosește în caz că transparența panourilor "
+"este setată incorect."
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "Înlătură transparența temei (experimental)"
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr "Înlătură transparența panoului când nu este transparent."
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Filtrează panouri"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "Selectează panourile care vor fi afectate de această extensie."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Panou sus"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Panou dreapta"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Panou jos"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Panou stânga"

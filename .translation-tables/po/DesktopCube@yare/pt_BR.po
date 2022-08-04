@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Marcelo Aof, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 21:49+0000\n"
+"PO-Revision-Date: 2021-09-26 21:23-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Cubo de áreas de trabalho"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr ""
+"Alterne os espaços de trabalho com uma animação inspirada nos cubos do Compiz"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Visão geral"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Duração da animação"
+
+#. settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Proporção de afastamento da tela"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efeitos"
+
+#. settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Efeito de afastamento da tela"
+
+#. settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Efeito de aproximação da tela"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Início do efeito de rotação"
+
+#. settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Fim do efeito de rotação"
+
+#. settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Configurações do sistema"
+
+#. settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Abrir as configurações do Cinnamon para ajustar os espaços de trabalho"

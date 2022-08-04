@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-24 17:04+0200\n"
+"PO-Revision-Date: 2021-06-24 17:09+0200\n"
+"Last-Translator: Nathan Poirier <nathan@poirier.io>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: custom-settings-widgets.py:12
+msgid "Radius"
+msgstr "Rayon"
+
+#: custom-settings-widgets.py:13
+msgid "Top Fade"
+msgstr "Fondu supérieur"
+
+#: custom-settings-widgets.py:14
+msgid "X Offset"
+msgstr "Décalage X"
+
+#: custom-settings-widgets.py:15
+msgid "Y Offset"
+msgstr "Décalage Y"
+
+#: custom-settings-widgets.py:16
+msgid "Opacity"
+msgstr "Opacité"
+
+#: custom-settings-widgets.py:39
+msgid "Class Name"
+msgstr "Classe"
+
+#: custom-settings-widgets.py:42
+msgid "State"
+msgstr "État"
+
+#: custom-settings-widgets.py:102
+msgid "Import"
+msgstr "Importer"
+
+#: custom-settings-widgets.py:106
+msgid "Export"
+msgstr "Exporter"
+
+#: custom-settings-widgets.py:110
+msgid "Set from..."
+msgstr "Définir à partir de..."
+
+#: custom-settings-widgets.py:169
+msgid "Choose where to save your configuration"
+msgstr "Choisissez où enregistrer votre configuration"
+
+#: custom-settings-widgets.py:169
+msgid "Choose a configuration to load"
+msgstr "Choisissez une configuration à charger"
+
+# We do not translate the name of the extension
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "User Shadows"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Personnaliser les ombres des fenêtres de cinnamon"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Présélection d'ombres"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Par défaut"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Pas d'ombres"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Personnalisé"

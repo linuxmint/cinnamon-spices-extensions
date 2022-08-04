@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Marcelo Aof, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-29 23:06+0800\n"
+"PO-Revision-Date: 2021-09-26 23:29-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. smart-panel@mohammad-sn->metadata.json->name
+msgid "Smart Panel"
+msgstr "Painel inteligente"
+
+#. smart-panel@mohammad-sn->metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Role com o mouse, clique duas vezes ou use gestos do mouse no espaço livre "
+"do painel, de modo a: alternar entre os espaços de trabalho; mostrar a área "
+"de trabalho; mostrar as janelas abertas; mostrar todos os espaços de "
+"trabalho; ..."
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->description
+msgid "Modifier key: "
+msgstr "Tecla modificadora: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Shift"
+msgstr "Shift"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. scope->description
+msgid "Switch between windows from: "
+msgstr "Alternar entre as janelas de: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Aplicativo atual"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Espaço de trabalho atual"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Todos os espaços de trabalho"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "3º comando personalizado:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "2º comando personalizado:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Ação ao rolar o mouse: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "None"
+msgstr "Nenhuma ação"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Alterna entre espaços de trabalho"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Mostra/esconde a área de trabalho"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Ajusta a opacidade das janelas"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Alterna entre janelas"
+
+#. smart-panel@mohammad-sn->settings-schema.json->sep-scroll-
+#. action->description
+msgid "Independent actions for scrolling up and down"
+msgstr ""
+"Considerar a rolagem para cima e a rolagem para baixo como ações "
+"independentes"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Ação ao clicar duas vezes no painel: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Launch App Switcher"
+msgstr "Abrir o Alt + Tab"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 1st Custom Command"
+msgstr "Executar o primeiro comando personalizado"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Overview"
+msgstr "Mostrar as janelas abertas"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Executar o terceiro comando personalizado"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Executar o segundo comando personalizado"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Expo"
+msgstr "Mostrar todos os espaços de trabalho"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Show Desktop"
+msgstr "Mostrar a área de trabalho"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Ao arrastar para a direita: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Ao arrastar para a esquerda: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Ir para o espaço de trabalho à direita"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Ir para o espaço de trabalho à esquerda"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Ir para o espaço de trabalho anterior"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Ir para o primeiro espaço de trabalho"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Atraso mínimo entre as rolagens:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "milissegundos"
+
+#. smart-panel@mohammad-sn->settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Usar gestos do mouse no painel"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. down->description
+msgid "Action on scrolling down: "
+msgstr "Ação ao rolar para baixo: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. up->description
+msgid "Action on scrolling up: "
+msgstr "Ação ao rolar para cima: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "1º comando personalizado:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr ""
+"Dentro do painel, ao clicar na borda da tela e arrastar verticalmente: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Ação ao clicar com o botão do meio no painel: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Configurações do Alt + Tab: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Comandos personalizados: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Gestos do mouse: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Opções de clique do mouse: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Opções de rolagem do mouse: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->prev-fast-
+#. scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Impedir a alternância veloz de espaços de trabalho/janelas, ao rolar o mouse "
+"rapidamente"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr ""
+"Quando a tecla modificadora for pressionada, alterne entre as janelas de: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. style->description
+msgid "App switcher style: "
+msgstr "Aparência do alternador de aplicativos: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Somente ícones"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Pré-visualização de ícones e janelas"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Somente miniaturas"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Padrão do sistema"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Linha do tempo (3D)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Pré-visualização de janelas (sem ícones)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Ícones e miniaturas"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Coverflow (3D)"

@@ -1,0 +1,300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-29 23:06+0800\n"
+"PO-Revision-Date: 2019-12-20 23:27+0300\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. smart-panel@mohammad-sn->metadata.json->name
+msgid "Smart Panel"
+msgstr "Akıllı Panel"
+
+#. smart-panel@mohammad-sn->metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Panelin boş alanında kaydırma, çift tıklama, fare hareketleri vb. ile "
+"çalışma alanları arasında geçiş yapar, masaüstünü gösterir, ölçekleme veya "
+"sergi ekranını etkinleştirir."
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->description
+msgid "Modifier key: "
+msgstr "Değiştirici tuş: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Shift"
+msgstr "Üst karakter"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Ctrl"
+msgstr "Kontrol"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. scope->description
+msgid "Switch between windows from: "
+msgstr "Şununula pencereler arasında geçiş yap: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Mevcut Uygulama"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Mevcut çalışma alanı"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Tüm çalışma alanları"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "3. Özel Komut:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "2. Özel Komut:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Kaydırma eylemi: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "None"
+msgstr "Hiçbiri"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Çalışma alanları arasında geçiş"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Masaüstünü gösterme geçişi"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Pencerelerin matlığını ayarlama"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Pencereler arasında geçiş"
+
+#. smart-panel@mohammad-sn->settings-schema.json->sep-scroll-
+#. action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Yukarı ve aşağı kaydırma için bağımsız eylemler"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Panele çift tıklama eylemi: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Launch App Switcher"
+msgstr "Uygulama Değiştiriciyi Başlat"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 1st Custom Command"
+msgstr "1. Özel Komutu Çalıştır"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Overview"
+msgstr "Ölçekleme"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 3rd Custom Command"
+msgstr "3. Özel Komutu Çalıştır"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 2nd Custom Command"
+msgstr "2. Özel Komutu Çalıştır"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Expo"
+msgstr "Sergi"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Show Desktop"
+msgstr "Masaüstünü Göster"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Sağa sürükleme: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Sola sürükleme: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Sağdaki Çalışma Alanına git"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Soldaki Çalışma Alanına git"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Son Çalışma Alanına git"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "İlk Çalışma Alanına git"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Kaydırmalar arasındaki minimum gecikme:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "milisaniye"
+
+#. smart-panel@mohammad-sn->settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Panel üstünde fare haretlerini kullan"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. down->description
+msgid "Action on scrolling down: "
+msgstr "Aşağı kaydırma eylemi: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. up->description
+msgid "Action on scrolling up: "
+msgstr "Yukarı kaydırma eylemi: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "1. Özel Komut:"
+
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Panelin alt kısmına tıklayın ve yukarıya sürükleyin: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Panele orta tıklama eylemi: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Uygulama Geçiş Ayarları: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Özel Komutlar: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Fare hareketleri: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Fare tıklama seçenekleri: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Fare kaydırma seçenekleri: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->prev-fast-
+#. scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr "Hızlı kaydırmada yanlışlıkla çalışma alanı/pencere geçişini önle"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr ""
+"Bir değiştirici tuşa basıldığında, şununla pencereler araasında geçiş yap: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. style->description
+msgid "App switcher style: "
+msgstr "Uygulama değiştirici türü: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Sadece simge"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Simgeler ve pencere önizleme"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Sadece küçük önizlemeler"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Sistem varsayılanı"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Zaman tüneli (3D)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Pencere önizleme (simge yok)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Simgeler ve küçük önizlemeler"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Kapak akışı (3D)"

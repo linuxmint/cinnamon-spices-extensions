@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:44+0000\n"
+"PO-Revision-Date: 2021-03-02 21:09+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr "Flipper"
+
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "Erweiterung für ausgefallene Arbeitsflächenwechsel"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Allgemein"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Animationsdauer"
+
+#. settings-schema.json->pullaway->description
+msgid "Zoom Amount"
+msgstr "Zoomstufe"
+
+#. settings-schema.json->fade->description
+msgid "Fade Transition"
+msgstr "Verblassen beim Übergang"
+
+#. settings-schema.json->dim_factor->description
+msgid "Background Dim Amount"
+msgstr "Dimmstufe des Hintergrunds"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Effekte"
+
+#. settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "Übergangseffekt"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr "Würfel"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr "Umblättern"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr "Umdrehen"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr "Pop"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr "Rolodex"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr "Gleiten"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr "Stapeln"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Transition Easing"
+msgstr "Leichtigkeit des Übergangs"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr "Zurück"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr "Hüpfen"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr "Kreisen"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr "Kubisch"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr "Kubisch-Zurück"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr "Kubisch-Hüpfen"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr "Kubisch-Elastisch"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr "Elastisch"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr "Expo"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr "Sinus"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr "Quadratisch"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr "Quartisch"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr "Quintisch"
+
+#. settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "Hintergrund mit einbeziehen"

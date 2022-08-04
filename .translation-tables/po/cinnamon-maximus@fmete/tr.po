@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2019-12-19 18:39+0300\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"Language-Team:  \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+#, fuzzy
+msgid "Undecorate windows as you like."
+msgstr "Tam ekranda pencere süslemelerini kaldır."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Cinnamon-Maximus Ayarları"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr ""
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr ""
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Pencere döşendiğinde süslemelerini kaldır"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Tüm Pencerelerin Süslemelerini Kaldırır (Deneysel, lütfen tüm pencereleri "
+"kapatıp yeniden açınız)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr ""
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr ""
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating"
+msgstr ""
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr ""
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr ""
+
+#~ msgid "Use Blacklist"
+#~ msgstr "Karaliste Kullan"
+
+#~ msgid ""
+#~ "Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for "
+#~ "seperate apps)"
+#~ msgstr ""
+#~ "Uygulama Karalistesi (\"Kara Liste Etkinliğini Kontrol Et\", lütfen "
+#~ "farklı uygulamaları ayırmak için \",\" kullanın)"
