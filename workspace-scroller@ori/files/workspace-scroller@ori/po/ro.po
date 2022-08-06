@@ -5,34 +5,34 @@
 #
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 01:56+0200\n"
+"POT-Creation-Date: 2021-03-02 22:28+0000\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 22:28+0000\n"
-"PO-Revision-Date: 2022-08-06 01:56+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: ro\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->name
 msgid "Workspace Scroller"
-msgstr ""
+msgstr "Scrollerul spațiului de lucru"
 
 #. metadata.json->description
 msgid "Switch workspaces using mouse scroll at screen edges."
-msgstr ""
+msgstr "Comutați spațiile de lucru utilizând derularea mouse-ului la marginile ecranului."
 
 #. settings-schema.json->edgesHeader->description
 msgid "Edges"
-msgstr ""
+msgstr "Marginile"
 
 #. settings-schema.json->Left->description
 msgid "Use left edge"
-msgstr ""
+msgstr "Utilizați marginea stângă"
 
 #. settings-schema.json->LeftUp->description
 #. settings-schema.json->RightUp->description
@@ -43,7 +43,7 @@ msgstr ""
 #. settings-schema.json->BottomLeftUp->description
 #. settings-schema.json->BottomRightUp->description
 msgid " — Scroll up: "
-msgstr ""
+msgstr " - Derulați în sus:"
 
 #. settings-schema.json->LeftUp->options
 #. settings-schema.json->LeftDown->options
@@ -62,7 +62,7 @@ msgstr ""
 #. settings-schema.json->BottomRightUp->options
 #. settings-schema.json->BottomRightDown->options
 msgid "None"
-msgstr ""
+msgstr "Žádné"
 
 #. settings-schema.json->LeftUp->options
 #. settings-schema.json->LeftDown->options
@@ -81,7 +81,7 @@ msgstr ""
 #. settings-schema.json->BottomRightUp->options
 #. settings-schema.json->BottomRightDown->options
 msgid "Switch left"
-msgstr ""
+msgstr "Comutator stânga"
 
 #. settings-schema.json->LeftUp->options
 #. settings-schema.json->LeftDown->options
@@ -100,7 +100,7 @@ msgstr ""
 #. settings-schema.json->BottomRightUp->options
 #. settings-schema.json->BottomRightDown->options
 msgid "Switch right"
-msgstr ""
+msgstr "Comutator dreapta"
 
 #. settings-schema.json->LeftUp->options
 #. settings-schema.json->LeftDown->options
@@ -119,7 +119,7 @@ msgstr ""
 #. settings-schema.json->BottomRightUp->options
 #. settings-schema.json->BottomRightDown->options
 msgid "Show expo"
-msgstr ""
+msgstr "Expoziție"
 
 #. settings-schema.json->LeftDown->description
 #. settings-schema.json->RightDown->description
@@ -130,44 +130,44 @@ msgstr ""
 #. settings-schema.json->BottomLeftDown->description
 #. settings-schema.json->BottomRightDown->description
 msgid " — Scroll down: "
-msgstr ""
+msgstr " - Derulați în jos:"
 
 #. settings-schema.json->Right->description
 msgid "Use right edge"
-msgstr ""
+msgstr "Utilizați marginea dreaptă"
 
 #. settings-schema.json->Top->description
 msgid "Use top edge"
-msgstr ""
+msgstr "Utilizați marginea superioară"
 
 #. settings-schema.json->Bottom->description
 msgid "Use bottom edge"
-msgstr ""
+msgstr "Utilizați marginea inferioară"
 
 #. settings-schema.json->cornersHeader->description
 msgid "Corner"
-msgstr ""
+msgstr "Colțar"
 
 #. settings-schema.json->TopLeft->description
 msgid "Use top left corner"
-msgstr ""
+msgstr "Utilizați colțul din stânga sus"
 
 #. settings-schema.json->TopRight->description
 msgid "Use top right corner"
-msgstr ""
+msgstr "Utilizați colțul din dreapta sus"
 
 #. settings-schema.json->BottomLeft->description
 msgid "Use bottom left corner"
-msgstr ""
+msgstr "Utilizați colțul din stânga jos"
 
 #. settings-schema.json->BottomRight->description
 msgid "Use bottom right corner"
-msgstr ""
+msgstr "Utilizați colțul din dreapta jos"
 
 #. settings-schema.json->cornerSize->units
 msgid "pixels"
-msgstr ""
+msgstr "pixeli"
 
 #. settings-schema.json->cornerSize->description
 msgid "Corners areas size: "
-msgstr ""
+msgstr "Dimensiunea zonelor de colțuri:"

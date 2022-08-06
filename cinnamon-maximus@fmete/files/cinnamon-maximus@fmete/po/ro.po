@@ -5,72 +5,67 @@
 #
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 01:56+0200\n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
-"PO-Revision-Date: 2022-08-06 01:56+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: ro\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
-"%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->name
 msgid "Cinnamon Maximus"
-msgstr ""
+msgstr "Scorțișoară Maximus"
 
 #. metadata.json->description
 msgid "Undecorate windows as you like."
-msgstr ""
+msgstr "Decorați ferestrele după cum doriți."
 
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
-msgstr ""
+msgstr "Scorțișoară-Maximus Setări"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
-msgstr ""
+msgstr "Utilizați tasta rapidă pentru a comuta decorarea ferestrei curente"
 
 #. settings-schema.json->hotkey->description
 msgid "Global Hotkey to toggle decoration of current window (Experimental)"
-msgstr ""
+msgstr "Tastă rapidă globală pentru a comuta decorarea ferestrei curente (Experimental)"
 
 #. settings-schema.json->undecorateTile->description
 msgid "Undecorate when tile"
-msgstr ""
+msgstr "Undecorate atunci când țiglă"
 
 #. settings-schema.json->undecorateAll->description
-msgid ""
-"Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr ""
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr "Decorați toate ferestrele (Experimental, vă rugăm să închideți și să redeschideți toate ferestrele)"
 
 #. settings-schema.json->useIgnoreList->description
 msgid "Use Ignoring List"
-msgstr ""
+msgstr "Utilizați lista de ignorare"
 
 #. settings-schema.json->ignoreAppsList->description
-msgid ""
-"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
-msgstr ""
+msgid "Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr "Aplicații ignorate (folosiți \",\" pentru aplicații separate, se permite potrivirea parțială și regexp)"
 
 #. settings-schema.json->useAutoUndecorList->description
 msgid "Use Auto Undecorating"
-msgstr ""
+msgstr "Utilizați Auto Undecorating"
 
 #. settings-schema.json->autoUndecorAppsList->description
-msgid ""
-"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
-"regexp allowed)"
-msgstr ""
+msgid "Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr "Decolorarea automată a aplicațiilor (folosiți \",\" pentru aplicații separate, se permite potrivirea parțială și regexp)"
 
 #. settings-schema.json->keepQTAppsFocus->description
 msgid "Keep the focus for QT Apps (Experimental)"
-msgstr ""
+msgstr "Păstrați concentrarea pentru QT Apps (Experimental)"
 
 #. settings-schema.json->enableLogs->description
 msgid "Logging (see Melange - Log)"
-msgstr ""
+msgstr "Jurnalizare (a se vedea Melange - Jurnal)"

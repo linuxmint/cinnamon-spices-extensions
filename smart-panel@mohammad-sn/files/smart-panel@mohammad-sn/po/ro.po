@@ -5,76 +5,73 @@
 #
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 01:54+0200\n"
+"POT-Creation-Date: 2017-04-29 23:06+0800\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-29 23:06+0800\n"
-"PO-Revision-Date: 2022-08-06 01:54+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: ro\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
-"%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. smart-panel@mohammad-sn->metadata.json->name
 msgid "Smart Panel"
-msgstr ""
+msgstr "Panou inteligent"
 
 #. smart-panel@mohammad-sn->metadata.json->description
-msgid ""
-"Switch between workspaces, show desktop, activate overview or expo, ... by "
-"scrolling, double click, mouse gestures etc on free space of the panel."
-msgstr ""
+msgid "Switch between workspaces, show desktop, activate overview or expo, ... by scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr "Přepínání mezi pracovními plochami, zobrazení plochy, aktivace přehledu nebo expo, ... pomocí posouvání, dvojkliku, gest myši atd. na volném místě panelu."
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
 #. modifier->description
 msgid "Modifier key: "
-msgstr ""
+msgstr "Modifikační klávesa:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
 #. modifier->options
 msgid "Shift"
-msgstr ""
+msgstr "Směna"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
 #. modifier->options
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
 #. scope->description
 msgid "Switch between windows from: "
-msgstr ""
+msgstr "Přepínání mezi okny z:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
 #. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
 msgid "Curret Application"
-msgstr ""
+msgstr "Aplikace Curret"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
 #. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
 msgid "Current workspace"
-msgstr ""
+msgstr "Aktuální pracovní prostor"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
 #. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
 msgid "All workspaces"
-msgstr ""
+msgstr "Všechny pracovní prostory"
 
 #. smart-panel@mohammad-sn->settings-schema.json->cc3-action->description
 msgid "3rd Custom Command:"
-msgstr ""
+msgstr "3. vlastní příkaz:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->cc2-action->description
 msgid "2nd Custom Command:"
-msgstr ""
+msgstr "2. vlastní příkaz:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action->description
 msgid "Action on scrolling: "
-msgstr ""
+msgstr "Akce při rolování:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
@@ -85,32 +82,32 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "None"
-msgstr ""
+msgstr "Žádné"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
 msgid "Switch between workspaces"
-msgstr ""
+msgstr "Přepínání mezi pracovními prostory"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
 msgid "Toggle show desktop"
-msgstr ""
+msgstr "Přepnout zobrazení plochy"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
 msgid "Adjust opacity of windows"
-msgstr ""
+msgstr "Úprava neprůhlednosti oken"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
 msgid "Switch between windows"
-msgstr ""
+msgstr "Přepínání mezi okny"
 
 #. smart-panel@mohammad-sn->settings-schema.json->sep-scroll-
 #. action->description
 msgid "Independent actions for scrolling up and down"
-msgstr ""
+msgstr "Nezávislé akce pro posouvání nahoru a dolů"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->description
 msgid "Action on panel double click: "
-msgstr ""
+msgstr "Akce při dvojím kliknutí na panel:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -118,7 +115,7 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Launch App Switcher"
-msgstr ""
+msgstr "Spuštění přepínače aplikací"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -126,7 +123,7 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Run 1st Custom Command"
-msgstr ""
+msgstr "Spustit 1. vlastní příkaz"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -134,7 +131,7 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Overview"
-msgstr ""
+msgstr "Přehled"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -142,7 +139,7 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Run 3rd Custom Command"
-msgstr ""
+msgstr "Spustit 3. vlastní příkaz"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -150,7 +147,7 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Run 2nd Custom Command"
-msgstr ""
+msgstr "Spustit 2. vlastní příkaz"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -158,7 +155,7 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Expo"
-msgstr ""
+msgstr "Expo"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
@@ -166,132 +163,132 @@ msgstr ""
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
 msgid "Show Desktop"
-msgstr ""
+msgstr "Zobrazit plochu"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
 msgid "â¦ Dragging to the right: "
-msgstr ""
+msgstr "â¦ Přetažení doprava:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
 msgid "â¤ Dragging to the left: "
-msgstr ""
+msgstr "â¤ Přetažení doleva:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
 msgid "Go to right Workspace"
-msgstr ""
+msgstr "Přejít na pravý pracovní prostor"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
 msgid "Go to left Workspace"
-msgstr ""
+msgstr "Přejít na levou pracovní plochu"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
 msgid "Go to last Workspace"
-msgstr ""
+msgstr "Přejít na poslední pracovní prostor"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
 msgid "Go to first Workspace"
-msgstr ""
+msgstr "Přejít na první pracovní prostor"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->description
 msgid "Minimum delay between scrolls:"
-msgstr ""
+msgstr "Minimální prodleva mezi rolováním:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->units
 msgid "milliseconds"
-msgstr ""
+msgstr "milisekundy"
 
 #. smart-panel@mohammad-sn->settings-schema.json->use-gestures->description
 msgid "Use mouse gestures on the panel"
-msgstr ""
+msgstr "Použití gest myši na panelu"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
 #. down->description
 msgid "Action on scrolling down: "
-msgstr ""
+msgstr "Akce při rolování dolů:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
 #. up->description
 msgid "Action on scrolling up: "
-msgstr ""
+msgstr "Akce při rolování nahoru:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->cc1-action->description
 msgid "1st Custom Command:"
-msgstr ""
+msgstr "1. vlastní příkaz:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->description
 msgid "Click at the edge of the screen and drag away vertically: "
-msgstr ""
+msgstr "Klikněte na okraj obrazovky a přetáhněte ji svisle pryč:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->description
 msgid "Action on panel middle click: "
-msgstr ""
+msgstr "Akce na prostřední kliknutí na panel:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->head5->description
 msgid "App Switcher Settings: "
-msgstr ""
+msgstr "Nastavení přepínače aplikací:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->head4->description
 msgid "Custom Commands: "
-msgstr ""
+msgstr "Vlastní příkazy:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->head3->description
 msgid "Mouse gestures: "
-msgstr ""
+msgstr "Gesta myši:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->head2->description
 msgid "Mouse click options: "
-msgstr ""
+msgstr "Možnosti kliknutí myší:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->head1->description
 msgid "Mouse scroll options: "
-msgstr ""
+msgstr "Možnosti posouvání myší:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->prev-fast-
 #. scroll->description
 msgid "Prevent accidental workspace/window switching on rapid scrolling"
-msgstr ""
+msgstr "Zabránění náhodnému přepnutí pracovní plochy/okna při rychlém posouvání"
 
 #. smart-panel@mohammad-sn->settings-schema.json->scope-modified->description
 msgid "When a modifier key is pressed, switch between windows from: "
-msgstr ""
+msgstr "Po stisknutí klávesy modifikátoru přepínejte mezi okny z:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
 #. style->description
 msgid "App switcher style: "
-msgstr ""
+msgstr "Styl přepínače aplikací:"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Icons only"
-msgstr ""
+msgstr "Pouze ikony"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Icons and window preview"
-msgstr ""
+msgstr "Ikony a náhled okna"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Thumbnails only"
-msgstr ""
+msgstr "Pouze náhledy"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "System default"
-msgstr ""
+msgstr "Výchozí nastavení systému"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Timeline (3D)"
-msgstr ""
+msgstr "Časová osa (3D)"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Window preview (no icons)"
-msgstr ""
+msgstr "Náhled okna (bez ikon)"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Icons and thumbnails"
-msgstr ""
+msgstr "Ikony a náhledy"
 
 #. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
 msgid "Coverflow (3D)"
-msgstr ""
+msgstr "Coverflow (3D)"

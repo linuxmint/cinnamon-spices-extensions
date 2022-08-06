@@ -5,139 +5,139 @@
 #
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"POT-Creation-Date: 2021-03-02 19:44+0000\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:44+0000\n"
-"PO-Revision-Date: 2022-08-06 01:55+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: ro\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->name
 msgid "Flipper"
-msgstr ""
+msgstr "Flipper"
 
 #. metadata.json->description
 msgid "Fancy workspace switching extension"
-msgstr ""
+msgstr "Extensie de comutare a spațiului de lucru Fancy"
 
 #. settings-schema.json->header1->description
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #. settings-schema.json->animationTime->description
 msgid "Animation duration"
-msgstr ""
+msgstr "Durata animației"
 
 #. settings-schema.json->pullaway->description
 msgid "Zoom Amount"
-msgstr ""
+msgstr "Suma de zoom"
 
 #. settings-schema.json->fade->description
 msgid "Fade Transition"
-msgstr ""
+msgstr "Tranziție Fade"
 
 #. settings-schema.json->dim_factor->description
 msgid "Background Dim Amount"
-msgstr ""
+msgstr "Fundal Dim Dim Suma"
 
 #. settings-schema.json->header2->description
 msgid "Effects"
-msgstr ""
+msgstr "Efecte"
 
 #. settings-schema.json->transitionEffect->description
 msgid "Transition Effect"
-msgstr ""
+msgstr "Efectul de tranziție"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Cube"
-msgstr ""
+msgstr "Cubul"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Deck"
-msgstr ""
+msgstr "Puntea"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Flip"
-msgstr ""
+msgstr "Flip"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Pop"
-msgstr ""
+msgstr "Pop"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Rolodex"
-msgstr ""
+msgstr "Rolodex"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Slide"
-msgstr ""
+msgstr "Slide"
 
 #. settings-schema.json->transitionEffect->options
 msgid "Stack"
-msgstr ""
+msgstr "Stiva"
 
 #. settings-schema.json->rotateEffect->description
 msgid "Transition Easing"
-msgstr ""
+msgstr "Facilitarea tranziției"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Back"
-msgstr ""
+msgstr "Înapoi"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Bounce"
-msgstr ""
+msgstr "Săritură"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Circ"
-msgstr ""
+msgstr "Circ"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Cubic"
-msgstr ""
+msgstr "Cubic"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Cubic-Back"
-msgstr ""
+msgstr "Cubic-Back"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Cubic-Bounce"
-msgstr ""
+msgstr "Cubic-Bounce"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Cubic-Elastic"
-msgstr ""
+msgstr "Cubic-Elastic"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Elastic"
-msgstr ""
+msgstr "Elastic"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Expo"
-msgstr ""
+msgstr "Expo"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Sine"
-msgstr ""
+msgstr "Sine"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Quad"
-msgstr ""
+msgstr "Quadruplu"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Quart"
-msgstr ""
+msgstr "Quart"
 
 #. settings-schema.json->rotateEffect->options
 msgid "Quint"
-msgstr ""
+msgstr "Quint"
 
 #. settings-schema.json->includeBackground->description
 msgid "Include Background"
-msgstr ""
+msgstr "Includeți fundal"
