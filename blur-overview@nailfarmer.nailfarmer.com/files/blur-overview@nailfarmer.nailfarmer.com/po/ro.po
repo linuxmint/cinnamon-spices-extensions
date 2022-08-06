@@ -20,7 +20,7 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Blur Overview"
-msgstr "Blur Prezentare generală"
+msgstr "Estomparea Vederii Generale (Blur Overview)"
 
 #. metadata.json->description
 msgid "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])"

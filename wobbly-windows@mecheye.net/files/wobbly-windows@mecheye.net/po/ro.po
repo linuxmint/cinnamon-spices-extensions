@@ -20,7 +20,7 @@ msgstr ""
 
 #. wobbly-windows@mecheye.net->metadata.json->name
 msgid "Wobbly Windows"
-msgstr "Ferestre clătinate"
+msgstr "Ferestre lăbărțate"
 
 #. wobbly-windows@mecheye.net->metadata.json->description
 msgid "Compiz shall live again!"
@@ -28,11 +28,11 @@ msgstr "Compiz va trăi din nou!"
 
 #. wobbly-windows@mecheye.net->settings-schema.json->springK->description
 msgid "Spring K"
-msgstr "Primăvara K"
+msgstr "K arc"
 
 #. wobbly-windows@mecheye.net->settings-schema.json->gridRes->description
 msgid "Grid Resolution"
-msgstr "Rezoluția rețelei"
+msgstr "Rezoluția grilei"
 
 #. wobbly-windows@mecheye.net->settings-schema.json->friction->description
 msgid "Friction"

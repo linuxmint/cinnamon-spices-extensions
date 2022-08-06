@@ -20,8 +20,8 @@ msgstr ""
 
 #. metadata.json->description
 msgid "A Cinnamon extension that allows to negate the window-color when you press super+i."
-msgstr "O extensie Cinnamon care permite anularea culorii ferestrei atunci când apăsați super+i."
+msgstr "O extensie Cinnamon care permite negarea culorii ferestrei atunci când apeși super+i."
 
 #. metadata.json->name
 msgid "Negate Window on Super+I"
-msgstr "Fereastra de negare pe Super+I"
+msgstr "Neagă fereastra cu Super+I"

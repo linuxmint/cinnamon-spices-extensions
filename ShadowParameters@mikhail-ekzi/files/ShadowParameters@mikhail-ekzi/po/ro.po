@@ -25,15 +25,15 @@ msgstr "Umbre personalizate"
 
 #. ShadowParameters@mikhail-ekzi->metadata.json->description
 msgid "Customizable shadow parameters"
-msgstr "Parametrii de umbră personalizabili"
+msgstr "Parametri personalizabili pentru umbre"
 
 #. ShadowParameters@mikhail-ekzi->settings-schema.json->h2->description
 msgid "You could manually edit prefs.json to add your custom shadows presets."
-msgstr "Puteți edita manual prefs.json pentru a adăuga presetările dvs. de umbre personalizate."
+msgstr "Poți edita manual prefs.json pentru a adăuga presetările tale pentru umbre personalizate."
 
 #. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->description
 msgid "Shadow presets"
-msgstr "Presetări de umbre"
+msgstr "Presetări pentru umbre"
 
 #. ShadowParameters@mikhail-ekzi->settings-schema.json->preset->options
 msgid "Default"
@@ -50,9 +50,9 @@ msgstr "Windows 10"
 #. ShadowParameters@mikhail-ekzi->settings-
 #. schema.json->apply_changes_button->description
 msgid "Apply Changes"
-msgstr "Aplicați modificările"
+msgstr "Aplică modificările"
 
 #. ShadowParameters@mikhail-ekzi->settings-
 #. schema.json->restart_cinnamon_button->description
 msgid "Restart Cinnamon"
-msgstr "Reporniți Cinnamon"
+msgstr "Repornește Cinnamon"

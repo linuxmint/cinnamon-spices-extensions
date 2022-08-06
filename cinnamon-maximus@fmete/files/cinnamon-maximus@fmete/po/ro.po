@@ -20,52 +20,52 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Cinnamon Maximus"
-msgstr "Scorțișoară Maximus"
+msgstr "Cinnamon Maximus"
 
 #. metadata.json->description
 msgid "Undecorate windows as you like."
-msgstr "Decorați ferestrele după cum doriți."
+msgstr "Înlătură barele de titlu ale ferestrelor după cum dorești."
 
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
-msgstr "Scorțișoară-Maximus Setări"
+msgstr "Setări Cinnamon-Maximus"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
-msgstr "Utilizați tasta rapidă pentru a comuta decorarea ferestrei curente"
+msgstr "Utilizează Hotkey pentru a comuta decorarea ferestrei curente"
 
 #. settings-schema.json->hotkey->description
 msgid "Global Hotkey to toggle decoration of current window (Experimental)"
-msgstr "Tastă rapidă globală pentru a comuta decorarea ferestrei curente (Experimental)"
+msgstr "Hotkey global pentru a comuta decorarea ferestrei curente (Experimental)"
 
 #. settings-schema.json->undecorateTile->description
 msgid "Undecorate when tile"
-msgstr "Undecorate atunci când țiglă"
+msgstr "Înlătură bara de titlu atunci când fereastrele sunt plasate în tile"
 
 #. settings-schema.json->undecorateAll->description
 msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr "Decorați toate ferestrele (Experimental, vă rugăm să închideți și să redeschideți toate ferestrele)"
+msgstr "Decorează toate ferestrele (Experimental, vă rugăm să închideți și să redeschideți toate ferestrele)"
 
 #. settings-schema.json->useIgnoreList->description
 msgid "Use Ignoring List"
-msgstr "Utilizați lista de ignorare"
+msgstr "Utilizează lista de ignorare"
 
 #. settings-schema.json->ignoreAppsList->description
 msgid "Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
-msgstr "Aplicații ignorate (folosiți \",\" pentru aplicații separate, se permite potrivirea parțială și regexp)"
+msgstr "Aplicații ignorate (folosește \",\" pentru aplicații separate, se permite potrivirea parțială și regexp)"
 
 #. settings-schema.json->useAutoUndecorList->description
 msgid "Use Auto Undecorating"
-msgstr "Utilizați Auto Undecorating"
+msgstr "Utilizează Înlăturarea Automată"
 
 #. settings-schema.json->autoUndecorAppsList->description
 msgid "Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp allowed)"
-msgstr "Decolorarea automată a aplicațiilor (folosiți \",\" pentru aplicații separate, se permite potrivirea parțială și regexp)"
+msgstr "Înlăturarea automată a titlurilor aplicațiilor (folosește \",\" pentru aplicații separate, se permite potrivirea parțială și regexp)"
 
 #. settings-schema.json->keepQTAppsFocus->description
 msgid "Keep the focus for QT Apps (Experimental)"
-msgstr "Păstrați concentrarea pentru QT Apps (Experimental)"
+msgstr "Păstrează concentrarea pentru QT Apps (Experimental)"
 
 #. settings-schema.json->enableLogs->description
 msgid "Logging (see Melange - Log)"
-msgstr "Jurnalizare (a se vedea Melange - Jurnal)"
+msgstr "Jurnalizare (a se vedea Melange - Log)"

@@ -15,15 +15,15 @@ msgstr ""
 
 #: custom-settings-widgets.py:12
 msgid "Radius"
-msgstr "Radius"
+msgstr "Rază"
 
 #: custom-settings-widgets.py:13
 msgid "Top Fade"
-msgstr "Top Fade"
+msgstr "Fade de sus"
 
 #: custom-settings-widgets.py:14
 msgid "X Offset"
-msgstr "X Offset"
+msgstr "Decalaj X"
 
 #: custom-settings-widgets.py:15
 msgid "Y Offset"
@@ -39,27 +39,27 @@ msgstr "Numele clasei"
 
 #: custom-settings-widgets.py:42
 msgid "State"
-msgstr "Stat"
+msgstr "Stare"
 
 #: custom-settings-widgets.py:102
 msgid "Import"
-msgstr "Import"
+msgstr "Importă"
 
 #: custom-settings-widgets.py:106
 msgid "Export"
-msgstr "Export"
+msgstr "Exportă"
 
 #: custom-settings-widgets.py:110
 msgid "Set from..."
-msgstr "Set din..."
+msgstr "Setează din..."
 
 #: custom-settings-widgets.py:169
 msgid "Choose where to save your configuration"
-msgstr "Alegeți unde să vă salvați configurația"
+msgstr "Alege unde să îți salvezi configurația"
 
 #: custom-settings-widgets.py:169
 msgid "Choose a configuration to load"
-msgstr "Alegeți o configurație de încărcat"
+msgstr "Alege o configurație de încărcat"
 
 #. metadata.json->name
 msgid "User Shadows"
@@ -67,7 +67,7 @@ msgstr "Umbrele utilizatorului"
 
 #. metadata.json->description
 msgid "Customize the shadows of cinnamon windows"
-msgstr "Personalizați umbrele ferestrelor de scorțișoară"
+msgstr "Personalizează umbrele ferestrelor Cinnamon"
 
 #. settings-schema.json->preset->description
 msgid "Shadows preset"

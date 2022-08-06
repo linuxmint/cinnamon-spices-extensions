@@ -20,19 +20,19 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Extra Panel Settings"
-msgstr "Setări suplimentare ale panoului"
+msgstr "Setări suplimentare pentru panouri"
 
 #. metadata.json->description
 msgid "Extra configuration options for your Panels"
-msgstr "Opțiuni suplimentare de configurare pentru panourile dvs."
+msgstr "Opțiuni suplimentare de configurare pentru panourile tale"
 
 #. 3.8->settings-schema.json->global-tab->title
 msgid "Global Panel Settings"
-msgstr "Setări globale ale panoului"
+msgstr "Setări globale ale panourilor"
 
 #. 3.8->settings-schema.json->font-section->title
 msgid "Font Settings"
-msgstr "Setări de caractere"
+msgstr "Setări de font"
 
 #. 3.8->settings-schema.json->panelFont->description
 msgid "Font used in Panels"

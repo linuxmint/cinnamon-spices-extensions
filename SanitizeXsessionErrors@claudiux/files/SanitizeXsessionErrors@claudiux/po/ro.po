@@ -21,7 +21,7 @@ msgstr ""
 #. metadata.json->name
 #: 4.8/extension.js:72
 msgid "Sanitize ~/.xsession-errors"
-msgstr "Curățați ~/.xsession-errors"
+msgstr "Curăță ~/.xsession-errors"
 
 #: 4.8/extension.js:73
 msgid "This extension has been disabled because it was no longer needed since Cinnamon 4.8."
@@ -29,7 +29,7 @@ msgstr "Această extensie a fost dezactivată deoarece nu mai era necesară înc
 
 #. metadata.json->description
 msgid "Filter messages sent to ~/.xsession-errors, to avoid flooding and save your SSD."
-msgstr "Filtrează mesajele trimise la ~/.xsession-errors, pentru a evita inundațiile și pentru a economisi SSD-ul."
+msgstr "Filtrează mesajele trimise la ~/.xsession-errors, pentru a evita inundarea acestuia și pentru a scuti SSD-ul."
 
 #. settings-schema.json->section0->description
 msgid "Filter \"Log level 128\" messages starting with these words"
@@ -45,7 +45,7 @@ msgstr "Cuvinte"
 
 #. settings-schema.json->forbidden_words->columns->title
 msgid "To filter?"
-msgstr "Pentru a filtra?"
+msgstr "Se filtrează?"
 
 #. settings-schema.json->section1->description
 msgid "~/.xsession-errors monitor"

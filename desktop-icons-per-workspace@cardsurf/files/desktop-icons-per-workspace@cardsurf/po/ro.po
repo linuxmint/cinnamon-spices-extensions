@@ -20,7 +20,7 @@ msgstr ""
 
 #. metadata.json->description
 msgid "Set positions of desktop icons per workspace"
-msgstr "Setați pozițiile pictogramelor de pe desktop pentru fiecare spațiu de lucru"
+msgstr "Setează pozițiile pictogramelor de pe desktop pentru fiecare spațiu de lucru"
 
 #. metadata.json->name
 msgid "Desktop icons per workspace"
@@ -33,23 +33,23 @@ msgstr "Configurație"
 #. settings-schema.json->refresh_delay_start->units
 #. settings-schema.json->refresh_delay_switch->units
 msgid "milliseconds"
-msgstr "milisekundy"
+msgstr "milisecunde"
 
 #. settings-schema.json->refresh_delay_start->description
 msgid "Desktop refresh delay on start"
-msgstr "Întârziere de reîmprospătare a desktopului la pornire"
+msgstr "Amânarea reîmprospătarii spațiului de lucru la pornire"
 
 #. settings-schema.json->refresh_delay_start->tooltip
 msgid "A number of milliseconds to wait for initial desktop refresh after the extension is started"
-msgstr "Un număr de milisecunde de așteptat pentru reîmprospătarea inițială a desktopului după ce extensia este pornită"
+msgstr "Un număr de milisecunde de așteptat pentru reîmprospătarea inițială a spațiului de lucru după ce extensia este pornită"
 
 #. settings-schema.json->refresh_delay_switch->description
 msgid "Desktop refresh completed delay"
-msgstr "Întârziere de reîmprospătare a desktopului finalizată"
+msgstr "Întârziere de reîmprospătare a spațiului de lucru finalizată"
 
 #. settings-schema.json->refresh_delay_switch->tooltip
 msgid "A number of milliseconds to wait before completing desktop refresh"
-msgstr "Un număr de milisecunde de așteptat înainte de a finaliza reîmprospătarea desktopului"
+msgstr "Un număr de milisecunde de așteptat înainte de a finaliza reîmprospătarea spațiului de lucru"
 
 #. settings-schema.json->save_every->units
 msgid "seconds"
@@ -57,8 +57,8 @@ msgstr "secunde"
 
 #. settings-schema.json->save_every->description
 msgid "Save every"
-msgstr "Salvați fiecare"
+msgstr "Salvează la fiecare"
 
 #. settings-schema.json->save_every->tooltip
 msgid "How often to save desktop icon positions to the file. 0 means no saving to the file."
-msgstr "Cât de des să salvați în fișier pozițiile pictogramelor de pe desktop. 0 înseamnă că nu se salvează în fișier."
+msgstr "Cât de des să fie salvate în fișier pozițiile pictogramelor de pe desktop. 0 înseamnă că nu se salvează în fișier."

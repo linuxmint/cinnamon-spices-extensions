@@ -19,12 +19,12 @@ msgstr "Înapoi la Monitor"
 
 #. metadata.json->description
 msgid "Move windows back to their original location when (re-)connecting a monitor."
-msgstr "Mutați ferestrele înapoi la locația lor inițială atunci când (re)conectați un monitor."
+msgstr "Mută ferestrele înapoi la locația lor inițială atunci când se (re)conectează un monitor."
 
 #. settings-schema.json->rememberState->description
 msgid "Remember window locations based on monitor connection"
-msgstr "Rețineți locațiile ferestrelor în funcție de conexiunea monitorului"
+msgstr "Reține locațiile ferestrelor în funcție de conexiunea monitorului"
 
 #. settings-schema.json->minimize->description
 msgid "Minimize windows when a monitor is disconnected"
-msgstr "Minimizarea ferestrelor atunci când un monitor este deconectat"
+msgstr "Minimizează ferestrele atunci când un monitor este deconectat"

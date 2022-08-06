@@ -20,19 +20,19 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Desktop Scroller"
-msgstr "Desktop Scroller"
+msgstr "Derulare spațiu de lucru"
 
 #. metadata.json->description
 msgid "Switch between desktops by scrolling at left and right edges of the screen."
-msgstr "Treceți de la un desktop la altul prin derularea pe marginile din stânga și din dreapta ale ecranului."
+msgstr "Treci de la un spațiu de lucru la altul prin derularea pe marginile din stânga și din dreapta ale ecranului."
 
 #. settings-schema.json->showDirectionArrow->description
 msgid "Show direction arrow"
-msgstr "Afișați săgeata de direcție"
+msgstr "Afișează săgeata de direcție"
 
 #. settings-schema.json->showDirectionArrow->tooltip
 msgid "Check this to show an arrow indicating scroll direction."
-msgstr "Bifați această opțiune pentru a afișa o săgeată care indică direcția de defilare."
+msgstr "Bifează această opțiune pentru a afișa o săgeată care indică direcția de derulare."
 
 #. settings-schema.json->activationAreaWidth->units
 msgid "pixels"
@@ -48,8 +48,8 @@ msgstr "Lățimea zonelor de activare"
 
 #. settings-schema.json->showActivationAreas->description
 msgid "Show activation areas"
-msgstr "Afișați zonele de activare"
+msgstr "Afișează zonele de activare"
 
 #. settings-schema.json->showActivationAreas->tooltip
 msgid "Check this to show the areas over which scrolling will switch the desktop."
-msgstr "Bifați această opțiune pentru a afișa zonele pe care defilarea va schimba desktop-ul."
+msgstr "Bifează această opțiune pentru a afișa zonele pe care derularea va schimba desktop-ul."

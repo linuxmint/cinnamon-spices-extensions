@@ -20,11 +20,11 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Watermark"
-msgstr "Filigran"
+msgstr "Filigran (Watermark)"
 
 #. metadata.json->description
 msgid "Place a watermark on the desktop."
-msgstr "Așezați un filigran pe desktop."
+msgstr "Așează un filigran pe desktop."
 
 #. 3.8->settings-schema.json->section0->description
 #. 3.2->settings-schema.json->section0->description
@@ -34,12 +34,12 @@ msgstr "Aspect"
 #. 3.8->settings-schema.json->icon->description
 #. 3.2->settings-schema.json->icon->description
 msgid "Watermark logo"
-msgstr "Logo-ul Watermark"
+msgstr "Logo-ul filigranului"
 
 #. 3.8->settings-schema.json->icon->options
 #. 3.2->settings-schema.json->icon->options
 msgid "Cinnamon"
-msgstr "Scorțișoară"
+msgstr "Cinnamon"
 
 #. 3.8->settings-schema.json->icon->options
 #. 3.2->settings-schema.json->icon->options
@@ -99,12 +99,12 @@ msgstr "Inversează culorile"
 #. 3.8->settings-schema.json->invert->tooltip
 #. 3.2->settings-schema.json->invert->tooltip
 msgid "This completely inverts the image colors. Useful on light backgrounds."
-msgstr "Acest lucru inversează complet culorile imaginii. Utilă pe fundaluri deschise."
+msgstr "Aceasta inversează complet culorile imaginii. Util pe fundaluri deschise."
 
 #. 3.8->settings-schema.json->section1->description
 #. 3.2->settings-schema.json->section1->description
 msgid "Position"
-msgstr "Poziția"
+msgstr "Poziție"
 
 #. 3.8->settings-schema.json->position-x->description
 #. 3.2->settings-schema.json->position-x->description
@@ -172,4 +172,4 @@ msgstr "Dimensiune"
 #. 3.8->settings-schema.json->use-custom-size->description
 #. 3.2->settings-schema.json->use-custom-size->description
 msgid "Use a custom size"
-msgstr "Utilizați o dimensiune personalizată"
+msgstr "Utilizează o dimensiune personalizată"

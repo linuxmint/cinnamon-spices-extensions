@@ -20,7 +20,7 @@ msgstr ""
 
 #. metadata.json->description
 msgid "Yet another nice transition effect for ws switching."
-msgstr "Încă un efect de tranziție frumos pentru trecerea la ws."
+msgstr "Încă un efect de tranziție frumos pentru trecerea la alt spațiu de lucru."
 
 #. metadata.json->name
 msgid "Slider"
@@ -28,7 +28,7 @@ msgstr "Glisieră"
 
 #. settings-schema.json->animation-duration->units
 msgid "milliseconds"
-msgstr "milisekundy"
+msgstr "milisecunde"
 
 #. settings-schema.json->animation-duration->description
 msgid "Animation Duration:"
@@ -36,7 +36,7 @@ msgstr "Durata animației:"
 
 #. settings-schema.json->animation-effect->description
 msgid "Animation Easing:"
-msgstr "Animație Ușurare:"
+msgstr "Temperarea animației:"
 
 #. settings-schema.json->slip-factor->description
 msgid "Slip Factor:"
@@ -52,4 +52,4 @@ msgstr "Nivel de zoom pe fundal:"
 
 #. settings-schema.json->vertical-position->description
 msgid "Background Vertical Position:"
-msgstr "Fundal Poziție verticală:"
+msgstr "Poziție verticală fundal:"

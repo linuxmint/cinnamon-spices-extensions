@@ -20,11 +20,11 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Opacify Windows"
-msgstr "Ferestre Opacify"
+msgstr "Opacifiază fereastre"
 
 #. metadata.json->description
 msgid "Fade out the current window that the user is resizing or dragging."
-msgstr "Se estompează fereastra curentă pe care utilizatorul o redimensionează sau o glisează."
+msgstr "Se opacifiază fereastra curentă pe care utilizatorul o redimensionează sau o trage."
 
 #. settings-schema.json->opacity->description
 msgid "Opacity"
@@ -42,13 +42,13 @@ msgstr "Timpul de tranziție"
 #. settings-schema.json->beginTime->units
 #. settings-schema.json->endTime->units
 msgid "milliseconds"
-msgstr "milisekundy"
+msgstr "milisecunde"
 
 #. settings-schema.json->beginEffect->description
 #. settings-schema.json->endEffect->description
 msgid "Effect"
-msgstr "Efectul"
+msgstr "Efect"
 
 #. settings-schema.json->h2->description
 msgid "End of Drag"
-msgstr "Sfârșit de Drag"
+msgstr "Sfârșitul tragerii"
