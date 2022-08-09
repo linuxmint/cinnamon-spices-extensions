@@ -151,7 +151,7 @@ MaximizedPolicy.prototype = {
 	},
 
 	_on_window_size_changed: function (wm, win, change) {
-		if (change === Meta.SizeChange.MAXIMIZE || change === Meta.SizeChange.TILE) {
+		if (change === Meta.SizeChange.MAXIMIZE) {
 			this._on_window_appeared(wm, win);
 		} else if (change === Meta.SizeChange.UNMAXIMIZE) {
 			this._on_window_disappeared(wm, win);
