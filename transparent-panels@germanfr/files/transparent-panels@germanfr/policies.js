@@ -153,7 +153,7 @@ MaximizedPolicy.prototype = {
 	_on_window_size_changed: function (wm, win, change) {
 		if (change === Meta.SizeChange.MAXIMIZE) {
 			this._on_window_appeared(wm, win);
-		} else if (change === Meta.SizeChange.UNMAXIMIZE) {
+		} else if (change === Meta.SizeChange.UNMAXIMIZE || change === Meta.SizeChange.TILE) {
 			this._on_window_disappeared(wm, win);
 		}
 	},
