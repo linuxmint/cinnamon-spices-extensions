@@ -18,6 +18,6 @@
     ], 
     "description": "Switch between workspaces, show desktop, activate overview or expo, ... by scrolling, double click, mouse gestures etc on free space of the panel.", 
     "name": "Smart Panel", 
-    "version": 1.3, 
+    "version": 1.4, 
     "uuid": "smart-panel@mohammad-sn"
 }
