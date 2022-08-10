@@ -2,6 +2,7 @@
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
 const St = imports.gi.St;
+const Clutter = imports.gi.Clutter;
 
 let workspaceScroller;
 
@@ -60,7 +61,13 @@ Area.prototype._init = function (x, y, dx, dy, actionUp, actionDown) {
  * Area's scroll handler
  */
 Area.prototype.onScroll = function (actor, event) {
-    let direction = event.get_scroll_direction(),
+    var scrollDirection = event.get_scroll_direction();
+
+    if (scrollDirection === Clutter.ScrollDirection.SMOOTH) {
+        return Clutter.EVENT_PROPAGATE;
+    }
+
+    let direction = scrollDirection,
         action = direction ? this.actionDown : this.actionUp;
 
     switch (action) {

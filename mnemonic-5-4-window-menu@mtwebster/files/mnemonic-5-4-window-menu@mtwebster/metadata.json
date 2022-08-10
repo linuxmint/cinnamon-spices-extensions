@@ -1,0 +1,9 @@
+{
+    "name": "Mnemonize the Cinnamon 5.4 Window Menu", 
+    "cinnamon-version": [
+        "5.4"
+    ], 
+    "url": "https://github.com/mtwebster/mnemonic-5-4-window-menu.git", 
+    "description": "The window menu for Cinnamon 5.4 lacks mnemonic shortcuts. This replaces the menu with one that does. This will likely be merged into Cinnamon 5.6.", 
+    "uuid": "mnemonic-5-4-window-menu@mtwebster"
+}

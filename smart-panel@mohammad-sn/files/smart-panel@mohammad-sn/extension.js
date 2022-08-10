@@ -156,6 +156,11 @@ SmartPanelExt.prototype = {
         if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         let currentTime = Date.now();
         let direction = event.get_scroll_direction();
+
+        if (direction === Clutter.ScrollDirection.SMOOTH) {
+            return Clutter.EVENT_PROPAGATE;
+        }
+
         if (this.sep_acts) {
             if (direction == Clutter.ScrollDirection.UP) this.Do(this.scrl_up_action);
             else if (direction == Clutter.ScrollDirection.DOWN) this.Do(this.scrl_down_action);
