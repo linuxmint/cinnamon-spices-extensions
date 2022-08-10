@@ -300,7 +300,7 @@ var MnemonizedWindowMenu = class extends PopupMenu.PopupMenu {
 
                 let name = Main.workspace_names[i];
 
-                if (name === '') {
+                if (name === undefined || name === '') {
                     name = Main.getWorkspaceName(i);
                 }
 
