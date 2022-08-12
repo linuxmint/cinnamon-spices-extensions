@@ -26,6 +26,9 @@ const Lang = imports.lang;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
 const Settings = imports.ui.settings;
+const Config = imports.misc.config;
+
+const IS_VERSION_BEFORE_5_4 = parseFloat(Config.PACKAGE_VERSION.split('.')[0] + '.' + Config.PACKAGE_VERSION.split('.')[1]) < 5.4;
 
 let settings;
 let extension;
@@ -71,15 +74,20 @@ class CompizWindowsEffectExtension {
         this.unmaximizeOpId = null;
         this.maximizeOpId = null;
         this.tileOpId = null;
+        this.sizeChangeOpId = null;
     }
 
     enable() {
         this.beginGrabOpId = global.display.connect('grab-op-begin', this.onBeginGrabOp.bind(this));
         this.endGrabOpId = global.display.connect('grab-op-end', this.onEndGrabOp.bind(this));
         if (settings.maxUnmaxFactor) {
-            this.unmaximizeOpId = global.window_manager.connect("unmaximize", this.onUnmaximize.bind(this));
-            this.maximizeOpId = global.window_manager.connect("maximize", this.onMaximize.bind(this));
-            this.tileOpId = global.window_manager.connect("tile", this.onTile.bind(this));
+            if (IS_VERSION_BEFORE_5_4) {
+                this.unmaximizeOpId = global.window_manager.connect("unmaximize", this.onUnmaximize.bind(this));
+                this.maximizeOpId = global.window_manager.connect("maximize", this.onMaximize.bind(this));
+                this.tileOpId = global.window_manager.connect("tile", this.onTile.bind(this));
+            } else {
+                this.sizeChangeOpId = global.window_manager.connect('size-change', this.onSizeChange.bind(this));
+            }
         }
     }
 
@@ -95,6 +103,9 @@ class CompizWindowsEffectExtension {
         }
         if (this.tileOpId != null) {
             global.window_manager.disconnect(this.tileOpId);
+        }
+        if (this.sizeChangeOpId != null) {
+            global.window_manager.disconnect(this.sizeChangeOpId);
         }
         
         global.get_window_actors().forEach(function (actor) {
@@ -182,6 +193,20 @@ class CompizWindowsEffectExtension {
         }
 
         actor.add_effect_with_name(this.EFFECT_NAME, new WobblyEffect('maximized'));
+    }
+
+    onSizeChange(shellwm, actor, whichChange, oldFrameRect, _oldBufferRect) {
+        switch (whichChange) {
+            case Meta.SizeChange.MAXIMIZE:
+                this.onMaximize(shellwm, actor);
+                break;
+            case Meta.SizeChange.UNMAXIMIZE:
+                this.onUnmaximize(shellwm, actor);
+                break;
+            case Meta.SizeChange.TILE:
+                this.onTile(shellwm, actor);
+                break;
+        }
     }
 }
 
