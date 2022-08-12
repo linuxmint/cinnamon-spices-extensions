@@ -445,7 +445,9 @@ const WobblyEffect = new Lang.Class({
             }
         }
 
-        this.invalidate();
+        if ((this.newX === this.actor.get_x() && this.newY === this.actor.get_y()) || 'move' !== this.operationType) {
+            this.invalidate();
+        }
     },
 
     vfunc_set_actor: function(actor) {
