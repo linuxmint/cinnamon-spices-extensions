@@ -1,0 +1,294 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 15:49+0200\n"
+"POT-Creation-Date: 2017-04-29 23:06+0800\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. smart-panel@mohammad-sn->metadata.json->name
+msgid "Smart Panel"
+msgstr "Panou inteligent"
+
+#. smart-panel@mohammad-sn->metadata.json->description
+msgid "Switch between workspaces, show desktop, activate overview or expo, ... by scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr "Comută între spațiile de lucru, afișează biroul, activează prezentarea generală sau expo, ... prin derulare, dublu clic, gesturi ale mouse-ului etc. pe spațiul liber al panoului."
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->description
+msgid "Modifier key: "
+msgstr "Tasta modificatoare: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Shift"
+msgstr "Schimbul"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. scope->description
+msgid "Switch between windows from: "
+msgstr "Comută între ferestre de la: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Aplicație curentă"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Spațiul de lucru curent"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-scope->options
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Toate spațiile de lucru"
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "A treia comandă personalizată: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "A doua comandă personalizată: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Acțiune la derulare: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "None"
+msgstr "Nici unul"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Comută între spațiile de lucru"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Comută afișare desktop"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Reglează opacitatea ferestrelor"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Comută între ferestre"
+
+#. smart-panel@mohammad-sn->settings-schema.json->sep-scroll-
+#. action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Acțiuni independente pentru defilarea în sus și în jos"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Acțiune la dublu clic pe panou: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Launch App Switcher"
+msgstr "Lansează App Switcher"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 1st Custom Command"
+msgstr "Rulează prima comandă personalizată"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Overview"
+msgstr "Prezentare generală"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Execută a treia comandă personalizată"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Execută a doua comandă personalizată"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Expo"
+msgstr "Expo"
+
+#. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-down->options
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-up->options
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->options
+msgid "Show Desktop"
+msgstr "Afișare desktop"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
+msgid "â¦ Dragging to the right: "
+msgstr "â¦ Tragerea spre dreapta: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
+msgid "â¤ Dragging to the left: "
+msgstr "â¤ Tragerea spre stânga: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Mergi la spațiul de lucru din dreapta"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Mergi la spațiul de lucru din stânga"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Mergi la ultimul spațiu de lucru"
+
+#. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
+#. smart-panel@mohammad-sn->settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Mergi la primul spațiu de lucru"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Întârziere minimă între derulări: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "milisecunde"
+
+#. smart-panel@mohammad-sn->settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Utilizează gesturile mouse-ului pe panou"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. down->description
+msgid "Action on scrolling down: "
+msgstr "Acțiune de derulare în jos: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->scroll-action-
+#. up->description
+msgid "Action on scrolling up: "
+msgstr "Acțiune de derulare în sus: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "Prima comandă personalizată: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Fă clic pe marginea ecranului și trage pe verticală: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Acțiune la clicul din mijloc al panoului: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Setări Comutator de aplicații: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Comenzi personalizate: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Gesturi ale mouse-ului: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Opțiuni de clic al mouse-ului: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Opțiuni de defilare a mouse-ului: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->prev-fast-
+#. scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr "Împiedică comutarea accidentală a spațiului de lucru/ferestrei la defilarea rapidă"
+
+#. smart-panel@mohammad-sn->settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "La apăsarea unei taste modificatoare, comută între ferestre din: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-
+#. style->description
+msgid "App switcher style: "
+msgstr "Stilul comutatorului de aplicații: "
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Doar pictograme"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Pictograme și previzualizare a ferestrelor"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Doar miniaturi"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Implicit sistem"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Cronologie (3D)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Previzualizare fereastră (fără pictograme)"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Pictograme și miniaturi"
+
+#. smart-panel@mohammad-sn->settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Coverflow (3D)"

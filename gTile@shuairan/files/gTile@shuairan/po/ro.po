@@ -1,0 +1,234 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"POT-Creation-Date: 2022-05-31 22:28+0100\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: extension.js:43
+#: 3.8/gTile.js:320
+msgid "Auto close"
+msgstr "Închidere automată"
+
+#: extension.js:44
+#: 3.8/gTile.js:321
+msgid "Animations"
+msgstr "Animații"
+
+#: extension.js:45
+#: 3.8/gTile.js:322
+msgid "Auto tile main and list"
+msgstr "Auto tile principal și listă"
+
+#: extension.js:46
+#: 3.8/gTile.js:323
+msgid "Auto tile two lists"
+msgstr "Auto tile două liste"
+
+#. metadata.json->name
+msgid "gTile"
+msgstr "gTile"
+
+#. metadata.json->description
+msgid "Tile your windows as you like."
+msgstr "Organizează ferestrele într-o grilă după cum dorești."
+
+#. settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "Tastele rapide:"
+
+#. settings-schema.json->hotkey->description
+#. 3.8->settings-schema.json->hotkey->description
+msgid "Global Hotkey for gTile"
+msgstr "Tastă rapidă globală pentru gTile"
+
+#. settings-schema.json->headerBehavior->description
+msgid "Behavior:"
+msgstr "Comportament:"
+
+#. settings-schema.json->animation->description
+#. 3.8->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "Animație"
+
+#. settings-schema.json->autoclose->description
+#. 3.8->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "Închidere automată"
+
+#. settings-schema.json->header1->description
+msgid "Layout for Button 1:"
+msgstr "Dispunerea pentru butonul 1:"
+
+#. settings-schema.json->gridbutton1x->units
+#. settings-schema.json->gridbutton2x->units
+#. settings-schema.json->gridbutton3x->units
+#. settings-schema.json->gridbutton4x->units
+msgid "x"
+msgstr "x"
+
+#. settings-schema.json->gridbutton1x->description
+#. settings-schema.json->gridbutton2x->description
+#. settings-schema.json->gridbutton3x->description
+#. settings-schema.json->gridbutton4x->description
+#. 3.8->settings-schema.json->columns->description
+#. 3.8->settings-schema.json->grid1x->description
+#. 3.8->settings-schema.json->grid2x->description
+#. 3.8->settings-schema.json->grid3x->description
+#. 3.8->settings-schema.json->grid4x->description
+msgid "Columns"
+msgstr "Coloane"
+
+#. settings-schema.json->gridbutton1y->units
+#. settings-schema.json->gridbutton2y->units
+#. settings-schema.json->gridbutton3y->units
+#. settings-schema.json->gridbutton4y->units
+msgid "y"
+msgstr "y"
+
+#. settings-schema.json->gridbutton1y->description
+#. settings-schema.json->gridbutton2y->description
+#. settings-schema.json->gridbutton3y->description
+#. settings-schema.json->gridbutton4y->description
+#. 3.8->settings-schema.json->rows->description
+#. 3.8->settings-schema.json->grid1y->description
+#. 3.8->settings-schema.json->grid2y->description
+#. 3.8->settings-schema.json->grid3y->description
+#. 3.8->settings-schema.json->grid4y->description
+msgid "Rows"
+msgstr "Rânduri"
+
+#. settings-schema.json->header2->description
+msgid "Layout for Button 2:"
+msgstr "Dispunerea pentru butonul 2:"
+
+#. settings-schema.json->header3->description
+msgid "Layout for Button 3:"
+msgstr "Dispunerea pentru butonul 3:"
+
+#. settings-schema.json->header4->description
+msgid "Layout for Button 4:"
+msgstr "Dispunerea pentru butonul 4:"
+
+#. 3.8->settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Tastele de acces rapid"
+
+#. 3.8->settings-schema.json->behaviour-tab->title
+#. 3.8->settings-schema.json->behaviour-section->title
+msgid "Behavior"
+msgstr "Comportament"
+
+#. 3.8->settings-schema.json->layout-tab->title
+msgid "Layout"
+msgstr "Dispunere"
+
+#. 3.8->settings-schema.json->help->title
+msgid "Help"
+msgstr "Ajutor"
+
+#. 3.8->settings-schema.json->hotkey-section->title
+msgid "Global Hotkey"
+msgstr "Tastă rapidă globală"
+
+#. 3.8->settings-schema.json->keybindings-legend-section->title
+msgid "Keybindings Legend (when open)"
+msgstr "Legenda combinațiilor de taste (când este deschisă)"
+
+#. 3.8->settings-schema.json->grid1-section->title
+msgid "Layout For Button 1"
+msgstr "Dispunere pentru butonul 1"
+
+#. 3.8->settings-schema.json->grid2-section->title
+msgid "Layout For Button 2"
+msgstr "Layout pentru butonul 2"
+
+#. 3.8->settings-schema.json->grid3-section->title
+msgid "Layout For Button 3"
+msgstr "Layout pentru butonul 3"
+
+#. 3.8->settings-schema.json->grid4-section->title
+msgid "Layout For Button 4"
+msgstr "Dispunere pentru butonul 4"
+
+#. 3.8->settings-schema.json->help-section->title
+msgid "More Info"
+msgstr "Mai multe informații"
+
+#. 3.8->settings-schema.json->hotkeys-legend->description
+msgid ""
+"Escape:\t\t\tHide gTile\n"
+"Enter or Space:\tCommit current selection\n"
+"Left:\t\t\tMove Left inside Grid\n"
+"Right:\t\t\tMove Right inside Grid\n"
+"Up:\t\t\t\tMove Up inside Grid\n"
+"Down:\t\t\tMove Down inside Grid\n"
+"<Shift>Left:\t\tInclude column to the Left in selection\n"
+"<Shift>Right:\t\tInclude column to the Right in selection\n"
+"<Shift>Up:\t\tInclude row Above in selection\n"
+"<Shift>Down:\tInclude row Below in selection\n"
+"<Alt>Left:\t\tMove to the monitor on the Left\n"
+"<Alt>Right:\t\tMove to the monitor on the Right\n"
+"<Alt>Up:\t\t\tMove to the monitor Above\n"
+"<Alt>Down:\t\tMove to the monitor Below\n"
+"1:\t\t\t\tSelect the first grid layout\n"
+"2:\t\t\t\tSelect the second grid layout\n"
+"3:\t\t\t\tSelect the third grid layout\n"
+"4:\t\t\t\tSelect the fourth grid layout"
+msgstr ""
+"Escape: Ascunde gTile\n"
+"Enter sau Spațiu: Confirmă selecția curentă\n"
+"Stângă: Mutarea la stânga în interiorul grilei\n"
+"Dreapta: Mutarea la dreapta în interiorul grilei\n"
+"Sus: Mutarea în sus în interiorul grilei\n"
+"Jos: Mutarea în jos în interiorul grilei\n"
+"<Shift>Stânga: Include coloana din stânga în selecție\n"
+"<Shift>Dreapta: Include coloana din dreapta în selecție\n"
+"<Shift>Sus: Include rândul de deasupra în selecție\n"
+"<Shift>Down: Include rândul de dedesubt în selecție\n"
+"<Alt>Stânga: Mutarea la monitorul din stânga\n"
+"<Alt>Dreapta: Mutarea la monitorul din dreapta\n"
+"<Alt>Sus: Mutarea la monitorul de deasupra\n"
+"<Alt>Down: Mutarea la monitorul de dedesubt\n"
+"1: Selectează prima dispunere a grilei\n"
+"2: Selectează a doua dispunere a grilei\n"
+"3: Selectează a treia dispunere a grilei\n"
+"4: Selectează a patra dispunere a grilei"
+
+#. 3.8->settings-schema.json->grid1x->tooltip
+#. 3.8->settings-schema.json->grid2x->tooltip
+#. 3.8->settings-schema.json->grid3x->tooltip
+#. 3.8->settings-schema.json->grid4x->tooltip
+msgid "Each row represents a column. Span is how much space a column should take up compared to the other columns. Default is 1."
+msgstr "Fiecare rând reprezintă o coloană. Anvergura reprezintă cât spațiu ar trebui să ocupe o coloană în comparație cu celelalte coloane. Valoarea implicită este 1."
+
+#. 3.8->settings-schema.json->grid1x->columns->title
+#. 3.8->settings-schema.json->grid1y->columns->title
+#. 3.8->settings-schema.json->grid2x->columns->title
+#. 3.8->settings-schema.json->grid2y->columns->title
+#. 3.8->settings-schema.json->grid3x->columns->title
+#. 3.8->settings-schema.json->grid3y->columns->title
+#. 3.8->settings-schema.json->grid4x->columns->title
+#. 3.8->settings-schema.json->grid4y->columns->title
+msgid "Span"
+msgstr "Anvergura"
+
+#. 3.8->settings-schema.json->grid1y->tooltip
+#. 3.8->settings-schema.json->grid2y->tooltip
+#. 3.8->settings-schema.json->grid3y->tooltip
+#. 3.8->settings-schema.json->grid4y->tooltip
+msgid "Each row represents a row. Span is how much space a row should take up compared to the other columns. Default is 1."
+msgstr "Fiecare rând reprezintă un rând. Anvergura reprezintă cât spațiu ar trebui să ocupe un rând în comparație cu celelalte coloane. Valoarea implicită este 1."
