@@ -67,7 +67,17 @@ SmartPanelExt.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "appswitcher-modifier", "switcher_modifier", null, null);
         
         this.cwm_settings = new Gio.Settings({ schema: "org.cinnamon.desktop.wm.preferences" });
-        this.mos_settings = new Gio.Settings({ schema: "org.cinnamon.settings-daemon.peripherals.mouse" });
+
+        // schema location has changed around 5.4, do a try catch for maximum compatibility
+        try {
+            this.mos_settings = new Gio.Settings({ schema: "org.cinnamon.settings-daemon.peripherals.mouse" });
+        }
+        catch(e) {
+            if (e.message == "GSettings schema org.cinnamon.settings-daemon.peripherals.mouse not found") {
+                this.mos_settings = new Gio.Settings({ schema: "org.cinnamon.desktop.peripherals.mouse" });
+            }
+        }
+        
         this.muf_settings = new Gio.Settings({ schema: "org.cinnamon.muffin" });
         
         //this._panel = Main.panel._centerBox;
