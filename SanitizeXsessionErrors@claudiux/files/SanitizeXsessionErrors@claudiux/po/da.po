@@ -1,3 +1,7 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
@@ -14,8 +18,17 @@ msgstr ""
 "Language: da\n"
 
 #. metadata.json->name
+#: 4.8/extension.js:72
 msgid "Sanitize ~/.xsession-errors"
 msgstr "Ryd op i ~/.xsession-errors"
+
+#: 4.8/extension.js:73
+msgid ""
+"This extension has been disabled because it was no longer needed since "
+"Cinnamon 4.8."
+msgstr ""
+"Denne udvidelse er deaktiveret, da der ikke længere er brug for den siden "
+"Cinnamon 4.8."
 
 #. metadata.json->description
 msgid ""
