@@ -1,5 +1,5 @@
 import { Column, Config, Row } from "../config";
-import { App } from "../extension";
+import { App } from "../app";
 
 const St = imports.gi.St;
 

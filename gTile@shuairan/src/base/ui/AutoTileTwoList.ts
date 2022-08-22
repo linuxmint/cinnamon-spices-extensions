@@ -1,5 +1,5 @@
-import { App } from "../extension";
-import { addSignals, getUsableScreenArea, move_resize_window, reset_window } from "../utils";
+import { App } from "../app";
+import { addSignals, getUsableScreenArea } from "../utils";
 import { ActionButton } from "./ActionButton";
 
 
@@ -21,7 +21,7 @@ export class AutoTileTwoList extends ActionButton<"resize-done"> {
   protected override _onButtonPress = () => {
     if (!this.app.FocusMetaWindow) return false;
 
-    reset_window(this.app.FocusMetaWindow);
+    this.app.platform.reset_window(this.app.FocusMetaWindow);
 
     let monitor = this.app.Grid.monitor;
     let [screenX, screenY, screenWidth, screenHeight] = getUsableScreenArea(monitor);
@@ -34,7 +34,7 @@ export class AutoTileTwoList extends ActionButton<"resize-done"> {
     let xOffset = ((countWin % 2) * screenWidth) / 2;
     let yOffset = Math.floor(countWin / 2) * winHeight;
 
-    move_resize_window(this.app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+    this.app.platform.move_resize_window(this.app.FocusMetaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
 
     countWin++;
 
@@ -44,9 +44,9 @@ export class AutoTileTwoList extends ActionButton<"resize-done"> {
       xOffset = ((countWin % 2) * screenWidth) / 2;
       yOffset = Math.floor(countWin / 2) * winHeight;
 
-      reset_window(metaWindow);
+      this.app.platform.reset_window(metaWindow);
 
-      move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
+      this.app.platform.move_resize_window(metaWindow, screenX + xOffset, screenY + yOffset, screenWidth / 2, winHeight);
       countWin++;
     }
 

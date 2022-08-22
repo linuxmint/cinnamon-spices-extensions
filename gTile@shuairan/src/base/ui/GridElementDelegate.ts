@@ -1,6 +1,6 @@
 import { Config } from "../config";
-import { App } from "../extension";
-import { addSignals, getMonitorKey, getUsableScreenArea, move_maximize_window, move_resize_window, reset_window, SignalOverload } from "../utils";
+import { App } from "../app";
+import { addSignals, getMonitorKey, getUsableScreenArea, SignalOverload } from "../utils";
 import { GridElement } from "./GridElement";
 const Tweener = imports.ui.tweener;
 
@@ -50,16 +50,16 @@ export class GridElementDelegate {
       //before doing anything with the window it must be unmaximized
       //if so move the window then maximize instead of change size
       //if not move the window and change size
-      reset_window(this.app.FocusMetaWindow);
+      this.app.platform.reset_window(this.app.FocusMetaWindow);
 
       let areaWidth, areaHeight, areaX, areaY;
       // First is never null here?
       [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(<GridElement>this.first, gridElement);
 
       if (this._allSelected()) {
-        move_maximize_window(this.app.FocusMetaWindow, areaX, areaY);
+        this.app.platform.move_maximize_window(this.app.FocusMetaWindow, areaX, areaY);
       } else {
-        move_resize_window(this.app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+        this.app.platform.move_resize_window(this.app.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
       }
 
       this._resizeDone();

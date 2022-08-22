@@ -3,13 +3,16 @@ const path = require('path');
 const webpack = require('webpack');
 
 // TODO: use env variable to share between bash script and the config. Or bash script even necessary?
-const cinnamonVersion = '3.8'
-const appletName = __dirname.split('/').slice(-1)[0]
+const cinnamonVersion = '5.4'
+const root = path.resolve(__dirname, "../../")
+const appletName = root.split('/').slice(-1)[0]
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
     mode: 'production',
-    entry: './src/3_8/extension.ts',
+    entry: [
+        './extension.ts',
+    ],
     //devtool: "eval-source-map",
     target: 'node', // without webpack renames 'global'
     optimization: {
@@ -50,7 +53,7 @@ module.exports = {
         extensions: ['.ts', '.js'],
     },
     output: {
-        path: path.resolve(__dirname, `files/${appletName}/${cinnamonVersion}/`),
+        path: path.resolve(root, `files/${appletName}/${cinnamonVersion}/`),
         filename: 'gTile.js',
         library: "gtile",
     },

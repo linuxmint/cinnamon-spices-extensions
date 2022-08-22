@@ -1,4 +1,4 @@
-import { App } from "./extension";
+import { App } from "./app";
 import { GridSettingsButton } from "./ui/GridSettingsButton";
 
 const Settings = imports.ui.settings;

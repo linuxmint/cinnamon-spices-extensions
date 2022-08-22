@@ -8,7 +8,7 @@ import { GridElementDelegate } from "./GridElementDelegate";
 import { GridSettingsButton } from "./GridSettingsButton";
 import { ToggleSettingsButton } from "./ToggleSettingsButton";
 import { TopBar } from "./TopBar";
-import { App } from "../extension";
+import { App } from "../app";
 
 const { BoxLayout, Table, Bin } = imports.gi.St;
 const Main = imports.ui.main;
@@ -285,7 +285,6 @@ export class Grid {
     this.elementsDelegate.reset();
     let time = this.app.config.animation ? 0.3 : 0;
 
-    this.actor.raise_top();
     Main.layoutManager.removeChrome(this.actor);
     Main.layoutManager.addChrome(this.actor);
     this.actor.scale_y = 0;
@@ -294,9 +293,9 @@ export class Grid {
         Tweener.addTween(this.actor, {
           time: time,
           opacity: 255,
-          visible: true,
           transition: 'easeOutQuad',
           scale_y: this.normalScaleY,
+          onStart: () => this.actor.visible = true,
           onComplete: () => { resolve(); this.OnShowComplete() }
         });
       })
@@ -318,10 +317,9 @@ export class Grid {
       Tweener.addTween(this.actor, {
         time: time,
         opacity: 0,
-        visible: false,
         scale_y: 0,
         transition: 'easeOutQuad',
-        onComplete: this.OnHideComplete
+        onComplete: () => { this.actor.visible = false; this.OnHideComplete();}
       });
     } else {
       this.actor.opacity = 0;

@@ -1,3 +1,7 @@
+### 2.2.0
+
+* Split codebase after Cinnamon version 5.4 because of breaking changes and fix breakages.
+
 ### 2.1.0
 
 * Change Settings and Grid so they can be initialized from inside the app itself.

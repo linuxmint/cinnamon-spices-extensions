@@ -3,7 +3,7 @@
     "uuid": "gTile@shuairan",
     "name": "gTile",
     "description": "Tile your windows as you like.",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "multiversion": true,
     "url" : "https://github.com/shuairan/gTile"
 }

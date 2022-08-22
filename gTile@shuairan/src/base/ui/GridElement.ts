@@ -1,4 +1,4 @@
-import { App } from "../extension";
+import { App } from "../app";
 import { isFinalized } from "../utils";
 import { GridElementDelegate } from "./GridElementDelegate";
 const Main = imports.ui.main;

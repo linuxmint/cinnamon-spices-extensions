@@ -1392,11 +1392,10 @@ const reset_window = (metaWindow) => {
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(utils_Meta.MaximizeFlags.HORIZONTAL);
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(utils_Meta.MaximizeFlags.VERTICAL);
     metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.unmaximize(utils_Meta.MaximizeFlags.HORIZONTAL | utils_Meta.MaximizeFlags.VERTICAL);
-    metaWindow === null || metaWindow === void 0 ? void 0 : metaWindow.tile(utils_Meta.TileMode.NONE, false);
 };
 const _getInvisibleBorderPadding = (metaWindow) => {
-    let outerRect = metaWindow.get_outer_rect();
-    let inputRect = metaWindow.get_input_rect();
+    let outerRect = metaWindow.get_frame_rect();
+    let inputRect = metaWindow.get_buffer_rect();
     let [borderX, borderY] = [outerRect.x - inputRect.x, outerRect.y - inputRect.y];
     return [borderX, borderY];
 };
@@ -1412,41 +1411,25 @@ const move_maximize_window = (metaWindow, x, y) => {
 const move_resize_window = (metaWindow, x, y, width, height) => {
     if (!metaWindow)
         return;
-    let clientRect = metaWindow.get_rect();
-    let outerRect = metaWindow.get_outer_rect();
-    let client_deco = clientRect.width > outerRect.width &&
-        clientRect.height > outerRect.height;
-    if (client_deco) {
-        x -= outerRect.x - clientRect.x;
-        y -= outerRect.y - clientRect.y;
-        width += (clientRect.width - outerRect.width);
-        height += (clientRect.height - outerRect.height);
-    }
-    else {
-        width -= (outerRect.width - clientRect.width);
-        height -= (outerRect.height - clientRect.height);
-    }
-    metaWindow.resize(true, width, height);
-    metaWindow.move_frame(true, x, y);
+    metaWindow.move_resize_frame(true, x, y, width, height);
 };
 const get_window_center = (window) => {
-    const pos_x = window.get_outer_rect().width / 2 + window.get_outer_rect().x;
-    const pos_y = window.get_outer_rect().height / 2 + window.get_outer_rect().y;
+    const pos_x = window.get_frame_rect().width / 2 + window.get_frame_rect().x;
+    const pos_y = window.get_frame_rect().height / 2 + window.get_frame_rect().y;
     return [pos_x, pos_y];
 };
 const subscribe_to_focused_window_changes = (window, callback) => {
     const connections = [];
     let actor = window.get_compositor_private();
     if (actor) {
-        connections.push(actor.connect('size-changed', callback));
-        connections.push(actor.connect('position-changed', callback));
+        connections.push(window.connect('size-changed', callback));
+        connections.push(window.connect('position-changed', callback));
     }
     return connections;
 };
 const unsubscribe_from_focused_window_changes = (window, ...signals) => {
-    let actor = window.get_compositor_private();
     for (const idx of signals) {
-        actor.disconnect(idx);
+        window.disconnect(idx);
     }
 };
 
