@@ -11,6 +11,7 @@
 
 const Main = imports.ui.main;
 const Meta = imports.gi.Meta
+const Clutter = imports.gi.Clutter;
 const Settings = imports.ui.settings;
 const St = imports.gi.St;
 const Tweener = imports.ui.tweener;
@@ -104,6 +105,11 @@ DesktopScroller.prototype = {
 	hook: function(actor, event)
 	{
 		var scrollDirection = event.get_scroll_direction();
+
+		if (scrollDirection === Clutter.ScrollDirection.SMOOTH) {
+			return Clutter.EVENT_PROPAGATE;
+		}
+
 		var direction = scrollDirection == 1 ? Meta.MotionDirection.RIGHT : Meta.MotionDirection.LEFT;
 		this.switch_workspace(direction);
 	},

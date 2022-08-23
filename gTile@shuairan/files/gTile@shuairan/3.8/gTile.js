@@ -1268,9 +1268,9 @@ class App {
             let wm_type = this.focusMetaWindow.get_window_type();
             let layer = this.focusMetaWindow.get_layer();
             this.area.visible = true;
-            if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
+            const window = this.focusMetaWindow;
+            if (window != null && wm_type !== 1 && layer > 0) {
                 let grid = this.grid;
-                let window = getFocusApp();
                 grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor);
                 const [pos_x, pos_y] = this.platform.get_window_center(window);
                 grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
@@ -1360,19 +1360,14 @@ class App {
             this.MoveUIActor();
         };
         this.ResetFocusedWindow = () => {
-            var _a, _b;
+            var _a;
             if (this.focusMetaWindowConnections.length > 0) {
                 for (var idx in this.focusMetaWindowConnections) {
                     (_a = this.focusMetaWindow) === null || _a === void 0 ? void 0 : _a.disconnect(this.focusMetaWindowConnections[idx]);
                 }
             }
-            if (this.focusMetaWindowPrivateConnections.length > 0) {
-                let actor = (_b = this.focusMetaWindow) === null || _b === void 0 ? void 0 : _b.get_compositor_private();
-                if (actor) {
-                    for (let idx in this.focusMetaWindowPrivateConnections) {
-                        actor.disconnect(this.focusMetaWindowPrivateConnections[idx]);
-                    }
-                }
+            if (this.focusMetaWindow != null && this.focusMetaWindowPrivateConnections.length > 0) {
+                this.platform.unsubscribe_from_focused_window_changes(this.focusMetaWindow, ...this.focusMetaWindowPrivateConnections);
             }
             this.focusMetaWindow = null;
             this.focusMetaWindowConnections = [];
@@ -1462,6 +1457,12 @@ const subscribe_to_focused_window_changes = (window, callback) => {
     }
     return connections;
 };
+const unsubscribe_from_focused_window_changes = (window, ...signals) => {
+    let actor = window.get_compositor_private();
+    for (const idx of signals) {
+        actor.disconnect(idx);
+    }
+};
 
 ;// CONCATENATED MODULE: ./extension.ts
 
@@ -1473,7 +1474,8 @@ const platform = {
     move_resize_window: move_resize_window,
     reset_window: reset_window,
     get_window_center: get_window_center,
-    subscribe_to_focused_window_changes: subscribe_to_focused_window_changes
+    subscribe_to_focused_window_changes: subscribe_to_focused_window_changes,
+    unsubscribe_from_focused_window_changes: unsubscribe_from_focused_window_changes
 };
 const init = (meta) => {
     extension_metadata = meta;

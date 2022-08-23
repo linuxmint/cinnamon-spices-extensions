@@ -97,10 +97,10 @@ export class App implements IApp {
     let layer = this.focusMetaWindow.get_layer();
 
     this.area.visible = true;
-    if (this.focusMetaWindow && wm_type !== 1 && layer > 0) {
+    const window = this.focusMetaWindow;
+    if (window != null && wm_type !== 1 && layer > 0) {
       let grid = this.grid;
 
-      let window = getFocusApp();
       grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
       const [pos_x, pos_y] = this.platform.get_window_center(window);
@@ -252,13 +252,8 @@ export class App implements IApp {
       }
     }
 
-    if (this.focusMetaWindowPrivateConnections.length > 0) {
-      let actor = this.focusMetaWindow?.get_compositor_private();
-      if (actor) {
-        for (let idx in this.focusMetaWindowPrivateConnections) {
-          actor.disconnect(this.focusMetaWindowPrivateConnections[idx]);
-        }
-      }
+    if (this.focusMetaWindow != null && this.focusMetaWindowPrivateConnections.length > 0) {
+      this.platform.unsubscribe_from_focused_window_changes(this.focusMetaWindow, ...this.focusMetaWindowPrivateConnections);
     }
 
     this.focusMetaWindow = null;

@@ -18,9 +18,8 @@ const InvertWindowEffect = new Lang.Class({
 	Name: 'InvertWindowEffect',
 	Extends: Clutter.ShaderEffect,
 
-	_init: function(params) {
-		this.parent(params);
-		this.set_shader_source(' \
+	vfunc_get_static_shader_source: function() {
+		return ' \
 			uniform sampler2D tex; \
 			void main() { \
 				vec4 color = texture2D(tex, cogl_tex_coord_in[0].st); \
@@ -31,12 +30,12 @@ const InvertWindowEffect = new Lang.Class({
 				color.rgb *= color.a; \
 				cogl_color_out = color * cogl_color_in; \
 			} \
-		');
+		';
 	},
 
-	vfunc_paint_target: function() {
+	vfunc_paint_target: function(paint_context) {
 		this.set_uniform_value("tex", 0);
-		this.parent();
+		this.parent(paint_context);
 	}
 });
 

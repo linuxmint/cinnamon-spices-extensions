@@ -3,64 +3,65 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-06 01:55+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->name
 msgid "Desktop Cube"
-msgstr ""
+msgstr "Cub pentru spațiul de lucru"
 
 #. metadata.json->description
 msgid "Compiz Cube-like animation for workspace switching"
-msgstr ""
+msgstr "Animație de tip Compiz Cube pentru schimbarea spațiului de lucru"
 
 #. settings-schema.json->header1->description
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #. settings-schema.json->animationTime->description
 msgid "Animation duration"
-msgstr ""
+msgstr "Durata animației"
 
 #. settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
-msgstr ""
+msgstr "Proporția de tragere în spate de la ecran"
 
 #. settings-schema.json->header2->description
 msgid "Effects"
-msgstr ""
+msgstr "Efecte"
 
 #. settings-schema.json->scaleEffect->description
 msgid "Scale effect"
-msgstr ""
+msgstr "Efectul de mărire"
 
 #. settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
-msgstr ""
+msgstr "Efectul de micșorare"
 
 #. settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
-msgstr ""
+msgstr "Începe efectul de rotire"
 
 #. settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
-msgstr ""
+msgstr "Termină efectului de rotire"
 
 #. settings-schema.json->header3->description
 msgid "System Settings"
-msgstr ""
+msgstr "Setări de sistem"
 
 #. settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
-msgstr ""
+msgstr "Deschide Setări Cinnamon pentru a gestiona Spațiile de lucru"

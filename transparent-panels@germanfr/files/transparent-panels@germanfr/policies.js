@@ -19,6 +19,7 @@
 
 const Meta = imports.gi.Meta;
 const SignalManager = imports.misc.signalManager;
+const config = imports.misc.config;
 
 const META_WINDOW_MAXIMIZED = (Meta.MaximizeFlags.VERTICAL | Meta.MaximizeFlags.HORIZONTAL);
 
@@ -59,11 +60,18 @@ MaximizedPolicy.prototype = {
 
 	enable: function () {
 		this._signals = new SignalManager.SignalManager(null);
-		this._signals.connect(global.window_manager, "maximize", this._on_window_appeared, this);
+
+		if (config.PACKAGE_VERSION < "5.4") {
+			this._signals.connect(global.window_manager, "maximize", this._on_window_appeared, this);
+			this._signals.connect(global.window_manager, "unmaximize", this._on_window_disappeared, this);
+		} else {
+			this._signals.connect(global.window_manager, "size-change", this._on_window_size_changed, this);
+			this._signals.connect(global.window_manager, "unminimize", this._on_window_appeared, this);
+		}
+
 		this._signals.connect(global.window_manager, "map", this._on_window_appeared, this);
 
 		this._signals.connect(global.window_manager, "minimize", this._on_window_disappeared, this);
-		this._signals.connect(global.window_manager, "unmaximize", this._on_window_disappeared, this);
 		this._signals.connect(global.screen, "window-removed", this.lookup_all_monitors, this);
 		this._signals.connect(global.window_manager, "switch-workspace", this.lookup_all_monitors, this);
 
@@ -140,6 +148,14 @@ MaximizedPolicy.prototype = {
 		if(win.get_meta_window)
 			win = win.get_meta_window();
 		this.lookup_windows_state(win.get_monitor());
+	},
+
+	_on_window_size_changed: function (wm, win, change) {
+		if (change === Meta.SizeChange.MAXIMIZE) {
+			this._on_window_appeared(wm, win);
+		} else if (change === Meta.SizeChange.UNMAXIMIZE || change === Meta.SizeChange.TILE) {
+			this._on_window_disappeared(wm, win);
+		}
 	},
 
 	_on_desktop_focused: function (desktop) {
