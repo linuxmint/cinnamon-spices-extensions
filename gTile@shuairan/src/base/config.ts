@@ -21,6 +21,7 @@ export class Config {
     public readonly animation!: boolean;
     public readonly autoclose!: boolean;
     public readonly aspectRatio!: boolean;
+    public readonly useMonitorCenter!: boolean;
     // TODO: MAke sure these are actual lists!
     public readonly grid1x!: Row[];
     public readonly grid1y!: Column[];
@@ -57,6 +58,7 @@ export class Config {
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'useMonitorCenter', 'useMonitorCenter', () => this.app.OnCenteredToWindowChanged(), null);
 
         let basestr = 'grid';
 

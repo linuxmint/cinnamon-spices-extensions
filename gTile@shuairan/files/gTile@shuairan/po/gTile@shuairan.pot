@@ -8,28 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-13 10:08+0200\n"
+"POT-Creation-Date: 2022-08-31 09:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:43 3.8/gTile.js:286 5.4/gTile.js:278
+#: extension.js:43 3.8/gTile.js:290 5.4/gTile.js:290
 msgid "Auto close"
 msgstr ""
 
-#: extension.js:44 3.8/gTile.js:287 5.4/gTile.js:279
+#: extension.js:44 3.8/gTile.js:291 5.4/gTile.js:291
 msgid "Animations"
 msgstr ""
 
-#: extension.js:45 3.8/gTile.js:288 5.4/gTile.js:280
+#: extension.js:45 3.8/gTile.js:292 5.4/gTile.js:292
 msgid "Auto tile main and list"
 msgstr ""
 
-#: extension.js:46 3.8/gTile.js:289 5.4/gTile.js:281
+#: extension.js:46 3.8/gTile.js:293 5.4/gTile.js:293
 msgid "Auto tile two lists"
 msgstr ""
 
@@ -220,6 +220,18 @@ msgstr ""
 #. 5.4->settings-schema.json->aspect-ratio->tooltip
 msgid ""
 "Should the popup's grid reflect the current monitor's aspect ratio or not."
+msgstr ""
+
+#. 3.8->settings-schema.json->useMonitorCenter->description
+#. 5.4->settings-schema.json->useMonitorCenter->description
+msgid "UI always centered to monitor"
+msgstr ""
+
+#. 3.8->settings-schema.json->useMonitorCenter->tooltip
+#. 5.4->settings-schema.json->useMonitorCenter->tooltip
+msgid ""
+"By default the grid UI shows up in the middle of the active window. With "
+"this, it always displays in the middle of the monitor."
 msgstr ""
 
 #. 3.8->settings-schema.json->grid1x->tooltip

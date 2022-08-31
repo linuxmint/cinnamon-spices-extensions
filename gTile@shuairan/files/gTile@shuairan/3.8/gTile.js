@@ -127,6 +127,7 @@ class Config {
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'useMonitorCenter', 'useMonitorCenter', () => this.app.OnCenteredToWindowChanged(), null);
         let basestr = 'grid';
         this.initGridSettings();
         for (let i = 1; i <= 4; i++) {
@@ -276,6 +277,9 @@ const GetMonitorAspectRatio = (monitor) => {
         ratio: aspectRatio,
         widthIsLonger: monitor.width > monitor.height
     };
+};
+const GetMonitorCenter = (monitor) => {
+    return [monitor.x + monitor.width / 2, monitor.y + monitor.height / 2];
 };
 
 ;// CONCATENATED MODULE: ../base/constants.ts
@@ -1272,7 +1276,7 @@ class App {
             if (window != null && wm_type !== 1 && layer > 0) {
                 let grid = this.grid;
                 grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor);
-                const [pos_x, pos_y] = this.platform.get_window_center(window);
+                const [pos_x, pos_y] = this.config.useMonitorCenter ? GetMonitorCenter(grid.monitor) : this.platform.get_window_center(window);
                 grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
                 this.OnFocusedWindowChanged();
                 this.visible = true;
@@ -1314,7 +1318,7 @@ class App {
             let monitor = grid.monitor;
             let isGridMonitor = window.get_monitor() === grid.monitor.index;
             if (isGridMonitor) {
-                [pos_x, pos_y] = this.platform.get_window_center(window);
+                [pos_x, pos_y] = this.config.useMonitorCenter ? GetMonitorCenter(grid.monitor) : this.platform.get_window_center(window);
             }
             else {
                 pos_x = monitor.x + monitor.width / 2;
@@ -1357,6 +1361,9 @@ class App {
                 this.grid.topbar._set_app(app, title);
             else
                 this.grid.topbar._set_title(title);
+            this.MoveUIActor();
+        };
+        this.OnCenteredToWindowChanged = () => {
             this.MoveUIActor();
         };
         this.ResetFocusedWindow = () => {

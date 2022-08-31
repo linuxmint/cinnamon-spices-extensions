@@ -58,7 +58,8 @@
          "keys": [
             "animation",
             "autoclose",
-            "aspect-ratio"
+            "aspect-ratio",
+            "useMonitorCenter"
          ]
       },
       "grid1-section": {
@@ -140,6 +141,12 @@
       "default": "true",
       "description": "Use monitor aspect ratio",
       "tooltip": "Should the popup's grid reflect the current monitor's aspect ratio or not."
+   },
+   "useMonitorCenter": {
+      "type": "checkbox",
+      "default": "false",
+      "description": "UI always centered to monitor",
+      "tooltip": "By default the grid UI shows up in the middle of the active window. With this, it always displays in the middle of the monitor."
    },
    "columns": {
 		"type": "label",

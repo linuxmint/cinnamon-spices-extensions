@@ -1,7 +1,7 @@
 import { Config } from "./config";
 import { Grid } from "./ui/Grid";
 import { IApp, Platform } from "./types";
-import { getFocusApp, GetMonitorAspectRatio, getMonitorKey } from "./utils";
+import { getFocusApp, GetMonitorAspectRatio, GetMonitorCenter, getMonitorKey } from "./utils";
 
 /*****************************************************************
                          CONST & VARS
@@ -103,7 +103,7 @@ export class App implements IApp {
 
       grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
-      const [pos_x, pos_y] = this.platform.get_window_center(window);
+      const [pos_x, pos_y] = this.config.useMonitorCenter ? GetMonitorCenter(grid.monitor) : this.platform.get_window_center(window);
 
       grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
@@ -183,7 +183,7 @@ export class App implements IApp {
     let monitor = grid.monitor;
     let isGridMonitor = window.get_monitor() === grid.monitor.index;
     if (isGridMonitor) {
-      [pos_x, pos_y] = this.platform.get_window_center(window);
+        [pos_x, pos_y] = this.config.useMonitorCenter ? GetMonitorCenter(grid.monitor) : this.platform.get_window_center(window);
     } else {
       pos_x = monitor.x + monitor.width / 2;
       pos_y = monitor.y + monitor.height / 2;
@@ -238,6 +238,10 @@ export class App implements IApp {
 
     if (app) this.grid.topbar._set_app(app, title);
     else this.grid.topbar._set_title(title);
+    this.MoveUIActor();
+  }
+
+  public OnCenteredToWindowChanged = () => {
     this.MoveUIActor();
   }
 
