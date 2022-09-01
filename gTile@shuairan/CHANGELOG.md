@@ -4,7 +4,7 @@
 * Fixes [#421](https://github.com/linuxmint/cinnamon-spices-extensions/issues/421) Add back old behavior as an option - UI can have a fixed size instead of respecting the monitor's aspect ratio
 * Add back old behavior as an option - Always use monitor's center
 * Fix Auto-Tiling not working in 5.4 version 
-* Fixes [#422](https://github.com/linuxmint/cinnamon-spices-extensions/issues/422)
+* Fixes [#420](https://github.com/linuxmint/cinnamon-spices-extensions/issues/420)
 
 ### 2.2.0
 
