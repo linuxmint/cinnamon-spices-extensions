@@ -2,6 +2,7 @@
 
 * Add back old behavior as an option - Display UI on all monitors at the same time
 * Add back old behavior as an option - UI can have a fixed size instead of respecting the monitor's aspect ratio
+* Add back old behavior as an option - Always use monitor's center
 * Fix Auto-Tiling not working in 5.4 version 
 
 ### 2.2.0
