@@ -1,7 +1,8 @@
 import { Config } from "./config";
 import { Grid } from "./ui/Grid";
 import { IApp, Platform } from "./types";
-import { getFocusApp, GetMonitorAspectRatio, GetMonitorCenter, getMonitorKey } from "./utils";
+import { getFocusApp, GetMonitorAspectRatio, GetMonitorCenter, getMonitorKey, objHasKey } from "./utils";
+import { KEYCONTROL } from "./constants";
 
 /*****************************************************************
                          CONST & VARS
@@ -22,15 +23,26 @@ export class App implements IApp {
 
   public readonly area = new St.BoxLayout({ style_class: 'grid-preview' });
 
+  public get CurrentMonitor() {
+    return this.currentMonitor;
+  }
+
+  private currentMonitor: imports.ui.layout.Monitor = Main.layoutManager.primaryMonitor;
+
   private focusMetaWindow: imports.gi.Meta.Window | null = null;
   public get FocusMetaWindow() {
     return this.focusMetaWindow;
   }
 
-  private grid!: Grid;
-  public get Grid() {
-    return this.grid;
+  public get CurrentGrid(): Grid {
+    const grid = this.grids.find(x => x.monitor.index == this.currentMonitor.index)!;
+    return grid;
   }
+
+  public get Grids(): Grid[] {
+    return this.grids;
+  }
+  private grids: Grid[] = [];
 
   public readonly config: Config;
 
@@ -50,7 +62,9 @@ export class App implements IApp {
   }
 
   public RefreshGrid = () => {
-    this.grid.RefreshGridElements();
+    for (const grid of this.grids) {
+        grid.RefreshGridElements();
+    }
 
     Main.layoutManager["_chrome"].updateRegions();
   }
@@ -87,7 +101,9 @@ export class App implements IApp {
     if (current.index == newMonitor.index)
       return;
 
-    this.grid.ChangeCurrentMonitor(newMonitor);
+    if (!this.config.showGridOnAllMonitors)
+        this.CurrentGrid.ChangeCurrentMonitor(newMonitor);
+    this.currentMonitor = newMonitor;
     this.MoveUIActor();
   }
 
@@ -99,24 +115,30 @@ export class App implements IApp {
     this.area.visible = true;
     const window = this.focusMetaWindow;
     if (window != null && wm_type !== 1 && layer > 0) {
-      let grid = this.grid;
+        for (const grid of this.grids) {
 
-      grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
+            if (!this.config.showGridOnAllMonitors)
+                grid.ChangeCurrentMonitor(this.monitors.find(x => x.index == window.get_monitor()) ?? Main.layoutManager.primaryMonitor);
 
-      const [pos_x, pos_y] = this.config.useMonitorCenter ? GetMonitorCenter(grid.monitor) : this.platform.get_window_center(window);
+            const [pos_x, pos_y] = (!this.config.useMonitorCenter && grid.monitor.index == this.currentMonitor.index) ?  this.platform.get_window_center(window) : GetMonitorCenter(grid.monitor);
 
-      grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
+            grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
 
-      this.OnFocusedWindowChanged();
-      this.visible = true;
+            this.OnFocusedWindowChanged();
+            this.visible = true;
+        }
     }
 
     this.MoveUIActor();
+    this.BindKeyControls();
   }
 
   private HideUI = () => {
-    this.grid.elementsDelegate.reset();
-    this.grid.Hide(false);
+    this.RemoveKeyControls();
+    for (const grid of this.grids) {
+        grid.elementsDelegate.reset();
+        grid.Hide(false);
+    }
 
     this.area.visible = false;
 
@@ -125,6 +147,32 @@ export class App implements IApp {
     this.visible = false;
 
     Main.layoutManager["_chrome"].updateRegions();
+  }
+
+  private BindKeyControls = () => {
+    Main.keybindingManager.addHotKey('gTile-close', 'Escape', this.ToggleUI);
+    Main.keybindingManager.addHotKey('gTile-tile1', 'space', () => this.CurrentGrid.BeginTiling());
+    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', () => this.CurrentGrid.BeginTiling());
+    for (let index in KEYCONTROL) {
+      if (objHasKey(KEYCONTROL, index)) {
+        let key = KEYCONTROL[index];
+        let type = index;
+        Main.keybindingManager.addHotKey(
+          type,
+          key,
+          () => this.CurrentGrid.OnKeyPressEvent(type, key)
+        );
+      }
+    }
+  }
+
+  private RemoveKeyControls = () => {
+    Main.keybindingManager.removeHotKey('gTile-close');
+    Main.keybindingManager.removeHotKey('gTile-tile1');
+    Main.keybindingManager.removeHotKey('gTile-tile2');
+    for (let type in KEYCONTROL) {
+      Main.keybindingManager.removeHotKey(type);
+    }
   }
 
   //#region Init
@@ -136,21 +184,31 @@ export class App implements IApp {
   }
 
   public InitGrid() {
-    this.grid = new Grid(this, Main.layoutManager.primaryMonitor, 'gTile', this.config.nbCols, this.config.nbRows);
+    this.currentMonitor = Main.layoutManager.primaryMonitor;
+    const monitors = this.config.showGridOnAllMonitors ? this.monitors : [this.currentMonitor];
+    this.RemoveKeyControls();
+    this.grids = [];
+    for (const monitor of monitors) {
+        const grid = new Grid(this, monitor, 'gTile', this.config.nbCols, this.config.nbRows);
 
-    Main.layoutManager.addChrome(this.grid.actor, { visibleInFullscreen: true });
-    this.grid.actor.set_opacity(0);
-    this.grid.Hide(true);
-    this.grid.connect(
-      'hide-tiling',
-      this.HideUI
-    );
+        Main.layoutManager.addChrome(grid.actor, { visibleInFullscreen: true });
+        grid.actor.set_opacity(0);
+        grid.Hide(true);
+        grid.connect(
+          'hide-tiling',
+          this.HideUI
+        );
+        this.grids.push(grid);
+    }
   }
 
   private DestroyGrid = () => {
-    if (typeof this.grid != 'undefined') {
-      this.grid.Hide(true);
-      Main.layoutManager.removeChrome(this.grid.actor);
+    this.RemoveKeyControls();
+    for (const grid of this.grids) {
+        if (typeof grid != 'undefined') {
+            grid.Hide(true);
+            Main.layoutManager.removeChrome(grid.actor);
+        }
     }
   }
 
@@ -168,47 +226,42 @@ export class App implements IApp {
     let window = this.focusMetaWindow;
     if (!window) 
       return;
-    
-    let grid = this.grid;
 
-    const [newTableWidth, newTableHeight] = grid.GetTableSize();
-    const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
-    const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
+    for (const grid of this.Grids) {
+        const [newTableWidth, newTableHeight] = grid.GetTableSize();
+        const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
+        const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
 
+        let pos_x: number;
+        let pos_y: number;
 
-    let pos_x: number;
-    let pos_y: number;
+        // Get center of where we want to be
+        let monitor = grid.monitor;
+        let isGridMonitor = window.get_monitor() === grid.monitor.index;
+        if (isGridMonitor) {
+            [pos_x, pos_y] = (!this.config.useMonitorCenter) ? this.platform.get_window_center(window) : GetMonitorCenter(monitor);
+            pos_x = pos_x < monitor.x ? monitor.x : pos_x;
+            pos_x = pos_x + gridWidth > monitor.width + monitor.x ? monitor.x + monitor.width - gridWidth : pos_x;
+            pos_y = pos_y < monitor.y ? monitor.y : pos_y;
+            pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
+        } else {
+            [pos_x, pos_y] = GetMonitorCenter(monitor);
+        }
 
-    // Get center of where we want to be
-    let monitor = grid.monitor;
-    let isGridMonitor = window.get_monitor() === grid.monitor.index;
-    if (isGridMonitor) {
-        [pos_x, pos_y] = this.config.useMonitorCenter ? GetMonitorCenter(grid.monitor) : this.platform.get_window_center(window);
-    } else {
-      pos_x = monitor.x + monitor.width / 2;
-      pos_y = monitor.y + monitor.height / 2;
+        // Offset by UI and window sizes
+        pos_x = Math.floor(pos_x - gridWidth / 2);
+        pos_y = Math.floor(pos_y - gridHeight / 2);
+
+        grid.AdjustTableSize(newTableWidth, newTableHeight);
+
+        Tweener.addTween(grid.actor, {
+            time: this.config.AnimationTime,
+            x: pos_x,
+            y: pos_y,
+            transition: 'easeOutQuad',
+            onComplete: this.updateRegions
+        });
     }
-
-    // Offset by UI and window sizes
-    pos_x = Math.floor(pos_x - gridWidth / 2);
-    pos_y = Math.floor(pos_y - gridHeight / 2);
-
-    if (isGridMonitor) {
-      pos_x = pos_x < monitor.x ? monitor.x : pos_x;
-      pos_x = pos_x + gridWidth > monitor.width + monitor.x ? monitor.x + monitor.width - gridWidth : pos_x;
-      pos_y = pos_y < monitor.y ? monitor.y : pos_y;
-      pos_y = pos_y + gridHeight > monitor.height + monitor.y ? monitor.y + monitor.height - gridHeight : pos_y;
-    }  
-
-    grid.AdjustTableSize(newTableWidth, newTableHeight);
-
-    Tweener.addTween(grid.actor, {
-      time: this.config.AnimationTime,
-      x: pos_x,
-      y: pos_y,
-      transition: 'easeOutQuad',
-      onComplete: this.updateRegions
-    });
   }
 
   private updateRegions = () => {
@@ -219,7 +272,9 @@ export class App implements IApp {
     let window = getFocusApp();
     if (!window) {
       this.ResetFocusedWindow();
-      this.grid.topbar._set_title('gTile');
+      for (const grid of this.grids) {
+        grid.topbar._set_title('gTile');
+      }
       return;
     }
 
@@ -227,7 +282,10 @@ export class App implements IApp {
 
     this.focusMetaWindow = window;
 
-    this.grid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
+    if (!this.config.showGridOnAllMonitors)
+        this.CurrentGrid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
+
+    this.currentMonitor = this.monitors[this.focusMetaWindow.get_monitor()];
 
     this.focusMetaWindowPrivateConnections.push(
         ...this.platform.subscribe_to_focused_window_changes(this.focusMetaWindow, this.MoveUIActor)
@@ -236,8 +294,16 @@ export class App implements IApp {
     let app = this.tracker.get_window_app(this.focusMetaWindow);
     let title = this.focusMetaWindow.get_title();
 
-    if (app) this.grid.topbar._set_app(app, title);
-    else this.grid.topbar._set_title(title);
+    if (app) {
+        for (const grid of this.grids) {
+            grid.topbar._set_app(app, title);
+        }
+    }
+    else {
+        for (const grid of this.grids) {
+            grid.topbar._set_title(title);
+        }
+    }
     this.MoveUIActor();
   }
 

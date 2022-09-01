@@ -59,7 +59,8 @@
             "animation",
             "autoclose",
             "aspect-ratio",
-            "useMonitorCenter"
+            "useMonitorCenter",
+            "showGridOnAllMonitors"
          ]
       },
       "grid1-section": {
@@ -147,6 +148,11 @@
       "default": "false",
       "description": "UI always centered to monitor",
       "tooltip": "By default the grid UI shows up in the middle of the active window. With this, it always displays in the middle of the monitor."
+   },
+   "showGridOnAllMonitors": {
+      "type": "checkbox",
+      "default": "false",
+      "description": "Show UI and all monitors at the same time"
    },
    "columns": {
 		"type": "label",

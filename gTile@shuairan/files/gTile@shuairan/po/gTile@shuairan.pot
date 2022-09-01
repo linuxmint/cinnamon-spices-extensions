@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-31 09:24+0100\n"
+"POT-Creation-Date: 2022-09-01 21:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:43 3.8/gTile.js:290 5.4/gTile.js:290
+#: extension.js:43 3.8/gTile.js:297 5.4/gTile.js:297
 msgid "Auto close"
 msgstr ""
 
-#: extension.js:44 3.8/gTile.js:291 5.4/gTile.js:291
+#: extension.js:44 3.8/gTile.js:298 5.4/gTile.js:298
 msgid "Animations"
 msgstr ""
 
-#: extension.js:45 3.8/gTile.js:292 5.4/gTile.js:292
+#: extension.js:45 3.8/gTile.js:299 5.4/gTile.js:299
 msgid "Auto tile main and list"
 msgstr ""
 
-#: extension.js:46 3.8/gTile.js:293 5.4/gTile.js:293
+#: extension.js:46 3.8/gTile.js:300 5.4/gTile.js:300
 msgid "Auto tile two lists"
 msgstr ""
 
@@ -232,6 +232,11 @@ msgstr ""
 msgid ""
 "By default the grid UI shows up in the middle of the active window. With "
 "this, it always displays in the middle of the monitor."
+msgstr ""
+
+#. 3.8->settings-schema.json->showGridOnAllMonitors->description
+#. 5.4->settings-schema.json->showGridOnAllMonitors->description
+msgid "Show UI and all monitors at the same time"
 msgstr ""
 
 #. 3.8->settings-schema.json->grid1x->tooltip

@@ -22,6 +22,7 @@ export class Config {
     public readonly autoclose!: boolean;
     public readonly aspectRatio!: boolean;
     public readonly useMonitorCenter!: boolean;
+    public readonly showGridOnAllMonitors!: boolean;
     // TODO: MAke sure these are actual lists!
     public readonly grid1x!: Row[];
     public readonly grid1y!: Column[];
@@ -59,6 +60,7 @@ export class Config {
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'useMonitorCenter', 'useMonitorCenter', () => this.app.OnCenteredToWindowChanged(), null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'showGridOnAllMonitors', 'showGridOnAllMonitors', () => this.app.ReInitialize(), null);
 
         let basestr = 'grid';
 
@@ -89,7 +91,9 @@ export class Config {
     }
 
     private updateSettings = () => {
-        this.app.Grid.UpdateSettingsButtons();
+        for (const grid of this.app.Grids) {
+            grid.UpdateSettingsButtons();
+        }  
     }
     
     private initGridSettings = () => {
@@ -107,12 +111,16 @@ export class Config {
     private updateGridSettings = () => {
         this.gridSettingsButton = [];
         this.initGridSettings();
-        this.app.Grid.RebuildGridSettingsButtons();
+        for (const grid of this.app.Grids) {
+            grid.RebuildGridSettingsButtons();
+        }  
     }
 
     private UpdateGridTableSize = () => {
-        const [width, height] = this.app.Grid.GetTableSize();
-        this.app.Grid.AdjustTableSize(width, height);
+        for (const grid of this.app.Grids) {
+            const [width, height] = grid.GetTableSize();
+            grid.AdjustTableSize(width, height);
+        }
     }
 
     public destroy = () => {

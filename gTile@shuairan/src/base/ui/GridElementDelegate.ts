@@ -108,7 +108,7 @@ export class GridElementDelegate {
     let minX, maxX, minY, maxY;
     [minX, maxX, minY, maxY] = this._getVarFromGridElement(fromGridElement, toGridElement);
 
-    let grid = this.app.Grid;
+    let grid = fromGridElement.grid;
     for (let r = minY; r <= maxY; r++) {
       for (let c = minX; c <= maxX; c++) {
         let element = grid?.elements[r][c];

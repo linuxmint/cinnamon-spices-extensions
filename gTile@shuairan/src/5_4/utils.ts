@@ -1,4 +1,5 @@
 const Meta = imports.gi.Meta;
+const Main = imports.ui.main;
 
 export const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
     metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
@@ -90,3 +91,26 @@ export const unsubscribe_from_focused_window_changes = (window: imports.gi.Meta.
         window.disconnect(idx);
     }
 };
+
+export const get_tab_list = (): imports.gi.Meta.Window[] => {
+    let screen = global.screen;
+    let display = screen.get_display();
+    let workspace = screen.get_active_workspace();
+
+    let windows = []; // the array to return
+
+    let allwindows = display.get_tab_list(Meta.TabList.NORMAL_ALL, workspace);
+    let registry: Record<number, boolean> = {}; // to avoid duplicates
+
+    for (let i = 0; i < allwindows.length; ++i) {
+        let window = allwindows[i];
+        if (Main.isInteresting(window)) {
+            let seqno = window.get_stable_sequence();
+            if (!registry[seqno]) {
+                windows.push(window);
+                registry[seqno] = true; // there may be duplicates in the list (rare)
+            }
+        }
+    }
+    return windows;
+}
