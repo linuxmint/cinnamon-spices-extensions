@@ -23,7 +23,6 @@ export class Config {
     public readonly aspectRatio!: boolean;
     public readonly useMonitorCenter!: boolean;
     public readonly showGridOnAllMonitors!: boolean;
-    // TODO: MAke sure these are actual lists!
     public readonly grid1x!: Row[];
     public readonly grid1y!: Column[];
     public readonly grid2x!: Row[];
