@@ -93,6 +93,8 @@ export const unsubscribe_from_focused_window_changes = (window: imports.gi.Meta.
 };
 
 export const get_tab_list = (): imports.gi.Meta.Window[] => {
+    // Main.getTabList has a bug in 5.4+ so we can't rely on it
+    // https://github.com/linuxmint/cinnamon/pull/11131
     let screen = global.screen;
     let display = screen.get_display();
     let workspace = screen.get_active_workspace();
