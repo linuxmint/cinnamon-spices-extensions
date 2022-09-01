@@ -100,9 +100,13 @@ class Config {
             for (let i = 1; i <= 4; i++) {
                 let sgbx = basestr + i + 'x';
                 let sgby = basestr + i + 'y';
+                let nameOverride = basestr + i + "NameOverride";
                 let gbx = this.settings.getValue(sgbx);
                 let gby = this.settings.getValue(sgby);
-                this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx.length + 'x' + gby.length, gbx, gby));
+                if (gbx.length == 0 || gby.length == 0)
+                    continue;
+                let nameOverrideVal = this.settings.getValue(nameOverride);
+                this.gridSettingsButton.push(new GridSettingsButton(this.app, this, nameOverrideVal || (gbx.length + 'x' + gby.length), gbx, gby));
             }
         };
         this.updateGridSettings = () => {
@@ -140,8 +144,10 @@ class Config {
         for (let i = 1; i <= 4; i++) {
             let sgbx = basestr + i + 'x';
             let sgby = basestr + i + 'y';
+            let nameOverride = basestr + i + "NameOverride";
             this.settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, this.updateGridSettings, null);
             this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, nameOverride, nameOverride, this.updateGridSettings, null);
         }
         this.EnableHotkey();
     }

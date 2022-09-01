@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-01 21:25+0100\n"
+"POT-Creation-Date: 2022-09-01 22:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: extension.js:43 3.8/gTile.js:297 5.4/gTile.js:297
+#: extension.js:43 3.8/gTile.js:303 5.4/gTile.js:303
 msgid "Auto close"
 msgstr ""
 
-#: extension.js:44 3.8/gTile.js:298 5.4/gTile.js:298
+#: extension.js:44 3.8/gTile.js:304 5.4/gTile.js:304
 msgid "Animations"
 msgstr ""
 
-#: extension.js:45 3.8/gTile.js:299 5.4/gTile.js:299
+#: extension.js:45 3.8/gTile.js:305 5.4/gTile.js:305
 msgid "Auto tile main and list"
 msgstr ""
 
-#: extension.js:46 3.8/gTile.js:300 5.4/gTile.js:300
+#: extension.js:46 3.8/gTile.js:306 5.4/gTile.js:306
 msgid "Auto tile two lists"
 msgstr ""
 
@@ -239,6 +239,16 @@ msgstr ""
 msgid "Show UI and all monitors at the same time"
 msgstr ""
 
+#. 3.8->settings-schema.json->grid1NameOverride->description
+#. 3.8->settings-schema.json->grid2NameOverride->description
+#. 3.8->settings-schema.json->grid3NameOverride->description
+#. 3.8->settings-schema.json->grid4NameOverride->description
+#. 5.4->settings-schema.json->grid2NameOverride->description
+#. 5.4->settings-schema.json->grid3NameOverride->description
+#. 5.4->settings-schema.json->grid4NameOverride->description
+msgid "Name Override"
+msgstr ""
+
 #. 3.8->settings-schema.json->grid1x->tooltip
 #. 3.8->settings-schema.json->grid2x->tooltip
 #. 3.8->settings-schema.json->grid3x->tooltip
@@ -282,4 +292,8 @@ msgstr ""
 msgid ""
 "Each row represents a row. Span is how much space a row should take up "
 "compared to the other columns. Default is 1."
+msgstr ""
+
+#. 5.4->settings-schema.json->grid1NameOverride->description
+msgid "Name Override on the UI"
 msgstr ""

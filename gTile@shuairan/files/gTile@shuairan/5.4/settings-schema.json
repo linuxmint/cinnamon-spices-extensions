@@ -67,6 +67,7 @@
          "type": "section",
          "title": "Layout For Button 1",
          "keys": [
+            "grid1NameOverride",
             "columns",
             "grid1x",
             "rows",
@@ -77,6 +78,7 @@
          "type": "section",
          "title": "Layout For Button 2",
          "keys": [
+            "grid2NameOverride",
             "columns",
             "grid2x",
             "rows",
@@ -87,6 +89,7 @@
          "type": "section",
          "title": "Layout For Button 3",
          "keys": [
+            "grid3NameOverride",
             "columns",
             "grid3x",
             "rows",
@@ -97,6 +100,7 @@
          "type": "section",
          "title": "Layout For Button 4",
          "keys": [
+            "grid4NameOverride",
             "columns",
             "grid4x",
             "rows",
@@ -162,6 +166,11 @@
 		"type": "label",
 		"description": "Rows"
 	},
+   "grid1NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override on the UI"
+   },
    "grid1x": {
 		"type": "list",
 		"description": "Columns",
@@ -208,6 +217,11 @@
          }
       ]
 	},
+   "grid2NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid2x": {
 		"type": "list",
 		"description": "Columns",
@@ -257,6 +271,11 @@
          }
       ]
 	},
+   "grid3NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid3x": {
 		"type": "list",
 		"description": "Columns",
@@ -315,6 +334,11 @@
          }
       ]
 	},
+   "grid4NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid4x": {
 		"type": "list",
 		"description": "Columns",
