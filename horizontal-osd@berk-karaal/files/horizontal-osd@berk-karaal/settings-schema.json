@@ -1,0 +1,373 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "general",
+            "colors",
+            "advanced",
+            "select-horizontal-osds"
+        ],
+        "general": {
+            "type": "page",
+            "title": "General",
+            "sections": [
+                "general-osd-configs",
+                "general-icon-configs",
+                "general-level-bar-configs",
+                "general-label-configs"
+            ]
+        },
+        "general-osd-configs": {
+            "type": "section",
+            "title": "Osd Window",
+            "keys": [
+                "osd-width",
+                "osd-height",
+                "osd-border-radius",
+                "osd-position-x",
+                "osd-position-y",
+                "osd-hide-timeout"
+            ]
+        },
+        "general-icon-configs": {
+            "type": "section",
+            "title": "Icon",
+            "keys": [
+                "icon-size"
+            ]
+        },
+        "general-level-bar-configs": {
+            "type": "section",
+            "title": "Level Bar",
+            "keys": [
+                "level-bar-size",
+                "level-bar-border-radius"
+            ]
+        },
+        "general-label-configs": {
+            "type": "section",
+            "title": "Label",
+            "keys": [
+                "label-show",
+                "label-size",
+                "label-vertical-align-correction"
+            ]
+        },
+        "colors": {
+            "type": "page",
+            "title": "Colors",
+            "sections": [
+                "osd-window-colors",
+                "icon-colors",
+                "level-bar-colors",
+                "label-colors"
+            ]
+        },
+        "osd-window-colors": {
+            "type": "section",
+            "title": "Osd Window",
+            "keys": [
+                "osd-window-overwrite-colors",
+                "osd-window-border-color",
+                "osd-window-background-color"
+            ]
+        },
+        "icon-colors": {
+            "type": "section",
+            "title": "Icon",
+            "keys": [
+                "icon-overwrite-colors",
+                "icon-color"
+            ]
+        },
+        "level-bar-colors": {
+            "type": "section",
+            "title": "Level Bar",
+            "keys": [
+                "level-bar-overwrite-colors",
+                "level-bar-foreground-color",
+                "level-bar-background-color"
+            ]
+        },
+        "label-colors": {
+            "type": "section",
+            "title": "Label",
+            "keys": [
+                "label-overwrite-colors",
+                "label-color"
+            ]
+        },
+        "advanced": {
+            "type": "page",
+            "title": "Advanced",
+            "sections": [
+                "advanced-osd-window-configs",
+                "advanced-icon-configs",
+                "advanced-level-bar-configs",
+                "advanced-label-configs"
+            ]
+        },
+        "advanced-osd-window-configs": {
+            "type": "section",
+            "title": "Osd Window",
+            "keys": [
+                "osd-window-overwrite-css",
+                "osd-window-css"
+            ]
+        },
+        "advanced-icon-configs": {
+            "type": "section",
+            "title": "Icon",
+            "keys": [
+                "icon-overwrite-css",
+                "icon-css"
+            ]
+        },
+        "advanced-level-bar-configs": {
+            "type": "section",
+            "title": "Level Bar",
+            "keys": [
+                "level-bar-overwrite-css",
+                "level-bar-background-css",
+                "level-bar-foreground-css"
+            ]
+        },
+        "advanced-label-configs": {
+            "type": "section",
+            "title": "Label",
+            "keys": [
+                "label-overwrite-css",
+                "label-css"
+            ]
+        },
+        "select-horizontal-osds": {
+            "type": "page",
+            "title": "Select OSDs",
+            "sections": [
+                "select-horizontal-osds-section"
+            ]
+        },
+        "select-horizontal-osds-section": {
+            "type": "section",
+            "title": "Select OSDs",
+            "keys": [
+                "select-osds-info-text",
+                "selected-volume-as-horizontal",
+                "selected-brightness-as-horizontal",
+                "selected-mic-as-horizontal"
+            ]
+        }
+    },
+    "osd-width": {
+        "type": "entry",
+        "default": "2",
+        "description": "Width of OSD window",
+        "tooltip": "osd_width = this._popupSize * <this value>"
+    },
+    "osd-height": {
+        "type": "entry",
+        "default": "0.3",
+        "description": "Height of OSD window",
+        "tooltip": "osd_height = this._popupSize * <this value>"
+    },
+    "osd-border-radius": {
+        "type": "entry",
+        "default": "999",
+        "description": "Border radius od OSD window (in pixels)",
+        "tooltip": "border-radius: <this value>px;"
+    },
+    "osd-position-x": {
+        "type": "spinbutton",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "description": "X position of OSD window relative to screen size by percentage",
+        "tooltip": "0 is left, 100 is right"
+    },
+    "osd-position-y": {
+        "type": "spinbutton",
+        "default": 90,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "description": "Y position of OSD window relative to screen size by percentage",
+        "tooltip": "0 is top, 100 is bottom"
+    },
+    "osd-hide-timeout": {
+        "type": "entry",
+        "default": "1500",
+        "description": "Hide timeout of OSD window (in milliseconds)"
+    },
+    "icon-size": {
+        "type": "spinbutton",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "description": "Size of icon relative to OSD height by percentage",
+        "tooltip": "icon_size = osd_height * (<this value> / 100)"
+    },
+    "level-bar-size": {
+        "type": "spinbutton",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "description": "Size of level bar relative to OSD height by percentage",
+        "tooltip": "level_bar_size = osd_height * (<this value> / 100)"
+    },
+    "level-bar-border-radius": {
+        "type": "entry",
+        "default": "2",
+        "description": "Border radius of level bar (in pixels)",
+        "tooltip": "border-radius: <this value>px;"
+    },
+    "label-show": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show label"
+    },
+    "label-size": {
+        "type": "spinbutton",
+        "dependency": "label-show",
+        "default": 35,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "description": "Size of label relative to OSD height by percentage",
+        "tooltip": "label_size = osd_height * (<this value> / 100)"
+    },
+    "label-vertical-align-correction": {
+        "type": "entry",
+        "dependency": "label-show",
+        "default": "-4",
+        "description": "Label can not be centered correctly for now. You can adjust or decrease top margin of label here. (value: positive or negative int)",
+        "tooltip": "margin-top: (calculated_value + <this value>)px"
+    },
+    "osd-window-overwrite-colors": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite OSD window colors"
+    },
+    "osd-window-border-color": {
+        "type": "colorchooser",
+        "dependency": "osd-window-overwrite-colors",
+        "default": "rgba(32, 74, 135, 1)",
+        "description": "Border color of OSD window"
+    },
+    "osd-window-background-color": {
+        "type": "colorchooser",
+        "dependency": "osd-window-overwrite-colors",
+        "default": "rgba(40, 53, 92, 0.75)",
+        "description": "Background color of OSD window"
+    },
+    "icon-overwrite-colors": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite icon color"
+    },
+    "icon-color": {
+        "type": "colorchooser",
+        "dependency": "icon-overwrite-colors",
+        "default": "rgba(114, 159, 207, 1)",
+        "description": "Icon color"
+    },
+    "level-bar-overwrite-colors": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite level bar colors"
+    },
+    "level-bar-foreground-color": {
+        "type": "colorchooser",
+        "dependency": "level-bar-overwrite-colors",
+        "default": "rgba(114, 159, 207, 1)",
+        "description": "Level bar foreground color"
+    },
+    "level-bar-background-color": {
+        "type": "colorchooser",
+        "dependency": "level-bar-overwrite-colors",
+        "default": "rgba(32, 74, 135, 1)",
+        "description": "Level bar background color"
+    },
+    "label-overwrite-colors": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite label color"
+    },
+    "label-color": {
+        "type": "colorchooser",
+        "dependency": "label-overwrite-colors",
+        "default": "rgba(142, 175, 210, 1)",
+        "description": "Label color"
+    },
+    "osd-window-overwrite-css": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite CSS of OSD window"
+    },
+    "osd-window-css": {
+        "type": "entry",
+        "dependency": "osd-window-overwrite-css",
+        "default": "border-radius: 99px;",
+        "description": "CSS of OSD window"
+    },
+    "icon-overwrite-css": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite CSS of icon"
+    },
+    "icon-css": {
+        "type": "entry",
+        "dependency": "icon-overwrite-css",
+        "default": "margin: 0; margin-left: 10px; padding: 0;",
+        "description": "CSS of icon"
+    },
+    "level-bar-overwrite-css": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite CSS of level bar"
+    },
+    "level-bar-background-css": {
+        "type": "entry",
+        "dependency": "level-bar-overwrite-css",
+        "default": "margin: 0; padding: 0;",
+        "description": "CSS of level bar"
+    },
+    "level-bar-foreground-css": {
+        "type": "entry",
+        "dependency": "level-bar-overwrite-css",
+        "default": "border-radius: 0px;",
+        "description": "CSS for foregorund of level bar"
+    },
+    "label-overwrite-css": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Overwrite CSS of label"
+    },
+    "label-css": {
+        "type": "entry",
+        "dependency": "label-overwrite-css",
+        "default": "text-align: left; font-size: 1.2em; margin: 10px 0 0 0; min-width: 80px; padding: 0;",
+        "description": "CSS of label"
+    },
+    "select-osds-info-text": {
+        "type": "label",
+        "description": "You can choose which OSDs to be horizontal here"
+    },
+    "selected-volume-as-horizontal": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Volume OSD"
+    },
+    "selected-brightness-as-horizontal": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Brightness OSD"
+    },
+    "selected-mic-as-horizontal": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Microphone OSD"
+    }
+}
