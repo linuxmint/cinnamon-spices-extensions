@@ -164,3 +164,7 @@ export const GetMonitorAspectRatio = (monitor: imports.ui.layout.Monitor) => {
         widthIsLonger: monitor.width > monitor.height
     }
 }
+
+export const GetMonitorCenter = (monitor: imports.ui.layout.Monitor): [x: number, y: number] => {
+    return [monitor.x + monitor.width / 2, monitor.y + monitor.height / 2];
+}

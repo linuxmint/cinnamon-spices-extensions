@@ -57,13 +57,17 @@
          "title": "Behavior",
          "keys": [
             "animation",
-            "autoclose"
+            "autoclose",
+            "aspect-ratio",
+            "useMonitorCenter",
+            "showGridOnAllMonitors"
          ]
       },
       "grid1-section": {
          "type": "section",
          "title": "Layout For Button 1",
          "keys": [
+            "grid1NameOverride",
             "columns",
             "grid1x",
             "rows",
@@ -74,6 +78,7 @@
          "type": "section",
          "title": "Layout For Button 2",
          "keys": [
+            "grid2NameOverride",
             "columns",
             "grid2x",
             "rows",
@@ -84,6 +89,7 @@
          "type": "section",
          "title": "Layout For Button 3",
          "keys": [
+            "grid3NameOverride",
             "columns",
             "grid3x",
             "rows",
@@ -94,6 +100,7 @@
          "type": "section",
          "title": "Layout For Button 4",
          "keys": [
+            "grid4NameOverride",
             "columns",
             "grid4x",
             "rows",
@@ -134,6 +141,23 @@
       "default": "true",
       "description": "Auto-Close"
    },
+   "aspect-ratio": {
+      "type": "checkbox",
+      "default": "true",
+      "description": "Use monitor aspect ratio",
+      "tooltip": "Should the popup's grid reflect the current monitor's aspect ratio or not."
+   },
+   "useMonitorCenter": {
+      "type": "checkbox",
+      "default": "false",
+      "description": "UI always centered to monitor",
+      "tooltip": "By default the grid UI shows up in the middle of the active window. With this, it always displays in the middle of the monitor."
+   },
+   "showGridOnAllMonitors": {
+      "type": "checkbox",
+      "default": "false",
+      "description": "Show UI and all monitors at the same time"
+   },
    "columns": {
 		"type": "label",
 		"description": "Columns"
@@ -142,6 +166,11 @@
 		"type": "label",
 		"description": "Rows"
 	},
+   "grid1NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid1x": {
 		"type": "list",
 		"description": "Columns",
@@ -188,6 +217,11 @@
          }
       ]
 	},
+   "grid2NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid2x": {
 		"type": "list",
 		"description": "Columns",
@@ -237,6 +271,11 @@
          }
       ]
 	},
+   "grid3NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid3x": {
 		"type": "list",
 		"description": "Columns",
@@ -295,6 +334,11 @@
          }
       ]
 	},
+   "grid4NameOverride": {
+      "type": "entry",
+		"default": "",
+		"description": "Name Override"
+   },
    "grid4x": {
 		"type": "list",
 		"description": "Columns",

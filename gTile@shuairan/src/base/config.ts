@@ -20,17 +20,28 @@ export class Config {
     public readonly hotkey!: string;
     public readonly animation!: boolean;
     public readonly autoclose!: boolean;
-    // TODO: MAke sure these are actual lists!
+    public readonly aspectRatio!: boolean;
+    public readonly useMonitorCenter!: boolean;
+    public readonly showGridOnAllMonitors!: boolean;
+    public readonly grid1NameOverride!: string;
     public readonly grid1x!: Row[];
     public readonly grid1y!: Column[];
+    public readonly grid2NameOverride!: string;
     public readonly grid2x!: Row[];
     public readonly grid2y!: Column[];
+    public readonly grid3NameOverride!: string;
     public readonly grid3x!: Row[];
     public readonly grid3y!: Column[];
+    public readonly grid4NameOverride!: string;
     public readonly grid4x!: Row[];
     public readonly grid4y!: Column[];
     public nbRows!: Row[];
     public nbCols!: Column[];
+
+    /** in seconds */
+    public get AnimationTime(): number {
+        return this.animation ? 0.3 : 0.1;
+    }
 
     constructor(app: App) {
         this.app = app;
@@ -50,6 +61,9 @@ export class Config {
 
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'animation', 'animation', this.updateSettings, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'autoclose', 'autoclose', this.updateSettings, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'useMonitorCenter', 'useMonitorCenter', () => this.app.OnCenteredToWindowChanged(), null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'showGridOnAllMonitors', 'showGridOnAllMonitors', () => this.app.ReInitialize(), null);
 
         let basestr = 'grid';
 
@@ -58,8 +72,10 @@ export class Config {
         for (let i = 1; i <= 4; i++) {
             let sgbx = basestr + i + 'x';
             let sgby = basestr + i + 'y';
+            let nameOverride = basestr + i + "NameOverride";
             this.settings.bindProperty(Settings.BindingDirection.IN, sgbx, sgbx, this.updateGridSettings, null);
             this.settings.bindProperty(Settings.BindingDirection.IN, sgby, sgby, this.updateGridSettings, null);
+            this.settings.bindProperty(Settings.BindingDirection.IN, nameOverride, nameOverride, this.updateGridSettings, null);
         }
 
         this.EnableHotkey();
@@ -80,7 +96,9 @@ export class Config {
     }
 
     private updateSettings = () => {
-        this.app.Grid.UpdateSettingsButtons();
+        for (const grid of this.app.Grids) {
+            grid.UpdateSettingsButtons();
+        }  
     }
     
     private initGridSettings = () => {
@@ -88,17 +106,30 @@ export class Config {
         for (let i = 1; i <= 4; i++) {
             let sgbx = basestr + i + 'x';
             let sgby = basestr + i + 'y';
+            let nameOverride = basestr + i + "NameOverride";
             // TODO: same here
             let gbx = this.settings.getValue<Row[]>(sgbx);
             let gby = this.settings.getValue<Column[]>(sgby);
-            this.gridSettingsButton.push(new GridSettingsButton(this.app, this, gbx.length + 'x' + gby.length, gbx, gby));
+            if (gbx.length == 0 || gby.length == 0)
+                continue;
+            let nameOverrideVal = this.settings.getValue<string>(nameOverride);
+            this.gridSettingsButton.push(new GridSettingsButton(this.app, this, nameOverrideVal || (gbx.length + 'x' + gby.length), gbx, gby));
         }
     }
     
     private updateGridSettings = () => {
         this.gridSettingsButton = [];
         this.initGridSettings();
-        this.app.Grid.RebuildGridSettingsButtons();
+        for (const grid of this.app.Grids) {
+            grid.RebuildGridSettingsButtons();
+        }  
+    }
+
+    private UpdateGridTableSize = () => {
+        for (const grid of this.app.Grids) {
+            const [width, height] = grid.GetTableSize();
+            grid.AdjustTableSize(width, height);
+        }
     }
 
     public destroy = () => {

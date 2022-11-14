@@ -1,4 +1,5 @@
 const Meta = imports.gi.Meta;
+const Main = imports.ui.main;
 
 export const reset_window = (metaWindow: imports.gi.Meta.Window | null) => {
     metaWindow?.unmaximize(Meta.MaximizeFlags.HORIZONTAL);
@@ -91,3 +92,7 @@ export const unsubscribe_from_focused_window_changes = (window: imports.gi.Meta.
         actor.disconnect(idx);
     }
 };
+
+export const get_tab_list = (): imports.gi.Meta.Window[] => {
+    return Main.getTabList();
+}

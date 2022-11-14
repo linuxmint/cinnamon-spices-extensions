@@ -17,4 +17,5 @@ export interface Platform {
     get_window_center: (metaWindow: imports.gi.Meta.Window) => [pos_x: number, pos_y: number];
     subscribe_to_focused_window_changes: (window: imports.gi.Meta.Window, callback: () => void) => number[]
     unsubscribe_from_focused_window_changes: (window: imports.gi.Meta.Window, ...signals: number[]) => void
+    get_tab_list: () => imports.gi.Meta.Window[];
 }

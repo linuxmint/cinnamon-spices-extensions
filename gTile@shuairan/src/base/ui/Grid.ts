@@ -182,9 +182,23 @@ export class Grid {
     return [Math.round(widthUnit), Math.round(heightUnit)];
   }
 
-  public AdjustTableSize = (time: number, width: number, height: number) => {
+  public GetTableSize(): [width: number, height: number] {
+    // Calculate new ui width and height in case we are moving to a different monitor
+    // We retain the size and the aspect ratio of the new monitor 
+    const aspect = GetMonitorAspectRatio(this.monitor);
+    if (!this.app.config.aspectRatio) 
+        return [220, 200];
+    
+    const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
+    const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
+
+    return [newTableWidth, newTableHeight];
+  }
+
+  public AdjustTableSize = (width: number, height: number) => {
     this.tableWidth = width;
     this.tableHeight = height;
+    const time = this.app.config.AnimationTime;
     Tweener.addTween(this.table, {
       time: time,
       width: width,
@@ -306,11 +320,9 @@ export class Grid {
     }
 
     this.interceptHide = false;
-    this.BindKeyControls();
   }
 
   public Hide(immediate: boolean) {
-    this.RemoveKeyControls();
     this.Reset();
     let time = this.app.config.animation && !immediate ? 0.3 : 0;
     if (time > 0) {
@@ -356,7 +368,7 @@ export class Grid {
         const finalWidth = widthUnit * this.cols[c].span;
         const finalHeight = heightUnit * this.rows[r].span;
 
-        let element = new GridElement(this.app, this.monitor, finalWidth, finalHeight, c, r, this.elementsDelegate);
+        let element = new GridElement(this.app, this.monitor, this, finalWidth, finalHeight, c, r, this.elementsDelegate);
         this.elements[r][c] = element;
         // bin for better positioning for artificial margin
         const bin = new Bin();
@@ -364,32 +376,6 @@ export class Grid {
         row.add(bin, {expand: true});
       }
       this.table.add(row, {expand: true});
-    }
-  }
-
-  private BindKeyControls = () => {
-    Main.keybindingManager.addHotKey('gTile-close', 'Escape', this.app.ToggleUI);
-    Main.keybindingManager.addHotKey('gTile-tile1', 'space', this.BeginTiling);
-    Main.keybindingManager.addHotKey('gTile-tile2', 'Return', this.BeginTiling);
-    for (let index in KEYCONTROL) {
-      if (objHasKey(KEYCONTROL, index)) {
-        let key = KEYCONTROL[index];
-        let type = index;
-        Main.keybindingManager.addHotKey(
-          type,
-          key,
-          () => this.OnKeyPressEvent(type, key)
-        );
-      }
-    }
-  }
-
-  private RemoveKeyControls = () => {
-    Main.keybindingManager.removeHotKey('gTile-close');
-    Main.keybindingManager.removeHotKey('gTile-tile1');
-    Main.keybindingManager.removeHotKey('gTile-tile2');
-    for (let type in KEYCONTROL) {
-      Main.keybindingManager.removeHotKey(type);
     }
   }
 
@@ -449,7 +435,7 @@ export class Grid {
    * @param type 
    * @param key 
    */
-  private OnKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
+  public OnKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
     let modifier = false;
     switch (type) {
       case 'gTile-k-right-meta':
@@ -546,7 +532,7 @@ export class Grid {
   /**`
    * Commits to tiling the focused window.
    */
-  private BeginTiling = () => {
+  public BeginTiling = () => {
     if (this.keyElement) {
       this.keyElement._onButtonPress(true);
       this.Reset();
@@ -559,16 +545,16 @@ export class Grid {
    * @returns 
    */
   private MoveToMonitor = (monitor?: imports.ui.layout.Monitor) => {
-    monitor = monitor ? monitor : this.monitor;
+    monitor = monitor ? monitor : this.app.CurrentMonitor;
 
     // Same monitor, abort
-    if (monitor.index == this.monitor.index)
+    if (monitor.index == this.app.CurrentMonitor.index)
       return;
 
-    this.app.MoveToMonitor(this.monitor, monitor ?? this.monitor);
+    this.app.MoveToMonitor(this.app.CurrentMonitor, monitor ?? this.app.CurrentMonitor);
   }
 
-  public destroy = () => {
+  public destroy = (): void => {
     for (let r in this.elements) {
       for (let c in this.elements[r]) {
         this.elements[r][c]._destroy();
@@ -579,7 +565,6 @@ export class Grid {
     // TODO: Check if needed
     // @ts-ignore
     this.topbar._destroy();
-    this.RemoveKeyControls();
     this.Reset();
     // @ts-ignore
     this.monitor = null;

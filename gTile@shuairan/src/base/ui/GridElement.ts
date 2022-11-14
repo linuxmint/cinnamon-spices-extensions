@@ -1,5 +1,6 @@
 import { App } from "../app";
 import { isFinalized } from "../utils";
+import { Grid } from "./Grid";
 import { GridElementDelegate } from "./GridElementDelegate";
 const Main = imports.ui.main;
 const St = imports.gi.St;
@@ -13,10 +14,12 @@ export class GridElement {
     height: number;
     active: boolean;
     delegate: GridElementDelegate;
+    grid: Grid;
     private app: App;
 
-    constructor(app: App, monitor: imports.ui.layout.Monitor, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
+    constructor(app: App, monitor: imports.ui.layout.Monitor, grid: Grid, width: number, height: number, coordx: number, coordy: number, delegate: GridElementDelegate) {
         this.app = app;
+        this.grid = grid;
         this.actor = new St.Button({
             style_class: 'table-element',
             width: width,
