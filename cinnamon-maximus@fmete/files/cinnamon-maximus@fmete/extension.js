@@ -135,18 +135,25 @@ function logMessage(message, alwaysLog = false) {
 /** Guesses the X ID of a window.
  *
  * After muffin 2.4 the get_xwindow() returns the integer value
- * instead Window object. So no need use a lot of hacks.
+ * instead Window object. So no need use a lot of hacks
+ *
+ * After Cinnamon 5.4.12 (or possibly earlier), get_xwindow no
+ * longer exists but get_description returns the ID
  */
 function guessWindowXID(win) {
     let id = null;
+    let additionalErrorMsg = null;
     try {
-        id = win.get_xwindow();
+        id = win.get_description();
         if (id)
             return id;
     } catch (err) {
+      additionalErrorMsg = err;
+      // Could call 'xprop -root _NET_ACTIVE_WINDOW' here as a
+      // fallback if/when get_description changes
     }
     // debugging for when people find bugs.. always logging this message.
-    logMessage("Could not find XID for window with title '${win.title}", true);
+    logMessage("Could not find XID for window with title '${win.title}" + (additionalErrorMsg?": " + additionalErrorMsg:""), true);
     return null;
 }
 
