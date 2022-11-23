@@ -311,6 +311,9 @@ function onSizeChange(shellwm, actor, change) {
     if (change === Meta.SizeChange.UNMAXIMIZE) {
         onUnmaximize(shellwm, actor);
     }
+    if (change === Meta.SizeChange.TILE && settings.undecorateTile == true) {
+        onMaximize(shellwm, actor);
+    }
 }
 
 /** Called when a window is maximized, including half-maximization.
@@ -508,7 +511,11 @@ function startUndecorating() {
             }
         }
         if (settings.undecorateTile == true) {
-            tileEventID = global.window_manager.connect("tile", onMaximize);
+            try {
+                tileEventID = global.window_manager.connect("tile", onMaximize);
+            } catch (e) {
+                logMessage(`ignoring exception on connecting to tile signal`);
+            }
         }
     }
     /* this is needed to prevent Metacity from interpreting an attempted drag
