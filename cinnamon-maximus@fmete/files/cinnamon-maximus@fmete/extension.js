@@ -234,7 +234,7 @@ function shouldAffect(win) {
         verdict = false;
     }
 
-    if (isHalfMaximized(win)) {
+    if (isHalfMaximized(win) && settings.undecorateTile === false) {
         verdict = false;
     }
 
