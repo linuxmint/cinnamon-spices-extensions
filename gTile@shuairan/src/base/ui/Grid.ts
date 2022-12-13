@@ -502,16 +502,16 @@ export class Grid {
         break;
     }
 
-    this.ClampColRowsKeys();
+    this.ClampColRowKeys();
     this.DrawSelectionBoxes();
 
     if (this.app.CurrentGrid !== this) {
-      this.app.CurrentGrid.ClampColRowsKeys();
+      this.app.CurrentGrid.ClampColRowKeys();
       this.app.CurrentGrid.DrawSelectionBoxes();
     }
   }
 
-  private ClampColRowsKeys = () => {
+  private ClampColRowKeys = () => {
     this.colKey = Math.min(Math.max(0, this.colKey), this.cols.length - 1);
     this.rowKey = Math.min(Math.max(0, this.rowKey), this.rows.length - 1);
   }
