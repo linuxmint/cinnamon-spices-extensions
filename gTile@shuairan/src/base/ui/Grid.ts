@@ -510,9 +510,18 @@ export class Grid {
         break;
     }
 
+    this.DrawSelectionBoxes();
+
+    if (this.app.CurrentGrid !== this) {
+      this.app.CurrentGrid.DrawSelectionBoxes();
+    }
+  }
+
+  private DrawSelectionBoxes = () => {
     this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
-    if (this.keyElement)
+    if (this.keyElement) {
       this.keyElement._onHoverChanged();
+    }
   }
 
   //#endregion
