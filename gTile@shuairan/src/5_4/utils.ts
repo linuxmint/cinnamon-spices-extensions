@@ -56,6 +56,17 @@ export const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x:
     // }
 
     metaWindow.move_resize_frame(true, x, y, width, height);
+    // Some windows (like the default terminal in linux mint) can't 
+    // be resized freely, this prevents them from being perfectly tiled.
+    // Here we distribute evenly the space around the frame to make the
+    // effect less unpleasant.
+    //
+    // The call to move_frame should be executed even if the offsets are 0,
+    // some windows (like the default terminal in linux mint) won't move otherwise.
+    const frameRect = metaWindow.get_frame_rect();
+    const offsetX = (width - frameRect.width) / 2;
+    const offsetY = (height - frameRect.height) / 2;
+    metaWindow.move_frame(true, x + offsetX, y + offsetY);
 }
 
 export const get_window_center = (window: imports.gi.Meta.Window): [pos_x: number, pos_y: number] => {
