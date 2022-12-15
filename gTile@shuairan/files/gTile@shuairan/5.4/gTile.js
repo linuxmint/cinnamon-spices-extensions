@@ -1387,9 +1387,10 @@ class App {
             }
             this.ResetFocusedWindow();
             this.focusMetaWindow = window;
-            if (!this.config.showGridOnAllMonitors)
-                this.CurrentGrid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
             this.currentMonitor = this.monitors[this.focusMetaWindow.get_monitor()];
+            if (!this.config.showGridOnAllMonitors) {
+                this.CurrentGrid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
+            }
             this.focusMetaWindowPrivateConnections.push(...this.platform.subscribe_to_focused_window_changes(this.focusMetaWindow, this.MoveUIActor));
             let app = this.tracker.get_window_app(this.focusMetaWindow);
             let title = this.focusMetaWindow.get_title();

@@ -971,25 +971,19 @@ let Grid = class Grid {
             switch (type) {
                 case 'gTile-k-right':
                 case 'gTile-k-right-meta':
-                    this.colKey = Math.min(this.colKey + 1, this.cols.length - 1);
-                    this.rowKey = this.rowKey === -1 ? 0 : this.rowKey;
+                    ++this.colKey;
                     break;
                 case 'gTile-k-left':
                 case 'gTile-k-left-meta':
-                    if (this.colKey == -1)
-                        return;
-                    this.colKey = Math.max(0, this.colKey - 1);
+                    --this.colKey;
                     break;
                 case 'gTile-k-up':
                 case 'gTile-k-up-meta':
-                    if (this.rowKey == -1)
-                        return;
-                    this.rowKey = Math.max(0, this.rowKey - 1);
+                    --this.rowKey;
                     break;
                 case 'gTile-k-down':
                 case 'gTile-k-down-meta':
-                    this.rowKey = Math.min(this.rowKey + 1, this.rows.length - 1);
-                    this.colKey = this.colKey === -1 ? 0 : this.colKey;
+                    ++this.rowKey;
                     break;
                 case 'gTile-k-left-monitor-move':
                     this.MoveToMonitor(getAdjacentMonitor(this.monitor, Side.LEFT));
@@ -1016,9 +1010,22 @@ let Grid = class Grid {
                     (_h = (_g = this.app.config.gridSettingsButton) === null || _g === void 0 ? void 0 : _g[3]) === null || _h === void 0 ? void 0 : _h._onButtonPress();
                     break;
             }
+            this.ClampColRowKeys();
+            this.DrawSelectionBoxes();
+            if (this.app.CurrentGrid !== this) {
+                this.app.CurrentGrid.ClampColRowKeys();
+                this.app.CurrentGrid.DrawSelectionBoxes();
+            }
+        };
+        this.ClampColRowKeys = () => {
+            this.colKey = Math.min(Math.max(0, this.colKey), this.cols.length - 1);
+            this.rowKey = Math.min(Math.max(0, this.rowKey), this.rows.length - 1);
+        };
+        this.DrawSelectionBoxes = () => {
             this.keyElement = this.elements[this.rowKey] ? this.elements[this.rowKey][this.colKey] : null;
-            if (this.keyElement)
+            if (this.keyElement) {
                 this.keyElement._onHoverChanged();
+            }
         };
         this.BeginTiling = () => {
             if (this.keyElement) {
@@ -1380,9 +1387,10 @@ class App {
             }
             this.ResetFocusedWindow();
             this.focusMetaWindow = window;
-            if (!this.config.showGridOnAllMonitors)
-                this.CurrentGrid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
             this.currentMonitor = this.monitors[this.focusMetaWindow.get_monitor()];
+            if (!this.config.showGridOnAllMonitors) {
+                this.CurrentGrid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
+            }
             this.focusMetaWindowPrivateConnections.push(...this.platform.subscribe_to_focused_window_changes(this.focusMetaWindow, this.MoveUIActor));
             let app = this.tracker.get_window_app(this.focusMetaWindow);
             let title = this.focusMetaWindow.get_title();
