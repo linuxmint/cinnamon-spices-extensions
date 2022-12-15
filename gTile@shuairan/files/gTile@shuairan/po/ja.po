@@ -40,7 +40,7 @@ msgstr "gTile"
 
 #. metadata.json->description
 msgid "Tile your windows as you like."
-msgstr "自在にウィンドウをタイリング。"
+msgstr "ウィンドウを自在にタイリング。"
 
 #. settings-schema.json->headerKeys->description
 msgid "Hotkeys:"
