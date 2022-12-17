@@ -1426,7 +1426,7 @@ class App {
         app_Main.uiGroup.add_actor(this.area);
         this.config = new Config(this);
         this.InitGrid();
-        this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
+        global.display.connect("notify::focus-window", this.OnFocusedWindowChanged);
         global.screen.connect('monitors-changed', this.ReInitialize);
     }
     get CurrentMonitor() {
