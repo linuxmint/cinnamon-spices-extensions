@@ -1,0 +1,38 @@
+#panel,
+#panelLeft,
+#panelCenter,
+#panelRight {
+    transition-duration: 200ms;
+}
+
+/* Customizable CSS classes.
+   Define these classes in your theme's cinnamon.css file. */
+.panel-transparent {
+}
+
+/* ===================================================================
+ * Transparent
+ * ===================================================================*/
+
+.panel-transparent__internal,
+#panel.panel-transparent__internal,
+.panel-transparent__internal #panelLeft,
+.panel-transparent__internal #panelCenter,
+.panel-transparent__internal #panelRight,
+#panel.panel-transparent__internal:highlight {
+    border-image: none;
+    border-color: transparent;
+    box-shadow: 0 0 transparent;
+    background-gradient-direction: vertical;
+    background-gradient-start: transparent;
+    background-gradient-end: transparent;
+    background: transparent;
+}
+
+.panel-transparent__internal,
+#panel.panel-transparent__internal,
+#panel.panel-transparent__internal:highlight {
+    background-gradient-start: rgba(0, 0, 0, 0);
+    background-gradient-end: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}

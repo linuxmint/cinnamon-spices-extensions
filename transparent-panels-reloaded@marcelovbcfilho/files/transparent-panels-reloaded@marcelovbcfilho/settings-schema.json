@@ -1,0 +1,64 @@
+{
+  "section-general": {
+    "type": "section",
+    "description": "General"
+  },
+  "transparency-amount": {
+    "type": "scale",
+    "default": 75,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "description": "Opacity amount",
+    "tooltip": "Opacity amount"
+  },
+  "transparency-always": {
+    "type": "switch",
+    "default": true,
+    "description": "Always transparent",
+    "tooltip": "If enable the panels will always be transparent, if disable, only will be transparent if there is no maximized windows"
+  },
+  "use-custom-panel-color": {
+    "type": "switch",
+    "default": false,
+    "description": "Use custom panel color"
+  },
+  "custom-panel-color": {
+    "type": "colorchooser",
+    "default": "rgba(26, 95, 180, 191)",
+    "description": "Custom panel color",
+    "dependency": "use-custom-panel-color"
+  },
+  "section-filters": {
+    "type": "section",
+    "description": "Filter panels (WIP)"
+  },
+  "filters-description": {
+    "type": "label",
+    "description": "Select the panels that will be affected by this extension. (Work in progress/not working)"
+  },
+  "panel-top": {
+    "type": "switch",
+    "default": true,
+    "description": "Top panel"
+  },
+  "panel-right": {
+    "type": "switch",
+    "default": true,
+    "description": "Right panel"
+  },
+  "panel-bottom": {
+    "type": "switch",
+    "default": true,
+    "description": "Bottom panel"
+  },
+  "panel-left": {
+    "type": "switch",
+    "default": true,
+    "description": "Left panel"
+  },
+  "first-launch": {
+    "type": "generic",
+    "default": true
+  }
+}
