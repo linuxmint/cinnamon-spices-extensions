@@ -1,0 +1,30 @@
+{
+    "growth-speed": {
+        "type": "scale",
+        "description": "Growth speed",
+        "tooltip": "How fast the cursor grows",
+        "default": 0.35,
+        "min": 0.1,
+        "max": 1.0,
+        "step": 0.05
+    },
+    "shrink-speed": {
+        "type": "scale",
+        "description": "Shrink speed",
+        "tooltip": "How fast the cursor shrinks",
+        "default": 0.25,
+        "min": 0.1,
+        "max": 1.0,
+        "step": 0.05
+    },
+    "shake-threshold": {
+        "type": "spinbutton",
+        "description": "Shake threshold",
+        "tooltip": "How much the pointer needs to move to activate",
+        "default": 180,
+        "min": 10,
+        "max": 500,
+        "step": 10,
+        "units": "px"
+    }
+}
