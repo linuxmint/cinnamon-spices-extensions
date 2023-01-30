@@ -234,7 +234,7 @@ function shouldAffect(win) {
         verdict = false;
     }
 
-    if (isHalfMaximized(win)) {
+    if (isHalfMaximized(win) && settings.undecorateTile === false) {
         verdict = false;
     }
 
@@ -310,6 +310,9 @@ function onSizeChange(shellwm, actor, change) {
     }
     if (change === Meta.SizeChange.UNMAXIMIZE) {
         onUnmaximize(shellwm, actor);
+    }
+    if (!!Meta.SizeChange.TILE && change === Meta.SizeChange.TILE && settings.undecorateTile == true) {
+        onMaximize(shellwm, actor);
     }
 }
 
@@ -508,7 +511,11 @@ function startUndecorating() {
             }
         }
         if (settings.undecorateTile == true) {
-            tileEventID = global.window_manager.connect("tile", onMaximize);
+            try {
+                tileEventID = global.window_manager.connect("tile", onMaximize);
+            } catch (e) {
+                logMessage(`ignoring exception on connecting to tile signal`);
+            }
         }
     }
     /* this is needed to prevent Metacity from interpreting an attempted drag
