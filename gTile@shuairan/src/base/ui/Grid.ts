@@ -24,6 +24,7 @@ export interface Grid extends SignalOverload<"hide-tiling"> {
 export class Grid {
   tableWidth = 220;
   tableHeight = 200;
+  panelBorderOffset = 40;
   borderwidth = 2;
   rowKey = -1;
   colKey = -1;
@@ -55,11 +56,14 @@ export class Grid {
   toggleSettingButtons: ToggleSettingsButton[] = [];
 
   app: App;
+  panelWidth: number;
 
   constructor(app: App, monitor: imports.ui.layout.Monitor, title: string, cols: Column[], rows: Row[]) {
     this.app = app;
     this.tableHeight = 200;
     this.tableWidth = 220;
+    this.panelBorderOffset = 40;
+    this.panelWidth = (this.tableWidth + this.panelBorderOffset);
     this.borderwidth = 2;
 
     this.actor = new BoxLayout({
@@ -67,7 +71,8 @@ export class Grid {
       style_class: 'grid-panel',
       reactive: true,
       can_focus: true,
-      track_hover: true
+      track_hover: true,
+      width: this.panelWidth
     });
 
 
@@ -198,11 +203,17 @@ export class Grid {
   public AdjustTableSize = (width: number, height: number) => {
     this.tableWidth = width;
     this.tableHeight = height;
+    this.panelWidth = (this.tableWidth + this.panelBorderOffset);
     const time = this.app.config.AnimationTime;
     Tweener.addTween(this.table, {
       time: time,
       width: width,
       height: height,
+      transition: 'easeOutQuad',
+    });
+    Tweener.addTween(this.actor, {
+      time: time,
+      width: this.panelWidth,
       transition: 'easeOutQuad',
     });
 
