@@ -10,12 +10,13 @@ let beginGrabOpId;
 let endGrabOpId;
 let settings;
 
-// globalle unique strings - set in init()
+// globally unique strings, set in init()
 let tweenOpacity;
 let originalOpacity;
-// (nerdy note: we could have used the same string for both purposes! but that's needlessly confusing)
+// (nerdy note: we could have used the same string for both purposes!
+// but that'd be needlessly confusing)
 
-
+// opacity getter and setter for Tweener
 function getWindowOpacity(window, params, extra) {
     return window.get_opacity();
 }
@@ -32,7 +33,7 @@ function init(metadata)
     tweenOpacity = "tween_opacity@" + metadata.uuid;
     originalOpacity = "original_opacity@" + metadata.uuid;
     
-    // tell tweener to call our set/get functions instead of setting opacity directly
+    // tell Tweener to call our set/get functions instead of setting opacity directly
     Tweener.registerSpecialProperty(tweenOpacity, getWindowOpacity, setWindowOpacity);
 }
 
@@ -51,6 +52,7 @@ SettingsHandler.prototype = {
     }
 }
 
+// onStart and onComplete handlers for Tweener
 function windowSaveOriginalOpacity() {
     if (!(originalOpacity in this))
         this[originalOpacity] = this.get_opacity();
@@ -60,7 +62,7 @@ function windowDeleteOriginalOpacity() {
     delete this[originalOpacity];
 }
 
-
+// window grab handler
 function onBeginGrabOp(display, screen, window, op) {
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 
@@ -73,7 +75,7 @@ function onBeginGrabOp(display, screen, window, op) {
         (op == Meta.GrabOp.KEYBOARD_RESIZING_SW) || (op == Meta.GrabOp.KEYBOARD_RESIZING_W)||
         (op == Meta.GrabOp.KEYBOARD_RESIZING_UNKNOWN))
     {
-        // tween opacity
+        // change opacity according to user's preference
         Tweener.addTween(window, { 
             [tweenOpacity]: settings.opacity, 
             time: settings.beginTime/1000, 
@@ -83,6 +85,7 @@ function onBeginGrabOp(display, screen, window, op) {
     } 
 }
 
+// window release handler
 function onEndGrabOp(display, screen, window, op) {
     if (!(originalOpacity in window)) return; // releasing a window we haven't touched
     
