@@ -10,9 +10,30 @@ let beginGrabOpId;
 let endGrabOpId;
 let settings;
 
+// globalle unique strings - set in init()
+let tweenOpacity;
+let originalOpacity;
+// (nerdy note: we could have used the same string for both purposes! but that's needlessly confusing)
+
+
+function getWindowOpacity(window, params, extra) {
+    return window.get_opacity();
+}
+
+function setWindowOpacity(window, value, params, extra) {
+    window.set_opacity(value);
+}
+
 function init(metadata)
 {
     settings = new SettingsHandler(metadata.uuid);
+    
+    // globally unique strings:
+    tweenOpacity = "tween_opacity@" + metadata.uuid;
+    originalOpacity = "original_opacity@" + metadata.uuid;
+    
+    // tell tweener to call our set/get functions instead of setting opacity directly
+    Tweener.registerSpecialProperty(tweenOpacity, getWindowOpacity, setWindowOpacity);
 }
 
 function SettingsHandler(uuid) {
@@ -30,9 +51,7 @@ SettingsHandler.prototype = {
     }
 }
 
-function onBeginGrabOp(display, screen, window, op) { 
-    let actor = window.get_compositor_private(); 
-    if (!actor) { return; }
+function onBeginGrabOp(display, screen, window, op) {
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 
         (op == Meta.GrabOp.RESIZING_NE) || (op == Meta.GrabOp.RESIZING_NW) ||
@@ -43,18 +62,19 @@ function onBeginGrabOp(display, screen, window, op) {
         (op == Meta.GrabOp.KEYBOARD_RESIZING_S) || (op == Meta.GrabOp.KEYBOARD_RESIZING_SE) || 
         (op == Meta.GrabOp.KEYBOARD_RESIZING_SW) || (op == Meta.GrabOp.KEYBOARD_RESIZING_W)||
         (op == Meta.GrabOp.KEYBOARD_RESIZING_UNKNOWN))
-    { 
-        Tweener.addTween(actor, { 
-        opacity: settings.opacity, 
+    {
+        // save original opacity to be restored later
+        window[originalOpacity] = window.get_opacity();
+        
+        // tween opacity
+        Tweener.addTween(window, { 
+        [tweenOpacity]: settings.opacity, 
         time: settings.beginTime/1000, 
         transition: settings.beginEffect }); 
     } 
 }
 
-function onEndGrabOp(display, screen, window, op) { 
-    let actor = window.get_compositor_private(); 
-    if (!actor) { return; }
-    //if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING)) 
+function onEndGrabOp(display, screen, window, op) {
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 
         (op == Meta.GrabOp.RESIZING_NE) || (op == Meta.GrabOp.RESIZING_NW) ||
@@ -65,35 +85,17 @@ function onEndGrabOp(display, screen, window, op) {
         (op == Meta.GrabOp.KEYBOARD_RESIZING_S) || (op == Meta.GrabOp.KEYBOARD_RESIZING_SE) || 
         (op == Meta.GrabOp.KEYBOARD_RESIZING_SW) || (op == Meta.GrabOp.KEYBOARD_RESIZING_W)||
         (op == Meta.GrabOp.KEYBOARD_RESIZING_UNKNOWN))
-    { 
-        Tweener.addTween(actor, { 
-        opacity: 255, 
+    {
+        // restore opacity to what it was before
+        Tweener.addTween(window, { 
+        [tweenOpacity]: window[originalOpacity], 
         time: settings.endTime/1000, 
-        transition: settings.endEffect }); 
+        transition: settings.endEffect });
+        
+        // no need to keep this around anymore
+        delete window[originalOpacity];
     } 
 }
-
-/*
-function onBeginGrabOp(display, screen, window, op) {
-    let compositor = window.get_compositor_private();
-	Tweener.addTween(compositor, { 
-		opacity: settings.opacity,
-		time: settings.beginTime/1000,
-		transition: settings.beginEffect
-    });
-}
-*/
-
-/*
-function onEndGrabOp(display, screen, window, op) {
-    let compositor = window.get_compositor_private();
-	Tweener.addTween(compositor, { 
-		opacity: 255,
-		time: settings.endTime/1000,
-		transition: settings.endEffect
-    });
-}
-*/
 
 function enable() 
 {
