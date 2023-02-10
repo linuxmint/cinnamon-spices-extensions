@@ -51,6 +51,16 @@ SettingsHandler.prototype = {
     }
 }
 
+function windowSaveOriginalOpacity() {
+    if (!(originalOpacity in this))
+        this[originalOpacity] = this.get_opacity();
+}
+
+function windowDeleteOriginalOpacity() {
+    delete this[originalOpacity];
+}
+
+
 function onBeginGrabOp(display, screen, window, op) {
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 
@@ -63,18 +73,19 @@ function onBeginGrabOp(display, screen, window, op) {
         (op == Meta.GrabOp.KEYBOARD_RESIZING_SW) || (op == Meta.GrabOp.KEYBOARD_RESIZING_W)||
         (op == Meta.GrabOp.KEYBOARD_RESIZING_UNKNOWN))
     {
-        // save original opacity to be restored later
-        window[originalOpacity] = window.get_opacity();
-        
         // tween opacity
         Tweener.addTween(window, { 
-        [tweenOpacity]: settings.opacity, 
-        time: settings.beginTime/1000, 
-        transition: settings.beginEffect }); 
+            [tweenOpacity]: settings.opacity, 
+            time: settings.beginTime/1000, 
+            transition: settings.beginEffect,
+            onStart: windowSaveOriginalOpacity,
+        }); 
     } 
 }
 
 function onEndGrabOp(display, screen, window, op) {
+    if (!(originalOpacity in window)) return; // releasing a window we haven't touched
+    
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 
         (op == Meta.GrabOp.RESIZING_NE) || (op == Meta.GrabOp.RESIZING_NW) ||
@@ -88,12 +99,11 @@ function onEndGrabOp(display, screen, window, op) {
     {
         // restore opacity to what it was before
         Tweener.addTween(window, { 
-        [tweenOpacity]: window[originalOpacity], 
-        time: settings.endTime/1000, 
-        transition: settings.endEffect });
-        
-        // no need to keep this around anymore
-        delete window[originalOpacity];
+            [tweenOpacity]: window[originalOpacity], 
+            time: settings.endTime/1000, 
+            transition: settings.endEffect,
+            onComplete: windowDeleteOriginalOpacity,
+        });
     } 
 }
 
