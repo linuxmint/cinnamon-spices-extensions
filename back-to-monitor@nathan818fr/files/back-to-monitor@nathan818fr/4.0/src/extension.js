@@ -1,4 +1,3 @@
-const Meta = imports.gi.Meta;
 const Settings = imports.ui.settings;
 const Gdk = imports.gi.Gdk;
 const CinnamonDesktop = imports.gi.CinnamonDesktop;
