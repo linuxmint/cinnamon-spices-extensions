@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-29 23:06+0800\n"
-"PO-Revision-Date: 2022-06-03 11:18+0200\n"
+"PO-Revision-Date: 2023-03-31 10:49+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. smart-panel@mohammad-sn->metadata.json->name
 msgid "Smart Panel"
@@ -171,11 +171,11 @@ msgid "Show Desktop"
 msgstr "Mostra Desktop"
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->description
-msgid "â¦ Dragging to the right: "
+msgid "↦ Dragging to the right: "
 msgstr "↦ Trascinamento verso destra: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-left-action->description
-msgid "â¤ Dragging to the left: "
+msgid "↤ Dragging to the left: "
 msgstr "↤ Trascinamento verso sinistra: "
 
 #. smart-panel@mohammad-sn->settings-schema.json->to-right-action->options
