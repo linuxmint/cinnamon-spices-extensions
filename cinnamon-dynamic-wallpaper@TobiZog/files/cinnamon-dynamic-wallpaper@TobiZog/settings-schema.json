@@ -1,0 +1,174 @@
+{
+	"layout": {
+		"type": "layout",
+		"pages": [
+			"pg_config",
+			"pg_about"
+		],
+		"pg_config": {
+			"type": "page",
+			"title": "Configuration",
+			"sections": [
+				"sec_image_configuration",
+				"sec_location",
+				"sec_times"
+			]
+		},
+		"pg_about": {
+			"type": "page",
+			"title": "About",
+			"sections": [
+				"sec_project",
+				"sec_github"
+			]
+		},
+		"sec_image_configuration": {
+			"type": "section",
+			"title": "Image set",
+			"keys": [
+				"lb_image_configuration",
+				"btn_config_images"
+			]
+		},
+		"sec_location": {
+			"type": "section",
+			"title": "Location estimation",
+			"keys": [
+				"sw_auto_location",
+				"sc_location_refresh_time",
+				"etr_latitude",
+				"etr_longitude"
+			]
+		},
+		"sec_times": {
+			"type": "section",
+			"title": "Time periods",
+			"keys": [
+				"tv_times"
+			]
+		},
+		"sec_project": {
+			"type": "section",
+			"title": "About the project",
+			"keys": [
+				"lb_about",
+				"lb_author"
+			]
+		},
+		"sec_github": {
+			"type": "section",
+			"title": "Source Code on GitHub",
+			"keys": [
+				"lb_repository",
+				"btn_open_repository"
+			]
+		}
+	},
+	"lb_image_configuration": {
+		"type": "label",
+		"description": "Choose an included image set or import a heic-file with the Image Configurator"
+	},
+	"btn_config_images": {
+		"type": "button",
+		"description": "Image Configurator",
+		"callback": "openImageConfigurator"
+	},
+	"sw_auto_location": {
+		"type": "switch",
+		"default": true,
+		"description": "Estimate coordinates via network"
+	},
+	"sc_location_refresh_time": {
+		"type": "scale",
+		"default": 15,
+		"min": 5,
+		"max": 60,
+		"step": 5,
+		"description": "Interval time to refresh the location via network (min)",
+		"dependency": "sw_auto_location"
+	},
+	"etr_latitude": {
+		"type": "entry",
+		"default": "",
+		"description": "Latitude",
+		"dependency": "!sw_auto_location"
+	},
+	"etr_longitude": {
+		"type": "entry",
+		"default": "",
+		"description": "Longitude",
+		"dependency": "!sw_auto_location"
+	},
+	"tv_times": {
+		"type": "textview",
+		"description": "Time sections today",
+		"default": ""
+	},
+	"lb_about": {
+		"type": "label",
+		"description": "Based on a location, this extension calculates the periods of a day and switch the background image of your Cinnamon desktop. The extension offers the choice between a set of predownloaded wallpapers or to select a custom set of images."
+	},
+	"lb_author": {
+		"type": "label",
+		"description": "Developed by TobiZog"
+	},
+	"lb_repository": {
+		"type": "label",
+		"description": "This project is Open Source. You can visit the whole source code of this extension on GitHub"
+	},
+	"btn_open_repository": {
+		"type": "button",
+		"description": "Open the Repository",
+		"callback": "openRepoWebsite"
+	},
+	"etr_choosen_image_set": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_morning_twilight": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_sunrise": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_morning": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_noon": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_afternoon": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_evening": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_sunset": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_night_twilight": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_img_night": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	}
+}
