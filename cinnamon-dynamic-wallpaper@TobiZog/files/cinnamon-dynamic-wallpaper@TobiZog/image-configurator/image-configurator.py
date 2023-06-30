@@ -196,10 +196,13 @@ class ImageConfigurator:
 			imageId (int): The number of the preview (0-8)
 			imageURI (str): URI to the new image
 		"""
-		pixbuf = GdkPixbuf.Pixbuf.new_from_file(imageURI)
-		pixbuf = pixbuf.scale_simple(300, 200, GdkPixbuf.InterpType.BILINEAR)
+		try:
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file(imageURI)
+			pixbuf = pixbuf.scale_simple(300, 200, GdkPixbuf.InterpType.BILINEAR)
 
-		self.img_previews[imageId].set_from_pixbuf(pixbuf)
+			self.img_previews[imageId].set_from_pixbuf(pixbuf)
+		except:
+			pass
 
 
 	def extractHeifImages(self, imageURI: str):
