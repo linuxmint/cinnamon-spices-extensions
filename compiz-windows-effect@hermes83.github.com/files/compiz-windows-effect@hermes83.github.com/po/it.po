@@ -8,23 +8,25 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-30 18:25+0000\n"
-"PO-Revision-Date: 2022-05-09 18:25+0000\n"
-"Last-Translator: hermes83\n"
+"PO-Revision-Date: 2023-03-31 10:38+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->name
 msgid "Compiz windows effect"
 msgstr "Effetto stile Compiz per le finestre"
 
 #. metadata.json->description
-msgid "Compiz wobbly windows effect thanks to compiz plugin engine" 
-msgstr "Effetto in stile Compiz per le finestre traballanti basato sul porting del motore di Compiz"
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr ""
+"Effetto in stile Compiz per le finestre traballanti basato sul porting del "
+"motore di Compiz"
 
 #. settings-schema.json->friction->description
 msgid "Friction"
@@ -36,7 +38,7 @@ msgstr "Molleggiamento"
 
 #. settings-schema.json->speedupFactorDivider->description
 msgid "Speedup Factor"
-msgstr "Fattore di Accelerazione"
+msgstr "Fattore di accelerazione"
 
 #. settings-schema.json->mass->description
 msgid "Mass"
