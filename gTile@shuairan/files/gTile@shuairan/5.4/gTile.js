@@ -829,6 +829,7 @@ let Grid = class Grid {
     constructor(app, monitor, title, cols, rows) {
         this.tableWidth = 220;
         this.tableHeight = 200;
+        this.panelBorderOffset = 40;
         this.borderwidth = 2;
         this.rowKey = -1;
         this.colKey = -1;
@@ -839,11 +840,17 @@ let Grid = class Grid {
         this.AdjustTableSize = (width, height) => {
             this.tableWidth = width;
             this.tableHeight = height;
+            this.panelWidth = (this.tableWidth + this.panelBorderOffset);
             const time = this.app.config.AnimationTime;
             Grid_Tweener.addTween(this.table, {
                 time: time,
                 width: width,
                 height: height,
+                transition: 'easeOutQuad',
+            });
+            Grid_Tweener.addTween(this.actor, {
+                time: time,
+                width: this.panelWidth,
                 transition: 'easeOutQuad',
             });
             const [widthUnit, heightUnit] = this.GetTableUnits(width, height);
@@ -1049,13 +1056,16 @@ let Grid = class Grid {
         this.app = app;
         this.tableHeight = 200;
         this.tableWidth = 220;
+        this.panelBorderOffset = 40;
+        this.panelWidth = (this.tableWidth + this.panelBorderOffset);
         this.borderwidth = 2;
         this.actor = new BoxLayout({
             vertical: true,
             style_class: 'grid-panel',
             reactive: true,
             can_focus: true,
-            track_hover: true
+            track_hover: true,
+            width: this.panelWidth
         });
         this.actor.connect('enter-event', this.OnMouseEnter);
         this.actor.connect('leave-event', this.OnMouseLeave);
