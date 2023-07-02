@@ -1,10 +1,10 @@
-const {BackToMonitorExtension} = require('src/extension');
-const {globalLogger: logger} = require('src/logger');
-
 let extensionInstance;
 
 function init(meta) {
+    const {globalLogger: logger} = require('src/logger');
     logger.setUUID(meta.uuid);
+
+    const {BackToMonitorExtension} = require('src/extension');
     extensionInstance = new BackToMonitorExtension(meta);
 }
 

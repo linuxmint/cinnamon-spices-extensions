@@ -4,6 +4,8 @@ A Cinnamon extension to move windows back to their original location when (re-)c
 
 ![Screenshot](./screenshot.png?raw=true)
 
+> **IMPORTANT: Cinnamon 5.4+ natively provides the features of this extension.**
+
 ## Features
 
 -   Remember window locations based on monitor connection (can be switched on/off)
@@ -55,6 +57,6 @@ The required APIs are not exposed to cinnamon extensions.<br/>
 Therefore, windows that had this option enabled will not keep it. Instead, they will be moved to the last workspace where they were present.
 
 [repo]: https://github.com/nathan818fr/cinnamon-back-to-monitor
-[commits]: https://github.com/nathan818fr/cinnamon-back-to-monitor/commits/master
+[commits]: https://github.com/nathan818fr/cinnamon-back-to-monitor/commits/main
 [issues]: https://github.com/nathan818fr/cinnamon-back-to-monitor/issues
 [spices]: https://cinnamon-spices.linuxmint.com/extensions/view/89

@@ -54,4 +54,4 @@ msgstr "Dimensione Y della griglia"
 
 #. settings-schema.json->maxUnmaxFactor->description
 msgid "Maximizing and Unmaximizing Factor"
-msgstr "Fattore massimizzante e demassimizzante"
+msgstr "Fattore di Massimizzazione e Demassimizzazione"

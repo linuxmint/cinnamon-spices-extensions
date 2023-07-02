@@ -244,8 +244,8 @@ const WobblyEffect = new Lang.Class({
         this.SPRING_K = settings.springK;            
         this.SPEEDUP_FACTOR = settings.speedupFactorDivider;
         this.MASS = settings.mass;
-        this.X_TILES = 'maximized' == this.operationType ? 10 : settings.xTiles;
-        this.Y_TILES = 'maximized' == this.operationType ? 10 : settings.yTiles;
+        this.X_TILES = 'maximized' === this.operationType ? 10 : settings.xTiles;
+        this.Y_TILES = 'maximized' === this.operationType ? 10 : settings.yTiles;
 
         this.set_n_tiles(this.X_TILES, this.Y_TILES);
         
@@ -303,10 +303,10 @@ const WobblyEffect = new Lang.Class({
 
             this.wobblyModel = new WobblyModel({ friction: this.FRICTION, springK: this.SPRING_K, mass: this.MASS, sizeX: this.width, sizeY: this.height });
 
-            if ('unmaximized' == this.operationType) {
+            if ('unmaximized' === this.operationType) {
                 this.wobblyModel.unmaximize(settings.maxUnmaxFactor);
                 this.ended = true;
-            } else if ('maximized' == this.operationType) {                    
+            } else if ('maximized' === this.operationType) {                    
                 this.wobblyModel.maximize(settings.maxUnmaxFactor);
                 this.ended = true;
             } else {
@@ -458,8 +458,10 @@ const WobblyEffect = new Lang.Class({
     vfunc_deform_vertex: function(w, h, v) {
         if (this.deformedObjects) {
             [v.x, v.y] = this.deformedObjects[v.ty * this.tilesY >> 0][v.tx * this.tilesX >> 0];
-            v.x = (v.x + this.deltaX) * w / this.width;
-            v.y = (v.y + this.deltaY) * h / this.height;
+            v.x += this.deltaX;
+            v.y += this.deltaY;
+            v.x *= w / this.width;
+            v.y *= h / this.height;
         }
     }
 
@@ -574,18 +576,16 @@ class WobblyModel {
     }
 
     nearestObject(x, y) {
-        var dx = 0, dy = 0, distance = 0, minDistance = 0, result = null;
+        let distance, minDistance = -1, result = null;
 
-        this.objects.forEach(object => {
-            dx = object.x - x;
-            dy = object.y - y;
-            distance = Math.sqrt(dx * dx + dy * dy);
+        for (let i = this.objects.length - 1, object; i >= 0, object = this.objects[i]; --i) {
+            distance = (object.x - x < 0 ? x - object.x : object.x - x) + (object.y - y < 0 ? y - object.y : object.y - y);
     
-            if (!result || distance < minDistance) {
+            if (minDistance === -1 || distance < minDistance) {
                 minDistance = distance;
                 result = object;
             }
-        });
+        }
 
         return result;
     }
@@ -609,33 +609,33 @@ class WobblyModel {
             this.friction = 10;
         }
 
-        this.springs.forEach(spring => {
-            if (spring.a == topLeft) {
+        for (let i = this.springs.length - 1, spring; i >= 0, spring = this.springs[i]; --i) {
+            if (spring.a === topLeft) {
                 spring.b.velocityX -= spring.offsetX * intensity;
                 spring.b.velocityY -= spring.offsetY * intensity;
-            } else if (spring.b == topLeft) {
+            } else if (spring.b === topLeft) {
                 spring.a.velocityX -= spring.offsetX * intensity;
                 spring.a.velocityY -= spring.offsetY * intensity;
-            } else if (spring.a == topRight) {
+            } else if (spring.a === topRight) {
                 spring.b.velocityX -= spring.offsetX * intensity;
                 spring.b.velocityY -= spring.offsetY * intensity;
-            } else if (spring.b == topRight) {
+            } else if (spring.b === topRight) {
                 spring.a.velocityX -= spring.offsetX * intensity;
                 spring.a.velocityY -= spring.offsetY * intensity;
-            } else if (spring.a == bottomLeft) {
+            } else if (spring.a === bottomLeft) {
                 spring.b.velocityX -= spring.offsetX * intensity;
                 spring.b.velocityY -= spring.offsetY * intensity;
-            } else if (spring.b == bottomLeft) {
+            } else if (spring.b === bottomLeft) {
                 spring.a.velocityX -= spring.offsetX * intensity;
                 spring.a.velocityY -= spring.offsetY * intensity;
-            } else if (spring.a == bottomRight) {
+            } else if (spring.a === bottomRight) {
                 spring.b.velocityX -= spring.offsetX * intensity;
                 spring.b.velocityY -= spring.offsetY * intensity;
-            } else if (spring.b == bottomRight) {
+            } else if (spring.b === bottomRight) {
                 spring.a.velocityX -= spring.offsetX * intensity;
                 spring.a.velocityY -= spring.offsetY * intensity;
             }
-        });
+        }
 
         this.step(0);
     }
@@ -652,15 +652,15 @@ class WobblyModel {
             this.friction = 10;
         }
 
-        this.springs.forEach(spring => {
-            if (spring.a == immobileObject) {
+        for (let i = this.springs.length - 1, spring; i >= 0, spring = this.springs[i]; --i) {
+            if (spring.a === immobileObject) {
                 spring.b.velocityX -= spring.offsetX * intensity;
                 spring.b.velocityY -= spring.offsetY * intensity;
-            } else if (spring.b == immobileObject) {
+            } else if (spring.b === immobileObject) {
                 spring.a.velocityX -= spring.offsetX * intensity;
                 spring.a.velocityY -= spring.offsetY * intensity;
             }
-        });
+        }
         
         this.step(0);
     }
