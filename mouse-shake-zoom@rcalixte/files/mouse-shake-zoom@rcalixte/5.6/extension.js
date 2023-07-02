@@ -31,7 +31,7 @@ MouseShakeZoom.prototype = {
             "shake_threshold");
 
         this.desktop_settings = new Gio.Settings({ schema_id: DESKTOP_SCHEMA });
-        this.original_size = this.desktop_settings.get_int(CURSOR_SIZE_KEY);
+        this.start_size = this.desktop_settings.get_int(CURSOR_SIZE_KEY);
 
         this.history = [];
         this.lastX = 0;
@@ -156,7 +156,8 @@ MouseShakeZoom.prototype = {
     },
 
     _start: function () {
-        let new_size = this.original_size;
+        this.start_size = this.desktop_settings.get_int(CURSOR_SIZE_KEY);
+        let new_size = this.start_size;
         for (let i = 0.0; i <= DURATION_MS; i += this.growth_speed) {
             this.desktop_settings.set_int(CURSOR_SIZE_KEY, new_size);
             new_size = Math.min(96, parseInt(new_size * (1 + this.growth_speed)));
@@ -167,9 +168,9 @@ MouseShakeZoom.prototype = {
         let new_size = 96;
         for (let i = DURATION_MS; i >= 0.0; i -= this.shrink_speed) {
             this.desktop_settings.set_int(CURSOR_SIZE_KEY, new_size);
-            new_size = Math.max(this.original_size, parseInt(new_size * (1 - this.shrink_speed)));
+            new_size = Math.max(this.start_size, parseInt(new_size * (1 - this.shrink_speed)));
         }
-        this.desktop_settings.set_int(CURSOR_SIZE_KEY, this.original_size);
+        this.desktop_settings.set_int(CURSOR_SIZE_KEY, this.start_size);
     },
 }
 
