@@ -1,0 +1,10 @@
+{
+  "incompatibilityNotice1": {
+    "type": "header",
+    "description": "This extension is not compatible with this version of Cinnamon."
+  },
+  "incompatibilityNotice2": {
+    "type": "header",
+    "description": "Cinnamon now natively provides the features of this extension."
+  }
+}
