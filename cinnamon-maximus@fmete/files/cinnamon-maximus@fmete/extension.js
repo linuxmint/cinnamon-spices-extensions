@@ -132,21 +132,29 @@ function logMessage(message, alwaysLog = false) {
     }
 }
 
+function logError(error, alwaysLog = false) {
+    if (alwaysLog || settings.enableLogs) {
+        global.logError(error);
+    }
+}
+
 /** Guesses the X ID of a window.
  *
- * After muffin 2.4 the get_xwindow() returns the integer value
- * instead Window object. So no need use a lot of hacks.
+ * This method used get_xwindow() previously, which is not available anymore
+ * (see https://discourse.gnome.org/t/get-window-id-of-a-window-object-window-get-xwindow-doesnt-exist/10956)
+ * Now X ID is retrieved from get_description() instead.
  */
 function guessWindowXID(win) {
     let id = null;
     try {
-        id = win.get_xwindow();
-        if (id)
-            return id;
+        id = win.get_description();
+        if (id && id.indexOf('0x') === 0)
+            return parseInt(id, 16);
     } catch (err) {
+        logError(err);
     }
     // debugging for when people find bugs.. always logging this message.
-    logMessage("Could not find XID for window with title '${win.title}", true);
+    logMessage(`Could not find XID for window with title '${win.title}'`, true);
     return null;
 }
 
