@@ -3,23 +3,29 @@
 
 SanitizeXsessionErrors@claudiux/*                  @claudiux
 ShadowParameters@mikhail-ekzi/*                    @mikhail-ekzi
+back-to-monitor@nathan818fr/*                      @nathan818fr
+cinnamon-dynamic-wallpaper@TobiZog/*               @TobiZog
+compiz-windows-effect@hermes83.github.com/*        @hermes83
 desktop-icons-per-workspace@cardsurf/*             @cardsurf
+extra-panel-settings@gr3q/*                        @gr3q
+horizontal-osd@berk-karaal/*                       @berk-karaal
+mnemonic-5-4-window-menu@mtwebster/*               @mtwebster
+mouse-shake-zoom@rcalixte/*                        @rcalixte
 rnbdsh@negateWindow/*                              @rnbdsh
 slider@mohammad-sn/*                               @mohammad-sn
 smart-panel@mohammad-sn/*                          @mohammad-sn
+transparent-panels-reloaded@marcelovbcfilho/*      @marcelovbcfilho
 transparent-panels@germanfr/*                      @germanfr
+user-shadows@nathan818fr/*                         @nathan818fr
 watermark@germanfr/*                               @germanfr
-workspace-names-updater@workspace-manager.gitlab.io/* @Beatlink
 
 # The following xlets have no author assigned to them.
 # DesktopCube@yare
 # Flipper@connerdev
-# Win7AltTab@entelechy
 # blur-overview@nailfarmer.nailfarmer.com
 # cinnamon-maximus@fmete
 # desktop-scroller@ccadeptic23
 # gTile@shuairan
 # opacify@anish.org
 # wobbly-windows@mecheye.net
-# workspace-grid@daemonl
 # workspace-scroller@ori
