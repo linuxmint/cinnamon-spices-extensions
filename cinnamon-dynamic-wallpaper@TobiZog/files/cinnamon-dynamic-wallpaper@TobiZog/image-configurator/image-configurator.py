@@ -1,4 +1,4 @@
-import gi, os, glob, json, shutil, enum, threading
+import gi, os, glob, json, shutil, enum, threading, subprocess
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GdkPixbuf
@@ -10,9 +10,6 @@ IMAGE_DIR = PROJECT_DIR + "images/"
 IMAGE_EXTRACT_DIR = IMAGE_DIR + "extracted/"
 IMAGE_SETS_DIR = IMAGE_DIR + "included_image_sets/"
 IMAGE_SELECTED_DIR = IMAGE_DIR + "selected/"
-
-PREF_PATH = os.path.expanduser("~") + \
-	"/.config/cinnamon/spices/cinnamon-dynamic-wallpaper@TobiZog/cinnamon-dynamic-wallpaper@TobiZog.json"
 
 class Source(enum.Enum):
 	SELECTED = 0	# Load previous selected images
@@ -39,6 +36,8 @@ class ImageConfigurator:
 			"aurora",
 			"beach",
 			"bitday",
+			"cliffs",
+			"gradient",
 			"lakeside",
 			"mountains",
 			"sahara"
@@ -108,6 +107,19 @@ class ImageConfigurator:
 		self.image_source = Source.SELECTED
 
 
+		# Check for Cinnamon version
+		# With version 5.6+, the folder of the configuration file was changed
+		version = subprocess.check_output(["cinnamon", "--version"])
+		version = version.decode()
+		version = version[version.find(" "):version.rfind("\n")].strip()
+
+		if version.startswith("5.4"):
+			self.pref_path = os.path.expanduser("~") + \
+				"/.cinnamon/configs/cinnamon-dynamic-wallpaper@TobiZog/cinnamon-dynamic-wallpaper@TobiZog.json"
+		else:
+			self.pref_path = os.path.expanduser("~") + \
+				"/.config/cinnamon/spices/cinnamon-dynamic-wallpaper@TobiZog/cinnamon-dynamic-wallpaper@TobiZog.json"
+
 		# Load preferences
 		self.loadFromSettings()
 
@@ -128,7 +140,7 @@ class ImageConfigurator:
 		""" Load preferences from the Cinnamon preference file
 		"""
 		# Load the settings
-		with open(PREF_PATH, "r") as pref_file:
+		with open(self.pref_path, "r") as pref_file:
 			pref_data = json.load(pref_file)
 
 
@@ -167,7 +179,7 @@ class ImageConfigurator:
 		""" Save preferences to the Cinnamon preference file
 		"""
 		# Load the settings
-		with open(PREF_PATH, "r") as pref_file:
+		with open(self.pref_path, "r") as pref_file:
 			pref_data = json.load(pref_file)
 
 
@@ -185,7 +197,7 @@ class ImageConfigurator:
 
 
 		# Write the settings
-		with open(PREF_PATH, "w") as pref_file:
+		with open(self.pref_path, "w") as pref_file:
 			json.dump(pref_data, pref_file, separators=(',', ':'), indent=4)
 
 
