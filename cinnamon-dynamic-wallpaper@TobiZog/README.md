@@ -12,6 +12,9 @@ Based on a location, this extension calculates the periods of a day and switches
 - Offline sun angles estimation
 
 ### Tested Cinnamon versions
+- 4.8 (Mint 20.1)
+- 5.0 (Mint 20.2)
+- 5.2 (Mint 20.3)
 - 5.4 (Mint 21)
 - 5.6 (Mint 21.1)
 - 5.8 (Mint 21.2)
@@ -43,19 +46,3 @@ Based on a location, this extension calculates the periods of a day and switches
 
 ## Image Configurator
 The Cinnamon Dynamic Wallpaper extension offers an integrated image configuration assistant. Here, you can choose an included image set or import a HEIC-file from your system. You have to choose the images for the time periods after the import.
-
-
-## Included image sets
-The image sets are from https://github.com/adi1090x/dynamic-wallpaper
-
-| Aurora | Beach | Bitday |
-| ------ | ----- | ------ |
-| ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/aurora/5.jpg) | ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/beach/4.jpg) | ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/bitday/4.jpg) |
-
-| Cliffs | Gradient | Lakeside | 
-| -------- | --------- | ------ |
-| ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/cliffs/4.jpg) | ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/gradient/4.jpg) | ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/lakeside/4.jpg) |
-
-| Mountains | Sahara |
-| --------- | ------ |
-| ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/mountains/4.jpg) | ![](files/cinnamon-dynamic-wallpaper@TobiZog/images/included_image_sets/sahara/4.jpg) |

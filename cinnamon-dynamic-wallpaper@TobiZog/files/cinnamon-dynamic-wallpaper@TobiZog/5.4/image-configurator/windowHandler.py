@@ -1,25 +1,25 @@
-import gi, os, glob, json, shutil, enum, threading, subprocess
+import gi, os, glob, json, shutil, threading, subprocess
+from data.enum import Source
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GdkPixbuf
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(__file__)) + "/"
-UI_PATH = PROJECT_DIR + "image-configurator/" + "image-configurator.glade"
+CONFIGURATOR_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(CONFIGURATOR_DIR) + "/"
+UI_PATH = CONFIGURATOR_DIR + "/" + "image-configurator.glade"
 
 IMAGE_DIR = PROJECT_DIR + "images/"
 IMAGE_EXTRACT_DIR = IMAGE_DIR + "extracted/"
 IMAGE_SETS_DIR = IMAGE_DIR + "included_image_sets/"
 IMAGE_SELECTED_DIR = IMAGE_DIR + "selected/"
 
-class Source(enum.Enum):
-	SELECTED = 0	# Load previous selected images
-	EXTRACT = 1		# Use a custom image set from a heic file
-	SET = 2			# Use an included image set
 
+class WindowHandler:
+	def __init__(self, pref_path: str) -> None:
 
-class ImageConfigurator:
-	def __init__(self) -> None:
 		########### Class variables ###########
+		self.pref_path = pref_path
+
 		self.pref_vars = [
 			"etr_img_morning_twilight",
 			"etr_img_sunrise",
@@ -106,20 +106,6 @@ class ImageConfigurator:
 
 		self.image_source = Source.SELECTED
 
-
-		# Check for Cinnamon version
-		# With version 5.6+, the folder of the configuration file was changed
-		version = subprocess.check_output(["cinnamon", "--version"])
-		version = version.decode()
-		version = version[version.find(" "):version.rfind("\n")].strip()
-
-		if version.startswith("5.4"):
-			self.pref_path = os.path.expanduser("~") + \
-				"/.cinnamon/configs/cinnamon-dynamic-wallpaper@TobiZog/cinnamon-dynamic-wallpaper@TobiZog.json"
-		else:
-			self.pref_path = os.path.expanduser("~") + \
-				"/.config/cinnamon/spices/cinnamon-dynamic-wallpaper@TobiZog/cinnamon-dynamic-wallpaper@TobiZog.json"
-
 		# Load preferences
 		self.loadFromSettings()
 
@@ -139,6 +125,7 @@ class ImageConfigurator:
 	def loadFromSettings(self):
 		""" Load preferences from the Cinnamon preference file
 		"""
+		#try:
 		# Load the settings
 		with open(self.pref_path, "r") as pref_file:
 			pref_data = json.load(pref_file)
@@ -173,6 +160,8 @@ class ImageConfigurator:
 						self.cb_previews[i].set_active(j)
 			else:
 				self.image_source = Source.SET
+		#except:
+		#	pass
 
 
 	def writeToSettings(self):
@@ -376,8 +365,3 @@ class ImageConfigurator:
 		""" UI signal if the window is closed by the user
 		"""
 		Gtk.main_quit()
-
-
-if __name__ == "__main__":
-	ic = ImageConfigurator()
-	ic.showMainWindow()

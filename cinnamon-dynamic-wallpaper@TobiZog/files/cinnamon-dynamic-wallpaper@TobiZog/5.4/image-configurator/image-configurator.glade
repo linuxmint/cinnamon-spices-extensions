@@ -853,7 +853,7 @@
     <property name="window-position">center</property>
     <property name="default-width">1024</property>
     <property name="default-height">768</property>
-    <property name="icon">../icons/icon.png</property>
+    <property name="icon">../../icon.png</property>
     <signal name="destroy" handler="onDestroy" swapped="no"/>
     <child>
       <object class="GtkStack" id="stack_main">

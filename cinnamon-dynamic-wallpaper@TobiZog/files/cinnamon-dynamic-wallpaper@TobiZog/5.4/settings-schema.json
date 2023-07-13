@@ -19,9 +19,12 @@
 			"title": "About",
 			"sections": [
 				"sec_project",
-				"sec_github"
+				"sec_github",
+				"sec_report_issue"
 			]
 		},
+
+
 		"sec_image_configuration": {
 			"type": "section",
 			"title": "Image set",
@@ -52,7 +55,9 @@
 			"title": "About the project",
 			"keys": [
 				"lb_about",
-				"lb_author"
+				"lb_author",
+				"lb_spices",
+				"btn_spices"
 			]
 		},
 		"sec_github": {
@@ -62,8 +67,18 @@
 				"lb_repository",
 				"btn_open_repository"
 			]
+		},
+		"sec_report_issue": {
+			"type": "section",
+			"title": "Report an issue",
+			"keys": [
+				"lb_report_issue",
+				"btn_report_issue"
+			]
 		}
 	},
+
+
 	"lb_image_configuration": {
 		"type": "label",
 		"description": "Choose an included image set or import a heic-file with the Image Configurator"
@@ -104,6 +119,8 @@
 		"description": "Time sections today",
 		"default": ""
 	},
+
+
 	"lb_about": {
 		"type": "label",
 		"description": "Based on a location, this extension calculates the periods of a day and switch the background image of your Cinnamon desktop. The extension offers the choice between a set of predownloaded wallpapers or to select a custom set of images."
@@ -112,6 +129,16 @@
 		"type": "label",
 		"description": "Developed by TobiZog"
 	},
+	"lb_spices": {
+		"type": "label",
+		"description": "If you want more information or rate the extension, you can visit the site Cinnamon Spices Website."
+	},
+	"btn_spices": {
+		"type": "button",
+		"description": "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website",
+		"callback": "openSpicesWebsite"
+	},
+
 	"lb_repository": {
 		"type": "label",
 		"description": "This project is Open Source. You can visit the whole source code of this extension on GitHub"
@@ -121,54 +148,71 @@
 		"description": "Open the Repository",
 		"callback": "openRepoWebsite"
 	},
+
+	"lb_report_issue": {
+		"type": "label",
+		"description": "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue."
+	},
+
+	"btn_report_issue": {
+		"type": "button",
+		"description": "Submit an Issue",
+		"callback": "openIssueWebsite"
+	},
+
+
 	"etr_choosen_image_set": {
 		"type": "entry",
-		"default": "",
+		"default": "lakeside",
 		"description": ""
 	},
 	"etr_img_morning_twilight": {
 		"type": "entry",
-		"default": "",
+		"default": "1.jpg",
 		"description": ""
 	},
 	"etr_img_sunrise": {
 		"type": "entry",
-		"default": "",
+		"default": "2.jpg",
 		"description": ""
 	},
 	"etr_img_morning": {
 		"type": "entry",
-		"default": "",
+		"default": "3.jpg",
 		"description": ""
 	},
 	"etr_img_noon": {
 		"type": "entry",
-		"default": "",
+		"default": "4.jpg",
 		"description": ""
 	},
 	"etr_img_afternoon": {
 		"type": "entry",
-		"default": "",
+		"default": "5.jpg",
 		"description": ""
 	},
 	"etr_img_evening": {
 		"type": "entry",
-		"default": "",
+		"default": "6.jpg",
 		"description": ""
 	},
 	"etr_img_sunset": {
 		"type": "entry",
-		"default": "",
+		"default": "7.jpg",
 		"description": ""
 	},
 	"etr_img_night_twilight": {
 		"type": "entry",
-		"default": "",
+		"default": "8.jpg",
 		"description": ""
 	},
 	"etr_img_night": {
 		"type": "entry",
-		"default": "",
+		"default": "9.jpg",
 		"description": ""
+	},
+	"first_start": {
+		"type": "generic",
+		"default": true
 	}
 }

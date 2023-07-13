@@ -72,13 +72,43 @@ CinnamonDynamicWallpaperExtension.prototype = {
 		this.bindSettings("etr_img_night_twilight", "img_night_twilight", this.setImageToTime)
 		this.bindSettings("etr_img_night", "img_night", this.setImageToTime)
 		this.bindSettings("tv_times", "tvTimes")
+		
+		// Check for the first startup
+		if (this.settings.getValue("first_start")) {
+			// Welcome notification
+			this.showNotification("Welcome to Cinnamon Dynamic Wallpaper", 
+			"Check the preferences to choose a dynamic wallpaper", true)
 
+			// Hide the notification on system restart
+			this.settings.setValue("first_start", false)
+
+			// Create the folder for the selected images
+			Util.spawnCommandLine("mkdir " + DIRECTORY.path + "/images/selected/")
+
+			// Link the default wallpaper to the folder
+			for (let i = 1; i <= 9; i++) {
+				Util.spawnCommandLine("ln -s " + 
+				DIRECTORY.path + "/images/included_image_sets/lakeside/" + i + ".jpg " + 
+				DIRECTORY.path + "/images/selected/" + i + ".jpg");
+			}
+		}
+
+
+		// Set image initial at desktop wallpaper
 		this.setImageToTime()
 
+		// Start the main loop, checks in fixed time periods the 
 		this._loop()
 	},
 
 
+	/**
+	 * Binding the settings objects
+	 * 
+	 * @param {*} ui_name 	Name of preference in settings-schema.json
+	 * @param {*} js_name 	Name of preference in JavaScript
+	 * @param {*} func 		Function to call on change
+	 */
 	bindSettings: function (ui_name, js_name, func = this.on_settings_changed) {
 		this.settings.bindProperty(
 			Settings.BindingDirection.IN,
@@ -88,13 +118,13 @@ CinnamonDynamicWallpaperExtension.prototype = {
 		)
 	},
 
-
 	/**
 	 * Displaying a desktop notification
 	 * 
 	 * @param {string} title 				The Title in the notification
 	 * @param {string} text 				The text in the notification
-	 * @param {boolean} showOpenSettings 	Display the "Open settings" button in the notification, defaults to false
+	 * @param {boolean} showOpenSettings 	Display the "Open settings" button in the notification, 
+	 * 										defaults to false
 	 */
 	showNotification: function (title, text, showOpenSettings = false) {
 		let source = new MessageTray.Source(this.uuid);
@@ -140,7 +170,9 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	},
 
 
-
+	/**
+	 * Estimate the right image based on time period of the day
+	 */
 	setImageToTime: function() {
 		let times = suntimes.calcTimePeriod(this.latitude, this.longitude)
 		let now = new Date()
@@ -159,7 +191,6 @@ CinnamonDynamicWallpaperExtension.prototype = {
 
 		for(let i = 0; i < timesArray.length; i++) {
 			if(timesArray[i][0] <= now && now <= timesArray[i][1] && i != lastDayTime) {
-				global.log(PATH + "/res/images/selected/" + imageSet[i])
 				this.changeWallpaper("file://" + PATH + "/images/selected/" + imageSet[i])
 
 				lastDayTime = i
@@ -184,7 +215,10 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			"\nNight:\t\t\t\t" + convertToTimeString(timesArray[8][0]) + " - " + convertToTimeString(timesArray[8][1])
 	},
 
-
+	/**
+	 * Get the location of the user
+	 * Callback for changes in preferences
+	 */
 	updateLocation: function () {
 		if (this.autolocation) {
 			let loc = location.estimateLocation()
@@ -203,20 +237,39 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	},
 
 
+	/**
+	 * Main loop
+	 */
+	_loop: function () {
+		if (looping) {
+			this.setImageToTime()
+
+			if (lastLocationUpdate < new Date().getTime() - this.locationRefreshTime * 1000) {
+				this.updateLocation()
+				lastLocationUpdate = new Date()
+			}
+
+			// Refresh every 60 seconds
+			Mainloop.timeout_add_seconds(60, Lang.bind(this, this._loop));
+		}
+	},
+
+
 	/******************** UI Callbacks ********************/
 
 	/**
 	 * Callback for settings-schema
-	 * Opens the external heic-importer window
+	 * Opens the external image configurator window
 	 */
 	openImageConfigurator: function() {
-		Util.spawnCommandLine("/usr/bin/env python3 " + DIRECTORY.path + "/image-configurator/image-configurator.py");
+		Util.spawnCommandLine("/usr/bin/env python3 " + 
+		DIRECTORY.path + "/image-configurator/image-configurator.py");
 	},
 
 
 	/**
 	 * Callback for settings-schema
-	 * Opens the browser and navigate to the URL of the respository
+	 * Opens the browser and navigates to the URL of the respository
 	 */
 	openRepoWebsite: function() {
 		Util.spawnCommandLine("xdg-open https://github.com/TobiZog/cinnamon-dynamic-wallpaper");
@@ -224,20 +277,20 @@ CinnamonDynamicWallpaperExtension.prototype = {
 
 
 	/**
-	 * Main loop
+	 * Callback for settings-schema
+	 * Opens the browser and navigates to the URL of the Cinnamon Spices extension
 	 */
-	_loop: function() {
-		if(looping) {
-			this.setImageToTime()
+	openSpicesWebsite: function() {
+		Util.spawnCommandLine("xdg-open https://cinnamon-spices.linuxmint.com/extensions/view/97")
+	},
 
-			if (lastLocationUpdate < new Date().getTime() - this.locationRefreshTime * 1000) {
-				this.updateLocation()
-				lastLocationUpdate = new Date()
-			}
-			
-			// Refresh every 60 seconds
-			Mainloop.timeout_add_seconds(60, Lang.bind(this, this._loop));
-		}
+
+	/**
+	 * Callback for settings-schema
+	 * Opens the browser and navigates to the GitHub issue page
+	 */
+	openIssueWebsite: function() {
+		Util.spawnCommandLine("xdg-open https://github.com/TobiZog/cinnamon-dynamic-wallpaper/issues/new")
 	}
 }
 
@@ -265,13 +318,6 @@ function enable() {
 	if (!find_program_in_path('heif-convert')) {
 		Util.spawnCommandLine("apturl apt://libheif-examples");
 	}
-
-	// Display the welcome notification on activation
-	// extension.showNotification(
-	// 	APPNAME,
-	// 	"Welcome to " + APPNAME + "! Open the settings and configure the extensions.",
-	// 	true
-	// );
 
 	return extension;
 }
