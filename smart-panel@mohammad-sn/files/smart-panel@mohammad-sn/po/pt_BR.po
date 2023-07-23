@@ -5,16 +5,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: 1.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-26 21:14-0300\n"
-"PO-Revision-Date: 2021-09-26 23:29-0300\n"
+"PO-Revision-Date: 2023-05-18 11:00-0300\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
-"Last-Translator: Marcelo Aof\n"
+"Last-Translator: Patrick Dantas <patrickdsilva99@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: pt_BR\n"
 
@@ -112,6 +112,14 @@ msgid "Independent actions for scrolling up and down"
 msgstr ""
 "Considerar a rolagem para cima e a rolagem para baixo como ações "
 "independentes"
+
+#. smart-panel@mohammad-sn->settings-schema.json->topleft-osd->description
+msgid ""
+"Show workspace notification on the top left corner of the scren "
+"when switching workspaces"
+msgstr ""
+"Mostrar notificação no canto superior esquerdo da tela ao trocar de "
+"espaço de trabalho"
 
 #. smart-panel@mohammad-sn->settings-schema.json->dblclck-action->description
 msgid "Action on panel double click: "
