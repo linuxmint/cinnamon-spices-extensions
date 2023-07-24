@@ -55,29 +55,38 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	 * 
 	 * @param {string} uuid 	Universally Unique Identifier
 	 */
-	_init: function(uuid) {
+	_init: function (uuid) {
 		this.settings = new Settings.ExtensionSettings(this, uuid);
 
-		this.bindSettings("sw_auto_location", "autolocation", this.updateLocation)
-		this.bindSettings("sc_location_refresh_time", "locationRefreshTime")
-		this.bindSettings("etr_latitude", "latitude", this.updateLocation)
-		this.bindSettings("etr_longitude", "longitude", this.updateLocation)
-		this.bindSettings("etr_img_morning_twilight", "img_morning_twilight", this.setImageToTime)
-		this.bindSettings("etr_img_sunrise", "img_sunrise", this.setImageToTime)
-		this.bindSettings("etr_img_morning", "img_morning", this.setImageToTime)
-		this.bindSettings("etr_img_noon", "img_noon", this.setImageToTime)
-		this.bindSettings("etr_img_afternoon", "img_afternoon", this.setImageToTime)
-		this.bindSettings("etr_img_evening", "img_evening", this.setImageToTime)
-		this.bindSettings("etr_img_sunset", "img_sunset", this.setImageToTime)
-		this.bindSettings("etr_img_night_twilight", "img_night_twilight", this.setImageToTime)
-		this.bindSettings("etr_img_night", "img_night", this.setImageToTime)
+		// Image set
+		this.bindSettings("sw_image_stretch", "imageStretch", this.settingsUpdated)
+
+		// Location estimation
+		this.bindSettings("sw_auto_location", "autolocation", this.settingsUpdated)
+		this.bindSettings("sc_location_refresh_time", "locationRefreshTime", this.settingsUpdated)
+		this.bindSettings("etr_latitude", "latitude", this.settingsUpdated)
+		this.bindSettings("etr_longitude", "longitude", this.settingsUpdated)
+
+		// Time periods
 		this.bindSettings("tv_times", "tvTimes")
-		
+
+		// Image Configurator
+		this.bindSettings("etr_img_morning_twilight", "img_morning_twilight", this.settingsUpdated)
+		this.bindSettings("etr_img_sunrise", "img_sunrise", this.settingsUpdated)
+		this.bindSettings("etr_img_morning", "img_morning", this.settingsUpdated)
+		this.bindSettings("etr_img_noon", "img_noon", this.settingsUpdated)
+		this.bindSettings("etr_img_afternoon", "img_afternoon", this.settingsUpdated)
+		this.bindSettings("etr_img_evening", "img_evening", this.settingsUpdated)
+		this.bindSettings("etr_img_sunset", "img_sunset", this.settingsUpdated)
+		this.bindSettings("etr_img_night_twilight", "img_night_twilight", this.settingsUpdated)
+		this.bindSettings("etr_img_night", "img_night", this.settingsUpdated)
+
+
 		// Check for the first startup
 		if (this.settings.getValue("first_start")) {
 			// Welcome notification
-			this.showNotification("Welcome to Cinnamon Dynamic Wallpaper", 
-			"Check the preferences to choose a dynamic wallpaper", true)
+			this.showNotification("Welcome to Cinnamon Dynamic Wallpaper",
+				"Check the preferences to choose a dynamic wallpaper", true)
 
 			// Hide the notification on system restart
 			this.settings.setValue("first_start", false)
@@ -87,9 +96,9 @@ CinnamonDynamicWallpaperExtension.prototype = {
 
 			// Link the default wallpaper to the folder
 			for (let i = 1; i <= 9; i++) {
-				Util.spawnCommandLine("ln -s " + 
-				DIRECTORY.path + "/images/included_image_sets/lakeside/" + i + ".jpg " + 
-				DIRECTORY.path + "/images/selected/" + i + ".jpg");
+				Util.spawnCommandLine("ln -s " +
+					DIRECTORY.path + "/images/included_image_sets/lakeside/" + i + ".jpg " +
+					DIRECTORY.path + "/images/selected/" + i + ".jpg");
 			}
 		}
 
@@ -117,6 +126,18 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			func
 		)
 	},
+
+
+	/**
+	 * Handles changes in settings
+	 */
+	settingsUpdated: function () {
+		lastDayTime = suntimes.DAYPERIOD.NONE
+
+		this.updateLocation()
+		this.setImageToTime()
+	},
+
 
 	/**
 	 * Displaying a desktop notification
@@ -162,9 +183,17 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	 * 
 	 * @param {jpg} imageURI 	The new desktop image
 	 */
-	changeWallpaper: function(imageURI) {
-		let gSetting = new Gio.Settings({schema: 'org.cinnamon.desktop.background'});
+	changeWallpaper: function (imageURI) {
+		let gSetting = new Gio.Settings({ schema: 'org.cinnamon.desktop.background' });
 		gSetting.set_string('picture-uri', imageURI);
+
+		if (this.imageStretch) {
+			gSetting.set_string('picture-options', 'spanned')
+		}
+		else {
+			gSetting.set_string('picture-options', 'zoom')
+		}
+
 		Gio.Settings.sync();
 		gSetting.apply();
 	},
@@ -173,13 +202,13 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	/**
 	 * Estimate the right image based on time period of the day
 	 */
-	setImageToTime: function() {
+	setImageToTime: function () {
 		let times = suntimes.calcTimePeriod(this.latitude, this.longitude)
 		let now = new Date()
 
 		let timesArray = [
 			times["morning_twilight"], times["sunrise"], times["morning"],
-			times["noon"], times["afternoon"], times["evening"], 
+			times["noon"], times["afternoon"], times["evening"],
 			times["sunset"], times["night_twilight"], times["night"]
 		]
 
@@ -189,8 +218,8 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			this.img_sunset, this.img_night_twilight, this.img_night
 		]
 
-		for(let i = 0; i < timesArray.length; i++) {
-			if(timesArray[i][0] <= now && now <= timesArray[i][1] && i != lastDayTime) {
+		for (let i = 0; i < timesArray.length; i++) {
+			if (timesArray[i][0] <= now && now <= timesArray[i][1] && i != lastDayTime) {
 				this.changeWallpaper("file://" + PATH + "/images/selected/" + imageSet[i])
 
 				lastDayTime = i
@@ -198,12 +227,12 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			}
 		}
 
-		
+
 		function convertToTimeString(time) {
 			return time.getHours().toString().padStart(2, "0") + ":" + time.getMinutes().toString().padStart(2, "0")
 		}
 
-		this.tvTimes = 
+		this.tvTimes =
 			"Morning Twilight:\t\t" + convertToTimeString(timesArray[0][0]) + " - " + convertToTimeString(timesArray[0][1]) +
 			"\nSunrise:\t\t\t\t" + convertToTimeString(timesArray[1][0]) + " - " + convertToTimeString(timesArray[1][1]) +
 			"\nMorning:\t\t\t" + convertToTimeString(timesArray[2][0]) + " - " + convertToTimeString(timesArray[2][1]) +
@@ -228,9 +257,6 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			this.latitude = this.latitude
 			this.longitude = this.longitude
 		}
-
-		// Refresh the image information, if it's necessary
-		this.setImageToTime()
 
 		// Update the update information
 		lastLocationUpdate = new Date()
@@ -261,9 +287,9 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	 * Callback for settings-schema
 	 * Opens the external image configurator window
 	 */
-	openImageConfigurator: function() {
-		Util.spawnCommandLine("/usr/bin/env python3 " + 
-		DIRECTORY.path + "/image-configurator/image-configurator.py");
+	openImageConfigurator: function () {
+		Util.spawnCommandLine("/usr/bin/env python3 " +
+			DIRECTORY.path + "/image-configurator/image-configurator.py");
 	},
 
 
@@ -271,7 +297,7 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	 * Callback for settings-schema
 	 * Opens the browser and navigates to the URL of the respository
 	 */
-	openRepoWebsite: function() {
+	openRepoWebsite: function () {
 		Util.spawnCommandLine("xdg-open https://github.com/TobiZog/cinnamon-dynamic-wallpaper");
 	},
 
@@ -280,7 +306,7 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	 * Callback for settings-schema
 	 * Opens the browser and navigates to the URL of the Cinnamon Spices extension
 	 */
-	openSpicesWebsite: function() {
+	openSpicesWebsite: function () {
 		Util.spawnCommandLine("xdg-open https://cinnamon-spices.linuxmint.com/extensions/view/97")
 	},
 
@@ -289,7 +315,7 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	 * Callback for settings-schema
 	 * Opens the browser and navigates to the GitHub issue page
 	 */
-	openIssueWebsite: function() {
+	openIssueWebsite: function () {
 		Util.spawnCommandLine("xdg-open https://github.com/TobiZog/cinnamon-dynamic-wallpaper/issues/new")
 	}
 }

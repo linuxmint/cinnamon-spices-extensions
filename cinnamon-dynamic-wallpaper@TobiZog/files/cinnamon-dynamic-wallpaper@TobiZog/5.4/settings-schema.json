@@ -30,7 +30,8 @@
 			"title": "Image set",
 			"keys": [
 				"lb_image_configuration",
-				"btn_config_images"
+				"btn_config_images",
+				"sw_image_stretch"
 			]
 		},
 		"sec_location": {
@@ -87,6 +88,11 @@
 		"type": "button",
 		"description": "Image Configurator",
 		"callback": "openImageConfigurator"
+	},
+	"sw_image_stretch": {
+		"type": "switch",
+		"description": "Expand image over all displays",
+		"default": true
 	},
 	"sw_auto_location": {
 		"type": "switch",
