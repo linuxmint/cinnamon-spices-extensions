@@ -38,6 +38,12 @@
         "description" : "Independent actions for scrolling up and down",
         "tooltip" : ""
     },
+    "topleft-osd" : {
+        "type" : "checkbox",
+        "default" : false,
+        "description" : "Show workspace notification on the top left corner of the scren when switching workspaces",
+        "tooltip" : ""
+    },
     "scroll-action-up" : {
         "type": "combobox",
         "default" : "none",
