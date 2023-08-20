@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-28 22:07-0500\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2023-08-20 11:35-0400\n"
 "Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->description
-msgid "Quickly shake the mouse pointer back and forth to zoom"
+msgid "Quickly shake the mouse pointer back and forth to zoom the cursor"
 msgstr "Gyorsan rázza meg a egérmutatót balról jobbra a nagyításhoz"
 
 #. metadata.json->name

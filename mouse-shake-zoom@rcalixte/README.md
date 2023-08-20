@@ -3,6 +3,7 @@ MOUSE SHAKE ZOOM EXTENSION
 
 DESCRIPTION
 -----------
+
 An extension that enlarges the current cursor when it is quickly shaken back
 and forth.
 
@@ -11,4 +12,5 @@ extension created by [Jeff Channell](https://github.com/jeffchannell).
 
 COMPATIBILITY
 -------------
-This applet has been tested to be compatible with Cinnamon 5.6+.
+
+This extension has been tested to be compatible with Cinnamon 5.6+.
