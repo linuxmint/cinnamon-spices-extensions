@@ -1,0 +1,60 @@
+{
+    "opacity": {
+        "type": "scale",
+        "description": "Opacity",
+        "min": 20,
+        "max": 255,
+        "step": 10,
+        "default": 100
+    },
+    
+    "sep1": {
+        "type": "separator"
+    },
+    
+    "h1": {
+        "type": "header",
+        "description": "Start of Drag"
+    },
+    
+    "beginTime": {
+        "type": "spinbutton",
+        "description": "Transition time",
+        "min": 0,
+        "max": 2000,
+        "step": 50,
+        "units": "milliseconds",
+        "default": 100
+    },
+    
+    "beginEffect": {
+        "type": "tween",
+        "description": "Effect",
+        "default": "easeOutSine"
+    },
+    
+    "sep2": {
+        "type": "separator"
+    },
+    
+    "h2": {
+        "type": "header",
+        "description": "End of Drag"
+    },
+    
+    "endTime": {
+        "type": "spinbutton",
+        "description": "Transition time",
+        "min": 0,
+        "max": 2000,
+        "step": 50,
+        "units": "milliseconds",
+        "default": 100
+    },
+    
+    "endEffect": {
+        "type": "tween",
+        "description": "Effect",
+        "default": "easeInSine"
+    }
+}

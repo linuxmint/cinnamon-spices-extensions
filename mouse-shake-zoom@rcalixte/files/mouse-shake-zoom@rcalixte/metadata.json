@@ -1,10 +1,11 @@
 {
-    "description": "Quickly shake the mouse pointer back and forth to zoom",
+    "description": "Quickly shake the mouse pointer back and forth to zoom the cursor",
     "uuid": "mouse-shake-zoom@rcalixte",
     "name": "Mouse Shake Zoom Extension",
     "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/mouse-shake-zoom%40rcalixte",
-    "version": "1.0",
+    "version": "1.0.1",
     "cinnamon-version": [
-        "5.6"
+        "5.6",
+        "5.8"
     ]
 }
