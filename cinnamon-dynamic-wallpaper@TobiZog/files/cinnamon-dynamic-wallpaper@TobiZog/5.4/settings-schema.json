@@ -3,8 +3,12 @@
 		"type": "layout",
 		"pages": [
 			"pg_config",
+			"pg_logs",
 			"pg_about"
 		],
+
+
+
 		"pg_config": {
 			"type": "page",
 			"title": "Configuration",
@@ -14,15 +18,23 @@
 				"sec_times"
 			]
 		},
+		"pg_logs": {
+			"type": "page",
+			"title": "Debugging",
+			"sections": [
+				"sec_logs",
+				"sec_report_issue"
+			]
+		},
 		"pg_about": {
 			"type": "page",
 			"title": "About",
 			"sections": [
 				"sec_project",
-				"sec_github",
-				"sec_report_issue"
+				"sec_github"
 			]
 		},
+
 
 
 		"sec_image_configuration": {
@@ -40,10 +52,11 @@
 			"keys": [
 				"sw_auto_location",
 				"sc_location_refresh_time",
+				"etr_last_update",
 				"etr_latitude",
 				"etr_longitude"
 			]
-		},
+		},		
 		"sec_times": {
 			"type": "section",
 			"title": "Time periods",
@@ -51,6 +64,26 @@
 				"tv_times"
 			]
 		},
+
+
+		"sec_logs": {
+			"type": "section",
+			"title": "Logs",
+			"keys": [
+				"tv_log_description",
+				"tv_logs"
+			]
+		},
+		"sec_report_issue": {
+			"type": "section",
+			"title": "Report an issue",
+			"keys": [
+				"lb_report_issue",
+				"btn_report_issue"
+			]
+		},
+
+
 		"sec_project": {
 			"type": "section",
 			"title": "About the project",
@@ -68,16 +101,9 @@
 				"lb_repository",
 				"btn_open_repository"
 			]
-		},
-		"sec_report_issue": {
-			"type": "section",
-			"title": "Report an issue",
-			"keys": [
-				"lb_report_issue",
-				"btn_report_issue"
-			]
 		}
 	},
+
 
 
 	"lb_image_configuration": {
@@ -92,8 +118,9 @@
 	"sw_image_stretch": {
 		"type": "switch",
 		"description": "Expand image over all displays",
-		"default": true
+		"default": false
 	},
+
 	"sw_auto_location": {
 		"type": "switch",
 		"default": true,
@@ -108,6 +135,12 @@
 		"description": "Interval time to refresh the location via network (min)",
 		"dependency": "sw_auto_location"
 	},
+	"etr_last_update": {
+		"type": "entry",
+		"description": "Last location update",
+		"default": "",
+		"dependency": "sw_auto_location"
+	},
 	"etr_latitude": {
 		"type": "entry",
 		"default": "",
@@ -120,10 +153,33 @@
 		"description": "Longitude",
 		"dependency": "!sw_auto_location"
 	},
+	
 	"tv_times": {
 		"type": "textview",
 		"description": "Time sections today",
 		"default": ""
+	},
+
+	
+	"tv_log_description": {
+		"type": "label",
+		"description": "Logs contains informations about time, date and successful or failed operations of the extension.",
+		"default": ""
+	},
+	"tv_logs": {
+		"type": "textview",
+		"description": "See all logs",
+		"default": ""
+	},
+
+	"lb_report_issue": {
+		"type": "label",
+		"description": "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue. If you find an error message in the logs above, add it to the issue report."
+	},
+	"btn_report_issue": {
+		"type": "button",
+		"description": "Submit an Issue",
+		"callback": "openIssueWebsite"
 	},
 
 
@@ -155,16 +211,7 @@
 		"callback": "openRepoWebsite"
 	},
 
-	"lb_report_issue": {
-		"type": "label",
-		"description": "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue."
-	},
-
-	"btn_report_issue": {
-		"type": "button",
-		"description": "Submit an Issue",
-		"callback": "openIssueWebsite"
-	},
+	
 
 
 	"etr_choosen_image_set": {
@@ -220,5 +267,51 @@
 	"first_start": {
 		"type": "generic",
 		"default": true
+	},
+
+	"etr_morning_twilight_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_sunrise_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_morning_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_noon_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_afternoon_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_evening_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_sunset_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_night_twilight_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
+	},
+	"etr_night_times": {
+		"type": "entry",
+		"default": "",
+		"description": ""
 	}
 }

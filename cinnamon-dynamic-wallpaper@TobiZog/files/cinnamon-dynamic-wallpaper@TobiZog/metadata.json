@@ -2,7 +2,7 @@
 	"uuid": "cinnamon-dynamic-wallpaper@TobiZog",
 	"name": "Cinnamon Dynamic Wallpaper",
 	"description": "Cinnamon extension for dynamic desktop backgrounds based on time and location",
-	"version": "1.3",
+	"version": "1.4",
 	"multiversion": true,
 	"cinnamon-version": [
 		"4.8",

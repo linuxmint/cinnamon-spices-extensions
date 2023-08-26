@@ -2,7 +2,11 @@
  * @name	Cinnamon-Dynamic-Wallpaper
  * @alias 	TobiZog
  * @since	2023
+ * 
+ * @description Functions to calculate sun time periods
  */
+
+/******************** Constants ********************/
 
 const DAYPERIOD = {
 	MTWILIGHT: 0,
@@ -20,6 +24,9 @@ const DAYPERIOD = {
 const DAYMS = 1000 * 60 * 60 * 24
 const J1970 = 2440588
 const J2000 = 2451545
+
+
+/******************** Functions ********************/
 
 
 function fromJulian(j) {
@@ -83,6 +90,14 @@ function subTimesToMinutes(date1, date2) {
 }
 
 
+/**
+ * Calculating the start and end time of all time periods of the day
+ * 
+ * @param {float} latitude Location latitude
+ * @param {float} longitude Location longitude
+ * 
+ * @returns JSON of time periods
+ */
 function calcTimePeriod(latitude, longitude) {
 	let todaySunEventsDay = sunEventsOfDay(latitude, longitude, Date.now())
 	let tomorrowSunEventsDay = sunEventsOfDay(latitude, longitude, addMinutesToTime(new Date(), 1440))
