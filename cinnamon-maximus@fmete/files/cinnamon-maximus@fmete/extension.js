@@ -319,7 +319,7 @@ function onSizeChange(shellwm, actor, change) {
     if (change === Meta.SizeChange.UNMAXIMIZE) {
         onUnmaximize(shellwm, actor);
     }
-    if (!!Meta.SizeChange.TILE && change === Meta.SizeChange.TILE && settings.undecorateTile == true) {
+    if (!!Meta.SizeChange.TILE && change === Meta.SizeChange.TILE) {
         onMaximize(shellwm, actor);
     }
 }
