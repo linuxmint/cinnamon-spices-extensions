@@ -20,10 +20,10 @@ msgstr "Vissza a kijelzőre"
 msgid "Move windows back to their original location when (re-)connecting a monitor."
 msgstr "Visszahelyezi az ablakokat az eredeti helyére, amikor újracsatlakoztat egy kijelzőt."
 
-#. 4.0->settings-schema.json->rememberState->description
+#. settings-schema.json->rememberState->description
 msgid "Remember window locations based on monitor connection"
 msgstr "Feljegyzi az ablakok helyét az adott kijelzőn"
 
-#. 4.0->settings-schema.json->minimize->description
+#. settings-schema.json->minimize->description
 msgid "Minimize windows when a monitor is disconnected"
 msgstr "Az ablak minimalizálása, amikor a kijelző nincsen csatlakoztatva"

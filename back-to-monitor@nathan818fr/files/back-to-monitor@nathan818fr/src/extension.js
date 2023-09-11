@@ -1,11 +1,9 @@
 const Settings = imports.ui.settings;
-const Gdk = imports.gi.Gdk;
-const CinnamonDesktop = imports.gi.CinnamonDesktop;
 const SignalManager = imports.misc.signalManager;
 const {globalLogger: logger} = require('src/logger');
 const {ScreenWatcher} = require('src/screen-watcher');
 const {callSafely} = require('src/utils');
-const {saveWindowState, restoreWindowState} = require('src/window-utils');
+const {windowSaver} = require('src/window-saver');
 
 class BackToMonitorExtension {
     constructor(meta) {
@@ -24,8 +22,7 @@ class BackToMonitorExtension {
         this._settingsDb.bind('rememberState', 'rememberState', this._onRememberStateChange);
         this._settingsDb.bind('minimize', 'minimize', this._onMinimizeChange);
 
-        const rrScreen = CinnamonDesktop.RRScreen.new(Gdk.Screen.get_default());
-        this._screenWatcher = new ScreenWatcher(global.screen, rrScreen);
+        this._screenWatcher = new ScreenWatcher();
         this._screenWatcher.register();
 
         this._signalManager = new SignalManager.SignalManager(null);
@@ -55,6 +52,8 @@ class BackToMonitorExtension {
             this._settingsDb.finalize();
             this._settingsDb = null;
         }
+
+        logger.log('Disabled');
     }
 
     _onRememberStateChange = () => {
@@ -77,12 +76,12 @@ class BackToMonitorExtension {
         this._monitorDisconnectedWindows.set(outputName, disconnectedWindows);
 
         for (const metaWindow of global.display.list_windows(0)) {
-            if (metaWindow.get_monitor() !== monitorIndex) {
+            if (!windowSaver.isInside(metaWindow, monitorRect, monitorIndex)) {
                 continue;
             }
 
-            if (this._settings.rememberState && metaWindow.can_move()) {
-                const windowState = callSafely(() => saveWindowState(metaWindow));
+            if (this._settings.rememberState && windowSaver.allowsMove(metaWindow)) {
+                const windowState = callSafely(() => windowSaver.save(metaWindow));
                 if (windowState) {
                     // Transform x and y to relative positions
                     windowState.x -= monitorRect.x;
@@ -142,7 +141,7 @@ class BackToMonitorExtension {
 
                 // Restore
                 logger.log(`Restore '${metaWindow.get_title()}' to ${outputName}: ${JSON.stringify(windowState)}`);
-                callSafely(() => restoreWindowState(metaWindow, windowState, monitorRect));
+                callSafely(() => windowSaver.restore(metaWindow, windowState, monitorRect));
             }
         }
     };
