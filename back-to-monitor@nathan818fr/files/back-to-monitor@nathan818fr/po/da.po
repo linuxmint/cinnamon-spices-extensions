@@ -21,10 +21,10 @@ msgstr "Back to Monitor"
 msgid "Move windows back to their original location when (re-)connecting a monitor."
 msgstr "Flyt vinduer tilbage til deres oprindelige placering, når en skærm tilkobles (igen)."
 
-#. 4.0->settings-schema.json->rememberState->description
+#. settings-schema.json->rememberState->description
 msgid "Remember window locations based on monitor connection"
 msgstr "Husk vinduesplacering baseret på skærmforbindelse"
 
-#. 4.0->settings-schema.json->minimize->description
+#. settings-schema.json->minimize->description
 msgid "Minimize windows when a monitor is disconnected"
 msgstr "Minimér vinduer, når en skærm frakobles"

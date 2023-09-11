@@ -22,18 +22,10 @@ msgstr "Back to Monitor"
 msgid "Move windows back to their original location when (re-)connecting a monitor."
 msgstr "Déplacer les fenêtres à leur emplacement d'origine lors de la (re)connexion d'un moniteur."
 
-#. 4.0->settings-schema.json->rememberState->description
+#. settings-schema.json->rememberState->description
 msgid "Remember window locations based on monitor connection"
 msgstr "Mémoriser les emplacements des fenêtres en fonction de la connexion au moniteur"
 
-#. 4.0->settings-schema.json->minimize->description
+#. settings-schema.json->minimize->description
 msgid "Minimize windows when a monitor is disconnected"
 msgstr "Réduire les fenêtres lorsqu'un moniteur est déconnecté"
-
-#. 5.4->settings-schema.json->incompatibilityNotice1->description
-msgid "This extension is not compatible with this version of Cinnamon."
-msgstr "Cette extension n'est pas compatible avec cette version de Cinnamon."
-
-#. 5.4->settings-schema.json->incompatibilityNotice2->description
-msgid "Cinnamon now natively provides the features of this extension."
-msgstr "Cinnamon fournit maintenant nativement les fonctionnalités de cette extension."

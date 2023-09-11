@@ -1,0 +1,11 @@
+{
+  "name": "cinnamon-back-to-monitor",
+  "private": "true",
+  "scripts": {
+    "format": "prettier -w .",
+    "install-extension": "cinnamon-install-spice extension files/back-to-monitor@nathan818fr"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  }
+}

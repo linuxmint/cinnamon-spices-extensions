@@ -21,18 +21,10 @@ msgid ""
 "Move windows back to their original location when (re-)connecting a monitor."
 msgstr ""
 
-#. 4.0->settings-schema.json->rememberState->description
+#. settings-schema.json->rememberState->description
 msgid "Remember window locations based on monitor connection"
 msgstr ""
 
-#. 4.0->settings-schema.json->minimize->description
+#. settings-schema.json->minimize->description
 msgid "Minimize windows when a monitor is disconnected"
-msgstr ""
-
-#. 5.4->settings-schema.json->incompatibilityNotice1->description
-msgid "This extension is not compatible with this version of Cinnamon."
-msgstr ""
-
-#. 5.4->settings-schema.json->incompatibilityNotice2->description
-msgid "Cinnamon now natively provides the features of this extension."
 msgstr ""

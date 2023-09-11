@@ -3,29 +3,45 @@ const GLib = imports.gi.GLib;
 const Meta = imports.gi.Meta;
 const SignalManager = imports.misc.signalManager;
 const Signals = imports.signals;
+const Gdk = imports.gi.Gdk;
+const CinnamonDesktop = imports.gi.CinnamonDesktop;
 const {globalLogger: logger} = require('src/logger');
-const {callSafely, delayQueue} = require('src/utils');
+const {callSafely, delayQueue, addSignalHook, removeSignalHooks} = require('src/utils');
 
 class ScreenWatcher {
-    constructor(metaScreen, rrScreen) {
-        this._metaScreen = metaScreen;
-        this._rrScreen = rrScreen;
+    constructor() {
+        this._metaScreen = global.screen;
+        this._rrScreen = CinnamonDesktop.RRScreen.new(Gdk.Screen.get_default());
     }
 
     register() {
         this._outputsRect = new Map();
         this._pendingMonitors = new Map();
         this._signalManager = new SignalManager.SignalManager(null);
+        this._signalHooks = [];
 
         this._loading = true;
         try {
-            this._signalManager.connect(this._rrScreen, 'changed', this._onRRScreenChanged);
+            if (typeof Meta.WindowTileType === 'undefined') {
+                // Cinnamon 5.4+ move and resize windows before emitting documented signals.
+                // Internally it uses MonitorManager:monitors-changed-internal to detect monitor changes, so we hook
+                // this signal to act before Cinnamon.
+                addSignalHook(
+                    this._signalHooks,
+                    Meta.MonitorManager.get(),
+                    'monitors-changed-internal',
+                    this._onRRScreenChanged
+                );
+            } else {
+                this._signalManager.connect(this._rrScreen, 'changed', this._onRRScreenChanged);
+            }
             this._signalManager.connect(
                 this._metaScreen,
                 'monitors-changed',
                 delayQueue(1000, this._onMonitorsChanged)
             );
 
+            // Call _onRRScreenChanged() immediately to initialize _outputsRect.
             this._onRRScreenChanged(this._rrScreen);
         } finally {
             this._loading = false;
@@ -37,13 +53,14 @@ class ScreenWatcher {
             this._signalManager.disconnectAllSignals();
             this._signalManager = null;
         }
+        if (this._signalHooks) {
+            removeSignalHooks(this._signalHooks);
+            this._signalHooks = null;
+        }
     }
 
     _onRRScreenChanged = () => {
-        // NOTE: Can't use RROutput.get_position because it requires output arguments (not available with CJS).
-        // So instead call the xrandr command :'(
         const rrOutputsRect = this._captureRROutputsRect();
-
         const rrOutputs = this._rrScreen.list_outputs();
         for (const rrOutput of rrOutputs) {
             const name = rrOutput.get_name();
@@ -66,7 +83,9 @@ class ScreenWatcher {
 
     _onOutputConnected = (name, rect) => {
         const monitorIndex = this._getMonitorIndexAt(rect.x, rect.y);
-        logger.log(`Output connected: ${name} (x: ${rect.x}, y: ${rect.y}, index: ${monitorIndex})`);
+        logger.log(
+            `Output connected: ${name} (x: ${rect.x}, y: ${rect.y}, w: ${rect.width}, h: ${rect.height}, index: ${monitorIndex})`
+        );
 
         const monitorChangeCancelled = this._pendingMonitors.has(name);
         if (monitorChangeCancelled) {
@@ -80,7 +99,9 @@ class ScreenWatcher {
 
     _onOutputDisconnected = (name, rect) => {
         const monitorIndex = this._getMonitorIndexAt(rect.x, rect.y);
-        logger.log(`Output disconnected: ${name} (x: ${rect.x}, y: ${rect.y}, index: ${monitorIndex})`);
+        logger.log(
+            `Output disconnected: ${name} (x: ${rect.x}, y: ${rect.y}, w: ${rect.width}, h: ${rect.height}, index: ${monitorIndex})`
+        );
 
         const monitorChangeCancelled = this._pendingMonitors.has(name);
         if (monitorChangeCancelled) {
@@ -116,23 +137,29 @@ class ScreenWatcher {
 
     _onMonitorLoaded = (name, rect) => {
         const monitorIndex = this._getMonitorIndexAt(rect.x, rect.y);
-        logger.log(`Monitor loaded: ${name} (x: ${rect.x}, y: ${rect.y}, index: ${monitorIndex})`);
+        logger.log(
+            `Monitor loaded: ${name} (x: ${rect.x}, y: ${rect.y}, w: ${rect.width}, h: ${rect.height}, index: ${monitorIndex})`
+        );
 
         this.emit('monitor-loaded', {outputName: name, monitorRect: rect, monitorIndex});
     };
 
     _onMonitorUnloaded = (name, rect) => {
         const monitorIndex = this._getMonitorIndexAt(rect.x, rect.y);
-        logger.log(`Monitor unloaded: ${name} (x: ${rect.x}, y: ${rect.y}, index: ${monitorIndex})`);
+        logger.log(
+            `Monitor unloaded: ${name} (x: ${rect.x}, y: ${rect.y}, w: ${rect.width}, h: ${rect.height}, index: ${monitorIndex})`
+        );
 
         this.emit('monitor-unloaded', {outputName: name, monitorRect: rect, monitorIndex});
     };
 
     _captureRROutputsRect = () => {
+        // NOTE: Can't use RROutput.get_position because it requires output arguments (not available with CJS).
+        // So instead call the xrandr command :'(
         let [, xrandrStdout] = GLib.spawn_command_line_sync('xrandr --current');
         xrandrStdout = xrandrStdout ? ByteArray.toString(xrandrStdout) : '';
 
-        // See xrandr output sources: https://github.com/freedesktop/xorg-xrandr/blob/8969b3c651eaae3e3a2370ec45f4eeae9750111d/xrandr.c#L3697
+        // See xrandr output sources: https://gitlab.freedesktop.org/xorg/app/xrandr/-/blob/8969b3c651eaae3e3a2370ec45f4eeae9750111d/xrandr.c#L3697
         const pattern =
             /^([^ ]+) (?:connected|disconnected|unknown connection)(?: primary)? ([0-9]+)x([0-9]+)\+(-?[0-9]+)\+(-?[0-9]+)/gm;
         const ret = {};

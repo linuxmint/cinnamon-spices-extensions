@@ -3,7 +3,6 @@
   "name": "Back to Monitor",
   "description": "Move windows back to their original location when (re-)connecting a monitor.",
   "author": "Nathan Poirier &lt;nathan@poirier.io&gt;",
-  "cinnamon-version": ["4.0", "4.2", "4.4", "4.6", "4.8", "5.0", "5.2"],
-  "multiversion": true,
+  "cinnamon-version": ["4.0", "4.2", "4.4", "4.6", "4.8", "5.0", "5.2", "5.4", "5.6"],
   "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/back-to-monitor%40nathan818fr"
 }

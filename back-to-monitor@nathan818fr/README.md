@@ -4,8 +4,6 @@ A Cinnamon extension to move windows back to their original location when (re-)c
 
 ![Screenshot](./screenshot.png?raw=true)
 
-> **IMPORTANT: Cinnamon 5.4+ natively provides the features of this extension.**
-
 ## Features
 
 -   Remember window locations based on monitor connection (can be switched on/off)
@@ -27,7 +25,7 @@ To download the source and install it, execute the following as a normal user:
 ```bash
 git clone git@github.com:nathan818fr/cinnamon-back-to-monitor.git
 cd cinnamon-back-to-monitor
-cinnamon-install-spice extension files/back-to-monitor@nathan818fr
+npm run install-extension
 ```
 
 ## Issues
@@ -48,8 +46,10 @@ Therefore, tiled/snapped windows can only be restored to the predefined dimensio
 
 ### • Fullscreen windows are not restored
 
-The required APIs are not exposed to cinnamon extensions.<br/>
-Therefore, fullscreen windows are ignored by this extension.
+Before Cinnamon 5.4, the required APIs were not exposed to cinnamon extensions.<br/>
+In this case, the fullscreen windows will be ignored.
+
+With Cinnamon 5.4 and above, the fullscreen windows will be restored correctly!
 
 ### • The "Always on Visible Workspace" option is not restored
 
