@@ -8,4 +8,4 @@ function safeGet(obj, ...keys) {
     return obj;
 }
 
-module.exports = { safeGet };
+module.exports = {safeGet};

@@ -3,60 +3,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: user-shadows@nathan818fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 17:04+0200\n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: custom-settings-widgets.py:12
+#: custom-settings-widgets.py:19
 msgid "Radius"
 msgstr ""
 
-#: custom-settings-widgets.py:13
+#: custom-settings-widgets.py:20
 msgid "Top Fade"
 msgstr ""
 
-#: custom-settings-widgets.py:14
+#: custom-settings-widgets.py:21
 msgid "X Offset"
 msgstr ""
 
-#: custom-settings-widgets.py:15
+#: custom-settings-widgets.py:22
 msgid "Y Offset"
 msgstr ""
 
-#: custom-settings-widgets.py:16
+#: custom-settings-widgets.py:23
 msgid "Opacity"
 msgstr ""
 
-#: custom-settings-widgets.py:39
+#: custom-settings-widgets.py:46
 msgid "Class Name"
 msgstr ""
 
-#: custom-settings-widgets.py:42
+#: custom-settings-widgets.py:49
 msgid "State"
 msgstr ""
 
-#: custom-settings-widgets.py:102
+#: custom-settings-widgets.py:109
 msgid "Import"
 msgstr ""
 
-#: custom-settings-widgets.py:106
+#: custom-settings-widgets.py:113
 msgid "Export"
 msgstr ""
 
-#: custom-settings-widgets.py:110
+#: custom-settings-widgets.py:117
 msgid "Set from..."
 msgstr ""
 
-#: custom-settings-widgets.py:169
+#: custom-settings-widgets.py:176
 msgid "Choose where to save your configuration"
 msgstr ""
 
-#: custom-settings-widgets.py:169
+#: custom-settings-widgets.py:176
 msgid "Choose a configuration to load"
 msgstr ""
 

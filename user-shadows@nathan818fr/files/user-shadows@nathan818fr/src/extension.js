@@ -1,13 +1,13 @@
 const Meta = imports.gi.Meta;
 const Settings = imports.ui.settings;
-const { SHADOW_CLASS_NAMES, SHADOW_STATES, SHADOW_PARAMS, FALLBACK_SHADOW_CLASSES } = require('src/constants');
-const { getPresets } = require('src/presets');
-const { safeGet } = require('src/utils');
+const {SHADOW_CLASS_NAMES, SHADOW_STATES, SHADOW_PARAMS, FALLBACK_SHADOW_CLASSES} = require('src/constants');
+const {getPresets} = require('src/presets');
+const {safeGet} = require('src/utils');
 
 class UserShadowsExtension {
     constructor(meta) {
         this._meta = meta;
-        this._instanceId = (Date.now() + Math.floor(Math.random() * 1000000)).toString(16)
+        this._instanceId = (Date.now() + Math.floor(Math.random() * 1000000)).toString(16);
     }
 
     enable() {
@@ -52,7 +52,7 @@ class UserShadowsExtension {
                 classNames: SHADOW_CLASS_NAMES,
                 states: SHADOW_STATES,
                 params: SHADOW_PARAMS,
-                presets: this._presets
+                presets: this._presets,
             });
         };
         set();
@@ -70,8 +70,16 @@ class UserShadowsExtension {
 
     _applyShadowClasses(shadowClasses) {
         for (const className of SHADOW_CLASS_NAMES) {
-            this._shadowFactory.set_params(className, true, this._deserializeShadowParams(shadowClasses, className, SHADOW_STATES.focused));
-            this._shadowFactory.set_params(className, false, this._deserializeShadowParams(shadowClasses, className, SHADOW_STATES.unfocused));
+            this._shadowFactory.set_params(
+                className,
+                true,
+                this._deserializeShadowParams(shadowClasses, className, SHADOW_STATES.focused)
+            );
+            this._shadowFactory.set_params(
+                className,
+                false,
+                this._deserializeShadowParams(shadowClasses, className, SHADOW_STATES.unfocused)
+            );
         }
     }
 
@@ -94,11 +102,11 @@ class UserShadowsExtension {
         const params = safeGet(shadowClasses, className, stateIndex);
         const fallbackParams = (FALLBACK_SHADOW_CLASSES[className] || FALLBACK_SHADOW_CLASSES.normal)[stateIndex];
         return new Meta.ShadowParams({
-            'radius': this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.radius),
-            'top_fade': this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.topFade),
-            'x_offset': this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.xOffset),
-            'y_offset': this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.yOffset),
-            'opacity': this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.opacity),
+            radius: this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.radius),
+            top_fade: this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.topFade),
+            x_offset: this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.xOffset),
+            y_offset: this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.yOffset),
+            opacity: this._deserializeShadowParam(params, fallbackParams, SHADOW_PARAMS.opacity),
         });
     }
 
