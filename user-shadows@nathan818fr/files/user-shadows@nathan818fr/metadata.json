@@ -1,10 +1,8 @@
 {
-    "uuid": "user-shadows@nathan818fr",
-    "name": "User Shadows",
-    "description": "Customize the shadows of cinnamon windows",
-    "author": "Nathan Poirier <nathan@poirier.io>",
-    "cinnamon-version": [
-        "4.8"
-    ],
-    "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/user-shadows%40nathan818fr"
+  "uuid": "user-shadows@nathan818fr",
+  "name": "User Shadows",
+  "description": "Customize the shadows of cinnamon windows",
+  "author": "Nathan Poirier <nathan@poirier.io>",
+  "cinnamon-version": ["4.8", "5.0", "5.2", "5.4", "5.6"],
+  "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/user-shadows%40nathan818fr"
 }

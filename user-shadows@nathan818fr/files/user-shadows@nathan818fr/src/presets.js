@@ -1,4 +1,4 @@
-const { SHADOW_CLASS_NAMES } = require('src/constants');
+const {SHADOW_CLASS_NAMES} = require('src/constants');
 
 function getPresets() {
     return {
@@ -6,16 +6,40 @@ function getPresets() {
         'no-shadow': all([1, 0, 0, 0, 0], [1, 0, 0, 0, 0]),
 
         'arc-theme-dark': {
-            'normal':           [[ 7, -1,  0,  7,  89], [ 4, -1,  0,  4,  89]],
-            'dialog':           [[ 7, -1,  0,  7,  89], [ 4, -1,  0,  4,  89]],
-            'modal_dialog':     [[ 7, -1,  0,  7,  89], [ 4, -1,  0,  4,  89]],
-            'border':           [[ 7, -1,  0,  7,  89], [ 4, -1,  0,  4,  89]],
+            normal: [
+                [7, -1, 0, 7, 89],
+                [4, -1, 0, 4, 89],
+            ],
+            dialog: [
+                [7, -1, 0, 7, 89],
+                [4, -1, 0, 4, 89],
+            ],
+            modal_dialog: [
+                [7, -1, 0, 7, 89],
+                [4, -1, 0, 4, 89],
+            ],
+            border: [
+                [7, -1, 0, 7, 89],
+                [4, -1, 0, 4, 89],
+            ],
         },
         'arc-theme-light': {
-            'normal':           [[ 7, -1,  0,  7,  51], [ 4, -1,  0,  4,  51]],
-            'dialog':           [[ 7, -1,  0,  7,  51], [ 4, -1,  0,  4,  51]],
-            'modal_dialog':     [[ 7, -1,  0,  7,  51], [ 4, -1,  0,  4,  51]],
-            'border':           [[ 7, -1,  0,  7,  51], [ 4, -1,  0,  4,  51]],
+            normal: [
+                [7, -1, 0, 7, 51],
+                [4, -1, 0, 4, 51],
+            ],
+            dialog: [
+                [7, -1, 0, 7, 51],
+                [4, -1, 0, 4, 51],
+            ],
+            modal_dialog: [
+                [7, -1, 0, 7, 51],
+                [4, -1, 0, 4, 51],
+            ],
+            border: [
+                [7, -1, 0, 7, 51],
+                [4, -1, 0, 4, 51],
+            ],
         },
 
         // TODO: Add Windows 10, mac OS, etc
@@ -30,4 +54,4 @@ function all(focused, unfocused) {
     return ret;
 }
 
-module.exports = { getPresets };
+module.exports = {getPresets};
