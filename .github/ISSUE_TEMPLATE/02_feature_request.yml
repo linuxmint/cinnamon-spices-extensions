@@ -55,6 +55,6 @@ body:
   type: markdown
 description: "If you have a feature request \U0001F4A1"
 labels:
-- feature request
+- FEATURE REQUEST
 name: "\U0001F680 Extension Feature Request"
 title: Extension Feature Request
