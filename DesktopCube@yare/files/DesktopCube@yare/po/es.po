@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"PO-Revision-Date: 2023-11-03 13:11-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Escritorio de cubo"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Animación Compiz Cube para cambiar de espacio de trabajo"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "General"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Duración de la animación"
+
+#. settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Distancia de separación de la pantalla"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efectos"
+
+#. settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Efecto de alejamiento de pantalla"
+
+#. settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Efecto de acercamineto de la pantalla"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Efecto de inicio de rotación"
+
+#. settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Efecto fin de rotación"
+
+#. settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Configuración del sistema"
+
+#. settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Abrir la configuración de Cinnamon para gestionar los espacios de trabajo"
