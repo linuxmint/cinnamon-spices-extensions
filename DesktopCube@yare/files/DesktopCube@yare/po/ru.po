@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-06 01:55+0200\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2023-12-03 14:51-0500\n"
 "Last-Translator: blogdron\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -43,7 +43,7 @@ msgstr "Эффект отстранения"
 
 #. settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
-msgstr "Эффект   втягивания"
+msgstr "Эффект втягивания"
 
 #. settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
