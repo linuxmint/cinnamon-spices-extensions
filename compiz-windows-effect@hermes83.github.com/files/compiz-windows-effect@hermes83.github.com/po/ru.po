@@ -19,7 +19,7 @@ msgstr "Эффект окон Compiz (Compiz windows effect)"
 
 #. metadata.json->description
 msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
-msgstr "Эффект желейных окон как в плагине для Compiz"
+msgstr "Эффект вязких окон как в плагине для Compiz"
 
 #. settings-schema.json->friction->description
 msgid "Friction"
