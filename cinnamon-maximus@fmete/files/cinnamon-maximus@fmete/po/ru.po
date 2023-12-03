@@ -11,6 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
 
 #. metadata.json->name
 msgid "Cinnamon Maximus"
@@ -18,7 +19,7 @@ msgstr ""
 
 #. metadata.json->description
 msgid "Undecorate windows as you like."
-msgstr "Убрать декорации у развёрнутых окон"
+msgstr "Убрать декорации у развёрнутых окон."
 
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
@@ -37,18 +38,17 @@ msgid "Undecorate when tile"
 msgstr "Убрать декорации если она расположенны плиткой"
 
 #. settings-schema.json->undecorateAll->description
-msgid ""
-"Undecorate All Windows (Experimental, please close and re-open all windows)"
-msgstr "Убрать декорации Всех Окон (Экспериментальная функция, нужно закрыть "
-"и открыть заново все окна)"
+msgid "Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Убрать декорации Всех Окон (Экспериментальная функция, нужно закрыть и открыть "
+"заново все окна)"
 
 #. settings-schema.json->useIgnoreList->description
 msgid "Use Ignoring List"
 msgstr "Список игнорируемых окон"
 
 #. settings-schema.json->ignoreAppsList->description
-msgid ""
-"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgid "Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
 msgstr ""
 "Игнорировать Приложения (используйте \",\" для разделения имён,частичное совпадение "
 "и регулярные выражения поддерживаются)"
@@ -59,12 +59,11 @@ msgstr "Использовать Аатоматическое скрытие д�
 
 #. settings-schema.json->autoUndecorAppsList->description
 msgid ""
-"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
-"regexp allowed)"
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp "
+"allowed)"
 msgstr ""
-"Автоматическое скрытие декорации окон приложений "
-"(используйте \",\" для разделения имён,частичное совпадение "
-"и регулярные выражения поддерживаются)"
+"Автоматическое скрытие декорации окон приложений (используйте \",\" для разделения "
+"имён,частичное совпадение и регулярные выражения поддерживаются)"
 
 #. settings-schema.json->keepQTAppsFocus->description
 msgid "Keep the focus for QT Apps (Experimental)"
