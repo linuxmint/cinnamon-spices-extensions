@@ -42,7 +42,7 @@ msgstr "миллисекунд"
 #. settings-schema.json->beginEffect->description
 #. settings-schema.json->endEffect->description
 msgid "Effect"
-msgstr "Эффект "
+msgstr "Эффект"
 
 #. settings-schema.json->h2->description
 msgid "End of Drag"
