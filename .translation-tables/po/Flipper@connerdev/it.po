@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:44+0000\n"
+"PO-Revision-Date: 2022-06-03 11:05+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr "Flipper"
+
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "Estensione di commutazione di area di lavoro elaborata"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Generale"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Durata animazione"
+
+#. settings-schema.json->pullaway->description
+msgid "Zoom Amount"
+msgstr "Quantità di Zoom"
+
+#. settings-schema.json->fade->description
+msgid "Fade Transition"
+msgstr "Dissolvenza Transizione"
+
+#. settings-schema.json->dim_factor->description
+msgid "Background Dim Amount"
+msgstr "Quantità Dimensione Sfondo"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Effetti"
+
+#. settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "Effetto Transizione"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr "Cubo"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr "Deck"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr "Capovolgi"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr "Pop"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr "Rolodex"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr "Slide"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr "Stack"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Transition Easing"
+msgstr "Agevolazione della Transizione"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr "Indietro"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr "Rimbalzo"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr "Circ"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr "Cubic"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr "Cubic-Back"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr "Cubic-Bounce"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr "Cubic-Elastic"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr "Elastico"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr "Expo"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr "Sine"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr "Quad"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr "Quart"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr "Quint"
+
+#. settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "Includi Sfondo"

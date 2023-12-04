@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Marcelo Aof, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 21:31+0000\n"
+"PO-Revision-Date: 2021-09-24 13:08-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. metadata.json->name
+msgid "Opacify Windows"
+msgstr "Janelas transparentes"
+
+#. metadata.json->description
+msgid "Fade out the current window that the user is resizing or dragging."
+msgstr ""
+"Enxergue a janela atual com transparência ao movê-la ou redimensioná-la."
+
+#. settings-schema.json->opacity->description
+msgid "Opacity"
+msgstr "Opacidade"
+
+#. settings-schema.json->h1->description
+msgid "Start of Drag"
+msgstr "Início do movimento da janela"
+
+#. settings-schema.json->beginTime->description
+#. settings-schema.json->endTime->description
+msgid "Transition time"
+msgstr "Tempo de transição"
+
+#. settings-schema.json->beginTime->units
+#. settings-schema.json->endTime->units
+msgid "milliseconds"
+msgstr "milissegundos"
+
+#. settings-schema.json->beginEffect->description
+#. settings-schema.json->endEffect->description
+msgid "Effect"
+msgstr "Efeito"
+
+#. settings-schema.json->h2->description
+msgid "End of Drag"
+msgstr "Fim do movimento da janela"
