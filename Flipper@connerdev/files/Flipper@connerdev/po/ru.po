@@ -1,0 +1,138 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:44+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr ""
+
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "Прикольное переключение рабочих столов"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Общие"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Продолжительность Анимации"
+
+#. settings-schema.json->pullaway->description
+msgid "Zoom Amount"
+msgstr "Величина Масштабирования"
+
+#. settings-schema.json->fade->description
+msgid "Fade Transition"
+msgstr "Затухание"
+
+#. settings-schema.json->dim_factor->description
+msgid "Background Dim Amount"
+msgstr "Значение Тусклости Фона"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Эффекты"
+
+#. settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "Эффект Перехода"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr ""
+
+#. settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr ""
+
+#. settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr ""
+
+#. settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr ""
+
+#. settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr ""
+
+#. settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr ""
+
+#. settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->description
+msgid "Transition Easing"
+msgstr "Плавность Перехода"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr ""
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr ""
+
+#. settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "Задействовать Фон"
