@@ -10,15 +10,14 @@
   "sideEffects": false,
   "license": "MIT",
   "author": "Attila Greguss",
-  "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
+    "@ci-types/cjs": "5.4.3",
     "babel-loader": "^8.2.2",
     "ts-loader": "^9.2.3",
     "typescript": "4.6.4",
-    "webpack": "^5.42.0",
+    "webpack": "^5.89.0",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2",
-    "@ci-types/cjs": "5.4.3"
+    "webpack-cli": "^4.7.2"
   }
 }
