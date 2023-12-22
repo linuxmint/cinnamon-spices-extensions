@@ -56,6 +56,7 @@ export const move_resize_window = (metaWindow: imports.gi.Meta.Window | null, x:
     // }
 
     metaWindow.move_resize_frame(true, x, y, width, height);
+    metaWindow.move_frame(true, x, y); // forces move for windows like terminal that only resize from above command
 }
 
 export const get_window_center = (window: imports.gi.Meta.Window): [pos_x: number, pos_y: number] => {
