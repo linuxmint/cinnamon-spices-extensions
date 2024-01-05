@@ -76,8 +76,7 @@ MyExtension.prototype = {
 		this.settings.bind("panel-bottom", "enable_position_bottom", this.on_settings_changed);
 		this.settings.bind("panel-left", "enable_position_left", this.on_settings_changed);
 
-		this._signals.connect(Main.layoutManager, 'monitors-changed', () => this.on_state_change(-1), this);
-
+		this._signals.connect(Main.layoutManager, 'monitors-changed', this.on_monitors_changed, this);
 		this._classname = this.theme_defined ? this.transparency_type : this.transparency_type + INTERNAL_PREFIX;
 
 		Gettext.bindtextdomain(meta.uuid, GLib.get_home_dir() + "/.local/share/locale");
@@ -159,6 +158,19 @@ MyExtension.prototype = {
 
 		this._update_filter();
 
+		this.on_state_change(-1);
+	},
+
+	on_monitors_changed: function () {
+		Main.getPanels().forEach(panel => this.make_transparent(panel, false));
+
+		this._panel_status = new Array(Main.panelManager.panelCount);
+		for(let i = 0; i < this._panel_status.length; i++)
+			this._panel_status[i] = false;
+
+		this.policy.disable();
+		this.policy = new Policies.MaximizedPolicy(this);
+		this.policy.enable();
 		this.on_state_change(-1);
 	},
 
