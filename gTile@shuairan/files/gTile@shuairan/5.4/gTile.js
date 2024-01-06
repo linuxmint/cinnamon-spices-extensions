@@ -40,9 +40,9 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "disable": () => (/* binding */ disable),
-  "enable": () => (/* binding */ enable),
-  "init": () => (/* binding */ init)
+  disable: () => (/* binding */ disable),
+  enable: () => (/* binding */ enable),
+  init: () => (/* binding */ init)
 });
 
 ;// CONCATENATED MODULE: ../base/ui/GridSettingsButton.ts
@@ -1493,6 +1493,7 @@ const move_resize_window = (metaWindow, x, y, width, height) => {
     if (!metaWindow)
         return;
     metaWindow.move_resize_frame(true, x, y, width, height);
+    metaWindow.move_frame(true, x, y);
 };
 const get_window_center = (window) => {
     const pos_x = window.get_frame_rect().width / 2 + window.get_frame_rect().x;

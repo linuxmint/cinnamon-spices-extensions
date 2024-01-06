@@ -27,6 +27,7 @@ const Panel = imports.ui.panel;
 const Settings = imports.ui.settings;
 const St = imports.gi.St;
 const Util = imports.misc.util;
+const SignalManager = imports.misc.signalManager;
 
 let Filter, Policies;
 if (typeof require !== 'undefined') {
@@ -57,7 +58,7 @@ function MyExtension(meta) {
 MyExtension.prototype = {
 	_init: function (meta) {
 		this.meta = meta;
-		this._signals = null;
+		this._signals = new SignalManager.SignalManager(null);
 		this._panel_status = new Array(Main.panelManager.panelCount);
 		for(let i = 0; i < this._panel_status.length; i++)
 			this._panel_status[i] = false;
@@ -75,6 +76,7 @@ MyExtension.prototype = {
 		this.settings.bind("panel-bottom", "enable_position_bottom", this.on_settings_changed);
 		this.settings.bind("panel-left", "enable_position_left", this.on_settings_changed);
 
+		this._signals.connect(Main.layoutManager, 'monitors-changed', this.on_monitors_changed, this);
 		this._classname = this.theme_defined ? this.transparency_type : this.transparency_type + INTERNAL_PREFIX;
 
 		Gettext.bindtextdomain(meta.uuid, GLib.get_home_dir() + "/.local/share/locale");
@@ -94,6 +96,8 @@ MyExtension.prototype = {
 		this.policy.disable();
 		this.settings.finalize();
 		this.settings = null;
+		this._signals.disconnectAllSignals();
+		this._signals = null;
 
 		Main.getPanels().forEach(panel => this.make_transparent(panel, false));
 	},
@@ -154,6 +158,19 @@ MyExtension.prototype = {
 
 		this._update_filter();
 
+		this.on_state_change(-1);
+	},
+
+	on_monitors_changed: function () {
+		Main.getPanels().forEach(panel => this.make_transparent(panel, false));
+
+		this._panel_status = new Array(Main.panelManager.panelCount);
+		for(let i = 0; i < this._panel_status.length; i++)
+			this._panel_status[i] = false;
+
+		this.policy.disable();
+		this.policy = new Policies.MaximizedPolicy(this);
+		this.policy.enable();
 		this.on_state_change(-1);
 	},
 
