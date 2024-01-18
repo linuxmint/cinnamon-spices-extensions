@@ -1,6 +1,4 @@
 # Cinnamon Dynamic Wallpaper
-<img src="cinnamon-dynamic-wallpaper@TobiZog/5.4/icons/icon.svg" alt="drawing" width="200" style="margin-left:auto; margin-right:auto; width:50%; display:block"/>
-
 ## About the project
 This extension switches the background image of your Cinnamon desktop multiple times in a day, based on a location or custom time periods. You can choose between included image-sets, your own HEIC-file or a source folder with single images. Configuration through a user-friendly configuration window.
 
@@ -20,11 +18,6 @@ This extension switches the background image of your Cinnamon desktop multiple t
 - 5.6 (Mint 21.1)
 - 5.8 (Mint 21.2)
 - 6.0 (Mint 21.3)
-
-#### Only supported with version 1.x
-- 4.8 (Mint 20.1)
-- 5.0 (Mint 20.2)
-- 5.2 (Mint 20.3)
 
 ### Technology
 - `JavaScript`
