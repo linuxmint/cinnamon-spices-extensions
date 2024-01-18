@@ -1,3 +1,14 @@
+# Version 2.0
+- New App icon
+- Preferences window redesign - All settings are now in one window accessable!
+- Graphic visualizing of the time periods of a day with a bar chart
+- Adding custom time periods by user choice
+- Adding folder as image source
+- Option to display image on lock screens
+- Bugfixes
+- Remove support for Cinnamon 5.2 and older
+- Apply and OK button to test settings without closing the window
+
 # Version 1.4
 - Log System
 - Bugfixes
