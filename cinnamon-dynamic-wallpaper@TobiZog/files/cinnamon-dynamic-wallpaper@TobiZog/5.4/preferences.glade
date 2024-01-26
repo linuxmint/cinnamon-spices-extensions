@@ -107,8 +107,8 @@
   <object class="GtkWindow" id="window_main">
     <property name="can-focus">False</property>
     <property name="window-position">center</property>
-    <property name="default-width">1024</property>
-    <property name="default-height">400</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
     <property name="icon">../icon.svg</property>
     <property name="gravity">center</property>
     <signal name="destroy" handler="on_destroy" swapped="no"/>
@@ -167,7 +167,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="img_tb_image_set">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">applications-graphics</property>
@@ -217,7 +217,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="img_tb_heic_file">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">preferences-desktop-wallpaper</property>
@@ -267,7 +267,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="img_tb_source_folder">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">folder-open</property>
@@ -585,7 +585,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_0">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -598,7 +597,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_2">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -611,7 +609,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_4">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -624,7 +621,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_6">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -637,7 +633,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_8">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -732,7 +727,6 @@
                     <property name="column-homogeneous">True</property>
                     <child>
                       <object class="GtkImage" id="img_period_1">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -745,7 +739,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_9">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -758,7 +751,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_7">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -771,7 +763,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_5">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -784,7 +775,6 @@
                     </child>
                     <child>
                       <object class="GtkImage" id="img_period_3">
-                        <property name="width-request">200</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="stock">gtk-missing-image</property>
@@ -992,7 +982,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="img_tb_network_location">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">network-wireless</property>
@@ -1042,7 +1032,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="img_tb_custom_location">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">preferences-desktop-keyboard</property>
@@ -1094,7 +1084,7 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">4</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkImage" id="img_tb_time_periods">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="icon-name">document-open-recent</property>
