@@ -5,7 +5,7 @@
   },
   "picture_aspect": {
     "type": "generic",
-    "default": "Scaled"
+    "default": "scaled"
   },
   "dynamic_background_color": {
     "type": "generic",

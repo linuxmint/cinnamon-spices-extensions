@@ -33,9 +33,6 @@ const PATH = DIRECTORY.path;
 // The extension object
 let extension;
 
-// Time and date of the last location update
-let lastLocationUpdate = -1
-
 // Loop state
 let looping = true
 
