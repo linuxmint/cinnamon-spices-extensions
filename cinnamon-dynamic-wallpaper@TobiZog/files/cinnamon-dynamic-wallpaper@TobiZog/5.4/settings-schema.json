@@ -1,317 +1,130 @@
 {
-	"layout": {
-		"type": "layout",
-		"pages": [
-			"pg_config",
-			"pg_logs",
-			"pg_about"
-		],
-
-
-
-		"pg_config": {
-			"type": "page",
-			"title": "Configuration",
-			"sections": [
-				"sec_image_configuration",
-				"sec_location",
-				"sec_times"
-			]
-		},
-		"pg_logs": {
-			"type": "page",
-			"title": "Debugging",
-			"sections": [
-				"sec_logs",
-				"sec_report_issue"
-			]
-		},
-		"pg_about": {
-			"type": "page",
-			"title": "About",
-			"sections": [
-				"sec_project",
-				"sec_github"
-			]
-		},
-
-
-
-		"sec_image_configuration": {
-			"type": "section",
-			"title": "Image set",
-			"keys": [
-				"lb_image_configuration",
-				"btn_config_images",
-				"sw_image_stretch"
-			]
-		},
-		"sec_location": {
-			"type": "section",
-			"title": "Location estimation",
-			"keys": [
-				"sw_auto_location",
-				"sc_location_refresh_time",
-				"etr_last_update",
-				"etr_latitude",
-				"etr_longitude"
-			]
-		},		
-		"sec_times": {
-			"type": "section",
-			"title": "Time periods",
-			"keys": [
-				"tv_times"
-			]
-		},
-
-
-		"sec_logs": {
-			"type": "section",
-			"title": "Logs",
-			"keys": [
-				"tv_log_description",
-				"tv_logs"
-			]
-		},
-		"sec_report_issue": {
-			"type": "section",
-			"title": "Report an issue",
-			"keys": [
-				"lb_report_issue",
-				"btn_report_issue"
-			]
-		},
-
-
-		"sec_project": {
-			"type": "section",
-			"title": "About the project",
-			"keys": [
-				"lb_about",
-				"lb_author",
-				"lb_spices",
-				"btn_spices"
-			]
-		},
-		"sec_github": {
-			"type": "section",
-			"title": "Source Code on GitHub",
-			"keys": [
-				"lb_repository",
-				"btn_open_repository"
-			]
-		}
-	},
-
-
-
-	"lb_image_configuration": {
-		"type": "label",
-		"description": "Choose an included image set or import a heic-file with the Image Configurator"
-	},
-	"btn_config_images": {
-		"type": "button",
-		"description": "Image Configurator",
-		"callback": "openImageConfigurator"
-	},
-	"sw_image_stretch": {
-		"type": "switch",
-		"description": "Expand image over all displays",
-		"default": false
-	},
-
-	"sw_auto_location": {
-		"type": "switch",
-		"default": true,
-		"description": "Estimate coordinates via network"
-	},
-	"sc_location_refresh_time": {
-		"type": "scale",
-		"default": 15,
-		"min": 5,
-		"max": 60,
-		"step": 5,
-		"description": "Interval time to refresh the location via network (min)",
-		"dependency": "sw_auto_location"
-	},
-	"etr_last_update": {
-		"type": "entry",
-		"description": "Last location update",
-		"default": "",
-		"dependency": "sw_auto_location"
-	},
-	"etr_latitude": {
-		"type": "entry",
-		"default": "",
-		"description": "Latitude",
-		"dependency": "!sw_auto_location"
-	},
-	"etr_longitude": {
-		"type": "entry",
-		"default": "",
-		"description": "Longitude",
-		"dependency": "!sw_auto_location"
-	},
-	
-	"tv_times": {
-		"type": "textview",
-		"description": "Time sections today",
-		"default": ""
-	},
-
-	
-	"tv_log_description": {
-		"type": "label",
-		"description": "Logs contains informations about time, date and successful or failed operations of the extension.",
-		"default": ""
-	},
-	"tv_logs": {
-		"type": "textview",
-		"description": "See all logs",
-		"default": ""
-	},
-
-	"lb_report_issue": {
-		"type": "label",
-		"description": "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue. If you find an error message in the logs above, add it to the issue report."
-	},
-	"btn_report_issue": {
-		"type": "button",
-		"description": "Submit an Issue",
-		"callback": "openIssueWebsite"
-	},
-
-
-	"lb_about": {
-		"type": "label",
-		"description": "Based on a location, this extension calculates the periods of a day and switch the background image of your Cinnamon desktop. The extension offers the choice between a set of predownloaded wallpapers or to select a custom set of images."
-	},
-	"lb_author": {
-		"type": "label",
-		"description": "Developed by TobiZog"
-	},
-	"lb_spices": {
-		"type": "label",
-		"description": "If you want more information or rate the extension, you can visit the site Cinnamon Spices Website."
-	},
-	"btn_spices": {
-		"type": "button",
-		"description": "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website",
-		"callback": "openSpicesWebsite"
-	},
-
-	"lb_repository": {
-		"type": "label",
-		"description": "This project is Open Source. You can visit the whole source code of this extension on GitHub"
-	},
-	"btn_open_repository": {
-		"type": "button",
-		"description": "Open the Repository",
-		"callback": "openRepoWebsite"
-	},
-
-	
-
-
-	"etr_choosen_image_set": {
-		"type": "entry",
-		"default": "lakeside",
-		"description": ""
-	},
-	"etr_img_morning_twilight": {
-		"type": "entry",
-		"default": "1.jpg",
-		"description": ""
-	},
-	"etr_img_sunrise": {
-		"type": "entry",
-		"default": "2.jpg",
-		"description": ""
-	},
-	"etr_img_morning": {
-		"type": "entry",
-		"default": "3.jpg",
-		"description": ""
-	},
-	"etr_img_noon": {
-		"type": "entry",
-		"default": "4.jpg",
-		"description": ""
-	},
-	"etr_img_afternoon": {
-		"type": "entry",
-		"default": "5.jpg",
-		"description": ""
-	},
-	"etr_img_evening": {
-		"type": "entry",
-		"default": "6.jpg",
-		"description": ""
-	},
-	"etr_img_sunset": {
-		"type": "entry",
-		"default": "7.jpg",
-		"description": ""
-	},
-	"etr_img_night_twilight": {
-		"type": "entry",
-		"default": "8.jpg",
-		"description": ""
-	},
-	"etr_img_night": {
-		"type": "entry",
-		"default": "9.jpg",
-		"description": ""
-	},
-	"first_start": {
-		"type": "generic",
-		"default": true
-	},
-
-	"etr_morning_twilight_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_sunrise_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_morning_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_noon_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_afternoon_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_evening_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_sunset_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_night_twilight_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	},
-	"etr_night_times": {
-		"type": "entry",
-		"default": "",
-		"description": ""
-	}
+  "first_start": {
+    "type": "generic",
+    "default": true
+  },
+  "picture_aspect": {
+    "type": "generic",
+    "default": "scaled"
+  },
+  "dynamic_background_color": {
+    "type": "generic",
+    "default": true
+  },
+  "image_source": {
+    "type": "generic",
+    "default": "image_set"
+  },
+  "selected_image_set": {
+    "type": "generic",
+    "default": "lakeside"
+  },
+  "source_folder": {
+    "type": "generic",
+    "default": ""
+  },
+  "period_0_image": {
+    "type": "generic",
+    "default": "9.jpg"
+  },
+  "period_1_image": {
+    "type": "generic",
+    "default": "1.jpg"
+  },
+  "period_2_image": {
+    "type": "generic",
+    "default": "2.jpg"
+  },
+  "period_3_image": {
+    "type": "generic",
+    "default": "3.jpg"
+  },
+  "period_4_image": {
+    "type": "generic",
+    "default": "4.jpg"
+  },
+  "period_5_image": {
+    "type": "generic",
+    "default": "5.jpg"
+  },
+  "period_6_image": {
+    "type": "generic",
+    "default": "6.jpg"
+  },
+  "period_7_image": {
+    "type": "generic",
+    "default": "7.jpg"
+  },
+  "period_8_image": {
+    "type": "generic",
+    "default": "8.jpg"
+  },
+  "period_9_image": {
+    "type": "generic",
+    "default": "9.jpg"
+  },
+  "period_source": {
+    "type": "generic",
+    "default": "network_location"
+  },
+  "location_refresh_intervals": {
+    "type": "generic",
+    "default": 15
+  },
+  "latitude_auto": {
+    "type": "generic",
+    "default": 0
+  },
+  "longitude_auto": {
+    "type": "generic",
+    "default": 0
+  },
+  "latitude_custom": {
+    "type": "generic",
+    "default": 0
+  },
+  "longitude_custom": {
+    "type": "generic",
+    "default": 0
+  },
+  "period_0_custom_start_time": {
+    "type": "generic",
+    "default": "00:00"
+  },
+  "period_1_custom_start_time": {
+    "type": "generic",
+    "default": "05:00"
+  },
+  "period_2_custom_start_time": {
+    "type": "generic",
+    "default": "07:00"
+  },
+  "period_3_custom_start_time": {
+    "type": "generic",
+    "default": "09:00"
+  },
+  "period_4_custom_start_time": {
+    "type": "generic",
+    "default": "11:00"
+  },
+  "period_5_custom_start_time": {
+    "type": "generic",
+    "default": "13:00"
+  },
+  "period_6_custom_start_time": {
+    "type": "generic",
+    "default": "15:00"
+  },
+  "period_7_custom_start_time": {
+    "type": "generic",
+    "default": "17:00"
+  },
+  "period_8_custom_start_time": {
+    "type": "generic",
+    "default": "19:00"
+  },
+  "period_9_custom_start_time": {
+    "type": "generic",
+    "default": "21:00"
+  }
 }
