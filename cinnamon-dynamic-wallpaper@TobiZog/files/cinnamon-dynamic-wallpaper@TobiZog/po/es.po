@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 10:39-0500\n"
-"PO-Revision-Date: 2024-02-04 13:26-0300\n"
+"POT-Creation-Date: 2024-02-04 11:42-0500\n"
+"PO-Revision-Date: 2024-02-04 11:43-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -27,5 +26,8 @@ msgid "Cinnamon Dynamic Wallpaper"
 msgstr "Fondo de pantalla dinámico de Cinnamon"
 
 #. metadata.json->description
-msgid "Cinnamon extension for dynamic desktop backgrounds based on time and location"
-msgstr "Extensión de Cinnamon para fondos de pantalla dinámicos según la hora y la ubicación"
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr ""
+"Extensión de Cinnamon para fondos de pantalla dinámicos según la hora y la "
+"ubicación"
