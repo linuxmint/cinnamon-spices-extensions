@@ -71,6 +71,10 @@
     "type": "generic",
     "default": 15
   },
+  "network_location_provider": {
+    "type": "generic",
+    "default": "geojs.io"
+  },
   "latitude_auto": {
     "type": "generic",
     "default": 0
