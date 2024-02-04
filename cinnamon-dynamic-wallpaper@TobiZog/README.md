@@ -7,11 +7,11 @@ This extension switches the background image of your Cinnamon desktop multiple t
 - 10 day periods
 - HEIF converter
 - Image configuration assistent with simple one-click setup for image choices
-- Online location estimation or offline with manual latitude and longitude input
+- Online location estimation (three provider) or offline with manual latitude and longitude input
 - Time periods individual configured by user
 - Offline sun angles estimation
 - Image stretching over multiple displays or repeat image for every display
-- Show image on lock screen
+- Creating a color gradient based on the current wallpaper for images which not fill the whole screen
 
 ### Tested Cinnamon versions
 - 5.4 (Mint 21)
@@ -37,7 +37,7 @@ This extension switches the background image of your Cinnamon desktop multiple t
 3. Search and download it
 
 ### From the repo
-1. Download the Repository
+1. Download the latest from the Releases page on GitHub: https://github.com/TobiZog/cinnamon-dynamic-wallpaper/releases
 2. Extract the files
 3. Copy the folder `cinnamon-dynamic-wallpaper@TobiZog` to `~/.local/share/cinnamon/extensions/`
 ---

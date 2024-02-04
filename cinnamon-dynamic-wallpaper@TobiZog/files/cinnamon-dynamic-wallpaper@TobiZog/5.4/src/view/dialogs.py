@@ -32,18 +32,17 @@ class Dialogs(Gtk.Window):
     dialog.set_default_size(800, 400)
 
     response = dialog.run()
+    location = ""
 
     if response == Gtk.ResponseType.OK:
       location = dialog.get_filename()
-    elif response == Gtk.ResponseType.CANCEL:
-      location = ""
 
     dialog.destroy()
 
     return location
   
   
-  def message_dialog(self, message: str):
+  def message_dialog(self, message: str, type: Gtk.MessageType = Gtk.MessageType.INFO):
     """ Displaying a Gtk Message dialog to the user
 
     Args:
@@ -52,7 +51,7 @@ class Dialogs(Gtk.Window):
     dialog = Gtk.MessageDialog(
       transient_for=self,
       flags=0,
-      message_type=Gtk.MessageType.INFO,
+      message_type=type,
       buttons=Gtk.ButtonsType.OK,
       text=message
     )
