@@ -10,10 +10,6 @@ class Suntimes:
   """
   def __init__(self) -> None:
     """ Initialization
-
-    Args:
-        latitude (float): Latitude of the position
-        longitude (float): Longitude of the position
     """
     self.today = datetime.now()
 

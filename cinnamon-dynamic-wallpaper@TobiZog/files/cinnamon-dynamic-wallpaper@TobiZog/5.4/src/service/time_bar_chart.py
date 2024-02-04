@@ -39,7 +39,7 @@ class Time_Bar_Chart:
     self.image_code.insert(0, '<svg xmlns="http://www.w3.org/2000/svg" width="%s" height="%s">' % (image_width, image_height))
     self.image_code.append('</svg>')
     
-    file = open(save_location + "/time_bar_polylines.svg", "w")
+    file = open(save_location, "w")
     for i in self.image_code:
       file.write(i + '\n')
 
@@ -63,7 +63,7 @@ class Time_Bar_Chart:
     self.image_code.insert(0, '<svg xmlns="http://www.w3.org/2000/svg" width="%s" height="%s">' % (image_width, image_height))
     self.image_code.append('</svg>')
     
-    file = open(save_location + "/time_bar.svg", "w")
+    file = open(save_location, "w")
     for i in self.image_code:
       file.write(i + '\n')
 
