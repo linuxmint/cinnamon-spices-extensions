@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 11:42-0500\n"
-"PO-Revision-Date: 2024-02-04 11:43-0500\n"
+"POT-Creation-Date: 2024-02-04 13:24-0500\n"
+"PO-Revision-Date: 2024-02-04 22:02-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -31,3 +31,315 @@ msgid ""
 msgstr ""
 "Extensión de Cinnamon para fondos de pantalla dinámicos según la hora y la "
 "ubicación"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "Fuente de la imagen"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "Conjunto de imágenes"
+
+#: 5.4/res/preferences.glade:236
+msgid "HEIC file"
+msgstr "Archivo HEIC"
+
+#: 5.4/res/preferences.glade:286
+msgid "Source Folder"
+msgstr "Carpeta de origen"
+
+#: 5.4/res/preferences.glade:336
+msgid "Select an image set"
+msgstr "Seleccione un conjunto de imágenes"
+
+#: 5.4/res/preferences.glade:379
+msgid "Select a heic file to import"
+msgstr "Seleccione un archivo heic para importar"
+
+#: 5.4/res/preferences.glade:430
+msgid "Select a source folder"
+msgstr "Seleccione una carpeta de origen"
+
+#: 5.4/res/preferences.glade:440
+msgid "Open file selection dialog"
+msgstr "Abrir cuadro de diálogo de selección de archivos"
+
+#: 5.4/res/preferences.glade:464 5.4/res/preferences.glade:1248
+msgid "label"
+msgstr "etiqueta"
+
+#: 5.4/res/preferences.glade:492
+msgid "Image Selection"
+msgstr "Selección de imagen"
+
+#: 5.4/res/preferences.glade:520
+msgid "00:00 - 00:59"
+msgstr "00:00 - 00:59"
+
+#: 5.4/res/preferences.glade:534
+msgid "02:00 - 02:59"
+msgstr "02:00 - 02:59"
+
+#: 5.4/res/preferences.glade:548
+msgid "04:00 - 04:59"
+msgstr "02:00 - 02:59"
+
+#: 5.4/res/preferences.glade:562
+msgid "06:00 - 06:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:576
+msgid "08:00 - 08:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:792
+msgid "01:00 - 01:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:806
+msgid "03:00 - 03:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:820
+msgid "05:00 - 05:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:834
+msgid "07:00 - 07:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:848
+msgid "09:00 - 09:59"
+msgstr "06:00 - 06:59"
+
+#: 5.4/res/preferences.glade:930
+msgid "Image Configuration"
+msgstr "Configuración de las imágenes"
+
+#: 5.4/res/preferences.glade:948
+msgid "Period estimation"
+msgstr "Estimación de los periodos"
+
+#: 5.4/res/preferences.glade:1001
+msgid "Use Network Location"
+msgstr "Utilizar la ubicación de la red"
+
+#: 5.4/res/preferences.glade:1051
+msgid "Custom Location"
+msgstr "Ubicación personalizada"
+
+#: 5.4/res/preferences.glade:1103
+msgid "Custom Time Periods"
+msgstr "Periodos de tiempo personalizados"
+
+#: 5.4/res/preferences.glade:1132
+msgid "Location estimation"
+msgstr "Estimación de ubicación"
+
+#: 5.4/res/preferences.glade:1167
+msgid "Interval time to refresh location via network (min)"
+msgstr ""
+"Intervalo de tiempo para actualizar la ubicación a través de la red (min)"
+
+#: 5.4/res/preferences.glade:1212
+msgid "Location provider"
+msgstr "Proveedor de la ubicación"
+
+#: 5.4/res/preferences.glade:1274
+msgid "Latitude"
+msgstr "Latitud"
+
+#: 5.4/res/preferences.glade:1317
+msgid "Longitude"
+msgstr "Longitud"
+
+#: 5.4/res/preferences.glade:1357
+msgid "Period 1"
+msgstr "Periodo 1"
+
+#: 5.4/res/preferences.glade:1371
+msgid "Period 2"
+msgstr "Periodo 2"
+
+#: 5.4/res/preferences.glade:1385
+msgid "Period 3"
+msgstr "Periodo 3"
+
+#: 5.4/res/preferences.glade:1399
+msgid "Period 4"
+msgstr "Periodo 4"
+
+#: 5.4/res/preferences.glade:1413
+msgid "Period 5"
+msgstr "Periodo 5"
+
+#: 5.4/res/preferences.glade:1435 5.4/res/preferences.glade:1532
+#: 5.4/res/preferences.glade:1629 5.4/res/preferences.glade:1724
+#: 5.4/res/preferences.glade:1823 5.4/res/preferences.glade:2055
+#: 5.4/res/preferences.glade:2154 5.4/res/preferences.glade:2253
+#: 5.4/res/preferences.glade:2348
+msgid "23"
+msgstr "23"
+
+#: 5.4/res/preferences.glade:1455 5.4/res/preferences.glade:1552
+#: 5.4/res/preferences.glade:1649 5.4/res/preferences.glade:1744
+#: 5.4/res/preferences.glade:1843 5.4/res/preferences.glade:2075
+#: 5.4/res/preferences.glade:2174 5.4/res/preferences.glade:2273
+#: 5.4/res/preferences.glade:2368
+msgid ":"
+msgstr ":"
+
+#: 5.4/res/preferences.glade:1470 5.4/res/preferences.glade:1567
+#: 5.4/res/preferences.glade:1664 5.4/res/preferences.glade:1759
+#: 5.4/res/preferences.glade:2090 5.4/res/preferences.glade:2189
+#: 5.4/res/preferences.glade:2288 5.4/res/preferences.glade:2383
+msgid "59"
+msgstr "59"
+
+#: 5.4/res/preferences.glade:1486 5.4/res/preferences.glade:1583
+#: 5.4/res/preferences.glade:1680 5.4/res/preferences.glade:1775
+#: 5.4/res/preferences.glade:1874 5.4/res/preferences.glade:2007
+#: 5.4/res/preferences.glade:2106 5.4/res/preferences.glade:2205
+#: 5.4/res/preferences.glade:2304 5.4/res/preferences.glade:2399
+msgid "-"
+msgstr "-"
+
+#: 5.4/res/preferences.glade:1505 5.4/res/preferences.glade:1602
+#: 5.4/res/preferences.glade:1699 5.4/res/preferences.glade:1794
+#: 5.4/res/preferences.glade:1992 5.4/res/preferences.glade:2026
+#: 5.4/res/preferences.glade:2125 5.4/res/preferences.glade:2224
+#: 5.4/res/preferences.glade:2323 5.4/res/preferences.glade:2418
+msgid "00:00"
+msgstr "00:00"
+
+#: 5.4/res/preferences.glade:1858
+msgid "57"
+msgstr "57"
+
+#: 5.4/res/preferences.glade:1893
+msgid "23:59"
+msgstr "23:59"
+
+#: 5.4/res/preferences.glade:1914
+msgid "Period 6"
+msgstr "Periodo 6"
+
+#: 5.4/res/preferences.glade:1928
+msgid "Period 7"
+msgstr "Periodo 7"
+
+#: 5.4/res/preferences.glade:1942
+msgid "Period 9"
+msgstr "Periodo 8"
+
+#: 5.4/res/preferences.glade:1956
+msgid "Period 8"
+msgstr "Periodo 9"
+
+#: 5.4/res/preferences.glade:1970
+msgid "Period 10"
+msgstr "Periodo 10"
+
+#: 5.4/res/preferences.glade:2461
+msgid "Location & Times"
+msgstr "Ubicación y Horarios"
+
+#: 5.4/res/preferences.glade:2480
+msgid "Scaling"
+msgstr "Escalado"
+
+#: 5.4/res/preferences.glade:2519
+msgid "Picture aspect"
+msgstr "Aspecto de la imagen"
+
+#: 5.4/res/preferences.glade:2556
+msgid "Dynamic Background color"
+msgstr "Color de fondo dinámico"
+
+#: 5.4/res/preferences.glade:2593
+msgid "Use dynamic Background color to create a gradient"
+msgstr "Utilice un color de fondo dinámico para crear un degradado"
+
+#: 5.4/res/preferences.glade:2639
+msgid "Behaviour"
+msgstr "Comportamiento"
+
+#: 5.4/res/preferences.glade:2658
+msgid "About the project"
+msgstr "Acerca del proyecto"
+
+#: 5.4/res/preferences.glade:2687
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"Basándose en una ubicación o por elección del usuario, esta extensión "
+"calcula los periodos de un día y cambia la imagen de fondo de su escritorio "
+"Cinnamon. La extensión ofrece como fuentes de imagen un conjunto de fondos "
+"de pantalla preconfigurados, una imagen heic importada por el usuario o una "
+"carpeta personalizada con imágenes individuales."
+
+#: 5.4/res/preferences.glade:2706
+msgid "Developed by TobiZog"
+msgstr "Desarrollado por TobiZog"
+
+#: 5.4/res/preferences.glade:2723
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr ""
+"Si necesita más información o desea valorar la extensión, puede visitar el "
+"sitio web de Cinnamon Spices."
+
+#: 5.4/res/preferences.glade:2734
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr ""
+"Fondo de pantalla dinámico de Cinnamon en el sitio web de Cinnamon Spices"
+
+#: 5.4/res/preferences.glade:2759
+msgid "Source Code"
+msgstr "Código fuente"
+
+#: 5.4/res/preferences.glade:2788
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr ""
+"Este proyecto es de código abierto. Puede echar un vistazo al código fuente "
+"completo de esta extensión en GitHub."
+
+#: 5.4/res/preferences.glade:2799
+msgid "Source Code on GitHub"
+msgstr "Código fuente en GitHub"
+
+#: 5.4/res/preferences.glade:2824
+msgid "Issues and Enhancements"
+msgstr "Problemas y mejoras"
+
+#: 5.4/res/preferences.glade:2853
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue. If you find an error message in the logs above, add it "
+"to the issue report."
+msgstr ""
+"¿Ha encontrado algún problema? ¿O quieres una nueva funcionalidad? Ve al "
+"repositorio de GitHub y crea una nueva incidencia. Si encuentras un mensaje "
+"de error en los registros anteriores, añádelo al informe de incidencias."
+
+#: 5.4/res/preferences.glade:2864
+msgid "Create a new issue on GitHub"
+msgstr "Crear una nueva incidencia en GitHub"
+
+#: 5.4/res/preferences.glade:2889
+msgid "About"
+msgstr "Acerca de"
+
+#: 5.4/res/preferences.glade:2917
+msgid "Apply and close this window"
+msgstr "Aplicar y cerrar esta ventana"
+
+#: 5.4/res/preferences.glade:2929
+msgid "Apply the settings without closing this window"
+msgstr "Aplicar los ajustes sin cerrar esta ventana"
