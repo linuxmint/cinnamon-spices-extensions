@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 13:24-0500\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-02-05 14:52-0500\n"
 "PO-Revision-Date: 2024-02-04 22:02-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,11 +26,8 @@ msgid "Cinnamon Dynamic Wallpaper"
 msgstr "Fondo de pantalla dinámico de Cinnamon"
 
 #. metadata.json->description
-msgid ""
-"Cinnamon extension for dynamic desktop backgrounds based on time and location"
-msgstr ""
-"Extensión de Cinnamon para fondos de pantalla dinámicos según la hora y la "
-"ubicación"
+msgid "Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr "Extensión de Cinnamon para fondos de pantalla dinámicos según la hora y la ubicación"
 
 #: 5.4/res/preferences.glade:135
 msgid "Image Source"
@@ -138,8 +135,7 @@ msgstr "Estimación de ubicación"
 
 #: 5.4/res/preferences.glade:1167
 msgid "Interval time to refresh location via network (min)"
-msgstr ""
-"Intervalo de tiempo para actualizar la ubicación a través de la red (min)"
+msgstr "Intervalo de tiempo para actualizar la ubicación a través de la red (min)"
 
 #: 5.4/res/preferences.glade:1212
 msgid "Location provider"
@@ -269,46 +265,28 @@ msgid "About the project"
 msgstr "Acerca del proyecto"
 
 #: 5.4/res/preferences.glade:2687
-msgid ""
-"Based on a location or by user choice, this extensions calculates the "
-"periods of a day and switches the background image of your Cinnamon desktop. "
-"The extension offers as image sources a set of preconfigured wallpapers, a "
-"heic image import by the user or a custom folder with single images."
-msgstr ""
-"Basándose en una ubicación o por elección del usuario, esta extensión "
-"calcula los periodos de un día y cambia la imagen de fondo de su escritorio "
-"Cinnamon. La extensión ofrece como fuentes de imagen un conjunto de fondos "
-"de pantalla preconfigurados, una imagen heic importada por el usuario o una "
-"carpeta personalizada con imágenes individuales."
+msgid "Based on a location or by user choice, this extensions calculates the periods of a day and switches the background image of your Cinnamon desktop. The extension offers as image sources a set of preconfigured wallpapers, a heic image import by the user or a custom folder with single images."
+msgstr "Basándose en una ubicación o por elección del usuario, esta extensión calcula los periodos de un día y cambia la imagen de fondo de su escritorio Cinnamon. La extensión ofrece como fuentes de imagen un conjunto de fondos de pantalla preconfigurados, una imagen heic importada por el usuario o una carpeta personalizada con imágenes individuales."
 
 #: 5.4/res/preferences.glade:2706
 msgid "Developed by TobiZog"
 msgstr "Desarrollado por TobiZog"
 
 #: 5.4/res/preferences.glade:2723
-msgid ""
-"If you need more information or want to rate the extension, you can visit "
-"the Cinnamon Spices Website."
-msgstr ""
-"Si necesita más información o desea valorar la extensión, puede visitar el "
-"sitio web de Cinnamon Spices."
+msgid "If you need more information or want to rate the extension, you can visit the Cinnamon Spices Website."
+msgstr "Si necesita más información o desea valorar la extensión, puede visitar el sitio web de Cinnamon Spices."
 
 #: 5.4/res/preferences.glade:2734
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
-msgstr ""
-"Fondo de pantalla dinámico de Cinnamon en el sitio web de Cinnamon Spices"
+msgstr "Fondo de pantalla dinámico de Cinnamon en el sitio web de Cinnamon Spices"
 
 #: 5.4/res/preferences.glade:2759
 msgid "Source Code"
 msgstr "Código fuente"
 
 #: 5.4/res/preferences.glade:2788
-msgid ""
-"This project is Open Source. You can take a look inside the whole source "
-"code of this extension on GitHub."
-msgstr ""
-"Este proyecto es de código abierto. Puede echar un vistazo al código fuente "
-"completo de esta extensión en GitHub."
+msgid "This project is Open Source. You can take a look inside the whole source code of this extension on GitHub."
+msgstr "Este proyecto es de código abierto. Puede echar un vistazo al código fuente completo de esta extensión en GitHub."
 
 #: 5.4/res/preferences.glade:2799
 msgid "Source Code on GitHub"
@@ -319,14 +297,8 @@ msgid "Issues and Enhancements"
 msgstr "Problemas y mejoras"
 
 #: 5.4/res/preferences.glade:2853
-msgid ""
-"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
-"create a new issue. If you find an error message in the logs above, add it "
-"to the issue report."
-msgstr ""
-"¿Ha encontrado algún problema? ¿O quieres una nueva funcionalidad? Ve al "
-"repositorio de GitHub y crea una nueva incidencia. Si encuentras un mensaje "
-"de error en los registros anteriores, añádelo al informe de incidencias."
+msgid "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue. If you find an error message in the logs above, add it to the issue report."
+msgstr "¿Ha encontrado algún problema? ¿O quieres una nueva funcionalidad? Ve al repositorio de GitHub y crea una nueva incidencia. Si encuentras un mensaje de error en los registros anteriores, añádelo al informe de incidencias."
 
 #: 5.4/res/preferences.glade:2864
 msgid "Create a new issue on GitHub"

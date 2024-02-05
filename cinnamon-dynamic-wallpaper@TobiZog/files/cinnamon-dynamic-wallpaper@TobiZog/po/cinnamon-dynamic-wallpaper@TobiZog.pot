@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 13:24-0500\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-02-05 14:52-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
 
 #: 5.4/extension.js:127
 msgid "Open settings"
@@ -26,8 +25,7 @@ msgid "Cinnamon Dynamic Wallpaper"
 msgstr ""
 
 #. metadata.json->description
-msgid ""
-"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgid "Cinnamon extension for dynamic desktop backgrounds based on time and location"
 msgstr ""
 
 #: 5.4/res/preferences.glade:135
@@ -266,11 +264,7 @@ msgid "About the project"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2687
-msgid ""
-"Based on a location or by user choice, this extensions calculates the "
-"periods of a day and switches the background image of your Cinnamon desktop. "
-"The extension offers as image sources a set of preconfigured wallpapers, a "
-"heic image import by the user or a custom folder with single images."
+msgid "Based on a location or by user choice, this extensions calculates the periods of a day and switches the background image of your Cinnamon desktop. The extension offers as image sources a set of preconfigured wallpapers, a heic image import by the user or a custom folder with single images."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2706
@@ -278,9 +272,7 @@ msgid "Developed by TobiZog"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2723
-msgid ""
-"If you need more information or want to rate the extension, you can visit "
-"the Cinnamon Spices Website."
+msgid "If you need more information or want to rate the extension, you can visit the Cinnamon Spices Website."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2734
@@ -292,9 +284,7 @@ msgid "Source Code"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2788
-msgid ""
-"This project is Open Source. You can take a look inside the whole source "
-"code of this extension on GitHub."
+msgid "This project is Open Source. You can take a look inside the whole source code of this extension on GitHub."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2799
@@ -306,10 +296,7 @@ msgid "Issues and Enhancements"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2853
-msgid ""
-"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
-"create a new issue. If you find an error message in the logs above, add it "
-"to the issue report."
+msgid "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue. If you find an error message in the logs above, add it to the issue report."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2864
