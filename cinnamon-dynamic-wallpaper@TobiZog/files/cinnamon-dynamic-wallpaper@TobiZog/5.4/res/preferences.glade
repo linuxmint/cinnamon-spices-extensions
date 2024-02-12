@@ -461,7 +461,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="margin-top">16</property>
-                            <property name="label" translatable="yes">label</property>
+                            <property name="label" translatable="no">label</property>
                             <attributes>
                               <attribute name="style" value="italic"/>
                             </attributes>
@@ -517,7 +517,7 @@
                       <object class="GtkLabel" id="etr_period_1">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">00:00 - 00:59</property>
+                        <property name="label" translatable="no">00:00 - 00:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -531,7 +531,7 @@
                       <object class="GtkLabel" id="etr_period_3">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">02:00 - 02:59</property>
+                        <property name="label" translatable="no">02:00 - 02:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -545,7 +545,7 @@
                       <object class="GtkLabel" id="etr_period_5">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">04:00 - 04:59</property>
+                        <property name="label" translatable="no">04:00 - 04:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -559,7 +559,7 @@
                       <object class="GtkLabel" id="etr_period_7">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">06:00 - 06:59</property>
+                        <property name="label" translatable="no">06:00 - 06:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -573,7 +573,7 @@
                       <object class="GtkLabel" id="etr_period_9">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">08:00 - 08:59</property>
+                        <property name="label" translatable="no">08:00 - 08:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -789,7 +789,7 @@
                       <object class="GtkLabel" id="etr_period_2">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">01:00 - 01:59</property>
+                        <property name="label" translatable="no">01:00 - 01:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -803,7 +803,7 @@
                       <object class="GtkLabel" id="etr_period_4">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">03:00 - 03:59</property>
+                        <property name="label" translatable="no">03:00 - 03:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -817,7 +817,7 @@
                       <object class="GtkLabel" id="etr_period_6">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">05:00 - 05:59</property>
+                        <property name="label" translatable="no">05:00 - 05:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -831,7 +831,7 @@
                       <object class="GtkLabel" id="etr_period_8">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">07:00 - 07:59</property>
+                        <property name="label" translatable="no">07:00 - 07:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -845,7 +845,7 @@
                       <object class="GtkLabel" id="etr_period_10">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">09:00 - 09:59</property>
+                        <property name="label" translatable="no">09:00 - 09:59</property>
                         <attributes>
                           <attribute name="size" value="15360"/>
                         </attributes>
@@ -1245,7 +1245,7 @@
                         <property name="margin-end">8</property>
                         <property name="margin-top">8</property>
                         <property name="margin-bottom">8</property>
-                        <property name="label" translatable="yes">label</property>
+                        <property name="label" translatable="no">label</property>
                         <attributes>
                           <attribute name="style" value="italic"/>
                         </attributes>
@@ -1432,7 +1432,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours5</property>
                                 <property name="value">23</property>
@@ -1452,7 +1452,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1467,7 +1467,7 @@
                               <object class="GtkSpinButton" id="spb_period_5_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes5</property>
                                 <property name="value">59</property>
@@ -1483,7 +1483,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1502,7 +1502,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1529,7 +1529,7 @@
                                 <property name="can-focus">True</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours6</property>
                                 <property name="value">23</property>
@@ -1549,7 +1549,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1564,7 +1564,7 @@
                               <object class="GtkSpinButton" id="spb_period_6_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes6</property>
                                 <property name="value">59</property>
@@ -1580,7 +1580,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1599,7 +1599,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1626,7 +1626,7 @@
                                 <property name="can-focus">True</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours7</property>
                                 <property name="value">23</property>
@@ -1646,7 +1646,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1661,7 +1661,7 @@
                               <object class="GtkSpinButton" id="spb_period_7_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes7</property>
                                 <property name="value">59</property>
@@ -1677,7 +1677,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1696,7 +1696,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1721,7 +1721,7 @@
                               <object class="GtkSpinButton" id="spb_period_8_hour">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours8</property>
                                 <property name="value">23</property>
@@ -1741,7 +1741,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1756,7 +1756,7 @@
                               <object class="GtkSpinButton" id="spb_period_8_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes8</property>
                                 <property name="value">59</property>
@@ -1772,7 +1772,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1791,7 +1791,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1820,7 +1820,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours9</property>
                                 <property name="value">23</property>
@@ -1840,7 +1840,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1855,7 +1855,7 @@
                               <object class="GtkSpinButton" id="spb_period_9_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">57</property>
+                                <property name="text" translatable="no">57</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes9</property>
                                 <property name="value">57</property>
@@ -1871,7 +1871,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1890,7 +1890,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">23:59</property>
+                                <property name="label" translatable="no">23:59</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -1989,7 +1989,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2004,7 +2004,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2023,7 +2023,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2052,7 +2052,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours2</property>
                                 <property name="value">23</property>
@@ -2072,7 +2072,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2087,7 +2087,7 @@
                               <object class="GtkSpinButton" id="spb_period_2_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes2</property>
                                 <property name="value">59</property>
@@ -2103,7 +2103,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2122,7 +2122,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2151,7 +2151,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours3</property>
                                 <property name="value">23</property>
@@ -2171,7 +2171,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2186,7 +2186,7 @@
                               <object class="GtkSpinButton" id="spb_period_3_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes3</property>
                                 <property name="value">59</property>
@@ -2202,7 +2202,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2221,7 +2221,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2250,7 +2250,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours4</property>
                                 <property name="value">23</property>
@@ -2270,7 +2270,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2285,7 +2285,7 @@
                               <object class="GtkSpinButton" id="spb_period_4_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes4</property>
                                 <property name="value">59</property>
@@ -2301,7 +2301,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2320,7 +2320,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2345,7 +2345,7 @@
                               <object class="GtkSpinButton" id="spb_period_1_hour">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">23</property>
+                                <property name="text" translatable="no">23</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_hours1</property>
                                 <property name="value">23</property>
@@ -2365,7 +2365,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">:</property>
+                                <property name="label" translatable="no">:</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2380,7 +2380,7 @@
                               <object class="GtkSpinButton" id="spb_period_1_minute">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="text" translatable="yes">59</property>
+                                <property name="text" translatable="no">59</property>
                                 <property name="orientation">vertical</property>
                                 <property name="adjustment">adjustment_minutes1</property>
                                 <property name="value">59</property>
@@ -2396,7 +2396,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">-</property>
+                                <property name="label" translatable="no">-</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2415,7 +2415,7 @@
                                 <property name="margin-right">8</property>
                                 <property name="margin-start">8</property>
                                 <property name="margin-end">8</property>
-                                <property name="label" translatable="yes">00:00</property>
+                                <property name="label" translatable="no">00:00</property>
                                 <attributes>
                                   <attribute name="size" value="20480"/>
                                 </attributes>
@@ -2850,7 +2850,7 @@
                         <property name="margin-end">12</property>
                         <property name="margin-top">12</property>
                         <property name="margin-bottom">12</property>
-                        <property name="label" translatable="yes">Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue. If you find an error message in the logs above, add it to the issue report.</property>
+                        <property name="label" translatable="yes">Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue.</property>
                       </object>
                     </child>
                   </object>

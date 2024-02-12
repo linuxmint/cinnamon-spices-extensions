@@ -5,9 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.2\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2024-02-05 14:52-0500\n"
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.3\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-02-12 12:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: 5.4/extension.js:127
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr ""
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr ""
+
+#: 5.4/extension.js:113
+msgid "Error!"
+msgstr ""
+
+#: 5.4/extension.js:114
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr ""
+
+#: 5.4/extension.js:139
 msgid "Open settings"
 msgstr ""
 
@@ -25,7 +44,8 @@ msgid "Cinnamon Dynamic Wallpaper"
 msgstr ""
 
 #. metadata.json->description
-msgid "Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
 msgstr ""
 
 #: 5.4/res/preferences.glade:135
@@ -60,52 +80,8 @@ msgstr ""
 msgid "Open file selection dialog"
 msgstr ""
 
-#: 5.4/res/preferences.glade:464 5.4/res/preferences.glade:1248
-msgid "label"
-msgstr ""
-
 #: 5.4/res/preferences.glade:492
 msgid "Image Selection"
-msgstr ""
-
-#: 5.4/res/preferences.glade:520
-msgid "00:00 - 00:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:534
-msgid "02:00 - 02:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:548
-msgid "04:00 - 04:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:562
-msgid "06:00 - 06:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:576
-msgid "08:00 - 08:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:792
-msgid "01:00 - 01:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:806
-msgid "03:00 - 03:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:820
-msgid "05:00 - 05:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:834
-msgid "07:00 - 07:59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:848
-msgid "09:00 - 09:59"
 msgstr ""
 
 #: 5.4/res/preferences.glade:930
@@ -168,53 +144,6 @@ msgstr ""
 msgid "Period 5"
 msgstr ""
 
-#: 5.4/res/preferences.glade:1435 5.4/res/preferences.glade:1532
-#: 5.4/res/preferences.glade:1629 5.4/res/preferences.glade:1724
-#: 5.4/res/preferences.glade:1823 5.4/res/preferences.glade:2055
-#: 5.4/res/preferences.glade:2154 5.4/res/preferences.glade:2253
-#: 5.4/res/preferences.glade:2348
-msgid "23"
-msgstr ""
-
-#: 5.4/res/preferences.glade:1455 5.4/res/preferences.glade:1552
-#: 5.4/res/preferences.glade:1649 5.4/res/preferences.glade:1744
-#: 5.4/res/preferences.glade:1843 5.4/res/preferences.glade:2075
-#: 5.4/res/preferences.glade:2174 5.4/res/preferences.glade:2273
-#: 5.4/res/preferences.glade:2368
-msgid ":"
-msgstr ""
-
-#: 5.4/res/preferences.glade:1470 5.4/res/preferences.glade:1567
-#: 5.4/res/preferences.glade:1664 5.4/res/preferences.glade:1759
-#: 5.4/res/preferences.glade:2090 5.4/res/preferences.glade:2189
-#: 5.4/res/preferences.glade:2288 5.4/res/preferences.glade:2383
-msgid "59"
-msgstr ""
-
-#: 5.4/res/preferences.glade:1486 5.4/res/preferences.glade:1583
-#: 5.4/res/preferences.glade:1680 5.4/res/preferences.glade:1775
-#: 5.4/res/preferences.glade:1874 5.4/res/preferences.glade:2007
-#: 5.4/res/preferences.glade:2106 5.4/res/preferences.glade:2205
-#: 5.4/res/preferences.glade:2304 5.4/res/preferences.glade:2399
-msgid "-"
-msgstr ""
-
-#: 5.4/res/preferences.glade:1505 5.4/res/preferences.glade:1602
-#: 5.4/res/preferences.glade:1699 5.4/res/preferences.glade:1794
-#: 5.4/res/preferences.glade:1992 5.4/res/preferences.glade:2026
-#: 5.4/res/preferences.glade:2125 5.4/res/preferences.glade:2224
-#: 5.4/res/preferences.glade:2323 5.4/res/preferences.glade:2418
-msgid "00:00"
-msgstr ""
-
-#: 5.4/res/preferences.glade:1858
-msgid "57"
-msgstr ""
-
-#: 5.4/res/preferences.glade:1893
-msgid "23:59"
-msgstr ""
-
 #: 5.4/res/preferences.glade:1914
 msgid "Period 6"
 msgstr ""
@@ -264,7 +193,11 @@ msgid "About the project"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2687
-msgid "Based on a location or by user choice, this extensions calculates the periods of a day and switches the background image of your Cinnamon desktop. The extension offers as image sources a set of preconfigured wallpapers, a heic image import by the user or a custom folder with single images."
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2706
@@ -272,7 +205,9 @@ msgid "Developed by TobiZog"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2723
-msgid "If you need more information or want to rate the extension, you can visit the Cinnamon Spices Website."
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2734
@@ -284,7 +219,9 @@ msgid "Source Code"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2788
-msgid "This project is Open Source. You can take a look inside the whole source code of this extension on GitHub."
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2799
@@ -296,7 +233,9 @@ msgid "Issues and Enhancements"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2853
-msgid "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue. If you find an error message in the logs above, add it to the issue report."
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
 msgstr ""
 
 #: 5.4/res/preferences.glade:2864

@@ -1,3 +1,8 @@
+# Version 2.3
+- Adding Dutch translation
+- Adding German translation
+- Adding Spanish translation (Thanks to rcalixte)
+
 # Version 2.2
 - Bugfixes
 - Migrate code to MVVM pattern
