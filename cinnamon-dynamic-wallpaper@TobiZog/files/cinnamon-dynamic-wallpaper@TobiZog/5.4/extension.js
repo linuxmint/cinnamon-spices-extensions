@@ -69,7 +69,7 @@ CinnamonDynamicWallpaperExtension.prototype = {
 		Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
 
 		// Check for the first startup
-		if (!this.settings.getValue("first_start")) {
+		if (this.settings.getValue("first_start")) {
 
 			// Welcome notification
 			this.showNotification(_("Welcome to Cinnamon Dynamic Wallpaper"), 
