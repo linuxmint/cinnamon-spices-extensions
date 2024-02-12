@@ -1,12 +1,17 @@
-import os, time
-from PIL import Image
+# GTK
 from gi.repository import Gio, Gdk
 
+# Packages
+import os, time, gi, locale
+from PIL import Image
+
+# Local scripts
 from service.cinnamon_pref_handler import *
 from service.suntimes import *
 from service.time_bar_chart import *
 from service.location import *
 from enums.PeriodSourceEnum import *
+
 
 class Main_View_Model:
 	""" The main ViewModel for the application
@@ -37,6 +42,13 @@ class Main_View_Model:
 		self.location = Location()
 
 		self.background_settings = Gio.Settings.new("org.cinnamon.desktop.background")
+
+
+		# Language support
+		self.UUID = "cinnamon-dynamic-wallpaper@TobiZog"
+		self.localeDir = os.path.expanduser("~") + "/.local/share/locale"
+		locale.bindtextdomain(self.UUID, self.localeDir)
+
 
 		# Other Variables
 		self.display = Gdk.Display.get_default()

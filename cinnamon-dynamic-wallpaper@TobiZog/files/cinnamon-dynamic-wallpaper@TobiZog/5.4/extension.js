@@ -17,7 +17,8 @@ const Gio = imports.gi.Gio;
 const MessageTray = imports.ui.messageTray;
 const St = imports.gi.St;
 const Main = imports.ui.main;
-
+const Gettext = imports.gettext;
+const GLib = imports.gi.GLib;
 
 
 /******************** Constants ********************/
@@ -44,6 +45,15 @@ function CinnamonDynamicWallpaperExtension(uuid) {
 }
 
 
+function _(str) {
+	let customTranslation = Gettext.dgettext(UUID, str);
+	if (customTranslation !== str) {
+		return customTranslation;
+	}
+	return Gettext.gettext(str);
+}
+
+
 CinnamonDynamicWallpaperExtension.prototype = {
 
 	/******************** Lifecycle ********************/
@@ -56,12 +66,14 @@ CinnamonDynamicWallpaperExtension.prototype = {
 	_init: function(uuid) { 
 		this.settings = new Settings.ExtensionSettings(this, uuid);
 
+		Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
+
 		// Check for the first startup
-		if (this.settings.getValue("first_start")) {
+		if (!this.settings.getValue("first_start")) {
 
 			// Welcome notification
-			this.showNotification("Welcome to Cinnamon Dynamic Wallpaper", 
-				"Check the preferences to choose a dynamic wallpaper", true)
+			this.showNotification(_("Welcome to Cinnamon Dynamic Wallpaper"), 
+				_("Check the preferences to choose a dynamic wallpaper"), true)
 
 			// Hide the notification on system restart
 			this.settings.setValue("first_start", false)
@@ -98,8 +110,8 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			try {
 				Util.spawnCommandLine("/usr/bin/env python3 " + DIRECTORY.path + "/src/main.py loop")
 			} catch(e) {
-				this.showNotification("Error!", 
-					"Cinnamon Dynamic Wallpaper got an error while running the loop script. Please create an issue on GitHub.")
+				this.showNotification(_("Error!"), 
+					_("Cinnamon Dynamic Wallpaper got an error while running the loop script. Please create an issue on GitHub."))
 			}
 
 			// Refresh every 60 seconds

@@ -32,6 +32,7 @@ class Cinnamon_Pref_Handler:
     with open(self.pref_location, "r") as pref_file:
       self.pref_data = json.load(pref_file)
     
+    self.first_start = self.extract_json('first_start')
     self.picture_aspect = self.extract_json('picture_aspect')
     self.dynamic_background_color = self.extract_json('dynamic_background_color')
     self.image_source = self.extract_json('image_source')
@@ -93,6 +94,7 @@ class Cinnamon_Pref_Handler:
   def store_preferences(self):
     """ Store the values of the Preference object to the JSON file
     """
+    self.value_to_json('first_start', self.first_start)
     self.value_to_json('picture_aspect', self.picture_aspect)
     self.value_to_json('dynamic_background_color', self.dynamic_background_color)
     self.value_to_json('image_source', self.image_source)

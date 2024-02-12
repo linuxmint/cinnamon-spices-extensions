@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, datetime
+import sys
 from view.main_window import *
 from model.main_view_model import *
 

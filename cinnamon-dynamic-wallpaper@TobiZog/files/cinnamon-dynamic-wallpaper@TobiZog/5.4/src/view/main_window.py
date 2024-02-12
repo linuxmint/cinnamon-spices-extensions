@@ -9,7 +9,7 @@ from gi.repository import Gtk, GdkPixbuf
 
 # Packages
 import subprocess, threading, time
-from datetime import timedelta, datetime, date
+from datetime import timedelta, datetime
 
 # Local scripts
 from model.main_view_model import *
@@ -34,6 +34,7 @@ class Main_Window:
 
 		# Glade
 		self.builder = Gtk.Builder()
+		self.builder.set_translation_domain(self.view_model.UUID)
 		self.builder.add_from_file(self.view_model.GLADE_URI)
 		self.builder.connect_signals(self)
 
