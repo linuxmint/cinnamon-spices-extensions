@@ -11,7 +11,7 @@ class Cinnamon_Pref_Handler:
     self.load_preferences()
 
   
-  def extract_json(self, parameter: str) -> str:
+  def extract_json(self, parameter: str) -> any:
     """ Get a parameter from the json dictionary safely
 
     Args:
@@ -52,13 +52,13 @@ class Cinnamon_Pref_Handler:
       self.extract_json('period_9_image')
     ]
 
-    self.period_source =self.extract_json('period_source')
-    self.location_refresh_intervals =self.extract_json('location_refresh_intervals')
-    self.network_location_provider =self.extract_json('network_location_provider')
-    self.latitude_auto =self.extract_json('latitude_auto')
-    self.longitude_auto =self.extract_json('longitude_auto')
-    self.latitude_custom =self.extract_json('latitude_custom')
-    self.longitude_custom =self.extract_json('longitude_custom')
+    self.period_source = self.extract_json('period_source')
+    self.location_refresh_intervals = self.extract_json('location_refresh_intervals')
+    self.network_location_provider = self.extract_json('network_location_provider')
+    self.latitude_auto = self.extract_json('latitude_auto')
+    self.longitude_auto = self.extract_json('longitude_auto')
+    self.latitude_custom = self.extract_json('latitude_custom')
+    self.longitude_custom = self.extract_json('longitude_custom')
 
     self.period_custom_start_time = [
       self.extract_json('period_0_custom_start_time'),
@@ -72,6 +72,8 @@ class Cinnamon_Pref_Handler:
       self.extract_json('period_8_custom_start_time'),
       self.extract_json('period_9_custom_start_time')
     ]
+
+    self.login_image = self.extract_json('login_image')
 
 
   def value_to_json(self, parameter: str, value: str):
@@ -127,6 +129,7 @@ class Cinnamon_Pref_Handler:
     self.value_to_json('period_7_custom_start_time', self.period_custom_start_time[7])
     self.value_to_json('period_8_custom_start_time', self.period_custom_start_time[8])
     self.value_to_json('period_9_custom_start_time', self.period_custom_start_time[9])
+    self.value_to_json('login_image', self.login_image)
 
 
     # Write to file

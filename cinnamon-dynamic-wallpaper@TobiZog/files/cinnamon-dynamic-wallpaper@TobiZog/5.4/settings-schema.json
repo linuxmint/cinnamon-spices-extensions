@@ -5,7 +5,7 @@
   },
   "picture_aspect": {
     "type": "generic",
-    "default": "scaled"
+    "default": "zoom"
   },
   "dynamic_background_color": {
     "type": "generic",
@@ -130,5 +130,9 @@
   "period_9_custom_start_time": {
     "type": "generic",
     "default": "21:00"
+  },
+  "login_image": {
+    "type": "generic",
+    "default": false
   }
 }

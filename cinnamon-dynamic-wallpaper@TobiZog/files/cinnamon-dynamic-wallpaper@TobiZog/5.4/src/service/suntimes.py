@@ -1,5 +1,5 @@
 from math import pi, sin, asin, acos, cos, floor, atan, tan
-from datetime import datetime, timezone, time
+from datetime import datetime, timezone, time, timedelta
 
 
 class Suntimes:
@@ -55,7 +55,7 @@ class Suntimes:
     civial_dusk_start = self.calc_sunrise_sunset_time(False)
     night_start = self.calc_sunrise_sunset_time(False, 96)
 
-    light_period_duration = (sunset_start - morning_start) / 8
+    light_period_duration = timedelta(seconds=(sunset_start - morning_start).seconds / 8)
 
     noon_start = morning_start + 3 * light_period_duration
     afternoon_start = morning_start + 5 * light_period_duration

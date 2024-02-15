@@ -51,3 +51,14 @@ This extension switches the background image of your Cinnamon desktop multiple t
 ## Preferences Window
 Because of the lack of configuration options in the standard Cinnamon configuration system for extensions offers this extension a custom preference window.  
 All configuration will be handled there. You can choose between included image sets, a HEIC file or a folder source and set the image to ten different daytime periods. Time periods will be estimated via network, custom coordinations or custom time periods. Some behaviour preferences (strech image, fill empty background with gradient color) are also here.
+---
+## Contribute
+### Translation
+You want to contribute a language which isn't supported yet? Here is how to do:
+
+1. Fork the cinnamon-spices-extensions project: https://github.com/linuxmint/cinnamon-spices-extensions
+2. Pull the repository
+3. Open `cinnamon-dynamic-wallpaper@TobiZog/files/cinnamon-dynamic-wallpaper@TobiZog/po/cinnamon-dynamic-wallpaper@TobiZog.pot` with a po-tool like poedit (https://poedit.net/).
+4. Create a new translation in your language
+5. Push the changes to your repository
+6. Create a pull request
