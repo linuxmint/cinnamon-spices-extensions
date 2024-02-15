@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-02-15 18:38+0100\n"
-"PO-Revision-Date: 2024-02-12 10:34-0300\n"
+"PO-Revision-Date: 2024-02-15 17:15-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -184,11 +184,12 @@ msgstr "Aspecto de la imagen"
 
 #: 5.4/res/preferences.glade:2556
 msgid "Login Screen"
-msgstr ""
+msgstr "Pantalla de inicio de sesión"
 
 #: 5.4/res/preferences.glade:2593
 msgid "Set the background image as Login Screen background"
 msgstr ""
+"Establecer la imagen de fondo como fondo de la pantalla de inicio de sesión"
 
 #: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
