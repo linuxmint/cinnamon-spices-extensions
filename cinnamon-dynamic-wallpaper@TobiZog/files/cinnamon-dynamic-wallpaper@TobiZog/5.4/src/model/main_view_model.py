@@ -315,6 +315,16 @@ class Main_View_Model:
 
 			# Move it to /etc/lightdm
 			if os.path.isfile("/etc/lightdm/slick-greeter.conf"):
-				subprocess.call(['pkexec', 'rm', '/etc/lightdm/slick-greeter.conf', 'mv', file_location, '/etc/lightdm/'])
+				subprocess.call(['pkexec', 'mv', '/etc/lightdm/slick-greeter.conf', '/etc/lightdm/slick-greeter.conf.backup'])
+				subprocess.call(['pkexec', 'mv', file_location, '/etc/lightdm/'])
 			else:
 				subprocess.call(['pkexec', 'mv', file_location, '/etc/lightdm/'])
+
+		else:
+			self.reset_login_image()
+
+
+	def reset_login_image(self):
+		if os.path.isfile('/etc/lightdm/slick-greeter.conf.backup'):
+			subprocess.call(['pkexec', 'rm', '/etc/lightdm/slick-greeter.conf'])
+			subprocess.call(['pkexec', 'mv', '/etc/lightdm/slick-greeter.conf.backup', '/etc/lightdm/slick-greeter.conf'])
