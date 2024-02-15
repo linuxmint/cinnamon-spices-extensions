@@ -13,5 +13,6 @@ if __name__ == "__main__":
   elif sys.argv[1] == "loop":
     # Run the methods which updates the data
     view_model = Main_View_Model()
+    view_model.set_login_image()
     view_model.refresh_image()
     view_model.set_background_gradient()

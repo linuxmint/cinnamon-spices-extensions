@@ -1,210 +1,208 @@
 # SOME DESCRIPTIVE TITLE.
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# blogdron <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.2\n"
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-02-15 18:38+0100\n"
-"PO-Revision-Date: 2024-02-15 18:42+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-02-15 16:46+0300\n"
+"Last-Translator: blogdron\n"
 "Language-Team: \n"
-"Language: nl\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: 5.4/extension.js:75
 msgid "Welcome to Cinnamon Dynamic Wallpaper"
-msgstr "Welkom op Cinnamon Dynamic Wallpaper"
+msgstr "Добро пожаловать в Динамические обои"
 
 #: 5.4/extension.js:76
 msgid "Check the preferences to choose a dynamic wallpaper"
-msgstr "Controleer de voorkeuren om een dynamische achtergrond te kiezen"
+msgstr "Проверьте настройки, чтобы выбрать динамические обои"
 
 #: 5.4/extension.js:113
 msgid "Error!"
-msgstr "Fout!"
+msgstr "Ошибка!"
 
 #: 5.4/extension.js:114
 msgid ""
 "Cinnamon Dynamic Wallpaper got an error while running the loop script. "
 "Please create an issue on GitHub."
 msgstr ""
-"Cinnamon Dynamic Wallpaper kreeg een fout tijdens het uitvoeren van het loop-"
-"script. Maak een ticket aan op GitHub."
+"В Динамических Обоях Cinnamon возникла ошибка при запуске сценария цикла. "
+"Создайте сообщение на GitHub."
 
 #: 5.4/extension.js:139
 msgid "Open settings"
-msgstr "Instellingen openen"
+msgstr "Открыть настройки"
 
 #. metadata.json->name
 msgid "Cinnamon Dynamic Wallpaper"
-msgstr "Cinnamon Dynamic Wallpaper"
+msgstr "Динамические Обои (Cinnamon Dynamic Wallpaper)"
 
 #. metadata.json->description
 msgid ""
 "Cinnamon extension for dynamic desktop backgrounds based on time and location"
 msgstr ""
-"Cinnamon extensie voor dynamische bureaublad achtergronden op basis van tijd "
-"en locatie"
+"Расширение Cinnamon для динамических обоев рабочего стола в зависимости от "
+"времени суток и местоположения"
 
 #: 5.4/res/preferences.glade:135
 msgid "Image Source"
-msgstr "Afbeeldingsbron"
+msgstr "Источник изображений"
 
 #: 5.4/res/preferences.glade:186
 msgid "Image Set"
-msgstr "Afbeeldingset"
+msgstr "Установить изображение"
 
 #: 5.4/res/preferences.glade:236
 msgid "HEIC file"
-msgstr "HEIC-bestand"
+msgstr "HEIC файл"
 
 #: 5.4/res/preferences.glade:286
 msgid "Source Folder"
-msgstr "Bronmap"
+msgstr "Каталог изображений"
 
 #: 5.4/res/preferences.glade:336
 msgid "Select an image set"
-msgstr "Selecteer een afbeeldingsset"
+msgstr "Выберите набор изображений"
 
 #: 5.4/res/preferences.glade:379
 msgid "Select a heic file to import"
-msgstr "Selecteer een heic-bestand om te importeren"
+msgstr "Выберите файл heic для импорта"
 
 #: 5.4/res/preferences.glade:430
 msgid "Select a source folder"
-msgstr "Selecteer een bronmap"
+msgstr "Выберите каталог изображений"
 
 #: 5.4/res/preferences.glade:440
 msgid "Open file selection dialog"
-msgstr "Dialoogvenster voor bestandsselectie openen"
+msgstr "Открыть диалог выбора файла"
 
 #: 5.4/res/preferences.glade:492
 msgid "Image Selection"
-msgstr "Beeldselectie"
+msgstr "Выбор изображений"
 
 #: 5.4/res/preferences.glade:930
 msgid "Image Configuration"
-msgstr "Afbeeldingsconfiguratie"
+msgstr "Настройки Изображений"
 
 #: 5.4/res/preferences.glade:948
 msgid "Period estimation"
-msgstr "Periodeschatting"
+msgstr "Периодичность"
 
 #: 5.4/res/preferences.glade:1001
 msgid "Use Network Location"
-msgstr "Gebruik netwerklocatie"
+msgstr "Определить местоположение по сети"
 
 #: 5.4/res/preferences.glade:1051
 msgid "Custom Location"
-msgstr "Aangepaste locatie"
+msgstr "Задать местоположение"
 
 #: 5.4/res/preferences.glade:1103
 msgid "Custom Time Periods"
-msgstr "Aangepaste tijdsperioden"
+msgstr "Задать периодичность"
 
 #: 5.4/res/preferences.glade:1132
 msgid "Location estimation"
-msgstr "Schatting van locatie"
+msgstr "Расчёт местоположения"
 
 #: 5.4/res/preferences.glade:1167
 msgid "Interval time to refresh location via network (min)"
-msgstr "Intervaltijd voor het vernieuwen van de locatie via netwerk (min)"
+msgstr "Интервал обновления местоположения через сеть (мин)."
 
 #: 5.4/res/preferences.glade:1212
 msgid "Location provider"
-msgstr "Locatieaanbieder"
+msgstr "Источник определяющий местоположения"
 
 #: 5.4/res/preferences.glade:1274
 msgid "Latitude"
-msgstr "Breedtegraad"
+msgstr "Широта"
 
 #: 5.4/res/preferences.glade:1317
 msgid "Longitude"
-msgstr "Lengtegraad"
+msgstr "Долгота"
 
 #: 5.4/res/preferences.glade:1357
 msgid "Period 1"
-msgstr "Periode 1"
+msgstr "Период 1"
 
 #: 5.4/res/preferences.glade:1371
 msgid "Period 2"
-msgstr "Periode 2"
+msgstr "Период 2"
 
 #: 5.4/res/preferences.glade:1385
 msgid "Period 3"
-msgstr "Periode 3"
+msgstr "Период 3"
 
 #: 5.4/res/preferences.glade:1399
 msgid "Period 4"
-msgstr "Periode 4"
+msgstr "Период 4"
 
 #: 5.4/res/preferences.glade:1413
 msgid "Period 5"
-msgstr "Periode 5"
+msgstr "Период 5"
 
 #: 5.4/res/preferences.glade:1914
 msgid "Period 6"
-msgstr "Periode 6"
+msgstr "Период 6"
 
 #: 5.4/res/preferences.glade:1928
 msgid "Period 7"
-msgstr "Periode 7"
+msgstr "Период 7"
 
 #: 5.4/res/preferences.glade:1942
 msgid "Period 9"
-msgstr "Periode 9"
+msgstr "Период 9"
 
 #: 5.4/res/preferences.glade:1956
 msgid "Period 8"
-msgstr "Periode 8"
+msgstr "Период 8"
 
 #: 5.4/res/preferences.glade:1970
 msgid "Period 10"
-msgstr "Periode 10"
+msgstr "Период 10"
 
 #: 5.4/res/preferences.glade:2461
 msgid "Location & Times"
-msgstr "Locatie & Tijden"
+msgstr "Местоположение и Время"
 
 #: 5.4/res/preferences.glade:2480
 msgid "Scaling"
-msgstr "Schaalvergroting"
+msgstr "Масштабирование"
 
 #: 5.4/res/preferences.glade:2519
 msgid "Picture aspect"
-msgstr "Beeldaspect"
+msgstr "Соотношение сторон"
 
 #: 5.4/res/preferences.glade:2556
 msgid "Login Screen"
-msgstr "Log in scherm"
+msgstr ""
 
 #: 5.4/res/preferences.glade:2593
 msgid "Set the background image as Login Screen background"
-msgstr "Stel de achtergrondafbeelding in als achtergrond van het inlogscherm"
+msgstr ""
 
 #: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
-msgstr "Dynamische achtergrond kleur"
+msgstr "Динамический Фоновый цвет"
 
 #: 5.4/res/preferences.glade:2667
 msgid "Use dynamic Background color to create a gradient"
-msgstr ""
-"Gebruik een dynamische achtergrondkleur om een kleur verloop te creëren"
+msgstr "Используйте динамический цвет фона для создания градиента"
 
 #: 5.4/res/preferences.glade:2714
 msgid "Behaviour"
-msgstr "Gedrag"
+msgstr "Поведение"
 
 #: 5.4/res/preferences.glade:2733
 msgid "About the project"
-msgstr "Over het project"
+msgstr "О проекте"
 
 #: 5.4/res/preferences.glade:2762
 msgid ""
@@ -213,68 +211,69 @@ msgid ""
 "The extension offers as image sources a set of preconfigured wallpapers, a "
 "heic image import by the user or a custom folder with single images."
 msgstr ""
-"Op basis van een locatie of gebruikerskeuze berekent deze extensie de "
-"perioden van een dag en verandert de achtergrondafbeelding van uw Cinnamon-"
-"bureaublad. De extensie biedt als afbeeldingsbronnen een reeks vooraf "
-"geconfigureerde achtergronden, een heic-afbeeldingsimport door de gebruiker "
-"of een aangepaste map met afzonderlijke afbeeldingen."
+"В зависимости от местоположения или по выбору пользователя это расширение "
+"рассчитывает периоды дня и переключает фоновое изображение рабочего стола "
+"Cinnamon. Расширение предлагает в качестве источников изображений набор "
+"предварительно настроенных обоев, импорт изображений Heic пользователем или "
+"пользовательский каталог с отдельными изображениями."
 
 #: 5.4/res/preferences.glade:2781
 msgid "Developed by TobiZog"
-msgstr "Ontwikkeld door TobiZog"
+msgstr "Разработано TobiZog"
 
 #: 5.4/res/preferences.glade:2798
 msgid ""
 "If you need more information or want to rate the extension, you can visit "
 "the Cinnamon Spices Website."
 msgstr ""
-"Als u meer informatie nodig heeft of de extensie wilt beoordelen, kunt u de "
-"website van Cinnamon Spices bezoeken."
+"Если вам нужна дополнительная информация или вы хотите оценить расширение, "
+"посетите веб-сайт Cinnamon Spices."
 
 #: 5.4/res/preferences.glade:2809
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
-msgstr "Cinnamon Dynamic Wallpaper op Cinnamon Spices Website"
+msgstr "Cinnamon Dynamic Wallpaper в Cinnamon Spices Веб-сайт"
 
 #: 5.4/res/preferences.glade:2834
 msgid "Source Code"
-msgstr "Broncode"
+msgstr "Исходный код"
 
 #: 5.4/res/preferences.glade:2863
 msgid ""
 "This project is Open Source. You can take a look inside the whole source "
 "code of this extension on GitHub."
 msgstr ""
-"Dit project is Open Source. Je kunt de volledige broncode van deze extensie "
-"op GitHub bekijken."
+"Этот проект с открытым исходным кодом. Вы можете просмотреть весь исходный "
+"код этого расширения на GitHub."
 
 #: 5.4/res/preferences.glade:2874
 msgid "Source Code on GitHub"
-msgstr "Broncode op GitHub"
+msgstr "Исходный код на GitHub"
 
 #: 5.4/res/preferences.glade:2899
 msgid "Issues and Enhancements"
-msgstr "Problemen en Verbeteringen"
+msgstr "Проблемы и улучшения"
 
 #: 5.4/res/preferences.glade:2928
 msgid ""
 "Do you find an issue? Or want a new feature? Go to the GitHub repository and "
 "create a new issue."
 msgstr ""
-"Vindt jij een probleem? Of wil je een nieuwe functie? Ga naar de GitHub-"
-"repository en maak een nieuw ticket."
+"Вы обнаружили проблему или хотите новую функцию? Перейдите в репозиторий "
+"GitHub и создайте новую задачу (issue). Если вы обнаружите сообщение об "
+"ошибке в журналах выше, добавьте его в отчет о проблеме."
 
 #: 5.4/res/preferences.glade:2939
 msgid "Create a new issue on GitHub"
-msgstr "Maak een nieuw ticket op GitHub"
+msgstr "Создайте новую задачу (issue) на GitHub"
 
 #: 5.4/res/preferences.glade:2964
 msgid "About"
-msgstr "Over"
+msgstr "О проекте"
 
 #: 5.4/res/preferences.glade:2992
 msgid "Apply and close this window"
-msgstr "Toepassen en sluit dit venster"
+msgstr "Применить и закрыть это окно"
 
 #: 5.4/res/preferences.glade:3004
 msgid "Apply the settings without closing this window"
-msgstr "Pas de instellingen toe zonder dit venster te sluiten"
+msgstr "Применить настройки, не закрывая это окно"

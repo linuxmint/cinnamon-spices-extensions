@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-02-12 12:12+0100\n"
+"POT-Creation-Date: 2024-02-15 18:38+0100\n"
 "PO-Revision-Date: 2024-02-15 15:38+0100\n"
 "Last-Translator: Vajda Örs <ors0092@gmail.com>\n"
 "Language-Team: \n"
@@ -180,22 +180,30 @@ msgid "Picture aspect"
 msgstr "Képarány"
 
 #: 5.4/res/preferences.glade:2556
+msgid "Login Screen"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2593
+msgid "Set the background image as Login Screen background"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
 msgstr "Dinamikus háttérszín"
 
-#: 5.4/res/preferences.glade:2593
+#: 5.4/res/preferences.glade:2667
 msgid "Use dynamic Background color to create a gradient"
 msgstr "Használjon dinamikus háttérszínt színátmenet létrehozásához"
 
-#: 5.4/res/preferences.glade:2639
+#: 5.4/res/preferences.glade:2714
 msgid "Behaviour"
 msgstr "Viselkedés"
 
-#: 5.4/res/preferences.glade:2658
+#: 5.4/res/preferences.glade:2733
 msgid "About the project"
 msgstr "A projektről"
 
-#: 5.4/res/preferences.glade:2687
+#: 5.4/res/preferences.glade:2762
 msgid ""
 "Based on a location or by user choice, this extensions calculates the "
 "periods of a day and switches the background image of your Cinnamon desktop. "
@@ -208,11 +216,11 @@ msgstr ""
 "beállított háttérképek, a felhasználó által importált heic képek vagy egyéni "
 "mappában található egyedi képek használatára, háttérképként."
 
-#: 5.4/res/preferences.glade:2706
+#: 5.4/res/preferences.glade:2781
 msgid "Developed by TobiZog"
 msgstr "TobiZog által fejlesztve"
 
-#: 5.4/res/preferences.glade:2723
+#: 5.4/res/preferences.glade:2798
 msgid ""
 "If you need more information or want to rate the extension, you can visit "
 "the Cinnamon Spices Website."
@@ -220,15 +228,15 @@ msgstr ""
 "Ha további információra van szüksége, vagy értékelni szeretné a bővítményt, "
 "keresse fel a Cinnamon Spices webhelyet."
 
-#: 5.4/res/preferences.glade:2734
+#: 5.4/res/preferences.glade:2809
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
 msgstr "Cinnamon Dinamikus Háttérkép a Cinnamon Spices webhelyen"
 
-#: 5.4/res/preferences.glade:2759
+#: 5.4/res/preferences.glade:2834
 msgid "Source Code"
 msgstr "Forráskód"
 
-#: 5.4/res/preferences.glade:2788
+#: 5.4/res/preferences.glade:2863
 msgid ""
 "This project is Open Source. You can take a look inside the whole source "
 "code of this extension on GitHub."
@@ -236,15 +244,15 @@ msgstr ""
 "Ez a projekt nyílt forráskódú. A GitHubon megtekintheti a bővítmény teljes "
 "forráskódját."
 
-#: 5.4/res/preferences.glade:2799
+#: 5.4/res/preferences.glade:2874
 msgid "Source Code on GitHub"
 msgstr "Forráskód a GitHubon"
 
-#: 5.4/res/preferences.glade:2824
+#: 5.4/res/preferences.glade:2899
 msgid "Issues and Enhancements"
 msgstr "Problémák és fejlesztések"
 
-#: 5.4/res/preferences.glade:2853
+#: 5.4/res/preferences.glade:2928
 msgid ""
 "Do you find an issue? Or want a new feature? Go to the GitHub repository and "
 "create a new issue."
@@ -252,18 +260,18 @@ msgstr ""
 "Problémát talált? Vagy új funkciót szeretne? Nyissa meg a GitHub-tárat, és "
 "hozzon létre egy új bejelentést."
 
-#: 5.4/res/preferences.glade:2864
+#: 5.4/res/preferences.glade:2939
 msgid "Create a new issue on GitHub"
 msgstr "Hozzon létre egy új bejentést a GitHubon"
 
-#: 5.4/res/preferences.glade:2889
+#: 5.4/res/preferences.glade:2964
 msgid "About"
 msgstr "Névjegy"
 
-#: 5.4/res/preferences.glade:2917
+#: 5.4/res/preferences.glade:2992
 msgid "Apply and close this window"
 msgstr "Alkalmazza és zárja be ezt az ablakot"
 
-#: 5.4/res/preferences.glade:2929
+#: 5.4/res/preferences.glade:3004
 msgid "Apply the settings without closing this window"
 msgstr "Alkalmazza a beállításokat az ablak bezárása nélkül"

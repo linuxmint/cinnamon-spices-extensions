@@ -1,7 +1,7 @@
 /**
- * @name	Cinnamon-Dynamic-Wallpaper
- * @alias 	TobiZog
- * @since	2023-05-17
+ * @name  Cinnamon-Dynamic-Wallpaper
+ * @alias TobiZog
+ * @since 2023-05-17
  * 
  * @description Main application file
  */
@@ -77,7 +77,7 @@ CinnamonDynamicWallpaperExtension.prototype = {
 
 			// Hide the notification on system restart
 			this.settings.setValue("first_start", false)
-			this.settings.setValue("source_folder", DIRECTORY["path"] + "/images/included_image_sets/lakeside/")
+			this.settings.setValue("source_folder", DIRECTORY["path"] + "/res/images/included_image_sets/lakeside/")
 		}
 
 		// Start the main loop, checks in fixed time periods the 

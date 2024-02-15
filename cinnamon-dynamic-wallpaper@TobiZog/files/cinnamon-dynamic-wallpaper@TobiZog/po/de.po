@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-02-12 12:12+0100\n"
-"PO-Revision-Date: 2024-02-12 12:08+0100\n"
+"POT-Creation-Date: 2024-02-15 18:38+0100\n"
+"PO-Revision-Date: 2024-02-15 18:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -182,24 +182,32 @@ msgid "Picture aspect"
 msgstr "Bild Skalierung"
 
 #: 5.4/res/preferences.glade:2556
+msgid "Login Screen"
+msgstr "Anmeldefenster"
+
+#: 5.4/res/preferences.glade:2593
+msgid "Set the background image as Login Screen background"
+msgstr "Verwende das Desktop-Hintergrundbild auch für den Anmeldebildschirm"
+
+#: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
 msgstr "Dynamische Hintergrundfarbe"
 
-#: 5.4/res/preferences.glade:2593
+#: 5.4/res/preferences.glade:2667
 msgid "Use dynamic Background color to create a gradient"
 msgstr ""
 "Verwende eine dynamische Hintergrundfarbe um einen Farbgradienten zu "
 "erstellen"
 
-#: 5.4/res/preferences.glade:2639
+#: 5.4/res/preferences.glade:2714
 msgid "Behaviour"
 msgstr "Verhalten"
 
-#: 5.4/res/preferences.glade:2658
+#: 5.4/res/preferences.glade:2733
 msgid "About the project"
 msgstr "Über das Projekt"
 
-#: 5.4/res/preferences.glade:2687
+#: 5.4/res/preferences.glade:2762
 msgid ""
 "Based on a location or by user choice, this extensions calculates the "
 "periods of a day and switches the background image of your Cinnamon desktop. "
@@ -212,11 +220,11 @@ msgstr ""
 "vorkonfigurierte Wallpaper-Sets, die Möglichkeit eigene HEIC-Dateien zu "
 "importieren oder beliebige Bilder aus einem Ordner zu verwenden."
 
-#: 5.4/res/preferences.glade:2706
+#: 5.4/res/preferences.glade:2781
 msgid "Developed by TobiZog"
 msgstr "Entwickelt von TobiZog"
 
-#: 5.4/res/preferences.glade:2723
+#: 5.4/res/preferences.glade:2798
 msgid ""
 "If you need more information or want to rate the extension, you can visit "
 "the Cinnamon Spices Website."
@@ -224,15 +232,15 @@ msgstr ""
 "Für weitere Informationen oder wenn du die Erweiterung bewerten willst, "
 "kannst du die Cinnamon Spices Webseite besuchen."
 
-#: 5.4/res/preferences.glade:2734
+#: 5.4/res/preferences.glade:2809
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
 msgstr "Cinnamon Dynamic Wallpaper auf der Cinnamon Spices Webseite"
 
-#: 5.4/res/preferences.glade:2759
+#: 5.4/res/preferences.glade:2834
 msgid "Source Code"
 msgstr "Quellcode"
 
-#: 5.4/res/preferences.glade:2788
+#: 5.4/res/preferences.glade:2863
 msgid ""
 "This project is Open Source. You can take a look inside the whole source "
 "code of this extension on GitHub."
@@ -240,15 +248,15 @@ msgstr ""
 "Dieses Projekt ist quelloffen (Open Source). Du kannst den kompletten Code "
 "auf GitHub einsehen."
 
-#: 5.4/res/preferences.glade:2799
+#: 5.4/res/preferences.glade:2874
 msgid "Source Code on GitHub"
 msgstr "Quellcode auf GitHub"
 
-#: 5.4/res/preferences.glade:2824
+#: 5.4/res/preferences.glade:2899
 msgid "Issues and Enhancements"
 msgstr "Probleme und Verbesserungen"
 
-#: 5.4/res/preferences.glade:2853
+#: 5.4/res/preferences.glade:2928
 msgid ""
 "Do you find an issue? Or want a new feature? Go to the GitHub repository and "
 "create a new issue."
@@ -256,18 +264,18 @@ msgstr ""
 "Hast du ein Problem entdeckt? Oder hättest du gerne ein Feature "
 "implementiert? Besuche das GitHub Repository und erstelle ein Ticket."
 
-#: 5.4/res/preferences.glade:2864
+#: 5.4/res/preferences.glade:2939
 msgid "Create a new issue on GitHub"
 msgstr "Erstelle ein Ticket auf GitHub (auf Englisch)"
 
-#: 5.4/res/preferences.glade:2889
+#: 5.4/res/preferences.glade:2964
 msgid "About"
 msgstr "Über"
 
-#: 5.4/res/preferences.glade:2917
+#: 5.4/res/preferences.glade:2992
 msgid "Apply and close this window"
 msgstr "Anwenden und das Fenster schließen"
 
-#: 5.4/res/preferences.glade:2929
+#: 5.4/res/preferences.glade:3004
 msgid "Apply the settings without closing this window"
 msgstr "Anwenden ohne das Fenster zu schließen"

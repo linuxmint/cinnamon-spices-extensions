@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.3\n"
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-02-12 12:12+0100\n"
+"POT-Creation-Date: 2024-02-15 18:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,22 +177,30 @@ msgid "Picture aspect"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2556
-msgid "Dynamic Background color"
+msgid "Login Screen"
 msgstr ""
 
 #: 5.4/res/preferences.glade:2593
+msgid "Set the background image as Login Screen background"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2630
+msgid "Dynamic Background color"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2667
 msgid "Use dynamic Background color to create a gradient"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2639
+#: 5.4/res/preferences.glade:2714
 msgid "Behaviour"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2658
+#: 5.4/res/preferences.glade:2733
 msgid "About the project"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2687
+#: 5.4/res/preferences.glade:2762
 msgid ""
 "Based on a location or by user choice, this extensions calculates the "
 "periods of a day and switches the background image of your Cinnamon desktop. "
@@ -200,56 +208,56 @@ msgid ""
 "heic image import by the user or a custom folder with single images."
 msgstr ""
 
-#: 5.4/res/preferences.glade:2706
+#: 5.4/res/preferences.glade:2781
 msgid "Developed by TobiZog"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2723
+#: 5.4/res/preferences.glade:2798
 msgid ""
 "If you need more information or want to rate the extension, you can visit "
 "the Cinnamon Spices Website."
 msgstr ""
 
-#: 5.4/res/preferences.glade:2734
+#: 5.4/res/preferences.glade:2809
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2759
+#: 5.4/res/preferences.glade:2834
 msgid "Source Code"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2788
+#: 5.4/res/preferences.glade:2863
 msgid ""
 "This project is Open Source. You can take a look inside the whole source "
 "code of this extension on GitHub."
 msgstr ""
 
-#: 5.4/res/preferences.glade:2799
+#: 5.4/res/preferences.glade:2874
 msgid "Source Code on GitHub"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2824
+#: 5.4/res/preferences.glade:2899
 msgid "Issues and Enhancements"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2853
+#: 5.4/res/preferences.glade:2928
 msgid ""
 "Do you find an issue? Or want a new feature? Go to the GitHub repository and "
 "create a new issue."
 msgstr ""
 
-#: 5.4/res/preferences.glade:2864
+#: 5.4/res/preferences.glade:2939
 msgid "Create a new issue on GitHub"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2889
+#: 5.4/res/preferences.glade:2964
 msgid "About"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2917
+#: 5.4/res/preferences.glade:2992
 msgid "Apply and close this window"
 msgstr ""
 
-#: 5.4/res/preferences.glade:2929
+#: 5.4/res/preferences.glade:3004
 msgid "Apply the settings without closing this window"
 msgstr ""
