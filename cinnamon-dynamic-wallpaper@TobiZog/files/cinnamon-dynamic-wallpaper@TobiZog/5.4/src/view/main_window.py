@@ -9,7 +9,7 @@ from gi.repository import Gtk, GdkPixbuf
 
 # Packages
 import subprocess, threading, time
-from datetime import timedelta, datetime, date
+from datetime import timedelta, datetime
 
 # Local scripts
 from model.main_view_model import *
@@ -34,6 +34,7 @@ class Main_Window:
 
 		# Glade
 		self.builder = Gtk.Builder()
+		self.builder.set_translation_domain(self.view_model.UUID)
 		self.builder.add_from_file(self.view_model.GLADE_URI)
 		self.builder.connect_signals(self)
 
@@ -149,6 +150,7 @@ class Main_Window:
 		# Page 3: Behaviour
 		self.cb_picture_aspect: Gtk.ComboBox = self.builder.get_object("cb_picture_aspect")
 		self.sw_dynamic_background_color: Gtk.Switch = self.builder.get_object("sw_dynamic_background_color")
+		self.sw_login_image: Gtk.Switch = self.builder.get_object("sw_login_image")
 
 
 	def show(self):
@@ -177,6 +179,7 @@ class Main_Window:
 		self.add_items_to_combo_box(self.cb_picture_aspect, self.view_model.picture_aspects)
 		self.set_active_combobox_item(self.cb_picture_aspect, self.view_model.cinnamon_prefs.picture_aspect)
 		self.sw_dynamic_background_color.set_active(self.view_model.cinnamon_prefs.dynamic_background_color)
+		self.sw_login_image.set_active(self.view_model.cinnamon_prefs.login_image)
 
 
 		# Show the main window
@@ -692,6 +695,16 @@ class Main_Window:
 		"""
 		self.view_model.cinnamon_prefs.dynamic_background_color = state
 
+	
+	def on_sw_login_image_state_set(self, _: Gtk.Switch, state: bool):
+		""" User switches login background image on or off
+
+		Args:
+				_ (Gtk.Switch): Used Switch
+				state (bool): Current state
+		"""
+		self.view_model.cinnamon_prefs.login_image = state
+
 
 	# About
 
@@ -746,6 +759,7 @@ class Main_Window:
 		# Use the new settings
 		self.view_model.refresh_image()
 		self.view_model.set_background_gradient()
+		self.view_model.set_login_image()
 
 
 	def on_destroy(self, *args):

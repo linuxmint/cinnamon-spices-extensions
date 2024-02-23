@@ -1,0 +1,10 @@
+*.glade~
+*.glade#
+*.txt
+*.json
+*.tar.gz
+extracted_images/
+selected/
+__pycache__
+time_bar.svg
+time_bar_polylines.svg

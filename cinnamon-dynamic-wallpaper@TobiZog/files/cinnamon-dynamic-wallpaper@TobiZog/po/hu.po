@@ -2,179 +2,182 @@
 # This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-02-15 18:38+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-02-15 15:38+0100\n"
+"Last-Translator: Vajda Örs <ors0092@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: 5.4/extension.js:75
 msgid "Welcome to Cinnamon Dynamic Wallpaper"
-msgstr ""
+msgstr "Üdvözöljük a Cinnamon Dinamikus Háttérkép alkalmazásban"
 
 #: 5.4/extension.js:76
 msgid "Check the preferences to choose a dynamic wallpaper"
-msgstr ""
+msgstr "Ellenőrizze a beállításokat a dinamikus háttér kiválasztásához"
 
 #: 5.4/extension.js:113
 msgid "Error!"
-msgstr ""
+msgstr "Hiba!"
 
 #: 5.4/extension.js:114
 msgid ""
 "Cinnamon Dynamic Wallpaper got an error while running the loop script. "
 "Please create an issue on GitHub."
 msgstr ""
+"A Cinnamon Dinamikus Háttérkép hibába ütközött a ciklusszkript futtatása "
+"során. Kérem készítsen egy hibajegyet a GitHub-on."
 
 #: 5.4/extension.js:139
 msgid "Open settings"
-msgstr ""
+msgstr "Beállítások megnyitása"
 
 #. metadata.json->name
 msgid "Cinnamon Dynamic Wallpaper"
-msgstr ""
+msgstr "Cinnamon Dinamikus Háttérkép"
 
 #. metadata.json->description
 msgid ""
 "Cinnamon extension for dynamic desktop backgrounds based on time and location"
-msgstr ""
+msgstr "Cinnamon bővítmény dinamikus asztali hátterekhez idő és hely alapján"
 
 #: 5.4/res/preferences.glade:135
 msgid "Image Source"
-msgstr ""
+msgstr "Képforrás"
 
 #: 5.4/res/preferences.glade:186
 msgid "Image Set"
-msgstr ""
+msgstr "Kép kollekció"
 
 #: 5.4/res/preferences.glade:236
 msgid "HEIC file"
-msgstr ""
+msgstr "HEIC fájl"
 
 #: 5.4/res/preferences.glade:286
 msgid "Source Folder"
-msgstr ""
+msgstr "Forrás Könyvtár"
 
 #: 5.4/res/preferences.glade:336
 msgid "Select an image set"
-msgstr ""
+msgstr "Válasszon ki egy kép kollekciót"
 
 #: 5.4/res/preferences.glade:379
 msgid "Select a heic file to import"
-msgstr ""
+msgstr "Válasszon ki egy heic fájlt az importáláshoz"
 
 #: 5.4/res/preferences.glade:430
 msgid "Select a source folder"
-msgstr ""
+msgstr "Válassza ki a forrás könyvtárat"
 
 #: 5.4/res/preferences.glade:440
 msgid "Open file selection dialog"
-msgstr ""
+msgstr "fájlkiválasztó párbeszédpanel megnyitása"
 
 #: 5.4/res/preferences.glade:492
 msgid "Image Selection"
-msgstr ""
+msgstr "Kép Kiválasztása"
 
 #: 5.4/res/preferences.glade:930
 msgid "Image Configuration"
-msgstr ""
+msgstr "Kép Beállítások"
 
 #: 5.4/res/preferences.glade:948
 msgid "Period estimation"
-msgstr ""
+msgstr "Periódus becslés"
 
 #: 5.4/res/preferences.glade:1001
 msgid "Use Network Location"
-msgstr ""
+msgstr "Hálózati helyzetfelismerés használata"
 
 #: 5.4/res/preferences.glade:1051
 msgid "Custom Location"
-msgstr ""
+msgstr "Egyéni helyszín"
 
 #: 5.4/res/preferences.glade:1103
 msgid "Custom Time Periods"
-msgstr ""
+msgstr "Egyéni idő periódusok"
 
 #: 5.4/res/preferences.glade:1132
 msgid "Location estimation"
-msgstr ""
+msgstr "Helyzet becslése"
 
 #: 5.4/res/preferences.glade:1167
 msgid "Interval time to refresh location via network (min)"
-msgstr ""
+msgstr "Helyzet frissítésének időköze (perc)"
 
 #: 5.4/res/preferences.glade:1212
 msgid "Location provider"
-msgstr ""
+msgstr "Helyszolgáltató"
 
 #: 5.4/res/preferences.glade:1274
 msgid "Latitude"
-msgstr ""
+msgstr "Szélességi kör"
 
 #: 5.4/res/preferences.glade:1317
 msgid "Longitude"
-msgstr ""
+msgstr "Hosszúság"
 
 #: 5.4/res/preferences.glade:1357
 msgid "Period 1"
-msgstr ""
+msgstr "Időszak 1"
 
 #: 5.4/res/preferences.glade:1371
 msgid "Period 2"
-msgstr ""
+msgstr "Időszak 2"
 
 #: 5.4/res/preferences.glade:1385
 msgid "Period 3"
-msgstr ""
+msgstr "Időszak 3"
 
 #: 5.4/res/preferences.glade:1399
 msgid "Period 4"
-msgstr ""
+msgstr "Időszak 4"
 
 #: 5.4/res/preferences.glade:1413
 msgid "Period 5"
-msgstr ""
+msgstr "Időszak 5"
 
 #: 5.4/res/preferences.glade:1914
 msgid "Period 6"
-msgstr ""
+msgstr "Időszak 6"
 
 #: 5.4/res/preferences.glade:1928
 msgid "Period 7"
-msgstr ""
+msgstr "Időszak 7"
 
 #: 5.4/res/preferences.glade:1942
 msgid "Period 9"
-msgstr ""
+msgstr "Időszak 9"
 
 #: 5.4/res/preferences.glade:1956
 msgid "Period 8"
-msgstr ""
+msgstr "Időszak 8"
 
 #: 5.4/res/preferences.glade:1970
 msgid "Period 10"
-msgstr ""
+msgstr "Időszak 10"
 
 #: 5.4/res/preferences.glade:2461
 msgid "Location & Times"
-msgstr ""
+msgstr "Hely és idő"
 
 #: 5.4/res/preferences.glade:2480
 msgid "Scaling"
-msgstr ""
+msgstr "Skálázás"
 
 #: 5.4/res/preferences.glade:2519
 msgid "Picture aspect"
-msgstr ""
+msgstr "Képarány"
 
 #: 5.4/res/preferences.glade:2556
 msgid "Login Screen"
@@ -186,19 +189,19 @@ msgstr ""
 
 #: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
-msgstr ""
+msgstr "Dinamikus háttérszín"
 
 #: 5.4/res/preferences.glade:2667
 msgid "Use dynamic Background color to create a gradient"
-msgstr ""
+msgstr "Használjon dinamikus háttérszínt színátmenet létrehozásához"
 
 #: 5.4/res/preferences.glade:2714
 msgid "Behaviour"
-msgstr ""
+msgstr "Viselkedés"
 
 #: 5.4/res/preferences.glade:2733
 msgid "About the project"
-msgstr ""
+msgstr "A projektről"
 
 #: 5.4/res/preferences.glade:2762
 msgid ""
@@ -207,57 +210,68 @@ msgid ""
 "The extension offers as image sources a set of preconfigured wallpapers, a "
 "heic image import by the user or a custom folder with single images."
 msgstr ""
+"Egy adott hely alapján, vagy a felhasználó által választott hely szerint ez "
+"az bővítmény kiszámítja a nap különböző időszakait, és megváltoztatja a "
+"háttérképet a Cinnamon asztalon. A bővítmény lehetőséget biztosít előre "
+"beállított háttérképek, a felhasználó által importált heic képek vagy egyéni "
+"mappában található egyedi képek használatára, háttérképként."
 
 #: 5.4/res/preferences.glade:2781
 msgid "Developed by TobiZog"
-msgstr ""
+msgstr "TobiZog által fejlesztve"
 
 #: 5.4/res/preferences.glade:2798
 msgid ""
 "If you need more information or want to rate the extension, you can visit "
 "the Cinnamon Spices Website."
 msgstr ""
+"Ha további információra van szüksége, vagy értékelni szeretné a bővítményt, "
+"keresse fel a Cinnamon Spices webhelyet."
 
 #: 5.4/res/preferences.glade:2809
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
-msgstr ""
+msgstr "Cinnamon Dinamikus Háttérkép a Cinnamon Spices webhelyen"
 
 #: 5.4/res/preferences.glade:2834
 msgid "Source Code"
-msgstr ""
+msgstr "Forráskód"
 
 #: 5.4/res/preferences.glade:2863
 msgid ""
 "This project is Open Source. You can take a look inside the whole source "
 "code of this extension on GitHub."
 msgstr ""
+"Ez a projekt nyílt forráskódú. A GitHubon megtekintheti a bővítmény teljes "
+"forráskódját."
 
 #: 5.4/res/preferences.glade:2874
 msgid "Source Code on GitHub"
-msgstr ""
+msgstr "Forráskód a GitHubon"
 
 #: 5.4/res/preferences.glade:2899
 msgid "Issues and Enhancements"
-msgstr ""
+msgstr "Problémák és fejlesztések"
 
 #: 5.4/res/preferences.glade:2928
 msgid ""
 "Do you find an issue? Or want a new feature? Go to the GitHub repository and "
 "create a new issue."
 msgstr ""
+"Problémát talált? Vagy új funkciót szeretne? Nyissa meg a GitHub-tárat, és "
+"hozzon létre egy új bejelentést."
 
 #: 5.4/res/preferences.glade:2939
 msgid "Create a new issue on GitHub"
-msgstr ""
+msgstr "Hozzon létre egy új bejentést a GitHubon"
 
 #: 5.4/res/preferences.glade:2964
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #: 5.4/res/preferences.glade:2992
 msgid "Apply and close this window"
-msgstr ""
+msgstr "Alkalmazza és zárja be ezt az ablakot"
 
 #: 5.4/res/preferences.glade:3004
 msgid "Apply the settings without closing this window"
-msgstr ""
+msgstr "Alkalmazza a beállításokat az ablak bezárása nélkül"
