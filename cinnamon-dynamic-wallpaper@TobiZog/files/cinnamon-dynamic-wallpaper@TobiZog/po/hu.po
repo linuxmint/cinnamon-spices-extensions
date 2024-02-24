@@ -4,12 +4,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.3\n"
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-02-15 18:38+0100\n"
-"PO-Revision-Date: 2024-02-15 15:38+0100\n"
-"Last-Translator: Vajda Örs <ors0092@gmail.com>\n"
+"POT-Creation-Date: 2024-02-24 10:06-0500\n"
+"PO-Revision-Date: 2024-02-24 15:59+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Válassza ki a forrás könyvtárat"
 
 #: 5.4/res/preferences.glade:440
 msgid "Open file selection dialog"
-msgstr "fájlkiválasztó párbeszédpanel megnyitása"
+msgstr "Fájlkiválasztó párbeszédpanel megnyitása"
 
 #: 5.4/res/preferences.glade:492
 msgid "Image Selection"
@@ -181,11 +181,11 @@ msgstr "Képarány"
 
 #: 5.4/res/preferences.glade:2556
 msgid "Login Screen"
-msgstr ""
+msgstr "Bejelentkezési képernyő"
 
 #: 5.4/res/preferences.glade:2593
 msgid "Set the background image as Login Screen background"
-msgstr ""
+msgstr "Állítsa be a háttérképet a bejelentkezési képernyő háttereként"
 
 #: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
