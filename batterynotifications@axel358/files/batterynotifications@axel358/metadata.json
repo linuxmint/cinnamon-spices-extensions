@@ -1,0 +1,9 @@
+{
+    "uuid": "batterynotifications@axel358",
+    "name": "Battery Notifications",
+    "description": "Monitor and show notifications about battery status",
+    "cinnamon-version": [
+      "5.8",
+      "6.0"
+    ]
+}

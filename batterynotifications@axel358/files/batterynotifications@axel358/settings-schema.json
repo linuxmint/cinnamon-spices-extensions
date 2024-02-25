@@ -1,0 +1,30 @@
+{
+   "head": {
+      "type": "header",
+      "description": "Settings"
+   },
+   "complete-value": {
+      "type": "spinbutton",
+      "default": 100,
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "units": "%",
+      "description": "Charge complete value",
+      "tooltip": "Charge complete value"
+   },
+   "low-value": {
+      "type": "spinbutton",
+      "default": 20,
+      "min": 10,
+      "max": 90,
+      "step": 1,
+      "units": "%",
+      "description": "Battery low value",
+      "tooltip": "Battery low value"
+   },
+   "first-launch": {
+      "type": "generic",
+      "default": true
+   }
+}
