@@ -8,14 +8,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-02-15 18:38+0100\n"
-"PO-Revision-Date: 2024-02-15 16:46+0300\n"
-"Last-Translator: blogdron\n"
+"PO-Revision-Date: 2024-03-02 20:37+0300\n"
+"Last-Translator: Alexander Savvin <savvin@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: 5.4/extension.js:75
 msgid "Welcome to Cinnamon Dynamic Wallpaper"
@@ -23,7 +23,7 @@ msgstr "Добро пожаловать в Динамические обои"
 
 #: 5.4/extension.js:76
 msgid "Check the preferences to choose a dynamic wallpaper"
-msgstr "Проверьте настройки, чтобы выбрать динамические обои"
+msgstr "Для выбора динамических обоев проверьте настройки"
 
 #: 5.4/extension.js:113
 msgid "Error!"
@@ -34,8 +34,8 @@ msgid ""
 "Cinnamon Dynamic Wallpaper got an error while running the loop script. "
 "Please create an issue on GitHub."
 msgstr ""
-"В Динамических Обоях Cinnamon возникла ошибка при запуске сценария цикла. "
-"Создайте сообщение на GitHub."
+"При запуске сценария цикла в Cinnamon Dynamic Wallpaper возникла ошибка. "
+"Сообщите о ней на GitHub."
 
 #: 5.4/extension.js:139
 msgid "Open settings"
@@ -43,7 +43,7 @@ msgstr "Открыть настройки"
 
 #. metadata.json->name
 msgid "Cinnamon Dynamic Wallpaper"
-msgstr "Динамические Обои (Cinnamon Dynamic Wallpaper)"
+msgstr "Динамические обои Cinnamon"
 
 #. metadata.json->description
 msgid ""
@@ -182,19 +182,19 @@ msgstr "Соотношение сторон"
 
 #: 5.4/res/preferences.glade:2556
 msgid "Login Screen"
-msgstr ""
+msgstr "Экран входа"
 
 #: 5.4/res/preferences.glade:2593
 msgid "Set the background image as Login Screen background"
-msgstr ""
+msgstr "Установить текущий фон в качестве фона экрана входа"
 
 #: 5.4/res/preferences.glade:2630
 msgid "Dynamic Background color"
-msgstr "Динамический Фоновый цвет"
+msgstr "Цвет динамического фона"
 
 #: 5.4/res/preferences.glade:2667
 msgid "Use dynamic Background color to create a gradient"
-msgstr "Используйте динамический цвет фона для создания градиента"
+msgstr "Используйте цвет динамического фона для создания градиента"
 
 #: 5.4/res/preferences.glade:2714
 msgid "Behaviour"
@@ -212,9 +212,9 @@ msgid ""
 "heic image import by the user or a custom folder with single images."
 msgstr ""
 "В зависимости от местоположения или по выбору пользователя это расширение "
-"рассчитывает периоды дня и переключает фоновое изображение рабочего стола "
+"рассчитывает периоды суток и переключает фоновое изображение рабочего стола "
 "Cinnamon. Расширение предлагает в качестве источников изображений набор "
-"предварительно настроенных обоев, импорт изображений Heic пользователем или "
+"предустановленных обоев, импорт изображений Heic пользователем или "
 "пользовательский каталог с отдельными изображениями."
 
 #: 5.4/res/preferences.glade:2781
