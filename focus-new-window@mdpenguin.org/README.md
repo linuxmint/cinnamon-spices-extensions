@@ -2,7 +2,7 @@
 
 GNOME's handling of window focus to prevent focus-stealing has caused a lot of programs to open windows in the background rather than having them open in the foreground, focused and ready to be used ([bug report](https://gitlab.gnome.org/GNOME/mutter/-/issues/673)).  Unfortunately, this issue made its way into Cinnamon and affects a lot of commonly used programs, such as the file picker from VSCode.  This extension overrides the way that Cinnamon handles windows that are requesting attention so that they will be raised to the foreground and focused.
 
-![Preview](./screenshot.png)
+![](./screenshot.png)
 
 ## Options
 - Raise window only of listed programs
