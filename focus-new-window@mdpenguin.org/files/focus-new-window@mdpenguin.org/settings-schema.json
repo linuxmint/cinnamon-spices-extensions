@@ -1,0 +1,15 @@
+{
+    "raiseSome": {
+        "type": "checkbox",
+        "description": "Raise windows only of listed programs",
+        "tooltip": "Disabling this will cause windows from all programs to receive focus if they demand attention",
+        "default": true
+    },
+    "programList": {
+        "type": "entry",
+        "description": "Programs to include",
+        "tooltip": "Comma separated list of programs that should always have their windows receive focus",
+        "dependency": "raiseSome",
+        "default": ""
+    }
+}
