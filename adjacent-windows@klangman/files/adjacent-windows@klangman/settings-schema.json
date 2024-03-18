@@ -1,0 +1,63 @@
+{
+   "keybinding-header": {
+      "type": "header",
+      "description": "Hotkeys to switch focus relative to the current window"
+   },
+   "left-key": {
+      "type": "keybinding",
+       "description": "Activate window to the left",
+       "default": "<Alt><Super>Left"
+   },
+   "right-key": {
+      "type": "keybinding",
+       "description": "Activate window to the right",
+       "default": "<Alt><Super>Right"
+   },
+   "up-key": {
+      "type": "keybinding",
+       "description": "Activate window above",
+       "default": "<Alt><Super>Up"
+   },
+   "down-key": {
+      "type": "keybinding",
+       "description": "Activate window below",
+       "default": "<Alt><Super>Down"
+   },
+   "under-key": {
+      "type": "keybinding",
+       "description": "Activate window under",
+       "default": "<Alt><Super>KP_Insert",
+       "tooltip": "Switch to the next window in the z-order that is overlapped by the current window. If the key combo is pressed again within 3 sec, the focus will change to the next window beneath the window that originally had the focus during the fist key combo press."
+   },
+   "back-key": {
+      "type": "keybinding",
+       "description": "Undo the focus change",
+       "default": ""
+   },
+   "settings-header": {
+      "type": "header",
+      "description": "Other settings"
+   },
+  "next-focus": {
+    "type": "combobox",
+    "default": 2,
+    "options": {
+       "Closest to the current window": 0,
+       "Highest in the z-order": 1,
+       "Closest with a visible corner": 2
+    },
+    "description": "Activate the window that is...",
+    "tooltip": "When using the Left, Right, Above or Below hotkeys, activate the window that is either:\n- Closest to the current window: this might activate a window that is currently completely obscured by other windows.\n- Highest in the z-order: most recently focused; this might skip over visible windows that are closer to the current window.\n- Closest window with a visible corner: a compromise that is designed to be more like what most people would generally expect (I hope)."
+  },
+  "include-minimized": {
+    "type": "switch",
+    "default": false,
+    "description": "Allow switching to minimized windows",
+    "dependency" : "next-focus<1"
+  },
+  "include-other-monitors": {
+    "type": "switch",
+    "default": false,
+    "description": "Allow switching to windows on other monitors"
+  }
+}
