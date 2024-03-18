@@ -1,0 +1,9 @@
+{
+  "uuid": "adjacent-windows@klangman",
+  "name": "Adjacent Windows",
+  "version": "1.0.0",
+  "description": "Use hotkeys to switch to adjacent windows",
+  "url": "https://github.com/klangman/Adjacent-Windows",
+  "website": "https://github.com/klangman/Adjacent-Windows",
+  "cinnamon-version": ["5.4"]
+}
