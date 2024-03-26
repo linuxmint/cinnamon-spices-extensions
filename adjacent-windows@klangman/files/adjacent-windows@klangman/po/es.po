@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: adjacent-windows@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-03-17 22:29-0400\n"
+"POT-Creation-Date: 2024-03-25 21:17-0400\n"
 "PO-Revision-Date: 2024-03-18 01:00-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -25,32 +25,32 @@ msgstr "Ventanas adyacentes"
 msgid "Use hotkeys to switch to adjacent windows"
 msgstr "Utilice teclas de acceso rápido para cambiar a ventanas adyacentes"
 
-#. settings-schema.json->keybinding-header->description
+#. 5.4->settings-schema.json->keybinding-header->description
 msgid "Hotkeys to switch focus relative to the current window"
 msgstr ""
 "Teclas de acceso rápido para cambiar el enfoque relativo a la ventana actual"
 
-#. settings-schema.json->left-key->description
+#. 5.4->settings-schema.json->left-key->description
 msgid "Activate window to the left"
 msgstr "Activar ventana a la izquierda"
 
-#. settings-schema.json->right-key->description
+#. 5.4->settings-schema.json->right-key->description
 msgid "Activate window to the right"
 msgstr "Activar ventana a la derecha"
 
-#. settings-schema.json->up-key->description
+#. 5.4->settings-schema.json->up-key->description
 msgid "Activate window above"
 msgstr "Activar la ventana de arriba"
 
-#. settings-schema.json->down-key->description
+#. 5.4->settings-schema.json->down-key->description
 msgid "Activate window below"
 msgstr "Activar la ventana de abajo"
 
-#. settings-schema.json->under-key->description
+#. 5.4->settings-schema.json->under-key->description
 msgid "Activate window under"
 msgstr "Activar ventana debajo"
 
-#. settings-schema.json->under-key->tooltip
+#. 5.4->settings-schema.json->under-key->tooltip
 msgid ""
 "Switch to the next window in the z-order that is overlapped by the current "
 "window. If the key combo is pressed again within 3 sec, the focus will "
@@ -63,31 +63,31 @@ msgstr ""
 "ventana que tenía el foco originalmente durante la primera pulsación de la "
 "combinación de teclas."
 
-#. settings-schema.json->back-key->description
+#. 5.4->settings-schema.json->back-key->description
 msgid "Undo the focus change"
 msgstr "Deshacer el cambio de enfoque"
 
-#. settings-schema.json->settings-header->description
+#. 5.4->settings-schema.json->settings-header->description
 msgid "Other settings"
 msgstr "Otros ajustes"
 
-#. settings-schema.json->next-focus->options
+#. 5.4->settings-schema.json->next-focus->options
 msgid "Closest to the current window"
 msgstr "Más cerca de la ventana actual"
 
-#. settings-schema.json->next-focus->options
+#. 5.4->settings-schema.json->next-focus->options
 msgid "Highest in the z-order"
 msgstr "Más alta en el orden z"
 
-#. settings-schema.json->next-focus->options
+#. 5.4->settings-schema.json->next-focus->options
 msgid "Closest with a visible corner"
 msgstr "Más cercana con una esquina visible"
 
-#. settings-schema.json->next-focus->description
+#. 5.4->settings-schema.json->next-focus->description
 msgid "Activate the window that is..."
 msgstr "Active la ventana que está..."
 
-#. settings-schema.json->next-focus->tooltip
+#. 5.4->settings-schema.json->next-focus->tooltip
 msgid ""
 "When using the Left, Right, Above or Below hotkeys, activate the window that "
 "is either:\n"
@@ -107,10 +107,40 @@ msgstr ""
 "- Ventana más cercana con una esquina visible: un compromiso diseñado para "
 "que se parezca más a lo que la mayoría de la gente esperaría (espero)."
 
-#. settings-schema.json->include-minimized->description
+#. 5.4->settings-schema.json->overlap-allowance->units
+msgid "pixels"
+msgstr ""
+
+#. 5.4->settings-schema.json->overlap-allowance->description
+msgid "Corner overlap allowance / minimum visibility"
+msgstr ""
+
+#. 5.4->settings-schema.json->overlap-allowance->tooltip
+msgid ""
+"Sets how many pixels a corner can be obscured by other windows and still be "
+"considered a candidate window. Also sets the minimum amount of window "
+"visibility in order to qualify as a candidate window"
+msgstr ""
+
+#. 5.4->settings-schema.json->boost-restriction->units
+msgid "priority"
+msgstr ""
+
+#. 5.4->settings-schema.json->boost-restriction->description
+msgid "Increase the priority of direction alignment"
+msgstr ""
+
+#. 5.4->settings-schema.json->boost-restriction->tooltip
+msgid ""
+"Increasing this setting gives more priority to windows that occupy the same "
+"area as the current window in the desired direction, and less priority to "
+"widows that are at an offset but closer. Max 85%"
+msgstr ""
+
+#. 5.4->settings-schema.json->include-minimized->description
 msgid "Allow switching to minimized windows"
 msgstr "Permitir el cambio a ventanas minimizadas"
 
-#. settings-schema.json->include-other-monitors->description
+#. 5.4->settings-schema.json->include-other-monitors->description
 msgid "Allow switching to windows on other monitors"
 msgstr "Permitir el cambio a ventanas de otros monitores"

@@ -1,10 +1,10 @@
 # Adjacent Windows
-A Cinnamon extension that allows you to define hot keys which will activate the nearest window to the current window on the left, right, above, below or underneath. There is also an option (disabled by default) to undo the window change and activate the window that previously had the focus. With this extension you can easily switch the window focus without reaching for the mouse and it's faster than using Alt-TAB. It's particularly useful for people frequently who use window tiling.
+A Cinnamon extension that allows you to define hotkeys which will activate the nearest window to the current window on the left, right, above, below or underneath. There is also an option (disabled by default) to undo the window change and activate the window that previously had the focus. With this extension you can easily change the window focus without reaching for the mouse and it's faster than using Alt-TAB. It's particularly useful for people who frequently use window tiling.
 
-By default the Super+Alt+(arrow-keys) are defined as the hotkeys to move to adjacent windows, but this can be changed in the configuration. If you like, for instance, the Vim key bindings, you could change them to Super+h/j/k/l. The default hotkey for activating windows underneath the current window is Super+Alt+Insert (Keypad)
+By default the Super+Alt+(arrow-keys) are defined as the hotkeys to move to adjacent windows, but this can be changed in the configuration. If for example, you like the Vim key bindings, you could change the hotkeys to be Super+h/j/k/l. The default hotkey for activating windows underneath the current window is Super+Alt+Insert (Keypad).
 
 ## Requirements
-This applet requires at least Mint 21 / Cinnamon 5.4 because the Meta.Window.get_frame_rect() API is needed.
+This extension requires at least Linux Mint 21 / Cinnamon 5.4 because the Meta.Window.get_frame_rect() API is needed.
 
 ## Installation
 1. Right click on the cinnamon panel and click "System Settings"
