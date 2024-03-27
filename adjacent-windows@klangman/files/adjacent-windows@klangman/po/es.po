@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-03-25 21:17-0400\n"
-"PO-Revision-Date: 2024-03-18 01:00-0300\n"
+"PO-Revision-Date: 2024-03-26 22:52-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -109,11 +109,11 @@ msgstr ""
 
 #. 5.4->settings-schema.json->overlap-allowance->units
 msgid "pixels"
-msgstr ""
+msgstr "pixeles"
 
 #. 5.4->settings-schema.json->overlap-allowance->description
 msgid "Corner overlap allowance / minimum visibility"
-msgstr ""
+msgstr "Solapamiento de esquinas / visibilidad mínima"
 
 #. 5.4->settings-schema.json->overlap-allowance->tooltip
 msgid ""
@@ -121,14 +121,18 @@ msgid ""
 "considered a candidate window. Also sets the minimum amount of window "
 "visibility in order to qualify as a candidate window"
 msgstr ""
+"Establece cuántos píxeles puede estar oscurecida una esquina por otras "
+"ventanas y seguir considerándose una ventana candidata. También establece la "
+"cantidad mínima de visibilidad de la ventana para que se considere una "
+"ventana candidata"
 
 #. 5.4->settings-schema.json->boost-restriction->units
 msgid "priority"
-msgstr ""
+msgstr "prioridad"
 
 #. 5.4->settings-schema.json->boost-restriction->description
 msgid "Increase the priority of direction alignment"
-msgstr ""
+msgstr "Aumentar la prioridad de la alineación de las direcciones"
 
 #. 5.4->settings-schema.json->boost-restriction->tooltip
 msgid ""
@@ -136,6 +140,9 @@ msgid ""
 "area as the current window in the desired direction, and less priority to "
 "widows that are at an offset but closer. Max 85%"
 msgstr ""
+"Aumentar este ajuste da más prioridad a las ventanas que ocupan la misma "
+"área que la ventana actual en la dirección deseada, y menos prioridad a las "
+"ventanas que están desplazadas pero más cerca. Máximo 85%"
 
 #. 5.4->settings-schema.json->include-minimized->description
 msgid "Allow switching to minimized windows"
