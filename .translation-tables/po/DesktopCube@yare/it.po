@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 21:49+0000\n"
+"PO-Revision-Date: 2022-06-03 10:52+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Cubo Desktop"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Animazione simile a un cubo di Compiz per la commutazione dell'area di lavoro"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Generale"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Durata animazione"
+
+#. settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Allontana la proporzione dallo schermo"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Effetti"
+
+#. settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Effetto scala"
+
+#. settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Effetto non in scala"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Effetto inizio rotazione"
+
+#. settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Effetto fine rotazione"
+
+#. settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Impostazioni di Sistema"
+
+#. settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Apri le Impostazioni di Cinnamon per gestire le Aree di Lavoro"

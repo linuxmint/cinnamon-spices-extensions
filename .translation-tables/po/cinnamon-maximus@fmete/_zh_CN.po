@@ -1,0 +1,54 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr ""
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr ""
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr ""
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr ""
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr ""
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating"
+msgstr ""
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr ""
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr ""

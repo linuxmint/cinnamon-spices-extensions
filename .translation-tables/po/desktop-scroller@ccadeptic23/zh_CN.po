@@ -1,0 +1,53 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. metadata.json->name
+msgid "Desktop Scroller"
+msgstr "桌面滚动工具"
+
+#. metadata.json->description
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr "通过在屏幕左侧和右侧边缘滚动在桌面之间切换。"
+
+#. settings-schema.json->showDirectionArrow->description
+msgid "Show direction arrow"
+msgstr "显示方向箭头"
+
+#. settings-schema.json->showDirectionArrow->tooltip
+msgid "Check this to show an arrow indicating scroll direction."
+msgstr "选中此项显示一个指示滚动方向的箭头。"
+
+#. settings-schema.json->activationAreaWidth->units
+msgid "pixels"
+msgstr "像素"
+
+#. settings-schema.json->activationAreaWidth->description
+msgid "Activation area width:"
+msgstr "激活区域宽度："
+
+#. settings-schema.json->activationAreaWidth->tooltip
+msgid "Width of activation areas"
+msgstr "激活区域的宽度"
+
+#. settings-schema.json->showActivationAreas->description
+msgid "Show activation areas"
+msgstr "显示激活区域"
+
+#. settings-schema.json->showActivationAreas->tooltip
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr "选中此项显示滚动将会切换桌面的区域。"

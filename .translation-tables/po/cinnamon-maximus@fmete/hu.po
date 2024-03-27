@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2021-09-26 08:24+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr "Ablakok díszítésének tetszés szerinti eltávolítása."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Cinnamon-Maximus beállítások"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr ""
+"Gyorsbillentyű használata az aktuális ablak díszítésének ki-/bekapcsolására"
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr ""
+"Globális gyorsbillentyű használata az aktuális ablak díszítésének ki-/"
+"bekapcsolására (Kísérleti funkció)"
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Díszítés eltávolítása csempe nézetben"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Összes ablak díszítésének eltávolítása (Kísérleti funkció, kérem csukja be "
+"és nyissa újra az összes ablakot)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr "Használja a figyelmen kívül hagyott alkalmazások listáját"
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr ""
+"Figyelmen kívül hagyott alkalmazások (használjon „,” a különböző "
+"alkalmazásokhoz, hozzávetőleges találat és regexp megengedett)"
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating"
+msgstr "Díszítések automatikus eltávolításának használata"
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+"Alkalmazások dekorációjának automatikus eltávolítása (használjon „,” a "
+"különböző alkalmazásokhoz, hozzávetőleges találat és regexp megengedett)"
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr "QT alkalmazásokra fókuszálás (Kísérleti funkció)"
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr "Naplózás (lásd: Melange - Log)"

@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Marcelo Aof, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 21:59+0000\n"
+"PO-Revision-Date: 2021-09-26 21:23-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. metadata.json->description
+msgid "Yet another nice transition effect for ws switching."
+msgstr "Escolha um bom efeito para a transição entre áreas de trabalho."
+
+#. metadata.json->name
+msgid "Slider"
+msgstr "Controle deslizante"
+
+#. settings-schema.json->animation-duration->units
+msgid "milliseconds"
+msgstr "milissegundos"
+
+#. settings-schema.json->animation-duration->description
+msgid "Animation Duration:"
+msgstr "Duração da animação:"
+
+#. settings-schema.json->animation-effect->description
+msgid "Animation Easing:"
+msgstr "Modo de aceleração e desaceleração da animação:"
+
+#. settings-schema.json->slip-factor->description
+msgid "Slip Factor:"
+msgstr "Quantidade de deslizamento:"
+
+#. settings-schema.json->sliding-background->description
+msgid "Sliding Background"
+msgstr "Plano de fundo deslizante"
+
+#. settings-schema.json->zoom-level->description
+msgid "Background Zoom Level:"
+msgstr "Quantidade de zoom no plano de fundo:"
+
+#. settings-schema.json->vertical-position->description
+msgid "Background Vertical Position:"
+msgstr "Posição vertical do plano de fundo:"
