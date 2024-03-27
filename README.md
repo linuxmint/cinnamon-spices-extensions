@@ -129,6 +129,8 @@ Test your translations `.po` locally before uploading to Spices:
 ./cinnamon-spices-makepot UUID --install
 ```
 
+Ensure that the `.po` file you wish to install is located inside the `UUID/files/UUID/po/` directory.
+
 More info:
 ```
 ./cinnamon-spices-makepot --help
