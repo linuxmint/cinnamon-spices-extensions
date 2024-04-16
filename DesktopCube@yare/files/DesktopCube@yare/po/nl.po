@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"PO-Revision-Date: 2024-04-16 14:08+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Bureaubladkubus"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Compiz Cube-achtige animatie voor het wisselen van werkruimtes"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "Algemeen"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Animatieduur"
+
+#. settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Verhouding van het wegtrekken van het scherm"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Effecten"
+
+#. settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Vergroten effect"
+
+#. settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Verkleinen effect"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Begin draai-effect"
+
+#. settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Eind draai-effect"
+
+#. settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Systeeminstellingen"
+
+#. settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Open Cinnamon Instellingen om Werkruimtes te beheren"
