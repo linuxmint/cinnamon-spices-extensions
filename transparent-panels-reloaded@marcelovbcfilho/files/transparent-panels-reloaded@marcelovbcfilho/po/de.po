@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: NikoKrause\n"
 "Language-Team: \n"
@@ -14,16 +15,16 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:172
+#: extension.js:199
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s aktiviert"
 
-#: extension.js:173
+#: extension.js:200
 msgid "Open the extension settings and customize your panels"
 msgstr "Einstellungen der Erweiterung öffnen und Leisten anpassen"
 
-#: extension.js:176
+#: extension.js:203
 msgid "Open settings"
 msgstr "Einstellungen öffnen"
 
@@ -32,61 +33,49 @@ msgid "Transparent panels reloaded"
 msgstr "Transparente Leisten"
 
 #. metadata.json->description
-msgid "Make your panels transparent (or not) and change their color as you wish"
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
 msgstr "Macht Leisten durchsichtig, wenn Fenster nicht maximiert sind"
 
 #. settings-schema.json->section-general->description
 msgid "General"
 msgstr "Allgemein"
 
-#. settings-schema.json->transparency-type->description
-msgid "Type of transparency"
-msgstr "Art der Transparenz"
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr ""
 
-#. settings-schema.json->transparency-type->options
-msgid "With shadow"
-msgstr "Mit Schatten"
-
-#. settings-schema.json->transparency-type->options
-msgid "Fully transparent"
+#. settings-schema.json->transparency-always->description
+#, fuzzy
+msgid "Always transparent"
 msgstr "Durchsichtig"
 
-#. settings-schema.json->transparency-type->options
-msgid "Semi-transparent"
-msgstr "Halbdurchsichtig"
-
-#. settings-schema.json->transparency-type->tooltip
-msgid "Choose the type of transparency you want."
-msgstr "Wählen Sie die gewünschte Transparenzart."
-
-#. settings-schema.json->theme-defined->description
-msgid "Use current theme styles"
-msgstr "Aktuellen Themen-Stil verwenden"
-
-#. settings-schema.json->theme-defined->tooltip
+#. settings-schema.json->transparency-always->tooltip
 msgid ""
-"Only for supported themes. Let the theme style the panels instead of using "
-"the extension presets. Use this in case the panels transparency is "
-"icorrectly set."
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
 msgstr ""
-"Nur für unterstützte Themen. Lassen Sie das Thema die Leisten gestalten, "
-"anstatt die Voreinstellungen der Erweiterung zu verwenden. Verwenden Sie "
-"dies, wenn die Transparenz der Leisten nicht korrekt eingestellt ist."
 
-#. settings-schema.json->opacify->description
-msgid "Remove theme transparency (experimental)"
-msgstr "Transparenz des Themas entfernen (experimentell)"
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr ""
 
-#. settings-schema.json->opacify->tooltip
-msgid "Remove panel transparency when it's not transparent."
-msgstr "Leistentransparenz entfernen, wenn Leiste nicht transparent ist."
+#. settings-schema.json->custom-panel-color->description
+#, fuzzy
+msgid "Custom panel color"
+msgstr "Untere Leiste"
 
 #. settings-schema.json->section-filters->description
-msgid "Filter panels"
+#, fuzzy
+msgid "Filter panels (WIP)"
 msgstr "Leistenauswahl"
 
 #. settings-schema.json->filters-description->description
-msgid "Select the panels that will be affected by this extension."
+#, fuzzy
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
 msgstr ""
 "Auswahl der Leisten, die von dieser Erweiterung verändert werden sollen."
 
@@ -105,6 +94,3 @@ msgstr "Untere Leiste"
 #. settings-schema.json->panel-left->description
 msgid "Left panel"
 msgstr "Linke Leiste"
-
-#~ msgid "Defined by theme"
-#~ msgstr "Definiert nach Thema"
