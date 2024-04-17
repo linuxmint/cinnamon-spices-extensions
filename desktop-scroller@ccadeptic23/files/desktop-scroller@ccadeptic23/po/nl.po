@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"PO-Revision-Date: 2024-04-17 09:20+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Desktop Scroller"
+msgstr "Bureaublad Scroller"
+
+#. metadata.json->description
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Wissel tussen bureaubladen door te scrollen aan de linker- en rechterranden "
+"van het scherm."
+
+#. settings-schema.json->showDirectionArrow->description
+msgid "Show direction arrow"
+msgstr "Toon richtingspijl"
+
+#. settings-schema.json->showDirectionArrow->tooltip
+msgid "Check this to show an arrow indicating scroll direction."
+msgstr "Vink dit aan om een pijl te tonen die de scrollrichting aangeeft."
+
+#. settings-schema.json->activationAreaWidth->units
+msgid "pixels"
+msgstr "pixels"
+
+#. settings-schema.json->activationAreaWidth->description
+msgid "Activation area width:"
+msgstr "Breedte van activeringsgebied:"
+
+#. settings-schema.json->activationAreaWidth->tooltip
+msgid "Width of activation areas"
+msgstr "Breedte van de activeringsgebieden"
+
+#. settings-schema.json->showActivationAreas->description
+msgid "Show activation areas"
+msgstr "Toon activeringsgebieden"
+
+#. settings-schema.json->showActivationAreas->tooltip
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Vink dit aan om de gebieden te tonen waar erover scrollen het bureaublad zal "
+"wisselen."
