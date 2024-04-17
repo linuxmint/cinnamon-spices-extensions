@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: focus-new-window@mdpenguin 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-03-09 16:48-0500\n"
+"PO-Revision-Date: 2024-04-17 09:33+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Focus New Window"
+msgstr "Focus Nieuw Venster"
+
+#. metadata.json->description
+msgid "A Cinnamon extension that ensures new windows will receive focus"
+msgstr ""
+"Een Cinnamon-extensie die ervoor zorgt dat nieuwe vensters de focus krijgen"
+
+#. settings-schema.json->raiseSome->description
+msgid "Raise windows only of listed programs"
+msgstr "Alleen vensters van genoemde programma's naar voren brengen"
+
+#. settings-schema.json->raiseSome->tooltip
+msgid ""
+"Disabling this will cause windows from all programs to receive focus if they "
+"demand attention"
+msgstr ""
+"Door dit uit te schakelen, ontvangen vensters van alle programma's de focus "
+"als ze om aandacht vragen"
+
+#. settings-schema.json->programList->description
+msgid "Programs to include"
+msgstr "Op te nemen programma's"
+
+#. settings-schema.json->programList->tooltip
+msgid ""
+"Comma separated list of programs that should always have their windows "
+"receive focus"
+msgstr ""
+"Door komma's gescheiden lijst van programma's waarvan de vensters altijd de "
+"focus moeten krijgen"
