@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
 "PO-Revision-Date: 2021-09-26 08:37+0200\n"
 "Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
 "Language-Team: \n"
@@ -18,16 +19,16 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:172
+#: extension.js:199
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s engedélyezett"
 
-#: extension.js:173
+#: extension.js:200
 msgid "Open the extension settings and customize your panels"
 msgstr "Nyissa meg a kiegészítő beállításait és szabja testre paneljait"
 
-#: extension.js:176
+#: extension.js:203
 msgid "Open settings"
 msgstr "Beállítások megnyitása"
 
@@ -36,61 +37,49 @@ msgid "Transparent panels reloaded"
 msgstr "Áttetsző panel"
 
 #. metadata.json->description
-msgid "Make your panels transparent (or not) and change their color as you wish"
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
 msgstr "Átlátszóvá teheti a paneleket, ha nincsenek maximalizált ablakok"
 
 #. settings-schema.json->section-general->description
 msgid "General"
 msgstr "Általános"
 
-#. settings-schema.json->transparency-type->description
-msgid "Type of transparency"
-msgstr "Áttetszőség típusa"
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr ""
 
-#. settings-schema.json->transparency-type->options
-msgid "With shadow"
-msgstr "Árnyékkal"
-
-#. settings-schema.json->transparency-type->options
-msgid "Fully transparent"
+#. settings-schema.json->transparency-always->description
+#, fuzzy
+msgid "Always transparent"
 msgstr "Teljesen áttetsző"
 
-#. settings-schema.json->transparency-type->options
-msgid "Semi-transparent"
-msgstr "Félig áttetsző"
-
-#. settings-schema.json->transparency-type->tooltip
-msgid "Choose the type of transparency you want."
-msgstr "Válassza ki milyen típusú áttetszőséget szeretne."
-
-#. settings-schema.json->theme-defined->description
-msgid "Use current theme styles"
-msgstr "Jelenlegi téma használata"
-
-#. settings-schema.json->theme-defined->tooltip
+#. settings-schema.json->transparency-always->tooltip
 msgid ""
-"Only for supported themes. Let the theme style the panels instead of using "
-"the extension presets. Use this in case the panels transparency is "
-"icorrectly set."
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
 msgstr ""
-"Csak támogatott témákhoz. Hagyja, hogy a téma stílusozza a paneleket a "
-"bővítmény előre beállított stílusa helyett. Ezt abban az esetben használja, "
-"ha a panelek átlátszósága nem megfelelően van beállítva."
 
-#. settings-schema.json->opacify->description
-msgid "Remove theme transparency (experimental)"
-msgstr "Téma áttetszőség eltávolítása (kísérleti)"
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr ""
 
-#. settings-schema.json->opacify->tooltip
-msgid "Remove panel transparency when it's not transparent."
-msgstr "Panel áttetszőségének eltávolítása ahol az nem áttetsző."
+#. settings-schema.json->custom-panel-color->description
+#, fuzzy
+msgid "Custom panel color"
+msgstr "Alsó panel"
 
 #. settings-schema.json->section-filters->description
-msgid "Filter panels"
+#, fuzzy
+msgid "Filter panels (WIP)"
 msgstr "Panelek szűrése"
 
 #. settings-schema.json->filters-description->description
-msgid "Select the panels that will be affected by this extension."
+#, fuzzy
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
 msgstr "Panelek kiválasztása amelyekre ez a kiegészítő hatással lesz."
 
 #. settings-schema.json->panel-top->description

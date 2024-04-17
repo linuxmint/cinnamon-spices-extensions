@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: blogdron\n"
 "Language-Team: \n"
@@ -13,16 +14,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.1\n"
 
-#: extension.js:172
+#: extension.js:199
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s включено"
 
-#: extension.js:173
+#: extension.js:200
 msgid "Open the extension settings and customize your panels"
 msgstr "Откройте настройки расширения и преобразите ваши панели"
 
-#: extension.js:176
+#: extension.js:203
 msgid "Open settings"
 msgstr "Открыть настройки"
 
@@ -31,7 +32,8 @@ msgid "Transparent panels reloaded"
 msgstr "Улучшенные прозрачные панели (Transparent panels reloaded)"
 
 #. metadata.json->description
-msgid "Make your panels transparent (or not) and change their color as you wish"
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
 msgstr ""
 "Сделайте ваши панели прозрачными (или нет) и измените их цвет по своему "
 "желанию"
@@ -40,54 +42,41 @@ msgstr ""
 msgid "General"
 msgstr "Общие настройки"
 
-#. settings-schema.json->transparency-type->description
-msgid "Type of transparency"
-msgstr "Тип прозрачности"
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr ""
 
-#. settings-schema.json->transparency-type->options
-msgid "With shadow"
-msgstr "С тенями"
-
-#. settings-schema.json->transparency-type->options
-msgid "Fully transparent"
+#. settings-schema.json->transparency-always->description
+#, fuzzy
+msgid "Always transparent"
 msgstr "Полная прозрачность"
 
-#. settings-schema.json->transparency-type->options
-msgid "Semi-transparent"
-msgstr "Полупрозрачность"
-
-#. settings-schema.json->transparency-type->tooltip
-msgid "Choose the type of transparency you want."
-msgstr "Выберите тип прозрачности, который вам нужен."
-
-#. settings-schema.json->theme-defined->description
-msgid "Use current theme styles"
-msgstr "Использовать стиль текущей темы оформления"
-
-#. settings-schema.json->theme-defined->tooltip
+#. settings-schema.json->transparency-always->tooltip
 msgid ""
-"Only for supported themes. Let the theme style the panels instead of using "
-"the extension presets. Use this in case the panels transparency is icorrectly "
-"set."
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
 msgstr ""
-"Только для поддерживаемых тем. Разрешить текущей теме оформлять панели вместо "
-"расширения. Используйте это если прозрачность выглядит некорректно."
 
-#. settings-schema.json->opacify->description
-msgid "Remove theme transparency (experimental)"
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
 msgstr ""
-"Убрать прозрачность заданную темой оформления (экспериментальная возможность)"
 
-#. settings-schema.json->opacify->tooltip
-msgid "Remove panel transparency when it's not transparent."
-msgstr "Убрать прозрачность панели, если она непрозрачна в теме оформления."
+#. settings-schema.json->custom-panel-color->description
+#, fuzzy
+msgid "Custom panel color"
+msgstr "Нижняя панель"
 
 #. settings-schema.json->section-filters->description
-msgid "Filter panels"
+#, fuzzy
+msgid "Filter panels (WIP)"
 msgstr "Выбор панелей"
 
 #. settings-schema.json->filters-description->description
-msgid "Select the panels that will be affected by this extension."
+#, fuzzy
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
 msgstr "Выберите панели для которых будет применено расширение."
 
 #. settings-schema.json->panel-top->description

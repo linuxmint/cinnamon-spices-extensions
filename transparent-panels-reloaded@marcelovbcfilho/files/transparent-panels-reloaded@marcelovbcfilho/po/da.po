@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 20:37+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
@@ -14,71 +15,68 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:166
+#: extension.js:199
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s aktiveret"
 
-#: extension.js:167
+#: extension.js:200
 msgid "Open the extension settings and customize your panels"
 msgstr "Åbn udvidelsens indstillinger og tilpas dine paneler"
 
-#: extension.js:170
+#: extension.js:203
 msgid "Open settings"
 msgstr "Åbn indstillinger"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "Gennemsigtige paneler"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr ""
+"Gør dine paneler gennemsigtige, når der ikke er nogen maksimerede vinduer"
 
 #. settings-schema.json->section-general->description
 msgid "General"
 msgstr "Generel"
 
-#. settings-schema.json->transparency-type->description
-msgid "Type of transparency"
-msgstr "Gennemsigtighedens art"
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr ""
 
-#. settings-schema.json->transparency-type->options
-msgid "With shadow"
-msgstr "Med skygge"
-
-#. settings-schema.json->transparency-type->options
-msgid "Fully transparent"
+#. settings-schema.json->transparency-always->description
+#, fuzzy
+msgid "Always transparent"
 msgstr "Helt gennemsigtig"
 
-#. settings-schema.json->transparency-type->options
-msgid "Semi-transparent"
-msgstr "Halvgennemsigtig"
-
-#. settings-schema.json->transparency-type->tooltip
-msgid "Choose the type of transparency you want."
-msgstr "Vælg den type gennemsigtighed, du ønsker."
-
-#. settings-schema.json->theme-defined->description
-msgid "Use current theme styles"
-msgstr "Brug det nuværende temas stil"
-
-#. settings-schema.json->theme-defined->tooltip
+#. settings-schema.json->transparency-always->tooltip
 msgid ""
-"Only for supported themes. Let the theme style the panels instead of using "
-"the extension presets. Use this in case the panels transparency is "
-"icorrectly set."
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
 msgstr ""
-"Kun til understøttede temaer. Lad temaet bestemme panelernes stil i stedet "
-"for at bruge udvidelsens forudindstillinger. Brug denne, hvis panelernes "
-"gennemsigtighed er sat forkert."
 
-#. settings-schema.json->opacify->description
-msgid "Remove theme transparency (experimental)"
-msgstr "Fjern temaets gennemsigtighed (eksperimentel)"
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr ""
 
-#. settings-schema.json->opacify->tooltip
-msgid "Remove panel transparency when it's not transparent."
-msgstr "Fjern panelets gennemsigtighed, når det ikke er gennemsigtigt."
+#. settings-schema.json->custom-panel-color->description
+#, fuzzy
+msgid "Custom panel color"
+msgstr "Nedre panel"
 
 #. settings-schema.json->section-filters->description
-msgid "Filter panels"
+#, fuzzy
+msgid "Filter panels (WIP)"
 msgstr "Filtrér paneler"
 
 #. settings-schema.json->filters-description->description
-msgid "Select the panels that will be affected by this extension."
+#, fuzzy
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
 msgstr "Vælg de paneler, som vil blive påvirket af denne udvidelse."
 
 #. settings-schema.json->panel-top->description
@@ -96,15 +94,3 @@ msgstr "Nedre panel"
 #. settings-schema.json->panel-left->description
 msgid "Left panel"
 msgstr "Venstre panel"
-
-#. metadata.json->name
-msgid "Transparent panels reloaded"
-msgstr "Gennemsigtige paneler"
-
-#. metadata.json->description
-msgid "Make your panels transparent (or not) and change their color as you wish"
-msgstr ""
-"Gør dine paneler gennemsigtige, når der ikke er nogen maksimerede vinduer"
-
-#~ msgid "Defined by theme"
-#~ msgstr "Defineret af tema"
