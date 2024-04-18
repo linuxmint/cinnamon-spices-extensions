@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: extension.js:199
 #, javascript-format
@@ -44,39 +44,39 @@ msgstr "General"
 #. settings-schema.json->transparency-amount->description
 #. settings-schema.json->transparency-amount->tooltip
 msgid "Opacity amount"
-msgstr ""
+msgstr "Grado de opacidad"
 
 #. settings-schema.json->transparency-always->description
-#, fuzzy
 msgid "Always transparent"
-msgstr "Totalmente transparente"
+msgstr "Siempre transparente"
 
 #. settings-schema.json->transparency-always->tooltip
 msgid ""
 "If enable the panels will always be transparent, if disable, only will be "
 "transparent if there is no maximized windows"
 msgstr ""
+"Si se activa los paneles serán siempre transparentes, si se desactiva, sólo "
+"serán transparentes si no hay ventanas maximizadas"
 
 #. settings-schema.json->use-custom-panel-color->description
 msgid "Use custom panel color"
-msgstr ""
+msgstr "Utilizar color de panel personalizado"
 
 #. settings-schema.json->custom-panel-color->description
-#, fuzzy
 msgid "Custom panel color"
-msgstr "Panel inferior"
+msgstr "Color de panel personalizado"
 
 #. settings-schema.json->section-filters->description
-#, fuzzy
 msgid "Filter panels (WIP)"
-msgstr "Filtrar paneles"
+msgstr "Filtrar paneles (Trabajo en curso)"
 
 #. settings-schema.json->filters-description->description
-#, fuzzy
 msgid ""
 "Select the panels that will be affected by this extension. (Work in progress/"
 "not working)"
-msgstr "Selecciona los paneles a los que afectará esta extensión."
+msgstr ""
+"Seleccione los paneles que se verán afectados por esta extensión. (Trabajo "
+"en curso/no funciona)"
 
 #. settings-schema.json->panel-top->description
 msgid "Top panel"
