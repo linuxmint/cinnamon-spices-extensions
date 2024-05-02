@@ -52,3 +52,15 @@ msgstr "Effect"
 #. settings-schema.json->h2->description
 msgid "End of Drag"
 msgstr "Einde van Slepen"
+
+msgid "Additional features"
+msgstr "Extra functies"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Geen"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "De ondoorzichtigheid voor onbepaalde tijd behouden"

@@ -88,7 +88,7 @@ function onBeginGrabOp(display, screen, window, op) {
 
 // window release handler
 function onEndGrabOp(display, screen, window, op) {
-    if (!window || !(originalOpacity in window) || settings.opacityKeep === 'true') return; // releasing a window we haven't touched or keep the opacity indefinitely
+    if (!window || !(originalOpacity in window) || settings.opacityKeep === 'true') return; // releasing a window we haven't touched or maintaining the opacity indefinitely
     
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 

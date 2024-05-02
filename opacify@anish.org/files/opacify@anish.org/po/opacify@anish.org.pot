@@ -51,3 +51,15 @@ msgstr ""
 #. settings-schema.json->h2->description
 msgid "End of Drag"
 msgstr ""
+
+msgid "Additional features"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Maintaining the opacity indefinitely"
+msgstr ""

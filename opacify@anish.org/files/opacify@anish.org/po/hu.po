@@ -51,3 +51,15 @@ msgstr "Effektus"
 #. settings-schema.json->h2->description
 msgid "End of Drag"
 msgstr "Áthelyezés vége"
+
+msgid "Additional features"
+msgstr "További jellemzők"
+
+msgid "Yes"
+msgstr "Igen"
+
+msgid "No"
+msgstr "Nem"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "Az átlátszatlanság határozatlan ideig történő fenntartása"

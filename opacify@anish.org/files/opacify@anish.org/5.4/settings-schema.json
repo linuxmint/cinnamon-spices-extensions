@@ -70,7 +70,7 @@
 	"opacityKeep": {
 		"type": "combobox",
 		"default": "No",
-        "description": "Keep the opacity indefinetly",
+        "description": "Maintaining the opacity indefinitely",
 		"options": {
 			"Yes": "true",
 			"No": "false"

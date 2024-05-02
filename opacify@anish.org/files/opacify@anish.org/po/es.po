@@ -51,3 +51,15 @@ msgstr "Efecto"
 #. settings-schema.json->h2->description
 msgid "End of Drag"
 msgstr "Fin del movimiento de la ventana"
+
+msgid "Additional features"
+msgstr "Características adicionales"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "No"
+msgstr "No"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "Mantener la opacidad indefinidamente"

@@ -197,3 +197,15 @@ msgstr "easeInCubic"
 #. opacify@anish.org->settings-schema.json->endEffect->options
 msgid "easeInOutBack"
 msgstr "easeInOutBack"
+
+msgid "Additional features"
+msgstr "附加功能"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "No"
+msgstr "没有"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "无限期保持不透明度"

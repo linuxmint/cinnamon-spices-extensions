@@ -52,3 +52,15 @@ msgstr "Effekt"
 #. settings-schema.json->h2->description
 msgid "End of Drag"
 msgstr "Slutningen på trækket"
+
+msgid "Additional features"
+msgstr "Yderligere funktioner"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "Behold uigennemsigtigheden på ubestemt tid"

@@ -202,3 +202,15 @@ msgstr ""
 #. opacify@anish.org->settings-schema.json->endEffect->options
 msgid "easeInOutBack"
 msgstr ""
+
+msgid "Additional features"
+msgstr "Ek özellikler"
+
+msgid "Yes"
+msgstr "Evet"
+
+msgid "No"
+msgstr "Hayır"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "Opaklığın süresiz olarak korunması"

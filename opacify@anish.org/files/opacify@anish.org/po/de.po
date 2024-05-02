@@ -142,3 +142,15 @@ msgstr "Ende des Fensterziehens"
 
 #~ msgid "easeInOutBounce"
 #~ msgstr "easeInOutBounce"
+
+msgid "Additional features"
+msgstr "Extra functies"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "Maintaining the opacity indefinitely"
+msgstr "Beibehaltung der Deckkraft auf unbestimmte Zeit"
