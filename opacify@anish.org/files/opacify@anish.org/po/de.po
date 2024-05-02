@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:31+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-05-03 00:41+0200\n"
 "PO-Revision-Date: 2021-03-02 22:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,121 +25,58 @@ msgstr "Durchsichtige Fenster"
 
 #. metadata.json->description
 msgid "Fade out the current window that the user is resizing or dragging."
-msgstr "Aktuelles Fenster beim Verschieben oder bei Größenänderung durchsichtig machen."
+msgstr ""
+"Aktuelles Fenster beim Verschieben oder bei Größenänderung durchsichtig "
+"machen."
 
 #. settings-schema.json->opacity->description
+#. 5.4->settings-schema.json->opacity->description
 msgid "Opacity"
 msgstr "Deckkraft"
 
 #. settings-schema.json->h1->description
+#. 5.4->settings-schema.json->h1->description
 msgid "Start of Drag"
 msgstr "Start des Fensterziehens"
 
 #. settings-schema.json->beginTime->description
 #. settings-schema.json->endTime->description
+#. 5.4->settings-schema.json->beginTime->description
+#. 5.4->settings-schema.json->endTime->description
 msgid "Transition time"
 msgstr "Dauer des Effektübergangs"
 
 #. settings-schema.json->beginTime->units
 #. settings-schema.json->endTime->units
+#. 5.4->settings-schema.json->beginTime->units
+#. 5.4->settings-schema.json->endTime->units
 msgid "milliseconds"
 msgstr "Millisekunden"
 
 #. settings-schema.json->beginEffect->description
 #. settings-schema.json->endEffect->description
+#. 5.4->settings-schema.json->beginEffect->description
+#. 5.4->settings-schema.json->endEffect->description
 msgid "Effect"
 msgstr "Effekte"
 
 #. settings-schema.json->h2->description
+#. 5.4->settings-schema.json->h2->description
 msgid "End of Drag"
 msgstr "Ende des Fensterziehens"
 
-#~ msgid "easeInQuad"
-#~ msgstr "easeInQuad"
+#. 5.4->settings-schema.json->h3->description
+msgid "Additional features"
+msgstr "Extra functies"
 
-#~ msgid "easeOutQuad"
-#~ msgstr "easeOutQuad"
+#. 5.4->settings-schema.json->opacityKeep->description
+msgid "Maintaining the opacity indefinitely"
+msgstr "Beibehaltung der Deckkraft auf unbestimmte Zeit"
 
-#~ msgid "easeInOutQuad"
-#~ msgstr "easeInOutQuad"
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "Yes"
+msgstr "Ja"
 
-#~ msgid "easeInCubic"
-#~ msgstr "easeInCubic"
-
-#~ msgid "easeOutCubic"
-#~ msgstr "easeOutCubic"
-
-#~ msgid "easeInOutCubic"
-#~ msgstr "easeInOutCubic"
-
-#~ msgid "easeInQuart"
-#~ msgstr "easeInQuart"
-
-#~ msgid "easeOutQuart"
-#~ msgstr "easeOutQuart"
-
-#~ msgid "easeInOutQuart"
-#~ msgstr "easeInOutQuart"
-
-#~ msgid "easeInQuint"
-#~ msgstr "easeInQuint"
-
-#~ msgid "easeOutQuint"
-#~ msgstr "easeOutQuint"
-
-#~ msgid "easeInOutQuint"
-#~ msgstr "easeInOutQuint"
-
-#~ msgid "easeInSine"
-#~ msgstr "easeInSine"
-
-#~ msgid "easeOutSine"
-#~ msgstr "easeOutSine"
-
-#~ msgid "easeInOutSine"
-#~ msgstr "easeInOutSine"
-
-#~ msgid "easeInExpo"
-#~ msgstr "easeInExpo"
-
-#~ msgid "easeOutExpo"
-#~ msgstr "easeOutExpo"
-
-#~ msgid "easeInOutExpo"
-#~ msgstr "easeInOutExpo"
-
-#~ msgid "easeInCirc"
-#~ msgstr "easeInCirc"
-
-#~ msgid "easeOutCirc"
-#~ msgstr "easeOutCirc"
-
-#~ msgid "easeInOutCirc"
-#~ msgstr "easeInOutCirc"
-
-#~ msgid "easeInElastic"
-#~ msgstr "easeInElastic"
-
-#~ msgid "easeOutElastic"
-#~ msgstr "easeOutElastic"
-
-#~ msgid "easeInOutElastic"
-#~ msgstr "easeInOutElastic"
-
-#~ msgid "easeInBack"
-#~ msgstr "easeInBack"
-
-#~ msgid "easeOutBack"
-#~ msgstr "easeOutBack"
-
-#~ msgid "easeInOutBack"
-#~ msgstr "easeInOutBack"
-
-#~ msgid "easeInBounce"
-#~ msgstr "easeInBounce"
-
-#~ msgid "easeOutBounce"
-#~ msgstr "easeOutBounce"
-
-#~ msgid "easeInOutBounce"
-#~ msgstr "easeInOutBounce"
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "No"
+msgstr "Nein"

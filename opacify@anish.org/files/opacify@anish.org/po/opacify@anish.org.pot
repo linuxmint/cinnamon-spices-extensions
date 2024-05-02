@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:31+0000\n"
+"Project-Id-Version: opacify@anish.org 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-05-03 00:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,28 +26,53 @@ msgid "Fade out the current window that the user is resizing or dragging."
 msgstr ""
 
 #. settings-schema.json->opacity->description
+#. 5.4->settings-schema.json->opacity->description
 msgid "Opacity"
 msgstr ""
 
 #. settings-schema.json->h1->description
+#. 5.4->settings-schema.json->h1->description
 msgid "Start of Drag"
 msgstr ""
 
 #. settings-schema.json->beginTime->description
 #. settings-schema.json->endTime->description
+#. 5.4->settings-schema.json->beginTime->description
+#. 5.4->settings-schema.json->endTime->description
 msgid "Transition time"
 msgstr ""
 
 #. settings-schema.json->beginTime->units
 #. settings-schema.json->endTime->units
+#. 5.4->settings-schema.json->beginTime->units
+#. 5.4->settings-schema.json->endTime->units
 msgid "milliseconds"
 msgstr ""
 
 #. settings-schema.json->beginEffect->description
 #. settings-schema.json->endEffect->description
+#. 5.4->settings-schema.json->beginEffect->description
+#. 5.4->settings-schema.json->endEffect->description
 msgid "Effect"
 msgstr ""
 
 #. settings-schema.json->h2->description
+#. 5.4->settings-schema.json->h2->description
 msgid "End of Drag"
+msgstr ""
+
+#. 5.4->settings-schema.json->h3->description
+msgid "Additional features"
+msgstr ""
+
+#. 5.4->settings-schema.json->opacityKeep->description
+msgid "Maintaining the opacity indefinitely"
+msgstr ""
+
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "Yes"
+msgstr ""
+
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "No"
 msgstr ""
