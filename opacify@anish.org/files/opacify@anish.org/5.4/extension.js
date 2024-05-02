@@ -49,6 +49,7 @@ SettingsHandler.prototype = {
 	this.settings.bindProperty(Settings.BindingDirection.IN, "beginEffect", "beginEffect", function(){});
 	this.settings.bindProperty(Settings.BindingDirection.IN, "endTime", "endTime", function(){});
 	this.settings.bindProperty(Settings.BindingDirection.IN, "endEffect", "endEffect", function(){});
+    this.settings.bindProperty(Settings.BindingDirection.IN, "opacityKeep", "opacityKeep", function(){});
     }
 }
 
@@ -87,7 +88,7 @@ function onBeginGrabOp(display, screen, window, op) {
 
 // window release handler
 function onEndGrabOp(display, screen, window, op) {
-    if (!window || !(originalOpacity in window)) return; // releasing a window we haven't touched
+    if (!window || !(originalOpacity in window) || settings.opacityKeep === 'true') return; // releasing a window we haven't touched or keep the opacity indefinitely
     
     if ((op == Meta.GrabOp.MOVING) || (op == Meta.GrabOp.KEYBOARD_MOVING) || 
         (op == Meta.GrabOp.RESIZING_E) || (op == Meta.GrabOp.RESIZING_N) || 

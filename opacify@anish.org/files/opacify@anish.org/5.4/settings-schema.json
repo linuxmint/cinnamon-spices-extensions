@@ -56,5 +56,25 @@
         "type": "tween",
         "description": "Effect",
         "default": "easeInSine"
-    }
+    },
+
+	"sep3": {
+        "type": "separator"
+    },
+
+	"h3": {
+        "type": "header",
+        "description": "Additional features"
+    },
+
+	"opacityKeep": {
+		"type": "combobox",
+		"default": "No",
+        "description": "Keep the opacity indefinetly",
+		"options": {
+			"Yes": "true",
+			"No": "false"
+		}
+	}
+	
 }
