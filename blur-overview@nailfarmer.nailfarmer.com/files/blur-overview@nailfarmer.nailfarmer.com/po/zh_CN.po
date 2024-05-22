@@ -2,21 +2,26 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-14 14:54+0000\n"
 "PO-Revision-Date: \n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: zh_CN\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#. blur-overview@nailfarmer.nailfarmer.com->metadata.json->description
-msgid "Blur background in overview"
-msgstr "使用概览时模糊背景"
-
-#. blur-overview@nailfarmer.nailfarmer.com->metadata.json->name
+#. metadata.json->name
 msgid "Blur Overview"
-msgstr "模糊概览"
+msgstr "概览模糊"
+
+#. metadata.json->description
+msgid "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])"
+msgstr "显示概览界面时让背景模糊([Ctrl]+[Alt]+[方向下键])"
+
+#. settings-schema.json->opacity->description
+msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
+msgstr "显示概览界面时让背景透明([Ctrl]+[Alt]+[方向下键])"
