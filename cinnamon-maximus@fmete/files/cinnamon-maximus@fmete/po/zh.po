@@ -20,7 +20,7 @@ msgstr "Cinnamon最大化"
 
 #. metadata.json->description
 msgid "Undecorate windows as you like."
-msgstr "随心所欲地取消窗口装饰。"
+msgstr "随心地取消窗口装饰。"
 
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
