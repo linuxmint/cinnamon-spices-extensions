@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-30 18:25+0000\n"
-"PO-Revision-Date: 2024-05-24 07:02+0800\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-05-24 09:10+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
 "Language: zh\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Compiz窗口效果"
 
 #. metadata.json->description
 msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
-msgstr "Compiz 摆动的窗口效果得益于compiz插件引擎"
+msgstr "Compiz果冻窗口效果得益于compiz插件引擎"
 
 #. settings-schema.json->friction->description
 msgid "Friction"
