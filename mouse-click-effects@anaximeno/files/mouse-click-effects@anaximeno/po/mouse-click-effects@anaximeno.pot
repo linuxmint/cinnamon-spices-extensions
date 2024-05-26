@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-05-26 10:55-0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr ""
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr ""
+
+#. 5.4->settings-schema.json->general-section->description
+msgid "General"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr ""
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr ""
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Blink"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Bounce"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Retract"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Expand"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-time->units
+msgid "ms"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr ""
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr ""
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr ""
+
+#. 5.4->settings-schema.json->events-section->description
+msgid "Events"
+msgstr ""
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Enable Left Click Effect"
+msgstr ""
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Enable Middle Click Effect"
+msgstr ""
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Enable Right Click Effect"
+msgstr ""
+
+#. 5.4->settings-schema.json->colors-section->description
+msgid "Colors"
+msgstr ""
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr ""
