@@ -6,6 +6,10 @@
     "url": "https://github.com/anaximeno/mouse-click-effects",
     "website": "https://github.com/anaximeno/mouse-click-effects",
     "cinnamon-version": [
-        "5.4"
+        "5.4",
+        "5.6",
+        "5.8",
+        "6.0",
+        "6.2"
     ]
 }
