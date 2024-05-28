@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-05-26 10:55-0100\n"
+"PO-Revision-Date: 2024-05-28 03:36-0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr "Efeitos de Clique do Mouse"
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr "Mostra efeitos de clique de mouse no Cinnamon."
+
+#. 5.4->settings-schema.json->general-section->description
+msgid "General"
+msgstr "Geral"
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr "Modo do Ícone"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr "Simples"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr "Lobo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr "Garra"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr "Metrópole"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr "Hélice"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr "Direção"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr "Algodão"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr "Círculo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr ""
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr ""
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr "Tamanho do Ícone"
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr "Modo de Animação do Clique"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Blink"
+msgstr "Piscar"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Bounce"
+msgstr "Elástico"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Retract"
+msgstr "Reduzir"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Expand"
+msgstr "Expandir"
+
+#. 5.4->settings-schema.json->animation-time->units
+msgid "ms"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr "Duração da Animação"
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr "Opacidade Geral"
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr "Desativar em Tela Cheia"
+
+#. 5.4->settings-schema.json->events-section->description
+msgid "Events"
+msgstr "Eventos"
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Enable Left Click Effect"
+msgstr "Ativar Efeito do Clique Esquerdo"
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Enable Middle Click Effect"
+msgstr "Ativar Efeito do Clique do Meio"
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Enable Right Click Effect"
+msgstr "Ativar Efeito do Clique Direito"
+
+#. 5.4->settings-schema.json->colors-section->description
+msgid "Colors"
+msgstr "Cores"
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr "Cor do Clique Esquerdo"
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr "Cor do Clique do Meio"
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr "Cor do Clique Direito"
