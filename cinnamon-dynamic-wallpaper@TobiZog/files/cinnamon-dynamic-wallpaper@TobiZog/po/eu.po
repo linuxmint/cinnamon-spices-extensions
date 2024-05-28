@@ -36,7 +36,7 @@ msgid ""
 "Please create an issue on GitHub."
 msgstr ""
 "Cinnamon Horma-Paper dinamikoak errore bat izan du begizta nagusia "
-"exekutatzean. Mesedez, sortu arazo bat Githuben."
+"exekutatzean. Mesedez, sortu arazo bat GitHuben."
 
 #: 5.4/extension.js:139
 msgid "Open settings"
@@ -69,7 +69,7 @@ msgstr "Jatorrizko karpeta"
 
 #: 5.4/res/preferences.glade:336
 msgid "Select an image set"
-msgstr "Sortu argazki multzoa"
+msgstr "Aukeratu argazki multzoa"
 
 #: 5.4/res/preferences.glade:379
 msgid "Select a heic file to import"
