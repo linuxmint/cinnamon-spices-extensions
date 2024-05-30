@@ -72,6 +72,12 @@
 		"default": false,
 		"description": "Deactivate In Fullscreen"
 	},
+	"pause-effects-binding": {
+		"type": "keybinding",
+		"description": "Pause Effects Keybinding",
+		"default": "",
+		"tooltip": "Set keybinding to pause or continue the effects"
+	},
 
 	"events-section": {
 		"type": "section",

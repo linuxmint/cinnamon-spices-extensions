@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-05-30 05:46-0100\n"
+"POT-Creation-Date: 2024-05-30 19:05-0100\n"
 "PO-Revision-Date: 2024-05-30 11:01-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -152,6 +152,14 @@ msgstr "Opacidad general"
 #. 5.4->settings-schema.json->deactivate-in-fullscreen->description
 msgid "Deactivate In Fullscreen"
 msgstr "Desactivar en pantalla completa"
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr ""
 
 #. 5.4->settings-schema.json->events-section->description
 msgid "Events"
