@@ -127,12 +127,12 @@ class MouseClickEffects {
 			{
 				key: "animation-mode",
 				value: "animation_mode",
-				cb: this.on_animation_mode_changed,
+				cb: this.update_animation_mode,
 			},
 			{
 				key: "deactivate-in-fullscreen",
 				value: "deactivate_in_fullscreen",
-				cb: null,
+				cb: this.on_fullscreen_changed,
 			},
 		]
 
@@ -162,11 +162,15 @@ class MouseClickEffects {
             const monitor = global.screen.get_current_monitor();
             const monitorIsInFullscreen = global.screen.get_monitor_in_fullscreen(monitor);
 			this.set_active(!monitorIsInFullscreen);
+		} else {
+			this.set_active(true);
 		}
 	}
 
-	on_animation_mode_changed() {
-		this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
+	update_animation_mode() {
+		if (!this._click_animation || this._click_animation.mode != this.animation_mode) {
+			this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
+		}
 	}
 
     get_colored_icon(mode, click_type, color) {
@@ -230,11 +234,9 @@ class MouseClickEffects {
 	}
 
 	_animate_click(click_type, color) {
-		let icon = this.get_colored_icon(this.icon_mode, click_type, color);
+		this.update_animation_mode();
 
-		if (!this._click_animation || this._click_animation.id != this.animation_mode) {
-			this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
-		}
+		let icon = this.get_colored_icon(this.icon_mode, click_type, color);
 
 		if (icon) {
 			this._click_animation.animateClick(icon, {

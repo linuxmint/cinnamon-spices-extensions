@@ -26,7 +26,8 @@
 			"Thatch": 15,
 			"Cotton": 16,
 			"Circle": 17,
-			"Gear": 18
+			"Gear": 18,
+			"H-Star": 19
 		}
 	},
 	"size": {
