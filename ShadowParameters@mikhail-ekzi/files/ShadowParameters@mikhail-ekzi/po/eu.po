@@ -14,7 +14,7 @@ msgstr ""
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. ShadowParameters@mikhail-ekzi->metadata.json->name
