@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Project-Id-Version: mouse-click-effects@anaximeno 0.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-05-26 10:55-0100\n"
+"POT-Creation-Date: 2024-05-30 05:46-0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,10 @@ msgstr ""
 
 #. 5.4->settings-schema.json->icon-mode->options
 msgid "Gear"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
 msgstr ""
 
 #. 5.4->settings-schema.json->size->units
