@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-05-26 10:55-0100\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr "Saguaren klik efektuak"
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr "Erakutsi saguaren klik efektuak Cinnamonen"
+
+#. 5.4->settings-schema.json->general-section->description
+msgid "General"
+msgstr "Orokorra"
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr "Ikono modua"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr "Sinplea"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr "Trigun"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr "Nublo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr "Risco"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr "Otsoa"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr "Pintzel"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr "Atzaparra"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr "Metropoli"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr "Loretxo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr "Kusco"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr "Ouroboros"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr "Helix"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr "Norabidea"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr "Espinak"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr "Thatch"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr "Kotoia"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr "Zirkulua"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr "Engranaje"
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr "pixel"
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr "Ikonoaren tamaina"
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr "Klik Animzaio Modua"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Blink"
+msgstr "Kliskatu"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Bounce"
+msgstr "Errebotea"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Retract"
+msgstr "Atzera egin"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Expand"
+msgstr "Zabaldu"
+
+#. 5.4->settings-schema.json->animation-time->units
+msgid "ms"
+msgstr "Milisegundo"
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr "Animazio Denbora"
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr "Opakutasun orokorra"
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr "Desaktibatu pantaila osoan"
+
+#. 5.4->settings-schema.json->events-section->description
+msgid "Events"
+msgstr "Gertaerak"
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Enable Left Click Effect"
+msgstr "Ezkerreko klik efektua aktibatu"
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Enable Middle Click Effect"
+msgstr "Erdiko klik efektua aktibatu"
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Enable Right Click Effect"
+msgstr "Eskimako klik efektua aktibatu"
+
+#. 5.4->settings-schema.json->colors-section->description
+msgid "Colors"
+msgstr "Koloreak"
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr "Ezkerreko klik kolorea"
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr "Erdiko klik kolorea"
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr "Eskuineko klik kolorea"
