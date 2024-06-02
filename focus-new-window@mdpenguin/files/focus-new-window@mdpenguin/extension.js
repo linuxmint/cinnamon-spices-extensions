@@ -17,8 +17,14 @@ class SettingsHandler {
 
 class AttentionHandler {
   init() {
-    global.display.disconnect(Main.windowAttentionHandler._windowDemandsAttentionId);
-    global.display.disconnect(Main.windowAttentionHandler._windowMarkedUrgentId);
+    if (Main.windowAttentionHandler._windowDemandsAttentionId) {
+      global.display.disconnect(Main.windowAttentionHandler._windowDemandsAttentionId);
+    }
+
+    if (Main.windowAttentionHandler._windowMarkedUrgentId) {
+      global.display.disconnect(Main.windowAttentionHandler._windowMarkedUrgentId);
+    }
+
     oldHandler = Main.windowAttentionHandler;
 
     this._windowDemandsAttentionId = global.display.connect('window-demands-attention', this._onWindowDemandsAttention.bind(this));
