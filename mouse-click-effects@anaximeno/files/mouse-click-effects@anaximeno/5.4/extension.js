@@ -78,7 +78,8 @@ class MouseClickEffects {
 	}
 
 	_setup_settings(uuid) {
-		let settings = new Settings.AppletSettings(this, uuid);
+		let settings = new Settings.ExtensionSettings(this, uuid);
+
 		let bindings = [
 			{
 				key: "animation-time",
@@ -175,12 +176,13 @@ class MouseClickEffects {
         Main.keybindingManager.addHotKey(
 			PAUSE_EFFECTS_KEY,
 			this.pause_effects_binding,
-            () => {
-				global.log(UUID, `Click effects ${this.enabled ? "paused" : "resumed"}!`);
-				this.set_active(!this.enabled);
-			},
+            this._on_pause_toggled.bind(this),
 		);
     }
+
+	_on_pause_toggled() {
+		this.set_active(!this.enabled);
+	}
 
 	on_effects_enabled_updated(event) {
 		thib.on_property_updated(event);
@@ -236,8 +238,11 @@ class MouseClickEffects {
 		this.listener.deregister('mouse');
 
 		if (enabled) {
+			global.log(UUID, "Click effects enabled!");
 			this.update_colored_icons();
 			this.listener.register('mouse');
+		} else {
+			global.log(UUID, "Click effects disabled!");
 		}
 	}
 
