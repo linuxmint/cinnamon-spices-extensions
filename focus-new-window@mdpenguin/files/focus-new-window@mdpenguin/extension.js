@@ -19,10 +19,12 @@ class AttentionHandler {
   init() {
     if (Main.windowAttentionHandler._windowDemandsAttentionId) {
       global.display.disconnect(Main.windowAttentionHandler._windowDemandsAttentionId);
+      Main.windowAttentionHandler._windowDemandsAttentionId = null;
     }
 
     if (Main.windowAttentionHandler._windowMarkedUrgentId) {
       global.display.disconnect(Main.windowAttentionHandler._windowMarkedUrgentId);
+      Main.windowAttentionHandler._windowMarkedUrgentId = null;
     }
 
     oldHandler = Main.windowAttentionHandler;
