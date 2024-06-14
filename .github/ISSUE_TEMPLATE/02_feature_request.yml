@@ -10,6 +10,7 @@ body:
     default: 0
     label: Extension name and maintainer
     options:
+    - ''
     - adjacent-windows@klangman @klangman
     - back-to-monitor@nathan818fr @nathan818fr
     - blur-overview@nailfarmer.nailfarmer.com
