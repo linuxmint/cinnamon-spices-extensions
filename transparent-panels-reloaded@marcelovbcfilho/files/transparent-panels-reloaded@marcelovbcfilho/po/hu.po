@@ -5,7 +5,6 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Project-Id-Version: transparent-panels-reloaded@marcelovbcfilho "
 "4.0~20220727\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
