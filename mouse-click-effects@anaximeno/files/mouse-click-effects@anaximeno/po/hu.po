@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 0.3.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-06-02 05:32-0100\n"
+"PO-Revision-Date: 2024-06-18 11:01+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr "Egérkattintás Effektusok"
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr "Egérkattintási effektusok megjelenítése a Cinnamonban."
+
+#. 5.4->settings-schema.json->general-section->description
+msgid "General"
+msgstr "Általános"
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr "Ikonmód"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr "Egyszerű"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr "Trigun"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr "Nublo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr "Risco"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr "Farkas"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr "Escet"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr "Karom"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr "Metropoli"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr "Flowey"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr "Kusco"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr "Uroborosz"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr "Helix"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr "Irány"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr "Spinks"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr "Nádtető"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr "Vatta"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr "Kör"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr "Fogaskerék"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr "H-Csillag"
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr "px"
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr "Ikonméret"
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr "Kattintás animáció üzemmódja"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Blink"
+msgstr "Pislogás"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Bounce"
+msgstr "Visszapattan"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Retract"
+msgstr "Visszavonás"
+
+#. 5.4->settings-schema.json->animation-mode->options
+msgid "Expand"
+msgstr "Kibontás"
+
+#. 5.4->settings-schema.json->animation-time->units
+msgid "ms"
+msgstr "ms"
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr "Animáció ideje"
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr "Általános átlátszatlanság"
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr "Kikapcsolás teljes képernyőn"
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr "Szünet effektek billentyűparancs"
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr ""
+"Billentyűparancs beállítása az effektusok szüneteltetéséhez vagy "
+"folytatásához"
+
+#. 5.4->settings-schema.json->events-section->description
+msgid "Events"
+msgstr "Események"
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Enable Left Click Effect"
+msgstr "Balra kattintás effekt engedélyezése"
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Enable Middle Click Effect"
+msgstr "Középső kattintás effektus engedélyezése"
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Enable Right Click Effect"
+msgstr "Jobbra kattintás effekt engedélyezése"
+
+#. 5.4->settings-schema.json->colors-section->description
+msgid "Colors"
+msgstr "Színek"
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr "Bal kattintás szín"
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr "Középső kattintás szín"
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr "Jobb kattintás szín"
