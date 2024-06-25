@@ -6,15 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-06-24 22:42-0400\n"
 "PO-Revision-Date: 2021-04-11 19:57+0200\n"
+"Last-Translator: Balazs Bosak <bossbob88@gmail.com>\n"
+"Language-Team: \n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Balazs Bosak <bossbob88@gmail.com>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 #. metadata.json->name
@@ -22,8 +23,11 @@ msgid "Desktop Scroller"
 msgstr "Munkaterület görgető"
 
 #. metadata.json->description
-msgid "Switch between desktops by scrolling at left and right edges of the screen."
-msgstr "Váltson a munkaterületek között a képernyő jobb és bal szélén való görgetéssel."
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Váltson a munkaterületek között a képernyő jobb és bal szélén való "
+"görgetéssel."
 
 #. settings-schema.json->showDirectionArrow->description
 msgid "Show direction arrow"
@@ -50,5 +54,8 @@ msgid "Show activation areas"
 msgstr "Aktiválási területek megjelenítése"
 
 #. settings-schema.json->showActivationAreas->tooltip
-msgid "Check this to show the areas over which scrolling will switch the desktop."
-msgstr "Jelölje be ezt, azon képernyőterületek megjelenítésére, amelyeken görgetve válthat a munkaterületek között."
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Jelölje be ezt, azon képernyőterületek megjelenítésére, amelyeken görgetve "
+"válthat a munkaterületek között."
