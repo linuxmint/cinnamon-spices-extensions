@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-06-24 22:42-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: blogdron\n"
 "Language-Team: \n"
@@ -18,8 +19,11 @@ msgid "Desktop Scroller"
 msgstr "Прокрутка Рабочих Столов (Desktop Scroller)"
 
 #. metadata.json->description
-msgid "Switch between desktops by scrolling at left and right edges of the screen."
-msgstr "Переключайтесь между рабочими столами используя прокрутку колесом мыши у левого и правого края экрана."
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Переключайтесь между рабочими столами используя прокрутку колесом мыши у "
+"левого и правого края экрана."
 
 #. settings-schema.json->showDirectionArrow->description
 msgid "Show direction arrow"
@@ -27,7 +31,8 @@ msgstr "Показать стрелку направления переключ�
 
 #. settings-schema.json->showDirectionArrow->tooltip
 msgid "Check this to show an arrow indicating scroll direction."
-msgstr "Отображать стрелку указывающую на направление переключения рабочих столов."
+msgstr ""
+"Отображать стрелку указывающую на направление переключения рабочих столов."
 
 #. settings-schema.json->activationAreaWidth->units
 msgid "pixels"
@@ -39,12 +44,17 @@ msgstr "Ширина зоны активации:"
 
 #. settings-schema.json->activationAreaWidth->tooltip
 msgid "Width of activation areas"
-msgstr "Размер ширины зоны от края экрана в которой будет срабатывать переключение рабочих столов"
+msgstr ""
+"Размер ширины зоны от края экрана в которой будет срабатывать переключение "
+"рабочих столов"
 
 #. settings-schema.json->showActivationAreas->description
 msgid "Show activation areas"
 msgstr "Показать зону активации расширения"
 
 #. settings-schema.json->showActivationAreas->tooltip
-msgid "Check this to show the areas over which scrolling will switch the desktop."
-msgstr "Используйте чтобы явно видеть в каких местах у края экрана будет срабатывать переключение рабочих столов."
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Используйте чтобы явно видеть в каких местах у края экрана будет срабатывать "
+"переключение рабочих столов."

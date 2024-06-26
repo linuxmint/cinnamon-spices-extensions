@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-06-24 22:42-0400\n"
 "PO-Revision-Date: 2023-11-03 11:49-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,8 +23,11 @@ msgid "Desktop Scroller"
 msgstr "Desplazador de escritorio"
 
 #. metadata.json->description
-msgid "Switch between desktops by scrolling at left and right edges of the screen."
-msgstr "Cambia de escritorio desplazándote por los bordes izquierdo y derecho de la pantalla."
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Cambia de escritorio desplazándote por los bordes izquierdo y derecho de la "
+"pantalla."
 
 #. settings-schema.json->showDirectionArrow->description
 msgid "Show direction arrow"
@@ -31,7 +35,9 @@ msgstr "Mostrar flecha de dirección"
 
 #. settings-schema.json->showDirectionArrow->tooltip
 msgid "Check this to show an arrow indicating scroll direction."
-msgstr "Seleccione esta opción para mostrar una flecha indicando la dirección de desplazamiento."
+msgstr ""
+"Seleccione esta opción para mostrar una flecha indicando la dirección de "
+"desplazamiento."
 
 #. settings-schema.json->activationAreaWidth->units
 msgid "pixels"
@@ -50,5 +56,8 @@ msgid "Show activation areas"
 msgstr "Mostrar áreas de activación"
 
 #. settings-schema.json->showActivationAreas->tooltip
-msgid "Check this to show the areas over which scrolling will switch the desktop."
-msgstr "Marque esta opción para mostrar las áreas sobre las que el desplazamiento cambiará el escritorio."
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Marque esta opción para mostrar las áreas sobre las que el desplazamiento "
+"cambiará el escritorio."
