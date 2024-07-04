@@ -15,6 +15,7 @@
   },
   "hotkey": {
     "type" : "keybinding",
+    "dependency" : "useHotkey",
     "default" : "<Super>u",
     "description" : "Global Hotkey to toggle decoration of current window (Experimental)"
   },
@@ -35,6 +36,7 @@
   },
   "ignoreAppsList": {
     "type": "entry",
+    "dependency" : "useIgnoreList",
     "description": "Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)",
     "default": "chromium"
   },
@@ -45,6 +47,7 @@
   },
   "autoUndecorAppsList": {
     "type": "entry",
+    "dependency" : "useAutoUndecorList",
     "description": "Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp allowed)",
     "default": "gnome-terminal"
   },
