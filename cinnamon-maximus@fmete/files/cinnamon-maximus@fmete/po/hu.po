@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
 "PO-Revision-Date: 2021-09-26 08:24+0200\n"
 "Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
 "Language-Team: \n"
@@ -28,6 +29,11 @@ msgstr "Ablakok díszítésének tetszés szerinti eltávolítása."
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
 msgstr "Cinnamon-Maximus beállítások"
+
+#. settings-schema.json->onlyManual->description
+#, fuzzy
+msgid "Undecorating only with hotkey"
+msgstr "Díszítés eltávolítása csempe nézetben"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
@@ -63,7 +69,8 @@ msgstr ""
 "alkalmazásokhoz, hozzávetőleges találat és regexp megengedett)"
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
+#, fuzzy
+msgid "Use Auto Undecorating for apps"
 msgstr "Díszítések automatikus eltávolításának használata"
 
 #. settings-schema.json->autoUndecorAppsList->description
