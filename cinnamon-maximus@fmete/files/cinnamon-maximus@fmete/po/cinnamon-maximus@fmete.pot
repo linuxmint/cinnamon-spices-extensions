@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Project-Id-Version: cinnamon-maximus@fmete 0.4.7\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,10 @@ msgstr ""
 
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
+msgstr ""
+
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
 msgstr ""
 
 #. settings-schema.json->useHotkey->description
@@ -56,7 +60,7 @@ msgid ""
 msgstr ""
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
+msgid "Use Auto Undecorating for apps"
 msgstr ""
 
 #. settings-schema.json->autoUndecorAppsList->description

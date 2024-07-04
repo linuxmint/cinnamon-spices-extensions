@@ -6,17 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
 "PO-Revision-Date: 2022-08-09 19:31+0200\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: da\n"
 
 #. metadata.json->name
 msgid "Cinnamon Maximus"
@@ -29,6 +30,11 @@ msgstr "Fjern vinduers titellinje efter behag."
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
 msgstr "Indstillinger for Cinnamon Maximus"
+
+#. settings-schema.json->onlyManual->description
+#, fuzzy
+msgid "Undecorating only with hotkey"
+msgstr "Fjern titellinje, når udlagt side om side"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
@@ -48,8 +54,7 @@ msgstr "Fjern titellinje, når udlagt side om side"
 msgid ""
 "Undecorate All Windows (Experimental, please close and re-open all windows)"
 msgstr ""
-"Fjern titellinje i alle vinduer (eksperimentel, luk og åbn alle vinduer "
-"igen)"
+"Fjern titellinje i alle vinduer (eksperimentel, luk og åbn alle vinduer igen)"
 
 #. settings-schema.json->useIgnoreList->description
 msgid "Use Ignoring List"
@@ -63,7 +68,8 @@ msgstr ""
 "match og reg. udtryk tilladt)"
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
+#, fuzzy
+msgid "Use Auto Undecorating for apps"
 msgstr "Anvend automatisk fjernelse af titellinje"
 
 #. settings-schema.json->autoUndecorAppsList->description
