@@ -46,13 +46,11 @@ class AttentionHandler {
 
     if (wmclass) {
       if (!settings.raiseSome) {
-        window.raise();
-        window.focus(global.get_current_time());
+        window.activate(global.get_current_time());
         return;
       }
       else if (programList.includes(wmclass.toLowerCase()) && window.has_focus() === false) {
-        window.raise();
-        window.focus(global.get_current_time());
+        window.activate(global.get_current_time());
         return;
       }
       else {
@@ -60,8 +58,7 @@ class AttentionHandler {
 
         for (let i = 0; i < ignored_classes.length; i++) {
           if (wmclass.toLowerCase().includes(ignored_classes[i].toLowerCase())) {
-            window.raise();
-            window.focus(global.get_current_time());
+            window.activate(global.get_current_time());
             return;
           }
         }
