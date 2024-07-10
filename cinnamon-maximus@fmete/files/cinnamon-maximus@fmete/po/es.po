@@ -6,16 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
-"PO-Revision-Date: 2023-11-02 10:09-0300\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2024-07-05 11:57-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. metadata.json->name
 msgid "Cinnamon Maximus"
@@ -29,10 +30,13 @@ msgstr "Quite las decoraciones de las ventanas a su gusto."
 msgid "Cinnamon-Maximus Settings"
 msgstr "Ajustes de Cinnamon-Maximus"
 
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
+msgstr "Quitar decoraciones sólo con tecla de acceso rápido"
+
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
-msgstr ""
-"Tecla de acceso rápido para cambiar la decoración de la ventana actual"
+msgstr "Tecla de acceso rápido para cambiar la decoración de la ventana actual"
 
 #. settings-schema.json->hotkey->description
 msgid "Global Hotkey to toggle decoration of current window (Experimental)"
@@ -63,8 +67,8 @@ msgstr ""
 "permiten coincidencias parciales y expresiones regulares)"
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
-msgstr "Utiliza decoración auto-removible"
+msgid "Use Auto Undecorating for apps"
+msgstr "Utilice quitar decoraciones automática para aplicaciones"
 
 #. settings-schema.json->autoUndecorAppsList->description
 msgid ""

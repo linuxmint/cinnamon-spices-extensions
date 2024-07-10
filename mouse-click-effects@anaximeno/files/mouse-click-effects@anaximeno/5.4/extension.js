@@ -61,9 +61,6 @@ class MouseClickEffects {
 		this.display_click = (new Debouncer()).debounce(this._animate_click.bind(this), 2);
 		this.colored_icon_store = {};
 		this.enabled = false;
-
-		this.update_colored_icons();
-		this.set_keybindings();
 	}
 
     _init_data_dir(uuid) {
@@ -158,12 +155,12 @@ class MouseClickEffects {
 	}
 
 	enable() {
+		this.update_colored_icons();
+		this.set_keybindings();
 		this.set_active(true);
 	}
 
 	disable() {
-		this.set_active(false);
-		this.unset_keybindings();
 		this.destroy();
 	}
 
@@ -194,7 +191,7 @@ class MouseClickEffects {
             const monitorIsInFullscreen = global.screen.get_monitor_in_fullscreen(monitor);
 			this.set_active(!monitorIsInFullscreen);
 		} else {
-			this.set_active(true);
+			this.set_active(this.enabled);
 		}
 	}
 
@@ -222,9 +219,13 @@ class MouseClickEffects {
 	}
 
 	destroy() {
-		this.signals.disconnectAllSignals();
 		this.set_active(false);
+		this.unset_keybindings();
+		this.signals.disconnectAllSignals();
 		this.settings.finalize();
+		this.colored_icon_store = null;
+		this.display_click = null;
+		this._click_animation = null;
 	}
 
 	update_colored_icons() {
@@ -235,15 +236,16 @@ class MouseClickEffects {
 
 	set_active(enabled) {
 		this.enabled = enabled;
+
 		this.listener.deregister('mouse');
 
 		if (enabled) {
-			global.log(UUID, "Click effects enabled!");
-			this.update_colored_icons();
 			this.listener.register('mouse');
-		} else {
-			global.log(UUID, "Click effects disabled!");
 		}
+
+		global.log(UUID, 
+			`Click effects ${enabled ? "activated" : "deactivated"}!`,
+		);
 	}
 
 	_create_colored_icon_data(click_type, color) {
