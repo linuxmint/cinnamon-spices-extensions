@@ -99,6 +99,11 @@
 		"default": true,
 		"description": "Enable Right Click Effect"
 	},
+	"pause-animation-effects-enabled": {
+		"type": "checkbox",
+		"default": true,
+		"description": "Enable Pause Animation Effects"
+	},
 
 	"colors-section": {
 		"type": "section",

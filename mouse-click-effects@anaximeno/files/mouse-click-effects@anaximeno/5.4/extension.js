@@ -21,6 +21,7 @@ const Main = imports.ui.main;
 const Settings = imports.ui.settings;
 const Gettext = imports.gettext;
 const SignalManager = imports.misc.signalManager;
+const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory } = require("./clickAnimations.js");
 const { Debouncer } = require("./helpers.js");
@@ -40,8 +41,11 @@ const ClickType = {
     LEFT: "left_click",
     MIDDLE: "middle_click",
     RIGHT: "right_click",
+	PAUSE: "pause_bind",
 };
 
+const PAUSE_OFF_COLOR = "#E5E4E2";
+const PAUSE_ON_COLOR = "#71797E";
 
 class MouseClickEffects {
 	constructor(metadata) {
@@ -106,6 +110,11 @@ class MouseClickEffects {
 			{
 				key: "middle-click-effect-enabled",
 				value: "middle_click_effect_enabled",
+				cb: null,
+			},
+			{
+				key: "pause-animation-effects-enabled",
+				value: "pause_animation_effects_enabled",
 				cb: null,
 			},
 			{
@@ -179,10 +188,10 @@ class MouseClickEffects {
 
 	_on_pause_toggled() {
 		this.set_active(!this.enabled);
-	}
 
-	on_effects_enabled_updated(event) {
-		thib.on_property_updated(event);
+		if (this.pause_animation_effects_enabled) {
+			this.display_click(ClickType.PAUSE, this.enabled ? PAUSE_OFF_COLOR : PAUSE_ON_COLOR);
+		}
 	}
 
 	on_fullscreen_changed() {
@@ -229,6 +238,8 @@ class MouseClickEffects {
 	}
 
 	update_colored_icons() {
+		this._create_colored_icon_data(ClickType.PAUSE, PAUSE_ON_COLOR);
+		this._create_colored_icon_data(ClickType.PAUSE, PAUSE_OFF_COLOR);
 		this._create_colored_icon_data(ClickType.LEFT, this.left_click_color);
 		this._create_colored_icon_data(ClickType.MIDDLE, this.middle_click_color);
 		this._create_colored_icon_data(ClickType.RIGHT, this.right_click_color);
@@ -250,12 +261,12 @@ class MouseClickEffects {
 
 	_create_colored_icon_data(click_type, color) {
 		if (this.get_colored_icon(this.icon_mode, click_type, color))
-			return;
+			return true;
 
         let source = Gio.File.new_for_path(`${this.app_icons_dir}/${this.icon_mode}.svg`);
 		let [l_success, contents] = source.load_contents(null);
-		contents = imports.byteArray.toString(contents);
 
+		contents = ByteArray.toString(contents);
 		// Replace to new color
 		contents = contents.replace('fill="#000000"', `fill="${color}"`);
 
@@ -268,14 +279,13 @@ class MouseClickEffects {
 		}
 
 		let [r_success, tag] = dest.replace_contents(contents, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null);
+		return r_success;
 	}
 
 	_animate_click(click_type, color) {
+		let icon;
 		this.update_animation_mode();
-
-		let icon = this.get_colored_icon(this.icon_mode, click_type, color);
-
-		if (icon) {
+		if (icon = this.get_colored_icon(this.icon_mode, click_type, color)) {
 			this._click_animation.animateClick(icon, {
 				opacity: this.general_opacity,
 				icon_size: this.size,

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-06-02 05:32-0100\n"
+"POT-Creation-Date: 2024-07-15 04:30-0100\n"
 "PO-Revision-Date: 2024-05-28 11:48+0800\n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -177,6 +177,11 @@ msgstr "启用中键点击特效"
 #. 5.4->settings-schema.json->right-click-effect-enabled->description
 msgid "Enable Right Click Effect"
 msgstr "启用右键点击特效"
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+#, fuzzy
+msgid "Enable Pause Animation Effects"
+msgstr "启用左键点击特效"
 
 #. 5.4->settings-schema.json->colors-section->description
 msgid "Colors"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.3.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-06-02 05:32-0100\n"
+"POT-Creation-Date: 2024-07-15 04:30-0100\n"
 "PO-Revision-Date: 2024-06-18 11:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -179,6 +179,11 @@ msgstr "Középső kattintás effektus engedélyezése"
 #. 5.4->settings-schema.json->right-click-effect-enabled->description
 msgid "Enable Right Click Effect"
 msgstr "Jobbra kattintás effekt engedélyezése"
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+#, fuzzy
+msgid "Enable Pause Animation Effects"
+msgstr "Balra kattintás effekt engedélyezése"
 
 #. 5.4->settings-schema.json->colors-section->description
 msgid "Colors"
