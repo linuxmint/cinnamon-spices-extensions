@@ -162,7 +162,7 @@ class AdjacentWindows {
       if (direction === Direction.Back) {
          let newWindow = this.popStack(focusedWindow);
          if (newWindow) {
-            Main.activateWindow(newWindow);
+            this.activateWindow(newWindow);
          }
          return;
       }
@@ -188,13 +188,25 @@ class AdjacentWindows {
             newWindow = this.getClosestWindow(focusedWindow, focusedMonitor, focusedRec, windows, direction);
          }
          if (newWindow) {
-            Main.activateWindow(newWindow);
+            this.activateWindow(newWindow);
             if (this.peekStack() != focusedWindow)
                this.pushStack(focusedWindow);
             this.pushStack(newWindow);
          }
       }
       return;
+   }
+
+   activateWindow(window) {
+      let warpPointer = this.settings.getValue("warp-cursor-pointer");
+
+      Main.activateWindow(window);
+      if (window.has_focus() && warpPointer) {
+         let rec = window.get_frame_rect();
+         let x = rec.x + rec.width / 2;
+         let y = rec.y + rec.height / 2;
+         global.set_pointer(x, y);
+      }
    }
 
    // Find the window that is closes to the focused window in the direction requested
