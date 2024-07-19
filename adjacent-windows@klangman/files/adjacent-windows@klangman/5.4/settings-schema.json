@@ -81,5 +81,10 @@
     "type": "switch",
     "default": false,
     "description": "Allow switching to windows on other monitors"
+  },
+  "warp-cursor-pointer": {
+    "type": "switch",
+    "default": false,
+    "description": "Warp the cursor to the center of the focused window"
   }
 }
