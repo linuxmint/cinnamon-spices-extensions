@@ -1,10 +1,13 @@
 const PopupMenu = imports.ui.popupMenu;
 const WindowMenu = imports.ui.windowMenu;
 const St = imports.gi.St;
+const gettext = imports.gettext;
+const GLib = imports.gi.GLib;
+
 
 let isEnabled = false, isInstalled = false;
 let base_buildMenu, my_buildMenu;
-let uuid = "opacity-slider@unknown.uuid"
+let uuid;
 
 // This extension creates a slider for adjusting a window's opacity, and adds it
 // to the context menu when right-clicking a window's title bar.
@@ -17,6 +20,15 @@ let uuid = "opacity-slider@unknown.uuid"
 // Some housekeeping
 function init(metadata) {
     uuid = metadata.uuid;
+    gettext.bindtextdomain(uuid, GLib.get_home_dir() + "/.local/share/locale");
+}
+
+function _(str) {
+	let customTranslation = gettext.dgettext(uuid, str);
+	if(customTranslation !== str) {
+		return customTranslation;
+	}
+	return gettext.gettext(str);
 }
 
 let log = function(text) {
