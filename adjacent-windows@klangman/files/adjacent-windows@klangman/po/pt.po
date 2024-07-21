@@ -2,53 +2,53 @@
 # This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: adjacent-windows@klangman 1.1.0\n"
+"Project-Id-Version: adjacent-windows@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-07-21 20:44-0100\n"
-"PO-Revision-Date: 2024-06-18 10:26+0200\n"
+"PO-Revision-Date: 2024-07-21 21:08-0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: hu\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. metadata.json->name
 msgid "Adjacent Windows"
-msgstr "Szomszédos ablakok"
+msgstr "Janelas Adjacentes"
 
 #. metadata.json->description
 msgid "Use hotkeys to switch to adjacent windows"
-msgstr "A gyorsbillentyűk használatával válthat a szomszédos ablakokra"
+msgstr "Use teclas de atalho para focar em janelas adjacentes"
 
 #. 5.4->settings-schema.json->keybinding-header->description
 msgid "Hotkeys to switch focus relative to the current window"
-msgstr "Az aktuális ablakhoz viszonyított fókuszváltás gyorsbillentyűi"
+msgstr "Teclas de atalho para mudar o foco relativo a janela atual"
 
 #. 5.4->settings-schema.json->left-key->description
 msgid "Activate window to the left"
-msgstr "A bal oldali ablak aktiválása"
+msgstr "Ativar a janela para a esquerda"
 
 #. 5.4->settings-schema.json->right-key->description
 msgid "Activate window to the right"
-msgstr "A jobb oldali ablak aktiválása"
+msgstr "Ativar a janela para a direita"
 
 #. 5.4->settings-schema.json->up-key->description
 msgid "Activate window above"
-msgstr "A fenti ablak aktiválása"
+msgstr "Ativar a janela acima"
 
 #. 5.4->settings-schema.json->down-key->description
 msgid "Activate window below"
-msgstr "A lenti ablak aktiválása"
+msgstr "Ativar a janela abaixo"
 
 #. 5.4->settings-schema.json->under-key->description
 msgid "Activate window under"
-msgstr "A hátsó ablak aktiválása"
+msgstr "Ativar a janela em baixo"
 
 #. 5.4->settings-schema.json->under-key->tooltip
 msgid ""
@@ -57,34 +57,34 @@ msgid ""
 "change to the next window beneath the window that originally had the focus "
 "during the fist key combo press."
 msgstr ""
-"Átváltás a z-sorrendben következő ablakra, amely átfedésben van az aktuális "
-"ablakkal. Ha a billentyűkombinációt 3 másodpercen belül újra megnyomja, "
-"akkor az első billentyűkombináció megnyomásakor eredetileg fókuszban lévő "
-"ablak alatti következő ablak kerül fókuszba."
+"Alterne para a próxima janela na ordem z que é sobreposta pela janela atual. "
+"Se a combinação de teclas for pressionada novamente dentro de 3 segundos, o "
+"foco mudará para a próxima janela abaixo da janela que originalmente tinha o "
+"foco durante a primeira pressão da combinação de teclas."
 
 #. 5.4->settings-schema.json->back-key->description
 msgid "Undo the focus change"
-msgstr "A fókuszváltás visszavonása"
+msgstr "Desfazer a mudança de foco"
 
 #. 5.4->settings-schema.json->settings-header->description
 msgid "Other settings"
-msgstr "Más beállítások"
+msgstr "Outras configurações"
 
 #. 5.4->settings-schema.json->next-focus->options
 msgid "Closest to the current window"
-msgstr "Legközelebb az aktuális ablakhoz"
+msgstr "Mais perto da janela atual"
 
 #. 5.4->settings-schema.json->next-focus->options
 msgid "Highest in the z-order"
-msgstr "A legmagasabb a z-rendben"
+msgstr "Mais alto na ordem z"
 
 #. 5.4->settings-schema.json->next-focus->options
 msgid "Closest with a visible corner"
-msgstr "Legközelebb egy látható sarokkal"
+msgstr "Mais perto de um canto visível"
 
 #. 5.4->settings-schema.json->next-focus->description
 msgid "Activate the window that is..."
-msgstr "Aktiválja az ablakot, amely..."
+msgstr "Ativar para a janela que está..."
 
 #. 5.4->settings-schema.json->next-focus->tooltip
 msgid ""
@@ -97,23 +97,23 @@ msgid ""
 "- Closest window with a visible corner: a compromise that is designed to be "
 "more like what most people would generally expect (I hope)."
 msgstr ""
-"A Balra, Jobbra, Felül vagy Alul gyorsgombok használatakor aktiválja azt az "
-"ablakot, amelyik:\n"
-"- Legközelebb van az aktuális ablakhoz: ez olyan ablakot is aktiválhat, "
-"amelyet jelenleg teljesen eltakarnak más ablakok.\n"
-"- A z-sorrendben a legmagasabb: a legutóbb fókuszált; ez átugorhatja az "
-"aktuális ablakhoz közelebb eső látható ablakokat.\n"
-"- Legközelebbi ablak látható sarokkal: egy kompromisszumos megoldás, amely "
-"úgy lett kialakítva, hogy jobban megfeleljen annak, amit a legtöbb ember "
-"általában elvár (remélem)."
+"Ao usar as teclas de atalho Esquerda, Direita, Acima ou Abaixo, ative a "
+"janela que seja:\n"
+"- Mais próxima da janela atual: isto pode ativar uma janela que está "
+"completamente obscurecida por outras janelas.\n"
+"- Mais alta na ordem z: a mais recentemente focada; isto pode ignorar "
+"janelas visíveis que estão mais próximas da janela atual.\n"
+"- A janela mais próxima com um canto visível: um compromisso que é projetado "
+"para ser mais parecido com o que a maioria das pessoas geralmente esperaria "
+"(espero eu)."
 
 #. 5.4->settings-schema.json->overlap-allowance->units
 msgid "pixels"
-msgstr "képpont"
+msgstr "pixeis"
 
 #. 5.4->settings-schema.json->overlap-allowance->description
 msgid "Corner overlap allowance / minimum visibility"
-msgstr "A sarkok átfedése / minimális láthatóság"
+msgstr "Sobreposição de canto/visibilidade mínima"
 
 #. 5.4->settings-schema.json->overlap-allowance->tooltip
 msgid ""
@@ -121,17 +121,18 @@ msgid ""
 "considered a candidate window. Also sets the minimum amount of window "
 "visibility in order to qualify as a candidate window"
 msgstr ""
-"Beállítja, hogy egy sarok hány képpontot takarhat el más ablakoktól, és még "
-"mindig ablakjelöltnek tekinthető. Beállítja továbbá az ablak láthatóságának "
-"minimális mértékét, hogy az ablak jelölt ablaknak minősüljön"
+"Define quantos pixeis um canto pode ser obscurecido por outras janelas e "
+"ainda ser considerado uma janela candidata. Também define a quantidade "
+"mínima de visibilidade da janela para ser qualificada como uma janela "
+"candidata"
 
 #. 5.4->settings-schema.json->boost-restriction->units
 msgid "priority"
-msgstr "prioritás"
+msgstr "prioridade"
 
 #. 5.4->settings-schema.json->boost-restriction->description
 msgid "Increase the priority of direction alignment"
-msgstr "Az irányösszehangolás prioritásának növelése"
+msgstr "Aumentar a prioridade do alinhamento da direção"
 
 #. 5.4->settings-schema.json->boost-restriction->tooltip
 msgid ""
@@ -139,18 +140,18 @@ msgid ""
 "area as the current window in the desired direction, and less priority to "
 "widows that are at an offset but closer. Max 85%"
 msgstr ""
-"Ennek a beállításnak a növelése nagyobb prioritást ad azoknak az ablakoknak, "
-"amelyek a kívánt irányban az aktuális ablakkal azonos területet foglalnak "
-"el, és kisebb prioritást ad az eltolt, de közelebbi ablakoknak. Max 85%"
+"O aumento desta definição dá mais prioridade às janelas que ocupam a mesma "
+"área que a janela atual na direção desejada e menos prioridade às janelas "
+"que estão deslocadas, mas mais próximas. Máx. 85%"
 
 #. 5.4->settings-schema.json->include-minimized->description
 msgid "Allow switching to minimized windows"
-msgstr "Lehetővé teszi a minimalizált ablakokra való váltást"
+msgstr "Permitir mudar para janelas minimizadas"
 
 #. 5.4->settings-schema.json->include-other-monitors->description
 msgid "Allow switching to windows on other monitors"
-msgstr "Lehetővé teszi az ablakváltást más monitorokon"
+msgstr "Permitir mudar para janelas em outros ecrãs"
 
 #. 5.4->settings-schema.json->warp-cursor-pointer->description
 msgid "Warp the cursor to the center of the focused window"
-msgstr ""
+msgstr "Mover o cursor para o centro da janela em foco"
