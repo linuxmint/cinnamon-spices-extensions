@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: adjacent-windows@klangman 1.1.0\n"
+"Project-Id-Version: adjacent-windows@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-03-25 21:17-0400\n"
+"POT-Creation-Date: 2024-07-21 20:44-0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,4 +129,8 @@ msgstr ""
 
 #. 5.4->settings-schema.json->include-other-monitors->description
 msgid "Allow switching to windows on other monitors"
+msgstr ""
+
+#. 5.4->settings-schema.json->warp-cursor-pointer->description
+msgid "Warp the cursor to the center of the focused window"
 msgstr ""
