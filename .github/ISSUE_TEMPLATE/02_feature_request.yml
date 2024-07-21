@@ -29,6 +29,7 @@ body:
     - mouse-click-effects@anaximeno @anaximeno
     - mouse-shake-zoom@rcalixte @rcalixte
     - opacify@anish.org
+    - opacity-slider@neatnit @NeatNit
     - rnbdsh@negateWindow @rnbdsh
     - SanitizeXsessionErrors@claudiux @claudiux
     - ShadowParameters@mikhail-ekzi @mikhail-ekzi
