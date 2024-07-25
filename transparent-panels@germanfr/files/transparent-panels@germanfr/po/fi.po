@@ -7,29 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-28 20:37+0200\n"
-"PO-Revision-Date: 2019-08-17 23:01+0300\n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2024-07-25 21:53+0300\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
-"Last-Translator: \n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: fi\n"
 
-#: extension.js:166
+#: extension.js:172
 #, javascript-format
 msgid "%s enabled"
 msgstr "%s käytössä"
 
-#: extension.js:167
+#: extension.js:173
 msgid "Open the extension settings and customize your panels"
-msgstr "Avaa laajennusasetukset ja mukauta paneeleja"
+msgstr "Avaa laajennuksen asetukset ja mukauta paneelejasi"
 
-#: extension.js:170
+#: extension.js:176
 msgid "Open settings"
 msgstr "Avaa asetukset"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Läpinäkyvä paneeli"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr ""
+"Läpinäkyvä paneeli, joka asetuksista voit valita varjostuksen eri asteita"
 
 #. settings-schema.json->section-general->description
 msgid "General"
@@ -41,15 +50,15 @@ msgstr "Läpinäkyvyyden valinta"
 
 #. settings-schema.json->transparency-type->options
 msgid "With shadow"
-msgstr "Varjostettu läpinäkyvyys"
+msgstr "Varjostettu"
 
 #. settings-schema.json->transparency-type->options
 msgid "Fully transparent"
-msgstr "Täysin läpinäkyvä"
+msgstr "Läpinäkyvä"
 
 #. settings-schema.json->transparency-type->options
 msgid "Semi-transparent"
-msgstr "Osittain läpinäkyvä"
+msgstr "Osittain"
 
 #. settings-schema.json->transparency-type->tooltip
 msgid "Choose the type of transparency you want."
@@ -57,7 +66,7 @@ msgstr "Valitse haluamasi läpinäkyvyys."
 
 #. settings-schema.json->theme-defined->description
 msgid "Use current theme styles"
-msgstr "Käytä nykyistä teeman tyyliä"
+msgstr "Ohita ja käytä teeman tyylijä"
 
 #. settings-schema.json->theme-defined->tooltip
 msgid ""
@@ -65,9 +74,9 @@ msgid ""
 "the extension presets. Use this in case the panels transparency is "
 "icorrectly set."
 msgstr ""
-"Vain tuetuille teemoille. Anna teeman tyyli paneeleille sen sijaan, että "
-"käytät laajennuksen asetuksia. Käytä tätä, jos paneelien läpinäkyvyys on "
-"asetettu oikein."
+"Vain tuetuille teemoille. Teeman tyyli asetetaan sen sijaan, että "
+"käytäisit tämän laajennuksen asetuksia. Käytä tätä, jos paneelien "
+"läpinäkyvyys ei toimi."
 
 #. settings-schema.json->opacify->description
 msgid "Remove theme transparency (experimental)"
@@ -79,7 +88,7 @@ msgstr "Poista paneelin läpinäkyvyys, kun se ei ole läpinäkyvä."
 
 #. settings-schema.json->section-filters->description
 msgid "Filter panels"
-msgstr "Valitut paneelit"
+msgstr "Valitse paneelit"
 
 #. settings-schema.json->filters-description->description
 msgid "Select the panels that will be affected by this extension."
@@ -87,24 +96,16 @@ msgstr "Valitse paneelit, joihin tämä laajennus vaikuttaa."
 
 #. settings-schema.json->panel-top->description
 msgid "Top panel"
-msgstr "Yläpaneeli"
+msgstr "Paneeli ylhäällä"
 
 #. settings-schema.json->panel-right->description
 msgid "Right panel"
-msgstr "Oikea paneeli"
+msgstr "Paneeli oikealla"
 
 #. settings-schema.json->panel-bottom->description
 msgid "Bottom panel"
-msgstr "Alapaneeli"
+msgstr "Paneeli alhaalla"
 
 #. settings-schema.json->panel-left->description
 msgid "Left panel"
-msgstr "Vasen paneeli"
-
-#. metadata.json->name
-msgid "Transparent panels"
-msgstr "Läpinäkyvät paneelit"
-
-#. metadata.json->description
-msgid "Transparentize your panels when there are no any maximized windows"
-msgstr "Paneelien läpinäkyvyys, kun ikkunoita ei ole maksimoitu"
+msgstr "Paneeli vasemmalla"
