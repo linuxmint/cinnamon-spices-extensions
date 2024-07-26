@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-04-17 14:43-0400\n"
-"PO-Revision-Date: 2024-04-17 11:06+0200\n"
+"PO-Revision-Date: 2024-07-23 20:33+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -47,39 +47,40 @@ msgstr "Algemeen"
 #. settings-schema.json->transparency-amount->description
 #. settings-schema.json->transparency-amount->tooltip
 msgid "Opacity amount"
-msgstr ""
+msgstr "Hoeveelheid doorzichtigheid"
 
 #. settings-schema.json->transparency-always->description
-#, fuzzy
 msgid "Always transparent"
-msgstr "Volledig transparant"
+msgstr "Altijd transparant"
 
 #. settings-schema.json->transparency-always->tooltip
 msgid ""
 "If enable the panels will always be transparent, if disable, only will be "
 "transparent if there is no maximized windows"
 msgstr ""
+"Indien ingeschakeld, zullen de panelen altijd doorzichtig zijn; indien "
+"uitgeschakeld, zullen ze alleen doorzichtig zijn als er geen "
+"gemaximaliseerde vensters zijn."
 
 #. settings-schema.json->use-custom-panel-color->description
 msgid "Use custom panel color"
-msgstr ""
+msgstr "Gebruik aangepaste paneelkleur"
 
 #. settings-schema.json->custom-panel-color->description
-#, fuzzy
 msgid "Custom panel color"
-msgstr "Onderste paneel"
+msgstr "Aangepaste paneelkleur"
 
 #. settings-schema.json->section-filters->description
-#, fuzzy
 msgid "Filter panels (WIP)"
-msgstr "Filter panelen"
+msgstr "Filter panelen (werk in uitvoering)"
 
 #. settings-schema.json->filters-description->description
-#, fuzzy
 msgid ""
 "Select the panels that will be affected by this extension. (Work in progress/"
 "not working)"
-msgstr "Selecteer de panelen die door deze extensie worden beïnvloed."
+msgstr ""
+"Selecteer de panelen die door deze extensie worden beïnvloed. (Werk in "
+"uitvoering/niet werkend)"
 
 #. settings-schema.json->panel-top->description
 msgid "Top panel"
