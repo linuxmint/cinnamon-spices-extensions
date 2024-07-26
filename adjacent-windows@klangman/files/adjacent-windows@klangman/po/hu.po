@@ -4,11 +4,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: adjacent-windows@klangman 1.1.0\n"
+"Project-Id-Version: adjacent-windows@klangman 1.2.0\n"
+"extensions/issues\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-07-21 20:44-0100\n"
-"PO-Revision-Date: 2024-06-18 10:26+0200\n"
+"PO-Revision-Date: 2024-07-26 07:06-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -153,4 +154,4 @@ msgstr "Lehetővé teszi az ablakváltást más monitorokon"
 
 #. 5.4->settings-schema.json->warp-cursor-pointer->description
 msgid "Warp the cursor to the center of the focused window"
-msgstr ""
+msgstr "A kurzor elmozdítása a fókuszált ablak közepére."
