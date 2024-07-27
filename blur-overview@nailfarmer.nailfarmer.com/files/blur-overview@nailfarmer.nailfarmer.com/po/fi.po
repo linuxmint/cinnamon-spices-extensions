@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+ttävyy# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -28,4 +28,4 @@ msgstr "Sumetaa avoimet ohjelmat taustalle painamalla ([Ctrl]+[Alt]+[nuoli alas]
 
 #. settings-schema.json->opacity->description
 msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
-msgstr "Taustan läpikuultavuus kun painat ([Ctrl]+[Alt]+[nuoli alas])"
+msgstr "Taustan peittävyys kun painat ([Ctrl]+[Alt]+[nuoli alas])"
