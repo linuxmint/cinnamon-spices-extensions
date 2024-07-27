@@ -20,7 +20,7 @@ msgstr ""
 
 #: extension.js:94 extension.js:99
 msgid "Opacity"
-msgstr "Läpinäkyvyys"
+msgstr "Peittävyys"
 
 #. metadata.json->name
 msgid "Opacity Slider"
@@ -29,5 +29,5 @@ msgstr "Opacity Slider"
 #. metadata.json->description
 msgid "Change a window's opacity from the title bar right-click menu."
 msgstr ""
-"Muuta ikkunan läpinäkyvyys painamalla hiiren oikeaa otsikkorivillä "
-"ja säädä liukusäätimellä läpinäkyvyyttä."
+"Muuta ikkunan päittävyyttä painamalla otsikkorivillä hiiren oikeaa "
+"ja säädä sitä liukusäätimellä."

@@ -31,7 +31,7 @@ msgstr ""
 #. settings-schema.json->opacity->description
 #. 5.4->settings-schema.json->opacity->description
 msgid "Opacity"
-msgstr "Läpinäkyvyys"
+msgstr "Peittävyys"
 
 #. settings-schema.json->h1->description
 #. 5.4->settings-schema.json->h1->description

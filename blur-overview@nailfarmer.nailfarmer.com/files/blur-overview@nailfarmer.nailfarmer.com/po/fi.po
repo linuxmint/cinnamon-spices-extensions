@@ -28,4 +28,4 @@ msgstr "Sumetaa avoimet ohjelmat taustalle painamalla ([Ctrl]+[Alt]+[nuoli alas]
 
 #. settings-schema.json->opacity->description
 msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
-msgstr "Taustan läpikuultavuus kun painat ([Ctrl]+[Alt]+[nuoli alas])"
+msgstr "Taustan peittävyys kun painat ([Ctrl]+[Alt]+[nuoli alas])"
