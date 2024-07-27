@@ -39,7 +39,7 @@ msgstr "Transparent panels reloaded"
 #. metadata.json->description
 msgid ""
 "Make your panels transparent (or not) and change their color as you wish"
-msgstr "Sääsä paneelin läpinäkyvyyttä ja väriä haluamallasi tavalla"
+msgstr "Säädä paneelin läpinäkyvyyttä ja väriä haluamallasi tavalla"
 
 #. settings-schema.json->section-general->description
 msgid "General"
@@ -48,7 +48,7 @@ msgstr "Yleinen"
 #. settings-schema.json->transparency-amount->description
 #. settings-schema.json->transparency-amount->tooltip
 msgid "Opacity amount"
-msgstr "Läpinäkyvyyden taso"
+msgstr "Peittävyys"
 
 #. settings-schema.json->transparency-always->description
 msgid "Always transparent"
