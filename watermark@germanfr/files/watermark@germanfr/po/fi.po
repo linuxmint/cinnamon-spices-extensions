@@ -89,7 +89,7 @@ msgstr "Mukautettu kuvake tai kuva"
 #. 3.8->settings-schema.json->alpha->description
 #. 3.2->settings-schema.json->alpha->description
 msgid "Opacity (%)"
-msgstr "Läpinäkyvyys (%)"
+msgstr "Peittävyys (%)"
 
 #. 3.8->settings-schema.json->invert->description
 #. 3.2->settings-schema.json->invert->description
