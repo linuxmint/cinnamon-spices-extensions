@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-08-08 19:35+0200\n"
-"PO-Revision-Date: 2024-07-25 17:08+0200\n"
+"PO-Revision-Date: 2024-08-09 01:41+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -28,11 +28,12 @@ msgstr "Comprova les preferències per escollir un fons de pantalla dinàmic"
 
 #: 5.4/extension.js:85
 msgid "imagemagick is not installed"
-msgstr ""
+msgstr "imagemagick no està instal·lat"
 
 #: 5.4/extension.js:86
 msgid "Please install the package manually for the full range of functions"
 msgstr ""
+"Si us plau, instal·la el paquet a mà per tenir accés a totes les funcions"
 
 #: 5.4/extension.js:125
 msgid "Error!"
@@ -73,6 +74,8 @@ msgstr "Conjunt d'imatges"
 msgid ""
 "Please install 'imagemagick' manually and reopen this configuration window"
 msgstr ""
+"Si us plau, instal·la 'imagemagick' a mà i torna a obrir aquesta finestra de "
+"configuració"
 
 #: 5.4/res/preferences.glade:237
 msgid "HEIC file"
