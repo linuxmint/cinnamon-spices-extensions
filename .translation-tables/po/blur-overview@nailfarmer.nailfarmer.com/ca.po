@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-14 14:54+0000\n"
+"PO-Revision-Date: 2024-07-25 16:56+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Desenfocar la vista general de les finestres obertes"
+
+#. metadata.json->description
+msgid "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])"
+msgstr "Desenfocar el fons mostrant totes les finestres obertes a l'escriptori actual ([Ctrl]+[Alt]+[Fletxa avall])"
+
+#. settings-schema.json->opacity->description
+msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
+msgstr "Opacitat del fons en mostrar totes les finestres obertes a l'escriptori actual ([Ctrl]+[Alt]+[Fletxa avall])"

@@ -1,0 +1,139 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:44+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr "翻转器"
+
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "绚丽的工作区切换扩展"
+
+#. settings-schema.json->header1->description
+msgid "General"
+msgstr "常规"
+
+#. settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "动画时长"
+
+#. settings-schema.json->pullaway->description
+msgid "Zoom Amount"
+msgstr "缩放量"
+
+#. settings-schema.json->fade->description
+msgid "Fade Transition"
+msgstr "淡出过渡"
+
+#. settings-schema.json->dim_factor->description
+msgid "Background Dim Amount"
+msgstr "背景昏暗量"
+
+#. settings-schema.json->header2->description
+msgid "Effects"
+msgstr "特效"
+
+#. settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "过渡特效"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr "立方体"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr "铺面"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr "翻转"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr "流行"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr "旋转夹"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr "滑动"
+
+#. settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr "堆叠"
+
+#. settings-schema.json->rotateEffect->description
+msgid "Transition Easing"
+msgstr "过渡缓动"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr "回退"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr "弹跳"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr "环形"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr "立方体"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr "立方体-回退"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr "立方体-弹跳"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr "立方体-弹性"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr "弹性"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr "展览"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr "正弦"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr "四宫格"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr "四分之一"
+
+#. settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr "五分之一"
+
+#. settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "包含背景"

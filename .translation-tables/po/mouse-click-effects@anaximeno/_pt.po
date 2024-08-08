@@ -1,0 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr ""
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr ""
+
+#. 5.4->settings-schema.json->animation-time->units
+msgid "ms"
+msgstr ""

@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-24 20:53+0100\n"
+"PO-Revision-Date: 2024-05-24 22:16+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+#: 4.8/extension.js:72
+msgid "Sanitize ~/.xsession-errors"
+msgstr "清理~/.xsession-errors"
+
+#: 4.8/extension.js:73
+msgid ""
+"This extension has been disabled because it was no longer needed since "
+"Cinnamon 4.8."
+msgstr "此扩展已被禁用，因为从Cinnamon 4.8起就不再需要它了。"
+
+#. metadata.json->description
+msgid ""
+"Filter messages sent to ~/.xsession-errors, to avoid flooding and save your "
+"SSD."
+msgstr "过滤的消息发送到~/.xsession-errors，以避免数据泛滥并拯救您的SSD。"
+
+#. settings-schema.json->section0->description
+msgid "Filter \"Log level 128\" messages starting with these words"
+msgstr "筛选以“Log level 128”单词开头的消息"
+
+#. settings-schema.json->forbidden_words->description
+msgid "Word list"
+msgstr "单词列表"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "Words"
+msgstr "单词"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "To filter?"
+msgstr "去过滤？"
+
+#. settings-schema.json->section1->description
+msgid "~/.xsession-errors monitor"
+msgstr "~/.xsession-errors监视器"
+
+#. settings-schema.json->open_log->description
+msgid "Show the contents of ~/.xsession-errors in real time"
+msgstr "实时显示~/.xsession-errors的内容"

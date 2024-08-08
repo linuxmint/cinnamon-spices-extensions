@@ -1,0 +1,22 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+msgid "Enable Pause Animation Effects"
+msgstr ""
