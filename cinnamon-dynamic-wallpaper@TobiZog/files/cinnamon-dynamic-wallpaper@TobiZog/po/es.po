@@ -9,14 +9,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-08-08 19:35+0200\n"
-"PO-Revision-Date: 2024-02-15 17:15-0300\n"
+"PO-Revision-Date: 2024-08-08 17:29-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: 5.4/extension.js:75
 msgid "Welcome to Cinnamon Dynamic Wallpaper"
@@ -28,11 +28,11 @@ msgstr "Compruebe las preferencias para elegir un fondo de pantalla dinámico"
 
 #: 5.4/extension.js:85
 msgid "imagemagick is not installed"
-msgstr ""
+msgstr "imagemagick no está instalado"
 
 #: 5.4/extension.js:86
 msgid "Please install the package manually for the full range of functions"
-msgstr ""
+msgstr "Instale el paquete manualmente para disponer de todas las funciones."
 
 #: 5.4/extension.js:125
 msgid "Error!"
@@ -73,6 +73,8 @@ msgstr "Conjunto de imágenes"
 msgid ""
 "Please install 'imagemagick' manually and reopen this configuration window"
 msgstr ""
+"Instale 'imagemagick' manualmente y vuelva a abrir esta ventana de "
+"configuración"
 
 #: 5.4/res/preferences.glade:237
 msgid "HEIC file"
