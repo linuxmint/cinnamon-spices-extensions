@@ -3,7 +3,7 @@
 This extension switches the background image of your Cinnamon desktop multiple times in a day, based on a location or custom time periods. You can choose between included image-sets, your own HEIC-file or a source folder with single images. Configuration through a user-friendly configuration window.
 
 ### Features
-- 9 included image sets
+- 12 included image sets
 - 10 day periods
 - HEIF converter
 - Image configuration assistent with simple one-click setup for image choices
