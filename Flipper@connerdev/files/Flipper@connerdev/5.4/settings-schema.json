@@ -1,0 +1,84 @@
+{
+  "header1" : {
+    "type" : "header",
+    "description" : "General"
+  },
+  "animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50
+  },
+  "pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05
+  },
+  "fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05
+  },
+  "dim_factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05
+  },
+  "sep1": {
+    "type": "separator"
+  },
+  "header2" : {
+    "type" : "header",
+    "description" : "Effects"
+  },
+  "transitionEffect": {
+    "type": "combobox",
+    "description": "Transition Effect",
+    "default": "Stack",
+    "options": {
+      "Cube": "Cube",
+      "Deck": "Deck",
+      "Flip": "Flip",
+      "Pop": "Pop",
+      "Rolodex": "Rolodex",
+      "Slide": "Slide",
+      "Stack" : "Stack"
+    }
+  },
+  "rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    }
+  },
+  "includeBackground" : {
+    "type" : "checkbox",
+    "description" : "Include Background",
+    "default" : false
+  }
+}
