@@ -1,0 +1,58 @@
+{
+  "header1" : {
+    "type" : "header",
+    "description" : "General"
+  },
+  "animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0.10,
+    "max" : 1.0,
+    "default": 0.15,
+    "step" : 0.05
+  },
+  "pullaway" : {
+    "type" : "scale",
+    "description" : "Pullaway proportion from screen",
+    "min" : 0.00,
+    "max" : 0.3333,
+    "default" : 0.05,
+    "step" : 0.0001
+  },
+  "sep1": {
+    "type": "separator"
+  },
+  "header2" : {
+    "type" : "header",
+    "description" : "Effects"
+  },
+  "scaleEffect": {
+    "type": "tween",
+    "description": "Scale effect",
+    "default": "easeOutQuad"
+  },
+  "unscaleEffect": {
+    "type": "tween",
+    "description": "Unscale effect",
+    "default": "easeOutQuad"
+  },
+  "rotateEffect": {
+    "type": "tween",
+    "description": "Begin rotate effect",
+    "default": "easeInQuad"
+  },
+  "unrotateEffect": {
+    "type": "tween",
+    "description": "End rotate effect",
+    "default": "easeOutQuad"
+  },
+  "header3": {
+    "type" : "header",
+    "description" : "System Settings"
+  },
+  "workspaces_btn": {
+    "type": "button",
+    "description": "Open Cinnamon Settings to manage Workspaces",
+    "callback": "on_btn_cs_workspaces_pressed"
+  }
+}

@@ -1,13 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# DESKTOP CUBE
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# yare, 2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-15 21:33-0400\n"
 "PO-Revision-Date: 2024-05-30 10:18+0200\n"
 "Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
@@ -25,42 +26,52 @@ msgstr "Mahaigaineko kuboa"
 msgid "Compiz Cube-like animation for workspace switching"
 msgstr "Compiz Cube-ren antzeko animazioa, lanerako areetatik mugitzerakoan"
 
-#. settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
+#. 2.0->settings-schema.json->header1->description
 msgid "General"
 msgstr "Jenerala"
 
-#. settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
+#. 2.0->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Animazioaren iraupena"
 
-#. settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
+#. 2.0->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Pullaway proportzioa pantailatik"
 
-#. settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
+#. 2.0->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Efektua"
 
-#. settings-schema.json->scaleEffect->description
+#. 5.4->settings-schema.json->scaleEffect->description
+#. 2.0->settings-schema.json->scaleEffect->description
 msgid "Scale effect"
 msgstr "Handitze-efektua"
 
-#. settings-schema.json->unscaleEffect->description
+#. 5.4->settings-schema.json->unscaleEffect->description
+#. 2.0->settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "Txikitze-efektua"
 
-#. settings-schema.json->rotateEffect->description
+#. 5.4->settings-schema.json->rotateEffect->description
+#. 2.0->settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "Biraketa-efektuaren hasiera"
 
-#. settings-schema.json->unrotateEffect->description
+#. 5.4->settings-schema.json->unrotateEffect->description
+#. 2.0->settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "Biraketa-efektuaren amaiera"
 
-#. settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
+#. 2.0->settings-schema.json->header3->description
 msgid "System Settings"
 msgstr "Sistemaren Ezarpenak"
 
-#. settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
+#. 2.0->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Ireki Cinnamonen Ezarpenak laneko areak kudeatzeko"
