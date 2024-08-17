@@ -59,9 +59,9 @@ Flipper.prototype = {
 
         Main.uiGroup.add_actor(this.actor);
 
-        this.actor.connect('key-release-event',
+        this.releaseID = this.actor.connect('key-release-event',
             Lang.bind(this, this._keyReleaseEvent));
-        this.actor.connect('key-press-event',
+        this.pressID = this.actor.connect('key-press-event',
             Lang.bind(this, this._keyPressEvent));
 
         this.initBackground();
@@ -356,6 +356,9 @@ Flipper.prototype = {
         from_workspace = this.get_workspace_clone(active_workspace.index());
         this.actor.add_actor(from_workspace);
       }
+
+      // Allow Cinnamon to play the switcher sound if it's enabled.
+      Main.soundManager.play('switch');
 
       if (direction == this.last_direction) {
         if (this.from != null) {
@@ -1281,7 +1284,7 @@ Flipper.prototype = {
         this.queued_action = null;
         this.processKeypress( action );
       } else if( this.destroy_requested ) {
-        global.log("destroy");
+        //global.log("destroy");
         this.onDestroy();
       }
     },
@@ -1358,8 +1361,8 @@ Flipper.prototype = {
         this._backgroundGroup = new St.Group({});
         Main.uiGroup.add_actor(this._backgroundGroup);
         this._backgroundGroup.hide();
-        this._backgroundGroup.add_actor
-            (Meta.BackgroundActor.new_for_screen(global.screen));
+        this.metaBackgroundActor = Meta.BackgroundActor.new_for_screen(global.screen);
+        this._backgroundGroup.add_actor(this.metaBackgroundActor);
         this._backgroundGroup.raise_top();
         this._backgroundGroup.lower(this.actor);
     },
@@ -1375,7 +1378,7 @@ Flipper.prototype = {
     },
 
     undimBackground: function(performCheck) {
-      global.log("undimBackground -- undimming");
+      //global.log("undimBackground -- undimming");
 
       if((performCheck && this.destroy_requested) || !performCheck) {
         this._backgroundGroup.show();
@@ -1393,11 +1396,11 @@ Flipper.prototype = {
     onDestroy: function() {
       this.undimBackground();
       this.destroy_requested = false;
-      global.log("onDestroy done");
+      //global.log("onDestroy done");
     },
 
     destroy: function() {
-      global.log("destroy called");
+      //global.log("destroy called");
       Main.uiGroup.remove_actor(this._backgroundGroup);
       Main.uiGroup.remove_actor(this.actor);
 
@@ -1406,8 +1409,11 @@ Flipper.prototype = {
       });
 
       global.window_group.show();
+      this.actor.disconnect(this.releaseID);
+      this.actor.disconnect(this.pressID);
+      this.metaBackgroundActor.destroy();
       this.actor.destroy();
-      global.log("destroy done");
+      //global.log("destroy done");
     }
 
 };
