@@ -1279,7 +1279,7 @@ Flipper.prototype = {
         this.queued_action = null;
         this.processKeypress( action );
       } else if( this.destroy_requested ) {
-        global.log("destroy");
+        //global.log("destroy");
         this.onDestroy();
       }
     },
@@ -1373,7 +1373,7 @@ Flipper.prototype = {
     },
 
     undimBackground: function(performCheck) {
-      global.log("undimBackground -- undimming");
+      //global.log("undimBackground -- undimming");
 
       if((performCheck && this.destroy_requested) || !performCheck) {
         this._backgroundGroup.show();
@@ -1391,11 +1391,11 @@ Flipper.prototype = {
     onDestroy: function() {
       this.undimBackground();
       this.destroy_requested = false;
-      global.log("onDestroy done");
+      //global.log("onDestroy done");
     },
 
     destroy: function() {
-      global.log("destroy called");
+      //global.log("destroy called");
       Main.uiGroup.remove_actor(this._backgroundGroup);
       Main.uiGroup.remove_actor(this.actor);
 
@@ -1405,7 +1405,7 @@ Flipper.prototype = {
 
       global.window_group.show();
       this.actor.destroy();
-      global.log("destroy done");
+      //global.log("destroy done");
     }
 
 };
