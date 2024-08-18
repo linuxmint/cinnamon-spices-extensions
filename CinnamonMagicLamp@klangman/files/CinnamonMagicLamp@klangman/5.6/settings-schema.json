@@ -1,0 +1,55 @@
+{
+   "keybinding-header": {
+      "type": "header",
+      "description": "Cinnamon Magic Lamp Settings"
+   },
+
+  "effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "default": 0,
+      "sine": 1
+    },
+    "description": "The type of effect",
+    "tooltip": "Using 'default' will result in a curved effect where using 'sine' will result in a more wavy effect"
+  },
+
+  "duration": {
+    "type": "spinbutton",
+    "default": 350,
+    "min": 50,
+    "max": 2000,
+    "units": "ms",
+    "step": 25,
+    "description": "Effect duration",
+    "tooltip": "The time (in milliseconds) that the effect takes to complete"
+  },
+
+  "x-tiles": {
+    "type": "spinbutton",
+    "default": 20,
+    "min": 3,
+    "max": 50,
+    "units": "tiles",
+    "step": 1,
+    "description": "X Tiles",
+    "tooltip": "This effects the quality and the cost of the animation"
+  },
+
+  "y-tiles": {
+    "type": "spinbutton",
+    "default": 20,
+    "min": 3,
+    "max": 50,
+    "units": "tiles",
+    "step": 1,
+    "description": "Y Tiles",
+    "tooltip": "This effects the quality and the costs of the animation"
+  },
+
+  "showNotification": {
+     "type": "generic",
+     "default": 1
+  }
+}
