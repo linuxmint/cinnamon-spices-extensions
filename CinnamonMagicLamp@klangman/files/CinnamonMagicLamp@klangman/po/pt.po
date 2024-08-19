@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-08-18 10:47-0400\n"
-"PO-Revision-Date: 2024-08-19 03:43-0100\n"
+"PO-Revision-Date: 2024-08-19 03:48-0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -89,7 +89,7 @@ msgstr "quadros"
 
 #. 5.6->settings-schema.json->x-tiles->description
 msgid "X Tiles"
-msgstr "Quadros no Eixo X"
+msgstr "Eixo X"
 
 #. 5.6->settings-schema.json->x-tiles->tooltip
 msgid "This effects the quality and the cost of the animation"
@@ -99,7 +99,7 @@ msgstr ""
 
 #. 5.6->settings-schema.json->y-tiles->description
 msgid "Y Tiles"
-msgstr "Quadros no Eixo Y"
+msgstr "Eixo Y"
 
 #. 5.6->settings-schema.json->y-tiles->tooltip
 msgid "This effects the quality and the costs of the animation"
