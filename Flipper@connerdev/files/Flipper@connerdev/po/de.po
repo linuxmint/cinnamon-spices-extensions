@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-08-17 12:33-0400\n"
+"POT-Creation-Date: 2024-08-21 13:16-0400\n"
 "PO-Revision-Date: 2021-03-02 21:09+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -170,4 +170,9 @@ msgstr "Quintisch"
 #. 2.0->settings-schema.json->includeBackground->description
 #. 5.4->settings-schema.json->includeBackground->description
 msgid "Include Background"
+msgstr "Hintergrund mit einbeziehen"
+
+#. 5.4->settings-schema.json->includePanels->description
+#, fuzzy
+msgid "Include Panels"
 msgstr "Hintergrund mit einbeziehen"

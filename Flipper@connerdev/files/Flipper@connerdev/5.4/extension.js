@@ -15,6 +15,7 @@ const Cinnamon = imports.gi.Cinnamon;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
+const Panel = imports.ui.panel;
 
 let settings;
 let bindings = ['switch-to-workspace-left',
@@ -225,7 +226,8 @@ Flipper.prototype = {
                     });
 
                 clone.add_actor(windowClone);
-                windowClone.lower(deskletClone);
+                //windowClone.lower(deskletClone);
+                windowClone.get_parent().set_child_below_sibling(windowClone, deskletClone);
                 clone.desktopClones.push(windowClone);
             }
         });
@@ -239,38 +241,39 @@ Flipper.prototype = {
             clone.workspaceWindowActors.push(windowClone);
         }
         clone.workspaceWindows = workspaceWindows;
-
-        let chromeGroup = new St.Group();
-        Main.getPanels().concat(Main.uiGroup.get_children()).forEach(
-            function (panel) {
-                // Is it a non-autohideable panel, or is it a visible, tracked
-                // chrome object? TODO: Make more human-readable the logic
-                // below in clone.add_actor().
-                if ((panel.actor && !panel._hideable) || (panel &&
-                    Main.layoutManager.isTrackingChrome(panel) &&
-                    panel.visible)) {
-                    let chromeClone = new Clutter.Clone(
-                        {source: panel.actor ? panel.actor : panel,
-                        x : panel.actor ? panel.actor.x : panel.x,
-                        y: panel.actor ? (panel.bottomPosition ?
-                        Main.layoutManager.bottomMonitor.y +
-                        Main.layoutManager.bottomMonitor.height -
-                        panel.actor.height :
-                        Main.layoutManager.primaryMonitor.y) : panel.y});
-                    chromeGroup.add_actor(chromeClone);
-                    chromeClone.raise_top();
-                }
-            });
-        clone.add_actor(chromeGroup);
-        chromeGroup.raise_top();
-        clone.chromeGroup = chromeGroup;
+        if (settings.includePanels) {
+           let chromeGroup = new St.Group();
+           Main.getPanels().concat(Main.uiGroup.get_children()).forEach(
+               function (panel) {
+                   // Is it a non-autohideable panel, or is it a visible, tracked
+                   // chrome object? TODO: Make more human-readable the logic
+                   // below in clone.add_actor().
+                   if ((panel.actor && !panel._hideable)
+                      || (panel &&  Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
+                       let chromeClone = new Clutter.Clone({
+                           source: panel.actor ? panel.actor : panel,
+                           x : panel.actor ? panel.actor.x : panel.x,
+                           y : panel.actor ? (panel.panelPosition === Panel.PanelLoc.bottom ?
+                           Main.layoutManager.primaryMonitor.y +
+                           Main.layoutManager.primaryMonitor.height -
+                           panel.actor.height :
+                           Main.layoutManager.primaryMonitor.y) : panel.y});
+                       chromeGroup.add_actor(chromeClone);
+                       //chromeClone.raise_top();
+                       chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
+                   }
+               });
+           clone.add_actor(chromeGroup);
+           //chromeGroup.raise_top();
+           chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
+           clone.chromeGroup = chromeGroup;
+        }
         clone.index = workspaceIndex;
         return clone;
     },
 
     cloneMetaWindow: function(metaWindow) {
-        let compositor =
-            metaWindow.get_compositor_private();
+        let compositor = metaWindow.get_compositor_private();
 
         let rect = metaWindow.get_buffer_rect();
         let windowClone = new Clutter.Clone(
@@ -334,7 +337,6 @@ Flipper.prototype = {
     startAnimate: function(direction, window) {
       this.is_animating = true;
 
-      // Main.wm.showWorkspaceOSD();
       let active_workspace = global.screen.get_active_workspace();
       let new_workspace = active_workspace.get_neighbor(direction);
 
@@ -463,7 +465,6 @@ Flipper.prototype = {
       to.raise_top();
       to.show();
       this.new_workspace.activate(global.get_current_time());
-      Main.wm.showWorkspaceOSD();
 
       if (to.workspaceWindowActors.length > 0) {
         let range = this.getTime();
@@ -593,7 +594,6 @@ Flipper.prototype = {
       to.show();
       to.raise_top();
       this.new_workspace.activate(global.get_current_time());
-      Main.wm.showWorkspaceOSD();
 
       if (to.workspaceWindowActors.length > 0) {
 
@@ -743,7 +743,6 @@ Flipper.prototype = {
       from.hide();
       to.show();
       this.new_workspace.activate(global.get_current_time());
-      Main.wm.showWorkspaceOSD();
     },
 
     flip_start: function(from, to, direction) {
@@ -833,7 +832,6 @@ Flipper.prototype = {
           onCompleteScope: this
       });
 
-      Main.wm.showWorkspaceOSD();
     },
 
     slide_start: function(from, to, direction) {
@@ -932,7 +930,6 @@ Flipper.prototype = {
         });
       }
 
-      Main.wm.showWorkspaceOSD();
     },
 
     deck_start: function(from, to, direction) {
@@ -1059,7 +1056,6 @@ Flipper.prototype = {
         });
       }
 
-      Main.wm.showWorkspaceOSD();
     },
 
     cube_start: function(from, to, direction) {
@@ -1149,7 +1145,6 @@ Flipper.prototype = {
       to.raise_top();
       to.show();
       this.new_workspace.activate(global.get_current_time());
-      Main.wm.showWorkspaceOSD();
 
       if (to.workspaceWindowActors.length > 0) {
         let range = this.getTime();
@@ -1287,6 +1282,7 @@ Flipper.prototype = {
         //global.log("destroy");
         this.onDestroy();
       }
+      Main.wm.showWorkspaceOSD();
     },
 
     processKeypress: function(action) {
@@ -1441,6 +1437,8 @@ FlipperSettings.prototype = {
             "transitionEffect", "transitionEffect", function(){});
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "includeBackground", "includeBackground", function(){});
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "includePanels", "includePanels", function(){});
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "dim_factor", "dim_factor", function(){});
         // this.settings.bindProperty(Settings.BindingDirection.IN,

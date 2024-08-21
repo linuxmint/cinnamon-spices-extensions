@@ -80,5 +80,10 @@
     "type" : "checkbox",
     "description" : "Include Background",
     "default" : false
+  },
+  "includePanels" : {
+    "type" : "checkbox",
+    "description" : "Include Panels",
+    "default" : false
   }
 }

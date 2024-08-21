@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.3
+
+* Fix the panels showing up in an incorrect location when animating (or when holing Ctrl+Alt after a workspace switch), but I still see occasional panel painting issues.
+* Added a new setting option to disable showing the panels when animating (as a way to avoid any panel animation issues you might be having)
+* Changed the workspace switch OSD to only show after the animation so that there is no odd OSD artifacts while animating
+* Changed author to myself since the extension has no maintainer currently
+
 ## 1.0.2
 
 * Ask Cinnamon to play the workspace switch sound (if it's enabled) when switching workspaces
