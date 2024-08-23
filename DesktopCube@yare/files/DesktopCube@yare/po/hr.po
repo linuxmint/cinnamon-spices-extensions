@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: DesktopCube@yare\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-08-15 21:33-0400\n"
+"POT-Creation-Date: 2024-08-23 18:58-0400\n"
 "PO-Revision-Date: 2017-04-30 16:57+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: \n"
@@ -28,52 +28,108 @@ msgstr "Kocka radne površine"
 msgid "Compiz Cube-like animation for workspace switching"
 msgstr "Animacija poput Compiz kocke za prebacivanje radih prostora"
 
-#. 5.4->settings-schema.json->header1->description
 #. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
 msgid "General"
 msgstr "Općenito"
 
-#. 5.4->settings-schema.json->animationTime->description
 #. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Trajanje animacije"
 
-#. 5.4->settings-schema.json->pullaway->description
 #. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Omjer udaljavanja od zaslona"
 
-#. 5.4->settings-schema.json->header2->description
 #. 2.0->settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Efekti"
 
-#. 5.4->settings-schema.json->scaleEffect->description
 #. 2.0->settings-schema.json->scaleEffect->description
+#. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale effect"
 msgstr "Efekt udaljenja"
 
-#. 5.4->settings-schema.json->unscaleEffect->description
 #. 2.0->settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "Efekt približenja"
 
-#. 5.4->settings-schema.json->rotateEffect->description
 #. 2.0->settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "Efekt početka zakretanja"
 
-#. 5.4->settings-schema.json->unrotateEffect->description
 #. 2.0->settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "Efekt završetka zakretanja"
 
-#. 5.4->settings-schema.json->header3->description
 #. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
 msgid "System Settings"
 msgstr ""
 
-#. 5.4->settings-schema.json->workspaces_btn->description
 #. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr ""
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr ""
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+#, fuzzy
+msgid "Rotate effect"
+msgstr "Efekt završetka zakretanja"

@@ -134,8 +134,9 @@ Cube.prototype = {
             }
             return 0;
         });
-        workspace_clone.chromeGroup.get_parent()
-            .set_child_above_sibling(workspace_clone.chromeGroup, null);
+        if (workspace_clone.chromeGroup) {
+           workspace_clone.chromeGroup.get_parent().set_child_above_sibling(workspace_clone.chromeGroup, null);
+        }
     },
 
     moveWindowClone: function(window, active_index, new_index) {
@@ -226,34 +227,35 @@ Cube.prototype = {
             clone.workspaceWindowActors.push(windowClone);
         }
         clone.workspaceWindows = workspaceWindows;
+        if (settings.includePanels) {
+           let chromeGroup = new St.Group();
+           let panels = Main.getPanels().concat(Main.uiGroup.get_children());
+           for (let i = 0; i < panels.length; i++) {
+               if (!panels[i]) continue;
+               let panel = panels[i];
+               // Is it a non-autohideable panel, or is it a visible, tracked
+               // chrome object?
+               if ((panel.actor && !panel._hideable)
+                   || (panel && Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
+                   let chromeClone = new Clutter.Clone({
+                       source: panel.actor ? panel.actor : panel,
+                       x : panel.actor ? panel.actor.x : panel.x,
+                       y: panel.actor ? panel.panelPosition === Panel.PanelLoc.bottom ?
+                           Main.layoutManager.primaryMonitor.y
+                               + Main.layoutManager.primaryMonitor.height
+                               - panel.actor.height
+                           : Main.layoutManager.primaryMonitor.y
+                           : panel.y
+                   });
+                   chromeGroup.add_child(chromeClone);
+                   chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
+               }
+           }
 
-        let chromeGroup = new St.Group();
-        let panels = Main.getPanels().concat(Main.uiGroup.get_children());
-        for (let i = 0; i < panels.length; i++) {
-            if (!panels[i]) continue;
-            let panel = panels[i];
-            // Is it a non-autohideable panel, or is it a visible, tracked
-            // chrome object?
-            if ((panel.actor && !panel._hideable)
-                || (panel && Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
-                let chromeClone = new Clutter.Clone({
-                    source: panel.actor ? panel.actor : panel,
-                    x : panel.actor ? panel.actor.x : panel.x,
-                    y: panel.actor ? panel.panelPosition === Panel.PanelLoc.bottom ?
-                        Main.layoutManager.primaryMonitor.y
-                            + Main.layoutManager.primaryMonitor.height
-                            - panel.actor.height
-                        : Main.layoutManager.primaryMonitor.y
-                        : panel.y
-                });
-                chromeGroup.add_child(chromeClone);
-                chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
-            }
+           clone.add_child(chromeGroup);
+           chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
+           clone.chromeGroup = chromeGroup;
         }
-
-        clone.add_child(chromeGroup);
-        chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
-        clone.chromeGroup = chromeGroup;
         clone.index = workspaceIndex;
         return clone;
     },
@@ -304,13 +306,13 @@ Cube.prototype = {
             if (visible) {
                 Tweener.addTween(clone, {
                     opacity: 255,
-                    transition: settings.unrotateEffect,
+                    transition: settings.getUnrotateEffect(),
                     time: settings.animationTime * 0.3333,
                 });
             } else {
                 Tweener.addTween(clone, {
                     opacity: 0,
-                    transition: settings.rotateEffect,
+                    transition: settings.getRotateEffect(),
                     time: settings.animationTime * 0.3333,
                 });
             }
@@ -340,6 +342,9 @@ Cube.prototype = {
             from_workspace = this.getWorkspaceClone(active_workspace.index());
             this.actor.add_child(from_workspace);
         }
+
+        // Allow Cinnamon to play the switcher sound if it's enabled.
+        Main.soundManager.play('switch');
 
         if (direction === this.last_direction) {
             if (this.from != null) {
@@ -390,8 +395,10 @@ Cube.prototype = {
 
         to.set_scale(1 - 2 * settings.pullaway, 1 - 2 * settings.pullaway);
         from.get_parent().set_child_above_sibling(from, null);
-        if (needScale) this.scale(from, to, direction);
-        else this.rotate_mid(from, to, direction);
+        if (needScale)
+           this.scale(from, to, direction);
+        else
+           this.rotate_mid(from, to, direction);
     },
 
     scale: function(from, to, direction) {
@@ -412,7 +419,7 @@ Cube.prototype = {
             scale_x: 1 - 2 * settings.pullaway,
             scale_y: 1 - 2 * settings.pullaway,
             x: x_pos,
-            transition: settings.scaleEffect,
+            transition: settings.getScaleEffect(),
             time: settings.animationTime,
             onCompleteParams: [from, to, direction],
             onComplete: this.rotate_mid,
@@ -424,6 +431,8 @@ Cube.prototype = {
         this.isAnimating = true;
         this.setDesktopClonesVisible(from, false);
         this.setDesktopClonesVisible(to, false);
+      from.show();
+      to.show();
 
         let angle_from;
         let angle_to;
@@ -438,14 +447,14 @@ Cube.prototype = {
         Tweener.addTween(from, {
             x: global.stage.width / 2,
             rotation_angle_y: angle_from,
-            transition: settings.rotateEffect,
+            transition: settings.getRotateEffect(),
             time: settings.animationTime,
         });
 
         Tweener.addTween(to, {
             x: global.stage.width / 2,
             rotation_angle_y: angle_to,
-            transition: settings.rotateEffect,
+            transition: settings.getRotateEffect(),
             time: settings.animationTime,
             onCompleteParams: [from, to, direction],
             onComplete: this.rotate_end,
@@ -455,6 +464,9 @@ Cube.prototype = {
 
     rotate_end: function(from, to, direction) {
         to.get_parent().set_child_above_sibling(to, null);
+      from.show();
+      to.show();
+
         let x_pos;
         let angle_from;
         if (direction === Meta.MotionDirection.LEFT) {
@@ -468,14 +480,14 @@ Cube.prototype = {
         Tweener.addTween(from, {
             x: x_pos,
             rotation_angle_y: angle_from,
-            transition: settings.unrotateEffect,
+            transition: settings.getUnrotateEffect(),
             time: settings.animationTime,
         });
 
         Tweener.addTween(to, {
             x: x_pos,
             rotation_angle_y: 0,
-            transition: settings.unrotateEffect,
+            transition: settings.getUnrotateEffect(),
             time: settings.animationTime,
             onComplete: this.unsetIsAnimating,
             onCompleteScope: this,
@@ -504,7 +516,7 @@ Cube.prototype = {
             scale_x: 1.0,
             scale_y: 1.0,
             x: x_pos,
-            transition: settings.unscaleEffect,
+            transition: settings.getUnscaleEffect(),
             time: settings.animationTime,
             onComplete: this.destroy,
             onCompleteScope: this,
@@ -549,9 +561,9 @@ Cube.prototype = {
             this.setDesktopClonesVisible(this.from, true);
             this.setDesktopClonesVisible(this.to, true);
         }
-        Main.wm.showWorkspaceOSD();
         this.isAnimating = false;
         if (this.destroy_requested) this.onDestroy();
+        Main.wm.showWorkspaceOSD();
     },
 
     _keyPressEvent: function(actor, event) {
@@ -669,17 +681,43 @@ function CubeSettings(uuid) {
 CubeSettings.prototype = {
     _init: function(uuid) {
         this.settings = new Settings.ExtensionSettings(this, uuid);
-        this.settings.bindProperty( Settings.BindingDirection.IN, 'animationTime', 'animationTime', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'animationTime', 'animationTime', null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'pullaway', 'pullaway', null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, 'scaleEffect', 'scaleEffect', null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, 'unscaleEffect', 'unscaleEffect', null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, 'rotateEffect', 'rotateEffect', null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, 'unrotateEffect', 'unrotateEffect', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'newScaleEffect', 'newScaleEffect', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'newRotateEffect', 'newRotateEffect', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'includePanels', 'includePanels', null);
+    },
+
+    getScaleEffect: function() {
+       return "easeIn" + settings.newScaleEffect;
+    },
+
+    getUnscaleEffect: function() {
+       return "easeOut" + settings.newScaleEffect;
+    },
+
+    getRotateEffect: function() {
+       return "easeIn" + settings.newRotateEffect;
+    },
+
+    getUnrotateEffect: function() {
+       return "easeOut" + settings.newRotateEffect;
     }
 };
 
 function init(metadata) {
     settings = new CubeSettings(metadata.uuid);
+
+    log( `animationTime: ${settings.animationTime}` );
+    log( `pullaway: ${settings.pullaway}` );
+    log( `scaleEffect: ${settings.newScaleEffect}` );
+    log( `rotateEffect: ${settings.newRotateEffect}` );
+    log( `includePanels: ${settings.includePanels}` );
+
+    log( `getScaleEffect: ${settings.getScaleEffect()}` );
+    log( `getUnscaleEffect: ${settings.getUnscaleEffect()}` );
+    log( `getRotateEffect: ${settings.getRotateEffect()}` );
+    log( `getUnrotateEffect: ${settings.getUnrotateEffect()}` );
 }
 
 function enable() {
