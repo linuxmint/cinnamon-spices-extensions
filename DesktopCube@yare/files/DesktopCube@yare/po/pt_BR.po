@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-08-15 21:33-0400\n"
+"POT-Creation-Date: 2024-08-23 18:58-0400\n"
 "PO-Revision-Date: 2021-09-26 21:23-0300\n"
 "Last-Translator: Marcelo Aof\n"
 "Language-Team: \n"
@@ -28,52 +28,108 @@ msgid "Compiz Cube-like animation for workspace switching"
 msgstr ""
 "Alterne os espaços de trabalho com uma animação inspirada nos cubos do Compiz"
 
-#. 5.4->settings-schema.json->header1->description
 #. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
 msgid "General"
 msgstr "Visão geral"
 
-#. 5.4->settings-schema.json->animationTime->description
 #. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Duração da animação"
 
-#. 5.4->settings-schema.json->pullaway->description
 #. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Proporção de afastamento da tela"
 
-#. 5.4->settings-schema.json->header2->description
 #. 2.0->settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Efeitos"
 
-#. 5.4->settings-schema.json->scaleEffect->description
 #. 2.0->settings-schema.json->scaleEffect->description
+#. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale effect"
 msgstr "Efeito de afastamento da tela"
 
-#. 5.4->settings-schema.json->unscaleEffect->description
 #. 2.0->settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "Efeito de aproximação da tela"
 
-#. 5.4->settings-schema.json->rotateEffect->description
 #. 2.0->settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "Início do efeito de rotação"
 
-#. 5.4->settings-schema.json->unrotateEffect->description
 #. 2.0->settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "Fim do efeito de rotação"
 
-#. 5.4->settings-schema.json->header3->description
 #. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
 msgid "System Settings"
 msgstr "Configurações do sistema"
 
-#. 5.4->settings-schema.json->workspaces_btn->description
 #. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Abrir as configurações do Cinnamon para ajustar os espaços de trabalho"
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr ""
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+#, fuzzy
+msgid "Rotate effect"
+msgstr "Fim do efeito de rotação"
