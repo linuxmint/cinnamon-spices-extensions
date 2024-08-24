@@ -1,0 +1,133 @@
+# DESKTOP CUBE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# yare, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-23 18:58-0400\n"
+"PO-Revision-Date: 2024-08-23 21:44-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Escritorio de cubo"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Animación Compiz Cube para cambiar de espacio de trabajo"
+
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
+msgid "General"
+msgstr "General"
+
+#. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Duración de la animación"
+
+#. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Distancia de separación de la pantalla"
+
+#. 2.0->settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efectos"
+
+#. 2.0->settings-schema.json->scaleEffect->description
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale effect"
+msgstr "Efecto de alejamiento de pantalla"
+
+#. 2.0->settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Efecto de acercamineto de la pantalla"
+
+#. 2.0->settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Efecto de inicio de rotación"
+
+#. 2.0->settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Efecto fin de rotación"
+
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Configuración del sistema"
+
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr ""
+"Abrir la configuración de Cinnamon para gestionar los espacios de trabajo"
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr "Incluir paneles"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr "Atrás"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr "Rebote"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr "Círculo"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr "Cúbico"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr "Elástico"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr "Exposición"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr "Seno"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr "Cuádruple"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr "Cuarto"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr "Quinta"
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+msgid "Rotate effect"
+msgstr "Efecto de rotación"
