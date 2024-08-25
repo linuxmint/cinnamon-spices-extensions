@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-08-23 18:58-0400\n"
-"PO-Revision-Date: 2024-07-25 17:23+0200\n"
+"PO-Revision-Date: 2024-08-25 22:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: Odyssey <odysseyhyd@gmail.com>\n"
 "Language: ca\n"
@@ -76,59 +76,58 @@ msgstr "Obrir la configuració de Cinnamon per gestionar els espais de treball"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
-msgstr ""
+msgstr "Incloure els taulers"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Back"
-msgstr ""
+msgstr "Enrere"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Bounce"
-msgstr ""
+msgstr "Rebot"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Circ"
-msgstr ""
+msgstr "Cercle"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Cubic"
-msgstr ""
+msgstr "Cúbic"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Elastic"
-msgstr ""
+msgstr "Elàstic"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Expo"
-msgstr ""
+msgstr "Exposició"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Sine"
-msgstr ""
+msgstr "Sinus"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quad"
-msgstr ""
+msgstr "Quad"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quart"
-msgstr ""
+msgstr "Quart"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quint"
-msgstr ""
+msgstr "Quinta"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
 msgid "Rotate effect"
-msgstr "Efecte del final de la rotació"
+msgstr "Efecte de rotació"
