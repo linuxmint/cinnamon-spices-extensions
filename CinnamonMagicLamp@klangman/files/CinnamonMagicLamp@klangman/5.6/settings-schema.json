@@ -46,10 +46,5 @@
     "step": 1,
     "description": "Y Tiles",
     "tooltip": "This effects the quality and the costs of the animation"
-  },
-
-  "showNotification": {
-     "type": "generic",
-     "default": 1
   }
 }

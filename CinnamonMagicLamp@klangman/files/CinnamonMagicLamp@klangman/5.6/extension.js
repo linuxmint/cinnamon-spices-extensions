@@ -36,6 +36,8 @@ const Gettext = imports.gettext;
 const MessageTray = imports.ui.messageTray;
 const Panel = imports.ui.panel;
 
+const ShouldAnimateManager = require("ShouldAnimateManager.js");
+
 const MINIMIZE_EFFECT_NAME = "minimize-magic-lamp-effect";
 const UNMINIMIZE_EFFECT_NAME = "unminimize-magic-lamp-effect";
 
@@ -64,30 +66,35 @@ class CinnamonMagicLamp {
 
    enable() {
       this.settings = new Settings.ExtensionSettings(this, UUID);
-      this.signalManager = new SignalManager.SignalManager(null);
-      this.signalManager.connect(global.window_manager, "minimize", this._minimize, this);
-      this.signalManager.connect(global.window_manager, "unminimize", this._unminimize, this);
 
-      // On first enable, show a notification telling the user that the extension was enabled,
-      // and that they need to disable the default minimize/unminimize Cinnamon effects.
-      if(this.settings.getValue("showNotification")) {
+      // Register to intercept _shouldAnimate events
+      this.shouldAnimateManager = new ShouldAnimateManager.ShouldAnimateManager( UUID );
+      let error = this.shouldAnimateManager.connect(ShouldAnimateManager.Events.Minimize+ShouldAnimateManager.Events.Unminimize,
+         function(actor, types, event) {
+            // Override the cinnamon settings so Cinnamon will not attempt to animate the minimize/unminimize events
+            return false;
+         } );
+
+      if (error) {
          let source = new MessageTray.Source(this.meta.name);
-         let notification = new MessageTray.Notification(source, this.meta.name + " " + _("has been enabled"),
-            _("Please set the Cinnamon minimize and unminimize effects to None. These effects will interfere with the Cinnamon Magic Lap effects."),
+         let notification = new MessageTray.Notification(source, _("ERROR") + ": " + this.meta.name + " " + _("was NOT enabled"),
+            _("The existing extension") + " " + error + " " + _("conflicts with this extension."),
             {icon: new St.Icon({icon_name: "cinnamon-magic-lamp", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
             );
-         notification.addButton("open-effects", _("Open Cinnamon Effects"));
-         notification.connect("action-invoked", () => { Util.spawnCommandLineAsync("cinnamon-settings effects");});
          Main.messageTray.add(source);
          source.notify(notification);
-         this.settings.setValue("showNotification", 0);
+      } else {
+         this.signalManager = new SignalManager.SignalManager(null);
+         this.signalManager.connect(global.window_manager, "minimize", this._minimize, this);
+         this.signalManager.connect(global.window_manager, "unminimize", this._unminimize, this);
       }
    }
 
    disable() {
+      // Disconnect for _shouldAnimate events
+      this.shouldAnimateManager.disconnect();
       this.signalManager.disconnectAllSignals();
       global.get_window_actors().forEach((actor) => { this.destroyActorEffect(actor); });
-      this.settings.setValue("showNotification", 1);
    }
 
    _minimize(e, actor) {
