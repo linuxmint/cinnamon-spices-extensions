@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+* Fixed the "not animating" issue under Mint 21+
+* Fixed the under cube background not dimming issue
+* Removed some xsession_errors debugging messages
+
 ## 1.0.2
 
 * Added an option to remove the panels from the animation effect

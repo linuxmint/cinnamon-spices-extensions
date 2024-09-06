@@ -11,6 +11,7 @@ const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
 const Util = imports.misc.util; // Needed for spawnCommandLine()
 
+
 let settings;
 let bindings = [
     ['switch-to-workspace-left', '_showWorkspaceSwitcher'],
@@ -346,6 +347,10 @@ Cube.prototype = {
         // Allow Cinnamon to play the switcher sound if it's enabled.
         Main.soundManager.play('switch');
 
+        // This is a workaround for poor animation, we enable it only during the animation
+        // sequence so users don't need to set it using export CLUTTER_PAINT...
+        Meta.add_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
+
         if (direction === this.last_direction) {
             if (this.from != null) {
                 to_workspace = this.getWorkspaceCloneScaled(new_workspace.index(), direction);
@@ -564,6 +569,7 @@ Cube.prototype = {
         this.isAnimating = false;
         if (this.destroy_requested) this.onDestroy();
         Main.wm.showWorkspaceOSD();
+        Meta.remove_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
     },
 
     _keyPressEvent: function(actor, event) {
@@ -636,7 +642,8 @@ Cube.prototype = {
         this._backgroundGroup.show();
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
-            dim_factor: 0.0,
+            //dim_factor: 0.0,
+            opacity: 10,
             time: settings.animationTime * 0,
             transition: 'easeOutQuad'
         });
@@ -707,17 +714,6 @@ CubeSettings.prototype = {
 
 function init(metadata) {
     settings = new CubeSettings(metadata.uuid);
-
-    log( `animationTime: ${settings.animationTime}` );
-    log( `pullaway: ${settings.pullaway}` );
-    log( `scaleEffect: ${settings.newScaleEffect}` );
-    log( `rotateEffect: ${settings.newRotateEffect}` );
-    log( `includePanels: ${settings.includePanels}` );
-
-    log( `getScaleEffect: ${settings.getScaleEffect()}` );
-    log( `getUnscaleEffect: ${settings.getUnscaleEffect()}` );
-    log( `getRotateEffect: ${settings.getRotateEffect()}` );
-    log( `getUnrotateEffect: ${settings.getUnrotateEffect()}` );
 }
 
 function enable() {
