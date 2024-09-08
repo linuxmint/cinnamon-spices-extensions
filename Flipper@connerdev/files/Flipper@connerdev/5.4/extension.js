@@ -362,6 +362,10 @@ Flipper.prototype = {
       // Allow Cinnamon to play the switcher sound if it's enabled.
       Main.soundManager.play('switch');
 
+      // This is a workaround for poor animation, we enable it only during the animation
+      // sequence so users don't need to set it using export CLUTTER_PAINT...
+      Meta.add_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
+
       if (direction == this.last_direction) {
         if (this.from != null) {
           to_workspace = this.get_workspace_clone
@@ -487,8 +491,9 @@ Flipper.prototype = {
         for(let i=0; i<to.workspaceWindowActors.length; ++i) {
           let actor = to.workspaceWindowActors[i];
           actor.set_opacity(0);
-          actor.scale_center_x = actor.width / 2;
-          actor.scale_center_y = actor.height / 2;
+          //actor.scale_center_x = actor.width / 2;
+          //actor.scale_center_y = actor.height / 2;
+          actor.set_pivot_point(0.5, 0.5);
           tween.delay = delay;
           delay += step;
 
@@ -550,8 +555,9 @@ Flipper.prototype = {
 
         for(let i=from.workspaceWindowActors.length-1; i >= 0; --i) {
           let actor = from.workspaceWindowActors[i];
-          actor.scale_center_x = actor.width / 2;
-          actor.scale_center_y = actor.height / 2;
+          //actor.scale_center_x = actor.width / 2;
+          //actor.scale_center_y = actor.height / 2;
+          actor.set_pivot_point(0.5, 0.5);
           tween.delay = delay;
           delay += step;
 
@@ -607,8 +613,9 @@ Flipper.prototype = {
           let to_x = actor.x;
 
           actor.set_opacity(0);
-          actor.scale_center_x = actor.width / 2;
-          actor.scale_center_y = actor.height / 2;
+          //actor.scale_center_x = actor.width / 2;
+          //actor.scale_center_y = actor.height / 2;
+          actor.set_pivot_point(0.5, 0.5);
           actor.set_scale(settings.pullaway, settings.pullaway);
 
           if (direction == Meta.MotionDirection.LEFT) {
@@ -668,16 +675,18 @@ Flipper.prototype = {
             x_pos = actor.x + this.monitor.width/2;
             angle_to = this.const.STACK_ANGLE;
 
-            actor.scale_center_x = actor.width / 2;
-            actor.scale_center_y = actor.height / 2;
+            //actor.scale_center_x = actor.width / 2;
+            //actor.scale_center_y = actor.height / 2;
+            actor.set_pivot_point(0.5, 0.5);
           } else {
             actor.move_anchor_point(0, 0);
             // x_pos = actor.x - this.const.STACK_DISTANCE;
             x_pos = actor.x - this.monitor.width/2;
             angle_to = -this.const.STACK_ANGLE;
 
-            actor.scale_center_x = actor.width / 2;
-            actor.scale_center_y = actor.height / 2;
+            //actor.scale_center_x = actor.width / 2;
+            //actor.scale_center_y = actor.height / 2;
+            actor.set_pivot_point(0.5, 0.5);
           }
 
           let tween = {
@@ -943,8 +952,9 @@ Flipper.prototype = {
         to.raise_top();
         from.set_position(0, this.monitor.height/2 );
         from.rotation_angle_y = 0;
-        from.scale_center_y = 0;
-        from.scale_center_x = this.monitor.width/2;
+        //from.scale_center_y = 0;
+        //from.scale_center_x = this.monitor.width/2;
+        from.set_pivot_point(0.5, 0);
 
         to.set_position(-this.monitor.width, this.monitor.height/2 - this.const.DECK_HEIGHT);
         to.rotation_angle_y = -this.const.DECK_ANGLE;
@@ -983,8 +993,9 @@ Flipper.prototype = {
         fromTransition = -this.monitor.width/2;
         to.set_opacity(0);
         to.set_scale(this.getScale(), this.getScale());
-        to.scale_center_y = 0;
-        to.scale_center_x = this.monitor.width/2;
+        //to.scale_center_y = 0;
+        //to.scale_center_x = this.monitor.width/2;
+        to.set_pivot_point(0.5, 0);
 
         Tweener.addTween(to, {
           opacity: 255,
@@ -1169,8 +1180,9 @@ Flipper.prototype = {
           let actor = to.workspaceWindowActors[i];
           actor.set_opacity(0);
           actor.move_anchor_point(0, 1.5 * this.monitor.height);
-          actor.scale_center_x = actor.width / 2;
-          actor.scale_center_y = actor.height;
+          //actor.scale_center_x = actor.width / 2;
+          //actor.scale_center_y = actor.height;
+          actor.set_pivot_point(0.5, 1);
           // actor.scale_center_x = this.monitor.width / 2;
           // actor.scale_center_y = this.monitor.height;
           tween.delay = delay;
@@ -1239,8 +1251,9 @@ Flipper.prototype = {
         for(let i=from.workspaceWindowActors.length-1; i >= 0; --i) {
           let actor = from.workspaceWindowActors[i];
           actor.move_anchor_point(0, 1.5 * this.monitor.height);
-          actor.scale_center_x = actor.width / 2;
-          actor.scale_center_y = actor.height;
+          //actor.scale_center_x = actor.width / 2;
+          //actor.scale_center_y = actor.height;
+          actor.set_pivot_point(0.5, 1);
           tween.delay = delay;
           delay += step;
 
@@ -1283,6 +1296,7 @@ Flipper.prototype = {
         this.onDestroy();
       }
       Main.wm.showWorkspaceOSD();
+      Meta.remove_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
     },
 
     processKeypress: function(action) {

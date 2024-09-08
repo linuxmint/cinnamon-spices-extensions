@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+* Added a fix to make the animation performance better (smoother).
+* Replaced usage of deprecated Actor.scale_center_[x/y] with actor.set_pivot_point().
+
 ## 1.0.3
 
 * Fix the panels showing up in an incorrect location when animating (or when holing Ctrl+Alt after a workspace switch), but I still see occasional panel painting issues.
