@@ -48,8 +48,8 @@ const GLib = imports.gi.GLib;
 const Settings = imports.ui.settings;
 const MessageTray = imports.ui.messageTray;
 const St = imports.gi.St;
-
-const RANDOMIZED = 999;
+const Cinnamon = imports.gi.Cinnamon;
+const SignalManager = imports.misc.signalManager;
 
 const Effect = {
   Apparition: 0,
@@ -65,7 +65,9 @@ const Effect = {
   Portal: 15,
   TVEffect: 18,
   TVGlitch: 19,
-  Wisps: 20
+  Wisps: 20,
+  Randomized: 999,
+  None: 1000
 }
 
 const UUID = "CinnamonBurnMyWindows@klangman";
@@ -126,6 +128,13 @@ class BurnMyWindows {
 
       // Store a reference to the settings object.
       this._settings = new Settings.ExtensionSettings(this, this.meta.uuid);
+
+      // Keep track of the previously focused Application
+      this._signalManager = new SignalManager.SignalManager(null);
+      this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
+
+      // WindowTracker so we can map windows to application
+      this._windowTracker = Cinnamon.WindowTracker.get_default();
 
       // We will use extensionThis to refer to the extension inside the patched methods.
       const extensionThis = this;
@@ -209,6 +218,8 @@ class BurnMyWindows {
   // This function could be called after the extension is uninstalled, disabled in GNOME
   // Tweaks, when you log out or when the screen locks.
   disable() {
+    // Stop monitoring focus changes
+    this._signalManager.disconnectAllSignals();
 
     // Free all effect resources.
     this._ALL_EFFECTS = [];
@@ -224,12 +235,21 @@ class BurnMyWindows {
   // Choose an effect based on the users preferences as defined in the setting for the current window action
   _chooseEffect(actor, forOpening) {
     let effectIdx;
+    let appRule = this.getAppRule(actor.meta_window);
     if (forOpening) {
-      effectIdx = this._settings.getValue("open-window-effect");
+      if (appRule)
+        effectIdx = appRule.open;
+      else
+        effectIdx = this._settings.getValue("open-window-effect");
     } else {
-      effectIdx = this._settings.getValue("close-window-effect");
+      if (appRule)
+        effectIdx = appRule.close;
+      else
+        effectIdx = this._settings.getValue("close-window-effect");
     }
-    if (effectIdx != RANDOMIZED) {
+    if (effectIdx === Effect.None) {
+       return(null);
+    } else if (effectIdx != Effect.Randomized) {
        // Return the effect that the setting reflects
        return {effect: this._ALL_EFFECTS[effectIdx], profile: this._settings};
     } else {
@@ -271,6 +291,24 @@ class BurnMyWindows {
         return null;
       }
     }
+  }
+
+  // Get the application specific rules for the given metaWindow
+  getAppRule(metaWindow) {
+    let app = this._windowTracker.get_window_app(metaWindow);
+    if (!app) {
+      app = this._windowTracker.get_app_from_pid(metaWindow.get_pid());
+    }
+    if (app && !app.is_window_backed()) {
+      let appID = app.get_id();
+      let appRules = this._settings.getValue("app-rules");
+      for( let i=0 ; i < appRules.length ; i++ ) {
+        if (appRules[i].enabled && appRules[i].application == appID) {
+          return(appRules[i]);
+        }
+      }
+    }
+    return(null);
   }
 
   // This method adds the given effect using the settings from the given profile to the
@@ -357,33 +395,55 @@ class BurnMyWindows {
     shader.beginAnimation(profile, forOpening, testMode, duration, actor);
   }
 
-  // This is required to enable window-close animations in the overview. See the comment
-  // for Workspace.prototype._windowRemoved above for an explanation.
-  _shouldDestroy(workspace, metaWindow) {
-    const index = workspace._lookupIndex(metaWindow);
-    if (index == -1) {
-      return true;
-    }
-
-    const actor  = workspace._windows[index]._windowActor;
-    const shader = actor.get_effect('burn-my-windows-effect');
-
-    return shader == null;
+  _onFocusChanged() {
+     this.prev_focused_window = this.last_focused_window;
+     this.last_focused_window = global.display.get_focus_window();
   }
+
+  on_config_button_pressed() {
+    if (this.prev_focused_window) {
+      let app = this._windowTracker.get_window_app(this.prev_focused_window);
+      if (!app) {
+        app = this._windowTracker.get_app_from_pid(this.prev_focused_window.get_pid());
+      }
+      if (app && !app.is_window_backed()) {
+         let appRules = this._settings.getValue("app-rules");
+         appRules.push( {enabled:false, open:0, close:0, application:app.get_id()} );
+         this._settings.setValue("app-rules", appRules);
+      } else {
+        let source = new MessageTray.Source(this.meta.name);
+        let notification = new MessageTray.Notification(source, _("Error") + ": " + this.meta.name,
+          _("The previously focused window is not backed by an application and therefore application specific effects can not be applied to that window"),
+          {icon: new St.Icon({icon_name: "cinnamon-burn-my-window", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
+          );
+        Main.messageTray.add(source);
+        source.notify(notification);
+      }
+    }
+  }
+
 }
 
 let extension = null;
+
 function enable() {
-	extension.enable();
+  extension.enable();
+  return Callbacks
 }
 
 function disable() {
-	extension.disable();
-	extension = null;
+  extension.disable();
+  extension = null;
 }
 
 function init(metadata) {
 	if(!extension) {
 		extension = new BurnMyWindows(metadata);
 	}
+}
+
+const Callbacks = {
+  on_config_button_pressed: function() {
+     extension.on_config_button_pressed()
+  }
 }

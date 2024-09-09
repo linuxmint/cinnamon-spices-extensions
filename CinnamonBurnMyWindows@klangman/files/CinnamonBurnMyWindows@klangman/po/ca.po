@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-02 23:13-0400\n"
+"POT-Creation-Date: 2024-09-08 23:29-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -18,21 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.2/extension.js:191
+#. 6.2/extension.js:200 6.2/extension.js:415
 msgid "Error"
 msgstr "Error"
 
-#. 6.2/extension.js:191
+#. 6.2/extension.js:200
 msgid "was NOT enabled"
 msgstr "no s'ha activat"
 
-#. 6.2/extension.js:192
+#. 6.2/extension.js:201
 msgid "The existing extension"
 msgstr "L'extensió existent"
 
-#. 6.2/extension.js:192
+#. 6.2/extension.js:201
 msgid "conflicts with this extension."
 msgstr "conflictivitza amb aquesta extensió."
+
+#. 6.2/extension.js:416
+msgid ""
+"The previously focused window is not backed by an application and therefore "
+"application specific effects can not be applied to that window"
+msgstr ""
 
 #. 6.2->settings-schema.json->apparition-random-include->description
 #. 6.2->settings-schema.json->effect-selector->options
@@ -226,6 +232,11 @@ msgstr "Efectes aleatoris"
 msgid "Burn My Windows General Settings"
 msgstr "Opcions generals de Burn My Windows"
 
+#. 6.2->settings-schema.json->app-specific-settings->title
+#, fuzzy
+msgid "Application Specific Settings"
+msgstr "Opcions específiques d'efectes"
+
 #. 6.2->settings-schema.json->effect-selector-section->title
 msgid "Effect Selector"
 msgstr "Selector d'efecte"
@@ -237,6 +248,43 @@ msgstr "Opcions específiques d'efectes"
 #. 6.2->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
 msgstr "Efectes inclosos als conjunts aleatoris:"
+
+#. 6.2->settings-schema.json->app-rules->description
+msgid "Application Specific Rules"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Enabled"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+#, fuzzy
+msgid "Open Effect"
+msgstr "Efecte"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+#, fuzzy
+msgid "Close Effect"
+msgstr "Efecte de tancament de finestra"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+#, fuzzy
+msgid "Application"
+msgstr "Aparició"
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid "A list of application with special effect rules"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules-button->tooltip
+msgid ""
+"Focus a window you want to enable application specific setting for then "
+"return here and press this button."
+msgstr ""
 
 #. 6.2->settings-schema.json->random-title->description
 msgid "Effect"
@@ -250,6 +298,11 @@ msgstr "Mostrar les opcions per efecte:"
 #. 6.2->settings-schema.json->close-window-effect->options
 msgid "Randomized"
 msgstr "Aleatori"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+msgid "None"
+msgstr ""
 
 #. 6.2->settings-schema.json->open-window-effect->description
 msgid "Open window effect"

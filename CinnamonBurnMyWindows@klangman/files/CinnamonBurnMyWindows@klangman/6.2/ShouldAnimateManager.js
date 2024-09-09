@@ -88,21 +88,23 @@ class ShouldAnimateManager {
    }
 
    handler(actor, types) {
-      const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
-      const isDialogWindow = actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG || actor.meta_window.window_type == Meta.WindowType.DIALOG;
+      if (actor) {
+         const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
+         const isDialogWindow = actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG || actor.meta_window.window_type == Meta.WindowType.DIALOG;
 
-      if (isNormalWindow || isDialogWindow) {
-         let stack = (new Error()).stack;
-         let event  = (stack.includes('_minimizeWindow@'  )) ? Events.Minimize      : 0;
-         event     += (stack.includes('_unminimizeWindow@')) ? Events.Unminimize    : 0;
-         event     += (stack.includes('_mapWindow@'       )) ? Events.MapWindow     : 0;
-         event     += (stack.includes('_destroyWindow@'   )) ? Events.DestroyWindow : 0;
+         if (isNormalWindow || isDialogWindow) {
+            let stack = (new Error()).stack;
+            let event  = (stack.includes('_minimizeWindow@'  )) ? Events.Minimize      : 0;
+            event     += (stack.includes('_unminimizeWindow@')) ? Events.Unminimize    : 0;
+            event     += (stack.includes('_mapWindow@'       )) ? Events.MapWindow     : 0;
+            event     += (stack.includes('_destroyWindow@'   )) ? Events.DestroyWindow : 0;
 
-         for (let i=0 ; i<Main.wm._shouldAnimateManager.length ; i++) {
-            if (event === (Main.wm._shouldAnimateManager[i].event & event)) {
-               let ret = Main.wm._shouldAnimateManager[i].handler(actor, types, event);
-               if (ret != RUN_ORIGINAL_FUNCTION) {
-                  return ret;
+            for (let i=0 ; i<Main.wm._shouldAnimateManager.length ; i++) {
+               if (event === (Main.wm._shouldAnimateManager[i].event & event)) {
+                  let ret = Main.wm._shouldAnimateManager[i].handler(actor, types, event);
+                  if (ret != RUN_ORIGINAL_FUNCTION) {
+                     return ret;
+                  }
                }
             }
          }
