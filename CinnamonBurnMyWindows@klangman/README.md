@@ -17,7 +17,7 @@ This extension needs the Cinnamon.GLSLEffect class which is only available in Ci
 
 ## Known issues
 
-In the setting configure window under the "Effect Settings" tab, when changing the "Show setting for effect" drop-down to select a different effect, sometimes the contents under the "Effect Specific Settings" title will not properly update. Because of this only a subset of the available options are visible. I believe this is a Cinnamon bug. You can force Cinnamon to properly redraw the options by selecting the "General" tab then selecting the "Effect Settings" tab again. After that, the complete set of "Effect Specific Settings" should be visible.
+In the setting configure window under the "Effect Settings" tab, when changing the "Show setting for effect" drop-down to select a different effect, sometimes the contents under the "Effect Specific Settings" title will not properly update. Because of this, only a subset of the available options are visible. I believe this is a Cinnamon bug. You can force Cinnamon to properly redraw the options by selecting the "General" tab then selecting the "Effect Settings" tab again. After that, the complete set of "Effect Specific Settings" should be visible.
 
 When closing the Steam Client "setting" window the 'close window effect' does not show the windows contents, resulting in the closing effect to show where the window had existed but otherwise has no negative effect.
 
@@ -57,10 +57,6 @@ Because Cinnamon is missing a required API, the following effects are disabled. 
 - PaintBrush
 - Snap Of Disintegration
 - TRex Attack
-
-## Possible future enhancements
-
-- Specifying effects that apply to specific application windows. i.e Selecting which effect occurs when closing Firefox.
 
 ## Installation
 

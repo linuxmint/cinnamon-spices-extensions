@@ -6,7 +6,7 @@
     "general-page" : {
       "type" : "page",
       "title" : "General",
-      "sections" : ["general-settings"]
+      "sections" : ["general-settings", "app-specific-settings"]
     },
     "effects-page" : {
       "type" : "page",
@@ -23,6 +23,12 @@
       "type" : "section",
       "title" : "Burn My Windows General Settings",
       "keys" : ["open-window-effect", "close-window-effect"]
+    },
+
+    "app-specific-settings" : {
+      "type" : "section",
+      "title" : "Application Specific Settings",
+      "keys" : ["app-rules","app-rules-button"]
     },
 
     "effect-selector-section" : {
@@ -54,6 +60,63 @@
       "title" : "Effects included in the randomized sets:",
       "keys" : ["random-title", "apparition-random-include", "doom-random-include", "energize-a-random-include", "energize-b-random-include", "glide-random-include", "glitch-random-include", "hexagon-random-include", "incinerate-random-include", "pixelate-random-include", "pixel-wheel-random-include", "pixel-wipe-random-include", "portal-random-include", "tv-effect-random-include", "tv-glitch-random-include", "wisps-random-include"]
     }
+  },
+
+  "app-rules": {
+    "type" : "list",
+    "description" : "Application Specific Rules",
+    "columns" : [
+        {"id": "enabled",     "title": "Enabled",      "type": "boolean", "default": true},
+        {"id": "open",        "title": "Open Effect",  "type": "integer", "default": 0, "options": {
+            "Apparition": 0,
+            "Doom": 2,
+            "Energize A": 3,
+            "Energize B": 4,
+            "Glide": 6,
+            "Glitch": 7,
+            "Hexagon": 8,
+            "Incinerate": 9,
+            "Pixelate": 12,
+            "Pixel Wheel": 13,
+            "Pixel Wipe": 14,
+            "Portal": 15,
+            "TV Effect": 18,
+            "TV Glitch": 19,
+            "Wisps": 20,
+            "Randomized": 999,
+            "None": 1000
+           }
+        },
+        {"id": "close",       "title": "Close Effect", "type": "integer", "default": 0, "options": {
+            "Apparition": 0,
+            "Doom": 2,
+            "Energize A": 3,
+            "Energize B": 4,
+            "Glide": 6,
+            "Glitch": 7,
+            "Hexagon": 8,
+            "Incinerate": 9,
+            "Pixelate": 12,
+            "Pixel Wheel": 13,
+            "Pixel Wipe": 14,
+            "Portal": 15,
+            "TV Effect": 18,
+            "TV Glitch": 19,
+            "Wisps": 20,
+            "Randomized": 999,
+            "None": 1000
+           }
+        },
+        {"id": "application", "title": "Application",  "type": "string"}
+    ],
+    "tooltip": "A list of application with special effect rules",
+    "default": []
+  },
+  "app-rules-button" : {
+    "type" : "button",
+    "description" : "Add entry for the application of the most recently focused window",
+    "callback" : "on_config_button_pressed",
+    "tooltip" : "Focus a window you want to enable application specific setting for then return here and press this button."
   },
 
   "random-title" : {
@@ -260,7 +323,8 @@
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20,
-      "Randomized": 999
+      "Randomized": 999,
+      "None": 1000
     },
     "description": "Open window effect"
   },
@@ -284,7 +348,8 @@
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20,
-      "Randomized": 999
+      "Randomized": 999,
+      "None": 1000
     },
     "description": "Close window effect"
   },
