@@ -39,6 +39,8 @@ msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"
 msgstr ""
+"La finestra enfocada prèviament no pertany a una aplicació, per tant no se "
+"li poden aplicar els efectes específics d'aplicació"
 
 #. 6.2->settings-schema.json->apparition-random-include->description
 #. 6.2->settings-schema.json->effect-selector->options
@@ -233,9 +235,8 @@ msgid "Burn My Windows General Settings"
 msgstr "Opcions generals de Burn My Windows"
 
 #. 6.2->settings-schema.json->app-specific-settings->title
-#, fuzzy
 msgid "Application Specific Settings"
-msgstr "Opcions específiques d'efectes"
+msgstr "Opcions específiques per aplicació"
 
 #. 6.2->settings-schema.json->effect-selector-section->title
 msgid "Effect Selector"
@@ -251,40 +252,39 @@ msgstr "Efectes inclosos als conjunts aleatoris:"
 
 #. 6.2->settings-schema.json->app-rules->description
 msgid "Application Specific Rules"
-msgstr ""
+msgstr "Regles específiques per aplicació"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Enabled"
-msgstr ""
+msgstr "Activat"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
-#, fuzzy
 msgid "Open Effect"
-msgstr "Efecte"
+msgstr "Efecte d'obertura"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
-#, fuzzy
 msgid "Close Effect"
-msgstr "Efecte de tancament de finestra"
+msgstr "Efecte de tancament"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
-#, fuzzy
 msgid "Application"
-msgstr "Aparició"
+msgstr "Aplicació"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
 msgid "A list of application with special effect rules"
-msgstr ""
+msgstr "Una llista d'aplicacions amb regles especials d'efectes"
 
 #. 6.2->settings-schema.json->app-rules-button->description
 msgid "Add entry for the application of the most recently focused window"
-msgstr ""
+msgstr "Afegir una entrada per l'aplicació de la última finestra enfocada"
 
 #. 6.2->settings-schema.json->app-rules-button->tooltip
 msgid ""
 "Focus a window you want to enable application specific setting for then "
 "return here and press this button."
 msgstr ""
+"Enfoqueu una finestra per a la qual vulgueu activar un ajust específic per "
+"a l'aplicació, torneu aquí i polseu aquest botó."
 
 #. 6.2->settings-schema.json->random-title->description
 msgid "Effect"
@@ -302,7 +302,7 @@ msgstr "Aleatori"
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
 msgid "None"
-msgstr ""
+msgstr "Cap"
 
 #. 6.2->settings-schema.json->open-window-effect->description
 msgid "Open window effect"
