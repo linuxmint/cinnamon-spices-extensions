@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-09-06 09:45-0400\n"
-"PO-Revision-Date: 2024-04-16 14:08+0200\n"
+"PO-Revision-Date: 2024-09-11 11:32+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -75,59 +75,58 @@ msgstr "Open Cinnamon Instellingen om Werkruimtes te beheren"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
-msgstr ""
+msgstr "Inclusief Panelen"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Bounce"
-msgstr ""
+msgstr "Stuiteren"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Circ"
-msgstr ""
+msgstr "Cirkel"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Cubic"
-msgstr ""
+msgstr "Kubisch"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Elastic"
-msgstr ""
+msgstr "Elastisch"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Expo"
-msgstr ""
+msgstr "Expo"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Sine"
-msgstr ""
+msgstr "Sinus"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quad"
-msgstr ""
+msgstr "Quad"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quart"
-msgstr ""
+msgstr "Kwart"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quint"
-msgstr ""
+msgstr "Quint"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
 msgid "Rotate effect"
-msgstr "Eind draai-effect"
+msgstr "Draai-effect"
