@@ -1,7 +1,7 @@
 {
     "uuid": "blur-overview@nailfarmer.nailfarmer.com",
     "name": "Blur Overview",
-    "description": "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])",
+    "description": "Adjust the background dimming for the overview (window selection screen)",
     "cinnamon-version": [
         "3.4",
         "3.6",

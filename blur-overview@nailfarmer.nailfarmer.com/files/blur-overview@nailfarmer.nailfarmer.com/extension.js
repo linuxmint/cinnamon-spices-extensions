@@ -34,11 +34,18 @@ let settings;
 function _animateVisible() {
     if (this.visible || this.animationInProgress)
         return;
-    
+
     this._oldAnimateVisible();
 
-    Tweener.addTween(this._background,
-                     { opacity: settings.opacity,
+    // Get the overview's backgroundShade child and set it's color to solid black
+    let children = this._background.get_children();
+    let backgroundShade = children[1];
+    let [ret,color] = Clutter.Color.from_string( "rgba(0,0,0,1)" );
+    backgroundShade.set_background_color(color);
+
+    // Dim the backgroundShade to the configured percentage
+    Tweener.addTween( backgroundShade,
+                     { opacity: Math.round(settings.opacity*2.55),
                        time: ANIMATION_TIME,
                        transition: 'easeNone'
                      });

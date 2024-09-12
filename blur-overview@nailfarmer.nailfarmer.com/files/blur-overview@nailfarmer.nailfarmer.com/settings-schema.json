@@ -1,10 +1,10 @@
 {
     "opacity" : {
         "type": "scale",
-        "description": "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])",
+        "description": "Overview (window selection screen) background dimming percentage",
         "min": 0,
-        "max": 255,
-        "default": 100,
+        "max": 100,
+        "default": 50,
         "step": 1
     }
 }
