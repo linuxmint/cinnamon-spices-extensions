@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# BLUR OVERVIEW
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Odyssey <odysseyhyd@gmail.com>, 2024.
@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 14:54+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-11 23:37-0400\n"
 "PO-Revision-Date: 2024-07-25 16:56+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -23,9 +24,10 @@ msgid "Blur Overview"
 msgstr "Desenfocar la vista general de les finestres obertes"
 
 #. metadata.json->description
-msgid "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])"
-msgstr "Desenfocar el fons mostrant totes les finestres obertes a l'escriptori actual ([Ctrl]+[Alt]+[Fletxa avall])"
+msgid ""
+"Adjust the background dimming for the overview (window selection screen)"
+msgstr ""
 
 #. settings-schema.json->opacity->description
-msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
-msgstr "Opacitat del fons en mostrar totes les finestres obertes a l'escriptori actual ([Ctrl]+[Alt]+[Fletxa avall])"
+msgid "Overview (window selection screen) background dimming percentage"
+msgstr ""
