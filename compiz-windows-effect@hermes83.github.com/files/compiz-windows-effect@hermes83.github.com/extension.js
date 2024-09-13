@@ -115,7 +115,7 @@ class CompizWindowsEffectExtension {
                     effect.destroy();
                 }
             }
-        });
+        }, this );
     }
 
     onBeginGrabOp(display, screen, window, op) {
@@ -211,7 +211,7 @@ class CompizWindowsEffectExtension {
 }
 
 const WobblyEffect = new Lang.Class({
-    Name: 'WobblyEffect',
+    Name: `WobblyEffect_${Math.floor(Math.random() * 100000) + 1}`,
     Extends: Clutter.DeformEffect,
 
     _init: function(op) {
