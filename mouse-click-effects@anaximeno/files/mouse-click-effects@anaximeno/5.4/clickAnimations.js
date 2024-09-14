@@ -184,6 +184,13 @@ var BlinkClickAnimationMode = class BlinkClickAnimationMode extends ClickAnimati
     }
 }
 
+var ClickAnimationModes = Object.freeze({
+    BOUNCE: "bounce",
+    RETRACT: "retract",
+    EXPAND: "expand",
+    BLINK: "blink",
+});
+
 var ClickAnimationFactory = class ClickAnimationFactory {
     /**
      * Returns an click animation mode depending on the given name
@@ -192,13 +199,13 @@ var ClickAnimationFactory = class ClickAnimationFactory {
      */
     static createForMode(mode) {
         switch (mode) {
-            case "bounce":
+            case ClickAnimationModes.BOUNCE:
                 return new BounceBackClickAnimationMode(mode);
-            case "retract":
+            case ClickAnimationModes.RETRACT:
                 return new RetractionClickAnimationMode(mode);
-            case "expand":
+            case ClickAnimationModes.EXPAND:
                 return new ExpansionClickAnimationMode(mode);
-            case "blink":
+            case ClickAnimationModes.BLINK:
             default:
                 return new BlinkClickAnimationMode(mode);
         }
