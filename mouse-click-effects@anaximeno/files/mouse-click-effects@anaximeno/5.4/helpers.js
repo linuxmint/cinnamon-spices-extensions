@@ -19,7 +19,7 @@
 
 const Util = imports.misc.util;
 
-class Debouncer {
+var Debouncer = class Debouncer {
     _sourceId;
 
     constructor() {

@@ -20,7 +20,6 @@
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
 const Gettext = imports.gettext;
-const SignalManager = imports.misc.signalManager;
 const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory } = require("./clickAnimations.js");
@@ -56,13 +55,10 @@ class MouseClickEffects {
 
 		Atspi.init();
 
-		this.listener = Atspi.EventListener.new(this._click_event.bind(this));
-		this.signals = new SignalManager.SignalManager(null);
-		this.signals.connect(global.screen, 'in-fullscreen-changed', this.on_fullscreen_changed, this);
+		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
+		this.click_animator = ClickAnimationFactory.createForMode(this.animation_mode);
+		this.display_click = (new Debouncer()).debounce(this.animate_click.bind(this), 2);
 
-		this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
-
-		this.display_click = (new Debouncer()).debounce(this._animate_click.bind(this), 2);
 		this.colored_icon_store = {};
 		this.enabled = false;
 	}
@@ -150,7 +146,7 @@ class MouseClickEffects {
 			{
 				key: "deactivate-in-fullscreen",
 				value: "deactivate_in_fullscreen",
-				cb: this.on_fullscreen_changed,
+				cb: null,
 			},
 		]
 
@@ -169,10 +165,6 @@ class MouseClickEffects {
 		this.set_active(true);
 	}
 
-	disable() {
-		this.destroy();
-	}
-
 	unset_keybindings() {
 		Main.keybindingManager.removeHotKey(PAUSE_EFFECTS_KEY);
 	}
@@ -182,40 +174,29 @@ class MouseClickEffects {
         Main.keybindingManager.addHotKey(
 			PAUSE_EFFECTS_KEY,
 			this.pause_effects_binding,
-            this._on_pause_toggled.bind(this),
+            this.on_pause_toggled.bind(this),
 		);
     }
 
-	_on_pause_toggled() {
+	on_pause_toggled() {
 		this.set_active(!this.enabled);
 
 		if (this.pause_animation_effects_enabled) {
-			this.display_click(ClickType.PAUSE, this.enabled ? PAUSE_OFF_COLOR : PAUSE_ON_COLOR);
-		}
-	}
-
-	on_fullscreen_changed() {
-        if (this.deactivate_in_fullscreen) {
-            const monitor = global.screen.get_current_monitor();
-            const monitorIsInFullscreen = global.screen.get_monitor_in_fullscreen(monitor);
-			this.set_active(!monitorIsInFullscreen);
-		} else {
-			this.set_active(this.enabled);
+			let color = this.enabled ? PAUSE_OFF_COLOR : PAUSE_ON_COLOR;
+			this.display_click(ClickType.PAUSE, color);
 		}
 	}
 
 	update_animation_mode() {
-		if (!this._click_animation || this._click_animation.mode != this.animation_mode) {
-			this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
-		}
+		if (!this.click_animator || this.click_animator.mode != this.animation_mode)
+			this.click_animator = ClickAnimationFactory.createForMode(this.animation_mode);
 	}
 
     get_colored_icon(mode, click_type, color) {
         const name = `${mode}_${click_type}_${color}`;
 
-		if (this.colored_icon_store[name]) {
+		if (this.colored_icon_store[name])
 			return this.colored_icon_store[name];
-		}
 
 		const path = `${this.data_dir}/icons/${name}.svg`;
 
@@ -227,39 +208,37 @@ class MouseClickEffects {
         return null;
 	}
 
+	disable() {
+		this.destroy();
+	}
+
 	destroy() {
 		this.set_active(false);
 		this.unset_keybindings();
-		this.signals.disconnectAllSignals();
 		this.settings.finalize();
 		this.colored_icon_store = null;
 		this.display_click = null;
-		this._click_animation = null;
+		this.click_animator = null;
 	}
 
 	update_colored_icons() {
-		this._create_colored_icon_data(ClickType.PAUSE, PAUSE_ON_COLOR);
-		this._create_colored_icon_data(ClickType.PAUSE, PAUSE_OFF_COLOR);
-		this._create_colored_icon_data(ClickType.LEFT, this.left_click_color);
-		this._create_colored_icon_data(ClickType.MIDDLE, this.middle_click_color);
-		this._create_colored_icon_data(ClickType.RIGHT, this.right_click_color);
+		this.create_icon_data(ClickType.PAUSE, PAUSE_ON_COLOR);
+		this.create_icon_data(ClickType.PAUSE, PAUSE_OFF_COLOR);
+		this.create_icon_data(ClickType.LEFT, this.left_click_color);
+		this.create_icon_data(ClickType.MIDDLE, this.middle_click_color);
+		this.create_icon_data(ClickType.RIGHT, this.right_click_color);
 	}
 
 	set_active(enabled) {
 		this.enabled = enabled;
 
 		this.listener.deregister('mouse');
+		if (enabled) this.listener.register('mouse');
 
-		if (enabled) {
-			this.listener.register('mouse');
-		}
-
-		global.log(UUID, 
-			`Click effects ${enabled ? "activated" : "deactivated"}!`,
-		);
+		global.log(UUID, `Click effects ${enabled ? "activated" : "deactivated"}!`);
 	}
 
-	_create_colored_icon_data(click_type, color) {
+	create_icon_data(click_type, color) {
 		if (this.get_colored_icon(this.icon_mode, click_type, color))
 			return true;
 
@@ -274,27 +253,30 @@ class MouseClickEffects {
         const name = `${this.icon_mode}_${click_type}_${color}`;
 		let dest = Gio.File.new_for_path(`${this.data_dir}/icons/${name}.svg`);
 
-		if (!dest.query_exists(null)) {
-			dest.create(Gio.FileCreateFlags.NONE, null);
-		}
+		if (!dest.query_exists(null)) dest.create(Gio.FileCreateFlags.NONE, null);
 
 		let [r_success, tag] = dest.replace_contents(contents, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null);
 		return r_success;
 	}
 
-	_animate_click(click_type, color) {
-		let icon;
+	animate_click(click_type, color) {
+		if (global.display.focus_window.is_fullscreen() && this.deactivate_in_fullscreen) {
+			// global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
+			return;
+		}
+
 		this.update_animation_mode();
-		if (icon = this.get_colored_icon(this.icon_mode, click_type, color)) {
-			this._click_animation.animateClick(icon, {
-				opacity: this.general_opacity,
-				icon_size: this.size,
-				timeout: this.animation_time,
-			});
+		let icon = this.get_colored_icon(this.icon_mode, click_type, color);
+
+		if (icon) {
+			let options = { opacity: this.general_opacity, icon_size: this.size, timeout: this.animation_time };
+			this.click_animator.animateClick(icon, options);
+		} else {
+			global.logError(`${UUID}: Couldn't get Click Icon (mode = ${this.icon_mode}, type = ${click_type}, color = ${color})`)
 		}
 	}
 
-	_click_event(event) {
+	on_mouse_click(event) {
 		switch (event.type) {
 			case 'mouse:button:1p':
 				if (this.left_click_effect_enabled)
