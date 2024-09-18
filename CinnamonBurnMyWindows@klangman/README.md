@@ -13,17 +13,17 @@ https://github.com/Schneegans/Burn-My-Windows
 
 Cinnamon 6.2 (Mint 22) or better. 
 
-This extension needs the Cinnamon.GLSLEffect class which is only available in Cinnamon 6.2. I had attempted to work around this issue in order to support older versions of Cinnamon but so far I have not been successful.
+This extension needs the Cinnamon.GLSLEffect class which is only available in Cinnamon 6.2.
 
 ## Known issues
 
-In the setting configure window under the "Effect Settings" tab, when changing the "Show setting for effect" drop-down to select a different effect, sometimes the contents under the "Effect Specific Settings" title will not properly update. Because of this, only a subset of the available options are visible. I believe this is a Cinnamon bug. You can force Cinnamon to properly redraw the options by selecting the "General" tab then selecting the "Effect Settings" tab again. After that, the complete set of "Effect Specific Settings" should be visible.
+In the setting configure window under the "Effect Settings" tab, when changing the "Show setting for effect" drop-down to select a different effect, sometimes the contents under the "Effect Specific Settings" title will not properly update. Because of this, only a subset of the available options are visible. I believe this is a Cinnamon bug. You can force Cinnamon to properly redraw the options by selecting the "General" tab then returning to the "Effect Settings" tab again. After that, the complete set of "Effect Specific Settings" should be visible.
 
 When closing the Steam Client "setting" window the 'close window effect' does not show the windows contents, resulting in the closing effect to show where the window had existed but otherwise has no negative effect.
 
-Starting VirtualBox shows a full screen animation of both the Open and Close effect even when the window is not starting maximized. I assume this is caused by some weirdness with how VirtualBox was written.
+Starting VirtualBox shows a full screen animation of both the Open and Close effect even when the window is opening. I assume this is caused by some weirdness with how VirtualBox was written.
 
-The Doom effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed.
+The Doom open effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed. When used as a close effect it works correctly.
 
 All open window effects seem to animate in a location that is one pixel off the windows real location. This causes a very small (nearly unnoticeable) jump of the window after the animation has finished. The only exception is "Doom", which as stated above has a more pronounced jump.
 

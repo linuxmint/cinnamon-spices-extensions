@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-08 23:29-0400\n"
+"POT-Creation-Date: 2024-09-17 22:20-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#. 6.2/extension.js:200 6.2/extension.js:415
+#. 6.2/extension.js:207 6.2/extension.js:436
 msgid "Error"
 msgstr "Error"
 
-#. 6.2/extension.js:200
+#. 6.2/extension.js:207
 msgid "was NOT enabled"
 msgstr "no estaba habilitado"
 
-#. 6.2/extension.js:201
+#. 6.2/extension.js:208
 msgid "The existing extension"
 msgstr "La extensión existente"
 
-#. 6.2/extension.js:201
+#. 6.2/extension.js:208
 msgid "conflicts with this extension."
 msgstr "entra en conflicto con esta extensión."
 
-#. 6.2/extension.js:416
+#. 6.2/extension.js:437
 msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"

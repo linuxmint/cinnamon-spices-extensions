@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.3
+
+* Fix Randomized effects so that when the Doom effect is enabled under "Random Effects" it can actually be randomly selected for use
+
 ## 0.9.2
 
 * Added application specific effect settings that override the default effects setting when a specific application window is opened/closed
