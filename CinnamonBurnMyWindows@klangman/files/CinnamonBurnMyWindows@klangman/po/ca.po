@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-08 23:29-0400\n"
+"POT-Creation-Date: 2024-09-17 22:20-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.2/extension.js:200 6.2/extension.js:415
+#. 6.2/extension.js:207 6.2/extension.js:436
 msgid "Error"
 msgstr "Error"
 
-#. 6.2/extension.js:200
+#. 6.2/extension.js:207
 msgid "was NOT enabled"
 msgstr "no s'ha activat"
 
-#. 6.2/extension.js:201
+#. 6.2/extension.js:208
 msgid "The existing extension"
 msgstr "L'extensió existent"
 
-#. 6.2/extension.js:201
+#. 6.2/extension.js:208
 msgid "conflicts with this extension."
 msgstr "conflictivitza amb aquesta extensió."
 
-#. 6.2/extension.js:416
+#. 6.2/extension.js:437
 msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"
@@ -283,8 +283,8 @@ msgid ""
 "Focus a window you want to enable application specific setting for then "
 "return here and press this button."
 msgstr ""
-"Enfoqueu una finestra per a la qual vulgueu activar un ajust específic per "
-"a l'aplicació, torneu aquí i polseu aquest botó."
+"Enfoqueu una finestra per a la qual vulgueu activar un ajust específic per a "
+"l'aplicació, torneu aquí i polseu aquest botó."
 
 #. 6.2->settings-schema.json->random-title->description
 msgid "Effect"

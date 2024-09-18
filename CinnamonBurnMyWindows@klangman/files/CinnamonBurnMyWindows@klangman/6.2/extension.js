@@ -53,16 +53,23 @@ const SignalManager = imports.misc.signalManager;
 
 const Effect = {
   Apparition: 0,
+  BrokenGlass: 1,
+  Doom: 2,
   EnergizeA: 3,
   EnergizeB: 4,
+  Fire: 5,
   Glide: 6,
   Glitch: 7,
   Hexagon: 8,
   Incinerate: 9,
+  Matrix: 10,
+  PaintBrush: 11,
   Pixelate: 12,
   PixelWheel: 13,
   PixelWipe: 14,
   Portal: 15,
+  SnapOfDisintegration: 16,
+  TRexAttack: 17,
   TVEffect: 18,
   TVGlitch: 19,
   Wisps: 20,
@@ -258,10 +265,16 @@ class BurnMyWindows {
       let append = (forOpening)?"-open":"-close";
       if (this._settings.getValue("apparition-random-include" + append))
          effectOptions.push(Effect.Apparition);
+      //if (this._settings.getValue("broken-glass-random-include" + append))
+      //   effectOptions.push(Effect.BrokenGlass);
+      if (this._settings.getValue("doom-random-include" + append))
+         effectOptions.push(Effect.Doom);
       if (this._settings.getValue("energize-a-random-include" + append))
          effectOptions.push(Effect.EnergizeA);
       if (this._settings.getValue("energize-b-random-include" + append))
          effectOptions.push(Effect.EnergizeB);
+      //if (this._settings.getValue("file-random-include" + append))
+      //   effectOptions.push(Effect.Fire);
       if (this._settings.getValue("glide-random-include" + append))
          effectOptions.push(Effect.Glide);
       if (this._settings.getValue("glitch-random-include" + append))
@@ -270,6 +283,10 @@ class BurnMyWindows {
          effectOptions.push(Effect.Hexagon);
       if (this._settings.getValue("incinerate-random-include" + append))
          effectOptions.push(Effect.Incinerate);
+      //if (this._settings.getValue("matrix-random-include" + append))
+      //   effectOptions.push(Effect.Matrix);
+      //if (this._settings.getValue("paint-brush-random-include" + append))
+      //   effectOptions.push(Effect.PaintBrush);
       if (this._settings.getValue("pixelate-random-include" + append))
          effectOptions.push(Effect.Pixelate);
       if (this._settings.getValue("pixel-wheel-random-include" + append))
@@ -278,6 +295,10 @@ class BurnMyWindows {
          effectOptions.push(Effect.PixelWipe);
       if (this._settings.getValue("portal-random-include" + append))
          effectOptions.push(Effect.Portal);
+      //if (this._settings.getValue("snap-of-disintegration-random-include" + append))
+      //   effectOptions.push(Effect.SnapOfDisintegration);
+      //if (this._settings.getValue("trex-attack-random-include" + append))
+      //   effectOptions.push(Effect.TRexAttack);
       if (this._settings.getValue("tv-effect-random-include" + append))
          effectOptions.push(Effect.TVEffect);
       if (this._settings.getValue("tv-glitch-random-include" + append))
