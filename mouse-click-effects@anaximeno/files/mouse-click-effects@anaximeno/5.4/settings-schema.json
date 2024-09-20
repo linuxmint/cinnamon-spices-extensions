@@ -1,9 +1,65 @@
 {
-	"general-section": {
-		"type": "section",
-		"description": "General"
+	"layout": {
+		"type": "layout",
+		"pages": [
+			"general-page",
+			"style-page"
+		],
+		"general-page": {
+			"type": "page",
+			"title": "General",
+			"sections": [
+				"general-section",
+				"effects-section"
+			]
+		},
+		"style-page": {
+			"type": "page",
+			"title": "Style",
+			"sections": [
+				"style-section",
+				"colors-section"
+			]
+		},
+		"general-section": {
+			"type": "section",
+			"title": "General",
+			"keys": [
+				"animation-mode",
+				"animation-time",
+				"deactivate-in-fullscreen",
+				"pause-effects-binding"
+			]
+		},
+		"effects-section": {
+			"type": "section",
+			"title": "Effects",
+			"keys": [
+				"left-click-effect-enabled",
+				"middle-click-effect-enabled",
+				"right-click-effect-enabled",
+				"pause-animation-effects-enabled"
+			]
+		},
+		"style-section": {
+			"type": "section",
+			"title": "Colors",
+			"keys": [
+				"icon-mode",
+				"size",
+				"general-opacity"
+			]
+		},
+		"colors-section": {
+			"type": "section",
+			"title": "Colors",
+			"keys": [
+				"left-click-color",
+				"middle-click-color",
+				"right-click-color"
+			]
+		}
 	},
-
 	"icon-mode": {
 		"type": "combobox",
 		"default": 1,
@@ -78,54 +134,39 @@
 		"default": "",
 		"tooltip": "Set keybinding to pause or continue the effects"
 	},
-
-	"events-section": {
-		"type": "section",
-		"description": "Events"
-	},
-
 	"left-click-effect-enabled": {
 		"type": "checkbox",
 		"default": true,
-		"description": "Enable Left Click Effect"
+		"description": "Animate Left Click"
 	},
 	"middle-click-effect-enabled": {
 		"type": "checkbox",
 		"default": true,
-		"description": "Enable Middle Click Effect"
+		"description": "Animate Middle Click"
 	},
 	"right-click-effect-enabled": {
 		"type": "checkbox",
 		"default": true,
-		"description": "Enable Right Click Effect"
+		"description": "Animate Right Click"
 	},
 	"pause-animation-effects-enabled": {
 		"type": "checkbox",
 		"default": true,
-		"description": "Enable Pause Animation Effects"
+		"description": "Animate Pause"
 	},
-
-	"colors-section": {
-		"type": "section",
-		"description": "Colors"
-	},
-
 	"left-click-color": {
 		"type": "colorchooser",
 		"default": "#0c75de",
-		"description": "Left Click Color",
-		"dependency": "left-click-effect-enabled"
+		"description": "Left Click Color"
 	},
 	"middle-click-color": {
 		"type": "colorchooser",
 		"default": "#40BEBF",
-		"description": "Middle Click Color",
-		"dependency": "middle-click-effect-enabled"
+		"description": "Middle Click Color"
 	},
 	"right-click-color": {
 		"type": "colorchooser",
 		"default": "#4077BF",
-		"description": "Right Click Color",
-		"dependency": "right-click-effect-enabled"
+		"description": "Right Click Color"
 	}
 }
