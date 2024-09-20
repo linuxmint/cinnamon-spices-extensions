@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="800px" height="800px" viewBox="0 0 114 114" xml:space="preserve">
+<g>
+	<g>
+		<path d="M114,55.5h-6.538C106.68,28.847,85.152,7.321,58.5,6.538V0h-3v6.538C28.847,7.321,7.321,28.847,6.538,55.5H0v3h6.538
+			c0.783,26.652,22.309,48.18,48.962,48.962V114h3v-6.538c26.652-0.782,48.18-22.31,48.962-48.962H114V55.5z M57,104.5
+			C30.809,104.5,9.5,83.191,9.5,57C9.5,30.809,30.809,9.5,57,9.5c26.191,0,47.5,21.309,47.5,47.5
+			C104.5,83.191,83.191,104.5,57,104.5z"/>
+		<polygon points="58.5,45.76 55.5,45.76 55.5,55.5 45.761,55.5 45.761,58.5 55.5,58.5 55.5,68.24 58.5,68.24 58.5,58.5 
+			68.238,58.5 68.238,55.5 58.5,55.5 		"/>
+		<rect x="79.666" y="56" width="20" height="2"/>
+		<rect x="14.999" y="56" width="20" height="2"/>
+		<rect x="56" y="79.333" width="2" height="20"/>
+		<rect x="56" y="14.667" width="2" height="20"/>
+	</g>
+</g>
+</svg>
