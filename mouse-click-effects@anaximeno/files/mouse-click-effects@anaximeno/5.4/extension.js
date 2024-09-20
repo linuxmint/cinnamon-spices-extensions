@@ -24,7 +24,7 @@ const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_ } = require("./constants.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS } = require("./constants.js");
 const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
 
 
