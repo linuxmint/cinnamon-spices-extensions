@@ -1,9 +1,73 @@
 {
-	"general-section": {
-		"type": "section",
-		"description": "General"
+	"layout": {
+		"type": "layout",
+		"pages": [
+			"general-page",
+			"style-page"
+		],
+		"general-page": {
+			"type": "page",
+			"title": "General",
+			"sections": [
+				"general-section",
+				"effects-section"
+			]
+		},
+		"style-page": {
+			"type": "page",
+			"title": "Style",
+			"sections": [
+				"style-section",
+				"colors-section"
+			]
+		},
+		"general-section": {
+			"type": "section",
+			"title": "General",
+			"keys": [
+				"animation-mode",
+				"animation-time",
+				"idle-animation-mode",
+				"idle-animation-period",
+				"idle-animation-delay",
+				"deactivate-in-fullscreen",
+				"pause-effects-binding"
+			]
+		},
+		"effects-section": {
+			"type": "section",
+			"title": "Effects",
+			"keys": [
+				"left-click-effect-enabled",
+				"middle-click-effect-enabled",
+				"right-click-effect-enabled",
+				"pause-animation-effects-enabled",
+				"mouse-movement-tracker-enabled",
+				"mouse-movement-tracker-persist-on-stopped-enabled",
+				"mouse-idle-watcher-enabled"
+			]
+		},
+		"style-section": {
+			"type": "section",
+			"title": "Colors",
+			"keys": [
+				"icon-mode",
+				"size",
+				"general-opacity"
+			]
+		},
+		"colors-section": {
+			"type": "section",
+			"title": "Colors",
+			"keys": [
+				"left-click-color",
+				"middle-click-color",
+				"right-click-color",
+				"mouse-movement-color",
+				"mouse-idle-watcher-color"
+			]
+		}
 	},
-
 	"icon-mode": {
 		"type": "combobox",
 		"default": 1,
@@ -27,12 +91,13 @@
 			"Cotton": 16,
 			"Circle": 17,
 			"Gear": 18,
-			"H-Star": 19
+			"H-Star": 19,
+			"Aim": 20
 		}
 	},
 	"size": {
 		"type": "spinbutton",
-		"default": 60,
+		"default": 70,
 		"min": 20,
 		"max": 120,
 		"step": 5,
@@ -59,16 +124,48 @@
 		"units": "ms",
 		"description": "Animation Time"
 	},
+	"idle-animation-mode": {
+		"type": "combobox",
+		"default": "blink",
+		"description": "Idle Mouse Animation Mode",
+		"dependency": "mouse-idle-watcher-enabled",
+		"options": {
+			"Blink": "blink",
+			"Bounce": "bounce",
+			"Retract": "retract",
+			"Expand": "expand"
+		}
+	},
+	"idle-animation-delay": {
+		"type": "spinbutton",
+		"dependency": "mouse-idle-watcher-enabled",
+		"default": 400,
+		"min": 100,
+		"max": 5000,
+		"step": 50,
+		"units": "ms",
+		"description": "Idle Mouse Animation Delay"
+	},
+	"idle-animation-period": {
+		"type": "spinbutton",
+		"dependency": "mouse-idle-watcher-enabled",
+		"default": 400,
+		"min": 100,
+		"max": 5000,
+		"step": 50,
+		"units": "ms",
+		"description": "Idle Mouse Animation Period"
+	},
 	"general-opacity": {
 		"type": "spinbutton",
 		"description": "General Opacity",
-		"default": 255,
+		"default": 185,
 		"min": 5,
 		"max": 255,
 		"step": 5
 	},
 	"deactivate-in-fullscreen": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": false,
 		"description": "Deactivate In Fullscreen"
 	},
@@ -78,54 +175,68 @@
 		"default": "",
 		"tooltip": "Set keybinding to pause or continue the effects"
 	},
-
-	"events-section": {
-		"type": "section",
-		"description": "Events"
-	},
-
 	"left-click-effect-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
-		"description": "Enable Left Click Effect"
+		"description": "Animate Left Click"
 	},
 	"middle-click-effect-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
-		"description": "Enable Middle Click Effect"
+		"description": "Animate Middle Click"
 	},
 	"right-click-effect-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
-		"description": "Enable Right Click Effect"
+		"description": "Animate Right Click"
 	},
 	"pause-animation-effects-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
-		"description": "Enable Pause Animation Effects"
+		"description": "Animate Pause"
 	},
-
-	"colors-section": {
-		"type": "section",
-		"description": "Colors"
+	"mouse-movement-tracker-enabled": {
+		"type": "switch",
+		"default": false,
+		"description": "Mouse Movement Tracker (experimental)",
+		"tooltip": "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
 	},
-
+	"mouse-movement-tracker-persist-on-stopped-enabled": {
+		"type": "switch",
+		"default": false,
+		"description": "Persist Movement Tracker On Stopped (experimental)",
+		"dependency": "mouse-movement-tracker-enabled",
+		"tooltip": "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
+	},
+	"mouse-idle-watcher-enabled": {
+		"type": "generic",
+		"default": false,
+		"description": "Mouse Idle Watcher"
+	},
 	"left-click-color": {
 		"type": "colorchooser",
 		"default": "#0c75de",
-		"description": "Left Click Color",
-		"dependency": "left-click-effect-enabled"
+		"description": "Left Click Color"
 	},
 	"middle-click-color": {
 		"type": "colorchooser",
 		"default": "#40BEBF",
-		"description": "Middle Click Color",
-		"dependency": "middle-click-effect-enabled"
+		"description": "Middle Click Color"
 	},
 	"right-click-color": {
 		"type": "colorchooser",
 		"default": "#4077BF",
-		"description": "Right Click Color",
-		"dependency": "right-click-effect-enabled"
+		"description": "Right Click Color"
+	},
+	"mouse-movement-color": {
+		"type": "colorchooser",
+		"default": "#4077BF",
+		"description": "Mouse Movement Tracker Color"
+	},
+	"mouse-idle-watcher-color": {
+		"type": "colorchooser",
+		"default": "#4077BF",
+		"description": "Mouse Idle Watcher Color",
+		"dependency": "mouse-idle-watcher-enabled"
 	}
 }

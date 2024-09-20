@@ -24,8 +24,9 @@ const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY } = require("./constants.js");
-
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS, IDLE_TIME } = require("./constants.js");
+const { IdleMonitor } = require("./idleMonitor.js");
+const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
 
@@ -37,11 +38,13 @@ function _(text) {
 
 
 const ClickType = Object.freeze({
-    LEFT: "left_click",
-    MIDDLE: "middle_click",
-    RIGHT: "right_click",
+	LEFT: "left_click",
+	MIDDLE: "middle_click",
+	RIGHT: "right_click",
 	PAUSE_ON: "pause_on",
 	PAUSE_OFF: "pause_off",
+	MOUSE_IDLE: "mouse_idle",
+	MOUSE_MOV: "mouse_mov",
 });
 
 
@@ -52,6 +55,7 @@ class MouseClickEffects {
 		this.pause_icon_path = `${this.app_icons_dir}/extra/pause.svg`;
 		this.settings = this._setup_settings(this.metadata.uuid);
 		this.data_dir = this._init_data_dir(this.metadata.uuid);
+		this.colored_icon_store = {};
 
 		this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
 
@@ -61,15 +65,18 @@ class MouseClickEffects {
 				return;
 			}
 			this.animate_click(...args);
-		}, 10);
+		}, CLICK_DEBOUNCE_MS);
 
 		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
+		this.idleMonitor = null;
 
-		this.colored_icon_store = {};
+		this.mouse_movement_tracker = null;
+
 		this.enabled = false;
+		this.set_active(false);
 	}
 
-    _init_data_dir(uuid) {
+	_init_data_dir(uuid) {
 		let data_dir = `${GLib.get_user_cache_dir()}/${uuid}`;
 
 		if (GLib.mkdir_with_parents(`${data_dir}/icons`, 0o777) < 0) {
@@ -92,12 +99,45 @@ class MouseClickEffects {
 			{
 				key: "icon-mode",
 				value: "icon_mode",
-				cb: this.update_colored_icons,
+				cb: () => {
+					this.update_colored_icons();
+					if (this.mouse_movement_tracker) {
+						let icon = this.get_click_icon(
+							this.icon_mode,
+							ClickType.MOUSE_MOV,
+							this.mouse_movement_color,
+						);
+						this.mouse_movement_tracker.update({
+							icon: icon,
+						});
+					}
+				},
 			},
 			{
 				key: "size",
 				value: "size",
-				cb: null,
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							size: this.size,
+						});
+					}
+				},
+			},
+			{
+				key: "idle-animation-mode",
+				value: "idle_animation_mode",
+				cb: null, // TODO
+			},
+			{
+				key: "idle-animation-period",
+				value: "idle_animation_period",
+				cb: null, // TODO
+			},
+			{
+				key: "idle-animation-delay",
+				value: "idle_animation_delay",
+				cb: null, // TODO
 			},
 			{
 				key: "left-click-effect-enabled",
@@ -120,6 +160,27 @@ class MouseClickEffects {
 				cb: null,
 			},
 			{
+				key: "mouse-movement-tracker-enabled",
+				value: "mouse_movement_tracker_enabled",
+				cb: () => this.set_active(this.enabled),
+			},
+			{
+				key: "mouse-movement-tracker-persist-on-stopped-enabled",
+				value: "mouse_movement_tracker_persist_on_stopped_enabled",
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							persist_on_stopped: this.mouse_movement_tracker_persist_on_stopped_enabled,
+						});
+					}
+				},
+			},
+			{
+				key: "mouse-idle-watcher-enabled",
+				value: "mouse_idle_watcher_enabled",
+				cb: null, // TODO
+			},
+			{
 				key: "left-click-color",
 				value: "left_click_color",
 				cb: this.update_colored_icons,
@@ -135,9 +196,37 @@ class MouseClickEffects {
 				cb: this.update_colored_icons,
 			},
 			{
+				key: "mouse-movement-color",
+				value: "mouse_movement_color",
+				cb: () => {
+					this.update_colored_icons();
+					if (this.mouse_movement_tracker) {
+						let icon = this.get_click_icon(
+							this.icon_mode,
+							ClickType.MOUSE_MOV,
+							this.mouse_movement_color,
+						);
+						this.mouse_movement_tracker.update({
+							icon: icon,
+						});
+					}
+				},
+			},
+			{
+				key: "mouse-idle-watcher-color",
+				value: "mouse_idle_watcher_color",
+				cb: this.update_colored_icons,
+			},
+			{
 				key: "general-opacity",
 				value: "general_opacity",
-				cb: null,
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							opacity: this.general_opacity,
+						});
+					}
+				},
 			},
 			{
 				key: "animation-mode",
@@ -156,13 +245,13 @@ class MouseClickEffects {
 			},
 		];
 
-        bindings.forEach(b => settings.bind(
+		bindings.forEach(b => settings.bind(
 			b.key,
 			b.value,
 			b.cb ? (...args) => b.cb.call(this, ...args) : null,
 		));
 
-        return settings;
+		return settings;
 	}
 
 	enable() {
@@ -177,12 +266,12 @@ class MouseClickEffects {
 
 	set_keybindings() {
 		this.unset_keybindings();
-        Main.keybindingManager.addHotKey(
+		Main.keybindingManager.addHotKey(
 			PAUSE_EFFECTS_KEY,
 			this.pause_effects_binding,
-            this.on_pause_toggled.bind(this),
+			this.on_pause_toggled.bind(this),
 		);
-    }
+	}
 
 	on_pause_toggled() {
 		this.set_active(!this.enabled);
@@ -197,9 +286,9 @@ class MouseClickEffects {
 		}
 	}
 
-    get_click_icon(mode, click_type, color) {
-		let name = `${mode}_${click_type}_${color}`;
-		let path = `${this.data_dir}/icons/${name}.svg`;
+	get_click_icon(mode, click_type, color) {
+		let name = `${mode}_${click_type}_${color}.svg`;
+		let path = `${this.data_dir}/icons/${name}`;
 		return this.get_icon_cached(path);
 	}
 
@@ -207,12 +296,12 @@ class MouseClickEffects {
 		if (this.colored_icon_store[path])
 			return this.colored_icon_store[path];
 
-        if (GLib.file_test(path, GLib.FileTest.IS_REGULAR)) {
+		if (GLib.file_test(path, GLib.FileTest.IS_REGULAR)) {
 			this.colored_icon_store[path] = Gio.icon_new_for_string(path);
 			return this.colored_icon_store[path];
 		}
 
-        return null;
+		return null;
 	}
 
 	disable() {
@@ -232,17 +321,49 @@ class MouseClickEffects {
 		this.create_icon_data(ClickType.LEFT, this.left_click_color);
 		this.create_icon_data(ClickType.MIDDLE, this.middle_click_color);
 		this.create_icon_data(ClickType.RIGHT, this.right_click_color);
+		this.create_icon_data(ClickType.MOUSE_IDLE, this.mouse_idle_watcher_color);
+		this.create_icon_data(ClickType.MOUSE_MOV, this.mouse_movement_color);
 	}
 
 	set_active(enabled) {
 		this.enabled = enabled;
+
 		this.listener.deregister('mouse');
+		if (this.mouse_movement_tracker) {
+			this.mouse_movement_tracker.finalize();
+			this.mouse_movement_tracker = null;
+		}
+		if (this.idleMonitor) {
+			this.idleMonitor.finalize();
+			this.idleMonitor = null;
+		}
 
 		if (enabled) {
 			this.listener.register('mouse');
-			global.log(UUID, "Click effects activated");
+
+			if (this.mouse_movement_tracker_enabled) {
+				const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
+				this.mouse_movement_tracker = new MouseMovementTracker(
+					icon, this.size, this.general_opacity,
+					this.mouse_movement_tracker_persist_on_stopped_enabled);
+				this.mouse_movement_tracker.start();
+			}
+
+			// TODO
+			// if (this.mouse_idle_watcher_enabled) {
+			// 	// XXX: only enable according w respective settings
+			// 	this.idleMonitor = new IdleMonitor({
+			// 		idle_delay: IDLE_TIME,
+			// 		on_idle: this.on_idle_handler,
+			// 		on_active: this.on_active_handler,
+			// 		on_finish: this.on_finish_handler,
+			// 	});
+			// 	this.idleMonitor.start();
+			// }
+
+			global.log(UUID, "activated");
 		} else {
-			global.log(UUID, "Click effects deactivated");
+			global.log(UUID, "deactivated");
 		}
 	}
 
@@ -250,19 +371,22 @@ class MouseClickEffects {
 		if (this.get_click_icon(this.icon_mode, click_type, color))
 			return true;
 
-        let source = Gio.File.new_for_path(`${this.app_icons_dir}/${this.icon_mode}.svg`);
+		let source = Gio.File.new_for_path(`${this.app_icons_dir}/${this.icon_mode}.svg`);
 		let [l_success, contents] = source.load_contents(null);
 
 		contents = ByteArray.toString(contents);
 		contents = contents.replace('fill="#000000"', `fill="${color}"`);
 
-		let name = `${this.icon_mode}_${click_type}_${color}`;
-		let dest = Gio.File.new_for_path(`${this.data_dir}/icons/${name}.svg`);
+		let name = `${this.icon_mode}_${click_type}_${color}.svg`;
+		let path = `${this.data_dir}/icons/${name}`;
+		let dest = Gio.File.new_for_path(path);
 
 		if (!dest.query_exists(null))
 			dest.create(Gio.FileCreateFlags.NONE, null);
 
 		let [r_success, tag] = dest.replace_contents(contents, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null);
+
+		if (r_success) global.log(UUID, `created colored icon cache for ${name}`);
 		return r_success;
 	}
 
@@ -315,16 +439,16 @@ class MouseClickEffects {
 let extension = null;
 
 function enable() {
-    extension.enable();
+	extension.enable();
 }
 
 function disable() {
-    extension.disable();
-    extension = null;
+	extension.disable();
+	extension = null;
 }
 
 function init(metadata) {
-    if (!extension) {
+	if (!extension) {
 		Atspi.init();
 		extension = new MouseClickEffects(metadata);
 	};

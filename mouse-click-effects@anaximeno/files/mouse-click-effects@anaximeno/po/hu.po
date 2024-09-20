@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# MOUSE CLICK EFFECTS
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# anaximeno, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-07-15 04:30-0100\n"
+"POT-Creation-Date: 2024-09-20 22:01-0100\n"
 "PO-Revision-Date: 2024-07-26 07:08-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,9 +26,23 @@ msgstr "Egérkattintás Effektusok"
 msgid "Display mouse click effects on Cinnamon."
 msgstr "Egérkattintási effektusok megjelenítése a Cinnamonban."
 
-#. 5.4->settings-schema.json->general-section->description
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
 msgid "General"
 msgstr "Általános"
+
+#. 5.4->settings-schema.json->style-page->title
+msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->style-section->title
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
+msgstr "Színek"
 
 #. 5.4->settings-schema.json->icon-mode->description
 msgid "Icon Mode"
@@ -110,6 +124,10 @@ msgstr "Fogaskerék"
 msgid "H-Star"
 msgstr "H-Csillag"
 
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr ""
+
 #. 5.4->settings-schema.json->size->units
 msgid "px"
 msgstr "px"
@@ -123,28 +141,49 @@ msgid "Click Animation Mode"
 msgstr "Kattintás animáció üzemmódja"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Blink"
 msgstr "Pislogás"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Bounce"
 msgstr "Visszapattan"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Retract"
 msgstr "Visszavonás"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Expand"
 msgstr "Kibontás"
 
 #. 5.4->settings-schema.json->animation-time->units
+#. 5.4->settings-schema.json->idle-animation-delay->units
+#. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
 
 #. 5.4->settings-schema.json->animation-time->description
 msgid "Animation Time"
 msgstr "Animáció ideje"
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+#, fuzzy
+msgid "Idle Mouse Animation Mode"
+msgstr "Kattintás animáció üzemmódja"
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+#, fuzzy
+msgid "Idle Mouse Animation Delay"
+msgstr "Kattintás animáció üzemmódja"
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+#, fuzzy
+msgid "Idle Mouse Animation Period"
+msgstr "Kattintás animáció üzemmódja"
 
 #. 5.4->settings-schema.json->general-opacity->description
 msgid "General Opacity"
@@ -164,29 +203,45 @@ msgstr ""
 "Billentyűparancs beállítása az effektusok szüneteltetéséhez vagy "
 "folytatásához"
 
-#. 5.4->settings-schema.json->events-section->description
-msgid "Events"
-msgstr "Események"
-
 #. 5.4->settings-schema.json->left-click-effect-enabled->description
-msgid "Enable Left Click Effect"
+#, fuzzy
+msgid "Animate Left Click"
 msgstr "Balra kattintás effekt engedélyezése"
 
 #. 5.4->settings-schema.json->middle-click-effect-enabled->description
-msgid "Enable Middle Click Effect"
+#, fuzzy
+msgid "Animate Middle Click"
 msgstr "Középső kattintás effektus engedélyezése"
 
 #. 5.4->settings-schema.json->right-click-effect-enabled->description
-msgid "Enable Right Click Effect"
+#, fuzzy
+msgid "Animate Right Click"
 msgstr "Jobbra kattintás effekt engedélyezése"
 
 #. 5.4->settings-schema.json->pause-animation-effects-enabled->description
-msgid "Enable Pause Animation Effects"
-msgstr "Szünet effektek engedélyezése"
+msgid "Animate Pause"
+msgstr ""
 
-#. 5.4->settings-schema.json->colors-section->description
-msgid "Colors"
-msgstr "Színek"
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
@@ -199,3 +254,11 @@ msgstr "Középső kattintás szín"
 #. 5.4->settings-schema.json->right-click-color->description
 msgid "Right Click Color"
 msgstr "Jobb kattintás szín"
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
+msgstr ""
