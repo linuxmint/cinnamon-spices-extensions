@@ -24,3 +24,5 @@ const PAUSE_EFFECTS_KEY = `${UUID}-bind-pause-effects`;
 const CLICK_DEBOUNCE_MS = 10;
 
 const POINTER_WATCH_MS = 10;
+
+const IDLE_TIME = 1000;

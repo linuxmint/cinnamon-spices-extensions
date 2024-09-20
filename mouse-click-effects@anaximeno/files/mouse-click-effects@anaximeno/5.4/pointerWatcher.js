@@ -1,9 +1,7 @@
 // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 
 const { GLib, Meta } = imports.gi;
-
-// We stop polling if the user is idle for more than this amount of time
-var IDLE_TIME = 1000;
+const { IDLE_TIME } = require('./constants.js');
 
 // This file implements a reasonably efficient system for tracking the position
 // of the mouse pointer. We simply query the pointer from the X server in a loop,

@@ -24,8 +24,9 @@ const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS } = require("./constants.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS, IDLE_TIME } = require("./constants.js");
 const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
+const { IdleMonitor } = require("./idleMonitor.js");
 
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
@@ -67,6 +68,7 @@ class MouseClickEffects {
 
 		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
 		this.pointerMovementListener = null;
+		this.idleMonitor = null;
 
 		this.set_active(false);
 	}
@@ -241,8 +243,12 @@ class MouseClickEffects {
 
 		this.listener.deregister('mouse');
 		if (this.pointerMovementListener) {
-			PointerWatcher._removeWatch(this.pointerMovementListener);
+			this.pointerMovementListener.remove();
 			this.pointerMovementListener = null;
+		}
+		if (this.idleMonitor) {
+			this.idleMonitor.finish();
+			this.idleMonitor = null;
 		}
 
 		if (enabled) {
@@ -252,9 +258,17 @@ class MouseClickEffects {
 				POINTER_WATCH_MS,
 				this.on_mouse_moved.bind(this),
 			);
-			global.log(UUID, "Click effects activated");
+			// XXX: only enable according w respective settings
+			// this.idleMonitor = new IdleMonitor({
+			// 	idle_delay: IDLE_TIME,
+			// 	on_idle: this.on_idle_handler,
+			// 	on_active: this.on_active_handler,
+			// 	on_finish: this.on_finish_handler,
+			// });
+			// this.idleMonitor.start();
+			global.log(UUID, "activated");
 		} else {
-			global.log(UUID, "Click effects deactivated");
+			global.log(UUID, "deactivated");
 		}
 	}
 
