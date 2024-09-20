@@ -19,6 +19,7 @@
 
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
+const PointerWatcher = imports.pointerWatcher.getPointerWatcher();
 const Gettext = imports.gettext;
 const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
@@ -52,6 +53,7 @@ class MouseClickEffects {
 		this.pause_icon_path = `${this.app_icons_dir}/extra/pause.svg`;
 		this.settings = this._setup_settings(this.metadata.uuid);
 		this.data_dir = this._init_data_dir(this.metadata.uuid);
+		this.colored_icon_store = {};
 
 		this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
 
@@ -65,8 +67,7 @@ class MouseClickEffects {
 
 		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
 
-		this.colored_icon_store = {};
-		this.enabled = false;
+		this.set_active(false);
 	}
 
     _init_data_dir(uuid) {
