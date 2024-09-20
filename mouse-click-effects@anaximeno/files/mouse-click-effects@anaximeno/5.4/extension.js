@@ -102,12 +102,13 @@ class MouseClickEffects {
 				cb: () => {
 					this.update_colored_icons();
 					if (this.mouse_movement_tracker) {
+						let icon = this.get_click_icon(
+							this.icon_mode,
+							ClickType.MOUSE_MOV,
+							this.mouse_movement_color,
+						);
 						this.mouse_movement_tracker.update({
-							icon: this.get_click_icon(
-								this.icon_mode,
-								ClickType.MOUSE_MOV,
-								this.mouse_movement_color,
-							),
+							icon: icon,
 						});
 					}
 				},
@@ -177,7 +178,7 @@ class MouseClickEffects {
 			{
 				key: "mouse-idle-watcher-enabled",
 				value: "mouse_idle_watcher_enabled",
-				cb: null,
+				cb: null, // TODO
 			},
 			{
 				key: "left-click-color",
@@ -200,12 +201,13 @@ class MouseClickEffects {
 				cb: () => {
 					this.update_colored_icons();
 					if (this.mouse_movement_tracker) {
+						let icon = this.get_click_icon(
+							this.icon_mode,
+							ClickType.MOUSE_MOV,
+							this.mouse_movement_color,
+						);
 						this.mouse_movement_tracker.update({
-							icon: this.get_click_icon(
-								this.icon_mode,
-								ClickType.MOUSE_MOV,
-								this.mouse_movement_color,
-							),
+							icon: icon,
 						});
 					}
 				},
@@ -347,16 +349,17 @@ class MouseClickEffects {
 				this.mouse_movement_tracker.start();
 			}
 
-			if (this.mouse_idle_watcher_enabled) {
-				// XXX: only enable according w respective settings
-				// this.idleMonitor = new IdleMonitor({
-				// 	idle_delay: IDLE_TIME,
-				// 	on_idle: this.on_idle_handler,
-				// 	on_active: this.on_active_handler,
-				// 	on_finish: this.on_finish_handler,
-				// });
-				// this.idleMonitor.start();
-			}
+			// TODO
+			// if (this.mouse_idle_watcher_enabled) {
+			// 	// XXX: only enable according w respective settings
+			// 	this.idleMonitor = new IdleMonitor({
+			// 		idle_delay: IDLE_TIME,
+			// 		on_idle: this.on_idle_handler,
+			// 		on_active: this.on_active_handler,
+			// 		on_finish: this.on_finish_handler,
+			// 	});
+			// 	this.idleMonitor.start();
+			// }
 
 			global.log(UUID, "activated");
 		} else {

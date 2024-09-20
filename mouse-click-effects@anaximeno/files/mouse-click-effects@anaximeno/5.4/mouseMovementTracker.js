@@ -39,35 +39,19 @@ var MouseMovementTracker = class MouseMovementTracker {
     update(params) {
         if (params.size) {
             this.size = params.size;
-            this.icon_actor.set_size(params.size);
         }
         if (params.opacity) {
             this.opacity = params.opacity;
-            this.icon_actor.set_opacity(params.opacity);
         }
         if (params.icon) {
-            Main.uiGroup.remove_child(this.icon_actor);
-            const [x, y, _] = global.get_pointer();
-            this.icon_actor = new St.Icon({
-                reactive: false,
-                can_focus: false,
-                track_hover: false,
-                icon_size: this.size,
-                opacity: this.opacity,
-                gicon: params.icon,
-            });
-            this.move_to(x, y);
-            Main.uiGroup.add_child(this.icon_actor);
-            if (!this.persist_on_stopped)
-                this.icon_actor.hide();
+            this.icon = params.icon;
         }
-        if (params.persist_on_stopped === true) {
+        if (params.persist_on_stopped === true || params.persist_on_stopped === false) {
             this.persist_on_stopped = params.persist_on_stopped;
-            this.icon_actor.show();
-        } else if (params.persist_on_stopped === false) {
-            this.persist_on_stopped = params.persist_on_stopped;
-            this.icon_actor.hide();
         }
+
+        this.finalize();
+        this.start();
     }
 
     finalize() {

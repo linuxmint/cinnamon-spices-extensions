@@ -209,7 +209,7 @@
 		"tooltip": "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
 	},
 	"mouse-idle-watcher-enabled": {
-		"type": "switch",
+		"type": "generic",
 		"default": false,
 		"description": "Mouse Idle Watcher"
 	},
