@@ -57,7 +57,7 @@ class MouseClickEffects {
 
 		this.display_click = (new Debouncer()).debounce((...args) => {
 			if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
-				global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
+				// global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
 				return;
 			}
 			this.animate_click(...args);
