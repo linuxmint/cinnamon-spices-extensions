@@ -99,7 +99,18 @@ class MouseClickEffects {
 			{
 				key: "icon-mode",
 				value: "icon_mode",
-				cb: this.update_colored_icons,
+				cb: () => {
+					this.update_colored_icons();
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							icon: this.get_click_icon(
+								this.icon_mode,
+								ClickType.MOUSE_MOV,
+								this.mouse_movement_color,
+							),
+						});
+					}
+				},
 			},
 			{
 				key: "size",
@@ -151,6 +162,17 @@ class MouseClickEffects {
 				key: "mouse-movement-tracker-enabled",
 				value: "mouse_movement_tracker_enabled",
 				cb: () => this.set_active(this.enabled),
+			},
+			{
+				key: "mouse-movement-tracker-persist-on-stopped-enabled",
+				value: "mouse_movement_tracker_persist_on_stopped_enabled",
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							persist_on_stopped: this.mouse_movement_tracker_persist_on_stopped_enabled,
+						});
+					}
+				},
 			},
 			{
 				key: "mouse-idle-watcher-enabled",
@@ -319,7 +341,9 @@ class MouseClickEffects {
 
 			if (this.mouse_movement_tracker_enabled) {
 				const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
-				this.mouse_movement_tracker = new MouseMovementTracker(icon, this.size, this.general_opacity);
+				this.mouse_movement_tracker = new MouseMovementTracker(
+					icon, this.size, this.general_opacity,
+					this.mouse_movement_tracker_persist_on_stopped_enabled);
 				this.mouse_movement_tracker.start();
 			}
 

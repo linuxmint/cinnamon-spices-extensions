@@ -43,6 +43,7 @@
 				"right-click-effect-enabled",
 				"pause-animation-effects-enabled",
 				"mouse-movement-tracker-enabled",
+				"mouse-movement-tracker-persist-on-stopped-enabled",
 				"mouse-idle-watcher-enabled"
 			]
 		},
@@ -197,6 +198,13 @@
 		"type": "switch",
 		"default": false,
 		"description": "Mouse Movement Tracker"
+	},
+	"mouse-movement-tracker-persist-on-stopped-enabled": {
+		"type": "switch",
+		"default": false,
+		"description": "Persist Movement Tracker On Stopped",
+		"dependency": "mouse-movement-tracker-enabled"
+
 	},
 	"mouse-idle-watcher-enabled": {
 		"type": "switch",
