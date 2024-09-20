@@ -19,13 +19,13 @@
 
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
-const PointerWatcher = imports.pointerWatcher.getPointerWatcher();
 const Gettext = imports.gettext;
 const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY } = require("./constants.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_ } = require("./constants.js");
+const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
 
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
@@ -63,9 +63,10 @@ class MouseClickEffects {
 				return;
 			}
 			this.animate_click(...args);
-		}, 10);
+		}, CLICK_DEBOUNCE_MS);
 
 		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
+		this.pointerMovementListener = null;
 
 		this.set_active(false);
 	}
@@ -237,10 +238,20 @@ class MouseClickEffects {
 
 	set_active(enabled) {
 		this.enabled = enabled;
+
 		this.listener.deregister('mouse');
+		if (this.pointerMovementListener) {
+			PointerWatcher._removeWatch(this.pointerMovementListener);
+			this.pointerMovementListener = null;
+		}
 
 		if (enabled) {
 			this.listener.register('mouse');
+			// XXX: only enable according w respective settings
+			this.pointerMovementListener = PointerWatcher.addWatch(
+				POINTER_WATCH_MS,
+				this.on_mouse_moved.bind(this),
+			);
 			global.log(UUID, "Click effects activated");
 		} else {
 			global.log(UUID, "Click effects deactivated");
@@ -309,6 +320,10 @@ class MouseClickEffects {
 					this.display_click(ClickType.RIGHT, this.right_click_color);
 				break;
 		}
+	}
+
+	on_mouse_moved(x, y) {
+		// TODO
 	}
 }
 
