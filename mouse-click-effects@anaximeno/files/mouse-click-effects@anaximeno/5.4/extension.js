@@ -56,7 +56,7 @@ class MouseClickEffects {
 		this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
 
 		this.display_click = (new Debouncer()).debounce((...args) => {
-			if (global.display.focus_window.is_fullscreen() && this.deactivate_in_fullscreen) {
+			if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
 				global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
 				return;
 			}
@@ -272,11 +272,13 @@ class MouseClickEffects {
 		let icon = null;
 		let animator = this.clickAnimator;
 
-		if (click_type === ClickType.PAUSE_OFF || click_type === ClickType.PAUSE_ON) {
+		if (click_type === ClickType.PAUSE_ON) {
 			icon = this.get_icon_cached(this.pause_icon_path);
-			let mode = click_type === ClickType.PAUSE_ON ? ClickAnimationModes.BLINK : ClickAnimationModes.EXPAND;
-			animator = ClickAnimationFactory.createForMode(mode);
-		} else {
+			animator = ClickAnimationFactory.createForMode(ClickAnimationModes.BLINK);
+		} else if (click_type === ClickType.PAUSE_OFF) {
+			icon = this.get_click_icon(this.icon_mode, ClickType.LEFT, this.left_click_color);
+			animator = ClickAnimationFactory.createForMode(ClickAnimationModes.BLINK);
+		} else if (color != null) {
 			icon = this.get_click_icon(this.icon_mode, click_type, color);
 		}
 
