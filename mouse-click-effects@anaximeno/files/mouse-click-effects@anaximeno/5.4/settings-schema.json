@@ -97,7 +97,7 @@
 	},
 	"size": {
 		"type": "spinbutton",
-		"default": 60,
+		"default": 70,
 		"min": 20,
 		"max": 120,
 		"step": 5,
@@ -159,7 +159,7 @@
 	"general-opacity": {
 		"type": "spinbutton",
 		"description": "General Opacity",
-		"default": 255,
+		"default": 185,
 		"min": 5,
 		"max": 255,
 		"step": 5
