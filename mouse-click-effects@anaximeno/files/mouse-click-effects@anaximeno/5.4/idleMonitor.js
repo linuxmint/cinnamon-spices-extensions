@@ -18,7 +18,7 @@ var IdleMonitor = class IdleMonitor {
         this.idle = this.idle_monitor.get_idletime() > this.idle_delay;
     }
 
-    finish() {
+    finalize() {
         if (this._on_finish) this._on_finish();
         if (this._idle_watch_id) this.idle_monitor.remove_watch(this._idle_watch_id);
     }

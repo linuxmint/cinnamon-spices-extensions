@@ -25,9 +25,8 @@ const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer } = require("./helpers.js");
 const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS, IDLE_TIME } = require("./constants.js");
-const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
 const { IdleMonitor } = require("./idleMonitor.js");
-
+const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
 
@@ -69,11 +68,9 @@ class MouseClickEffects {
 		}, CLICK_DEBOUNCE_MS);
 
 		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
-		this.pointerMovementListener = null;
 		this.idleMonitor = null;
 
-		this.mouse_move_watcher_icon = null;
-		this.mouse_idle_tracker_icon = null;
+		this.mouse_movement_tracker = null;
 
 		this.enabled = false;
 		this.set_active(false);
@@ -107,7 +104,13 @@ class MouseClickEffects {
 			{
 				key: "size",
 				value: "size",
-				cb: null,
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							size: this.size,
+						});
+					}
+				},
 			},
 			{
 				key: "idle-animation-mode",
@@ -147,7 +150,7 @@ class MouseClickEffects {
 			{
 				key: "mouse-movement-tracker-enabled",
 				value: "mouse_movement_tracker_enabled",
-				cb: null,
+				cb: () => this.set_active(this.enabled),
 			},
 			{
 				key: "mouse-idle-watcher-enabled",
@@ -172,7 +175,18 @@ class MouseClickEffects {
 			{
 				key: "mouse-movement-color",
 				value: "mouse_movement_color",
-				cb: this.update_colored_icons,
+				cb: () => {
+					this.update_colored_icons();
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							icon: this.get_click_icon(
+								this.icon_mode,
+								ClickType.MOUSE_MOV,
+								this.mouse_movement_color,
+							),
+						});
+					}
+				},
 			},
 			{
 				key: "mouse-idle-watcher-color",
@@ -182,7 +196,13 @@ class MouseClickEffects {
 			{
 				key: "general-opacity",
 				value: "general_opacity",
-				cb: null,
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							opacity: this.general_opacity,
+						});
+					}
+				},
 			},
 			{
 				key: "animation-mode",
@@ -285,30 +305,35 @@ class MouseClickEffects {
 		this.enabled = enabled;
 
 		this.listener.deregister('mouse');
-		if (this.pointerMovementListener) {
-			this.pointerMovementListener.remove();
-			this.pointerMovementListener = null;
+		if (this.mouse_movement_tracker) {
+			this.mouse_movement_tracker.finalize();
+			this.mouse_movement_tracker = null;
 		}
 		if (this.idleMonitor) {
-			this.idleMonitor.finish();
+			this.idleMonitor.finalize();
 			this.idleMonitor = null;
 		}
 
 		if (enabled) {
 			this.listener.register('mouse');
-			// XXX: only enable according w respective settings
-			this.pointerMovementListener = PointerWatcher.addWatch(
-				POINTER_WATCH_MS,
-				this.on_mouse_moved.bind(this),
-			);
-			// XXX: only enable according w respective settings
-			// this.idleMonitor = new IdleMonitor({
-			// 	idle_delay: IDLE_TIME,
-			// 	on_idle: this.on_idle_handler,
-			// 	on_active: this.on_active_handler,
-			// 	on_finish: this.on_finish_handler,
-			// });
-			// this.idleMonitor.start();
+
+			if (this.mouse_movement_tracker_enabled) {
+				const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
+				this.mouse_movement_tracker = new MouseMovementTracker(icon, this.size, this.general_opacity);
+				this.mouse_movement_tracker.start();
+			}
+
+			if (this.mouse_idle_watcher_enabled) {
+				// XXX: only enable according w respective settings
+				// this.idleMonitor = new IdleMonitor({
+				// 	idle_delay: IDLE_TIME,
+				// 	on_idle: this.on_idle_handler,
+				// 	on_active: this.on_active_handler,
+				// 	on_finish: this.on_finish_handler,
+				// });
+				// this.idleMonitor.start();
+			}
+
 			global.log(UUID, "activated");
 		} else {
 			global.log(UUID, "deactivated");
@@ -380,10 +405,6 @@ class MouseClickEffects {
 					this.display_click(ClickType.RIGHT, this.right_click_color);
 				break;
 		}
-	}
-
-	on_mouse_moved(x, y) {
-		// global.log(UUID, `mouse moved to (${x}, ${y})`);
 	}
 }
 
