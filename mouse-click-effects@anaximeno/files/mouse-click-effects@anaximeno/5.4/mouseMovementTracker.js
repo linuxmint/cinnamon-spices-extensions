@@ -47,6 +47,7 @@ var MouseMovementTracker = class MouseMovementTracker {
         }
         if (params.icon) {
             Main.uiGroup.remove_child(this.icon_actor);
+            const [x, y, _] = global.get_pointer();
             this.icon_actor = new St.Icon({
                 reactive: false,
                 can_focus: false,
@@ -55,7 +56,10 @@ var MouseMovementTracker = class MouseMovementTracker {
                 opacity: this.opacity,
                 gicon: params.icon,
             });
+            this.move_to(x, y);
             Main.uiGroup.add_child(this.icon_actor);
+            if (!this.persist_on_stopped)
+                this.icon_actor.hide();
         }
         if (params.persist_on_stopped === true) {
             this.persist_on_stopped = params.persist_on_stopped;
@@ -69,9 +73,7 @@ var MouseMovementTracker = class MouseMovementTracker {
     finalize() {
         Main.uiGroup.remove_child(this.icon_actor);
         this.listener.remove();
-        this.listener = null;
         this.icon_actor.destroy();
-        this.icon_actor = null;
         global.log(UUID, "mouse movement tracker finalized");
     }
 

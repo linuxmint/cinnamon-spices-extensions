@@ -192,19 +192,20 @@
 	"pause-animation-effects-enabled": {
 		"type": "switch",
 		"default": true,
-		"description": "Animate Effects Pause"
+		"description": "Animate Pause"
 	},
 	"mouse-movement-tracker-enabled": {
 		"type": "switch",
 		"default": false,
-		"description": "Mouse Movement Tracker"
+		"description": "Mouse Movement Tracker (experimental)",
+		"tooltip": "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
 	},
 	"mouse-movement-tracker-persist-on-stopped-enabled": {
 		"type": "switch",
 		"default": false,
-		"description": "Persist Movement Tracker On Stopped",
-		"dependency": "mouse-movement-tracker-enabled"
-
+		"description": "Persist Movement Tracker On Stopped (experimental)",
+		"dependency": "mouse-movement-tracker-enabled",
+		"tooltip": "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
 	},
 	"mouse-idle-watcher-enabled": {
 		"type": "switch",
