@@ -27,6 +27,9 @@
 			"keys": [
 				"animation-mode",
 				"animation-time",
+				"idle-animation-mode",
+				"idle-animation-period",
+				"idle-animation-delay",
 				"deactivate-in-fullscreen",
 				"pause-effects-binding"
 			]
@@ -38,7 +41,9 @@
 				"left-click-effect-enabled",
 				"middle-click-effect-enabled",
 				"right-click-effect-enabled",
-				"pause-animation-effects-enabled"
+				"pause-animation-effects-enabled",
+				"mouse-movement-tracker-enabled",
+				"mouse-idle-watcher-enabled"
 			]
 		},
 		"style-section": {
@@ -56,7 +61,9 @@
 			"keys": [
 				"left-click-color",
 				"middle-click-color",
-				"right-click-color"
+				"right-click-color",
+				"mouse-movement-color",
+				"mouse-idle-watcher-color"
 			]
 		}
 	},
@@ -115,6 +122,38 @@
 		"units": "ms",
 		"description": "Animation Time"
 	},
+	"idle-animation-mode": {
+		"type": "combobox",
+		"default": "blink",
+		"description": "Idle Animation Mode",
+		"dependency": "mouse-idle-watcher-enabled",
+		"options": {
+			"Blink": "blink",
+			"Bounce": "bounce",
+			"Retract": "retract",
+			"Expand": "expand"
+		}
+	},
+	"idle-animation-delay": {
+		"type": "spinbutton",
+		"dependency": "mouse-idle-watcher-enabled",
+		"default": 400,
+		"min": 100,
+		"max": 5000,
+		"step": 50,
+		"units": "ms",
+		"description": "Idle Animation Delay"
+	},
+	"idle-animation-period": {
+		"type": "spinbutton",
+		"dependency": "mouse-idle-watcher-enabled",
+		"default": 400,
+		"min": 100,
+		"max": 5000,
+		"step": 50,
+		"units": "ms",
+		"description": "Idle Animation Period"
+	},
 	"general-opacity": {
 		"type": "spinbutton",
 		"description": "General Opacity",
@@ -124,7 +163,7 @@
 		"step": 5
 	},
 	"deactivate-in-fullscreen": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": false,
 		"description": "Deactivate In Fullscreen"
 	},
@@ -135,24 +174,34 @@
 		"tooltip": "Set keybinding to pause or continue the effects"
 	},
 	"left-click-effect-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
 		"description": "Animate Left Click"
 	},
 	"middle-click-effect-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
 		"description": "Animate Middle Click"
 	},
 	"right-click-effect-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
 		"description": "Animate Right Click"
 	},
 	"pause-animation-effects-enabled": {
-		"type": "checkbox",
+		"type": "switch",
 		"default": true,
-		"description": "Animate Pause"
+		"description": "Animate Effects Pause"
+	},
+	"mouse-movement-tracker-enabled": {
+		"type": "switch",
+		"default": false,
+		"description": "Mouse Movement Tracker"
+	},
+	"mouse-idle-watcher-enabled": {
+		"type": "switch",
+		"default": false,
+		"description": "Mouse Idle Watcher"
 	},
 	"left-click-color": {
 		"type": "colorchooser",
@@ -168,5 +217,15 @@
 		"type": "colorchooser",
 		"default": "#4077BF",
 		"description": "Right Click Color"
+	},
+	"mouse-movement-color": {
+		"type": "colorchooser",
+		"default": "#4077BF",
+		"description": "Mouse Movement Color"
+	},
+	"mouse-idle-watcher-color": {
+		"type": "colorchooser",
+		"default": "#4077BF",
+		"description": "Mouse Idle Watcher Color"
 	}
 }
