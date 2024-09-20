@@ -127,7 +127,7 @@
 	"idle-animation-mode": {
 		"type": "combobox",
 		"default": "blink",
-		"description": "Idle Animation Mode",
+		"description": "Idle Mouse Animation Mode",
 		"dependency": "mouse-idle-watcher-enabled",
 		"options": {
 			"Blink": "blink",
@@ -144,7 +144,7 @@
 		"max": 5000,
 		"step": 50,
 		"units": "ms",
-		"description": "Idle Animation Delay"
+		"description": "Idle Mouse Animation Delay"
 	},
 	"idle-animation-period": {
 		"type": "spinbutton",
@@ -154,7 +154,7 @@
 		"max": 5000,
 		"step": 50,
 		"units": "ms",
-		"description": "Idle Animation Period"
+		"description": "Idle Mouse Animation Period"
 	},
 	"general-opacity": {
 		"type": "spinbutton",
@@ -231,11 +231,12 @@
 	"mouse-movement-color": {
 		"type": "colorchooser",
 		"default": "#4077BF",
-		"description": "Mouse Movement Color"
+		"description": "Mouse Movement Tracker Color"
 	},
 	"mouse-idle-watcher-color": {
 		"type": "colorchooser",
 		"default": "#4077BF",
-		"description": "Mouse Idle Watcher Color"
+		"description": "Mouse Idle Watcher Color",
+		"dependency": "mouse-idle-watcher-enabled"
 	}
 }

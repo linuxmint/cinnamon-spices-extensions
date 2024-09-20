@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# MOUSE CLICK EFFECTS
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# anaximeno, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-07-15 04:30-0100\n"
+"POT-Creation-Date: 2024-09-20 22:01-0100\n"
 "PO-Revision-Date: 2024-07-23 20:25+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -24,9 +24,23 @@ msgstr "Muisklik-effecten"
 msgid "Display mouse click effects on Cinnamon."
 msgstr "Toon muisklik-effecten op Cinnamon."
 
-#. 5.4->settings-schema.json->general-section->description
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
 msgid "General"
 msgstr "Algemeen"
+
+#. 5.4->settings-schema.json->style-page->title
+msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->style-section->title
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
+msgstr "Kleuren"
 
 #. 5.4->settings-schema.json->icon-mode->description
 msgid "Icon Mode"
@@ -108,6 +122,10 @@ msgstr "Tandwiel"
 msgid "H-Star"
 msgstr "H-Ster"
 
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr ""
+
 #. 5.4->settings-schema.json->size->units
 msgid "px"
 msgstr "px"
@@ -121,28 +139,49 @@ msgid "Click Animation Mode"
 msgstr "Klik Animatiemodus"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Blink"
 msgstr "Knipperen"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Bounce"
 msgstr "Stuiteren"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Retract"
 msgstr "Intrekken"
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Expand"
 msgstr "Uitbreiden"
 
 #. 5.4->settings-schema.json->animation-time->units
+#. 5.4->settings-schema.json->idle-animation-delay->units
+#. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
 
 #. 5.4->settings-schema.json->animation-time->description
 msgid "Animation Time"
 msgstr "Animatietijd"
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+#, fuzzy
+msgid "Idle Mouse Animation Mode"
+msgstr "Klik Animatiemodus"
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+#, fuzzy
+msgid "Idle Mouse Animation Delay"
+msgstr "Klik Animatiemodus"
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+#, fuzzy
+msgid "Idle Mouse Animation Period"
+msgstr "Klik Animatiemodus"
 
 #. 5.4->settings-schema.json->general-opacity->description
 msgid "General Opacity"
@@ -160,29 +199,45 @@ msgstr "Sneltoets pauzeer effecten"
 msgid "Set keybinding to pause or continue the effects"
 msgstr "Stel sneltoets in om de effecten te pauzeren of voort te zetten"
 
-#. 5.4->settings-schema.json->events-section->description
-msgid "Events"
-msgstr "Gebeurtenissen"
-
 #. 5.4->settings-schema.json->left-click-effect-enabled->description
-msgid "Enable Left Click Effect"
+#, fuzzy
+msgid "Animate Left Click"
 msgstr "Schakel linkerklik effect in"
 
 #. 5.4->settings-schema.json->middle-click-effect-enabled->description
-msgid "Enable Middle Click Effect"
+#, fuzzy
+msgid "Animate Middle Click"
 msgstr "Schakel middelste klik effect in"
 
 #. 5.4->settings-schema.json->right-click-effect-enabled->description
-msgid "Enable Right Click Effect"
+#, fuzzy
+msgid "Animate Right Click"
 msgstr "Schakel rechterklik effect in"
 
 #. 5.4->settings-schema.json->pause-animation-effects-enabled->description
-msgid "Enable Pause Animation Effects"
-msgstr "Schakel pauzeren van animatie-effecten in"
+msgid "Animate Pause"
+msgstr ""
 
-#. 5.4->settings-schema.json->colors-section->description
-msgid "Colors"
-msgstr "Kleuren"
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
@@ -195,3 +250,11 @@ msgstr "Middelste klik kleur"
 #. 5.4->settings-schema.json->right-click-color->description
 msgid "Right Click Color"
 msgstr "Rechterklik kleur"
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
+msgstr ""
