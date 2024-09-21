@@ -30,6 +30,7 @@ var MouseMovementTracker = class MouseMovementTracker {
             opacity: this.opacity,
             gicon: this.icon,
         });
+        this.icon_actor.set_style("pointer-events: none;");
         this.move_to(x, y);
         Main.uiGroup.add_child(this.icon_actor);
         this.listener = PointerWatcher.addWatch(POINTER_WATCH_MS, this.move_to.bind(this));
