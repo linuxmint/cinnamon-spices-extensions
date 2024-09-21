@@ -19,6 +19,7 @@
 
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
+const DND = imports.ui.dnd;
 const Gettext = imports.gettext;
 const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
@@ -59,18 +60,13 @@ class MouseClickEffects {
 
 		this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
 
-		this.display_click = (new Debouncer()).debounce((...args) => {
-			if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
-				// global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
-				return;
-			}
-			this.animate_click(...args);
-		}, CLICK_DEBOUNCE_MS);
-
 		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
 		this.idleMonitor = null;
 
 		this.mouse_movement_tracker = null;
+
+		this._enable_on_drag_end = false;
+		DND.addDragMonitor(this);
 
 		this.enabled = false;
 		this.set_active(false);
@@ -254,6 +250,20 @@ class MouseClickEffects {
 		return settings;
 	}
 
+	dragMotion = ((event) => {
+		if (this.enabled) {
+			this._enable_on_drag_end = true;
+			this.set_active(false);
+		}
+	}).bind(this)
+
+	dragDrop = ((event) => {
+		if (this._enable_on_drag_end) {
+			this._enable_on_drag_end = false;
+			this.set_active(true);
+		}
+	}).bind(this)
+
 	enable() {
 		this.update_colored_icons();
 		this.set_keybindings();
@@ -309,6 +319,7 @@ class MouseClickEffects {
 	}
 
 	destroy() {
+		DND.removeDragMonitor(this);
 		this.set_active(false);
 		this.unset_keybindings();
 		this.settings.finalize();
@@ -389,6 +400,14 @@ class MouseClickEffects {
 		if (r_success) global.log(UUID, `created colored icon cache for ${name}`);
 		return r_success;
 	}
+
+	display_click = (new Debouncer()).debounce((...args) => {
+		if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
+			// global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
+			return;
+		}
+		this.animate_click(...args);
+	}, CLICK_DEBOUNCE_MS)
 
 	animate_click(click_type, color) {
 		this.update_animation_mode();
