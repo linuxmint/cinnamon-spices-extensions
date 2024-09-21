@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-09-20 22:01-0100\n"
-"PO-Revision-Date: 2024-07-15 10:03-0400\n"
+"PO-Revision-Date: 2024-09-21 12:19-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -32,11 +32,11 @@ msgstr "General"
 
 #. 5.4->settings-schema.json->style-page->title
 msgid "Style"
-msgstr ""
+msgstr "Estilo"
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
-msgstr ""
+msgstr "Efectos"
 
 #. 5.4->settings-schema.json->style-section->title
 #. 5.4->settings-schema.json->colors-section->title
@@ -125,7 +125,7 @@ msgstr "H-Estrella"
 
 #. 5.4->settings-schema.json->icon-mode->options
 msgid "Aim"
-msgstr ""
+msgstr "Apuntar"
 
 #. 5.4->settings-schema.json->size->units
 msgid "px"
@@ -170,19 +170,16 @@ msgid "Animation Time"
 msgstr "Tiempo de animación"
 
 #. 5.4->settings-schema.json->idle-animation-mode->description
-#, fuzzy
 msgid "Idle Mouse Animation Mode"
-msgstr "Haga clic en Modo de animación"
+msgstr "Modo de animación del ratón inactivo"
 
 #. 5.4->settings-schema.json->idle-animation-delay->description
-#, fuzzy
 msgid "Idle Mouse Animation Delay"
-msgstr "Haga clic en Modo de animación"
+msgstr "Retraso de animación del ratón inactivo"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
-#, fuzzy
 msgid "Idle Mouse Animation Period"
-msgstr "Haga clic en Modo de animación"
+msgstr "Período de animación del ratón inactivo"
 
 #. 5.4->settings-schema.json->general-opacity->description
 msgid "General Opacity"
@@ -202,27 +199,24 @@ msgstr ""
 "Configurar la combinación de teclas para pausar o continuar los efectos"
 
 #. 5.4->settings-schema.json->left-click-effect-enabled->description
-#, fuzzy
 msgid "Animate Left Click"
-msgstr "Activar el efecto de clic izquierdo"
+msgstr "Animar clic izquierdo"
 
 #. 5.4->settings-schema.json->middle-click-effect-enabled->description
-#, fuzzy
 msgid "Animate Middle Click"
-msgstr "Activar el efecto de clic central"
+msgstr "Animar clic central"
 
 #. 5.4->settings-schema.json->right-click-effect-enabled->description
-#, fuzzy
 msgid "Animate Right Click"
-msgstr "Activar el efecto del botón derecho"
+msgstr "Animar clic derecho"
 
 #. 5.4->settings-schema.json->pause-animation-effects-enabled->description
 msgid "Animate Pause"
-msgstr ""
+msgstr "Animar pausa"
 
 #. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
 msgid "Mouse Movement Tracker (experimental)"
-msgstr ""
+msgstr "Rastreador de movimientos del ratón (experimental)"
 
 #. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
 #. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
@@ -231,15 +225,18 @@ msgid ""
 "This is still experimental and may interfere when clicking on the panel or "
 "in some drag-and-drop operations."
 msgstr ""
+"Esto es todavía experimental y puede interferir al hacer clic en el panel "
+"o en algunas operaciones de arrastrar y soltar."
 
 #. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
 #. enabled->description
 msgid "Persist Movement Tracker On Stopped (experimental)"
 msgstr ""
+"Rastreador de movimiento persistente en estado detenido (experimental)"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
-msgstr ""
+msgstr "Observador de inactividad del ratón"
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
@@ -255,8 +252,8 @@ msgstr "Color del botón derecho"
 
 #. 5.4->settings-schema.json->mouse-movement-color->description
 msgid "Mouse Movement Tracker Color"
-msgstr ""
+msgstr "Color del rastreador de movimientos del ratón"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-color->description
 msgid "Mouse Idle Watcher Color"
-msgstr ""
+msgstr "Color del observador de inactividad del ratón"
