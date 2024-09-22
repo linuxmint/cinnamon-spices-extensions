@@ -19,6 +19,9 @@
 
 const Util = imports.misc.util;
 
+const { UUID, DEBUG } = require('./constants.js');
+
+
 var Debouncer = class Debouncer {
     _sourceId;
 
@@ -42,4 +45,13 @@ var Debouncer = class Debouncer {
             }, timeout);
         }).bind(this);
     }
+}
+
+
+function logInfo(...args) {
+    if (DEBUG) global.log(`${UUID}: ${args.join(' ')}`);
+}
+
+function logError(...args) {
+    global.logError(`${UUID}: ${args.join(' ')}`);
 }

@@ -3,7 +3,7 @@ const Main = imports.ui.main;
 
 const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
 const { POINTER_WATCH_MS, UUID, MOUSE_PARADE_DELAY_MS } = require("./constants.js");
-const { Debouncer } = require("./helpers.js");
+const { Debouncer, logInfo } = require("./helpers.js");
 
 
 var MouseMovementTracker = class MouseMovementTracker {
@@ -11,13 +11,9 @@ var MouseMovementTracker = class MouseMovementTracker {
         this.size = size;
         this.opacity = opacity;
         this.icon = icon;
+        this.persist_on_stopped = persist_on_stopped;
         this.icon_actor = null;
         this.listener = null;
-        this.persist_on_stopped = persist_on_stopped;
-        this.handle_parade = (new Debouncer()).debounce(
-            this.on_parade.bind(this),
-            MOUSE_PARADE_DELAY_MS,
-        );
     }
 
     start() {
@@ -34,7 +30,7 @@ var MouseMovementTracker = class MouseMovementTracker {
         this.move_to(x, y);
         Main.uiGroup.add_child(this.icon_actor);
         this.listener = PointerWatcher.addWatch(POINTER_WATCH_MS, this.move_to.bind(this));
-        global.log(UUID, "mouse movement tracker started");
+        logInfo("mouse movement tracker started");
     }
 
     update(params) {
@@ -59,19 +55,21 @@ var MouseMovementTracker = class MouseMovementTracker {
         Main.uiGroup.remove_child(this.icon_actor);
         this.listener.remove();
         this.icon_actor.destroy();
-        global.log(UUID, "mouse movement tracker finalized");
+        logInfo("mouse movement tracker finalized");
     }
 
     move_to(x, y) {
-        this.icon_actor.show();
-        this.icon_actor.set_position(
-            x - (this.size * global.ui_scale / 2),
-            y - (this.size * global.ui_scale / 2));
-        if (!this.persist_on_stopped)
-            this.handle_parade();
+        if (this.icon_actor) {
+            this.icon_actor.show();
+            this.icon_actor.set_position(
+                x - (this.size * global.ui_scale / 2),
+                y - (this.size * global.ui_scale / 2));
+            if (!this.persist_on_stopped)
+                this.handle_parade();
+        }
     }
 
-    on_parade() {
-        this.icon_actor.hide();
-    }
+    handle_parade = (new Debouncer()).debounce(() => {
+        if (this.icon_actor) this.icon_actor.hide();
+    }, MOUSE_PARADE_DELAY_MS);
 }

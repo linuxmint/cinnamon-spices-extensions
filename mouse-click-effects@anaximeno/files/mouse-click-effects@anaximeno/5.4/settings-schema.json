@@ -49,7 +49,7 @@
 		},
 		"style-section": {
 			"type": "section",
-			"title": "Colors",
+			"title": "Style",
 			"keys": [
 				"icon-mode",
 				"size",

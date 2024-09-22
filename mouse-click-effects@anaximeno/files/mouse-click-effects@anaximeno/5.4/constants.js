@@ -17,6 +17,8 @@
  */
 'use strict';
 
+const DEBUG = false;
+
 const UUID = "mouse-click-effects@anaximeno";
 
 const PAUSE_EFFECTS_KEY = `${UUID}-bind-pause-effects`;
