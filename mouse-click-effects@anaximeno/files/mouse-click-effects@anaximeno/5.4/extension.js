@@ -24,7 +24,7 @@ const Gettext = imports.gettext;
 const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
-const { Debouncer } = require("./helpers.js");
+const { Debouncer, logInfo, logError } = require("./helpers.js");
 const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS, IDLE_TIME } = require("./constants.js");
 const { IdleMonitor } = require("./idleMonitor.js");
 const { MouseMovementTracker } = require("./mouseMovementTracker.js");
@@ -76,7 +76,7 @@ class MouseClickEffects {
 		let data_dir = `${GLib.get_user_cache_dir()}/${uuid}`;
 
 		if (GLib.mkdir_with_parents(`${data_dir}/icons`, 0o777) < 0) {
-			global.logError(`Failed to create cache dir at ${data_dir}`);
+			logError(`Failed to create cache dir at ${data_dir}`);
 			throw new Error(`Failed to create cache dir at ${data_dir}`);
 		}
 
@@ -255,14 +255,14 @@ class MouseClickEffects {
 			this._enable_on_drag_end = true;
 			this.set_active(false);
 		}
-	}).bind(this)
+	}).bind(this);
 
 	dragDrop = ((event) => {
 		if (this._enable_on_drag_end) {
 			this._enable_on_drag_end = false;
 			this.set_active(true);
 		}
-	}).bind(this)
+	}).bind(this);
 
 	enable() {
 		this.update_colored_icons();
@@ -372,9 +372,9 @@ class MouseClickEffects {
 			// 	this.idleMonitor.start();
 			// }
 
-			global.log(UUID, "activated");
+			logInfo("activated");
 		} else {
-			global.log(UUID, "deactivated");
+			logInfo("deactivated");
 		}
 	}
 
@@ -397,17 +397,18 @@ class MouseClickEffects {
 
 		let [r_success, tag] = dest.replace_contents(contents, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null);
 
-		if (r_success) global.log(UUID, `created colored icon cache for ${name}`);
+		if (r_success) logInfo(`created colored icon cache for ${name}`);
+
 		return r_success;
 	}
 
 	display_click = (new Debouncer()).debounce((...args) => {
 		if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
-			// global.log(UUID, "Click effects not displayed due to being disabled for fullscreen focused windows");
+			logInfo("Click effects not displayed due to being disabled for fullscreen focused windows");
 			return;
 		}
 		this.animate_click(...args);
-	}, CLICK_DEBOUNCE_MS)
+	}, CLICK_DEBOUNCE_MS);
 
 	animate_click(click_type, color) {
 		this.update_animation_mode();
@@ -432,7 +433,7 @@ class MouseClickEffects {
 				timeout: this.animation_time,
 			});
 		} else {
-			global.logError(`${UUID}: Couldn't get Click Icon (mode = ${this.icon_mode}, type = ${click_type}, color = ${color})`)
+			logError(`Couldn't get Click Icon (mode = ${this.icon_mode}, type = ${click_type}, color = ${color})`)
 		}
 	}
 

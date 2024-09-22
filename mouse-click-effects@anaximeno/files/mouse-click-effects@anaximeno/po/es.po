@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-20 22:01-0100\n"
+"POT-Creation-Date: 2024-09-22 17:02-0100\n"
 "PO-Revision-Date: 2024-09-21 12:19-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -31,6 +31,7 @@ msgid "General"
 msgstr "General"
 
 #. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr "Estilo"
 
@@ -38,7 +39,6 @@ msgstr "Estilo"
 msgid "Effects"
 msgstr "Efectos"
 
-#. 5.4->settings-schema.json->style-section->title
 #. 5.4->settings-schema.json->colors-section->title
 msgid "Colors"
 msgstr "Colores"
@@ -225,14 +225,13 @@ msgid ""
 "This is still experimental and may interfere when clicking on the panel or "
 "in some drag-and-drop operations."
 msgstr ""
-"Esto es todavía experimental y puede interferir al hacer clic en el panel "
-"o en algunas operaciones de arrastrar y soltar."
+"Esto es todavía experimental y puede interferir al hacer clic en el panel o "
+"en algunas operaciones de arrastrar y soltar."
 
 #. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
 #. enabled->description
 msgid "Persist Movement Tracker On Stopped (experimental)"
-msgstr ""
-"Rastreador de movimiento persistente en estado detenido (experimental)"
+msgstr "Rastreador de movimiento persistente en estado detenido (experimental)"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"

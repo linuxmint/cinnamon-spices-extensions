@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-20 22:01-0100\n"
+"POT-Creation-Date: 2024-09-22 17:02-0100\n"
 "PO-Revision-Date: 2024-05-28 11:48+0800\n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -32,6 +32,7 @@ msgid "General"
 msgstr "常规"
 
 #. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr ""
 
@@ -39,7 +40,6 @@ msgstr ""
 msgid "Effects"
 msgstr ""
 
-#. 5.4->settings-schema.json->style-section->title
 #. 5.4->settings-schema.json->colors-section->title
 msgid "Colors"
 msgstr "颜色"
