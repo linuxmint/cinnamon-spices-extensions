@@ -79,7 +79,7 @@
   "includeBackground" : {
     "type" : "checkbox",
     "description" : "Include Background",
-    "default" : false
+    "default" : true
   },
   "includePanels" : {
     "type" : "checkbox",

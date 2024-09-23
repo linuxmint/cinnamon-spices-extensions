@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.5
+
+* Changed "dim_factor" to "opacity" since "dim_factor" is no longer defined
+* Stop setting "brightness" since it's no longer defined
+* Activate the new workspace on a change to avoid focus change errors
+* Changed the "Include Background" option default to true
+
 ## 1.0.4
 
 * Added a fix to make the animation performance better (smoother).

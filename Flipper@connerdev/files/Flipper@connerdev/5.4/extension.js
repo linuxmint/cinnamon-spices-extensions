@@ -397,7 +397,7 @@ Flipper.prototype = {
       this.last_direction = direction;
 
       this.new_workspace = new_workspace;
-
+      new_workspace.activate(global.get_current_time());
       this.prepare(from_workspace, to_workspace, direction, needScale);
     },
 
@@ -928,7 +928,7 @@ Flipper.prototype = {
 
         Tweener.addTween(from, {
             x: -this.monitor.width,
-            brightness: 1.0,
+            //brightness: 1.0,
             scale_x: this.getScale(),
             scale_y: this.getScale(),
             opacity: 0,
@@ -1381,7 +1381,8 @@ Flipper.prototype = {
         this._backgroundGroup.show();
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
-            dim_factor: settings.dim_factor,
+            //dim_factor: settings.dim_factor,
+            opacity: Math.round(settings.dim_factor*255),
             time: this.getTime(),
             transition: 'easeInQuad'
         });
@@ -1394,7 +1395,8 @@ Flipper.prototype = {
         this._backgroundGroup.show();
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
-            dim_factor: 1.0,
+            //dim_factor: 1.0,
+            opacity: 255,
             time: this.getTime(),
             transition: 'easeInQuad',
             onComplete: this.destroy,
