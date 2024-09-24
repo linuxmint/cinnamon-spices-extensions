@@ -355,8 +355,9 @@ class MouseClickEffects {
 			if (this.mouse_movement_tracker_enabled) {
 				const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
 				this.mouse_movement_tracker = new MouseMovementTracker(
-					icon, this.size, this.general_opacity,
-					this.mouse_movement_tracker_persist_on_stopped_enabled);
+					this, icon, this.size, this.general_opacity,
+					this.mouse_movement_tracker_persist_on_stopped_enabled,
+				);
 				this.mouse_movement_tracker.start();
 			}
 
