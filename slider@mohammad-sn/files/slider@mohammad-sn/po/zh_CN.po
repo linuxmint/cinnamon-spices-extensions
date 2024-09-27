@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:59+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-26 21:42-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -13,6 +14,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.4\n"
+
+#. extension.js:133
+msgid "ERROR"
+msgstr ""
+
+#. extension.js:133
+msgid "Slider was NOT enabled"
+msgstr ""
+
+#. extension.js:134
+msgid "This extension is currently incompatible with your version of Cinnamon."
+msgstr ""
 
 #. metadata.json->description
 msgid "Yet another nice transition effect for ws switching."
@@ -49,93 +62,3 @@ msgstr "背景缩放级别："
 #. settings-schema.json->vertical-position->description
 msgid "Background Vertical Position:"
 msgstr "背景垂直位置："
-
-#~ msgid "easeInOutBounce"
-#~ msgstr "easeInOutBounce"
-
-#~ msgid "easeInOutExpo"
-#~ msgstr "easeInOutExpo"
-
-#~ msgid "easeOutCubic"
-#~ msgstr "easeOutCubic"
-
-#~ msgid "easeInOutCubic"
-#~ msgstr "easeInOutCubic"
-
-#~ msgid "easeInOutCirc"
-#~ msgstr "easeInOutCirc"
-
-#~ msgid "easeInQuart"
-#~ msgstr "easeInQuart"
-
-#~ msgid "easeInBounce"
-#~ msgstr "easeInBounce"
-
-#~ msgid "easeOutQuad"
-#~ msgstr "easeOutQuad"
-
-#~ msgid "easeInQuint"
-#~ msgstr "easeInQuint"
-
-#~ msgid "easeOutElastic"
-#~ msgstr "easeOutElastic"
-
-#~ msgid "easeOutQuint"
-#~ msgstr "easeOutQuint"
-
-#~ msgid "easeInOutElastic"
-#~ msgstr "easeInOutElastic"
-
-#~ msgid "easeInExpo"
-#~ msgstr "easeInExpo"
-
-#~ msgid "easeInOutSine"
-#~ msgstr "easeInOutSine"
-
-#~ msgid "easeInOutQuad"
-#~ msgstr "easeInOutQuad"
-
-#~ msgid "easeInQuad"
-#~ msgstr "easeInQuad"
-
-#~ msgid "easeOutSine"
-#~ msgstr "easeOutSine"
-
-#~ msgid "easeOutExpo"
-#~ msgstr "easeOutExpo"
-
-#~ msgid "easeOutBounce"
-#~ msgstr "easeOutBounce"
-
-#~ msgid "easeOutBack"
-#~ msgstr "easeOutBack"
-
-#~ msgid "easeInOutQuint"
-#~ msgstr "easeInOutQuint"
-
-#~ msgid "easeOutCirc"
-#~ msgstr "easeOutCirc"
-
-#~ msgid "easeInCirc"
-#~ msgstr "easeInCirc"
-
-#~ msgid "easeInElastic"
-#~ msgstr "easeInElastic"
-
-#~ msgid "easeInBack"
-#~ msgstr "easeInBack"
-
-#~ msgid "easeInSine"
-#~ msgstr "easeInSine"
-
-#~ msgid "easeOutQuart"
-#~ msgstr "easeOutQuart"
-
-#~ msgid "easeInOutQuart"
-#~ msgstr "easeInOutQuart"
-
-#~ msgid "easeInCubic"
-#~ msgstr "easeInCubic"
-
-#~ msgid "easeInOutBack"
-#~ msgstr "easeInOutBack"
