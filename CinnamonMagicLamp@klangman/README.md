@@ -1,6 +1,6 @@
 # CinnamonMagicLamp
 
-A compiz like magic lamp effect for the Cinnamon desktop based on hermes83's Gnome extension (https://github.com/hermes83/compiz-alike-magic-lamp-effect)
+A compiz like magic lamp effect for the Cinnamon desktop based on hermes83's Gnome extension (https://github.com/hermes83/compiz-alike-magic-lamp-effect). **Please see Feedback section below to report issues, DO NOT open issues on hermes83's Gnome extension github**
 
 This Cinnamon extension will create a Magic Lamp minimize and unminimize effect
 
@@ -8,13 +8,13 @@ This Cinnamon extension will create a Magic Lamp minimize and unminimize effect
 
 Cinnamon 5.6.8 (Mint 21.1) or better.
 
-To properly animate in relation to the window-list icon, you need to be using a window-list applet that sets the icon geometry. Otherwise the animation will animate from/to the middle of the monitor on the Cinnamon panel edge rather than an animation specific to the window. The pre-installed "Window list" and "Grouped window list" applets work fine as does "Cassia Window list" (version 2.3.2 or better). CobiWindowList does not currently set icon geometry.
+To properly animate in relation to the window-list icon, you need to be using a window-list applet that sets the icon geometry. Otherwise the animation will animate from/to the middle of the monitor on the Cinnamon panel edge rather than an animation specific to the window and it's window-list icon. The pre-installed "Window list" and "Grouped window list" applets work fine as does "Cassia Window list" (version 2.3.2 or better). CobiWindowList does not currently set icon geometry.
 
 This extension requires no other packages other than what is included in a default installation of Mint 21.1 or better.
 
 ## Known issues
 
-The Steam client for some reason does not support window cloning when minimized, therefore the "minimize" effect will show a blank/black window rather than the correct window contents. Other application might have the same behaviour but I have not seen any yet.
+For some reason the Steam client does not support window cloning when minimized, therefore the "minimize" effect will show a blank/black window rather than the correct window contents. I have not seen any other applications show this behaviour.
 
 ## Installation
 
