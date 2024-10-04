@@ -27,7 +27,7 @@ The Doom open effect seems to finish animating at a noticeably lower position th
 
 All open window effects seem to animate in a location that is one pixel off the windows real location. This causes a very small (nearly unnoticeable) jump of the window after the animation has finished. The only exception is "Doom", which as stated above has a more pronounced jump.
 
-The window shadows are not part of the animation and therefore they suddenly appear right after the animation completes.
+The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
 
 ### Currently these effects are working in Cinnamon:
 
