@@ -68,7 +68,6 @@ class ShouldAnimateManager {
    }
 
    disconnect() {
-      log( "in disconnect" );
       for (let i=0 ; i<Main.wm._shouldAnimateManager.length ; i++) {
          if (Main.wm._shouldAnimateManager[i].owner == this._uuid) {
             Main.wm._shouldAnimateManager.splice( i, 1 );
@@ -100,7 +99,7 @@ class ShouldAnimateManager {
             event     += (stack.includes('_destroyWindow@'   )) ? Events.DestroyWindow : 0;
 
             for (let i=0 ; i<Main.wm._shouldAnimateManager.length ; i++) {
-               if (event === (Main.wm._shouldAnimateManager[i].event & event)) {
+               if (event && event === (Main.wm._shouldAnimateManager[i].event & event)) {
                   let ret = Main.wm._shouldAnimateManager[i].handler(actor, types, event);
                   if (ret != RUN_ORIGINAL_FUNCTION) {
                      return ret;
