@@ -1,0 +1,22 @@
+# MAGIC LAMP EFFECT
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+
+#. 5.6/extension.js:80
+msgid "ERROR"
+msgstr ""
+
+#. 5.6/extension.js:80
+msgid "was NOT enabled"
+msgstr ""
+
+#. 5.6/extension.js:81
+msgid "The existing extension"
+msgstr ""
+
+#. 5.6/extension.js:81
+msgid "conflicts with this extension."
+msgstr ""
