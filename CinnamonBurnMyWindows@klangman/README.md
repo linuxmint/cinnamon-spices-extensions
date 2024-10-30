@@ -35,6 +35,7 @@ The window shadows are not part of the animation and therefore they suddenly app
 - Doom
 - Energize A
 - Energize B
+- Focus
 - Glide
 - Glitch
 - Hexagon

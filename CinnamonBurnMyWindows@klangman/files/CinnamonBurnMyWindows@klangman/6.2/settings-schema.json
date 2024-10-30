@@ -43,6 +43,7 @@
                 "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time",
                 "energize-a-scale", "energize-a-color", "energize-a-animation-time",
                 "energize-b-scale", "energize-b-color", "energize-b-animation-time",
+                "focus-blur-amount", "focus-blur-quality", "focus-animation-time",
                 "glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time",
                 "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time",
                 "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time",
@@ -58,7 +59,7 @@
     "random-section" : {
       "type" : "section",
       "title" : "Effects included in the randomized sets:",
-      "keys" : ["random-title", "apparition-random-include", "doom-random-include", "energize-a-random-include", "energize-b-random-include", "glide-random-include", "glitch-random-include", "hexagon-random-include", "incinerate-random-include", "pixelate-random-include", "pixel-wheel-random-include", "pixel-wipe-random-include", "portal-random-include", "tv-effect-random-include", "tv-glitch-random-include", "wisps-random-include"]
+      "keys" : ["random-title", "apparition-random-include", "doom-random-include", "energize-a-random-include", "energize-b-random-include", "focus-random-include", "glide-random-include", "glitch-random-include", "hexagon-random-include", "incinerate-random-include", "pixelate-random-include", "pixel-wheel-random-include", "pixel-wipe-random-include", "portal-random-include", "tv-effect-random-include", "tv-glitch-random-include", "wisps-random-include"]
     }
   },
 
@@ -72,6 +73,7 @@
             "Doom": 2,
             "Energize A": 3,
             "Energize B": 4,
+            "Focus": 21,
             "Glide": 6,
             "Glitch": 7,
             "Hexagon": 8,
@@ -92,6 +94,7 @@
             "Doom": 2,
             "Energize A": 3,
             "Energize B": 4,
+            "Focus": 21,
             "Glide": 6,
             "Glitch": 7,
             "Hexagon": 8,
@@ -159,6 +162,14 @@
     "description" : "Energize B",
     "open" : "energize-b-random-include-open",
     "close" : "energize-b-random-include-close"
+  },
+  "focus-random-include": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "TwoCheckButtonsWidget",
+    "description" : "Focus",
+    "open" : "focus-random-include-open",
+    "close" : "focus-random-include-close"
   },
   "glide-random-include": {
     "type" : "custom",
@@ -253,6 +264,7 @@
   "doom-random-include-open" :        { "type": "generic", "default": true },
   "energize-a-random-include-open" :  { "type": "generic", "default": true },
   "energize-b-random-include-open" :  { "type": "generic", "default": true },
+  "focus-random-include-open" :       { "type": "generic", "default": true },
   "glide-random-include-open" :       { "type": "generic", "default": true },
   "glitch-random-include-open" :      { "type": "generic", "default": true },
   "hexagon-random-include-open" :     { "type": "generic", "default": true },
@@ -269,6 +281,7 @@
   "doom-random-include-close" :        { "type": "generic", "default": true },
   "energize-a-random-include-close" :  { "type": "generic", "default": true },
   "energize-b-random-include-close" :  { "type": "generic", "default": true },
+  "focus-random-include-close" :       { "type": "generic", "default": true },
   "glide-random-include-close" :       { "type": "generic", "default": true },
   "glitch-random-include-close" :      { "type": "generic", "default": true },
   "hexagon-random-include-close" :     { "type": "generic", "default": true },
@@ -289,6 +302,7 @@
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
+      "Focus": 21,
       "Glide": 6,
       "Glitch": 7,
       "Hexagon": 8,
@@ -312,6 +326,7 @@
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
+      "Focus": 21,
       "Glide": 6,
       "Glitch": 7,
       "Hexagon": 8,
@@ -337,6 +352,7 @@
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
+      "Focus": 21,
       "Glide": 6,
       "Glitch": 7,
       "Hexagon": 8,
@@ -496,6 +512,37 @@
      "step" : 10,
      "dependency" : "effect-selector=4",
      "default": 1000
+  },
+
+  "focus-blur-amount": {
+     "type": "scale",
+     "description" : "Blur Amount",
+     "min" : 0,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "effect-selector=21",
+     "default": 50
+  },
+
+  "focus-blur-quality": {
+     "type": "scale",
+     "description" : "Blur Quality",
+     "min" : 1,
+     "max" : 10,
+     "step" : 1,
+     "dependency" : "effect-selector=21",
+     "tooltip": "The Quality of the Blur (Setting this too high may increase GPU load and affect performance)",
+     "default": 3
+  },
+
+  "focus-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=21",
+     "default": 500
   },
 
   "glide-scale": {

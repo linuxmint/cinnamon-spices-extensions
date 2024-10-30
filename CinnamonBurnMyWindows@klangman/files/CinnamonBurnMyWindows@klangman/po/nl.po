@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-17 22:20-0400\n"
+"POT-Creation-Date: 2024-10-29 21:27-0400\n"
 "PO-Revision-Date: 2024-09-11 11:19+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -16,23 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.2/extension.js:207 6.2/extension.js:436
+#. 6.2/extension.js:212 6.2/extension.js:443
 msgid "Error"
 msgstr "Fout"
 
-#. 6.2/extension.js:207
+#. 6.2/extension.js:212
 msgid "was NOT enabled"
 msgstr "was NIET ingeschakeld"
 
-#. 6.2/extension.js:208
+#. 6.2/extension.js:213
 msgid "The existing extension"
 msgstr "De bestaande extensie"
 
-#. 6.2/extension.js:208
+#. 6.2/extension.js:213
 msgid "conflicts with this extension."
 msgstr "conflicteert met deze extensie."
 
-#. 6.2/extension.js:437
+#. 6.2/extension.js:444
 msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"
@@ -100,6 +100,14 @@ msgstr "Koude Bries"
 #. 6.2/effects/Fire.js:208
 msgid "Santa is Coming"
 msgstr "Kerstman komt eraan"
+
+#. 6.2->settings-schema.json->focus-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2/effects/Focus.js:91
+msgid "Focus"
+msgstr ""
 
 #. 6.2->settings-schema.json->glide-random-include->description
 #. 6.2->settings-schema.json->effect-selector->options
@@ -332,6 +340,7 @@ msgstr "Willekeurigheid"
 #. 6.2->settings-schema.json->doom-animation-time->description
 #. 6.2->settings-schema.json->energize-a-animation-time->description
 #. 6.2->settings-schema.json->energize-b-animation-time->description
+#. 6.2->settings-schema.json->focus-animation-time->description
 #. 6.2->settings-schema.json->glide-animation-time->description
 #. 6.2->settings-schema.json->glitch-animation-time->description
 #. 6.2->settings-schema.json->hexagon-animation-time->description
@@ -381,6 +390,20 @@ msgstr "Schaal"
 #. 6.2->settings-schema.json->tv-glitch-color->description
 msgid "Color"
 msgstr "Kleur"
+
+#. 6.2->settings-schema.json->focus-blur-amount->description
+msgid "Blur Amount"
+msgstr ""
+
+#. 6.2->settings-schema.json->focus-blur-quality->description
+msgid "Blur Quality"
+msgstr ""
+
+#. 6.2->settings-schema.json->focus-blur-quality->tooltip
+msgid ""
+"The Quality of the Blur (Setting this too high may increase GPU load and "
+"affect performance)"
+msgstr ""
 
 #. 6.2->settings-schema.json->glide-squish->description
 msgid "Squish"
