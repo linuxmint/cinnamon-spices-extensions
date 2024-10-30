@@ -22,6 +22,7 @@ const Doom = require('./effects/Doom.js');
 const EnergizeA = require('./effects/EnergizeA.js');
 const EnergizeB = require('./effects/EnergizeB.js');
 const Fire = require('./effects/Fire.js');
+const Focus = require('./effects/Focus.js');
 const Glide = require('./effects/Glide.js');
 const Glitch = require('./effects/Glitch.js');
 const Hexagon = require('./effects/Hexagon.js');
@@ -58,6 +59,7 @@ const Effect = {
   EnergizeA: 3,
   EnergizeB: 4,
   Fire: 5,
+  Focus: 21,
   Glide: 6,
   Glitch: 7,
   Hexagon: 8,
@@ -108,7 +110,9 @@ class BurnMyWindows {
    // This function could be called after the extension is enabled, which could be done
    // from GNOME Tweaks, when you log in or when the screen is unlocked.
    enable() {
-      // New effects must be registered here and in prefs.js.
+      // Effects in this array must be ordered by effect number as defined by the setting-schema.json.
+      // New effects will be added in alphabetical order in the UI list, but the effect number, and
+      // therefore the order in this array, might not be alphabetical.
       this._ALL_EFFECTS = [
          new Apparition.Effect(),
          new BrokenGlass.Effect(),
@@ -131,6 +135,7 @@ class BurnMyWindows {
          new TVEffect.Effect(),
          new TVGlitch.Effect(),
          new Wisps.Effect(),
+         new Focus.Effect(),
       ];
 
       // Store a reference to the settings object.
@@ -275,6 +280,8 @@ class BurnMyWindows {
          effectOptions.push(Effect.EnergizeB);
       //if (this._settings.getValue("file-random-include" + append))
       //   effectOptions.push(Effect.Fire);
+      if (this._settings.getValue("focus-random-include" + append))
+         effectOptions.push(Effect.Focus);
       if (this._settings.getValue("glide-random-include" + append))
          effectOptions.push(Effect.Glide);
       if (this._settings.getValue("glitch-random-include" + append))
