@@ -108,7 +108,7 @@ msgstr "Papá Noel ya viene"
 #. 6.2->settings-schema.json->close-window-effect->options
 #. 6.2/effects/Focus.js:91
 msgid "Focus"
-msgstr ""
+msgstr "Enfoque"
 
 #. 6.2->settings-schema.json->glide-random-include->description
 #. 6.2->settings-schema.json->effect-selector->options
@@ -394,17 +394,19 @@ msgstr "Color"
 
 #. 6.2->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
-msgstr ""
+msgstr "Cantidad de desenfoque"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
-msgstr ""
+msgstr "Calidad de desenfoque"
 
 #. 6.2->settings-schema.json->focus-blur-quality->tooltip
 msgid ""
 "The Quality of the Blur (Setting this too high may increase GPU load and "
 "affect performance)"
 msgstr ""
+"La calidad del desenfoque (si se ajusta demasiado alto, puede aumentar la "
+"carga de la GPU y afectar al rendimiento)."
 
 #. 6.2->settings-schema.json->glide-squish->description
 msgid "Squish"
