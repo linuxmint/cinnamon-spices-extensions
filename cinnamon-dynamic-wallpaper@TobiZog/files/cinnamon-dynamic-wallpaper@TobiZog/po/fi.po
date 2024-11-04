@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-08-08 19:35+0200\n"
-"PO-Revision-Date: 2024-07-25 18:37+0300\n"
+"PO-Revision-Date: 2024-11-04 13:33+0200\n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -28,11 +28,11 @@ msgstr "Tarkista asetukset valitse dynaaminen taustakuva"
 
 #: 5.4/extension.js:85
 msgid "imagemagick is not installed"
-msgstr ""
+msgstr "imagemagick ei ole asennettuna"
 
 #: 5.4/extension.js:86
 msgid "Please install the package manually for the full range of functions"
-msgstr ""
+msgstr "Asenna paketti käsin niin saat kaikki toiminnot käyttöön"
 
 #: 5.4/extension.js:125
 msgid "Error!"
@@ -43,7 +43,7 @@ msgid ""
 "Cinnamon Dynamic Wallpaper got an error while running the loop script. "
 "Please create an issue on GitHub."
 msgstr ""
-"Cinnamon Dynamic Wallpaper sai virheen suoritettaessa silmukan komentoa. Tee "
+"Cinnamon Dynamic Wallpaper huomasi virheen silmukan komennossa. Tee "
 "ongelmasta virheilmoitus GitHub:ssa."
 
 #: 5.4/extension.js:151
@@ -58,8 +58,8 @@ msgstr "Cinnamon Dynamic Wallpaper"
 msgid ""
 "Cinnamon extension for dynamic desktop backgrounds based on time and location"
 msgstr ""
-"Cinnamon dynaamisten tastakuvien laajennus, joka muuttaa kuvaa aikaan ja "
-"paikkaan perustuen"
+"Cinnamon dynaaminentastakuva laajennus, joka vaihtaa taustakuvaa ajan ja "
+"paikan perusteella"
 
 #: 5.4/res/preferences.glade:135
 msgid "Image Source"
@@ -72,7 +72,7 @@ msgstr "Kuvasarja"
 #: 5.4/res/preferences.glade:208
 msgid ""
 "Please install 'imagemagick' manually and reopen this configuration window"
-msgstr ""
+msgstr "Asenna \"imagemagick\" ensin ja avaa tämä asetusikkuna uudelleen"
 
 #: 5.4/res/preferences.glade:237
 msgid "HEIC file"
@@ -128,7 +128,7 @@ msgstr "Sijaintilaskelma"
 
 #: 5.4/res/preferences.glade:1168
 msgid "Interval time to refresh location via network (min)"
-msgstr "Aikaväli sijainnin päivittämiseen verkon kautta (min)"
+msgstr "Sijainnin päivitys verkon kautta (min)"
 
 #: 5.4/res/preferences.glade:1213
 msgid "Location provider"
