@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-11 23:37-0400\n"
+"POT-Creation-Date: 2024-11-07 23:19-0500\n"
 "PO-Revision-Date: 2024-07-25 17:47+0300\n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
@@ -28,6 +28,14 @@ msgid ""
 "Adjust the background dimming for the overview (window selection screen)"
 msgstr ""
 
+#. settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr ""
+
 #. settings-schema.json->opacity->description
-msgid "Overview (window selection screen) background dimming percentage"
+msgid "Dim Background (percentage)"
+msgstr ""
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
 msgstr ""
