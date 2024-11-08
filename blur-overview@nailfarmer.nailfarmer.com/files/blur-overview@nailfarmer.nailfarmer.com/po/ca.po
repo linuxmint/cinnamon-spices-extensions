@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-11 23:37-0400\n"
+"POT-Creation-Date: 2024-11-07 23:19-0500\n"
 "PO-Revision-Date: 2024-09-14 03:03+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -27,11 +27,20 @@ msgstr "Desenfocar la vista general de les finestres obertes"
 msgid ""
 "Adjust the background dimming for the overview (window selection screen)"
 msgstr ""
-"Ajusteu el nivell d'atenuació per a la vista general (pantalla de "
-"selecció de finestres)"
+"Ajusteu el nivell d'atenuació per a la vista general (pantalla de selecció "
+"de finestres)"
 
-#. settings-schema.json->opacity->description
-msgid "Overview (window selection screen) background dimming percentage"
+#. settings-schema.json->header->description
+#, fuzzy
+msgid "Blur Overview (window selection screen) settings"
 msgstr ""
 "Percentatge d'atenuació de la vista general (pantalla de selecció de "
 "finestres)"
+
+#. settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr ""
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr ""
