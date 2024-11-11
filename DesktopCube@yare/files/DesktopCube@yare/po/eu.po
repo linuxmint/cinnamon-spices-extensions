@@ -26,108 +26,42 @@ msgstr "Mahaigaineko kuboa"
 msgid "Compiz Cube-like animation for workspace switching"
 msgstr "Compiz Cube-ren antzeko animazioa, lanerako areetatik mugitzerakoan"
 
-#. 2.0->settings-schema.json->header1->description
-#. 5.4->settings-schema.json->header1->description
+#. settings-schema.json->header1->description
 msgid "General"
 msgstr "Jenerala"
 
-#. 2.0->settings-schema.json->animationTime->description
-#. 5.4->settings-schema.json->animationTime->description
+#. settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Animazioaren iraupena"
 
-#. 2.0->settings-schema.json->pullaway->description
-#. 5.4->settings-schema.json->pullaway->description
+#. settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Pullaway proportzioa pantailatik"
 
-#. 2.0->settings-schema.json->header2->description
-#. 5.4->settings-schema.json->header2->description
+#. settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Efektua"
 
-#. 2.0->settings-schema.json->scaleEffect->description
-#. 5.4->settings-schema.json->newScaleEffect->description
+#. settings-schema.json->scaleEffect->description
 msgid "Scale effect"
 msgstr "Handitze-efektua"
 
-#. 2.0->settings-schema.json->unscaleEffect->description
+#. settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "Txikitze-efektua"
 
-#. 2.0->settings-schema.json->rotateEffect->description
+#. settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "Biraketa-efektuaren hasiera"
 
-#. 2.0->settings-schema.json->unrotateEffect->description
+#. settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "Biraketa-efektuaren amaiera"
 
-#. 2.0->settings-schema.json->header3->description
-#. 5.4->settings-schema.json->header3->description
+#. settings-schema.json->header3->description
 msgid "System Settings"
 msgstr "Sistemaren Ezarpenak"
 
-#. 2.0->settings-schema.json->workspaces_btn->description
-#. 5.4->settings-schema.json->workspaces_btn->description
+#. settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Ireki Cinnamonen Ezarpenak laneko areak kudeatzeko"
-
-#. 5.4->settings-schema.json->includePanels->description
-msgid "Include Panels"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Back"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Bounce"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Circ"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Cubic"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Elastic"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Expo"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Sine"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Quad"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Quart"
-msgstr ""
-
-#. 5.4->settings-schema.json->newScaleEffect->options
-#. 5.4->settings-schema.json->newRotateEffect->options
-msgid "Quint"
-msgstr ""
-
-#. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
-msgid "Rotate effect"
-msgstr "Biraketa-efektuaren amaiera"
