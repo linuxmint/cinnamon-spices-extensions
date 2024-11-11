@@ -178,10 +178,6 @@ msgstr "Erdiko klik efektua aktibatu"
 msgid "Enable Right Click Effect"
 msgstr "Eskimako klik efektua aktibatu"
 
-#. 5.4->settings-schema.json->colors-section->description
-msgid "Colors"
-msgstr "Koloreak"
-
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
 msgstr "Ezkerreko klik kolorea"
