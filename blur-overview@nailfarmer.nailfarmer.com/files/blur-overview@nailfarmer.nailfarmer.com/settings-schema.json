@@ -1,10 +1,19 @@
 {
+   "header": {
+      "type": "header",
+      "description": "Blur Overview (window selection screen) settings"
+   },
     "opacity" : {
         "type": "scale",
-        "description": "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])",
+        "description": "Dim Background (percentage)",
         "min": 0,
-        "max": 255,
-        "default": 100,
+        "max": 100,
+        "default": 50,
         "step": 1
+    },
+    "blur" : {
+        "type": "switch",
+        "description": "Blur Background",
+        "default": true
     }
 }

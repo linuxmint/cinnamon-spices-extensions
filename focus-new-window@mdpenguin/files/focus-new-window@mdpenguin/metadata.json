@@ -3,7 +3,7 @@
     "name": "Focus New Window",
     "url": "https://codeberg.org/mdpenguin/focus-new-window",
     "description": "A Cinnamon extension that ensures new windows will receive focus",
-    "version": "1.0.0",
-    "cinnamon-version": ["6.0"],
+    "version": "1.0.3",
+    "cinnamon-version": ["5.8", "6.0", "6.2"],
     "author": "mdpenguin"
 }

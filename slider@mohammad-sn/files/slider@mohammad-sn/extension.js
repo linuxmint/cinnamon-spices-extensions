@@ -29,6 +29,24 @@ const ExpoThumbnail = imports.ui.expoThumbnail;
 const Overview = imports.ui.overview;
 const Workspace = imports.ui.workspace;
 const Expo = imports.ui.expo;
+const Config = imports.misc.config;
+const MessageTray = imports.ui.messageTray;
+const Gettext = imports.gettext;
+const GLib = imports.gi.GLib;
+
+const majorVersion = parseInt(Config.PACKAGE_VERSION.split(".")[0]);
+
+const UUID = "slider@mohammad-sn";
+
+Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+
+function _(text) {
+  let locText = Gettext.dgettext(UUID, text);
+  if (locText == text) {
+    locText = window._(text);
+  }
+  return locText;
+}
 
 let newSlider = null;
 let TIME = 0.5;
@@ -72,6 +90,7 @@ function Slider(metadata) {
 
 Slider.prototype = {
     _init: function(metadata) { 
+        this.meta = metadata;
         if (global.window_manager.switchWorkspaceId) this.oid = global.window_manager.switchWorkspaceId;
         else this.oid = this._guessHandlerID();
         
@@ -109,6 +128,16 @@ Slider.prototype = {
     },
     
     enable: function() {
+        if (majorVersion >= 4) {
+            let source = new MessageTray.Source(this.meta.name);
+            let notification = new MessageTray.Notification(source, _("ERROR") + ": " + _("Slider was NOT enabled"),
+               _("This extension is currently incompatible with your version of Cinnamon."),
+               {icon: new St.Icon({icon_name: "dialog-warning", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
+               );
+            Main.messageTray.add(source);
+            source.notify(notification);
+            return;
+        }
         if (this.oid) {
             global.window_manager.disconnect(this.oid);
             this.id = global.window_manager.connect('switch-workspace', Lang.bind(Main.wm, mySwitcher));

@@ -1,0 +1,77 @@
+{
+  "header1" : {
+    "type" : "header",
+    "description" : "General"
+  },
+  "animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0.10,
+    "max" : 1.0,
+    "default": 0.15,
+    "step" : 0.05
+  },
+  "pullaway" : {
+    "type" : "scale",
+    "description" : "Pullaway proportion from screen",
+    "min" : 0.00,
+    "max" : 0.3333,
+    "default" : 0.05,
+    "step" : 0.0001
+  },
+  "includePanels" : {
+    "type" : "checkbox",
+    "description" : "Include Panels",
+    "default" : false
+  },
+  "sep1": {
+    "type": "separator"
+  },
+  "header2" : {
+    "type" : "header",
+    "description" : "Effects"
+  },
+  "newScaleEffect": {
+    "type": "combobox",
+    "description": "Scale effect",
+    "default": "Quad",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    }
+  },
+  "newRotateEffect": {
+    "type": "combobox",
+    "description": "Rotate effect",
+    "default": "Quad",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    }
+  },
+  "header3": {
+    "type" : "header",
+    "description" : "System Settings"
+  },
+  "workspaces_btn": {
+    "type": "button",
+    "description": "Open Cinnamon Settings to manage Workspaces",
+    "callback": "on_btn_cs_workspaces_pressed"
+  }
+}

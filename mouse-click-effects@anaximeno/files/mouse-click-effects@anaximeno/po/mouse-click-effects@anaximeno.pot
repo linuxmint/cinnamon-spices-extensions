@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
+# MOUSE CLICK EFFECTS
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# anaximeno, 2024
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Project-Id-Version: mouse-click-effects@anaximeno 1.0.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-05-26 10:55-0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,8 +25,22 @@ msgstr ""
 msgid "Display mouse click effects on Cinnamon."
 msgstr ""
 
-#. 5.4->settings-schema.json->general-section->description
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
 msgid "General"
+msgstr ""
+
+#. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
+msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
 msgstr ""
 
 #. 5.4->settings-schema.json->icon-mode->description
@@ -105,6 +119,14 @@ msgstr ""
 msgid "Gear"
 msgstr ""
 
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr ""
+
 #. 5.4->settings-schema.json->size->units
 msgid "px"
 msgstr ""
@@ -118,27 +140,45 @@ msgid "Click Animation Mode"
 msgstr ""
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Blink"
 msgstr ""
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Bounce"
 msgstr ""
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Retract"
 msgstr ""
 
 #. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
 msgid "Expand"
 msgstr ""
 
 #. 5.4->settings-schema.json->animation-time->units
+#. 5.4->settings-schema.json->idle-animation-delay->units
+#. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr ""
 
 #. 5.4->settings-schema.json->animation-time->description
 msgid "Animation Time"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+msgid "Idle Mouse Animation Mode"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+msgid "Idle Mouse Animation Delay"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+msgid "Idle Mouse Animation Period"
 msgstr ""
 
 #. 5.4->settings-schema.json->general-opacity->description
@@ -149,24 +189,49 @@ msgstr ""
 msgid "Deactivate In Fullscreen"
 msgstr ""
 
-#. 5.4->settings-schema.json->events-section->description
-msgid "Events"
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
 msgstr ""
 
 #. 5.4->settings-schema.json->left-click-effect-enabled->description
-msgid "Enable Left Click Effect"
+msgid "Animate Left Click"
 msgstr ""
 
 #. 5.4->settings-schema.json->middle-click-effect-enabled->description
-msgid "Enable Middle Click Effect"
+msgid "Animate Middle Click"
 msgstr ""
 
 #. 5.4->settings-schema.json->right-click-effect-enabled->description
-msgid "Enable Right Click Effect"
+msgid "Animate Right Click"
 msgstr ""
 
-#. 5.4->settings-schema.json->colors-section->description
-msgid "Colors"
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+msgid "Animate Pause"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
 msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
@@ -179,4 +244,12 @@ msgstr ""
 
 #. 5.4->settings-schema.json->right-click-color->description
 msgid "Right Click Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
 msgstr ""

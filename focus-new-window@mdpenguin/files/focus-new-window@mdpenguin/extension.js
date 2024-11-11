@@ -17,8 +17,16 @@ class SettingsHandler {
 
 class AttentionHandler {
   init() {
-    global.display.disconnect(Main.windowAttentionHandler._windowDemandsAttentionId);
-    global.display.disconnect(Main.windowAttentionHandler._windowMarkedUrgentId);
+    if (Main.windowAttentionHandler._windowDemandsAttentionId) {
+      global.display.disconnect(Main.windowAttentionHandler._windowDemandsAttentionId);
+      Main.windowAttentionHandler._windowDemandsAttentionId = null;
+    }
+
+    if (Main.windowAttentionHandler._windowMarkedUrgentId) {
+      global.display.disconnect(Main.windowAttentionHandler._windowMarkedUrgentId);
+      Main.windowAttentionHandler._windowMarkedUrgentId = null;
+    }
+
     oldHandler = Main.windowAttentionHandler;
 
     this._windowDemandsAttentionId = global.display.connect('window-demands-attention', this._onWindowDemandsAttention.bind(this));
@@ -38,11 +46,11 @@ class AttentionHandler {
 
     if (wmclass) {
       if (!settings.raiseSome) {
-        Main.activateWindow(window);
+        window.activate(global.get_current_time());
         return;
       }
       else if (programList.includes(wmclass.toLowerCase()) && window.has_focus() === false) {
-        Main.activateWindow(window);
+        window.activate(global.get_current_time());
         return;
       }
       else {

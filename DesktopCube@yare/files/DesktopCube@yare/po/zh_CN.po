@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-06 09:45-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,132 +23,108 @@ msgstr "桌面立方体"
 msgid "Compiz Cube-like animation for workspace switching"
 msgstr "用于工作区切换的Compiz立方体状的动画"
 
-#. settings-schema.json->header1->description
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
 msgid "General"
 msgstr "常规"
 
-#. settings-schema.json->animationTime->description
+#. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "动画时长"
 
-#. settings-schema.json->pullaway->description
+#. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "从屏幕拉出比例"
 
-#. settings-schema.json->header2->description
+#. 2.0->settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "特效"
 
-#. settings-schema.json->scaleEffect->description
+#. 2.0->settings-schema.json->scaleEffect->description
+#. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale effect"
 msgstr "缩放特效"
 
-#. settings-schema.json->unscaleEffect->description
+#. 2.0->settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "取消缩放特效"
 
-#. settings-schema.json->rotateEffect->description
+#. 2.0->settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "开头旋转特效"
 
-#. settings-schema.json->unrotateEffect->description
+#. 2.0->settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "结尾旋转特效"
 
-#. settings-schema.json->header3->description
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
 msgid "System Settings"
 msgstr "系统设置"
 
-#. settings-schema.json->workspaces_btn->description
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "打开Cinnamon设置来管理工作区"
 
-#~ msgid "easeInOutBounce"
-#~ msgstr "easeInOutBounce"
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
 
-#~ msgid "easeInOutExpo"
-#~ msgstr "easeInOutExpo"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr ""
 
-#~ msgid "easeOutCubic"
-#~ msgstr "easeOutCubic"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr ""
 
-#~ msgid "easeInOutCubic"
-#~ msgstr "easeInOutCubic"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr ""
 
-#~ msgid "easeInQuart"
-#~ msgstr "easeInQuart"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr ""
 
-#~ msgid "easeInBounce"
-#~ msgstr "easeInBounce"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr ""
 
-#~ msgid "easeOutQuad"
-#~ msgstr "easeOutQuad"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr ""
 
-#~ msgid "easeInQuint"
-#~ msgstr "easeInQuint"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr ""
 
-#~ msgid "easeOutElastic"
-#~ msgstr "easeOutElastic"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr ""
 
-#~ msgid "easeOutQuint"
-#~ msgstr "easeOutQuint"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr ""
 
-#~ msgid "easeInOutCirc"
-#~ msgstr "easeInOutCirc"
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr ""
 
-#~ msgid "easeInOutElastic"
-#~ msgstr "easeInOutElastic"
-
-#~ msgid "easeInExpo"
-#~ msgstr "easeInExpo"
-
-#~ msgid "easeInOutSine"
-#~ msgstr "easeInOutSine"
-
-#~ msgid "easeInOutQuad"
-#~ msgstr "easeInOutQuad"
-
-#~ msgid "easeInQuad"
-#~ msgstr "easeInQuad"
-
-#~ msgid "easeOutSine"
-#~ msgstr "easeOutSine"
-
-#~ msgid "easeOutExpo"
-#~ msgstr "easeOutExpo"
-
-#~ msgid "easeOutBounce"
-#~ msgstr "easeOutBounce"
-
-#~ msgid "easeOutBack"
-#~ msgstr "easeOutBack"
-
-#~ msgid "easeInOutQuint"
-#~ msgstr "easeInOutQuint"
-
-#~ msgid "easeOutCirc"
-#~ msgstr "easeOutCirc"
-
-#~ msgid "easeInCirc"
-#~ msgstr "easeInCirc"
-
-#~ msgid "easeInElastic"
-#~ msgstr "easeInElastic"
-
-#~ msgid "easeInBack"
-#~ msgstr "easeInBack"
-
-#~ msgid "easeInSine"
-#~ msgstr "easeInSine"
-
-#~ msgid "easeOutQuart"
-#~ msgstr "easeOutQuart"
-
-#~ msgid "easeInOutQuart"
-#~ msgstr "easeInOutQuart"
-
-#~ msgid "easeInCubic"
-#~ msgstr "easeInCubic"
-
-#~ msgid "easeInOutBack"
-#~ msgstr "easeInOutBack"
+#. 5.4->settings-schema.json->newRotateEffect->description
+#, fuzzy
+msgid "Rotate effect"
+msgstr "结尾旋转特效"

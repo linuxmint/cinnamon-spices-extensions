@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -25,6 +26,11 @@ msgstr "随心地取消窗口装饰。"
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
 msgstr "Cinnamon最大化设置"
+
+#. settings-schema.json->onlyManual->description
+#, fuzzy
+msgid "Undecorating only with hotkey"
+msgstr "平铺时取消装饰"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
@@ -53,7 +59,8 @@ msgid ""
 msgstr "忽略应用程序（使用“,”分隔应用程序，允许部分匹配和正则表达式）"
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
+#, fuzzy
+msgid "Use Auto Undecorating for apps"
 msgstr "使用自动取消装饰"
 
 #. settings-schema.json->autoUndecorAppsList->description
@@ -69,11 +76,3 @@ msgstr "将焦点放在 QT 应用程序上（实验性）"
 #. settings-schema.json->enableLogs->description
 msgid "Logging (see Melange - Log)"
 msgstr "日志（见Melange日志）"
-
-#~ msgid "Use Blacklist"
-#~ msgstr "使用黑名单"
-
-#~ msgid ""
-#~ "Blacklist Apps (\"Recheck Blacklist Active\", please use \",\" for "
-#~ "seperate apps)"
-#~ msgstr "黑名单应用程序（“重新检查激活的黑名单”，请使用\",\"分隔应用程序）"

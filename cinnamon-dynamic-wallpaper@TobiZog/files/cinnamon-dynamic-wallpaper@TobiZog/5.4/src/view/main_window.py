@@ -171,6 +171,13 @@ class Main_Window:
 		self.add_items_to_combo_box(self.cb_image_set, self.view_model.image_sets)
 		self.image_source = self.image_source  # This triggers the @image_source.setter
 
+		## Disable the HEIF-Converter option, if the plugin isn't installed
+		if not self.view_model.check_for_imagemagick():
+			self.tb_heic_file.set_sensitive(False)
+		else:
+			## Remove the Tooltip
+			self.tb_heic_file.set_tooltip_text("")
+
 		# Page 2: Location & Times
 		self.add_items_to_combo_box(self.cb_network_provider, self.view_model.network_location_provider)
 		self.period_source = self.period_source	# This triggers the  @period_source.setter

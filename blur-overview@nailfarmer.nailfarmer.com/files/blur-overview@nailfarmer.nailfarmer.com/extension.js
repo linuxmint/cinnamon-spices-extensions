@@ -19,6 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Author: Jen Bowen aka nailfarmer
+// Fixes and changes 2024 by Kevin Langman
 
 const Clutter = imports.gi.Clutter;
 const Tweener = imports.ui.tweener;
@@ -27,18 +28,32 @@ const Settings = imports.ui.settings;
 
 const ANIMATION_TIME = 0.25;
 
-let originalAnimate, fx;
+let originalAnimate;
 
 let settings;
 
 function _animateVisible() {
     if (this.visible || this.animationInProgress)
         return;
-    
+
     this._oldAnimateVisible();
 
-    Tweener.addTween(this._background,
-                     { opacity: settings.opacity,
+    let children = this._background.get_children();
+    // Get the overview's background image and add the BlurEffect to it if configured to do so
+    if (settings.blur) {
+       let desktopBackground = children[0];
+       let fx =  new Clutter.BlurEffect();
+       desktopBackground.add_effect_with_name( "blur", fx );
+    }
+    // Get the overview's backgroundShade child and set it's color to see-through solid black
+    let backgroundShade = children[1];
+    let [ret,color] = Clutter.Color.from_string( "rgba(0,0,0,1)" );
+    backgroundShade.set_opacity(0);
+    backgroundShade.set_background_color(color);
+
+    // Dim the backgroundShade by making the black color less see-through by the configured percentage
+    Tweener.addTween( backgroundShade,
+                     { opacity: Math.round(settings.opacity*2.55),
                        time: ANIMATION_TIME,
                        transition: 'easeNone'
                      });
@@ -52,6 +67,7 @@ BlurSettings.prototype = {
     _init: function(uuid) {
         this.settings = new Settings.ExtensionSettings(this, uuid);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'opacity', 'opacity', null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'blur', 'blur', null);
     }
 };
 

@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
 "PO-Revision-Date: 2024-05-30 9:50+1\n"
 "Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
@@ -28,6 +29,11 @@ msgstr "Leihoak des-apaindu nahi duzun bezala."
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
 msgstr "Cinnamon Maximusen Ezarpenak"
+
+#. settings-schema.json->onlyManual->description
+#, fuzzy
+msgid "Undecorating only with hotkey"
+msgstr "Des-apaindu sareta"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"

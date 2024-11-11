@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 22:20+0000\n"
+"PO-Revision-Date: 2024-05-25 22:29+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr "水印"
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr "在桌面上放置一个水印。"
+
+#. 3.8->settings-schema.json->section0->description
+#. 3.2->settings-schema.json->section0->description
+msgid "Appearance"
+msgstr "外观"
+
+#. 3.8->settings-schema.json->icon->description
+#. 3.2->settings-schema.json->icon->description
+msgid "Watermark logo"
+msgstr "水印LOGO"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Cinnamon"
+msgstr "Cinnamon"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Antergos"
+msgstr "Antergos"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Arch"
+msgstr "Arch"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Debian"
+msgstr "Debian"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux"
+msgstr "Linux"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux Mint"
+msgstr "Linux Mint"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro"
+msgstr "Manjaro"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro (with text)"
+msgstr "Manjaro (带文本)"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Custom..."
+msgstr "自定义..."
+
+#. 3.8->settings-schema.json->custom-icon->description
+#. 3.2->settings-schema.json->custom-icon->description
+msgid "Custom icon or image"
+msgstr "自定义图标或者图片"
+
+#. 3.8->settings-schema.json->alpha->description
+#. 3.2->settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr "透明度(%)"
+
+#. 3.8->settings-schema.json->invert->description
+#. 3.2->settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr "反转颜色"
+
+#. 3.8->settings-schema.json->invert->tooltip
+#. 3.2->settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr "这完全反转了图像颜色。在浅色背景上很有用。"
+
+#. 3.8->settings-schema.json->section1->description
+#. 3.2->settings-schema.json->section1->description
+msgid "Position"
+msgstr "位置"
+
+#. 3.8->settings-schema.json->position-x->description
+#. 3.2->settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "水平对齐"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Left"
+msgstr "左侧"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Center"
+msgstr "居中"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Right"
+msgstr "右侧"
+
+#. 3.8->settings-schema.json->margin-x->description
+#. 3.2->settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "水平边距"
+
+#. 3.8->settings-schema.json->margin-x->units
+#. 3.8->settings-schema.json->margin-y->units
+#. 3.8->settings-schema.json->size->units
+#. 3.2->settings-schema.json->margin-x->units
+#. 3.2->settings-schema.json->margin-y->units
+#. 3.2->settings-schema.json->size->units
+msgid "px"
+msgstr "像素"
+
+#. 3.8->settings-schema.json->position-y->description
+#. 3.2->settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "垂直对齐"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Top"
+msgstr "顶部"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "底部"
+
+#. 3.8->settings-schema.json->margin-y->description
+#. 3.2->settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "垂直边距"
+
+#. 3.8->settings-schema.json->section2->description
+#. 3.8->settings-schema.json->size->description
+#. 3.2->settings-schema.json->section2->description
+#. 3.2->settings-schema.json->size->description
+msgid "Size"
+msgstr "大小"
+
+#. 3.8->settings-schema.json->use-custom-size->description
+#. 3.2->settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr "使用自定义大小"

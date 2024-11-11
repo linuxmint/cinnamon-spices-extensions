@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
 "PO-Revision-Date: 2022-12-05 23:56+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -28,6 +29,11 @@ msgstr "好みに合わせてウィンドウの装飾を解除。"
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
 msgstr "Cinnamon-Maximus設定"
+
+#. settings-schema.json->onlyManual->description
+#, fuzzy
+msgid "Undecorating only with hotkey"
+msgstr "タイル状態時に装飾解除"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
@@ -58,7 +64,8 @@ msgstr ""
 "無視するアプリ（\",\"でアプリを区切る。部分一致・正規表現が利用可能です）"
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
+#, fuzzy
+msgid "Use Auto Undecorating for apps"
 msgstr "自動装飾解除を使用"
 
 #. settings-schema.json->autoUndecorAppsList->description
@@ -66,8 +73,8 @@ msgid ""
 "Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
 "regexp allowed)"
 msgstr ""
-"自動で装飾解除するアプリ（\",\"でアプリを区切る。部分一致・正規表現が利用可"
-"能です）"
+"自動で装飾解除するアプリ（\",\"でアプリを区切る。部分一致・正規表現が利用可能"
+"です）"
 
 #. settings-schema.json->keepQTAppsFocus->description
 msgid "Keep the focus for QT Apps (Experimental)"

@@ -1,0 +1,9 @@
+{
+  "uuid": "CinnamonMagicLamp@klangman",
+  "name": "Magic Lamp Effect",
+  "version": "1.0.3",
+  "description": "A minimize/unminimize magic lamp effect based on hermes83's Gnome extension",
+  "url": "https://github.com/klangman/CinnamonMagicLamp",
+  "website": "https://github.com/klangman/CinnamonMagicLamp",
+  "cinnamon-version": ["5.6"]
+}

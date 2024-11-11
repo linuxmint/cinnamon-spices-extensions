@@ -1,13 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# DESKTOP CUBE
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# yare, 2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-06 09:45-0400\n"
 "PO-Revision-Date: 2024-05-30 10:18+0200\n"
 "Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"

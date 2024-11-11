@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:30+0000\n"
-"PO-Revision-Date: 2024-04-16 13:43+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2024-07-23 20:16+0200\n"
 "Last-Translator: qadzek\n"
-"Language-Team: qadzek\n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,6 +28,10 @@ msgstr "Vensters ondecoreren zoals jij dat wilt."
 #. settings-schema.json->head->description
 msgid "Cinnamon-Maximus Settings"
 msgstr "Cinnamon-Maximus Instellingen"
+
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
+msgstr "Ondecoreren enkel met sneltoets"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
@@ -61,8 +66,8 @@ msgstr ""
 "overeenkomst en reguliere expressies toegestaan)"
 
 #. settings-schema.json->useAutoUndecorList->description
-msgid "Use Auto Undecorating"
-msgstr "Gebruik automatisch ondecoreren"
+msgid "Use Auto Undecorating for apps"
+msgstr "Gebruik automatisch ondecoreren voor apps"
 
 #. settings-schema.json->autoUndecorAppsList->description
 msgid ""

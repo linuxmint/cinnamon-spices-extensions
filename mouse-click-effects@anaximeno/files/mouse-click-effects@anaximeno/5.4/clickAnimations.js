@@ -21,7 +21,7 @@ const Main = imports.ui.main;
 const Clutter = imports.gi.Clutter;
 const St = imports.gi.St;
 
-class ClickAnimationMode {
+var ClickAnimationMode = class ClickAnimationMode {
     constructor(mode) {
         this.mode = mode;
     }
@@ -36,7 +36,7 @@ class ClickAnimationMode {
     }
 }
 
-class ExpansionClickAnimationMode extends ClickAnimationMode {
+var ExpansionClickAnimationMode = class ExpansionClickAnimationMode extends ClickAnimationMode {
     animateClick(icon, options) {
         const actor_scale = options.icon_size > 20 ? 1.15 : 3;
         const [mouse_x, mouse_y, mask] = global.get_pointer();
@@ -73,7 +73,7 @@ class ExpansionClickAnimationMode extends ClickAnimationMode {
     }
 }
 
-class RetractionClickAnimationMode extends ClickAnimationMode {
+var RetractionClickAnimationMode = class RetractionClickAnimationMode extends ClickAnimationMode {
     animateClick(icon, options) {
         const [mouse_x, mouse_y, mask] = global.get_pointer();
 
@@ -107,7 +107,7 @@ class RetractionClickAnimationMode extends ClickAnimationMode {
     }
 }
 
-class BounceBackClickAnimationMode extends ClickAnimationMode {
+var BounceBackClickAnimationMode = class BounceBackClickAnimationMode extends ClickAnimationMode {
     animateClick(icon, options) {
         const [mouse_x, mouse_y, mask] = global.get_pointer();
 
@@ -154,7 +154,7 @@ class BounceBackClickAnimationMode extends ClickAnimationMode {
     }
 }
 
-class BlinkClickAnimationMode extends ClickAnimationMode {
+var BlinkClickAnimationMode = class BlinkClickAnimationMode extends ClickAnimationMode {
     animateClick(icon, options = {}) {
         const [mouse_x, mouse_y, mask] = global.get_pointer();
 
@@ -184,7 +184,14 @@ class BlinkClickAnimationMode extends ClickAnimationMode {
     }
 }
 
-class ClickAnimationFactory {
+var ClickAnimationModes = Object.freeze({
+    BOUNCE: "bounce",
+    RETRACT: "retract",
+    EXPAND: "expand",
+    BLINK: "blink",
+});
+
+var ClickAnimationFactory = class ClickAnimationFactory {
     /**
      * Returns an click animation mode depending on the given name
      * @param {String} mode Click Animation mode name to create
@@ -192,13 +199,13 @@ class ClickAnimationFactory {
      */
     static createForMode(mode) {
         switch (mode) {
-            case "bounce":
+            case ClickAnimationModes.BOUNCE:
                 return new BounceBackClickAnimationMode(mode);
-            case "retract":
+            case ClickAnimationModes.RETRACT:
                 return new RetractionClickAnimationMode(mode);
-            case "expand":
+            case ClickAnimationModes.EXPAND:
                 return new ExpansionClickAnimationMode(mode);
-            case "blink":
+            case ClickAnimationModes.BLINK:
             default:
                 return new BlinkClickAnimationMode(mode);
         }

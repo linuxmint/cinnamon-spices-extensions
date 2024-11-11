@@ -1,0 +1,291 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-08 19:35+0200\n"
+"PO-Revision-Date: 2024-11-04 13:33+0200\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr "Tervetuloa Cinnamon Dynamic Wallpaper"
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr "Tarkista asetukset valitse dynaaminen taustakuva"
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr "imagemagick ei ole asennettuna"
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr "Asenna paketti käsin niin saat kaikki toiminnot käyttöön"
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr "Virhe!"
+
+#: 5.4/extension.js:126
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr ""
+"Cinnamon Dynamic Wallpaper huomasi virheen silmukan komennossa. Tee "
+"ongelmasta virheilmoitus GitHub:ssa."
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr "Avaa asetukset"
+
+#. metadata.json->name
+msgid "Cinnamon Dynamic Wallpaper"
+msgstr "Cinnamon Dynamic Wallpaper"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr ""
+"Cinnamon dynaaminentastakuva laajennus, joka vaihtaa taustakuvaa ajan ja "
+"paikan perusteella"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "Kuvan lähde"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "Kuvasarja"
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr "Asenna \"imagemagick\" ensin ja avaa tämä asetusikkuna uudelleen"
+
+#: 5.4/res/preferences.glade:237
+msgid "HEIC file"
+msgstr "HEIC tiedosto"
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr "Lähdekansio"
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr "Valitse kuvasarja"
+
+#: 5.4/res/preferences.glade:380
+msgid "Select a heic file to import"
+msgstr "Valitse tuotava HEIC tiedosto"
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr "Valitse lähdekansio"
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr "Avaa tiedoston valintaikkuna"
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr "Kuvan valinta"
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr "Kuvan asetukset"
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr "Jakson laskelma"
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr "Käytä verkon sijaintia"
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr "Mukautettu sijainti"
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr "Mukautetut aikajaksot"
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr "Sijaintilaskelma"
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr "Sijainnin päivitys verkon kautta (min)"
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr "Sijainnin palveluntarjoaja"
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr "Leveysaste"
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr "Pituusaste"
+
+#: 5.4/res/preferences.glade:1358
+msgid "Period 1"
+msgstr "Jakso 1"
+
+#: 5.4/res/preferences.glade:1372
+msgid "Period 2"
+msgstr "Jakso 2"
+
+#: 5.4/res/preferences.glade:1386
+msgid "Period 3"
+msgstr "Jakso 3"
+
+#: 5.4/res/preferences.glade:1400
+msgid "Period 4"
+msgstr "Jakso 4"
+
+#: 5.4/res/preferences.glade:1414
+msgid "Period 5"
+msgstr "Jakso 5"
+
+#: 5.4/res/preferences.glade:1915
+msgid "Period 6"
+msgstr "Jakso 6"
+
+#: 5.4/res/preferences.glade:1929
+msgid "Period 7"
+msgstr "Jakso 7"
+
+#: 5.4/res/preferences.glade:1943
+msgid "Period 9"
+msgstr "Jakso 9"
+
+#: 5.4/res/preferences.glade:1957
+msgid "Period 8"
+msgstr "Jakso 8"
+
+#: 5.4/res/preferences.glade:1971
+msgid "Period 10"
+msgstr "Jakso 10"
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr "Sijainti ja aika"
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr "Skaalaus"
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr "Kuvan näkökulma"
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr "Kirjautumisnäyttö"
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr "Aseta kirjautumisnäytön taustakuvaksi"
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr "Dynaaminen taustan väri"
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr "Käytä dynaamista taustaväriä"
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr "Toiminta"
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr "Tietoja projektista"
+
+#: 5.4/res/preferences.glade:2763
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"Tämä laajennus laskee vuorokauden jaksot sijainnin tai käyttäjän valinnan "
+"perusteella ja vaihtaa Cinnamon taustakuvaa sen mukaan. Laajennus tarjoaa "
+"kuvalähteiksi joukon valittuja taustakuvia, käyttäjän tuomia kuvia tai "
+"valitun kansion kuvia."
+
+#: 5.4/res/preferences.glade:2782
+msgid "Developed by TobiZog"
+msgstr "Kehittäjä: TobiZog"
+
+#: 5.4/res/preferences.glade:2799
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr ""
+"Jos tarvitset lisätietoja tai haluat antaa arvion laajennuksesta, voit "
+"vierailla Cinnamon Spices verkkosivulla."
+
+#: 5.4/res/preferences.glade:2810
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr "Cinnamon Dynamic Wallpaper - Cinnamon Spices verkkosivu"
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr "Lähdekoodi"
+
+#: 5.4/res/preferences.glade:2864
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr ""
+"Projekti on avointa lähdekoodia. Voit katsoa tämän laajennuksen koko "
+"lähdekoodin GitHub:ssa."
+
+#: 5.4/res/preferences.glade:2875
+msgid "Source Code on GitHub"
+msgstr "Lähdekoodi Github:ssa"
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr "Ongelmat ja parannusehdotukset"
+
+#: 5.4/res/preferences.glade:2929
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
+msgstr ""
+"Löydätkö ongelman? Vai haluatko uuden ominaisuuden? Siirry GitHub:iin ja luo "
+"\"new issue\"."
+
+#: 5.4/res/preferences.glade:2940
+msgid "Create a new issue on GitHub"
+msgstr "Luo ilmoituksesi GitHub:ssa"
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr "Tietoja"
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr "Toteuta ja sulje tämä ikkuna"
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr "Toteuta sulkematta tätä ikkunaa"

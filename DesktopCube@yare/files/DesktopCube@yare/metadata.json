@@ -13,8 +13,10 @@
         "4.0",
         "4.2",
         "4.4",
-        "4.6"
+        "4.6",
+        "5.4"
     ],
+    "version": "1.1.0",
     "uuid": "DesktopCube@yare",
     "name": "Desktop Cube",
     "description": "Compiz Cube-like animation for workspace switching",

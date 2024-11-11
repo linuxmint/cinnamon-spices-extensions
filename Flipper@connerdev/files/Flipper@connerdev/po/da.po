@@ -1,143 +1,178 @@
-# SOME DESCRIPTIVE TITLE.
+# FLIPPER
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# ConnerHansen, 2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-10 16:55+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-21 13:16-0400\n"
 "PO-Revision-Date: 2017-06-10 17:39+0200\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: da\n"
 
-#. Flipper@connerdev->metadata.json->description
-msgid "Fancy workspace switching extension"
-msgstr "Smart udvidelse til skift af arbejdsområde"
-
-#. Flipper@connerdev->metadata.json->name
+#. metadata.json->name
 msgid "Flipper"
 msgstr "Flipper"
 
-#. Flipper@connerdev->settings-schema.json->animationTime->description
-msgid "Animation duration"
-msgstr "Animationens varighed"
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "Smart udvidelse til skift af arbejdsområde"
 
-#. Flipper@connerdev->settings-schema.json->transitionEffect->description
-msgid "Transition Effect"
-msgstr "Overgangseffekt"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Cube"
-msgstr "Terning"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Deck"
-msgstr "Kortbunke"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Flip"
-msgstr "Vendning"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Rolodex"
-msgstr "Rolodex"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Slide"
-msgstr "Glidende"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Pop"
-msgstr "Pop"
-
-#. Flipper@connerdev->settings-schema.json->transitionEffect->options
-msgid "Stack"
-msgstr "Stabel"
-
-#. Flipper@connerdev->settings-schema.json->fade->description
-msgid "Fade Transition"
-msgstr "Udtoning af overgang"
-
-#. Flipper@connerdev->settings-schema.json->header2->description
-msgid "Effects"
-msgstr "Effekter"
-
-#. Flipper@connerdev->settings-schema.json->includeBackground->description
-msgid "Include Background"
-msgstr "Inkludér baggrund"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->description
-msgid "Transition Easing"
-msgstr "Modificering af overgang"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Cubic-Elastic"
-msgstr "Kubisk-elastisk"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Elastic"
-msgstr "Elastisk"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Cubic"
-msgstr "Kubisk"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Quint"
-msgstr "Femte"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Back"
-msgstr "Tilbage"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Bounce"
-msgstr "Hoppe"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Cubic-Back"
-msgstr "Kubisk-tilbage"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Circ"
-msgstr "Cirkulær"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Expo"
-msgstr "Expo"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Quad"
-msgstr "Kvadratisk"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Sine"
-msgstr "Sinus"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Quart"
-msgstr "Fjerde"
-
-#. Flipper@connerdev->settings-schema.json->rotateEffect->options
-msgid "Cubic-Bounce"
-msgstr "Kubisk-hoppe"
-
-#. Flipper@connerdev->settings-schema.json->header1->description
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
 msgid "General"
 msgstr "Generelt"
 
-#. Flipper@connerdev->settings-schema.json->pullaway->description
+#. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Animationens varighed"
+
+#. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
 msgid "Zoom Amount"
 msgstr "Zoomniveau"
 
-#. Flipper@connerdev->settings-schema.json->dim_factor->description
+#. 2.0->settings-schema.json->fade->description
+#. 5.4->settings-schema.json->fade->description
+msgid "Fade Transition"
+msgstr "Udtoning af overgang"
+
+#. 2.0->settings-schema.json->dim_factor->description
+#. 5.4->settings-schema.json->dim_factor->description
 msgid "Background Dim Amount"
 msgstr "Dæmpning af baggrund"
+
+#. 2.0->settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Effekter"
+
+#. 2.0->settings-schema.json->transitionEffect->description
+#. 5.4->settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "Overgangseffekt"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr "Terning"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr "Kortbunke"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr "Vendning"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr "Pop"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr "Rolodex"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr "Glidende"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr "Stabel"
+
+#. 2.0->settings-schema.json->rotateEffect->description
+#. 5.4->settings-schema.json->rotateEffect->description
+msgid "Transition Easing"
+msgstr "Modificering af overgang"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr "Tilbage"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr "Hoppe"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr "Cirkulær"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr "Kubisk"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr "Kubisk-tilbage"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr "Kubisk-hoppe"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr "Kubisk-elastisk"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr "Elastisk"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr "Expo"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr "Sinus"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr "Kvadratisk"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr "Fjerde"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr "Femte"
+
+#. 2.0->settings-schema.json->includeBackground->description
+#. 5.4->settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "Inkludér baggrund"
+
+#. 5.4->settings-schema.json->includePanels->description
+#, fuzzy
+msgid "Include Panels"
+msgstr "Inkludér baggrund"

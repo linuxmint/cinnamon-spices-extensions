@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-maximus@fmete 0.4.7\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2024-11-04 19:48+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fi\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr "Poista ikkunoiden koristelu haluamallasi tavalla."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Cinnamon-Maximus asetukset"
+
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
+msgstr "Koristelun poisto vain pikanäppäimellä"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr "Käytä pikanäppäintä nykyisen ikkunan koristeluun vaihtamiseksi"
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr "Pikanäppäin (kokeellinen)"
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Poista koristelu laatoista"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Poista kaikki koristelut (kokeellinen, sulje ja avaa ikkunat uudelleen)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr "Käytä ohituslistaa"
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr "Ohitetut sovellukset (käytä pilkkua \",\" sovellusten nimien välissä)"
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating for apps"
+msgstr "Käytä koristelun autom. poistoa sovelluksissa"
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+"Sovellusten autom. koristelun poisto (käytä pilkkua \",\" sovellusten "
+"nimien välissä)"
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr "Pidä kohdistus QT-sovelluksiin (kokeellinen)"
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr "Kirjaaminen (katso Melange loki)"

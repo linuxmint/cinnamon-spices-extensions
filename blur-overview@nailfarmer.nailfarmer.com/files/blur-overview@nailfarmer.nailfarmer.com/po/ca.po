@@ -1,0 +1,46 @@
+# BLUR OVERVIEW
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# nailfarmer, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-07 23:19-0500\n"
+"PO-Revision-Date: 2024-09-14 03:03+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Desenfocar la vista general de les finestres obertes"
+
+#. metadata.json->description
+msgid ""
+"Adjust the background dimming for the overview (window selection screen)"
+msgstr ""
+"Ajusteu el nivell d'atenuació per a la vista general (pantalla de selecció "
+"de finestres)"
+
+#. settings-schema.json->header->description
+#, fuzzy
+msgid "Blur Overview (window selection screen) settings"
+msgstr ""
+"Percentatge d'atenuació de la vista general (pantalla de selecció de "
+"finestres)"
+
+#. settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr ""
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr ""

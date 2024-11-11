@@ -1,0 +1,86 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2024-05-25 22:20+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "半径"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "顶部淡入淡出"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "X偏移量"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Y偏移量"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "透明度"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "类名称"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "状态"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "导入"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "导出"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "从..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "选择保存配置的位置"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "选择要加载的配置"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "用户阴影"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "自定义Cinnamon窗口的阴影"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "预设阴影"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "默认"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "没有阴影"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "自定义"

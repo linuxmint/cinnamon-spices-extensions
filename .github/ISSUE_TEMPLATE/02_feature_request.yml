@@ -10,23 +10,28 @@ body:
     default: 0
     label: Extension name and maintainer
     options:
+    - ''
     - adjacent-windows@klangman @klangman
     - back-to-monitor@nathan818fr @nathan818fr
     - blur-overview@nailfarmer.nailfarmer.com
     - cinnamon-dynamic-wallpaper@TobiZog @TobiZog
     - cinnamon-maximus@fmete
+    - CinnamonBurnMyWindows@klangman @klangman
+    - CinnamonMagicLamp@klangman @klangman
     - compiz-windows-effect@hermes83.github.com @hermes83
     - desktop-icons-per-workspace@cardsurf @cardsurf
     - desktop-scroller@ccadeptic23
-    - DesktopCube@yare
+    - DesktopCube@yare @klangman
     - extra-panel-settings@gr3q @gr3q
-    - Flipper@connerdev
+    - Flipper@connerdev @klangman
     - focus-new-window@mdpenguin @mdpenguin
     - gTile@shuairan
     - horizontal-osd@berk-karaal @berk-karaal
     - mnemonic-5-4-window-menu@mtwebster @mtwebster
+    - mouse-click-effects@anaximeno @anaximeno
     - mouse-shake-zoom@rcalixte @rcalixte
     - opacify@anish.org
+    - opacity-slider@neatnit @NeatNit
     - rnbdsh@negateWindow @rnbdsh
     - SanitizeXsessionErrors@claudiux @claudiux
     - ShadowParameters@mikhail-ekzi @mikhail-ekzi

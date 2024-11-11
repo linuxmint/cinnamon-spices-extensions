@@ -75,12 +75,24 @@ CinnamonDynamicWallpaperExtension.prototype = {
 			this.showNotification(_("Welcome to Cinnamon Dynamic Wallpaper"), 
 				_("Check the preferences to choose a dynamic wallpaper"), true)
 
+			// Check for necessary software
+			if (!find_program_in_path('convert')) {
+				// Run on Ubuntu/Debian based distros with APT package manager
+				if(GLib.find_program_in_path("apturl")) {
+					Util.spawnCommandLine("apturl apt://imagemagick");
+				} else {
+					// Notification on other distros
+					this.showNotification(_("imagemagick is not installed"), 
+					_("Please install the package manually for the full range of functions"), true)
+				}
+			}
+
 			// Hide the notification on system restart
 			this.settings.setValue("first_start", false)
 			this.settings.setValue("source_folder", DIRECTORY["path"] + "/res/images/included_image_sets/lakeside/")
 		}
 
-		// Start the main loop, checks in fixed time periods the 
+		// Start the main loop, checks in fixed time periods
 		this._loop()
 	},
 
@@ -170,11 +182,6 @@ function init(extensionMeta) {
  * @returns The extension object
  */
 function enable() {
-	// Check for necessary software
-	if (!find_program_in_path('heif-convert')) {
-		Util.spawnCommandLine("apturl apt://libheif-examples");
-	}
-
 	return extension;
 }
 

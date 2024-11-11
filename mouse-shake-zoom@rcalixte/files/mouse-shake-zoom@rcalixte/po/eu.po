@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
+# MOUSE SHAKE ZOOM EXTENSION
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# rcalixte, 2022
 #
 #, fuzzy
 msgid ""

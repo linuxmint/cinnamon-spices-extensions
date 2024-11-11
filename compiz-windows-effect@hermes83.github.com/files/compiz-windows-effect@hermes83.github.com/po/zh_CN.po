@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-30 18:25+0000\n"
+"PO-Revision-Date: 2024-05-24 09:10+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Compiz窗口效果"
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr "Compiz果冻窗口效果得益于compiz插件引擎"
+
+#. settings-schema.json->friction->description
+msgid "Friction"
+msgstr "摩擦"
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "弹性系数"
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup Factor"
+msgstr "加速系数"
+
+#. settings-schema.json->mass->description
+msgid "Mass"
+msgstr "质量"
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles"
+msgstr "X轴平铺"
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles"
+msgstr "Y轴平铺"
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "最大化和取消最大化系数"

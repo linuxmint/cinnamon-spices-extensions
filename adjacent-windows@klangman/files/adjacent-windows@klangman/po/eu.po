@@ -148,3 +148,7 @@ msgstr "Onartu leiho ikonotutakoak zabaltzea"
 #. 5.4->settings-schema.json->include-other-monitors->description
 msgid "Allow switching to windows on other monitors"
 msgstr "Onartu monitore desberdinetako leihoetara joatea"
+
+#. 5.4->settings-schema.json->warp-cursor-pointer->description
+msgid "Warp the cursor to the center of the focused window"
+msgstr ""

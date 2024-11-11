@@ -204,7 +204,8 @@
                   <object class="GtkToggleButton" id="tb_heic_file">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">Please install 'imagemagick' manually and reopen this configuration window</property>
                     <signal name="clicked" handler="on_toggle_button_heic_file_clicked" swapped="no"/>
                     <child>
                       <object class="GtkBox">

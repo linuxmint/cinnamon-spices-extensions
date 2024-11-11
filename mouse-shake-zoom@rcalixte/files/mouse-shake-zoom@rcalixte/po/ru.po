@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2024-02-05 15:53-0500\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-06 22:34-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: blogdron\n"
 "Language-Team: \n"
@@ -18,7 +19,8 @@ msgstr ""
 
 #. metadata.json->description
 msgid "Quickly shake the mouse pointer back and forth to zoom the cursor"
-msgstr "Быстро передвигайте (трясите) курсор мыши вперёд и назад для его увеличения"
+msgstr ""
+"Быстро передвигайте (трясите) курсор мыши вперёд и назад для его увеличения"
 
 #. metadata.json->name
 msgid "Mouse Shake Zoom Extension"
@@ -46,7 +48,9 @@ msgstr "Длина жеста мышью"
 
 #. 5.6->settings-schema.json->shake-threshold->tooltip
 msgid "How much the pointer needs to move to activate"
-msgstr "На какое расстояние нужно передвинуть курсор мыши для активации его увеличения"
+msgstr ""
+"На какое расстояние нужно передвинуть курсор мыши для активации его "
+"увеличения"
 
 #. 5.6->settings-schema.json->shake-threshold->units
 msgid "px"

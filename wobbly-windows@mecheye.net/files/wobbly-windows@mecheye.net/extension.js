@@ -1,6 +1,7 @@
 const Lang = imports.lang;
 const Clutter = imports.gi.Clutter;
 const Settings = imports.ui.settings;
+const Meta = imports.gi.Meta;
 
 const GRID_WIDTH = 4;
 const GRID_HEIGHT = 4;
@@ -296,6 +297,7 @@ const WobblyWindowEffect = new Lang.Class({
         let actor = this.get_actor();
         if(actor)
             actor.remove_effect(this);
+        Meta.remove_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
     },
 
     _newFrame: function() {
@@ -386,7 +388,7 @@ let _beginGrabOpId;
 let _endGrabOpId;
 
 function onBeginGrabOp(display, screen, window, op) {
-    let actor = window.get_compositor_private();
+    let actor = (window) ? window.get_compositor_private() : null;
     if (actor) {
         let effect;
         effect = actor.get_effect('wobbly');
@@ -394,6 +396,10 @@ function onBeginGrabOp(display, screen, window, op) {
             effect =
                 new WobblyWindowEffect({
                     x_tiles: settings.gridRes, y_tiles: settings.gridRes });
+            // This is a workaround for issue of leaving window artifacts when animating,
+            // we enable it only during the animation sequence so users don't need to set
+            // it using export CLUTTER_PAINT...
+            Meta.add_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
             actor.add_effect_with_name('wobbly', effect);
         }
 
@@ -403,7 +409,7 @@ function onBeginGrabOp(display, screen, window, op) {
 }
 
 function onEndGrabOp(display, screen, window, op) {
-    let actor = window.get_compositor_private();
+    let actor = (window) ? window.get_compositor_private() : null;
     if(actor) {
         let effect = actor.get_effect('wobbly');
         if (effect)

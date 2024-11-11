@@ -17,18 +17,19 @@
  */
 'use strict';
 
+const Main = imports.ui.main;
 const Settings = imports.ui.settings;
+const DND = imports.ui.dnd;
 const Gettext = imports.gettext;
-const SignalManager = imports.misc.signalManager;
+const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
-const { ClickAnimationFactory } = require("./clickAnimations.js");
-const { Debouncer } = require("./helpers.js");
+const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
+const { Debouncer, logInfo, logError } = require("./helpers.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS, IDLE_TIME } = require("./constants.js");
+const { IdleMonitor } = require("./idleMonitor.js");
+const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 
-
-const LOCALE_DIR = GLib.get_home_dir() + "/.local/share/locale";
-const UUID = "mouse-click-effects@anaximeno";
-
-Gettext.bindtextdomain(UUID, LOCALE_DIR);
+Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
 
 
 function _(text) {
@@ -36,43 +37,55 @@ function _(text) {
 	return localized != text ? localized : window._(text);
 }
 
-const ClickType = {
-    LEFT: "left_click",
-    MIDDLE: "middle_click",
-    RIGHT: "right_click",
-};
+
+const ClickType = Object.freeze({
+	LEFT: "left_click",
+	MIDDLE: "middle_click",
+	RIGHT: "right_click",
+	PAUSE_ON: "pause_on",
+	PAUSE_OFF: "pause_off",
+	MOUSE_IDLE: "mouse_idle",
+	MOUSE_MOV: "mouse_mov",
+});
 
 
 class MouseClickEffects {
 	constructor(metadata) {
 		this.metadata = metadata;
 		this.app_icons_dir = `${metadata.path}/../icons`;
+		this.pause_icon_path = `${this.app_icons_dir}/extra/pause.svg`;
 		this.settings = this._setup_settings(this.metadata.uuid);
 		this.data_dir = this._init_data_dir(this.metadata.uuid);
-
-		Atspi.init();
-
-		this.listener = Atspi.EventListener.new(this._click_event.bind(this));
-		this.signals = new SignalManager.SignalManager(null);
-		this.signals.connect(global.screen, 'in-fullscreen-changed', this.on_fullscreen_changed, this);
-
-		this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
-		this.display_click = (new Debouncer()).debounce(this._animate_click.bind(this), 2);
 		this.colored_icon_store = {};
-		this.update_colored_icons();
+
+		this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
+
+		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
+		this.idleMonitor = null;
+
+		this.mouse_movement_tracker = null;
+
+		this._enable_on_drag_end = false;
+		DND.addDragMonitor(this);
+
+		this.enabled = false;
+		this.set_active(false);
 	}
 
-    _init_data_dir(uuid) {
+	_init_data_dir(uuid) {
 		let data_dir = `${GLib.get_user_cache_dir()}/${uuid}`;
 
-		if (GLib.mkdir_with_parents(`${data_dir}/icons`, 0o777) < 0)
+		if (GLib.mkdir_with_parents(`${data_dir}/icons`, 0o777) < 0) {
+			logError(`Failed to create cache dir at ${data_dir}`);
 			throw new Error(`Failed to create cache dir at ${data_dir}`);
+		}
 
 		return data_dir;
 	}
 
 	_setup_settings(uuid) {
-		let settings = new Settings.AppletSettings(this, uuid);
+		let settings = new Settings.ExtensionSettings(this, uuid);
+
 		let bindings = [
 			{
 				key: "animation-time",
@@ -82,12 +95,45 @@ class MouseClickEffects {
 			{
 				key: "icon-mode",
 				value: "icon_mode",
-				cb: this.update_colored_icons,
+				cb: () => {
+					this.update_colored_icons();
+					if (this.mouse_movement_tracker) {
+						let icon = this.get_click_icon(
+							this.icon_mode,
+							ClickType.MOUSE_MOV,
+							this.mouse_movement_color,
+						);
+						this.mouse_movement_tracker.update({
+							icon: icon,
+						});
+					}
+				},
 			},
 			{
 				key: "size",
 				value: "size",
-				cb: null,
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							size: this.size,
+						});
+					}
+				},
+			},
+			{
+				key: "idle-animation-mode",
+				value: "idle_animation_mode",
+				cb: null, // TODO
+			},
+			{
+				key: "idle-animation-period",
+				value: "idle_animation_period",
+				cb: null, // TODO
+			},
+			{
+				key: "idle-animation-delay",
+				value: "idle_animation_delay",
+				cb: null, // TODO
 			},
 			{
 				key: "left-click-effect-enabled",
@@ -105,6 +151,32 @@ class MouseClickEffects {
 				cb: null,
 			},
 			{
+				key: "pause-animation-effects-enabled",
+				value: "pause_animation_effects_enabled",
+				cb: null,
+			},
+			{
+				key: "mouse-movement-tracker-enabled",
+				value: "mouse_movement_tracker_enabled",
+				cb: () => this.set_active(this.enabled),
+			},
+			{
+				key: "mouse-movement-tracker-persist-on-stopped-enabled",
+				value: "mouse_movement_tracker_persist_on_stopped_enabled",
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							persist_on_stopped: this.mouse_movement_tracker_persist_on_stopped_enabled,
+						});
+					}
+				},
+			},
+			{
+				key: "mouse-idle-watcher-enabled",
+				value: "mouse_idle_watcher_enabled",
+				cb: null, // TODO
+			},
+			{
 				key: "left-click-color",
 				value: "left_click_color",
 				cb: this.update_colored_icons,
@@ -120,132 +192,253 @@ class MouseClickEffects {
 				cb: this.update_colored_icons,
 			},
 			{
+				key: "mouse-movement-color",
+				value: "mouse_movement_color",
+				cb: () => {
+					this.update_colored_icons();
+					if (this.mouse_movement_tracker) {
+						let icon = this.get_click_icon(
+							this.icon_mode,
+							ClickType.MOUSE_MOV,
+							this.mouse_movement_color,
+						);
+						this.mouse_movement_tracker.update({
+							icon: icon,
+						});
+					}
+				},
+			},
+			{
+				key: "mouse-idle-watcher-color",
+				value: "mouse_idle_watcher_color",
+				cb: this.update_colored_icons,
+			},
+			{
 				key: "general-opacity",
 				value: "general_opacity",
-				cb: null,
+				cb: () => {
+					if (this.mouse_movement_tracker) {
+						this.mouse_movement_tracker.update({
+							opacity: this.general_opacity,
+						});
+					}
+				},
 			},
 			{
 				key: "animation-mode",
 				value: "animation_mode",
-				cb: this.on_animation_mode_changed,
+				cb: this.update_animation_mode,
+			},
+			{
+				key: "pause-effects-binding",
+				value: "pause_effects_binding",
+				cb: this.set_keybindings,
 			},
 			{
 				key: "deactivate-in-fullscreen",
 				value: "deactivate_in_fullscreen",
 				cb: null,
 			},
-		]
+		];
 
-        bindings.forEach(
-			b => settings.bind(
-                b.key, b.value, b.cb ? (...args) => b.cb.call(this, ...args) : null,
-            )
-		);
+		bindings.forEach(b => settings.bind(
+			b.key,
+			b.value,
+			b.cb ? (...args) => b.cb.call(this, ...args) : null,
+		));
 
-        return settings;
+		return settings;
 	}
 
+	dragMotion = ((event) => {
+		if (this.enabled) {
+			this._enable_on_drag_end = true;
+			this.set_active(false);
+		}
+	}).bind(this);
+
+	dragDrop = ((event) => {
+		if (this._enable_on_drag_end) {
+			this._enable_on_drag_end = false;
+			this.set_active(true);
+		}
+	}).bind(this);
+
 	enable() {
+		this.update_colored_icons();
+		this.set_keybindings();
 		this.set_active(true);
+	}
+
+	unset_keybindings() {
+		Main.keybindingManager.removeHotKey(PAUSE_EFFECTS_KEY);
+	}
+
+	set_keybindings() {
+		this.unset_keybindings();
+		Main.keybindingManager.addHotKey(
+			PAUSE_EFFECTS_KEY,
+			this.pause_effects_binding,
+			this.on_pause_toggled.bind(this),
+		);
+	}
+
+	on_pause_toggled() {
+		this.set_active(!this.enabled);
+		if (this.pause_animation_effects_enabled) {
+			this.display_click(this.enabled ? ClickType.PAUSE_OFF : ClickType.PAUSE_ON);
+		}
+	}
+
+	update_animation_mode() {
+		if (!this.clickAnimator || this.clickAnimator.mode != this.animation_mode) {
+			this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
+		}
+	}
+
+	get_click_icon(mode, click_type, color) {
+		let name = `${mode}_${click_type}_${color}.svg`;
+		let path = `${this.data_dir}/icons/${name}`;
+		return this.get_icon_cached(path);
+	}
+
+	get_icon_cached(path) {
+		if (this.colored_icon_store[path])
+			return this.colored_icon_store[path];
+
+		if (GLib.file_test(path, GLib.FileTest.IS_REGULAR)) {
+			this.colored_icon_store[path] = Gio.icon_new_for_string(path);
+			return this.colored_icon_store[path];
+		}
+
+		return null;
 	}
 
 	disable() {
 		this.destroy();
 	}
 
-	on_effects_enabled_updated(event) {
-		thib.on_property_updated(event);
-	}
-
-	on_fullscreen_changed() {
-        if (this.deactivate_in_fullscreen) {
-            const monitor = global.screen.get_current_monitor();
-            const monitorIsInFullscreen = global.screen.get_monitor_in_fullscreen(monitor);
-			this.set_active(!monitorIsInFullscreen);
-		}
-	}
-
-	on_animation_mode_changed() {
-		this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
-	}
-
-    get_colored_icon(mode, click_type, color) {
-        const name = `${mode}_${click_type}_${color}`;
-
-		if (this.colored_icon_store[name]) {
-			return this.colored_icon_store[name];
-		}
-
-		const path = `${this.data_dir}/icons/${name}.svg`;
-
-        if (GLib.file_test(path, GLib.FileTest.IS_REGULAR)) {
-			this.colored_icon_store[name] = Gio.icon_new_for_string(path);
-			return this.colored_icon_store[name];
-		}
-
-        return null;
-	}
-
 	destroy() {
-		this.signals.disconnectAllSignals();
+		DND.removeDragMonitor(this);
 		this.set_active(false);
+		this.unset_keybindings();
 		this.settings.finalize();
+		this.colored_icon_store = null;
+		this.display_click = null;
+		this.clickAnimator = null;
 	}
 
 	update_colored_icons() {
-		this._create_colored_icon_data(ClickType.LEFT, this.left_click_color);
-		this._create_colored_icon_data(ClickType.MIDDLE, this.middle_click_color);
-		this._create_colored_icon_data(ClickType.RIGHT, this.right_click_color);
+		this.create_icon_data(ClickType.LEFT, this.left_click_color);
+		this.create_icon_data(ClickType.MIDDLE, this.middle_click_color);
+		this.create_icon_data(ClickType.RIGHT, this.right_click_color);
+		this.create_icon_data(ClickType.MOUSE_IDLE, this.mouse_idle_watcher_color);
+		this.create_icon_data(ClickType.MOUSE_MOV, this.mouse_movement_color);
 	}
 
 	set_active(enabled) {
+		this.enabled = enabled;
+
 		this.listener.deregister('mouse');
+		if (this.mouse_movement_tracker) {
+			this.mouse_movement_tracker.finalize();
+			this.mouse_movement_tracker = null;
+		}
+		if (this.idleMonitor) {
+			this.idleMonitor.finalize();
+			this.idleMonitor = null;
+		}
 
 		if (enabled) {
-			this.update_colored_icons();
 			this.listener.register('mouse');
+
+			if (this.mouse_movement_tracker_enabled) {
+				const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
+				this.mouse_movement_tracker = new MouseMovementTracker(
+					this, icon, this.size, this.general_opacity,
+					this.mouse_movement_tracker_persist_on_stopped_enabled,
+				);
+				this.mouse_movement_tracker.start();
+			}
+
+			// TODO
+			// if (this.mouse_idle_watcher_enabled) {
+			// 	// XXX: only enable according w respective settings
+			// 	this.idleMonitor = new IdleMonitor({
+			// 		idle_delay: IDLE_TIME,
+			// 		on_idle: this.on_idle_handler,
+			// 		on_active: this.on_active_handler,
+			// 		on_finish: this.on_finish_handler,
+			// 	});
+			// 	this.idleMonitor.start();
+			// }
+
+			logInfo("activated");
+		} else {
+			logInfo("deactivated");
 		}
 	}
 
-	_create_colored_icon_data(click_type, color) {
-		if (this.get_colored_icon(this.icon_mode, click_type, color))
-			return;
+	create_icon_data(click_type, color) {
+		if (this.get_click_icon(this.icon_mode, click_type, color))
+			return true;
 
-        let source = Gio.File.new_for_path(`${this.app_icons_dir}/${this.icon_mode}.svg`);
+		let source = Gio.File.new_for_path(`${this.app_icons_dir}/${this.icon_mode}.svg`);
 		let [l_success, contents] = source.load_contents(null);
-		contents = imports.byteArray.toString(contents);
 
-		// Replace to new color
+		contents = ByteArray.toString(contents);
 		contents = contents.replace('fill="#000000"', `fill="${color}"`);
 
-		// Save content to cache dir
-        const name = `${this.icon_mode}_${click_type}_${color}`;
-		let dest = Gio.File.new_for_path(`${this.data_dir}/icons/${name}.svg`);
+		let name = `${this.icon_mode}_${click_type}_${color}.svg`;
+		let path = `${this.data_dir}/icons/${name}`;
+		let dest = Gio.File.new_for_path(path);
 
-		if (!dest.query_exists(null)) {
+		if (!dest.query_exists(null))
 			dest.create(Gio.FileCreateFlags.NONE, null);
-		}
 
 		let [r_success, tag] = dest.replace_contents(contents, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null);
+
+		if (r_success) logInfo(`created colored icon cache for ${name}`);
+
+		return r_success;
 	}
 
-	_animate_click(click_type, color) {
-		let icon = this.get_colored_icon(this.icon_mode, click_type, color);
+	display_click = (new Debouncer()).debounce((...args) => {
+		if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
+			logInfo("Click effects not displayed due to being disabled for fullscreen focused windows");
+			return;
+		}
+		this.animate_click(...args);
+	}, CLICK_DEBOUNCE_MS);
 
-		if (!this._click_animation || this._click_animation.id != this.animation_mode) {
-			this._click_animation = ClickAnimationFactory.createForMode(this.animation_mode);
+	animate_click(click_type, color) {
+		this.update_animation_mode();
+
+		let icon = null;
+		let animator = this.clickAnimator;
+
+		if (click_type === ClickType.PAUSE_ON) {
+			icon = this.get_icon_cached(this.pause_icon_path);
+			animator = ClickAnimationFactory.createForMode(ClickAnimationModes.BLINK);
+		} else if (click_type === ClickType.PAUSE_OFF) {
+			icon = this.get_click_icon(this.icon_mode, ClickType.LEFT, this.left_click_color);
+			animator = ClickAnimationFactory.createForMode(ClickAnimationModes.BLINK);
+		} else if (color != null) {
+			icon = this.get_click_icon(this.icon_mode, click_type, color);
 		}
 
 		if (icon) {
-			this._click_animation.animateClick(icon, {
+			animator.animateClick(icon, {
 				opacity: this.general_opacity,
 				icon_size: this.size,
 				timeout: this.animation_time,
 			});
+		} else {
+			logError(`Couldn't get Click Icon (mode = ${this.icon_mode}, type = ${click_type}, color = ${color})`)
 		}
 	}
 
-	_click_event(event) {
+	on_mouse_click(event) {
 		switch (event.type) {
 			case 'mouse:button:1p':
 				if (this.left_click_effect_enabled)
@@ -267,14 +460,17 @@ class MouseClickEffects {
 let extension = null;
 
 function enable() {
-    extension.enable();
+	extension.enable();
 }
 
 function disable() {
-    extension.disable();
-    extension = null;
+	extension.disable();
+	extension = null;
 }
 
 function init(metadata) {
-    if (!extension) extension = new MouseClickEffects(metadata);
+	if (!extension) {
+		Atspi.init();
+		extension = new MouseClickEffects(metadata);
+	};
 }

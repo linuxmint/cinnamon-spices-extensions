@@ -136,7 +136,13 @@ class Suntimes:
     if min == 60:
       hr += 1
       min = 0
-    
 
-    res = datetime(self.today.year, self.today.month, self.today.day, hr, int(min))
+    hr = self.to_range(hr, 24)
+    
+    try:
+      res = datetime(self.today.year, self.today.month, self.today.day, hr, int(min))
+    except:
+      print("Can not create datetime from %d.%d.%d %d:%d" % (self.today.year, self.today.month, self.today.day, hr, int(min)))
+      return
+    
     return res.replace(tzinfo=timezone.utc).astimezone(tz=None)

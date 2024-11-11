@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 14:54+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-07 23:19-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -19,9 +20,18 @@ msgid "Blur Overview"
 msgstr "概览模糊"
 
 #. metadata.json->description
-msgid "Blur background in overview ([Ctrl]+[Alt]+[Down Arrow])"
-msgstr "显示概览界面时让背景模糊([Ctrl]+[Alt]+[方向下键])"
+msgid ""
+"Adjust the background dimming for the overview (window selection screen)"
+msgstr ""
+
+#. settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr ""
 
 #. settings-schema.json->opacity->description
-msgid "Background opacity in overview ([Ctrl]+[Alt]+[Down Arrow])"
-msgstr "显示概览界面时让背景透明([Ctrl]+[Alt]+[方向下键])"
+msgid "Dim Background (percentage)"
+msgstr ""
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr ""

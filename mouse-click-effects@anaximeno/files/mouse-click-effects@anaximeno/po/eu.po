@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
+# MOUSE CLICK EFFECTS
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# anaximeno, 2024
 #
 #, fuzzy
 msgid ""
@@ -24,9 +24,23 @@ msgstr "Saguaren klik efektuak"
 msgid "Display mouse click effects on Cinnamon."
 msgstr "Erakutsi saguaren klik efektuak Cinnamonen"
 
-#. 5.4->settings-schema.json->general-section->description
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
 msgid "General"
 msgstr "Orokorra"
+
+#. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
+msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
+msgstr "Koloreak"
 
 #. 5.4->settings-schema.json->icon-mode->description
 msgid "Icon Mode"

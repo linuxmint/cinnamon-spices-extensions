@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-06 01:55+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-06 09:45-0400\n"
 "PO-Revision-Date: 2023-12-03 14:51-0500\n"
 "Last-Translator: blogdron\n"
 "Language-Team: \n"
@@ -21,42 +22,108 @@ msgstr "Куб Рабочего Стола (Desktop Cube)"
 msgid "Compiz Cube-like animation for workspace switching"
 msgstr "Переключение рабочих столов с эффектом 3D куба как в Compiz"
 
-#. settings-schema.json->header1->description
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
 msgid "General"
 msgstr "Общие"
 
-#. settings-schema.json->animationTime->description
+#. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Продолжительность анимации"
 
-#. settings-schema.json->pullaway->description
+#. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Пропорции куба относительно экрана"
 
-#. settings-schema.json->header2->description
+#. 2.0->settings-schema.json->header2->description
+#. 5.4->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Эффекты"
 
-#. settings-schema.json->scaleEffect->description
+#. 2.0->settings-schema.json->scaleEffect->description
+#. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale effect"
 msgstr "Эффект отстранения"
 
-#. settings-schema.json->unscaleEffect->description
+#. 2.0->settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "Эффект втягивания"
 
-#. settings-schema.json->rotateEffect->description
+#. 2.0->settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "Начало эффекта вращения"
 
-#. settings-schema.json->unrotateEffect->description
+#. 2.0->settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "Конец эффекта вращения"
 
-#. settings-schema.json->header3->description
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
 msgid "System Settings"
 msgstr "Системные настройки"
 
-#. settings-schema.json->workspaces_btn->description
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Открыть настройки Cinnamon для управления рабочими областями"
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr ""
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+#, fuzzy
+msgid "Rotate effect"
+msgstr "Конец эффекта вращения"

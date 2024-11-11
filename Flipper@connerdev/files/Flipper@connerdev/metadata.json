@@ -17,8 +17,10 @@
         "4.4",
         "4.6",
         "4.8",
-        "5.0"
+        "5.0",
+        "5.4"
     ],
+    "version": "1.0.5",
     "url": "https://github.com/ConnerHansen/Flipper",
     "uuid": "Flipper@connerdev",
     "name": "Flipper",
