@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-11-20 10:20-0500\n"
-"PO-Revision-Date: 2024-08-23 21:44-0400\n"
+"PO-Revision-Date: 2024-11-20 18:29-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -71,13 +71,12 @@ msgstr ""
 "Abrir la configuración de Cinnamon para gestionar los espacios de trabajo"
 
 #. 5.4->settings-schema.json->animationTimeSec->description
-#, fuzzy
 msgid "Animation duration (seconds)"
-msgstr "Duración de la animación"
+msgstr "Duración de la animación (segundos)"
 
 #. 5.4->settings-schema.json->pullawayPercent->description
 msgid "Cube size (percent of screen size)"
-msgstr ""
+msgstr "Tamaño del cubo (porcentaje del tamaño de la pantalla)"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
@@ -85,32 +84,39 @@ msgstr "Incluir paneles"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Cube effect with the Workspace Switcher applet"
-msgstr ""
+msgstr "Utilizar el efecto Cubo con el applet de cambio de espacio de trabajo"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
 msgid ""
 "Override the moveToWorkspace() API so that the Cube effect is used by the "
 "Workspace Switcher Applet when changing the current workspace"
 msgstr ""
+"Anular la API moveToWorkspace() para que el efecto Cubo sea utilizado por el "
+"Applet de cambio de espacio de trabajo al cambiar el espacio de trabajo "
+"actual"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Cube effect when changing focus causes a workspace switch"
 msgstr ""
+"Utilizar el efecto Cubo cuando el cambio de enfoque provoque un cambio de "
+"espacio de trabajo"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
 msgid ""
 "Override the activateWindow() API so that when a window on another workspace "
 "is given the focus, the Cube effect is used to change the current workspace"
 msgstr ""
+"Anular la API activateWindow() para que cuando una ventana en otro espacio "
+"de trabajo reciba el foco, el efecto Cubo se utilice para cambiar el espacio "
+"de trabajo actual"
 
 #. 5.4->settings-schema.json->header2->description
-#, fuzzy
 msgid "Effect Easing"
-msgstr "Efectos"
+msgstr "Suavizado de efectos"
 
 #. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale easing"
-msgstr ""
+msgstr "Suavizar escalado"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
@@ -163,16 +169,15 @@ msgid "Quint"
 msgstr "Quinta"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
 msgid "Rotate easing"
-msgstr "Efecto de rotación"
+msgstr "Suavizar rotación"
 
 #. 5.4->settings-schema.json->easing_btn->description
 msgid "Open easing information website"
-msgstr ""
+msgstr "Abrir sitio web sobre suavizado de efectos"
 
 #. 5.4->settings-schema.json->hotkeys_btn->description
-#, fuzzy
 msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
 msgstr ""
-"Abrir la configuración de Cinnamon para gestionar los espacios de trabajo"
+"Abrir la configuración del teclado de Cinnamon para gestionar las teclas de "
+"acceso rápido del espacio de trabajo"
