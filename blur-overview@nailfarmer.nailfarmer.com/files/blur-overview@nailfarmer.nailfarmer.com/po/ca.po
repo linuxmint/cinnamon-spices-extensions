@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-11-07 23:19-0500\n"
-"PO-Revision-Date: 2024-09-14 03:03+0200\n"
+"PO-Revision-Date: 2024-11-20 03:14+0100\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -31,16 +31,13 @@ msgstr ""
 "de finestres)"
 
 #. settings-schema.json->header->description
-#, fuzzy
 msgid "Blur Overview (window selection screen) settings"
-msgstr ""
-"Percentatge d'atenuació de la vista general (pantalla de selecció de "
-"finestres)"
+msgstr "Ajusts del desenfocament (pantalla de selecció de finestres)"
 
 #. settings-schema.json->opacity->description
 msgid "Dim Background (percentage)"
-msgstr ""
+msgstr "Atenuació del fons (percentatge)"
 
 #. settings-schema.json->blur->description
 msgid "Blur Background"
-msgstr ""
+msgstr "Desenfocament del fons"
