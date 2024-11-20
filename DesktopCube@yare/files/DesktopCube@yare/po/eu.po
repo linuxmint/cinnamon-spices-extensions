@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-06 09:45-0400\n"
+"POT-Creation-Date: 2024-11-20 10:20-0500\n"
 "PO-Revision-Date: 2024-05-30 10:18+0200\n"
 "Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
@@ -26,42 +26,150 @@ msgstr "Mahaigaineko kuboa"
 msgid "Compiz Cube-like animation for workspace switching"
 msgstr "Compiz Cube-ren antzeko animazioa, lanerako areetatik mugitzerakoan"
 
-#. settings-schema.json->header1->description
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
 msgid "General"
 msgstr "Jenerala"
 
-#. settings-schema.json->animationTime->description
+#. 2.0->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Animazioaren iraupena"
 
-#. settings-schema.json->pullaway->description
+#. 2.0->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Pullaway proportzioa pantailatik"
 
-#. settings-schema.json->header2->description
+#. 2.0->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Efektua"
 
-#. settings-schema.json->scaleEffect->description
+#. 2.0->settings-schema.json->scaleEffect->description
 msgid "Scale effect"
 msgstr "Handitze-efektua"
 
-#. settings-schema.json->unscaleEffect->description
+#. 2.0->settings-schema.json->unscaleEffect->description
 msgid "Unscale effect"
 msgstr "Txikitze-efektua"
 
-#. settings-schema.json->rotateEffect->description
+#. 2.0->settings-schema.json->rotateEffect->description
 msgid "Begin rotate effect"
 msgstr "Biraketa-efektuaren hasiera"
 
-#. settings-schema.json->unrotateEffect->description
+#. 2.0->settings-schema.json->unrotateEffect->description
 msgid "End rotate effect"
 msgstr "Biraketa-efektuaren amaiera"
 
-#. settings-schema.json->header3->description
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
 msgid "System Settings"
 msgstr "Sistemaren Ezarpenak"
 
-#. settings-schema.json->workspaces_btn->description
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Ireki Cinnamonen Ezarpenak laneko areak kudeatzeko"
+
+#. 5.4->settings-schema.json->animationTimeSec->description
+#, fuzzy
+msgid "Animation duration (seconds)"
+msgstr "Animazioaren iraupena"
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr ""
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->header2->description
+#, fuzzy
+msgid "Effect Easing"
+msgstr "Efektua"
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr ""
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+msgid "Rotate easing"
+msgstr ""
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr ""
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+#, fuzzy
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
 msgstr "Ireki Cinnamonen Ezarpenak laneko areak kudeatzeko"

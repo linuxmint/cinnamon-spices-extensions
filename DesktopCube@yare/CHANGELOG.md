@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.0
+
+* Added ability to use Cube effect when changing the workspace via the "Workspace Switcher" applet
+* Added ability to use Cube effect when changing the workspace by activating a window on a different workspace
+* Added ability to use Cube effect when using the workspace "Direct Navigation" hotkeys
+* Enabled showing the desktop icons during the Cube effect
+* Allow the Cube to queue up hotkey press actions rather than ignoring hotkey presses during the Cube animation
+* Changed the "Animation duration" option to be a number of seconds (0.1 to 4 seconds)
+* Changed the Pullaway setting to be a "Cube size" as a percentage of the screen size
+* Added button to the Cube config which will launch the keyboard setting dialog as a convenient access to setting workspace related hotkeys
+* The Cube rotation and the scale down to the target Cube size effects will now run in parallel, this saves animation time and makes the animation look smoother. As a side effect, the easing for the scale down action is now hard-coded to "easeNone" and the user defined "Scale effect" is used only for the "Unscale" action. This is assuming there is a need to scale at all, ie. the Cube size is not 100%, in the "Cube size is 100%" case the easing will still apply.
+* The "Rotate easing" effect is now only applied to the ending of the rotate when there is no 2nd rotation that is need and there is no immediate unscaling needed. Likewise, easing is only applied at the start of the rotate when there is no scaling needed (i.e only when hot-keys are used a 2nd time while holding the modifier keys). This makes the whole animation smoother particularly when Bounce/Back/Elastic easing is used.
+* Added a button to the Desktop Cube setting dialog under the "Effect Easing" section which will open the easing information website
+
 ## 1.1.0
 
 * Fixed the "not animating" issue under Mint 21+
