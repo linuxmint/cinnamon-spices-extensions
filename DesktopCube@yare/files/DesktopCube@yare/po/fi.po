@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: DesktopCube@yare 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-06 09:45-0400\n"
+"POT-Creation-Date: 2024-11-20 10:20-0500\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: fi\n"
 
 #. metadata.json->name
 msgid "Desktop Cube"
@@ -24,8 +24,7 @@ msgstr "Desktop Cube"
 
 #. metadata.json->description
 msgid "Compiz Cube-like animation for workspace switching"
-msgstr ""
-"Compiz Cube kuutio animaatio työtilan vaihtamiseen ⬅ ➡ ctrl+alt"
+msgstr "Compiz Cube kuutio animaatio työtilan vaihtamiseen ⬅ ➡ ctrl+alt"
 
 #. 2.0->settings-schema.json->header1->description
 #. 5.4->settings-schema.json->header1->description
@@ -33,22 +32,18 @@ msgid "General"
 msgstr "Yleinen"
 
 #. 2.0->settings-schema.json->animationTime->description
-#. 5.4->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Animaation kesto"
 
 #. 2.0->settings-schema.json->pullaway->description
-#. 5.4->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Mitta verrattuna näytön reunasta"
 
 #. 2.0->settings-schema.json->header2->description
-#. 5.4->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Tehosteet"
 
 #. 2.0->settings-schema.json->scaleEffect->description
-#. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale effect"
 msgstr "Skaalaustehoste"
 
@@ -74,9 +69,47 @@ msgstr "Järjestelmäasetukset"
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Avaa Cinnamon työtilojen asetukset"
 
+#. 5.4->settings-schema.json->animationTimeSec->description
+#, fuzzy
+msgid "Animation duration (seconds)"
+msgstr "Animaation kesto"
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr ""
+
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
 msgstr "Sisältää paneelit"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->header2->description
+#, fuzzy
+msgid "Effect Easing"
+msgstr "Tehosteet"
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr ""
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
@@ -129,5 +162,15 @@ msgid "Quint"
 msgstr "Viisikko"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-msgid "Rotate effect"
+#, fuzzy
+msgid "Rotate easing"
 msgstr "Kääntötehoste"
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr ""
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+#, fuzzy
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
+msgstr "Avaa Cinnamon työtilojen asetukset"

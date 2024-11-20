@@ -3,37 +3,49 @@
     "type" : "header",
     "description" : "General"
   },
-  "animationTime" : {
+  "animationTimeSec" : {
     "type" : "scale",
-    "description" : "Animation duration",
-    "min" : 0.10,
-    "max" : 1.0,
-    "default": 0.15,
+    "description" : "Animation duration (seconds)",
+    "min" : 0.1,
+    "max" : 4.0,
+    "default": 0.95,
     "step" : 0.05
   },
-  "pullaway" : {
+  "pullawayPercent" : {
     "type" : "scale",
-    "description" : "Pullaway proportion from screen",
-    "min" : 0.00,
-    "max" : 0.3333,
-    "default" : 0.05,
-    "step" : 0.0001
+    "description" : "Cube size (percent of screen size)",
+    "min" : 33,
+    "max" : 100,
+    "default" : 90,
+    "step" : 1
   },
   "includePanels" : {
     "type" : "checkbox",
     "description" : "Include Panels",
     "default" : false
   },
+  "patchmoveToWorkspace" : {
+    "type" : "checkbox",
+    "description" : "Use Cube effect with the Workspace Switcher applet",
+    "tooltip": "Override the moveToWorkspace() API so that the Cube effect is used by the Workspace Switcher Applet when changing the current workspace",
+    "default" : true
+  },
+  "patchActivateWindow" : {
+    "type" : "checkbox",
+    "description" : "Use Cube effect when changing focus causes a workspace switch",
+    "tooltip": "Override the activateWindow() API so that when a window on another workspace is given the focus, the Cube effect is used to change the current workspace",
+    "default" : true
+  },
   "sep1": {
     "type": "separator"
   },
   "header2" : {
     "type" : "header",
-    "description" : "Effects"
+    "description" : "Effect Easing"
   },
   "newScaleEffect": {
     "type": "combobox",
-    "description": "Scale effect",
+    "description": "Scale easing",
     "default": "Quad",
     "options": {
       "Back": "Back",
@@ -50,7 +62,7 @@
   },
   "newRotateEffect": {
     "type": "combobox",
-    "description": "Rotate effect",
+    "description": "Rotate easing",
     "default": "Quad",
     "options": {
       "Back": "Back",
@@ -65,6 +77,12 @@
       "Quint": "Quint"
     }
   },
+  "easing_btn": {
+    "type": "button",
+    "description": "Open easing information website",
+    "callback": "on_btn_cs_easing_pressed"
+  },
+
   "header3": {
     "type" : "header",
     "description" : "System Settings"
@@ -73,5 +91,10 @@
     "type": "button",
     "description": "Open Cinnamon Settings to manage Workspaces",
     "callback": "on_btn_cs_workspaces_pressed"
+  },
+  "hotkeys_btn": {
+    "type": "button",
+    "description": "Open Cinnamon Keyboard Settings to manage Workspace hotkeys",
+    "callback": "on_btn_cs_keyboard_pressed"
   }
 }

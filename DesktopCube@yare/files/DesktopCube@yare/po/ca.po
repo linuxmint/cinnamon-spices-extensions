@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-06 09:45-0400\n"
+"POT-Creation-Date: 2024-11-20 10:20-0500\n"
 "PO-Revision-Date: 2024-08-25 22:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: Odyssey <odysseyhyd@gmail.com>\n"
@@ -33,22 +33,18 @@ msgid "General"
 msgstr "General"
 
 #. 2.0->settings-schema.json->animationTime->description
-#. 5.4->settings-schema.json->animationTime->description
 msgid "Animation duration"
 msgstr "Duració de l'animació"
 
 #. 2.0->settings-schema.json->pullaway->description
-#. 5.4->settings-schema.json->pullaway->description
 msgid "Pullaway proportion from screen"
 msgstr "Distància de separació entre la pantalla"
 
 #. 2.0->settings-schema.json->header2->description
-#. 5.4->settings-schema.json->header2->description
 msgid "Effects"
 msgstr "Efectes"
 
 #. 2.0->settings-schema.json->scaleEffect->description
-#. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale effect"
 msgstr "Efecte d'allunyament de pantalla"
 
@@ -74,9 +70,47 @@ msgstr "Configuració del sistema"
 msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Obrir la configuració de Cinnamon per gestionar els espais de treball"
 
+#. 5.4->settings-schema.json->animationTimeSec->description
+#, fuzzy
+msgid "Animation duration (seconds)"
+msgstr "Duració de l'animació"
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr ""
+
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
 msgstr "Incloure els taulers"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->header2->description
+#, fuzzy
+msgid "Effect Easing"
+msgstr "Efectes"
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr ""
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
@@ -129,5 +163,15 @@ msgid "Quint"
 msgstr "Quinta"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-msgid "Rotate effect"
+#, fuzzy
+msgid "Rotate easing"
 msgstr "Efecte de rotació"
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr ""
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+#, fuzzy
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
+msgstr "Obrir la configuració de Cinnamon per gestionar els espais de treball"
