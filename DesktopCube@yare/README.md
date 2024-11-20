@@ -30,15 +30,15 @@ There are a number of ways to switch the current workspace, all of following wil
 
 When switching the current workspace using Expo ("workspace selection screen" Default hotkey: Ctrl + Alt + Up_Arrow_Key) by clicking on a different workspace, the Desktop Cube effect will not be used. Since the Expo is not really a "face" on the cube it would break the Cube concept a bit, therefore I left it as is since I felt it was more logical that way.
 
-If you know of other methods of switching the workspace where the Desktop Cube effect is not currently used, please let me know so I can see if I can find a way to enable the Desktop Cube for that path as well. 
+If you know of other methods of switching the workspace where the Desktop Cube effect is not currently used, please let me know so I can see if I can find a way to enable the Desktop Cube for that path as well.
 
 ## Known Issues
 
 1. When using Desktop Cube with two or more Monitors attached, the Cube will be placed in the middle of the overall desktop which will likely appear spit between the monitors, kind of ruining the effect.
-   
+
    At some point I plan on adding options to control how the Cube is displayed on multi-monitor setups, but it might be a while before I find the time to work on that.
 
-2. If you enable the "Include Panels" option in the Desktop Cube configuration, the panels will disappear while the cube is turning and then reappear when it is done. This is far from idea, so I recommend that you leave this option disabled so that the panels remain hidden only reappearing after returning to the normal desktop.
+2. If you enable the "Include Panels" option in the Desktop Cube configuration, the panels will disappear while the cube is turning and then reappear when it is done. This is far from ideal, so I recommend that you leave this option disabled so that the panels remain hidden, only reappearing after returning to the normal desktop.
 
 ## Installation
 

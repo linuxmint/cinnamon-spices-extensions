@@ -1,100 +1,99 @@
 {
-  "header1" : {
-    "type" : "header",
-    "description" : "General"
-  },
-  "animationTimeSec" : {
-    "type" : "scale",
-    "description" : "Animation duration (seconds)",
-    "min" : 0.1,
-    "max" : 4.0,
-    "default": 0.95,
-    "step" : 0.05
-  },
-  "pullawayPercent" : {
-    "type" : "scale",
-    "description" : "Cube size (percent of screen size)",
-    "min" : 33,
-    "max" : 100,
-    "default" : 90,
-    "step" : 1
-  },
-  "includePanels" : {
-    "type" : "checkbox",
-    "description" : "Include Panels",
-    "default" : false
-  },
-  "patchmoveToWorkspace" : {
-    "type" : "checkbox",
-    "description" : "Use Cube effect with the Workspace Switcher applet",
-    "tooltip": "Override the moveToWorkspace() API so that the Cube effect is used by the Workspace Switcher Applet when changing the current workspace",
-    "default" : true
-  },
-  "patchActivateWindow" : {
-    "type" : "checkbox",
-    "description" : "Use Cube effect when changing focus causes a workspace switch",
-    "tooltip": "Override the activateWindow() API so that when a window on another workspace is given the focus, the Cube effect is used to change the current workspace",
-    "default" : true
-  },
-  "sep1": {
-    "type": "separator"
-  },
-  "header2" : {
-    "type" : "header",
-    "description" : "Effect Easing"
-  },
-  "newScaleEffect": {
-    "type": "combobox",
-    "description": "Scale easing",
-    "default": "Quad",
-    "options": {
-      "Back": "Back",
-      "Bounce": "Bounce",
-      "Circ": "Circ",
-      "Cubic": "Cubic",
-      "Elastic": "Elastic",
-      "Expo": "Expo",
-      "Sine": "Sine",
-      "Quad": "Quad",
-      "Quart": "Quart",
-      "Quint": "Quint"
+    "header1": {
+        "type": "header",
+        "description": "General"
+    },
+    "animationTimeSec": {
+        "type": "scale",
+        "description": "Animation duration (seconds)",
+        "min": 0.1,
+        "max": 4.0,
+        "default": 0.95,
+        "step": 0.05
+    },
+    "pullawayPercent": {
+        "type": "scale",
+        "description": "Cube size (percent of screen size)",
+        "min": 33,
+        "max": 100,
+        "default": 90,
+        "step": 1
+    },
+    "includePanels": {
+        "type": "checkbox",
+        "description": "Include Panels",
+        "default": false
+    },
+    "patchmoveToWorkspace": {
+        "type": "checkbox",
+        "description": "Use Cube effect with the Workspace Switcher applet",
+        "tooltip": "Override the moveToWorkspace() API so that the Cube effect is used by the Workspace Switcher Applet when changing the current workspace",
+        "default": true
+    },
+    "patchActivateWindow": {
+        "type": "checkbox",
+        "description": "Use Cube effect when changing focus causes a workspace switch",
+        "tooltip": "Override the activateWindow() API so that when a window on another workspace is given the focus, the Cube effect is used to change the current workspace",
+        "default": true
+    },
+    "sep1": {
+        "type": "separator"
+    },
+    "header2": {
+        "type": "header",
+        "description": "Effect Easing"
+    },
+    "newScaleEffect": {
+        "type": "combobox",
+        "description": "Scale easing",
+        "default": "Quad",
+        "options": {
+            "Back": "Back",
+            "Bounce": "Bounce",
+            "Circ": "Circ",
+            "Cubic": "Cubic",
+            "Elastic": "Elastic",
+            "Expo": "Expo",
+            "Sine": "Sine",
+            "Quad": "Quad",
+            "Quart": "Quart",
+            "Quint": "Quint"
+        }
+    },
+    "newRotateEffect": {
+        "type": "combobox",
+        "description": "Rotate easing",
+        "default": "Quad",
+        "options": {
+            "Back": "Back",
+            "Bounce": "Bounce",
+            "Circ": "Circ",
+            "Cubic": "Cubic",
+            "Elastic": "Elastic",
+            "Expo": "Expo",
+            "Sine": "Sine",
+            "Quad": "Quad",
+            "Quart": "Quart",
+            "Quint": "Quint"
+        }
+    },
+    "easing_btn": {
+        "type": "button",
+        "description": "Open easing information website",
+        "callback": "on_btn_cs_easing_pressed"
+    },
+    "header3": {
+        "type": "header",
+        "description": "System Settings"
+    },
+    "workspaces_btn": {
+        "type": "button",
+        "description": "Open Cinnamon Settings to manage Workspaces",
+        "callback": "on_btn_cs_workspaces_pressed"
+    },
+    "hotkeys_btn": {
+        "type": "button",
+        "description": "Open Cinnamon Keyboard Settings to manage Workspace hotkeys",
+        "callback": "on_btn_cs_keyboard_pressed"
     }
-  },
-  "newRotateEffect": {
-    "type": "combobox",
-    "description": "Rotate easing",
-    "default": "Quad",
-    "options": {
-      "Back": "Back",
-      "Bounce": "Bounce",
-      "Circ": "Circ",
-      "Cubic": "Cubic",
-      "Elastic": "Elastic",
-      "Expo": "Expo",
-      "Sine": "Sine",
-      "Quad": "Quad",
-      "Quart": "Quart",
-      "Quint": "Quint"
-    }
-  },
-  "easing_btn": {
-    "type": "button",
-    "description": "Open easing information website",
-    "callback": "on_btn_cs_easing_pressed"
-  },
-
-  "header3": {
-    "type" : "header",
-    "description" : "System Settings"
-  },
-  "workspaces_btn": {
-    "type": "button",
-    "description": "Open Cinnamon Settings to manage Workspaces",
-    "callback": "on_btn_cs_workspaces_pressed"
-  },
-  "hotkeys_btn": {
-    "type": "button",
-    "description": "Open Cinnamon Keyboard Settings to manage Workspace hotkeys",
-    "callback": "on_btn_cs_keyboard_pressed"
-  }
 }
