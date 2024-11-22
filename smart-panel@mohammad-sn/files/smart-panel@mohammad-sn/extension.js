@@ -43,7 +43,7 @@ function SmartPanelExt(metadata, orientation, panel_height, instanceId) {
 
 SmartPanelExt.prototype = {
     _init: function(metadata, orientation, panel_height, instanceId) {
-        
+
         Settings.BindingDirection.BI = Settings.BindingDirection.BIDIRECTIONAL
         this.settings = new Settings.ExtensionSettings(this, "smart-panel@mohammad-sn");
         this.settings.bindProperty(Settings.BindingDirection.BI, "scroll-action"     , "scrl_action", this._onScrollActionChanged, null);
@@ -66,7 +66,7 @@ SmartPanelExt.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "appswitcher-scope" , "switcher_scope",   null, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "scope-modified"    , "switcher_modified", null, null);
         this.settings.bindProperty(Settings.BindingDirection.IN, "appswitcher-modifier", "switcher_modifier", null, null);
-        
+
         this.cwm_settings = new Gio.Settings({ schema: "org.cinnamon.desktop.wm.preferences" });
 
         // schema location has changed around 5.4, do a try catch for maximum compatibility
@@ -78,9 +78,9 @@ SmartPanelExt.prototype = {
                 this.mos_settings = new Gio.Settings({ schema: "org.cinnamon.desktop.peripherals.mouse" });
             }
         }
-        
+
         this.muf_settings = new Gio.Settings({ schema: "org.cinnamon.muffin" });
-        
+
         //this._panel = Main.panel._centerBox;
         this._panel = Main.panel.actor;
 
@@ -88,11 +88,11 @@ SmartPanelExt.prototype = {
         this.dblb = false;
         this.dblb_T = this.mos_settings.get_int('double-click');
     },
-    
+
     _onScrollActionChanged : function() {
         if (this.scrl_action != "none") this.sep_acts = false;
     },
-    
+
     _onScrollSettingsChanged : function() {
         if (this.sep_acts == true ) this.scrl_action = "none";
     },
@@ -120,7 +120,7 @@ SmartPanelExt.prototype = {
         return;
     },
 
-    _onLeave : function(actor, event) {        
+    _onLeave : function(actor, event) {
         if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         if (this.p && this.use_gestures) {
             let v = Math.abs(global.get_pointer()[0] - this.ppos[0]) < 33;
@@ -162,7 +162,7 @@ SmartPanelExt.prototype = {
         this.p = false;
         return;
     },
-    
+
     _onScroll : function(actor, event) {
         if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         let currentTime = Date.now();
@@ -189,12 +189,15 @@ SmartPanelExt.prototype = {
                     return Clutter.EVENT_PROPAGATE;
             }
             if (this.scrl_action == 'adjust_opacity') {
-                let min_opacity = this.cwm_settings.get_int("min-window-opacity") * 255 / 100;
+                let min_opacity = Math.max(0, Math.min(255, parseInt(this.cwm_settings.get_int("min-window-opacity") / 100 * 255)));
+                //~ global.log("min_opacity: "+min_opacity);
                 let m = 50;
-                m = global.window_group.opacity + m * scrollDirection;
+                m = global.window_group.get_opacity() + m * scrollDirection;
+                //~ global.log("m: "+m);
                 if (m < min_opacity) m = min_opacity;
                 if (m > 255) m = 255;
-                global.window_group.opacity = m;
+                //~ global.log("new m: "+m);
+                global.window_group.set_opacity(m);
             }
             else if (this.scrl_action == 'desktop') {
                 if (Main.panel.bottomPosition) scrollDirection = -scrollDirection;
@@ -208,14 +211,36 @@ SmartPanelExt.prototype = {
                 let limit = this._lastScroll + this.scroll_delay;
                 if (this.no_fast_scroll && currentTime < limit && currentTime >= this._lastScroll) { }
                 else if (this.scrl_action == 'switch_workspace') {
-                    if(ExtensionSystem.runningExtensions['Flipper@connerdev']){
-                        if (this.Flipper){}
-                        else { this.Flipper = ExtensionSystem.extensions['Flipper@connerdev']['extension']; }
+                    //~ global.log("this.scrl_action == 'switch_workspace'");
+                    if (ExtensionSystem.runningExtensions.indexOf('DesktopCube@yare') > -1 ) {
+                        //~ global.log("DesktopCube@yare DETECTED!!!");
+                        if (this.DesktopCube) {}
+                        else {
+                            //~ global.log("ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension']: "+Object.keys(ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension']));
+                            this.DesktopCube = ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension'];
+                        }
                         let binding = [];
                         binding.get_mask = function(){ return 0x0; };
                         if (scrollDirection == 1) binding.get_name = function(){ return 'switch-to-workspace-left'; };
                         else if (scrollDirection == -1) binding.get_name = function(){ return 'switch-to-workspace-right'; };
-                        flipper = new this.Flipper.Flipper(null, null, null, binding);
+                        let cube = new this.DesktopCube.Cube(null, null, binding);
+                        if (cube.isAnimating) {
+                            cube.destroy_requested = true;
+                        } else {
+                            cube.destroy_requested = true;
+                            cube.onDestroy();
+                        }
+                    }
+                    else
+                    if (ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
+                        global.log("Flipper@connerdev DETECTED!!!");
+                        if (this.Flipper){}
+                        else { this.Flipper = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension']; }
+                        let binding = [];
+                        binding.get_mask = function(){ return 0x0; };
+                        if (scrollDirection == 1) binding.get_name = function(){ return 'switch-to-workspace-left'; };
+                        else if (scrollDirection == -1) binding.get_name = function(){ return 'switch-to-workspace-right'; };
+                        let flipper = new this.Flipper.Flipper(null, null, binding);
                         if (flipper.is_animating) {
                             flipper.destroy_requested = true;
                         } else {
@@ -232,7 +257,7 @@ SmartPanelExt.prototype = {
                         if (this.muf_settings.get_boolean("workspace-cycle")){
                             first = last;
                             flast = 0;
-                        }    
+                        }
                         if (reqWsInex < 0) reqWsInex = first;
                         else if (reqWsInex > last) reqWsInex = flast;
                         let reqWs = global.screen.get_workspace_by_index(reqWsInex);
@@ -266,14 +291,14 @@ SmartPanelExt.prototype = {
         this._lastScroll = currentTime;
         return;
     },
-    
+
     checkEventSource : function(actor, event) {
         let source = event.get_source();
         let clr = (source != Main.panel._centerBox || source != Main.panel._leftBox || source != Main.panel._rightBox);
         let not_ours = (source != actor && clr);
         return not_ours;
     },
-    
+
     Do : function(action) {
         let activeWs = 0, reqWs = 0;
         switch (action) {
@@ -321,7 +346,7 @@ SmartPanelExt.prototype = {
                 break;
             case 'appswitcher' :
                     this.get_name = Lang.bind(this, function(){
-                        if (eval(this.switcher_modifier) & global.get_pointer()[2]) return this.switcher_modified; 
+                        if (eval(this.switcher_modifier) & global.get_pointer()[2]) return this.switcher_modified;
                         else return this.switcher_scope;
                         });
                     this.get_mask = function(){ return  0xFFFF; }
@@ -342,12 +367,12 @@ SmartPanelExt.prototype = {
                     else {
                         new myClassicSwitcher(this);
                     }
-                    
+
                 break;
         }
         if (reqWs) { reqWs.activate(global.get_current_time()); this.showWorkspaceOSD(); }
     },
-    
+
     showWorkspaceOSD : function() {
         this._hideWorkspaceOSD();
         if (
@@ -364,7 +389,8 @@ SmartPanelExt.prototype = {
           this._workspace_osd.set_text(
             Main.getWorkspaceName(current_workspace_index)
           );
-          this._workspace_osd.set_opacity = 0;
+          //this._workspace_osd.set_opacity = 0;
+          this._workspace_osd.set_opacity(0);
           Main.layoutManager.addChrome(this._workspace_osd, {
             visibleInFullscreen: false,
             affectsInputRegion: false,
@@ -431,14 +457,14 @@ function myClassicSwitcher() {
 
 myClassicSwitcher.prototype = {
     __proto__: ClassicSwitcher.ClassicSwitcher.prototype,
-    
+
     _init: function() {
         AppSwitcher.AppSwitcher.prototype._init.apply(this, arguments);
 
         this.actor = new Cinnamon.GenericContainer({ name: 'altTabPopup',
                                                   reactive: true,
                                                   visible: false });
-        
+
         this._thumbnailTimeoutId = 0;
         this.thumbnailsVisible = false;
         this._displayPreviewTimeoutId = 0;
@@ -447,7 +473,7 @@ myClassicSwitcher.prototype = {
 
         if (!this._setupModal())
             return;
-            
+
         let styleSettings = this._binding.switcher_style;
         if (styleSettings == 'default') styleSettings = global.settings.get_string("alttab-switcher-style");
         let features = styleSettings.split('+');
@@ -459,13 +485,13 @@ myClassicSwitcher.prototype = {
 
         this._showThumbnails = this._thumbnailsEnabled && !this._iconsEnabled;
         this._showArrows = this._thumbnailsEnabled && this._iconsEnabled;
-        
+
         this._updateList(0);
 
         this.actor.connect('get-preferred-width', Lang.bind(this, this._getPreferredWidth));
         this.actor.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
         this.actor.connect('allocate', Lang.bind(this, this._allocate));
-        
+
         // Need to force an allocation so we can figure out whether we
         // need to scroll when selecting
         this.actor.opacity = 0;
@@ -479,7 +505,7 @@ myClassicSwitcher.prototype = {
             this._activateSelected();
         else {
             this._disableHover();
-        
+
             this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
             this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
             this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
@@ -499,7 +525,7 @@ myClassicSwitcher.prototype = {
             this._activateSelected();
         return true;
     },
-    
+
     owndestroy: function() {
         this._activateSelected();
     },
@@ -511,7 +537,7 @@ function myTimelineSwitcher() {
 
 myTimelineSwitcher.prototype = {
     __proto__: TimelineSwitcher.TimelineSwitcher.prototype,
-    
+
     _init: function() {
         TimelineSwitcher.TimelineSwitcher.prototype._init.apply(this, arguments);
     },
@@ -522,7 +548,7 @@ myTimelineSwitcher.prototype = {
             this._activateSelected();
         else {
             this._disableHover();
-        
+
             this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
             this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
             this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
@@ -542,7 +568,7 @@ myTimelineSwitcher.prototype = {
             this._activateSelected();
         return true;
     },
-    
+
     owndestroy: function() {
         this._activateSelected();
     },
@@ -555,7 +581,7 @@ function myCoverflowSwitcher() {
 
 myCoverflowSwitcher.prototype = {
     __proto__: CoverflowSwitcher.CoverflowSwitcher.prototype,
-    
+
     _init: function() {
         CoverflowSwitcher.CoverflowSwitcher.prototype._init.apply(this, arguments);
     },
@@ -566,7 +592,7 @@ myCoverflowSwitcher.prototype = {
             this._activateSelected();
         else {
             this._disableHover();
-        
+
             this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
             this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
             this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
@@ -586,7 +612,7 @@ myCoverflowSwitcher.prototype = {
             this._activateSelected();
         return true;
     },
-    
+
     owndestroy: function() {
         this._activateSelected();
     },
