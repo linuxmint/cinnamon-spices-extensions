@@ -233,7 +233,7 @@ SmartPanelExt.prototype = {
                     }
                     else
                     if (ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
-                        global.log("Flipper@connerdev DETECTED!!!");
+                        //~ global.log("Flipper@connerdev DETECTED!!!");
                         if (this.Flipper){}
                         else { this.Flipper = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension']; }
                         let binding = [];

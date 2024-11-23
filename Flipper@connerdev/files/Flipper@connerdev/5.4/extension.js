@@ -785,7 +785,7 @@ Flipper.prototype = {
         from.set_position(x_pos, this.monitor.height/2);
         to.set_position(x_pos, this.monitor.height/2);
       }
-
+      //~ global.log("788 settings.fade: "+settings.fade);
       Tweener.addTween(from, {
           x: x_pos,
           scale_x: settings.pullaway,
@@ -823,7 +823,7 @@ Flipper.prototype = {
       } else {
         fromTransition = -this.monitor.width;
       }
-
+      //~ global.log("826 settings.fade: "+settings.fade);
       Tweener.addTween(from, {
           x: fromTransition,
           scale_x: this.getScale(),
@@ -877,7 +877,7 @@ Flipper.prototype = {
 
       from.set_scale(1,1);
       to.set_scale(settings.pullaway, settings.pullaway);
-
+      //~ global.log("880 settings.fade: "+settings.fade);
       Tweener.addTween(from, {
           x: fromTransition,
           scale_x: this.getHalfScale(),
@@ -1007,7 +1007,7 @@ Flipper.prototype = {
           transition: this.getEasing(true),
           time: this.getTime()
         });
-
+        //~ global.log("1010 settings.fade: "+settings.fade);
         Tweener.addTween(from, {
             x: fromTransition,
             y: this.monitor.height/2 - this.const.DECK_HEIGHT,
@@ -1030,7 +1030,7 @@ Flipper.prototype = {
     cube_end: function(from, to, direction) {
       this.new_workspace.activate(global.get_current_time());
       to.raise_top();
-
+      //~ global.log("1033 settings.fade: "+settings.fade);
       if (direction == Meta.MotionDirection.RIGHT) {
         Tweener.addTween(to, {
             opacity: 255,
@@ -1044,7 +1044,7 @@ Flipper.prototype = {
         });
         Tweener.addTween(from, {
             // x: -this.monitor.width,
-            opacity: Math.max(0, Math.min(255, parseInt(255 * settings.fade))), //settings.fade,
+            opacity: 0, //Math.max(0, Math.min(255, parseInt(255 * settings.fade))), //settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
@@ -1062,7 +1062,7 @@ Flipper.prototype = {
             onCompleteScope: this
         });
         Tweener.addTween(from, {
-            opacity: Math.max(0, Math.min(255, parseInt(255 * settings.fade))), //settings.fade,
+            opacity: 0, //Math.max(0, Math.min(255, parseInt(255 * settings.fade))), //settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
@@ -1085,7 +1085,7 @@ Flipper.prototype = {
         from.raise_top();
         from.set_position(0, this.monitor.height/2 );
         from.rotation_angle_y = 0;
-
+        //~ global.log("1088 settings.fade: "+settings.fade);
         to.set_position(this.monitor.width, this.monitor.height/2);
         to.rotation_angle_y = this.const.CUBE_START_ANGLE;
         to.set_scale(this.const.CUBE_ZOOM, this.const.CUBE_ZOOM);
@@ -1095,7 +1095,7 @@ Flipper.prototype = {
 
         Tweener.addTween(from, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
+            opacity: 0, //Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1104,7 +1104,7 @@ Flipper.prototype = {
 
         Tweener.addTween(to, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
+            opacity: 255, //Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1127,10 +1127,10 @@ Flipper.prototype = {
         to.set_opacity(settings.fade);
 
         toTransition = -this.monitor.width/2;
-
+        //~ global.log("1130 settings.fade: "+settings.fade);
         Tweener.addTween(from, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
+            opacity: 0, //Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1139,7 +1139,7 @@ Flipper.prototype = {
 
         Tweener.addTween(to, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
+            opacity: 255, //Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
