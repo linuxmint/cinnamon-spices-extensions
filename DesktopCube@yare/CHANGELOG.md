@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+* Adde ability to work correctly with the smart-panel extension.
+
 ## 2.0.0
 
 * Added ability to use Cube effect when changing the workspace via the "Workspace Switcher" applet
