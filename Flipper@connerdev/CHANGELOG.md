@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6
+
+* Added the ability to work with the smart-panel extension.
+
 ## 1.0.5
 
 * Changed "dim_factor" to "opacity" since "dim_factor" is no longer defined

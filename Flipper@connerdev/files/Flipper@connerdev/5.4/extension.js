@@ -17,6 +17,8 @@ const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 
+const UUID = "Flipper@connerdev";
+
 let settings;
 let bindings = ['switch-to-workspace-left',
                 'switch-to-workspace-right',
@@ -35,6 +37,7 @@ Flipper.prototype = {
         this.destroy_requested = false;
         this.queued_direction = null;
         this.monitor = Main.layoutManager.primaryMonitor;
+        settings = new FlipperSettings(UUID);
 
         let [binding_type,,,direction] = binding.get_name().split('-');
         direction = Meta.MotionDirection[direction.toUpperCase()];
@@ -787,7 +790,7 @@ Flipper.prototype = {
           x: x_pos,
           scale_x: settings.pullaway,
           scale_y: settings.pullaway,
-          opacity: 255 * (1.0 - settings.fade),
+          opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
           rotation_angle_y: angle_from/2,
           transition: this.getEasing(true),
           time: this.getTime(),
@@ -795,7 +798,7 @@ Flipper.prototype = {
 
       Tweener.addTween(to, {
           x: x_pos,
-          opacity: 255 * (1.0 - settings.fade),
+          opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
           scale_x: settings.pullaway,
           scale_y: settings.pullaway,
           rotation_angle_y: -angle_from/2,
@@ -825,7 +828,7 @@ Flipper.prototype = {
           x: fromTransition,
           scale_x: this.getScale(),
           scale_y: this.getScale(),
-          opacity: 255 * settings.fade,
+          opacity: Math.max(0, Math.min(255, parseInt(255 * settings.fade))),
           transition: this.getEasing(false),
           time: this.getTime(),
       });
@@ -879,14 +882,14 @@ Flipper.prototype = {
           x: fromTransition,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
-          opacity: 255 * settings.fade,
+          opacity: Math.max(0, Math.min(255, parseInt(255 * settings.fade))),
           transition: this.getEasing(true),
           time: this.getTime(),
       });
 
       Tweener.addTween(to, {
           x: toTransition,
-          opacity: 255 * (1.0 - settings.fade),
+          opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
@@ -1011,7 +1014,7 @@ Flipper.prototype = {
             scale_x: this.getHalfScale(),
             scale_y: this.getHalfScale(),
             rotation_angle_y: -this.const.DECK_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             transition: this.getEasing(true),
             time: this.getTime(),
             onCompleteParams: [from, to, direction],
@@ -1041,7 +1044,7 @@ Flipper.prototype = {
         });
         Tweener.addTween(from, {
             // x: -this.monitor.width,
-            opacity: settings.fade,
+            opacity: Math.max(0, Math.min(255, parseInt(255 * settings.fade))), //settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
@@ -1059,7 +1062,7 @@ Flipper.prototype = {
             onCompleteScope: this
         });
         Tweener.addTween(from, {
-            opacity: settings.fade,
+            opacity: Math.max(0, Math.min(255, parseInt(255 * settings.fade))), //settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
@@ -1092,7 +1095,7 @@ Flipper.prototype = {
 
         Tweener.addTween(from, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1101,7 +1104,7 @@ Flipper.prototype = {
 
         Tweener.addTween(to, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1127,7 +1130,7 @@ Flipper.prototype = {
 
         Tweener.addTween(from, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1136,7 +1139,7 @@ Flipper.prototype = {
 
         Tweener.addTween(to, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            opacity: Math.max(0, Math.min(255, parseInt(255 * (1.0 - settings.fade)))),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1382,7 +1385,7 @@ Flipper.prototype = {
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
             //dim_factor: settings.dim_factor,
-            opacity: Math.round(settings.dim_factor*255),
+            opacity: Math.max(0, Math.min(255, parseInt(settings.dim_factor*255))),
             time: this.getTime(),
             transition: 'easeInQuad'
         });

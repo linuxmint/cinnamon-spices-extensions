@@ -24,5 +24,6 @@
     "url": "https://github.com/ConnerHansen/Flipper",
     "uuid": "Flipper@connerdev",
     "name": "Flipper",
-    "description": "Fancy workspace switching extension"
+    "description": "Fancy workspace switching extension",
+    "author": "klangman"
 }
