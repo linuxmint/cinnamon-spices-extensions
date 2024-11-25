@@ -108,7 +108,7 @@ msgstr "Jön a Mikulás"
 #. 6.2->settings-schema.json->close-window-effect->options
 #. 6.2/effects/Focus.js:91
 msgid "Focus"
-msgstr ""
+msgstr "Fókusz"
 
 #. 6.2->settings-schema.json->glide-random-include->description
 #. 6.2->settings-schema.json->effect-selector->options
@@ -394,17 +394,19 @@ msgstr "Szín"
 
 #. 6.2->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
-msgstr ""
+msgstr "Elmosás mennyisége"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
-msgstr ""
+msgstr "Elmosás minősége"
 
 #. 6.2->settings-schema.json->focus-blur-quality->tooltip
 msgid ""
 "The Quality of the Blur (Setting this too high may increase GPU load and "
 "affect performance)"
 msgstr ""
+"Az elmosódás minősége (a túl magasra állítás növelheti a GPU terhelést és "
+"befolyásolhatja a teljesítményt)"
 
 #. 6.2->settings-schema.json->glide-squish->description
 msgid "Squish"
