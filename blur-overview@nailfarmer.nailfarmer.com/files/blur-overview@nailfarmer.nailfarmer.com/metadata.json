@@ -1,8 +1,9 @@
 {
     "uuid": "blur-overview@nailfarmer.nailfarmer.com",
     "name": "Blur Overview",
-    "version": "1.1.0",
-    "description": "Allows you to blur and adjust the dimming of the overview's background (window selection screen)",
+    "version": "2.0.0",
+    "description": "Allows you to blur, colorize and adjust the dimming of the overview's background (window selection screen)",
+    "url": "https://cinnamon-spices.linuxmint.com/extensions/view/72",
     "cinnamon-version": [
         "3.4",
         "3.6",

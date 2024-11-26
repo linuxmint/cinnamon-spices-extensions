@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-11-07 23:19-0500\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
 "PO-Revision-Date: 2024-11-08 09:33-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,20 +23,68 @@ msgid "Blur Overview"
 msgstr "Desenfocar la vista general de las ventanas abiertas"
 
 #. metadata.json->description
+#, fuzzy
 msgid ""
-"Adjust the background dimming for the overview (window selection screen)"
+"Allows you to blur and adjust the dimming of the overview's background "
+"(window selection screen)"
 msgstr ""
 "Ajuste la atenuación del fondo para la vista general (pantalla de selección "
 "de ventanas)"
 
 #. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
 msgid "Blur Overview (window selection screen) settings"
 msgstr "Ajustes de Desenfoque (pantalla de selección de ventanas)"
 
 #. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
 msgid "Dim Background (percentage)"
 msgstr "Atenuación del Fondo (porcentaje)"
 
 #. settings-schema.json->blur->description
 msgid "Blur Background"
 msgstr "Desenfoque de fondo"
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr ""
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr ""
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr ""
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
