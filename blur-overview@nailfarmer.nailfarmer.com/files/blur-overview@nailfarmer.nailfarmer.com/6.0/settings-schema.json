@@ -1,0 +1,52 @@
+{
+   "header": {
+      "type": "header",
+      "description": "Blur Overview (window selection screen) settings"
+   },
+
+    "opacity" : {
+        "type": "scale",
+        "description": "Dim Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 50,
+        "step": 1
+    },
+
+    "colorBlend" : {
+        "type": "switch",
+        "description": "Enable color blend effect",
+        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
+        "default": false
+    },
+
+    "blendColor": {
+        "type": "colorchooser",
+        "description" : "Blend effect Color",
+        "dependency" : "colorBlend=true",
+        "default": "rgb(0,0,0)"
+    },
+
+    "blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "dependency" : "blurType=2",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 10
+    }
+}
