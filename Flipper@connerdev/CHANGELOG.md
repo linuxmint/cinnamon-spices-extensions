@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6
+
+* Fix "opacity" .xsession-errors messages when using the "Back" or "Elastic" easing options
+
 ## 1.0.5
 
 * Changed "dim_factor" to "opacity" since "dim_factor" is no longer defined

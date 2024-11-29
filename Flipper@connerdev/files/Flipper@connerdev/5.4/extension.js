@@ -316,6 +316,7 @@ Flipper.prototype = {
 
     // I hide the desktop icons for now while rotating until a solution to
     // the artifacts may be found.
+    /* Not used!
     setDesktopClonesVisible: function(workspace_clone, visible) {
         workspace_clone.desktopClones.forEach(Lang.bind(this, function(clone) {
             if (visible)//show
@@ -332,7 +333,7 @@ Flipper.prototype = {
                     time: settings.animationTime * 0.3333,
                 });
         }));
-    },
+    },*/
 
     startAnimate: function(direction, window) {
       this.is_animating = true;
@@ -479,7 +480,7 @@ Flipper.prototype = {
           scale_x: 1.0,
           scale_y: 1.0,
           delay: delay,
-          opacity: 255,
+          //opacity: 255,
           transition: this.getEasing(false),
           time: startTime
         };
@@ -514,6 +515,7 @@ Flipper.prototype = {
           }
 
           Tweener.addTween(actor, tween);
+          Tweener.addTween(actor, {time: startTime, delay: tween.delay, opacity: 255, transition: "easeInSine"});
         }
 
         // Switch it back...
@@ -539,7 +541,7 @@ Flipper.prototype = {
         let delay = 0;
         let step = range / from.workspaceWindowActors.length;
         let tween = {
-          opacity: 0,
+          //opacity: 0,
           transition: this.getEasing(true),
           time: startTime
         };
@@ -568,6 +570,7 @@ Flipper.prototype = {
           }
 
           Tweener.addTween(actor, tween);
+          Tweener.addTween(actor, {time: startTime, delay: tween.delay, opacity: 0, transition: "easeInSine"});
         }
 
         // Switch it back...
@@ -634,7 +637,7 @@ Flipper.prototype = {
           tween.x = to_x;
           tween.delay = delay;
           tween.time = startTime;
-          tween.opacity = 255;
+          //tween.opacity = 255;
           tween.rotation_angle_y = 0;
 
           // is this the last entry?
@@ -647,6 +650,7 @@ Flipper.prototype = {
           }
 
           Tweener.addTween(actor, tween);
+          Tweener.addTween(actor, {time: startTime, delay: delay, opacity: 255, transition: "easeInSine"});
           delay += step;
         }
       } else {
@@ -695,7 +699,7 @@ Flipper.prototype = {
             scale_y: settings.pullaway,
             delay: delay,
             rotation_angle_y: angle_to,
-            opacity: 0,
+            //opacity: 0,
             transition: this.getEasing(true),
             time: startTime
           };
@@ -705,8 +709,8 @@ Flipper.prototype = {
             tween.onComplete = this.stack_end;
             tween.onCompleteScope = this;
           }
-
           Tweener.addTween(actor, tween);
+          Tweener.addTween(actor, {time: startTime, delay: delay, opacity: 0, transition: "easeInSine"});
           delay += step;
         }
       } else {
@@ -739,7 +743,7 @@ Flipper.prototype = {
 
       Tweener.addTween(to, {
           x: x_pos,
-          opacity: 255,
+          //opacity: 255,
           scale_x: 1.0,
           scale_y: 1.0,
           rotation_angle_y: angle_to,
@@ -748,6 +752,7 @@ Flipper.prototype = {
           onComplete: this.unsetIsAnimating,
           onCompleteScope: this
       });
+      Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
 
       from.hide();
       to.show();
@@ -787,15 +792,16 @@ Flipper.prototype = {
           x: x_pos,
           scale_x: settings.pullaway,
           scale_y: settings.pullaway,
-          opacity: 255 * (1.0 - settings.fade),
+          //opacity: 255 * (1.0 - settings.fade),
           rotation_angle_y: angle_from/2,
           transition: this.getEasing(true),
           time: this.getTime(),
       });
+      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
 
       Tweener.addTween(to, {
           x: x_pos,
-          opacity: 255 * (1.0 - settings.fade),
+          //opacity: 255 * (1.0 - settings.fade),
           scale_x: settings.pullaway,
           scale_y: settings.pullaway,
           rotation_angle_y: -angle_from/2,
@@ -805,6 +811,7 @@ Flipper.prototype = {
           onComplete: this.flip_end,
           onCompleteScope: this,
       });
+      Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
     },
 
     ///////////////////////////////////////////
@@ -825,14 +832,15 @@ Flipper.prototype = {
           x: fromTransition,
           scale_x: this.getScale(),
           scale_y: this.getScale(),
-          opacity: 255 * settings.fade,
+          //opacity: 255 * settings.fade,
           transition: this.getEasing(false),
           time: this.getTime(),
       });
+      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * settings.fade, transition: "easeInSine"});
 
       Tweener.addTween(to, {
           x: 0,
-          opacity: 255,
+          //opacity: 255,
           scale_x: 1.0,
           scale_y: 1.0,
           transition: this.getEasing(false),
@@ -840,6 +848,7 @@ Flipper.prototype = {
           onComplete: this.unsetIsAnimating,
           onCompleteScope: this
       });
+      Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
 
     },
 
@@ -879,14 +888,15 @@ Flipper.prototype = {
           x: fromTransition,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
-          opacity: 255 * settings.fade,
+          //opacity: 255 * settings.fade,
           transition: this.getEasing(true),
           time: this.getTime(),
       });
+      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * settings.fade, transition: "easeInSine"});
 
       Tweener.addTween(to, {
           x: toTransition,
-          opacity: 255 * (1.0 - settings.fade),
+          //opacity: 255 * (1.0 - settings.fade),
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
@@ -895,6 +905,7 @@ Flipper.prototype = {
           onComplete: this.slide_end,
           onCompleteScope: this,
       });
+      Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
     },
 
     ///////////////////////////////////////////
@@ -908,7 +919,7 @@ Flipper.prototype = {
         Tweener.addTween(to, {
             x: 0,
             y: this.monitor.height/2,
-            opacity: 255,
+            //opacity: 255,
             scale_x: 1,
             scale_y: 1,
             transition: this.getEasing(false),
@@ -917,26 +928,29 @@ Flipper.prototype = {
             onComplete: this.unsetIsAnimating,
             onCompleteScope: this
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
       } else {
         Tweener.addTween(to, {
-          opacity: 255,
+          //opacity: 255,
           scale_x: 1.0,
           scale_y: 1.0,
           transition: this.getEasing(false),
           time: this.getTime()
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
 
         Tweener.addTween(from, {
             x: -this.monitor.width,
             //brightness: 1.0,
             scale_x: this.getScale(),
             scale_y: this.getScale(),
-            opacity: 0,
+            //opacity: 0,
             transition: this.getEasing(false),
             time: this.getTime(),
             onComplete: this.unsetIsAnimating,
             onCompleteScope: this
         });
+        Tweener.addTween(from, {time: this.getTime(), opacity: 0, transition: "easeInSine"});
       }
 
     },
@@ -964,16 +978,17 @@ Flipper.prototype = {
         to.set_opacity(0);
 
         Tweener.addTween(from, {
-          opacity: 0,
+          //opacity: 0,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
           time: this.getTime()
         });
+        Tweener.addTween(from, {time: this.getTime(), opacity: 0, transition: "easeInSine"});
 
         Tweener.addTween(to, {
             x: toTransition,
-            opacity: 255,
+            //opacity: 255,
             scale_x: this.getHalfScale(),
             scale_y: this.getHalfScale(),
             transition: this.getEasing(true),
@@ -982,6 +997,7 @@ Flipper.prototype = {
             onComplete: this.deck_end,
             onCompleteScope: this
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
       } else {
         from.raise_top();
         from.set_position(0, this.monitor.height/2);
@@ -998,12 +1014,13 @@ Flipper.prototype = {
         to.set_pivot_point(0.5, 0);
 
         Tweener.addTween(to, {
-          opacity: 255,
+          //opacity: 255,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
           time: this.getTime()
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
 
         Tweener.addTween(from, {
             x: fromTransition,
@@ -1011,13 +1028,14 @@ Flipper.prototype = {
             scale_x: this.getHalfScale(),
             scale_y: this.getHalfScale(),
             rotation_angle_y: -this.const.DECK_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            //opacity: 255 * (1.0 - settings.fade),
             transition: this.getEasing(true),
             time: this.getTime(),
             onCompleteParams: [from, to, direction],
             onComplete: this.deck_end,
             onCompleteScope: this
         });
+        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
       }
     },
 
@@ -1030,7 +1048,7 @@ Flipper.prototype = {
 
       if (direction == Meta.MotionDirection.RIGHT) {
         Tweener.addTween(to, {
-            opacity: 255,
+            //opacity: 255,
             scale_x: 1,
             scale_y: 1,
             transition: this.getEasing(false),
@@ -1039,17 +1057,19 @@ Flipper.prototype = {
             onComplete: this.unsetIsAnimating,
             onCompleteScope: this
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
         Tweener.addTween(from, {
             // x: -this.monitor.width,
-            opacity: settings.fade,
+            //opacity: settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
             rotation_angle_y: this.const.CUBE_FULL_ANGLE
         });
+        Tweener.addTween(from, {opacity: settings.fade, transition: "easeInSine"});
       } else {
         Tweener.addTween(to, {
-            opacity: 255,
+            //opacity: 255,
             scale_x: 1,
             scale_y: 1,
             transition: this.getEasing(false),
@@ -1058,13 +1078,15 @@ Flipper.prototype = {
             onComplete: this.unsetIsAnimating,
             onCompleteScope: this
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
         Tweener.addTween(from, {
-            opacity: settings.fade,
+            //opacity: settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
             rotation_angle_y: -this.const.CUBE_FULL_ANGLE
         });
+        Tweener.addTween(from, {opacity: settings.fade, transition: "easeInSine"});
       }
 
     },
@@ -1086,22 +1108,24 @@ Flipper.prototype = {
         to.set_position(this.monitor.width, this.monitor.height/2);
         to.rotation_angle_y = this.const.CUBE_START_ANGLE;
         to.set_scale(this.const.CUBE_ZOOM, this.const.CUBE_ZOOM);
+
         to.set_opacity(settings.fade);
 
         toTransition = this.monitor.width/2;
 
         Tweener.addTween(from, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
-            time: this.getTime(),
+            time: this.getTime()
         });
+        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
 
         Tweener.addTween(to, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1110,6 +1134,7 @@ Flipper.prototype = {
             onComplete: this.cube_end,
             onCompleteScope: this
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
       } else {
         from.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
         to.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
@@ -1127,16 +1152,17 @@ Flipper.prototype = {
 
         Tweener.addTween(from, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
             time: this.getTime(),
         });
+        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
 
         Tweener.addTween(to, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            opacity: 255 * (1.0 - settings.fade),
+            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1145,6 +1171,7 @@ Flipper.prototype = {
             onComplete: this.cube_end,
             onCompleteScope: this
         });
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
       }
     },
 
@@ -1167,7 +1194,7 @@ Flipper.prototype = {
           scale_y: 1.0,
           rotation_angle_x: 0,
           delay: delay,
-          opacity: 255,
+          //opacity: 255,
           transition: this.getEasing(false),
           time: startTime
         };
@@ -1206,6 +1233,7 @@ Flipper.prototype = {
           }
 
           Tweener.addTween(actor, tween);
+          Tweener.addTween(actor, {delay: tween.delay, time: startTime, opacity: 255, transition: "easeInSine"});
         }
 
         // Switch it back...
@@ -1232,7 +1260,7 @@ Flipper.prototype = {
         let step = range / from.workspaceWindowActors.length;
         let tween = {
           rotation_angle_x: this.const.ROLODEX_ANGLE,
-          opacity: 0,
+          //opacity: 0,
           transition: this.getEasing(true),
           time: startTime
         };
@@ -1264,6 +1292,7 @@ Flipper.prototype = {
           }
 
           Tweener.addTween(actor, tween);
+          Tweener.addTween(actor, {time: startTime, delay: tween.delay, opacity: 0, transition: "easeInSine"});
         }
 
         // Switch it back...
