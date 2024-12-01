@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-01 12:42-0500\n"
-"PO-Revision-Date: 2024-09-02 11:39-0400\n"
+"PO-Revision-Date: 2024-12-01 16:10-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr "ERROR"
 
 #. 5.6/extension.js:83
 msgid "was NOT enabled"
-msgstr "No estaba habilitada"
+msgstr "no estaba habilitada"
 
 #. 5.6/extension.js:84
 msgid "The existing extension"
@@ -58,15 +58,15 @@ msgstr "seno"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "random"
-msgstr ""
+msgstr "aleatorio"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Default - Unminimize: Sine"
-msgstr ""
+msgstr "Minimizar: Por defecto - Desminimizar: Seno"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Sine - Unminimize: Default"
-msgstr ""
+msgstr "Minimizar: Seno - Desminimizar: Por defecto"
 
 #. 5.6->settings-schema.json->effect->description
 msgid "The type of effect"
@@ -81,9 +81,8 @@ msgstr ""
 "utiliza «seno», el efecto será más ondulado"
 
 #. 5.6->settings-schema.json->duration->description
-#, fuzzy
 msgid "Effect duration (ms)"
-msgstr "Duración del efecto"
+msgstr "Duración del efecto (ms)"
 
 #. 5.6->settings-schema.json->duration->tooltip
 msgid "The time (in milliseconds) that the effect takes to complete"
