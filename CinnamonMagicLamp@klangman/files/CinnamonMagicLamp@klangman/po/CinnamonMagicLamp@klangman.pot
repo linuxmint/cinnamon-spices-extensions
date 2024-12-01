@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CinnamonMagicLamp@klangman 1.0.2\n"
+"Project-Id-Version: CinnamonMagicLamp@klangman 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-02 00:30-0400\n"
+"POT-Creation-Date: 2024-12-01 12:42-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 5.6/extension.js:80
+#. 5.6/extension.js:83
 msgid "ERROR"
 msgstr ""
 
-#. 5.6/extension.js:80
+#. 5.6/extension.js:83
 msgid "was NOT enabled"
 msgstr ""
 
-#. 5.6/extension.js:81
+#. 5.6/extension.js:84
 msgid "The existing extension"
 msgstr ""
 
-#. 5.6/extension.js:81
+#. 5.6/extension.js:84
 msgid "conflicts with this extension."
 msgstr ""
 
@@ -54,6 +54,18 @@ msgstr ""
 msgid "sine"
 msgstr ""
 
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr ""
+
 #. 5.6->settings-schema.json->effect->description
 msgid "The type of effect"
 msgstr ""
@@ -64,21 +76,12 @@ msgid ""
 "result in a more wavy effect"
 msgstr ""
 
-#. 5.6->settings-schema.json->duration->units
-msgid "ms"
-msgstr ""
-
 #. 5.6->settings-schema.json->duration->description
-msgid "Effect duration"
+msgid "Effect duration (ms)"
 msgstr ""
 
 #. 5.6->settings-schema.json->duration->tooltip
 msgid "The time (in milliseconds) that the effect takes to complete"
-msgstr ""
-
-#. 5.6->settings-schema.json->x-tiles->units
-#. 5.6->settings-schema.json->y-tiles->units
-msgid "tiles"
 msgstr ""
 
 #. 5.6->settings-schema.json->x-tiles->description

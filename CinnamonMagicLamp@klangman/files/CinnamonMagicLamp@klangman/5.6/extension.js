@@ -45,7 +45,10 @@ const UUID = "CinnamonMagicLamp@klangman";
 
 const EffectType = {
    Default: 0,
-   Sine: 1
+   Sine: 1,
+   Random: 2,
+   DefaultSine: 3,
+   SineDefault: 4
 }
 
 Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
@@ -236,6 +239,21 @@ class AbstractCommonMagicLampEffect extends Clutter.DeformEffect {
       this.alignIcon = 'center';  // 'left-top'
 
       this.EFFECT = this.settings.getValue("effect"); //'default' - 'sine'
+      if (this.EFFECT === EffectType.Random) {
+         this.EFFECT = Math.floor(Math.random() * 2);
+      } else if (this.EFFECT === EffectType.DefaultSine) {
+         if (this instanceof MagicLampMinimizeEffect) {
+            this.EFFECT = EffectType.Default;
+         } else {
+            this.EFFECT = EffectType.Sine;
+         }
+      } else if (this.EFFECT === EffectType.SineDefault) {
+         if (this instanceof MagicLampMinimizeEffect) {
+            this.EFFECT = EffectType.Sine;
+         } else {
+            this.EFFECT = EffectType.Default;
+         }
+      }
       this.DURATION = this.settings.getValue("duration");
       this.X_TILES = this.settings.getValue("x-tiles");
       this.Y_TILES = this.settings.getValue("y-tiles");

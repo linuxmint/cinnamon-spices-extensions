@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonMagicLamp@klangman 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-02 00:30-0400\n"
+"POT-Creation-Date: 2024-12-01 12:42-0500\n"
 "PO-Revision-Date: 2024-09-02 18:26+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 5.6/extension.js:80
+#. 5.6/extension.js:83
 msgid "ERROR"
 msgstr "ERROR"
 
-#. 5.6/extension.js:80
+#. 5.6/extension.js:83
 msgid "was NOT enabled"
 msgstr "NO s'ha activat"
 
-#. 5.6/extension.js:81
+#. 5.6/extension.js:84
 msgid "The existing extension"
 msgstr "L'extensió present"
 
-#. 5.6/extension.js:81
+#. 5.6/extension.js:84
 msgid "conflicts with this extension."
 msgstr "conflictivitza amb aquesta extensió."
 
@@ -57,6 +57,18 @@ msgstr "per defecte"
 msgid "sine"
 msgstr "sinus"
 
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr ""
+
 #. 5.6->settings-schema.json->effect->description
 msgid "The type of effect"
 msgstr "El tipus d'efecte"
@@ -69,22 +81,14 @@ msgstr ""
 "Utilitzar 'per defecte' crearà un efecte de corba, mentre que 'sinus' crearà "
 "un efecte més ondulat"
 
-#. 5.6->settings-schema.json->duration->units
-msgid "ms"
-msgstr "ms"
-
 #. 5.6->settings-schema.json->duration->description
-msgid "Effect duration"
+#, fuzzy
+msgid "Effect duration (ms)"
 msgstr "Durada de l'efecte"
 
 #. 5.6->settings-schema.json->duration->tooltip
 msgid "The time (in milliseconds) that the effect takes to complete"
 msgstr "El temps (en mil·lisegons) que tarda en completar-se l'efecte"
-
-#. 5.6->settings-schema.json->x-tiles->units
-#. 5.6->settings-schema.json->y-tiles->units
-msgid "tiles"
-msgstr "caselles"
 
 #. 5.6->settings-schema.json->x-tiles->description
 msgid "X Tiles"
