@@ -17,6 +17,8 @@ const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 
+const UUID = "Flipper@connerdev";
+
 let settings;
 let bindings = ['switch-to-workspace-left',
                 'switch-to-workspace-right',
@@ -35,6 +37,7 @@ Flipper.prototype = {
         this.destroy_requested = false;
         this.queued_direction = null;
         this.monitor = Main.layoutManager.primaryMonitor;
+        settings = new FlipperSettings(UUID);
 
         let [binding_type,,,direction] = binding.get_name().split('-');
         direction = Meta.MotionDirection[direction.toUpperCase()];
