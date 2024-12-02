@@ -12,6 +12,8 @@ const Settings = imports.ui.settings;
 const Util = imports.misc.util; // Needed for spawnCommandLine()
 const SignalManager = imports.misc.signalManager;
 
+const UUID = "DesktopCube@yare";
+
 let enabled;
 let settings;
 let signalManager;
@@ -64,6 +66,7 @@ Cube.prototype = {
         this.destroy_requested = false;
         this.transitions = [];             // An array of Meta.MotionDirection values for each face transiation that is queued up
         this.firstRotate = true;
+        settings = new CubeSettings(UUID);
         this.pullaway = (100-settings.pullawayPercent)/100/2;
 
         if (faces === undefined)
