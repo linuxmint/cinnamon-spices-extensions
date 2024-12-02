@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2022-08-09 19:31+0200\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr "Fjern vinduers titellinje efter behag."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Indstillinger for Cinnamon Maximus"
+
+#. settings-schema.json->onlyManual->description
+#, fuzzy
+msgid "Undecorating only with hotkey"
+msgstr "Fjern titellinje, når udlagt side om side"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr "Brug genvejstast til at fjerne titellinje i det aktuelle vindue"
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr ""
+"Global genvejstast til at fjerne titellinje i det aktuelle vindue "
+"(eksperimentel)"
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Fjern titellinje, når udlagt side om side"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Fjern titellinje i alle vinduer (eksperimentel, luk og åbn alle vinduer igen)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr "Anvend liste over ignorerede"
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr ""
+"Ignorerede programmer (brug \",\" til adskillelse af programmer; delvis "
+"match og reg. udtryk tilladt)"
+
+#. settings-schema.json->useAutoUndecorList->description
+#, fuzzy
+msgid "Use Auto Undecorating for apps"
+msgstr "Anvend automatisk fjernelse af titellinje"
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+"Programmer med auto. fjernelse af titellinje (brug \",\" til adskillelse af "
+"programmer; delvis match og reg. udtryk tilladt)"
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr "Behold fokus for QT-programmer (eksperimentel)"
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr "Logning (se Melange - Log)"

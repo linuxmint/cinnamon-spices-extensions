@@ -1,0 +1,28 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+
+#. 6.2->settings-schema.json->focus-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2/effects/Focus.js:91
+msgid "Focus"
+msgstr ""
+
+#. 6.2->settings-schema.json->focus-blur-amount->description
+msgid "Blur Amount"
+msgstr ""
+
+#. 6.2->settings-schema.json->focus-blur-quality->description
+msgid "Blur Quality"
+msgstr ""
+
+#. 6.2->settings-schema.json->focus-blur-quality->tooltip
+msgid ""
+"The Quality of the Blur (Setting this too high may increase GPU load and "
+"affect performance)"
+msgstr ""
