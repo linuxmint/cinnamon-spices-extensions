@@ -76,9 +76,9 @@ var Effect = class Effect {
         // clang-format off
         shader.set_uniform_float(shader._uFlashColor,    4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
         shader.set_uniform_float(shader._uSeed,          2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-        shader.set_uniform_float(shader._uClawSize,      1, [settings.get_double('trex-scratch-scale')]);
-        shader.set_uniform_float(shader._uNumClaws,      1, [settings.get_int('trex-scratch-count')]);
-        shader.set_uniform_float(shader._uWarpIntensity, 1, [settings.get_double('trex-scratch-warp')]);
+        shader.set_uniform_float(shader._uClawSize,      1, [settings.getValue('trex-scratch-scale')]);
+        shader.set_uniform_float(shader._uNumClaws,      1, [settings.getValue('trex-scratch-count')]);
+        shader.set_uniform_float(shader._uWarpIntensity, 1, [settings.getValue('trex-scratch-warp')]);
         // clang-format on
       });
 

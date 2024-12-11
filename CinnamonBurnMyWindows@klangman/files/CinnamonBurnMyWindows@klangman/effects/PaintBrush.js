@@ -72,7 +72,7 @@ var Effect = class Effect {
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         shader.set_uniform_float(shader._uBrushSize, 1,
-                                 [settings.get_int('paint-brush-size')]);
+                                 [settings.getValue('paint-brush-size')]);
       });
 
       // This is required to bind the brush texture for drawing. Sadly, this seems to be

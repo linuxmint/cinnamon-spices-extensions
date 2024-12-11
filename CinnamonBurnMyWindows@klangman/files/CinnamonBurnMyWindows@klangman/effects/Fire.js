@@ -78,16 +78,16 @@ var Effect = class Effect {
       // And update all uniforms at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         for (let i = 1; i <= 5; i++) {
-          const c = Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
+          const c = Clutter.Color.from_string(settings.getValue('fire-color-' + i))[1];
           shader.set_uniform_float(
             shader._uGradient[i - 1], 4,
             [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
         }
 
         // clang-format off
-        shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('fire-3d-noise')]);
-        shader.set_uniform_float(shader._uScale,         1, [settings.get_double('fire-scale')]);
-        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('fire-movement-speed')]);
+        shader.set_uniform_float(shader._u3DNoise,       1, [settings.getValue('fire-3d-noise')]);
+        shader.set_uniform_float(shader._uScale,         1, [settings.getValue('fire-scale')]);
+        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.getValue('fire-movement-speed')]);
         // clang-format on
       });
     });

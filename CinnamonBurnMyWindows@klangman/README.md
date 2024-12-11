@@ -35,6 +35,7 @@ The window shadows are not part of the animation and therefore they suddenly app
 - Doom
 - Energize A
 - Energize B
+- Fire
 - Focus
 - Glide
 - Glitch
@@ -53,7 +54,6 @@ The window shadows are not part of the animation and therefore they suddenly app
 Because Cinnamon is missing a required API, the following effects are disabled. I am hoping to find a way around this issue:
 
 - Broken Glass
-- Fire
 - Matrix
 - PaintBrush
 - Snap Of Disintegration
@@ -65,8 +65,8 @@ Because Cinnamon is missing a required API, the following effects are disabled. 
 2. Click on the "Extensions" icon under the "Preferences" category
 3. Click the "Download" tab and then click the "Burn My Windows" entry
 4. Click the "Install" button on the right and then return to the "Manage" tab
-6. Select the new "Burn My Windows" entry and then click the "+" button at the bottom of the window
-7. Use the "gears" icon next to the "Burn My Windows" entry to open the setting window and setup the preferred behaviour
+5. Select the new "Burn My Windows" entry and then click the "+" button at the bottom of the window
+6. Use the "gears" icon next to the "Burn My Windows" entry to open the setting window and setup the preferred behaviour
 
 ## Feedback
 
@@ -74,7 +74,7 @@ Please leave a comment here on cinnamon-spices.linuxmint.com or you can create a
 **Please DO NOT open any issues against the original Gnome project. Open issues only on my Github or on cinnamon-spices so I can check if the issue has anything to do with my changes to support Cinnamon**
 
 If you like this extension, please consider making a donation to the author of the original Gnome extension which makes up the vast majority of the code for this Cinnamon extension. Donation links can be found on his Github page:
- 
+
 https://github.com/Schneegans/Burn-My-Windows
 
 If you want to help others find this Cinnamon extension, consider staring it here and on my Github page so that more people might learn of it's existence. The more stars it gets the more encouragement I'll have to continue working on it.
