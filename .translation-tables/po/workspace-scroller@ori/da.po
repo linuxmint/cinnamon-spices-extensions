@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 22:28+0000\n"
+"PO-Revision-Date: 2019-11-23 16:57+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Workspace Scroller"
+msgstr "Arbejdsområderulning"
+
+#. metadata.json->description
+msgid "Switch workspaces using mouse scroll at screen edges."
+msgstr "Skift arbejdsområde ved at rulle med musen på skærmkanterne."
+
+#. settings-schema.json->edgesHeader->description
+msgid "Edges"
+msgstr "Kanter"
+
+#. settings-schema.json->Left->description
+msgid "Use left edge"
+msgstr "Brug venstre kant"
+
+#. settings-schema.json->LeftUp->description
+#. settings-schema.json->RightUp->description
+#. settings-schema.json->TopUp->description
+#. settings-schema.json->BottomUp->description
+#. settings-schema.json->TopLeftUp->description
+#. settings-schema.json->TopRightUp->description
+#. settings-schema.json->BottomLeftUp->description
+#. settings-schema.json->BottomRightUp->description
+msgid " — Scroll up: "
+msgstr " —Rul op: "
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "None"
+msgstr "Ingenting"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Switch left"
+msgstr "Skift til venstre"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Switch right"
+msgstr "Skift til højre"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Show expo"
+msgstr "Vis arbejdsområder"
+
+#. settings-schema.json->LeftDown->description
+#. settings-schema.json->RightDown->description
+#. settings-schema.json->TopDown->description
+#. settings-schema.json->BottomDown->description
+#. settings-schema.json->TopLeftDown->description
+#. settings-schema.json->TopRightDown->description
+#. settings-schema.json->BottomLeftDown->description
+#. settings-schema.json->BottomRightDown->description
+msgid " — Scroll down: "
+msgstr " —Rul ned: "
+
+#. settings-schema.json->Right->description
+msgid "Use right edge"
+msgstr "Brug højre kant"
+
+#. settings-schema.json->Top->description
+msgid "Use top edge"
+msgstr "Brug øverste kant"
+
+#. settings-schema.json->Bottom->description
+msgid "Use bottom edge"
+msgstr "Brug nederste kant"
+
+#. settings-schema.json->cornersHeader->description
+msgid "Corner"
+msgstr "Hjørne"
+
+#. settings-schema.json->TopLeft->description
+msgid "Use top left corner"
+msgstr "Brug øverste venstre hjørne"
+
+#. settings-schema.json->TopRight->description
+msgid "Use top right corner"
+msgstr "Brug øverste højre hjørne"
+
+#. settings-schema.json->BottomLeft->description
+msgid "Use bottom left corner"
+msgstr "Brug nederste venstre hjørne"
+
+#. settings-schema.json->BottomRight->description
+msgid "Use bottom right corner"
+msgstr "Brug nederste højre hjørne"
+
+#. settings-schema.json->cornerSize->units
+msgid "pixels"
+msgstr "pixler"
+
+#. settings-schema.json->cornerSize->description
+msgid "Corners areas size: "
+msgstr "Hjørners arealstørrelse: "
