@@ -283,7 +283,6 @@ msgid "Application"
 msgstr "Aplicación"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
-#, fuzzy
 msgid "A list of applications with special effect rules"
 msgstr "Una lista de aplicaciones con reglas de efectos especiales"
 
@@ -401,15 +400,15 @@ msgstr "Color"
 
 #. 6.2->settings-schema.json->fire-movement-speed->description
 msgid "Fire Movement Speed"
-msgstr ""
+msgstr "Velocidad de movimiento del fuego"
 
 #. 6.2->settings-schema.json->fire-3d-noise->description
 msgid "Fire 3D Noise"
-msgstr ""
+msgstr "Ruido 3D del fuego"
 
 #. 6.2->settings-schema.json->fire-3d-noise->tooltip
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Crea un fuego más dinámico pero requiere más potencia de GPU."
 
 #. 6.2->settings-schema.json->fire-color-1->description
 #. 6.2->settings-schema.json->wisps-color-1->description
@@ -427,14 +426,12 @@ msgid "Color #3"
 msgstr "Color #3"
 
 #. 6.2->settings-schema.json->fire-color-4->description
-#, fuzzy
 msgid "Color #4"
-msgstr "Color #1"
+msgstr "Color #4"
 
 #. 6.2->settings-schema.json->fire-color-5->description
-#, fuzzy
 msgid "Color #5"
-msgstr "Color #1"
+msgstr "Color #5"
 
 #. 6.2->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
