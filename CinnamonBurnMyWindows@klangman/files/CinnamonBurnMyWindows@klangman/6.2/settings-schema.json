@@ -43,6 +43,7 @@
                 "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time",
                 "energize-a-scale", "energize-a-color", "energize-a-animation-time",
                 "energize-b-scale", "energize-b-color", "energize-b-animation-time",
+                "fire-scale", "fire-movement-speed", "fire-3d-noise", "fire-color-1", "fire-color-2", "fire-color-3", "fire-color-4", "fire-color-5", "fire-animation-time",
                 "focus-blur-amount", "focus-blur-quality", "focus-animation-time",
                 "glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time",
                 "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time",
@@ -59,7 +60,7 @@
     "random-section" : {
       "type" : "section",
       "title" : "Effects included in the randomized sets:",
-      "keys" : ["random-title", "apparition-random-include", "doom-random-include", "energize-a-random-include", "energize-b-random-include", "focus-random-include", "glide-random-include", "glitch-random-include", "hexagon-random-include", "incinerate-random-include", "pixelate-random-include", "pixel-wheel-random-include", "pixel-wipe-random-include", "portal-random-include", "tv-effect-random-include", "tv-glitch-random-include", "wisps-random-include"]
+      "keys" : ["random-title", "apparition-random-include", "doom-random-include", "energize-a-random-include", "energize-b-random-include", "fire-random-include", "focus-random-include", "glide-random-include", "glitch-random-include", "hexagon-random-include", "incinerate-random-include", "pixelate-random-include", "pixel-wheel-random-include", "pixel-wipe-random-include", "portal-random-include", "tv-effect-random-include", "tv-glitch-random-include", "wisps-random-include"]
     }
   },
 
@@ -73,6 +74,7 @@
             "Doom": 2,
             "Energize A": 3,
             "Energize B": 4,
+            "Fire": 5,
             "Focus": 21,
             "Glide": 6,
             "Glitch": 7,
@@ -94,6 +96,7 @@
             "Doom": 2,
             "Energize A": 3,
             "Energize B": 4,
+            "Fire": 5,
             "Focus": 21,
             "Glide": 6,
             "Glitch": 7,
@@ -112,7 +115,7 @@
         },
         {"id": "application", "title": "Application",  "type": "string"}
     ],
-    "tooltip": "A list of application with special effect rules",
+    "tooltip": "A list of applications with special effect rules",
     "default": []
   },
   "app-rules-button" : {
@@ -162,6 +165,14 @@
     "description" : "Energize B",
     "open" : "energize-b-random-include-open",
     "close" : "energize-b-random-include-close"
+  },
+  "fire-random-include": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "TwoCheckButtonsWidget",
+    "description" : "Fire",
+    "open" : "fire-random-include-open",
+    "close" : "fire-random-include-close"
   },
   "focus-random-include": {
     "type" : "custom",
@@ -264,6 +275,7 @@
   "doom-random-include-open" :        { "type": "generic", "default": true },
   "energize-a-random-include-open" :  { "type": "generic", "default": true },
   "energize-b-random-include-open" :  { "type": "generic", "default": true },
+  "fire-random-include-open" :        { "type": "generic", "default": true },
   "focus-random-include-open" :       { "type": "generic", "default": true },
   "glide-random-include-open" :       { "type": "generic", "default": true },
   "glitch-random-include-open" :      { "type": "generic", "default": true },
@@ -281,6 +293,7 @@
   "doom-random-include-close" :        { "type": "generic", "default": true },
   "energize-a-random-include-close" :  { "type": "generic", "default": true },
   "energize-b-random-include-close" :  { "type": "generic", "default": true },
+  "fire-random-include-close" :        { "type": "generic", "default": true },
   "focus-random-include-close" :       { "type": "generic", "default": true },
   "glide-random-include-close" :       { "type": "generic", "default": true },
   "glitch-random-include-close" :      { "type": "generic", "default": true },
@@ -302,6 +315,7 @@
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
+      "Fire": 5,
       "Focus": 21,
       "Glide": 6,
       "Glitch": 7,
@@ -326,6 +340,7 @@
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
+      "Fire": 5,
       "Focus": 21,
       "Glide": 6,
       "Glitch": 7,
@@ -352,6 +367,7 @@
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
+      "Fire": 5,
       "Focus": 21,
       "Glide": 6,
       "Glitch": 7,
@@ -512,6 +528,79 @@
      "step" : 10,
      "dependency" : "effect-selector=4",
      "default": 1000
+  },
+
+  "fire-scale": {
+     "type": "scale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 3,
+     "step" : 0.01,
+     "dependency" : "effect-selector=5",
+     "default": 0.5
+  },
+
+  "fire-movement-speed": {
+     "type": "scale",
+     "description" : "Fire Movement Speed",
+     "min" : -2,
+     "max" : 2,
+     "step" : 0.01,
+     "dependency" : "effect-selector=5",
+     "default": 0.5
+  },
+
+  "fire-3d-noise": {
+    "type" : "switch",
+    "description": "Fire 3D Noise",
+    "tooltip": "Creates a more dynamic fire but requires more GPU power.",
+     "dependency" : "effect-selector=5",
+     "default": false
+  },
+
+  "fire-color-1": {
+     "type": "colorchooser",
+     "description" : "Color #1",
+     "dependency" : "effect-selector=5",
+     "default": "rgba(76, 51, 25, 0.0)"
+  },
+
+  "fire-color-2": {
+     "type": "colorchooser",
+     "description" : "Color #2",
+     "dependency" : "effect-selector=5",
+     "default": "rgba(180, 55, 30, 0.7)"
+  },
+
+  "fire-color-3": {
+     "type": "colorchooser",
+     "description" : "Color #3",
+     "dependency" : "effect-selector=5",
+     "default": "rgba(255, 76, 38, 0.9)"
+  },
+
+  "fire-color-4": {
+     "type": "colorchooser",
+     "description" : "Color #4",
+     "dependency" : "effect-selector=5",
+     "default": "rgba(255, 166, 25, 1)"
+  },
+
+  "fire-color-5": {
+     "type": "colorchooser",
+     "description" : "Color #5",
+     "dependency" : "effect-selector=5",
+     "default": "rgba(255, 255, 255, 1)"
+  },
+
+  "fire-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=5",
+     "default": 1500
   },
 
   "focus-blur-amount": {

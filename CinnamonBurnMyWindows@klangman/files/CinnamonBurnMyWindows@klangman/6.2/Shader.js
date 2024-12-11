@@ -25,60 +25,6 @@ const GLib = imports.gi.GLib;
 
 const UUID = "CinnamonBurnMyWindows@klangman";
 
-/*
-// Since Cinnamon.GLSLEffect only exists in Mint22/Cinnamon6.2, this is an attempt to make a JS clone for older Cinnamon versions
-var GLSLEffect = GObject.registerClass( { /-, GTypeName: 'Cjs_GLSLEffect'-/ },
-class GLSLEffect extends Clutter.OffscreenEffect {
-   static base_pipeline = null;
-   constructor() {
-      if (GLSLEffect.base_pipeline === null) {
-         let backend = Clutter.get_default_backend()
-         let ctx = backend.get_cogl_context(); // This does not exist in Cinnamon, blocked here for now! :-(
-         GLSLEffect.base_pipeline = new Cogl.Pipeline( ctx );
-         GLSLEffect.base_pipeline.set_blend( "RGB = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))" );
-         this.build_pipeline();
-      }
-      this._priv = GLSLEffect.base_pipeline.copy();
-      GLSLEffect.base_pipeline.set_layer_null_texture(0);
-   }
-
-   add_glsl_snippet(hook, declarations, code, is_replace) {
-      if (!GLSLEffect.base_pipeline)
-         return;
-
-      let snippet;
-      if (is_replace) {
-         snippet = new Cogl.Snippet(hook, declarations, null);
-         snippet.set_replace(code);
-      } else {
-         snippet = new Cogl.Snippet(hook, declarations, code);
-      }
-      if (hook === Cogl.SnippetHook.VERTEX || hook === Cogl.SnippetHook.FRAGMENT) {
-         GLSLEffect.base_pipeline.add_snippet(snippet);
-      } else {
-         GLSLEffect.base_pipeline.add_layer_snippet(0, snippet);
-      }
-   }
-
-   get_uniform_location(name) {
-      return( this._priv.get_uniform_location(name) );
-   }
-
-   set_uniform_float(uniform, n_components, value) {
-      this._priv.set_uniform_float(uniform, n_components, value);
-   }
-
-   set_uniform_matrix(uniform, transpose, dimensions, value) {
-      this._priv.set_uniform_matrix(uniform, transpose, dimensions, value);
-   }
-
-   build_pipeline() {
-      log( "GLSLEffect.build_pipeline(), should not get here!" );
-   }
-}
-);
-*/
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is the base class for all shaders of Burn-My-Windows. It automagically loads    //
 // the shader's source code from the resource file resources/shaders/<nick>.glsl and    //

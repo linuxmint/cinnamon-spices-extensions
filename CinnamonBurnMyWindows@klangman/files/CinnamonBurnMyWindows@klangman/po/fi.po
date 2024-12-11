@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.5\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-10-29 21:27-0400\n"
+"POT-Creation-Date: 2024-12-10 22:31-0500\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: fi\n"
 
 #. 6.2/extension.js:212 6.2/extension.js:443
 msgid "Error"
@@ -46,11 +46,11 @@ msgstr ""
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Apparition.js:94
+#. effects/Apparition.js:94
 msgid "Apparition"
 msgstr "Ilmestys"
 
-#. 6.2/effects/BrokenGlass.js:152
+#. effects/BrokenGlass.js:152
 msgid "Broken Glass"
 msgstr "Särkynyt lasi"
 
@@ -58,7 +58,7 @@ msgstr "Särkynyt lasi"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Doom.js:101
+#. effects/Doom.js:101
 msgid "Doom"
 msgstr "Tuoho"
 
@@ -66,7 +66,7 @@ msgstr "Tuoho"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/EnergizeA.js:90
+#. effects/EnergizeA.js:90
 msgid "Energize A"
 msgstr "Energia A"
 
@@ -74,31 +74,35 @@ msgstr "Energia A"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/EnergizeB.js:92
+#. effects/EnergizeB.js:92
 msgid "Energize B"
 msgstr "Energia B"
 
-#. 6.2/effects/Fire.js:114
+#. 6.2->settings-schema.json->fire-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Fire.js:114
 msgid "Fire"
 msgstr "Tuli"
 
-#. 6.2/effects/Fire.js:168
+#. effects/Fire.js:168
 msgid "Default Fire"
 msgstr "Oletus tuli"
 
-#. 6.2/effects/Fire.js:178
+#. effects/Fire.js:178
 msgid "Hell Fire"
 msgstr "Helvetin tuli"
 
-#. 6.2/effects/Fire.js:188
+#. effects/Fire.js:188
 msgid "Dark and Smutty"
 msgstr "Tumma tahra"
 
-#. 6.2/effects/Fire.js:198
+#. effects/Fire.js:198
 msgid "Cold Breeze"
 msgstr "Kylmää tuulta"
 
-#. 6.2/effects/Fire.js:208
+#. effects/Fire.js:208
 msgid "Santa is Coming"
 msgstr "Joulupukki tulee"
 
@@ -106,7 +110,7 @@ msgstr "Joulupukki tulee"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Focus.js:91
+#. effects/Focus.js:91
 msgid "Focus"
 msgstr "Tarkennus"
 
@@ -114,7 +118,7 @@ msgstr "Tarkennus"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Glide.js:93
+#. effects/Glide.js:93
 msgid "Glide"
 msgstr "Liuku"
 
@@ -122,7 +126,7 @@ msgstr "Liuku"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Glitch.js:97
+#. effects/Glitch.js:97
 msgid "Glitch"
 msgstr "Häiriö"
 
@@ -130,7 +134,7 @@ msgstr "Häiriö"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Hexagon.js:106
+#. effects/Hexagon.js:106
 msgid "Hexagon"
 msgstr "Kuusikulmio"
 
@@ -138,15 +142,15 @@ msgstr "Kuusikulmio"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Incinerate.js:144
+#. effects/Incinerate.js:144
 msgid "Incinerate"
 msgstr "Poltto"
 
-#. 6.2/effects/Matrix.js:124
+#. effects/Matrix.js:124
 msgid "Matrix"
 msgstr "Matrix"
 
-#. 6.2/effects/PaintBrush.js:114
+#. effects/PaintBrush.js:114
 msgid "Paint Brush"
 msgstr "Sivellin"
 
@@ -154,7 +158,7 @@ msgstr "Sivellin"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/PixelWheel.js:88
+#. effects/PixelWheel.js:88
 msgid "Pixel Wheel"
 msgstr "Pikselipyörä"
 
@@ -162,7 +166,7 @@ msgstr "Pikselipyörä"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/PixelWipe.js:114
+#. effects/PixelWipe.js:114
 msgid "Pixel Wipe"
 msgstr "Pikselipyyhintä"
 
@@ -170,7 +174,7 @@ msgstr "Pikselipyyhintä"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Pixelate.js:88
+#. effects/Pixelate.js:88
 msgid "Pixelate"
 msgstr "Pikselöinti"
 
@@ -178,15 +182,15 @@ msgstr "Pikselöinti"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Portal.js:99
+#. effects/Portal.js:99
 msgid "Portal"
 msgstr "Teleportti"
 
-#. 6.2/effects/SnapOfDisintegration.js:124
+#. effects/SnapOfDisintegration.js:124
 msgid "Snap of Disintegration"
 msgstr "Hajoaminen"
 
-#. 6.2/effects/TRexAttack.js:121
+#. effects/TRexAttack.js:121
 msgid "T-Rex Attack"
 msgstr "T-Rexin hyökkäys"
 
@@ -194,7 +198,7 @@ msgstr "T-Rexin hyökkäys"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/TVEffect.js:90
+#. effects/TVEffect.js:90
 msgid "TV Effect"
 msgstr "TV pois"
 
@@ -202,7 +206,7 @@ msgstr "TV pois"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/TVGlitch.js:99
+#. effects/TVGlitch.js:99
 msgid "TV Glitch"
 msgstr "TV päälle"
 
@@ -210,7 +214,7 @@ msgstr "TV päälle"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2/effects/Wisps.js:101
+#. effects/Wisps.js:101
 msgid "Wisps"
 msgstr "Hikkaset"
 
@@ -279,7 +283,8 @@ msgid "Application"
 msgstr "Sovellus"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
-msgid "A list of application with special effect rules"
+#, fuzzy
+msgid "A list of applications with special effect rules"
 msgstr "Luettelo sovelluksista, joilla on tehosteita koskevia sääntöjä"
 
 #. 6.2->settings-schema.json->app-rules-button->description
@@ -340,6 +345,7 @@ msgstr "Satunnaisuus"
 #. 6.2->settings-schema.json->doom-animation-time->description
 #. 6.2->settings-schema.json->energize-a-animation-time->description
 #. 6.2->settings-schema.json->energize-b-animation-time->description
+#. 6.2->settings-schema.json->fire-animation-time->description
 #. 6.2->settings-schema.json->focus-animation-time->description
 #. 6.2->settings-schema.json->glide-animation-time->description
 #. 6.2->settings-schema.json->glitch-animation-time->description
@@ -372,6 +378,7 @@ msgstr "Pikselikoko"
 
 #. 6.2->settings-schema.json->energize-a-scale->description
 #. 6.2->settings-schema.json->energize-b-scale->description
+#. 6.2->settings-schema.json->fire-scale->description
 #. 6.2->settings-schema.json->glide-scale->description
 #. 6.2->settings-schema.json->glitch-scale->description
 #. 6.2->settings-schema.json->hexagon-scale->description
@@ -390,6 +397,43 @@ msgstr "Skaalaus"
 #. 6.2->settings-schema.json->tv-glitch-color->description
 msgid "Color"
 msgstr "Väri"
+
+#. 6.2->settings-schema.json->fire-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-color-1->description
+#. 6.2->settings-schema.json->wisps-color-1->description
+msgid "Color #1"
+msgstr "Väri #1"
+
+#. 6.2->settings-schema.json->fire-color-2->description
+#. 6.2->settings-schema.json->wisps-color-2->description
+msgid "Color #2"
+msgstr "Väri #2"
+
+#. 6.2->settings-schema.json->fire-color-3->description
+#. 6.2->settings-schema.json->wisps-color-3->description
+msgid "Color #3"
+msgstr "Väri #3"
+
+#. 6.2->settings-schema.json->fire-color-4->description
+#, fuzzy
+msgid "Color #4"
+msgstr "Väri #1"
+
+#. 6.2->settings-schema.json->fire-color-5->description
+#, fuzzy
+msgid "Color #5"
+msgstr "Väri #1"
 
 #. 6.2->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
@@ -478,15 +522,3 @@ msgstr "Pyörivä"
 #. 6.2->settings-schema.json->portal-details->description
 msgid "Details"
 msgstr "Tiedot"
-
-#. 6.2->settings-schema.json->wisps-color-1->description
-msgid "Color #1"
-msgstr "Väri #1"
-
-#. 6.2->settings-schema.json->wisps-color-2->description
-msgid "Color #2"
-msgstr "Väri #2"
-
-#. 6.2->settings-schema.json->wisps-color-3->description
-msgid "Color #3"
-msgstr "Väri #3"

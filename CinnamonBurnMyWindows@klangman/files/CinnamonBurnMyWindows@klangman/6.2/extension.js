@@ -278,8 +278,8 @@ class BurnMyWindows {
          effectOptions.push(Effect.EnergizeA);
       if (this._settings.getValue("energize-b-random-include" + append))
          effectOptions.push(Effect.EnergizeB);
-      //if (this._settings.getValue("file-random-include" + append))
-      //   effectOptions.push(Effect.Fire);
+      if (this._settings.getValue("fire-random-include" + append))
+         effectOptions.push(Effect.Fire);
       if (this._settings.getValue("focus-random-include" + append))
          effectOptions.push(Effect.Focus);
       if (this._settings.getValue("glide-random-include" + append))

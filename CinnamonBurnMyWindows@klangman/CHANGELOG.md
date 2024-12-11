@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.6
+
+* Enabled the "Fire" effect
+* Apply a visual fix to "Incinerate" that was fixed in the Gnome extension recently
+* Reordered the code to make it a bit easier to maintain
+
 ## 0.9.5
 
 * Added a new "Focus" effect by Justin Garza
