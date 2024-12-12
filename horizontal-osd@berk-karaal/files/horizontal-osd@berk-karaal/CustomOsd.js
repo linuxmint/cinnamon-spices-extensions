@@ -7,10 +7,47 @@ const Tweener = imports.ui.tweener;
 const Gio = imports.gi.Gio;
 const Gdk = imports.gi.Gdk;
 const Meta = imports.gi.Meta;
+const GLib = imports.gi.GLib;
+
+const CINNAMON_VERSION = GLib.getenv('CINNAMON_VERSION');
 
 const LEVEL_ANIMATION_TIME = 0.1;
 const FADE_TIME = 0.1;
 let HIDE_TIMEOUT = 1500;
+
+function version_exceeds(version, min_version) {
+    let our_version = version.split(".");
+    let cmp_version = min_version.split(".");
+    let i;
+
+    for (i = 0; i < our_version.length && i < cmp_version.length; i++) {
+        let our_part = parseInt(our_version[i]);
+        let cmp_part = parseInt(cmp_version[i]);
+
+        if (isNaN(our_part) || isNaN(cmp_part)) {
+            return false;
+        }
+
+        if (our_part < cmp_part) {
+            return false;
+        } else
+        if (our_part > cmp_part) {
+            return true;
+        }
+    }
+
+    if (our_version.length < cmp_version.length) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// Removal of the percentage in the Cinnamon media OSD, from Cinnamon 6.4.
+// See https://github.com/linuxmint/mint22.1-beta/issues/4#issuecomment-2535973291
+let PERCENT_SYMBOL = " %";
+if (version_exceeds(CINNAMON_VERSION, "6.4"))
+    PERCENT_SYMBOL = "";
 
 const OSD_SIZE = 110;
 
@@ -139,7 +176,7 @@ OsdWindow.prototype = {
 
     setLevel: function (level) {
         if (level != undefined) {
-            this._label.set_text(String(level) + " %");
+            this._label.set_text(""+ level + PERCENT_SYMBOL);
             this._label.visible = this._level.actor.visible = true;
 
             if (this.actor.visible)
@@ -316,23 +353,31 @@ OsdWindow.prototype = {
     },
 
     _onOsdSettingsChanged: function () {
-        let currentSize = this._osdSettings.get_string("show-media-keys-osd");
-
-        switch (currentSize) {
-            case "disabled":
-                this._osdBaseSize = null;
-                break;
-            case "small":
-                this._sizeMultiplier = 0.7;
-                this._osdBaseSize = Math.floor(OSD_SIZE * this._sizeMultiplier);
-                break;
-            case "large":
-                this._sizeMultiplier = 1.0;
-                this._osdBaseSize = OSD_SIZE;
-                break;
-            default:
+        let currentSize = this._osdSettings.get_value("show-media-keys-osd");
+        if (typeof(currentSize) == "boolean") { // Cinnamon 6+
+            if (currentSize) {
                 this._sizeMultiplier = 0.85;
                 this._osdBaseSize = Math.floor(OSD_SIZE * this._sizeMultiplier);
+            } else {
+                this._osdBaseSize = null;
+            }
+        } else {
+            switch (currentSize) {
+                case "disabled":
+                    this._osdBaseSize = null;
+                    break;
+                case "small":
+                    this._sizeMultiplier = 0.7;
+                    this._osdBaseSize = Math.floor(OSD_SIZE * this._sizeMultiplier);
+                    break;
+                case "large":
+                    this._sizeMultiplier = 1.0;
+                    this._osdBaseSize = OSD_SIZE;
+                    break;
+                default:
+                    this._sizeMultiplier = 0.85;
+                    this._osdBaseSize = Math.floor(OSD_SIZE * this._sizeMultiplier);
+            }
         }
 
         this._monitorsChanged();
