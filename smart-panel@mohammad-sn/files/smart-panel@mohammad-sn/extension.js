@@ -208,10 +208,11 @@ SmartPanelExt.prototype = {
                 let limit = this._lastScroll + this.scroll_delay;
                 if (this.no_fast_scroll && currentTime < limit && currentTime >= this._lastScroll) { }
                 else if (this.scrl_action == 'switch_workspace') {
-                    if (ExtensionSystem.runningExtensions.indexOf('DesktopCube@yare') > -1 ) {
+                    this._updateWorkspaceSwitcherExt();
+                    // If we didn't find the workspace switcher extension APIs, check if we have older versions of DesktopCube or Flipper
+                    if (!this.workspaceSwitcherExt && ExtensionSystem.runningExtensions.indexOf('DesktopCube@yare') > -1 ) {
                         //~ global.log("DesktopCube@yare DETECTED!!!");
-                        if (this.DesktopCube) {}
-                        else {
+                        if (!this.DesktopCube) {
                             //~ global.log("ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension']: "+Object.keys(ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension']));
                             this.DesktopCube = ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension'];
                         }
@@ -228,10 +229,11 @@ SmartPanelExt.prototype = {
                         }
                     }
                     else
-                    if (ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
+                    if (!this.workspaceSwitcherExt && ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
                         //~ global.log("Flipper@connerdev DETECTED!!!");
-                        if (this.Flipper){}
-                        else { this.Flipper = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension']; }
+                        if (!this.Flipper) {
+                           this.Flipper = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension'];
+                        }
                         let binding = [];
                         binding.get_mask = function(){ return 0x0; };
                         if (scrollDirection == 1) binding.get_name = function(){ return 'switch-to-workspace-left'; };
@@ -257,8 +259,12 @@ SmartPanelExt.prototype = {
                         if (reqWsInex < 0) reqWsInex = first;
                         else if (reqWsInex > last) reqWsInex = flast;
                         let reqWs = global.screen.get_workspace_by_index(reqWsInex);
-                        reqWs.activate(global.get_current_time());
-                        this.showWorkspaceOSD();
+                        if (this.workspaceSwitcherExt) {
+                           this.workspaceSwitcherExt.ExtSwitchToWorkspace(reqWs);
+                        } else {
+                           reqWs.activate(global.get_current_time());
+                           this.showWorkspaceOSD();
+                        }
                     }
                 }
                 else if (this.scrl_action == 'switch-windows') {
@@ -366,7 +372,15 @@ SmartPanelExt.prototype = {
 
                 break;
         }
-        if (reqWs) { reqWs.activate(global.get_current_time()); this.showWorkspaceOSD(); }
+        if (reqWs) {
+           this._updateWorkspaceSwitcherExt();
+           if (this.workspaceSwitcherExt) {
+              this.workspaceSwitcherExt.ExtSwitchToWorkspace(reqWs);
+           } else {
+              reqWs.activate(global.get_current_time()); 
+              this.showWorkspaceOSD();
+           }
+        }
     },
 
     showWorkspaceOSD : function() {
@@ -444,6 +458,24 @@ SmartPanelExt.prototype = {
             this._workspace_osd.destroy();
             this._workspace_osd = null;
         }
+    },
+
+    _updateWorkspaceSwitcherExt : function() {
+       // Check if one of the workspace switcher extensions are installed or if the state has changed since we last checked
+       if (ExtensionSystem.runningExtensions.indexOf('DesktopCube@yare') > -1 ) {
+          if (!this.workspaceSwitcherExt || this.workspaceSwitcherExt !== ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension']) {
+             this.workspaceSwitcherExt = ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension'];
+          }
+       } else if (ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
+          if (!this.workspaceSwitcherExt || this.workspaceSwitcherExt !== ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension']) {
+             this.workspaceSwitcherExt = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension'];
+          }
+       }
+       // Make sure the switcher extension has the required API to allow us to change to any arbitrary workspace
+       if (this.workspaceSwitcherExt && typeof this.workspaceSwitcherExt.ExtSwitchToWorkspace !== "function")
+       {
+          this.workspaceSwitcherExt =  null;
+       }
     },
 }
 
