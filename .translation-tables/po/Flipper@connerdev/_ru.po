@@ -1,0 +1,123 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-28 23:14-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Cube"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Deck"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Flip"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Pop"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Rolodex"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Slide"
+msgstr ""
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Stack"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Back"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Bounce"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Circ"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic-Back"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Elastic"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Expo"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Sine"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Quad"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Quart"
+msgstr ""
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->rotateEffect->options
+msgid "Quint"
+msgstr ""
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
