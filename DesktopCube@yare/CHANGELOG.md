@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.2
+
+- Added APIs used by the "Smart Panel" applet so it can use Desktop Cube in more cases
+- Fixed a case where the Cube was used under the Expo (using the Left/Right arrow keys when the Expo was open). Using the Cube in this case was visually awkward and unnecessary so I disabled using Cube for this scenario
+- Fixes issues when attempting to move a window to an adjacent workspace (Shift+Ctrl+Alt+Left/Right) for a window that is visible on all workspaces
+
+## 2.0.1
+
+- Allow Desktop Cube to work with the "Smart Panel" applet
+
 ## 2.0.0
 
 * Added ability to use Cube effect when changing the workspace via the "Workspace Switcher" applet
@@ -23,7 +33,7 @@
 ## 1.0.2
 
 * Added an option to remove the panels from the animation effect
-* Fix the Effect Setting options that were broken when the "tween" option widget was removed starting with cinnamon 5.4 
+* Fix the Effect Setting options that were broken when the "tween" option widget was removed starting with cinnamon 5.4
 * Allow Cinnamon to play the workspace switch sound if it is enabled
 * Note: All changed from here on will only be for the Cinnamon 5.4+ version
 * Change info.json author to me, since there is currently no maintainer

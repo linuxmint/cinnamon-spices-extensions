@@ -22,6 +22,7 @@
     "includePanels": {
         "type": "checkbox",
         "description": "Include Panels",
+        "tooltip": "Include the panels while animating. In most cases the panels are not properly painted or completely invisible anyhow, so it's best to leave this disabled",
         "default": false
     },
     "patchmoveToWorkspace": {

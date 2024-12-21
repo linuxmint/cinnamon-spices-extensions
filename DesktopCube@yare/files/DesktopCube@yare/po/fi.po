@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: DesktopCube@yare 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-11-20 10:20-0500\n"
+"POT-Creation-Date: 2024-12-21 14:16-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
@@ -81,6 +81,13 @@ msgstr ""
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
 msgstr "Sisältää paneelit"
+
+#. 5.4->settings-schema.json->includePanels->tooltip
+msgid ""
+"Include the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Cube effect with the Workspace Switcher applet"
