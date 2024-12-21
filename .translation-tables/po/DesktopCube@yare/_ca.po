@@ -1,0 +1,55 @@
+# DESKTOP CUBE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->animationTimeSec->description
+msgid "Animation duration (seconds)"
+msgstr ""
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->header2->description
+msgid "Effect Easing"
+msgstr ""
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr ""
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+msgid "Rotate easing"
+msgstr ""
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr ""
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
+msgstr ""

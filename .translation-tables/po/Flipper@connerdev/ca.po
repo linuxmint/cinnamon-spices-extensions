@@ -1,0 +1,358 @@
+# FLIPPER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-21 11:12-0500\n"
+"PO-Revision-Date: 2024-08-22 01:52+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Flipper"
+msgstr "Flipper"
+
+#. metadata.json->description
+msgid "Fancy workspace switching extension"
+msgstr "Extensió per canviar d'espai de treball"
+
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->general-page->title
+msgid "General"
+msgstr "General"
+
+#. 2.0->settings-schema.json->animationTime->description
+#. 5.4->settings-schema.json->cube-animationTime->description
+#. 5.4->settings-schema.json->deck-animationTime->description
+#. 5.4->settings-schema.json->flip-animationTime->description
+#. 5.4->settings-schema.json->pop-animationTime->description
+#. 5.4->settings-schema.json->rolodex-animationTime->description
+#. 5.4->settings-schema.json->slide-animationTime->description
+#. 5.4->settings-schema.json->stack-animationTime->description
+msgid "Animation duration"
+msgstr "Duració de l'animació"
+
+#. 2.0->settings-schema.json->pullaway->description
+#. 5.4->settings-schema.json->cube-pullaway->description
+#. 5.4->settings-schema.json->deck-pullaway->description
+#. 5.4->settings-schema.json->flip-pullaway->description
+#. 5.4->settings-schema.json->pop-pullaway->description
+#. 5.4->settings-schema.json->rolodex-pullaway->description
+#. 5.4->settings-schema.json->slide-pullaway->description
+#. 5.4->settings-schema.json->stack-pullaway->description
+msgid "Zoom Amount"
+msgstr "Quantitat de zoom"
+
+#. 2.0->settings-schema.json->fade->description
+#. 5.4->settings-schema.json->cube-fade->description
+#. 5.4->settings-schema.json->deck-fade->description
+#. 5.4->settings-schema.json->flip-fade->description
+#. 5.4->settings-schema.json->pop-fade->description
+#. 5.4->settings-schema.json->rolodex-fade->description
+#. 5.4->settings-schema.json->slide-fade->description
+#. 5.4->settings-schema.json->stack-fade->description
+msgid "Fade Transition"
+msgstr "Transició de desaparició"
+
+#. 2.0->settings-schema.json->dim_factor->description
+#. 5.4->settings-schema.json->cube-dim-factor->description
+#. 5.4->settings-schema.json->deck-dim-factor->description
+#. 5.4->settings-schema.json->flip-dim-factor->description
+#. 5.4->settings-schema.json->pop-dim-factor->description
+#. 5.4->settings-schema.json->rolodex-dim-factor->description
+#. 5.4->settings-schema.json->slide-dim-factor->description
+#. 5.4->settings-schema.json->stack-dim-factor->description
+msgid "Background Dim Amount"
+msgstr "Quantitat de foscor del fons"
+
+#. 2.0->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efectes"
+
+#. 2.0->settings-schema.json->transitionEffect->description
+msgid "Transition Effect"
+msgstr "Efecte de transició"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->cube-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Cube"
+msgstr "Cub"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->deck-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Deck"
+msgstr "Cartes"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->flip-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Flip"
+msgstr "Voltejar"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->pop-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Pop"
+msgstr "Pop"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->rolodex-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Rolodex"
+msgstr "Rolodex"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->slide-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Slide"
+msgstr "Relliscar"
+
+#. 2.0->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->stack-random-include->description
+#. 5.4->settings-schema.json->transitionEffect->options
+#. 5.4->settings-schema.json->effect-selector->options
+msgid "Stack"
+msgstr "Apilar"
+
+#. 2.0->settings-schema.json->rotateEffect->description
+#. 5.4->settings-schema.json->cube-rotateEffect->description
+#. 5.4->settings-schema.json->deck-rotateEffect->description
+#. 5.4->settings-schema.json->flip-rotateEffect->description
+#. 5.4->settings-schema.json->pop-rotateEffect->description
+#. 5.4->settings-schema.json->rolodex-rotateEffect->description
+#. 5.4->settings-schema.json->slide-rotateEffect->description
+#. 5.4->settings-schema.json->stack-rotateEffect->description
+msgid "Transition Easing"
+msgstr "Mode de transició d'acceleració i des-acceleració"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Back"
+msgstr "Tornar"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Bounce"
+msgstr "Rebotar"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Circ"
+msgstr "Cercle"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Cubic"
+msgstr "Cúbic"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Cubic-Back"
+msgstr "Cúbic-Tornar"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Cubic-Bounce"
+msgstr "Cúbic-Rebotar"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Cubic-Elastic"
+msgstr "Cúbic-Elàstic"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Elastic"
+msgstr "Elàstic"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Expo"
+msgstr "Expo"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Sine"
+msgstr "Sinus"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Quad"
+msgstr "Quadrat"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Quart"
+msgstr "Quart"
+
+#. 2.0->settings-schema.json->rotateEffect->options
+#. 5.4->settings-schema.json->cube-rotateEffect->options
+#. 5.4->settings-schema.json->deck-rotateEffect->options
+#. 5.4->settings-schema.json->flip-rotateEffect->options
+#. 5.4->settings-schema.json->pop-rotateEffect->options
+#. 5.4->settings-schema.json->rolodex-rotateEffect->options
+#. 5.4->settings-schema.json->slide-rotateEffect->options
+#. 5.4->settings-schema.json->stack-rotateEffect->options
+msgid "Quint"
+msgstr "Quint"
+
+#. 2.0->settings-schema.json->includeBackground->description
+msgid "Include Background"
+msgstr "Incloure el fons"
+
+#. 5.4->settings-schema.json->effects-page->title
+#, fuzzy
+msgid "Effect Settings"
+msgstr "Efectes"
+
+#. 5.4->settings-schema.json->general-settings->title
+msgid "Flipper General Settings"
+msgstr ""
+
+#. 5.4->settings-schema.json->random-settings->title
+msgid "Effects included in the randomized set"
+msgstr ""
+
+#. 5.4->settings-schema.json->effect-selector-section->title
+msgid "Effect Selector"
+msgstr ""
+
+#. 5.4->settings-schema.json->effect-settings->title
+msgid "Effect Specific Settings"
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->description
+#, fuzzy
+msgid "Workspace Transition Effect"
+msgstr "Efecte de transició"
+
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Randomized"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Flipper effect with the Workspace Switcher applet"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Flipper effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Flipper effect when changing focus causes a workspace switch"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Flipper effect is used to change the current "
+"workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr "Incloure els taulers"
+
+#. 5.4->settings-schema.json->includePanels->tooltip
+msgid ""
+"Exclude the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
+
+#. 5.4->settings-schema.json->effect-selector->description
+msgid "Show settings for effect:"
+msgstr ""

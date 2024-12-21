@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2024-07-25 17:26+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr ""
+"Establir les ubicacions de les icones de l'escriptori per cada espai de "
+"treball"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Icones d'escriptori per espai de treball"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Configuració"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "mil·lisegons"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Retard de l'actualització de l'escriptori en iniciar-se l'extensió"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Número de mil·lisegons a esperar abans de completar l'actualització de "
+"l'escriptori després de l'arrancada de l'extensió"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Retard en l'actualització de l'escriptori"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr ""
+"Número de mil·lisegons a esperar abans de completar l'actualització de "
+"l'escriptori"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "segons"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Guardar cada"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Freqüència de guardat del fitxer amb les posiciones de les icones a "
+"l'escriptori. 0 = No es guarda."
