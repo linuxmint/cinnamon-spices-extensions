@@ -1,62 +1,122 @@
 {
-  "header1" : {
-    "type" : "header",
-    "description" : "General"
+  "layout" : {
+    "type" : "layout",
+    "pages" : ["general-page", "effects-page"],
+
+    "general-page" : {
+      "type" : "page",
+      "title" : "General",
+      "sections" : ["general-settings", "random-settings"]
+    },
+    "effects-page" : {
+      "type" : "page",
+      "title" : "Effect Settings",
+      "sections" : ["effect-selector-section", "effect-settings"]
+    },
+
+    "general-settings" : {
+      "type" : "section",
+      "title" : "Flipper General Settings",
+      "keys" : ["transitionEffect", "patchmoveToWorkspace", "patchActivateWindow", "includePanels"]
+    },
+    "random-settings" : {
+      "type" : "section",
+      "title" : "Effects included in the randomized set",
+      "dependency" : "transitionEffect=7",
+      "keys" : ["cube-random-include", "deck-random-include", "flip-random-include", "pop-random-include", "rolodex-random-include", "slide-random-include", "stack-random-include"]
+    },
+
+    "effect-selector-section" : {
+      "type" : "section",
+      "title" : "Effect Selector",
+      "keys" : ["effect-selector"]
+    },
+    "effect-settings" : {
+      "type" : "section",
+      "title" : "Effect Specific Settings",
+      "keys" : ["cube-animationTime", "cube-pullaway", "cube-fade", "cube-dim-factor", "cube-rotateEffect",
+                "deck-animationTime", "deck-pullaway", "deck-fade", "deck-dim-factor", "deck-rotateEffect",
+                "flip-animationTime", "flip-pullaway", "flip-fade", "flip-dim-factor", "flip-rotateEffect",
+                "pop-animationTime", "pop-pullaway", "pop-fade", "pop-dim-factor", "pop-rotateEffect",
+                "rolodex-animationTime", "rolodex-pullaway", "rolodex-fade", "rolodex-dim-factor", "rolodex-rotateEffect",
+                "slide-animationTime", "slide-pullaway", "slide-fade", "slide-dim-factor", "slide-rotateEffect",
+                "stack-animationTime", "stack-pullaway", "stack-fade", "stack-dim-factor", "stack-rotateEffect"]
+    }
   },
-  "animationTime" : {
+
+  "cube-random-include": {
+    "type" : "checkbox",
+    "description" : "Cube",
+    "default": true
+  },
+  "deck-random-include": {
+    "type" : "checkbox",
+    "description" : "Deck",
+    "default": true
+  },
+  "flip-random-include": {
+    "type" : "checkbox",
+    "description" : "Flip",
+    "default": true
+  },
+  "pop-random-include": {
+    "type" : "checkbox",
+    "description" : "Pop",
+    "default": true
+  },
+  "rolodex-random-include": {
+    "type" : "checkbox",
+    "description" : "Rolodex",
+    "default": true
+  },
+  "slide-random-include": {
+    "type" : "checkbox",
+    "description" : "Slide",
+    "default": true
+  },
+  "stack-random-include": {
+    "type" : "checkbox",
+    "description" : "Stack",
+    "default": true
+  },
+
+  "cube-animationTime" : {
     "type" : "scale",
     "description" : "Animation duration",
     "min" : 0,
     "max" : 1500,
     "default": 500,
-    "step" : 50
+    "step" : 50,
+    "dependency" : "effect-selector=0"
   },
-  "pullaway" : {
+  "cube-pullaway" : {
     "type" : "scale",
     "description" : "Zoom Amount",
     "min" : 0.00,
     "max" : 1.0,
     "default" : 1.0,
-    "step" : 0.05
+    "step" : 0.05,
+    "dependency" : "effect-selector=0"
   },
-  "fade" : {
+  "cube-fade" : {
     "type" : "scale",
     "description" : "Fade Transition",
     "min" : 0.00,
     "max" : 1.0,
     "default" : 0.0,
-    "step" : 0.05
+    "step" : 0.05,
+    "dependency" : "effect-selector=0"
   },
-  "dim_factor" : {
+  "cube-dim-factor" : {
     "type" : "scale",
     "description" : "Background Dim Amount",
     "min" : 0.0,
     "max" : 1.0,
     "default" : 0.2,
-    "step" : 0.05
+    "step" : 0.05,
+    "dependency" : "effect-selector=0"
   },
-  "sep1": {
-    "type": "separator"
-  },
-  "header2" : {
-    "type" : "header",
-    "description" : "Effects"
-  },
-  "transitionEffect": {
-    "type": "combobox",
-    "description": "Transition Effect",
-    "default": "Stack",
-    "options": {
-      "Cube": "Cube",
-      "Deck": "Deck",
-      "Flip": "Flip",
-      "Pop": "Pop",
-      "Rolodex": "Rolodex",
-      "Slide": "Slide",
-      "Stack" : "Stack"
-    }
-  },
-  "rotateEffect": {
+  "cube-rotateEffect": {
     "type": "combobox",
     "description": "Transition Easing",
     "default": "Expo",
@@ -74,16 +134,405 @@
       "Quad": "Quad",
       "Quart": "Quart",
       "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=0"
+  },
+
+
+  "deck-animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50,
+    "dependency" : "effect-selector=1"
+  },
+  "deck-pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=1"
+  },
+  "deck-fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=1"
+  },
+  "deck-dim-factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05,
+    "dependency" : "effect-selector=1"
+  },
+  "deck-rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=1"
+  },
+
+  "flip-animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50,
+    "dependency" : "effect-selector=2"
+  },
+  "flip-pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=2"
+  },
+  "flip-fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=2"
+  },
+  "flip-dim-factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05,
+    "dependency" : "effect-selector=2"
+  },
+  "flip-rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=2"
+  },
+
+  "pop-animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50,
+    "dependency" : "effect-selector=3"
+  },
+  "pop-pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=3"
+  },
+  "pop-fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=3"
+  },
+  "pop-dim-factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05,
+    "dependency" : "effect-selector=3"
+  },
+  "pop-rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=3"
+  },
+
+  "rolodex-animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50,
+    "dependency" : "effect-selector=4"
+  },
+  "rolodex-pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=4"
+  },
+  "rolodex-fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=4"
+  },
+  "rolodex-dim-factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05,
+    "dependency" : "effect-selector=4"
+  },
+  "rolodex-rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=4"
+  },
+
+  "slide-animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50,
+    "dependency" : "effect-selector=5"
+  },
+  "slide-pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=5"
+  },
+  "slide-fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=5"
+  },
+  "slide-dim-factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05,
+    "dependency" : "effect-selector=5"
+  },
+  "slide-rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=5"
+  },
+
+  "stack-animationTime" : {
+    "type" : "scale",
+    "description" : "Animation duration",
+    "min" : 0,
+    "max" : 1500,
+    "default": 500,
+    "step" : 50,
+    "dependency" : "effect-selector=6"
+  },
+  "stack-pullaway" : {
+    "type" : "scale",
+    "description" : "Zoom Amount",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 1.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=6"
+  },
+  "stack-fade" : {
+    "type" : "scale",
+    "description" : "Fade Transition",
+    "min" : 0.00,
+    "max" : 1.0,
+    "default" : 0.0,
+    "step" : 0.05,
+    "dependency" : "effect-selector=6"
+  },
+  "stack-dim-factor" : {
+    "type" : "scale",
+    "description" : "Background Dim Amount",
+    "min" : 0.0,
+    "max" : 1.0,
+    "default" : 0.2,
+    "step" : 0.05,
+    "dependency" : "effect-selector=6"
+  },
+  "stack-rotateEffect": {
+    "type": "combobox",
+    "description": "Transition Easing",
+    "default": "Expo",
+    "options": {
+      "Back": "Back",
+      "Bounce": "Bounce",
+      "Circ": "Circ",
+      "Cubic": "Cubic",
+      "Cubic-Back": "EndBack",
+      "Cubic-Bounce": "EndBounce",
+      "Cubic-Elastic": "EndElastic",
+      "Elastic": "Elastic",
+      "Expo": "Expo",
+      "Sine": "Sine",
+      "Quad": "Quad",
+      "Quart": "Quart",
+      "Quint": "Quint"
+    },
+    "dependency" : "effect-selector=6"
+  },
+
+  "transitionEffect": {
+    "type": "combobox",
+    "description": "Workspace Transition Effect",
+    "default": "Stack",
+    "options": {
+      "Cube": 0,
+      "Deck": 1,
+      "Flip": 2,
+      "Pop": 3,
+      "Rolodex": 4,
+      "Slide": 5,
+      "Stack" : 6,
+      "Randomized" : 7
     }
   },
-  "includeBackground" : {
-    "type" : "checkbox",
-    "description" : "Include Background",
-    "default" : true
+  "patchmoveToWorkspace": {
+    "type": "checkbox",
+    "description": "Use Flipper effect with the Workspace Switcher applet",
+    "tooltip": "Override the moveToWorkspace() API so that the Flipper effect is used by the Workspace Switcher Applet when changing the current workspace",
+    "default": true
+  },
+  "patchActivateWindow": {
+    "type": "checkbox",
+    "description": "Use Flipper effect when changing focus causes a workspace switch",
+    "tooltip": "Override the activateWindow() API so that when a window on another workspace is given the focus, the Flipper effect is used to change the current workspace",
+    "default": true
   },
   "includePanels" : {
     "type" : "checkbox",
     "description" : "Include Panels",
+     "tooltip": "Exclude the panels while animating. In most cases the panels are not properly painted or completely invisible anyhow, so it's best to leave this disabled",
     "default" : false
+  },
+
+  "effect-selector": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Cube": 0,
+      "Deck": 1,
+      "Flip": 2,
+      "Pop": 3,
+      "Rolodex": 4,
+      "Slide": 5,
+      "Stack" : 6
+    },
+    "description": "Show settings for effect:"
   }
 }

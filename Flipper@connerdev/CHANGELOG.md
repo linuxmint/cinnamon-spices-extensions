@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.0
+
+- Added ability to use Flipper effects when changing the workspace via the "Workspace Switcher" applet
+- Added ability to use Flipper effects when changing the workspace by activating a window on a different workspace
+- Added ability to use Flipper effects when using the workspace "Direct Navigation" hotkeys
+- Implement "Extension Workspace Switching API" used by smart-panel 1.4.2 to switch workspaces using the Flipper effect
+- Added a configuration option to control if the "Workspace Switcher" applet will use the Flipper effect
+- Added a configuration option to control if switching to a window on a different workspace will use the Flipper effect
+- Use independent effect settings so each effect remembers it's own settings
+- Added a "Randomized" effect option that will randomly select a effect for each workspace transition initiation
+- Added a set of configuration options that allows you to control which effects are in the Randomized set
+- Removed the "Include Background" option and hard-coded Cube effect to include a cloned background, all the other effects will see the original desktop background dimmed according to the "Background Dim Amount" setting
+
 ## 1.0.6
 
 * Fix "opacity" .xsession-errors messages when using the "Back" or "Elastic" easing options
