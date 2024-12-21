@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.2
+
+- Added APIs used by the "Smart Panel" applet so it can use Desktop Cube in more cases
+- Fixed a case where the Cube was used under the Expo (using the Left/Right arrow keys when the Expo was open). Using the Cube in this case was visually awkward and unnecessary so I disabled using Cube for this scenario
+- Fixes issues when attempting to move a window to an adjacent workspace (Shift+Ctrl+Alt+Left/Right) for a window that is visible on all workspaces
+
+## 2.0.1
+
+- Allow Desktop Cube to work with the "Smart Panel" applet
+
 ## 2.0.0
 
 * Added ability to use Cube effect when changing the workspace via the "Workspace Switcher" applet

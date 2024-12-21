@@ -27,6 +27,8 @@ let bindings = [
 let original_mw_moveToWorkspace;
 let original_main_activateWindow;
 
+let curDesktopCube;
+
 const isFinalized = function(obj) {
     return obj && GObject.Object.prototype.toString.call(obj).indexOf('FINALIZED') > -1;
 }
@@ -193,7 +195,7 @@ Cube.prototype = {
     },
 
     moveWindow: function(window, direction) {
-        if (!window || window.get_window_type() === Meta.WindowType.DESKTOP) {
+        if (!window || window.is_on_all_workspaces() === true || window.get_window_type() === Meta.WindowType.DESKTOP) {
             return false;
         }
 
@@ -888,9 +890,13 @@ function switchToWorkspace(display, window, binding) {
 // Our version of moveToWorkspace() which will be Monkey Patched over the Cinnamon version
 // This is how we handle the workspace switching initiated by the "Workspace Switcher" applet
 function moveToWorkspace(workspace, direction_hint) {
-    let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
-    if (transitions_needed)
-       new Cube(null, null, null, transitions_needed, direction);
+    if (Main.expo._shown) {
+       original_mw_moveToWorkspace(workspace, direction_hint);
+    } else {
+        let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
+        if (transitions_needed)
+            new Cube(null, null, null, transitions_needed, direction);
+    }
 }
 
 // Our version of activateWindow which will be Monkey Patched over the cinnamon version
@@ -909,6 +915,42 @@ function activateWindow(window, time, workspaceNum) {
    } else {
       original_main_activateWindow(window, time, workspaceNum);
    }
+}
+// Extension Workspace Switching API
+// This function can be used by other programs to initiate a workspace change using the Cube effect
+// The direction argument must be Meta.MotionDirection.RIGHT or Meta.MotionDirection.LEFT
+// The window argument (optional) is a Meta.Window that will follow the workspace switch
+function ExtSwitchWorkspace(direction, window) {
+    if (direction !== Meta.MotionDirection.RIGHT && direction !== Meta.MotionDirection.LEFT)
+       return;
+    if (window & !(window instanceof Meta.Window))
+       window = null;
+    let new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+    if (curDesktopCube && curDesktopCube.is_animating) {
+       curDesktopCube.transitions.push(direction);
+    } else {
+       curDesktopCube = new Cube(null, null, null, 1, direction);
+       if (window)
+          curDesktopCube.moveWindow(window, direction);
+    }
+}
+
+// Extension Workspace Switching API
+// This function can be used by other programs to initiate a workspace change using the Cube effect
+// The workspace argument must be a Meta.Workspace instance
+function ExtSwitchToWorkspace(workspace) {
+    if (workspace instanceof Meta.Workspace) {
+       let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
+       if (transitions_needed) {
+          if (curDesktopCube && curDesktopCube.is_animating) {
+             for (let i=0 ; i<transitions_needed ; i++) {
+                curDesktopCube.transitions.push(direction);
+             }
+          } else {
+             curDesktopCube = new Cube(null, null, null, transitions_needed, direction);
+          }
+       }
+    }
 }
 
 function CubeSettings(uuid) {
