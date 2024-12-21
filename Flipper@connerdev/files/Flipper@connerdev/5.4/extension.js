@@ -16,41 +16,65 @@ const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
+const SignalManager = imports.misc.signalManager;
 
 const UUID = "Flipper@connerdev";
 
+const TransitionEffect = {
+   Cube:       0,
+   Deck:       1,
+   Flip:       2,
+   Pop:        3,
+   Rolodex:    4,
+   Slide:      5,
+   Stack:      6,
+   Randomized: 7
+}
+
+let enabled;
 let settings;
+let signalManager;
 let bindings = ['switch-to-workspace-left',
                 'switch-to-workspace-right',
                 'move-to-workspace-left',
                 'move-to-workspace-right'];
+
+let original_mw_moveToWorkspace;
+let original_main_activateWindow;
+
+let curFlipper;
 
 function Flipper() {
     this._init.apply(this, arguments);
 }
 
 Flipper.prototype = {
-    _init: function(display, window, binding) {
+    _init: function(new_workspace, direction, modifierMask, window) {
         this.from = null;
         this.to = null;
         this.is_animating = false;
         this.destroy_requested = false;
         this.queued_direction = null;
         this.monitor = Main.layoutManager.primaryMonitor;
-        settings = new FlipperSettings(UUID);
+        if (!settings)
+           settings = new FlipperSettings(UUID);
 
-        let [binding_type,,,direction] = binding.get_name().split('-');
-        direction = Meta.MotionDirection[direction.toUpperCase()];
-        this.direction = direction;
+        this.effectName = this.getEffectName();
+        if (this.effectName == null ) {
+            // Nothing enabled, so just do a normal workspace switch!
+            Main.soundManager.play('switch');
+            new_workspace.activate(global.get_current_time());
+            Main.wm.showWorkspaceOSD();
+            return;
+        }
+
         this.last_direction = direction;
 
         if (direction != Meta.MotionDirection.RIGHT &&
             direction != Meta.MotionDirection.LEFT)
             return;
 
-        let active_workspace = global.screen.get_active_workspace();
-        let new_workspace = active_workspace.get_neighbor(direction);
-        if (active_workspace.index() == new_workspace.index())
+        if (global.screen.get_active_workspace() === new_workspace.index())
             return;
 
         this.actor = new St.Group({
@@ -61,32 +85,31 @@ Flipper.prototype = {
             height: global.screen_height,
             visible: true });
 
-        Main.uiGroup.add_actor(this.actor);
+        Main.uiGroup.add_child(this.actor);
 
-        this.releaseID = this.actor.connect('key-release-event',
-            Lang.bind(this, this._keyReleaseEvent));
-        this.pressID = this.actor.connect('key-press-event',
-            Lang.bind(this, this._keyPressEvent));
+        this.releaseID = this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
+        this.pressID = this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
 
         this.initBackground();
         this.dimBackground();
 
         Main.pushModal(this.actor);
 
-        let mask = binding.get_mask();
-        this._modifierMask =
-            imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
+        this._modifierMask = modifierMask;
+        // If there are no modifiers, we can destroy right away
+        if (!modifierMask) {
+           this.destroy_requested = true;
+        }
         global.window_group.hide();
 
         Main.getPanels().forEach(function(panel){
           panel.actor.hide();
         });
 
-        if (binding_type == "move" &&
-            window.get_window_type() !== Meta.WindowType.DESKTOP)
-                this.moveWindow(window, direction);
+        if (window && window.get_window_type() !== Meta.WindowType.DESKTOP)
+            this.moveWindow(window, new_workspace);
 
-        this.startAnimate(direction);
+        this.startAnimate(new_workspace, direction);
         this.actor.show();
     },
 
@@ -113,10 +136,8 @@ Flipper.prototype = {
             if (i == -1) return false;
             let j;
             let done = false;
-            for (j = 0; j < workspace_clone.workspaceWindows.length &&
-                !done; j++) {
-                if (window.get_stable_sequence() ==
-                    workspace_clone.workspaceWindowActors[j].i)
+            for (j = 0; j < workspace_clone.workspaceWindows.length && !done; j++) {
+                if (window.get_stable_sequence() == workspace_clone.workspaceWindowActors[j].i)
                     done = true;
             }
             workspace_clone.remove_actor
@@ -131,7 +152,7 @@ Flipper.prototype = {
     addWindowActor: function(workspace_clone, window, index) {
         if (workspace_clone && (workspace_clone.index == index)) {
             let windowClone = this.cloneMetaWindow(window);
-            workspace_clone.add_actor(windowClone);
+            workspace_clone.add_child(windowClone);
             //windowClone.raise_top();
             //workspace_clone.chromeGroup.raise_top();
             workspace_clone.workspaceWindowActors.push(windowClone);
@@ -168,23 +189,25 @@ Flipper.prototype = {
         }
     },
 
-    moveWindow: function(window, direction) {
-        if (!window ||
-            window.get_window_type() === Meta.WindowType.DESKTOP) return false;
+    moveWindow: function(window, workspace) {
+        if (!window || window.is_on_all_workspaces() === true || window.get_window_type() === Meta.WindowType.DESKTOP) {
+           return false;
+        }
 
         let active_workspace = global.screen.get_active_workspace();
-        let new_workspace = active_workspace.get_neighbor(direction);
 
         let active_index = active_workspace.index();
-        let new_index = new_workspace.index();
+        let new_index = workspace.index();
 
-        window.change_workspace(new_workspace);
+        if (window.get_workspace() !== workspace) {
+           window.change_workspace(workspace);
+        }
         Mainloop.idle_add(Lang.bind(this, function() {
             // Unless this is done a bit later,
             // window is sometimes not activated
-            if (window.get_workspace() ==
-                global.screen.get_active_workspace()) {
-                window.activate(global.get_current_time());
+            if (window.get_workspace() === global.screen.get_active_workspace()) {
+                //window.activate(global.get_current_time());
+                Main.activateWindow(window);
             }
         }));
 
@@ -192,34 +215,32 @@ Flipper.prototype = {
         return true;
     },
 
+    /*
     get_workspace_clone_scaled: function(workspaceIndex, direction) {
         let clone = this.get_workspace_clone(workspaceIndex);
-        // clone.set_scale(1 - 2*settings.pullaway, 1 - 2*settings.pullaway);
+        // clone.set_scale(1 - 2*this.getPullaway(), 1 - 2*this.getPullaway());
         clone.x = this.monitor.width / 2;
         return clone;
-    },
+    },*/
 
     get_workspace_clone: function(workspaceIndex) {
         let clone = new St.Group({clip_to_allocation: true});
         clone.set_size(this.monitor.width, this.monitor.height);
 
-        if(settings.includeBackground) {
+        //if(settings.includeBackground) {
+        if(settings.transitionEffect === TransitionEffect.Cube){
           let background = new St.Group();
-          background.add_actor
-              (Meta.BackgroundActor.new_for_screen(global.screen));
-          clone.add_actor(background);
+          background.add_child(Meta.BackgroundActor.new_for_screen(global.screen));
+          clone.add_child(background);
         }
 
-        let deskletClone =
-            new Clutter.Clone({source : Main.deskletContainer.actor});
-        clone.add_actor(deskletClone);
+        let deskletClone = new Clutter.Clone({source : Main.deskletContainer.actor});
+        clone.add_child(deskletClone);
 
         clone.desktopClones = [];
         global.get_window_actors().forEach(function(w){
-            if(w.get_meta_window().get_window_type() ==
-               Meta.WindowType.DESKTOP) {
-                let compositor =
-                    w.get_meta_window().get_compositor_private();
+            if(w.get_meta_window().get_window_type() == Meta.WindowType.DESKTOP) {
+                let compositor = w.get_meta_window().get_compositor_private();
                 let rect = w.get_meta_window().get_buffer_rect();
                 let windowClone = new Clutter.Clone(
                     {source: compositor,
@@ -228,7 +249,7 @@ Flipper.prototype = {
                      y: rect.y,
                     });
 
-                clone.add_actor(windowClone);
+                clone.add_child(windowClone);
                 //windowClone.lower(deskletClone);
                 windowClone.get_parent().set_child_below_sibling(windowClone, deskletClone);
                 clone.desktopClones.push(windowClone);
@@ -240,7 +261,7 @@ Flipper.prototype = {
         for (let i = 0; i < workspaceWindows.length; i++) {
             workspaceWindows[i].i = workspaceWindows[i].get_stable_sequence();
             let windowClone = this.cloneMetaWindow(workspaceWindows[i]);
-            clone.add_actor(windowClone);
+            clone.add_child(windowClone);
             clone.workspaceWindowActors.push(windowClone);
         }
         clone.workspaceWindows = workspaceWindows;
@@ -250,7 +271,7 @@ Flipper.prototype = {
                function (panel) {
                    // Is it a non-autohideable panel, or is it a visible, tracked
                    // chrome object? TODO: Make more human-readable the logic
-                   // below in clone.add_actor().
+                   // below in clone.add_child().
                    if ((panel.actor && !panel._hideable)
                       || (panel &&  Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
                        let chromeClone = new Clutter.Clone({
@@ -261,12 +282,12 @@ Flipper.prototype = {
                            Main.layoutManager.primaryMonitor.height -
                            panel.actor.height :
                            Main.layoutManager.primaryMonitor.y) : panel.y});
-                       chromeGroup.add_actor(chromeClone);
+                       chromeGroup.add_child(chromeClone);
                        //chromeClone.raise_top();
                        chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
                    }
                });
-           clone.add_actor(chromeGroup);
+           clone.add_child(chromeGroup);
            //chromeGroup.raise_top();
            chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
            clone.chromeGroup = chromeGroup;
@@ -326,32 +347,30 @@ Flipper.prototype = {
                 Tweener.addTween(clone, {
                     opacity: 255,
                     // transition: settings.unrotateEffect,
-                    transition: settings.rotateEffect,
-                    time: settings.animationTime * 0.3333,
+                    transition: this.getRotateEffect(),
+                    time: this.getAnimationTime() * 0.3333,
                 });
             else//hide
                 Tweener.addTween(clone, {
                     opacity: 0,
-                    transition: settings.rotateEffect,
-                    time: settings.animationTime * 0.3333,
+                    transition: this.getRotateEffect(),
+                    time: this.getAnimationTime() * 0.3333,
                 });
         }));
     },*/
 
-    startAnimate: function(direction, window) {
+    startAnimate: function(new_workspace, direction) {
       this.is_animating = true;
 
       let active_workspace = global.screen.get_active_workspace();
-      let new_workspace = active_workspace.get_neighbor(direction);
+      //let new_workspace = active_workspace.get_neighbor(direction);
 
       let from_workspace;
       let to_workspace;
-      let needScale = false;
 
       if (this.to != null) {
         from_workspace = this.to;
-        needScale = false;
-        if (active_workspace.index() == new_workspace.index()) {
+        if (active_workspace.index() === new_workspace.index()) {
           // this.bounce(from_workspace, direction);
           this.from.hide();
 
@@ -360,7 +379,7 @@ Flipper.prototype = {
         }
       } else {
         from_workspace = this.get_workspace_clone(active_workspace.index());
-        this.actor.add_actor(from_workspace);
+        this.actor.add_child(from_workspace);
       }
 
       // Allow Cinnamon to play the switcher sound if it's enabled.
@@ -370,27 +389,25 @@ Flipper.prototype = {
       // sequence so users don't need to set it using export CLUTTER_PAINT...
       Meta.add_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
 
-      if (direction == this.last_direction) {
+      if (direction === this.last_direction) {
         if (this.from != null) {
-          to_workspace = this.get_workspace_clone
-              (new_workspace.index(), direction);
+          to_workspace = this.get_workspace_clone(new_workspace.index(), direction);
           this.actor.remove_actor(this.from);
           this.from.destroy();
         } else {
           to_workspace = this.get_workspace_clone(new_workspace.index());
         }
-        this.actor.add_actor(to_workspace);
+        this.actor.add_child(to_workspace);
       } else {
         // to_workspace = this.from;
-        to_workspace = this.get_workspace_clone
-            (new_workspace.index(), direction);
+        to_workspace = this.get_workspace_clone(new_workspace.index(), direction);
 
         if (this.from) {
           this.actor.remove_actor(this.from);
           this.from.destroy();
         }
 
-        this.actor.add_actor(to_workspace);
+        this.actor.add_child(to_workspace);
       }
 
 
@@ -402,14 +419,14 @@ Flipper.prototype = {
 
       this.new_workspace = new_workspace;
       new_workspace.activate(global.get_current_time());
-      this.prepare(from_workspace, to_workspace, direction, needScale);
+      this.prepare(from_workspace, to_workspace, direction);
     },
 
     getEasing: function(animationStart) {
-      let effect = settings.rotateEffect;
+      let effect = this.getRotateEffect();
       let dir;
 
-      // CLone code much? Abstract this shit.
+      // Clone code much? Abstract this shit.
       if( effect == "EndBounce" ) {
         effect = (animationStart) ? "easeInCubic" : (this.queued_action) ? "easeOutCubic" : "easeOutBounce";
       } else if( effect == "EndBack" ) {
@@ -425,22 +442,56 @@ Flipper.prototype = {
     },
 
     getHalfScale: function() {
-      return settings.pullaway + (1 - settings.pullaway)/2;
+      return this.getPullaway() + (1 - this.getPullaway())/2;
     },
 
     getScale: function() {
-      return settings.pullaway;
+      return this.getPullaway();
     },
 
     getTime: function() {
       if(this.hurry) {
-        return settings.animationTime / 2500;
+        return this.getAnimationTime() / 2500;
       }
 
-      return settings.animationTime / 2000;
+      return this.getAnimationTime() / 2000;
     },
 
-    prepare: function(from, to, direction, needScale) {
+    getEffectName: function() {
+      if(settings.transitionEffect === TransitionEffect.Randomized) {
+         let options = [];
+         if(settings.settings.getValue("cube-random-include"))    options.push( "Cube" );
+         if(settings.settings.getValue("deck-random-include"))    options.push( "Deck" );
+         if(settings.settings.getValue("flip-random-include"))    options.push( "Flip" );
+         if(settings.settings.getValue("pop-random-include"))     options.push( "Pop"  );
+         if(settings.settings.getValue("rolodex-random-include")) options.push( "Rolodex" );
+         if(settings.settings.getValue("slide-random-include"))   options.push( "Slide" );
+         if(settings.settings.getValue("stack-random-include"))   options.push( "Stack" );
+         if(options.length>0) {
+            return options[Math.floor(Math.random() * options.length)];
+         }
+      } else {
+         switch (settings.transitionEffect) {
+         case TransitionEffect.Cube:
+            return "Cube";
+         case TransitionEffect.Deck:
+            return "Deck";
+         case TransitionEffect.Flip:
+            return "Flip";
+         case TransitionEffect.Pop:
+            return "Pop";
+         case TransitionEffect.Rolodex:
+            return "Rolodex";
+         case TransitionEffect.Slide:
+            return "Slide";
+         case TransitionEffect.Stack:
+            return "Stack";
+         }
+      }
+      return null;
+    },
+
+    prepare: function(from, to, direction) {
       from.raise_top();
       from.show();
       to.show();
@@ -448,19 +499,19 @@ Flipper.prototype = {
       to.set_scale(1,1);
       from.set_scale(1,1);
 
-      if(settings.transitionEffect == "Stack") {
+      if(this.effectName == "Stack") {
         this.stack_start(from, to, direction);
-      } else if(settings.transitionEffect == "Pop") {
+      } else if(this.effectName == "Pop") {
         this.pop_start(from, to, direction);
-      } else if(settings.transitionEffect == "Flip") {
+      } else if(this.effectName == "Flip") {
         this.flip_start(from, to, direction);
-      } else if(settings.transitionEffect == "Cube"){
+      } else if(this.effectName == "Cube"){
         this.cube_start(from, to, direction);
-      } else if(settings.transitionEffect == "Slide"){
+      } else if(this.effectName == "Slide"){
         this.slide_start(from, to, direction);
-      } else if(settings.transitionEffect == "Deck"){
+      } else if(this.effectName == "Deck"){
         this.deck_start(from, to, direction);
-      } else if(settings.transitionEffect == "Rolodex"){
+      } else if(this.effectName == "Rolodex"){
         this.rolodex_start(from, to, direction);
       }
     },
@@ -472,7 +523,7 @@ Flipper.prototype = {
       from.hide();
       to.raise_top();
       to.show();
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
 
       if (to.workspaceWindowActors.length > 0) {
         let range = this.getTime();
@@ -483,7 +534,6 @@ Flipper.prototype = {
           scale_x: 1.0,
           scale_y: 1.0,
           delay: delay,
-          //opacity: 255,
           transition: this.getEasing(false),
           time: startTime
         };
@@ -495,17 +545,15 @@ Flipper.prototype = {
         for(let i=0; i<to.workspaceWindowActors.length; ++i) {
           let actor = to.workspaceWindowActors[i];
           actor.set_opacity(0);
-          //actor.scale_center_x = actor.width / 2;
-          //actor.scale_center_y = actor.height / 2;
           actor.set_pivot_point(0.5, 0.5);
           tween.delay = delay;
           delay += step;
 
 
           if (direction == Meta.MotionDirection.LEFT) {
-            actor.set_scale(2.0 - settings.pullaway, 2.0 - settings.pullaway);
+            actor.set_scale(2.0 - this.getPullaway(), 2.0 - this.getPullaway());
           } else {
-            actor.set_scale(settings.pullaway, settings.pullaway);
+            actor.set_scale(this.getPullaway(), this.getPullaway());
           }
 
           // is this the last entry?
@@ -544,7 +592,6 @@ Flipper.prototype = {
         let delay = 0;
         let step = range / from.workspaceWindowActors.length;
         let tween = {
-          //opacity: 0,
           transition: this.getEasing(true),
           time: startTime
         };
@@ -560,8 +607,6 @@ Flipper.prototype = {
 
         for(let i=from.workspaceWindowActors.length-1; i >= 0; --i) {
           let actor = from.workspaceWindowActors[i];
-          //actor.scale_center_x = actor.width / 2;
-          //actor.scale_center_y = actor.height / 2;
           actor.set_pivot_point(0.5, 0.5);
           tween.delay = delay;
           delay += step;
@@ -605,7 +650,7 @@ Flipper.prototype = {
       from.hide();
       to.show();
       to.raise_top();
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
 
       if (to.workspaceWindowActors.length > 0) {
 
@@ -619,10 +664,8 @@ Flipper.prototype = {
           let to_x = actor.x;
 
           actor.set_opacity(0);
-          //actor.scale_center_x = actor.width / 2;
-          //actor.scale_center_y = actor.height / 2;
           actor.set_pivot_point(0.5, 0.5);
-          actor.set_scale(settings.pullaway, settings.pullaway);
+          actor.set_scale(this.getPullaway(), this.getPullaway());
 
           if (direction == Meta.MotionDirection.LEFT) {
             actor.move_anchor_point(0, 0);
@@ -640,7 +683,6 @@ Flipper.prototype = {
           tween.x = to_x;
           tween.delay = delay;
           tween.time = startTime;
-          //tween.opacity = 255;
           tween.rotation_angle_y = 0;
 
           // is this the last entry?
@@ -682,8 +724,6 @@ Flipper.prototype = {
             x_pos = actor.x + this.monitor.width/2;
             angle_to = this.const.STACK_ANGLE;
 
-            //actor.scale_center_x = actor.width / 2;
-            //actor.scale_center_y = actor.height / 2;
             actor.set_pivot_point(0.5, 0.5);
           } else {
             actor.move_anchor_point(0, 0);
@@ -691,18 +731,15 @@ Flipper.prototype = {
             x_pos = actor.x - this.monitor.width/2;
             angle_to = -this.const.STACK_ANGLE;
 
-            //actor.scale_center_x = actor.width / 2;
-            //actor.scale_center_y = actor.height / 2;
             actor.set_pivot_point(0.5, 0.5);
           }
 
           let tween = {
             x: x_pos,
-            scale_x: settings.pullaway,
-            scale_y: settings.pullaway,
+            scale_x: this.getPullaway(),
+            scale_y: this.getPullaway(),
             delay: delay,
             rotation_angle_y: angle_to,
-            //opacity: 0,
             transition: this.getEasing(true),
             time: startTime
           };
@@ -746,7 +783,6 @@ Flipper.prototype = {
 
       Tweener.addTween(to, {
           x: x_pos,
-          //opacity: 255,
           scale_x: 1.0,
           scale_y: 1.0,
           rotation_angle_y: angle_to,
@@ -759,7 +795,7 @@ Flipper.prototype = {
 
       from.hide();
       to.show();
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
     },
 
     flip_start: function(from, to, direction) {
@@ -793,20 +829,18 @@ Flipper.prototype = {
 
       Tweener.addTween(from, {
           x: x_pos,
-          scale_x: settings.pullaway,
-          scale_y: settings.pullaway,
-          //opacity: 255 * (1.0 - settings.fade),
+          scale_x: this.getPullaway(),
+          scale_y: this.getPullaway(),
           rotation_angle_y: angle_from/2,
           transition: this.getEasing(true),
           time: this.getTime(),
       });
-      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
 
       Tweener.addTween(to, {
           x: x_pos,
-          //opacity: 255 * (1.0 - settings.fade),
-          scale_x: settings.pullaway,
-          scale_y: settings.pullaway,
+          scale_x: this.getPullaway(),
+          scale_y: this.getPullaway(),
           rotation_angle_y: -angle_from/2,
           transition: this.getEasing(true),
           time: this.getTime(),
@@ -814,7 +848,7 @@ Flipper.prototype = {
           onComplete: this.flip_end,
           onCompleteScope: this,
       });
-      Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+      Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
     },
 
     ///////////////////////////////////////////
@@ -823,7 +857,7 @@ Flipper.prototype = {
     slide_end: function(from, to, direction) {
       let fromTransition;
       to.raise_top();
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
 
       if (direction == Meta.MotionDirection.LEFT) {
         fromTransition = this.monitor.width;
@@ -835,15 +869,13 @@ Flipper.prototype = {
           x: fromTransition,
           scale_x: this.getScale(),
           scale_y: this.getScale(),
-          //opacity: 255 * settings.fade,
           transition: this.getEasing(false),
           time: this.getTime(),
       });
-      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * settings.fade, transition: "easeInSine"});
+      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * this.getFade(), transition: "easeInSine"});
 
       Tweener.addTween(to, {
           x: 0,
-          //opacity: 255,
           scale_x: 1.0,
           scale_y: 1.0,
           transition: this.getEasing(false),
@@ -885,21 +917,19 @@ Flipper.prototype = {
       }
 
       from.set_scale(1,1);
-      to.set_scale(settings.pullaway, settings.pullaway);
+      to.set_scale(this.getPullaway(), this.getPullaway());
 
       Tweener.addTween(from, {
           x: fromTransition,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
-          //opacity: 255 * settings.fade,
           transition: this.getEasing(true),
           time: this.getTime(),
       });
-      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * settings.fade, transition: "easeInSine"});
+      Tweener.addTween(from, {time: this.getTime(), opacity: 255 * this.getFade(), transition: "easeInSine"});
 
       Tweener.addTween(to, {
           x: toTransition,
-          //opacity: 255 * (1.0 - settings.fade),
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
@@ -908,21 +938,20 @@ Flipper.prototype = {
           onComplete: this.slide_end,
           onCompleteScope: this,
       });
-      Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+      Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
     },
 
     ///////////////////////////////////////////
     // DECK
     ///////////////////////////////////////////
     deck_end: function(from, to, direction) {
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
       to.show();
 
       if (direction == Meta.MotionDirection.LEFT) {
         Tweener.addTween(to, {
             x: 0,
             y: this.monitor.height/2,
-            //opacity: 255,
             scale_x: 1,
             scale_y: 1,
             transition: this.getEasing(false),
@@ -934,7 +963,6 @@ Flipper.prototype = {
         Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
       } else {
         Tweener.addTween(to, {
-          //opacity: 255,
           scale_x: 1.0,
           scale_y: 1.0,
           transition: this.getEasing(false),
@@ -947,7 +975,6 @@ Flipper.prototype = {
             //brightness: 1.0,
             scale_x: this.getScale(),
             scale_y: this.getScale(),
-            //opacity: 0,
             transition: this.getEasing(false),
             time: this.getTime(),
             onComplete: this.unsetIsAnimating,
@@ -969,8 +996,6 @@ Flipper.prototype = {
         to.raise_top();
         from.set_position(0, this.monitor.height/2 );
         from.rotation_angle_y = 0;
-        //from.scale_center_y = 0;
-        //from.scale_center_x = this.monitor.width/2;
         from.set_pivot_point(0.5, 0);
 
         to.set_position(-this.monitor.width, this.monitor.height/2 - this.const.DECK_HEIGHT);
@@ -981,7 +1006,6 @@ Flipper.prototype = {
         to.set_opacity(0);
 
         Tweener.addTween(from, {
-          //opacity: 0,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
@@ -991,7 +1015,6 @@ Flipper.prototype = {
 
         Tweener.addTween(to, {
             x: toTransition,
-            //opacity: 255,
             scale_x: this.getHalfScale(),
             scale_y: this.getHalfScale(),
             transition: this.getEasing(true),
@@ -1012,12 +1035,9 @@ Flipper.prototype = {
         fromTransition = -this.monitor.width/2;
         to.set_opacity(0);
         to.set_scale(this.getScale(), this.getScale());
-        //to.scale_center_y = 0;
-        //to.scale_center_x = this.monitor.width/2;
         to.set_pivot_point(0.5, 0);
 
         Tweener.addTween(to, {
-          //opacity: 255,
           scale_x: this.getHalfScale(),
           scale_y: this.getHalfScale(),
           transition: this.getEasing(true),
@@ -1031,14 +1051,13 @@ Flipper.prototype = {
             scale_x: this.getHalfScale(),
             scale_y: this.getHalfScale(),
             rotation_angle_y: -this.const.DECK_ANGLE,
-            //opacity: 255 * (1.0 - settings.fade),
             transition: this.getEasing(true),
             time: this.getTime(),
             onCompleteParams: [from, to, direction],
             onComplete: this.deck_end,
             onCompleteScope: this
         });
-        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
       }
     },
 
@@ -1046,12 +1065,11 @@ Flipper.prototype = {
     // CUBE
     ///////////////////////////////////////////
     cube_end: function(from, to, direction) {
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
       to.raise_top();
 
       if (direction == Meta.MotionDirection.RIGHT) {
         Tweener.addTween(to, {
-            //opacity: 255,
             scale_x: 1,
             scale_y: 1,
             transition: this.getEasing(false),
@@ -1063,16 +1081,14 @@ Flipper.prototype = {
         Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
         Tweener.addTween(from, {
             // x: -this.monitor.width,
-            //opacity: settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
             rotation_angle_y: this.const.CUBE_FULL_ANGLE
         });
-        Tweener.addTween(from, {opacity: settings.fade, transition: "easeInSine"});
+        Tweener.addTween(from, {opacity: this.getFade(), transition: "easeInSine"});
       } else {
         Tweener.addTween(to, {
-            //opacity: 255,
             scale_x: 1,
             scale_y: 1,
             transition: this.getEasing(false),
@@ -1083,13 +1099,12 @@ Flipper.prototype = {
         });
         Tweener.addTween(to, {time: this.getTime(), opacity: 255, transition: "easeInSine"});
         Tweener.addTween(from, {
-            //opacity: settings.fade,
             scale_x: this.const.CUBE_ZOOM * this.getScale(),
             scale_y: this.const.CUBE_ZOOM * this.getScale(),
             transition: this.getEasing(false),
             rotation_angle_y: -this.const.CUBE_FULL_ANGLE
         });
-        Tweener.addTween(from, {opacity: settings.fade, transition: "easeInSine"});
+        Tweener.addTween(from, {opacity: this.getFade(), transition: "easeInSine"});
       }
 
     },
@@ -1112,23 +1127,21 @@ Flipper.prototype = {
         to.rotation_angle_y = this.const.CUBE_START_ANGLE;
         to.set_scale(this.const.CUBE_ZOOM, this.const.CUBE_ZOOM);
 
-        to.set_opacity(settings.fade);
+        to.set_opacity(this.getFade());
 
         toTransition = this.monitor.width/2;
 
         Tweener.addTween(from, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
             time: this.getTime()
         });
-        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
 
         Tweener.addTween(to, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1137,7 +1150,7 @@ Flipper.prototype = {
             onComplete: this.cube_end,
             onCompleteScope: this
         });
-        Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
       } else {
         from.move_anchor_point_from_gravity(Clutter.Gravity.EAST);
         to.move_anchor_point_from_gravity(Clutter.Gravity.WEST);
@@ -1149,23 +1162,21 @@ Flipper.prototype = {
         to.set_position(0, this.monitor.height/2);
         to.rotation_angle_y = -this.const.CUBE_START_ANGLE;
         to.set_scale(this.const.CUBE_ZOOM, this.const.CUBE_ZOOM);
-        to.set_opacity(settings.fade);
+        to.set_opacity(this.getFade());
 
         toTransition = -this.monitor.width/2;
 
         Tweener.addTween(from, {
             rotation_angle_y: this.const.CUBE_HALF_ANGLE,
-            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
             time: this.getTime(),
         });
-        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+        Tweener.addTween(from, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
 
         Tweener.addTween(to, {
             rotation_angle_y: -this.const.CUBE_HALF_ANGLE,
-            //opacity: 255 * (1.0 - settings.fade),
             scale_x: this.const.CUBE_HALF_ZOOM,
             scale_y: this.const.CUBE_HALF_ZOOM,
             transition: this.getEasing(true),
@@ -1174,7 +1185,7 @@ Flipper.prototype = {
             onComplete: this.cube_end,
             onCompleteScope: this
         });
-        Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - settings.fade), transition: "easeInSine"});
+        Tweener.addTween(to, {time: this.getTime(), opacity: 255 * (1.0 - this.getFade()), transition: "easeInSine"});
       }
     },
 
@@ -1185,7 +1196,7 @@ Flipper.prototype = {
       from.hide();
       to.raise_top();
       to.show();
-      this.new_workspace.activate(global.get_current_time());
+      //this.new_workspace.activate(global.get_current_time());
 
       if (to.workspaceWindowActors.length > 0) {
         let range = this.getTime();
@@ -1197,7 +1208,6 @@ Flipper.prototype = {
           scale_y: 1.0,
           rotation_angle_x: 0,
           delay: delay,
-          //opacity: 255,
           transition: this.getEasing(false),
           time: startTime
         };
@@ -1210,11 +1220,7 @@ Flipper.prototype = {
           let actor = to.workspaceWindowActors[i];
           actor.set_opacity(0);
           actor.move_anchor_point(0, 1.5 * this.monitor.height);
-          //actor.scale_center_x = actor.width / 2;
-          //actor.scale_center_y = actor.height;
           actor.set_pivot_point(0.5, 1);
-          // actor.scale_center_x = this.monitor.width / 2;
-          // actor.scale_center_y = this.monitor.height;
           tween.delay = delay;
           delay += step;
 
@@ -1263,7 +1269,6 @@ Flipper.prototype = {
         let step = range / from.workspaceWindowActors.length;
         let tween = {
           rotation_angle_x: this.const.ROLODEX_ANGLE,
-          //opacity: 0,
           transition: this.getEasing(true),
           time: startTime
         };
@@ -1282,8 +1287,6 @@ Flipper.prototype = {
         for(let i=from.workspaceWindowActors.length-1; i >= 0; --i) {
           let actor = from.workspaceWindowActors[i];
           actor.move_anchor_point(0, 1.5 * this.monitor.height);
-          //actor.scale_center_x = actor.width / 2;
-          //actor.scale_center_y = actor.height;
           actor.set_pivot_point(0.5, 1);
           tween.delay = delay;
           delay += step;
@@ -1327,39 +1330,100 @@ Flipper.prototype = {
         //global.log("destroy");
         this.onDestroy();
       }
-      Main.wm.showWorkspaceOSD();
+      //Main.wm.showWorkspaceOSD();
       Meta.remove_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
     },
 
+    // Change the workspace to parm ws_cur
+    _keyActionWorkspace: function(ws_idx) {
+        let newWS = global.workspace_manager.get_workspace_by_index(ws_idx);
+        if (!newWS) return;
+        let [transitions_needed, direction] = getTransitionsAndDirection(newWS);
+        this.startAnimate(newWS, direction);
+    },
+
     processKeypress: function(action) {
-      let workspace;
-      let windows;
       let window;
+      let new_workspace;
+      let direction;
 
       switch(action) {
         case Meta.KeyBindingAction.MOVE_TO_WORKSPACE_LEFT:
-          this.direction = Meta.MotionDirection.LEFT;
-          workspace = global.screen.get_active_workspace().index();
-          windows = this.getWorkspaceWindows(workspace);
-          this.startAnimate(this.direction, window);
+          direction = Meta.MotionDirection.LEFT;
+          window = global.display.get_focus_window();
+          new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+          this.moveWindow(window, new_workspace);
+          this.startAnimate(new_workspace, direction);
           break;
 
         case Meta.KeyBindingAction.MOVE_TO_WORKSPACE_RIGHT:
-          this.direction = Meta.MotionDirection.RIGHT;
-          workspace = global.screen.get_active_workspace().index();
-          windows = this.getWorkspaceWindows(workspace);
-          this.startAnimate(this.direction, window);
+          direction = Meta.MotionDirection.RIGHT;
+          window = global.display.get_focus_window();
+          new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+          this.moveWindow(window, new_workspace);
+          this.startAnimate(new_workspace, direction);
           break;
 
         case Meta.KeyBindingAction.WORKSPACE_LEFT:
-          this.direction = Meta.MotionDirection.LEFT;
-          this.startAnimate(this.direction);
+          direction = Meta.MotionDirection.LEFT;
+          new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+          this.startAnimate(new_workspace, direction);
           break;
 
         case Meta.KeyBindingAction.WORKSPACE_RIGHT:
-          this.direction = Meta.MotionDirection.RIGHT;
-          this.startAnimate(this.direction);
+          direction = Meta.MotionDirection.RIGHT;
+          new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+          this.startAnimate(new_workspace, direction);
           break;
+
+        case Meta.KeyBindingAction.WORKSPACE_1:
+           this._keyActionWorkspace(0);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_2:
+           this._keyActionWorkspace(1);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_3:
+           this._keyActionWorkspace(2);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_4:
+           this._keyActionWorkspace(3);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_5:
+           this._keyActionWorkspace(4);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_6:
+           this._keyActionWorkspace(5);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_7:
+           this._keyActionWorkspace(6);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_8:
+           this._keyActionWorkspace(7);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_9:
+           this._keyActionWorkspace(8);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_10:
+           this._keyActionWorkspace(9);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_11:
+           this._keyActionWorkspace(10);
+           return true;
+
+        case Meta.KeyBindingAction.WORKSPACE_12:
+           this._keyActionWorkspace(11);
+           return true;
+
       }
 
     },
@@ -1400,21 +1464,21 @@ Flipper.prototype = {
     },
 
     initBackground: function() {
-        this._backgroundGroup = new St.Group({});
-        Main.uiGroup.add_actor(this._backgroundGroup);
-        this._backgroundGroup.hide();
-        this.metaBackgroundActor = Meta.BackgroundActor.new_for_screen(global.screen);
-        this._backgroundGroup.add_actor(this.metaBackgroundActor);
-        this._backgroundGroup.raise_top();
-        this._backgroundGroup.lower(this.actor);
-    },
+       this._backgroundGroup = new St.Group({});
+       Main.uiGroup.add_child(this._backgroundGroup);
+       this._backgroundGroup.hide();
+       this.metaBackgroundActor = Meta.BackgroundActor.new_for_screen(global.screen);
+       this._backgroundGroup.add_child(this.metaBackgroundActor);
+       Main.uiGroup.set_child_above_sibling(this._backgroundGroup, null);
+       Main.uiGroup.set_child_below_sibling(this._backgroundGroup, this.actor);
+   },
 
     dimBackground: function() {
         this._backgroundGroup.show();
         let background = this._backgroundGroup.get_children()[0];
         Tweener.addTween(background, {
-            //dim_factor: settings.dim_factor,
-            opacity: Math.round(settings.dim_factor*255),
+            //dim_factor: this.getDimFactor(),
+            opacity: Math.round(this.getDimFactor()*255),
             time: this.getTime(),
             transition: 'easeInQuad'
         });
@@ -1458,59 +1522,241 @@ Flipper.prototype = {
       this.metaBackgroundActor.destroy();
       this.actor.destroy();
       //global.log("destroy done");
-    }
+    },
 
+    getAnimationTime: function() {
+       return settings.settings.getValue( this.effectName.toLowerCase() + "-animationTime" );
+    },
+
+    getPullaway: function() {
+       return settings.settings.getValue( this.effectName.toLowerCase() + "-pullaway" );
+    },
+
+    getFade: function() {
+       return settings.settings.getValue( this.effectName.toLowerCase() + "-fade" );
+    },
+
+    getRotateEffect: function() {
+       return settings.settings.getValue( this.effectName.toLowerCase() + "-rotateEffect" );
+    },
+
+    getDimFactor: function() {
+       return settings.settings.getValue( this.effectName.toLowerCase() + "-dim-factor" );
+    }
 };
 
+function getTransitionsAndDirection(workspace, cur_ws_idx) {
+    let direction;
+    // Determine the current workspace index
+    let curWS = (cur_ws_idx)?cur_ws_idx:global.workspace_manager.get_active_workspace_index();
+
+    // Handle the case where no transitions are needed
+    let newWS = workspace.index();
+    if (curWS === newWS) {
+       return([0,0]);
+    }
+    // Calculate the number and direction of the transitions needed
+    let transitions_needed = Math.abs(curWS-newWS);
+    let nWorkspaces = global.workspace_manager.get_n_workspaces();
+    if (curWS > newWS) {
+       direction = Meta.MotionDirection.LEFT;
+    } else {
+       direction = Meta.MotionDirection.RIGHT;
+    }
+    return([transitions_needed, direction]);
+}
+
+// Our handler for the left/right hotkeys
 function onSwitch(display, window, binding) {
-    new Flipper(display, window, binding);
+    let direction;
+    let bindingName = binding.get_name()
+    if (bindingName.endsWith("left")) {
+        direction = Meta.MotionDirection.LEFT;
+    } else {
+       direction = Meta.MotionDirection.RIGHT;
+    }
+    let new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+    let mask = binding.get_mask();
+    let modifierMask = imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
+    if (bindingName.startsWith("move")) {
+       new Flipper(new_workspace, direction, modifierMask, window);
+    } else {
+       new Flipper(new_workspace, direction, modifierMask, null);
+    }
+}
+
+// Our handler for the "Switch to workspace #" hotkeys.
+// This needs to be able to handle cases where the extension has been disabled
+// since I have yet to find a way to restore the original handler on disable.
+function switchToWorkspace(display, window, binding) {
+   let [, , , newWSIdx] = binding.get_name().split('-');
+   newWSIdx--;
+   let new_workspace = global.workspace_manager.get_workspace_by_index(newWSIdx);
+   if (!enabled) {
+      // Allow Cinnamon to play the switcher sound if it's enabled.
+      Main.soundManager.play('switch');
+      new_workspace.activate(global.get_current_time());
+      Main.wm.showWorkspaceOSD();
+   } else {
+      let [transitions_needed, direction] = getTransitionsAndDirection(new_workspace);
+      if (transitions_needed) {
+         let mask = binding.get_mask();
+         let modifierMask = imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
+         new Flipper(new_workspace, direction, modifierMask);
+      }
+   }
+}
+
+// Our version of moveToWorkspace() which will be Monkey Patched over the Cinnamon version
+// This is how we handle the workspace switching initiated by the "Workspace Switcher" applet
+function moveToWorkspace(workspace, direction_hint) {
+    if (Main.expo._shown) {
+       original_mw_moveToWorkspace(workspace, direction_hint);
+    } else {
+        let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
+        if (transitions_needed) {
+            new Flipper(workspace, direction);
+        }
+    }
+}
+
+// Our version of activateWindow which will be Monkey Patched over the cinnamon version
+// Here we will check if target window is on a different workspace and use Flipper if needed
+function activateWindow(window, time, workspaceNum) {
+   let activeWorkspaceNum = global.workspace_manager.get_active_workspace_index();
+   if (workspaceNum === undefined) {
+      let windowsWS = window.get_workspace();
+      workspaceNum = windowsWS.index();
+   }
+
+   if (!Main.expo._shown && activeWorkspaceNum !== workspaceNum) {
+      let newWS = global.workspace_manager.get_workspace_by_index(workspaceNum);
+      let [transitions_needed, direction] = getTransitionsAndDirection(newWS);
+      new Flipper(newWS, direction, null, window);
+   } else {
+      original_main_activateWindow(window, time, workspaceNum);
+   }
 }
 
 function FlipperSettings(uuid) {
     this._init(uuid);
 }
 
+// Extension Workspace Switching API
+// This function can be used by other programs to initiate a workspace change using the Flipper effect
+// The direction argument must be Meta.MotionDirection.RIGHT or Meta.MotionDirection.LEFT
+// The window argument (optional) is a Meta.Window that will follow the workspace switch
+function ExtSwitchWorkspace(direction, window) {
+    if (direction !== Meta.MotionDirection.RIGHT && direction !== Meta.MotionDirection.LEFT)
+       return;
+    if (window & !(window instanceof Meta.Window))
+       window = null;
+    let new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
+    if (curFlipper && curFlipper.is_animating) {
+       curFlipper.queued_action = (direction === Meta.MotionDirection.RIGHT) ? Meta.KeyBindingAction.WORKSPACE_RIGHT : Meta.KeyBindingAction.WORKSPACE_LEFT;
+    } else {
+       curFlipper = new Flipper(new_workspace, direction, null, window);
+    }
+}
+
+// Extension Workspace Switching API
+// This function can be used by other programs to initiate a workspace change using the Flipper effect
+// The workspace argument must be a Meta.Workspace instance
+function ExtSwitchToWorkspace(workspace) {
+    if (workspace instanceof Meta.Workspace) {
+       let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
+       if (transitions_needed) {
+          if (curFlipper && curFlipper.is_animating) {
+             curFlipper.queued_action = Meta.KeyBindingAction.WORKSPACE_1 + workspace.index();
+          } else {
+             curFlipper = new Flipper(workspace, direction);
+          }
+       }
+    }
+}
+
 FlipperSettings.prototype = {
     _init: function(uuid) {
         this.settings = new Settings.ExtensionSettings(this, uuid);
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "animationTime", "animationTime", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "pullaway", "pullaway", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "fade", "fade", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "rotateEffect", "rotateEffect", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "transitionEffect", "transitionEffect", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "includeBackground", "includeBackground", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "includePanels", "includePanels", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN,
-            "dim_factor", "dim_factor", function(){});
-        // this.settings.bindProperty(Settings.BindingDirection.IN,
-        //     "easeDirection", "easeDirection", function(){});
-    }
+        this.settings.bindProperty(Settings.BindingDirection.IN, "transitionEffect", "transitionEffect", null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "includePanels", "includePanels", null);
+    },
 };
+
+function toggleMoveToWorkspacePatch() {
+   if (original_mw_moveToWorkspace) {
+      Main.wm.moveToWorkspace = original_mw_moveToWorkspace;
+      original_mw_moveToWorkspace = null;
+   } else {
+      original_mw_moveToWorkspace = Main.wm.moveToWorkspace;
+      Main.wm.moveToWorkspace = moveToWorkspace;
+   }
+}
+
+function toggleActivateWindowPatch() {
+   if (original_main_activateWindow) {
+      Main.activateWindow = original_main_activateWindow;
+      original_main_activateWindow = null;
+   } else {
+      original_main_activateWindow = Main.activateWindow;
+      Main.activateWindow = activateWindow;
+   }
+}
 
 function init(metadata) {
     settings = new FlipperSettings(metadata.uuid);
+    signalManager = new SignalManager.SignalManager(null);
+}
+
+// Automatically update the effect setting page to show the new default effect
+// The configuration dialog does not adapt automatically to setting a value so this idea does not work :-(
+function transitionEffectChanged() {
+   if (settings.transitionEffect !== TransitionEffect.Randomized) {
+      settings.settings.setValue( "effect-selector", settings.transitionEffect );
+   }
 }
 
 function enable() {
     for (let i in bindings) {
         Meta.keybindings_set_custom_handler(bindings[i], onSwitch);
     }
+    enabled = true;
+    for (let i = 0 ; i <= 12 ; i++) {
+       Meta.keybindings_set_custom_handler('switch-to-workspace-' + i, switchToWorkspace );
+    }
+    signalManager.connect(settings.settings, "changed::patchmoveToWorkspace", toggleMoveToWorkspacePatch);
+    signalManager.connect(settings.settings, "changed::patchActivateWindow", toggleActivateWindowPatch);
+    //signalManager.connect(settings.settings, "changed::transitionEffect", transitionEffectChanged);
+    if (settings.settings.getValue("patchmoveToWorkspace")) {
+       // Monkey patch moveToWorkspace()
+       original_mw_moveToWorkspace = Main.wm.moveToWorkspace;
+       Main.wm.moveToWorkspace = moveToWorkspace;
+    }
+    if (settings.settings.getValue("patchActivateWindow")) {
+       // Monkey patch activateWindow()
+       original_main_activateWindow = Main.activateWindow;
+       Main.activateWindow = activateWindow;
+    }
 }
 
 function disable() {
-    Meta.keybindings_set_custom_handler('switch-to-workspace-left',
-        Lang.bind(Main.wm, Main.wm._showWorkspaceSwitcher));
-    Meta.keybindings_set_custom_handler('switch-to-workspace-right',
-        Lang.bind(Main.wm, Main.wm._showWorkspaceSwitcher));
-    Meta.keybindings_set_custom_handler('move-to-workspace-left',
-        Lang.bind(Main.wm, Main.wm._moveWindowToWorkspaceLeft));
-    Meta.keybindings_set_custom_handler('move-to-workspace-right',
-        Lang.bind(Main.wm, Main.wm._moveWindowToWorkspaceRight));
+    enabled = false;
+    // Reset the keybinding functions to what they were originally
+    // I believe the original handlers for the switch-to-workspace-# hotkeys
+    // are not implemented in javascript?? So I just leave my handler in
+    // place to switch workspaces, it will only use the Flipper Effect when
+    // 'enabled' is set to true!
+    Meta.keybindings_set_custom_handler('switch-to-workspace-left', Lang.bind(Main.wm, Main.wm._showWorkspaceSwitcher));
+    Meta.keybindings_set_custom_handler('switch-to-workspace-right', Lang.bind(Main.wm, Main.wm._showWorkspaceSwitcher));
+    Meta.keybindings_set_custom_handler('move-to-workspace-left', Lang.bind(Main.wm, Main.wm._moveWindowToWorkspaceLeft));
+    Meta.keybindings_set_custom_handler('move-to-workspace-right', Lang.bind(Main.wm, Main.wm._moveWindowToWorkspaceRight));
+    if (original_mw_moveToWorkspace) {
+       // Undo the monkey patch of moveToWorkspace()
+       Main.wm.moveToWorkspace = original_mw_moveToWorkspace;
+    }
+    if (original_main_activateWindow) {
+       // Undo the monkey patch of activateWindow()
+       Main.activateWindow = original_main_activateWindow;
+    }
+    signalManager.disconnectAllSignals();
 }
