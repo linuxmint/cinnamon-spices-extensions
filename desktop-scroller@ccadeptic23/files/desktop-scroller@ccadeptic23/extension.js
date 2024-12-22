@@ -16,6 +16,7 @@ const Settings = imports.ui.settings;
 const St = imports.gi.St;
 const Tweener = imports.ui.tweener;
 const Config = imports.misc.config
+const ExtensionSystem = imports.ui.extensionSystem;
 
 let desktopscroller = null;
 
@@ -42,6 +43,7 @@ DesktopScroller.prototype = {
 		this.settings.bindProperty(Settings.BindingDirection.IN, "showDirectionArrow", "showDirectionArrow", this.onSettingsChanged, null);
 		this.settings.bindProperty(Settings.BindingDirection.IN, "activationAreaWidth", "activationAreaWidth", this.onSettingsChanged, null);
 		this.settings.bindProperty(Settings.BindingDirection.IN, "showActivationAreas", "showActivationAreas", this.onSettingsChanged, null);
+		this.settings.bindProperty(Settings.BindingDirection.IN, "useSwitcherExtension", "useSwitcherExtension", this.onSettingsChanged, null);
 		this.onSettingsChanged();
 	},
 
@@ -77,6 +79,7 @@ DesktopScroller.prototype = {
 
 	onSettingsChanged: function()
 	{
+		this.workspaceSwitcherExt = null;
 		this.updateSettings();
 	},
 
@@ -113,7 +116,24 @@ DesktopScroller.prototype = {
 		var direction = scrollDirection == 1 ? Meta.MotionDirection.RIGHT : Meta.MotionDirection.LEFT;
 		this.switch_workspace(direction);
 	},
- 
+
+	_updateWorkspaceSwitcherExt: function() {
+		// Check if one of the workspace switcher extensions are installed or if the state has changed since we last checked
+		if (ExtensionSystem.runningExtensions.indexOf('DesktopCube@yare') > -1 ) {
+			if (!this.workspaceSwitcherExt || this.workspaceSwitcherExt !== ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension']) {
+				this.workspaceSwitcherExt = ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension'];
+			}
+		} else if (ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
+			if (!this.workspaceSwitcherExt || this.workspaceSwitcherExt !== ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension']) {
+				this.workspaceSwitcherExt = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension'];
+			}
+		}
+		// Make sure the switcher extension has the required API to allow us to change to any arbitrary workspace
+		if (this.workspaceSwitcherExt && typeof this.workspaceSwitcherExt.ExtSwitchToWorkspace !== "function") {
+			this.workspaceSwitcherExt =  null;
+		}
+	},
+
 	switch_workspace: function(direction)
 	{
 		let active = global.screen.get_active_workspace();
@@ -123,8 +143,15 @@ DesktopScroller.prototype = {
 		{
 			if(this.showDirectionArrow){
 				this.showDirection(direction);
-			} 
-			neighbor.activate(global.get_current_time());
+			}
+			if (this.useSwitcherExtension) {
+				this._updateWorkspaceSwitcherExt()
+			}
+			if (this.workspaceSwitcherExt) {
+				this.workspaceSwitcherExt.ExtSwitchToWorkspace(neighbor);
+			} else {
+				neighbor.activate(global.get_current_time());
+			}
 		}
 	},
 

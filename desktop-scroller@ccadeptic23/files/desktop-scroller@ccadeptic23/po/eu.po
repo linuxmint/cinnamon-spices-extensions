@@ -1,14 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
+# DESKTOP SCROLLER
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# ccadeptic23, 2017
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 19:29+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 12:37-0500\n"
 "PO-Revision-Date: 2024-05-30 9:50+1\n"
 "Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
@@ -56,4 +57,16 @@ msgstr "Erakutsi aktibazio-eremuak"
 msgid ""
 "Check this to show the areas over which scrolling will switch the desktop."
 msgstr ""
-"Aukera hau ezarri, ikusteko zer eremutan korritu behar den idazmahaia aldatzeko."
+"Aukera hau ezarri, ikusteko zer eremutan korritu behar den idazmahaia "
+"aldatzeko."
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extensions to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""
