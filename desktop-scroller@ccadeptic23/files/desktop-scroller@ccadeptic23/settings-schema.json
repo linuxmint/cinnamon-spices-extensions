@@ -23,5 +23,12 @@
 		"default" : false,
 		"description": "Show activation areas",
 		"tooltip": "Check this to show the areas over which scrolling will switch the desktop."
+	},
+	"useSwitcherExtension" :
+	{
+		"type" : "checkbox",
+		"default" : true,
+		"description": "Use a workspace switcher extension if installed",
+		"tooltip": "Allow a Cinnamon extensions to animate the workspace change. This option has no effect unless a compatible extension is installed. Requires Desktop Cube 2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
 	}
 }

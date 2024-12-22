@@ -24,6 +24,9 @@ Known issues
 
 Changelog
 =========
+Version 2.2
+------------
+Added ability to use the DesktopCube or Flipper extensions to animate the workspace switch
 Version 2.1
 ------------
 Added fix for cinnamon 2.6 removing some api's
