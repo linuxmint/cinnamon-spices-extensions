@@ -271,5 +271,16 @@
 		"step" : 1,
 		"units" : "pixels",
 		"description" : "Corners areas size: "
-	}
+	},
+   "generalHeader" : {
+      "type": "header",
+      "default": false,
+      "description": "General"
+   },
+   "useSwitcherExtension" : {
+      "type" : "checkbox",
+      "default" : true,
+      "description": "Use a workspace switcher extension if installed",
+      "tooltip": "Allow a Cinnamon extension to animate the workspace change. This option has no effect unless a compatible extension is installed. Requires Desktop Cube 2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+   }
 }

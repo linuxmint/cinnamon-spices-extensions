@@ -3,6 +3,7 @@ const Main = imports.ui.main;
 const Settings = imports.ui.settings;
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
+const ExtensionSystem = imports.ui.extensionSystem;
 
 let workspaceScroller;
 
@@ -37,6 +38,22 @@ const Action = {
 function Area(x, y, dx, dy, actionUp, actionDown) {
     this._init(x, y, dx, dy, actionUp, actionDown);
 }
+
+function getWorkspaceSwitcherExt() {
+   let workspaceSwitcherExt;
+   // Check if one of the workspace switcher extensions are installed or if the state has changed since we last checked
+   if (ExtensionSystem.runningExtensions.indexOf('DesktopCube@yare') > -1 ) {
+      workspaceSwitcherExt = ExtensionSystem.extensions['DesktopCube@yare']['5.4']['extension'];
+   } else if (ExtensionSystem.runningExtensions.indexOf('Flipper@connerdev') > -1) {
+      workspaceSwitcherExt = ExtensionSystem.extensions['Flipper@connerdev']['5.4']['extension'];
+   }
+   // Make sure the switcher extension has the required API to allow us to change to any arbitrary workspace
+   if (workspaceSwitcherExt && typeof workspaceSwitcherExt.ExtSwitchToWorkspace !== "function") {
+      workspaceSwitcherExt =  null;
+   }
+   return workspaceSwitcherExt
+}
+
 
 /**
  * Initialize scroll action area
@@ -85,7 +102,12 @@ Area.prototype.slide = function (shift) {
         workspace = global.screen.get_workspace_by_index(index);
 
     if (workspace != null) {
-        workspace.activate(global.get_current_time());
+        let workspaceSwitcherExt = (workspaceScroller.settings.settings.getValue("useSwitcherExtension"))?getWorkspaceSwitcherExt():null;
+        if (workspaceSwitcherExt) {
+           workspaceSwitcherExt.ExtSwitchToWorkspace(workspace);
+        } else {
+           workspace.activate(global.get_current_time());
+        }
     }
 }
 

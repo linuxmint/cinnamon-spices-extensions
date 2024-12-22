@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 22:28+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 17:57-0500\n"
 "PO-Revision-Date: 2022-06-03 11:23+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -20,7 +21,8 @@ msgstr "Scroller per Area di Lavoro"
 
 #. metadata.json->description
 msgid "Switch workspaces using mouse scroll at screen edges."
-msgstr "Cambia area di lavoro usando lo scorrimento del mouse ai bordi dello schermo."
+msgstr ""
+"Cambia area di lavoro usando lo scorrimento del mouse ai bordi dello schermo."
 
 #. settings-schema.json->edgesHeader->description
 msgid "Edges"
@@ -167,3 +169,18 @@ msgstr "pixels"
 #. settings-schema.json->cornerSize->description
 msgid "Corners areas size: "
 msgstr "Dimensioni delle aree degli angoli: "
+
+#. settings-schema.json->generalHeader->description
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extension to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""

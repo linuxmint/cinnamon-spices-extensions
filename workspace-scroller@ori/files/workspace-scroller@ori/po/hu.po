@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 22:28+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 17:57-0500\n"
 "PO-Revision-Date: 2021-09-26 08:26+0200\n"
 "Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
 "Language-Team: \n"
@@ -19,7 +20,8 @@ msgstr "Munkaterület görgető"
 
 #. metadata.json->description
 msgid "Switch workspaces using mouse scroll at screen edges."
-msgstr "Munkaterület váltása a képernyő éleinél történő egérgörgő használattal."
+msgstr ""
+"Munkaterület váltása a képernyő éleinél történő egérgörgő használattal."
 
 #. settings-schema.json->edgesHeader->description
 msgid "Edges"
@@ -166,3 +168,18 @@ msgstr "képpont"
 #. settings-schema.json->cornerSize->description
 msgid "Corners areas size: "
 msgstr "Lekerekített sarkok mérete: "
+
+#. settings-schema.json->generalHeader->description
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extension to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""
