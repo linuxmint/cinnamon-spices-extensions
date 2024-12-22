@@ -1,6 +1,6 @@
 {
     "name": "Workspace Scroller",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Switch workspaces using mouse scroll at screen edges.",
     "cinnamon-version": [
         "2.4",

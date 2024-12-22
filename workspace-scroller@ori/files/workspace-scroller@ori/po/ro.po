@@ -1,21 +1,23 @@
-# SOME DESCRIPTIVE TITLE.
+# WORKSPACE SCROLLER
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# ori, 2017
 #
 msgid ""
 msgstr ""
-"Content-Transfer-Encoding: 8bit\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Language: ro\n"
-"Language-Team: \n"
-"Last-Translator: \n"
-"MIME-Version: 1.0\n"
-"PO-Revision-Date: 2022-08-06 01:56+0200\n"
-"POT-Creation-Date: 2021-03-02 22:28+0000\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 17:57-0500\n"
+"PO-Revision-Date: 2022-08-06 01:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. metadata.json->name
@@ -24,7 +26,9 @@ msgstr "Scroller pentru Spațiul de Lucru"
 
 #. metadata.json->description
 msgid "Switch workspaces using mouse scroll at screen edges."
-msgstr "Comută spațiile de lucru utilizând derularea mouse-ului la marginile ecranului."
+msgstr ""
+"Comută spațiile de lucru utilizând derularea mouse-ului la marginile "
+"ecranului."
 
 #. settings-schema.json->edgesHeader->description
 msgid "Edges"
@@ -171,3 +175,18 @@ msgstr "pixeli"
 #. settings-schema.json->cornerSize->description
 msgid "Corners areas size: "
 msgstr "Dimensiunea zonelor din colțuri:"
+
+#. settings-schema.json->generalHeader->description
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extension to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""
