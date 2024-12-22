@@ -9,19 +9,19 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-21 14:16-0500\n"
-"PO-Revision-Date: 2019-02-13 16:49+0100\n"
+"PO-Revision-Date: 2024-12-22 01:10+0100\n"
 "Last-Translator: Claudiux <claude.clerc@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Desktop Cube"
-msgstr ""
+msgstr "Effet Cube du Bureau"
 
 #. metadata.json->description
 msgid "Compiz Cube-like animation for workspace switching"
@@ -63,7 +63,7 @@ msgstr "Effet en fin de rotation"
 #. 2.0->settings-schema.json->header3->description
 #. 5.4->settings-schema.json->header3->description
 msgid "System Settings"
-msgstr ""
+msgstr "Paramètres système"
 
 #. 2.0->settings-schema.json->workspaces_btn->description
 #. 5.4->settings-schema.json->workspaces_btn->description
@@ -71,17 +71,16 @@ msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Ouvrir les paramètres système pour gérer les espaces de travail"
 
 #. 5.4->settings-schema.json->animationTimeSec->description
-#, fuzzy
 msgid "Animation duration (seconds)"
-msgstr "Durée de l'animation"
+msgstr "Durée de l'animation (secondes)"
 
 #. 5.4->settings-schema.json->pullawayPercent->description
 msgid "Cube size (percent of screen size)"
-msgstr ""
+msgstr "Taille du Cube (en % de la taille de l'écran)"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
-msgstr ""
+msgstr "Inclure les panneaux"
 
 #. 5.4->settings-schema.json->includePanels->tooltip
 msgid ""
@@ -89,96 +88,105 @@ msgid ""
 "properly painted or completely invisible anyhow, so it's best to leave this "
 "disabled"
 msgstr ""
+"Inclure les panneaux lors de l'animation. Dans la plupart des cas, les "
+"panneaux ne sont pas correctement peints ou sont complètement invisibles, il "
+"est donc préférable de laisser cette option désactivée"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Cube effect with the Workspace Switcher applet"
-msgstr ""
+msgstr "Utiliser l'effet Cube avec l'applet Workspace Switcher"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
 msgid ""
 "Override the moveToWorkspace() API so that the Cube effect is used by the "
 "Workspace Switcher Applet when changing the current workspace"
 msgstr ""
+"Remplacer l'API moveToWorkspace() pour que l'effet Cube soit utilisé par "
+"l'applet Workspace Switcher lors du changement de l'espace de travail courant"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Cube effect when changing focus causes a workspace switch"
 msgstr ""
+"Utiliser l'effet Cube lorsque le changement de focus entraîne un changement "
+"d'espace de travail"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
 msgid ""
 "Override the activateWindow() API so that when a window on another workspace "
 "is given the focus, the Cube effect is used to change the current workspace"
 msgstr ""
+"Surcharge de l'API activateWindow() de sorte que lorsqu'une fenêtre d'un "
+"autre espace de travail est mise en avant, l'effet Cube est utilisé pour "
+"modifier l'espace de travail actuel"
 
 #. 5.4->settings-schema.json->header2->description
-#, fuzzy
 msgid "Effect Easing"
 msgstr "Effets"
 
 #. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale easing"
-msgstr ""
+msgstr "Effet lors du Changement de taille"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Back"
-msgstr ""
+msgstr "Recul (Back)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Bounce"
-msgstr ""
+msgstr "Rebond (Bounce)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Circ"
-msgstr ""
+msgstr "Circulaire (Circ)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Cubic"
-msgstr ""
+msgstr "Cubique (Cubic)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Elastic"
-msgstr ""
+msgstr "Élastique (Elastic)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Expo"
-msgstr ""
+msgstr "Expo"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Sine"
-msgstr ""
+msgstr "Sinus (Sine)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quad"
-msgstr ""
+msgstr "Quadrilatère (Quad)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quart"
-msgstr ""
+msgstr "Quarte (Quart)"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quint"
-msgstr ""
+msgstr "Quinte (Quint)"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
 msgid "Rotate easing"
-msgstr "Effet en fin de rotation"
+msgstr "Effet lors de la rotation"
 
 #. 5.4->settings-schema.json->easing_btn->description
 msgid "Open easing information website"
-msgstr ""
+msgstr "Site web d'information sur les effets"
 
 #. 5.4->settings-schema.json->hotkeys_btn->description
-#, fuzzy
 msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
-msgstr "Ouvrir les paramètres système pour gérer les espaces de travail"
+msgstr ""
+"Ouvrir les paramètres du clavier de Cinnamon pour gérer les raccourcis-"
+"clavier des espaces de travail"
