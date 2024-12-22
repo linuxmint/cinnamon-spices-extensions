@@ -10,7 +10,7 @@ msgstr ""
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-10 22:31-0500\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Claudiux <claude.clerc@gmail.com>\n"
+"Last-Translator: claudiux\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Santa is Coming (Le Père Noël arrive)"
 #. 6.2->settings-schema.json->close-window-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
-msgstr ""
+msgstr "Focus"
 
 #. 6.2->settings-schema.json->glide-random-include->description
 #. 6.2->settings-schema.json->effect-selector->options
@@ -284,9 +284,8 @@ msgid "Application"
 msgstr "Application"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
-#, fuzzy
 msgid "A list of applications with special effect rules"
-msgstr "Liste des applications associées à des effets particuliers"
+msgstr "Une liste d'applications avec effets spéciaux"
 
 #. 6.2->settings-schema.json->app-rules-button->description
 msgid "Add entry for the application of the most recently focused window"
@@ -403,15 +402,15 @@ msgstr "Couleur"
 
 #. 6.2->settings-schema.json->fire-movement-speed->description
 msgid "Fire Movement Speed"
-msgstr ""
+msgstr "Vitesse de déplacement du feu"
 
 #. 6.2->settings-schema.json->fire-3d-noise->description
 msgid "Fire 3D Noise"
-msgstr ""
+msgstr "Perturbation 3D du feu"
 
 #. 6.2->settings-schema.json->fire-3d-noise->tooltip
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Crée un feu plus dynamique mais nécessite plus de puissance GPU."
 
 #. 6.2->settings-schema.json->fire-color-1->description
 #. 6.2->settings-schema.json->wisps-color-1->description
@@ -429,28 +428,28 @@ msgid "Color #3"
 msgstr "Couleur n°3"
 
 #. 6.2->settings-schema.json->fire-color-4->description
-#, fuzzy
 msgid "Color #4"
-msgstr "Couleur n°1"
+msgstr "Couleur n°4"
 
 #. 6.2->settings-schema.json->fire-color-5->description
-#, fuzzy
 msgid "Color #5"
-msgstr "Couleur n°1"
+msgstr "Couleur n°5"
 
 #. 6.2->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
-msgstr ""
+msgstr "Niveau de flou"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
-msgstr ""
+msgstr "Qualité du flou"
 
 #. 6.2->settings-schema.json->focus-blur-quality->tooltip
 msgid ""
 "The Quality of the Blur (Setting this too high may increase GPU load and "
 "affect performance)"
 msgstr ""
+"La qualité du flou (un réglage trop élevé peut augmenter la charge du GPU et "
+"affecter les performances)."
 
 #. 6.2->settings-schema.json->glide-squish->description
 msgid "Squish"
