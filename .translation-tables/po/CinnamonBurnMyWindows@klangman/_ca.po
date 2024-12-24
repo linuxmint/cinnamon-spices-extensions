@@ -1,0 +1,30 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid "A list of applications with special effect rules"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-color-4->description
+msgid "Color #4"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-color-5->description
+msgid "Color #5"
+msgstr ""

@@ -1,0 +1,187 @@
+# DESKTOP CUBE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# yare, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-21 14:16-0500\n"
+"PO-Revision-Date: 2024-11-27 11:29+0100\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Bureaubladkubus"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Compiz Cube-achtige animatie voor het wisselen van werkruimtes"
+
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
+msgid "General"
+msgstr "Algemeen"
+
+#. 2.0->settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Animatieduur"
+
+#. 2.0->settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Verhouding van het wegtrekken van het scherm"
+
+#. 2.0->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Effecten"
+
+#. 2.0->settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Vergroten effect"
+
+#. 2.0->settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Verkleinen effect"
+
+#. 2.0->settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Begin draai-effect"
+
+#. 2.0->settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Eind draai-effect"
+
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Systeeminstellingen"
+
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Open Cinnamon Instellingen om Werkruimtes te beheren"
+
+#. 5.4->settings-schema.json->animationTimeSec->description
+msgid "Animation duration (seconds)"
+msgstr "Animatieduur (seconden)"
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr "Kubusgrootte (percentage van het schermformaat)"
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr "Inclusief Panelen"
+
+#. 5.4->settings-schema.json->includePanels->tooltip
+msgid ""
+"Include the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr "Gebruik kubus-effect met de Workspace Switcher-applet"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+"Overschrijf de moveToWorkspace() API zodat het kubus-effect wordt gebruikt "
+"door de Workspace Switcher Applet bij het veranderen van de huidige "
+"werkruimte"
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr ""
+"Gebruik kubus-effect wanneer het veranderen van focus een wissel van "
+"werkruimte veroorzaakt"
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+"Overschrijf de activateWindow() API zodat wanneer een venster in een andere "
+"werkruimte de focus krijgt, het kubus-effect wordt gebruikt om de huidige "
+"werkruimte te wisselen"
+
+#. 5.4->settings-schema.json->header2->description
+msgid "Effect Easing"
+msgstr "Effectversnelling"
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr "Schaalversnelling"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr "Terug"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr "Stuiteren"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr "Cirkel"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr "Kubisch"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr "Elastisch"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr "Expo"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr "Sinus"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr "Quad"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr "Kwart"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr "Quint"
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+msgid "Rotate easing"
+msgstr "Rotatieversnelling"
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr "Open website met informatie over versnelling"
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
+msgstr "Open Cinnamon toetsenbordinstellingen om werkruimtes te beheren"

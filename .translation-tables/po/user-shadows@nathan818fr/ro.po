@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2023-09-13 12:22+0200\n"
+"Last-Translator: Nathan POirier <nathan@poirier.io>\n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Rază"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Fade de sus"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "Decalaj X"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Decalaj Y"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Opacitate"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Numele clasei"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Stare"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Importă"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Exportă"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Setează din..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Alege unde să îți salvezi configurația"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Alege o configurație de încărcat"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Umbrele utilizatorului"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Personalizează umbrele ferestrelor Cinnamon"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Preset Umbre"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Implicit"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Fără umbre"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Personalizat"

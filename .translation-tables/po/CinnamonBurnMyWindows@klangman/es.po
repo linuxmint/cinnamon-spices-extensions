@@ -1,0 +1,525 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-10 22:31-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. 6.2/extension.js:212 6.2/extension.js:443
+msgid "Error"
+msgstr "Error"
+
+#. 6.2/extension.js:212
+msgid "was NOT enabled"
+msgstr "no estaba habilitado"
+
+#. 6.2/extension.js:213
+msgid "The existing extension"
+msgstr "La extensión existente"
+
+#. 6.2/extension.js:213
+msgid "conflicts with this extension."
+msgstr "entra en conflicto con esta extensión."
+
+#. 6.2/extension.js:444
+msgid ""
+"The previously focused window is not backed by an application and therefore "
+"application specific effects can not be applied to that window"
+msgstr ""
+"La ventana enfocada anteriormente no está respaldada por una aplicación y, "
+"por lo tanto, no se pueden aplicar efectos específicos de la aplicación a "
+"esa ventana"
+
+#. 6.2->settings-schema.json->apparition-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Apparition.js:94
+msgid "Apparition"
+msgstr "Aparición"
+
+#. effects/BrokenGlass.js:152
+msgid "Broken Glass"
+msgstr "Vidrio roto"
+
+#. 6.2->settings-schema.json->doom-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Doom.js:101
+msgid "Doom"
+msgstr "Perdición"
+
+#. 6.2->settings-schema.json->energize-a-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/EnergizeA.js:90
+msgid "Energize A"
+msgstr "Energizar A"
+
+#. 6.2->settings-schema.json->energize-b-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/EnergizeB.js:92
+msgid "Energize B"
+msgstr "Energizar B"
+
+#. 6.2->settings-schema.json->fire-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Fire.js:114
+msgid "Fire"
+msgstr "Fuego"
+
+#. effects/Fire.js:168
+msgid "Default Fire"
+msgstr "Fuego predeterminado"
+
+#. effects/Fire.js:178
+msgid "Hell Fire"
+msgstr "Fuego infernal"
+
+#. effects/Fire.js:188
+msgid "Dark and Smutty"
+msgstr "Oscuro y sucio"
+
+#. effects/Fire.js:198
+msgid "Cold Breeze"
+msgstr "Brisa fría"
+
+#. effects/Fire.js:208
+msgid "Santa is Coming"
+msgstr "Papá Noel ya viene"
+
+#. 6.2->settings-schema.json->focus-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Focus.js:91
+msgid "Focus"
+msgstr "Enfoque"
+
+#. 6.2->settings-schema.json->glide-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Glide.js:93
+msgid "Glide"
+msgstr "Planeo"
+
+#. 6.2->settings-schema.json->glitch-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Glitch.js:97
+msgid "Glitch"
+msgstr "Glitch"
+
+#. 6.2->settings-schema.json->hexagon-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Hexagon.js:106
+msgid "Hexagon"
+msgstr "Hexágono"
+
+#. 6.2->settings-schema.json->incinerate-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Incinerate.js:144
+msgid "Incinerate"
+msgstr "Incinerar"
+
+#. effects/Matrix.js:124
+msgid "Matrix"
+msgstr "Matrix"
+
+#. effects/PaintBrush.js:114
+msgid "Paint Brush"
+msgstr "Pincel"
+
+#. 6.2->settings-schema.json->pixel-wheel-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/PixelWheel.js:88
+msgid "Pixel Wheel"
+msgstr "Rueda de píxeles"
+
+#. 6.2->settings-schema.json->pixel-wipe-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/PixelWipe.js:114
+msgid "Pixel Wipe"
+msgstr "Limpieza de píxeles"
+
+#. 6.2->settings-schema.json->pixelate-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Pixelate.js:88
+msgid "Pixelate"
+msgstr "Pixelado"
+
+#. 6.2->settings-schema.json->portal-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Portal.js:99
+msgid "Portal"
+msgstr "Portal"
+
+#. effects/SnapOfDisintegration.js:124
+msgid "Snap of Disintegration"
+msgstr "Chasquido de desintegración"
+
+#. effects/TRexAttack.js:121
+msgid "T-Rex Attack"
+msgstr "Ataque del T-Rex"
+
+#. 6.2->settings-schema.json->tv-effect-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/TVEffect.js:90
+msgid "TV Effect"
+msgstr "Efecto de TV"
+
+#. 6.2->settings-schema.json->tv-glitch-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/TVGlitch.js:99
+msgid "TV Glitch"
+msgstr "Fallo de TV"
+
+#. 6.2->settings-schema.json->wisps-random-include->description
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. effects/Wisps.js:101
+msgid "Wisps"
+msgstr "Motas"
+
+#. metadata.json->name
+msgid "Burn My Windows"
+msgstr "Burn My Windows"
+
+#. metadata.json->description
+msgid ""
+"Window open/close effects based on the Burn-My-Windows Gnome extension by "
+"Schneegans"
+msgstr ""
+"Efectos de apertura y cierre de ventanas basados en la extensión Burn-My-"
+"Windows Gnome de Schneegans"
+
+#. 6.2->settings-schema.json->general-page->title
+msgid "General"
+msgstr "General"
+
+#. 6.2->settings-schema.json->effects-page->title
+msgid "Effect Settings"
+msgstr "Ajustes de efectos"
+
+#. 6.2->settings-schema.json->random-page->title
+msgid "Random Effects"
+msgstr "Efectos aleatorios"
+
+#. 6.2->settings-schema.json->general-settings->title
+msgid "Burn My Windows General Settings"
+msgstr "Configuración general de Burn My Windows"
+
+#. 6.2->settings-schema.json->app-specific-settings->title
+msgid "Application Specific Settings"
+msgstr "Ajustes específicos de la aplicación"
+
+#. 6.2->settings-schema.json->effect-selector-section->title
+msgid "Effect Selector"
+msgstr "Selector de efecto"
+
+#. 6.2->settings-schema.json->effect-settings->title
+msgid "Effect Specific Settings"
+msgstr "Ajustes específicos del efecto"
+
+#. 6.2->settings-schema.json->random-section->title
+msgid "Effects included in the randomized sets:"
+msgstr "Efectos incluidos en las series aleatorias:"
+
+#. 6.2->settings-schema.json->app-rules->description
+msgid "Application Specific Rules"
+msgstr "Reglas específicas de la aplicación"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Enabled"
+msgstr "Habilitado"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Open Effect"
+msgstr "Efecto de apertura"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Close Effect"
+msgstr "Efecto de cierre"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Application"
+msgstr "Aplicación"
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid "A list of applications with special effect rules"
+msgstr "Una lista de aplicaciones con reglas de efectos especiales"
+
+#. 6.2->settings-schema.json->app-rules-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+"Añadir entrada para la aplicación de la ventana enfocada más recientemente"
+
+#. 6.2->settings-schema.json->app-rules-button->tooltip
+msgid ""
+"Focus a window you want to enable application specific setting for then "
+"return here and press this button."
+msgstr ""
+"Enfoque una ventana para la que desee activar un ajuste específico de la "
+"aplicación y, a continuación, vuelva aquí y pulse este botón."
+
+#. 6.2->settings-schema.json->random-title->description
+msgid "Effect"
+msgstr "Efecto"
+
+#. 6.2->settings-schema.json->effect-selector->description
+msgid "Show settings for effect:"
+msgstr "Muestra la configuración del efecto:"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+msgid "Randomized"
+msgstr "Aleatorio"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+msgid "None"
+msgstr "Ninguno"
+
+#. 6.2->settings-schema.json->open-window-effect->description
+msgid "Open window effect"
+msgstr "Efecto para abrir ventana"
+
+#. 6.2->settings-schema.json->close-window-effect->description
+msgid "Close window effect"
+msgstr "Efecto para cerrar ventana"
+
+#. 6.2->settings-schema.json->apparition-shake-intensity->description
+msgid "Shake Intensity"
+msgstr "Intensidad de la sacudida"
+
+#. 6.2->settings-schema.json->apparition-twirl-intensity->description
+msgid "Twirl Intensity"
+msgstr "Intensidad de giro"
+
+#. 6.2->settings-schema.json->apparition-suction-intensity->description
+msgid "Suction Intensity"
+msgstr "Intensidad de succión"
+
+#. 6.2->settings-schema.json->apparition-randomness->description
+msgid "Randomness"
+msgstr "Aleatoriedad"
+
+#. 6.2->settings-schema.json->apparition-animation-time->description
+#. 6.2->settings-schema.json->doom-animation-time->description
+#. 6.2->settings-schema.json->energize-a-animation-time->description
+#. 6.2->settings-schema.json->energize-b-animation-time->description
+#. 6.2->settings-schema.json->fire-animation-time->description
+#. 6.2->settings-schema.json->focus-animation-time->description
+#. 6.2->settings-schema.json->glide-animation-time->description
+#. 6.2->settings-schema.json->glitch-animation-time->description
+#. 6.2->settings-schema.json->hexagon-animation-time->description
+#. 6.2->settings-schema.json->incinerate-animation-time->description
+#. 6.2->settings-schema.json->pixelate-animation-time->description
+#. 6.2->settings-schema.json->pixel-wheel-animation-time->description
+#. 6.2->settings-schema.json->pixel-wipe-animation-time->description
+#. 6.2->settings-schema.json->portal-animation-time->description
+#. 6.2->settings-schema.json->tv-animation-time->description
+#. 6.2->settings-schema.json->tv-glitch-animation-time->description
+#. 6.2->settings-schema.json->wisps-animation-time->description
+msgid "Effect Duration (milliseconds)"
+msgstr "Duración del efecto (milisegundos)"
+
+#. 6.2->settings-schema.json->doom-horizontal-scale->description
+msgid "Horizontal Scale"
+msgstr "Escala horizontal"
+
+#. 6.2->settings-schema.json->doom-vertical-scale->description
+msgid "Vertical Scale"
+msgstr "Escala vertical"
+
+#. 6.2->settings-schema.json->doom-pixel-size->description
+#. 6.2->settings-schema.json->pixelate-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wheel-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wipe-pixel-size->description
+msgid "Pixel Size"
+msgstr "Tamaño de píxel"
+
+#. 6.2->settings-schema.json->energize-a-scale->description
+#. 6.2->settings-schema.json->energize-b-scale->description
+#. 6.2->settings-schema.json->fire-scale->description
+#. 6.2->settings-schema.json->glide-scale->description
+#. 6.2->settings-schema.json->glitch-scale->description
+#. 6.2->settings-schema.json->hexagon-scale->description
+#. 6.2->settings-schema.json->incinerate-scale->description
+#. 6.2->settings-schema.json->tv-glitch-scale->description
+#. 6.2->settings-schema.json->wisps-scale->description
+msgid "Scale"
+msgstr "Escala"
+
+#. 6.2->settings-schema.json->energize-a-color->description
+#. 6.2->settings-schema.json->energize-b-color->description
+#. 6.2->settings-schema.json->glitch-color->description
+#. 6.2->settings-schema.json->incinerate-color->description
+#. 6.2->settings-schema.json->portal-color->description
+#. 6.2->settings-schema.json->tv-effect-color->description
+#. 6.2->settings-schema.json->tv-glitch-color->description
+msgid "Color"
+msgstr "Color"
+
+#. 6.2->settings-schema.json->fire-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr "Velocidad de movimiento del fuego"
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr "Ruido 3D del fuego"
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Crea un fuego más dinámico pero requiere más potencia de GPU."
+
+#. 6.2->settings-schema.json->fire-color-1->description
+#. 6.2->settings-schema.json->wisps-color-1->description
+msgid "Color #1"
+msgstr "Color #1"
+
+#. 6.2->settings-schema.json->fire-color-2->description
+#. 6.2->settings-schema.json->wisps-color-2->description
+msgid "Color #2"
+msgstr "Color #2"
+
+#. 6.2->settings-schema.json->fire-color-3->description
+#. 6.2->settings-schema.json->wisps-color-3->description
+msgid "Color #3"
+msgstr "Color #3"
+
+#. 6.2->settings-schema.json->fire-color-4->description
+msgid "Color #4"
+msgstr "Color #4"
+
+#. 6.2->settings-schema.json->fire-color-5->description
+msgid "Color #5"
+msgstr "Color #5"
+
+#. 6.2->settings-schema.json->focus-blur-amount->description
+msgid "Blur Amount"
+msgstr "Cantidad de desenfoque"
+
+#. 6.2->settings-schema.json->focus-blur-quality->description
+msgid "Blur Quality"
+msgstr "Calidad de desenfoque"
+
+#. 6.2->settings-schema.json->focus-blur-quality->tooltip
+msgid ""
+"The Quality of the Blur (Setting this too high may increase GPU load and "
+"affect performance)"
+msgstr ""
+"La calidad del desenfoque (si se ajusta demasiado alto, puede aumentar la "
+"carga de la GPU y afectar al rendimiento)."
+
+#. 6.2->settings-schema.json->glide-squish->description
+msgid "Squish"
+msgstr "Aplastamiento"
+
+#. 6.2->settings-schema.json->glide-tilt->description
+msgid "Tilt"
+msgstr "Inclinación"
+
+#. 6.2->settings-schema.json->glide-shift->description
+msgid "Shift"
+msgstr "Cambio"
+
+#. 6.2->settings-schema.json->glitch-strength->description
+#. 6.2->settings-schema.json->tv-glitch-strength->description
+msgid "Strength"
+msgstr "Fuerza"
+
+#. 6.2->settings-schema.json->glitch-speed->description
+#. 6.2->settings-schema.json->tv-glitch-speed->description
+msgid "Speed"
+msgstr "Velocidad"
+
+#. 6.2->settings-schema.json->hexagon-line-width->description
+msgid "Mesh Line Width"
+msgstr "Ancho de línea de malla"
+
+#. 6.2->settings-schema.json->hexagon-line-color->description
+msgid "Line Color"
+msgstr "Color de línea"
+
+#. 6.2->settings-schema.json->hexagon-glow-color->description
+msgid "Glow Color"
+msgstr "Color de brillo"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->description
+msgid "Additive Blending"
+msgstr "Mezclas de aditivos"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->tooltip
+msgid "You may want to enable this for dark window themes."
+msgstr ""
+"Es posible que desee activar esta opción para los temas de ventanas oscuras."
+
+#. 6.2->settings-schema.json->incinerate-turbulence->description
+msgid "Turbulence"
+msgstr "Turbulencia"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->description
+msgid "Start at Pointer"
+msgstr "Inicio en el puntero"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->tooltip
+msgid "If disabled, a random location will be chosen."
+msgstr "Si se desactiva, se elegirá una ubicación aleatoria."
+
+#. 6.2->settings-schema.json->pixelate-noise->description
+msgid "Noise"
+msgstr "Ruido"
+
+#. 6.2->settings-schema.json->pixel-wheel-spoke-count->description
+msgid "Spoke Count"
+msgstr "Conteo de radios"
+
+#. 6.2->settings-schema.json->portal-rotation-speed->description
+msgid "Rotation Speed"
+msgstr "Velocidad de rotación"
+
+#. 6.2->settings-schema.json->portal-whirling->description
+msgid "Whirling"
+msgstr "Remolino"
+
+#. 6.2->settings-schema.json->portal-details->description
+msgid "Details"
+msgstr "Detalles"
