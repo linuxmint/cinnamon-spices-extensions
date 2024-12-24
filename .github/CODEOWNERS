@@ -15,7 +15,6 @@ compiz-windows-effect@hermes83.github.com/*        @hermes83
 desktop-icons-per-workspace@cardsurf/*             @cardsurf
 extra-panel-settings@gr3q/*                        @gr3q
 focus-new-window@mdpenguin/*                       @mdpenguin
-horizontal-osd@berk-karaal/*                       @berk-karaal
 mnemonic-5-4-window-menu@mtwebster/*               @mtwebster
 mouse-click-effects@anaximeno/*                    @anaximeno
 mouse-shake-zoom@rcalixte/*                        @rcalixte
@@ -32,6 +31,7 @@ watermark@germanfr/*                               @germanfr
 # cinnamon-maximus@fmete
 # desktop-scroller@ccadeptic23
 # gTile@shuairan
+# horizontal-osd@berk-karaal
 # opacify@anish.org
 # wobbly-windows@mecheye.net
 # workspace-scroller@ori
