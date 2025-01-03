@@ -1,0 +1,193 @@
+# DESKTOP CUBE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# yare, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-21 14:16-0500\n"
+"PO-Revision-Date: 2024-12-21 20:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Escritorio de cubo"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Animación Compiz Cube para cambiar de espacio de trabajo"
+
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
+msgid "General"
+msgstr "General"
+
+#. 2.0->settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Duración de la animación"
+
+#. 2.0->settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Distancia de separación de la pantalla"
+
+#. 2.0->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Efectos"
+
+#. 2.0->settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Efecto de alejamiento de pantalla"
+
+#. 2.0->settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Efecto de acercamineto de la pantalla"
+
+#. 2.0->settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Efecto de inicio de rotación"
+
+#. 2.0->settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Efecto fin de rotación"
+
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Configuración del sistema"
+
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr ""
+"Abrir la configuración de Cinnamon para gestionar los espacios de trabajo"
+
+#. 5.4->settings-schema.json->animationTimeSec->description
+msgid "Animation duration (seconds)"
+msgstr "Duración de la animación (segundos)"
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr "Tamaño del cubo (porcentaje del tamaño de la pantalla)"
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr "Incluir paneles"
+
+#. 5.4->settings-schema.json->includePanels->tooltip
+msgid ""
+"Include the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
+"Incluir los paneles durante la animación. En la mayoría de los casos, los "
+"paneles no están bien pintados o son completamente invisibles, por lo que es "
+"mejor dejar esta opción desactivada"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr "Utilizar el efecto Cubo con el applet de cambio de espacio de trabajo"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+"Anular la API moveToWorkspace() para que el efecto Cubo sea utilizado por el "
+"Applet de cambio de espacio de trabajo al cambiar el espacio de trabajo "
+"actual"
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr ""
+"Utilizar el efecto Cubo cuando el cambio de enfoque provoque un cambio de "
+"espacio de trabajo"
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+"Anular la API activateWindow() para que cuando una ventana en otro espacio "
+"de trabajo reciba el foco, el efecto Cubo se utilice para cambiar el espacio "
+"de trabajo actual"
+
+#. 5.4->settings-schema.json->header2->description
+msgid "Effect Easing"
+msgstr "Suavizado de efectos"
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr "Suavizar escalado"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr "Atrás"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr "Rebote"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr "Círculo"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr "Cúbico"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr "Elástico"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr "Exposición"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr "Seno"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr "Cuádruple"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr "Cuarto"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr "Quinta"
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+msgid "Rotate easing"
+msgstr "Suavizar rotación"
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr "Abrir sitio web sobre suavizado de efectos"
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
+msgstr ""
+"Abrir la configuración del teclado de Cinnamon para gestionar las teclas de "
+"acceso rápido del espacio de trabajo"
