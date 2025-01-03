@@ -637,6 +637,7 @@ Cube.prototype = {
     },
 
     _keyPressEvent: function(actor, event) {
+        if (!enabled) return Clutter.EVENT_PROPAGATE;
         let workspace;
         let windows;
         let window;
@@ -755,7 +756,8 @@ Cube.prototype = {
         }
     },
 
-    _keyReleaseEvent: function() {
+    _keyReleaseEvent: function(actor, event) {
+        if (!enabled) return Clutter.EVENT_PROPAGATE;
         let [x, y, mods] = global.get_pointer();
         let state = mods & this._modifierMask;
 

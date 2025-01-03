@@ -98,15 +98,18 @@ SmartPanelExt.prototype = {
     },
 
     disable: function() {
-        this._panel.disconnect(this.sr);
-        this._panel.disconnect(this.en);
-        this._panel.disconnect(this.lv);
-        this._panel.disconnect(this.bp);
-        this._panel.disconnect(this.br);
+        this.is_disabled = true;
+        // FIXME: These lines make Cinnamon unstable!
+        //~ if (this.sr != null) this._panel.disconnect(this.sr);
+        //~ if (this.en != null) this._panel.disconnect(this.en);
+        //~ if (this.lv != null) this._panel.disconnect(this.lv);
+        //~ if (this.bp != null) this._panel.disconnect(this.bp);
+        //~ if (this.br != null) this._panel.disconnect(this.br);
     },
 
     enable: function() {
         this._panel.reactive = true;
+        this.is_disabled = false;
         this.sr = this._panel.connect('scroll-event'        , Lang.bind(this, this._onScroll));
         this.en = this._panel.connect('enter-event'         , Lang.bind(this, this._onEntered));
         this.lv = this._panel.connect('leave-event'         , Lang.bind(this, this._onLeave));
@@ -115,13 +118,13 @@ SmartPanelExt.prototype = {
     },
 
     _onEntered : function(actor, event) {
-        if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
+        if (this.is_disabled || this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         this.p = false
         return;
     },
 
     _onLeave : function(actor, event) {
-        if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
+        if (this.is_disabled || this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         if (this.p && this.use_gestures) {
             let v = Math.abs(global.get_pointer()[0] - this.ppos[0]) < 33;
             let e = Math.abs(global.get_pointer()[1] - this.ppos[1]) > this._panel.get_height() - 2;
@@ -132,7 +135,7 @@ SmartPanelExt.prototype = {
     },
 
     _onButtonPress : function(actor, event) {
-        if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
+        if (this.is_disabled || this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         let button = event.get_button();
         if (button == 1) {
             this.p = true;
@@ -153,7 +156,7 @@ SmartPanelExt.prototype = {
     },
 
     _onButtonRelease : function(actor, event) {
-        if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
+        if (this.is_disabled || this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         if (this.p && this.use_gestures) {
             let v = global.get_pointer()[0] - this.ppos[0];
             if (v > 22) this.Do(this.to_right);
@@ -164,7 +167,7 @@ SmartPanelExt.prototype = {
     },
 
     _onScroll : function(actor, event) {
-        if (this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
+        if (this.is_disabled || this.checkEventSource(actor, event)) return Clutter.EVENT_PROPAGATE;
         let currentTime = Date.now();
         let direction = event.get_scroll_direction();
 
@@ -377,7 +380,7 @@ SmartPanelExt.prototype = {
            if (this.workspaceSwitcherExt) {
               this.workspaceSwitcherExt.ExtSwitchToWorkspace(reqWs);
            } else {
-              reqWs.activate(global.get_current_time()); 
+              reqWs.activate(global.get_current_time());
               this.showWorkspaceOSD();
            }
         }

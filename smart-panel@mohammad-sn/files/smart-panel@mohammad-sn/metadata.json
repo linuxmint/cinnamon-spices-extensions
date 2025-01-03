@@ -23,7 +23,7 @@
   ],
   "description": "Switch between workspaces, show desktop, activate overview or expo, ... by scrolling, double click, mouse gestures etc on free space of the panel.",
   "name": "Smart Panel",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "uuid": "smart-panel@mohammad-sn",
   "url": "https://cinnamon-spices.linuxmint.com/extensions/view/80",
   "author": "mohammad-sn"
