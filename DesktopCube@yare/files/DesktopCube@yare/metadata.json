@@ -16,7 +16,7 @@
     "4.6",
     "5.4"
   ],
-  "version": "2.0.3",
+  "version": "2.0.4",
   "uuid": "DesktopCube@yare",
   "name": "Desktop Cube",
   "description": "Compiz Cube-like animation for workspace switching",

@@ -37,7 +37,13 @@ const setPanelsOpacity = function(opacity) {
     let panels = Main.getPanels();
     for (let i = 0; i < panels.length; i++) {
         if (!panels[i]) continue;
-        panels[i].actor.opacity = opacity;
+        if (opacity === 0) {
+            panels[i].disable();
+        } else if (opacity === 255) {
+            panels[i].enable();
+        } else {
+            panels[i].actor.opacity = opacity;
+        }
     }
 };
 
@@ -320,7 +326,7 @@ Cube.prototype = {
         let windows = global.get_window_actors();
         for (let i = 0; i < windows.length; i++) {
             let meta_window = windows[i].get_meta_window();
-            if (meta_window.get_workspace().index() === workspaceIndex
+            if (meta_window && meta_window.get_workspace().index() === workspaceIndex
                 && !meta_window.minimized
                 && meta_window.get_window_type() !== Meta.WindowType.DESKTOP) {
                 workspaceWindows.push(meta_window);

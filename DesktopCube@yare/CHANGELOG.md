@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.4
+
+- Fix a bug that occurs when a windows workspace can't be determined
+- Use panel APIs to show/hide panels rather than using Clutter APIs against the panels actor (for better compatibility with the Blur Cinnamon extension)
+
+## 2.0.3
+
+- Fix issues when running under Cinnamon 6.4
+
 ## 2.0.2
 
 - Added APIs used by the "Smart Panel" applet so it can use Desktop Cube in more cases
