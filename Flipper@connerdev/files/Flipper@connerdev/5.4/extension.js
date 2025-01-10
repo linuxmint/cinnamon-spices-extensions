@@ -103,7 +103,7 @@ Flipper.prototype = {
         global.window_group.hide();
 
         Main.getPanels().forEach(function(panel){
-          panel.actor.hide();
+          panel.disable();
         });
 
         if (window && window.get_window_type() !== Meta.WindowType.DESKTOP)
@@ -316,14 +316,15 @@ Flipper.prototype = {
         let windows = global.get_window_actors();
         for (let i = 0; i < windows.length; i++) {
             let meta_window = windows[i].get_meta_window();
-            if (meta_window.get_workspace().index() == workspaceIndex &&
+            if (meta_window && meta_window.get_workspace() &&
+                (meta_window.get_workspace().index() == workspaceIndex || meta_window.is_on_all_workspaces()) &&
                 !meta_window.minimized &&
                 meta_window.get_window_type() !== Meta.WindowType.DESKTOP) {
                 workspaceWindows.push(meta_window);
             }
         }
 
-        // workspaceWindows.sort(Lang.bind(this, this._sortWindow));
+        workspaceWindows.sort(Lang.bind(this, this._sortWindow));
         return workspaceWindows;
         // return workspaceWindows.reverse();
     },
@@ -1513,7 +1514,7 @@ Flipper.prototype = {
       Main.uiGroup.remove_actor(this.actor);
 
       Main.getPanels().forEach(function(panel){
-        panel.actor.show();
+        panel.enable();
       });
 
       global.window_group.show();

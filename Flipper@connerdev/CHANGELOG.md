@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.1
+
+- Make windows that are 'visible on all workspaces' also visible on the animated workspace clones
+- Use panel APIs to show/hide panels rather than using Clutter APIs against the panels actor (for better compatibility with the Blur Cinnamon extension)
+
 ## 2.0.0
 
 - Added ability to use Flipper effects when changing the workspace via the "Workspace Switcher" applet
