@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.5
+
+- 2nd attempt to fix a bug that occurs when a windows workspace can't be determined
+- Make windows that are 'visible on all workspaces' also visible on all cube faces
+- Release the key press/release event listeners when the cube is destroyed
+
 ## 2.0.4
 
 - Fix a bug that occurs when a windows workspace can't be determined
