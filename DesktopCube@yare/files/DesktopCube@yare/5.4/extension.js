@@ -111,8 +111,8 @@ Cube.prototype = {
 
         Main.uiGroup.add_child(this.actor);
 
-        this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
-        this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
+        this.releaseID = this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
+        this.pressID = this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
 
         this.initBackground();
         this.dimBackground();
@@ -326,7 +326,8 @@ Cube.prototype = {
         let windows = global.get_window_actors();
         for (let i = 0; i < windows.length; i++) {
             let meta_window = windows[i].get_meta_window();
-            if (meta_window && meta_window.get_workspace().index() === workspaceIndex
+            if (meta_window && meta_window.get_workspace()
+                && (meta_window.get_workspace().index() === workspaceIndex || meta_window.is_on_all_workspaces())
                 && !meta_window.minimized
                 && meta_window.get_window_type() !== Meta.WindowType.DESKTOP) {
                 workspaceWindows.push(meta_window);
@@ -811,6 +812,8 @@ Cube.prototype = {
     },
 
     destroy: function() {
+        this.actor.disconnect(this.releaseID);
+        this.actor.disconnect(this.pressID);
         this._backgroundGroup.remove_child(this.metaBackgroundActor);
         Main.uiGroup.remove_child(this._backgroundGroup);
         Main.uiGroup.remove_child(this.actor);
