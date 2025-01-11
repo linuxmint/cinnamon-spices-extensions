@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.5\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-12-10 22:31-0500\n"
+"POT-Creation-Date: 2025-01-10 22:59-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. 6.2/extension.js:212 6.2/extension.js:443
+#. 6.2/extension.js:212 6.2/extension.js:450
 msgid "Error"
 msgstr "Virhe"
 
@@ -34,7 +34,7 @@ msgstr "Nykyinen laajennus"
 msgid "conflicts with this extension."
 msgstr "on ristiriidassa tämän laajennuksen kanssa."
 
-#. 6.2/extension.js:444
+#. 6.2/extension.js:451
 msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"
@@ -46,6 +46,8 @@ msgstr ""
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Apparition.js:94
 msgid "Apparition"
 msgstr "Ilmestys"
@@ -58,6 +60,8 @@ msgstr "Särkynyt lasi"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Doom.js:101
 msgid "Doom"
 msgstr "Tuoho"
@@ -66,6 +70,8 @@ msgstr "Tuoho"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/EnergizeA.js:90
 msgid "Energize A"
 msgstr "Energia A"
@@ -74,6 +80,8 @@ msgstr "Energia A"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/EnergizeB.js:92
 msgid "Energize B"
 msgstr "Energia B"
@@ -82,6 +90,8 @@ msgstr "Energia B"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Fire.js:114
 msgid "Fire"
 msgstr "Tuli"
@@ -110,6 +120,8 @@ msgstr "Joulupukki tulee"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
 msgstr "Tarkennus"
@@ -118,6 +130,8 @@ msgstr "Tarkennus"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Glide.js:93
 msgid "Glide"
 msgstr "Liuku"
@@ -126,6 +140,8 @@ msgstr "Liuku"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Glitch.js:97
 msgid "Glitch"
 msgstr "Häiriö"
@@ -134,6 +150,8 @@ msgstr "Häiriö"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Hexagon.js:106
 msgid "Hexagon"
 msgstr "Kuusikulmio"
@@ -142,6 +160,8 @@ msgstr "Kuusikulmio"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Incinerate.js:144
 msgid "Incinerate"
 msgstr "Poltto"
@@ -158,6 +178,8 @@ msgstr "Sivellin"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/PixelWheel.js:88
 msgid "Pixel Wheel"
 msgstr "Pikselipyörä"
@@ -166,6 +188,8 @@ msgstr "Pikselipyörä"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/PixelWipe.js:114
 msgid "Pixel Wipe"
 msgstr "Pikselipyyhintä"
@@ -174,6 +198,8 @@ msgstr "Pikselipyyhintä"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Pixelate.js:88
 msgid "Pixelate"
 msgstr "Pikselöinti"
@@ -182,6 +208,8 @@ msgstr "Pikselöinti"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Portal.js:99
 msgid "Portal"
 msgstr "Teleportti"
@@ -198,6 +226,8 @@ msgstr "T-Rexin hyökkäys"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/TVEffect.js:90
 msgid "TV Effect"
 msgstr "TV pois"
@@ -206,6 +236,8 @@ msgstr "TV pois"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/TVGlitch.js:99
 msgid "TV Glitch"
 msgstr "TV päälle"
@@ -214,6 +246,8 @@ msgstr "TV päälle"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Wisps.js:101
 msgid "Wisps"
 msgstr "Hikkaset"
@@ -284,7 +318,9 @@ msgstr "Sovellus"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
 #, fuzzy
-msgid "A list of applications with special effect rules"
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
 msgstr "Luettelo sovelluksista, joilla on tehosteita koskevia sääntöjä"
 
 #. 6.2->settings-schema.json->app-rules-button->description
@@ -309,11 +345,15 @@ msgstr "Näytä asetukset tehosteelle:"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 msgid "Randomized"
 msgstr "Satunnainen"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 msgid "None"
 msgstr "Ei mikään"
 
@@ -323,6 +363,27 @@ msgstr "Tehoste Ikkunan avaamiselle"
 
 #. 6.2->settings-schema.json->close-window-effect->description
 msgid "Close window effect"
+msgstr "Tehoste Ikkunan sulkemiselle"
+
+#. 6.2->settings-schema.json->dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+#, fuzzy
+msgid "Open dialog window effect"
+msgstr "Tehoste Ikkunan avaamiselle"
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+#, fuzzy
+msgid "Close dialog window effect"
 msgstr "Tehoste Ikkunan sulkemiselle"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description

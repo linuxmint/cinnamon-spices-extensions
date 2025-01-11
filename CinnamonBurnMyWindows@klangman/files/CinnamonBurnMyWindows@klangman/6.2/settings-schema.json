@@ -22,7 +22,7 @@
     "general-settings" : {
       "type" : "section",
       "title" : "Burn My Windows General Settings",
-      "keys" : ["open-window-effect", "close-window-effect"]
+      "keys" : ["open-window-effect", "close-window-effect", "dialog-special", "dialog-open-effect", "dialog-close-effect"]
     },
 
     "app-specific-settings" : {
@@ -115,8 +115,18 @@
         },
         {"id": "application", "title": "Application",  "type": "string"}
     ],
-    "tooltip": "A list of applications with special effect rules",
-    "default": []
+    "tooltip": "A list of applications with special effect rules. The application can be a desktop file name or a WM_CLASS name",
+    "default": [ { "enabled": true,
+                   "open": 1000,
+                   "close": 1000,
+                   "application": "VirtualBox"
+                 },
+                 { "enabled": true,
+                   "open": 1000,
+                   "close": 1000,
+                   "application": "VirtualBoxVM"
+                 }
+               ]
   },
   "app-rules-button" : {
     "type" : "button",
@@ -384,6 +394,69 @@
       "None": 1000
     },
     "description": "Close window effect"
+  },
+
+  "dialog-special": {
+    "type" : "switch",
+    "description": "Special handling for dialog windows",
+    "tooltip": "Allows you to define special settings for handling dialog window types (i.e. file open dialog windows). These settings will override any application specific settings that may have been defined.",
+     "default": false
+  },
+
+  "dialog-open-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Apparition": 0,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Open dialog window effect",
+    "dependency" : "dialog-special=true"
+  },
+
+  "dialog-close-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Apparition": 0,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Close dialog window effect",
+    "dependency" : "dialog-special=true"
   },
 
   "apparition-shake-intensity": {

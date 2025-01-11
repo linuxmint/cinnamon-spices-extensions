@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-12-10 22:31-0500\n"
+"POT-Creation-Date: 2025-01-10 22:59-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#. 6.2/extension.js:212 6.2/extension.js:443
+#. 6.2/extension.js:212 6.2/extension.js:450
 msgid "Error"
 msgstr "Erro"
 
@@ -34,7 +34,7 @@ msgstr "A extensão existente"
 msgid "conflicts with this extension."
 msgstr "conflita com esta extensão."
 
-#. 6.2/extension.js:444
+#. 6.2/extension.js:451
 msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"
@@ -47,6 +47,8 @@ msgstr ""
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Apparition.js:94
 msgid "Apparition"
 msgstr "Aparição"
@@ -59,6 +61,8 @@ msgstr "Vidro Quebrado"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Doom.js:101
 msgid "Doom"
 msgstr "Ruína"
@@ -67,6 +71,8 @@ msgstr "Ruína"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/EnergizeA.js:90
 msgid "Energize A"
 msgstr "Energizar A"
@@ -75,6 +81,8 @@ msgstr "Energizar A"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/EnergizeB.js:92
 msgid "Energize B"
 msgstr "Energizar B"
@@ -83,6 +91,8 @@ msgstr "Energizar B"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Fire.js:114
 msgid "Fire"
 msgstr "Fogo"
@@ -111,6 +121,8 @@ msgstr "O Pai Natal está Vindo"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
 msgstr ""
@@ -119,6 +131,8 @@ msgstr ""
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Glide.js:93
 msgid "Glide"
 msgstr "Deslizar"
@@ -127,6 +141,8 @@ msgstr "Deslizar"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Glitch.js:97
 msgid "Glitch"
 msgstr "Falha Gráfica"
@@ -135,6 +151,8 @@ msgstr "Falha Gráfica"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Hexagon.js:106
 msgid "Hexagon"
 msgstr "Hexágono"
@@ -143,6 +161,8 @@ msgstr "Hexágono"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Incinerate.js:144
 msgid "Incinerate"
 msgstr "Incenerar"
@@ -159,6 +179,8 @@ msgstr "Pincel"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/PixelWheel.js:88
 msgid "Pixel Wheel"
 msgstr "Roda de Pixeis"
@@ -167,6 +189,8 @@ msgstr "Roda de Pixeis"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/PixelWipe.js:114
 msgid "Pixel Wipe"
 msgstr "Limpeza de Pixeis"
@@ -175,6 +199,8 @@ msgstr "Limpeza de Pixeis"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Pixelate.js:88
 msgid "Pixelate"
 msgstr "Pixelizar"
@@ -183,6 +209,8 @@ msgstr "Pixelizar"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Portal.js:99
 msgid "Portal"
 msgstr "Portal"
@@ -199,6 +227,8 @@ msgstr "Ataque do T-Rex"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/TVEffect.js:90
 msgid "TV Effect"
 msgstr "Efeito de TV"
@@ -207,6 +237,8 @@ msgstr "Efeito de TV"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/TVGlitch.js:99
 msgid "TV Glitch"
 msgstr "Falha Gráfica de TV"
@@ -215,6 +247,8 @@ msgstr "Falha Gráfica de TV"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Wisps.js:101
 msgid "Wisps"
 msgstr "Fogos-Fátuos"
@@ -285,7 +319,9 @@ msgstr "Aplicação"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
 #, fuzzy
-msgid "A list of applications with special effect rules"
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
 msgstr "Uma lista de aplicações com regras de efeitos especiais"
 
 #. 6.2->settings-schema.json->app-rules-button->description
@@ -310,11 +346,15 @@ msgstr "Mostrar definições para o efeito:"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 msgid "Randomized"
 msgstr "Randomizado"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 msgid "None"
 msgstr "Nenhum"
 
@@ -324,6 +364,27 @@ msgstr "Efeito de abertura da janela"
 
 #. 6.2->settings-schema.json->close-window-effect->description
 msgid "Close window effect"
+msgstr "Efeito de fechamento da janela"
+
+#. 6.2->settings-schema.json->dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+#, fuzzy
+msgid "Open dialog window effect"
+msgstr "Efeito de abertura da janela"
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+#, fuzzy
+msgid "Close dialog window effect"
 msgstr "Efeito de fechamento da janela"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description

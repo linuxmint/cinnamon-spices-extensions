@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-12-10 22:31-0500\n"
+"POT-Creation-Date: 2025-01-10 22:59-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.2/extension.js:212 6.2/extension.js:443
+#. 6.2/extension.js:212 6.2/extension.js:450
 msgid "Error"
 msgstr "Hiba"
 
@@ -34,7 +34,7 @@ msgstr "A meglévő bővítmény"
 msgid "conflicts with this extension."
 msgstr "ütközik ezzel a bővitménnyel."
 
-#. 6.2/extension.js:444
+#. 6.2/extension.js:451
 msgid ""
 "The previously focused window is not backed by an application and therefore "
 "application specific effects can not be applied to that window"
@@ -46,6 +46,8 @@ msgstr ""
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Apparition.js:94
 msgid "Apparition"
 msgstr "Megjelenik"
@@ -58,6 +60,8 @@ msgstr "Törött üveg"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Doom.js:101
 msgid "Doom"
 msgstr "Doom"
@@ -66,6 +70,8 @@ msgstr "Doom"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/EnergizeA.js:90
 msgid "Energize A"
 msgstr "Energizálja A"
@@ -74,6 +80,8 @@ msgstr "Energizálja A"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/EnergizeB.js:92
 msgid "Energize B"
 msgstr "Energizálja B"
@@ -82,6 +90,8 @@ msgstr "Energizálja B"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Fire.js:114
 msgid "Fire"
 msgstr "Tűz"
@@ -110,6 +120,8 @@ msgstr "Jön a Mikulás"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
 msgstr "Fókusz"
@@ -118,6 +130,8 @@ msgstr "Fókusz"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Glide.js:93
 msgid "Glide"
 msgstr "Siklik"
@@ -126,6 +140,8 @@ msgstr "Siklik"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Glitch.js:97
 msgid "Glitch"
 msgstr "Glitch"
@@ -134,6 +150,8 @@ msgstr "Glitch"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Hexagon.js:106
 msgid "Hexagon"
 msgstr "Hatszög"
@@ -142,6 +160,8 @@ msgstr "Hatszög"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Incinerate.js:144
 msgid "Incinerate"
 msgstr "Felgyújt"
@@ -158,6 +178,8 @@ msgstr "Ecset"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/PixelWheel.js:88
 msgid "Pixel Wheel"
 msgstr "Pixeles Kerék"
@@ -166,6 +188,8 @@ msgstr "Pixeles Kerék"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/PixelWipe.js:114
 msgid "Pixel Wipe"
 msgstr "Pixeles Törlés"
@@ -174,6 +198,8 @@ msgstr "Pixeles Törlés"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Pixelate.js:88
 msgid "Pixelate"
 msgstr "Pixelesít"
@@ -182,6 +208,8 @@ msgstr "Pixelesít"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Portal.js:99
 msgid "Portal"
 msgstr "Portál"
@@ -198,6 +226,8 @@ msgstr "T-Rex támadás"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/TVEffect.js:90
 msgid "TV Effect"
 msgstr "TV effektus"
@@ -206,6 +236,8 @@ msgstr "TV effektus"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/TVGlitch.js:99
 msgid "TV Glitch"
 msgstr "TV Glitch"
@@ -214,6 +246,8 @@ msgstr "TV Glitch"
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 #. effects/Wisps.js:101
 msgid "Wisps"
 msgstr "Foszlányok"
@@ -284,7 +318,9 @@ msgstr "Alkalmazás"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
 #, fuzzy
-msgid "A list of applications with special effect rules"
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
 msgstr "A különleges effektussal rendelkező alkalmazások listája"
 
 #. 6.2->settings-schema.json->app-rules-button->description
@@ -310,11 +346,15 @@ msgstr "A hatás beállításainak megjelenítése:"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 msgid "Randomized"
 msgstr "Véletlenszerű"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
 msgid "None"
 msgstr "Semmi"
 
@@ -324,6 +364,27 @@ msgstr "Megnyitás ablak effektusa"
 
 #. 6.2->settings-schema.json->close-window-effect->description
 msgid "Close window effect"
+msgstr "Bezárás ablak effektusa"
+
+#. 6.2->settings-schema.json->dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+#, fuzzy
+msgid "Open dialog window effect"
+msgstr "Megnyitás ablak effektusa"
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+#, fuzzy
+msgid "Close dialog window effect"
 msgstr "Bezárás ablak effektusa"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description

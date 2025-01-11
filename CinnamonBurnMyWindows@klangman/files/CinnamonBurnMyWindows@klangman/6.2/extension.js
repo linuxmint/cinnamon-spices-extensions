@@ -247,17 +247,22 @@ class BurnMyWindows {
   // Choose an effect based on the users preferences as defined in the setting for the current window action
   _chooseEffect(actor, forOpening) {
     let effectIdx;
-    let appRule = this.getAppRule(actor.meta_window);
+    let metaWindow = actor.meta_window;
+    let windowType = metaWindow.get_window_type();
+    let dialog = (this._settings.getValue("dialog-special") === true && (windowType === Meta.WindowType.DIALOG || windowType === Meta.WindowType.MODAL_DIALOG));
+    let appRule = (!dialog) ? this.getAppRule(metaWindow) : null;
     if (forOpening) {
-      if (appRule)
+      if (appRule) {
         effectIdx = appRule.open;
-      else
-        effectIdx = this._settings.getValue("open-window-effect");
+      } else {
+        effectIdx = (!dialog) ? this._settings.getValue("open-window-effect") : this._settings.getValue("dialog-open-effect");
+      }
     } else {
-      if (appRule)
+      if (appRule) {
         effectIdx = appRule.close;
-      else
-        effectIdx = this._settings.getValue("close-window-effect");
+      } else {
+        effectIdx = (!dialog) ? this._settings.getValue("close-window-effect") : this._settings.getValue("dialog-close-effect");
+      }
     }
     if (effectIdx === Effect.None) {
        return(null);
@@ -327,13 +332,15 @@ class BurnMyWindows {
     if (!app) {
       app = this._windowTracker.get_app_from_pid(metaWindow.get_pid());
     }
+    let appID = null;
     if (app && !app.is_window_backed()) {
-      let appID = app.get_id();
-      let appRules = this._settings.getValue("app-rules");
-      for( let i=0 ; i < appRules.length ; i++ ) {
-        if (appRules[i].enabled && appRules[i].application == appID) {
-          return(appRules[i]);
-        }
+      appID = app.get_id();
+    }
+    let wmClass = metaWindow.get_wm_class();
+    let appRules = this._settings.getValue("app-rules");
+    for( let i=0 ; i < appRules.length ; i++ ) {
+      if (appRules[i].enabled && ((appID && appRules[i].application == appID) || (appRules[i].application == wmClass))) {
+        return(appRules[i]);
       }
     }
     return(null);
