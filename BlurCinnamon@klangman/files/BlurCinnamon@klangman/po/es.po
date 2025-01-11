@@ -1,0 +1,217 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-01-11 11:33-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Blur Cinnamon"
+msgstr "Desenfoque de Cinnamon"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur, colorize and adjust the dimming of some Cinnamon Desktop "
+"components (i.e. Panels, Overview, Expo)"
+msgstr ""
+"Permite desenfocar, colorear y ajustar la atenuación de algunos componentes "
+"de Cinnamon Desktop (es decir, Paneles, Vista general, Exposición)."
+
+#. 6.0->settings-schema.json->general-page->title
+msgid "General"
+msgstr "General"
+
+#. 6.0->settings-schema.json->overview-page->title
+#. 6.0->settings-schema.json->enable-overview-effects->description
+msgid "Overview"
+msgstr "Vista general"
+
+#. 6.0->settings-schema.json->expo-page->title
+#. 6.0->settings-schema.json->enable-expo-effects->description
+msgid "Expo"
+msgstr "Exposición"
+
+#. 6.0->settings-schema.json->panels-page->title
+#. 6.0->settings-schema.json->enable-panels-effects->description
+msgid "Panels"
+msgstr "Paneles"
+
+#. 6.0->settings-schema.json->general-settings->title
+msgid "Cinnamon components where effects will be applied"
+msgstr "Componentes de Cinnamon donde se aplicarán los efectos"
+
+#. 6.0->settings-schema.json->generic-effect-settings->title
+msgid "Generic effect settings"
+msgstr "Configuración genérica de efectos"
+
+#. 6.0->settings-schema.json->overview-override->title
+msgid "Overview settings"
+msgstr "Ajustes de la vista general"
+
+#. 6.0->settings-schema.json->overview-effect-settings->title
+msgid "Overview effect settings"
+msgstr "Ajustes de efecto de la vista general"
+
+#. 6.0->settings-schema.json->expo-override->title
+msgid "Expo settings"
+msgstr "Configuración de la exposición"
+
+#. 6.0->settings-schema.json->expo-effect-settings->title
+msgid "Expo effect settings"
+msgstr "Configuración de efecto de la exposición"
+
+#. 6.0->settings-schema.json->panels-override->title
+msgid "Panels settings"
+msgstr "Configuración de los paneles"
+
+#. 6.0->settings-schema.json->panels-effect-settings->title
+msgid "Panel effects settings"
+msgstr "Configuración de efectos del panel"
+
+#. 6.0->settings-schema.json->enable-overview-effects->tooltip
+msgid ""
+"Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
+"hot corner)"
+msgstr ""
+"Aplicar efectos a la vista general (predeterminado: Ctrl+Alt+Abajo / Esquina "
+"activa 'Mostrar todas las ventanas')"
+
+#. 6.0->settings-schema.json->enable-expo-effects->tooltip
+msgid ""
+"Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot "
+"corner)"
+msgstr ""
+"Aplicar efectos a la Exposición (predeterminado: Ctrl+Alt+Arriba / esquina "
+"activa 'Mostrar todos los espacios de trabajo')"
+
+#. 6.0->settings-schema.json->enable-panels-effects->tooltip
+msgid "Apply effects to the Panels"
+msgstr "Aplicar efectos a los paneles"
+
+#. 6.0->settings-schema.json->overview-info->description
+msgid "Overview effects are currently disabled under the General tab."
+msgstr ""
+"Los efectos de la vista general actualmente están deshabilitados en la "
+"pestaña General."
+
+#. 6.0->settings-schema.json->expo-info->description
+msgid "Expo effects are currently disabled under the General tab."
+msgstr ""
+"Los efectos de exposición están actualmente deshabilitados en la pestaña "
+"General."
+
+#. 6.0->settings-schema.json->panels-info->description
+msgid "Panel effects are currently disabled under the General tab."
+msgstr ""
+"Los efectos del panel están actualmente deshabilitados en la pestaña General."
+
+#. 6.0->settings-schema.json->enable-overview-override->description
+msgid "Override the generic effect settings for the Overview"
+msgstr "Anular la configuración generica de efectos para la vista general"
+
+#. 6.0->settings-schema.json->enable-expo-override->description
+msgid "Override the generic effect settings for the Expo"
+msgstr "Anular la configuración generica de efectos para la exposición"
+
+#. 6.0->settings-schema.json->enable-panels-override->description
+msgid "Override the generic effect settings for the Panels"
+msgstr "Anular la configuración generica de efectos para los paneles"
+
+#. 6.0->settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->overview-opacity->description
+#. 6.0->settings-schema.json->expo-opacity->description
+#. 6.0->settings-schema.json->panels-opacity->description
+msgid "Dim Background (percentage)"
+msgstr "Fondo atenuado (porcentaje)"
+
+#. 6.0->settings-schema.json->colorBlend->description
+#. 6.0->settings-schema.json->overview-colorBlend->description
+#. 6.0->settings-schema.json->expo-colorBlend->description
+#. 6.0->settings-schema.json->panels-colorBlend->description
+msgid "Enable color blend effect"
+msgstr "Habilitar el efecto de mezcla de colores"
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+#. 6.0->settings-schema.json->overview-colorBlend->tooltip
+#. 6.0->settings-schema.json->expo-colorBlend->tooltip
+#. 6.0->settings-schema.json->panels-colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+"Utilice un color personalizado como color de fondo de atenuación. La "
+"intensidad del color puede controlarse mediante el control deslizante "
+"\"Atenuar fondo\" situado más arriba"
+
+#. 6.0->settings-schema.json->blendColor->description
+#. 6.0->settings-schema.json->overview-blendColor->description
+#. 6.0->settings-schema.json->expo-blendColor->description
+#. 6.0->settings-schema.json->panels-blendColor->description
+msgid "Blend effect Color"
+msgstr "Efecto de mezcla de colores"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+msgid "None"
+msgstr "Ninguno"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+msgid "Simple"
+msgstr "Sencillo"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+msgid "Gaussian"
+msgstr "Gaussiano"
+
+#. 6.0->settings-schema.json->blurType->description
+#. 6.0->settings-schema.json->overview-blurType->description
+#. 6.0->settings-schema.json->expo-blurType->description
+#. 6.0->settings-schema.json->panels-blurType->description
+msgid "Type of blur effect"
+msgstr "Tipo de efecto de desenfoque"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+#. 6.0->settings-schema.json->overview-blurType->tooltip
+#. 6.0->settings-schema.json->expo-blurType->tooltip
+#. 6.0->settings-schema.json->panels-blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr ""
+"Que tipo de algoritmo de desenfoque debe utilizarse para desenfocar el fondo."
+
+#. 6.0->settings-schema.json->radius->description
+#. 6.0->settings-schema.json->overview-radius->description
+#. 6.0->settings-schema.json->expo-radius->description
+#. 6.0->settings-schema.json->panels-radius->description
+msgid "Gaussian blur intensity"
+msgstr "Intensidad del desenfoque gaussiano"
+
+#. 6.0->settings-schema.json->radius->tooltip
+#. 6.0->settings-schema.json->overview-radius->tooltip
+#. 6.0->settings-schema.json->expo-radius->tooltip
+#. 6.0->settings-schema.json->panels-radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
+"Ajusta la intensidad del efecto de desenfoque cambiando el radio utilizado "
+"por el efecto."
