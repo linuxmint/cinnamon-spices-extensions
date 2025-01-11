@@ -1,0 +1,317 @@
+{
+   "layout" : {
+      "type" : "layout",
+      "pages" : ["general-page", "overview-page", "expo-page", "panels-page"],
+
+      "general-page" : {
+         "type" : "page",
+         "title" : "General",
+         "sections" : ["general-settings", "generic-effect-settings"]
+      },
+      "overview-page" : {
+         "type" : "page",
+         "title" : "Overview",
+         "sections" : ["overview-override", "overview-effect-settings"]
+      },
+      "expo-page" : {
+         "type" : "page",
+         "title" : "Expo",
+         "sections" : ["expo-override", "expo-effect-settings"]
+      },
+      "panels-page" : {
+         "type" : "page",
+         "title" : "Panels",
+         "sections" : ["panels-override", "panels-effect-settings"]
+      },
+
+      "general-settings" : {
+         "type" : "section",
+         "title" : "Cinnamon components where effects will be applied",
+         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects"]
+      },
+      "generic-effect-settings" : {
+         "type" : "section",
+         "title" : "Generic effect settings",
+         "keys" : ["opacity", "colorBlend", "blendColor", "blurType", "radius"]
+      },
+
+      "overview-override" : {
+         "type" : "section",
+         "title" : "Overview settings",
+         "keys" : ["enable-overview-override", "overview-info"]
+      },
+      "overview-effect-settings" : {
+         "type" : "section",
+         "title" : "Overview effect settings",
+         "dependency" : "enable-overview-override=1",
+         "keys" : ["overview-opacity", "overview-colorBlend", "overview-blendColor", "overview-blurType", "overview-radius"]
+      },
+
+      "expo-override" : {
+         "type" : "section",
+         "title" : "Expo settings",
+         "keys" : ["enable-expo-override", "expo-info"]
+      },
+      "expo-effect-settings" : {
+         "type" : "section",
+         "title" : "Expo effect settings",
+         "dependency" : "enable-expo-override=1",
+         "keys" : ["expo-opacity", "expo-colorBlend", "expo-blendColor", "expo-blurType", "expo-radius"]
+      },
+
+      "panels-override" : {
+         "type" : "section",
+         "title" : "Panels settings",
+         "keys" : ["enable-panels-override", "panels-info"]
+      },
+      "panels-effect-settings" : {
+         "type" : "section",
+         "title" : "Panel effects settings",
+         "dependency" : "enable-panels-override=1",
+         "keys" : ["panels-opacity", "panels-colorBlend", "panels-blendColor", "panels-blurType", "panels-radius"]
+      }
+
+   },
+
+    "enable-overview-effects" : {
+        "type": "switch",
+        "description": "Overview",
+        "tooltip": "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` hot corner)",
+        "default": true
+    },
+    "enable-expo-effects" : {
+        "type": "switch",
+        "description": "Expo",
+        "tooltip": "Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot corner)",
+        "default": true
+    },
+    "enable-panels-effects" : {
+        "type": "switch",
+        "description": "Panels",
+        "tooltip": "Apply effects to the Panels",
+        "default": true
+    },
+
+    "overview-info" : {
+        "type" : "label",
+        "description" : "Overview effects are currently disabled under the General tab.",
+        "dependency" : "!enable-overview-effects"
+    },
+    "expo-info" : {
+        "type" : "label",
+        "description" : "Expo effects are currently disabled under the General tab.",
+        "dependency" : "!enable-expo-effects"
+    },
+    "panels-info" : {
+        "type" : "label",
+        "description" : "Panel effects are currently disabled under the General tab.",
+        "dependency" : "!enable-panels-effects"
+    },
+
+    "enable-overview-override" : {
+        "type": "switch",
+        "description": "Override the generic effect settings for the Overview",
+        "dependency" : "enable-overview-effects",
+        "default": false
+    },
+    "enable-expo-override" : {
+        "type": "switch",
+        "description": "Override the generic effect settings for the Expo",
+        "dependency" : "enable-expo-effects",
+        "default": false
+    },
+    "enable-panels-override" : {
+        "type": "switch",
+        "description": "Override the generic effect settings for the Panels",
+        "dependency" : "enable-panels-effects",
+        "default": false
+    },
+
+
+    "opacity" : {
+        "type": "scale",
+        "description": "Dim Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "step": 1
+    },
+
+    "colorBlend" : {
+        "type": "switch",
+        "description": "Enable color blend effect",
+        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
+        "default": false
+    },
+
+    "blendColor": {
+        "type": "colorchooser",
+        "description" : "Blend effect Color",
+        "dependency" : "colorBlend=true",
+        "default": "rgb(0,0,0)"
+    },
+
+    "blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "dependency" : "blurType=2",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 9
+    },
+
+
+    "overview-opacity" : {
+        "type": "scale",
+        "description": "Dim Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "step": 1
+    },
+
+    "overview-colorBlend" : {
+        "type": "switch",
+        "description": "Enable color blend effect",
+        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
+        "default": false
+    },
+
+    "overview-blendColor": {
+        "type": "colorchooser",
+        "description" : "Blend effect Color",
+        "dependency" : "overview-colorBlend=true",
+        "default": "rgb(0,0,0)"
+    },
+
+    "overview-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "overview-radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "dependency" : "overview-blurType=2",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 9
+    },
+
+
+    "expo-opacity" : {
+        "type": "scale",
+        "description": "Dim Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "step": 1
+    },
+
+    "expo-colorBlend" : {
+        "type": "switch",
+        "description": "Enable color blend effect",
+        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
+        "default": false
+    },
+
+    "expo-blendColor": {
+        "type": "colorchooser",
+        "description" : "Blend effect Color",
+        "dependency" : "expo-colorBlend=true",
+        "default": "rgb(0,0,0)"
+    },
+
+    "expo-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "expo-radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "dependency" : "expo-blurType=2",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 9
+    },
+
+
+    "panels-opacity" : {
+        "type": "scale",
+        "description": "Dim Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "step": 1
+    },
+
+    "panels-colorBlend" : {
+        "type": "switch",
+        "description": "Enable color blend effect",
+        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
+        "default": false
+    },
+
+    "panels-blendColor": {
+        "type": "colorchooser",
+        "description" : "Blend effect Color",
+        "dependency" : "panels-colorBlend=true",
+        "default": "rgb(0,0,0)"
+    },
+
+    "panels-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "panels-radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "dependency" : "panels-blurType=2",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 6
+    }
+}
