@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.7
+
+- Added options in the configuration that allows you to define which effects will be used (if any) for dialog windows (i.e. a file open dialog). This allows you to use a more subtle or shorter running effect (i.e focus or glide) for all the dialog windows which are typically opened/closed more frequently.
+- Added support for using WM_CLASS names in the "application specific settings" table in the config.
+- Added two default "application specific settings" table entries for "VirtualBox" and "VirtualBoxVM. This addresses the Virtualbox issue described in the readme.md
+
 ## 0.9.6
 
 * Enabled the "Fire" effect
