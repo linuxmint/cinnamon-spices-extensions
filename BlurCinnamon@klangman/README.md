@@ -7,9 +7,10 @@ A Cinnamon extension to Dim, Blur and Colorize parts of the Cinnamon Desktop.
 1. Gaussian blur algorithm (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
 2. Dimming overlay with user configurable color and intensity (0-100%, transparent to a solid color)
 3. Simple blur algorithm (the Cinnamon built-in algorithm) which I would only recommend for very old computers
-4. Makes the Panels and the Expo transparent so that the desktop background image effects are visible
+4. Makes the Panels and the Expo transparent so that the desktop background image blur effects are visible
 5. Applies blurring, colorization and dimming effects to all Panels, the Overview and the Expo
 6. You can use general settings for Panels/Overview/Expo or use unique settings for each Cinnamon component
+7. Allows unique settings for each panel based on it's location and the monitor is is on
 
 ## Requirements
 

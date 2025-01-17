@@ -32,7 +32,7 @@
       "generic-effect-settings" : {
          "type" : "section",
          "title" : "Generic effect settings",
-         "keys" : ["opacity", "colorBlend", "blendColor", "blurType", "radius"]
+         "keys" : ["opacity", "blendColor", "blurType", "radius"]
       },
 
       "overview-override" : {
@@ -44,7 +44,7 @@
          "type" : "section",
          "title" : "Overview effect settings",
          "dependency" : "enable-overview-override=1",
-         "keys" : ["overview-opacity", "overview-colorBlend", "overview-blendColor", "overview-blurType", "overview-radius"]
+         "keys" : ["overview-opacity", "overview-blendColor", "overview-blurType", "overview-radius"]
       },
 
       "expo-override" : {
@@ -56,19 +56,19 @@
          "type" : "section",
          "title" : "Expo effect settings",
          "dependency" : "enable-expo-override=1",
-         "keys" : ["expo-opacity", "expo-colorBlend", "expo-blendColor", "expo-blurType", "expo-radius"]
+         "keys" : ["expo-opacity", "expo-blendColor", "expo-blurType", "expo-radius"]
       },
 
       "panels-override" : {
          "type" : "section",
          "title" : "Panels settings",
-         "keys" : ["enable-panels-override", "panels-info"]
+         "keys" : ["enable-panels-override", "panels-info", "allow-transparent-color-panels" ]
       },
       "panels-effect-settings" : {
          "type" : "section",
          "title" : "Panel effects settings",
-         "dependency" : "enable-panels-override=1",
-         "keys" : ["panels-opacity", "panels-colorBlend", "panels-blendColor", "panels-blurType", "panels-radius"]
+         "dependency" : "enable-panels-override",
+         "keys" : ["enable-panel-unique-settings", "panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius"]
       }
 
    },
@@ -107,6 +107,12 @@
         "description" : "Panel effects are currently disabled under the General tab.",
         "dependency" : "!enable-panels-effects"
     },
+    "allow-transparent-color-panels" : {
+        "type": "switch",
+        "description": "Modify the panels transparency and background color (recommended)",
+        "tooltip": "Allow this extension to modify the panels transparency and background color settings. If this is disabled the extension will only apply a blur overlay under the panels. This setting should only be disabled when the theme already uses transparent panels and you want the themes setting to apply",
+        "default": true
+    },
 
     "enable-overview-override" : {
         "type": "switch",
@@ -127,6 +133,34 @@
         "default": false
     },
 
+    "enable-panel-unique-settings" : {
+        "type": "switch",
+        "description": "Use unique effect settings for each panel",
+        "dependency" : "enable-panels-override",
+        "default": false
+    },
+
+    "panel-unique-settings" : {
+        "type" : "list",
+        "description" : "Panel specific settings",
+        "dependency" : "enable-panel-unique-settings",
+        "columns" : [
+            {"id": "enabled",   "title": "Enabled",   "type": "boolean", "default": true},
+            {"id": "panels",    "title": "Panel",     "type": "integer", "default": 0, "options": { "All" : 0, "Top" : 1, "Bottom" : 2, "Left" : 3, "Right" : 4 } },
+            {"id": "monitors",  "title": "Monitor",   "type": "integer", "default": 0, "options": { "All" : 100, "1" : 0, "2" : 1, "3" : 2, "4" : 3 } },
+            {"id": "opacity",   "title": "Dimming",   "type": "integer", "default": 40,  "min": 0, "max": 100},
+            {"id": "color",     "title": "Color",     "type": "string",  "default": "rgb(0,0,0)"},
+            {"id": "blurtype",  "title": "Blur",      "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
+            {"id": "radius",    "title": "Intensity", "type": "integer", "default": 10,  "min": 0, "max": 100}
+        ],
+        "tooltip": "Defines the effects applied to different panels. If a panel does not meet the criteria of any enabled entry in this list, it will have no effects applied. The settings of the first entry in this list that can apply to a given panel will take effect. The color field is in the rgb(#,#,#) syntax and black will be used when a color is not provided or is in an incorrect syntax",
+        "default" : [
+            { "enabled": true, "panels": 1, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10 },
+            { "enabled": true, "panels": 2, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10 },
+            { "enabled": true, "panels": 3, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10 },
+            { "enabled": true, "panels": 4, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10 }
+        ]
+    },
 
     "opacity" : {
         "type": "scale",
@@ -137,18 +171,11 @@
         "step": 1
     },
 
-    "colorBlend" : {
-        "type": "switch",
-        "description": "Enable color blend effect",
-        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
-        "default": false
-    },
-
     "blendColor": {
         "type": "colorchooser",
-        "description" : "Blend effect Color",
-        "dependency" : "colorBlend=true",
-        "default": "rgb(0,0,0)"
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
     "blurType": {
@@ -184,18 +211,11 @@
         "step": 1
     },
 
-    "overview-colorBlend" : {
-        "type": "switch",
-        "description": "Enable color blend effect",
-        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
-        "default": false
-    },
-
     "overview-blendColor": {
         "type": "colorchooser",
-        "description" : "Blend effect Color",
-        "dependency" : "overview-colorBlend=true",
-        "default": "rgb(0,0,0)"
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
     "overview-blurType": {
@@ -228,21 +248,16 @@
         "min": 0,
         "max": 100,
         "default": 40,
-        "step": 1
-    },
-
-    "expo-colorBlend" : {
-        "type": "switch",
-        "description": "Enable color blend effect",
-        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
-        "default": false
+        "step": 1,
+        "dependency" : "enable-expo-override=1"
     },
 
     "expo-blendColor": {
         "type": "colorchooser",
-        "description" : "Blend effect Color",
-        "dependency" : "expo-colorBlend=true",
-        "default": "rgb(0,0,0)"
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "dependency" : "enable-expo-override=1",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
     "expo-blurType": {
@@ -254,7 +269,8 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
-        "tooltip": "What type of blur algorithm should be used to blur the background"
+        "tooltip": "What type of blur algorithm should be used to blur the background",
+        "dependency" : "enable-expo-override=1"
     },
 
     "expo-radius": {
@@ -263,9 +279,9 @@
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "dependency" : "expo-blurType=2",
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
-        "default": 9
+        "default": 9,
+        "dependency" : "enable-expo-override=1"
     },
 
 
@@ -275,21 +291,16 @@
         "min": 0,
         "max": 100,
         "default": 30,
-        "step": 1
-    },
-
-    "panels-colorBlend" : {
-        "type": "switch",
-        "description": "Enable color blend effect",
-        "tooltip": "Use a custom color as the dimming overlay color. The color intensity can be controlled using the \"Dim Background\" slider control above",
-        "default": false
+        "step": 1,
+        "dependency" : "!enable-panel-unique-settings"
     },
 
     "panels-blendColor": {
         "type": "colorchooser",
-        "description" : "Blend effect Color",
-        "dependency" : "panels-colorBlend=true",
-        "default": "rgb(0,0,0)"
+        "description" : "Dimming ovrerlay color",
+        "default": "rgb(0,0,0)",
+        "dependency" : "!enable-panel-unique-settings",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
     "panels-blurType": {
@@ -301,17 +312,18 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
-        "tooltip": "What type of blur algorithm should be used to blur the background"
+        "tooltip": "What type of blur algorithm should be used to blur the background",
+        "dependency" : "!enable-panel-unique-settings"
     },
 
     "panels-radius": {
         "type": "scale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity (Gaussian only)",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "dependency" : "panels-blurType=2",
-        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
-        "default": 6
+        "tooltip": "Adjusts the intensity of the Gaussian blur effect by changing the radius use by the effect. This setting does not effect the Simple blur type",
+        "default": 6,
+        "dependency" : "!enable-panel-unique-settings"
     }
 }
