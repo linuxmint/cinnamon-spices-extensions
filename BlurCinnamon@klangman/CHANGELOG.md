@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+* Added the ability (disabled by default) to apply effects to the Main Menu (menu@cinnamon.org)
+* Improve the wording of several configuration options to make it more clear what they do
+
 ## 1.1.0
 
 - Added the ability to apply different effects for every panel (or disable effects for some panels) based on the panel location and the monitor it is on
