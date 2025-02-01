@@ -30,6 +30,8 @@ const Panel         = imports.ui.panel;
 const Main          = imports.ui.main;
 const Meta          = imports.gi.Meta;
 const Mainloop      = imports.mainloop;
+const AppletManager = imports.ui.appletManager;
+const Lang          = imports.lang;
 
 const GaussianBlur = require("./gaussian_blur");
 
@@ -41,6 +43,7 @@ let originalAnimateExpo;
 
 let settings;
 let blurPanels;
+let blurMainMenu;
 
 var blurExtensionThis;
 
@@ -239,11 +242,8 @@ class BlurPanels {
       }
       if (!blurredPanel) {
          // Save the current panel setting if we don't already have the data saved
-         blurredPanel = { original_color: null, origianl_style: null, original_class: null, original_pseudo_class: null, background: null, effect: null };
-         blurredPanel.original_color = actor.get_background_color();
-         blurredPanel.original_style = actor.get_style();
-         blurredPanel.original_class = actor.get_style_class_name();
-         blurredPanel.original_pseudo_class = actor.get_style_pseudo_class();
+         blurredPanel = { original_color: actor.get_background_color(), original_style: actor.get_style(), original_class: actor.get_style_class_name(),
+                          original_pseudo_class: actor.get_style_pseudo_class(), background: null, effect: null };
          panel.__blurredPanel = blurredPanel;
          this._blurredPanels[index] = blurredPanel;
       }
@@ -279,7 +279,7 @@ class BlurPanels {
    }
 
    // This function will restore all panels to their original state and undo the monkey patching
-   unblurPanels() {
+   destroy() {
       let panels = Main.getPanels();
 
       this._signalManager.disconnectAllSignals();
@@ -307,6 +307,7 @@ class BlurPanels {
          actor.set_style_pseudo_class(blurredPanel.original_pseudo_class);
          if (blurredPanel.background) {
             blurredPanel.background.remove_effect(blurredPanel.effect);
+            global.overlay_group.remove_actor(blurredPanel.background);
             blurredPanel.background.destroy();
          }
          this._blurredPanels[index] = null;
@@ -459,13 +460,208 @@ class BlurPanels {
          let background = this.__blurredPanel.background;
          if (background && background.is_visible() && !this._destroyed && (!this._shouldShow || force) && !this._panelHasOpenMenus()) {
             Tweener.addTween(background, {time: AUTOHIDE_ANIMATION_TIME, onUpdateScope: this, onUpdate: () => { 
-               this.__blurredPanel.background.set_clip( this.actor.x, this.actor.y, this.actor.width, this.actor.height ); 
+               this.__blurredPanel.background.set_clip( this.actor.x, this.actor.y, this.actor.width, this.actor.height );
             }, onComplete: () => { background.hide(); } } );
          }
       } catch (e) {}
       blurExtensionThis._originalPanelHidePanel.apply(this, force);
    }
 }
+
+// This class manages the blurring of the main menu(s)
+class BlurMainMenu {
+
+   constructor() {
+      this._timeWaited = 0;
+      this._signalManager = new SignalManager.SignalManager(null);
+      this.mainMenuApplets = [];
+      // We only need one background and only one blur effect since only one menu can be open at a time
+      this.background = null;
+      this.fx = null;
+      this._blurExistingMenus();
+      // Listen for new applets added to the panels
+      this._signalManager.connect(global.settings, "changed::enabled-applets", Lang.bind(this, this.onEnabledAppletsChanged) );
+   }
+
+   // Apply the blur effects to all the existing menu applets
+   _blurExistingMenus() {
+      if (AppletManager.appletsLoaded) {
+         let applets = AppletManager.getRunningInstancesForUuid("menu@cinnamon.org");
+         for (let i=0 ; i < applets.length ; i++) {
+            this._blurMenu( applets[i] );
+         }
+      } else {
+         // The applects are not all loaded yes, so we need to wait a bit before we can be sure to see the main menu
+         if (this._timeWaited < 60) {
+            this._timeWaited++;
+            Mainloop.timeout_add( 1000, Lang.bind(this, this._blurExistingMenus) );
+         } else {
+            log( `BlurCinnamon: Unable to find the Menu Menu after waiting for ${this._timeWaited} seconds for the applets to finish loading` );
+         }
+      }
+   }
+
+   // Apply the blur effects to the Menu Menu applet argument
+   _blurMenu(applet) {
+      let blurredMainMenu;
+
+      // Only effect the menu if the applet looks like we expect (protect against breaking things in case the menu applet changes in future releases)
+      if (applet && applet.menu && applet.menu.box && applet.searchEntry && applet.left_box && applet._resizer && applet._resizer._resized_callback) {
+         let box = applet.menu.box;
+         let entry = applet.searchEntry;
+         let leftBox = applet.left_box;
+         this.mainMenuApplets.push( { applet: applet,
+            original_box_color: box.get_background_color(), original_box_style: box.get_style(), original_box_class: box.get_style_class_name(), original_box_pseudo_class: box.get_style_pseudo_class(),
+            original_entry_color: entry.get_background_color(), original_entry_style: entry.get_style(), original_entry_class: entry.get_style_class_name(), original_entry_pseudo_class: box.get_style_pseudo_class(),
+            original_leftBox_color: leftBox.get_background_color(), original_leftBox_style: leftBox.get_style(), original_leftBox_class: leftBox.get_style_class_name(), original_leftBox_pseudo_class: leftBox.get_style_pseudo_class()
+            } );
+         if (settings.allowTransparentColorMainMenu) {
+            box.set_style( "border-radius: 0px; " + //"border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
+                           "background-gradient-direction: vertical; background-gradient-start: transparent; " +
+                           "background-gradient-end: transparent;    background: transparent;" );
+            entry.set_style( "border-radius: 0px; " + //"border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
+                             "background-gradient-direction: vertical; background-gradient-start: transparent; " +
+                             "background-gradient-end: transparent;    background: transparent;" );
+            leftBox.set_style( "background-gradient-direction: vertical; background-gradient-start: transparent; " +
+                               "background-gradient-end: transparent;    background: transparent;" );
+         }
+         this._signalManager.connect(applet.menu, "open-state-changed", Lang.bind(this, this._onOpenStateChanged) );
+      }
+   }
+
+   // Handle a resize event for the currently open menu
+   _onResize(w, h) {
+      this.origCallback.apply(this.openMenu, [w, h]);
+      if (this.openMenu) {
+         let actor = this.openMenu.actor;
+         let margin = actor.get_margin();
+         this.background.set_clip( actor.x+margin.left, actor.y+margin.top, actor.width-(margin.left+margin.right), actor.height-(margin.top+margin.bottom) );
+      }
+   }
+
+   // Handle the event of a Menu Menu opening or closing
+   _onOpenStateChanged(menu, open) {
+      if (open) {
+         let margin = menu.actor.get_margin();
+         let radius = (settings.mainmenuOverride) ? settings.mainmenuRadius : settings.radius;
+         let blurType = (settings.mainmenuOverride) ? settings.mainmenuBlurType : settings.blurType;
+         let blendColor = (settings.mainmenuOverride) ? settings.mainmenuBlendColor : settings.blendColor;
+         let opacity = (settings.mainmenuOverride) ? settings.mainmenuOpacity : settings.opacity;
+         let accentOpacity = (settings.mainmenuOverride) ? settings.mainmenuAccentOpacity : Math.min(settings.opacity+10, 100);
+         if (!this.background) {
+            this.background = Meta.X11BackgroundActor.new_for_display(global.display);
+            global.overlay_group.add_actor(this.background);
+            if (blurType === BlurType.Simple) {
+               this.fx =  new Clutter.BlurEffect();
+            } else {
+               this.fx = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1 , width: 0, height: 0} );
+            }
+            this.background.add_effect_with_name( "blur", this.fx );
+         } else {
+            if (blurType === BlurType.Simple && this.fx instanceof GaussianBlur.GaussianBlurEffect) {
+               this.background.remove_effect(this.fx);
+               this.fx =  new Clutter.BlurEffect();
+               this.background.add_effect_with_name( "blur", this.fx );
+            } else if (blurType === BlurType.Gaussian && this.fx instanceof Clutter.BlurEffect) {
+               this.background.remove_effect(this.fx);
+               this.fx = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0} );
+               this.background.add_effect_with_name( "blur", this.fx );
+            } else if (blurType === BlurType.Gaussian && this.fx.radius !== radius) {
+               this.fx.radius = radius;
+            }
+            if (blurType !== BlurType.None) {
+               this.background.show();
+            }
+         }
+
+         if (settings.allowTransparentColorMainMenu) {
+            // The menu's class seems to be updated every time the menu is opened, so we have to reset it every time to be transparent again!
+            // Since it's reset every time anyhow, we don't need to remember the style and restore it when/if menu effects are disabled
+            menu.actor.set_style(  "border-radius: 0px; " + //"border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
+                           "background-gradient-direction: vertical; background-gradient-start: transparent; " +
+                           "background-gradient-end: transparent;    background: transparent;"  );
+         }
+
+         // Set the menu color
+         let [ret,color] = Clutter.Color.from_string( blendColor );
+         if (!ret) { [ret,color] = Clutter.Color.from_string( "rgba(0,0,0,0)" ); }
+         color.alpha = opacity*2.55;
+         menu.box.set_background_color(color);
+
+         color.alpha = (accentOpacity)*2.55;
+         menu.launcher.searchEntry.set_background_color(color);
+         menu.launcher.left_box.set_background_color(color);
+
+         this.background.set_clip( menu.actor.x+margin.left, menu.actor.y+margin.top, menu.actor.width-(margin.left+margin.right), menu.actor.height-(margin.top+margin.bottom) );
+         // Monkey patch the resize callback so we can intercept the resize events
+         this.origCallback = menu.launcher._resizer._resized_callback;
+         menu.launcher._resizer._resized_callback = Lang.bind( this, this._onResize );
+         this.openMenu = menu;
+      } else {
+         if (this.background) {
+           this.background.hide();
+         }
+         // Restore the monkey patched callback
+         menu.launcher._resizer._resized_callback = this.origCallback;
+         this.openMenu = null;
+      }
+   }
+
+   // Handle the event of a new Applet being added to a panel, look for new menu applets
+   onEnabledAppletsChanged() {
+      let i;
+      let applets = AppletManager.getRunningInstancesForUuid("menu@cinnamon.org");
+      for (i=0 ; i < applets.length ; i++) {
+         if (!this.mainMenuApplets.find( (mmData) => mmData.applet === applets[i] )) {
+            this._blurMenu( applets[i] );
+         }
+      }
+      /* // There is really noting to do when a menu menu applet is removed I think
+      log( "Looking for removed applets" );
+      for (i=0 ; i < this.mainMenuApplets ; i++) {
+         if (!applets.find( (applet) => applet === this.mainMenuApplets[i].applet )) {
+            log( "Removing main menu" );
+         }
+      }*/
+   }
+
+   // Remove all the Main Menu effects and clean up (extension disabled or Main Menu effects are disabled)
+   destroy() {
+      this._signalManager.disconnectAllSignals();
+
+      for (let i=0 ; i < this.mainMenuApplets.length ; i++) {
+         let mmData = this.mainMenuApplets[i];
+         let applet = mmData.applet;
+         let box = applet.menu.box;
+         let entry = applet.searchEntry;
+         let leftBox = applet.left_box;
+
+         box.set_background_color(mmData.original_box_color);
+         box.set_style(mmData.original_box_style);
+         box.set_style_class_name(mmData.original_box_class);
+         box.set_style_pseudo_class(mmData.original_box_pseudo_class);
+
+         entry.set_background_color(mmData.original_entry_color);
+         entry.set_style(mmData.original_entry_style);
+         entry.set_style_class_name(mmData.original_entry_class);
+         entry.set_style_pseudo_class(mmData.original_entry_pseudo_class);
+
+         leftBox.set_background_color(mmData.original_leftBox_color);
+         leftBox.set_style(mmData.original_leftBox_style);
+         leftBox.set_style_class_name(mmData.original_leftBox_class);
+         leftBox.set_style_pseudo_class(mmData.original_leftBox_pseudo_class);
+      }
+
+      if (this.background) {
+         this.background.remove_effect(this.fx);
+         global.overlay_group.remove_actor(this.background);
+         this.background.destroy();
+         this.background = null;
+         this.fx = null;
+      }
+   }
+}
+
 
 class BlurSettings {
    constructor(uuid) {
@@ -490,13 +686,22 @@ class BlurSettings {
       this.settings.bind('panels-radius',     'panelsRadius',     blurChanged);
       this.settings.bind('panels-blendColor', 'panelsBlendColor', colorChanged);
 
+      this.settings.bind('mainmenu-opacity',        'mainmenuOpacity');
+      this.settings.bind('mainmenu-accent-opacity', 'mainmenuAccentOpacity');
+      this.settings.bind('mainmenu-blurType',       'mainmenuBlurType');
+      this.settings.bind('mainmenu-radius',         'mainmenuRadius');
+      this.settings.bind('mainmenu-blendColor',     'mainmenuBlendColor');
+      this.settings.bind('allow-transparent-color-mainmenu', 'allowTransparentColorMainMenu', mainMenuChanged);
+
       this.settings.bind('enable-overview-override', 'overviewOverride');
       this.settings.bind('enable-expo-override',     'expoOverride');
       this.settings.bind('enable-panels-override',   'panelsOverride', panelsSettingsChangled);
+      this.settings.bind('enable-mainmenu-override', 'mainmenuOverride');
 
       this.settings.bind('enable-overview-effects', 'enableOverviewEffects', enableOverviewChanged);
       this.settings.bind('enable-expo-effects',     'enableExpoEffects',     enableExpoChanged);
       this.settings.bind('enable-panels-effects',   'enablePanelsEffects',   enablePanelsChanged);
+      this.settings.bind('enable-mainmenu-effects', 'enableMainMenuEffects', enableMainMenuChanged);
 
       this.settings.bind('enable-panel-unique-settings', 'enablePanelUniqueSettings');
       this.settings.bind('panel-unique-settings', 'panelUniqueSettings', panelsSettingsChangled);
@@ -545,10 +750,26 @@ function enableExpoChanged() {
 
 function enablePanelsChanged() {
    if (blurPanels && !settings.enablePanelsEffects) {
-      blurPanels.unblurPanels();
+      blurPanels.destroy();
       blurPanels = null;
    } else if (!blurPanels && settings.enablePanelsEffects ) {
       blurPanels = new BlurPanels();
+   }
+}
+
+function enableMainMenuChanged() {
+   if (blurMainMenu && !settings.enableMainMenuEffects) {
+      blurMainMenu.destroy();
+      blurMainMenu = null;
+   } else if (!blurMainMenu && settings.enableMainMenuEffects ) {
+      blurMainMenu = new BlurMainMenu();
+   }
+}
+
+function mainMenuChanged() {
+   if (blurMainMenu) {
+      blurMainMenu.destroy();
+      blurMainMenu = new BlurMainMenu();
    }
 }
 
@@ -576,6 +797,10 @@ function enable() {
    if (settings.enablePanelsEffects) {
       blurPanels = new BlurPanels();
    }
+   // Create a Main Menu Effects class instance, the constructor will kick things off
+   if (settings.enableMainMenuEffects) {
+      blurMainMenu = new BlurMainMenu();
+   }
 }
 
 function disable() {
@@ -590,7 +815,12 @@ function disable() {
    }
 
    if (blurPanels) {
-      blurPanels.unblurPanels();
+      blurPanels.destroy();
       blurPanels = null;
+   }
+
+   if (blurMainMenu) {
+      blurMainMenu.destroy();
+      blurMainMenu = null;
    }
 }
