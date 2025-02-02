@@ -1,0 +1,64 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.5\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-01-10 22:59-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+msgid "Open dialog window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+msgid "Close dialog window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-color-4->description
+msgid "Color #4"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-color-5->description
+msgid "Color #5"
+msgstr ""
