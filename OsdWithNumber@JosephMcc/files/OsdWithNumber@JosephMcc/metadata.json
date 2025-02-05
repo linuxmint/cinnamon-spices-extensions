@@ -1,0 +1,10 @@
+{
+    "uuid": "OsdWithNumber@JosephMcc",
+    "name": "OSD with numbers",
+    "author": "JosephMcc",
+    "version": "1.0.0",
+    "description": "OSD that shows the level in digits",
+    "url": "https://github.com/JosephMcc/osdWithNumber",
+    "website": "https://github.com/JosephMcc/osdWithNumber",
+    "cinnamon-version": [ "6.4" ]
+}

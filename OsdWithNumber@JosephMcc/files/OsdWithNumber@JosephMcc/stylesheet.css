@@ -1,0 +1,5 @@
+/* This is just an easy way to keep the osd horizontal size from
+   changing when the level number changes */
+.level-number {
+    min-width: 1.5em;
+}
