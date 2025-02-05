@@ -318,11 +318,12 @@ msgid "Application"
 msgstr "Application"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
-#, fuzzy
 msgid ""
 "A list of applications with special effect rules. The application can be a "
 "desktop file name or a WM_CLASS name"
-msgstr "Une liste d'applications avec effets spéciaux"
+msgstr ""
+"Une liste d'applications avec des règles d'effets spéciaux. L'application "
+"peut être un nom de fichier de bureau ou un nom WM_CLASS"
 
 #. 6.2->settings-schema.json->app-rules-button->description
 msgid "Add entry for the application of the most recently focused window"
@@ -370,7 +371,7 @@ msgstr "Effet de fermeture"
 
 #. 6.2->settings-schema.json->dialog-special->description
 msgid "Special handling for dialog windows"
-msgstr ""
+msgstr "Traitement spécifique aux fenêtres de dialogue"
 
 #. 6.2->settings-schema.json->dialog-special->tooltip
 msgid ""
@@ -378,16 +379,18 @@ msgid ""
 "file open dialog windows). These settings will override any application "
 "specific settings that may have been defined."
 msgstr ""
+"Permet de définir des paramètres spéciaux pour la gestion des types de "
+"fenêtres de dialogue (par exemple, les fenêtres de dialogue d'ouverture de "
+"fichier). Ces paramètres remplacent les paramètres spécifiques à "
+"l'application qui ont pu être définis."
 
 #. 6.2->settings-schema.json->dialog-open-effect->description
-#, fuzzy
 msgid "Open dialog window effect"
-msgstr "Effet d'ouverture"
+msgstr "Effet d'ouverture d'une fenêtre de dialogue"
 
 #. 6.2->settings-schema.json->dialog-close-effect->description
-#, fuzzy
 msgid "Close dialog window effect"
-msgstr "Effet de fermeture"
+msgstr "Effet de fermeture d'une fenêtre de dialogue"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
