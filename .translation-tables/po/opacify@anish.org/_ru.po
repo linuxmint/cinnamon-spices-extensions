@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-05-03 00:41+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. 5.4->settings-schema.json->h3->description
+msgid "Additional features"
+msgstr ""
+
+#. 5.4->settings-schema.json->opacityKeep->description
+msgid "Maintaining the opacity indefinitely"
+msgstr ""
+
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "Yes"
+msgstr ""
+
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "No"
+msgstr ""

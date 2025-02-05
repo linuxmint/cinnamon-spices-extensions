@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: horizontal-osd@berk-karaal 0.0.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-03-04 15:27+0100\n"
+"PO-Revision-Date: 2024-06-18 10:53+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->name
+msgid "Horizontal OSD"
+msgstr "Vízszintes OSD"
+
+#. metadata.json->description
+msgid "Horizontal and customizable OSDs"
+msgstr "Vízszintes és testreszabható OSD-k"
+
+#. settings-schema.json->general->title
+msgid "General"
+msgstr "Általános"
+
+#. settings-schema.json->general-osd-configs->title
+#. settings-schema.json->osd-window-colors->title
+#. settings-schema.json->advanced-osd-window-configs->title
+msgid "Osd Window"
+msgstr "OSD ablak"
+
+#. settings-schema.json->general-icon-configs->title
+#. settings-schema.json->icon-colors->title
+#. settings-schema.json->advanced-icon-configs->title
+msgid "Icon"
+msgstr "Ikon"
+
+#. settings-schema.json->general-level-bar-configs->title
+#. settings-schema.json->level-bar-colors->title
+#. settings-schema.json->advanced-level-bar-configs->title
+msgid "Level Bar"
+msgstr "Szintsáv"
+
+#. settings-schema.json->general-label-configs->title
+#. settings-schema.json->label-colors->title
+#. settings-schema.json->advanced-label-configs->title
+msgid "Label"
+msgstr "Címke"
+
+#. settings-schema.json->colors->title
+msgid "Colors"
+msgstr "Színek"
+
+#. settings-schema.json->advanced->title
+msgid "Advanced"
+msgstr "Speciális"
+
+#. settings-schema.json->select-horizontal-osds->title
+#. settings-schema.json->select-horizontal-osds-section->title
+msgid "Select OSDs"
+msgstr "Válassza ki az OSD-ket"
+
+#. settings-schema.json->osd-width->description
+msgid "Width of OSD window"
+msgstr "Az OSD ablak szélessége"
+
+#. settings-schema.json->osd-width->tooltip
+msgid "osd_width = this._popupSize * <this value>"
+msgstr "osd_width = this._popupSize * <ez az érték>"
+
+#. settings-schema.json->osd-height->description
+msgid "Height of OSD window"
+msgstr "Az OSD ablak magassága"
+
+#. settings-schema.json->osd-height->tooltip
+msgid "osd_height = this._popupSize * <this value>"
+msgstr "osd_height = this._popupSize * <ez az érték>"
+
+#. settings-schema.json->osd-border-radius->description
+msgid "Border radius od OSD window (in pixels)"
+msgstr "Az OSD ablak határának sugara (képpontokban)"
+
+#. settings-schema.json->osd-border-radius->tooltip
+#. settings-schema.json->level-bar-border-radius->tooltip
+msgid "border-radius: <this value>px;"
+msgstr "border-radius: <ez az érték>px;"
+
+#. settings-schema.json->osd-position-x->description
+msgid "X position of OSD window relative to screen size by percentage"
+msgstr ""
+"Az OSD ablak X pozíciója a képernyő méretéhez képest százalékos arányban"
+
+#. settings-schema.json->osd-position-x->tooltip
+msgid "0 is left, 100 is right"
+msgstr "0 balra, 100 jobbra"
+
+#. settings-schema.json->osd-position-y->description
+msgid "Y position of OSD window relative to screen size by percentage"
+msgstr "Az OSD ablak Y pozíciója a képernyő méretéhez képest százalékosan"
+
+#. settings-schema.json->osd-position-y->tooltip
+msgid "0 is top, 100 is bottom"
+msgstr "0 a felső, 100 az alsó"
+
+#. settings-schema.json->osd-hide-timeout->description
+msgid "Hide timeout of OSD window (in milliseconds)"
+msgstr "Az OSD ablak elrejtési időkorlátja (milliszekundumban)"
+
+#. settings-schema.json->icon-size->description
+msgid "Size of icon relative to OSD height by percentage"
+msgstr "Az ikon mérete az OSD magasságához viszonyítva százalékosan"
+
+#. settings-schema.json->icon-size->tooltip
+msgid "icon_size = osd_height * (<this value> / 100)"
+msgstr "icon_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->level-bar-size->description
+msgid "Size of level bar relative to OSD height by percentage"
+msgstr "A szintjelző sáv mérete az OSD magasságához viszonyítva százalékosan"
+
+#. settings-schema.json->level-bar-size->tooltip
+msgid "level_bar_size = osd_height * (<this value> / 100)"
+msgstr "level_bar_size = osd_height * (<ez az érték> / 100)"
+
+#. settings-schema.json->level-bar-border-radius->description
+msgid "Border radius of level bar (in pixels)"
+msgstr "A sáv szélességének sugara (képpontokban)"
+
+#. settings-schema.json->label-show->description
+msgid "Show label"
+msgstr "Címke megjelenítése"
+
+#. settings-schema.json->label-size->description
+msgid "Size of label relative to OSD height by percentage"
+msgstr "A címke mérete az OSD magasságához képest százalékos arányban"
+
+#. settings-schema.json->label-size->tooltip
+msgid "label_size = osd_height * (<this value> / 100)"
+msgstr "label_size = osd_height * (<ez az érték> / 100)"
+
+#. settings-schema.json->label-vertical-align-correction->description
+msgid ""
+"Label can not be centered correctly for now. You can adjust or decrease top "
+"margin of label here. (value: positive or negative int)"
+msgstr ""
+"A címkét egyelőre nem lehet helyesen központosítani. Itt beállíthatja vagy "
+"csökkentheti a címke felső margóját. (érték: pozitív vagy negatív int)"
+
+#. settings-schema.json->label-vertical-align-correction->tooltip
+msgid "margin-top: (calculated_value + <this value>)px"
+msgstr "margin-top: (számított_érték + <ez az érték>)px"
+
+#. settings-schema.json->osd-window-overwrite-colors->description
+msgid "Overwrite OSD window colors"
+msgstr "OSD ablakszínek felülírása"
+
+#. settings-schema.json->osd-window-border-color->description
+msgid "Border color of OSD window"
+msgstr "Az OSD ablak keretének színe"
+
+#. settings-schema.json->osd-window-background-color->description
+msgid "Background color of OSD window"
+msgstr "Az OSD ablak háttérszíne"
+
+#. settings-schema.json->icon-overwrite-colors->description
+msgid "Overwrite icon color"
+msgstr "Ikon színének felülírása"
+
+#. settings-schema.json->icon-color->description
+msgid "Icon color"
+msgstr "Ikon színe"
+
+#. settings-schema.json->level-bar-overwrite-colors->description
+msgid "Overwrite level bar colors"
+msgstr "Szintjelző sáv színeinek felülírása"
+
+#. settings-schema.json->level-bar-foreground-color->description
+msgid "Level bar foreground color"
+msgstr "Szint sáv előtér színe"
+
+#. settings-schema.json->level-bar-background-color->description
+msgid "Level bar background color"
+msgstr "Szint sáv háttérszín"
+
+#. settings-schema.json->label-overwrite-colors->description
+msgid "Overwrite label color"
+msgstr "Címke színének felülírása"
+
+#. settings-schema.json->label-color->description
+msgid "Label color"
+msgstr "Címke színe"
+
+#. settings-schema.json->osd-window-overwrite-css->description
+msgid "Overwrite CSS of OSD window"
+msgstr "Az OSD ablak CSS felülírása"
+
+#. settings-schema.json->osd-window-css->description
+msgid "CSS of OSD window"
+msgstr "Az OSD ablak CSS-je"
+
+#. settings-schema.json->icon-overwrite-css->description
+msgid "Overwrite CSS of icon"
+msgstr "Az ikon CSS felülírása"
+
+#. settings-schema.json->icon-css->description
+msgid "CSS of icon"
+msgstr "Az ikon CSS-je"
+
+#. settings-schema.json->level-bar-overwrite-css->description
+msgid "Overwrite CSS of level bar"
+msgstr "A szintvonal CSS felülírása"
+
+#. settings-schema.json->level-bar-background-css->description
+msgid "CSS of level bar"
+msgstr "CSS a szintjelző sávhoz"
+
+#. settings-schema.json->level-bar-foreground-css->description
+msgid "CSS for foregorund of level bar"
+msgstr "CSS for foregorund of level bar"
+
+#. settings-schema.json->label-overwrite-css->description
+msgid "Overwrite CSS of label"
+msgstr "A címke CSS felülírása"
+
+#. settings-schema.json->label-css->description
+msgid "CSS of label"
+msgstr "A címke CSS-je"
+
+#. settings-schema.json->select-osds-info-text->description
+msgid "You can choose which OSDs to be horizontal here"
+msgstr "Itt választhatja ki, hogy mely OSD-k legyenek vízszintesek."
+
+#. settings-schema.json->selected-volume-as-horizontal->description
+msgid "Volume OSD"
+msgstr "Hangerő OSD"
+
+#. settings-schema.json->selected-brightness-as-horizontal->description
+msgid "Brightness OSD"
+msgstr "Fényerő OSD"
+
+#. settings-schema.json->selected-mic-as-horizontal->description
+msgid "Microphone OSD"
+msgstr "Mikrofon OSD"
