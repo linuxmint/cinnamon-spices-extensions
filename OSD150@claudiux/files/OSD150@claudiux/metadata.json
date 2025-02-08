@@ -1,0 +1,11 @@
+{
+  "uuid": "OSD150@claudiux",
+  "name": "OSD Window for sound150",
+  "author": "claudiux",
+  "version": "1.0.0",
+  "description": "The OSD Window handled by the Enhanced Sound Applet",
+  "cinnamon-version": [
+    "6.4"
+  ],
+  "url": "https://github.com/claudiux/sound150/tree/main/sound150%40claudiux/extension/OSD150%40claudiux"
+}
