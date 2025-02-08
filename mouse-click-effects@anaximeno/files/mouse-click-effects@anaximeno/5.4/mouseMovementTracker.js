@@ -1,22 +1,22 @@
-const { St } = imports.gi;
+const { St, Clutter } = imports.gi;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
 
 const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
-const { POINTER_WATCH_MS, MOUSE_PARADE_DELAY_MS } = require("./constants.js");
+const { POINTER_WATCH_MS, MOUSE_PARADE_DELAY_MS, MOUSE_PARADE_ANIMATION_MS } = require("./constants.js");
 const { Debouncer, logInfo } = require("./helpers.js");
 
 
 var MouseMovementTracker = class MouseMovementTracker {
-    constructor(extension, icon, size, opacity, persist_on_stopped) {
+    constructor(extension, icon, size, opacity, persistOnStopped) {
         this.extension = extension;
         this.size = size;
         this.opacity = opacity;
         this.icon = icon;
-        this.persist_on_stopped = persist_on_stopped;
-        this.icon_actor = null;
-        this.listener = null;
+        this.persistOnStopped = persistOnStopped;
         this.signals = new SignalManager.SignalManager(null);
+        this.iconActor = null;
+        this.listener = null;
     }
 
     get is_fullscreen_block() {
@@ -31,7 +31,7 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     start() {
-        this.icon_actor = new St.Icon({
+        this.iconActor = new St.Icon({
             reactive: false,
             can_focus: false,
             track_hover: false,
@@ -39,9 +39,9 @@ var MouseMovementTracker = class MouseMovementTracker {
             opacity: this.opacity,
             gicon: this.icon,
         });
-        this.icon_actor.set_style("pointer-events: none;");
+        this.iconActor.set_style("pointer-events: none;");
 
-        Main.uiGroup.add_child(this.icon_actor);
+        Main.uiGroup.add_child(this.iconActor);
 
         this.listener = PointerWatcher.addWatch(POINTER_WATCH_MS, this.move_to.bind(this));
         this.signals.connect(global.screen, 'in-fullscreen-changed', this.on_fullscreen_changed, this);
@@ -53,14 +53,12 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     update(params) {
-        if (params.size)
-            this.size = params.size;
-        if (params.opacity)
-            this.opacity = params.opacity;
-        if (params.icon)
-            this.icon = params.icon;
-        if (params.persist_on_stopped === true || params.persist_on_stopped === false)
-            this.persist_on_stopped = params.persist_on_stopped;
+        if (params.size) this.size = params.size;
+        if (params.opacity) this.opacity = params.opacity;
+        if (params.icon) this.icon = params.icon;
+        if (typeof params.persistOnStopped !== 'undefined') {
+            this.persistOnStopped = params.persistOnStopped;
+        }
 
         this.finalize();
         this.start();
@@ -68,29 +66,44 @@ var MouseMovementTracker = class MouseMovementTracker {
 
     finalize() {
         this.signals.disconnectAllSignals();
-        Main.uiGroup.remove_child(this.icon_actor);
+        Main.uiGroup.remove_child(this.iconActor);
         this.listener.remove();
-        this.icon_actor.destroy();
+        this.iconActor.destroy();
         logInfo("mouse movement tracker finalized");
     }
 
     move_to(x, y) {
-        if (this.icon_actor) {
-            if (this.is_fullscreen_block) {
-                this.icon_actor.hide();
-                logInfo("movement tracker hidden due to deactivation in fullscreen");
-            } else {
-                this.icon_actor.set_position(
-                    x - (this.size * global.ui_scale / 2),
-                    y - (this.size * global.ui_scale / 2));
-                this.icon_actor.show();
-                if (!this.persist_on_stopped)
-                    this.handle_parade();
-            }
+        if (!this.iconActor) return;
+
+        if (this.is_fullscreen_block) {
+            this.iconActor.hide();
+            logInfo("movement tracker hidden due to deactivation in fullscreen");
+            return;
         }
+
+        const iconSize = this.size * global.ui_scale;
+
+        this.iconActor.ease({
+            x: x - iconSize / 2,
+            y: y - iconSize / 2,
+            scale_x: 1,
+            scale_y: 1,
+            duration: 0,
+            opacity: 255,
+            onComplete: () => this.handle_parade(),
+        });
+
+        this.iconActor.show();
     }
 
     handle_parade = (new Debouncer()).debounce(() => {
-        if (this.icon_actor) this.icon_actor.hide();
+        if (!this.persistOnStopped && this.iconActor) {
+            this.iconActor.ease({
+                opacity: 0,
+                duration: MOUSE_PARADE_ANIMATION_MS,
+                mode: Clutter.AnimationMode.EASE_IN_OUT_CUBIC,
+                onComplete: () => this.iconActor.hide(),
+            })
+        }
     }, MOUSE_PARADE_DELAY_MS);
-}
+};

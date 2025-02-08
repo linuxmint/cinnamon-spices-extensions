@@ -166,7 +166,7 @@ class MouseClickEffects {
 				cb: () => {
 					if (this.mouse_movement_tracker) {
 						this.mouse_movement_tracker.update({
-							persist_on_stopped: this.mouse_movement_tracker_persist_on_stopped_enabled,
+							persistOnStopped: this.mouse_movement_tracker_persist_on_stopped_enabled,
 						});
 					}
 				},
