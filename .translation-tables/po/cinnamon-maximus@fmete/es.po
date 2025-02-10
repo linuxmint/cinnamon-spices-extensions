@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2024-07-05 11:57-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr "Quite las decoraciones de las ventanas a su gusto."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Ajustes de Cinnamon-Maximus"
+
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
+msgstr "Quitar decoraciones sólo con tecla de acceso rápido"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr "Tecla de acceso rápido para cambiar la decoración de la ventana actual"
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr ""
+"Tecla de acceso rápido global para alternar la decoración de la ventana "
+"actual (Experimental)"
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Quitar decoraciones cuando esté en modo mosaico"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Quitar decoraciones de todas las ventanas (Experimental, por favor cierre y "
+"vuelva a abrir todas las ventanas)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr "Utilizar la lista de ignorados"
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr ""
+"Aplicaciones ignoradas (utilice \",\" para aplicaciones separadas, se "
+"permiten coincidencias parciales y expresiones regulares)"
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating for apps"
+msgstr "Utilice quitar decoraciones automática para aplicaciones"
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+"Aplicación con decoración auto-removible (utilice \",\" para aplicaciones "
+"separadas, se permiten coincidencias parciales y expresiones regulares)"
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr "Mantener el foco para aplicaciones QT (Experimental)"
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr "Registro (véase Melange - Registro)"
