@@ -18,7 +18,6 @@ const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
 const Main = imports.ui.main;
-const Mainloop = imports.mainloop;
 const Meta = imports.gi.Meta
 const Settings = imports.ui.settings;
 const St = imports.gi.St;
@@ -33,6 +32,19 @@ const CoverflowSwitcher = imports.ui.appSwitcher.coverflowSwitcher;
 const TimelineSwitcher = imports.ui.appSwitcher.timelineSwitcher;
 const ClassicSwitcher = imports.ui.appSwitcher.classicSwitcher;
 const AppSwitcher = imports.ui.appSwitcher.appSwitcher;
+
+const {
+  _sourceIds,
+  timeout_add_seconds,
+  timeout_add,
+  setTimeout,
+  clearTimeout,
+  setInterval,
+  clearInterval,
+  source_exists,
+  source_remove,
+  remove_all_sources
+} = require("./mainloopTools");
 
 
 let newSmartPanelExt = null;
@@ -99,6 +111,7 @@ SmartPanelExt.prototype = {
 
     disable: function() {
         this.is_disabled = true;
+        remove_all_sources();
         // FIXME: These lines make Cinnamon unstable!
         //~ if (this.sr != null) this._panel.disconnect(this.sr);
         //~ if (this.en != null) this._panel.disconnect(this.en);
@@ -110,11 +123,16 @@ SmartPanelExt.prototype = {
     enable: function() {
         this._panel.reactive = true;
         this.is_disabled = false;
-        this.sr = this._panel.connect('scroll-event'        , Lang.bind(this, this._onScroll));
-        this.en = this._panel.connect('enter-event'         , Lang.bind(this, this._onEntered));
-        this.lv = this._panel.connect('leave-event'         , Lang.bind(this, this._onLeave));
-        this.bp = this._panel.connect('button-press-event'  , Lang.bind(this, this._onButtonPress));
-        this.br = this._panel.connect('button-release-event', Lang.bind(this, this._onButtonRelease));
+        //~ this.sr = this._panel.connect('scroll-event'        , Lang.bind(this, this._onScroll));
+        //~ this.en = this._panel.connect('enter-event'         , Lang.bind(this, this._onEntered));
+        //~ this.lv = this._panel.connect('leave-event'         , Lang.bind(this, this._onLeave));
+        //~ this.bp = this._panel.connect('button-press-event'  , Lang.bind(this, this._onButtonPress));
+        //~ this.br = this._panel.connect('button-release-event', Lang.bind(this, this._onButtonRelease));
+        this.sr = this._panel.connect('scroll-event'        , (actor, event) => { this._onScroll(actor, event) });
+        this.en = this._panel.connect('enter-event'         , (actor, event) => { this._onEntered(actor, event) });
+        this.lv = this._panel.connect('leave-event'         , (actor, event) => { this._onLeave(actor, event) });
+        this.bp = this._panel.connect('button-press-event'  , (actor, event) => { this._onButtonPress(actor, event) });
+        this.br = this._panel.connect('button-release-event', (actor, event) => { this._onButtonRelease(actor, event) });
     },
 
     _onEntered : function(actor, event) {
@@ -146,7 +164,7 @@ SmartPanelExt.prototype = {
             }
             else{
                 this.dblb = true;
-                Mainloop.timeout_add(this.dblb_T, Lang.bind(this,function() { this.dblb = false; }));
+                timeout_add(this.dblb_T, () => { this.dblb = false; });
             }
         }
         else if (button == 2) {
@@ -361,13 +379,15 @@ SmartPanelExt.prototype = {
                         if (!this._switcherIsRuning) new myCoverflowSwitcher(this);
                         this._switcherIsRuning = true;
                         let delay = global.settings.get_int("alttab-switcher-delay");
-                        Mainloop.timeout_add(delay, Lang.bind(this, function(){ this._switcherIsRuning = false; }));
+                        //~ timeout_add(delay, Lang.bind(this, function(){ this._switcherIsRuning = false; }));
+                        timeout_add(delay, () => { this._switcherIsRuning = false; });
                     }
                     else if (style == 'timeline'){
                         if (!this._switcherIsRuning) new myTimelineSwitcher(this);
                         this._switcherIsRuning = true;
                         let delay = global.settings.get_int("alttab-switcher-delay");
-                        Mainloop.timeout_add(delay, Lang.bind(this, function(){ this._switcherIsRuning = false; }));
+                        //~ timeout_add(delay, Lang.bind(this, function(){ this._switcherIsRuning = false; }));
+                        timeout_add(delay, () => { this._switcherIsRuning = false; });
                     }
                     else {
                         new myClassicSwitcher(this);
@@ -519,9 +539,12 @@ myClassicSwitcher.prototype = {
 
         this._updateList(0);
 
-        this.actor.connect('get-preferred-width', Lang.bind(this, this._getPreferredWidth));
-        this.actor.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
-        this.actor.connect('allocate', Lang.bind(this, this._allocate));
+        //~ this.actor.connect('get-preferred-width', Lang.bind(this, this._getPreferredWidth));
+        //~ this.actor.connect('get-preferred-height', Lang.bind(this, this._getPreferredHeight));
+        //~ this.actor.connect('allocate', Lang.bind(this, this._allocate));
+        this.actor.connect('get-preferred-width', () => { this._getPreferredWidth() });
+        this.actor.connect('get-preferred-height', () => { this._getPreferredHeight() });
+        this.actor.connect('allocate', () => { this._allocate() });
 
         // Need to force an allocation so we can figure out whether we
         // need to scroll when selecting
@@ -537,12 +560,16 @@ myClassicSwitcher.prototype = {
         else {
             this._disableHover();
 
-            this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
-            this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
-            this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
-            this.actor.connect('button-press-event', Lang.bind(this, this.owndestroy));
+            //~ this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
+            //~ this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
+            //~ this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
+            //~ this.actor.connect('button-press-event', Lang.bind(this, this.owndestroy));
+            this.actor.connect('key-press-event', () => { this._keyPressEvent() });
+            this.actor.connect('key-release-event', () => { this._keyReleaseEvent() });
+            this.actor.connect('scroll-event', () => { this._scrollEvent() });
+            this.actor.connect('button-press-event', () => { this.owndestroy() });
             let delay = global.settings.get_int("alttab-switcher-delay");
-            this._initialDelayTimeoutId = Mainloop.timeout_add(delay, Lang.bind(this, this._show));
+            this._initialDelayTimeoutId = timeout_add(delay, () => { this._show() });
             this._currentIndex--;
         }
         return this._haveModal;
@@ -580,12 +607,16 @@ myTimelineSwitcher.prototype = {
         else {
             this._disableHover();
 
-            this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
-            this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
-            this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
-            this.actor.connect('button-press-event', Lang.bind(this, this.owndestroy));
+            //~ this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
+            //~ this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
+            //~ this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
+            //~ this.actor.connect('button-press-event', Lang.bind(this, this.owndestroy));
+            this.actor.connect('key-press-event', () => { this._keyPressEvent() });
+            this.actor.connect('key-release-event', () => { this._keyReleaseEvent() });
+            this.actor.connect('scroll-event', () => { this._scrollEvent() });
+            this.actor.connect('button-press-event', () => { this.owndestroy() });
             let delay = global.settings.get_int("alttab-switcher-delay");
-            this._initialDelayTimeoutId = Mainloop.timeout_add(delay, Lang.bind(this, this._show));
+            this._initialDelayTimeoutId = timeout_add(delay, () => { this._show() });
             this._currentIndex--;
         }
         return this._haveModal;
@@ -624,12 +655,16 @@ myCoverflowSwitcher.prototype = {
         else {
             this._disableHover();
 
-            this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
-            this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
-            this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
-            this.actor.connect('button-press-event', Lang.bind(this, this.owndestroy));
+            //~ this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
+            //~ this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
+            //~ this.actor.connect('scroll-event', Lang.bind(this, this._scrollEvent));
+            //~ this.actor.connect('button-press-event', Lang.bind(this, this.owndestroy));
+            this.actor.connect('key-press-event', () => { this._keyPressEvent() });
+            this.actor.connect('key-release-event', () => { this._keyReleaseEvent() });
+            this.actor.connect('scroll-event', () => { this._scrollEvent() });
+            this.actor.connect('button-press-event', () => { this.owndestroy() });
             let delay = global.settings.get_int("alttab-switcher-delay");
-            this._initialDelayTimeoutId = Mainloop.timeout_add(delay, Lang.bind(this, this._show));
+            this._initialDelayTimeoutId = timeout_add(delay, () => { this._show() });
             this._currentIndex--;
         }
         return this._haveModal;
