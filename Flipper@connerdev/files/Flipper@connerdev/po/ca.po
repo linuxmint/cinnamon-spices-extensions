@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-01-10 00:15-0500\n"
-"PO-Revision-Date: 2024-08-22 01:52+0200\n"
+"PO-Revision-Date: 2025-02-13 23:47+0100\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -292,48 +292,52 @@ msgid "Include Background"
 msgstr "Incloure el fons"
 
 #. 5.4->settings-schema.json->effects-page->title
-#, fuzzy
 msgid "Effect Settings"
-msgstr "Efectes"
+msgstr "Ajusts d'efectes"
 
 #. 5.4->settings-schema.json->general-settings->title
 msgid "Flipper General Settings"
-msgstr ""
+msgstr "Configuració General de Flipper"
 
 #. 5.4->settings-schema.json->random-settings->title
 msgid "Effects included in the randomized set"
-msgstr ""
+msgstr "Efectes inclosos al grup d'aleatoris"
 
 #. 5.4->settings-schema.json->effect-selector-section->title
 msgid "Effect Selector"
-msgstr ""
+msgstr "Selector d'efectes"
 
 #. 5.4->settings-schema.json->effect-settings->title
 msgid "Effect Specific Settings"
-msgstr ""
+msgstr "Ajusts exclusius d'efecte"
 
 #. 5.4->settings-schema.json->transitionEffect->description
-#, fuzzy
 msgid "Workspace Transition Effect"
-msgstr "Efecte de transició"
+msgstr "Efecte de transició de l'espai de treball"
 
 #. 5.4->settings-schema.json->transitionEffect->options
 msgid "Randomized"
-msgstr ""
+msgstr "Aleatori"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Flipper effect with the Workspace Switcher applet"
 msgstr ""
+"Utilitza l'efecte de Flipper amb la miniaplicació de canvi d'espai de treball"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
 msgid ""
 "Override the moveToWorkspace() API so that the Flipper effect is used by the "
 "Workspace Switcher Applet when changing the current workspace"
 msgstr ""
+"Sobreescriu la funció moveToWorkspace() de l'API de manera que l'efecte de "
+"Flipper sigui utilitzat per la miniaplicació de canvi d'espai de treball en "
+"canviar l'espai de treball actual"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Flipper effect when changing focus causes a workspace switch"
 msgstr ""
+"Utilitza l'efecte de Flipper quan un canvi de focus provoqui un canvi "
+"d'espai de treball"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
 msgid ""
@@ -341,10 +345,13 @@ msgid ""
 "is given the focus, the Flipper effect is used to change the current "
 "workspace"
 msgstr ""
+"Sobreescriu la funció activateWindow() de l'API de manera que quan una "
+"finestra en un altre espai de treball rebi el focus, l'efecte de Flipper "
+"sigui utilitzat per canviar l'espai de treball actual"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
-msgstr "Incloure els taulers"
+msgstr "Inclou els taulers"
 
 #. 5.4->settings-schema.json->includePanels->tooltip
 msgid ""
@@ -352,7 +359,10 @@ msgid ""
 "properly painted or completely invisible anyhow, so it's best to leave this "
 "disabled"
 msgstr ""
+"Inclou els taulers durant l'animació. En la majoria de casos els taulers no "
+"són dibuixats o es mantenen invisibles, així que és millor deixar aquesta "
+"opció desactivada"
 
 #. 5.4->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
-msgstr ""
+msgstr "Mostrar ajusts per a l'efecte:"

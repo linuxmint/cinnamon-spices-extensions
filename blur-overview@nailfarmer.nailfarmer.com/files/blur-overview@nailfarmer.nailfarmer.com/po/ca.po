@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-11-25 19:55-0500\n"
-"PO-Revision-Date: 2024-11-20 03:14+0100\n"
+"PO-Revision-Date: 2025-02-13 23:54+0100\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -24,13 +24,12 @@ msgid "Blur Overview"
 msgstr "Desenfocar la vista general de les finestres obertes"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur and adjust the dimming of the overview's background "
 "(window selection screen)"
 msgstr ""
-"Ajusteu el nivell d'atenuació per a la vista general (pantalla de selecció "
-"de finestres)"
+"Us permet ajustar l'atenuació del desenfocament del fons per la vista "
+"general (pantalla de selecció de finestra)"
 
 #. settings-schema.json->header->description
 #. 6.0->settings-schema.json->header->description
@@ -48,44 +47,49 @@ msgstr "Desenfocament del fons"
 
 #. 6.0->settings-schema.json->colorBlend->description
 msgid "Enable color blend effect"
-msgstr ""
+msgstr "Activa l'efecte de barreja de color"
 
 #. 6.0->settings-schema.json->colorBlend->tooltip
 msgid ""
 "Use a custom color as the dimming overlay color. The color intensity can be "
 "controlled using the \"Dim Background\" slider control above"
 msgstr ""
+"Utilitza un color personalitzat per a l'atenuació superposada. La "
+"intensitat del color pot ser controlada utilitzant el control lliscant "
+"(Atenuació del fons) de dalt."
 
 #. 6.0->settings-schema.json->blendColor->description
 msgid "Blend effect Color"
-msgstr ""
+msgstr "Color d'efecte de barreja"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "None"
-msgstr ""
+msgstr "Cap"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Simple"
-msgstr ""
+msgstr "Simple"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Gaussian"
-msgstr ""
+msgstr "Gaussià"
 
 #. 6.0->settings-schema.json->blurType->description
 msgid "Type of blur effect"
-msgstr ""
+msgstr "Tipus d'efecte de desenfocament"
 
 #. 6.0->settings-schema.json->blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
-msgstr ""
+msgstr "Tipus d'algorisme que s'utilitzarà per a desenfocar el fons"
 
 #. 6.0->settings-schema.json->radius->description
 msgid "Gaussian blur intensity"
-msgstr ""
+msgstr "Intensitat del desenfocament Gaussià"
 
 #. 6.0->settings-schema.json->radius->tooltip
 msgid ""
 "Adjusts the intensity of the blur effect by changing the radius use by the "
 "effect."
 msgstr ""
+"Ajusta la intensitat de l'efecte de desenfocament a base de modificar-ne el "
+"radi d'acció."
