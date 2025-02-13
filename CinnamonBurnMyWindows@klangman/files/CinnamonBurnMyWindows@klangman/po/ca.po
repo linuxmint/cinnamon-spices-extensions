@@ -317,11 +317,12 @@ msgid "Application"
 msgstr "Aplicació"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
-#, fuzzy
 msgid ""
 "A list of applications with special effect rules. The application can be a "
 "desktop file name or a WM_CLASS name"
-msgstr "Una llista d'aplicacions amb regles especials d'efectes"
+msgstr ""
+"Una llista d'aplicacions amb regles especials d'efectes. Cada aplicació pot "
+"ser un fitxer desktop o un nom WM_CLASS"
 
 #. 6.2->settings-schema.json->app-rules-button->description
 msgid "Add entry for the application of the most recently focused window"
@@ -367,7 +368,7 @@ msgstr "Efecte de tancament de finestra"
 
 #. 6.2->settings-schema.json->dialog-special->description
 msgid "Special handling for dialog windows"
-msgstr ""
+msgstr "Gestió especial per a finestres de diàleg"
 
 #. 6.2->settings-schema.json->dialog-special->tooltip
 msgid ""
@@ -375,16 +376,17 @@ msgid ""
 "file open dialog windows). These settings will override any application "
 "specific settings that may have been defined."
 msgstr ""
+"Us permet definir ajusts per a gestionar finestres de diàleg (per exemple, "
+"finestres d'Obrir fitxer). Aquests ajusts sobreescriuran altres paràmetres "
+"específics d'aplicació que s'hagin definit."
 
 #. 6.2->settings-schema.json->dialog-open-effect->description
-#, fuzzy
 msgid "Open dialog window effect"
-msgstr "Efecte d'obertura de finestra"
+msgstr "Efecte d'obertura de finestra de diàleg"
 
 #. 6.2->settings-schema.json->dialog-close-effect->description
-#, fuzzy
 msgid "Close dialog window effect"
-msgstr "Efecte de tancament de finestra"
+msgstr "Efecte de tancament de finestra de diàleg"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
@@ -461,15 +463,15 @@ msgstr "Color"
 
 #. 6.2->settings-schema.json->fire-movement-speed->description
 msgid "Fire Movement Speed"
-msgstr ""
+msgstr "Velocitat de moviment del foc"
 
 #. 6.2->settings-schema.json->fire-3d-noise->description
 msgid "Fire 3D Noise"
-msgstr ""
+msgstr "Soroll 3D del foc"
 
 #. 6.2->settings-schema.json->fire-3d-noise->tooltip
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Crea un foc més dinàmic a costa de consumir més potència gràfica"
 
 #. 6.2->settings-schema.json->fire-color-1->description
 #. 6.2->settings-schema.json->wisps-color-1->description
@@ -487,14 +489,12 @@ msgid "Color #3"
 msgstr "Color #3"
 
 #. 6.2->settings-schema.json->fire-color-4->description
-#, fuzzy
 msgid "Color #4"
-msgstr "Color #1"
+msgstr "Color #4"
 
 #. 6.2->settings-schema.json->fire-color-5->description
-#, fuzzy
 msgid "Color #5"
-msgstr "Color #1"
+msgstr "Color #5"
 
 #. 6.2->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
