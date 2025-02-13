@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-01 12:42-0500\n"
-"PO-Revision-Date: 2024-09-02 18:26+0200\n"
+"PO-Revision-Date: 2025-02-13 23:35+0100\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -59,15 +59,15 @@ msgstr "sinus"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "random"
-msgstr ""
+msgstr "aleatori"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Default - Unminimize: Sine"
-msgstr ""
+msgstr "Minimitzar: Per defecte - Desminimitzar: Sinus"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Sine - Unminimize: Default"
-msgstr ""
+msgstr "Minimitzar: Sinus - Desminimitzar: Per defecte"
 
 #. 5.6->settings-schema.json->effect->description
 msgid "The type of effect"
@@ -82,9 +82,8 @@ msgstr ""
 "un efecte més ondulat"
 
 #. 5.6->settings-schema.json->duration->description
-#, fuzzy
 msgid "Effect duration (ms)"
-msgstr "Durada de l'efecte"
+msgstr "Durada de l'efecte (ms)"
 
 #. 5.6->settings-schema.json->duration->tooltip
 msgid "The time (in milliseconds) that the effect takes to complete"
