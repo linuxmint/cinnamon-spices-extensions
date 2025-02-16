@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+* Replaced the Main Menu effects with generic Popup Menu effects which covers the main menu as well as all other Applet popup menus. 
+* Added a Saturation option which allow you to desaturate the background overlay (0% grey scale to 100%)
+
 ## 1.2.0
 
 * Added the ability (disabled by default) to apply effects to the Main Menu (menu@cinnamon.org)

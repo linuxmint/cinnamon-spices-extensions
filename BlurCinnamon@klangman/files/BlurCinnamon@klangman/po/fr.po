@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-02-01 11:48-0500\n"
+"POT-Creation-Date: 2025-02-16 15:10-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: claudiux\n"
 "Language-Team: \n"
@@ -23,9 +23,10 @@ msgid "Blur Cinnamon"
 msgstr "Flou pour Cinnamon"
 
 #. metadata.json->description
+#, fuzzy
 msgid ""
-"Allows you to blur, colorize and adjust the dimming of some Cinnamon Desktop "
-"components (i.e. Panels, Overview, Expo)"
+"Allows you to blur, colorize, desaturate and adjust the dimming of some "
+"Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, Expo)"
 msgstr ""
 "Permet d'estomper, de coloriser et d'ajuster la luminosité de certains "
 "composants du bureau Cinnamon (c.-à-d. Panneaux, Vue d'ensemble, Expo)."
@@ -48,9 +49,9 @@ msgstr "Expo"
 msgid "Panels"
 msgstr "Panneaux"
 
-#. 6.0->settings-schema.json->mainmenu-page->title
-msgid "Main Menu"
-msgstr "Menu principal"
+#. 6.0->settings-schema.json->popup-page->title
+msgid "Popup Menus"
+msgstr ""
 
 #. 6.0->settings-schema.json->general-settings->title
 msgid "Cinnamon components where effects will be applied"
@@ -77,13 +78,17 @@ msgid "Expo effect settings"
 msgstr "Paramètres de l'effet Expo"
 
 #. 6.0->settings-schema.json->panels-override->title
-#. 6.0->settings-schema.json->mainmenu-override->title
+#. 6.0->settings-schema.json->popup-override->title
 msgid "Panels settings"
 msgstr "Paramètres des Panneaux"
 
 #. 6.0->settings-schema.json->panels-effect-settings->title
-#. 6.0->settings-schema.json->mainmenu-effect-settings->title
 msgid "Panel effects settings"
+msgstr "Paramètres des effets du Panneau"
+
+#. 6.0->settings-schema.json->popup-effect-settings->title
+#, fuzzy
+msgid "Popup menu effects settings"
 msgstr "Paramètres des effets du Panneau"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -91,8 +96,8 @@ msgid ""
 "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
 "hot corner)"
 msgstr ""
-"Appliquer des effets à la vue d'ensemble (par défaut : Ctrl+Alt+Bas / « "
-"Afficher toutes les fenêtres »)"
+"Appliquer des effets à la vue d'ensemble (par défaut : Ctrl+Alt+Bas / "
+"« Afficher toutes les fenêtres »)"
 
 #. 6.0->settings-schema.json->enable-expo-effects->tooltip
 msgid ""
@@ -121,20 +126,22 @@ msgstr ""
 "remplace certains paramètres des thèmes pour obtenir un panneau "
 "(semi-)transparent de sorte que l'arrière-plan flou soit visible."
 
-#. 6.0->settings-schema.json->enable-mainmenu-effects->description
-msgid "Main Menu  (Please read tooltip)"
+#. 6.0->settings-schema.json->enable-popup-effects->description
+#, fuzzy
+msgid "Popup Menus  (Please read tooltip)"
 msgstr "Menu principal (Veuillez lire l'infobulle)"
 
-#. 6.0->settings-schema.json->enable-mainmenu-effects->tooltip
+#. 6.0->settings-schema.json->enable-popup-effects->tooltip
+#, fuzzy
 msgid ""
-"Apply effects to the Main Menu (menu@cinnamon.org applet). This option is "
-"intended for the Cinnamon (6.4) and Mint-Y Dark desktop themes but might "
-"work well with other themes. Light themes are unlikely to give good results "
-"but might be made to work with some creative use of the dimming color "
-"settings and an appropriate background image. It overrides some theme "
-"settings to achieve a (semi-)transparent menu so that the blurred background "
-"is visible. It also removes rounded corners so that the blurred background "
-"will not spill over the rounded edges."
+"Apply effects to panel applet popup menus. This option is intended for the "
+"Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
+"themes. Light themes are unlikely to give good results but might be made to "
+"work with some creative use of the dimming color settings and an appropriate "
+"background image. It overrides some theme settings to achieve a "
+"(semi-)transparent menu so that the blurred background is visible. It also "
+"removes rounded corners so that the blurred background will not spill over "
+"the rounded edges."
 msgstr ""
 "Appliquer des effets au menu principal (menu@cinnamon.org applet). Cette "
 "option est destinée aux thèmes de bureau Cinnamon (6.4) et Mint-Y Dark, mais "
@@ -165,9 +172,10 @@ msgstr ""
 "Avertissement : Les effets des Panneaux sont actuellement désactivés dans "
 "l'onglet Général."
 
-#. 6.0->settings-schema.json->mainmenu-info->description
+#. 6.0->settings-schema.json->popup-info->description
+#, fuzzy
 msgid ""
-"Warning: Main Menu effects are currently disabled under the General tab."
+"Warning: Popup Menu effects are currently disabled under the General tab."
 msgstr ""
 "Avertissement : Les effets du Menu principal sont actuellement désactivés "
 "dans l'onglet Général."
@@ -189,16 +197,18 @@ msgstr ""
 "paramètre ne doit être désactivé que si le thème utilise déjà des panneaux "
 "transparents et que vous souhaitez que les paramètres du thème s'appliquent."
 
-#. 6.0->settings-schema.json->allow-transparent-color-mainmenu->description
-msgid "Override some of the Main Menu theme settings (recommended)"
+#. 6.0->settings-schema.json->allow-transparent-color-popup->description
+#, fuzzy
+msgid "Override some of the popup menu theme settings (recommended)"
 msgstr "Remplacer certains paramètres du thème du menu principal (recommandé)"
 
-#. 6.0->settings-schema.json->allow-transparent-color-mainmenu->tooltip
+#. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
+#, fuzzy
 msgid ""
-"Allow this extension to modify the Main Menu transparency, background color "
+"Allow this extension to modify the popup Menu transparency, background color "
 "and rounded corner settings. If this is disabled the extension will only "
-"apply a blur overlay under the main menu. This setting should only be "
-"disabled when the theme already uses a transparent main menu and you want "
+"apply a blur overlay under the popup menus. This setting should only be "
+"disabled when the theme already uses transparent popup menus and you want "
 "the themes setting to apply."
 msgstr ""
 "Permet à cette extension de modifier les paramètres de transparence, de "
@@ -220,9 +230,10 @@ msgstr "Utiliser des paramètres d'effet spécifiques pour l'Expo"
 msgid "Use unique effect settings for the Panels"
 msgstr "Utiliser des paramètres d'effet spécifiques pour les Panneaux"
 
-#. 6.0->settings-schema.json->enable-mainmenu-override->description
-msgid "Use unique effect settings for the Main Menu"
-msgstr "Utiliser des paramètres d'effet spécifiques pour le Menu principal"
+#. 6.0->settings-schema.json->enable-popup-override->description
+#, fuzzy
+msgid "Use unique effect settings for the popup menus"
+msgstr "Utiliser des paramètres d'effet spécifiques pour l'Expo"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
@@ -260,6 +271,10 @@ msgstr "Blur"
 msgid "Intensity"
 msgstr "Intensité"
 
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Saturation"
+msgstr ""
+
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
@@ -280,7 +295,7 @@ msgstr ""
 #. 6.0->settings-schema.json->overview-opacity->description
 #. 6.0->settings-schema.json->expo-opacity->description
 #. 6.0->settings-schema.json->panels-opacity->description
-#. 6.0->settings-schema.json->mainmenu-opacity->description
+#. 6.0->settings-schema.json->popup-opacity->description
 msgid "Dim/Colorize Background (percentage)"
 msgstr "Graduer/Colorer l'arrière-plan (pourcentage)"
 
@@ -294,7 +309,7 @@ msgstr "Gradation de la couleur de l'incrustation"
 #. 6.0->settings-schema.json->overview-blendColor->tooltip
 #. 6.0->settings-schema.json->expo-blendColor->tooltip
 #. 6.0->settings-schema.json->panels-blendColor->tooltip
-#. 6.0->settings-schema.json->mainmenu-blendColor->tooltip
+#. 6.0->settings-schema.json->popup-blendColor->tooltip
 msgid ""
 "Defines the color that is blended into the background based on the dimming "
 "control above. Use black for a normal dimming effect or some other color for "
@@ -308,7 +323,7 @@ msgstr ""
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->mainmenu-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
 msgid "None"
 msgstr "Aucun"
 
@@ -316,7 +331,7 @@ msgstr "Aucun"
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->mainmenu-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
 msgid "Simple"
 msgstr "Simple"
 
@@ -324,7 +339,7 @@ msgstr "Simple"
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->mainmenu-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
 msgid "Gaussian"
 msgstr "Gaussien"
 
@@ -332,7 +347,7 @@ msgstr "Gaussien"
 #. 6.0->settings-schema.json->overview-blurType->description
 #. 6.0->settings-schema.json->expo-blurType->description
 #. 6.0->settings-schema.json->panels-blurType->description
-#. 6.0->settings-schema.json->mainmenu-blurType->description
+#. 6.0->settings-schema.json->popup-blurType->description
 msgid "Type of blur effect"
 msgstr "Type d'effet de flou"
 
@@ -340,7 +355,7 @@ msgstr "Type d'effet de flou"
 #. 6.0->settings-schema.json->overview-blurType->tooltip
 #. 6.0->settings-schema.json->expo-blurType->tooltip
 #. 6.0->settings-schema.json->panels-blurType->tooltip
-#. 6.0->settings-schema.json->mainmenu-blurType->tooltip
+#. 6.0->settings-schema.json->popup-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr "Type d'algorithme à utiliser pour rendre l'arrière-plan flou"
 
@@ -360,18 +375,34 @@ msgstr ""
 "Règle l'intensité de l'effet de flou en modifiant le rayon utilisé par "
 "l'effet."
 
+#. 6.0->settings-schema.json->saturation->description
+#. 6.0->settings-schema.json->overview-saturation->description
+#. 6.0->settings-schema.json->expo-saturation->description
+#. 6.0->settings-schema.json->panels-saturation->description
+#. 6.0->settings-schema.json->popup-saturation->description
+msgid "Background color saturation"
+msgstr ""
+
+#. 6.0->settings-schema.json->saturation->tooltip
+#. 6.0->settings-schema.json->overview-saturation->tooltip
+#. 6.0->settings-schema.json->expo-saturation->tooltip
+#. 6.0->settings-schema.json->panels-saturation->tooltip
+#. 6.0->settings-schema.json->popup-saturation->tooltip
+msgid "Adjusts the color saturation of the background image."
+msgstr ""
+
 #. 6.0->settings-schema.json->panels-blendColor->description
-#. 6.0->settings-schema.json->mainmenu-blendColor->description
+#. 6.0->settings-schema.json->popup-blendColor->description
 msgid "Dimming ovrerlay color"
 msgstr "Gradation de la couleur de l'incrustation"
 
 #. 6.0->settings-schema.json->panels-radius->description
-#. 6.0->settings-schema.json->mainmenu-radius->description
+#. 6.0->settings-schema.json->popup-radius->description
 msgid "Blur intensity (Gaussian only)"
 msgstr "Intensité du flou (gaussien uniquement)"
 
 #. 6.0->settings-schema.json->panels-radius->tooltip
-#. 6.0->settings-schema.json->mainmenu-radius->tooltip
+#. 6.0->settings-schema.json->popup-radius->tooltip
 msgid ""
 "Adjusts the intensity of the Gaussian blur effect by changing the radius use "
 "by the effect. This setting does not effect the Simple blur type"
@@ -379,17 +410,19 @@ msgstr ""
 "Règle l'intensité de l'effet de flou gaussien en modifiant le rayon utilisé "
 "par l'effet. Ce paramètre n'affecte pas le type de flou simple"
 
-#. 6.0->settings-schema.json->mainmenu-accent-opacity->description
-msgid "Additional Main Menu accent elements dimming (percentage)"
+#. 6.0->settings-schema.json->popup-accent-opacity->description
+#, fuzzy
+msgid "Additional popup menu accent elements dimming (percentage)"
 msgstr ""
 "Menu principal supplémentaire Gradation des éléments d'accentuation "
 "(pourcentage)"
 
-#. 6.0->settings-schema.json->mainmenu-accent-opacity->tooltip
+#. 6.0->settings-schema.json->popup-accent-opacity->tooltip
+#, fuzzy
 msgid ""
-"Defines the additional dimming applied to the main menu accent elements (the "
-"favorites box and the search entry box) which allow these elements to stand "
-"out from the other main menu areas"
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
 msgstr ""
 "Définit la gradation supplémentaire appliquée aux éléments d'accentuation du "
 "menu principal (la boîte des favoris et la boîte de recherche) qui permet à "
