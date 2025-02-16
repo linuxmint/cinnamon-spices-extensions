@@ -22,13 +22,13 @@ msgid "Blur Cinnamon"
 msgstr "Desenfoque de Cinnamon"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
 "Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, Expo)"
 msgstr ""
-"Permite desenfocar, colorear y ajustar la atenuación de algunos componentes "
-"de Cinnamon Desktop (es decir, Paneles, Vista general, Exposición)."
+"Permite desenfocar, colorear, desaturar y ajustar la atenuación de algunos "
+"componentes del escritorio Cinnamon (por ejemplo, paneles, menús emergentes "
+"de applets, vista general, Exposición)."
 
 #. 6.0->settings-schema.json->general-page->title
 msgid "General"
@@ -50,7 +50,7 @@ msgstr "Paneles"
 
 #. 6.0->settings-schema.json->popup-page->title
 msgid "Popup Menus"
-msgstr ""
+msgstr "Menús emergentes"
 
 #. 6.0->settings-schema.json->general-settings->title
 msgid "Cinnamon components where effects will be applied"
@@ -86,9 +86,8 @@ msgid "Panel effects settings"
 msgstr "Configuración de efectos del panel"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
-#, fuzzy
 msgid "Popup menu effects settings"
-msgstr "Configuración de efectos del panel"
+msgstr "Configuración de los efectos del menú emergente"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -126,12 +125,10 @@ msgstr ""
 "difuminado sea visible."
 
 #. 6.0->settings-schema.json->enable-popup-effects->description
-#, fuzzy
 msgid "Popup Menus  (Please read tooltip)"
-msgstr "Menú principal (lea la información sobre herramientas)"
+msgstr "Menús emergentes (lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to panel applet popup menus. This option is intended for the "
 "Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
@@ -142,11 +139,11 @@ msgid ""
 "removes rounded corners so that the blurred background will not spill over "
 "the rounded edges."
 msgstr ""
-"Aplicar efectos al menú principal (menu@cinnamon.org applet). Esta opción "
-"está pensada para los temas de escritorio Cinnamon (6.4) y Mint-Y Dark, pero "
-"podría funcionar bien con otros temas. Es poco probable que los temas claros "
-"den buenos resultados, pero podrían funcionar con un uso creativo de la "
-"configuración de colores de atenuación y una imagen de fondo adecuada. Anula "
+"Aplicar efectos a los menús emergentes de los applets del panel. Esta opción "
+"está pensada para los temas de escritorio oscuros Cinnamon (6.4) y Mint-Y, "
+"pero podría funcionar bien con otros temas. Es poco probable que los temas "
+"claros den buenos resultados, pero podrían funcionar con un uso creativo de "
+"los ajustes de atenuación del color y una imagen de fondo adecuada. Anula "
 "algunos ajustes del tema para conseguir un menú (semi)transparente de modo "
 "que el fondo difuminado sea visible. También elimina las esquinas "
 "redondeadas para que el fondo difuminado no sobrepase los bordes redondeados."
@@ -170,12 +167,11 @@ msgstr ""
 "pestaña General."
 
 #. 6.0->settings-schema.json->popup-info->description
-#, fuzzy
 msgid ""
 "Warning: Popup Menu effects are currently disabled under the General tab."
 msgstr ""
-"Advertencia: Los efectos del panel están actualmente deshabilitados en la "
-"pestaña General."
+"Advertencia: Los efectos del menú emergente están actualmente desactivados "
+"en la pestaña General."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
@@ -195,12 +191,11 @@ msgstr ""
 "desea que se aplique la configuración de temas."
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->description
-#, fuzzy
 msgid "Override some of the popup menu theme settings (recommended)"
-msgstr "Anular algunos de los ajustes del tema Menú principal (recomendado)"
+msgstr ""
+"Anular algunos de los ajustes del tema del menú emergente (recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the popup Menu transparency, background color "
 "and rounded corner settings. If this is disabled the extension will only "
@@ -208,12 +203,12 @@ msgid ""
 "disabled when the theme already uses transparent popup menus and you want "
 "the themes setting to apply."
 msgstr ""
-"Permitir que esta extensión modifique la transparencia del menú principal, "
-"el color de fondo y la configuración de las esquinas redondeadas. Si esta "
-"opción está deshabilitada, la extensión sólo aplicará una superposición "
-"borrosa bajo el menú principal. Esta configuración sólo debe desactivarse "
-"cuando el tema ya utiliza un menú principal transparente y desea que se "
-"aplique la configuración de temas."
+"Permitir que esta extensión modifique la transparencia del menú emergente, "
+"el color de fondo y las esquinas redondeadas. Si esta opción está "
+"deshabilitada, la extensión sólo aplicará un desenfoque bajo los menús "
+"emergentes. Esta configuración sólo debe desactivarse cuando el tema ya "
+"utiliza menús emergentes transparentes y desea que se aplique la "
+"configuración de los temas."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
 msgid "Use unique effect settings for the Overview"
@@ -228,9 +223,8 @@ msgid "Use unique effect settings for the Panels"
 msgstr "Usar ajustes de efectos exclusivos para los Paneles"
 
 #. 6.0->settings-schema.json->enable-popup-override->description
-#, fuzzy
 msgid "Use unique effect settings for the popup menus"
-msgstr "Usar ajustes de efectos exclusivos para el efecto Exposición"
+msgstr "Usar ajustes de efectos exclusivos para los menús emergentes"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
@@ -270,7 +264,7 @@ msgstr "Intensidad"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Saturation"
-msgstr ""
+msgstr "Saturación"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
 msgid ""
@@ -379,7 +373,7 @@ msgstr ""
 #. 6.0->settings-schema.json->panels-saturation->description
 #. 6.0->settings-schema.json->popup-saturation->description
 msgid "Background color saturation"
-msgstr ""
+msgstr "Saturación del color de fondo"
 
 #. 6.0->settings-schema.json->saturation->tooltip
 #. 6.0->settings-schema.json->overview-saturation->tooltip
@@ -387,7 +381,7 @@ msgstr ""
 #. 6.0->settings-schema.json->panels-saturation->tooltip
 #. 6.0->settings-schema.json->popup-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
-msgstr ""
+msgstr "Ajusta la saturación de color de la imagen de fondo."
 
 #. 6.0->settings-schema.json->panels-blendColor->description
 #. 6.0->settings-schema.json->popup-blendColor->description
@@ -409,18 +403,17 @@ msgstr ""
 "utilizado por el efecto. Este ajuste no afecta al tipo de desenfoque Simple"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements dimming (percentage)"
 msgstr ""
-"Atenuación de elementos de acento adicionales del menú principal (porcentaje)"
+"Atenuación de elementos de acento adicionales del menú emergente (porcentaje)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
-#, fuzzy
 msgid ""
 "Defines the additional dimming applied to the popup menu accent elements (i."
 "e. the main menu favorites box and entry boxes) which allow these elements "
 "to stand out from the other popup menu areas"
 msgstr ""
 "Define la atenuación adicional aplicada a los elementos de acento del menú "
-"principal (el cuadro de favoritos y el cuadro de entrada de búsqueda) que "
-"permite que estos elementos destaquen de las demás áreas del menú principal"
+"emergente (es decir, el cuadro de favoritos del menú principal y los cuadros "
+"de entrada) que permiten que estos elementos destaquen de las demás áreas "
+"del menú emergente"
