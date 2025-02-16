@@ -1,25 +1,24 @@
 # Blur Cinnamon
 
-A Cinnamon extension that allows you to Dim, Blur and Colorize parts of the Cinnamon Desktop.
+A Cinnamon extension to Blur, Dim, Colorize, Desaturate and make transparent parts of the Cinnamon Desktop.
 
-Currently it can apply effects to:
+Cinnamon components you can effect (currently):
 
-* The Main Menu (menu@cinnamon.org applet) / (disabled by default)
-* The panels
-* The Overview (The window selection screen)
-* The Expo (The workspace selection screen)
+1. The overview
+2. The Expo
+3. Cinnamon Panels
+4. Applet popup menus (i.e Menu menu, Calendar, etc.)
 
-Also allows you to make the Panels and Main Menu transparent, which allows you to see the blurred background. Blurring can also be disabled if you just want a transparent or semi-transparent effect without blurring. 
+Blurring can also be disabled if you just want a transparent or semi-transparent effect without blurring. 
 
 ## Features
 
-1. Gaussian blur algorithm (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
-2. Dimming overlay with user configurable color and intensity (0-100%, transparent to a solid color)
-3. Simple blur algorithm (the Cinnamon built-in algorithm) which I would only recommend for very old computers
-4. Makes the Panels, Main Menu and the Expo transparent so that the desktop background image blur effects are visible
-5. Applies blurring, colorization and dimming effects to all Panels, the Main Menu, the Overview and the Expo
-6. You can use general settings for Panels/MainMenu/Overview/Expo or use unique settings for each Cinnamon component
-7. Allows unique settings for each panel based on it's location and the monitor is is on
+- Gaussian blur algorithm (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
+- Simple blur algorithm (the Cinnamon built-in algorithm) which I would only recommend for very old computers
+- Dimming overlay with user configurable color and intensity (fully-transparent to a solid color)
+- Makes the Panels, Popup menus and the Expo transparent so that the desktop background image effects are visible
+- Allows you to adjust the color saturation of the background overlay. You can reduced saturation all the way  down to gray scale
+- You can use general settings for Popups/Panels/Overview/Expo or use unique settings for each
 
 ## Requirements
 
@@ -36,8 +35,9 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 ## Limitations
 
 1. The Main Menu effects are intended to be used with the Cinnamon (6.4) theme or the Mint-Y dark desktop themes. The effects might work will with some other themes but I have not tested them so the effects might not work out just right. You can try the Mint-Y light themes but it might be hard to read the menu items without some playing around with the settings and the background image. To make sure that the blurred background does not spill over any rounded corners, the Main Menu rounded corners will be disabled when Main Menu effects are enabled. Menu Menu effects are disabled by default.
-2. Currently, any windows that are moved such that they overlap with a panel or the Main Menu will not be visible beneath the panel as you might expect with a transparent panel. This is because the blur effect is applied to a user interface element that floats above all windows just like the panel floats above the windows. At some point I hope to look into allowing the blur element to appear below all windows rather than above and make the a optional behavior setting.
-3. If you disable effects for any Cinnamon component under the General tab of the setting dialog while any "Use unique effect settings" options are enabled under the other tabs, the components "effect setting" options under the other tabs will still be visible, but changing those setting will have no effect until you re-enable the component under the General tab. Ideally those effect setting would only be visible when the component is enabled under the general tab but Cinnamon setting support is a bit limited in this way.
+2. The panel applet popup menu effects works for all the applets that I have tested except "Cinnamenu", which uses a bit of an odd way to activate the popup menu, making it more difficult to intercept the menu open process so that I can change the menu's transparency setting.
+3. Currently, any windows that are moved such that they overlap with a panel or the Main Menu will not be visible beneath the panel as you might expect with a transparent panel. This is because the blur effect is applied to a user interface element that floats above all windows just like the panel floats above the windows. At some point I hope to look into allowing the blur element to appear below all windows rather than above and make the a optional behavior setting.
+4. If you disable effects for any Cinnamon component under the General tab of the setting dialog while any "Use unique effect settings" options are enabled under the other tabs, the components "effect setting" options under the other tabs will still be visible, but changing those setting will have no effect until you re-enable the component under the General tab. Ideally those effect setting would only be visible when the component is enabled under the general tab but Cinnamon setting support is a bit limited in this way.
 
 ## Installation
 
