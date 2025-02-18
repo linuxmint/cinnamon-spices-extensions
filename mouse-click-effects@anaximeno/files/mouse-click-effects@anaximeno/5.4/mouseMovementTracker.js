@@ -60,16 +60,16 @@ var MouseMovementTracker = class MouseMovementTracker {
             this.persistOnStopped = params.persistOnStopped;
         }
 
-        this.finalize();
+        this.stop();
         this.start();
     }
 
-    finalize() {
+    stop() {
         this.signals.disconnectAllSignals();
         Main.uiGroup.remove_child(this.iconActor);
         this.listener.remove();
         this.iconActor.destroy();
-        logInfo("mouse movement tracker finalized");
+        logInfo("mouse movement tracker stopped");
     }
 
     move_to(x, y) {

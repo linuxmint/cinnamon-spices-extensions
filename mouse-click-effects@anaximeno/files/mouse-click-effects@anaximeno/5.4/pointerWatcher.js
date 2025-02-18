@@ -96,7 +96,7 @@ var PointerWatcher = class PointerWatcher {
 
         this._timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, minInterval,
             this._onTimeout.bind(this));
-        GLib.Source.set_name_by_id(this._timeoutId, '[gnome-shell] this._onTimeout');
+        GLib.Source.set_name_by_id(this._timeoutId, '[cinnamon mouse-click-effects] PointerWatcher._updateTimeout');
     }
 
     _onTimeout() {
@@ -105,7 +105,7 @@ var PointerWatcher = class PointerWatcher {
     }
 
     _updatePointer() {
-        let [x, y] = global.get_pointer();
+        let [x, y, _] = global.get_pointer();
         if (this.pointerX == x && this.pointerY == y)
             return;
 

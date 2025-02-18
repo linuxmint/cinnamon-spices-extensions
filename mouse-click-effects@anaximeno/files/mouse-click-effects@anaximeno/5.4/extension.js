@@ -341,11 +341,11 @@ class MouseClickEffects {
 
 		this.listener.deregister('mouse');
 		if (this.mouse_movement_tracker) {
-			this.mouse_movement_tracker.finalize();
+			this.mouse_movement_tracker.stop();
 			this.mouse_movement_tracker = null;
 		}
 		if (this.idleMonitor) {
-			this.idleMonitor.finalize();
+			this.idleMonitor.stop();
 			this.idleMonitor = null;
 		}
 
