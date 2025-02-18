@@ -8,12 +8,9 @@ const { Debouncer, logInfo } = require("./helpers.js");
 
 
 var MouseMovementTracker = class MouseMovementTracker {
-    constructor(extension, icon, size, opacity, persistOnStopped) {
+    constructor(extension, params) {
         this.extension = extension;
-        this.size = size;
-        this.opacity = opacity;
-        this.icon = icon;
-        this.persistOnStopped = persistOnStopped;
+        this.icon = params.icon;
         this.signals = new SignalManager.SignalManager(null);
         this.iconActor = null;
         this.listener = null;
@@ -23,6 +20,18 @@ var MouseMovementTracker = class MouseMovementTracker {
         return this.extension.deactivate_in_fullscreen &&
             global.display.focus_window &&
             global.display.focus_window.is_fullscreen();
+    }
+
+    get size() {
+        return this.extension.size;
+    }
+
+    get opacity() {
+        return this.extension.general_opacity;
+    }
+
+    get persist() {
+        return this.extension.mouse_movement_tracker_persist_on_stopped_enabled;
     }
 
     on_fullscreen_changed() {
@@ -52,14 +61,7 @@ var MouseMovementTracker = class MouseMovementTracker {
         logInfo("mouse movement tracker started");
     }
 
-    update(params) {
-        if (params.size) this.size = params.size;
-        if (params.opacity) this.opacity = params.opacity;
-        if (params.icon) this.icon = params.icon;
-        if (typeof params.persistOnStopped !== 'undefined') {
-            this.persistOnStopped = params.persistOnStopped;
-        }
-
+    restart() {
         this.stop();
         this.start();
     }
@@ -89,7 +91,7 @@ var MouseMovementTracker = class MouseMovementTracker {
             scale_x: 1,
             scale_y: 1,
             duration: 0,
-            opacity: 255,
+            opacity: this.opacity,
             onComplete: () => this.handle_parade(),
         });
 
@@ -97,7 +99,7 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     handle_parade = (new Debouncer()).debounce(() => {
-        if (!this.persistOnStopped && this.iconActor) {
+        if (!this.persist && this.iconActor) {
             this.iconActor.ease({
                 opacity: 0,
                 duration: MOUSE_PARADE_ANIMATION_MS,

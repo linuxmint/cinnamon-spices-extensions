@@ -97,27 +97,14 @@ class MouseClickEffects {
 				value: "icon_mode",
 				cb: () => {
 					this.update_colored_icons();
-					if (this.mouse_movement_tracker) {
-						let icon = this.get_click_icon(
-							this.icon_mode,
-							ClickType.MOUSE_MOV,
-							this.mouse_movement_color,
-						);
-						this.mouse_movement_tracker.update({
-							icon: icon,
-						});
-					}
+					this.handle_mouse_movement_tracker_property_updated();
 				},
 			},
 			{
 				key: "size",
 				value: "size",
 				cb: () => {
-					if (this.mouse_movement_tracker) {
-						this.mouse_movement_tracker.update({
-							size: this.size,
-						});
-					}
+					this.handle_mouse_movement_tracker_property_updated();
 				},
 			},
 			{
@@ -163,13 +150,7 @@ class MouseClickEffects {
 			{
 				key: "mouse-movement-tracker-persist-on-stopped-enabled",
 				value: "mouse_movement_tracker_persist_on_stopped_enabled",
-				cb: () => {
-					if (this.mouse_movement_tracker) {
-						this.mouse_movement_tracker.update({
-							persistOnStopped: this.mouse_movement_tracker_persist_on_stopped_enabled,
-						});
-					}
-				},
+				cb: this.handle_mouse_movement_tracker_property_updated.bind(this),
 			},
 			{
 				key: "mouse-idle-watcher-enabled",
@@ -196,16 +177,7 @@ class MouseClickEffects {
 				value: "mouse_movement_color",
 				cb: () => {
 					this.update_colored_icons();
-					if (this.mouse_movement_tracker) {
-						let icon = this.get_click_icon(
-							this.icon_mode,
-							ClickType.MOUSE_MOV,
-							this.mouse_movement_color,
-						);
-						this.mouse_movement_tracker.update({
-							icon: icon,
-						});
-					}
+					this.handle_mouse_movement_tracker_property_updated();
 				},
 			},
 			{
@@ -217,11 +189,7 @@ class MouseClickEffects {
 				key: "general-opacity",
 				value: "general_opacity",
 				cb: () => {
-					if (this.mouse_movement_tracker) {
-						this.mouse_movement_tracker.update({
-							opacity: this.general_opacity,
-						});
-					}
+					this.handle_mouse_movement_tracker_property_updated();
 				},
 			},
 			{
@@ -336,6 +304,14 @@ class MouseClickEffects {
 		this.create_icon_data(ClickType.MOUSE_MOV, this.mouse_movement_color);
 	}
 
+	handle_mouse_movement_tracker_property_updated = (new Debouncer()).debounce(() => {
+		if (this.mouse_movement_tracker) {
+			const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
+			this.mouse_movement_tracker.icon = icon;
+			this.mouse_movement_tracker.restart();
+		}
+	}, 300);
+
 	set_active(enabled) {
 		this.enabled = enabled;
 
@@ -353,11 +329,9 @@ class MouseClickEffects {
 			this.listener.register('mouse');
 
 			if (this.mouse_movement_tracker_enabled) {
-				const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
-				this.mouse_movement_tracker = new MouseMovementTracker(
-					this, icon, this.size, this.general_opacity,
-					this.mouse_movement_tracker_persist_on_stopped_enabled,
-				);
+				this.mouse_movement_tracker = new MouseMovementTracker(this, {
+					icon: this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color),
+				});
 				this.mouse_movement_tracker.start();
 			}
 
