@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-01-10 00:15-0500\n"
-"PO-Revision-Date: 2024-09-11 11:33+0200\n"
+"PO-Revision-Date: 2025-02-21 14:10+0100\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -290,48 +290,50 @@ msgid "Include Background"
 msgstr "Inclusief Achtergrond"
 
 #. 5.4->settings-schema.json->effects-page->title
-#, fuzzy
 msgid "Effect Settings"
-msgstr "Effecten"
+msgstr "Effectinstellingen"
 
 #. 5.4->settings-schema.json->general-settings->title
 msgid "Flipper General Settings"
-msgstr ""
+msgstr "Algemene instellingen voor Flipper"
 
 #. 5.4->settings-schema.json->random-settings->title
 msgid "Effects included in the randomized set"
-msgstr ""
+msgstr "Effecten opgenomen in de willekeurige set"
 
 #. 5.4->settings-schema.json->effect-selector-section->title
 msgid "Effect Selector"
-msgstr ""
+msgstr "Effectkiezer"
 
 #. 5.4->settings-schema.json->effect-settings->title
 msgid "Effect Specific Settings"
-msgstr ""
+msgstr "Effectspecifieke instellingen"
 
 #. 5.4->settings-schema.json->transitionEffect->description
-#, fuzzy
 msgid "Workspace Transition Effect"
-msgstr "Overgangseffect"
+msgstr "Werkruimte-overgangseffect"
 
 #. 5.4->settings-schema.json->transitionEffect->options
 msgid "Randomized"
-msgstr ""
+msgstr "Willekeurig"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Flipper effect with the Workspace Switcher applet"
-msgstr ""
+msgstr "Gebruik het Flipper-effect bij de Werkruimtewisselaar-app"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
 msgid ""
 "Override the moveToWorkspace() API so that the Flipper effect is used by the "
 "Workspace Switcher Applet when changing the current workspace"
 msgstr ""
+"Overschrijf de moveToWorkspace()-API zodat het Flipper-effect wordt gebruikt "
+"door de Werkruimtewisselaar-app bij het veranderen van de huidige werkruimte"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Flipper effect when changing focus causes a workspace switch"
 msgstr ""
+"Gebruik het Flipper-effect wanneer een verandering van focus een "
+"werkruimtewisseling veroorzaakt"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
 msgid ""
@@ -339,6 +341,9 @@ msgid ""
 "is given the focus, the Flipper effect is used to change the current "
 "workspace"
 msgstr ""
+"Overschrijf de activateWindow()-API zodat wanneer een venster op een andere "
+"werkruimte de focus krijgt, het Flipper-effect wordt gebruikt om de huidige "
+"werkruimte te wijzigen"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
@@ -350,7 +355,10 @@ msgid ""
 "properly painted or completely invisible anyhow, so it's best to leave this "
 "disabled"
 msgstr ""
+"Sluit de panelen uit tijdens animatie. In de meeste gevallen worden de "
+"panelen niet correct weergegeven of zijn ze volledig onzichtbaar, dus het is "
+"het beste om dit uitgeschakeld te laten"
 
 #. 5.4->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
-msgstr ""
+msgstr "Toon instellingen voor effect:"
