@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-22 17:57-0500\n"
-"PO-Revision-Date: 2024-04-17 11:15+0200\n"
+"PO-Revision-Date: 2025-02-21 14:19+0100\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -175,11 +175,11 @@ msgstr "Grootte van hoekgebieden:"
 
 #. settings-schema.json->generalHeader->description
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #. settings-schema.json->useSwitcherExtension->description
 msgid "Use a workspace switcher extension if installed"
-msgstr ""
+msgstr "Gebruik een werkruimtewisselaar-extensie indien geïnstalleerd"
 
 #. settings-schema.json->useSwitcherExtension->tooltip
 msgid ""
@@ -187,3 +187,6 @@ msgid ""
 "no effect unless a compatible extension is installed. Requires Desktop Cube "
 "2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
 msgstr ""
+"Sta een Cinnamon-extensie toe om de werkruimtewisseling te animeren. Deze "
+"optie heeft geen effect tenzij een compatibele extensie is geïnstalleerd. "
+"Vereist Desktop Cube 2.0.2 of Flipper 2.0.0 en Cinnamon 5.4 of hoger."
