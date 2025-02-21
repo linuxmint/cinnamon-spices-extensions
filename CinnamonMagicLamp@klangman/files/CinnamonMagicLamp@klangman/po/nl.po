@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-01 12:42-0500\n"
-"PO-Revision-Date: 2024-09-11 11:24+0200\n"
+"PO-Revision-Date: 2025-02-21 13:44+0100\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -57,15 +57,15 @@ msgstr "sinus"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "random"
-msgstr ""
+msgstr "willekeurig"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Default - Unminimize: Sine"
-msgstr ""
+msgstr "Minimaliseren: Standaard - Maximaliseren: Sinus"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Sine - Unminimize: Default"
-msgstr ""
+msgstr "Minimaliseren: Sinus - Maximaliseren: Standaard"
 
 #. 5.6->settings-schema.json->effect->description
 msgid "The type of effect"
@@ -80,9 +80,8 @@ msgstr ""
 "resulteert in een meer golvend effect"
 
 #. 5.6->settings-schema.json->duration->description
-#, fuzzy
 msgid "Effect duration (ms)"
-msgstr "Effectduur"
+msgstr "Effectduur (ms)"
 
 #. 5.6->settings-schema.json->duration->tooltip
 msgid "The time (in milliseconds) that the effect takes to complete"
