@@ -306,9 +306,17 @@ class MouseClickEffects {
 
 	handle_mouse_movement_tracker_property_updated = (new Debouncer()).debounce(() => {
 		if (this.mouse_movement_tracker) {
-			const icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color);
-			this.mouse_movement_tracker.icon = icon;
-			this.mouse_movement_tracker.restart();
+			this.mouse_movement_tracker.stop();
+			this.mouse_movement_tracker = null;
+		}
+		if (this.mouse_movement_tracker_enabled) {
+			this.mouse_movement_tracker = new MouseMovementTracker(this, {
+				icon: this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color),
+				opacity: this.general_opacity,
+				persist: this.mouse_movement_tracker_persist_on_stopped_enabled,
+				size: this.size,
+			});
+			this.mouse_movement_tracker.start();
 		}
 	}, 300);
 
@@ -331,6 +339,9 @@ class MouseClickEffects {
 			if (this.mouse_movement_tracker_enabled) {
 				this.mouse_movement_tracker = new MouseMovementTracker(this, {
 					icon: this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color),
+					opacity: this.general_opacity,
+					persist: this.mouse_movement_tracker_persist_on_stopped_enabled,
+					size: this.size,
 				});
 				this.mouse_movement_tracker.start();
 			}

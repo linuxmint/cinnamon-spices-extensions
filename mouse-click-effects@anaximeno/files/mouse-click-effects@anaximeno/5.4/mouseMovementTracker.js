@@ -11,6 +11,9 @@ var MouseMovementTracker = class MouseMovementTracker {
     constructor(extension, params) {
         this.extension = extension;
         this.icon = params.icon;
+        this.opacity = params.opacity;
+        this.persist = params.persist;
+        this.size = params.size;
         this.signals = new SignalManager.SignalManager(null);
         this.iconActor = null;
         this.listener = null;
@@ -22,16 +25,13 @@ var MouseMovementTracker = class MouseMovementTracker {
             global.display.focus_window.is_fullscreen();
     }
 
+    set size(value) {
+        this._size = value;
+        this._halfIconSize = this._size * global.ui_scale * 0.5;
+    }
+
     get size() {
-        return this.extension.size;
-    }
-
-    get opacity() {
-        return this.extension.general_opacity;
-    }
-
-    get persist() {
-        return this.extension.mouse_movement_tracker_persist_on_stopped_enabled;
+        return this._size;
     }
 
     on_fullscreen_changed() {
@@ -83,19 +83,17 @@ var MouseMovementTracker = class MouseMovementTracker {
             return;
         }
 
-        const iconSize = this.size * global.ui_scale;
-
         this.iconActor.ease({
-            x: x - iconSize / 2,
-            y: y - iconSize / 2,
+            x: x - this._halfIconSize,
+            y: y - this._halfIconSize,
             scale_x: 1,
             scale_y: 1,
             duration: 0,
             opacity: this.opacity,
-            onComplete: () => this.handle_parade(),
         });
 
         this.iconActor.show();
+        this.handle_parade();
     }
 
     handle_parade = (new Debouncer()).debounce(() => {
