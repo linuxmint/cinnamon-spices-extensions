@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-03 15:24-0500\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. 3.8->settings-schema.json->aspect-ratio->description
+#. 5.4->settings-schema.json->aspect-ratio->description
+msgid "Use monitor aspect ratio"
+msgstr ""
+
+#. 3.8->settings-schema.json->aspect-ratio->tooltip
+#. 5.4->settings-schema.json->aspect-ratio->tooltip
+msgid ""
+"Should the popup's grid reflect the current monitor's aspect ratio or not."
+msgstr ""
+
+#. 3.8->settings-schema.json->useMonitorCenter->description
+#. 5.4->settings-schema.json->useMonitorCenter->description
+msgid "UI always centered to monitor"
+msgstr ""
+
+#. 3.8->settings-schema.json->useMonitorCenter->tooltip
+#. 5.4->settings-schema.json->useMonitorCenter->tooltip
+msgid ""
+"By default the grid UI shows up in the middle of the active window. With "
+"this, it always displays in the middle of the monitor."
+msgstr ""
+
+#. 3.8->settings-schema.json->showGridOnAllMonitors->description
+#. 5.4->settings-schema.json->showGridOnAllMonitors->description
+msgid "Show UI and all monitors at the same time"
+msgstr ""
+
+#. 3.8->settings-schema.json->grid1NameOverride->description
+#. 3.8->settings-schema.json->grid2NameOverride->description
+#. 3.8->settings-schema.json->grid3NameOverride->description
+#. 3.8->settings-schema.json->grid4NameOverride->description
+#. 5.4->settings-schema.json->grid2NameOverride->description
+#. 5.4->settings-schema.json->grid3NameOverride->description
+#. 5.4->settings-schema.json->grid4NameOverride->description
+msgid "Name Override"
+msgstr ""
+
+#. 5.4->settings-schema.json->grid1NameOverride->description
+msgid "Name Override on the UI"
+msgstr ""
