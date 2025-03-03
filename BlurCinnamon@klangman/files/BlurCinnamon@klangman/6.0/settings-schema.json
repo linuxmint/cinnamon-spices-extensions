@@ -1,7 +1,7 @@
 {
    "layout" : {
       "type" : "layout",
-      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page"],
+      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page", "desktop-page"],
 
       "general-page" : {
          "type" : "page",
@@ -28,11 +28,16 @@
          "title" : "Popup Menus",
          "sections" : ["popup-override", "popup-effect-settings"]
       },
+      "desktop-page" : {
+         "type" : "page",
+         "title" : "Desktop Background",
+         "sections" : ["desktop-override", "desktop-effect-settings"]
+      },
 
       "general-settings" : {
          "type" : "section",
          "title" : "Cinnamon components where effects will be applied",
-         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects"]
+         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects", "enable-desktop-effects"]
       },
       "generic-effect-settings" : {
          "type" : "section",
@@ -43,7 +48,7 @@
       "overview-override" : {
          "type" : "section",
          "title" : "Overview settings",
-         "keys" : ["enable-overview-override", "overview-info"]
+         "keys" : ["overview-info", "enable-overview-override"]
       },
       "overview-effect-settings" : {
          "type" : "section",
@@ -55,7 +60,7 @@
       "expo-override" : {
          "type" : "section",
          "title" : "Expo settings",
-         "keys" : ["enable-expo-override", "expo-info"]
+         "keys" : ["expo-info", "enable-expo-override"]
       },
       "expo-effect-settings" : {
          "type" : "section",
@@ -67,7 +72,7 @@
       "panels-override" : {
          "type" : "section",
          "title" : "Panels settings",
-         "keys" : ["enable-panels-override", "panels-info", "allow-transparent-color-panels"]
+         "keys" : ["panels-info", "enable-panels-override", "allow-transparent-color-panels"]
       },
       "panels-effect-settings" : {
          "type" : "section",
@@ -79,15 +84,26 @@
       "popup-override" : {
          "type" : "section",
          "title" : "Panels settings",
-         "keys" : ["enable-popup-override", "popup-info", "allow-transparent-color-popup" ]
+         "keys" : [ "popup-info", "enable-popup-override", "allow-transparent-color-popup" ]
       },
       "popup-effect-settings" : {
          "type" : "section",
          "title" : "Popup menu effects settings",
          "dependency" : "enable-popup-override",
          "keys" : ["popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation"]
-      }
+      },
 
+      "desktop-override" : {
+         "type" : "section",
+         "title" : "Desktop background settings",
+         "keys" : ["desktop-info", "enable-desktop-override", "desktop-without-focus"]
+      },
+      "desktop-effect-settings" : {
+         "type" : "section",
+         "title" : "Desktop background effects settings",
+         "dependency" : "enable-desktop-override",
+         "keys" : ["desktop-with-focus", "desktop-opacity", "desktop-blurType", "desktop-radius", "desktop-saturation"]
+      }
    },
 
     "enable-overview-effects" : {
@@ -114,6 +130,12 @@
         "tooltip": "Apply effects to panel applet popup menus. This option is intended for the Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other themes. Light themes are unlikely to give good results but might be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some theme settings to achieve a (semi-)transparent menu so that the blurred background is visible. It also removes rounded corners so that the blurred background will not spill over the rounded edges.",
         "default": false
     },
+    "enable-desktop-effects" : {
+        "type": "switch",
+        "description": "Desktop background",
+        "tooltip": "Apply effects to desktop background image. On the Desktop Background tab you can choose if the effect applies always or just when a window has the focus.",
+        "default": false
+    },
 
     "overview-info" : {
         "type" : "label",
@@ -135,6 +157,11 @@
         "description" : "Warning: Popup Menu effects are currently disabled under the General tab.",
         "dependency" : "!enable-popup-effects"
     },
+    "desktop-info" : {
+        "type" : "label",
+        "description" : "Warning: Desktop background effects are currently disabled under the General tab.",
+        "dependency" : "!enable-desktop-effects"
+    },
 
     "allow-transparent-color-panels" : {
         "type": "switch",
@@ -152,25 +179,26 @@
     "enable-overview-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Overview",
-        "dependency" : "enable-overview-effects",
         "default": false
     },
     "enable-expo-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Expo",
-        "dependency" : "enable-expo-effects",
         "default": false
     },
     "enable-panels-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Panels",
-        "dependency" : "enable-panels-effects",
         "default": false
     },
     "enable-popup-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the popup menus",
-        "dependency" : "enable-popup-effects",
+        "default": false
+    },
+    "enable-desktop-override" : {
+        "type": "switch",
+        "description": "Use unique effect settings for the desktop background",
         "default": false
     },
 
@@ -197,10 +225,10 @@
         ],
         "tooltip": "Defines the effects applied to different panels. If a panel does not meet the criteria of any enabled entry in this list, it will have no effects applied. The settings of the first entry in this list that can apply to a given panel will take effect. The color field is in the rgb(#,#,#) syntax and black will be used when a color is not provided or is in an incorrect syntax",
         "default" : [
-            { "enabled": true, "panels": 1, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
-            { "enabled": true, "panels": 2, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
-            { "enabled": true, "panels": 3, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
-            { "enabled": true, "panels": 4, "monitors": 0, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 }
+            { "enabled": true, "panels": 1, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
+            { "enabled": true, "panels": 2, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
+            { "enabled": true, "panels": 3, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
+            { "enabled": true, "panels": 4, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 }
         ]
     },
 
@@ -403,7 +431,8 @@
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image.",
-        "default": 100
+        "default": 100,
+        "dependency" : "!enable-panel-unique-settings"
     },
 
 
@@ -462,11 +491,81 @@
 
     "popup-saturation": {
         "type": "scale",
-        "description" : "Background color saturation",
+        "description" : "Background image color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image.",
         "default": 100
+    },
+
+
+    "desktop-without-focus" : {
+        "type": "switch",
+        "description": "Only apply effect settings if the desktop is not in focus",
+        "tooltip": "When enabled, the desktop background image effects will only apply when the desktop is not in focus",
+        "default": true
+    },
+
+    "desktop-with-focus" : {
+        "type": "switch",
+        "description": "Apply the generic effect settings when the desktop is in focus",
+        "tooltip": "When enabled, the generic effect settings (on the General tab) will apply to the desktop background image when the desktop is in focus",
+        "default": false,
+        "dependency" : "enable-desktop-override=1"
+    },
+
+    "desktop-opacity" : {
+        "type": "scale",
+        "description": "Dim background Image (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 50,
+        "step": 1,
+        "dependency" : "enable-desktop-override=1"
+    },
+
+    "desktop-blendColor": {
+        "type": "colorchooser",
+        "description" : "Dimming ovrerlay color",
+        "default": "rgb(0,0,0)",
+        "dependency" : "enable-desktop-override=1",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
+    },
+
+    "desktop-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background",
+        "dependency" : "enable-desktop-override=1"
+    },
+
+    "desktop-radius": {
+        "type": "scale",
+        "description" : "Blur intensity (Gaussian only)",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the intensity of the Gaussian blur effect by changing the radius use by the effect. This setting does not effect the Simple blur type",
+        "default": 20,
+        "dependency" : "enable-desktop-override=1"
+    },
+
+    "desktop-saturation": {
+        "type": "scale",
+        "description" : "Background color saturation",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the color saturation of the background image.",
+        "default": 100,
+        "dependency" : "enable-desktop-override=1"
     }
+
 }

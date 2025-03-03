@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-02-16 15:10-0500\n"
+"POT-Creation-Date: 2025-03-02 19:42-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -53,6 +53,10 @@ msgstr "Taulers"
 msgid "Popup Menus"
 msgstr "Menús emergents"
 
+#. 6.0->settings-schema.json->desktop-page->title
+msgid "Desktop Background"
+msgstr ""
+
 #. 6.0->settings-schema.json->general-settings->title
 msgid "Cinnamon components where effects will be applied"
 msgstr "Components de Cinnamon als quals s'aplicaran els efectes"
@@ -88,6 +92,15 @@ msgstr "Opcions d'efectes dels taulers"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
 msgid "Popup menu effects settings"
+msgstr "Opcions d'efectes dels menús emergents"
+
+#. 6.0->settings-schema.json->desktop-override->title
+msgid "Desktop background settings"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-effect-settings->title
+#, fuzzy
+msgid "Desktop background effects settings"
 msgstr "Opcions d'efectes dels menús emergents"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -149,6 +162,16 @@ msgstr ""
 "visible. També elimina les cantonades arrodonides per tal que la difuminació "
 "no s'hi escampi per les vores."
 
+#. 6.0->settings-schema.json->enable-desktop-effects->description
+msgid "Desktop background"
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-desktop-effects->tooltip
+msgid ""
+"Apply effects to desktop background image. On the Desktop Background tab you "
+"can choose if the effect applies always or just when a window has the focus."
+msgstr ""
+
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
 msgstr ""
@@ -169,6 +192,14 @@ msgid ""
 msgstr ""
 "Avís: els efectes dels menús emergents estan desactivats a la pestanya "
 "General."
+
+#. 6.0->settings-schema.json->desktop-info->description
+#, fuzzy
+msgid ""
+"Warning: Desktop background effects are currently disabled under the General "
+"tab."
+msgstr ""
+"Avís: els efectes de l'Exposició estan desactivats a la pestanya General."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
@@ -222,6 +253,11 @@ msgstr "Utilitza ajusts d'efectes exclusius pels Taulers"
 #. 6.0->settings-schema.json->enable-popup-override->description
 msgid "Use unique effect settings for the popup menus"
 msgstr "Utilitza ajusts d'efectes exclusius pels menús emergents"
+
+#. 6.0->settings-schema.json->enable-desktop-override->description
+#, fuzzy
+msgid "Use unique effect settings for the desktop background"
+msgstr "Utilitza ajusts d'efectes exclusius per a l'Exposició"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
@@ -297,6 +333,7 @@ msgstr "Color de l'atenuació superposada"
 #. 6.0->settings-schema.json->expo-blendColor->tooltip
 #. 6.0->settings-schema.json->panels-blendColor->tooltip
 #. 6.0->settings-schema.json->popup-blendColor->tooltip
+#. 6.0->settings-schema.json->desktop-blendColor->tooltip
 msgid ""
 "Defines the color that is blended into the background based on the dimming "
 "control above. Use black for a normal dimming effect or some other color for "
@@ -311,6 +348,7 @@ msgstr ""
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "None"
 msgstr "Cap"
 
@@ -319,6 +357,7 @@ msgstr "Cap"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Simple"
 msgstr "Simple"
 
@@ -327,6 +366,7 @@ msgstr "Simple"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Gaussian"
 msgstr "Gaussià"
 
@@ -335,6 +375,7 @@ msgstr "Gaussià"
 #. 6.0->settings-schema.json->expo-blurType->description
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->desktop-blurType->description
 msgid "Type of blur effect"
 msgstr "Tipus d'efecte de difuminat"
 
@@ -343,6 +384,7 @@ msgstr "Tipus d'efecte de difuminat"
 #. 6.0->settings-schema.json->expo-blurType->tooltip
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->desktop-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr "Tipus d'algorisme de difuminat que s'utilitzarà pel fons"
 
@@ -366,7 +408,7 @@ msgstr ""
 #. 6.0->settings-schema.json->overview-saturation->description
 #. 6.0->settings-schema.json->expo-saturation->description
 #. 6.0->settings-schema.json->panels-saturation->description
-#. 6.0->settings-schema.json->popup-saturation->description
+#. 6.0->settings-schema.json->desktop-saturation->description
 msgid "Background color saturation"
 msgstr "Saturació del color de fons"
 
@@ -375,21 +417,25 @@ msgstr "Saturació del color de fons"
 #. 6.0->settings-schema.json->expo-saturation->tooltip
 #. 6.0->settings-schema.json->panels-saturation->tooltip
 #. 6.0->settings-schema.json->popup-saturation->tooltip
+#. 6.0->settings-schema.json->desktop-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
 msgstr "Ajusta la saturació de color de la imatge de fons."
 
 #. 6.0->settings-schema.json->panels-blendColor->description
 #. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
 msgid "Dimming ovrerlay color"
 msgstr "Color de l'atenuació superposada"
 
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description
+#. 6.0->settings-schema.json->desktop-radius->description
 msgid "Blur intensity (Gaussian only)"
 msgstr "Intensitat del difuminat (només Gaussià)"
 
 #. 6.0->settings-schema.json->panels-radius->tooltip
 #. 6.0->settings-schema.json->popup-radius->tooltip
+#. 6.0->settings-schema.json->desktop-radius->tooltip
 msgid ""
 "Adjusts the intensity of the Gaussian blur effect by changing the radius use "
 "by the effect. This setting does not effect the Simple blur type"
@@ -410,3 +456,33 @@ msgstr ""
 "Defineix el grau d'atenuació addicional que s'aplicarà als elements dels "
 "menús emergents (caixa de preferits i camp de cerca), que permetrà que "
 "aquests elements ressaltin sobre la resta d'àrees del menú"
+
+#. 6.0->settings-schema.json->popup-saturation->description
+#, fuzzy
+msgid "Background image color saturation"
+msgstr "Saturació del color de fons"
+
+#. 6.0->settings-schema.json->desktop-without-focus->description
+msgid "Only apply effect settings if the desktop is not in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-without-focus->tooltip
+msgid ""
+"When enabled, the desktop background image effects will only apply when the "
+"desktop is not in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-with-focus->description
+msgid "Apply the generic effect settings when the desktop is in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-with-focus->tooltip
+msgid ""
+"When enabled, the generic effect settings (on the General tab) will apply to "
+"the desktop background image when the desktop is in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-opacity->description
+#, fuzzy
+msgid "Dim background Image (percentage)"
+msgstr "Atenuació/Tint del fons (percentatge)"
