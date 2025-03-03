@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0
+
+* Added the ability to apply effects to the Desktop background image (you can Dim, Blur and Desaturate, but currently you can't colorize the background image)
+* Improved how the blur effect keeps in sync with the size of the the panels
+* Always hid the parts of windows that are under the panels, even when no blur effect is need to be more consistent
+* Several fixes , minor improvements, optimizations and simplifications to the code
+
 ## 1.3.0
 
 * Replaced the Main Menu effects with generic Popup Menu effects which covers the main menu as well as all other Applet popup menus. 

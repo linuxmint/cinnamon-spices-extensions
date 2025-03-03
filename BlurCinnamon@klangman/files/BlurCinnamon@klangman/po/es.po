@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-02-16 15:10-0500\n"
+"POT-Creation-Date: 2025-03-02 19:42-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -52,6 +52,10 @@ msgstr "Paneles"
 msgid "Popup Menus"
 msgstr "Menús emergentes"
 
+#. 6.0->settings-schema.json->desktop-page->title
+msgid "Desktop Background"
+msgstr ""
+
 #. 6.0->settings-schema.json->general-settings->title
 msgid "Cinnamon components where effects will be applied"
 msgstr "Componentes de Cinnamon donde se aplicarán los efectos"
@@ -87,6 +91,15 @@ msgstr "Configuración de efectos del panel"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
 msgid "Popup menu effects settings"
+msgstr "Configuración de los efectos del menú emergente"
+
+#. 6.0->settings-schema.json->desktop-override->title
+msgid "Desktop background settings"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-effect-settings->title
+#, fuzzy
+msgid "Desktop background effects settings"
 msgstr "Configuración de los efectos del menú emergente"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -148,6 +161,16 @@ msgstr ""
 "que el fondo difuminado sea visible. También elimina las esquinas "
 "redondeadas para que el fondo difuminado no sobrepase los bordes redondeados."
 
+#. 6.0->settings-schema.json->enable-desktop-effects->description
+msgid "Desktop background"
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-desktop-effects->tooltip
+msgid ""
+"Apply effects to desktop background image. On the Desktop Background tab you "
+"can choose if the effect applies always or just when a window has the focus."
+msgstr ""
+
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
 msgstr ""
@@ -172,6 +195,15 @@ msgid ""
 msgstr ""
 "Advertencia: Los efectos del menú emergente están actualmente desactivados "
 "en la pestaña General."
+
+#. 6.0->settings-schema.json->desktop-info->description
+#, fuzzy
+msgid ""
+"Warning: Desktop background effects are currently disabled under the General "
+"tab."
+msgstr ""
+"Advertencia: Los efectos de exposición están actualmente deshabilitados en "
+"la pestaña General."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
@@ -225,6 +257,11 @@ msgstr "Usar ajustes de efectos exclusivos para los Paneles"
 #. 6.0->settings-schema.json->enable-popup-override->description
 msgid "Use unique effect settings for the popup menus"
 msgstr "Usar ajustes de efectos exclusivos para los menús emergentes"
+
+#. 6.0->settings-schema.json->enable-desktop-override->description
+#, fuzzy
+msgid "Use unique effect settings for the desktop background"
+msgstr "Usar ajustes de efectos exclusivos para el efecto Exposición"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
@@ -301,6 +338,7 @@ msgstr "Atenuación del color de superposición"
 #. 6.0->settings-schema.json->expo-blendColor->tooltip
 #. 6.0->settings-schema.json->panels-blendColor->tooltip
 #. 6.0->settings-schema.json->popup-blendColor->tooltip
+#. 6.0->settings-schema.json->desktop-blendColor->tooltip
 msgid ""
 "Defines the color that is blended into the background based on the dimming "
 "control above. Use black for a normal dimming effect or some other color for "
@@ -315,6 +353,7 @@ msgstr ""
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "None"
 msgstr "Ninguno"
 
@@ -323,6 +362,7 @@ msgstr "Ninguno"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Simple"
 msgstr "Sencillo"
 
@@ -331,6 +371,7 @@ msgstr "Sencillo"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Gaussian"
 msgstr "Gaussiano"
 
@@ -339,6 +380,7 @@ msgstr "Gaussiano"
 #. 6.0->settings-schema.json->expo-blurType->description
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->desktop-blurType->description
 msgid "Type of blur effect"
 msgstr "Tipo de efecto de desenfoque"
 
@@ -347,6 +389,7 @@ msgstr "Tipo de efecto de desenfoque"
 #. 6.0->settings-schema.json->expo-blurType->tooltip
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->desktop-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr ""
 "Que tipo de algoritmo de desenfoque debe utilizarse para desenfocar el fondo."
@@ -371,7 +414,7 @@ msgstr ""
 #. 6.0->settings-schema.json->overview-saturation->description
 #. 6.0->settings-schema.json->expo-saturation->description
 #. 6.0->settings-schema.json->panels-saturation->description
-#. 6.0->settings-schema.json->popup-saturation->description
+#. 6.0->settings-schema.json->desktop-saturation->description
 msgid "Background color saturation"
 msgstr "Saturación del color de fondo"
 
@@ -380,21 +423,25 @@ msgstr "Saturación del color de fondo"
 #. 6.0->settings-schema.json->expo-saturation->tooltip
 #. 6.0->settings-schema.json->panels-saturation->tooltip
 #. 6.0->settings-schema.json->popup-saturation->tooltip
+#. 6.0->settings-schema.json->desktop-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
 msgstr "Ajusta la saturación de color de la imagen de fondo."
 
 #. 6.0->settings-schema.json->panels-blendColor->description
 #. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
 msgid "Dimming ovrerlay color"
 msgstr "Atenuación del color de superposición"
 
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description
+#. 6.0->settings-schema.json->desktop-radius->description
 msgid "Blur intensity (Gaussian only)"
 msgstr "Intensidad del desenfoque (sólo Gaussiano)"
 
 #. 6.0->settings-schema.json->panels-radius->tooltip
 #. 6.0->settings-schema.json->popup-radius->tooltip
+#. 6.0->settings-schema.json->desktop-radius->tooltip
 msgid ""
 "Adjusts the intensity of the Gaussian blur effect by changing the radius use "
 "by the effect. This setting does not effect the Simple blur type"
@@ -417,3 +464,33 @@ msgstr ""
 "emergente (es decir, el cuadro de favoritos del menú principal y los cuadros "
 "de entrada) que permiten que estos elementos destaquen de las demás áreas "
 "del menú emergente"
+
+#. 6.0->settings-schema.json->popup-saturation->description
+#, fuzzy
+msgid "Background image color saturation"
+msgstr "Saturación del color de fondo"
+
+#. 6.0->settings-schema.json->desktop-without-focus->description
+msgid "Only apply effect settings if the desktop is not in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-without-focus->tooltip
+msgid ""
+"When enabled, the desktop background image effects will only apply when the "
+"desktop is not in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-with-focus->description
+msgid "Apply the generic effect settings when the desktop is in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-with-focus->tooltip
+msgid ""
+"When enabled, the generic effect settings (on the General tab) will apply to "
+"the desktop background image when the desktop is in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-opacity->description
+#, fuzzy
+msgid "Dim background Image (percentage)"
+msgstr "Atenuar/colorear fondo (porcentaje)"

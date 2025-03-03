@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-02-16 15:10-0500\n"
+"POT-Creation-Date: 2025-03-02 19:42-0500\n"
 "PO-Revision-Date: 2025-02-21 09:56+0100\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -51,6 +51,10 @@ msgstr "Panelen"
 msgid "Popup Menus"
 msgstr "Pop-upmenu's"
 
+#. 6.0->settings-schema.json->desktop-page->title
+msgid "Desktop Background"
+msgstr ""
+
 #. 6.0->settings-schema.json->general-settings->title
 msgid "Cinnamon components where effects will be applied"
 msgstr "Cinnamon-componenten waarop effecten worden toegepast"
@@ -86,6 +90,15 @@ msgstr "Effectinstellingen voor Panelen"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
 msgid "Popup menu effects settings"
+msgstr "Effectinstellingen voor pop-upmenu's"
+
+#. 6.0->settings-schema.json->desktop-override->title
+msgid "Desktop background settings"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-effect-settings->title
+#, fuzzy
+msgid "Desktop background effects settings"
 msgstr "Effectinstellingen voor pop-upmenu's"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -148,6 +161,16 @@ msgstr ""
 "verwijderd, zodat de vervaagde achtergrond niet over de ronde randen "
 "uitloopt."
 
+#. 6.0->settings-schema.json->enable-desktop-effects->description
+msgid "Desktop background"
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-desktop-effects->tooltip
+msgid ""
+"Apply effects to desktop background image. On the Desktop Background tab you "
+"can choose if the effect applies always or just when a window has the focus."
+msgstr ""
+
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
 msgstr ""
@@ -172,6 +195,15 @@ msgid ""
 msgstr ""
 "Waarschuwing: effecten voor Pop-upmenu's zijn momenteel uitgeschakeld op het "
 "tabblad Algemeen."
+
+#. 6.0->settings-schema.json->desktop-info->description
+#, fuzzy
+msgid ""
+"Warning: Desktop background effects are currently disabled under the General "
+"tab."
+msgstr ""
+"Waarschuwing: effecten voor Expo zijn momenteel uitgeschakeld op het tabblad "
+"Algemeen."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
@@ -225,6 +257,11 @@ msgstr "Unieke effectinstellingen gebruiken voor Panelen"
 #. 6.0->settings-schema.json->enable-popup-override->description
 msgid "Use unique effect settings for the popup menus"
 msgstr "Unieke effectinstellingen gebruiken voor pop-upmenu’s"
+
+#. 6.0->settings-schema.json->enable-desktop-override->description
+#, fuzzy
+msgid "Use unique effect settings for the desktop background"
+msgstr "Unieke effectinstellingen gebruiken voor Expo"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
@@ -301,6 +338,7 @@ msgstr "Verduisteringslaag kleur"
 #. 6.0->settings-schema.json->expo-blendColor->tooltip
 #. 6.0->settings-schema.json->panels-blendColor->tooltip
 #. 6.0->settings-schema.json->popup-blendColor->tooltip
+#. 6.0->settings-schema.json->desktop-blendColor->tooltip
 msgid ""
 "Defines the color that is blended into the background based on the dimming "
 "control above. Use black for a normal dimming effect or some other color for "
@@ -315,6 +353,7 @@ msgstr ""
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "None"
 msgstr "Geen"
 
@@ -323,6 +362,7 @@ msgstr "Geen"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Simple"
 msgstr "Eenvoudig"
 
@@ -331,6 +371,7 @@ msgstr "Eenvoudig"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Gaussian"
 msgstr "Gaussiaans"
 
@@ -339,6 +380,7 @@ msgstr "Gaussiaans"
 #. 6.0->settings-schema.json->expo-blurType->description
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->desktop-blurType->description
 msgid "Type of blur effect"
 msgstr "Type van het vervagingseffect"
 
@@ -347,6 +389,7 @@ msgstr "Type van het vervagingseffect"
 #. 6.0->settings-schema.json->expo-blurType->tooltip
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->desktop-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr "Welk type algoritme wordt gebruikt om de achtergrond te vervagen."
 
@@ -370,7 +413,7 @@ msgstr ""
 #. 6.0->settings-schema.json->overview-saturation->description
 #. 6.0->settings-schema.json->expo-saturation->description
 #. 6.0->settings-schema.json->panels-saturation->description
-#. 6.0->settings-schema.json->popup-saturation->description
+#. 6.0->settings-schema.json->desktop-saturation->description
 msgid "Background color saturation"
 msgstr "Achtergrondkleurverzadiging"
 
@@ -379,21 +422,25 @@ msgstr "Achtergrondkleurverzadiging"
 #. 6.0->settings-schema.json->expo-saturation->tooltip
 #. 6.0->settings-schema.json->panels-saturation->tooltip
 #. 6.0->settings-schema.json->popup-saturation->tooltip
+#. 6.0->settings-schema.json->desktop-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
 msgstr "Past de kleurverzadiging van de achtergrondafbeelding aan."
 
 #. 6.0->settings-schema.json->panels-blendColor->description
 #. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
 msgid "Dimming ovrerlay color"
 msgstr "Verduisteringslaag kleur"
 
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description
+#. 6.0->settings-schema.json->desktop-radius->description
 msgid "Blur intensity (Gaussian only)"
 msgstr "Vervagingsintensiteit (alleen Gaussiaans)"
 
 #. 6.0->settings-schema.json->panels-radius->tooltip
 #. 6.0->settings-schema.json->popup-radius->tooltip
+#. 6.0->settings-schema.json->desktop-radius->tooltip
 msgid ""
 "Adjusts the intensity of the Gaussian blur effect by changing the radius use "
 "by the effect. This setting does not effect the Simple blur type"
@@ -408,10 +455,40 @@ msgstr "Extra verduistering van pop-upmenu-accentelementen (percentage)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements "
-"(i.e. the main menu favorites box and entry boxes) which allow these "
-"elements to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
 msgstr ""
 "Bepaalt de extra verduistering die wordt toegepast op accentelementen in pop-"
 "upmenu’s, zoals het favorietenveld en invoervelden in het hoofdmenu, zodat "
 "deze elementen opvallen ten opzichte van andere delen van het pop-upmenu."
+
+#. 6.0->settings-schema.json->popup-saturation->description
+#, fuzzy
+msgid "Background image color saturation"
+msgstr "Achtergrondkleurverzadiging"
+
+#. 6.0->settings-schema.json->desktop-without-focus->description
+msgid "Only apply effect settings if the desktop is not in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-without-focus->tooltip
+msgid ""
+"When enabled, the desktop background image effects will only apply when the "
+"desktop is not in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-with-focus->description
+msgid "Apply the generic effect settings when the desktop is in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-with-focus->tooltip
+msgid ""
+"When enabled, the generic effect settings (on the General tab) will apply to "
+"the desktop background image when the desktop is in focus"
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-opacity->description
+#, fuzzy
+msgid "Dim background Image (percentage)"
+msgstr "Verduistering/Inkleuring van de achtergrond (percentage)"
