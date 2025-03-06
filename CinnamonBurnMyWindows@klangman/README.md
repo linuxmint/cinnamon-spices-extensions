@@ -93,4 +93,4 @@ https://github.com/Schneegans/Burn-My-Windows
 
 The Magic Lamp Effect is based on code by hermes83
 
-https://github.com/hermes83/compiz-alike-magic-lamp-effect"
+https://github.com/hermes83/compiz-alike-magic-lamp-effect
