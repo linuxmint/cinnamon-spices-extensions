@@ -1,0 +1,970 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-03-06 10:34-0500\n"
+"PO-Revision-Date: 2025-02-21 10:10+0100\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. 6.2/extension.js:190 6.2/extension.js:266 6.2/extension.js:572
+msgid "Error"
+msgstr "Fout"
+
+#. 6.2/extension.js:190
+msgid "was NOT enabled"
+msgstr "was NIET ingeschakeld"
+
+#. 6.2/extension.js:191 6.2/extension.js:267
+msgid "The existing extension"
+msgstr "De bestaande extensie"
+
+#. 6.2/extension.js:191
+msgid "conflicts with this extension."
+msgstr "conflicteert met deze extensie."
+
+#. 6.2/extension.js:266
+msgid "minimize/unminimize effects can not be enabled"
+msgstr ""
+
+#. 6.2/extension.js:267
+msgid "already handles minimize/unminimize animation events."
+msgstr ""
+
+#. 6.2/extension.js:573
+#, fuzzy
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore application specific effects can not be applied to "
+"that window"
+msgstr ""
+"Het eerder gefocuste venster wordt niet ondersteund door een toepassing en "
+"daarom kunnen toepassing-specifieke effecten niet op dat venster worden "
+"toegepast"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Apparition.js:94
+msgid "Apparition"
+msgstr "Verschijning"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/AuraGlow.js:103
+msgid "Aura Glow"
+msgstr ""
+
+#. effects/BrokenGlass.js:152
+msgid "Broken Glass"
+msgstr "Gebroken Glas"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Doom.js:101
+msgid "Doom"
+msgstr "Doom"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/EnergizeA.js:90
+msgid "Energize A"
+msgstr "Energize A"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/EnergizeB.js:92
+msgid "Energize B"
+msgstr "Energize B"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Fire.js:122
+msgid "Fire"
+msgstr "Vuur"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:175
+msgid "Default Fire"
+msgstr "Standaard Vuur"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:185
+msgid "Hell Fire"
+msgstr "Hel Vuur"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:195
+msgid "Dark and Smutty"
+msgstr "Donker en Smerig"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:205
+msgid "Cold Breeze"
+msgstr "Koude Bries"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:215
+msgid "Santa is Coming"
+msgstr "Kerstman komt eraan"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Focus.js:91
+msgid "Focus"
+msgstr "Focus"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Glide.js:93
+msgid "Glide"
+msgstr "Glijden"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Glitch.js:97
+msgid "Glitch"
+msgstr "Storing"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Hexagon.js:106
+msgid "Hexagon"
+msgstr "Zeshoek"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Incinerate.js:144
+msgid "Incinerate"
+msgstr "Verbranden"
+
+#. effects/Matrix.js:124
+msgid "Matrix"
+msgstr "Matrix"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Mushroom.js:154
+msgid "Mushroom"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:227
+msgid "8Bit Plumber"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:244
+msgid "New Bros 2"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:262
+msgid "The True North"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:280
+msgid "Red White and Blue"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:297
+msgid "Rainbow"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:314
+msgid "Cattuccino"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:332
+msgid "Dracula"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:349
+msgid "Sparkle"
+msgstr ""
+
+#. effects/PaintBrush.js:114
+msgid "Paint Brush"
+msgstr "Verfkwast"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/PixelWheel.js:88
+msgid "Pixel Wheel"
+msgstr "Pixelwiel"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/PixelWipe.js:114
+msgid "Pixel Wipe"
+msgstr "Pixel Veeg"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Pixelate.js:88
+msgid "Pixelate"
+msgstr "Pixeleren"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Portal.js:99
+msgid "Portal"
+msgstr "Portaal"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/RGBWarp.js:91
+msgid "RGB Warp"
+msgstr ""
+
+#. effects/SnapOfDisintegration.js:124
+msgid "Snap of Disintegration"
+msgstr "Knip van Desintegratie"
+
+#. effects/TRexAttack.js:121
+msgid "T-Rex Attack"
+msgstr "T-Rex Aanval"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/TVEffect.js:90
+msgid "TV Effect"
+msgstr "TV Effect"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/TVGlitch.js:99
+msgid "TV Glitch"
+msgstr "TV Storing"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/TeamRocket.js:103
+msgid "Team Rocket"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Wisps.js:101
+msgid "Wisps"
+msgstr "Slierten"
+
+#. metadata.json->name
+msgid "Burn My Windows"
+msgstr "Verbrand Mijn Vensters"
+
+#. metadata.json->description
+#, fuzzy
+msgid ""
+"Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
+"Gnome extension by Schneegans"
+msgstr ""
+"Venster open/sluit effecten gebaseerd op de Burn-My-Windows Gnome-extensie "
+"van Schneegans"
+
+#. 6.2->settings-schema.json->general-page->title
+msgid "General"
+msgstr "Algemeen"
+
+#. 6.2->settings-schema.json->effects-page->title
+msgid "Effect Settings"
+msgstr "Effectinstellingen"
+
+#. 6.2->settings-schema.json->application-page->title
+#, fuzzy
+msgid "Application Specifics"
+msgstr "Toepassingsspecifieke Regels"
+
+#. 6.2->settings-schema.json->random-page->title
+msgid "Random Effects"
+msgstr "Willekeurige Effecten"
+
+#. 6.2->settings-schema.json->about-page->title
+msgid "About"
+msgstr ""
+
+#. 6.2->settings-schema.json->general-settings->title
+msgid "Burn My Windows General Settings"
+msgstr "Verbrand Mijn Vensters Algemene Instellingen"
+
+#. 6.2->settings-schema.json->app-specific-settings->title
+msgid "Application Specific Settings"
+msgstr "Toepassingsspecifieke Instellingen"
+
+#. 6.2->settings-schema.json->effect-selector-section->title
+msgid "Effect Selector"
+msgstr "Effect Selector"
+
+#. 6.2->settings-schema.json->effect-settings->title
+msgid "Effect Specific Settings"
+msgstr "Effect Specifieke Instellingen"
+
+#. 6.2->settings-schema.json->fire-custom-section->title
+#. 6.2->settings-schema.json->mushroom-custom-section->title
+msgid "Setting for the custom preset:"
+msgstr ""
+
+#. 6.2->settings-schema.json->random-section->title
+msgid "Effects included in the randomized sets:"
+msgstr "Effecten opgenomen in de willekeurige sets:"
+
+#. 6.2->settings-schema.json->about-section->title
+msgid "About Cinnamon Burn-My-Windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->about-text->description
+msgid ""
+"Ported to Cinnamon by Kevin Langman\n"
+"Github: https://github.com/klangman/CinnamonBurnMyWindows\n"
+"\n"
+"Based on the Burn-My-Windows code by Schneegans and contributors\n"
+"Github: https://github.com/Schneegans/Burn-My-Windows\n"
+"\n"
+"The Magic Lamp Effect is ported from code by hermes83\n"
+"GitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->description
+msgid "Application Specific Rules"
+msgstr "Toepassingsspecifieke Regels"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Open"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Close"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Minimize"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Unminimize"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Application"
+msgstr "Toepassing"
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
+msgstr ""
+"Een lijst van toepassingen met speciale effectregels. Deze toepassing can "
+"een bureaubladbestandsnaam zijn of een WM_CLASS naam"
+
+#. 6.2->settings-schema.json->app-rules-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+"Voeg een vermelding toe voor de toepassing van het laatst gefocuste venster"
+
+#. 6.2->settings-schema.json->app-rules-button->tooltip
+msgid ""
+"Focus a window you want to enable application specific setting for then "
+"return here and press this button."
+msgstr ""
+"Focus een venster waarvoor je toepassingsspecifieke instellingen wilt "
+"inschakelen en keer dan hier terug en druk op deze knop."
+
+#. 6.2->settings-schema.json->random-include->description
+#, fuzzy
+msgid "Effects included in the randomized sets"
+msgstr "Effecten opgenomen in de willekeurige sets:"
+
+#. 6.2->settings-schema.json->random-include->tooltip
+msgid ""
+"Defines which effects are included in the randomized sets for each window "
+"event type. When 'Randomized' is selected for any event on the General tab "
+"these sets are used."
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "Effect Name         "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Open        "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Close       "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "     Minimize     "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "    Unminimize    "
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+msgid "Magic Lamp"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->description
+msgid "Show settings for effect:"
+msgstr "Toon instellingen voor effect:"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+msgid "Randomized"
+msgstr "Willekeurig"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+msgid "None"
+msgstr "Geen"
+
+#. 6.2->settings-schema.json->open-window-effect->description
+msgid "Open window effect"
+msgstr "Open venster effect"
+
+#. 6.2->settings-schema.json->close-window-effect->description
+msgid "Close window effect"
+msgstr "Sluit venster effect"
+
+#. 6.2->settings-schema.json->dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr "Speciale behandeling voor dialoogvensters"
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+"Hiermee kun je speciale instellingen definiëren voor het behandelen van "
+"dialoogvenstertypen (bijv. bestandsopeningsvensters). Deze instellingen "
+"overschrijven eventuele toepassingsspecifieke instellingen die zijn "
+"gedefinieerd.  "
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+msgid "Open dialog window effect"
+msgstr "Open dialoogvenster effect"
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+msgid "Close dialog window effect"
+msgstr "Sluit dialoogvenster effect"
+
+#. 6.2->settings-schema.json->minimize-effect->description
+#, fuzzy
+msgid "Minimize window effect"
+msgstr "Open venster effect"
+
+#. 6.2->settings-schema.json->unminimize-effect->description
+#, fuzzy
+msgid "Unminimize window effect"
+msgstr "Open venster effect"
+
+#. 6.2->settings-schema.json->apparition-shake-intensity->description
+msgid "Shake Intensity"
+msgstr "Schud Intensiteit"
+
+#. 6.2->settings-schema.json->apparition-twirl-intensity->description
+msgid "Twirl Intensity"
+msgstr "Draaien Intensiteit"
+
+#. 6.2->settings-schema.json->apparition-suction-intensity->description
+msgid "Suction Intensity"
+msgstr "Zuiging Intensiteit"
+
+#. 6.2->settings-schema.json->apparition-randomness->description
+msgid "Randomness"
+msgstr "Willekeurigheid"
+
+#. 6.2->settings-schema.json->apparition-animation-time->description
+#. 6.2->settings-schema.json->aura-glow-animation-time->description
+#. 6.2->settings-schema.json->doom-animation-time->description
+#. 6.2->settings-schema.json->energize-a-animation-time->description
+#. 6.2->settings-schema.json->energize-b-animation-time->description
+#. 6.2->settings-schema.json->fire-animation-time->description
+#. 6.2->settings-schema.json->focus-animation-time->description
+#. 6.2->settings-schema.json->glide-animation-time->description
+#. 6.2->settings-schema.json->glitch-animation-time->description
+#. 6.2->settings-schema.json->hexagon-animation-time->description
+#. 6.2->settings-schema.json->incinerate-animation-time->description
+#. 6.2->settings-schema.json->magiclamp-animation-time->description
+#. 6.2->settings-schema.json->mushroom-animation-time->description
+#. 6.2->settings-schema.json->pixelate-animation-time->description
+#. 6.2->settings-schema.json->pixel-wheel-animation-time->description
+#. 6.2->settings-schema.json->pixel-wipe-animation-time->description
+#. 6.2->settings-schema.json->portal-animation-time->description
+#. 6.2->settings-schema.json->rgbwarp-animation-time->description
+#. 6.2->settings-schema.json->team-rocket-animation-time->description
+#. 6.2->settings-schema.json->tv-animation-time->description
+#. 6.2->settings-schema.json->tv-glitch-animation-time->description
+#. 6.2->settings-schema.json->wisps-animation-time->description
+msgid "Effect Duration (milliseconds)"
+msgstr "Effect Duur (milliseconden)"
+
+#. 6.2->settings-schema.json->aura-glow-random-color->description
+#, fuzzy
+msgid "Random Color"
+msgstr "Lijn Kleur"
+
+#. 6.2->settings-schema.json->aura-glow-start-hue->description
+msgid "Start Hue"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-speed->description
+#. 6.2->settings-schema.json->glitch-speed->description
+#. 6.2->settings-schema.json->tv-glitch-speed->description
+msgid "Speed"
+msgstr "Snelheid"
+
+#. 6.2->settings-schema.json->aura-glow-saturation->description
+#, fuzzy
+msgid "Saturation"
+msgstr "Verschijning"
+
+#. 6.2->settings-schema.json->aura-glow-edge-size->description
+#, fuzzy
+msgid "Edge Size"
+msgstr "Pixel Grootte"
+
+#. 6.2->settings-schema.json->aura-glow-edge-hardness->description
+msgid "Edge Hardness"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-blur->description
+#. 6.2->settings-schema.json->focus-blur-amount->description
+msgid "Blur Amount"
+msgstr "Vervaginghoeveelheid"
+
+#. 6.2->settings-schema.json->doom-horizontal-scale->description
+msgid "Horizontal Scale"
+msgstr "Horizontale Schaal"
+
+#. 6.2->settings-schema.json->doom-vertical-scale->description
+msgid "Vertical Scale"
+msgstr "Verticale Schaal"
+
+#. 6.2->settings-schema.json->doom-pixel-size->description
+#. 6.2->settings-schema.json->pixelate-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wheel-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wipe-pixel-size->description
+msgid "Pixel Size"
+msgstr "Pixel Grootte"
+
+#. 6.2->settings-schema.json->energize-a-scale->description
+#. 6.2->settings-schema.json->energize-b-scale->description
+#. 6.2->settings-schema.json->fire-custom-scale->description
+#. 6.2->settings-schema.json->glide-scale->description
+#. 6.2->settings-schema.json->glitch-scale->description
+#. 6.2->settings-schema.json->hexagon-scale->description
+#. 6.2->settings-schema.json->incinerate-scale->description
+#. 6.2->settings-schema.json->tv-glitch-scale->description
+#. 6.2->settings-schema.json->wisps-scale->description
+msgid "Scale"
+msgstr "Schaal"
+
+#. 6.2->settings-schema.json->energize-a-color->description
+#. 6.2->settings-schema.json->energize-b-color->description
+#. 6.2->settings-schema.json->glitch-color->description
+#. 6.2->settings-schema.json->incinerate-color->description
+#. 6.2->settings-schema.json->portal-color->description
+#. 6.2->settings-schema.json->tv-effect-color->description
+#. 6.2->settings-schema.json->tv-glitch-color->description
+msgid "Color"
+msgstr "Kleur"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. 6.2->settings-schema.json->mushroom-presets->options
+msgid "Custom"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-presets->description
+msgid "Fire preset"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-custom-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr "Vuur bewegingssnelheid"
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr "Vuur 3D-ruis"
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Creëert een dynamischer vuur, maar vereist meer GPU-kracht."
+
+#. 6.2->settings-schema.json->fire-colors->description
+#, fuzzy
+msgid "Colors 1-5"
+msgstr "Kleur #1"
+
+#. 6.2->settings-schema.json->focus-blur-quality->description
+msgid "Blur Quality"
+msgstr "Vervagingskwaliteit"
+
+#. 6.2->settings-schema.json->focus-blur-quality->tooltip
+msgid ""
+"The Quality of the Blur (Setting this too high may increase GPU load and "
+"affect performance)"
+msgstr ""
+"De kwaliteit van de vervaging (Dit te hoog instellen kan de GPU-belasting "
+"verhogen en de prestaties beïnvloeden)"
+
+#. 6.2->settings-schema.json->glide-squish->description
+msgid "Squish"
+msgstr "Pletten"
+
+#. 6.2->settings-schema.json->glide-tilt->description
+msgid "Tilt"
+msgstr "Kantelen"
+
+#. 6.2->settings-schema.json->glide-shift->description
+msgid "Shift"
+msgstr "Verschuiven"
+
+#. 6.2->settings-schema.json->glitch-strength->description
+#. 6.2->settings-schema.json->tv-glitch-strength->description
+msgid "Strength"
+msgstr "Sterkte"
+
+#. 6.2->settings-schema.json->hexagon-line-width->description
+msgid "Mesh Line Width"
+msgstr "Rooster Lijn Breedte"
+
+#. 6.2->settings-schema.json->hexagon-line-color->description
+msgid "Line Color"
+msgstr "Lijn Kleur"
+
+#. 6.2->settings-schema.json->hexagon-glow-color->description
+msgid "Glow Color"
+msgstr "Gloed Kleur"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->description
+msgid "Additive Blending"
+msgstr "Additieve Menging"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->tooltip
+msgid "You may want to enable this for dark window themes."
+msgstr "Je wilt dit mogelijk inschakelen voor donkere vensterthema's."
+
+#. 6.2->settings-schema.json->incinerate-turbulence->description
+msgid "Turbulence"
+msgstr "Turbulentie"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->description
+msgid "Start at Pointer"
+msgstr "Begin bij Cursor"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->tooltip
+msgid "If disabled, a random location will be chosen."
+msgstr "Indien uitgeschakeld wordt een willekeurige locatie gekozen."
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+#, fuzzy
+msgid "default"
+msgstr "Standaard Vuur"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "sine"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+#, fuzzy
+msgid "random"
+msgstr "Willekeurig"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->description
+#, fuzzy
+msgid "The type of effect"
+msgstr "Open venster effect"
+
+#. 6.2->settings-schema.json->magiclamp-effect->tooltip
+msgid ""
+"Using 'default' will result in a curved effect where using 'sine' will "
+"result in a more wavy effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->description
+msgid "X Tiles"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->description
+msgid "Y Tiles"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->description
+msgid "Mushroom preset"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-scale-style->description
+#, fuzzy
+msgid "Scale Style"
+msgstr "Schaal"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-count->description
+#, fuzzy
+msgid "Spark Count"
+msgstr "Spaak Aantal"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-color->description
+#, fuzzy
+msgid "Spark Color"
+msgstr "Kleur"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
+msgid "Spark Rotation"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-rays-color->description
+#, fuzzy
+msgid "Rays Color"
+msgstr "Kleur"
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-count->description
+#, fuzzy
+msgid "Star Rings Count"
+msgstr "Kerstman komt eraan"
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
+msgid "Star Ring Rotation"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-star-count->description
+msgid "Stars Count Per Ring"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-star-colors->description
+#, fuzzy
+msgid "Colors 1-6"
+msgstr "Kleur #1"
+
+#. 6.2->settings-schema.json->pixelate-noise->description
+msgid "Noise"
+msgstr "Ruis"
+
+#. 6.2->settings-schema.json->pixel-wheel-spoke-count->description
+msgid "Spoke Count"
+msgstr "Spaak Aantal"
+
+#. 6.2->settings-schema.json->portal-rotation-speed->description
+msgid "Rotation Speed"
+msgstr "Rotatie Snelheid"
+
+#. 6.2->settings-schema.json->portal-whirling->description
+msgid "Whirling"
+msgstr "Draaien"
+
+#. 6.2->settings-schema.json->portal-details->description
+msgid "Details"
+msgstr "Details"
+
+#. 6.2->settings-schema.json->rgbwarp-brightness->description
+msgid "Brightness"
+msgstr ""
+
+#. 6.2->settings-schema.json->rgbwarp-speed-r->description
+#, fuzzy
+msgid "Red Speed"
+msgstr "Snelheid"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-g->description
+#, fuzzy
+msgid "Green Speed"
+msgstr "Vuur bewegingssnelheid"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-b->description
+#, fuzzy
+msgid "Blue Speed"
+msgstr "Snelheid"
+
+#. 6.2->settings-schema.json->team-rocket-animation-split->description
+msgid "Animation Split"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
+#. position->description
+#, fuzzy
+msgid "Horizontal Sparkle Position"
+msgstr "Horizontale Schaal"
+
+#. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
+#. position->description
+#, fuzzy
+msgid "Vertical Sparkle Position"
+msgstr "Verticale Schaal"
+
+#. 6.2->settings-schema.json->team-rocket-window-rotation->description
+msgid "Rotate Window"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
+msgid "Sparkle Rotation"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-size->description
+msgid "Sparkle Size"
+msgstr ""
+
+#. 6.2->settings-schema.json->wisps-color-1->description
+msgid "Color #1"
+msgstr "Kleur #1"
+
+#. 6.2->settings-schema.json->wisps-color-2->description
+msgid "Color #2"
+msgstr "Kleur #2"
+
+#. 6.2->settings-schema.json->wisps-color-3->description
+msgid "Color #3"
+msgstr "Kleur #3"

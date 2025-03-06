@@ -1,0 +1,416 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.5\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-03-06 10:34-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. 6.2/extension.js:266
+msgid "minimize/unminimize effects can not be enabled"
+msgstr ""
+
+#. 6.2/extension.js:267
+msgid "already handles minimize/unminimize animation events."
+msgstr ""
+
+#. 6.2/extension.js:573
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore application specific effects can not be applied to "
+"that window"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/AuraGlow.js:103
+msgid "Aura Glow"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/Mushroom.js:154
+msgid "Mushroom"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:227
+msgid "8Bit Plumber"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:244
+msgid "New Bros 2"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:262
+msgid "The True North"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:280
+msgid "Red White and Blue"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:297
+msgid "Rainbow"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:314
+msgid "Cattuccino"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:332
+msgid "Dracula"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:349
+msgid "Sparkle"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/RGBWarp.js:91
+msgid "RGB Warp"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. effects/TeamRocket.js:103
+msgid "Team Rocket"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
+"Gnome extension by Schneegans"
+msgstr ""
+
+#. 6.2->settings-schema.json->application-page->title
+msgid "Application Specifics"
+msgstr ""
+
+#. 6.2->settings-schema.json->about-page->title
+msgid "About"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-custom-section->title
+#. 6.2->settings-schema.json->mushroom-custom-section->title
+msgid "Setting for the custom preset:"
+msgstr ""
+
+#. 6.2->settings-schema.json->about-section->title
+msgid "About Cinnamon Burn-My-Windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->about-text->description
+msgid ""
+"Ported to Cinnamon by Kevin Langman\n"
+"Github: https://github.com/klangman/CinnamonBurnMyWindows\n"
+"\n"
+"Based on the Burn-My-Windows code by Schneegans and contributors\n"
+"Github: https://github.com/Schneegans/Burn-My-Windows\n"
+"\n"
+"The Magic Lamp Effect is ported from code by hermes83\n"
+"GitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Open"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Close"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Minimize"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Unminimize"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->description
+msgid "Effects included in the randomized sets"
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->tooltip
+msgid ""
+"Defines which effects are included in the randomized sets for each window "
+"event type. When 'Randomized' is selected for any event on the General tab "
+"these sets are used."
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "Effect Name         "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Open        "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Close       "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "     Minimize     "
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "    Unminimize    "
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+msgid "Magic Lamp"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+msgid "Open dialog window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+msgid "Close dialog window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->minimize-effect->description
+msgid "Minimize window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->unminimize-effect->description
+msgid "Unminimize window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-random-color->description
+msgid "Random Color"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-start-hue->description
+msgid "Start Hue"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-saturation->description
+msgid "Saturation"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-edge-size->description
+msgid "Edge Size"
+msgstr ""
+
+#. 6.2->settings-schema.json->aura-glow-edge-hardness->description
+msgid "Edge Hardness"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. 6.2->settings-schema.json->mushroom-presets->options
+msgid "Custom"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-presets->description
+msgid "Fire preset"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-custom-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-colors->description
+msgid "Colors 1-5"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "default"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "sine"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "random"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->description
+msgid "The type of effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-effect->tooltip
+msgid ""
+"Using 'default' will result in a curved effect where using 'sine' will "
+"result in a more wavy effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->description
+msgid "X Tiles"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->description
+msgid "Y Tiles"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->description
+msgid "Mushroom preset"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-scale-style->description
+msgid "Scale Style"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-count->description
+msgid "Spark Count"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-color->description
+msgid "Spark Color"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
+msgid "Spark Rotation"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-rays-color->description
+msgid "Rays Color"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-count->description
+msgid "Star Rings Count"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
+msgid "Star Ring Rotation"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-custom-star-count->description
+msgid "Stars Count Per Ring"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-star-colors->description
+msgid "Colors 1-6"
+msgstr ""
+
+#. 6.2->settings-schema.json->rgbwarp-brightness->description
+msgid "Brightness"
+msgstr ""
+
+#. 6.2->settings-schema.json->rgbwarp-speed-r->description
+msgid "Red Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->rgbwarp-speed-g->description
+msgid "Green Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->rgbwarp-speed-b->description
+msgid "Blue Speed"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-animation-split->description
+msgid "Animation Split"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
+#. position->description
+msgid "Horizontal Sparkle Position"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
+#. position->description
+msgid "Vertical Sparkle Position"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-window-rotation->description
+msgid "Rotate Window"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
+msgid "Sparkle Rotation"
+msgstr ""
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-size->description
+msgid "Sparkle Size"
+msgstr ""
