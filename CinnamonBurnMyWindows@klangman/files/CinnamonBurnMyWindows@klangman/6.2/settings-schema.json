@@ -1,28 +1,38 @@
 {
   "layout" : {
     "type" : "layout",
-    "pages" : ["general-page", "effects-page", "random-page"],
+    "pages" : ["general-page", "effects-page", "application-page", "random-page", "about-page"],
 
     "general-page" : {
       "type" : "page",
       "title" : "General",
-      "sections" : ["general-settings", "app-specific-settings"]
+      "sections" : ["general-settings"]
     },
     "effects-page" : {
       "type" : "page",
       "title" : "Effect Settings",
-      "sections" : ["effect-selector-section", "effect-settings"]
+      "sections" : ["effect-selector-section", "effect-settings", "mushroom-custom-section", "fire-custom-section"]
+    },
+    "application-page": {
+      "type" : "page",
+      "title" : "Application Specifics",
+      "sections" : ["app-specific-settings"]
     },
     "random-page" : {
       "type" : "page",
       "title" : "Random Effects",
       "sections" : ["random-section"]
     },
+    "about-page" : {
+      "type" : "page",
+      "title" : "About",
+      "sections" : ["about-section"]
+    },
 
     "general-settings" : {
       "type" : "section",
       "title" : "Burn My Windows General Settings",
-      "keys" : ["open-window-effect", "close-window-effect", "dialog-special", "dialog-open-effect", "dialog-close-effect"]
+      "keys" : ["open-window-effect", "close-window-effect", "minimize-effect", "unminimize-effect", "dialog-special", "dialog-open-effect", "dialog-close-effect"]
     },
 
     "app-specific-settings" : {
@@ -40,28 +50,55 @@
       "type" : "section",
       "title" : "Effect Specific Settings",
       "keys" : ["apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time",
+                "aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time",
                 "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time",
                 "energize-a-scale", "energize-a-color", "energize-a-animation-time",
                 "energize-b-scale", "energize-b-color", "energize-b-animation-time",
-                "fire-scale", "fire-movement-speed", "fire-3d-noise", "fire-color-1", "fire-color-2", "fire-color-3", "fire-color-4", "fire-color-5", "fire-animation-time",
+                "fire-presets", "fire-3d-noise", "fire-animation-time",
                 "focus-blur-amount", "focus-blur-quality", "focus-animation-time",
                 "glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time",
                 "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time",
                 "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time",
                 "incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time",
+                "magiclamp-effect", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time",
+                "mushroom-presets", "mushroom-animation-time",
                 "pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time",
                 "pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time",
                 "pixel-wipe-pixel-size", "pixel-wipe-animation-time",
                 "portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time",
+                "rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time",
+                "team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time",
                 "tv-effect-color", "tv-animation-time",
                 "tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time",
                 "wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time"]
     },
+    "fire-custom-section" : {
+     "type" : "section",
+     "title" : "Setting for the custom preset:",
+     "keys" : ["fire-custom-scale", "fire-custom-movement-speed", "fire-colors"],
+     "dependency" : "effect-selector=5"
+    },
+    "mushroom-custom-section" : {
+     "type" : "section",
+     "title" : "Setting for the custom preset:",
+     "keys" : ["mushroom-custom-scale-style", "mushroom-custom-spark-count", "mushroom-custom-spark-color", "mushroom-custom-spark-rotation", "mushroom-custom-rays-color", "mushroom-custom-ring-count", "mushroom-custom-ring-rotation", "mushroom-custom-star-count", "mushroom-star-colors"],
+     "dependency" : "effect-selector=25"
+    },
     "random-section" : {
       "type" : "section",
       "title" : "Effects included in the randomized sets:",
-      "keys" : ["random-title", "apparition-random-include", "doom-random-include", "energize-a-random-include", "energize-b-random-include", "fire-random-include", "focus-random-include", "glide-random-include", "glitch-random-include", "hexagon-random-include", "incinerate-random-include", "pixelate-random-include", "pixel-wheel-random-include", "pixel-wipe-random-include", "portal-random-include", "tv-effect-random-include", "tv-glitch-random-include", "wisps-random-include"]
+      "keys" : ["random-include"]
+    },
+    "about-section" : {
+      "type" : "section",
+      "title" : "About Cinnamon Burn-My-Windows",
+      "keys" : ["about-text"]
     }
+  },
+
+  "about-text": {
+     "type" : "label",
+     "description" : "Ported to Cinnamon by Kevin Langman\nGithub: https://github.com/klangman/CinnamonBurnMyWindows\n\nBased on the Burn-My-Windows code by Schneegans and contributors\nGithub: https://github.com/Schneegans/Burn-My-Windows\n\nThe Magic Lamp Effect is ported from code by hermes83\nGitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
   },
 
   "app-rules": {
@@ -69,8 +106,9 @@
     "description" : "Application Specific Rules",
     "columns" : [
         {"id": "enabled",     "title": "Enabled",      "type": "boolean", "default": true},
-        {"id": "open",        "title": "Open Effect",  "type": "integer", "default": 0, "options": {
+        {"id": "open",        "title": "Open",  "type": "integer", "default": 0, "options": {
             "Apparition": 0,
+            "Aura Glow": 22,
             "Doom": 2,
             "Energize A": 3,
             "Energize B": 4,
@@ -80,10 +118,14 @@
             "Glitch": 7,
             "Hexagon": 8,
             "Incinerate": 9,
+            "Magic Lamp": 26,
+            "Mushroom": 25,
             "Pixelate": 12,
             "Pixel Wheel": 13,
             "Pixel Wipe": 14,
             "Portal": 15,
+            "RGB Warp": 24,
+            "Team Rocket": 23,
             "TV Effect": 18,
             "TV Glitch": 19,
             "Wisps": 20,
@@ -91,8 +133,9 @@
             "None": 1000
            }
         },
-        {"id": "close",       "title": "Close Effect", "type": "integer", "default": 0, "options": {
+        {"id": "close",       "title": "Close", "type": "integer", "default": 0, "options": {
             "Apparition": 0,
+            "Aura Glow": 22,
             "Doom": 2,
             "Energize A": 3,
             "Energize B": 4,
@@ -102,10 +145,68 @@
             "Glitch": 7,
             "Hexagon": 8,
             "Incinerate": 9,
+            "Magic Lamp": 26,
+            "Mushroom": 25,
             "Pixelate": 12,
             "Pixel Wheel": 13,
             "Pixel Wipe": 14,
             "Portal": 15,
+            "RGB Warp": 24,
+            "Team Rocket": 23,
+            "TV Effect": 18,
+            "TV Glitch": 19,
+            "Wisps": 20,
+            "Randomized": 999,
+            "None": 1000
+           }
+        },
+        {"id": "minimize",       "title": "Minimize", "type": "integer", "default": 1000, "options": {
+            "Apparition": 0,
+            "Aura Glow": 22,
+            "Doom": 2,
+            "Energize A": 3,
+            "Energize B": 4,
+            "Fire": 5,
+            "Focus": 21,
+            "Glide": 6,
+            "Glitch": 7,
+            "Hexagon": 8,
+            "Incinerate": 9,
+            "Magic Lamp": 26,
+            "Mushroom": 25,
+            "Pixelate": 12,
+            "Pixel Wheel": 13,
+            "Pixel Wipe": 14,
+            "Portal": 15,
+            "RGB Warp": 24,
+            "Team Rocket": 23,
+            "TV Effect": 18,
+            "TV Glitch": 19,
+            "Wisps": 20,
+            "Randomized": 999,
+            "None": 1000
+           }
+        },
+        {"id": "unminimize",       "title": "Unminimize", "type": "integer", "default": 1000, "options": {
+            "Apparition": 0,
+            "Aura Glow": 22,
+            "Doom": 2,
+            "Energize A": 3,
+            "Energize B": 4,
+            "Fire": 5,
+            "Focus": 21,
+            "Glide": 6,
+            "Glitch": 7,
+            "Hexagon": 8,
+            "Incinerate": 9,
+            "Magic Lamp": 26,
+            "Mushroom": 25,
+            "Pixelate": 12,
+            "Pixel Wheel": 13,
+            "Pixel Wipe": 14,
+            "Portal": 15,
+            "RGB Warp": 24,
+            "Team Rocket": 23,
             "TV Effect": 18,
             "TV Glitch": 19,
             "Wisps": 20,
@@ -119,11 +220,15 @@
     "default": [ { "enabled": true,
                    "open": 1000,
                    "close": 1000,
+                   "minimize": 1000,
+                   "unminimize": 1000,
                    "application": "VirtualBox"
                  },
                  { "enabled": true,
                    "open": 1000,
                    "close": 1000,
+                   "minimize": 1000,
+                   "unminimize": 1000,
                    "application": "VirtualBoxVM"
                  }
                ]
@@ -135,193 +240,48 @@
     "tooltip" : "Focus a window you want to enable application specific setting for then return here and press this button."
   },
 
-  "random-title" : {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsTitleWidget",
-    "description" : "Effect",
-    "titleA" : "Open",
-    "titleB" : "Close"
+  "random-include" : {
+    "type" : "list",
+    "description" : "Effects included in the randomized sets",
+    "tooltip": "Defines which effects are included in the randomized sets for each window event type. When 'Randomized' is selected for any event on the General tab these sets are used.",
+    "show-buttons" : false,
+    "height" : 450,
+    "columns" : [
+        {"id": "name",       "title": "Effect Name         ", "type": "string",  "default": ""},
+        {"id": "open",       "title": "      Open        ", "type": "boolean", "default": true},
+        {"id": "close",      "title": "      Close       ", "type": "boolean", "default": true},
+        {"id": "minimize",   "title": "     Minimize     ", "type": "boolean", "default": true},
+        {"id": "unminimize", "title": "    Unminimize    ", "type": "boolean", "default": true}
+        ],
+    "default": [
+        { "name": "Apparition",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Aura Glow",   "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Doom",        "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Energize A",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Energize B",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Fire",        "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Focus",       "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Glide",       "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Glitch",      "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Hexagon",     "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Incinerate",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Pixelate",    "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Pixel Wheel", "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Pixel Wipe",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Portal",      "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Team Rocket", "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "TV Effect",   "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "TV Glitch",   "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Wisps",       "open": true, "close": true, "minimize": true, "unminimize": true }
+        ]
   },
-
-  "apparition-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Apparition",
-    "open" : "apparition-random-include-open",
-    "close" : "apparition-random-include-close"
-  },
-  "doom-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Doom",
-    "open" : "doom-random-include-open",
-    "close" : "doom-random-include-close"
-  },
-  "energize-a-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Energize A",
-    "open" : "energize-a-random-include-open",
-    "close" : "energize-a-random-include-close"
-  },
-  "energize-b-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Energize B",
-    "open" : "energize-b-random-include-open",
-    "close" : "energize-b-random-include-close"
-  },
-  "fire-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Fire",
-    "open" : "fire-random-include-open",
-    "close" : "fire-random-include-close"
-  },
-  "focus-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Focus",
-    "open" : "focus-random-include-open",
-    "close" : "focus-random-include-close"
-  },
-  "glide-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Glide",
-    "open" : "glide-random-include-open",
-    "close" : "glide-random-include-close"
-  },
-  "glitch-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Glitch",
-    "open" : "glitch-random-include-open",
-    "close" : "glitch-random-include-close"
-  },
-  "hexagon-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Hexagon",
-    "open" : "hexagon-random-include-open",
-    "close" : "hexagon-random-include-close"
-  },
-  "incinerate-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Incinerate",
-    "open" : "incinerate-random-include-open",
-    "close" : "incinerate-random-include-close"
-  },
-  "pixelate-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Pixelate",
-    "open" : "pixelate-random-include-open",
-    "close" : "pixelate-random-include-close"
-  },
-  "pixel-wheel-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Pixel Wheel",
-    "open" : "pixel-wheel-random-include-open",
-    "close" : "pixel-wheel-random-include-close"
-  },
-  "pixel-wipe-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Pixel Wipe",
-    "open" : "pixel-wipe-random-include-open",
-    "close" : "pixel-wipe-random-include-close"
-  },
-  "portal-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Portal",
-    "open" : "portal-random-include-open",
-    "close" : "portal-random-include-close"
-  },
-  "tv-effect-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "TV Effect",
-    "open" : "tv-effect-random-include-open",
-    "close" : "tv-effect-random-include-close"
-  },
-  "tv-glitch-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "TV Glitch",
-    "open" : "tv-glitch-random-include-open",
-    "close" : "tv-glitch-random-include-close"
-  },
-  "wisps-random-include": {
-    "type" : "custom",
-    "file" : "CustomWidgets.py",
-    "widget" : "TwoCheckButtonsWidget",
-    "description" : "Wisps",
-    "open" : "wisps-random-include-open",
-    "close" : "wisps-random-include-close"
-  },
-
-  "apparition-random-include-open" :  { "type": "generic", "default": true },
-  "doom-random-include-open" :        { "type": "generic", "default": true },
-  "energize-a-random-include-open" :  { "type": "generic", "default": true },
-  "energize-b-random-include-open" :  { "type": "generic", "default": true },
-  "fire-random-include-open" :        { "type": "generic", "default": true },
-  "focus-random-include-open" :       { "type": "generic", "default": true },
-  "glide-random-include-open" :       { "type": "generic", "default": true },
-  "glitch-random-include-open" :      { "type": "generic", "default": true },
-  "hexagon-random-include-open" :     { "type": "generic", "default": true },
-  "incinerate-random-include-open" :  { "type": "generic", "default": true },
-  "pixelate-random-include-open" :    { "type": "generic", "default": true },
-  "pixel-wheel-random-include-open" : { "type": "generic", "default": true },
-  "pixel-wipe-random-include-open" :  { "type": "generic", "default": true },
-  "portal-random-include-open" :      { "type": "generic", "default": true },
-  "tv-effect-random-include-open" :   { "type": "generic", "default": true },
-  "tv-glitch-random-include-open" :   { "type": "generic", "default": true },
-  "wisps-random-include-open" :       { "type": "generic", "default": true },
-
-  "apparition-random-include-close" :  { "type": "generic", "default": true },
-  "doom-random-include-close" :        { "type": "generic", "default": true },
-  "energize-a-random-include-close" :  { "type": "generic", "default": true },
-  "energize-b-random-include-close" :  { "type": "generic", "default": true },
-  "fire-random-include-close" :        { "type": "generic", "default": true },
-  "focus-random-include-close" :       { "type": "generic", "default": true },
-  "glide-random-include-close" :       { "type": "generic", "default": true },
-  "glitch-random-include-close" :      { "type": "generic", "default": true },
-  "hexagon-random-include-close" :     { "type": "generic", "default": true },
-  "incinerate-random-include-close" :  { "type": "generic", "default": true },
-  "pixelate-random-include-close" :    { "type": "generic", "default": true },
-  "pixel-wheel-random-include-close" : { "type": "generic", "default": true },
-  "pixel-wipe-random-include-close" :  { "type": "generic", "default": true },
-  "portal-random-include-close" :      { "type": "generic", "default": true },
-  "tv-effect-random-include-close" :   { "type": "generic", "default": true },
-  "tv-glitch-random-include-close" :   { "type": "generic", "default": true },
-  "wisps-random-include-close" :       { "type": "generic", "default": true },
 
   "effect-selector": {
     "type": "combobox",
     "default": 0,
     "options": {
       "Apparition": 0,
+      "Aura Glow": 22,
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
@@ -331,10 +291,14 @@
       "Glitch": 7,
       "Hexagon": 8,
       "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
       "Pixelate": 12,
       "Pixel Wheel": 13,
       "Pixel Wipe": 14,
       "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20
@@ -347,6 +311,7 @@
     "default": 0,
     "options": {
       "Apparition": 0,
+      "Aura Glow": 22,
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
@@ -356,10 +321,14 @@
       "Glitch": 7,
       "Hexagon": 8,
       "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
       "Pixelate": 12,
       "Pixel Wheel": 13,
       "Pixel Wipe": 14,
       "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20,
@@ -374,6 +343,7 @@
     "default": 0,
     "options": {
       "Apparition": 0,
+      "Aura Glow": 22,
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
@@ -383,10 +353,14 @@
       "Glitch": 7,
       "Hexagon": 8,
       "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
       "Pixelate": 12,
       "Pixel Wheel": 13,
       "Pixel Wipe": 14,
       "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20,
@@ -408,6 +382,7 @@
     "default": 0,
     "options": {
       "Apparition": 0,
+      "Aura Glow": 22,
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
@@ -417,10 +392,14 @@
       "Glitch": 7,
       "Hexagon": 8,
       "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
       "Pixelate": 12,
       "Pixel Wheel": 13,
       "Pixel Wipe": 14,
       "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20,
@@ -436,6 +415,7 @@
     "default": 0,
     "options": {
       "Apparition": 0,
+      "Aura Glow": 22,
       "Doom": 2,
       "Energize A": 3,
       "Energize B": 4,
@@ -445,10 +425,14 @@
       "Glitch": 7,
       "Hexagon": 8,
       "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
       "Pixelate": 12,
       "Pixel Wheel": 13,
       "Pixel Wipe": 14,
       "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
       "TV Effect": 18,
       "TV Glitch": 19,
       "Wisps": 20,
@@ -457,6 +441,70 @@
     },
     "description": "Close dialog window effect",
     "dependency" : "dialog-special=true"
+  },
+
+  "minimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Minimize window effect"
+  },
+
+  "unminimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Unminimize window effect"
   },
 
   "apparition-shake-intensity": {
@@ -507,6 +555,83 @@
      "step" : 10,
      "dependency" : "effect-selector=0",
      "default": 300
+  },
+
+  "aura-glow-random-color": {
+    "type" : "switch",
+    "description": "Random Color",
+     "dependency" : "effect-selector=22",
+     "default": false
+  },
+
+  "aura-glow-start-hue": {
+     "type": "scale",
+     "description" : "Start Hue",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=22",
+     "default": 0.0
+  },
+
+  "aura-glow-speed": {
+     "type": "scale",
+     "description" : "Speed",
+     "min" : -5,
+     "max" : 5,
+     "step" : 0.25,
+     "dependency" : "effect-selector=22",
+     "default": 2.5
+  },
+
+  "aura-glow-saturation": {
+     "type": "scale",
+     "description" : "Saturation",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=22",
+     "default": 0.75
+  },
+
+  "aura-glow-edge-size": {
+     "type": "scale",
+     "description" : "Edge Size",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.05,
+     "dependency" : "effect-selector=22",
+     "default": 0.75
+  },
+
+  "aura-glow-edge-hardness": {
+     "type": "scale",
+     "description" : "Edge Hardness",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=22",
+     "default": 0.25
+  },
+
+  "aura-glow-blur": {
+     "type": "scale",
+     "description" : "Blur Amount",
+     "min" : 0,
+     "max" : 30,
+     "step" : 0.5,
+     "dependency" : "effect-selector=22",
+     "default": 15
+  },
+
+  "aura-glow-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=22",
+     "default": 750
   },
 
   "doom-horizontal-scale": {
@@ -603,7 +728,23 @@
      "default": 1000
   },
 
-  "fire-scale": {
+
+  "fire-presets": {
+    "type": "combobox",
+    "default": "Default Fire",
+    "options": {
+      "Default Fire": "Default Fire",
+      "Hell Fire" : "Hell Fire",
+      "Dark and Smutty" : "Dark and Smutty",
+      "Cold Breeze" : "Cold Breeze",
+      "Santa is Coming" : "Santa is Coming",
+      "Custom" : "Custom"
+    },
+    "description": "Fire preset",
+    "dependency" : "effect-selector=5"
+  },
+
+  "fire-custom-scale": {
      "type": "scale",
      "description" : "Scale",
      "min" : 0.1,
@@ -613,7 +754,7 @@
      "default": 0.5
   },
 
-  "fire-movement-speed": {
+  "fire-custom-movement-speed": {
      "type": "scale",
      "description" : "Fire Movement Speed",
      "min" : -2,
@@ -627,42 +768,44 @@
     "type" : "switch",
     "description": "Fire 3D Noise",
     "tooltip": "Creates a more dynamic fire but requires more GPU power.",
-     "dependency" : "effect-selector=5",
-     "default": false
+    "dependency" : "effect-selector=5",
+    "default": false
   },
 
-  "fire-color-1": {
-     "type": "colorchooser",
-     "description" : "Color #1",
-     "dependency" : "effect-selector=5",
+  "fire-colors": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "FireColorChooser",
+    "description" : "Colors 1-5",
+    "color1" : "fire-custom-color-1",
+    "color2" : "fire-custom-color-2",
+    "color3" : "fire-custom-color-3",
+    "color4" : "fire-custom-color-4",
+    "color5" : "fire-custom-color-5"
+  },
+
+  "fire-custom-color-1": {
+     "type": "generic",
      "default": "rgba(76, 51, 25, 0.0)"
   },
 
-  "fire-color-2": {
-     "type": "colorchooser",
-     "description" : "Color #2",
-     "dependency" : "effect-selector=5",
+  "fire-custom-color-2": {
+     "type": "generic",
      "default": "rgba(180, 55, 30, 0.7)"
   },
 
-  "fire-color-3": {
-     "type": "colorchooser",
-     "description" : "Color #3",
-     "dependency" : "effect-selector=5",
+  "fire-custom-color-3": {
+     "type": "generic",
      "default": "rgba(255, 76, 38, 0.9)"
   },
 
-  "fire-color-4": {
-     "type": "colorchooser",
-     "description" : "Color #4",
-     "dependency" : "effect-selector=5",
+  "fire-custom-color-4": {
+     "type": "generic",
      "default": "rgba(255, 166, 25, 1)"
   },
 
-  "fire-color-5": {
-     "type": "colorchooser",
-     "description" : "Color #5",
-     "dependency" : "effect-selector=5",
+  "fire-custom-color-5": {
+     "type": "generic",
      "default": "rgba(255, 255, 255, 1)"
   },
 
@@ -675,6 +818,7 @@
      "dependency" : "effect-selector=5",
      "default": 1500
   },
+
 
   "focus-blur-amount": {
      "type": "scale",
@@ -901,6 +1045,55 @@
      "default": 2000
   },
 
+
+  "magiclamp-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "default": 0,
+      "sine": 1,
+      "random": 2,
+      "Minimize: Default - Unminimize: Sine": 3,
+      "Minimize: Sine - Unminimize: Default": 4
+    },
+    "description": "The type of effect",
+    "dependency" : "effect-selector=26",
+    "tooltip": "Using 'default' will result in a curved effect where using 'sine' will result in a more wavy effect"
+  },
+
+  "magiclamp-x-tiles": {
+    "type": "scale",
+    "default": 20,
+    "min": 3,
+    "max": 50,
+    "step": 1,
+    "description": "X Tiles",
+    "dependency" : "effect-selector=26",
+    "tooltip": "This effects the quality and the cost of the animation"
+  },
+
+  "magiclamp-y-tiles": {
+    "type": "scale",
+    "default": 20,
+    "min": 3,
+    "max": 50,
+    "step": 1,
+    "description": "Y Tiles",
+    "dependency" : "effect-selector=26",
+    "tooltip": "This effects the quality and the costs of the animation"
+  },
+
+  "magiclamp-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=26",
+     "default": 1200
+  },
+
+
   "matrix-scale": {
      "type": "generic",
      "default": 20
@@ -930,6 +1123,153 @@
      "type": "generic",
      "default": 1500
   },
+
+
+  "mushroom-presets": {
+    "type": "combobox",
+    "default": "New Bros 2",
+    "options": {
+      "8Bit Plumber" : "8Bit Plumber",
+      "New Bros 2" : "New Bros 2",
+      "The True North" : "The True North",
+      "Red White and Blue" : "Red White and Blue",
+      "Rainbow" : "Rainbow",
+      "Cattuccino" : "Cattuccino",
+      "Dracula" : "Dracula",
+      "Sparkle" : "Sparkle",
+      "Custom" : "Custom"
+    },
+    "description": "Mushroom preset",
+    "dependency" : "effect-selector=25"
+  },
+
+  "mushroom-custom-scale-style": {
+     "type": "spinbutton",
+     "description" : "Scale Style",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.1,
+     "dependency" : "effect-selector=25",
+     "default": 1
+  },
+
+  "mushroom-custom-spark-count": {
+     "type": "spinbutton",
+     "description" : "Spark Count",
+     "min" : 0,
+     "max" : 25,
+     "step" : 1,
+     "dependency" : "effect-selector=25",
+     "default": 4
+  },
+
+  "mushroom-custom-spark-color": {
+     "type": "colorchooser",
+     "description" : "Spark Color",
+     "dependency" : "effect-selector=25",
+     "default": "rgba(255, 255, 255, 1.0)"
+  },
+
+  "mushroom-custom-spark-rotation": {
+     "type": "spinbutton",
+     "description" : "Spark Rotation",
+     "min" : -3,
+     "max" : 3,
+     "step" : 0.5,
+     "dependency" : "effect-selector=25",
+     "default": 0.3
+  },
+
+  "mushroom-custom-rays-color": {
+     "type": "colorchooser",
+     "description" : "Rays Color",
+     "dependency" : "effect-selector=25",
+     "default": "rgba(255, 255, 255, 1.0)"
+  },
+
+  "mushroom-custom-ring-count": {
+     "type": "spinbutton",
+     "description" : "Star Rings Count",
+     "min" : 0,
+     "max" : 5,
+     "step" : 1,
+     "dependency" : "effect-selector=25",
+     "default": 3
+  },
+
+  "mushroom-custom-ring-rotation": {
+     "type": "spinbutton",
+     "description" : "Star Ring Rotation",
+     "min" : -3,
+     "max" : 3,
+     "step" : 0.25,
+     "dependency" : "effect-selector=25",
+     "default": 1.33
+  },
+
+  "mushroom-custom-star-count": {
+     "type": "spinbutton",
+     "description" : "Stars Count Per Ring",
+     "min" : 0,
+     "max" : 7,
+     "step" : 1,
+     "dependency" : "effect-selector=25",
+     "default": 4
+  },
+
+  "mushroom-star-colors": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "MushroomColorChooser",
+    "description" : "Colors 1-6",
+    "color1" : "mushroom-custom-star-color-0",
+    "color2" : "mushroom-custom-star-color-1",
+    "color3" : "mushroom-custom-star-color-2",
+    "color4" : "mushroom-custom-star-color-3",
+    "color5" : "mushroom-custom-star-color-4",
+    "color6" : "mushroom-custom-star-color-5"
+  },
+
+  "mushroom-custom-star-color-0": {
+     "type": "generic",
+     "default": "rgba(233,249,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-1": {
+     "type": "generic",
+     "default": "rgba(233,249,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-2": {
+     "type": "generic",
+     "default": "rgba(91,255,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-3": {
+     "type": "generic",
+     "default": "rgba(91,255,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-4": {
+     "type": "generic",
+     "default": "rgba(0,240,236,1.0)"
+  },
+
+  "mushroom-custom-star-color-5": {
+     "type": "generic",
+     "default": "rgba(0,240,236,1.0)"
+  },
+
+  "mushroom-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=25",
+     "default": 1500
+  },
+
 
   "pixelate-noise": {
      "type": "scale",
@@ -1056,6 +1396,123 @@
      "step" : 10,
      "dependency" : "effect-selector=15",
      "default": 1250
+  },
+
+  "rgbwarp-brightness": {
+     "type": "scale",
+     "description" : "Brightness",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.1,
+     "dependency" : "effect-selector=24",
+     "default": 1
+  },
+
+  "rgbwarp-speed-r": {
+     "type": "scale",
+     "description" : "Red Speed",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=24",
+     "default": 1.0
+  },
+
+  "rgbwarp-speed-g": {
+     "type": "scale",
+     "description" : "Green Speed",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=24",
+     "default": 0.9
+  },
+
+  "rgbwarp-speed-b": {
+     "type": "scale",
+     "description" : "Blue Speed",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=24",
+     "default": 0.8
+  },
+
+  "rgbwarp-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=24",
+     "default": 750
+  },
+
+  "team-rocket-animation-split": {
+     "type": "scale",
+     "description" : "Animation Split",
+     "min" : 0.2,
+     "max" : 0.8,
+     "step" : 0.01,
+     "dependency" : "effect-selector=23",
+     "default": 0.5
+  },
+
+  "team-rocket-horizontal-sparkle-position": {
+     "type": "scale",
+     "description" : "Horizontal Sparkle Position",
+     "min" : -1.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=23",
+     "default": 0.0
+  },
+
+  "team-rocket-vertical-sparkle-position": {
+     "type": "scale",
+     "description" : "Vertical Sparkle Position",
+     "min" : -1.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=23",
+     "default": 0.5
+  },
+
+  "team-rocket-window-rotation": {
+    "type" : "switch",
+    "description": "Rotate Window",
+     "dependency" : "effect-selector=23",
+     "default": true
+  },
+
+  "team-rocket-sparkle-rot": {
+     "type": "scale",
+     "description" : "Sparkle Rotation",
+     "min" : -1.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=23",
+     "default": 0.33
+  },
+
+  "team-rocket-sparkle-size": {
+     "type": "scale",
+     "description" : "Sparkle Size",
+     "min" : 0.5,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=23",
+     "default": 0.75
+  },
+
+  "team-rocket-animation-time": {
+     "type": "scale",
+     "description" : "Effect Duration (milliseconds)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=23",
+     "default": 1500
   },
 
   "tv-effect-color": {

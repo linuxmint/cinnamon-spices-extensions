@@ -16,8 +16,9 @@
 
 'use strict';
 
-const Apparition = require('./effects/Apparition');
-const BrokenGlass = require('./effects/BrokenGlass');
+const Apparition = require('./effects/Apparition.js');
+const AuraGlow = require('./effects/AuraGlow.js');
+const BrokenGlass = require('./effects/BrokenGlass.js');
 const Doom = require('./effects/Doom.js');
 const EnergizeA = require('./effects/EnergizeA.js');
 const EnergizeB = require('./effects/EnergizeB.js');
@@ -27,13 +28,17 @@ const Glide = require('./effects/Glide.js');
 const Glitch = require('./effects/Glitch.js');
 const Hexagon = require('./effects/Hexagon.js');
 const Incinerate = require('./effects/Incinerate.js');
+const MagicLamp = require('./effects/MagicLamp.js');
 const Matrix = require('./effects/Matrix.js');
+const Mushroom = require('./effects/Mushroom.js');
 const PaintBrush = require('./effects/PaintBrush.js');
 const Pixelate = require('./effects/Pixelate.js');
 const PixelWheel = require('./effects/PixelWheel.js');
 const PixelWipe = require('./effects/PixelWipe.js');
 const Portal = require('./effects/Portal.js');
+const RGBWarp = require('./effects/RGBWarp.js');
 const SnapOfDisintegration = require('./effects/SnapOfDisintegration.js');
+const TeamRocket = require('./effects/TeamRocket.js');
 const TRexAttack = require('./effects/TRexAttack.js');
 const TVEffect = require('./effects/TVEffect.js');
 const TVGlitch = require('./effects/TVGlitch.js');
@@ -53,33 +58,47 @@ const Cinnamon = imports.gi.Cinnamon;
 const SignalManager = imports.misc.signalManager;
 
 const Effect = {
-  Apparition: 0,
-  BrokenGlass: 1,
-  Doom: 2,
-  EnergizeA: 3,
-  EnergizeB: 4,
-  Fire: 5,
-  Focus: 21,
-  Glide: 6,
-  Glitch: 7,
-  Hexagon: 8,
-  Incinerate: 9,
-  Matrix: 10,
-  PaintBrush: 11,
-  Pixelate: 12,
-  PixelWheel: 13,
-  PixelWipe: 14,
-  Portal: 15,
-  SnapOfDisintegration: 16,
-  TRexAttack: 17,
-  TVEffect: 18,
-  TVGlitch: 19,
-  Wisps: 20,
-  Randomized: 999,
-  None: 1000
+  Apparition:  {idx: 0,  name: "Apparition"},
+  AuraGlow:    {idx: 22, name: "Aura Glow"},
+  //BrokenGlass: {idx: 1,  name: "Broken Glass"},
+  Doom:        {idx: 2,  name: "Doom"},
+  EnergizeA:   {idx: 3,  name: "Energize A"},
+  EnergizeB:   {idx: 4,  name: "Energize B"},
+  Fire:        {idx: 5,  name: "Fire"},
+  Focus:       {idx: 21, name: "Focus"},
+  Glide:       {idx: 6,  name: "Glide"},
+  Glitch:      {idx: 7,  name: "Glitch"},
+  Hexagon:     {idx: 8,  name: "Hexagon"},
+  Incinerate:  {idx: 9,  name: "Incinerate"},
+  MagicLamp:   {idx: 26, name: "Magic Lamp"},
+  Mushroom:    {idx: 25, name: "Mushroom"},
+  //Matrix:      {idx: 10, name: "Matrix"},
+  //PaintBrush:  {idx: 11, name: "Paint Brush"},
+  Pixelate:    {idx: 12, name: "Pixelate"},
+  PixelWheel:  {idx: 13, name: "Pixel Wheel"},
+  PixelWipe:   {idx: 14, name: "Pixel Wipe"},
+  Portal:      {idx: 15, name: "Portal"},
+  RGBWarp:     {idx: 24, name: "RGB Warp"},
+  //SnapOfDisintegration: {idx: 16, name: "Snap Of Disintegration"},
+  TeamRocket:  {idx: 23, name: "Team Rocket"},
+  //TRexAttack:  {idx: 17, name: "TRex Attack"},
+  TVEffect:    {idx: 18, name: "TV Effect"},
+  TVGlitch:    {idx: 19, name: "TV Glitch"},
+  Wisps:       {idx: 20, name: "Wisps"},
+  Randomized:  {idx: 999, name: "Randomized"},
+  None:        {idx: 1000, name: "None"}
+}
+
+function EffectIndex(name) {
+  for (const [key, value] of Object.entries(Effect)) {
+    if (name == value.name) return value.idx;
+  }
+  return(undefined);
 }
 
 const UUID = "CinnamonBurnMyWindows@klangman";
+
+var extensionThis;
 
 Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
 
@@ -104,12 +123,17 @@ class BurnMyWindows {
 
    constructor(metaData){
       this.meta = metaData;
+      this._minimizeConnected = false;
    }
    // ------------------------------------------------------------------------ public stuff
 
    // This function could be called after the extension is enabled, which could be done
    // from GNOME Tweaks, when you log in or when the screen is unlocked.
    enable() {
+      // Create the settings and signal manager
+      this._settings = new Settings.ExtensionSettings(this, this.meta.uuid)
+      this._signalManager = new SignalManager.SignalManager(null);
+
       // Effects in this array must be ordered by effect number as defined by the setting-schema.json.
       // New effects will be added in alphabetical order in the UI list, but the effect number, and
       // therefore the order in this array, might not be alphabetical.
@@ -119,7 +143,7 @@ class BurnMyWindows {
          new Doom.Effect(),
          new EnergizeA.Effect(),
          new EnergizeB.Effect(),
-         new Fire.Effect(),
+         new Fire.Effect(this._signalManager, this._settings),
          new Glide.Effect(),
          new Glitch.Effect(),
          new Hexagon.Effect(),
@@ -136,75 +160,29 @@ class BurnMyWindows {
          new TVGlitch.Effect(),
          new Wisps.Effect(),
          new Focus.Effect(),
+         new AuraGlow.Effect(),
+         new TeamRocket.Effect(),
+         new RGBWarp.Effect(),
+         new Mushroom.Effect(this._signalManager, this._settings),
+         new MagicLamp.Effect(),
       ];
 
-      // Store a reference to the settings object.
-      this._settings = new Settings.ExtensionSettings(this, this.meta.uuid);
+      // We will use extensionThis to refer to the extension inside the patched methods.
+      extensionThis = this;
+
+      // Settings connections to connect to the mimimize/unminimize events when required
+      this._settings.bind("minimize-effect", "minimizeEffect", this._enableMinimizeEffects);
+      this._settings.bind("unminimize-effect", "unminimizeEffect", this._enableMinimizeEffects);
 
       // Keep track of the previously focused Application
-      this._signalManager = new SignalManager.SignalManager(null);
       this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
 
       // WindowTracker so we can map windows to application
       this._windowTracker = Cinnamon.WindowTracker.get_default();
 
-      // We will use extensionThis to refer to the extension inside the patched methods.
-      const extensionThis = this;
-
       // Intercept _shouldAnimate() for Window Map/Destroy events
       this.shouldAnimateManager = new ShouldAnimateManager.ShouldAnimateManager( UUID );
-      let error = this.shouldAnimateManager.connect(ShouldAnimateManager.Events.MapWindow+ShouldAnimateManager.Events.DestroyWindow,
-         function(actor, types, event) {
-            // If there is an applicable effect profile, we intercept the ease() method to
-            // setup our own effect.
-            const chosenEffect = extensionThis._chooseEffect(actor, (event == ShouldAnimateManager.Events.MapWindow));
-
-            if (chosenEffect) {
-               // Store the original ease() method of the actor.
-               const orig = actor.ease;
-
-               // Temporarily force the new window & closing window effect to be enabled in cinnamon
-               let orig_desktop_effects_map_type = Main.wm.desktop_effects_map_type;
-               let orig_desktop_effects_close_type = Main.wm.desktop_effects_close_type;
-               Main.wm.desktop_effects_map_type = "traditional";
-               Main.wm.desktop_effects_close_type = "traditional";
-
-               // Now intercept the next call to actor.ease().
-               actor.ease = function(...params) {
-                  // There is a really weird issue in GNOME Shell 44: A few non-GTK windows are
-                  // resized directly after they are mapped on X11. This happens for instance
-                  // for keepassxc after it was closed in the maximized state. As the
-                  // _mapWindow() method is called asynchronously, the window is not yet visible
-                  // when the resize happens. Hence, our ease-override is called for the resize
-                  // animation instead of the window-open or window-close animation. This is not
-                  // what we want. So we check again whether the ease() call is for the
-                  // window-open or window-close animation. If not, we just call the original
-                  // ease() method. See also:
-                  // https://github.com/Schneegans/Burn-My-Windows/issues/335
-                  const stack      = (new Error()).stack;
-                  const forClosing = stack.includes('_destroyWindow@');
-                  const forOpening = stack.includes('_mapWindow@');
-
-                  if (forClosing || forOpening) {
-                    // Quickly restore the original behavior. Nobody noticed, I guess :D
-                    actor.ease = orig;
-
-                    // And then create the effect!
-                    extensionThis._setupEffect(actor, forOpening, chosenEffect.effect,
-                                               chosenEffect.profile);
-                  } else {
-                    orig.apply(this, params);
-                  }
-                  // Restore the original cinnamon new window & closing window effect settings
-                  Main.wm.desktop_effects_map_type = orig_desktop_effects_map_type;
-                  Main.wm.desktop_effects_close_type = orig_desktop_effects_close_type
-             };
-
-             return true;
-            }
-
-            return ShouldAnimateManager.RUN_ORIGINAL_FUNCTION;
-         } );
+      let error = this.shouldAnimateManager.connect(ShouldAnimateManager.Events.MapWindow+ShouldAnimateManager.Events.DestroyWindow, this._shouldAnimateHandler );
 
       // If we failed to install a handler for the _shouldAnimate() events then show a notification
       if (error) {
@@ -217,14 +195,144 @@ class BurnMyWindows {
          source.notify(notification);
       }
 
-    // Make sure to remove any effects if requested by the window manager.
-    this._killEffectsSignal =
-      global.window_manager.connect('kill-window-effects', (wm, actor) => {
-        const shader = actor.get_effect('burn-my-windows-effect');
-        if (shader) {
-          shader.endAnimation();
-        }
+      // If there are new effects after an applet upgrade, we might need to upgrade settings
+      this._upgradeRandomIncludeEffects();
+      // This call will only connect to minimize/unminimize events if needed, that way MagicLampEffect can still work if it's installed
+      this._enableMinimizeEffects();
+
+      // Make sure to remove any effects if requested by the window manager.
+      this._killEffectsSignal = global.window_manager.connect('kill-window-effects', (wm, actor) => {
+         const shader = actor.get_effect('burn-my-windows-effect');
+         if (shader) {
+            shader.endAnimation();
+         }
       });
+  }
+
+  // This function will ensure that all the effects are defined in the "random_include" list.
+  // After an upgrade, new effects might have been added, in which case we would need to add new
+  // List entries to "random_include" for the new effect(s). This function assumes that only
+  // new effect changes can occur, no removal or renaming is allowed. It also assumes that the
+  // Effect const and the "random-include" setting are both in alphabetical order.
+  _upgradeRandomIncludeEffects() {
+     let randomInclude =  this._settings.getValue("random-include");
+     let effects = Object.entries(Effect);
+     if (randomInclude.length != effects.length) {
+        let newRandomInclude = [];
+        let i = 0;
+        for (let ei=0 ; ei < effects.length ; ei++) {
+           if (i < randomInclude.length && randomInclude[i].name == effects[ei][1].name) {
+              newRandomInclude.push(randomInclude[i]);
+              i++;
+           } else {
+              if (effects[ei][1].idx < 900) // idx of 900 or higher is reserved for non-effect types, i.e. None and Random
+                 newRandomInclude.push( {name: effects[ei][1].name, open: true, close: true, minimize: true, unminimize: true} );
+           }
+        }
+        this._settings.setValue("random-include", newRandomInclude);
+     }
+  }
+
+  // Try to enable the Minimize/Unminimize event connection if there is a need
+  // Disconnect Minimize/Unminimize events if there is no longer any need
+  _enableMinimizeEffects() {
+    // Determine if any app specific settings are using minimize or unminimize effects
+    let appRules = this._settings.getValue("app-rules");
+    let appRuleUses = false;
+    if (appRules) {
+      for (let i=0 ; i<appRules.length ; i++) {
+        if (appRules[i].enabled && ((appRules[i].minimize && appRules[i].minimize !== Effect.None.idx) || (appRules[i].unminimize && appRules[i].unminimize !== Effect.None.idx))) {
+          appRuleUses = true;
+          break;
+        }
+      }
+    }
+    // If we now have some Minimize/Unminimize effects enabled, then we need to connect to the Minimize/Unminimize events
+    if (!this._minimizeConnected && (appRuleUses || this.minimizeEffect !== Effect.None.idx || this.unminimizeEffect !== Effect.None.idx)) {
+       let error = this.shouldAnimateManager.connect(ShouldAnimateManager.Events.Minimize+ShouldAnimateManager.Events.Unminimize, this._shouldAnimateHandler );
+       if (error) {
+          // Disable all the minimize/unminimize effects
+          this.minimizeEffect = Effect.None.idx;
+          this.unminimizeEffect = Effect.None.idx;
+          if (appRules) {
+            for (let i=0 ; i<appRules.length ; i++) {
+              if (appRules[i].enabled && (appRules[i].minimize !== Effect.None.idx || appRules[i].unminimize !== Effect.None.idx)) {
+                appRules[i].enabled = false;
+              }
+            }
+          }
+          // Send a notification about the failure to connect to minimize/unminimize events
+          let source = new MessageTray.Source(this.meta.name);
+          let notification = new MessageTray.Notification(source, _("Error") + ": " + this.meta.name + " " + _("minimize/unminimize effects can not be enabled"),
+            _("The existing extension") + " " + error + " " + _("already handles minimize/unminimize animation events."),
+            {icon: new St.Icon({icon_name: "cinnamon-burn-my-window", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
+            );
+          Main.messageTray.add(source);
+          source.notify(notification);
+       } else {
+         this._minimizeConnected = true;
+       }
+    } else if (this._minimizeConnected && appRuleUses === false && this.minimizeEffect === Effect.None.idx && this.unminimizeEffect === Effect.None.idx) {
+      // Now there are no Minimize/Unminimize effects enabled, so we can disconnect from those events
+      this.shouldAnimateManager.disconnect(ShouldAnimateManager.Events.Minimize+ShouldAnimateManager.Events.Unminimize);
+      this._minimizeConnected = false;
+    }
+  }
+
+  // This function is called when the _shouldAnimate function call is intercepted by the ShouldAnimateManager
+  // Here we setup Cinnamon to force effects and we override the ease function to initiate the effect
+  _shouldAnimateHandler(actor, types, event) {
+    // If there is an applicable effect profile, we intercept the ease() method to
+    // setup our own effect.
+    const chosenEffect = extensionThis._chooseEffect(actor, event);
+
+    if (chosenEffect) {
+      // Store the original ease() method of the actor.
+      const orig = actor.ease;
+
+      // Temporarily force the new window, closing window & minimize effect to be enabled in cinnamon
+      let orig_desktop_effects_map_type = Main.wm.desktop_effects_map_type;
+      let orig_desktop_effects_close_type = Main.wm.desktop_effects_close_type;
+      let orig_desktop_effects_minimize_type = Main.wm.desktop_effects_minimize_type;
+      Main.wm.desktop_effects_map_type = "traditional";
+      Main.wm.desktop_effects_close_type = "traditional";
+      Main.wm.desktop_effects_minimize_type = "traditional";
+
+      // Record the windows current position before Cinnamon mucks with it's position
+      let actorX = actor.x;
+      let actorY = actor.y;
+
+      // Now intercept the next call to actor.ease().
+      actor.ease = function(...params) {
+         if (event === ShouldAnimateManager.Events.MapWindow || event === ShouldAnimateManager.Events.Unminimize) {
+            // When using "traditional" animation in Cinnamon (which we are forcing to be the case):
+            //    _mapWindow() is setting "actor.x-=1"
+            //    _unminimizeWindow() is setting actors x & y to the icon geometry
+            // so we need to undue these changes to make sure the window animates to to correct window position.
+            // We use the actors pre-ease values so that we have a good chance of being right even if Cinnamon
+            // makes further changes in future releases.
+            actor.set_position(actorX, actorY);
+         }
+         //if (chosenEffect.effect instanceof Doom.Effect && (event === ShouldAnimateManager.Events.MapWindow || event === ShouldAnimateManager.Events.Unminimize)) {
+            // Hack fix for Doom, not sure why I need to move the window in this way,
+            // but it does not effect the resulting Y location of the window after animation
+            //actor.set_y(actor.y-32);
+         //}
+
+         // Quickly restore the original behavior. Nobody noticed, I guess :D
+         actor.ease = orig;
+
+         // And then create the effect!
+         extensionThis._setupEffect(actor, event, chosenEffect.effect, chosenEffect.profile);
+
+         // Restore the original cinnamon new window, closing window & minimize effect settings
+         Main.wm.desktop_effects_map_type = orig_desktop_effects_map_type;
+         Main.wm.desktop_effects_close_type = orig_desktop_effects_close_type;
+         Main.wm.desktop_effects_minimize_type = orig_desktop_effects_minimize_type;
+      };
+      return true;
+    }
+    return ShouldAnimateManager.RUN_ORIGINAL_FUNCTION;
   }
 
   // This function could be called after the extension is uninstalled, disabled in GNOME
@@ -238,85 +346,81 @@ class BurnMyWindows {
 
     global.window_manager.disconnect(this._killEffectsSignal);
 
-    // Restore the original window-open and window-close animations.
+    // Restore the original window-open, window-close, Minimize and Unminimize animations.
     this.shouldAnimateManager.disconnect();
 
     this._settings = null;
   }
 
   // Choose an effect based on the users preferences as defined in the setting for the current window action
-  _chooseEffect(actor, forOpening) {
+  _chooseEffect(actor, event) {
     let effectIdx;
     let metaWindow = actor.meta_window;
     let windowType = metaWindow.get_window_type();
     let dialog = (this._settings.getValue("dialog-special") === true && (windowType === Meta.WindowType.DIALOG || windowType === Meta.WindowType.MODAL_DIALOG));
     let appRule = (!dialog) ? this.getAppRule(metaWindow) : null;
-    if (forOpening) {
-      if (appRule) {
-        effectIdx = appRule.open;
-      } else {
-        effectIdx = (!dialog) ? this._settings.getValue("open-window-effect") : this._settings.getValue("dialog-open-effect");
-      }
-    } else {
-      if (appRule) {
-        effectIdx = appRule.close;
-      } else {
-        effectIdx = (!dialog) ? this._settings.getValue("close-window-effect") : this._settings.getValue("dialog-close-effect");
-      }
+
+    switch (event) {
+      case ShouldAnimateManager.Events.MapWindow:
+        if (appRule) {
+          effectIdx = appRule.open;
+        } else {
+          effectIdx = (!dialog) ? this._settings.getValue("open-window-effect") : this._settings.getValue("dialog-open-effect");
+        }
+        break;
+      case ShouldAnimateManager.Events.DestroyWindow:
+        if (appRule) {
+          effectIdx = appRule.close;
+        } else {
+          effectIdx = (!dialog) ? this._settings.getValue("close-window-effect") : this._settings.getValue("dialog-close-effect");
+        }
+        break;
+      case ShouldAnimateManager.Events.Minimize:
+        if (appRule) {
+          effectIdx = appRule.minimize;
+        } else {
+          effectIdx = this.minimizeEffect;
+        }
+        break;
+      case ShouldAnimateManager.Events.Unminimize:
+        if (appRule) {
+          effectIdx = appRule.unminimize;
+        } else {
+          effectIdx = this.unminimizeEffect;
+        }
+        break;
     }
-    if (effectIdx === Effect.None) {
-       return(null);
-    } else if (effectIdx != Effect.Randomized) {
-       // Return the effect that the setting reflects
-       return {effect: this._ALL_EFFECTS[effectIdx], profile: this._settings};
+    if (effectIdx === Effect.None.idx) {
+      // No effect should be applied
+      return(null);
+    } else if (effectIdx != Effect.Randomized.idx) {
+      // Return the effect that the setting reflects
+      return {effect: this._ALL_EFFECTS[effectIdx], profile: this._settings};
     } else {
-      // Create an array of the enabled random options
+      // Add the effect indexes for each effect that is included in this events randomized set
       let effectOptions = [];
-      let append = (forOpening)?"-open":"-close";
-      if (this._settings.getValue("apparition-random-include" + append))
-         effectOptions.push(Effect.Apparition);
-      //if (this._settings.getValue("broken-glass-random-include" + append))
-      //   effectOptions.push(Effect.BrokenGlass);
-      if (this._settings.getValue("doom-random-include" + append))
-         effectOptions.push(Effect.Doom);
-      if (this._settings.getValue("energize-a-random-include" + append))
-         effectOptions.push(Effect.EnergizeA);
-      if (this._settings.getValue("energize-b-random-include" + append))
-         effectOptions.push(Effect.EnergizeB);
-      if (this._settings.getValue("fire-random-include" + append))
-         effectOptions.push(Effect.Fire);
-      if (this._settings.getValue("focus-random-include" + append))
-         effectOptions.push(Effect.Focus);
-      if (this._settings.getValue("glide-random-include" + append))
-         effectOptions.push(Effect.Glide);
-      if (this._settings.getValue("glitch-random-include" + append))
-         effectOptions.push(Effect.Glitch);
-      if (this._settings.getValue("hexagon-random-include" + append))
-         effectOptions.push(Effect.Hexagon);
-      if (this._settings.getValue("incinerate-random-include" + append))
-         effectOptions.push(Effect.Incinerate);
-      //if (this._settings.getValue("matrix-random-include" + append))
-      //   effectOptions.push(Effect.Matrix);
-      //if (this._settings.getValue("paint-brush-random-include" + append))
-      //   effectOptions.push(Effect.PaintBrush);
-      if (this._settings.getValue("pixelate-random-include" + append))
-         effectOptions.push(Effect.Pixelate);
-      if (this._settings.getValue("pixel-wheel-random-include" + append))
-         effectOptions.push(Effect.PixelWheel);
-      if (this._settings.getValue("pixel-wipe-random-include" + append))
-         effectOptions.push(Effect.PixelWipe);
-      if (this._settings.getValue("portal-random-include" + append))
-         effectOptions.push(Effect.Portal);
-      //if (this._settings.getValue("snap-of-disintegration-random-include" + append))
-      //   effectOptions.push(Effect.SnapOfDisintegration);
-      //if (this._settings.getValue("trex-attack-random-include" + append))
-      //   effectOptions.push(Effect.TRexAttack);
-      if (this._settings.getValue("tv-effect-random-include" + append))
-         effectOptions.push(Effect.TVEffect);
-      if (this._settings.getValue("tv-glitch-random-include" + append))
-         effectOptions.push(Effect.TVGlitch);
-      if (this._settings.getValue("wisps-random-include" + append))
-         effectOptions.push(Effect.Wisps);
+      let randomInclude = this._settings.getValue("random-include");
+      for( let i=0 ; i < randomInclude.length ; i++ ) {
+        let random = randomInclude[i];
+        switch (event) {
+          case ShouldAnimateManager.Events.MapWindow:
+            if (random.open)
+              effectOptions.push( EffectIndex(random.name) );
+            break;
+          case ShouldAnimateManager.Events.DestroyWindow:
+            if (random.close)
+              effectOptions.push( EffectIndex(random.name) );
+            break;
+          case ShouldAnimateManager.Events.Minimize:
+            if (random.minimize)
+              effectOptions.push( EffectIndex(random.name) );
+            break;
+          case ShouldAnimateManager.Events.Unminimize:
+            if (random.unminimized)
+              effectOptions.push( EffectIndex(random.name) );
+            break;
+        }
+      }
       // If any random options are enabled, return a randomly chosen effect, else return null
       if (effectOptions.length > 0) {
         return {effect: this._ALL_EFFECTS[effectOptions[(Math.floor(Math.random() * effectOptions.length))]], profile: this._settings};
@@ -340,6 +444,9 @@ class BurnMyWindows {
     let appRules = this._settings.getValue("app-rules");
     for( let i=0 ; i < appRules.length ; i++ ) {
       if (appRules[i].enabled && ((appID && appRules[i].application == appID) || (appRules[i].application == wmClass))) {
+        if ((appRules[i].minimize && appRules[i].minimize !== Effect.None.idx) || (appRules[i].unminimize && appRules[i].unminimize !== Effect.None.idx)) {
+           this._enableMinimizeEffects();
+        }
         return(appRules[i]);
       }
     }
@@ -348,8 +455,8 @@ class BurnMyWindows {
 
   // This method adds the given effect using the settings from the given profile to the
   // given actor.
-  _setupEffect(actor, forOpening, effect, profile) {
-
+  _setupEffect(actor, event, effect, profile) {
+    let forOpening = (event & ShouldAnimateManager.Events.MapWindow) || (event & ShouldAnimateManager.Events.Unminimize);
     // There is the weird case where an animation is already ongoing. This happens when a
     // window is closed which has been created before the session was started (e.g. when
     // GNOME Shell has been restarted in the meantime).
@@ -386,7 +493,7 @@ class BurnMyWindows {
     }
 
     // Now add a cool shader to our window actor!
-    const shader = effect.shaderFactory.getShader();
+    const shader = effect.shaderFactory.getShader(event);
     actor.add_effect_with_name('burn-my-windows-effect', shader);
 
     // At the end of the animation, we restore the scale of the overview clone (if any)
@@ -413,10 +520,19 @@ class BurnMyWindows {
       // should have been called by the original ease() methods.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
-      if (forOpening) {
-        Main.wm._mapWindowDone(global.window_manager, actor);
-      } else {
-        Main.wm._destroyWindowDone(global.window_manager, actor);
+      switch (event) {
+         case ShouldAnimateManager.Events.MapWindow:
+            Main.wm._mapWindowDone(global.window_manager, actor);
+            break;
+         case ShouldAnimateManager.Events.DestroyWindow:
+            Main.wm._destroyWindowDone(global.window_manager, actor);
+            break;
+         case ShouldAnimateManager.Events.Minimize:
+            Main.wm._minimizeWindowDone(global.window_manager, actor);
+            break;
+         case ShouldAnimateManager.Events.Unminimize:
+            Main.wm._unminimizeWindowDone(global.window_manager, actor);
+            break;
       }
     });
 
@@ -435,6 +551,8 @@ class BurnMyWindows {
      this.last_focused_window = global.display.get_focus_window();
   }
 
+  // When the button is pressed we will determine what the last focused was and add
+  // and entry in the app specific list for that windows app
   on_config_button_pressed() {
     if (this.prev_focused_window) {
       let app = this._windowTracker.get_window_app(this.prev_focused_window);
@@ -445,10 +563,14 @@ class BurnMyWindows {
          let appRules = this._settings.getValue("app-rules");
          appRules.push( {enabled:false, open:0, close:0, application:app.get_id()} );
          this._settings.setValue("app-rules", appRules);
+      } else if (this.prev_focused_window.get_wm_class()) {
+         let appRules = this._settings.getValue("app-rules");
+         appRules.push( {enabled:false, open:0, close:0, application:this.prev_focused_window.get_wm_class()} );
+         this._settings.setValue("app-rules", appRules);
       } else {
         let source = new MessageTray.Source(this.meta.name);
         let notification = new MessageTray.Notification(source, _("Error") + ": " + this.meta.name,
-          _("The previously focused window is not backed by an application and therefore application specific effects can not be applied to that window"),
+          _("Unable to determine the application or the WM_CLASS of the previously focused window, therefore application specific effects can not be applied to that window"),
           {icon: new St.Icon({icon_name: "cinnamon-burn-my-window", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
           );
         Main.messageTray.add(source);

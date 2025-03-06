@@ -73,7 +73,7 @@ var ShaderFactory = class ShaderFactory {
         });
       }
 
-      // Now create a niew instance of the newly registered shader type.
+      // Now create a new instance of the newly registered shader type.
       // GObject.Object.new is only available with newer versions of GJS.
       if (GObject.Object.new) {
         shader = GObject.Object.new(GObject.type_from_name(typeName), {});
