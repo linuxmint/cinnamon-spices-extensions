@@ -60,7 +60,15 @@ var Effect = class Effect {
   // shader instances for this effect. The shaders will be automagically created using the
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
-  constructor() {
+  constructor(signalManager, settings) {
+    // Adjust the fire settings when a different preset is selected
+    signalManager.connect(settings, "changed::fire-presets", () => this._setupUsingPresets(settings));
+    signalManager.connect(settings, "changed::fire-customscale", () => this._setupUsingPresets(settings));
+    signalManager.connect(settings, "changed::fire-custom-movement-speed", () => this._setupUsingPresets(settings));
+    for (let i = 1; i <= 5; i++) {
+      signalManager.connect(settings, "changed::fire-custom-color-" + i, () => this._setupUsingPresets(settings));
+    }
+    this._setupUsingPresets(settings);
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store all uniform locations.
       shader._uGradient = [
@@ -77,17 +85,17 @@ var Effect = class Effect {
 
       // And update all uniforms at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        for (let i = 1; i <= 5; i++) {
-          const c = Clutter.Color.from_string(settings.getValue('fire-color-' + i))[1];
+        for (let i = 0; i < 5; i++) {
+          const c = Clutter.Color.from_string(settings.fireColor[i])[1];
           shader.set_uniform_float(
-            shader._uGradient[i - 1], 4,
+            shader._uGradient[i], 4,
             [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
         }
 
         // clang-format off
         shader.set_uniform_float(shader._u3DNoise,       1, [settings.getValue('fire-3d-noise')]);
-        shader.set_uniform_float(shader._uScale,         1, [settings.getValue('fire-scale')]);
-        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.getValue('fire-movement-speed')]);
+        shader.set_uniform_float(shader._uScale,         1, [settings.fireScale]);
+        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.fireMovementSpeed]);
         // clang-format on
       });
     });
@@ -160,90 +168,89 @@ var Effect = class Effect {
 
   // ----------------------------------------------------------------------- private stuff
 
-  // This populates the preset dropdown menu for the fire options.
-  static _createFirePresets(dialog) {
-    dialog.getBuilder().get_object('fire-prefs').connect('realize', (widget) => {
-      const presets = [
-        {
-          name: _('Default Fire'),
-          scale: 1.0,
-          speed: 0.5,
-          color1: 'rgba(76, 51, 25, 0.0)',
-          color2: 'rgba(180, 55, 30, 0.7)',
-          color3: 'rgba(255, 76, 38, 0.9)',
-          color4: 'rgba(255, 166, 25, 1)',
-          color5: 'rgba(255, 255, 255, 1)'
-        },
-        {
-          name: _('Hell Fire'),
-          scale: 1.5,
-          speed: 0.2,
-          color1: 'rgba(0,0,0,0)',
-          color2: 'rgba(103,7,80,0.5)',
-          color3: 'rgba(150,0,24,0.9)',
-          color4: 'rgb(255,200,0)',
-          color5: 'rgba(255, 255, 255, 1)'
-        },
-        {
-          name: _('Dark and Smutty'),
-          scale: 1.0,
-          speed: 0.5,
-          color1: 'rgba(0,0,0,0)',
-          color2: 'rgba(36,3,0,0.5)',
-          color3: 'rgba(150,0,24,0.9)',
-          color4: 'rgb(255,177,21)',
-          color5: 'rgb(255,238,166)'
-        },
-        {
-          name: _('Cold Breeze'),
-          scale: 1.5,
-          speed: -0.1,
-          color1: 'rgba(0,110,255,0)',
-          color2: 'rgba(30,111,180,0.24)',
-          color3: 'rgba(38,181,255,0.54)',
-          color4: 'rgba(34,162,255,0.84)',
-          color5: 'rgb(97,189,255)'
-        },
-        {
-          name: _('Santa is Coming'),
-          scale: 0.4,
-          speed: -0.5,
-          color1: 'rgba(0,110,255,0)',
-          color2: 'rgba(208,233,255,0.24)',
-          color3: 'rgba(207,235,255,0.84)',
-          color4: 'rgb(208,243,255)',
-          color5: 'rgb(255,255,255)'
-        }
-      ];
+  // This set the fire effects settings based on the preset value currently set
+  _setupUsingPresets(settings) {
+    const presets = [
+      {
+        name: _('Default Fire'),
+        scale: 1.0,
+        speed: 0.5,
+        color1: 'rgba(76, 51, 25, 0.0)',
+        color2: 'rgba(180, 55, 30, 0.7)',
+        color3: 'rgba(255, 76, 38, 0.9)',
+        color4: 'rgba(255, 166, 25, 1)',
+        color5: 'rgba(255, 255, 255, 1)'
+      },
+      {
+        name: _('Hell Fire'),
+        scale: 1.5,
+        speed: 0.2,
+        color1: 'rgba(0,0,0,0)',
+        color2: 'rgba(103,7,80,0.5)',
+        color3: 'rgba(150,0,24,0.9)',
+        color4: 'rgb(255,200,0)',
+        color5: 'rgba(255, 255, 255, 1)'
+      },
+      {
+        name: _('Dark and Smutty'),
+        scale: 1.0,
+        speed: 0.5,
+        color1: 'rgba(0,0,0,0)',
+        color2: 'rgba(36,3,0,0.5)',
+        color3: 'rgba(150,0,24,0.9)',
+        color4: 'rgb(255,177,21)',
+        color5: 'rgb(255,238,166)'
+      },
+      {
+        name: _('Cold Breeze'),
+        scale: 1.5,
+        speed: -0.1,
+        color1: 'rgba(0,110,255,0)',
+        color2: 'rgba(30,111,180,0.24)',
+        color3: 'rgba(38,181,255,0.54)',
+        color4: 'rgba(34,162,255,0.84)',
+        color5: 'rgb(97,189,255)'
+      },
+      {
+        name: _('Santa is Coming'),
+        scale: 0.4,
+        speed: -0.5,
+        color1: 'rgba(0,110,255,0)',
+        color2: 'rgba(208,233,255,0.24)',
+        color3: 'rgba(207,235,255,0.84)',
+        color4: 'rgb(208,243,255)',
+        color5: 'rgb(255,255,255)'
+      }
+    ];
 
-      const menu      = Gio.Menu.new();
-      const group     = Gio.SimpleActionGroup.new();
-      const groupName = 'presets';
+    // Find the preset that is selected and setup the fire settings appropriately
+    let name = settings.getValue("fire-presets");
+    if (name == "Custom") {
+      settings.fireScale =  settings.getValue("fire-custom-scale");
+      settings.fireMovementSpeed = settings.getValue("fire-custom-movement-speed");
 
-      // Add all presets.
+      settings.fireColor = [];
+      settings.fireColor.push( settings.getValue("fire-custom-color-1") );
+      settings.fireColor.push( settings.getValue("fire-custom-color-2") );
+      settings.fireColor.push( settings.getValue("fire-custom-color-3") );
+      settings.fireColor.push( settings.getValue("fire-custom-color-4") );
+      settings.fireColor.push( settings.getValue("fire-custom-color-5") );
+    } else {
+
       presets.forEach((preset, i) => {
-        const actionName = 'fire' + i;
-        menu.append(preset.name, groupName + '.' + actionName);
-        let action = Gio.SimpleAction.new(actionName, null);
+        if (preset.name == name) {
+          settings.fireScale =  preset.speed;
+          settings.fireMovementSpeed = preset.scale;
 
-        // Load the preset on activation.
-        action.connect('activate', () => {
-          dialog.getProfileSettings().set_double('fire-movement-speed', preset.speed);
-          dialog.getProfileSettings().set_double('fire-scale', preset.scale);
-          dialog.getProfileSettings().set_string('fire-color-1', preset.color1);
-          dialog.getProfileSettings().set_string('fire-color-2', preset.color2);
-          dialog.getProfileSettings().set_string('fire-color-3', preset.color3);
-          dialog.getProfileSettings().set_string('fire-color-4', preset.color4);
-          dialog.getProfileSettings().set_string('fire-color-5', preset.color5);
-        });
+          settings.fireColor = [];
+          settings.fireColor.push(preset.color1);
+          settings.fireColor.push(preset.color2);
+          settings.fireColor.push(preset.color3);
+          settings.fireColor.push(preset.color4);
+          settings.fireColor.push(preset.color5);
 
-        group.add_action(action);
+        }
       });
-
-      dialog.getBuilder().get_object('fire-preset-button').set_menu_model(menu);
-
-      const root = widget.get_root();
-      root.insert_action_group(groupName, group);
-    });
+    }
   }
 }

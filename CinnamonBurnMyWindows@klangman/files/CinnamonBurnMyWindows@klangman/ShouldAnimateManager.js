@@ -67,9 +67,9 @@ class ShouldAnimateManager {
       return null;
    }
 
-   disconnect() {
+   disconnect(event=null) {
       for (let i=0 ; i<Main.wm._shouldAnimateManager.length ; i++) {
-         if (Main.wm._shouldAnimateManager[i].owner == this._uuid) {
+         if (Main.wm._shouldAnimateManager[i].owner == this._uuid && (!event || event == Main.wm._shouldAnimateManager[i].event)) {
             Main.wm._shouldAnimateManager.splice( i, 1 );
             // Setup a new _shouldAnimate override or restore the original if there are no manager entries left.
             if (Main.wm._shouldAnimateManager.length === 0) {

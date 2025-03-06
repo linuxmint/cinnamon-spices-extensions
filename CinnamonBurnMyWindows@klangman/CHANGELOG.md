@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.8
+
+* Added new effects from the Gnome version (Aura Glow, Mushroom, RGB Warp, Team Rocket)
+* Added Magic Lap effect based on hermes83/compiz-alike-magic-lamp-effect (same as CinnamonMagicLamp)
+* Added the ability to apply effects to the minimize & unminimize events
+* Fixed an issue where the window was jumping a pixel to the right post open animation (finally!)
+* Added Fire effect presets (5 pre-configured fire setups)
+* Changed the Random Effects tab to use a standard List widget
+* Moved the Application Specific settings options to it's own tab
+* Added a custom color selection widget to save configurator GUI space
+* Use WM_CLASS when adding a app specific setting if no app can be found
+* Improvements to the Focus effect (from Gnome version)
+* Added an "About" tab with credits to the various authors
+
 ## 0.9.7
 
 - Added options in the configuration that allows you to define which effects will be used (if any) for dialog windows (i.e. a file open dialog). This allows you to use a more subtle or shorter running effect (i.e focus or glide) for all the dialog windows which are typically opened/closed more frequently.
