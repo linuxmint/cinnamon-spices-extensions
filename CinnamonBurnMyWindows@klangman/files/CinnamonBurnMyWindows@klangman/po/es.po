@@ -35,22 +35,21 @@ msgstr "entra en conflicto con esta extensión."
 
 #. 6.2/extension.js:266
 msgid "minimize/unminimize effects can not be enabled"
-msgstr ""
+msgstr "no se pueden activar los efectos de minimizar/maximizar"
 
 #. 6.2/extension.js:267
 msgid "already handles minimize/unminimize animation events."
-msgstr ""
+msgstr "ya maneja eventos de animación de minimizar/maximizar."
 
 #. 6.2/extension.js:573
-#, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore application specific effects can not be applied to "
 "that window"
 msgstr ""
-"La ventana enfocada anteriormente no está respaldada por una aplicación y, "
-"por lo tanto, no se pueden aplicar efectos específicos de la aplicación a "
-"esa ventana"
+"No se puede determinar la aplicación o la WM_CLASS de la ventana previamente "
+"enfocada, por lo que no se pueden aplicar efectos específicos de la "
+"aplicación a esa ventana"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -72,7 +71,7 @@ msgstr "Aparición"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/AuraGlow.js:103
 msgid "Aura Glow"
-msgstr ""
+msgstr "Brillo del aura"
 
 #. effects/BrokenGlass.js:152
 msgid "Broken Glass"
@@ -215,47 +214,47 @@ msgstr "Matrix"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/Mushroom.js:154
 msgid "Mushroom"
-msgstr ""
+msgstr "Setas"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:227
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "Fontanero de 8 bits"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:244
 msgid "New Bros 2"
-msgstr ""
+msgstr "New Bros 2"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:262
 msgid "The True North"
-msgstr ""
+msgstr "Verdadero norte"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:280
 msgid "Red White and Blue"
-msgstr ""
+msgstr "Rojo, blanco y azul"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:297
 msgid "Rainbow"
-msgstr ""
+msgstr "Arcoiris"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:314
 msgid "Cattuccino"
-msgstr ""
+msgstr "Cattuccino"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:332
 msgid "Dracula"
-msgstr ""
+msgstr "Drácula"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:349
 msgid "Sparkle"
-msgstr ""
+msgstr "Destello"
 
 #. effects/PaintBrush.js:114
 msgid "Paint Brush"
@@ -314,7 +313,7 @@ msgstr "Portal"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/RGBWarp.js:91
 msgid "RGB Warp"
-msgstr ""
+msgstr "Deformación RGB"
 
 #. effects/SnapOfDisintegration.js:124
 msgid "Snap of Disintegration"
@@ -355,7 +354,7 @@ msgstr "Fallo de TV"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/TeamRocket.js:103
 msgid "Team Rocket"
-msgstr ""
+msgstr "Equipo Rocket"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -373,13 +372,12 @@ msgid "Burn My Windows"
 msgstr "Burn My Windows"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
 "Gnome extension by Schneegans"
 msgstr ""
-"Efectos de apertura y cierre de ventanas basados en la extensión Burn-My-"
-"Windows Gnome de Schneegans"
+"Efectos de apertura/cierre/minimización/maximización de ventanas basados en "
+"la extensión Burn-My-Windows Gnome de Schneegans"
 
 #. 6.2->settings-schema.json->general-page->title
 msgid "General"
@@ -390,9 +388,8 @@ msgid "Effect Settings"
 msgstr "Ajustes de efectos"
 
 #. 6.2->settings-schema.json->application-page->title
-#, fuzzy
 msgid "Application Specifics"
-msgstr "Reglas específicas de la aplicación"
+msgstr "Aplicaciones específicas"
 
 #. 6.2->settings-schema.json->random-page->title
 msgid "Random Effects"
@@ -400,7 +397,7 @@ msgstr "Efectos aleatorios"
 
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #. 6.2->settings-schema.json->general-settings->title
 msgid "Burn My Windows General Settings"
@@ -421,7 +418,7 @@ msgstr "Ajustes específicos del efecto"
 #. 6.2->settings-schema.json->fire-custom-section->title
 #. 6.2->settings-schema.json->mushroom-custom-section->title
 msgid "Setting for the custom preset:"
-msgstr ""
+msgstr "Configuración para el preajuste personalizado:"
 
 #. 6.2->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
@@ -429,7 +426,7 @@ msgstr "Efectos incluidos en las series aleatorias:"
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
-msgstr ""
+msgstr "Acerca de Cinnamon Burn-My-Windows"
 
 #. 6.2->settings-schema.json->about-text->description
 msgid ""
@@ -442,6 +439,14 @@ msgid ""
 "The Magic Lamp Effect is ported from code by hermes83\n"
 "GitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
 msgstr ""
+"Adaptado a Cinnamon por Kevin Langman\n"
+"Github: https://github.com/klangman/CinnamonBurnMyWindows\n"
+"\n"
+"Basado en el código Burn-My-Windows de Schneegans y colaboradores\n"
+"Github: https://github.com/Schneegans/Burn-My-Windows\n"
+"\n"
+"El Efecto Lámpara Mágica ha sido portado desde el código de hermes83\n"
+"GitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
 
 #. 6.2->settings-schema.json->app-rules->description
 msgid "Application Specific Rules"
@@ -453,19 +458,19 @@ msgstr "Habilitado"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Minimize"
-msgstr ""
+msgstr "Minimizar"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Unminimize"
-msgstr ""
+msgstr "Maximizar"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Application"
@@ -493,9 +498,8 @@ msgstr ""
 "aplicación y, a continuación, vuelva aquí y pulse este botón."
 
 #. 6.2->settings-schema.json->random-include->description
-#, fuzzy
 msgid "Effects included in the randomized sets"
-msgstr "Efectos incluidos en las series aleatorias:"
+msgstr "Efectos incluidos en las series aleatorias"
 
 #. 6.2->settings-schema.json->random-include->tooltip
 msgid ""
@@ -503,26 +507,29 @@ msgid ""
 "event type. When 'Randomized' is selected for any event on the General tab "
 "these sets are used."
 msgstr ""
+"Define qué efectos se incluyen en los conjuntos aleatorios para cada tipo de "
+"evento de ventana. Cuando se selecciona 'Aleatorio' para cualquier evento en "
+"la pestaña General se utilizan estos conjuntos."
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "Effect Name         "
-msgstr ""
+msgstr "Nombre del efecto          "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "      Open        "
-msgstr ""
+msgstr "      Abrir        "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "      Close       "
-msgstr ""
+msgstr "      Cerrar       "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "     Minimize     "
-msgstr ""
+msgstr "     Minimizar     "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "    Unminimize    "
-msgstr ""
+msgstr "    Maximizar    "
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -532,7 +539,7 @@ msgstr ""
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
 msgid "Magic Lamp"
-msgstr ""
+msgstr "Lámpara mágica"
 
 #. 6.2->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
@@ -588,14 +595,12 @@ msgid "Close dialog window effect"
 msgstr "Efecto de cierre"
 
 #. 6.2->settings-schema.json->minimize-effect->description
-#, fuzzy
 msgid "Minimize window effect"
-msgstr "Efecto para abrir ventana"
+msgstr "Minimizar el efecto ventana"
 
 #. 6.2->settings-schema.json->unminimize-effect->description
-#, fuzzy
 msgid "Unminimize window effect"
-msgstr "Efecto para abrir ventana"
+msgstr "Maximizar el efecto ventana"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
@@ -639,13 +644,12 @@ msgid "Effect Duration (milliseconds)"
 msgstr "Duración del efecto (milisegundos)"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
-#, fuzzy
 msgid "Random Color"
-msgstr "Color de línea"
+msgstr "Color aleatorio"
 
 #. 6.2->settings-schema.json->aura-glow-start-hue->description
 msgid "Start Hue"
-msgstr ""
+msgstr "Iniciar tono"
 
 #. 6.2->settings-schema.json->aura-glow-speed->description
 #. 6.2->settings-schema.json->glitch-speed->description
@@ -654,18 +658,16 @@ msgid "Speed"
 msgstr "Velocidad"
 
 #. 6.2->settings-schema.json->aura-glow-saturation->description
-#, fuzzy
 msgid "Saturation"
-msgstr "Aparición"
+msgstr "Saturación"
 
 #. 6.2->settings-schema.json->aura-glow-edge-size->description
-#, fuzzy
 msgid "Edge Size"
-msgstr "Tamaño de píxel"
+msgstr "Tamaño del borde"
 
 #. 6.2->settings-schema.json->aura-glow-edge-hardness->description
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Dureza del borde"
 
 #. 6.2->settings-schema.json->aura-glow-blur->description
 #. 6.2->settings-schema.json->focus-blur-amount->description
@@ -712,11 +714,11 @@ msgstr "Color"
 #. 6.2->settings-schema.json->fire-presets->options
 #. 6.2->settings-schema.json->mushroom-presets->options
 msgid "Custom"
-msgstr ""
+msgstr "Personalizar"
 
 #. 6.2->settings-schema.json->fire-presets->description
 msgid "Fire preset"
-msgstr ""
+msgstr "Preajuste de fuego"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
@@ -731,9 +733,8 @@ msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr "Crea un fuego más dinámico pero requiere más potencia de GPU."
 
 #. 6.2->settings-schema.json->fire-colors->description
-#, fuzzy
 msgid "Colors 1-5"
-msgstr "Color #1"
+msgstr "Colores 1-5"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
@@ -798,99 +799,92 @@ msgid "If disabled, a random location will be chosen."
 msgstr "Si se desactiva, se elegirá una ubicación aleatoria."
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-#, fuzzy
 msgid "default"
-msgstr "Fuego predeterminado"
+msgstr "predeterminado"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "sine"
-msgstr ""
+msgstr "seno"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-#, fuzzy
 msgid "random"
-msgstr "Aleatorio"
+msgstr "aleatorio"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Minimize: Default - Unminimize: Sine"
-msgstr ""
+msgstr "Minimizar: Por defecto - Maximizar: Seno"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Minimize: Sine - Unminimize: Default"
-msgstr ""
+msgstr "Minimizar: Seno - Maximizar: Por defecto"
 
 #. 6.2->settings-schema.json->magiclamp-effect->description
-#, fuzzy
 msgid "The type of effect"
-msgstr "Efecto para abrir ventana"
+msgstr "Tipo de efecto"
 
 #. 6.2->settings-schema.json->magiclamp-effect->tooltip
 msgid ""
 "Using 'default' will result in a curved effect where using 'sine' will "
 "result in a more wavy effect"
 msgstr ""
+"El uso de 'predeterminado' dará lugar a un efecto curvo, mientras que el uso "
+"de 'seno' dará lugar a un efecto más ondulado"
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"
-msgstr ""
+msgstr "Mosaico X"
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
 msgid "This effects the quality and the cost of the animation"
-msgstr ""
+msgstr "Esto repercute en la calidad y el coste de la animación"
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->description
 msgid "Y Tiles"
-msgstr ""
+msgstr "Mosaico Y"
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
 msgid "This effects the quality and the costs of the animation"
-msgstr ""
+msgstr "Esto repercute en la calidad y el coste de la animación"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
 msgid "Mushroom preset"
-msgstr ""
+msgstr "Preajuste de setas"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
-#, fuzzy
 msgid "Scale Style"
-msgstr "Escala"
+msgstr "Estilo de escala"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-count->description
-#, fuzzy
 msgid "Spark Count"
-msgstr "Conteo de radios"
+msgstr "Conteo de chispas"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-color->description
-#, fuzzy
 msgid "Spark Color"
-msgstr "Color"
+msgstr "Color de chispa"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
 msgid "Spark Rotation"
-msgstr ""
+msgstr "Rotación de la chispa"
 
 #. 6.2->settings-schema.json->mushroom-custom-rays-color->description
-#, fuzzy
 msgid "Rays Color"
-msgstr "Color"
+msgstr "Color de los rayos"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-count->description
-#, fuzzy
 msgid "Star Rings Count"
-msgstr "Papá Noel ya viene"
+msgstr "Recuento de anillos estelares"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "Rotación del anillo estelar"
 
 #. 6.2->settings-schema.json->mushroom-custom-star-count->description
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "Número de estrellas por anillo"
 
 #. 6.2->settings-schema.json->mushroom-star-colors->description
-#, fuzzy
 msgid "Colors 1-6"
-msgstr "Color #1"
+msgstr "Colores 1-6"
 
 #. 6.2->settings-schema.json->pixelate-noise->description
 msgid "Noise"
@@ -914,50 +908,45 @@ msgstr "Detalles"
 
 #. 6.2->settings-schema.json->rgbwarp-brightness->description
 msgid "Brightness"
-msgstr ""
+msgstr "Brillo"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-r->description
-#, fuzzy
 msgid "Red Speed"
-msgstr "Velocidad"
+msgstr "Velocidad del rojo"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-g->description
-#, fuzzy
 msgid "Green Speed"
-msgstr "Velocidad de movimiento del fuego"
+msgstr "Velocidad del verde"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-b->description
-#, fuzzy
 msgid "Blue Speed"
-msgstr "Velocidad"
+msgstr "Velocidad del azul"
 
 #. 6.2->settings-schema.json->team-rocket-animation-split->description
 msgid "Animation Split"
-msgstr ""
+msgstr "División de la animación"
 
 #. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
 #. position->description
-#, fuzzy
 msgid "Horizontal Sparkle Position"
-msgstr "Escala horizontal"
+msgstr "Posición de destello horizontal"
 
 #. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
 #. position->description
-#, fuzzy
 msgid "Vertical Sparkle Position"
-msgstr "Escala vertical"
+msgstr "Posición de destello vertical"
 
 #. 6.2->settings-schema.json->team-rocket-window-rotation->description
 msgid "Rotate Window"
-msgstr ""
+msgstr "Rotar ventana"
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Rotación de destellos"
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-size->description
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Tamaño del destello"
 
 #. 6.2->settings-schema.json->wisps-color-1->description
 msgid "Color #1"
