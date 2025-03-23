@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 01:27+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-03-23 22:02+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -19,8 +20,8 @@ msgid ""
 "Switch between workspaces, show desktop, activate overview or expo, ... by "
 "scrolling, double click, mouse gestures etc on free space of the panel."
 msgstr ""
-"通过滚动、双击、鼠标手势等等在面板上在工作区、显示桌面、激活概览或显示之间"
-"切换，..."
+"通过滚动、双击、鼠标手势等等在面板上在工作区、显示桌面、激活概览或显示之间切"
+"换，..."
 
 #. metadata.json->name
 msgid "Smart Panel"
@@ -77,11 +78,9 @@ msgstr "毫秒"
 msgid "Independent actions for scrolling up and down"
 msgstr "向上和向下滚动时的独立动作"
 
-#. settings-schema.json->topleft-osd->description
-msgid ""
-"Show workspace notification on the top left corner of the scren when "
-"switching workspaces"
-msgstr "切换工作区时，在屏幕的左上角显示工作区通知"
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "
