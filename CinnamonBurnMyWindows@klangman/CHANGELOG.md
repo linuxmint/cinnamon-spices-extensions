@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.9b
+
+* Fix broken version 0.9.9, I forgot to copy over some changes from my dev branch for 0.9.9
+
 ## 0.9.9
 
 * Added a "Reset to default" button for each effect under the "Effect Settings" tab. 
