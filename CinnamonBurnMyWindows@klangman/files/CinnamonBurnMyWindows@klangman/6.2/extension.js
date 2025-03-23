@@ -55,6 +55,7 @@ const Settings = imports.ui.settings;
 const MessageTray = imports.ui.messageTray;
 const St = imports.gi.St;
 const Cinnamon = imports.gi.Cinnamon;
+const Util = imports.misc.util;
 const SignalManager = imports.misc.signalManager;
 
 const Effect = {
@@ -133,6 +134,8 @@ class BurnMyWindows {
       // Create the settings and signal manager
       this._settings = new Settings.ExtensionSettings(this, this.meta.uuid)
       this._signalManager = new SignalManager.SignalManager(null);
+      // Save the version number to the settings so that the About page can read it (is there a better way?)
+      this._settings.setValue("ext-version", this.meta.version);
 
       // Effects in this array must be ordered by effect number as defined by the setting-schema.json.
       // New effects will be added in alphabetical order in the UI list, but the effect number, and
@@ -209,28 +212,27 @@ class BurnMyWindows {
       });
   }
 
-  // This function will ensure that all the effects are defined in the "random_include" list.
-  // After an upgrade, new effects might have been added, in which case we would need to add new
-  // List entries to "random_include" for the new effect(s). This function assumes that only
-  // new effect changes can occur, no removal or renaming is allowed. It also assumes that the
-  // Effect const and the "random-include" setting are both in alphabetical order.
+  // This function will rebuild the "random-include" list. After an upgrade,
+  // the Effect const might have differences that need to be reflected in the
+  // "random-include" List. New effects will be added (all options enabled)
+  // and retired effects will be removed. Unchanged effects will retain existing
+  // settings.
   _upgradeRandomIncludeEffects() {
      let randomInclude =  this._settings.getValue("random-include");
+     let newRandomInclude = [];
      let effects = Object.entries(Effect);
-     if (randomInclude.length != effects.length) {
-        let newRandomInclude = [];
-        let i = 0;
-        for (let ei=0 ; ei < effects.length ; ei++) {
-           if (i < randomInclude.length && randomInclude[i].name == effects[ei][1].name) {
-              newRandomInclude.push(randomInclude[i]);
-              i++;
+
+     for (let i=0 ; i < effects.length ; i++) {
+        if (effects[i][1].idx < 900) {// An idx of 900 or higher is reserved for non-effect types, i.e. None and Random
+           let element = randomInclude.find((element) => element.name == effects[i][1].name);
+           if (element) {
+              newRandomInclude.push(element);
            } else {
-              if (effects[ei][1].idx < 900) // idx of 900 or higher is reserved for non-effect types, i.e. None and Random
-                 newRandomInclude.push( {name: effects[ei][1].name, open: true, close: true, minimize: true, unminimize: true} );
+              newRandomInclude.push( {name: effects[i][1].name, open: true, close: true, minimize: true, unminimize: true} );
            }
         }
-        this._settings.setValue("random-include", newRandomInclude);
      }
+     this._settings.setValue("random-include", newRandomInclude);
   }
 
   // Try to enable the Minimize/Unminimize event connection if there is a need
@@ -311,13 +313,14 @@ class BurnMyWindows {
             // so we need to undue these changes to make sure the window animates to to correct window position.
             // We use the actors pre-ease values so that we have a good chance of being right even if Cinnamon
             // makes further changes in future releases.
-            actor.set_position(actorX, actorY);
+            if (chosenEffect.effect instanceof Doom.Effect) {
+               // Hack fix for Doom, not sure why I need to move the window in this way,
+               // but it does not effect the resulting Y location of the window after animation
+               actor.set_position(actorX, actorY+extensionThis._settings.getValue("doom-y-hack"));
+            } else {
+               actor.set_position(actorX, actorY);
+            }
          }
-         //if (chosenEffect.effect instanceof Doom.Effect && (event === ShouldAnimateManager.Events.MapWindow || event === ShouldAnimateManager.Events.Unminimize)) {
-            // Hack fix for Doom, not sure why I need to move the window in this way,
-            // but it does not effect the resulting Y location of the window after animation
-            //actor.set_y(actor.y-32);
-         //}
 
          // Quickly restore the original behavior. Nobody noticed, I guess :D
          actor.ease = orig;
@@ -441,6 +444,10 @@ class BurnMyWindows {
       appID = app.get_id();
     }
     let wmClass = metaWindow.get_wm_class();
+    if (wmClass == "CinnamonBurnMyWindowsTest.py") {
+       let selectedEffect = this._settings.getValue("effect-selector");
+       return {open: selectedEffect, close: selectedEffect, minimize: selectedEffect, unminimize: selectedEffect};
+    }
     let appRules = this._settings.getValue("app-rules");
     for( let i=0 ; i < appRules.length ; i++ ) {
       if (appRules[i].enabled && ((appID && appRules[i].application == appID) || (appRules[i].application == wmClass))) {
@@ -579,6 +586,11 @@ class BurnMyWindows {
     }
   }
 
+  on_test_button_pressed() {
+    let command = GLib.get_home_dir() + "/.local/share/cinnamon/extensions/" + UUID + "/CinnamonBurnMyWindowsTest";
+    Util.spawnCommandLineAsync(command);
+  }
+
 }
 
 let extension = null;
@@ -601,6 +613,9 @@ function init(metadata) {
 
 const Callbacks = {
   on_config_button_pressed: function() {
-     extension.on_config_button_pressed()
+     extension.on_config_button_pressed();
+  },
+  on_test_button_pressed: function() {
+     extension.on_test_button_pressed();
   }
 }

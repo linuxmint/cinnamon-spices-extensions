@@ -83,6 +83,9 @@ var Effect = class Effect {
       shader._uScale         = shader.get_uniform_location('uScale');
       shader._uMovementSpeed = shader.get_uniform_location('uMovementSpeed');
 
+      shader._uRandomColor = shader.get_uniform_location('uRandomColor');
+      shader._uSeed        = shader.get_uniform_location('uSeed');
+
       // And update all uniforms at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         for (let i = 0; i < 5; i++) {
@@ -94,6 +97,8 @@ var Effect = class Effect {
 
         // clang-format off
         shader.set_uniform_float(shader._u3DNoise,       1, [settings.getValue('fire-3d-noise')]);
+        shader.set_uniform_float(shader._uRandomColor,   1, [settings.getValue('fire-random-color')]);
+        shader.set_uniform_float(shader._uSeed,          1, [Math.random()]);
         shader.set_uniform_float(shader._uScale,         1, [settings.fireScale]);
         shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.fireMovementSpeed]);
         // clang-format on
@@ -220,6 +225,16 @@ var Effect = class Effect {
         color3: 'rgba(207,235,255,0.84)',
         color4: 'rgb(208,243,255)',
         color5: 'rgb(255,255,255)'
+      },
+      {
+        name: _('Nuclear'),
+        scale: 1.5,
+        speed: 0.5,
+        color1: 'rgba(0,0,0,0)',
+        color2: 'rgba(2, 40, 0, 0.3)',
+        color3: 'rgba(0, 200, 50, 0.9)',
+        color4: 'rgba(255, 255, 0, 1.0)',
+        color5: 'rgba(255, 255, 255, 1.0)'
       }
     ];
 
