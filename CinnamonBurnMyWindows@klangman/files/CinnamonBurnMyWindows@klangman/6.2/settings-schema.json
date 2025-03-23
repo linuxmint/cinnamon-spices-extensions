@@ -49,28 +49,29 @@
     "effect-settings" : {
       "type" : "section",
       "title" : "Effect Specific Settings",
-      "keys" : ["apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time",
-                "aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time",
-                "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time",
-                "energize-a-scale", "energize-a-color", "energize-a-animation-time",
-                "energize-b-scale", "energize-b-color", "energize-b-animation-time",
-                "fire-presets", "fire-3d-noise", "fire-animation-time",
-                "focus-blur-amount", "focus-blur-quality", "focus-animation-time",
-                "glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time",
-                "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time",
-                "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time",
-                "incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time",
-                "magiclamp-effect", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time",
-                "mushroom-presets", "mushroom-animation-time",
-                "pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time",
-                "pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time",
-                "pixel-wipe-pixel-size", "pixel-wipe-animation-time",
-                "portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time",
-                "rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time",
-                "team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time",
-                "tv-effect-color", "tv-animation-time",
-                "tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time",
-                "wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time"]
+      "keys" : ["apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time", "apparition-reset",
+                "aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time", "aura-glow-reset",
+                "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-y-hack", "doom-animation-time", "doom-reset",
+                "energize-a-scale", "energize-a-color", "energize-a-animation-time", "energize-a-reset",
+                "energize-b-scale", "energize-b-color", "energize-b-animation-time", "energize-b-reset",
+                "fire-presets", "fire-3d-noise", "fire-random-color", "fire-animation-time", "fire-reset",
+                "focus-blur-amount", "focus-blur-quality", "focus-animation-time", "focus-reset",
+                "glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time", "glide-reset",
+                "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time", "glitch-reset",
+                "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time", "hexagon-reset",
+                "incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time", "incinerate-reset",
+                "magiclamp-effect", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time", "magiclamp-reset",
+                "mushroom-presets", "mushroom-animation-time", "mushroom-reset",
+                "pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time", "pixelate-reset",
+                "pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time", "pixel-wheel-reset",
+                "pixel-wipe-pixel-size", "pixel-wipe-animation-time", "pixel-wipe-reset",
+                "portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time", "portal-reset",
+                "rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time", "rgbwarp-reset",
+                "team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time", "team-rocket-reset",
+                "tv-effect-color", "tv-animation-time", "tv-reset",
+                "tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time", "tv-glitch-reset",
+                "wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time", "wisps-reset",
+                "test-effect"]
     },
     "fire-custom-section" : {
      "type" : "section",
@@ -87,7 +88,7 @@
     "random-section" : {
       "type" : "section",
       "title" : "Effects included in the randomized sets:",
-      "keys" : ["random-include"]
+      "keys" : ["random-include", "random-buttons"]
     },
     "about-section" : {
       "type" : "section",
@@ -97,8 +98,11 @@
   },
 
   "about-text": {
-     "type" : "label",
-     "description" : "Ported to Cinnamon by Kevin Langman\nGithub: https://github.com/klangman/CinnamonBurnMyWindows\n\nBased on the Burn-My-Windows code by Schneegans and contributors\nGithub: https://github.com/Schneegans/Burn-My-Windows\n\nThe Magic Lamp Effect is ported from code by hermes83\nGitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "About",
+    "description" : "\n<b>Disintegrate your windows with style.</b>\nVersion: ext-version\n\nPorted to Cinnamon by Kevin Langman\n<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / <a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/new\">Report an issue</a>\n\nBased on the Burn-My-Windows code by Schneegans and contributors\n<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a>\n\nThe Magic Lamp Effect is ported from code by hermes83\n<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-effect\">Github</a>",
+    "icon" : "/icons/cinnamon-burn-my-window.png"
   },
 
   "app-rules": {
@@ -274,6 +278,14 @@
         { "name": "TV Glitch",   "open": true, "close": true, "minimize": true, "unminimize": true },
         { "name": "Wisps",       "open": true, "close": true, "minimize": true, "unminimize": true }
         ]
+  },
+
+  "random-buttons" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "SetClearButtons",
+     "set-button" : "Set all check boxes",
+     "clear-button" : "Clear all check boxes"
   },
 
   "effect-selector": {
@@ -508,7 +520,9 @@
   },
 
   "apparition-shake-intensity": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Shake Intensity",
      "min" : 0.0,
      "max" : 10.0,
@@ -518,7 +532,9 @@
   },
 
   "apparition-twirl-intensity": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Twirl Intensity",
      "min" : -10.0,
      "max" : 10.0,
@@ -528,7 +544,9 @@
   },
 
   "apparition-suction-intensity": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Suction Intensity",
      "min" : 0.0,
      "max" : 1.0,
@@ -538,7 +556,9 @@
   },
 
   "apparition-randomness": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Randomness",
      "min" : 0.0,
      "max" : 1.0,
@@ -548,14 +568,26 @@
   },
 
   "apparition-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 2000,
      "step" : 10,
      "dependency" : "effect-selector=0",
      "default": 300
   },
+
+  "apparition-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=0",
+     "keys" : ["apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time"]
+  },
+
 
   "aura-glow-random-color": {
     "type" : "switch",
@@ -565,7 +597,9 @@
   },
 
   "aura-glow-start-hue": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Start Hue",
      "min" : 0.0,
      "max" : 1.0,
@@ -575,7 +609,9 @@
   },
 
   "aura-glow-speed": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Speed",
      "min" : -5,
      "max" : 5,
@@ -585,7 +621,9 @@
   },
 
   "aura-glow-saturation": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Saturation",
      "min" : 0.0,
      "max" : 1.0,
@@ -595,7 +633,9 @@
   },
 
   "aura-glow-edge-size": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Edge Size",
      "min" : 0.0,
      "max" : 1.0,
@@ -605,7 +645,9 @@
   },
 
   "aura-glow-edge-hardness": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Edge Hardness",
      "min" : 0.0,
      "max" : 1.0,
@@ -615,7 +657,9 @@
   },
 
   "aura-glow-blur": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Blur Amount",
      "min" : 0,
      "max" : 30,
@@ -625,8 +669,10 @@
   },
 
   "aura-glow-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 3000,
      "step" : 10,
@@ -634,8 +680,20 @@
      "default": 750
   },
 
+  "aura-glow-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=22",
+     "keys" : ["aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time"]
+  },
+
+
   "doom-horizontal-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Horizontal Scale",
      "min" : 1,
      "max" : 50,
@@ -645,7 +703,9 @@
   },
 
   "doom-vertical-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Vertical Scale",
      "min" : 1,
      "max" : 50,
@@ -655,7 +715,9 @@
   },
 
   "doom-pixel-size": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Pixel Size",
      "min" : 1,
      "max" : 50,
@@ -664,9 +726,24 @@
      "default": 10
   },
 
+  "doom-y-hack": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Y offset fix for open/unminimize events",
+     "min" : -100,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "effect-selector=2",
+     "tooltip" : "Apply an offset to the Y axis window target position so that the open/unminimize animation completes at the right location. This is a hack fix for the Doom effect until I can find a proper fix",
+     "default": 0
+  },
+
   "doom-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
@@ -674,8 +751,20 @@
      "default": 1000
   },
 
+  "doom-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=2",
+     "keys" : ["doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-y-hack", "doom-animation-time"]
+  },
+
+
   "energize-a-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10.0,
@@ -692,8 +781,10 @@
   },
 
   "energize-a-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
@@ -701,8 +792,20 @@
      "default": 2000
   },
 
+  "energize-a-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=3",
+     "keys" : ["energize-a-scale", "energize-a-color", "energize-a-animation-time"]
+  },
+
+
   "energize-b-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10.0,
@@ -719,13 +822,24 @@
   },
 
   "energize-b-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
      "dependency" : "effect-selector=4",
      "default": 1000
+  },
+
+  "energize-b-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=4",
+     "keys" : ["energize-b-scale", "energize-b-color", "energize-b-animation-time"]
   },
 
 
@@ -738,14 +852,17 @@
       "Dark and Smutty" : "Dark and Smutty",
       "Cold Breeze" : "Cold Breeze",
       "Santa is Coming" : "Santa is Coming",
+      "Nuclear" : "Nuclear",
       "Custom" : "Custom"
     },
-    "description": "Fire preset",
+    "description": "Fire Preset",
     "dependency" : "effect-selector=5"
   },
 
   "fire-custom-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 3,
@@ -755,7 +872,9 @@
   },
 
   "fire-custom-movement-speed": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Fire Movement Speed",
      "min" : -2,
      "max" : 2,
@@ -768,6 +887,14 @@
     "type" : "switch",
     "description": "Fire 3D Noise",
     "tooltip": "Creates a more dynamic fire but requires more GPU power.",
+    "dependency" : "effect-selector=5",
+    "default": false
+  },
+
+  "fire-random-color": {
+    "type" : "switch",
+    "description": "Use a Random Color (overrides other color settings)",
+    "tooltip": "Use a random fire color. This setting will override any preset or custom colors settings you select.",
     "dependency" : "effect-selector=5",
     "default": false
   },
@@ -810,8 +937,10 @@
   },
 
   "fire-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
@@ -819,9 +948,20 @@
      "default": 1500
   },
 
+  "fire-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=5",
+     "keys" : ["fire-presets", "fire-3d-noise", "fire-animation-time", "fire-custom-scale", "fire-custom-movement-speed", "fire-custom-color-1", "fire-custom-color-2", "fire-custom-color-3", "fire-custom-color-4", "fire-custom-color-5"]
+  },
+
 
   "focus-blur-amount": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Blur Amount",
      "min" : 0,
      "max" : 100,
@@ -831,7 +971,9 @@
   },
 
   "focus-blur-quality": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Blur Quality",
      "min" : 1,
      "max" : 10,
@@ -842,8 +984,10 @@
   },
 
   "focus-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 5000,
      "step" : 10,
@@ -851,8 +995,20 @@
      "default": 500
   },
 
+  "focus-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=21",
+     "keys" : ["focus-blur-amount", "focus-blur-quality", "focus-animation-time"]
+  },
+
+
   "glide-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 1,
@@ -862,7 +1018,9 @@
   },
 
   "glide-squish": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Squish",
      "min" : 0,
      "max" : 1,
@@ -872,7 +1030,9 @@
   },
 
   "glide-tilt": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Tilt",
      "min" : -1,
      "max" : 1,
@@ -882,7 +1042,9 @@
   },
 
   "glide-shift": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Shift",
      "min" : -1,
      "max" : 1,
@@ -892,8 +1054,10 @@
   },
 
   "glide-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 2000,
      "step" : 10,
@@ -901,8 +1065,20 @@
      "default": 250
   },
 
+  "glide-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=6",
+     "keys" : ["glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time"]
+  },
+
+
   "glitch-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10,
@@ -912,7 +1088,9 @@
   },
 
   "glitch-strength": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Strength",
      "min" : 0.1,
      "max" : 10,
@@ -922,7 +1100,9 @@
   },
 
   "glitch-speed": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Speed",
      "min" : 0.1,
      "max" : 10,
@@ -939,8 +1119,10 @@
   },
 
   "glitch-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 2000,
      "step" : 10,
@@ -948,8 +1130,20 @@
      "default": 750
   },
 
+  "glitch-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=7",
+     "keys" : ["glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time"]
+  },
+
+
   "hexagon-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10,
@@ -959,7 +1153,9 @@
   },
 
   "hexagon-line-width": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Mesh Line Width",
      "min" : 0,
      "max" : 10,
@@ -991,8 +1187,10 @@
   },
 
   "hexagon-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
@@ -1000,8 +1198,20 @@
      "default": 1500
   },
 
+  "hexagon-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=8",
+     "keys" : ["hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time"]
+  },
+
+
   "incinerate-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10,
@@ -1011,7 +1221,9 @@
   },
 
   "incinerate-turbulence": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Turbulence",
      "min" : 0,
      "max" : 1,
@@ -1036,13 +1248,24 @@
   },
 
   "incinerate-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
      "dependency" : "effect-selector=9",
      "default": 2000
+  },
+
+  "incinerate-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=9",
+     "keys" : ["incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time"]
   },
 
 
@@ -1062,35 +1285,50 @@
   },
 
   "magiclamp-x-tiles": {
-    "type": "scale",
-    "default": 20,
-    "min": 3,
-    "max": 50,
-    "step": 1,
-    "description": "X Tiles",
-    "dependency" : "effect-selector=26",
-    "tooltip": "This effects the quality and the cost of the animation"
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "default": 20,
+     "min": 3,
+     "max": 50,
+     "step": 1,
+     "description": "X Tiles",
+     "dependency" : "effect-selector=26",
+     "tooltip": "This effects the quality and the cost of the animation"
   },
 
   "magiclamp-y-tiles": {
-    "type": "scale",
-    "default": 20,
-    "min": 3,
-    "max": 50,
-    "step": 1,
-    "description": "Y Tiles",
-    "dependency" : "effect-selector=26",
-    "tooltip": "This effects the quality and the costs of the animation"
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "default": 20,
+     "min": 3,
+     "max": 50,
+     "step": 1,
+     "description": "Y Tiles",
+     "dependency" : "effect-selector=26",
+     "tooltip": "This effects the quality and the costs of the animation"
   },
 
   "magiclamp-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 3000,
      "step" : 10,
      "dependency" : "effect-selector=26",
      "default": 1200
+  },
+
+  "magiclamp-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=26",
+     "keys" : ["magiclamp-effect", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time"]
   },
 
 
@@ -1139,12 +1377,14 @@
       "Sparkle" : "Sparkle",
       "Custom" : "Custom"
     },
-    "description": "Mushroom preset",
+    "description": "Mushroom Preset",
     "dependency" : "effect-selector=25"
   },
 
   "mushroom-custom-scale-style": {
-     "type": "spinbutton",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale Style",
      "min" : 0,
      "max" : 1,
@@ -1154,7 +1394,9 @@
   },
 
   "mushroom-custom-spark-count": {
-     "type": "spinbutton",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Spark Count",
      "min" : 0,
      "max" : 25,
@@ -1171,7 +1413,9 @@
   },
 
   "mushroom-custom-spark-rotation": {
-     "type": "spinbutton",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Spark Rotation",
      "min" : -3,
      "max" : 3,
@@ -1188,7 +1432,9 @@
   },
 
   "mushroom-custom-ring-count": {
-     "type": "spinbutton",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Star Rings Count",
      "min" : 0,
      "max" : 5,
@@ -1198,7 +1444,9 @@
   },
 
   "mushroom-custom-ring-rotation": {
-     "type": "spinbutton",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Star Ring Rotation",
      "min" : -3,
      "max" : 3,
@@ -1208,7 +1456,9 @@
   },
 
   "mushroom-custom-star-count": {
-     "type": "spinbutton",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Stars Count Per Ring",
      "min" : 0,
      "max" : 7,
@@ -1261,8 +1511,10 @@
   },
 
   "mushroom-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 5000,
      "step" : 10,
@@ -1270,9 +1522,20 @@
      "default": 1500
   },
 
+  "mushroom-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=25",
+     "keys" : ["mushroom-presets", "mushroom-animation-time", "mushroom-custom-scale-style", "mushroom-custom-spark-count", "mushroom-custom-spark-color", "mushroom-custom-spark-rotation", "mushroom-custom-rays-color", "mushroom-custom-ring-count", "mushroom-custom-ring-rotation", "mushroom-custom-star-count", "mushroom-custom-star-color-0", "mushroom-custom-star-color-1", "mushroom-custom-star-color-2", "mushroom-custom-star-color-3", "mushroom-custom-star-color-4", "mushroom-custom-star-color-5"]
+  },
+
 
   "pixelate-noise": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Noise",
      "min" : 1,
      "max" : 100,
@@ -1282,7 +1545,9 @@
   },
 
   "pixelate-pixel-size": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Pixel Size",
      "min" : 1,
      "max" : 50,
@@ -1292,8 +1557,10 @@
   },
 
   "pixelate-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
@@ -1301,8 +1568,19 @@
      "default": 500
   },
 
+  "pixelate-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=12",
+     "keys" : ["pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time"]
+  },
+
   "pixel-wheel-spoke-count": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Spoke Count",
      "min" : 1,
      "max" : 50,
@@ -1312,7 +1590,9 @@
   },
 
   "pixel-wheel-pixel-size": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Pixel Size",
      "min" : 1,
      "max" : 50,
@@ -1322,8 +1602,10 @@
   },
 
   "pixel-wheel-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 2000,
      "step" : 10,
@@ -1331,8 +1613,20 @@
      "default": 300
   },
 
+  "pixel-wheel-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=13",
+     "keys" : ["pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time"]
+  },
+
+
   "pixel-wipe-pixel-size": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Pixel Size",
      "min" : 1,
      "max" : 50,
@@ -1342,14 +1636,26 @@
   },
 
   "pixel-wipe-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 5000,
      "step" : 10,
      "dependency" : "effect-selector=14",
      "default": 1000
   },
+
+  "pixel-wipe-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=14",
+     "keys" : ["pixel-wipe-pixel-size", "pixel-wipe-animation-time"]
+  },
+
 
   "portal-color": {
      "type": "colorchooser",
@@ -1359,7 +1665,9 @@
   },
 
   "portal-rotation-speed": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Rotation Speed",
      "min" : -2,
      "max" : 2,
@@ -1369,7 +1677,9 @@
   },
 
   "portal-whirling": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Whirling",
      "min" : -2,
      "max" : 2,
@@ -1379,7 +1689,9 @@
   },
 
   "portal-details": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Details",
      "min" : 1,
      "max" : 100,
@@ -1389,8 +1701,10 @@
   },
 
   "portal-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 500,
      "max" : 5000,
      "step" : 10,
@@ -1398,8 +1712,20 @@
      "default": 1250
   },
 
+  "portal-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=15",
+     "keys" : ["portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time"]
+  },
+
+
   "rgbwarp-brightness": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Brightness",
      "min" : 0,
      "max" : 1,
@@ -1409,7 +1735,9 @@
   },
 
   "rgbwarp-speed-r": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Red Speed",
      "min" : 0,
      "max" : 1,
@@ -1419,7 +1747,9 @@
   },
 
   "rgbwarp-speed-g": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Green Speed",
      "min" : 0,
      "max" : 1,
@@ -1429,7 +1759,9 @@
   },
 
   "rgbwarp-speed-b": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Blue Speed",
      "min" : 0,
      "max" : 1,
@@ -1439,8 +1771,10 @@
   },
 
   "rgbwarp-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 5000,
      "step" : 10,
@@ -1448,8 +1782,20 @@
      "default": 750
   },
 
+  "rgbwarp-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=24",
+     "keys" : ["rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time"]
+  },
+
+
   "team-rocket-animation-split": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Animation Split",
      "min" : 0.2,
      "max" : 0.8,
@@ -1459,7 +1805,9 @@
   },
 
   "team-rocket-horizontal-sparkle-position": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Horizontal Sparkle Position",
      "min" : -1.0,
      "max" : 1.0,
@@ -1469,7 +1817,9 @@
   },
 
   "team-rocket-vertical-sparkle-position": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Vertical Sparkle Position",
      "min" : -1.0,
      "max" : 1.0,
@@ -1486,7 +1836,9 @@
   },
 
   "team-rocket-sparkle-rot": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Sparkle Rotation",
      "min" : -1.0,
      "max" : 1.0,
@@ -1496,7 +1848,9 @@
   },
 
   "team-rocket-sparkle-size": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Sparkle Size",
      "min" : 0.5,
      "max" : 1.0,
@@ -1506,14 +1860,26 @@
   },
 
   "team-rocket-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 5000,
      "step" : 10,
      "dependency" : "effect-selector=23",
      "default": 1500
   },
+
+  "team-rocket-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=23",
+     "keys" : ["team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time"]
+  },
+
 
   "tv-effect-color": {
      "type": "colorchooser",
@@ -1523,8 +1889,10 @@
   },
 
   "tv-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
@@ -1532,8 +1900,20 @@
      "default": 400
   },
 
+  "tv-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=18",
+     "keys" : ["tv-effect-color", "tv-animation-time"]
+  },
+
+
   "tv-glitch-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10,
@@ -1543,7 +1923,9 @@
   },
 
   "tv-glitch-strength": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Strength",
      "min" : 0.1,
      "max" : 10,
@@ -1553,7 +1935,9 @@
   },
 
   "tv-glitch-speed": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Speed",
      "min" : 0.1,
      "max" : 10,
@@ -1570,8 +1954,10 @@
   },
 
   "tv-glitch-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 2000,
      "step" : 10,
@@ -1579,8 +1965,20 @@
      "default": 750
   },
 
+  "tv-glitch-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=19",
+     "keys" : ["tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time"]
+  },
+
+
   "wisps-scale": {
-     "type": "scale",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
      "description" : "Scale",
      "min" : 0.1,
      "max" : 10,
@@ -1611,13 +2009,36 @@
   },
 
   "wisps-animation-time": {
-     "type": "scale",
-     "description" : "Effect Duration (milliseconds)",
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
      "min" : 100,
      "max" : 10000,
      "step" : 10,
      "dependency" : "effect-selector=20",
      "default": 1500
+  },
+
+  "wisps-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=20",
+     "keys" : ["wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time"]
+  },
+
+  "test-effect" : {
+     "type" : "button",
+     "description" : "Open effect preview window",
+     "callback" : "on_test_button_pressed",
+     "tooltip" : "Opens a window using the currently selected effect."
+  },
+
+  "ext-version" : {
+     "type": "generic",
+     "default": ""
   },
 
   "test-mode": {

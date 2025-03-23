@@ -17,13 +17,12 @@ This extension needs the Cinnamon.GLSLEffect class which is only available in Ci
 
 ## Known issues
 
-1. In the setting configure window under the "Effect Settings" tab, when changing the "Show setting for effect" drop-down to select a different effect, sometimes the contents under the "Effect Specific Settings" title will not properly update. Because of this, only a subset of the available options are visible. I believe this is a Cinnamon bug. You can force Cinnamon to properly redraw the options by selecting the "General" tab then returning to the "Effect Settings" tab again. After that, the complete set of "Effect Specific Settings" should be visible.
-2. When closing the Steam Client "setting" window the 'close window effect' does not show the windows contents, resulting in the closing effect to show where the window had existed but otherwise has no negative effect.
-3. When running VirtualBox, some actions (like restarting Cinnamon or changing panel hide settings) will show a full screen animation of both the Open and Close effect. I assume this is caused by some weirdness with how VirtualBox was written. The problem can be avoided by using two "Application specific settings" list entries to disable open/close animations for the "VirtualBox" and "VirtualBoxVM" WM_CLASS names (entered under the "Application" entry box). New installs of this extension will have these entries by default, but installs that are upgraded to the latest version will need to manually enter these app rules to avoid the issues.
-4. The Doom open effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed. When used as a close effect it works correctly.
-5. The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
-6. After upgrading to 0.9.8 the Fire effect setting and the effects included in the randomized sets will be reset to default.
-7. The Magic Lap effect when used as a minimize effect the window "flashes" the window at the start of the effect and so far I have not been able to determine why. The issue does not appear when used as a close event which is very odd. For this reason you might want to continue using the standalone Magic Lamp Effect extension until I find a way to fix this.
+1. When closing the Steam Client "setting" window the 'close window effect' does not show the windows contents, resulting in the closing effect to show where the window had existed but otherwise has no negative effect.
+2. When running VirtualBox, some actions (like restarting Cinnamon or changing panel hide settings) will show a full screen animation of both the Open and Close effect. I assume this is caused by some weirdness with how VirtualBox was written. The problem can be avoided by using two "Application specific settings" list entries to disable open/close animations for the "VirtualBox" and "VirtualBoxVM" WM_CLASS names (entered under the "Application" entry box). New installs of this extension will have these entries by default, but installs that are upgraded to the latest version will need to manually enter these app rules to avoid the issues.
+3. The Doom open effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed. When used as a close effect it works correctly. There is a Doom effect option called "Y offset fix for open/unminimize events" which allows you to manually fix this issue while I look for a proper fix that works for everyone.
+4. The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
+5. After upgrading to 0.9.8 the Fire effect setting and the effects included in the randomized sets will be reset to default.
+6. The Magic Lap effect when used as a minimize effect the window "flashes" the window at the start of the effect and so far I have not been able to determine why. The issue does not appear when used as a close event which is very odd. For this reason you might want to continue using the standalone Magic Lamp Effect extension until I find a way to fix this.
 
 ### Currently these effects are working in Cinnamon:
 
@@ -52,7 +51,7 @@ This extension needs the Cinnamon.GLSLEffect class which is only available in Ci
 
 ### Effects currently disabled:
 
-Because Cinnamon is missing a required API, the following effects are disabled. I am hoping to find a way around this issue:
+Because Cinnamon is missing a required API, the following effects are disabled. I am hoping I can enable these effect when Cinnamon 6.6 is available later this year:
 
 - Broken Glass
 - Matrix

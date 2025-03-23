@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.9
+
+* Added a "Reset to default" button for each effect under the "Effect Settings" tab. 
+* Added an "Open effect preview window" button to "Effect Settings" tab. It opens a preview window to test out the currently selected effect in the "Show setting for effect" drop down list.
+* Added a custom "scale" widget that puts the label, scale, and number in a line to save GUI space. It also "marks" the default value for the setting.
+* Fixed the issue where some setting under the "Effect Settings" were not appearing properly after changing the "Show settings for effect" drop-down. It turns out that adding a common element at the end of the effect settings somehow makes the issue disappear. So I didn't really "fix" anything but adding the "Open effect preview window" button at the bottom of the effect settings section has the added benefit of avoiding the issue.
+* Added a custom "About page" widget to improve the look of the about tab and changed the URLs to clickable links. Also added a "Report an issue" link and the version number to the about tab.
+* Added buttons to set or clear all the random set check boxes.
+* Added BMW Gnome version changes to add a random color option to the Fire effect, also added a "Nuclear" preset.
+* Added an Doom setting option to manually adjust the target location for the Doom open effect so that people can work-around the Doom effect issue while I work on finding a proper fix.
+
 ## 0.9.8
 
 * Added new effects from the Gnome version (Aura Glow, Mushroom, RGB Warp, Team Rocket)
