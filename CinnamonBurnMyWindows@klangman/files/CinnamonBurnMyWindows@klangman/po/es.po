@@ -144,12 +144,12 @@ msgstr "Brisa fría"
 #. 6.2->settings-schema.json->fire-presets->options
 #. effects/Fire.js:220
 msgid "Santa is Coming"
-msgstr "Papá Noel ya viene"
+msgstr "Ya viene Papá Noel"
 
 #. 6.2->settings-schema.json->fire-presets->options
 #. effects/Fire.js:230
 msgid "Nuclear"
-msgstr ""
+msgstr "Nuclear"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -434,7 +434,6 @@ msgid "About Cinnamon Burn-My-Windows"
 msgstr "Acerca de Cinnamon Burn-My-Windows"
 
 #. 6.2->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Disintegrate your windows with style.</b>\n"
@@ -452,6 +451,7 @@ msgid ""
 "<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
 "effect\">Github</a>"
 msgstr ""
+"\n"
 "Adaptado a Cinnamon por Kevin Langman\n"
 "Github: https://github.com/klangman/CinnamonBurnMyWindows\n"
 "\n"
@@ -653,9 +653,8 @@ msgstr "Aleatoriedad"
 #. 6.2->settings-schema.json->tv-animation-time->description
 #. 6.2->settings-schema.json->tv-glitch-animation-time->description
 #. 6.2->settings-schema.json->wisps-animation-time->description
-#, fuzzy
 msgid "Effect Duration (ms)"
-msgstr "Duración del efecto (milisegundos)"
+msgstr "Duración del efecto (ms)"
 
 #. 6.2->settings-schema.json->apparition-reset->description
 #. 6.2->settings-schema.json->aura-glow-reset->description
@@ -679,9 +678,8 @@ msgstr "Duración del efecto (milisegundos)"
 #. 6.2->settings-schema.json->tv-reset->description
 #. 6.2->settings-schema.json->tv-glitch-reset->description
 #. 6.2->settings-schema.json->wisps-reset->description
-#, fuzzy
 msgid "Reset to default"
-msgstr "predeterminado"
+msgstr "Restablecer a valores por defecto"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
 msgid "Random Color"
@@ -731,7 +729,7 @@ msgstr "Tamaño de píxel"
 
 #. 6.2->settings-schema.json->doom-y-hack->description
 msgid "Y offset fix for open/unminimize events"
-msgstr ""
+msgstr "Corrección del desplazamiento Y en los eventos de apertura/desminado"
 
 #. 6.2->settings-schema.json->doom-y-hack->tooltip
 msgid ""
@@ -739,6 +737,10 @@ msgid ""
 "unminimize animation completes at the right location. This is a hack fix for "
 "the Doom effect until I can find a proper fix"
 msgstr ""
+"Aplica un desplazamiento a la posición de destino de la ventana del eje Y "
+"para que la animación de abrir/maximizar se complete en la ubicación "
+"correcta. Esta es una solución para el efecto Doom hasta que encuentre una "
+"solución adecuada"
 
 #. 6.2->settings-schema.json->energize-a-scale->description
 #. 6.2->settings-schema.json->energize-b-scale->description
@@ -768,7 +770,6 @@ msgid "Custom"
 msgstr "Personalizar"
 
 #. 6.2->settings-schema.json->fire-presets->description
-#, fuzzy
 msgid "Fire Preset"
 msgstr "Preajuste de fuego"
 
@@ -786,13 +787,15 @@ msgstr "Crea un fuego más dinámico pero requiere más potencia de GPU."
 
 #. 6.2->settings-schema.json->fire-random-color->description
 msgid "Use a Random Color (overrides other color settings)"
-msgstr ""
+msgstr "Usar un color aleatorio (anula otros ajustes de color)"
 
 #. 6.2->settings-schema.json->fire-random-color->tooltip
 msgid ""
 "Use a random fire color. This setting will override any preset or custom "
 "colors settings you select."
 msgstr ""
+"Utilizar un color de fuego aleatorio. Esta configuración anulará cualquier "
+"configuración de colores preestablecidos o personalizados que seleccione."
 
 #. 6.2->settings-schema.json->fire-colors->description
 msgid "Colors 1-5"
@@ -909,7 +912,6 @@ msgid "This effects the quality and the costs of the animation"
 msgstr "Esto repercute en la calidad y el coste de la animación"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
-#, fuzzy
 msgid "Mushroom Preset"
 msgstr "Preajuste de setas"
 
@@ -1025,8 +1027,8 @@ msgstr "Color #3"
 
 #. 6.2->settings-schema.json->test-effect->description
 msgid "Open effect preview window"
-msgstr ""
+msgstr "Abrir la ventana de previsualización de efectos"
 
 #. 6.2->settings-schema.json->test-effect->tooltip
 msgid "Opens a window using the currently selected effect."
-msgstr ""
+msgstr "Abre una ventana con el efecto actualmente seleccionado."
