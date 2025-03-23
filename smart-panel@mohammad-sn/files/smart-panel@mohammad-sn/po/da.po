@@ -1,13 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# SMART PANEL
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# mohammad-sn, 2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 01:27+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-03-23 22:02+0100\n"
 "PO-Revision-Date: 2023-12-07 15:38+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
@@ -83,13 +84,9 @@ msgstr "millisekunder"
 msgid "Independent actions for scrolling up and down"
 msgstr "Forskellige handlinger ved rulning op og ned"
 
-#. settings-schema.json->topleft-osd->description
-msgid ""
-"Show workspace notification on the top left corner of the scren when "
-"switching workspaces"
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
 msgstr ""
-"Vis arbejdsområdeunderretning i skærmens øverste venstre hjørne, når der "
-"skiftes arbejdsområde"
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "

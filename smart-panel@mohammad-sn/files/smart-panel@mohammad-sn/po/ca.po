@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# SMART PANEL
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Odyssey <odysseyhyd@gmail.com>, 2024
@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 01:27+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-03-23 22:02+0100\n"
 "PO-Revision-Date: 2024-07-25 18:35+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -23,9 +24,9 @@ msgid ""
 "Switch between workspaces, show desktop, activate overview or expo, ... by "
 "scrolling, double click, mouse gestures etc on free space of the panel."
 msgstr ""
-"Canvieu entre espais de treball, mostreu l'escriptori, activeu vista "
-"general o expo, ... mitjançant desplaçament, doble clic, moviments del "
-"ratolí, etc. a l'espai lliure del tauler."
+"Canvieu entre espais de treball, mostreu l'escriptori, activeu vista general "
+"o expo, ... mitjançant desplaçament, doble clic, moviments del ratolí, etc. "
+"a l'espai lliure del tauler."
 
 #. metadata.json->name
 msgid "Smart Panel"
@@ -84,13 +85,9 @@ msgstr "mil·lisegons"
 msgid "Independent actions for scrolling up and down"
 msgstr "Accions independents per desplaçar-se cap a dalt i cap a baix"
 
-#. settings-schema.json->topleft-osd->description
-msgid ""
-"Show workspace notification on the top left corner of the scren when "
-"switching workspaces"
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
 msgstr ""
-"Mostrar notificació d'espai de treball a la cantonada superior esquerra de "
-"la pantalla en canviar d'espai de treball"
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "
@@ -285,8 +282,7 @@ msgstr "Aplicació actual"
 
 #. settings-schema.json->scope-modified->description
 msgid "When a modifier key is pressed, switch between windows from: "
-msgstr ""
-"En polsar una tecla modificadora, canvia entre les finestres des de: "
+msgstr "En polsar una tecla modificadora, canvia entre les finestres des de: "
 
 #. settings-schema.json->appswitcher-modifier->description
 msgid "Modifier key: "

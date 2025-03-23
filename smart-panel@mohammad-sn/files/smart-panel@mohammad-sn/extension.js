@@ -56,28 +56,30 @@ function SmartPanelExt(metadata, orientation, panel_height, instanceId) {
 SmartPanelExt.prototype = {
     _init: function(metadata, orientation, panel_height, instanceId) {
 
-        Settings.BindingDirection.BI = Settings.BindingDirection.BIDIRECTIONAL
         this.settings = new Settings.ExtensionSettings(this, "smart-panel@mohammad-sn");
-        this.settings.bindProperty(Settings.BindingDirection.BI, "scroll-action"     , "scrl_action", this._onScrollActionChanged, null);
-        this.settings.bindProperty(Settings.BindingDirection.BI, "sep-scroll-action" , "sep_acts", this._onScrollSettingsChanged, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "scroll-action-up"  , "scrl_up_action",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "scroll-action-down", "scrl_down_action", null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "dblclck-action"    , "dblclck_action",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "mdlclck-action"    , "mdlclck_action",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "use-gestures"      , "use_gestures",     null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "to-left-action"    , "to_left",  null,   null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "to-right-action"   , "to_right", null,   null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "vert-out-action"   , "vert_out", null,   null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "cc1-action"        , "cc1",      null,   null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "cc2-action"        , "cc2",      null,   null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "cc3-action"        , "cc3",      null,   null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "prev-fast-scroll"  , "no_fast_scroll",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "topleft-osd"       , "topleft_osd",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "scroll-delay"      , "scroll_delay",     null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "appswitcher-style" , "switcher_style",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "appswitcher-scope" , "switcher_scope",   null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "scope-modified"    , "switcher_modified", null, null);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "appswitcher-modifier", "switcher_modifier", null, null);
+        this.settings.bind("scroll-action"     , "scrl_action", this._onScrollActionChanged);
+        this.settings.bind("sep-scroll-action" , "sep_acts", this._onScrollSettingsChanged);
+        this.settings.bind("scroll-action-up"  , "scrl_up_action",   null);
+        this.settings.bind("scroll-action-down", "scrl_down_action", null);
+        this.settings.bind("dblclck-action"    , "dblclck_action",   null);
+        this.settings.bind("mdlclck-action"    , "mdlclck_action",   null);
+        this.settings.bind("use-gestures"      , "use_gestures",     null);
+        this.settings.bind("to-left-action"    , "to_left",  null);
+        this.settings.bind("to-right-action"   , "to_right", null);
+        this.settings.bind("vert-out-action"   , "vert_out", null);
+        this.settings.bind("cc1-action"        , "cc1",      null);
+        this.settings.bind("cc2-action"        , "cc2",      null);
+        this.settings.bind("cc3-action"        , "cc3",      null);
+        this.settings.bind("prev-fast-scroll"  , "no_fast_scroll",   null);
+        this.settings.setValue("show-osd", global.settings.get_boolean('workspace-osd-visible'));
+        this.settings.bind("show-osd"       , "show_osd",   this._onShowOSDChanged, null);
+        this.settings.bind("scroll-delay"      , "scroll_delay",     null);
+        this.settings.bind("appswitcher-style" , "switcher_style",   null);
+        this.settings.bind("appswitcher-scope" , "switcher_scope",   null);
+        this.settings.bind("scope-modified"    , "switcher_modified", null);
+        this.settings.bind("appswitcher-modifier", "switcher_modifier", null);
+        this._onShowOSDChanged();
+        global.settings.connect("changed::workspace-osd-visible", () => { this.show_osd = global.settings.get_boolean('workspace-osd-visible') });
 
         this.cwm_settings = new Gio.Settings({ schema: "org.cinnamon.desktop.wm.preferences" });
 
@@ -99,6 +101,10 @@ SmartPanelExt.prototype = {
         this._lastScroll = Date.now();
         this.dblb = false;
         this.dblb_T = this.mos_settings.get_int('double-click');
+    },
+
+    _onShowOSDChanged : function() {
+        global.settings.set_boolean('workspace-osd-visible', this.show_osd);
     },
 
     _onScrollActionChanged : function() {
@@ -284,7 +290,6 @@ SmartPanelExt.prototype = {
                            this.workspaceSwitcherExt.ExtSwitchToWorkspace(reqWs);
                         } else {
                            reqWs.activate(global.get_current_time());
-                           this.showWorkspaceOSD();
                         }
                     }
                 }
@@ -401,85 +406,7 @@ SmartPanelExt.prototype = {
               this.workspaceSwitcherExt.ExtSwitchToWorkspace(reqWs);
            } else {
               reqWs.activate(global.get_current_time());
-              this.showWorkspaceOSD();
            }
-        }
-    },
-
-    showWorkspaceOSD : function() {
-        this._hideWorkspaceOSD();
-        if (
-          global.settings.get_boolean('workspace-osd-visible') &&
-          this.topleft_osd
-        ) {
-          let current_workspace_index =
-            global.screen.get_active_workspace_index();
-          let monitor = Main.layoutManager.primaryMonitor;
-          if (this._workspace_osd == null)
-            this._workspace_osd = new St.Label({
-              style_class: 'workspace-osd',
-            });
-          this._workspace_osd.set_text(
-            Main.getWorkspaceName(current_workspace_index)
-          );
-          //this._workspace_osd.set_opacity = 0;
-          this._workspace_osd.set_opacity(0);
-          Main.layoutManager.addChrome(this._workspace_osd, {
-            visibleInFullscreen: false,
-            affectsInputRegion: false,
-          });
-          let workspace_osd_x = global.settings.get_int('workspace-osd-x');
-          let workspace_osd_y = global.settings.get_int('workspace-osd-y');
-          /*
-             * This aligns the osd edges to the minimum/maximum values from gsettings,
-
-             * if those are selected to be used. For values in between minimum/maximum,
-             * it shifts the osd by half of the percentage used of the overall space available
-             * for display (100% - (left and right 'padding')).
-             * The horizontal minimum/maximum values are 5% and 95%, resulting in 90% available for positioning
-             * If the user choses 50% as osd position, these calculations result the osd being centered onscreen
-             */
-          let [minX, maxX, minY, maxY] = [5, 95, 5, 95];
-          let delta = (workspace_osd_x - minX) / (maxX - minX);
-          let x = Math.round(
-            (monitor.width * workspace_osd_x) / 100 -
-              this._workspace_osd.width * delta
-          );
-          delta = (workspace_osd_y - minY) / (maxY - minY);
-          let y = Math.round(
-            (monitor.height * workspace_osd_y) / 100 -
-              this._workspace_osd.height * delta
-          );
-          this._workspace_osd.set_position(x, y);
-          let duration =
-            global.settings.get_int('workspace-osd-duration') / 1000;
-          Tweener.addTween(this._workspace_osd, {
-            opacity: 255,
-            time: duration,
-            transition: 'linear',
-            onComplete: this._fadeWorkspaceOSD,
-            onCompleteScope: this,
-          });
-        }
-    },
-
-    _fadeWorkspaceOSD : function() {
-        if (this._workspace_osd != null) {
-            let duration = global.settings.get_int("workspace-osd-duration") / 2000;
-            Tweener.addTween(this._workspace_osd, {   opacity: 0,
-                                                         time: duration,
-                                                   transition: 'easeOutExpo',
-                                                   onComplete: this._hideWorkspaceOSD,
-                                              onCompleteScope: this });
-        }
-    },
-
-    _hideWorkspaceOSD : function() {
-        if (this._workspace_osd != null) {
-            this._workspace_osd.hide();
-            Main.layoutManager.removeChrome(this._workspace_osd);
-            this._workspace_osd.destroy();
-            this._workspace_osd = null;
         }
     },
 

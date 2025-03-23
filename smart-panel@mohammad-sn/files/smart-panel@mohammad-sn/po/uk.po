@@ -1,13 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# SMART PANEL
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# mohammad-sn, 2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 01:27+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-03-23 22:02+0100\n"
 "PO-Revision-Date: 2023-08-24 10:57+0300\n"
 "Last-Translator: DmytroVoytko <Dmytro.Voytko@gmail.com>\n"
 "Language-Team: \n"
@@ -22,9 +23,9 @@ msgid ""
 "Switch between workspaces, show desktop, activate overview or expo, ... by "
 "scrolling, double click, mouse gestures etc on free space of the panel."
 msgstr ""
-"Перемикайтеся між робочими областями, показуйте робочий стіл, активуйте огляд або "
-"експозицію за допомогою прокручування, подвійного клацання, жестів миші тощо на "
-"вільному просторі панелі."
+"Перемикайтеся між робочими областями, показуйте робочий стіл, активуйте "
+"огляд або експозицію за допомогою прокручування, подвійного клацання, жестів "
+"миші тощо на вільному просторі панелі."
 
 #. metadata.json->name
 msgid "Smart Panel"
@@ -83,13 +84,9 @@ msgstr "мілісекунд"
 msgid "Independent actions for scrolling up and down"
 msgstr "Незалежні дії для прокручування вгору та вниз"
 
-#. settings-schema.json->topleft-osd->description
-msgid ""
-"Show workspace notification on the top left corner of the scren when "
-"switching workspaces"
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
 msgstr ""
-"Показувати сповіщення робочої області у верхньому лівому куті екрана "
-"під час перемикання робочої області"
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "
@@ -205,8 +202,7 @@ msgstr "↤ Перетягування вліво: "
 
 #. settings-schema.json->vert-out-action->description
 msgid "Click at the edge of the screen and drag away vertically: "
-msgstr ""
-"Клацніть край екрана та перетягніть убік вертикально: "
+msgstr "Клацніть край екрана та перетягніть убік вертикально: "
 
 #. settings-schema.json->head4->description
 msgid "Custom Commands: "
@@ -285,8 +281,7 @@ msgstr "Поточна програма"
 
 #. settings-schema.json->scope-modified->description
 msgid "When a modifier key is pressed, switch between windows from: "
-msgstr ""
-"Коли натиснуто клавішу-модифікатор, перемикатися між вікнами з: "
+msgstr "Коли натиснуто клавішу-модифікатор, перемикатися між вікнами з: "
 
 #. settings-schema.json->appswitcher-modifier->description
 msgid "Modifier key: "
