@@ -98,7 +98,7 @@ class OsdWindow extends Clutter.Actor {
             this._percentage.hide();
         }
         else
-            // Show percentage when pressing Caps Lock or Number Lock keys
+            // Show percentage when pressing OSD keys
             this._percentage.show();
     }
 
