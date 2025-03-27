@@ -865,24 +865,23 @@ msgstr "Si se desactiva, se elegirá una ubicación aleatoria."
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Curved"
-msgstr ""
+msgstr "Curvado"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Wavy"
-msgstr ""
+msgstr "Ondulado"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-#, fuzzy
 msgid "Random"
-msgstr "aleatorio"
+msgstr "Aleatorio"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Curved / Disappear: Wavy"
-msgstr ""
+msgstr "Aparecer: CurvADO / Desaparece: Ondulado"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Wavy / Disappear: Curved"
-msgstr ""
+msgstr "Aparecer: Ondulado / Desaparece: CurvaDO"
 
 #. 6.2->settings-schema.json->magiclamp-effect->description
 msgid "The type of effect"
@@ -895,6 +894,10 @@ msgid ""
 "different effects whether a window is appearing or disappearing from the "
 "screen"
 msgstr ""
+"El efecto puede ser una curva suave o una animación ondulada. La opción "
+"aleatoria elegirá aleatoriamente entre las dos y las opciones Aparecer/"
+"Desaparecer utilizan efectos diferentes si una ventana aparece o desaparece "
+"de la pantalla"
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"
