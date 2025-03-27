@@ -419,7 +419,7 @@ class BurnMyWindows {
               effectOptions.push( EffectIndex(random.name) );
             break;
           case ShouldAnimateManager.Events.Unminimize:
-            if (random.unminimized)
+            if (random.unminimize)
               effectOptions.push( EffectIndex(random.name) );
             break;
         }

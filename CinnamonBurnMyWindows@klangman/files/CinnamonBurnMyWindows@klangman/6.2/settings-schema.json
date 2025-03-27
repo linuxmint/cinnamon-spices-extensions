@@ -1273,15 +1273,15 @@
     "type": "combobox",
     "default": 0,
     "options": {
-      "default": 0,
-      "sine": 1,
-      "random": 2,
-      "Minimize: Default - Unminimize: Sine": 3,
-      "Minimize: Sine - Unminimize: Default": 4
+      "Curved": 0,
+      "Wavy": 1,
+      "Random": 2,
+      "Appear: Curved / Disappear: Wavy": 3,
+      "Appear: Wavy / Disappear: Curved": 4
     },
     "description": "The type of effect",
     "dependency" : "effect-selector=26",
-    "tooltip": "Using 'default' will result in a curved effect where using 'sine' will result in a more wavy effect"
+    "tooltip": "The effect can be a smooth curve or a wavy animation. The random option will randomly choose between the two and the Appear/Disappear options use different effects whether a window is appearing or disappearing from the screen"
   },
 
   "magiclamp-x-tiles": {

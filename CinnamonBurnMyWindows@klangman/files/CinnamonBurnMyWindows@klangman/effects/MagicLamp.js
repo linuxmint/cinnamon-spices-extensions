@@ -153,7 +153,6 @@ class AbstractCommonMagicLampEffect extends Clutter.DeformEffect {
       this.completedEvent = null;
 
       this.timerId = null;
-      this.msecs = 0;
 
       this.monitor = {x: 0, y: 0, width: 0, height: 0};
       this.iconMonitor = {x: 0, y: 0, width: 0, height: 0};
@@ -374,8 +373,6 @@ class MagicLampMinimizeEffect extends AbstractCommonMagicLampEffect {
    _init(factory) {
       super._init();
 
-      this.k = 0;
-      this.j = 0;
       this.isMinimizeEffect = true;
       this.factory = factory;
    }
@@ -398,6 +395,8 @@ class MagicLampMinimizeEffect extends AbstractCommonMagicLampEffect {
             this.EFFECT = EffectType.Sine;
       }
       this.set_n_tiles(this.X_TILES, this.Y_TILES);
+      this.k = 0;
+      this.j = 0;
       this.timerId = new Clutter.Timeline({ duration: this.DURATION + (this.monitor.width * this.monitor.height) / (this.window.width * this.window.height) });
       this.newFrameEvent = this.timerId.connect('new-frame', this.on_tick_elapsed.bind(this));
       this.completedEvent = this.timerId.connect('completed', this.destroy.bind(this));
@@ -461,8 +460,6 @@ class MagicLampUnminimizeEffect extends AbstractCommonMagicLampEffect {
    _init(factory) {
       super._init();
 
-      this.k = 1;
-      this.j = 1;
       this.isMinimizeEffect = false;
       this.factory = factory;
    }
@@ -485,6 +482,8 @@ class MagicLampUnminimizeEffect extends AbstractCommonMagicLampEffect {
          this.EFFECT = EffectType.Default;
       }
       this.set_n_tiles(this.X_TILES, this.Y_TILES);
+      this.k = 1;
+      this.j = 1;
       this.timerId = new Clutter.Timeline({ duration: this.DURATION + (this.monitor.width * this.monitor.height) / (this.window.width * this.window.height) });
       this.newFrameEvent = this.timerId.connect('new-frame', this.on_tick_elapsed.bind(this));
       this.completedEvent = this.timerId.connect('completed', this.destroy.bind(this));

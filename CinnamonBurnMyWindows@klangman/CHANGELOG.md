@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0
+
+Here we are at version 1.0. I had hoped to have the full suite of effects enabled for version 1.0, but that will have to wait for version 1.1 when Cinnamon 6.6 is out 🤞. I wanted to get this release out there since it has two fixes that makes the current feature set work without any major issues, so in that way maybe it is a suitable 1.0 release after all!
+
+* Fixed the Magic Lamp effect to address the window flashing on minimize problem.
+* Fixed the problem where no effect is activated when using "Randomized" for the "Unminimize window effect".
+* Improved the wording of the Magic Lamp "Type of effect" drop down menu items.
+
 ## 0.9.9b
 
 * Fix broken version 0.9.9, I forgot to copy over some changes from my dev branch for 0.9.9
