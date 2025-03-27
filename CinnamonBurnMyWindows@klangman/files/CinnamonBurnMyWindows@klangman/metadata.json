@@ -1,7 +1,7 @@
 {
   "uuid": "CinnamonBurnMyWindows@klangman",
   "name": "Burn My Windows",
-  "version": "0.9.9b",
+  "version": "1.0.0",
   "description": "Window open/close/minimize/unminimize effects based on the Burn-My-Windows Gnome extension by Schneegans",
   "url": "https://github.com/klangman/CinnamonBurnMyWindows",
   "website": "https://github.com/klangman/CinnamonBurnMyWindows",

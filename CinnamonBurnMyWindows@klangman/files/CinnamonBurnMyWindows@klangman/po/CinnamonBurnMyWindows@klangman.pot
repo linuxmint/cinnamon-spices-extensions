@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.9b\n"
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-03-23 14:35-0400\n"
+"POT-Creation-Date: 2025-03-26 21:19-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -829,23 +829,23 @@ msgid "If disabled, a random location will be chosen."
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-msgid "default"
+msgid "Curved"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-msgid "sine"
+msgid "Wavy"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-msgid "random"
+msgid "Random"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-msgid "Minimize: Default - Unminimize: Sine"
+msgid "Appear: Curved / Disappear: Wavy"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-msgid "Minimize: Sine - Unminimize: Default"
+msgid "Appear: Wavy / Disappear: Curved"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->description
@@ -854,8 +854,10 @@ msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->tooltip
 msgid ""
-"Using 'default' will result in a curved effect where using 'sine' will "
-"result in a more wavy effect"
+"The effect can be a smooth curve or a wavy animation. The random option will "
+"randomly choose between the two and the Appear/Disappear options use "
+"different effects whether a window is appearing or disappearing from the "
+"screen"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description

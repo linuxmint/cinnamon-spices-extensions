@@ -22,7 +22,6 @@ This extension needs the Cinnamon.GLSLEffect class which is only available in Ci
 3. The Doom open effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed. When used as a close effect it works correctly. There is a Doom effect option called "Y offset fix for open/unminimize events" which allows you to manually fix this issue while I look for a proper fix that works for everyone.
 4. The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
 5. After upgrading to 0.9.8 the Fire effect setting and the effects included in the randomized sets will be reset to default.
-6. The Magic Lap effect when used as a minimize effect the window "flashes" the window at the start of the effect and so far I have not been able to determine why. The issue does not appear when used as a close event which is very odd. For this reason you might want to continue using the standalone Magic Lamp Effect extension until I find a way to fix this.
 
 ### Currently these effects are working in Cinnamon:
 
