@@ -1,0 +1,258 @@
+# MOUSE CLICK EFFECTS
+# This file is put in the public domain.
+# anaximeno, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"PO-Revision-Date: 2024-09-21 12:19-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr "Efectos del clic del ratón"
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr "Muestra efectos de clic del mouse en Cinnamon."
+
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
+msgid "General"
+msgstr "General"
+
+#. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
+msgid "Style"
+msgstr "Estilo"
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr "Efectos"
+
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
+msgstr "Colores"
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr "Modo de icono"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr "Sencillo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr "Trigun"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr "Nublo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr "Risco"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr "Lobo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr "Pincel"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr "Garra"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr "Metrópoli"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr "Flowey"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr "Kusco"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr "Ouroboros"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr "Helix"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr "Dirección"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr "Spinks"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr "Paja"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr "Algodón"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr "Círculo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr "Engranaje"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr "H-Estrella"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr "Apuntar"
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr "px"
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr "Tamaño del icono"
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr "Haga clic en Modo de animación"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Blink"
+msgstr "Parpadear"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Bounce"
+msgstr "Rebotar"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Retract"
+msgstr "Retraer"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Expand"
+msgstr "Expandir"
+
+#. 5.4->settings-schema.json->animation-time->units
+#. 5.4->settings-schema.json->idle-animation-delay->units
+#. 5.4->settings-schema.json->idle-animation-period->units
+msgid "ms"
+msgstr "ms"
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr "Tiempo de animación"
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+msgid "Idle Mouse Animation Mode"
+msgstr "Modo de animación del ratón inactivo"
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+msgid "Idle Mouse Animation Delay"
+msgstr "Retraso de animación del ratón inactivo"
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+msgid "Idle Mouse Animation Period"
+msgstr "Período de animación del ratón inactivo"
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr "Opacidad general"
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr "Desactivar en pantalla completa"
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr "Combinación de teclas de efectos de pausa"
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr ""
+"Configurar la combinación de teclas para pausar o continuar los efectos"
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Animate Left Click"
+msgstr "Animar clic izquierdo"
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Animate Middle Click"
+msgstr "Animar clic central"
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Animate Right Click"
+msgstr "Animar clic derecho"
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+msgid "Animate Pause"
+msgstr "Animar pausa"
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr "Rastreador de movimientos del ratón (experimental)"
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+"Esto es todavía experimental y puede interferir al hacer clic en el panel o "
+"en algunas operaciones de arrastrar y soltar."
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr "Rastreador de movimiento persistente en estado detenido (experimental)"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
+msgstr "Observador de inactividad del ratón"
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr "Color del clic izquierdo"
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr "Color del clic central"
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr "Color del botón derecho"
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr "Color del rastreador de movimientos del ratón"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
+msgstr "Color del observador de inactividad del ratón"
