@@ -91,8 +91,13 @@ class OsdWindow extends Clutter.Actor {
 
     setLabel(label) {
         this._label.visible = label != null;
-        if (this._label.visible)
+
+        if (this._label.visible) {
             this._label.text = label;
+            this._percentage.hide();
+        } else {
+            this._percentage.show();
+        }
     }
 
     setLevel(value) {
