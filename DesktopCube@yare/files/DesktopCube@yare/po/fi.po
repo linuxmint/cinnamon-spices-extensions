@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Desktop Cube"
@@ -70,13 +70,12 @@ msgid "Open Cinnamon Settings to manage Workspaces"
 msgstr "Avaa Cinnamon työtilojen asetukset"
 
 #. 5.4->settings-schema.json->animationTimeSec->description
-#, fuzzy
 msgid "Animation duration (seconds)"
-msgstr "Animaation kesto"
+msgstr "Animaation kesto (sekuntia)"
 
 #. 5.4->settings-schema.json->pullawayPercent->description
 msgid "Cube size (percent of screen size)"
-msgstr ""
+msgstr "Kuution koko (prosenttia näytön koosta)"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
@@ -88,35 +87,41 @@ msgid ""
 "properly painted or completely invisible anyhow, so it's best to leave this "
 "disabled"
 msgstr ""
+"Ota paneeli mukaan animoinnin aikana. Useimmissa tapauksissa paneelit eivät "
+"ole maalattuja tai kokonaan läpinäkyviä, joten on parempi jättää tämä pois "
+"käytöstä"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Cube effect with the Workspace Switcher applet"
-msgstr ""
+msgstr "Käytä tehostetta työtilan vaihtajan kanssa"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
 msgid ""
 "Override the moveToWorkspace() API so that the Cube effect is used by the "
 "Workspace Switcher Applet when changing the current workspace"
 msgstr ""
+"Ohita moveToWorkspace() API niin, että työtilan vaihtaja käyttää "
+"kuutiotehostetta vaihdettaessa nykyistä työtilaa"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Cube effect when changing focus causes a workspace switch"
-msgstr ""
+msgstr "Käytä tehostetta kun kohdistuksen muutos vaihtaa  työtilan"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
 msgid ""
 "Override the activateWindow() API so that when a window on another workspace "
 "is given the focus, the Cube effect is used to change the current workspace"
 msgstr ""
+"Ohita API niin, että kun toisen työtilan ikkuna on kohdistettu, kuutio-"
+"tehostetta käytetään muuttamaan nykyistä työtilaa"
 
 #. 5.4->settings-schema.json->header2->description
-#, fuzzy
 msgid "Effect Easing"
-msgstr "Tehosteet"
+msgstr "Tehosteen helpotus"
 
 #. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale easing"
-msgstr ""
+msgstr "Skaalauksen helpotus"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
@@ -169,15 +174,13 @@ msgid "Quint"
 msgstr "Viisikko"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
 msgid "Rotate easing"
-msgstr "Kääntötehoste"
+msgstr "Kääntämisen helpotus"
 
 #. 5.4->settings-schema.json->easing_btn->description
 msgid "Open easing information website"
-msgstr ""
+msgstr "Avaa helpotuksen tiedot sivusto"
 
 #. 5.4->settings-schema.json->hotkeys_btn->description
-#, fuzzy
 msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
-msgstr "Avaa Cinnamon työtilojen asetukset"
+msgstr "Avaa Cinnamon asetukset ja hallinnoi työtilan pikanäppäimiä"
