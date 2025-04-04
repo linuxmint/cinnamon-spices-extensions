@@ -54,6 +54,7 @@ var MouseMovementTracker = class MouseMovementTracker {
 
         this.listener = PointerWatcher.addWatch(POINTER_WATCH_MS, this.move_to.bind(this));
         this.signals.connect(global.screen, 'in-fullscreen-changed', this.on_fullscreen_changed, this);
+        this.signals.connect(Main.layoutManager, 'monitors-changed', this.handle_monitors_changed, this);
 
         const [x, y, _] = global.get_pointer();
         this.move_to(x, y);
@@ -106,4 +107,9 @@ var MouseMovementTracker = class MouseMovementTracker {
             })
         }
     }, MOUSE_PARADE_DELAY_MS);
+
+    handle_monitors_changed() {
+        // Update icon size to take into account new ui scale
+        this._halfIconSize = this._size * global.ui_scale * 0.5;
+    }
 };
