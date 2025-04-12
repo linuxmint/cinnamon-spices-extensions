@@ -1,8 +1,8 @@
 {
     "uuid": "BlurCinnamon@klangman",
     "name": "Blur Cinnamon",
-    "version": "1.4.0",
-    "description": "Allows you to blur, colorize, desaturate and adjust the dimming of some Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, Expo)",
+    "version": "1.4.1",
+    "description": "Allows you to blur, colorize, desaturate and adjust the dimming of some Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, Expo, Desktop image)",
     "url": "https://github.com/klangman/BlurCinnamon",
     "cinnamon-version": [
         "6.0"
