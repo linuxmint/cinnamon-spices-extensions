@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-03-23 22:02+0100\n"
-"PO-Revision-Date: 2023-12-13 13:12+0100\n"
+"PO-Revision-Date: 2025-04-12 08:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. metadata.json->description
 msgid ""
@@ -87,7 +87,7 @@ msgstr "Független műveletek fel vagy le egérgörgetésnél"
 
 #. settings-schema.json->show-osd->description
 msgid "Display OSD for workspace change notification"
-msgstr ""
+msgstr "Az OSD megjelenítése a munkaterület változásáról szóló értesítéshez"
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "
