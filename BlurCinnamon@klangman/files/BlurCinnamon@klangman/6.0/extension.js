@@ -306,7 +306,12 @@ class BlurPanels {
       // windows beneath the panels from being visible.
       //if (blurType > BlurType.None || saturation<100) {
          let fx;
-         let background = Meta.X11BackgroundActor.new_for_display(global.display);
+         let background;
+         if (!Meta.is_wayland_compositor()) {
+            background = Meta.X11BackgroundActor.new_for_display(global.display);
+         } else {
+            background = new Clutter.Actor();
+         }
          global.overlay_group.add_actor(background);
          blurredPanel.background = background;
          background.set_clip( panel.actor.x, panel.actor.y, panel.actor.width, panel.actor.height );
@@ -521,9 +526,8 @@ class BlurPanels {
    blurEnable(...params) {
       try {
          if (this.__blurredPanel && this.__blurredPanel.background && !global.display.get_monitor_in_fullscreen(this.monitorIndex) && !this._hidden) {
-            this.__blurredPanel.background.show();
-            this.__blurredPanel.background.ease(
-               {opacity: 255, duration: AUTOHIDE_ANIMATION_TIME * 1000, mode: Clutter.AnimationMode.EASE_OUT_QUAD } );
+            // Only show the blurred background after the panel animation is almost done
+            Mainloop.timeout_add((AUTOHIDE_ANIMATION_TIME * 1000)*.9, () => this.__blurredPanel.background.show() );
          }
       } catch (e) {}
       blurPanelsThis._originalPanelEnable.apply(this, params);
@@ -532,9 +536,8 @@ class BlurPanels {
    blurDisable(...params) {
       try {
          if (this.__blurredPanel && this. __blurredPanel.background && !this._hidden) {
-            this.__blurredPanel.background.ease(
-               {opacity: 0, duration: AUTOHIDE_ANIMATION_TIME * 1000, mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-                  onComplete: () => { this.__blurredPanel.background.hide(); } });
+            // Delay 50ms before hiding the blurred background to avoid a sudden unblurring of the panel before other animations even get started
+            Mainloop.timeout_add(50, () => this.__blurredPanel.background.hide() );
          }
       } catch (e) {}
       blurPanelsThis._originalPanelDisable.apply(this, params);
@@ -551,7 +554,11 @@ class BlurPopupMenus {
 
       this._blurEffect = new GaussianBlur.GaussianBlurEffect( {radius: 0, brightness: 1 , width: 0, height: 0} );
       this._desatEffect = new Clutter.DesaturateEffect({factor: 1});
-      this._background = Meta.X11BackgroundActor.new_for_display(global.display);
+      if (!Meta.is_wayland_compositor()) {
+         this._background = Meta.X11BackgroundActor.new_for_display(global.display);
+      } else {
+         this._background = new Clutter.Actor();
+      }
       this._background.add_effect_with_name( BLUR_EFFECT_NAME, this._blurEffect );
       this._background.add_effect_with_name( DESAT_EFFECT_NAME, this._desatEffect );
       global.overlay_group.add_actor(this._background);
@@ -576,7 +583,8 @@ class BlurPopupMenus {
       if (menu && this._currentMenu && menu === this._currentMenu) {
          let actor = menu.actor;
          if (actor.visible) {
-            this._background.set_clip( actor.x, actor.y, actor.width, actor.height );
+            let bm = menu.box.get_margin();
+            this._background.set_clip( actor.x+bm.left, actor.y+bm.top, actor.width-(bm.left+bm.right), actor.height-(bm.top+bm.bottom) );
          } else {
             this._background.set_clip( 0, 0, 0, 0 );
          }
@@ -650,7 +658,10 @@ class BlurPopupMenus {
          } else {
             let actor = menu.actor;
             let margin = actor.get_margin();
-            this._background.set_clip( actor.x+margin.left, actor.y+margin.top, actor.width-(margin.left+margin.right), actor.height-(margin.top+margin.bottom) );
+            let bm = menu.box.get_margin();
+            this._background.set_clip( actor.x+margin.left+bm.left, actor.y+margin.top+bm.top,
+                                       actor.width-(margin.left+margin.right)-(bm.left+bm.right),
+                                       actor.height-(margin.top+margin.bottom)-(bm.top+bm.bottom) );
          }
          this._background.show();
          // Now that the menu is open we need to know if new actors are added so we can check for accent elements
@@ -685,7 +696,7 @@ class BlurPopupMenus {
                   menu.blurCinnamonData.push( {entry: child, original_entry_color: child.get_background_color(), original_entry_style: child.get_style(),
                                 original_entry_class: child.get_style_class_name(), original_entry_pseudo_class: child.get_style_pseudo_class()} );
                }
-               child.set_style( "border-radius: 0px; " + //"border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
+               child.set_style( "border-radius: 0px; transition-duration: 0;" + //"border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
                                 "background-gradient-direction: vertical; background-gradient-start: transparent; " +
                                 "background-gradient-end: transparent;    background: transparent;" );
                child.set_background_color(this._accentColor);
@@ -750,6 +761,8 @@ class BlurPopupMenus {
    destroy() {
       // Restore monkey patched PopupMenu open & close functions
       PopupMenu.PopupMenu.prototype.open = this.original_popupmenu_open;
+      global.overlay_group.remove_actor(this._background);
+      this._background.destroy();
       //PopupMenu.PopupMenu.prototype.close = this.original_popupmenu_close;
    }
 }
