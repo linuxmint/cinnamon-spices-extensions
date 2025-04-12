@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. 5.6/extension.js:83
 msgid "ERROR"
@@ -59,15 +59,17 @@ msgstr "szinusz"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "random"
-msgstr ""
+msgstr "véletlenszerű"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Default - Unminimize: Sine"
 msgstr ""
+"Minimalizálás: Alapértelmezett - Minimalizálás megszüntetése: Szinusz"
 
 #. 5.6->settings-schema.json->effect->options
 msgid "Minimize: Sine - Unminimize: Default"
 msgstr ""
+"Minimalizálás: Szinusz - Minimalizálás megszüntetése: Alapértelmezett"
 
 #. 5.6->settings-schema.json->effect->description
 msgid "The type of effect"
@@ -82,9 +84,8 @@ msgstr ""
 "használata hullámosabb hatást eredményez"
 
 #. 5.6->settings-schema.json->duration->description
-#, fuzzy
 msgid "Effect duration (ms)"
-msgstr "Effektus időtartama"
+msgstr "Effektus időtartama (ezredmásodperc)"
 
 #. 5.6->settings-schema.json->duration->tooltip
 msgid "The time (in milliseconds) that the effect takes to complete"

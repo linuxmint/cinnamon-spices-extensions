@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. 6.2/extension.js:193 6.2/extension.js:268 6.2/extension.js:579
 msgid "Error"
@@ -36,21 +36,23 @@ msgstr "ütközik ezzel a bővitménnyel."
 
 #. 6.2/extension.js:268
 msgid "minimize/unminimize effects can not be enabled"
-msgstr ""
+msgstr "effektusok minimalizálása/minimalizálása nem engedélyezhető"
 
 #. 6.2/extension.js:269
 msgid "already handles minimize/unminimize animation events."
 msgstr ""
+"már kezeli az animációs események minimalizálását/minimalizálásának "
+"megszüntetését."
 
 #. 6.2/extension.js:580
-#, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore application specific effects can not be applied to "
 "that window"
 msgstr ""
-"Az előzőleg fókuszált ablakot nem támogatja alkalmazás, ezért "
-"alkalmazásspecifikus effektusok nem alkalmazhatók arra az ablakra"
+"Nem lehet meghatározni az előzőleg fókuszált ablak alkalmazását vagy "
+"WM_CLASS-át, ezért alkalmazásspecifikus effektusok nem alkalmazhatók arra az "
+"ablakra"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -72,7 +74,7 @@ msgstr "Megjelenik"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/AuraGlow.js:103
 msgid "Aura Glow"
-msgstr ""
+msgstr "Aura ragyogás"
 
 #. effects/BrokenGlass.js:152
 msgid "Broken Glass"
@@ -150,7 +152,7 @@ msgstr "Jön a Mikulás"
 #. 6.2->settings-schema.json->fire-presets->options
 #. effects/Fire.js:230
 msgid "Nuclear"
-msgstr ""
+msgstr "Nukleáris"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -220,47 +222,47 @@ msgstr "Mátrix"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/Mushroom.js:154
 msgid "Mushroom"
-msgstr ""
+msgstr "Gomba"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:227
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8 bites vízvezeték-szerelő"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:244
 msgid "New Bros 2"
-msgstr ""
+msgstr "New Bros 2"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:262
 msgid "The True North"
-msgstr ""
+msgstr "Az igazi észak"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:280
 msgid "Red White and Blue"
-msgstr ""
+msgstr "Piros Fehér és Kék"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:297
 msgid "Rainbow"
-msgstr ""
+msgstr "Szivárvány"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:314
 msgid "Cattuccino"
-msgstr ""
+msgstr "Cattuccino"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:332
 msgid "Dracula"
-msgstr ""
+msgstr "Drakula"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:349
 msgid "Sparkle"
-msgstr ""
+msgstr "Szikra"
 
 #. effects/PaintBrush.js:114
 msgid "Paint Brush"
@@ -319,7 +321,7 @@ msgstr "Portál"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/RGBWarp.js:91
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB csavart"
 
 #. effects/SnapOfDisintegration.js:124
 msgid "Snap of Disintegration"
@@ -360,7 +362,7 @@ msgstr "TV Glitch"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/TeamRocket.js:103
 msgid "Team Rocket"
-msgstr ""
+msgstr "Team Rocket"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -375,16 +377,15 @@ msgstr "Foszlányok"
 
 #. metadata.json->name
 msgid "Burn My Windows"
-msgstr "Égjenek el az ablakaim"
+msgstr "Égjenek az Ablakaim"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
 "Gnome extension by Schneegans"
 msgstr ""
-"A Schneegans által készített Burn-My-Windows Gnome bővítményen alapuló ablak "
-"nyitási/zárási effektek"
+"Ablak megnyitása/bezárása/minimalizálása/minimalizálása hatások a Schneegans "
+"Burn-My-Windows Gnome kiterjesztése alapján"
 
 #. 6.2->settings-schema.json->general-page->title
 msgid "General"
@@ -395,9 +396,8 @@ msgid "Effect Settings"
 msgstr "Effekt beállítások"
 
 #. 6.2->settings-schema.json->application-page->title
-#, fuzzy
 msgid "Application Specifics"
-msgstr "Alkalmazásspecifikus szabályok"
+msgstr "Alkalmazásspecifikus"
 
 #. 6.2->settings-schema.json->random-page->title
 msgid "Random Effects"
@@ -405,11 +405,11 @@ msgstr "Véletlen effektusok"
 
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #. 6.2->settings-schema.json->general-settings->title
 msgid "Burn My Windows General Settings"
-msgstr "Égjenek el az ablakaim általános beállításai"
+msgstr "Égjenek az Ablakaim általános beállításai"
 
 #. 6.2->settings-schema.json->app-specific-settings->title
 msgid "Application Specific Settings"
@@ -426,7 +426,7 @@ msgstr "Effekt specifikus beállítások"
 #. 6.2->settings-schema.json->fire-custom-section->title
 #. 6.2->settings-schema.json->mushroom-custom-section->title
 msgid "Setting for the custom preset:"
-msgstr ""
+msgstr "Az egyéni előbeállítás beállítása:"
 
 #. 6.2->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
@@ -434,7 +434,7 @@ msgstr "A véletlenszerű készletekben szereplő effektusok:"
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
-msgstr ""
+msgstr "Cinnamon Égjenek az Ablakaim Névjegye"
 
 #. 6.2->settings-schema.json->about-text->description
 msgid ""
@@ -454,6 +454,21 @@ msgid ""
 "<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
 "effect\">Github</a>"
 msgstr ""
+"\n"
+"<b>Stílusosan bontsa szét ablakait.</b>\n"
+"Verzió: ext-verzió\n"
+"\n"
+"Kevin Langman a Cinnamonba portolta\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
+"new\">Hibabejelentés</a>\n"
+"\n"
+"A Schneegans és a közreműködők Burn-My-Windows kódja alapján\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a>\n"
+"\n"
+"A Magic Lamp Effect-et a hermes83 kódból portolta át\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
 
 #. 6.2->settings-schema.json->app-rules->description
 msgid "Application Specific Rules"
@@ -465,30 +480,31 @@ msgstr "Engedélyezve"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Open"
-msgstr ""
+msgstr "Megnyit"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Close"
-msgstr ""
+msgstr "Bezár"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Minimize"
-msgstr ""
+msgstr "Minimalizálás"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Unminimize"
-msgstr ""
+msgstr "Minimalizálás megszüntetése"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Application"
 msgstr "Alkalmazás"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
-#, fuzzy
 msgid ""
 "A list of applications with special effect rules. The application can be a "
 "desktop file name or a WM_CLASS name"
-msgstr "A különleges effektussal rendelkező alkalmazások listája"
+msgstr ""
+"A speciális hatásokra vonatkozó szabályokkal rendelkező alkalmazások "
+"listája. Az alkalmazás lehet asztali fájlnév vagy WM_CLASS név"
 
 #. 6.2->settings-schema.json->app-rules-button->description
 msgid "Add entry for the application of the most recently focused window"
@@ -504,9 +520,8 @@ msgstr ""
 "ezt a gombot."
 
 #. 6.2->settings-schema.json->random-include->description
-#, fuzzy
 msgid "Effects included in the randomized sets"
-msgstr "A véletlenszerű készletekben szereplő effektusok:"
+msgstr "A véletlenszerű készletekben szereplő effektusok"
 
 #. 6.2->settings-schema.json->random-include->tooltip
 msgid ""
@@ -514,26 +529,29 @@ msgid ""
 "event type. When 'Randomized' is selected for any event on the General tab "
 "these sets are used."
 msgstr ""
+"Meghatározza, hogy mely effektusok szerepeljenek a véletlenszerű halmazokban "
+"az egyes ablakeseménytípusokhoz. Ha az Általános lap bármely eseményéhez a "
+"„Véletlenszerű” lehetőséget választja, akkor ezek a készletek használatosak."
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "Effect Name         "
-msgstr ""
+msgstr "Effekt név         "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "      Open        "
-msgstr ""
+msgstr "      Megnyit        "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "      Close       "
-msgstr ""
+msgstr "      Bezár       "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "     Minimize     "
-msgstr ""
+msgstr "     Minimalizálás     "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "    Unminimize    "
-msgstr ""
+msgstr "    Minimalizálás megszüntetése    "
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -543,7 +561,7 @@ msgstr ""
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
 msgid "Magic Lamp"
-msgstr ""
+msgstr "Varázslámpa"
 
 #. 6.2->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
@@ -577,7 +595,7 @@ msgstr "Bezárás ablak effektusa"
 
 #. 6.2->settings-schema.json->dialog-special->description
 msgid "Special handling for dialog windows"
-msgstr ""
+msgstr "Speciális kezelés párbeszédablakokhoz"
 
 #. 6.2->settings-schema.json->dialog-special->tooltip
 msgid ""
@@ -585,26 +603,25 @@ msgid ""
 "file open dialog windows). These settings will override any application "
 "specific settings that may have been defined."
 msgstr ""
+"Lehetővé teszi speciális beállítások megadását a párbeszédablak-típusok "
+"kezeléséhez (azaz fájlmegnyitási párbeszédablakokhoz). Ezek a beállítások "
+"felülírják az esetlegesen meghatározott alkalmazásspecifikus beállításokat."
 
 #. 6.2->settings-schema.json->dialog-open-effect->description
-#, fuzzy
 msgid "Open dialog window effect"
-msgstr "Megnyitás ablak effektusa"
+msgstr "Megnyitás párbeszédablak effektusa"
 
 #. 6.2->settings-schema.json->dialog-close-effect->description
-#, fuzzy
 msgid "Close dialog window effect"
-msgstr "Bezárás ablak effektusa"
+msgstr "Bezárás párbeszédablak effektusa"
 
 #. 6.2->settings-schema.json->minimize-effect->description
-#, fuzzy
 msgid "Minimize window effect"
-msgstr "Megnyitás ablak effektusa"
+msgstr "Ablak effektus minimalizálás"
 
 #. 6.2->settings-schema.json->unminimize-effect->description
-#, fuzzy
 msgid "Unminimize window effect"
-msgstr "Megnyitás ablak effektusa"
+msgstr "Ablak effektus minimalizálás megszüntetése"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
@@ -644,7 +661,6 @@ msgstr "Véletlenszerűség"
 #. 6.2->settings-schema.json->tv-animation-time->description
 #. 6.2->settings-schema.json->tv-glitch-animation-time->description
 #. 6.2->settings-schema.json->wisps-animation-time->description
-#, fuzzy
 msgid "Effect Duration (ms)"
 msgstr "Effektus időtartama (ezredmásodperc)"
 
@@ -670,18 +686,16 @@ msgstr "Effektus időtartama (ezredmásodperc)"
 #. 6.2->settings-schema.json->tv-reset->description
 #. 6.2->settings-schema.json->tv-glitch-reset->description
 #. 6.2->settings-schema.json->wisps-reset->description
-#, fuzzy
 msgid "Reset to default"
-msgstr "Alapértelmezett Tűz"
+msgstr "Visszaállítás alapértelmezettre"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
-#, fuzzy
 msgid "Random Color"
-msgstr "Vonal színe"
+msgstr "Véletlenszerű szín"
 
 #. 6.2->settings-schema.json->aura-glow-start-hue->description
 msgid "Start Hue"
-msgstr ""
+msgstr "Árnyalat indítása"
 
 #. 6.2->settings-schema.json->aura-glow-speed->description
 #. 6.2->settings-schema.json->glitch-speed->description
@@ -690,18 +704,16 @@ msgid "Speed"
 msgstr "Sebesség"
 
 #. 6.2->settings-schema.json->aura-glow-saturation->description
-#, fuzzy
 msgid "Saturation"
-msgstr "Megjelenik"
+msgstr "Telítettség"
 
 #. 6.2->settings-schema.json->aura-glow-edge-size->description
-#, fuzzy
 msgid "Edge Size"
-msgstr "Képpont méret"
+msgstr "Szélek mérete"
 
 #. 6.2->settings-schema.json->aura-glow-edge-hardness->description
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Szélek keménysége"
 
 #. 6.2->settings-schema.json->aura-glow-blur->description
 #. 6.2->settings-schema.json->focus-blur-amount->description
@@ -726,6 +738,8 @@ msgstr "Képpont méret"
 #. 6.2->settings-schema.json->doom-y-hack->description
 msgid "Y offset fix for open/unminimize events"
 msgstr ""
+"Y eltolás javítás az események megnyitásához/minimalizálásának "
+"megszüntetéséhez"
 
 #. 6.2->settings-schema.json->doom-y-hack->tooltip
 msgid ""
@@ -733,6 +747,9 @@ msgid ""
 "unminimize animation completes at the right location. This is a hack fix for "
 "the Doom effect until I can find a proper fix"
 msgstr ""
+"Alkalmazzon eltolást az Y tengely ablakának célpozíciójára, hogy a megnyitás/"
+"minimalizálás megszüntetése animáció a megfelelő helyen fejeződjön be. Ez "
+"egy feltörő javítás a Doom effektushoz, amíg nem találok megfelelő javítást"
 
 #. 6.2->settings-schema.json->energize-a-scale->description
 #. 6.2->settings-schema.json->energize-b-scale->description
@@ -759,38 +776,39 @@ msgstr "Szín"
 #. 6.2->settings-schema.json->fire-presets->options
 #. 6.2->settings-schema.json->mushroom-presets->options
 msgid "Custom"
-msgstr ""
+msgstr "Egyéni"
 
 #. 6.2->settings-schema.json->fire-presets->description
 msgid "Fire Preset"
-msgstr ""
+msgstr "Tűz előbeállítás"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
-msgstr ""
+msgstr "Tűz mozgási sebesség"
 
 #. 6.2->settings-schema.json->fire-3d-noise->description
 msgid "Fire 3D Noise"
-msgstr ""
+msgstr "Tűz 3D zaj"
 
 #. 6.2->settings-schema.json->fire-3d-noise->tooltip
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Dinamikusabb tüzet hoz létre, de több GPU-teljesítményt igényel."
 
 #. 6.2->settings-schema.json->fire-random-color->description
 msgid "Use a Random Color (overrides other color settings)"
-msgstr ""
+msgstr "Véletlenszerű szín használata (felülbírálja a többi színbeállítást)"
 
 #. 6.2->settings-schema.json->fire-random-color->tooltip
 msgid ""
 "Use a random fire color. This setting will override any preset or custom "
 "colors settings you select."
 msgstr ""
+"Használjon véletlenszerű tűz színt. Ez a beállítás felülír minden előre "
+"beállított vagy egyéni színbeállítást."
 
 #. 6.2->settings-schema.json->fire-colors->description
-#, fuzzy
 msgid "Colors 1-5"
-msgstr "Szín #1"
+msgstr "Színek 1-5"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
@@ -855,29 +873,27 @@ msgstr "Ha le van tiltva, akkor egy véletlenszerű hely kerül kiválasztásra.
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Curved"
-msgstr ""
+msgstr "Ívelt"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Wavy"
-msgstr ""
+msgstr "Hullámos"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-#, fuzzy
 msgid "Random"
 msgstr "Véletlenszerű"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Curved / Disappear: Wavy"
-msgstr ""
+msgstr "Megjelenés: ívelt / eltűnés: hullámos"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Wavy / Disappear: Curved"
-msgstr ""
+msgstr "Megjelenés: hullámos / eltűnés: ívelt"
 
 #. 6.2->settings-schema.json->magiclamp-effect->description
-#, fuzzy
 msgid "The type of effect"
-msgstr "Megnyitás ablak effektusa"
+msgstr "Az effekt típusa"
 
 #. 6.2->settings-schema.json->magiclamp-effect->tooltip
 msgid ""
@@ -886,68 +902,66 @@ msgid ""
 "different effects whether a window is appearing or disappearing from the "
 "screen"
 msgstr ""
+"Az effekt lehet sima görbe vagy hullámos animáció. A véletlenszerű opció "
+"véletlenszerűen választ a kettő közül, és a Megjelenés/Eltűnés opciók "
+"különböző effektusokat használnak, függetlenül attól, hogy egy ablak "
+"megjelenik vagy eltűnik a képernyőről"
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"
-msgstr ""
+msgstr "X csempék"
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
 msgid "This effects the quality and the cost of the animation"
-msgstr ""
+msgstr "Ez befolyásolja az animáció minőségét és költségét"
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->description
 msgid "Y Tiles"
-msgstr ""
+msgstr "Y csempék"
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
 msgid "This effects the quality and the costs of the animation"
-msgstr ""
+msgstr "Ez befolyásolja az animáció minőségét és költségeit"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
 msgid "Mushroom Preset"
-msgstr ""
+msgstr "Gomba előbeállítás"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
-#, fuzzy
 msgid "Scale Style"
-msgstr "Skála"
+msgstr "Skála stílusa"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-count->description
-#, fuzzy
 msgid "Spark Count"
-msgstr "Küllők száma"
+msgstr "Szikrák száma"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-color->description
-#, fuzzy
 msgid "Spark Color"
-msgstr "Szín"
+msgstr "Sikra színe"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
 msgid "Spark Rotation"
-msgstr ""
+msgstr "Szikra forgás"
 
 #. 6.2->settings-schema.json->mushroom-custom-rays-color->description
-#, fuzzy
 msgid "Rays Color"
-msgstr "Szín"
+msgstr "Sugár színe"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-count->description
-#, fuzzy
 msgid "Star Rings Count"
-msgstr "Jön a Mikulás"
+msgstr "Csillag gyűrű száma"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "Csillag gyűrű forgás"
 
 #. 6.2->settings-schema.json->mushroom-custom-star-count->description
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "Csikllagok száma gyűrűnként"
 
 #. 6.2->settings-schema.json->mushroom-star-colors->description
-#, fuzzy
 msgid "Colors 1-6"
-msgstr "Szín #1"
+msgstr "Színek 1-6"
 
 #. 6.2->settings-schema.json->pixelate-noise->description
 msgid "Noise"
@@ -971,50 +985,45 @@ msgstr "Részletek"
 
 #. 6.2->settings-schema.json->rgbwarp-brightness->description
 msgid "Brightness"
-msgstr ""
+msgstr "Fényerő"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-r->description
-#, fuzzy
 msgid "Red Speed"
-msgstr "Sebesség"
+msgstr "Vörös sebesség"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-g->description
-#, fuzzy
 msgid "Green Speed"
-msgstr "Sebesség"
+msgstr "Zöld sebesség"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-b->description
-#, fuzzy
 msgid "Blue Speed"
-msgstr "Sebesség"
+msgstr "Kék sebesség"
 
 #. 6.2->settings-schema.json->team-rocket-animation-split->description
 msgid "Animation Split"
-msgstr ""
+msgstr "Animáció darabolása"
 
 #. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
 #. position->description
-#, fuzzy
 msgid "Horizontal Sparkle Position"
-msgstr "Vízszintes skála"
+msgstr "Vízszintes szikrapozíció"
 
 #. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
 #. position->description
-#, fuzzy
 msgid "Vertical Sparkle Position"
-msgstr "Függőleges skála"
+msgstr "Függőleges szikrapozíció"
 
 #. 6.2->settings-schema.json->team-rocket-window-rotation->description
 msgid "Rotate Window"
-msgstr ""
+msgstr "Ablak forgatása"
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Szikra forgása"
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-size->description
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Szikra mérete"
 
 #. 6.2->settings-schema.json->wisps-color-1->description
 msgid "Color #1"
@@ -1030,8 +1039,8 @@ msgstr "Szín #3"
 
 #. 6.2->settings-schema.json->test-effect->description
 msgid "Open effect preview window"
-msgstr ""
+msgstr "Nyissa meg az effektus előnézeti ablakát"
 
 #. 6.2->settings-schema.json->test-effect->tooltip
 msgid "Opens a window using the currently selected effect."
-msgstr ""
+msgstr "Megnyit egy ablakot az aktuálisan kiválasztott effektussal."
