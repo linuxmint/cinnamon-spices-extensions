@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
+"Project-Id-Version: BlurCinnamon@klangman 1.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-03-02 19:42-0500\n"
+"POT-Creation-Date: 2025-04-11 23:57-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,7 +24,8 @@ msgstr ""
 #. metadata.json->description
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
-"Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, Expo)"
+"Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, "
+"Expo, Desktop image)"
 msgstr ""
 
 #. 6.0->settings-schema.json->general-page->title
@@ -278,6 +279,9 @@ msgstr ""
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
 #. 6.0->settings-schema.json->expo-blendColor->description
+#. 6.0->settings-schema.json->panels-blendColor->description
+#. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
 msgid "Dimming overlay color"
 msgstr ""
 
@@ -367,12 +371,6 @@ msgstr ""
 #. 6.0->settings-schema.json->popup-saturation->tooltip
 #. 6.0->settings-schema.json->desktop-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
-msgstr ""
-
-#. 6.0->settings-schema.json->panels-blendColor->description
-#. 6.0->settings-schema.json->popup-blendColor->description
-#. 6.0->settings-schema.json->desktop-blendColor->description
-msgid "Dimming ovrerlay color"
 msgstr ""
 
 #. 6.0->settings-schema.json->panels-radius->description

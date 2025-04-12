@@ -394,7 +394,7 @@
 
     "panels-blendColor": {
         "type": "colorchooser",
-        "description" : "Dimming ovrerlay color",
+        "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
         "dependency" : "!enable-panel-unique-settings",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
@@ -459,7 +459,7 @@
 
     "popup-blendColor": {
         "type": "colorchooser",
-        "description" : "Dimming ovrerlay color",
+        "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
         "dependency" : "enable-popup-override=1",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
@@ -527,7 +527,7 @@
 
     "desktop-blendColor": {
         "type": "colorchooser",
-        "description" : "Dimming ovrerlay color",
+        "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
         "dependency" : "enable-desktop-override=1",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"

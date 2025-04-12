@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.1
+
+* Fix for the main menu's favourite box fading from a solid color into it's blurred state on open (Mint-Y theme)
+* Take into account the popup-menu box margins when applying blurring so that blurring can be properly sized for the popup-menu (Orchis-Dark theme)
+* Fix a typo in the setting window
+* Properly free popup-menu blur elements
+* Improve the transition of panels when disabling/enabling (i.e entering/exiting Overview) so that the panel does change in brightness suddenly
+* Prevent errors under wayland (but the blur effects are still not working under wayland)
+
 ## 1.4.0
 
 * Added the ability to apply effects to the Desktop background image (you can Dim, Blur and Desaturate, but currently you can't colorize the background image)
