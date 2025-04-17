@@ -6,14 +6,18 @@ This is a Cinnamon port of the Gnome extension Burn-my-Windows which can be foun
 
 https://github.com/Schneegans/Burn-My-Windows
 
-**Please go to the above link and support their project since this is merely a port of their fine work!**
+Also includes a port of the Gnome Magic Lamp effect which can be found here:
+
+https://github.com/hermes83/compiz-alike-magic-lamp-effect
+
+**Please go to the above links and support their project since this is merely a port of their fine work!**
 **But DO NOT use this Github link to report issues. See Feedback section below**
 
 ## Requirements
 
 Cinnamon 6.2 (Mint 22) or better. 
 
-This extension needs the Cinnamon.GLSLEffect class which is only available in Cinnamon 6.2.
+This extension needs the Cinnamon.GLSLEffect class which is only available in Cinnamon 6.2 or better.
 
 ## Known issues
 
@@ -22,6 +26,7 @@ This extension needs the Cinnamon.GLSLEffect class which is only available in Ci
 3. The Doom open effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed. When used as a close effect it works correctly. There is a Doom effect option called "Y offset fix for open/unminimize events" which allows you to manually fix this issue while I look for a proper fix that works for everyone.
 4. The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
 5. After upgrading to 0.9.8 the Fire effect setting and the effects included in the randomized sets will be reset to default.
+6. After upgrading to 1.0.1 the Fire and Mushroom preset selections will be reset to default.
 
 ### Currently these effects are working in Cinnamon:
 

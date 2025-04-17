@@ -364,8 +364,8 @@ var Effect = class Effect {
      }
     ];
 
-    let name = settings.getValue("mushroom-presets");
-    if (name == "Custom") {
+    let idx = settings.getValue("mushroom-presets");
+    if (idx == 1000 /*Custom*/) {
       settings.mushroomScaleStyle    = settings.getValue("mushroom-custom-scale-style");
       settings.mushroomSparkCount    = settings.getValue("mushroom-custom-spark-count");
       settings.mushroomSparkColor    = settings.getValue("mushroom-custom-spark-color");
@@ -383,27 +383,25 @@ var Effect = class Effect {
       settings.mushroomStarColors.push(settings.getValue("mushroom-custom-star-color-4"));
       settings.mushroomStarColors.push(settings.getValue("mushroom-custom-star-color-5"));
     } else {
-      presets.find((preset, i) => {
-        if (preset.name == name) {
-          settings.mushroomScaleStyle    = preset.ScaleStyle;
-          settings.mushroomSparkCount    = preset.SparkCount;
-          settings.mushroomSparkColor    = preset.SparkColor;
-          settings.mushroomSparkRotation = preset.SparkRotation;
-          settings.mushroomRaysColor     = preset.RayColor;
-          settings.mushroomRingCount     = preset.RingCount;
-          settings.mushroomRingRotation  = preset.RingRotation;
-          settings.mushroomStarCount     = preset.StarCount;
+      if (isNaN(idx) || idx < 0 || idx >= presets.length)
+         idx = 1;
+      settings.mushroomScaleStyle    = presets[idx].ScaleStyle;
+      settings.mushroomSparkCount    = presets[idx].SparkCount;
+      settings.mushroomSparkColor    = presets[idx].SparkColor;
+      settings.mushroomSparkRotation = presets[idx].SparkRotation;
+      settings.mushroomRaysColor     = presets[idx].RayColor;
+      settings.mushroomRingCount     = presets[idx].RingCount;
+      settings.mushroomRingRotation  = presets[idx].RingRotation;
+      settings.mushroomStarCount     = presets[idx].StarCount;
 
-          settings.mushroomStarColors = [];
-          settings.mushroomStarColors.push(preset.color0);
-          settings.mushroomStarColors.push(preset.color1);
-          settings.mushroomStarColors.push(preset.color2);
-          settings.mushroomStarColors.push(preset.color3);
-          settings.mushroomStarColors.push(preset.color4);
-          settings.mushroomStarColors.push(preset.color5);
-          return(true);
-        }
-      });
+      settings.mushroomStarColors = [];
+      settings.mushroomStarColors.push(presets[idx].color0);
+      settings.mushroomStarColors.push(presets[idx].color1);
+      settings.mushroomStarColors.push(presets[idx].color2);
+      settings.mushroomStarColors.push(presets[idx].color3);
+      settings.mushroomStarColors.push(presets[idx].color4);
+      settings.mushroomStarColors.push(presets[idx].color5);
+       return(true);
     }
   }
 }

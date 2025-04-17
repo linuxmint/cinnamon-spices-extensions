@@ -239,11 +239,10 @@ var Effect = class Effect {
     ];
 
     // Find the preset that is selected and setup the fire settings appropriately
-    let name = settings.getValue("fire-presets");
-    if (name == "Custom") {
+    let idx = settings.getValue("fire-presets");
+    if (idx == 1000 /*Custom*/) {
       settings.fireScale =  settings.getValue("fire-custom-scale");
       settings.fireMovementSpeed = settings.getValue("fire-custom-movement-speed");
-
       settings.fireColor = [];
       settings.fireColor.push( settings.getValue("fire-custom-color-1") );
       settings.fireColor.push( settings.getValue("fire-custom-color-2") );
@@ -251,21 +250,16 @@ var Effect = class Effect {
       settings.fireColor.push( settings.getValue("fire-custom-color-4") );
       settings.fireColor.push( settings.getValue("fire-custom-color-5") );
     } else {
-
-      presets.forEach((preset, i) => {
-        if (preset.name == name) {
-          settings.fireScale =  preset.speed;
-          settings.fireMovementSpeed = preset.scale;
-
-          settings.fireColor = [];
-          settings.fireColor.push(preset.color1);
-          settings.fireColor.push(preset.color2);
-          settings.fireColor.push(preset.color3);
-          settings.fireColor.push(preset.color4);
-          settings.fireColor.push(preset.color5);
-
-        }
-      });
+      if (isNaN(idx) || idx < 0 || idx >= presets.length)
+         idx = 0;
+      settings.fireScale =  presets[idx].speed;
+      settings.fireMovementSpeed = presets[idx].scale;
+      settings.fireColor = [];
+      settings.fireColor.push(presets[idx].color1);
+      settings.fireColor.push(presets[idx].color2);
+      settings.fireColor.push(presets[idx].color3);
+      settings.fireColor.push(presets[idx].color4);
+      settings.fireColor.push(presets[idx].color5);
     }
   }
 }
