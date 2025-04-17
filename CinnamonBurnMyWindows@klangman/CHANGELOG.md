@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+* Fix Fire and Mushroom effect presets when using a translation of Burn-My-Windows. Note: This fix will reset the prefix settings to default so you will need to reconfigure the extension to use your desired preset if you had previously setup a preset other then the default one.
+* Added "Open/Close Edge" and "Open/Close Offset" options under the Magic Lamp effect settings. These options allow you to set the monitor edge location where the Magic Lamp effect will animate from/to for open and close events. The default will be the "Closest edge to mouse pointer" but you can set it to a specific edge and offset. For example, you could direct the animations to towards the Main Menu location. These options only apply to Open/Close events as the minimize/unminimize events will continue to use the location of the windows icon on the window-list as it's source/target location.
+* Make the custom scale widget show tooltips when hovering over the widgets label rather than just when hovering the scale bar.
+
 ## 1.0.0
 
 Here we are at version 1.0. I had hoped to have the full suite of effects enabled for version 1.0, but that will have to wait for version 1.1 when Cinnamon 6.6 is out 🤞. I wanted to get this release out there since it has two fixes that makes the current feature set work without any major issues, so in that way maybe it is a suitable 1.0 release after all!

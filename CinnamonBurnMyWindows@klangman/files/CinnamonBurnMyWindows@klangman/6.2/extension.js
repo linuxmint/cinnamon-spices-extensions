@@ -500,7 +500,7 @@ class BurnMyWindows {
     }
 
     // Now add a cool shader to our window actor!
-    const shader = effect.shaderFactory.getShader(event);
+    const shader = effect.shaderFactory.getShader(event, this._settings);
     actor.add_effect_with_name('burn-my-windows-effect', shader);
 
     // At the end of the animation, we restore the scale of the overview clone (if any)
