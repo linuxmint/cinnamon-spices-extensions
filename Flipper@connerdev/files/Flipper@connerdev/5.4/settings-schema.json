@@ -40,8 +40,14 @@
                 "pop-animationTime", "pop-pullaway", "pop-fade", "pop-dim-factor", "pop-rotateEffect",
                 "rolodex-animationTime", "rolodex-pullaway", "rolodex-fade", "rolodex-dim-factor", "rolodex-rotateEffect",
                 "slide-animationTime", "slide-pullaway", "slide-fade", "slide-dim-factor", "slide-rotateEffect",
-                "stack-animationTime", "stack-pullaway", "stack-fade", "stack-dim-factor", "stack-rotateEffect"]
+                "stack-animationTime", "stack-pullaway", "stack-fade", "stack-dim-factor", "stack-rotateEffect",
+                "hack-fix-blank"]
     }
+  },
+
+  "hack-fix-blank": {
+    "type" : "label",
+    "description" : ""
   },
 
   "cube-random-include": {
@@ -490,6 +496,7 @@
   "transitionEffect": {
     "type": "combobox",
     "description": "Workspace Transition Effect",
+    "tooltip": "Select the type of workspace switch effect that will be used. The \"Randomized\" option allows you to choose which effects can be chosen at random for each workspace switch. The \"Disabled\" option will show no effect, not even the Cinnamon built in effect during a workspace switch.",
     "default": "Stack",
     "options": {
       "Cube": 0,
@@ -499,7 +506,8 @@
       "Rolodex": 4,
       "Slide": 5,
       "Stack" : 6,
-      "Randomized" : 7
+      "Randomized" : 7,
+      "Disabled" : 8
     }
   },
   "patchmoveToWorkspace": {
