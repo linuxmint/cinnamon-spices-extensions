@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-01-10 00:15-0500\n"
+"POT-Creation-Date: 2025-04-17 21:29-0400\n"
 "PO-Revision-Date: 2025-02-13 23:47+0100\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -315,9 +315,21 @@ msgstr "Ajusts exclusius d'efecte"
 msgid "Workspace Transition Effect"
 msgstr "Efecte de transició de l'espai de treball"
 
+#. 5.4->settings-schema.json->transitionEffect->tooltip
+msgid ""
+"Select the type of workspace switch effect that will be used. The "
+"\"Randomized\" option allows you to choose which effects can be chosen at "
+"random for each workspace switch. The \"Disabled\" option will show no "
+"effect, not even the Cinnamon built in effect during a workspace switch."
+msgstr ""
+
 #. 5.4->settings-schema.json->transitionEffect->options
 msgid "Randomized"
 msgstr "Aleatori"
+
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Disabled"
+msgstr ""
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Flipper effect with the Workspace Switcher applet"

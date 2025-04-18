@@ -1,6 +1,12 @@
 # Flipper
 
-Fancy workspace switching extension with 7 different effect animation options
+Fancy workspace switching extension with 7 different effect animation options: Cube, Deck, Flip, Pop, Rolodex, Slide and Stack!
+
+Each effect has 5 user adjustable settings: Animation duration, Zoom amount, Fade transition, Background dim amount, Transition easing.
+
+You can use your favorite effect or use a random effect chosen from your selection of the 7 effects.
+
+Also has a "Disabled" option which will not only disable all the Flipper effects but also prevents the default Cinnamon workspace switch effect. Great for people who want a super fast workspace switch but don't want to disable all the other Cinnamon desktop and window effects.
 
 ## Requirements
 
@@ -35,8 +41,6 @@ If you know of other methods of switching the workspace where the Flipper effect
 1. When using Flipper with two or more Monitors attached, the effects will only appear on the primary display. At some point I plan on adding options to control how Flipper works on multi-monitor setups, but it might be a while before I find the time to work on that.
 
 2. If you enable the "Include Panels" option in the Flipper configuration, the panels will disappear while the effect is in action and then reappear when it is done. This is far from ideal, so I recommend that you leave this option disabled so that the panels remain hidden, only reappearing after returning to the normal desktop.
-
-3. In the setting configure window under the "Effect Settings" tab, when changing the "Show setting for effect" drop-down to select a different effect, sometimes the contents under the "Effect Specific Settings" title will not properly update. Because of this, only a subset of the available options are visible. I believe this is a Cinnamon bug. You can force Cinnamon to properly redraw the options by selecting the "General" tab then returning to the "Effect Settings" tab again. After that, the complete set of "Effect Specific Settings" should be visible.
 
 ## Installation
 

@@ -28,7 +28,8 @@ const TransitionEffect = {
    Rolodex:    4,
    Slide:      5,
    Stack:      6,
-   Randomized: 7
+   Randomized: 7,
+   Disabled:   8
 }
 
 let enabled;
@@ -61,9 +62,17 @@ Flipper.prototype = {
 
         this.effectName = this.getEffectName();
         if (this.effectName == null ) {
-            // Nothing enabled, so just do a normal workspace switch!
-            Main.soundManager.play('switch');
-            new_workspace.activate(global.get_current_time());
+            if (settings.transitionEffect === TransitionEffect.Disabled) {
+               // Disable Cinnamon effects while the Workspace switch is happening
+               let save = Main.animations_enabled
+               Main.animations_enabled = false;
+               new_workspace.activate(global.get_current_time());
+               Main.animations_enabled = save;
+            } else {
+               // No random effects enabled, so just do a normal workspace switch!
+               Main.soundManager.play('switch');
+               new_workspace.activate(global.get_current_time());
+            }
             Main.wm.showWorkspaceOSD();
             return;
         }
@@ -489,6 +498,7 @@ Flipper.prototype = {
             return "Stack";
          }
       }
+      // Return null if there are no random effects selected, or if the "Disabled" option was selected
       return null;
     },
 
