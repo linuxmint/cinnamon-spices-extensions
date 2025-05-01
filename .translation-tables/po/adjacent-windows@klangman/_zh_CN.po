@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. metadata.json->name
+msgid "Adjacent Windows"
+msgstr ""
+
+#. metadata.json->description
+msgid "Use hotkeys to switch to adjacent windows"
+msgstr ""
+
+#. 5.4->settings-schema.json->keybinding-header->description
+msgid "Hotkeys to switch focus relative to the current window"
+msgstr ""
+
+#. 5.4->settings-schema.json->left-key->description
+msgid "Activate window to the left"
+msgstr ""
+
+#. 5.4->settings-schema.json->right-key->description
+msgid "Activate window to the right"
+msgstr ""
+
+#. 5.4->settings-schema.json->up-key->description
+msgid "Activate window above"
+msgstr ""
+
+#. 5.4->settings-schema.json->down-key->description
+msgid "Activate window below"
+msgstr ""
+
+#. 5.4->settings-schema.json->under-key->description
+msgid "Activate window under"
+msgstr ""
+
+#. 5.4->settings-schema.json->back-key->description
+msgid "Undo the focus change"
+msgstr ""
+
+#. 5.4->settings-schema.json->settings-header->description
+msgid "Other settings"
+msgstr ""
+
+#. 5.4->settings-schema.json->next-focus->options
+msgid "Closest to the current window"
+msgstr ""
+
+#. 5.4->settings-schema.json->next-focus->options
+msgid "Closest with a visible corner"
+msgstr ""
+
+#. 5.4->settings-schema.json->overlap-allowance->units
+msgid "pixels"
+msgstr ""
+
+#. 5.4->settings-schema.json->overlap-allowance->tooltip
+msgid ""
+"Sets how many pixels a corner can be obscured by other windows and still be "
+"considered a candidate window. Also sets the minimum amount of window "
+"visibility in order to qualify as a candidate window"
+msgstr ""
+
+#. 5.4->settings-schema.json->boost-restriction->units
+msgid "priority"
+msgstr ""
+
+#. 5.4->settings-schema.json->boost-restriction->description
+msgid "Increase the priority of direction alignment"
+msgstr ""
+
+#. 5.4->settings-schema.json->include-minimized->description
+msgid "Allow switching to minimized windows"
+msgstr ""
+
+#. 5.4->settings-schema.json->include-other-monitors->description
+msgid "Allow switching to windows on other monitors"
+msgstr ""
+
+#. 5.4->settings-schema.json->warp-cursor-pointer->description
+msgid "Warp the cursor to the center of the focused window"
+msgstr ""
