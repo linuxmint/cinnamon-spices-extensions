@@ -434,7 +434,6 @@ msgid "About Cinnamon Burn-My-Windows"
 msgstr "Acerca de Cinnamon Burn-My-Windows"
 
 #. 6.2->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Disintegrate your windows with style.</b>\n"
@@ -455,14 +454,22 @@ msgid ""
 "effect\">Github</a>"
 msgstr ""
 "\n"
+"<b>Desintegre sus ventanas con estilo.</b>\n"
+"Versión: ext-versión\n"
+"\n"
 "Adaptado a Cinnamon por Kevin Langman\n"
-"Github: https://github.com/klangman/CinnamonBurnMyWindows\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
+"new\">Informar de un problema</a> / <a href=\"https://cinnamon-spices."
+"linuxmint.com/extensions/view/103\">Página web</a>\n"
 "\n"
 "Basado en el código Burn-My-Windows de Schneegans y colaboradores\n"
-"Github: https://github.com/Schneegans/Burn-My-Windows\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
 "\n"
 "El Efecto Lámpara Mágica ha sido portado desde el código de hermes83\n"
-"GitHub: https://github.com/hermes83/compiz-alike-magic-lamp-effect"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
 
 #. 6.2->settings-schema.json->app-rules->description
 msgid "Application Specific Rules"
@@ -904,27 +911,27 @@ msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Top"
-msgstr ""
+msgstr "Arriba"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Bottom"
-msgstr ""
+msgstr "Abajo"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Edge closest to mouse pointer"
-msgstr ""
+msgstr "Borde más cercano al puntero del ratón"
 
 #. 6.2->settings-schema.json->magiclamp-edge->description
 msgid "Open/Close Edge"
-msgstr ""
+msgstr "Abrir/Cerrar borde"
 
 #. 6.2->settings-schema.json->magiclamp-edge->tooltip
 msgid ""
@@ -932,10 +939,13 @@ msgid ""
 "disappear towards when closing. This setting is not used for minimize or "
 "unminimize events"
 msgstr ""
+"El borde del monitor desde el que debe originarse una ventana al abrirse, o "
+"hacia el que debe desaparecer al cerrarse. Esta configuración no se utiliza "
+"para minimizar o desminimizar eventos."
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->description
 msgid "Open/Close Edge Offset"
-msgstr ""
+msgstr "Abrir/Cerrar desplazamiento del borde"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
 msgid ""
@@ -945,6 +955,11 @@ msgid ""
 "unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
 "to mouse pointer\""
 msgstr ""
+"El desplazamiento desde la parte superior o izquierda del 'Abrir/Cerrar "
+"borde' que la animación debe utilizar como origen/objetivo de la animación. "
+"Se trata de un porcentaje de la anchura/altura del monitor y no se aplica a "
+"los eventos de minimizar/desminimizar o cuando el 'Abrir/Cerrar borde' está "
+"configurado como 'Borde más cercano al puntero del ratón'."
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"
