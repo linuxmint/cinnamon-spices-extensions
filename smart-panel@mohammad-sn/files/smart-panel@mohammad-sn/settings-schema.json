@@ -12,6 +12,7 @@
             "Adjust opacity of windows" : "adjust_opacity",
             "Toggle show desktop"       : "desktop",
             "Switch between windows"    : "switch-windows",
+            "Adjust sound volume"       : "adjust_volume",
             "None"                      : "none"
         },
         "tooltip" : ""

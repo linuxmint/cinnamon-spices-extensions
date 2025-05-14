@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-03-23 22:02+0100\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
 "PO-Revision-Date: 2025-05-13 12:07+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -53,6 +53,10 @@ msgstr "Toon bureaublad aan/uit"
 #. settings-schema.json->scroll-action->options
 msgid "Switch between windows"
 msgstr "Wisselen tussen vensters"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
 
 #. settings-schema.json->scroll-action->options
 #. settings-schema.json->scroll-action-up->options
