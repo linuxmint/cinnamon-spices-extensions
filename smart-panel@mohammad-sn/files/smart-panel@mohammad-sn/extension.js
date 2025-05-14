@@ -14,6 +14,7 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+const Cvc = imports.gi.Cvc;
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
@@ -56,6 +57,7 @@ function SmartPanelExt(metadata, orientation, panel_height, instanceId) {
 SmartPanelExt.prototype = {
     _init: function(metadata, orientation, panel_height, instanceId) {
 
+        this._control = null;
         this.settings = new Settings.ExtensionSettings(this, "smart-panel@mohammad-sn");
         this.settings.bind("scroll-action"     , "scrl_action", this._onScrollActionChanged);
         this.settings.bind("sep-scroll-action" , "sep_acts", this._onScrollSettingsChanged);
@@ -117,6 +119,8 @@ SmartPanelExt.prototype = {
 
     disable: function() {
         this.is_disabled = true;
+        if (this._control != null)
+            this._control.close();
         remove_all_sources();
         // FIXME: These lines make Cinnamon unstable!
         //~ if (this.sr != null) this._panel.disconnect(this.sr);
@@ -222,6 +226,25 @@ SmartPanelExt.prototype = {
                 if (m < min_opacity) m = min_opacity;
                 if (m > 255) m = 255;
                 global.window_group.set_opacity(m);
+            }
+            else if (this.scrl_action == 'adjust_volume') {
+                if (this._control == null) {
+                    this._control = new Cvc.MixerControl({ name: 'Smart Panel Volume Control' });
+                    this._control.open();
+                }
+                if (this._control.get_state() == Cvc.MixerControlState.READY) {
+                    let v = 5 * scrollDirection;
+                    global.log("Volume: " + v.toString());
+                    this._output = this._control.get_default_sink();
+                    let currentVolume = this._output.volume;
+                    let prev_muted = this._output.is_muted;
+                    let max_norm = this._control.get_vol_max_norm();
+                    this._output.volume = Math.min(Math.max(0, currentVolume + max_norm * v / 100), max_norm * 1.5);
+                    this._output.push_volume();
+                }
+                else {
+                    global.log("this._control NOT READY");
+                }
             }
             else if (this.scrl_action == 'desktop') {
                 if (Main.panel.bottomPosition) scrollDirection = -scrollDirection;

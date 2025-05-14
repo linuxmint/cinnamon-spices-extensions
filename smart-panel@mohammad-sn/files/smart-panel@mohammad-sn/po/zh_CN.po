@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-03-23 22:02+0100\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -50,6 +50,10 @@ msgstr "切换显示桌面"
 #. settings-schema.json->scroll-action->options
 msgid "Switch between windows"
 msgstr "在窗口之间切换"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
 
 #. settings-schema.json->scroll-action->options
 #. settings-schema.json->scroll-action-up->options
