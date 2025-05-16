@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-05-14 22:04+0200\n"
-"PO-Revision-Date: 2025-03-23 19:01-0300\n"
+"PO-Revision-Date: 2025-05-16 12:09-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -57,7 +57,7 @@ msgstr "Cambiar entre ventanas"
 
 #. settings-schema.json->scroll-action->options
 msgid "Adjust sound volume"
-msgstr ""
+msgstr "Ajustar el volumen del sonido"
 
 #. settings-schema.json->scroll-action->options
 #. settings-schema.json->scroll-action-up->options
