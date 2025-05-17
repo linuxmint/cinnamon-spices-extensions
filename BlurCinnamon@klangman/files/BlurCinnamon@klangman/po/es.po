@@ -22,15 +22,14 @@ msgid "Blur Cinnamon"
 msgstr "Desenfoque de Cinnamon"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
 "Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
 "Desktop image)"
 msgstr ""
 "Permite desenfocar, colorear, desaturar y ajustar la atenuación de algunos "
-"componentes del escritorio Cinnamon (por ej. paneles, menús emergentes de "
-"applets, vista general, Exposición, Imagen del escritorio)"
+"componentes del escritorio Cinnamon (es decir, Paneles, Menús emergentes, "
+"Vista general, Exposición, Imagen del escritorio)."
 
 #. 6.0->settings-schema.json->general-page->title
 msgid "General"
