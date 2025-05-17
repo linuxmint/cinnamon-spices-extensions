@@ -846,7 +846,7 @@ class BlurDesktop {
 
    _onFocusChanged(){
       let window = global.display.get_focus_window();
-      if (window && window.get_window_type() === Meta.WindowType.DESKTOP) {
+      if (!window || window.get_window_type() === Meta.WindowType.DESKTOP) {
          if (this._blurEffect instanceof GaussianBlur.GaussianBlurEffect && this._blurEffect.radius != this._withFocusSettings.radius)
             this._blurEffect.radius = this._withFocusSettings.radius;
          if (this._brightnessEffect)
@@ -1089,7 +1089,7 @@ function disable() {
    }
 
    if (blurDesktop) {
-      blurDesktop.destory();
+      blurDesktop.destroy();
       blurDesktop = null;
    }
 }

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-03-02 19:42-0500\n"
+"POT-Creation-Date: 2025-05-17 12:46-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -23,9 +23,11 @@ msgid "Blur Cinnamon"
 msgstr "Cinnamon elhomályosítása"
 
 #. metadata.json->description
+#, fuzzy
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
-"Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, Expo)"
+"Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
+"Desktop image)"
 msgstr ""
 "Lehetővé teszi egyes Cinnamon asztal összetevők (például panelek, "
 "kisalkalmazások előugró menüi, áttekintés, kiállítás) elmosását, színezését, "
@@ -328,6 +330,9 @@ msgstr "Háttér elhomályosítása/színezése (százalék)"
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
 #. 6.0->settings-schema.json->expo-blendColor->description
+#. 6.0->settings-schema.json->panels-blendColor->description
+#. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
 msgid "Dimming overlay color"
 msgstr "Tompító fedőszín"
 
@@ -424,12 +429,6 @@ msgstr "Háttér színtelítettsége"
 #. 6.0->settings-schema.json->desktop-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
 msgstr "Beállítja a háttérkép színtelítettségét."
-
-#. 6.0->settings-schema.json->panels-blendColor->description
-#. 6.0->settings-schema.json->popup-blendColor->description
-#. 6.0->settings-schema.json->desktop-blendColor->description
-msgid "Dimming ovrerlay color"
-msgstr "Tompító fedőszín"
 
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description

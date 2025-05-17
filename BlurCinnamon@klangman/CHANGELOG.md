@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.2
+
+* Fixed a typo in the code that prevented the effects from being removed from the desktop background image after disabling the extension (thanks to OthorWight for finding the issue).
+* Fixed an issue where the Desktop Background was blurred on startup even when the "Only apply effect settings if the desktop is not in focus" option was enabled (thanks to AxeldeWater for spotting the issue).
+* The Cinnamenu not blurring issue is is fixed [here](https://github.com/fredcw/Cinnamenu), see this [issue](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873) to fix the Cinnamon Spices version
+
 ## 1.4.1
 
 * Fix for the main menu's favourite box fading from a solid color into it's blurred state on open (Mint-Y theme)
