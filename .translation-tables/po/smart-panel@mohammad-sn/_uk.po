@@ -1,0 +1,27 @@
+# SMART PANEL
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: 2023-08-24 10:57+0300\n"
+"Last-Translator: DmytroVoytko <Dmytro.Voytko@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
