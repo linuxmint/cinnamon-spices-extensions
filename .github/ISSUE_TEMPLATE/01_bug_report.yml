@@ -46,6 +46,7 @@ body:
     - adjacent-windows@klangman @klangman
     - back-to-monitor@nathan818fr @nathan818fr
     - blur-overview@nailfarmer.nailfarmer.com @klangman
+    - BlurCinnamon@klangman @klangman
     - cinnamon-dynamic-wallpaper@TobiZog @TobiZog
     - cinnamon-maximus@fmete
     - CinnamonBurnMyWindows@klangman @klangman
@@ -64,6 +65,8 @@ body:
     - mouse-shake-zoom@rcalixte @rcalixte
     - opacify@anish.org
     - opacity-slider@neatnit @NeatNit
+    - OSD150@claudiux @claudiux
+    - OsdWithNumber@JosephMcc @JosephMcc
     - rnbdsh@negateWindow @rnbdsh
     - SanitizeXsessionErrors@claudiux @claudiux
     - ShadowParameters@mikhail-ekzi @mikhail-ekzi
