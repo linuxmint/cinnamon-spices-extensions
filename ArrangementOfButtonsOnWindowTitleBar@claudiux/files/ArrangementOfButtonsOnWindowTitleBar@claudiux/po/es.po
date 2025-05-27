@@ -1,0 +1,74 @@
+# ARRANGEMENT OF BUTTONS ON WINDOW TITLE BAR (ABWTB)
+# This file is put in the public domain.
+# claudiux, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ArrangementOfButtonsOnWindowTitleBar@claudiux "
+"1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-27 03:07+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Arrangement Of Buttons On Window Title Bar (ABWTB)"
+msgstr ""
+"Disposición de los botones en la barra de título de la ventana "
+"(ABWTB)"
+
+#. metadata.json->description
+msgid "Arranges the buttons on the title bar of windows"
+msgstr "Ordena los botones de la barra de título de las ventanas"
+
+#. settings-schema.json->arrangement->title
+msgid "Button layout on the window title bar"
+msgstr ""
+"Disposición de los botones en la barra de título de la ventana"
+
+#. settings-schema.json->section-left->title
+msgid "Left side of title bar"
+msgstr "Parte izquierda de la barra de título"
+
+#. settings-schema.json->section-right->title
+msgid "Right side of title bar"
+msgstr "Parte derecha de la barra de título"
+
+#. settings-schema.json->section-accessibility->title
+msgid "Accessibility"
+msgstr "Accesibilidad"
+
+#. settings-schema.json->leftMenu->description
+#. settings-schema.json->rightMenu->description
+msgid "Menu"
+msgstr "Menú"
+
+#. settings-schema.json->leftClose->description
+#. settings-schema.json->rightClose->description
+msgid "Close"
+msgstr "Cerrar"
+
+#. settings-schema.json->leftMaximize->description
+#. settings-schema.json->rightMaximize->description
+msgid "Maximize"
+msgstr "Maximizar"
+
+#. settings-schema.json->leftMinimize->description
+#. settings-schema.json->rightMinimize->description
+msgid "Minimize"
+msgstr "Minimizar"
+
+#. settings-schema.json->spacer->description
+msgid "Add a space between adjacent buttons"
+msgstr "Añadir un espacio entre botones adyacentes"
+
+#. settings-schema.json->labelComment->description
+msgid "Please wait 2 seconds for the changes to take effect."
+msgstr "Espere 2 segundos para que los cambios surtan efecto."
