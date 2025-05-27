@@ -1,0 +1,101 @@
+{
+  "ABWT-layout": {
+    "type": "layout",
+    "pages": [
+      "arrangement"
+    ],
+    "arrangement": {
+      "type": "page",
+      "title": "Button layout on the window title bar",
+      "sections": [
+        "section-bepatient",
+        "section-left",
+        "section-right",
+        "section-accessibility"
+      ]
+    },
+    "section-bepatient": {
+      "type": "section",
+      "title": "",
+      "keys": [
+        "labelComment"
+      ]
+    },
+    "section-left": {
+      "type": "section",
+      "title": "Left side of title bar",
+      "keys": [
+        "leftMenu",
+        "leftClose",
+        "leftMaximize",
+        "leftMinimize"
+      ]
+    },
+    "section-right": {
+      "type": "section",
+      "title": "Right side of title bar",
+      "keys": [
+        "rightMinimize",
+        "rightMaximize",
+        "rightClose",
+        "rightMenu"
+      ]
+    },
+    "section-accessibility": {
+      "type": "section",
+      "title": "Accessibility",
+      "keys": [
+        "spacer"
+      ]
+    }
+  },
+  "leftMenu": {
+    "type": "switch",
+    "default": false,
+    "description": "Menu"
+  },
+  "leftClose": {
+    "type": "switch",
+    "default": false,
+    "description": "Close"
+  },
+  "rightClose": {
+    "type": "switch",
+    "default": false,
+    "description": "Close"
+  },
+  "leftMaximize": {
+    "type": "switch",
+    "default": false,
+    "description": "Maximize"
+  },
+  "rightMaximize": {
+    "type": "switch",
+    "default": false,
+    "description": "Maximize"
+  },
+  "leftMinimize": {
+    "type": "switch",
+    "default": false,
+    "description": "Minimize"
+  },
+  "rightMinimize": {
+    "type": "switch",
+    "default": false,
+    "description": "Minimize"
+  },
+  "rightMenu": {
+    "type": "switch",
+    "default": false,
+    "description": "Menu"
+  },
+  "spacer": {
+    "type": "switch",
+    "default": false,
+    "description": "Add a space between adjacent buttons"
+  },
+  "labelComment": {
+    "type": "label",
+    "description": "Please wait 2 seconds for the changes to take effect."
+  }
+}
