@@ -1,0 +1,1 @@
+files/ArrangementOfButtonsOnWindowTitleBar@claudiux/CHANGELOG.md
