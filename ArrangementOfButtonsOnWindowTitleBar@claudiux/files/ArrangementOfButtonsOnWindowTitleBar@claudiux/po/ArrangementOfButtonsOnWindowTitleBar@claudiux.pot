@@ -1,14 +1,14 @@
 # ARRANGEMENT OF BUTTONS ON WINDOW TITLE BAR (ABWTB)
 # This file is put in the public domain.
-# claudiux, 2017
+# claudiux, 2025
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ArrangementOfButtonsOnWindowTitleBar@claudiux 1.0.0\n"
+"Project-Id-Version: ArrangementOfButtonsOnWindowTitleBar@claudiux 2.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-05-27 03:07+0200\n"
+"POT-Creation-Date: 2025-05-29 07:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,6 +29,10 @@ msgstr ""
 msgid "Button layout on the window title bar"
 msgstr ""
 
+#. settings-schema.json->pageexpert->title
+msgid "Expert Mode"
+msgstr ""
+
 #. settings-schema.json->section-left->title
 msgid "Left side of title bar"
 msgstr ""
@@ -39,6 +43,18 @@ msgstr ""
 
 #. settings-schema.json->section-accessibility->title
 msgid "Accessibility"
+msgstr ""
+
+#. settings-schema.json->section-explainEM->title
+msgid "Explanation"
+msgstr ""
+
+#. settings-schema.json->section-stringEM->title
+msgid "Button Layout"
+msgstr ""
+
+#. settings-schema.json->section-switchEM->title
+msgid "Apply changes"
 msgstr ""
 
 #. settings-schema.json->leftMenu->description
@@ -67,4 +83,49 @@ msgstr ""
 
 #. settings-schema.json->labelComment->description
 msgid "Please wait 2 seconds for the changes to take effect."
+msgstr ""
+
+#. settings-schema.json->labelComment2->description
+msgid "Expert Mode enabled. Please use the Expert Mode tab."
+msgstr ""
+
+#. settings-schema.json->explanationEM->description
+msgid ""
+"Arrangement of buttons on the titlebar.\n"
+"The value should be a string, such as 'menu:minimize,maximize,spacer,"
+"close'.\n"
+"The colon separates the left corner of the window from the right corner, and "
+"the button names are comma-separated.\n"
+"Duplicate buttons are not allowed.\n"
+"Unknown button names are silently ignored so that buttons can be added in "
+"future versions without breaking older versions.\n"
+"A special 'spacer' tag can be used to insert some space between two adjacent "
+"buttons.\n"
+"Valid buttons and tags are:\n"
+"\tclose\n"
+"\tmenu\n"
+"\tminimize\n"
+"\tmaximize\n"
+"\tspacer\n"
+"Other buttons, not taken into account:\n"
+"\tabove\n"
+"\tlower\n"
+"\tshade\n"
+"\tstick"
+msgstr ""
+
+#. settings-schema.json->explanationNotEM->description
+msgid "Expert Mode disabled. Please use the first tab."
+msgstr ""
+
+#. settings-schema.json->stringEM->description
+msgid "Value"
+msgstr ""
+
+#. settings-schema.json->applyChangesEM->description
+msgid "Apply this button layout"
+msgstr ""
+
+#. settings-schema.json->useEM->description
+msgid "Use only Expert Mode"
 msgstr ""

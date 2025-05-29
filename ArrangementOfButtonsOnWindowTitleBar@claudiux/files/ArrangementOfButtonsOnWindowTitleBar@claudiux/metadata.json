@@ -2,7 +2,7 @@
   "uuid": "ArrangementOfButtonsOnWindowTitleBar@claudiux",
   "name": "Arrangement Of Buttons On Window Title Bar (ABWTB)",
   "author": "claudiux",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "cinnamon-version": [
     "3.6",
     "3.8",
@@ -21,6 +21,6 @@
     "6.4",
     "6.6"
   ],
-  "url": "https://github.com/linuxmint/cinnamon-spices-extensions",
+  "url": "https://cinnamon-spices.linuxmint.com/extensions/view/107",
   "description": "Arranges the buttons on the title bar of windows"
 }

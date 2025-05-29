@@ -16,6 +16,8 @@ None.
  6. Select this extension then install it using the [➕] button.
  7. Use the [<small>⚙</small><sup><strong>⚙</strong></sup>] button to configure this extension.
 
+In Expert Mode, you can define the exact button layout you want. This allows you to modify the order of the buttons.
+
 ## Please note
 
   * Changes are applied within 2 seconds.
