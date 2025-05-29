@@ -42,87 +42,42 @@ class MyExtension {
     }
 
     _onLeftMenu(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('rightMenu', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'rightMenu');
     }
 
     _onRightMenu(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('leftMenu', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'leftMenu');
     }
 
     _onLeftClose(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('rightClose', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'rightClose');
     }
 
     _onRightClose(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('leftClose', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'leftClose');
     }
 
     _onLeftMaximize(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('rightMaximize', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'rightMaximize');
     }
 
     _onRightMaximize(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('leftMaximize', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'leftMaximize');
     }
 
     _onLeftMinimize(value) {
-        let _to = setTimeout( () => {
-                clearTimeout(_to);
-                if (value === true)
-                    this.settings.setValue('rightMinimize', false);
-                this._on_apply();
-            },
-            2100
-        );
+        this._changeOtherValueLater(value, 'rightMinimize');
     }
 
     _onRightMinimize(value) {
+        this._changeOtherValueLater(value, 'leftMinimize');
+    }
+
+    _changeOtherValueLater(value, name){
         let _to = setTimeout( () => {
                 clearTimeout(_to);
                 if (value === true)
-                    this.settings.setValue('leftMinimize', false);
+                    this.settings.setValue(name, false);
                 this._on_apply();
             },
             2100
