@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. metadata.json->name
 msgid "Arrangement Of Buttons On Window Title Bar (ABWTB)"
@@ -31,7 +31,7 @@ msgstr "Disposición de los botones en la barra de título de la ventana"
 
 #. settings-schema.json->pageexpert->title
 msgid "Expert Mode"
-msgstr ""
+msgstr "Modo experto"
 
 #. settings-schema.json->section-left->title
 msgid "Left side of title bar"
@@ -47,15 +47,15 @@ msgstr "Accesibilidad"
 
 #. settings-schema.json->section-explainEM->title
 msgid "Explanation"
-msgstr ""
+msgstr "Explicación"
 
 #. settings-schema.json->section-stringEM->title
 msgid "Button Layout"
-msgstr ""
+msgstr "Disposición de los botones"
 
 #. settings-schema.json->section-switchEM->title
 msgid "Apply changes"
-msgstr ""
+msgstr "Aplicar cambios"
 
 #. settings-schema.json->leftMenu->description
 #. settings-schema.json->rightMenu->description
@@ -87,13 +87,13 @@ msgstr "Espere 2 segundos para que los cambios surtan efecto."
 
 #. settings-schema.json->labelComment2->description
 msgid "Expert Mode enabled. Please use the Expert Mode tab."
-msgstr ""
+msgstr "Modo Experto activado. Utilice la pestaña Modo experto."
 
 #. settings-schema.json->explanationEM->description
 msgid ""
 "Arrangement of buttons on the titlebar.\n"
-"The value should be a string, such as 'menu:minimize,maximize,spacer,"
-"close'.\n"
+"The value should be a string, such as "
+"'menu:minimize,maximize,spacer,close'.\n"
 "The colon separates the left corner of the window from the right corner, and "
 "the button names are comma-separated.\n"
 "Duplicate buttons are not allowed.\n"
@@ -113,19 +113,40 @@ msgid ""
 "\tshade\n"
 "\tstick"
 msgstr ""
+"Disposición de los botones en la barra de título.\n"
+"El valor debe ser una cadena, como "
+"'menú:minimizar,maximizar,espaciador,cerrar'.\n"
+"Los dos puntos separan la esquina izquierda de la ventana de la esquina "
+"derecha, y los nombres de los botones están separados por comas.\n"
+"No se permiten botones duplicados.\n"
+"Los nombres de botones desconocidos se ignoran para que se puedan añadir en "
+"futuras versiones sin afectar a las versiones anteriores.\n"
+"Se puede utilizar una etiqueta especial 'espaciador' para insertar espacio "
+"entre dos botones adyacentes.\n"
+"Los botones y etiquetas válidos son\n"
+"\tcerrar\n"
+"\tmenú\n"
+"\tminimizar\n"
+"\tmaximizar\n"
+"\tespaciador\n"
+"Otros botones, no se tienen en cuenta:\n"
+"\tarriba\n"
+"\tabajo\n"
+"\tsombrear\n"
+"\tpegar"
 
 #. settings-schema.json->explanationNotEM->description
 msgid "Expert Mode disabled. Please use the first tab."
-msgstr ""
+msgstr "Modo experto desactivado. Utilice la primera pestaña."
 
 #. settings-schema.json->stringEM->description
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #. settings-schema.json->applyChangesEM->description
 msgid "Apply this button layout"
-msgstr ""
+msgstr "Aplicar esta disposición de botones"
 
 #. settings-schema.json->useEM->description
 msgid "Use only Expert Mode"
-msgstr ""
+msgstr "Utilizar sólo el Modo Experto"
