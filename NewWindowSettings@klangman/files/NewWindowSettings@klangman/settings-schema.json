@@ -1,0 +1,22 @@
+{
+    "auto-header": {
+        "type": "header",
+        "description": "New window settings to restore for all applications"
+    },
+
+    "auto-save-above" : {
+        "type": "switch",
+        "default": true,
+        "description": "Automatically restore \"Always on Top\""
+    },
+    "auto-save-on-all-workspaces" : {
+        "type": "switch",
+        "default": true,
+        "description": "Automatically restore \"Always on Visible Workspace\""
+    },
+
+    "app-auto-save": {
+        "type": "generic",
+        "default": []
+    }
+}
