@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-04-11 23:57-0400\n"
-"PO-Revision-Date: 2025-02-21 09:56+0100\n"
+"POT-Creation-Date: 2025-05-17 12:46-0400\n"
+"PO-Revision-Date: 2025-06-13 17:14+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -21,15 +21,14 @@ msgid "Blur Cinnamon"
 msgstr "Vervaag Cinnamon"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
-"Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, "
-"Expo, Desktop image)"
+"Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
+"Desktop image)"
 msgstr ""
-"Hiermee kun je bepaalde Cinnamon Desktop-componenten vervagen, inkleuren, "
-"desatureren en de verduistering aanpassen (bv. Panelen, Applet pop-upmenu’s, "
-"Overzicht en Expo)"
+"Hiermee kun je sommige onderdelen van de Cinnamon-desktop vervagen, "
+"inkleuren, desatureren en de verduistering aanpassen (d.w.z. panelen, pop-"
+"upmenu's, overzicht, expo, bureaubladachtergrond)."
 
 #. 6.0->settings-schema.json->general-page->title
 msgid "General"
@@ -55,7 +54,7 @@ msgstr "Pop-upmenu's"
 
 #. 6.0->settings-schema.json->desktop-page->title
 msgid "Desktop Background"
-msgstr ""
+msgstr "Bureaubladachtergrond"
 
 #. 6.0->settings-schema.json->general-settings->title
 msgid "Cinnamon components where effects will be applied"
@@ -96,12 +95,11 @@ msgstr "Effectinstellingen voor pop-upmenu's"
 
 #. 6.0->settings-schema.json->desktop-override->title
 msgid "Desktop background settings"
-msgstr ""
+msgstr "Instellingen voor bureaubladachtergrond"
 
 #. 6.0->settings-schema.json->desktop-effect-settings->title
-#, fuzzy
 msgid "Desktop background effects settings"
-msgstr "Effectinstellingen voor pop-upmenu's"
+msgstr "Instellingen voor effecten op bureaubladachtergrond"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -165,13 +163,16 @@ msgstr ""
 
 #. 6.0->settings-schema.json->enable-desktop-effects->description
 msgid "Desktop background"
-msgstr ""
+msgstr "Bureaubladachtergrond"
 
 #. 6.0->settings-schema.json->enable-desktop-effects->tooltip
 msgid ""
 "Apply effects to desktop background image. On the Desktop Background tab you "
 "can choose if the effect applies always or just when a window has the focus."
 msgstr ""
+"Effecten toepassen op de afbeelding van de bureaubladachtergrond. Op het "
+"tabblad Bureaubladachtergrond kunt u kiezen of het effect altijd wordt "
+"toegepast of alleen wanneer een venster focus heeft."
 
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
@@ -199,13 +200,12 @@ msgstr ""
 "tabblad Algemeen."
 
 #. 6.0->settings-schema.json->desktop-info->description
-#, fuzzy
 msgid ""
 "Warning: Desktop background effects are currently disabled under the General "
 "tab."
 msgstr ""
-"Waarschuwing: effecten voor Expo zijn momenteel uitgeschakeld op het tabblad "
-"Algemeen."
+"Waarschuwing: Effecten voor de bureaubladachtergrond zijn momenteel "
+"uitgeschakeld op het tabblad Algemeen."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
@@ -261,9 +261,8 @@ msgid "Use unique effect settings for the popup menus"
 msgstr "Unieke effectinstellingen gebruiken voor pop-upmenu’s"
 
 #. 6.0->settings-schema.json->enable-desktop-override->description
-#, fuzzy
 msgid "Use unique effect settings for the desktop background"
-msgstr "Unieke effectinstellingen gebruiken voor Expo"
+msgstr "Unieke effectinstellingen gebruiken voor de bureaubladachtergrond"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
@@ -463,31 +462,36 @@ msgstr ""
 "deze elementen opvallen ten opzichte van andere delen van het pop-upmenu."
 
 #. 6.0->settings-schema.json->popup-saturation->description
-#, fuzzy
 msgid "Background image color saturation"
-msgstr "Achtergrondkleurverzadiging"
+msgstr "Kleurverzadiging van de achtergrondafbeelding"
 
 #. 6.0->settings-schema.json->desktop-without-focus->description
 msgid "Only apply effect settings if the desktop is not in focus"
 msgstr ""
+"Effectinstellingen alleen toepassen als het bureaublad niet in focus is"
 
 #. 6.0->settings-schema.json->desktop-without-focus->tooltip
 msgid ""
 "When enabled, the desktop background image effects will only apply when the "
 "desktop is not in focus"
 msgstr ""
+"Indien ingeschakeld worden de effecten op de bureaubladachtergrondafbeelding "
+"alleen toegepast wanneer het bureaublad niet in focus is"
 
 #. 6.0->settings-schema.json->desktop-with-focus->description
 msgid "Apply the generic effect settings when the desktop is in focus"
 msgstr ""
+"De generieke effectinstellingen toepassen wanneer het bureaublad in focus is"
 
 #. 6.0->settings-schema.json->desktop-with-focus->tooltip
 msgid ""
 "When enabled, the generic effect settings (on the General tab) will apply to "
 "the desktop background image when the desktop is in focus"
 msgstr ""
+"Indien ingeschakeld worden de generieke effectinstellingen (op het tabblad "
+"Algemeen) toegepast op de bureaubladachtergrondafbeelding wanneer het "
+"bureaublad in focus is"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
-#, fuzzy
 msgid "Dim background Image (percentage)"
-msgstr "Verduistering/Inkleuring van de achtergrond (percentage)"
+msgstr "Achtergrondafbeelding dimmen (percentage)"

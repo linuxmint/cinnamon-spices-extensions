@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2
+
+* Added a Disable effect option which will use no workspace switch effect, not even the default Cinnamon workspace switch effect. Since Cinnamon does not offer a way to independently disable the workspace switch effect, with this option you can disable the effect but still allow of the desktop and window effects.
+* Fixed the disappearing effect settings problem using a "hack" fix. Adding a permanent empty label field below the effect settings avoids the issue.
+
 ## 2.0.1
 
 - Make windows that are 'visible on all workspaces' also visible on the animated workspace clones

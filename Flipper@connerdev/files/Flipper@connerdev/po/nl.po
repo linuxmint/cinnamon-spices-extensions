@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-01-10 00:15-0500\n"
-"PO-Revision-Date: 2025-02-21 14:10+0100\n"
+"POT-Creation-Date: 2025-04-17 21:29-0400\n"
+"PO-Revision-Date: 2025-05-13 12:06+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -313,9 +313,26 @@ msgstr "Effectspecifieke instellingen"
 msgid "Workspace Transition Effect"
 msgstr "Werkruimte-overgangseffect"
 
+#. 5.4->settings-schema.json->transitionEffect->tooltip
+msgid ""
+"Select the type of workspace switch effect that will be used. The "
+"\"Randomized\" option allows you to choose which effects can be chosen at "
+"random for each workspace switch. The \"Disabled\" option will show no "
+"effect, not even the Cinnamon built in effect during a workspace switch."
+msgstr ""
+"Selecteer het type werkruimtewissel-effect dat zal gebruikt worden. De optie "
+"\"Willekeurig\" laat je kiezen welke effecten willekeurig kunnen worden "
+"gekozen bij elke werkruimtewissel. De optie \"Uitgeschakeld\" toont geen "
+"effect, zelfs niet het ingebouwde Cinnamon-effect tijdens een "
+"werkruimtewissel."
+
 #. 5.4->settings-schema.json->transitionEffect->options
 msgid "Randomized"
 msgstr "Willekeurig"
+
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Disabled"
+msgstr "Uitgeschakeld"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Flipper effect with the Workspace Switcher applet"

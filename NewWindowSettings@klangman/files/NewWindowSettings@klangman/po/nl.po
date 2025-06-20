@@ -1,0 +1,42 @@
+# NEW WINDOW SETTINGS
+# This file is put in the public domain.
+# klangman, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: NewWindowSettings@klangman 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-06-02 19:05-0400\n"
+"PO-Revision-Date: 2025-06-13 17:17+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "New Window Settings"
+msgstr "Instellingen voor nieuw venster"
+
+#. metadata.json->description
+msgid ""
+"Configure newly opened application windows (always on top / on all "
+"workspaces)"
+msgstr ""
+"Configureer nieuw geopende toepassingsvensters (altijd op de voorgrond / op "
+"alle werkruimten)"
+
+#. settings-schema.json->auto-header->description
+msgid "New window settings to restore for all applications"
+msgstr ""
+"Instellingen voor nieuwe vensters om voor alle toepassingen te herstellen"
+
+#. settings-schema.json->auto-save-above->description
+msgid "Automatically restore \"Always on Top\""
+msgstr "Automatisch herstellen \"altijd op de voorgrond\""
+
+#. settings-schema.json->auto-save-on-all-workspaces->description
+msgid "Automatically restore \"Always on Visible Workspace\""
+msgstr "Automatisch herstellen \"altijd op zichtbare werkruimte\""

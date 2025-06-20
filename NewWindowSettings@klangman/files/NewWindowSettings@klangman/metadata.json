@@ -1,0 +1,11 @@
+{
+    "cinnamon-version": [
+      "5.4"
+    ],
+    "version": "1.0.0",
+    "uuid": "NewWindowSettings@klangman",
+    "name": "New Window Settings",
+    "description": "Configure newly opened application windows (always on top / on all workspaces)",
+    "url": "https://github.com/klangman/AppOpenConfig",
+    "author": "klangman"
+}

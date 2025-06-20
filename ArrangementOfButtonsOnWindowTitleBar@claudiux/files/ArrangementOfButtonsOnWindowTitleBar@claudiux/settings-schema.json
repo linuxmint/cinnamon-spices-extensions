@@ -1,0 +1,173 @@
+{
+  "ABWT-layout": {
+    "type": "layout",
+    "pages": [
+      "arrangement",
+      "pageexpert"
+    ],
+    "arrangement": {
+      "type": "page",
+      "title": "Button layout on the window title bar",
+      "sections": [
+        "section-bepatient",
+        "section-left",
+        "section-right",
+        "section-accessibility"
+      ]
+    },
+    "pageexpert": {
+      "type": "page",
+      "title": "Expert Mode",
+      "sections": [
+        "section-explainEM",
+        "section-stringEM",
+        "section-switchEM"
+      ]
+    },
+    "section-bepatient": {
+      "type": "section",
+      "title": "",
+      "keys": [
+        "useEM",
+        "labelComment",
+        "labelComment2"
+      ]
+    },
+    "section-left": {
+      "type": "section",
+      "title": "Left side of title bar",
+      "keys": [
+        "leftMenu",
+        "leftClose",
+        "leftMaximize",
+        "leftMinimize"
+      ],
+      "dependency": "!useEM"
+    },
+    "section-right": {
+      "type": "section",
+      "title": "Right side of title bar",
+      "keys": [
+        "rightMinimize",
+        "rightMaximize",
+        "rightClose",
+        "rightMenu"
+      ],
+      "dependency": "!useEM"
+    },
+    "section-accessibility": {
+      "type": "section",
+      "title": "Accessibility",
+      "keys": [
+        "spacer"
+      ],
+      "dependency": "!useEM"
+    },
+    "section-explainEM": {
+      "type": "section",
+      "title": "Explanation",
+      "keys": [
+        "explanationEM",
+        "explanationNotEM",
+        "useEM"
+      ]
+    },
+    "section-stringEM": {
+      "type": "section",
+      "title": "Button Layout",
+      "keys": [
+        "stringEM"
+      ],
+      "dependency": "useEM"
+    },
+    "section-switchEM": {
+      "type": "section",
+      "title": "Apply changes",
+      "keys": [
+        "applyChangesEM"
+      ],
+      "dependency": "useEM"
+    }
+  },
+  "leftMenu": {
+    "type": "switch",
+    "default": false,
+    "description": "Menu"
+  },
+  "leftClose": {
+    "type": "switch",
+    "default": false,
+    "description": "Close"
+  },
+  "rightClose": {
+    "type": "switch",
+    "default": false,
+    "description": "Close"
+  },
+  "leftMaximize": {
+    "type": "switch",
+    "default": false,
+    "description": "Maximize"
+  },
+  "rightMaximize": {
+    "type": "switch",
+    "default": false,
+    "description": "Maximize"
+  },
+  "leftMinimize": {
+    "type": "switch",
+    "default": false,
+    "description": "Minimize"
+  },
+  "rightMinimize": {
+    "type": "switch",
+    "default": false,
+    "description": "Minimize"
+  },
+  "rightMenu": {
+    "type": "switch",
+    "default": false,
+    "description": "Menu"
+  },
+  "spacer": {
+    "type": "switch",
+    "default": false,
+    "description": "Add a space between adjacent buttons"
+  },
+  "labelComment": {
+    "type": "label",
+    "description": "Please wait 2 seconds for the changes to take effect.",
+    "dependency": "!useEM"
+  },
+  "labelComment2": {
+    "type": "label",
+    "description": "Expert Mode enabled. Please use the Expert Mode tab.",
+    "dependency": "useEM"
+  },
+  "explanationEM": {
+    "type": "label",
+    "description": "Arrangement of buttons on the titlebar.\nThe value should be a string, such as 'menu:minimize,maximize,spacer,close'.\nThe colon separates the left corner of the window from the right corner, and the button names are comma-separated.\nDuplicate buttons are not allowed.\nUnknown button names are silently ignored so that buttons can be added in future versions without breaking older versions.\nA special 'spacer' tag can be used to insert some space between two adjacent buttons.\nValid buttons and tags are:\n\tclose\n\tmenu\n\tminimize\n\tmaximize\n\tspacer\nOther buttons, not taken into account:\n\tabove\n\tlower\n\tshade\n\tstick",
+    "dependency": "useEM"
+  },
+  "explanationNotEM": {
+    "type": "label",
+    "description": "Expert Mode disabled. Please use the first tab.",
+    "dependency": "!useEM"
+  },
+  "stringEM": {
+    "type": "entry",
+    "description": "Value",
+    "default": "",
+    "expand-width": true
+  },
+  "applyChangesEM": {
+    "type": "switch",
+    "description": "Apply this button layout",
+    "default": false
+  },
+  "useEM": {
+    "type": "switch",
+    "description": "Use only Expert Mode",
+    "default": false
+  }
+}

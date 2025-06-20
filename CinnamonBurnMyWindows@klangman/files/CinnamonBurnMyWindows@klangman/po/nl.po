@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-03-26 21:19-0400\n"
-"PO-Revision-Date: 2025-02-21 10:10+0100\n"
+"POT-Creation-Date: 2025-04-16 23:10-0400\n"
+"PO-Revision-Date: 2025-05-13 11:59+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -34,22 +34,21 @@ msgstr "conflicteert met deze extensie."
 
 #. 6.2/extension.js:268
 msgid "minimize/unminimize effects can not be enabled"
-msgstr ""
+msgstr "minimaliseer-/onminimaliseer-effecten kunnen niet worden ingeschakeld"
 
 #. 6.2/extension.js:269
 msgid "already handles minimize/unminimize animation events."
-msgstr ""
+msgstr "behandelt al minimaliseer-/onminimaliseer-animatiegebeurtenissen."
 
 #. 6.2/extension.js:580
-#, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore application specific effects can not be applied to "
 "that window"
 msgstr ""
-"Het eerder gefocuste venster wordt niet ondersteund door een toepassing en "
-"daarom kunnen toepassing-specifieke effecten niet op dat venster worden "
-"toegepast"
+"Kan de toepassing of de WM_CLASS van het eerder gefocuste venster niet "
+"bepalen, daarom kunnen er geen toepassingsspecifieke effecten op dat venster "
+"worden toegepast"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -71,7 +70,7 @@ msgstr "Verschijning"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/AuraGlow.js:103
 msgid "Aura Glow"
-msgstr ""
+msgstr "Aura Gloed"
 
 #. effects/BrokenGlass.js:152
 msgid "Broken Glass"
@@ -149,7 +148,7 @@ msgstr "Kerstman komt eraan"
 #. 6.2->settings-schema.json->fire-presets->options
 #. effects/Fire.js:230
 msgid "Nuclear"
-msgstr ""
+msgstr "Nucleair"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -219,47 +218,47 @@ msgstr "Matrix"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/Mushroom.js:154
 msgid "Mushroom"
-msgstr ""
+msgstr "Paddenstoel"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:227
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8Bit Plumber"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:244
 msgid "New Bros 2"
-msgstr ""
+msgstr "New Bros 2"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:262
 msgid "The True North"
-msgstr ""
+msgstr "The True North"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:280
 msgid "Red White and Blue"
-msgstr ""
+msgstr "Rood Wit en Blauw"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:297
 msgid "Rainbow"
-msgstr ""
+msgstr "Regenboog"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:314
 msgid "Cattuccino"
-msgstr ""
+msgstr "Cattuccino"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:332
 msgid "Dracula"
-msgstr ""
+msgstr "Dracula"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:349
 msgid "Sparkle"
-msgstr ""
+msgstr "Schittering"
 
 #. effects/PaintBrush.js:114
 msgid "Paint Brush"
@@ -318,7 +317,7 @@ msgstr "Portaal"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/RGBWarp.js:91
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB Warp"
 
 #. effects/SnapOfDisintegration.js:124
 msgid "Snap of Disintegration"
@@ -359,7 +358,7 @@ msgstr "TV Storing"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/TeamRocket.js:103
 msgid "Team Rocket"
-msgstr ""
+msgstr "Team Rocket"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -377,13 +376,12 @@ msgid "Burn My Windows"
 msgstr "Verbrand Mijn Vensters"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
 "Gnome extension by Schneegans"
 msgstr ""
-"Venster open/sluit effecten gebaseerd op de Burn-My-Windows Gnome-extensie "
-"van Schneegans"
+"Venster open-/sluit-/minimaliseer-/onminimaliseer-effecten gebaseerd op de "
+"Burn-My-Windows Gnome-extensie van Schneegans"
 
 #. 6.2->settings-schema.json->general-page->title
 msgid "General"
@@ -394,9 +392,8 @@ msgid "Effect Settings"
 msgstr "Effectinstellingen"
 
 #. 6.2->settings-schema.json->application-page->title
-#, fuzzy
 msgid "Application Specifics"
-msgstr "Toepassingsspecifieke Regels"
+msgstr "Toepassingsspecifiek"
 
 #. 6.2->settings-schema.json->random-page->title
 msgid "Random Effects"
@@ -404,7 +401,7 @@ msgstr "Willekeurige Effecten"
 
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #. 6.2->settings-schema.json->general-settings->title
 msgid "Burn My Windows General Settings"
@@ -425,7 +422,7 @@ msgstr "Effect Specifieke Instellingen"
 #. 6.2->settings-schema.json->fire-custom-section->title
 #. 6.2->settings-schema.json->mushroom-custom-section->title
 msgid "Setting for the custom preset:"
-msgstr ""
+msgstr "Instelling voor de aangepaste voorinstelling:"
 
 #. 6.2->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
@@ -433,7 +430,7 @@ msgstr "Effecten opgenomen in de willekeurige sets:"
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
-msgstr ""
+msgstr "Over Cinnamon Burn-My-Windows"
 
 #. 6.2->settings-schema.json->about-text->description
 msgid ""
@@ -444,15 +441,34 @@ msgid ""
 "Ported to Cinnamon by Kevin Langman\n"
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
-"new\">Report an issue</a>\n"
+"new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Website</a>\n"
 "\n"
 "Based on the Burn-My-Windows code by Schneegans and contributors\n"
-"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a>\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
 "\n"
 "The Magic Lamp Effect is ported from code by hermes83\n"
 "<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
 "effect\">Github</a>"
 msgstr ""
+"\n"
+"<b>Laat je vensters stijlvol desintegreren.</b>\n"
+"Versie: ext-versie\n"
+"\n"
+"Geporteerd naar Cinnamon door Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
+"new\">Probleem melden</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Website</a>\n"
+"\n"
+"Gebaseerd op de Burn-My-Windows code door Schneegans en bijdragers\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
+"\n"
+"Het Magic Lamp-effect is geporteerd vanuit code van hermes83\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
 
 #. 6.2->settings-schema.json->app-rules->description
 msgid "Application Specific Rules"
@@ -464,19 +480,19 @@ msgstr "Ingeschakeld"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Minimize"
-msgstr ""
+msgstr "Minimaliseren"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Unminimize"
-msgstr ""
+msgstr "Onminimaliseren"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 msgid "Application"
@@ -504,9 +520,8 @@ msgstr ""
 "inschakelen en keer dan hier terug en druk op deze knop."
 
 #. 6.2->settings-schema.json->random-include->description
-#, fuzzy
 msgid "Effects included in the randomized sets"
-msgstr "Effecten opgenomen in de willekeurige sets:"
+msgstr "Effecten opgenomen in de willekeurige sets"
 
 #. 6.2->settings-schema.json->random-include->tooltip
 msgid ""
@@ -514,26 +529,29 @@ msgid ""
 "event type. When 'Randomized' is selected for any event on the General tab "
 "these sets are used."
 msgstr ""
+"Bepaalt welke effecten zijn opgenomen in de willekeurige sets voor elk type "
+"venstergebeurtenis. Wanneer 'Willekeurig' is geselecteerd voor een "
+"gebeurtenis op het tabblad Algemeen, worden deze sets gebruikt."
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "Effect Name         "
-msgstr ""
+msgstr "Effect Naam         "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "      Open        "
-msgstr ""
+msgstr "      Openen      "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "      Close       "
-msgstr ""
+msgstr "      Sluiten     "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "     Minimize     "
-msgstr ""
+msgstr "     Minimaliseren"
 
 #. 6.2->settings-schema.json->random-include->columns->title
 msgid "    Unminimize    "
-msgstr ""
+msgstr "    Onminimaliseren"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -543,7 +561,7 @@ msgstr ""
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
 msgid "Magic Lamp"
-msgstr ""
+msgstr "Magische lamp"
 
 #. 6.2->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
@@ -599,14 +617,12 @@ msgid "Close dialog window effect"
 msgstr "Sluit dialoogvenster effect"
 
 #. 6.2->settings-schema.json->minimize-effect->description
-#, fuzzy
 msgid "Minimize window effect"
-msgstr "Open venster effect"
+msgstr "Minimaliseer venstereffect"
 
 #. 6.2->settings-schema.json->unminimize-effect->description
-#, fuzzy
 msgid "Unminimize window effect"
-msgstr "Open venster effect"
+msgstr "Onminimaliseren venstereffect"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
@@ -646,9 +662,8 @@ msgstr "Willekeurigheid"
 #. 6.2->settings-schema.json->tv-animation-time->description
 #. 6.2->settings-schema.json->tv-glitch-animation-time->description
 #. 6.2->settings-schema.json->wisps-animation-time->description
-#, fuzzy
 msgid "Effect Duration (ms)"
-msgstr "Effect Duur (milliseconden)"
+msgstr "Effect Duur (ms)"
 
 #. 6.2->settings-schema.json->apparition-reset->description
 #. 6.2->settings-schema.json->aura-glow-reset->description
@@ -672,18 +687,16 @@ msgstr "Effect Duur (milliseconden)"
 #. 6.2->settings-schema.json->tv-reset->description
 #. 6.2->settings-schema.json->tv-glitch-reset->description
 #. 6.2->settings-schema.json->wisps-reset->description
-#, fuzzy
 msgid "Reset to default"
-msgstr "Standaard Vuur"
+msgstr "Reset naar standaard"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
-#, fuzzy
 msgid "Random Color"
-msgstr "Lijn Kleur"
+msgstr "Willekeurige kleur"
 
 #. 6.2->settings-schema.json->aura-glow-start-hue->description
 msgid "Start Hue"
-msgstr ""
+msgstr "Starttint"
 
 #. 6.2->settings-schema.json->aura-glow-speed->description
 #. 6.2->settings-schema.json->glitch-speed->description
@@ -692,18 +705,16 @@ msgid "Speed"
 msgstr "Snelheid"
 
 #. 6.2->settings-schema.json->aura-glow-saturation->description
-#, fuzzy
 msgid "Saturation"
-msgstr "Verschijning"
+msgstr "Verzadiging"
 
 #. 6.2->settings-schema.json->aura-glow-edge-size->description
-#, fuzzy
 msgid "Edge Size"
-msgstr "Pixel Grootte"
+msgstr "Randgrootte"
 
 #. 6.2->settings-schema.json->aura-glow-edge-hardness->description
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Randhardheid"
 
 #. 6.2->settings-schema.json->aura-glow-blur->description
 #. 6.2->settings-schema.json->focus-blur-amount->description
@@ -727,7 +738,7 @@ msgstr "Pixel Grootte"
 
 #. 6.2->settings-schema.json->doom-y-hack->description
 msgid "Y offset fix for open/unminimize events"
-msgstr ""
+msgstr "Y-offsetfix voor open/onminimaliseer-gebeurtenissen"
 
 #. 6.2->settings-schema.json->doom-y-hack->tooltip
 msgid ""
@@ -735,6 +746,10 @@ msgid ""
 "unminimize animation completes at the right location. This is a hack fix for "
 "the Doom effect until I can find a proper fix"
 msgstr ""
+"Een offset toepassen op de Y-as van de doelpositie van het venster, zodat de "
+"open/onminimaliseer-animatie op de juiste plek eindigt. Dit is een "
+"tijdelijke oplossing voor het Doom-effect totdat er een juiste fix is "
+"gevonden"
 
 #. 6.2->settings-schema.json->energize-a-scale->description
 #. 6.2->settings-schema.json->energize-b-scale->description
@@ -761,11 +776,11 @@ msgstr "Kleur"
 #. 6.2->settings-schema.json->fire-presets->options
 #. 6.2->settings-schema.json->mushroom-presets->options
 msgid "Custom"
-msgstr ""
+msgstr "Aangepast"
 
 #. 6.2->settings-schema.json->fire-presets->description
 msgid "Fire Preset"
-msgstr ""
+msgstr "Vuur-voorinstelling"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
@@ -781,18 +796,19 @@ msgstr "Creëert een dynamischer vuur, maar vereist meer GPU-kracht."
 
 #. 6.2->settings-schema.json->fire-random-color->description
 msgid "Use a Random Color (overrides other color settings)"
-msgstr ""
+msgstr "Gebruik een willekeurige kleur (overschrijft andere kleurinstellingen)"
 
 #. 6.2->settings-schema.json->fire-random-color->tooltip
 msgid ""
 "Use a random fire color. This setting will override any preset or custom "
 "colors settings you select."
 msgstr ""
+"Gebruik een willekeurige vuurkleur. Deze instelling overschrijft alle "
+"voorinstellingen of aangepaste kleurinstellingen."
 
 #. 6.2->settings-schema.json->fire-colors->description
-#, fuzzy
 msgid "Colors 1-5"
-msgstr "Kleur #1"
+msgstr "Kleuren 1-5"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
@@ -857,29 +873,27 @@ msgstr "Indien uitgeschakeld wordt een willekeurige locatie gekozen."
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Curved"
-msgstr ""
+msgstr "Gebogen"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Wavy"
-msgstr ""
+msgstr "Golvend"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-#, fuzzy
 msgid "Random"
 msgstr "Willekeurig"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Curved / Disappear: Wavy"
-msgstr ""
+msgstr "Verschijnen: Gebogen / Verdwijnen: Golvend"
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Wavy / Disappear: Curved"
-msgstr ""
+msgstr "Verschijnen: Golvend / Verdwijnen: Gebogen"
 
 #. 6.2->settings-schema.json->magiclamp-effect->description
-#, fuzzy
 msgid "The type of effect"
-msgstr "Open venster effect"
+msgstr "Het type effect"
 
 #. 6.2->settings-schema.json->magiclamp-effect->tooltip
 msgid ""
@@ -888,68 +902,118 @@ msgid ""
 "different effects whether a window is appearing or disappearing from the "
 "screen"
 msgstr ""
+"Het effect kan een vloeiende curve of een golvende animatie zijn. De "
+"willekeurige optie kiest willekeurig tussen de twee en de Verschijnen/"
+"Verdwijnen-opties gebruiken verschillende effecten afhankelijk van of een "
+"venster verschijnt of verdwijnt van het scherm"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Top"
+msgstr "Boven"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Bottom"
+msgstr "Onder"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Left"
+msgstr "Links"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Right"
+msgstr "Rechts"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Edge closest to mouse pointer"
+msgstr "Rand dichtst bij de muisaanwijzer"
+
+#. 6.2->settings-schema.json->magiclamp-edge->description
+msgid "Open/Close Edge"
+msgstr "Open-/sluitrand"
+
+#. 6.2->settings-schema.json->magiclamp-edge->tooltip
+msgid ""
+"The monitor edge where a window should originate from when opening, or "
+"disappear towards when closing. This setting is not used for minimize or "
+"unminimize events"
+msgstr ""
+"De monitorrand waar een venster moet verschijnen bij openen of naartoe moet "
+"verdwijnen bij sluiten. Deze instelling wordt niet gebruikt voor "
+"minimaliseer- of onminimaliseergebeurtenissen."
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->description
+msgid "Open/Close Edge Offset"
+msgstr "Offset voor open-/sluitrand"
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
+msgid ""
+"The offset from the top or left of the \"Open/Close Edge\" that the "
+"animation should use as the origin/target of the animation. This is a "
+"percentage of the monitors width/height and it does not apply to minimize/"
+"unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
+"to mouse pointer\""
+msgstr ""
+"De offset vanaf de boven- of linkerkant van de \"open-/sluitrand\" die de "
+"animatie moet gebruiken als oorsprong/doel van de animatie. Dit is een "
+"percentage van de breedte/hoogte van de monitor en is niet van toepassing op "
+"minimaliseer-/onminimaliseer-gebeurtenissen of wanneer de \"open-/"
+"sluitrand\" is ingesteld op \"rand dichtst bij de muisaanwijzer\""
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"
-msgstr ""
+msgstr "X-tegels"
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
 msgid "This effects the quality and the cost of the animation"
-msgstr ""
+msgstr "Dit beïnvloedt de kwaliteit en de kosten van de animatie"
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->description
 msgid "Y Tiles"
-msgstr ""
+msgstr "Y-tegels"
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
 msgid "This effects the quality and the costs of the animation"
-msgstr ""
+msgstr "Dit beïnvloedt de kwaliteit en de kosten van de animatie"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
 msgid "Mushroom Preset"
-msgstr ""
+msgstr "Paddenstoel-voorinstelling"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
-#, fuzzy
 msgid "Scale Style"
-msgstr "Schaal"
+msgstr "Schaalstijl"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-count->description
-#, fuzzy
 msgid "Spark Count"
-msgstr "Spaak Aantal"
+msgstr "Schittering aantal"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-color->description
-#, fuzzy
 msgid "Spark Color"
-msgstr "Kleur"
+msgstr "Schittering kleur"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
 msgid "Spark Rotation"
-msgstr ""
+msgstr "Schittering rotatie"
 
 #. 6.2->settings-schema.json->mushroom-custom-rays-color->description
-#, fuzzy
 msgid "Rays Color"
-msgstr "Kleur"
+msgstr "Straalkleur"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-count->description
-#, fuzzy
 msgid "Star Rings Count"
-msgstr "Kerstman komt eraan"
+msgstr "Sterrenringen aantal"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "Sterrenringen rotatie"
 
 #. 6.2->settings-schema.json->mushroom-custom-star-count->description
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "Aantal sterren per ring"
 
 #. 6.2->settings-schema.json->mushroom-star-colors->description
-#, fuzzy
 msgid "Colors 1-6"
-msgstr "Kleur #1"
+msgstr "Kleuren 1-6"
 
 #. 6.2->settings-schema.json->pixelate-noise->description
 msgid "Noise"
@@ -973,50 +1037,45 @@ msgstr "Details"
 
 #. 6.2->settings-schema.json->rgbwarp-brightness->description
 msgid "Brightness"
-msgstr ""
+msgstr "Helderheid"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-r->description
-#, fuzzy
 msgid "Red Speed"
-msgstr "Snelheid"
+msgstr "Snelheid van rood"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-g->description
-#, fuzzy
 msgid "Green Speed"
-msgstr "Vuur bewegingssnelheid"
+msgstr "Snelheid van groen"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-b->description
-#, fuzzy
 msgid "Blue Speed"
-msgstr "Snelheid"
+msgstr "Snelheid van blauw"
 
 #. 6.2->settings-schema.json->team-rocket-animation-split->description
 msgid "Animation Split"
-msgstr ""
+msgstr "Animatiesplitsing"
 
 #. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
 #. position->description
-#, fuzzy
 msgid "Horizontal Sparkle Position"
-msgstr "Horizontale Schaal"
+msgstr "Horizontale positie van schittering"
 
 #. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
 #. position->description
-#, fuzzy
 msgid "Vertical Sparkle Position"
-msgstr "Verticale Schaal"
+msgstr "Verticale positie van schittering"
 
 #. 6.2->settings-schema.json->team-rocket-window-rotation->description
 msgid "Rotate Window"
-msgstr ""
+msgstr "Venster roteren"
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Schittering-rotatie"
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-size->description
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Schittering-grootte"
 
 #. 6.2->settings-schema.json->wisps-color-1->description
 msgid "Color #1"
@@ -1032,8 +1091,8 @@ msgstr "Kleur #3"
 
 #. 6.2->settings-schema.json->test-effect->description
 msgid "Open effect preview window"
-msgstr ""
+msgstr "Voorbeeldvenster van effect openen"
 
 #. 6.2->settings-schema.json->test-effect->tooltip
 msgid "Opens a window using the currently selected effect."
-msgstr ""
+msgstr "Opent een venster met het momenteel geselecteerde effect"

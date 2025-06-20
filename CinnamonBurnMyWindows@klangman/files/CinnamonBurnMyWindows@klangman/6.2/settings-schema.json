@@ -60,7 +60,7 @@
                 "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time", "glitch-reset",
                 "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time", "hexagon-reset",
                 "incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time", "incinerate-reset",
-                "magiclamp-effect", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time", "magiclamp-reset",
+                "magiclamp-effect", "magiclamp-edge", "magiclamp-edge-offset", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time", "magiclamp-reset",
                 "mushroom-presets", "mushroom-animation-time", "mushroom-reset",
                 "pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time", "pixelate-reset",
                 "pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time", "pixel-wheel-reset",
@@ -101,7 +101,7 @@
     "type" : "custom",
     "file" : "CustomWidgets.py",
     "widget" : "About",
-    "description" : "\n<b>Disintegrate your windows with style.</b>\nVersion: ext-version\n\nPorted to Cinnamon by Kevin Langman\n<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / <a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/new\">Report an issue</a>\n\nBased on the Burn-My-Windows code by Schneegans and contributors\n<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a>\n\nThe Magic Lamp Effect is ported from code by hermes83\n<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-effect\">Github</a>",
+    "description" : "\n<b>Disintegrate your windows with style.</b>\nVersion: ext-version\n\nPorted to Cinnamon by Kevin Langman\n<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / <a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/103\">Website</a>\n\nBased on the Burn-My-Windows code by Schneegans and contributors\n<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n\nThe Magic Lamp Effect is ported from code by hermes83\n<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-effect\">Github</a>",
     "icon" : "/icons/cinnamon-burn-my-window.png"
   },
 
@@ -845,15 +845,15 @@
 
   "fire-presets": {
     "type": "combobox",
-    "default": "Default Fire",
+    "default": 0,
     "options": {
-      "Default Fire": "Default Fire",
-      "Hell Fire" : "Hell Fire",
-      "Dark and Smutty" : "Dark and Smutty",
-      "Cold Breeze" : "Cold Breeze",
-      "Santa is Coming" : "Santa is Coming",
-      "Nuclear" : "Nuclear",
-      "Custom" : "Custom"
+      "Default Fire": 0,
+      "Hell Fire" : 1,
+      "Dark and Smutty" : 2,
+      "Cold Breeze" : 3,
+      "Santa is Coming" : 4,
+      "Nuclear" : 5,
+      "Custom" : 1000
     },
     "description": "Fire Preset",
     "dependency" : "effect-selector=5"
@@ -1284,6 +1284,34 @@
     "tooltip": "The effect can be a smooth curve or a wavy animation. The random option will randomly choose between the two and the Appear/Disappear options use different effects whether a window is appearing or disappearing from the screen"
   },
 
+  "magiclamp-edge": {
+    "type": "combobox",
+    "default": 4,
+    "options": {
+      "Top": 0,
+      "Bottom": 1,
+      "Left": 2,
+      "Right": 3,
+      "Edge closest to mouse pointer": 4
+    },
+    "description": "Open/Close Edge",
+    "dependency" : "effect-selector=26",
+    "tooltip": "The monitor edge where a window should originate from when opening, or disappear towards when closing. This setting is not used for minimize or unminimize events"
+  },
+
+  "magiclamp-edge-offset": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "default": 50,
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "description": "Open/Close Edge Offset",
+     "dependency" : "effect-selector=26",
+     "tooltip": "The offset from the top or left of the \"Open/Close Edge\" that the animation should use as the origin/target of the animation. This is a percentage of the monitors width/height and it does not apply to minimize/unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest to mouse pointer\""
+  },
+
   "magiclamp-x-tiles": {
      "type" : "custom",
      "file" : "CustomWidgets.py",
@@ -1328,7 +1356,7 @@
      "widget" : "ResetToDefault",
      "description" : "Reset to default",
      "dependency" : "effect-selector=26",
-     "keys" : ["magiclamp-effect", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time"]
+     "keys" : ["magiclamp-effect", "magiclamp-edge", "magiclamp-edge-offset", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time"]
   },
 
 
@@ -1365,17 +1393,17 @@
 
   "mushroom-presets": {
     "type": "combobox",
-    "default": "New Bros 2",
+    "default": 1,
     "options": {
-      "8Bit Plumber" : "8Bit Plumber",
-      "New Bros 2" : "New Bros 2",
-      "The True North" : "The True North",
-      "Red White and Blue" : "Red White and Blue",
-      "Rainbow" : "Rainbow",
-      "Cattuccino" : "Cattuccino",
-      "Dracula" : "Dracula",
-      "Sparkle" : "Sparkle",
-      "Custom" : "Custom"
+      "8Bit Plumber" : 0,
+      "New Bros 2" : 1,
+      "The True North" : 2,
+      "Red White and Blue" : 3,
+      "Rainbow" : 4,
+      "Cattuccino" : 5,
+      "Dracula" : 6,
+      "Sparkle" : 7,
+      "Custom" : 1000
     },
     "description": "Mushroom Preset",
     "dependency" : "effect-selector=25"

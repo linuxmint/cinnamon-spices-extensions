@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: BlurCinnamon@klangman 1.4.1\n"
+"Project-Id-Version: BlurCinnamon@klangman 1.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-04-11 23:57-0400\n"
+"POT-Creation-Date: 2025-05-17 12:46-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,8 +24,8 @@ msgstr ""
 #. metadata.json->description
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
-"Cinnamon Desktop components (i.e. Panels, Applet popup menus, Overview, "
-"Expo, Desktop image)"
+"Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
+"Desktop image)"
 msgstr ""
 
 #. 6.0->settings-schema.json->general-page->title

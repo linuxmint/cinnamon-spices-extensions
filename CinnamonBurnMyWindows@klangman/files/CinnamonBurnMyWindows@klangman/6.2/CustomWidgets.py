@@ -397,6 +397,7 @@ class CompactScale(SettingsWidget):
         settings.listen(key, self.on_key_value_changed);
 
         if "tooltip" in info:
+           self.label.set_tooltip_text(info["tooltip"])
            self.content_widget.set_tooltip_text(info["tooltip"])
 
     def on_key_value_changed(self, key, value):
