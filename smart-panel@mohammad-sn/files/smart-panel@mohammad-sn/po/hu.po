@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-05-14 22:04+0200\n"
-"PO-Revision-Date: 2025-04-12 08:25+0200\n"
+"PO-Revision-Date: 2025-06-21 22:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. metadata.json->description
 msgid ""
@@ -58,7 +58,7 @@ msgstr "Váltás az ablakok között"
 
 #. settings-schema.json->scroll-action->options
 msgid "Adjust sound volume"
-msgstr ""
+msgstr "Hangerő beállítása"
 
 #. settings-schema.json->scroll-action->options
 #. settings-schema.json->scroll-action-up->options
