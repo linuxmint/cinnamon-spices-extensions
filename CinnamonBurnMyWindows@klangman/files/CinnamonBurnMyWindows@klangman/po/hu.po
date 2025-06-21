@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. 6.2/extension.js:193 6.2/extension.js:268 6.2/extension.js:579
 msgid "Error"
@@ -437,7 +437,6 @@ msgid "About Cinnamon Burn-My-Windows"
 msgstr "Cinnamon Égjenek az Ablakaim Névjegye"
 
 #. 6.2->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Disintegrate your windows with style.</b>\n"
@@ -458,18 +457,20 @@ msgid ""
 "effect\">Github</a>"
 msgstr ""
 "\n"
-"<b>Stílusosan bontsa szét ablakait.</b>\n"
-"Verzió: ext-verzió\n"
+"<b>Stílusosan szüntesd meg az ablakaidat.</b>\n"
+"Verzió: ext-version\n"
 "\n"
-"Kevin Langman a Cinnamonba portolta\n"
+"Kevin Langman portolta Cinnamonra\n"
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
-"new\">Hibabejelentés</a>\n"
+"new\">Hiba jelentése</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Weboldal</a>\n"
 "\n"
-"A Schneegans és a közreműködők Burn-My-Windows kódja alapján\n"
-"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a>\n"
+"Schneegans és közreműködőinek Burn-My-Windows kódja alapján\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
 "\n"
-"A Magic Lamp Effect-et a hermes83 kódból portolta át\n"
+"A Varázslámpa-effektust hermes83 kódjából portolta\n"
 "<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
 "effect\">Github</a>"
 
@@ -912,27 +913,27 @@ msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Top"
-msgstr ""
+msgstr "Flül"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Bottom"
-msgstr ""
+msgstr "Lent"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Left"
-msgstr ""
+msgstr "Bal"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Right"
-msgstr ""
+msgstr "Jobb"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 msgid "Edge closest to mouse pointer"
-msgstr ""
+msgstr "Az egérmutatóhoz legközelebbi él"
 
 #. 6.2->settings-schema.json->magiclamp-edge->description
 msgid "Open/Close Edge"
-msgstr ""
+msgstr "Szél nyitása/zárása"
 
 #. 6.2->settings-schema.json->magiclamp-edge->tooltip
 msgid ""
@@ -940,10 +941,13 @@ msgid ""
 "disappear towards when closing. This setting is not used for minimize or "
 "unminimize events"
 msgstr ""
+"A monitor széle, ahonnan az ablaknak nyitáskor kiindulnia kell, vagy "
+"bezáráskor el kell tűnnie. Ez a beállítás nem használatos minimalizálási "
+"vagy minimalizálás megszüntetési eseményekhez"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->description
 msgid "Open/Close Edge Offset"
-msgstr ""
+msgstr "Nyitás/Zárás él eltolás"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
 msgid ""
@@ -953,6 +957,12 @@ msgid ""
 "unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
 "to mouse pointer\""
 msgstr ""
+"Az animáció által az „Él megnyitása/zárása” tetejétől vagy bal oldalától "
+"való eltolás, amelyet az animációnak az animáció eredeteként/célpontjaként "
+"kell használnia. Ez a monitor szélességének/magasságának százalékos aránya, "
+"és nem vonatkozik a minimalizálás/minimalizálás megszüntetése eseményekre, "
+"illetve arra az esetre, ha a „Él megnyitása/zárása” beállítása „Az "
+"egérmutatóhoz legközelebbi él”."
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"

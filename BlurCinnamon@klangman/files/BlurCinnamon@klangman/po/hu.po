@@ -16,22 +16,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. metadata.json->name
 msgid "Blur Cinnamon"
 msgstr "Cinnamon elhomályosítása"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of some "
 "Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
 "Desktop image)"
 msgstr ""
-"Lehetővé teszi egyes Cinnamon asztal összetevők (például panelek, "
-"kisalkalmazások előugró menüi, áttekintés, kiállítás) elmosását, színezését, "
-"telítetlenítését és a halványítás beállítását."
+"Lehetővé teszi egyes Cinnamon asztal összetevők (pl. Panelek, Felugró menük, "
+"Áttekintés, Expo, Asztali kép) elmosását, színezését, telítettségének "
+"csökkentését és a halványítás beállítását."
 
 #. 6.0->settings-schema.json->general-page->title
 msgid "General"
@@ -315,9 +314,9 @@ msgstr ""
 "Meghatározza a különböző panelekre alkalmazott effektusokat. Ha egy panel "
 "nem felel meg a listában szereplő engedélyezett bejegyzések feltételeinek, "
 "akkor nem lesznek hatással. A lista első bejegyzésének azon beállításai "
-"lépnek életbe, amelyek egy adott panelre vonatkozhatnak. A színmező az rgb(#,"
-"#,#) szintaxisban van, és a fekete színt fogja használni, ha a szín nincs "
-"megadva, vagy hibás szintaxisban van"
+"lépnek életbe, amelyek egy adott panelre vonatkozhatnak. A színmező az "
+"rgb(#,#,#) szintaxisban van, és a fekete színt fogja használni, ha a szín "
+"nincs megadva, vagy hibás szintaxisban van"
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -453,9 +452,9 @@ msgstr "További előugró menü ékezetes elemek halványítása (százalék)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements (i."
-"e. the main menu favorites box and entry boxes) which allow these elements "
-"to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements "
+"(i.e. the main menu favorites box and entry boxes) which allow these "
+"elements to stand out from the other popup menu areas"
 msgstr ""
 "Meghatározza a felugró menü ékezetes elemeire (azaz a főmenü kedvencei "
 "mezőjére és a beviteli mezőkre) alkalmazott további tompítást, amely "
