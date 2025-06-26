@@ -1,0 +1,243 @@
+/* Overlay background */
+.dialog.screenshot-overlay {
+    background-color: rgb(30,30,30) !important;
+    background-image: none;
+    border-image: none;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 18px !important;
+    border: 1px solid rgb(35,35,35) !important;
+    padding: 22px !important;
+    font-family: inherit !important;
+}
+
+.dialog.screenshot-overlay > StBoxLayout:first-child {
+    padding: 0px 0px 0px 0px !important;
+    margin: 0px !important;
+    spacing: 0px !important;
+}
+
+.screenshot-overlay .dialog-button-box,
+.dialog.screenshot-overlay .dialog-button-box {
+    padding: 0px !important; }
+
+.overlay-content-box, .overlay-button-box, .overlay-custom-button {
+    min-width: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+.overlay-title-label {
+    font-weight: bold;
+    font-size: 24px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-camera-icon {
+    margin-bottom: 5px;
+    color: white !important;
+}
+
+.overlay-button-box {
+    spacing: 10px; }
+
+.overlay-custom-button {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    text-shadow: none;
+    padding: 8px !important;
+    transition-duration: 150ms;
+}
+
+.overlay-custom-button:hover {
+    background-color: rgba(255, 255, 255, 0.25); }
+
+.overlay-custom-button:focus,
+.overlay-custom-button:active {
+    background-color: #1976d2;
+}
+
+.overlay-custom-button.cancel-button {
+    background-color: #c1252d; }
+
+.overlay-custom-button.cancel-button:hover {
+    background-color: #d02830; }
+
+.overlay-custom-button.cancel-button:active {
+    background-color: #b7232a; }
+
+.overlay-timer-reset,
+.overlay-timer-label, 
+.overlay-timer-value,
+.overlay-timer-minus, .overlay-timer-plus {
+    color: white !important;
+}
+
+.overlay-timer-row {
+    spacing: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.overlay-timer-label {
+    font-size: 14px;
+    min-width: 80px;
+}
+
+.overlay-timer-minus, .overlay-timer-plus {
+    min-width: 32px;
+    max-width: 32px;
+    padding: 2px;
+    background-color: rgba(130,130,130,0.35);
+    border-radius: 99px;
+}
+.overlay-timer-minus:active, .overlay-timer-plus:active {
+    background-color: rgba(130,130,130,0.20); }
+
+.overlay-timer-value {
+    min-width: 32px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.overlay-timer-reset {
+    background-color: rgba(130,130,130,0.35);
+    margin-left: 30px;
+    padding: 2px;
+    min-width: 32px;
+    max-width: 32px;
+    border-radius: 99px;
+}
+
+.overlay-timer-reset:active {
+    background-color: rgba(130,130,130,0.20); }
+
+.overlay-timer-overlay-label {
+    background-color: rgba(30,30,30,0.85);
+    border-radius: 18px;
+    border: 1px solid rgb(75,75,75);
+    color: rgba(255,255,255,0.45);
+    font-size: 80px;
+    font-weight: bold;
+    font-family: inherit !important;
+    text-align: center;
+    padding: 10px 25px;
+    margin-top: 70px;
+    margin-left: 50px;
+}
+
+/* Preview image */
+.screenshot-preview-image {
+    margin: 0 auto;
+}
+
+.screenshot-preview-dimensions-label {
+    color: #ccc;
+    font-size: 14px;
+    margin: 4px 0 8px 0;
+    text-align: center;
+}
+
+.dialog.preview {
+    background-color: rgb(30,30,30) !important;
+    background-image: none;
+    border-image: none;
+    border: 1px solid rgb(35,35,35) !important;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 18px;
+    padding: 10px !important;
+    margin: 0 !important;
+}
+
+.screenshot-preview-content,
+.dialog.preview > *,
+.dialog-content-box.preview,
+.dialog.preview > StBoxLayout:first-child {
+    background-image: none;
+    border-image: none;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    spacing: 0 !important;
+}
+
+.preview .dialog-button-box,
+.dialog.preview .dialog-button-box {
+    background-image: none;
+    border-image: none;
+    padding: 0 !important;
+    margin-bottom: 6px !important;
+    spacing: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+}
+
+.entry.screenshot-preview-entry {
+    background-color: rgba(200,200,200,0.15);
+    border: 1px solid rgba(210,210,210,0.15);
+    color: #FFFFFF;
+    font-family: inherit !important;
+    font-size: 16.5px !important;
+    font-weight: none !important;
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 10px;
+    selection-background-color: #3584e4;
+}
+
+.entry.screenshot-preview-entry:focus {
+    border-color: #1976d2; }
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-save-btn,
+.screenshot-preview-buttons .dialog-button.screenshot-preview-save-btn:hover,
+.screenshot-preview-buttons .dialog-button.screenshot-preview-save-btn:active,
+.screenshot-preview-buttons .dialog-button.screenshot-preview-cancel-btn,
+.screenshot-preview-buttons .dialog-button.screenshot-preview-cancel-btn:hover,
+.screenshot-preview-buttons .dialog-button.screenshot-preview-cancel-btn:active {
+    background-gradient-direction: none;
+    background-gradient-start: none;
+    background-gradient-end: none;
+    border-image: none;
+    border: none;
+    border-radius: 10px;
+    background-image: none;
+    color: #fff;
+    text-shadow: none;
+    font-family: inherit !important;
+    font-size: 16.5px !important;
+    font-weight: bold;
+    padding: 8px 22px;
+    height: auto !important;
+}
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-save-btn {
+    background-color: #1976d2;
+    margin-bottom: 8px;
+}
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-save-btn:hover {
+    background-color: #1e8efd;
+}
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-save-btn:active {
+    background-color: #176bbe;
+}
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-cancel-btn {
+    background-color: rgba(255, 255, 255, 0.2);}
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.screenshot-preview-buttons .dialog-button.screenshot-preview-cancel-btn:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+

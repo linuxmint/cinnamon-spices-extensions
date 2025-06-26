@@ -1,0 +1,9 @@
+{
+    "uuid": "cinnamon-screenshot@hilyxx",
+    "name": "Cinnamon-Screenshot",
+    "description": "Cinnamon extension for screenshots with modern interface and advanced options.",
+    "version": 1.0,
+    "max-instances": 1,
+    "cinnamon-version": ["6.2", "6.4"],
+    "url": "https://github.com/Hilyxx/cinnamon-spices-extensions.git"
+} 
