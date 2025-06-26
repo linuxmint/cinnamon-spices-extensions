@@ -12,6 +12,7 @@ body:
     options:
     - ''
     - adjacent-windows@klangman @klangman
+    - ArrangementOfButtonsOnWindowTitleBar@claudiux @claudiux
     - back-to-monitor@nathan818fr @nathan818fr
     - blur-overview@nailfarmer.nailfarmer.com @klangman
     - BlurCinnamon@klangman @klangman
@@ -31,6 +32,7 @@ body:
     - mnemonic-5-4-window-menu@mtwebster @mtwebster
     - mouse-click-effects@anaximeno @anaximeno
     - mouse-shake-zoom@rcalixte @rcalixte
+    - NewWindowSettings@klangman @klangman
     - opacify@anish.org
     - opacity-slider@neatnit @NeatNit
     - OSD150@claudiux @claudiux
