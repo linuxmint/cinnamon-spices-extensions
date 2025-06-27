@@ -1,0 +1,11 @@
+{
+    "section1": {
+        "type": "section",
+        "description": "Keyboard shortcuts"
+    },
+    "hotkey": {
+        "type": "keybinding",
+        "default": "<Control>q",
+        "description": "Open Cinnamon-Screenshot"
+    }
+} 
