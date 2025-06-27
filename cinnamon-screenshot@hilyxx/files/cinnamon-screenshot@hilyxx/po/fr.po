@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.01\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-06-26 21:48+0200\n"
+"POT-Creation-Date: 2025-06-27 18:33+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,51 +18,51 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. overlay.js:16
+#. overlay.js:17
 msgid "Full Screen"
 msgstr "Plein Écran"
 
-#. overlay.js:17
+#. overlay.js:18
 msgid "Active Window"
 msgstr "Fenêtre active"
 
-#. overlay.js:18 overlay.js:65
+#. overlay.js:19 overlay.js:66
 msgid "Selection"
 msgstr "Sélection"
 
-#. overlay.js:19 preview.js:86
+#. overlay.js:20 preview.js:87
 msgid "Cancel"
 msgstr "Annuler"
 
-#. overlay.js:67
+#. overlay.js:68
 msgid "Timer (s) :"
 msgstr "Timer (s) :"
 
-#. preview.js:77
+#. preview.js:78
 msgid "Save as..."
 msgstr "Enregistrer sous..."
 
-#. preview.js:117
+#. preview.js:118
 msgid "Zenity not available"
 msgstr "Zenity non disponible"
 
-#. preview.js:117
+#. preview.js:118
 msgid "Unable to open file chooser."
 msgstr "Impossible d'ouvrir le sélecteur de fichiers."
 
-#. preview.js:154
+#. preview.js:155
 msgid "Error while saving screenshot: "
 msgstr "Erreur pendant la sauvegarde de la capture: "
 
-#. preview.js:166
+#. preview.js:167
 msgid "Error deleting temp file: "
 msgstr "Erreur de suppression du fichier temporaire: "
 
-#. screenshot.js:62
+#. screenshot.js:63
 msgid "Cinnamon-Screenshot extension error"
 msgstr "Erreur de l'extension Cinnamon-Screenshot"
 
-#. screenshot.js:63
+#. screenshot.js:64
 msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."
@@ -89,3 +89,15 @@ msgstr "Raccourcis clavier"
 #. settings-schema.json->hotkey->description
 msgid "Open Cinnamon-Screenshot"
 msgstr "Ouvrir Cinnamon-Screenshot"
+
+#. settings-schema.json->fullscreenHotkey->description
+msgid "Take fullscreen screenshot"
+msgstr "Faire une capture d'écran plein écran"
+
+#. settings-schema.json->activeWindowHotkey->description
+msgid "Take active window screenshot"
+msgstr "Faire une capture d'écran de la fenêtre active"
+
+#. settings-schema.json->selectionHotkey->description
+msgid "Take selection screenshot"
+msgstr "Faire une capture d'écran de la zone sélectionnée"
