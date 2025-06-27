@@ -2,6 +2,7 @@ const GLib = imports.gi.GLib;
 const Main = imports.ui.main;
 const messageTray = imports.ui.messageTray;
 const St = imports.gi.St;
+const { _ } = require('./translation');
 
 const Screenshot = { takeScreenshot };
 

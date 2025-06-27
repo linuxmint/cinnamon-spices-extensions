@@ -2,6 +2,7 @@ const ModalDialog = imports.ui.modalDialog;
 const { St, Clutter, Gio, GLib, GdkPixbuf } = imports.gi;
 const Main = imports.ui.main;
 const GObject = imports.gi.GObject;
+const { _ } = require('./translation');
 
 const Preview = { showScreenshotPreview };
 
