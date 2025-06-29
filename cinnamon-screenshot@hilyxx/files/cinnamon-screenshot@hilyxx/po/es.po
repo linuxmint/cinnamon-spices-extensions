@@ -1,0 +1,102 @@
+# CINNAMON-SCREENSHOT
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.01\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-06-27 18:33+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. overlay.js:17
+msgid "Full Screen"
+msgstr "Pantalla completa"
+
+#. overlay.js:18
+msgid "Active Window"
+msgstr "Ventana activa"
+
+#. overlay.js:19 overlay.js:66
+msgid "Selection"
+msgstr "Selección"
+
+#. overlay.js:20 preview.js:87
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. overlay.js:68
+msgid "Timer (s) :"
+msgstr "Temporizador (es) :"
+
+#. preview.js:78
+msgid "Save as..."
+msgstr "Guardar como..."
+
+#. preview.js:118
+msgid "Zenity not available"
+msgstr "Zenity no está disponible"
+
+#. preview.js:118
+msgid "Unable to open file chooser."
+msgstr "No es posible abrir el selector de archivos."
+
+#. preview.js:155
+msgid "Error while saving screenshot: "
+msgstr "Error al guardar la captura de pantalla: "
+
+#. preview.js:167
+msgid "Error deleting temp file: "
+msgstr "Error al borrar el archivo temporal: "
+
+#. screenshot.js:63
+msgid "Cinnamon-Screenshot extension error"
+msgstr "Error en la extensión Cinnamon-Screenshot"
+
+#. screenshot.js:64
+msgid ""
+"\"Gnome-screenshot\" utility is not installed. Please install it for the "
+"extension to work."
+msgstr ""
+"La utilidad \"Gnome-screenshot\" no está instalada. Instálela para que "
+"la extensión funcione."
+
+#. metadata.json->name
+msgid "Cinnamon-Screenshot"
+msgstr "Cinnamon-Screenshot"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for screenshots with modern interface and advanced "
+"options."
+msgstr ""
+"Extensión Cinnamon para capturas de pantalla con interfaz moderna y "
+"opciones avanzadas."
+
+#. settings-schema.json->section1->description
+msgid "Keyboard shortcuts"
+msgstr "Atajos de teclado"
+
+#. settings-schema.json->hotkey->description
+msgid "Open Cinnamon-Screenshot"
+msgstr "Abrir Cinnamon-Screenshot"
+
+#. settings-schema.json->fullscreenHotkey->description
+msgid "Take fullscreen screenshot"
+msgstr "Hacer una captura de pantalla completa"
+
+#. settings-schema.json->activeWindowHotkey->description
+msgid "Take active window screenshot"
+msgstr "Hacer una captura de pantalla de la ventana activa"
+
+#. settings-schema.json->selectionHotkey->description
+msgid "Take selection screenshot"
+msgstr "Hacer una captura de pantalla de la zona seleccionada"
