@@ -1,0 +1,19 @@
+# FLIPPER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->tooltip
+msgid ""
+"Select the type of workspace switch effect that will be used. The "
+"\"Randomized\" option allows you to choose which effects can be chosen at "
+"random for each workspace switch. The \"Disabled\" option will show no "
+"effect, not even the Cinnamon built in effect during a workspace switch."
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Disabled"
+msgstr ""
