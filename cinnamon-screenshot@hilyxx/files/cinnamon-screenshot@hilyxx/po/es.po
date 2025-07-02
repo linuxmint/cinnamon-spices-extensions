@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.01\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-06-27 18:33+0200\n"
+"POT-Creation-Date: 2025-07-02 11:54+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr "Ventana activa"
 msgid "Selection"
 msgstr "Selección"
 
-#. overlay.js:20 preview.js:87
+#. overlay.js:20 preview.js:189
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -37,25 +37,45 @@ msgstr "Cancelar"
 msgid "Timer (s) :"
 msgstr "Temporizador (es) :"
 
-#. preview.js:78
+#. preview.js:94
+msgid "Copy to clipboard"
+msgstr "Copiar al portapapeles"
+
+#. preview.js:162
 msgid "Save as..."
 msgstr "Guardar como..."
 
-#. preview.js:118
+#. preview.js:173
+msgid "Back"
+msgstr "Volver"
+
+#. preview.js:242
 msgid "Zenity not available"
 msgstr "Zenity no está disponible"
 
-#. preview.js:118
+#. preview.js:242
 msgid "Unable to open file chooser."
 msgstr "No es posible abrir el selector de archivos."
 
-#. preview.js:155
+#. preview.js:279
 msgid "Error while saving screenshot: "
 msgstr "Error al guardar la captura de pantalla: "
 
-#. preview.js:167
+#. preview.js:291
 msgid "Error deleting temp file: "
 msgstr "Error al borrar el archivo temporal: "
+
+#. preview.js:316
+msgid "Error copying to clipboard: "
+msgstr "Error al copiar al portapapeles: "
+
+#. preview.js:317
+msgid "Copy failed"
+msgstr "Error de copiado"
+
+#. preview.js:317
+msgid "Unable to copy image to clipboard."
+msgstr "No se puede copiar la imagen en el portapapeles."
 
 #. screenshot.js:63
 msgid "Cinnamon-Screenshot extension error"
@@ -66,8 +86,8 @@ msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."
 msgstr ""
-"La utilidad \"Gnome-screenshot\" no está instalada. Instálela para que "
-"la extensión funcione."
+"La utilidad \"Gnome-screenshot\" no está instalada. Instálela para que la "
+"extensión funcione."
 
 #. metadata.json->name
 msgid "Cinnamon-Screenshot"
@@ -78,8 +98,8 @@ msgid ""
 "Cinnamon extension for screenshots with modern interface and advanced "
 "options."
 msgstr ""
-"Extensión Cinnamon para capturas de pantalla con interfaz moderna y "
-"opciones avanzadas."
+"Extensión Cinnamon para capturas de pantalla con interfaz moderna y opciones "
+"avanzadas."
 
 #. settings-schema.json->section1->description
 msgid "Keyboard shortcuts"
