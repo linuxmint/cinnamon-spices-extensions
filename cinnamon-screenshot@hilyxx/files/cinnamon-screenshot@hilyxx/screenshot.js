@@ -17,7 +17,7 @@ function showTimerOverlay(seconds, onFinish) {
     }
     timerOverlayLabel = new St.Label({
         text: `${seconds}`,
-        style_class: 'overlay-timer-overlay-label'
+        style_class: 'screenshot-timer-overlay-label'
     });
     timerOverlayLabel.set_x_align(St.Align.MIDDLE);
     timerOverlayLabel.set_y_align(St.Align.MIDDLE);
@@ -72,7 +72,17 @@ function takeScreenshot(type, timer, mouse, callback) {
 
     function launchCapture(skipTimer) {
         let tmpDir = GLib.get_tmp_dir();
-        let filename = tmpDir + '/Capture_' + Date.now() + '.png';
+        
+        // Generate filename with readable date and time (local time)
+        let now = new Date();
+        let timestamp = now.getFullYear() + '-' + 
+                       String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                       String(now.getDate()).padStart(2, '0') + '_' + 
+                       String(now.getHours()).padStart(2, '0') + '-' + 
+                       String(now.getMinutes()).padStart(2, '0') + '-' + 
+                       String(now.getSeconds()).padStart(2, '0');
+        
+        let filename = tmpDir + '/Capture_' + timestamp + '.png';
         let args = ['gnome-screenshot'];
 
         if (type === 'window') args.push('-w');
@@ -146,4 +156,3 @@ function takeScreenshot(type, timer, mouse, callback) {
         launchCapture(false);
     }
 }
-

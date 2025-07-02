@@ -20,7 +20,7 @@ function showOverlay(onOptionSelected) {
         { label: _("Cancel"), mode: null, styleClass: 'overlay-custom-button cancel-button' }
     ];
 
-    dialog = new ModalDialog.ModalDialog({ styleClass: 'screenshot-overlay', destroyOnClose: true });
+    dialog = new ModalDialog.ModalDialog({ styleClass: 'overlay', destroyOnClose: true });
     dialog.connect('closed', () => {
         dialog = null;
         timerValue = 0;
