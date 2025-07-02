@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.01\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-06-27 18:33+0200\n"
+"POT-Creation-Date: 2025-07-02 11:54+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -30,7 +30,7 @@ msgstr "Fenêtre active"
 msgid "Selection"
 msgstr "Sélection"
 
-#. overlay.js:20 preview.js:87
+#. overlay.js:20 preview.js:189
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -38,25 +38,45 @@ msgstr "Annuler"
 msgid "Timer (s) :"
 msgstr "Timer (s) :"
 
-#. preview.js:78
+#. preview.js:94
+msgid "Copy to clipboard"
+msgstr "Copier dans le presse-papier"
+
+#. preview.js:162
 msgid "Save as..."
 msgstr "Enregistrer sous..."
 
-#. preview.js:118
+#. preview.js:173
+msgid "Back"
+msgstr "Retour"
+
+#. preview.js:242
 msgid "Zenity not available"
 msgstr "Zenity non disponible"
 
-#. preview.js:118
+#. preview.js:242
 msgid "Unable to open file chooser."
 msgstr "Impossible d'ouvrir le sélecteur de fichiers."
 
-#. preview.js:155
+#. preview.js:279
 msgid "Error while saving screenshot: "
 msgstr "Erreur pendant la sauvegarde de la capture: "
 
-#. preview.js:167
+#. preview.js:291
 msgid "Error deleting temp file: "
 msgstr "Erreur de suppression du fichier temporaire: "
+
+#. preview.js:316
+msgid "Error copying to clipboard: "
+msgstr "Erreur de copie dans le presse-papier: "
+
+#. preview.js:317
+msgid "Copy failed"
+msgstr "Échec de la copie"
+
+#. preview.js:317
+msgid "Unable to copy image to clipboard."
+msgstr "Impossible de copier dans le presse papier."
 
 #. screenshot.js:63
 msgid "Cinnamon-Screenshot extension error"

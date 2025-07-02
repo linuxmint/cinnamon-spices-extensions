@@ -5,8 +5,8 @@
    viewBox="0 0 16 16"
    version="1.1"
    id="svg15"
-   sodipodi:docname="camera.svg"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="screenshot-symbolic.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,14 +24,16 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="21.025"
-     inkscape:cx="5.5410226"
-     inkscape:cy="9.8454221"
-     inkscape:window-width="1920"
-     inkscape:window-height="1021"
+     inkscape:cx="5.6361474"
+     inkscape:cy="9.8692033"
+     inkscape:window-width="2560"
+     inkscape:window-height="1381"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg15" />
+     inkscape:current-layer="svg15"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050" />
   <defs
      id="defs5">
     <clipPath
@@ -54,12 +56,12 @@
   <g
      clip-path="url(#a)"
      id="g13"
-     style="fill:#cccccc"
+     style="fill:#666666;fill-opacity:1"
      transform="matrix(0.78584723,0,0,0.78584723,0.145,0.01130685)">
     <path
        d="M 0,0 H 20 V 20 H 0 Z"
        id="path11"
-       style="fill:#cccccc" />
+       style="fill:#666666;fill-opacity:1" />
   </g>
   <metadata
      id="metadata834">

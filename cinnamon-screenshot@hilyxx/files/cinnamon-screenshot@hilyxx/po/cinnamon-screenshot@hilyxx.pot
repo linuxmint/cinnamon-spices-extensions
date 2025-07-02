@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.01\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-06-27 18:33+0200\n"
+"POT-Creation-Date: 2025-07-02 11:54+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Selection"
 msgstr ""
 
-#. overlay.js:20 preview.js:87
+#. overlay.js:20 preview.js:189
 msgid "Cancel"
 msgstr ""
 
@@ -37,24 +37,44 @@ msgstr ""
 msgid "Timer (s) :"
 msgstr ""
 
-#. preview.js:78
+#. preview.js:94
+msgid "Copy to clipboard"
+msgstr ""
+
+#. preview.js:162
 msgid "Save as..."
 msgstr ""
 
-#. preview.js:118
+#. preview.js:173
+msgid "Back"
+msgstr ""
+
+#. preview.js:242
 msgid "Zenity not available"
 msgstr ""
 
-#. preview.js:118
+#. preview.js:242
 msgid "Unable to open file chooser."
 msgstr ""
 
-#. preview.js:155
+#. preview.js:279
 msgid "Error while saving screenshot: "
 msgstr ""
 
-#. preview.js:167
+#. preview.js:291
 msgid "Error deleting temp file: "
+msgstr ""
+
+#. preview.js:316
+msgid "Error copying to clipboard: "
+msgstr ""
+
+#. preview.js:317
+msgid "Copy failed"
+msgstr ""
+
+#. preview.js:317
+msgid "Unable to copy image to clipboard."
 msgstr ""
 
 #. screenshot.js:63
