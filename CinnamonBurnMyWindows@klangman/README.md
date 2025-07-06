@@ -10,8 +10,8 @@ Also includes a port of the Gnome Magic Lamp effect which can be found here:
 
 https://github.com/hermes83/compiz-alike-magic-lamp-effect
 
-**Please go to the above links and support their project since this is merely a port of their fine work!**
-**But DO NOT use this Github link to report issues. See Feedback section below**
+**Please go to the above links and support their projects since this is merely a port of their fine work!**
+**But DO NOT use these Github links to report issues. See Feedback section below**
 
 ## Requirements
 
