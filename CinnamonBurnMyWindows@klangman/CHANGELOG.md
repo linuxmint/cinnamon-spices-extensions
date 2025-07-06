@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+* Fixed a bug that results in the inability to minimize/unminimze windows after disabling the Burn-My-Windows extension.
+
 ## 1.0.1
 
 * Fix Fire and Mushroom effect presets when using a translation of Burn-My-Windows. Note: This fix will reset the prefix settings to default so you will need to reconfigure the extension to use your desired preset if you had previously setup a preset other then the default one.
