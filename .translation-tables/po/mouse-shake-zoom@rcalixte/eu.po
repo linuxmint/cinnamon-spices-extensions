@@ -1,0 +1,54 @@
+# MOUSE SHAKE ZOOM EXTENSION
+# This file is put in the public domain.
+# rcalixte, 2022
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-shake-zoom@rcalixte 1.0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-02-05 15:53-0500\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->description
+msgid "Quickly shake the mouse pointer back and forth to zoom the cursor"
+msgstr ""
+"Azkar astindu saguaren erakuslea alde batetik bestera kurtsorea handitzeko"
+
+#. metadata.json->name
+msgid "Mouse Shake Zoom Extension"
+msgstr "Sagua Astintzean Handitzeko Hedapena"
+
+#. 5.6->settings-schema.json->growth-speed->description
+msgid "Growth speed"
+msgstr "Hazkunde-abiadura"
+
+#. 5.6->settings-schema.json->growth-speed->tooltip
+msgid "How fast the cursor grows"
+msgstr "Zein azkar hazten den kurtsorea."
+
+#. 5.6->settings-schema.json->shrink-speed->description
+msgid "Shrink speed"
+msgstr "Txikitze-abiadura"
+
+#. 5.6->settings-schema.json->shrink-speed->tooltip
+msgid "How fast the cursor shrinks"
+msgstr "Zein azkar uzkurtzen den kurtsorea."
+
+#. 5.6->settings-schema.json->shake-threshold->description
+msgid "Shake threshold"
+msgstr "Astintze limitea"
+
+#. 5.6->settings-schema.json->shake-threshold->tooltip
+msgid "How much the pointer needs to move to activate"
+msgstr "Punteroak zenbat behar duen aktibatzeko."
+
+#. 5.6->settings-schema.json->shake-threshold->units
+msgid "px"
+msgstr "pixel"

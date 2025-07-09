@@ -1,0 +1,500 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-17 12:46-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Blur Cinnamon"
+msgstr "Desenfoque de Cinnamon"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur, colorize, desaturate and adjust the dimming of some "
+"Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
+"Desktop image)"
+msgstr ""
+"Permite desenfocar, colorear, desaturar y ajustar la atenuación de algunos "
+"componentes del escritorio Cinnamon (es decir, Paneles, Menús emergentes, "
+"Vista general, Exposición, Imagen del escritorio)."
+
+#. 6.0->settings-schema.json->general-page->title
+msgid "General"
+msgstr "General"
+
+#. 6.0->settings-schema.json->overview-page->title
+#. 6.0->settings-schema.json->enable-overview-effects->description
+msgid "Overview"
+msgstr "Vista general"
+
+#. 6.0->settings-schema.json->expo-page->title
+#. 6.0->settings-schema.json->enable-expo-effects->description
+msgid "Expo"
+msgstr "Exposición"
+
+#. 6.0->settings-schema.json->panels-page->title
+msgid "Panels"
+msgstr "Paneles"
+
+#. 6.0->settings-schema.json->popup-page->title
+msgid "Popup Menus"
+msgstr "Menús emergentes"
+
+#. 6.0->settings-schema.json->desktop-page->title
+msgid "Desktop Background"
+msgstr "Fondo de escritorio"
+
+#. 6.0->settings-schema.json->general-settings->title
+msgid "Cinnamon components where effects will be applied"
+msgstr "Componentes de Cinnamon donde se aplicarán los efectos"
+
+#. 6.0->settings-schema.json->generic-effect-settings->title
+msgid "Generic effect settings"
+msgstr "Configuración genérica de efectos"
+
+#. 6.0->settings-schema.json->overview-override->title
+msgid "Overview settings"
+msgstr "Ajustes de la vista general"
+
+#. 6.0->settings-schema.json->overview-effect-settings->title
+msgid "Overview effect settings"
+msgstr "Ajustes de efecto de la vista general"
+
+#. 6.0->settings-schema.json->expo-override->title
+msgid "Expo settings"
+msgstr "Configuración de la exposición"
+
+#. 6.0->settings-schema.json->expo-effect-settings->title
+msgid "Expo effect settings"
+msgstr "Configuración de efecto de la exposición"
+
+#. 6.0->settings-schema.json->panels-override->title
+#. 6.0->settings-schema.json->popup-override->title
+msgid "Panels settings"
+msgstr "Configuración de los paneles"
+
+#. 6.0->settings-schema.json->panels-effect-settings->title
+msgid "Panel effects settings"
+msgstr "Configuración de efectos del panel"
+
+#. 6.0->settings-schema.json->popup-effect-settings->title
+msgid "Popup menu effects settings"
+msgstr "Configuración de los efectos del menú emergente"
+
+#. 6.0->settings-schema.json->desktop-override->title
+msgid "Desktop background settings"
+msgstr "Configuración del fondo de escritorio"
+
+#. 6.0->settings-schema.json->desktop-effect-settings->title
+msgid "Desktop background effects settings"
+msgstr "Configuración de los efectos de fondo de escritorio"
+
+#. 6.0->settings-schema.json->enable-overview-effects->tooltip
+msgid ""
+"Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
+"hot corner)"
+msgstr ""
+"Aplicar efectos a la vista general (predeterminado: Ctrl+Alt+Abajo / Esquina "
+"activa 'Mostrar todas las ventanas')"
+
+#. 6.0->settings-schema.json->enable-expo-effects->tooltip
+msgid ""
+"Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot "
+"corner)"
+msgstr ""
+"Aplicar efectos a la Exposición (predeterminado: Ctrl+Alt+Arriba / esquina "
+"activa 'Mostrar todos los espacios de trabajo')"
+
+#. 6.0->settings-schema.json->enable-panels-effects->description
+msgid "Panels  (Please read tooltip)"
+msgstr "Paneles (lea la información sobre herramientas)"
+
+#. 6.0->settings-schema.json->enable-panels-effects->tooltip
+msgid ""
+"Apply effects to the Panels. This option should work well with most dark "
+"desktop themes but light themes could also be made to work with some "
+"creative use of the dimming color settings and an appropriate background "
+"image. It overrides some themes settings to achieve a (semi-)transparent "
+"panel so that the blurred background is visible."
+msgstr ""
+"Aplicar efectos a los paneles. Esta opción debería funcionar bien con la "
+"mayoría de los temas oscuros de escritorio, pero los temas claros también "
+"podrían funcionar con algún uso creativo de la configuración de colores de "
+"atenuación y una imagen de fondo adecuada. Anula la configuración de algunos "
+"temas para conseguir un panel (semi)transparente de modo que el fondo "
+"difuminado sea visible."
+
+#. 6.0->settings-schema.json->enable-popup-effects->description
+msgid "Popup Menus  (Please read tooltip)"
+msgstr "Menús emergentes (lea la información sobre herramientas)"
+
+#. 6.0->settings-schema.json->enable-popup-effects->tooltip
+msgid ""
+"Apply effects to panel applet popup menus. This option is intended for the "
+"Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
+"themes. Light themes are unlikely to give good results but might be made to "
+"work with some creative use of the dimming color settings and an appropriate "
+"background image. It overrides some theme settings to achieve a "
+"(semi-)transparent menu so that the blurred background is visible. It also "
+"removes rounded corners so that the blurred background will not spill over "
+"the rounded edges."
+msgstr ""
+"Aplicar efectos a los menús emergentes de los applets del panel. Esta opción "
+"está pensada para los temas de escritorio oscuros Cinnamon (6.4) y Mint-Y, "
+"pero podría funcionar bien con otros temas. Es poco probable que los temas "
+"claros den buenos resultados, pero podrían funcionar con un uso creativo de "
+"los ajustes de atenuación del color y una imagen de fondo adecuada. Anula "
+"algunos ajustes del tema para conseguir un menú (semi)transparente de modo "
+"que el fondo difuminado sea visible. También elimina las esquinas "
+"redondeadas para que el fondo difuminado no sobrepase los bordes redondeados."
+
+#. 6.0->settings-schema.json->enable-desktop-effects->description
+msgid "Desktop background"
+msgstr "Fondo de escritorio"
+
+#. 6.0->settings-schema.json->enable-desktop-effects->tooltip
+msgid ""
+"Apply effects to desktop background image. On the Desktop Background tab you "
+"can choose if the effect applies always or just when a window has the focus."
+msgstr ""
+"Aplicar efectos a la imagen de fondo del escritorio. En la pestaña Fondo de "
+"escritorio puedes elegir si el efecto se aplica siempre o sólo cuando una "
+"ventana tiene el foco."
+
+#. 6.0->settings-schema.json->overview-info->description
+msgid "Warning: Overview effects are currently disabled under the General tab."
+msgstr ""
+"Advertencia: Los efectos de la vista general actualmente están "
+"deshabilitados en la pestaña General."
+
+#. 6.0->settings-schema.json->expo-info->description
+msgid "Warning: Expo effects are currently disabled under the General tab."
+msgstr ""
+"Advertencia: Los efectos de exposición están actualmente deshabilitados en "
+"la pestaña General."
+
+#. 6.0->settings-schema.json->panels-info->description
+msgid "Warning: Panel effects are currently disabled under the General tab."
+msgstr ""
+"Advertencia: Los efectos del panel están actualmente deshabilitados en la "
+"pestaña General."
+
+#. 6.0->settings-schema.json->popup-info->description
+msgid ""
+"Warning: Popup Menu effects are currently disabled under the General tab."
+msgstr ""
+"Advertencia: Los efectos del menú emergente están actualmente desactivados "
+"en la pestaña General."
+
+#. 6.0->settings-schema.json->desktop-info->description
+msgid ""
+"Warning: Desktop background effects are currently disabled under the General "
+"tab."
+msgstr ""
+"Advertencia: Los efectos de fondo de escritorio están actualmente "
+"desactivados en la pestaña General."
+
+#. 6.0->settings-schema.json->allow-transparent-color-panels->description
+msgid "Override some of the panels theme settings (recommended)"
+msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
+
+#. 6.0->settings-schema.json->allow-transparent-color-panels->tooltip
+msgid ""
+"Allow this extension to modify the panels transparency and background color "
+"settings. If this is disabled the extension will only apply a blur overlay "
+"under the panels. This setting should only be disabled when the theme "
+"already uses transparent panels and you want the themes setting to apply."
+msgstr ""
+"Permite a esta extensión modificar la transparencia de los paneles y la "
+"configuración del color de fondo. Si esta opción está deshabilitada, la "
+"extensión sólo aplicará un desenfoque bajo los paneles. Esta configuración "
+"sólo debe desactivarse cuando el tema ya utiliza paneles transparentes y "
+"desea que se aplique la configuración de temas."
+
+#. 6.0->settings-schema.json->allow-transparent-color-popup->description
+msgid "Override some of the popup menu theme settings (recommended)"
+msgstr ""
+"Anular algunos de los ajustes del tema del menú emergente (recomendado)"
+
+#. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
+msgid ""
+"Allow this extension to modify the popup Menu transparency, background color "
+"and rounded corner settings. If this is disabled the extension will only "
+"apply a blur overlay under the popup menus. This setting should only be "
+"disabled when the theme already uses transparent popup menus and you want "
+"the themes setting to apply."
+msgstr ""
+"Permitir que esta extensión modifique la transparencia del menú emergente, "
+"el color de fondo y las esquinas redondeadas. Si esta opción está "
+"deshabilitada, la extensión sólo aplicará un desenfoque bajo los menús "
+"emergentes. Esta configuración sólo debe desactivarse cuando el tema ya "
+"utiliza menús emergentes transparentes y desea que se aplique la "
+"configuración de los temas."
+
+#. 6.0->settings-schema.json->enable-overview-override->description
+msgid "Use unique effect settings for the Overview"
+msgstr "Usar ajustes de efectos exclusivos para la Vista general"
+
+#. 6.0->settings-schema.json->enable-expo-override->description
+msgid "Use unique effect settings for the Expo"
+msgstr "Usar ajustes de efectos exclusivos para el efecto Exposición"
+
+#. 6.0->settings-schema.json->enable-panels-override->description
+msgid "Use unique effect settings for the Panels"
+msgstr "Usar ajustes de efectos exclusivos para los Paneles"
+
+#. 6.0->settings-schema.json->enable-popup-override->description
+msgid "Use unique effect settings for the popup menus"
+msgstr "Usar ajustes de efectos exclusivos para los menús emergentes"
+
+#. 6.0->settings-schema.json->enable-desktop-override->description
+msgid "Use unique effect settings for the desktop background"
+msgstr ""
+"Utiliza una configuración de efectos exclusivos para el fondo de escritorio"
+
+#. 6.0->settings-schema.json->enable-panel-unique-settings->description
+msgid "Use unique effect settings for each panel"
+msgstr "Usar ajustes de efectos exclusivos exclusivos para cada panel"
+
+#. 6.0->settings-schema.json->panel-unique-settings->description
+msgid "Panel specific settings"
+msgstr "Configuraciones específicas del panel"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Enabled"
+msgstr "Habilitado"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Panel"
+msgstr "Panel"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Monitor"
+msgstr "Monitor"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Dimming"
+msgstr "Atenuación"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Color"
+msgstr "Color"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Blur"
+msgstr "Desenfoque"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Intensity"
+msgstr "Intensidad"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Saturation"
+msgstr "Saturación"
+
+#. 6.0->settings-schema.json->panel-unique-settings->tooltip
+msgid ""
+"Defines the effects applied to different panels. If a panel does not meet "
+"the criteria of any enabled entry in this list, it will have no effects "
+"applied. The settings of the first entry in this list that can apply to a "
+"given panel will take effect. The color field is in the rgb(#,#,#) syntax "
+"and black will be used when a color is not provided or is in an incorrect "
+"syntax"
+msgstr ""
+"Define los efectos aplicados a los distintos paneles. Si un panel no cumple "
+"los criterios de ninguna entrada habilitada de esta lista, no se le aplicará "
+"ningún efecto. Se aplicarán los ajustes de la primera entrada de esta lista "
+"que pueda aplicarse a un panel determinado. El campo de color está en la "
+"sintaxis rgb(#,#,#) y se utilizará el negro cuando no se proporcione un "
+"color o esté en una sintaxis incorrecta"
+
+#. 6.0->settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->overview-opacity->description
+#. 6.0->settings-schema.json->expo-opacity->description
+#. 6.0->settings-schema.json->panels-opacity->description
+#. 6.0->settings-schema.json->popup-opacity->description
+msgid "Dim/Colorize Background (percentage)"
+msgstr "Atenuar/colorear fondo (porcentaje)"
+
+#. 6.0->settings-schema.json->blendColor->description
+#. 6.0->settings-schema.json->overview-blendColor->description
+#. 6.0->settings-schema.json->expo-blendColor->description
+#. 6.0->settings-schema.json->panels-blendColor->description
+#. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
+msgid "Dimming overlay color"
+msgstr "Atenuación del color de superposición"
+
+#. 6.0->settings-schema.json->blendColor->tooltip
+#. 6.0->settings-schema.json->overview-blendColor->tooltip
+#. 6.0->settings-schema.json->expo-blendColor->tooltip
+#. 6.0->settings-schema.json->panels-blendColor->tooltip
+#. 6.0->settings-schema.json->popup-blendColor->tooltip
+#. 6.0->settings-schema.json->desktop-blendColor->tooltip
+msgid ""
+"Defines the color that is blended into the background based on the dimming "
+"control above. Use black for a normal dimming effect or some other color for "
+"a color blend effect"
+msgstr ""
+"Define el color que se mezcla con el fondo en función del control de "
+"atenuación anterior. Utilice negro para un efecto de atenuación normal o "
+"algún otro color para un efecto de mezcla de colores"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "None"
+msgstr "Ninguno"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Simple"
+msgstr "Sencillo"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Gaussian"
+msgstr "Gaussiano"
+
+#. 6.0->settings-schema.json->blurType->description
+#. 6.0->settings-schema.json->overview-blurType->description
+#. 6.0->settings-schema.json->expo-blurType->description
+#. 6.0->settings-schema.json->panels-blurType->description
+#. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->desktop-blurType->description
+msgid "Type of blur effect"
+msgstr "Tipo de efecto de desenfoque"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+#. 6.0->settings-schema.json->overview-blurType->tooltip
+#. 6.0->settings-schema.json->expo-blurType->tooltip
+#. 6.0->settings-schema.json->panels-blurType->tooltip
+#. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->desktop-blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr ""
+"Que tipo de algoritmo de desenfoque debe utilizarse para desenfocar el fondo."
+
+#. 6.0->settings-schema.json->radius->description
+#. 6.0->settings-schema.json->overview-radius->description
+#. 6.0->settings-schema.json->expo-radius->description
+msgid "Gaussian blur intensity"
+msgstr "Intensidad del desenfoque gaussiano"
+
+#. 6.0->settings-schema.json->radius->tooltip
+#. 6.0->settings-schema.json->overview-radius->tooltip
+#. 6.0->settings-schema.json->expo-radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
+"Ajusta la intensidad del efecto de desenfoque cambiando el radio utilizado "
+"por el efecto."
+
+#. 6.0->settings-schema.json->saturation->description
+#. 6.0->settings-schema.json->overview-saturation->description
+#. 6.0->settings-schema.json->expo-saturation->description
+#. 6.0->settings-schema.json->panels-saturation->description
+#. 6.0->settings-schema.json->desktop-saturation->description
+msgid "Background color saturation"
+msgstr "Saturación del color de fondo"
+
+#. 6.0->settings-schema.json->saturation->tooltip
+#. 6.0->settings-schema.json->overview-saturation->tooltip
+#. 6.0->settings-schema.json->expo-saturation->tooltip
+#. 6.0->settings-schema.json->panels-saturation->tooltip
+#. 6.0->settings-schema.json->popup-saturation->tooltip
+#. 6.0->settings-schema.json->desktop-saturation->tooltip
+msgid "Adjusts the color saturation of the background image."
+msgstr "Ajusta la saturación de color de la imagen de fondo."
+
+#. 6.0->settings-schema.json->panels-radius->description
+#. 6.0->settings-schema.json->popup-radius->description
+#. 6.0->settings-schema.json->desktop-radius->description
+msgid "Blur intensity (Gaussian only)"
+msgstr "Intensidad del desenfoque (sólo Gaussiano)"
+
+#. 6.0->settings-schema.json->panels-radius->tooltip
+#. 6.0->settings-schema.json->popup-radius->tooltip
+#. 6.0->settings-schema.json->desktop-radius->tooltip
+msgid ""
+"Adjusts the intensity of the Gaussian blur effect by changing the radius use "
+"by the effect. This setting does not effect the Simple blur type"
+msgstr ""
+"Ajusta la intensidad del efecto de desenfoque gaussiano cambiando el radio "
+"utilizado por el efecto. Este ajuste no afecta al tipo de desenfoque Simple"
+
+#. 6.0->settings-schema.json->popup-accent-opacity->description
+msgid "Additional popup menu accent elements dimming (percentage)"
+msgstr ""
+"Atenuación de elementos de acento adicionales del menú emergente (porcentaje)"
+
+#. 6.0->settings-schema.json->popup-accent-opacity->tooltip
+msgid ""
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
+msgstr ""
+"Define la atenuación adicional aplicada a los elementos de acento del menú "
+"emergente (es decir, el cuadro de favoritos del menú principal y los cuadros "
+"de entrada) que permiten que estos elementos destaquen de las demás áreas "
+"del menú emergente"
+
+#. 6.0->settings-schema.json->popup-saturation->description
+msgid "Background image color saturation"
+msgstr "Saturación del color de la imagen de fondo"
+
+#. 6.0->settings-schema.json->desktop-without-focus->description
+msgid "Only apply effect settings if the desktop is not in focus"
+msgstr "Aplicar los efectos sólo si el escritorio no está enfocado"
+
+#. 6.0->settings-schema.json->desktop-without-focus->tooltip
+msgid ""
+"When enabled, the desktop background image effects will only apply when the "
+"desktop is not in focus"
+msgstr ""
+"Si esta opción está activada, los efectos de la imagen de fondo del "
+"escritorio sólo se aplicarán cuando el escritorio no esté enfocado"
+
+#. 6.0->settings-schema.json->desktop-with-focus->description
+msgid "Apply the generic effect settings when the desktop is in focus"
+msgstr ""
+"Aplicar la configuración del efecto genérico cuando el escritorio está "
+"enfocado"
+
+#. 6.0->settings-schema.json->desktop-with-focus->tooltip
+msgid ""
+"When enabled, the generic effect settings (on the General tab) will apply to "
+"the desktop background image when the desktop is in focus"
+msgstr ""
+"Si esta opción está activada, la configuración del efecto genérico (en la "
+"pestaña General) se aplicará a la imagen de fondo del escritorio cuando éste "
+"esté enfocado"
+
+#. 6.0->settings-schema.json->desktop-opacity->description
+msgid "Dim background Image (percentage)"
+msgstr "Atenuar Imagen de fondo (porcentaje)"

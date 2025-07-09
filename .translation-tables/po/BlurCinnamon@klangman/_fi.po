@@ -1,0 +1,13 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur, colorize, desaturate and adjust the dimming of some "
+"Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
+"Desktop image)"
+msgstr ""
