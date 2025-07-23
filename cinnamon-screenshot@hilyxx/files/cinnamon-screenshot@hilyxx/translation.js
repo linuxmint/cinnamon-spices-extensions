@@ -11,12 +11,10 @@ function initTranslation(uuid) {
 
 function _(str) {
     if (currentUUID) {
-        let customTranslation = Gettext.dgettext(currentUUID, str);
+        const customTranslation = Gettext.dgettext(currentUUID, str);
         if (customTranslation != str) {
             return customTranslation;
         }
     }
     return Gettext.gettext(str);
-}
-
-module.exports = { _, initTranslation }; 
+} 
