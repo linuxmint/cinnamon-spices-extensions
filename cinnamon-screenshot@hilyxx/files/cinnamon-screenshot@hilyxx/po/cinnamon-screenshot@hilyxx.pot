@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.1\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-07-02 11:54+0200\n"
+"POT-Creation-Date: 2025-07-23 11:42+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,71 +17,187 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. overlay.js:17
-msgid "Full Screen"
+#. editOverlay.js:379
+msgid "Brush"
 msgstr ""
 
-#. overlay.js:18
-msgid "Active Window"
+#. editOverlay.js:380
+msgid "Eraser"
 msgstr ""
 
-#. overlay.js:19 overlay.js:66
-msgid "Selection"
+#. editOverlay.js:381
+msgid "Arrow"
 msgstr ""
 
-#. overlay.js:20 preview.js:189
+#. editOverlay.js:382
+msgid "Rectangle"
+msgstr ""
+
+#. editOverlay.js:383
+msgid "Ellipse"
+msgstr ""
+
+#. editOverlay.js:384
+msgid "Pixelization"
+msgstr ""
+
+#. editOverlay.js:385
+msgid "Text"
+msgstr ""
+
+#. editOverlay.js:439
+msgid "Black"
+msgstr ""
+
+#. editOverlay.js:439
+msgid "White"
+msgstr ""
+
+#. editOverlay.js:439
+msgid "Red"
+msgstr ""
+
+#. editOverlay.js:439
+msgid "Blue"
+msgstr ""
+
+#. editOverlay.js:439
+msgid "Green"
+msgstr ""
+
+#. editOverlay.js:439
+msgid "Yellow"
+msgstr ""
+
+#. editOverlay.js:557
+msgid "Thickness/size"
+msgstr ""
+
+#. editOverlay.js:562
+msgid "Save changes to the canvas"
+msgstr ""
+
+#. editOverlay.js:563
+msgid "Cancel all changes"
+msgstr ""
+
+#. editOverlay.js:564 overlay.js:50 overlay.js:74
+msgid "Close"
+msgstr ""
+
+#. editOverlay.js:929
+msgid "Apply changes?"
+msgstr ""
+
+#. editOverlay.js:934
+msgid "Merge canvas with image"
+msgstr ""
+
+#. editOverlay.js:938
+msgid "Save modified copy as…"
+msgstr ""
+
+#. editOverlay.js:942 editOverlay.js:1052 preview.js:241 preview.js:333
 msgid "Cancel"
 msgstr ""
 
-#. overlay.js:68
-msgid "Timer (s) :"
+#. editOverlay.js:952
+msgid "Quit without apply changes?"
 msgstr ""
 
-#. preview.js:94
-msgid "Copy to clipboard"
+#. editOverlay.js:956
+msgid "Yes"
 msgstr ""
 
-#. preview.js:162
+#. editOverlay.js:971
+msgid "No"
+msgstr ""
+
+#. editOverlay.js:1001 editOverlay.js:1095
+msgid "Error saving"
+msgstr ""
+
+#. editOverlay.js:1027 preview.js:322
+msgid "Script gtk-filechooser.py not available"
+msgstr ""
+
+#. editOverlay.js:1047 preview.js:213 preview.js:328
 msgid "Save as..."
 msgstr ""
 
-#. preview.js:173
+#. editOverlay.js:1050 preview.js:331
+msgid "Images"
+msgstr ""
+
+#. editOverlay.js:1051 preview.js:332
+msgid "Save"
+msgstr ""
+
+#. overlay.js:47
+msgid "Full Screen"
+msgstr ""
+
+#. overlay.js:48
+msgid "Active Window"
+msgstr ""
+
+#. overlay.js:49 overlay.js:123
+msgid "Selection"
+msgstr ""
+
+#. overlay.js:76
+msgid "Mouse Pointer :"
+msgstr ""
+
+#. overlay.js:125
+msgid "Timer (s) :"
+msgstr ""
+
+#. preview.js:190
+msgid "Edit image"
+msgstr ""
+
+#. preview.js:191
+msgid "Copy to clipboard"
+msgstr ""
+
+#. preview.js:225
 msgid "Back"
 msgstr ""
 
-#. preview.js:242
-msgid "Zenity not available"
+#. preview.js:305 preview.js:310 preview.js:315
+msgid "Invalid filename"
 msgstr ""
 
-#. preview.js:242
+#. preview.js:305
+msgid "Filename cannot be empty."
+msgstr ""
+
+#. preview.js:310
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
+msgstr ""
+
+#. preview.js:315
+msgid "Filename must end with .png"
+msgstr ""
+
+#. preview.js:322
 msgid "Unable to open file chooser."
 msgstr ""
 
-#. preview.js:279
-msgid "Error while saving screenshot: "
-msgstr ""
-
-#. preview.js:291
-msgid "Error deleting temp file: "
-msgstr ""
-
-#. preview.js:316
-msgid "Error copying to clipboard: "
-msgstr ""
-
-#. preview.js:317
+#. preview.js:411
 msgid "Copy failed"
 msgstr ""
 
-#. preview.js:317
+#. preview.js:411
 msgid "Unable to copy image to clipboard."
 msgstr ""
 
-#. screenshot.js:63
+#. screenshot.js:69
 msgid "Cinnamon-Screenshot extension error"
 msgstr ""
 
-#. screenshot.js:64
+#. screenshot.js:70
 msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."
@@ -115,4 +231,16 @@ msgstr ""
 
 #. settings-schema.json->selectionHotkey->description
 msgid "Take selection screenshot"
+msgstr ""
+
+#. settings-schema.json->section2->description
+msgid "Interface settings"
+msgstr ""
+
+#. settings-schema.json->mousePointerVisible->description
+msgid "Include mouse pointer in screenshots"
+msgstr ""
+
+#. settings-schema.json->enableTransitions->description
+msgid "Enable animated transitions for edit mode"
 msgstr ""

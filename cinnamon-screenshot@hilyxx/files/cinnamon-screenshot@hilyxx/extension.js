@@ -1,144 +1,108 @@
+// === IMPORTS & CONSTANTS ===
 const Main = imports.ui.main;
-const Lang = imports.lang;
-const St = imports.gi.St;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
-const Util = imports.misc.util;
 const Settings = imports.ui.settings;
 
-const Overlay = require('./overlay').Overlay;
-const Screenshot = require('./screenshot').Screenshot;
-const Preview = require('./preview').Preview;
+const { Overlay } = require('./overlay');
+const { Screenshot } = require('./screenshot');
+const { showScreenshotPreview } = require('./preview');
 const { _, initTranslation } = require('./translation');
+const { getTransitionManager } = require('./transitionEffects');
 
 const UUID = 'cinnamon-screenshot@hilyxx';
 
-// Initialize translation
 initTranslation(UUID);
 
-let settingsObj = { 
+// === SETTINGS OBJECT & IDS ===
+const settingsObj = { 
     hotkey: null,
     fullscreenHotkey: null,
     activeWindowHotkey: null,
-    selectionHotkey: null
+    selectionHotkey: null,
+    mousePointerVisible: true,
+    enableTransitions: true
 };
 let settings = null;
-let hotkeyId = 'cinnamon-screenshot-key';
-let fullscreenHotkeyId = 'cinnamon-screenshot-fullscreen-key';
-let activeWindowHotkeyId = 'cinnamon-screenshot-active-window-key';
-let selectionHotkeyId = 'cinnamon-screenshot-selection-key';
+const hotkeyId = 'cinnamon-screenshot-key';
+const fullscreenHotkeyId = 'cinnamon-screenshot-fullscreen-key';
+const activeWindowHotkeyId = 'cinnamon-screenshot-active-window-key';
+const selectionHotkeyId = 'cinnamon-screenshot-selection-key';
 
-function init(metadata) {
+function init() {
 }
 
 function enable() {
     global.log('cinnamon-screenshot: enable() called');
     settings = new Settings.ExtensionSettings(settingsObj, UUID);
-    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', _setKeybinding, null);
-    settings.bindProperty(Settings.BindingDirection.IN, 'fullscreenHotkey', 'fullscreenHotkey', _setFullscreenKeybinding, null);
-    settings.bindProperty(Settings.BindingDirection.IN, 'activeWindowHotkey', 'activeWindowHotkey', _setActiveWindowKeybinding, null);
-    settings.bindProperty(Settings.BindingDirection.IN, 'selectionHotkey', 'selectionHotkey', _setSelectionKeybinding, null);
-    _setKeybinding();
-    _setFullscreenKeybinding();
-    _setActiveWindowKeybinding();
-    _setSelectionKeybinding();
+    settings.bindProperty(Settings.BindingDirection.IN, 'hotkey', 'hotkey', setAllKeybindings, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'fullscreenHotkey', 'fullscreenHotkey', setAllKeybindings, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'activeWindowHotkey', 'activeWindowHotkey', setAllKeybindings, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'selectionHotkey', 'selectionHotkey', setAllKeybindings, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'mousePointerVisible', 'mousePointerVisible', null, null);
+    settings.bindProperty(Settings.BindingDirection.IN, 'enableTransitions', 'enableTransitions', _setTransitionsEnabled, null);
+    setAllKeybindings();
+    _setTransitionsEnabled();
 }
 
 function disable() {
     global.log('cinnamon-screenshot: disable() called');
-    _removeKeybinding();
-    _removeFullscreenKeybinding();
-    _removeActiveWindowKeybinding();
-    _removeSelectionKeybinding();
+    Main.keybindingManager.removeHotKey(hotkeyId);
+    Main.keybindingManager.removeHotKey(fullscreenHotkeyId);
+    Main.keybindingManager.removeHotKey(activeWindowHotkeyId);
+    Main.keybindingManager.removeHotKey(selectionHotkeyId);
     if (settings) {
         settings.finalize();
         settings = null;
     }
 }
 
-function _setKeybinding() {
-    _removeKeybinding();
-    if (settingsObj.hotkey && settingsObj.hotkey.length > 0) {
-        Main.keybindingManager.addHotKey(hotkeyId, settingsObj.hotkey, onHotkeyPressed);
+// === MOUSE POINTER STATE PERSISTENCE ===
+function saveMousePointerState(visible) {
+    if (settings) {
+        settingsObj.mousePointerVisible = visible;
     }
 }
 
-function _removeKeybinding() {
-    Main.keybindingManager.removeHotKey(hotkeyId);
-}
-
-function _setFullscreenKeybinding() {
-    _removeFullscreenKeybinding();
-    if (settingsObj.fullscreenHotkey && settingsObj.fullscreenHotkey.length > 0) {
-        Main.keybindingManager.addHotKey(fullscreenHotkeyId, settingsObj.fullscreenHotkey, onFullscreenHotkeyPressed);
+// === TRANSITIONS MANAGEMENT ===
+function _setTransitionsEnabled() {
+    const transitionManager = getTransitionManager();
+    if (transitionManager) {
+        transitionManager.setEnabled(settingsObj.enableTransitions);
+        global.log('CS: Transitions ' + (settingsObj.enableTransitions ? 'enabled' : 'disabled'));
     }
 }
 
-function _removeFullscreenKeybinding() {
-    Main.keybindingManager.removeHotKey(fullscreenHotkeyId);
-}
-
-function _setActiveWindowKeybinding() {
-    _removeActiveWindowKeybinding();
-    if (settingsObj.activeWindowHotkey && settingsObj.activeWindowHotkey.length > 0) {
-        Main.keybindingManager.addHotKey(activeWindowHotkeyId, settingsObj.activeWindowHotkey, onActiveWindowHotkeyPressed);
-    }
-}
-
-function _removeActiveWindowKeybinding() {
-    Main.keybindingManager.removeHotKey(activeWindowHotkeyId);
-}
-
-function _setSelectionKeybinding() {
-    _removeSelectionKeybinding();
-    if (settingsObj.selectionHotkey && settingsObj.selectionHotkey.length > 0) {
-        Main.keybindingManager.addHotKey(selectionHotkeyId, settingsObj.selectionHotkey, onSelectionHotkeyPressed);
-    }
-}
-
-function _removeSelectionKeybinding() {
-    Main.keybindingManager.removeHotKey(selectionHotkeyId);
-}
-
+// === HOTKEY CALLBACKS & OVERLAY LOGIC ===
 function onHotkeyPressed() {
-    global.log('cinnamon-screenshot: hotkey pressed');
     showOverlayWithCallback();
 }
 
 function showOverlayWithCallback() {
     Overlay.showOverlay((type, timer, mouse) => {
-        global.log('cinnamon-screenshot: onOptionSelected called with type=' + type);
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
             Screenshot.takeScreenshot(type, timer, mouse, (filename) => {
                 if (filename) {
-                    global.log('cinnamon-screenshot: screenshot taken: ' + filename);
-                    Preview.showScreenshotPreview(filename, (savedPath) => {
-                        global.log('cinnamon-screenshot: screenshot saved to: ' + savedPath);
+                    showScreenshotPreview(filename, (savedPath) => {
                     }, () => {
                         // Callback for back button - return to overlay
-                        global.log('cinnamon-screenshot: returning to overlay from preview');
                         showOverlayWithCallback();
                     }, true);
                 } else {
-                    global.log('cinnamon-screenshot: screenshot failed');
                 }
             });
             return GLib.SOURCE_REMOVE;
         });
-    });
+    }, settingsObj.mousePointerVisible, saveMousePointerState);
 }
 
 function onFullscreenHotkeyPressed() {
-    global.log('cinnamon-screenshot: fullscreen hotkey pressed');
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
-        Screenshot.takeScreenshot('fullscreen', 0, false, (filename) => {
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+        Screenshot.takeScreenshot('full', 0, true, (filename) => {
             if (filename) {
-                global.log('cinnamon-screenshot: fullscreen screenshot taken: ' + filename);
-                Preview.showScreenshotPreview(filename, (savedPath) => {
-                    global.log('cinnamon-screenshot: fullscreen screenshot saved to: ' + savedPath);
+                showScreenshotPreview(filename, (savedPath) => {
                 });
             } else {
-                global.log('cinnamon-screenshot: fullscreen screenshot failed');
             }
         });
         return GLib.SOURCE_REMOVE;
@@ -146,16 +110,12 @@ function onFullscreenHotkeyPressed() {
 }
 
 function onActiveWindowHotkeyPressed() {
-    global.log('cinnamon-screenshot: active window hotkey pressed');
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
-        Screenshot.takeScreenshot('window', 0, false, (filename) => {
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+        Screenshot.takeScreenshot('window', 0, true, (filename) => {
             if (filename) {
-                global.log('cinnamon-screenshot: active window screenshot taken: ' + filename);
-                Preview.showScreenshotPreview(filename, (savedPath) => {
-                    global.log('cinnamon-screenshot: active window screenshot saved to: ' + savedPath);
+                showScreenshotPreview(filename, (savedPath) => {
                 });
             } else {
-                global.log('cinnamon-screenshot: active window screenshot failed');
             }
         });
         return GLib.SOURCE_REMOVE;
@@ -163,18 +123,33 @@ function onActiveWindowHotkeyPressed() {
 }
 
 function onSelectionHotkeyPressed() {
-    global.log('cinnamon-screenshot: selection hotkey pressed');
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
-        Screenshot.takeScreenshot('selection', 0, false, (filename) => {
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+        Screenshot.takeScreenshot('selection', 0, true, (filename) => {
             if (filename) {
-                global.log('cinnamon-screenshot: selection screenshot taken: ' + filename);
-                Preview.showScreenshotPreview(filename, (savedPath) => {
-                    global.log('cinnamon-screenshot: selection screenshot saved to: ' + savedPath);
+                showScreenshotPreview(filename, (savedPath) => {
                 });
             } else {
-                global.log('cinnamon-screenshot: selection screenshot failed');
             }
         });
         return GLib.SOURCE_REMOVE;
     });
-} 
+}
+
+function setAllKeybindings() {
+    Main.keybindingManager.removeHotKey(hotkeyId);
+    if (settingsObj.hotkey && settingsObj.hotkey.length > 0) {
+        Main.keybindingManager.addHotKey(hotkeyId, settingsObj.hotkey, onHotkeyPressed);
+    }
+    Main.keybindingManager.removeHotKey(fullscreenHotkeyId);
+    if (settingsObj.fullscreenHotkey && settingsObj.fullscreenHotkey.length > 0) {
+        Main.keybindingManager.addHotKey(fullscreenHotkeyId, settingsObj.fullscreenHotkey, onFullscreenHotkeyPressed);
+    }
+    Main.keybindingManager.removeHotKey(activeWindowHotkeyId);
+    if (settingsObj.activeWindowHotkey && settingsObj.activeWindowHotkey.length > 0) {
+        Main.keybindingManager.addHotKey(activeWindowHotkeyId, settingsObj.activeWindowHotkey, onActiveWindowHotkeyPressed);
+    }
+    Main.keybindingManager.removeHotKey(selectionHotkeyId);
+    if (settingsObj.selectionHotkey && settingsObj.selectionHotkey.length > 0) {
+        Main.keybindingManager.addHotKey(selectionHotkeyId, settingsObj.selectionHotkey, onSelectionHotkeyPressed);
+    }
+}

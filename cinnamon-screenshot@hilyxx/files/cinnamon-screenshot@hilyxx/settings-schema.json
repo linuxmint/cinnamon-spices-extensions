@@ -22,5 +22,19 @@
         "type": "keybinding",
         "default": "<Control><Shift>3",
         "description": "Take selection screenshot"
+    },
+    "section2": {
+        "type": "section",
+        "description": "Interface settings"
+    },
+    "mousePointerVisible": {
+        "type": "switch",
+        "default": true,
+        "description": "Include mouse pointer in screenshots"
+    },
+    "enableTransitions": {
+        "type": "switch",
+        "default": true,
+        "description": "Enable animated transitions for edit mode"
     }
 } 
