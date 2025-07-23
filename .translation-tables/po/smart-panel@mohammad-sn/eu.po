@@ -1,0 +1,298 @@
+# SMART PANEL
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Lan-espazioen artean aldatu, mahaigaina erakutsi, ikuspegi orokorra edo "
+"expoa aktibatu... korritzerakoan, klik bikoitzan, saguaren keinuekin eta "
+"abar, panelaren espazio librean."
+
+#. metadata.json->name
+msgid "Smart Panel"
+msgstr "Panel Adimenduna"
+
+#. settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Saguaren desplazamendu-aukerak: "
+
+#. settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Korritzerakoan: "
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Lan-espazioen artean aldatu"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Leihoen opakutasuna aldatu"
+
+#. settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Mahaigaina erakutsi"
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Leiho artean aldatu"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->scroll-action->options
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "None"
+msgstr "Bat ere ez"
+
+#. settings-schema.json->prev-fast-scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr "Ustekabeko lan-espazio/leiho aldaketa korritze azkarrean eragoztea"
+
+#. settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Korritze arteko gutxieneko atzerapena:"
+
+#. settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "milisegundoak"
+
+#. settings-schema.json->sep-scroll-action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Gora eta behera korritzerakoan ekintza independenteak."
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
+
+#. settings-schema.json->scroll-action-up->description
+msgid "Action on scrolling up: "
+msgstr "Gora korritzean: "
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Expo"
+msgstr "Espo"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Overview"
+msgstr "Ikuspegi orokorra"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Launch App Switcher"
+msgstr "Martxan jarri App Switcher"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Show Desktop"
+msgstr "Erakutsi mahaigaina"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 1st Custom Command"
+msgstr "1. Agindua exekutatu"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 2nd Custom Command"
+msgstr "2. Agindua exekutatu"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 3rd Custom Command"
+msgstr "3. Agindua exekutatu"
+
+#. settings-schema.json->scroll-action-down->description
+msgid "Action on scrolling down: "
+msgstr "Behera korritzean: "
+
+#. settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Saguaren klik aukerak: "
+
+#. settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Panelean klik bikoitza egiterakoan:"
+
+#. settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Panelean erdiko klikean: "
+
+#. settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Saguaren keinuak: "
+
+#. settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Erabili saguaren keinuak panelean"
+
+#. settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Eskuinera arrastatzerakoan:"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Joan ezkerreko lan-areara"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Joan lehenengo lan-areara"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Joan eskimako lan-areara"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Joan azken lan-areara"
+
+#. settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Ezkerrera arrastatzerakoan: "
+
+#. settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Klikatu pantailaren ertzean eta arrastatu bertikalki: "
+
+#. settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Agindu pertsonalizatuak: "
+
+#. settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "1. Agindu pertsonalizatua: "
+
+#. settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "2. Agindu pertsonalizatua: "
+
+#. settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "3. Agindu pertsonalizatua: "
+
+#. settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Aplikazio aldaketen ezarpenak: "
+
+#. settings-schema.json->appswitcher-style->description
+msgid "App switcher style: "
+msgstr "Aplikazio aldaketen estiloa: "
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Ikonoak bakarrik"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Miniaturak bakarrik"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Ikonoak eta miniaturak"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Ikonoak eta leihoen aurrebista"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Leihoaren aurrebista (ikonorik gabe)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Estaldura-fluxua (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Denbora-lerroa (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Sistemaren lehenetsia"
+
+#. settings-schema.json->appswitcher-scope->description
+msgid "Switch between windows from: "
+msgstr "Leihoen artean aldatu: "
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Gaur egungo lan-espaziotik"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Lan-espazio guztietatik"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Oraingo aplikaziotik"
+
+#. settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "Tekla aldatzaile bat sakatzean, leiho artean aldatu: "
+
+#. settings-schema.json->appswitcher-modifier->description
+msgid "Modifier key: "
+msgstr "Giltza aldatzailea:"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr "Shift"

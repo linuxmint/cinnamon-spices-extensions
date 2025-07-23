@@ -1,0 +1,15 @@
+# SMART PANEL
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024
+#
+msgid ""
+msgstr ""
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
