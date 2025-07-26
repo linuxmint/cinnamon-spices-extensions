@@ -71,6 +71,7 @@ class ShouldAnimateManager {
       for (let i=0 ; i<Main.wm._shouldAnimateManager.length ; i++) {
          if (Main.wm._shouldAnimateManager[i].owner == this._uuid && (!event || event == Main.wm._shouldAnimateManager[i].event)) {
             Main.wm._shouldAnimateManager.splice( i, 1 );
+            i--; // We removed an entry so 'i' needs to be decremented so we don't skip over an entry!
             // Setup a new _shouldAnimate override or restore the original if there are no manager entries left.
             if (Main.wm._shouldAnimateManager.length === 0) {
                log( `Removing the last ShouldAnimateManager entry (for ${this._uuid}), reinstalling the original handler function` );

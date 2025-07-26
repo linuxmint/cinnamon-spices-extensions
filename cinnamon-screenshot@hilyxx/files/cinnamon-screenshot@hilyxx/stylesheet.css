@@ -1,0 +1,514 @@
+/*
+▄▖▘                             ▌   ▗ 
+▌ ▌▛▌▛▌▀▌▛▛▌▛▌▛▌▄▖▛▘▛▘▛▘█▌█▌▛▌▛▘▛▌▛▌▜▘
+▙▖▌▌▌▌▌█▌▌▌▌▙▌▌▌  ▄▌▙▖▌ ▙▖▙▖▌▌▄▌▌▌▙▌▐▖
+*/                                      
+
+.global-tooltip {
+    background-color: rgba(36,36,36,0.95);
+    color: #fff;
+    border: 1px solid rgb(35,35,35);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/*** OVERLAY ***/
+.dialog.overlay {
+    background-color: rgb(36,36,36) !important;
+    background-image: none;
+    border-image: none;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 18px !important;
+    border: 1px solid rgb(40,40,40) !important;
+    padding: 14px !important;
+    font-family: inherit !important;
+}
+
+.dialog.overlay > StBoxLayout:first-child {
+    padding: 0px 0px 0px 0px !important;
+    margin: 0px !important;
+    spacing: 0px !important;
+}
+
+.overlay .dialog-button-box,
+.dialog.overlay .dialog-button-box {
+    padding: 0px !important; 
+}
+
+.overlay-title-label {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+}
+
+.overlay-camera-icon {
+    margin-bottom: 5px;
+    color: #eaeaea;
+}
+
+.overlay-button-box {
+    spacing: 10px; 
+}
+
+.overlay-custom-button {
+    font-size: 16px !important;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: none;
+    border-radius: 8px;
+    text-shadow: none;
+    box-shadow: none;
+    padding: 8px !important;
+    transition-duration: 150ms;
+}
+
+.overlay-custom-button:hover {
+    background-color: rgba(255, 255, 255, 0.25); }
+
+.overlay-custom-button:focus,
+.overlay-custom-button:active {
+    background-color: #4a90e0;
+}
+
+.overlay-custom-button.close {
+    background-color: #c1252d; 
+}
+
+.overlay-custom-button.close:hover {
+    background-color: #d02830; 
+}
+
+.overlay-custom-button.close:active {
+    background-color: #b7232a; 
+}
+
+.overlay-timer-reset,
+.overlay-timer-label, 
+.overlay-timer-value,
+.overlay-timer-minus, 
+.overlay-timer-plus {
+    color: white;
+}
+
+.overlay-timer-row {
+    spacing: 6px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.overlay-timer-label {
+    font-size: 14px;
+    min-width: 80px;
+    color: white;
+    font-family: inherit !important;
+}
+
+.overlay-timer-value {
+    min-width: 32px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.overlay-timer-minus, .overlay-timer-plus {
+    background-color: rgba(130,130,130,0.35);
+    border-radius: 99px;
+}
+
+.overlay-timer-minus:active, .overlay-timer-plus:active {
+    background-color: rgba(130,130,130,0.20); 
+}
+
+.overlay-timer-reset {
+    background-color: rgba(130,130,130,0.35);
+    border-radius: 99px;
+}
+
+.overlay-timer-reset:active {
+    background-color: rgba(130,130,130,0.20); 
+}
+
+.overlay-mouse-pointer-row {
+    margin-bottom: 7px;
+    spacing: 8px;
+}
+
+.overlay-mouse-pointer-label {
+    color: white;
+    font-size: 14px;
+    font-family: inherit !important;
+    margin: 6px 2px 0 0;
+}
+
+.overlay-mouse-pointer-toggle {
+    background-color: rgba(130,130,130,0.35);
+    padding: 2px;
+    border-radius: 99px;
+}
+
+.overlay-mouse-pointer-toggle:hover {
+    background-color: rgba(130,130,130,0.45);
+}
+
+.overlay-mouse-pointer-toggle:active {
+    background-color: rgba(130,130,130,0.20);
+}
+
+.overlay-timer-separator {
+    background-color: rgba(130,130,130,0.90);
+    width: 1px;
+    margin: 0 5px 0 5px;
+}
+
+.screenshot-timer-overlay-label {
+    background-color: rgba(30,30,30,0.85);
+    border-radius: 18px;
+    border: 1px solid rgb(75,75,75);
+    color: rgba(255,255,255,0.45);
+    font-size: 80px;
+    font-weight: bold;
+    font-family: inherit !important;
+    text-align: center;
+    padding: 10px 25px;
+    margin-top: 70px;
+    margin-left: 50px;
+}
+
+/*** PREVIEW ***/
+.dialog.preview {
+    background-color: rgb(36,36,36) !important;
+    background-image: none;
+    border-image: none;
+    border: 1px solid rgb(40,40,40) !important;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 18px;
+    padding: 10px !important;
+    margin: 0 !important;
+}
+
+.preview-content,
+.dialog.preview > *,
+.dialog-content-box.preview,
+.dialog.preview > StBoxLayout:first-child {
+    background-image: none;
+    border-image: none;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    spacing: 0 !important;
+}
+
+.preview .dialog-button-box,
+.dialog.preview .dialog-button-box {
+    background-image: none;
+    border-image: none;
+    padding: 0 !important;
+    margin-bottom: 6px !important;
+    spacing: 0 !important;
+}
+
+.preview-image {
+    margin: 0 auto;
+}
+
+.preview-clipboard-box {
+    margin-bottom: 8px;
+}
+
+.preview-dimensions-label {
+    color: #ddd;
+    font-size: 14.5px;
+    font-family: inherit !important;
+    margin: 6px 2px 0 0;
+    text-align: center;
+}
+
+.preview-tool-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 99px;
+    padding: 0 !important;
+    border: none;
+}
+
+.preview-tool-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.preview-tool-btn:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.preview-tool-icon {
+    color: white;
+}
+
+.entry.preview-entry {
+    background-color: rgba(200,200,200,0.15);
+    border: 1px solid rgba(210,210,210,0.15);
+    color: white;
+    font-family: inherit !important;
+    font-size: 16.5px !important;
+    font-weight: none !important;
+    border-radius: 6px;
+    padding: 4px !important;
+    margin-bottom: 10px !important;
+    selection-background-color: #4a90e0;
+}
+
+.entry.preview-entry:focus {
+    border-color: #4a90e0; 
+}
+
+.preview-buttons-box .dialog-button.preview-save-btn,
+.preview-buttons-box .dialog-button.preview-save-btn:hover,
+.preview-buttons-box .dialog-button.preview-save-btn:active,
+.preview-buttons-box .dialog-button.preview-back-btn,
+.preview-buttons-box .dialog-button.preview-back-btn:hover,
+.preview-buttons-box .dialog-button.preview-back-btn:active,
+.preview-buttons-box .dialog-button.preview-cancel-btn,
+.preview-buttons-box .dialog-button.preview-cancel-btn:hover,
+.preview-buttons-box .dialog-button.preview-cancel-btn:active {
+    background-gradient-direction: none;
+    background-gradient-start: none;
+    background-gradient-end: none;
+    border-image: none;
+    border: none;
+    border-radius: 8px;
+    background-image: none;
+    color: white;
+    text-shadow: none;
+    font-family: inherit !important;
+    font-size: 16.5px !important;
+    font-weight: bold;
+    padding: 8px !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+}
+
+.preview-buttons-box .dialog-button.preview-save-btn {
+    background-color: #4a90e0;
+    margin-bottom: 8px !important;
+}
+
+.preview-buttons-box .dialog-button.preview-save-btn:hover {
+    background-color: #4f9aef; 
+}
+
+.preview-buttons-box .dialog-button.preview-save-btn:active {
+    background-color: #1e8efd; 
+}
+
+.preview-buttons-box .dialog-button.preview-back-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 2px !important;
+}
+
+.preview-buttons-box .dialog-button.preview-back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25); 
+}
+
+.preview-buttons-box .dialog-button.preview-back-btn:active {
+    background-color: rgba(255, 255, 255, 0.15); 
+}
+
+.preview-buttons-box .dialog-button.preview-cancel-btn {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.preview-buttons-box .dialog-button.preview-cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25); 
+}
+
+.preview-buttons-box .dialog-button.preview-cancel-btn:active {
+    background-color: #b7232a; 
+}
+
+.preview-cancel-with-back-btn {
+    margin-left: 2px !important;
+}
+
+/*** EDIT MOD ***/
+.dialog.edit-modal {
+    background-color: rgba(0,0,0,0.11) !important;
+    background-image: none !important;
+    border: none !important;
+    border-image: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.dialog.edit-modal> *,
+.dialog-content-box.edit-modal,
+.dialog.edit-modal > StBoxLayout:first-child {
+    background-image: none;
+    border-image: none;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    spacing: 0 !important;
+}
+
+.edit-image {
+    border: 2px solid #4a90e0;
+}
+
+.edit-superpose-box {
+    margin-top: 23px;
+}
+
+.edit-close-btn {
+    background-color: rgba(255,255,255,0.55);
+    color: #222;
+    border-radius: 22px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    margin: 24px 24px 0 0;
+    padding: 0;
+}
+
+.edit-close-btn:hover {
+    background-color: #e53935;
+    color: white;
+}
+
+.edit-toolbar {
+    background-color: rgba(55,55,55,0.85);
+    border-radius: 16px;
+    padding: 6px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    border: 1px solid rgba(113, 113, 113, 0.85);
+    spacing: 8px;
+}
+
+.edit-toolbar-btn,
+.edit-toolbar-btn.thicknesses,
+.edit-toolbar-btn.colors {
+    background-color: rgba(80,80,80,0.7);
+    border-radius: 99px;
+    border: none;
+    margin: 0 2px;
+    color: white;
+    transition-property: background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+}
+
+.edit-toolbar-btn:hover,
+.edit-toolbar-btn.colors:hover,
+.edit-toolbar-btn.thicknesses:hover,
+.edit-toolbar-btn:active,
+.edit-toolbar-btn.colors:active,
+.edit-toolbar-btn.thicknesses:active {
+    background-color: #4a90e0;
+    color: white;
+}
+
+.edit-toolbar-btn.disabled,
+.edit-toolbar-btn.thicknesses.disabled {
+    background-color: rgba(80,80,80,0.35);
+    color: rgba(110,110,110,0.45);
+}
+
+.colors-icon {
+    color: inherit;
+}
+
+.colors {
+    padding: 6px;
+}
+
+.edit-toolbar-separator {
+    background-color: rgba(130,130,130,0.45);
+    width: 1px;
+    margin: 6px 4px 6px 4px;
+}
+
+.edit-text-entry {
+    background: rgba(65,65,65,0.3);
+    border: 1px solid rgba(55,55,55,0.15);
+    border-radius: 4px;
+    min-width: 80px;
+    font-family: System-ui, normal;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    selection-background-color: #8c9aa3;
+}
+
+.edit-text-entry:focus {
+    border-color: #4a90e0; 
+}
+
+.edit-text-check-btn {
+    background-color: rgba(70,70,70,0.8);
+    color: white;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+}
+
+/* Edit Mod - Dialog */
+.edit-dialog-widget-bg {
+    background-color: rgba(0,0,0,0.8);
+    border: none;
+    border-radius: 0;
+}
+
+.edit-dialog-widget-box {
+    background-color: rgba(55,55,55,0.95);
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid rgba(113, 113, 113, 0.85);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.edit-dialog-widget-title {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: inherit !important;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.edit-dialog-widget-btnbox {
+    spacing: 10px;
+    margin-top: 15px;
+}
+
+.edit-dialog-widget-btn {
+    background-color: rgba(80,80,80,0.8);
+    border-radius: 8px;
+    border: none;
+    color: white !important;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: inherit !important;
+    padding: 8px 16px;
+    min-height: 36px;
+}
+
+.edit-dialog-widget-btn:hover {
+    background-color: #4a90e0;
+}
+
+.edit-dialog-widget-btn:active {
+    background-color: #4a90e0;
+}
+
+.edit-dialog-widget-btn.cancel {
+    background-color: rgba(193, 37, 45, 0.8);
+}
+
+.edit-dialog-widget-btn.cancel:hover {
+    background-color: #c1252d;
+}
+
+.edit-dialog-widget-btn.cancel:active {
+    background-color: #b7232a;
+}
