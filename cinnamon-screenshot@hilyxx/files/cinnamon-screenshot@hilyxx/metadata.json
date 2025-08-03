@@ -3,8 +3,10 @@
     "name": "Cinnamon-Screenshot",
     "author": "hilyxx",
     "description": "Cinnamon extension for screenshots with modern interface and advanced options.",
-    "version": 1.2,
+    "version": 1.21,
     "max-instances": 1,
-    "cinnamon-version": ["6.4"],
+    "cinnamon-version": [
+        "6.4"
+    ],
     "url": "https://github.com/Hilyxx/cinnamon-spices-extensions.git"
 }
