@@ -41,7 +41,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
     }, class ScreenshotEditDialog extends ModalDialog.ModalDialog {
         _init(filepath, onClose, state = null, preview = null, showBackButton = false, onOptionSelected = null) {
             super._init({ styleClass: 'edit-modal', destroyOnClose: true, cinnamonReactive: false });
-            const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
+            this._scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
 
             // Override the monitor constraint to use full screen instead of work area
             this._monitorConstraint = new Layout.MonitorConstraint({ work_area: false });
@@ -70,7 +70,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
             this.set_height(global.stage.height);
 
             // Init toolbar
-            this._initToolbarButtons(scale);
+            this._initToolbarButtons();
 
             // Sync toolbar visual state
             this._setTool(this._currentTool);
@@ -329,7 +329,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     let color = this._color;
                     let thickness = this._thickness;
                     for (let path of this._paths) {
-                        this._drawPath(cr, path, scale);
+                        this._drawPath(cr, path);
                     }
                     // Shape preview during drawing
                     if (this._drawing && this._shapeStart && this._shapeCurrent && ['rect', 'ellipse', 'arrow', 'blur'].includes(this._currentTool)) {
@@ -340,7 +340,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                                 end: this._shapeCurrent,
                                 color: this._color,
                                 thickness: this._thickness
-                            }, scale);
+                            });
                         } else {
                             // Specific preview for pixelization (blue zone)
                             let x = Math.min(this._shapeStart[0], this._shapeCurrent[0]);
@@ -364,16 +364,16 @@ if (typeof ScreenshotEditDialog !== 'function') {
             });
         }
         // === TOOLBAR: CREATION, STATE, TOOLTIP, BUTTONS ===
-        _initToolbarButtons(scale) {
+        _initToolbarButtons() {
             this._toolbar = new St.BoxLayout({
                 vertical: false,
                 style_class: 'edit-toolbar',
                 x_align: St.Align.START,
                 y_align: St.Align.START
             });
-            this._toolbar.set_width(860 * scale);
-            this._toolbar.set_height(54 * scale);
-            this._toolbar.set_position(30 * scale, 30 * scale);
+            this._toolbar.set_width(860 * this._scale);
+            this._toolbar.set_height(54 * this._scale);
+            this._toolbar.set_position(30 * this._scale, 30 * this._scale);
 
             this._toolConfigs = [
                 { name: '_brushButton', icon: 'draw-brush.svg', tool: 'brush', tooltip: _('Brush') },
@@ -386,14 +386,14 @@ if (typeof ScreenshotEditDialog !== 'function') {
             ];
             this._toolConfigs.forEach(config => {
                 const toolIconSize = 32;
-                const iconSize = (scale <= 1) ? toolIconSize : Math.floor(BTN_TOOLBAR * scale * 0.4);
+                const iconSize = (this._scale <= 1) ? toolIconSize : Math.floor(BTN_TOOLBAR * this._scale * 0.4);
                 const icon = new St.Icon({
                     gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + config.icon) }),
                     icon_size: iconSize
                 });
                 const btn = new St.Button({ style_class: 'edit-toolbar-btn' });
                 btn.set_child(icon);
-                btn.set_size(BTN_TOOLBAR * scale, BTN_TOOLBAR * scale);
+                btn.set_size(BTN_TOOLBAR * this._scale, BTN_TOOLBAR * this._scale);
                 btn.connect('clicked', () => { this._setTool(config.tool); });
                 this._toolbar.add_child(btn);
                 this[config.name] = btn;
@@ -412,14 +412,14 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 if (t === 15) clampRatio = 0.5;
                 if (t === 9) clampRatio = 0.5;
                 if (t === 5) clampRatio = 0.5;
-                const iconSize = (scale <= 1) ? thickIconSize : Math.min(Math.floor(thickIconSize * scale * clampRatio));
+                const iconSize = (this._scale <= 1) ? thickIconSize : Math.min(Math.floor(thickIconSize * this._scale * clampRatio));
                 const btn = new St.Button({ style_class: 'edit-toolbar-btn thicknesses' });
                 const icon = new St.Icon({
                     gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'thickness-symbolic.svg')}),
                     icon_size: iconSize
                 });
                 btn.set_child(icon);
-                btn.set_size(BTN_TOOLBAR * scale, BTN_TOOLBAR * scale);
+                btn.set_size(BTN_TOOLBAR * this._scale, BTN_TOOLBAR * this._scale);
                 btn.connect('clicked', () => {
                     this._setThickness(t);
                 });
@@ -440,7 +440,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
             this._colorButtons = [];
             for (let i = 0; i < this._colors.length; i++) {
                 const colorIconSize = 28;
-                const iconSize = (scale <= 1) ? colorIconSize : Math.floor(BTN_TOOLBAR * scale * 0.7);
+                const iconSize = (this._scale <= 1) ? colorIconSize : Math.floor(BTN_TOOLBAR * this._scale * 0.7);
                 const btn = new St.Button({ style_class: 'edit-toolbar-btn colors' });
                 const swatch = new St.Icon({
                     gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'color-symbolic.svg')}),
@@ -448,7 +448,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     style_class: 'colors-icon'
                 });
                 btn.set_child(swatch);
-                btn.set_size(BTN_TOOLBAR * scale, BTN_TOOLBAR * scale);
+                btn.set_size(BTN_TOOLBAR * this._scale, BTN_TOOLBAR * this._scale);
                 btn.connect('clicked', () => {
                     this._setColor(this._colors[i]);
                 });
@@ -456,29 +456,29 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 this._colorButtons.push(btn);
             }
 
-            const spacer = new St.Widget({ style_class: 'edit-toolbar-spacer', width: 24 * scale });
+            const spacer = new St.Widget({ style_class: 'edit-toolbar-spacer', width: 24 * this._scale });
             this._toolbar.add_child(spacer);
             
             // Save/cancel buttons
             const saveCancelIconSize = 30;
             const saveIcon = new St.Icon({ 
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'edit-save-symbolic.svg')}),
-                icon_size: (scale <= 1) ? saveCancelIconSize : Math.floor(BTN_TOOLBAR * scale * 0.4)
+                icon_size: (this._scale <= 1) ? saveCancelIconSize : Math.floor(BTN_TOOLBAR * this._scale * 0.4)
             });
             this._saveButton = new St.Button({ style_class: 'edit-toolbar-btn' });
             this._saveButton.set_child(saveIcon);
-            this._saveButton.set_size(BTN_TOOLBAR * scale, BTN_TOOLBAR * scale);
+            this._saveButton.set_size(BTN_TOOLBAR * this._scale, BTN_TOOLBAR * this._scale);
             this._saveButton.connect('clicked', () => {
                 this.showSaveOptionsDialog();
             });
             this._toolbar.add_child(this._saveButton);
             const cancelIcon = new St.Icon({
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'edit-undo-symbolic.svg')}),
-                icon_size: (scale <= 1) ? saveCancelIconSize : Math.floor(BTN_TOOLBAR * scale * 0.4)
+                icon_size: (this._scale <= 1) ? saveCancelIconSize : Math.floor(BTN_TOOLBAR * this._scale * 0.4)
             });
             this._cancelDrawButton = new St.Button({ style_class: 'edit-toolbar-btn' });
             this._cancelDrawButton.set_child(cancelIcon);
-            this._cancelDrawButton.set_size(BTN_TOOLBAR * scale, BTN_TOOLBAR * scale);
+            this._cancelDrawButton.set_size(BTN_TOOLBAR * this._scale, BTN_TOOLBAR * this._scale);
             this._cancelDrawButton.connect('clicked', () => {
                 this._resetDrawing();
             });
@@ -489,19 +489,19 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 vertical: false,
                 style_class: 'edit-close-box'
             });
-            this._closeBox.set_width(BTN_CLOSE * scale);
-            this._closeBox.set_height(BTN_CLOSE * scale);
-            this._closeBox.set_position(global.stage.width - 100 * scale, 0);
+            this._closeBox.set_width(BTN_CLOSE * this._scale);
+            this._closeBox.set_height(BTN_CLOSE * this._scale);
+            this._closeBox.set_position(global.stage.width - 100 * this._scale, 0);
             const closeIconSize = 24;
             const closeIcon = new St.Icon({
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'window-close-symbolic.svg')}),
-                icon_size: (scale <= 1) ? closeIconSize : Math.floor(BTN_CLOSE * scale * 0.3)
+                icon_size: (this._scale <= 1) ? closeIconSize : Math.floor(BTN_CLOSE * this._scale * 0.3)
             });
             this._closeButton = new St.Button({
                 style_class: 'edit-close-btn'
             });
             this._closeButton.set_child(closeIcon);
-            this._closeButton.set_size(BTN_CLOSE * scale, BTN_CLOSE * scale);
+            this._closeButton.set_size(BTN_CLOSE * this._scale, BTN_CLOSE * this._scale);
             this._closeButton.connect('clicked', () => this.close());
             this._closeBox.add_child(this._closeButton);
         }
@@ -734,7 +734,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
             textEntry._canvasX = localCoords[0];
             textEntry._canvasY = localCoords[1];
             const r = this._color[0], g = this._color[1], b = this._color[2];
-            const fontSize = this._thickness * 4;
+            const fontSize = this._thickness * 5;
             textEntry.set_style(`color: rgb(${r},${g},${b}); font-size: ${fontSize}px;`);
             this._superposeBox.add_child(textEntry);
             const entryHeight = textEntry.get_height ? textEntry.get_height() : 32;
@@ -769,7 +769,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
             let x = path.position[0] + (canvasX - boxX);
             let y = path.position[1] - path.entryHeight * 0.8 + (canvasY - boxY);
             const r = path.color[0], g = path.color[1], b = path.color[2];
-            let fontSize = path.thickness * 4;
+            let fontSize = path.thickness * 5;
             textEntry.set_style(`color: rgb(${r},${g},${b}); font-size: ${fontSize}px;`);
             textEntry.set_position(x, y);
             textEntry.set_height(path.entryHeight);
@@ -785,7 +785,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
         _getTextClickArea(path) {
             const ctx = new Cairo.Context(new Cairo.ImageSurface(Cairo.Format.ARGB32, 1, 1));
             ctx.selectFontFace('System-ui', Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            ctx.setFontSize(path.thickness * 4);
+            ctx.setFontSize(path.thickness * 5);
             return {
                 x: path.position[0],
                 y: path.position[1] - path.entryHeight * 0.8,
@@ -801,7 +801,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
             for (let child of children) {
                 if (child.has_style_class_name && child.has_style_class_name('edit-text-entry')) {
                     const r = this._color[0], g = this._color[1], b = this._color[2];
-                    const newStyle = `color: rgb(${r},${g},${b}); font-size: ${child._textThickness * 4}px;`;
+                    const newStyle = `color: rgb(${r},${g},${b}); font-size: ${child._textThickness * 5}px;`;
                     if (child._textColor !== this._color || child.get_style() !== newStyle) {
                         child.set_style(newStyle);
                         child._textColor = this._color;
@@ -819,9 +819,10 @@ if (typeof ScreenshotEditDialog !== 'function') {
             let canvasLocalX = x - (canvasX - boxX);
             const ctx = new Cairo.Context(new Cairo.ImageSurface(Cairo.Format.ARGB32, 1, 1));
             ctx.selectFontFace('System-ui', Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            ctx.setFontSize(textEntry._textThickness * 4);
-            const textWidth = ctx.textExtents(textEntry.get_text()).width + 6;
-            const maxWidth = this._canvasWidth - canvasLocalX - 3;
+            ctx.setFontSize(textEntry._textThickness * 5 * this._scale);
+            const textWidth = ctx.textExtents(textEntry.get_text()).width + (14 * this._scale);
+            const maxWidth = this._canvasWidth - canvasLocalX - (3 * this._scale);
+            const minWidth = 82 * this._scale;
             if (textWidth > maxWidth) {
                 textEntry.set_text(textEntry.get_text().slice(0, -1));
             }
@@ -829,10 +830,11 @@ if (typeof ScreenshotEditDialog !== 'function') {
         }
 
         /**  Draws static text on the canvas */
-        _drawText(cr, path, scale) {
+        _drawText(cr, path, scale = null) {
             this._setupColor(cr, path.color);
             cr.selectFontFace('System-ui', Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            cr.setFontSize(path.thickness * 4 * scale);
+            const fontSize = path.thickness * 5 * this._scale;
+            cr.setFontSize(fontSize);
             let y = path.position[1];
             cr.moveTo(path.position[0], y);
             cr.showText(path.text);
@@ -849,7 +851,6 @@ if (typeof ScreenshotEditDialog !== 'function') {
          */
         _showDialogWidget({title, buttons, width = 400, height = 220}) {
             if (this._genericDialog) return;
-            const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
             this._genericDialog = new St.Widget({
                 style_class: 'edit-dialog-widget-bg',
                 reactive: true,
@@ -864,11 +865,11 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 vertical: true,
                 style_class: 'edit-dialog-widget-box'
             });
-            dialogBox.set_width(width * scale);
-            dialogBox.set_height(height * scale);
+            dialogBox.set_width(width * this._scale);
+            dialogBox.set_height(height * this._scale);
             dialogBox.set_position(
-                Math.round((global.stage.width - width * scale * 0.925) / 2),
-                Math.round((global.stage.height - height * scale) / 2)
+                Math.round((global.stage.width - width * this._scale * 0.925) / 2),
+                Math.round((global.stage.height - height * this._scale) / 2)
             );
 
             const titleLabel = new St.Label({ text: title, style_class: 'edit-dialog-widget-title' });
@@ -990,7 +991,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 cr.save();
                 cr.scale(scaleX, scaleY);
                 for (let path of this._paths) {
-                    this._drawPath(cr, path, 1, true);
+                    this._drawPath(cr, path, true);
                 }
                 cr.restore();
                 surface.flush();
@@ -1084,7 +1085,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                             cr.save();
                             cr.scale(scaleX, scaleY);
                             for (let path of this._paths) {
-                                this._drawPath(cr, path, 1, true);
+                                this._drawPath(cr, path, true);
                             }
                             cr.restore();
                             surface.flush();
@@ -1437,11 +1438,13 @@ if (typeof ScreenshotEditDialog !== 'function') {
          * @param scale Scale factor for text rendering
          * @param forSave Whether drawing is for final save (affects blur cache usage)
          */
-        _drawPath(cr, path, scale, forSave = false) {
+        _drawPath(cr, path, forSave = false) {
             if (path.type === 'brush') {
                 this._drawBrush(cr, path);
             } else if (path.type === 'text') {
-                this._drawText(cr, path, scale);
+                // For save operations, use scale 1 (real size), otherwise use this._scale (display size)
+                const textScale = forSave ? 1 : null;
+                this._drawText(cr, path, textScale);
             } else if (path.type) {
                 // Shape
                 if (path.color) {
