@@ -33,6 +33,7 @@ const Mainloop      = imports.mainloop;
 const AppletManager = imports.ui.appletManager;
 const Lang          = imports.lang;
 const UPowerGlib    = imports.gi.UPowerGlib;
+const config        = imports.misc.config;
 
 
 // For PopupMenu effects
@@ -183,12 +184,91 @@ class BlurPanels {
       this._signalManager.connect(global.settings,    "changed::panels-enabled", this._panel_changed, this);
       this._signalManager.connect(Main.layoutManager, "monitors-changed",        this._panel_changed, this);
       this._signalManager.connect(global.display,     "in-fullscreen-changed",   this._fullscreen_changed, this);
+      if (config.PACKAGE_VERSION < "5.4") {
+         this._signalManager.connect(global.window_manager, "maximize", this._on_window_event, this);
+         this._signalManager.connect(global.window_manager, "unmaximize", this._on_window_event, this);
+      } else {
+         this._signalManager.connect(global.window_manager, "size-change", this._on_window_size_change, this);
+         this._signalManager.connect(global.window_manager, "unminimize", this._on_window_event, this);
+      }
+      this._signalManager.connect(global.window_manager, "switch-workspace", this._on_workspace_switch, this);
+      this._signalManager.connect(global.window_manager, "destroy", this._on_window_destroy, this);
 
       // Get notified when we resume from sleep so we can try and fix up the blurred panels
       // There has a been a report of issues after a resume
       //this._upClient = new UPowerGlib.Client();
       //log( "Blur Cinnamon: using notify::resume" );
       //this._upClient.connect('notify::resume', Lang.bind(this, this._resumeedFromSleep));
+   }
+
+   _toggle_panels_blur(toggle) {
+      let panels = Main.getPanels();
+      let panel;
+
+      for ( let i=0 ; i < panels.length ; i++ ) {
+         panel = panels[i];
+         if (panel && panel.__blurredPanel && !panel._hidden) {
+            if (!toggle) {
+               this._disablePanelBlur(panel);
+            } else {
+               this._blurPanel(panel);
+            }
+         }
+      }
+   }
+
+   _window_is_maximized(win) {
+      return !win.minimized &&
+              win.get_window_type() !== Meta.WindowType.DESKTOP &&
+             (win.get_maximized() & Meta.MaximizeFlags.BOTH) === Meta.MaximizeFlags.BOTH;
+   }
+
+   _check_any_window_maximized() {
+      let workspace = global.screen.get_active_workspace();
+      let windows = workspace.list_windows();
+      let panels = Main.getPanels();
+      let panel;
+      let background;
+
+      for (let w of windows) {
+         if (w.is_fullscreen && w.is_fullscreen()) {
+            this._fullscreen_changed();
+            return;
+         }
+      }
+      for (let idx = 0; idx < windows.length; idx++) {
+         if (this._window_is_maximized(windows[idx])) {
+            this._toggle_panels_blur(false);
+            return;
+         }
+      }
+      // if we got here then no panel is maximized so we should reapply the blur */
+      this._toggle_panels_blur(true);
+   }
+
+   _on_window_destroy(wm, win) {
+      this._check_any_window_maximized();
+   }
+
+   _on_workspace_switch() {
+      this._check_any_window_maximized();
+   }
+
+   _on_window_size_change(wm, win, change) {
+      if (change === Meta.SizeChange.MAXIMIZE) {
+         this._toggle_panels_blur(false);
+      } else if (change === Meta.SizeChange.UNMAXIMIZE || change === Meta.SizeChange.TILE) {
+         this._check_any_window_maximized();
+      }
+   }
+
+   _on_window_event(wm, win) {
+      let meta_window = win.get_meta_window();
+      if (_window_is_maximized(meta_window)) {
+         this._toggle_panels_blur(false);
+      } else {
+         this._check_any_window_maximized();
+      }
    }
 
    //_resumeedFromSleep() {
@@ -353,7 +433,7 @@ class BlurPanels {
       Panel.Panel.prototype.disable    = this._originalPanelDisable;
    }
 
-   _unblurPanel(panel) {
+   _disablePanelBlur(panel) {
       if (panel) {
          let actor = panel.actor;
          let blurredPanel = panel.__blurredPanel
@@ -372,6 +452,16 @@ class BlurPanels {
                panel.actor.remove_child(blurredPanel.background);
                blurredPanel.background.destroy();
             }
+         }
+      }
+   }
+
+   _unblurPanel(panel) {
+      if (panel) {
+         let actor = panel.actor;
+         let blurredPanel = panel.__blurredPanel
+         if (blurredPanel) {
+            this._disablePanelBlur(panel);
             // Find the index of this panels this._blurredPanels entry then remove the entry
             for ( let i=0 ; i < this._blurredPanels.length ; i++ ) {
                if (this._blurredPanels[i].panel === panel) {
