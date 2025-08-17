@@ -312,7 +312,7 @@ class BlurPanels {
          } else {
             background = new Clutter.Actor();
          }
-         global.overlay_group.add_actor(background);
+         panel.actor.add_child(background);
          blurredPanel.background = background;
          background.set_clip( panel.actor.x, panel.actor.y, panel.actor.width, panel.actor.height );
          if (blurType === BlurType.Simple) {
@@ -369,7 +369,7 @@ class BlurPanels {
                effect = blurredPanel.background.get_effect(DESAT_EFFECT_NAME);
                if (effect)
                   blurredPanel.background.remove_effect(effect);
-               global.overlay_group.remove_actor(blurredPanel.background);
+               panel.actor.remove_child(blurredPanel.background);
                blurredPanel.background.destroy();
             }
             // Find the index of this panels this._blurredPanels entry then remove the entry
