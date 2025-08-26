@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: horizontal-osd@berk-karaal 0.0.2\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/"
-"issues\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
 "POT-Creation-Date: 2024-03-04 15:27+0100\n"
-"PO-Revision-Date: 2025-08-26 18:55+0200\n"
+"PO-Revision-Date: 2025-08-26 22:25+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -72,16 +72,18 @@ msgid "Width of OSD window"
 msgstr "Larghezza finestra OSD"
 
 #. settings-schema.json->osd-width->tooltip
-msgid "osd_width = this._popupSize * "
-msgstr "osd_width = this._popupSize * "
+#| msgid "osd_width = this._popupSize * "
+msgid "osd_width = this._popupSize * <this value>"
+msgstr "osd_width = this._popupSize * <questo valore>"
 
 #. settings-schema.json->osd-height->description
 msgid "Height of OSD window"
 msgstr "Altezza finestra OSD"
 
 #. settings-schema.json->osd-height->tooltip
-msgid "osd_height = this._popupSize * "
-msgstr "osd_height = this._popupSize * "
+#| msgid "osd_height = this._popupSize * "
+msgid "osd_height = this._popupSize * <this value>"
+msgstr "osd_height = this._popupSize * <questo valore>"
 
 #. settings-schema.json->osd-border-radius->description
 msgid "Border radius od OSD window (in pixels)"
@@ -89,8 +91,9 @@ msgstr "Raggio bordo finestra OSD (in pixel)"
 
 #. settings-schema.json->osd-border-radius->tooltip
 #. settings-schema.json->level-bar-border-radius->tooltip
-msgid "border-radius: px;"
-msgstr "border-radius: px;"
+#| msgid "border-radius: px;"
+msgid "border-radius: <this value>px;"
+msgstr "border-radius: <this value>px;"
 
 #. settings-schema.json->osd-position-x->description
 msgid "X position of OSD window relative to screen size by percentage"
@@ -117,16 +120,18 @@ msgid "Size of icon relative to OSD height by percentage"
 msgstr "Dimensione icona in percentuale rispetto all'altezza OSD"
 
 #. settings-schema.json->icon-size->tooltip
-msgid "icon_size = osd_height * ( / 100)"
-msgstr "icon_size = osd_height * ( / 100)"
+#| msgid "icon_size = osd_height * ( / 100)"
+msgid "icon_size = osd_height * (<this value> / 100)"
+msgstr "icon_size = osd_height * (<questo valore> / 100)"
 
 #. settings-schema.json->level-bar-size->description
 msgid "Size of level bar relative to OSD height by percentage"
 msgstr "Dimensione barra livello in percentuale rispetto all'altezza OSD"
 
 #. settings-schema.json->level-bar-size->tooltip
-msgid "level_bar_size = osd_height * ( / 100)"
-msgstr "level_bar_size = osd_height * ( / 100)"
+#| msgid "level_bar_size = osd_height * ( / 100)"
+msgid "level_bar_size = osd_height * (<this value> / 100)"
+msgstr "level_bar_size = osd_height * (<questo valore> / 100)"
 
 #. settings-schema.json->level-bar-border-radius->description
 msgid "Border radius of level bar (in pixels)"
@@ -141,20 +146,23 @@ msgid "Size of label relative to OSD height by percentage"
 msgstr "Dimensione etichetta in percentuale rispetto all'altezza OSD"
 
 #. settings-schema.json->label-size->tooltip
-msgid "label_size = osd_height * ( / 100)"
-msgstr "label_size = osd_height * ( / 100)"
+#| msgid "label_size = osd_height * ( / 100)"
+msgid "label_size = osd_height * (<this value> / 100)"
+msgstr "label_size = osd_height * (<questo valore> / 100)"
 
 #. settings-schema.json->label-vertical-align-correction->description
 msgid ""
-"Label can not be centered correctly for now. You can adjust or decrease top margin "
-"of label here. (value: positive or negative int)"
+"Label can not be centered correctly for now. You can adjust or decrease top "
+"margin of label here. (value: positive or negative int)"
 msgstr ""
-"L'etichetta non può essere centrata correttamente per ora. Puoi regolare o ridurre "
-"il margine superiore dell'etichetta qui. (valore: intero positivo o negativo)"
+"L'etichetta non può essere centrata correttamente per ora. Puoi regolare o "
+"ridurre il margine superiore dell'etichetta qui. (valore: intero positivo o "
+"negativo)"
 
 #. settings-schema.json->label-vertical-align-correction->tooltip
-msgid "margin-top: (calculated_value + )px"
-msgstr "margin-top: (calculated_value + )px"
+#| msgid "margin-top: (calculated_value + )px"
+msgid "margin-top: (calculated_value + <this value>)px"
+msgstr "margin-top: (calculated_value + <questo valore>)px"
 
 #. settings-schema.json->osd-window-overwrite-colors->description
 msgid "Overwrite OSD window colors"

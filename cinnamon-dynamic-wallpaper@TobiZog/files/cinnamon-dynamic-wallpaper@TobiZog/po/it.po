@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
 "POT-Creation-Date: 2024-08-08 19:35+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
@@ -38,10 +39,12 @@ msgid "Error!"
 msgstr "Errore!"
 
 #: 5.4/extension.js:126
-msgid "Cinnamon Dynamic Wallpaper got an error while running the loop script. Please create an issue on GitHub."
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
 msgstr ""
-"Cinnamon Dynamic Wallpaper ha riscontrato un errore durante l'esecuzione dello script. Per favore crea una "
-"segnalazione su GitHub."
+"Cinnamon Dynamic Wallpaper ha riscontrato un errore durante l'esecuzione "
+"dello script. Per favore crea una segnalazione su GitHub."
 
 #: 5.4/extension.js:151
 msgid "Open settings"
@@ -52,8 +55,10 @@ msgid "Cinnamon Dynamic Wallpaper"
 msgstr "Cinnamon Dynamic Wallpaper"
 
 #. metadata.json->description
-msgid "Cinnamon extension for dynamic desktop backgrounds based on time and location"
-msgstr "Estensione di Cinnamon per sfondi dinamici basati su orario e posizione"
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr ""
+"Estensione di Cinnamon per sfondi dinamici basati su orario e posizione"
 
 #: 5.4/res/preferences.glade:135
 msgid "Image Source"
@@ -64,8 +69,11 @@ msgid "Image Set"
 msgstr "Set di immagini"
 
 #: 5.4/res/preferences.glade:208
-msgid "Please install 'imagemagick' manually and reopen this configuration window"
-msgstr "Per favore installa 'imagemagick' manualmente e riapri questa finestra di configurazione"
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr ""
+"Per favore installa 'imagemagick' manualmente e riapri questa finestra di "
+"configurazione"
 
 #: 5.4/res/preferences.glade:237
 msgid "HEIC file"
@@ -176,8 +184,8 @@ msgid "Period 10"
 msgstr "Periodo 10"
 
 #: 5.4/res/preferences.glade:2462
-msgid "Location &amp; Times"
-msgstr "Posizione e orari"
+msgid "Location & Times"
+msgstr "Posizione e Orari"
 
 #: 5.4/res/preferences.glade:2481
 msgid "Scaling"
@@ -213,22 +221,27 @@ msgstr "Informazioni sul progetto"
 
 #: 5.4/res/preferences.glade:2763
 msgid ""
-"Based on a location or by user choice, this extensions calculates the periods of a day and switches the "
-"background image of your Cinnamon desktop. The extension offers as image sources a set of preconfigured "
-"wallpapers, a heic image import by the user or a custom folder with single images."
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
 msgstr ""
-"Basata sulla posizione o scelta utente, questa estensione calcola i periodi della giornata e cambia lo sfondo "
-"del desktop Cinnamon. L'estensione offre come fonte immagini un set di sfondi preconfigurati, un import HEIC "
-"utente o una cartella personalizzata con immagini singole."
+"Basata sulla posizione o scelta utente, questa estensione calcola i periodi "
+"della giornata e cambia lo sfondo del desktop Cinnamon. L'estensione offre "
+"come fonte immagini un set di sfondi preconfigurati, un import HEIC utente o "
+"una cartella personalizzata con immagini singole."
 
 #: 5.4/res/preferences.glade:2782
 msgid "Developed by TobiZog"
 msgstr "Sviluppato da TobiZog"
 
 #: 5.4/res/preferences.glade:2799
-msgid "If you need more information or want to rate the extension, you can visit the Cinnamon Spices Website."
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
 msgstr ""
-"Se necessiti di maggiori informazioni o vuoi valutare l'estensione, puoi visitare il sito Cinnamon Spices."
+"Se necessiti di maggiori informazioni o vuoi valutare l'estensione, puoi "
+"visitare il sito Cinnamon Spices."
 
 #: 5.4/res/preferences.glade:2810
 msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
@@ -239,8 +252,12 @@ msgid "Source Code"
 msgstr "Codice sorgente"
 
 #: 5.4/res/preferences.glade:2864
-msgid "This project is Open Source. You can take a look inside the whole source code of this extension on GitHub."
-msgstr "Questo progetto è Open Source. Puoi vedere tutto il codice sorgente dell'estensione su GitHub."
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr ""
+"Questo progetto è Open Source. Puoi vedere tutto il codice sorgente "
+"dell'estensione su GitHub."
 
 #: 5.4/res/preferences.glade:2875
 msgid "Source Code on GitHub"
@@ -251,9 +268,12 @@ msgid "Issues and Enhancements"
 msgstr "Segnalazioni e miglioramenti"
 
 #: 5.4/res/preferences.glade:2929
-msgid "Do you find an issue? Or want a new feature? Go to the GitHub repository and create a new issue."
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
 msgstr ""
-"Hai trovato un problema? O vuoi una nuova funzionalità? Vai nel repository GitHub e crea una nuova segnalazione."
+"Hai trovato un problema? O vuoi una nuova funzionalità? Vai nel repository "
+"GitHub e crea una nuova segnalazione."
 
 #: 5.4/res/preferences.glade:2940
 msgid "Create a new issue on GitHub"
