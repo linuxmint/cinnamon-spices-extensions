@@ -1,0 +1,251 @@
+# CINNAMON-SCREENSHOT
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.21\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-08-03 07:35+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. editOverlay.js:379
+msgid "Brush"
+msgstr "Pennello"
+
+#. editOverlay.js:380
+msgid "Eraser"
+msgstr "Gomma"
+
+#. editOverlay.js:381
+msgid "Arrow"
+msgstr "Freccia"
+
+#. editOverlay.js:382
+msgid "Rectangle"
+msgstr "Rettangolo"
+
+#. editOverlay.js:383
+msgid "Ellipse"
+msgstr "Ellisse"
+
+#. editOverlay.js:384
+msgid "Pixelization"
+msgstr "Pixellatura"
+
+#. editOverlay.js:385
+msgid "Text"
+msgstr "Testo"
+
+#. editOverlay.js:439
+msgid "Black"
+msgstr "Nero"
+
+#. editOverlay.js:439
+msgid "White"
+msgstr "Bianco"
+
+#. editOverlay.js:439
+msgid "Red"
+msgstr "Rosso"
+
+#. editOverlay.js:439
+msgid "Blue"
+msgstr "Blu"
+
+#. editOverlay.js:439
+msgid "Green"
+msgstr "Verde"
+
+#. editOverlay.js:439
+msgid "Yellow"
+msgstr "Giallo"
+
+#. editOverlay.js:557
+msgid "Thickness/size"
+msgstr "Spessore/dimensione"
+
+#. editOverlay.js:562
+msgid "Save changes to the canvas"
+msgstr "Salva le modifiche sulla tela"
+
+#. editOverlay.js:563
+msgid "Cancel all changes"
+msgstr "Annulla tutte le modifiche"
+
+#. editOverlay.js:564 overlay.js:50 overlay.js:74
+msgid "Close"
+msgstr "Chiudi"
+
+#. editOverlay.js:930
+msgid "Apply changes?"
+msgstr "Applicare le modifiche?"
+
+#. editOverlay.js:935
+msgid "Merge canvas with image"
+msgstr "Unisci la tela con l'immagine"
+
+#. editOverlay.js:939
+msgid "Save modified copy as…"
+msgstr "Salva copia modificata come…"
+
+#. editOverlay.js:943 editOverlay.js:1053 preview.js:241 preview.js:333
+msgid "Cancel"
+msgstr "Annulla"
+
+#. editOverlay.js:953
+msgid "Quit without apply changes?"
+msgstr "Uscire senza applicare le modifiche?"
+
+#. editOverlay.js:957
+msgid "Yes"
+msgstr "Sì"
+
+#. editOverlay.js:972
+msgid "No"
+msgstr "No"
+
+#. editOverlay.js:1002 editOverlay.js:1096
+msgid "Error saving"
+msgstr "Errore nel salvataggio"
+
+#. editOverlay.js:1028 preview.js:322
+msgid "Script gtk-filechooser.py not available"
+msgstr "Script gtk-filechooser.py non disponibile"
+
+#. editOverlay.js:1048 preview.js:213 preview.js:328
+msgid "Save as..."
+msgstr "Salva come..."
+
+#. editOverlay.js:1051 preview.js:331
+msgid "Images"
+msgstr "Immagini"
+
+#. editOverlay.js:1052 preview.js:332
+msgid "Save"
+msgstr "Salva"
+
+#. overlay.js:47
+msgid "Full Screen"
+msgstr "Schermo intero"
+
+#. overlay.js:48
+msgid "Active Window"
+msgstr "Finestra attiva"
+
+#. overlay.js:49 overlay.js:123
+msgid "Selection"
+msgstr "Selezione"
+
+#. overlay.js:76
+msgid "Mouse Pointer :"
+msgstr "Puntatore mouse:"
+
+#. overlay.js:125
+msgid "Timer (s) :"
+msgstr "Timer (s):"
+
+#. preview.js:190
+msgid "Edit image"
+msgstr "Modifica immagine"
+
+#. preview.js:191
+msgid "Copy to clipboard"
+msgstr "Copia negli appunti"
+
+#. preview.js:225
+msgid "Back"
+msgstr "Indietro"
+
+#. preview.js:305 preview.js:310 preview.js:315
+msgid "Invalid filename"
+msgstr "Nome file non valido"
+
+#. preview.js:305
+msgid "Filename cannot be empty."
+msgstr "Il nome file non può essere vuoto."
+
+#. preview.js:310
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
+msgstr "Il nome file contiene caratteri non consentiti: \\ / : * ? \" < > |"
+
+#. preview.js:315
+msgid "Filename must end with .png"
+msgstr "Il nome file deve terminare con .png"
+
+#. preview.js:322
+msgid "Unable to open file chooser."
+msgstr "Impossibile aprire il selettore file."
+
+#. preview.js:411
+msgid "Copy failed"
+msgstr "Copia fallita"
+
+#. preview.js:411
+msgid "Unable to copy image to clipboard."
+msgstr "Impossibile copiare l'immagine negli appunti."
+
+#. screenshot.js:69
+msgid "Cinnamon-Screenshot extension error"
+msgstr "Errore estensione Cinnamon-Screenshot"
+
+#. screenshot.js:70
+msgid ""
+"\"Gnome-screenshot\" utility is not installed. Please install it for the "
+"extension to work."
+msgstr ""
+"\"Gnome-screenshot\" non è installato. Per favore installalo per far "
+"funzionare l'estensione."
+
+#. metadata.json->name
+msgid "Cinnamon-Screenshot"
+msgstr "Cinnamon-Screenshot"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for screenshots with modern interface and advanced "
+"options."
+msgstr ""
+"Estensione di Cinnamon per screenshot con interfaccia moderna e opzioni "
+"avanzate."
+
+#. settings-schema.json->section1->description
+msgid "Keyboard shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#. settings-schema.json->hotkey->description
+msgid "Open Cinnamon-Screenshot"
+msgstr "Apri Cinnamon-Screenshot"
+
+#. settings-schema.json->fullscreenHotkey->description
+msgid "Take fullscreen screenshot"
+msgstr "Cattura screenshot a schermo intero"
+
+#. settings-schema.json->activeWindowHotkey->description
+msgid "Take active window screenshot"
+msgstr "Cattura screenshot della finestra attiva"
+
+#. settings-schema.json->selectionHotkey->description
+msgid "Take selection screenshot"
+msgstr "Cattura screenshot della selezione"
+
+#. settings-schema.json->section2->description
+msgid "Interface settings"
+msgstr "Impostazioni interfaccia"
+
+#. settings-schema.json->mousePointerVisible->description
+msgid "Include mouse pointer in screenshots"
+msgstr "Includi puntatore del mouse negli screenshot"
+
+#. settings-schema.json->enableTransitions->description
+msgid "Enable animated transitions for edit mode"
+msgstr "Abilita transizioni animate per la modalità modifica"

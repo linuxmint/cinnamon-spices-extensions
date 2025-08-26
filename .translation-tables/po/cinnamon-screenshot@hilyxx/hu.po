@@ -1,0 +1,251 @@
+# CINNAMON-SCREENSHOT
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.21\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-08-03 07:35+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. editOverlay.js:379
+msgid "Brush"
+msgstr "Ecset"
+
+#. editOverlay.js:380
+msgid "Eraser"
+msgstr "Radír"
+
+#. editOverlay.js:381
+msgid "Arrow"
+msgstr "Nyíl"
+
+#. editOverlay.js:382
+msgid "Rectangle"
+msgstr "Négyszög"
+
+#. editOverlay.js:383
+msgid "Ellipse"
+msgstr "Elipszis"
+
+#. editOverlay.js:384
+msgid "Pixelization"
+msgstr "Pixelesítés"
+
+#. editOverlay.js:385
+msgid "Text"
+msgstr "Szöveg"
+
+#. editOverlay.js:439
+msgid "Black"
+msgstr "Fekete"
+
+#. editOverlay.js:439
+msgid "White"
+msgstr "Fehér"
+
+#. editOverlay.js:439
+msgid "Red"
+msgstr "Piros"
+
+#. editOverlay.js:439
+msgid "Blue"
+msgstr "Kék"
+
+#. editOverlay.js:439
+msgid "Green"
+msgstr "Zöld"
+
+#. editOverlay.js:439
+msgid "Yellow"
+msgstr "Sárga"
+
+#. editOverlay.js:557
+msgid "Thickness/size"
+msgstr "Vastagság/méret"
+
+#. editOverlay.js:562
+msgid "Save changes to the canvas"
+msgstr "Változtatások mentése a vászonra"
+
+#. editOverlay.js:563
+msgid "Cancel all changes"
+msgstr "Összes módosítás visszavonása"
+
+#. editOverlay.js:564 overlay.js:50 overlay.js:74
+msgid "Close"
+msgstr "Bezár"
+
+#. editOverlay.js:930
+msgid "Apply changes?"
+msgstr "Alkalmazza a módosításokat?"
+
+#. editOverlay.js:935
+msgid "Merge canvas with image"
+msgstr "Vászon egyesítése képpel"
+
+#. editOverlay.js:939
+msgid "Save modified copy as…"
+msgstr "Módosított másolat mentése más néven…"
+
+#. editOverlay.js:943 editOverlay.js:1053 preview.js:241 preview.js:333
+msgid "Cancel"
+msgstr "Mégse"
+
+#. editOverlay.js:953
+msgid "Quit without apply changes?"
+msgstr "Kilépés a változtatások alkalmazása nélkül?"
+
+#. editOverlay.js:957
+msgid "Yes"
+msgstr "Igen"
+
+#. editOverlay.js:972
+msgid "No"
+msgstr "Nem"
+
+#. editOverlay.js:1002 editOverlay.js:1096
+msgid "Error saving"
+msgstr "Hiba a mentés során"
+
+#. editOverlay.js:1028 preview.js:322
+msgid "Script gtk-filechooser.py not available"
+msgstr "A gtk-filechooser.py szkript nem érhető el"
+
+#. editOverlay.js:1048 preview.js:213 preview.js:328
+msgid "Save as..."
+msgstr "Mentés másként..."
+
+#. editOverlay.js:1051 preview.js:331
+msgid "Images"
+msgstr "Képek"
+
+#. editOverlay.js:1052 preview.js:332
+msgid "Save"
+msgstr "Mentés"
+
+#. overlay.js:47
+msgid "Full Screen"
+msgstr "Teljes képernyő"
+
+#. overlay.js:48
+msgid "Active Window"
+msgstr "Aktív ablak"
+
+#. overlay.js:49 overlay.js:123
+msgid "Selection"
+msgstr "Kiválasztás"
+
+#. overlay.js:76
+msgid "Mouse Pointer :"
+msgstr "Egérmutató :"
+
+#. overlay.js:125
+msgid "Timer (s) :"
+msgstr "Időzítő (mp) :"
+
+#. preview.js:190
+msgid "Edit image"
+msgstr "Kép szerkesztése"
+
+#. preview.js:191
+msgid "Copy to clipboard"
+msgstr "Másolás a vágólapra"
+
+#. preview.js:225
+msgid "Back"
+msgstr "Vissza"
+
+#. preview.js:305 preview.js:310 preview.js:315
+msgid "Invalid filename"
+msgstr "Érvénytelen fájlnév"
+
+#. preview.js:305
+msgid "Filename cannot be empty."
+msgstr "A fájlnév nem lehet üres."
+
+#. preview.js:310
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
+msgstr "A fájlnév tiltott karaktereket tartalmaz: \\ / : * ? \" < > |"
+
+#. preview.js:315
+msgid "Filename must end with .png"
+msgstr "A fájlnévnek .png kiterjesztésűnek kell lennie"
+
+#. preview.js:322
+msgid "Unable to open file chooser."
+msgstr "Nem sikerült megnyitni a fájlválasztót."
+
+#. preview.js:411
+msgid "Copy failed"
+msgstr "Másolás sikertelen"
+
+#. preview.js:411
+msgid "Unable to copy image to clipboard."
+msgstr "Nem sikerült a képet a vágólapra másolni."
+
+#. screenshot.js:69
+msgid "Cinnamon-Screenshot extension error"
+msgstr "Cinnamon-Képernyőkép bővítményhiba"
+
+#. screenshot.js:70
+msgid ""
+"\"Gnome-screenshot\" utility is not installed. Please install it for the "
+"extension to work."
+msgstr ""
+"A „Gnome-képernyőkép” segédprogram nincs telepítve. Kérjük, telepítse a "
+"bővítmény működéséhez."
+
+#. metadata.json->name
+msgid "Cinnamon-Screenshot"
+msgstr "Cinnamon-Képernyőkép"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for screenshots with modern interface and advanced "
+"options."
+msgstr ""
+"Cinnamon bővítmény képernyőképekhez modern felülettel és fejlett "
+"beállításokkal."
+
+#. settings-schema.json->section1->description
+msgid "Keyboard shortcuts"
+msgstr "Billentyűparancsok"
+
+#. settings-schema.json->hotkey->description
+msgid "Open Cinnamon-Screenshot"
+msgstr "Cinnamon-Képernyőkép megnyitása"
+
+#. settings-schema.json->fullscreenHotkey->description
+msgid "Take fullscreen screenshot"
+msgstr "Teljes képernyős képernyőkép készítése"
+
+#. settings-schema.json->activeWindowHotkey->description
+msgid "Take active window screenshot"
+msgstr "Aktív ablak képernyőképének készítése"
+
+#. settings-schema.json->selectionHotkey->description
+msgid "Take selection screenshot"
+msgstr "Kijelölés képernyőképének készítése"
+
+#. settings-schema.json->section2->description
+msgid "Interface settings"
+msgstr "Felület beállításai"
+
+#. settings-schema.json->mousePointerVisible->description
+msgid "Include mouse pointer in screenshots"
+msgstr "Egérmutató beillesztése a képernyőképekbe"
+
+#. settings-schema.json->enableTransitions->description
+msgid "Enable animated transitions for edit mode"
+msgstr "Animált átmenetek engedélyezése szerkesztési módban"
