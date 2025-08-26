@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.21\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
 "POT-Creation-Date: 2025-08-03 07:35+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
@@ -174,7 +175,7 @@ msgid "Filename cannot be empty."
 msgstr "Il nome file non può essere vuoto."
 
 #. preview.js:310
-msgid "Filename contains forbidden characters: \\ / : * ? \" &lt; &gt; |"
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "Il nome file contiene caratteri non consentiti: \\ / : * ? \" < > |"
 
 #. preview.js:315
@@ -198,16 +199,24 @@ msgid "Cinnamon-Screenshot extension error"
 msgstr "Errore estensione Cinnamon-Screenshot"
 
 #. screenshot.js:70
-msgid "\"Gnome-screenshot\" utility is not installed. Please install it for the extension to work."
-msgstr "\"Gnome-screenshot\" non è installato. Per favore installalo per far funzionare l'estensione."
+msgid ""
+"\"Gnome-screenshot\" utility is not installed. Please install it for the "
+"extension to work."
+msgstr ""
+"\"Gnome-screenshot\" non è installato. Per favore installalo per far "
+"funzionare l'estensione."
 
 #. metadata.json->name
 msgid "Cinnamon-Screenshot"
 msgstr "Cinnamon-Screenshot"
 
 #. metadata.json->description
-msgid "Cinnamon extension for screenshots with modern interface and advanced options."
-msgstr "Estensione di Cinnamon per screenshot con interfaccia moderna e opzioni avanzate."
+msgid ""
+"Cinnamon extension for screenshots with modern interface and advanced "
+"options."
+msgstr ""
+"Estensione di Cinnamon per screenshot con interfaccia moderna e opzioni "
+"avanzate."
 
 #. settings-schema.json->section1->description
 msgid "Keyboard shortcuts"
