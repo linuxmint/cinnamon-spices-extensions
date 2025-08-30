@@ -161,7 +161,7 @@ msgstr "Nucleare"
 #. 6.2->settings-schema.json->unminimize-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
-msgstr "Fuoco"
+msgstr "Messa a fuoco"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
