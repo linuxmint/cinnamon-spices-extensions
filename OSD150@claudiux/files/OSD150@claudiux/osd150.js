@@ -10,7 +10,8 @@ const BarLevel = imports.ui.barLevel;
 const Layout = imports.ui.layout;
 const Main = imports.ui.main;
 
-const LEVEL_ANIMATION_TIME = 100;
+//~ const LEVEL_ANIMATION_TIME = 100;
+const LEVEL_ANIMATION_TIME = 10;
 const FADE_TIME = 100;
 const HIDE_TIMEOUT = 1500;
 
