@@ -3,6 +3,7 @@ const ModalDialog = imports.ui.modalDialog;
 const { St, Clutter, Gio, GLib, GdkPixbuf } = imports.gi;
 const Main = imports.ui.main;
 const GObject = imports.gi.GObject;
+const Layout = imports.ui.layout;
 
 const { _ } = require('./translation');
 const { ScreenshotEditDialog } = require('./editOverlay');
@@ -46,9 +47,6 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             const maxW = 380 * scale;
             const maxH = 220 * scale;
             const entryWidth = modalWidth - 10 * scale; // visual margin
-
-            this.set_width(modalWidth);
-            this.set_height(modalHeight);
 
             // Main layout
             const previewMainBox = new St.BoxLayout({ vertical: true, style_class: 'preview-content' });
@@ -143,7 +141,7 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
                 text: '',
                 visible: false
             });
-            global.stage.add_child(this._tooltip);
+            this.add_child(this._tooltip);
             this._tooltipTimeoutId = null;
 
             const attachTooltip = (btn, text) => {

@@ -28,11 +28,6 @@ const MOSAIC_INTENSITY_MIN = 0.15;         // Minimum mosaic effect
 const MOSAIC_INTENSITY_RANGE = 0.25;       // Mosaic intensity range
 const MOSAIC_BLEND_FACTOR = 0.8;           // Color preservation factor
 
-function getPicturesDir() {
-    return GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
-        || GLib.get_home_dir() + '/Pictures';
-}
-
 // === MAIN EDIT DIALOG CLASS: INITIALIZATION & UI SETUP ===
 var ScreenshotEditDialog;
 if (typeof ScreenshotEditDialog !== 'function') {
@@ -43,8 +38,11 @@ if (typeof ScreenshotEditDialog !== 'function') {
             super._init({ styleClass: 'edit-modal', destroyOnClose: true, cinnamonReactive: false });
             this._scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
 
-            // Override the monitor constraint to use full screen instead of work area
-            this._monitorConstraint = new Layout.MonitorConstraint({ work_area: false });
+            this._monitor = global.display.get_monitor_geometry(global.display.get_primary_monitor());
+            this._monitorConstraint = new Layout.MonitorConstraint({
+                primary: true,
+                work_area: false
+            });
 
             this._filepath = filepath;
             this._onClose = onClose;
@@ -65,10 +63,6 @@ if (typeof ScreenshotEditDialog !== 'function') {
             // Transition manager
             this._transitionManager = getTransitionManager();
             
-            // Modal size
-            this.set_width(global.stage.width);
-            this.set_height(global.stage.height);
-
             // Init toolbar
             this._initToolbarButtons();
 
@@ -81,8 +75,8 @@ if (typeof ScreenshotEditDialog !== 'function') {
             this._updateActionBtnStates();
 
             // Widgets: dynamic container size based on screen
-            const boxW = Math.round(global.stage.width * 0.8);
-            const boxH = Math.round(global.stage.height * 0.8);
+            const boxW = Math.round(this._monitor.width * 0.8);
+            const boxH = Math.round(this._monitor.height * 0.8);
             this._superposeBox = new St.Widget({
                 style_class: 'edit-superpose-box',
                 width: boxW,
@@ -90,13 +84,13 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 layout_manager: new Clutter.BinLayout()
             });
             this._superposeBox.set_position(
-                Math.round((global.stage.width - boxW) / 2),
-                Math.round((global.stage.height - boxH) / 2)
+                Math.round((this._monitor.width - boxW) / 2),
+                Math.round((this._monitor.height - boxH) / 2)
             );
 
             this._mainOverlay = new St.Widget({
-                width: global.stage.width,
-                height: global.stage.height,
+                width: this._monitor.width,
+                height: this._monitor.height,
                 layout_manager: new Clutter.BinLayout()
             });
             this._mainOverlay.add_child(this._toolbar);
@@ -109,7 +103,8 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 text: '',
                 visible: false
             });
-            global.stage.add_child(this._tooltip);
+            this.add_child(this._tooltip);
+            this.set_child_above_sibling(this._tooltip, null);
             this._tooltipTimeoutId = null;
 
             // === IMAGE LOADING & CANVAS SETUP ===
@@ -171,8 +166,8 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 this._superposeBox.set_width(boxW);
                 this._superposeBox.set_height(boxH);
                 this._superposeBox.set_position(
-                    Math.round((global.stage.width - boxW) / 2),
-                    Math.round((global.stage.height - boxH) / 2)
+                    Math.round((this._monitor.width - boxW) / 2),
+                    Math.round((this._monitor.height - boxH) / 2)
                 );
 
                 // Drawing data (always reset for each overlay)
@@ -186,13 +181,24 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     return GLib.SOURCE_REMOVE;
                 });
 
-                // === INTERACTIONS: Drawing event handling ===
-                // Manages mouse interactions for all drawing tools
-                const getLocalCoords = (event) => {
-                    const [x, y] = event.get_coords();
-                    const [actorX, actorY] = this._drawingActor.get_transformed_position();
-                    return [x - actorX, y - actorY];
-                };
+            // === KEYBOARD EVENT HANDLING ===
+            // Handle ESC key to close the edit dialog
+            this.connect('key-press-event', (actor, event) => {
+                const keySymbol = event.get_key_symbol();
+                if (keySymbol === Clutter.KEY_Escape) {
+                    this.close();
+                    return Clutter.EVENT_STOP;
+                }
+                return Clutter.EVENT_PROPAGATE;
+            });
+
+            // === INTERACTIONS: Drawing event handling ===
+            // Manages mouse interactions for all drawing tools
+            const getLocalCoords = (event) => {
+                const [x, y] = event.get_coords();
+                const [actorX, actorY] = this._drawingActor.get_transformed_position();
+                return [x - actorX, y - actorY];
+            };
 
                 const startShapeDrawing = (localCoords) => {
                     this._drawing = true;
@@ -491,7 +497,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
             });
             this._closeBox.set_width(BTN_CLOSE * this._scale);
             this._closeBox.set_height(BTN_CLOSE * this._scale);
-            this._closeBox.set_position(global.stage.width - 100 * this._scale, 0);
+            this._closeBox.set_position(this._monitor.width - 100 * this._scale, 0);
             const closeIconSize = 24;
             const closeIcon = new St.Icon({
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'window-close-symbolic.svg')}),
@@ -858,7 +864,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 y_expand: true,
                 layout_manager: new Clutter.BinLayout()
             });
-            this._genericDialog.set_size(global.stage.width, global.stage.height);
+            this._genericDialog.set_size(this._monitor.width, this._monitor.height);
             this._genericDialog.set_position(0, 0);
 
             const dialogBox = new St.BoxLayout({
@@ -868,8 +874,8 @@ if (typeof ScreenshotEditDialog !== 'function') {
             dialogBox.set_width(width * this._scale);
             dialogBox.set_height(height * this._scale);
             dialogBox.set_position(
-                Math.round((global.stage.width - width * this._scale * 0.925) / 2),
-                Math.round((global.stage.height - height * this._scale) / 2)
+                Math.round((this._monitor.width - width * this._scale * 0.925) / 2),
+                Math.round((this._monitor.height - height * this._scale) / 2)
             );
 
             const titleLabel = new St.Label({ text: title, style_class: 'edit-dialog-widget-title' });
@@ -890,7 +896,8 @@ if (typeof ScreenshotEditDialog !== 'function') {
             }
             dialogBox.add_child(buttonBox);
             this._genericDialog.add_child(dialogBox);
-            global.stage.add_child(this._genericDialog);
+            this.add_child(this._genericDialog);
+            this.set_child_above_sibling(this._genericDialog, null);
         }
 
         showSaveOptionsDialog() {
@@ -1015,7 +1022,8 @@ if (typeof ScreenshotEditDialog !== 'function') {
         }
 
         _saveAsCopy() {
-            const picturesDir = getPicturesDir();
+            const picturesDir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
+                || GLib.get_home_dir() + '/Pictures';
             let currentState = this._getCurrentState();
             let filepath = this._filepath;
             let onClose = this._onClose;
