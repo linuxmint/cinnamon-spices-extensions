@@ -4,6 +4,7 @@ const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
+const Layout = imports.ui.layout;
 const { _ } = require('./translation');
 
 const Overlay = { showOverlay };
@@ -183,8 +184,9 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
         }
     }
 
-    dialog.connect('key-press-event', (event) => {
-        if (event.get_key_symbol() === Clutter.KEY_Escape) {
+    dialog.connect('key-press-event', (actor, event) => {
+        const keySymbol = event.get_key_symbol();
+        if (keySymbol === Clutter.KEY_Escape) {
             dialog.close();
             return Clutter.EVENT_STOP;
         }
