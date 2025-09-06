@@ -1,0 +1,11 @@
+{
+  "uuid": "csspanels@dr.drummie",
+  "name": "CSS Panels",
+  "description": "Dynamic control of panel and popups transparency and blur effects - based on BlurCinnamon@klangman",
+  "version": "1.8.8",
+  "author": "Kivi",
+  "cinnamon-version": ["6.0", "6.2", "6.4"],
+  "multiversion": true,
+  "last-edited": "2025-08-31",
+  "max-instances": 1
+}
