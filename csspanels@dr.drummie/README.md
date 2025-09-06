@@ -106,7 +106,8 @@ This extension is licensed under the GPL-3.0 License.
 
 ## Credits
 
-Based on BlurCinnamon@klangman. Developed by Kivi.
+- Based on BlurCinnamon@klangman.
+- Icon downloaded from <a href="https://www.flaticon.com/free-icons/painter" title="painter icons">Painter icons created by Hexagon075 - Flaticon</a>
 
 ---
 
