@@ -1,0 +1,329 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.3.3\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minuti"
+
+msgid "10 seconds"
+msgstr "10 secondi"
+
+msgid "15 seconds"
+msgstr "15 secondi"
+
+msgid "1 minute"
+msgstr "1 minuto"
+
+msgid "2 minutes"
+msgstr "2 minuti"
+
+msgid "30 seconds"
+msgstr "30 secondi"
+
+msgid "5 minutes"
+msgstr "5 minuti"
+
+msgid "5 seconds"
+msgstr "5 secondi"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Aggiunge un filtro colorato all’effetto sfocatura. Usa colori semi-trasparenti "
+"(es. azzurro per tonalità fredde o arancione caldo per un’atmosfera accogliente) "
+"per personalizzare l’aspetto vetroso: opacità più elevata per una tinta più "
+"intensa, più bassa per un effetto più sottile."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Regola la vivacità dei colori nello sfondo sfocato. Valori superiori a 1,0 "
+"rendono i colori più vividi e brillanti (per un effetto vetroso più luminoso "
+"e dinamico), mentre valori inferiori a 1,0 producono toni smorzati e "
+"desaturati per un aspetto più morbido ed elegante."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Regola la trasparenza dei menu a comparsa. Crea un aspetto moderno di vetro "
+"smerigliato quando abbinato agli effetti di sfocatura."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Regola la trasparenza del pannello principale (barra delle applicazioni). "
+"Valori più bassi creano un effetto più vetroso. Fai clic sull’icona nella "
+"barra di sistema per scorrere rapidamente i preset."
+
+msgid "Advanced Settings"
+msgstr "Impostazioni avanzate"
+
+msgid "Advanced Tools"
+msgstr "Strumenti avanzati"
+
+msgid "Apply border radius to main panel"
+msgstr "Applica raggio di arrotondamento al pannello principale"
+
+msgid "Apply selected template"
+msgstr "Applica modello selezionato"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Applica il modello di sfocatura selezionato a tutti i controlli dell’effetto "
+"sfocatura. Aggiorna raggio, saturazione, contrasto, luminosità, sfondo, "
+"colore e spessore del bordo, transizione e opacità per corrispondere al "
+"modello scelto."
+
+msgid "Auto-detect theme border radius"
+msgstr "Rileva automaticamente il raggio di arrotondamento del tema"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Rileva automaticamente e applica il raggio di arrotondamento del tema corrente "
+"per un aspetto uniforme. Se abilitato, l’estensione analizza il tuo tema per "
+"adeguarsi al suo design."
+
+msgid "Background color/tint"
+msgstr "Colore/tonalità di sfondo"
+
+msgid "Basic Transparency Controls"
+msgstr "Controlli base di trasparenza"
+
+msgid "Blur Effects"
+msgstr "Effetti di sfocatura"
+
+msgid "Blur opacity"
+msgstr "Opacità sfocatura"
+
+msgid "Blur radius"
+msgstr "Raggio sfocatura"
+
+msgid "Blur Template"
+msgstr "Modello di sfocatura"
+
+msgid "Blur transition duration"
+msgstr "Durata transizione sfocatura"
+
+msgid "Border color"
+msgstr "Colore del bordo"
+
+msgid "Border Radius"
+msgstr "Raggio del bordo"
+
+msgid "Border width"
+msgstr "Spessore del bordo"
+
+msgid "Brightness multiplier"
+msgstr "Moltiplicatore di luminosità"
+
+msgid "Choose override panel color"
+msgstr "Scegli colore sostitutivo del pannello"
+
+msgid "Choose override popup color"
+msgstr "Scegli colore sostitutivo dei popup"
+
+msgid "Contrast multiplier"
+msgstr "Moltiplicatore di contrasto"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Controlla la differenza tra aree chiare e scure nella sfocatura. Valori più "
+"alti (oltre 1,0) aumentano nitidezza e profondità per un look più definito e "
+"moderno, mentre valori più bassi ammorbidiscono l’effetto per un aspetto più "
+"omogeneo e meno aggressivo."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Controlla l’intensità dell’effetto sfocatura. Valori più elevati creano un "
+"effetto vetroso più marcato e diffuso (es. oltre 30 px per un effetto nebbioso), "
+"mentre valori più bassi (1–10 px) producono sfocature più nette e discrete per "
+"un aspetto più pulito."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Controlla la trasparenza dell’intero livello di sfocatura. Valori più elevati "
+"(0,8–1,0) rendono l’effetto vetroso più evidente e solido, mentre valori più "
+"bassi (0,1–0,5) creano un aspetto più leggero ed etereo che si integra "
+"perfettamente con lo sfondo."
+
+msgid "Custom Blur Settings"
+msgstr "Impostazioni sfocatura personalizzate"
+
+msgid "Debugging"
+msgstr "Debugging"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Definisce lo spessore del bordo intorno agli elementi sfocati. Bordi più spessi "
+"(3–5 px) creano cornici più evidenti per enfatizzare, mentre bordi più sottili "
+"(0–1 px) o assenti (0 px) offrono un look vetroso uniforme e integrato."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Mostra l’icona di controllo nella barra di sistema per un accesso rapido alle "
+"impostazioni di trasparenza. Fai clic per aprire le preferenze dell’estensione."
+
+msgid "Enable debug logging"
+msgstr "Abilita log di debug"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Abilita il logging dettagliato per la risoluzione dei problemi dell’estensione. "
+"Controlla l’output del terminale con ‘journalctl -f’ per informazioni dettagliate."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Abilita angoli arrotondati sulla barra delle applicazioni per un look moderno. "
+"Potrebbe apparire strano ai bordi dello schermo a seconda del tema."
+
+msgid "Hide label"
+msgstr "Nascondi etichetta"
+
+msgid "Hide system tray indicator"
+msgstr "Nascondi indicatore nella barra di sistema"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Nasconde l’icona di controllo della trasparenza dalla barra di sistema. Puoi "
+"ancora accedere alle impostazioni in Cinnamon Settings > Extensions."
+
+msgid "Menu Opacity"
+msgstr "Opacità del menu"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Modifica la luminosità complessiva del livello di sfocatura. Aumenta oltre 1,0 "
+"per un effetto vetroso più luminoso e brillante (ideale per temi chiari), o "
+"riduci sotto 1,0 per toni più scuri e intensi che si fondono meglio con "
+"sfondi scuri."
+
+msgid "Override panel color"
+msgstr "Sostituisci colore del pannello"
+
+msgid "Override popup color"
+msgstr "Sostituisci colore dei popup"
+
+msgid "Panel Appearance"
+msgstr "Aspetto del pannello"
+
+msgid "Panel Opacity"
+msgstr "Opacità del pannello"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Angoli arrotondati per pannelli e menu. Utilizzati come ripiego quando il "
+"rilevamento automatico fallisce o rileva valori incoerenti. Imposta a 0 per "
+"un aspetto completamente piatto."
+
+msgid "Saturation multiplier"
+msgstr "Moltiplicatore di saturazione"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Seleziona un modello di sfocatura da applicare con il pulsante ‘Applica "
+"modello selezionato’. Ogni modello definisce valori predefiniti per tutti i "
+"controlli dell’effetto sfocatura."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Seleziona il colore di sfondo per i popup quando ‘Sostituisci colore dei popup’ "
+"è abilitato. Supporta la trasparenza (canale alpha)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Seleziona il colore di sfondo per il pannello quando ‘Sostituisci colore del "
+"pannello’ è abilitato. Supporta la trasparenza (canale alpha)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Imposta il colore del sottile bordo che incornicia gli elementi sfocati. "
+"Scegli colori chiari o bianchi per un bordo pulito e moderno, o toni più "
+"scuri per un contrasto migliore – regola l’opacità per bordi più morbidi o "
+"più definiti."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Imposta la velocità delle animazioni dell’effetto sfocatura quando le "
+"impostazioni cambiano. Durate più brevi (0,1–0,5 s) creano transizioni rapide e "
+"reattive per aggiustamenti veloci, mentre durate più lunghe (1–2 s) offrono "
+"dissolvenze fluide ed eleganti per un effetto raffinato."
+
+msgid "Show percentage"
+msgstr "Mostra percentuale"
+
+msgid "Show percentage and time remaining"
+msgstr "Mostra percentuale e tempo rimanente"
+
+msgid "Show system tray indicator"
+msgstr "Mostra indicatore nella barra di sistema"
+
+msgid "Show time remaining"
+msgstr "Mostra tempo rimanente"
+
+msgid "System Tray Indicator"
+msgstr "Indicatore area di notifica"

@@ -1,0 +1,382 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.3.3\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minutter"
+
+msgid "10 seconds"
+msgstr "10 sekunder"
+
+msgid "15 seconds"
+msgstr "15 sekunder"
+
+msgid "1 minute"
+msgstr "1 minut"
+
+msgid "2 minutes"
+msgstr "2 minutter"
+
+msgid "30 seconds"
+msgstr "30 sekunder"
+
+msgid "5 minutes"
+msgstr "5 minutter"
+
+msgid "5 seconds"
+msgstr "5 sekunder"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Tilføjer et farvet overlejring til sløringseffekten. Brug semitransparente "
+"farver (f.eks. lys blå for kølige toner eller varm orange for en hyggelig "
+"fornemmelse) for at tilpasse glaseffekten – højere opacitet giver mere "
+"markant farve, lavere giver en mere diskret forstærkning."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Justerer farveintensiteten i den slørede baggrund. Værdier over 1,0 gør "
+"farverne mere levende og livlige (til en lysere, mere energisk glaseffekt), "
+"mens værdier under 1,0 skaber afdæmpede, desaturerede toner for et blødere, "
+"mere elegant udseende."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Justerer gennemsigtigheden af pop op-menuer. Skaber et moderne frostet "
+"glas-udseende i kombination med sløringseffekter."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Juster gennemsigtigheden af hovedpanelet (processlinjen). Lavere værdier "
+"skaber en mere glaseffekt. Klik på ikonet i systembakken for at skifte "
+"mellem hurtige forudindstillinger."
+
+msgid "Advanced Settings"
+msgstr "Avancerede indstillinger"
+
+msgid "Advanced Tools"
+msgstr "Avancerede værktøjer"
+
+msgid "Apply border radius to main panel"
+msgstr "Anvend hjørneafrunde på hovedpanelet"
+
+msgid "Apply selected template"
+msgstr "Anvend valgt skabelon"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Anvend den valgte sløringsskabelon på alle sløringseffekt-indstillinger. "
+"Dette opdaterer radius, mætning, kontrast, lysstyrke, baggrund, kantfarve, "
+"kantbredde, overgang og opacitet, så de matcher den valgte skabelon."
+
+msgid "Auto-detect theme border radius"
+msgstr "Automatisk registrering af temaets hjørneafrunde"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Registrerer og anvender automatisk temaets hjørneafrunde for konsistent "
+"udseende. Når det er aktiveret, analyserer udvidelsen dit tema for at "
+"matche dets design."
+
+msgid "Background color/tint"
+msgstr "Baggrundsfarve / toner"
+
+msgid "Basic Transparency Controls"
+msgstr "Grundlæggende gennemsigtighedskontroller"
+
+msgid "Blur Effects"
+msgstr "Sløringseffekter"
+
+msgid "Blur opacity"
+msgstr "Sløringens opacitet"
+
+msgid "Blur radius"
+msgstr "Sløringsradius"
+
+msgid "Blur Template"
+msgstr "Sløringsskabelon"
+
+msgid "Blur transition duration"
+msgstr "Varighed af sløringsovergang"
+
+msgid "Border color"
+msgstr "Kantfarve"
+
+msgid "Border Radius"
+msgstr "Hjørneafrunde"
+
+msgid "Border width"
+msgstr "Kantbredde"
+
+msgid "Brightness multiplier"
+msgstr "Lysstyrkefaktor"
+
+msgid "Choose override panel color"
+msgstr "Vælg overskriv panelfarve"
+
+msgid "Choose override popup color"
+msgstr "Vælg overskriv pop op-farve"
+
+msgid "Contrast multiplier"
+msgstr "Kontrastfaktor"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Styrer forskellen mellem lyse og mørke områder i sløringen. Højere værdier "
+"(over 1,0) øger skarphed og dybde for et mere defineret, moderne udseende, "
+"mens lavere værdier blødgør effekten for et glattere, mindre hårdt glaslook."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Styrer intensiteten af sløringseffekten. Højere værdier skaber en stærkere, "
+"mere diffus glaseffekt (f.eks. 30 px+ for tåget effekt), mens lavere værdier "
+"(1–10 px) giver skarpere, mere diskret sløring for et renere udseende."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Styrer gennemsigtigheden af hele sløringslaget. Højere værdier (0,8–1,0) gør "
+"glaseffekten mere markant og solid, mens lavere værdier (0,1–0,5) skaber et "
+"lettere, mere æterisk udseende, der smelter ubesværet sammen med baggrunden."
+
+msgid "Custom Blur Settings"
+msgstr "Brugerdefinerede sløringsindstillinger"
+
+msgid "Debugging"
+msgstr "Fejlfinding"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Definerer tykkelsen af kanten omkring slørede elementer. Tykkere kanter "
+"(3–5 px) skaber en mere fremtrædende ramme til fremhævelse, mens tyndere "
+"(0–1 px) eller ingen (0 px) giver et sømløst, integreret glaslook."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Vis kontrolikon i systembakken for hurtig adgang til gennemsigtigheds-"
+"indstillinger. Klik for at åbne udvidelsesindstillinger."
+
+msgid "Enable debug logging"
+msgstr "Aktiver debug-logning"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Aktiver detaljeret logning til fejlfinding af udvidelsesproblemer. Tjek "
+"terminaloutput med 'journalctl -f' for detaljerede oplysninger."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Aktiver afrundede hjørner på proceslinjen for et moderne udseende. Kan se "
+"underligt ud i skærmkanten afhængigt af dit tema."
+
+msgid "Hide label"
+msgstr "Skjul etiket"
+
+msgid "Hide system tray indicator"
+msgstr "Skjul indikator i systembakken"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Skjul gennemsigtighedskontrolikonet fra systembakken. Du kan stadig få adgang "
+"til indstillinger via Cinnamon-indstillinger > Udvidelser."
+
+msgid "Menu Opacity"
+msgstr "Menuopacitet"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Ændrer det overordnede lysniveau i sløringslaget. Øg over 1,0 for en lysere, "
+"mere oplyst glaseffekt (ideel til lyse temaer), eller sænk under 1,0 for "
+"mørkere, mere stemningsfulde toner, der blander sig bedre med mørke "
+"baggrunde."
+
+msgid "Override panel color"
+msgstr "Overskriv panelfarve"
+
+msgid "Override popup color"
+msgstr "Overskriv pop op-farve"
+
+msgid "Panel Appearance"
+msgstr "Paneludseende"
+
+msgid "Panel Opacity"
+msgstr "Panelopacitet"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Afrundede hjørner til paneler og menuer. Bruges som fallback, når automatisk "
+"registrering fejler eller finder inkonsekvente værdier. Indstil til 0 for "
+"helt fladt udseende."
+
+msgid "Saturation multiplier"
+msgstr "Mætningsfaktor"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Vælg en sløringsskabelon, der skal anvendes med knappen 'Anvend valgt "
+"skabelon'. Hver skabelon definerer forudindstillede værdier for alle "
+"sløringseffektkontroller."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Vælg baggrundsfarve for pop op-menuer, når 'Overskriv pop op-farve' er "
+"aktiveret. Understøtter gennemsigtighed (alfakanal)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Vælg baggrundsfarve til panelet, når 'Overskriv panelfarve' er aktiveret. "
+"Understøtter gennemsigtighed (alfakanal)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Indstiller farven på den subtile kant omkring slørede elementer. Vælg "
+"hvide/lyse farver for en ren, moderne kant eller mørkere toner for bedre "
+"kontrast – juster opaciteten for blødere eller mere markerede kanter."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Indstiller hastigheden på sløringseffektanimationer, når indstillinger ændres. "
+"Kortere varigheder (0,1–0,5 s) giver hurtige, responsive overgange til "
+"hurtige justeringer, mens længere (1–2 s) giver glatte, elegante "
+"overtoninger for et poleret indtryk."
+
+msgid "Show percentage"
+msgstr "Vis procent"
+
+msgid "Show percentage and time remaining"
+msgstr "Vis procent og resterende tid"
+
+msgid "Show system tray indicator"
+msgstr "Vis indikator i systembakken"
+
+msgid "Show time remaining"
+msgstr "Vis resterende tid"
+
+msgid "System Tray Indicator"
+msgstr "Indikator i systembakken"
+
+msgid "Theme Integration"
+msgstr "Temaintegration"
+
+msgid "Transparency Settings"
+msgstr "Gennemsigtighedsindstillinger"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Når aktiveret, bruges den valgte overskrivningsfarve til baggrunde i pop op-"
+"menuer i stedet for panelfarven. Kræver at 'Overskriv panelfarve' er "
+"aktiveret for fuld effekt."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Når aktiveret, bruges den valgte overskrivningsfarve til panelbaggrunden. "
+"Hvis 'Overskriv pop op-farve' er deaktiveret, bruges denne farve også til "
+"pop op-menuer."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Dynamisk styring af panel- og pop op-gennemsigtighed samt sløringseffekter – "
+"baseret på BlurCinnamon@klangman"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Anvend gennemsigtigheds- og sløringseffekter på On-Screen Display-elementer "
+"som lydstyrkeregulatorer, lysstyrkekontroller og andre overlay-elementer. "
+"Skaber et ensartet glaslook."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Anvend gennemsigtigheds- og sløringseffekter på systemmeddelelser (lydstyrke, "
+"lysstyrke osv.). Dette får meddelelser til at matche dit panels glasmorfisme-"
+"stil."
+
+msgid "Extended UI Styling"
+msgstr "Udvidet UI-styling"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "Style OSD (On-Screen Display)-elementer"
+
+msgid "Style system notifications"
+msgstr "Stil systemmeddelelser"
+
