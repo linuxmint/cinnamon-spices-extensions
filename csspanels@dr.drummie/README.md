@@ -81,7 +81,7 @@ A Cinnamon extension for dynamic control of panel and popups transparency and bl
 
 ## Compatibility
 
-- **Cinnamon Version**: 5.8, 6.0, 6.2, 6.4
+- **Cinnamon Version**: 6.0, 6.2, 6.4
 - **Linux Mint**: 21.x, 22.x
 - **Multiversion**: Yes
 
