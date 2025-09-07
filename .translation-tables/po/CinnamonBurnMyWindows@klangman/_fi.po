@@ -1,0 +1,84 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.5\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-07-06 16:15-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.2->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Disintegrate your windows with style.</b>\n"
+"Version: ext-version\n"
+"\n"
+"Ported to Cinnamon by Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
+"new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Website</a>\n"
+"\n"
+"Based on the Burn-My-Windows code by Schneegans and contributors\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
+"\n"
+"The Magic Lamp Effect is ported from code by hermes83\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Top"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Bottom"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Left"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Right"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Edge closest to mouse pointer"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->description
+msgid "Open/Close Edge"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->tooltip
+msgid ""
+"The monitor edge where a window should originate from when opening, or "
+"disappear towards when closing. This setting is not used for minimize or "
+"unminimize events"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->description
+msgid "Open/Close Edge Offset"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
+msgid ""
+"The offset from the top or left of the \"Open/Close Edge\" that the "
+"animation should use as the origin/target of the animation. This is a "
+"percentage of the monitors width/height and it does not apply to minimize/"
+"unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
+"to mouse pointer\""
+msgstr ""

@@ -1,0 +1,97 @@
+# FLIPPER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ConnerHansen, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-04-17 21:29-0400\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. 5.4->settings-schema.json->effects-page->title
+msgid "Effect Settings"
+msgstr ""
+
+#. 5.4->settings-schema.json->general-settings->title
+msgid "Flipper General Settings"
+msgstr ""
+
+#. 5.4->settings-schema.json->random-settings->title
+msgid "Effects included in the randomized set"
+msgstr ""
+
+#. 5.4->settings-schema.json->effect-selector-section->title
+msgid "Effect Selector"
+msgstr ""
+
+#. 5.4->settings-schema.json->effect-settings->title
+msgid "Effect Specific Settings"
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->description
+msgid "Workspace Transition Effect"
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->tooltip
+msgid ""
+"Select the type of workspace switch effect that will be used. The "
+"\"Randomized\" option allows you to choose which effects can be chosen at "
+"random for each workspace switch. The \"Disabled\" option will show no "
+"effect, not even the Cinnamon built in effect during a workspace switch."
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Randomized"
+msgstr ""
+
+#. 5.4->settings-schema.json->transitionEffect->options
+msgid "Disabled"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Flipper effect with the Workspace Switcher applet"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Flipper effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Flipper effect when changing focus causes a workspace switch"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Flipper effect is used to change the current "
+"workspace"
+msgstr ""
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr ""
+
+#. 5.4->settings-schema.json->includePanels->tooltip
+msgid ""
+"Exclude the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
+
+#. 5.4->settings-schema.json->effect-selector->description
+msgid "Show settings for effect:"
+msgstr ""

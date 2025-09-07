@@ -1,0 +1,301 @@
+# SMART PANEL
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: 2024-07-25 18:35+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Canvieu entre espais de treball, mostreu l'escriptori, activeu vista general "
+"o expo, ... mitjançant desplaçament, doble clic, moviments del ratolí, etc. "
+"a l'espai lliure del tauler."
+
+#. metadata.json->name
+msgid "Smart Panel"
+msgstr "Tauler intel·ligent"
+
+#. settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Opcions de desplaçament del ratolí: "
+
+#. settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Acció en desplaçar el ratolí: "
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Canviar entre espais de treball"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Ajustar la opacitat de les finestres"
+
+#. settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Mostrar/amagar l'escriptori"
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Canviar entre finestres"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->scroll-action->options
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "None"
+msgstr "Cap"
+
+#. settings-schema.json->prev-fast-scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Evitar el canvi accidental d'espai de treball o finestra en desplaçar-se "
+"ràpidament"
+
+#. settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Retard mínim entre desplaçaments:"
+
+#. settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "mil·lisegons"
+
+#. settings-schema.json->sep-scroll-action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Accions independents per desplaçar-se cap a dalt i cap a baix"
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
+
+#. settings-schema.json->scroll-action-up->description
+msgid "Action on scrolling up: "
+msgstr "Acció en desplaçar-se cap a dalt: "
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Expo"
+msgstr "Expo"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Overview"
+msgstr "Mostrar finestres obertes"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Launch App Switcher"
+msgstr "Obrir el selector d'aplicacions"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Show Desktop"
+msgstr "Mostrar escriptori"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 1st Custom Command"
+msgstr "Executar la primera ordre personalitzada"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Executar la segona ordre personalitzada"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Executar la tercera ordre personalitzada"
+
+#. settings-schema.json->scroll-action-down->description
+msgid "Action on scrolling down: "
+msgstr "Acció en desplaçar-se cap a baix: "
+
+#. settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Opcions de clic del ratolí: "
+
+#. settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Acció en fer doble clic al tauler: "
+
+#. settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Acció en fer clic del mig al tauler: "
+
+#. settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Moviments del ratolí: "
+
+#. settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Utilitzar moviments del ratolí al tauler"
+
+#. settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Arrossegant cap a la dreta: "
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Anar a l'espai de treball de l'esquerra"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Anar al primer espai de treball"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Anar a l'espai de treball de la dreta"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Anar a l'últim espai de treball"
+
+#. settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Arrossegant cap a l'esquerra "
+
+#. settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Feu clic a la vora de la finestra i arrossegueu verticalment: "
+
+#. settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Ordres personalitzades: "
+
+#. settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "Primera ordre personalitzada:"
+
+#. settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "Segona ordre personalitzada:"
+
+#. settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "Tercera ordre personalitzada:"
+
+#. settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Configuració d'Alt + Tabulador: "
+
+#. settings-schema.json->appswitcher-style->description
+msgid "App switcher style: "
+msgstr "Aparença del selector d'aplicacions: "
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Només icones"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Només miniatures"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Icones i miniatures"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Icones i previsualització de les finestres"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Previsualització de la finestra (sense icones)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Coverflow (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Línia temporal (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Predeterminat del sistema"
+
+#. settings-schema.json->appswitcher-scope->description
+msgid "Switch between windows from: "
+msgstr "Canviar entre finestres des de: "
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "L'espai de treball actual"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Tots els espais de treball"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Aplicació actual"
+
+#. settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "En polsar una tecla modificadora, canvia entre les finestres des de: "
+
+#. settings-schema.json->appswitcher-modifier->description
+msgid "Modifier key: "
+msgstr "Tecla modificadora: "
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr "Shift"
