@@ -1,0 +1,226 @@
+
+# Settings UI strings from settings-schema.json
+
+msgid "10 minutes"
+msgstr ""
+
+msgid "10 seconds"
+msgstr ""
+
+msgid "15 seconds"
+msgstr ""
+
+msgid "1 minute"
+msgstr ""
+
+msgid "2 minutes"
+msgstr ""
+
+msgid "30 seconds"
+msgstr ""
+
+msgid "5 minutes"
+msgstr ""
+
+msgid "5 seconds"
+msgstr ""
+
+msgid "Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., light blue for cool tones or warm orange for cozy feel) to customize the glass appearance - higher opacity for stronger tint, lower for subtle enhancement."
+msgstr ""
+
+msgid "Adjusts color vibrancy in the blurred background. Values above 1.0 make colors more vivid and lively (for brighter, more energetic glass effect), while below 1.0 create muted, desaturated tones for a softer, more elegant appearance."
+msgstr ""
+
+msgid "Adjust the transparency of popup menus. Creates modern frosted glass appearance when combined with blur effects."
+msgstr ""
+
+msgid "Adjust the transparency of the main panel (taskbar). Lower values create more glass-like effect. Click the system tray icon to cycle through quick presets."
+msgstr ""
+
+msgid "Advanced Settings"
+msgstr ""
+
+msgid "Advanced Tools"
+msgstr ""
+
+msgid "Apply border radius to main panel"
+msgstr ""
+
+msgid "Apply selected template"
+msgstr ""
+
+msgid "Apply the selected blur template to all blur effect controls. This will update radius, saturation, contrast, brightness, background, border color, border width, transition, and opacity to match the chosen template."
+msgstr ""
+
+msgid "Auto-detect theme border radius"
+msgstr ""
+
+msgid "Automatically detect and use border-radius from current theme for consistent appearance. When enabled, the extension analyzes your theme to match its design."
+msgstr ""
+
+msgid "Background color/tint"
+msgstr ""
+
+msgid "Basic Transparency Controls"
+msgstr ""
+
+msgid "Blur Effects"
+msgstr ""
+
+msgid "Blur opacity"
+msgstr ""
+
+msgid "Blur radius"
+msgstr ""
+
+msgid "Blur Template"
+msgstr ""
+
+msgid "Blur transition duration"
+msgstr ""
+
+msgid "Border color"
+msgstr ""
+
+msgid "Border Radius"
+msgstr ""
+
+msgid "Border width"
+msgstr ""
+
+msgid "Brightness multiplier"
+msgstr ""
+
+msgid "Choose override panel color"
+msgstr ""
+
+msgid "Choose override popup color"
+msgstr ""
+
+msgid "Contrast multiplier"
+msgstr ""
+
+msgid "Controls the difference between light and dark areas in the blur. Higher values (above 1.0) enhance sharpness and depth for a more defined, modern look, while lower values soften the effect for a smoother, less harsh glass appearance."
+msgstr ""
+
+msgid "Controls the intensity of the blur effect. Higher values create a stronger, more diffused glass-like appearance (e.g., 30px+ for foggy effect), while lower values (1-10px) produce sharper, more subtle blurring for a cleaner look."
+msgstr ""
+
+msgid "Controls the transparency of the entire blur layer. Higher values (0.8-1.0) make the glass effect more prominent and solid, while lower values (0.1-0.5) create a lighter, more ethereal appearance that blends seamlessly with the background."
+msgstr ""
+
+msgid "Custom Blur Settings"
+msgstr ""
+
+msgid "Debugging"
+msgstr ""
+
+msgid "Defines the thickness of the border around blurred elements. Thicker borders (3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or none (0px) give a seamless, integrated glass look."
+msgstr ""
+
+msgid "Display control icon in system tray for quick access to transparency settings. Click to open extension preferences."
+msgstr ""
+
+msgid "Enable debug logging"
+msgstr ""
+
+msgid "Enable detailed logging for troubleshooting extension issues. Check terminal output with 'journalctl -f' for detailed information."
+msgstr ""
+
+msgid "Enable rounded corners on taskbar for modern appearance. May look odd at screen edges depending on your theme."
+msgstr ""
+
+msgid "Hide label"
+msgstr ""
+
+msgid "Hide system tray indicator"
+msgstr ""
+
+msgid "Hide the transparency control icon from the system tray. You can still access settings through Cinnamon Settings > Extensions."
+msgstr ""
+
+msgid "Menu Opacity"
+msgstr ""
+
+msgid "Modifies the overall lightness of the blurred layer. Increase above 1.0 for a brighter, more illuminated glass effect (ideal for light themes), or decrease below 1.0 for darker, moodier tones that blend better with dark backgrounds."
+msgstr ""
+
+msgid "Override panel color"
+msgstr ""
+
+msgid "Override popup color"
+msgstr ""
+
+msgid "Panel Appearance"
+msgstr ""
+
+msgid "Panel Opacity"
+msgstr ""
+
+msgid "Rounded corners for panels and menus. Used as fallback when auto-detect fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+
+msgid "Saturation multiplier"
+msgstr ""
+
+msgid "Select a blur template to apply when using the 'Apply Selected Template' button. Each template defines preset values for all blur effect controls."
+msgstr ""
+
+msgid "Select the background color to use for popup menus when 'Override popup color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+
+msgid "Select the background color to use for the panel when 'Override panel color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+
+msgid "Sets the color of the subtle border framing the blurred elements. Choose white/light colors for a clean, modern edge, or darker tones for better contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+
+msgid "Sets the speed of blur effect animations when settings change. Shorter durations (0.1-0.5s) create snappy, responsive transitions for quick adjustments, while longer ones (1-2s) provide smooth, elegant fades for a polished feel."
+msgstr ""
+
+msgid "Show percentage"
+msgstr ""
+
+msgid "Show percentage and time remaining"
+msgstr ""
+
+msgid "Show system tray indicator"
+msgstr ""
+
+msgid "Show time remaining"
+msgstr ""
+
+msgid "System Tray Indicator"
+msgstr ""
+
+msgid "Theme Integration"
+msgstr ""
+
+msgid "Transparency Settings"
+msgstr ""
+
+msgid "When enabled, use the selected override color for popup menu backgrounds instead of the panel color. Requires 'Override panel color' to be enabled for full effect."
+msgstr ""
+
+msgid "When enabled, use the selected override color for the panel background. If 'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+
+msgid "Dynamic control of panel and popups transparency and blur effects - based on BlurCinnamon@klangman"
+msgstr ""
+
+msgid "Apply transparency and blur effects to On-Screen Display elements like volume sliders, brightness controls, and other overlay elements. Creates a consistent glass appearance."
+msgstr ""
+
+msgid "Apply transparency and blur effects to system notifications (volume, brightness, etc.). This will make notifications match your panel's glass morphism style."
+msgstr ""
+
+msgid "Extended UI Styling"
+msgstr ""
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr ""
+
+msgid "Style system notifications"
+msgstr ""
+
+

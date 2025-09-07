@@ -1,0 +1,357 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": ["transparency-page", "blur-page", "advanced-page"],
+
+    "transparency-page": {
+      "type": "page",
+      "title": "Transparency Settings",
+      "sections": ["basic-transparency", "panel-options", "theme-detection"]
+    },
+
+    "blur-page": {
+      "type": "page",
+      "title": "Blur Effects",
+      "sections": ["blur-custom"]
+    },
+
+    "advanced-page": {
+      "type": "page",
+      "title": "Advanced Settings",
+      "sections": ["advanced-tools", "extended-styling", "indicator-settings", "debugging"]
+    },
+
+    "basic-transparency": {
+      "type": "section",
+      "title": "Basic Transparency Controls",
+      "keys": [
+        "panel-opacity",
+        "menu-opacity",
+        "override-panel-color",
+        "choose-override-panel-color",
+        "override-popup-color",
+        "choose-override-popup-color"
+      ]
+    },
+
+    "panel-options": {
+      "type": "section",
+      "title": "Panel Appearance",
+      "keys": ["border-radius", "apply-panel-radius"]
+    },
+
+    "theme-detection": {
+      "type": "section",
+      "title": "Theme Integration",
+      "keys": ["auto-detect-radius"]
+    },
+
+    "blur-custom": {
+      "type": "section",
+      "title": "Custom Blur Settings",
+      "keys": [
+        "blur-radius",
+        "blur-saturate",
+        "blur-contrast",
+        "blur-brightness",
+        "blur-background",
+        "blur-border-color",
+        "blur-border-width",
+        "blur-transition",
+        "blur-opacity"
+      ]
+    },
+
+    "advanced-tools": {
+      "type": "section",
+      "title": "Advanced Tools",
+      "keys": ["blur-template", "reset-blur-button"]
+    },
+
+    "extended-styling": {
+      "type": "section",
+      "title": "Extended UI Styling",
+      "keys": ["enable-notification-styling", "enable-osd-styling"]
+    },
+
+    "indicator-settings": {
+      "type": "section",
+      "title": "System Tray Indicator",
+      "keys": ["hide-tray-icon"]
+    },
+
+    "debugging": {
+      "type": "section",
+      "title": "Debugging",
+      "keys": ["debug-logging"]
+    }
+  },
+
+  "panel-opacity": {
+    "type": "scale",
+    "default": 0.6,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Panel Opacity",
+    "tooltip": "Adjust the transparency of the main panel (taskbar). Lower values create more glass-like effect. Click the system tray icon to cycle through quick presets."
+  },
+
+  "menu-opacity": {
+    "type": "scale",
+    "default": 0.8,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Menu Opacity",
+    "tooltip": "Adjust the transparency of popup menus. Creates modern frosted glass appearance when combined with blur effects."
+  },
+
+  "override-panel-color": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Override panel color",
+    "tooltip": "When enabled, use the selected override color for the panel background. If 'Override popup color' is disabled, this color is also used for popup menus."
+  },
+
+  "choose-override-panel-color": {
+    "type": "colorchooser",
+    "default": "rgba(46, 52, 64, 0.8)",
+    "description": "Choose override panel color",
+    "tooltip": "Select the background color to use for the panel when 'Override panel color' is enabled. Supports transparency (alpha channel).",
+    "dependency": "override-panel-color"
+  },
+
+  "override-popup-color": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Override popup color",
+    "tooltip": "When enabled, use the selected override color for popup menu backgrounds instead of the panel color. Requires 'Override panel color' to be enabled for full effect."
+  },
+
+  "choose-override-popup-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 0.9)",
+    "description": "Choose override popup color",
+    "tooltip": "Select the background color to use for popup menus when 'Override popup color' is enabled. Supports transparency (alpha channel).",
+    "dependency": "override-popup-color"
+  },
+
+  "border-radius": {
+    "type": "spinbutton",
+    "default": 12,
+    "min": 0,
+    "max": 25,
+    "step": 1,
+    "units": "px",
+    "description": "Border Radius",
+    "tooltip": "Rounded corners for panels and menus. Used as fallback when auto-detect fails or finds inconsistent values. Set to 0 for completely flat appearance."
+  },
+
+  "apply-panel-radius": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Apply border radius to main panel",
+    "tooltip": "Enable rounded corners on taskbar for modern appearance. May look odd at screen edges depending on your theme."
+  },
+
+  "auto-detect-radius": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Auto-detect theme border radius",
+    "tooltip": "Automatically detect and use border-radius from current theme for consistent appearance. When enabled, the extension analyzes your theme to match its design."
+  },
+
+  "enable-notification-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style system notifications",
+    "tooltip": "Apply transparency and blur effects to system notifications (volume, brightness, etc.). This will make notifications match your panel's glass morphism style."
+  },
+
+  "enable-osd-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style OSD (On-Screen Display) elements",
+    "tooltip": "Apply transparency and blur effects to On-Screen Display elements like volume sliders, brightness controls, and other overlay elements. Creates a consistent glass appearance."
+  },
+
+  "blur-radius": {
+    "type": "spinbutton",
+    "default": 22,
+    "min": 1,
+    "max": 50,
+    "step": 1,
+    "units": "px",
+    "description": "Blur radius",
+    "tooltip": "Controls the intensity of the blur effect. Higher values create a stronger, more diffused glass-like appearance (e.g., 30px+ for foggy effect), while lower values (1-10px) produce sharper, more subtle blurring for a cleaner look."
+  },
+
+  "blur-saturate": {
+    "type": "scale",
+    "default": 0.95,
+    "min": 0.4,
+    "max": 2.0,
+    "step": 0.05,
+    "description": "Saturation multiplier",
+    "tooltip": "Adjusts color vibrancy in the blurred background. Values above 1.0 make colors more vivid and lively (for brighter, more energetic glass effect), while below 1.0 create muted, desaturated tones for a softer, more elegant appearance."
+  },
+
+  "blur-contrast": {
+    "type": "scale",
+    "default": 0.75,
+    "min": 0.4,
+    "max": 2.0,
+    "step": 0.05,
+    "description": "Contrast multiplier",
+    "tooltip": "Controls the difference between light and dark areas in the blur. Higher values (above 1.0) enhance sharpness and depth for a more defined, modern look, while lower values soften the effect for a smoother, less harsh glass appearance."
+  },
+
+  "blur-brightness": {
+    "type": "scale",
+    "default": 0.65,
+    "min": 0.4,
+    "max": 2.0,
+    "step": 0.05,
+    "description": "Brightness multiplier",
+    "tooltip": "Modifies the overall lightness of the blurred layer. Increase above 1.0 for a brighter, more illuminated glass effect (ideal for light themes), or decrease below 1.0 for darker, moodier tones that blend better with dark backgrounds."
+  },
+
+  "blur-background": {
+    "type": "colorchooser",
+    "default": "rgba(0, 0, 0, 0.3)",
+    "description": "Background color/tint",
+    "tooltip": "Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., light blue for cool tones or warm orange for cozy feel) to customize the glass appearance - higher opacity for stronger tint, lower for subtle enhancement."
+  },
+
+  "blur-border-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 0.15)",
+    "description": "Border color",
+    "tooltip": "Sets the color of the subtle border framing the blurred elements. Choose white/light colors for a clean, modern edge, or darker tones for better contrast - adjust opacity for softer or more defined borders."
+  },
+
+  "blur-border-width": {
+    "type": "spinbutton",
+    "default": 1,
+    "min": 0,
+    "max": 5,
+    "step": 1,
+    "units": "px",
+    "description": "Border width",
+    "tooltip": "Defines the thickness of the border around blurred elements. Thicker borders (3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or none (0px) give a seamless, integrated glass look."
+  },
+
+  "blur-transition": {
+    "type": "scale",
+    "default": 0.3,
+    "min": 0,
+    "max": 2,
+    "step": 0.1,
+    "description": "Blur transition duration",
+    "tooltip": "Sets the speed of blur effect animations when settings change. Shorter durations (0.1-0.5s) create snappy, responsive transitions for quick adjustments, while longer ones (1-2s) provide smooth, elegant fades for a polished feel."
+  },
+
+  "blur-opacity": {
+    "type": "scale",
+    "default": 0.8,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Blur opacity",
+    "tooltip": "Controls the transparency of the entire blur layer. Higher values (0.8-1.0) make the glass effect more prominent and solid, while lower values (0.1-0.5) create a lighter, more ethereal appearance that blends seamlessly with the background."
+  },
+
+  "show-indicator": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Show system tray indicator",
+    "tooltip": "Display control icon in system tray for quick access to transparency settings. Click to open extension preferences."
+  },
+
+  "reset-blur-button": {
+    "type": "button",
+    "description": "Apply selected template",
+    "tooltip": "Apply the selected blur template to all blur effect controls. This will update radius, saturation, contrast, brightness, background, border color, border width, transition, and opacity to match the chosen template.",
+    "callback": "resetBlurToDefaults"
+  },
+
+  "blur-template": {
+    "type": "combobox",
+    "default": "foggy-glass-dark",
+    "options": {
+      "Frosted Glass": "frosted-glass",
+      "Wet Glass": "wet-glass",
+      "Foggy Glass": "foggy-glass",
+      "Clear Crystal": "clear-crystal",
+      "Frosted Glass Dark": "frosted-glass-dark",
+      "Wet Glass Dark": "wet-glass-dark",
+      "Foggy Glass Dark": "foggy-glass-dark",
+      "Clear Crystal Dark": "clear-crystal-dark",
+      "Frosted Glass Orange Light": "frosted-glass-orange-light",
+      "Wet Glass Orange Light": "wet-glass-orange-light",
+      "Foggy Glass Orange Light": "foggy-glass-orange-light",
+      "Clear Crystal Orange Light": "clear-crystal-orange-light",
+      "Frosted Glass Orange Dark": "frosted-glass-orange-dark",
+      "Wet Glass Orange Dark": "wet-glass-orange-dark",
+      "Foggy Glass Orange Dark": "foggy-glass-orange-dark",
+      "Clear Crystal Orange Dark": "clear-crystal-orange-dark",
+      "Frosted Glass Blue Light": "frosted-glass-blue-light",
+      "Wet Glass Blue Light": "wet-glass-blue-light",
+      "Foggy Glass Blue Light": "foggy-glass-blue-light",
+      "Clear Crystal Blue Light": "clear-crystal-blue-light",
+      "Frosted Glass Blue Dark": "frosted-glass-blue-dark",
+      "Wet Glass Blue Dark": "wet-glass-blue-dark",
+      "Foggy Glass Blue Dark": "foggy-glass-blue-dark",
+      "Clear Crystal Blue Dark": "clear-crystal-blue-dark",
+      "Frosted Glass Green Light": "frosted-glass-green-light",
+      "Wet Glass Green Light": "wet-glass-green-light",
+      "Foggy Glass Green Light": "foggy-glass-green-light",
+      "Clear Crystal Green Light": "clear-crystal-green-light",
+      "Frosted Glass Green Dark": "frosted-glass-green-dark",
+      "Wet Glass Green Dark": "wet-glass-green-dark",
+      "Foggy Glass Green Dark": "foggy-glass-green-dark",
+      "Clear Crystal Green Dark": "clear-crystal-green-dark",
+      "Frosted Glass Purple Light": "frosted-glass-purple-light",
+      "Wet Glass Purple Light": "wet-glass-purple-light",
+      "Foggy Glass Purple Light": "foggy-glass-purple-light",
+      "Clear Crystal Purple Light": "clear-crystal-purple-light",
+      "Frosted Glass Purple Dark": "frosted-glass-purple-dark",
+      "Wet Glass Purple Dark": "wet-glass-purple-dark",
+      "Foggy Glass Purple Dark": "foggy-glass-purple-dark",
+      "Clear Crystal Purple Dark": "clear-crystal-purple-dark",
+      "Frosted Glass Red Light": "frosted-glass-red-light",
+      "Wet Glass Red Light": "wet-glass-red-light",
+      "Foggy Glass Red Light": "foggy-glass-red-light",
+      "Clear Crystal Red Light": "clear-crystal-red-light",
+      "Frosted Glass Red Dark": "frosted-glass-red-dark",
+      "Wet Glass Red Dark": "wet-glass-red-dark",
+      "Foggy Glass Red Dark": "foggy-glass-red-dark",
+      "Clear Crystal Red Dark": "clear-crystal-red-dark",
+      "Frosted Glass Pink Light": "frosted-glass-pink-light",
+      "Wet Glass Pink Light": "wet-glass-pink-light",
+      "Foggy Glass Pink Light": "foggy-glass-pink-light",
+      "Clear Crystal Pink Light": "clear-crystal-pink-light",
+      "Frosted Glass Pink Dark": "frosted-glass-pink-dark",
+      "Wet Glass Pink Dark": "wet-glass-pink-dark",
+      "Foggy Glass Pink Dark": "foggy-glass-pink-dark",
+      "Clear Crystal Pink Dark": "clear-crystal-pink-dark"
+    },
+    "description": "Blur Template",
+    "tooltip": "Select a blur template to apply when using the 'Apply Selected Template' button. Each template defines preset values for all blur effect controls."
+  },
+
+  "debug-logging": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Enable debug logging",
+    "tooltip": "Enable detailed logging for troubleshooting extension issues. Check terminal output with 'journalctl -f' for detailed information."
+  },
+
+  "hide-tray-icon": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Hide system tray indicator",
+    "tooltip": "Hide the transparency control icon from the system tray. You can still access settings through Cinnamon Settings > Extensions."
+  }
+}

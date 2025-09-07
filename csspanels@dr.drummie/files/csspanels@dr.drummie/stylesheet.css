@@ -1,0 +1,667 @@
+/* Panel Transparency Control Extension Styles - Updated for Cinnamon 22.1 */
+
+/* CSS-based blur implementation for Cinnamon panel transparency */
+/* This stylesheet provides modern glass morphism effects using CSS backdrop-filter */
+/* Enhanced with notification and OSD styling support */
+
+/* CSS Custom Properties (Variables) for dynamic control */
+/* These are updated by JavaScript based on user settings */
+
+:root {
+/* Panel appearance variables */
+--panel-radius: 7px; /* Border radius for panels */
+--panel-opacity: 0.8; /* Panel background opacity */
+--panel-bg-rgb: 46, 52, 64; /* Panel background color (RGB format) */
+
+/* Blur effect variables */
+--blur-intensity: 10px; /* CSS blur filter intensity */
+--blur-radius: 10px; /* Backdrop-filter blur radius */
+--blur-opacity: 0.8; /* Blur overlay opacity */
+--blur-color-tint: rgba(255, 255, 255, 0.1); /* Color tint over blur */
+--blur-layers: single; /* Number of blur layers (single/double/triple/glass) */
+--blur-transition: 300ms; /* Transition duration for blur changes */
+
+/* Menu appearance variables */
+--menu-radius: 6px; /* Border radius for menus */
+--menu-opacity: 0.9; /* Menu background opacity */
+--menu-blur-intensity: 8px; /* Blur intensity for menus */
+--menu-bg-rgb: 46, 52, 64; /* Menu background color (RGB format) */
+
+/* Notification appearance variables (NEW) */
+--notification-radius: 8px; /* Border radius for notifications */
+--notification-opacity: 0.85; /* Notification background opacity */
+--notification-blur-intensity: 12px; /* Blur intensity for notifications */
+--notification-bg-rgb: 66, 72, 84; /* Notification background color */
+
+/* OSD appearance variables (NEW) */
+--osd-radius: 12px; /* Border radius for OSD elements */
+--osd-opacity: 0.9; /* OSD background opacity */
+--osd-blur-intensity: 16px; /* Blur intensity for OSD elements */
+--osd-bg-rgb: 36, 42, 54; /* OSD background color */
+
+/* Performance and fallback variables */
+--fallback-mode: false; /* Enable fallback mode for unsupported systems */
+--advanced-filters: true; /* Enable advanced backdrop-filter effects */
+}
+
+/* Main panel transparency class with blur effect */
+/* Applied to Main.panel.actor when blur is enabled */
+
+.transparency-panel-blur {
+position: relative;
+z-index: 1;
+overflow: hidden;
+border-radius: var(--panel-radius);
+background: rgba(var(--panel-bg-rgb), var(--panel-opacity));
+transition: all var(--blur-transition);
+/* Performance optimizations for smooth animation */
+contain: layout style paint;
+will-change: backdrop-filter, background-color;
+transform: translateZ(0); /* Force GPU acceleration */
+}
+
+/* Blur overlay pseudo-element for panels */
+.transparency-panel-blur::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--blur-color-tint);
+backdrop-filter: blur(var(--blur-radius));
+-webkit-backdrop-filter: blur(var(--blur-radius));
+opacity: var(--blur-opacity);
+z-index: -1;
+pointer-events: none;
+border-radius: inherit;
+transition: all var(--blur-transition);
+/* Performance optimizations */
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* Main menu transparency class with blur effect */
+/* Applied to popup menus when blur is enabled */
+
+.transparency-menu-blur {
+position: relative;
+z-index: 1;
+overflow: hidden;
+border-radius: var(--menu-radius);
+background: rgba(var(--menu-bg-rgb), var(--menu-opacity));
+transition: all var(--blur-transition);
+/* Enhanced shadow for better depth perception */
+box-shadow:
+0 8px 24px rgba(0, 0, 0, 0.3),
+0 4px 8px rgba(0, 0, 0, 0.2),
+inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Blur overlay pseudo-element for menus */
+.transparency-menu-blur::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--blur-color-tint);
+backdrop-filter: blur(var(--menu-blur-intensity));
+-webkit-backdrop-filter: blur(var(--menu-blur-intensity));
+opacity: var(--blur-opacity);
+z-index: -1;
+pointer-events: none;
+border-radius: inherit;
+transition: all var(--blur-transition);
+/* Performance optimizations */
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* NEW: Notification transparency class with blur effect */
+/* Applied to system notifications when notification styling is enabled */
+
+.transparency-notification-blur {
+position: relative;
+z-index: 1000;
+overflow: hidden;
+border-radius: var(--notification-radius);
+background: rgba(var(--notification-bg-rgb), var(--notification-opacity));
+transition: all var(--blur-transition);
+/* Enhanced shadow for notifications */
+box-shadow:
+0 12px 36px rgba(0, 0, 0, 0.4),
+0 6px 12px rgba(0, 0, 0, 0.3),
+inset 0 2px 0 rgba(255, 255, 255, 0.15);
+/* Ensure notifications appear above other elements */
+}
+
+/* Blur overlay pseudo-element for notifications */
+.transparency-notification-blur::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--blur-color-tint);
+backdrop-filter: blur(var(--notification-blur-intensity));
+-webkit-backdrop-filter: blur(var(--notification-blur-intensity));
+opacity: var(--blur-opacity);
+z-index: -1;
+pointer-events: none;
+border-radius: inherit;
+transition: all var(--blur-transition);
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* NEW: OSD (On-Screen Display) transparency class with blur effect */
+/* Applied to OSD elements when OSD styling is enabled */
+
+.transparency-osd-blur {
+position: relative;
+z-index: 2000;
+overflow: hidden;
+border-radius: var(--osd-radius);
+background: rgba(var(--osd-bg-rgb), var(--osd-opacity));
+transition: all var(--blur-transition);
+/* Prominent shadow for OSD elements */
+box-shadow:
+0 16px 48px rgba(0, 0, 0, 0.5),
+0 8px 16px rgba(0, 0, 0, 0.4),
+inset 0 3px 0 rgba(255, 255, 255, 0.2);
+/* Ensure OSD elements appear above everything */
+}
+
+/* Blur overlay pseudo-element for OSD */
+.transparency-osd-blur::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--blur-color-tint);
+backdrop-filter: blur(var(--osd-blur-intensity));
+-webkit-backdrop-filter: blur(var(--osd-blur-intensity));
+opacity: var(--blur-opacity);
+z-index: -1;
+pointer-events: none;
+border-radius: inherit;
+transition: all var(--blur-transition);
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* Multi-layer blur effects for enhanced visual depth */
+/* Double layer blur effect */
+/* Creates two blur layers with different intensities for more complex appearance */
+
+.transparency-panel-blur.blur-double::before,
+.transparency-panel-blur.blur-double::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--blur-color-tint);
+z-index: -1;
+pointer-events: none;
+border-radius: inherit;
+transition: all var(--blur-transition);
+}
+
+.transparency-panel-blur.blur-double::before {
+backdrop-filter: blur(calc(var(--blur-radius) * 0.7));
+-webkit-backdrop-filter: blur(calc(var(--blur-radius) * 0.7));
+opacity: calc(var(--blur-opacity) * 0.6);
+}
+
+.transparency-panel-blur.blur-double::after {
+backdrop-filter: blur(calc(var(--blur-radius) * 0.3));
+-webkit-backdrop-filter: blur(calc(var(--blur-radius) * 0.3));
+opacity: calc(var(--blur-opacity) * 0.4);
+z-index: -2;
+}
+
+/* Triple layer blur effect */
+/* Creates three blur layers for maximum visual complexity */
+
+.transparency-panel-blur.blur-triple {
+position: relative;
+}
+
+.transparency-panel-blur.blur-triple::before,
+.transparency-panel-blur.blur-triple::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--blur-color-tint);
+z-index: -1;
+pointer-events: none;
+border-radius: inherit;
+transition: all var(--blur-transition);
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+.transparency-panel-blur.blur-triple::before {
+backdrop-filter: blur(var(--blur-radius)) saturate(150%) contrast(105%);
+-webkit-backdrop-filter: blur(var(--blur-radius)) saturate(150%) contrast(105%);
+opacity: calc(var(--blur-opacity) * 0.8);
+}
+
+.transparency-panel-blur.blur-triple::after {
+backdrop-filter: blur(calc(var(--blur-radius) * 0.5)) brightness(110%);
+-webkit-backdrop-filter: blur(calc(var(--blur-radius) * 0.5)) brightness(110%);
+opacity: calc(var(--blur-opacity) * 0.6);
+z-index: -2;
+}
+
+/* Glass morphism effect for modern frosted glass appearance */
+.transparency-glass-effect {
+backdrop-filter:
+blur(var(--blur-radius))
+contrast(120%)
+brightness(110%)
+saturate(130%);
+-webkit-backdrop-filter:
+blur(var(--blur-radius))
+contrast(120%)
+brightness(110%)
+saturate(130%);
+background:
+linear-gradient(135deg,
+rgba(255, 255, 255, 0.1) 0%,
+rgba(255, 255, 255, 0.05) 50%,
+rgba(255, 255, 255, 0.02) 100%);
+border: 1px solid rgba(255, 255, 255, 0.18);
+box-shadow:
+0 8px 32px rgba(0, 0, 0, 0.2),
+inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced blur effects with advanced filters */
+.transparency-panel-blur.blur-enhanced::before {
+backdrop-filter:
+blur(var(--blur-radius))
+contrast(115%)
+brightness(105%)
+saturate(120%);
+-webkit-backdrop-filter:
+blur(var(--blur-radius))
+contrast(115%)
+brightness(105%)
+saturate(120%);
+}
+
+/* Animation blur effects for smooth transitions */
+.transparency-panel-blur.animating {
+backdrop-filter:
+blur(calc(var(--blur-radius) * 1.2))
+saturate(140%);
+-webkit-backdrop-filter:
+blur(calc(var(--blur-radius) * 1.2))
+saturate(140%);
+transition: backdrop-filter 150ms ease-out;
+}
+
+/* Pulse animation for blur effect - can be triggered for visual feedback */
+@keyframes blur-pulse {
+0%, 100% {
+backdrop-filter: blur(var(--blur-radius));
+-webkit-backdrop-filter: blur(var(--blur-radius));
+}
+
+50% {
+backdrop-filter: blur(calc(var(--blur-radius) * 1.1));
+-webkit-backdrop-filter: blur(calc(var(--blur-radius) * 1.1));
+}
+}
+
+/* Apply performance optimizations to pseudo-elements */
+.transparency-panel-blur.blur-double::before,
+.transparency-panel-blur.blur-double::after {
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* Menu blur enhancements */
+.transparency-menu-blur::before {
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* NEW: Notification blur enhancements */
+.transparency-notification-blur::before {
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* NEW: OSD blur enhancements */
+.transparency-osd-blur::before {
+contain: strict;
+will-change: backdrop-filter, opacity;
+}
+
+/* Glass effect combinations with blur layers */
+.transparency-panel-blur.transparency-glass-effect {
+backdrop-filter:
+blur(var(--blur-radius))
+contrast(120%)
+brightness(110%)
+saturate(130%);
+-webkit-backdrop-filter:
+blur(var(--blur-radius))
+contrast(120%)
+brightness(110%)
+saturate(130%);
+}
+
+/* Fallback styling for older browsers without backdrop-filter support */
+/* Uses gradients and shadows to simulate blur effect when backdrop-filter is not available */
+
+.transparency-fallback-blur {
+background:
+radial-gradient(ellipse at top, rgba(255, 255, 255, 0.1) 0%, transparent 70%),
+radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+box-shadow:
+inset 0 1px 0 rgba(255, 255, 255, 0.2),
+inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced fallback for panels without backdrop-filter */
+.transparency-panel-blur.transparency-fallback-blur {
+background:
+radial-gradient(ellipse at top, rgba(255, 255, 255, 0.1) 0%, transparent 70%),
+radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+linear-gradient(135deg, rgba(var(--panel-bg-rgb), calc(var(--panel-opacity) + 0.1)) 0%, rgba(var(--panel-bg-rgb), var(--panel-opacity)) 50%, rgba(var(--panel-bg-rgb), calc(var(--panel-opacity) - 0.05)) 100%) !important;
+box-shadow:
+inset 0 1px 0 rgba(255, 255, 255, 0.2),
+0 4px 8px rgba(0, 0, 0, 0.3) !important;
+border: 1px solid rgba(255, 255, 255, 0.2) !important;
+opacity: 0.9;
+}
+
+/* NEW: Enhanced fallback for notifications */
+.transparency-notification-blur.transparency-fallback-blur {
+background:
+radial-gradient(ellipse at center, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+linear-gradient(135deg, rgba(var(--notification-bg-rgb), calc(var(--notification-opacity) + 0.1)) 0%, rgba(var(--notification-bg-rgb), var(--notification-opacity)) 100%) !important;
+box-shadow:
+inset 0 2px 0 rgba(255, 255, 255, 0.25),
+0 8px 16px rgba(0, 0, 0, 0.4) !important;
+border: 2px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+/* NEW: Enhanced fallback for OSD */
+.transparency-osd-blur.transparency-fallback-blur {
+background:
+radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+linear-gradient(135deg, rgba(var(--osd-bg-rgb), calc(var(--osd-opacity) + 0.15)) 0%, rgba(var(--osd-bg-rgb), var(--osd-opacity)) 100%) !important;
+box-shadow:
+inset 0 3px 0 rgba(255, 255, 255, 0.3),
+0 12px 24px rgba(0, 0, 0, 0.5) !important;
+border: 3px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Responsive performance optimization */
+@media (prefers-reduced-motion: reduce) {
+.transparency-panel-blur,
+.transparency-menu-blur,
+.transparency-notification-blur,
+.transparency-osd-blur {
+transition: none !important;
+}
+
+.transparency-panel-blur::before,
+.transparency-panel-blur::after,
+.transparency-menu-blur::before,
+.transparency-notification-blur::before,
+.transparency-osd-blur::before {
+transition: none !important;
+}
+}
+
+/* Low-end device optimization */
+@media (max-resolution: 150dpi) {
+.transparency-panel-blur.blur-triple,
+.transparency-notification-blur,
+.transparency-osd-blur {
+/* Fallback to simpler blur for lower DPI displays */
+backdrop-filter: blur(calc(var(--blur-radius) * 0.8));
+-webkit-backdrop-filter: blur(calc(var(--blur-radius) * 0.8));
+}
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+.transparency-panel-blur {
+background: rgba(var(--panel-bg-rgb), calc(var(--panel-opacity) + 0.2));
+border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.transparency-menu-blur {
+background: rgba(var(--menu-bg-rgb), calc(var(--menu-opacity) + 0.2));
+border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* NEW: High contrast for notifications and OSD */
+.transparency-notification-blur {
+background: rgba(var(--notification-bg-rgb), calc(var(--notification-opacity) + 0.15));
+border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.transparency-osd-blur {
+background: rgba(var(--osd-bg-rgb), calc(var(--osd-opacity) + 0.1));
+border: 3px solid rgba(255, 255, 255, 0.5);
+}
+}
+
+/* Dark theme optimizations */
+@media (prefers-color-scheme: dark) {
+:root {
+--blur-color-tint: rgba(255, 255, 255, 0.05);
+}
+
+.transparency-glass-effect {
+background:
+linear-gradient(135deg,
+rgba(255, 255, 255, 0.05) 0%,
+rgba(255, 255, 255, 0.02) 50%,
+rgba(255, 255, 255, 0.01) 100%);
+}
+}
+
+/* Light theme optimizations */
+@media (prefers-color-scheme: light) {
+:root {
+--blur-color-tint: rgba(0, 0, 0, 0.1);
+}
+
+.transparency-glass-effect {
+background:
+linear-gradient(135deg,
+rgba(0, 0, 0, 0.05) 0%,
+rgba(0, 0, 0, 0.02) 50%,
+rgba(0, 0, 0, 0.01) 100%);
+}
+}
+
+/* Special effects for different blur layer modes */
+/* Single layer - clean and simple */
+.transparency-panel-blur.blur-single::before {
+backdrop-filter: blur(var(--blur-radius)) saturate(110%);
+-webkit-backdrop-filter: blur(var(--blur-radius)) saturate(110%);
+}
+
+/* Glass mode - ultimate modern appearance */
+.transparency-panel-blur.blur-glass::before {
+backdrop-filter:
+blur(var(--blur-radius))
+contrast(125%)
+brightness(115%)
+saturate(140%);
+-webkit-backdrop-filter:
+blur(var(--blur-radius))
+contrast(125%)
+brightness(115%)
+saturate(140%);
+background:
+linear-gradient(135deg,
+rgba(255, 255, 255, 0.15) 0%,
+rgba(255, 255, 255, 0.08) 50%,
+rgba(255, 255, 255, 0.04) 100%);
+}
+
+/* Hover effects for interactive elements */
+.transparency-panel-blur:hover {
+background: rgba(var(--panel-bg-rgb), calc(var(--panel-opacity) + 0.05));
+}
+
+.transparency-menu-blur:hover {
+background: rgba(var(--menu-bg-rgb), calc(var(--menu-opacity) + 0.03));
+}
+
+/* NEW: Hover effects for notifications and OSD */
+.transparency-notification-blur:hover {
+background: rgba(var(--notification-bg-rgb), calc(var(--notification-opacity) + 0.05));
+transform: scale(1.02);
+}
+
+.transparency-osd-blur:hover {
+background: rgba(var(--osd-bg-rgb), calc(var(--osd-opacity) + 0.05));
+transform: scale(1.01);
+}
+
+/* Focus effects for accessibility */
+.transparency-panel-blur:focus,
+.transparency-menu-blur:focus,
+.transparency-notification-blur:focus,
+.transparency-osd-blur:focus {
+outline: 2px solid rgba(255, 255, 255, 0.5);
+outline-offset: 2px;
+}
+
+/* System tray indicator styling */
+.transparency-indicator {
+opacity: 0.8;
+transition: opacity 200ms ease;
+}
+
+.transparency-indicator:hover {
+opacity: 1.0;
+}
+
+/* Subtle glow effect for glass morphism */
+.transparency-panel-blur.blur-glass {
+box-shadow:
+0 0 20px rgba(255, 255, 255, 0.1),
+inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* NEW: Glow effects for notifications and OSD */
+.transparency-notification-blur.blur-glass {
+box-shadow:
+0 0 30px rgba(255, 255, 255, 0.15),
+inset 0 2px 0 rgba(255, 255, 255, 0.25);
+}
+
+.transparency-osd-blur.blur-glass {
+box-shadow:
+0 0 40px rgba(255, 255, 255, 0.2),
+inset 0 3px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Blur Profiles - predefined glass effects with smooth transitions */
+.profile-frosted-glass {
+background: rgba(255, 255, 255, 0.15) !important;
+backdrop-filter: blur(12px) saturate(1.2) contrast(0.9) brightness(1.0) !important;
+-webkit-backdrop-filter: blur(12px) saturate(1.2) contrast(0.9) brightness(1.0) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-wet-glass {
+background: rgba(173, 216, 230, 0.25) !important;
+backdrop-filter: blur(8px) saturate(1.5) contrast(1.0) brightness(1.1) !important;
+-webkit-backdrop-filter: blur(8px) saturate(1.5) contrast(1.0) brightness(1.1) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-foggy-glass {
+background: rgba(255, 255, 255, 0.3) !important;
+backdrop-filter: blur(20px) saturate(1.0) contrast(0.9) brightness(0.9) !important;
+-webkit-backdrop-filter: blur(20px) saturate(1.0) contrast(0.9) brightness(0.9) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-clear-crystal {
+background: rgba(255, 255, 255, 0.35) !important;
+backdrop-filter: blur(5px) saturate(1.1) contrast(1.1) brightness(1.05) !important;
+-webkit-backdrop-filter: blur(5px) saturate(1.1) contrast(1.1) brightness(1.05) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.4) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-frosted-glass-dark {
+background: rgba(0, 0, 0, 0.2) !important;
+backdrop-filter: blur(15px) saturate(1.0) contrast(0.8) brightness(0.7) !important;
+-webkit-backdrop-filter: blur(15px) saturate(1.0) contrast(0.8) brightness(0.7) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.2) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-wet-glass-dark {
+background: rgba(0, 0, 0, 0.25) !important;
+backdrop-filter: blur(10px) saturate(1.4) contrast(0.9) brightness(0.8) !important;
+-webkit-backdrop-filter: blur(10px) saturate(1.4) contrast(0.9) brightness(0.8) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.25) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-foggy-glass-dark {
+background: rgba(0, 0, 0, 0.3) !important;
+backdrop-filter: blur(22px) saturate(0.95) contrast(0.75) brightness(0.65) !important;
+-webkit-backdrop-filter: blur(22px) saturate(0.95) contrast(0.75) brightness(0.65) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.15) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+.profile-clear-crystal-dark {
+background: rgba(0, 0, 0, 0.35) !important;
+backdrop-filter: blur(6px) saturate(1.2) contrast(1.1) brightness(0.75) !important;
+-webkit-backdrop-filter: blur(6px) saturate(1.2) contrast(1.1) brightness(0.75) !important;
+border-radius: var(--panel-radius) !important;
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
+transition: all 300ms ease-in-out !important;
+}
+
+/* Custom profile inherits from CSS variables */
+.profile-custom {
+background: var(--blur-background) !important;
+backdrop-filter: blur(var(--blur-radius)) saturate(var(--blur-saturate)) contrast(var(--blur-contrast)) brightness(var(--blur-brightness)) !important;
+-webkit-backdrop-filter: blur(var(--blur-radius)) saturate(var(--blur-saturate)) contrast(var(--blur-contrast)) brightness(var(--blur-brightness)) !important;
+border-radius: var(--panel-radius) !important;
+border: var(--blur-border-width) solid var(--blur-border-color) !important;
+transition: all var(--blur-transition) ease-in-out !important;
+}
+
+/* Apply profiles to existing classes - CSS inheritance handles the styling */
