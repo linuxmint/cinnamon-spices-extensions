@@ -32,7 +32,7 @@ A Cinnamon extension for dynamic control of panel and popups transparency and bl
 
 - Access settings via **Cinnamon Settings** > **Extensions** > **CSS Panels**.
 - Use the system tray icon for accessing settings and presets.
-- Apply blur templates for instant effects.
+- Apply css blur templates for instant effects.
 
 ## Settings Overview
 
