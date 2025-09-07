@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-01-09 21:14-0500\n"
+"POT-Creation-Date: 2025-09-06 23:46-0400\n"
 "PO-Revision-Date: 2024-12-21 20:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -119,6 +119,19 @@ msgstr ""
 "Anular la API activateWindow() para que cuando una ventana en otro espacio "
 "de trabajo reciba el foco, el efecto Cubo se utilice para cambiar el espacio "
 "de trabajo actual"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Cube effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Utilizar el efecto Cubo cuando el cambio de enfoque provoque un cambio de "
+"espacio de trabajo"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Cube effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->header2->description
 msgid "Effect Easing"
