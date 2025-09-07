@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.6
+
+- Added the ability to use the Cube effect when changing the workspace by using touchpad gestures
+
 ## 2.0.5
 
 - 2nd attempt to fix a bug that occurs when a windows workspace can't be determined

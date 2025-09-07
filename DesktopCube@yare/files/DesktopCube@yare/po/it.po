@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2025-01-09 21:14-0500\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-09-06 23:46-0400\n"
 "PO-Revision-Date: 2025-08-26 18:24+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -24,7 +25,8 @@ msgstr "Cubo Desktop"
 
 #. metadata.json->description
 msgid "Compiz Cube-like animation for workspace switching"
-msgstr "Animazione simile a un cubo di Compiz per la commutazione dell'area di lavoro"
+msgstr ""
+"Animazione simile a un cubo di Compiz per la commutazione dell'area di lavoro"
 
 #. 2.0->settings-schema.json->header1->description
 #. 5.4->settings-schema.json->header1->description
@@ -82,25 +84,55 @@ msgid "Include Panels"
 msgstr "Includi pannelli"
 
 #. 5.4->settings-schema.json->includePanels->tooltip
-msgid "Include the panels while animating. In most cases the panels are not properly painted or completely invisible anyhow, so it's best to leave this disabled"
+msgid ""
+"Include the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
 msgstr ""
-"Includi i pannelli durante l'animazione. Nella maggior parte dei casi i pannelli non sono disegnati correttamente o sono comunque completamente invisibili, quindi è meglio lasciare questa opzione disattivata"
+"Includi i pannelli durante l'animazione. Nella maggior parte dei casi i "
+"pannelli non sono disegnati correttamente o sono comunque completamente "
+"invisibili, quindi è meglio lasciare questa opzione disattivata"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Cube effect with the Workspace Switcher applet"
 msgstr "Usa l'effetto Cubo con l'applet di commutazione area di lavoro"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
-msgid "Override the moveToWorkspace() API so that the Cube effect is used by the Workspace Switcher Applet when changing the current workspace"
-msgstr "Sostituisce l'API moveToWorkspace() in modo che l'effetto Cubo venga utilizzato dall'applet di commutazione area di lavoro quando si cambia l'area di lavoro corrente"
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+"Sostituisce l'API moveToWorkspace() in modo che l'effetto Cubo venga "
+"utilizzato dall'applet di commutazione area di lavoro quando si cambia "
+"l'area di lavoro corrente"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Cube effect when changing focus causes a workspace switch"
-msgstr "Usa l'effetto Cubo quando la modifica dello stato attivo provoca un cambio di area di lavoro"
+msgstr ""
+"Usa l'effetto Cubo quando la modifica dello stato attivo provoca un cambio "
+"di area di lavoro"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
-msgid "Override the activateWindow() API so that when a window on another workspace is given the focus, the Cube effect is used to change the current workspace"
-msgstr "Sostituisce l'API activateWindow() in modo che quando viene data priorità a una finestra su un'altra area di lavoro, l'effetto Cubo venga utilizzato per modificare l'area di lavoro corrente"
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr ""
+"Sostituisce l'API activateWindow() in modo che quando viene data priorità a "
+"una finestra su un'altra area di lavoro, l'effetto Cubo venga utilizzato per "
+"modificare l'area di lavoro corrente"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Cube effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Usa l'effetto Cubo quando la modifica dello stato attivo provoca un cambio "
+"di area di lavoro"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Cube effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->header2->description
 msgid "Effect Easing"
@@ -170,4 +202,6 @@ msgstr "Apri il sito web informativo sull'attenuazione"
 
 #. 5.4->settings-schema.json->hotkeys_btn->description
 msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
-msgstr "Apri le impostazioni tastiera di Cinnamon per gestire i tasti di scelta rapida dell'area di lavoro"
+msgstr ""
+"Apri le impostazioni tastiera di Cinnamon per gestire i tasti di scelta "
+"rapida dell'area di lavoro"
