@@ -139,6 +139,7 @@ class Config {
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'aspect-ratio', 'aspectRatio', this.UpdateGridTableSize, null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'useMonitorCenter', 'useMonitorCenter', () => this.app.OnCenteredToWindowChanged(), null);
         this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'showGridOnAllMonitors', 'showGridOnAllMonitors', () => this.app.ReInitialize(), null);
+        this.settings.bindProperty(Settings.BindingDirection.BIDIRECTIONAL, 'select-using-keyboard', 'selectUsingKeyboard', this.updateSettings, null);
         let basestr = 'grid';
         this.initGridSettings();
         for (let i = 1; i <= 4; i++) {
@@ -463,7 +464,7 @@ AutoTileTwoList = AutoTileTwoList_decorate([
 const GridElement_Main = imports.ui.main;
 const GridElement_St = imports.gi.St;
 class GridElement {
-    constructor(app, monitor, grid, width, height, coordx, coordy, delegate) {
+    constructor(app, monitor, grid, width, height, coordx, coordy, delegate, numCols) {
         this._onButtonPress = (final) => {
             this.delegate._onButtonPress(this, final);
             return false;
@@ -518,6 +519,24 @@ class GridElement {
         this.actor.connect('button-press-event', () => this._onButtonPress(false));
         this.actor.connect('notify::hover', this._onHoverChanged);
         this.active = false;
+
+        // Add label
+        if (this.app.config.selectUsingKeyboard) {
+            const labelIndex = coordy * numCols + coordx;
+            let labelText;
+            if (labelIndex < 26) {
+                labelText = String.fromCharCode('a'.charCodeAt(0) + labelIndex);
+            } else {
+                labelText = String.fromCharCode('A'.charCodeAt(0) + labelIndex - 26);
+            }
+            const label = new GridElement_St.Label({
+                style_class: 'tile-label',
+                text: labelText,
+                x_align: St.Align.MIDDLE,
+                y_align: St.Align.MIDDLE
+            });
+            this.actor.add_actor(label);
+        }
     }
 }
 
@@ -913,7 +932,7 @@ let Grid = class Grid {
                     }
                     const finalWidth = widthUnit * this.cols[c].span;
                     const finalHeight = heightUnit * this.rows[r].span;
-                    let element = new GridElement(this.app, this.monitor, this, finalWidth, finalHeight, c, r, this.elementsDelegate);
+                    let element = new GridElement(this.app, this.monitor, this, finalWidth, finalHeight, c, r, this.elementsDelegate, this.cols.length);
                     this.elements[r][c] = element;
                     const bin = new Bin();
                     bin.add_actor(element.actor);
@@ -1316,6 +1335,13 @@ class App {
                     app_Main.keybindingManager.addHotKey(type, key, () => this.CurrentGrid.OnKeyPressEvent(type, key));
                 }
             }
+            // Add keybindings for a-z and A-Z
+            for (let i = 0; i < 26; i++) {
+                const lowerCaseLetter = String.fromCharCode('a'.charCodeAt(0) + i);
+                app_Main.keybindingManager.addHotKey(`gTile-letter-${lowerCaseLetter}`, lowerCaseLetter, () => this.handleLetterInput(lowerCaseLetter));
+                const upperCaseLetter = String.fromCharCode('A'.charCodeAt(0) + i);
+                app_Main.keybindingManager.addHotKey(`gTile-letter-${upperCaseLetter}`, '<Shift>' + lowerCaseLetter, () => this.handleLetterInput(upperCaseLetter));
+            }
         };
         this.RemoveKeyControls = () => {
             app_Main.keybindingManager.removeHotKey('gTile-close');
@@ -1323,6 +1349,13 @@ class App {
             app_Main.keybindingManager.removeHotKey('gTile-tile2');
             for (let type in KEYCONTROL) {
                 app_Main.keybindingManager.removeHotKey(type);
+            }
+            // Remove keybindings for a-z and A-Z
+            for (let i = 0; i < 26; i++) {
+                const lowerCaseLetter = String.fromCharCode('a'.charCodeAt(0) + i);
+                app_Main.keybindingManager.removeHotKey(`gTile-letter-${lowerCaseLetter}`);
+                const upperCaseLetter = String.fromCharCode('A'.charCodeAt(0) + i);
+                app_Main.keybindingManager.removeHotKey(`gTile-letter-${upperCaseLetter}`);
             }
         };
         this.ReInitialize = () => {
@@ -1425,6 +1458,66 @@ class App {
             this.focusMetaWindowConnections = [];
             this.focusMetaWindowPrivateConnections = [];
         };
+
+        this.handleLetterInput = (letter) => {
+            if (this.firstLetterSelection === null) {
+                this.firstLetterSelection = letter;
+                const selectedTile = this.getGridElementFromLetter(letter);
+                if (selectedTile) {
+                    selectedTile._activate(); // Highlight the first selected tile
+                }
+            } else {
+                const firstTile = this.getGridElementFromLetter(this.firstLetterSelection);
+                const secondTile = this.getGridElementFromLetter(letter);
+
+                if (firstTile) {
+                    firstTile._deactivate(); // De-highlight the first selected tile
+                }
+
+                if (firstTile && secondTile) {
+                    // Calculate the combined rectangle
+                    const [areaX, areaY, areaWidth, areaHeight] = this.CurrentGrid.elementsDelegate._computeAreaPositionSize(firstTile, secondTile);
+
+                    // Resize and move the focused window
+                    if (this.FocusMetaWindow) {
+                        this.platform.reset_window(this.FocusMetaWindow);
+                        this.platform.move_resize_window(this.FocusMetaWindow, areaX, areaY, areaWidth, areaHeight);
+                    }
+                }
+
+                // Reset for next selection
+                this.firstLetterSelection = null;
+                this.HideUI(); // Hide the UI after selection
+            }
+        };
+
+        this.getGridElementFromLetter = (letter) => {
+            const grid = this.CurrentGrid;
+            if (!grid || !grid.elements) return null;
+
+            const numCols = grid.cols.length;
+            const charCode = letter.charCodeAt(0);
+            let labelIndex;
+
+            if (charCode >= 'a'.charCodeAt(0) && charCode <= 'z'.charCodeAt(0)) {
+                labelIndex = charCode - 'a'.charCodeAt(0);
+            } else if (charCode >= 'A'.charCodeAt(0) && charCode <= 'Z'.charCodeAt(0)) {
+                labelIndex = charCode - 'A'.charCodeAt(0) + 26;
+            } else {
+                return null;
+            }
+
+            const r = Math.floor(labelIndex / numCols);
+            const c = labelIndex % numCols;
+
+            if (grid.elements[r] && grid.elements[r][c]) {
+                return grid.elements[r][c];
+            }
+
+            return null;
+        };
+
+        this.firstLetterSelection = null; // Added
         this.platform = platform;
         app_Main.uiGroup.add_actor(this.area);
         this.config = new Config(this);
@@ -1536,7 +1629,7 @@ const get_tab_list = () => {
 
 ;// CONCATENATED MODULE: ./extension.ts
 
-
+    let monitorChangedSignal = null;
 let extension_metadata;
 let app;
 const platform = {
@@ -1554,8 +1647,16 @@ const init = (meta) => {
 };
 const enable = () => {
     app = new App(platform);
+        monitorChangedSignal = Main.layoutManager.connect('monitors-changed', () => {
+            app.destroy();
+            app = new App(platform);
+        });
 };
 const disable = () => {
+        if (monitorChangedSignal) {
+            // Main.layoutManager.disconnect(monitorChangedSignal);
+            monitorChangedSignal = null;
+        }
     app.destroy();
 };
 
