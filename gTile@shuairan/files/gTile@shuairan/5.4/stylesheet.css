@@ -90,3 +90,10 @@
 .very-bottom-box {
     padding-bottom:10px;
 }
+
+.tile-label {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
