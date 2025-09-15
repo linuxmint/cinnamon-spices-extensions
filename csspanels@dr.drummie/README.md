@@ -85,8 +85,9 @@ A Cinnamon extension for dynamic control of panel and popups transparency and bl
 - **Linux Mint**: 21.x, 22.x
 - **Multiversion**: Yes
 
-## Troubleshooting
+## Troubleshooting and known issues
 
+- OSD styling is made "in advance", so if you switch your "theme" and OSD isn't styled properly, try to change csspanels border-radius setting.
 - If effects don't apply, check theme compatibility.
 - If Border Radius is not detected or valid, set it manually. 
 - Enable debug logging and check `journalctl -f` for errors (or use LG).
@@ -97,7 +98,6 @@ A Cinnamon extension for dynamic control of panel and popups transparency and bl
 ## Contributing
 
 - Report issues on GitHub.
-- Pull requests welcome.
 - Check translations and suggest better ones.
 
 ## License
