@@ -1,0 +1,8 @@
+{
+  "uuid": "auto-move-windows@JeffHanna",
+  "name": "Auto Move Windows",
+  "description": "Move applications to specific workspaces when they create windows. Based on the Gnome extension of the same name.",
+  "author": "Jeff Hanna &lt;jeff.b.hanna@gmail.com&gt;",
+  "cinnamon-version": ["4.0", "4.2", "4.4", "4.6", "4.8", "5.0", "5.2", "5.4", "5.6"],
+  "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/auto-move-windows%40JeffHanna"
+}
