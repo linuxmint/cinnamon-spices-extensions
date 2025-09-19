@@ -2,6 +2,7 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
 const Gettext = imports.gettext;
+const GLib = imports.gi.GLib;
 
 // Import refactored modules
 const TransparencyManager = require("./transparencyManager");
@@ -42,6 +43,11 @@ class TransparencyControl {
         this._ = this.setupLocalization(metadata);
         this.setupSettings();
         this.initializeComponents();
+
+        // ADD: Initialize panel monitoring variables
+        this._panelCheckTimeout = null;
+        this.panelsEnabledConnection = null;
+
         this.debugLog("TransparencyControl initialized successfully");
     }
 
@@ -265,28 +271,126 @@ class TransparencyControl {
     }
 
     /**
+     * Schedule refresh for all panels with a short delay
+     * Prevents multiple rapid refresh calls
+     */
+    scheduleRefreshPanels() {
+        imports.mainloop.timeout_add(50, () => {
+            this.checkForNewPanels();
+            return false;
+        });
+    }
+
+    /**
+     * Setup periodic panel monitoring
+     */
+    setupPanelMonitoring() {
+        try {
+            this.debugLog("Setting up panel monitoring...");
+
+            // Use global.settings signal if available for tracking added/removed panels
+            if (global.settings && typeof global.settings.connect === "function") {
+                this.panelsEnabledConnection = global.settings.connect("changed::panels-enabled", () => {
+                    this.debugLog("Panels-enabled setting changed - checking for new panels");
+                    this.checkForNewPanels();
+                });
+                this.debugLog("Using global.settings panels-enabled signal for monitoring");
+                return; // No need for polling if we have the signal
+            }
+
+            // Fallback to longer polling interval (10 seconds)
+            this._panelCheckTimeout = imports.mainloop.timeout_add(10000, () => {
+                this.checkForNewPanels();
+                return true; // Continue the timeout
+            });
+
+            this.debugLog("Panel monitoring setup completed with polling");
+        } catch (e) {
+            this.debugLog("Error setting up panel monitoring:", e);
+        }
+    }
+
+    /**
+     * Check for new panels and apply styles if found
+     */
+    checkForNewPanels() {
+        try {
+            let currentPanels = this.transparencyManager.getAllPanels();
+            let knownPanels = Object.keys(this.transparencyManager.originalPanelStyles);
+
+            // Check for any new panels
+            let newPanelsFound = false;
+            currentPanels.forEach((panelInfo) => {
+                if (!knownPanels.includes(panelInfo.id)) {
+                    this.debugLog(`New panel detected: ${panelInfo.id}`);
+                    newPanelsFound = true;
+                }
+            });
+
+            // If new panels are found, reapply styles
+            if (newPanelsFound) {
+                this.debugLog("Applying styles to new panels...");
+                imports.mainloop.timeout_add(100, () => {
+                    this.transparencyManager.applyPanelStyles();
+                    return false;
+                });
+            }
+        } catch (e) {
+            this.debugLog("Error checking for new panels:", e);
+        }
+    }
+
+    /**
+     * Cleanup panel monitoring resources
+     */
+    cleanupPanelMonitoring() {
+        try {
+            this.debugLog("Cleaning up panel monitoring...");
+
+            if (this._panelCheckTimeout) {
+                imports.mainloop.source_remove(this._panelCheckTimeout);
+                this._panelCheckTimeout = null;
+                this.debugLog("Removed panel check timeout");
+            }
+
+            // Cleanup global.settings connection if it exists
+            if (this.panelsEnabledConnection && global.settings) {
+                global.settings.disconnect(this.panelsEnabledConnection);
+                this.panelsEnabledConnection = null;
+            }
+
+            this.debugLog("Panel monitoring cleanup completed");
+        } catch (e) {
+            this.debugLog("Error cleaning up panel monitoring:", e);
+        }
+    }
+    /**
      * Enable the extension and apply all styling
      */
     enable() {
         this.debugLog("Enabling extension...");
-
         try {
             this.cssManager.initialize();
             this.themeDetector.setup();
             this.transparencyManager.enable();
             this.popupStyler.enable();
 
-            // NEW: Enable notification and OSD styling if enabled
+            // Enable notification and OSD styling if enabled
             if (this.enableNotificationStyling) {
                 this.notificationStyler.enable();
             }
+
             if (this.enableOSDStyling) {
                 this.osdStyler.enable();
             }
 
+            // Create system indicator if enabled
             if (this.showIndicator && !this.hideTrayIcon) {
                 this.systemIndicator.create();
             }
+
+            // Setup panel monitoring
+            this.setupPanelMonitoring();
 
             this.forceSettingsUpdate();
             this.debugLog("Extension enabled successfully");
@@ -309,8 +413,10 @@ class TransparencyControl {
      */
     disable() {
         this.debugLog("Disabling extension...");
-
         try {
+            // Cleanup panel monitoring first
+            this.cleanupPanelMonitoring();
+
             this.transparencyManager.disable();
             this.popupStyler.disable();
             this.notificationStyler.disable(); // NEW
@@ -318,7 +424,6 @@ class TransparencyControl {
             this.systemIndicator.destroy();
             this.themeDetector.cleanup();
             this.cssManager.cleanup();
-
             this.debugLog("Extension disabled successfully");
         } catch (error) {
             this.debugLog("Error during disable:", error);
@@ -344,7 +449,6 @@ class TransparencyControl {
         this.debugLog("Applying selected blur template");
         // Implementation moved to BlurTemplateManager for better organization
         this.blurTemplateManager.applyTemplate(this.blurTemplate);
-
         // Refresh OSD styles with new template settings
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();
@@ -357,7 +461,6 @@ class TransparencyControl {
      */
     refreshAllActiveStyles() {
         this.debugLog("Refreshing all active styled elements");
-
         // Update CSS variables for all components
         this.cssManager.updateAllVariables();
         this.popupStyler.refreshActiveMenus();
@@ -370,10 +473,10 @@ class TransparencyControl {
     }
 
     // === SETTINGS CALLBACKS ===
-
     onPanelOpacityChanged() {
         this.debugLog(`Panel opacity changed to: ${this.panelOpacity}`);
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
     }
 
     onMenuOpacityChanged() {
@@ -388,6 +491,8 @@ class TransparencyControl {
     onBorderRadiusChanged() {
         this.debugLog(`Border radius changed to: ${this.borderRadius}px`);
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
+
         // Refresh OSD elements with new border radius
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();
@@ -398,6 +503,8 @@ class TransparencyControl {
         this.debugLog(`Auto-detect radius changed to: ${this.autoDetectRadius}`);
         this.themeDetector.invalidateCache();
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
+
         // Refresh OSD elements when auto-detect changes
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();
@@ -407,6 +514,8 @@ class TransparencyControl {
     onPanelRadiusChanged() {
         this.debugLog(`Apply panel radius changed to: ${this.applyPanelRadius}`);
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
+
         // Refresh OSD elements when panel radius setting changes
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();
@@ -417,7 +526,9 @@ class TransparencyControl {
         this.debugLog(`Override panel color changed to: ${this.overridePanelColor}`);
         this.themeDetector.invalidateCache();
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
         this.popupStyler.refreshActiveMenus();
+
         // Refresh OSD elements with new panel color
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();
@@ -428,7 +539,9 @@ class TransparencyControl {
         this.debugLog(`Choose override panel color changed to: ${this.chooseOverridePanelColor}`);
         this.themeDetector.invalidateCache();
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
         this.popupStyler.refreshActiveMenus();
+
         // Refresh OSD elements with new panel color value
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();
@@ -455,7 +568,7 @@ class TransparencyControl {
         }
     }
 
-    // NEW: Notification styling callbacks
+    // Notification styling callbacks
     onNotificationStylingChanged() {
         this.debugLog(`Notification styling changed to: ${this.enableNotificationStyling}`);
         if (this.enableNotificationStyling) {
@@ -465,7 +578,7 @@ class TransparencyControl {
         }
     }
 
-    // NEW: OSD styling callbacks
+    // OSD styling callbacks
     onOSDStylingChanged() {
         this.debugLog(`OSD styling changed to: ${this.enableOSDStyling}`);
         if (this.enableOSDStyling) {
@@ -485,18 +598,19 @@ class TransparencyControl {
     onBlurSettingsChanged() {
         this.debugLog("Blur settings changed");
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
         this.refreshAllActiveStyles();
     }
 
     onBlurOpacityChanged() {
         this.debugLog(`Blur opacity changed to: ${this.blurOpacity}`);
         this.transparencyManager.applyPanelStyles();
+        this.scheduleRefreshPanels();
     }
 
     onBlurTemplateChanged() {
         this.debugLog(`Blur template changed to: ${this.blurTemplate}`);
         // Template is used in reset function
-
         // Refresh OSD styles when template changes
         if (this.enableOSDStyling && this.osdStyler) {
             this.osdStyler.refreshAllOSDs();

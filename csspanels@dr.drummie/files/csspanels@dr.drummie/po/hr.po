@@ -384,3 +384,7 @@ msgstr "Stiliziraj elemente OSD-a (On-Screen Display)"
 
 msgid "Style system notifications"
 msgstr "Stiliziraj sistemske obavijesti"
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""

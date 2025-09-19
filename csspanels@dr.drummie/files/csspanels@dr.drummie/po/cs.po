@@ -307,3 +307,7 @@ msgstr ""
 
 msgid "Style system notifications"
 msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""

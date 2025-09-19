@@ -1,10 +1,10 @@
 # CSS Panels
 
-A Cinnamon extension for dynamic control of panel and popups transparency and blur effects, providing modern glass "morphism" aesthetics.
+A Cinnamon extension for dynamic control of panels and popups transparency and blur effects, providing modern glass "morphism" aesthetics.
 
 ## Features
 
-- **Panel Transparency**: Adjust the opacity of the main panel (taskbar) with real-time preview.
+- **Panel Transparency**: Adjust the opacity of the main panel (taskbar) and other panels with real-time preview (same panel style applied to all panels).
 - **Menu Transparency**: Control transparency of popup menus for a frosted glass effect.
 - **Blur Effects**: Customize blur radius, saturation, contrast, brightness, and more for visual effects.
 - **Border Radius**: Apply rounded corners to panels and menus with auto-detection from themes.
@@ -38,12 +38,12 @@ A Cinnamon extension for dynamic control of panel and popups transparency and bl
 
 ### Basic Transparency Controls
 
-- **Panel Opacity**: Adjust main panel transparency (0-100%).
-- **Menu Opacity**: Adjust popup menu transparency (0-100%).
-- **Override Panel Color**: Enable custom panel background color instead of theme detection.
-- **Choose Override Panel Color**: Select custom panel color when override is enabled.
+- **Panel Opacity**: Adjust main (taskbar) and other panels transparency (0-100%).
+- **Menu Opacity**: Adjust popup menus transparency (0-100%).
+- **Override Panel Color**: Enable custom panels background color instead of theme detection.
+- **Choose Override Panel Color**: Select custom panels color when override is enabled.
 - **Override Popup Color**: Enable separate custom color for popup menus.
-- **Choose Override Popup Color**: Select custom popup color when override is enabled.
+- **Choose Override Popup Color**: Select custom popups color when override is enabled.
 
 ### Blur Effects
 
@@ -82,12 +82,11 @@ A Cinnamon extension for dynamic control of panel and popups transparency and bl
 ## Compatibility
 
 - **Cinnamon Version**: 6.0, 6.2, 6.4
-- **Linux Mint**: 21.x, 22.x
 - **Multiversion**: Yes
 
 ## Troubleshooting and known issues
 
-- OSD styling is made "in advance", so if you switch your "theme" and OSD isn't styled properly, try to change csspanels border-radius setting.
+- OSD styling is made "in advance", so if you switch your "theme" and OSD's aren't styled properly, try to change CSS Panels border-radius setting.
 - If effects don't apply, check theme compatibility.
 - If Border Radius is not detected or valid, set it manually. 
 - Enable debug logging and check `journalctl -f` for errors (or use LG).
@@ -113,4 +112,4 @@ This extension is licensed under the GPL-3.0 License.
 
 **Note**: This extension may have limited impact on original Mint X, L and Y themes as they define their own "rules". Tested with Fluent GTK themes for best results.
 
-Version: 1.8.8 | Last Edited: 2025-09-06
+Version: 1.8.9 | Last Edited: 2025-09-19
