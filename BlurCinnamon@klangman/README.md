@@ -2,13 +2,18 @@
 
 A Cinnamon extension to Blur, Dim, Colorize, Desaturate and make transparent parts of the Cinnamon Desktop.
 
-Cinnamon components you can effect (currently):
+Cinnamon components you can apply effects to (currently):
 
 1. The Overview
 2. The Expo
 3. The Panels
-4. Applet popup menus (i.e Menu menu, Calendar, etc.)
-5. The Desktop background image
+4. Applet popup menus (i.e Menu menu, Calendar, etc.)  **(#)**
+5. The Desktop background image **(#)**
+6. Desktop Notification popups **(#)**
+7. The panel tooltip popups **(#)**
+8. The Coverflow and Timeline 3D Alt-Tab switchers (not the Cinnamon default Alt-Tab switcher!)
+
+**(#)** Note: The Blur Cinnamon effects for the (#) marked Cinnamon components above are disabled by default. They can be enabled in the Blur Cinnamon configuration window. These effects will override some of your theme settings (i.e. rounded corners etc.).
 
 Blurring can also be disabled if you just want a transparent or semi-transparent effect without blurring for Panels, Applet popup menu or the Expo.
 
@@ -17,9 +22,9 @@ Blurring can also be disabled if you just want a transparent or semi-transparent
 - Gaussian blur algorithm (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
 - Simple blur algorithm (the Cinnamon built-in algorithm) which I would only recommend for very old computers
 - Dimming overlay with user configurable color and intensity (fully-transparent to a solid color)
-- Makes the Panels, Popup menus and the Expo transparent so that the desktop background image effects are visible
-- Allows you to adjust the color saturation of the Cinnamon components. You can reduced saturation all the way  down to gray scale
-- You can use general settings for Popups/Panels/Overview/Expo/Background or use unique settings for each
+- Makes the components transparent (when needed) so that the desktop background image effects are visible
+- Allows you to adjust the color saturation of the Cinnamon components. You can reduced saturation all the way down to gray scale
+- You can use general settings across all Cinnamon components or use unique settings for each component type
 
 ## Requirements
 
@@ -39,6 +44,7 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 2. The Applet popup-menu effects works for all the applets that I have tested except "Cinnamenu". Cinnamenu is preventing other code from receiving the "open-state-changed" event which BlurCinnamon uses to know when to apply popup-menu theme setting and when to resize and show the blur background element. This issue is fixed in the latest Cinnamenu from [Fredcw GitHub](https://github.com/fredcw/Cinnamenu) but you will need to manually fix the current Cinnamon Spices version of Cinnamenu (see [here](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873))
 3. Currently, any windows that are positioned such that they overlap with a panel or an popup-menu will not be visible beneath blurred panel/popup-menu as you might expect with a transparent panel/menu. This is because the blur effect is applied to a user interface element that floats above all windows just like the panel floats above the windows. At some point I hope to look into allowing the blur element to appear below all windows rather than above and make the a optional behavior setting.
 4. If you disable effects for any Cinnamon component under the General tab of the setting dialog while any "Use unique effect settings" options are enabled under the other tabs, the components "effect setting" options under the other tabs will still be visible, but changing those setting will have no effect until you re-enable the component under the General tab. Ideally those effect setting would only be visible when the component is enabled under the general tab but Cinnamon setting support is a bit limited in this way.
+5. This extension currently does not work under Wayland, it only works under X11. The extension automatically detects wayland and disables most of the features of the extension.
 
 ## Installation
 
