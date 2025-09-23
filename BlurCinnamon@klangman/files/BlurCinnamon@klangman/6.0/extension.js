@@ -701,6 +701,32 @@ class BlurPanels extends BlurBase {
       }
    }
 
+   // Setup the panel to be transparent or restore the panels original setup based on the 'transparent' parameter
+   _setPanelTransparency(blurredPanel, transparent) {
+      let panel = blurredPanel.panel
+      let actor = panel.actor;
+      blurredPanel.transparent = transparent;
+      if (transparent) {
+         if (settings.allowTransparentColorPanels) {
+            let panelSettings = this._getPanelSettings(panel);
+            if (!panelSettings ) return;
+            let [opacity, blendColor, blurType, radius, saturation] = panelSettings;
+            // Set the panels color
+            let color = this._getColor( blendColor, opacity );
+            actor.set_background_color(color);
+            // Make the panel transparent
+            actor.set_style( "border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
+                             "background-gradient-direction: vertical; background-gradient-start: transparent; " +
+                             "background-gradient-end: transparent;    background: transparent;" );
+         }
+      } else {
+         actor.set_background_color(blurredPanel.original_color);
+         actor.set_style(blurredPanel.original_style);
+         actor.set_style_class_name(blurredPanel.original_class);
+         actor.set_style_pseudo_class(blurredPanel.original_pseudo_class);
+      }
+   }
+
    // An extension setting controlling the color saturation overlay was modified
    // This method assumes that there is a this._blurredPanels entry for all necessary panels
    // If the "panel-unique-settings" list changes then updateBlur() will have been called 1st
@@ -906,7 +932,7 @@ class BlurPopupMenus extends BlurBase {
 
    _onOpenStateChanged(menu, open) {
       if (open) {
-         debugMsg( `Applying setting to new popup menu: ${menu}` )
+         debugMsg( `Applying setting to new popup menu: ${menu}` );
          let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.popupOverride);
 
          if (settings.allowTransparentColorPopup) {
@@ -1267,7 +1293,7 @@ class BlurNotifications extends BlurBase {
       if (this._activeNotificationData) {
          let actor = this._activeNotificationData.actor;
          let button = actor.get_child();
-         let table = button.get_child()
+         let table = button.get_child();
          let color = this._getColor( blendColor, opacity );
          table.set_background_color(color);
          actor.set_style( "border-radius: 0px; background-gradient-direction: vertical; background-gradient-start: transparent; " +
@@ -1290,7 +1316,7 @@ class BlurNotifications extends BlurBase {
       let opacity = (settings.notificationOverride) ? settings.notificationOpacity : settings.opacity;
 
       let button = actor.get_child();
-      let table = button.get_child()
+      let table = button.get_child();
       //log( `Bluring the notification bin actor: ${actor}` );
       //log( `   button ${actor.get_child()}` );
       //log( `   table  ${actor.get_child().get_child()}` );
@@ -1335,7 +1361,7 @@ class BlurNotifications extends BlurBase {
       if (this._activeNotificationData) {
          let actor = this._activeNotificationData.actor;
          let button = actor.get_child();
-         let table = button.get_child()
+         let table = button.get_child();
          table.set_background_color( this._activeNotificationData.original_table_color );
          actor.set_style( this._activeNotificationData.original_actor_style );
          button.set_style( this._activeNotificationData.original_button_style );

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1
+
+* Fix 1.5.0 regression, a missing function left out of the 1.5.0 merge into the spices repo
+
 ## 1.5.0
 
 * Added effects to the Coverflow and Timeline Alt-Tab switchers (enabled by default)
