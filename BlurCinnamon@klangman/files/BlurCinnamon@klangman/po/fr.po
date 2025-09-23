@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-05-17 12:46-0400\n"
+"POT-Creation-Date: 2025-09-22 23:38-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: claudiux\n"
 "Language-Team: \n"
@@ -18,6 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
+#. 6.0/extension.js:1713
+#, fuzzy
+msgid "Welcome to Blur Cinnamon"
+msgstr "Flou pour Cinnamon"
+
+#. 6.0/extension.js:1714
+msgid ""
+"Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
+"Timeline effects.\n"
+"\n"
+"Open the Blur Cinnamon Settings to enable additional effects on several "
+"other Cinnamon components like menus and notifications, or disable effects "
+"on components that were enabled by default. You can also make changes to the "
+"effect properties like blur intensity, color saturation and dimming."
+msgstr ""
+
+#. 6.0/extension.js:1718
+#, fuzzy
+msgid "Open Blur Cinnamon Settings"
+msgstr "Flou pour Cinnamon"
+
+#. 6.0/extension.js:1782
+msgid "Testing Blur Cinnamon Notification Effects"
+msgstr ""
+
+#. 6.0/extension.js:1783
+msgid ""
+"This is how notifications will appear when using the current Blur Cinnamon "
+"Notification Popup effects.\n"
+"\n"
+"Making further changes to the notification effect settings will "
+"automatically apply to this notification message."
+msgstr ""
+
 #. metadata.json->name
 msgid "Blur Cinnamon"
 msgstr "Flou pour Cinnamon"
@@ -25,9 +59,8 @@ msgstr "Flou pour Cinnamon"
 #. metadata.json->description
 #, fuzzy
 msgid ""
-"Allows you to blur, colorize, desaturate and adjust the dimming of some "
-"Cinnamon Desktop components (i.e. Panels, Popup-menus, Overview, Expo, "
-"Desktop image)"
+"Allows you to blur, colorize, desaturate and adjust the dimming of several "
+"Cinnamon Desktop components"
 msgstr ""
 "Permet d'estomper, de coloriser et d'ajuster la luminosité de certains "
 "composants du bureau Cinnamon (c.-à-d. Panneaux, Vue d'ensemble, Expo)."
@@ -51,11 +84,23 @@ msgid "Panels"
 msgstr "Panneaux"
 
 #. 6.0->settings-schema.json->popup-page->title
-msgid "Popup Menus"
+msgid "Menus"
 msgstr ""
 
 #. 6.0->settings-schema.json->desktop-page->title
-msgid "Desktop Background"
+msgid "Desktop"
+msgstr ""
+
+#. 6.0->settings-schema.json->notification-page->title
+msgid "Notifications"
+msgstr ""
+
+#. 6.0->settings-schema.json->appswitcher-page->title
+msgid "Alt-Tab"
+msgstr ""
+
+#. 6.0->settings-schema.json->tooltips-page->title
+msgid "Tooltips"
 msgstr ""
 
 #. 6.0->settings-schema.json->general-settings->title
@@ -103,6 +148,35 @@ msgstr ""
 #. 6.0->settings-schema.json->desktop-effect-settings->title
 #, fuzzy
 msgid "Desktop background effects settings"
+msgstr "Paramètres des effets du Panneau"
+
+#. 6.0->settings-schema.json->notification-override->title
+#, fuzzy
+msgid "Notification popup background settings"
+msgstr "Paramètres des effets du Panneau"
+
+#. 6.0->settings-schema.json->notification-effect-settings->title
+#, fuzzy
+msgid "Notification popup background effects settings"
+msgstr "Paramètres des effets du Panneau"
+
+#. 6.0->settings-schema.json->appswitcher-override->title
+msgid "Alt-Tab (Coverflow / Timeline) background settings"
+msgstr ""
+
+#. 6.0->settings-schema.json->appswitcher-effect-settings->title
+#, fuzzy
+msgid "Alt-Tab (Coverflow / Timeline) background effects settings"
+msgstr "Paramètres des effets du Panneau"
+
+#. 6.0->settings-schema.json->tooltips-override->title
+#, fuzzy
+msgid "Panel tooltips background settings"
+msgstr "Paramètres des effets du Panneau"
+
+#. 6.0->settings-schema.json->tooltips-effect-settings->title
+#, fuzzy
+msgid "Panel tooltips background effects settings"
 msgstr "Paramètres des effets du Panneau"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -178,6 +252,66 @@ msgid ""
 "can choose if the effect applies always or just when a window has the focus."
 msgstr ""
 
+#. 6.0->settings-schema.json->enable-notification-effects->description
+#, fuzzy
+msgid "Notification popups (Please read tooltip)"
+msgstr "Menu principal (Veuillez lire l'infobulle)"
+
+#. 6.0->settings-schema.json->enable-notification-effects->tooltip
+#, fuzzy
+msgid ""
+"Apply effects to the notification popups. This option has been tested with "
+"the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
+"other themes. It overrides some theme settings to achieve a "
+"(semi-)transparent window so that the blurred background is visible. It also "
+"removes rounded corners so that the blurred background will not spill over "
+"the rounded edges."
+msgstr ""
+"Appliquer des effets au menu principal (menu@cinnamon.org applet). Cette "
+"option est destinée aux thèmes de bureau Cinnamon (6.4) et Mint-Y Dark, mais "
+"peut fonctionner avec d'autres thèmes. Les thèmes clairs ont peu de chances "
+"de donner de bons résultats, mais il est possible de les faire fonctionner "
+"en utilisant de manière créative les paramètres de couleurs "
+"d'assombrissement et une image d'arrière-plan appropriée. Cette extension "
+"remplace certains paramètres du thème pour obtenir un menu "
+"(semi-)transparent, de sorte que l'arrière-plan flou soit visible. Il "
+"supprime également les coins arrondis afin que l'arrière-plan flou ne "
+"déborde pas sur les bords arrondis."
+
+#. 6.0->settings-schema.json->enable-appswitcher-effects->description
+msgid "Alt-Tab application switcher (Coverflow & Timeline only)"
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-appswitcher-effects->tooltip
+msgid ""
+"Apply effects to the Alt-Tab application switcher background when setup to "
+"use the Coverflow or Timeline styles"
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-tooltips-effects->description
+#, fuzzy
+msgid "Panel tooltips (Please read tooltip)"
+msgstr "Panneaux (Veuillez lire l'infobulle)"
+
+#. 6.0->settings-schema.json->enable-tooltips-effects->tooltip
+#, fuzzy
+msgid ""
+"Apply effects to the panel tooltip backgrounds. It overrides some theme "
+"settings to achieve a (semi-)transparent tooltip so that the blurred "
+"background is visible. It also removes rounded corners so that the blurred "
+"background will not spill over the rounded edges."
+msgstr ""
+"Appliquer des effets au menu principal (menu@cinnamon.org applet). Cette "
+"option est destinée aux thèmes de bureau Cinnamon (6.4) et Mint-Y Dark, mais "
+"peut fonctionner avec d'autres thèmes. Les thèmes clairs ont peu de chances "
+"de donner de bons résultats, mais il est possible de les faire fonctionner "
+"en utilisant de manière créative les paramètres de couleurs "
+"d'assombrissement et une image d'arrière-plan appropriée. Cette extension "
+"remplace certains paramètres du thème pour obtenir un menu "
+"(semi-)transparent, de sorte que l'arrière-plan flou soit visible. Il "
+"supprime également les coins arrondis afin que l'arrière-plan flou ne "
+"déborde pas sur les bords arrondis."
+
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
 msgstr ""
@@ -212,6 +346,30 @@ msgid ""
 msgstr ""
 "Avertissement : Les effets Expo sont actuellement désactivés dans l'onglet "
 "Général."
+
+#. 6.0->settings-schema.json->notification-info->description
+#, fuzzy
+msgid ""
+"Warning: Notification popup effects are currently disabled under the General "
+"tab."
+msgstr ""
+"Avertissement : Les effets Expo sont actuellement désactivés dans l'onglet "
+"Général."
+
+#. 6.0->settings-schema.json->appswitcher-info->description
+#, fuzzy
+msgid "Warning: Alt-Tab effects are currently disabled under the General tab."
+msgstr ""
+"Avertissement : Les effets des Panneaux sont actuellement désactivés dans "
+"l'onglet Général."
+
+#. 6.0->settings-schema.json->tooltips-info->description
+#, fuzzy
+msgid ""
+"Warning: Panel tooltip effects are currently disabled under the General tab."
+msgstr ""
+"Avertissement : Les effets des Panneaux sont actuellement désactivés dans "
+"l'onglet Général."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
@@ -273,6 +431,25 @@ msgstr "Utiliser des paramètres d'effet spécifiques pour l'Expo"
 msgid "Use unique effect settings for the desktop background"
 msgstr "Utiliser des paramètres d'effet spécifiques pour l'Expo"
 
+#. 6.0->settings-schema.json->enable-notification-override->description
+#, fuzzy
+msgid "Use unique effect settings for the notification popups"
+msgstr "Utiliser des paramètres d'effet spécifiques pour l'Expo"
+
+#. 6.0->settings-schema.json->enable-appswitcher-override->description
+#, fuzzy
+msgid "Use unique effect settings for the Alt-Tab app switcher"
+msgstr "Utiliser des paramètres d'effet spécifiques pour l'Expo"
+
+#. 6.0->settings-schema.json->enable-tooltips-override->description
+#, fuzzy
+msgid "Use unique effect settings for the panel tooltips"
+msgstr "Utiliser des paramètres d'effet spécifiques pour les Panneaux"
+
+#. 6.0->settings-schema.json->window-settings-button->description
+msgid "Open Alt-Tab Cinnamon settings"
+msgstr ""
+
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
 msgid "Use unique effect settings for each panel"
 msgstr "Utiliser des paramètres d'effets spécifiques à chaque panneau"
@@ -329,11 +506,27 @@ msgstr ""
 "est dans la syntaxe rgb(#,#,#) et le noir sera utilisé si une couleur n'est "
 "pas fournie ou si elle est dans une syntaxe incorrecte"
 
+#. 6.0->settings-schema.json->no-panel-effects-maximized->description
+msgid "Restore theme settings when a window is maximized"
+msgstr ""
+
+#. 6.0->settings-schema.json->no-panel-effects-maximized->tooltip
+msgid ""
+"Restore the themes panel settings when any window is maximized on the same "
+"monitor as the panel. For most themes this will restore a solid panel "
+"background when a window is maximized. Note: This does not remove the "
+"blurring, so if your theme uses a transparent panel then this setting may "
+"have no effect."
+msgstr ""
+
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
 #. 6.0->settings-schema.json->expo-opacity->description
 #. 6.0->settings-schema.json->panels-opacity->description
 #. 6.0->settings-schema.json->popup-opacity->description
+#. 6.0->settings-schema.json->notification-opacity->description
+#. 6.0->settings-schema.json->appswitcher-opacity->description
+#. 6.0->settings-schema.json->tooltips-opacity->description
 msgid "Dim/Colorize Background (percentage)"
 msgstr "Graduer/Colorer l'arrière-plan (pourcentage)"
 
@@ -343,6 +536,9 @@ msgstr "Graduer/Colorer l'arrière-plan (pourcentage)"
 #. 6.0->settings-schema.json->panels-blendColor->description
 #. 6.0->settings-schema.json->popup-blendColor->description
 #. 6.0->settings-schema.json->desktop-blendColor->description
+#. 6.0->settings-schema.json->notification-blendColor->description
+#. 6.0->settings-schema.json->appswitcher-blendColor->description
+#. 6.0->settings-schema.json->tooltips-blendColor->description
 msgid "Dimming overlay color"
 msgstr "Gradation de la couleur de l'incrustation"
 
@@ -352,6 +548,9 @@ msgstr "Gradation de la couleur de l'incrustation"
 #. 6.0->settings-schema.json->panels-blendColor->tooltip
 #. 6.0->settings-schema.json->popup-blendColor->tooltip
 #. 6.0->settings-schema.json->desktop-blendColor->tooltip
+#. 6.0->settings-schema.json->notification-blendColor->tooltip
+#. 6.0->settings-schema.json->appswitcher-blendColor->tooltip
+#. 6.0->settings-schema.json->tooltips-blendColor->tooltip
 msgid ""
 "Defines the color that is blended into the background based on the dimming "
 "control above. Use black for a normal dimming effect or some other color for "
@@ -367,6 +566,9 @@ msgstr ""
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "None"
 msgstr "Aucun"
 
@@ -376,6 +578,9 @@ msgstr "Aucun"
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Simple"
 msgstr "Simple"
 
@@ -385,6 +590,9 @@ msgstr "Simple"
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Gaussian"
 msgstr "Gaussien"
 
@@ -394,6 +602,9 @@ msgstr "Gaussien"
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->desktop-blurType->description
+#. 6.0->settings-schema.json->notification-blurType->description
+#. 6.0->settings-schema.json->appswitcher-blurType->description
+#. 6.0->settings-schema.json->tooltips-blurType->description
 msgid "Type of blur effect"
 msgstr "Type d'effet de flou"
 
@@ -403,18 +614,27 @@ msgstr "Type d'effet de flou"
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->desktop-blurType->tooltip
+#. 6.0->settings-schema.json->notification-blurType->tooltip
+#. 6.0->settings-schema.json->appswitcher-blurType->tooltip
+#. 6.0->settings-schema.json->tooltips-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr "Type d'algorithme à utiliser pour rendre l'arrière-plan flou"
 
 #. 6.0->settings-schema.json->radius->description
 #. 6.0->settings-schema.json->overview-radius->description
 #. 6.0->settings-schema.json->expo-radius->description
+#. 6.0->settings-schema.json->notification-radius->description
+#. 6.0->settings-schema.json->appswitcher-radius->description
+#. 6.0->settings-schema.json->tooltips-radius->description
 msgid "Gaussian blur intensity"
 msgstr "Intensité du flou gaussien"
 
 #. 6.0->settings-schema.json->radius->tooltip
 #. 6.0->settings-schema.json->overview-radius->tooltip
 #. 6.0->settings-schema.json->expo-radius->tooltip
+#. 6.0->settings-schema.json->notification-radius->tooltip
+#. 6.0->settings-schema.json->appswitcher-radius->tooltip
+#. 6.0->settings-schema.json->tooltips-radius->tooltip
 msgid ""
 "Adjusts the intensity of the blur effect by changing the radius use by the "
 "effect."
@@ -427,6 +647,9 @@ msgstr ""
 #. 6.0->settings-schema.json->expo-saturation->description
 #. 6.0->settings-schema.json->panels-saturation->description
 #. 6.0->settings-schema.json->desktop-saturation->description
+#. 6.0->settings-schema.json->notification-saturation->description
+#. 6.0->settings-schema.json->appswitcher-saturation->description
+#. 6.0->settings-schema.json->tooltips-saturation->description
 msgid "Background color saturation"
 msgstr ""
 
@@ -436,6 +659,9 @@ msgstr ""
 #. 6.0->settings-schema.json->panels-saturation->tooltip
 #. 6.0->settings-schema.json->popup-saturation->tooltip
 #. 6.0->settings-schema.json->desktop-saturation->tooltip
+#. 6.0->settings-schema.json->notification-saturation->tooltip
+#. 6.0->settings-schema.json->appswitcher-saturation->tooltip
+#. 6.0->settings-schema.json->tooltips-saturation->tooltip
 msgid "Adjusts the color saturation of the background image."
 msgstr ""
 
@@ -465,9 +691,9 @@ msgstr ""
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 #, fuzzy
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements (i."
-"e. the main menu favorites box and entry boxes) which allow these elements "
-"to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements "
+"(i.e. the main menu favorites box and entry boxes) which allow these "
+"elements to stand out from the other popup menu areas"
 msgstr ""
 "Définit la gradation supplémentaire appliquée aux éléments d'accentuation du "
 "menu principal (la boîte des favoris et la boîte de recherche) qui permet à "
@@ -501,3 +727,13 @@ msgstr ""
 #, fuzzy
 msgid "Dim background Image (percentage)"
 msgstr "Graduer/Colorer l'arrière-plan (pourcentage)"
+
+#. 6.0->settings-schema.json->notification-test-button->description
+msgid "Sent a test notification"
+msgstr ""
+
+#. 6.0->settings-schema.json->notification-test-button->tooltip
+msgid ""
+"This button will cause a notification message to appear so you can see how "
+"your notification setting behave."
+msgstr ""

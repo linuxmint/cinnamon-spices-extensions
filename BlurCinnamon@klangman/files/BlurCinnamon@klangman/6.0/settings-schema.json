@@ -1,7 +1,7 @@
 {
    "layout" : {
       "type" : "layout",
-      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page", "desktop-page"],
+      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page", "desktop-page", "notification-page", "appswitcher-page", "tooltips-page"],
 
       "general-page" : {
          "type" : "page",
@@ -25,19 +25,34 @@
       },
       "popup-page" : {
          "type" : "page",
-         "title" : "Popup Menus",
+         "title" : "Menus",
          "sections" : ["popup-override", "popup-effect-settings"]
       },
       "desktop-page" : {
          "type" : "page",
-         "title" : "Desktop Background",
+         "title" : "Desktop",
          "sections" : ["desktop-override", "desktop-effect-settings"]
+      },
+      "notification-page" : {
+         "type" : "page",
+         "title" : "Notifications",
+         "sections" : ["notification-override", "notification-effect-settings"]
+      },
+      "appswitcher-page" : {
+         "type" : "page",
+         "title" : "Alt-Tab",
+         "sections" : ["appswitcher-override", "appswitcher-effect-settings"]
+      },
+      "tooltips-page" : {
+         "type" : "page",
+         "title" : "Tooltips",
+         "sections" : ["tooltips-override", "tooltips-effect-settings"]
       },
 
       "general-settings" : {
          "type" : "section",
          "title" : "Cinnamon components where effects will be applied",
-         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects", "enable-desktop-effects"]
+         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects", "enable-desktop-effects", "enable-notification-effects", "enable-appswitcher-effects", "enable-tooltips-effects"]
       },
       "generic-effect-settings" : {
          "type" : "section",
@@ -72,7 +87,7 @@
       "panels-override" : {
          "type" : "section",
          "title" : "Panels settings",
-         "keys" : ["panels-info", "enable-panels-override", "allow-transparent-color-panels"]
+         "keys" : ["panels-info", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized"]
       },
       "panels-effect-settings" : {
          "type" : "section",
@@ -84,7 +99,7 @@
       "popup-override" : {
          "type" : "section",
          "title" : "Panels settings",
-         "keys" : [ "popup-info", "enable-popup-override", "allow-transparent-color-popup" ]
+         "keys" : [ "popup-info", "enable-popup-override", "allow-transparent-color-popup"]
       },
       "popup-effect-settings" : {
          "type" : "section",
@@ -103,7 +118,44 @@
          "title" : "Desktop background effects settings",
          "dependency" : "enable-desktop-override",
          "keys" : ["desktop-with-focus", "desktop-opacity", "desktop-blurType", "desktop-radius", "desktop-saturation"]
+      },
+
+      "notification-override" : {
+         "type" : "section",
+         "title" : "Notification popup background settings",
+         "keys" : ["notification-info", "enable-notification-override"]
+      },
+      "notification-effect-settings" : {
+         "type" : "section",
+         "title" : "Notification popup background effects settings",
+         "dependency" : "enable-notification-override",
+         "keys" : ["notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button"]
+      },
+
+      "appswitcher-override" : {
+         "type" : "section",
+         "title" : "Alt-Tab (Coverflow / Timeline) background settings",
+         "keys" : ["appswitcher-info", "enable-appswitcher-override", "window-settings-button"]
+      },
+      "appswitcher-effect-settings" : {
+         "type" : "section",
+         "title" : "Alt-Tab (Coverflow / Timeline) background effects settings",
+         "dependency" : "enable-appswitcher-override",
+         "keys" : ["appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation"]
+      },
+
+      "tooltips-override" : {
+         "type" : "section",
+         "title" : "Panel tooltips background settings",
+         "keys" : ["tooltips-info", "enable-tooltips-override"]
+      },
+      "tooltips-effect-settings" : {
+         "type" : "section",
+         "title" : "Panel tooltips background effects settings",
+         "dependency" : "enable-tooltips-override",
+         "keys" : ["tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation"]
       }
+
    },
 
     "enable-overview-effects" : {
@@ -136,6 +188,24 @@
         "tooltip": "Apply effects to desktop background image. On the Desktop Background tab you can choose if the effect applies always or just when a window has the focus.",
         "default": false
     },
+    "enable-notification-effects" : {
+        "type": "switch",
+        "description": "Notification popups (Please read tooltip)",
+        "tooltip": "Apply effects to the notification popups. This option has been tested with the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with other themes. It overrides some theme settings to achieve a (semi-)transparent window so that the blurred background is visible. It also removes rounded corners so that the blurred background will not spill over the rounded edges.",
+        "default": false
+    },
+    "enable-appswitcher-effects" : {
+        "type": "switch",
+        "description": "Alt-Tab application switcher (Coverflow & Timeline only)",
+        "tooltip": "Apply effects to the Alt-Tab application switcher background when setup to use the Coverflow or Timeline styles",
+        "default": true
+    },
+    "enable-tooltips-effects" : {
+        "type": "switch",
+        "description": "Panel tooltips (Please read tooltip)",
+        "tooltip": "Apply effects to the panel tooltip backgrounds. It overrides some theme settings to achieve a (semi-)transparent tooltip so that the blurred background is visible. It also removes rounded corners so that the blurred background will not spill over the rounded edges.",
+        "default": false
+    },
 
     "overview-info" : {
         "type" : "label",
@@ -161,6 +231,21 @@
         "type" : "label",
         "description" : "Warning: Desktop background effects are currently disabled under the General tab.",
         "dependency" : "!enable-desktop-effects"
+    },
+    "notification-info" : {
+        "type" : "label",
+        "description" : "Warning: Notification popup effects are currently disabled under the General tab.",
+        "dependency" : "!enable-notification-effects"
+    },
+    "appswitcher-info" : {
+        "type" : "label",
+        "description" : "Warning: Alt-Tab effects are currently disabled under the General tab.",
+        "dependency" : "!enable-appswitcher-effects"
+    },
+    "tooltips-info" : {
+        "type" : "label",
+        "description" : "Warning: Panel tooltip effects are currently disabled under the General tab.",
+        "dependency" : "!enable-tooltips-effects"
     },
 
     "allow-transparent-color-panels" : {
@@ -201,6 +286,27 @@
         "description": "Use unique effect settings for the desktop background",
         "default": false
     },
+    "enable-notification-override" : {
+        "type": "switch",
+        "description": "Use unique effect settings for the notification popups",
+        "default": false
+    },
+    "enable-appswitcher-override" : {
+        "type": "switch",
+        "description": "Use unique effect settings for the Alt-Tab app switcher",
+        "default": false
+    },
+    "enable-tooltips-override" : {
+        "type": "switch",
+        "description": "Use unique effect settings for the panel tooltips",
+        "default": false
+    },
+
+    "window-settings-button" : {
+       "type" : "button",
+       "description" : "Open Alt-Tab Cinnamon settings",
+       "callback" : "on_window_settings_button_pressed"
+    },
 
     "enable-panel-unique-settings" : {
         "type": "switch",
@@ -230,6 +336,14 @@
             { "enabled": true, "panels": 3, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
             { "enabled": true, "panels": 4, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 }
         ]
+    },
+
+    "no-panel-effects-maximized" : {
+        "type": "switch",
+        "description": "Restore theme settings when a window is maximized",
+        "dependency" : "allow-transparent-color-panels=true",
+        "tooltip": "Restore the themes panel settings when any window is maximized on the same monitor as the panel. For most themes this will restore a solid panel background when a window is maximized. Note: This does not remove the blurring, so if your theme uses a transparent panel then this setting may have no effect.",
+        "default": false
     },
 
     "opacity" : {
@@ -566,6 +680,166 @@
         "tooltip": "Adjusts the color saturation of the background image.",
         "default": 100,
         "dependency" : "enable-desktop-override=1"
+    },
+
+
+    "notification-opacity" : {
+        "type": "scale",
+        "description": "Dim/Colorize Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "step": 1
+    },
+
+    "notification-blendColor": {
+        "type": "colorchooser",
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
+    },
+
+    "notification-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "notification-radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 9,
+        "dependency" : "expo-blurType=2"
+    },
+
+    "notification-saturation": {
+        "type": "scale",
+        "description" : "Background color saturation",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the color saturation of the background image.",
+        "default": 100
+    },
+
+   "notification-test-button" : {
+      "type" : "button",
+      "description" : "Sent a test notification",
+      "callback" : "on_notification_test_button_pressed",
+      "tooltip" : "This button will cause a notification message to appear so you can see how your notification setting behave."
+    },
+
+    "appswitcher-opacity" : {
+        "type": "scale",
+        "description": "Dim/Colorize Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "step": 1
+    },
+
+    "appswitcher-blendColor": {
+        "type": "colorchooser",
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
+    },
+
+    "appswitcher-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "appswitcher-radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 9,
+        "dependency" : "expo-blurType=2"
+    },
+
+    "appswitcher-saturation": {
+        "type": "scale",
+        "description" : "Background color saturation",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the color saturation of the background image.",
+        "default": 100
+    },
+
+    "tooltips-opacity" : {
+        "type": "scale",
+        "description": "Dim/Colorize Background (percentage)",
+        "min": 0,
+        "max": 100,
+        "default": 40,
+        "step": 1
+    },
+
+    "tooltips-blendColor": {
+        "type": "colorchooser",
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
+    },
+
+    "tooltips-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background"
+    },
+
+    "tooltips-radius": {
+        "type": "scale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 9,
+        "dependency" : "expo-blurType=2"
+    },
+
+    "tooltips-saturation": {
+        "type": "scale",
+        "description" : "Background color saturation",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the color saturation of the background image.",
+        "default": 100
+    },
+
+    "new-install": {
+       "type": "generic",
+       "default": 1
     }
 
 }
