@@ -1,17 +1,18 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
+const StylerBase = require("./stylerBase");
 
 /**
  * OSD Styler handles On-Screen Display transparency and blur effects (NEW)
  * Applies glass morphism effects to volume, brightness, and other OSD elements
  */
-class OSDStyler {
+class OSDStyler extends StylerBase {
     /**
      * Initialize OSD Styler
      * @param {Object} extension - Reference to main extension instance
      */
     constructor(extension) {
-        this.extension = extension;
+        super(extension, "OSDStyler");
         this.originalOSDStyles = new Map();
         this.osdConnections = [];
         this.monitoredElements = new Set();
@@ -39,19 +40,19 @@ class OSDStyler {
             if (OSDWindow && typeof OSDWindow.show === "function") {
                 this.originalShow = OSDWindow.show;
                 OSDWindow.show = this._patchedShow.bind(this);
-                this.extension.debugLog("OSD monkeypatch applied successfully");
+                this.debugLog("OSD monkeypatch applied successfully");
             } else {
-                this.extension.debugLog("OSDWindow not found, using monitoring fallback");
+                this.debugLog("OSDWindow not found, using monitoring fallback");
                 // Fallback handled in setupOSDMonitoring
             }
         } catch (e) {
-            this.extension.debugLog("Failed to apply OSD monkeypatch:", e);
+            this.debugLog("Failed to apply OSD monkeypatch:", e);
             // Add detailed error logging for debugging
             if (e.message) {
-                this.extension.debugLog("Error message:", e.message);
+                this.debugLog("Error message:", e.message);
             }
             if (e.stack) {
-                this.extension.debugLog("Error stack:", e.stack);
+                this.debugLog("Error stack:", e.stack);
             }
             // Fallback to monitoring
             this.setupOSDMonitoring();
@@ -93,24 +94,25 @@ class OSDStyler {
      * Enable OSD styling
      */
     enable() {
+        super.enable();
         if (!this.extension.enableOSDStyling) {
-            this.extension.debugLog("OSD styling disabled in settings");
+            this.debugLog("OSD styling disabled in settings");
             return;
         }
 
         try {
             this.applyMonkeyPatch();
             this.setupOSDMonitoring();
-            this.findAndStyleOSDsByCSS(); // Replace styleExistingOSDs with direct call
-            this.extension.debugLog("OSD styler enabled");
+            // Initial search done in setupOSDMonitoring - avoid duplicate call
+            this.debugLog("OSD styler enabled");
         } catch (e) {
-            this.extension.debugLog("Error enabling OSD styler:", e);
+            this.debugLog("Error enabling OSD styler:", e);
             // Add detailed error logging for debugging
             if (e.message) {
-                this.extension.debugLog("Error message:", e.message);
+                this.debugLog("Error message:", e.message);
             }
             if (e.stack) {
-                this.extension.debugLog("Error stack:", e.stack);
+                this.debugLog("Error stack:", e.stack);
             }
         }
     }
@@ -119,26 +121,31 @@ class OSDStyler {
      * Disable OSD styling
      */
     disable() {
+        this.debugLog("OSDStyler: Starting disable cleanup");
         try {
             this.restoreAllOSDs();
             this.cleanupConnections();
-            this.extension.debugLog("OSD styler disabled");
+            this.styledOSDs.clear();
+            this.originalOSDStyles.clear();
+            this.monitoredElements.clear();
+            this.debugLog("OSDStyler: Disable cleanup completed");
         } catch (e) {
-            this.extension.debugLog("Error disabling OSD styler:", e);
+            this.debugLog("Error disabling OSD styler:", e);
         }
+        super.disable();
     }
 
     /**
      * Setup CSS-based monitoring for OSD elements
      */
     setupOSDMonitoring() {
-        this.extension.debugLog("Setting up CSS-based OSD monitoring");
+        this.debugLog("Setting up CSS-based OSD monitoring");
 
         // Monitor global stage for new OSD elements
         if (global.stage) {
             this.stageConnection = global.stage.connect("actor-added", (stage, actor) => {
                 if (this.isOSDElementByCSS(actor) && !this.styledOSDs.has(actor)) {
-                    this.extension.debugLog("Detected new OSD via CSS monitoring");
+                    this.debugLog("Detected new OSD via CSS monitoring");
                     imports.mainloop.timeout_add(50, () => {
                         this.styleOSDElement(actor, "css-found-osd");
                         return false;
@@ -155,7 +162,7 @@ class OSDStyler {
      * Find and style OSD elements using CSS classes (one-time search)
      */
     findAndStyleOSDsByCSS() {
-        this.extension.debugLog("Searching for OSD CSS classes...");
+        this.debugLog("Searching for OSD CSS classes...");
 
         // Search in main UI locations for OSD elements
         const searchLocations = [global.stage, Main.layoutManager.uiGroup, Main.layoutManager.modalDialogGroup];
@@ -168,7 +175,7 @@ class OSDStyler {
             }
         });
 
-        this.extension.debugLog(`CSS-based OSD search found ${totalFound} OSDs`);
+        this.debugLog(`CSS-based OSD search found ${totalFound} OSDs`);
         // No periodic repeat - elements are styled once
     }
 
@@ -188,7 +195,7 @@ class OSDStyler {
             if (this.isOSDElementByCSS(actor)) {
                 foundCount++;
                 this.styleOSDElement(actor, "css-found-osd");
-                this.extension.debugLog(`Found OSD by CSS: ${actor.get_style_class_name()}`);
+                this.debugLog(`Found OSD by CSS: ${actor.get_style_class_name()}`);
                 return foundCount; // Don't search children of OSDs
             }
 
@@ -255,7 +262,7 @@ class OSDStyler {
                             if (now - this.lastKeyTrigger > 500) {
                                 // Debounce 500ms
                                 this.lastKeyTrigger = now;
-                                this.extension.debugLog(`Media key detected: ${action}`);
+                                this.debugLog(`Media key detected: ${action}`);
                                 // Trigger CSS-based search only if needed, without periodic repeat
                                 this.findAndStyleOSDsByCSS();
                             }
@@ -265,7 +272,7 @@ class OSDStyler {
                 this.osdConnections.push({ obj: global.display, id: this.keyConnection });
             }
         } catch (e) {
-            this.extension.debugLog("Could not setup key monitoring:", e);
+            this.debugLog("Could not setup key monitoring:", e);
         }
     }
 
@@ -282,7 +289,7 @@ class OSDStyler {
         }
 
         try {
-            this.extension.debugLog(`Styling OSD element: ${type}`);
+            this.debugLog(`Styling OSD element: ${type}`);
 
             // Save original styling
             let originalData = {
@@ -299,48 +306,33 @@ class OSDStyler {
             let panelColor = this.extension.themeDetector.getPanelBaseColor();
             let osdColor = this.getOSDColor(panelColor);
 
-            // Use direct extension properties that are updated via callbacks
-            let currentBlurRadius = this.extension.blurRadius;
-            let currentBlurSaturate = this.extension.blurSaturate;
-            let currentBlurContrast = this.extension.blurContrast;
-            let currentBlurBrightness = this.extension.blurBrightness;
-            let currentBlurOpacity = this.extension.blurOpacity;
-            let currentBorderRadius = this.extension.borderRadius;
-            let currentBlurBorderWidth = this.extension.blurBorderWidth;
-            let currentBlurBorderColor = this.extension.blurBorderColor;
-            let currentMenuOpacity = this.extension.menuOpacity;
-
-            // Enhanced blur radius for OSDs (more prominent than notifications)
-            let osdBlurRadius = Math.round(currentBlurRadius * 1.3);
-            let backdropFilter = `blur(${osdBlurRadius}px) saturate(${currentBlurSaturate}) contrast(${currentBlurContrast}) brightness(${currentBlurBrightness})`;
-
-            let osdStyle = `
-                background-color: rgba(${osdColor.r}, ${osdColor.g}, ${osdColor.b}, ${currentMenuOpacity}) !important;
-                backdrop-filter: ${backdropFilter} !important;
-                -webkit-backdrop-filter: ${backdropFilter} !important;
-                opacity: ${currentBlurOpacity} !important;
+            // Apply common blur styling with OSD-specific additional styles
+            const additionalStyles = `
                 box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.15) !important;
-                border-radius: ${Math.round(currentBorderRadius * 1.5)}px !important;
-                border: ${Math.max(currentBlurBorderWidth, 2)}px solid ${currentBlurBorderColor} !important;
+                border: ${Math.max(this.extension.blurBorderWidth, 2)}px solid ${
+                this.extension.blurBorderColor
+            } !important;
                 transition: all 0.2s ease !important;
             `;
 
-            // Add our style classes
-            actor.add_style_class_name("transparency-osd-blur");
-            actor.add_style_class_name("profile-custom");
-
-            if (!this.extension.cssManager.hasBackdropFilter) {
-                actor.add_style_class_name("transparency-fallback-blur");
-            }
-
-            actor.set_style(osdStyle);
+            this.applyCommonBlurStyling(
+                actor,
+                osdColor,
+                this.extension.menuOpacity,
+                this.getAdjustedBlurRadius("osd"),
+                this.getAdjustedBorderRadius("osd"),
+                this.extension.blurBorderColor,
+                Math.max(this.extension.blurBorderWidth, 2),
+                "osd",
+                additionalStyles
+            );
 
             // Mark as styled to avoid re-styling
             this.styledOSDs.add(actor);
 
-            this.extension.debugLog(`Successfully styled ${type} OSD`);
+            this.debugLog(`Successfully styled ${type} OSD`);
         } catch (e) {
-            this.extension.debugLog(`Error styling OSD element ${type}:`, e);
+            this.debugLog(`Error styling OSD element ${type}:`, e);
         }
     }
 
@@ -369,13 +361,13 @@ class OSDStyler {
      * Restore all styled OSDs to their original appearance
      */
     restoreAllOSDs() {
-        this.extension.debugLog("Restoring all OSD elements to default Cinnamon styling");
+        this.debugLog("Restoring all OSD elements to default Cinnamon styling");
 
         this.originalOSDStyles.forEach((originalData, element) => {
             try {
                 this.restoreOSDElement(element, originalData);
             } catch (e) {
-                this.extension.debugLog("Error restoring OSD:", e);
+                this.debugLog("Error restoring OSD:", e);
             }
         });
 
@@ -413,6 +405,7 @@ class OSDStyler {
     cleanupConnections() {
         // Disconnect stage connection if exists
         if (this.stageConnection && global.stage) {
+            this.debugLog("OSDStyler: Disconnecting stage connection");
             global.stage.disconnect(this.stageConnection);
             this.stageConnection = null;
         }
@@ -428,19 +421,19 @@ class OSDStyler {
      */
     refreshAllOSDs() {
         if (!this.extension.enableOSDStyling) {
-            this.extension.debugLog("OSD styling not enabled, skipping refresh");
+            this.debugLog("OSD styling not enabled, skipping refresh");
             return;
         }
 
         try {
-            this.extension.debugLog("Refreshing OSD styling - invalidating cache for next display");
+            this.debugLog("Refreshing OSD styling - invalidating cache for next display");
 
             // Simplified refresh process
             this.styledOSDs.clear();
             this.originalOSDStyles.clear();
             this.findAndStyleOSDsByCSS();
         } catch (e) {
-            this.extension.debugLog("Error refreshing OSD elements:", e);
+            this.debugLog("Error refreshing OSD elements:", e);
         }
     }
 }

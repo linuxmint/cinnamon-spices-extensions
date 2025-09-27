@@ -71,6 +71,7 @@ class SystemIndicator {
 
                 // Create tooltip with custom positioning for top panel
                 this.tooltip = new Tooltips.Tooltip(this.indicator, this.extension.metadata.name || "CSS Panels");
+                this.extension.debugLog("SystemIndicator: Tooltip created, type:", typeof this.tooltip);
 
                 // Force tooltip to position above the panel
                 if (this.tooltip && this.tooltip._tooltip) {

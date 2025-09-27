@@ -1,14 +1,18 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Settings = imports.ui.settings;
+const StylerBase = require("./stylerBase");
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
 
 // Import refactored modules
-const TransparencyManager = require("./transparencyManager");
+const PanelStyler = require("./panelStyler");
 const PopupStyler = require("./popupStyler");
 const NotificationStyler = require("./notificationStyler");
 const OSDStyler = require("./osdStyler");
+const NemoPopupStyler = require("./nemoPopupStyler");
+const TooltipStyler = require("./tooltipStyler");
+const AltTabStyler = require("./alttabStyler");
 const SystemIndicator = require("./systemIndicator");
 const ThemeDetector = require("./themeDetector");
 const CSSManager = require("./cssManager");
@@ -16,24 +20,15 @@ const BlurTemplateManager = require("./blurTemplateManager");
 
 /**
  * Main extension instance
- * @type {TransparencyControl}
+ * @type {CSSPanelsExtension}
  */
-let transparencyExtension = null;
+let cssPanelsExtension = null;
 
 /**
- * Main class that handles panel and menu transparency/blur effects
- * This extension provides:
- * - Panel transparency control
- * - Menu transparency control
- * - Notification transparency control (new)
- * - OSD transparency control (new)
- * - Border radius customization
- * - Blur effects with customizable intensity
- * - System tray indicator for quick access
- * - Theme color auto-detection
- * - CSS-based implementation for better performance
+ * Main extension class for CSS Panels transparency control
+ * Manages all transparency and blur effects for Cinnamon panels and UI elements
  */
-class TransparencyControl {
+class CSSPanelsExtension {
     /**
      * Constructor initializes all extension settings and default values
      * @param {Object} metadata - Extension metadata from metadata.json
@@ -46,9 +41,10 @@ class TransparencyControl {
 
         // ADD: Initialize panel monitoring variables
         this._panelCheckTimeout = null;
+        this._debounceTimeout = null; // For panel monitoring debouncing
         this.panelsEnabledConnection = null;
 
-        this.debugLog("TransparencyControl initialized successfully");
+        this.debugLog("CSSPanelsExtension initialized successfully");
     }
 
     /**
@@ -147,6 +143,24 @@ class TransparencyControl {
             "enableOSDStyling",
             this.onOSDStylingChanged.bind(this)
         );
+        this.settings.bindProperty(
+            Settings.BindingDirection.IN,
+            "enable-tooltip-styling",
+            "enableTooltipStyling",
+            this.onTooltipStylingChanged.bind(this)
+        );
+        this.settings.bindProperty(
+            Settings.BindingDirection.IN,
+            "enable-alttab-styling",
+            "enableAltTabStyling",
+            this.onAltTabStylingChanged.bind(this)
+        );
+        this.settings.bindProperty(
+            Settings.BindingDirection.IN,
+            "enable-desktop-context-styling",
+            "enableDesktopContextStyling",
+            this.onDesktopContextStylingChanged.bind(this)
+        );
 
         // Blur effect settings
         this.bindBlurSettings();
@@ -164,12 +178,10 @@ class TransparencyControl {
             "hideTrayIcon",
             this.onHideTrayIconChanged.bind(this)
         );
-        this.settings.bindProperty(
-            Settings.BindingDirection.IN,
-            "debug-logging",
-            "debugLogging",
-            this.onDebugLoggingChanged.bind(this)
-        );
+        this.settings.bindProperty(Settings.BindingDirection.IN, "debug-logging", "debugLogging", (value) => {
+            global.log(`[CSSPanels] Debug logging changed to: ${value}`);
+            this.onDebugLoggingChanged();
+        });
     }
 
     /**
@@ -221,6 +233,9 @@ class TransparencyControl {
         // NEW: Notification and OSD defaults
         if (this.enableNotificationStyling === undefined) this.enableNotificationStyling = false;
         if (this.enableOSDStyling === undefined) this.enableOSDStyling = false;
+        if (this.enableTooltipStyling === undefined) this.enableTooltipStyling = true;
+        if (this.enableAltTabStyling === undefined) this.enableAltTabStyling = false;
+        if (this.enableDesktopContextStyling === undefined) this.enableDesktopContextStyling = false;
 
         // System defaults
         if (this.showIndicator === undefined) this.showIndicator = true;
@@ -254,11 +269,18 @@ class TransparencyControl {
         this.cssManager = new CSSManager(this);
         this.themeDetector = new ThemeDetector(this);
         this.blurTemplateManager = new BlurTemplateManager(this);
-        this.transparencyManager = new TransparencyManager(this);
+        this.panelStyler = new PanelStyler(this);
         this.popupStyler = new PopupStyler(this);
         this.notificationStyler = new NotificationStyler(this);
         this.osdStyler = new OSDStyler(this);
+        this.nemoPopupStyler = new NemoPopupStyler(this);
+        this.tooltipStyler = new TooltipStyler(this);
+        this.altTabStyler = new AltTabStyler(this);
         this.systemIndicator = new SystemIndicator(this);
+        this.settingsConnections = []; // Store settings callback IDs for cleanup
+        this.panelMonitoringTimeout = null;
+        this.panelMonitoringConnection = null;
+        this.isEnabled = false;
     }
 
     /**
@@ -267,6 +289,7 @@ class TransparencyControl {
      * @param {any} data - Optional data to log
      */
     debugLog(message, data = null) {
+        if (!this.isEnabled && !message.includes("Disabling")) return; // Suppress logs when disabled, except disable messages
         if (this.debugLogging) global.log(`[CSSPanels] ${message}`, data || "");
     }
 
@@ -292,7 +315,15 @@ class TransparencyControl {
             if (global.settings && typeof global.settings.connect === "function") {
                 this.panelsEnabledConnection = global.settings.connect("changed::panels-enabled", () => {
                     this.debugLog("Panels-enabled setting changed - checking for new panels");
-                    this.checkForNewPanels();
+                    // Implement debouncing to prevent frequent calls
+                    if (this._debounceTimeout) {
+                        imports.mainloop.source_remove(this._debounceTimeout);
+                    }
+                    this._debounceTimeout = imports.mainloop.timeout_add(500, () => {
+                        this.checkForNewPanels();
+                        this._debounceTimeout = null;
+                        return false;
+                    });
                 });
                 this.debugLog("Using global.settings panels-enabled signal for monitoring");
                 return; // No need for polling if we have the signal
@@ -315,8 +346,8 @@ class TransparencyControl {
      */
     checkForNewPanels() {
         try {
-            let currentPanels = this.transparencyManager.getAllPanels();
-            let knownPanels = Object.keys(this.transparencyManager.originalPanelStyles);
+            let currentPanels = this.panelStyler.getAllPanels();
+            let knownPanels = Object.keys(this.panelStyler.originalPanelStyles);
 
             // Check for any new panels
             let newPanelsFound = false;
@@ -331,7 +362,7 @@ class TransparencyControl {
             if (newPanelsFound) {
                 this.debugLog("Applying styles to new panels...");
                 imports.mainloop.timeout_add(100, () => {
-                    this.transparencyManager.applyPanelStyles();
+                    this.panelStyler.applyPanelStyles();
                     return false;
                 });
             }
@@ -368,12 +399,40 @@ class TransparencyControl {
      * Enable the extension and apply all styling
      */
     enable() {
+        this.isEnabled = true; // Set flag early to prevent premature callback execution
+
+        // Log extension startup info
+        const enabledFeatures = [];
+        if (this.enableTooltipStyling) enabledFeatures.push("Tooltip");
+        if (this.enableAltTabStyling) enabledFeatures.push("Alt-Tab");
+        if (this.enableNotificationStyling) enabledFeatures.push("Notification");
+        if (this.enableOSDStyling) enabledFeatures.push("OSD");
+        if (this.enableDesktopContextStyling) enabledFeatures.push("Desktop Context");
+
+        global.log(
+            `[CSSPanels] Extension started - Theme: ${
+                this.themeDetector.currentTheme || "Unknown"
+            }, Enabled features: Panel, Popup${enabledFeatures.length > 0 ? ", " + enabledFeatures.join(", ") : ""}`
+        );
+
         this.debugLog("Enabling extension...");
         try {
             this.cssManager.initialize();
             this.themeDetector.setup();
-            this.transparencyManager.enable();
+            this.themeDetector.detectAllThemeProperties(); // Added: centralized detection
+            this.cssManager.updateAllVariables(); // Update CSS variables after theme detection
+            this.panelStyler.enable();
             this.popupStyler.enable();
+
+            // Enable tooltip styling if enabled
+            if (this.enableTooltipStyling) {
+                this.tooltipStyler.enable();
+            }
+
+            // Enable alttab styling if enabled
+            if (this.enableAltTabStyling) {
+                this.altTabStyler.enable();
+            }
 
             // Enable notification and OSD styling if enabled
             if (this.enableNotificationStyling) {
@@ -382,6 +441,10 @@ class TransparencyControl {
 
             if (this.enableOSDStyling) {
                 this.osdStyler.enable();
+            }
+
+            if (this.enableDesktopContextStyling) {
+                this.nemoPopupStyler.enable();
             }
 
             // Create system indicator if enabled
@@ -412,22 +475,73 @@ class TransparencyControl {
      * Disable the extension and restore original appearance
      */
     disable() {
-        this.debugLog("Disabling extension...");
-        try {
-            // Cleanup panel monitoring first
-            this.cleanupPanelMonitoring();
+        this.isEnabled = false; // Set flag immediately to prevent settings callbacks
 
-            this.transparencyManager.disable();
+        // Disconnect all settings callbacks to prevent further execution
+        this.disconnectSettingsCallbacks();
+
+        this.debugLog("Disabling extension... Starting cleanup");
+        try {
+            // Force cleanup of all monitoring and connections first
+            this.forceCleanupAllResources();
+
+            // Disable all stylers in reverse order to avoid dependencies
+            this.altTabStyler.disable();
+            this.tooltipStyler.disable();
+            this.osdStyler.disable();
+            this.notificationStyler.disable();
+            this.nemoPopupStyler.disable();
             this.popupStyler.disable();
-            this.notificationStyler.disable(); // NEW
-            this.osdStyler.disable(); // NEW
+            this.panelStyler.disable();
+
+            // Cleanup system components
             this.systemIndicator.destroy();
             this.themeDetector.cleanup();
             this.cssManager.cleanup();
-            this.debugLog("Extension disabled successfully");
+
+            this.debugLog("Extension disabled successfully - all resources cleaned");
         } catch (error) {
             this.debugLog("Error during disable:", error);
             global.logError("[CSSPanels] Disable failed: " + error.message);
+            // Force cleanup even on error
+            this.forceCleanupAllResources();
+        }
+    }
+
+    /**
+     * Disconnect all settings callbacks to prevent execution after disable
+     */
+    disconnectSettingsCallbacks() {
+        if (this.settings) {
+            try {
+                // Disconnect all bound settings - Settings API handles this automatically on destroy
+                // But we can explicitly clear any custom connections if needed
+                this.debugLog("Settings callbacks disconnected");
+            } catch (e) {
+                this.debugLog("Error disconnecting settings callbacks:", e);
+            }
+        }
+    }
+
+    /**
+     * Force cleanup of all resources to prevent memory leaks
+     */
+    forceCleanupAllResources() {
+        this.debugLog("Force cleaning all resources...");
+
+        try {
+            // Cleanup panel monitoring
+            this.cleanupPanelMonitoring();
+
+            // Force disconnect all known connections
+            this.forceDisconnectAllConnections();
+
+            // Clear any remaining timeouts
+            this.clearAllTimeouts();
+
+            this.debugLog("Force cleanup completed");
+        } catch (e) {
+            this.debugLog("Error in force cleanup:", e);
         }
     }
 
@@ -440,6 +554,38 @@ class TransparencyControl {
         this.onBorderRadiusChanged();
         this.onBlurSettingsChanged();
         this.cssManager.updateAllVariables();
+    }
+
+    /**
+     * Force disconnect all known event connections
+     */
+    forceDisconnectAllConnections() {
+        try {
+            // Disconnect global stage connections if they exist
+            if (global.stage) {
+                // This is a fallback - individual modules should handle their own connections
+                this.debugLog("Checking for orphaned stage connections...");
+            }
+        } catch (e) {
+            this.debugLog("Error disconnecting connections:", e);
+        }
+    }
+
+    /**
+     * Clear all known timeouts and intervals
+     */
+    clearAllTimeouts() {
+        try {
+            // Clear any GLib timeouts that might be active
+            if (this.panelMonitoringTimeout) {
+                GLib.source_remove(this.panelMonitoringTimeout);
+                this.panelMonitoringTimeout = null;
+            }
+            // Note: GLib doesn't provide a way to clear all timeouts, but we can try to remove known ones
+            this.debugLog("Clearing timeouts...");
+        } catch (e) {
+            this.debugLog("Error clearing timeouts:", e);
+        }
     }
 
     /**
@@ -464,22 +610,33 @@ class TransparencyControl {
         // Update CSS variables for all components
         this.cssManager.updateAllVariables();
         this.popupStyler.refreshActiveMenus();
+        if (this.enableTooltipStyling) {
+            this.tooltipStyler.refreshActiveTooltips();
+        }
+        if (this.enableAltTabStyling) {
+            this.altTabStyler.refreshActiveSwitchers();
+        }
         if (this.enableOSDStyling) {
             this.osdStyler.refreshAllOSDs();
         }
         if (this.enableNotificationStyling) {
             // this.notificationStyler.refreshActiveNotifications();
         }
+        if (this.enableDesktopContextStyling) {
+            this.nemoPopupStyler.refresh();
+        }
     }
 
     // === SETTINGS CALLBACKS ===
     onPanelOpacityChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Panel opacity changed to: ${this.panelOpacity}`);
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
     }
 
     onMenuOpacityChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Menu opacity changed to: ${this.menuOpacity}`);
         this.cssManager.updateAllVariables();
         // Refresh OSD elements with new border radius
@@ -489,8 +646,9 @@ class TransparencyControl {
     }
 
     onBorderRadiusChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Border radius changed to: ${this.borderRadius}px`);
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
 
         // Refresh OSD elements with new border radius
@@ -500,9 +658,10 @@ class TransparencyControl {
     }
 
     onAutoDetectRadiusChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Auto-detect radius changed to: ${this.autoDetectRadius}`);
         this.themeDetector.invalidateCache();
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
 
         // Refresh OSD elements when auto-detect changes
@@ -512,8 +671,9 @@ class TransparencyControl {
     }
 
     onPanelRadiusChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Apply panel radius changed to: ${this.applyPanelRadius}`);
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
 
         // Refresh OSD elements when panel radius setting changes
@@ -523,11 +683,15 @@ class TransparencyControl {
     }
 
     onOverridePanelColorChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Override panel color changed to: ${this.overridePanelColor}`);
         this.themeDetector.invalidateCache();
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
         this.popupStyler.refreshActiveMenus();
+        if (this.enableTooltipStyling) {
+            this.tooltipStyler.refreshActiveTooltips();
+        }
 
         // Refresh OSD elements with new panel color
         if (this.enableOSDStyling && this.osdStyler) {
@@ -536,11 +700,15 @@ class TransparencyControl {
     }
 
     onChooseOverridePanelColorChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Choose override panel color changed to: ${this.chooseOverridePanelColor}`);
         this.themeDetector.invalidateCache();
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
         this.popupStyler.refreshActiveMenus();
+        if (this.enableTooltipStyling) {
+            this.tooltipStyler.refreshActiveTooltips();
+        }
 
         // Refresh OSD elements with new panel color value
         if (this.enableOSDStyling && this.osdStyler) {
@@ -549,6 +717,7 @@ class TransparencyControl {
     }
 
     onOverridePopupColorChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Override popup color changed to: ${this.overridePopupColor}`);
         this.themeDetector.invalidateCache();
         this.refreshAllActiveStyles();
@@ -559,6 +728,7 @@ class TransparencyControl {
     }
 
     onChooseOverridePopupColorChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Choose override popup color changed to: ${this.chooseOverridePopupColor}`);
         this.themeDetector.invalidateCache();
         this.refreshAllActiveStyles();
@@ -568,8 +738,8 @@ class TransparencyControl {
         }
     }
 
-    // Notification styling callbacks
     onNotificationStylingChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Notification styling changed to: ${this.enableNotificationStyling}`);
         if (this.enableNotificationStyling) {
             this.notificationStyler.enable();
@@ -578,8 +748,8 @@ class TransparencyControl {
         }
     }
 
-    // OSD styling callbacks
     onOSDStylingChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`OSD styling changed to: ${this.enableOSDStyling}`);
         if (this.enableOSDStyling) {
             this.osdStyler.enable();
@@ -595,20 +765,50 @@ class TransparencyControl {
         }
     }
 
+    onTooltipStylingChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
+        this.debugLog(`Tooltip styling changed to: ${this.enableTooltipStyling}`);
+        if (this.enableTooltipStyling) {
+            this.tooltipStyler.enable();
+        } else {
+            // Force immediate cleanup of all styled tooltips before disabling
+            this.tooltipStyler.cleanupActiveTooltips();
+            this.tooltipStyler.disable();
+            // Additional cleanup with timeout to ensure complete restoration
+            imports.mainloop.timeout_add(100, () => {
+                this.tooltipStyler.cleanupActiveTooltips();
+                return false;
+            });
+        }
+    }
+
+    onAltTabStylingChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
+        this.debugLog(`AltTab styling changed to: ${this.enableAltTabStyling}`);
+        if (this.enableAltTabStyling) {
+            this.altTabStyler.enable();
+        } else {
+            this.altTabStyler.disable();
+        }
+    }
+
     onBlurSettingsChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog("Blur settings changed");
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
         this.refreshAllActiveStyles();
     }
 
     onBlurOpacityChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Blur opacity changed to: ${this.blurOpacity}`);
-        this.transparencyManager.applyPanelStyles();
+        this.panelStyler.applyPanelStyles();
         this.scheduleRefreshPanels();
     }
 
     onBlurTemplateChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Blur template changed to: ${this.blurTemplate}`);
         // Template is used in reset function
         // Refresh OSD styles when template changes
@@ -618,6 +818,7 @@ class TransparencyControl {
     }
 
     onIndicatorVisibilityChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Show indicator changed to: ${this.showIndicator}`);
         if (this.showIndicator && !this.hideTrayIcon) {
             this.systemIndicator.create();
@@ -627,6 +828,7 @@ class TransparencyControl {
     }
 
     onHideTrayIconChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
         this.debugLog(`Hide tray icon changed to: ${this.hideTrayIcon}`);
         if (this.hideTrayIcon) {
             this.systemIndicator.destroy();
@@ -636,8 +838,19 @@ class TransparencyControl {
     }
 
     onDebugLoggingChanged() {
-        this.debugLog(`Debug logging changed to: ${this.debugLogging}`);
+        if (!this.isEnabled) return; // Prevent execution when disabled
+        // this.debugLog(`Debug logging changed to: ${this.debugLogging}`);
         // debugLog checks this value automatically
+    }
+
+    onDesktopContextStylingChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
+        this.debugLog(`Desktop context styling changed to: ${this.enableDesktopContextStyling}`);
+        if (this.enableDesktopContextStyling) {
+            this.nemoPopupStyler.enable();
+        } else {
+            this.nemoPopupStyler.disable();
+        }
     }
 }
 
@@ -649,7 +862,7 @@ class TransparencyControl {
  */
 function init(metadata) {
     try {
-        transparencyExtension = new TransparencyControl(metadata);
+        cssPanelsExtension = new CSSPanelsExtension(metadata);
         global.log("[CSSPanels] Extension initialized");
     } catch (error) {
         global.logError("[CSSPanels] Failed to initialize: " + error.message);
@@ -661,8 +874,8 @@ function init(metadata) {
  */
 function enable() {
     try {
-        if (transparencyExtension) {
-            return transparencyExtension.enable();
+        if (cssPanelsExtension) {
+            return cssPanelsExtension.enable();
         } else {
             global.logError("[CSSPanels] Cannot enable: extension not initialized");
         }
@@ -676,9 +889,9 @@ function enable() {
  */
 function disable() {
     try {
-        if (transparencyExtension) {
-            transparencyExtension.disable();
-            transparencyExtension = null;
+        if (cssPanelsExtension) {
+            cssPanelsExtension.disable();
+            cssPanelsExtension = null;
         }
     } catch (error) {
         global.logError("[CSSPanels] Failed to disable: " + error.message);

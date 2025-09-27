@@ -71,7 +71,13 @@
     "extended-styling": {
       "type": "section",
       "title": "Extended UI Styling",
-      "keys": ["enable-notification-styling", "enable-osd-styling"]
+      "keys": [
+        "enable-notification-styling",
+        "enable-osd-styling",
+        "enable-tooltip-styling",
+        "enable-alttab-styling",
+        "enable-desktop-context-styling"
+      ]
     },
 
     "indicator-settings": {
@@ -174,6 +180,27 @@
     "default": false,
     "description": "Style OSD (On-Screen Display) elements",
     "tooltip": "Apply transparency and blur effects to On-Screen Display elements like volume sliders, brightness controls, and other overlay elements. Creates a consistent glass appearance."
+  },
+
+  "enable-tooltip-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style tooltip elements",
+    "tooltip": "Apply transparency and blur effects to tooltip elements that appear when hovering over panel items and other UI elements. Creates a consistent glass appearance."
+  },
+
+  "enable-alttab-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style Alt-Tab switcher elements",
+    "tooltip": "Apply transparency and blur effects to Alt-Tab window switcher. Creates a consistent glass appearance for the application switcher."
+  },
+
+  "enable-desktop-context-styling": {
+    "type": "generic",
+    "default": false,
+    "description": "Enable desktop context menu styling",
+    "tooltip": "Apply transparency and blur effects to desktop right-click context menus"
   },
 
   "blur-radius": {

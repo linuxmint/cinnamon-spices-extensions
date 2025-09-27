@@ -42,6 +42,36 @@
 /* Performance and fallback variables */
 --fallback-mode: false; /* Enable fallback mode for unsupported systems */
 --advanced-filters: true; /* Enable advanced backdrop-filter effects */
+
+/* Anti-flicker transition timings */
+--fade-out-duration: 150ms; /* Duration for fade-out before restore */
+--element-transition: 200ms; /* General element transition duration */
+}
+
+/* Smooth transitions for all styled elements to prevent flicker */
+.transparency-panel-blur,
+.transparency-popup-blur,
+.transparency-menu-blur,
+.transparency-tooltip-blur,
+.transparency-alttab-blur,
+.transparency-notification-blur,
+.transparency-osd-blur {
+    transition: opacity var(--element-transition) ease-out,
+                backdrop-filter var(--element-transition) ease-out,
+                background var(--element-transition) ease-out !important;
+}
+
+/* Persistent overlay class for elements being hidden */
+.transparency-persistent-overlay {
+    transition: all var(--fade-out-duration) ease-out !important;
+    pointer-events: none; /* Prevent interaction during fade */
+}
+
+/* Fade-out state */
+.transparency-fade-out {
+    opacity: 0 !important;
+    backdrop-filter: blur(0px) !important;
+    transition: all var(--fade-out-duration) ease-out !important;
 }
 
 /* Main panel transparency class with blur effect */

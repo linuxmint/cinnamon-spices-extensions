@@ -1,41 +1,66 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
-const GLib = imports.gi.GLib;
+const StylerBase = require("./stylerBase");
 
 /**
- * Transparency Manager handles panel styling and transparency effects
+ * Panel Styler handles panel transparency and blur effects
  * Manages all panel appearance with blur effects and opacity
  */
-class TransparencyManager {
+class PanelStyler extends StylerBase {
     /**
-     * Initialize Transparency Manager
+     * Initialize Panel Styler
      * @param {Object} extension - Reference to main extension instance
      */
     constructor(extension) {
-        this.extension = extension;
-        this.originalPanelStyles = {}; //Should contain more panels now
+        super(extension, "PanelStyler");
+        this.originalPanelStyles = {}; // Store original panel styles for restoration
+
+        // Performance optimization - cache panel references
+        this.panelCache = null;
+        this.lastPanelCheck = 0;
+        this.panelCacheTimeout = 5000; // Cache for 5 seconds
+
+        // Track override state to prevent unnecessary theme reloads
+        this._lastOverrideState = null;
     }
 
     /**
-     * Enable transparency management
+     * Enable panel styling
      */
     enable() {
+        super.enable();
         this.saveOriginalStyles();
         this.applyPanelStyles();
     }
 
     /**
-     * Disable transparency management and restore original styles
+     * Disable panel styling
      */
     disable() {
         this.restoreOriginalStyles();
+        super.disable();
     }
 
     /**
-     * Get all available panels in the system
+     * Refresh panel styling when settings change
+     */
+    refresh() {
+        super.refresh();
+        this.applyPanelStyles();
+    }
+
+    /**
+     * Get all available panels in the system with caching
      * @returns {Array} Array of all panel actors with their IDs
      */
     getAllPanels() {
+        const now = Date.now();
+
+        // Return cached result if still valid
+        if (this.panelCache && now - this.lastPanelCheck < this.panelCacheTimeout) {
+            return this.panelCache;
+        }
+
         let panels = [];
 
         // We keep the existing logic for the main panels (1 and 2)
@@ -45,7 +70,7 @@ class TransparencyManager {
                 actor: Main.panel.actor,
                 panel: Main.panel,
             });
-            this.extension.debugLog("Found main panel");
+            this.debugLog("Found main panel");
         }
 
         if (Main.panel2 && Main.panel2.actor) {
@@ -54,7 +79,7 @@ class TransparencyManager {
                 actor: Main.panel2.actor,
                 panel: Main.panel2,
             });
-            this.extension.debugLog("Found panel2");
+            this.debugLog("Found panel2");
         }
 
         // Search for additional panels in Main.panelManager or other Main properties
@@ -72,7 +97,7 @@ class TransparencyManager {
                                 actor: panel.actor,
                                 panel: panel,
                             });
-                            this.extension.debugLog(`Found managed panel: ${panelId}`);
+                            this.debugLog(`Found managed panel: ${panelId}`);
                         }
                     }
                 }
@@ -89,24 +114,37 @@ class TransparencyManager {
                             actor: Main[key].actor,
                             panel: Main[key],
                         });
-                        this.extension.debugLog(`Found additional panel: ${key}`);
+                        this.debugLog(`Found additional panel: ${key}`);
                     }
                 }
             }
         } catch (e) {
-            this.extension.debugLog("Error finding additional panels:", e);
+            this.debugLog("Error finding additional panels:", e);
         }
 
-        this.extension.debugLog(`Total panels found: ${panels.length}`);
+        this.debugLog(`Total panels found: ${panels.length}`);
+
+        // Cache the result
+        this.panelCache = panels;
+        this.lastPanelCheck = now;
+
         return panels;
     }
 
+    /**
+     * Invalidate panel cache when panels change
+     */
+    invalidatePanelCache() {
+        this.panelCache = null;
+        this.lastPanelCheck = 0;
+        this.debugLog("Panel cache invalidated");
+    }
     /**
      * Save original panel styles for restoration
      */
     saveOriginalStyles() {
         try {
-            this.extension.debugLog("Saving original styles for all panels");
+            this.debugLog("Saving original styles for all panels");
 
             // Get all panels and save their original styles
             let allPanels = this.getAllPanels();
@@ -118,13 +156,13 @@ class TransparencyManager {
                         backgroundColor: panelInfo.actor.get_background_color(),
                         styleClasses: panelInfo.actor.get_style_class_name(),
                     };
-                    this.extension.debugLog(`Saved original styles for panel: ${panelInfo.id}`);
+                    this.debugLog(`Saved original styles for panel: ${panelInfo.id}`);
                 }
             });
 
-            this.extension.debugLog("All original styles saved");
+            this.debugLog("All original styles saved");
         } catch (e) {
-            this.extension.debugLog("Error saving original styles:", e);
+            this.debugLog("Error saving original styles:", e);
         }
     }
 
@@ -158,7 +196,7 @@ class TransparencyManager {
                     // Remove our style classes
                     this.removeStyleClasses(panelActor);
 
-                    this.extension.debugLog(`Restored original styles for panel: ${panelId}`);
+                    this.debugLog(`Restored original styles for panel: ${panelId}`);
                 }
             }
 
@@ -168,7 +206,7 @@ class TransparencyManager {
                     // Panel added after initial save - clean our styles
                     this.removeStyleClasses(panelInfo.actor);
                     panelInfo.actor.set_style("");
-                    this.extension.debugLog(`Cleaned styles from additional panel: ${panelInfo.id}`);
+                    this.debugLog(`Cleaned styles from additional panel: ${panelInfo.id}`);
                 }
             });
 
@@ -181,9 +219,9 @@ class TransparencyManager {
                 // Ignore errors during theme refresh
             }
 
-            this.extension.debugLog("All original styles restored");
+            this.debugLog("All original styles restored");
         } catch (e) {
-            this.extension.debugLog("Error restoring original styles:", e);
+            this.debugLog("Error restoring original styles:", e);
         }
     }
 
@@ -230,8 +268,29 @@ class TransparencyManager {
      */
     applyPanelStyles() {
         try {
-            this.extension.debugLog("Applying panel styles to all panels");
+            this.debugLog("Applying panel styles to all panels");
             this.extension.cssManager.updateAllVariables();
+
+            // Prepare panel color once before applying to all panels
+            let panelColor;
+            if (this.extension.overridePanelColor) {
+                panelColor = this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
+            } else {
+                // Only restore and invalidate cache if override state changed
+                const currentOverrideState =
+                    this.extension.overridePanelColor + ":" + this.extension.chooseOverridePanelColor;
+                if (this._lastOverrideState !== currentOverrideState) {
+                    // Temporarily restore original styles completely to get clean detection
+                    this.restoreOriginalStyles();
+                    // Force cache invalidation to ensure fresh detection
+                    this.extension.themeDetector.invalidateCache();
+                    this._lastOverrideState = currentOverrideState;
+                }
+                panelColor = this.extension.themeDetector.getPanelBaseColor();
+                this.debugLog(
+                    `Fresh detected color after restore: rgb(${panelColor.r}, ${panelColor.g}, ${panelColor.b})`
+                );
+            }
 
             // Get all panels and apply styles
             let allPanels = this.getAllPanels();
@@ -239,46 +298,32 @@ class TransparencyManager {
                 // FIX ATTEMPT: Skip hidden panels to avoid Monitor Constraint errors
                 // seems that it is Cinnamon bug for auto-hidden panels
                 if (!panelInfo.actor || !panelInfo.actor.visible) {
-                    this.extension.debugLog(`Skipping hidden panel: ${panelInfo.id}`);
+                    this.debugLog(`Skipping hidden panel: ${panelInfo.id}`);
                     return;
                 }
 
-                this.extension.debugLog(`Applying styles to panel ${index + 1} (${panelInfo.id})`);
-                this.applyPanelStyleToActor(panelInfo.actor);
+                this.debugLog(`Applying styles to panel ${index + 1} (${panelInfo.id})`);
+                this.applyPanelStyleToActor(panelInfo.actor, panelColor);
             });
 
-            this.extension.debugLog(`Panel styling applied successfully to ${allPanels.length} panels`);
+            this.debugLog(`Panel styling applied successfully to ${allPanels.length} panels`);
         } catch (e) {
-            this.extension.debugLog("Error applying panel styles:", e);
+            this.debugLog("Error applying panel styles:", e);
         }
     }
 
     /**
      * Apply styling to a specific panel actor
      * @param {Clutter.Actor} actor - The panel actor to style
+     * @param {Object} panelColor - The panel color to use (RGB object)
      */
-    applyPanelStyleToActor(actor) {
+    applyPanelStyleToActor(actor, panelColor) {
         if (!actor) return;
-
-        // Use override color if enabled, otherwise restore original and detect fresh
-        let panelColor;
-        if (this.extension.overridePanelColor) {
-            panelColor = this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
-        } else {
-            // Temporarily restore original styles completely to get clean detection
-            this.restoreOriginalStyles();
-            // Force cache invalidation to ensure fresh detection
-            this.extension.themeDetector.invalidateCache();
-            panelColor = this.extension.themeDetector.getPanelBaseColor();
-            this.extension.debugLog(
-                `Fresh detected color after restore: rgb(${panelColor.r}, ${panelColor.g}, ${panelColor.b})`
-            );
-        }
 
         let effectiveBorderRadius = this.extension.cssManager.getEffectiveBorderRadius();
         let radius = this.extension.applyPanelRadius ? effectiveBorderRadius : 0;
 
-        this.extension.debugLog("Applying blur effects to panel actor");
+        this.debugLog("Applying blur effects to panel actor");
 
         // Add CSS blur class for advanced backdrop-filter effects
         actor.add_style_class_name("transparency-panel-blur");
@@ -308,4 +353,4 @@ class TransparencyManager {
     }
 }
 
-module.exports = TransparencyManager;
+module.exports = PanelStyler;

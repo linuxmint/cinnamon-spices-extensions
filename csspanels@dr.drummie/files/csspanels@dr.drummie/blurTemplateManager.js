@@ -665,7 +665,7 @@ class BlurTemplateManager {
 
             // Update CSS variables to apply changes immediately
             this.extension.cssManager.updateAllVariables();
-            this.extension.transparencyManager.applyPanelStyles();
+            this.extension.panelStyler.applyPanelStyles();
         } catch (e) {
             this.extension.debugLog("Error applying blur template:", e);
         }

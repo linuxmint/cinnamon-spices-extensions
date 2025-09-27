@@ -10,6 +10,7 @@ A Cinnamon extension for dynamic control of panels and popups transparency and b
 - **Border Radius**: Apply rounded corners to panels and menus with auto-detection from themes.
 - **Tint Overlay**: Add color tints to blur effects for personalized appearance.
 - **Use Styles for Notifications and OSD-s**: Optional propagation of popup panel settings to notification banner and OSD.
+- **Use Styles for AppSwithers and Tooltips**: Optional propagation of popup panel settings to AppSwitchers and Tooltips.
 - **System Tray Indicator**: Quick access icon for settings, with options to hide it when you are done with experimenting.
 - **Theme Integration**: Automatic detection of theme border radius for seamless integration (to some extent).
 - **Debug Logging**: Enable detailed logging for troubleshooting.
@@ -76,6 +77,8 @@ A Cinnamon extension for dynamic control of panels and popups transparency and b
 - **Apply Selected Template**: Reset settings to template values.
 - **Style Notifications**: Propagate popup panel visual appearance to notification banner.
 - **Style OSD-s**: Propagate popup panel visual appearance to OSD (Caps Lock, Num Lock, Brightness, Volume, ..).
+- **Style Tooltips**: Propagate popup panel visual appearance to tooltips in panels.
+- **Style AppSwitchers (Alt-Tab)**: Propagate popup panel visual appearance to AppSwitchers (Classic and 3D modes).
 - **Enable Debug Logging**: For troubleshooting.
 - **Show System Tray Indicator**: Toggle tray icon.
 
@@ -112,4 +115,4 @@ This extension is licensed under the GPL-3.0 License.
 
 **Note**: This extension may have limited impact on original Mint X, L and Y themes as they define their own "rules". Tested with Fluent GTK themes for best results.
 
-Version: 1.8.9 | Last Edited: 2025-09-19
+Version: 1.9.2 | Last Edited: 2025-09-27

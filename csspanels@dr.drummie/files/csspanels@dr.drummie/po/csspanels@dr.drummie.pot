@@ -223,6 +223,24 @@ msgstr ""
 msgid "Style system notifications"
 msgstr ""
 
+msgid "Apply transparency and blur effects to Alt-Tab window switcher. Creates a consistent glass appearance for the application switcher."
+msgstr ""
+
+msgid "Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+msgid "Apply transparency and blur effects to tooltip elements that appear when hovering over panel items and other UI elements. Creates a consistent glass appearance."
+msgstr ""
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
 # Metadata strings from metadata.json
 msgid "CSS Panels"
 msgstr ""

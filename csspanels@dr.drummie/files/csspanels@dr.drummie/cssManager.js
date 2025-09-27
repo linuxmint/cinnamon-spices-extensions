@@ -23,18 +23,18 @@ class CSSManager {
      */
     initialize() {
         this.extension.debugLog("Initializing CSS system...");
-        
+
         this.hasBackdropFilter = this.detectBackdropFilterSupport();
         this.hasAdvancedFilters = this.detectAdvancedFilterSupport();
-        
+
         this.extension.debugLog(`Backdrop filter support: ${this.hasBackdropFilter}`);
         this.extension.debugLog(`Advanced filters support: ${this.hasAdvancedFilters}`);
-        
+
         if (!this.hasBackdropFilter) {
             this.extension.debugLog("Using fallback blur simulation");
             this.enableFallbackMode();
         }
-        
+
         this.updateAllVariables();
         this.extension.debugLog("CSS system initialized successfully");
     }
@@ -46,13 +46,14 @@ class CSSManager {
     detectBackdropFilterSupport() {
         try {
             if (typeof CSS !== "undefined" && CSS.supports) {
-                let basicSupport = CSS.supports("backdrop-filter", "blur(10px)") ||
-                                 CSS.supports("-webkit-backdrop-filter", "blur(10px)");
-                
+                let basicSupport =
+                    CSS.supports("backdrop-filter", "blur(10px)") ||
+                    CSS.supports("-webkit-backdrop-filter", "blur(10px)");
+
                 this.extension.debugLog(`CSS.supports backdrop-filter: ${basicSupport}`);
                 if (basicSupport) return true;
             }
-            
+
             return this.manualBackdropFilterTest();
         } catch (e) {
             this.extension.debugLog("Error detecting backdrop-filter support:", e.message);
@@ -67,25 +68,26 @@ class CSSManager {
     manualBackdropFilterTest() {
         try {
             let testElement = new St.Bin({
-                style: "backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px);"
+                style: "backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px);",
             });
-            
+
             let computedStyle = testElement.get_style();
-            let hasBackdrop = computedStyle && 
+            let hasBackdrop =
+                computedStyle &&
                 (computedStyle.indexOf("backdrop-filter") !== -1 ||
-                 computedStyle.indexOf("-webkit-backdrop-filter") !== -1);
-            
+                    computedStyle.indexOf("-webkit-backdrop-filter") !== -1);
+
             testElement.destroy();
-            
+
             this.extension.debugLog(`Manual backdrop-filter test result: ${hasBackdrop}`);
             return hasBackdrop;
         } catch (e) {
             this.extension.debugLog("Manual backdrop-filter test failed:", e);
-            
+
             // Final fallback - assume modern Cinnamon versions support it
             let cinnamonVersion = this.getCinnamonVersion();
             let supportsBackdrop = cinnamonVersion >= 5.0;
-            
+
             this.extension.debugLog(`Fallback: Cinnamon ${cinnamonVersion} backdrop support: ${supportsBackdrop}`);
             return supportsBackdrop;
         }
@@ -101,11 +103,11 @@ class CSSManager {
                 let version = imports.misc.config.PACKAGE_VERSION;
                 return parseFloat(version);
             }
-            
+
             if (Main.cinnamonVersion) {
                 return parseFloat(Main.cinnamonVersion);
             }
-            
+
             return 6.0;
         } catch (e) {
             this.extension.debugLog("Could not detect Cinnamon version:", e.message);
@@ -119,25 +121,26 @@ class CSSManager {
      */
     detectAdvancedFilterSupport() {
         if (!this.hasBackdropFilter) return false;
-        
+
         try {
             if (typeof CSS !== "undefined" && CSS.supports) {
-                let advancedSupport = CSS.supports("backdrop-filter", "blur(10px) saturate(150%)") &&
-                                    CSS.supports("backdrop-filter", "contrast(120%)") &&
-                                    CSS.supports("backdrop-filter", "brightness(110%)");
-                
+                let advancedSupport =
+                    CSS.supports("backdrop-filter", "blur(10px) saturate(150%)") &&
+                    CSS.supports("backdrop-filter", "contrast(120%)") &&
+                    CSS.supports("backdrop-filter", "brightness(110%)");
+
                 if (advancedSupport) {
                     this.extension.debugLog("Advanced backdrop-filter effects are supported");
                     return true;
                 }
-                
+
                 this.extension.debugLog("Advanced filter CSS.supports failed, using backdrop-filter fallback");
                 return this.hasBackdropFilter;
             }
         } catch (e) {
             this.extension.debugLog("Error detecting advanced filter support:", e.message);
         }
-        
+
         return this.hasBackdropFilter;
     }
 
@@ -158,7 +161,7 @@ class CSSManager {
             if (typeof document !== "undefined" && document.documentElement) {
                 document.documentElement.style.setProperty(`--${name}`, value);
             }
-            
+
             // Try to set on Cinnamon's theme manager
             try {
                 if (Main.themeManager && Main.themeManager._gtkThemeNode) {
@@ -167,7 +170,7 @@ class CSSManager {
             } catch (e) {
                 // Silent fail for theme manager - not critical
             }
-            
+
             this.cssVariables.set(name, value);
         } catch (e) {
             this.extension.debugLog("Failed to set CSS variable:", e.message);
@@ -181,12 +184,12 @@ class CSSManager {
         try {
             let panelColor = this.extension.themeDetector.getPanelBaseColor();
             let effectiveBorderRadius = this.getEffectiveBorderRadius();
-            
+
             // Panel variables
             this.setCSSVariable("panel-radius", `${this.extension.applyPanelRadius ? effectiveBorderRadius : 0}px`);
             this.setCSSVariable("panel-opacity", this.extension.panelOpacity.toString());
             this.setCSSVariable("panel-bg-rgb", `${panelColor.r}, ${panelColor.g}, ${panelColor.b}`);
-            
+
             // Blur variables
             this.setCSSVariable("blur-radius", `${this.extension.blurRadius}px`);
             this.setCSSVariable("blur-saturate", this.extension.blurSaturate.toString());
@@ -196,15 +199,15 @@ class CSSManager {
             this.setCSSVariable("blur-border-color", this.extension.blurBorderColor);
             this.setCSSVariable("blur-border-width", `${this.extension.blurBorderWidth}px`);
             this.setCSSVariable("blur-transition", `${Math.round(this.extension.blurTransition * 1000)}ms`);
-            
+
             // Menu variables
             this.setCSSVariable("menu-radius", `${effectiveBorderRadius}px`);
             this.setCSSVariable("menu-opacity", this.extension.menuOpacity.toString());
-            
+
             // Determine popup/menu color based on override settings
             let menuColor = this.getMenuColor(panelColor);
             this.setCSSVariable("menu-bg-rgb", `${menuColor.r}, ${menuColor.g}, ${menuColor.b}`);
-            
+
             // Performance and capability variables
             this.setCSSVariable("advanced-filters", this.hasAdvancedFilters ? "true" : "false");
         } catch (e) {
@@ -218,7 +221,7 @@ class CSSManager {
      */
     getEffectiveBorderRadius() {
         let effectiveBorderRadius = this.extension.borderRadius;
-        
+
         if (this.extension.autoDetectRadius) {
             let detectedRadius = this.extension.themeDetector.detectThemeBorderRadius();
             if (detectedRadius !== this.extension.borderRadius && detectedRadius > 0) {
@@ -226,7 +229,7 @@ class CSSManager {
                 this.extension.debugLog(`Using auto-detected border-radius: ${effectiveBorderRadius}px`);
             }
         }
-        
+
         return effectiveBorderRadius;
     }
 
@@ -237,10 +240,10 @@ class CSSManager {
      */
     getMenuColor(panelColor) {
         if (this.extension.overridePopupColor) {
-            this.extension.debugLog("Using popup override color:", this.extension.chooseOverridePopupColor);
+            this.extension.debugLog("Using popup override color", this.extension.chooseOverridePopupColor);
             return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePopupColor);
         } else if (this.extension.overridePanelColor) {
-            this.extension.debugLog("Using panel override color for popups:", this.extension.chooseOverridePanelColor);
+            this.extension.debugLog("Using panel override color for popups", this.extension.chooseOverridePanelColor);
             return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
         } else {
             this.extension.debugLog("Propagating detected panel color to popups");
@@ -255,15 +258,15 @@ class CSSManager {
     getAdaptiveBlurRadius() {
         let baseRadius = this.extension.blurRadius;
         let panelColor = this.extension.themeDetector.getPanelBaseColor();
-        
+
         let brightness = (panelColor.r + panelColor.g + panelColor.b) / 3;
-        
+
         if (brightness > 150) {
             return Math.min(baseRadius * 1.3, 25);
         } else if (brightness < 80) {
             return Math.max(baseRadius * 0.8, 5);
         }
-        
+
         return baseRadius;
     }
 
@@ -277,11 +280,99 @@ class CSSManager {
                     document.documentElement.style.removeProperty(`--${name}`);
                 }
             });
-            
+
             this.cssVariables.clear();
             this.extension.debugLog("CSS system cleaned up");
         } catch (e) {
             this.extension.debugLog("Error cleaning up CSS system:", e);
+        }
+    }
+
+    /**
+     * Log detailed information about a Clutter actor for debugging purposes
+     * @param {Clutter.Actor} actor - The actor to inspect
+     * @param {number} depth - Current depth in the actor hierarchy
+     */
+    logActorDetails(actor, depth) {
+        if (!actor) return;
+
+        this.extension.debugLog(
+            "Actor details - name:",
+            actor.name,
+            "type:",
+            actor.constructor.name,
+            "parent:",
+            actor.get_parent ? actor.get_parent() : null,
+            "depth:",
+            depth
+        );
+    }
+
+    /**
+     * Debug utility: Inspect element structure and CSS properties
+     * @param {Clutter.Actor} element - Element to inspect
+     * @param {string} elementName - Name for logging purposes
+     * @param {number} maxDepth - Maximum depth to traverse (default: 3)
+     */
+    inspectElement(element, elementName = "Element", maxDepth = 3) {
+        this.extension.debugLog(`=== INSPECTING ${elementName} ===`);
+        this._inspectElementRecursive(element, 0, maxDepth);
+        this.extension.debugLog(`=== END INSPECTION ${elementName} ===`);
+    }
+
+    /**
+     * Recursive element inspection helper
+     * @param {Clutter.Actor} element - Current element
+     * @param {number} depth - Current depth level
+     * @param {number} maxDepth - Maximum depth to traverse
+     */
+    _inspectElementRecursive(element, depth, maxDepth) {
+        if (!element || depth > maxDepth) return;
+
+        const indent = "  ".repeat(depth);
+        const elementType = element.constructor.name;
+        const visible = element.visible ? "visible" : "hidden";
+
+        try {
+            // Basic element info
+            this.extension.debugLog(`${indent}${elementType} (${visible})`);
+
+            // CSS classes if available
+            if (element.get_style_class_name) {
+                const styleClasses = element.get_style_class_name();
+                if (styleClasses) {
+                    this.extension.debugLog(`${indent}  CSS classes: ${styleClasses}`);
+                }
+            }
+
+            // Current style if available
+            if (element.get_style) {
+                const style = element.get_style();
+                if (style) {
+                    this.extension.debugLog(
+                        `${indent}  Style: ${style.substring(0, 100)}${style.length > 100 ? "..." : ""}`
+                    );
+                }
+            }
+
+            // Size and position
+            if (element.width !== undefined && element.height !== undefined) {
+                this.extension.debugLog(`${indent}  Size: ${element.width}x${element.height}`);
+            }
+
+            // Children count
+            if (element.get_children) {
+                const children = element.get_children();
+                this.extension.debugLog(`${indent}  Children: ${children.length}`);
+
+                // Recurse into children
+                children.forEach((child, index) => {
+                    this.extension.debugLog(`${indent}  Child ${index}:`);
+                    this._inspectElementRecursive(child, depth + 1, maxDepth);
+                });
+            }
+        } catch (e) {
+            this.extension.debugLog(`${indent}Error inspecting element: ${e}`);
         }
     }
 }

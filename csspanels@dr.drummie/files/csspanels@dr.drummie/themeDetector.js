@@ -1,6 +1,7 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
 
 /**
  * Theme Detector handles theme color and border-radius detection
@@ -20,10 +21,22 @@ class ThemeDetector {
         this.lastThemeCheck = 0;
         this.lastBorderRadiusCheck = 0;
         this.themeChangeId = null;
+        this.currentTheme = null; // Store current theme name
+
+        // Performance optimization - cache detectAllThemeProperties
+        this.themePropertiesCache = null;
+        this.lastThemePropertiesCheck = 0;
+        this.themePropertiesCacheTimeout = 30000; // Cache for 30 seconds
+
+        // Event-driven monitoring
+        this.panelSizeChangeId = null;
+        this.radiusDetectionTimeout = null;
+
+        this._printAndSaveCurrentTheme();
     }
 
     /**
-     * Setup theme change monitoring
+     * Setup theme change monitoring with event-driven approach
      */
     setup() {
         try {
@@ -31,23 +44,32 @@ class ThemeDetector {
                 this.themeChangeId = Main.themeManager.connect("theme-changed", () => {
                     this.extension.debugLog("Theme changed, re-detecting settings...");
                     this.invalidateCache();
-
-                    if (this.extension.autoDetectRadius) {
-                        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
-                            this.extension.onAutoDetectRadiusChanged();
-                            return false;
-                        });
-                    }
-
                     this.extension.cssManager.updateAllVariables();
                     this.extension.transparencyManager.applyPanelStyles();
                 });
+
+                // Event-driven panel size monitoring for radius detection
+                if (Main.panel && Main.panel.actor && this.extension.autoDetectRadius) {
+                    this.panelSizeChangeId = Main.panel.actor.connect("allocation-changed", () => {
+                        // Debounce radius detection to avoid excessive calls during resize
+                        if (this.radiusDetectionTimeout) {
+                            GLib.source_remove(this.radiusDetectionTimeout);
+                        }
+                        this.radiusDetectionTimeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                            this.extension.onAutoDetectRadiusChanged();
+                            this.radiusDetectionTimeout = null;
+                            return false;
+                        });
+                    });
+                    this.extension.debugLog("Panel size change monitoring setup for radius detection");
+                }
 
                 this.extension.debugLog("Theme change handler setup successfully");
             }
         } catch (e) {
             this.extension.debugLog("Failed to setup theme change handler:", e);
         }
+        this._printAndSaveCurrentTheme();
     }
 
     /**
@@ -63,7 +85,7 @@ class ThemeDetector {
     }
 
     /**
-     * Cleanup theme change monitoring
+     * Cleanup theme change monitoring and event-driven signals
      */
     cleanup() {
         if (this.themeChangeId && Main.themeManager) {
@@ -74,6 +96,24 @@ class ThemeDetector {
             } catch (e) {
                 this.extension.debugLog("Error cleaning up theme change handler:", e);
             }
+        }
+
+        // Cleanup panel size change signal
+        if (this.panelSizeChangeId && Main.panel && Main.panel.actor) {
+            try {
+                Main.panel.actor.disconnect(this.panelSizeChangeId);
+                this.panelSizeChangeId = null;
+                this.extension.debugLog("Panel size change handler cleaned up");
+            } catch (e) {
+                this.extension.debugLog("Error cleaning up panel size change handler:", e);
+            }
+        }
+
+        // Cleanup radius detection timeout
+        if (this.radiusDetectionTimeout) {
+            GLib.source_remove(this.radiusDetectionTimeout);
+            this.radiusDetectionTimeout = null;
+            this.extension.debugLog("Radius detection timeout cleaned up");
         }
     }
 
@@ -135,12 +175,12 @@ class ThemeDetector {
     getPanelBaseColor() {
         // Use override color if enabled
         if (this.extension.overridePanelColor) {
-            this.extension.debugLog("Using panel override color:", this.extension.chooseOverridePanelColor);
+            this.extension.debugLog("Using panel override color", this.extension.chooseOverridePanelColor);
             return this.parseColorString(this.extension.chooseOverridePanelColor);
         }
 
-        // Cache panel color for 2 seconds to avoid redundant detection
-        if (this.cachedPanelColor !== null && Date.now() - this.lastThemeCheck < 2000) {
+        // Cache panel color for 10 seconds to avoid redundant detection
+        if (this.cachedPanelColor !== null && Date.now() - this.lastThemeCheck < 10000) {
             return this.cachedPanelColor;
         }
 
@@ -183,8 +223,8 @@ class ThemeDetector {
      * @returns {number} Detected border radius in pixels
      */
     detectThemeBorderRadius() {
-        // Cache border-radius for 1 second
-        if (this.cachedBorderRadius !== null && Date.now() - this.lastBorderRadiusCheck < 1000) {
+        // Cache border-radius for 10 seconds (was 1 second - optimized for frequent calls)
+        if (this.cachedBorderRadius !== null && Date.now() - this.lastBorderRadiusCheck < 10000) {
             return this.cachedBorderRadius;
         }
 
@@ -334,6 +374,45 @@ class ThemeDetector {
             this.extension.debugLog("Notification border-radius detection failed:", e);
             return 0;
         }
+    }
+
+    /**
+     * Print and save the current GTK theme name
+     */
+    _printAndSaveCurrentTheme() {
+        try {
+            const settings = new Gio.Settings({ schema: "org.cinnamon.desktop.interface" });
+            this.currentTheme = settings.get_string("gtk-theme");
+            this.extension.debugLog(`Current GTK theme: ${this.currentTheme}`);
+        } catch (e) {
+            this.extension.debugLog("Error getting current theme:", e);
+        }
+    }
+
+    /**
+     * Centralized detection of all theme properties - caches everything without forcing theme reload
+     * Called once in extension.enable() to avoid multiple theme loading
+     */
+    detectAllThemeProperties() {
+        const now = Date.now();
+
+        // Return early if cache is still valid
+        if (this.themePropertiesCache && now - this.lastThemePropertiesCheck < this.themePropertiesCacheTimeout) {
+            this.extension.debugLog("Using cached theme properties");
+            return;
+        }
+
+        this.extension.debugLog("Detecting all theme properties at once to avoid multiple theme loads");
+
+        // Detect and cache all properties at once (theme loads automatically when accessing elements)
+        this.getPanelBaseColor(); // Caches panelColor
+        this.detectThemeBorderRadius(); // Caches borderRadius
+
+        // Cache the detection timestamp
+        this.themePropertiesCache = true;
+        this.lastThemePropertiesCheck = now;
+
+        this.extension.debugLog("All theme properties detected and cached");
     }
 }
 

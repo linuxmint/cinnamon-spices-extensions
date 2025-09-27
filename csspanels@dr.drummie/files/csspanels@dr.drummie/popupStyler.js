@@ -3,18 +3,19 @@ const Main = imports.ui.main;
 const PopupMenu = imports.ui.popupMenu;
 const Applet = imports.ui.applet;
 const Panel = imports.ui.panel;
+const StylerBase = require("./stylerBase");
 
 /**
  * Popup Styler handles popup menu transparency and blur effects
  * Uses monkey patching to intercept popup menu creation
  */
-class PopupStyler {
+class PopupStyler extends StylerBase {
     /**
      * Initialize Popup Styler
      * @param {Object} extension - Reference to main extension instance
      */
     constructor(extension) {
-        this.extension = extension;
+        super(extension, "PopupStyler");
         this.originalPopupMenuOpen = null;
         this.activePopupMenus = new Map();
     }
@@ -23,8 +24,9 @@ class PopupStyler {
      * Enable popup menu styling
      */
     enable() {
+        super.enable();
         this.setupPopupMenuMonkeyPatch();
-        this.extension.debugLog("Popup styler enabled");
+        this.debugLog("Popup styler enabled");
     }
 
     /**
@@ -33,7 +35,8 @@ class PopupStyler {
     disable() {
         this.restorePopupMenuMonkeyPatch();
         this.cleanupActiveMenus();
-        this.extension.debugLog("Popup styler disabled");
+        this.debugLog("Popup styler disabled");
+        super.disable();
     }
 
     /**
@@ -44,23 +47,23 @@ class PopupStyler {
             // Store reference to original method
             this.originalPopupMenuOpen = PopupMenu.PopupMenu.prototype.open;
             let self = this;
-            
+
             // Override the open method to intercept menu creation
             PopupMenu.PopupMenu.prototype.open = function (animate) {
-                self.extension.debugLog("Monkey patch: Popup menu opened");
-                
+                //self.extension.debugLog("Monkey patch: Popup menu opened");
+
                 // Check if this is a menu we want to style
                 if (self.shouldStyleMenu(this)) {
                     self.stylePopupMenu(this);
                 }
-                
+
                 // Call the original method
                 self.originalPopupMenuOpen.call(this, animate);
             };
-            
-            this.extension.debugLog("Popup menu monkey patch setup successfully");
+
+            this.debugLog("Popup menu monkey patch setup successfully");
         } catch (e) {
-            this.extension.debugLog("Error setting up popup menu monkey patch:", e);
+            this.debugLog("Error setting up popup menu monkey patch:", e);
         }
     }
 
@@ -78,9 +81,10 @@ class PopupStyler {
             menu instanceof PopupMenu.PopupSubMenu ||
             menu.sourceActor === this.extension.systemIndicator.indicator ||
             (menu.sourceActor && menu.sourceActor.get_parent && this.isElementInPanel(menu.sourceActor)) ||
-            (menu.actor && menu.actor.get_parent() && 
-             menu.actor.get_parent().get_style_class_name && 
-             menu.actor.get_parent().get_style_class_name().includes("panel")) ||
+            (menu.actor &&
+                menu.actor.get_parent() &&
+                menu.actor.get_parent().get_style_class_name &&
+                menu.actor.get_parent().get_style_class_name().includes("panel")) ||
             (menu.box && menu.actor)
         );
     }
@@ -92,34 +96,36 @@ class PopupStyler {
      */
     isElementInPanel(element) {
         if (!element) return false;
-        
+
         let current = element;
         let depth = 0;
         const MAX_DEPTH = 10;
-        
+
         while (current && depth < MAX_DEPTH) {
             // Check if current element is a panel
             if (current === Main.panel.actor || (Main.panel2 && current === Main.panel2.actor)) {
-                this.extension.debugLog("Element found in panel at depth:", depth);
+                //this.extension.debugLog("Element found in panel at depth:", depth);
                 return true;
             }
-            
+
             // Check style classes
             if (current.get_style_class_name) {
                 let styleClasses = current.get_style_class_name();
-                if (styleClasses && 
+                if (
+                    styleClasses &&
                     (styleClasses.includes("panel") ||
-                     styleClasses.includes("panel-button") ||
-                     styleClasses.includes("applet-box"))) {
-                    this.extension.debugLog("Element found in panel via style class:", styleClasses);
+                        styleClasses.includes("panel-button") ||
+                        styleClasses.includes("applet-box"))
+                ) {
+                    //this.extension.debugLog("Element found in panel via style class:", styleClasses);
                     return true;
                 }
             }
-            
+
             current = current.get_parent();
             depth++;
         }
-        
+
         return false;
     }
 
@@ -129,51 +135,48 @@ class PopupStyler {
      */
     stylePopupMenu(menu) {
         if (!menu || !menu.actor) {
-            this.extension.debugLog("stylePopupMenu: Invalid menu or actor");
+            this.debugLog("stylePopupMenu: Invalid menu or actor");
             return;
         }
-        
+
         try {
-            this.extension.debugLog("stylePopupMenu: Styling popup menu");
-            
+            //this.extension.debugLog("stylePopupMenu: Styling popup menu");
+
             if (!this.activePopupMenus.has(menu)) {
                 let originalData = {
                     boxStyle: menu.box ? menu.box.get_style() : null,
                     actorStyle: menu.actor.get_style(),
                     boxColor: menu.box ? menu.box.get_background_color() : null,
                     boxStyleClasses: menu.box ? menu.box.get_style_class_name() : null,
-                    actorStyleClasses: menu.actor.get_style_class_name()
+                    actorStyleClasses: menu.actor.get_style_class_name(),
                 };
-                
+
                 this.activePopupMenus.set(menu, originalData);
-                
+
                 // Connect to close signals for cleanup
                 this.setupMenuCloseHandlers(menu);
             }
-            
+
             let panelColor = this.extension.themeDetector.getPanelBaseColor();
             let menuColor = this.extension.cssManager.getMenuColor(panelColor);
-            
+
             this.extension.cssManager.updateAllVariables();
-            
-            // Enhanced blur radius for menus
-            let menuBlurRadius = Math.round(this.extension.blurRadius * 0.9);
-            let backdropFilter = `blur(${menuBlurRadius}px) saturate(${this.extension.blurSaturate}) contrast(${this.extension.blurContrast}) brightness(${this.extension.blurBrightness})`;
-            
-            let blurMenuStyle = `
-                background-color: rgba(${menuColor.r}, ${menuColor.g}, ${menuColor.b}, ${this.extension.menuOpacity}) !important;
-                backdrop-filter: ${backdropFilter} !important;
-                -webkit-backdrop-filter: ${backdropFilter} !important;
-                opacity: ${this.extension.blurOpacity} !important;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-                border-radius: ${this.extension.borderRadius}px !important;
-                border: ${this.extension.blurBorderWidth}px solid ${this.extension.blurBorderColor} !important;
-            `;
-            
-            this.applyStyleToMenuElements(menu, blurMenuStyle);
-            
+
+            // Apply common blur styling using base class method
+            if (menu.box) {
+                this.applyCommonBlurStyling(
+                    menu.box,
+                    menuColor,
+                    this.extension.menuOpacity,
+                    this.getAdjustedBlurRadius("menu"),
+                    this.getAdjustedBorderRadius("menu"),
+                    this.extension.blurBorderColor,
+                    this.extension.blurBorderWidth,
+                    "menu"
+                );
+            }
         } catch (e) {
-            this.extension.debugLog("Error styling popup menu:", e);
+            this.debugLog("Error styling popup menu:", e);
         }
     }
 
@@ -186,21 +189,21 @@ class PopupStyler {
         if (menu.box) {
             menu.box.add_style_class_name("transparency-menu-blur");
             menu.box.add_style_class_name("profile-custom");
-            
+
             if (!this.extension.cssManager.hasBackdropFilter) {
                 menu.box.add_style_class_name("transparency-fallback-blur");
             }
-            
+
             menu.box.set_style(style);
         }
-        
+
         menu.actor.add_style_class_name("transparency-menu-blur");
         menu.actor.add_style_class_name("profile-custom");
-        
+
         if (!this.extension.cssManager.hasBackdropFilter) {
             menu.actor.add_style_class_name("transparency-fallback-blur");
         }
-        
+
         menu.actor.set_style(style);
     }
 
@@ -214,7 +217,7 @@ class PopupStyler {
                 this.cleanupPopupMenu(menu);
             });
         }
-        
+
         if (!menu._transparencyStateConnection) {
             menu._transparencyStateConnection = menu.connect("open-state-changed", (menu, open) => {
                 if (!open) {
@@ -232,23 +235,33 @@ class PopupStyler {
         try {
             let originalData = this.activePopupMenus.get(menu);
             if (originalData) {
-                this.restorePopupMenuStyle(menu, originalData);
+                // Use fade-out to prevent flicker when restoring original style
+                if (menu.box && menu.box.get_stage()) {
+                    this.restoreElementWithFade(menu.box, true, () => {
+                        this.restorePopupMenuStyle(menu, originalData);
+                        this.debugLog("Popup menu restored with fade-out transition");
+                    });
+                } else {
+                    // Fallback to immediate restore if box is not available
+                    this.restorePopupMenuStyle(menu, originalData);
+                    this.debugLog("Popup menu restored immediately (no stage)");
+                }
+
                 this.activePopupMenus.delete(menu);
-                this.extension.debugLog("cleanupPopupMenu: Menu cleanup completed");
             }
-            
+
             // Disconnect our signals
             if (menu._transparencyCloseConnection) {
                 menu.disconnect(menu._transparencyCloseConnection);
                 menu._transparencyCloseConnection = null;
             }
-            
+
             if (menu._transparencyStateConnection) {
                 menu.disconnect(menu._transparencyStateConnection);
                 menu._transparencyStateConnection = null;
             }
         } catch (e) {
-            this.extension.debugLog("Error cleaning up popup menu:", e);
+            this.debugLog("Error cleaning up popup menu:", e);
         }
     }
 
@@ -267,24 +280,24 @@ class PopupStyler {
                     menu.box.set_background_color(null);
                 }
                 if (originalData.boxStyleClasses) menu.box.set_style_class_name(originalData.boxStyleClasses);
-                
+
                 // Remove our style classes
                 menu.box.remove_style_class_name("transparency-menu-blur");
                 menu.box.remove_style_class_name("transparency-fallback-blur");
                 menu.box.remove_style_class_name("profile-custom");
             }
-            
+
             if (menu.actor) {
                 menu.actor.set_style(originalData.actorStyle || "");
                 if (originalData.actorStyleClasses) menu.actor.set_style_class_name(originalData.actorStyleClasses);
-                
+
                 // Remove our style classes
                 menu.actor.remove_style_class_name("transparency-menu-blur");
                 menu.actor.remove_style_class_name("transparency-fallback-blur");
                 menu.actor.remove_style_class_name("profile-custom");
             }
         } catch (e) {
-            this.extension.debugLog("Error restoring popup menu style:", e);
+            this.debugLog("Error restoring popup menu style:", e);
         }
     }
 
@@ -296,10 +309,10 @@ class PopupStyler {
             if (this.originalPopupMenuOpen) {
                 PopupMenu.PopupMenu.prototype.open = this.originalPopupMenuOpen;
                 this.originalPopupMenuOpen = null;
-                this.extension.debugLog("Popup menu monkey patch restored");
+                this.debugLog("Popup menu monkey patch restored");
             }
         } catch (e) {
-            this.extension.debugLog("Error restoring popup menu monkey patch:", e);
+            this.debugLog("Error restoring popup menu monkey patch:", e);
         }
     }
 
@@ -314,20 +327,28 @@ class PopupStyler {
     }
 
     /**
+     * Refresh popup menu styling when settings change
+     */
+    refresh() {
+        super.refresh();
+        this.refreshActiveMenus();
+    }
+
+    /**
      * Refresh all currently active popup menus
      */
     refreshActiveMenus() {
         try {
-            this.extension.debugLog(`Refreshing ${this.activePopupMenus.size} active popup menus`);
-            
+            this.debugLog(`Refreshing ${this.activePopupMenus.size} active popup menus`);
+
             this.activePopupMenus.forEach((originalData, menu) => {
                 if (menu && menu.actor && menu.actor.visible) {
-                    this.extension.debugLog("Re-styling active popup menu");
+                    //this.debugLog("Re-styling active popup menu");
                     this.stylePopupMenu(menu);
                 }
             });
         } catch (e) {
-            this.extension.debugLog("Error refreshing active popup menus:", e);
+            this.debugLog("Error refreshing active popup menus:", e);
         }
     }
 }
