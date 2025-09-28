@@ -10,14 +10,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-09-06 23:46-0400\n"
-"PO-Revision-Date: 2025-02-13 23:42+0100\n"
+"PO-Revision-Date: 2025-09-28 04:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: Odyssey <odysseyhyd@gmail.com>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. metadata.json->name
 msgid "Desktop Cube"
@@ -122,17 +122,18 @@ msgstr ""
 "s'utilitzi per a canviar l'espai de treball actual"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->description
-#, fuzzy
 msgid "Use Cube effect when switching workspaces using touchpad gestures"
 msgstr ""
-"Utilitza l'efecte de cub quan un canvi de focus causi un canvi d'espai de "
-"treball"
+"Utilitza l'efecte de cub quan es canviï d'espai de treball mitjançant gestos "
+"del touchpad"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->tooltip
 msgid ""
 "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
 "will use the Cube effect"
 msgstr ""
+"Sobreescriu l'API WorkspaceSwitchAction de manera que els gestos de touchpad "
+"de canvi d'espai de treball utilitzin l'efecte de cub"
 
 #. 5.4->settings-schema.json->header2->description
 msgid "Effect Easing"
