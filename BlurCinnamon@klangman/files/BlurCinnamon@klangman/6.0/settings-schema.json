@@ -734,7 +734,7 @@
 
    "notification-test-button" : {
       "type" : "button",
-      "description" : "Sent a test notification",
+      "description" : "Send a test notification",
       "callback" : "on_notification_test_button_pressed",
       "tooltip" : "This button will cause a notification message to appear so you can see how your notification setting behave."
     },
