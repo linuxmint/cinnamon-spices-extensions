@@ -1119,6 +1119,19 @@ class BlurPopupMenus extends BlurBase {
 
       // Update the accent dimming color
       this._accentColor = this._getColor( blendColor, accentOpacity );
+
+      // If the options to allow theme overrides is disabled, remove theme overrides
+      if (!settings.allowTransparentColorPopup) {
+         debugMsg( "Removing theme override for popup menus" );
+         let menus = this._menus;
+         if (menus) {
+            for (let i=0 ; i < menus.length ; i++) {
+               if (menus[i].box._blurCinnamonData) {
+                  this._restoreMenuStyle(menus[i]);
+               }
+            }
+         }
+      }
    }
 
    destroy() {
@@ -1485,7 +1498,7 @@ class BlurSettings {
       this.settings.bind('popup-radius',         'popupRadius',        updatePopupEffects);
       this.settings.bind('popup-blendColor',     'popupBlendColor',    updatePopupEffects);
       this.settings.bind('popup-saturation',     'popupSaturation',    updatePopupEffects);
-      this.settings.bind('allow-transparent-color-popup', 'allowTransparentColorPopup');
+      this.settings.bind('allow-transparent-color-popup', 'allowTransparentColorPopup', updatePopupEffects);
 
       this.settings.bind('desktop-opacity',       'desktopOpacity',      updateDesktopEffects);
       this.settings.bind('desktop-blurType',      'desktopBlurType',     updateDesktopEffects);
@@ -1763,6 +1776,8 @@ function disable() {
    if (settings.enableAppswitcherEffects) {
       delete AppSwitcher3D.AppSwitcher3D.prototype._oldInit;
       AppSwitcher3D.AppSwitcher3D.prototype._init = originalInitAppSwitcher3D;
+      delete AppSwitcher3D.AppSwitcher3D.prototype._oldHide;
+      AppSwitcher3D.AppSwitcher3D.prototype._hide = originalHideAppSwitcher3D;
    }
 
    if (blurPanels) {

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.2
+
+* When the theme override option is disabled, restore the theme's menu settings
+* Fix an issue with Alt-Tab support after the extension is reloaded (after an update) or disabled
+* Fix a typo in Notifications settings tab (Sent -> Send)
+
 ## 1.5.1
 
 * Fix 1.5.0 regression, a missing function left out of the 1.5.0 merge into the spices repo
@@ -10,7 +16,7 @@
 * Added the ability to apply effects to the Notification popups (disabled by default)
 * Added the ability to apply effects to the Panel Tooltip popups (disabled by default)
 * Added a welcome Notification popup with a button to open the configuration window
-* Added a panel option to restore the default (solid) look of the panel(s) when a window is maximized
+* Added a panel option to restore the default (solid) look of the panel(s) when a window is maximized (thanks to [decsny](https://github.com/decsny) for some code)
 * Fixed an issue where a blurred element remains visible after a menu is closed (thanks to [SpeeQz1](https://github.com/SpeeQz1) for the bug report)
 * Fixed an issue where some signals are not disconnected when disabling the extension
 * Rewrote some parts of the code to make it easier to maintain and reduce code duplication

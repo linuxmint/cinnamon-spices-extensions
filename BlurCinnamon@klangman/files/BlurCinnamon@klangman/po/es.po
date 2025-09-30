@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-23 09:24-0400\n"
+"POT-Creation-Date: 2025-09-30 09:50-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.7\n"
 
-#. 6.0/extension.js:1739
+#. 6.0/extension.js:1752
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:1740
+#. 6.0/extension.js:1753
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -40,15 +40,15 @@ msgstr ""
 "realizar cambios en las propiedades de los efectos, como la intensidad del "
 "desenfoque, la saturación del color y el oscurecimiento."
 
-#. 6.0/extension.js:1744
+#. 6.0/extension.js:1757
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir configuración de desenfoque de Cinnamon"
 
-#. 6.0/extension.js:1808
+#. 6.0/extension.js:1823
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:1809
+#. 6.0/extension.js:1824
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -736,7 +736,8 @@ msgid "Dim background Image (percentage)"
 msgstr "Atenuar Imagen de fondo (porcentaje)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
-msgid "Sent a test notification"
+#, fuzzy
+msgid "Send a test notification"
 msgstr "Enviar una notificación de prueba"
 
 #. 6.0->settings-schema.json->notification-test-button->tooltip
