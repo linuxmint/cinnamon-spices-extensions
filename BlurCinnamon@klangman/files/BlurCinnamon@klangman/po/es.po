@@ -736,9 +736,8 @@ msgid "Dim background Image (percentage)"
 msgstr "Atenuar Imagen de fondo (porcentaje)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
-#, fuzzy
 msgid "Send a test notification"
-msgstr "Enviar una notificación de prueba"
+msgstr "Emitir una notificación de prueba"
 
 #. 6.0->settings-schema.json->notification-test-button->tooltip
 msgid ""
