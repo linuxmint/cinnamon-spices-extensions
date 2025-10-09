@@ -1,0 +1,195 @@
+//!/usr/bin/cjs
+/* Auto Move Windows
+ * Move and resize newly opened application windows according to per-app rules.
+ *
+ * Runtime contract (short):
+ * - Inputs: extension settings key `app-rules` (array of rule objects). Each rule is expected to include
+ *   a `wmClass` string and optional `workspace`, `x`, `y`, `width`, `height`, `firstOnly` fields.
+ * - Behavior: when a new MetaWindow is added, find the matching rule (case-insensitive by WM_CLASS)
+ *   and, if found, optionally switch workspace and move/resize the window.
+ * - Error modes: malformed or missing rules are skipped; exceptions are caught and logged via global.logError.
+ *
+ * Rule object example:
+ * { wmClass: "Firefox", workspace: 1, x: 100, y: 50, width: 1200, height: 800, firstOnly: true }
+ * Notes:
+ * - WM_CLASS matching is performed case-insensitively by comparing lowercased strings.
+ * - `firstOnly` prevents the rule from being applied to more than one window instance. The runtime tracks
+ *   the first-applied MetaWindow reference and frees the lock when that window is removed.
+ */
+
+const Main = imports.ui.main;
+const Settings = imports.ui.settings;
+const SignalManager = imports.misc.signalManager;
+const Meta = imports.gi.Meta;
+const GLib = imports.gi.GLib;
+
+const UUID = 'auto-move-windows@JeffHanna';
+
+let extensionInstance = null;
+
+class AutoMoveWindows {
+    constructor(metadata) {
+        this._meta = metadata;
+        this._settings = null;
+        this._signals = null;
+        // Map wmClass -> metaWindow for rules with firstOnly=true (so we only act on the first instance)
+        // NOTE: keys stored here are lowercased wmClass values (for case-insensitive matching).
+        this._firstAppliedMap = new Map();
+    }
+
+    enable() {
+        this._settings = new Settings.ExtensionSettings(this, this._meta.uuid);
+        this._signals = new SignalManager.SignalManager(null);
+
+        // Listen for new windows
+        this._signals.connect(global.screen, 'window-added', this._onWindowAdded, this);
+        // Listen for window removals so we can free first-instance locks
+        this._signals.connect(global.screen, 'window-removed', this._onWindowRemoved, this);
+
+        // Optionally connect to existing windows to track removals (not strictly required)
+        // and ensure map is clean if extension is enabled after windows exist.
+        let windows = global.display.list_windows(0);
+        for (let i = 0; i < windows.length; i++) {
+            // no per-window signals needed here
+        }
+    }
+
+    disable() {
+        if (this._signals) {
+            this._signals.disconnectAllSignals();
+            this._signals = null;
+        }
+        if (this._settings) {
+            this._settings = null;
+        }
+        this._firstAppliedMap.clear();
+    }
+
+    _onWindowAdded(screen, metaWindow, monitorIndex) {
+        try {
+            if (!metaWindow)
+                return;
+
+            // Obtain the WM_CLASS for the window. Not all windows expose this; bail out if missing.
+            const wmClass = metaWindow.get_wm_class && metaWindow.get_wm_class();
+            if (!wmClass)
+                return;
+
+            // Skip special windows
+            const type = metaWindow.get_window_type();
+            if (type === Meta.WindowType.DESKTOP || type === Meta.WindowType.DOCK || type === Meta.WindowType.SPLASHSCREEN)
+                return;
+
+            // Load rules and prepare a lowercased key for case-insensitive matching. We create
+            // transient copies (shallow) so we don't mutate the stored settings.
+            const rules = (this._settings.getValue('app-rules') || []).map(r => {
+                if (r && r.wmClass) {
+                    let copy = Object.assign({}, r);
+                    copy._wmClassLower = String(r.wmClass).toLowerCase();
+                    return copy;
+                }
+                return r;
+            });
+            const wmLower = String(wmClass).toLowerCase();
+            // Exact match on the normalized lowercased WM_CLASS value.
+            const rule = rules.find(r => r && r._wmClassLower === wmLower);
+            if (!rule)
+                return;
+
+            // firstOnly handling: if we've already applied and the tracked window still exists, skip
+            // If rule.firstOnly is set, ensure we haven't already applied this rule to another window.
+            if (rule.firstOnly) {
+                if (this._firstAppliedMap.has(wmLower))
+                    return; // skip if another instance is active
+            }
+
+            // Wait a short time so the window has been fully mapped and its frame exists
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+                try {
+                    // If rule specifies a workspace (non-null, non-undefined, and >= 0)
+                    if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
+                        // Change workspace before resize/position
+                        if (metaWindow.change_workspace_by_index) {
+                            metaWindow.change_workspace_by_index(rule.workspace, false);
+                        } else if (metaWindow.change_workspace) {
+                            // fallback: get workspace object
+                            const ws = global.workspace_manager.get_workspace_by_index(rule.workspace);
+                            if (ws)
+                                metaWindow.change_workspace(ws);
+                        }
+                    }
+
+                    // Apply geometry if provided
+                    const hasGeom = Number.isFinite(rule.width) && Number.isFinite(rule.height);
+                    if (hasGeom) {
+                        const x = Number.isFinite(rule.x) ? rule.x : 0;
+                        const y = Number.isFinite(rule.y) ? rule.y : 0;
+                        const width = Math.max(1, rule.width);
+                        const height = Math.max(1, rule.height);
+
+                        // move_resize_frame is commonly available in Cinnamon extensions
+                        if (metaWindow.move_resize_frame) {
+                            // attempt to unmaximize/untile first so move works
+                            try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
+                            try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
+                            metaWindow.move_resize_frame(true, x, y, width, height);
+                        }
+                    }
+
+                    // Mark first-instance as applied. Store by lowercased wmClass to match lookup.
+                    if (rule.firstOnly) {
+                        this._firstAppliedMap.set(wmLower, metaWindow);
+                    }
+                } catch (e) {
+                    global.logError(e);
+                }
+
+                return GLib.SOURCE_REMOVE;
+            });
+        } catch (e) {
+            global.logError(e);
+        }
+    }
+
+    _onWindowRemoved(screen, metaWindow, monitorIndex) {
+        // If the removed window was the one we used to satisfy a firstOnly rule, free the lock
+        try {
+            if (!metaWindow)
+                return;
+
+            // Iterate entries and remove any that reference this metaWindow
+            for (let [key, tracked] of this._firstAppliedMap) {
+                if (tracked === metaWindow) {
+                    this._firstAppliedMap.delete(key);
+                }
+            }
+        } catch (e) {
+            global.logError(e);
+        }
+    }
+}
+
+function init(metadata) {
+    extensionInstance = new AutoMoveWindows(metadata);
+}
+
+function enable() {
+    try {
+        extensionInstance.enable();
+    } catch (e) {
+        global.logError(e);
+        disable();
+        throw e;
+    }
+}
+
+function disable() {
+    try {
+        if (extensionInstance)
+            extensionInstance.disable();
+    } catch (e) {
+        global.logError(e);
+    } finally {
+        extensionInstance = null;
+    }
+}
