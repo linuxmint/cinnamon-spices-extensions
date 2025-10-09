@@ -1,0 +1,11 @@
+{
+  "general-header": {
+    "type": "header",
+    "description": "Per-application rules: when an app opens, move/resize it and optionally only act on the first instance"
+  },
+
+  "app-rules": {
+    "type": "generic",
+    "default": []
+  }
+}
