@@ -1,7 +1,7 @@
 {
   "layout" : {
     "type" : "layout",
-    "pages" : ["general-page", "effects-page", "application-page", "random-page", "about-page"],
+    "pages" : ["general-page", "effects-page", "application-page", "random-page", "power-page", "about-page"],
 
     "general-page" : {
       "type" : "page",
@@ -22,6 +22,11 @@
       "type" : "page",
       "title" : "Random Effects",
       "sections" : ["random-section"]
+    },
+    "power-page" : {
+      "type" : "page",
+      "title" : "Power",
+      "sections" : ["power-section", "power-dialog-section"]
     },
     "about-page" : {
       "type" : "page",
@@ -89,6 +94,17 @@
       "type" : "section",
       "title" : "Effects included in the randomized sets:",
       "keys" : ["random-include", "random-buttons"]
+    },
+    "power-section" : {
+      "type" : "section",
+      "title" : "Manage Burn-My-Windows power consumption",
+      "keys" : ["power-onbattery", "power-percent", "power-open-effect", "power-close-effect", "power-minimize-effect", "power-unminimize-effect"]
+    },
+    "power-dialog-section": {
+      "type" : "section",
+      "title" : "",
+      "keys" : ["power-dialog-special", "power-dialog-open-effect", "power-dialog-close-effect"],
+      "dependency" : "power-onbattery=true"
     },
     "about-section" : {
       "type" : "section",
@@ -517,6 +533,230 @@
       "None": 1000
     },
     "description": "Unminimize window effect"
+  },
+
+  "power-open-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Open window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-close-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Close window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-minimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Minimize window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-unminimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Unminimize window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-dialog-special": {
+    "type" : "switch",
+    "description": "Special handling for dialog windows",
+    "tooltip": "Allows you to define special settings for handling dialog window types (i.e. file open dialog windows).",
+     "default": false
+  },
+
+  "power-dialog-open-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Open dialog window effect",
+    "dependency" : "power-dialog-special=true"
+  },
+
+  "power-dialog-close-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "Apparition": 0,
+      "Aura Glow": 22,
+      "Doom": 2,
+      "Energize A": 3,
+      "Energize B": 4,
+      "Fire": 5,
+      "Focus": 21,
+      "Glide": 6,
+      "Glitch": 7,
+      "Hexagon": 8,
+      "Incinerate": 9,
+      "Magic Lamp": 26,
+      "Mushroom": 25,
+      "Pixelate": 12,
+      "Pixel Wheel": 13,
+      "Pixel Wipe": 14,
+      "Portal": 15,
+      "RGB Warp": 24,
+      "Team Rocket": 23,
+      "TV Effect": 18,
+      "TV Glitch": 19,
+      "Wisps": 20,
+      "Randomized": 999,
+      "None": 1000
+    },
+    "description": "Close dialog window effect",
+    "dependency" : "power-dialog-special=true"
+  },
+
+  "power-onbattery": {
+    "type" : "switch",
+    "description": "Use different effects when running on battery power",
+    "tooltip" : "When enabled, a set of options will appear allowing you to define which effects (if any) will be used when running on battery power and the battery charge state is less than the set limit. These settings will take precedence over both the general settings and any application specific settings when the battery charge state condition is met.",
+    "default": false
+  },
+
+  "power-percent": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "When battery is less than (percent)",
+     "min" : 0,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "power-onbattery=true",
+     "default": 50
   },
 
   "apparition-shake-intensity": {
