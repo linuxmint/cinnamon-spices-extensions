@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.7\n"
 
 #. 6.2/extension.js:208 6.2/extension.js:286 6.2/extension.js:614
 msgid "Error"
@@ -528,7 +528,7 @@ msgstr "Efectos aleatorios"
 
 #. 6.2->settings-schema.json->power-page->title
 msgid "Power"
-msgstr ""
+msgstr "Energía"
 
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
@@ -561,7 +561,7 @@ msgstr "Efectos incluidos en las series aleatorias:"
 
 #. 6.2->settings-schema.json->power-section->title
 msgid "Manage Burn-My-Windows power consumption"
-msgstr ""
+msgstr "Gestionar el consumo energético de Burn-My-Windows"
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
@@ -785,19 +785,16 @@ msgid "Unminimize window effect"
 msgstr "Maximizar el efecto ventana"
 
 #. 6.2->settings-schema.json->power-dialog-special->tooltip
-#, fuzzy
 msgid ""
 "Allows you to define special settings for handling dialog window types (i.e. "
 "file open dialog windows)."
 msgstr ""
-"Le permite definir configuraciones especiales para manejar tipos de ventanas "
-"de diálogo (por ejemplo, ventanas de diálogo de apertura de archivos). Estos "
-"ajustes anularán los ajustes específicos de la aplicación que se hayan "
-"definido."
+"Le permite definir ajustes especiales para gestionar los tipos de ventanas "
+"de diálogo (por ejemplo, ventanas de diálogo para abrir archivos)."
 
 #. 6.2->settings-schema.json->power-onbattery->description
 msgid "Use different effects when running on battery power"
-msgstr ""
+msgstr "Utiliza diferentes efectos cuando funcionas con batería"
 
 #. 6.2->settings-schema.json->power-onbattery->tooltip
 msgid ""
@@ -807,10 +804,16 @@ msgid ""
 "over both the general settings and any application specific settings when "
 "the battery charge state condition is met."
 msgstr ""
+"Cuando se activa, aparecerá un conjunto de opciones que le permitirán "
+"definir qué efectos (si los hay) se utilizarán cuando se utilice la batería "
+"y el estado de carga de la batería sea inferior al límite establecido. Estos "
+"ajustes tendrán prioridad sobre los ajustes generales y los ajustes "
+"específicos de cualquier aplicación cuando se cumpla la condición del estado "
+"de carga de la batería."
 
 #. 6.2->settings-schema.json->power-percent->description
 msgid "When battery is less than (percent)"
-msgstr ""
+msgstr "Cuando la batería está por debajo del (porcentaje)"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
@@ -1128,7 +1131,7 @@ msgid ""
 msgstr ""
 "El borde del monitor desde el que debe originarse una ventana al abrirse, o "
 "hacia el que debe desaparecer al cerrarse. Esta configuración no se utiliza "
-"para minimizar o desminimizar eventos."
+"para minimizar o desminimizar eventos"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->description
 msgid "Open/Close Edge Offset"
