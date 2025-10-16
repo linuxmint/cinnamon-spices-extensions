@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-07-06 16:15-0400\n"
+"POT-Creation-Date: 2025-10-15 21:53-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,33 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. 6.2/extension.js:193 6.2/extension.js:268 6.2/extension.js:579
+#. 6.2/extension.js:208 6.2/extension.js:286 6.2/extension.js:614
 msgid "Error"
 msgstr "Hiba"
 
-#. 6.2/extension.js:193
+#. 6.2/extension.js:208
 msgid "was NOT enabled"
 msgstr "NEM volt engedélyezve"
 
-#. 6.2/extension.js:194 6.2/extension.js:269
+#. 6.2/extension.js:209 6.2/extension.js:287
 msgid "The existing extension"
 msgstr "A meglévő bővítmény"
 
-#. 6.2/extension.js:194
+#. 6.2/extension.js:209
 msgid "conflicts with this extension."
 msgstr "ütközik ezzel a bővitménnyel."
 
-#. 6.2/extension.js:268
+#. 6.2/extension.js:286
 msgid "minimize/unminimize effects can not be enabled"
 msgstr "effektusok minimalizálása/minimalizálása nem engedélyezhető"
 
-#. 6.2/extension.js:269
+#. 6.2/extension.js:287
 msgid "already handles minimize/unminimize animation events."
 msgstr ""
 "már kezeli az animációs események minimalizálását/minimalizálásának "
 "megszüntetését."
 
-#. 6.2/extension.js:580
+#. 6.2/extension.js:615
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore application specific effects can not be applied to "
@@ -61,6 +61,12 @@ msgstr ""
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Apparition.js:94
 msgid "Apparition"
 msgstr "Megjelenik"
@@ -72,6 +78,12 @@ msgstr "Megjelenik"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/AuraGlow.js:103
 msgid "Aura Glow"
 msgstr "Aura ragyogás"
@@ -87,6 +99,12 @@ msgstr "Törött üveg"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Doom.js:101
 msgid "Doom"
 msgstr "Doom"
@@ -98,6 +116,12 @@ msgstr "Doom"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/EnergizeA.js:90
 msgid "Energize A"
 msgstr "Energizálja A"
@@ -109,6 +133,12 @@ msgstr "Energizálja A"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/EnergizeB.js:92
 msgid "Energize B"
 msgstr "Energizálja B"
@@ -120,6 +150,12 @@ msgstr "Energizálja B"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Fire.js:127
 msgid "Fire"
 msgstr "Tűz"
@@ -161,6 +197,12 @@ msgstr "Nukleáris"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
 msgstr "Fókusz"
@@ -172,6 +214,12 @@ msgstr "Fókusz"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Glide.js:93
 msgid "Glide"
 msgstr "Siklik"
@@ -183,6 +231,12 @@ msgstr "Siklik"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Glitch.js:97
 msgid "Glitch"
 msgstr "Glitch"
@@ -194,6 +248,12 @@ msgstr "Glitch"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Hexagon.js:106
 msgid "Hexagon"
 msgstr "Hatszög"
@@ -205,6 +265,12 @@ msgstr "Hatszög"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Incinerate.js:144
 msgid "Incinerate"
 msgstr "Felgyújt"
@@ -220,6 +286,12 @@ msgstr "Mátrix"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Mushroom.js:154
 msgid "Mushroom"
 msgstr "Gomba"
@@ -275,6 +347,12 @@ msgstr "Ecset"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/PixelWheel.js:88
 msgid "Pixel Wheel"
 msgstr "Pixeles Kerék"
@@ -286,6 +364,12 @@ msgstr "Pixeles Kerék"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/PixelWipe.js:114
 msgid "Pixel Wipe"
 msgstr "Pixeles Törlés"
@@ -297,6 +381,12 @@ msgstr "Pixeles Törlés"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Pixelate.js:88
 msgid "Pixelate"
 msgstr "Pixelesít"
@@ -308,6 +398,12 @@ msgstr "Pixelesít"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Portal.js:99
 msgid "Portal"
 msgstr "Portál"
@@ -319,6 +415,12 @@ msgstr "Portál"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/RGBWarp.js:91
 msgid "RGB Warp"
 msgstr "RGB csavart"
@@ -338,6 +440,12 @@ msgstr "T-Rex támadás"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/TVEffect.js:90
 msgid "TV Effect"
 msgstr "TV effektus"
@@ -349,6 +457,12 @@ msgstr "TV effektus"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/TVGlitch.js:99
 msgid "TV Glitch"
 msgstr "TV Glitch"
@@ -360,6 +474,12 @@ msgstr "TV Glitch"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/TeamRocket.js:103
 msgid "Team Rocket"
 msgstr "Team Rocket"
@@ -371,6 +491,12 @@ msgstr "Team Rocket"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Wisps.js:101
 msgid "Wisps"
 msgstr "Foszlányok"
@@ -403,6 +529,10 @@ msgstr "Alkalmazásspecifikus"
 msgid "Random Effects"
 msgstr "Véletlen effektusok"
 
+#. 6.2->settings-schema.json->power-page->title
+msgid "Power"
+msgstr ""
+
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
 msgstr "Névjegy"
@@ -431,6 +561,10 @@ msgstr "Az egyéni előbeállítás beállítása:"
 #. 6.2->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
 msgstr "A véletlenszerű készletekben szereplő effektusok:"
+
+#. 6.2->settings-schema.json->power-section->title
+msgid "Manage Burn-My-Windows power consumption"
+msgstr ""
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
@@ -564,6 +698,12 @@ msgstr "    Minimalizálás megszüntetése    "
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 msgid "Magic Lamp"
 msgstr "Varázslámpa"
 
@@ -577,6 +717,12 @@ msgstr "A hatás beállításainak megjelenítése:"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 msgid "Randomized"
 msgstr "Véletlenszerű"
 
@@ -586,18 +732,27 @@ msgstr "Véletlenszerű"
 #. 6.2->settings-schema.json->dialog-close-effect->options
 #. 6.2->settings-schema.json->minimize-effect->options
 #. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
 msgid "None"
 msgstr "Semmi"
 
 #. 6.2->settings-schema.json->open-window-effect->description
+#. 6.2->settings-schema.json->power-open-effect->description
 msgid "Open window effect"
 msgstr "Megnyitás ablak effektusa"
 
 #. 6.2->settings-schema.json->close-window-effect->description
+#. 6.2->settings-schema.json->power-close-effect->description
 msgid "Close window effect"
 msgstr "Bezárás ablak effektusa"
 
 #. 6.2->settings-schema.json->dialog-special->description
+#. 6.2->settings-schema.json->power-dialog-special->description
 msgid "Special handling for dialog windows"
 msgstr "Speciális kezelés párbeszédablakokhoz"
 
@@ -612,20 +767,51 @@ msgstr ""
 "felülírják az esetlegesen meghatározott alkalmazásspecifikus beállításokat."
 
 #. 6.2->settings-schema.json->dialog-open-effect->description
+#. 6.2->settings-schema.json->power-dialog-open-effect->description
 msgid "Open dialog window effect"
 msgstr "Megnyitás párbeszédablak effektusa"
 
 #. 6.2->settings-schema.json->dialog-close-effect->description
+#. 6.2->settings-schema.json->power-dialog-close-effect->description
 msgid "Close dialog window effect"
 msgstr "Bezárás párbeszédablak effektusa"
 
 #. 6.2->settings-schema.json->minimize-effect->description
+#. 6.2->settings-schema.json->power-minimize-effect->description
 msgid "Minimize window effect"
 msgstr "Ablak effektus minimalizálás"
 
 #. 6.2->settings-schema.json->unminimize-effect->description
+#. 6.2->settings-schema.json->power-unminimize-effect->description
 msgid "Unminimize window effect"
 msgstr "Ablak effektus minimalizálás megszüntetése"
+
+#. 6.2->settings-schema.json->power-dialog-special->tooltip
+#, fuzzy
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows)."
+msgstr ""
+"Lehetővé teszi speciális beállítások megadását a párbeszédablak-típusok "
+"kezeléséhez (azaz fájlmegnyitási párbeszédablakokhoz). Ezek a beállítások "
+"felülírják az esetlegesen meghatározott alkalmazásspecifikus beállításokat."
+
+#. 6.2->settings-schema.json->power-onbattery->description
+msgid "Use different effects when running on battery power"
+msgstr ""
+
+#. 6.2->settings-schema.json->power-onbattery->tooltip
+msgid ""
+"When enabled, a set of options will appear allowing you to define which "
+"effects (if any) will be used when running on battery power and the battery "
+"charge state is less than the set limit. These settings will take precedence "
+"over both the general settings and any application specific settings when "
+"the battery charge state condition is met."
+msgstr ""
+
+#. 6.2->settings-schema.json->power-percent->description
+msgid "When battery is less than (percent)"
+msgstr ""
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
