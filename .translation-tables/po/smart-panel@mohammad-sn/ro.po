@@ -1,0 +1,304 @@
+# SMART PANEL
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: 2022-08-06 15:49+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Comută între spațiile de lucru, afișează biroul, activează prezentarea "
+"generală sau expo, ... prin derulare, dublu clic, gesturi ale mouse-ului "
+"etc. pe spațiul liber al panoului."
+
+#. metadata.json->name
+msgid "Smart Panel"
+msgstr "Panou inteligent"
+
+#. settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Opțiuni de defilare a mouse-ului: "
+
+#. settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Acțiune la derulare: "
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Comută între spațiile de lucru"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Reglează opacitatea ferestrelor"
+
+#. settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Comută afișare desktop"
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Comută între ferestre"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->scroll-action->options
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "None"
+msgstr "Nici unul"
+
+#. settings-schema.json->prev-fast-scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Împiedică comutarea accidentală a spațiului de lucru/ferestrei la defilarea "
+"rapidă"
+
+#. settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Întârziere minimă între derulări: "
+
+#. settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "milisecunde"
+
+#. settings-schema.json->sep-scroll-action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Acțiuni independente pentru defilarea în sus și în jos"
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
+
+#. settings-schema.json->scroll-action-up->description
+msgid "Action on scrolling up: "
+msgstr "Acțiune de derulare în sus: "
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Expo"
+msgstr "Expo"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Overview"
+msgstr "Prezentare generală"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Launch App Switcher"
+msgstr "Lansează App Switcher"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Show Desktop"
+msgstr "Afișare desktop"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 1st Custom Command"
+msgstr "Rulează prima comandă personalizată"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Execută a doua comandă personalizată"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Execută a treia comandă personalizată"
+
+#. settings-schema.json->scroll-action-down->description
+msgid "Action on scrolling down: "
+msgstr "Acțiune de derulare în jos: "
+
+#. settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Opțiuni de clic al mouse-ului: "
+
+#. settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Acțiune la dublu clic pe panou: "
+
+#. settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Acțiune la clicul din mijloc al panoului: "
+
+#. settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Gesturi ale mouse-ului: "
+
+#. settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Utilizează gesturile mouse-ului pe panou"
+
+#. settings-schema.json->to-right-action->description
+#, fuzzy
+msgid "↦ Dragging to the right: "
+msgstr "â¦ Tragerea spre dreapta: "
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Mergi la spațiul de lucru din stânga"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Mergi la primul spațiu de lucru"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Mergi la spațiul de lucru din dreapta"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Mergi la ultimul spațiu de lucru"
+
+#. settings-schema.json->to-left-action->description
+#, fuzzy
+msgid "↤ Dragging to the left: "
+msgstr "â¤ Tragerea spre stânga: "
+
+#. settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Fă clic pe marginea ecranului și trage pe verticală: "
+
+#. settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Comenzi personalizate: "
+
+#. settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "Prima comandă personalizată: "
+
+#. settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "A doua comandă personalizată: "
+
+#. settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "A treia comandă personalizată: "
+
+#. settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Setări Comutator de aplicații: "
+
+#. settings-schema.json->appswitcher-style->description
+msgid "App switcher style: "
+msgstr "Stilul comutatorului de aplicații: "
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Doar pictograme"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Doar miniaturi"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Pictograme și miniaturi"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Pictograme și previzualizare a ferestrelor"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Previzualizare fereastră (fără pictograme)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Coverflow (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Cronologie (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Implicit sistem"
+
+#. settings-schema.json->appswitcher-scope->description
+msgid "Switch between windows from: "
+msgstr "Comută între ferestre de la: "
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Spațiul de lucru curent"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Toate spațiile de lucru"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Aplicație curentă"
+
+#. settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "La apăsarea unei taste modificatoare, comută între ferestre din: "
+
+#. settings-schema.json->appswitcher-modifier->description
+msgid "Modifier key: "
+msgstr "Tasta modificatoare: "
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr "Schimbul"
