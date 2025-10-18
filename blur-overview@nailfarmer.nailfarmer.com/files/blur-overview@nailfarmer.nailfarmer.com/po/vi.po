@@ -1,0 +1,91 @@
+# BLUR OVERVIEW
+# This file is put in the public domain.
+# nailfarmer, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: blur-overview@nailfarmer.nailfarmer.com 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Tổng quan Làm mờ"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur and adjust the dimming of the overview's background "
+"(window selection screen)"
+msgstr "Cho phép bạn làm mờ và điều chỉnh độ tối của nền tổng quan (màn hình chọn cửa sổ)"
+
+#. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr "Cài đặt Tổng quan Làm mờ (màn hình chọn cửa sổ)"
+
+#. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr "Làm tối Nền (phần trăm)"
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr "Làm mờ Nền"
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr "Bật hiệu ứng pha trộn màu"
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+"Sử dụng màu tùy chỉnh làm màu lớp phủ làm tối. Cường độ màu có thể được điều "
+"khiển bằng thanh trượt \"Làm tối Nền\" ở trên"
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr "Màu hiệu ứng Pha trộn"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr "Không"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr "Đơn giản"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr "Gaussian"
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr "Loại hiệu ứng làm mờ"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr "Loại thuật toán làm mờ nào nên được sử dụng để làm mờ nền"
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr "Cường độ làm mờ Gaussian"
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
+"Điều chỉnh cường độ của hiệu ứng làm mờ bằng cách thay đổi bán kính được sử "
+"dụng bởi hiệu ứng."

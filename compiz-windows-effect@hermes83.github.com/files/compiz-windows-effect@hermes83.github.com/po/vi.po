@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-30 18:25+0000\n"
+"PO-Revision-Date: 2025-10-19 02:27+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Hiệu ứng cửa sổ Compiz"
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr "Hiệu ứng cửa sổ rung lắc Compiz nhờ vào công cụ plugin compiz"
+
+#. settings-schema.json->friction->description
+msgid "Friction"
+msgstr "Ma sát"
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "Hằng số Lò xo K"
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup Factor"
+msgstr "Hệ số Tăng tốc"
+
+#. settings-schema.json->mass->description
+msgid "Mass"
+msgstr "Khối lượng"
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles"
+msgstr "Ô X"
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles"
+msgstr "Ô Y"
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "Hệ số Phóng to và Thu nhỏ"

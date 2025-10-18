@@ -1,0 +1,86 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2025-10-19 02:58+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Bán kính"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Mờ dần trên"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "Độ lệch X"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Độ lệch Y"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Độ mờ"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Tên Lớp"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Trạng thái"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Nhập"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Xuất"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Đặt từ..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Chọn nơi lưu cấu hình của bạn"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Chọn một cấu hình để tải"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Đổ bóng Người dùng"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Tùy chỉnh đổ bóng của cửa sổ cinnamon"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Thiết lập đổ bóng"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Mặc định"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Không đổ bóng"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Tùy chỉnh"
