@@ -13,6 +13,8 @@ Each rule object has this shape (fields are optional unless noted):
 - `workspace` (integer, optional): 0-based workspace index to move the window to.
 - `x`, `y` (integer, optional): top-left coordinates where the window should be placed.
 - `width`, `height` (integer, optional): desired width/height in pixels.
+- `maximized` (boolean, optional): if `true`, the window will be maximized (fullscreen). This takes precedence over `x`, `y`, `width`, and `height`.
+- `maximizeVertically` (boolean, optional): if `true`, the window will be maximized vertically (full height) but will respect the `width` setting. The `height` value is ignored. Requires `width` to be specified.
 - `firstOnly` (boolean, optional): if `true`, the extension only acts on the first instance of the app; subsequent windows are ignored until that window closes.
 
 Example `app-rules` JSON:
@@ -33,6 +35,18 @@ Example `app-rules` JSON:
     "width": 1000,
     "height": 700,
     "firstOnly": true
+  },
+  {
+    "wmClass": "Chrome",
+    "workspace": 0,
+    "maximized": true
+  },
+  {
+    "wmClass": "Kitty",
+    "workspace": 3,
+    "x": 1280,
+    "width": 3626,
+    "maximizeVertically": true
   }
 ]
 

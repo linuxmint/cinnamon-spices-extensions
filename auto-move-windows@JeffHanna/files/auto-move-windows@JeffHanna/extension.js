@@ -4,17 +4,21 @@
  *
  * Runtime contract (short):
  * - Inputs: extension settings key `app-rules` (array of rule objects). Each rule is expected to include
- *   a `wmClass` string and optional `workspace`, `x`, `y`, `width`, `height`, `firstOnly` fields.
+ *   a `wmClass` string and optional `workspace`, `x`, `y`, `width`, `height`, `maximized`, `maximizeVertically`, `firstOnly` fields.
  * - Behavior: when a new MetaWindow is added, find the matching rule (case-insensitive by WM_CLASS)
- *   and, if found, optionally switch workspace and move/resize the window.
+ *   and, if found, optionally switch workspace and move/resize/maximize the window.
  * - Error modes: malformed or missing rules are skipped; exceptions are caught and logged via global.logError.
  *
  * Rule object example:
  * { wmClass: "Firefox", workspace: 1, x: 100, y: 50, width: 1200, height: 800, firstOnly: true }
+ * { wmClass: "Chrome", workspace: 0, maximized: true, firstOnly: false }
+ * { wmClass: "Terminal", workspace: 1, x: 0, width: 1920, maximizeVertically: true }
  * Notes:
  * - WM_CLASS matching is performed case-insensitively by comparing lowercased strings.
  * - `firstOnly` prevents the rule from being applied to more than one window instance. The runtime tracks
  *   the first-applied MetaWindow reference and frees the lock when that window is removed.
+ * - `maximized` takes precedence over all geometry settings - if true, the window is fully maximized.
+ * - `maximizeVertically` maximizes height only; requires `width` to be set, and `height` is ignored.
  */
 
 const Main = imports.ui.main;
@@ -22,8 +26,6 @@ const Settings = imports.ui.settings;
 const SignalManager = imports.misc.signalManager;
 const Meta = imports.gi.Meta;
 const GLib = imports.gi.GLib;
-
-const UUID = 'auto-move-windows@JeffHanna';
 
 let extensionInstance = null;
 
@@ -101,6 +103,8 @@ class AutoMoveWindows {
             if (rule.firstOnly) {
                 if (this._firstAppliedMap.has(wmLower))
                     return; // skip if another instance is active
+                // Mark first-instance as applied immediately to prevent race conditions
+                this._firstAppliedMap.set(wmLower, metaWindow);
             }
 
             // Wait a short time so the window has been fully mapped and its frame exists
@@ -119,26 +123,53 @@ class AutoMoveWindows {
                         }
                     }
 
-                    // Apply geometry if provided
-                    const hasGeom = Number.isFinite(rule.width) && Number.isFinite(rule.height);
-                    if (hasGeom) {
-                        const x = Number.isFinite(rule.x) ? rule.x : 0;
-                        const y = Number.isFinite(rule.y) ? rule.y : 0;
-                        const width = Math.max(1, rule.width);
-                        const height = Math.max(1, rule.height);
+                    // Check if window should be maximized
+                    if (rule.maximized === true) {
+                        // Maximize the window fully (ignore x, y, width, height if present)
+                        try {
+                            metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
+                        } catch (e) {
+                            global.logError(e);
+                        }
+                    } else if (rule.maximizeVertically === true && Number.isFinite(rule.width)) {
+                        // Maximize vertically but respect width (and x if provided)
+                        try {
+                            const x = Number.isFinite(rule.x) ? rule.x : 0;
+                            const width = Math.max(1, rule.width);
 
-                        // move_resize_frame is commonly available in Cinnamon extensions
-                        if (metaWindow.move_resize_frame) {
-                            // attempt to unmaximize/untile first so move works
+                            // First unmaximize and untile
                             try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
                             try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
-                            metaWindow.move_resize_frame(true, x, y, width, height);
-                        }
-                    }
 
-                    // Mark first-instance as applied. Store by lowercased wmClass to match lookup.
-                    if (rule.firstOnly) {
-                        this._firstAppliedMap.set(wmLower, metaWindow);
+                            // Set the horizontal position and width
+                            if (metaWindow.move_resize_frame) {
+                                // Get current geometry to preserve y position temporarily
+                                const currentRect = metaWindow.get_frame_rect();
+                                metaWindow.move_resize_frame(true, x, currentRect.y, width, currentRect.height);
+                            }
+
+                            // Then maximize vertically
+                            metaWindow.maximize(Meta.MaximizeFlags.VERTICAL);
+                        } catch (e) {
+                            global.logError(e);
+                        }
+                    } else {
+                        // Apply geometry if provided
+                        const hasGeom = Number.isFinite(rule.width) && Number.isFinite(rule.height);
+                        if (hasGeom) {
+                            const x = Number.isFinite(rule.x) ? rule.x : 0;
+                            const y = Number.isFinite(rule.y) ? rule.y : 0;
+                            const width = Math.max(1, rule.width);
+                            const height = Math.max(1, rule.height);
+
+                            // move_resize_frame is commonly available in Cinnamon extensions
+                            if (metaWindow.move_resize_frame) {
+                                // attempt to unmaximize/untile first so move works
+                                try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
+                                try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
+                                metaWindow.move_resize_frame(true, x, y, width, height);
+                            }
+                        }
                     }
                 } catch (e) {
                     global.logError(e);
