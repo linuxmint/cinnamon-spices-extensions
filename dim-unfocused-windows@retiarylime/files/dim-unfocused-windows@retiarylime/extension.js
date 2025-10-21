@@ -31,6 +31,8 @@ DimUnfocusedWindowsExtension.prototype = {
         this.animationTime = 300;
         this.animationType = "easeInOutQuad";
         this.excludeDialogs = true;
+        this.toggleKeybinding = "<Super><Shift>d";
+        this.dimmingEnabled = true;
         
         // Settings - try to bind with error handling
         try {
@@ -40,6 +42,7 @@ DimUnfocusedWindowsExtension.prototype = {
             this.settings.bind("animation-time", "animationTime", this._onSettingsChanged);
             this.settings.bind("animation-type", "animationType", this._onSettingsChanged);
             this.settings.bind("exclude-dialogs", "excludeDialogs", this._onSettingsChanged);
+            this.settings.bind("toggle-keybinding", "toggleKeybinding", this._onKeybindingChanged);
         } catch (e) {
             global.log("[" + UUID + "] Settings binding failed, using defaults: " + e);
         }
@@ -58,6 +61,9 @@ DimUnfocusedWindowsExtension.prototype = {
         this._signals.connect(global.display, 'window-created', 
                              this._onWindowCreated, this);
         
+        // Set up keybinding
+        this._setupKeybinding();
+        
         // Initialize existing windows
         this._initializeExistingWindows();
         
@@ -70,6 +76,9 @@ DimUnfocusedWindowsExtension.prototype = {
         
         // Restore all windows
         this._restoreAllWindows();
+        
+        // Clean up keybinding
+        this._cleanupKeybinding();
         
         // Disconnect signals
         if (this._signals) {
@@ -161,6 +170,39 @@ DimUnfocusedWindowsExtension.prototype = {
         global.log("[" + UUID + "] Applied dimming to '" + windowTitle + "' (opacity: " + targetOpacity + ", brightness: " + brightness + ")");
     },
     
+    _onKeybindingChanged: function() {
+        // Clean up old keybinding and set up new one
+        this._cleanupKeybinding();
+        this._setupKeybinding();
+    },
+    
+    _setupKeybinding: function() {
+        if (this.toggleKeybinding && this.toggleKeybinding !== "") {
+            Main.keybindingManager.addHotKey(UUID + "-toggle", this.toggleKeybinding, () => {
+                this._toggleDimming();
+            });
+            global.log("[" + UUID + "] Keybinding set up: " + this.toggleKeybinding);
+        }
+    },
+    
+    _cleanupKeybinding: function() {
+        Main.keybindingManager.removeHotKey(UUID + "-toggle");
+        global.log("[" + UUID + "] Keybinding cleaned up");
+    },
+    
+    _toggleDimming: function() {
+        this.dimmingEnabled = !this.dimmingEnabled;
+        global.log("[" + UUID + "] Dimming " + (this.dimmingEnabled ? "enabled" : "disabled") + " via keybinding");
+        
+        if (this.dimmingEnabled) {
+            // Re-enable dimming
+            this._dimUnfocusedWindows();
+        } else {
+            // Disable dimming - restore all windows
+            this._restoreAllWindows();
+        }
+    },
+    
     _initializeExistingWindows: function() {
         let windows = global.get_window_actors();
         
@@ -215,6 +257,10 @@ DimUnfocusedWindowsExtension.prototype = {
     },
     
     _dimUnfocusedWindows: function() {
+        if (!this.dimmingEnabled) {
+            return;
+        }
+        
         let windows = global.get_window_actors();
         let dimmedCount = 0;
         let restoredCount = 0;
@@ -309,8 +355,17 @@ DimUnfocusedWindowsExtension.prototype = {
         if (!window || window.is_skip_taskbar()) return false;
         
         let windowType = window.window_type;
+        
+        // Always dim NORMAL and UTILITY windows
         if (windowType === Meta.WindowType.NORMAL || 
             windowType === Meta.WindowType.UTILITY) {
+            return true;
+        }
+        
+        // Dim dialog windows only if exclude-dialogs is disabled
+        if (!this.excludeDialogs && 
+            (windowType === Meta.WindowType.DIALOG || 
+             windowType === Meta.WindowType.MODAL_DIALOG)) {
             return true;
         }
         

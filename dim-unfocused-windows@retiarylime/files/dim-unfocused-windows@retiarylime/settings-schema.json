@@ -1,27 +1,27 @@
 {
     "section-opacity": {
         "type": "section",
-        "description": "Window Effects"
+        "description": "Unfocused Window Effects"
     },
 
     "opacity": {
         "type": "scale",
-        "description": "Opacity for unfocused windows",
+        "description": "Opacity",
         "min": 0,
         "max": 100,
         "default": 70,
         "step": 5,
-        "tooltip": "Opacity level for unfocused windows (0% = fully transparent, 100% = fully opaque)"
+        "tooltip": "0% = fully transparent, 100% = fully opaque"
     },
 
     "brightness": {
         "type": "scale",
-        "description": "Brightness for unfocused windows",
+        "description": "Brightness",
         "min": 0,
         "max": 100,
         "default": 70,
         "step": 5,
-        "tooltip": "Brightness level for unfocused windows (0% = completely dark, 100% = full brightness)"
+        "tooltip": "0% = completely dark, 100% = full brightness"
     },
 
     "section-animation": {
@@ -57,7 +57,7 @@
 
     "section-advanced": {
         "type": "section",
-        "description": "Advanced Settings"
+        "description": "Other Settings"
     },
 
     "exclude-dialogs": {
