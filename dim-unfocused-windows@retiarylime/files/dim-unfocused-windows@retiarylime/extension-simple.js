@@ -9,6 +9,7 @@ const Meta = imports.gi.Meta;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
 const Tweener = imports.ui.tweener;
+const Settings = imports.ui.settings;
 
 let extension = null;
 
@@ -23,9 +24,24 @@ DimUnfocusedWindowsExtension.prototype = {
         this._windowStates = new Map();
         this._activeWindow = null;
         
-        // Fixed settings - no complex binding for now
-        this.dimOpacity = 70; // 70% opacity
-        this.animationTime = 300; // 300ms
+        // Set default values first
+        this.dimOpacity = 70;
+        this.animationTime = 300;
+        this.animationType = "easeInOutQuad";
+        this.dimMinimized = false;
+        this.excludeDialogs = true;
+        
+        // Settings - try to bind with error handling
+        try {
+            this.settings = new Settings.ExtensionSettings(this, UUID);
+            this.settings.bind("dim-opacity", "dimOpacity", this._onSettingsChanged);
+            this.settings.bind("animation-time", "animationTime", this._onSettingsChanged);
+            this.settings.bind("animation-type", "animationType", this._onSettingsChanged);
+            this.settings.bind("dim-minimized", "dimMinimized", this._onSettingsChanged);
+            this.settings.bind("exclude-dialogs", "excludeDialogs", this._onSettingsChanged);
+        } catch (e) {
+            global.log("[" + UUID + "] Settings binding failed, using defaults: " + e);
+        }
         
         global.log("[" + UUID + "] Extension initialized with opacity: " + this.dimOpacity + "%");
     },
@@ -62,6 +78,20 @@ DimUnfocusedWindowsExtension.prototype = {
         // Clean up
         this._windowStates.clear();
         this._activeWindow = null;
+        
+        // Finalize settings
+        if (this.settings) {
+            this.settings.finalize();
+            this.settings = null;
+        }
+    },
+    
+    _onSettingsChanged: function() {
+        global.log("[" + UUID + "] Settings changed - opacity: " + this.dimOpacity + "%, animation: " + this.animationTime + "ms");
+        // Reapply dimming with new settings
+        if (this._activeWindow) {
+            this._dimUnfocusedWindows();
+        }
     },
     
     _initializeExistingWindows: function() {
@@ -158,8 +188,15 @@ DimUnfocusedWindowsExtension.prototype = {
             
             global.log("[" + UUID + "] Dimming '" + windowTitle + "' from " + actor.opacity + " to " + targetOpacity);
             
-            actor.opacity = targetOpacity;
-            state.isDimmed = true;
+            // Use smooth animation
+            Tweener.addTween(actor, {
+                opacity: targetOpacity,
+                time: this.animationTime / 1000,
+                transition: 'easeInOutQuad',
+                onComplete: () => {
+                    state.isDimmed = true;
+                }
+            });
         }
     },
     
@@ -176,10 +213,17 @@ DimUnfocusedWindowsExtension.prototype = {
         let windowTitle = window.get_title().substring(0, 30) + "...";
         global.log("[" + UUID + "] Restoring '" + windowTitle + "' from " + actor.opacity + " to 255");
         
-        actor.opacity = 255;
-        if (state) {
-            state.isDimmed = false;
-        }
+        // Use smooth animation
+        Tweener.addTween(actor, {
+            opacity: 255,
+            time: this.animationTime / 1000,
+            transition: 'easeInOutQuad',
+            onComplete: () => {
+                if (state) {
+                    state.isDimmed = false;
+                }
+            }
+        });
     },
     
     _restoreAllWindows: function() {
