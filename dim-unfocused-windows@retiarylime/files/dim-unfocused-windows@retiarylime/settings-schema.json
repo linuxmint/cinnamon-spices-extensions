@@ -4,14 +4,31 @@
         "description": "Opacity Settings"
     },
 
-    "dim-opacity": {
+    "dim-enabled": {
+        "type": "checkbox",
+        "description": "Enable dimming of unfocused windows",
+        "default": true,
+        "tooltip": "Toggle dimming on or off"
+    },
+
+    "opacity": {
         "type": "scale",
-        "description": "Opacity percentage for unfocused windows",
-        "min": 10,
-        "max": 95,
-        "default": 70,
+        "description": "Base opacity for unfocused windows",
+        "min": 50,
+        "max": 100,
+        "default": 100,
         "step": 5,
-        "tooltip": "Controls how dim unfocused windows appear. Lower values = more transparent."
+        "tooltip": "Base opacity level for unfocused windows before dimming."
+    },
+
+    "dim": {
+        "type": "scale",
+        "description": "Dimming level",
+        "min": 0,
+        "max": 50,
+        "default": 30,
+        "step": 5,
+        "tooltip": "Amount to reduce opacity for unfocused windows."
     },
 
     "section-animation": {

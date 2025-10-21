@@ -25,7 +25,9 @@ DimUnfocusedWindowsExtension.prototype = {
         this._activeWindow = null;
         
         // Set default values first
-        this.dimOpacity = 70;
+        this.dimEnabled = true;
+        this.opacity = 100;
+        this.dimLevel = 30;
         this.animationTime = 300;
         this.animationType = "easeInOutQuad";
         this.dimMinimized = false;
@@ -34,7 +36,9 @@ DimUnfocusedWindowsExtension.prototype = {
         // Settings - try to bind with error handling
         try {
             this.settings = new Settings.ExtensionSettings(this, UUID);
-            this.settings.bind("dim-opacity", "dimOpacity", this._onSettingsChanged);
+            this.settings.bind("dim-enabled", "dimEnabled", this._onSettingsChanged);
+            this.settings.bind("opacity", "opacity", this._onSettingsChanged);
+            this.settings.bind("dim", "dimLevel", this._onSettingsChanged);
             this.settings.bind("animation-time", "animationTime", this._onSettingsChanged);
             this.settings.bind("animation-type", "animationType", this._onSettingsChanged);
             this.settings.bind("dim-minimized", "dimMinimized", this._onSettingsChanged);
@@ -43,7 +47,7 @@ DimUnfocusedWindowsExtension.prototype = {
             global.log("[" + UUID + "] Settings binding failed, using defaults: " + e);
         }
         
-        global.log("[" + UUID + "] Extension initialized with opacity: " + this.dimOpacity + "%");
+        global.log("[" + UUID + "] Extension initialized with opacity: " + this.opacity + "%, dim: " + this.dimLevel + "%");
     },
     
     enable: function() {
@@ -86,16 +90,40 @@ DimUnfocusedWindowsExtension.prototype = {
         }
     },
     
-    _onSettingsChanged: function() {
-        global.log("[" + UUID + "] Settings changed - opacity: " + this.dimOpacity + "%, animation: " + this.animationTime + "ms");
+        _onSettingsChanged: function() {
+        global.log("[" + UUID + "] Settings changed - enabled: " + this.dimEnabled + ", opacity: " + this.opacity + "%, dim: " + this.dimLevel + "%, animation: " + this.animationTime + "ms");
+        
+        if (!this.dimEnabled) {
+            this._restoreAllWindows();
+            return;
+        }
+        
+        // Update focused window to full opacity
+        if (this._activeWindow) {
+            let actor = this._activeWindow.get_compositor_private();
+            if (actor) {
+                Tweener.removeTweens(actor);
+                Tweener.addTween(actor, {
+                    opacity: 255,
+                    time: this.animationTime / 1000,
+                    transition: 'easeInOutQuad'
+                });
+                let windowTitle = this._activeWindow.get_title().substring(0, 30) + "...";
+                global.log("[" + UUID + "] Updated focused '" + windowTitle + "' to full opacity");
+            }
+        }
         
         // Immediately update all currently dimmed windows with new opacity
-        let targetOpacity = Math.round(255 * (this.dimOpacity / 100));
+        let unfocusedOpacity = Math.max(10, this.opacity - this.dimLevel);
+        let targetOpacity = Math.round(255 * (unfocusedOpacity / 100));
         
         for (let [window, state] of this._windowStates) {
             if (state.isDimmed) {
                 let actor = window.get_compositor_private();
                 if (actor) {
+                    // Stop any existing animations to prevent flickering
+                    Tweener.removeTweens(actor);
+                    
                     // Apply new opacity immediately with animation
                     Tweener.addTween(actor, {
                         opacity: targetOpacity,
@@ -104,7 +132,7 @@ DimUnfocusedWindowsExtension.prototype = {
                     });
                     
                     let windowTitle = window.get_title().substring(0, 30) + "...";
-                    global.log("[" + UUID + "] Updated '" + windowTitle + "' to new opacity: " + targetOpacity);
+                    global.log("[" + UUID + "] Updated dimmed '" + windowTitle + "' to new opacity: " + targetOpacity);
                 }
             }
         }
@@ -168,6 +196,11 @@ DimUnfocusedWindowsExtension.prototype = {
     },
     
     _dimUnfocusedWindows: function() {
+        if (!this.dimEnabled) {
+            this._restoreAllWindows();
+            return;
+        }
+        
         let windows = global.get_window_actors();
         let dimmedCount = 0;
         let restoredCount = 0;
@@ -204,7 +237,8 @@ DimUnfocusedWindowsExtension.prototype = {
         }
         
         if (state && !state.isDimmed) {
-            let targetOpacity = Math.round(255 * (this.dimOpacity / 100));
+            let unfocusedOpacity = Math.max(10, this.opacity - this.dimLevel);
+            let targetOpacity = Math.round(255 * (unfocusedOpacity / 100));
             let windowTitle = window.get_title().substring(0, 30) + "...";
             
             global.log("[" + UUID + "] Dimming '" + windowTitle + "' from " + actor.opacity + " to " + targetOpacity);
@@ -231,12 +265,13 @@ DimUnfocusedWindowsExtension.prototype = {
             state = this._windowStates.get(window);
         }
         
+        let targetOpacity = 255;
         let windowTitle = window.get_title().substring(0, 30) + "...";
-        global.log("[" + UUID + "] Restoring '" + windowTitle + "' from " + actor.opacity + " to 255");
+        global.log("[" + UUID + "] Restoring '" + windowTitle + "' from " + actor.opacity + " to " + targetOpacity);
         
         // Use smooth animation
         Tweener.addTween(actor, {
-            opacity: 255,
+            opacity: targetOpacity,
             time: this.animationTime / 1000,
             transition: 'easeInOutQuad',
             onComplete: () => {
@@ -248,16 +283,17 @@ DimUnfocusedWindowsExtension.prototype = {
     },
     
     _restoreAllWindows: function() {
+        let targetOpacity = 255;
         for (let [window, state] of this._windowStates) {
-            if (state.isDimmed) {
+            if (state.isDimmed || true) {  // Restore all to full opacity
                 let actor = window.get_compositor_private();
                 if (actor) {
-                    actor.opacity = 255;
+                    actor.opacity = targetOpacity;
                     state.isDimmed = false;
                 }
             }
         }
-        global.log("[" + UUID + "] Restored all windows");
+        global.log("[" + UUID + "] Restored all windows to " + targetOpacity);
     },
     
     _shouldDimWindow: function(window) {
