@@ -1,45 +1,27 @@
 {
     "section-opacity": {
         "type": "section",
-        "description": "Opacity Settings"
-    },
-
-    "dim-enabled": {
-        "type": "checkbox",
-        "description": "Enable dimming of unfocused windows",
-        "default": true,
-        "tooltip": "Toggle dimming on or off"
-    },
-
-    "dimming-mode": {
-        "type": "combobox",
-        "description": "Dimming method",
-        "default": "opacity",
-        "options": {
-            "Reduce opacity": "opacity",
-            "Reduce brightness": "brightness"
-        },
-        "tooltip": "Choose whether to dim windows by reducing opacity or brightness"
+        "description": "Window Effects"
     },
 
     "opacity": {
         "type": "scale",
-        "description": "Base opacity for unfocused windows",
+        "description": "Opacity for unfocused windows",
         "min": 0,
         "max": 100,
-        "default": 100,
+        "default": 70,
         "step": 5,
-        "tooltip": "Base opacity level for unfocused windows before dimming."
+        "tooltip": "Opacity level for unfocused windows (0% = fully transparent, 100% = fully opaque)"
     },
 
-    "dim": {
+    "brightness": {
         "type": "scale",
-        "description": "Dimming level",
+        "description": "Brightness for unfocused windows",
         "min": 0,
         "max": 100,
-        "default": 30,
+        "default": 70,
         "step": 5,
-        "tooltip": "Amount to reduce opacity/brightness for unfocused windows."
+        "tooltip": "Brightness level for unfocused windows (0% = completely dark, 100% = full brightness)"
     },
 
     "section-animation": {
@@ -76,13 +58,6 @@
     "section-advanced": {
         "type": "section",
         "description": "Advanced Settings"
-    },
-
-    "dim-minimized": {
-        "type": "checkbox",
-        "description": "Dim minimized windows",
-        "default": false,
-        "tooltip": "Whether to apply dimming to minimized windows"
     },
 
     "exclude-dialogs": {
