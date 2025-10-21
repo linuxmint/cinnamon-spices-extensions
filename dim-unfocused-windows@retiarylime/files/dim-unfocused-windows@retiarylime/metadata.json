@@ -1,0 +1,21 @@
+{
+    "uuid": "devtest-dim-unfocused-windows@retiarylime",
+    "name": "Dim Unfocused Windows",
+    "description": "Dim windows when they lose focus to enhance visual clarity and reduce distractions",
+    "version": "1.0",
+    "cinnamon-version": [
+        "4.0",
+        "4.2",
+        "4.4",
+        "4.6",
+        "4.8",
+        "5.0",
+        "5.2",
+        "5.4",
+        "5.6",
+        "5.8",
+        "6.0",
+        "6.2"
+    ],
+    "url": "https://github.com/retiarylime/dim-unfocused-windows"
+}
