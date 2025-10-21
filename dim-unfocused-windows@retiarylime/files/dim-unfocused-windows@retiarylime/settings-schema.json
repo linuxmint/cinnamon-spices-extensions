@@ -1,21 +1,34 @@
 {
     "section-opacity": {
         "type": "section",
-        "description": "Opacity Settings"
+        "description": "Unfocused Window Effects"
     },
-    "dim-opacity": {
+
+    "opacity": {
         "type": "scale",
-        "description": "Opacity percentage for unfocused windows",
-        "min": 10,
-        "max": 95,
+        "description": "Opacity",
+        "min": 0,
+        "max": 100,
         "default": 70,
         "step": 5,
-        "tooltip": "Controls how dim unfocused windows appear. Lower values = more transparent."
+        "tooltip": "0% = fully transparent, 100% = fully opaque"
     },
+
+    "brightness": {
+        "type": "scale",
+        "description": "Brightness",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "step": 5,
+        "tooltip": "0% = completely dark, 100% = full brightness"
+    },
+
     "section-animation": {
         "type": "section",
         "description": "Animation Settings"
     },
+
     "animation-time": {
         "type": "scale",
         "description": "Animation duration",
@@ -26,6 +39,34 @@
         "units": "ms",
         "tooltip": "Time it takes for the dimming animation to complete"
     },
+
+    "animation-type": {
+        "type": "combobox",
+        "description": "Animation type",
+        "default": "easeInOutQuad",
+        "options": {
+            "Linear": "linear",
+            "Ease In Out Quad": "easeInOutQuad",
+            "Ease Out Quad": "easeOutQuad",
+            "Ease In Quad": "easeInQuad",
+            "Ease In Out Cubic": "easeInOutCubic",
+            "Ease Out Cubic": "easeOutCubic"
+        },
+        "tooltip": "Choose the animation curve for the dimming effect"
+    },
+
+    "section-advanced": {
+        "type": "section",
+        "description": "Other Settings"
+    },
+
+    "exclude-dialogs": {
+        "type": "checkbox",
+        "description": "Exclude dialog windows",
+        "default": true,
+        "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"
+    },
+
     "toggle-keybinding": {
         "type": "keybinding",
         "description": "Toggle dimming on/off",

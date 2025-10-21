@@ -1,5 +1,5 @@
 {
-    "uuid": "devtest-dim-unfocused-windows@retiarylime",
+    "uuid": "dim-unfocused-windows@retiarylime",
     "name": "Dim Unfocused Windows",
     "description": "Dim windows when they lose focus to enhance visual clarity and reduce distractions",
     "version": "1.0",

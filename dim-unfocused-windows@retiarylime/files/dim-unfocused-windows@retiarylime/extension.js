@@ -4,12 +4,13 @@
  * This version focuses on core functionality without complex settings
  */
 
-const UUID = "devtest-dim-unfocused-windows@retiarylime";
+const UUID = "dim-unfocused-windows@retiarylime";
 const Meta = imports.gi.Meta;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
+const Clutter = imports.gi.Clutter;
 
 let extension = null;
 
@@ -25,25 +26,28 @@ DimUnfocusedWindowsExtension.prototype = {
         this._activeWindow = null;
         
         // Set default values first
-        this.dimOpacity = 70;
+        this.opacity = 70;
+        this.brightness = 70;
         this.animationTime = 300;
         this.animationType = "easeInOutQuad";
-        this.dimMinimized = false;
         this.excludeDialogs = true;
+        this.toggleKeybinding = "<Super><Shift>d";
+        this.dimmingEnabled = true;
         
         // Settings - try to bind with error handling
         try {
             this.settings = new Settings.ExtensionSettings(this, UUID);
-            this.settings.bind("dim-opacity", "dimOpacity", this._onSettingsChanged);
+            this.settings.bind("opacity", "opacity", this._onSettingsChanged);
+            this.settings.bind("brightness", "brightness", this._onSettingsChanged);
             this.settings.bind("animation-time", "animationTime", this._onSettingsChanged);
             this.settings.bind("animation-type", "animationType", this._onSettingsChanged);
-            this.settings.bind("dim-minimized", "dimMinimized", this._onSettingsChanged);
             this.settings.bind("exclude-dialogs", "excludeDialogs", this._onSettingsChanged);
+            this.settings.bind("toggle-keybinding", "toggleKeybinding", this._onKeybindingChanged);
         } catch (e) {
             global.log("[" + UUID + "] Settings binding failed, using defaults: " + e);
         }
         
-        global.log("[" + UUID + "] Extension initialized with opacity: " + this.dimOpacity + "%");
+        global.log("[" + UUID + "] Extension initialized with opacity: " + this.opacity + "%, brightness: " + this.brightness + "%");
     },
     
     enable: function() {
@@ -57,6 +61,9 @@ DimUnfocusedWindowsExtension.prototype = {
         this._signals.connect(global.display, 'window-created', 
                              this._onWindowCreated, this);
         
+        // Set up keybinding
+        this._setupKeybinding();
+        
         // Initialize existing windows
         this._initializeExistingWindows();
         
@@ -69,6 +76,9 @@ DimUnfocusedWindowsExtension.prototype = {
         
         // Restore all windows
         this._restoreAllWindows();
+        
+        // Clean up keybinding
+        this._cleanupKeybinding();
         
         // Disconnect signals
         if (this._signals) {
@@ -86,32 +96,110 @@ DimUnfocusedWindowsExtension.prototype = {
         }
     },
     
-    _onSettingsChanged: function() {
-        global.log("[" + UUID + "] Settings changed - opacity: " + this.dimOpacity + "%, animation: " + this.animationTime + "ms");
+        _onSettingsChanged: function() {
+        global.log("[" + UUID + "] Settings changed - opacity: " + this.opacity + "%, brightness: " + this.brightness + "%, animation: " + this.animationTime + "ms");
         
-        // Immediately update all currently dimmed windows with new opacity
-        let targetOpacity = Math.round(255 * (this.dimOpacity / 100));
+        // Update focused window to full brightness/opacity
+        if (this._activeWindow) {
+            let actor = this._activeWindow.get_compositor_private();
+            if (actor) {
+                Tweener.removeTweens(actor);
+                
+                // Remove brightness effect and ensure full opacity
+                let state = this._windowStates.get(this._activeWindow);
+                if (state && state.brightnessEffect) {
+                    actor.remove_effect(state.brightnessEffect);
+                    state.brightnessEffect = null;
+                }
+                actor.opacity = 255;
+                
+                let windowTitle = this._activeWindow.get_title().substring(0, 30) + "...";
+                global.log("[" + UUID + "] Updated focused '" + windowTitle + "' to full brightness");
+            }
+        }
         
+        // Immediately update all currently dimmed windows with new settings
         for (let [window, state] of this._windowStates) {
             if (state.isDimmed) {
-                let actor = window.get_compositor_private();
-                if (actor) {
-                    // Apply new opacity immediately with animation
-                    Tweener.addTween(actor, {
-                        opacity: targetOpacity,
-                        time: this.animationTime / 1000,
-                        transition: 'easeInOutQuad'
-                    });
-                    
-                    let windowTitle = window.get_title().substring(0, 30) + "...";
-                    global.log("[" + UUID + "] Updated '" + windowTitle + "' to new opacity: " + targetOpacity);
-                }
+                this._applyDimmingToWindow(window, false); // false = no animation for immediate update
             }
         }
         
         // Also reapply dimming for consistency
         if (this._activeWindow) {
             this._dimUnfocusedWindows();
+        }
+    },
+    
+    _applyDimmingToWindow: function(window, animate) {
+        let actor = window.get_compositor_private();
+        if (!actor) return;
+        
+        let state = this._windowStates.get(window);
+        if (!state) return;
+        
+        let windowTitle = window.get_title().substring(0, 30) + "...";
+        
+        // Apply opacity
+        let targetOpacity = Math.round(255 * (this.opacity / 100));
+        
+        // Apply brightness effect
+        // Remove existing brightness effect if any
+        if (state.brightnessEffect) {
+            actor.remove_effect(state.brightnessEffect);
+        }
+        
+        // Create new brightness effect: 0% = -1.0 (completely dark), 100% = 0.0 (normal brightness)
+        let brightness = (this.brightness - 100) / 100.0; // Convert 0-100% to -1.0 to 0.0
+        state.brightnessEffect = new Clutter.BrightnessContrastEffect();
+        state.brightnessEffect.set_brightness(brightness);
+        state.brightnessEffect.set_contrast(0.0); // Keep contrast normal
+        
+        actor.add_effect(state.brightnessEffect);
+        
+        if (animate) {
+            Tweener.addTween(actor, {
+                opacity: targetOpacity,
+                time: this.animationTime / 1000,
+                transition: this.animationType
+            });
+        } else {
+            actor.opacity = targetOpacity;
+        }
+        
+        global.log("[" + UUID + "] Applied dimming to '" + windowTitle + "' (opacity: " + targetOpacity + ", brightness: " + brightness + ")");
+    },
+    
+    _onKeybindingChanged: function() {
+        // Clean up old keybinding and set up new one
+        this._cleanupKeybinding();
+        this._setupKeybinding();
+    },
+    
+    _setupKeybinding: function() {
+        if (this.toggleKeybinding && this.toggleKeybinding !== "") {
+            Main.keybindingManager.addHotKey(UUID + "-toggle", this.toggleKeybinding, () => {
+                this._toggleDimming();
+            });
+            global.log("[" + UUID + "] Keybinding set up: " + this.toggleKeybinding);
+        }
+    },
+    
+    _cleanupKeybinding: function() {
+        Main.keybindingManager.removeHotKey(UUID + "-toggle");
+        global.log("[" + UUID + "] Keybinding cleaned up");
+    },
+    
+    _toggleDimming: function() {
+        this.dimmingEnabled = !this.dimmingEnabled;
+        global.log("[" + UUID + "] Dimming " + (this.dimmingEnabled ? "enabled" : "disabled") + " via keybinding");
+        
+        if (this.dimmingEnabled) {
+            // Re-enable dimming
+            this._dimUnfocusedWindows();
+        } else {
+            // Disable dimming - restore all windows
+            this._restoreAllWindows();
         }
     },
     
@@ -141,7 +229,8 @@ DimUnfocusedWindowsExtension.prototype = {
         
         this._windowStates.set(window, {
             originalOpacity: 255,
-            isDimmed: false
+            isDimmed: false,
+            brightnessEffect: null
         });
         
         this._signals.connect(window, 'unmanaged', () => {
@@ -168,6 +257,10 @@ DimUnfocusedWindowsExtension.prototype = {
     },
     
     _dimUnfocusedWindows: function() {
+        if (!this.dimmingEnabled) {
+            return;
+        }
+        
         let windows = global.get_window_actors();
         let dimmedCount = 0;
         let restoredCount = 0;
@@ -204,20 +297,8 @@ DimUnfocusedWindowsExtension.prototype = {
         }
         
         if (state && !state.isDimmed) {
-            let targetOpacity = Math.round(255 * (this.dimOpacity / 100));
-            let windowTitle = window.get_title().substring(0, 30) + "...";
-            
-            global.log("[" + UUID + "] Dimming '" + windowTitle + "' from " + actor.opacity + " to " + targetOpacity);
-            
-            // Use smooth animation
-            Tweener.addTween(actor, {
-                opacity: targetOpacity,
-                time: this.animationTime / 1000,
-                transition: 'easeInOutQuad',
-                onComplete: () => {
-                    state.isDimmed = true;
-                }
-            });
+            this._applyDimmingToWindow(window, true); // true = animate
+            state.isDimmed = true;
         }
     },
     
@@ -232,9 +313,15 @@ DimUnfocusedWindowsExtension.prototype = {
         }
         
         let windowTitle = window.get_title().substring(0, 30) + "...";
-        global.log("[" + UUID + "] Restoring '" + windowTitle + "' from " + actor.opacity + " to 255");
+        global.log("[" + UUID + "] Restoring '" + windowTitle + "' to full brightness");
         
-        // Use smooth animation
+        // Remove brightness effect if it exists
+        if (state.brightnessEffect) {
+            actor.remove_effect(state.brightnessEffect);
+            state.brightnessEffect = null;
+        }
+        
+        // Ensure full opacity
         Tweener.addTween(actor, {
             opacity: 255,
             time: this.animationTime / 1000,
@@ -249,23 +336,36 @@ DimUnfocusedWindowsExtension.prototype = {
     
     _restoreAllWindows: function() {
         for (let [window, state] of this._windowStates) {
-            if (state.isDimmed) {
-                let actor = window.get_compositor_private();
-                if (actor) {
-                    actor.opacity = 255;
-                    state.isDimmed = false;
+            let actor = window.get_compositor_private();
+            if (actor) {
+                // Remove brightness effect if it exists
+                if (state.brightnessEffect) {
+                    actor.remove_effect(state.brightnessEffect);
+                    state.brightnessEffect = null;
                 }
+                // Ensure full opacity
+                actor.opacity = 255;
+                state.isDimmed = false;
             }
         }
-        global.log("[" + UUID + "] Restored all windows");
+        global.log("[" + UUID + "] Restored all windows to full brightness");
     },
     
     _shouldDimWindow: function(window) {
         if (!window || window.is_skip_taskbar()) return false;
         
         let windowType = window.window_type;
+        
+        // Always dim NORMAL and UTILITY windows
         if (windowType === Meta.WindowType.NORMAL || 
             windowType === Meta.WindowType.UTILITY) {
+            return true;
+        }
+        
+        // Dim dialog windows only if exclude-dialogs is disabled
+        if (!this.excludeDialogs && 
+            (windowType === Meta.WindowType.DIALOG || 
+             windowType === Meta.WindowType.MODAL_DIALOG)) {
             return true;
         }
         
