@@ -4,7 +4,7 @@
  * This version focuses on core functionality without complex settings
  */
 
-const UUID = "dim-unfocused-windows@retiarylime";
+const UUID = "devtest-dim-unfocused-windows@retiarylime";
 const Meta = imports.gi.Meta;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
@@ -88,7 +88,28 @@ DimUnfocusedWindowsExtension.prototype = {
     
     _onSettingsChanged: function() {
         global.log("[" + UUID + "] Settings changed - opacity: " + this.dimOpacity + "%, animation: " + this.animationTime + "ms");
-        // Reapply dimming with new settings
+        
+        // Immediately update all currently dimmed windows with new opacity
+        let targetOpacity = Math.round(255 * (this.dimOpacity / 100));
+        
+        for (let [window, state] of this._windowStates) {
+            if (state.isDimmed) {
+                let actor = window.get_compositor_private();
+                if (actor) {
+                    // Apply new opacity immediately with animation
+                    Tweener.addTween(actor, {
+                        opacity: targetOpacity,
+                        time: this.animationTime / 1000,
+                        transition: 'easeInOutQuad'
+                    });
+                    
+                    let windowTitle = window.get_title().substring(0, 30) + "...";
+                    global.log("[" + UUID + "] Updated '" + windowTitle + "' to new opacity: " + targetOpacity);
+                }
+            }
+        }
+        
+        // Also reapply dimming for consistency
         if (this._activeWindow) {
             this._dimUnfocusedWindows();
         }
