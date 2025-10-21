@@ -11,6 +11,17 @@
         "tooltip": "Toggle dimming on or off"
     },
 
+    "dimming-mode": {
+        "type": "combobox",
+        "description": "Dimming method",
+        "default": "opacity",
+        "options": {
+            "Reduce opacity": "opacity",
+            "Reduce brightness": "brightness"
+        },
+        "tooltip": "Choose whether to dim windows by reducing opacity or brightness"
+    },
+
     "opacity": {
         "type": "scale",
         "description": "Base opacity for unfocused windows",
@@ -28,7 +39,7 @@
         "max": 100,
         "default": 30,
         "step": 5,
-        "tooltip": "Amount to reduce opacity for unfocused windows."
+        "tooltip": "Amount to reduce opacity/brightness for unfocused windows."
     },
 
     "section-animation": {
