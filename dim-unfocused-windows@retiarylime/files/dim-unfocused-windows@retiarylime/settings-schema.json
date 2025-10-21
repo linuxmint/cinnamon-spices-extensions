@@ -14,7 +14,7 @@
     "opacity": {
         "type": "scale",
         "description": "Base opacity for unfocused windows",
-        "min": 50,
+        "min": 0,
         "max": 100,
         "default": 100,
         "step": 5,
@@ -25,7 +25,7 @@
         "type": "scale",
         "description": "Dimming level",
         "min": 0,
-        "max": 50,
+        "max": 100,
         "default": 30,
         "step": 5,
         "tooltip": "Amount to reduce opacity for unfocused windows."

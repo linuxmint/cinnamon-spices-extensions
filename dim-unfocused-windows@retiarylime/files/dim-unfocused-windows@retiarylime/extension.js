@@ -114,7 +114,7 @@ DimUnfocusedWindowsExtension.prototype = {
         }
         
         // Immediately update all currently dimmed windows with new opacity
-        let unfocusedOpacity = Math.max(10, this.opacity - this.dimLevel);
+        let unfocusedOpacity = Math.max(0, this.opacity - this.dimLevel);
         let targetOpacity = Math.round(255 * (unfocusedOpacity / 100));
         
         for (let [window, state] of this._windowStates) {
@@ -237,7 +237,7 @@ DimUnfocusedWindowsExtension.prototype = {
         }
         
         if (state && !state.isDimmed) {
-            let unfocusedOpacity = Math.max(10, this.opacity - this.dimLevel);
+            let unfocusedOpacity = Math.max(0, this.opacity - this.dimLevel);
             let targetOpacity = Math.round(255 * (unfocusedOpacity / 100));
             let windowTitle = window.get_title().substring(0, 30) + "...";
             
