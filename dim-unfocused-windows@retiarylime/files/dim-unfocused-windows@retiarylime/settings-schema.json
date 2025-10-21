@@ -3,6 +3,7 @@
         "type": "section",
         "description": "Opacity Settings"
     },
+
     "dim-opacity": {
         "type": "scale",
         "description": "Opacity percentage for unfocused windows",
@@ -12,10 +13,12 @@
         "step": 5,
         "tooltip": "Controls how dim unfocused windows appear. Lower values = more transparent."
     },
+
     "section-animation": {
         "type": "section",
         "description": "Animation Settings"
     },
+
     "animation-time": {
         "type": "scale",
         "description": "Animation duration",
@@ -26,6 +29,41 @@
         "units": "ms",
         "tooltip": "Time it takes for the dimming animation to complete"
     },
+
+    "animation-type": {
+        "type": "combobox",
+        "description": "Animation type",
+        "default": "easeInOutQuad",
+        "options": {
+            "Linear": "linear",
+            "Ease In Out Quad": "easeInOutQuad",
+            "Ease Out Quad": "easeOutQuad",
+            "Ease In Quad": "easeInQuad",
+            "Ease In Out Cubic": "easeInOutCubic",
+            "Ease Out Cubic": "easeOutCubic"
+        },
+        "tooltip": "Choose the animation curve for the dimming effect"
+    },
+
+    "section-advanced": {
+        "type": "section",
+        "description": "Advanced Settings"
+    },
+
+    "dim-minimized": {
+        "type": "checkbox",
+        "description": "Dim minimized windows",
+        "default": false,
+        "tooltip": "Whether to apply dimming to minimized windows"
+    },
+
+    "exclude-dialogs": {
+        "type": "checkbox",
+        "description": "Exclude dialog windows",
+        "default": true,
+        "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"
+    },
+
     "toggle-keybinding": {
         "type": "keybinding",
         "description": "Toggle dimming on/off",

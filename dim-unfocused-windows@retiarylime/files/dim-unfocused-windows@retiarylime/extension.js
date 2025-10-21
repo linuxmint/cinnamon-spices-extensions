@@ -4,7 +4,7 @@
  * This version focuses on core functionality without complex settings
  */
 
-const UUID = "devtest-dim-unfocused-windows@retiarylime";
+const UUID = "dim-unfocused-windows@retiarylime";
 const Meta = imports.gi.Meta;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
