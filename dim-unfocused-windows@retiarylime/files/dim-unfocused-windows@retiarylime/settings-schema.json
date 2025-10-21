@@ -1,170 +1,35 @@
-{{
-
-    "layout": {    "section1": {
-
-        "type": "layout",        "type": "section",
-
-        "pages": ["general-page"],        "description": "Opacity Settings"
-
-            },
-
-        "general-page": {    "dim-opacity": {
-
-            "type": "page",        "type": "scale",
-
-            "title": "General Settings",        "default": 70,
-
-            "sections": ["opacity-settings", "animation-settings", "window-settings"]        "min": 10,
-
-        },        "max": 95,
-
-                "step": 1,
-
-        "opacity-settings": {        "description": "Dim opacity percentage (slider)",
-
-            "type": "section",        "tooltip": "Use the slider to set how transparent unfocused windows should become. Lower values make windows more transparent."
-
-            "title": "Opacity Settings",    },
-
-            "keys": ["dim-opacity"]    "dim-opacity-number": {
-
-        },        "type": "spinbutton",
-
-                "default": 70,
-
-        "animation-settings": {        "min": 10,
-
-            "type": "section",        "max": 95,
-
-            "title": "Animation Settings",        "step": 1,
-
-            "keys": ["animation-time", "animation-type"]        "description": "Dim opacity percentage (number input)",
-
-        },        "tooltip": "Enter the exact opacity percentage for unfocused windows (10-95%). This field is synchronized with the slider above."
-
-            },
-
-        "window-settings": {    "sync-note": {
-
-            "type": "section",        "type": "label",
-
-            "title": "Window Filtering",        "description": "💡 Note: The slider and number input above are synchronized - changing one will automatically update the other."
-
-            "keys": ["dim-minimized", "exclude-dialogs", "toggle-keybinding"]    },
-
-        }    "animation-time": {
-
-    },        "type": "scale",
-
-        "default": 300,
-
-    "dim-opacity": {        "min": 0,
-
-        "type": "scale",        "max": 1000,
-
-        "description": "Opacity percentage for unfocused windows",        "step": 50,
-
-        "min": 10,        "units": "ms",
-
-        "max": 95,        "description": "Animation duration",
-
-        "default": 70,        "tooltip": "Time it takes for the dimming animation to complete"
-
-        "step": 5,    },
-
-        "tooltip": "Controls how dim unfocused windows appear. Lower values = more transparent."    "animation-type": {
-
-    },        "type": "combobox",
-
-        "default": "easeInOutQuad",
-
-    "animation-time": {        "options": {
-
-        "type": "scale",            "Linear": "linear",
-
-        "description": "Animation duration",            "Ease In Out Quad": "easeInOutQuad",
-
-        "min": 0,            "Ease Out Quad": "easeOutQuad",
-
-        "max": 1000,            "Ease In Quad": "easeInQuad",
-
-        "default": 300,            "Ease In Out Cubic": "easeInOutCubic",
-
-        "step": 50,            "Ease Out Cubic": "easeOutCubic"
-
-        "units": "ms",        },
-
-        "tooltip": "Time it takes for the dimming animation to complete"        "description": "Animation type",
-
-    },        "tooltip": "Choose the animation curve for the dimming effect"
-
+{
+    "section-opacity": {
+        "type": "section",
+        "description": "Opacity Settings"
     },
-
-    "animation-type": {    
-
-        "type": "combobox",    "section2": {
-
-        "description": "Animation type",        "type": "section",
-
-        "default": "easeInOutQuad",        "description": "Window Filtering"
-
-        "options": {    },
-
-            "Linear": "linear",    "dim-minimized": {
-
-            "Ease In Out Quad": "easeInOutQuad",        "type": "checkbox",
-
-            "Ease Out Quad": "easeOutQuad",        "default": false,
-
-            "Ease In Quad": "easeInQuad",        "description": "Dim minimized windows",
-
-            "Ease In Out Cubic": "easeInOutCubic",        "tooltip": "Whether to apply dimming to minimized windows"
-
-            "Ease Out Cubic": "easeOutCubic"    },
-
-        },    "exclude-dialogs": {
-
-        "tooltip": "Choose the animation curve for the dimming effect"        "type": "checkbox",
-
-    },        "default": true,
-
-        "description": "Exclude dialog windows",
-
-    "dim-minimized": {        "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"
-
-        "type": "checkbox",    },
-
-        "description": "Dim minimized windows",    "toggle-keybinding": {
-
-        "default": false,        "type": "keybinding",
-
-        "tooltip": "Whether to apply dimming to minimized windows"        "description": "Toggle dimming on/off",
-
-    },        "default": "<Super><Shift>d",
-
-        "tooltip": "Keyboard shortcut to temporarily toggle the dimming effect"
-
-    "exclude-dialogs": {    },
-
-        "type": "checkbox",    
-
-        "description": "Exclude dialog windows",    "section3": {
-
-        "default": true,        "type": "section",
-
-        "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"        "description": "About"
-
-    },    },
-
-    "about": {
-
-    "toggle-keybinding": {        "type": "label",
-
-        "type": "keybinding",        "description": "Dim Unfocused Windows v1.0\n\nThis extension automatically dims windows when they lose focus, making it easier to identify the active window and reducing visual distractions.\n\n✨ Features:\n• Dual opacity controls (slider + number input)\n• Real-time synchronized settings\n• Smooth animations\n• Smart window filtering\n\nBoth opacity controls are synchronized for your convenience!"
-
-        "description": "Toggle dimming on/off",    }
-
-        "default": "<Super><Shift>d",}
+    "dim-opacity": {
+        "type": "scale",
+        "description": "Opacity percentage for unfocused windows",
+        "min": 10,
+        "max": 95,
+        "default": 70,
+        "step": 5,
+        "tooltip": "Controls how dim unfocused windows appear. Lower values = more transparent."
+    },
+    "section-animation": {
+        "type": "section",
+        "description": "Animation Settings"
+    },
+    "animation-time": {
+        "type": "scale",
+        "description": "Animation duration",
+        "min": 0,
+        "max": 1000,
+        "default": 300,
+        "step": 50,
+        "units": "ms",
+        "tooltip": "Time it takes for the dimming animation to complete"
+    },
+    "toggle-keybinding": {
+        "type": "keybinding",
+        "description": "Toggle dimming on/off",
+        "default": "<Super><Shift>d",
         "tooltip": "Keyboard shortcut to temporarily toggle the dimming effect"
     }
 }
