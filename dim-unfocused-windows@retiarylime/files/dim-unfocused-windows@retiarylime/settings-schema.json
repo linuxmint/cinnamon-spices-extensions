@@ -1,0 +1,71 @@
+{
+    "section1": {
+        "type": "section",
+        "description": "Dimming Settings"
+    },
+    "dim-opacity": {
+        "type": "scale",
+        "default": 70,
+        "min": 10,
+        "max": 95,
+        "step": 5,
+        "description": "Opacity of unfocused windows (%)",
+        "tooltip": "Set how transparent unfocused windows should become. Lower values make windows more transparent."
+    },
+    "animation-time": {
+        "type": "scale",
+        "default": 300,
+        "min": 0,
+        "max": 1000,
+        "step": 50,
+        "units": "ms",
+        "description": "Animation duration",
+        "tooltip": "Time it takes for the dimming animation to complete"
+    },
+    "animation-type": {
+        "type": "combobox",
+        "default": "easeInOutQuad",
+        "options": {
+            "Linear": "linear",
+            "Ease In Out Quad": "easeInOutQuad",
+            "Ease Out Quad": "easeOutQuad",
+            "Ease In Quad": "easeInQuad",
+            "Ease In Out Cubic": "easeInOutCubic",
+            "Ease Out Cubic": "easeOutCubic"
+        },
+        "description": "Animation type",
+        "tooltip": "Choose the animation curve for the dimming effect"
+    },
+    
+    "section2": {
+        "type": "section",
+        "description": "Window Filtering"
+    },
+    "dim-minimized": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Dim minimized windows",
+        "tooltip": "Whether to apply dimming to minimized windows"
+    },
+    "exclude-dialogs": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Exclude dialog windows",
+        "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"
+    },
+    "toggle-keybinding": {
+        "type": "keybinding",
+        "description": "Toggle dimming on/off",
+        "default": "<Super><Shift>d",
+        "tooltip": "Keyboard shortcut to temporarily toggle the dimming effect"
+    },
+    
+    "section3": {
+        "type": "section",
+        "description": "About"
+    },
+    "about": {
+        "type": "label",
+        "description": "Dim Unfocused Windows v1.0\n\nThis extension automatically dims windows when they lose focus, making it easier to identify the active window and reducing visual distractions.\n\nCreated based on Cinnamon Spices extension patterns."
+    }
+}
