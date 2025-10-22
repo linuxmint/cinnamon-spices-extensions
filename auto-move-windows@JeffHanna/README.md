@@ -63,7 +63,7 @@ Example `app-rules` JSON:
 
 Editing rules
 -------------
-- You can edit the JSON directly via dconf/gsettings or use the Preferences UI (Add "Preferences" for the extension in Cinnamon Settings -> Extensions). This spice ships a simple preferences editor that allows editing the `app-rules` JSON.
+- Edit the `app-rules` JSON directly via dconf/gsettings or the Cinnamon Settings panel. This spice exposes its options via `settings-schema.json` (GSettings); there is no custom JS preferences UI.
 
 Notes
 -----
