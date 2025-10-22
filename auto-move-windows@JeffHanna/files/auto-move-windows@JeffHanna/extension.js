@@ -14,7 +14,8 @@
  * { wmClass: "Chrome", workspace: 0, maximized: true, firstOnly: false }
  * { wmClass: "Terminal", workspace: 1, x: 0, width: 1920, maximizeVertically: true }
  * Notes:
- * - WM_CLASS matching is performed case-insensitively by comparing lowercased strings.
+ * - WM_CLASS matching is performed case-insensitively by doing a substring match
+ *   (the rule's wmClass lowercased must appear anywhere inside the window's WM_CLASS).
  * - `firstOnly` prevents the rule from being applied to more than one window instance. The runtime tracks
  *   the first-applied MetaWindow reference and frees the lock when that window is removed.
  * - `maximized` takes precedence over all geometry settings - if true, the window is fully maximized.
@@ -42,6 +43,7 @@ class AutoMoveWindows {
     enable() {
         this._settings = new Settings.ExtensionSettings(this, this._meta.uuid);
         this._signals = new SignalManager.SignalManager(null);
+        // No WindowTracker; matching will be limited to WM_CLASS or title
 
         // Listen for new windows
         this._signals.connect(global.screen, 'window-added', this._onWindowAdded, this);
@@ -87,24 +89,44 @@ class AutoMoveWindows {
             const rules = (this._settings.getValue('app-rules') || []).map(r => {
                 if (r && r.wmClass) {
                     let copy = Object.assign({}, r);
-                    copy._wmClassLower = String(r.wmClass).toLowerCase();
+                    // Trim whitespace and normalize to lowercase to avoid mismatch due to stray spaces
+                    copy._wmClassLower = String(r.wmClass).trim().toLowerCase();
                     return copy;
                 }
                 return r;
             });
             const wmLower = String(wmClass).toLowerCase();
-            // Exact match on the normalized lowercased WM_CLASS value.
-            const rule = rules.find(r => r && r._wmClassLower === wmLower);
+            // Compute lowercase title for title-based matching
+            const titleLower = String(metaWindow.get_title && metaWindow.get_title() || '').toLowerCase();
+
+            // Lightweight log for visibility (keep logs minimal)
+            try { global.log('[auto-move-windows] Window WM_CLASS: ' + String(wmClass) + ' (normalized: ' + wmLower + ')'); } catch (e) {}
+            // Match rules by chosen field: 'title' or 'wmClass' (default)
+            const rule = rules.find(r => {
+                if (!r || !r._wmClassLower)
+                    return false;
+                const field = (r.matchField || 'wmClass');
+                switch (field) {
+                    case 'title':
+                        return titleLower.indexOf(r._wmClassLower) !== -1;
+                    case 'wmClass':
+                    default:
+                        return wmLower.indexOf(r._wmClassLower) !== -1;
+                }
+            });
             if (!rule)
                 return;
 
             // firstOnly handling: if we've already applied and the tracked window still exists, skip
             // If rule.firstOnly is set, ensure we haven't already applied this rule to another window.
             if (rule.firstOnly) {
-                if (this._firstAppliedMap.has(wmLower))
-                    return; // skip if another instance is active
+                // Key first-instance locks by the rule's normalized substring so different rules with
+                // different wmClass patterns don't conflict.
+                const ruleKey = rule._wmClassLower;
+                if (this._firstAppliedMap.has(ruleKey))
+                    return; // skip if another instance for this rule is active
                 // Mark first-instance as applied immediately to prevent race conditions
-                this._firstAppliedMap.set(wmLower, metaWindow);
+                this._firstAppliedMap.set(ruleKey, metaWindow);
             }
 
             // Wait a short time so the window has been fully mapped and its frame exists

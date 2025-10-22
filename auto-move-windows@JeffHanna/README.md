@@ -10,6 +10,17 @@ Rules are stored in the extension settings under the key `app-rules` as a JSON a
 Each rule object has this shape (fields are optional unless noted):
 
 - `wmClass` (string, required): the window class returned by `metaWindow.get_wm_class()` (e.g. "Firefox").
+
+Matching modes
+--------------
+By default rules match against the window's WM_CLASS value using a case-insensitive substring match. You can also match against the window title by adding `"matchField": "title"` to a rule. Title-based patterns are lowercased by the prefs UI on save/capture, and the runtime compares titles case-insensitively against the stored lowercase pattern.
+
+Example title-based rule:
+{
+  "matchField": "title",
+  "wmClass": "google calendar",
+  "workspace": 2
+}
 - `workspace` (integer, optional): 0-based workspace index to move the window to.
 - `x`, `y` (integer, optional): top-left coordinates where the window should be placed.
 - `width`, `height` (integer, optional): desired width/height in pixels.
