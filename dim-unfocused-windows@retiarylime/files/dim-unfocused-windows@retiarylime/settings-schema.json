@@ -26,7 +26,7 @@
 
     "section-animation": {
         "type": "section",
-        "description": "Animation Settings"
+        "description": "Opacity Animation Settings"
     },
 
     "animation-time": {
@@ -37,7 +37,7 @@
         "default": 300,
         "step": 50,
         "units": "ms",
-        "tooltip": "Time it takes for the dimming animation to complete"
+        "tooltip": "Time it takes for the opacity animation to complete"
     },
 
     "animation-type": {
@@ -52,7 +52,7 @@
             "Ease In Out Cubic": "easeInOutCubic",
             "Ease Out Cubic": "easeOutCubic"
         },
-        "tooltip": "Choose the animation curve for the dimming effect"
+        "tooltip": "Choose the animation curve for the opacity effect"
     },
 
     "section-advanced": {

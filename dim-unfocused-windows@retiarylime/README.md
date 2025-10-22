@@ -4,8 +4,10 @@ A Cinnamon extension that automatically dims unfocused windows to enhance visual
 
 ![screenshot](screenshot.png)
 ![screenshot2](screenshot2.png)
-![settings](settings.png)
-
+<p align="center">
+<img src="settings.png" width="500">
+<p/>
+   
 ## Features
 
 1. **Automatic Dimming**: Windows automatically become semi-transparent when they lose focus
