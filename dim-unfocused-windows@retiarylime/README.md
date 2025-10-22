@@ -1,54 +1,80 @@
 # Dim Unfocused Windows
 
-A Cinnamon desktop extension that automatically dims windows when they lose focus, enhancing visual clarity and reducing distractions by making it easier to identify the active window.
+A Cinnamon extension that automatically dims unfocused windows to enhance visual clarity and reduce distractions by making it easier to identify the active window.
+
+![screenshot](screenshot.png)
+![screenshot2](screenshot2.png)
+![settings](settings.png)
 
 ## Features
 
-- **Automatic Dimming**: Windows automatically become semi-transparent when they lose focus
-- **Smooth Animations**: Configurable transition animations with multiple easing options
-- **Customizable Opacity**: Adjust how transparent unfocused windows become (10-95%)
-- **Keyboard Toggle**: Quick keyboard shortcut to temporarily disable/enable dimming
-- **Smart Filtering**: Option to exclude dialog windows, minimized windows, and system windows
-- **Performance Optimized**: Lightweight implementation with minimal system impact
+1. **Automatic Dimming**: Windows automatically become semi-transparent when they lose focus
+2. **Smooth Animations**: Configurable transition animations with multiple easing options for a polished experience
+3. **Customizable Effects**: Adjust opacity (0-100%) and brightness (0-100%) levels to suit your preferences
+4. **Smart Filtering**: Option to exclude dialog windows and system windows
+5. **Performance Optimized**: Lightweight implementation with minimal system impact
+6. **Keyboard Toggle**: Quick keyboard shortcut (default: Super+Shift+D) to temporarily disable/enable dimming
+7. **Real-time Settings**: Changes to settings are applied immediately without restart
+8. **Multi-Application Support**: Works seamlessly across Terminal, browsers, editors, and other applications
 
-## Settings
+## Requirements
 
-### Dimming Settings
-- **Opacity of unfocused windows**: Control how transparent unfocused windows become (default: 70%)
-- **Animation duration**: Set the speed of the dimming transition (0-1000ms, default: 300ms)
-- **Animation type**: Choose from various easing curves for smooth transitions
+This extension requires Cinnamon 4.0 or better.
 
-### Window Filtering
-- **Dim minimized windows**: Choose whether minimized windows should be dimmed
-- **Exclude dialog windows**: Prevent dimming of dialog boxes, file choosers, and preference windows
-- **Toggle keybinding**: Set a keyboard shortcut to quickly enable/disable dimming (default: Super+Shift+D)
+## Limitations
+
+1. The dimming effect applies visual filters to window actors, which may interact differently with certain window types or themes
+2. In some cases, window decorations or borders may not dim consistently with the window content
+3. The brightness effect relies on Clutter's brightness/contrast effects, which may not be available in all Cinnamon versions (though supported versions should work fine)
+4. Dialog windows are excluded by default to prevent issues with modal dialogs and file choosers, but it may be inconsistent in some cases
 
 ## Installation
 
-1. Download the extension from Cinnamon Spices or clone this repository
-2. Extract to `~/.local/share/cinnamon/extensions/dim-unfocused-windows@retiarylime/`
-3. Enable the extension in Cinnamon Settings → Extensions
-4. Configure settings as desired
+<!-- This extension is available on Cinnamon Spices. It can be installed directly from within Cinnamon using the "Extensions" application under the "System Settings".
 
-## Manual Installation for Development
+[Dim Unfocused Windows on Cinnamon Spices](https://cinnamon-spices.linuxmint.com/extensions/view/XXX) -->
 
-```bash
-# Clone or copy the extension to the Cinnamon extensions directory
-cp -r dim-unfocused-windows@retiarylime ~/.local/share/cinnamon/extensions/
+For the latest development version, follow these instructions to install manually:
 
-# Restart Cinnamon (Alt+F2, type 'r', press Enter)
-# Or log out and log back in
+1. Clone the repository (or download the latest release by clicking the green "Code" button above, then "Download ZIP")
+   
+   ```
+   git clone https://github.com/retiarylime/dim-unfocused-windows.git
+   ```
 
-# Enable the extension
-cinnamon-settings extensions
-```
+2. If you downloaded a ZIP, extract it into a directory of your choice
+   
+   ```
+   unzip ~/Downloads/dim-unfocused-windows-main.zip
+   ```
 
-## Compatibility
+3. Change directory to the cloned repository or extracted ZIP file
 
-This extension is compatible with Cinnamon versions:
-- 4.0, 4.2, 4.4, 4.6, 4.8
-- 5.0, 5.2, 5.4, 5.6, 5.8
-- 6.0, 6.2
+4. Copy or link the "dim-unfocused-windows@retiarylime" directory into the "~/.local/share/cinnamon/extensions/" directory
+   
+   ```
+   cp -r $PWD/files/dim-unfocused-windows@retiarylime ~/.local/share/cinnamon/extensions/
+   ```
+
+5. Open the Cinnamon Extensions application (Menu → Preferences → Extensions)
+
+6. Find "Dim Unfocused Windows" in the list and click the "+" button to enable it
+
+7. Click the settings (gears) icon to open the settings panel and configure your preferences
+
+## Settings
+
+### Unfocused Window Effects
+- **Opacity**: Control how transparent unfocused windows become (0-100%, default: 70%)
+- **Brightness**: Adjust the brightness level of unfocused windows (0-100%, default: 70%)
+
+### Animation Settings
+- **Animation duration**: Set the speed of the dimming transition (0-1000ms, default: 300ms)
+- **Animation type**: Choose from various easing curves (linear, quadratic, cubic) for smooth transitions
+
+### Other Settings
+- **Exclude dialog windows**: Prevent dimming of dialog boxes, file choosers, and preference windows
+- **Toggle keybinding**: Set a keyboard shortcut to quickly enable/disable dimming (default: Super+Shift+D)
 
 ## How It Works
 
@@ -62,8 +88,9 @@ The extension monitors window focus changes using Cinnamon's built-in signals:
 
 - Uses `Meta.Display` focus signals for window tracking
 - Leverages `Clutter.Actor` opacity manipulation for visual effects
-- Implements `Tweener` for smooth animations
-- Utilizes `Settings.ExtensionSettings` for configuration management
+- Implements `Clutter.BrightnessContrastEffect` for brightness control
+- Utilizes `Tweener` for smooth animations
+- Employs `Settings.ExtensionSettings` for configuration management
 - Follows Cinnamon extension best practices for lifecycle management
 
 ## Troubleshooting
@@ -75,7 +102,7 @@ The extension monitors window focus changes using Cinnamon's built-in signals:
 
 **Performance issues:**
 - Reduce animation duration in settings
-- Disable dimming for minimized windows if you have many open
+- Consider reducing the number of open windows to improve performance
 
 **Windows getting minimized instead of dimmed:**
 - This was fixed in v1.0 - ensure you're using the latest version
@@ -86,9 +113,26 @@ The extension monitors window focus changes using Cinnamon's built-in signals:
 - Check for conflicts with other window management extensions
 - Use the keyboard toggle (Super+Shift+D) to reset the extension state
 
+**Settings not applying:**
+- Changes should apply immediately, but you can restart Cinnamon if needed
+- Check the extension logs in `~/.xsession-errors` for any errors
+
+**Conflicts with other extensions:**
+- If you have installed any window management or transparency-related extensions, ensure they don't conflict with Dim Unfocused Windows. You may need to disable them if you experience issues
+
+## Feedback
+
+Feel free to open an [issue](https://github.com/retiarylime/dim-unfocused-windows/issues) on this [GitHub repository](https://github.com/retiarylime/dim-unfocused-windows) if you want to make a suggestion or report a problem.
+
+If you like this Cinnamon extension, "star" this GitHub repository to encourage continued development. Thanks!
+
+## Credits
+
+This extension was developed following Cinnamon extension development best practices and utilizes the standard Cinnamon APIs for window management and visual effects.
+
 ## License
 
-This extension is released under the GNU General Public License v3.0. See the LICENSE file for details.
+This extension is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
@@ -96,9 +140,4 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 
 ## Changelog
 
-### Version 1.0
-- Initial release
-- Basic dimming functionality
-- Configurable opacity and animation settings
-- Window filtering options
-- Support for Cinnamon 4.0+
+See CHANGELOG.md for detailed version history.

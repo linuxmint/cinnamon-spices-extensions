@@ -5,6 +5,37 @@ All notable changes to the Dim Unfocused Windows extension will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-10-22
+
+### Added
+- ✅ **NEW** - Separate opacity and brightness controls for independent visual effects
+- ✅ **NEW** - Keyboard shortcut to toggle dimming on/off (default: Super+Shift+D)
+- ✅ **IMPROVED** - Enhanced dialog window detection and exclusion
+- ✅ **IMPROVED** - Simplified settings interface with cleaner organization
+
+### Changed
+- 🔄 **BREAKING** - Removed "Enable dimming" checkbox - extension is always active
+- 🔄 **BREAKING** - Removed "Dimming method" selection - now applies both opacity and brightness simultaneously
+- 🔄 **BREAKING** - Replaced single "dim" slider with separate "opacity" and "brightness" sliders
+- 🔄 **BREAKING** - Removed "Dim minimized windows" option for simplified behavior
+- 🔄 **UPDATED** - Opacity slider: 0-100% (default 70%) - controls window transparency
+- 🔄 **UPDATED** - Brightness slider: 0-100% (default 70%) - controls window darkness/lightness
+- 🔄 **UPDATED** - Brightness uses Clutter.BrightnessContrastEffect for true brightness control
+
+### Technical Improvements
+- 🎯 **ENHANCED** - Dual visual effects: opacity reduction + brightness darkening
+- 🎯 **ENHANCED** - Keybinding system with proper setup/cleanup and conflict handling
+- 🎯 **ENHANCED** - Improved window type detection for dialogs and modal windows
+- 🎯 **ENHANCED** - Better state management for toggle functionality
+- 🎯 **ENHANCED** - More precise brightness control using Clutter effects
+
+### Verified Working
+- ✅ Separate opacity and brightness controls working independently
+- ✅ Keyboard toggle (Super+Shift+D) enables/disables dimming instantly
+- ✅ Dialog windows properly excluded when setting is enabled
+- ✅ Smooth animations for both opacity and brightness changes
+- ✅ Real-time settings updates without restart required
+
 ## [1.0] - 2025-10-21
 
 ### Added
