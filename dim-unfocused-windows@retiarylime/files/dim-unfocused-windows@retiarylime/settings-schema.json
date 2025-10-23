@@ -67,6 +67,20 @@
         "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"
     },
 
+    "disable-dim-minimized": {
+        "type": "checkbox",
+        "description": "Disable dimming for minimized windows",
+        "default": true,
+        "tooltip": "Don't dim windows that are minimized to the taskbar"
+    },
+
+    "exclude-window-titles": {
+        "type": "entry",
+        "description": "Exclude windows with titles containing",
+        "default": "Picture in picture",
+        "tooltip": "Comma-separated list of text patterns in window titles to exclude from dimming (case-sensitive)"
+    },
+
     "toggle-keybinding": {
         "type": "keybinding",
         "description": "Toggle dimming on/off",

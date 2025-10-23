@@ -31,6 +31,8 @@ DimUnfocusedWindowsExtension.prototype = {
         this.animationTime = 300;
         this.animationType = "easeInOutQuad";
         this.excludeDialogs = true;
+        this.disableDimMinimized = true;
+        this.excludeWindowTitles = "Picture in picture";
         this.toggleKeybinding = "<Super><Shift>d";
         this.dimmingEnabled = true;
         
@@ -42,12 +44,14 @@ DimUnfocusedWindowsExtension.prototype = {
             this.settings.bind("animation-time", "animationTime", this._onSettingsChanged);
             this.settings.bind("animation-type", "animationType", this._onSettingsChanged);
             this.settings.bind("exclude-dialogs", "excludeDialogs", this._onSettingsChanged);
+            this.settings.bind("disable-dim-minimized", "disableDimMinimized", this._onSettingsChanged);
+            this.settings.bind("exclude-window-titles", "excludeWindowTitles", this._onSettingsChanged);
             this.settings.bind("toggle-keybinding", "toggleKeybinding", this._onKeybindingChanged);
         } catch (e) {
             global.log("[" + UUID + "] Settings binding failed, using defaults: " + e);
         }
         
-        global.log("[" + UUID + "] Extension initialized with opacity: " + this.opacity + "%, brightness: " + this.brightness + "%");
+        global.log("[" + UUID + "] Extension initialized with opacity: " + this.opacity + "%, brightness: " + this.brightness + "%, exclude dialogs: " + this.excludeDialogs + ", disable dim minimized: " + this.disableDimMinimized + ", exclude titles: '" + this.excludeWindowTitles + "'");
     },
     
     enable: function() {
@@ -97,7 +101,7 @@ DimUnfocusedWindowsExtension.prototype = {
     },
     
         _onSettingsChanged: function() {
-        global.log("[" + UUID + "] Settings changed - opacity: " + this.opacity + "%, brightness: " + this.brightness + "%, animation: " + this.animationTime + "ms");
+        global.log("[" + UUID + "] Settings changed - opacity: " + this.opacity + "%, brightness: " + this.brightness + "%, animation: " + this.animationTime + "ms, exclude dialogs: " + this.excludeDialogs + ", disable dim minimized: " + this.disableDimMinimized + ", exclude titles: '" + this.excludeWindowTitles + "'");
         
         // Update focused window to full brightness/opacity
         if (this._activeWindow) {
@@ -353,6 +357,22 @@ DimUnfocusedWindowsExtension.prototype = {
     
     _shouldDimWindow: function(window) {
         if (!window || window.is_skip_taskbar()) return false;
+        
+        // Don't dim minimized windows if the setting is enabled
+        if (this.disableDimMinimized && window.minimized) {
+            return false;
+        }
+        
+        // Don't dim windows with excluded titles
+        if (this.excludeWindowTitles && this.excludeWindowTitles.trim() !== "") {
+            let windowTitle = window.get_title();
+            let patterns = this.excludeWindowTitles.split(',').map(p => p.trim());
+            for (let pattern of patterns) {
+                if (pattern && windowTitle.includes(pattern)) {
+                    return false;
+                }
+            }
+        }
         
         let windowType = window.window_type;
         
