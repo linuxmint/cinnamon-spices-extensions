@@ -13,7 +13,7 @@ A Cinnamon extension that automatically dims unfocused windows to enhance visual
 1. **Automatic Dimming**: Windows automatically become semi-transparent when they lose focus
 2. **Smooth Animations**: Configurable transition animations with multiple easing options for a polished experience
 3. **Customizable Effects**: Adjust opacity (0-100%) and brightness (0-100%) levels to suit your preferences
-4. **Smart Filtering**: Option to exclude dialog windows and system windows
+4. **Smart Filtering**: Option to exclude dialog windows, minimized windows, and windows with specific titles
 5. **Performance Optimized**: Lightweight implementation with minimal system impact
 6. **Keyboard Toggle**: Quick keyboard shortcut (default: Super+Shift+D) to temporarily disable/enable dimming
 7. **Real-time Settings**: Changes to settings are applied immediately without restart
@@ -28,7 +28,7 @@ This extension requires Cinnamon 4.0 or better.
 1. The dimming effect applies visual filters to window actors, which may interact differently with certain window types or themes
 2. In some cases, window decorations or borders may not dim consistently with the window content
 3. The brightness effect relies on Clutter's brightness/contrast effects, which may not be available in all Cinnamon versions (though supported versions should work fine)
-4. Dialog windows are excluded by default to prevent issues with modal dialogs and file choosers, but it may be inconsistent in some cases
+4. Some system windows and special window types may not respond to dimming effects as expected
 
 ## Installation
 
@@ -76,6 +76,8 @@ For the latest development version, follow these instructions to install manuall
 
 ### Other Settings
 - **Exclude dialog windows**: Prevent dimming of dialog boxes, file choosers, and preference windows
+- **Disable dimming for minimized windows**: Don't dim windows that are minimized to the taskbar
+- **Exclude windows with titles containing**: Comma-separated list of text patterns to exclude specific windows (e.g., "Picture in picture,Calculator")
 - **Toggle keybinding**: Set a keyboard shortcut to quickly enable/disable dimming (default: Super+Shift+D)
 
 ## How It Works
@@ -106,14 +108,10 @@ The extension monitors window focus changes using Cinnamon's built-in signals:
 - Reduce animation duration in settings
 - Consider reducing the number of open windows to improve performance
 
-**Windows getting minimized instead of dimmed:**
-- This was fixed in v1.0 - ensure you're using the latest version
-- Restart Cinnamon after updating (Alt+F2, type 'r', press Enter)
-
-**Windows not restoring properly:**
-- Disable and re-enable the extension
-- Check for conflicts with other window management extensions
-- Use the keyboard toggle (Super+Shift+D) to reset the extension state
+**Windows not dimming as expected:**
+- Check the "Exclude windows with titles containing" setting if specific windows aren't being dimmed
+- Verify that "Disable dimming for minimized windows" is enabled if minimized windows should be excluded
+- Ensure dialog windows aren't being excluded when you want them dimmed
 
 **Settings not applying:**
 - Changes should apply immediately, but you can restart Cinnamon if needed

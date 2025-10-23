@@ -2,7 +2,7 @@
     "uuid": "dim-unfocused-windows@retiarylime",
     "name": "Dim Unfocused Windows",
     "description": "Dim unfocused windows to reduce distractions and improve visual focus.",
-    "version": "1.1.0",
+    "version": "1.2.7",
     "cinnamon-version": [
         "4.0",
         "4.2",

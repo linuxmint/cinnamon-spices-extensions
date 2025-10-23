@@ -5,6 +5,33 @@ All notable changes to the Dim Unfocused Windows extension will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.7] - 2025-10-23
+
+### Added
+- ✅ **NEW** - Title-based window exclusion with comma-separated pattern matching
+- ✅ **NEW** - Enhanced window filtering system for better control over which windows get dimmed
+- ✅ **IMPROVED** - Better default exclusions including "Picture in picture" windows
+- ✅ **IMPROVED** - More descriptive tooltips for all settings options
+
+### Changed
+- 🔄 **ENHANCED** - Improved brightness animation system with smoother transitions
+- 🔄 **ENHANCED** - Better window state management and cleanup
+- 🔄 **UPDATED** - Default window title exclusions now include common PIP windows
+- 🔄 **UPDATED** - Enhanced settings descriptions for better user understanding
+
+### Technical Improvements
+- 🎯 **ENHANCED** - More robust window filtering logic with pattern matching
+- 🎯 **ENHANCED** - Improved animation timing and brightness effect application
+- 🎯 **ENHANCED** - Better error handling and logging for debugging
+- 🎯 **ENHANCED** - Optimized window state tracking and memory management
+
+### Verified Working
+- ✅ Title-based exclusions working with comma-separated patterns
+- ✅ Minimized window exclusion functioning properly
+- ✅ Brightness animations smooth and consistent
+- ✅ Dialog window exclusion working as expected
+- ✅ Real-time settings updates without restart required
+
 ## [1.1.0] - 2025-10-22
 
 ### Added
