@@ -90,7 +90,7 @@ msgid "Ease Out Cubic"
 msgstr ""
 
 #. settings-schema.json->animation-type->tooltip
-msgid "Choose the animation curve for the opacity and brightness effects"
+msgid "Choose the animation curve for the dimming effect"
 msgstr ""
 
 #. settings-schema.json->section-advanced->description
