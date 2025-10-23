@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 22:20+0000\n"
+"PO-Revision-Date: 2025-10-19 02:59+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr "Watermark"
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr "Đặt một watermark trên màn hình."
+
+#. 3.8->settings-schema.json->section0->description
+#. 3.2->settings-schema.json->section0->description
+msgid "Appearance"
+msgstr "Giao diện"
+
+#. 3.8->settings-schema.json->icon->description
+#. 3.2->settings-schema.json->icon->description
+msgid "Watermark logo"
+msgstr "Logo watermark"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Cinnamon"
+msgstr "Cinnamon"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Antergos"
+msgstr "Antergos"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Arch"
+msgstr "Arch"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Debian"
+msgstr "Debian"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux"
+msgstr "Linux"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux Mint"
+msgstr "Linux Mint"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro"
+msgstr "Manjaro"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro (with text)"
+msgstr "Manjaro (có chữ)"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Custom..."
+msgstr "Tùy chỉnh..."
+
+#. 3.8->settings-schema.json->custom-icon->description
+#. 3.2->settings-schema.json->custom-icon->description
+msgid "Custom icon or image"
+msgstr "Biểu tượng hoặc hình ảnh tùy chỉnh"
+
+#. 3.8->settings-schema.json->alpha->description
+#. 3.2->settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr "Độ mờ (%)"
+
+#. 3.8->settings-schema.json->invert->description
+#. 3.2->settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr "Đảo ngược màu"
+
+#. 3.8->settings-schema.json->invert->tooltip
+#. 3.2->settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr "Điều này hoàn toàn đảo ngược màu sắc của hình ảnh. Hữu ích trên nền sáng."
+
+#. 3.8->settings-schema.json->section1->description
+#. 3.2->settings-schema.json->section1->description
+msgid "Position"
+msgstr "Vị trí"
+
+#. 3.8->settings-schema.json->position-x->description
+#. 3.2->settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "Căn ngang"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Left"
+msgstr "Trái"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Center"
+msgstr "Giữa"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Right"
+msgstr "Phải"
+
+#. 3.8->settings-schema.json->margin-x->description
+#. 3.2->settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "Lề ngang"
+
+#. 3.8->settings-schema.json->margin-x->units
+#. 3.8->settings-schema.json->margin-y->units
+#. 3.8->settings-schema.json->size->units
+#. 3.2->settings-schema.json->margin-x->units
+#. 3.2->settings-schema.json->margin-y->units
+#. 3.2->settings-schema.json->size->units
+msgid "px"
+msgstr "px"
+
+#. 3.8->settings-schema.json->position-y->description
+#. 3.2->settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "Căn dọc"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Top"
+msgstr "Trên"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "Dưới"
+
+#. 3.8->settings-schema.json->margin-y->description
+#. 3.2->settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "Lề dọc"
+
+#. 3.8->settings-schema.json->section2->description
+#. 3.8->settings-schema.json->size->description
+#. 3.2->settings-schema.json->section2->description
+#. 3.2->settings-schema.json->size->description
+msgid "Size"
+msgstr "Kích thước"
+
+#. 3.8->settings-schema.json->use-custom-size->description
+#. 3.2->settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr "Sử dụng kích thước tùy chỉnh"

@@ -1,0 +1,27 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. settings-schema.json->friction->description
+msgid "Friction"
+msgstr ""
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr ""
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup Factor"
+msgstr ""
+
+#. settings-schema.json->mass->description
+msgid "Mass"
+msgstr ""
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr ""

@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr ""
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr ""
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr ""
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr ""
