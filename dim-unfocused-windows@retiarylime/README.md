@@ -132,7 +132,7 @@ This extension was developed following Cinnamon extension development best pract
 
 ## License
 
-This extension is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+This extension is released under the GPLv3 License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
@@ -140,4 +140,4 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 
 ## Changelog
 
-See CHANGELOG.md for detailed version history.
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
