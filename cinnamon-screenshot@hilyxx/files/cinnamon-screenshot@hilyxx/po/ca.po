@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-04 15:56+0200\n"
+"POT-Creation-Date: 2025-10-25 18:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -98,7 +98,7 @@ msgstr "Combinar el llenç amb la imatge"
 msgid "Save modified copy as…"
 msgstr "Desar còpia modificada com..."
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:331
+#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
 msgid "Cancel"
 msgstr "Cancel·lar"
 
@@ -118,19 +118,19 @@ msgstr "No"
 msgid "Error saving"
 msgstr "Error en desar"
 
-#. editOverlay.js:1036 preview.js:320
+#. editOverlay.js:1036 preview.js:330
 msgid "Script gtk-filechooser.py not available"
 msgstr "L'script gtk-filechooser.py no està disponible"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:326
+#. editOverlay.js:1056 preview.js:211 preview.js:336
 msgid "Save as..."
 msgstr "Desar com..."
 
-#. editOverlay.js:1059 preview.js:329
+#. editOverlay.js:1059 preview.js:339
 msgid "Images"
 msgstr "Imatges"
 
-#. editOverlay.js:1060 preview.js:330
+#. editOverlay.js:1060 preview.js:340
 msgid "Save"
 msgstr "Desar"
 
@@ -166,31 +166,31 @@ msgstr "Copiar al porta-papers"
 msgid "Back"
 msgstr "Tornar"
 
-#. preview.js:303 preview.js:308 preview.js:313
+#. preview.js:313 preview.js:318 preview.js:323
 msgid "Invalid filename"
 msgstr "Nom de fitxer invàlid"
 
-#. preview.js:303
+#. preview.js:313
 msgid "Filename cannot be empty."
 msgstr "El nom del fitxer no pot ser buit."
 
-#. preview.js:308
+#. preview.js:318
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "El nom del fitxer conté caràcters no permesos: \\ / : * ? \" < > |"
 
-#. preview.js:313
+#. preview.js:323
 msgid "Filename must end with .png"
 msgstr "El nom del fitxer ha d'acabar en .png"
 
-#. preview.js:320
+#. preview.js:330
 msgid "Unable to open file chooser."
 msgstr "No s'ha pogut obrir el seleccionador de fitxers."
 
-#. preview.js:409
+#. preview.js:419
 msgid "Copy failed"
 msgstr "Error en copiar"
 
-#. preview.js:409
+#. preview.js:419
 msgid "Unable to copy image to clipboard."
 msgstr "No s'ha pogut copiar la imatge al porta-papers"
 
@@ -203,8 +203,8 @@ msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."
 msgstr ""
-"La utilitat \"gnome-screenshot\" no està instal·lada. Si us plau "
-"instal·leu-la per tal que l'extensió funcioni."
+"La utilitat \"gnome-screenshot\" no està instal·lada. Si us plau instal·leu-"
+"la per tal que l'extensió funcioni."
 
 #. metadata.json->name
 msgid "Cinnamon-Screenshot"
@@ -215,8 +215,8 @@ msgid ""
 "Cinnamon extension for screenshots with modern interface and advanced "
 "options."
 msgstr ""
-"Extensió de Cinnamon per a captures de pantalla amb una interfície "
-"moderna i opcions avançades."
+"Extensió de Cinnamon per a captures de pantalla amb una interfície moderna i "
+"opcions avançades."
 
 #. settings-schema.json->section1->description
 msgid "Keyboard shortcuts"
