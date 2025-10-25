@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.22.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-04 15:56+0200\n"
+"POT-Creation-Date: 2025-10-25 18:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -98,7 +98,7 @@ msgstr "Fusionner le canvas avec l'image"
 msgid "Save modified copy as…"
 msgstr "Enregistrer une copie modifiée sous..."
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:331
+#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -118,19 +118,19 @@ msgstr "Non"
 msgid "Error saving"
 msgstr "Erreur pendant la sauvegarde"
 
-#. editOverlay.js:1036 preview.js:320
+#. editOverlay.js:1036 preview.js:330
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py non disponible"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:326
+#. editOverlay.js:1056 preview.js:211 preview.js:336
 msgid "Save as..."
 msgstr "Enregistrer sous..."
 
-#. editOverlay.js:1059 preview.js:329
+#. editOverlay.js:1059 preview.js:339
 msgid "Images"
 msgstr "Images"
 
-#. editOverlay.js:1060 preview.js:330
+#. editOverlay.js:1060 preview.js:340
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -166,32 +166,32 @@ msgstr "Copier dans le presse-papier"
 msgid "Back"
 msgstr "Retour"
 
-#. preview.js:303 preview.js:308 preview.js:313
+#. preview.js:313 preview.js:318 preview.js:323
 msgid "Invalid filename"
 msgstr "Nom du fichier invalide"
 
-#. preview.js:303
+#. preview.js:313
 msgid "Filename cannot be empty."
 msgstr "Le nom du fichier ne peut pas être vide."
 
-#. preview.js:308
+#. preview.js:318
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr ""
 "Le nom du fichier contient des caractères interdits: \\ / : * ? \" < > |"
 
-#. preview.js:313
+#. preview.js:323
 msgid "Filename must end with .png"
 msgstr "Le nom du fichier doit se terminer par .png"
 
-#. preview.js:320
+#. preview.js:330
 msgid "Unable to open file chooser."
 msgstr "Impossible d’ouvrir le sélecteur de fichiers."
 
-#. preview.js:409
+#. preview.js:419
 msgid "Copy failed"
 msgstr "Échec de la copie"
 
-#. preview.js:409
+#. preview.js:419
 msgid "Unable to copy image to clipboard."
 msgstr "Impossible de copier dans le presse papier."
 

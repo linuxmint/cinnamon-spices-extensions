@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-04 15:56+0200\n"
+"POT-Creation-Date: 2025-10-25 18:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -98,7 +98,7 @@ msgstr "Unisci la tela con l'immagine"
 msgid "Save modified copy as…"
 msgstr "Salva copia modificata come…"
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:331
+#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -118,19 +118,19 @@ msgstr "No"
 msgid "Error saving"
 msgstr "Errore nel salvataggio"
 
-#. editOverlay.js:1036 preview.js:320
+#. editOverlay.js:1036 preview.js:330
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py non disponibile"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:326
+#. editOverlay.js:1056 preview.js:211 preview.js:336
 msgid "Save as..."
 msgstr "Salva come..."
 
-#. editOverlay.js:1059 preview.js:329
+#. editOverlay.js:1059 preview.js:339
 msgid "Images"
 msgstr "Immagini"
 
-#. editOverlay.js:1060 preview.js:330
+#. editOverlay.js:1060 preview.js:340
 msgid "Save"
 msgstr "Salva"
 
@@ -166,31 +166,31 @@ msgstr "Copia negli appunti"
 msgid "Back"
 msgstr "Indietro"
 
-#. preview.js:303 preview.js:308 preview.js:313
+#. preview.js:313 preview.js:318 preview.js:323
 msgid "Invalid filename"
 msgstr "Nome file non valido"
 
-#. preview.js:303
+#. preview.js:313
 msgid "Filename cannot be empty."
 msgstr "Il nome file non può essere vuoto."
 
-#. preview.js:308
+#. preview.js:318
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "Il nome file contiene caratteri non consentiti: \\ / : * ? \" < > |"
 
-#. preview.js:313
+#. preview.js:323
 msgid "Filename must end with .png"
 msgstr "Il nome file deve terminare con .png"
 
-#. preview.js:320
+#. preview.js:330
 msgid "Unable to open file chooser."
 msgstr "Impossibile aprire il selettore file."
 
-#. preview.js:409
+#. preview.js:419
 msgid "Copy failed"
 msgstr "Copia fallita"
 
-#. preview.js:409
+#. preview.js:419
 msgid "Unable to copy image to clipboard."
 msgstr "Impossibile copiare l'immagine negli appunti."
 

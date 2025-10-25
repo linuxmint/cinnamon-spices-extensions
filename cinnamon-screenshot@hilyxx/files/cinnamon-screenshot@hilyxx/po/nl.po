@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-04 15:56+0200\n"
+"POT-Creation-Date: 2025-10-25 18:56+0200\n"
 "PO-Revision-Date: 2025-08-25 14:49+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -96,7 +96,7 @@ msgstr "Canvas samenvoegen met afbeelding"
 msgid "Save modified copy as…"
 msgstr "Gewijzigde kopie opslaan als…"
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:331
+#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -116,19 +116,19 @@ msgstr "Nee"
 msgid "Error saving"
 msgstr "Fout bij opslaan"
 
-#. editOverlay.js:1036 preview.js:320
+#. editOverlay.js:1036 preview.js:330
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py niet beschikbaar"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:326
+#. editOverlay.js:1056 preview.js:211 preview.js:336
 msgid "Save as..."
 msgstr "Opslaan als..."
 
-#. editOverlay.js:1059 preview.js:329
+#. editOverlay.js:1059 preview.js:339
 msgid "Images"
 msgstr "Afbeeldingen"
 
-#. editOverlay.js:1060 preview.js:330
+#. editOverlay.js:1060 preview.js:340
 msgid "Save"
 msgstr "Opslaan"
 
@@ -164,31 +164,31 @@ msgstr "Kopiëren naar klembord"
 msgid "Back"
 msgstr "Terug"
 
-#. preview.js:303 preview.js:308 preview.js:313
+#. preview.js:313 preview.js:318 preview.js:323
 msgid "Invalid filename"
 msgstr "Ongeldige bestandsnaam"
 
-#. preview.js:303
+#. preview.js:313
 msgid "Filename cannot be empty."
 msgstr "Bestandsnaam mag niet leeg zijn."
 
-#. preview.js:308
+#. preview.js:318
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "Bestandsnaam bevat verboden tekens: \\ / : * ? \" < > |"
 
-#. preview.js:313
+#. preview.js:323
 msgid "Filename must end with .png"
 msgstr "Bestandsnaam moet eindigen op .png"
 
-#. preview.js:320
+#. preview.js:330
 msgid "Unable to open file chooser."
 msgstr "Kan bestandkiezer niet openen."
 
-#. preview.js:409
+#. preview.js:419
 msgid "Copy failed"
 msgstr "Kopiëren mislukt"
 
-#. preview.js:409
+#. preview.js:419
 msgid "Unable to copy image to clipboard."
 msgstr "Kan afbeelding niet naar klembord kopiëren."
 
