@@ -31,33 +31,49 @@ const GLib = imports.gi.GLib;
 let extensionInstance = null;
 
 class AutoMoveWindows {
+    /**
+     * Create a new AutoMoveWindows instance.
+     *
+     * @param {Object} metadata - Extension metadata provided by Cinnamon (contains uuid and other info).
+     *
+     * Instance fields created:
+     *  - this._meta: metadata object
+     *  - this._settings: Settings.ExtensionSettings instance (populated in enable)
+     *  - this._signals: SignalManager instance (populated in enable)
+     *  - this._firstAppliedMap: Map to track rules with firstOnly semantics
+     */
     constructor(metadata) {
         this._meta = metadata;
         this._settings = null;
         this._signals = null;
-        // Map wmClass -> metaWindow for rules with firstOnly=true (so we only act on the first instance)
-        // NOTE: keys stored here are lowercased wmClass values (for case-insensitive matching).
         this._firstAppliedMap = new Map();
     }
 
+
+    /**
+     * Enable the extension runtime behavior.
+     *
+     * Initializes settings binding and signal hooks used to monitor new and removed windows.
+     * This method is called by the top-level enable() wrapper when the extension is activated.
+     */
     enable() {
         this._settings = new Settings.ExtensionSettings(this, this._meta.uuid);
         this._signals = new SignalManager.SignalManager(null);
-        // No WindowTracker; matching will be limited to WM_CLASS or title
-
-        // Listen for new windows
         this._signals.connect(global.screen, 'window-added', this._onWindowAdded, this);
-        // Listen for window removals so we can free first-instance locks
         this._signals.connect(global.screen, 'window-removed', this._onWindowRemoved, this);
 
         // Optionally connect to existing windows to track removals (not strictly required)
         // and ensure map is clean if extension is enabled after windows exist.
         let windows = global.display.list_windows(0);
-        for (let i = 0; i < windows.length; i++) {
-            // no per-window signals needed here
-        }
     }
 
+
+    /**
+     * Disable the extension runtime behavior.
+     *
+     * Disconnects any registered signals and clears runtime state. Called when the extension
+     * is being disabled or reloaded.
+     */
     disable() {
         if (this._signals) {
             this._signals.disconnectAllSignals();
@@ -69,148 +85,135 @@ class AutoMoveWindows {
         this._firstAppliedMap.clear();
     }
 
+
+    /**
+     * Handler for the `window-added` signal.
+     *
+     * When a new window is mapped, this method loads the current `app-rules` from settings,
+     * normalizes rule matching fields, and applies the first matching rule (if any) to the
+     * window by switching workspace, moving/resizing, or maximizing according to the rule.
+     *
+     * @param {object} screen - the Screen object that emitted the signal
+     * @param {Meta.Window} metaWindow - the newly added MetaWindow
+     * @param {number} monitorIndex - monitor index where the window appeared
+     */
     _onWindowAdded(screen, metaWindow, monitorIndex) {
-        try {
-            if (!metaWindow)
-                return;
+        if (!metaWindow)
+            return;
 
-            // Obtain the WM_CLASS for the window. Not all windows expose this; bail out if missing.
-            const wmClass = metaWindow.get_wm_class && metaWindow.get_wm_class();
-            if (!wmClass)
-                return;
+        const wmClass = metaWindow.get_wm_class && metaWindow.get_wm_class();
+        if (!wmClass)
+            return;
 
-            // Skip special windows
-            const type = metaWindow.get_window_type();
-            if (type === Meta.WindowType.DESKTOP || type === Meta.WindowType.DOCK || type === Meta.WindowType.SPLASHSCREEN)
-                return;
+        const type = metaWindow.get_window_type();
+        if (type === Meta.WindowType.DESKTOP || type === Meta.WindowType.DOCK || type === Meta.WindowType.SPLASHSCREEN)
+            return;
 
-            // Load rules and prepare a lowercased key for case-insensitive matching. We create
-            // transient copies (shallow) so we don't mutate the stored settings.
-            const rules = (this._settings.getValue('app-rules') || []).map(r => {
-                if (r && r.wmClass) {
-                    let copy = Object.assign({}, r);
-                    // Trim whitespace and normalize to lowercase to avoid mismatch due to stray spaces
-                    copy._wmClassLower = String(r.wmClass).trim().toLowerCase();
-                    return copy;
+        const rules = (this._settings.getValue('app-rules') || []).map(r => {
+            if (r && r.wmClass) {
+                let copy = Object.assign({}, r);
+                copy._wmClassLower = String(r.wmClass).trim().toLowerCase();
+                return copy;
+            }
+            return r;
+        });
+        const wmLower = String(wmClass).toLowerCase();
+        const titleLower = String(metaWindow.get_title && metaWindow.get_title() || '').toLowerCase();
+
+        try { global.log('[auto-move-windows] Window WM_CLASS: ' + String(wmClass) + ' (normalized: ' + wmLower + ')'); } catch (e) {}
+        const rule = rules.find(r => {
+            if (!r || !r._wmClassLower)
+                return false;
+            const field = (r.matchField || 'wmClass');
+            switch (field) {
+                case 'title':
+                    return titleLower.indexOf(r._wmClassLower) !== -1;
+                case 'wmClass':
+                default:
+                    return wmLower.indexOf(r._wmClassLower) !== -1;
+            }
+        });
+        if (!rule)
+            return;
+
+        if (rule.firstOnly) {
+            const ruleKey = rule._wmClassLower;
+            if (this._firstAppliedMap.has(ruleKey))
+                return;
+            this._firstAppliedMap.set(ruleKey, metaWindow);
+        }
+
+        // Wait a short time so the window has been fully mapped and its frame exists
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+            if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
+                if (metaWindow.change_workspace_by_index) {
+                    metaWindow.change_workspace_by_index(rule.workspace, false);
+                } else if (metaWindow.change_workspace) {
+                    const ws = global.workspace_manager.get_workspace_by_index(rule.workspace);
+                    if (ws)
+                        metaWindow.change_workspace(ws);
                 }
-                return r;
-            });
-            const wmLower = String(wmClass).toLowerCase();
-            // Compute lowercase title for title-based matching
-            const titleLower = String(metaWindow.get_title && metaWindow.get_title() || '').toLowerCase();
-
-            // Lightweight log for visibility (keep logs minimal)
-            try { global.log('[auto-move-windows] Window WM_CLASS: ' + String(wmClass) + ' (normalized: ' + wmLower + ')'); } catch (e) {}
-            // Match rules by chosen field: 'title' or 'wmClass' (default)
-            const rule = rules.find(r => {
-                if (!r || !r._wmClassLower)
-                    return false;
-                const field = (r.matchField || 'wmClass');
-                switch (field) {
-                    case 'title':
-                        return titleLower.indexOf(r._wmClassLower) !== -1;
-                    case 'wmClass':
-                    default:
-                        return wmLower.indexOf(r._wmClassLower) !== -1;
-                }
-            });
-            if (!rule)
-                return;
-
-            // firstOnly handling: if we've already applied and the tracked window still exists, skip
-            // If rule.firstOnly is set, ensure we haven't already applied this rule to another window.
-            if (rule.firstOnly) {
-                // Key first-instance locks by the rule's normalized substring so different rules with
-                // different wmClass patterns don't conflict.
-                const ruleKey = rule._wmClassLower;
-                if (this._firstAppliedMap.has(ruleKey))
-                    return; // skip if another instance for this rule is active
-                // Mark first-instance as applied immediately to prevent race conditions
-                this._firstAppliedMap.set(ruleKey, metaWindow);
             }
 
-            // Wait a short time so the window has been fully mapped and its frame exists
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+            if (rule.maximized === true) {
                 try {
-                    // If rule specifies a workspace (non-null, non-undefined, and >= 0)
-                    if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
-                        // Change workspace before resize/position
-                        if (metaWindow.change_workspace_by_index) {
-                            metaWindow.change_workspace_by_index(rule.workspace, false);
-                        } else if (metaWindow.change_workspace) {
-                            // fallback: get workspace object
-                            const ws = global.workspace_manager.get_workspace_by_index(rule.workspace);
-                            if (ws)
-                                metaWindow.change_workspace(ws);
-                        }
-                    }
-
-                    // Check if window should be maximized
-                    if (rule.maximized === true) {
-                        // Maximize the window fully (ignore x, y, width, height if present)
-                        try {
-                            metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
-                        } catch (e) {
-                            global.logError(e);
-                        }
-                    } else if (rule.maximizeVertically === true && Number.isFinite(rule.width)) {
-                        // Maximize vertically but respect width (and x if provided)
-                        try {
-                            const x = Number.isFinite(rule.x) ? rule.x : 0;
-                            const width = Math.max(1, rule.width);
-
-                            // First unmaximize and untile
-                            try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
-                            try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
-
-                            // Set the horizontal position and width
-                            if (metaWindow.move_resize_frame) {
-                                // Get current geometry to preserve y position temporarily
-                                const currentRect = metaWindow.get_frame_rect();
-                                metaWindow.move_resize_frame(true, x, currentRect.y, width, currentRect.height);
-                            }
-
-                            // Then maximize vertically
-                            metaWindow.maximize(Meta.MaximizeFlags.VERTICAL);
-                        } catch (e) {
-                            global.logError(e);
-                        }
-                    } else {
-                        // Apply geometry if provided
-                        const hasGeom = Number.isFinite(rule.width) && Number.isFinite(rule.height);
-                        if (hasGeom) {
-                            const x = Number.isFinite(rule.x) ? rule.x : 0;
-                            const y = Number.isFinite(rule.y) ? rule.y : 0;
-                            const width = Math.max(1, rule.width);
-                            const height = Math.max(1, rule.height);
-
-                            // move_resize_frame is commonly available in Cinnamon extensions
-                            if (metaWindow.move_resize_frame) {
-                                // attempt to unmaximize/untile first so move works
-                                try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
-                                try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
-                                metaWindow.move_resize_frame(true, x, y, width, height);
-                            }
-                        }
-                    }
+                    metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
                 } catch (e) {
                     global.logError(e);
                 }
+            } else if (rule.maximizeVertically === true && Number.isFinite(rule.width)) {
+                try {
+                    const x = Number.isFinite(rule.x) ? rule.x : 0;
+                    const width = Math.max(1, rule.width);
 
-                return GLib.SOURCE_REMOVE;
-            });
-        } catch (e) {
-            global.logError(e);
-        }
+                    try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
+                    try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
+
+                    if (metaWindow.move_resize_frame) {
+                        const currentRect = metaWindow.get_frame_rect();
+                        metaWindow.move_resize_frame(true, x, currentRect.y, width, currentRect.height);
+                    }
+
+                    metaWindow.maximize(Meta.MaximizeFlags.VERTICAL);
+                } catch (e) {
+                    global.logError(e);
+                }
+            } else {
+                const hasGeom = Number.isFinite(rule.width) && Number.isFinite(rule.height);
+                if (hasGeom) {
+                    const x = Number.isFinite(rule.x) ? rule.x : 0;
+                    const y = Number.isFinite(rule.y) ? rule.y : 0;
+                    const width = Math.max(1, rule.width);
+                    const height = Math.max(1, rule.height);
+
+                    if (metaWindow.move_resize_frame) {
+                        try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
+                        try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
+                        metaWindow.move_resize_frame(true, x, y, width, height);
+                    }
+                }
+            }
+            
+            return GLib.SOURCE_REMOVE;
+        });
     }
 
+
+    /**
+     * Handler for the `window-removed` signal.
+     *
+     * Frees any `firstOnly` locks that referenced the removed window so future windows
+     * matching the same rule may be handled.
+     *
+     * @param {object} screen - the Screen object that emitted the signal
+     * @param {Meta.Window} metaWindow - the removed MetaWindow
+     * @param {number} monitorIndex - monitor index where the window was removed
+     */
     _onWindowRemoved(screen, metaWindow, monitorIndex) {
-        // If the removed window was the one we used to satisfy a firstOnly rule, free the lock
         try {
             if (!metaWindow)
                 return;
 
-            // Iterate entries and remove any that reference this metaWindow
             for (let [key, tracked] of this._firstAppliedMap) {
                 if (tracked === metaWindow) {
                     this._firstAppliedMap.delete(key);
@@ -222,19 +225,24 @@ class AutoMoveWindows {
     }
 }
 
+
+
 function init(metadata) {
     extensionInstance = new AutoMoveWindows(metadata);
 }
 
+
 function enable() {
     try {
         extensionInstance.enable();
+        return { create_boilerplate_file };
     } catch (e) {
         global.logError(e);
         disable();
         throw e;
     }
 }
+
 
 function disable() {
     try {
@@ -245,4 +253,30 @@ function disable() {
     } finally {
         extensionInstance = null;
     }
+}
+
+
+/**
+ * Create a boilerplate settings JSON file on the user's Desktop.
+ *
+ * The file is written as ~/Desktop/auto-move-windows-settings.json and contains a
+ * minimal JSON object with an empty `app-rules` array. The Desktop directory is
+ * created if it does not already exist. Returns true on success and false on
+ * failure (and logs errors with global.logError()).
+ *
+ * @returns {boolean} success flag
+ */
+function create_boilerplate_file() {
+    const home = GLib.get_home_dir();
+    const desktopDir = GLib.build_filenamev([home, 'Desktop']);
+    try { GLib.mkdir_with_parents(desktopDir, 0o755); } catch (e) {}
+
+    const target = GLib.build_filenamev([desktopDir, 'auto-move-windows-settings.json']);
+    const boilerplate = {
+        "app-rules": []
+    };
+    const jsonString = JSON.stringify(boilerplate, null, 2);
+    GLib.file_set_contents(target, jsonString);
+    try { Main.notify('auto-move-windows', 'Created ' + target); } catch (e) {}
+    return true;
 }

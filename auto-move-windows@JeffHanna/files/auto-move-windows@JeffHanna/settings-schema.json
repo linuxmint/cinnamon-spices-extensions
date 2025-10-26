@@ -1,12 +1,29 @@
 {
-  "general-header": {
+  "header-0": {
     "type": "header",
-    "description": "Per-application rules: when an app opens, move/resize it and optionally only act on the first instance"
+    "description": "Use the button below to create a boilerplate settings file on your desktop."
+    
+  },
+  "header-1": {
+    "type": "header",
+    "description": "After you have added rules for your applications, use the 'hamburger' menu to import the settings file."    
+  },
+  "header-2": {
+    "type": "header",
+    "description": "If you are modifying existing settings, use the 'hamburger menu to export the current settings."
+  },
+  "header-3": {
+    "type": "header",
+    "description": "Then make the modifications and re-import."
+  },
+  "create_boilerplate": {
+    "type": "button",
+    "description": "Create a boilerplate settings file on the desktop.",
+    "callback": "create_boilerplate_file"
   },
   "app-rules": {
     "type": "generic",
     "default": [],
     "value": []
   }
- 
 }
