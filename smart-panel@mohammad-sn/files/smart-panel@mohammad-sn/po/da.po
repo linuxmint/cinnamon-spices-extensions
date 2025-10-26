@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-05-14 22:04+0200\n"
-"PO-Revision-Date: 2023-12-07 15:38+0100\n"
+"PO-Revision-Date: 2025-10-26 16:23+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->description
 msgid ""
@@ -58,7 +58,7 @@ msgstr "Skift mellem vinduer"
 
 #. settings-schema.json->scroll-action->options
 msgid "Adjust sound volume"
-msgstr ""
+msgstr "Justér lydniveau"
 
 #. settings-schema.json->scroll-action->options
 #. settings-schema.json->scroll-action-up->options
@@ -90,7 +90,7 @@ msgstr "Forskellige handlinger ved rulning op og ned"
 
 #. settings-schema.json->show-osd->description
 msgid "Display OSD for workspace change notification"
-msgstr ""
+msgstr "Vis OSD for underretning om skift af arbejdsområde"
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "
