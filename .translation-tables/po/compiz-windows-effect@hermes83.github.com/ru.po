@@ -1,0 +1,50 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-30 18:25+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Эффект окон Compiz (Compiz windows effect)"
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr "Эффект вязких окон как в плагине для Compiz"
+
+#. settings-schema.json->friction->description
+msgid "Friction"
+msgstr "Трение"
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "Коэффициент упругости"
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup Factor"
+msgstr "Фактор ускорения"
+
+#. settings-schema.json->mass->description
+msgid "Mass"
+msgstr "Масса"
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles"
+msgstr "Тайлов по оси X"
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles"
+msgstr "Тайлов по оси Y"
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "Фактор Минимизации и Максимизации"

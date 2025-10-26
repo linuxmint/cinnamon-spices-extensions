@@ -1,0 +1,300 @@
+# SMART PANEL
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: 2023-08-24 10:57+0300\n"
+"Last-Translator: DmytroVoytko <Dmytro.Voytko@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Перемикайтеся між робочими областями, показуйте робочий стіл, активуйте "
+"огляд або експозицію за допомогою прокручування, подвійного клацання, жестів "
+"миші тощо на вільному просторі панелі."
+
+#. metadata.json->name
+msgid "Smart Panel"
+msgstr "Розумна панель (Smart Panel)"
+
+#. settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Параметри прокручування мишею: "
+
+#. settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Дія при прокручуванні: "
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Перемкнутися між робочими областями"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Налаштувати непрозорість вікон"
+
+#. settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Показати/Сховати робочий стіл"
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Перемкнутися між вікнами"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->scroll-action->options
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "None"
+msgstr "Нічого"
+
+#. settings-schema.json->prev-fast-scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Запобігайте випадковому перемиканню робочої області/вікна за допомогою "
+"швидкого прокручування"
+
+#. settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Мінімальна затримка між прокрутками:"
+
+#. settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "мілісекунд"
+
+#. settings-schema.json->sep-scroll-action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Незалежні дії для прокручування вгору та вниз"
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr ""
+
+#. settings-schema.json->scroll-action-up->description
+msgid "Action on scrolling up: "
+msgstr "Дія при прокручуванні вгору: "
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Expo"
+msgstr "Експо"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Overview"
+msgstr "Огляд"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Launch App Switcher"
+msgstr "Запустити перемикач програм"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Show Desktop"
+msgstr "Показати робочий стіл"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 1st Custom Command"
+msgstr "Виконати першу спеціальну команду"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Виконати другу спеціальну команду"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Виконати третю спеціальну команду"
+
+#. settings-schema.json->scroll-action-down->description
+msgid "Action on scrolling down: "
+msgstr "Дія при прокручуванні вниз: "
+
+#. settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Параметри клацання мишею: "
+
+#. settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Дія при подвійному клацанні на панелі: "
+
+#. settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Дія при клацанні на панелі середньою кнопкою миші: "
+
+#. settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Жести мишею: "
+
+#. settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Використовувати жести миші на панелі"
+
+#. settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Перетягування вправо: "
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Перейти до лівої робочої області"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Перейти до першої робочої області"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Перейти до правої робочої області"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Перейти до останньої робочої області"
+
+#. settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Перетягування вліво: "
+
+#. settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Клацніть край екрана та перетягніть убік вертикально: "
+
+#. settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Спеціальні команди: "
+
+#. settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "Перша спеціальна команда:"
+
+#. settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "Друга спеціальна команда:"
+
+#. settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "Третя спеціальна команда:"
+
+#. settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Налаштування перемикача програм: "
+
+#. settings-schema.json->appswitcher-style->description
+msgid "App switcher style: "
+msgstr "Стиль перемикача програм: "
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Лише значки"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Лише мініатюри"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Значки та мініатюри"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Значки та попередній перегляд вікон"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Попередній перегляд вікна (без значків)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Покриття (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Хронологія (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "За умовчанням системи"
+
+#. settings-schema.json->appswitcher-scope->description
+msgid "Switch between windows from: "
+msgstr "Перемикатися між вікнами з: "
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Поточна робоча область"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Усі робочі області"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Поточна програма"
+
+#. settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "Коли натиснуто клавішу-модифікатор, перемикатися між вікнами з: "
+
+#. settings-schema.json->appswitcher-modifier->description
+msgid "Modifier key: "
+msgstr "Клавіша-модифікатор: "
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr "Shift"
