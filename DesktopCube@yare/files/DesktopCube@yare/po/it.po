@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-01-09 21:14-0500\n"
-"PO-Revision-Date: 2022-06-03 10:52+0200\n"
+"POT-Creation-Date: 2025-09-06 23:46-0400\n"
+"PO-Revision-Date: 2025-08-26 18:24+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Desktop Cube"
@@ -69,20 +69,19 @@ msgstr "Impostazioni di Sistema"
 #. 2.0->settings-schema.json->workspaces_btn->description
 #. 5.4->settings-schema.json->workspaces_btn->description
 msgid "Open Cinnamon Settings to manage Workspaces"
-msgstr "Apri le Impostazioni di Cinnamon per gestire le Aree di Lavoro"
+msgstr "Apri le impostazioni di Cinnamon per gestire le Aree di Lavoro"
 
 #. 5.4->settings-schema.json->animationTimeSec->description
-#, fuzzy
 msgid "Animation duration (seconds)"
-msgstr "Durata animazione"
+msgstr "Durata animazione (secondi)"
 
 #. 5.4->settings-schema.json->pullawayPercent->description
 msgid "Cube size (percent of screen size)"
-msgstr ""
+msgstr "Dimensione del cubo (percentuale dimensione schermo)"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
-msgstr ""
+msgstr "Includi pannelli"
 
 #. 5.4->settings-schema.json->includePanels->tooltip
 msgid ""
@@ -90,96 +89,119 @@ msgid ""
 "properly painted or completely invisible anyhow, so it's best to leave this "
 "disabled"
 msgstr ""
+"Includi i pannelli durante l'animazione. Nella maggior parte dei casi i "
+"pannelli non sono disegnati correttamente o sono comunque completamente "
+"invisibili, quindi è meglio lasciare questa opzione disattivata"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->description
 msgid "Use Cube effect with the Workspace Switcher applet"
-msgstr ""
+msgstr "Usa l'effetto Cubo con l'applet di commutazione area di lavoro"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
 msgid ""
 "Override the moveToWorkspace() API so that the Cube effect is used by the "
 "Workspace Switcher Applet when changing the current workspace"
 msgstr ""
+"Sostituisce l'API moveToWorkspace() in modo che l'effetto Cubo venga "
+"utilizzato dall'applet di commutazione area di lavoro quando si cambia "
+"l'area di lavoro corrente"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Cube effect when changing focus causes a workspace switch"
 msgstr ""
+"Usa l'effetto Cubo quando la modifica dello stato attivo provoca un cambio "
+"di area di lavoro"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
 msgid ""
 "Override the activateWindow() API so that when a window on another workspace "
 "is given the focus, the Cube effect is used to change the current workspace"
 msgstr ""
+"Sostituisce l'API activateWindow() in modo che quando viene data priorità a "
+"una finestra su un'altra area di lavoro, l'effetto Cubo venga utilizzato per "
+"modificare l'area di lavoro corrente"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Cube effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Usa l'effetto Cubo quando la modifica dello stato attivo provoca un cambio "
+"di area di lavoro"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Cube effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->header2->description
-#, fuzzy
 msgid "Effect Easing"
-msgstr "Effetti"
+msgstr "Effetto di attenuazione"
 
 #. 5.4->settings-schema.json->newScaleEffect->description
 msgid "Scale easing"
-msgstr ""
+msgstr "Attenuazione scala"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Back"
-msgstr ""
+msgstr "Indietro"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Bounce"
-msgstr ""
+msgstr "Rimbalzo"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Circ"
-msgstr ""
+msgstr "Circ"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Cubic"
-msgstr ""
+msgstr "Cubico"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Elastic"
-msgstr ""
+msgstr "Elastico"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Expo"
-msgstr ""
+msgstr "Expo"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Sine"
-msgstr ""
+msgstr "Sine"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quad"
-msgstr ""
+msgstr "Quad"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quart"
-msgstr ""
+msgstr "Quart"
 
 #. 5.4->settings-schema.json->newScaleEffect->options
 #. 5.4->settings-schema.json->newRotateEffect->options
 msgid "Quint"
-msgstr ""
+msgstr "Quint"
 
 #. 5.4->settings-schema.json->newRotateEffect->description
-#, fuzzy
 msgid "Rotate easing"
-msgstr "Effetto fine rotazione"
+msgstr "Attenuazione rotazione"
 
 #. 5.4->settings-schema.json->easing_btn->description
 msgid "Open easing information website"
-msgstr ""
+msgstr "Apri il sito web informativo sull'attenuazione"
 
 #. 5.4->settings-schema.json->hotkeys_btn->description
-#, fuzzy
 msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
-msgstr "Apri le Impostazioni di Cinnamon per gestire le Aree di Lavoro"
+msgstr ""
+"Apri le impostazioni tastiera di Cinnamon per gestire i tasti di scelta "
+"rapida dell'area di lavoro"

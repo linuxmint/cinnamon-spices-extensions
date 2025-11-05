@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.5.2
+
+* When the theme override option is disabled, restore the theme's menu settings
+* Fix an issue with Alt-Tab support after the extension is reloaded (after an update) or disabled
+* Fix a typo in Notifications settings tab (Sent -> Send)
+
+## 1.5.1
+
+* Fix 1.5.0 regression, a missing function left out of the 1.5.0 merge into the spices repo
+
+## 1.5.0
+
+* Added effects to the Coverflow and Timeline Alt-Tab switchers (enabled by default)
+* Added the ability to apply effects to the Notification popups (disabled by default)
+* Added the ability to apply effects to the Panel Tooltip popups (disabled by default)
+* Added a welcome Notification popup with a button to open the configuration window
+* Added a panel option to restore the default (solid) look of the panel(s) when a window is maximized (thanks to [decsny](https://github.com/decsny) for some code)
+* Fixed an issue where a blurred element remains visible after a menu is closed (thanks to [SpeeQz1](https://github.com/SpeeQz1) for the bug report)
+* Fixed an issue where some signals are not disconnected when disabling the extension
+* Rewrote some parts of the code to make it easier to maintain and reduce code duplication
+* Improved popup menu performance in general, particularly when re-opening menus for a second time
+
 ## 1.4.2
 
 * Fixed a typo in the code that prevented the effects from being removed from the desktop background image after disabling the extension (thanks to OthorWight for finding the issue).
@@ -8,7 +30,7 @@
 
 ## 1.4.1
 
-* Fix for the main menu's favourite box fading from a solid color into it's blurred state on open (Mint-Y theme)
+* Fix for the main menu's favorite box fading from a solid color into it's blurred state on open (Mint-Y theme)
 * Take into account the popup-menu box margins when applying blurring so that blurring can be properly sized for the popup-menu (Orchis-Dark theme)
 * Fix a typo in the setting window
 * Properly free popup-menu blur elements

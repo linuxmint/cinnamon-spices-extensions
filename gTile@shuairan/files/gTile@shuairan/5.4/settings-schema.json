@@ -60,7 +60,8 @@
             "autoclose",
             "aspect-ratio",
             "useMonitorCenter",
-            "showGridOnAllMonitors"
+            "showGridOnAllMonitors",
+            "select-using-keyboard"
          ]
       },
       "grid1-section": {
@@ -408,5 +409,10 @@
             "span": 1
          }
       ]
-	}
+	},
+   "select-using-keyboard": {
+      "type": "checkbox",
+      "default": false,
+      "description": "Show tile labels"
+   }
 }

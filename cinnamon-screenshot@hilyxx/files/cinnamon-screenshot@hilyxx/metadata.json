@@ -3,7 +3,7 @@
     "name": "Cinnamon-Screenshot",
     "author": "hilyxx",
     "description": "Cinnamon extension for screenshots with modern interface and advanced options.",
-    "version": 1.21,
+    "version": "1.22.1",
     "max-instances": 1,
     "cinnamon-version": [
         "6.4"

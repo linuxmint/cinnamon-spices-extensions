@@ -57,6 +57,7 @@ const St = imports.gi.St;
 const Cinnamon = imports.gi.Cinnamon;
 const Util = imports.misc.util;
 const SignalManager = imports.misc.signalManager;
+const UPowerGlib = imports.gi.UPowerGlib;
 
 const Effect = {
   Apparition:  {idx: 0,  name: "Apparition"},
@@ -137,6 +138,10 @@ class BurnMyWindows {
       // Save the version number to the settings so that the About page can read it (is there a better way?)
       this._settings.setValue("ext-version", this.meta.version);
 
+      // Get the UPower Display Device which we can use to determine the battery state/percentage
+      this._upClient = new UPowerGlib.Client();
+      this._upDisplayDevice = this._upClient.get_display_device();
+
       // Effects in this array must be ordered by effect number as defined by the setting-schema.json.
       // New effects will be added in alphabetical order in the UI list, but the effect number, and
       // therefore the order in this array, might not be alphabetical.
@@ -173,9 +178,19 @@ class BurnMyWindows {
       // We will use extensionThis to refer to the extension inside the patched methods.
       extensionThis = this;
 
-      // Settings connections to connect to the mimimize/unminimize events when required
+      // Bind variables to setting effect values
       this._settings.bind("minimize-effect", "minimizeEffect", this._enableMinimizeEffects);
       this._settings.bind("unminimize-effect", "unminimizeEffect", this._enableMinimizeEffects);
+      this._settings.bind("power-minimize-effect", "powerMinimizeEffect", this._enableMinimizeEffects);
+      this._settings.bind("power-unminimize-effect", "powerUnminimizeEffect", this._enableMinimizeEffects);
+      this._settings.bind("open-window-effect", "openEffect");
+      this._settings.bind("dialog-open-effect", "dialogOpenEffect");
+      this._settings.bind("power-open-effect", "powerOpenEffect");
+      this._settings.bind("power-dialog-open-effect", "powerDialogOpenEffect");
+      this._settings.bind("close-window-effect", "closeEffect");
+      this._settings.bind("dialog-close-effect", "dialogCloseEffect");
+      this._settings.bind("power-close-effect", "powerCloseEffect");
+      this._settings.bind("power-dialog-close-effect", "powerDialogCloseEffect");
 
       // Keep track of the previously focused Application
       this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
@@ -250,12 +265,15 @@ class BurnMyWindows {
       }
     }
     // If we now have some Minimize/Unminimize effects enabled, then we need to connect to the Minimize/Unminimize events
-    if (!this._minimizeConnected && (appRuleUses || this.minimizeEffect !== Effect.None.idx || this.unminimizeEffect !== Effect.None.idx)) {
+    if (!this._minimizeConnected && (appRuleUses || this.minimizeEffect !== Effect.None.idx || this.unminimizeEffect !== Effect.None.idx ||
+         this.powerMinimizeEffect !== Effect.None.idx || this.powerUnminimizeEffect !== Effect.None.idx)) {
        let error = this.shouldAnimateManager.connect(ShouldAnimateManager.Events.Minimize+ShouldAnimateManager.Events.Unminimize, this._shouldAnimateHandler );
        if (error) {
           // Disable all the minimize/unminimize effects
           this.minimizeEffect = Effect.None.idx;
           this.unminimizeEffect = Effect.None.idx;
+          this.powerMinimizeEffect = Effect.None.idx;
+          this.powerUnminimizeEffect = Effect.None.idx;
           if (appRules) {
             for (let i=0 ; i<appRules.length ; i++) {
               if (appRules[i].enabled && (appRules[i].minimize !== Effect.None.idx || appRules[i].unminimize !== Effect.None.idx)) {
@@ -341,7 +359,7 @@ class BurnMyWindows {
   // This function could be called after the extension is uninstalled, disabled in GNOME
   // Tweaks, when you log out or when the screen locks.
   disable() {
-    // Stop monitoring focus changes
+    // Stop monitoring signals
     this._signalManager.disconnectAllSignals();
 
     // Free all effect resources.
@@ -352,6 +370,7 @@ class BurnMyWindows {
     // Restore the original window-open, window-close, Minimize and Unminimize animations.
     this.shouldAnimateManager.disconnect();
 
+    this._settings.finalize();
     this._settings = null;
   }
 
@@ -360,36 +379,48 @@ class BurnMyWindows {
     let effectIdx;
     let metaWindow = actor.meta_window;
     let windowType = metaWindow.get_window_type();
-    let dialog = (this._settings.getValue("dialog-special") === true && (windowType === Meta.WindowType.DIALOG || windowType === Meta.WindowType.MODAL_DIALOG));
-    let appRule = (!dialog) ? this.getAppRule(metaWindow) : null;
+    let power = ( this._settings.getValue("power-onbattery") === true &&
+                  this._upDisplayDevice.state === UPowerGlib.DeviceState.DISCHARGING &&
+                  this._upDisplayDevice.percentage < this._settings.getValue("power-percent") );
+    let dialog = ( ((!power && this._settings.getValue("dialog-special")) || (power && this._settings.getValue("power-dialog-special"))) &&
+                   (windowType === Meta.WindowType.DIALOG || windowType === Meta.WindowType.MODAL_DIALOG));
+    let appRule = (!dialog) ? this.getAppRule(metaWindow, power) : null;
 
     switch (event) {
       case ShouldAnimateManager.Events.MapWindow:
         if (appRule) {
           effectIdx = appRule.open;
         } else {
-          effectIdx = (!dialog) ? this._settings.getValue("open-window-effect") : this._settings.getValue("dialog-open-effect");
+          if (power) {
+            effectIdx = (!dialog) ? this.powerOpenEffect : this.powerDialogOpenEffect;
+          } else {
+            effectIdx = (!dialog) ? this.openEffect : this.dialogOpenEffect;
+          }
         }
         break;
       case ShouldAnimateManager.Events.DestroyWindow:
         if (appRule) {
           effectIdx = appRule.close;
         } else {
-          effectIdx = (!dialog) ? this._settings.getValue("close-window-effect") : this._settings.getValue("dialog-close-effect");
+          if (power) {
+            effectIdx = (!dialog) ? this.powerCloseEffect : this.powerDialogCloseEffect;
+          } else {
+            effectIdx = (!dialog) ? this.closeEffect : this.dialogCloseEffect;
+          }
         }
         break;
       case ShouldAnimateManager.Events.Minimize:
         if (appRule) {
           effectIdx = appRule.minimize;
         } else {
-          effectIdx = this.minimizeEffect;
+          effectIdx = (power) ? this.powerMinimizeEffect : this.minimizeEffect;
         }
         break;
       case ShouldAnimateManager.Events.Unminimize:
         if (appRule) {
           effectIdx = appRule.unminimize;
         } else {
-          effectIdx = this.unminimizeEffect;
+          effectIdx = (power) ? this.powerUnminimizeEffect : this.unminimizeEffect;
         }
         break;
     }
@@ -434,7 +465,7 @@ class BurnMyWindows {
   }
 
   // Get the application specific rules for the given metaWindow
-  getAppRule(metaWindow) {
+  getAppRule(metaWindow, power) {
     let app = this._windowTracker.get_window_app(metaWindow);
     if (!app) {
       app = this._windowTracker.get_app_from_pid(metaWindow.get_pid());
@@ -444,10 +475,14 @@ class BurnMyWindows {
       appID = app.get_id();
     }
     let wmClass = metaWindow.get_wm_class();
+    // If the window is the BMW test program (aka the "effect preview window") then unconditionally use the current "Effect Selector" effect
     if (wmClass == "CinnamonBurnMyWindowsTest.py") {
        let selectedEffect = this._settings.getValue("effect-selector");
        return {open: selectedEffect, close: selectedEffect, minimize: selectedEffect, unminimize: selectedEffect};
     }
+    // If there are power rules in effect, return null now
+    if (power) return(null);
+    // Look for application specific rules to use
     let appRules = this._settings.getValue("app-rules");
     for( let i=0 ; i < appRules.length ; i++ ) {
       if (appRules[i].enabled && ((appID && appRules[i].application == appID) || (appRules[i].application == wmClass))) {

@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adjacent-windows@klangman 1.2.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-07-21 20:44-0100\n"
+"PO-Revision-Date: 2025-08-26 18:33+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Adjacent Windows"
+msgstr "Finestre adiacenti"
+
+#. metadata.json->description
+msgid "Use hotkeys to switch to adjacent windows"
+msgstr "Usa tasti di scelta rapida per passare alle finestre adiacenti"
+
+#. 5.4->settings-schema.json->keybinding-header->description
+msgid "Hotkeys to switch focus relative to the current window"
+msgstr "Tasti di scelta rapida per cambiare il focus rispetto alla finestra corrente"
+
+#. 5.4->settings-schema.json->left-key->description
+msgid "Activate window to the left"
+msgstr "Attiva finestra a sinistra"
+
+#. 5.4->settings-schema.json->right-key->description
+msgid "Activate window to the right"
+msgstr "Attiva finestra a destra"
+
+#. 5.4->settings-schema.json->up-key->description
+msgid "Activate window above"
+msgstr "Attiva finestra sopra"
+
+#. 5.4->settings-schema.json->down-key->description
+msgid "Activate window below"
+msgstr "Attiva finestra sotto"
+
+#. 5.4->settings-schema.json->under-key->description
+msgid "Activate window under"
+msgstr "Attiva finestra sotto (z-order)"
+
+#. 5.4->settings-schema.json->under-key->tooltip
+msgid ""
+"Switch to the next window in the z-order that is overlapped by the current window. If the key combo is pressed again "
+"within 3 sec, the focus will change to the next window beneath the window that originally had the focus during the fist "
+"key combo press."
+msgstr ""
+"Passa alla finestra successiva nell'ordine z che è sovrapposta dalla finestra corrente. Se la combinazione di tasti viene "
+"premuta di nuovo entro 3 secondi, il focus cambierà alla finestra successiva sotto quella che aveva originariamente il "
+"focus alla prima pressione."
+
+#. 5.4->settings-schema.json->back-key->description
+msgid "Undo the focus change"
+msgstr "Annulla il cambio di focus"
+
+#. 5.4->settings-schema.json->settings-header->description
+msgid "Other settings"
+msgstr "Altre impostazioni"
+
+#. 5.4->settings-schema.json->next-focus->options
+msgid "Closest to the current window"
+msgstr "Più vicina alla finestra corrente"
+
+#. 5.4->settings-schema.json->next-focus->options
+msgid "Highest in the z-order"
+msgstr "Più alta nell'ordine z"
+
+#. 5.4->settings-schema.json->next-focus->options
+msgid "Closest with a visible corner"
+msgstr "Più vicina con un angolo visibile"
+
+#. 5.4->settings-schema.json->next-focus->description
+msgid "Activate the window that is..."
+msgstr "Attiva la finestra che è..."
+
+#. 5.4->settings-schema.json->next-focus->tooltip
+msgid ""
+"When using the Left, Right, Above or Below hotkeys, activate the window that is either:\n"
+"- Closest to the current window: this might activate a window that is currently completely obscured by other windows.\n"
+"- Highest in the z-order: most recently focused; this might skip over visible windows that are closer to the current "
+"window.\n"
+"- Closest window with a visible corner: a compromise that is designed to be more like what most people would generally "
+"expect (I hope)."
+msgstr ""
+"Quando usi i tasti per Left, Right, Above o Below, attiva la finestra che è:\n"
+"- Più vicina alla finestra corrente: potrebbe attivare una finestra attualmente totalmente nascosta da altre.\n"
+"- Più alta nell'ordine z: la più recentemente focalizzata; potrebbe saltare finestre visibili ma più vicine.\n"
+"- Finestra più vicina con un angolo visibile: un compromesso che si avvicina a ciò che la maggior parte si aspetta (spero)."
+
+#. 5.4->settings-schema.json->overlap-allowance->units
+msgid "pixels"
+msgstr "pixel"
+
+#. 5.4->settings-schema.json->overlap-allowance->description
+msgid "Corner overlap allowance / minimum visibility"
+msgstr "Tolleranza sovrapposizione angolo / visibilità minima"
+
+#. 5.4->settings-schema.json->overlap-allowance->tooltip
+msgid ""
+"Sets how many pixels a corner can be obscured by other windows and still be considered a candidate window. Also sets the "
+"minimum amount of window visibility in order to qualify as a candidate window"
+msgstr ""
+"Imposta quanti pixel un angolo può essere nascosto da altre finestre pur essendo considerata una finestra candidata. "
+"Imposta anche la visibilità minima richiesta per essere considerata candidata"
+
+#. 5.4->settings-schema.json->boost-restriction->units
+msgid "priority"
+msgstr "priorità"
+
+#. 5.4->settings-schema.json->boost-restriction->description
+msgid "Increase the priority of direction alignment"
+msgstr "Aumenta la priorità di allineamento direzionale"
+
+#. 5.4->settings-schema.json->boost-restriction->tooltip
+msgid ""
+"Increasing this setting gives more priority to windows that occupy the same area as the current window in the desired "
+"direction, and less priority to widows that are at an offset but closer. Max 85%"
+msgstr ""
+"Aumentando questo valore, si dà maggiore priorità alle finestre che occupano la stessa area della finestra corrente nella "
+"direzione desiderata, e minore priorità a finestre spostate ma più vicine. Max 85%"
+
+#. 5.4->settings-schema.json->include-minimized->description
+msgid "Allow switching to minimized windows"
+msgstr "Consenti il passaggio a finestre minimizzate"
+
+#. 5.4->settings-schema.json->include-other-monitors->description
+msgid "Allow switching to windows on other monitors"
+msgstr "Consenti il passaggio a finestre su altri monitor"
+
+#. 5.4->settings-schema.json->warp-cursor-pointer->description
+msgid "Warp the cursor to the center of the focused window"
+msgstr "Sposta il cursore al centro della finestra focalizzata"

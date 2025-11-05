@@ -9,15 +9,15 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-07-04 18:45+0200\n"
-"PO-Revision-Date: 2022-06-03 10:50+0200\n"
+"PO-Revision-Date: 2025-08-26 18:49+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Cinnamon Maximus"
@@ -32,9 +32,8 @@ msgid "Cinnamon-Maximus Settings"
 msgstr "Impostazioni di Cinnamon Maximus"
 
 #. settings-schema.json->onlyManual->description
-#, fuzzy
 msgid "Undecorating only with hotkey"
-msgstr "Rimuovi decorazioni quando in modalità tile"
+msgstr "Rimuovi decorazioni solo con tasto di scelta rapida"
 
 #. settings-schema.json->useHotkey->description
 msgid "Use Hotkey to toggle decoration of current window"
@@ -71,9 +70,8 @@ msgstr ""
 "regexp consentite)"
 
 #. settings-schema.json->useAutoUndecorList->description
-#, fuzzy
 msgid "Use Auto Undecorating for apps"
-msgstr "Utilizza Auto-Rimozione Decorazione"
+msgstr "Utilizza la rimozione automatica della decorazione per le app"
 
 #. settings-schema.json->autoUndecorAppsList->description
 msgid ""

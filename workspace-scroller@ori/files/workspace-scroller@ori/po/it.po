@@ -5,15 +5,15 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2024-12-22 17:57-0500\n"
-"PO-Revision-Date: 2022-06-03 11:23+0200\n"
+"PO-Revision-Date: 2025-08-26 19:02+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Workspace Scroller"
@@ -172,11 +172,12 @@ msgstr "Dimensioni delle aree degli angoli: "
 
 #. settings-schema.json->generalHeader->description
 msgid "General"
-msgstr ""
+msgstr "Generale"
 
 #. settings-schema.json->useSwitcherExtension->description
 msgid "Use a workspace switcher extension if installed"
 msgstr ""
+"Utilizza un'estensione per lo switcher dell'area di lavoro, se installata"
 
 #. settings-schema.json->useSwitcherExtension->tooltip
 msgid ""
@@ -184,3 +185,7 @@ msgid ""
 "no effect unless a compatible extension is installed. Requires Desktop Cube "
 "2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
 msgstr ""
+"Consente a un'estensione Cinnamon di animare il cambiamento dell'area di "
+"lavoro. Questa opzione non ha effetto a meno che non sia installata "
+"un'estensione compatibile. Richiede Desktop Cube 2.0.2 o Flipper 2.0.0 e "
+"Cinnamon 5.4 o versioni successive."

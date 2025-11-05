@@ -56,12 +56,13 @@
 }
 
 .overlay-custom-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: none;
+    border-color: none !important;
+    border-radius: 8px;
     font-size: 16px !important;
     font-weight: bold;
     color: white;
-    background-color: rgba(255, 255, 255, 0.2);
-    background-image: none;
-    border-radius: 8px;
     text-shadow: none;
     box-shadow: none;
     padding: 8px !important;
@@ -77,15 +78,15 @@
 }
 
 .overlay-custom-button.close {
-    background-color: #c1252d; 
+    background-color: #c42534; 
 }
 
 .overlay-custom-button.close:hover {
-    background-color: #d02830; 
+    background-color: #d12737; 
 }
 
 .overlay-custom-button.close:active {
-    background-color: #b7232a; 
+    background-color: #ba232c; 
 }
 
 .overlay-timer-reset,
@@ -281,6 +282,7 @@
     border-image: none;
     border: none;
     border-radius: 8px;
+    border-color: none !important;
     background-image: none;
     color: white;
     text-shadow: none;
@@ -327,7 +329,7 @@
 }
 
 .preview-buttons-box .dialog-button.preview-cancel-btn:active {
-    background-color: #b7232a; 
+    background-color: #ba232c; 
 }
 
 .preview-cancel-with-back-btn {
@@ -460,10 +462,10 @@
 }
 
 .edit-dialog-widget-box {
-    background-color: rgba(55,55,55,0.95);
+    background-color: rgb(38,38,38);
     border-radius: 18px;
     padding: 20px;
-    border: 1px solid rgba(113, 113, 113, 0.85);
+    border: 1px solid rgb(75,75,75);
     box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 
@@ -482,7 +484,7 @@
 }
 
 .edit-dialog-widget-btn {
-    background-color: rgba(80,80,80,0.8);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     border: none;
     color: white !important;
@@ -494,7 +496,7 @@
 }
 
 .edit-dialog-widget-btn:hover {
-    background-color: #4a90e0;
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 .edit-dialog-widget-btn:active {
@@ -502,13 +504,13 @@
 }
 
 .edit-dialog-widget-btn.cancel {
-    background-color: rgba(193, 37, 45, 0.8);
+    background-color: rgba(193, 37, 54, 0.8);
 }
 
 .edit-dialog-widget-btn.cancel:hover {
-    background-color: #c1252d;
+    background-color: rgba(193, 37, 54, 0.92);
 }
 
 .edit-dialog-widget-btn.cancel:active {
-    background-color: #b7232a;
+    background-color: rgba(193, 37, 54, 0.74);
 }

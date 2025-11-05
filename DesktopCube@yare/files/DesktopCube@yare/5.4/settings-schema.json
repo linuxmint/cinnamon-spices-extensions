@@ -37,6 +37,12 @@
         "tooltip": "Override the activateWindow() API so that when a window on another workspace is given the focus, the Cube effect is used to change the current workspace",
         "default": true
     },
+    "patchGestureSwitch": {
+        "type": "checkbox",
+        "description": "Use Cube effect when switching workspaces using touchpad gestures",
+        "tooltip": "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures will use the Cube effect",
+        "default": true
+    },
     "sep1": {
         "type": "separator"
     },

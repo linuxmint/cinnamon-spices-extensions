@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-01-09 21:14-0500\n"
+"POT-Creation-Date: 2025-09-06 23:46-0400\n"
 "PO-Revision-Date: 2025-04-12 08:15+0200\n"
 "Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
 "Language-Team: \n"
@@ -117,6 +117,19 @@ msgstr ""
 "Az activateWindow() API felülírása, így amikor egy másik munkaterületen lévő "
 "ablak kerül a fókuszba, a Kocka effektussal módosítható az aktuális "
 "munkaterület"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Cube effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Használja a Kocka effektust, ha a fókusz megváltoztatása munkaterület-"
+"váltást okoz"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Cube effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->header2->description
 msgid "Effect Easing"
