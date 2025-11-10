@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #. 6.2/extension.js:208 6.2/extension.js:286 6.2/extension.js:614
 msgid "Error"
@@ -531,7 +531,7 @@ msgstr "Véletlen effektusok"
 
 #. 6.2->settings-schema.json->power-page->title
 msgid "Power"
-msgstr ""
+msgstr "Erősség"
 
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
@@ -564,7 +564,7 @@ msgstr "A véletlenszerű készletekben szereplő effektusok:"
 
 #. 6.2->settings-schema.json->power-section->title
 msgid "Manage Burn-My-Windows power consumption"
-msgstr ""
+msgstr "Az Égjenek az Ablakaim energiafogyasztásának kezelése"
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
@@ -787,18 +787,16 @@ msgid "Unminimize window effect"
 msgstr "Ablak effektus minimalizálás megszüntetése"
 
 #. 6.2->settings-schema.json->power-dialog-special->tooltip
-#, fuzzy
 msgid ""
 "Allows you to define special settings for handling dialog window types (i.e. "
 "file open dialog windows)."
 msgstr ""
-"Lehetővé teszi speciális beállítások megadását a párbeszédablak-típusok "
-"kezeléséhez (azaz fájlmegnyitási párbeszédablakokhoz). Ezek a beállítások "
-"felülírják az esetlegesen meghatározott alkalmazásspecifikus beállításokat."
+"Lehetővé teszi a párbeszédablak-típusok (azaz fájlmegnyitási "
+"párbeszédablakok) kezeléséhez szükséges speciális beállítások megadását."
 
 #. 6.2->settings-schema.json->power-onbattery->description
 msgid "Use different effects when running on battery power"
-msgstr ""
+msgstr "Különböző effektek használata akkumulátorról való működés közben"
 
 #. 6.2->settings-schema.json->power-onbattery->tooltip
 msgid ""
@@ -808,10 +806,17 @@ msgid ""
 "over both the general settings and any application specific settings when "
 "the battery charge state condition is met."
 msgstr ""
+"Engedélyezés esetén megjelenik egy beállításkészlet, amely lehetővé teszi "
+"annak meghatározását, hogy mely effektusok (ha vannak ilyenek) legyenek "
+"érvényben akkumulátorról való működés esetén, ha az akkumulátor töltöttségi "
+"állapota a beállított korlát alatt van. Ezek a beállítások elsőbbséget "
+"élveznek mind az általános beállításokkal, mind az alkalmazásspecifikus "
+"beállításokkal szemben, amikor az akkumulátor töltöttségi állapotára "
+"vonatkozó feltétel teljesül."
 
 #. 6.2->settings-schema.json->power-percent->description
 msgid "When battery is less than (percent)"
-msgstr ""
+msgstr "Amikor az akkumulátor töltöttségi szintje kevesebb, mint (százalék)"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
