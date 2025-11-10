@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2022-06-03 10:56+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Imposta le posizioni delle icone del desktop per area di lavoro"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Icone del desktop per area di lavoro"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Configurazione"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "millisecondi"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Ritardo all'aggiornamento del desktop all'avvio"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Il numero di millisecondi da attendere per l'aggiornamento iniziale del "
+"desktop dopo l'avvio dell'estensione"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Ritardo al completamento dell'aggiornamento del desktop"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr ""
+"Il numero di millisecondi da attendere prima di completare l'aggiornamento "
+"del desktop"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "secondi"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Salva ogni"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Quanto spesso salvare le posizioni delle icone del desktop sul file. 0 "
+"significa nessun salvataggio sul file."
