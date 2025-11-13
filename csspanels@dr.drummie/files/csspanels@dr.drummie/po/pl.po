@@ -1,0 +1,429 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: pl <LL@li.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minut"
+
+msgid "10 seconds"
+msgstr "10 sekund"
+
+msgid "15 seconds"
+msgstr "15 sekund"
+
+msgid "1 minute"
+msgstr "1 minuta"
+
+msgid "2 minutes"
+msgstr "2 minuty"
+
+msgid "30 seconds"
+msgstr "30 sekund"
+
+msgid "5 minutes"
+msgstr "5 minut"
+
+msgid "5 seconds"
+msgstr "5 sekund"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Dodaje nakładkę barwną na efekt rozmycia. Użyj półprzezroczystych kolorów "
+"(np. jasnoniebieski dla chłodnych tonów lub ciepły pomarańcz dla przytulnego "
+"klimatu), aby dostosować wygląd szkła – wyższa nieprzezroczystość daje "
+"intensywniejszy odcień, niższa subtelne wzmocnienie."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Reguluje nasycenie kolorów w rozmytym tle. Wartości powyżej 1,0 sprawiają, "
+"że kolory stają się bardziej żywe i intensywne (dla jaśniejszego, "
+"energetycznego efektu szkła), natomiast poniżej 1,0 tworzą stonowane, "
+"odbarwione tony dla łagodniejszego i bardziej eleganckiego wyglądu."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Reguluje przezroczystość menu podręcznych. W połączeniu z efektami rozmycia "
+"tworzy nowoczesny, matowy wygląd szkła."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Reguluje przezroczystość głównego panelu (paska zadań). Niższe wartości "
+"tworzą bardziej szklany efekt. Kliknij ikonę w zasobniku systemowym, aby "
+"przełączyć się między szybkimi presetami."
+
+msgid "Advanced Settings"
+msgstr "Zaawansowane ustawienia"
+
+msgid "Advanced Tools"
+msgstr "Zaawansowane narzędzia"
+
+msgid "Apply border radius to main panel"
+msgstr "Zastosuj promień obramowania na głównym panelu"
+
+msgid "Apply selected template"
+msgstr "Zastosuj wybrany szablon"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Zastosuj wybrany szablon rozmycia do wszystkich suwaków efektu rozmycia. To "
+"zaktualizuje promień, nasycenie, kontrast, jasność, tło, kolor obramowania, "
+"grubość obramowania, czas przejścia i nieprzezroczystość według wybranego "
+"szablonu."
+
+msgid "Auto-detect theme border radius"
+msgstr "Automatyczne wykrywanie promienia obramowania motywu"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Automatycznie wykrywa i wykorzystuje promień obramowania z bieżącego motywu "
+"dla spójnego wyglądu. Po włączeniu rozszerzenie analizuje motyw i "
+"dostosowuje ustawienia."
+
+msgid "Background color/tint"
+msgstr "Kolor tła / odcień"
+
+msgid "Basic Transparency Controls"
+msgstr "Podstawowe sterowanie przezroczystością"
+
+msgid "Blur Effects"
+msgstr "Efekty rozmycia"
+
+msgid "Blur opacity"
+msgstr "Nieprzezroczystość rozmycia"
+
+msgid "Blur radius"
+msgstr "Promień rozmycia"
+
+msgid "Blur Template"
+msgstr "Szablon rozmycia"
+
+msgid "Blur transition duration"
+msgstr "Czas trwania przejścia rozmycia"
+
+msgid "Border color"
+msgstr "Kolor obramowania"
+
+msgid "Border Radius"
+msgstr "Promień obramowania"
+
+msgid "Border width"
+msgstr "Grubość obramowania"
+
+msgid "Brightness multiplier"
+msgstr "Mnożnik jasności"
+
+msgid "Choose override panel color"
+msgstr "Wybierz kolor zastępujący panel"
+
+msgid "Choose override popup color"
+msgstr "Wybierz kolor zastępujący menu podręczne"
+
+msgid "Contrast multiplier"
+msgstr "Mnożnik kontrastu"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Kontroluje różnicę między jasnymi a ciemnymi obszarami w rozmyciu. Wyższe "
+"wartości (powyżej 1,0) zwiększają ostrość i głębię dla wyraźniejszego, "
+"nowoczesnego wyglądu, podczas gdy niższe łagodzą efekt, tworząc gładsze i "
+"mniej surowe wrażenie szkła."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Kontroluje intensywność efektu rozmycia. Wyższe wartości tworzą mocniejszy, "
+"bardziej rozproszony efekt szkła (np. od 30px w górę dla efektu mgły), "
+"podczas gdy niższe (1–10px) zapewniają ostrzejsze, subtelne rozmycie dla "
+"czystszego wyglądu."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Kontroluje przezroczystość całej warstwy rozmycia. Wyższe wartości (0,8–1,0) "
+"sprawiają, że efekt szkła jest bardziej wyraźny i zwarty, natomiast niższe "
+"(0,1–0,5) dają lżejszy, eteryczny wygląd, płynnie stapiający się z tłem."
+
+msgid "Custom Blur Settings"
+msgstr "Własne ustawienia rozmycia"
+
+msgid "Debugging"
+msgstr "Debugowanie"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Określa grubość obramowania wokół rozmytych elementów. Grubsze obramowania "
+"(3–5px) tworzą wyraźniejszą ramę dla podkreślenia, podczas gdy cieńsze (0–"
+"1px) lub brak (0px) zapewniają jednolity, zintegrowany wygląd szkła."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Wyświetl ikonę sterowania w zasobniku systemowym dla szybkiego dostępu do "
+"ustawień przezroczystości. Kliknij, aby otworzyć preferencje rozszerzenia."
+
+msgid "Enable debug logging"
+msgstr "Włącz logowanie debugowania"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Włącz szczegółowe logowanie w celu rozwiązywania problemów z rozszerzeniem. "
+"Sprawdź wyjście terminala za pomocą 'journalctl -f' dla szczegółowych "
+"informacji."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Włącz zaokrąglone rogi na pasku zadań dla nowoczesnego wyglądu. Może "
+"wyglądać dziwnie na krawędziach ekranu w zależności od motywu."
+
+msgid "Hide label"
+msgstr "Ukryj etykietę"
+
+msgid "Hide system tray indicator"
+msgstr "Ukryj wskaźnik zasobnika systemowego"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Ukryj ikonę sterowania przezroczystością z zasobnika systemowego. Nadal "
+"możesz uzyskać dostęp do ustawień w Ustawieniach Cinnamon > Rozszerzenia."
+
+msgid "Menu Opacity"
+msgstr "Nieprzezroczystość menu"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Modyfikuje ogólną jasność warstwy rozmycia. Zwiększ powyżej 1,0 dla "
+"jaśniejszego, bardziej rozświetlonego efektu szkła (idealnego dla jasnych "
+"motywów), lub zmniejsz poniżej 1,0 dla ciemniejszych, bardziej nastrojowych "
+"tonów, które lepiej wtapiają się w ciemne tła."
+
+msgid "Override panel color"
+msgstr "Nadpisz kolor panelu"
+
+msgid "Override popup color"
+msgstr "Nadpisz kolor menu podręcznego"
+
+msgid "Panel Appearance"
+msgstr "Wygląd panelu"
+
+msgid "Panel Opacity"
+msgstr "Nieprzezroczystość panelu"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Zaokrąglone rogi paneli i menu. Używane jako zapasowa opcja, gdy "
+"automatyczne wykrywanie zawodzi lub napotyka niezgodne wartości. Ustaw na 0 "
+"dla całkowicie płaskiego wyglądu."
+
+msgid "Saturation multiplier"
+msgstr "Mnożnik nasycenia"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Wybierz szablon rozmycia, który zostanie zastosowany po kliknięciu przycisku "
+"'Zastosuj wybrany szablon'. Każdy szablon definiuje domyślne wartości dla "
+"wszystkich sterowników efektu rozmycia."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Wybierz kolor tła dla menu podręcznych, gdy opcja 'Nadpisz kolor menu "
+"podręcznego' jest włączona. Obsługuje przezroczystość (kanał alfa)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Wybierz kolor tła panelu, gdy opcja 'Nadpisz kolor panelu' jest włączona. "
+"Obsługuje przezroczystość (kanał alfa)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Ustawia kolor subtelnej ramki otaczającej rozmyte elementy. Wybierz biały/"
+"jasny kolor dla czystej, nowoczesnej krawędzi lub ciemniejsze odcienie dla "
+"lepszego kontrastu – dostosuj nieprzezroczystość dla łagodniejszych lub "
+"bardziej wyraźnych krawędzi."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Ustawia prędkość animacji efektu rozmycia przy zmianie ustawień. Krótsze "
+"czasy d trwania (0,1–0,5 s) tworzą dynamiczne, szybkie przejścia dla "
+"błyskawicznych dostosowań, podczas gdy dłuższe (1–2 s) zapewniają płynne, "
+"eleganckie zanikania dla wykończenia o wyrafinowanym charakterze."
+
+msgid "Show percentage"
+msgstr "Pokaż procent"
+
+msgid "Show percentage and time remaining"
+msgstr "Pokaż procent i pozostały czas"
+
+msgid "Show system tray indicator"
+msgstr "Pokaż wskaźnik zasobnika systemowego"
+
+msgid "Show time remaining"
+msgstr "Pokaż pozostały czas"
+
+msgid "System Tray Indicator"
+msgstr "Wskaźnik zasobnika systemowego"
+
+msgid "Theme Integration"
+msgstr "Integracja z motywem"
+
+msgid "Transparency Settings"
+msgstr "Ustawienia przezroczystości"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Po włączeniu użyj wybranego koloru zastępczego dla tła menu podręcznych "
+"zamiast koloru panelu. Wymaga włączenia 'Nadpisz kolor panelu' dla pełnego "
+"efektu."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Po włączeniu użyj wybranego koloru zastępczego dla tła panelu. Jeśli opcja "
+"'Nadpisz kolor menu podręcznego' jest wyłączona, ten kolor będzie także "
+"używany w menu podręcznych."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Dynamiczne sterowanie przezroczystością i efektami rozmycia panelu oraz menu "
+"podręcznych – bazujące na BlurCinnamon@klangman"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Zastosuj efekty przezroczystości i rozmycia do elementów OSD, takich jak "
+"suwaki głośności, kontrolki jasności i inne elementy nakładki. Tworzy spójny "
+"wygląd szkła."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Zastosuj efekty przezroczystości i rozmycia do powiadomień systemowych "
+"(głośność, jasność itp.). Dzięki temu powiadomienia będą zgodne ze stylem "
+"glassmorphism twojego panelu."
+
+msgid "Extended UI Styling"
+msgstr "Rozszerzone stylowanie UI"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "Stylizuj elementy OSD (On-Screen Display)"
+
+msgid "Style system notifications"
+msgstr "Stylizuj powiadomienia systemowe"
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+"Zastosuj efekty przezroczystości i rozmycia do elementów OSD, takich jak "
+"suwaki głośności, kontrolki jasności i inne elementy nakładki. Tworzy spójny "
+"wygląd szkła."
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+"Zastosuj efekty przezroczystości i rozmycia do elementów OSD, takich jak "
+"suwaki głośności, kontrolki jasności i inne elementy nakładki. Tworzy spójny "
+"wygląd szkła."
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""
