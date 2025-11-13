@@ -161,7 +161,7 @@ DimUnfocusedWindowsExtension.prototype = {
         
         actor.add_effect(state.brightnessEffect);
         
-        if (animate) {
+        if (animate && this.animationTime > 0) {
             // Animate both opacity and brightness
             Tweener.addTween(actor, {
                 opacity: targetOpacity,
@@ -172,6 +172,7 @@ DimUnfocusedWindowsExtension.prototype = {
             // Animate brightness effect
             this._animateBrightness(actor, state.brightnessEffect, targetBrightness, this.animationTime);
         } else {
+            // No animation or animation time is 0 - apply immediately
             actor.opacity = targetOpacity;
             // Brightness is already set above
         }
@@ -180,6 +181,12 @@ DimUnfocusedWindowsExtension.prototype = {
     },
     
     _animateBrightness: function(actor, brightnessEffect, targetBrightness, duration) {
+        // Skip animation if duration is 0
+        if (duration <= 0) {
+            brightnessEffect.set_brightness(targetBrightness);
+            return;
+        }
+        
         // Get the current brightness value (assuming it starts from 0.0 for full brightness)
         let startBrightness = 0.0; // Full brightness
         let startTime = Date.now();
