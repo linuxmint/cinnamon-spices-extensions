@@ -5,6 +5,22 @@ All notable changes to the Dim Unfocused Windows extension will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.8] - 2025-11-13
+
+### Fixed
+- 🐛 **CRITICAL FIX** - Resolved pitch black windows/backgrounds when animation duration set to 0ms
+- 🐛 **FIXED** - Animation division by zero error causing brightness malfunction
+- 🐛 **FIXED** - Immediate visual changes now work correctly with 0ms animation duration
+
+### Changed
+- 🔄 **IMPROVED** - Animation system now properly handles 0ms duration with instant effect application
+- 🔄 **IMPROVED** - Brightness animation skips animation loop when duration is 0, applying target immediately
+
+### Technical Improvements
+- 🎯 **ENHANCED** - Added safety check `animate && this.animationTime > 0` in `_applyDimmingToWindow`
+- 🎯 **ENHANCED** - Added early return in `_animateBrightness` when duration <= 0
+- 🎯 **ENHANCED** - Prevents division by zero in animation timing calculations
+
 ## [1.2.7] - 2025-10-23
 
 ### Added
