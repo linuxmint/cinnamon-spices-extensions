@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-30 18:25+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-11-25 10:07-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,16 +14,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.1\n"
 
-#. metadata.json->name
-msgid "Compiz windows effect"
-msgstr "Эффект окон Compiz (Compiz windows effect)"
+#. extension.js:190
+msgid "Error"
+msgstr ""
+
+#. extension.js:191
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Compiz window effects can not be disabled for that "
+"window"
+msgstr ""
 
 #. metadata.json->description
 msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
 msgstr "Эффект вязких окон как в плагине для Compiz"
 
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Эффект окон Compiz (Compiz windows effect)"
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->exclude-page->title
+msgid "Exclude List"
+msgstr ""
+
+#. settings-schema.json->preset-section->title
+#, fuzzy
+msgid "Compiz windows effect configuration"
+msgstr "Эффект окон Compiz (Compiz windows effect)"
+
+#. settings-schema.json->effect-settings-section->title
+msgid "Custom effect settings"
+msgstr ""
+
+#. settings-schema.json->exclude-section->title
+msgid "Application windows where no window effects will be applied"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Subtle"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Realistic"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Exaggerated"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Extreme"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Custom"
+msgstr ""
+
+#. settings-schema.json->presetList->description
+msgid "Effect style"
+msgstr ""
+
+#. settings-schema.json->excludeList->description
+msgid "Application exclude list"
+msgstr ""
+
+#. settings-schema.json->excludeList->columns->title
+#, fuzzy
+msgid "Application"
+msgstr "Трение"
+
+#. settings-schema.json->excludeList->tooltip
+msgid ""
+"Defines a list of applications where the \"Compiz window effect\" effects "
+"will not be applied."
+msgstr ""
+
+#. settings-schema.json->excludeButton->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+
+#. settings-schema.json->excludeButton->tooltip
+msgid ""
+"Focus the window you want to disable window effects for, then return here "
+"and press this button."
+msgstr ""
+
 #. settings-schema.json->friction->description
-msgid "Friction"
+#, fuzzy
+msgid "Friction "
 msgstr "Трение"
 
 #. settings-schema.json->springK->description
@@ -30,19 +113,22 @@ msgid "Spring K"
 msgstr "Коэффициент упругости"
 
 #. settings-schema.json->speedupFactorDivider->description
-msgid "Speedup Factor"
+#, fuzzy
+msgid "Speedup"
 msgstr "Фактор ускорения"
 
 #. settings-schema.json->mass->description
-msgid "Mass"
-msgstr "Масса"
+msgid "Mass      "
+msgstr ""
 
 #. settings-schema.json->xTiles->description
-msgid "X Tiles"
+#, fuzzy
+msgid "X Tiles  "
 msgstr "Тайлов по оси X"
 
 #. settings-schema.json->yTiles->description
-msgid "Y Tiles"
+#, fuzzy
+msgid "Y Tiles  "
 msgstr "Тайлов по оси Y"
 
 #. settings-schema.json->maxUnmaxFactor->description
