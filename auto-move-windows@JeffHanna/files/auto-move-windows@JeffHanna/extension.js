@@ -62,6 +62,11 @@ class AutoMoveWindows {
         this._signals.connect(global.screen, 'window-added', this._onWindowAdded, this);
         this._signals.connect(global.screen, 'window-removed', this._onWindowRemoved, this);
 
+        // Clear the firstOnly map whenever settings change to allow rules to be re-evaluated
+        this._settings.connect('changed::app-rules', () => {
+            this._firstAppliedMap.clear();
+        });
+
         // Optionally connect to existing windows to track removals (not strictly required)
         // and ensure map is clean if extension is enabled after windows exist.
         let windows = global.display.list_windows(0);
@@ -140,11 +145,16 @@ class AutoMoveWindows {
             const ruleKey = rule._wmClassLower;
             if (this._firstAppliedMap.has(ruleKey))
                 return;
-            this._firstAppliedMap.set(ruleKey, metaWindow);
         }
 
         // Wait a short time so the window has been fully mapped and its frame exists
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+            // Register window in firstOnly map after processing starts
+            if (rule.firstOnly) {
+                const ruleKey = rule._wmClassLower;
+                this._firstAppliedMap.set(ruleKey, metaWindow);
+            }
+
             if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
                 if (metaWindow.change_workspace_by_index) {
                     metaWindow.change_workspace_by_index(rule.workspace, false);
@@ -193,7 +203,7 @@ class AutoMoveWindows {
                     }
                 }
             }
-            
+
             return GLib.SOURCE_REMOVE;
         });
     }
