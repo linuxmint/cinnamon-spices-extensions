@@ -27,6 +27,7 @@ const Settings = imports.ui.settings;
 const SignalManager = imports.misc.signalManager;
 const Meta = imports.gi.Meta;
 const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
 
 let extensionInstance = null;
 
@@ -245,7 +246,7 @@ function init(metadata) {
 function enable() {
     try {
         extensionInstance.enable();
-        return { create_boilerplate_file };
+        return { create_sample_settings_file };
     } catch (e) {
         global.logError(e);
         disable();
@@ -267,26 +268,48 @@ function disable() {
 
 
 /**
- * Create a boilerplate settings JSON file on the user's Desktop.
+ * Create a sample settings JSON file in the user's home directory.
  *
- * The file is written as ~/Desktop/auto-move-windows-settings.json and contains a
- * minimal JSON object with an empty `app-rules` array. The Desktop directory is
- * created if it does not already exist. Returns true on success and false on
- * failure (and logs errors with global.logError()).
- *
- * @returns {boolean} success flag
+ * The file is written as ~/auto-move-windows-sample-settings.json and contains a
+ * minimal JSON object with a single entry in the `app-rules` array. After creating the file,
+ * it is automatically opened in the user's preferred text/code editor.
  */
-function create_boilerplate_file() {
+function create_sample_settings_file() {
     const home = GLib.get_home_dir();
-    const desktopDir = GLib.build_filenamev([home, 'Desktop']);
-    try { GLib.mkdir_with_parents(desktopDir, 0o755); } catch (e) {}
-
-    const target = GLib.build_filenamev([desktopDir, 'auto-move-windows-settings.json']);
+    const target = GLib.build_filenamev([home, 'auto-move-windows-sample-settings.json']);
     const boilerplate = {
-        "app-rules": []
+        "app-rules": [
+            {
+                "wmClass": "Firefox",
+                "matchField": "title",
+                "workspace": 2,
+                "x": 640,
+                "y": 0,
+                "width": 640,
+                "maximizeVertically": true,
+                "firstOnly": true
+            }
+        ]
     };
     const jsonString = JSON.stringify(boilerplate, null, 2);
     GLib.file_set_contents(target, jsonString);
     try { Main.notify('auto-move-windows', 'Created ' + target); } catch (e) {}
+
+    // Open the file in the user's preferred text editor
+    try {
+        const file = Gio.File.new_for_path(target);
+        // Use the default text editor instead of the default for JSON files (which is often a browser)
+        const textEditor = Gio.AppInfo.get_default_for_type('text/plain', false);
+        if (textEditor) {
+            textEditor.launch([file], null);
+        } else {
+            // Fallback to URI launcher if no text editor is set
+            const uri = file.get_uri();
+            Gio.AppInfo.launch_default_for_uri(uri, null);
+        }
+    } catch (e) {
+        global.logError('[auto-move-windows] Failed to open file: ' + e);
+    }
+
     return true;
 }
