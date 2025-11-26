@@ -63,7 +63,7 @@ Example `app-rules` JSON:
 
 Editing rules
 -------------
-- Edit the `app-rules` JSON directly via dconf/gsettings or the Cinnamon Settings panel. This spice exposes its options via `settings-schema.json` (GSettings); there is no custom JS preferences UI.
+- Export the settings from the extension, edit the file in a text editor and reimport it. The settings page can create a starter settings file and open it in your text editor of choice to get started. There is no custom UI to edit the file, due to the complexity of it.
 
 Notes
 -----
@@ -73,3 +73,7 @@ Notes
 License
 -------
 MIT
+
+Attributions
+------------
+Extension icon created by Freepik - Flaticon https://www.flaticon.com
