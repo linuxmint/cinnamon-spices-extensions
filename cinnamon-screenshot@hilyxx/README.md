@@ -1,13 +1,13 @@
-Cinnamon-Screenshot extension
+Cinnamon-Screenshot
 -------------------
 Cinnamon extension for screenshots with modern interface and advanced options.
 
-This extension uses Gnome-Screenshot, which works seamlessly with both X11 and Wayland, and is fully integrated into the Cinnamon desktop.
+This extension uses Gnome-Screenshot utility (which works seamlessly with both X11 and Wayland) and is fully integrated into the Cinnamon desktop.
 
 #### A wide variety of options are included to ensure a good user experience: 
 
 * A simple editor mode with tools such as a brush, a text input field, geometric shapes, or a pixelization mode
-* Three screenshot options: Full Screen, Active Window, and Selection — all with keyboard shortcuts
+* Three screenshot options: Full Screen, Active Window, and Selection - all with keyboard shortcuts
 * A timer (up to 60 seconds)
 * A preview of the screenshot along with its pixel dimensions
 * A clipboard option
@@ -30,5 +30,5 @@ This extension is meant to provide all the basic options while remaining as stab
 
 #### → Is this extension compatible if I use Cinnamon on a system other than Linux Mint?
 
-Normally, there shouldn't be any compatibility issues — apart from the Cinnamon version itself.<br/>
+Normally, there shouldn't be any compatibility issues apart from the Cinnamon version itself.<br/>
 However, some changes in system libraries may have introduced significant modifications, regressions, or bugs!

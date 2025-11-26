@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: extension.js:199
 #, javascript-format
@@ -45,39 +45,40 @@ msgstr "Generel"
 #. settings-schema.json->transparency-amount->description
 #. settings-schema.json->transparency-amount->tooltip
 msgid "Opacity amount"
-msgstr ""
+msgstr "Uigennemsigtighedsgrad"
 
 #. settings-schema.json->transparency-always->description
-#, fuzzy
 msgid "Always transparent"
-msgstr "Helt gennemsigtig"
+msgstr "Altid gennemsigtig"
 
 #. settings-schema.json->transparency-always->tooltip
 msgid ""
 "If enable the panels will always be transparent, if disable, only will be "
 "transparent if there is no maximized windows"
 msgstr ""
+"Hvis funktionen er aktiveret, vil panelerne altid være gennemsigtige. Hvis "
+"funktionen er deaktiveret, vil de kun være gennemsigtige, hvis der ikke er "
+"nogen maksimerede vinduer."
 
 #. settings-schema.json->use-custom-panel-color->description
 msgid "Use custom panel color"
-msgstr ""
+msgstr "Anvend brugerdefineret panelfarve"
 
 #. settings-schema.json->custom-panel-color->description
-#, fuzzy
 msgid "Custom panel color"
-msgstr "Nedre panel"
+msgstr "Brugerdefineret panelfarve"
 
 #. settings-schema.json->section-filters->description
-#, fuzzy
 msgid "Filter panels (WIP)"
-msgstr "Filtrér paneler"
+msgstr "Filtrér paneler (ufærdigt)"
 
 #. settings-schema.json->filters-description->description
-#, fuzzy
 msgid ""
 "Select the panels that will be affected by this extension. (Work in progress/"
 "not working)"
-msgstr "Vælg de paneler, som vil blive påvirket af denne udvidelse."
+msgstr ""
+"Vælg de paneler, som vil blive påvirket af denne udvidelse. (under "
+"udarbejdelse/virker ikke)"
 
 #. settings-schema.json->panel-top->description
 msgid "Top panel"

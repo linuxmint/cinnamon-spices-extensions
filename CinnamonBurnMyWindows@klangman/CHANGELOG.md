@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+* Fix the location of the icon file used in the About tab of the configuration window.
+* Add power management feature: Added a "Power" tab to the configuration window where you can configure BurnMyWindows to use different effects (or no effects at all) when running on battery power and the battery charge stage is below a limit you set. (disabled by default)
+* Fix to properly disconnect variable bindings on extension disable / upgrade
+
 ## 1.0.2
 
 * Fixed a bug that results in the inability to minimize/unminimze windows after disabling the Burn-My-Windows extension.

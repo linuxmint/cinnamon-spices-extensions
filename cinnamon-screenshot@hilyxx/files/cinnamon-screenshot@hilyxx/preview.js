@@ -282,6 +282,16 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             previewMainBox.add_child(previewContainer);
             this.contentLayout.add_child(previewMainBox);
             this.contentLayout.add_child(buttonMainBox);
+
+            // Handle ESC key to close the preview dialog
+            this.connect('key-press-event', (actor, event) => {
+                const keySymbol = event.get_key_symbol();
+                if (keySymbol === Clutter.KEY_Escape) {
+                    this.close();
+                    return Clutter.EVENT_STOP;
+                }
+                return Clutter.EVENT_PROPAGATE;
+            });
         }
 
         // === FILE CHOOSER & FILENAME VALIDATION ===
