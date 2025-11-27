@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-11-25 10:07-0500\n"
-"PO-Revision-Date: 2023-12-07 14:10+0100\n"
+"PO-Revision-Date: 2025-11-27 17:26+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. extension.js:190
 msgid "Error"
-msgstr ""
+msgstr "Fejl"
 
 #. extension.js:191
 msgid ""
@@ -29,6 +29,9 @@ msgid ""
 "focused window, therefore Compiz window effects can not be disabled for that "
 "window"
 msgstr ""
+"Det er ikke muligt at bestemme programmet eller WM_CLASS for det vindue, der "
+"tidligere var i fokus, og derfor kan Compiz-vindueseffekter ikke deaktiveres "
+"for det pågældende vindue"
 
 #. metadata.json->description
 msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
@@ -37,105 +40,103 @@ msgstr ""
 
 #. metadata.json->name
 msgid "Compiz windows effect"
-msgstr "Compiz-vindueseffekter"
+msgstr "Compiz-vindueseffekt"
 
 #. settings-schema.json->general-page->title
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #. settings-schema.json->exclude-page->title
 msgid "Exclude List"
-msgstr ""
+msgstr "Udeladelsesliste"
 
 #. settings-schema.json->preset-section->title
-#, fuzzy
 msgid "Compiz windows effect configuration"
-msgstr "Compiz-vindueseffekter"
+msgstr "Konfiguration af Compiz-vindueseffekter"
 
 #. settings-schema.json->effect-settings-section->title
 msgid "Custom effect settings"
-msgstr ""
+msgstr "Brugerdefinerede indstillinger"
 
 #. settings-schema.json->exclude-section->title
 msgid "Application windows where no window effects will be applied"
-msgstr ""
+msgstr "Programvinduer hvor der ikke anvendes vindueseffekter"
 
 #. settings-schema.json->presetList->options
 msgid "Subtle"
-msgstr ""
+msgstr "Diskret"
 
 #. settings-schema.json->presetList->options
 msgid "Realistic"
-msgstr ""
+msgstr "Realistisk"
 
 #. settings-schema.json->presetList->options
 msgid "Exaggerated"
-msgstr ""
+msgstr "Overdrevet"
 
 #. settings-schema.json->presetList->options
 msgid "Extreme"
-msgstr ""
+msgstr "Ekstremt"
 
 #. settings-schema.json->presetList->options
 msgid "Custom"
-msgstr ""
+msgstr "Brugerdefineret"
 
 #. settings-schema.json->presetList->description
 msgid "Effect style"
-msgstr ""
+msgstr "Effektstil"
 
 #. settings-schema.json->excludeList->description
 msgid "Application exclude list"
-msgstr ""
+msgstr "Udeladelsesliste for programmer"
 
 #. settings-schema.json->excludeList->columns->title
-#, fuzzy
 msgid "Application"
-msgstr "Friktion"
+msgstr "Program"
 
 #. settings-schema.json->excludeList->tooltip
 msgid ""
 "Defines a list of applications where the \"Compiz window effect\" effects "
 "will not be applied."
 msgstr ""
+"Definerer en liste over programmer, hvor “Compiz-vindueeffekten” ikke vil "
+"blive anvendt."
 
 #. settings-schema.json->excludeButton->description
 msgid "Add entry for the application of the most recently focused window"
-msgstr ""
+msgstr "Tilføj indgang til programmet med det senest fokuserede vindue"
 
 #. settings-schema.json->excludeButton->tooltip
 msgid ""
 "Focus the window you want to disable window effects for, then return here "
 "and press this button."
 msgstr ""
+"Giv fokus til det vindue, du vil deaktivere vindueeffekter for, vend "
+"derefter tilbage hertil og tryk på denne knap."
 
 #. settings-schema.json->friction->description
-#, fuzzy
 msgid "Friction "
-msgstr "Friktion"
+msgstr "Friktion "
 
 #. settings-schema.json->springK->description
 msgid "Spring K"
 msgstr "Fjederstivhed"
 
 #. settings-schema.json->speedupFactorDivider->description
-#, fuzzy
 msgid "Speedup"
 msgstr "Hastighedsfaktor"
 
 #. settings-schema.json->mass->description
 msgid "Mass      "
-msgstr ""
+msgstr "Masse      "
 
 #. settings-schema.json->xTiles->description
-#, fuzzy
 msgid "X Tiles  "
-msgstr "X-fliser"
+msgstr "x-fliser "
 
 #. settings-schema.json->yTiles->description
-#, fuzzy
 msgid "Y Tiles  "
-msgstr "Y-fliser"
+msgstr "y-fliser "
 
 #. settings-schema.json->maxUnmaxFactor->description
 msgid "Maximizing and Unmaximizing Factor"
