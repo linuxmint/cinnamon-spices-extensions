@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2024-04-16 11:38+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s ingeschakeld"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "Open de instellingen van de extensie en pas je panelen aan"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "Open instellingen"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Doorzichtige panelen"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr ""
+"Maak je panelen transparant wanneer er geen gemaximaliseerde vensters zijn"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Algemeen"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "Type transparantie"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "Met schaduw"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Volledig transparant"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Semi-transparant"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "Kies het type transparantie dat je wil."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Gebruik de huidige themastijlen"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Alleen voor ondersteunde thema's. Laat het thema de panelen vormgeven in "
+"plaats van de voorinstellingen van de extensie te gebruiken. Gebruik dit "
+"als de transparantie van de panelen verkeerd is ingesteld."
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "Verwijder thematransparantie (experimenteel)."
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr ""
+"Verwijder de transparantie van het paneel wanneer het niet transparant is."
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Filter panelen"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "Selecteer de panelen die door deze extensie worden beïnvloed."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Bovenste paneel"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Rechterpaneel"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Onderste paneel"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Linkerpaneel"

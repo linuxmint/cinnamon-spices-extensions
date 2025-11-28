@@ -1,0 +1,299 @@
+# SMART PANEL
+# This file is put in the public domain.
+# mohammad-sn, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: smart-panel@mohammad-sn 1.5.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-14 22:04+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Vaihda työtilojen välillä, näytä työpöytä tai avoimet ohjelmat. Aktivoituu "
+"alapaneelin vapaalla alueella vierittämällä, painamalla kahdesti tai  "
+"eleillä."
+
+#. metadata.json->name
+msgid "Smart Panel"
+msgstr "Smart Panel"
+
+#. settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Hiiren rullaaminen: "
+
+#. settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Toiminta hiiren rullalle: "
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Vaihda työtiloja"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Säädä läpinäkyvyyttä"
+
+#. settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Näytä työpöytä"
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Vaihda ikkunoita"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr ""
+
+#. settings-schema.json->scroll-action->options
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "None"
+msgstr "Ei mitään"
+
+#. settings-schema.json->prev-fast-scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Estä vahingossa tapahtuva työtilan/ikkunan vaihto nopealla vierityksellä"
+
+#. settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Minimiviive vieritysten välillä:"
+
+#. settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "millisekuntia"
+
+#. settings-schema.json->sep-scroll-action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Itsenäiset toiminnot ylös ja alas vierityksellä"
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr "Näytä työtilan muutosilmoitus"
+
+#. settings-schema.json->scroll-action-up->description
+msgid "Action on scrolling up: "
+msgstr "Vieritys ylöspäin: "
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Expo"
+msgstr "Työtila"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Overview"
+msgstr "Ohjelmat"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Launch App Switcher"
+msgstr "Vaihtaja"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Show Desktop"
+msgstr "Näytä työpöytä"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 1st Custom Command"
+msgstr "Suorita komento 1"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Suorita komento 2"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Suorita komento 3"
+
+#. settings-schema.json->scroll-action-down->description
+msgid "Action on scrolling down: "
+msgstr "Vieritys alaspäin: "
+
+#. settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Hiiren painaminen paneelissa: "
+
+#. settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Painaessa kahdesti: "
+
+#. settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Painaessa keskipainiketta: "
+
+#. settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Hiiren eleet: "
+
+#. settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Käytä eleitä paneelissa"
+
+#. settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Vedä oikealle: "
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Siirry vasempaan työtilaan"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Siirry ensimmäiseen työtilaan"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Siirry oikeaan työtilaan"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Siirry viimeiseen työtilaan"
+
+#. settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Vedä vasemmalle: "
+
+#. settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Paina näytön reunassa ja vedä pystysuunnassa: "
+
+#. settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Komentoja: "
+
+#. settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "1. komento:"
+
+#. settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "2. komento:"
+
+#. settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "3. komento:"
+
+#. settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Vaihtajan asetukset: "
+
+#. settings-schema.json->appswitcher-style->description
+msgid "App switcher style: "
+msgstr "Vaihtaja tekee: "
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Vain kuvakkeet"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Vain pikkukuvat"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Kuvakkeet ja pikkukuvat"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Kuvakkeet ja ikkunan katselu"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Ikkunan katselu (ei kuvakkeita)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Virtaus (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Aikajana (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Järjestelmän oletus"
+
+#. settings-schema.json->appswitcher-scope->description
+msgid "Switch between windows from: "
+msgstr "Vaihda ikkunoiden välillä: "
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Nykyinen työtila"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Kaikki työtilat"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Nykyinen sovellus"
+
+#. settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "Kun muokkausnäppäintä painetaan, vaihda ikkunat: "
+
+#. settings-schema.json->appswitcher-modifier->description
+msgid "Modifier key: "
+msgstr "Muokkausnäppäin: "
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr "Shift"

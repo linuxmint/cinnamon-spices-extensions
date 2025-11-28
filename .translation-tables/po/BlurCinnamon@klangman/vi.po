@@ -1,0 +1,679 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BlurCinnamon@klangman 1.5.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-09-30 09:50-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.0/extension.js:1752
+msgid "Welcome to Blur Cinnamon"
+msgstr "Chào mừng đến với Blur Cinnamon"
+
+#. 6.0/extension.js:1753
+msgid ""
+"Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
+"Timeline effects.\n"
+"\n"
+"Open the Blur Cinnamon Settings to enable additional effects on several "
+"other Cinnamon components like menus and notifications, or disable effects "
+"on components that were enabled by default. You can also make changes to the "
+"effect properties like blur intensity, color saturation and dimming."
+msgstr ""
+"Hy vọng bạn đang tận hưởng các hiệu ứng Panel, Expo, Overview và Alt-Tab "
+"Coverflow/Timeline mới.\n"
+"\n"
+"Mở Cài đặt Blur Cinnamon để bật các hiệu ứng bổ sung trên nhiều thành phần "
+"Cinnamon khác như trình đơn và thông báo, hoặc tắt hiệu ứng trên các thành "
+"phần được bật theo mặc định. Bạn cũng có thể thay đổi các thuộc tính hiệu "
+"ứng như cường độ làm mờ, độ bão hòa màu và làm tối."
+
+#. 6.0/extension.js:1757
+msgid "Open Blur Cinnamon Settings"
+msgstr "Mở Cài đặt Blur Cinnamon"
+
+#. 6.0/extension.js:1823
+msgid "Testing Blur Cinnamon Notification Effects"
+msgstr "Đang thử nghiệm Hiệu ứng Thông báo Blur Cinnamon"
+
+#. 6.0/extension.js:1824
+msgid ""
+"This is how notifications will appear when using the current Blur Cinnamon "
+"Notification Popup effects.\n"
+"\n"
+"Making further changes to the notification effect settings will "
+"automatically apply to this notification message."
+msgstr ""
+"Đây là cách thông báo sẽ xuất hiện khi sử dụng các hiệu ứng Thông báo Bật "
+"lên Blur Cinnamon hiện tại.\n"
+"\n"
+"Thực hiện các thay đổi tiếp theo đối với cài đặt hiệu ứng thông báo sẽ tự "
+"động áp dụng cho thông báo này."
+
+#. metadata.json->name
+msgid "Blur Cinnamon"
+msgstr "Blur Cinnamon"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur, colorize, desaturate and adjust the dimming of several "
+"Cinnamon Desktop components"
+msgstr "Cho phép bạn làm mờ, tô màu, giảm bão hòa và điều chỉnh độ tối của một số thành phần Cinnamon Desktop"
+
+#. 6.0->settings-schema.json->general-page->title
+msgid "General"
+msgstr "Chung"
+
+#. 6.0->settings-schema.json->overview-page->title
+#. 6.0->settings-schema.json->enable-overview-effects->description
+msgid "Overview"
+msgstr "Tổng quan"
+
+#. 6.0->settings-schema.json->expo-page->title
+#. 6.0->settings-schema.json->enable-expo-effects->description
+msgid "Expo"
+msgstr "Expo"
+
+#. 6.0->settings-schema.json->panels-page->title
+msgid "Panels"
+msgstr "Panel"
+
+#. 6.0->settings-schema.json->popup-page->title
+msgid "Menus"
+msgstr "Trình đơn"
+
+#. 6.0->settings-schema.json->desktop-page->title
+msgid "Desktop"
+msgstr "Màn hình nền"
+
+#. 6.0->settings-schema.json->notification-page->title
+msgid "Notifications"
+msgstr "Thông báo"
+
+#. 6.0->settings-schema.json->appswitcher-page->title
+msgid "Alt-Tab"
+msgstr "Alt-Tab"
+
+#. 6.0->settings-schema.json->tooltips-page->title
+msgid "Tooltips"
+msgstr "Chú giải công cụ"
+
+#. 6.0->settings-schema.json->general-settings->title
+msgid "Cinnamon components where effects will be applied"
+msgstr "Các thành phần Cinnamon sẽ áp dụng hiệu ứng"
+
+#. 6.0->settings-schema.json->generic-effect-settings->title
+msgid "Generic effect settings"
+msgstr "Cài đặt hiệu ứng chung"
+
+#. 6.0->settings-schema.json->overview-override->title
+msgid "Overview settings"
+msgstr "Cài đặt Tổng quan"
+
+#. 6.0->settings-schema.json->overview-effect-settings->title
+msgid "Overview effect settings"
+msgstr "Cài đặt hiệu ứng Tổng quan"
+
+#. 6.0->settings-schema.json->expo-override->title
+msgid "Expo settings"
+msgstr "Cài đặt Expo"
+
+#. 6.0->settings-schema.json->expo-effect-settings->title
+msgid "Expo effect settings"
+msgstr "Cài đặt hiệu ứng Expo"
+
+#. 6.0->settings-schema.json->panels-override->title
+#. 6.0->settings-schema.json->popup-override->title
+msgid "Panels settings"
+msgstr "Cài đặt Panel"
+
+#. 6.0->settings-schema.json->panels-effect-settings->title
+msgid "Panel effects settings"
+msgstr "Cài đặt hiệu ứng Panel"
+
+#. 6.0->settings-schema.json->popup-effect-settings->title
+msgid "Popup menu effects settings"
+msgstr "Cài đặt hiệu ứng trình đơn bật lên"
+
+#. 6.0->settings-schema.json->desktop-override->title
+msgid "Desktop background settings"
+msgstr "Cài đặt nền màn hình"
+
+#. 6.0->settings-schema.json->desktop-effect-settings->title
+msgid "Desktop background effects settings"
+msgstr "Cài đặt hiệu ứng nền màn hình"
+
+#. 6.0->settings-schema.json->notification-override->title
+msgid "Notification popup background settings"
+msgstr "Cài đặt nền thông báo bật lên"
+
+#. 6.0->settings-schema.json->notification-effect-settings->title
+msgid "Notification popup background effects settings"
+msgstr "Cài đặt hiệu ứng nền thông báo bật lên"
+
+#. 6.0->settings-schema.json->appswitcher-override->title
+msgid "Alt-Tab (Coverflow / Timeline) background settings"
+msgstr "Cài đặt nền Alt-Tab (Coverflow / Timeline)"
+
+#. 6.0->settings-schema.json->appswitcher-effect-settings->title
+msgid "Alt-Tab (Coverflow / Timeline) background effects settings"
+msgstr "Cài đặt hiệu ứng nền Alt-Tab (Coverflow / Timeline)"
+
+#. 6.0->settings-schema.json->tooltips-override->title
+msgid "Panel tooltips background settings"
+msgstr "Cài đặt nền chú giải công cụ panel"
+
+#. 6.0->settings-schema.json->tooltips-effect-settings->title
+msgid "Panel tooltips background effects settings"
+msgstr "Cài đặt hiệu ứng nền chú giải công cụ panel"
+
+#. 6.0->settings-schema.json->enable-overview-effects->tooltip
+msgid ""
+"Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
+"hot corner)"
+msgstr "Áp dụng hiệu ứng cho Tổng quan (mặc định: Ctrl+Alt+Down / góc nóng 'Hiển thị tất cả cửa sổ')"
+
+#. 6.0->settings-schema.json->enable-expo-effects->tooltip
+msgid ""
+"Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot "
+"corner)"
+msgstr "Áp dụng hiệu ứng cho Expo (mặc định: Ctrl+Alt+Up / góc nóng 'Hiển thị tất cả không gian làm việc')"
+
+#. 6.0->settings-schema.json->enable-panels-effects->description
+msgid "Panels  (Please read tooltip)"
+msgstr "Panel (Vui lòng đọc chú giải công cụ)"
+
+#. 6.0->settings-schema.json->enable-panels-effects->tooltip
+msgid ""
+"Apply effects to the Panels. This option should work well with most dark "
+"desktop themes but light themes could also be made to work with some "
+"creative use of the dimming color settings and an appropriate background "
+"image. It overrides some themes settings to achieve a (semi-)transparent "
+"panel so that the blurred background is visible."
+msgstr ""
+"Áp dụng hiệu ứng cho Panel. Tùy chọn này sẽ hoạt động tốt với hầu hết các "
+"chủ đề màn hình tối nhưng các chủ đề sáng cũng có thể hoạt động với một số "
+"sử dụng sáng tạo của cài đặt màu làm tối và hình nền phù hợp. Nó ghi đè một "
+"số cài đặt chủ đề để đạt được panel (bán) trong suốt để nền mờ có thể nhìn "
+"thấy."
+
+#. 6.0->settings-schema.json->enable-popup-effects->description
+msgid "Popup Menus  (Please read tooltip)"
+msgstr "Trình đơn Bật lên (Vui lòng đọc chú giải công cụ)"
+
+#. 6.0->settings-schema.json->enable-popup-effects->tooltip
+msgid ""
+"Apply effects to panel applet popup menus. This option is intended for the "
+"Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
+"themes. Light themes are unlikely to give good results but might be made to "
+"work with some creative use of the dimming color settings and an appropriate "
+"background image. It overrides some theme settings to achieve a "
+"(semi-)transparent menu so that the blurred background is visible. It also "
+"removes rounded corners so that the blurred background will not spill over "
+"the rounded edges."
+msgstr ""
+"Áp dụng hiệu ứng cho trình đơn bật lên của applet panel. Tùy chọn này dành "
+"cho các chủ đề màn hình tối Cinnamon (6.4) và Mint-Y nhưng có thể hoạt động "
+"tốt với các chủ đề khác. Các chủ đề sáng khó có thể cho kết quả tốt nhưng có "
+"thể hoạt động với một số sử dụng sáng tạo của cài đặt màu làm tối và hình "
+"nền phù hợp. Nó ghi đè một số cài đặt chủ đề để đạt được trình đơn (bán) "
+"trong suốt để nền mờ có thể nhìn thấy. Nó cũng loại bỏ các góc bo tròn để "
+"nền mờ không tràn ra các cạnh bo tròn."
+
+#. 6.0->settings-schema.json->enable-desktop-effects->description
+msgid "Desktop background"
+msgstr "Nền màn hình"
+
+#. 6.0->settings-schema.json->enable-desktop-effects->tooltip
+msgid ""
+"Apply effects to desktop background image. On the Desktop Background tab you "
+"can choose if the effect applies always or just when a window has the focus."
+msgstr ""
+"Áp dụng hiệu ứng cho hình nền màn hình. Trên thẻ Nền Màn hình, bạn có thể "
+"chọn hiệu ứng áp dụng luôn hay chỉ khi một cửa sổ có tiêu điểm."
+
+#. 6.0->settings-schema.json->enable-notification-effects->description
+msgid "Notification popups (Please read tooltip)"
+msgstr "Thông báo bật lên (Vui lòng đọc chú giải công cụ)"
+
+#. 6.0->settings-schema.json->enable-notification-effects->tooltip
+msgid ""
+"Apply effects to the notification popups. This option has been tested with "
+"the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
+"other themes. It overrides some theme settings to achieve a "
+"(semi-)transparent window so that the blurred background is visible. It also "
+"removes rounded corners so that the blurred background will not spill over "
+"the rounded edges."
+msgstr ""
+"Áp dụng hiệu ứng cho thông báo bật lên. Tùy chọn này đã được thử nghiệm với "
+"các chủ đề màn hình tối Cinnamon (6.4) và Mint-Y nhưng có thể hoạt động tốt "
+"với các chủ đề khác. Nó ghi đè một số cài đặt chủ đề để đạt được cửa sổ "
+"(bán) trong suốt để nền mờ có thể nhìn thấy. Nó cũng loại bỏ các góc bo "
+"tròn để nền mờ không tràn ra các cạnh bo tròn."
+
+#. 6.0->settings-schema.json->enable-appswitcher-effects->description
+msgid "Alt-Tab application switcher (Coverflow & Timeline only)"
+msgstr "Bộ chuyển đổi ứng dụng Alt-Tab (chỉ Coverflow & Timeline)"
+
+#. 6.0->settings-schema.json->enable-appswitcher-effects->tooltip
+msgid ""
+"Apply effects to the Alt-Tab application switcher background when setup to "
+"use the Coverflow or Timeline styles"
+msgstr "Áp dụng hiệu ứng cho nền bộ chuyển đổi ứng dụng Alt-Tab khi được thiết lập để sử dụng kiểu Coverflow hoặc Timeline"
+
+#. 6.0->settings-schema.json->enable-tooltips-effects->description
+msgid "Panel tooltips (Please read tooltip)"
+msgstr "Chú giải công cụ panel (Vui lòng đọc chú giải công cụ)"
+
+#. 6.0->settings-schema.json->enable-tooltips-effects->tooltip
+msgid ""
+"Apply effects to the panel tooltip backgrounds. It overrides some theme "
+"settings to achieve a (semi-)transparent tooltip so that the blurred "
+"background is visible. It also removes rounded corners so that the blurred "
+"background will not spill over the rounded edges."
+msgstr ""
+"Áp dụng hiệu ứng cho nền chú giải công cụ panel. Nó ghi đè một số cài đặt "
+"chủ đề để đạt được chú giải công cụ (bán) trong suốt để nền mờ có thể nhìn "
+"thấy. Nó cũng loại bỏ các góc bo tròn để nền mờ không tràn ra các cạnh bo "
+"tròn."
+
+#. 6.0->settings-schema.json->overview-info->description
+msgid "Warning: Overview effects are currently disabled under the General tab."
+msgstr "Cảnh báo: Hiệu ứng Tổng quan hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->expo-info->description
+msgid "Warning: Expo effects are currently disabled under the General tab."
+msgstr "Cảnh báo: Hiệu ứng Expo hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->panels-info->description
+msgid "Warning: Panel effects are currently disabled under the General tab."
+msgstr "Cảnh báo: Hiệu ứng Panel hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->popup-info->description
+msgid ""
+"Warning: Popup Menu effects are currently disabled under the General tab."
+msgstr "Cảnh báo: Hiệu ứng Trình đơn Bật lên hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->desktop-info->description
+msgid ""
+"Warning: Desktop background effects are currently disabled under the General "
+"tab."
+msgstr "Cảnh báo: Hiệu ứng nền màn hình hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->notification-info->description
+msgid ""
+"Warning: Notification popup effects are currently disabled under the General "
+"tab."
+msgstr "Cảnh báo: Hiệu ứng thông báo bật lên hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->appswitcher-info->description
+msgid "Warning: Alt-Tab effects are currently disabled under the General tab."
+msgstr "Cảnh báo: Hiệu ứng Alt-Tab hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->tooltips-info->description
+msgid ""
+"Warning: Panel tooltip effects are currently disabled under the General tab."
+msgstr "Cảnh báo: Hiệu ứng chú giải công cụ panel hiện bị tắt dưới thẻ Chung."
+
+#. 6.0->settings-schema.json->allow-transparent-color-panels->description
+msgid "Override some of the panels theme settings (recommended)"
+msgstr "Ghi đè một số cài đặt chủ đề panel (được khuyến nghị)"
+
+#. 6.0->settings-schema.json->allow-transparent-color-panels->tooltip
+msgid ""
+"Allow this extension to modify the panels transparency and background color "
+"settings. If this is disabled the extension will only apply a blur overlay "
+"under the panels. This setting should only be disabled when the theme "
+"already uses transparent panels and you want the themes setting to apply."
+msgstr ""
+"Cho phép tiện ích mở rộng này sửa đổi cài đặt độ trong suốt và màu nền của "
+"panel. Nếu bị tắt, tiện ích mở rộng sẽ chỉ áp dụng một lớp phủ mờ bên dưới "
+"panel. Cài đặt này chỉ nên bị tắt khi chủ đề đã sử dụng panel trong suốt và "
+"bạn muốn áp dụng cài đặt chủ đề."
+
+#. 6.0->settings-schema.json->allow-transparent-color-popup->description
+msgid "Override some of the popup menu theme settings (recommended)"
+msgstr "Ghi đè một số cài đặt chủ đề trình đơn bật lên (được khuyến nghị)"
+
+#. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
+msgid ""
+"Allow this extension to modify the popup Menu transparency, background color "
+"and rounded corner settings. If this is disabled the extension will only "
+"apply a blur overlay under the popup menus. This setting should only be "
+"disabled when the theme already uses transparent popup menus and you want "
+"the themes setting to apply."
+msgstr ""
+"Cho phép tiện ích mở rộng này sửa đổi cài đặt độ trong suốt, màu nền và góc "
+"bo tròn của Trình đơn Bật lên. Nếu bị tắt, tiện ích mở rộng sẽ chỉ áp dụng "
+"một lớp phủ mờ bên dưới trình đơn bật lên. Cài đặt này chỉ nên bị tắt khi "
+"chủ đề đã sử dụng trình đơn bật lên trong suốt và bạn muốn áp dụng cài đặt "
+"chủ đề."
+
+#. 6.0->settings-schema.json->enable-overview-override->description
+msgid "Use unique effect settings for the Overview"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho Tổng quan"
+
+#. 6.0->settings-schema.json->enable-expo-override->description
+msgid "Use unique effect settings for the Expo"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho Expo"
+
+#. 6.0->settings-schema.json->enable-panels-override->description
+msgid "Use unique effect settings for the Panels"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho Panel"
+
+#. 6.0->settings-schema.json->enable-popup-override->description
+msgid "Use unique effect settings for the popup menus"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho trình đơn bật lên"
+
+#. 6.0->settings-schema.json->enable-desktop-override->description
+msgid "Use unique effect settings for the desktop background"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho nền màn hình"
+
+#. 6.0->settings-schema.json->enable-notification-override->description
+msgid "Use unique effect settings for the notification popups"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho thông báo bật lên"
+
+#. 6.0->settings-schema.json->enable-appswitcher-override->description
+msgid "Use unique effect settings for the Alt-Tab app switcher"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho bộ chuyển đổi ứng dụng Alt-Tab"
+
+#. 6.0->settings-schema.json->enable-tooltips-override->description
+msgid "Use unique effect settings for the panel tooltips"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho chú giải công cụ panel"
+
+#. 6.0->settings-schema.json->window-settings-button->description
+msgid "Open Alt-Tab Cinnamon settings"
+msgstr "Mở cài đặt Alt-Tab Cinnamon"
+
+#. 6.0->settings-schema.json->enable-panel-unique-settings->description
+msgid "Use unique effect settings for each panel"
+msgstr "Sử dụng cài đặt hiệu ứng duy nhất cho mỗi panel"
+
+#. 6.0->settings-schema.json->panel-unique-settings->description
+msgid "Panel specific settings"
+msgstr "Cài đặt cụ thể cho panel"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Enabled"
+msgstr "Đã bật"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Panel"
+msgstr "Panel"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Monitor"
+msgstr "Màn hình"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Dimming"
+msgstr "Làm tối"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Color"
+msgstr "Màu"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Blur"
+msgstr "Làm mờ"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Intensity"
+msgstr "Cường độ"
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Saturation"
+msgstr "Độ bão hòa"
+
+#. 6.0->settings-schema.json->panel-unique-settings->tooltip
+msgid ""
+"Defines the effects applied to different panels. If a panel does not meet "
+"the criteria of any enabled entry in this list, it will have no effects "
+"applied. The settings of the first entry in this list that can apply to a "
+"given panel will take effect. The color field is in the rgb(#,#,#) syntax "
+"and black will be used when a color is not provided or is in an incorrect "
+"syntax"
+msgstr ""
+"Xác định các hiệu ứng được áp dụng cho các panel khác nhau. Nếu một panel "
+"không đáp ứng tiêu chí của bất kỳ mục nào được bật trong danh sách này, nó "
+"sẽ không có hiệu ứng nào được áp dụng. Cài đặt của mục đầu tiên trong danh "
+"sách này có thể áp dụng cho một panel nhất định sẽ có hiệu lực. Trường màu "
+"theo cú pháp rgb(#,#,#) và màu đen sẽ được sử dụng khi không cung cấp màu "
+"hoặc có cú pháp không chính xác"
+
+#. 6.0->settings-schema.json->no-panel-effects-maximized->description
+msgid "Restore theme settings when a window is maximized"
+msgstr "Khôi phục cài đặt chủ đề khi một cửa sổ được phóng to"
+
+#. 6.0->settings-schema.json->no-panel-effects-maximized->tooltip
+msgid ""
+"Restore the themes panel settings when any window is maximized on the same "
+"monitor as the panel. For most themes this will restore a solid panel "
+"background when a window is maximized. Note: This does not remove the "
+"blurring, so if your theme uses a transparent panel then this setting may "
+"have no effect."
+msgstr ""
+"Khôi phục cài đặt panel chủ đề khi bất kỳ cửa sổ nào được phóng to trên "
+"cùng màn hình với panel. Đối với hầu hết các chủ đề, điều này sẽ khôi phục "
+"nền panel đặc khi một cửa sổ được phóng to. Lưu ý: Điều này không loại bỏ "
+"việc làm mờ, vì vậy nếu chủ đề của bạn sử dụng panel trong suốt thì cài đặt "
+"này có thể không có tác dụng."
+
+#. 6.0->settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->overview-opacity->description
+#. 6.0->settings-schema.json->expo-opacity->description
+#. 6.0->settings-schema.json->panels-opacity->description
+#. 6.0->settings-schema.json->popup-opacity->description
+#. 6.0->settings-schema.json->notification-opacity->description
+#. 6.0->settings-schema.json->appswitcher-opacity->description
+#. 6.0->settings-schema.json->tooltips-opacity->description
+msgid "Dim/Colorize Background (percentage)"
+msgstr "Làm tối/Tô màu Nền (phần trăm)"
+
+#. 6.0->settings-schema.json->blendColor->description
+#. 6.0->settings-schema.json->overview-blendColor->description
+#. 6.0->settings-schema.json->expo-blendColor->description
+#. 6.0->settings-schema.json->panels-blendColor->description
+#. 6.0->settings-schema.json->popup-blendColor->description
+#. 6.0->settings-schema.json->desktop-blendColor->description
+#. 6.0->settings-schema.json->notification-blendColor->description
+#. 6.0->settings-schema.json->appswitcher-blendColor->description
+#. 6.0->settings-schema.json->tooltips-blendColor->description
+msgid "Dimming overlay color"
+msgstr "Màu lớp phủ làm tối"
+
+#. 6.0->settings-schema.json->blendColor->tooltip
+#. 6.0->settings-schema.json->overview-blendColor->tooltip
+#. 6.0->settings-schema.json->expo-blendColor->tooltip
+#. 6.0->settings-schema.json->panels-blendColor->tooltip
+#. 6.0->settings-schema.json->popup-blendColor->tooltip
+#. 6.0->settings-schema.json->desktop-blendColor->tooltip
+#. 6.0->settings-schema.json->notification-blendColor->tooltip
+#. 6.0->settings-schema.json->appswitcher-blendColor->tooltip
+#. 6.0->settings-schema.json->tooltips-blendColor->tooltip
+msgid ""
+"Defines the color that is blended into the background based on the dimming "
+"control above. Use black for a normal dimming effect or some other color for "
+"a color blend effect"
+msgstr ""
+"Xác định màu được pha trộn vào nền dựa trên điều khiển làm tối ở trên. Sử "
+"dụng màu đen cho hiệu ứng làm tối thông thường hoặc một số màu khác cho hiệu "
+"ứng pha trộn màu"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "None"
+msgstr "Không"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple"
+msgstr "Đơn giản"
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Gaussian"
+msgstr "Gaussian"
+
+#. 6.0->settings-schema.json->blurType->description
+#. 6.0->settings-schema.json->overview-blurType->description
+#. 6.0->settings-schema.json->expo-blurType->description
+#. 6.0->settings-schema.json->panels-blurType->description
+#. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->desktop-blurType->description
+#. 6.0->settings-schema.json->notification-blurType->description
+#. 6.0->settings-schema.json->appswitcher-blurType->description
+#. 6.0->settings-schema.json->tooltips-blurType->description
+msgid "Type of blur effect"
+msgstr "Loại hiệu ứng làm mờ"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+#. 6.0->settings-schema.json->overview-blurType->tooltip
+#. 6.0->settings-schema.json->expo-blurType->tooltip
+#. 6.0->settings-schema.json->panels-blurType->tooltip
+#. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->desktop-blurType->tooltip
+#. 6.0->settings-schema.json->notification-blurType->tooltip
+#. 6.0->settings-schema.json->appswitcher-blurType->tooltip
+#. 6.0->settings-schema.json->tooltips-blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr "Loại thuật toán làm mờ nào nên được sử dụng để làm mờ nền"
+
+#. 6.0->settings-schema.json->radius->description
+#. 6.0->settings-schema.json->overview-radius->description
+#. 6.0->settings-schema.json->expo-radius->description
+#. 6.0->settings-schema.json->notification-radius->description
+#. 6.0->settings-schema.json->appswitcher-radius->description
+#. 6.0->settings-schema.json->tooltips-radius->description
+msgid "Gaussian blur intensity"
+msgstr "Cường độ làm mờ Gaussian"
+
+#. 6.0->settings-schema.json->radius->tooltip
+#. 6.0->settings-schema.json->overview-radius->tooltip
+#. 6.0->settings-schema.json->expo-radius->tooltip
+#. 6.0->settings-schema.json->notification-radius->tooltip
+#. 6.0->settings-schema.json->appswitcher-radius->tooltip
+#. 6.0->settings-schema.json->tooltips-radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr "Điều chỉnh cường độ của hiệu ứng làm mờ bằng cách thay đổi bán kính được sử dụng bởi hiệu ứng."
+
+#. 6.0->settings-schema.json->saturation->description
+#. 6.0->settings-schema.json->overview-saturation->description
+#. 6.0->settings-schema.json->expo-saturation->description
+#. 6.0->settings-schema.json->panels-saturation->description
+#. 6.0->settings-schema.json->desktop-saturation->description
+#. 6.0->settings-schema.json->notification-saturation->description
+#. 6.0->settings-schema.json->appswitcher-saturation->description
+#. 6.0->settings-schema.json->tooltips-saturation->description
+msgid "Background color saturation"
+msgstr "Độ bão hòa màu nền"
+
+#. 6.0->settings-schema.json->saturation->tooltip
+#. 6.0->settings-schema.json->overview-saturation->tooltip
+#. 6.0->settings-schema.json->expo-saturation->tooltip
+#. 6.0->settings-schema.json->panels-saturation->tooltip
+#. 6.0->settings-schema.json->popup-saturation->tooltip
+#. 6.0->settings-schema.json->desktop-saturation->tooltip
+#. 6.0->settings-schema.json->notification-saturation->tooltip
+#. 6.0->settings-schema.json->appswitcher-saturation->tooltip
+#. 6.0->settings-schema.json->tooltips-saturation->tooltip
+msgid "Adjusts the color saturation of the background image."
+msgstr "Điều chỉnh độ bão hòa màu của hình nền."
+
+#. 6.0->settings-schema.json->panels-radius->description
+#. 6.0->settings-schema.json->popup-radius->description
+#. 6.0->settings-schema.json->desktop-radius->description
+msgid "Blur intensity (Gaussian only)"
+msgstr "Cường độ làm mờ (chỉ Gaussian)"
+
+#. 6.0->settings-schema.json->panels-radius->tooltip
+#. 6.0->settings-schema.json->popup-radius->tooltip
+#. 6.0->settings-schema.json->desktop-radius->tooltip
+msgid ""
+"Adjusts the intensity of the Gaussian blur effect by changing the radius use "
+"by the effect. This setting does not effect the Simple blur type"
+msgstr "Điều chỉnh cường độ của hiệu ứng làm mờ Gaussian bằng cách thay đổi bán kính được sử dụng bởi hiệu ứng. Cài đặt này không ảnh hưởng đến loại làm mờ Đơn giản"
+
+#. 6.0->settings-schema.json->popup-accent-opacity->description
+msgid "Additional popup menu accent elements dimming (percentage)"
+msgstr "Làm tối bổ sung các phần tử nhấn mạnh trình đơn bật lên (phần trăm)"
+
+#. 6.0->settings-schema.json->popup-accent-opacity->tooltip
+msgid ""
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
+msgstr "Xác định việc làm tối bổ sung được áp dụng cho các phần tử nhấn mạnh trình đơn bật lên (ví dụ: hộp mục yêu thích trình đơn chính và hộp mục nhập) cho phép các phần tử này nổi bật so với các khu vực trình đơn bật lên khác"
+
+#. 6.0->settings-schema.json->popup-saturation->description
+msgid "Background image color saturation"
+msgstr "Độ bão hòa màu hình nền"
+
+#. 6.0->settings-schema.json->desktop-without-focus->description
+msgid "Only apply effect settings if the desktop is not in focus"
+msgstr "Chỉ áp dụng cài đặt hiệu ứng nếu màn hình nền không có tiêu điểm"
+
+#. 6.0->settings-schema.json->desktop-without-focus->tooltip
+msgid ""
+"When enabled, the desktop background image effects will only apply when the "
+"desktop is not in focus"
+msgstr "Khi được bật, hiệu ứng hình nền màn hình sẽ chỉ áp dụng khi màn hình nền không có tiêu điểm"
+
+#. 6.0->settings-schema.json->desktop-with-focus->description
+msgid "Apply the generic effect settings when the desktop is in focus"
+msgstr "Áp dụng cài đặt hiệu ứng chung khi màn hình nền có tiêu điểm"
+
+#. 6.0->settings-schema.json->desktop-with-focus->tooltip
+msgid ""
+"When enabled, the generic effect settings (on the General tab) will apply to "
+"the desktop background image when the desktop is in focus"
+msgstr "Khi được bật, cài đặt hiệu ứng chung (trên thẻ Chung) sẽ áp dụng cho hình nền màn hình khi màn hình nền có tiêu điểm"
+
+#. 6.0->settings-schema.json->desktop-opacity->description
+msgid "Dim background Image (percentage)"
+msgstr "Làm tối Hình nền (phần trăm)"
+
+#. 6.0->settings-schema.json->notification-test-button->description
+msgid "Send a test notification"
+msgstr "Gửi thông báo thử nghiệm"
+
+#. 6.0->settings-schema.json->notification-test-button->tooltip
+msgid ""
+"This button will cause a notification message to appear so you can see how "
+"your notification setting behave."
+msgstr "Nút này sẽ làm xuất hiện một thông báo để bạn có thể xem cài đặt thông báo của mình hoạt động như thế nào."
