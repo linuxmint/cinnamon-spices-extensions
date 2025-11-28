@@ -1,0 +1,90 @@
+{
+    "section-opacity": {
+        "type": "section",
+        "description": "Unfocused Window Effects"
+    },
+
+    "opacity": {
+        "type": "scale",
+        "description": "Opacity",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "step": 5,
+        "tooltip": "0% = fully transparent, 100% = fully opaque"
+    },
+
+    "brightness": {
+        "type": "scale",
+        "description": "Brightness",
+        "min": 0,
+        "max": 100,
+        "default": 70,
+        "step": 5,
+        "tooltip": "0% = completely dark, 100% = full brightness"
+    },
+
+    "section-animation": {
+        "type": "section",
+        "description": "Animation Settings"
+    },
+
+    "animation-time": {
+        "type": "scale",
+        "description": "Animation duration",
+        "min": 0,
+        "max": 1000,
+        "default": 300,
+        "step": 50,
+        "units": "ms",
+        "tooltip": "Time it takes for the dimming animation to complete"
+    },
+
+    "animation-type": {
+        "type": "combobox",
+        "description": "Animation type",
+        "default": "easeInOutQuad",
+        "options": {
+            "Linear": "linear",
+            "Ease In Out Quad": "easeInOutQuad",
+            "Ease Out Quad": "easeOutQuad",
+            "Ease In Quad": "easeInQuad",
+            "Ease In Out Cubic": "easeInOutCubic",
+            "Ease Out Cubic": "easeOutCubic"
+        },
+        "tooltip": "Choose the animation curve for the dimming effects"
+    },
+
+    "section-advanced": {
+        "type": "section",
+        "description": "Other Settings"
+    },
+
+    "exclude-dialogs": {
+        "type": "checkbox",
+        "description": "Exclude dialog windows",
+        "default": true,
+        "tooltip": "Don't dim dialog windows (like file choosers, preferences windows, etc.)"
+    },
+
+    "disable-dim-minimized": {
+        "type": "checkbox",
+        "description": "Disable dimming for minimized windows",
+        "default": true,
+        "tooltip": "Don't dim windows that are minimized to the taskbar"
+    },
+
+    "exclude-window-titles": {
+        "type": "entry",
+        "description": "Exclude windows with titles containing",
+        "default": "Picture in picture",
+        "tooltip": "Comma-separated list of text patterns in window titles to exclude from dimming (case-sensitive)"
+    },
+
+    "toggle-keybinding": {
+        "type": "keybinding",
+        "description": "Toggle dimming on/off",
+        "default": "<Super><Shift>d",
+        "tooltip": "Keyboard shortcut to temporarily toggle the dimming effect"
+    }
+}
