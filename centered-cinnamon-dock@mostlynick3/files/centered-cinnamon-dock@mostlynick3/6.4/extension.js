@@ -165,9 +165,6 @@ function enableAutoHide() {
             }
         } else if (y >= screenHeight - hoverPixels && x >= panelLeft && x <= panelRight) {
             if (isHidden) {
-                if (!hasNormalFocus && !settings.getValue("show-on-no-focus")) {
-                    return true;
-                }
                 hoverShown = true;
                 showPanel();
             }
@@ -176,7 +173,7 @@ function enableAutoHide() {
         }
         else {
             if (hoverShown && !isHidden) {
-                if (hasNormalFocus) {
+                if (hasNormalFocus || !settings.getValue("show-on-no-focus")) {
                     hoverShown = false;
                     hidePanel();
                 }
