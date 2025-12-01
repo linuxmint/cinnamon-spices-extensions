@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-30 09:50-0400\n"
+"POT-Creation-Date: 2025-11-30 22:15-0500\n"
 "PO-Revision-Date: 2025-06-13 17:14+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -16,32 +16,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.0/extension.js:1752
+#. 6.0/extension.js:1807
+msgid "Error"
+msgstr ""
+
+#. 6.0/extension.js:1808
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Blur Cinnamon effects can not be applied to that "
+"window"
+msgstr ""
+
+#. 6.0/extension.js:2284
 #, fuzzy
 msgid "Welcome to Blur Cinnamon"
 msgstr "Vervaag Cinnamon"
 
-#. 6.0/extension.js:1753
+#. 6.0/extension.js:2285
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
 "\n"
 "Open the Blur Cinnamon Settings to enable additional effects on several "
-"other Cinnamon components like menus and notifications, or disable effects "
-"on components that were enabled by default. You can also make changes to the "
-"effect properties like blur intensity, color saturation and dimming."
+"other desktop elements like menus, notifications and windows, or disable "
+"effects on components that were enabled by default. You can also make "
+"changes to the effect properties like blur intensity, color saturation and "
+"dimming."
 msgstr ""
 
-#. 6.0/extension.js:1757
+#. 6.0/extension.js:2289
 #, fuzzy
 msgid "Open Blur Cinnamon Settings"
 msgstr "Vervaag Cinnamon"
 
-#. 6.0/extension.js:1823
+#. 6.0/extension.js:2366
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr ""
 
-#. 6.0/extension.js:1824
+#. 6.0/extension.js:2367
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -103,8 +115,13 @@ msgstr ""
 msgid "Tooltips"
 msgstr ""
 
+#. 6.0->settings-schema.json->windows-page->title
+msgid "Windows"
+msgstr ""
+
 #. 6.0->settings-schema.json->general-settings->title
-msgid "Cinnamon components where effects will be applied"
+#, fuzzy
+msgid "Desktop elements where effects will be applied"
 msgstr "Cinnamon-componenten waarop effecten worden toegepast"
 
 #. 6.0->settings-schema.json->generic-effect-settings->title
@@ -128,13 +145,18 @@ msgid "Expo effect settings"
 msgstr "Effectinstellingen voor Expo"
 
 #. 6.0->settings-schema.json->panels-override->title
-#. 6.0->settings-schema.json->popup-override->title
-msgid "Panels settings"
+#, fuzzy
+msgid "Panel settings"
 msgstr "Paneelinstellingen"
 
 #. 6.0->settings-schema.json->panels-effect-settings->title
 msgid "Panel effects settings"
 msgstr "Effectinstellingen voor Panelen"
+
+#. 6.0->settings-schema.json->popup-override->title
+#, fuzzy
+msgid "Popup menu settings"
+msgstr "Effectinstellingen voor pop-upmenu's"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
 msgid "Popup menu effects settings"
@@ -177,6 +199,11 @@ msgstr "Instellingen voor bureaubladachtergrond"
 msgid "Panel tooltips background effects settings"
 msgstr "Instellingen voor effecten op bureaubladachtergrond"
 
+#. 6.0->settings-schema.json->windows-effect-settings->title
+#, fuzzy
+msgid "Application window background effects settings"
+msgstr "Instellingen voor effecten op bureaubladachtergrond"
+
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
 "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
@@ -217,15 +244,14 @@ msgid "Popup Menus  (Please read tooltip)"
 msgstr "Pop-upmenu’s (lees de tooltip)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
+#, fuzzy
 msgid ""
-"Apply effects to panel applet popup menus. This option is intended for the "
-"Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
-"themes. Light themes are unlikely to give good results but might be made to "
-"work with some creative use of the dimming color settings and an appropriate "
+"Apply effects to panel popup menus. This option is intended for the Cinnamon "
+"(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
+"Light themes are unlikely to give good results but might be made to work "
+"with some creative use of the dimming color settings and an appropriate "
 "background image. It overrides some theme settings to achieve a "
-"(semi-)transparent menu so that the blurred background is visible. It also "
-"removes rounded corners so that the blurred background will not spill over "
-"the rounded edges."
+"(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
 "Hiermee pas je effecten toe op de Pop-upmenu’s van paneel-applets. Dit is "
 "bedoeld voor Cinnamon (6.4) en Mint-Y donkere desktopthema’s, maar kan ook "
@@ -261,9 +287,7 @@ msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
 "other themes. It overrides some theme settings to achieve a "
-"(semi-)transparent window so that the blurred background is visible. It also "
-"removes rounded corners so that the blurred background will not spill over "
-"the rounded edges."
+"(semi-)transparent window so that the blurred background is visible."
 msgstr ""
 "Hiermee pas je effecten toe op de Pop-upmenu’s van paneel-applets. Dit is "
 "bedoeld voor Cinnamon (6.4) en Mint-Y donkere desktopthema’s, maar kan ook "
@@ -295,8 +319,7 @@ msgstr "Panelen (lees de tooltip)"
 msgid ""
 "Apply effects to the panel tooltip backgrounds. It overrides some theme "
 "settings to achieve a (semi-)transparent tooltip so that the blurred "
-"background is visible. It also removes rounded corners so that the blurred "
-"background will not spill over the rounded edges."
+"background is visible."
 msgstr ""
 "Hiermee pas je effecten toe op de Pop-upmenu’s van paneel-applets. Dit is "
 "bedoeld voor Cinnamon (6.4) en Mint-Y donkere desktopthema’s, maar kan ook "
@@ -307,6 +330,33 @@ msgstr ""
 "de vervaagde achtergrond zichtbaar wordt. Bovendien worden afgeronde hoeken "
 "verwijderd, zodat de vervaagde achtergrond niet over de ronde randen "
 "uitloopt."
+
+#. 6.0->settings-schema.json->enable-window-effects->description
+#, fuzzy
+msgid "Application windows (Please read tooltip)"
+msgstr "Pop-upmenu’s (lees de tooltip)"
+
+#. 6.0->settings-schema.json->enable-window-effects->tooltip
+msgid ""
+"Apply effects to application window backgrounds by adding an effect actor "
+"below all existing graphical elements of affected windows. This means the "
+"effects will NOT be visible unless the application is setup to be "
+"transparent or the \"Opacity\" setting for the window is less than 100%. The "
+"application inclusion list on the \"Windows\" tab is used to determine which "
+"(if any) applications will have effects applied to its windows."
+msgstr ""
+
+#. 6.0->settings-schema.json->focused-window-backlight->description
+msgid "Focused window backlight effect"
+msgstr ""
+
+#. 6.0->settings-schema.json->focused-window-backlight->tooltip
+msgid ""
+"Apply a background image based backlight effect to the currently focused "
+"window. The effect spills over the focused windows borders making the window "
+"appear to glow around the edges. If the focused window is transparent, this "
+"effect will also show a blurred background image behind the window."
+msgstr ""
 
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
@@ -365,6 +415,13 @@ msgstr ""
 "Waarschuwing: effecten voor Panelen zijn momenteel uitgeschakeld op het "
 "tabblad Algemeen."
 
+#. 6.0->settings-schema.json->windows-info->description
+#, fuzzy
+msgid "Warning: Window effects are currently disabled under the General tab."
+msgstr ""
+"Waarschuwing: effecten voor Expo zijn momenteel uitgeschakeld op het tabblad "
+"Algemeen."
+
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
 msgstr "Sommige thema-instellingen voor panelen overschrijven (aanbevolen)"
@@ -388,12 +445,13 @@ msgstr ""
 "Sommige thema-instellingen voor pop-upmenu's overschrijven (aanbevolen)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
+#, fuzzy
 msgid ""
-"Allow this extension to modify the popup Menu transparency, background color "
-"and rounded corner settings. If this is disabled the extension will only "
-"apply a blur overlay under the popup menus. This setting should only be "
-"disabled when the theme already uses transparent popup menus and you want "
-"the themes setting to apply."
+"Allow this extension to modify the popup Menu transparency and background "
+"color settings. If this is disabled the extension will only apply a blur "
+"overlay under the popup menus. This setting should only be disabled when the "
+"theme already uses transparent popup menus and you want the themes setting "
+"to apply."
 msgstr ""
 "Sta deze extensie toe om de instellingen in verband met transparantie, "
 "achtergrondkleur en afgeronde hoeken van pop-upmenu’s aan te passen. Als dit "
@@ -450,6 +508,7 @@ msgid "Panel specific settings"
 msgstr "Paneelspecifieke instellingen"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
@@ -466,18 +525,22 @@ msgid "Dimming"
 msgstr "Verduistering"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Color"
 msgstr "Kleur"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Blur"
 msgstr "Vervaging"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Intensity"
 msgstr "Intensiteit"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Saturation"
 msgstr "Verzadiging"
 
@@ -511,14 +574,8 @@ msgid ""
 msgstr ""
 
 #. 6.0->settings-schema.json->opacity->description
-#. 6.0->settings-schema.json->overview-opacity->description
-#. 6.0->settings-schema.json->expo-opacity->description
-#. 6.0->settings-schema.json->panels-opacity->description
-#. 6.0->settings-schema.json->popup-opacity->description
-#. 6.0->settings-schema.json->notification-opacity->description
-#. 6.0->settings-schema.json->appswitcher-opacity->description
-#. 6.0->settings-schema.json->tooltips-opacity->description
-msgid "Dim/Colorize Background (percentage)"
+#, fuzzy
+msgid "Dim/Colorize Background (%)"
 msgstr "Verduistering/Inkleuring van de achtergrond (percentage)"
 
 #. 6.0->settings-schema.json->blendColor->description
@@ -656,6 +713,16 @@ msgstr "Achtergrondkleurverzadiging"
 msgid "Adjusts the color saturation of the background image."
 msgstr "Past de kleurverzadiging van de achtergrondafbeelding aan."
 
+#. 6.0->settings-schema.json->overview-opacity->description
+#. 6.0->settings-schema.json->expo-opacity->description
+#. 6.0->settings-schema.json->panels-opacity->description
+#. 6.0->settings-schema.json->popup-opacity->description
+#. 6.0->settings-schema.json->notification-opacity->description
+#. 6.0->settings-schema.json->appswitcher-opacity->description
+#. 6.0->settings-schema.json->tooltips-opacity->description
+msgid "Dim/Colorize Background (percentage)"
+msgstr "Verduistering/Inkleuring van de achtergrond (percentage)"
+
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description
 #. 6.0->settings-schema.json->desktop-radius->description
@@ -672,6 +739,18 @@ msgstr ""
 "Past de intensiteit van het Gaussiaanse vervagingseffect aan door de straal "
 "te wijzigen die wordt gebruikt door het effect. Deze instelling heeft geen "
 "invloed op het eenvoudige vervagingstype."
+
+#. 6.0->settings-schema.json->popup-applet-menu-effects->description
+msgid "Apply effects to applet popup menus"
+msgstr ""
+
+#. 6.0->settings-schema.json->popup-panel-menu-effects->description
+msgid "Apply effects to panel context menus"
+msgstr ""
+
+#. 6.0->settings-schema.json->popup-title-menu-effects->description
+msgid "Apply effects to window title bar context menus"
+msgstr ""
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
 msgid "Additional popup menu accent elements dimming (percentage)"
@@ -719,8 +798,9 @@ msgstr ""
 "bureaublad in focus is"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
-msgid "Dim background Image (percentage)"
-msgstr "Achtergrondafbeelding dimmen (percentage)"
+#, fuzzy
+msgid "Dim/Colorize background Image (percentage)"
+msgstr "Verduistering/Inkleuring van de achtergrond (percentage)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -730,4 +810,68 @@ msgstr ""
 msgid ""
 "This button will cause a notification message to appear so you can see how "
 "your notification setting behave."
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->description
+msgid "Application window inclusion list"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Application"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Opacity"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Custom"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#, fuzzy
+msgid "Dim"
+msgstr "Verduistering"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Corner Radius"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Top"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Bottom"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where background effect will be "
+"applied and what effects will apply. When \"Custom\" is enabled the setting "
+"defined by this table will apply, otherwise the setting on the general tab "
+"will apply for the specific application. The \"Application\" field can be a "
+"WM_CLASS or a desktop file name."
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-add-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-add-button->tooltip
+msgid ""
+"Focus a window you want to enable window effects on then return here and "
+"press this button."
+msgstr ""
+
+#. 6.0->settings-schema.json->compiz-mitigation->description
+msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
+msgstr ""
+
+#. 6.0->settings-schema.json->compiz-mitigation->tooltip
+msgid ""
+"When enabled, the window moving effect created by the \"Compiz windows "
+"effect\" extension will be disabled for windows with Blur Cinnamon effects "
+"applied. This option will have no effect unless the \"Compiz window effect\" "
+"extension is installed and active."
 msgstr ""
