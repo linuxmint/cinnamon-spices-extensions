@@ -124,21 +124,35 @@ function toggleAutoHide() {
 }
 
 function enableAutoHide() {
-    focusSignal = global.display.connect('notify::focus-window', function() {
-        let focusWindow = global.display.focus_window;
-        if (focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL) {
-            hoverShown = false;
-            hidePanel();
-        } else {
-            if (settings.getValue("show-on-no-focus")) {
-                hoverShown = false;
-                showPanel();
-            } else {
-                hoverShown = false;
-                hidePanel();
-            }
-        }
-    });
+	focusSignal = global.display.connect('notify::focus-window', function() {
+		let [x, y, mods] = global.get_pointer();
+		let screenHeight = global.screen_height;
+		let screenWidth = global.screen_width;
+		let heightOffset = settings.getValue("height-offset");
+		let panelHeight = Main.panel.actor.height;
+		let panelTop = originalY + heightOffset;
+		let panelBottom = panelTop + panelHeight;
+		let panelLeft = (screenWidth - lastWidth) / 2;
+		let panelRight = panelLeft + lastWidth;
+		
+		if (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight) {
+			return;
+		}
+		
+		let focusWindow = global.display.focus_window;
+		if (focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL) {
+			hoverShown = false;
+			hidePanel();
+		} else {
+			if (settings.getValue("show-on-no-focus")) {
+				hoverShown = false;
+				showPanel();
+			} else {
+				hoverShown = false;
+				hidePanel();
+			}
+		}
+	});
     
     pointerWatcher = Mainloop.timeout_add(100, function() {
         let [x, y, mods] = global.get_pointer();
