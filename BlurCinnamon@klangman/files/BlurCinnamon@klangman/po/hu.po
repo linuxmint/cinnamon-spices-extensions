@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-30 09:50-0400\n"
+"POT-Creation-Date: 2025-11-30 22:15-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,19 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#. 6.0/extension.js:1752
+#. 6.0/extension.js:1807
+msgid "Error"
+msgstr ""
+
+#. 6.0/extension.js:1808
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Blur Cinnamon effects can not be applied to that "
+"window"
+msgstr ""
+
+#. 6.0/extension.js:2284
 msgid "Welcome to Blur Cinnamon"
 msgstr "Üdvözöljük a Cinnamon Elhomályosításában"
 
-#. 6.0/extension.js:1753
+#. 6.0/extension.js:2285
+#, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
 "\n"
 "Open the Blur Cinnamon Settings to enable additional effects on several "
-"other Cinnamon components like menus and notifications, or disable effects "
-"on components that were enabled by default. You can also make changes to the "
-"effect properties like blur intensity, color saturation and dimming."
+"other desktop elements like menus, notifications and windows, or disable "
+"effects on components that were enabled by default. You can also make "
+"changes to the effect properties like blur intensity, color saturation and "
+"dimming."
 msgstr ""
 "Reméljük, élvezed az új Panel, Expo, Áttekintés és Alt-Tab Coverflow/"
 "Timeline effekteket.\n"
@@ -41,15 +54,15 @@ msgstr ""
 "Módosíthatod az effekt tulajdonságait is, például az elmosás intenzitását, a "
 "színtelítettséget és a fényerőt."
 
-#. 6.0/extension.js:1757
+#. 6.0/extension.js:2289
 msgid "Open Blur Cinnamon Settings"
 msgstr "Nyissa meg a Cinnamon Elhomályosítása beállításait"
 
-#. 6.0/extension.js:1823
+#. 6.0/extension.js:2366
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Cinnamon Elhomályosítása értesítési effektek tesztelése"
 
-#. 6.0/extension.js:1824
+#. 6.0/extension.js:2367
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -113,8 +126,13 @@ msgstr "Alt-Tab"
 msgid "Tooltips"
 msgstr "Eszköztippek"
 
+#. 6.0->settings-schema.json->windows-page->title
+msgid "Windows"
+msgstr ""
+
 #. 6.0->settings-schema.json->general-settings->title
-msgid "Cinnamon components where effects will be applied"
+#, fuzzy
+msgid "Desktop elements where effects will be applied"
 msgstr "Cinnamon összetevők, ahol a hatások érvényesülnek"
 
 #. 6.0->settings-schema.json->generic-effect-settings->title
@@ -138,13 +156,18 @@ msgid "Expo effect settings"
 msgstr "Expo effekt beállításai"
 
 #. 6.0->settings-schema.json->panels-override->title
-#. 6.0->settings-schema.json->popup-override->title
-msgid "Panels settings"
+#, fuzzy
+msgid "Panel settings"
 msgstr "Panel beállítások"
 
 #. 6.0->settings-schema.json->panels-effect-settings->title
 msgid "Panel effects settings"
 msgstr "Panel effekt beállítások"
+
+#. 6.0->settings-schema.json->popup-override->title
+#, fuzzy
+msgid "Popup menu settings"
+msgstr "Felugró menü effekt beállítások"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
 msgid "Popup menu effects settings"
@@ -181,6 +204,11 @@ msgstr "Panel eszköztippek háttérbeállításai"
 #. 6.0->settings-schema.json->tooltips-effect-settings->title
 msgid "Panel tooltips background effects settings"
 msgstr "Panel eszköztippek háttéreffektus-beállításai"
+
+#. 6.0->settings-schema.json->windows-effect-settings->title
+#, fuzzy
+msgid "Application window background effects settings"
+msgstr "Értesítési felugró ablak háttéreffektusok beállításai"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -221,15 +249,14 @@ msgid "Popup Menus  (Please read tooltip)"
 msgstr "Előugró menük  (Kérjük, olvassa el az eszközleírást)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
+#, fuzzy
 msgid ""
-"Apply effects to panel applet popup menus. This option is intended for the "
-"Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
-"themes. Light themes are unlikely to give good results but might be made to "
-"work with some creative use of the dimming color settings and an appropriate "
+"Apply effects to panel popup menus. This option is intended for the Cinnamon "
+"(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
+"Light themes are unlikely to give good results but might be made to work "
+"with some creative use of the dimming color settings and an appropriate "
 "background image. It overrides some theme settings to achieve a "
-"(semi-)transparent menu so that the blurred background is visible. It also "
-"removes rounded corners so that the blurred background will not spill over "
-"the rounded edges."
+"(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
 "Alkalmazzon effektusokat a panel kisalkalmazások előugró menüire. Ez az "
 "opció a Cinnamon (6.4) és a Mint-Y sötét asztali témákhoz készült, de jól "
@@ -258,13 +285,12 @@ msgid "Notification popups (Please read tooltip)"
 msgstr "Értesítési felugró ablakok (Kérjük, olvassa el az elemleírást)"
 
 #. 6.0->settings-schema.json->enable-notification-effects->tooltip
+#, fuzzy
 msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
 "other themes. It overrides some theme settings to achieve a "
-"(semi-)transparent window so that the blurred background is visible. It also "
-"removes rounded corners so that the blurred background will not spill over "
-"the rounded edges."
+"(semi-)transparent window so that the blurred background is visible."
 msgstr ""
 "Effektek alkalmazása az értesítési felugró ablakokra. Ezt az opciót a "
 "Cinnamon (6.4) és a Mint-Y sötét asztali témákkal tesztelték, de más "
@@ -290,16 +316,43 @@ msgid "Panel tooltips (Please read tooltip)"
 msgstr "Panel eszközleírások (Kérjük, olvassa el az eszközleírást)"
 
 #. 6.0->settings-schema.json->enable-tooltips-effects->tooltip
+#, fuzzy
 msgid ""
 "Apply effects to the panel tooltip backgrounds. It overrides some theme "
 "settings to achieve a (semi-)transparent tooltip so that the blurred "
-"background is visible. It also removes rounded corners so that the blurred "
-"background will not spill over the rounded edges."
+"background is visible."
 msgstr ""
 "Effektusok alkalmazása a panel eszköztippjeinek hátterére. Felülír néhány "
 "témabeállítást, hogy (félig) átlátszó eszköztippet eredményezzen, így az "
 "elmosódott háttér látható. Eltávolítja a lekerekített sarkokat is, így az "
 "elmosódott háttér nem folyik át a lekerekített széleken."
+
+#. 6.0->settings-schema.json->enable-window-effects->description
+#, fuzzy
+msgid "Application windows (Please read tooltip)"
+msgstr "Értesítési felugró ablakok (Kérjük, olvassa el az elemleírást)"
+
+#. 6.0->settings-schema.json->enable-window-effects->tooltip
+msgid ""
+"Apply effects to application window backgrounds by adding an effect actor "
+"below all existing graphical elements of affected windows. This means the "
+"effects will NOT be visible unless the application is setup to be "
+"transparent or the \"Opacity\" setting for the window is less than 100%. The "
+"application inclusion list on the \"Windows\" tab is used to determine which "
+"(if any) applications will have effects applied to its windows."
+msgstr ""
+
+#. 6.0->settings-schema.json->focused-window-backlight->description
+msgid "Focused window backlight effect"
+msgstr ""
+
+#. 6.0->settings-schema.json->focused-window-backlight->tooltip
+msgid ""
+"Apply a background image based backlight effect to the currently focused "
+"window. The effect spills over the focused windows borders making the window "
+"appear to glow around the edges. If the focused window is transparent, this "
+"effect will also show a blurred background image behind the window."
+msgstr ""
 
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
@@ -355,6 +408,13 @@ msgstr ""
 "Figyelmeztetés: A panel eszköztipp-effektusai jelenleg le vannak tiltva az "
 "Általános lapon."
 
+#. 6.0->settings-schema.json->windows-info->description
+#, fuzzy
+msgid "Warning: Window effects are currently disabled under the General tab."
+msgstr ""
+"Figyelmeztetés: Az Expo-effektusok jelenleg le vannak tiltva az Általános "
+"lapon."
+
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
 msgstr "Néhány paneltéma beállítás felülírása (ajánlott)"
@@ -377,12 +437,13 @@ msgid "Override some of the popup menu theme settings (recommended)"
 msgstr "Az előugró menü témájának néhány beállításának felülírása (ajánlott)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
+#, fuzzy
 msgid ""
-"Allow this extension to modify the popup Menu transparency, background color "
-"and rounded corner settings. If this is disabled the extension will only "
-"apply a blur overlay under the popup menus. This setting should only be "
-"disabled when the theme already uses transparent popup menus and you want "
-"the themes setting to apply."
+"Allow this extension to modify the popup Menu transparency and background "
+"color settings. If this is disabled the extension will only apply a blur "
+"overlay under the popup menus. This setting should only be disabled when the "
+"theme already uses transparent popup menus and you want the themes setting "
+"to apply."
 msgstr ""
 "Engedélyezze ennek a bővítménynek a felugró menü átlátszóságának, "
 "háttérszínének és lekerekített sarkainak beállításainak módosítását. Ha ez "
@@ -436,6 +497,7 @@ msgid "Panel specific settings"
 msgstr "Panelspecifikus beállítások"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Enabled"
 msgstr "Engedélyezve"
 
@@ -452,18 +514,22 @@ msgid "Dimming"
 msgstr "Sötétítés"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Color"
 msgstr "Szín"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Blur"
 msgstr "Elmosás"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Intensity"
 msgstr "Intenzitás"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Saturation"
 msgstr "Telítettség"
 
@@ -502,14 +568,8 @@ msgstr ""
 "átlátszó panelt használ, akkor ennek a beállításnak lehet, hogy nincs hatása."
 
 #. 6.0->settings-schema.json->opacity->description
-#. 6.0->settings-schema.json->overview-opacity->description
-#. 6.0->settings-schema.json->expo-opacity->description
-#. 6.0->settings-schema.json->panels-opacity->description
-#. 6.0->settings-schema.json->popup-opacity->description
-#. 6.0->settings-schema.json->notification-opacity->description
-#. 6.0->settings-schema.json->appswitcher-opacity->description
-#. 6.0->settings-schema.json->tooltips-opacity->description
-msgid "Dim/Colorize Background (percentage)"
+#, fuzzy
+msgid "Dim/Colorize Background (%)"
 msgstr "Háttér elhomályosítása/színezése (százalék)"
 
 #. 6.0->settings-schema.json->blendColor->description
@@ -648,6 +708,16 @@ msgstr "Háttér színtelítettsége"
 msgid "Adjusts the color saturation of the background image."
 msgstr "Beállítja a háttérkép színtelítettségét."
 
+#. 6.0->settings-schema.json->overview-opacity->description
+#. 6.0->settings-schema.json->expo-opacity->description
+#. 6.0->settings-schema.json->panels-opacity->description
+#. 6.0->settings-schema.json->popup-opacity->description
+#. 6.0->settings-schema.json->notification-opacity->description
+#. 6.0->settings-schema.json->appswitcher-opacity->description
+#. 6.0->settings-schema.json->tooltips-opacity->description
+msgid "Dim/Colorize Background (percentage)"
+msgstr "Háttér elhomályosítása/színezése (százalék)"
+
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description
 #. 6.0->settings-schema.json->desktop-radius->description
@@ -664,6 +734,18 @@ msgstr ""
 "Beállítja a Gauss-elmosódás intenzitását az effektus sugárhasználatának "
 "megváltoztatásával. Ez a beállítás nincs hatással az Egyszerű elmosódás "
 "típusára"
+
+#. 6.0->settings-schema.json->popup-applet-menu-effects->description
+msgid "Apply effects to applet popup menus"
+msgstr ""
+
+#. 6.0->settings-schema.json->popup-panel-menu-effects->description
+msgid "Apply effects to panel context menus"
+msgstr ""
+
+#. 6.0->settings-schema.json->popup-title-menu-effects->description
+msgid "Apply effects to window title bar context menus"
+msgstr ""
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
 msgid "Additional popup menu accent elements dimming (percentage)"
@@ -711,8 +793,9 @@ msgstr ""
 "az asztal háttérképére vonatkoznak, amikor az asztal fókuszban van."
 
 #. 6.0->settings-schema.json->desktop-opacity->description
-msgid "Dim background Image (percentage)"
-msgstr "Halvány háttérkép (százalék)"
+#, fuzzy
+msgid "Dim/Colorize background Image (percentage)"
+msgstr "Háttér elhomályosítása/színezése (százalék)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -725,3 +808,67 @@ msgid ""
 msgstr ""
 "Ez a gomb egy értesítési üzenet megjelenítését váltja ki, így láthatod, "
 "hogyan működnek az értesítési beállításaid."
+
+#. 6.0->settings-schema.json->windows-inclusion-list->description
+msgid "Application window inclusion list"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Application"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Opacity"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Custom"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#, fuzzy
+msgid "Dim"
+msgstr "Sötétítés"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Corner Radius"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Top"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Bottom"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where background effect will be "
+"applied and what effects will apply. When \"Custom\" is enabled the setting "
+"defined by this table will apply, otherwise the setting on the general tab "
+"will apply for the specific application. The \"Application\" field can be a "
+"WM_CLASS or a desktop file name."
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-add-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-add-button->tooltip
+msgid ""
+"Focus a window you want to enable window effects on then return here and "
+"press this button."
+msgstr ""
+
+#. 6.0->settings-schema.json->compiz-mitigation->description
+msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
+msgstr ""
+
+#. 6.0->settings-schema.json->compiz-mitigation->tooltip
+msgid ""
+"When enabled, the window moving effect created by the \"Compiz windows "
+"effect\" extension will be disabled for windows with Blur Cinnamon effects "
+"applied. This option will have no effect unless the \"Compiz window effect\" "
+"extension is installed and active."
+msgstr ""
