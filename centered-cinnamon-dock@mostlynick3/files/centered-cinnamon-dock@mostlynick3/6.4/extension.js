@@ -14,7 +14,6 @@ let trackedMenus = [];
 let focusSignal;
 let pointerWatcher;
 let isHidden = false;
-let hoverShown = false;
 
 function init(metadata) {
 }
@@ -124,35 +123,32 @@ function toggleAutoHide() {
 }
 
 function enableAutoHide() {
-	focusSignal = global.display.connect('notify::focus-window', function() {
-		let [x, y, mods] = global.get_pointer();
-		let screenHeight = global.screen_height;
-		let screenWidth = global.screen_width;
-		let heightOffset = settings.getValue("height-offset");
-		let panelHeight = Main.panel.actor.height;
-		let panelTop = originalY + heightOffset;
-		let panelBottom = panelTop + panelHeight;
-		let panelLeft = (screenWidth - lastWidth) / 2;
-		let panelRight = panelLeft + lastWidth;
-		
-		if (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight) {
-			return;
-		}
-		
-		let focusWindow = global.display.focus_window;
-		if (focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL) {
-			hoverShown = false;
-			hidePanel();
-		} else {
-			if (settings.getValue("show-on-no-focus")) {
-				hoverShown = false;
-				showPanel();
-			} else {
-				hoverShown = false;
-				hidePanel();
-			}
-		}
-	});
+    focusSignal = global.display.connect('notify::focus-window', function() {
+        let [x, y, mods] = global.get_pointer();
+        let screenHeight = global.screen_height;
+        let screenWidth = global.screen_width;
+        let heightOffset = settings.getValue("height-offset");
+        let panelHeight = Main.panel.actor.height;
+        let panelTop = originalY + heightOffset;
+        let panelBottom = panelTop + panelHeight;
+        let panelLeft = (screenWidth - lastWidth) / 2;
+        let panelRight = panelLeft + lastWidth;
+        
+        if (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight) {
+            return;
+        }
+        
+        let focusWindow = global.display.focus_window;
+        if (focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL) {
+            hidePanel();
+        } else {
+            if (settings.getValue("show-on-no-focus")) {
+                showPanel();
+            } else {
+                hidePanel();
+            }
+        }
+    });
     
     pointerWatcher = Mainloop.timeout_add(100, function() {
         let [x, y, mods] = global.get_pointer();
@@ -168,27 +164,20 @@ function enableAutoHide() {
         let panelRight = panelLeft + lastWidth;
         
         let menusActive = hasActiveMenus();
+        let mouseOverDock = (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight) ||
+                            (y >= screenHeight - hoverPixels && x >= panelLeft && x <= panelRight);
         
-        let focusWindow = global.display.focus_window;
-        let hasNormalFocus = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
-        
-        if (menusActive) {
+        if (menusActive || mouseOverDock) {
             if (isHidden) {
-                hoverShown = true;
                 showPanel();
             }
-        } else if (y >= screenHeight - hoverPixels && x >= panelLeft && x <= panelRight) {
-            if (isHidden) {
-                hoverShown = true;
-                showPanel();
-            }
-        } 
-        else if (y >= panelTop && y <= panelBottom) {
-        }
-        else {
-            if (hoverShown && !isHidden) {
-                if (hasNormalFocus || !settings.getValue("show-on-no-focus")) {
-                    hoverShown = false;
+        } else {
+            let focusWindow = global.display.focus_window;
+            let onDesktop = !focusWindow || focusWindow.window_type !== Meta.WindowType.NORMAL;
+            let showOnNoFocus = settings.getValue("show-on-no-focus");
+            
+            if (!onDesktop || (onDesktop && !showOnNoFocus)) {
+                if (!isHidden) {
                     hidePanel();
                 }
             }
@@ -207,6 +196,7 @@ function hidePanel() {
         let panel = Main.panel.actor;
         let animTime = settings.getValue("animation-time") / 1000.0;
         
+        Tweener.removeTweens(panel);
         Tweener.addTween(panel, {
             opacity: 0,
             time: animTime,
@@ -250,7 +240,6 @@ function disableAutoHide() {
         Mainloop.source_remove(pointerWatcher);
         pointerWatcher = null;
     }
-    hoverShown = false;
     
     let panel = Main.panel.actor;
     Tweener.removeTweens(panel);
@@ -297,9 +286,6 @@ function checkAndApplyStyle() {
     if (newWidth !== lastWidth) {
         lastWidth = newWidth;
         applyStyle();
-        if (!isHidden) {
-            Main.panel.actor.opacity = 255;
-        }
     }
 }
 
