@@ -164,10 +164,10 @@ function enableAutoHide() {
         let panelRight = panelLeft + lastWidth;
         
         let menusActive = hasActiveMenus();
-        let mouseOverDock = (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight) ||
-                            (y >= screenHeight - hoverPixels && x >= panelLeft && x <= panelRight);
+        let mouseOverVisibleDock = !isHidden && (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight);
+        let mouseOverTriggerZone = y >= screenHeight - hoverPixels && x >= panelLeft && x <= panelRight;
         
-        if (menusActive || mouseOverDock) {
+        if (menusActive || mouseOverVisibleDock || mouseOverTriggerZone) {
             if (isHidden) {
                 showPanel();
             }
