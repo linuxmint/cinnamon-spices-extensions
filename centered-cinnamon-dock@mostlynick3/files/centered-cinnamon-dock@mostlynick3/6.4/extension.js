@@ -82,8 +82,12 @@ function enable() {
         }
     });
     
-    startSizeMonitoring();
-    toggleAutoHide();
+    Mainloop.timeout_add(500, function() {
+        checkAndApplyStyle();
+        startSizeMonitoring();
+        toggleAutoHide();
+        return false;
+    });
 }
 
 function hasActiveMenus() {
@@ -303,11 +307,21 @@ function startSizeMonitoring() {
 
 function checkAndApplyStyle() {
     let contentWidth = 0;
-    contentWidth += Main.panel._leftBox.get_children().reduce((sum, child) => sum + child.width, 0);
-    contentWidth += Main.panel._centerBox.get_children().reduce((sum, child) => sum + child.width, 0);
-    contentWidth += Main.panel._rightBox.get_children().reduce((sum, child) => sum + child.width, 0);
     
-    let newWidth = contentWidth + 10;
+    Main.panel._leftBox.get_children().forEach(child => {
+        let [minWidth, naturalWidth] = child.get_preferred_width(-1);
+        contentWidth += naturalWidth;
+    });
+    Main.panel._centerBox.get_children().forEach(child => {
+        let [minWidth, naturalWidth] = child.get_preferred_width(-1);
+        contentWidth += naturalWidth;
+    });
+    Main.panel._rightBox.get_children().forEach(child => {
+        let [minWidth, naturalWidth] = child.get_preferred_width(-1);
+        contentWidth += naturalWidth;
+    });
+    
+    let newWidth = Math.max(contentWidth + 10, 200);
     
     if (newWidth !== lastWidth) {
         lastWidth = newWidth;
