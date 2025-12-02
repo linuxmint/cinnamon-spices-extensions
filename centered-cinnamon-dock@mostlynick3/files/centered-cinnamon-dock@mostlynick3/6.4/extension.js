@@ -11,9 +11,9 @@ let sizeCheckTimeout;
 let lastWidth = 0;
 let menuSignals = [];
 let trackedMenus = [];
-let focusSignal;
 let pointerWatcher;
 let isHidden = false;
+let workspaceSignal;
 
 function init(metadata) {
 }
@@ -73,11 +73,24 @@ function enable() {
         }
     }));
     
+    workspaceSignal = global.screen.connect('workspace-switched', function() {
+        if (!isHidden) {
+            Mainloop.timeout_add(200, function() {
+                checkAndApplyStyle();
+                return false;
+            });
+        }
+    });
+    
     startSizeMonitoring();
     toggleAutoHide();
 }
 
 function hasActiveMenus() {
+    if (global.menuStack && global.menuStack.length > 0) {
+        return true;
+    }
+    
     if (trackedMenus.length > 0) {
         for (let i = 0; i < trackedMenus.length; i++) {
             let menu = trackedMenus[i];
@@ -114,6 +127,38 @@ function hasActiveMenus() {
     return false;
 }
 
+function isMouseOverDockOrMenus() {
+    let [x, y, mods] = global.get_pointer();
+    let actor = global.stage.get_actor_at_pos(Clutter.PickMode.REACTIVE, x, y);
+    
+    if (!actor) {
+        return false;
+    }
+    
+    while (actor) {
+        if (actor === Main.panel.actor) {
+            return true;
+        }
+        
+        if (actor.has_style_class_name && 
+            (actor.has_style_class_name('popup-menu') || 
+             actor.has_style_class_name('menu') ||
+             actor.has_style_class_name('popup-menu-content') ||
+             actor.has_style_class_name('popup-menu-item'))) {
+            return true;
+        }
+        
+        if (actor._delegate && actor._delegate._applet && 
+            Main.panel.actor.contains(actor._delegate._applet.actor)) {
+            return true;
+        }
+        
+        actor = actor.get_parent();
+    }
+    
+    return false;
+}
+
 function toggleAutoHide() {
     if (settings.getValue("auto-hide")) {
         enableAutoHide();
@@ -122,65 +167,50 @@ function toggleAutoHide() {
     }
 }
 
+function getMonitorGeometry() {
+    let panelMonitor = Main.layoutManager.findMonitorForActor(Main.panel.actor);
+    if (panelMonitor) {
+        return {
+            x: panelMonitor.x,
+            y: panelMonitor.y,
+            width: panelMonitor.width,
+            height: panelMonitor.height
+        };
+    }
+    return {
+        x: 0,
+        y: 0,
+        width: global.screen_width,
+        height: global.screen_height
+    };
+}
+
 function enableAutoHide() {
-    focusSignal = global.display.connect('notify::focus-window', function() {
+	pointerWatcher = Mainloop.timeout_add(100, function() {
         let [x, y, mods] = global.get_pointer();
-        let screenHeight = global.screen_height;
-        let screenWidth = global.screen_width;
-        let heightOffset = settings.getValue("height-offset");
-        let panelHeight = Main.panel.actor.height;
-        let panelTop = originalY + heightOffset;
-        let panelBottom = panelTop + panelHeight;
-        let panelLeft = (screenWidth - lastWidth) / 2;
-        let panelRight = panelLeft + lastWidth;
-        
-        if (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight) {
-            return;
-        }
-        
-        let focusWindow = global.display.focus_window;
-        if (focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL) {
-            hidePanel();
-        } else {
-            if (settings.getValue("show-on-no-focus")) {
-                showPanel();
-            } else {
-                hidePanel();
-            }
-        }
-    });
-    
-    pointerWatcher = Mainloop.timeout_add(100, function() {
-        let [x, y, mods] = global.get_pointer();
-        let screenHeight = global.screen_height;
-        let screenWidth = global.screen_width;
+        let monitor = getMonitorGeometry();
         let hoverPixels = settings.getValue("hover-pixels");
-        let heightOffset = settings.getValue("height-offset");
-        let panelHeight = Main.panel.actor.height;
-        let panelTop = originalY + heightOffset;
-        let panelBottom = panelTop + panelHeight;
         
-        let panelLeft = (screenWidth - lastWidth) / 2;
+        let panelLeft = monitor.x + (monitor.width - lastWidth) / 2;
         let panelRight = panelLeft + lastWidth;
         
         let menusActive = hasActiveMenus();
-        let mouseOverVisibleDock = !isHidden && (y >= panelTop && y <= panelBottom && x >= panelLeft && x <= panelRight);
-        let mouseOverTriggerZone = y >= screenHeight - hoverPixels && x >= panelLeft && x <= panelRight;
+        let mouseOverDockOrMenus = isMouseOverDockOrMenus();
+        let mouseOverTriggerZone = y >= monitor.y + monitor.height - hoverPixels && 
+                                    y <= monitor.y + monitor.height &&
+                                    x >= panelLeft && x <= panelRight;
         
-        if (menusActive || mouseOverVisibleDock || mouseOverTriggerZone) {
-            if (isHidden) {
-                showPanel();
-            }
-        } else {
-            let focusWindow = global.display.focus_window;
-            let onDesktop = !focusWindow || focusWindow.window_type !== Meta.WindowType.NORMAL;
-            let showOnNoFocus = settings.getValue("show-on-no-focus");
-            
-            if (!onDesktop || (onDesktop && !showOnNoFocus)) {
-                if (!isHidden) {
-                    hidePanel();
-                }
-            }
+        let focusWindow = global.display.focus_window;
+        let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
+        let showOnNoFocus = settings.getValue("show-on-no-focus");
+        let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
+        
+        let shouldShow = menusActive || mouseOverDockOrMenus || mouseOverTriggerZone || shouldShowOnNoFocus;
+        
+        if (shouldShow && isHidden) {
+            showPanel();
+        } else if (!shouldShow && !isHidden) {
+            hidePanel();
         }
         
         return true;
@@ -232,10 +262,6 @@ function showPanel() {
 }
 
 function disableAutoHide() {
-    if (focusSignal) {
-        global.display.disconnect(focusSignal);
-        focusSignal = null;
-    }
     if (pointerWatcher) {
         Mainloop.source_remove(pointerWatcher);
         pointerWatcher = null;
@@ -293,9 +319,11 @@ function applyStyle() {
     let panel = Main.panel.actor;
     let transparency = settings.getValue("transparency") / 100.0;
     let heightOffset = settings.getValue("height-offset");
-    let screenWidth = global.screen_width;
+    let monitor = getMonitorGeometry();
     
-    let margin = (screenWidth - lastWidth) / 2;
+    let margin = (monitor.width - lastWidth) / 2;
+    
+    let savedOpacity = panel.opacity;
     
     panel.set_style(
         'background-color: rgba(30, 30, 30, ' + transparency + ');' +
@@ -306,6 +334,7 @@ function applyStyle() {
         'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);'
     );
     
+    panel.opacity = savedOpacity;
     panel.y = originalY + heightOffset;
 }
 
@@ -315,6 +344,11 @@ function disable() {
     if (sizeCheckTimeout) {
         Mainloop.source_remove(sizeCheckTimeout);
         sizeCheckTimeout = null;
+    }
+    
+    if (workspaceSignal) {
+        global.screen.disconnect(workspaceSignal);
+        workspaceSignal = null;
     }
     
     menuSignals.forEach(signal => {
