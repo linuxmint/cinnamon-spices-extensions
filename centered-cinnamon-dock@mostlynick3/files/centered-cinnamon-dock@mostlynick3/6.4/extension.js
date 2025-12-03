@@ -6,31 +6,23 @@ const Clutter = imports.gi.Clutter;
 const Tweener = imports.ui.tweener;
 
 let settings;
-let originalY;
+let panelStates = {};
 let sizeCheckTimeout;
-let lastWidth = 0;
-let menuSignals = [];
-let trackedMenus = [];
 let pointerWatcher;
-let isHidden = false;
 let workspaceSignal;
+let actorAddedSignal;
 
 function init(metadata) {
 }
 
 function enable() {
     settings = new Settings.ExtensionSettings(this, "centered-cinnamon-dock@mostlynick3");
-    originalY = Main.panel.actor.y;
-    
-    if (settings.getValue("no-window-shift")) {
-        Main.layoutManager._chrome.modifyActorParams(Main.panel.actor, { affectsStruts: false });
-    }
     
     settings.bind("transparency", "transparency", function() {
-        applyStyle();
+        applyStyleToAll();
     });
     settings.bind("height-offset", "heightOffset", function() {
-        applyStyle();
+        applyStyleToAll();
         updateMenuPositions();
     });
     settings.bind("auto-hide", "autoHide", function() {
@@ -43,11 +35,15 @@ function enable() {
         }
     });
     settings.bind("no-window-shift", "noWindowShift", function() {
-        if (settings.getValue("no-window-shift")) {
-            Main.layoutManager._chrome.modifyActorParams(Main.panel.actor, { affectsStruts: false });
-        } else {
-            Main.layoutManager._chrome.modifyActorParams(Main.panel.actor, { affectsStruts: true });
-        }
+        Main.panelManager.panels.forEach(panel => {
+            if (shouldApplyToPanel(panel)) {
+                if (settings.getValue("no-window-shift")) {
+                    Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: false });
+                } else {
+                    Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: true });
+                }
+            }
+        });
     });
     settings.bind("animation-time", "animationTime", function() {
     });
@@ -57,64 +53,211 @@ function enable() {
             enableAutoHide();
         }
     });
-    
-    let panelActor = Main.panel.actor;
-    menuSignals.push(panelActor.connect('style-changed', function() {
-        Mainloop.timeout_add(10, function() {
-            applyStyle();
+    settings.bind("panel-mode", "panelMode", function() {
+        cleanupAllPanels();
+        Mainloop.timeout_add(50, function() {
+            initializePanels();
             return false;
         });
-    }));
+    });
     
-    menuSignals.push(global.stage.connect('actor-added', function(stage, actor) {
-        if (actor.has_style_class_name && actor.has_style_class_name('popup-menu')) {
-            trackedMenus.push(actor);
-            updateMenuPosition(actor);
+    initializePanels();
+}
+
+function cleanupAllPanels() {
+    disableAutoHide();
+    
+    if (sizeCheckTimeout) {
+        Mainloop.source_remove(sizeCheckTimeout);
+        sizeCheckTimeout = null;
+    }
+    
+    if (workspaceSignal) {
+        global.screen.disconnect(workspaceSignal);
+        workspaceSignal = null;
+    }
+    
+    if (actorAddedSignal) {
+        global.stage.disconnect(actorAddedSignal);
+        actorAddedSignal = null;
+    }
+    
+    Main.panelManager.panels.forEach(panel => {
+        let state = panelStates[panel.panelId];
+        
+        if (state) {
+            state.menuSignals.forEach(signal => {
+                if (signal.obj && signal.id) {
+                    try {
+                        signal.obj.disconnect(signal.id);
+                    } catch(e) {}
+                }
+            });
+            
+            Tweener.removeTweens(panel.actor);
+            panel.actor.set_style('');
+            panel.actor.y = state.originalY;
+            panel.actor.opacity = 255;
+            panel.actor.show();
+            Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: true });
         }
-    }));
+    });
     
-    workspaceSignal = global.screen.connect('workspace-switched', function() {
-        if (!isHidden) {
-            Mainloop.timeout_add(200, function() {
-                checkAndApplyStyle();
-                return false;
+    panelStates = {};
+}
+
+function initializePanels() {
+    Main.panelManager.panels.forEach(panel => {
+        if (shouldApplyToPanel(panel)) {
+            initPanel(panel);
+        }
+    });
+    
+    actorAddedSignal = global.stage.connect('actor-added', function(stage, actor) {
+        if (actor.has_style_class_name && actor.has_style_class_name('popup-menu')) {
+            Main.panelManager.panels.forEach(panel => {
+                if (shouldApplyToPanel(panel)) {
+                    let state = panelStates[panel.panelId];
+                    if (state) {
+                        state.trackedMenus.push(actor);
+                        updateMenuPosition(panel, actor);
+                    }
+                }
             });
         }
     });
     
-    Mainloop.timeout_add(500, function() {
-        checkAndApplyStyle();
+    workspaceSignal = global.screen.connect('workspace-switched', function() {
+        Main.panelManager.panels.forEach(panel => {
+            if (shouldApplyToPanel(panel)) {
+                let state = panelStates[panel.panelId];
+                if (state && !state.isHidden) {
+                    Mainloop.timeout_add(200, function() {
+                        checkAndApplyStyle(panel);
+                        return false;
+                    });
+                }
+            }
+        });
+    });
+    
+    Mainloop.timeout_add(100, function() {
+        Main.panelManager.panels.forEach(panel => {
+            if (shouldApplyToPanel(panel)) {
+                checkAndApplyStyle(panel);
+            }
+        });
         startSizeMonitoring();
         toggleAutoHide();
         return false;
     });
 }
 
-function hasActiveMenus() {
-    if (global.menuStack && global.menuStack.length > 0) {
-        return true;
+function getPanelLocation(panel) {
+    let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
+    if (!monitor) return "unknown";
+    
+    let panelY = panel.actor.y;
+    let panelX = panel.actor.x;
+    let panelWidth = panel.actor.width;
+    let panelHeight = panel.actor.height;
+    
+    if (panelY <= monitor.y + 10) {
+        return "top";
+    } else if (panelY + panelHeight >= monitor.y + monitor.height - 10) {
+        return "bottom";
+    } else if (panelX <= monitor.x + 10) {
+        return "left";
+    } else if (panelX + panelWidth >= monitor.x + monitor.width - 10) {
+        return "right";
     }
     
-    if (trackedMenus.length > 0) {
-        for (let i = 0; i < trackedMenus.length; i++) {
-            let menu = trackedMenus[i];
-            if (menu && !menu.is_finalized() && menu.visible) {
+    return "unknown";
+}
+
+function shouldApplyToPanel(panel) {
+    let mode = settings.getValue("panel-mode");
+    let location = getPanelLocation(panel);
+    
+    if (mode === "main") {
+        return panel === Main.panel;
+    } else if (mode === "bottom") {
+        return location === "bottom";
+    } else if (mode === "top") {
+        return location === "top";
+    } else if (mode === "both") {
+        return location === "bottom" || location === "top";
+    }
+    
+    return false;
+}
+
+function initPanel(panel) {
+    panelStates[panel.panelId] = {
+        originalY: panel.actor.y,
+        lastWidth: 0,
+        menuSignals: [],
+        trackedMenus: [],
+        isHidden: false,
+        location: getPanelLocation(panel)
+    };
+    
+    let state = panelStates[panel.panelId];
+    
+    if (settings.getValue("no-window-shift")) {
+        Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: false });
+    }
+    
+    let styleSignal = panel.actor.connect('style-changed', function() {
+        Mainloop.timeout_add(10, function() {
+            applyStyle(panel);
+            return false;
+        });
+    });
+    state.menuSignals.push({ obj: panel.actor, id: styleSignal });
+}
+
+function cleanupTrackedMenus(panel) {
+    let state = panelStates[panel.panelId];
+    if (!state) return;
+    
+    state.trackedMenus = state.trackedMenus.filter(menu => {
+        try {
+            return menu && !menu.is_finalized();
+        } catch(e) {
+            return false;
+        }
+    });
+}
+
+function hasActiveMenus(panel) {
+    let state = panelStates[panel.panelId];
+    if (!state) return false;
+    
+    cleanupTrackedMenus(panel);
+    
+    for (let i = 0; i < state.trackedMenus.length; i++) {
+        let menu = state.trackedMenus[i];
+        try {
+            if (menu.visible) {
                 return true;
             }
+        } catch(e) {
+            continue;
         }
     }
     
-    if (Main.panel._menus) {
-        for (let i = 0; i < Main.panel._menus._menus.length; i++) {
-            let menu = Main.panel._menus._menus[i];
+    if (panel._menus) {
+        for (let i = 0; i < panel._menus._menus.length; i++) {
+            let menu = panel._menus._menus[i];
             if (menu.menu && menu.menu.isOpen) {
                 return true;
             }
         }
     }
     
-    if (Main.panel._leftBox) {
-        let boxes = [Main.panel._leftBox, Main.panel._centerBox, Main.panel._rightBox];
+    if (panel._leftBox) {
+        let boxes = [panel._leftBox, panel._centerBox, panel._rightBox];
         for (let box of boxes) {
             let children = box.get_children();
             for (let child of children) {
@@ -131,7 +274,7 @@ function hasActiveMenus() {
     return false;
 }
 
-function isMouseOverDockOrMenus() {
+function isMouseOverDockOrMenus(panel) {
     let [x, y, mods] = global.get_pointer();
     let actor = global.stage.get_actor_at_pos(Clutter.PickMode.REACTIVE, x, y);
     
@@ -140,7 +283,12 @@ function isMouseOverDockOrMenus() {
     }
     
     while (actor) {
-        if (actor === Main.panel.actor) {
+        if (actor === panel.actor) {
+            return true;
+        }
+        
+        if (actor._delegate && actor._delegate._applet && 
+            panel.actor.contains(actor._delegate._applet.actor)) {
             return true;
         }
         
@@ -149,15 +297,50 @@ function isMouseOverDockOrMenus() {
              actor.has_style_class_name('menu') ||
              actor.has_style_class_name('popup-menu-content') ||
              actor.has_style_class_name('popup-menu-item'))) {
-            return true;
-        }
-        
-        if (actor._delegate && actor._delegate._applet && 
-            Main.panel.actor.contains(actor._delegate._applet.actor)) {
-            return true;
+            
+            let parent = actor;
+            while (parent) {
+                if (parent._delegate && parent._delegate.sourceActor) {
+                    let sourceActor = parent._delegate.sourceActor;
+                    while (sourceActor) {
+                        if (panel.actor.contains(sourceActor)) {
+                            return true;
+                        }
+                        sourceActor = sourceActor.get_parent();
+                    }
+                    return false;
+                }
+                parent = parent.get_parent();
+            }
+            return false;
         }
         
         actor = actor.get_parent();
+    }
+    
+    return false;
+}
+
+function isMouseInTriggerZone(panel, x, y) {
+    let state = panelStates[panel.panelId];
+    if (!state) return false;
+    
+    let monitor = getMonitorGeometry(panel);
+    let hoverPixels = settings.getValue("hover-pixels");
+    
+    let panelLeft = monitor.x + (monitor.width - state.lastWidth) / 2;
+    let panelRight = panelLeft + state.lastWidth;
+    
+    if (x < panelLeft || x > panelRight) {
+        return false;
+    }
+    
+    if (state.location === "bottom") {
+        return y >= monitor.y + monitor.height - hoverPixels && 
+               y <= monitor.y + monitor.height;
+    } else if (state.location === "top") {
+        return y >= monitor.y && 
+               y <= monitor.y + hoverPixels;
     }
     
     return false;
@@ -171,8 +354,8 @@ function toggleAutoHide() {
     }
 }
 
-function getMonitorGeometry() {
-    let panelMonitor = Main.layoutManager.findMonitorForActor(Main.panel.actor);
+function getMonitorGeometry(panel) {
+    let panelMonitor = Main.layoutManager.findMonitorForActor(panel.actor);
     if (panelMonitor) {
         return {
             x: panelMonitor.x,
@@ -190,79 +373,83 @@ function getMonitorGeometry() {
 }
 
 function enableAutoHide() {
-	pointerWatcher = Mainloop.timeout_add(100, function() {
+    if (pointerWatcher) {
+        return;
+    }
+    
+    pointerWatcher = Mainloop.timeout_add(100, function() {
         let [x, y, mods] = global.get_pointer();
-        let monitor = getMonitorGeometry();
-        let hoverPixels = settings.getValue("hover-pixels");
         
-        let panelLeft = monitor.x + (monitor.width - lastWidth) / 2;
-        let panelRight = panelLeft + lastWidth;
-        
-        let menusActive = hasActiveMenus();
-        let mouseOverDockOrMenus = isMouseOverDockOrMenus();
-        let mouseOverTriggerZone = y >= monitor.y + monitor.height - hoverPixels && 
-                                    y <= monitor.y + monitor.height &&
-                                    x >= panelLeft && x <= panelRight;
-        
-        let focusWindow = global.display.focus_window;
-        let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
-        let showOnNoFocus = settings.getValue("show-on-no-focus");
-        let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
-        
-        let shouldShow = menusActive || mouseOverDockOrMenus || mouseOverTriggerZone || shouldShowOnNoFocus;
-        
-        if (shouldShow && isHidden) {
-            showPanel();
-        } else if (!shouldShow && !isHidden) {
-            hidePanel();
-        }
+        Main.panelManager.panels.forEach(panel => {
+            if (!shouldApplyToPanel(panel)) return;
+            
+            let state = panelStates[panel.panelId];
+            if (!state) return;
+            
+            let menusActive = hasActiveMenus(panel);
+            let mouseOverDockOrMenus = isMouseOverDockOrMenus(panel);
+            let mouseOverTriggerZone = isMouseInTriggerZone(panel, x, y);
+            
+            let focusWindow = global.display.focus_window;
+            let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
+            let showOnNoFocus = settings.getValue("show-on-no-focus");
+            let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
+            
+            let shouldShow = menusActive || mouseOverDockOrMenus || mouseOverTriggerZone || shouldShowOnNoFocus;
+            
+            if (shouldShow && state.isHidden) {
+                showPanel(panel);
+            } else if (!shouldShow && !state.isHidden) {
+                hidePanel(panel);
+            }
+        });
         
         return true;
     });
 }
 
-function hidePanel() {
-    if (!isHidden) {
-        if (hasActiveMenus()) {
-            return;
-        }
-        
-        let panel = Main.panel.actor;
-        let animTime = settings.getValue("animation-time") / 1000.0;
-        
-        Tweener.removeTweens(panel);
-        Tweener.addTween(panel, {
-            opacity: 0,
-            time: animTime,
-            transition: 'easeOutQuad',
-            onComplete: function() {
-                panel.hide();
-                isHidden = true;
-            }
-        });
+function hidePanel(panel) {
+    let state = panelStates[panel.panelId];
+    if (!state || state.isHidden) return;
+    
+    if (hasActiveMenus(panel)) {
+        return;
     }
+    
+    let animTime = settings.getValue("animation-time") / 1000.0;
+    
+    Tweener.removeTweens(panel.actor);
+    Tweener.addTween(panel.actor, {
+        opacity: 0,
+        time: animTime,
+        transition: 'easeOutQuad',
+        onComplete: function() {
+            panel.actor.hide();
+            state.isHidden = true;
+        }
+    });
 }
 
-function showPanel() {
-    if (isHidden) {
-        let panel = Main.panel.actor;
-        let animTime = settings.getValue("animation-time") / 1000.0;
-        
-        Tweener.removeTweens(panel);
-        panel.show();
-        panel.opacity = 0;
-        isHidden = false;
-        
-        Mainloop.timeout_add(50, function() {
-            checkAndApplyStyle();
-            Tweener.addTween(panel, {
-                opacity: 255,
-                time: animTime,
-                transition: 'easeOutQuad'
-            });
-            return false;
+function showPanel(panel) {
+    let state = panelStates[panel.panelId];
+    if (!state || !state.isHidden) return;
+    
+    let animTime = settings.getValue("animation-time") / 1000.0;
+    
+    Tweener.removeTweens(panel.actor);
+    panel.actor.show();
+    panel.actor.opacity = 0;
+    state.isHidden = false;
+    
+    Mainloop.timeout_add(50, function() {
+        checkAndApplyStyle(panel);
+        Tweener.addTween(panel.actor, {
+            opacity: 255,
+            time: animTime,
+            transition: 'easeOutQuad'
         });
-    }
+        return false;
+    });
 }
 
 function disableAutoHide() {
@@ -271,26 +458,44 @@ function disableAutoHide() {
         pointerWatcher = null;
     }
     
-    let panel = Main.panel.actor;
-    Tweener.removeTweens(panel);
-    panel.opacity = 255;
-    panel.show();
-    isHidden = false;
-}
-
-function updateMenuPositions() {
-    trackedMenus.forEach(menu => {
-        if (menu && !menu.is_finalized()) {
-            updateMenuPosition(menu);
+    Main.panelManager.panels.forEach(panel => {
+        let state = panelStates[panel.panelId];
+        if (state) {
+            Tweener.removeTweens(panel.actor);
+            panel.actor.opacity = 255;
+            panel.actor.show();
+            state.isHidden = false;
         }
     });
 }
 
-function updateMenuPosition(menu) {
+function updateMenuPositions() {
+    Main.panelManager.panels.forEach(panel => {
+        if (shouldApplyToPanel(panel)) {
+            cleanupTrackedMenus(panel);
+            let state = panelStates[panel.panelId];
+            if (state) {
+                state.trackedMenus.forEach(menu => {
+                    updateMenuPosition(panel, menu);
+                });
+            }
+        }
+    });
+}
+
+function updateMenuPosition(panel, menu) {
+    let state = panelStates[panel.panelId];
+    if (!state) return;
+    
     let heightOffset = settings.getValue("height-offset");
+    let adjustedOffset = state.location === "top" ? -heightOffset : heightOffset;
+    
     Mainloop.timeout_add(1, function() {
-        if (menu && !menu.is_finalized()) {
-            menu.y = menu.y + heightOffset;
+        try {
+            if (menu && !menu.is_finalized()) {
+                menu.y = menu.y + adjustedOffset;
+            }
+        } catch(e) {
         }
         return false;
     });
@@ -298,48 +503,67 @@ function updateMenuPosition(menu) {
 
 function startSizeMonitoring() {
     sizeCheckTimeout = Mainloop.timeout_add(100, function() {
-        if (!isHidden) {
-            checkAndApplyStyle();
-        }
+        Main.panelManager.panels.forEach(panel => {
+            if (shouldApplyToPanel(panel)) {
+                let state = panelStates[panel.panelId];
+                if (state && !state.isHidden) {
+                    checkAndApplyStyle(panel);
+                }
+            }
+        });
         return true;
     });
 }
 
-function checkAndApplyStyle() {
+function checkAndApplyStyle(panel) {
+    let state = panelStates[panel.panelId];
+    if (!state) return;
+    
     let contentWidth = 0;
     
-    Main.panel._leftBox.get_children().forEach(child => {
+    panel._leftBox.get_children().forEach(child => {
         let [minWidth, naturalWidth] = child.get_preferred_width(-1);
         contentWidth += naturalWidth;
     });
-    Main.panel._centerBox.get_children().forEach(child => {
+    panel._centerBox.get_children().forEach(child => {
         let [minWidth, naturalWidth] = child.get_preferred_width(-1);
         contentWidth += naturalWidth;
     });
-    Main.panel._rightBox.get_children().forEach(child => {
+    panel._rightBox.get_children().forEach(child => {
         let [minWidth, naturalWidth] = child.get_preferred_width(-1);
         contentWidth += naturalWidth;
     });
     
     let newWidth = Math.max(contentWidth + 10, 200);
     
-    if (newWidth !== lastWidth) {
-        lastWidth = newWidth;
-        applyStyle();
+    if (newWidth !== state.lastWidth) {
+        state.lastWidth = newWidth;
+        applyStyle(panel);
     }
 }
 
-function applyStyle() {
-    let panel = Main.panel.actor;
+function applyStyleToAll() {
+    Main.panelManager.panels.forEach(panel => {
+        if (shouldApplyToPanel(panel)) {
+            applyStyle(panel);
+        }
+    });
+}
+
+function applyStyle(panel) {
+    let state = panelStates[panel.panelId];
+    if (!state) return;
+    
     let transparency = settings.getValue("transparency") / 100.0;
     let heightOffset = settings.getValue("height-offset");
-    let monitor = getMonitorGeometry();
+    let adjustedOffset = state.location === "top" ? -heightOffset : heightOffset;
+    let monitor = getMonitorGeometry(panel);
     
-    let margin = (monitor.width - lastWidth) / 2;
+    let margin = (monitor.width - state.lastWidth) / 2;
     
-    let savedOpacity = panel.opacity;
+    let savedOpacity = panel.actor.opacity;
     
-    panel.set_style(
+    panel.actor.set_style(
         'background-color: rgba(30, 30, 30, ' + transparency + ');' +
         'border-radius: 12px;' +
         'padding: 0px 20px;' +
@@ -348,40 +572,15 @@ function applyStyle() {
         'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);'
     );
     
-    panel.opacity = savedOpacity;
-    panel.y = originalY + heightOffset;
+    panel.actor.opacity = savedOpacity;
+    panel.actor.y = state.originalY + adjustedOffset;
 }
 
 function disable() {
-    disableAutoHide();
+    cleanupAllPanels();
     
-    if (sizeCheckTimeout) {
-        Mainloop.source_remove(sizeCheckTimeout);
-        sizeCheckTimeout = null;
+    if (settings) {
+        settings.finalize();
+        settings = null;
     }
-    
-    if (workspaceSignal) {
-        global.screen.disconnect(workspaceSignal);
-        workspaceSignal = null;
-    }
-    
-    menuSignals.forEach(signal => {
-        if (signal.obj) {
-            signal.obj.disconnect(signal.id);
-        } else {
-            Main.panel.actor.disconnect(signal);
-        }
-    });
-    menuSignals = [];
-    trackedMenus = [];
-    
-    if (settings) settings.finalize();
-    
-    let panel = Main.panel.actor;
-    Tweener.removeTweens(panel);
-    panel.set_style('');
-    panel.y = originalY;
-    panel.opacity = 255;
-    
-    Main.layoutManager._chrome.modifyActorParams(Main.panel.actor, { affectsStruts: true });
 }
