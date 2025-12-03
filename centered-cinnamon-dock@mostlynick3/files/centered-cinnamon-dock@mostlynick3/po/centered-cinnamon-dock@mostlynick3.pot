@@ -1,6 +1,6 @@
 # CENTERED CINNAMON DOCK
 # This file is put in the public domain.
-# rcalixte, 2017
+# mostlynick3, 2025
 #
 #, fuzzy
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: centered-cinnamon-dock@mostlynick3 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-11-30 08:31+0100\n"
+"POT-Creation-Date: 2025-12-03 22:20+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -64,4 +64,24 @@ msgstr ""
 
 #. 6.4->settings-schema.json->show-on-no-focus->description
 msgid "Show dock when no window is focused"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Main panel only"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All bottom panels"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All top panels"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Top and bottom panels"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->description
+msgid "Which panels to apply extension to"
 msgstr ""
