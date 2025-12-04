@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2023-09-13 12:14+0200\n"
+"Last-Translator: Nathan POirier <nathan@poirier.io>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Raggio"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Dissolvenza Superiore"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "Offset X"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Offset Y"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Opacità"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Nome Classe"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Stato"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Importa"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Esporta"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Imposta da..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Scegli dove salvare la tua configurazione"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Scegli una configurazione da caricare"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Ombre Utente"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Personalizza le ombre delle finestre di Cinnamon"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Preset ombreggiature"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Predefinito"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Nessuna ombreggiatura"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Personalizzato"
