@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.1
+
+* Fixed a 1.6.0 regression where the dimming of desktop effects are not removed after disabiling the desktop effects on the general page in the config window.
+* Added support for rounded cinnamon panels, but currently to enable rounded corners in Cinnamon panels you need to manually edit your cinnamon.css file.
+
 ## 1.6.0
 
 * Added the ability to apply effects to application window backgrounds

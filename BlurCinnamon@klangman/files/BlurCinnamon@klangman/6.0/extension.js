@@ -5,6 +5,7 @@
 // Some code bowwowed from the BlurOverview Cinnamon extension Copyright (C) 2012 Jen Bowen aka nailfarmer
 
 // Gaussian Blur (borrowed from Blur-my-shell / Aurélien Hamy) modified for Cinnamon by Kevin Langman 2024
+// Rounded Corners (borrowed from Blur-my-shell / Aurélien Hamy) modified for Cinnamon by Kevin Langman 2025
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -389,6 +390,21 @@ class BlurBase {
       }
    }
 
+   destroy(background) {
+      if (background._blurCinnamonDimmer) {
+         background.remove_child(background._blurCinnamonDimmer);
+      }
+      let effect = this._getCornerEffect(background);
+      if (effect)
+         background.remove_effect(effect);
+      effect = this._getDesatEffect(background);
+      if (effect)
+         background.remove_effect(effect);
+      effect = this._getBlurEffect(background);
+      if (effect)
+         background.remove_effect(effect);
+   }
+
    _printActor(actor) {
       let themeNode = actor.get_theme_node();
       let margins = actor.get_margin();
@@ -635,10 +651,17 @@ class BlurPanels extends BlurBase {
    _setClip(panel){
       if (panel && panel.__blurredPanel && panel.__blurredPanel.background) {
          let actor = panel.actor;
+         let cornerEffect = this._getCornerEffect(panel.__blurredPanel.background);
          if (actor.is_visible()) {
-            panel.__blurredPanel.background.set_clip( actor.x, actor.y, actor.width, actor.height );
+            if (cornerEffect)
+               cornerEffect.clip = [actor.x+2, actor.y+2, actor.width-3, actor.height-3];
+            else
+               panel.__blurredPanel.background.set_clip( actor.x, actor.y, actor.width, actor.height );
          } else {
-            panel.__blurredPanel.background.set_clip( 0, 0, 0, 0 );
+            if (cornerEffect)
+               cornerEffect.clip = [0, 0, 0, 0];
+            else
+               panel.__blurredPanel.background.set_clip( 0, 0, 0, 0 );
          }
          if (panel._hidden || panel._disabled || global.display.get_monitor_in_fullscreen(panel.monitorIndex)) {
             panel.__blurredPanel.background.hide();
@@ -664,6 +687,9 @@ class BlurPanels extends BlurBase {
 
    // Create a new blur effect for the panel argument.
    _blurPanel(panel) {
+      let topRadius = 0;
+      let bottomRadius = 0;
+      let cornerRadius = 0;
       let panelSettings = this._getPanelSettings(panel);
       if (!panelSettings ) return;
       let [opacity, blendColor, blurType, radius, saturation] = panelSettings;
@@ -689,13 +715,25 @@ class BlurPanels extends BlurBase {
                           "background-gradient-direction: vertical; background-gradient-start: transparent; " +
                           "background-gradient-end: transparent;    background: transparent;" );
       }
+      // Determine the corner radius
+      let themeNode = actor.get_theme_node();
+      if (themeNode) {
+         // TODO: Need to be able to independently round all four corners, needs improvements to the corner effect code!
+         topRadius = themeNode.get_border_radius(St.Corner.TOPLEFT);
+         bottomRadius = themeNode.get_border_radius(St.Corner.BOTTOMLEFT);
+         cornerRadius = Math.max(topRadius, bottomRadius);
+      }
       // If blurring is required, create a background, create effect, clip background to cover the panel only
       // With this commented out, a panel with no effects applied (just made transparent) will still prevent
       // windows beneath the panels from being visible.
       //if (blurType > BlurType.None || saturation<100) {
-         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation);
+         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, cornerRadius, topRadius!==0, bottomRadius!==0);
          blurredPanel.background = background;
-         background.set_clip( panel.actor.x, panel.actor.y, panel.actor.width, panel.actor.height );
+         let cornerEffect = this._getCornerEffect(background);
+         if (cornerEffect)
+            cornerEffect.clip = [panel.actor.x+2, panel.actor.y+2, panel.actor.width-3, panel.actor.height-3];
+         else
+            background.set_clip( panel.actor.x, panel.actor.y, panel.actor.width, panel.actor.height );
          if (!panel._hidden && !global.display.get_monitor_in_fullscreen(panel.monitorIndex)) {
             background.show();
          }
@@ -732,12 +770,7 @@ class BlurPanels extends BlurBase {
             actor.set_style_class_name(blurredPanel.original_class);
             actor.set_style_pseudo_class(blurredPanel.original_pseudo_class);
             if (blurredPanel.background) {
-               let effect = blurredPanel.background.get_effect(BLUR_EFFECT_NAME);
-               if (effect)
-                  blurredPanel.background.remove_effect(effect);
-               effect = blurredPanel.background.get_effect(DESAT_EFFECT_NAME);
-               if (effect)
-                  blurredPanel.background.remove_effect(effect);
+               super.destroy(blurredPanel.background);
                global.overlay_group.remove_actor(blurredPanel.background);
                blurredPanel.background.destroy();
             }
@@ -1237,6 +1270,7 @@ class BlurPopupMenus extends BlurBase {
       // Restore monkey patched PopupMenu open & close functions
       debugMsg( "Destroying Popup Menu object" );
       PopupMenu.PopupMenu.prototype.open = this.original_popupmenu_open;
+      super.destroy(this._background);
       global.overlay_group.remove_actor(this._background);
       this._background.destroy();
       // Remove all data in the menus associated with blurCinnamon
@@ -1274,8 +1308,6 @@ class BlurDesktop extends BlurBase {
       let dimmerColor = this._getColor( blendColor, opacity );
       this._dimmer = new Clutter.Actor({x_expand: true, y_expand: true, width: global.background_actor.width, height: global.background_actor.height, background_color: dimmerColor});
       global.background_actor.add_child(this._dimmer);
-
-      this._effects_applied = true;
       this.updateEffects();
    }
 
@@ -1363,6 +1395,9 @@ class BlurDesktop extends BlurBase {
       effect = global.background_actor.get_effect(DESAT_EFFECT_NAME);
       if (effect) {
          global.background_actor.remove_effect(effect);
+      }
+      if (this._dimmer) {
+         global.background_actor.remove_child(this._dimmer);
       }
    }
 }
@@ -1491,6 +1526,7 @@ class BlurNotifications extends BlurBase {
       MessageTray.MessageTray.prototype._showNotification = this.original_showNotification;
       MessageTray.MessageTray.prototype._hideNotification = this.original_hideNotification;
       global.overlay_group.remove_actor(this._background);
+      super.destroy(this._background);
       this._background.destroy();
    }
 }
@@ -1575,6 +1611,7 @@ class BlurTooltips extends BlurBase {
 
       this._signalManager.disconnectAllSignals();
       this._background.hide();
+      super.destroy(this._background);
       this._background.destroy();
    }
 }
@@ -1732,15 +1769,7 @@ class BlurApplications extends BlurBase {
          let data = compositor._blurCinnamonDataWindow;
          data.signalManager.disconnectAllSignals();
          compositor.remove_child(data.background);
-         let blurEffect = this._getBlurEffect(data.background);
-         if (blurEffect)
-            data.background.remove_effect(blurEffect);
-         let desatEffect = this._getDesatEffect(data.background);
-         if (desatEffect)
-            data.background.remove_effect(desatEffect);
-         let cornerEffect = this._getCornerEffect(data.background);
-         if (cornerEffect)
-            data.background.remove_effect(cornerEffect);
+         super.destroy(data.background);
          data.background.destroy();
          data.metaWindow.set_opacity(255);
          compositor._blurCinnamonDataWindow = undefined;
