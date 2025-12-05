@@ -1,0 +1,8 @@
+{
+    "uuid": "centered-cinnamon-dock@mostlynick3",
+    "name": "Centered Cinnamon Dock",
+    "description": "Centers the panel with dock styling and customization options",
+    "url": "https://github.com/mostlynick3/centered-cinnamon-dock",
+    "version": "1.0",
+    "cinnamon-version": ["6.4"]
+}

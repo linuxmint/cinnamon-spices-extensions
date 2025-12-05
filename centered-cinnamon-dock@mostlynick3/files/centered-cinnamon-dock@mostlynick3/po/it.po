@@ -1,0 +1,65 @@
+# it.po
+# Centered Cinnamon Dock
+# Copyright (C) 2025 mostlynick3
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2025-11-30 08:31+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Centered Cinnamon Dock"
+msgstr "Dock Centrato di Cinnamon"
+
+#. metadata.json->description
+msgid "Centers the panel with dock styling and customization options"
+msgstr "Centra il pannello con stile dock e opzioni di personalizzazione"
+
+#. 6.4->settings-schema.json->transparency->units
+msgid "percent"
+msgstr "percento"
+
+#. 6.4->settings-schema.json->transparency->description
+msgid "Transparency"
+msgstr "Trasparenza"
+
+#. 6.4->settings-schema.json->height-offset->units
+#. 6.4->settings-schema.json->hover-pixels->units
+msgid "pixels"
+msgstr "pixel"
+
+#. 6.4->settings-schema.json->height-offset->description
+msgid "Height offset (negative = up, positive = down)"
+msgstr "Offset altezza (negativo = su, positivo = giù)"
+
+#. 6.4->settings-schema.json->hover-pixels->description
+msgid "Hover trigger zone height at bottom of screen"
+msgstr "Altezza della zona di attivazione al passaggio del mouse nella parte inferiore dello schermo"
+
+#. 6.4->settings-schema.json->animation-time->units
+msgid "milliseconds"
+msgstr "millisecondi"
+
+#. 6.4->settings-schema.json->animation-time->description
+msgid "Fade animation duration"
+msgstr "Durata dell'animazione di dissolvenza"
+
+#. 6.4->settings-schema.json->auto-hide->description
+msgid "Auto-hide dock when focusing apps"
+msgstr "Nascondi automaticamente il dock quando si mettono a fuoco le app"
+
+#. 6.4->settings-schema.json->no-window-shift->description
+msgid "Don't shift windows (disable panel struts)"
+msgstr "Non spostare le finestre (disabilita le strutture del pannello)"
+
+#. 6.4->settings-schema.json->show-on-no-focus->description
+msgid "Show dock when no window is focused"
+msgstr "Mostra dock quando nessuna finestra è a fuoco"

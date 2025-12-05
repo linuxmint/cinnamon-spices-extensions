@@ -1,0 +1,65 @@
+# zh_CN.po
+# Centered Cinnamon Dock
+# Copyright (C) 2025 mostlynick3
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2025-11-30 08:31+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Centered Cinnamon Dock"
+msgstr "居中的 Cinnamon 停靠栏"
+
+#. metadata.json->description
+msgid "Centers the panel with dock styling and customization options"
+msgstr "将面板居中显示并提供停靠栏样式和自定义选项"
+
+#. 6.4->settings-schema.json->transparency->units
+msgid "percent"
+msgstr "百分比"
+
+#. 6.4->settings-schema.json->transparency->description
+msgid "Transparency"
+msgstr "透明度"
+
+#. 6.4->settings-schema.json->height-offset->units
+#. 6.4->settings-schema.json->hover-pixels->units
+msgid "pixels"
+msgstr "像素"
+
+#. 6.4->settings-schema.json->height-offset->description
+msgid "Height offset (negative = up, positive = down)"
+msgstr "高度偏移（负数 = 向上，正数 = 向下）"
+
+#. 6.4->settings-schema.json->hover-pixels->description
+msgid "Hover trigger zone height at bottom of screen"
+msgstr "屏幕底部悬停触发区域高度"
+
+#. 6.4->settings-schema.json->animation-time->units
+msgid "milliseconds"
+msgstr "毫秒"
+
+#. 6.4->settings-schema.json->animation-time->description
+msgid "Fade animation duration"
+msgstr "淡入淡出动画持续时间"
+
+#. 6.4->settings-schema.json->auto-hide->description
+msgid "Auto-hide dock when focusing apps"
+msgstr "聚焦应用程序时自动隐藏停靠栏"
+
+#. 6.4->settings-schema.json->no-window-shift->description
+msgid "Don't shift windows (disable panel struts)"
+msgstr "不移动窗口（禁用面板支撑）"
+
+#. 6.4->settings-schema.json->show-on-no-focus->description
+msgid "Show dock when no window is focused"
+msgstr "没有窗口聚焦时显示停靠栏"
