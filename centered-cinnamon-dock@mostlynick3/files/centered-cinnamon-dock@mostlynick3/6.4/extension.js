@@ -11,6 +11,8 @@ let sizeCheckTimeout;
 let pointerWatcher;
 let workspaceSignal;
 let actorAddedSignal;
+let editModeSignal;
+let isInEditMode = false;
 
 function init(metadata) {
 }
@@ -19,11 +21,15 @@ function enable() {
     settings = new Settings.ExtensionSettings(this, "centered-cinnamon-dock@mostlynick3");
     
     settings.bind("transparency", "transparency", function() {
-        applyStyleToAll();
+        if (!isInEditMode) {
+            applyStyleToAll();
+        }
     });
     settings.bind("height-offset", "heightOffset", function() {
-        applyStyleToAll();
-        updateMenuPositions();
+        if (!isInEditMode) {
+            applyStyleToAll();
+            updateMenuPositions();
+        }
     });
     settings.bind("auto-hide", "autoHide", function() {
         toggleAutoHide();
@@ -61,7 +67,75 @@ function enable() {
         });
     });
     
+    isInEditMode = global.settings.get_boolean("panel-edit-mode");
+    
+    editModeSignal = global.settings.connect("changed::panel-edit-mode", function() {
+        let newEditMode = global.settings.get_boolean("panel-edit-mode");
+        if (newEditMode !== isInEditMode) {
+            isInEditMode = newEditMode;
+            handleEditModeChange();
+        }
+    });
+    
     initializePanels();
+}
+
+function handleEditModeChange() {
+    if (isInEditMode) {
+        enterEditMode();
+    } else {
+        exitEditMode();
+    }
+}
+
+function enterEditMode() {
+    Main.panelManager.panels.forEach(panel => {
+        if (shouldApplyToPanel(panel)) {
+            let state = panelStates[panel.panelId];
+            if (state) {
+                state.savedOpacity = panel.actor.opacity;
+                state.wasHidden = state.isHidden;
+                
+                Tweener.removeTweens(panel.actor);
+                panel.actor.set_style('');
+                panel.actor.y = state.originalY;
+                panel.actor.opacity = 255;
+                panel.actor.show();
+            }
+        }
+    });
+}
+
+function exitEditMode() {
+    Main.panelManager.panels.forEach(panel => {
+        if (shouldApplyToPanel(panel)) {
+            let state = panelStates[panel.panelId];
+            if (state) {
+                state.originalY = panel.actor.y;
+            }
+        }
+    });
+    
+    Mainloop.timeout_add(150, function() {
+        Main.panelManager.panels.forEach(panel => {
+            if (shouldApplyToPanel(panel)) {
+                let state = panelStates[panel.panelId];
+                if (state) {
+                    state.lastWidth = 0;
+                    checkAndApplyStyle(panel, true);
+                    
+                    if (state.wasHidden && settings.getValue("auto-hide")) {
+                        Mainloop.timeout_add(100, function() {
+                            state.isHidden = false;
+                            hidePanel(panel);
+                            return false;
+                        });
+                    }
+                }
+            }
+        });
+        return false;
+    });
 }
 
 function cleanupAllPanels() {
@@ -80,6 +154,11 @@ function cleanupAllPanels() {
     if (actorAddedSignal) {
         global.stage.disconnect(actorAddedSignal);
         actorAddedSignal = null;
+    }
+    
+    if (editModeSignal) {
+        global.settings.disconnect(editModeSignal);
+        editModeSignal = null;
     }
     
     Main.panelManager.panels.forEach(panel => {
@@ -120,7 +199,9 @@ function initializePanels() {
                     let state = panelStates[panel.panelId];
                     if (state) {
                         state.trackedMenus.push(actor);
-                        updateMenuPosition(panel, actor);
+                        if (!isInEditMode) {
+                            updateMenuPosition(panel, actor);
+                        }
                     }
                 }
             });
@@ -128,6 +209,8 @@ function initializePanels() {
     });
     
     workspaceSignal = global.screen.connect('workspace-switched', function() {
+        if (isInEditMode) return;
+        
         Main.panelManager.panels.forEach(panel => {
             if (shouldApplyToPanel(panel)) {
                 let state = panelStates[panel.panelId];
@@ -142,11 +225,13 @@ function initializePanels() {
     });
     
     Mainloop.timeout_add(100, function() {
-        Main.panelManager.panels.forEach(panel => {
-            if (shouldApplyToPanel(panel)) {
-                checkAndApplyStyle(panel);
-            }
-        });
+        if (!isInEditMode) {
+            Main.panelManager.panels.forEach(panel => {
+                if (shouldApplyToPanel(panel)) {
+                    checkAndApplyStyle(panel);
+                }
+            });
+        }
         startSizeMonitoring();
         toggleAutoHide();
         return false;
@@ -199,7 +284,9 @@ function initPanel(panel) {
         menuSignals: [],
         trackedMenus: [],
         isHidden: false,
-        location: getPanelLocation(panel)
+        location: getPanelLocation(panel),
+        savedOpacity: 255,
+        wasHidden: false
     };
     
     let state = panelStates[panel.panelId];
@@ -209,6 +296,8 @@ function initPanel(panel) {
     }
     
     let styleSignal = panel.actor.connect('style-changed', function() {
+        if (isInEditMode) return;
+        
         Mainloop.timeout_add(10, function() {
             applyStyle(panel);
             return false;
@@ -378,6 +467,8 @@ function enableAutoHide() {
     }
     
     pointerWatcher = Mainloop.timeout_add(100, function() {
+        if (isInEditMode) return true;
+        
         let [x, y, mods] = global.get_pointer();
         
         Main.panelManager.panels.forEach(panel => {
@@ -409,12 +500,16 @@ function enableAutoHide() {
 }
 
 function hidePanel(panel) {
+    if (isInEditMode) return;
+    
     let state = panelStates[panel.panelId];
     if (!state || state.isHidden) return;
     
     if (hasActiveMenus(panel)) {
         return;
     }
+    
+    state.isHidden = true;
     
     let animTime = settings.getValue("animation-time") / 1000.0;
     
@@ -425,28 +520,44 @@ function hidePanel(panel) {
         transition: 'easeOutQuad',
         onComplete: function() {
             panel.actor.hide();
-            state.isHidden = true;
+            Mainloop.timeout_add(animTime * 1000, function() {
+                if (panel.actor.opacity !== 0) {
+                    panel.actor.opacity = 0;
+                }
+                return false;
+            });
         }
     });
 }
 
 function showPanel(panel) {
+    if (isInEditMode) return;
+    
     let state = panelStates[panel.panelId];
     if (!state || !state.isHidden) return;
+    
+    state.isHidden = false;
     
     let animTime = settings.getValue("animation-time") / 1000.0;
     
     Tweener.removeTweens(panel.actor);
     panel.actor.show();
     panel.actor.opacity = 0;
-    state.isHidden = false;
     
     Mainloop.timeout_add(50, function() {
         checkAndApplyStyle(panel);
         Tweener.addTween(panel.actor, {
             opacity: 255,
             time: animTime,
-            transition: 'easeOutQuad'
+            transition: 'easeOutQuad',
+            onComplete: function() {
+                Mainloop.timeout_add(animTime * 1000, function() {
+                    if (panel.actor.opacity !== 255) {
+                        panel.actor.opacity = 255;
+                    }
+                    return false;
+                });
+            }
         });
         return false;
     });
@@ -470,6 +581,8 @@ function disableAutoHide() {
 }
 
 function updateMenuPositions() {
+    if (isInEditMode) return;
+    
     Main.panelManager.panels.forEach(panel => {
         if (shouldApplyToPanel(panel)) {
             cleanupTrackedMenus(panel);
@@ -484,6 +597,8 @@ function updateMenuPositions() {
 }
 
 function updateMenuPosition(panel, menu) {
+    if (isInEditMode) return;
+    
     let state = panelStates[panel.panelId];
     if (!state) return;
     
@@ -503,6 +618,8 @@ function updateMenuPosition(panel, menu) {
 
 function startSizeMonitoring() {
     sizeCheckTimeout = Mainloop.timeout_add(100, function() {
+        if (isInEditMode) return true;
+        
         Main.panelManager.panels.forEach(panel => {
             if (shouldApplyToPanel(panel)) {
                 let state = panelStates[panel.panelId];
@@ -515,9 +632,15 @@ function startSizeMonitoring() {
     });
 }
 
-function checkAndApplyStyle(panel) {
+function checkAndApplyStyle(panel, forceApply) {
+    if (isInEditMode && !forceApply) return;
+    
     let state = panelStates[panel.panelId];
     if (!state) return;
+    
+    if (!forceApply && (panel._editMode || (panel.peekDesktop && panel.peekDesktop._editMode))) {
+        return;
+    }
     
     let contentWidth = 0;
     
@@ -536,13 +659,15 @@ function checkAndApplyStyle(panel) {
     
     let newWidth = Math.max(contentWidth + 10, 200);
     
-    if (newWidth !== state.lastWidth) {
+    if (newWidth !== state.lastWidth || forceApply) {
         state.lastWidth = newWidth;
-        applyStyle(panel);
+        applyStyle(panel, forceApply);
     }
 }
 
 function applyStyleToAll() {
+    if (isInEditMode) return;
+    
     Main.panelManager.panels.forEach(panel => {
         if (shouldApplyToPanel(panel)) {
             applyStyle(panel);
@@ -550,7 +675,9 @@ function applyStyleToAll() {
     });
 }
 
-function applyStyle(panel) {
+function applyStyle(panel, forceApply) {
+    if (isInEditMode && !forceApply) return;
+    
     let state = panelStates[panel.panelId];
     if (!state) return;
     
