@@ -12,6 +12,7 @@ class SettingsHandler {
     this.settings = new Settings.ExtensionSettings(this, uuid);
     this.settings.bindProperty(Settings.BindingDirection.IN, "raiseSome", "raiseSome", function () { });
     this.settings.bindProperty(Settings.BindingDirection.IN, "programList", "programList", function () { });
+    this.settings.bindProperty(Settings.BindingDirection.IN, "excludeList", "excludeList", function () { });
   }
 }
 
@@ -42,9 +43,14 @@ class AttentionHandler {
 
     let
       programList = settings.programList.toLowerCase().replace(/\s/g, "").split(","),
+      excludeList = settings.excludeList.toLowerCase().replace(/\s/g, "").split(","),
       wmclass = window.get_wm_class();
 
     if (wmclass) {
+      if (excludeList.includes(wmclass.toLowerCase())) {
+        return;
+      }
+
       if (!settings.raiseSome) {
         window.activate(global.get_current_time());
         return;
