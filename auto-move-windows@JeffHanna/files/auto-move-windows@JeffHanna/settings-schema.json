@@ -1,16 +1,12 @@
 {
   "header-0": {
     "type": "header",
-    "description": "Use the button below to create a sample settings file in your home directory and have it loaded in your preferred text editor.\nAfter you have added rules for your applications, use the 'hamburger' menu (☰) to import the settings file.\n\nIf you are modifying existing settings, use the 'hamburger' menu to export the current settings, then make your modifications and re-import.\n\n── Available Settings Keys ──\n• wmClass (string, required) - Window class to match (e.g., \"Firefox\"). Use xprop WM_CLASS to find it.\n• matchField (string, optional) - Match by \"wmClass\" (default) or \"title\" for window title matching.\n• workspace (integer, optional) - 0-based workspace index to move the window to.\n• x, y (integer, optional) - Top-left coordinates where the window should be placed.\n• width, height (integer, optional) - Desired width/height in pixels.\n• maximized (boolean, optional) - If true, window will be fully maximized. Overrides position/size.\n• maximizeVertically (boolean, optional) - If true, window will be maximized vertically only. Requires width to be specified.\n• firstOnly (boolean, optional) - If true, only the first instance of the app is affected; subsequent windows are ignored until it closes."
-  },
-  "create_sample_settings_file": {
-    "type": "button",
-    "description": "Create Sample Settings File",
-    "callback": "create_sample_settings_file"
+    "description": "Configure rules for automatic window placement and sizing.\n\nEach rule specifies which windows to match and how to position them.\nUse 'xprop WM_CLASS' to find an application's WM_CLASS value.\n\nFirst Only behavior:\n• When checked (true): Only the first window is placed initially\n• When unchecked (false): All windows are placed with continuous enforcement (kept on assigned workspace)"
   },
   "app-rules": {
-    "type": "generic",
-    "default": [],
-    "value": []
+    "type": "custom",
+    "file": "settings.py",
+    "widget": "RuleListWidget",
+    "default": []
   }
 }

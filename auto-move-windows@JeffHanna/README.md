@@ -26,7 +26,9 @@ Example title-based rule:
 - `width`, `height` (integer, optional): desired width/height in pixels.
 - `maximized` (boolean, optional): if `true`, the window will be maximized (fullscreen). This takes precedence over `x`, `y`, `width`, and `height`.
 - `maximizeVertically` (boolean, optional): if `true`, the window will be maximized vertically (full height) but will respect the `width` setting. The `height` value is ignored. Requires `width` to be specified.
-- `firstOnly` (boolean, optional): if `true`, the extension only acts on the first instance of the app; subsequent windows are ignored until that window closes.
+- `firstOnly` (boolean, optional):
+  - If `true`: Only the first window instance is placed on the assigned workspace (initial placement only). Subsequent windows are ignored.
+  - If `false`: All window instances are placed on the assigned workspace with **continuous enforcement**. The window will be automatically moved back if it's moved to a different workspace.
 
 Example `app-rules` JSON:
 

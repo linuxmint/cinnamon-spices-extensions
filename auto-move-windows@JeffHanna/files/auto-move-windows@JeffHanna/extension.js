@@ -16,8 +16,9 @@
  * Notes:
  * - WM_CLASS matching is performed case-insensitively by doing a substring match
  *   (the rule's wmClass lowercased must appear anywhere inside the window's WM_CLASS).
- * - `firstOnly` prevents the rule from being applied to more than one window instance. The runtime tracks
- *   the first-applied MetaWindow reference and frees the lock when that window is removed.
+ * - `firstOnly: true` - Only the first window instance is placed on the assigned workspace (initial placement only).
+ * - `firstOnly: false` - All window instances are placed on the assigned workspace with continuous enforcement.
+ *   The window will be automatically moved back if it's moved to a different workspace.
  * - `maximized` takes precedence over all geometry settings - if true, the window is fully maximized.
  * - `maximizeVertically` maximizes height only; requires `width` to be set, and `height` is ignored.
  */
@@ -27,7 +28,6 @@ const Settings = imports.ui.settings;
 const SignalManager = imports.misc.signalManager;
 const Meta = imports.gi.Meta;
 const GLib = imports.gi.GLib;
-const Gio = imports.gi.Gio;
 
 let extensionInstance = null;
 
@@ -48,6 +48,7 @@ class AutoMoveWindows {
         this._settings = null;
         this._signals = null;
         this._firstAppliedMap = new Map();
+        this._managedWindows = new Map();
     }
 
 
@@ -63,14 +64,116 @@ class AutoMoveWindows {
         this._signals.connect(global.screen, 'window-added', this._onWindowAdded, this);
         this._signals.connect(global.screen, 'window-removed', this._onWindowRemoved, this);
 
-        // Clear the firstOnly map whenever settings change to allow rules to be re-evaluated
+        // Capture this context for settings change handler
+        const self = this;
+
+        // Clear tracking maps whenever settings change to allow rules to be re-evaluated
         this._settings.connect('changed::app-rules', () => {
-            this._firstAppliedMap.clear();
+            try {
+                self._firstAppliedMap.clear();
+                self._managedWindows.clear();
+                // Re-process all existing windows with new rules
+                self._processExistingWindows();
+            } catch (e) {
+                global.logError('[auto-move-windows] Error in settings change handler: ' + e);
+            }
         });
 
-        // Optionally connect to existing windows to track removals (not strictly required)
-        // and ensure map is clean if extension is enabled after windows exist.
-        let windows = global.display.list_windows(0);
+        // Process existing windows to enable continuous enforcement for already-open windows
+        this._processExistingWindows();
+    }
+
+
+    /**
+     * Process all existing windows to set up continuous workspace enforcement.
+     *
+     * This is called when the extension is enabled or when settings change, to ensure
+     * that windows matching rules with firstOnly=false are tracked for continuous enforcement.
+     */
+    _processExistingWindows() {
+        try {
+            if (!this._settings || !this._signals) {
+                return;
+            }
+
+            const windows = global.display.list_windows(0);
+            const rules = (this._settings.getValue('app-rules') || []).map(r => {
+                if (r && r.wmClass) {
+                    let copy = Object.assign({}, r);
+                    copy._wmClassLower = String(r.wmClass).trim().toLowerCase();
+                    return copy;
+                }
+                return r;
+            });
+
+            for (let metaWindow of windows) {
+                if (!metaWindow)
+                    continue;
+
+                const wmClass = metaWindow.get_wm_class && metaWindow.get_wm_class();
+                if (!wmClass)
+                    continue;
+
+                const type = metaWindow.get_window_type();
+                if (type === Meta.WindowType.DESKTOP || type === Meta.WindowType.DOCK || type === Meta.WindowType.SPLASHSCREEN)
+                    continue;
+
+                const wmLower = String(wmClass).toLowerCase();
+                const titleLower = String(metaWindow.get_title && metaWindow.get_title() || '').toLowerCase();
+
+                // Find matching rule
+                const rule = rules.find(r => {
+                    if (!r || !r._wmClassLower)
+                        return false;
+                    const field = (r.matchField || 'wmClass');
+                    switch (field) {
+                        case 'title':
+                            return titleLower.indexOf(r._wmClassLower) !== -1;
+                        case 'wmClass':
+                        default:
+                            return wmLower.indexOf(r._wmClassLower) !== -1;
+                    }
+                });
+
+                if (rule) {
+                    // If firstOnly is true, register this window so subsequent instances are ignored
+                    if (rule.firstOnly) {
+                        const ruleKey = rule._wmClassLower;
+                        if (!this._firstAppliedMap.has(ruleKey)) {
+                            this._firstAppliedMap.set(ruleKey, metaWindow);
+                        }
+                    }
+                }
+
+                if (rule && !rule.firstOnly && Number.isInteger(rule.workspace) && rule.workspace >= 0) {
+                    // Move window to correct workspace if it's not already there
+                    const currentWorkspace = metaWindow.get_workspace();
+                    const currentIndex = currentWorkspace ? currentWorkspace.index() : -1;
+
+                    if (currentIndex !== rule.workspace) {
+                        if (metaWindow.change_workspace_by_index) {
+                            metaWindow.change_workspace_by_index(rule.workspace, false);
+                        } else if (metaWindow.change_workspace) {
+                            const ws = global.workspace_manager.get_workspace_by_index(rule.workspace);
+                            if (ws)
+                                metaWindow.change_workspace(ws);
+                        }
+                    }
+
+                    // Enable continuous enforcement for this window
+                    this._managedWindows.set(metaWindow, {
+                        workspace: rule.workspace,
+                        wmClass: rule.wmClass
+                    });
+
+                    // Connect to workspace-changed signal
+                    this._signals.connect(metaWindow, 'workspace-changed',
+                        this._onWindowWorkspaceChanged.bind(this, metaWindow));
+                }
+            }
+        } catch (e) {
+            global.logError('[auto-move-windows] Error processing existing windows: ' + e);
+        }
     }
 
 
@@ -81,6 +184,14 @@ class AutoMoveWindows {
      * is being disabled or reloaded.
      */
     disable() {
+        // Clear maps first to prevent handlers from accessing them during cleanup
+        if (this._firstAppliedMap) {
+            this._firstAppliedMap.clear();
+        }
+        if (this._managedWindows) {
+            this._managedWindows.clear();
+        }
+
         if (this._signals) {
             this._signals.disconnectAllSignals();
             this._signals = null;
@@ -88,7 +199,6 @@ class AutoMoveWindows {
         if (this._settings) {
             this._settings = null;
         }
-        this._firstAppliedMap.clear();
     }
 
 
@@ -126,7 +236,6 @@ class AutoMoveWindows {
         const wmLower = String(wmClass).toLowerCase();
         const titleLower = String(metaWindow.get_title && metaWindow.get_title() || '').toLowerCase();
 
-        try { global.log('[auto-move-windows] Window WM_CLASS: ' + String(wmClass) + ' (normalized: ' + wmLower + ')'); } catch (e) {}
         const rule = rules.find(r => {
             if (!r || !r._wmClassLower)
                 return false;
@@ -148,12 +257,15 @@ class AutoMoveWindows {
                 return;
         }
 
+        // Capture this context for use in timeout callback
+        const self = this;
+
         // Wait a short time so the window has been fully mapped and its frame exists
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
             // Register window in firstOnly map after processing starts
             if (rule.firstOnly) {
                 const ruleKey = rule._wmClassLower;
-                this._firstAppliedMap.set(ruleKey, metaWindow);
+                self._firstAppliedMap.set(ruleKey, metaWindow);
             }
 
             if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
@@ -164,6 +276,18 @@ class AutoMoveWindows {
                     if (ws)
                         metaWindow.change_workspace(ws);
                 }
+
+                // If firstOnly is false, enable continuous workspace enforcement
+                if (!rule.firstOnly) {
+                    self._managedWindows.set(metaWindow, {
+                        workspace: rule.workspace,
+                        wmClass: rule.wmClass
+                    });
+
+                    // Connect to workspace-changed signal for this window
+                    self._signals.connect(metaWindow, 'workspace-changed',
+                        self._onWindowWorkspaceChanged.bind(self, metaWindow));
+                }
             }
 
             if (rule.maximized === true) {
@@ -172,7 +296,7 @@ class AutoMoveWindows {
                 } catch (e) {
                     global.logError(e);
                 }
-            } else if (rule.maximizeVertically === true && Number.isFinite(rule.width)) {
+            } else if (rule.maximizeVertically === true && Number.isFinite(rule.width) && rule.width > 0) {
                 try {
                     const x = Number.isFinite(rule.x) ? rule.x : 0;
                     const width = Math.max(1, rule.width);
@@ -190,7 +314,7 @@ class AutoMoveWindows {
                     global.logError(e);
                 }
             } else {
-                const hasGeom = Number.isFinite(rule.width) && Number.isFinite(rule.height);
+                const hasGeom = Number.isFinite(rule.width) && rule.width > 0 && Number.isFinite(rule.height) && rule.height > 0;
                 if (hasGeom) {
                     const x = Number.isFinite(rule.x) ? rule.x : 0;
                     const y = Number.isFinite(rule.y) ? rule.y : 0;
@@ -211,10 +335,54 @@ class AutoMoveWindows {
 
 
     /**
+     * Handler for the `workspace-changed` signal on managed windows.
+     *
+     * When a window with continuous enforcement changes workspace, this moves it back
+     * to its assigned workspace.
+     *
+     * @param {Meta.Window} metaWindow - the MetaWindow that changed workspace
+     */
+    _onWindowWorkspaceChanged(metaWindow) {
+        try {
+            if (!metaWindow)
+                return;
+
+            // Check if map still exists (extension might be disabling)
+            if (!this._managedWindows)
+                return;
+
+            if (!this._managedWindows.has(metaWindow))
+                return;
+
+            const windowInfo = this._managedWindows.get(metaWindow);
+            const currentWorkspace = metaWindow.get_workspace();
+            const targetWorkspace = global.workspace_manager.get_workspace_by_index(windowInfo.workspace);
+
+            // If window moved to wrong workspace, move it back
+            if (currentWorkspace && targetWorkspace && currentWorkspace !== targetWorkspace) {
+                try {
+                    global.log('[auto-move-windows] Enforcing workspace ' + windowInfo.workspace +
+                               ' for ' + windowInfo.wmClass);
+                    if (metaWindow.change_workspace_by_index) {
+                        metaWindow.change_workspace_by_index(windowInfo.workspace, false);
+                    } else if (metaWindow.change_workspace) {
+                        metaWindow.change_workspace(targetWorkspace);
+                    }
+                } catch (e) {
+                    global.logError('[auto-move-windows] Error enforcing workspace: ' + e);
+                }
+            }
+        } catch (e) {
+            global.logError('[auto-move-windows] Error in workspace-changed handler: ' + e);
+        }
+    }
+
+
+    /**
      * Handler for the `window-removed` signal.
      *
      * Frees any `firstOnly` locks that referenced the removed window so future windows
-     * matching the same rule may be handled.
+     * matching the same rule may be handled. Also removes continuous workspace enforcement.
      *
      * @param {object} screen - the Screen object that emitted the signal
      * @param {Meta.Window} metaWindow - the removed MetaWindow
@@ -225,13 +393,23 @@ class AutoMoveWindows {
             if (!metaWindow)
                 return;
 
+            // Check if maps still exist (extension might be disabling)
+            if (!this._firstAppliedMap || !this._managedWindows)
+                return;
+
+            // Remove from firstOnly tracking
             for (let [key, tracked] of this._firstAppliedMap) {
                 if (tracked === metaWindow) {
                     this._firstAppliedMap.delete(key);
                 }
             }
+
+            // Remove from continuous enforcement tracking
+            if (this._managedWindows.has(metaWindow)) {
+                this._managedWindows.delete(metaWindow);
+            }
         } catch (e) {
-            global.logError(e);
+            global.logError('[auto-move-windows] Error in window-removed handler: ' + e);
         }
     }
 }
@@ -246,7 +424,6 @@ function init(metadata) {
 function enable() {
     try {
         extensionInstance.enable();
-        return { create_sample_settings_file };
     } catch (e) {
         global.logError(e);
         disable();
@@ -264,52 +441,4 @@ function disable() {
     } finally {
         extensionInstance = null;
     }
-}
-
-
-/**
- * Create a sample settings JSON file in the user's home directory.
- *
- * The file is written as ~/auto-move-windows-sample-settings.json and contains a
- * minimal JSON object with a single entry in the `app-rules` array. After creating the file,
- * it is automatically opened in the user's preferred text/code editor.
- */
-function create_sample_settings_file() {
-    const home = GLib.get_home_dir();
-    const target = GLib.build_filenamev([home, 'auto-move-windows-sample-settings.json']);
-    const boilerplate = {
-        "app-rules": [
-            {
-                "wmClass": "Firefox",
-                "matchField": "title",
-                "workspace": 2,
-                "x": 640,
-                "y": 0,
-                "width": 640,
-                "maximizeVertically": true,
-                "firstOnly": true
-            }
-        ]
-    };
-    const jsonString = JSON.stringify(boilerplate, null, 2);
-    GLib.file_set_contents(target, jsonString);
-    try { Main.notify('auto-move-windows', 'Created ' + target); } catch (e) {}
-
-    // Open the file in the user's preferred text editor
-    try {
-        const file = Gio.File.new_for_path(target);
-        // Use the default text editor instead of the default for JSON files (which is often a browser)
-        const textEditor = Gio.AppInfo.get_default_for_type('text/plain', false);
-        if (textEditor) {
-            textEditor.launch([file], null);
-        } else {
-            // Fallback to URI launcher if no text editor is set
-            const uri = file.get_uri();
-            Gio.AppInfo.launch_default_for_uri(uri, null);
-        }
-    } catch (e) {
-        global.logError('[auto-move-windows] Failed to open file: ' + e);
-    }
-
-    return true;
 }
