@@ -1,0 +1,37 @@
+# it.po
+# Centered Cinnamon Dock
+# Copyright (C) 2025 mostlynick3
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-12-03 22:20+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Main panel only"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All bottom panels"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All top panels"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Top and bottom panels"
+msgstr ""
+
+#. 6.4->settings-schema.json->panel-mode->description
+msgid "Which panels to apply extension to"
+msgstr ""
