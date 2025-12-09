@@ -12,45 +12,53 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Focus New Window"
-msgstr ""
+msgstr "Fokus nowego okna"
 
 #. metadata.json->description
 msgid "A Cinnamon extension that ensures new windows will receive focus"
 msgstr ""
+"Rozszerzenie Cinnamon, które zapewnia, że nowe okna będą otrzymywać fokus"
 
 #. settings-schema.json->raiseSome->description
 msgid "Raise windows only of listed programs"
-msgstr ""
+msgstr "Fokus okien tylko wymienionych programów"
 
 #. settings-schema.json->raiseSome->tooltip
 msgid ""
 "Disabling this will cause windows from all programs to receive focus if they "
 "demand attention"
 msgstr ""
+"Wyłączenie tej opcji spowoduje, że okna wszystkich programów będą otrzymywać "
+"fokus, jeśli będą wymagały uwagi"
 
 #. settings-schema.json->programList->description
 msgid "Programs to include"
-msgstr ""
+msgstr "Uwzględniane programy"
 
 #. settings-schema.json->programList->tooltip
 msgid ""
 "Comma separated list of programs that should always have their windows "
 "receive focus"
 msgstr ""
+"Rozdzielona przecinkami lista programów, których okna powinny zawsze "
+"otrzymywać fokus"
 
 #. settings-schema.json->excludeList->description
 msgid "Programs to exclude"
-msgstr ""
+msgstr "Wykluczone programy"
 
 #. settings-schema.json->excludeList->tooltip
 msgid ""
 "Comma separated list of programs that should never have their windows "
 "receive focus"
 msgstr ""
+"Rozdzielona przecinkami lista programów, których okna nigdy nie powinny "
+"otrzymywać fokusu"
