@@ -15,7 +15,8 @@
     "excludeList": {
         "type": "entry",
         "description": "Programs to exclude",
-        "tooltip": "Comma separated list of programs that should never have their windows receive focus",
+        "tooltip": "Comma separated list of programs that should not have their windows automatically receive focus",
+        "dependency": "!raiseSome",
         "default": ""
     }
 }
