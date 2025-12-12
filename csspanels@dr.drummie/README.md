@@ -1,12 +1,12 @@
 # CSS Panels
 
-A Cinnamon extension for dynamic control of panels and popups transparency and blur effects, providing modern glass "morphism" aesthetics.
+A Cinnamon extension for dynamic control of panels and popups transparency and visual effects, providing modern glass "morphism" aesthetics.
 
 ## Features
 
 - **Panel Transparency**: Adjust the opacity of the main panel (taskbar) and other panels with real-time preview (same panel style applied to all panels).
 - **Menu Transparency**: Control transparency of popup menus for a frosted glass effect.
-- **Blur Effects**: Customize blur radius, saturation, contrast, brightness, and more for visual effects.
+- **Visual Effects**: Customize saturation, contrast, brightness, and color tints for enhanced aesthetics.
 - **Border Radius**: Apply rounded corners to panels and menus with auto-detection from themes.
 - **Tint Overlay**: Add color tints to blur effects for personalized appearance.
 - **Use Styles for Notifications and OSD-s**: Optional propagation of popup panel settings to notification banner and OSD.
@@ -33,7 +33,7 @@ A Cinnamon extension for dynamic control of panels and popups transparency and b
 
 - Access settings via **Cinnamon Settings** > **Extensions** > **CSS Panels**.
 - Use the system tray icon for accessing settings and presets.
-- Apply css blur templates for instant effects.
+- Apply CSS effect templates for instant visual enhancements.
 
 ## Settings Overview
 
@@ -46,16 +46,16 @@ A Cinnamon extension for dynamic control of panels and popups transparency and b
 - **Override Popup Color**: Enable separate custom color for popup menus.
 - **Choose Override Popup Color**: Select custom popups color when override is enabled.
 
-### Blur Effects
+### Visual Effects
 
-- **Blur Radius**: Intensity of blur (0-50px).
+- **Effect Intensity**: Visual enhancement strength (0-50px).
 - **Saturation Multiplier**: Color vibrancy (0.0-2.0).
 - **Contrast Multiplier**: Light/dark difference (0.0-2.0).
 - **Brightness Multiplier**: Overall lightness (0.0-2.0).
-- **Blur Opacity**: Transparency of blur layer (0.0-1.0).
-- **Blur Transition Duration**: Animation speed (0.0-2.0s).
+- **Effect Opacity**: Transparency of effect layer (0.0-1.0).
+- **Effect Transition Duration**: Animation speed (0.0-2.0s).
 - **Background Color/Tint**: Semi-transparent overlay color.
-- **Border Color**: Color of blur borders.
+- **Border Color**: Color of effect borders.
 - **Border Width**: Thickness of borders (0-5px).
 
 ### Border Radius
@@ -73,7 +73,7 @@ A Cinnamon extension for dynamic control of panels and popups transparency and b
 
 ### Advanced Settings
 
-- **Blur Template**: Select preset templates (e.g., Frosted Glass, Wet Glass).
+- **Effect Template**: Select preset templates (e.g., Frosted Glass, Wet Glass).
 - **Apply Selected Template**: Reset settings to template values.
 - **Style Notifications**: Propagate popup panel visual appearance to notification banner.
 - **Style OSD-s**: Propagate popup panel visual appearance to OSD (Caps Lock, Num Lock, Brightness, Volume, ..).
@@ -91,7 +91,7 @@ A Cinnamon extension for dynamic control of panels and popups transparency and b
 
 - OSD styling is made "in advance", so if you switch your "theme" and OSD's aren't styled properly, try to change CSS Panels border-radius setting.
 - If effects don't apply, check theme compatibility.
-- If Border Radius is not detected or valid, set it manually. 
+- If Border Radius is not detected or valid, set it manually.
 - Enable debug logging and check `journalctl -f` for errors (or use LG).
 - Reset settings if issues persist.
 - Don't expect "miracles", it is only css with limited options
@@ -108,7 +108,7 @@ This extension is licensed under the GPL-3.0 License.
 
 ## Credits
 
-- Based on BlurCinnamon@klangman.
+- Inspired by BlurCinnamon@klangman.
 - Icon downloaded from <a href="https://www.flaticon.com/free-icons/post-production" title="post-production icons">Post-production icons created by Smashicons - Flaticon</a>
 
 ---
