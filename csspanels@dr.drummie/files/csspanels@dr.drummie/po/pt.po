@@ -1,0 +1,429 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: pt <LL@li.org>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minutos"
+
+msgid "10 seconds"
+msgstr "10 segundos"
+
+msgid "15 seconds"
+msgstr "15 segundos"
+
+msgid "1 minute"
+msgstr "1 minuto"
+
+msgid "2 minutes"
+msgstr "2 minutos"
+
+msgid "30 seconds"
+msgstr "30 segundos"
+
+msgid "5 minutes"
+msgstr "5 minutos"
+
+msgid "5 seconds"
+msgstr "5 segundos"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Adiciona uma sobreposição de matiz ao efeito de desfoque. Use cores "
+"semitransparentes (por ex., azul-claro para tons frios ou laranja quente "
+"para uma sensação acolhedora) para personalizar o aspeto de vidro – maior "
+"opacidade para um matiz mais pronunciado, menor para um realce subtil."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Regula a vivacidade das cores no fundo desfocado. Valores acima de 1,0 "
+"tornam as cores mais vivas e energéticas (para um vidro mais luminoso e "
+"dinâmico), enquanto valores abaixo de 1,0 criam tons suaves e dessaturados "
+"para um aspeto mais subtil e elegante."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Regula a transparência dos menus pop-up. Em combinação com desfoque, cria um "
+"aspeto moderno de vidro fosco."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Regula a transparência do painel principal (barra de tarefas). Valores mais "
+"baixos criam um efeito mais vítreo. Clique no ícone da bandeja do sistema "
+"para alternar rapidamente entre predefinições."
+
+msgid "Advanced Settings"
+msgstr "Definições avançadas"
+
+msgid "Advanced Tools"
+msgstr "Ferramentas avançadas"
+
+msgid "Apply border radius to main panel"
+msgstr "Aplicar raio de borda ao painel principal"
+
+msgid "Apply selected template"
+msgstr "Aplicar modelo selecionado"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Aplica o modelo de desfoque selecionado a todos os controlos de efeito de "
+"desfoque. Isto atualiza raio, saturação, contraste, brilho, fundo, cor da "
+"borda, largura da borda, transição e opacidade conforme o modelo escolhido."
+
+msgid "Auto-detect theme border radius"
+msgstr "Deteção automática do raio de borda do tema"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Deteta e utiliza automaticamente o raio de borda do tema atual para um "
+"aspeto consistente. Quando ativado, a extensão analisa o tema para "
+"corresponder ao seu design."
+
+msgid "Background color/tint"
+msgstr "Cor de fundo / matiz"
+
+msgid "Basic Transparency Controls"
+msgstr "Controlos básicos de transparência"
+
+msgid "Blur Effects"
+msgstr "Efeitos de desfoque"
+
+msgid "Blur opacity"
+msgstr "Opacidade do desfoque"
+
+msgid "Blur radius"
+msgstr "Raio de desfoque"
+
+msgid "Blur Template"
+msgstr "Modelo de desfoque"
+
+msgid "Blur transition duration"
+msgstr "Duração da transição de desfoque"
+
+msgid "Border color"
+msgstr "Cor da borda"
+
+msgid "Border Radius"
+msgstr "Raio de borda"
+
+msgid "Border width"
+msgstr "Largura da borda"
+
+msgid "Brightness multiplier"
+msgstr "Multiplicador de brilho"
+
+msgid "Choose override panel color"
+msgstr "Escolher cor de substituição do painel"
+
+msgid "Choose override popup color"
+msgstr "Escolher cor de substituição dos menus pop-up"
+
+msgid "Contrast multiplier"
+msgstr "Multiplicador de contraste"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Controla a diferença entre áreas claras e escuras no desfoque. Valores acima "
+"de 1,0 realçam nitidez e profundidade para um aspeto mais definido e "
+"moderno, enquanto valores abaixo suavizam o efeito para um vidro mais suave "
+"e menos agressivo."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Controla a intensidade do efeito de desfoque. Valores elevados criam um "
+"aspeto de vidro mais intenso e difuso (por exemplo, mais de 30 px para "
+"efeito de nevoeiro), enquanto valores baixos (1–10 px) produzem desfoques "
+"mais nítidos e subtis para um aspeto mais limpo."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Controla a transparência de toda a camada de desfoque. Valores altos (0,8–"
+"1,0) tornam o efeito de vidro mais proeminente e sólido, enquanto valores "
+"baixos (0,1–0,5) criam uma aparência mais leve e etérea que se funde "
+"perfeitamente com o fundo."
+
+msgid "Custom Blur Settings"
+msgstr "Definições de desfoque personalizadas"
+
+msgid "Debugging"
+msgstr "Depuração"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Define a espessura da borda em torno dos elementos desfocados. Bordas mais "
+"grossas (3–5 px) criam uma moldura mais proeminente para ênfase, enquanto "
+"bordas finas (0–1 px) ou nenhuma (0 px) conferem um aspeto de vidro "
+"integrado e sem emendas."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Mostra o ícone de controlo na bandeja do sistema para acesso rápido às "
+"definições de transparência. Clique para abrir as preferências da extensão."
+
+msgid "Enable debug logging"
+msgstr "Ativar registo de depuração"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Ativa registo detalhado para resolução de problemas da extensão. Verifique a "
+"saída do terminal com 'journalctl -f' para obter informações detalhadas."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Ativa cantos arredondados na barra de tarefas para um aspeto moderno. Pode "
+"parecer estranho nas extremidades do ecrã consoante o tema."
+
+msgid "Hide label"
+msgstr "Ocultar rótulo"
+
+msgid "Hide system tray indicator"
+msgstr "Ocultar indicador da bandeja do sistema"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Oculta o ícone de controlo de transparência na bandeja do sistema. Ainda "
+"pode aceder às definições em Definições do Cinnamon > Extensões."
+
+msgid "Menu Opacity"
+msgstr "Opacidade do menu"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Modifica o nível de brilho geral da camada de desfoque. Aumente acima de 1,0 "
+"para um vidro mais brilhante e iluminado (ideal para temas claros), ou "
+"diminua abaixo de 1,0 para tons mais escuros e atmosféricos que se integram "
+"melhor com fundos escuros."
+
+msgid "Override panel color"
+msgstr "Sobrescrever cor do painel"
+
+msgid "Override popup color"
+msgstr "Sobrescrever cor dos menus pop-up"
+
+msgid "Panel Appearance"
+msgstr "Aspeto do painel"
+
+msgid "Panel Opacity"
+msgstr "Opacidade do painel"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Cantos arredondados para painéis e menus. Utilizados como alternativa quando "
+"a deteção automática falha ou encontra valores inconsistentes. Defina para 0 "
+"para um aspeto completamente plano."
+
+msgid "Saturation multiplier"
+msgstr "Multiplicador de saturação"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Selecione um modelo de desfoque para aplicar com o botão 'Aplicar modelo "
+"selecionado'. Cada modelo define valores predefinidos para todos os "
+"controlos de efeito de desfoque."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Selecione a cor de fundo para os menus pop-up quando 'Sobrescrever cor dos "
+"menus pop-up' estiver ativado. Suporta transparência (canal alfa)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Selecione a cor de fundo para o painel quando 'Sobrescrever cor do painel' "
+"estiver ativado. Suporta transparência (canal alfa)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Define a cor de borda subtil que envolve os elementos desfocados. Escolha "
+"cores claras/brancas para uma borda limpa e moderna, ou tons mais escuros "
+"para melhor contraste – ajuste a opacidade para bordas mais suaves ou mais "
+"definidas."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Define a velocidade das animações de desfoque quando as definições mudam. "
+"Durações curtas (0,1–0,5 s) criam transições ágeis e responsivas para "
+"ajustes rápidos, enquanto durações longas (1–2 s) proporcionam fundidos "
+"suaves e elegantes para um aspeto polido."
+
+msgid "Show percentage"
+msgstr "Mostrar percentagem"
+
+msgid "Show percentage and time remaining"
+msgstr "Mostrar percentagem e tempo restante"
+
+msgid "Show system tray indicator"
+msgstr "Mostrar indicador da bandeja do sistema"
+
+msgid "Show time remaining"
+msgstr "Mostrar tempo restante"
+
+msgid "System Tray Indicator"
+msgstr "Indicador da bandeja do sistema"
+
+msgid "Theme Integration"
+msgstr "Integração com o tema"
+
+msgid "Transparency Settings"
+msgstr "Definições de transparência"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Quando ativado, utilize a cor de substituição selecionada para o fundo dos "
+"menus pop-up em vez da cor do painel. Requer que 'Sobrescrever cor do "
+"painel' esteja ativado para efeito total."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Quando ativado, utilize a cor de substituição selecionada para o fundo do "
+"painel. Se 'Sobrescrever cor dos menus pop-up' estiver desativado, esta cor "
+"é também aplicada aos menus pop-up."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Controlo dinâmico da transparência e dos efeitos de desfoque do painel e dos "
+"menus pop-up – baseado em BlurCinnamon@klangman"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Aplicar efeitos de transparência e desfoque a elementos OSD (On-Screen "
+"Display), como controlos de volume, reguladores de brilho e outros elementos "
+"de sobreposição. Cria um aspeto de vidro consistente."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Aplicar efeitos de transparência e desfoque às notificações do sistema "
+"(volume, brilho, etc.). Isto fará com que as notificações correspondam ao "
+"estilo glassmorphism do painel."
+
+msgid "Extended UI Styling"
+msgstr "Estilo UI estendido"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "Estilizar elementos OSD (On-Screen Display)"
+
+msgid "Style system notifications"
+msgstr "Estilizar notificações do sistema"
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+"Aplicar efeitos de transparência e desfoque a elementos OSD (On-Screen "
+"Display), como controlos de volume, reguladores de brilho e outros elementos "
+"de sobreposição. Cria um aspeto de vidro consistente."
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+"Aplicar efeitos de transparência e desfoque a elementos OSD (On-Screen "
+"Display), como controlos de volume, reguladores de brilho e outros elementos "
+"de sobreposição. Cria um aspeto de vidro consistente."
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""
