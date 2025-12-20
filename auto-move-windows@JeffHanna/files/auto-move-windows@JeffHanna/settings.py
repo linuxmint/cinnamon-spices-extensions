@@ -295,3 +295,165 @@ class RuleEditDialog(Gtk.Dialog):
         self.maxvert_check.set_active(False)
         self.firstonly_check.set_active(False)
 
+
+class WorkaroundAppsWidget(SettingsWidget):
+    """Widget for managing the list of apps that need the workspace-switching workaround."""
+    
+    def __init__(self, info, key, settings):
+        SettingsWidget.__init__(self)
+        self.key = key
+        self.settings = settings
+        self.info = info
+
+        # Main container
+        self.set_orientation(Gtk.Orientation.VERTICAL)
+        self.set_spacing(10)
+
+        # Instructions label
+        label = Gtk.Label()
+        label.set_markup("<b>Apps Needing Workspace-Switching Workaround</b>\nAdd WM_CLASS patterns for apps with positioning issues (use 'xprop WM_CLASS').")
+        label.set_line_wrap(True)
+        label.set_halign(Gtk.Align.START)
+        self.pack_start(label, False, False, 0)
+
+        # ScrolledWindow for the TreeView
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_shadow_type(Gtk.ShadowType.IN)
+        scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scrolled.set_min_content_height(80)
+
+        # TreeView setup
+        self.store = Gtk.ListStore(str)
+        self.treeview = Gtk.TreeView(model=self.store)
+        self.treeview.set_headers_visible(True)
+
+        # App name column
+        renderer = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn("App WM_CLASS Pattern", renderer, text=0)
+        column.set_resizable(True)
+        self.treeview.append_column(column)
+
+        scrolled.add(self.treeview)
+        self.pack_start(scrolled, True, True, 0)
+
+        # Button box
+        button_box = Gtk.ButtonBox(orientation=Gtk.Orientation.HORIZONTAL)
+        button_box.set_layout(Gtk.ButtonBoxStyle.START)
+        button_box.set_spacing(5)
+
+        add_button = Gtk.Button.new_with_label("Add")
+        add_button.connect("clicked", self.on_add_clicked)
+        button_box.pack_start(add_button, False, False, 0)
+
+        edit_button = Gtk.Button.new_with_label("Edit")
+        edit_button.connect("clicked", self.on_edit_clicked)
+        button_box.pack_start(edit_button, False, False, 0)
+
+        remove_button = Gtk.Button.new_with_label("Remove")
+        remove_button.connect("clicked", self.on_remove_clicked)
+        button_box.pack_start(remove_button, False, False, 0)
+
+        self.pack_start(button_box, False, False, 0)
+
+        # Load existing data
+        self.load_data()
+
+    def load_data(self):
+        """Load the apps list from settings."""
+        self.store.clear()
+        try:
+            apps_json = self.settings.get_value(self.key)
+            apps = json.loads(apps_json)
+            for app in apps:
+                self.store.append([app])
+        except (json.JSONDecodeError, TypeError):
+            # If parsing fails, use default
+            self.store.append(["terminal"])
+            self.save_data()
+
+    def save_data(self):
+        """Save the apps list to settings."""
+        apps = []
+        for row in self.store:
+            app = row[0].strip()
+            if app:  # Only add non-empty entries
+                apps.append(app)
+        
+        apps_json = json.dumps(apps)
+        self.settings.set_value(self.key, apps_json)
+
+    def on_add_clicked(self, button):
+        """Add a new app to the whitelist."""
+        dialog = Gtk.Dialog("Add App", self.get_toplevel(), Gtk.DialogFlags.MODAL)
+        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+        dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.set_default_size(300, 100)
+
+        box = dialog.get_content_area()
+        box.set_spacing(10)
+        box.set_border_width(10)
+
+        label = Gtk.Label(label="App WM_CLASS pattern (e.g., 'terminal', 'kitty'):")
+        label.set_halign(Gtk.Align.START)
+        box.pack_start(label, False, False, 0)
+
+        entry = Gtk.Entry()
+        box.pack_start(entry, False, False, 0)
+
+        dialog.show_all()
+        response = dialog.run()
+
+        if response == Gtk.ResponseType.OK:
+            app_name = entry.get_text().strip()
+            if app_name:
+                self.store.append([app_name])
+                self.save_data()
+
+        dialog.destroy()
+
+    def on_edit_clicked(self, button):
+        """Edit the selected app pattern."""
+        selection = self.treeview.get_selection()
+        model, tree_iter = selection.get_selected()
+        
+        if not tree_iter:
+            return
+
+        current_value = model[tree_iter][0]
+
+        dialog = Gtk.Dialog("Edit App", self.get_toplevel(), Gtk.DialogFlags.MODAL)
+        dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
+        dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+        dialog.set_default_size(300, 100)
+
+        box = dialog.get_content_area()
+        box.set_spacing(10)
+        box.set_border_width(10)
+
+        label = Gtk.Label(label="App WM_CLASS pattern:")
+        label.set_halign(Gtk.Align.START)
+        box.pack_start(label, False, False, 0)
+
+        entry = Gtk.Entry()
+        entry.set_text(current_value)
+        box.pack_start(entry, False, False, 0)
+
+        dialog.show_all()
+        response = dialog.run()
+
+        if response == Gtk.ResponseType.OK:
+            app_name = entry.get_text().strip()
+            if app_name:
+                model[tree_iter][0] = app_name
+                self.save_data()
+
+        dialog.destroy()
+
+    def on_remove_clicked(self, button):
+        """Remove the selected app from the whitelist."""
+        selection = self.treeview.get_selection()
+        model, tree_iter = selection.get_selected()
+        
+        if tree_iter:
+            model.remove(tree_iter)
+            self.save_data()

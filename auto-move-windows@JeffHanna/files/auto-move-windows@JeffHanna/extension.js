@@ -257,18 +257,62 @@ class AutoMoveWindows {
                 return;
         }
 
-        // Capture this context for use in timeout callback
-        const self = this;
+        // Apply workspace first, then geometry with a delay (to allow workspace switch to complete)
+        try {
+            const x = Number.isFinite(rule.x) ? rule.x : 0;
+            const y = Number.isFinite(rule.y) ? rule.y : 0;
+            const width = Number.isFinite(rule.width) ? Math.max(1, rule.width) : 0;
+            const height = Number.isFinite(rule.height) ? Math.max(1, rule.height) : 0;
 
-        // Wait a short time so the window has been fully mapped and its frame exists
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
-            // Register window in firstOnly map after processing starts
+            // Register window in firstOnly map
             if (rule.firstOnly) {
                 const ruleKey = rule._wmClassLower;
-                self._firstAppliedMap.set(ruleKey, metaWindow);
+                this._firstAppliedMap.set(ruleKey, metaWindow);
             }
 
-            if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
+            // Check if this app is in the whitelist of apps needing the workspace-switching workaround
+            let needsWorkaround = false;
+            try {
+                const workaroundAppsJson = this._settings.getValue('apps-needing-workaround');
+                const workaroundApps = JSON.parse(workaroundAppsJson || '["terminal"]');
+                needsWorkaround = workaroundApps.some(app => 
+                    rule._wmClassLower.includes(app.toLowerCase())
+                );
+            } catch (e) {
+                // If parsing fails, fall back to just checking for terminal
+                needsWorkaround = rule._wmClassLower.includes('terminal');
+            }
+
+            // Helper function to apply geometry
+            const applyGeometryNow = () => {
+                try {
+                    if (rule.maximized === true) {
+                        metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
+                    } else if (rule.maximizeVertically === true && width > 0) {
+                        try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
+                        try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
+
+                        if (metaWindow.move_resize_frame) {
+                            const currentRect = metaWindow.get_frame_rect();
+                            metaWindow.move_resize_frame(true, x, currentRect.y, width, currentRect.height);
+                        }
+
+                        metaWindow.maximize(Meta.MaximizeFlags.VERTICAL);
+                    } else if (width > 0 && height > 0) {
+                        try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
+                        try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
+
+                        if (metaWindow.move_resize_frame) {
+                            metaWindow.move_resize_frame(true, x, y, width, height);
+                        }
+                    }
+                } catch (e) {
+                    global.logError('[auto-move-windows] Error applying geometry: ' + e);
+                }
+            };
+
+            // Helper function to move window to target workspace
+            const moveToTargetWorkspace = () => {
                 if (metaWindow.change_workspace_by_index) {
                     metaWindow.change_workspace_by_index(rule.workspace, false);
                 } else if (metaWindow.change_workspace) {
@@ -276,61 +320,86 @@ class AutoMoveWindows {
                     if (ws)
                         metaWindow.change_workspace(ws);
                 }
+            };
+
+            // For apps needing workspace-switching workaround: create on alternate workspace first
+            // This avoids WM centering bugs that occur when creating windows on their target workspace
+            if (needsWorkaround && Number.isInteger(rule.workspace) && rule.workspace >= 0) {
+                // Find an alternate workspace (prefer workspace 1 if not the target)
+                const alternateWorkspace = rule.workspace === 0 ? 1 : 0;
+
+                // Create on alternate workspace
+                if (metaWindow.change_workspace_by_index) {
+                    metaWindow.change_workspace_by_index(alternateWorkspace, false);
+                } else if (metaWindow.change_workspace) {
+                    const ws = global.workspace_manager.get_workspace_by_index(alternateWorkspace);
+                    if (ws)
+                        metaWindow.change_workspace(ws);
+                }
+
+                // Wait for window to stabilize, then apply geometry, then move to target
+                GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                    try {
+                        applyGeometryNow();
+
+                        // After geometry is applied, move to target workspace
+                        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
+                            try {
+                                moveToTargetWorkspace();
+                            } catch (e) {
+                                global.logError('[auto-move-windows] Error moving to target workspace: ' + e);
+                            }
+                            return GLib.SOURCE_REMOVE;
+                        });
+                    } catch (e) {
+                        global.logError('[auto-move-windows] Error in Terminal workaround: ' + e);
+                    }
+                    return GLib.SOURCE_REMOVE;
+                });
 
                 // If firstOnly is false, enable continuous workspace enforcement
                 if (!rule.firstOnly) {
-                    self._managedWindows.set(metaWindow, {
+                    this._managedWindows.set(metaWindow, {
                         workspace: rule.workspace,
                         wmClass: rule.wmClass
                     });
 
                     // Connect to workspace-changed signal for this window
-                    self._signals.connect(metaWindow, 'workspace-changed',
-                        self._onWindowWorkspaceChanged.bind(self, metaWindow));
+                    this._signals.connect(metaWindow, 'workspace-changed',
+                        this._onWindowWorkspaceChanged.bind(this, metaWindow));
+                }
+                return; // Skip normal path
+            }
+
+            // Normal path for other applications
+            if (Number.isInteger(rule.workspace) && rule.workspace >= 0) {
+                moveToTargetWorkspace();
+
+                // If firstOnly is false, enable continuous workspace enforcement
+                if (!rule.firstOnly) {
+                    this._managedWindows.set(metaWindow, {
+                        workspace: rule.workspace,
+                        wmClass: rule.wmClass
+                    });
+
+                    // Connect to workspace-changed signal for this window
+                    this._signals.connect(metaWindow, 'workspace-changed',
+                        this._onWindowWorkspaceChanged.bind(this, metaWindow));
                 }
             }
 
-            if (rule.maximized === true) {
+            // Apply geometry after workspace switch completes (with delay)
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 50, () => {
                 try {
-                    metaWindow.maximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL);
+                    applyGeometryNow();
                 } catch (e) {
-                    global.logError(e);
+                    global.logError('[auto-move-windows] Error applying geometry: ' + e);
                 }
-            } else if (rule.maximizeVertically === true && Number.isFinite(rule.width) && rule.width > 0) {
-                try {
-                    const x = Number.isFinite(rule.x) ? rule.x : 0;
-                    const width = Math.max(1, rule.width);
-
-                    try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
-                    try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
-
-                    if (metaWindow.move_resize_frame) {
-                        const currentRect = metaWindow.get_frame_rect();
-                        metaWindow.move_resize_frame(true, x, currentRect.y, width, currentRect.height);
-                    }
-
-                    metaWindow.maximize(Meta.MaximizeFlags.VERTICAL);
-                } catch (e) {
-                    global.logError(e);
-                }
-            } else {
-                const hasGeom = Number.isFinite(rule.width) && rule.width > 0 && Number.isFinite(rule.height) && rule.height > 0;
-                if (hasGeom) {
-                    const x = Number.isFinite(rule.x) ? rule.x : 0;
-                    const y = Number.isFinite(rule.y) ? rule.y : 0;
-                    const width = Math.max(1, rule.width);
-                    const height = Math.max(1, rule.height);
-
-                    if (metaWindow.move_resize_frame) {
-                        try { metaWindow.unmaximize(Meta.MaximizeFlags.HORIZONTAL | Meta.MaximizeFlags.VERTICAL); } catch (e) {}
-                        try { metaWindow.tile(Meta.TileMode.NONE, false); } catch (e) {}
-                        metaWindow.move_resize_frame(true, x, y, width, height);
-                    }
-                }
-            }
-
-            return GLib.SOURCE_REMOVE;
-        });
+                return GLib.SOURCE_REMOVE;
+            });
+        } catch (e) {
+            global.logError('[auto-move-windows] Error applying rule: ' + e);
+        }
     }
 
 

@@ -8,5 +8,11 @@
     "file": "settings.py",
     "widget": "RuleListWidget",
     "default": []
+  },
+  "apps-needing-workaround": {
+    "type": "custom",
+    "file": "settings.py",
+    "widget": "WorkaroundAppsWidget",
+    "default": "[\"terminal\"]"
   }
 }

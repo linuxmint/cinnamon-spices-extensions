@@ -3,6 +3,15 @@ Auto Move Windows
 
 This Cinnamon spice automatically moves and resizes newly opened application windows according to per-application rules.
 
+**GNOME Terminal Positioning**
+---
+
+GNOME Terminal has a known issue where geometry rules (position and size) may not apply correctly when the window is created directly on its target workspace. This extension includes an automatic workaround for Terminal: when applying a rule to Terminal, the window is briefly created on an alternate workspace, the geometry is applied, and then it's moved to the target workspace. This process is invisible to the user and takes about 250ms total.
+
+No action is required—Terminal positioning works automatically with this workaround.
+
+If other applications exhibit the same positioning issue, you can add them to the **"Apps Needing Workspace-Switching Workaround"** list in the extension settings. The list uses WM_CLASS patterns (case-insensitive substring match). Use `xprop WM_CLASS` to find an application's WM_CLASS value.
+
 Configuration
 -------------
 Rules are stored in the extension settings under the key `app-rules` as a JSON array of objects.
