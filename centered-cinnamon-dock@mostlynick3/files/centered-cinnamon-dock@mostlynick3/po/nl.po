@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2025-11-30 08:31+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-12-20 01:39+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -41,8 +42,8 @@ msgid "Height offset (negative = up, positive = down)"
 msgstr "Hoogteverschuiving (negatief = omhoog, positief = omlaag)"
 
 #. 6.4->settings-schema.json->hover-pixels->description
-msgid "Hover trigger zone height at bottom of screen"
-msgstr "Hoogte van de zweefactiveringszone onderaan het scherm"
+msgid "Height of trigger zone to show panel if hidden"
+msgstr "Hoogte van triggerzone om paneel te tonen indien verborgen"
 
 #. 6.4->settings-schema.json->animation-time->units
 msgid "milliseconds"
@@ -63,3 +64,23 @@ msgstr "Vensters niet verschuiven (paneelsteunen uitschakelen)"
 #. 6.4->settings-schema.json->show-on-no-focus->description
 msgid "Show dock when no window is focused"
 msgstr "Dock tonen wanneer geen venster is gefocust"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Main panel only"
+msgstr "Alleen hoofdpaneel"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All bottom panels"
+msgstr "Alle onderste panelen"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All top panels"
+msgstr "Alle bovenste panelen"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Top and bottom panels"
+msgstr "Bovenste en onderste panelen"
+
+#. 6.4->settings-schema.json->panel-mode->description
+msgid "Which panels to apply extension to"
+msgstr "Op welke panelen de extensie moet worden toegepast"

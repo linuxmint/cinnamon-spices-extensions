@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-12-03 22:20+0100\n"
+"POT-Creation-Date: 2025-12-20 01:39+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -43,10 +43,8 @@ msgid "Height offset (negative = up, positive = down)"
 msgstr "Desplazamiento de altura (negativo = arriba, positivo = abajo)"
 
 #. 6.4->settings-schema.json->hover-pixels->description
-msgid "Hover trigger zone height at bottom of screen"
-msgstr ""
-"Altura de la zona de activación del cursor en la parte inferior de la "
-"pantalla"
+msgid "Height of trigger zone to show panel if hidden"
+msgstr "Altura de la zona de activación para mostrar el panel si está oculto"
 
 #. 6.4->settings-schema.json->animation-time->units
 msgid "milliseconds"

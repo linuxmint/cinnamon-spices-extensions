@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2025-11-30 08:31+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-12-20 01:39+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -41,8 +42,8 @@ msgid "Height offset (negative = up, positive = down)"
 msgstr "Höjdförskjutning (negativ = upp, positiv = ner)"
 
 #. 6.4->settings-schema.json->hover-pixels->description
-msgid "Hover trigger zone height at bottom of screen"
-msgstr "Höjd på svävsutlösningszon längst ner på skärmen"
+msgid "Height of trigger zone to show panel if hidden"
+msgstr "Höjd på utlösarzon för att visa panel om dold"
 
 #. 6.4->settings-schema.json->animation-time->units
 msgid "milliseconds"
@@ -63,3 +64,23 @@ msgstr "Flytta inte fönster (inaktivera panelstöttor)"
 #. 6.4->settings-schema.json->show-on-no-focus->description
 msgid "Show dock when no window is focused"
 msgstr "Visa dockan när inget fönster är fokuserat"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Main panel only"
+msgstr "Endast huvudpanel"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All bottom panels"
+msgstr "Alla bottenpaneler"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All top panels"
+msgstr "Alla topppaneler"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Top and bottom panels"
+msgstr "Topp- och bottenpaneler"
+
+#. 6.4->settings-schema.json->panel-mode->description
+msgid "Which panels to apply extension to"
+msgstr "Vilka paneler att centrera"
