@@ -1,0 +1,17 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+
+#. 6.0/extension.js:1836
+msgid "Error"
+msgstr ""
+
+#. 6.0/extension.js:1837
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Blur Cinnamon effects can not be applied to that "
+"window"
+msgstr ""
