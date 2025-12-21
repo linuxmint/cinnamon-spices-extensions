@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-12-02 20:17+0100\n"
-"PO-Revision-Date: 2025-06-21 22:05+0200\n"
+"PO-Revision-Date: 2025-12-21 18:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #. metadata.json->description
 msgid ""
@@ -34,33 +34,35 @@ msgstr "Okos Panel"
 
 #. settings-schema.json->head0->description
 msgid "Panels: "
-msgstr ""
+msgstr "Panelek: "
 
 #. settings-schema.json->concerned->description
 msgid "Which panels: "
-msgstr ""
+msgstr "Melyik panelek: "
 
 #. settings-schema.json->concerned->options
 msgid "Main panel only"
-msgstr ""
+msgstr "Csak a fő panel"
 
 #. settings-schema.json->concerned->options
 msgid "Horizontal panels only"
-msgstr ""
+msgstr "Csak vízszintes panelek"
 
 #. settings-schema.json->concerned->options
 msgid "Vertical panels only"
-msgstr ""
+msgstr "Csak függőleges panelek"
 
 #. settings-schema.json->concerned->options
 msgid "All of them"
-msgstr ""
+msgstr "Midegyik"
 
 #. settings-schema.json->concerned->tooltip
 msgid ""
 "The main panel is the first panel that was created (by Cinnamon).\n"
 "It is recommended that you restart Cinnamon after changing this setting."
 msgstr ""
+"A fő panel az első panel, amelyet a Cinnamon hozott létre.\n"
+"A beállítás módosítása után ajánlott újraindítani a Cinnamont."
 
 #. settings-schema.json->head1->description
 msgid "Mouse scroll options: "
