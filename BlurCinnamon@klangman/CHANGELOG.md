@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.6.1
+
+* Fixed a 1.6.0 regression where the dimming of desktop effects are not removed after disabiling the desktop effects on the general page in the config window.
+* Added support for rounded cinnamon panels, but currently to enable rounded corners in Cinnamon panels you need to manually edit your cinnamon.css file.
+
+## 1.6.0
+
+* Added the ability to apply effects to application window backgrounds
+* Allows to you adjust the opacity of application windows so that the Blur Cinnamon application window effects can be seen below any window
+* Added a rounded corner effect which allows for rounded corners on the Blur Cinnamon effects when Popup Menus, Notifications, Tooltips and Application Windows are using rounded corners. Blur Cinnamon no longer overrides the rounded corner  settings that your theme defines for Menus, Notifications and Tooltips
+* Added the ability to set a dimming color to the desktop background image
+* Added an optional backlight effect to the focused window using the blur effect, allowing it to spill over the focused windows borders giving a backlight type effect. This is effect is disabled by default
+* Added the ability to apply effects to titlebar context popup menus
+* Added options so you can select which type of popup menus will have effects applied (applet popups, panel menus, titlebar menus)
+* Fixed a bug where the blur intensity slider control for some components was only shown when the expo blur type was set to Gaussian
+* Improve Popup Menu size tracking so that the blurred actor better follows the animated open/close effects
+
 ## 1.5.2
 
 * When the theme override option is disabled, restore the theme's menu settings

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-09-30 09:50-0400\n"
+"POT-Creation-Date: 2025-12-03 23:37-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,40 +15,55 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
-#. 6.0/extension.js:1752
+#. 6.0/extension.js:1836
+msgid "Error"
+msgstr "Error"
+
+#. 6.0/extension.js:1837
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Blur Cinnamon effects can not be applied to that "
+"window"
+msgstr ""
+"No se puede determinar la aplicación o la clase WM_CLASS de la ventana que "
+"tenía el foco anteriormente, por lo que no se pueden aplicar los efectos de "
+"Desenfoque Cinnamon a esa ventana"
+
+#. 6.0/extension.js:2313
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:1753
+#. 6.0/extension.js:2314
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
 "\n"
 "Open the Blur Cinnamon Settings to enable additional effects on several "
-"other Cinnamon components like menus and notifications, or disable effects "
-"on components that were enabled by default. You can also make changes to the "
-"effect properties like blur intensity, color saturation and dimming."
+"other desktop elements like menus, notifications and windows, or disable "
+"effects on components that were enabled by default. You can also make "
+"changes to the effect properties like blur intensity, color saturation and "
+"dimming."
 msgstr ""
 "Esperamos que estés disfrutando de tus nuevos efectos Panel, Exposición, "
 "Vista general y Alt-Tab Coverflow/Linea de Tiempo.\n"
 "\n"
-"Abra la configuración de Blur Cinnamon para habilitar efectos adicionales en "
-"otros componentes de Cinnamon, como menús y notificaciones, o deshabilitar "
-"efectos en componentes que estaban habilitados por defecto. También puede "
-"realizar cambios en las propiedades de los efectos, como la intensidad del "
-"desenfoque, la saturación del color y el oscurecimiento."
+"Abre la configuración de Blur Cinnamon para habilitar efectos adicionales en "
+"otros elementos del escritorio, como menús, notificaciones y ventanas, o "
+"deshabilitar efectos en componentes que estaban habilitados por defecto. "
+"También puedes realizar cambios en las propiedades de los efectos, como la "
+"intensidad del desenfoque, la saturación del color y el oscurecimiento."
 
-#. 6.0/extension.js:1757
+#. 6.0/extension.js:2318
 msgid "Open Blur Cinnamon Settings"
-msgstr "Abrir configuración de desenfoque de Cinnamon"
+msgstr "Abrir configuración de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:1823
+#. 6.0/extension.js:2395
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:1824
+#. 6.0/extension.js:2396
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -115,9 +130,13 @@ msgstr "Alt-Tab"
 msgid "Tooltips"
 msgstr "Información sobre herramientas"
 
+#. 6.0->settings-schema.json->windows-page->title
+msgid "Windows"
+msgstr "Ventanas"
+
 #. 6.0->settings-schema.json->general-settings->title
-msgid "Cinnamon components where effects will be applied"
-msgstr "Componentes de Cinnamon donde se aplicarán los efectos"
+msgid "Desktop elements where effects will be applied"
+msgstr "Elementos del escritorio a los que se aplicarán los efectos"
 
 #. 6.0->settings-schema.json->generic-effect-settings->title
 msgid "Generic effect settings"
@@ -140,13 +159,16 @@ msgid "Expo effect settings"
 msgstr "Configuración de efecto de la exposición"
 
 #. 6.0->settings-schema.json->panels-override->title
-#. 6.0->settings-schema.json->popup-override->title
-msgid "Panels settings"
-msgstr "Configuración de los paneles"
+msgid "Panel settings"
+msgstr "Configuración del panel"
 
 #. 6.0->settings-schema.json->panels-effect-settings->title
 msgid "Panel effects settings"
 msgstr "Configuración de efectos del panel"
+
+#. 6.0->settings-schema.json->popup-override->title
+msgid "Popup menu settings"
+msgstr "Configuración del menú emergente"
 
 #. 6.0->settings-schema.json->popup-effect-settings->title
 msgid "Popup menu effects settings"
@@ -190,12 +212,16 @@ msgstr ""
 "Configuración de los efectos de fondo de las descripciones emergentes del "
 "panel"
 
+#. 6.0->settings-schema.json->windows-effect-settings->title
+msgid "Application window background effects settings"
+msgstr "Configuración de los efectos de fondo de la ventana de la aplicación"
+
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
 "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
 "hot corner)"
 msgstr ""
-"Aplicar efectos a la vista general (predeterminado: Ctrl+Alt+Abajo / Esquina "
+"Aplicar efectos a la Vista general (predeterminado: Ctrl+Alt+Abajo / Esquina "
 "activa 'Mostrar todas las ventanas')"
 
 #. 6.0->settings-schema.json->enable-expo-effects->tooltip
@@ -208,7 +234,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->enable-panels-effects->description
 msgid "Panels  (Please read tooltip)"
-msgstr "Paneles (lea la información sobre herramientas)"
+msgstr "Paneles  (lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->tooltip
 msgid ""
@@ -227,27 +253,24 @@ msgstr ""
 
 #. 6.0->settings-schema.json->enable-popup-effects->description
 msgid "Popup Menus  (Please read tooltip)"
-msgstr "Menús emergentes (lea la información sobre herramientas)"
+msgstr "Menús emergentes  (lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
 msgid ""
-"Apply effects to panel applet popup menus. This option is intended for the "
-"Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other "
-"themes. Light themes are unlikely to give good results but might be made to "
-"work with some creative use of the dimming color settings and an appropriate "
+"Apply effects to panel popup menus. This option is intended for the Cinnamon "
+"(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
+"Light themes are unlikely to give good results but might be made to work "
+"with some creative use of the dimming color settings and an appropriate "
 "background image. It overrides some theme settings to achieve a "
-"(semi-)transparent menu so that the blurred background is visible. It also "
-"removes rounded corners so that the blurred background will not spill over "
-"the rounded edges."
+"(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
-"Aplicar efectos a los menús emergentes de los applets del panel. Esta opción "
-"está pensada para los temas de escritorio oscuros Cinnamon (6.4) y Mint-Y, "
-"pero podría funcionar bien con otros temas. Es poco probable que los temas "
-"claros den buenos resultados, pero podrían funcionar con un uso creativo de "
-"los ajustes de atenuación del color y una imagen de fondo adecuada. Anula "
-"algunos ajustes del tema para conseguir un menú (semi)transparente de modo "
-"que el fondo difuminado sea visible. También elimina las esquinas "
-"redondeadas para que el fondo difuminado no sobrepase los bordes redondeados."
+"Aplica efectos a los menús emergentes del panel. Esta opción está pensada "
+"para los temas de escritorio oscuros Cinnamon (6.4) y Mint-Y, pero puede "
+"funcionar bien con otros temas. Es poco probable que los temas claros den "
+"buenos resultados, pero se pueden hacer funcionar con un uso creativo de los "
+"ajustes de atenuación del color y una imagen de fondo adecuada. Anula "
+"algunos ajustes del tema para conseguir un menú (semi)transparente, de modo "
+"que el fondo difuminado sea visible."
 
 #. 6.0->settings-schema.json->enable-desktop-effects->description
 msgid "Desktop background"
@@ -272,16 +295,13 @@ msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
 "other themes. It overrides some theme settings to achieve a "
-"(semi-)transparent window so that the blurred background is visible. It also "
-"removes rounded corners so that the blurred background will not spill over "
-"the rounded edges."
+"(semi-)transparent window so that the blurred background is visible."
 msgstr ""
-"Aplicar efectos a las notificaciones emergentes. Esta opción se ha probado "
-"con los temas oscuros de escritorio de Cinnamon (6.4) y Mint-Y, pero podría "
-"funcionar bien con otros temas. Anula algunas configuraciones del tema para "
-"lograr una ventana (semi)transparente, de modo que el fondo difuminado sea "
-"visible. También elimina las esquinas redondeadas para que el fondo "
-"difuminado no se desborde sobre los bordes redondeados."
+"Aplica efectos a las ventanas emergentes de notificación. Esta opción se ha "
+"probado con los temas de escritorio Cinnamon (6.4) y Mint-Y dark, pero es "
+"posible que también funcione con otros temas. Anula algunos ajustes del tema "
+"para conseguir una ventana (semi)transparente, de modo que el fondo "
+"difuminado sea visible."
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->description
 msgid "Alt-Tab application switcher (Coverflow & Timeline only)"
@@ -305,14 +325,49 @@ msgstr ""
 msgid ""
 "Apply effects to the panel tooltip backgrounds. It overrides some theme "
 "settings to achieve a (semi-)transparent tooltip so that the blurred "
-"background is visible. It also removes rounded corners so that the blurred "
-"background will not spill over the rounded edges."
+"background is visible."
 msgstr ""
-"Aplica efectos a los fondos de la información sobre herramientas del panel. "
-"Anula algunos ajustes del tema para lograr una información sobre "
-"herramientas (semi)transparente, de modo que el fondo difuminado sea "
-"visible. También elimina las esquinas redondeadas para que el fondo "
-"difuminado no se desborde sobre los bordes redondeados."
+"Aplica efectos a los fondos de las descripciones emergentes del panel. Anula "
+"algunos ajustes del tema para conseguir una descripción emergente "
+"(semi)transparente, de modo que el fondo desenfocado sea visible."
+
+#. 6.0->settings-schema.json->enable-window-effects->description
+msgid "Application windows (Please read tooltip)"
+msgstr "Ventanas de aplicación (lea la información sobre herramientas)"
+
+#. 6.0->settings-schema.json->enable-window-effects->tooltip
+msgid ""
+"Apply effects to application window backgrounds by adding an effect actor "
+"below all existing graphical elements of affected windows. This means the "
+"effects will NOT be visible unless the application is setup to be "
+"transparent or the \"Opacity\" setting for the window is less than 100%. The "
+"application inclusion list on the \"Windows\" tab is used to determine which "
+"(if any) applications will have effects applied to its windows."
+msgstr ""
+"Aplica efectos al fondo de las ventanas de la aplicación añadiendo un actor "
+"de efectos debajo de todos los elementos gráficos existentes de las ventanas "
+"afectadas. Esto significa que los efectos NO serán visibles a menos que la "
+"aplicación esté configurada para ser transparente o que el ajuste de "
+"\"Opacidad\" de la ventana sea inferior al 100 %. La lista de inclusión de "
+"aplicaciones de la pestaña \"Ventanas\" se utiliza para determinar a qué "
+"aplicaciones (si las hay) se les aplicarán efectos a sus ventanas."
+
+#. 6.0->settings-schema.json->focused-window-backlight->description
+msgid "Focused window backlight effect"
+msgstr "Efecto de retroiluminación de ventana enfocada"
+
+#. 6.0->settings-schema.json->focused-window-backlight->tooltip
+msgid ""
+"Apply a background image based backlight effect to the currently focused "
+"window. The effect spills over the focused windows borders making the window "
+"appear to glow around the edges. If the focused window is transparent, this "
+"effect will also show a blurred background image behind the window."
+msgstr ""
+"Aplica un efecto de retroiluminación basado en una imagen de fondo a la "
+"ventana actualmente enfocada. El efecto se extiende más allá de los bordes "
+"de la ventana enfocada, haciendo que la ventana parezca brillar alrededor de "
+"los bordes. Si la ventana enfocada es transparente, este efecto también "
+"mostrará una imagen de fondo desenfocado detrás de la ventana."
 
 #. 6.0->settings-schema.json->overview-info->description
 msgid "Warning: Overview effects are currently disabled under the General tab."
@@ -368,6 +423,12 @@ msgstr ""
 "Advertencia: Los efectos de información sobre herramientas del panel están "
 "desactivados actualmente en la pestaña General."
 
+#. 6.0->settings-schema.json->windows-info->description
+msgid "Warning: Window effects are currently disabled under the General tab."
+msgstr ""
+"Advertencia: Los efectos de ventana están desactivados actualmente en la "
+"pestaña General."
+
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
 msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
@@ -392,18 +453,17 @@ msgstr ""
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
 msgid ""
-"Allow this extension to modify the popup Menu transparency, background color "
-"and rounded corner settings. If this is disabled the extension will only "
-"apply a blur overlay under the popup menus. This setting should only be "
-"disabled when the theme already uses transparent popup menus and you want "
-"the themes setting to apply."
+"Allow this extension to modify the popup Menu transparency and background "
+"color settings. If this is disabled the extension will only apply a blur "
+"overlay under the popup menus. This setting should only be disabled when the "
+"theme already uses transparent popup menus and you want the themes setting "
+"to apply."
 msgstr ""
-"Permitir que esta extensión modifique la transparencia del menú emergente, "
-"el color de fondo y las esquinas redondeadas. Si esta opción está "
-"deshabilitada, la extensión sólo aplicará un desenfoque bajo los menús "
-"emergentes. Esta configuración sólo debe desactivarse cuando el tema ya "
-"utiliza menús emergentes transparentes y desea que se aplique la "
-"configuración de los temas."
+"Permite que esta extensión modifique la transparencia del menú emergente y "
+"la configuración del color de fondo. Si se desactiva, la extensión solo "
+"aplicará una capa difuminada debajo de los menús emergentes. Esta "
+"configuración solo debe desactivarse cuando el tema ya utilice menús "
+"emergentes transparentes y se desee aplicar la configuración del tema."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
 msgid "Use unique effect settings for the Overview"
@@ -456,6 +516,7 @@ msgid "Panel specific settings"
 msgstr "Configuraciones específicas del panel"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Enabled"
 msgstr "Habilitado"
 
@@ -472,18 +533,22 @@ msgid "Dimming"
 msgstr "Atenuación"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Color"
 msgstr "Color"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Blur"
 msgstr "Desenfoque"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Intensity"
 msgstr "Intensidad"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Saturation"
 msgstr "Saturación"
 
@@ -522,15 +587,8 @@ msgstr ""
 "transparente, es posible que esta configuración no tenga ningún efecto."
 
 #. 6.0->settings-schema.json->opacity->description
-#. 6.0->settings-schema.json->overview-opacity->description
-#. 6.0->settings-schema.json->expo-opacity->description
-#. 6.0->settings-schema.json->panels-opacity->description
-#. 6.0->settings-schema.json->popup-opacity->description
-#. 6.0->settings-schema.json->notification-opacity->description
-#. 6.0->settings-schema.json->appswitcher-opacity->description
-#. 6.0->settings-schema.json->tooltips-opacity->description
-msgid "Dim/Colorize Background (percentage)"
-msgstr "Atenuar/colorear fondo (porcentaje)"
+msgid "Dim/Colorize Background (%)"
+msgstr "Atenuar/Colorear fondo (%)"
 
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
@@ -668,6 +726,16 @@ msgstr "Saturación del color de fondo"
 msgid "Adjusts the color saturation of the background image."
 msgstr "Ajusta la saturación de color de la imagen de fondo."
 
+#. 6.0->settings-schema.json->overview-opacity->description
+#. 6.0->settings-schema.json->expo-opacity->description
+#. 6.0->settings-schema.json->panels-opacity->description
+#. 6.0->settings-schema.json->popup-opacity->description
+#. 6.0->settings-schema.json->notification-opacity->description
+#. 6.0->settings-schema.json->appswitcher-opacity->description
+#. 6.0->settings-schema.json->tooltips-opacity->description
+msgid "Dim/Colorize Background (percentage)"
+msgstr "Atenuar/colorear fondo (porcentaje)"
+
 #. 6.0->settings-schema.json->panels-radius->description
 #. 6.0->settings-schema.json->popup-radius->description
 #. 6.0->settings-schema.json->desktop-radius->description
@@ -683,6 +751,19 @@ msgid ""
 msgstr ""
 "Ajusta la intensidad del efecto de desenfoque gaussiano cambiando el radio "
 "utilizado por el efecto. Este ajuste no afecta al tipo de desenfoque Simple"
+
+#. 6.0->settings-schema.json->popup-applet-menu-effects->description
+msgid "Apply effects to applet popup menus"
+msgstr "Aplicar efectos a los menús emergentes de los applets"
+
+#. 6.0->settings-schema.json->popup-panel-menu-effects->description
+msgid "Apply effects to panel context menus"
+msgstr "Aplicar efectos a los menús contextuales del panel"
+
+#. 6.0->settings-schema.json->popup-title-menu-effects->description
+msgid "Apply effects to window title bar context menus"
+msgstr ""
+"Aplicar efectos a los menús contextuales de la barra de título de la ventana"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
 msgid "Additional popup menu accent elements dimming (percentage)"
@@ -732,8 +813,8 @@ msgstr ""
 "esté enfocado"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
-msgid "Dim background Image (percentage)"
-msgstr "Atenuar Imagen de fondo (porcentaje)"
+msgid "Dim/Colorize background Image (percentage)"
+msgstr "Atenuar/Colorear imagen de fondo (porcentaje)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -746,3 +827,82 @@ msgid ""
 msgstr ""
 "Este botón hará que aparezca un mensaje de notificación para que puedas ver "
 "cómo funciona su configuración de notificaciones."
+
+#. 6.0->settings-schema.json->windows-inclusion-list->description
+msgid "Application window inclusion list"
+msgstr "Lista de inclusión de ventanas de aplicación"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Application"
+msgstr "Aplicación"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Opacity"
+msgstr "Opacidad"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Custom"
+msgstr "Personalizado"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Dim"
+msgstr "Atenuación"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Corner Radius"
+msgstr "Radio del borde"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Top"
+msgstr "Parte superior redondeada"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Bottom"
+msgstr "Parte inferior redondeada"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where background effect will be "
+"applied and what effects will apply. When \"Custom\" is enabled the setting "
+"defined by this table will apply, otherwise the setting on the general tab "
+"will apply for the specific application. The \"Application\" field can be a "
+"WM_CLASS or a desktop file name."
+msgstr ""
+"Define una lista de ventanas de aplicaciones en las que se aplicará el "
+"efecto de fondo y qué efectos se aplicarán. Cuando se habilita "
+"\"Personalizado\", se aplicará la configuración definida en esta tabla; de "
+"lo contrario, se aplicará la configuración de la pestaña general para la "
+"aplicación específica. El campo \"Aplicación\" puede ser un WM_CLASS o un "
+"nombre de archivo de escritorio."
+
+#. 6.0->settings-schema.json->windows-add-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+"Añadir entrada para la aplicación de la ventana enfocada más recientemente"
+
+#. 6.0->settings-schema.json->windows-add-button->tooltip
+msgid ""
+"Focus a window you want to enable window effects on then return here and "
+"press this button."
+msgstr ""
+"Seleccione la ventana en la que desea habilitar los efectos y, a "
+"continuación, vuelva aquí y pulse este botón."
+
+#. 6.0->settings-schema.json->compiz-mitigation->description
+msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
+msgstr ""
+"Desactivar los efectos \"Compiz\" para ventanas con efectos de Desenfoque de "
+"Cinnamon"
+
+#. 6.0->settings-schema.json->compiz-mitigation->tooltip
+msgid ""
+"When enabled, the window moving effect created by the \"Compiz windows "
+"effect\" extension will be disabled for windows with Blur Cinnamon effects "
+"applied. This option will have no effect unless the \"Compiz window effect\" "
+"extension is installed and active."
+msgstr ""
+"Cuando está habilitada, el efecto de movimiento de ventanas creado por la "
+"extensión \"Efecto de ventanas Compiz\" se desactivará para las ventanas con "
+"efectos de Desenfoque de Cinnamon aplicados. Esta opción no tendrá ningún "
+"efecto a menos que la extensión \"Efecto de ventanas Compiz\" esté instalada "
+"y activa."

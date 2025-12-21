@@ -1,7 +1,7 @@
 {
    "layout" : {
       "type" : "layout",
-      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page", "desktop-page", "notification-page", "appswitcher-page", "tooltips-page"],
+      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page", "desktop-page", "notification-page", "appswitcher-page", "tooltips-page", "windows-page"],
 
       "general-page" : {
          "type" : "page",
@@ -48,11 +48,16 @@
          "title" : "Tooltips",
          "sections" : ["tooltips-override", "tooltips-effect-settings"]
       },
+      "windows-page" : {
+         "type" : "page",
+         "title" : "Windows",
+         "sections" : ["windows-effect-settings"]
+      },
 
       "general-settings" : {
          "type" : "section",
-         "title" : "Cinnamon components where effects will be applied",
-         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects", "enable-desktop-effects", "enable-notification-effects", "enable-appswitcher-effects", "enable-tooltips-effects"]
+         "title" : "Desktop elements where effects will be applied",
+         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects", "enable-desktop-effects", "enable-notification-effects", "enable-appswitcher-effects", "enable-tooltips-effects", "enable-window-effects", "focused-window-backlight"]
       },
       "generic-effect-settings" : {
          "type" : "section",
@@ -86,7 +91,7 @@
 
       "panels-override" : {
          "type" : "section",
-         "title" : "Panels settings",
+         "title" : "Panel settings",
          "keys" : ["panels-info", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized"]
       },
       "panels-effect-settings" : {
@@ -98,8 +103,8 @@
 
       "popup-override" : {
          "type" : "section",
-         "title" : "Panels settings",
-         "keys" : [ "popup-info", "enable-popup-override", "allow-transparent-color-popup"]
+         "title" : "Popup menu settings",
+         "keys" : [ "popup-info", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup"]
       },
       "popup-effect-settings" : {
          "type" : "section",
@@ -117,7 +122,7 @@
          "type" : "section",
          "title" : "Desktop background effects settings",
          "dependency" : "enable-desktop-override",
-         "keys" : ["desktop-with-focus", "desktop-opacity", "desktop-blurType", "desktop-radius", "desktop-saturation"]
+         "keys" : ["desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation"]
       },
 
       "notification-override" : {
@@ -154,6 +159,12 @@
          "title" : "Panel tooltips background effects settings",
          "dependency" : "enable-tooltips-override",
          "keys" : ["tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation"]
+      },
+
+      "windows-effect-settings" : {
+         "type" : "section",
+         "title" : "Application window background effects settings",
+         "keys" : ["windows-info", "windows-inclusion-list", "windows-add-button", "compiz-mitigation"]
       }
 
    },
@@ -179,7 +190,7 @@
     "enable-popup-effects" : {
         "type": "switch",
         "description": "Popup Menus  (Please read tooltip)",
-        "tooltip": "Apply effects to panel applet popup menus. This option is intended for the Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other themes. Light themes are unlikely to give good results but might be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some theme settings to achieve a (semi-)transparent menu so that the blurred background is visible. It also removes rounded corners so that the blurred background will not spill over the rounded edges.",
+        "tooltip": "Apply effects to panel popup menus. This option is intended for the Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other themes. Light themes are unlikely to give good results but might be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some theme settings to achieve a (semi-)transparent menu so that the blurred background is visible.",
         "default": false
     },
     "enable-desktop-effects" : {
@@ -191,7 +202,7 @@
     "enable-notification-effects" : {
         "type": "switch",
         "description": "Notification popups (Please read tooltip)",
-        "tooltip": "Apply effects to the notification popups. This option has been tested with the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with other themes. It overrides some theme settings to achieve a (semi-)transparent window so that the blurred background is visible. It also removes rounded corners so that the blurred background will not spill over the rounded edges.",
+        "tooltip": "Apply effects to the notification popups. This option has been tested with the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with other themes. It overrides some theme settings to achieve a (semi-)transparent window so that the blurred background is visible.",
         "default": false
     },
     "enable-appswitcher-effects" : {
@@ -203,8 +214,26 @@
     "enable-tooltips-effects" : {
         "type": "switch",
         "description": "Panel tooltips (Please read tooltip)",
-        "tooltip": "Apply effects to the panel tooltip backgrounds. It overrides some theme settings to achieve a (semi-)transparent tooltip so that the blurred background is visible. It also removes rounded corners so that the blurred background will not spill over the rounded edges.",
+        "tooltip": "Apply effects to the panel tooltip backgrounds. It overrides some theme settings to achieve a (semi-)transparent tooltip so that the blurred background is visible.",
         "default": false
+    },
+    "enable-window-effects" : {
+        "type": "switch",
+        "description": "Application windows (Please read tooltip)",
+        "tooltip": "Apply effects to application window backgrounds by adding an effect actor below all existing graphical elements of affected windows. This means the effects will NOT be visible unless the application is setup to be transparent or the \"Opacity\" setting for the window is less than 100%. The application inclusion list on the \"Windows\" tab is used to determine which (if any) applications will have effects applied to its windows.",
+        "default": false
+    },
+
+    "focused-window-backlight": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Focused window backlight effect",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.5,
+        "tooltip": "Apply a background image based backlight effect to the currently focused window. The effect spills over the focused windows borders making the window appear to glow around the edges. If the focused window is transparent, this effect will also show a blurred background image behind the window.",
+        "default": 0
     },
 
     "overview-info" : {
@@ -247,6 +276,11 @@
         "description" : "Warning: Panel tooltip effects are currently disabled under the General tab.",
         "dependency" : "!enable-tooltips-effects"
     },
+    "windows-info" : {
+        "type" : "label",
+        "description" : "Warning: Window effects are currently disabled under the General tab.",
+        "dependency" : "!enable-window-effects"
+    },
 
     "allow-transparent-color-panels" : {
         "type": "switch",
@@ -257,7 +291,7 @@
     "allow-transparent-color-popup" : {
         "type": "switch",
         "description": "Override some of the popup menu theme settings (recommended)",
-        "tooltip": "Allow this extension to modify the popup Menu transparency, background color and rounded corner settings. If this is disabled the extension will only apply a blur overlay under the popup menus. This setting should only be disabled when the theme already uses transparent popup menus and you want the themes setting to apply.",
+        "tooltip": "Allow this extension to modify the popup Menu transparency and background color settings. If this is disabled the extension will only apply a blur overlay under the popup menus. This setting should only be disabled when the theme already uses transparent popup menus and you want the themes setting to apply.",
         "default": true
     },
 
@@ -347,8 +381,10 @@
     },
 
     "opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 40,
@@ -375,7 +411,9 @@
     },
 
     "radius": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
@@ -386,7 +424,9 @@
     },
 
     "saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
@@ -550,6 +590,24 @@
     },
 
 
+    "popup-applet-menu-effects" : {
+        "type": "switch",
+        "description": "Apply effects to applet popup menus",
+        "default": true
+    },
+
+    "popup-panel-menu-effects" : {
+        "type": "switch",
+        "description": "Apply effects to panel context menus",
+        "default": true
+    },
+
+    "popup-title-menu-effects" : {
+        "type": "switch",
+        "description": "Apply effects to window title bar context menus",
+        "default": true
+    },
+
     "popup-opacity" : {
         "type": "scale",
         "description": "Dim/Colorize Background (percentage)",
@@ -631,7 +689,7 @@
 
     "desktop-opacity" : {
         "type": "scale",
-        "description": "Dim background Image (percentage)",
+        "description": "Dim/Colorize background Image (percentage)",
         "min": 0,
         "max": 100,
         "default": 50,
@@ -719,7 +777,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "expo-blurType=2"
+        "dependency" : "notification-blurType=2"
     },
 
     "notification-saturation": {
@@ -775,7 +833,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "expo-blurType=2"
+        "dependency" : "appswitcher-blurType=2"
     },
 
     "appswitcher-saturation": {
@@ -824,7 +882,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "expo-blurType=2"
+        "dependency" : "tooltips-blurType=2"
     },
 
     "tooltips-saturation": {
@@ -835,6 +893,48 @@
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image.",
         "default": 100
+    },
+
+    "windows-inclusion-list" : {
+        "type" : "list",
+        "height" : 450,
+        "description" : "Application window inclusion list",
+        "columns" : [
+            {"id": "enabled",       "title": "Enabled",      "type": "boolean", "default": true},
+            {"id": "application",   "title": "Application",  "type": "string",  "default": ""},
+            {"id": "window_opacity","title": "Opacity",      "type": "integer", "default": 100,  "min": 10, "max": 100},
+            {"id": "override",      "title": "Custom",       "type": "boolean", "default": true},
+            {"id": "opacity",       "title": "Dim",          "type": "integer", "default": 0,  "min": 0, "max": 100},
+            {"id": "color",         "title": "Color",        "type": "string",  "default": "rgb(0,0,0)"},
+            {"id": "blurtype",      "title": "Blur",         "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
+            {"id": "radius",        "title": "Intensity",    "type": "integer", "default": 10,  "min": 0, "max": 100},
+            {"id": "saturation",    "title": "Saturation",   "type": "integer", "default": 100, "min": 0, "max": 100},
+            {"id": "corner_radius", "title": "Corner Radius","type": "integer", "default": 10, "min": 0, "max": 25},
+            {"id": "corner_top",    "title": "Rounded Top","type": "boolean", "default": true},
+            {"id": "corner_bottom", "title": "Rounded Bottom","type": "boolean", "default": false}
+        ],
+        "tooltip": "Defines a list of application windows where background effect will be applied and what effects will apply. When \"Custom\" is enabled the setting defined by this table will apply, otherwise the setting on the general tab will apply for the specific application. The \"Application\" field can be a WM_CLASS or a desktop file name.",
+        "default" : [
+            { "enabled": false, "application": "Alacritty.desktop",          "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "com.gexperts.Tilix.desktop", "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "org.gnome.Ptyxis.desktop",   "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 12, "corner_top": true, "corner_bottom": true  },
+            { "enabled": false, "application": "kitty.desktop",              "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "org.kde.konsole.desktop",    "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false }
+        ]
+    },
+
+   "windows-add-button" : {
+      "type" : "button",
+      "description" : "Add entry for the application of the most recently focused window",
+      "callback" : "on_window_add_button_pressed",
+      "tooltip" : "Focus a window you want to enable window effects on then return here and press this button."
+    },
+
+    "compiz-mitigation": {
+        "type": "switch",
+        "default": true,
+        "description": "Disable \"Compiz\" effects for windows with Blur Cinnamon effects",
+        "tooltip": "When enabled, the window moving effect created by the \"Compiz windows effect\" extension will be disabled for windows with Blur Cinnamon effects applied. This option will have no effect unless the \"Compiz window effect\" extension is installed and active."
     },
 
     "new-install": {

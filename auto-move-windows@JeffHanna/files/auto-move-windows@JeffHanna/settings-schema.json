@@ -1,0 +1,18 @@
+{
+  "header-0": {
+    "type": "header",
+    "description": "Configure rules for automatic window placement and sizing.\n\nEach rule specifies which windows to match and how to position them.\nUse 'xprop WM_CLASS' to find an application's WM_CLASS value.\n\nFirst Only behavior:\n• When checked (true): Only the first window is placed initially\n• When unchecked (false): All windows are placed with continuous enforcement (kept on assigned workspace)"
+  },
+  "app-rules": {
+    "type": "custom",
+    "file": "settings.py",
+    "widget": "RuleListWidget",
+    "default": []
+  },
+  "apps-needing-workaround": {
+    "type": "custom",
+    "file": "settings.py",
+    "widget": "WorkaroundAppsWidget",
+    "default": "[\"terminal\"]"
+  }
+}

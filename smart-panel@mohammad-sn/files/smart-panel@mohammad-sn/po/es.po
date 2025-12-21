@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-05-14 22:04+0200\n"
-"PO-Revision-Date: 2025-05-16 12:09-0400\n"
+"POT-Creation-Date: 2025-12-02 20:17+0100\n"
+"PO-Revision-Date: 2025-12-03 11:38-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.8\n"
 
 #. metadata.json->description
 msgid ""
@@ -30,6 +30,38 @@ msgstr ""
 #. metadata.json->name
 msgid "Smart Panel"
 msgstr "Panel inteligente"
+
+#. settings-schema.json->head0->description
+msgid "Panels: "
+msgstr "Paneles: "
+
+#. settings-schema.json->concerned->description
+msgid "Which panels: "
+msgstr "¿Qué paneles?: "
+
+#. settings-schema.json->concerned->options
+msgid "Main panel only"
+msgstr "Solo panel principal"
+
+#. settings-schema.json->concerned->options
+msgid "Horizontal panels only"
+msgstr "Solo paneles horizontales"
+
+#. settings-schema.json->concerned->options
+msgid "Vertical panels only"
+msgstr "Solo paneles verticales"
+
+#. settings-schema.json->concerned->options
+msgid "All of them"
+msgstr "Todos ellos"
+
+#. settings-schema.json->concerned->tooltip
+msgid ""
+"The main panel is the first panel that was created (by Cinnamon).\n"
+"It is recommended that you restart Cinnamon after changing this setting."
+msgstr ""
+"El panel principal es el primer panel que se creó (por Cinnamon).\n"
+"Se recomienda reiniciar Cinnamon después de cambiar esta configuración."
 
 #. settings-schema.json->head1->description
 msgid "Mouse scroll options: "
