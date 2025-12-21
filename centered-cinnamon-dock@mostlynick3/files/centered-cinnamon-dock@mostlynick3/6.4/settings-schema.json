@@ -24,7 +24,7 @@
         "max": 100,
         "step": 1,
         "units": "pixels",
-        "description": "Hover trigger zone height at bottom of screen"
+        "description": "Height of trigger zone to show panel if hidden"
     },
     "animation-time": {
         "type": "spinbutton",

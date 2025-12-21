@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2025-11-30 08:31+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-12-20 01:39+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -41,8 +42,8 @@ msgid "Height offset (negative = up, positive = down)"
 msgstr "Смещение высоты (отрицательное = вверх, положительное = вниз)"
 
 #. 6.4->settings-schema.json->hover-pixels->description
-msgid "Hover trigger zone height at bottom of screen"
-msgstr "Высота зоны активации при наведении в нижней части экрана"
+msgid "Height of trigger zone to show panel if hidden"
+msgstr "Высота зоны активации для отображения панели, если скрыта"
 
 #. 6.4->settings-schema.json->animation-time->units
 msgid "milliseconds"
@@ -63,3 +64,23 @@ msgstr "Не смещать окна (отключить распорки пан
 #. 6.4->settings-schema.json->show-on-no-focus->description
 msgid "Show dock when no window is focused"
 msgstr "Показывать док когда ни одно окно не в фокусе"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Main panel only"
+msgstr "Только главная панель"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All bottom panels"
+msgstr "Все нижние панели"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "All top panels"
+msgstr "Все верхние панели"
+
+#. 6.4->settings-schema.json->panel-mode->options
+msgid "Top and bottom panels"
+msgstr "Верхние и нижние панели"
+
+#. 6.4->settings-schema.json->panel-mode->description
+msgid "Which panels to apply extension to"
+msgstr "К каким панелям применить расширение"

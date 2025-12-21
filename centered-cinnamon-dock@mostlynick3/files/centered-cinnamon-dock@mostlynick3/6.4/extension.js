@@ -12,7 +12,10 @@ let pointerWatcher;
 let workspaceSignal;
 let actorAddedSignal;
 let editModeSignal;
+let displayStateSignal;
 let isInEditMode = false;
+let settingsCallbacks = {};
+let windowCreatedSignal;
 
 function init(metadata) {
 }
@@ -20,27 +23,35 @@ function init(metadata) {
 function enable() {
     settings = new Settings.ExtensionSettings(this, "centered-cinnamon-dock@mostlynick3");
     
-    settings.bind("transparency", "transparency", function() {
+    settingsCallbacks.transparency = function() {
         if (!isInEditMode) {
             applyStyleToAll();
         }
-    });
-    settings.bind("height-offset", "heightOffset", function() {
+    };
+    settings.bind("transparency", "transparency", settingsCallbacks.transparency);
+    
+    settingsCallbacks.heightOffset = function() {
         if (!isInEditMode) {
             applyStyleToAll();
             updateMenuPositions();
         }
-    });
-    settings.bind("auto-hide", "autoHide", function() {
+    };
+    settings.bind("height-offset", "heightOffset", settingsCallbacks.heightOffset);
+    
+    settingsCallbacks.autoHide = function() {
         toggleAutoHide();
-    });
-    settings.bind("hover-pixels", "hoverPixels", function() {
+    };
+    settings.bind("auto-hide", "autoHide", settingsCallbacks.autoHide);
+    
+    settingsCallbacks.hoverPixels = function() {
         if (settings.getValue("auto-hide")) {
             disableAutoHide();
             enableAutoHide();
         }
-    });
-    settings.bind("no-window-shift", "noWindowShift", function() {
+    };
+    settings.bind("hover-pixels", "hoverPixels", settingsCallbacks.hoverPixels);
+    
+    settingsCallbacks.noWindowShift = function() {
         Main.panelManager.panels.forEach(panel => {
             if (shouldApplyToPanel(panel)) {
                 if (settings.getValue("no-window-shift")) {
@@ -50,22 +61,29 @@ function enable() {
                 }
             }
         });
-    });
-    settings.bind("animation-time", "animationTime", function() {
-    });
-    settings.bind("show-on-no-focus", "showOnNoFocus", function() {
+    };
+    settings.bind("no-window-shift", "noWindowShift", settingsCallbacks.noWindowShift);
+    
+    settingsCallbacks.animationTime = function() {
+    };
+    settings.bind("animation-time", "animationTime", settingsCallbacks.animationTime);
+    
+    settingsCallbacks.showOnNoFocus = function() {
         if (settings.getValue("auto-hide")) {
             disableAutoHide();
             enableAutoHide();
         }
-    });
-    settings.bind("panel-mode", "panelMode", function() {
+    };
+    settings.bind("show-on-no-focus", "showOnNoFocus", settingsCallbacks.showOnNoFocus);
+    
+    settingsCallbacks.panelMode = function() {
         cleanupAllPanels();
         Mainloop.timeout_add(50, function() {
             initializePanels();
             return false;
         });
-    });
+    };
+    settings.bind("panel-mode", "panelMode", settingsCallbacks.panelMode);
     
     isInEditMode = global.settings.get_boolean("panel-edit-mode");
     
@@ -76,6 +94,18 @@ function enable() {
             handleEditModeChange();
         }
     });
+    
+	displayStateSignal = Main.layoutManager.connect('monitors-changed', function() {
+		if (isInEditMode) return;
+		
+		disableAutoHide();
+		panelStates = {};
+		
+		Mainloop.idle_add(function() {
+			initializePanels();
+			return false;
+		});
+	});
     
     initializePanels();
 }
@@ -140,7 +170,12 @@ function exitEditMode() {
 
 function cleanupAllPanels() {
     disableAutoHide();
-    
+
+    if (displayStateSignal) {
+        Main.layoutManager.disconnect(displayStateSignal);
+        displayStateSignal = null;
+    }
+
     if (sizeCheckTimeout) {
         Mainloop.source_remove(sizeCheckTimeout);
         sizeCheckTimeout = null;
@@ -161,17 +196,28 @@ function cleanupAllPanels() {
         editModeSignal = null;
     }
     
+    if (windowCreatedSignal) {
+        global.display.disconnect(windowCreatedSignal);
+        windowCreatedSignal = null;
+    }
+    
     Main.panelManager.panels.forEach(panel => {
         let state = panelStates[panel.panelId];
         
         if (state) {
-            state.menuSignals.forEach(signal => {
-                if (signal.obj && signal.id) {
-                    try {
-                        signal.obj.disconnect(signal.id);
-                    } catch(e) {}
-                }
-            });
+			if (state.styleSignal !== null && state.styleSignal !== undefined) {
+				try {
+					panel.actor.disconnect(state.styleSignal);
+				} catch(e) {}
+				state.styleSignal = null;
+			}
+
+			if (state.showSignal !== null && state.showSignal !== undefined) {
+				try {
+					panel.actor.disconnect(state.showSignal);
+				} catch(e) {}
+				state.showSignal = null;
+			}
             
             Tweener.removeTweens(panel.actor);
             panel.actor.set_style('');
@@ -214,12 +260,33 @@ function initializePanels() {
         Main.panelManager.panels.forEach(panel => {
             if (shouldApplyToPanel(panel)) {
                 let state = panelStates[panel.panelId];
-                if (state && !state.isHidden) {
-                    Mainloop.timeout_add(200, function() {
-                        checkAndApplyStyle(panel);
+                if (state) {
+                    state.lastWidth = 0;
+                    
+                    Mainloop.timeout_add(50, function() {
+                        checkAndApplyStyle(panel, true);
                         return false;
                     });
                 }
+            }
+        });
+    });
+    
+    windowCreatedSignal = global.display.connect('window-created', function(display, win) {
+        if (isInEditMode) return;
+        
+        win.connect('unmanaged', function() {
+            if (isInEditMode) return;
+            Main.panelManager.panels.forEach(panel => {
+                if (shouldApplyToPanel(panel)) {
+                    checkAndApplyStyle(panel, true);
+                }
+            });
+        });
+        
+        Main.panelManager.panels.forEach(panel => {
+            if (shouldApplyToPanel(panel)) {
+                checkAndApplyStyle(panel, true);
             }
         });
     });
@@ -281,12 +348,13 @@ function initPanel(panel) {
     panelStates[panel.panelId] = {
         originalY: panel.actor.y,
         lastWidth: 0,
-        menuSignals: [],
         trackedMenus: [],
         isHidden: false,
         location: getPanelLocation(panel),
         savedOpacity: 255,
-        wasHidden: false
+        wasHidden: false,
+        styleSignal: null,
+        showSignal: null
     };
     
     let state = panelStates[panel.panelId];
@@ -295,7 +363,7 @@ function initPanel(panel) {
         Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: false });
     }
     
-    let styleSignal = panel.actor.connect('style-changed', function() {
+    state.styleSignal = panel.actor.connect('style-changed', function() {
         if (isInEditMode) return;
         
         Mainloop.timeout_add(10, function() {
@@ -303,7 +371,16 @@ function initPanel(panel) {
             return false;
         });
     });
-    state.menuSignals.push({ obj: panel.actor, id: styleSignal });
+    
+    state.showSignal = panel.actor.connect('show', function() {
+        if (isInEditMode) return;
+        
+        let state = panelStates[panel.panelId];
+        if (state && state.isHidden && settings.getValue("auto-hide")) {
+            panel.actor.hide();
+            state.isHidden = false;
+        }
+    });
 }
 
 function cleanupTrackedMenus(panel) {
@@ -366,7 +443,7 @@ function hasActiveMenus(panel) {
 function isMouseOverDockOrMenus(panel) {
     let [x, y, mods] = global.get_pointer();
     let actor = global.stage.get_actor_at_pos(Clutter.PickMode.REACTIVE, x, y);
-    
+	
     if (!actor) {
         return false;
     }
@@ -385,8 +462,9 @@ function isMouseOverDockOrMenus(panel) {
             (actor.has_style_class_name('popup-menu') || 
              actor.has_style_class_name('menu') ||
              actor.has_style_class_name('popup-menu-content') ||
-             actor.has_style_class_name('popup-menu-item'))) {
-            
+             actor.has_style_class_name('popup-menu-item') ||
+             actor.has_style_class_name('item-box'))) {
+
             let parent = actor;
             while (parent) {
                 if (parent._delegate && parent._delegate.sourceActor) {
@@ -436,10 +514,9 @@ function isMouseInTriggerZone(panel, x, y) {
 }
 
 function toggleAutoHide() {
+    disableAutoHide();
     if (settings.getValue("auto-hide")) {
         enableAutoHide();
-    } else {
-        disableAutoHide();
     }
 }
 
@@ -462,9 +539,7 @@ function getMonitorGeometry(panel) {
 }
 
 function enableAutoHide() {
-    if (pointerWatcher) {
-        return;
-    }
+    disableAutoHide();
     
     pointerWatcher = Mainloop.timeout_add(100, function() {
         if (isInEditMode) return true;
@@ -476,6 +551,11 @@ function enableAutoHide() {
             
             let state = panelStates[panel.panelId];
             if (!state) return;
+            
+            if (state.isHidden && panel.actor.opacity !== 0) {
+                panel.actor.opacity = 0;
+                panel.actor.hide();
+            }
             
             let menusActive = hasActiveMenus(panel);
             let mouseOverDockOrMenus = isMouseOverDockOrMenus(panel);
@@ -513,19 +593,12 @@ function hidePanel(panel) {
     
     let animTime = settings.getValue("animation-time") / 1000.0;
     
-    Tweener.removeTweens(panel.actor);
     Tweener.addTween(panel.actor, {
         opacity: 0,
         time: animTime,
         transition: 'easeOutQuad',
         onComplete: function() {
             panel.actor.hide();
-            Mainloop.timeout_add(animTime * 1000, function() {
-                if (panel.actor.opacity !== 0) {
-                    panel.actor.opacity = 0;
-                }
-                return false;
-            });
         }
     });
 }
@@ -617,14 +690,14 @@ function updateMenuPosition(panel, menu) {
 }
 
 function startSizeMonitoring() {
-    sizeCheckTimeout = Mainloop.timeout_add(100, function() {
+    sizeCheckTimeout = Mainloop.timeout_add(500, function() {
         if (isInEditMode) return true;
         
         Main.panelManager.panels.forEach(panel => {
             if (shouldApplyToPanel(panel)) {
                 let state = panelStates[panel.panelId];
                 if (state && !state.isHidden) {
-                    checkAndApplyStyle(panel);
+                    checkAndApplyStyle(panel, true);
                 }
             }
         });
@@ -642,37 +715,33 @@ function checkAndApplyStyle(panel, forceApply) {
         return;
     }
     
-    let contentWidth = 0;
-    
-    panel._leftBox.get_children().forEach(child => {
-        let [minWidth, naturalWidth] = child.get_preferred_width(-1);
-        contentWidth += naturalWidth;
+    [panel._leftBox, panel._centerBox, panel._rightBox].forEach(box => {
+        box.get_children().forEach(child => {
+            if (child._applet && child._applet._updateApplet) {
+                child._applet._updateApplet();
+            }
+            if (child._applet && child._applet.on_panel_height_changed) {
+                child._applet.on_panel_height_changed();
+            }
+            if (child.actor) {
+                child.actor.queue_relayout();
+            }
+        });
     });
-    panel._centerBox.get_children().forEach(child => {
-        let [minWidth, naturalWidth] = child.get_preferred_width(-1);
-        contentWidth += naturalWidth;
-    });
-    panel._rightBox.get_children().forEach(child => {
-        let [minWidth, naturalWidth] = child.get_preferred_width(-1);
-        contentWidth += naturalWidth;
-    });
     
-    let newWidth = Math.max(contentWidth + 10, 200);
+    let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+    let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+    let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
     
+    let contentWidth = leftWidth + centerWidth + rightWidth;
+    
+    let panelPadding = 20;
+    let newWidth = Math.max(contentWidth + (panelPadding * 2), 200);
+
     if (newWidth !== state.lastWidth || forceApply) {
         state.lastWidth = newWidth;
         applyStyle(panel, forceApply);
     }
-}
-
-function applyStyleToAll() {
-    if (isInEditMode) return;
-    
-    Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel)) {
-            applyStyle(panel);
-        }
-    });
 }
 
 function applyStyle(panel, forceApply) {
@@ -687,13 +756,14 @@ function applyStyle(panel, forceApply) {
     let monitor = getMonitorGeometry(panel);
     
     let margin = (monitor.width - state.lastWidth) / 2;
+    let panelPadding = 20;
     
     let savedOpacity = panel.actor.opacity;
     
     panel.actor.set_style(
         'background-color: rgba(30, 30, 30, ' + transparency + ');' +
         'border-radius: 12px;' +
-        'padding: 0px 20px;' +
+        'padding: 0px ' + panelPadding + 'px;' +
         'margin-left: ' + margin + 'px;' +
         'margin-right: ' + margin + 'px;' +
         'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);'
@@ -703,6 +773,16 @@ function applyStyle(panel, forceApply) {
     panel.actor.y = state.originalY + adjustedOffset;
 }
 
+function applyStyleToAll() {
+    if (isInEditMode) return;
+    
+    Main.panelManager.panels.forEach(panel => {
+        if (shouldApplyToPanel(panel)) {
+            applyStyle(panel);
+        }
+    });
+}
+
 function disable() {
     cleanupAllPanels();
     
@@ -710,4 +790,6 @@ function disable() {
         settings.finalize();
         settings = null;
     }
+    
+    settingsCallbacks = {};
 }
