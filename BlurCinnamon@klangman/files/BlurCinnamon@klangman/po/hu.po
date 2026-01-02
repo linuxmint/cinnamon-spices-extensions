@@ -20,7 +20,7 @@ msgstr ""
 
 #. 6.0/extension.js:1836
 msgid "Error"
-msgstr ""
+msgstr "Hiba"
 
 #. 6.0/extension.js:1837
 msgid ""
@@ -28,6 +28,9 @@ msgid ""
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
+"Nem sikerült meghatározni az alkalmazást vagy a korábban fókuszált ablak "
+"WM_CLASS osztályát, ezért a Cinnamon Elhomályosítása effektek nem "
+"alkalmazhatók erre az ablakra"
 
 #. 6.0/extension.js:2313
 msgid "Welcome to Blur Cinnamon"
