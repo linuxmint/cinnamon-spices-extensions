@@ -165,7 +165,7 @@ export class Grid {
   /**
    * Changes all references to the current monitor to a new one,
    * including GridElements
-   * @param monitor 
+   * @param monitor
    */
   public ChangeCurrentMonitor(monitor: imports.ui.layout.Monitor) {
     this.monitor = monitor;
@@ -189,11 +189,11 @@ export class Grid {
 
   public GetTableSize(): [width: number, height: number] {
     // Calculate new ui width and height in case we are moving to a different monitor
-    // We retain the size and the aspect ratio of the new monitor 
+    // We retain the size and the aspect ratio of the new monitor
     const aspect = GetMonitorAspectRatio(this.monitor);
-    if (!this.app.config.aspectRatio) 
+    if (!this.app.config.aspectRatio)
         return [220, 200];
-    
+
     const newTableWidth = (aspect.widthIsLonger) ? 200 * aspect.ratio : 200;
     const newTableHeight = (aspect.widthIsLonger) ? 200 : 200 * aspect.ratio;
 
@@ -236,7 +236,7 @@ export class Grid {
   }
 
   /**
-   * Update ToggleSettingsButtons, for example when 
+   * Update ToggleSettingsButtons, for example when
    * settings was changed for them
    */
   public UpdateSettingsButtons() {
@@ -245,7 +245,7 @@ export class Grid {
     }
   }
 
-  /** Rebuilds Grid Settings Buttons independently from 
+  /** Rebuilds Grid Settings Buttons independently from
    * the rest of the UI. FOr example if config was changed for them.
    */
   public RebuildGridSettingsButtons = () => {
@@ -298,8 +298,8 @@ export class Grid {
   public async Show(): Promise<void>;
   /**
    * Shows the Grid UI at a specific position.
-   * @param x 
-   * @param y 
+   * @param x
+   * @param y
    */
   public async Show(x: number, y: number): Promise<void>;
   public async Show(x?: number, y?: number): Promise<void> {
@@ -418,7 +418,7 @@ export class Grid {
 
   /**
    * Handles when the mouse enters the UI. Resets the Grid Overlay on the monitor.
-   * @returns 
+   * @returns
    */
   private OnMouseEnter = () => {
     if (!this.isEntered) {
@@ -429,8 +429,8 @@ export class Grid {
   }
 
   /**
-   * Handles when the mouse leaves the UI. Resets grid overlay on monitor. 
-   * @returns 
+   * Handles when the mouse leaves the UI. Resets grid overlay on monitor.
+   * @returns
    */
   private OnMouseLeave = () => {
     let [x, y, mask] = global.get_pointer();
@@ -443,8 +443,8 @@ export class Grid {
 
   /**
    * Handles KeyPresses for the shown Grid.
-   * @param type 
-   * @param key 
+   * @param type
+   * @param key
    */
   public OnKeyPressEvent = (type: keyof typeof KEYCONTROL, key?: string) => {
     let modifier = false;
@@ -532,7 +532,7 @@ export class Grid {
 
   /**
    * Force Set position of current grid, this only really need to be used
-   * when the grid is shown from a hidden state 
+   * when the grid is shown from a hidden state
    */
   private SetPosition(x: number, y: number) {
     this.x = x;
@@ -553,7 +553,7 @@ export class Grid {
   /**
    * Requests the app to move to a different monitor
    * @param monitor can be null, if so the current monitor will be used (for nothing)
-   * @returns 
+   * @returns
    */
   private MoveToMonitor = (monitor?: imports.ui.layout.Monitor) => {
     monitor = monitor ? monitor : this.app.CurrentMonitor;

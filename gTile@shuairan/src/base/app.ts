@@ -216,7 +216,7 @@ export class App implements IApp {
 
   /**
    * Moves the UI to it's desired position based on it's current monitor;
-   * @returns 
+   * @returns
    */
   private MoveUIActor = () => {
     if (!this.visible) {
@@ -224,7 +224,7 @@ export class App implements IApp {
     }
 
     let window = this.focusMetaWindow;
-    if (!window) 
+    if (!window)
       return;
 
     for (const grid of this.Grids) {

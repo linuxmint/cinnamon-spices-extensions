@@ -9,7 +9,15 @@
       "cSpell.ignoreWords": [
         "Gettext",
         "bindtextdomain",
-        "dgettext"
+        "borderwidth",
+        "bottombar",
+        "dgettext",
+        "keybinding",
+        "keycontrol",
+        "shuairan",
+        "tweener",
+        "topbar",
+        "vibou"
       ],
       "todo-tree.highlights.useColourScheme": true,
         "todo-tree.highlights.foregroundColourScheme": [
