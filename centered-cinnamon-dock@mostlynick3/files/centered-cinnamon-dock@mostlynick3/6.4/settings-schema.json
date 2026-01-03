@@ -1,64 +1,18 @@
 {
-    "transparency": {
-        "type": "spinbutton",
-        "default": 85,
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "units": "percent",
-        "description": "Transparency"
+    "schema-version": {
+        "type": "generic",
+        "default": 0
     },
-    "height-offset": {
-        "type": "spinbutton",
-        "default": -8,
-        "min": -500,
-        "max": 500,
-        "step": 1,
-        "units": "pixels",
-        "description": "Height offset (negative = up, positive = down)"
+    "panel-settings": {
+        "type": "generic",
+        "default": {}
     },
-    "hover-pixels": {
-        "type": "spinbutton",
-        "default": 8,
-        "min": 1,
-        "max": 100,
-        "step": 1,
-        "units": "pixels",
-        "description": "Height of trigger zone to show panel if hidden"
+    "panel-mode-old": {
+        "type": "generic",
+        "default": ""
     },
-    "animation-time": {
-        "type": "spinbutton",
-        "default": 200,
-        "min": 0,
-        "max": 1000,
-        "step": 50,
-        "units": "milliseconds",
-        "description": "Fade animation duration"
-    },
-    "auto-hide": {
-        "type": "checkbox",
-        "default": false,
-        "description": "Auto-hide dock when focusing apps"
-    },
-    "no-window-shift": {
-        "type": "checkbox",
-        "default": true,
-        "description": "Don't shift windows (disable panel struts)"
-    },
-    "show-on-no-focus": {
-        "type": "checkbox",
-        "default": true,
-        "description": "Show dock when no window is focused"
-    },
-    "panel-mode": {
-        "type": "combobox",
-        "default": "main",
-        "options": {
-            "Main panel only": "main",
-            "All bottom panels": "bottom",
-            "All top panels": "top",
-            "Top and bottom panels": "both"
-        },
-        "description": "Which panels to apply extension to"
+    "enabled-panels-old": {
+        "type": "generic",
+        "default": ""
     }
 }
