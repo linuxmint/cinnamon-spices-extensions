@@ -1,6 +1,6 @@
 /*****************************************************************
 
-             This extension has been developped by
+             This extension has been developed by
             vibou and forked to cinnamon by shuairan
 
            With the help of the gnome-shell community
@@ -40,6 +40,9 @@ export const enable = () => {
 }
 
 export const disable = () => {
-  // Key Bindings
-  app.destroy();
+  if (app) {
+    app.destroy();
+    // @ts-ignore
+    app = null;
+  }
 }
