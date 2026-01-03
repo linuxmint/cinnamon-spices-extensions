@@ -40,6 +40,9 @@ export const enable = () => {
 }
 
 export const disable = () => {
-  // Key Bindings
-  app.destroy();
+  if (app) {
+    app.destroy();
+    // @ts-ignore
+    app = null;
+  }
 }

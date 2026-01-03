@@ -11,6 +11,7 @@ const Cinnamon = imports.gi.Cinnamon;
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
+const GLib = imports.gi.GLib;
 let metadata: any;
 
 export class App implements IApp {
@@ -20,6 +21,7 @@ export class App implements IApp {
   private monitors = Main.layoutManager.monitors;
   private focusMetaWindowConnections: number[] = [];
   private focusMetaWindowPrivateConnections: number[] = [];
+  private monitorsChangedId: number;
 
   public readonly area = new St.BoxLayout({ style_class: 'grid-preview' });
 
@@ -53,9 +55,16 @@ export class App implements IApp {
       this.InitGrid();
       this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
       global.screen.connect('monitors-changed', this.ReInitialize);
+      // Capture the ID so we can disconnect later
+      this.monitorsChangedId = global.screen.connect('monitors-changed', this.ReInitialize);
   }
 
   public destroy() {
+    if (this.monitorsChangedId) {
+        global.screen.disconnect(this.monitorsChangedId);
+        // @ts-ignore
+        this.monitorsChangedId = null;
+    }
     this.config.destroy();
     this.DestroyGrid();
     this.ResetFocusedWindow();
@@ -180,7 +189,15 @@ export class App implements IApp {
   public ReInitialize = () => {
     this.monitors = Main.layoutManager.monitors;
     this.DestroyGrid();
-    this.InitGrid();
+
+    /**
+     * Fix for Issue #512: Delay re-initialization to ensure the display driver
+     * and compositor are ready after a monitor or power state change.
+     */
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 750, () => {
+      this.InitGrid();
+      return GLib.SOURCE_REMOVE;
+    });
   }
 
   public InitGrid() {
@@ -205,11 +222,15 @@ export class App implements IApp {
   private DestroyGrid = () => {
     this.RemoveKeyControls();
     for (const grid of this.grids) {
-        if (typeof grid != 'undefined') {
-            grid.Hide(true);
-            Main.layoutManager.removeChrome(grid.actor);
-        }
+      if (typeof grid !== 'undefined' && grid !== null) {
+        grid.Hide(true);
+        Main.layoutManager.removeChrome(grid.actor);
+        // Explicitly destroy the grid instance to clear visual actors
+        grid.destroy();
+      }
     }
+    this.grids = [];
+
   }
 
   //#endregion

@@ -573,10 +573,23 @@ export class Grid {
     }
 
     this.elementsDelegate._destroy();
+
     // TODO: Check if needed
-    // @ts-ignore
-    this.topbar._destroy();
+    if (this.topbar) {
+        // @ts-ignore
+        this.topbar._destroy();
+    }
+
     this.Reset();
+    /**
+     * Fix for Issue #512: Explicitly destroy the main actor to clear GPU
+     * textures. This prevents ghosting/transparency issues on NVIDIA hardware
+     * after sleep.
+     */
+    if (this.actor) {
+        this.actor.destroy();
+    }
+
     // @ts-ignore
     this.monitor = null;
     // @ts-ignore
