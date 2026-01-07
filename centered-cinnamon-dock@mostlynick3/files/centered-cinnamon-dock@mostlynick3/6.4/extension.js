@@ -149,6 +149,14 @@ class PanelSettingsDialog {
             5
         );
         
+        this.minWidthSlider = this._addSlider(
+            _('Minimum dock width'),
+            this.settings.minWidth || 0,
+            0,
+            2000,
+            50
+        );
+        
         this.zoomEnabledSwitch = this._addSwitch(
             _('Enable zoom effect on hover'),
             this.settings.zoomEnabled
@@ -542,7 +550,8 @@ class PanelSettingsDialog {
             zoomEnabled: this.zoomEnabledSwitch.checked,
             indicatorColor: this.indicatorColorButton.selectedColor,
             showIndicator: this.showIndicatorSwitch.checked,
-            hideDelay: this.hideDelaySlider._value
+            hideDelay: this.hideDelaySlider._value,
+            minWidth: this.minWidthSlider._value
         };
     }
     
@@ -678,7 +687,8 @@ function getPanelSettings(panelId) {
         zoomEnabled: true,
         indicatorColor: "rgba(30, 30, 30, 1.0)",
         showIndicator: true,
-        hideDelay: 2000
+        hideDelay: 2000,
+        minWidth: 50
     };
 }
 
@@ -964,7 +974,8 @@ function initPanel(panel) {
         isAnimating: false,
         allocateId: null,
         originalAllocate: null,
-        allocationId: null
+        allocationId: null,
+        previousPadding: 20
     };
     
     let state = panelStates[panel.panelId];
@@ -1327,10 +1338,12 @@ function isMouseInTriggerZone(panel, x, y) {
     
     let monitor = getMonitorGeometry(panel);
     let hoverPixels = getPanelSetting(panel, "hoverPixels");
+    let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
     
     if (state.location === "bottom" || state.location === "top") {
-        let panelLeft = monitor.x + (monitor.width - state.lastWidth) / 2;
-        let panelRight = panelLeft + state.lastWidth;
+        let triggerWidth = Math.max(state.lastWidth, minPanelWidth);
+        let panelLeft = monitor.x + (monitor.width - triggerWidth) / 2;
+        let panelRight = panelLeft + triggerWidth;
         
         if (x < panelLeft || x > panelRight) {
             return false;
@@ -1527,7 +1540,8 @@ function createIndicator(panel) {
     let indicatorWidth, indicatorHeight, indicatorX, indicatorY;
     
     if (state.location === "bottom" || state.location === "top") {
-        indicatorWidth = state.lastWidth;
+        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+        indicatorWidth = Math.max(state.lastWidth, minPanelWidth);
         indicatorHeight = hoverPixels;
         indicatorX = monitor.x + (monitor.width - indicatorWidth) / 2;
         
@@ -1580,7 +1594,8 @@ function updateIndicator(panel) {
     let indicatorWidth, indicatorHeight, indicatorX, indicatorY;
     
     if (state.location === "bottom" || state.location === "top") {
-        indicatorWidth = state.lastWidth;
+        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+        indicatorWidth = Math.max(state.lastWidth, minPanelWidth);
         indicatorHeight = hoverPixels;
         indicatorX = monitor.x + (monitor.width - indicatorWidth) / 2;
         
@@ -1637,6 +1652,9 @@ function updateIndicator(panel) {
         'background-color: ' + colorWithTransparency + ';' +
         'border-radius: 12px;'
     );
+    
+    state.indicatorOriginalX = indicatorX;
+    state.indicatorOriginalY = indicatorY;
 }
 
 function destroyIndicator(panel) {
@@ -2086,7 +2104,8 @@ function checkAndApplyStyle(panel, forceApply) {
         let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
         
         let contentWidth = leftWidth + centerWidth + rightWidth;
-        newWidth = Math.max(contentWidth + (panelPadding * 2), 200);
+        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+        newWidth = Math.max(contentWidth + (panelPadding * 2), minPanelWidth, 200);
         newHeight = state.lastHeight;
     } else if (state.location === "left" || state.location === "right") {
         let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
@@ -2132,14 +2151,33 @@ function applyStyle(panel, forceApply) {
     
     if (state.location === "bottom" || state.location === "top") {
         let adjustedOffset = state.location === "top" ? -heightOffset : heightOffset;
-        let desiredMargin = (monitor.width - state.lastWidth) / 2;
         
-        let sizeDiff = Math.abs(state.previousWidth - state.lastWidth);
+        let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+        let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+        let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
+        let contentWidth = leftWidth + centerWidth + rightWidth;
         
-        if (sizeDiff > 5 && !state.isHiding && !state.isShowing && state.previousWidth > 0) {
+        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+        let actualContentWidth = contentWidth + (panelPadding * 2);
+        let desiredWidth = Math.max(actualContentWidth, minPanelWidth);
+        
+        let extraPadding = 0;
+        if (minPanelWidth > actualContentWidth) {
+            extraPadding = Math.floor((minPanelWidth - actualContentWidth) / 2);
+        }
+        
+        let totalPadding = panelPadding + extraPadding;
+        let desiredMargin = (monitor.width - desiredWidth) / 2;
+        
+        let sizeDiff = Math.abs(state.previousWidth - desiredWidth);
+        let paddingDiff = Math.abs((state.previousPadding || panelPadding) - totalPadding);
+        
+        if ((sizeDiff > 5 || paddingDiff > 5) && !state.isHiding && !state.isShowing && state.previousWidth > 0) {
             state.isAnimating = true;
             let startMargin = (monitor.width - state.previousWidth) / 2;
             let endMargin = desiredMargin;
+            let startPadding = state.previousPadding || panelPadding;
+            let endPadding = totalPadding;
             let startTime = Date.now();
             let duration = 200;
             
@@ -2153,10 +2191,11 @@ function applyStyle(panel, forceApply) {
                 let eased = 1 - Math.pow(1 - progress, 3);
                 
                 let currentMargin = startMargin + (endMargin - startMargin) * eased;
+                let currentPadding = Math.floor(startPadding + (endPadding - startPadding) * eased);
                 
                 panel.actor.set_style(
                     'border-radius: 12px;' +
-                    'padding: 0px ' + panelPadding + 'px;' +
+                    'padding: 0px ' + currentPadding + 'px;' +
                     'margin-left: ' + currentMargin + 'px;' +
                     'margin-right: ' + currentMargin + 'px;' +
                     'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
@@ -2175,7 +2214,8 @@ function applyStyle(panel, forceApply) {
                 
                 if (progress >= 1.0) {
                     state.marginAnimationTimer = null;
-                    state.previousWidth = state.lastWidth;
+                    state.previousWidth = desiredWidth;
+                    state.previousPadding = totalPadding;
                     state.isAnimating = false;
                     return false;
                 }
@@ -2184,14 +2224,15 @@ function applyStyle(panel, forceApply) {
         } else {
             panel.actor.set_style(
                 'border-radius: 12px;' +
-                'padding: 0px ' + panelPadding + 'px;' +
+                'padding: 0px ' + totalPadding + 'px;' +
                 'margin-left: ' + desiredMargin + 'px;' +
                 'margin-right: ' + desiredMargin + 'px;' +
                 'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
                 'opacity: ' + transparency + ';'
             );
             panel.actor.opacity = savedOpacity;
-            state.previousWidth = state.lastWidth;
+            state.previousWidth = desiredWidth;
+            state.previousPadding = totalPadding;
         }
         
         let targetY = state.originalY + adjustedOffset;

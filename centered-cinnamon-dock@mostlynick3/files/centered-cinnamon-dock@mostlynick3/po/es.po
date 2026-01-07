@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-02 02:32+0100\n"
+"POT-Creation-Date: 2026-01-07 01:55+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,7 +37,7 @@ msgstr "Panel izquierdo (monitor %d)"
 msgid "Right Panel (Monitor %d)"
 msgstr "Panel derecho (monitor %d)"
 
-#. 6.4/extension.js:72 6.4/extension.js:703
+#. 6.4/extension.js:72 6.4/extension.js:713
 msgid "Centered Dock Settings"
 msgstr "Configuración del dock centrado"
 
@@ -82,46 +82,50 @@ msgid "Transparency (%)"
 msgstr "Transparencia (%)"
 
 #. 6.4/extension.js:153
+msgid "Minimum dock width"
+msgstr "Ancho mínimo del dock"
+
+#. 6.4/extension.js:161
 msgid "Enable zoom effect on hover"
 msgstr "Activar efecto de zoom al pasar el ratón"
 
-#. 6.4/extension.js:158
+#. 6.4/extension.js:166
 msgid "Zoom scale factor"
 msgstr "Factor de escala del zoom"
 
-#. 6.4/extension.js:165
+#. 6.4/extension.js:173
 msgid "Auto-hide Behavior"
 msgstr "Comportamiento de ocultación automática"
 
-#. 6.4/extension.js:168
+#. 6.4/extension.js:176
 msgid "Auto-hide dock when focusing apps"
 msgstr "Ocultar dock automáticamente al enfocar aplicaciones"
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:181
 msgid "Show dock when no window is focused"
 msgstr "Mostrar dock cuando no hay ventana enfocada"
 
-#. 6.4/extension.js:178
+#. 6.4/extension.js:186
 msgid "Delay before auto-hiding (ms)"
 msgstr "Retraso antes de ocultar automáticamente (ms)"
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:194
 msgid "Height of trigger zone to show panel (px)"
 msgstr "Altura de la zona de activación para mostrar el panel (px)"
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:202
 msgid "Show indicator of dock location in trigger zone"
 msgstr "Mostrar indicador de ubicación del dock en zona de activación"
 
-#. 6.4/extension.js:199
+#. 6.4/extension.js:207
 msgid "Indicator color"
 msgstr "Color del indicador"
 
-#. 6.4/extension.js:441
+#. 6.4/extension.js:449
 msgid "Hex color:"
 msgstr "Color hexadecimal:"
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:457
 msgid "Type hex color"
 msgstr "Escribir color hexadecimal"
 

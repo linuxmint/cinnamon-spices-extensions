@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-02 02:32+0100\n"
+"POT-Creation-Date: 2026-01-07 01:55+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -36,7 +36,7 @@ msgstr "Левая панель (монитор %d)"
 msgid "Right Panel (Monitor %d)"
 msgstr "Правая панель (монитор %d)"
 
-#. 6.4/extension.js:72 6.4/extension.js:703
+#. 6.4/extension.js:72 6.4/extension.js:713
 msgid "Centered Dock Settings"
 msgstr "Настройки центрированного дока"
 
@@ -81,46 +81,50 @@ msgid "Transparency (%)"
 msgstr "Прозрачность (%)"
 
 #. 6.4/extension.js:153
+msgid "Minimum dock width"
+msgstr "Минимальная ширина панели"
+
+#. 6.4/extension.js:161
 msgid "Enable zoom effect on hover"
 msgstr "Включить эффект увеличения при наведении"
 
-#. 6.4/extension.js:158
+#. 6.4/extension.js:166
 msgid "Zoom scale factor"
 msgstr "Коэффициент масштабирования"
 
-#. 6.4/extension.js:165
+#. 6.4/extension.js:173
 msgid "Auto-hide Behavior"
 msgstr "Поведение автоскрытия"
 
-#. 6.4/extension.js:168
+#. 6.4/extension.js:176
 msgid "Auto-hide dock when focusing apps"
 msgstr "Автоматически скрывать док при фокусировке приложений"
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:181
 msgid "Show dock when no window is focused"
 msgstr "Показывать док, когда ни одно окно не в фокусе"
 
-#. 6.4/extension.js:178
+#. 6.4/extension.js:186
 msgid "Delay before auto-hiding (ms)"
 msgstr "Задержка перед автоскрытием (мс)"
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:194
 msgid "Height of trigger zone to show panel (px)"
 msgstr "Высота зоны активации для показа панели (пикс.)"
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:202
 msgid "Show indicator of dock location in trigger zone"
 msgstr "Показывать индикатор расположения дока в зоне активации"
 
-#. 6.4/extension.js:199
+#. 6.4/extension.js:207
 msgid "Indicator color"
 msgstr "Цвет индикатора"
 
-#. 6.4/extension.js:441
+#. 6.4/extension.js:449
 msgid "Hex color:"
 msgstr "Цвет в HEX:"
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:457
 msgid "Type hex color"
 msgstr "Введите HEX-цвет"
 

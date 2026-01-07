@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: centered-cinnamon-dock@mostlynick3 1.1\n"
+"Project-Id-Version: centered-cinnamon-dock@mostlynick3 1.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-02 02:32+0100\n"
+"POT-Creation-Date: 2026-01-07 01:55+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Right Panel (Monitor %d)"
 msgstr ""
 
-#. 6.4/extension.js:72 6.4/extension.js:703
+#. 6.4/extension.js:72 6.4/extension.js:713
 msgid "Centered Dock Settings"
 msgstr ""
 
@@ -82,46 +82,50 @@ msgid "Transparency (%)"
 msgstr ""
 
 #. 6.4/extension.js:153
+msgid "Minimum dock width"
+msgstr ""
+
+#. 6.4/extension.js:161
 msgid "Enable zoom effect on hover"
 msgstr ""
 
-#. 6.4/extension.js:158
+#. 6.4/extension.js:166
 msgid "Zoom scale factor"
 msgstr ""
 
-#. 6.4/extension.js:165
+#. 6.4/extension.js:173
 msgid "Auto-hide Behavior"
 msgstr ""
 
-#. 6.4/extension.js:168
+#. 6.4/extension.js:176
 msgid "Auto-hide dock when focusing apps"
 msgstr ""
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:181
 msgid "Show dock when no window is focused"
 msgstr ""
 
-#. 6.4/extension.js:178
+#. 6.4/extension.js:186
 msgid "Delay before auto-hiding (ms)"
 msgstr ""
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:194
 msgid "Height of trigger zone to show panel (px)"
 msgstr ""
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:202
 msgid "Show indicator of dock location in trigger zone"
 msgstr ""
 
-#. 6.4/extension.js:199
+#. 6.4/extension.js:207
 msgid "Indicator color"
 msgstr ""
 
-#. 6.4/extension.js:441
+#. 6.4/extension.js:449
 msgid "Hex color:"
 msgstr ""
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:457
 msgid "Type hex color"
 msgstr ""
 

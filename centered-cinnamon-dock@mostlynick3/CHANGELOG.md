@@ -20,3 +20,4 @@
  * Add option to zoom in/enlarge panel children on hover
  * Correct tooltips lasting longer than auto-hidden panel
  * Correct global panel theme inheritance
+ * Add support for user-configurable minimum dock width
