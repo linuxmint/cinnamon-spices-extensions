@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-12-20 01:39+0100\n"
+"POT-Creation-Date: 2026-01-07 01:55+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,71 +16,126 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. 6.4/extension.js:62
+#, javascript-format
+msgid "Bottom Panel (Monitor %d)"
+msgstr "Pannello inferiore (monitor %d)"
+
+#. 6.4/extension.js:64
+#, javascript-format
+msgid "Top Panel (Monitor %d)"
+msgstr "Pannello superiore (monitor %d)"
+
+#. 6.4/extension.js:66
+#, javascript-format
+msgid "Left Panel (Monitor %d)"
+msgstr "Pannello sinistro (monitor %d)"
+
+#. 6.4/extension.js:68
+#, javascript-format
+msgid "Right Panel (Monitor %d)"
+msgstr "Pannello destro (monitor %d)"
+
+#. 6.4/extension.js:72 6.4/extension.js:713
+msgid "Centered Dock Settings"
+msgstr "Impostazioni dock centrato"
+
+#. 6.4/extension.js:95
+msgid "Cancel"
+msgstr "Annulla"
+
+#. 6.4/extension.js:100
+msgid "Apply"
+msgstr "Applica"
+
+#. 6.4/extension.js:104
+msgid "OK"
+msgstr "OK"
+
+#. 6.4/extension.js:112
+msgid "General"
+msgstr "Generale"
+
+#. 6.4/extension.js:115
+msgid "Enable Centered Dock for this panel"
+msgstr "Abilita dock centrato per questo pannello"
+
+#. 6.4/extension.js:122
+msgid "Height offset (negative = up, positive = down)"
+msgstr "Offset altezza (negativo = su, positivo = giù)"
+
+#. 6.4/extension.js:130
+msgid "Don't shift windows (disable panel struts)"
+msgstr "Non spostare le finestre (disabilita struts del pannello)"
+
+#. 6.4/extension.js:135
+msgid "Fade animation duration (ms)"
+msgstr "Durata animazione dissolvenza (ms)"
+
+#. 6.4/extension.js:142
+msgid "Appearance"
+msgstr "Aspetto"
+
+#. 6.4/extension.js:145
+msgid "Transparency (%)"
+msgstr "Trasparenza (%)"
+
+#. 6.4/extension.js:153
+msgid "Minimum dock width"
+msgstr "Larghezza minima del dock"
+
+#. 6.4/extension.js:161
+msgid "Enable zoom effect on hover"
+msgstr "Abilita effetto zoom al passaggio del mouse"
+
+#. 6.4/extension.js:166
+msgid "Zoom scale factor"
+msgstr "Fattore di scala zoom"
+
+#. 6.4/extension.js:173
+msgid "Auto-hide Behavior"
+msgstr "Comportamento nascondimento automatico"
+
+#. 6.4/extension.js:176
+msgid "Auto-hide dock when focusing apps"
+msgstr "Nascondi automaticamente dock quando si focalizzano le app"
+
+#. 6.4/extension.js:181
+msgid "Show dock when no window is focused"
+msgstr "Mostra dock quando nessuna finestra è focalizzata"
+
+#. 6.4/extension.js:186
+msgid "Delay before auto-hiding (ms)"
+msgstr "Ritardo prima del nascondimento automatico (ms)"
+
+#. 6.4/extension.js:194
+msgid "Height of trigger zone to show panel (px)"
+msgstr "Altezza della zona di attivazione per mostrare il pannello (px)"
+
+#. 6.4/extension.js:202
+msgid "Show indicator of dock location in trigger zone"
+msgstr "Mostra indicatore della posizione del dock nella zona di attivazione"
+
+#. 6.4/extension.js:207
+msgid "Indicator color"
+msgstr "Colore indicatore"
+
+#. 6.4/extension.js:449
+msgid "Hex color:"
+msgstr "Colore esadecimale:"
+
+#. 6.4/extension.js:457
+msgid "Type hex color"
+msgstr "Digita colore esadecimale"
+
 #. metadata.json->name
 msgid "Centered Cinnamon Dock"
 msgstr "Dock Centrato di Cinnamon"
 
 #. metadata.json->description
-msgid "Centers the panel with dock styling and customization options"
-msgstr "Centra il pannello con stile dock e opzioni di personalizzazione"
-
-#. 6.4->settings-schema.json->transparency->units
-msgid "percent"
-msgstr "percento"
-
-#. 6.4->settings-schema.json->transparency->description
-msgid "Transparency"
-msgstr "Trasparenza"
-
-#. 6.4->settings-schema.json->height-offset->units
-#. 6.4->settings-schema.json->hover-pixels->units
-msgid "pixels"
-msgstr "pixel"
-
-#. 6.4->settings-schema.json->height-offset->description
-msgid "Height offset (negative = up, positive = down)"
-msgstr "Offset altezza (negativo = su, positivo = giù)"
-
-#. 6.4->settings-schema.json->hover-pixels->description
-msgid "Height of trigger zone to show panel if hidden"
-msgstr "Altezza della zona di attivazione per mostrare il pannello se nascosto"
-
-#. 6.4->settings-schema.json->animation-time->units
-msgid "milliseconds"
-msgstr "millisecondi"
-
-#. 6.4->settings-schema.json->animation-time->description
-msgid "Fade animation duration"
-msgstr "Durata dell'animazione di dissolvenza"
-
-#. 6.4->settings-schema.json->auto-hide->description
-msgid "Auto-hide dock when focusing apps"
-msgstr "Nascondi automaticamente il dock quando si mettono a fuoco le app"
-
-#. 6.4->settings-schema.json->no-window-shift->description
-msgid "Don't shift windows (disable panel struts)"
-msgstr "Non spostare le finestre (disabilita le strutture del pannello)"
-
-#. 6.4->settings-schema.json->show-on-no-focus->description
-msgid "Show dock when no window is focused"
-msgstr "Mostra dock quando nessuna finestra è a fuoco"
-
-#. 6.4->settings-schema.json->panel-mode->options
-msgid "Main panel only"
-msgstr "Solo pannello principale"
-
-#. 6.4->settings-schema.json->panel-mode->options
-msgid "All bottom panels"
-msgstr "Tutti i pannelli inferiori"
-
-#. 6.4->settings-schema.json->panel-mode->options
-msgid "All top panels"
-msgstr "Tutti i pannelli superiori"
-
-#. 6.4->settings-schema.json->panel-mode->options
-msgid "Top and bottom panels"
-msgstr "Pannelli superiori e inferiori"
-
-#. 6.4->settings-schema.json->panel-mode->description
-msgid "Which panels to apply extension to"
-msgstr "A quali pannelli applicare l'estensione"
+msgid ""
+"Centers the panel with dock styling and customization options. Configure per "
+"panel by right-clicking it."
+msgstr ""
+"Centra il pannello con stile dock e opzioni di personalizzazione. Configura "
+"ogni pannello facendo clic destro."
