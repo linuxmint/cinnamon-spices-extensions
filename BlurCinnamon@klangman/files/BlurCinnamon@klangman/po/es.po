@@ -93,9 +93,8 @@ msgstr ""
 "Vista general, Exposición, Imagen del escritorio)"
 
 #. 6.0->settings-schema.json->general-page->title
-#, fuzzy
 msgid "General setup"
-msgstr "General"
+msgstr "Configuración general"
 
 #. 6.0->settings-schema.json->generic-settings-page->title
 #. 6.0->settings-schema.json->generic-effect-settings->title
@@ -103,128 +102,116 @@ msgid "Generic effect settings"
 msgstr "Configuración genérica de efectos"
 
 #. 6.0->settings-schema.json->component-setting-page->title
-#, fuzzy
 msgid "Component specific settings"
-msgstr "Configuraciones específicas del panel"
+msgstr "Configuración específica de los componentes"
 
 #. 6.0->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #. 6.0->settings-schema.json->general-settings->title
-#, fuzzy
 msgid "Cinnamon desktop components where effects will be applied"
-msgstr "Elementos del escritorio a los que se aplicarán los efectos"
+msgstr "Componentes del escritorio Cinnamon a los que se aplicarán los efectos"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
-msgstr ""
+msgstr "Selector de componentes"
 
 #. 6.0->settings-schema.json->component-specific-section->title
-#, fuzzy
 msgid "Component Specific Settings"
-msgstr "Configuraciones específicas del panel"
+msgstr "Configuración específica de los componentes"
 
 #. 6.0->settings-schema.json->about-section->title
-#, fuzzy
 msgid "About Blur Cinnamon"
-msgstr "Desenfoque de Cinnamon"
+msgstr "Acerca de Desenfoque de Cinnamon"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
-#, fuzzy
 msgid ""
 "Note: The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: los efectos Alt-Tab están desactivados actualmente en la "
-"pestaña General."
+"Nota: Los efectos Alt-Tab están desactivados actualmente en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->desklets-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos del panel están actualmente deshabilitados en la "
-"pestaña General."
+"Nota: Los efectos Desklet están actualmente desactivados en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->desktop-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos de fondo de escritorio están actualmente "
-"desactivados en la pestaña General."
+"Nota: Los efectos de escritorio están actualmente desactivados en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->expo-warning->description
-#, fuzzy
 msgid ""
 "Note: The Expo effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos de exposición están actualmente deshabilitados en "
-"la pestaña General."
+"Nota: Los efectos de Expo están actualmente desactivados en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->popup-warning->description
-#, fuzzy
 msgid ""
 "Note: The Menu effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos del menú emergente están actualmente desactivados "
-"en la pestaña General."
+"Nota: Los efectos del menú están actualmente desactivados en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->notification-warning->description
-#, fuzzy
 msgid ""
 "Note: The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Advertencia: Los efectos de notificación emergente están actualmente "
-"deshabilitados en la pestaña General."
+"Nota: Los efectos de notificación están desactivados actualmente en la "
+"pestaña \"Configuración general\"."
 
 #. 6.0->settings-schema.json->overview-warning->description
-#, fuzzy
 msgid ""
 "Note: The Overview effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Advertencia: Los efectos de la vista general actualmente están "
-"deshabilitados en la pestaña General."
+"Nota: Los efectos de la vista general están actualmente desactivados en la "
+"pestaña \"Configuración general\"."
 
 #. 6.0->settings-schema.json->panel-warning->description
-#, fuzzy
 msgid ""
 "Note: The Panel effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos del panel están actualmente deshabilitados en la "
-"pestaña General."
+"Nota: Los efectos del panel están actualmente desactivados en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
-#, fuzzy
 msgid ""
 "Note: The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos de información sobre herramientas del panel están "
-"desactivados actualmente en la pestaña General."
+"Nota: Los efectos de información sobre herramientas están desactivados "
+"actualmente en la pestaña \"Configuración general\"."
 
 #. 6.0->settings-schema.json->windows-warning->description
-#, fuzzy
 msgid ""
 "Note: The Window effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advertencia: Los efectos de ventana están desactivados actualmente en la "
-"pestaña General."
+"Nota: Los efectos de ventana están actualmente desactivados en la pestaña "
+"\"Configuración general\"."
 
 #. 6.0->settings-schema.json->desklets-label->description
 msgid ""
 "<b>Note:</b> You must configure your Desklets to be transparent! (see "
 "tooltip)"
 msgstr ""
+"<b>Nota:</b> ¡Debes configurar tus Desklets para que sean transparentes! "
+"(ver información sobre herramientas)"
 
 #. 6.0->settings-schema.json->desklets-label->tooltip
 msgid ""
@@ -234,6 +221,13 @@ msgid ""
 "backgrounds. On the Desktop, right-click on a Desklet, select the "
 "\"Configure...\" menu item to open a Desklet's configuration window."
 msgstr ""
+"Para que los efectos Desenfoque de Cinnamon Desklet sean visibles, el fondo "
+"de los Desklets debe ser transparente. Esto permite que el efecto de "
+"desenfoque sea visible debajo del Desklet. La mayoría de los Desklets se "
+"pueden configurar para que tengan fondos transparentes. En el escritorio, "
+"haga clic con el botón derecho del ratón en un Desklet, seleccione el "
+"elemento del menú \"Configurar...\" para abrir la ventana de configuración "
+"del Desklet."
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Alt-Tab"
@@ -241,9 +235,8 @@ msgstr "Alt-Tab"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-desklet-effects->description
-#, fuzzy
 msgid "Desklets"
-msgstr "Escritorio"
+msgstr "Desklets"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Desktop"
@@ -281,7 +274,7 @@ msgstr "Ventanas"
 
 #. 6.0->settings-schema.json->component-selector->description
 msgid "Show settings for component:"
-msgstr ""
+msgstr "Mostrar configuración del componente:"
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
@@ -303,6 +296,23 @@ msgid ""
 "The Overview effect is partially based on the BlurOverview extension by "
 "nailfarmer"
 msgstr ""
+"\n"
+"<b>Pon tu estilo en el punto de mira</b>\n"
+"Versión: ext-version\n"
+"\n"
+"Desarrollado por: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Informar de un "
+"problema</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Sitio web</a>\n"
+"\n"
+"Las esquinas redondeadas y los efectos gaussianos se basan en el código de "
+"aunetx (Blur-my-shell)\n"
+"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"El efecto Overview se basa parcialmente en la extensión BlurOverview de "
+"nailfarmer"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -365,14 +375,12 @@ msgid "Desktop background"
 msgstr "Fondo de escritorio"
 
 #. 6.0->settings-schema.json->enable-desktop-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to desktop background image. Desktop effects can be applies "
 "always or just when a window has the focus."
 msgstr ""
-"Aplicar efectos a la imagen de fondo del escritorio. En la pestaña Fondo de "
-"escritorio puedes elegir si el efecto se aplica siempre o sólo cuando una "
-"ventana tiene el foco."
+"Aplicar efectos a la imagen de fondo del escritorio. Los efectos del "
+"escritorio se pueden aplicar siempre o solo cuando una ventana tiene el foco."
 
 #. 6.0->settings-schema.json->enable-notification-effects->description
 msgid "Notification popups (Please read tooltip)"
@@ -380,7 +388,6 @@ msgstr ""
 "Ventanas emergentes de notificación (Lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-notification-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
@@ -391,8 +398,8 @@ msgstr ""
 "Aplica efectos a las ventanas emergentes de notificación. Esta opción se ha "
 "probado con los temas de escritorio Cinnamon (6.4) y Mint-Y dark, pero es "
 "posible que también funcione con otros temas. Anula algunos ajustes del tema "
-"para conseguir una ventana (semi)transparente, de modo que el fondo "
-"difuminado sea visible."
+"para conseguir una ventana emergente de notificación (semi)transparente, de "
+"modo que se vea el fondo difuminado."
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->description
 msgid "Alt-Tab application switcher (Coverflow & Timeline only)"
@@ -427,7 +434,6 @@ msgid "Application windows (Please read tooltip)"
 msgstr "Ventanas de aplicación (lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to application window backgrounds by adding an effect actor "
 "below all existing graphical elements of affected windows. This means the "
@@ -441,18 +447,17 @@ msgstr ""
 "afectadas. Esto significa que los efectos NO serán visibles a menos que la "
 "aplicación esté configurada para ser transparente o que el ajuste de "
 "\"Opacidad\" de la ventana sea inferior al 100 %. La lista de inclusión de "
-"aplicaciones de la pestaña \"Ventanas\" se utiliza para determinar a qué "
-"aplicaciones (si las hay) se les aplicarán efectos a sus ventanas."
+"aplicaciones en la configuración de \"Ventanas\" se utiliza para determinar "
+"a qué aplicaciones (si las hay) se les aplicarán efectos a sus ventanas."
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to Desklet backgrounds. Desklets must be setup to be "
 "transparent in order for the Blur Cinnamon effects to be visible."
 msgstr ""
-"Aplica efectos a los fondos de las descripciones emergentes del panel. Anula "
-"algunos ajustes del tema para conseguir una descripción emergente "
-"(semi)transparente, de modo que el fondo desenfocado sea visible."
+"Aplica efectos a los fondos de los desklets. Los desklets deben configurarse "
+"para que sean transparentes y así poder ver los efectos de desenfoque de "
+"Cinnamon."
 
 #. 6.0->settings-schema.json->focused-window-backlight->description
 msgid "Focused window backlight effect"
@@ -476,7 +481,6 @@ msgid "Override some of the panels theme settings (recommended)"
 msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the panels transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -484,11 +488,11 @@ msgid ""
 "theme already uses transparent panels and you want the themes setting to "
 "apply."
 msgstr ""
-"Permite a esta extensión modificar la transparencia de los paneles y la "
-"configuración del color de fondo. Si esta opción está deshabilitada, la "
-"extensión sólo aplicará un desenfoque bajo los paneles. Esta configuración "
-"sólo debe desactivarse cuando el tema ya utiliza paneles transparentes y "
-"desea que se aplique la configuración de temas."
+"Permite que esta extensión modifique la configuración de transparencia y "
+"color de fondo de los paneles. Si se desactiva, la extensión solo aplicará "
+"un fondo difuminado debajo de los paneles. Esta configuración solo debe "
+"desactivarse cuando el tema ya utilice paneles transparentes y se desee "
+"aplicar la configuración del tema."
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->description
 msgid "Override some of the popup menu theme settings (recommended)"
@@ -496,7 +500,6 @@ msgstr ""
 "Anular algunos de los ajustes del tema del menú emergente (recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the popup Menu transparency and background "
 "color settings. If this is disabled the extension will only apply a blur "
@@ -506,7 +509,7 @@ msgid ""
 msgstr ""
 "Permite que esta extensión modifique la transparencia del menú emergente y "
 "la configuración del color de fondo. Si se desactiva, la extensión solo "
-"aplicará una capa difuminada debajo de los menús emergentes. Esta "
+"aplicará un fondo difuminado debajo de los menús emergentes. Esta "
 "configuración solo debe desactivarse cuando el tema ya utilice menús "
 "emergentes transparentes y se desee aplicar la configuración del tema."
 
@@ -549,34 +552,40 @@ msgstr ""
 "panel"
 
 #. 6.0->settings-schema.json->enable-desklets-override->description
-#, fuzzy
 msgid "Use unique effect settings for the Desklets"
-msgstr "Usar ajustes de efectos exclusivos para los Paneles"
+msgstr "Utiliza ajustes de efectos únicos para los Desklets"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->description
 msgid "Enable advanced options to apply unique settings for each Desklet"
 msgstr ""
+"Habilita las opciones avanzadas para aplicar configuraciones únicas para "
+"cada Desklet"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->tooltip
 msgid ""
 "With this option enabled each Desklet can use different settings or you can "
 "disable effects completely for some Desklets."
 msgstr ""
+"Con esta opción activada, cada Desklet puede utilizar diferentes ajustes o "
+"puedes desactivar los efectos por completo para algunos Desklets."
 
 #. 6.0->settings-schema.json->window-settings-button->description
 msgid "Open Alt-Tab Cinnamon settings"
 msgstr "Abrir la configuración de Cinnamon con Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
-#, fuzzy
 msgid "Enable advanced options to apply unique settings for each panel"
-msgstr "Usar ajustes de efectos exclusivos exclusivos para cada panel"
+msgstr ""
+"Habilita las opciones avanzadas para aplicar configuraciones únicas para "
+"cada panel"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->tooltip
 msgid ""
 "With this option enabled each panel can use different settings or you can "
 "disable effects completely for some panels."
 msgstr ""
+"Con esta opción activada, cada panel puede utilizar diferentes ajustes o se "
+"pueden desactivar los efectos por completo para algunos paneles."
 
 #. 6.0->settings-schema.json->panel-unique-settings->description
 msgid "Panel specific settings"
@@ -633,7 +642,6 @@ msgid "Saturation"
 msgstr "Saturación"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
-#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
@@ -643,12 +651,14 @@ msgid ""
 "field is in the rgb(#,#,#) syntax and black will be used when a color is not "
 "provided or is in an incorrect syntax"
 msgstr ""
-"Define los efectos aplicados a los distintos paneles. Si un panel no cumple "
-"los criterios de ninguna entrada habilitada de esta lista, no se le aplicará "
+"Define los efectos aplicados a los diferentes paneles. Si un panel no cumple "
+"los criterios de ninguna entrada habilitada en esta lista, no se le aplicará "
 "ningún efecto. Se aplicarán los ajustes de la primera entrada de esta lista "
-"que pueda aplicarse a un panel determinado. El campo de color está en la "
-"sintaxis rgb(#,#,#) y se utilizará el negro cuando no se proporcione un "
-"color o esté en una sintaxis incorrecta"
+"que se pueda aplicar a un panel determinado. La casilla «Personalizado» "
+"determina si se utilizan los ajustes de efectos genéricos o los ajustes "
+"personalizados de esta tabla. El campo de color tiene la sintaxis rgb(#,#,#) "
+"y se utilizará el negro cuando no se proporcione un color o la sintaxis sea "
+"incorrecta"
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->description
 msgid "Restore theme settings when a window is maximized"
@@ -829,11 +839,12 @@ msgstr "Saturación del color de fondo"
 #. 6.0->settings-schema.json->appswitcher-saturation->tooltip
 #. 6.0->settings-schema.json->tooltips-saturation->tooltip
 #. 6.0->settings-schema.json->desklets-saturation->tooltip
-#, fuzzy
 msgid ""
 "Adjusts the color saturation of the background image from gray-scale to full "
 "color."
-msgstr "Ajusta la saturación de color de la imagen de fondo."
+msgstr ""
+"Ajusta la saturación del color de la imagen de fondo, desde escala de grises "
+"hasta color completo."
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
 msgid "Apply effects to applet popup menus"
@@ -849,10 +860,9 @@ msgstr ""
 "Aplicar efectos a los menús contextuales de la barra de título de la ventana"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements dimming (%)"
 msgstr ""
-"Atenuación de elementos de acento adicionales del menú emergente (porcentaje)"
+"Atenuación adicional de los elementos decorativos del menú emergente (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
@@ -888,21 +898,19 @@ msgstr ""
 "enfocado"
 
 #. 6.0->settings-schema.json->desktop-with-focus->tooltip
-#, fuzzy
 msgid ""
 "When enabled, the generic effect settings (on the \"Generic effect "
 "settings\" tab) will apply to the desktop background image when the desktop "
 "is in focus"
 msgstr ""
-"Si esta opción está activada, la configuración del efecto genérico (en la "
-"pestaña General) se aplicará a la imagen de fondo del escritorio cuando éste "
-"esté enfocado"
+"Cuando está habilitado, la configuración de efectos genéricos (en la pestaña "
+"\"Configuración de efectos genéricos\") se aplicará a la imagen de fondo del "
+"escritorio cuando este esté enfocado"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
-#, fuzzy
 msgid "Dim/Colorize background Image (%)"
-msgstr "Atenuar/Colorear fondo (%)"
+msgstr "Atenuar/Colorear imagen de fondo (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -921,6 +929,8 @@ msgid ""
 "Note: Alt-Tab effects only apply to the Coverflow and Timeline 3D Alt-Tab "
 "configurations"
 msgstr ""
+"Nota: Los efectos Alt-Tab solo se aplican a las configuraciones Alt-Tab de "
+"Coverflow y Timeline 3D"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
@@ -947,7 +957,6 @@ msgid "Rounded Bottom"
 msgstr "Parte inferior redondeada"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
-#, fuzzy
 msgid ""
 "Defines a list of application windows where background effect will be "
 "applied and what effects will apply. When \"Custom\" is enabled the setting "
@@ -958,7 +967,7 @@ msgstr ""
 "Define una lista de ventanas de aplicaciones en las que se aplicará el "
 "efecto de fondo y qué efectos se aplicarán. Cuando se habilita "
 "\"Personalizado\", se aplicará la configuración definida en esta tabla; de "
-"lo contrario, se aplicará la configuración de la pestaña general para la "
+"lo contrario, se aplicará la \"Configuración de efectos genéricos\" para la "
 "aplicación específica. El campo \"Aplicación\" puede ser un WM_CLASS o un "
 "nombre de archivo de escritorio."
 
@@ -997,6 +1006,7 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
 msgstr ""
+"Habilitar automáticamente los efectos para los Desklets recién añadidos"
 
 #. 6.0->settings-schema.json->desklets-auto->tooltip
 msgid ""
@@ -1005,18 +1015,23 @@ msgid ""
 "applied when manually enabled in the table below. By default the settings "
 "applied to new Desklets will be the generic effect settings."
 msgstr ""
+"Cuando está habilitado, los nuevos Desklets añadidos al escritorio tendrán "
+"automáticamente aplicados los efectos Blur Cinnamon. Cuando está "
+"deshabilitado, los Desklets solo tendrán efectos aplicados cuando se "
+"habiliten manualmente en la tabla siguiente. Por defecto, los ajustes "
+"aplicados a los nuevos Desklets serán los ajustes de efectos genéricos."
 
 #. 6.0->settings-schema.json->desklets-list->description
 msgid "Active Desklet list"
-msgstr ""
+msgstr "Lista activa de Desklet"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""
@@ -1025,3 +1040,8 @@ msgid ""
 "settings or the custom settings defined in this table. The custom settings "
 "can be modified by double clicking on a table row."
 msgstr ""
+"La casilla \"Habilitado\" controla a qué Desklets se aplicarán los efectos. "
+"La casilla \"Personalizado\" controla si un Desklet utilizará la "
+"configuración de efectos genérica o la configuración personalizada definida "
+"en esta tabla. La configuración personalizada se puede modificar haciendo "
+"doble clic en una fila de la tabla."
