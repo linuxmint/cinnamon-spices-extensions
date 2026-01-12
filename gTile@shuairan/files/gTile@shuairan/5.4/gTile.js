@@ -1361,16 +1361,25 @@ class App {
         this.ReInitialize = () => {
             this.monitors = app_Main.layoutManager.monitors;
             this.DestroyGrid();
-            this.InitGrid();
+
+            // Fix for Issue #512: Delay re-initialization to ensure driver/compositor readiness
+            imports.gi.GLib.timeout_add(imports.gi.GLib.PRIORITY_DEFAULT, 750, () => {
+                this.InitGrid();
+                // GLib.SOURCE_REMOVE
+                return false;
+            });
         };
         this.DestroyGrid = () => {
             this.RemoveKeyControls();
             for (const grid of this.grids) {
-                if (typeof grid != 'undefined') {
+                if (typeof grid !== 'undefined' && grid !== null) {
                     grid.Hide(true);
                     app_Main.layoutManager.removeChrome(grid.actor);
+                    // Explicitly destroy the grid instance to clear visual actors
+                    grid.destroy();
                 }
             }
+            this.grids = [];
         };
         this.MoveUIActor = () => {
             if (!this.visible) {
@@ -1523,7 +1532,9 @@ class App {
         this.config = new Config(this);
         this.InitGrid();
         this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
-        global.screen.connect('monitors-changed', this.ReInitialize);
+
+        // Track the signal ID for cleanup
+        this.monitorsChangedId = global.screen.connect('monitors-changed', this.ReInitialize);
     }
     get CurrentMonitor() {
         return this.currentMonitor;
@@ -1539,6 +1550,11 @@ class App {
         return this.grids;
     }
     destroy() {
+        // Disconnect monitors-changed signal to prevent ghost instances
+        if (this.monitorsChangedId) {
+            global.screen.disconnect(this.monitorsChangedId);
+            this.monitorsChangedId = null;
+        }
         this.config.destroy();
         this.DestroyGrid();
         this.ResetFocusedWindow();
