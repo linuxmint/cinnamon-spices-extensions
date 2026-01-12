@@ -13,6 +13,7 @@ Cinnamon components you can apply effects to (currently):
 7. The panel tooltip popups **(#)**
 8. The Coverflow and Timeline 3D Alt-Tab switchers (not the Cinnamon default Alt-Tab switcher!)
 9. Application window backgrounds **(#)**
+10. Desklet backgrounds **(#)**
 
 **(#)** Note: The Blur Cinnamon effects for the (#) marked Cinnamon components above are disabled by default. They can be enabled in the Blur Cinnamon configuration window. Some effects will override your theme settings to force transparency.
 
@@ -25,7 +26,7 @@ Blurring can also be disabled if you just want a transparent or semi-transparent
 - Dimming overlay with user configurable color and intensity (fully-transparent to a solid color)
 - Makes the components transparent (when needed) so that the desktop background image effects are visible
 - Allows you to adjust the color saturation of the Cinnamon components. You can reduced saturation all the way down to gray scale
-- Uses a rounded corner effect to match your themes rounded corner settings, and provides manual rounded corner setting for application window effects so you can match the rounded corner of the application windows you choose to blur
+- Uses a rounded corner effect to match your themes rounded corner settings, and provides manual rounded corner setting for application window effects so you can match the rounded corner of the application windows you choose to blur. This does NOT round window corners, it only allows the blurred background to match the rounding of it's window
 - Ability to changes the opacity of application windows so application window blur effects are visible under the window
 - Option to add a backlight effect to the focused window using a background image blur effect spilling over the focused windows borders
 - You can use general settings across all Cinnamon components or use unique settings for each component type
@@ -41,6 +42,10 @@ If you have installed any of the following Cinnamon extensions, you should **dis
 - Blur Overview
 
 Using any of the above with Blur Cinnamon may have some odd side effects that would require a Cinnamon restart to resolve.
+
+
+
+Cinnamon 6.6:  There are a few issues I need to work on for 22.3 (Cinnamon 6.6). The new menu should have the left panel changed to be transparant and the Cinnamon theme uses margins that cause Blur Cinnamon menu effects to spill over the popup's borders. I'll work on this for version 1.7.1
 
 ## Limitations
 

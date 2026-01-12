@@ -1,228 +1,222 @@
 {
    "layout" : {
       "type" : "layout",
-      "pages" : ["general-page", "overview-page", "expo-page", "panels-page", "popup-page", "desktop-page", "notification-page", "appswitcher-page", "tooltips-page", "windows-page"],
+      "pages" : ["general-page", "generic-settings-page", "component-setting-page", "about-page"],
 
       "general-page" : {
          "type" : "page",
-         "title" : "General",
-         "sections" : ["general-settings", "generic-effect-settings"]
+         "title" : "General setup",
+         "sections" : ["general-settings"]
       },
-      "overview-page" : {
+      "generic-settings-page" : {
          "type" : "page",
-         "title" : "Overview",
-         "sections" : ["overview-override", "overview-effect-settings"]
+         "title" : "Generic effect settings",
+         "sections" : ["generic-effect-settings"]
       },
-      "expo-page" : {
+      "component-setting-page" : {
          "type" : "page",
-         "title" : "Expo",
-         "sections" : ["expo-override", "expo-effect-settings"]
+         "title" : "Component specific settings",
+         "sections" : ["component-selector-section", "component-specific-section"]
       },
-      "panels-page" : {
+      "about-page" : {
          "type" : "page",
-         "title" : "Panels",
-         "sections" : ["panels-override", "panels-effect-settings"]
-      },
-      "popup-page" : {
-         "type" : "page",
-         "title" : "Menus",
-         "sections" : ["popup-override", "popup-effect-settings"]
-      },
-      "desktop-page" : {
-         "type" : "page",
-         "title" : "Desktop",
-         "sections" : ["desktop-override", "desktop-effect-settings"]
-      },
-      "notification-page" : {
-         "type" : "page",
-         "title" : "Notifications",
-         "sections" : ["notification-override", "notification-effect-settings"]
-      },
-      "appswitcher-page" : {
-         "type" : "page",
-         "title" : "Alt-Tab",
-         "sections" : ["appswitcher-override", "appswitcher-effect-settings"]
-      },
-      "tooltips-page" : {
-         "type" : "page",
-         "title" : "Tooltips",
-         "sections" : ["tooltips-override", "tooltips-effect-settings"]
-      },
-      "windows-page" : {
-         "type" : "page",
-         "title" : "Windows",
-         "sections" : ["windows-effect-settings"]
+         "title" : "About",
+         "sections" : ["about-section"]
       },
 
       "general-settings" : {
          "type" : "section",
-         "title" : "Desktop elements where effects will be applied",
-         "keys" : ["enable-overview-effects", "enable-expo-effects", "enable-panels-effects", "enable-popup-effects", "enable-desktop-effects", "enable-notification-effects", "enable-appswitcher-effects", "enable-tooltips-effects", "enable-window-effects", "focused-window-backlight"]
+         "title" : "Cinnamon desktop components where effects will be applied",
+         "keys" : ["enable-appswitcher-effects", "enable-desklet-effects", "enable-desktop-effects", "enable-expo-effects", "enable-popup-effects", "enable-notification-effects", "enable-overview-effects", "enable-panels-effects", "enable-tooltips-effects", "enable-window-effects", "focused-window-backlight"]
       },
+
       "generic-effect-settings" : {
          "type" : "section",
          "title" : "Generic effect settings",
          "keys" : ["opacity", "blendColor", "blurType", "radius", "saturation"]
       },
 
-      "overview-override" : {
+      "component-selector-section" : {
          "type" : "section",
-         "title" : "Overview settings",
-         "keys" : ["overview-info", "enable-overview-override"]
-      },
-      "overview-effect-settings" : {
-         "type" : "section",
-         "title" : "Overview effect settings",
-         "dependency" : "enable-overview-override=1",
-         "keys" : ["overview-opacity", "overview-blendColor", "overview-blurType", "overview-radius", "overview-saturation"]
+         "title" : "Component Selector",
+         "keys" : ["component-selector"]
       },
 
-      "expo-override" : {
+      "component-specific-section" : {
          "type" : "section",
-         "title" : "Expo settings",
-         "keys" : ["expo-info", "enable-expo-override"]
-      },
-      "expo-effect-settings" : {
-         "type" : "section",
-         "title" : "Expo effect settings",
-         "dependency" : "enable-expo-override=1",
-         "keys" : ["expo-opacity", "expo-blendColor", "expo-blurType", "expo-radius", "expo-saturation"]
-      },
-
-      "panels-override" : {
-         "type" : "section",
-         "title" : "Panel settings",
-         "keys" : ["panels-info", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized"]
-      },
-      "panels-effect-settings" : {
-         "type" : "section",
-         "title" : "Panel effects settings",
-         "dependency" : "enable-panels-override",
-         "keys" : ["enable-panel-unique-settings", "panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation"]
+         "title" : "Component Specific Settings",
+         "keys" : [ "overview-warning", "enable-overview-override",  "overview-opacity", "overview-blendColor", "overview-blurType", "overview-radius", "overview-saturation",
+                    "expo-warning", "enable-expo-override", "expo-opacity", "expo-blendColor", "expo-blurType", "expo-radius", "expo-saturation",
+                    "panel-warning", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized", "enable-panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation", "panel-unique-settings",
+                    "popup-warning", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup", "popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation",
+                    "desktop-warning", "enable-desktop-override", "desktop-without-focus", "desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation",
+                    "notification-warning", "enable-notification-override", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
+                    "appswitcher-warning", "enable-appswitcher-override", "appswitcher-info", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation",
+                    "tooltips-warning", "enable-tooltips-override", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation",
+                    "windows-warning", "windows-inclusion-list", "windows-add-button", "windows-compiz-mitigation",
+                    "desklets-warning", "enable-desklets-override", "enable-desklets-unique-settings", "desklets-opacity", "desklets-blendColor", "desklets-blurType", "desklets-radius", "desklets-saturation", "desklets-list", "desklets-auto", "desklets-label",
+                    "info-label"
+                  ]
       },
 
-      "popup-override" : {
+      "about-section" : {
          "type" : "section",
-         "title" : "Popup menu settings",
-         "keys" : [ "popup-info", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup"]
-      },
-      "popup-effect-settings" : {
-         "type" : "section",
-         "title" : "Popup menu effects settings",
-         "dependency" : "enable-popup-override",
-         "keys" : ["popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation"]
-      },
-
-      "desktop-override" : {
-         "type" : "section",
-         "title" : "Desktop background settings",
-         "keys" : ["desktop-info", "enable-desktop-override", "desktop-without-focus"]
-      },
-      "desktop-effect-settings" : {
-         "type" : "section",
-         "title" : "Desktop background effects settings",
-         "dependency" : "enable-desktop-override",
-         "keys" : ["desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation"]
-      },
-
-      "notification-override" : {
-         "type" : "section",
-         "title" : "Notification popup background settings",
-         "keys" : ["notification-info", "enable-notification-override"]
-      },
-      "notification-effect-settings" : {
-         "type" : "section",
-         "title" : "Notification popup background effects settings",
-         "dependency" : "enable-notification-override",
-         "keys" : ["notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button"]
-      },
-
-      "appswitcher-override" : {
-         "type" : "section",
-         "title" : "Alt-Tab (Coverflow / Timeline) background settings",
-         "keys" : ["appswitcher-info", "enable-appswitcher-override", "window-settings-button"]
-      },
-      "appswitcher-effect-settings" : {
-         "type" : "section",
-         "title" : "Alt-Tab (Coverflow / Timeline) background effects settings",
-         "dependency" : "enable-appswitcher-override",
-         "keys" : ["appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation"]
-      },
-
-      "tooltips-override" : {
-         "type" : "section",
-         "title" : "Panel tooltips background settings",
-         "keys" : ["tooltips-info", "enable-tooltips-override"]
-      },
-      "tooltips-effect-settings" : {
-         "type" : "section",
-         "title" : "Panel tooltips background effects settings",
-         "dependency" : "enable-tooltips-override",
-         "keys" : ["tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation"]
-      },
-
-      "windows-effect-settings" : {
-         "type" : "section",
-         "title" : "Application window background effects settings",
-         "keys" : ["windows-info", "windows-inclusion-list", "windows-add-button", "compiz-mitigation"]
+         "title" : "About Blur Cinnamon",
+         "keys" : ["about-text"]
       }
-
    },
 
-    "enable-overview-effects" : {
-        "type": "switch",
-        "description": "Overview",
-        "tooltip": "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` hot corner)",
-        "default": true
-    },
-    "enable-expo-effects" : {
-        "type": "switch",
-        "description": "Expo",
-        "tooltip": "Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot corner)",
-        "default": true
-    },
-    "enable-panels-effects" : {
-        "type": "switch",
-        "description": "Panels  (Please read tooltip)",
-        "tooltip": "Apply effects to the Panels. This option should work well with most dark desktop themes but light themes could also be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some themes settings to achieve a (semi-)transparent panel so that the blurred background is visible.",
-        "default": true
-    },
-    "enable-popup-effects" : {
-        "type": "switch",
-        "description": "Popup Menus  (Please read tooltip)",
-        "tooltip": "Apply effects to panel popup menus. This option is intended for the Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other themes. Light themes are unlikely to give good results but might be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some theme settings to achieve a (semi-)transparent menu so that the blurred background is visible.",
-        "default": false
-    },
-    "enable-desktop-effects" : {
-        "type": "switch",
-        "description": "Desktop background",
-        "tooltip": "Apply effects to desktop background image. On the Desktop Background tab you can choose if the effect applies always or just when a window has the focus.",
-        "default": false
-    },
-    "enable-notification-effects" : {
-        "type": "switch",
-        "description": "Notification popups (Please read tooltip)",
-        "tooltip": "Apply effects to the notification popups. This option has been tested with the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with other themes. It overrides some theme settings to achieve a (semi-)transparent window so that the blurred background is visible.",
-        "default": false
-    },
-    "enable-appswitcher-effects" : {
-        "type": "switch",
-        "description": "Alt-Tab application switcher (Coverflow & Timeline only)",
-        "tooltip": "Apply effects to the Alt-Tab application switcher background when setup to use the Coverflow or Timeline styles",
-        "default": true
-    },
-    "enable-tooltips-effects" : {
-        "type": "switch",
-        "description": "Panel tooltips (Please read tooltip)",
-        "tooltip": "Apply effects to the panel tooltip backgrounds. It overrides some theme settings to achieve a (semi-)transparent tooltip so that the blurred background is visible.",
-        "default": false
-    },
-    "enable-window-effects" : {
-        "type": "switch",
-        "description": "Application windows (Please read tooltip)",
-        "tooltip": "Apply effects to application window backgrounds by adding an effect actor below all existing graphical elements of affected windows. This means the effects will NOT be visible unless the application is setup to be transparent or the \"Opacity\" setting for the window is less than 100%. The application inclusion list on the \"Windows\" tab is used to determine which (if any) applications will have effects applied to its windows.",
-        "default": false
-    },
+   "appswitcher-warning": {
+      "type" : "label",
+      "description" : "Note: The Alt-Tab effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-appswitcher-effects & component-selector=0"
+   },
+   "desklets-warning": {
+      "type" : "label",
+      "description" : "Note: The Desklet effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-desklet-effects & component-selector=1"
+   },
+   "desktop-warning": {
+      "type" : "label",
+      "description" : "Note: The Desktop effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-desktop-effects & component-selector=2"
+   },
+   "expo-warning": {
+      "type" : "label",
+      "description" : "Note: The Expo effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-expo-effects & component-selector=3"
+   },
+   "popup-warning": {
+      "type" : "label",
+      "description" : "Note: The Menu effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-popup-effects & component-selector=4"
+   },
+   "notification-warning": {
+      "type" : "label",
+      "description" : "Note: The Notification effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-notification-effects & component-selector=5"
+   },
+   "overview-warning": {
+      "type" : "label",
+      "description" : "Note: The Overview effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-overview-effects & component-selector=6"
+   },
+   "panel-warning": {
+      "type" : "label",
+      "description" : "Note: The Panel effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-panels-effects & component-selector=7"
+   },
+   "tooltips-warning": {
+      "type" : "label",
+      "description" : "Note: The Tooltip effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-tooltips-effects & component-selector=8"
+   },
+   "windows-warning": {
+      "type" : "label",
+      "description" : "Note: The Window effects are currently disabled under the \"General setup\" tab.",
+      "dependency" : "!enable-window-effects & component-selector=9"
+   },
+
+   "desklets-label": {
+      "type" : "custom",
+      "file" : "CustomWidgets.py",
+      "widget" : "LabelWithTooltip",
+      "description" : "<b>Note:</b> You must configure your Desklets to be transparent! (see tooltip)",
+      "tooltip": "In order for Blur Cinnamon Desklet effects to be visible, a Desklets background must be transparent. This allows the blur effect to be visible below the Desklet. Most Desklets can be configured to have transparent backgrounds. On the Desktop, right-click on a Desklet, select the \"Configure...\" menu item to open a Desklet's configuration window.",
+      "dependency" : "enable-desklet-effects & component-selector=1"
+   },
+
+   "info-label": {
+      "type" : "label",
+      "description" : ""
+   },
+
+   "component-selector": {
+      "type": "combobox",
+      "default": 0,
+      "options": {
+         "Alt-Tab": 0,
+         "Desklets": 1,
+         "Desktop": 2,
+         "Expo": 3,
+         "Menus": 4,
+         "Notifications": 5,
+         "Overview": 6,
+         "Panels": 7,
+         "Tooltips": 8,
+         "Windows": 9
+      },
+      "description": "Show settings for component:"
+   },
+
+   "about-text": {
+      "type" : "custom",
+      "file" : "CustomWidgets.py",
+      "widget" : "About",
+      "description" : "\n<b>Brining your style into focus</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/104\">Website</a>\n\nThe rounded corners and Gaussian effects are based on code by aunetx (Blur-my-shell)\n<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n\nThe Overview effect is partially based on the BlurOverview extension by nailfarmer",
+      "icon" : "/icon.png"
+   },
+
+   "enable-overview-effects" : {
+      "type": "switch",
+      "description": "Overview",
+      "tooltip": "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` hot corner)",
+      "default": true
+   },
+   "enable-expo-effects" : {
+      "type": "switch",
+      "description": "Expo",
+      "tooltip": "Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot corner)",
+      "default": true
+   },
+   "enable-panels-effects" : {
+      "type": "switch",
+      "description": "Panels  (Please read tooltip)",
+      "tooltip": "Apply effects to the Panels. This option should work well with most dark desktop themes but light themes could also be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some themes settings to achieve a (semi-)transparent panel so that the blurred background is visible.",
+      "default": true
+   },
+   "enable-popup-effects" : {
+      "type": "switch",
+      "description": "Popup Menus  (Please read tooltip)",
+      "tooltip": "Apply effects to panel popup menus. This option is intended for the Cinnamon (6.4) and Mint-Y dark desktop themes but might work well with other themes. Light themes are unlikely to give good results but might be made to work with some creative use of the dimming color settings and an appropriate background image. It overrides some theme settings to achieve a (semi-)transparent menu so that the blurred background is visible.",
+      "default": false
+   },
+   "enable-desktop-effects" : {
+      "type": "switch",
+      "description": "Desktop background",
+      "tooltip": "Apply effects to desktop background image. Desktop effects can be applies always or just when a window has the focus.",
+      "default": false
+   },
+   "enable-notification-effects" : {
+      "type": "switch",
+      "description": "Notification popups (Please read tooltip)",
+      "tooltip": "Apply effects to the notification popups. This option has been tested with the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with other themes. It overrides some theme settings to achieve a (semi-)transparent Notification popup window so that the blurred background is visible.",
+      "default": false
+   },
+   "enable-appswitcher-effects" : {
+      "type": "switch",
+      "description": "Alt-Tab application switcher (Coverflow & Timeline only)",
+      "tooltip": "Apply effects to the Alt-Tab application switcher background when setup to use the Coverflow or Timeline styles",
+      "default": true
+   },
+   "enable-tooltips-effects" : {
+      "type": "switch",
+      "description": "Panel tooltips (Please read tooltip)",
+      "tooltip": "Apply effects to the panel tooltip backgrounds. It overrides some theme settings to achieve a (semi-)transparent tooltip so that the blurred background is visible.",
+      "default": false
+   },
+   "enable-window-effects" : {
+      "type": "switch",
+      "description": "Application windows (Please read tooltip)",
+      "tooltip": "Apply effects to application window backgrounds by adding an effect actor below all existing graphical elements of affected windows. This means the effects will NOT be visible unless the application is setup to be transparent or the \"Opacity\" setting for the window is less than 100%. The application inclusion list under \"Windows\" settings is used to determine which (if any) applications will have effects applied to its windows.",
+      "default": false
+   },
+   "enable-desklet-effects" : {
+      "type": "switch",
+      "description": "Desklets",
+      "tooltip": "Apply effects to Desklet backgrounds. Desklets must be setup to be transparent in order for the Blur Cinnamon effects to be visible.",
+      "default": false
+   },
 
     "focused-window-backlight": {
         "type" : "custom",
@@ -236,134 +230,115 @@
         "default": 0
     },
 
-    "overview-info" : {
-        "type" : "label",
-        "description" : "Warning: Overview effects are currently disabled under the General tab.",
-        "dependency" : "!enable-overview-effects"
-    },
-    "expo-info" : {
-        "type" : "label",
-        "description" : "Warning: Expo effects are currently disabled under the General tab.",
-        "dependency" : "!enable-expo-effects"
-    },
-    "panels-info" : {
-        "type" : "label",
-        "description" : "Warning: Panel effects are currently disabled under the General tab.",
-        "dependency" : "!enable-panels-effects"
-    },
-    "popup-info" : {
-        "type" : "label",
-        "description" : "Warning: Popup Menu effects are currently disabled under the General tab.",
-        "dependency" : "!enable-popup-effects"
-    },
-    "desktop-info" : {
-        "type" : "label",
-        "description" : "Warning: Desktop background effects are currently disabled under the General tab.",
-        "dependency" : "!enable-desktop-effects"
-    },
-    "notification-info" : {
-        "type" : "label",
-        "description" : "Warning: Notification popup effects are currently disabled under the General tab.",
-        "dependency" : "!enable-notification-effects"
-    },
-    "appswitcher-info" : {
-        "type" : "label",
-        "description" : "Warning: Alt-Tab effects are currently disabled under the General tab.",
-        "dependency" : "!enable-appswitcher-effects"
-    },
-    "tooltips-info" : {
-        "type" : "label",
-        "description" : "Warning: Panel tooltip effects are currently disabled under the General tab.",
-        "dependency" : "!enable-tooltips-effects"
-    },
-    "windows-info" : {
-        "type" : "label",
-        "description" : "Warning: Window effects are currently disabled under the General tab.",
-        "dependency" : "!enable-window-effects"
-    },
-
     "allow-transparent-color-panels" : {
         "type": "switch",
         "description": "Override some of the panels theme settings (recommended)",
-        "tooltip": "Allow this extension to modify the panels transparency and background color settings. If this is disabled the extension will only apply a blur overlay under the panels. This setting should only be disabled when the theme already uses transparent panels and you want the themes setting to apply.",
-        "default": true
+        "tooltip": "Allow this extension to modify the panels transparency and background color settings. If this is disabled the extension will only apply a blur background under the panels. This setting should only be disabled when the theme already uses transparent panels and you want the themes setting to apply.",
+        "default": true,
+        "dependency" : "enable-panels-effects & component-selector=7"
     },
     "allow-transparent-color-popup" : {
         "type": "switch",
         "description": "Override some of the popup menu theme settings (recommended)",
-        "tooltip": "Allow this extension to modify the popup Menu transparency and background color settings. If this is disabled the extension will only apply a blur overlay under the popup menus. This setting should only be disabled when the theme already uses transparent popup menus and you want the themes setting to apply.",
-        "default": true
+        "tooltip": "Allow this extension to modify the popup Menu transparency and background color settings. If this is disabled the extension will only apply a blur background under the popup menus. This setting should only be disabled when the theme already uses transparent popup menus and you want the themes setting to apply.",
+        "default": true,
+        "dependency" : "enable-popup-effects & component-selector=4"
     },
 
     "enable-overview-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Overview",
+        "dependency" : "enable-overview-effects & component-selector=6",
         "default": false
     },
     "enable-expo-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Expo",
+        "dependency" : "enable-expo-effects & component-selector=3",
         "default": false
     },
     "enable-panels-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Panels",
+        "dependency" : "enable-panels-effects & component-selector=7",
         "default": false
     },
     "enable-popup-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the popup menus",
+        "dependency" : "enable-popup-effects & component-selector=4",
         "default": false
     },
     "enable-desktop-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the desktop background",
+        "dependency" : "enable-desktop-effects & component-selector=2",
         "default": false
     },
     "enable-notification-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the notification popups",
+        "dependency" : "enable-notification-effects & component-selector=5",
         "default": false
     },
     "enable-appswitcher-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the Alt-Tab app switcher",
+        "dependency" : "enable-appswitcher-effects & component-selector=0",
         "default": false
     },
     "enable-tooltips-override" : {
         "type": "switch",
         "description": "Use unique effect settings for the panel tooltips",
+        "dependency" : "enable-tooltips-effects & component-selector=8",
+        "default": false
+    },
+    "enable-desklets-override" : {
+        "type": "switch",
+        "description": "Use unique effect settings for the Desklets",
+        "dependency" : "enable-desklet-effects & component-selector=1",
+        "default": false
+    },
+
+    "enable-desklets-unique-settings" : {
+        "type": "switch",
+        "description": "Enable advanced options to apply unique settings for each Desklet",
+        "tooltip": "With this option enabled each Desklet can use different settings or you can disable effects completely for some Desklets.",
+        "dependency" : "enable-desklet-effects & component-selector=1 & enable-desklets-override",
         "default": false
     },
 
     "window-settings-button" : {
        "type" : "button",
        "description" : "Open Alt-Tab Cinnamon settings",
-       "callback" : "on_window_settings_button_pressed"
+       "callback" : "on_window_settings_button_pressed",
+       "dependency" : "enable-appswitcher-effects & component-selector=0"
     },
 
     "enable-panel-unique-settings" : {
         "type": "switch",
-        "description": "Use unique effect settings for each panel",
-        "dependency" : "enable-panels-override",
+        "description": "Enable advanced options to apply unique settings for each panel",
+        "tooltip": "With this option enabled each panel can use different settings or you can disable effects completely for some panels.",
+        "dependency" : "enable-panels-effects & component-selector=7 & enable-panels-override",
         "default": false
     },
 
     "panel-unique-settings" : {
         "type" : "list",
         "description" : "Panel specific settings",
-        "dependency" : "enable-panel-unique-settings",
+        "dependency" : "enable-panels-effects & enable-panel-unique-settings & component-selector=7 & enable-panels-override",
         "columns" : [
             {"id": "enabled",   "title": "Enabled",   "type": "boolean", "default": true},
             {"id": "panels",    "title": "Panel",     "type": "integer", "default": 0, "options": { "All" : 0, "Top" : 1, "Bottom" : 2, "Left" : 3, "Right" : 4 } },
             {"id": "monitors",  "title": "Monitor",   "type": "integer", "default": 0, "options": { "All" : 100, "1" : 0, "2" : 1, "3" : 2, "4" : 3 } },
-            {"id": "opacity",   "title": "Dimming",   "type": "integer", "default": 40,  "min": 0, "max": 100},
+            {"id": "override",  "title": "Custom",    "type": "boolean", "default": true},
+            {"id": "opacity",   "title": "Dim",       "type": "integer", "default": 40,  "min": 0, "max": 100},
             {"id": "color",     "title": "Color",     "type": "string",  "default": "rgb(0,0,0)"},
             {"id": "blurtype",  "title": "Blur",      "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
             {"id": "radius",    "title": "Intensity", "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation","title": "Saturation","type": "integer", "default": 100, "min": 0, "max": 100}
         ],
-        "tooltip": "Defines the effects applied to different panels. If a panel does not meet the criteria of any enabled entry in this list, it will have no effects applied. The settings of the first entry in this list that can apply to a given panel will take effect. The color field is in the rgb(#,#,#) syntax and black will be used when a color is not provided or is in an incorrect syntax",
+        "tooltip": "Defines the effects applied to different panels. If a panel does not meet the criteria of any enabled entry in this list, it will have no effects applied. The settings of the first entry in this list that can apply to a given panel will take effect. The \"Custom\" check box determines if the generic effect settings are uses or this tables custom settings. The color field is in the rgb(#,#,#) syntax and black will be used when a color is not provided or is in an incorrect syntax",
         "default" : [
             { "enabled": true, "panels": 1, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
             { "enabled": true, "panels": 2, "monitors": 100, "opacity": 40, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100 },
@@ -375,7 +350,7 @@
     "no-panel-effects-maximized" : {
         "type": "switch",
         "description": "Restore theme settings when a window is maximized",
-        "dependency" : "allow-transparent-color-panels=true",
+        "dependency" : "enable-panels-effects & component-selector=7",
         "tooltip": "Restore the themes panel settings when any window is maximized on the same monitor as the panel. For most themes this will restore a solid panel background when a window is maximized. Note: This does not remove the blurring, so if your theme uses a transparent panel then this setting may have no effect.",
         "default": false
     },
@@ -431,17 +406,19 @@
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100
     },
 
-
-    "overview-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+    "overview-opacity": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 40,
+        "dependency" : "enable-overview-effects & component-selector=6 & enable-overview-override",
         "step": 1
     },
 
@@ -449,6 +426,7 @@
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
+        "dependency" : "enable-overview-effects & component-selector=6 & enable-overview-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -461,37 +439,46 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
+        "dependency" : "enable-overview-effects & component-selector=6 & enable-overview-override",
         "tooltip": "What type of blur algorithm should be used to blur the background"
     },
 
     "overview-radius": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "dependency" : "overview-blurType=2",
+        "dependency" : "enable-overview-effects & component-selector=6 & overview-blurType=2 & enable-overview-override",
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9
     },
 
     "overview-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "dependency" : "enable-overview-effects & component-selector=6 & enable-overview-override",
         "default": 100
     },
 
 
     "expo-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 40,
+        "dependency" : "enable-expo-effects & component-selector=3 & enable-expo-override",
         "step": 1
     },
 
@@ -499,6 +486,7 @@
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
+        "dependency" : "enable-expo-effects & component-selector=3 & enable-expo-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -511,46 +499,54 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
+        "dependency" : "enable-expo-effects & component-selector=3 & enable-expo-override",
         "tooltip": "What type of blur algorithm should be used to blur the background"
     },
 
     "expo-radius": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "expo-blurType=2"
+        "dependency" : "enable-expo-effects & component-selector=3 & expo-blurType=2 & enable-expo-override"
     },
 
     "expo-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "dependency" : "enable-expo-effects & component-selector=3 & enable-expo-override",
         "default": 100
     },
 
 
     "panels-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 30,
         "step": 1,
-        "dependency" : "!enable-panel-unique-settings"
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override"
     },
 
     "panels-blendColor": {
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
-        "dependency" : "!enable-panel-unique-settings",
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -564,68 +560,79 @@
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background",
-        "dependency" : "!enable-panel-unique-settings"
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override"
     },
 
     "panels-radius": {
-        "type": "scale",
-        "description" : "Blur intensity (Gaussian only)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the intensity of the Gaussian blur effect by changing the radius use by the effect. This setting does not effect the Simple blur type",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 6,
-        "dependency" : "!enable-panel-unique-settings"
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & panels-blurType=2 & enable-panels-override"
     },
 
     "panels-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100,
-        "dependency" : "!enable-panel-unique-settings"
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override"
     },
 
 
     "popup-applet-menu-effects" : {
         "type": "switch",
         "description": "Apply effects to applet popup menus",
+        "dependency" : "enable-popup-effects & component-selector=4",
         "default": true
     },
 
     "popup-panel-menu-effects" : {
         "type": "switch",
         "description": "Apply effects to panel context menus",
+        "dependency" : "enable-popup-effects & component-selector=4",
         "default": true
     },
 
     "popup-title-menu-effects" : {
         "type": "switch",
         "description": "Apply effects to window title bar context menus",
+        "dependency" : "enable-popup-effects & component-selector=4",
         "default": true
     },
 
     "popup-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 50,
         "step": 1,
-        "dependency" : "enable-popup-override=1"
+        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override"
     },
 
     "popup-accent-opacity" : {
-        "type": "scale",
-        "description": "Additional popup menu accent elements dimming (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Additional popup menu accent elements dimming (%)",
         "min": 0,
         "max": 100,
         "default": 50,
         "step": 1,
-        "dependency" : "enable-popup-override=1",
+        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override",
         "tooltip": "Defines the additional dimming applied to the popup menu accent elements (i.e. the main menu favorites box and entry boxes) which allow these elements to stand out from the other popup menu areas"
     },
 
@@ -633,7 +640,7 @@
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
-        "dependency" : "enable-popup-override=1",
+        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -647,27 +654,32 @@
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background",
-        "dependency" : "enable-popup-override=1"
+        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override"
     },
 
     "popup-radius": {
-        "type": "scale",
-        "description" : "Blur intensity (Gaussian only)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the intensity of the Gaussian blur effect by changing the radius use by the effect. This setting does not effect the Simple blur type",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 20,
-        "dependency" : "enable-popup-override=1"
+        "dependency" : "enable-popup-effects & component-selector=4 & popup-blurType=2 & enable-popup-override"
     },
 
     "popup-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background image color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override",
         "default": 100
     },
 
@@ -676,32 +688,35 @@
         "type": "switch",
         "description": "Only apply effect settings if the desktop is not in focus",
         "tooltip": "When enabled, the desktop background image effects will only apply when the desktop is not in focus",
+        "dependency" : "enable-desktop-effects &component-selector=2",
         "default": true
     },
 
     "desktop-with-focus" : {
         "type": "switch",
         "description": "Apply the generic effect settings when the desktop is in focus",
-        "tooltip": "When enabled, the generic effect settings (on the General tab) will apply to the desktop background image when the desktop is in focus",
+        "tooltip": "When enabled, the generic effect settings (on the \"Generic effect settings\" tab) will apply to the desktop background image when the desktop is in focus",
         "default": false,
-        "dependency" : "enable-desktop-override=1"
+        "dependency" : "enable-desktop-effects & component-selector=2 & enable-desktop-override"
     },
 
     "desktop-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize background Image (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize background Image (%)",
         "min": 0,
         "max": 100,
         "default": 50,
         "step": 1,
-        "dependency" : "enable-desktop-override=1"
+        "dependency" : "enable-desktop-effects & component-selector=2 & enable-desktop-override"
     },
 
     "desktop-blendColor": {
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
-        "dependency" : "enable-desktop-override=1",
+        "dependency" : "enable-desktop-effects & component-selector=2 & enable-desktop-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -715,45 +730,53 @@
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background",
-        "dependency" : "enable-desktop-override=1"
+        "dependency" : "enable-desktop-effects & component-selector=2 & enable-desktop-override"
     },
 
     "desktop-radius": {
-        "type": "scale",
-        "description" : "Blur intensity (Gaussian only)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the intensity of the Gaussian blur effect by changing the radius use by the effect. This setting does not effect the Simple blur type",
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 20,
-        "dependency" : "enable-desktop-override=1"
+        "dependency" : "enable-desktop-effects & component-selector=2 & desktop-blurType=2 & enable-desktop-override"
     },
 
     "desktop-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100,
-        "dependency" : "enable-desktop-override=1"
+        "dependency" : "enable-desktop-effects & component-selector=2 & enable-desktop-override"
     },
 
 
     "notification-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 40,
-        "step": 1
+        "step": 1,
+        "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override"
     },
 
     "notification-blendColor": {
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
+        "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -766,27 +789,33 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
+        "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
         "tooltip": "What type of blur algorithm should be used to blur the background"
     },
 
     "notification-radius": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "notification-blurType=2"
+        "dependency" : "enable-notification-effects & component-selector=5 & notification-blurType=2 & enable-notification-override"
     },
 
     "notification-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
         "default": 100
     },
 
@@ -794,22 +823,33 @@
       "type" : "button",
       "description" : "Send a test notification",
       "callback" : "on_notification_test_button_pressed",
+      "dependency" : "enable-notification-effects & component-selector=5",
       "tooltip" : "This button will cause a notification message to appear so you can see how your notification setting behave."
     },
 
+    "appswitcher-info" : {
+        "type" : "label",
+        "description" : "Note: Alt-Tab effects only apply to the Coverflow and Timeline 3D Alt-Tab configurations",
+        "dependency" : "enable-appswitcher-effects & component-selector=0"
+    },
+
     "appswitcher-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 40,
-        "step": 1
+        "step": 1,
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & enable-appswitcher-override"
     },
 
     "appswitcher-blendColor": {
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & enable-appswitcher-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -822,43 +862,53 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & enable-appswitcher-override",
         "tooltip": "What type of blur algorithm should be used to blur the background"
     },
 
     "appswitcher-radius": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "appswitcher-blurType=2"
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & appswitcher-blurType=2 & enable-appswitcher-override"
     },
 
     "appswitcher-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & enable-appswitcher-override",
         "default": 100
     },
 
     "tooltips-opacity" : {
-        "type": "scale",
-        "description": "Dim/Colorize Background (percentage)",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize Background (%)",
         "min": 0,
         "max": 100,
         "default": 40,
-        "step": 1
+        "step": 1,
+        "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override"
     },
 
     "tooltips-blendColor": {
         "type": "colorchooser",
         "description" : "Dimming overlay color",
         "default": "rgb(0,0,0)",
+        "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
         "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
     },
 
@@ -871,34 +921,101 @@
             "Gaussian": 2
         },
         "description": "Type of blur effect",
+        "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
         "tooltip": "What type of blur algorithm should be used to blur the background"
     },
 
     "tooltips-radius": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Gaussian blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "tooltips-blurType=2"
+        "dependency" : "enable-tooltips-effects & component-selector=8 & tooltips-blurType=2 & enable-tooltips-override"
     },
 
     "tooltips-saturation": {
-        "type": "scale",
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
         "description" : "Background color saturation",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "tooltip": "Adjusts the color saturation of the background image.",
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
         "default": 100
+    },
+
+
+    "desklets-opacity" : {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Dim/Colorize background Image (%)",
+        "min": 0,
+        "max": 100,
+        "default": 50,
+        "step": 1,
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & enable-desklets-override"
+    },
+
+    "desklets-blendColor": {
+        "type": "colorchooser",
+        "description" : "Dimming overlay color",
+        "default": "rgb(0,0,0)",
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & enable-desklets-override",
+        "tooltip": "Defines the color that is blended into the background based on the dimming control above. Use black for a normal dimming effect or some other color for a color blend effect"
+    },
+
+    "desklets-blurType": {
+        "type": "combobox",
+        "default": 2,
+        "options": {
+            "None": 0,
+            "Simple": 1,
+            "Gaussian": 2
+        },
+        "description": "Type of blur effect",
+        "tooltip": "What type of blur algorithm should be used to blur the background",
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & enable-desklets-override"
+    },
+
+    "desklets-radius": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Gaussian blur intensity",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
+        "default": 20,
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & desklets-blurType=2 & enable-desklets-override"
+    },
+
+    "desklets-saturation": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Background color saturation",
+        "min" : 0.0,
+        "max" : 100,
+        "step" : 0.1,
+        "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
+        "default": 100,
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & enable-desklets-override"
     },
 
     "windows-inclusion-list" : {
         "type" : "list",
-        "height" : 450,
+        "height" : 300,
         "description" : "Application window inclusion list",
+        "dependency" : "enable-window-effects & component-selector=9",
         "columns" : [
             {"id": "enabled",       "title": "Enabled",      "type": "boolean", "default": true},
             {"id": "application",   "title": "Application",  "type": "string",  "default": ""},
@@ -913,11 +1030,11 @@
             {"id": "corner_top",    "title": "Rounded Top","type": "boolean", "default": true},
             {"id": "corner_bottom", "title": "Rounded Bottom","type": "boolean", "default": false}
         ],
-        "tooltip": "Defines a list of application windows where background effect will be applied and what effects will apply. When \"Custom\" is enabled the setting defined by this table will apply, otherwise the setting on the general tab will apply for the specific application. The \"Application\" field can be a WM_CLASS or a desktop file name.",
+        "tooltip": "Defines a list of application windows where background effect will be applied and what effects will apply. When \"Custom\" is enabled the setting defined by this table will apply, otherwise the \"Generic effect settings\" will apply for the specific application. The \"Application\" field can be a WM_CLASS or a desktop file name.",
         "default" : [
             { "enabled": false, "application": "Alacritty.desktop",          "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
             { "enabled": false, "application": "com.gexperts.Tilix.desktop", "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
-            { "enabled": false, "application": "org.gnome.Ptyxis.desktop",   "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 12, "corner_top": true, "corner_bottom": true  },
+            { "enabled": false, "application": "org.gnome.Ptyxis.desktop",   "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 16, "corner_top": true, "corner_bottom": true  },
             { "enabled": false, "application": "kitty.desktop",              "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
             { "enabled": false, "application": "org.kde.konsole.desktop",    "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false }
         ]
@@ -927,14 +1044,50 @@
       "type" : "button",
       "description" : "Add entry for the application of the most recently focused window",
       "callback" : "on_window_add_button_pressed",
+      "dependency" : "enable-window-effects & component-selector=9",
       "tooltip" : "Focus a window you want to enable window effects on then return here and press this button."
     },
 
-    "compiz-mitigation": {
+    "windows-compiz-mitigation": {
         "type": "switch",
         "default": true,
         "description": "Disable \"Compiz\" effects for windows with Blur Cinnamon effects",
+        "dependency" : "enable-window-effects & component-selector=9",
         "tooltip": "When enabled, the window moving effect created by the \"Compiz windows effect\" extension will be disabled for windows with Blur Cinnamon effects applied. This option will have no effect unless the \"Compiz window effect\" extension is installed and active."
+    },
+
+    "desklets-auto": {
+        "type": "switch",
+        "default": true,
+        "description": "Automatically enable effects for newly added Desklets",
+        "dependency" : "enable-desklet-effects & component-selector=1 & enable-desklets-unique-settings & enable-desklets-override",
+        "tooltip": "When enabled, new Desklets added to the desktop will automatically have Blur Cinnamon effects applied. When disabled, Desklets will only have effects applied when manually enabled in the table below. By default the settings applied to new Desklets will be the generic effect settings."
+    },
+
+    "desklets-list": {
+        "type" : "list",
+        "height" : 175,
+        "description" : "Active Desklet list",
+        "dependency" : "enable-desklet-effects & component-selector=1 & enable-desklets-unique-settings & enable-desklets-override",
+        "show-buttons" : false,
+        "columns" : [
+            {"id": "enabled",    "title": "Enabled",    "type": "boolean", "default": true},
+            {"id": "name",       "title": "Name",       "type": "string",  "default": ""},
+            {"id": "instance",   "title": "ID",         "type": "string",  "default": ""},
+            {"id": "override",   "title": "Custom",     "type": "boolean", "default": true},
+            {"id": "opacity",    "title": "Dim",        "type": "integer", "default": 0,  "min": 0, "max": 100},
+            {"id": "color",      "title": "Color",      "type": "string",  "default": "rgb(0,0,0)"},
+            {"id": "blurtype",   "title": "Blur",       "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
+            {"id": "radius",     "title": "Intensity",  "type": "integer", "default": 10,  "min": 0, "max": 100},
+            {"id": "saturation", "title": "Saturation", "type": "integer", "default": 100, "min": 0, "max": 100}
+        ],
+        "tooltip": "The \"Enabled\" check box controls which Desklets will have effects applied. The \"Custom\" check box controls if a Desklet will use the generic effect settings or the custom settings defined in this table. The custom settings can be modified by double clicking on a table row.",
+        "default" : [ ]
+    },
+
+    "ext-version" : {
+       "type": "generic",
+       "default": ""
     },
 
     "new-install": {

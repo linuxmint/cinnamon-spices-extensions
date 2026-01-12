@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.7.0
+
+* Added the ability to apply effects to Desklet backgrounds.
+* Significant configuration GUI redesign to use fewer tabs. Adding a new tab for Desklets would start to cause an unreasonable GUI window width.
+* Fixed the rounded corner effect so that it produces a much smoother edge.
+* Improved how the blurred panel animates when hiding or showing a panel.
+* Fix for Notification and Windows not getting updated when changing generic settings
+* Added an "About" tab to the configuration GUI
+* Modified the Icon so that it does not have a white border
+* Added a hack fix for panels with custom CSS sizes
+* Fix a naming conflict with the rounded corner effect during upgrading the extension.
+* Added options to use generic settings when using the panel specific settings option
+* Some improved configuration GUI option names and tooltips
+
 ## 1.6.1
 
 * Fixed a 1.6.0 regression where the dimming of desktop effects are not removed after disabiling the desktop effects on the general page in the config window.
