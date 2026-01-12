@@ -18,8 +18,8 @@ function enable() {
 /**
  * called when extension gets disabled
  */
-function disable() {if (
-    gtile.app) {
+function disable() {
+    if (gtile.app) {
         gtile.app.destroy();
         gtile.app = null;
     }
