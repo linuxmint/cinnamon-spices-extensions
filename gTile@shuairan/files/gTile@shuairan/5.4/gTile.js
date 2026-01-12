@@ -1065,8 +1065,18 @@ let Grid = class Grid {
                 }
             }
             this.elementsDelegate._destroy();
-            this.topbar._destroy();
+
+            if (this.topbar) {
+                this.topbar._destroy();
+            }
+
             this.Reset();
+
+            // Fix for Issue #512: Explicitly destroy actor to clear GPU textures
+            if (this.actor) {
+                this.actor.destroy();
+            }
+
             this.monitor = null;
             this.rows = null;
             this.title = null;
