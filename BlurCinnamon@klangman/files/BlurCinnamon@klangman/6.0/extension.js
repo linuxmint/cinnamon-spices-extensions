@@ -20,26 +20,27 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-const Clutter       = imports.gi.Clutter;
-const St            = imports.gi.St;
-const Tweener       = imports.ui.tweener;
-const Overview      = imports.ui.overview;
-const Expo          = imports.ui.expo;
-const AppSwitcher3D = imports.ui.appSwitcher.appSwitcher3D;
-const Settings      = imports.ui.settings;
-const SignalManager = imports.misc.signalManager;
-const Panel         = imports.ui.panel;
-const Main          = imports.ui.main;
-const Meta          = imports.gi.Meta;
-const Mainloop      = imports.mainloop;
-const AppletManager = imports.ui.appletManager;
-const Lang          = imports.lang;
-const UPowerGlib    = imports.gi.UPowerGlib;
-const MessageTray   = imports.ui.messageTray;
-const Util          = imports.misc.util;
-const Tooltips      = imports.ui.tooltips;
-const WindowMenu    = imports.ui.windowMenu;
-const Cinnamon      = imports.gi.Cinnamon;
+const Clutter        = imports.gi.Clutter;
+const St             = imports.gi.St;
+const Tweener        = imports.ui.tweener;
+const Overview       = imports.ui.overview;
+const Expo           = imports.ui.expo;
+const AppSwitcher3D  = imports.ui.appSwitcher.appSwitcher3D;
+const Settings       = imports.ui.settings;
+const SignalManager  = imports.misc.signalManager;
+const Panel          = imports.ui.panel;
+const Main           = imports.ui.main;
+const Meta           = imports.gi.Meta;
+const Mainloop       = imports.mainloop;
+const AppletManager  = imports.ui.appletManager;
+const Lang           = imports.lang;
+const UPowerGlib     = imports.gi.UPowerGlib;
+const MessageTray    = imports.ui.messageTray;
+const Util           = imports.misc.util;
+const Tooltips       = imports.ui.tooltips;
+const WindowMenu     = imports.ui.windowMenu;
+const Cinnamon       = imports.gi.Cinnamon;
+const DeskletManager = imports.ui.deskletManager;
 
 // For PopupMenu effects
 const Applet        = imports.ui.applet;
@@ -68,6 +69,7 @@ let blurDesktop;
 let blurNotifications;
 let blurTooltips;
 let blurApplications;
+let blurDesklets;
 let blurFocusEffect;
 let metaData;
 
@@ -75,6 +77,7 @@ var blurPanelsThis;
 var blurPopupMenusThis;
 var blurNotificationsThis;
 var blurTooltipsThis;
+var blurDeskletsThis;
 
 const BlurType = {
    None: 0,
@@ -92,6 +95,19 @@ const PanelLoc = {
 
 const PanelMonitor = {
    All: 100
+}
+
+const Component = {
+  AltTab: 0,
+  Desklets: 1,
+  Desktop: 2,
+  Expo: 3,
+  Menus: 4,
+  Notifications: 5,
+  Overview: 6,
+  Panels: 7,
+  Tooltips: 8,
+  Windows: 9
 }
 
 function debugMsg(...params) {
@@ -729,18 +745,16 @@ class BlurPanels extends BlurBase {
       //if (blurType > BlurType.None || saturation<100) {
          let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, cornerRadius, topRadius!==0, bottomRadius!==0);
          blurredPanel.background = background;
-         let cornerEffect = this._getCornerEffect(background);
-         if (cornerEffect)
-            cornerEffect.clip = [panel.actor.x+2, panel.actor.y+2, panel.actor.width-3, panel.actor.height-3];
-         else
-            background.set_clip( panel.actor.x, panel.actor.y, panel.actor.width, panel.actor.height );
-         if (!panel._hidden && !global.display.get_monitor_in_fullscreen(panel.monitorIndex)) {
-            background.show();
-         }
+         this._setClip(panel);
       //}
       blurredPanel.signalManager = new SignalManager.SignalManager(null);
-      blurredPanel.signalManager.connect(actor, 'notify::size', () => {this._setClip(panel);} );
-      blurredPanel.signalManager.connect(actor, 'notify::position', () => {this._setClip(panel);} );
+      blurredPanel.signalManager.connect(actor, "notify::allocation", () => this._setClip(panel) );
+      //blurredPanel.signalManager.connect(actor, 'notify::size', () => {this._setClip(panel);} );
+      //blurredPanel.signalManager.connect(actor, 'notify::position', () => {this._setClip(panel);} );
+
+      // When the panel uses a custom size in cinnamon.css we need to wait a bit and check that the size is right.
+      // I hope to find a better solution than this hack one day!
+      Mainloop.timeout_add( 1500, () => this._setClip(panel) );
    }
 
    // This function will restore all panels to their original state and undo the monkey patching
@@ -932,7 +946,11 @@ class BlurPanels extends BlurBase {
                      continue;
                   }
                }
-               return [uniqueSetting.opacity, uniqueSetting.color, uniqueSetting.blurtype, uniqueSetting.radius, uniqueSetting.saturation];
+               if (uniqueSetting.override) {
+                  return [uniqueSetting.opacity, uniqueSetting.color, uniqueSetting.blurtype, uniqueSetting.radius, uniqueSetting.saturation];
+               } else {
+                  return this._getGenericSettings();
+               }
             }
          }
          return null;
@@ -1055,7 +1073,7 @@ class BlurPopupMenus extends BlurBase {
             // Adjust the menu transparency and color for the menu box if required
             if (!menu.box._blurCinnamonData) {
                let radius = this._applyActorStyle(menu.box, this._boxColor);
-               this._updateCornerRadius( this._background, radius-5 );
+               this._updateCornerRadius( this._background, radius );
             }
 
             // The menu's rounded corners could be applied to the box or the menus actor, so we have to check both
@@ -1064,7 +1082,7 @@ class BlurPopupMenus extends BlurBase {
                // We are assuming that all corners have the same radius, hope that is true.
                let radius = themeNode.get_border_radius(St.Corner.TOPLEFT);
                if (radius != 0) {
-                  this._updateCornerRadius( this._background, radius-5 );
+                  this._updateCornerRadius( this._background, radius );
                }
             }
 
@@ -1440,7 +1458,7 @@ class BlurNotifications extends BlurBase {
          if (themeNode) {
             // We are assuming that all corners have the same radius, hope that is true.
             let radius = themeNode.get_border_radius(St.Corner.TOPLEFT);
-            this._updateCornerRadius(this._background, radius);
+            this._updateCornerRadius(this._background, radius+6);
          }
 
          actor.set_style( /*"border-radius: 0px;*/ "background-gradient-direction: vertical; background-gradient-start: transparent; " +
@@ -1482,7 +1500,7 @@ class BlurNotifications extends BlurBase {
             if (themeNode) {
                // We are assuming that all corners have the same radius, hope that is true.
                let radius = themeNode.get_border_radius(St.Corner.TOPLEFT);
-               this._updateCornerRadius(this._background, radius);
+               this._updateCornerRadius(this._background, radius+6);
             }
 
             actor.set_style( /*"border-radius: 0px;*/ "background-gradient-direction: vertical; background-gradient-start: transparent; " +
@@ -1561,7 +1579,7 @@ class BlurTooltips extends BlurBase {
       if (themeNode) {
          // We are assuming that all corners have the same radius, hope that is true.
          let radius = themeNode.get_border_radius(St.Corner.TOPLEFT);
-         this._updateCornerRadius(this._background, radius);
+         this._updateCornerRadius(this._background, radius+6);
       }
 
       actor.set_style(  "background-gradient-direction: vertical; background-gradient-start: transparent; " +
@@ -1643,7 +1661,7 @@ class BlurApplications extends BlurBase {
       }
       let compositor = (window) ? window.get_compositor_private() : null;
       if (compositor && compositor._blurCinnamonDataWindow) {
-         let compizMitigation = settings.settings.getValue("compiz-mitigation");
+         let compizMitigation = settings.settings.getValue("windows-compiz-mitigation");
          if (compizMitigation) {
             let effect = compositor.get_effect('wobbly-compiz-effect');
             if (effect) {
@@ -1692,8 +1710,7 @@ class BlurApplications extends BlurBase {
       metaWindow.set_opacity(window_opacity*2.55);
 
       // Create the effect and add it to the window
-      let background, blur, desat;
-      background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, null, corner_radius, top, bottom);
+      let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, null, corner_radius, top, bottom);
       compositor.insert_child_at_index(background, 0);
 
       // Add blur data to the compositor while blurring is in effect
@@ -1958,6 +1975,200 @@ class BlurFocusEffect extends BlurBase {
    }
 }
 
+class BlurDesklets extends BlurBase {
+   constructor() {
+      super();
+      // global listeners
+      //this._signalManager = new SignalManager.SignalManager(null);
+
+      blurDeskletsThis = this; // Make "this" available to monkey patched functions
+
+      this.original_createDesklets = DeskletManager._createDesklets;
+      DeskletManager._createDesklets = this._createDesklets;
+      this.original_unloadDesklet = DeskletManager._unloadDesklet;
+      DeskletManager._unloadDesklet = this._unloadDesklet;
+
+      // Make sure all the Desklets are defined in the deskletList
+      let desklets = DeskletManager.getDefinitions();
+      for (let i=0 ; i<desklets.length ; i++) {
+         let {uuid, desklet_id} = desklets[i];
+         let desklet = desklets[i].desklet;
+         if (desklet && uuid) {
+            this._addDeskletToList(desklet);
+            this._blurDesklet(desklet);
+         }
+      }
+
+      // Remove any deskletList entries that are not currently enabled
+      let deskletList = settings.settings.getValue("desklets-list");
+      for (let i=deskletList.length-1 ; i>=0 ; i-- ) {
+         if ( !desklets.find( (element) => element.desklet.instance_id == deskletList[i].instance ) ) {
+            deskletList.splice(i, 1);
+         }
+      }
+      // Save desklets-list just in case we removed anything
+      settings.settings.setValue("desklets-list", deskletList);
+   }
+
+   _blurDesklet(desklet) {
+      let content = desklet.content;
+      let child = content.get_first_child();
+      let themeNode;
+      if (child instanceof St.Widget)
+         themeNode = child.get_theme_node();
+      let topRadius = 0;
+      let bottomRadius = 0;
+      let cornerRadius = 0;
+      if (themeNode) {
+         // TODO: Need to be able to independently round all four corners, needs improvements to the corner effect code!
+         topRadius = themeNode.get_border_radius(St.Corner.TOPLEFT);
+         bottomRadius = themeNode.get_border_radius(St.Corner.BOTTOMLEFT);
+         cornerRadius = Math.max(topRadius, bottomRadius);
+      }
+      let [enabled, opacity, blendColor, blurType, radius, saturation] = this._getDeskletSettings(desklet);
+      if (enabled) {
+         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.bottom_window_group, cornerRadius, topRadius!==0, bottomRadius!==0);
+         desklet._blurCinnamonBackground = background;
+         this._setClip(desklet);
+         background.show();
+         desklet._blurCinnamonSignalManager = new SignalManager.SignalManager(null);
+         desklet._blurCinnamonSignalManager.connect(desklet.actor, "notify::allocation", () => this._setClip(desklet) );
+         //desklet._blurCinnamonSignalManager.connect(desklet, "destroy", () => this._deskletRemoved(desklet) );
+      }
+   }
+
+   // This is a monkey patched version of DeskletManager._createDesklets()
+   // This is done so we know when new Desklets are added.
+   _createDesklets(extension, deskletDefinition) {
+      let desklet = blurDeskletsThis.original_createDesklets(extension, deskletDefinition);
+      blurDeskletsThis._addDeskletToList(desklet);
+      Mainloop.idle_add( () => { blurDeskletsThis._blurDesklet(desklet) } );
+      return desklet;
+   }
+
+   // This is a monkey patched version of DeskletManager._unloadDesklet()
+   // This is done so we know when Desklets are removed.
+   _unloadDesklet(deskletDefinition, deleteConfig) {
+      if (deskletDefinition.desklet) {
+         blurDeskletsThis._deskletRemoved(deskletDefinition.desklet);
+      }
+      blurDeskletsThis.original_unloadDesklet(deskletDefinition, deleteConfig);
+   }
+
+   _getUniqueSettings() {
+      return [settings.deskletsOpacity, settings.deskletsBlendColor, settings.deskletsBlurType, settings.deskletsRadius, settings.deskletsSaturation];
+   }
+
+   _getDeskletSettings(desklet) {
+      if (!settings.deskletsOverride || !settings.enableDeskletsUniqueSettings) {
+         return [true, ...this._getSettings(settings.deskletsOverride)];
+      }
+      let uuid = desklet._uuid;
+      let instance = desklet.instance_id;
+      let deskletList = settings.settings.getValue("desklets-list");
+      let found = deskletList.find((element) => element.instance == instance );
+      // It should always be found!! We add entries for new Desklet elsewhere
+      if (found) {
+         if (found.override) {
+            return [found.enabled, found.opacity, found.color, found.blurtype, found.radius, found.saturation];
+         } else {
+            return [found.enabled, ...this._getGenericSettings()];
+         }
+      } else {
+         log( `Blur Cinnamon error: Unable to locate Desklet list entry for ${uuid} / ${instance}` );
+      }
+   }
+
+   _setClip(desklet) {
+      if (desklet && desklet.actor && desklet._blurCinnamonBackground) {
+         let actor = desklet.actor;
+         let background = desklet._blurCinnamonBackground;
+         let cornerEffect = this._getCornerEffect(background);
+         if (cornerEffect) {
+            cornerEffect.clip = [actor.x+2, actor.y+2, actor.width-3, actor.height-3];
+         } else {
+            background.set_clip( actor.x, actor.y, actor.width, actor.height );
+         }
+      }
+   }
+
+   updateEffects() {
+      let deskletList = settings.settings.getValue("desklets-list");
+      deskletList.forEach( (element) => {
+         let desklet =  DeskletManager.get_object_for_instance(element.instance);
+         if (desklet) {
+            //log( `Updating ${desklet.metadata.name} / ${desklet._uuid} / ${desklet.instance_id} / ${(desklet._blurCinnamonBackground!==undefined)}` );
+            let [enabled, opacity, blendColor, blurType, radius, saturation] = this._getDeskletSettings(desklet);
+            if (desklet._blurCinnamonBackground) {
+               if (enabled) {
+                  this._updateEffects( desklet._blurCinnamonBackground, opacity, blendColor, blurType, radius, saturation );
+               } else {
+                  this._deskletDestroy(desklet);
+               }
+            } else if (enabled) {
+               this._blurDesklet(desklet)
+            }
+         }
+      });
+   }
+
+   _addDeskletToList(desklet) {
+      let deskletList = settings.settings.getValue("desklets-list");
+      let found = deskletList.find((element) => element.instance == desklet.instance_id);
+      if (!found) {
+         // Add a new entry for this Desklet and set the "enabled" based on the auto setting
+         log( `Adding: ${desklet.metadata.name} / ${desklet.instance_id}` );
+         deskletList.push( {enabled: settings.autoDeskletAdd, name: desklet.metadata.name, uuid: desklet._uuid, instance: desklet.instance_id} );
+         settings.settings.setValue( "desklets-list", deskletList );
+      } else {
+         // Update the name of the Desklet just in case some Desklet update changed it's name in the metadata
+         log( `Updating: ${desklet.metadata.name} / ${desklet.instance_id}` );
+         found.name = desklet.metadata.name;
+         settings.settings.setValue( "desklets-list", deskletList );
+      }
+   }
+
+   _removeDeskletFromList(desklet) {
+      let deskletList = settings.settings.getValue("desklets-list");
+      let idx = deskletList.findIndex((element) => element.uuid == desklet._uuid && element.instance == desklet.instance_id);
+      if (idx!=-1) {
+         deskletList.splice(idx, 1);
+         settings.settings.setValue( "desklets-list", deskletList );
+      }
+   }
+
+   _deskletDestroy(desklet) {
+      if (desklet._blurCinnamonSignalManager) {
+         desklet._blurCinnamonSignalManager.disconnectAllSignals();
+         delete desklet._blurCinnamonSignalManager;
+      }
+      if (desklet._blurCinnamonBackground) {
+         desklet._blurCinnamonBackground.hide();
+         global.bottom_window_group.remove_actor(desklet._blurCinnamonBackground);
+         desklet._blurCinnamonBackground.destroy();
+         delete desklet._blurCinnamonBackground;
+      }
+   }
+
+   _deskletRemoved(desklet) {
+      this._deskletDestroy(desklet);
+      this._removeDeskletFromList(desklet);
+   }
+
+   destroy() {
+      let desklets = DeskletManager.getDefinitions();
+      for (let i=0 ; i<desklets.length ; i++) {
+         let {uuid, desklet_id} = desklets[i];
+         let desklet = desklets[i].desklet;
+         if (desklet._blurCinnamonBackground) {
+            this._deskletDestroy(desklet);
+         }
+      }
+      DeskletManager._createDesklets = this.original_createDesklets;
+      DeskletManager._unloadDesklet = this.original_unloadDesklet;
+   }
+}
+
 class BlurSettings {
    constructor(uuid) {
       this._signalManager = new SignalManager.SignalManager(null);
@@ -1968,94 +2179,109 @@ class BlurSettings {
       this.bind('blendColor', 'blendColor', colorChanged);
       this.bind('saturation', 'saturation', saturationChanged);
 
-      this.settings.bind('overview-opacity',    'overviewOpacity');
-      this.settings.bind('overview-blurType',   'overviewBlurType');
-      this.settings.bind('overview-radius',     'overviewRadius');
-      this.settings.bind('overview-blendColor', 'overviewBlendColor');
-      this.settings.bind('overview-saturation', 'overviewSaturation');
+      this.bind('overview-opacity',    'overviewOpacity');
+      this.bind('overview-blurType',   'overviewBlurType');
+      this.bind('overview-radius',     'overviewRadius');
+      this.bind('overview-blendColor', 'overviewBlendColor');
+      this.bind('overview-saturation', 'overviewSaturation');
 
-      this.settings.bind('expo-opacity',    'expoOpacity');
-      this.settings.bind('expo-blurType',   'expoBlurType');
-      this.settings.bind('expo-radius',     'expoRadius');
-      this.settings.bind('expo-blendColor', 'expoBlendColor');
-      this.settings.bind('expo-saturation', 'expoSaturation');
+      this.bind('expo-opacity',    'expoOpacity');
+      this.bind('expo-blurType',   'expoBlurType');
+      this.bind('expo-radius',     'expoRadius');
+      this.bind('expo-blendColor', 'expoBlendColor');
+      this.bind('expo-saturation', 'expoSaturation');
 
-      this.settings.bind('panels-opacity',    'panelsOpacity',    colorChanged);
-      this.settings.bind('panels-blurType',   'panelsBlurType',   blurChanged);
-      this.settings.bind('panels-radius',     'panelsRadius',     blurChanged);
-      this.settings.bind('panels-blendColor', 'panelsBlendColor', colorChanged);
-      this.settings.bind('panels-saturation', 'panelsSaturation', saturationChanged);
-      this.settings.bind('no-panel-effects-maximized', 'noPanelEffectsMaximized', maximizedOptionChanged );
+      this.bind('panels-opacity',    'panelsOpacity',    colorChanged);
+      this.bind('panels-blurType',   'panelsBlurType',   blurChanged);
+      this.bind('panels-radius',     'panelsRadius',     blurChanged);
+      this.bind('panels-blendColor', 'panelsBlendColor', colorChanged);
+      this.bind('panels-saturation', 'panelsSaturation', saturationChanged);
+      this.bind('no-panel-effects-maximized', 'noPanelEffectsMaximized', maximizedOptionChanged );
 
-      this.settings.bind('popup-opacity',        'popupOpacity',       updatePopupEffects);
-      this.settings.bind('popup-accent-opacity', 'popupAccentOpacity', updatePopupEffects);
-      this.settings.bind('popup-blurType',       'popupBlurType',      updatePopupEffects);
-      this.settings.bind('popup-radius',         'popupRadius',        updatePopupEffects);
-      this.settings.bind('popup-blendColor',     'popupBlendColor',    updatePopupEffects);
-      this.settings.bind('popup-saturation',     'popupSaturation',    updatePopupEffects);
-      this.settings.bind('allow-transparent-color-popup', 'allowTransparentColorPopup', updatePopupEffects);
-      this.settings.bind('popup-applet-menu-effects', 'popupAppletMenuEffects');
-      this.settings.bind('popup-panel-menu-effects',  'popupPanelMenuEffects');
-      this.settings.bind('popup-title-menu-effects',  'popupTitleMenuEffects');
+      this.bind('popup-opacity',        'popupOpacity',       updatePopupEffects);
+      this.bind('popup-accent-opacity', 'popupAccentOpacity', updatePopupEffects);
+      this.bind('popup-blurType',       'popupBlurType',      updatePopupEffects);
+      this.bind('popup-radius',         'popupRadius',        updatePopupEffects);
+      this.bind('popup-blendColor',     'popupBlendColor',    updatePopupEffects);
+      this.bind('popup-saturation',     'popupSaturation',    updatePopupEffects);
+      this.bind('allow-transparent-color-popup', 'allowTransparentColorPopup', updatePopupEffects);
+      this.bind('popup-applet-menu-effects', 'popupAppletMenuEffects');
+      this.bind('popup-panel-menu-effects',  'popupPanelMenuEffects');
+      this.bind('popup-title-menu-effects',  'popupTitleMenuEffects');
 
-      this.settings.bind('desktop-opacity',       'desktopOpacity',      updateDesktopEffects);
-      this.settings.bind('desktop-blurType',      'desktopBlurType',     updateDesktopEffects);
-      this.settings.bind('desktop-radius',        'desktopRadius',       updateDesktopEffects);
-      this.settings.bind('desktop-blendColor',    'desktopBlendColor',   updateDesktopEffects);
-      this.settings.bind('desktop-saturation',    'desktopSaturation',   updateDesktopEffects);
-      this.settings.bind('desktop-with-focus',    'desktopWithFocus',    updateDesktopEffects);
-      this.settings.bind('desktop-without-focus', 'desktopWithoutFocus', updateDesktopEffects);
+      this.bind('desktop-opacity',       'desktopOpacity',      updateDesktopEffects);
+      this.bind('desktop-blurType',      'desktopBlurType',     updateDesktopEffects);
+      this.bind('desktop-radius',        'desktopRadius',       updateDesktopEffects);
+      this.bind('desktop-blendColor',    'desktopBlendColor',   updateDesktopEffects);
+      this.bind('desktop-saturation',    'desktopSaturation',   updateDesktopEffects);
+      this.bind('desktop-with-focus',    'desktopWithFocus',    updateDesktopEffects);
+      this.bind('desktop-without-focus', 'desktopWithoutFocus', updateDesktopEffects);
 
-      this.settings.bind('notification-opacity',    'notificationOpacity',    updateNotificationEffects);
-      this.settings.bind('notification-blurType',   'notificationBlurType',   updateNotificationEffects);
-      this.settings.bind('notification-radius',     'notificationRadius',     updateNotificationEffects);
-      this.settings.bind('notification-blendColor', 'notificationBlendColor', updateNotificationEffects);
-      this.settings.bind('notification-saturation', 'notificationSaturation', updateNotificationEffects);
+      this.bind('notification-opacity',    'notificationOpacity',    updateNotificationEffects);
+      this.bind('notification-blurType',   'notificationBlurType',   updateNotificationEffects);
+      this.bind('notification-radius',     'notificationRadius',     updateNotificationEffects);
+      this.bind('notification-blendColor', 'notificationBlendColor', updateNotificationEffects);
+      this.bind('notification-saturation', 'notificationSaturation', updateNotificationEffects);
 
-      this.settings.bind('appswitcher-opacity',    'appswitcherOpacity');
-      this.settings.bind('appswitcher-blurType',   'appswitcherBlurType');
-      this.settings.bind('appswitcher-radius',     'appswitcherRadius');
-      this.settings.bind('appswitcher-blendColor', 'appswitcherBlendColor');
-      this.settings.bind('appswitcher-saturation', 'appswitcherSaturation');
+      this.bind('appswitcher-opacity',    'appswitcherOpacity');
+      this.bind('appswitcher-blurType',   'appswitcherBlurType');
+      this.bind('appswitcher-radius',     'appswitcherRadius');
+      this.bind('appswitcher-blendColor', 'appswitcherBlendColor');
+      this.bind('appswitcher-saturation', 'appswitcherSaturation');
 
-      this.settings.bind('tooltips-opacity',    'tooltipOpacity');
-      this.settings.bind('tooltips-blurType',   'tooltipBlurType');
-      this.settings.bind('tooltips-radius',     'tooltipRadius');
-      this.settings.bind('tooltips-blendColor', 'tooltipBlendColor');
-      this.settings.bind('tooltips-saturation', 'tooltipSaturation');
+      this.bind('tooltips-opacity',    'tooltipOpacity');
+      this.bind('tooltips-blurType',   'tooltipBlurType');
+      this.bind('tooltips-radius',     'tooltipRadius');
+      this.bind('tooltips-blendColor', 'tooltipBlendColor');
+      this.bind('tooltips-saturation', 'tooltipSaturation');
 
-      this.settings.bind('windows-inclusion-list', 'windowInclusionList', updateWindowEffects);
+      this.bind('desklets-opacity',    'deskletsOpacity',    updateDeskletEffects);
+      this.bind('desklets-blurType',   'deskletsBlurType',   updateDeskletEffects);
+      this.bind('desklets-radius',     'deskletsRadius',     updateDeskletEffects);
+      this.bind('desklets-blendColor', 'deskletsBlendColor', updateDeskletEffects);
+      this.bind('desklets-saturation', 'deskletsSaturation', updateDeskletEffects);
+
+      this.bind('desklets-list',    'deskletList',        updateDeskletEffects);
+      //this.bind('desklets-effects', 'deskletEffectsList', updateDeskletEffects);
+      this.bind('desklets-auto',    'autoDeskletAdd',     updateDeskletEffects);
+      this.bind('enable-desklets-unique-settings', 'enableDeskletsUniqueSettings', updateDeskletEffects);
+
+      this.bind('windows-inclusion-list', 'windowInclusionList', updateWindowEffects);
 
       this.bind('focused-window-backlight', 'focusedWindowEffect', updateFocusedWindowEffect);
 
-      this.settings.bind('enable-overview-override',     'overviewOverride');
-      this.settings.bind('enable-expo-override',         'expoOverride');
-      this.settings.bind('enable-panels-override',       'panelsOverride', panelsSettingsChangled);
-      this.settings.bind('enable-popup-override',        'popupOverride');
-      this.settings.bind('enable-desktop-override',      'desktopOverride', updateDesktopEffects);
-      this.settings.bind('enable-notification-override', 'notificationOverride', updateNotificationEffects);
-      this.settings.bind('enable-appswitcher-override',  'appswitcherOverride');
-      this.settings.bind('enable-tooltips-override',     'tooltipsOverride');
+      this.bind('enable-overview-override',     'overviewOverride');
+      this.bind('enable-expo-override',         'expoOverride');
+      this.bind('enable-panels-override',       'panelsOverride', panelsSettingsChangled);
+      this.bind('enable-popup-override',        'popupOverride');
+      this.bind('enable-desktop-override',      'desktopOverride', updateDesktopEffects);
+      this.bind('enable-notification-override', 'notificationOverride', updateNotificationEffects);
+      this.bind('enable-appswitcher-override',  'appswitcherOverride');
+      this.bind('enable-tooltips-override',     'tooltipsOverride');
+      this.bind('enable-desklets-override',     'deskletsOverride');
 
-      this.settings.bind('enable-overview-effects',      'enableOverviewEffects', enableOverviewChanged);
-      this.settings.bind('enable-expo-effects',          'enableExpoEffects',     enableExpoChanged);
-      this.settings.bind('enable-panels-effects',        'enablePanelsEffects',   enablePanelsChanged);
-      this.settings.bind('enable-popup-effects',         'enablePopupEffects',    enablePopupChanged);
-      this.settings.bind('enable-desktop-effects',       'enableDesktopEffects',  enableDesktopChanged);
-      this.settings.bind('enable-notification-effects',  'enableNotificationEffects', enableNotificationChanged);
-      this.settings.bind('enable-appswitcher-effects',   'enableAppswitcherEffects', enableAppswitcherChanged);
-      this.settings.bind('enable-tooltips-effects',      'enableTooltipEffects',  enableTooltipsChanged);
-      this.settings.bind('enable-window-effects',        'enableWindowEffects',  enableWindowChanged);
+      this.bind('enable-overview-effects',      'enableOverviewEffects', enableOverviewChanged);
+      this.bind('enable-expo-effects',          'enableExpoEffects',     enableExpoChanged);
+      this.bind('enable-panels-effects',        'enablePanelsEffects',   enablePanelsChanged);
+      this.bind('enable-popup-effects',         'enablePopupEffects',    enablePopupChanged);
+      this.bind('enable-desktop-effects',       'enableDesktopEffects',  enableDesktopChanged);
+      this.bind('enable-notification-effects',  'enableNotificationEffects', enableNotificationChanged);
+      this.bind('enable-appswitcher-effects',   'enableAppswitcherEffects', enableAppswitcherChanged);
+      this.bind('enable-tooltips-effects',      'enableTooltipEffects',  enableTooltipsChanged);
+      this.bind('enable-window-effects',        'enableWindowEffects',  enableWindowChanged);
+      this.bind('enable-desklet-effects',       'enableDeskletEffects',  enableDeskletChanged);
 
-      this.settings.bind('enable-panel-unique-settings', 'enablePanelUniqueSettings');
-      this.settings.bind('panel-unique-settings', 'panelUniqueSettings', panelsSettingsChangled);
-      this.settings.bind('allow-transparent-color-panels', 'allowTransparentColorPanels', colorChanged);
+      this.bind('enable-panel-unique-settings', 'enablePanelUniqueSettings');
+      this.bind('panel-unique-settings', 'panelUniqueSettings', panelsSettingsChangled);
+      this.bind('allow-transparent-color-panels', 'allowTransparentColorPanels', colorChanged);
 
-      this.settings.bind('new-install', 'newInstall');
+      this.bind('new-install', 'newInstall');
+
+      this.bind('component-selector', 'componentSelector');
    }
 
    // Since Cinnamon's settings does not allow binding to custom type json entries we have to have our own
-   bind(key, variable, callback) {
+   bind(key, variable, callback=null) {
       this._signalManager.connect(this.settings, "changed::"+key, () => this._keyChanged(key, variable, callback));
       this[variable] = this.settings.getValue(key);
    }
@@ -2095,6 +2321,12 @@ function updateFocusedWindowEffect() {
    }
 }
 
+function updateDeskletEffects() {
+   if (blurDesklets && settings.enableDeskletEffects) {
+      blurDesklets.updateEffects();
+   }
+}
+
 function updateWindowEffects() {
    if (blurApplications && settings.enableWindowEffects) {
       blurApplications.updateEffects();
@@ -2126,6 +2358,15 @@ function saturationChanged() {
    if (blurDesktop && settings.enableDesktopEffects) {
       blurDesktop.updateEffects();
    }
+   if (blurNotifications && settings.enableNotificationEffects) {
+      blurNotifications.updateEffects();
+   }
+   if (blurApplications && settings.enableWindowEffects) {
+      blurApplications.updateEffects();
+   }
+   if (blurDesklets && settings.enableDeskletEffects) {
+      blurDesklets.updateEffects();
+   }
 }
 
 function colorChanged() {
@@ -2135,6 +2376,15 @@ function colorChanged() {
    if (blurDesktop && settings.enableDesktopEffects) {
       blurDesktop.updateEffects();
    }
+   if (blurNotifications && settings.enableNotificationEffects) {
+      blurNotifications.updateEffects();
+   }
+   if (blurApplications && settings.enableWindowEffects) {
+      blurApplications.updateEffects();
+   }
+   if (blurDesklets && settings.enableDeskletEffects) {
+      blurDesklets.updateEffects();
+   }
 }
 
 function blurChanged() {
@@ -2143,6 +2393,15 @@ function blurChanged() {
    }
    if (blurDesktop && settings.enableDesktopEffects) {
       blurDesktop.updateEffects();
+   }
+   if (blurNotifications && settings.enableNotificationEffects) {
+      blurNotifications.updateEffects();
+   }
+   if (blurApplications && settings.enableWindowEffects) {
+      blurApplications.updateEffects();
+   }
+   if (blurDesklets && settings.enableDeskletEffects) {
+      blurDesklets.updateEffects();
    }
 }
 
@@ -2216,7 +2475,7 @@ function enableDesktopChanged() {
 }
 
 function enableNotificationChanged() {
-   if (blurNotifications && !settings.settings.enableNotificationEffects) {
+   if (blurNotifications && !settings.enableNotificationEffects) {
       blurNotifications.destroy();
       blurNotifications = null;
    } else if (!blurNotifications && settings.enableNotificationEffects) {
@@ -2225,7 +2484,7 @@ function enableNotificationChanged() {
 }
 
 function enableTooltipsChanged() {
-   if (blurTooltips && !settings.settings.enableTooltipEffects) {
+   if (blurTooltips && !settings.enableTooltipEffects) {
       blurTooltips.destroy();
       blurTooltips = null;
    } else if (!blurTooltips && settings.enableTooltipEffects) {
@@ -2234,7 +2493,7 @@ function enableTooltipsChanged() {
 }
 
 function enableWindowChanged() {
-   if (blurApplications && !settings.settings.enableWindowEffects) {
+   if (blurApplications && !settings.enableWindowEffects) {
       blurApplications.destroy();
       blurApplications = null;
    } else if (!blurApplications && settings.enableWindowEffects) {
@@ -2242,9 +2501,22 @@ function enableWindowChanged() {
    }
 }
 
+function enableDeskletChanged() {
+   settings.enableDeskletEffects
+   if (blurDesklets && !settings.enableDeskletEffects) {
+      blurDesklets.destroy();
+      blurDesklets = null;
+   } else if (!blurDesklets && settings.enableDeskletEffects) {
+      blurDesklets = new BlurDesklets();
+   }
+}
+
 function init(extensionMeta) {
    settings = new BlurSettings(extensionMeta.uuid);
    metaData = extensionMeta;
+
+   // Save the version number to the settings so that the About page can read it (is there a better way?)
+   settings.settings.setValue("ext-version", extensionMeta.version);
 
    // Store the original functions for monkey patched functions
    originalAnimateOverview = Overview.Overview.prototype._animateVisible;
@@ -2305,6 +2577,10 @@ function enable() {
    // Create a Focused Window Effect class instance, the constructor will set everything up.
    if (settings.focusedWindowEffect > 0) {
       blurFocusEffect = new BlurFocusEffect();
+   }
+   // Create a Focused Window Effect class instance, the constructor will set everything up.
+   if (settings.enableDeskletEffects > 0) {
+      blurDesklets = new BlurDesklets();
    }
    // If this is the first time running Blur Cinnamon, sent a welcome notification message
    if (settings.newInstall) {
@@ -2376,6 +2652,11 @@ function disable() {
    if (blurFocusEffect) {
       blurFocusEffect.destroy();
       blurFocusEffect = null;
+   }
+
+   if (blurDesklets) {
+      blurDesklets.destroy();
+      blurDesklets = null;
    }
 
    // If disabled was called to remove the extension entirely rather than a reload
