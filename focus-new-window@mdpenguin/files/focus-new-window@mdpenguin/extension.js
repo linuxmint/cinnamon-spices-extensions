@@ -12,10 +12,15 @@ class SettingsHandler {
     this.settings = new Settings.ExtensionSettings(this, uuid);
     this.settings.bindProperty(Settings.BindingDirection.IN, "raiseSome", "raiseSome", function () { });
     this.settings.bindProperty(Settings.BindingDirection.IN, "programList", "programList", function () { });
+    this.settings.bindProperty(Settings.BindingDirection.IN, "excludeList", "excludeList", function () { });
   }
 }
 
 class AttentionHandler {
+  _parseList(listString) {
+    return listString.toLowerCase().replace(/\s/g, "").split(",");
+  }
+
   init() {
     if (Main.windowAttentionHandler._windowDemandsAttentionId) {
       global.display.disconnect(Main.windowAttentionHandler._windowDemandsAttentionId);
@@ -40,28 +45,34 @@ class AttentionHandler {
       return;
     }
 
-    let
-      programList = settings.programList.toLowerCase().replace(/\s/g, "").split(","),
-      wmclass = window.get_wm_class();
+    let wmclass = window.get_wm_class();
+    if (!wmclass) {
+      return;
+    }
 
-    if (wmclass) {
-      if (!settings.raiseSome) {
+    if (settings.raiseSome) {
+      // Include mode: only activate windows from programs in the list
+      let programList = this._parseList(settings.programList);
+      if (programList.includes(wmclass.toLowerCase())) {
         window.activate(global.get_current_time());
         return;
       }
-      else if (programList.includes(wmclass.toLowerCase()) && window.has_focus() === false) {
+    }
+    else {
+      // Exclude mode: activate all windows except those in the exclude list
+      let excludeList = this._parseList(settings.excludeList);
+      if (!excludeList.includes(wmclass.toLowerCase())) {
         window.activate(global.get_current_time());
         return;
       }
-      else {
-        let ignored_classes = global.settings.get_strv("demands-attention-passthru-wm-classes");
+    }
 
-        for (let i = 0; i < ignored_classes.length; i++) {
-          if (wmclass.toLowerCase().includes(ignored_classes[i].toLowerCase())) {
-            window.activate(global.get_current_time());
-            return;
-          }
-        }
+    // Fallback: check global ignored classes
+    let ignored_classes = global.settings.get_strv("demands-attention-passthru-wm-classes");
+    for (let i = 0; i < ignored_classes.length; i++) {
+      if (wmclass.toLowerCase().includes(ignored_classes[i].toLowerCase())) {
+        window.activate(global.get_current_time());
+        return;
       }
     }
   }
