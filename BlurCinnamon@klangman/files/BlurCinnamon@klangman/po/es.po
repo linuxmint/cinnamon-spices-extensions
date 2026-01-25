@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-12 10:26-0500\n"
+"POT-Creation-Date: 2026-01-25 17:05-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,11 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#. 6.0/extension.js:1853
+#. 6.0/extension.js:1645 6.0/extension.js:1648 6.0/extension.js:1699
+#. 6.0/extension.js:1763
+#, fuzzy
+msgid "Default window settings"
+msgstr "Abrir la configuración de Cinnamon con Alt-Tab"
+
+#. 6.0/extension.js:1868
 msgid "Error"
 msgstr "Error"
 
-#. 6.0/extension.js:1854
+#. 6.0/extension.js:1869
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -31,11 +37,11 @@ msgstr ""
 "tenía el foco anteriormente, por lo que no se pueden aplicar los efectos de "
 "Desenfoque Cinnamon a esa ventana"
 
-#. 6.0/extension.js:2589
+#. 6.0/extension.js:2613
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2590
+#. 6.0/extension.js:2614
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -55,15 +61,15 @@ msgstr ""
 "También puedes realizar cambios en las propiedades de los efectos, como la "
 "intensidad del desenfoque, la saturación del color y el oscurecimiento."
 
-#. 6.0/extension.js:2594
+#. 6.0/extension.js:2618
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir configuración de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2676
+#. 6.0/extension.js:2700
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2677
+#. 6.0/extension.js:2701
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -228,6 +234,21 @@ msgstr ""
 "haga clic con el botón derecho del ratón en un Desklet, seleccione el "
 "elemento del menú \"Configurar...\" para abrir la ventana de configuración "
 "del Desklet."
+
+#. 6.0->settings-schema.json->windows-label->description
+msgid ""
+"<b>Note:</b> Read tooltip for information about the \"Default window "
+"settings\""
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-label->tooltip
+msgid ""
+"If the special \"Default window settings\" table entry is enabled then all "
+"windows will have effects applied. If it is disabled then only the "
+"applications defined in the table will have effects applied. If the "
+"\"Enabled\" option is unchecked for a particular application then effects "
+"will be disabled even if the \"Default window settings\" row is enabled."
+msgstr ""
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Alt-Tab"
@@ -434,13 +455,15 @@ msgid "Application windows (Please read tooltip)"
 msgstr "Ventanas de aplicación (lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
+#, fuzzy
 msgid ""
-"Apply effects to application window backgrounds by adding an effect actor "
-"below all existing graphical elements of affected windows. This means the "
-"effects will NOT be visible unless the application is setup to be "
-"transparent or the \"Opacity\" setting for the window is less than 100%. The "
-"application inclusion list under \"Windows\" settings is used to determine "
-"which (if any) applications will have effects applied to its windows."
+"Allow application window background effects by adding an effect actor below "
+"all existing graphical elements of affected windows. This means the effects "
+"will NOT be visible unless the application is setup to be transparent or the "
+"\"Opacity\" setting for the window is less than 100%. The table under the "
+"\"Windows\" component settings is used to determine which applications (if "
+"any) will have effects applied to its windows, enabling this option alone "
+"will not add effects to any windows."
 msgstr ""
 "Aplica efectos al fondo de las ventanas de la aplicación añadiendo un actor "
 "de efectos debajo de todos los elementos gráficos existentes de las ventanas "
@@ -641,6 +664,11 @@ msgstr "Intensidad"
 msgid "Saturation"
 msgstr "Saturación"
 
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#, fuzzy
+msgid "Custom CSS"
+msgstr "Personalizado"
+
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
@@ -724,12 +752,8 @@ msgstr ""
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "None"
 msgstr "Ninguno"
@@ -737,12 +761,8 @@ msgstr "Ninguno"
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "Simple"
 msgstr "Sencillo"
@@ -750,12 +770,8 @@ msgstr "Sencillo"
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "Gaussian"
 msgstr "Gaussiano"
@@ -763,12 +779,8 @@ msgstr "Gaussiano"
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
 #. 6.0->settings-schema.json->expo-blurType->description
-#. 6.0->settings-schema.json->panels-blurType->description
-#. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->desktop-blurType->description
-#. 6.0->settings-schema.json->notification-blurType->description
 #. 6.0->settings-schema.json->appswitcher-blurType->description
-#. 6.0->settings-schema.json->tooltips-blurType->description
 #. 6.0->settings-schema.json->desklets-blurType->description
 msgid "Type of blur effect"
 msgstr "Tipo de efecto de desenfoque"
@@ -776,12 +788,8 @@ msgstr "Tipo de efecto de desenfoque"
 #. 6.0->settings-schema.json->blurType->tooltip
 #. 6.0->settings-schema.json->overview-blurType->tooltip
 #. 6.0->settings-schema.json->expo-blurType->tooltip
-#. 6.0->settings-schema.json->panels-blurType->tooltip
-#. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->desktop-blurType->tooltip
-#. 6.0->settings-schema.json->notification-blurType->tooltip
 #. 6.0->settings-schema.json->appswitcher-blurType->tooltip
-#. 6.0->settings-schema.json->tooltips-blurType->tooltip
 #. 6.0->settings-schema.json->desklets-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr ""
@@ -845,6 +853,51 @@ msgid ""
 msgstr ""
 "Ajusta la saturación del color de la imagen de fondo, desde escala de grises "
 "hasta color completo."
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Transparent"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#, fuzzy
+msgid "Transparent to Background"
+msgstr "Fondo de escritorio"
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#, fuzzy
+msgid "Gaussian static blur"
+msgstr "Intensidad del desenfoque gaussiano"
+
+#. 6.0->settings-schema.json->panels-blurType->description
+#. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->notification-blurType->description
+#. 6.0->settings-schema.json->tooltips-blurType->description
+#, fuzzy
+msgid "Type of background effect"
+msgstr "Tipo de efecto de desenfoque"
+
+#. 6.0->settings-schema.json->panels-blurType->tooltip
+#. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->notification-blurType->tooltip
+#. 6.0->settings-schema.json->tooltips-blurType->tooltip
+msgid "What type of background effect should be applied"
+msgstr ""
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
 msgid "Apply effects to applet popup menus"
@@ -957,12 +1010,12 @@ msgid "Rounded Bottom"
 msgstr "Parte inferior redondeada"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
+#, fuzzy
 msgid ""
-"Defines a list of application windows where background effect will be "
-"applied and what effects will apply. When \"Custom\" is enabled the setting "
-"defined by this table will apply, otherwise the \"Generic effect settings\" "
-"will apply for the specific application. The \"Application\" field can be a "
-"WM_CLASS or a desktop file name."
+"This table controls which application windows will have effects applied and "
+"the effect settings. When \"Custom\" is enabled the setting defined by this "
+"table will apply, otherwise the \"Generic effect settings\" will apply. The "
+"\"Application\" field can be a WM_CLASS or a desktop file name."
 msgstr ""
 "Define una lista de ventanas de aplicaciones en las que se aplicará el "
 "efecto de fondo y qué efectos se aplicarán. Cuando se habilita "
