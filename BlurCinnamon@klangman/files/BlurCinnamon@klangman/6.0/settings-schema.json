@@ -53,7 +53,7 @@
                     "notification-warning", "enable-notification-override", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
                     "appswitcher-warning", "enable-appswitcher-override", "appswitcher-info", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation",
                     "tooltips-warning", "enable-tooltips-override", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation",
-                    "windows-warning", "windows-inclusion-list", "windows-add-button", "windows-compiz-mitigation",
+                    "windows-warning", "windows-inclusion-list", "windows-label", "windows-add-button", "windows-compiz-mitigation",
                     "desklets-warning", "enable-desklets-override", "enable-desklets-unique-settings", "desklets-opacity", "desklets-blendColor", "desklets-blurType", "desklets-radius", "desklets-saturation", "desklets-list", "desklets-auto", "desklets-label",
                     "info-label"
                   ]
@@ -124,6 +124,15 @@
       "description" : "<b>Note:</b> You must configure your Desklets to be transparent! (see tooltip)",
       "tooltip": "In order for Blur Cinnamon Desklet effects to be visible, a Desklets background must be transparent. This allows the blur effect to be visible below the Desklet. Most Desklets can be configured to have transparent backgrounds. On the Desktop, right-click on a Desklet, select the \"Configure...\" menu item to open a Desklet's configuration window.",
       "dependency" : "enable-desklet-effects & component-selector=1"
+   },
+
+   "windows-label": {
+      "type" : "custom",
+      "file" : "CustomWidgets.py",
+      "widget" : "LabelWithTooltip",
+      "description" : "<b>Note:</b> Read tooltip for information about the \"Default window settings\"",
+      "tooltip": "If the special \"Default window settings\" table entry is enabled then all windows will have effects applied. If it is disabled then only the applications defined in the table will have effects applied. If the \"Enabled\" option is unchecked for a particular application then effects will be disabled even if the \"Default window settings\" row is enabled.",
+      "dependency" : "enable-window-effects & component-selector=9"
    },
 
    "info-label": {
@@ -208,7 +217,7 @@
    "enable-window-effects" : {
       "type": "switch",
       "description": "Application windows (Please read tooltip)",
-      "tooltip": "Apply effects to application window backgrounds by adding an effect actor below all existing graphical elements of affected windows. This means the effects will NOT be visible unless the application is setup to be transparent or the \"Opacity\" setting for the window is less than 100%. The application inclusion list under \"Windows\" settings is used to determine which (if any) applications will have effects applied to its windows.",
+      "tooltip": "Allow application window background effects by adding an effect actor below all existing graphical elements of affected windows. This means the effects will NOT be visible unless the application is setup to be transparent or the \"Opacity\" setting for the window is less than 100%. The table under the \"Windows\" component settings is used to determine which applications (if any) will have effects applied to its windows, enabling this option alone will not add effects to any windows.",
       "default": false
    },
    "enable-desklet-effects" : {
@@ -336,7 +345,8 @@
             {"id": "color",     "title": "Color",     "type": "string",  "default": "rgb(0,0,0)"},
             {"id": "blurtype",  "title": "Blur",      "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
             {"id": "radius",    "title": "Intensity", "type": "integer", "default": 10,  "min": 0, "max": 100},
-            {"id": "saturation","title": "Saturation","type": "integer", "default": 100, "min": 0, "max": 100}
+            {"id": "saturation","title": "Saturation","type": "integer", "default": 100, "min": 0, "max": 100},
+            {"id": "customCSS", "title": "Custom CSS","type": "string",  "default": ""}
         ],
         "tooltip": "Defines the effects applied to different panels. If a panel does not meet the criteria of any enabled entry in this list, it will have no effects applied. The settings of the first entry in this list that can apply to a given panel will take effect. The \"Custom\" check box determines if the generic effect settings are uses or this tables custom settings. The color field is in the rgb(#,#,#) syntax and black will be used when a color is not provided or is in an incorrect syntax",
         "default" : [
@@ -554,12 +564,13 @@
         "type": "combobox",
         "default": 2,
         "options": {
-            "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "Transparent": 3,
+            "Transparent to Background": 0,
+            "Simple static blur": 1,
+            "Gaussian static blur": 2
         },
-        "description": "Type of blur effect",
-        "tooltip": "What type of blur algorithm should be used to blur the background",
+        "description": "Type of background effect",
+        "tooltip": "What type of background effect should be applied",
         "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override"
     },
 
@@ -586,7 +597,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100,
-        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override"
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override & panels-blurType!=3"
     },
 
 
@@ -648,12 +659,13 @@
         "type": "combobox",
         "default": 2,
         "options": {
-            "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "Transparent": 3,
+            "Transparent to Background": 0,
+            "Simple static blur": 1,
+            "Gaussian static blur": 2
         },
-        "description": "Type of blur effect",
-        "tooltip": "What type of blur algorithm should be used to blur the background",
+        "description": "Type of background effect",
+        "tooltip": "What type of background effect should be applied",
         "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override"
     },
 
@@ -679,7 +691,7 @@
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
-        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override",
+        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override & popup-blurType!=3",
         "default": 100
     },
 
@@ -784,13 +796,14 @@
         "type": "combobox",
         "default": 2,
         "options": {
-            "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "Transparent": 3,
+            "Transparent to Background": 0,
+            "Simple static blur": 1,
+            "Gaussian static blur": 2
         },
-        "description": "Type of blur effect",
+        "description": "Type of background effect",
         "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
-        "tooltip": "What type of blur algorithm should be used to blur the background"
+        "tooltip": "What type of background effect should be applied"
     },
 
     "notification-radius": {
@@ -815,7 +828,7 @@
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
-        "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
+        "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override & notification-blurType!=3",
         "default": 100
     },
 
@@ -916,13 +929,14 @@
         "type": "combobox",
         "default": 2,
         "options": {
-            "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "Transparent": 3,
+            "Transparent to Background": 0,
+            "Simple static blur": 1,
+            "Gaussian static blur": 2
         },
-        "description": "Type of blur effect",
+        "description": "Type of background effect",
         "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
-        "tooltip": "What type of blur algorithm should be used to blur the background"
+        "tooltip": "What type of background effect should be applied"
     },
 
     "tooltips-radius": {
@@ -947,7 +961,7 @@
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
-        "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
+        "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override & tooltips-blurType!=3",
         "default": 100
     },
 
@@ -1030,7 +1044,7 @@
             {"id": "corner_top",    "title": "Rounded Top","type": "boolean", "default": true},
             {"id": "corner_bottom", "title": "Rounded Bottom","type": "boolean", "default": false}
         ],
-        "tooltip": "Defines a list of application windows where background effect will be applied and what effects will apply. When \"Custom\" is enabled the setting defined by this table will apply, otherwise the \"Generic effect settings\" will apply for the specific application. The \"Application\" field can be a WM_CLASS or a desktop file name.",
+        "tooltip": "This table controls which application windows will have effects applied and the effect settings. When \"Custom\" is enabled the setting defined by this table will apply, otherwise the \"Generic effect settings\" will apply. The \"Application\" field can be a WM_CLASS or a desktop file name.",
         "default" : [
             { "enabled": false, "application": "Alacritty.desktop",          "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
             { "enabled": false, "application": "com.gexperts.Tilix.desktop", "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },

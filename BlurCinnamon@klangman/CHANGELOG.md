@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.1
+
+* Added a "Transparent" option to Panels/Menus/Tooltips/Notifications setting. This will provide a true transparent option where whatever is below the effected element will be visible (no blurring, not saturation). For panels this is no different to the Transparent Panels extension.
+* Added a "Default window settings" row to the Windows effect table. When this row is enabled, all windows will have effects applied, except application windows that match some other row in the table, in which case that rows settings will apply (a disabled row will cause the window to have no effects applied despite the "Default window settings" row being enabled).
+* Added code to improve the Cinnamon 6.6 Menu effects (sidebar transparency).
+* Added code to improve the Cinnamon 6.6 "Cinnamon" theme support (might also help with other themes that use CSS padding).
+* Added a "Custom CSS" option to the "Advanced" panel setting table. Using this option, users who know CSS can apply options to control the panels like shrinking the panel to be less then the screen width, adding rounded corners, adding borders, etc.
+* Another attempt to improve the performance of opening menus after the 1st time any particular menu is opened.
+* Fixed some blurring artifacts seen when restoring a minimized window while using the "Focused window backlight effect".
+
 ## 1.7.0
 
 * Added the ability to apply effects to Desklet backgrounds.

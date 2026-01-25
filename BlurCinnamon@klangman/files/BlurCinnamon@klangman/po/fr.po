@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-12 10:26-0500\n"
+"POT-Creation-Date: 2026-01-25 17:05-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: claudiux\n"
 "Language-Team: \n"
@@ -18,23 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:1853
+#. 6.0/extension.js:1645 6.0/extension.js:1648 6.0/extension.js:1699
+#. 6.0/extension.js:1763
+msgid "Default window settings"
+msgstr ""
+
+#. 6.0/extension.js:1868
 msgid "Error"
 msgstr ""
 
-#. 6.0/extension.js:1854
+#. 6.0/extension.js:1869
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
 
-#. 6.0/extension.js:2589
+#. 6.0/extension.js:2613
 #, fuzzy
 msgid "Welcome to Blur Cinnamon"
 msgstr "Flou pour Cinnamon"
 
-#. 6.0/extension.js:2590
+#. 6.0/extension.js:2614
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -46,16 +51,16 @@ msgid ""
 "dimming."
 msgstr ""
 
-#. 6.0/extension.js:2594
+#. 6.0/extension.js:2618
 #, fuzzy
 msgid "Open Blur Cinnamon Settings"
 msgstr "Flou pour Cinnamon"
 
-#. 6.0/extension.js:2676
+#. 6.0/extension.js:2700
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr ""
 
-#. 6.0/extension.js:2677
+#. 6.0/extension.js:2701
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -218,6 +223,21 @@ msgid ""
 "below the Desklet. Most Desklets can be configured to have transparent "
 "backgrounds. On the Desktop, right-click on a Desklet, select the "
 "\"Configure...\" menu item to open a Desklet's configuration window."
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-label->description
+msgid ""
+"<b>Note:</b> Read tooltip for information about the \"Default window "
+"settings\""
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-label->tooltip
+msgid ""
+"If the special \"Default window settings\" table entry is enabled then all "
+"windows will have effects applied. If it is disabled then only the "
+"applications defined in the table will have effects applied. If the "
+"\"Enabled\" option is unchecked for a particular application then effects "
+"will be disabled even if the \"Default window settings\" row is enabled."
 msgstr ""
 
 #. 6.0->settings-schema.json->component-selector->options
@@ -424,12 +444,13 @@ msgstr "Menu principal (Veuillez lire l'infobulle)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
 msgid ""
-"Apply effects to application window backgrounds by adding an effect actor "
-"below all existing graphical elements of affected windows. This means the "
-"effects will NOT be visible unless the application is setup to be "
-"transparent or the \"Opacity\" setting for the window is less than 100%. The "
-"application inclusion list under \"Windows\" settings is used to determine "
-"which (if any) applications will have effects applied to its windows."
+"Allow application window background effects by adding an effect actor below "
+"all existing graphical elements of affected windows. This means the effects "
+"will NOT be visible unless the application is setup to be transparent or the "
+"\"Opacity\" setting for the window is less than 100%. The table under the "
+"\"Windows\" component settings is used to determine which applications (if "
+"any) will have effects applied to its windows, enabling this option alone "
+"will not add effects to any windows."
 msgstr ""
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
@@ -623,6 +644,10 @@ msgstr "Intensité"
 msgid "Saturation"
 msgstr ""
 
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Custom CSS"
+msgstr ""
+
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
 #, fuzzy
 msgid ""
@@ -701,12 +726,8 @@ msgstr ""
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "None"
 msgstr "Aucun"
@@ -714,12 +735,8 @@ msgstr "Aucun"
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "Simple"
 msgstr "Simple"
@@ -727,12 +744,8 @@ msgstr "Simple"
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "Gaussian"
 msgstr "Gaussien"
@@ -740,12 +753,8 @@ msgstr "Gaussien"
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
 #. 6.0->settings-schema.json->expo-blurType->description
-#. 6.0->settings-schema.json->panels-blurType->description
-#. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->desktop-blurType->description
-#. 6.0->settings-schema.json->notification-blurType->description
 #. 6.0->settings-schema.json->appswitcher-blurType->description
-#. 6.0->settings-schema.json->tooltips-blurType->description
 #. 6.0->settings-schema.json->desklets-blurType->description
 msgid "Type of blur effect"
 msgstr "Type d'effet de flou"
@@ -753,12 +762,8 @@ msgstr "Type d'effet de flou"
 #. 6.0->settings-schema.json->blurType->tooltip
 #. 6.0->settings-schema.json->overview-blurType->tooltip
 #. 6.0->settings-schema.json->expo-blurType->tooltip
-#. 6.0->settings-schema.json->panels-blurType->tooltip
-#. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->desktop-blurType->tooltip
-#. 6.0->settings-schema.json->notification-blurType->tooltip
 #. 6.0->settings-schema.json->appswitcher-blurType->tooltip
-#. 6.0->settings-schema.json->tooltips-blurType->tooltip
 #. 6.0->settings-schema.json->desklets-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr "Type d'algorithme à utiliser pour rendre l'arrière-plan flou"
@@ -818,6 +823,50 @@ msgstr ""
 msgid ""
 "Adjusts the color saturation of the background image from gray-scale to full "
 "color."
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Transparent"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Transparent to Background"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#, fuzzy
+msgid "Gaussian static blur"
+msgstr "Intensité du flou gaussien"
+
+#. 6.0->settings-schema.json->panels-blurType->description
+#. 6.0->settings-schema.json->popup-blurType->description
+#. 6.0->settings-schema.json->notification-blurType->description
+#. 6.0->settings-schema.json->tooltips-blurType->description
+#, fuzzy
+msgid "Type of background effect"
+msgstr "Type d'effet de flou"
+
+#. 6.0->settings-schema.json->panels-blurType->tooltip
+#. 6.0->settings-schema.json->popup-blurType->tooltip
+#. 6.0->settings-schema.json->notification-blurType->tooltip
+#. 6.0->settings-schema.json->tooltips-blurType->tooltip
+msgid "What type of background effect should be applied"
 msgstr ""
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
@@ -923,11 +972,10 @@ msgstr ""
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
 msgid ""
-"Defines a list of application windows where background effect will be "
-"applied and what effects will apply. When \"Custom\" is enabled the setting "
-"defined by this table will apply, otherwise the \"Generic effect settings\" "
-"will apply for the specific application. The \"Application\" field can be a "
-"WM_CLASS or a desktop file name."
+"This table controls which application windows will have effects applied and "
+"the effect settings. When \"Custom\" is enabled the setting defined by this "
+"table will apply, otherwise the \"Generic effect settings\" will apply. The "
+"\"Application\" field can be a WM_CLASS or a desktop file name."
 msgstr ""
 
 #. 6.0->settings-schema.json->windows-add-button->description
