@@ -19,9 +19,8 @@ msgstr ""
 
 #. 6.0/extension.js:1645 6.0/extension.js:1648 6.0/extension.js:1699
 #. 6.0/extension.js:1763
-#, fuzzy
 msgid "Default window settings"
-msgstr "Abrir la configuración de Cinnamon con Alt-Tab"
+msgstr "Configuración predeterminada de la ventana"
 
 #. 6.0/extension.js:1868
 msgid "Error"
@@ -240,6 +239,8 @@ msgid ""
 "<b>Note:</b> Read tooltip for information about the \"Default window "
 "settings\""
 msgstr ""
+"<b>Nota:</b> Lea la información sobre herramientas para obtener información "
+"sobre la \"Configuración predeterminada de la ventana\""
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -249,6 +250,12 @@ msgid ""
 "\"Enabled\" option is unchecked for a particular application then effects "
 "will be disabled even if the \"Default window settings\" row is enabled."
 msgstr ""
+"Si la entrada especial \"Configuración predeterminada de la ventana\" de la "
+"tabla está habilitada, se aplicarán efectos a todas las ventanas. Si está "
+"deshabilitada, solo se aplicarán efectos a las aplicaciones definidas en la "
+"tabla. Si la opción \"Habilitado\" no está marcada para una aplicación "
+"concreta, los efectos se deshabilitarán incluso si la fila \"Configuración "
+"predeterminada de la ventana\" está habilitada."
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Alt-Tab"
@@ -455,7 +462,6 @@ msgid "Application windows (Please read tooltip)"
 msgstr "Ventanas de aplicación (lea la información sobre herramientas)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
-#, fuzzy
 msgid ""
 "Allow application window background effects by adding an effect actor below "
 "all existing graphical elements of affected windows. This means the effects "
@@ -465,13 +471,14 @@ msgid ""
 "any) will have effects applied to its windows, enabling this option alone "
 "will not add effects to any windows."
 msgstr ""
-"Aplica efectos al fondo de las ventanas de la aplicación añadiendo un actor "
-"de efectos debajo de todos los elementos gráficos existentes de las ventanas "
-"afectadas. Esto significa que los efectos NO serán visibles a menos que la "
-"aplicación esté configurada para ser transparente o que el ajuste de "
-"\"Opacidad\" de la ventana sea inferior al 100 %. La lista de inclusión de "
-"aplicaciones en la configuración de \"Ventanas\" se utiliza para determinar "
-"a qué aplicaciones (si las hay) se les aplicarán efectos a sus ventanas."
+"Permite los efectos de fondo de la ventana de la aplicación añadiendo un "
+"actor de efectos debajo de todos los elementos gráficos existentes de las "
+"ventanas afectadas. Esto significa que los efectos NO serán visibles a menos "
+"que la aplicación esté configurada para ser transparente o que el ajuste de "
+"\"Opacidad\" de la ventana sea inferior al 100 %. La tabla situada debajo de "
+"la configuración del componente \"Ventanas\" se utiliza para determinar a "
+"qué aplicaciones (si las hay) se les aplicarán efectos a sus ventanas; "
+"habilitar esta opción por sí sola no añadirá efectos a ninguna ventana."
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
 msgid ""
@@ -665,9 +672,8 @@ msgid "Saturation"
 msgstr "Saturación"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
-#, fuzzy
 msgid "Custom CSS"
-msgstr "Personalizado"
+msgstr "CSS personalizado"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
 msgid ""
@@ -859,45 +865,42 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Transparent"
-msgstr ""
+msgstr "Transparente"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Transparent to Background"
-msgstr "Fondo de escritorio"
+msgstr "Fondo de escritorio transparente"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Simple static blur"
-msgstr ""
+msgstr "Desenfoque estático simple"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Gaussian static blur"
-msgstr "Intensidad del desenfoque gaussiano"
+msgstr "Desenfoque gaussiano estático"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->notification-blurType->description
 #. 6.0->settings-schema.json->tooltips-blurType->description
-#, fuzzy
 msgid "Type of background effect"
-msgstr "Tipo de efecto de desenfoque"
+msgstr "Tipo de efecto de fondo"
 
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->notification-blurType->tooltip
 #. 6.0->settings-schema.json->tooltips-blurType->tooltip
 msgid "What type of background effect should be applied"
-msgstr ""
+msgstr "Qué tipo de efecto de fondo se debe aplicar"
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
 msgid "Apply effects to applet popup menus"
@@ -1010,19 +1013,17 @@ msgid "Rounded Bottom"
 msgstr "Parte inferior redondeada"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
-#, fuzzy
 msgid ""
 "This table controls which application windows will have effects applied and "
 "the effect settings. When \"Custom\" is enabled the setting defined by this "
 "table will apply, otherwise the \"Generic effect settings\" will apply. The "
 "\"Application\" field can be a WM_CLASS or a desktop file name."
 msgstr ""
-"Define una lista de ventanas de aplicaciones en las que se aplicará el "
-"efecto de fondo y qué efectos se aplicarán. Cuando se habilita "
-"\"Personalizado\", se aplicará la configuración definida en esta tabla; de "
-"lo contrario, se aplicará la \"Configuración de efectos genéricos\" para la "
-"aplicación específica. El campo \"Aplicación\" puede ser un WM_CLASS o un "
-"nombre de archivo de escritorio."
+"Esta tabla controla a qué ventanas de la aplicación se aplicarán los efectos "
+"y la configuración de los mismos. Cuando se habilita \"Personalizado\", se "
+"aplicará la configuración definida en esta tabla; de lo contrario, se "
+"aplicará la \"Configuración de efectos genérica\". El campo \"Aplicación\" "
+"puede ser un WM_CLASS o un nombre de archivo de escritorio."
 
 #. 6.0->settings-schema.json->windows-add-button->description
 msgid "Add entry for the application of the most recently focused window"
