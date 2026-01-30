@@ -31,6 +31,7 @@ let windowCreatedSignal;
 let isTransitioningWorkspace = false;
 let panelMenuItems = {};
 let panelAddedSignal;
+let windowStateChangedSignals = [];
 
 const SCHEMA_VERSION = 2;
 
@@ -113,14 +114,14 @@ class PanelSettingsDialog {
         
         this.enabledSwitch = this._addSwitch(
             _('Enable Centered Dock for this panel'),
-            this.settings.enabled
+            this.settings.enabled || false
         );
         
         this._addSeparator();
         
         this.heightOffsetSlider = this._addSlider(
             _('Height offset (negative = up, positive = down)'),
-            this.settings.heightOffset,
+            this.settings.heightOffset || -8,
             -500,
             500,
             1
@@ -128,12 +129,12 @@ class PanelSettingsDialog {
         
         this.noWindowShiftSwitch = this._addSwitch(
             _("Don't shift windows (disable panel struts)"),
-            this.settings.noWindowShift
+            this.settings.noWindowShift || false
         );
         
         this.animationTimeSlider = this._addSlider(
             _('Fade animation duration (ms)'),
-            this.settings.animationTime,
+            this.settings.animationTime || 500,
             0,
             1000,
             50
@@ -143,7 +144,7 @@ class PanelSettingsDialog {
         
         this.transparencySlider = this._addSlider(
             _('Transparency (%)'),
-            this.settings.transparency,
+            this.settings.transparency || 85,
             0,
             100,
             5
@@ -159,12 +160,12 @@ class PanelSettingsDialog {
         
         this.zoomEnabledSwitch = this._addSwitch(
             _('Enable zoom effect on hover'),
-            this.settings.zoomEnabled
+            this.settings.zoomEnabled || false
         );
         
         this.zoomFactorSlider = this._addSlider(
             _('Zoom scale factor'),
-            this.settings.zoomFactor,
+            this.settings.zoomFactor || 1.3,
             1.0,
             2.0,
             0.1
@@ -172,19 +173,59 @@ class PanelSettingsDialog {
         
         this._addHeader(_('Auto-hide Behavior'));
         
+        let modeLabel = new St.Label({
+            text: _('Choose one auto-hide mode (mutually exclusive):'),
+            style: 'font-style: italic; padding: 5px 5px 10px 5px; color: #999999; font-size: 10pt;'
+        });
+        this.contentBox.add(modeLabel, {
+            x_fill: true,
+            y_fill: false
+        });
+        
+        let hideOnFullscreen = this.settings.hideOnFullscreen || false;
+        let autoHide = this.settings.autoHide || false;
+        let showOnNoFocus = this.settings.showOnNoFocus || false;
+        
         this.autoHideSwitch = this._addSwitch(
             _('Auto-hide dock when focusing apps'),
-            this.settings.autoHide
+            autoHide && !hideOnFullscreen
         );
         
         this.showOnNoFocusSwitch = this._addSwitch(
-            _('Show dock when no window is focused'),
-            this.settings.showOnNoFocus
+            _('    ↳ Show dock when no window is focused'),
+            showOnNoFocus && !hideOnFullscreen
         );
+        
+        this._addSeparator();
+        
+        this.hideOnFullscreenSwitch = this._addSwitch(
+            _('Show dock unless window covers full screen'),
+            hideOnFullscreen
+        );
+        
+        let fullscreenDesc = new St.Label({
+            text: _('(Dock visible unless a window covers the full screen)'),
+            style: 'font-style: italic; padding: 0px 5px 8px 30px; color: #888888; font-size: 9pt;'
+        });
+        this.contentBox.add(fullscreenDesc, {
+            x_fill: true,
+            y_fill: false
+        });
+        
+        this._addSeparator();
+        
+        let commonSettingsLabel = new St.Label({
+            text: _('Auto-hide timing settings:'),
+            style: 'font-weight: bold; padding: 10px 5px 5px 5px; font-size: 10pt; color: #4a90d9;'
+        });
+        this.contentBox.add(commonSettingsLabel, {
+            x_fill: true,
+            y_fill: false
+        });
         
         this.hideDelaySlider = this._addSlider(
             _('Delay before auto-hiding (ms)'),
-            this.settings.hideDelay,
+            this.settings.hideDelay || 2000,
             0,
             5000,
             100
@@ -192,21 +233,55 @@ class PanelSettingsDialog {
         
         this.hoverPixelsSlider = this._addSlider(
             _('Height of trigger zone to show panel (px)'),
-            this.settings.hoverPixels,
+            this.settings.hoverPixels || 8,
             1,
             100,
             1
         );
         
+        this._addHeader(_('Auto-hide Indicator'));
+        
         this.showIndicatorSwitch = this._addSwitch(
             _('Show indicator of dock location in trigger zone'),
-            this.settings.showIndicator
+            this.settings.showIndicator || false
         );
         
         this.indicatorColorButton = this._addColorButton(
             _('Indicator color'),
-            this.settings.indicatorColor
+            this.settings.indicatorColor || 'rgba(30, 30, 30, 1.0)'
         );
+        
+        let self = this;
+        
+        this.hideOnFullscreenSwitch.connect('clicked', function() {
+            if (self.hideOnFullscreenSwitch.checked) {
+                self.autoHideSwitch.checked = false;
+                self.autoHideSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+                
+                self.showOnNoFocusSwitch.checked = false;
+                self.showOnNoFocusSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            }
+        });
+        
+        this.showOnNoFocusSwitch.connect('clicked', function() {
+            if (self.showOnNoFocusSwitch.checked) {
+                self.autoHideSwitch.checked = true;
+                self.autoHideSwitch.set_style('width: 50px; height: 30px; background-color: #4a90d9; border-radius: 15px;');
+                
+                self.hideOnFullscreenSwitch.checked = false;
+                self.hideOnFullscreenSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            }
+        });
+        
+        this.autoHideSwitch.connect('clicked', function() {
+            if (self.autoHideSwitch.checked) {
+                self.hideOnFullscreenSwitch.checked = false;
+                self.hideOnFullscreenSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            } else {
+                self.showOnNoFocusSwitch.checked = false;
+                self.showOnNoFocusSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            }
+        });
     }
 
     _addHeader(text) {
@@ -551,7 +626,8 @@ class PanelSettingsDialog {
             indicatorColor: this.indicatorColorButton.selectedColor,
             showIndicator: this.showIndicatorSwitch.checked,
             hideDelay: this.hideDelaySlider._value,
-            minWidth: this.minWidthSlider._value
+            minWidth: this.minWidthSlider._value,
+            hideOnFullscreen: this.hideOnFullscreenSwitch.checked
         };
     }
     
@@ -708,18 +784,53 @@ function getPanelSettings(panelId) {
         enabled: false,
         transparency: 85,
         heightOffset: -8,
-        autoHide: true,
+        autoHide: false,
         hoverPixels: 8,
         noWindowShift: true,
         animationTime: 500,
-        showOnNoFocus: true,
+        showOnNoFocus: false,
         zoomFactor: 1.3,
         zoomEnabled: true,
         indicatorColor: "rgba(30, 30, 30, 1.0)",
         showIndicator: true,
         hideDelay: 2000,
-        minWidth: 50
+        minWidth: 50,
+        hideOnFullscreen: true
     };
+}
+
+function hasMaximizedOrFullscreenWindow(panel) {
+    try {
+        let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
+        if (!monitor) return false;
+        
+        let workspace = global.screen.get_active_workspace();
+        let windows = workspace.list_windows();
+        
+        for (let i = 0; i < windows.length; i++) {
+            let win = windows[i];
+            
+            if (win.window_type !== Meta.WindowType.NORMAL) continue;
+            
+            if (win.minimized) continue;
+            
+            let winMonitor = win.get_monitor();
+            let monitorIndex = Main.layoutManager.monitors.indexOf(monitor);
+            if (winMonitor !== monitorIndex) continue;
+            
+            if (win.is_fullscreen()) {
+                return true;
+            }
+            
+            if (win.maximized_horizontally && win.maximized_vertically) {
+                return true;
+            }
+        }
+        
+        return false;
+    } catch(e) {
+        return false;
+    }
 }
 
 function savePanelSettings(panelId, settings) {
@@ -775,6 +886,8 @@ function openPanelSettingsDialog(panel) {
         let dialog = new PanelSettingsDialog(panel);
         dialog.open();
     } catch(e) {
+        global.log("Error opening dialog: " + e);
+        global.log(e.stack);
     }
 }
 
@@ -920,8 +1033,16 @@ function initializePanels() {
         Mainloop.timeout_add(100, function() {
             Main.panelManager.panels.forEach(panel => {
                 if (!shouldApplyToPanel(panel) || !panel || !panel.actor) return;
-                if (getPanelSetting(panel, "autoHide")) {
-                    hidePanel(panel);
+                let autoHide = getPanelSetting(panel, "autoHide");
+                let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                if (autoHide || hideOnFullscreen) {
+                    if (hideOnFullscreen) {
+                        if (hasMaximizedOrFullscreenWindow(panel)) {
+                            hidePanel(panel);
+                        }
+                    } else {
+                        hidePanel(panel);
+                    }
                 }
             });
             return false;
@@ -932,11 +1053,52 @@ function initializePanels() {
         if (isInEditMode) return;
         
         try {
+            let stateChangedId = win.connect('notify::fullscreen', function() {
+                if (isInEditMode) return;
+                
+                Main.panelManager.panels.forEach(panel => {
+                    if (!shouldApplyToPanel(panel)) return;
+                    if (!panel || !panel.actor) return;
+                    
+                    let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                    if (!hideOnFullscreen) return;
+                    
+                    let state = panelStates[panel.panelId];
+                    if (!state) return;
+                    
+                    Mainloop.timeout_add(50, function() {
+                        let isFullscreen = hasMaximizedOrFullscreenWindow(panel);
+                        
+                        if (isFullscreen && !state.isHidden) {
+                            hidePanel(panel);
+                        } else if (!isFullscreen && state.isHidden) {
+                            showPanel(panel);
+                        }
+                        return false;
+                    });
+                });
+            });
+            
+            windowStateChangedSignals.push({ window: win, signalId: stateChangedId });
+            
             win.connect('unmanaged', function() {
                 if (isInEditMode) return;
                 Main.panelManager.panels.forEach(panel => {
                     if (shouldApplyToPanel(panel) && panel && panel.actor) {
                         checkAndApplyStyle(panel, true);
+                        
+                        let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                        if (hideOnFullscreen) {
+                            let state = panelStates[panel.panelId];
+                            if (state && state.isHidden) {
+                                Mainloop.timeout_add(100, function() {
+                                    if (!hasMaximizedOrFullscreenWindow(panel)) {
+                                        showPanel(panel);
+                                    }
+                                    return false;
+                                });
+                            }
+                        }
                     }
                 });
             });
@@ -948,6 +1110,42 @@ function initializePanels() {
             });
         } catch(e) {}
     });
+    
+    try {
+        let workspace = global.screen.get_active_workspace();
+        let windows = workspace.list_windows();
+        windows.forEach(win => {
+            try {
+                let stateChangedId = win.connect('notify::fullscreen', function() {
+                    if (isInEditMode) return;
+                    
+                    Main.panelManager.panels.forEach(panel => {
+                        if (!shouldApplyToPanel(panel)) return;
+                        if (!panel || !panel.actor) return;
+                        
+                        let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                        if (!hideOnFullscreen) return;
+                        
+                        let state = panelStates[panel.panelId];
+                        if (!state) return;
+                        
+                        Mainloop.timeout_add(50, function() {
+                            let isFullscreen = hasMaximizedOrFullscreenWindow(panel);
+                            
+                            if (isFullscreen && !state.isHidden) {
+                                hidePanel(panel);
+                            } else if (!isFullscreen && state.isHidden) {
+                                showPanel(panel);
+                            }
+                            return false;
+                        });
+                    });
+                });
+                
+                windowStateChangedSignals.push({ window: win, signalId: stateChangedId });
+            } catch(e) {}
+        });
+    } catch(e) {}
     
     Mainloop.timeout_add(100, function() {
         if (!isInEditMode) {
@@ -1160,6 +1358,15 @@ function cleanupAllPanels() {
         } catch(e) {}
         windowCreatedSignal = null;
     }
+    
+    windowStateChangedSignals.forEach(item => {
+        try {
+            if (item.window && item.signalId) {
+                item.window.disconnect(item.signalId);
+            }
+        } catch(e) {}
+    });
+    windowStateChangedSignals = [];
     
     if (panelAddedSignal) {
         try {
@@ -1569,8 +1776,12 @@ function toggleAutoHide() {
     
     let anyAutoHide = false;
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel) && getPanelSetting(panel, "autoHide")) {
-            anyAutoHide = true;
+        if (shouldApplyToPanel(panel)) {
+            let autoHide = getPanelSetting(panel, "autoHide");
+            let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+            if (autoHide || hideOnFullscreen) {
+                anyAutoHide = true;
+            }
         }
     });
     
@@ -1578,6 +1789,7 @@ function toggleAutoHide() {
         enableAutoHide();
     }
 }
+
 
 function getMonitorGeometry(panel) {
     let panelMonitor = Main.layoutManager.findMonitorForActor(panel.actor);
@@ -1656,7 +1868,11 @@ function enableAutoHide(indicatorStatus) {
         
         Main.panelManager.panels.forEach(panel => {
             if (!shouldApplyToPanel(panel)) return;
-            if (!getPanelSetting(panel, "autoHide")) return;
+            
+            let autoHide = getPanelSetting(panel, "autoHide");
+            let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+            
+            if (!autoHide && !hideOnFullscreen) return;
             if (!panel || !panel.actor) return;
             
             let state = panelStates[panel.panelId];
@@ -1710,13 +1926,24 @@ function enableAutoHide(indicatorStatus) {
                 
                 let menusActive = hasActiveMenus(panel);
                 let mouseOverTriggerZone = isMouseInTriggerZone(panel, x, y);
+                let shouldShow = false;
                 
-                let focusWindow = global.display.focus_window;
-                let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
-                let showOnNoFocus = getPanelSetting(panel, "showOnNoFocus");
-                let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
-                
-                let shouldShow = menusActive || mouseOverTriggerZone || shouldShowOnNoFocus;
+                if (hideOnFullscreen) {
+                    let isFullscreen = hasMaximizedOrFullscreenWindow(panel);
+                    
+                    if (isFullscreen) {
+                        shouldShow = menusActive || mouseOverTriggerZone;
+                    } else {
+                        shouldShow = true;
+                    }
+                } else if (autoHide) {
+                    let focusWindow = global.display.focus_window;
+                    let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
+                    let showOnNoFocus = getPanelSetting(panel, "showOnNoFocus");
+                    let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
+                    
+                    shouldShow = menusActive || mouseOverTriggerZone || shouldShowOnNoFocus;
+                }
                 
                 if (!state.isHidden) {
                     let mouseOverDockOrMenus = isMouseOverDockOrMenus(panel);
