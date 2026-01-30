@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-07 01:55+0100\n"
+"POT-Creation-Date: 2026-01-30 01:07+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -36,7 +36,7 @@ msgstr "Painel esquerdo (monitor %d)"
 msgid "Right Panel (Monitor %d)"
 msgstr "Painel direito (monitor %d)"
 
-#. 6.4/extension.js:72 6.4/extension.js:713
+#. 6.4/extension.js:72 6.4/extension.js:748
 msgid "Centered Dock Settings"
 msgstr "Definições do dock centralizado"
 
