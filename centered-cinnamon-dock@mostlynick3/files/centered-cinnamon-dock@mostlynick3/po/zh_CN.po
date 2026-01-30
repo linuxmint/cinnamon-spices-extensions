@@ -1,14 +1,14 @@
 # zh_CN.po
 # Centered Cinnamon Dock
-# Copyright (C) 2025 mostlynick3
+# Copyright (C) 2026 mostlynick3
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-30 01:07+0100\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2026-01-30 01:55+0100\n"
+"PO-Revision-Date: 2026-01-30 01:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -16,115 +16,135 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.4/extension.js:62
+#. 6.4/extension.js:63
 #, javascript-format
 msgid "Bottom Panel (Monitor %d)"
 msgstr "底部面板（显示器 %d）"
 
-#. 6.4/extension.js:64
+#. 6.4/extension.js:65
 #, javascript-format
 msgid "Top Panel (Monitor %d)"
 msgstr "顶部面板（显示器 %d）"
 
-#. 6.4/extension.js:66
+#. 6.4/extension.js:67
 #, javascript-format
 msgid "Left Panel (Monitor %d)"
 msgstr "左侧面板（显示器 %d）"
 
-#. 6.4/extension.js:68
+#. 6.4/extension.js:69
 #, javascript-format
 msgid "Right Panel (Monitor %d)"
 msgstr "右侧面板（显示器 %d）"
 
-#. 6.4/extension.js:72 6.4/extension.js:748
+#. 6.4/extension.js:73 6.4/extension.js:859
 msgid "Centered Dock Settings"
 msgstr "居中停靠栏设置"
 
-#. 6.4/extension.js:95
+#. 6.4/extension.js:96
 msgid "Cancel"
 msgstr "取消"
 
-#. 6.4/extension.js:100
+#. 6.4/extension.js:101
 msgid "Apply"
 msgstr "应用"
 
-#. 6.4/extension.js:104
+#. 6.4/extension.js:105
 msgid "OK"
 msgstr "确定"
 
-#. 6.4/extension.js:112
+#. 6.4/extension.js:113
 msgid "General"
 msgstr "常规"
 
-#. 6.4/extension.js:115
+#. 6.4/extension.js:116
 msgid "Enable Centered Dock for this panel"
 msgstr "为此面板启用居中停靠栏"
 
-#. 6.4/extension.js:122
+#. 6.4/extension.js:123
 msgid "Height offset (negative = up, positive = down)"
 msgstr "高度偏移（负数 = 向上，正数 = 向下）"
 
-#. 6.4/extension.js:130
+#. 6.4/extension.js:131
 msgid "Don't shift windows (disable panel struts)"
 msgstr "不移动窗口（禁用面板支柱）"
 
-#. 6.4/extension.js:135
+#. 6.4/extension.js:136
 msgid "Fade animation duration (ms)"
 msgstr "淡入淡出动画持续时间（毫秒）"
 
-#. 6.4/extension.js:142
+#. 6.4/extension.js:143
 msgid "Appearance"
 msgstr "外观"
 
-#. 6.4/extension.js:145
+#. 6.4/extension.js:146
 msgid "Transparency (%)"
 msgstr "透明度（%）"
 
-#. 6.4/extension.js:153
+#. 6.4/extension.js:154
 msgid "Minimum dock width"
 msgstr "最小面板宽度"
 
-#. 6.4/extension.js:161
+#. 6.4/extension.js:162
 msgid "Enable zoom effect on hover"
 msgstr "启用鼠标悬停时的缩放效果"
 
-#. 6.4/extension.js:166
+#. 6.4/extension.js:167
 msgid "Zoom scale factor"
 msgstr "缩放比例因子"
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:174
 msgid "Auto-hide Behavior"
 msgstr "自动隐藏行为"
 
-#. 6.4/extension.js:176
+#. 6.4/extension.js:177
+msgid "Choose one auto-hide mode (mutually exclusive):"
+msgstr "选择一种自动隐藏模式（互斥）："
+
+#. 6.4/extension.js:190
 msgid "Auto-hide dock when focusing apps"
 msgstr "聚焦应用程序时自动隐藏停靠栏"
 
-#. 6.4/extension.js:181
-msgid "Show dock when no window is focused"
-msgstr "没有窗口聚焦时显示停靠栏"
+#. 6.4/extension.js:195
+msgid "    ↳ Show dock when no window is focused"
+msgstr "    ↳ 没有窗口聚焦时显示停靠栏"
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:202
+msgid "Show dock unless window covers full screen"
+msgstr "除非窗口覆盖全屏，否则显示停靠栏"
+
+#. 6.4/extension.js:207
+msgid "(Dock visible unless a window covers the full screen)"
+msgstr "（除非窗口覆盖全屏，否则停靠栏可见）"
+
+#. 6.4/extension.js:218
+msgid "Auto-hide timing settings:"
+msgstr "自动隐藏时间设置："
+
+#. 6.4/extension.js:227
 msgid "Delay before auto-hiding (ms)"
 msgstr "自动隐藏前的延迟（毫秒）"
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:235
 msgid "Height of trigger zone to show panel (px)"
 msgstr "显示面板的触发区域高度（像素）"
 
-#. 6.4/extension.js:202
+#. 6.4/extension.js:242
+msgid "Auto-hide Indicator"
+msgstr "自动隐藏指示器"
+
+#. 6.4/extension.js:245
 msgid "Show indicator of dock location in trigger zone"
 msgstr "在触发区域显示停靠栏位置指示器"
 
-#. 6.4/extension.js:207
+#. 6.4/extension.js:250
 msgid "Indicator color"
 msgstr "指示器颜色"
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:524
 msgid "Hex color:"
 msgstr "十六进制颜色："
 
-#. 6.4/extension.js:457
+#. 6.4/extension.js:532
 msgid "Type hex color"
 msgstr "输入十六进制颜色"
 

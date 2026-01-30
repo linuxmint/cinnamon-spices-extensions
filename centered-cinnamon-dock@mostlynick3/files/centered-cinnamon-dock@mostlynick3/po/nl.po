@@ -1,14 +1,14 @@
 # nl.po
 # Centered Cinnamon Dock
-# Copyright (C) 2025 mostlynick3
+# Copyright (C) 2026 mostlynick3
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-30 01:07+0100\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2026-01-30 01:55+0100\n"
+"PO-Revision-Date: 2026-01-30 01:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -16,115 +16,135 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.4/extension.js:62
+#. 6.4/extension.js:63
 #, javascript-format
 msgid "Bottom Panel (Monitor %d)"
 msgstr "Onderste paneel (monitor %d)"
 
-#. 6.4/extension.js:64
+#. 6.4/extension.js:65
 #, javascript-format
 msgid "Top Panel (Monitor %d)"
 msgstr "Bovenste paneel (monitor %d)"
 
-#. 6.4/extension.js:66
+#. 6.4/extension.js:67
 #, javascript-format
 msgid "Left Panel (Monitor %d)"
 msgstr "Linker paneel (monitor %d)"
 
-#. 6.4/extension.js:68
+#. 6.4/extension.js:69
 #, javascript-format
 msgid "Right Panel (Monitor %d)"
 msgstr "Rechter paneel (monitor %d)"
 
-#. 6.4/extension.js:72 6.4/extension.js:748
+#. 6.4/extension.js:73 6.4/extension.js:859
 msgid "Centered Dock Settings"
 msgstr "Instellingen voor gecentreerd dock"
 
-#. 6.4/extension.js:95
+#. 6.4/extension.js:96
 msgid "Cancel"
 msgstr "Annuleren"
 
-#. 6.4/extension.js:100
+#. 6.4/extension.js:101
 msgid "Apply"
 msgstr "Toepassen"
 
-#. 6.4/extension.js:104
+#. 6.4/extension.js:105
 msgid "OK"
 msgstr "OK"
 
-#. 6.4/extension.js:112
+#. 6.4/extension.js:113
 msgid "General"
 msgstr "Algemeen"
 
-#. 6.4/extension.js:115
+#. 6.4/extension.js:116
 msgid "Enable Centered Dock for this panel"
 msgstr "Gecentreerd dock inschakelen voor dit paneel"
 
-#. 6.4/extension.js:122
+#. 6.4/extension.js:123
 msgid "Height offset (negative = up, positive = down)"
 msgstr "Hoogte-offset (negatief = omhoog, positief = omlaag)"
 
-#. 6.4/extension.js:130
+#. 6.4/extension.js:131
 msgid "Don't shift windows (disable panel struts)"
 msgstr "Vensters niet verschuiven (paneel struts uitschakelen)"
 
-#. 6.4/extension.js:135
+#. 6.4/extension.js:136
 msgid "Fade animation duration (ms)"
 msgstr "Duur van vervaging-animatie (ms)"
 
-#. 6.4/extension.js:142
+#. 6.4/extension.js:143
 msgid "Appearance"
 msgstr "Uiterlijk"
 
-#. 6.4/extension.js:145
+#. 6.4/extension.js:146
 msgid "Transparency (%)"
 msgstr "Transparantie (%)"
 
-#. 6.4/extension.js:153
+#. 6.4/extension.js:154
 msgid "Minimum dock width"
 msgstr "Minimale dockbreedte"
 
-#. 6.4/extension.js:161
+#. 6.4/extension.js:162
 msgid "Enable zoom effect on hover"
 msgstr "Zoom-effect bij aanwijzen inschakelen"
 
-#. 6.4/extension.js:166
+#. 6.4/extension.js:167
 msgid "Zoom scale factor"
 msgstr "Zoom-schaalfactor"
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:174
 msgid "Auto-hide Behavior"
 msgstr "Gedrag automatisch verbergen"
 
-#. 6.4/extension.js:176
+#. 6.4/extension.js:177
+msgid "Choose one auto-hide mode (mutually exclusive):"
+msgstr "Kies een modus voor automatisch verbergen (onderling uitsluitend):"
+
+#. 6.4/extension.js:190
 msgid "Auto-hide dock when focusing apps"
 msgstr "Dock automatisch verbergen bij focus op apps"
 
-#. 6.4/extension.js:181
-msgid "Show dock when no window is focused"
-msgstr "Dock weergeven wanneer geen venster focus heeft"
+#. 6.4/extension.js:195
+msgid "    ↳ Show dock when no window is focused"
+msgstr "    ↳ Dock weergeven wanneer geen venster focus heeft"
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:202
+msgid "Show dock unless window covers full screen"
+msgstr "Dock weergeven tenzij venster het volledige scherm bedekt"
+
+#. 6.4/extension.js:207
+msgid "(Dock visible unless a window covers the full screen)"
+msgstr "(Dock zichtbaar tenzij een venster het volledige scherm bedekt)"
+
+#. 6.4/extension.js:218
+msgid "Auto-hide timing settings:"
+msgstr "Timing-instellingen voor automatisch verbergen:"
+
+#. 6.4/extension.js:227
 msgid "Delay before auto-hiding (ms)"
 msgstr "Vertraging voor automatisch verbergen (ms)"
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:235
 msgid "Height of trigger zone to show panel (px)"
 msgstr "Hoogte van triggerzone om paneel weer te geven (px)"
 
-#. 6.4/extension.js:202
+#. 6.4/extension.js:242
+msgid "Auto-hide Indicator"
+msgstr "Indicator automatisch verbergen"
+
+#. 6.4/extension.js:245
 msgid "Show indicator of dock location in trigger zone"
 msgstr "Indicator van dock-locatie in triggerzone weergeven"
 
-#. 6.4/extension.js:207
+#. 6.4/extension.js:250
 msgid "Indicator color"
 msgstr "Indicatorkleur"
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:524
 msgid "Hex color:"
 msgstr "Hex-kleur:"
 
-#. 6.4/extension.js:457
+#. 6.4/extension.js:532
 msgid "Type hex color"
 msgstr "Typ hex-kleur"
 

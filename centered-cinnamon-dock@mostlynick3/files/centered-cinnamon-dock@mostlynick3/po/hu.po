@@ -1,14 +1,14 @@
 # CENTERED CINNAMON DOCK
 # This file is put in the public domain.
-# mostlynick3, 2025
+# mostlynick3, 2026
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: centered-cinnamon-dock@mostlynick3 1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-30 01:07+0100\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2026-01-30 01:55+0100\n"
+"PO-Revision-Date: 2026-01-30 01:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -17,115 +17,135 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#. 6.4/extension.js:62
+#. 6.4/extension.js:63
 #, javascript-format
 msgid "Bottom Panel (Monitor %d)"
 msgstr "Alsó panel (%d. monitor)"
 
-#. 6.4/extension.js:64
+#. 6.4/extension.js:65
 #, javascript-format
 msgid "Top Panel (Monitor %d)"
 msgstr "Felső panel (%d. monitor)"
 
-#. 6.4/extension.js:66
+#. 6.4/extension.js:67
 #, javascript-format
 msgid "Left Panel (Monitor %d)"
 msgstr "Bal panel (%d. monitor)"
 
-#. 6.4/extension.js:68
+#. 6.4/extension.js:69
 #, javascript-format
 msgid "Right Panel (Monitor %d)"
 msgstr "Jobb panel (%d. monitor)"
 
-#. 6.4/extension.js:72 6.4/extension.js:748
+#. 6.4/extension.js:73 6.4/extension.js:859
 msgid "Centered Dock Settings"
 msgstr "Középső dokk beállítások"
 
-#. 6.4/extension.js:95
+#. 6.4/extension.js:96
 msgid "Cancel"
 msgstr "Mégse"
 
-#. 6.4/extension.js:100
+#. 6.4/extension.js:101
 msgid "Apply"
 msgstr "Alkalmaz"
 
-#. 6.4/extension.js:104
+#. 6.4/extension.js:105
 msgid "OK"
 msgstr "Rendben"
 
-#. 6.4/extension.js:112
+#. 6.4/extension.js:113
 msgid "General"
 msgstr "Általános"
 
-#. 6.4/extension.js:115
+#. 6.4/extension.js:116
 msgid "Enable Centered Dock for this panel"
 msgstr "Középső dokk engedélyezése ennél a panelnél"
 
-#. 6.4/extension.js:122
+#. 6.4/extension.js:123
 msgid "Height offset (negative = up, positive = down)"
 msgstr "Magasság eltolás (negatív = fel, pozitív = le)"
 
-#. 6.4/extension.js:130
+#. 6.4/extension.js:131
 msgid "Don't shift windows (disable panel struts)"
 msgstr "Ne tolja el az ablakokat (panel struts letiltása)"
 
-#. 6.4/extension.js:135
+#. 6.4/extension.js:136
 msgid "Fade animation duration (ms)"
 msgstr "Elhalványulási animáció időtartama (ms)"
 
-#. 6.4/extension.js:142
+#. 6.4/extension.js:143
 msgid "Appearance"
 msgstr "Megjelenés"
 
-#. 6.4/extension.js:145
+#. 6.4/extension.js:146
 msgid "Transparency (%)"
 msgstr "Átlátszóság (%)"
 
-#. 6.4/extension.js:153
+#. 6.4/extension.js:154
 msgid "Minimum dock width"
 msgstr "Minimális dock szélesség"
 
-#. 6.4/extension.js:161
+#. 6.4/extension.js:162
 msgid "Enable zoom effect on hover"
 msgstr "Nagyítási effektus engedélyezése rámutatáskor"
 
-#. 6.4/extension.js:166
+#. 6.4/extension.js:167
 msgid "Zoom scale factor"
 msgstr "Nagyítási skála tényező"
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:174
 msgid "Auto-hide Behavior"
 msgstr "Automatikus elrejtés viselkedése"
 
-#. 6.4/extension.js:176
+#. 6.4/extension.js:177
+msgid "Choose one auto-hide mode (mutually exclusive):"
+msgstr "Válasszon egy automatikus elrejtési módot (kölcsönösen kizáró):"
+
+#. 6.4/extension.js:190
 msgid "Auto-hide dock when focusing apps"
 msgstr "Dokk automatikus elrejtése alkalmazások fókuszálásakor"
 
-#. 6.4/extension.js:181
-msgid "Show dock when no window is focused"
-msgstr "Dokk megjelenítése, ha nincs ablak fókuszban"
+#. 6.4/extension.js:195
+msgid "    ↳ Show dock when no window is focused"
+msgstr "    ↳ Dokk megjelenítése, ha nincs ablak fókuszban"
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:202
+msgid "Show dock unless window covers full screen"
+msgstr "Dokk megjelenítése, kivéve ha az ablak lefedi a teljes képernyőt"
+
+#. 6.4/extension.js:207
+msgid "(Dock visible unless a window covers the full screen)"
+msgstr "(A dokk látható, kivéve ha egy ablak lefedi a teljes képernyőt)"
+
+#. 6.4/extension.js:218
+msgid "Auto-hide timing settings:"
+msgstr "Automatikus elrejtés időzítési beállításai:"
+
+#. 6.4/extension.js:227
 msgid "Delay before auto-hiding (ms)"
 msgstr "Késleltetés automatikus elrejtés előtt (ms)"
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:235
 msgid "Height of trigger zone to show panel (px)"
 msgstr "Kiváltó zóna magassága a panel megjelenítéséhez (px)"
 
-#. 6.4/extension.js:202
+#. 6.4/extension.js:242
+msgid "Auto-hide Indicator"
+msgstr "Automatikus elrejtés jelző"
+
+#. 6.4/extension.js:245
 msgid "Show indicator of dock location in trigger zone"
 msgstr "Dokk helyének jelzője megjelenítése a kiváltó zónában"
 
-#. 6.4/extension.js:207
+#. 6.4/extension.js:250
 msgid "Indicator color"
 msgstr "Jelző színe"
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:524
 msgid "Hex color:"
 msgstr "Hex szín:"
 
-#. 6.4/extension.js:457
+#. 6.4/extension.js:532
 msgid "Type hex color"
 msgstr "Írja be a hex színt"
 
