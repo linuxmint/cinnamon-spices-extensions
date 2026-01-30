@@ -804,27 +804,24 @@ function hasMaximizedOrFullscreenWindow(panel) {
         let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
         if (!monitor) return false;
         
-        let workspace = global.screen.get_active_workspace();
-        let windows = workspace.list_windows();
+        let focusWindow = global.display.focus_window;
         
-        for (let i = 0; i < windows.length; i++) {
-            let win = windows[i];
-            
-            if (win.window_type !== Meta.WindowType.NORMAL) continue;
-            
-            if (win.minimized) continue;
-            
-            let winMonitor = win.get_monitor();
-            let monitorIndex = Main.layoutManager.monitors.indexOf(monitor);
-            if (winMonitor !== monitorIndex) continue;
-            
-            if (win.is_fullscreen()) {
-                return true;
-            }
-            
-            if (win.maximized_horizontally && win.maximized_vertically) {
-                return true;
-            }
+        if (!focusWindow || focusWindow.window_type !== Meta.WindowType.NORMAL) {
+            return false;
+        }
+        
+        if (focusWindow.minimized) return false;
+        
+        let winMonitor = focusWindow.get_monitor();
+        let monitorIndex = Main.layoutManager.monitors.indexOf(monitor);
+        if (winMonitor !== monitorIndex) return false;
+        
+        if (focusWindow.is_fullscreen()) {
+            return true;
+        }
+        
+        if (focusWindow.maximized_horizontally && focusWindow.maximized_vertically) {
+            return true;
         }
         
         return false;
