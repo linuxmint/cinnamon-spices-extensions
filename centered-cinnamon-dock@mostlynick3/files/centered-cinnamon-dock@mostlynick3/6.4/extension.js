@@ -35,6 +35,145 @@ let windowStateChangedSignals = [];
 
 const SCHEMA_VERSION = 2;
 
+class FirstRunDialog {
+    constructor() {
+        this.dialog = new ModalDialog.ModalDialog();
+        this.panelCheckboxes = {};
+        
+        this.dialog.connect('opened', () => {
+            if (this.dialog._backgroundBin) {
+                this.dialog._backgroundBin.reactive = true;
+                this.dialog._backgroundBin.connect('button-press-event', (actor, event) => {
+                    let [x, y] = event.get_coords();
+                    let contentActor = this.dialog.contentLayout;
+                    if (contentActor && !contentActor.contains(global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y))) {
+                        this._close();
+                        return Clutter.EVENT_STOP;
+                    }
+                    return Clutter.EVENT_PROPAGATE;
+                });
+            }
+        });
+        
+        this._build();
+    }
+    
+    _build() {
+        let contentBox = new St.BoxLayout({
+            vertical: true,
+            style: 'padding: 10px; spacing: 10px;'
+        });
+        
+        let title = new St.Label({
+            text: _("Welcome to Centered Cinnamon Dock!"),
+            style: 'font-size: 16pt; font-weight: bold; padding: 15px; color: #4a90d9; text-align: center;'
+        });
+        title.clutter_text.set_line_wrap(false);
+        title.clutter_text.set_ellipsize(imports.gi.Pango.EllipsizeMode.NONE);
+        contentBox.add(title, { x_fill: true, expand: true });
+        
+        let desc = new St.Label({
+            text: _("Which panel(s) would you like to turn into a dock?"),
+            style: 'padding: 10px; text-align: center;'
+        });
+        desc.clutter_text.set_line_wrap(true);
+        desc.clutter_text.set_line_wrap_mode(imports.gi.Pango.WrapMode.WORD);
+        contentBox.add(desc, { x_fill: true, expand: true });
+        
+        let panelsBox = new St.BoxLayout({
+            vertical: true,
+            style: 'spacing: 5px;'
+        });
+        
+        Main.panelManager.panels.forEach(panel => {
+            let panelId = getPanelIdentifier(panel);
+            let location = getPanelLocation(panel);
+            let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
+            let monitorIndex = monitor ? Main.layoutManager.monitors.indexOf(monitor) : 0;
+            
+            let settings = getPanelSettings(panelId);
+            let isEnabled = settings.enabled || false;
+            
+            let box = new St.BoxLayout({ style: 'padding: 5px; spacing: 10px;' });
+            let label = new St.Label({ text: `${location} (Monitor ${monitorIndex})` });
+            let checkbox = new St.Button({
+                style: 'width: 50px; height: 30px; background-color: ' + (isEnabled ? '#4a90d9' : '#666666') + '; border-radius: 15px;',
+                toggle_mode: true,
+                checked: isEnabled
+            });
+            checkbox.connect('clicked', () => {
+                checkbox.set_style('width: 50px; height: 30px; background-color: ' + (checkbox.checked ? '#4a90d9' : '#666666') + '; border-radius: 15px;');
+            });
+            
+            box.add(label, { x_fill: true, expand: true });
+            box.add(checkbox, { x_fill: false, expand: false });
+            panelsBox.add(box, { x_fill: true, expand: false });
+            this.panelCheckboxes[panelId] = checkbox;
+        });
+        
+        let scrollView = new St.ScrollView({
+            style: 'max-height: 300px;',
+            hscrollbar_policy: St.PolicyType.NEVER,
+            vscrollbar_policy: St.PolicyType.AUTOMATIC
+        });
+        scrollView.add_actor(panelsBox);
+        
+        contentBox.add(scrollView, { x_fill: true, expand: true });
+        
+        let desc2 = new St.Label({
+            text: _("Right click any panel to change your mind or configure the docks later."),
+            style: 'padding: 10px; text-align: center;'
+        });
+        desc2.clutter_text.set_line_wrap(true);
+        desc2.clutter_text.set_line_wrap_mode(imports.gi.Pango.WrapMode.WORD);
+        contentBox.add(desc2, { x_fill: true, expand: true });
+        
+        this.dialog.contentLayout.add(contentBox, { x_fill: true, expand: true });
+        
+        this.dialog.setButtons([
+            { label: _('Skip'), action: () => this._close(), key: Clutter.KEY_Escape },
+            { label: _('Enable'), action: () => this._apply(), key: Clutter.KEY_Return }
+        ]);
+    }
+
+    _apply() {
+        for (let panelId in this.panelCheckboxes) {
+            if (this.panelCheckboxes[panelId].checked) {
+                let settings = getPanelSettings(panelId);
+                settings.enabled = true;
+                savePanelSettings(panelId, settings);
+            }
+        }
+        
+        try {
+            let allSettings = globalSettings.getValue("panel-settings");
+            allSettings.welcomeShown = true;
+            globalSettings.setValue("panel-settings", allSettings);
+        } catch(e) {}
+        
+        this.dialog.close();
+        Mainloop.timeout_add(100, () => { 
+            initializePanels(); 
+            addPanelMenuItems(); 
+            return false; 
+        });
+    }
+    
+    _close() {
+        try {
+            let allSettings = globalSettings.getValue("panel-settings");
+            allSettings.welcomeShown = true;
+            globalSettings.setValue("panel-settings", allSettings);
+        } catch(e) {}
+        
+        this.dialog.close();
+    }
+    
+    open() {
+        this.dialog.open();
+    }
+}
+
 class PanelSettingsDialog {
     constructor(panel) {
         this._init(panel);
@@ -669,6 +808,23 @@ function enable() {
         return;
     }
     
+    let showFirstRun = false;
+    try {
+        let allSettings = globalSettings.getValue("panel-settings");
+        if (!allSettings.welcomeShown) {
+            let hasEnabledPanels = false;
+            for (let key in allSettings) {
+                if (key !== 'welcomeShown' && allSettings[key].enabled) {
+                    hasEnabledPanels = true;
+                    break;
+                }
+            }
+            showFirstRun = !hasEnabledPanels;
+        }
+    } catch(e) {
+        showFirstRun = true;
+    }
+    
     editModeSignal = global.settings.connect("changed::panel-edit-mode", function() {
         let newEditMode = global.settings.get_boolean("panel-edit-mode");
         if (newEditMode !== isInEditMode) {
@@ -721,6 +877,13 @@ function enable() {
     });
     
     addPanelMenuItems();
+    
+    if (showFirstRun) {
+        Mainloop.timeout_add(500, () => {
+            new FirstRunDialog().open();
+            return false;
+        });
+    }
     
     initializePanels();
 }
@@ -2677,6 +2840,13 @@ function startSizeMonitoring() {
                     showPanel(panel);
                 }
                 
+                if (state.lastOpacity !== undefined && state.lastOpacity === panel.actor.opacity) {
+                    if (panel.actor.opacity > 0 && panel.actor.opacity < 255) {
+                        panel.actor.opacity = state.isHidden ? 0 : 255;
+                    }
+                }
+                state.lastOpacity = panel.actor.opacity;
+                
                 if (!state.isHidden) {
                     checkAndApplyStyle(panel, true);
                 }
@@ -2998,4 +3168,3 @@ function disable() {
         globalSettings.finalize();
         globalSettings = null;
     }
-}
