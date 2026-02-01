@@ -3168,3 +3168,4 @@ function disable() {
         globalSettings.finalize();
         globalSettings = null;
     }
+}
