@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2025-04-17 21:29-0400\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-02-06 17:50-0500\n"
 "PO-Revision-Date: 2025-08-26 18:26+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -316,10 +317,15 @@ msgstr "Effetto transizione area di lavoro"
 
 #. 5.4->settings-schema.json->transitionEffect->tooltip
 msgid ""
-"Select the type of workspace switch effect that will be used. The \"Randomized\" option allows you to choose which effects can be chosen at random for each workspace switch. The \"Disabled\" option will show no effect, not even the Cinnamon built in effect during a workspace "
-"switch."
+"Select the type of workspace switch effect that will be used. The "
+"\"Randomized\" option allows you to choose which effects can be chosen at "
+"random for each workspace switch. The \"Disabled\" option will show no "
+"effect, not even the Cinnamon built in effect during a workspace switch."
 msgstr ""
-"Seleziona il tipo di effetto per il cambio area di lavoro. L'opzione \"Casuale\" consente di scegliere quali effetti possono essere selezionati casualmente ad ogni cambio area di lavoro. L'opzione \"Disabilitato\" non mostrerà alcun effetto, nemmeno quelli predefiniti di Cinnamon."
+"Seleziona il tipo di effetto per il cambio area di lavoro. L'opzione "
+"\"Casuale\" consente di scegliere quali effetti possono essere selezionati "
+"casualmente ad ogni cambio area di lavoro. L'opzione \"Disabilitato\" non "
+"mostrerà alcun effetto, nemmeno quelli predefiniti di Cinnamon."
 
 #. 5.4->settings-schema.json->transitionEffect->options
 msgid "Randomized"
@@ -334,24 +340,56 @@ msgid "Use Flipper effect with the Workspace Switcher applet"
 msgstr "Usa l'effetto Flipper con l'applet di commutazione area di lavoro"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
-msgid "Override the moveToWorkspace() API so that the Flipper effect is used by the Workspace Switcher Applet when changing the current workspace"
-msgstr "Sostituisce l'API moveToWorkspace() in modo che l'effetto Flipper venga utilizzato dall'applet di commutazione area di lavoro quando si cambia l'area di lavoro corrente"
+msgid ""
+"Override the moveToWorkspace() API so that the Flipper effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+"Sostituisce l'API moveToWorkspace() in modo che l'effetto Flipper venga "
+"utilizzato dall'applet di commutazione area di lavoro quando si cambia "
+"l'area di lavoro corrente"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Flipper effect when changing focus causes a workspace switch"
-msgstr "Usa l'effetto Flipper quando la modifica dello stato attivo provoca il cambio area di lavoro"
+msgstr ""
+"Usa l'effetto Flipper quando la modifica dello stato attivo provoca il "
+"cambio area di lavoro"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
-msgid "Override the activateWindow() API so that when a window on another workspace is given the focus, the Flipper effect is used to change the current workspace"
-msgstr "Sostituisce l'API activateWindow() in modo che quando viene data priorità a una finestra su un'altra area di lavoro, l'effetto Flipper venga utilizzato per cambiare l'area di lavoro corrente"
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Flipper effect is used to change the current "
+"workspace"
+msgstr ""
+"Sostituisce l'API activateWindow() in modo che quando viene data priorità a "
+"una finestra su un'altra area di lavoro, l'effetto Flipper venga utilizzato "
+"per cambiare l'area di lavoro corrente"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Flipper effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Usa l'effetto Flipper quando la modifica dello stato attivo provoca il "
+"cambio area di lavoro"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Flipper effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
 msgstr "Includi pannelli"
 
 #. 5.4->settings-schema.json->includePanels->tooltip
-msgid "Exclude the panels while animating. In most cases the panels are not properly painted or completely invisible anyhow, so it's best to leave this disabled"
-msgstr "Escludi i pannelli durante l'animazione. Nella maggior parte dei casi i pannelli non sono disegnati correttamente o sono completamente invisibili, quindi è meglio lasciare questa opzione disattivata"
+msgid ""
+"Exclude the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
+"Escludi i pannelli durante l'animazione. Nella maggior parte dei casi i "
+"pannelli non sono disegnati correttamente o sono completamente invisibili, "
+"quindi è meglio lasciare questa opzione disattivata"
 
 #. 5.4->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
