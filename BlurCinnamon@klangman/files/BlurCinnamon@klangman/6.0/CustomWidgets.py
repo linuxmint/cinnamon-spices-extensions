@@ -20,10 +20,8 @@ def is_number(s):
    except ValueError:
       return False
 
-def get_value(settings, string):
-   if settings.has_key(string):
-      value = settings.get_value(string)
-   elif is_number(string):
+def get_constant(settings, string):
+   if is_number(string):
       value = float(string);
    elif string.lower() == 'true':
       value = True
@@ -31,24 +29,64 @@ def get_value(settings, string):
       value = False
    else:
       value = string
-   return value;
+   return value
 
 def customRevealerInit(self, settings, key):
    super(JSONSettingsRevealer, self).__init__()
    self.settings = settings
 
    # Split the dependencies into a list of keys, operations and constants
-   expression = re.split(r'(!=|<=|>=|[<>=&|])', key)
+   expression = re.split(r'(!=|<=|>=|[<>=&| ])', key)
    # Remove any blank entries and any whitespace within entries
    self.expression = [item.strip() for item in expression if item.strip()]
-   # Listen to any keys found in the expression
-   for element in expression:
-      element = element.strip()
-      if element[0] == '!':
-         element = element[1:]
-      if settings.has_key(element):
-         #print( f"listening for changes to key \"{element}\"" )
-         self.settings.listen(element, self.key_changed)
+
+   # Listen to any keys found in the expression,
+   # expand all compares, decode constants,
+   # decode compare operators and check for errors
+   key = None
+   idx = 0
+   count = len(self.expression)
+   listening = []
+   #print( f"Preparing dependency: {self.expression}" )
+   while idx < count:
+      element = self.expression[idx]
+      if element == '&' or element == '|':
+         pass
+      elif element in OPERATIONS:  # ... key op constant ...
+         self.expression[idx] = OPERATIONS_MAP[element]
+         key = self.expression[idx-1]
+         if idx+1 < count and self.expression[idx+1] != '&' and self.expression[idx+1] != '|':
+            self.expression[idx+1] = get_constant(self.settings, self.expression[idx+1])
+         else:
+            self.expression.insert(idx+1, False)
+            count += 1
+         idx += 1
+      elif element[0] == '!':      # ... !key ...
+         key = element[1:]
+         self.expression[idx] = key
+         self.expression.insert(idx+1, False)
+         self.expression.insert(idx+1, operator.eq)
+         idx += 2
+         count += 2
+      elif idx == count-1 or self.expression[idx+1] == '&' or self.expression[idx+1] == '|':   # standalone key
+         key = element
+         self.expression.insert(idx+1, True)
+         self.expression.insert(idx+1, operator.eq)
+         idx += 2
+         count += 2
+      if key:
+         if self.settings.has_key(key):
+            if key not in listening:
+               self.settings.listen(key, self.key_changed)
+               listening.append(key)
+         else:
+            print( f"Error in json dependency: \"{key}\" is not a valid key" )
+         if idx+1 < count and self.expression[idx+1] != '&' and self.expression[idx+1] != '|':
+            print( f"Error in json dependency: Unexpected expression \"{self.expression[idx+1]}\"" )
+            self.expression = self.expression[:idx+1]  # remove the remaining elements since something is wrong with the syntax
+            break
+         key = None
+      idx += 1
 
    self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=15)
    Gtk.Revealer.add(self, self.box)
@@ -64,32 +102,21 @@ def customRevealerKeyChanged(self, key, value):
    evaluate = []
    count = len(self.expression)
    #print( f"Evaluating expression: {self.expression}" )
-   # Go through the expression to evaluate all the elements except "and" and "or"s
-   for idx, element in enumerate(self.expression):
-      if element == '&' or element == '|':
-         evaluate.append( element )
-      elif element in OPERATIONS:  # ... x op y ...
-         lhs = get_value(self.settings, self.expression[idx-1])
-         if idx+1 < count and self.expression[idx+1] != '&' and self.expression[idx+1] != '|':
-            rhs = get_value(self.settings, self.expression[idx+1])
-         else: # We were not provided with a valid rhs, set rhs to False
-            rhs = False
-         #print( f"operation: {self.expression[idx-1]}/{lhs} {OPERATIONS_MAP[element]} {self.expression[idx+1]}/{rhs}" )
-         evaluate.append( OPERATIONS_MAP[element](lhs, rhs) )
-      elif element[0] == '!':      # ... !key ...
-         key = element[1:]
-         if self.settings.has_key(key):
-            value = self.settings.get_value(key)
-            evaluate.append( not value )
-         else:
-            print( f"Error in json: \"{key}\" is not a valid key" )
-      elif (idx == 0 or self.expression[idx-1] not in OPERATIONS) and (idx == count-1 or self.expression[idx+1] not in OPERATIONS):  #  ... [&/|] key [&/|] ...
-         if self.settings.has_key(self.expression[idx]):
-            value = self.settings.get_value(element)
-            evaluate.append( value == True )
-         else:
-            print( f"Error in json: \"{self.expression[idx]}\" is not a valid key" )
-   #print( f"After compare: {evaluate}" )
+
+   # Go through the expression to evaluate all the compares
+   # The init ensures that the list has this format: key op const [ <&/|> key op const ]...
+   idx = 0
+   while idx < count:
+      lhs = self.settings.get_value(self.expression[idx]) #get_value(self.settings, self.expression[idx])
+      op  = self.expression[idx+1]
+      rhs = self.expression[idx+2]
+      evaluate.append( op(lhs, rhs) )
+      idx += 3
+      if idx < count:
+         evaluate.append( self.expression[idx] )
+         idx += 1
+   #print( f"Post compare evaluation: {evaluate}" )
+
    # Handle all the "and" operations first in accordance with the logical order of operations
    while "&" in evaluate:
       idx = evaluate.index("&")
@@ -97,6 +124,7 @@ def customRevealerKeyChanged(self, key, value):
       evaluate[idx-1:idx+2] = [] ## remove 3 elements: idx-1 through idx+1
       evaluate.insert(idx-1, result);
    #print( f"After evaluating the ands: {evaluate}" )
+
    # Handle all the "or" operations (there should be nothing but "or" operations at this point)
    while "|" in evaluate:
       idx = evaluate.index("|")
@@ -104,8 +132,9 @@ def customRevealerKeyChanged(self, key, value):
       evaluate[idx-1:idx+2] = [] ## remove 3 elements: idx-1 through idx+1
       evaluate.insert(idx-1, result);
    #print( f"After evaluating ors: {evaluate}" )
+
    # At this point we should only have one entry in the list, the final result
-   #print( f"Showing widget: {evaluate[0]}" )
+   #print( f"Final result: {evaluate}" )
    self.set_reveal_child(evaluate[0])
 
 
@@ -120,6 +149,7 @@ class LabelWithTooltip(SettingsWidget):
       self.pack_start(self.label, True, True, 0)
       if "tooltip" in info:
          self.label.set_tooltip_text(info["tooltip"])
+
 
 # An About page Widget with an image and a centered label that supports markup
 class About(SettingsWidget):

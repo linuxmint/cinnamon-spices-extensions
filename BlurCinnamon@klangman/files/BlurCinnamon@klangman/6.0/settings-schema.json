@@ -47,7 +47,7 @@
          "title" : "Component Specific Settings",
          "keys" : [ "overview-warning", "enable-overview-override",  "overview-opacity", "overview-blendColor", "overview-blurType", "overview-radius", "overview-saturation",
                     "expo-warning", "enable-expo-override", "expo-opacity", "expo-blendColor", "expo-blurType", "expo-radius", "expo-saturation",
-                    "panel-warning", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized", "enable-panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation", "panel-unique-settings",
+                    "panel-warning", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized", "hover-brighten-panels", "enable-panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation", "panel-unique-settings",
                     "popup-warning", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup", "popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation",
                     "desktop-warning", "enable-desktop-override", "desktop-without-focus", "desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation",
                     "notification-warning", "enable-notification-override", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
@@ -362,6 +362,14 @@
         "description": "Restore theme settings when a window is maximized",
         "dependency" : "enable-panels-effects & component-selector=7",
         "tooltip": "Restore the themes panel settings when any window is maximized on the same monitor as the panel. For most themes this will restore a solid panel background when a window is maximized. Note: This does not remove the blurring, so if your theme uses a transparent panel then this setting may have no effect.",
+        "default": false
+    },
+
+    "hover-brighten-panels" : {
+        "type": "switch",
+        "description": "Brighten panel when mouse is hovering a panel",
+        "dependency" : "enable-panels-effects & component-selector=7",
+        "tooltip": "While the mouse is hovering over a panel, set the panels dimming to 0 and the saturation to 100 so that the panel appears brighter. This setting is only effective when either dimming is greater than 0 or saturation is less than 100.",
         "default": false
     },
 

@@ -303,9 +303,7 @@ class BlurBase {
       if (!Meta.is_wayland_compositor() && blurType !== BlurType.Transparent) {
          background = Meta.X11BackgroundActor.new_for_display(global.display);
       } else {
-         let stageWidth = global.stage.width;
-         let stageHeight = global.stage.height;
-         background = new Clutter.Actor({width: stageWidth, height: stageHeight});
+         background = new Clutter.Actor({width: global.stage.width, height: global.stage.height});
       }
 
       // Add a dimmer child to the background so we can change the colorization and dimming of the background
@@ -789,12 +787,62 @@ class BlurPanels extends BlurBase {
       //}
       blurredPanel.signalManager = new SignalManager.SignalManager(null);
       blurredPanel.signalManager.connect(actor, "notify::allocation", () => this._setClip(panel) );
+      blurredPanel.signalManager.connect(actor, "enter-event", () => this._onEnterEvent(panel) );
+      blurredPanel.signalManager.connect(actor, "leave-event", () => this._onLeaveEvent(panel) );
       //blurredPanel.signalManager.connect(actor, 'notify::size', () => {this._setClip(panel);} );
       //blurredPanel.signalManager.connect(actor, 'notify::position', () => {this._setClip(panel);} );
 
       // When the panel uses a custom size in cinnamon.css we need to wait a bit and check that the size is right.
       // I hope to find a better solution than this hack one day!
       Mainloop.timeout_add( 1500, () => this._setClip(panel) );
+   }
+
+   _onEnterEvent(panel) {
+      if (settings.hoverBrightenPanels && panel) {
+         //let actor = panel.actor;
+         let blurredPanel = panel.__blurredPanel
+         if (blurredPanel) {
+            let panelSettings = this._getPanelSettings(panel);
+            if (!panelSettings) return
+            let [opacity, blendColor, blurType, radius, saturation, customCSS] = panelSettings;
+
+            let dimmerColor = this._getColor( blendColor, 0 );
+            blurredPanel.background._blurCinnamonDimmer.set_background_color(dimmerColor);
+
+            let effect = this._getDesatEffect(blurredPanel.background)
+            if (effect) {
+               effect.set_factor(0);
+            }
+            //effect = this._getBlurEffect(blurredPanel.background);
+            //if (effect && effect instanceof GaussianBlur.GaussianBlurEffect) {
+            //   effect.radius = effect.radius+25;
+            //}
+         }
+      }
+   }
+
+   _onLeaveEvent(panel) {
+      if (settings.hoverBrightenPanels && panel) {
+         //let actor = panel.actor;
+         let blurredPanel = panel.__blurredPanel
+         if (blurredPanel) {
+            let panelSettings = this._getPanelSettings(panel);
+            if (!panelSettings ) return;
+            let [opacity, blendColor, blurType, radius, saturation, customCSS] = panelSettings;
+
+            let dimmerColor = this._getColor( blendColor, opacity );
+            blurredPanel.background._blurCinnamonDimmer.set_background_color(dimmerColor);
+
+            let effect = this._getDesatEffect(blurredPanel.background)
+            if (effect) {
+               effect.set_factor((100-saturation)/100);
+            }
+            //effect = this._getBlurEffect(blurredPanel.background);
+            //if (effect && effect instanceof GaussianBlur.GaussianBlurEffect) {
+            //   effect.radius = radius;
+            //}
+         }
+      }
    }
 
    // This function will restore all panels to their original state and undo the monkey patching
@@ -1051,6 +1099,8 @@ class BlurPopupMenus extends BlurBase {
             if (!menu._foundAccentActors) {
                this._findAccentActors(menu, menu.actor);
                menu._foundAccentActors=true;
+            } else {
+               this._reapplyAccentActorsStyle(menu);
             }
 
             // Adjust the menu transparency and color for the menu box if required
@@ -1151,11 +1201,21 @@ class BlurPopupMenus extends BlurBase {
       }
    }
 
+   _reapplyAccentActorsStyle(menu) {
+      menu._blurCinnamonAccentActors.forEach( (child) => this._applyActorStyle(child, this._accentColor) );
+   }
+
    _applyActorStyle(actor, color) {
       let radius = 0;
       if (!actor._blurCinnamonData) {
          actor._blurCinnamonData = {original_entry_color: actor.get_background_color(), original_entry_style: actor.get_style(),
                                     original_entry_class: actor.get_style_class_name(), original_entry_pseudo_class: actor.get_style_pseudo_class()};
+      } else {
+         let style = actor.get_style();
+         if (style.startsWith(actor._blurCinnamonData.original_entry_style) === false) {
+            actor._blurCinnamonData = {original_entry_color: actor.get_background_color(), original_entry_style: actor.get_style(),
+                                    original_entry_class: actor.get_style_class_name(), original_entry_pseudo_class: actor.get_style_pseudo_class()};
+         }
       }
 
       let themeNode = actor.get_theme_node();
@@ -1165,7 +1225,7 @@ class BlurPopupMenus extends BlurBase {
       }
 
       let rgba = `rgba(${color.red}, ${color.green}, ${color.blue}, ${color.alpha/255.0})`
-      actor.set_style( `background-gradient-direction: vertical; background-gradient-start: ${rgba}; background-gradient-end: ${rgba};`  );
+      actor.set_style( actor._blurCinnamonData.original_entry_style + `background-gradient-direction: vertical; background-gradient-start: ${rgba}; background-gradient-end: ${rgba};`  );
       return radius;
    }
 
@@ -1197,6 +1257,8 @@ class BlurPopupMenus extends BlurBase {
 
    // Look for Popup menu accent actors
    _findAccentActors(menu, actor) {
+      if (!menu._blurCinnamonAccentActors)
+         menu._blurCinnamonAccentActors = []
       let children = actor.get_children();
       for (let i=0 ; i < children.length ; i++ ) {
          let child = children[i];
@@ -1204,17 +1266,20 @@ class BlurPopupMenus extends BlurBase {
             if (child instanceof St.Entry) {
                debugMsg( "found new entry accent actor" );
                this._applyActorStyle(child, this._accentColor);
+               menu._blurCinnamonAccentActors.push(child);
             } else if (child instanceof St.BoxLayout) {
                let styleClassName = child.get_style_class_name();
                if (styleClassName && (styleClassName == "menu-favorites-box" || styleClassName == "appmenu-sidebar")) {
                   debugMsg( `found new menu accent actor: ${styleClassName}` );
                   this._applyActorStyle(child, this._accentColor);
+                  menu._blurCinnamonAccentActors.push(child);
                }
             } else if (child instanceof St.Table) {
                let name = child.get_name();
                if (name && name.indexOf("notification") !== -1) {
                   debugMsg( "found new notification accent actor" );
                   this._applyActorStyle(child, this._accentColor);
+                  menu._blurCinnamonAccentActors.push(child);
                }
             } else {
                child._blurCinnamonData = null; // Used to signal that this actor is not an interesting one for future calls to this function
@@ -1689,7 +1754,8 @@ class BlurApplications extends BlurBase {
    }
 
    _windowShouldBeBlurred(metaWindow) {
-      if (metaWindow.get_window_type() !== Meta.WindowType.NORMAL)
+      let winType = metaWindow.get_window_type();
+      if (winType !== Meta.WindowType.NORMAL && winType !== Meta.WindowType.DOCK)
          return false;
       let app = this._getAppForWindow(metaWindow);
       let appId = app ? app.get_id() : null;
@@ -1774,6 +1840,13 @@ class BlurApplications extends BlurBase {
    _setClip(compositor) {
       if (compositor._blurCinnamonDataWindow) {
          let data = compositor._blurCinnamonDataWindow;
+         if (compositor.get_transition("x") || compositor.get_transition("y") ) {
+            data.background.hide();
+            return;
+         } else {
+            data.background.show();
+         }
+
          let rect = data.metaWindow.get_frame_rect();
          // Set the background position to the displays 0,0 based on the compositor's position and the shadow size
          //let windowShadowSizeX = (compositor.get_width() - rect.width) / 2;
@@ -1806,11 +1879,12 @@ class BlurApplications extends BlurBase {
       }
    }
 
-   updateEffects(){
+   updateEffects() {
       // Go through all windows and update/apply/remove effects
       let windows = global.display.list_windows(0);
       for (let i = 0; i < windows.length; i++) {
-         if (windows[i].get_window_type() !== Meta.WindowType.NORMAL)
+         let winType = windows[i].get_window_type();
+         if (winType !== Meta.WindowType.NORMAL && winType !== Meta.WindowType.DOCK)
             continue;
          let compositor = windows[i].get_compositor_private();
          let data = compositor._blurCinnamonDataWindow;
@@ -2223,6 +2297,7 @@ class BlurSettings {
       this.bind('panels-blendColor', 'panelsBlendColor', colorChanged);
       this.bind('panels-saturation', 'panelsSaturation', saturationChanged);
       this.bind('no-panel-effects-maximized', 'noPanelEffectsMaximized', maximizedOptionChanged );
+      this.bind('hover-brighten-panels', 'hoverBrightenPanels' );
 
       this.bind('popup-opacity',        'popupOpacity',       updatePopupEffects);
       this.bind('popup-accent-opacity', 'popupAccentOpacity', updatePopupEffects);

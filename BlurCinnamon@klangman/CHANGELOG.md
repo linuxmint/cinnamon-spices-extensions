@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.2
+
+* Added a panel settings option to "Brighten" (dim=0 and saturation=100) a panel when the mouse is hovering over a panel (disabled by default)
+* Fixed an issue where the 6.6 Menu sidebar was not maintaining its transparency after changing the "Maximum sidebar width" menu option.
+* Fixed an issue with the standard cinnamon minimize animation when a window has a blurred background applied.
+
 ## 1.7.1
 
 * Added a "Transparent" option to Panels/Menus/Tooltips/Notifications setting. This will provide a true transparent option where whatever is below the effected element will be visible (no blurring, not saturation). For panels this is no different to the Transparent Panels extension.
