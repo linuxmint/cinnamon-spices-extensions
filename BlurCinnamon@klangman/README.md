@@ -19,6 +19,8 @@ Cinnamon components you can apply effects to (currently):
 
 Blurring can also be disabled if you just want a transparent or semi-transparent effect without blurring for Panels, Applet popup menu or the Expo.
 
+A traditional transparent effect (where you can seen more than just the desktop background) is possible for Panels/Menus/Notifications/Toolips but no saturation or blurring effects are possible in this mode. You must enable the  "Use unique effect settings" option and then change the "Type of background effect" to "Transparent".
+
 ## Features
 
 - Gaussian blur algorithm (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
@@ -44,15 +46,14 @@ If you have installed any of the following Cinnamon extensions, you should **dis
 
 Using any of the above with Blur Cinnamon may have some odd side effects that would require a Cinnamon restart to resolve.
 
-Cinnamon 6.6:  There are a few issues I need to work on for 22.3 (Cinnamon 6.6). The new menu should have the left panel changed to be transparant and the Cinnamon theme uses margins that cause Blur Cinnamon menu effects to spill over the popup's borders. I'll work on this for version 1.7.1
-
 ## Limitations
 
 1. The Applet popup menu effects are intended to be used with the Cinnamon (6.4) theme or the Mint-Y dark desktop themes. The effects might work will with some other themes but I have not tested them so the effects might not work out just right. You can try the Mint-Y light themes but it might be hard to read the menu items without some playing around with the settings and the background image. Blur Cinnamon Popup-menu effects are disabled by default.
-2. The Applet popup-menu effects works for all the applets that I have tested except "Cinnamenu". Cinnamenu is preventing other code from receiving the "open-state-changed" event which BlurCinnamon uses to know when to apply popup-menu theme setting and when to resize and show the blur background element. This issue is fixed in the latest Cinnamenu from [Fredcw GitHub](https://github.com/fredcw/Cinnamenu) but you will need to manually fix the current Cinnamon Spices version of Cinnamenu (see [here](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873))
-3. Currently, any windows that are positioned such that they overlap with a panel or an popup-menu will not be visible beneath blurred panel/popup-menu as you might expect with a transparent panel/menu. This is because the blur effect is applied to a user interface element that floats above all windows just like the panel floats above the windows. At some point I hope to look into allowing the blur element to appear below all windows rather than above and make the a optional behavior setting.
-4. If you disable effects for any Cinnamon component under the General tab of the setting dialog while any "Use unique effect settings" options are enabled under the other tabs, the components "effect setting" options under the other tabs will still be visible, but changing those setting will have no effect until you re-enable the component under the General tab. Ideally those effect setting would only be visible when the component is enabled under the general tab but Cinnamon setting support is a bit limited in this way.
-5. This extension currently does not work under Wayland, it only works under X11. The extension automatically detects Wayland and disables most of the features of the extension.
+2. The Applet popup-menu effects works for all the applets that I have tested except "Cinnamenu". Cinnamenu is preventing other code from receiving the "open-state-changed" event which Blur Cinnamon uses to know when to apply popup-menu theme setting and when to resize and show the blur background element. This issue is fixed in the latest Cinnamenu from [Fredcw GitHub](https://github.com/fredcw/Cinnamenu) but you will need to manually fix the current Cinnamon Spices version of Cinnamenu (see [here](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873))
+3. Currently Blur Cinnamon uses "Static Blurring", meaning only a blurred copy of the desktop background image is visible below effected components (i.e Panels, Menus, Tooltips and Windows). I am looking for a way to implement "Dynamic Blurring" but so far I have not been successful.
+4. This extension currently does not work under Wayland, it only works under X11. The extension automatically detects Wayland and disables most of the features of the extension.
+
+
 
 ## Installation
 
@@ -63,20 +64,30 @@ Cinnamon 6.6:  There are a few issues I need to work on for 22.3 (Cinnamon 6.6).
 - Select the new "Blur Cinnamon" entry and then click the "+" button at the bottom of the window
 - Use the "gears" icon next to the "Blur Cinnamon" entry to open the setting window and setup the preferred behavior
 
-
-
 ## Custom Panel CSS Examples:
 
 The following examples of CSS code can be applied to panels to achieve a custom panel effect.
 
-| Effect                          | Custom CSS string                               |
-| ------------------------------- | ----------------------------------------------- |
-| Grey Borders                    | border-width: 1px; border-color: rgb(70,70,70); |
-| Shrink a horizontal panel width | margin-left: 100px; margin-right: 100px;        |
-| Shrink a vertical panel height  | margin-top: 100px; margin-bottom: 100px;        |
-| Rounded the corners of a panel  | border-radius: 20px;                            |
+| Effect                          | Custom CSS string                                |
+| ------------------------------- | ------------------------------------------------ |
+| Grey borders (all around)       | border-width: 1px; border-color: rgb(70,70,70);  |
+| Gray top only border            | border-top: 1px; border-color: rgb(70,70,70);    |
+| Grey bottom only border         | border-bottom: 1px; border-color: rgb(70,70,70); |
+| Shrink a horizontal panel width | margin-left: 100px; margin-right: 100px;         |
+| Shrink a vertical panel height  | margin-top: 100px; margin-bottom: 100px;         |
+| Rounded the corners of a panel  | border-radius: 20px;                             |
+| Padding for horizontal panels   | padding-left: 10px; padding-right: 10px;         |
+| Padding for vertical panels     | padding-top: 10px; padding-bottom: 10px;         |
 
-You can combine and modify the above as desired and add the result to the "Custom CSS" entry under the Panels settings. The "Enable advanced options to apply unique settings for each panel" option needs to be enabled see the panels table. Edit/add the appropriate table entry for the panel you wish to effect to modify the "Custom CSS" entry. Typos and syntax errors will typically result in the panel effects reverting to default, but other issue could result. You can always undue your effects by deleting the contents of the "Custom CSS" field in the table.
+You can combine and modify the above as desired and add the result to the "Custom CSS" entry within the panels table under the Panels settings. The "Use unique effect settings for the Panels" and the "Enable advanced options to apply unique settings for each panel" options must to be enabled see the panels table. Edit/add the appropriate table entry for the panel you wish to effect then modify the "Custom CSS" entry. Typos and syntax errors will typically result in the panel effects reverting to default, but other issue could result. You can always undue your effects by deleting the contents of the "Custom CSS" field in the table. Not all CSS options will work, it's limited to the CSS that is supported by Cinnamon and further limited by hard-coded settings used by the Cinnamon panels code.
+
+Here is the CSS setting I use on my bottom panel to get a centered panel with rounded corners and a grey border:
+
+```
+padding-left: 10px; padding-right: 10px; border-radius: 20px; border-width: 1px; border-color: rgb(40,40,40); margin-left: 200px; margin-right: 200px;
+```
+
+The border radius rounds the corners, the padding adds space on each end of the panel to accommodate the rounded corners better, and the margins shrink the panel so that it does not fill the width of the screen resulting in a centered panel. 
 
 ## Feedback
 

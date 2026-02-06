@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-25 17:05-0500\n"
+"POT-Creation-Date: 2026-02-05 19:13-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:1645 6.0/extension.js:1648 6.0/extension.js:1699
-#. 6.0/extension.js:1763
+#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
+#. 6.0/extension.js:1829
 #, fuzzy
 msgid "Default window settings"
 msgstr "Mở cài đặt Alt-Tab Cinnamon"
 
-#. 6.0/extension.js:1868
+#. 6.0/extension.js:1942
 msgid "Error"
 msgstr ""
 
-#. 6.0/extension.js:1869
+#. 6.0/extension.js:1943
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
 
-#. 6.0/extension.js:2613
+#. 6.0/extension.js:2688
 msgid "Welcome to Blur Cinnamon"
 msgstr "Chào mừng đến với Blur Cinnamon"
 
-#. 6.0/extension.js:2614
+#. 6.0/extension.js:2689
 #, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
@@ -59,15 +59,15 @@ msgstr ""
 "phần được bật theo mặc định. Bạn cũng có thể thay đổi các thuộc tính hiệu "
 "ứng như cường độ làm mờ, độ bão hòa màu và làm tối."
 
-#. 6.0/extension.js:2618
+#. 6.0/extension.js:2693
 msgid "Open Blur Cinnamon Settings"
 msgstr "Mở Cài đặt Blur Cinnamon"
 
-#. 6.0/extension.js:2700
+#. 6.0/extension.js:2775
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Đang thử nghiệm Hiệu ứng Thông báo Blur Cinnamon"
 
-#. 6.0/extension.js:2701
+#. 6.0/extension.js:2776
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -648,6 +648,18 @@ msgstr ""
 "panel đặc khi một cửa sổ được phóng to. Lưu ý: Điều này không loại bỏ việc "
 "làm mờ, vì vậy nếu chủ đề của bạn sử dụng panel trong suốt thì cài đặt này "
 "có thể không có tác dụng."
+
+#. 6.0->settings-schema.json->hover-brighten-panels->description
+msgid "Brighten panel when mouse is hovering a panel"
+msgstr ""
+
+#. 6.0->settings-schema.json->hover-brighten-panels->tooltip
+msgid ""
+"While the mouse is hovering over a panel, set the panels dimming to 0 and "
+"the saturation to 100 so that the panel appears brighter. This setting is "
+"only effective when either dimming is greater than 0 or saturation is less "
+"than 100."
+msgstr ""
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description

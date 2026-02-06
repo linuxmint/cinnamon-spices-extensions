@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-25 17:05-0500\n"
+"POT-Creation-Date: 2026-02-05 19:13-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#. 6.0/extension.js:1645 6.0/extension.js:1648 6.0/extension.js:1699
-#. 6.0/extension.js:1763
+#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
+#. 6.0/extension.js:1829
 msgid "Default window settings"
 msgstr "Configuración predeterminada de la ventana"
 
-#. 6.0/extension.js:1868
+#. 6.0/extension.js:1942
 msgid "Error"
 msgstr "Error"
 
-#. 6.0/extension.js:1869
+#. 6.0/extension.js:1943
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -36,11 +36,11 @@ msgstr ""
 "tenía el foco anteriormente, por lo que no se pueden aplicar los efectos de "
 "Desenfoque Cinnamon a esa ventana"
 
-#. 6.0/extension.js:2613
+#. 6.0/extension.js:2688
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2614
+#. 6.0/extension.js:2689
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -60,15 +60,15 @@ msgstr ""
 "También puedes realizar cambios en las propiedades de los efectos, como la "
 "intensidad del desenfoque, la saturación del color y el oscurecimiento."
 
-#. 6.0/extension.js:2618
+#. 6.0/extension.js:2693
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir configuración de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2700
+#. 6.0/extension.js:2775
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2701
+#. 6.0/extension.js:2776
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -711,6 +711,18 @@ msgstr ""
 "restaurará un fondo sólido del panel cuando se maximiza una ventana. Nota: "
 "Esto no elimina el desenfoque, por lo que si su tema utiliza un panel "
 "transparente, es posible que esta configuración no tenga ningún efecto."
+
+#. 6.0->settings-schema.json->hover-brighten-panels->description
+msgid "Brighten panel when mouse is hovering a panel"
+msgstr ""
+
+#. 6.0->settings-schema.json->hover-brighten-panels->tooltip
+msgid ""
+"While the mouse is hovering over a panel, set the panels dimming to 0 and "
+"the saturation to 100 so that the panel appears brighter. This setting is "
+"only effective when either dimming is greater than 0 or saturation is less "
+"than 100."
+msgstr ""
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
