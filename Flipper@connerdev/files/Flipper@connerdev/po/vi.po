@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flipper@connerdev 2.0.2\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2025-04-17 21:29-0400\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-02-06 17:50-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -314,8 +315,17 @@ msgid "Workspace Transition Effect"
 msgstr "Hiệu ứng Chuyển tiếp Không gian làm việc"
 
 #. 5.4->settings-schema.json->transitionEffect->tooltip
-msgid "Select the type of workspace switch effect that will be used. The \"Randomized\" option allows you to choose which effects can be chosen at random for each workspace switch. The \"Disabled\" option will show no effect, not even the Cinnamon built in effect during a workspace switch."
-msgstr "Chọn loại hiệu ứng chuyển đổi không gian làm việc sẽ được sử dụng. Tùy chọn \"Ngẫu nhiên\" cho phép bạn chọn hiệu ứng nào có thể được chọn ngẫu nhiên cho mỗi lần chuyển đổi không gian làm việc. Tùy chọn \"Đã tắt\" sẽ không hiển thị hiệu ứng nào, kể cả hiệu ứng tích hợp sẵn của Cinnamon trong quá trình chuyển đổi không gian làm việc."
+msgid ""
+"Select the type of workspace switch effect that will be used. The "
+"\"Randomized\" option allows you to choose which effects can be chosen at "
+"random for each workspace switch. The \"Disabled\" option will show no "
+"effect, not even the Cinnamon built in effect during a workspace switch."
+msgstr ""
+"Chọn loại hiệu ứng chuyển đổi không gian làm việc sẽ được sử dụng. Tùy chọn "
+"\"Ngẫu nhiên\" cho phép bạn chọn hiệu ứng nào có thể được chọn ngẫu nhiên "
+"cho mỗi lần chuyển đổi không gian làm việc. Tùy chọn \"Đã tắt\" sẽ không "
+"hiển thị hiệu ứng nào, kể cả hiệu ứng tích hợp sẵn của Cinnamon trong quá "
+"trình chuyển đổi không gian làm việc."
 
 #. 5.4->settings-schema.json->transitionEffect->options
 msgid "Randomized"
@@ -330,24 +340,55 @@ msgid "Use Flipper effect with the Workspace Switcher applet"
 msgstr "Sử dụng hiệu ứng Flipper với applet Bộ chuyển đổi Không gian làm việc"
 
 #. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
-msgid "Override the moveToWorkspace() API so that the Flipper effect is used by the Workspace Switcher Applet when changing the current workspace"
-msgstr "Ghi đè API moveToWorkspace() để hiệu ứng Flipper được sử dụng bởi Applet Bộ chuyển đổi Không gian làm việc khi thay đổi không gian làm việc hiện tại"
+msgid ""
+"Override the moveToWorkspace() API so that the Flipper effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr ""
+"Ghi đè API moveToWorkspace() để hiệu ứng Flipper được sử dụng bởi Applet Bộ "
+"chuyển đổi Không gian làm việc khi thay đổi không gian làm việc hiện tại"
 
 #. 5.4->settings-schema.json->patchActivateWindow->description
 msgid "Use Flipper effect when changing focus causes a workspace switch"
-msgstr "Sử dụng hiệu ứng Flipper khi thay đổi tiêu điểm gây ra chuyển đổi không gian làm việc"
+msgstr ""
+"Sử dụng hiệu ứng Flipper khi thay đổi tiêu điểm gây ra chuyển đổi không gian "
+"làm việc"
 
 #. 5.4->settings-schema.json->patchActivateWindow->tooltip
-msgid "Override the activateWindow() API so that when a window on another workspace is given the focus, the Flipper effect is used to change the current workspace"
-msgstr "Ghi đè API activateWindow() để khi một cửa sổ trên không gian làm việc khác được cấp tiêu điểm, hiệu ứng Flipper được sử dụng để thay đổi không gian làm việc hiện tại"
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Flipper effect is used to change the current "
+"workspace"
+msgstr ""
+"Ghi đè API activateWindow() để khi một cửa sổ trên không gian làm việc khác "
+"được cấp tiêu điểm, hiệu ứng Flipper được sử dụng để thay đổi không gian làm "
+"việc hiện tại"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Flipper effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Sử dụng hiệu ứng Flipper khi thay đổi tiêu điểm gây ra chuyển đổi không gian "
+"làm việc"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Flipper effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
 msgstr "Bao gồm Panel"
 
 #. 5.4->settings-schema.json->includePanels->tooltip
-msgid "Exclude the panels while animating. In most cases the panels are not properly painted or completely invisible anyhow, so it's best to leave this disabled"
-msgstr "Loại trừ các panel trong khi tạo hoạt ảnh. Trong hầu hết các trường hợp, các panel không được vẽ đúng cách hoặc hoàn toàn không hiển thị, vì vậy tốt nhất nên để tùy chọn này bị tắt"
+msgid ""
+"Exclude the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr ""
+"Loại trừ các panel trong khi tạo hoạt ảnh. Trong hầu hết các trường hợp, các "
+"panel không được vẽ đúng cách hoặc hoàn toàn không hiển thị, vì vậy tốt nhất "
+"nên để tùy chọn này bị tắt"
 
 #. 5.4->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"

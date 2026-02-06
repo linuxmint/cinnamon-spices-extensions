@@ -17,6 +17,8 @@ const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
 const Panel = imports.ui.panel;
 const SignalManager = imports.misc.signalManager;
+const Actions = imports.ui.gestures.actions;
+const Gio = imports.gi.Gio;
 
 const UUID = "Flipper@connerdev";
 
@@ -32,6 +34,8 @@ const TransitionEffect = {
    Disabled:   8
 }
 
+const touchpad_settings = new  Gio.Settings({ schema_id: "org.cinnamon.desktop.peripherals.touchpad" });
+
 let enabled;
 let settings;
 let signalManager;
@@ -42,8 +46,43 @@ let bindings = ['switch-to-workspace-left',
 
 let original_mw_moveToWorkspace;
 let original_main_activateWindow;
+let original_WorkspaceSwitchAction;
 
 let curFlipper;
+
+// Our version of WorkspaceSwitchAction class which will replace the cinnamon version
+// This is a copy of the cinnamon version but uses the Flipper effect to switch the workspace
+var FlipperWorkspaceSwitchAction = class extends Actions.BaseAction {
+    constructor(definition, device, threshold) {
+        super(definition, device, threshold);
+    }
+
+    do_action(direction, percentage, time) {
+        const current = global.workspace_manager.get_active_workspace();
+
+        let motion_dir = Meta.MotionDirection.RIGHT;
+        let reverse = touchpad_settings.get_boolean("natural-scroll");
+
+        switch (this.definition.action) {
+        case "WORKSPACE_NEXT":
+            motion_dir = reverse ? Meta.MotionDirection.RIGHT : Meta.MotionDirection.LEFT;
+            break;
+        case "WORKSPACE_PREVIOUS":
+            motion_dir = reverse ? Meta.MotionDirection.LEFT : Meta.MotionDirection.RIGHT;
+            break;
+        case "WORKSPACE_UP":
+            motion_dir = Meta.MotionDirection.UP;
+            break;
+        case "WORKSPACE_DOWN":
+            motion_dir = Meta.MotionDirection.DOWN;
+            break;
+        }
+
+        //const neighbor = current.get_neighbor(motion_dir);
+        //neighbor.activate(global.get_current_time());
+        ExtSwitchWorkspace(motion_dir);
+    }
+}
 
 function Flipper() {
     this._init.apply(this, arguments);
@@ -1714,6 +1753,16 @@ function toggleActivateWindowPatch() {
    }
 }
 
+function toggleWorkspaceSwitchActionPatch() {
+   if (original_WorkspaceSwitchAction) {
+      Actions.WorkspaceSwitchAction = original_WorkspaceSwitchAction;
+      original_WorkspaceSwitchAction = null;
+   } else {
+      original_WorkspaceSwitchAction = Actions.WorkspaceSwitchAction;
+      Actions.WorkspaceSwitchAction = FlipperWorkspaceSwitchAction;
+   }
+}
+
 function init(metadata) {
     settings = new FlipperSettings(metadata.uuid);
     signalManager = new SignalManager.SignalManager(null);
@@ -1737,6 +1786,7 @@ function enable() {
     }
     signalManager.connect(settings.settings, "changed::patchmoveToWorkspace", toggleMoveToWorkspacePatch);
     signalManager.connect(settings.settings, "changed::patchActivateWindow", toggleActivateWindowPatch);
+    signalManager.connect(settings.settings, "changed::patchGestureSwitch", toggleWorkspaceSwitchActionPatch);
     //signalManager.connect(settings.settings, "changed::transitionEffect", transitionEffectChanged);
     if (settings.settings.getValue("patchmoveToWorkspace")) {
        // Monkey patch moveToWorkspace()
@@ -1747,6 +1797,11 @@ function enable() {
        // Monkey patch activateWindow()
        original_main_activateWindow = Main.activateWindow;
        Main.activateWindow = activateWindow;
+    }
+    if (settings.settings.getValue("patchGestureSwitch")) {
+       // Replace WorkspaceSwitchAction
+       original_WorkspaceSwitchAction = Actions.WorkspaceSwitchAction;
+       Actions.WorkspaceSwitchAction = FlipperWorkspaceSwitchAction;
     }
 }
 
@@ -1768,6 +1823,10 @@ function disable() {
     if (original_main_activateWindow) {
        // Undo the monkey patch of activateWindow()
        Main.activateWindow = original_main_activateWindow;
+    }
+    if (original_WorkspaceSwitchAction) {
+       // Restore the original WorkspaceSwitchAction
+       Actions.WorkspaceSwitchAction = original_WorkspaceSwitchAction;
     }
     signalManager.disconnectAllSignals();
 }

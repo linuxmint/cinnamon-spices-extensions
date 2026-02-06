@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+
+* Added the ability to use the Flipper effect when changing the workspace using touchpad gestures
+
 ## 2.0.2
 
 * Added a Disable effect option which will use no workspace switch effect, not even the default Cinnamon workspace switch effect. Since Cinnamon does not offer a way to independently disable the workspace switch effect, with this option you can disable the effect but still allow of the desktop and window effects.

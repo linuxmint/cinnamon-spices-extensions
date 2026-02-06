@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-04-17 21:29-0400\n"
+"POT-Creation-Date: 2026-02-06 17:50-0500\n"
 "PO-Revision-Date: 2025-04-17 21:57-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -363,6 +363,19 @@ msgstr ""
 "Anular la API activateWindow() para que, cuando se dé el foco a una ventana "
 "de otro espacio de trabajo, se utilice el efecto Flipper para cambiar el "
 "espacio de trabajo actual"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+#, fuzzy
+msgid "Use Flipper effect when switching workspaces using touchpad gestures"
+msgstr ""
+"Utilizar el efecto Flipper cuando el cambio de enfoque provoca un cambio de "
+"espacio de trabajo"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Flipper effect"
+msgstr ""
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
