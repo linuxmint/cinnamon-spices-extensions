@@ -714,7 +714,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->hover-brighten-panels->description
 msgid "Brighten panel when mouse is hovering a panel"
-msgstr ""
+msgstr "Iluminar el panel cuando el ratón se sitúa sobre él"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
 msgid ""
@@ -723,6 +723,10 @@ msgid ""
 "only effective when either dimming is greater than 0 or saturation is less "
 "than 100."
 msgstr ""
+"Mientras el ratón se encuentra sobre un panel, establezca el atenuado de los "
+"paneles en 0 y la saturación en 100 para que el panel aparezca más "
+"brillante. Esta configuración solo es efectiva cuando el atenuado es mayor "
+"que 0 o la saturación es menor que 100."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
