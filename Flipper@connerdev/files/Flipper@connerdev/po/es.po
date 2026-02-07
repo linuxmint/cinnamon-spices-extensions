@@ -9,14 +9,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-02-06 17:50-0500\n"
-"PO-Revision-Date: 2025-04-17 21:57-0400\n"
+"PO-Revision-Date: 2026-02-07 10:40-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.8\n"
 
 #. metadata.json->name
 msgid "Flipper"
@@ -365,17 +365,18 @@ msgstr ""
 "espacio de trabajo actual"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->description
-#, fuzzy
 msgid "Use Flipper effect when switching workspaces using touchpad gestures"
 msgstr ""
-"Utilizar el efecto Flipper cuando el cambio de enfoque provoca un cambio de "
-"espacio de trabajo"
+"Utiliza el efecto Flipper al cambiar de espacio de trabajo mediante gestos "
+"del panel táctil"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->tooltip
 msgid ""
 "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
 "will use the Flipper effect"
 msgstr ""
+"Anular la API WorkspaceSwitchAction para que los gestos del panel táctil "
+"para cambiar de espacio de trabajo utilicen el efecto Flipper"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
