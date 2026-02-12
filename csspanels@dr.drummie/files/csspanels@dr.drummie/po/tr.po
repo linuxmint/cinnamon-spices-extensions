@@ -1,0 +1,423 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: tr <LL@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 dakika"
+
+msgid "10 seconds"
+msgstr "10 saniye"
+
+msgid "15 seconds"
+msgstr "15 saniye"
+
+msgid "1 minute"
+msgstr "1 dakika"
+
+msgid "2 minutes"
+msgstr "2 dakika"
+
+msgid "30 seconds"
+msgstr "30 saniye"
+
+msgid "5 minutes"
+msgstr "5 dakika"
+
+msgid "5 seconds"
+msgstr "5 saniye"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Bulandırma efektine renk tonu kaplaması ekler. Cam görünümünü özelleştirmek "
+"için yarı saydam renkler kullanın (örn. soğuk tonlar için açık mavi veya "
+"sıcak bir atmosfer için turuncu) – güçlü bir ton için opaklığı artırın, ince "
+"bir vurgu için opaklığı azaltın."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Bulandırılmış arka plandaki renk canlılığını ayarlar. 1,0 üzeri değerler "
+"renkleri daha parlak ve enerjik yapar (daha aydınlık cam efekti), 1,0 altı "
+"değerler ise daha yumuşak ve zarif bir görünüm için mat ve doygun olmayan "
+"tonlar oluşturur."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Açılır menülerin şeffaflığını ayarlar. Bulandırma efektleriyle birlikte "
+"kullanıldığında modern buzlu cam görünümü oluşturur."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Ana panelin (görev çubuğu) şeffaflığını ayarlar. Daha düşük değerler daha "
+"cam benzeri bir etki verir. Hızlı ön ayarlar arasında geçiş yapmak için "
+"sistem tepsisi simgesine tıklayın."
+
+msgid "Advanced Settings"
+msgstr "Gelişmiş Ayarlar"
+
+msgid "Advanced Tools"
+msgstr "Gelişmiş Araçlar"
+
+msgid "Apply border radius to main panel"
+msgstr "Ana panele kenar yarıçapı uygula"
+
+msgid "Apply selected template"
+msgstr "Seçili şablonu uygula"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Seçilen bulanıklaştırma şablonunu tüm bulanıklaştırma denetimlerine uygular. "
+"Böylece yarıçap, doygunluk, kontrast, parlaklık, arka plan, kenar rengi, "
+"kenar genişliği, geçiş ve opaklık şablonla uyumlu hale getirilir."
+
+msgid "Auto-detect theme border radius"
+msgstr "Tema kenar yarıçapını otomatik algıla"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Tutarlı bir görünüm için mevcut temanın kenar yarıçapını otomatik algılar ve "
+"kullanır. Etkinleştirildiğinde eklenti temanızı analiz ederek tasarıma uyum "
+"sağlar."
+
+msgid "Background color/tint"
+msgstr "Arka plan rengi/ton"
+
+msgid "Basic Transparency Controls"
+msgstr "Temel Şeffaflık Kontrolleri"
+
+msgid "Blur Effects"
+msgstr "Bulanıklaştırma Efektleri"
+
+msgid "Blur opacity"
+msgstr "Bulanıklaştırma opaklığı"
+
+msgid "Blur radius"
+msgstr "Bulanıklaştırma yarıçapı"
+
+msgid "Blur Template"
+msgstr "Bulanıklaştırma Şablonu"
+
+msgid "Blur transition duration"
+msgstr "Bulanıklaştırma geçiş süresi"
+
+msgid "Border color"
+msgstr "Kenar rengi"
+
+msgid "Border Radius"
+msgstr "Kenar yarıçapı"
+
+msgid "Border width"
+msgstr "Kenar genişliği"
+
+msgid "Brightness multiplier"
+msgstr "Parlaklık çarpanı"
+
+msgid "Choose override panel color"
+msgstr "Panel rengini geçersiz kılacak rengi seç"
+
+msgid "Choose override popup color"
+msgstr "Açılır menü rengini geçersiz kılacak rengi seç"
+
+msgid "Contrast multiplier"
+msgstr "Kontrast çarpanı"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Bulandırmada açık ve koyu alanlar arasındaki farkı kontrol eder. 1,0 üzeri "
+"değerler daha keskin ve derin bir görünüm sağlarken, daha düşük değerler "
+"daha yumuşak bir cam efekti sunar."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Bulanıklaştırma etkisinin yoğunluğunu kontrol eder. Daha yüksek değerler "
+"daha dağınık bir cam görünümü (örneğin sis efekti için 30px+), daha düşük "
+"değerler (1–10px) ise daha keskin ve ince bulanıklaştırma sağlar."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Bulanıklaştırma katmanının tamamının şeffaflığını kontrol eder. 0,8–1,0 "
+"arası değerler cam efektini belirginleştirirken, 0,1–0,5 arası değerler arka "
+"plana sorunsuzca uyum sağlayan daha hafif, eterik bir görünüm verir."
+
+msgid "Custom Blur Settings"
+msgstr "Özel Bulanıklaştırma Ayarları"
+
+msgid "Debugging"
+msgstr "Hata Ayıklama"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Bulanıklaştırılan öğelerin etrafındaki kenarın kalınlığını tanımlar. 3–5px "
+"arası kalınlık vurguyu artırırken, 0–1px arası ince veya 0px hiç kenar "
+"kesintisiz bir cam görünümü sağlar."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Şeffaflık ayarlarına hızlı erişim için sistem tepsisinde kontrol simgesini "
+"gösterir. Eklenti tercihlerini açmak için tıklayın."
+
+msgid "Enable debug logging"
+msgstr "Hata ayıklama günlüğünü etkinleştir"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Eklenti sorunlarını gidermek için ayrıntılı günlüklemeyi etkinleştirir. "
+"Ayrıntılar için terminal çıktısını 'journalctl -f' ile kontrol edin."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Modern bir görünüm için görev çubuğunda yuvarlatılmış köşeleri "
+"etkinleştirir. Temanıza bağlı olarak ekran kenarında garip görünebilir."
+
+msgid "Hide label"
+msgstr "Etiketi gizle"
+
+msgid "Hide system tray indicator"
+msgstr "Sistem tepsisi göstergesini gizle"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Şeffaflık kontrol simgesini sistem tepsisinden gizler. Ayarlara hala "
+"Cinnamon Ayarları > Eklentiler üzerinden erişebilirsiniz."
+
+msgid "Menu Opacity"
+msgstr "Menü opaklığı"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Bulanıklaştırma katmanının genel parlaklığını değiştirir. 1,0 üzeri parlak, "
+"daha ışık saçan bir cam efekti için; 1,0 altı daha karanlık, dramatik tonlar "
+"için düşürün."
+
+msgid "Override panel color"
+msgstr "Panel rengini geçersiz kıl"
+
+msgid "Override popup color"
+msgstr "Açılır menü rengini geçersiz kıl"
+
+msgid "Panel Appearance"
+msgstr "Panel Görünümü"
+
+msgid "Panel Opacity"
+msgstr "Panel opaklığı"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Paneller ve menüler için yuvarlatılmış köşeler. Otomatik algılama başarısız "
+"olduğunda veya tutarsız değerler bulunduğunda yedek olarak kullanılır. "
+"Tamamen düz görünüm için 0 girin."
+
+msgid "Saturation multiplier"
+msgstr "Doygunluk çarpanı"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"'Seçilen Şablonu Uygula' düğmesini kullandığınızda uygulanacak bulanıklık "
+"şablonunu seçin. Her şablon, tüm bulanıklık efekti denetimleri için önceden "
+"ayarlanmış değerler tanımlar."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"'Açılır menü rengini geçersiz kıl' etkinleştirildiğinde açılır menülerin "
+"arka planı için kullanılacak rengi seçin. Saydamlığı (alpha kanalı) "
+"destekler."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"'Panel rengini geçersiz kıl' etkinleştirildiğinde panelin arka planı için "
+"kullanılacak rengi seçin. Saydamlığı (alpha kanalı) destekler."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Bulanıklaştırılmış öğelerin etrafındaki ince kenarlığın rengini ayarlar. "
+"Temiz, modern bir kenar için beyaz/açık tonlar; daha iyi kontrast için koyu "
+"tonlar seçin – daha yumuşak veya daha belirgin kenarlar için opaklığı "
+"ayarlayın."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Ayarlar değiştiğinde bulanıklık efekti animasyonlarının hızını ayarlar. Kısa "
+"süreler (0,1–0,5 s) hızlı, tepki veren geçişler; uzun süreler (1–2 s) ise "
+"pürüzsüz, zarif solmalar sağlar."
+
+msgid "Show percentage"
+msgstr "Yüzdeyi göster"
+
+msgid "Show percentage and time remaining"
+msgstr "Yüzdeyi ve kalan zamanı göster"
+
+msgid "Show system tray indicator"
+msgstr "Sistem tepsisi göstergesini göster"
+
+msgid "Show time remaining"
+msgstr "Kalan süreyi göster"
+
+msgid "System Tray Indicator"
+msgstr "Sistem tepsisi göstergesi"
+
+msgid "Theme Integration"
+msgstr "Tema entegrasyonu"
+
+msgid "Transparency Settings"
+msgstr "Şeffaflık ayarları"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Etkinleştirildiğinde, panel renginin yerine açılır menü arka planlarında "
+"seçilen geçersiz kılma rengini kullanır. Tam etki için 'Panel rengini "
+"geçersiz kıl' etkin olmalıdır."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Etkinleştirildiğinde, panel arka planında seçilen geçersiz kılma rengini "
+"kullanır. 'Açılır menü rengini geçersiz kıl' devre dışıysa bu renk açılır "
+"menülerde de kullanılır."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Panel ve açılır menülerin şeffaflık ve bulanıklık efektlerinin dinamik "
+"kontrolü – BlurCinnamon@klangman tabanlı"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Ses seviyesi kaydırıcıları, parlaklık kontrolleri ve diğer katman öğeleri "
+"gibi Ekrandaki Görüntü (OSD) öğelerine şeffaflık ve bulanıklık efektleri "
+"uygular. Tutarlı bir cam görünümü oluşturur."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Sistem bildirimlerine (ses, parlaklık vb.) şeffaflık ve bulanıklık efektleri "
+"uygular. Böylece bildirimler panelinizin cam morfizm stiline uyum sağlar."
+
+msgid "Extended UI Styling"
+msgstr "Gelişmiş UI stili"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "OSD öğelerini stillendir"
+
+msgid "Style system notifications"
+msgstr "Sistem bildirimlerini stillendir"
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+"Ses seviyesi kaydırıcıları, parlaklık kontrolleri ve diğer katman öğeleri "
+"gibi Ekrandaki Görüntü (OSD) öğelerine şeffaflık ve bulanıklık efektleri "
+"uygular. Tutarlı bir cam görünümü oluşturur."
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+"Ses seviyesi kaydırıcıları, parlaklık kontrolleri ve diğer katman öğeleri "
+"gibi Ekrandaki Görüntü (OSD) öğelerine şeffaflık ve bulanıklık efektleri "
+"uygular. Tutarlı bir cam görünümü oluşturur."
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""

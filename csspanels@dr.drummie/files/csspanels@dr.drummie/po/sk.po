@@ -1,0 +1,427 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: sk <LL@li.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minút"
+
+msgid "10 seconds"
+msgstr "10 sekúnd"
+
+msgid "15 seconds"
+msgstr "15 sekúnd"
+
+msgid "1 minute"
+msgstr "1 minúta"
+
+msgid "2 minutes"
+msgstr "2 minúty"
+
+msgid "30 seconds"
+msgstr "30 sekúnd"
+
+msgid "5 minutes"
+msgstr "5 minút"
+
+msgid "5 seconds"
+msgstr "5 sekúnd"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Pridáva farebnú vrstvu na rozostrenie. Použite polopriehľadné farby (napr. "
+"svetlomodrú pre chladné tóny alebo teplú oranžovú pre útulný pocit) na "
+"prispôsobenie vzhľadu skla – vyššia opacita pre výraznejšiu farbu, nižšia "
+"pre jemnejšie zvýraznenie."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Upravuje intenzitu farieb v rozostrenom pozadí. Hodnoty nad 1,0 robia farby "
+"výraznejšími a živšími (pre jasnejší, energickejší sklenený efekt), zatiaľ "
+"čo hodnoty pod 1,0 vytvárajú tlmené, odfarbené tóny pre jemnejší a "
+"elegantnejší vzhľad."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Nastavuje priehľadnosť vyskakovacích ponúk. V kombinácii s rozostrením "
+"vytvára moderný vzhľad matného skla."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Nastavuje priehľadnosť hlavného panela (panel úloh). Nižšie hodnoty "
+"vytvárajú silnejší sklenený efekt. Kliknutím na ikonu na systémovom paneli "
+"prechádzajte rýchlymi predvoľbami."
+
+msgid "Advanced Settings"
+msgstr "Pokročilé nastavenia"
+
+msgid "Advanced Tools"
+msgstr "Pokročilé nástroje"
+
+msgid "Apply border radius to main panel"
+msgstr "Aplikovať zaoblenie rohov hlavného panela"
+
+msgid "Apply selected template"
+msgstr "Použiť vybranú šablónu"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Použije vybranú šablónu rozostrenia na všetky ovládacie prvky efektu "
+"rozostrenia. Tým sa aktualizuje polomer, saturácia, kontrast, jas, pozadie, "
+"farba rámu, hrúbka rámu, prechod a opacita podľa zvolenej šablóny."
+
+msgid "Auto-detect theme border radius"
+msgstr "Automaticky zistiť zaoblenie rohov témy"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Automaticky zistí a použije zaoblenie rohov z aktuálnej témy pre jednotný "
+"vzhľad. Po povolení rozšírenie analyzuje vašu tému a prispôsobí sa jej "
+"dizajnu."
+
+msgid "Background color/tint"
+msgstr "Farba pozadia / odtieň"
+
+msgid "Basic Transparency Controls"
+msgstr "Základné ovládanie priehľadnosti"
+
+msgid "Blur Effects"
+msgstr "Efekty rozostrenia"
+
+msgid "Blur opacity"
+msgstr "Krytie rozostrenia"
+
+msgid "Blur radius"
+msgstr "Polomer rozostrenia"
+
+msgid "Blur Template"
+msgstr "Šablóna rozostrenia"
+
+msgid "Blur transition duration"
+msgstr "Dĺžka prechodu rozostrenia"
+
+msgid "Border color"
+msgstr "Farba rámu"
+
+msgid "Border Radius"
+msgstr "Zaoblenie rohov rámu"
+
+msgid "Border width"
+msgstr "Hrúbka rámu"
+
+msgid "Brightness multiplier"
+msgstr "Násobič jasu"
+
+msgid "Choose override panel color"
+msgstr "Vybrať farbu prepísania panela"
+
+msgid "Choose override popup color"
+msgstr "Vybrať farbu prepísania vyskakovacích ponúk"
+
+msgid "Contrast multiplier"
+msgstr "Násobič kontrastu"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Riadi rozdiel medzi svetlými a tmavými oblasťami v rozostrení. Vyššie "
+"hodnoty (nad 1,0) zvyšujú ostrosť a hĺbku pre definovanejší, moderný vzhľad, "
+"zatiaľ čo nižšie hodnoty zmierňujú efekt pre hladší, menej drsný sklenený "
+"vzhľad."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Riadi intenzitu efektu rozostrenia. Vyššie hodnoty vytvárajú silnejší, viac "
+"difúzny sklenený vzhľad (napr. nad 30 px pre hmlistý efekt), zatiaľ čo "
+"nižšie hodnoty (1–10 px) produkujú ostrejšie, jemnejšie rozostrenie pre "
+"čistší vzhľad."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Riadi priehľadnosť celej vrstvy rozostrenia. Vyššie hodnoty (0,8–1,0) robia "
+"sklenený efekt výraznejším a pevnejším, zatiaľ čo nižšie hodnoty (0,1–0,5) "
+"vytvárajú ľahší, éterický vzhľad, ktorý sa plynulo spája s pozadím."
+
+msgid "Custom Blur Settings"
+msgstr "Vlastné nastavenia rozostrenia"
+
+msgid "Debugging"
+msgstr "Ladenie"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Určuje hrúbku rámu okolo rozostrených prvkov. Hrubšie rámy (3–5 px) "
+"vytvárajú výraznejší rám na zdôraznenie, zatiaľ čo tenšie (0–1 px) alebo "
+"žiadne (0 px) poskytujú plynulý, integrovaný sklenený vzhľad."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Zobraziť ikonu ovládania na systémovom paneli pre rýchly prístup k "
+"nastaveniam priehľadnosti. Kliknutím otvoríte predvoľby rozšírenia."
+
+msgid "Enable debug logging"
+msgstr "Povoliť protokolovanie ladenia"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Povoliť detailné protokolovanie na riešenie problémov s rozšírením. "
+"Skontrolujte výstup terminálu pomocou 'journalctl -f' pre podrobné "
+"informácie."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Povoliť zaoblené rohy na paneli úloh pre moderný vzhľad. Môže pôsobiť "
+"zvláštne na hranách obrazovky v závislosti od témy."
+
+msgid "Hide label"
+msgstr "Skryť označenie"
+
+msgid "Hide system tray indicator"
+msgstr "Skryť indikátor na systémovom paneli"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Skryť ikonu ovládania priehľadnosti zo systémového panela. Stále môžete "
+"pristupovať k nastaveniam cez Cinnamon → Rozšírenia."
+
+msgid "Menu Opacity"
+msgstr "Neprehľadnosť ponuky"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Upravuje celkovú svetlosť vrstvy rozostrenia. Zvýšenie nad 1,0 prináša "
+"jasnejší, viac osvetlený sklenený efekt (ideálne pre svetlé témy), zníženie "
+"pod 1,0 vytvára tmavšie, náladovejšie tóny, ktoré sa lepšie – spájajú s "
+"tmavými pozadiami."
+
+msgid "Override panel color"
+msgstr "Prepísať farbu panela"
+
+msgid "Override popup color"
+msgstr "Prepísať farbu vyskakovacích ponúk"
+
+msgid "Panel Appearance"
+msgstr "Vzhľad panela"
+
+msgid "Panel Opacity"
+msgstr "Neprehľadnosť panela"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Zaoblené rohy pre panely a ponuky. Používa sa ako záloha, keď automatické "
+"zisťovanie zlyhá alebo nájde nekonzistentné hodnoty. Nastavte na 0 pre úplne "
+"plochý vzhľad."
+
+msgid "Saturation multiplier"
+msgstr "Násobič saturácie"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Vyberte šablónu rozostrenia, ktorá sa použije po kliknutí na tlačidlo "
+"'Použiť vybranú šablónu'. Každá šablóna definuje prednastavené hodnoty pre "
+"všetky ovládacie prvky efektu rozostrenia."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Vyberte farbu pozadia pre vyskakovacie ponuky, keď je povolená voľba "
+"'Prepísať farbu vyskakovacích ponúk'. Podpora priehľadnosti (alpha kanál)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Vyberte farbu pozadia panela, keď je povolená voľba 'Prepísať farbu panela'. "
+"Podpora priehľadnosti (alpha kanál)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Nastavuje farbu jemného rámu ohraničujúceho rozostrené prvky. Vyberte biele/"
+"jasné farby pre čistú, modernú hranu, alebo tmavšie tóny pre lepší kontrast "
+"– upravte priehľadnosť pre jemnejšie alebo výraznejšie rámovanie."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Nastavuje rýchlosť animácií efektu rozostrenia pri zmene nastavení. Kratšie "
+"trvania (0,1–0,5 s) vytvárajú rýchle, citlivé prechody pri rýchlych "
+"úpravách, zatiaľ čo dlhšie (1–2 s) poskytujú plynulé, elegantné zániky pre "
+"uhladený dojem."
+
+msgid "Show percentage"
+msgstr "Zobraziť percentá"
+
+msgid "Show percentage and time remaining"
+msgstr "Zobraziť percentá a zostávajúci čas"
+
+msgid "Show system tray indicator"
+msgstr "Zobraziť indikátor na systémovom paneli"
+
+msgid "Show time remaining"
+msgstr "Zobraziť zostávajúci čas"
+
+msgid "System Tray Indicator"
+msgstr "Indikátor systémového panela"
+
+msgid "Theme Integration"
+msgstr "Integrácia témy"
+
+msgid "Transparency Settings"
+msgstr "Nastavenia priehľadnosti"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Po povolení sa pre pozadie vyskakovacích ponúk použije vybraná prepísacia "
+"farba namiesto farby panela. Pre plný efekt musí byť povolená voľba "
+"'Prepísať farbu panela'."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Po povolení sa pre pozadie panela použije vybraná prepísacia farba. Ak je "
+"voľba 'Prepísať farbu vyskakovacích ponúk' zakázaná, táto farba sa použije "
+"aj pre vyskakovacie ponuky."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Dynamické ovládanie priehľadnosti a efektov rozostrenia panela a ponúk – "
+"založené na BlurCinnamon@klangman"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Aplikovať priehľadnosť a efekty rozostrenia na prvky On-Screen Display, ako "
+"sú posuvníky hlasitosti, ovládanie jasu a ďalšie prekryvné prvky. Vytvára "
+"konzistentný sklenený vzhľad."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Aplikovať priehľadnosť a efekty rozostrenia na systémové oznámenia "
+"(hlasitosť, jas atď.). Tým zabezpečíte, že oznámenia budú zodpovedať "
+"sklenenému vzhľadu panela."
+
+msgid "Extended UI Styling"
+msgstr "Rozšírené štýlovanie UI"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "Štýlovať prvky OSD (On-Screen Display)"
+
+msgid "Style system notifications"
+msgstr "Štýlovať systémové oznámenia"
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+"Aplikovať priehľadnosť a efekty rozostrenia na prvky On-Screen Display, ako "
+"sú posuvníky hlasitosti, ovládanie jasu a ďalšie prekryvné prvky. Vytvára "
+"konzistentný sklenený vzhľad."
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+"Aplikovať priehľadnosť a efekty rozostrenia na prvky On-Screen Display, ako "
+"sú posuvníky hlasitosti, ovládanie jasu a ďalšie prekryvné prvky. Vytvára "
+"konzistentný sklenený vzhľad."
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""

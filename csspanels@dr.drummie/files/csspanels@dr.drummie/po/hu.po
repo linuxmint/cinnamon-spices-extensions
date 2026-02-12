@@ -1,0 +1,431 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: hu <LL@li.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 perc"
+
+msgid "10 seconds"
+msgstr "10 másodperc"
+
+msgid "15 seconds"
+msgstr "15 másodperc"
+
+msgid "1 minute"
+msgstr "1 perc"
+
+msgid "2 minutes"
+msgstr "2 perc"
+
+msgid "30 seconds"
+msgstr "30 másodperc"
+
+msgid "5 minutes"
+msgstr "5 perc"
+
+msgid "5 seconds"
+msgstr "5 másodperc"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Hozzáad egy árnyalatréteget az elmosódási effektushoz. Használj félig "
+"áttetsző színeket (pl. világoskék a hideg tónusokhoz vagy meleg narancs a "
+"hangulatos hatásért) az üveg megjelenés testreszabásához – nagyobb "
+"áttetszőség erősebb árnyalatot, kisebb finomabb kiemelést eredményez."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Beállítja az elmosódott háttér színeinek élénkségét. Az 1,0 feletti értékek "
+"élénkebb, élettel telibb színeket eredményeznek (világosabb, energikusabb "
+"üveghatás), míg az 1,0 alattiak tompább, deszaturált tónusokat hoznak létre "
+"a lágyabb, elegánsabb megjelenésért."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Szerkeszd a felugró menük átlátszóságát. Elmosódási effektussal kombinálva "
+"modern, matt üveghatást hoz létre."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Szerkeszd a főpanel (tálca) átlátszóságát. Alacsonyabb értékek erősebb "
+"üveghatást adnak. A gyors előre beállított értékek közötti váltáshoz "
+"kattints a rendszer-értesítési terület ikonjára."
+
+msgid "Advanced Settings"
+msgstr "Speciális beállítások"
+
+msgid "Advanced Tools"
+msgstr "Speciális eszközök"
+
+msgid "Apply border radius to main panel"
+msgstr "Keretradius alkalmazása a főpanelen"
+
+msgid "Apply selected template"
+msgstr "Kiválasztott sablon alkalmazása"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Alkalmazza a kiválasztott elmosódási sablont az összes elmosódási effektus "
+"vezérlőjén. Ez frissíti a sugarat, telítettséget, kontrasztot, fényerőt, "
+"hátteret, szegély színét, szegély szélességét, átmenetet és "
+"átlátszatlanságot a választott sablon szerint."
+
+msgid "Auto-detect theme border radius"
+msgstr "A téma szegélylekerekítésének automatikus észlelése"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"A következetes megjelenés érdekében automatikusan észleli és használja a "
+"jelenlegi téma keretradiusát. Engedélyezve a bővítmény elemzi a témát, hogy "
+"illeszkedjen annak dizájnjához."
+
+msgid "Background color/tint"
+msgstr "Háttérszín / árnyalat"
+
+msgid "Basic Transparency Controls"
+msgstr "Alapvető átlátszóság-vezérlők"
+
+msgid "Blur Effects"
+msgstr "Elmosódási effektek"
+
+msgid "Blur opacity"
+msgstr "Elmosódás átlátszatlansága"
+
+msgid "Blur radius"
+msgstr "Elmosódás sugara"
+
+msgid "Blur Template"
+msgstr "Elmosódási sablon"
+
+msgid "Blur transition duration"
+msgstr "Elmosódási átmenet időtartama"
+
+msgid "Border color"
+msgstr "Szegély színe"
+
+msgid "Border Radius"
+msgstr "Szegély lekerekítése"
+
+msgid "Border width"
+msgstr "Szegély szélessége"
+
+msgid "Brightness multiplier"
+msgstr "Fényerő szorzó"
+
+msgid "Choose override panel color"
+msgstr "Válassza ki a panel felülíró színét"
+
+msgid "Choose override popup color"
+msgstr "Válassza ki a felugró ablak felülíró színét"
+
+msgid "Contrast multiplier"
+msgstr "Kontraszt szorzó"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Szabályozza az elmosódás világos és sötét területei közötti különbséget. Az "
+"1,0 feletti értékek növelik a élességet és mélységet a határozottabb, modern "
+"megjelenésért, míg az 1,0 alattiak lágyabb, kevésbé kemény üveghatást adnak."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Szabályozza az elmosódási effektus intenzitását. A nagyobb értékek erősebb, "
+"diffúzabb üvegszerű megjelenést hoznak létre (pl. 30 px felett ködös hatás), "
+"míg az alacsonyabb értékek (1–10 px) élesebb, finomabb elmosódást "
+"biztosítanak a tisztább megjelenésért."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Szabályozza az egész elmosódási réteg átlátszatlanságát. A nagyobb értékek "
+"(0,8–1,0) hangsúlyosabbá és szilárdabbá teszik az üveghatást, míg az "
+"alacsonyabb értékek (0,1–0,5) könnyedebb, éteri megjelenést adnak, amely "
+"zökkenőmentesen illik a háttérhez."
+
+msgid "Custom Blur Settings"
+msgstr "Egyéni elmosódási beállítások"
+
+msgid "Debugging"
+msgstr "Hibakeresés"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Meghatározza az elmosódott elemek körüli szegély vastagságát. A vastagabb "
+"szegélyek (3–5 px) hangsúlyos keretet adnak, míg a vékonyabb (0–1 px) vagy a "
+"hiányzó (0 px) szegély tiszta, integrált üveghatást eredményez."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Megjeleníti az átlátszóság-vezérlő ikont a rendszerértesítési területen a "
+"gyors hozzáféréshez. Kattintson rá a bővítmény beállításainak megnyitásához."
+
+msgid "Enable debug logging"
+msgstr "Hibakeresési naplózás engedélyezése"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"A részletes naplózás engedélyezése a bővítmény problémáinak elhárításához. "
+"Ellenőrizze a terminál kimenetét a 'journalctl -f' parancs segítségével a "
+"részletes információkért."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"A tálca lekerekített sarkainak engedélyezése a modernebb megjelenésért. A "
+"képernyő szélén a téma függvényében furcsán is kinézhet."
+
+msgid "Hide label"
+msgstr "Felirat elrejtése"
+
+msgid "Hide system tray indicator"
+msgstr "Rendszerértesítési ikon elrejtése"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Elrejti az átlátszóság-vezérlő ikont a rendszerértesítési területről. A "
+"beállításokhoz továbbra is hozzáférhet a Cinnamon Beállítások > Bővítmények "
+"menüpont alatt."
+
+msgid "Menu Opacity"
+msgstr "Menü átlátszatlansága"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Szabályozza az elmosódási réteg általános fényességét. Növelje 1,0 fölé a "
+"kirkább, világosabb üveghatásért (ideális világos témákhoz), vagy csökkentse "
+"1,0 alá a sötétebb, hangulatosabb tónusokért, amelyek jobban illeszkednek a "
+"sötét hátterekhez."
+
+msgid "Override panel color"
+msgstr "Panel színének felülbírálása"
+
+msgid "Override popup color"
+msgstr "Felugró ablak színének felülbírálása"
+
+msgid "Panel Appearance"
+msgstr "Panel megjelenése"
+
+msgid "Panel Opacity"
+msgstr "Panel átlátszatlansága"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Panelek és menük lekerekített sarkai. Az automatikus észlelés sikertelensége "
+"vagy ellentmondó értékek esetén alkalmazandó. Állítsa 0-ra a teljesen lapos "
+"megjelenéshez."
+
+msgid "Saturation multiplier"
+msgstr "Telítettség szorzó"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Válassza ki az elmosódási sablont, amelyet az ‘Kiválasztott sablon "
+"alkalmazása’ gombbal szeretne használni. Minden sablon előre beállított "
+"értékeket definiál az összes elmosódási effektus vezérlőhöz."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Válassza ki a felugró menük háttérszínét, ha a 'Felugró ablak színének "
+"felülbírálása' engedélyezve van. Támogatja az átlátszóságot (alpha csatorna)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Válassza ki a panel háttérszínét, ha a 'Panel színének felülbírálása' "
+"engedélyezve van. Támogatja az átlátszóságot (alpha csatorna)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Beállítja az elmosódott elemek finom keretének színét. A tiszta, modern "
+"hatásért válasszon fehér vagy világos árnyalatokat, jobb kontrasztért "
+"sötétebb tónusokat – az átlátszatlanság módosításával finomabb vagy "
+"határozottabb keretet hozhat létre."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Beállítja az elmosódási effektus animációinak sebességét a beállítások "
+"változásakor. A rövid, 0,1–0,5 s közötti időtartam gyors, reagáló "
+"átmeneteket hoz létre a gyors beállításhoz, míg az 1–2 s közötti hosszabb "
+"időtartamok sima, elegáns elhalványulásokat biztosítanak a kifinomult "
+"hatásért."
+
+msgid "Show percentage"
+msgstr "Százalék mutatása"
+
+msgid "Show percentage and time remaining"
+msgstr "Százalék és hátralévő idő mutatása"
+
+msgid "Show system tray indicator"
+msgstr "Rendszertálca jelző mutatása"
+
+msgid "Show time remaining"
+msgstr "Hátralévő idő mutatása"
+
+msgid "System Tray Indicator"
+msgstr "Rendszertálca jelző"
+
+msgid "Theme Integration"
+msgstr "Téma integráció"
+
+msgid "Transparency Settings"
+msgstr "Átlátszóság beállítások"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Ha engedélyezve van, a felugró menük hátteréhez a megadott felülíró színt "
+"használja a panel színe helyett. A teljes hatás eléréséhez engedélyezze a "
+"'Panel színének felülbírálása' beállítást."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Ha engedélyezve van, a panel hátteréhez a megadott felülíró színt használja. "
+"Ha a 'Felugró ablak színének felülbírálása' ki van kapcsolva, ez a szín a "
+"felugró menükhöz is alkalmazásra kerül."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Panel és felugró menük átlátszóságának és elmosódási effektusainak dinamikus "
+"vezérlése – a BlurCinnamon@klangman bővítmény alapján"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Alkalmazzon átlátszóságot és elmosódási effekteket az OSD (képernyőn "
+"megjelenő) elemekre, mint a hangerőszabályzók, fényerő-vezérlők és más "
+"átfedő elemek. Egységes üveghatást eredményez."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Alkalmazzon átlátszóságot és elmosódási effekteket a rendszerértesítésekre "
+"(hangerő, fényerő stb.). Így az értesítések illeszkednek a panel "
+"üvegmorfizmus stílusához."
+
+msgid "Extended UI Styling"
+msgstr "Kiterjesztett UI-stílus"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "OSD-elemek stílusa"
+
+msgid "Style system notifications"
+msgstr "Rendszerértesítések stílusa"
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+"Alkalmazzon átlátszóságot és elmosódási effekteket az OSD (képernyőn "
+"megjelenő) elemekre, mint a hangerőszabályzók, fényerő-vezérlők és más "
+"átfedő elemek. Egységes üveghatást eredményez."
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+"Alkalmazzon átlátszóságot és elmosódási effekteket az OSD (képernyőn "
+"megjelenő) elemekre, mint a hangerőszabályzók, fényerő-vezérlők és más "
+"átfedő elemek. Egységes üveghatást eredményez."
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""

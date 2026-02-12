@@ -1,0 +1,425 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: hr <LL@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minuta"
+
+msgid "10 seconds"
+msgstr "10 sekundi"
+
+msgid "15 seconds"
+msgstr "15 sekundi"
+
+msgid "1 minute"
+msgstr "1 minuta"
+
+msgid "2 minutes"
+msgstr "2 minute"
+
+msgid "30 seconds"
+msgstr "30 sekundi"
+
+msgid "5 minutes"
+msgstr "5 minuta"
+
+msgid "5 seconds"
+msgstr "5 sekundi"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Dodaje tint premaz na blur efekt. Koristite poluprozirne boje (npr. "
+"svijetloplavu za hladne tonove ili toplu narančastu za ugodan osjećaj) za "
+"prilagodbu staklastog izgleda - viša neprozirnost za jači tint, niža za "
+"suptilno poboljšanje."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Podešava živost boja u zamagljenoj pozadini. Vrijednosti iznad 1.0 čine boje "
+"živahnijima i živahnijima (za svjetliji, energičniji staklasti efekt), dok "
+"ispod 1.0 stvaraju prigušene, desaturirane tonove za mekši, elegantniji "
+"izgled."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Podešava prozirnost skočnih izbornika. Stvara moderan zamrznuti staklasti "
+"izgled kada se kombinira s blur efektima."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Podešava prozirnost glavne ploče (trake zadataka). Niže vrijednosti stvaraju "
+"više staklasti efekt. Kliknite ikonu u sistemskoj traci za brzo prebacivanje "
+"kroz unaprijed postavljene vrijednosti."
+
+msgid "Advanced Settings"
+msgstr "Napredne postavke"
+
+msgid "Advanced Tools"
+msgstr "Napredni alati"
+
+msgid "Apply border radius to main panel"
+msgstr "Primijeni radijus obruba na glavnu ploču"
+
+msgid "Apply selected template"
+msgstr "Primijeni odabrani predložak"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Primijeni odabrani blur predložak na sve kontrole blur efekata. Ovo će "
+"ažurirati radijus, zasićenost, kontrast, svjetlinu, pozadinu, boju obruba, "
+"širinu obruba, prijelaz i neprozirnost kako bi odgovarali odabranom "
+"predlošku."
+
+msgid "Auto-detect theme border radius"
+msgstr "Automatsko otkrivanje radijusa obruba teme"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Automatski otkrij i koristi radijus obruba iz trenutne teme za dosljedan "
+"izgled. Kada je omogućeno, ekstenzija analizira vašu temu kako bi se "
+"uskladila s njezinim dizajnom."
+
+msgid "Background color/tint"
+msgstr "Boja pozadine/tint"
+
+msgid "Basic Transparency Controls"
+msgstr "Osnovne kontrole prozirnosti"
+
+msgid "Blur Effects"
+msgstr "Blur efekti"
+
+msgid "Blur opacity"
+msgstr "Neprozirnost blura"
+
+msgid "Blur radius"
+msgstr "Radijus blura"
+
+msgid "Blur Template"
+msgstr "Blur predložak"
+
+msgid "Blur transition duration"
+msgstr "Trajanje prijelaza blura"
+
+msgid "Border color"
+msgstr "Boja obruba"
+
+msgid "Border Radius"
+msgstr "Radijus obruba"
+
+msgid "Border width"
+msgstr "Širina obruba"
+
+msgid "Brightness multiplier"
+msgstr "Množitelj svjetline"
+
+msgid "Choose override panel color"
+msgstr "Odaberite boju za nadjačavanje boje panela"
+
+msgid "Choose override popup color"
+msgstr "Odaberite boju za nadjačavanje boje iskačućeg izbornika"
+
+msgid "Contrast multiplier"
+msgstr "Množitelj kontrasta"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Kontrolira razliku između svijetlih i tamnih područja u blur-u. Više "
+"vrijednosti (iznad 1.0) poboljšavaju oštrinu i dubinu za definirani, moderan "
+"izgled, dok niže vrijednosti omekšavaju efekt za glađi, manje oštar "
+"staklasti izgled."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Kontrolira intenzitet blur efekta. Više vrijednosti stvaraju jači, difuzniji "
+"staklasti izgled (npr. 30px+ za magličasti efekt), dok niže vrijednosti "
+"(1-10px) proizvode oštriji, suptilniji blur za čišći izgled."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Kontrolira prozirnost cijelog blur sloja. Više vrijednosti (0.8-1.0) čine "
+"staklasti efekt istaknutijim i solidnijim, dok niže vrijednosti (0.1-0.5) "
+"stvaraju lakši, eteričniji izgled koji se besprijekorno stapa s pozadinom."
+
+msgid "Custom Blur Settings"
+msgstr "Prilagođene postavke blura"
+
+msgid "Debugging"
+msgstr "Otklanjanje grešaka"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Definira debljinu obruba oko zamagljenih elemenata. Deblji obrubi (3-5px) "
+"stvaraju istaknutiji okvir za naglasak, dok tanji (0-1px) ili nijedan (0px) "
+"daju besprijekoran, integrirani staklasti izgled."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Prikaži ikonu kontrole u sistemskoj traci za brz pristup postavkama "
+"prozirnosti. Kliknite za otvaranje postavki ekstenzije."
+
+msgid "Enable debug logging"
+msgstr "Omogući debug zapisivanje"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Omogući detaljno zapisivanje za otklanjanje problema s ekstenzijom. "
+"Provjerite izlaz terminala s 'journalctl -f' za detaljne informacije."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Omogući zaobljene kutove na traci zadataka za moderan izgled. Može izgledati "
+"čudno na rubovima ekrana ovisno o temi."
+
+msgid "Hide label"
+msgstr "Sakrij oznaku"
+
+msgid "Hide system tray indicator"
+msgstr "Sakrij indikator sistemskog tray-a"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Sakrij ikonu kontrole prozirnosti iz sistemskog tray-a. Još uvijek možete "
+"pristupiti postavkama putem Cinnamon Settings > Extensions."
+
+msgid "Menu Opacity"
+msgstr "Neprozirnost izbornika"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Mijenja ukupnu svjetlinu zamagljenog sloja. Povećajte iznad 1.0 za "
+"svjetliji, osvijetljeniji staklasti efekt (idealno za svijetle teme), ili "
+"smanjite ispod 1.0 za tamnije, raspoloženije tonove koji se bolje stapaju s "
+"tamnim pozadinama."
+
+msgid "Override panel color"
+msgstr "Nadjačaj boju panela"
+
+msgid "Override popup color"
+msgstr "Nadjačaj boju iskačućeg izbornika"
+
+msgid "Panel Appearance"
+msgstr "Izgled ploče"
+
+msgid "Panel Opacity"
+msgstr "Neprozirnost ploče"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Zaobljeni kutovi za ploče i izbornike. Koristi se kao zamjena kada auto-"
+"otkrivanje ne uspije ili pronađe nedosljedne vrijednosti. Postavite na 0 za "
+"potpuno ravan izgled."
+
+msgid "Saturation multiplier"
+msgstr "Množitelj zasićenosti"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Odaberite blur predložak za primjenu kada koristite gumb 'Primijeni odabrani "
+"predložak'. Svaki predložak definira unaprijed postavljene vrijednosti za "
+"sve kontrole blur efekata."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Odaberite boju pozadine koja će se koristiti za iskačuće izbornike kada je "
+"omogućeno 'Nadjačaj boju iskačućeg izbornika'. Podržava prozirnost (alfa "
+"kanal)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Odaberite boju pozadine koja će se koristiti za panel kada je omogućeno "
+"'Nadjačaj boju panela'. Podržava prozirnost (alfa kanal)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Postavlja boju suptilnog obruba koji okružuje zamagljene elemente. Odaberite "
+"bijele/svijetle boje za čist, moderan rub, ili tamnije tonove za bolji "
+"kontrast - prilagodite neprozirnost za mekše ili definirane obrube."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Postavlja brzinu animacija blur efekta kada se postavke mijenjaju. Kraća "
+"trajanja (0.1-0.5s) stvaraju brze, odzivne prijelaze za brza podešavanja, "
+"dok duža (1-2s) pružaju glatke, elegantne fade-ove za uglađeni osjećaj."
+
+msgid "Show percentage"
+msgstr "Prikaži postotak"
+
+msgid "Show percentage and time remaining"
+msgstr "Prikaži postotak i preostalo vrijeme"
+
+msgid "Show system tray indicator"
+msgstr "Prikaži indikator sistemskog tray-a"
+
+msgid "Show time remaining"
+msgstr "Prikaži preostalo vrijeme"
+
+msgid "System Tray Indicator"
+msgstr "Indikator sistemskog tray-a"
+
+msgid "Theme Integration"
+msgstr "Integracija teme"
+
+msgid "Transparency Settings"
+msgstr "Postavke prozirnosti"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+"Kada je omogućeno, koristi odabranu boju za nadjačavanje boje pozadine "
+"iskačućih izbornika umjesto boje panela. Za puni učinak potrebno je "
+"omogućiti 'Nadjačaj boju panela'."
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+"Kada je omogućeno, koristi odabranu boju za nadjačavanje boje pozadine "
+"panela. Ako 'Nadjačaj boju iskačućeg izbornika' nije omogućeno, ta se boja "
+"koristi i za iskačuće izbornike."
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+"Dinamičko upravljanje efektima prozirnosti i zamućenja panela i iskačućih "
+"izbornika - temeljeno na BlurCinnamon@klangman"
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+"Primijeni efekte prozirnosti i zamućenja na elemente On-Screen Display-a "
+"poput klizača glasnoće, kontrola svjetline i drugih preklopnih elemenata. "
+"Stvara dosljedan staklasti izgled."
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+"Primijeni efekte prozirnosti i zamućenja na sistemske obavijesti (glasnoća, "
+"svjetlina, itd.). Ovo će učiniti da obavijesti odgovaraju staklastom stilu "
+"vaše ploče."
+
+msgid "Extended UI Styling"
+msgstr "Prošireno stiliziranje UI-ja"
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr "Stiliziraj elemente OSD-a (On-Screen Display)"
+
+msgid "Style system notifications"
+msgstr "Stiliziraj sistemske obavijesti"
+
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+"Primijeni efekte prozirnosti i zamućenja na Alt-Tab prebacivač prozora. "
+"Stvara dosljedan staklasti izgled za prebacivač aplikacija."
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+"Primijeni efekte prozirnosti i zamućenja na kontekstne izbornike radne "
+"površine (desni klik)"
+
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+"Primijeni efekte prozirnosti i zamućenja na elemente tooltip-a koji se "
+"pojavljuju pri prelasku mišem preko stavki panela i drugih UI elemenata. "
+"Stvara dosljedan staklasti izgled."
+
+msgid "Enable desktop context menu styling"
+msgstr "Omogući stiliziranje kontekstnih izbornika radne površine"
+
+msgid "Style Alt-Tab switcher elements"
+msgstr "Stiliziraj elemente Alt-Tab prebacivača"
+
+msgid "Style tooltip elements"
+msgstr "Stiliziraj elemente tooltip-a"
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""

@@ -1,0 +1,409 @@
+# Translation for csspanels@dr.drummie
+# Copyright (C) 2025 THE csspanels@dr.drummie'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the csspanels@dr.drummie package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: csspanels@dr.drummie 1.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/drdrummie/csspanels-dr.drummie\n"
+"POT-Creation-Date: 2025-09-27 16:26+0200\n"
+"PO-Revision-Date: 2025-09-27 16:26+0200\n"
+"Last-Translator: CSSPanels Extension Team <noreply@github.com>\n"
+"Language-Team: fi <LL@li.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# Settings UI strings from settings-schema.json
+msgid "10 minutes"
+msgstr "10 minuuttia"
+
+msgid "10 seconds"
+msgstr "10 sekuntia"
+
+msgid "15 seconds"
+msgstr "15 sekuntia"
+
+msgid "1 minute"
+msgstr "1 minuutti"
+
+msgid "2 minutes"
+msgstr "2 minuuttia"
+
+msgid "30 seconds"
+msgstr "30 sekuntia"
+
+msgid "5 minutes"
+msgstr "5 minuuttia"
+
+msgid "5 seconds"
+msgstr "5 sekuntia"
+
+msgid ""
+"Adds a tint overlay to the blur effect. Use semi-transparent colors (e.g., "
+"light blue for cool tones or warm orange for cozy feel) to customize the "
+"glass appearance - higher opacity for stronger tint, lower for subtle "
+"enhancement."
+msgstr ""
+"Lisää sumennusefektiin sävypeitteen. Käytä puoli­läpikuultavia värejä (esim. "
+"vaaleansininen viileisiin sävyihin tai lämmin oranssi kodikkaaseen "
+"tunnelmaan) mukauttaaksesi lasimaista ilmettä – suurempi peittävyys "
+"vahvistaa sävyä, matalampi antaa hillitymmän korostuksen."
+
+msgid ""
+"Adjusts color vibrancy in the blurred background. Values above 1.0 make "
+"colors more vivid and lively (for brighter, more energetic glass effect), "
+"while below 1.0 create muted, desaturated tones for a softer, more elegant "
+"appearance."
+msgstr ""
+"Säätelee värikylläisyyttä sumennetussa taustassa. Arvot yli 1.0 tekevät "
+"väreistä eloisampia ja energisempiä (kirkkaampi lasiefekti), kun taas alle "
+"1.0 luovat hillittyjä, desaturatoituja sävyjä pehmeämpään ja elegantimpaan "
+"ulkoasuun."
+
+msgid ""
+"Adjust the transparency of popup menus. Creates modern frosted glass "
+"appearance when combined with blur effects."
+msgstr ""
+"Säädä ponnahdusvalikoiden läpinäkyvyyttä. Yhdessä sumennuksen kanssa se luo "
+"modernin huurretun lasin ilmeen."
+
+msgid ""
+"Adjust the transparency of the main panel (taskbar). Lower values create "
+"more glass-like effect. Click the system tray icon to cycle through quick "
+"presets."
+msgstr ""
+"Säädä pääpaneelin (tehtäväpalkin) läpinäkyvyyttä. Alhaisemmat arvot tekevät "
+"lasimaisemman ilmeen. Napsauta järjestelmäalueen kuvaketta vaihtaaksesi "
+"esiasetusten välillä."
+
+msgid "Advanced Settings"
+msgstr "Lisäasetukset"
+
+msgid "Advanced Tools"
+msgstr "Edistyneet työkalut"
+
+msgid "Apply border radius to main panel"
+msgstr "Käytä kulman pyöristystä pääpaneeliin"
+
+msgid "Apply selected template"
+msgstr "Käytä valittua mallipohjaa"
+
+msgid ""
+"Apply the selected blur template to all blur effect controls. This will "
+"update radius, saturation, contrast, brightness, background, border color, "
+"border width, transition, and opacity to match the chosen template."
+msgstr ""
+"Käyttää valittua sumennusmallipohjaa kaikkiin sumennustehosteen säätimiin. "
+"Tämä päivittää säteen, kylläisyyden, kontrastin, kirkkauden, taustan, "
+"reunavärin, reunuksen paksuuden, siirtymän ja peittävyyden vastaamaan "
+"valittua mallia."
+
+msgid "Auto-detect theme border radius"
+msgstr "Tunnista teeman reunojen pyöristys automaattisesti"
+
+msgid ""
+"Automatically detect and use border-radius from current theme for consistent "
+"appearance. When enabled, the extension analyzes your theme to match its "
+"design."
+msgstr ""
+"Tunnistaa ja käyttää teeman reunojen pyöristystä yhtenäisen ilmeen "
+"luomiseksi. Kun ominaisuus on käytössä, laajennus analysoi teemasi ja "
+"sovittaa asetukset siihen."
+
+msgid "Background color/tint"
+msgstr "Taustaväri / sävy"
+
+msgid "Basic Transparency Controls"
+msgstr "Perus läpinäkyvyysasetukset"
+
+msgid "Blur Effects"
+msgstr "Sumennustehosteet"
+
+msgid "Blur opacity"
+msgstr "Sumennuksen peittävyys"
+
+msgid "Blur radius"
+msgstr "Sumennuksen säde"
+
+msgid "Blur Template"
+msgstr "Sumennusmalli"
+
+msgid "Blur transition duration"
+msgstr "Sumennussiirtymän kesto"
+
+msgid "Border color"
+msgstr "Reunaväri"
+
+msgid "Border Radius"
+msgstr "Reunan pyöristys"
+
+msgid "Border width"
+msgstr "Reunuksen leveys"
+
+msgid "Brightness multiplier"
+msgstr "Kirkkauskerroin"
+
+msgid "Choose override panel color"
+msgstr "Valitse korvaava paneeliväri"
+
+msgid "Choose override popup color"
+msgstr "Valitse korvaava ponnahdusvalikon väri"
+
+msgid "Contrast multiplier"
+msgstr "Kontrastikerroin"
+
+msgid ""
+"Controls the difference between light and dark areas in the blur. Higher "
+"values (above 1.0) enhance sharpness and depth for a more defined, modern "
+"look, while lower values soften the effect for a smoother, less harsh glass "
+"appearance."
+msgstr ""
+"Ohjaa vaaleiden ja tummien alueiden eroa sumennuksessa. Korkeammat arvot "
+"(yli 1.0) lisäävät terävyyttä ja syvyyttä modernin ilmeen saavuttamiseksi, "
+"kun taas matalammat arvot pehmentävät efektin pehmeämmäksi ja vähemmän "
+"karkeaksi lasimaiseksi ulkoasuksi."
+
+msgid ""
+"Controls the intensity of the blur effect. Higher values create a stronger, "
+"more diffused glass-like appearance (e.g., 30px+ for foggy effect), while "
+"lower values (1-10px) produce sharper, more subtle blurring for a cleaner "
+"look."
+msgstr ""
+"Säätää sumennusefektin voimakkuutta. Suuremmat arvot luovat voimakkaamman, "
+"hajautetumman lasiefektin (esim. yli 30 px utuisuuden luomiseksi), kun taas "
+"pienemmät arvot (1–10 px) tuottavat terävämmän, hienovaraisemman sumennuksen "
+"puhtaampaa ulkoasua varten."
+
+msgid ""
+"Controls the transparency of the entire blur layer. Higher values (0.8-1.0) "
+"make the glass effect more prominent and solid, while lower values (0.1-0.5) "
+"create a lighter, more ethereal appearance that blends seamlessly with the "
+"background."
+msgstr ""
+"Säätää koko sumennuskerroksen läpinäkyvyyttä. Korkeammat arvot (0.8–1.0) "
+"tekevät lasiefektistä voimakkaamman ja kiinteämmän, kun taas matalammat "
+"arvot (0.1–0.5) luovat kevyemmän, eteerisen ilmeen, joka sulautuu taustaan."
+
+msgid "Custom Blur Settings"
+msgstr "Mukautetut sumennusasetukset"
+
+msgid "Debugging"
+msgstr "Virheenkorjaus"
+
+msgid ""
+"Defines the thickness of the border around blurred elements. Thicker borders "
+"(3-5px) create a more prominent frame for emphasis, while thinner (0-1px) or "
+"none (0px) give a seamless, integrated glass look."
+msgstr ""
+"Määrittää sumennettujen elementtien reunuksen paksuuden. Paksummat reunukset "
+"(3–5 px) luovat erottuvamman kehyksen korostukseen, kun taas ohuemmat (0–1 "
+"px) tai ei lainkaan (0 px) tarjoavat saumattoman, integroidun lasimaisen "
+"ilmeen."
+
+msgid ""
+"Display control icon in system tray for quick access to transparency "
+"settings. Click to open extension preferences."
+msgstr ""
+"Näytä ohjauskuvake järjestelmäalueella nopeaa pääsyä läpinäkyvyysasetuksiin "
+"varten. Napsauta avataksesi laajennuksen asetukset."
+
+msgid "Enable debug logging"
+msgstr "Ota virheenkorjauslokitus käyttöön"
+
+msgid ""
+"Enable detailed logging for troubleshooting extension issues. Check terminal "
+"output with 'journalctl -f' for detailed information."
+msgstr ""
+"Ota yksityiskohtainen lokitus käyttöön laajennuksen ongelmien vianmääritystä "
+"varten. Tarkista terminaalin tuloste komennolla 'journalctl -f' saadaksesi "
+"lisätietoja."
+
+msgid ""
+"Enable rounded corners on taskbar for modern appearance. May look odd at "
+"screen edges depending on your theme."
+msgstr ""
+"Ota tehtäväpalkin pyöristetyt kulmat käyttöön modernia ilmettä varten. Voi "
+"näyttää epäluontevalta näytön reunoilla teeman mukaan."
+
+msgid "Hide label"
+msgstr "Piilota tunniste"
+
+msgid "Hide system tray indicator"
+msgstr "Piilota järjestelmäalueen kuvake"
+
+msgid ""
+"Hide the transparency control icon from the system tray. You can still "
+"access settings through Cinnamon Settings > Extensions."
+msgstr ""
+"Piilota läpinäkyvyyden ohjauskuvake järjestelmäalueelta. Voit silti päästä "
+"asetuksiin Cinnamon-asetuksista > Laajennukset."
+
+msgid "Menu Opacity"
+msgstr "Valikon peittävyys"
+
+msgid ""
+"Modifies the overall lightness of the blurred layer. Increase above 1.0 for "
+"a brighter, more illuminated glass effect (ideal for light themes), or "
+"decrease below 1.0 for darker, moodier tones that blend better with dark "
+"backgrounds."
+msgstr ""
+"Muokkaa sumennuskerroksen yleistä vaaleutta. Nosta arvoa yli 1.0 "
+"kirkkaamman, valaistumman lasiefektin saamiseksi (ihanteellinen vaaleisiin "
+"teemoihin), tai laske alle 1.0 tummempien, tunnelmallisempien sävyjen "
+"luomiseksi, jotka sulautuvat paremmin tummiin taustoihin."
+
+msgid "Override panel color"
+msgstr "Ohita paneelin väri"
+
+msgid "Override popup color"
+msgstr "Ohita ponnahdusvalikon väri"
+
+msgid "Panel Appearance"
+msgstr "Paneelin ulkoasu"
+
+msgid "Panel Opacity"
+msgstr "Paneelin peittävyys"
+
+msgid ""
+"Rounded corners for panels and menus. Used as fallback when auto-detect "
+"fails or finds inconsistent values. Set to 0 for completely flat appearance."
+msgstr ""
+"Pyöristetyt kulmat paneeleille ja valikoille. Käytetään varavalintana, kun "
+"automaattinen tunnistus epäonnistuu tai löytää epäjohdonmukaisia arvoja. "
+"Aseta arvoon 0 täysin tasaisen ulkoasun saamiseksi."
+
+msgid "Saturation multiplier"
+msgstr "Kylläisyyskerroin"
+
+msgid ""
+"Select a blur template to apply when using the 'Apply Selected Template' "
+"button. Each template defines preset values for all blur effect controls."
+msgstr ""
+"Valitse sumennusmallipohja, joka otetaan käyttöön 'Käytä valittua "
+"mallipohjaa' -painikkeella. Jokainen mallipohja määrittää oletusarvot "
+"kaikille sumennustehosteen säätimille."
+
+msgid ""
+"Select the background color to use for popup menus when 'Override popup "
+"color' is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Valitse ponnahdusvalikoiden taustaväri, kun 'Ohita ponnahdusvalikon väri' on "
+"käytössä. Tukee läpinäkyvyyttä (alfakanava)."
+
+msgid ""
+"Select the background color to use for the panel when 'Override panel color' "
+"is enabled. Supports transparency (alpha channel)."
+msgstr ""
+"Valitse paneelin taustaväri, kun 'Ohita paneelin väri' on käytössä. Tukee "
+"läpikuultavuutta (alfakanava)."
+
+msgid ""
+"Sets the color of the subtle border framing the blurred elements. Choose "
+"white/light colors for a clean, modern edge, or darker tones for better "
+"contrast - adjust opacity for softer or more defined borders."
+msgstr ""
+"Asettaa hienovaraisen reunuksen värin sumennettujen elementtien ympärille. "
+"Valitse valkoiset/vaaleat värit siistiä ja modernia reunaa varten tai "
+"tummemmat sävyt paremman kontrastin saavuttamiseksi – säädä peittävyyttä "
+"pehmeämpien tai terävämpien reunojen luomiseksi."
+
+msgid ""
+"Sets the speed of blur effect animations when settings change. Shorter "
+"durations (0.1-0.5s) create snappy, responsive transitions for quick "
+"adjustments, while longer ones (1-2s) provide smooth, elegant fades for a "
+"polished feel."
+msgstr ""
+"Asettaa sumennusefektin animaatioiden nopeuden, kun asetuksia muutetaan. "
+"Lyhyemmät kestoajat (0.1–0.5 s) luovat ketteriä, reagoivia siirtymiä "
+"nopeisiin muutoksiin, kun taas pidemmät (1–2 s) tarjoavat pehmeät, elegantit "
+"häiveet viimeistellyn tunteen luomiseksi."
+
+msgid "Show percentage"
+msgstr "Näytä prosenttiosuus"
+
+msgid "Show percentage and time remaining"
+msgstr "Näytä prosentti ja jäljellä oleva aika"
+
+msgid "Show system tray indicator"
+msgstr "Näytä järjestelmäalueen kuvake"
+
+msgid "Show time remaining"
+msgstr "Näytä jäljellä oleva aika"
+
+msgid "System Tray Indicator"
+msgstr "Järjestelmäalueen kuvake"
+
+msgid "Theme Integration"
+msgstr ""
+
+msgid "Transparency Settings"
+msgstr "Lisäasetukset"
+
+msgid ""
+"When enabled, use the selected override color for popup menu backgrounds "
+"instead of the panel color. Requires 'Override panel color' to be enabled "
+"for full effect."
+msgstr ""
+
+msgid ""
+"When enabled, use the selected override color for the panel background. If "
+"'Override popup color' is disabled, this color is also used for popup menus."
+msgstr ""
+
+msgid ""
+"Dynamic control of panel and popups transparency and blur effects - based on "
+"BlurCinnamon@klangman"
+msgstr ""
+
+msgid ""
+"Apply transparency and blur effects to On-Screen Display elements like "
+"volume sliders, brightness controls, and other overlay elements. Creates a "
+"consistent glass appearance."
+msgstr ""
+
+msgid ""
+"Apply transparency and blur effects to system notifications (volume, "
+"brightness, etc.). This will make notifications match your panel's glass "
+"morphism style."
+msgstr ""
+
+msgid "Extended UI Styling"
+msgstr ""
+
+msgid "Style OSD (On-Screen Display) elements"
+msgstr ""
+
+#, fuzzy
+msgid "Style system notifications"
+msgstr "Piilota järjestelmäalueen kuvake"
+
+msgid ""
+"Apply transparency and blur effects to Alt-Tab window switcher. Creates a "
+"consistent glass appearance for the application switcher."
+msgstr ""
+
+msgid ""
+"Apply transparency and blur effects to desktop right-click context menus"
+msgstr ""
+
+msgid ""
+"Apply transparency and blur effects to tooltip elements that appear when "
+"hovering over panel items and other UI elements. Creates a consistent glass "
+"appearance."
+msgstr ""
+
+msgid "Enable desktop context menu styling"
+msgstr ""
+
+msgid "Style Alt-Tab switcher elements"
+msgstr ""
+
+msgid "Style tooltip elements"
+msgstr ""
+
+# Metadata strings from metadata.json
+msgid "CSS Panels"
+msgstr ""
