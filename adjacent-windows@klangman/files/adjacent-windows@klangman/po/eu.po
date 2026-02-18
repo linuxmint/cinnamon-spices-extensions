@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# ADJACENT WINDOWS
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# klangman, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: adjacent-windows@klangman 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-03-25 21:17-0400\n"
+"POT-Creation-Date: 2026-02-18 18:57-0500\n"
 "PO-Revision-Date: 2024-05-30 09:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
