@@ -1,7 +1,6 @@
 # Curtain Extension for Cinnamon
 
 ## Table Of Contents
-
 - [A. Introduction](#a-introduction)
 - [B. Get Started](#b-get-started)
 - [C. Features](#c-features)
@@ -9,7 +8,6 @@
 - [E. Installation](#e-Installation)
 
 ## A. Introduction
-
 The **Curtain** extension for Cinnamon is designed to be a lightweight,fast and easy to install and configure alternative to popular window managers. Essentially, it is aimed to completely navigate workspaces and windows using only the keyboard.
 ![Curtain screenshot](screenshot.png)
 
@@ -18,11 +16,10 @@ The **Curtain** extension for Cinnamon is designed to be a lightweight,fast and 
 ### 1. Applications
 
 Due to individual windows not following **Curtain** rules ,it is advisable the following applications are preferred:
-
 - kitty over gnome-terminal
 
-### 2. KeyBindings
-
+### 2. KeyBindings(Essential)
+<b>NOTE: YOU HAVE TO CONFIGURE YOUR KEYBINDINGS BEFORE USING THE EXTENSION</b>
 While you can set up your own keybindings as you like by going to Extension -> Settings(Curtain), one of the settings that can help you get started quickly is as follows:
 
 - **Switch Workspaces** : `Super + 1-9`
@@ -147,7 +144,6 @@ git clone git@github.com:AdvaitaSoni/curtain.git -b APPLET curtain@AdvaitaSoni #
 For Cinnamon to recognize the new extension, you can restart the graphical environment. The easiest way is to press `Alt + F2`, type `r`, and press `Enter`. This will restart Cinnamon without closing your applications.
 
 **4. Add the Applet :**
-
 - Right-Click on Panel and choose `Applets` or search for them in settings
 - Go to Manage Tab
 - Click on \*\*curtain@AdvaitaSoni```

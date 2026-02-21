@@ -87,127 +87,158 @@
     },
     "arrangeKeyBinding": {
         "type": "keybinding",
-        "description": "Arrange windows"
+        "description": "Arrange windows",
+        "default": "<Super>Escape"
     },
     "focusKeyBinding": {
         "type": "keybinding",
-        "description": "Focus window"
+        "description": "Focus window",
+        "default": "<Super>Escape"
     },
     "moveKeyBinding": {
         "type": "keybinding",
-        "description": "Move window"
+        "description": "Move window",
+        "default": "<Super>Escape"
     },
     "swapKeyBinding": {
         "type": "keybinding",
-        "description": "Swap window"
+        "description": "Swap window",
+        "default": "<Super>Escape"
     },
     "halfScreenBinding": {
         "type": "keybinding",
-        "description": "Focused window occupy half screen"
+        "description": "Focused window occupy half screen",
+        "default": "<Super>Escape"
     },
     "fullScreenBinding": {
         "type": "keybinding",
-        "description": "Maximize the focused window"
+        "description": "Maximize the focused window",
+        "default": "<Super>Escape"
     },
     "unmaximizeBinding": {
         "type": "keybinding",
-        "description": "Exit from the maximized window"
+        "description": "Exit from the maximized window",
+        "default": "<Super>Escape"
     },
     "minimizeBinding": {
         "type": "keybinding",
-        "description": "Minimize the focused window"
+        "description": "Minimize the focused window",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace1Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 1"
+        "description": "Move Focused window to workspace 1",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace2Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 2"
+        "description": "Move Focused window to workspace 2",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace3Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 3"
+        "description": "Move Focused window to workspace 3",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace4Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 4"
+        "description": "Move Focused window to workspace 4",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace5Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 5"
+        "description": "Move Focused window to workspace 5",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace6Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 6"
+        "description": "Move Focused window to workspace 6",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace7Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 7"
+        "description": "Move Focused window to workspace 7",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace8Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 8"
+        "description": "Move Focused window to workspace 8",
+        "default": "<Super>Escape"
     },
     "moveSwitchWorkspace9Binding": {
         "type": "keybinding",
-        "description": "Move Focused window to workspace 9"
+        "description": "Move Focused window to workspace 9",
+        "default": "<Super>Escape"
     },
     "moveSwitchNextWorkspaceBinding": {
         "type": "keybinding",
-        "description": "Move Focused window to next workspace"
+        "description": "Move Focused window to next workspace",
+        "default": "<Super>Escape"
     },
     "moveSwitchPrevWorkspaceBinding": {
         "type": "keybinding",
-        "description": "Move Focused window to previous workspace"
+        "description": "Move Focused window to previous workspace",
+        "default": "<Super>Escape"
     },
     "switchWorkspace1Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 1"
+        "description": "Switch to workspace 1",
+        "default": "<Super>Escape"
     },
     "switchWorkspace2Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 2"
+        "description": "Switch to workspace 2",
+        "default": "<Super>Escape"
     },
     "switchWorkspace3Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 3"
+        "description": "Switch to workspace 3",
+        "default": "<Super>Escape"
     },
     "switchWorkspace4Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 4"
+        "description": "Switch to workspace 4",
+        "default": "<Super>Escape"
     },
     "switchWorkspace5Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 5"
+        "description": "Switch to workspace 5",
+        "default": "<Super>Escape"
     },
     "switchWorkspace6Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 6"
+        "description": "Switch to workspace 6",
+        "default": "<Super>Escape"
     },
     "switchWorkspace7Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 7"
+        "description": "Switch to workspace 7",
+        "default": "<Super>Escape"
     },
     "switchWorkspace8Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 8"
+        "description": "Switch to workspace 8",
+        "default": "<Super>Escape"
     },
     "switchWorkspace9Binding": {
         "type": "keybinding",
-        "description": "Switch to workspace 9"
+        "description": "Switch to workspace 9",
+        "default": "<Super>Escape"
     },
     "switchNextWorkspaceBinding": {
         "type": "keybinding",
-        "description": "Switch to next workspace"
+        "description": "Switch to next workspace",
+        "default": "<Super>Escape"
     },
     "switchPrevWorkspaceBinding": {
         "type": "keybinding",
-        "description": "Switch to previous workspace"
+        "description": "Switch to previous workspace",
+        "default": "<Super>Escape"
     },
     "killBinding": {
         "type": "keybinding",
-        "description": "Close the focused window"
+        "description": "Close the focused window",
+        "default": "<Super>Escape"
     },
     "custom-shortcuts-button": {
         "type": "button",
@@ -220,7 +251,8 @@
     },
     "toggleExtensionBinding": {
         "type": "keybinding",
-        "description": "Enable/disable the extension"
+        "description": "Enable/disable the extension",
+        "default": "<Super>Escape"
     },
     "cyclingEnabled": {
         "type": "checkbox",
