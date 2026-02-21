@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-05-03 00:41+0200\n"
+"PO-Revision-Date: 2024-04-17 09:45+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Opacify Windows"
+msgstr "Vervagen van Vensters"
+
+#. metadata.json->description
+msgid "Fade out the current window that the user is resizing or dragging."
+msgstr ""
+"Vervaag het huidige venster waarvan de gebruiker het formaat is aan het "
+"aanpassen of dat hij aan het slepen is."
+
+#. settings-schema.json->opacity->description
+#. 5.4->settings-schema.json->opacity->description
+msgid "Opacity"
+msgstr "Doorzichtigheid"
+
+#. settings-schema.json->h1->description
+#. 5.4->settings-schema.json->h1->description
+msgid "Start of Drag"
+msgstr "Start van Slepen"
+
+#. settings-schema.json->beginTime->description
+#. settings-schema.json->endTime->description
+#. 5.4->settings-schema.json->beginTime->description
+#. 5.4->settings-schema.json->endTime->description
+msgid "Transition time"
+msgstr "Overgangstijd"
+
+#. settings-schema.json->beginTime->units
+#. settings-schema.json->endTime->units
+#. 5.4->settings-schema.json->beginTime->units
+#. 5.4->settings-schema.json->endTime->units
+msgid "milliseconds"
+msgstr "milliseconden"
+
+#. settings-schema.json->beginEffect->description
+#. settings-schema.json->endEffect->description
+#. 5.4->settings-schema.json->beginEffect->description
+#. 5.4->settings-schema.json->endEffect->description
+msgid "Effect"
+msgstr "Effect"
+
+#. settings-schema.json->h2->description
+#. 5.4->settings-schema.json->h2->description
+msgid "End of Drag"
+msgstr "Einde van Slepen"
+
+#. 5.4->settings-schema.json->h3->description
+msgid "Additional features"
+msgstr "Extra functies"
+
+#. 5.4->settings-schema.json->opacityKeep->description
+msgid "Maintaining the opacity indefinitely"
+msgstr "De ondoorzichtigheid voor onbepaalde tijd behouden"
+
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "Yes"
+msgstr "Ja"
+
+#. 5.4->settings-schema.json->opacityKeep->options
+msgid "No"
+msgstr "Geen"

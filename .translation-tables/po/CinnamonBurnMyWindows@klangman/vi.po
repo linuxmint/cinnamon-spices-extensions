@@ -1,0 +1,1283 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 1.0.3\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-10-15 21:53-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.2/extension.js:208 6.2/extension.js:286 6.2/extension.js:614
+msgid "Error"
+msgstr "Lỗi"
+
+#. 6.2/extension.js:208
+msgid "was NOT enabled"
+msgstr "đã KHÔNG được bật"
+
+#. 6.2/extension.js:209 6.2/extension.js:287
+msgid "The existing extension"
+msgstr "Tiện ích mở rộng hiện có"
+
+#. 6.2/extension.js:209
+msgid "conflicts with this extension."
+msgstr "xung đột với tiện ích mở rộng này."
+
+#. 6.2/extension.js:286
+msgid "minimize/unminimize effects can not be enabled"
+msgstr "hiệu ứng thu nhỏ/phục hồi không thể được bật"
+
+#. 6.2/extension.js:287
+msgid "already handles minimize/unminimize animation events."
+msgstr "đã xử lý sự kiện hoạt ảnh thu nhỏ/phục hồi."
+
+#. 6.2/extension.js:615
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore application specific effects can not be applied to "
+"that window"
+msgstr ""
+"Không thể xác định ứng dụng hoặc WM_CLASS của cửa sổ được tập trung trước "
+"đó, do đó hiệu ứng cụ thể cho ứng dụng không thể áp dụng cho cửa sổ đó"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Apparition.js:94
+msgid "Apparition"
+msgstr "Hiện hình"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/AuraGlow.js:103
+msgid "Aura Glow"
+msgstr "Hào quang"
+
+#. effects/BrokenGlass.js:152
+msgid "Broken Glass"
+msgstr "Kính vỡ"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Doom.js:101
+msgid "Doom"
+msgstr "Tận thế"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/EnergizeA.js:90
+msgid "Energize A"
+msgstr "Năng lượng A"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/EnergizeB.js:92
+msgid "Energize B"
+msgstr "Năng lượng B"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Fire.js:127
+msgid "Fire"
+msgstr "Lửa"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:180
+msgid "Default Fire"
+msgstr "Lửa mặc định"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:190
+msgid "Hell Fire"
+msgstr "Lửa địa ngục"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:200
+msgid "Dark and Smutty"
+msgstr "Tối và bẩn"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:210
+msgid "Cold Breeze"
+msgstr "Gió lạnh"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:220
+msgid "Santa is Coming"
+msgstr "Ông già Noel đang đến"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:230
+msgid "Nuclear"
+msgstr "Hạt nhân"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Focus.js:91
+msgid "Focus"
+msgstr "Tập trung"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Glide.js:93
+msgid "Glide"
+msgstr "Lướt"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Glitch.js:97
+msgid "Glitch"
+msgstr "Trục trặc"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Hexagon.js:106
+msgid "Hexagon"
+msgstr "Lục giác"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Incinerate.js:144
+msgid "Incinerate"
+msgstr "Thiêu đốt"
+
+#. effects/Matrix.js:124
+msgid "Matrix"
+msgstr "Ma trận"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Mushroom.js:154
+msgid "Mushroom"
+msgstr "Nấm"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:227
+msgid "8Bit Plumber"
+msgstr "Thợ sửa ống nước 8Bit"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:244
+msgid "New Bros 2"
+msgstr "Anh em mới 2"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:262
+msgid "The True North"
+msgstr "Phương Bắc thực sự"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:280
+msgid "Red White and Blue"
+msgstr "Đỏ Trắng và Xanh"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:297
+msgid "Rainbow"
+msgstr "Cầu vồng"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:314
+msgid "Cattuccino"
+msgstr "Cattuccino"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:332
+msgid "Dracula"
+msgstr "Dracula"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:349
+msgid "Sparkle"
+msgstr "Lấp lánh"
+
+#. effects/PaintBrush.js:114
+msgid "Paint Brush"
+msgstr "Cọ vẽ"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/PixelWheel.js:88
+msgid "Pixel Wheel"
+msgstr "MởBánh xe Pixel"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/PixelWipe.js:114
+msgid "Pixel Wipe"
+msgstr "Quét Pixel"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Pixelate.js:88
+msgid "Pixelate"
+msgstr "Pixel hóa"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Portal.js:99
+msgid "Portal"
+msgstr "Cổng không gian"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/RGBWarp.js:91
+msgid "RGB Warp"
+msgstr "Biến dạng RGB"
+
+#. effects/SnapOfDisintegration.js:124
+msgid "Snap of Disintegration"
+msgstr "Búng tay Phân rã"
+
+#. effects/TRexAttack.js:121
+msgid "T-Rex Attack"
+msgstr "T-Rex Tấn công"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/TVEffect.js:90
+msgid "TV Effect"
+msgstr "Hiệu ứng TV"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/TVGlitch.js:99
+msgid "TV Glitch"
+msgstr "Trục trặc TV"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/TeamRocket.js:103
+msgid "Team Rocket"
+msgstr "Đội Rocket"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Wisps.js:101
+msgid "Wisps"
+msgstr "Luồng sáng"
+
+#. metadata.json->name
+msgid "Burn My Windows"
+msgstr "Burn My Windows"
+
+#. metadata.json->description
+msgid ""
+"Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
+"Gnome extension by Schneegans"
+msgstr ""
+"Hiệu ứng mở/đóng/thu nhỏ/phục hồi cửa sổ dựa trên tiện ích mở rộng Burn-My-"
+"Windows Gnome của Schneegans"
+
+#. 6.2->settings-schema.json->general-page->title
+msgid "General"
+msgstr "Chung"
+
+#. 6.2->settings-schema.json->effects-page->title
+msgid "Effect Settings"
+msgstr "Cài đặt Hiệu ứng"
+
+#. 6.2->settings-schema.json->application-page->title
+msgid "Application Specifics"
+msgstr "Cụ thể Ứng dụng"
+
+#. 6.2->settings-schema.json->random-page->title
+msgid "Random Effects"
+msgstr "Hiệu ứng Ngẫu nhiên"
+
+#. 6.2->settings-schema.json->power-page->title
+msgid "Power"
+msgstr "Nguồn"
+
+#. 6.2->settings-schema.json->about-page->title
+msgid "About"
+msgstr "Giới thiệu"
+
+#. 6.2->settings-schema.json->general-settings->title
+msgid "Burn My Windows General Settings"
+msgstr "Cài đặt Chung Burn My Windows"
+
+#. 6.2->settings-schema.json->app-specific-settings->title
+msgid "Application Specific Settings"
+msgstr "Cài đặt Cụ thể Ứng dụng"
+
+#. 6.2->settings-schema.json->effect-selector-section->title
+msgid "Effect Selector"
+msgstr "Bộ chọn Hiệu ứng"
+
+#. 6.2->settings-schema.json->effect-settings->title
+msgid "Effect Specific Settings"
+msgstr "Cài đặt Cụ thể Hiệu ứng"
+
+#. 6.2->settings-schema.json->fire-custom-section->title
+#. 6.2->settings-schema.json->mushroom-custom-section->title
+msgid "Setting for the custom preset:"
+msgstr "Cài đặt cho thiết lập tùy chỉnh:"
+
+#. 6.2->settings-schema.json->random-section->title
+msgid "Effects included in the randomized sets:"
+msgstr "Hiệu ứng được bao gồm trong các bộ ngẫu nhiên:"
+
+#. 6.2->settings-schema.json->power-section->title
+msgid "Manage Burn-My-Windows power consumption"
+msgstr "Quản lý mức tiêu thụ điện năng của Burn-My-Windows"
+
+#. 6.2->settings-schema.json->about-section->title
+msgid "About Cinnamon Burn-My-Windows"
+msgstr "Giới thiệu Cinnamon Burn-My-Windows"
+
+#. 6.2->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Disintegrate your windows with style.</b>\n"
+"Version: ext-version\n"
+"\n"
+"Ported to Cinnamon by Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
+"new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Website</a>\n"
+"\n"
+"Based on the Burn-My-Windows code by Schneegans and contributors\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
+"\n"
+"The Magic Lamp Effect is ported from code by hermes83\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
+msgstr ""
+"\n"
+"<b>Phân rã cửa sổ của bạn với phong cách.</b>\n"
+"Phiên bản: ext-version\n"
+"\n"
+"Chuyển sang Cinnamon bởi Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/new\">Báo "
+"cáo vấn đề</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/103\">Trang web</a>\n"
+"\n"
+"Dựa trên mã Burn-My-Windows của Schneegans và những người đóng góp\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
+"\n"
+"Hiệu ứng Đèn Thần được chuyển từ mã của hermes83\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
+
+#. 6.2->settings-schema.json->app-rules->description
+msgid "Application Specific Rules"
+msgstr "Quy tắc Cụ thể Ứng dụng"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Enabled"
+msgstr "Đã bật"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Open"
+msgstr "Mở"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Close"
+msgstr "Đóng"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Minimize"
+msgstr "Thu nhỏ"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Unminimize"
+msgstr "Phục hồi"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Application"
+msgstr "Ứng dụng"
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
+msgstr ""
+"Danh sách các ứng dụng có quy tắc hiệu ứng đặc biệt. Ứng dụng có thể là tên "
+"tập tin desktop hoặc tên WM_CLASS"
+
+#. 6.2->settings-schema.json->app-rules-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr "Thêm mục cho ứng dụng của cửa sổ được tập trung gần đây nhất"
+
+#. 6.2->settings-schema.json->app-rules-button->tooltip
+msgid ""
+"Focus a window you want to enable application specific setting for then "
+"return here and press this button."
+msgstr ""
+"Tập trung vào một cửa sổ bạn muốn bật cài đặt cụ thể cho ứng dụng, sau đó "
+"quay lại đây và nhấn nút này."
+
+#. 6.2->settings-schema.json->random-include->description
+msgid "Effects included in the randomized sets"
+msgstr "Hiệu ứng được bao gồm trong các bộ ngẫu nhiên"
+
+#. 6.2->settings-schema.json->random-include->tooltip
+msgid ""
+"Defines which effects are included in the randomized sets for each window "
+"event type. When 'Randomized' is selected for any event on the General tab "
+"these sets are used."
+msgstr ""
+"Xác định hiệu ứng nào được bao gồm trong các bộ ngẫu nhiên cho mỗi loại sự "
+"kiện cửa sổ. Khi 'Ngẫu nhiên' được chọn cho bất kỳ sự kiện nào trên thẻ "
+"Chung, các bộ này sẽ được sử dụng."
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "Effect Name         "
+msgstr "Tên Hiệu ứng         "
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Open        "
+msgstr "      Mở        "
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Close       "
+msgstr "      Đóng       "
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "     Minimize     "
+msgstr "     Thu nhỏ     "
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "    Unminimize    "
+msgstr "    Phục hồi    "
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+msgid "Magic Lamp"
+msgstr "Đèn Thần"
+
+#. 6.2->settings-schema.json->effect-selector->description
+msgid "Show settings for effect:"
+msgstr "Hiển thị cài đặt cho hiệu ứng:"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+msgid "Randomized"
+msgstr "Ngẫu nhiên"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+msgid "None"
+msgstr "Không"
+
+#. 6.2->settings-schema.json->open-window-effect->description
+#. 6.2->settings-schema.json->power-open-effect->description
+msgid "Open window effect"
+msgstr "Hiệu ứng mở cửa sổ"
+
+#. 6.2->settings-schema.json->close-window-effect->description
+#. 6.2->settings-schema.json->power-close-effect->description
+msgid "Close window effect"
+msgstr "Hiệu ứng đóng cửa sổ"
+
+#. 6.2->settings-schema.json->dialog-special->description
+#. 6.2->settings-schema.json->power-dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr "Xử lý đặc biệt cho cửa sổ hộp thoại"
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr ""
+"Cho phép bạn xác định cài đặt đặc biệt để xử lý các loại cửa sổ hộp thoại "
+"(ví dụ: cửa sổ mở tập tin). Các cài đặt này sẽ ghi đè lên bất kỳ cài đặt cụ "
+"thể ứng dụng nào có thể đã được xác định."
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+#. 6.2->settings-schema.json->power-dialog-open-effect->description
+msgid "Open dialog window effect"
+msgstr "Hiệu ứng mở cửa sổ hộp thoại"
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+#. 6.2->settings-schema.json->power-dialog-close-effect->description
+msgid "Close dialog window effect"
+msgstr "Hiệu ứng đóng cửa sổ hộp thoại"
+
+#. 6.2->settings-schema.json->minimize-effect->description
+#. 6.2->settings-schema.json->power-minimize-effect->description
+msgid "Minimize window effect"
+msgstr "Hiệu ứng thu nhỏ cửa sổ"
+
+#. 6.2->settings-schema.json->unminimize-effect->description
+#. 6.2->settings-schema.json->power-unminimize-effect->description
+msgid "Unminimize window effect"
+msgstr "Hiệu ứng phục hồi cửa sổ"
+
+#. 6.2->settings-schema.json->power-dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows)."
+msgstr ""
+"Cho phép bạn xác định cài đặt đặc biệt để xử lý các loại cửa sổ hộp thoại "
+"(ví dụ: cửa sổ mở tập tin)."
+
+#. 6.2->settings-schema.json->power-onbattery->description
+msgid "Use different effects when running on battery power"
+msgstr "Sử dụng hiệu ứng khác khi chạy bằng nguồn pin"
+
+#. 6.2->settings-schema.json->power-onbattery->tooltip
+msgid ""
+"When enabled, a set of options will appear allowing you to define which "
+"effects (if any) will be used when running on battery power and the battery "
+"charge state is less than the set limit. These settings will take precedence "
+"over both the general settings and any application specific settings when "
+"the battery charge state condition is met."
+msgstr ""
+"Khi được bật, một bộ tùy chọn sẽ xuất hiện cho phép bạn xác định hiệu ứng "
+"nào (nếu có) sẽ được sử dụng khi chạy bằng nguồn pin và trạng thái sạc pin "
+"thấp hơn giới hạn đã đặt. Các cài đặt này sẽ được ưu tiên hơn cả cài đặt "
+"chung và bất kỳ cài đặt cụ thể ứng dụng nào khi điều kiện trạng thái sạc pin "
+"được đáp ứng."
+
+#. 6.2->settings-schema.json->power-percent->description
+msgid "When battery is less than (percent)"
+msgstr "Khi pin ít hơn (phần trăm)"
+
+#. 6.2->settings-schema.json->apparition-shake-intensity->description
+msgid "Shake Intensity"
+msgstr "Cường độ Rung"
+
+#. 6.2->settings-schema.json->apparition-twirl-intensity->description
+msgid "Twirl Intensity"
+msgstr "Cường độ Xoáy"
+
+#. 6.2->settings-schema.json->apparition-suction-intensity->description
+msgid "Suction Intensity"
+msgstr "Cường độ Hút"
+
+#. 6.2->settings-schema.json->apparition-randomness->description
+msgid "Randomness"
+msgstr "Tính ngẫu nhiên"
+
+#. 6.2->settings-schema.json->apparition-animation-time->description
+#. 6.2->settings-schema.json->aura-glow-animation-time->description
+#. 6.2->settings-schema.json->doom-animation-time->description
+#. 6.2->settings-schema.json->energize-a-animation-time->description
+#. 6.2->settings-schema.json->energize-b-animation-time->description
+#. 6.2->settings-schema.json->fire-animation-time->description
+#. 6.2->settings-schema.json->focus-animation-time->description
+#. 6.2->settings-schema.json->glide-animation-time->description
+#. 6.2->settings-schema.json->glitch-animation-time->description
+#. 6.2->settings-schema.json->hexagon-animation-time->description
+#. 6.2->settings-schema.json->incinerate-animation-time->description
+#. 6.2->settings-schema.json->magiclamp-animation-time->description
+#. 6.2->settings-schema.json->mushroom-animation-time->description
+#. 6.2->settings-schema.json->pixelate-animation-time->description
+#. 6.2->settings-schema.json->pixel-wheel-animation-time->description
+#. 6.2->settings-schema.json->pixel-wipe-animation-time->description
+#. 6.2->settings-schema.json->portal-animation-time->description
+#. 6.2->settings-schema.json->rgbwarp-animation-time->description
+#. 6.2->settings-schema.json->team-rocket-animation-time->description
+#. 6.2->settings-schema.json->tv-animation-time->description
+#. 6.2->settings-schema.json->tv-glitch-animation-time->description
+#. 6.2->settings-schema.json->wisps-animation-time->description
+msgid "Effect Duration (ms)"
+msgstr "Thời lượng Hiệu ứng (ms)"
+
+#. 6.2->settings-schema.json->apparition-reset->description
+#. 6.2->settings-schema.json->aura-glow-reset->description
+#. 6.2->settings-schema.json->doom-reset->description
+#. 6.2->settings-schema.json->energize-a-reset->description
+#. 6.2->settings-schema.json->energize-b-reset->description
+#. 6.2->settings-schema.json->fire-reset->description
+#. 6.2->settings-schema.json->focus-reset->description
+#. 6.2->settings-schema.json->glide-reset->description
+#. 6.2->settings-schema.json->glitch-reset->description
+#. 6.2->settings-schema.json->hexagon-reset->description
+#. 6.2->settings-schema.json->incinerate-reset->description
+#. 6.2->settings-schema.json->magiclamp-reset->description
+#. 6.2->settings-schema.json->mushroom-reset->description
+#. 6.2->settings-schema.json->pixelate-reset->description
+#. 6.2->settings-schema.json->pixel-wheel-reset->description
+#. 6.2->settings-schema.json->pixel-wipe-reset->description
+#. 6.2->settings-schema.json->portal-reset->description
+#. 6.2->settings-schema.json->rgbwarp-reset->description
+#. 6.2->settings-schema.json->team-rocket-reset->description
+#. 6.2->settings-schema.json->tv-reset->description
+#. 6.2->settings-schema.json->tv-glitch-reset->description
+#. 6.2->settings-schema.json->wisps-reset->description
+msgid "Reset to default"
+msgstr "Đặt lại về mặc định"
+
+#. 6.2->settings-schema.json->aura-glow-random-color->description
+msgid "Random Color"
+msgstr "Màu Ngẫu nhiên"
+
+#. 6.2->settings-schema.json->aura-glow-start-hue->description
+msgid "Start Hue"
+msgstr "Sắc độ Bắt đầu"
+
+#. 6.2->settings-schema.json->aura-glow-speed->description
+#. 6.2->settings-schema.json->glitch-speed->description
+#. 6.2->settings-schema.json->tv-glitch-speed->description
+msgid "Speed"
+msgstr "Tốc độ"
+
+#. 6.2->settings-schema.json->aura-glow-saturation->description
+msgid "Saturation"
+msgstr "Độ bão hòa"
+
+#. 6.2->settings-schema.json->aura-glow-edge-size->description
+msgid "Edge Size"
+msgstr "Kích thước Viền"
+
+#. 6.2->settings-schema.json->aura-glow-edge-hardness->description
+msgid "Edge Hardness"
+msgstr "Độ cứng Viền"
+
+#. 6.2->settings-schema.json->aura-glow-blur->description
+#. 6.2->settings-schema.json->focus-blur-amount->description
+msgid "Blur Amount"
+msgstr "Lượng Làm mờ"
+
+#. 6.2->settings-schema.json->doom-horizontal-scale->description
+msgid "Horizontal Scale"
+msgstr "Tỷ lệ Ngang"
+
+#. 6.2->settings-schema.json->doom-vertical-scale->description
+msgid "Vertical Scale"
+msgstr "Tỷ lệ Dọc"
+
+#. 6.2->settings-schema.json->doom-pixel-size->description
+#. 6.2->settings-schema.json->pixelate-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wheel-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wipe-pixel-size->description
+msgid "Pixel Size"
+msgstr "Kích thước Pixel"
+
+#. 6.2->settings-schema.json->doom-y-hack->description
+msgid "Y offset fix for open/unminimize events"
+msgstr "Sửa lỗi lệch Y cho sự kiện mở/phục hồi"
+
+#. 6.2->settings-schema.json->doom-y-hack->tooltip
+msgid ""
+"Apply an offset to the Y axis window target position so that the open/"
+"unminimize animation completes at the right location. This is a hack fix for "
+"the Doom effect until I can find a proper fix"
+msgstr ""
+"Áp dụng một độ lệch cho vị trí đích cửa sổ trên trục Y để hoạt ảnh mở/phục "
+"hồi hoàn thành ở đúng vị trí. Đây là một bản sửa tạm thời cho hiệu ứng Doom "
+"cho đến khi tôi có thể tìm thấy bản sửa chính xác"
+
+#. 6.2->settings-schema.json->energize-a-scale->description
+#. 6.2->settings-schema.json->energize-b-scale->description
+#. 6.2->settings-schema.json->fire-custom-scale->description
+#. 6.2->settings-schema.json->glide-scale->description
+#. 6.2->settings-schema.json->glitch-scale->description
+#. 6.2->settings-schema.json->hexagon-scale->description
+#. 6.2->settings-schema.json->incinerate-scale->description
+#. 6.2->settings-schema.json->tv-glitch-scale->description
+#. 6.2->settings-schema.json->wisps-scale->description
+msgid "Scale"
+msgstr "Tỷ lệ"
+
+#. 6.2->settings-schema.json->energize-a-color->description
+#. 6.2->settings-schema.json->energize-b-color->description
+#. 6.2->settings-schema.json->glitch-color->description
+#. 6.2->settings-schema.json->incinerate-color->description
+#. 6.2->settings-schema.json->portal-color->description
+#. 6.2->settings-schema.json->tv-effect-color->description
+#. 6.2->settings-schema.json->tv-glitch-color->description
+msgid "Color"
+msgstr "Màu"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. 6.2->settings-schema.json->mushroom-presets->options
+msgid "Custom"
+msgstr "Tùy chỉnh"
+
+#. 6.2->settings-schema.json->fire-presets->description
+msgid "Fire Preset"
+msgstr "Thiết lập Lửa"
+
+#. 6.2->settings-schema.json->fire-custom-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr "Tốc độ Di chuyển Lửa"
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr "Nhiễu 3D Lửa"
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Tạo ra ngọn lửa năng động hơn nhưng yêu cầu nhiều sức mạnh GPU hơn."
+
+#. 6.2->settings-schema.json->fire-random-color->description
+msgid "Use a Random Color (overrides other color settings)"
+msgstr "Sử dụng Màu Ngẫu nhiên (ghi đè các cài đặt màu khác)"
+
+#. 6.2->settings-schema.json->fire-random-color->tooltip
+msgid ""
+"Use a random fire color. This setting will override any preset or custom "
+"colors settings you select."
+msgstr ""
+"Sử dụng màu lửa ngẫu nhiên. Cài đặt này sẽ ghi đè bất kỳ thiết lập màu tùy "
+"chỉnh hoặc đặt sẵn nào bạn chọn."
+
+#. 6.2->settings-schema.json->fire-colors->description
+msgid "Colors 1-5"
+msgstr "Màu 1-5"
+
+#. 6.2->settings-schema.json->focus-blur-quality->description
+msgid "Blur Quality"
+msgstr "Chất lượng Làm mờ"
+
+#. 6.2->settings-schema.json->focus-blur-quality->tooltip
+msgid ""
+"The Quality of the Blur (Setting this too high may increase GPU load and "
+"affect performance)"
+msgstr ""
+"Chất lượng của Làm mờ (Đặt quá cao có thể tăng tải GPU và ảnh hưởng đến hiệu "
+"suất)"
+
+#. 6.2->settings-schema.json->glide-squish->description
+msgid "Squish"
+msgstr "Ép"
+
+#. 6.2->settings-schema.json->glide-tilt->description
+msgid "Tilt"
+msgstr "Nghiêng"
+
+#. 6.2->settings-schema.json->glide-shift->description
+msgid "Shift"
+msgstr "Dịch chuyển"
+
+#. 6.2->settings-schema.json->glitch-strength->description
+#. 6.2->settings-schema.json->tv-glitch-strength->description
+msgid "Strength"
+msgstr "Cường độ"
+
+#. 6.2->settings-schema.json->hexagon-line-width->description
+msgid "Mesh Line Width"
+msgstr "Độ rộng Đường Lưới"
+
+#. 6.2->settings-schema.json->hexagon-line-color->description
+msgid "Line Color"
+msgstr "Màu Đường"
+
+#. 6.2->settings-schema.json->hexagon-glow-color->description
+msgid "Glow Color"
+msgstr "Màu Phát sáng"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->description
+msgid "Additive Blending"
+msgstr "Pha trộn Cộng"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->tooltip
+msgid "You may want to enable this for dark window themes."
+msgstr "Bạn có thể muốn bật tính năng này cho các chủ đề cửa sổ tối."
+
+#. 6.2->settings-schema.json->incinerate-turbulence->description
+msgid "Turbulence"
+msgstr "Độ nhiễu loạn"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->description
+msgid "Start at Pointer"
+msgstr "Bắt đầu tại Con trỏ"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->tooltip
+msgid "If disabled, a random location will be chosen."
+msgstr "Nếu bị tắt, một vị trí ngẫu nhiên sẽ được chọn."
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Curved"
+msgstr "Cong"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Wavy"
+msgstr "Sóng"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Random"
+msgstr "Ngẫu nhiên"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Appear: Curved / Disappear: Wavy"
+msgstr "Xuất hiện: Cong / Biến mất: Sóng"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Appear: Wavy / Disappear: Curved"
+msgstr "Xuất hiện: Sóng / Biến mất: Cong"
+
+#. 6.2->settings-schema.json->magiclamp-effect->description
+msgid "The type of effect"
+msgstr "Loại hiệu ứng"
+
+#. 6.2->settings-schema.json->magiclamp-effect->tooltip
+msgid ""
+"The effect can be a smooth curve or a wavy animation. The random option will "
+"randomly choose between the two and the Appear/Disappear options use "
+"different effects whether a window is appearing or disappearing from the "
+"screen"
+msgstr ""
+"Hiệu ứng có thể là một đường cong mượt mà hoặc một hoạt ảnh sóng. Tùy chọn "
+"ngẫu nhiên sẽ chọn ngẫu nhiên giữa hai loại và các tùy chọn Xuất hiện/Biến "
+"mất sử dụng các hiệu ứng khác nhau tùy thuộc vào việc cửa sổ đang xuất hiện "
+"hay biến mất khỏi màn hình"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Top"
+msgstr "Trên"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Bottom"
+msgstr "Dưới"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Left"
+msgstr "Trái"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Right"
+msgstr "Phải"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Edge closest to mouse pointer"
+msgstr "Cạnh gần con trỏ chuột nhất"
+
+#. 6.2->settings-schema.json->magiclamp-edge->description
+msgid "Open/Close Edge"
+msgstr "Cạnh Mở/Đóng"
+
+#. 6.2->settings-schema.json->magiclamp-edge->tooltip
+msgid ""
+"The monitor edge where a window should originate from when opening, or "
+"disappear towards when closing. This setting is not used for minimize or "
+"unminimize events"
+msgstr ""
+"Cạnh màn hình nơi cửa sổ nên bắt nguồn khi mở, hoặc biến mất về phía đó khi "
+"đóng. Cài đặt này không được sử dụng cho sự kiện thu nhỏ hoặc phục hồi"
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->description
+msgid "Open/Close Edge Offset"
+msgstr "Độ lệch Cạnh Mở/Đóng"
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
+msgid ""
+"The offset from the top or left of the \"Open/Close Edge\" that the "
+"animation should use as the origin/target of the animation. This is a "
+"percentage of the monitors width/height and it does not apply to minimize/"
+"unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
+"to mouse pointer\""
+msgstr ""
+"Độ lệch từ trên cùng hoặc bên trái của \"Cạnh Mở/Đóng\" mà hoạt ảnh nên sử "
+"dụng làm điểm xuất phát/đích của hoạt ảnh. Đây là phần trăm chiều rộng/cao "
+"của màn hình và không áp dụng cho sự kiện thu nhỏ/phục hồi hoặc khi \"Cạnh "
+"Mở/Đóng\" được đặt thành \"Cạnh gần con trỏ chuột nhất\""
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->description
+msgid "X Tiles"
+msgstr "Ô X"
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr "Điều này ảnh hưởng đến chất lượng và chi phí của hoạt ảnh"
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->description
+msgid "Y Tiles"
+msgstr "Ô Y"
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr "Điều này ảnh hưởng đến chất lượng và chi phí của hoạt ảnh"
+
+#. 6.2->settings-schema.json->mushroom-presets->description
+msgid "Mushroom Preset"
+msgstr "Thiết lập Nấm"
+
+#. 6.2->settings-schema.json->mushroom-custom-scale-style->description
+msgid "Scale Style"
+msgstr "Kiểu Tỷ lệ"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-count->description
+msgid "Spark Count"
+msgstr "Số lượng Tia lửa"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-color->description
+msgid "Spark Color"
+msgstr "Màu Tia lửa"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
+msgid "Spark Rotation"
+msgstr "Xoay Tia lửa"
+
+#. 6.2->settings-schema.json->mushroom-custom-rays-color->description
+msgid "Rays Color"
+msgstr "Màu Tia sáng"
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-count->description
+msgid "Star Rings Count"
+msgstr "Số lượng Vòng sao"
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
+msgid "Star Ring Rotation"
+msgstr "Xoay Vòng sao"
+
+#. 6.2->settings-schema.json->mushroom-custom-star-count->description
+msgid "Stars Count Per Ring"
+msgstr "Số lượng Sao mỗi Vòng"
+
+#. 6.2->settings-schema.json->mushroom-star-colors->description
+msgid "Colors 1-6"
+msgstr "Màu 1-6"
+
+#. 6.2->settings-schema.json->pixelate-noise->description
+msgid "Noise"
+msgstr "Nhiễu"
+
+#. 6.2->settings-schema.json->pixel-wheel-spoke-count->description
+msgid "Spoke Count"
+msgstr "Số lượng Nan hoa"
+
+#. 6.2->settings-schema.json->portal-rotation-speed->description
+msgid "Rotation Speed"
+msgstr "Tốc độ Xoay"
+
+#. 6.2->settings-schema.json->portal-whirling->description
+msgid "Whirling"
+msgstr "Xoáy"
+
+#. 6.2->settings-schema.json->portal-details->description
+msgid "Details"
+msgstr "Chi tiết"
+
+#. 6.2->settings-schema.json->rgbwarp-brightness->description
+msgid "Brightness"
+msgstr "Độ sáng"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-r->description
+msgid "Red Speed"
+msgstr "Tốc độ Đỏ"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-g->description
+msgid "Green Speed"
+msgstr "Tốc độ Xanh lá"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-b->description
+msgid "Blue Speed"
+msgstr "Tốc độ Xanh dương"
+
+#. 6.2->settings-schema.json->team-rocket-animation-split->description
+msgid "Animation Split"
+msgstr "Chia tách Hoạt ảnh"
+
+#. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
+#. position->description
+msgid "Horizontal Sparkle Position"
+msgstr "Vị trí Lấp lánh Ngang"
+
+#. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
+#. position->description
+msgid "Vertical Sparkle Position"
+msgstr "Vị trí Lấp lánh Dọc"
+
+#. 6.2->settings-schema.json->team-rocket-window-rotation->description
+msgid "Rotate Window"
+msgstr "Xoay Cửa sổ"
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
+msgid "Sparkle Rotation"
+msgstr "Xoay Lấp lánh"
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-size->description
+msgid "Sparkle Size"
+msgstr "Kích thước Lấp lánh"
+
+#. 6.2->settings-schema.json->wisps-color-1->description
+msgid "Color #1"
+msgstr "Màu #1"
+
+#. 6.2->settings-schema.json->wisps-color-2->description
+msgid "Color #2"
+msgstr "Màu #2"
+
+#. 6.2->settings-schema.json->wisps-color-3->description
+msgid "Color #3"
+msgstr "Màu #3"
+
+#. 6.2->settings-schema.json->test-effect->description
+msgid "Open effect preview window"
+msgstr "Mở cửa sổ xem trước hiệu ứng"
+
+#. 6.2->settings-schema.json->test-effect->tooltip
+msgid "Opens a window using the currently selected effect."
+msgstr "Mở một cửa sổ sử dụng hiệu ứng hiện được chọn."

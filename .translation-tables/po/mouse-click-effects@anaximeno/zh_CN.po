@@ -1,0 +1,262 @@
+# MOUSE CLICK EFFECTS
+# This file is put in the public domain.
+# anaximeno, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"PO-Revision-Date: 2024-05-28 11:48+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr "鼠标点击特效"
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr "在Cinnamon上显示鼠标点击特效"
+
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
+msgid "General"
+msgstr "常规"
+
+#. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
+msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
+msgstr "颜色"
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr "图标模式"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr "简单"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr "枪神"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr "花眼"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr "里斯科"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr "狼"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr "毛笔"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr "爪子"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr "大都会"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr "小花"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr "库斯科"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr "衔尾蛇"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr "螺旋"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr "方向"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr "万花筒"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr "茅草"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr "棉花"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr "圆圈"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr "齿轮"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr ""
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr "像素"
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr "图标大小"
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr "点击动画模式"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Blink"
+msgstr "闪烁"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Bounce"
+msgstr "反弹"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Retract"
+msgstr "缩回"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Expand"
+msgstr "扩张"
+
+#. 5.4->settings-schema.json->animation-time->units
+#. 5.4->settings-schema.json->idle-animation-delay->units
+#. 5.4->settings-schema.json->idle-animation-period->units
+msgid "ms"
+msgstr "毫秒"
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr "动画时间"
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+#, fuzzy
+msgid "Idle Mouse Animation Mode"
+msgstr "点击动画模式"
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+#, fuzzy
+msgid "Idle Mouse Animation Delay"
+msgstr "点击动画模式"
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+#, fuzzy
+msgid "Idle Mouse Animation Period"
+msgstr "点击动画模式"
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr "常规透明度"
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr "全屏时不激活"
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+#, fuzzy
+msgid "Animate Left Click"
+msgstr "启用左键点击特效"
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+#, fuzzy
+msgid "Animate Middle Click"
+msgstr "启用中键点击特效"
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+#, fuzzy
+msgid "Animate Right Click"
+msgstr "启用右键点击特效"
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+msgid "Animate Pause"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
+msgstr ""
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr "左键点击颜色"
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr "中键点击颜色"
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr "右键点击颜色"
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
+msgstr ""

@@ -1,0 +1,88 @@
+# MOUSE CLICK EFFECTS
+# This file is put in the public domain.
+# anaximeno, 2024
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
+msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr ""
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+msgid "Idle Mouse Animation Mode"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+msgid "Idle Mouse Animation Delay"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+msgid "Idle Mouse Animation Period"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr ""
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Animate Left Click"
+msgstr ""
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Animate Middle Click"
+msgstr ""
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Animate Right Click"
+msgstr ""
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+msgid "Animate Pause"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
+msgstr ""

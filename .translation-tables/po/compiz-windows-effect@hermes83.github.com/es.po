@@ -1,0 +1,144 @@
+# COMPIZ WINDOWS EFFECT
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# hermes83, 2022
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-11-25 10:07-0500\n"
+"PO-Revision-Date: 2025-11-28 11:31-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#. extension.js:190
+msgid "Error"
+msgstr "Error"
+
+#. extension.js:191
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Compiz window effects can not be disabled for that "
+"window"
+msgstr ""
+"No se puede determinar la aplicación o la clase WM_CLASS de la ventana que "
+"tenía el foco anteriormente, por lo que no se pueden desactivar los efectos "
+"de ventana de Compiz para esa ventana"
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr ""
+"Efecto de ventanas bamboleante de Compiz gracias al motor de complementos de "
+"Compiz"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Efecto de ventanas Compiz"
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "General"
+
+#. settings-schema.json->exclude-page->title
+msgid "Exclude List"
+msgstr "Lista de exclusión"
+
+#. settings-schema.json->preset-section->title
+msgid "Compiz windows effect configuration"
+msgstr "Configuración de efectos de ventanas Compiz"
+
+#. settings-schema.json->effect-settings-section->title
+msgid "Custom effect settings"
+msgstr "Configuración de efectos personalizados"
+
+#. settings-schema.json->exclude-section->title
+msgid "Application windows where no window effects will be applied"
+msgstr "Ventanas de aplicación en las que no se aplicarán efectos de ventana"
+
+#. settings-schema.json->presetList->options
+msgid "Subtle"
+msgstr "Sutil"
+
+#. settings-schema.json->presetList->options
+msgid "Realistic"
+msgstr "Realista"
+
+#. settings-schema.json->presetList->options
+msgid "Exaggerated"
+msgstr "Exagerado"
+
+#. settings-schema.json->presetList->options
+msgid "Extreme"
+msgstr "Extremo"
+
+#. settings-schema.json->presetList->options
+msgid "Custom"
+msgstr "Personalizado"
+
+#. settings-schema.json->presetList->description
+msgid "Effect style"
+msgstr "Estilo de efecto"
+
+#. settings-schema.json->excludeList->description
+msgid "Application exclude list"
+msgstr "Lista de exclusión de aplicaciones"
+
+#. settings-schema.json->excludeList->columns->title
+msgid "Application"
+msgstr "Aplicación"
+
+#. settings-schema.json->excludeList->tooltip
+msgid ""
+"Defines a list of applications where the \"Compiz window effect\" effects "
+"will not be applied."
+msgstr ""
+"Define una lista de aplicaciones en las que no se aplicarán los efectos "
+"\"efectos de ventana de Compiz\"."
+
+#. settings-schema.json->excludeButton->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+"Añadir entrada para la aplicación de la ventana enfocada más recientemente"
+
+#. settings-schema.json->excludeButton->tooltip
+msgid ""
+"Focus the window you want to disable window effects for, then return here "
+"and press this button."
+msgstr ""
+"Seleccione la ventana para la que desea desactivar los efectos de ventana, "
+"vuelva aquí y pulse este botón."
+
+#. settings-schema.json->friction->description
+msgid "Friction "
+msgstr "Fricción "
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "Resorte"
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup"
+msgstr "Aceleración"
+
+#. settings-schema.json->mass->description
+msgid "Mass      "
+msgstr "Masa      "
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles  "
+msgstr "Mosaico eje X  "
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles  "
+msgstr "Mosaico eje Y  "
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "Factor de maximización y des-maximización"

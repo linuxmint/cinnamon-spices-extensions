@@ -1,0 +1,91 @@
+# BLUR OVERVIEW
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# nailfarmer, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
+"PO-Revision-Date: 2025-03-29 19:59+0200\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Blur Overview"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur and adjust the dimming of the overview's background "
+"(window selection screen)"
+msgstr ""
+"Voit sumentaa ja säätää taustaväriä sovellusnäytössä (painamalla Ctrl+Alt+⬇)"
+
+#. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr "Asetukset Blur Overview (sovellusten valintanäytössä Ctrl+Alt+⬇)"
+
+#. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr "Sumenna taustaa (prosenttia)"
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr "Sumenna taustaa"
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr "Värien sekoitustehoste"
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+"Mukauta käyttämällä himmennykseen valittua väriä. Värin voimakkuutta voi "
+"säätää yllä olevalla \"Sumenna taustaa\" liukusäätimellä"
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr "Sekoitusväri"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr "Ei mitään"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr "Vakio"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr "Gaussian"
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr "Sumeustehoste"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr "Mitä sumennusalgoritmia tulisi käyttää taustan sumentamiseen"
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr "Sumennuksen voimakkuus"
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr "Säätää sumennuksen voimakkuutta muuttamalla tehosteen säteen käyttöä."

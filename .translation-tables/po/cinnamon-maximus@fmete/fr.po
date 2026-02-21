@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-maximus@fmete 0.4.7\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2024-12-22 03:26+0100\n"
+"Last-Translator: claudiux\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr "Supprimez la décoration des fenêtres à votre convenance."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Préférences de Cinnamon Maximus"
+
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
+msgstr "Suppression de la décoration par raccourci-clavier uniquement"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr ""
+"Utiliser le raccourci clavier pour basculer la décoration de la fenêtre en "
+"cours"
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr ""
+"Touche de raccourci globale pour basculer la décoration de la fenêtre en "
+"cours (Expérimental)"
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr ""
+"Supprimer la décoration quand les fenêtres sont présentées en carreaux "
+"adjacents"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr ""
+"Supprimer la décoration de toutes les fenêtres (expérimental, veuillez "
+"fermer et rouvrir toutes les fenêtres)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr "Utiliser une liste de fenêtres à ignorer"
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr ""
+"Applications ignorées (utiliser « , » pour séparer les applications ; "
+"correspondance partielle et expression rationnelle autorisées)"
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating for apps"
+msgstr ""
+"Utiliser la suppression automatique de décoration pour des applications"
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr ""
+"Applications concernées par la suppression automatique de la décoration "
+"(utilisez « , » pour séparer les applications, les correspondances "
+"partielles et les expressions rationnelles sont autorisées)"
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr "Garder le focus sur les applications QT (expérimental)"
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr "Journalisation (voir Mélange ou Looking-glass)"
