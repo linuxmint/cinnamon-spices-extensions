@@ -101,7 +101,7 @@ class AdjacentWindows {
          Main.keybindingManager.addHotKey("adjacent-down" , this.downCombo, Lang.bind(this, function() {this.performHotkey(Direction.Down)} ));
       }
       this.underCombo = this.getHotkeySequence("under-key");
-      if (this.downCombo) {
+      if (this.underCombo) {
          Main.keybindingManager.addHotKey("adjacent-under" , this.underCombo, Lang.bind(this, function() {this.performHotkey(Direction.Under)} ));
       }
       this.backCombo = this.getHotkeySequence("back-key");

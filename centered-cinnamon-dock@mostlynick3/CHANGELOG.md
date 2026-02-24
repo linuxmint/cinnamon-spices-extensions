@@ -21,3 +21,9 @@
  * Correct tooltips lasting longer than auto-hidden panel
  * Correct global panel theme inheritance
  * Add support for user-configurable minimum dock width
+ 
+### 1.3
+ * Harden script to prevent race condition crashes on extension load/Cinnamon load
+ * Correct size and trigger zone of side panels, and alignment with side indicators
+ * Add and set new default auto hide mode, hide if focused window covers full screen
+ * Add welcome modal to new users, offering easy method to enable initial panels

@@ -57,9 +57,9 @@ float rounded_rect_coverage(vec2 p, vec4 bounds, float clip_radius) {
     float center_right = bounds.z - clip_radius;
 
     if (p.x < center_left)
-        center.x = center_left + 2.;
+        center.x = center_left;
     else if (p.x > center_right)
-        center.x = center_right - 1.;
+        center.x = center_right;
     else
         return 1.0;
 
@@ -67,9 +67,9 @@ float rounded_rect_coverage(vec2 p, vec4 bounds, float clip_radius) {
     float center_bottom = bounds.w - clip_radius;
 
     if (corners_top && p.y < center_top)
-        center.y = center_top + 2.;
+        center.y = center_top;
     else if (corners_bottom && p.y > center_bottom)
-        center.y = center_bottom - 1.;
+        center.y = center_bottom;
     else
         return 1.0;
 

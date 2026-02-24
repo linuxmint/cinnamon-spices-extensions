@@ -31,8 +31,148 @@ let windowCreatedSignal;
 let isTransitioningWorkspace = false;
 let panelMenuItems = {};
 let panelAddedSignal;
+let windowStateChangedSignals = [];
 
 const SCHEMA_VERSION = 2;
+
+class FirstRunDialog {
+    constructor() {
+        this.dialog = new ModalDialog.ModalDialog();
+        this.panelCheckboxes = {};
+        
+        this.dialog.connect('opened', () => {
+            if (this.dialog._backgroundBin) {
+                this.dialog._backgroundBin.reactive = true;
+                this.dialog._backgroundBin.connect('button-press-event', (actor, event) => {
+                    let [x, y] = event.get_coords();
+                    let contentActor = this.dialog.contentLayout;
+                    if (contentActor && !contentActor.contains(global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y))) {
+                        this._close();
+                        return Clutter.EVENT_STOP;
+                    }
+                    return Clutter.EVENT_PROPAGATE;
+                });
+            }
+        });
+        
+        this._build();
+    }
+    
+    _build() {
+        let contentBox = new St.BoxLayout({
+            vertical: true,
+            style: 'padding: 10px; spacing: 10px;'
+        });
+        
+        let title = new St.Label({
+            text: _("Welcome to Centered Cinnamon Dock!"),
+            style: 'font-size: 16pt; font-weight: bold; padding: 15px; color: #4a90d9; text-align: center;'
+        });
+        title.clutter_text.set_line_wrap(false);
+        title.clutter_text.set_ellipsize(imports.gi.Pango.EllipsizeMode.NONE);
+        contentBox.add(title, { x_fill: true, expand: true });
+        
+        let desc = new St.Label({
+            text: _("Which panel(s) would you like to turn into a dock?"),
+            style: 'padding: 10px; text-align: center;'
+        });
+        desc.clutter_text.set_line_wrap(true);
+        desc.clutter_text.set_line_wrap_mode(imports.gi.Pango.WrapMode.WORD);
+        contentBox.add(desc, { x_fill: true, expand: true });
+        
+        let panelsBox = new St.BoxLayout({
+            vertical: true,
+            style: 'spacing: 5px;'
+        });
+        
+        Main.panelManager.panels.forEach(panel => {
+            let panelId = getPanelIdentifier(panel);
+            let location = getPanelLocation(panel);
+            let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
+            let monitorIndex = monitor ? Main.layoutManager.monitors.indexOf(monitor) : 0;
+            
+            let settings = getPanelSettings(panelId);
+            let isEnabled = settings.enabled || false;
+            
+            let box = new St.BoxLayout({ style: 'padding: 5px; spacing: 10px;' });
+            let label = new St.Label({ text: `${location} (Monitor ${monitorIndex})` });
+            let checkbox = new St.Button({
+                style: 'width: 50px; height: 30px; background-color: ' + (isEnabled ? '#4a90d9' : '#666666') + '; border-radius: 15px;',
+                toggle_mode: true,
+                checked: isEnabled
+            });
+            checkbox.connect('clicked', () => {
+                checkbox.set_style('width: 50px; height: 30px; background-color: ' + (checkbox.checked ? '#4a90d9' : '#666666') + '; border-radius: 15px;');
+            });
+            
+            box.add(label, { x_fill: true, expand: true });
+            box.add(checkbox, { x_fill: false, expand: false });
+            panelsBox.add(box, { x_fill: true, expand: false });
+            this.panelCheckboxes[panelId] = checkbox;
+        });
+        
+        let scrollView = new St.ScrollView({
+            style: 'max-height: 300px;',
+            hscrollbar_policy: St.PolicyType.NEVER,
+            vscrollbar_policy: St.PolicyType.AUTOMATIC
+        });
+        scrollView.add_actor(panelsBox);
+        
+        contentBox.add(scrollView, { x_fill: true, expand: true });
+        
+        let desc2 = new St.Label({
+            text: _("Right click any panel to change your mind or configure the docks later."),
+            style: 'padding: 10px; text-align: center;'
+        });
+        desc2.clutter_text.set_line_wrap(true);
+        desc2.clutter_text.set_line_wrap_mode(imports.gi.Pango.WrapMode.WORD);
+        contentBox.add(desc2, { x_fill: true, expand: true });
+        
+        this.dialog.contentLayout.add(contentBox, { x_fill: true, expand: true });
+        
+        this.dialog.setButtons([
+            { label: _('Skip'), action: () => this._close(), key: Clutter.KEY_Escape },
+            { label: _('Enable'), action: () => this._apply(), key: Clutter.KEY_Return }
+        ]);
+    }
+
+    _apply() {
+        for (let panelId in this.panelCheckboxes) {
+            if (this.panelCheckboxes[panelId].checked) {
+                let settings = getPanelSettings(panelId);
+                settings.enabled = true;
+                savePanelSettings(panelId, settings);
+            }
+        }
+        
+        try {
+            let allSettings = globalSettings.getValue("panel-settings");
+            allSettings.welcomeShown = true;
+            globalSettings.setValue("panel-settings", allSettings);
+        } catch(e) {}
+        
+        this.dialog.close();
+        Mainloop.timeout_add(100, () => { 
+            initializePanels(); 
+            addPanelMenuItems(); 
+            return false; 
+        });
+    }
+    
+    _close() {
+        try {
+            let allSettings = globalSettings.getValue("panel-settings");
+            allSettings.welcomeShown = true;
+            globalSettings.setValue("panel-settings", allSettings);
+        } catch(e) {}
+        
+        this.dialog.close();
+    }
+    
+    open() {
+        this.dialog.open();
+    }
+}
 
 class PanelSettingsDialog {
     constructor(panel) {
@@ -113,14 +253,14 @@ class PanelSettingsDialog {
         
         this.enabledSwitch = this._addSwitch(
             _('Enable Centered Dock for this panel'),
-            this.settings.enabled
+            this.settings.enabled || false
         );
         
         this._addSeparator();
         
         this.heightOffsetSlider = this._addSlider(
             _('Height offset (negative = up, positive = down)'),
-            this.settings.heightOffset,
+            this.settings.heightOffset || -8,
             -500,
             500,
             1
@@ -128,12 +268,12 @@ class PanelSettingsDialog {
         
         this.noWindowShiftSwitch = this._addSwitch(
             _("Don't shift windows (disable panel struts)"),
-            this.settings.noWindowShift
+            this.settings.noWindowShift || false
         );
         
         this.animationTimeSlider = this._addSlider(
             _('Fade animation duration (ms)'),
-            this.settings.animationTime,
+            this.settings.animationTime || 500,
             0,
             1000,
             50
@@ -143,7 +283,7 @@ class PanelSettingsDialog {
         
         this.transparencySlider = this._addSlider(
             _('Transparency (%)'),
-            this.settings.transparency,
+            this.settings.transparency || 85,
             0,
             100,
             5
@@ -151,20 +291,20 @@ class PanelSettingsDialog {
         
         this.minWidthSlider = this._addSlider(
             _('Minimum dock width'),
-            this.settings.minWidth || 0,
-            0,
+            this.settings.minWidth || 50,
+            50,
             2000,
             50
         );
         
         this.zoomEnabledSwitch = this._addSwitch(
             _('Enable zoom effect on hover'),
-            this.settings.zoomEnabled
+            this.settings.zoomEnabled || false
         );
         
         this.zoomFactorSlider = this._addSlider(
             _('Zoom scale factor'),
-            this.settings.zoomFactor,
+            this.settings.zoomFactor || 1.3,
             1.0,
             2.0,
             0.1
@@ -172,19 +312,59 @@ class PanelSettingsDialog {
         
         this._addHeader(_('Auto-hide Behavior'));
         
+        let modeLabel = new St.Label({
+            text: _('Choose one auto-hide mode (mutually exclusive):'),
+            style: 'font-style: italic; padding: 5px 5px 10px 5px; color: #999999; font-size: 10pt;'
+        });
+        this.contentBox.add(modeLabel, {
+            x_fill: true,
+            y_fill: false
+        });
+        
+        let hideOnFullscreen = this.settings.hideOnFullscreen || false;
+        let autoHide = this.settings.autoHide || false;
+        let showOnNoFocus = this.settings.showOnNoFocus || false;
+        
         this.autoHideSwitch = this._addSwitch(
             _('Auto-hide dock when focusing apps'),
-            this.settings.autoHide
+            autoHide && !hideOnFullscreen
         );
         
         this.showOnNoFocusSwitch = this._addSwitch(
-            _('Show dock when no window is focused'),
-            this.settings.showOnNoFocus
+            _('    ↳ Show dock when no window is focused'),
+            showOnNoFocus && !hideOnFullscreen
         );
+        
+        this._addSeparator();
+        
+        this.hideOnFullscreenSwitch = this._addSwitch(
+            _('Show dock unless window covers full screen'),
+            hideOnFullscreen
+        );
+        
+        let fullscreenDesc = new St.Label({
+            text: _('(Dock visible unless a window covers the full screen)'),
+            style: 'font-style: italic; padding: 0px 5px 8px 30px; color: #888888; font-size: 9pt;'
+        });
+        this.contentBox.add(fullscreenDesc, {
+            x_fill: true,
+            y_fill: false
+        });
+        
+        this._addSeparator();
+        
+        let commonSettingsLabel = new St.Label({
+            text: _('Auto-hide timing settings:'),
+            style: 'font-weight: bold; padding: 10px 5px 5px 5px; font-size: 10pt; color: #4a90d9;'
+        });
+        this.contentBox.add(commonSettingsLabel, {
+            x_fill: true,
+            y_fill: false
+        });
         
         this.hideDelaySlider = this._addSlider(
             _('Delay before auto-hiding (ms)'),
-            this.settings.hideDelay,
+            this.settings.hideDelay || 2000,
             0,
             5000,
             100
@@ -192,21 +372,55 @@ class PanelSettingsDialog {
         
         this.hoverPixelsSlider = this._addSlider(
             _('Height of trigger zone to show panel (px)'),
-            this.settings.hoverPixels,
+            this.settings.hoverPixels || 8,
             1,
             100,
             1
         );
         
+        this._addHeader(_('Auto-hide Indicator'));
+        
         this.showIndicatorSwitch = this._addSwitch(
             _('Show indicator of dock location in trigger zone'),
-            this.settings.showIndicator
+            this.settings.showIndicator || false
         );
         
         this.indicatorColorButton = this._addColorButton(
             _('Indicator color'),
-            this.settings.indicatorColor
+            this.settings.indicatorColor || 'rgba(30, 30, 30, 1.0)'
         );
+        
+        let self = this;
+        
+        this.hideOnFullscreenSwitch.connect('clicked', function() {
+            if (self.hideOnFullscreenSwitch.checked) {
+                self.autoHideSwitch.checked = false;
+                self.autoHideSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+                
+                self.showOnNoFocusSwitch.checked = false;
+                self.showOnNoFocusSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            }
+        });
+        
+        this.showOnNoFocusSwitch.connect('clicked', function() {
+            if (self.showOnNoFocusSwitch.checked) {
+                self.autoHideSwitch.checked = true;
+                self.autoHideSwitch.set_style('width: 50px; height: 30px; background-color: #4a90d9; border-radius: 15px;');
+                
+                self.hideOnFullscreenSwitch.checked = false;
+                self.hideOnFullscreenSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            }
+        });
+        
+        this.autoHideSwitch.connect('clicked', function() {
+            if (self.autoHideSwitch.checked) {
+                self.hideOnFullscreenSwitch.checked = false;
+                self.hideOnFullscreenSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            } else {
+                self.showOnNoFocusSwitch.checked = false;
+                self.showOnNoFocusSwitch.set_style('width: 50px; height: 30px; background-color: #666666; border-radius: 15px;');
+            }
+        });
     }
 
     _addHeader(text) {
@@ -551,7 +765,8 @@ class PanelSettingsDialog {
             indicatorColor: this.indicatorColorButton.selectedColor,
             showIndicator: this.showIndicatorSwitch.checked,
             hideDelay: this.hideDelaySlider._value,
-            minWidth: this.minWidthSlider._value
+            minWidth: this.minWidthSlider._value,
+            hideOnFullscreen: this.hideOnFullscreenSwitch.checked
         };
     }
     
@@ -585,11 +800,30 @@ function init(metadata) {
 }
 
 function enable() {
-    globalSettings = new Settings.ExtensionSettings(this, "centered-cinnamon-dock@mostlynick3");
+    try {
+        globalSettings = new Settings.ExtensionSettings(this, "centered-cinnamon-dock@mostlynick3");
+        
+        isInEditMode = global.settings.get_boolean("panel-edit-mode");
+    } catch(e) {
+        return;
+    }
     
-    migrateSettings();
-    
-    isInEditMode = global.settings.get_boolean("panel-edit-mode");
+    let showFirstRun = false;
+    try {
+        let allSettings = globalSettings.getValue("panel-settings");
+        if (!allSettings.welcomeShown) {
+            let hasEnabledPanels = false;
+            for (let key in allSettings) {
+                if (key !== 'welcomeShown' && allSettings[key].enabled) {
+                    hasEnabledPanels = true;
+                    break;
+                }
+            }
+            showFirstRun = !hasEnabledPanels;
+        }
+    } catch(e) {
+        showFirstRun = true;
+    }
     
     editModeSignal = global.settings.connect("changed::panel-edit-mode", function() {
         let newEditMode = global.settings.get_boolean("panel-edit-mode");
@@ -602,26 +836,58 @@ function enable() {
     displayStateSignal = Main.layoutManager.connect('monitors-changed', function() {
         if (isInEditMode) return;
         
-        disableAutoHide();
-        panelStates = {};
-        
-        Mainloop.idle_add(function() {
-            initializePanels();
-            return false;
-        });
+        try {
+            Main.panelManager.panels.forEach(panel => {
+                if (!shouldApplyToPanel(panel)) return;
+                if (!panel || !panel.actor) return;
+                
+                let state = panelStates[panel.panelId];
+                if (state) {
+                    state.isHidden = false;
+                    state.isHiding = false;
+                    state.isShowing = false;
+                }
+                panel.actor.show();
+                panel.actor.opacity = 255;
+                panel.actor.set_scale(1.0, 1.0);
+            });
+            
+            disableAutoHide();
+            
+            Mainloop.timeout_add(200, function() {
+                Main.panelManager.panels.forEach(panel => {
+                    if (!shouldApplyToPanel(panel)) return;
+                    if (!panel || !panel.actor) return;
+                    
+                    checkAndApplyStyle(panel, true);
+                });
+                toggleAutoHide();
+                return false;
+            });
+        } catch(e) {}
     });
     
     panelAddedSignal = Main.panelManager.connect('panel-added', function(manager, panel) {
-        addPanelMenuItem(panel);
-        if (shouldApplyToPanel(panel)) {
-            initPanel(panel);
-        }
+        try {
+            addPanelMenuItem(panel);
+            if (shouldApplyToPanel(panel)) {
+                initPanel(panel);
+            }
+        } catch(e) {}
     });
     
     addPanelMenuItems();
     
+    if (showFirstRun) {
+        Mainloop.timeout_add(500, () => {
+            new FirstRunDialog().open();
+            return false;
+        });
+    }
+    
     initializePanels();
 }
+
 function migrateSettings() {
     let version = globalSettings.getValue("schema-version");
     
@@ -668,40 +934,80 @@ function migrateSettings() {
 }
 
 function getPanelSettings(panelId) {
-    let allSettings = globalSettings.getValue("panel-settings");
-    
-    if (allSettings[panelId]) {
-        return allSettings[panelId];
+    try {
+        let allSettings = globalSettings.getValue("panel-settings");
+        
+        if (allSettings[panelId]) {
+            return allSettings[panelId];
+        }
+    } catch(e) {
     }
     
     return {
         enabled: false,
         transparency: 85,
         heightOffset: -8,
-        autoHide: true,
+        autoHide: false,
         hoverPixels: 8,
         noWindowShift: true,
         animationTime: 500,
-        showOnNoFocus: true,
+        showOnNoFocus: false,
         zoomFactor: 1.3,
         zoomEnabled: true,
         indicatorColor: "rgba(30, 30, 30, 1.0)",
         showIndicator: true,
         hideDelay: 2000,
-        minWidth: 50
+        minWidth: 50,
+        hideOnFullscreen: true
     };
 }
 
+function hasMaximizedOrFullscreenWindow(panel) {
+    try {
+        let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
+        if (!monitor) return false;
+        
+        let focusWindow = global.display.focus_window;
+        
+        if (!focusWindow || focusWindow.window_type !== Meta.WindowType.NORMAL) {
+            return false;
+        }
+        
+        if (focusWindow.minimized) return false;
+        
+        let winMonitor = focusWindow.get_monitor();
+        let monitorIndex = Main.layoutManager.monitors.indexOf(monitor);
+        if (winMonitor !== monitorIndex) return false;
+        
+        if (focusWindow.is_fullscreen()) {
+            return true;
+        }
+        
+        if (focusWindow.maximized_horizontally && focusWindow.maximized_vertically) {
+            return true;
+        }
+        
+        return false;
+    } catch(e) {
+        return false;
+    }
+}
+
 function savePanelSettings(panelId, settings) {
-    let allSettings = globalSettings.getValue("panel-settings");
-    allSettings[panelId] = settings;
-    globalSettings.setValue("panel-settings", allSettings);
+    try {
+        let allSettings = globalSettings.getValue("panel-settings");
+        allSettings[panelId] = settings;
+        globalSettings.setValue("panel-settings", allSettings);
+    } catch(e) {
+    }
 }
 
 function addPanelMenuItems() {
-    Main.panelManager.panels.forEach(panel => {
-        addPanelMenuItem(panel);
-    });
+    try {
+        Main.panelManager.panels.forEach(panel => {
+            addPanelMenuItem(panel);
+        });
+    } catch(e) {}
 }
 
 function addPanelMenuItem(panel) {
@@ -740,62 +1046,76 @@ function openPanelSettingsDialog(panel) {
         let dialog = new PanelSettingsDialog(panel);
         dialog.open();
     } catch(e) {
+        global.log("Error opening dialog: " + e);
+        global.log(e.stack);
     }
 }
 
 function enterEditMode() {
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel)) {
-            let state = panelStates[panel.panelId];
-            if (state) {
-                state.savedOpacity = panel.actor.opacity;
-                state.wasHidden = state.isHidden;
-                
-                Tweener.removeTweens(panel.actor);
-                panel.actor.set_scale(1.0, 1.0);
-                panel.actor.set_style('');
-                panel.actor.y = state.originalY;
-                panel.actor.x = state.originalX;
-                panel.actor.opacity = 255;
-                panel.actor.show();
+        if (!shouldApplyToPanel(panel)) return;
+        if (!panel || !panel.actor) return;
+        
+        let state = panelStates[panel.panelId];
+        if (!state) return;
+        
+        try {
+            state.savedOpacity = panel.actor.opacity;
+            state.wasHidden = state.isHidden;
+            
+            Tweener.removeTweens(panel.actor);
+            panel.actor.set_scale(1.0, 1.0);
+            panel.actor.set_style('');
+            panel.actor.y = state.originalY;
+            panel.actor.x = state.originalX;
+            panel.actor.opacity = 255;
+            panel.actor.show();
+            
+            if (Main.layoutManager._chrome && Main.layoutManager._chrome.modifyActorParams) {
                 Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: true });
-                
-                cleanupAppletZoom(panel);
             }
-        }
+            
+            cleanupAppletZoom(panel);
+        } catch(e) {}
     });
 }
 
 function exitEditMode() {
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel)) {
-            let state = panelStates[panel.panelId];
-            if (state) {
-                state.originalY = panel.actor.y;
-                state.originalX = panel.actor.x;
-            }
-        }
+        if (!shouldApplyToPanel(panel)) return;
+        if (!panel || !panel.actor) return;
+        
+        let state = panelStates[panel.panelId];
+        if (!state) return;
+        
+        try {
+            state.originalY = panel.actor.y;
+            state.originalX = panel.actor.x;
+        } catch(e) {}
     });
     
     Mainloop.timeout_add(150, function() {
         Main.panelManager.panels.forEach(panel => {
-            if (shouldApplyToPanel(panel)) {
-                let state = panelStates[panel.panelId];
-                if (state) {
-                    state.lastWidth = 0;
-                    state.lastHeight = 0;
-                    checkAndApplyStyle(panel, true);
-                    setupAppletZoom(panel);
-                    
-                    if (state.wasHidden && getPanelSetting(panel, "autoHide")) {
-                        Mainloop.timeout_add(100, function() {
-                            state.isHidden = false;
-                            hidePanel(panel);
-                            return false;
-                        });
-                    }
+            if (!shouldApplyToPanel(panel)) return;
+            if (!panel || !panel.actor) return;
+            
+            let state = panelStates[panel.panelId];
+            if (!state) return;
+            
+            try {
+                state.lastWidth = 0;
+                state.lastHeight = 0;
+                checkAndApplyStyle(panel, true);
+                setupAppletZoom(panel);
+                
+                if (state.wasHidden && getPanelSetting(panel, "autoHide")) {
+                    Mainloop.timeout_add(100, function() {
+                        state.isHidden = false;
+                        hidePanel(panel);
+                        return false;
+                    });
                 }
-            }
+            } catch(e) {}
         });
         return false;
     });
@@ -803,19 +1123,26 @@ function exitEditMode() {
 
 function initializePanels() {
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel)) {
-            if (!panelStates[panel.panelId]) {
-                initPanel(panel);
-            }
+        if (!shouldApplyToPanel(panel)) return;
+        if (!panel || !panel.actor) return;
+        
+        if (!panelStates[panel.panelId]) {
+            initPanel(panel);
+        }
+        
+        try {
             panel.actor.show();
             panel.actor.opacity = 255;
-        }
+        } catch(e) {}
     });
     
     actorAddedSignal = global.stage.connect('actor-added', function(stage, actor) {
-        if (actor.has_style_class_name && actor.has_style_class_name('popup-menu')) {
-            Main.panelManager.panels.forEach(panel => {
-                if (shouldApplyToPanel(panel)) {
+        try {
+            if (actor.has_style_class_name && actor.has_style_class_name('popup-menu')) {
+                Main.panelManager.panels.forEach(panel => {
+                    if (!shouldApplyToPanel(panel)) return;
+                    if (!panel || !panel.actor) return;
+                    
                     let state = panelStates[panel.panelId];
                     if (state) {
                         state.trackedMenus.push(actor);
@@ -823,47 +1150,59 @@ function initializePanels() {
                             updateMenuPosition(panel, actor);
                         }
                     }
-                }
-            });
-        }
+                });
+            }
+        } catch(e) {}
     });
     
     workspaceSignal = global.screen.connect('workspace-switched', function() {
         if (isInEditMode) return;
         
         Main.panelManager.panels.forEach(panel => {
-            if (shouldApplyToPanel(panel)) {
-                let state = panelStates[panel.panelId];
-                if (state) {
-                    Tweener.removeTweens(panel.actor);
-                    if (state.indicator) {
-                        Tweener.removeTweens(state.indicator);
-                        destroyIndicator(panel);
-                    }
-                    if (state.hideDelayTimeout) {
-                        Mainloop.source_remove(state.hideDelayTimeout);
-                        state.hideDelayTimeout = null;
-                    }
-                    if (state.animationTimer) {
-                        Mainloop.source_remove(state.animationTimer);
-                        state.animationTimer = null;
-                    }
-                    
-                    state.isHidden = false;
-                    state.isHiding = false;
-                    state.isShowing = false;
-                    panel.actor.opacity = 0;
-                    panel.actor.show();
-                    
-                    checkAndApplyStyle(panel, true);
+            if (!shouldApplyToPanel(panel)) return;
+            if (!panel || !panel.actor) return;
+            
+            let state = panelStates[panel.panelId];
+            if (!state) return;
+            
+            try {
+                Tweener.removeTweens(panel.actor);
+                if (state.indicator) {
+                    Tweener.removeTweens(state.indicator);
+                    destroyIndicator(panel);
                 }
-            }
+                if (state.hideDelayTimeout) {
+                    Mainloop.source_remove(state.hideDelayTimeout);
+                    state.hideDelayTimeout = null;
+                }
+                if (state.animationTimer) {
+                    Mainloop.source_remove(state.animationTimer);
+                    state.animationTimer = null;
+                }
+                
+                state.isHidden = false;
+                state.isHiding = false;
+                state.isShowing = false;
+                panel.actor.opacity = 0;
+                panel.actor.show();
+                
+                checkAndApplyStyle(panel, true);
+            } catch(e) {}
         });
         
         Mainloop.timeout_add(100, function() {
             Main.panelManager.panels.forEach(panel => {
-                if (shouldApplyToPanel(panel) && getPanelSetting(panel, "autoHide")) {
-                    hidePanel(panel);
+                if (!shouldApplyToPanel(panel) || !panel || !panel.actor) return;
+                let autoHide = getPanelSetting(panel, "autoHide");
+                let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                if (autoHide || hideOnFullscreen) {
+                    if (hideOnFullscreen) {
+                        if (hasMaximizedOrFullscreenWindow(panel)) {
+                            hidePanel(panel);
+                        }
+                    } else {
+                        hidePanel(panel);
+                    }
                 }
             });
             return false;
@@ -873,29 +1212,111 @@ function initializePanels() {
     windowCreatedSignal = global.display.connect('window-created', function(display, win) {
         if (isInEditMode) return;
         
-        win.connect('unmanaged', function() {
-            if (isInEditMode) return;
+        try {
+            let stateChangedId = win.connect('notify::fullscreen', function() {
+                if (isInEditMode) return;
+                
+                Main.panelManager.panels.forEach(panel => {
+                    if (!shouldApplyToPanel(panel)) return;
+                    if (!panel || !panel.actor) return;
+                    
+                    let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                    if (!hideOnFullscreen) return;
+                    
+                    let state = panelStates[panel.panelId];
+                    if (!state) return;
+                    
+                    Mainloop.timeout_add(50, function() {
+                        let isFullscreen = hasMaximizedOrFullscreenWindow(panel);
+                        
+                        if (isFullscreen && !state.isHidden) {
+                            hidePanel(panel);
+                        } else if (!isFullscreen && state.isHidden) {
+                            showPanel(panel);
+                        }
+                        return false;
+                    });
+                });
+            });
+            
+            windowStateChangedSignals.push({ window: win, signalId: stateChangedId });
+            
+            win.connect('unmanaged', function() {
+                if (isInEditMode) return;
+                Main.panelManager.panels.forEach(panel => {
+                    if (shouldApplyToPanel(panel) && panel && panel.actor) {
+                        checkAndApplyStyle(panel, true);
+                        
+                        let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                        if (hideOnFullscreen) {
+                            let state = panelStates[panel.panelId];
+                            if (state && state.isHidden) {
+                                Mainloop.timeout_add(100, function() {
+                                    if (!hasMaximizedOrFullscreenWindow(panel)) {
+                                        showPanel(panel);
+                                    }
+                                    return false;
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+            
             Main.panelManager.panels.forEach(panel => {
-                if (shouldApplyToPanel(panel)) {
+                if (shouldApplyToPanel(panel) && panel && panel.actor) {
                     checkAndApplyStyle(panel, true);
                 }
             });
-        });
-        
-        Main.panelManager.panels.forEach(panel => {
-            if (shouldApplyToPanel(panel)) {
-                checkAndApplyStyle(panel, true);
-            }
-        });
+        } catch(e) {}
     });
+    
+    try {
+        let workspace = global.screen.get_active_workspace();
+        let windows = workspace.list_windows();
+        windows.forEach(win => {
+            try {
+                let stateChangedId = win.connect('notify::fullscreen', function() {
+                    if (isInEditMode) return;
+                    
+                    Main.panelManager.panels.forEach(panel => {
+                        if (!shouldApplyToPanel(panel)) return;
+                        if (!panel || !panel.actor) return;
+                        
+                        let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+                        if (!hideOnFullscreen) return;
+                        
+                        let state = panelStates[panel.panelId];
+                        if (!state) return;
+                        
+                        Mainloop.timeout_add(50, function() {
+                            let isFullscreen = hasMaximizedOrFullscreenWindow(panel);
+                            
+                            if (isFullscreen && !state.isHidden) {
+                                hidePanel(panel);
+                            } else if (!isFullscreen && state.isHidden) {
+                                showPanel(panel);
+                            }
+                            return false;
+                        });
+                    });
+                });
+                
+                windowStateChangedSignals.push({ window: win, signalId: stateChangedId });
+            } catch(e) {}
+        });
+    } catch(e) {}
     
     Mainloop.timeout_add(100, function() {
         if (!isInEditMode) {
             Main.panelManager.panels.forEach(panel => {
-                if (shouldApplyToPanel(panel)) {
+                if (!shouldApplyToPanel(panel)) return;
+                if (!panel || !panel.actor) return;
+                
+                try {
                     checkAndApplyStyle(panel);
                     setupAppletZoom(panel);
-                }
+                } catch(e) {}
             });
         }
         startSizeMonitoring();
@@ -905,6 +1326,8 @@ function initializePanels() {
 }
 
 function getPanelLocation(panel) {
+    if (!panel || !panel.actor) return "unknown";
+    
     let monitor = Main.layoutManager.findMonitorForActor(panel.actor);
     if (!monitor) return "unknown";
     
@@ -954,6 +1377,8 @@ function getPanelSetting(panel, key) {
 }
 
 function initPanel(panel) {
+    if (!panel || !panel.actor) return;
+    
     panelStates[panel.panelId] = {
         originalY: panel.actor.y,
         originalX: panel.actor.x,
@@ -975,49 +1400,69 @@ function initPanel(panel) {
         allocateId: null,
         originalAllocate: null,
         allocationId: null,
-        previousPadding: 20
+        previousPadding: 20,
+        isEnabled: true,
+        marginAnimationTimer: null
     };
     
     let state = panelStates[panel.panelId];
     
-    if (getPanelSetting(panel, "noWindowShift")) {
-        Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: false });
-    }
+    try {
+        if (getPanelSetting(panel, "noWindowShift")) {
+            Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: false });
+        }
+    } catch(e) {}
     
     state.allocationId = panel.actor.connect('notify::allocation', function() {
-        let heightOffset = getPanelSetting(panel, "heightOffset");
-        if (state.location === "bottom" || state.location === "top") {
-            let adjustedOffset = state.location === 'top' ? -heightOffset : heightOffset;
-            let targetY = state.originalY + adjustedOffset;
-            if (panel.actor.y !== targetY) {
-                panel.actor.y = targetY;
+        if (!panel || !panel.actor) return;
+        
+        let state = panelStates[panel.panelId];
+        if (!state || !state.isEnabled) return;
+        
+        try {
+            let heightOffset = getPanelSetting(panel, "heightOffset");
+            if (state.location === "bottom" || state.location === "top") {
+                let adjustedOffset = state.location === 'top' ? -heightOffset : heightOffset;
+                let targetY = state.originalY + adjustedOffset;
+                if (panel.actor.y !== targetY) {
+                    panel.actor.y = targetY;
+                }
+            } else {
+                let adjustedOffset = state.location === 'left' ? -heightOffset : heightOffset;
+                let targetX = state.originalX + adjustedOffset;
+                if (panel.actor.x !== targetX) {
+                    panel.actor.x = targetX;
+                }
             }
-        } else {
-            let adjustedOffset = state.location === 'left' ? -heightOffset : heightOffset;
-            let targetX = state.originalX + adjustedOffset;
-            if (panel.actor.x !== targetX) {
-                panel.actor.x = targetX;
-            }
-        }
+        } catch(e) {}
     });
     
     state.styleSignal = panel.actor.connect('style-changed', function() {
         if (isInEditMode) return;
+        if (!panel || !panel.actor) return;
         
         let state = panelStates[panel.panelId];
-        if (state && state.isAnimating) return;
+        if (!state || !state.isEnabled || state.isAnimating) return;
         
         Mainloop.timeout_add(10, function() {
-            applyStyle(panel);
+            if (!panel || !panel.actor) return false;
+            
+            let state = panelStates[panel.panelId];
+            if (state && state.isEnabled) {
+                applyStyle(panel);
+            }
             return false;
         });
     });
     
     state.showSignal = panel.actor.connect('show', function() {
         if (isInEditMode) return;
+        if (!panel || !panel.actor) return;
         
         let state = panelStates[panel.panelId];
-        if (state && state.isHidden && getPanelSetting(panel, "autoHide")) {
+        if (!state || !state.isEnabled) return;
+        
+        if (state.isHidden && getPanelSetting(panel, "autoHide")) {
             panel.actor.hide();
             state.isHidden = false;
         }
@@ -1027,8 +1472,17 @@ function initPanel(panel) {
 function cleanupAllPanels() {
     disableAutoHide();
 
+    Main.panelManager.panels.forEach(panel => {
+        let state = panelStates[panel.panelId];
+        if (state) {
+            state.isEnabled = false;
+        }
+    });
+
     if (displayStateSignal) {
-        Main.layoutManager.disconnect(displayStateSignal);
+        try {
+            Main.layoutManager.disconnect(displayStateSignal);
+        } catch(e) {}
         displayStateSignal = null;
     }
 
@@ -1038,31 +1492,52 @@ function cleanupAllPanels() {
     }
     
     if (workspaceSignal) {
-        global.screen.disconnect(workspaceSignal);
+        try {
+            global.screen.disconnect(workspaceSignal);
+        } catch(e) {}
         workspaceSignal = null;
     }
     
     if (actorAddedSignal) {
-        global.stage.disconnect(actorAddedSignal);
+        try {
+            global.stage.disconnect(actorAddedSignal);
+        } catch(e) {}
         actorAddedSignal = null;
     }
     
     if (editModeSignal) {
-        global.settings.disconnect(editModeSignal);
+        try {
+            global.settings.disconnect(editModeSignal);
+        } catch(e) {}
         editModeSignal = null;
     }
     
     if (windowCreatedSignal) {
-        global.display.disconnect(windowCreatedSignal);
+        try {
+            global.display.disconnect(windowCreatedSignal);
+        } catch(e) {}
         windowCreatedSignal = null;
     }
     
+    windowStateChangedSignals.forEach(item => {
+        try {
+            if (item.window && item.signalId) {
+                item.window.disconnect(item.signalId);
+            }
+        } catch(e) {}
+    });
+    windowStateChangedSignals = [];
+    
     if (panelAddedSignal) {
-        Main.panelManager.disconnect(panelAddedSignal);
+        try {
+            Main.panelManager.disconnect(panelAddedSignal);
+        } catch(e) {}
         panelAddedSignal = null;
     }
     
     Main.panelManager.panels.forEach(panel => {
+        if (!panel || !panel.actor) return;
+        
         let state = panelStates[panel.panelId];
         
         Tweener.removeTweens(panel.actor);
@@ -1080,28 +1555,33 @@ function cleanupAllPanels() {
                 state.animationTimer = null;
             }
             
-            if (state.styleSignal !== null && state.styleSignal !== undefined) {
+            if (state.marginAnimationTimer) {
+                Mainloop.source_remove(state.marginAnimationTimer);
+                state.marginAnimationTimer = null;
+            }
+            
+            if (state.styleSignal) {
                 try {
                     panel.actor.disconnect(state.styleSignal);
                 } catch(e) {}
                 state.styleSignal = null;
             }
 
-            if (state.showSignal !== null && state.showSignal !== undefined) {
+            if (state.showSignal) {
                 try {
                     panel.actor.disconnect(state.showSignal);
                 } catch(e) {}
                 state.showSignal = null;
             }
             
-            if (state.allocateId !== null && state.allocateId !== undefined) {
+            if (state.allocateId) {
                 try {
                     panel.actor.disconnect(state.allocateId);
                 } catch(e) {}
                 state.allocateId = null;
             }
             
-            if (state.allocationId !== null && state.allocationId !== undefined) {
+            if (state.allocationId) {
                 try {
                     panel.actor.disconnect(state.allocationId);
                 } catch(e) {}
@@ -1110,14 +1590,22 @@ function cleanupAllPanels() {
             
             cleanupAppletZoom(panel);
             
-            panel.actor.y = state.originalY;
+            try {
+                panel.actor.y = state.originalY;
+                panel.actor.x = state.originalX;
+            } catch(e) {}
         }
         
-        panel.actor.set_scale(1.0, 1.0);
-        panel.actor.set_style('');
-        panel.actor.opacity = 255;
-        panel.actor.show();
-        Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: true });
+        try {
+            panel.actor.set_scale(1.0, 1.0);
+            panel.actor.set_style('');
+            panel.actor.opacity = 255;
+            panel.actor.show();
+            
+            if (Main.layoutManager._chrome && Main.layoutManager._chrome.modifyActorParams) {
+                Main.layoutManager._chrome.modifyActorParams(panel.actor, { affectsStruts: true });
+            }
+        } catch(e) {}
     });
     
     removePanelMenuItems();
@@ -1127,6 +1615,7 @@ function cleanupAllPanels() {
 
 function setupAppletZoom(panel) {
     if (isInEditMode) return;
+    if (!panel || !panel.actor) return;
     
     let state = panelStates[panel.panelId];
     if (!state) return;
@@ -1135,19 +1624,23 @@ function setupAppletZoom(panel) {
     
     if (!getPanelSetting(panel, "zoomEnabled")) return;
     
-    state.zoomEnterId = panel.actor.connect('enter-event', function(actor, event) {
-        let target = event.get_source();
-        if (target && target !== panel.actor && !isLayoutContainer(target)) {
-            zoomApplet(panel, target, true);
-        }
-    });
-    
-    state.zoomLeaveId = panel.actor.connect('leave-event', function(actor, event) {
-        let target = event.get_source();
-        if (target && target !== panel.actor) {
-            zoomApplet(panel, target, false);
-        }
-    });
+    try {
+        state.zoomEnterId = panel.actor.connect('enter-event', function(actor, event) {
+            let target = event.get_source();
+            if (target && target !== panel.actor && !isLayoutContainer(target)) {
+                zoomApplet(panel, target, true);
+            }
+        });
+        
+        state.zoomLeaveId = panel.actor.connect('leave-event', function(actor, event) {
+            let target = event.get_source();
+            if (target && target !== panel.actor) {
+                zoomApplet(panel, target, false);
+            }
+        });
+    } catch(e) {
+        cleanupAppletZoom(panel);
+    }
 }
 
 function isLayoutContainer(actor) {
@@ -1165,17 +1658,19 @@ function isLayoutContainer(actor) {
 }
 
 function cleanupAppletZoom(panel) {
+    if (!panel || !panel.actor) return;
+    
     let state = panelStates[panel.panelId];
     if (!state) return;
     
-    if (state.zoomEnterId) {
+    if (typeof state.zoomEnterId === 'number') {
         try {
             panel.actor.disconnect(state.zoomEnterId);
         } catch(e) {}
         state.zoomEnterId = null;
     }
     
-    if (state.zoomLeaveId) {
+    if (typeof state.zoomLeaveId === 'number') {
         try {
             panel.actor.disconnect(state.zoomLeaveId);
         } catch(e) {}
@@ -1185,62 +1680,84 @@ function cleanupAppletZoom(panel) {
 
 function zoomApplet(panel, actor, zoomIn) {
     if (isInEditMode) return;
+    if (!actor) return;
     
-    Tweener.removeTweens(actor);
-    
-    actor.set_pivot_point(0.5, 0.5);
-    
-    let zoomFactor = getPanelSetting(panel, "zoomFactor") || 1.3;
-    let targetScale = zoomIn ? zoomFactor : 1.0;
-    
-    Tweener.addTween(actor, {
-        scale_x: targetScale,
-        scale_y: targetScale,
-        time: 0.15,
-        transition: 'easeOutQuad'
-    });
+    try {
+        Tweener.removeTweens(actor);
+        
+        actor.set_pivot_point(0.5, 0.5);
+        
+        let zoomFactor = getPanelSetting(panel, "zoomFactor") || 1.3;
+        let targetScale = zoomIn ? zoomFactor : 1.0;
+        
+        Tweener.addTween(actor, {
+            scale_x: targetScale,
+            scale_y: targetScale,
+            time: 0.15,
+            transition: 'easeOutQuad'
+        });
+    } catch(e) {}
 }
 
 function resetAllAppletZoom(panel) {
+    if (!panel) return;
+    if (!panel._leftBox || !panel._centerBox || !panel._rightBox) return;
+    
     let boxes = [panel._leftBox, panel._centerBox, panel._rightBox];
     
     boxes.forEach(box => {
-        let children = box.get_children();
-        children.forEach(child => {
-            Tweener.removeTweens(child);
-            child.set_pivot_point(0.5, 0.5);
-            child.set_scale(1.0, 1.0);
-        });
+        try {
+            let children = box.get_children();
+            children.forEach(child => {
+                try {
+                    Tweener.removeTweens(child);
+                    child.set_pivot_point(0.5, 0.5);
+                    child.set_scale(1.0, 1.0);
+                } catch(e) {}
+            });
+        } catch(e) {}
     });
 }
 
 function applyZoomToActor(actor, scale) {
-    Tweener.removeTweens(actor);
+    if (!actor) return;
     
-    actor.set_pivot_point(0.5, 0.5);
-    
-    Tweener.addTween(actor, {
-        scale_x: scale,
-        scale_y: scale,
-        time: 0.1,
-        transition: 'easeOutQuad'
-    });
+    try {
+        Tweener.removeTweens(actor);
+        
+        actor.set_pivot_point(0.5, 0.5);
+        
+        Tweener.addTween(actor, {
+            scale_x: scale,
+            scale_y: scale,
+            time: 0.1,
+            transition: 'easeOutQuad'
+        });
+    } catch(e) {}
 }
 
 function cleanupTrackedMenus(panel) {
+    if (!panel) return;
+    
     let state = panelStates[panel.panelId];
     if (!state) return;
     
-    state.trackedMenus = state.trackedMenus.filter(menu => {
-        try {
-            return menu && !menu.is_finalized();
-        } catch(e) {
-            return false;
-        }
-    });
+    try {
+        state.trackedMenus = state.trackedMenus.filter(menu => {
+            try {
+                return menu && !menu.is_finalized();
+            } catch(e) {
+                return false;
+            }
+        });
+    } catch(e) {
+        state.trackedMenus = [];
+    }
 }
 
 function hasActiveMenus(panel) {
+    if (!panel) return false;
+    
     let state = panelStates[panel.panelId];
     if (!state) return false;
     
@@ -1258,33 +1775,39 @@ function hasActiveMenus(panel) {
     }
     
     if (panel._menus) {
-        for (let i = 0; i < panel._menus._menus.length; i++) {
-            let menu = panel._menus._menus[i];
-            if (menu.menu && menu.menu.isOpen) {
-                return true;
+        try {
+            for (let i = 0; i < panel._menus._menus.length; i++) {
+                let menu = panel._menus._menus[i];
+                if (menu.menu && menu.menu.isOpen) {
+                    return true;
+                }
             }
-        }
+        } catch(e) {}
     }
     
-    if (panel._leftBox) {
-        let boxes = [panel._leftBox, panel._centerBox, panel._rightBox];
-        for (let box of boxes) {
-            let children = box.get_children();
-            for (let child of children) {
-                if (child._applet && child._applet.menu && child._applet.menu.isOpen) {
-                    return true;
-                }
-                if (child._delegate && child._delegate.menu && child._delegate.menu.isOpen) {
-                    return true;
+    if (panel._leftBox && panel._centerBox && panel._rightBox) {
+        try {
+            let boxes = [panel._leftBox, panel._centerBox, panel._rightBox];
+            for (let box of boxes) {
+                let children = box.get_children();
+                for (let child of children) {
+                    if (child._applet && child._applet.menu && child._applet.menu.isOpen) {
+                        return true;
+                    }
+                    if (child._delegate && child._delegate.menu && child._delegate.menu.isOpen) {
+                        return true;
+                    }
                 }
             }
-        }
+        } catch(e) {}
     }
     
     return false;
 }
 
 function isMouseOverDockOrMenus(panel) {
+    if (!panel || !panel.actor) return false;
+    
     let [x, y, mods] = global.get_pointer();
     let actor = global.stage.get_actor_at_pos(Clutter.PickMode.REACTIVE, x, y);
     
@@ -1314,8 +1837,12 @@ function isMouseOverDockOrMenus(panel) {
                 if (parent._delegate && parent._delegate.sourceActor) {
                     let sourceActor = parent._delegate.sourceActor;
                     while (sourceActor) {
-                        if (panel.actor.contains(sourceActor)) {
-                            return true;
+                        try {
+                            if (panel.actor.contains(sourceActor)) {
+                                return true;
+                            }
+                        } catch(e) {
+                            return false;
                         }
                         sourceActor = sourceActor.get_parent();
                     }
@@ -1333,6 +1860,8 @@ function isMouseOverDockOrMenus(panel) {
 }
 
 function isMouseInTriggerZone(panel, x, y) {
+    if (!panel || !panel.actor) return false;
+    
     let state = panelStates[panel.panelId];
     if (!state) return false;
     
@@ -1341,7 +1870,9 @@ function isMouseInTriggerZone(panel, x, y) {
     let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
     
     if (state.location === "bottom" || state.location === "top") {
-        let triggerWidth = Math.max(state.lastWidth, minPanelWidth);
+        let maxAllowedWidth = monitor.width - 40;
+        let triggerWidth = Math.max(state.lastWidth || 200, minPanelWidth);
+        triggerWidth = Math.min(triggerWidth, maxAllowedWidth);
         let panelLeft = monitor.x + (monitor.width - triggerWidth) / 2;
         let panelRight = panelLeft + triggerWidth;
         
@@ -1357,8 +1888,32 @@ function isMouseInTriggerZone(panel, x, y) {
                    y <= monitor.y + hoverPixels;
         }
     } else if (state.location === "left" || state.location === "right") {
-        let panelTop = monitor.y + (monitor.height - state.lastHeight) / 2;
-        let panelBottom = panelTop + state.lastHeight;
+        let usableHeight = monitor.height;
+        Main.panelManager.panels.forEach(otherPanel => {
+            if (otherPanel === panel) return;
+            if (!otherPanel || !otherPanel.actor) return;
+            
+            let otherLocation = getPanelLocation(otherPanel);
+            let otherMonitor = Main.layoutManager.findMonitorForActor(otherPanel.actor);
+            let thisMonitor = Main.layoutManager.findMonitorForActor(panel.actor);
+            if (!otherMonitor || !thisMonitor || otherMonitor !== thisMonitor) return;
+            
+            if (otherLocation === "top") {
+                usableHeight -= otherPanel.actor.height;
+            } else if (otherLocation === "bottom") {
+                usableHeight -= otherPanel.actor.height;
+            }
+        });
+        
+        let minPanelHeight = minPanelWidth;
+        let actualHeight = state.lastHeight || 200;
+        let triggerHeight = Math.max(actualHeight, minPanelHeight);
+        let maxAllowedHeight = usableHeight - 40;
+        triggerHeight = Math.min(triggerHeight, maxAllowedHeight);
+        triggerHeight = Math.max(triggerHeight, 50);
+        
+        let panelTop = monitor.y + (monitor.height - triggerHeight) / 2;
+        let panelBottom = panelTop + triggerHeight;
         
         if (y < panelTop || y > panelBottom) {
             return false;
@@ -1381,8 +1936,12 @@ function toggleAutoHide() {
     
     let anyAutoHide = false;
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel) && getPanelSetting(panel, "autoHide")) {
-            anyAutoHide = true;
+        if (shouldApplyToPanel(panel)) {
+            let autoHide = getPanelSetting(panel, "autoHide");
+            let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+            if (autoHide || hideOnFullscreen) {
+                anyAutoHide = true;
+            }
         }
     });
     
@@ -1390,6 +1949,7 @@ function toggleAutoHide() {
         enableAutoHide();
     }
 }
+
 
 function getMonitorGeometry(panel) {
     let panelMonitor = Main.layoutManager.findMonitorForActor(panel.actor);
@@ -1409,110 +1969,174 @@ function getMonitorGeometry(panel) {
     };
 }
 
+function getUsableHeight(panel) {
+    let monitor = getMonitorGeometry(panel);
+    let usableHeight = monitor.height;
+    let usableTopOffset = 0;
+    
+    Main.panelManager.panels.forEach(otherPanel => {
+        if (otherPanel === panel) return;
+        if (!otherPanel || !otherPanel.actor) return;
+        
+        let otherLocation = getPanelLocation(otherPanel);
+        let otherMonitor = Main.layoutManager.findMonitorForActor(otherPanel.actor);
+        let thisMonitor = Main.layoutManager.findMonitorForActor(panel.actor);
+        if (!otherMonitor || !thisMonitor || otherMonitor !== thisMonitor) return;
+        
+        if (otherLocation === "top") {
+            usableTopOffset = otherPanel.actor.height;
+            usableHeight -= otherPanel.actor.height;
+        } else if (otherLocation === "bottom") {
+            usableHeight -= otherPanel.actor.height;
+        }
+    });
+    
+    return { usableHeight: usableHeight, usableTopOffset: usableTopOffset };
+}
+
 function enableAutoHide(indicatorStatus) {
     disableAutoHide(indicatorStatus);
     
     Main.panelManager.panels.forEach(panel => {
         if (!shouldApplyToPanel(panel)) return;
+        if (!panel || !panel.actor) return;
+        
         let state = panelStates[panel.panelId];
         if (!state) return;
         
         state.hideDelayTimeout = null;
+        state.isEnabled = true;
     });
     
     pointerWatcher = Mainloop.timeout_add(100, function() {
         if (isInEditMode) return true;
         
+        let hasActivePanels = false;
+        Main.panelManager.panels.forEach(panel => {
+            let state = panelStates[panel.panelId];
+            if (state && state.isEnabled) {
+                hasActivePanels = true;
+            }
+        });
+        
+        if (!hasActivePanels) {
+            pointerWatcher = null;
+            return false;
+        }
+        
         let [x, y, mods] = global.get_pointer();
         
         Main.panelManager.panels.forEach(panel => {
             if (!shouldApplyToPanel(panel)) return;
-            if (!getPanelSetting(panel, "autoHide")) return;
+            
+            let autoHide = getPanelSetting(panel, "autoHide");
+            let hideOnFullscreen = getPanelSetting(panel, "hideOnFullscreen");
+            
+            if (!autoHide && !hideOnFullscreen) return;
+            if (!panel || !panel.actor) return;
             
             let state = panelStates[panel.panelId];
-            if (!state) return;
+            if (!state || !state.isEnabled) return;
             
-            if (state.isHidden && !state.isShowing && !state.isHiding) {
-                if (!panel.actor.visible) {
-                    panel.actor.show();
-                }
-                if (panel.actor.opacity !== 0) {
-                    panel.actor.opacity = 0;
-                }
-                
-                if (state.location === "bottom" || state.location === "top") {
-                    let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
-                    let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
-                    let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
-                    let contentWidth = leftWidth + centerWidth + rightWidth;
-                    let panelPadding = 20;
-                    let newWidth = Math.max(contentWidth + (panelPadding * 2), 200);
+            try {
+                if (state.isHidden && !state.isShowing && !state.isHiding) {
+                    if (!panel._leftBox || !panel._centerBox || !panel._rightBox) return;
                     
-                    if (newWidth !== state.lastWidth) {
-                        state.lastWidth = newWidth;
-                        if (state.indicator && getPanelSetting(panel, "showIndicator")) {
-                            updateIndicator(panel);
+                    if (!panel.actor.visible) {
+                        panel.actor.show();
+                    }
+                    if (panel.actor.opacity !== 0) {
+                        panel.actor.opacity = 0;
+                    }
+                    
+                    if (state.location === "bottom" || state.location === "top") {
+                        let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+                        let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+                        let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
+                        let contentWidth = leftWidth + centerWidth + rightWidth;
+                        let panelPadding = 20;
+                        let newWidth = Math.max(contentWidth + (panelPadding * 2), 50);
+                        
+                        if (newWidth !== state.lastWidth) {
+                            state.lastWidth = newWidth;
+                            if (state.indicator && getPanelSetting(panel, "showIndicator")) {
+                                updateIndicator(panel);
+                            }
+                        }
+                    } else if (state.location === "left" || state.location === "right") {
+                        let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
+                        let [minHeight2, centerHeight] = panel._centerBox.get_preferred_height(-1);
+                        let [minHeight3, rightHeight] = panel._rightBox.get_preferred_height(-1);
+                        let contentHeight = Math.max(leftHeight, centerHeight, rightHeight);
+                        let panelPadding = 20;
+                        let newHeight = Math.max(contentHeight + (panelPadding * 2), 40);
+                        
+                        if (newHeight !== state.lastHeight) {
+                            state.lastHeight = newHeight;
+                            if (state.indicator && getPanelSetting(panel, "showIndicator")) {
+                                updateIndicator(panel);
+                            }
                         }
                     }
-                } else if (state.location === "left" || state.location === "right") {
-                    let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
-                    let [minHeight2, centerHeight] = panel._centerBox.get_preferred_height(-1);
-                    let [minHeight3, rightHeight] = panel._rightBox.get_preferred_height(-1);
-                    let contentHeight = Math.max(leftHeight, centerHeight, rightHeight);
-                    let panelPadding = 20;
-                    let newHeight = Math.max(contentHeight + (panelPadding * 2), 40);
                     
-                    if (newHeight !== state.lastHeight) {
-                        state.lastHeight = newHeight;
-                        if (state.indicator && getPanelSetting(panel, "showIndicator")) {
-                            updateIndicator(panel);
-                        }
+                    if (getPanelSetting(panel, "showIndicator") && !state.indicator) {
+                        createIndicator(panel);
                     }
                 }
                 
-                if (getPanelSetting(panel, "showIndicator") && !state.indicator) {
-                    createIndicator(panel);
+                let menusActive = hasActiveMenus(panel);
+                let mouseOverTriggerZone = isMouseInTriggerZone(panel, x, y);
+                let shouldShow = false;
+                
+                if (hideOnFullscreen) {
+                    let isFullscreen = hasMaximizedOrFullscreenWindow(panel);
+                    
+                    if (isFullscreen) {
+                        shouldShow = menusActive || mouseOverTriggerZone;
+                    } else {
+                        shouldShow = true;
+                    }
+                } else if (autoHide) {
+                    let focusWindow = global.display.focus_window;
+                    let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
+                    let showOnNoFocus = getPanelSetting(panel, "showOnNoFocus");
+                    let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
+                    
+                    shouldShow = menusActive || mouseOverTriggerZone || shouldShowOnNoFocus;
                 }
-            }
-            
-            let menusActive = hasActiveMenus(panel);
-            let mouseOverTriggerZone = isMouseInTriggerZone(panel, x, y);
-            
-            let focusWindow = global.display.focus_window;
-            let hasNormalWindow = focusWindow && focusWindow.window_type === Meta.WindowType.NORMAL;
-            let showOnNoFocus = getPanelSetting(panel, "showOnNoFocus");
-            let shouldShowOnNoFocus = !hasNormalWindow && showOnNoFocus;
-            
-            let shouldShow = menusActive || mouseOverTriggerZone || shouldShowOnNoFocus;
-            
-            if (!state.isHidden) {
-                let mouseOverDockOrMenus = isMouseOverDockOrMenus(panel);
-                shouldShow = shouldShow || mouseOverDockOrMenus;
-            } else if (state.isHiding) {
-                if (isMouseOverDockOrMenus(panel)) {
-                    shouldShow = true;
+                
+                if (!state.isHidden) {
+                    let mouseOverDockOrMenus = isMouseOverDockOrMenus(panel);
+                    shouldShow = shouldShow || mouseOverDockOrMenus;
+                } else if (state.isHiding) {
+                    if (isMouseOverDockOrMenus(panel)) {
+                        shouldShow = true;
+                    }
                 }
-            }
-            
-            if (shouldShow && state.isHidden) {
-                if (state.hideDelayTimeout) {
+                
+                if (shouldShow && state.isHidden) {
+                    if (state.hideDelayTimeout) {
+                        Mainloop.source_remove(state.hideDelayTimeout);
+                        state.hideDelayTimeout = null;
+                    }
+                    showPanel(panel);
+                } else if (!shouldShow && !state.isHidden) {
+                    if (!state.hideDelayTimeout) {
+                        let hideDelay = getPanelSetting(panel, "hideDelay");
+                        state.hideDelayTimeout = Mainloop.timeout_add(hideDelay, function() {
+                            let state = panelStates[panel.panelId];
+                            if (state && state.isEnabled) {
+                                hidePanel(panel);
+                            }
+                            state.hideDelayTimeout = null;
+                            return false;
+                        });
+                    }
+                } else if (shouldShow && !state.isHidden && state.hideDelayTimeout) {
                     Mainloop.source_remove(state.hideDelayTimeout);
                     state.hideDelayTimeout = null;
                 }
-                showPanel(panel);
-            } else if (!shouldShow && !state.isHidden) {
-                if (!state.hideDelayTimeout) {
-                    let hideDelay = getPanelSetting(panel, "hideDelay");
-                    state.hideDelayTimeout = Mainloop.timeout_add(hideDelay, function() {
-                        state.hideDelayTimeout = null;
-                        hidePanel(panel);
-                        return false;
-                    });
-                }
-            } else if (shouldShow && !state.isHidden && state.hideDelayTimeout) {
-                Mainloop.source_remove(state.hideDelayTimeout);
-                state.hideDelayTimeout = null;
-            }
+            } catch(e) {}
         });
         
         return true;
@@ -1520,6 +2144,8 @@ function enableAutoHide(indicatorStatus) {
 }
 
 function createIndicator(panel) {
+    if (!panel || !panel.actor) return;
+    
     let state = panelStates[panel.panelId];
     if (!state) return;
     
@@ -1539,152 +2165,185 @@ function createIndicator(panel) {
     
     let indicatorWidth, indicatorHeight, indicatorX, indicatorY;
     
-    if (state.location === "bottom" || state.location === "top") {
-        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
-        indicatorWidth = Math.max(state.lastWidth, minPanelWidth);
-        indicatorHeight = hoverPixels;
-        indicatorX = monitor.x + (monitor.width - indicatorWidth) / 2;
-        
-        if (state.location === "bottom") {
-            indicatorY = monitor.y + monitor.height - hoverPixels;
-        } else {
-            indicatorY = monitor.y;
+    try {
+        if (state.location === "bottom" || state.location === "top") {
+            let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+            let maxAllowedWidth = monitor.width - 40;
+            let effectiveWidth = Math.max(state.lastWidth || 200, minPanelWidth);
+            effectiveWidth = Math.min(effectiveWidth, maxAllowedWidth);
+            indicatorWidth = effectiveWidth;
+            indicatorHeight = hoverPixels;
+            indicatorX = monitor.x + (monitor.width - indicatorWidth) / 2;
+            
+            if (state.location === "bottom") {
+                indicatorY = monitor.y + monitor.height - hoverPixels;
+            } else {
+                indicatorY = monitor.y;
+            }
+        } else if (state.location === "left" || state.location === "right") {
+            indicatorWidth = hoverPixels;
+            
+            let { usableHeight, usableTopOffset } = getUsableHeight(panel);
+            
+            let minPanelHeight = getPanelSetting(panel, "minWidth") || 0;
+            let actualHeight = state.lastHeight || 200;
+            let effectiveHeight = Math.max(actualHeight, minPanelHeight);
+            let maxAllowedHeight = usableHeight - 40;
+            effectiveHeight = Math.min(effectiveHeight, maxAllowedHeight);
+            effectiveHeight = Math.max(effectiveHeight, 50);
+            indicatorHeight = effectiveHeight;
+            indicatorY = monitor.y + usableTopOffset + (usableHeight - indicatorHeight) / 2;
+            
+            if (state.location === "left") {
+                indicatorX = state.originalX;
+            } else {
+                indicatorX = state.originalX + panel.actor.width - hoverPixels;
+            }
         }
-    } else if (state.location === "left" || state.location === "right") {
-        indicatorWidth = hoverPixels;
-        indicatorHeight = state.lastHeight;
-        indicatorY = monitor.y + (monitor.height - indicatorHeight) / 2;
         
-        if (state.location === "left") {
-            indicatorX = state.originalX;
-        } else {
-            indicatorX = state.originalX + panel.actor.width - hoverPixels;
+        indicator.set_position(indicatorX, indicatorY);
+        indicator.set_size(indicatorWidth, indicatorHeight);
+        
+        let colorWithTransparency = indicatorColor.replace(/[\d.]+\)$/, transparency + ')');
+        
+        indicator.set_style(
+            'background-color: ' + colorWithTransparency + ';' +
+            'border-radius: 12px;'
+        );
+        
+        Main.layoutManager.addChrome(indicator, {
+            affectsStruts: false,
+            affectsInputRegion: false
+        });
+        
+        state.indicator = indicator;
+        state.indicatorOriginalX = indicatorX;
+        state.indicatorOriginalY = indicatorY;
+    } catch(e) {
+        if (indicator) {
+            try {
+                indicator.destroy();
+            } catch(e2) {}
         }
     }
-    
-    indicator.set_position(indicatorX, indicatorY);
-    indicator.set_size(indicatorWidth, indicatorHeight);
-    
-    let colorWithTransparency = indicatorColor.replace(/[\d.]+\)$/, transparency + ')');
-    
-    indicator.set_style(
-        'background-color: ' + colorWithTransparency + ';' +
-        'border-radius: 12px;'
-    );
-    
-    Main.layoutManager.addChrome(indicator, {
-        affectsStruts: false,
-        affectsInputRegion: false
-    });
-    
-    state.indicator = indicator;
-    state.indicatorOriginalX = indicatorX;
-    state.indicatorOriginalY = indicatorY;
 }
 
 function updateIndicator(panel) {
+    if (!panel || !panel.actor) return;
+    
     let state = panelStates[panel.panelId];
     if (!state || !state.indicator) return;
     
-    let monitor = getMonitorGeometry(panel);
-    let hoverPixels = getPanelSetting(panel, "hoverPixels");
-    let transparency = getPanelSetting(panel, "transparency") / 100.0;
-    let indicatorColor = getPanelSetting(panel, "indicatorColor");
-    
-    let indicatorWidth, indicatorHeight, indicatorX, indicatorY;
-    
-    if (state.location === "bottom" || state.location === "top") {
-        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
-        indicatorWidth = Math.max(state.lastWidth, minPanelWidth);
-        indicatorHeight = hoverPixels;
-        indicatorX = monitor.x + (monitor.width - indicatorWidth) / 2;
+    try {
+        let monitor = getMonitorGeometry(panel);
+        let hoverPixels = getPanelSetting(panel, "hoverPixels");
+        let transparency = getPanelSetting(panel, "transparency") / 100.0;
+        let indicatorColor = getPanelSetting(panel, "indicatorColor");
         
-        if (state.location === "bottom") {
-            indicatorY = monitor.y + monitor.height - hoverPixels;
-        } else {
-            indicatorY = monitor.y;
+        let indicatorWidth, indicatorHeight, indicatorX, indicatorY;
+        
+        if (state.location === "bottom" || state.location === "top") {
+            let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+            let maxAllowedWidth = monitor.width - 40;
+            let effectiveWidth = Math.max(state.lastWidth || 200, minPanelWidth);
+            effectiveWidth = Math.min(effectiveWidth, maxAllowedWidth);
+            indicatorWidth = effectiveWidth;
+            indicatorHeight = hoverPixels;
+            indicatorX = monitor.x + (monitor.width - indicatorWidth) / 2;
+            
+            if (state.location === "bottom") {
+                indicatorY = monitor.y + monitor.height - hoverPixels;
+            } else {
+                indicatorY = monitor.y;
+            }
+            
+            state.indicator.set_position(indicatorX, indicatorY);
+            
+            Tweener.removeTweens(state.indicator);
+            
+            Tweener.addTween(state.indicator, {
+                width: indicatorWidth,
+                time: 0.2,
+                transition: 'easeOutQuad',
+                onUpdate: function() {
+                    if (!state || !state.indicator) return;
+                    try {
+                        let currentWidth = state.indicator.width;
+                        let newX = monitor.x + (monitor.width - currentWidth) / 2;
+                        state.indicator.x = newX;
+                    } catch(e) {}
+                }
+            });
+        } else if (state.location === "left" || state.location === "right") {
+            indicatorWidth = hoverPixels;
+            
+            let { usableHeight, usableTopOffset } = getUsableHeight(panel);
+            
+            let minPanelHeight = getPanelSetting(panel, "minWidth") || 0;
+            let actualHeight = state.lastHeight || 200;
+            let effectiveHeight = Math.max(actualHeight, minPanelHeight);
+            let maxAllowedHeight = usableHeight - 40;
+            effectiveHeight = Math.min(effectiveHeight, maxAllowedHeight);
+            effectiveHeight = Math.max(effectiveHeight, 50);
+            indicatorHeight = effectiveHeight;
+            indicatorY = monitor.y + usableTopOffset + (usableHeight - indicatorHeight) / 2;
+            
+            if (state.location === "left") {
+                indicatorX = state.originalX;
+            } else {
+                indicatorX = state.originalX + panel.actor.width - hoverPixels;
+            }
+            
+            state.indicator.set_position(indicatorX, indicatorY);
+            
+            Tweener.removeTweens(state.indicator);
+            
+            Tweener.addTween(state.indicator, {
+                height: indicatorHeight,
+                time: 0.2,
+                transition: 'easeOutQuad',
+                onUpdate: function() {
+                    if (!state || !state.indicator) return;
+                    try {
+                        let currentHeight = state.indicator.height;
+                        let newY = monitor.y + usableTopOffset + (usableHeight - currentHeight) / 2;
+                        state.indicator.y = newY;
+                    } catch(e) {}
+                }
+            });
         }
         
-        state.indicator.set_position(indicatorX, indicatorY);
+        let colorWithTransparency = indicatorColor.replace(/[\d.]+\)$/, transparency + ')');
         
-        Tweener.removeTweens(state.indicator);
+        state.indicator.set_style(
+            'background-color: ' + colorWithTransparency + ';' +
+            'border-radius: 12px;'
+        );
         
-        Tweener.addTween(state.indicator, {
-            width: indicatorWidth,
-            time: 0.2,
-            transition: 'easeOutQuad',
-            onUpdate: function() {
-                let currentWidth = state.indicator.width;
-                let newX = monitor.x + (monitor.width - currentWidth) / 2;
-                state.indicator.x = newX;
-            }
-        });
-    } else if (state.location === "left" || state.location === "right") {
-        indicatorWidth = hoverPixels;
-        indicatorHeight = state.lastHeight;
-        indicatorY = monitor.y + (monitor.height - indicatorHeight) / 2;
-        
-        if (state.location === "left") {
-            indicatorX = state.originalX;
-        } else {
-            indicatorX = state.originalX + panel.actor.width - hoverPixels;
-        }
-        
-        state.indicator.set_position(indicatorX, indicatorY);
-        
-        Tweener.removeTweens(state.indicator);
-        
-        Tweener.addTween(state.indicator, {
-            height: indicatorHeight,
-            time: 0.2,
-            transition: 'easeOutQuad',
-            onUpdate: function() {
-                let currentHeight = state.indicator.height;
-                let newY = monitor.y + (monitor.height - currentHeight) / 2;
-                state.indicator.y = newY;
-            }
-        });
-    }
-    
-    let colorWithTransparency = indicatorColor.replace(/[\d.]+\)$/, transparency + ')');
-    
-    state.indicator.set_style(
-        'background-color: ' + colorWithTransparency + ';' +
-        'border-radius: 12px;'
-    );
-    
-    state.indicatorOriginalX = indicatorX;
-    state.indicatorOriginalY = indicatorY;
+        state.indicatorOriginalX = indicatorX;
+        state.indicatorOriginalY = indicatorY;
+    } catch(e) {}
 }
 
 function destroyIndicator(panel) {
     let state = panelStates[panel.panelId];
     if (!state || !state.indicator) return;
     
-    Main.layoutManager.removeChrome(state.indicator);
-    state.indicator.destroy();
+    try {
+        Tweener.removeTweens(state.indicator);
+        Main.layoutManager.removeChrome(state.indicator);
+        state.indicator.destroy();
+    } catch(e) {}
+    
     state.indicator = null;
 }
 
 function showPanel(panel) {
     if (isInEditMode) return;
+    if (!panel || !panel.actor) return;
     
     let state = panelStates[panel.panelId];
-    if (!state) return;
-    
-    if (state.location === "left" || state.location === "right") {        
-        [panel._leftBox, panel._centerBox, panel._rightBox].forEach((box, boxIndex) => {
-            let boxName = ["leftBox", "centerBox", "rightBox"][boxIndex];
-            let [minW, natW] = box.get_preferred_width(-1);
-            let [minH, natH] = box.get_preferred_height(-1);
-            
-            let children = box.get_children();
-            children.forEach((child, childIndex) => {
-                let [childMinW, childNatW] = child.get_preferred_width(-1);
-                let [childMinH, childNatH] = child.get_preferred_height(-1);
-            });
-        });
-    }
+    if (!state || !state.isEnabled) return;
     
     if (state.hideDelayTimeout) {
         Mainloop.source_remove(state.hideDelayTimeout);
@@ -1726,18 +2385,34 @@ function showPanel(panel) {
             let indicatorStartOpacity = state.indicator.opacity;
             
             state.animationTimer = Mainloop.timeout_add(16, function() {
+                let state = panelStates[panel.panelId];
+                if (!state || !state.isEnabled) return false;
+                if (!panel || !panel.actor) return false;
+                
                 let elapsed = Date.now() - startTime;
                 let progress = Math.min(elapsed / animTime, 1.0);
                 let eased = 1 - Math.pow(1 - progress, 3);
                 
-                panel.actor.opacity = startOpacity + (255 - startOpacity) * eased;
-                state.indicator.opacity = indicatorStartOpacity + (0 - indicatorStartOpacity) * eased;
-                state.indicator.y = indicatorStartY + (panelCenterPos - indicatorStartY) * eased;
+                try {
+                    panel.actor.opacity = startOpacity + (255 - startOpacity) * eased;
+                    if (state.indicator) {
+                        state.indicator.opacity = indicatorStartOpacity + (0 - indicatorStartOpacity) * eased;
+                        state.indicator.y = indicatorStartY + (panelCenterPos - indicatorStartY) * eased;
+                    }
+                } catch(e) {
+                    state.animationTimer = null;
+                    state.isShowing = false;
+                    return false;
+                }
                 
                 if (progress >= 1.0) {
-                    panel.actor.opacity = 255;
-                    state.indicator.opacity = 0;
-                    state.indicator.y = panelCenterPos;
+                    try {
+                        panel.actor.opacity = 255;
+                        if (state.indicator) {
+                            state.indicator.opacity = 0;
+                            state.indicator.y = panelCenterPos;
+                        }
+                    } catch(e) {}
                     state.animationTimer = null;
                     state.isShowing = false;
                     return false;
@@ -1752,18 +2427,34 @@ function showPanel(panel) {
             let indicatorStartOpacity = state.indicator.opacity;
             
             state.animationTimer = Mainloop.timeout_add(16, function() {
+                let state = panelStates[panel.panelId];
+                if (!state || !state.isEnabled) return false;
+                if (!panel || !panel.actor) return false;
+                
                 let elapsed = Date.now() - startTime;
                 let progress = Math.min(elapsed / animTime, 1.0);
                 let eased = 1 - Math.pow(1 - progress, 3);
                 
-                panel.actor.opacity = startOpacity + (255 - startOpacity) * eased;
-                state.indicator.opacity = indicatorStartOpacity + (0 - indicatorStartOpacity) * eased;
-                state.indicator.x = indicatorStartX + (panelCenterPos - indicatorStartX) * eased;
+                try {
+                    panel.actor.opacity = startOpacity + (255 - startOpacity) * eased;
+                    if (state.indicator) {
+                        state.indicator.opacity = indicatorStartOpacity + (0 - indicatorStartOpacity) * eased;
+                        state.indicator.x = indicatorStartX + (panelCenterPos - indicatorStartX) * eased;
+                    }
+                } catch(e) {
+                    state.animationTimer = null;
+                    state.isShowing = false;
+                    return false;
+                }
                 
                 if (progress >= 1.0) {
-                    panel.actor.opacity = 255;
-                    state.indicator.opacity = 0;
-                    state.indicator.x = panelCenterPos;
+                    try {
+                        panel.actor.opacity = 255;
+                        if (state.indicator) {
+                            state.indicator.opacity = 0;
+                            state.indicator.x = panelCenterPos;
+                        }
+                    } catch(e) {}
                     state.animationTimer = null;
                     state.isShowing = false;
                     return false;
@@ -1773,14 +2464,26 @@ function showPanel(panel) {
         }
     } else {
         state.animationTimer = Mainloop.timeout_add(16, function() {
+            let state = panelStates[panel.panelId];
+            if (!state || !state.isEnabled) return false;
+            if (!panel || !panel.actor) return false;
+            
             let elapsed = Date.now() - startTime;
             let progress = Math.min(elapsed / animTime, 1.0);
             let eased = 1 - Math.pow(1 - progress, 3);
             
-            panel.actor.opacity = startOpacity + (255 - startOpacity) * eased;
+            try {
+                panel.actor.opacity = startOpacity + (255 - startOpacity) * eased;
+            } catch(e) {
+                state.animationTimer = null;
+                state.isShowing = false;
+                return false;
+            }
             
             if (progress >= 1.0) {
-                panel.actor.opacity = 255;
+                try {
+                    panel.actor.opacity = 255;
+                } catch(e) {}
                 state.animationTimer = null;
                 state.isShowing = false;
                 return false;
@@ -1792,9 +2495,10 @@ function showPanel(panel) {
 
 function hidePanel(panel) {
     if (isInEditMode) return;
+    if (!panel || !panel.actor) return;
     
     let state = panelStates[panel.panelId];
-    if (!state) return;
+    if (!state || !state.isEnabled) return;
     
     if (state.isHidden || state.isHiding) return;
     
@@ -1803,12 +2507,14 @@ function hidePanel(panel) {
     }
     
     function hideTooltips(actor) {
-        if (actor.toString().includes('StLabel "Tooltip"') && actor.visible) {
-            actor.hide();
-        }
-        if (actor.get_children) {
-            actor.get_children().forEach(child => hideTooltips(child));
-        }
+        try {
+            if (actor.toString().includes('StLabel "Tooltip"') && actor.visible) {
+                actor.hide();
+            }
+            if (actor.get_children) {
+                actor.get_children().forEach(child => hideTooltips(child));
+            }
+        } catch(e) {}
     }
     hideTooltips(global.stage);
     
@@ -1823,20 +2529,27 @@ function hidePanel(panel) {
     state.isShowing = false;
     state.lastCheckState = false;
     
-    if (state.location === "bottom" || state.location === "top") {
-        let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
-        let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
-        let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
-        let contentWidth = leftWidth + centerWidth + rightWidth;
-        let panelPadding = 20;
-        state.lastWidth = Math.max(contentWidth + (panelPadding * 2), 200);
-    } else if (state.location === "left" || state.location === "right") {
-        let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
-        let [minHeight2, centerHeight] = panel._centerBox.get_preferred_height(-1);
-        let [minHeight3, rightHeight] = panel._rightBox.get_preferred_height(-1);
-        let contentHeight = Math.max(leftHeight, centerHeight, rightHeight);
-        let panelPadding = 20;
-        state.lastHeight = Math.max(contentHeight + (panelPadding * 2), 40);
+    try {
+        if (!panel._leftBox || !panel._centerBox || !panel._rightBox) return;
+        
+        if (state.location === "bottom" || state.location === "top") {
+            let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+            let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+            let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
+            let contentWidth = leftWidth + centerWidth + rightWidth;
+            let panelPadding = 20;
+            state.lastWidth = Math.max(contentWidth + (panelPadding * 2), 50);
+        } else if (state.location === "left" || state.location === "right") {
+            let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
+            let [minHeight2, centerHeight] = panel._centerBox.get_preferred_height(-1);
+            let [minHeight3, rightHeight] = panel._rightBox.get_preferred_height(-1);
+            let contentHeight = Math.max(leftHeight, centerHeight, rightHeight);
+            let panelPadding = 20;
+            state.lastHeight = Math.max(contentHeight + (panelPadding * 2), 40);
+        }
+    } catch(e) {
+        state.isHiding = false;
+        return;
     }
     
     let animTime = getPanelSetting(panel, "animationTime");
@@ -1854,18 +2567,24 @@ function hidePanel(panel) {
             
             if (!state.indicator) {
                 createIndicator(panel);
-                state.indicator.opacity = 0;
-                state.indicator.y = panelCenterPos;
+                if (state.indicator) {
+                    state.indicator.opacity = 0;
+                    state.indicator.y = panelCenterPos;
+                }
             } else {
                 updateIndicator(panel);
                 state.indicator.opacity = 0;
                 state.indicator.y = panelCenterPos;
             }
             
-            let indicatorStartY = state.indicator.y;
-            let indicatorStartOpacity = state.indicator.opacity;
+            let indicatorStartY = state.indicator ? state.indicator.y : panelCenterPos;
+            let indicatorStartOpacity = state.indicator ? state.indicator.opacity : 0;
             
             state.animationTimer = Mainloop.timeout_add(16, function() {
+                let state = panelStates[panel.panelId];
+                if (!state || !state.isEnabled) return false;
+                if (!panel || !panel.actor) return false;
+                
                 if (hasActiveMenus(panel) || isMouseOverDockOrMenus(panel)) {
                     state.animationTimer = null;
                     state.isHiding = false;
@@ -1878,22 +2597,34 @@ function hidePanel(panel) {
                 let progress = Math.min(elapsed / animTime, 1.0);
                 let eased = 1 - Math.pow(1 - progress, 3);
                 
-                panel.actor.opacity = startOpacity + (0 - startOpacity) * eased;
-                state.indicator.opacity = indicatorStartOpacity + (255 - indicatorStartOpacity) * eased;
-                state.indicator.y = indicatorStartY + (state.indicatorOriginalY - indicatorStartY) * eased;
+                try {
+                    panel.actor.opacity = startOpacity + (0 - startOpacity) * eased;
+                    if (state.indicator) {
+                        state.indicator.opacity = indicatorStartOpacity + (255 - indicatorStartOpacity) * eased;
+                        state.indicator.y = indicatorStartY + (state.indicatorOriginalY - indicatorStartY) * eased;
+                    }
+                } catch(e) {
+                    state.animationTimer = null;
+                    state.isHiding = false;
+                    return false;
+                }
                 
                 if (progress >= 1.0) {
-                    panel.actor.opacity = 0;
-                    state.indicator.opacity = 255;
-                    state.indicator.y = state.indicatorOriginalY;
-                    state.isHidden = true;
-                    state.isHiding = false;
-                    if (!hasActiveMenus(panel)) {
-                        panel.actor.set_scale(0.0, 0.0);
-                    } else {
-                        state.isHidden = false;
-                        showPanel(panel);
-                    }
+                    try {
+                        panel.actor.opacity = 0;
+                        if (state.indicator) {
+                            state.indicator.opacity = 255;
+                            state.indicator.y = state.indicatorOriginalY;
+                        }
+                        state.isHidden = true;
+                        state.isHiding = false;
+                        if (!hasActiveMenus(panel)) {
+                            panel.actor.set_scale(0.0, 0.0);
+                        } else {
+                            state.isHidden = false;
+                            showPanel(panel);
+                        }
+                    } catch(e) {}
                     state.animationTimer = null;
                     return false;
                 }
@@ -1905,18 +2636,24 @@ function hidePanel(panel) {
             
             if (!state.indicator) {
                 createIndicator(panel);
-                state.indicator.opacity = 0;
-                state.indicator.x = panelCenterPos;
+                if (state.indicator) {
+                    state.indicator.opacity = 0;
+                    state.indicator.x = panelCenterPos;
+                }
             } else {
                 updateIndicator(panel);
                 state.indicator.opacity = 0;
                 state.indicator.x = panelCenterPos;
             }
             
-            let indicatorStartX = state.indicator.x;
-            let indicatorStartOpacity = state.indicator.opacity;
+            let indicatorStartX = state.indicator ? state.indicator.x : panelCenterPos;
+            let indicatorStartOpacity = state.indicator ? state.indicator.opacity : 0;
             
             state.animationTimer = Mainloop.timeout_add(16, function() {
+                let state = panelStates[panel.panelId];
+                if (!state || !state.isEnabled) return false;
+                if (!panel || !panel.actor) return false;
+                
                 if (hasActiveMenus(panel) || isMouseOverDockOrMenus(panel)) {
                     state.animationTimer = null;
                     state.isHiding = false;
@@ -1929,22 +2666,34 @@ function hidePanel(panel) {
                 let progress = Math.min(elapsed / animTime, 1.0);
                 let eased = 1 - Math.pow(1 - progress, 3);
                 
-                panel.actor.opacity = startOpacity + (0 - startOpacity) * eased;
-                state.indicator.opacity = indicatorStartOpacity + (255 - indicatorStartOpacity) * eased;
-                state.indicator.x = indicatorStartX + (state.indicatorOriginalX - indicatorStartX) * eased;
+                try {
+                    panel.actor.opacity = startOpacity + (0 - startOpacity) * eased;
+                    if (state.indicator) {
+                        state.indicator.opacity = indicatorStartOpacity + (255 - indicatorStartOpacity) * eased;
+                        state.indicator.x = indicatorStartX + (state.indicatorOriginalX - indicatorStartX) * eased;
+                    }
+                } catch(e) {
+                    state.animationTimer = null;
+                    state.isHiding = false;
+                    return false;
+                }
                 
                 if (progress >= 1.0) {
-                    panel.actor.opacity = 0;
-                    state.indicator.opacity = 255;
-                    state.indicator.x = state.indicatorOriginalX;
-                    state.isHidden = true;
-                    state.isHiding = false;
-                    if (!hasActiveMenus(panel)) {
-                        panel.actor.set_scale(0.0, 0.0);
-                    } else {
-                        state.isHidden = false;
-                        showPanel(panel);
-                    }
+                    try {
+                        panel.actor.opacity = 0;
+                        if (state.indicator) {
+                            state.indicator.opacity = 255;
+                            state.indicator.x = state.indicatorOriginalX;
+                        }
+                        state.isHidden = true;
+                        state.isHiding = false;
+                        if (!hasActiveMenus(panel)) {
+                            panel.actor.set_scale(0.0, 0.0);
+                        } else {
+                            state.isHidden = false;
+                            showPanel(panel);
+                        }
+                    } catch(e) {}
                     state.animationTimer = null;
                     return false;
                 }
@@ -1953,6 +2702,10 @@ function hidePanel(panel) {
         }
     } else {
         state.animationTimer = Mainloop.timeout_add(16, function() {
+            let state = panelStates[panel.panelId];
+            if (!state || !state.isEnabled) return false;
+            if (!panel || !panel.actor) return false;
+            
             if (hasActiveMenus(panel) || isMouseOverDockOrMenus(panel)) {
                 state.animationTimer = null;
                 state.isHiding = false;
@@ -1965,18 +2718,26 @@ function hidePanel(panel) {
             let progress = Math.min(elapsed / animTime, 1.0);
             let eased = 1 - Math.pow(1 - progress, 3);
             
-            panel.actor.opacity = startOpacity + (0 - startOpacity) * eased;
+            try {
+                panel.actor.opacity = startOpacity + (0 - startOpacity) * eased;
+            } catch(e) {
+                state.animationTimer = null;
+                state.isHiding = false;
+                return false;
+            }
             
             if (progress >= 1.0) {
-                panel.actor.opacity = 0;
-                state.isHidden = true;
-                state.isHiding = false;
-                if (!hasActiveMenus(panel)) {
-                    panel.actor.set_scale(0.0, 0.0);
-                } else {
-                    state.isHidden = false;
-                    showPanel(panel);
-                }
+                try {
+                    panel.actor.opacity = 0;
+                    state.isHidden = true;
+                    state.isHiding = false;
+                    if (!hasActiveMenus(panel)) {
+                        panel.actor.set_scale(0.0, 0.0);
+                    } else {
+                        state.isHidden = false;
+                        showPanel(panel);
+                    }
+                } catch(e) {}
                 state.animationTimer = null;
                 return false;
             }
@@ -1991,45 +2752,61 @@ function disableAutoHide(indicatorStatus) {
         pointerWatcher = null;
     }
     
-    if (indicatorStatus === "keepIndicators") {
-        Main.panelManager.panels.forEach(panel => {
-            let state = panelStates[panel.panelId];
-            if (state) {
-                Tweener.removeTweens(panel.actor);
+    Main.panelManager.panels.forEach(panel => {
+        let state = panelStates[panel.panelId];
+        if (state) {
+            state.isEnabled = false;
+            
+            if (state.hideDelayTimeout) {
+                Mainloop.source_remove(state.hideDelayTimeout);
+                state.hideDelayTimeout = null;
             }
-        });
-    } else {
-        Main.panelManager.panels.forEach(panel => {
-            let state = panelStates[panel.panelId];
-            if (state) {
+            
+            if (state.animationTimer) {
+                Mainloop.source_remove(state.animationTimer);
+                state.animationTimer = null;
+            }
+            
+            if (state.marginAnimationTimer) {
+                Mainloop.source_remove(state.marginAnimationTimer);
+                state.marginAnimationTimer = null;
+            }
+            
+            Tweener.removeTweens(panel.actor);
+            
+            if (indicatorStatus !== "keepIndicators") {
                 destroyIndicator(panel);
-                Tweener.removeTweens(panel.actor);
                 panel.actor.opacity = 255;
                 panel.actor.show();
                 state.isHidden = false;
             }
-        });
-    }
+        }
+    });
 }
 
 function updateMenuPositions() {
     if (isInEditMode) return;
     
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel)) {
-            cleanupTrackedMenus(panel);
-            let state = panelStates[panel.panelId];
-            if (state) {
-                state.trackedMenus.forEach(menu => {
-                    updateMenuPosition(panel, menu);
-                });
-            }
-        }
+        if (!shouldApplyToPanel(panel)) return;
+        if (!panel || !panel.actor) return;
+        
+        let state = panelStates[panel.panelId];
+        if (!state) return;
+        
+        cleanupTrackedMenus(panel);
+        
+        try {
+            state.trackedMenus.forEach(menu => {
+                updateMenuPosition(panel, menu);
+            });
+        } catch(e) {}
     });
 }
 
 function updateMenuPosition(panel, menu) {
     if (isInEditMode || isTransitioningWorkspace) return true;
+    if (!panel || !panel.actor) return;
     
     let state = panelStates[panel.panelId];
     if (!state) return;
@@ -2042,8 +2819,7 @@ function updateMenuPosition(panel, menu) {
             if (menu && !menu.is_finalized()) {
                 menu.y = menu.y + adjustedOffset;
             }
-        } catch(e) {
-        }
+        } catch(e) {}
         return false;
     });
 }
@@ -2053,19 +2829,28 @@ function startSizeMonitoring() {
         if (isInEditMode || isTransitioningWorkspace) return true;
         
         Main.panelManager.panels.forEach(panel => {
-            if (shouldApplyToPanel(panel)) {
-                let state = panelStates[panel.panelId];
-                if (state) {
-                    if (!state.isHidden && (panel.actor.scale_x === 0.0 || panel.actor.scale_y === 0.0)) {
-                        global.log(`[CenteredDock] INCONSISTENT STATE DETECTED for panel ${panel.panelId}: isHidden=${state.isHidden}, scale=${panel.actor.scale_x},${panel.actor.scale_y}, opacity=${panel.actor.opacity}, isHiding=${state.isHiding}, isShowing=${state.isShowing}`);
-                        showPanel(panel);
-                    }
-                    
-                    if (!state.isHidden) {
-                        checkAndApplyStyle(panel, true);
+            if (!shouldApplyToPanel(panel)) return;
+            if (!panel || !panel.actor) return;
+            
+            let state = panelStates[panel.panelId];
+            if (!state || !state.isEnabled) return;
+            
+            try {
+                if (!state.isHidden && (panel.actor.scale_x === 0.0 || panel.actor.scale_y === 0.0)) {
+                    showPanel(panel);
+                }
+                
+                if (state.lastOpacity !== undefined && state.lastOpacity === panel.actor.opacity) {
+                    if (panel.actor.opacity > 0 && panel.actor.opacity < 255) {
+                        panel.actor.opacity = state.isHidden ? 0 : 255;
                     }
                 }
-            }
+                state.lastOpacity = panel.actor.opacity;
+                
+                if (!state.isHidden) {
+                    checkAndApplyStyle(panel, true);
+                }
+            } catch(e) {}
         });
         return true;
     });
@@ -2073,13 +2858,16 @@ function startSizeMonitoring() {
 
 function checkAndApplyStyle(panel, forceApply) {
     if (isInEditMode && !forceApply) return;
+    if (!panel || !panel.actor) return;
     
     let state = panelStates[panel.panelId];
-    if (!state) return;
+    if (!state || !state.isEnabled) return;
     
     if (!forceApply && (panel._editMode || (panel.peekDesktop && panel.peekDesktop._editMode))) {
         return;
     }
+    
+    if (!panel._leftBox || !panel._centerBox || !panel._rightBox) return;
     
     [panel._leftBox, panel._centerBox, panel._rightBox].forEach(box => {
         box.get_children().forEach(child => {
@@ -2098,30 +2886,34 @@ function checkAndApplyStyle(panel, forceApply) {
     let panelPadding = 20;
     let newWidth, newHeight;
     
-    if (state.location === "bottom" || state.location === "top") {
-        let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
-        let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
-        let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
-        
-        let contentWidth = leftWidth + centerWidth + rightWidth;
-        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
-        newWidth = Math.max(contentWidth + (panelPadding * 2), minPanelWidth, 200);
-        newHeight = state.lastHeight;
-    } else if (state.location === "left" || state.location === "right") {
-        let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
-        let [minHeight2, centerHeight] = panel._centerBox.get_preferred_height(-1);
-        let [minHeight3, rightHeight] = panel._rightBox.get_preferred_height(-1);
-        
-        let contentHeight = leftHeight + centerHeight + rightHeight;
-        
-        let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
-        let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
-        let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
-        
-        let contentWidth = Math.max(leftWidth, centerWidth, rightWidth);
-        
-        newHeight = Math.max(contentHeight + (panelPadding * 2), 40);
-        newWidth = Math.max(contentWidth + (panelPadding * 2), 40);
+    try {
+        if (state.location === "bottom" || state.location === "top") {
+            let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+            let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+            let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
+            
+            let contentWidth = leftWidth + centerWidth + rightWidth;
+            let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+            newWidth = Math.max(contentWidth + (panelPadding * 2), minPanelWidth, 50);
+            newHeight = state.lastHeight;
+        } else if (state.location === "left" || state.location === "right") {
+            let [minHeight, leftHeight] = panel._leftBox.get_preferred_height(-1);
+            let [minHeight2, centerHeight] = panel._centerBox.get_preferred_height(-1);
+            let [minHeight3, rightHeight] = panel._rightBox.get_preferred_height(-1);
+            
+            let contentHeight = leftHeight + centerHeight + rightHeight;
+            
+            let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+            let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+            let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
+            
+            let contentWidth = Math.max(leftWidth, centerWidth, rightWidth);
+            
+            newHeight = Math.max(contentHeight + (panelPadding * 2), 40);
+            newWidth = Math.max(contentWidth + (panelPadding * 2), 40);
+        }
+    } catch(e) {
+        return;
     }
 
     if ((newWidth !== state.lastWidth || newHeight !== state.lastHeight || forceApply) && !state.isAnimating) {
@@ -2137,9 +2929,10 @@ function checkAndApplyStyle(panel, forceApply) {
 
 function applyStyle(panel, forceApply) {
     if (isInEditMode && !forceApply) return;
+    if (!panel || !panel.actor) return;
     
     let state = panelStates[panel.panelId];
-    if (!state) return;
+    if (!state || !state.isEnabled) return;
     
     let transparency = getPanelSetting(panel, "transparency") / 100.0;
     let heightOffset = getPanelSetting(panel, "heightOffset");
@@ -2149,203 +2942,223 @@ function applyStyle(panel, forceApply) {
     
     let panelPadding = 20;
     
-    if (state.location === "bottom" || state.location === "top") {
-        let adjustedOffset = state.location === "top" ? -heightOffset : heightOffset;
-        
-        let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
-        let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
-        let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
-        let contentWidth = leftWidth + centerWidth + rightWidth;
-        
-        let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
-        let actualContentWidth = contentWidth + (panelPadding * 2);
-        let desiredWidth = Math.max(actualContentWidth, minPanelWidth);
-        
-        let extraPadding = 0;
-        if (minPanelWidth > actualContentWidth) {
-            extraPadding = Math.floor((minPanelWidth - actualContentWidth) / 2);
-        }
-        
-        let totalPadding = panelPadding + extraPadding;
-        let desiredMargin = (monitor.width - desiredWidth) / 2;
-        
-        let sizeDiff = Math.abs(state.previousWidth - desiredWidth);
-        let paddingDiff = Math.abs((state.previousPadding || panelPadding) - totalPadding);
-        
-        if ((sizeDiff > 5 || paddingDiff > 5) && !state.isHiding && !state.isShowing && state.previousWidth > 0) {
-            state.isAnimating = true;
-            let startMargin = (monitor.width - state.previousWidth) / 2;
-            let endMargin = desiredMargin;
-            let startPadding = state.previousPadding || panelPadding;
-            let endPadding = totalPadding;
-            let startTime = Date.now();
-            let duration = 200;
+    try {
+        if (state.location === "bottom" || state.location === "top") {
+            if (!panel._leftBox || !panel._centerBox || !panel._rightBox) return;
             
-            if (state.marginAnimationTimer) {
-                Mainloop.source_remove(state.marginAnimationTimer);
+            let adjustedOffset = state.location === "top" ? -heightOffset : heightOffset;
+            
+            let [minWidth, leftWidth] = panel._leftBox.get_preferred_width(-1);
+            let [minWidth2, centerWidth] = panel._centerBox.get_preferred_width(-1);
+            let [minWidth3, rightWidth] = panel._rightBox.get_preferred_width(-1);
+            let contentWidth = leftWidth + centerWidth + rightWidth;
+            
+            let minPanelWidth = getPanelSetting(panel, "minWidth") || 0;
+            let actualContentWidth = contentWidth + (panelPadding * 2);
+            
+            let maxAllowedWidth = monitor.width - 40;
+            let desiredWidth = Math.max(actualContentWidth, minPanelWidth);
+            desiredWidth = Math.min(desiredWidth, maxAllowedWidth);
+            
+            let extraPadding = 0;
+            if (minPanelWidth > actualContentWidth && minPanelWidth <= maxAllowedWidth) {
+                extraPadding = Math.floor((minPanelWidth - actualContentWidth) / 2);
             }
             
-            state.marginAnimationTimer = Mainloop.timeout_add(16, function() {
-                let elapsed = Date.now() - startTime;
-                let progress = Math.min(elapsed / duration, 1.0);
-                let eased = 1 - Math.pow(1 - progress, 3);
+            let totalPadding = panelPadding + extraPadding;
+            let desiredMargin = (monitor.width - desiredWidth) / 2;
+            
+            let sizeDiff = Math.abs(state.previousWidth - desiredWidth);
+            let paddingDiff = Math.abs((state.previousPadding || panelPadding) - totalPadding);
+            
+            if ((sizeDiff > 5 || paddingDiff > 5) && !state.isHiding && !state.isShowing && state.previousWidth > 0) {
+                state.isAnimating = true;
+                let startMargin = (monitor.width - state.previousWidth) / 2;
+                let endMargin = desiredMargin;
+                let startPadding = state.previousPadding || panelPadding;
+                let endPadding = totalPadding;
+                let startTime = Date.now();
+                let duration = 200;
                 
-                let currentMargin = startMargin + (endMargin - startMargin) * eased;
-                let currentPadding = Math.floor(startPadding + (endPadding - startPadding) * eased);
+                if (state.marginAnimationTimer) {
+                    Mainloop.source_remove(state.marginAnimationTimer);
+                }
                 
+                state.marginAnimationTimer = Mainloop.timeout_add(16, function() {
+                    let state = panelStates[panel.panelId];
+                    if (!state || !state.isEnabled) return false;
+                    if (!panel || !panel.actor) return false;
+                    
+                    let elapsed = Date.now() - startTime;
+                    let progress = Math.min(elapsed / duration, 1.0);
+                    let eased = 1 - Math.pow(1 - progress, 3);
+                    
+                    let currentMargin = startMargin + (endMargin - startMargin) * eased;
+                    let currentPadding = Math.floor(startPadding + (endPadding - startPadding) * eased);
+                    
+                    try {
+                        panel.actor.set_style(
+                            'border-radius: 12px;' +
+                            'padding: 0px ' + currentPadding + 'px;' +
+                            'margin-left: ' + currentMargin + 'px;' +
+                            'margin-right: ' + currentMargin + 'px;' +
+                            'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
+                            'opacity: ' + transparency + ';'
+                        );
+                        panel.actor.opacity = savedOpacity;
+                        
+                        let targetY = state.originalY + adjustedOffset;
+                        if (panel.actor.y !== targetY) {
+                            panel.actor.y = targetY;
+                        }
+                        if (panel.actor.x !== state.originalX) {
+                            panel.actor.x = state.originalX;
+                        }
+                        panel.actor.fixed_position_set = true;
+                    } catch(e) {
+                        state.marginAnimationTimer = null;
+                        state.isAnimating = false;
+                        return false;
+                    }
+                    
+                    if (progress >= 1.0) {
+                        state.marginAnimationTimer = null;
+                        state.previousWidth = desiredWidth;
+                        state.previousPadding = totalPadding;
+                        state.isAnimating = false;
+                        return false;
+                    }
+                    return true;
+                });
+            } else {
                 panel.actor.set_style(
                     'border-radius: 12px;' +
-                    'padding: 0px ' + currentPadding + 'px;' +
-                    'margin-left: ' + currentMargin + 'px;' +
-                    'margin-right: ' + currentMargin + 'px;' +
+                    'padding: 0px ' + totalPadding + 'px;' +
+                    'margin-left: ' + desiredMargin + 'px;' +
+                    'margin-right: ' + desiredMargin + 'px;' +
                     'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
                     'opacity: ' + transparency + ';'
                 );
                 panel.actor.opacity = savedOpacity;
-                
-                let targetY = state.originalY + adjustedOffset;
-                if (panel.actor.y !== targetY) {
-                    panel.actor.y = targetY;
-                }
-                if (panel.actor.x !== state.originalX) {
-                    panel.actor.x = state.originalX;
-                }
-                panel.actor.fixed_position_set = true;
-                
-                if (progress >= 1.0) {
-                    state.marginAnimationTimer = null;
-                    state.previousWidth = desiredWidth;
-                    state.previousPadding = totalPadding;
-                    state.isAnimating = false;
-                    return false;
-                }
-                return true;
-            });
-        } else {
-            panel.actor.set_style(
-                'border-radius: 12px;' +
-                'padding: 0px ' + totalPadding + 'px;' +
-                'margin-left: ' + desiredMargin + 'px;' +
-                'margin-right: ' + desiredMargin + 'px;' +
-                'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
-                'opacity: ' + transparency + ';'
-            );
-            panel.actor.opacity = savedOpacity;
-            state.previousWidth = desiredWidth;
-            state.previousPadding = totalPadding;
-        }
-        
-        let targetY = state.originalY + adjustedOffset;
-        if (panel.actor.y !== targetY) {
-            panel.actor.y = targetY;
-        }
-        if (panel.actor.x !== state.originalX) {
-            panel.actor.x = state.originalX;
-        }
-        panel.actor.fixed_position_set = true;
-    } else if (state.location === "left" || state.location === "right") {
-        let adjustedOffset = state.location === "left" ? -heightOffset : heightOffset;
-        
-        let usableHeight = monitor.height;
-        let usableTopOffset = 0;
-        
-        Main.panelManager.panels.forEach(otherPanel => {
-            if (otherPanel === panel) return;
-            let otherLocation = getPanelLocation(otherPanel);
-            let otherMonitor = Main.layoutManager.findMonitorForActor(otherPanel.actor);
-            let thisMonitor = Main.layoutManager.findMonitorForActor(panel.actor);
-            if (!otherMonitor || !thisMonitor || otherMonitor !== thisMonitor) return;
-            
-            let otherPanelId = getPanelIdentifier(otherPanel);
-            let otherSettings = getPanelSettings(otherPanelId);
-            
-            if (otherLocation === "top") {
-                usableTopOffset = otherPanel.actor.height;
-                usableHeight -= otherPanel.actor.height;
-            } else if (otherLocation === "bottom") {
-                usableHeight -= otherPanel.actor.height;
-            }
-        });
-        
-        let desiredMargin = (usableHeight - state.lastHeight) / 2;
-        
-        let sizeDiff = Math.abs(state.previousHeight - state.lastHeight);
-        
-        if (sizeDiff > 5 && !state.isHiding && !state.isShowing && state.previousHeight > 0) {
-            state.isAnimating = true;
-            let startMargin = (usableHeight - state.previousHeight) / 2;
-            let endMargin = desiredMargin;
-            let startTime = Date.now();
-            let duration = 200;
-            
-            if (state.marginAnimationTimer) {
-                Mainloop.source_remove(state.marginAnimationTimer);
+                state.previousWidth = desiredWidth;
+                state.previousPadding = totalPadding;
             }
             
-            state.marginAnimationTimer = Mainloop.timeout_add(16, function() {
-                let elapsed = Date.now() - startTime;
-                let progress = Math.min(elapsed / duration, 1.0);
-                let eased = 1 - Math.pow(1 - progress, 3);
+            let targetY = state.originalY + adjustedOffset;
+            if (panel.actor.y !== targetY) {
+                panel.actor.y = targetY;
+            }
+            if (panel.actor.x !== state.originalX) {
+                panel.actor.x = state.originalX;
+            }
+            panel.actor.fixed_position_set = true;
+        } else if (state.location === "left" || state.location === "right") {
+            let adjustedOffset = state.location === "left" ? -heightOffset : heightOffset;
+            
+            let { usableHeight, usableTopOffset } = getUsableHeight(panel);
+            
+            let minPanelHeight = getPanelSetting(panel, "minWidth") || 0;
+            let actualHeight = state.lastHeight || 200;
+            let desiredHeight = Math.max(actualHeight, minPanelHeight);
+            
+            let maxAllowedHeight = usableHeight - 40;
+            desiredHeight = Math.min(desiredHeight, maxAllowedHeight);
+            desiredHeight = Math.max(desiredHeight, 50);
+            
+            let desiredMargin = (usableHeight - desiredHeight) / 2;
+            
+            let sizeDiff = Math.abs(state.previousHeight - desiredHeight);
+            
+            if (sizeDiff > 5 && !state.isHiding && !state.isShowing && state.previousHeight > 0) {
+                state.isAnimating = true;
+                let startMargin = (usableHeight - state.previousHeight) / 2;
+                let endMargin = desiredMargin;
+                let startTime = Date.now();
+                let duration = 200;
                 
-                let currentMargin = startMargin + (endMargin - startMargin) * eased;
+                if (state.marginAnimationTimer) {
+                    Mainloop.source_remove(state.marginAnimationTimer);
+                }
                 
+                state.marginAnimationTimer = Mainloop.timeout_add(16, function() {
+                    let state = panelStates[panel.panelId];
+                    if (!state || !state.isEnabled) return false;
+                    if (!panel || !panel.actor) return false;
+                    
+                    let elapsed = Date.now() - startTime;
+                    let progress = Math.min(elapsed / duration, 1.0);
+                    let eased = 1 - Math.pow(1 - progress, 3);
+                    
+                    let currentMargin = startMargin + (endMargin - startMargin) * eased;
+                    
+                    try {
+                        panel.actor.set_style(
+                            'border-radius: 12px;' +
+                            'padding: ' + panelPadding + 'px 0px;' +
+                            'margin-top: ' + currentMargin + 'px;' +
+                            'margin-bottom: ' + currentMargin + 'px;' +
+                            'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
+                            'opacity: ' + transparency + ';'
+                        );
+                        panel.actor.opacity = savedOpacity;
+                        
+                        let targetX = state.originalX + adjustedOffset;
+                        if (panel.actor.x !== targetX) {
+                            panel.actor.x = targetX;
+                        }
+                        if (panel.actor.y !== state.originalY) {
+                            panel.actor.y = state.originalY;
+                        }
+                        panel.actor.fixed_position_set = true;
+                    } catch(e) {
+                        state.marginAnimationTimer = null;
+                        state.isAnimating = false;
+                        return false;
+                    }
+                    
+                    if (progress >= 1.0) {
+                        state.marginAnimationTimer = null;
+                        state.previousHeight = desiredHeight;
+                        state.isAnimating = false;
+                        return false;
+                    }
+                    return true;
+                });
+            } else {
                 panel.actor.set_style(
                     'border-radius: 12px;' +
                     'padding: ' + panelPadding + 'px 0px;' +
-                    'margin-top: ' + (currentMargin + usableTopOffset) + 'px;' +
-                    'margin-bottom: ' + currentMargin + 'px;' +
+                    'margin-top: ' + desiredMargin + 'px;' +
+                    'margin-bottom: ' + desiredMargin + 'px;' +
                     'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
                     'opacity: ' + transparency + ';'
                 );
                 panel.actor.opacity = savedOpacity;
-                
-                let targetX = state.originalX + adjustedOffset;
-                if (panel.actor.x !== targetX) {
-                    panel.actor.x = targetX;
-                }
-                if (panel.actor.y !== state.originalY) {
-                    panel.actor.y = state.originalY;
-                }
-                panel.actor.fixed_position_set = true;
-                
-                if (progress >= 1.0) {
-                    state.marginAnimationTimer = null;
-                    state.previousHeight = state.lastHeight;
-                    state.isAnimating = false;
-                    return false;
-                }
-                return true;
-            });
-        } else {
-            panel.actor.set_style(
-                'border-radius: 12px;' +
-                'padding: ' + panelPadding + 'px 0px;' +
-                'margin-top: ' + (desiredMargin + usableTopOffset) + 'px;' +
-                'margin-bottom: ' + desiredMargin + 'px;' +
-                'box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);' +
-                'opacity: ' + transparency + ';'
-            );
-            panel.actor.opacity = savedOpacity;
-            state.previousHeight = state.lastHeight;
+                state.previousHeight = desiredHeight;
+            }
+            
+            let targetX = state.originalX + adjustedOffset;
+            if (panel.actor.x !== targetX) {
+                panel.actor.x = targetX;
+            }
+            if (panel.actor.y !== state.originalY) {
+                panel.actor.y = state.originalY;
+            }
+            panel.actor.fixed_position_set = true;
         }
-        
-        let targetX = state.originalX + adjustedOffset;
-        if (panel.actor.x !== targetX) {
-            panel.actor.x = targetX;
-        }
-        if (panel.actor.y !== state.originalY) {
-            panel.actor.y = state.originalY;
-        }
-        panel.actor.fixed_position_set = true;
-    }
+    } catch(e) {}
 }
 
 function applyStyleToAll() {
     if (isInEditMode) return;
+    
     Main.panelManager.panels.forEach(panel => {
-        if (shouldApplyToPanel(panel)) {
+        if (!shouldApplyToPanel(panel)) return;
+        if (!panel || !panel.actor) return;
+        
+        try {
             applyStyle(panel);
-        }
+        } catch(e) {}
     });
 }
 

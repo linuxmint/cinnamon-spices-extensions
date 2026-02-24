@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
+# ADJACENT WINDOWS
 # This file is put in the public domain.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# klangman, 2024
 #
 #, fuzzy
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: adjacent-windows@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-07-21 20:44-0100\n"
+"POT-Creation-Date: 2026-02-18 18:57-0500\n"
 "PO-Revision-Date: 2025-10-19 01:42+0700\n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -57,10 +57,10 @@ msgid ""
 "change to the next window beneath the window that originally had the focus "
 "during the fist key combo press."
 msgstr ""
-"Chuyển đến cửa sổ tiếp theo trong thứ tự z bị chồng lấp bởi cửa sổ hiện "
-"tại. Nếu tổ hợp phím được nhấn lại trong vòng 3 giây, tiêu điểm sẽ chuyển "
-"đến cửa sổ tiếp theo bên dưới cửa sổ ban đầu có tiêu điểm trong lần nhấn tổ "
-"hợp phím đầu tiên."
+"Chuyển đến cửa sổ tiếp theo trong thứ tự z bị chồng lấp bởi cửa sổ hiện tại. "
+"Nếu tổ hợp phím được nhấn lại trong vòng 3 giây, tiêu điểm sẽ chuyển đến cửa "
+"sổ tiếp theo bên dưới cửa sổ ban đầu có tiêu điểm trong lần nhấn tổ hợp phím "
+"đầu tiên."
 
 #. 5.4->settings-schema.json->back-key->description
 msgid "Undo the focus change"
@@ -119,9 +119,9 @@ msgid ""
 "considered a candidate window. Also sets the minimum amount of window "
 "visibility in order to qualify as a candidate window"
 msgstr ""
-"Đặt số pixel một góc có thể bị che khuất bởi các cửa sổ khác và vẫn được "
-"coi là cửa sổ ứng cử viên. Cũng đặt lượng hiển thị cửa sổ tối thiểu để đủ "
-"tiêu chuẩn là cửa sổ ứng cử viên"
+"Đặt số pixel một góc có thể bị che khuất bởi các cửa sổ khác và vẫn được coi "
+"là cửa sổ ứng cử viên. Cũng đặt lượng hiển thị cửa sổ tối thiểu để đủ tiêu "
+"chuẩn là cửa sổ ứng cử viên"
 
 #. 5.4->settings-schema.json->boost-restriction->units
 msgid "priority"

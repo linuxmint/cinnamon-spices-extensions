@@ -30,7 +30,7 @@ function loadShaderResource(uuid, file_name) {
 var CornerEffect = (typeof global === 'undefined') ?
     { default_params: DEFAULT_PARAMS } :
     new GObject.registerClass({
-        GTypeName: "CornerEffect",
+        GTypeName: `CornerEffect_${Math.floor(Math.random() * 100000) + 1}`,
         Properties: {
             'radius': GObject.ParamSpec.double(
                 `radius`,

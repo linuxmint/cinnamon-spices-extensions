@@ -1,14 +1,14 @@
 # pt.po
 # Centered Cinnamon Dock
-# Copyright (C) 2025 mostlynick3
+# Copyright (C) 2026 mostlynick3
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-01-07 01:55+0100\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2026-01-31 03:42+0100\n"
+"PO-Revision-Date: 2026-01-30 01:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -16,115 +16,155 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.4/extension.js:62
+#. 6.4/extension.js:68
+msgid "Welcome to Centered Cinnamon Dock!"
+msgstr "Bem-vindo ao Dock Centralizado do Cinnamon!"
+
+#. 6.4/extension.js:76
+msgid "Which panel(s) would you like to turn into a dock?"
+msgstr "Qual(is) painel(is) deseja transformar num dock?"
+
+#. 6.4/extension.js:124
+msgid "Right click any panel to change your mind or configure the docks later."
+msgstr "Clique com o botão direito em qualquer painel para mudar de ideias ou configurar os docks mais tarde."
+
+#. 6.4/extension.js:134
+msgid "Skip"
+msgstr "Ignorar"
+
+#. 6.4/extension.js:135
+msgid "Enable"
+msgstr "Ativar"
+
+#. 6.4/extension.js:202
 #, javascript-format
 msgid "Bottom Panel (Monitor %d)"
 msgstr "Painel inferior (monitor %d)"
 
-#. 6.4/extension.js:64
+#. 6.4/extension.js:204
 #, javascript-format
 msgid "Top Panel (Monitor %d)"
 msgstr "Painel superior (monitor %d)"
 
-#. 6.4/extension.js:66
+#. 6.4/extension.js:206
 #, javascript-format
 msgid "Left Panel (Monitor %d)"
 msgstr "Painel esquerdo (monitor %d)"
 
-#. 6.4/extension.js:68
+#. 6.4/extension.js:208
 #, javascript-format
 msgid "Right Panel (Monitor %d)"
 msgstr "Painel direito (monitor %d)"
 
-#. 6.4/extension.js:72 6.4/extension.js:713
+#. 6.4/extension.js:212 6.4/extension.js:1019
 msgid "Centered Dock Settings"
 msgstr "Definições do dock centralizado"
 
-#. 6.4/extension.js:95
+#. 6.4/extension.js:235
 msgid "Cancel"
 msgstr "Cancelar"
 
-#. 6.4/extension.js:100
+#. 6.4/extension.js:240
 msgid "Apply"
 msgstr "Aplicar"
 
-#. 6.4/extension.js:104
+#. 6.4/extension.js:244
 msgid "OK"
 msgstr "OK"
 
-#. 6.4/extension.js:112
+#. 6.4/extension.js:252
 msgid "General"
 msgstr "Geral"
 
-#. 6.4/extension.js:115
+#. 6.4/extension.js:255
 msgid "Enable Centered Dock for this panel"
 msgstr "Ativar dock centralizado para este painel"
 
-#. 6.4/extension.js:122
+#. 6.4/extension.js:262
 msgid "Height offset (negative = up, positive = down)"
 msgstr "Deslocamento de altura (negativo = cima, positivo = baixo)"
 
-#. 6.4/extension.js:130
+#. 6.4/extension.js:270
 msgid "Don't shift windows (disable panel struts)"
 msgstr "Não deslocar janelas (desativar struts do painel)"
 
-#. 6.4/extension.js:135
+#. 6.4/extension.js:275
 msgid "Fade animation duration (ms)"
 msgstr "Duração da animação de desvanecimento (ms)"
 
-#. 6.4/extension.js:142
+#. 6.4/extension.js:282
 msgid "Appearance"
 msgstr "Aparência"
 
-#. 6.4/extension.js:145
+#. 6.4/extension.js:285
 msgid "Transparency (%)"
 msgstr "Transparência (%)"
 
-#. 6.4/extension.js:153
+#. 6.4/extension.js:293
 msgid "Minimum dock width"
 msgstr "Largura mínima do dock"
 
-#. 6.4/extension.js:161
+#. 6.4/extension.js:301
 msgid "Enable zoom effect on hover"
 msgstr "Ativar efeito de zoom ao passar o rato"
 
-#. 6.4/extension.js:166
+#. 6.4/extension.js:306
 msgid "Zoom scale factor"
 msgstr "Fator de escala do zoom"
 
-#. 6.4/extension.js:173
+#. 6.4/extension.js:313
 msgid "Auto-hide Behavior"
 msgstr "Comportamento de ocultação automática"
 
-#. 6.4/extension.js:176
+#. 6.4/extension.js:316
+msgid "Choose one auto-hide mode (mutually exclusive):"
+msgstr "Escolha um modo de ocultação automática (mutuamente exclusivo):"
+
+#. 6.4/extension.js:329
 msgid "Auto-hide dock when focusing apps"
 msgstr "Ocultar dock automaticamente ao focar aplicações"
 
-#. 6.4/extension.js:181
-msgid "Show dock when no window is focused"
-msgstr "Mostrar dock quando nenhuma janela está focada"
+#. 6.4/extension.js:334
+msgid "    ↳ Show dock when no window is focused"
+msgstr "    ↳ Mostrar dock quando nenhuma janela está focada"
 
-#. 6.4/extension.js:186
+#. 6.4/extension.js:341
+msgid "Show dock unless window covers full screen"
+msgstr "Mostrar dock a menos que a janela cubra o ecrã completo"
+
+#. 6.4/extension.js:346
+msgid "(Dock visible unless a window covers the full screen)"
+msgstr "(Dock visível a menos que uma janela cubra o ecrã completo)"
+
+#. 6.4/extension.js:357
+msgid "Auto-hide timing settings:"
+msgstr "Definições de temporização de ocultação automática:"
+
+#. 6.4/extension.js:366
 msgid "Delay before auto-hiding (ms)"
 msgstr "Atraso antes de ocultar automaticamente (ms)"
 
-#. 6.4/extension.js:194
+#. 6.4/extension.js:374
 msgid "Height of trigger zone to show panel (px)"
 msgstr "Altura da zona de ativação para mostrar o painel (px)"
 
-#. 6.4/extension.js:202
+#. 6.4/extension.js:381
+msgid "Auto-hide Indicator"
+msgstr "Indicador de ocultação automática"
+
+#. 6.4/extension.js:384
 msgid "Show indicator of dock location in trigger zone"
 msgstr "Mostrar indicador da localização do dock na zona de ativação"
 
-#. 6.4/extension.js:207
+#. 6.4/extension.js:389
 msgid "Indicator color"
 msgstr "Cor do indicador"
 
-#. 6.4/extension.js:449
+#. 6.4/extension.js:663
 msgid "Hex color:"
 msgstr "Cor hexadecimal:"
 
-#. 6.4/extension.js:457
+#. 6.4/extension.js:671
 msgid "Type hex color"
 msgstr "Digite a cor hexadecimal"
 

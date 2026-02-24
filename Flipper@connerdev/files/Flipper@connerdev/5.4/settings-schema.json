@@ -17,7 +17,7 @@
     "general-settings" : {
       "type" : "section",
       "title" : "Flipper General Settings",
-      "keys" : ["transitionEffect", "patchmoveToWorkspace", "patchActivateWindow", "includePanels"]
+      "keys" : ["transitionEffect", "patchmoveToWorkspace", "patchActivateWindow", "patchGestureSwitch", "includePanels"]
     },
     "random-settings" : {
       "type" : "section",
@@ -520,6 +520,12 @@
     "type": "checkbox",
     "description": "Use Flipper effect when changing focus causes a workspace switch",
     "tooltip": "Override the activateWindow() API so that when a window on another workspace is given the focus, the Flipper effect is used to change the current workspace",
+    "default": true
+  },
+  "patchGestureSwitch": {
+    "type": "checkbox",
+    "description": "Use Flipper effect when switching workspaces using touchpad gestures",
+    "tooltip": "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures will use the Flipper effect",
     "default": true
   },
   "includePanels" : {
