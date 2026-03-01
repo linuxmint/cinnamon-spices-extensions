@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.0
+
+* Added a "Gaussian dynamic blur" option for Menus, Panels, Notifications and Tooltips. This allows the windows that are under the blurred component to be visible in the blurred element, resulting in an effect that allows the component to appear to float above the desktop wallpaper and windows rather then a static blur effect which shows just the desktop wallpaper under the component.
+* Added an experimental "Gaussian dynamic blur" option for Application windows. This option is experimental because it causes frequent graphical artifacts and missing elements of the blurred windows in the background of the windows where you have enabled dynamic Application window blurring effects. For this reason I do not recommend using this feature, and it will not be used automatically when the generic effect settings is set to use dynamic blurring.
+* Fixed the Notifications blurred element so that it does not appear above full-screen windows unless the Cinnamon Notifications option "Display notifications over fullscreen windows" is enabled. Thanks to [phiphifier](https://github.com/phiphifier) for reporting the issue.
+* Fixed the Notifications blurred element so that its size an position properly matches the Notification window when the Cinnamon Notifications option "Show notifications on the bottom side of the screen" is enabled. Thanks to misscuteblush for reporting the issue.
+* Fixed the rounding of the blurred elements for Menus, Notifications and Tooltips when the UI scaling factor is not 100%.
+* Fixed some issues with the generic effects settings not applying to Menus.
+* Added new default "Conky" and "Gnome Terminal" Application window configuration table entries to the Application window list. These will only appear for new installs (upgrades will have to add the entries manually). The new default table entries are disabled by default just like the other default entries.
+* Fix to allow Conky windows setup with the "own_window_type = 'desktop'" setting to have Blur Cinnamon effects applied. 
+* Changed the default effect type to be the new Dynamic Gaussian effect. This only effects new installs, upgraded installs will need to change the settings manually to enable the Dynamic Gaussian effects.
+* Thanks to those who beta tested the dynamic blur feature and reported issues (i.e. [Selinaru](https://github.com/Selinaru) and others)
+
 ## 1.7.2
 
 * Added a panel settings option to "Brighten" (dim=0 and saturation=100) a panel when the mouse is hovering over a panel (disabled by default)

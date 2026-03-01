@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-02-05 19:13-0500\n"
+"POT-Creation-Date: 2026-03-01 15:26-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
-#. 6.0/extension.js:1829
+#. 6.0/extension.js:2239 6.0/extension.js:2242 6.0/extension.js:2302
+#. 6.0/extension.js:2370
 #, fuzzy
 msgid "Default window settings"
 msgstr "Mở cài đặt Alt-Tab Cinnamon"
 
-#. 6.0/extension.js:1942
+#. 6.0/extension.js:2504
 msgid "Error"
 msgstr ""
 
-#. 6.0/extension.js:1943
+#. 6.0/extension.js:2505
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
 
-#. 6.0/extension.js:2688
+#. 6.0/extension.js:3260
 msgid "Welcome to Blur Cinnamon"
 msgstr "Chào mừng đến với Blur Cinnamon"
 
-#. 6.0/extension.js:2689
+#. 6.0/extension.js:3261
 #, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
@@ -59,15 +59,15 @@ msgstr ""
 "phần được bật theo mặc định. Bạn cũng có thể thay đổi các thuộc tính hiệu "
 "ứng như cường độ làm mờ, độ bão hòa màu và làm tối."
 
-#. 6.0/extension.js:2693
+#. 6.0/extension.js:3265
 msgid "Open Blur Cinnamon Settings"
 msgstr "Mở Cài đặt Blur Cinnamon"
 
-#. 6.0/extension.js:2775
+#. 6.0/extension.js:3347
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Đang thử nghiệm Hiệu ứng Thông báo Blur Cinnamon"
 
-#. 6.0/extension.js:2776
+#. 6.0/extension.js:3348
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -282,7 +282,7 @@ msgstr ""
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
 "\n"
-"<b>Brining your style into focus</b>\n"
+"<b>Bringing your style into focus</b>\n"
 "Version: ext-version\n"
 "\n"
 "Developed by: Kevin Langman\n"
@@ -593,9 +593,9 @@ msgstr "Màu"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#. 6.0->settings-schema.json->desklets-list->columns->title
-msgid "Blur"
-msgstr "Làm mờ"
+#, fuzzy
+msgid "Background"
+msgstr "Nền màn hình"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -706,31 +706,30 @@ msgstr ""
 "ứng pha trộn màu"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "None"
-msgstr "Không"
+#, fuzzy
+msgid "None / Transparent to wallpaper"
+msgstr "Nền màn hình"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Simple"
-msgstr "Đơn giản"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Gaussian"
-msgstr "Gaussian"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#, fuzzy
+msgid "Gaussian static blur"
+msgstr "Cường độ làm mờ Gaussian"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian dynamic blur (if applicable)"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -808,6 +807,30 @@ msgid ""
 "color."
 msgstr "Điều chỉnh độ bão hòa màu của hình nền."
 
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "None"
+msgstr "Không"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Simple"
+msgstr "Đơn giản"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Gaussian"
+msgstr "Gaussian"
+
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
@@ -820,22 +843,15 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Transparent to Background"
+msgid "Transparent to wallpaper"
 msgstr "Nền màn hình"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Simple static blur"
-msgstr ""
-
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Gaussian static blur"
+msgid "Gaussian dynamic blur"
 msgstr "Cường độ làm mờ Gaussian"
 
 #. 6.0->settings-schema.json->panels-blurType->description
@@ -1011,6 +1027,10 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
 msgstr ""
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Blur"
+msgstr "Làm mờ"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""

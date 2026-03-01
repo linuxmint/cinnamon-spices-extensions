@@ -1,4 +1,4 @@
-# Blur Cinnamon
+# Blur Cinnamon (now with dynamic blur)
 
 A Cinnamon extension to Blur, Dim, Colorize, Desaturate and make transparent parts of the Cinnamon Desktop.
 
@@ -17,9 +17,17 @@ Cinnamon components you can apply effects to (currently):
 
 **(#)** Note: The Blur Cinnamon effects for the (#) marked Cinnamon components above are disabled by default. They can be enabled in the Blur Cinnamon configuration window. Some effects will override your theme settings to force transparency.
 
-Blurring can also be disabled if you just want a transparent or semi-transparent effect without blurring for Panels, Applet popup menu or the Expo.
+## Background (Blur) Effect Options
 
-A traditional transparent effect (where you can seen more than just the desktop background) is possible for Panels/Menus/Notifications/Toolips but no saturation or blurring effects are possible in this mode. You must enable the  "Use unique effect settings" option and then change the "Type of background effect" to "Transparent".
+| Effect                   | Components                                     | Description                                                                                                           |
+| ------------------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| None                     | Alt-Tab, Desklets, Desktop, Expo, Overview     | Will not apply any blurring, but allows you to apply other effects like dimming and desaturation.                     |
+| Transparent              | Panels, Menus, Notifications, Tooltips         | Makes the component transparent allowing whatever is under it to appear, but no blurring is applied.                  |
+| Transparent to wallpaper | Panels, Menu, Notifications, Tooltips, Windows | Applies a background to the component that shows a copy of the desktop wallpaper, no blur effects.                    |
+| Simple static blur       | Panels, Menu, Notifications, Tooltips, Windows | Uses the Cinnamon blur effect (it's very subtle) on top of the desktop wallpaper                                      |
+| Gaussian static blur     | Panels, Menu, Notifications, Tooltips, Windows | Uses a Gaussian blur effect on top of the desktop wallpaper                                                           |
+| Gaussian dynamic blur    | Panels, Menu, Notifications, Tooltips, Windows | Uses a Gaussian blur effect on top of a full desktop clone with windows and the desktop wallpaper                     |
+| Simple / Gaussian        | Alt-Tab, Desklets, Desktop, Expo, Overview     | These components can't benefit from anything other than static blurring (blur effect on top of the desktop wallpaper) |
 
 ## Features
 
@@ -50,10 +58,8 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 
 1. The Applet popup menu effects are intended to be used with the Cinnamon (6.4) theme or the Mint-Y dark desktop themes. The effects might work will with some other themes but I have not tested them so the effects might not work out just right. You can try the Mint-Y light themes but it might be hard to read the menu items without some playing around with the settings and the background image. Blur Cinnamon Popup-menu effects are disabled by default.
 2. The Applet popup-menu effects works for all the applets that I have tested except "Cinnamenu". Cinnamenu is preventing other code from receiving the "open-state-changed" event which Blur Cinnamon uses to know when to apply popup-menu theme setting and when to resize and show the blur background element. This issue is fixed in the latest Cinnamenu from [Fredcw GitHub](https://github.com/fredcw/Cinnamenu) but you will need to manually fix the current Cinnamon Spices version of Cinnamenu (see [here](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873))
-3. Currently Blur Cinnamon uses "Static Blurring", meaning only a blurred copy of the desktop background image is visible below effected components (i.e Panels, Menus, Tooltips and Windows). I am looking for a way to implement "Dynamic Blurring" but so far I have not been successful.
+3. The experimental dynamic blur effect for application windows causes several artifacts and flashing graphical issues, therefore I don't recommend using this experimental option. If I can find a solution to these issues I will remove "experimental" from the description in a future release.
 4. This extension currently does not work under Wayland, it only works under X11. The extension automatically detects Wayland and disables most of the features of the extension.
-
-
 
 ## Installation
 
