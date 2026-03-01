@@ -305,7 +305,6 @@ msgid "Show settings for component:"
 msgstr "Mostrar configuración del componente:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -326,21 +325,21 @@ msgid ""
 "nailfarmer"
 msgstr ""
 "\n"
-"<b>Pon tu estilo en el punto de mira</b>\n"
+"<b>Dando protagonismo a tu estilo</b>\n"
 "Versión: ext-version\n"
 "\n"
 "Desarrollado por: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
-"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Informar de un "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Reportar un "
 "problema</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
 "view/104\">Sitio web</a>\n"
 "\n"
 "Las esquinas redondeadas y los efectos gaussianos se basan en el código de "
-"aunetx (Blur-my-shell)\n"
+"aunetx (Blur-my-shell).\n"
 "<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
 "\n"
-"El efecto Overview se basa parcialmente en la extensión BlurOverview de "
+"El efecto Vista general se basa parcialmente en la extensión BlurOverview de "
 "nailfarmer"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -656,9 +655,8 @@ msgstr "Color"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#, fuzzy
 msgid "Background"
-msgstr "Fondo de escritorio"
+msgstr "Fondo"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -773,9 +771,8 @@ msgstr ""
 "algún otro color para un efecto de mezcla de colores"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "None / Transparent to wallpaper"
-msgstr "Fondo de escritorio transparente"
+msgstr "Ninguno / Transparente para el fondo de pantalla"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -795,7 +792,7 @@ msgstr "Desenfoque gaussiano estático"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Gaussian dynamic blur (if applicable)"
-msgstr ""
+msgstr "Desenfoque dinámico gaussiano (si procede)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -910,17 +907,15 @@ msgstr "Transparente"
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Transparent to wallpaper"
-msgstr "Fondo de escritorio transparente"
+msgstr "Transparente al fondo de pantalla"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Gaussian dynamic blur"
-msgstr "Desenfoque gaussiano estático"
+msgstr "Desenfoque dinámico gaussiano"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
