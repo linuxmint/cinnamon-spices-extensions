@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-02-05 19:13-0500\n"
+"POT-Creation-Date: 2026-03-01 15:26-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
-#. 6.0/extension.js:1829
+#. 6.0/extension.js:2239 6.0/extension.js:2242 6.0/extension.js:2302
+#. 6.0/extension.js:2370
 msgid "Default window settings"
 msgstr "Configuración predeterminada de la ventana"
 
-#. 6.0/extension.js:1942
+#. 6.0/extension.js:2504
 msgid "Error"
 msgstr "Error"
 
-#. 6.0/extension.js:1943
+#. 6.0/extension.js:2505
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -36,11 +36,11 @@ msgstr ""
 "tenía el foco anteriormente, por lo que no se pueden aplicar los efectos de "
 "Desenfoque Cinnamon a esa ventana"
 
-#. 6.0/extension.js:2688
+#. 6.0/extension.js:3260
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2689
+#. 6.0/extension.js:3261
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -60,15 +60,15 @@ msgstr ""
 "También puedes realizar cambios en las propiedades de los efectos, como la "
 "intensidad del desenfoque, la saturación del color y el oscurecimiento."
 
-#. 6.0/extension.js:2693
+#. 6.0/extension.js:3265
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir configuración de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2775
+#. 6.0/extension.js:3347
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:2776
+#. 6.0/extension.js:3348
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -305,9 +305,10 @@ msgid "Show settings for component:"
 msgstr "Mostrar configuración del componente:"
 
 #. 6.0->settings-schema.json->about-text->description
+#, fuzzy
 msgid ""
 "\n"
-"<b>Brining your style into focus</b>\n"
+"<b>Bringing your style into focus</b>\n"
 "Version: ext-version\n"
 "\n"
 "Developed by: Kevin Langman\n"
@@ -655,9 +656,9 @@ msgstr "Color"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#. 6.0->settings-schema.json->desklets-list->columns->title
-msgid "Blur"
-msgstr "Desenfoque"
+#, fuzzy
+msgid "Background"
+msgstr "Fondo de escritorio"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -772,31 +773,29 @@ msgstr ""
 "algún otro color para un efecto de mezcla de colores"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "None"
-msgstr "Ninguno"
+#, fuzzy
+msgid "None / Transparent to wallpaper"
+msgstr "Fondo de escritorio transparente"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Simple"
-msgstr "Sencillo"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr "Desenfoque estático simple"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Gaussian"
-msgstr "Gaussiano"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Gaussian static blur"
+msgstr "Desenfoque gaussiano estático"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian dynamic blur (if applicable)"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -876,6 +875,30 @@ msgstr ""
 "Ajusta la saturación del color de la imagen de fondo, desde escala de grises "
 "hasta color completo."
 
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "None"
+msgstr "Ninguno"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Simple"
+msgstr "Sencillo"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Gaussian"
+msgstr "Gaussiano"
+
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
@@ -887,21 +910,16 @@ msgstr "Transparente"
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Transparent to Background"
+#, fuzzy
+msgid "Transparent to wallpaper"
 msgstr "Fondo de escritorio transparente"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Simple static blur"
-msgstr "Desenfoque estático simple"
-
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Gaussian static blur"
+#, fuzzy
+msgid "Gaussian dynamic blur"
 msgstr "Desenfoque gaussiano estático"
 
 #. 6.0->settings-schema.json->panels-blurType->description
@@ -1102,6 +1120,10 @@ msgstr "Nombre"
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
 msgstr "ID"
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Blur"
+msgstr "Desenfoque"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""

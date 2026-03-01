@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-02-05 19:13-0500\n"
+"POT-Creation-Date: 2026-03-01 15:26-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
-#. 6.0/extension.js:1829
+#. 6.0/extension.js:2239 6.0/extension.js:2242 6.0/extension.js:2302
+#. 6.0/extension.js:2370
 msgid "Default window settings"
 msgstr ""
 
-#. 6.0/extension.js:1942
+#. 6.0/extension.js:2504
 msgid "Error"
 msgstr ""
 
-#. 6.0/extension.js:1943
+#. 6.0/extension.js:2505
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
 
-#. 6.0/extension.js:2688
+#. 6.0/extension.js:3260
 #, fuzzy
 msgid "Welcome to Blur Cinnamon"
 msgstr "Sfoca Cinnamom"
 
-#. 6.0/extension.js:2689
+#. 6.0/extension.js:3261
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -51,16 +51,16 @@ msgid ""
 "dimming."
 msgstr ""
 
-#. 6.0/extension.js:2693
+#. 6.0/extension.js:3265
 #, fuzzy
 msgid "Open Blur Cinnamon Settings"
 msgstr "Sfoca Cinnamom"
 
-#. 6.0/extension.js:2775
+#. 6.0/extension.js:3347
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr ""
 
-#. 6.0/extension.js:2776
+#. 6.0/extension.js:3348
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -292,7 +292,7 @@ msgstr ""
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
 "\n"
-"<b>Brining your style into focus</b>\n"
+"<b>Bringing your style into focus</b>\n"
 "Version: ext-version\n"
 "\n"
 "Developed by: Kevin Langman\n"
@@ -626,9 +626,9 @@ msgstr "Colore"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#. 6.0->settings-schema.json->desklets-list->columns->title
-msgid "Blur"
-msgstr "Sfocatura"
+#, fuzzy
+msgid "Background"
+msgstr "Sfondo del desktop"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -734,31 +734,30 @@ msgstr ""
 "normale o un altro colore per un effetto di sfumatura."
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "None"
-msgstr "Nessuno"
+#, fuzzy
+msgid "None / Transparent to wallpaper"
+msgstr "Sfondo del desktop"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Simple"
-msgstr "Semplice"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Gaussian"
-msgstr "Gaussiana"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#, fuzzy
+msgid "Gaussian static blur"
+msgstr "Intensità della sfocatura gaussiana"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian dynamic blur (if applicable)"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -838,6 +837,30 @@ msgid ""
 "color."
 msgstr "Regola la saturazione del colore dell'immagine di sfondo."
 
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "None"
+msgstr "Nessuno"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Simple"
+msgstr "Semplice"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Gaussian"
+msgstr "Gaussiana"
+
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
@@ -850,22 +873,15 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Transparent to Background"
+msgid "Transparent to wallpaper"
 msgstr "Sfondo del desktop"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Simple static blur"
-msgstr ""
-
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Gaussian static blur"
+msgid "Gaussian dynamic blur"
 msgstr "Intensità della sfocatura gaussiana"
 
 #. 6.0->settings-schema.json->panels-blurType->description
@@ -1045,6 +1061,10 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
 msgstr ""
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Blur"
+msgstr "Sfocatura"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""
