@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-03-01 15:26-0500\n"
+"POT-Creation-Date: 2026-03-06 00:29-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:2239 6.0/extension.js:2242 6.0/extension.js:2302
-#. 6.0/extension.js:2370
+#. 6.0/extension.js:2268 6.0/extension.js:2271 6.0/extension.js:2331
+#. 6.0/extension.js:2399
 #, fuzzy
 msgid "Default window settings"
 msgstr "Åbn Alt-Tab-indstillinger i Cinnamon"
 
-#. 6.0/extension.js:2504
+#. 6.0/extension.js:2544
 msgid "Error"
 msgstr ""
 
-#. 6.0/extension.js:2505
+#. 6.0/extension.js:2545
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
 
-#. 6.0/extension.js:3260
+#. 6.0/extension.js:3301
 msgid "Welcome to Blur Cinnamon"
 msgstr "Velkommen til Sløret Cinnamon"
 
-#. 6.0/extension.js:3261
+#. 6.0/extension.js:3302
 #, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
@@ -60,15 +60,15 @@ msgstr ""
 "også foretage ændringer i effektens egenskaber, såsom sløringens intensitet, "
 "farvemætning og dæmpning."
 
-#. 6.0/extension.js:3265
+#. 6.0/extension.js:3306
 msgid "Open Blur Cinnamon Settings"
 msgstr "Åbn Sløret Cinnamon-indstillinger"
 
-#. 6.0/extension.js:3347
+#. 6.0/extension.js:3388
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Tester Sløret Cinnamons underretningseffekter"
 
-#. 6.0/extension.js:3348
+#. 6.0/extension.js:3389
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"

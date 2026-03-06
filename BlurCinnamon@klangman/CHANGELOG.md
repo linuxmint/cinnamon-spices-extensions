@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1
+
+* Fixed graphical issue with blurred windows after the window is moved off of a dynamically blurred component and the window had been minimized in the past.
+* Added a fix to remove dynamic blur window clones when in the "show desktop" state (i.e. when using the "Show Desktop" or "Corner Bar" applets). Thanks to [dearvalentina](https://github.com/dearvalentina) for reporting the issue.
+* Fixed a performance issue with Popup menus where the responsiveness of the menu would degrade over time with each open/close sequence of a particular menu. A bunch of people reported this, but [Pilzinsel64](https://github.com/Pilzinsel64) recreate method got me to the solution.
+* Fixed missing Desklet blur actors in desklets clones (Desklet cloning is used for Dynamic blurring in Blur Cinnamon as well as in the "Desktop Cube" and "Flipper" extensions workspace switcher animations).
+* Fixed missing Desklet blur actors when using the "Corner Bar" middle click "Show the desklets" feature.
+
 ## 2.0.0
 
 * Added a "Gaussian dynamic blur" option for Menus, Panels, Notifications and Tooltips. This allows the windows that are under the blurred component to be visible in the blurred element, resulting in an effect that allows the component to appear to float above the desktop wallpaper and windows rather then a static blur effect which shows just the desktop wallpaper under the component.
