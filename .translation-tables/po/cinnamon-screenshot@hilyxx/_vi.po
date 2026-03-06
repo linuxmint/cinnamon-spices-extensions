@@ -1,0 +1,10 @@
+# CINNAMON-SCREENSHOT
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+msgid ""
+msgstr ""
+
+#. editOverlay.js:445
+msgid "Red"
+msgstr ""

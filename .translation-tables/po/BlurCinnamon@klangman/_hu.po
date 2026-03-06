@@ -1,0 +1,54 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+
+#. 6.0->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Bringing your style into focus</b>\n"
+"Version: ext-version\n"
+"\n"
+"Developed by: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
+"\n"
+"The rounded corners and Gaussian effects are based on code by aunetx (Blur-"
+"my-shell)\n"
+"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"The Overview effect is partially based on the BlurOverview extension by "
+"nailfarmer"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Background"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None / Transparent to wallpaper"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian dynamic blur (if applicable)"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Transparent to wallpaper"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Gaussian dynamic blur"
+msgstr ""

@@ -1,0 +1,192 @@
+# WORKSPACE SCROLLER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ori, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 17:57-0500\n"
+"PO-Revision-Date: 2025-02-21 14:19+0100\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Workspace Scroller"
+msgstr "Werkruimte Scroller"
+
+#. metadata.json->description
+msgid "Switch workspaces using mouse scroll at screen edges."
+msgstr ""
+"Wissel tussen werkruimtes door te scrollen aan de randen van het scherm met "
+"de muis."
+
+#. settings-schema.json->edgesHeader->description
+msgid "Edges"
+msgstr "Randen"
+
+#. settings-schema.json->Left->description
+msgid "Use left edge"
+msgstr "Gebruik de linker rand"
+
+#. settings-schema.json->LeftUp->description
+#. settings-schema.json->RightUp->description
+#. settings-schema.json->TopUp->description
+#. settings-schema.json->BottomUp->description
+#. settings-schema.json->TopLeftUp->description
+#. settings-schema.json->TopRightUp->description
+#. settings-schema.json->BottomLeftUp->description
+#. settings-schema.json->BottomRightUp->description
+msgid " — Scroll up: "
+msgstr "— Scroll omhoog:"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "None"
+msgstr "Geen"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Switch left"
+msgstr "Links wisselen"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Switch right"
+msgstr "Rechts wisselen"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Show expo"
+msgstr "Toon expo"
+
+#. settings-schema.json->LeftDown->description
+#. settings-schema.json->RightDown->description
+#. settings-schema.json->TopDown->description
+#. settings-schema.json->BottomDown->description
+#. settings-schema.json->TopLeftDown->description
+#. settings-schema.json->TopRightDown->description
+#. settings-schema.json->BottomLeftDown->description
+#. settings-schema.json->BottomRightDown->description
+msgid " — Scroll down: "
+msgstr "— Scroll omlaag:"
+
+#. settings-schema.json->Right->description
+msgid "Use right edge"
+msgstr "Gebruik de rechter rand"
+
+#. settings-schema.json->Top->description
+msgid "Use top edge"
+msgstr "Gebruik de bovenste rand"
+
+#. settings-schema.json->Bottom->description
+msgid "Use bottom edge"
+msgstr "Gebruik de onderste rand"
+
+#. settings-schema.json->cornersHeader->description
+msgid "Corner"
+msgstr "Hoek"
+
+#. settings-schema.json->TopLeft->description
+msgid "Use top left corner"
+msgstr "Gebruik de linkerbovenhoek"
+
+#. settings-schema.json->TopRight->description
+msgid "Use top right corner"
+msgstr "Gebruik de rechterbovenhoek"
+
+#. settings-schema.json->BottomLeft->description
+msgid "Use bottom left corner"
+msgstr "Gebruik de linkeronderhoek"
+
+#. settings-schema.json->BottomRight->description
+msgid "Use bottom right corner"
+msgstr "Gebruik de rechteronderhoek"
+
+#. settings-schema.json->cornerSize->units
+msgid "pixels"
+msgstr "pixels"
+
+#. settings-schema.json->cornerSize->description
+msgid "Corners areas size: "
+msgstr "Grootte van hoekgebieden:"
+
+#. settings-schema.json->generalHeader->description
+msgid "General"
+msgstr "Algemeen"
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr "Gebruik een werkruimtewisselaar-extensie indien geïnstalleerd"
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extension to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""
+"Sta een Cinnamon-extensie toe om de werkruimtewisseling te animeren. Deze "
+"optie heeft geen effect tenzij een compatibele extensie is geïnstalleerd. "
+"Vereist Desktop Cube 2.0.2 of Flipper 2.0.0 en Cinnamon 5.4 of hoger."

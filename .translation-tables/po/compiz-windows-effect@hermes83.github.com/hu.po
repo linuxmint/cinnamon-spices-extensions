@@ -1,0 +1,141 @@
+# COMPIZ WINDOWS EFFECT
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# hermes83, 2022
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-11-25 10:07-0500\n"
+"PO-Revision-Date: 2025-12-21 18:11+0100\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#. extension.js:190
+msgid "Error"
+msgstr "Hiba"
+
+#. extension.js:191
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Compiz window effects can not be disabled for that "
+"window"
+msgstr ""
+"Nem sikerült meghatározni az alkalmazást vagy az előzőleg fókuszált ablak "
+"WM_CLASS osztályát, ezért a Compiz ablakeffektusok nem tilthatók le az adott "
+"ablaknál"
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr "Compiz ruganyos ablakok effektus a Compiz bővítményei közül"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Compiz ablak-effektusok"
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "Általános"
+
+#. settings-schema.json->exclude-page->title
+msgid "Exclude List"
+msgstr "Kizárási lista"
+
+#. settings-schema.json->preset-section->title
+msgid "Compiz windows effect configuration"
+msgstr "Compiz Windows effektusok konfigurációja"
+
+#. settings-schema.json->effect-settings-section->title
+msgid "Custom effect settings"
+msgstr "Egyéni effektusbeállítások"
+
+#. settings-schema.json->exclude-section->title
+msgid "Application windows where no window effects will be applied"
+msgstr "Alkalmazásablakok, amelyeken nem lesznek ablakeffektusok alkalmazva"
+
+#. settings-schema.json->presetList->options
+msgid "Subtle"
+msgstr "Finom"
+
+#. settings-schema.json->presetList->options
+msgid "Realistic"
+msgstr "Realisztikus"
+
+#. settings-schema.json->presetList->options
+msgid "Exaggerated"
+msgstr "Túlzott"
+
+#. settings-schema.json->presetList->options
+msgid "Extreme"
+msgstr "Extrém"
+
+#. settings-schema.json->presetList->options
+msgid "Custom"
+msgstr "Egyéni"
+
+#. settings-schema.json->presetList->description
+msgid "Effect style"
+msgstr "Effektus stílusa"
+
+#. settings-schema.json->excludeList->description
+msgid "Application exclude list"
+msgstr "Alkalmazáskizárási lista"
+
+#. settings-schema.json->excludeList->columns->title
+msgid "Application"
+msgstr "Alkalmazás"
+
+#. settings-schema.json->excludeList->tooltip
+msgid ""
+"Defines a list of applications where the \"Compiz window effect\" effects "
+"will not be applied."
+msgstr ""
+"Meghatározza azon alkalmazások listáját, ahol a \"Compiz ablakeffektus\" "
+"effektek nem lesznek alkalmazva."
+
+#. settings-schema.json->excludeButton->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr "Bejegyzés hozzáadása a legutóbb fókuszált ablak alkalmazásához"
+
+#. settings-schema.json->excludeButton->tooltip
+msgid ""
+"Focus the window you want to disable window effects for, then return here "
+"and press this button."
+msgstr ""
+"Fókuszáljon arra az ablakra, amelyiknél le szeretné tiltani az "
+"ablakeffektusokat, majd térjen vissza ide, és nyomja meg ezt a gombot."
+
+#. settings-schema.json->friction->description
+msgid "Friction "
+msgstr "Súrlódás "
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "K rugóerő"
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup"
+msgstr "Gyorsítás"
+
+#. settings-schema.json->mass->description
+msgid "Mass      "
+msgstr "Tömeg      "
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles  "
+msgstr "X csempék  "
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles  "
+msgstr "Y csempék  "
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "Ablakok maximalizálása és eredeti méretének visszaállítása"
