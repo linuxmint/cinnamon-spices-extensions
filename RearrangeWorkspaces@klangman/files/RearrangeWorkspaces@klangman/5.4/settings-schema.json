@@ -1,0 +1,16 @@
+{
+   "keybinding-header": {
+      "type": "header",
+      "description": "Hotkeys to move the current workspace"
+   },
+   "left-key": {
+      "type": "keybinding",
+       "description": "Move workspace to the left",
+       "default": "<Primary><Shift>Left"
+   },
+   "right-key": {
+      "type": "keybinding",
+       "description": "Move workspace to the right",
+       "default": "<Primary><Shift>Right"
+   }
+}
