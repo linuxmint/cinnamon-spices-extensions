@@ -72,6 +72,7 @@ body:
     - opacity-slider@neatnit @NeatNit
     - OSD150@claudiux @claudiux
     - OsdWithNumber@JosephMcc @JosephMcc
+    - RearrangeWorkspaces@klangman @klangman
     - rnbdsh@negateWindow @rnbdsh
     - SanitizeXsessionErrors@claudiux @claudiux
     - ShadowParameters@mikhail-ekzi @mikhail-ekzi
