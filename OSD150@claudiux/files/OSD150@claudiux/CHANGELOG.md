@@ -1,3 +1,7 @@
+### v1.0.2~20260320
+  * Makes the volume bar more smoother.
+  * Fixes a bug.
+
 ### v1.0.1~20250902
   * Makes the volume bar smoother.
 
