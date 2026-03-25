@@ -303,7 +303,8 @@ const TOOLTIPS = {
     [SETTINGS_AUTO_CLOSE]: _("Auto close"),
     [SETTINGS_ANIMATION]: _("Animations"),
     'action-main-list': _("Auto tile main and list"),
-    'action-two-list': _("Auto tile two lists")
+    'action-two-list': _("Auto tile two lists"),
+    'action-preset-grid': _("Auto-tile to current layout"),
 };
 const KEYCONTROL = {
     'gTile-k-left': 'Left',
@@ -409,6 +410,53 @@ AutoTileMainAndList = AutoTileMainAndList_decorate([
 ], AutoTileMainAndList);
 
 ;
+
+;// CONCATENATED MODULE: ../base/ui/AutoTilePresetGrid.ts
+var AutoTilePresetGrid_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+let AutoTilePresetGrid = class AutoTilePresetGrid extends ActionButton {
+    constructor(app) {
+        super('action-preset-grid', "auto_tile_preset-symbolic");
+        this._onButtonPress = () => {
+            if (!this.app.FocusMetaWindow)
+                return false;
+            const grid = this.app.CurrentGrid;
+            if (!grid || !grid.elementsDelegate)
+                return false;
+            const delegate = grid.elementsDelegate;
+            const monitor = this.app.CurrentMonitor;
+            const others = this.app.GetNotFocusedWindowsOfMonitor(monitor);
+            const windows = [this.app.FocusMetaWindow].concat(others);
+            let wi = 0;
+            for (let r = 0; r < grid.rows.length; r++) {
+                for (let c = 0; c < grid.cols.length; c++) {
+                    if (wi >= windows.length)
+                        break;
+                    const el = grid.elements[r][c];
+                    const [x, y, w, h] = delegate.computeCellBounds(el);
+                    this.app.platform.reset_window(windows[wi]);
+                    this.app.platform.move_resize_window(windows[wi], x, y, w, h);
+                    wi++;
+                }
+            }
+            this.emit('resize-done');
+            return false;
+        };
+        this.app = app;
+        this.classname = 'action-preset-grid';
+        this.connect('button-press-event', this._onButtonPress);
+    }
+};
+AutoTilePresetGrid = AutoTilePresetGrid_decorate([
+    addSignals
+], AutoTilePresetGrid);
+
 
 ;// CONCATENATED MODULE: ../base/ui/AutoTileTwoList.ts
 var AutoTileTwoList_decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -616,6 +664,9 @@ let GridElementDelegate = class GridElementDelegate {
             }
             return [areaX, areaY, areaWidth, areaHeight];
         };
+        this.computeCellBounds = (element) => {
+            return this._computeAreaPositionSize(element, element);
+        };
         this._displayArea = (fromGridElement, toGridElement) => {
             let areaWidth, areaHeight, areaX, areaY;
             [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
@@ -811,6 +862,7 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1115,6 +1167,9 @@ let Grid = class Grid {
         let actionTwo = new AutoTileTwoList(this.app);
         this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
         actionTwo.connect('resize-done', this.OnResize);
+        const actionPreset = new AutoTilePresetGrid(this.app);
+        this.veryBottomBar.add(actionPreset.actor, { row: 0, col: 4, x_fill: false, y_fill: false });
+        actionPreset.connect('resize-done', this.OnResize);
         this.x = 0;
         this.y = 0;
         this.interceptHide = false;
