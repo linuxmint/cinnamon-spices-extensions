@@ -421,16 +421,16 @@ var AutoTilePresetGrid_decorate = (undefined && undefined.__decorate) || functio
 
 
 let AutoTilePresetGrid = class AutoTilePresetGrid extends ActionButton {
-    constructor(app) {
+    constructor(app, grid) {
         super('action-preset-grid', "auto_tile_preset-symbolic");
         this._onButtonPress = () => {
             if (!this.app.FocusMetaWindow)
                 return false;
-            const grid = this.app.CurrentGrid;
+            const grid = this.grid;
             if (!grid || !grid.elementsDelegate)
                 return false;
             const delegate = grid.elementsDelegate;
-            const monitor = this.app.CurrentMonitor;
+            const monitor = grid.monitor;
             const others = this.app.GetNotFocusedWindowsOfMonitor(monitor);
             const windows = [this.app.FocusMetaWindow].concat(others);
             let wi = 0;
@@ -449,6 +449,7 @@ let AutoTilePresetGrid = class AutoTilePresetGrid extends ActionButton {
             return false;
         };
         this.app = app;
+        this.grid = grid;
         this.classname = 'action-preset-grid';
         this.connect('button-press-event', this._onButtonPress);
     }
@@ -819,7 +820,7 @@ const TopBar_St = imports.gi.St;
 class TopBar {
     constructor(app, title) {
         this._onCloseButtonClicked = () => {
-            this.app.ToggleUI();
+            this.app.HideUI();
             return false;
         };
         this.app = app;
@@ -872,7 +873,7 @@ var Grid_decorate = (undefined && undefined.__decorate) || function (decorators,
 
 
 
-const { BoxLayout, Table, Bin } = imports.gi.St;
+const { BoxLayout, Table, Bin, Align } = imports.gi.St;
 const Grid_Main = imports.ui.main;
 const Grid_Tweener = imports.ui.tweener;
 const { Side } = imports.gi.Meta;
@@ -881,7 +882,7 @@ let Grid = class Grid {
     constructor(app, monitor, title, cols, rows) {
         this.tableWidth = 220;
         this.tableHeight = 200;
-        this.panelBorderOffset = 40;
+        this.panelBorderOffset = GetMonitorAspectRatio(monitor).widthIsLonger ? 40 : 60;
         this.borderwidth = 2;
         this.rowKey = -1;
         this.colKey = -1;
@@ -892,6 +893,7 @@ let Grid = class Grid {
         this.AdjustTableSize = (width, height) => {
             this.tableWidth = width;
             this.tableHeight = height;
+            this.panelBorderOffset = GetMonitorAspectRatio(this.monitor).widthIsLonger ? 40 : 60;
             this.panelWidth = (this.tableWidth + this.panelBorderOffset);
             const time = this.app.config.AnimationTime;
             Grid_Tweener.addTween(this.table, {
@@ -1108,7 +1110,7 @@ let Grid = class Grid {
         this.app = app;
         this.tableHeight = 200;
         this.tableWidth = 220;
-        this.panelBorderOffset = 40;
+        this.panelBorderOffset = GetMonitorAspectRatio(monitor).widthIsLonger ? 40 : 60;
         this.panelWidth = (this.tableWidth + this.panelBorderOffset);
         this.borderwidth = 2;
         this.actor = new BoxLayout({
@@ -1147,9 +1149,9 @@ let Grid = class Grid {
             height: this.tableHeight
         });
         this.actor.add(this.topbar.actor, { x_fill: true });
-        this.actor.add(this.table, { x_fill: false });
-        this.actor.add(this.bottombar, { x_fill: false });
-        this.actor.add(this.veryBottomBar, { x_fill: false });
+        this.actor.add(this.table, { x_fill: false, x_align: Align.MIDDLE });
+        this.actor.add(this.bottombar, { x_fill: false, x_align: Align.MIDDLE });
+        this.actor.add(this.veryBottomBar, { x_fill: false, x_align: Align.MIDDLE });
         this.monitor = monitor;
         this.rows = rows;
         this.title = title;
@@ -1167,7 +1169,7 @@ let Grid = class Grid {
         let actionTwo = new AutoTileTwoList(this.app);
         this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
         actionTwo.connect('resize-done', this.OnResize);
-        const actionPreset = new AutoTilePresetGrid(this.app);
+        const actionPreset = new AutoTilePresetGrid(this.app, this);
         this.veryBottomBar.add(actionPreset.actor, { row: 0, col: 4, x_fill: false, y_fill: false });
         actionPreset.connect('resize-done', this.OnResize);
         this.x = 0;
@@ -1331,20 +1333,30 @@ class App {
         };
         this.ShowUI = () => {
             var _a;
-            this.focusMetaWindow = getFocusApp();
-            let wm_type = this.focusMetaWindow.get_window_type();
-            let layer = this.focusMetaWindow.get_layer();
+            const window = getFocusApp();
+            this.focusMetaWindow = window;
+            if (window == null)
+                return;
+            let wm_type = window.get_window_type();
+            let layer = window.get_layer();
             this.area.visible = true;
-            const window = this.focusMetaWindow;
             if (window != null && wm_type !== 1 && layer > 0) {
-                for (const grid of this.grids) {
-                    if (!this.config.showGridOnAllMonitors)
-                        grid.ChangeCurrentMonitor((_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor);
-                    const [pos_x, pos_y] = (!this.config.useMonitorCenter && grid.monitor.index == this.currentMonitor.index) ? this.platform.get_window_center(window) : GetMonitorCenter(grid.monitor);
-                    grid.Show(Math.floor(pos_x - grid.actor.width / 2), Math.floor(pos_y - grid.actor.height / 2));
-                    this.OnFocusedWindowChanged();
-                    this.visible = true;
+                const focusedMonitor = (_a = this.monitors.find(x => x.index == window.get_monitor())) !== null && _a !== void 0 ? _a : app_Main.layoutManager.primaryMonitor;
+                if (!this.config.showGridOnAllMonitors) {
+                    const grid = this.grids[0];
+                    if (grid)
+                        grid.ChangeCurrentMonitor(focusedMonitor);
                 }
+                this.currentMonitor = focusedMonitor;
+                this.visible = true;
+                for (const grid of this.grids) {
+                    const [gridTableWidth, gridTableHeight] = grid.GetTableSize();
+                    const gridWidth = gridTableWidth + (GetMonitorAspectRatio(grid.monitor).widthIsLonger ? 40 : 60);
+                    const gridHeight = grid.actor.height + (gridTableHeight - grid.table.height);
+                    const [pos_x, pos_y] = (!this.config.useMonitorCenter && grid.monitor.index == focusedMonitor.index) ? this.platform.get_window_center(window) : GetMonitorCenter(grid.monitor);
+                    grid.Show(Math.floor(pos_x - gridWidth / 2), Math.floor(pos_y - gridHeight / 2));
+                }
+                this.OnFocusedWindowChanged();
             }
             this.MoveUIActor();
             this.BindKeyControls();
@@ -1403,7 +1415,7 @@ class App {
                 return;
             for (const grid of this.Grids) {
                 const [newTableWidth, newTableHeight] = grid.GetTableSize();
-                const gridWidth = grid.actor.width + (newTableWidth - grid.table.width);
+                const gridWidth = newTableWidth + (GetMonitorAspectRatio(grid.monitor).widthIsLonger ? 40 : 60);
                 const gridHeight = grid.actor.height + (newTableHeight - grid.table.height);
                 let pos_x;
                 let pos_y;
@@ -1445,9 +1457,13 @@ class App {
             }
             this.ResetFocusedWindow();
             this.focusMetaWindow = window;
-            if (!this.config.showGridOnAllMonitors)
-                this.CurrentGrid.ChangeCurrentMonitor(this.monitors[this.focusMetaWindow.get_monitor()]);
-            this.currentMonitor = this.monitors[this.focusMetaWindow.get_monitor()];
+            const focusedMonitor = this.monitors[this.focusMetaWindow.get_monitor()] || app_Main.layoutManager.primaryMonitor;
+            if (!this.config.showGridOnAllMonitors) {
+                const grid = this.grids[0];
+                if (grid && focusedMonitor)
+                    grid.ChangeCurrentMonitor(focusedMonitor);
+            }
+            this.currentMonitor = focusedMonitor;
             this.focusMetaWindowPrivateConnections.push(...this.platform.subscribe_to_focused_window_changes(this.focusMetaWindow, this.MoveUIActor));
             let app = this.tracker.get_window_app(this.focusMetaWindow);
             let title = this.focusMetaWindow.get_title();
