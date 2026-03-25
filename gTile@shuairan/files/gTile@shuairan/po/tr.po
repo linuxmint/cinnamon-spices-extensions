@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 15:24-0500\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-03-25 11:44-0500\n"
 "PO-Revision-Date: 2025-03-05 17:30+0300\n"
 "Last-Translator: Erdem Uygun <uygun.erdem@gmail.com>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
@@ -20,21 +21,25 @@ msgstr ""
 "X-Generator: Gtranslator 42.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:43 3.8/gTile.js:303 5.4/gTile.js:303
+#. extension.js:43 5.4/gTile.js:303 3.8/gTile.js:303
 msgid "Auto close"
 msgstr "Otomatik kapat"
 
-#: extension.js:44 3.8/gTile.js:304 5.4/gTile.js:304
+#. extension.js:44 5.4/gTile.js:304 3.8/gTile.js:304
 msgid "Animations"
 msgstr "Animasyonlar"
 
-#: extension.js:45 3.8/gTile.js:305 5.4/gTile.js:305
+#. extension.js:45 5.4/gTile.js:305 3.8/gTile.js:305
 msgid "Auto tile main and list"
 msgstr "Ana ve listeyi otomatik döşe"
 
-#: extension.js:46 3.8/gTile.js:306 5.4/gTile.js:306
+#. extension.js:46 5.4/gTile.js:306 3.8/gTile.js:306
 msgid "Auto tile two lists"
 msgstr "İki listeyi otomatik döşe"
+
+#. 5.4/gTile.js:307 3.8/gTile.js:307
+msgid "Auto-tile to current layout"
+msgstr ""
 
 #. metadata.json->name
 msgid "gTile"
@@ -49,8 +54,8 @@ msgid "Hotkeys:"
 msgstr "Kısayol tuşları:"
 
 #. settings-schema.json->hotkey->description
-#. 3.8->settings-schema.json->hotkey->description
 #. 5.4->settings-schema.json->hotkey->description
+#. 3.8->settings-schema.json->hotkey->description
 msgid "Global Hotkey for gTile"
 msgstr "gTile İçin Genel Kısayol Tuşu"
 
@@ -59,14 +64,14 @@ msgid "Behavior:"
 msgstr "Davranış:"
 
 #. settings-schema.json->animation->description
-#. 3.8->settings-schema.json->animation->description
 #. 5.4->settings-schema.json->animation->description
+#. 3.8->settings-schema.json->animation->description
 msgid "Animation"
 msgstr "Animasyon"
 
 #. settings-schema.json->autoclose->description
-#. 3.8->settings-schema.json->autoclose->description
 #. 5.4->settings-schema.json->autoclose->description
+#. 3.8->settings-schema.json->autoclose->description
 msgid "Auto-Close"
 msgstr "Otomatik Kapat"
 
@@ -85,16 +90,16 @@ msgstr "x"
 #. settings-schema.json->gridbutton2x->description
 #. settings-schema.json->gridbutton3x->description
 #. settings-schema.json->gridbutton4x->description
-#. 3.8->settings-schema.json->columns->description
-#. 3.8->settings-schema.json->grid1x->description
-#. 3.8->settings-schema.json->grid2x->description
-#. 3.8->settings-schema.json->grid3x->description
-#. 3.8->settings-schema.json->grid4x->description
 #. 5.4->settings-schema.json->columns->description
 #. 5.4->settings-schema.json->grid1x->description
 #. 5.4->settings-schema.json->grid2x->description
 #. 5.4->settings-schema.json->grid3x->description
 #. 5.4->settings-schema.json->grid4x->description
+#. 3.8->settings-schema.json->columns->description
+#. 3.8->settings-schema.json->grid1x->description
+#. 3.8->settings-schema.json->grid2x->description
+#. 3.8->settings-schema.json->grid3x->description
+#. 3.8->settings-schema.json->grid4x->description
 msgid "Columns"
 msgstr "Sütunlar"
 
@@ -109,16 +114,16 @@ msgstr "y"
 #. settings-schema.json->gridbutton2y->description
 #. settings-schema.json->gridbutton3y->description
 #. settings-schema.json->gridbutton4y->description
-#. 3.8->settings-schema.json->rows->description
-#. 3.8->settings-schema.json->grid1y->description
-#. 3.8->settings-schema.json->grid2y->description
-#. 3.8->settings-schema.json->grid3y->description
-#. 3.8->settings-schema.json->grid4y->description
 #. 5.4->settings-schema.json->rows->description
 #. 5.4->settings-schema.json->grid1y->description
 #. 5.4->settings-schema.json->grid2y->description
 #. 5.4->settings-schema.json->grid3y->description
 #. 5.4->settings-schema.json->grid4y->description
+#. 3.8->settings-schema.json->rows->description
+#. 3.8->settings-schema.json->grid1y->description
+#. 3.8->settings-schema.json->grid2y->description
+#. 3.8->settings-schema.json->grid3y->description
+#. 3.8->settings-schema.json->grid4y->description
 msgid "Rows"
 msgstr "Satırlar"
 
@@ -134,65 +139,65 @@ msgstr "Düğme 3 için Yerleşim:"
 msgid "Layout for Button 4:"
 msgstr "Düğme 4 için Yerleşim:"
 
-#. 3.8->settings-schema.json->hotkeys-tab->title
 #. 5.4->settings-schema.json->hotkeys-tab->title
+#. 3.8->settings-schema.json->hotkeys-tab->title
 msgid "Hotkeys"
 msgstr "Kısayol tuşları"
 
-#. 3.8->settings-schema.json->behaviour-tab->title
-#. 3.8->settings-schema.json->behaviour-section->title
 #. 5.4->settings-schema.json->behaviour-tab->title
 #. 5.4->settings-schema.json->behaviour-section->title
+#. 3.8->settings-schema.json->behaviour-tab->title
+#. 3.8->settings-schema.json->behaviour-section->title
 msgid "Behavior"
 msgstr "Davranış"
 
-#. 3.8->settings-schema.json->layout-tab->title
 #. 5.4->settings-schema.json->layout-tab->title
+#. 3.8->settings-schema.json->layout-tab->title
 msgid "Layout"
 msgstr "Yerleşim"
 
-#. 3.8->settings-schema.json->help->title
 #. 5.4->settings-schema.json->help->title
+#. 3.8->settings-schema.json->help->title
 msgid "Help"
 msgstr "Yardım"
 
-#. 3.8->settings-schema.json->hotkey-section->title
 #. 5.4->settings-schema.json->hotkey-section->title
+#. 3.8->settings-schema.json->hotkey-section->title
 msgid "Global Hotkey"
 msgstr "Genel Kısayol Tuşu"
 
-#. 3.8->settings-schema.json->keybindings-legend-section->title
 #. 5.4->settings-schema.json->keybindings-legend-section->title
+#. 3.8->settings-schema.json->keybindings-legend-section->title
 msgid "Keybindings Legend (when open)"
 msgstr "Tuş Atamaları Göstergesi (açıkken)"
 
-#. 3.8->settings-schema.json->grid1-section->title
 #. 5.4->settings-schema.json->grid1-section->title
+#. 3.8->settings-schema.json->grid1-section->title
 msgid "Layout For Button 1"
 msgstr "Düğme 1 için Yerleşim:"
 
-#. 3.8->settings-schema.json->grid2-section->title
 #. 5.4->settings-schema.json->grid2-section->title
+#. 3.8->settings-schema.json->grid2-section->title
 msgid "Layout For Button 2"
 msgstr "Düğme 2 için Yerleşim:"
 
-#. 3.8->settings-schema.json->grid3-section->title
 #. 5.4->settings-schema.json->grid3-section->title
+#. 3.8->settings-schema.json->grid3-section->title
 msgid "Layout For Button 3"
 msgstr "Düğme 3 için Yerleşim:"
 
-#. 3.8->settings-schema.json->grid4-section->title
 #. 5.4->settings-schema.json->grid4-section->title
+#. 3.8->settings-schema.json->grid4-section->title
 msgid "Layout For Button 4"
 msgstr "Düğme 4 için Yerleşim:"
 
-#. 3.8->settings-schema.json->help-section->title
 #. 5.4->settings-schema.json->help-section->title
+#. 3.8->settings-schema.json->help-section->title
 msgid "More Info"
 msgstr "Daha Fazla Bilgi"
 
-#. 3.8->settings-schema.json->hotkeys-legend->description
 #. 5.4->settings-schema.json->hotkeys-legend->description
+#. 3.8->settings-schema.json->hotkeys-legend->description
 msgid ""
 "Escape:\t\t\tHide gTile\n"
 "Enter or Space:\tCommit current selection\n"
@@ -232,25 +237,25 @@ msgstr ""
 "3:\t\t\t\tÜçüncü ızgara düzenini seç\n"
 "4:\t\t\t\tDördüncü ızgara düzenini seç"
 
-#. 3.8->settings-schema.json->aspect-ratio->description
 #. 5.4->settings-schema.json->aspect-ratio->description
+#. 3.8->settings-schema.json->aspect-ratio->description
 msgid "Use monitor aspect ratio"
 msgstr "Monitör en boy oranını kullan"
 
-#. 3.8->settings-schema.json->aspect-ratio->tooltip
 #. 5.4->settings-schema.json->aspect-ratio->tooltip
+#. 3.8->settings-schema.json->aspect-ratio->tooltip
 msgid ""
 "Should the popup's grid reflect the current monitor's aspect ratio or not."
 msgstr ""
 "Açılır penceredeki ızgara, mevcut monitörün en boy oranına uyum sağlamalı mı?"
 
-#. 3.8->settings-schema.json->useMonitorCenter->description
 #. 5.4->settings-schema.json->useMonitorCenter->description
+#. 3.8->settings-schema.json->useMonitorCenter->description
 msgid "UI always centered to monitor"
 msgstr "Arayüz her zaman monitörün merkezinde konumlansın"
 
-#. 3.8->settings-schema.json->useMonitorCenter->tooltip
 #. 5.4->settings-schema.json->useMonitorCenter->tooltip
+#. 3.8->settings-schema.json->useMonitorCenter->tooltip
 msgid ""
 "By default the grid UI shows up in the middle of the active window. With "
 "this, it always displays in the middle of the monitor."
@@ -258,29 +263,23 @@ msgstr ""
 "Normalde ızgara arayüzü etkin pencerenin merkezinde açılır. Ancak bu "
 "değişiklikle, her zaman monitörün tam ortasında gösterilecek."
 
-#. 3.8->settings-schema.json->showGridOnAllMonitors->description
 #. 5.4->settings-schema.json->showGridOnAllMonitors->description
+#. 3.8->settings-schema.json->showGridOnAllMonitors->description
 msgid "Show UI and all monitors at the same time"
 msgstr "Arayüzü ve tüm monitörleri aynı anda göster"
 
-#. 3.8->settings-schema.json->grid1NameOverride->description
-#. 3.8->settings-schema.json->grid2NameOverride->description
-#. 3.8->settings-schema.json->grid3NameOverride->description
-#. 3.8->settings-schema.json->grid4NameOverride->description
-#. 5.4->settings-schema.json->grid2NameOverride->description
-#. 5.4->settings-schema.json->grid3NameOverride->description
-#. 5.4->settings-schema.json->grid4NameOverride->description
-msgid "Name Override"
-msgstr "Adı Değiştir"
+#. 5.4->settings-schema.json->grid1NameOverride->description
+msgid "Name Override on the UI"
+msgstr "Arayüzde Adı Değiştirme"
 
-#. 3.8->settings-schema.json->grid1x->tooltip
-#. 3.8->settings-schema.json->grid2x->tooltip
-#. 3.8->settings-schema.json->grid3x->tooltip
-#. 3.8->settings-schema.json->grid4x->tooltip
 #. 5.4->settings-schema.json->grid1x->tooltip
 #. 5.4->settings-schema.json->grid2x->tooltip
 #. 5.4->settings-schema.json->grid3x->tooltip
 #. 5.4->settings-schema.json->grid4x->tooltip
+#. 3.8->settings-schema.json->grid1x->tooltip
+#. 3.8->settings-schema.json->grid2x->tooltip
+#. 3.8->settings-schema.json->grid3x->tooltip
+#. 3.8->settings-schema.json->grid4x->tooltip
 msgid ""
 "Each row represents a column. Span is how much space a column should take up "
 "compared to the other columns. Default is 1."
@@ -289,14 +288,6 @@ msgstr ""
 "diğer sütunlara göre ne kadar yer kaplayacağını belirler. Varsayılan değer "
 "1'dir."
 
-#. 3.8->settings-schema.json->grid1x->columns->title
-#. 3.8->settings-schema.json->grid1y->columns->title
-#. 3.8->settings-schema.json->grid2x->columns->title
-#. 3.8->settings-schema.json->grid2y->columns->title
-#. 3.8->settings-schema.json->grid3x->columns->title
-#. 3.8->settings-schema.json->grid3y->columns->title
-#. 3.8->settings-schema.json->grid4x->columns->title
-#. 3.8->settings-schema.json->grid4y->columns->title
 #. 5.4->settings-schema.json->grid1x->columns->title
 #. 5.4->settings-schema.json->grid1y->columns->title
 #. 5.4->settings-schema.json->grid2x->columns->title
@@ -305,17 +296,25 @@ msgstr ""
 #. 5.4->settings-schema.json->grid3y->columns->title
 #. 5.4->settings-schema.json->grid4x->columns->title
 #. 5.4->settings-schema.json->grid4y->columns->title
+#. 3.8->settings-schema.json->grid1x->columns->title
+#. 3.8->settings-schema.json->grid1y->columns->title
+#. 3.8->settings-schema.json->grid2x->columns->title
+#. 3.8->settings-schema.json->grid2y->columns->title
+#. 3.8->settings-schema.json->grid3x->columns->title
+#. 3.8->settings-schema.json->grid3y->columns->title
+#. 3.8->settings-schema.json->grid4x->columns->title
+#. 3.8->settings-schema.json->grid4y->columns->title
 msgid "Span"
 msgstr "Genişlik"
 
-#. 3.8->settings-schema.json->grid1y->tooltip
-#. 3.8->settings-schema.json->grid2y->tooltip
-#. 3.8->settings-schema.json->grid3y->tooltip
-#. 3.8->settings-schema.json->grid4y->tooltip
 #. 5.4->settings-schema.json->grid1y->tooltip
 #. 5.4->settings-schema.json->grid2y->tooltip
 #. 5.4->settings-schema.json->grid3y->tooltip
 #. 5.4->settings-schema.json->grid4y->tooltip
+#. 3.8->settings-schema.json->grid1y->tooltip
+#. 3.8->settings-schema.json->grid2y->tooltip
+#. 3.8->settings-schema.json->grid3y->tooltip
+#. 3.8->settings-schema.json->grid4y->tooltip
 msgid ""
 "Each row represents a row. Span is how much space a row should take up "
 "compared to the other columns. Default is 1."
@@ -324,6 +323,16 @@ msgstr ""
 "diğer satırlara göre ne kadar yer kaplayacağını belirler. Varsayılan değer "
 "1'dir."
 
-#. 5.4->settings-schema.json->grid1NameOverride->description
-msgid "Name Override on the UI"
-msgstr "Arayüzde Adı Değiştirme"
+#. 5.4->settings-schema.json->grid2NameOverride->description
+#. 5.4->settings-schema.json->grid3NameOverride->description
+#. 5.4->settings-schema.json->grid4NameOverride->description
+#. 3.8->settings-schema.json->grid1NameOverride->description
+#. 3.8->settings-schema.json->grid2NameOverride->description
+#. 3.8->settings-schema.json->grid3NameOverride->description
+#. 3.8->settings-schema.json->grid4NameOverride->description
+msgid "Name Override"
+msgstr "Adı Değiştir"
+
+#. 5.4->settings-schema.json->select-using-keyboard->description
+msgid "Show tile labels"
+msgstr ""
