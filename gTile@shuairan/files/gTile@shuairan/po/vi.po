@@ -37,7 +37,7 @@ msgstr "Tự động xếp ô hai danh sách"
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "Tự động xếp theo bố cục hiện tại"
 
 #. metadata.json->name
 msgid "gTile"

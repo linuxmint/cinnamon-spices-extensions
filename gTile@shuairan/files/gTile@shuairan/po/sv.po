@@ -37,7 +37,7 @@ msgstr ""
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "Ruta automatiskt enligt aktuellt rutnät"
 
 #. metadata.json->name
 msgid "gTile"

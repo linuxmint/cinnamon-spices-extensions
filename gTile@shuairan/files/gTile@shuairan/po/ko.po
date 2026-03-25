@@ -31,7 +31,7 @@ msgstr "두 개의 목록 자동 타일링"
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "현재 레이아웃에 맞게 자동 배치"
 
 #. metadata.json->name
 msgid "gTile"

@@ -37,7 +37,7 @@ msgstr "2 列のリストで自動配置"
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "現在のレイアウトに合わせて自動タイル配置"
 
 #. metadata.json->name
 msgid "gTile"

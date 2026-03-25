@@ -39,7 +39,7 @@ msgstr "İki listeyi otomatik döşe"
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "Geçerli düzene göre otomatik döşeme"
 
 #. metadata.json->name
 msgid "gTile"

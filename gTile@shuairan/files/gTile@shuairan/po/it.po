@@ -37,7 +37,7 @@ msgstr "Affianca automaticamente due elenchi"
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "Affianca automaticamente secondo il layout corrente"
 
 #. metadata.json->name
 msgid "gTile"

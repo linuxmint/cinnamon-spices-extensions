@@ -37,7 +37,7 @@ msgstr "Col·locar les finestres en dues llistes"
 
 #. 5.4/gTile.js:307 3.8/gTile.js:307
 msgid "Auto-tile to current layout"
-msgstr ""
+msgstr "Encaix automàtic a la disposició actual"
 
 #. metadata.json->name
 msgid "gTile"
