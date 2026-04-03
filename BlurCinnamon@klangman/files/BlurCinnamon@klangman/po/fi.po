@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-02-05 19:13-0500\n"
+"POT-Creation-Date: 2026-03-06 00:29-0500\n"
 "PO-Revision-Date: 2025-03-30 10:53+0300\n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
@@ -18,28 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
-#. 6.0/extension.js:1829
+#. 6.0/extension.js:2268 6.0/extension.js:2271 6.0/extension.js:2331
+#. 6.0/extension.js:2399
 msgid "Default window settings"
 msgstr ""
 
-#. 6.0/extension.js:1942
+#. 6.0/extension.js:2544
 msgid "Error"
 msgstr ""
 
-#. 6.0/extension.js:1943
+#. 6.0/extension.js:2545
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
 
-#. 6.0/extension.js:2688
+#. 6.0/extension.js:3301
 #, fuzzy
 msgid "Welcome to Blur Cinnamon"
 msgstr "Blur Cinnamon"
 
-#. 6.0/extension.js:2689
+#. 6.0/extension.js:3302
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -51,16 +51,16 @@ msgid ""
 "dimming."
 msgstr ""
 
-#. 6.0/extension.js:2693
+#. 6.0/extension.js:3306
 #, fuzzy
 msgid "Open Blur Cinnamon Settings"
 msgstr "Blur Cinnamon"
 
-#. 6.0/extension.js:2775
+#. 6.0/extension.js:3388
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr ""
 
-#. 6.0/extension.js:2776
+#. 6.0/extension.js:3389
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -279,7 +279,7 @@ msgstr ""
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
 "\n"
-"<b>Brining your style into focus</b>\n"
+"<b>Bringing your style into focus</b>\n"
 "Version: ext-version\n"
 "\n"
 "Developed by: Kevin Langman\n"
@@ -600,9 +600,9 @@ msgstr "Väri"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#. 6.0->settings-schema.json->desklets-list->columns->title
-msgid "Blur"
-msgstr "Sumeus"
+#, fuzzy
+msgid "Background"
+msgstr "Taustakuva"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -706,31 +706,30 @@ msgstr ""
 "värisekoitukseen"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "None"
-msgstr "Ei mitään"
+#, fuzzy
+msgid "None / Transparent to wallpaper"
+msgstr "Taustakuva"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Simple"
-msgstr "Vakio"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Gaussian"
-msgstr "Gaussian"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#, fuzzy
+msgid "Gaussian static blur"
+msgstr "Sumennuksen voimakkuus"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian dynamic blur (if applicable)"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -806,6 +805,30 @@ msgid ""
 "color."
 msgstr "Säätää taustakuvan värikylläisyyttä."
 
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "None"
+msgstr "Ei mitään"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Simple"
+msgstr "Vakio"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Gaussian"
+msgstr "Gaussian"
+
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
@@ -818,22 +841,15 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Transparent to Background"
+msgid "Transparent to wallpaper"
 msgstr "Taustakuva"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Simple static blur"
-msgstr ""
-
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Gaussian static blur"
+msgid "Gaussian dynamic blur"
 msgstr "Sumennuksen voimakkuus"
 
 #. 6.0->settings-schema.json->panels-blurType->description
@@ -1007,6 +1023,10 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
 msgstr ""
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Blur"
+msgstr "Sumeus"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""

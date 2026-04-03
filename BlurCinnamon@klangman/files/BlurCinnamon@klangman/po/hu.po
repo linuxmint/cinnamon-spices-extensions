@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-02-05 19:13-0500\n"
+"POT-Creation-Date: 2026-03-06 00:29-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,17 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#. 6.0/extension.js:1710 6.0/extension.js:1713 6.0/extension.js:1765
-#. 6.0/extension.js:1829
-#, fuzzy
+#. 6.0/extension.js:2268 6.0/extension.js:2271 6.0/extension.js:2331
+#. 6.0/extension.js:2399
 msgid "Default window settings"
-msgstr "Nyissa meg az Alt-Tab Cinnamon beállításokat"
+msgstr "Alapértelmezett ablakbeállítások"
 
-#. 6.0/extension.js:1942
+#. 6.0/extension.js:2544
 msgid "Error"
 msgstr "Hiba"
 
-#. 6.0/extension.js:1943
+#. 6.0/extension.js:2545
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -38,11 +37,11 @@ msgstr ""
 "WM_CLASS osztályát, ezért a Cinnamon Elhomályosítása effektek nem "
 "alkalmazhatók erre az ablakra"
 
-#. 6.0/extension.js:2688
+#. 6.0/extension.js:3301
 msgid "Welcome to Blur Cinnamon"
 msgstr "Üdvözöljük a Cinnamon Elhomályosításában"
 
-#. 6.0/extension.js:2689
+#. 6.0/extension.js:3302
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -62,15 +61,15 @@ msgstr ""
 "Módosíthatod az effektek tulajdonságait is, például az elmosás intenzitását, "
 "a színtelítettséget és a fényerőt."
 
-#. 6.0/extension.js:2693
+#. 6.0/extension.js:3306
 msgid "Open Blur Cinnamon Settings"
 msgstr "Nyissa meg a Cinnamon Elhomályosítása beállításait"
 
-#. 6.0/extension.js:2775
+#. 6.0/extension.js:3388
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Cinnamon Elhomályosítása értesítési effektek tesztelése"
 
-#. 6.0/extension.js:2776
+#. 6.0/extension.js:3389
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -97,9 +96,8 @@ msgstr ""
 "színezését, telítettségének csökkentését és a fényerő beállítását"
 
 #. 6.0->settings-schema.json->general-page->title
-#, fuzzy
 msgid "General setup"
-msgstr "Általános"
+msgstr "Általános beállítások"
 
 #. 6.0->settings-schema.json->generic-settings-page->title
 #. 6.0->settings-schema.json->generic-effect-settings->title
@@ -107,128 +105,116 @@ msgid "Generic effect settings"
 msgstr "Általános effekt beállítások"
 
 #. 6.0->settings-schema.json->component-setting-page->title
-#, fuzzy
 msgid "Component specific settings"
-msgstr "Panelspecifikus beállítások"
+msgstr "Komponensspecifikus beállítások"
 
 #. 6.0->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #. 6.0->settings-schema.json->general-settings->title
-#, fuzzy
 msgid "Cinnamon desktop components where effects will be applied"
-msgstr "Az asztali elemek, amelyekre effektusokat alkalmaznak"
+msgstr "Cinnamon asztali komponensek, ahol az effektek alkalmazásra kerülnek"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
-msgstr ""
+msgstr "Komponensválasztó"
 
 #. 6.0->settings-schema.json->component-specific-section->title
-#, fuzzy
 msgid "Component Specific Settings"
-msgstr "Panelspecifikus beállítások"
+msgstr "Komponensspecifikus beállítások"
 
 #. 6.0->settings-schema.json->about-section->title
-#, fuzzy
 msgid "About Blur Cinnamon"
-msgstr "Cinnamon Elhomályosítása"
+msgstr "Cinnamon Elhomályosítása Névjegye"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
-#, fuzzy
 msgid ""
 "Note: The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: Az Alt-Tab effektek jelenleg le vannak tiltva az Általános "
-"lapon."
+"Megjegyzés: Az Alt-Tab effektek jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->desklets-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: A paneleffektusok jelenleg le vannak tiltva az Általános "
-"lapon."
+"Megjegyzés: az asztalkalmazás-effektek jelenleg le vannak tiltva az "
+"„Általános beállítások” lapon."
 
 #. 6.0->settings-schema.json->desktop-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: Az asztali háttéreffektusok jelenleg le vannak tiltva az "
-"Általános lapon."
+"Megjegyzés: Az asztali effektek jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->expo-warning->description
-#, fuzzy
 msgid ""
 "Note: The Expo effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: Az Expo-effektusok jelenleg le vannak tiltva az Általános "
-"lapon."
+"Megjegyzés: Az Expo effektek jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->popup-warning->description
-#, fuzzy
 msgid ""
 "Note: The Menu effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: Az előugró menü effektusai jelenleg le vannak tiltva az "
-"Általános lapon."
+"Megjegyzés: A Menüeffektusok jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->notification-warning->description
-#, fuzzy
 msgid ""
 "Note: The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Figyelmeztetés: Az értesítési felugró ablakok effektusai jelenleg le vannak "
-"tiltva az Általános lapon."
+"Megjegyzés: Az értesítési effektusok jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->overview-warning->description
-#, fuzzy
 msgid ""
 "Note: The Overview effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Figyelmeztetés: Az áttekintési effektusok jelenleg le vannak tiltva az "
-"Általános lapon."
+"Megjegyzés: Az Áttekintés effektek jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->panel-warning->description
-#, fuzzy
 msgid ""
 "Note: The Panel effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: A paneleffektusok jelenleg le vannak tiltva az Általános "
-"lapon."
+"Megjegyzés: A Paneleffektusok jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
-#, fuzzy
 msgid ""
 "Note: The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: A panel eszköztipp-effektusai jelenleg le vannak tiltva az "
-"Általános lapon."
+"Megjegyzés: Az eszköztipp-effektusok jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->windows-warning->description
-#, fuzzy
 msgid ""
 "Note: The Window effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Figyelmeztetés: Az ablakeffektusok jelenleg le vannak tiltva az Általános "
-"lapon."
+"Megjegyzés: Az Ablakeffektusok jelenleg le vannak tiltva az „Általános "
+"beállítások” lapon."
 
 #. 6.0->settings-schema.json->desklets-label->description
 msgid ""
 "<b>Note:</b> You must configure your Desklets to be transparent! (see "
 "tooltip)"
 msgstr ""
+"<b>Megjegyzés:</b> Átlátszóra kell állítania az asztalkalmazást! (lásd az "
+"elemleírást)"
 
 #. 6.0->settings-schema.json->desklets-label->tooltip
 msgid ""
@@ -238,12 +224,20 @@ msgid ""
 "backgrounds. On the Desktop, right-click on a Desklet, select the "
 "\"Configure...\" menu item to open a Desklet's configuration window."
 msgstr ""
+"Ahhoz, hogy a Cinnamon Elhomályosítása Asztalkalmazás effektek láthatóak "
+"legyenek, az asztalkalmazás hátterének átlátszónak kell lennie. Ez lehetővé "
+"teszi, hogy az elmosódási effektus látható legyen az asztalkalmazás alatt. A "
+"legtöbb asztalkalmazás konfigurálható átlátszó háttérrel. Az Asztalon "
+"kattintson jobb gombbal egy asztalkalmazásra, és válassza a \"Konfigurálás..."
+"\" menüpontot az asztalkalmazás konfigurációs ablakának megnyitásához."
 
 #. 6.0->settings-schema.json->windows-label->description
 msgid ""
 "<b>Note:</b> Read tooltip for information about the \"Default window "
 "settings\""
 msgstr ""
+"<b>Megjegyzés:</b> Az „Alapértelmezett ablakbeállítások” elemleírásában "
+"további információkat talál."
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -253,6 +247,12 @@ msgid ""
 "\"Enabled\" option is unchecked for a particular application then effects "
 "will be disabled even if the \"Default window settings\" row is enabled."
 msgstr ""
+"Ha a speciális „Alapértelmezett ablakbeállítások” táblázatbejegyzés "
+"engedélyezve van, akkor az összes ablakra érvényesek lesznek a hatások. Ha "
+"le van tiltva, akkor csak a táblázatban definiált alkalmazásokra érvényesek "
+"az effektusok. Ha az „Engedélyezve” opció nincs bejelölve egy adott "
+"alkalmazásnál, akkor a hatások le lesznek tiltva, még akkor is, ha az "
+"„Alapértelmezett ablakbeállítások” sor engedélyezve van."
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Alt-Tab"
@@ -260,9 +260,8 @@ msgstr "Alt-Tab"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-desklet-effects->description
-#, fuzzy
 msgid "Desklets"
-msgstr "Asztal"
+msgstr "Asztalkalmazások"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Desktop"
@@ -300,12 +299,13 @@ msgstr "Ablakok"
 
 #. 6.0->settings-schema.json->component-selector->description
 msgid "Show settings for component:"
-msgstr ""
+msgstr "Az összetevő beállításainak megjelenítése:"
 
 #. 6.0->settings-schema.json->about-text->description
+#, fuzzy
 msgid ""
 "\n"
-"<b>Brining your style into focus</b>\n"
+"<b>Bringing your style into focus</b>\n"
 "Version: ext-version\n"
 "\n"
 "Developed by: Kevin Langman\n"
@@ -322,6 +322,23 @@ msgid ""
 "The Overview effect is partially based on the BlurOverview extension by "
 "nailfarmer"
 msgstr ""
+"\n"
+"<b>A stílusod fókuszba hozása</b>\n"
+"Verzió: ext-version\n"
+"\n"
+"Fejlesztő: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Hiba jelentése</"
+"a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
+"104\">Weboldal</a>\n"
+"\n"
+"A lekerekített sarkok és a Gauss-effektusok az aunetx (Blur-my-shell) kódján "
+"alapulnak.\n"
+"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"Az Áttekintés effektus részben a nailfarmer BlurOverview kiterjesztésen "
+"alapul"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -382,21 +399,18 @@ msgid "Desktop background"
 msgstr "Asztal háttér"
 
 #. 6.0->settings-schema.json->enable-desktop-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to desktop background image. Desktop effects can be applies "
 "always or just when a window has the focus."
 msgstr ""
-"Alkalmazzon effektusokat az asztali háttérképre. Az Asztal háttere lapon "
-"kiválaszthatja, hogy az effektus mindig érvényes legyen, vagy csak akkor, "
-"amikor egy ablak van a fókuszban."
+"Effektusok alkalmazása az asztal háttérképére. Az asztali effektusok "
+"alkalmazhatók mindig, vagy csak akkor, amikor egy ablak van fókuszban."
 
 #. 6.0->settings-schema.json->enable-notification-effects->description
 msgid "Notification popups (Please read tooltip)"
 msgstr "Értesítési felugró ablakok (Kérjük, olvassa el az elemleírást)"
 
 #. 6.0->settings-schema.json->enable-notification-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
@@ -406,8 +420,9 @@ msgid ""
 msgstr ""
 "Effektek alkalmazása az értesítési felugró ablakokra. Ezt az opciót a "
 "Cinnamon (6.4) és a Mint-Y sötét asztali témákkal tesztelték, de más "
-"témákkal is működhet. Felülír néhány témabeállítást, hogy (félig) átlátszó "
-"ablakot érjen el, így az elmosódott háttér látható marad."
+"témákkal is működhet. Felülír néhány témabeállítást, hogy egy (félig) "
+"átlátszó értesítési felugró ablakot érjen el, így az elmosódott háttér "
+"látható."
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->description
 msgid "Alt-Tab application switcher (Coverflow & Timeline only)"
@@ -440,7 +455,6 @@ msgid "Application windows (Please read tooltip)"
 msgstr "Alkalmazásablakok (Kérjük, olvassa el az elemleírást)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
-#, fuzzy
 msgid ""
 "Allow application window background effects by adding an effect actor below "
 "all existing graphical elements of affected windows. This means the effects "
@@ -450,23 +464,23 @@ msgid ""
 "any) will have effects applied to its windows, enabling this option alone "
 "will not add effects to any windows."
 msgstr ""
-"Effektusok alkalmazása az alkalmazásablakok hátterére úgy, hogy effektusokat "
-"ad hozzá egy effektus-aktorhoz az érintett ablakok összes meglévő grafikus "
-"eleme alá. Ez azt jelenti, hogy az effektusok NEM lesznek láthatók, kivéve, "
-"ha az alkalmazás átlátszóra van állítva, vagy az ablak „Opacitás” beállítása "
-"kisebb, mint 100%. Az „Ablakok” lapon található alkalmazásbefogadási lista "
-"határozza meg, hogy mely (ha van ilyen) alkalmazások ablakaira lesznek "
-"effektek alkalmazva."
+"Engedélyezze az alkalmazásablakok háttéreffektusait egy effektusaktor "
+"hozzáadásával az érintett ablakok összes meglévő grafikus eleme alá. Ez azt "
+"jelenti, hogy az effektusok NEM lesznek láthatók, kivéve, ha az alkalmazás "
+"átlátszóra van állítva, vagy az ablak „Opacitás” beállítása kisebb, mint "
+"100%. Az „Ablakok” összetevő beállításai alatti táblázat határozza meg, hogy "
+"mely alkalmazások (ha vannak ilyenek) ablakaira alkalmazzanak effektusokat. "
+"Ha csak ezt az opciót engedélyezi, az nem ad hozzá effektusokat egyetlen "
+"ablakhoz sem."
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to Desklet backgrounds. Desklets must be setup to be "
 "transparent in order for the Blur Cinnamon effects to be visible."
 msgstr ""
-"Effektusok alkalmazása a panel eszköztippjeinek hátterére. Felülír néhány "
-"témabeállítást, hogy (félig) átlátszó eszköztippet érjen el, így az "
-"elmosódott háttér látható."
+"Effektek alkalmazása asztalkalmazás hátterekre. Az asztalkalmazás háttereket "
+"átlátszóra kell állítani ahhoz, hogy a Cinnamon Elhomályosítása effektek "
+"láthatóak legyenek."
 
 #. 6.0->settings-schema.json->focused-window-backlight->description
 msgid "Focused window backlight effect"
@@ -489,7 +503,6 @@ msgid "Override some of the panels theme settings (recommended)"
 msgstr "Néhány paneltéma beállítás felülírása (ajánlott)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the panels transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -497,18 +510,17 @@ msgid ""
 "theme already uses transparent panels and you want the themes setting to "
 "apply."
 msgstr ""
-"Engedélyezze ennek a bővítménynek a panelek átlátszósági és "
-"háttérszínbeállításainak módosítását. Ha ez le van tiltva, a bővítmény csak "
-"elmosódást alkalmaz a panelek alatt. Ezt a beállítást csak akkor szabad "
-"letiltani, ha a téma már használ átlátszó paneleket, és szeretné alkalmazni "
-"a témabeállítást."
+"Engedélyezi a bővítménynek a panelek átlátszósági és háttérszín-"
+"beállításainak módosítását. Ha ez le van tiltva, a bővítmény csak elmosódott "
+"hátteret alkalmaz a panelek alatt. Ezt a beállítást csak akkor szabad "
+"letiltani, ha a téma már átlátszó paneleket használ, és szeretné, hogy a "
+"témabeállítás érvényes legyen."
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->description
 msgid "Override some of the popup menu theme settings (recommended)"
 msgstr "Az előugró menü témájának néhány beállításának felülírása (ajánlott)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the popup Menu transparency and background "
 "color settings. If this is disabled the extension will only apply a blur "
@@ -518,7 +530,7 @@ msgid ""
 msgstr ""
 "Engedélyezi a bővítménynek a felugró menük átlátszóságának és háttérszínének "
 "beállításainak módosítását. Ha ez le van tiltva, a bővítmény csak az előugró "
-"menük alatt alkalmaz elmosódást. Ezt a beállítást csak akkor szabad "
+"menük alatt alkalmaz elmosódott hátteret. Ezt a beállítást csak akkor szabad "
 "letiltani, ha a téma már átlátszó felugró menüket használ, és szeretné, hogy "
 "a témabeállítás érvényes legyen."
 
@@ -556,34 +568,41 @@ msgid "Use unique effect settings for the panel tooltips"
 msgstr "Használjon egyedi effektusbeállításokat a panel eszköztippjeihez"
 
 #. 6.0->settings-schema.json->enable-desklets-override->description
-#, fuzzy
 msgid "Use unique effect settings for the Desklets"
-msgstr "Használjon egyedi effektbeállításokat a panelekhez"
+msgstr "Használjon egyedi effektusbeállításokat az asztalkalmazáshoz"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->description
 msgid "Enable advanced options to apply unique settings for each Desklet"
 msgstr ""
+"Speciális beállítások engedélyezése egyedi beállítások alkalmazásához minden "
+"asztalkalmazáshoz"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->tooltip
 msgid ""
 "With this option enabled each Desklet can use different settings or you can "
 "disable effects completely for some Desklets."
 msgstr ""
+"Ha ez az opció engedélyezve van, minden asztalkalmazás különböző "
+"beállításokat használhat, vagy teljesen kikapcsolhatja az effekteket egyes "
+"asztalkalmazásoknál."
 
 #. 6.0->settings-schema.json->window-settings-button->description
 msgid "Open Alt-Tab Cinnamon settings"
 msgstr "Nyissa meg az Alt-Tab Cinnamon beállításokat"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
-#, fuzzy
 msgid "Enable advanced options to apply unique settings for each panel"
-msgstr "Használjon egyedi effektbeállításokat az egyes panelekhez"
+msgstr ""
+"Speciális beállítások engedélyezése egyedi beállítások alkalmazásához minden "
+"panelhez"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->tooltip
 msgid ""
 "With this option enabled each panel can use different settings or you can "
 "disable effects completely for some panels."
 msgstr ""
+"Ha ez az opció engedélyezve van, minden panel eltérő beállításokat "
+"használhat, vagy teljesen kikapcsolhatja az effekteket egyes paneleknél."
 
 #. 6.0->settings-schema.json->panel-unique-settings->description
 msgid "Panel specific settings"
@@ -623,9 +642,9 @@ msgstr "Szín"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#. 6.0->settings-schema.json->desklets-list->columns->title
-msgid "Blur"
-msgstr "Elmosás"
+#, fuzzy
+msgid "Background"
+msgstr "Asztal háttér"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -640,12 +659,10 @@ msgid "Saturation"
 msgstr "Telítettség"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
-#, fuzzy
 msgid "Custom CSS"
-msgstr "Egyéni"
+msgstr "Egyéni CSS"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
-#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
@@ -656,11 +673,13 @@ msgid ""
 "provided or is in an incorrect syntax"
 msgstr ""
 "Meghatározza a különböző panelekre alkalmazott effektusokat. Ha egy panel "
-"nem felel meg a listában szereplő engedélyezett bejegyzések feltételeinek, "
-"akkor nem lesznek hatással. A lista első bejegyzésének azon beállításai "
-"lépnek életbe, amelyek egy adott panelre vonatkozhatnak. A színmező az "
-"rgb(#,#,#) szintaxisban van, és a fekete színt fogja használni, ha a szín "
-"nincs megadva, vagy hibás szintaxisban van"
+"nem felel meg a lista egyik engedélyezett bejegyzésének kritériumainak, "
+"akkor nem lesz alkalmazva rá effektus. A lista első olyan bejegyzésének "
+"beállításai lépnek életbe, amely egy adott panelre alkalmazható. Az „Egyéni” "
+"jelölőnégyzet határozza meg, hogy az általános effektusbeállítások vagy a "
+"táblázat egyéni beállításai kerülnek-e felhasználásra. A színmező rgb(#,#,#) "
+"szintaxisban van, és a fekete szín kerül felhasználásra, ha a szín nincs "
+"megadva, vagy helytelen szintaxisban van megadva"
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->description
 msgid "Restore theme settings when a window is maximized"
@@ -682,7 +701,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->hover-brighten-panels->description
 msgid "Brighten panel when mouse is hovering a panel"
-msgstr ""
+msgstr "Panel világosítása, amikor az egérmutató a panel fölé kerül"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
 msgid ""
@@ -691,6 +710,10 @@ msgid ""
 "only effective when either dimming is greater than 0 or saturation is less "
 "than 100."
 msgstr ""
+"Miközben az egérmutatót egy panel fölé viszi, állítsa a panelek fényerejét 0-"
+"ra, a telítettségét pedig 100-ra, hogy a panel világosabbnak tűnjön. Ez a "
+"beállítás csak akkor érvényes, ha a fényerő nagyobb, mint 0, vagy a "
+"telítettség kisebb, mint 100."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -736,31 +759,29 @@ msgstr ""
 "színkeverési hatáshoz"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "None"
-msgstr "Semmi"
+#, fuzzy
+msgid "None / Transparent to wallpaper"
+msgstr "Átlátszó a háttér számára"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Simple"
-msgstr "Egyszerű"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Simple static blur"
+msgstr "Egyszerű statikus elmosódás"
 
 #. 6.0->settings-schema.json->blurType->options
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-#. 6.0->settings-schema.json->appswitcher-blurType->options
-#. 6.0->settings-schema.json->desklets-blurType->options
-msgid "Gaussian"
-msgstr "Gauss-féle"
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Gaussian static blur"
+msgstr "Gauss-féle statikus elmosódás"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian dynamic blur (if applicable)"
+msgstr ""
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -833,56 +854,72 @@ msgstr "Háttér színtelítettsége"
 #. 6.0->settings-schema.json->appswitcher-saturation->tooltip
 #. 6.0->settings-schema.json->tooltips-saturation->tooltip
 #. 6.0->settings-schema.json->desklets-saturation->tooltip
-#, fuzzy
 msgid ""
 "Adjusts the color saturation of the background image from gray-scale to full "
 "color."
-msgstr "Beállítja a háttérkép színtelítettségét."
+msgstr ""
+"A háttérkép színtelítettségét állítja be szürkeárnyalatosról teljes színűre."
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "None"
+msgstr "Semmi"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Simple"
+msgstr "Egyszerű"
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "Gaussian"
+msgstr "Gauss-féle"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Transparent"
-msgstr ""
+msgstr "Áttetsző"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Transparent to Background"
-msgstr "Asztal háttér"
-
-#. 6.0->settings-schema.json->panels-blurType->options
-#. 6.0->settings-schema.json->popup-blurType->options
-#. 6.0->settings-schema.json->notification-blurType->options
-#. 6.0->settings-schema.json->tooltips-blurType->options
-msgid "Simple static blur"
-msgstr ""
+msgid "Transparent to wallpaper"
+msgstr "Átlátszó a háttér számára"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #, fuzzy
-msgid "Gaussian static blur"
-msgstr "Gauss-elmosódás intenzitása"
+msgid "Gaussian dynamic blur"
+msgstr "Gauss-féle statikus elmosódás"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->notification-blurType->description
 #. 6.0->settings-schema.json->tooltips-blurType->description
-#, fuzzy
 msgid "Type of background effect"
-msgstr "Az elmosódási hatás típusa"
+msgstr "A háttéreffektus típusa"
 
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->notification-blurType->tooltip
 #. 6.0->settings-schema.json->tooltips-blurType->tooltip
 msgid "What type of background effect should be applied"
-msgstr ""
+msgstr "Milyen típusú háttéreffektust kell alkalmazni"
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
 msgid "Apply effects to applet popup menus"
@@ -897,9 +934,8 @@ msgid "Apply effects to window title bar context menus"
 msgstr "Effektusok alkalmazása az ablak címsorának helyi menüire"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements dimming (%)"
-msgstr "További előugró menü ékezetes elemek halványítása (százalék)"
+msgstr "További felugró menü kiemelő elemeinek halványítása (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
@@ -935,20 +971,19 @@ msgstr ""
 "Alkalmazza az általános hatásbeállításokat, amikor az asztal fókuszban van"
 
 #. 6.0->settings-schema.json->desktop-with-focus->tooltip
-#, fuzzy
 msgid ""
 "When enabled, the generic effect settings (on the \"Generic effect "
 "settings\" tab) will apply to the desktop background image when the desktop "
 "is in focus"
 msgstr ""
-"Ha engedélyezve van, az általános effektusbeállítások (az Általános lapon) "
-"az asztal háttérképére vonatkoznak, amikor az asztal fókuszban van"
+"Ha engedélyezve van, az általános effektusbeállítások (az „Általános "
+"effektusbeállítások” lapon) érvényesek lesznek az asztal háttérképére, "
+"amikor az asztal fókuszban van"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
-#, fuzzy
 msgid "Dim/Colorize background Image (%)"
-msgstr "Háttér halványítása/színezése (%)"
+msgstr "Háttérkép halványítása/színezése (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -967,6 +1002,8 @@ msgid ""
 "Note: Alt-Tab effects only apply to the Coverflow and Timeline 3D Alt-Tab "
 "configurations"
 msgstr ""
+"Megjegyzés: Az Alt-Tab effektek csak a Coverflow és a Timeline 3D Alt-Tab "
+"konfigurációkra vonatkoznak"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
@@ -993,19 +1030,17 @@ msgid "Rounded Bottom"
 msgstr "Lekerekített alj"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
-#, fuzzy
 msgid ""
 "This table controls which application windows will have effects applied and "
 "the effect settings. When \"Custom\" is enabled the setting defined by this "
 "table will apply, otherwise the \"Generic effect settings\" will apply. The "
 "\"Application\" field can be a WM_CLASS or a desktop file name."
 msgstr ""
-"Meghatározza azon alkalmazásablakok listáját, ahol a háttéreffektus "
-"alkalmazásra kerül, és milyen effektusok érvényesek. Ha az „Egyéni” "
-"beállítás engedélyezve van, az ebben a táblázatban meghatározott beállítás "
-"lesz érvényes, egyébként az általános lapon található beállítás lesz "
-"érvényes az adott alkalmazásra. Az „Alkalmazás” mező lehet egy WM_CLASS vagy "
-"egy asztali fájlnév."
+"Ez a táblázat szabályozza, hogy mely alkalmazásablakokra vonatkoznak az "
+"effektek, és milyen effektusbeállítások érvényesek. Ha az „Egyéni” "
+"engedélyezve van, a táblázatban meghatározott beállítás lesz érvényes, "
+"egyébként az „Általános effektusbeállítások” lesznek érvényesek. Az "
+"„Alkalmazás” mező lehet egy WM_CLASS vagy egy asztali fájlnév."
 
 #. 6.0->settings-schema.json->windows-add-button->description
 msgid "Add entry for the application of the most recently focused window"
@@ -1040,6 +1075,7 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
 msgstr ""
+"Effektek automatikus engedélyezése az újonnan hozzáadott asztalkalmazásokhoz"
 
 #. 6.0->settings-schema.json->desklets-auto->tooltip
 msgid ""
@@ -1048,18 +1084,28 @@ msgid ""
 "applied when manually enabled in the table below. By default the settings "
 "applied to new Desklets will be the generic effect settings."
 msgstr ""
+"Ha engedélyezve van, az asztalhoz hozzáadott új asztalkalmazásokra "
+"automatikusan alkalmazza a Cinnamon Elhomályosítása effektusokat a rendszer. "
+"Ha tiltva van, az asztalkalmazásokra csak akkor vonatkoznak az effektek, ha "
+"azokat manuálisan engedélyezi az alábbi táblázatban. Alapértelmezés szerint "
+"az új asztalkalmazásokra alkalmazott beállítások az általános "
+"effektusbeállítások lesznek."
 
 #. 6.0->settings-schema.json->desklets-list->description
 msgid "Active Desklet list"
-msgstr ""
+msgstr "Aktív asztalkalmazások listája"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
-msgstr ""
+msgstr "ID"
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Blur"
+msgstr "Elmosás"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""
@@ -1068,3 +1114,8 @@ msgid ""
 "settings or the custom settings defined in this table. The custom settings "
 "can be modified by double clicking on a table row."
 msgstr ""
+"Az „Engedélyezve” jelölőnégyzet szabályozza, hogy mely asztalkalmazásokra "
+"legyenek alkalmazva az effektek. Az „Egyéni” jelölőnégyzet szabályozza, hogy "
+"egy asztalkalmazás az általános effektusbeállításokat vagy az ebben a "
+"táblázatban meghatározott egyéni beállításokat használja-e. Az egyéni "
+"beállítások a táblázat egy sorára duplán kattintva módosíthatók."

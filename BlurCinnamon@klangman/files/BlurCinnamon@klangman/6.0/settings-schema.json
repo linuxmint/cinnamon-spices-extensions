@@ -162,7 +162,7 @@
       "type" : "custom",
       "file" : "CustomWidgets.py",
       "widget" : "About",
-      "description" : "\n<b>Brining your style into focus</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/104\">Website</a>\n\nThe rounded corners and Gaussian effects are based on code by aunetx (Blur-my-shell)\n<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n\nThe Overview effect is partially based on the BlurOverview extension by nailfarmer",
+      "description" : "\n<b>Bringing your style into focus</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/104\">Website</a>\n\nThe rounded corners and Gaussian effects are based on code by aunetx (Blur-my-shell)\n<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n\nThe Overview effect is partially based on the BlurOverview extension by nailfarmer",
       "icon" : "/icon.png"
    },
 
@@ -343,7 +343,7 @@
             {"id": "override",  "title": "Custom",    "type": "boolean", "default": true},
             {"id": "opacity",   "title": "Dim",       "type": "integer", "default": 40,  "min": 0, "max": 100},
             {"id": "color",     "title": "Color",     "type": "string",  "default": "rgb(0,0,0)"},
-            {"id": "blurtype",  "title": "Blur",      "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
+            {"id": "blurtype",  "title": "Background","type": "integer", "default": 4, "options": { "Transparent": 3, "Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4 } },
             {"id": "radius",    "title": "Intensity", "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation","title": "Saturation","type": "integer", "default": 100, "min": 0, "max": 100},
             {"id": "customCSS", "title": "Custom CSS","type": "string",  "default": ""}
@@ -393,11 +393,12 @@
 
     "blurType": {
         "type": "combobox",
-        "default": 2,
+        "default": 4,
         "options": {
-            "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "None / Transparent to wallpaper": 0,
+            "Simple static blur": 1,
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur (if applicable)": 4
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background"
@@ -411,7 +412,7 @@
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "dependency" : "blurType=2",
+        "dependency" : "blurType=2 | blurType=4",
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9
     },
@@ -570,12 +571,13 @@
 
     "panels-blurType": {
         "type": "combobox",
-        "default": 2,
+        "default": 4,
         "options": {
             "Transparent": 3,
-            "Transparent to Background": 0,
+            "Transparent to wallpaper": 0,
             "Simple static blur": 1,
-            "Gaussian static blur": 2
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur": 4
         },
         "description": "Type of background effect",
         "tooltip": "What type of background effect should be applied",
@@ -592,7 +594,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 6,
-        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & panels-blurType=2 & enable-panels-override"
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & panels-blurType>1 & panels-blurType!=3 & enable-panels-override"
     },
 
     "panels-saturation": {
@@ -665,12 +667,13 @@
 
     "popup-blurType": {
         "type": "combobox",
-        "default": 2,
+        "default": 4,
         "options": {
             "Transparent": 3,
-            "Transparent to Background": 0,
+            "Transparent to wallpaper": 0,
             "Simple static blur": 1,
-            "Gaussian static blur": 2
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur": 4
         },
         "description": "Type of background effect",
         "tooltip": "What type of background effect should be applied",
@@ -687,7 +690,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 20,
-        "dependency" : "enable-popup-effects & component-selector=4 & popup-blurType=2 & enable-popup-override"
+        "dependency" : "enable-popup-effects & component-selector=4 & popup-blurType>1 & popup-blurType!=3 & enable-popup-override"
     },
 
     "popup-saturation": {
@@ -802,12 +805,13 @@
 
     "notification-blurType": {
         "type": "combobox",
-        "default": 2,
+        "default": 4,
         "options": {
             "Transparent": 3,
-            "Transparent to Background": 0,
+            "Transparent to wallpaper": 0,
             "Simple static blur": 1,
-            "Gaussian static blur": 2
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur": 4
         },
         "description": "Type of background effect",
         "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
@@ -824,7 +828,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "enable-notification-effects & component-selector=5 & notification-blurType=2 & enable-notification-override"
+        "dependency" : "enable-notification-effects & component-selector=5 & notification-blurType>1 & notification-blurType!=3 & enable-notification-override"
     },
 
     "notification-saturation": {
@@ -935,12 +939,13 @@
 
     "tooltips-blurType": {
         "type": "combobox",
-        "default": 2,
+        "default": 4,
         "options": {
             "Transparent": 3,
-            "Transparent to Background": 0,
+            "Transparent to wallpaper": 0,
             "Simple static blur": 1,
-            "Gaussian static blur": 2
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur": 4
         },
         "description": "Type of background effect",
         "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
@@ -957,7 +962,7 @@
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "enable-tooltips-effects & component-selector=8 & tooltips-blurType=2 & enable-tooltips-override"
+        "dependency" : "enable-tooltips-effects & component-selector=8 & tooltips-blurType>1 & tooltips-blurType!=3 & enable-tooltips-override"
     },
 
     "tooltips-saturation": {
@@ -1045,7 +1050,7 @@
             {"id": "override",      "title": "Custom",       "type": "boolean", "default": true},
             {"id": "opacity",       "title": "Dim",          "type": "integer", "default": 0,  "min": 0, "max": 100},
             {"id": "color",         "title": "Color",        "type": "string",  "default": "rgb(0,0,0)"},
-            {"id": "blurtype",      "title": "Blur",         "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
+            {"id": "blurtype",      "title": "Background",   "type": "integer", "default": 2, "options": {"Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur (experimental)": 4} },
             {"id": "radius",        "title": "Intensity",    "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation",    "title": "Saturation",   "type": "integer", "default": 100, "min": 0, "max": 100},
             {"id": "corner_radius", "title": "Corner Radius","type": "integer", "default": 10, "min": 0, "max": 25},
@@ -1054,11 +1059,13 @@
         ],
         "tooltip": "This table controls which application windows will have effects applied and the effect settings. When \"Custom\" is enabled the setting defined by this table will apply, otherwise the \"Generic effect settings\" will apply. The \"Application\" field can be a WM_CLASS or a desktop file name.",
         "default" : [
-            { "enabled": false, "application": "Alacritty.desktop",          "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
-            { "enabled": false, "application": "com.gexperts.Tilix.desktop", "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
-            { "enabled": false, "application": "org.gnome.Ptyxis.desktop",   "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 16, "corner_top": true, "corner_bottom": true  },
-            { "enabled": false, "application": "kitty.desktop",              "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
-            { "enabled": false, "application": "org.kde.konsole.desktop",    "override": true, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false }
+            { "enabled": false, "application": "Alacritty.desktop",          "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "com.gexperts.Tilix.desktop", "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "org.gnome.Terminal.desktop", "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "org.gnome.Ptyxis.desktop",   "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 16, "corner_top": true, "corner_bottom": true  },
+            { "enabled": false, "application": "kitty.desktop",              "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "org.kde.konsole.desktop",    "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false },
+            { "enabled": false, "application": "conky",                      "override": false, "opacity": 0, "color": "rgb(0,0,0)", "blurtype": 2, "radius": 10, "saturation": 100, "corner_radius": 10, "corner_top": true, "corner_bottom": false }
         ]
     },
 
