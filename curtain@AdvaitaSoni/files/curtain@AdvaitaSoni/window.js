@@ -46,7 +46,7 @@ class WindowManager {
     }
 
     //@ -- ANIMATION UTILITY 
-    transformWindowActorWithAnimation(actor, rect, animate = ANIMATION_STATUS, time = ANIMATION_TIME, transition = ANIMATION_TYPE, ) {
+    transformWindowActorWithAnimation(actor, rect, animate = ANIMATION_STATUS, time = ANIMATION_TIME, transition = ANIMATION_TYPE,) {
         let metaWindow = actor.get_meta_window();
         let frame = metaWindow.get_frame_rect();
         if (
@@ -377,9 +377,9 @@ class WindowManager {
             .get_window_actors()
             .filter(
                 (win) =>
-                win &&
-                !win.is_destroyed() &&
-                win.get_meta_window().get_window_type() == 0,
+                    win &&
+                    !win.is_destroyed() &&
+                    win.get_meta_window().get_window_type() == 0,
             );
     }
 
@@ -845,6 +845,7 @@ class WindowManager {
             global.log("Error in moving window", e.message)
         }
     }
+
     switchWorkspace(index) {
         if (index < 1) return
         index--;
@@ -854,12 +855,6 @@ class WindowManager {
         }
         let workspace = global.screen.get_workspace_by_index(index)
         workspace.activate(global.get_current_time());
-    }
-    closeWindow() {
-        let window = this.getFocusedWindow().get_meta_window();
-        if (window.can_close()) {
-            window.delete(global.get_current_time())
-        };
     }
 
     closeWindow() {
