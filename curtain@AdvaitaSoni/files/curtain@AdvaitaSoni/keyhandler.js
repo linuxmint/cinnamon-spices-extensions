@@ -9,7 +9,7 @@ class KeyHandler {
     keyMap; //has keys to event mapping
     settingsMap;
     constructor() {
-        setEventMgr(Lang.bind(this, this.cyclingEnabled), Lang.bind(this, this.appendEnabled));
+        setEventMgr(Function.prototype.bind(this, this.cyclingEnabled), Function.prototype.bind(this, this.appendEnabled));
         this.keyMap = MAP;
         this.settingsMap = {};
         for (const [key, _] of Object.entries(MAP)) {

@@ -83,7 +83,7 @@ class EventManager {
         this.windowMgr.moveToWorkspace(9);
     }
     moveSwitchNextWorkspace() {
-        let index = global.screen.get_active_workspace_index() + 1;
+        let index = global.workspace_manager.get_active_workspace_index() + 1;
         if (index == global.workspace_manager.n_workspaces && this.cyclingEnabled()) {
             this.windowMgr.moveToWorkspace(1);
         } else if (index == global.workspace_manager.n_workspaces && !this.appendEnabled()) {
@@ -93,7 +93,7 @@ class EventManager {
         }
     }
     moveSwitchPrevWorkspace() {
-        let index = global.screen.get_active_workspace_index() + 1;
+        let index = global.workspace_manager.get_active_workspace_index() + 1;
         if (index == 1 && this.cyclingEnabled()) {
             this.windowMgr.moveToWorkspace(global.workspace_manager.n_workspaces);
         } else {
@@ -130,7 +130,7 @@ class EventManager {
         this.windowMgr.switchWorkspace(9);
     }
     switchNextWorkspace() {
-        let index = global.screen.get_active_workspace_index() + 1;
+        let index = global.workspace_manager.get_active_workspace_index() + 1;
         if (index == global.workspace_manager.n_workspaces && this.cyclingEnabled()) {
             this.windowMgr.switchWorkspace(1);
         } else if (index == global.workspace_manager.n_workspaces && !this.appendEnabled()) {
@@ -140,7 +140,7 @@ class EventManager {
         }
     }
     switchPrevWorkspace() {
-        let index = global.screen.get_active_workspace_index() + 1;
+        let index = global.workspace_manager.get_active_workspace_index() + 1;
         if (index == 1 && this.cyclingEnabled()) {
             this.windowMgr.switchWorkspace(global.workspace_manager.n_workspaces);
         } else {

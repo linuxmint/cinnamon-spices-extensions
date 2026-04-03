@@ -191,7 +191,7 @@ class WindowManager {
         this.signalManager.connect(global.window_manager, "minimize", this.onMinimize, this);
         this.signalManager.connect(global.window_manager, "unminimize", this.onUnminimize, this);
         this.signalManager.connect(global.display, "window-created", this.onWindowCreated, this);
-        this.signalManager.connect(global.screen, "window-removed",
+        this.signalManager.connect(global.workspace_manager, "window-removed",
             (_, window) => {
                 if (window.get_window_type() != 0) {
                     return;
@@ -348,13 +348,13 @@ class WindowManager {
 
     //@METHODS TO GET CURRENT STATE
     getCurrentWorkspace() {
-        return global.screen.get_workspace_by_index(
-            global.screen.get_active_workspace_index(),
+        return global.workspace_manager.get_workspace_by_index(
+            global.workspace_manager.get_active_workspace_index(),
         );
     }
 
     getCurrentWorkspaceIndex() {
-        return global.screen.get_active_workspace_index();
+        return global.workspace_manager.get_active_workspace_index();
     }
 
     getCurrentMonitor() {
@@ -853,7 +853,7 @@ class WindowManager {
         if (workspacesCnt == index) {
             global.workspace_manager.append_new_workspace(true, global.get_current_time())
         }
-        let workspace = global.screen.get_workspace_by_index(index)
+        let workspace = global.workspace_manager.get_workspace_by_index(index)
         workspace.activate(global.get_current_time());
     }
 
