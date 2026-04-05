@@ -10,7 +10,7 @@ msgstr ""
 "extensions/issues\n"
 "POT-Creation-Date: 2026-03-06 00:29-0500\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -20,13 +20,12 @@ msgstr ""
 
 #. 6.0/extension.js:2268 6.0/extension.js:2271 6.0/extension.js:2331
 #. 6.0/extension.js:2399
-#, fuzzy
 msgid "Default window settings"
-msgstr "Åbn Alt-Tab-indstillinger i Cinnamon"
+msgstr "Standardvinduesindstillinger"
 
 #. 6.0/extension.js:2544
 msgid "Error"
-msgstr ""
+msgstr "Fejl"
 
 #. 6.0/extension.js:2545
 msgid ""
@@ -34,13 +33,15 @@ msgid ""
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
+"Det er ikke muligt at fastslå, hvilket program eller hvilken WM_CLASS det "
+"vindue, der tidligere var i fokus, tilhører, og derfor kan Blur Cinnamon-"
+"effekterne ikke anvendes på dette vindue"
 
 #. 6.0/extension.js:3301
 msgid "Welcome to Blur Cinnamon"
 msgstr "Velkommen til Sløret Cinnamon"
 
 #. 6.0/extension.js:3302
-#, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab Coverflow/"
 "Timeline effects.\n"
@@ -55,10 +56,10 @@ msgstr ""
 "Tab Coverflow/Tidslinje-effekter.\n"
 "\n"
 "Åbn Sløret Cinnamon-indstillingerne for at aktivere yderligere effekter på "
-"flere andre Cinnamon-komponenter, såsom menuer og meddelelser, eller "
-"deaktivere effekter på komponenter, der var aktiveret som standard. Du kan "
-"også foretage ændringer i effektens egenskaber, såsom sløringens intensitet, "
-"farvemætning og dæmpning."
+"flere andre skrivebordselementer, såsom menuer, underretninger og vinduer, "
+"eller deaktivere effekter på komponenter, der var aktiveret som standard. Du "
+"kan også foretage ændringer i effektens egenskaber, såsom sløringens "
+"intensitet, farvemætning og dæmpning."
 
 #. 6.0/extension.js:3306
 msgid "Open Blur Cinnamon Settings"
@@ -89,141 +90,128 @@ msgid ""
 "Cinnamon Desktop components"
 msgstr ""
 "Giver dig mulighed for at sløre, farvelægge, fjerne mætningen og justere "
-"dæmpningen af flere Cinnamon-skrivebordskomponenter."
+"dæmpningen af flere Cinnamon-skrivebordskomponenter"
 
 #. 6.0->settings-schema.json->general-page->title
-#, fuzzy
 msgid "General setup"
-msgstr "Generelt"
+msgstr "Generel opsætning"
 
 #. 6.0->settings-schema.json->generic-settings-page->title
 #. 6.0->settings-schema.json->generic-effect-settings->title
 msgid "Generic effect settings"
-msgstr "Indstillinger for generiske effekter"
+msgstr "Generelle effektindstillinger"
 
 #. 6.0->settings-schema.json->component-setting-page->title
-#, fuzzy
 msgid "Component specific settings"
-msgstr "Panel-specifikke indstillinger"
+msgstr "Komponentspecifikke indstillinger"
 
 #. 6.0->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #. 6.0->settings-schema.json->general-settings->title
-#, fuzzy
 msgid "Cinnamon desktop components where effects will be applied"
-msgstr "Cinnamon-komponenter som vil blive påvirket af effekter"
+msgstr "Cinnamon-skrivebordskomponenter som vil blive påvirket af effekter"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
-msgstr ""
+msgstr "Komponentvælger"
 
 #. 6.0->settings-schema.json->component-specific-section->title
-#, fuzzy
 msgid "Component Specific Settings"
-msgstr "Panel-specifikke indstillinger"
+msgstr "Komponentspecifikke indstillinger"
 
 #. 6.0->settings-schema.json->about-section->title
-#, fuzzy
 msgid "About Blur Cinnamon"
-msgstr "Sløret Cinnamon"
+msgstr "Om Sløret Cinnamon"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
-#, fuzzy
 msgid ""
 "Note: The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Alt-Tab-effekter er i øjeblikket deaktiveret under fanebladet "
-"Generelt."
+"Bemærk: Alt-Tab-effekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->desklets-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Paneleffekter er i øjeblikket deaktiveret under fanebladet "
-"Generelt."
+"Bemærk: Skrivebordsprogrameffekter er i øjeblikket deaktiveret under "
+"fanebladet “Generel opsætning”."
 
 #. 6.0->settings-schema.json->desktop-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Skrivebordsbaggrundseffekter er i øjeblikket deaktiveret under "
-"fanebladet Generelt."
+"Bemærk: Skrivebordseffekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->expo-warning->description
-#, fuzzy
 msgid ""
 "Note: The Expo effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Vis arbejdsområde-effekter er i øjeblikket deaktiveret under "
-"fanebladet Generelt."
+"Bemærk: Vis arbejdsområde-effekter er i øjeblikket deaktiveret under "
+"fanebladet “Generel opsætning”."
 
 #. 6.0->settings-schema.json->popup-warning->description
-#, fuzzy
 msgid ""
 "Note: The Menu effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Pop op-menueffekter er i øjeblikket deaktiveret under fanebladet "
-"Generelt."
+"Bemærk: Menueffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->notification-warning->description
-#, fuzzy
 msgid ""
 "Note: The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Advarsel: Pop op-underretningseffekter er i øjeblikket deaktiveret under "
-"fanebladet Generelt."
+"Bemærk: Underretningseffekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->overview-warning->description
-#, fuzzy
 msgid ""
 "Note: The Overview effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Advarsel: Oversigtseffekter er i øjeblikket deaktiveret under fanebladet "
-"Generelt."
+"Bemærk: Oversigtseffekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->panel-warning->description
-#, fuzzy
 msgid ""
 "Note: The Panel effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Paneleffekter er i øjeblikket deaktiveret under fanebladet "
-"Generelt."
+"Bemærk: Paneleffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
-#, fuzzy
 msgid ""
 "Note: The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Panelværktøjseffekter er i øjeblikket deaktiveret under fanebladet "
-"Generelt."
+"Bemærk: Værktøjstipeffekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->windows-warning->description
-#, fuzzy
 msgid ""
 "Note: The Window effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Advarsel: Vis arbejdsområde-effekter er i øjeblikket deaktiveret under "
-"fanebladet Generelt."
+"Bemærk: Vindueseffekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->desklets-label->description
 msgid ""
 "<b>Note:</b> You must configure your Desklets to be transparent! (see "
 "tooltip)"
 msgstr ""
+"<b>Bemærk:</b> Du skal indstille dine skrivebordsprogrammer til at være "
+"gennemsigtige! (se værktøjstip)"
 
 #. 6.0->settings-schema.json->desklets-label->tooltip
 msgid ""
@@ -233,12 +221,20 @@ msgid ""
 "backgrounds. On the Desktop, right-click on a Desklet, select the "
 "\"Configure...\" menu item to open a Desklet's configuration window."
 msgstr ""
+"For at effekterne i Sløret Cinnamon kan ses, skal skrivebordsprogrammets "
+"baggrund være gennemsigtig. Dette gør det muligt at se sløringseffekten "
+"under skrivebordsprogrammet. De fleste skrivebordsprogrammer kan indstilles "
+"til at have gennemsigtig baggrund. Højreklik på et skrivebordsprogram på "
+"skrivebordet, vælg menupunktet “Konfigurér …” for at åbne "
+"skrivebordsprogrammets konfigurationsvindue."
 
 #. 6.0->settings-schema.json->windows-label->description
 msgid ""
 "<b>Note:</b> Read tooltip for information about the \"Default window "
 "settings\""
 msgstr ""
+"<b>Bemærk:</b> Læs værktøjstippet for oplysninger om "
+"“Standardvinduesindstillinger”"
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -248,6 +244,12 @@ msgid ""
 "\"Enabled\" option is unchecked for a particular application then effects "
 "will be disabled even if the \"Default window settings\" row is enabled."
 msgstr ""
+"Hvis den særlige tabelpost “Standardvinduesindstillinger” er aktiveret, vil "
+"effekterne blive anvendt på alle vinduer. Hvis den er deaktiveret, vil "
+"effekterne kun blive anvendt på de programmer, der er angivet i tabellen. "
+"Hvis afkrydsningsfeltet “Aktiveret” ikke er markeret for et bestemt program, "
+"vil effekterne være deaktiveret, selvom rækken "
+"“Standardvinduesindstillinger” er aktiveret."
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Alt-Tab"
@@ -255,9 +257,8 @@ msgstr "Alt-Tab"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-desklet-effects->description
-#, fuzzy
 msgid "Desklets"
-msgstr "Skrivebord"
+msgstr "Skrivebordsprogrammer"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Desktop"
@@ -291,11 +292,11 @@ msgstr "Værktøjstip"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Windows"
-msgstr ""
+msgstr "Vinduer"
 
 #. 6.0->settings-schema.json->component-selector->description
 msgid "Show settings for component:"
-msgstr ""
+msgstr "Vis indstillinger for komponent:"
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
@@ -306,8 +307,8 @@ msgid ""
 "Developed by: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
 "\n"
 "The rounded corners and Gaussian effects are based on code by aunetx (Blur-"
 "my-shell)\n"
@@ -317,6 +318,22 @@ msgid ""
 "The Overview effect is partially based on the BlurOverview extension by "
 "nailfarmer"
 msgstr ""
+"\n"
+"<b>Bringer din stil i fokus</b>\n"
+"Version: ext-version\n"
+"\n"
+"Udviklet af: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Rapportér et "
+"problem</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Websted</a>\n"
+"\n"
+"Effekterne afrundede hjørner og gaussisk er baserede på kode af aunetx (Blur-"
+"my-shell)\n"
+"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"Effekten Oversigt er delvist baseret på udvidelsen BlurOverview af nailfarmer"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -357,7 +374,6 @@ msgid "Popup Menus  (Please read tooltip)"
 msgstr "Pop op-menuer (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to panel popup menus. This option is intended for the Cinnamon "
 "(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
@@ -366,35 +382,31 @@ msgid ""
 "background image. It overrides some theme settings to achieve a "
 "(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
-"Anvend effekter på pop op-menuer i panelprogrammerne. Denne indstilling er "
-"beregnet til Cinnamon- (6.4) og mørk Mint-Y-skrivebordstemaerne, men kan "
-"også fungere godt med andre temaer. Lyse temaer giver sandsynligvis ikke "
-"gode resultater, men kan muligvis fås til at fungere ved kreativ brug af "
-"indstillingerne for dæmpning af farver og et passende baggrundsbillede. Den "
-"tilsidesætter nogle temaindstillinger for at opnå en (halv)gennemsigtig "
-"menu, så den slørede baggrund er synlig. Den fjerner også afrundede hjørner, "
-"så den slørede baggrund ikke løber ud over de afrundede kanter."
+"Anvend effekter på pop op-menuer i paneler. Denne indstilling er beregnet "
+"til Cinnamon- (6.4) og mørk Mint-Y-skrivebordstemaerne, men kan også fungere "
+"godt med andre temaer. Lyse temaer giver sandsynligvis ikke gode resultater, "
+"men kan muligvis fås til at fungere ved kreativ brug af indstillingerne for "
+"dæmpning af farver og et passende baggrundsbillede. Den tilsidesætter nogle "
+"temaindstillinger for at opnå en (halv)gennemsigtig menu, så den slørede "
+"baggrund er synlig."
 
 #. 6.0->settings-schema.json->enable-desktop-effects->description
 msgid "Desktop background"
 msgstr "Skrivebordsbaggrund"
 
 #. 6.0->settings-schema.json->enable-desktop-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to desktop background image. Desktop effects can be applies "
 "always or just when a window has the focus."
 msgstr ""
-"Anvend effekter på skrivebordet sbaggrundsbillede. Under fanebaldet "
-"Skrivebordsbaggrund kan du vælge, om effekten altid skal anvendes, eller kun "
-"når et vindue har fokus."
+"Anvend effekter på skrivebordets baggrundsbillede. Skrivebordseffekter kan "
+"anvendes altid, eller kun når et vindue har fokus."
 
 #. 6.0->settings-schema.json->enable-notification-effects->description
 msgid "Notification popups (Please read tooltip)"
 msgstr "Pop op for underretninger (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->enable-notification-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
@@ -402,12 +414,11 @@ msgid ""
 "(semi-)transparent Notification popup window so that the blurred background "
 "is visible."
 msgstr ""
-"Anvend effekter på pop op-vinduer for underretninger. Denne indstilling er "
-"testet med Cinnamon- (6.4) og mørk Mint-Y-skrivebordstemaerne, men fungerer "
-"muligvis også med andre temaer. Den tilsidesætter nogle temaindstillinger "
-"for at opnå et (halv)gennemsigtigt vindue, så den slørede baggrund er "
-"synlig. Den fjerner også afrundede hjørner, så den slørede baggrund ikke "
-"løber ud over de afrundede kanter."
+"Anvend effekter på pop op-underretninger. Denne indstilling er testet med "
+"Cinnamon- (6.4) og mørk Mint-Y-skrivebordstemaerne, men fungerer muligvis "
+"også med andre temaer. Den tilsidesætter nogle temaindstillinger for at opnå "
+"et (halv)gennemsigtigt pop op-underretningsvindue, så den slørede baggrund "
+"er synlig."
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->description
 msgid "Alt-Tab application switcher (Coverflow & Timeline only)"
@@ -426,7 +437,6 @@ msgid "Panel tooltips (Please read tooltip)"
 msgstr "Panelværktøjstip (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->enable-tooltips-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the panel tooltip backgrounds. It overrides some theme "
 "settings to achieve a (semi-)transparent tooltip so that the blurred "
@@ -434,13 +444,11 @@ msgid ""
 msgstr ""
 "Anvend effekter på panelets værktøjstipbaggrunde. Det tilsidesætter nogle "
 "temaindstillinger for at opnå et (halv)gennemsigtigt værktøjstip, så den "
-"slørede baggrund er synlig. Det fjerner også afrundede hjørner, så den "
-"slørede baggrund ikke løber ud over de afrundede kanter."
+"slørede baggrund er synlig."
 
 #. 6.0->settings-schema.json->enable-window-effects->description
-#, fuzzy
 msgid "Application windows (Please read tooltip)"
-msgstr "Pop op for underretninger (læs værktøjstip)"
+msgstr "Programvinduer (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
 msgid ""
@@ -452,21 +460,28 @@ msgid ""
 "any) will have effects applied to its windows, enabling this option alone "
 "will not add effects to any windows."
 msgstr ""
+"Tillad baggrundseffekter i programvinduer ved at tilføje en effekt-aktør "
+"under alle eksisterende grafiske elementer i de berørte vinduer. Det "
+"betyder, at effekterne IKKE vil være synlige, medmindre programmet er "
+"indstillet til at være gennemsigtigt, eller indstillingen for "
+"“Uigennemsigtighed” for vinduet er mindre end 100 %. Tabellen under "
+"indstillingerne for komponenten “Vinduer” bruges til at bestemme, hvilke "
+"programmer (om nogen) der skal have effekter anvendt på deres vinduer; blot "
+"at aktivere denne indstilling vil ikke i sig selv tilføje effekter til nogen "
+"vinduer."
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to Desklet backgrounds. Desklets must be setup to be "
 "transparent in order for the Blur Cinnamon effects to be visible."
 msgstr ""
-"Anvend effekter på panelets værktøjstipbaggrunde. Det tilsidesætter nogle "
-"temaindstillinger for at opnå et (halv)gennemsigtigt værktøjstip, så den "
-"slørede baggrund er synlig. Det fjerner også afrundede hjørner, så den "
-"slørede baggrund ikke løber ud over de afrundede kanter."
+"Anvend effekter på skrivebordsprogrammers baggrunde. Skrivebordsprogrammer "
+"skal være indstillede til at være gennemsigtige, ellers er Sløret Cinnamon-"
+"effekter ikke synlige. "
 
 #. 6.0->settings-schema.json->focused-window-backlight->description
 msgid "Focused window backlight effect"
-msgstr ""
+msgstr "Fokuseret vindues baggrundsbelysningseffekt"
 
 #. 6.0->settings-schema.json->focused-window-backlight->tooltip
 msgid ""
@@ -475,13 +490,17 @@ msgid ""
 "appear to glow around the edges. If the focused window is transparent, this "
 "effect will also show a blurred background image behind the window."
 msgstr ""
+"Anvend en baggrundsbelysningseffekt baseret på et baggrundsbillede på det "
+"vindue, der er i fokus. Effekten strækker sig ud over det fokuserede vindues "
+"kanter, så det ser ud, som om vinduet lyser op langs kanterne. Hvis det "
+"fokuserede vindue er gennemsigtigt, vil denne effekt også vise et sløret "
+"baggrundsbillede bag vinduet."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
 msgstr "Tilsidesæt nogle af panelets temaindstillinger (anbefalet)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the panels transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -491,7 +510,7 @@ msgid ""
 msgstr ""
 "Tillad denne udvidelse at ændre panelernes gennemsigtighed og "
 "baggrundsfarveindstillinger. Hvis dette er deaktiveret, vil udvidelsen kun "
-"anvende en sløret overlejring under panelerne. Denne indstilling bør kun "
+"anvende en sløret baggrund under panelerne. Denne indstilling bør kun "
 "deaktiveres, hvis temaet allerede bruger gennemsigtige paneler, og du "
 "ønsker, at temaets indstillinger skal anvendes."
 
@@ -500,7 +519,6 @@ msgid "Override some of the popup menu theme settings (recommended)"
 msgstr "Tilsidesæt nogle af pop op-menuens temaindstillinger (anbefalet)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the popup Menu transparency and background "
 "color settings. If this is disabled the extension will only apply a blur "
@@ -508,12 +526,11 @@ msgid ""
 "the theme already uses transparent popup menus and you want the themes "
 "setting to apply."
 msgstr ""
-"Tillad denne udvidelse at ændre pop op-menuenes gennemsigtighed, "
-"baggrundsfarve og indstillinger for afrundede hjørner. Hvis denne funktion "
-"er deaktiveret, vil udvidelsen kun anvende en sløret overlejring under pop "
-"op-menuerne. Denne indstilling bør kun deaktiveres, hvis temaet allerede "
-"bruger gennemsigtige pop op-menuer, og du ønsker, at temaets indstillinger "
-"skal anvendes."
+"Tillad denne udvidelse at ændre pop op-menuernes gennemsigtighed og "
+"baggrundsfarve. Hvis denne funktion er deaktiveret, vil udvidelsen kun "
+"anvende en sløret baggrund under pop op-menuerne. Denne indstilling bør kun "
+"deaktiveres, hvis temaet allerede bruger gennemsigtige pop op-menuer, og du "
+"ønsker, at temaets indstillinger skal anvendes."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
 msgid "Use unique effect settings for the Overview"
@@ -525,11 +542,11 @@ msgstr "Brug unikke effektindstillinger til Vis arbejdsområder"
 
 #. 6.0->settings-schema.json->enable-panels-override->description
 msgid "Use unique effect settings for the Panels"
-msgstr "Brug unikke effektindstillinger til panelerne"
+msgstr "Brug unikke effektindstillinger til paneler"
 
 #. 6.0->settings-schema.json->enable-popup-override->description
 msgid "Use unique effect settings for the popup menus"
-msgstr "Brug unikke effektindstillinger til pop op-menuerne"
+msgstr "Brug unikke effektindstillinger til pop op-menuer"
 
 #. 6.0->settings-schema.json->enable-desktop-override->description
 msgid "Use unique effect settings for the desktop background"
@@ -548,38 +565,45 @@ msgid "Use unique effect settings for the panel tooltips"
 msgstr "Brug unikke effektindstillinger til panelværktøjstip"
 
 #. 6.0->settings-schema.json->enable-desklets-override->description
-#, fuzzy
 msgid "Use unique effect settings for the Desklets"
-msgstr "Brug unikke effektindstillinger til panelerne"
+msgstr "Brug unikke effektindstillinger til skrivebordsprogrammer"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->description
 msgid "Enable advanced options to apply unique settings for each Desklet"
 msgstr ""
+"Aktivér avancerede indstillinger for at at anvende unikke indstillinger til "
+"hvert skrivebordsprogram"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->tooltip
 msgid ""
 "With this option enabled each Desklet can use different settings or you can "
 "disable effects completely for some Desklets."
 msgstr ""
+"Med denne indstilling aktiveret kan hvert skrivebordsprogram bruge "
+"forskellige indstillinger, eller du kan helt deaktivere effekter for "
+"bestemte skrivebordsprogrammer."
 
 #. 6.0->settings-schema.json->window-settings-button->description
 msgid "Open Alt-Tab Cinnamon settings"
 msgstr "Åbn Alt-Tab-indstillinger i Cinnamon"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
-#, fuzzy
 msgid "Enable advanced options to apply unique settings for each panel"
-msgstr "Brug unikke effektindstillinger til hvert panel"
+msgstr ""
+"Aktivér avancerede indstillinger for at at anvende unikke indstillinger til "
+"hvert panel"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->tooltip
 msgid ""
 "With this option enabled each panel can use different settings or you can "
 "disable effects completely for some panels."
 msgstr ""
+"Med denne indstilling aktiveret kan hvert panel bruge forskellige "
+"indstillinger, eller du kan helt deaktivere effekter for bestemte paneler."
 
 #. 6.0->settings-schema.json->panel-unique-settings->description
 msgid "Panel specific settings"
-msgstr "Panel-specifikke indstillinger"
+msgstr "Panelspecifikke indstillinger"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -599,12 +623,11 @@ msgstr "Skærm"
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Custom"
-msgstr ""
+msgstr "Brugerdefineret"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
-#, fuzzy
 msgid "Dim"
 msgstr "Dæmpning"
 
@@ -616,9 +639,8 @@ msgstr "Farve"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#, fuzzy
 msgid "Background"
-msgstr "Skrivebordsbaggrund"
+msgstr "Baggrund"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -634,10 +656,9 @@ msgstr "Mætning"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Custom CSS"
-msgstr ""
+msgstr "Tilpasset CSS"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
-#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
@@ -651,8 +672,11 @@ msgstr ""
 "ikke opfylder kriterierne for nogen af de aktiverede elementer på denne "
 "liste, vil der ikke blive anvendt nogen effekter. Indstillingerne for det "
 "første element på denne liste, der kan anvendes på et givet panel, vil træde "
-"i kraft. Farvefeltet er i rgb(#,#,#)-syntaks, og sort vil blive anvendt, "
-"hvis der ikke angives en farve, eller hvis syntaksen er forkert."
+"i kraft. Afkrydsningsfeltet “Brugerdefineret” bestemmer, om de generelle "
+"effektindstillinger skal anvendes, eller om denne tabels brugerdefinerede "
+"indstillinger skal anvendes. Farvefeltet er i rgb(#,#,#)-syntaks, og sort "
+"vil blive anvendt, hvis der ikke angives en farve, eller hvis syntaksen er "
+"forkert."
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->description
 msgid "Restore theme settings when a window is maximized"
@@ -674,7 +698,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->hover-brighten-panels->description
 msgid "Brighten panel when mouse is hovering a panel"
-msgstr ""
+msgstr "Gør panelet lysere, når markøren er over panelet"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
 msgid ""
@@ -683,6 +707,9 @@ msgid ""
 "only effective when either dimming is greater than 0 or saturation is less "
 "than 100."
 msgstr ""
+"Når musen holdes over et panel, indstilles panelets dæmpning til 0 og "
+"mætningen til 100, så panelet fremstår lysere. Denne indstilling virker kun, "
+"hvis enten dæmpningen er større end 0, eller mætningen er mindre end 100."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -692,9 +719,8 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-opacity->description
 #. 6.0->settings-schema.json->appswitcher-opacity->description
 #. 6.0->settings-schema.json->tooltips-opacity->description
-#, fuzzy
 msgid "Dim/Colorize Background (%)"
-msgstr "Dæmp/farvelæg baggrund (procent)"
+msgstr "Dæmp/farvelæg baggrund (%)"
 
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
@@ -726,12 +752,11 @@ msgid ""
 msgstr ""
 "Definerer den farve, der blandes ind i baggrunden baseret på "
 "dæmpningskontrollen ovenfor. Brug sort for en normal dæmpningseffekt eller "
-"en anden farve for en farveblandingseffekt."
+"en anden farve for en farveblandingseffekt"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "None / Transparent to wallpaper"
-msgstr "Skrivebordsbaggrund"
+msgstr "Ingen / gennemsigtig til baggrunden"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -739,20 +764,19 @@ msgstr "Skrivebordsbaggrund"
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Simple static blur"
-msgstr ""
+msgstr "Enkel statisk sløring"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Gaussian static blur"
-msgstr "Gaussisk sløringsintensitet"
+msgstr "Gaussisk statisk sløring"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Gaussian dynamic blur (if applicable)"
-msgstr ""
+msgstr "Gaussisk dynamisk sløring (hvis tilgængelig)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -824,11 +848,10 @@ msgstr "Baggrundens farvemætning"
 #. 6.0->settings-schema.json->appswitcher-saturation->tooltip
 #. 6.0->settings-schema.json->tooltips-saturation->tooltip
 #. 6.0->settings-schema.json->desklets-saturation->tooltip
-#, fuzzy
 msgid ""
 "Adjusts the color saturation of the background image from gray-scale to full "
 "color."
-msgstr "Justerer baggrundsbilledets farvemætning."
+msgstr "Justerer baggrundsbilledets farvemætning fra gråskala til fuld farve."
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -859,66 +882,62 @@ msgstr "Gaussisk"
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Transparent"
-msgstr ""
+msgstr "Gennemsigtig"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Transparent to wallpaper"
-msgstr "Skrivebordsbaggrund"
+msgstr "Gennemsigtig til baggrund"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Gaussian dynamic blur"
-msgstr "Gaussisk sløringsintensitet"
+msgstr "Gaussisk dynamisk sløring"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->notification-blurType->description
 #. 6.0->settings-schema.json->tooltips-blurType->description
-#, fuzzy
 msgid "Type of background effect"
-msgstr "Type af sløringseffekt"
+msgstr "Type af baggrundseffekt"
 
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->notification-blurType->tooltip
 #. 6.0->settings-schema.json->tooltips-blurType->tooltip
 msgid "What type of background effect should be applied"
-msgstr ""
+msgstr "Hvilken type baggrundseffekt der skal anvendes"
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
 msgid "Apply effects to applet popup menus"
-msgstr ""
+msgstr "Anvend effekter på panelprogrammers pop op-menuer"
 
 #. 6.0->settings-schema.json->popup-panel-menu-effects->description
 msgid "Apply effects to panel context menus"
-msgstr ""
+msgstr "Anvend effekter på panelprogrammers genvejsmenuer"
 
 #. 6.0->settings-schema.json->popup-title-menu-effects->description
 msgid "Apply effects to window title bar context menus"
-msgstr ""
+msgstr "Anvend effekter på genvejsmenuer i vinduers titellinje"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements dimming (%)"
-msgstr "Yderligere dæmpning af fremhævede pop op-menuelementer (procent)"
+msgstr "Yderligere dæmpning af fremhævede pop op-menuelementer (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements "
-"(i.e. the main menu favorites box and entry boxes) which allow these "
-"elements to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
 msgstr ""
 "Definerer den ekstra dæmpning, der anvendes på pop op-menuenes fremhævede "
 "elementer (dvs. hovedmenuenes favoritfelt og indtastningsfelter), som gør "
 "det muligt for disse elementer at skille sig ud fra de øvrige pop op-"
-"menuområder."
+"menuområder"
 
 #. 6.0->settings-schema.json->popup-saturation->description
 msgid "Background image color saturation"
@@ -934,28 +953,26 @@ msgid ""
 "desktop is not in focus"
 msgstr ""
 "Når denne indstilling er aktiveret, vil effekterne på skrivebordets "
-"baggrundsbillede kun blive anvendt, når skrivebordet ikke er i fokus."
+"baggrundsbillede kun blive anvendt, når skrivebordet ikke er i fokus"
 
 #. 6.0->settings-schema.json->desktop-with-focus->description
 msgid "Apply the generic effect settings when the desktop is in focus"
-msgstr "Anvend de generiske effektindstillinger, når skrivebordet har fokus"
+msgstr "Anvend de generelle effektindstillinger, når skrivebordet har fokus"
 
 #. 6.0->settings-schema.json->desktop-with-focus->tooltip
-#, fuzzy
 msgid ""
 "When enabled, the generic effect settings (on the \"Generic effect "
 "settings\" tab) will apply to the desktop background image when the desktop "
 "is in focus"
 msgstr ""
 "Når denne indstilling er aktiveret, vil de generelle effektindstillinger "
-"(under fanebladet Generelt) blive anvendt på skrivebordsbaggrundsbilledet, "
-"når skrivebordet er i fokus."
+"(under fanebladet “Generelle effektindstillinger”) blive anvendt på "
+"skrivebordets baggrundsbillede, når skrivebordet er i fokus"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
-#, fuzzy
 msgid "Dim/Colorize background Image (%)"
-msgstr "Dæmp/farvelæg baggrund (procent)"
+msgstr "Dæmp/farvelæg baggrundsbillede (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -974,30 +991,32 @@ msgid ""
 "Note: Alt-Tab effects only apply to the Coverflow and Timeline 3D Alt-Tab "
 "configurations"
 msgstr ""
+"Bemærk: Alt-Tab-effekterne gælder kun for Alt-Tab-konfigurationerne for "
+"Coverflow og Timeline 3D"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
-msgstr ""
+msgstr "Inklusionsliste for programvinduer"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Application"
-msgstr ""
+msgstr "Program"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Opacity"
-msgstr ""
+msgstr "Uigennemsigtighed"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Corner Radius"
-msgstr ""
+msgstr "Hjørneradius"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Rounded Top"
-msgstr ""
+msgstr "Afrundet top"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Rounded Bottom"
-msgstr ""
+msgstr "Afrundet bund"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
 msgid ""
@@ -1006,20 +1025,27 @@ msgid ""
 "table will apply, otherwise the \"Generic effect settings\" will apply. The "
 "\"Application\" field can be a WM_CLASS or a desktop file name."
 msgstr ""
+"Denne tabel angiver, hvilke programvinduer der skal have effekter anvendt, "
+"samt indstillingerne for disse effekter. Når “Brugerdefineret” er aktiveret, "
+"gælder de indstillinger, der er defineret i denne tabel; ellers gælder de "
+"“Generelle effektindstillinger”. Feltet “Program” kan indeholde en WM_CLASS "
+"eller et skrivebordsfilnavn."
 
 #. 6.0->settings-schema.json->windows-add-button->description
 msgid "Add entry for the application of the most recently focused window"
-msgstr ""
+msgstr "Tilføj indgang til programmet med det senest fokuserede vindue"
 
 #. 6.0->settings-schema.json->windows-add-button->tooltip
 msgid ""
 "Focus a window you want to enable window effects on then return here and "
 "press this button."
 msgstr ""
+"Fokusér et vindue, du vil aktivere vindueseffekter for, vend derefter "
+"tilbage hertil, og tryk på denne knap."
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
-msgstr ""
+msgstr "Deaktivér “Compiz”-effekter for vinduer med Sløret Cinnamon-effekter"
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->tooltip
 msgid ""
@@ -1028,10 +1054,14 @@ msgid ""
 "applied. This option will have no effect unless the \"Compiz window effect\" "
 "extension is installed and active."
 msgstr ""
+"Når denne indstilling er aktiveret, deaktiveres den vinduesflytningseffekt, "
+"der skabes af udvidelsen “Compiz-vindueseffekt”, for vinduer, hvor der er "
+"anvendt Sløret Cinnamon-effekter. Denne indstilling har ingen virkning, "
+"medmindre udvidelsen “Compiz-vindueseffekt” er installeret og aktiveret."
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
-msgstr ""
+msgstr "Aktivér automatisk effekter for nyligt tilføjede skrivebordsprogrammer"
 
 #. 6.0->settings-schema.json->desklets-auto->tooltip
 msgid ""
@@ -1040,18 +1070,23 @@ msgid ""
 "applied when manually enabled in the table below. By default the settings "
 "applied to new Desklets will be the generic effect settings."
 msgstr ""
+"Når denne funktion er aktiveret, vil nye skrivebordsprogrammer, der føjes "
+"til skrivebordet, automatisk få anvendt Sløret Cinnamon-effekter. Når "
+"funktionen er deaktiveret, vil skrivebordsprogrammer kun få anvendt "
+"effekter, hvis de manuelt aktiveres i tabellen nedenfor. Som standard vil de "
+"generelle effektindstillinger blive anvendt på nye skrivebordsprogrammer."
 
 #. 6.0->settings-schema.json->desklets-list->description
 msgid "Active Desklet list"
-msgstr ""
+msgstr "Liste over aktive skrivebordsprogrammer"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Blur"
@@ -1064,3 +1099,9 @@ msgid ""
 "settings or the custom settings defined in this table. The custom settings "
 "can be modified by double clicking on a table row."
 msgstr ""
+"Afkrydsningsfeltet “Aktiveret” bestemmer, hvilke skrivebordsprogrammer der "
+"skal anvende effekterne. Afkrydsningsfeltet “Brugerdefineret” bestemmer, om "
+"et skrivebordsprogram skal bruge de generelle effektindstillinger eller de "
+"brugerdefinerede indstillinger, der er angivet i denne tabel. De "
+"brugerdefinerede indstillinger kan ændres ved at dobbeltklikke på en række i "
+"tabellen."
