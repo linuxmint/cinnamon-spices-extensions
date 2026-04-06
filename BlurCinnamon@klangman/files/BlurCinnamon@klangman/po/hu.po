@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. 6.0/extension.js:2268 6.0/extension.js:2271 6.0/extension.js:2331
 #. 6.0/extension.js:2399
@@ -302,7 +302,6 @@ msgid "Show settings for component:"
 msgstr "Az összetevő beállításainak megjelenítése:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -311,8 +310,8 @@ msgid ""
 "Developed by: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
 "\n"
 "The rounded corners and Gaussian effects are based on code by aunetx (Blur-"
 "my-shell)\n"
@@ -329,8 +328,8 @@ msgstr ""
 "Fejlesztő: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Hiba jelentése</"
-"a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Weboldal</a>\n"
+"a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Weboldal</a>\n"
 "\n"
 "A lekerekített sarkok és a Gauss-effektusok az aunetx (Blur-my-shell) kódján "
 "alapulnak.\n"
@@ -338,7 +337,7 @@ msgstr ""
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
 "\n"
 "Az Áttekintés effektus részben a nailfarmer BlurOverview kiterjesztésen "
-"alapul"
+"alapul."
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -642,9 +641,8 @@ msgstr "Szín"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#, fuzzy
 msgid "Background"
-msgstr "Asztal háttér"
+msgstr "Háttér"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -759,9 +757,8 @@ msgstr ""
 "színkeverési hatáshoz"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "None / Transparent to wallpaper"
-msgstr "Átlátszó a háttér számára"
+msgstr "Nincs / Átlátszó a tapétához képest"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -781,7 +778,7 @@ msgstr "Gauss-féle statikus elmosódás"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Gaussian dynamic blur (if applicable)"
-msgstr ""
+msgstr "Gauss-féle dinamikus elmosás (ha alkalmazható)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -895,17 +892,15 @@ msgstr "Áttetsző"
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Transparent to wallpaper"
-msgstr "Átlátszó a háttér számára"
+msgstr "Átlátszó a háttérkép számára"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Gaussian dynamic blur"
-msgstr "Gauss-féle statikus elmosódás"
+msgstr "Gauss-féle dinamikus elmosódás"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -939,9 +934,9 @@ msgstr "További felugró menü kiemelő elemeinek halványítása (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements "
-"(i.e. the main menu favorites box and entry boxes) which allow these "
-"elements to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
 msgstr ""
 "Meghatározza a felugró menü ékezetes elemeire (azaz a főmenü kedvencei "
 "mezőjére és a beviteli mezőkre) alkalmazott további tompítást, amely "
