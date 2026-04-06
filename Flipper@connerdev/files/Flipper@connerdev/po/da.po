@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-02-06 17:50-0500\n"
-"PO-Revision-Date: 2025-10-20 18:53+0200\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"PO-Revision-Date: 2026-04-06 07:58+0200\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -364,16 +364,17 @@ msgstr ""
 "arbejdsområde."
 
 #. 5.4->settings-schema.json->patchGestureSwitch->description
-#, fuzzy
 msgid "Use Flipper effect when switching workspaces using touchpad gestures"
 msgstr ""
-"Brug Flipper-effekten, når ændring af fokus medfører skift af arbejdsområde"
+"Brug Flipper-effekten ved skift af arbejdsområde med pegepladebevægelser"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->tooltip
 msgid ""
 "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
 "will use the Flipper effect"
 msgstr ""
+"Tilsidesæt WorkspaceSwitchAction-API'en, så pegepladebevægelser til skift "
+"mellem arbejdsområder bruger Flipper-effekten"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"
