@@ -1,8 +1,65 @@
 # Changelog
 
-## Known Issues
+All notable changes to CSS Panels are documented in this file.
 
-- OSD's are styled "in advance", so on theme change if new styles are not applied to OSD's, try to change border radius in settings, should update OSD's style.
+## [2.0.3] - 2026-04-17
+
+### Fixed
+
+- Cinnamon Spices CI compliance: removed metadata fields that fail validation
+- Settings lifecycle: proper `finalize()` call on extension disable — all bindings and signals cleanly released
+- Monkey patch idempotency: `disable()` is now safe to call multiple times (Cinnamon can call it in error/reload scenarios)
+- OSD styling: fixed monkey patch that leaked after extension disable (missing `disable()` method)
+- System tray tooltip: fixed restore on indicator destroy
+
+## [2.0.2] - 2026-04-16
+
+### Added
+
+- **Wallpaper Color Extraction**: extract dominant colors from the current wallpaper and apply them to panel background, popup menus, border, tint, and shadow
+- **Full-Auto Mode** (experimental): every wallpaper change updates all shell colors live
+- **Manual Extract Button**: apply wallpaper colors on demand without enabling automatic detection
+
+### Fixed
+
+- Wallpaper extraction: correct pixel sampling using GdkPixbuf rowstride (wrong colors on some images)
+- Wallpaper extraction: URI decoding for paths with spaces or special characters
+- Wallpaper extraction: manual extraction now works even without active wallpaper monitor
+- Shadow color: corrected settings key used during wallpaper extraction
+- Secondary color selection: improved contrast-ratio algorithm for popup color (replaces naive palette[1])
+- First-run defaults: sensible out-of-box appearance — Frosted Glass template, OSD and App Switcher styling enabled by default
+
+## [2.0.1] - 2026-04-12
+
+### Fixed
+
+- Hover highlight: fixed signal accumulation after repeated open/close cycles on taskbar items
+- Settings: "Detect from theme" button no longer requires auto-apply to be enabled
+- Wallpaper extraction: fixed hash logic that prevented retry on transient errors
+
+## [2.0.0] - 2026-04-12
+
+### Added
+
+- **Wallpaper Color System**: GdkPixbuf-based extraction of dominant colors, applied to all shell elements
+- **Hover & Active Color Override**: panel applets, taskbar items, and system tray use dynamically generated highlight colors derived from the extension's panel color — no more theme color bleed-through
+- **Glow Effect Mode**: three-way control — `Inset` (classic glossy), `Outset` (ambient glow), `None`; replaces the old border-width approach with no icon-shifting artifacts
+- **Sub-menu lateral shadow**: popup sub-menus styled with lateral shadow only (no top/bottom bleed)
+- **Theme Integration**: auto-apply accent colors on GTK theme change; "Detect from theme" button resets wallpaper state for a clean baseline
+- **Desktop context menu styling**: optional propagation of popup styles to right-click desktop menus
+
+### Changed
+
+- Settings reorganized into 4 logical pages: **Theme**, **Appearance**, **Visual Effects**, **Advanced**
+- Glow controls consolidated: `glow-mode` combobox + `glow-blur` / `glow-intensity` spinbuttons
+- Border radius default reduced to 6px; maximum reduced to 12px (values above 12 cause artifacts in most themes)
+- Effect templates expanded: Frosted Glass, Wet Glass, Foggy Glass, Clear Crystal — each in light and dark variants
+
+### Fixed
+
+- Extension disable isolation: a failure in one styler no longer blocks cleanup of all others
+- Theme change race condition: 100ms debounce prevents stale color detection on rapid theme switches
+- OSD monkey patch context: correct `this` binding — OSD styling was broken after refactor
 
 ## [1.9.2]
 
@@ -12,10 +69,9 @@
 
 ## [1.8.9]
 
-- Added support for styling all panels (same "style" of main panel is applied onto other panels as well).
+- Added support for styling all panels (same style of main panel is applied onto other panels as well).
 - Improved debug logging for troubleshooting.
 
 ## [1.8.8]
 
 - Initial release with options to style main panel, popups, notifications and OSD's.
-  

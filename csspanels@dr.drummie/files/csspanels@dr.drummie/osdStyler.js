@@ -1,6 +1,7 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const StylerBase = require("./stylerBase");
+const { TIMING, SIZE, STYLING, CSS_CLASSES, SIGNALS, ACTIONS } = require("./constants");
 
 /**
  * OSD Styler handles On-Screen Display transparency and blur effects (NEW)
@@ -21,36 +22,70 @@ class OSDStyler extends StylerBase {
     }
 
     /**
+     * Disable OSD styling and restore original OSD show method
+     */
+    disable() {
+        if (this.originalShow) {
+            const OSDWindow = this._findOSDWindow();
+            if (OSDWindow && OSDWindow.show === this._patchedShowBound) {
+                OSDWindow.show = this.originalShow;
+            }
+            this.originalShow = null;
+            this._patchedShowBound = null;
+        }
+        this.restoreAllOSDs();
+        super.disable();
+    }
+
+    /**
+     * Find OSD Window object from multiple possible import paths
+     * @returns {Object|null} OSD Window object or null if not found
+     * @private
+     */
+    _findOSDWindow() {
+        // Array of possible OSD Window paths in order of preference
+        const osdPaths = [
+            () => imports.ui.osdWindow.OSDWindow,
+            () => imports.ui.osdWindow,
+            () => Main.osdWindowManager,
+            () => Main.osdWindow,
+        ];
+
+        for (const pathFn of osdPaths) {
+            try {
+                const osdWindow = pathFn();
+                if (osdWindow && typeof osdWindow.show === "function") {
+                    this.debugLog(`Found OSD Window via: ${pathFn.toString()}`);
+                    return osdWindow;
+                }
+            } catch (e) {
+                // Silent fail - try next path
+            }
+        }
+
+        this.debugLog("OSDWindow not found in any known path");
+        return null;
+    }
+
+    /**
      * Apply monkeypatch to OSD manager for OSD styling
      */
     applyMonkeyPatch() {
         try {
-            // Try multiple import paths for OSD in Cinnamon 22.1
-            let OSDWindow;
-            try {
-                OSDWindow = imports.ui.osdWindow.OSDWindow;
-            } catch (e) {
-                try {
-                    OSDWindow = imports.ui.osdWindow;
-                } catch (e2) {
-                    // Fallback to global objects
-                    OSDWindow = Main.osdWindowManager || Main.osdWindow;
-                }
-            }
-            if (OSDWindow && typeof OSDWindow.show === "function") {
+            const OSDWindow = this._findOSDWindow();
+
+            if (OSDWindow) {
                 this.originalShow = OSDWindow.show;
-                OSDWindow.show = this._patchedShow.bind(this);
+                // Store bound function reference to enable idempotent restore
+                this._patchedShowBound = this._patchedShow.bind(this);
+                OSDWindow.show = this._patchedShowBound;
                 this.debugLog("OSD monkeypatch applied successfully");
             } else {
                 this.debugLog("OSDWindow not found, using monitoring fallback");
-                // Fallback handled in setupOSDMonitoring
+                this.setupOSDMonitoring();
             }
         } catch (e) {
-            this.debugLog("Failed to apply OSD monkeypatch:", e);
-            // Add detailed error logging for debugging
-            if (e.message) {
-                this.debugLog("Error message:", e.message);
-            }
+            this.debugLog("Failed to apply OSD monkeypatch:", e.message);
             if (e.stack) {
                 this.debugLog("Error stack:", e.stack);
             }
@@ -67,8 +102,23 @@ class OSDStyler extends StylerBase {
      * @param {number} level - OSD level
      */
     _patchedShow(monitorIndex, icon, label, level) {
-        const result = this.originalShow.call(this, monitorIndex, icon, label, level);
-        this.applyOSDStyles(this);
+        // CRITICAL: When monkey-patched, 'this' in the ORIGINAL method context is the OSDWindow object
+        // We need to preserve that context when calling originalShow
+        // But 'this' in _patchedShow is bound to OSDStyler (via .bind(this) in applyMonkeyPatch)
+
+        // Store reference to OSDStyler (bound 'this')
+        const styler = this;
+
+        // Get the actual OSDWindow object - it's passed as the context when show() is called
+        // We need to find it via the known paths
+        const OSDWindow = styler._findOSDWindow();
+
+        // Call original show with proper OSDWindow context
+        const result = styler.originalShow.call(OSDWindow, monitorIndex, icon, label, level);
+
+        // Apply styles to the OSDWindow object (not styler!)
+        styler.applyOSDStyles(OSDWindow);
+
         return result;
     }
 
@@ -80,14 +130,32 @@ class OSDStyler extends StylerBase {
         if (!osd || !osd.actor) return;
 
         const actor = osd.actor;
-        const template = this.extension.blurTemplateManager.getTemplate(
-            this.extension.settings.getValue("blur-template")
-        );
-        if (!template) return;
 
-        // Apply blur background
-        actor.add_style_class_name("osd-blur");
-        this.extension.cssManager.updateOSDVariables(actor, template);
+        // Get effective popup color and apply OSD-specific darkening for better contrast
+        let osdColor = this.extension.themeDetector.getEffectivePopupColor();
+        osdColor = {
+            r: Math.max(osdColor.r - STYLING.COLOR_DARKEN_AMOUNT, 0),
+            g: Math.max(osdColor.g - STYLING.COLOR_DARKEN_AMOUNT, 0),
+            b: Math.max(osdColor.b - STYLING.COLOR_DARKEN_AMOUNT, 0),
+        };
+
+        // Build configuration object for template generation
+        const config = {
+            backgroundColor: `rgba(${osdColor.r}, ${osdColor.g}, ${osdColor.b}, ${this.extension.menuOpacity})`,
+            opacity: this.extension.blurOpacity,
+            borderRadius: this.getAdjustedBorderRadius("osd"),
+            blurRadius: this.getAdjustedBlurRadius("osd"),
+            blurSaturate: this.extension.blurSaturate,
+            blurContrast: this.extension.blurContrast,
+            blurBrightness: this.extension.blurBrightness,
+            borderColor: this.extension.blurBorderColor,
+            borderWidth: Math.max(this.extension.blurBorderWidth, 2),
+            transition: "all 0.2s ease",
+        };
+
+        // Generate and apply CSS via template manager
+        const osdCSS = this.extension.blurTemplateManager.generateOSDCSS(config);
+        actor.set_style(osdCSS);
     }
 
     /**
@@ -123,8 +191,17 @@ class OSDStyler extends StylerBase {
     disable() {
         this.debugLog("OSDStyler: Starting disable cleanup");
         try {
+            // Restore monkey-patched OSD show method
+            if (this.originalShow) {
+                const OSDWindow = this._findOSDWindow();
+                if (OSDWindow) {
+                    OSDWindow.show = this.originalShow;
+                    this.debugLog("OSD monkey patch restored");
+                }
+                this.originalShow = null;
+            }
+
             this.restoreAllOSDs();
-            this.cleanupConnections();
             this.styledOSDs.clear();
             this.originalOSDStyles.clear();
             this.monitoredElements.clear();
@@ -132,7 +209,7 @@ class OSDStyler extends StylerBase {
         } catch (e) {
             this.debugLog("Error disabling OSD styler:", e);
         }
-        super.disable();
+        super.disable(); // Automatic signal cleanup via GlobalSignalsHandler
     }
 
     /**
@@ -141,12 +218,12 @@ class OSDStyler extends StylerBase {
     setupOSDMonitoring() {
         this.debugLog("Setting up CSS-based OSD monitoring");
 
-        // Monitor global stage for new OSD elements
+        // Monitor global stage for new OSD elements - use GlobalSignalsHandler
         if (global.stage) {
-            this.stageConnection = global.stage.connect("actor-added", (stage, actor) => {
+            this.addConnection(global.stage, SIGNALS.ACTOR_ADDED, (stage, actor) => {
                 if (this.isOSDElementByCSS(actor) && !this.styledOSDs.has(actor)) {
                     this.debugLog("Detected new OSD via CSS monitoring");
-                    imports.mainloop.timeout_add(50, () => {
+                    imports.mainloop.timeout_add(TIMING.DEBOUNCE_SHORT, () => {
                         this.styleOSDElement(actor, "css-found-osd");
                         return false;
                     });
@@ -236,7 +313,12 @@ class OSDStyler extends StylerBase {
                 const height = actor.get_height ? actor.get_height() : 0;
 
                 // Reasonable OSD dimensions (relaxed height for wrapper elements)
-                return width >= 50 && width <= 800 && height >= 20 && height <= 400;
+                return (
+                    width >= SIZE.OSD_MIN_WIDTH &&
+                    width <= SIZE.OSD_MAX_WIDTH &&
+                    height >= SIZE.OSD_MIN_HEIGHT &&
+                    height <= SIZE.OSD_MAX_HEIGHT
+                );
             }
 
             return false;
@@ -250,17 +332,18 @@ class OSDStyler extends StylerBase {
      */
     setupKeyMonitoring() {
         try {
-            // Monitor for media keys that trigger OSDs
+            // Monitor for media keys that trigger OSDs - use GlobalSignalsHandler
             if (global.display) {
                 this.lastKeyTrigger = 0; // Debounce timestamp
-                this.keyConnection = global.display.connect(
-                    "accelerator-activated",
+                this.addConnection(
+                    global.display,
+                    SIGNALS.ACCELERATOR_ACTIVATED,
                     (display, action, deviceId, timestamp) => {
                         // Check if this is a volume or brightness key
-                        if (action && (action.includes("volume") || action.includes("brightness"))) {
+                        if (action && (action.includes(ACTIONS.VOLUME) || action.includes(ACTIONS.BRIGHTNESS))) {
                             const now = Date.now();
-                            if (now - this.lastKeyTrigger > 500) {
-                                // Debounce 500ms
+                            if (now - this.lastKeyTrigger > TIMING.KEY_TRIGGER_THROTTLE) {
+                                // Debounce
                                 this.lastKeyTrigger = now;
                                 this.debugLog(`Media key detected: ${action}`);
                                 // Trigger CSS-based search only if needed, without periodic repeat
@@ -269,7 +352,6 @@ class OSDStyler extends StylerBase {
                         }
                     }
                 );
-                this.osdConnections.push({ obj: global.display, id: this.keyConnection });
             }
         } catch (e) {
             this.debugLog("Could not setup key monitoring:", e);
@@ -302,30 +384,33 @@ class OSDStyler extends StylerBase {
             this.originalOSDStyles.set(actor, originalData);
             this.monitoredElements.add(actor);
 
-            // Get colors for styling
-            let panelColor = this.extension.themeDetector.getPanelBaseColor();
-            let osdColor = this.getOSDColor(panelColor);
+            // Get effective popup color and apply OSD-specific darkening for better contrast
+            let osdColor = this.extension.themeDetector.getEffectivePopupColor();
+            osdColor = {
+                r: Math.max(osdColor.r - STYLING.COLOR_DARKEN_AMOUNT, 0),
+                g: Math.max(osdColor.g - STYLING.COLOR_DARKEN_AMOUNT, 0),
+                b: Math.max(osdColor.b - STYLING.COLOR_DARKEN_AMOUNT, 0),
+            };
 
-            // Apply common blur styling with OSD-specific additional styles
-            const additionalStyles = `
-                box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.15) !important;
-                border: ${Math.max(this.extension.blurBorderWidth, 2)}px solid ${
-                this.extension.blurBorderColor
-            } !important;
-                transition: all 0.2s ease !important;
-            `;
+            // Build configuration object for template generation
+            const config = {
+                backgroundColor: `rgba(${osdColor.r}, ${osdColor.g}, ${osdColor.b}, ${this.extension.menuOpacity})`,
+                opacity: this.extension.blurOpacity,
+                borderRadius: this.getAdjustedBorderRadius("osd"),
+                blurRadius: this.getAdjustedBlurRadius("osd"),
+                blurSaturate: this.extension.blurSaturate,
+                blurContrast: this.extension.blurContrast,
+                blurBrightness: this.extension.blurBrightness,
+                borderColor: this.extension.blurBorderColor,
+                borderWidth: Math.max(this.extension.blurBorderWidth, 2),
+                transition: "all 0.2s ease",
+            };
 
-            this.applyCommonBlurStyling(
-                actor,
-                osdColor,
-                this.extension.menuOpacity,
-                this.getAdjustedBlurRadius("osd"),
-                this.getAdjustedBorderRadius("osd"),
-                this.extension.blurBorderColor,
-                Math.max(this.extension.blurBorderWidth, 2),
-                "osd",
-                additionalStyles
-            );
+            // Generate CSS via template manager
+            const osdCSS = this.extension.blurTemplateManager.generateOSDCSS(config);
+            actor.set_style(osdCSS);
+
+            this.debugLog("Applying OSD styles via template generation");
 
             // Mark as styled to avoid re-styling
             this.styledOSDs.add(actor);
@@ -333,27 +418,6 @@ class OSDStyler extends StylerBase {
             this.debugLog(`Successfully styled ${type} OSD`);
         } catch (e) {
             this.debugLog(`Error styling OSD element ${type}:`, e);
-        }
-    }
-
-    /**
-     * Get OSD color based on settings and theme
-     * @param {Object} panelColor - Current panel color
-     * @returns {Object} Color object for OSDs
-     */
-    getOSDColor(panelColor) {
-        // Use popup color settings for OSDs as they are UI overlay elements
-        if (this.extension.overridePopupColor) {
-            return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePopupColor);
-        } else if (this.extension.overridePanelColor) {
-            return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
-        } else {
-            // For OSDs, use a darker version of the panel color for better contrast
-            return {
-                r: Math.max(panelColor.r - 10, 0),
-                g: Math.max(panelColor.g - 10, 0),
-                b: Math.max(panelColor.b - 10, 0),
-            };
         }
     }
 
@@ -391,28 +455,12 @@ class OSDStyler extends StylerBase {
         element.set_opacity(255);
 
         // Remove our style classes
-        element.remove_style_class_name("transparency-osd-blur");
-        element.remove_style_class_name("transparency-fallback-blur");
-        element.remove_style_class_name("profile-custom");
+        element.remove_style_class_name(CSS_CLASSES.OSD_BLUR);
+        element.remove_style_class_name(CSS_CLASSES.FALLBACK_BLUR);
+        element.remove_style_class_name(CSS_CLASSES.CUSTOM_PROFILE);
 
         // Clear any cached styling reference
         this.styledOSDs.delete(element);
-    }
-
-    /**
-     * Clean up all connections and monitoring
-     */
-    cleanupConnections() {
-        // Disconnect stage connection if exists
-        if (this.stageConnection && global.stage) {
-            this.debugLog("OSDStyler: Disconnecting stage connection");
-            global.stage.disconnect(this.stageConnection);
-            this.stageConnection = null;
-        }
-
-        // Clear styled OSDs cache
-        this.styledOSDs.clear();
-        this.monitoredElements.clear();
     }
 
     /**

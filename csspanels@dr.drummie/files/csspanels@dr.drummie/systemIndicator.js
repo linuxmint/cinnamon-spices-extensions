@@ -2,6 +2,7 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const Util = imports.misc.util;
 const Tooltips = imports.ui.tooltips;
+const { SYSTEM_INDICATOR, STYLING, SIZE } = require("./constants");
 
 /**
  * System Indicator handles the system tray indicator
@@ -33,13 +34,13 @@ class SystemIndicator {
                 reactive: true,
                 track_hover: true,
                 can_focus: true,
-                style: "padding-left: 5px; padding-right: 5px;", // Add horizontal padding for spacing
+                style: SYSTEM_INDICATOR.PADDING_STYLE,
             });
 
             // Create icon for the button
             let icon = new St.Icon({
-                icon_name: "applications-graphics-symbolic",
-                icon_size: 16,
+                icon_name: SYSTEM_INDICATOR.ICON_NAME,
+                icon_size: SIZE.SYSTEM_INDICATOR_ICON_SIZE,
                 style_class: "system-status-icon",
             });
 
@@ -48,20 +49,21 @@ class SystemIndicator {
 
             // Add click handler to open extension settings
             this.indicator.connect("button-press-event", (actor, event) => {
-                if (event.get_button() === 1) {
-                    // Left click
-                    this.extension.debugLog("Indicator clicked - opening extension settings");
-                    Util.spawnCommandLine(`cinnamon-settings extensions ${this.extension.metadata.uuid}`);
+                const button = event.get_button();
+                if (button === 1) {
+                    // Left click - open extensions manager
+                    this.extension.debugLog("Indicator clicked - opening Extensions Manager");
+                    Util.spawnCommandLine("cinnamon-settings extensions");
                 }
             });
 
             // Add hover effects
             this.indicator.connect("enter-event", () => {
-                icon.opacity = 255; // Full opacity on hover
+                icon.opacity = STYLING.ICON_OPACITY_HOVER; // Full opacity on hover
             });
 
             this.indicator.connect("leave-event", () => {
-                icon.opacity = 200; // Slightly transparent normally
+                icon.opacity = STYLING.ICON_OPACITY_NORMAL; // Slightly transparent normally
             });
 
             // Add to system tray using Cinnamon panel API
@@ -75,16 +77,16 @@ class SystemIndicator {
 
                 // Force tooltip to position above the panel
                 if (this.tooltip && this.tooltip._tooltip) {
-                    // Override the default positioning
-                    let originalShow = this.tooltip.show.bind(this.tooltip);
-                    this.tooltip.show = () => {
-                        originalShow();
+                // Store original show method on instance for explicit restore in destroy()
+                this._originalTooltipShow = this.tooltip.show.bind(this.tooltip);
+                this.tooltip.show = () => {
+                    this._originalTooltipShow();
                         // Position tooltip above the indicator
                         let [x, y] = this.indicator.get_transformed_position();
                         let [width, height] = this.indicator.get_size();
                         this.tooltip._tooltip.set_position(
                             x + width / 2 - this.tooltip._tooltip.get_width() / 2,
-                            y - this.tooltip._tooltip.get_height() - 5
+                            y - this.tooltip._tooltip.get_height() - SYSTEM_INDICATOR.TOOLTIP_OFFSET
                         );
                     };
                 }
@@ -97,7 +99,7 @@ class SystemIndicator {
             this.extension.debugLog("System tray indicator created successfully");
         } catch (e) {
             this.extension.debugLog("Error creating indicator:", e.message);
-            global.logError("[CSSPanels] createIndicator failed: " + e.message);
+            global.logError("[CSSPanels] Error in createIndicator: " + e.message);
             this.indicator = null;
         }
     }
@@ -115,6 +117,10 @@ class SystemIndicator {
             // Clean up tooltip
             if (this.tooltip) {
                 try {
+                    if (this._originalTooltipShow) {
+                        this.tooltip.show = this._originalTooltipShow;
+                        this._originalTooltipShow = null;
+                    }
                     this.tooltip.destroy();
                     this.tooltip = null;
                     this.extension.debugLog("Tooltip destroyed successfully");
@@ -138,7 +144,7 @@ class SystemIndicator {
             this.extension.debugLog("System tray indicator destroyed successfully");
         } catch (e) {
             this.extension.debugLog("Error destroying indicator:", e.message || e.toString());
-            global.logError("[CSSPanels] destroyIndicator failed: " + e.message);
+            global.logError("[CSSPanels] Error in destroyIndicator: " + e.message);
             this.indicator = null;
         }
     }

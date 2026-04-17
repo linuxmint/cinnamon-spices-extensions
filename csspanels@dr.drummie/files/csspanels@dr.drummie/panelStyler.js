@@ -1,6 +1,7 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const StylerBase = require("./stylerBase");
+const { TIMING, DEFAULT_COLORS } = require("./constants");
 
 /**
  * Panel Styler handles panel transparency and blur effects
@@ -18,10 +19,13 @@ class PanelStyler extends StylerBase {
         // Performance optimization - cache panel references
         this.panelCache = null;
         this.lastPanelCheck = 0;
-        this.panelCacheTimeout = 5000; // Cache for 5 seconds
+        this.panelCacheTimeout = TIMING.CACHE_PANEL_CHECK;
 
         // Track override state to prevent unnecessary theme reloads
         this._lastOverrideState = null;
+
+        // Map to save original sub-box inline styles for restoration
+        this._savedSubBoxStyles = new Map();
     }
 
     /**
@@ -137,7 +141,15 @@ class PanelStyler extends StylerBase {
     invalidatePanelCache() {
         this.panelCache = null;
         this.lastPanelCheck = 0;
-        this.debugLog("Panel cache invalidated");
+
+        // Also clear saved original styles on theme change (but NOT during disable)
+        // This ensures we get fresh original styles from the new theme
+        if (this.isEnabled) {
+            this.originalPanelStyles = {};
+            this.debugLog("Panel cache AND original styles invalidated (theme change)");
+        } else {
+            this.debugLog("Panel cache invalidated");
+        }
     }
     /**
      * Save original panel styles for restoration
@@ -151,12 +163,18 @@ class PanelStyler extends StylerBase {
 
             allPanels.forEach((panelInfo) => {
                 if (panelInfo.actor) {
-                    this.originalPanelStyles[panelInfo.id] = {
-                        style: panelInfo.actor.get_style(),
-                        backgroundColor: panelInfo.actor.get_background_color(),
-                        styleClasses: panelInfo.actor.get_style_class_name(),
-                    };
-                    this.debugLog(`Saved original styles for panel: ${panelInfo.id}`);
+                    // GUARD CHECK: Only save if not already saved
+                    // This prevents overwriting true originals with our modified styles
+                    if (!this.originalPanelStyles[panelInfo.id]) {
+                        this.originalPanelStyles[panelInfo.id] = {
+                            style: panelInfo.actor.get_style(),
+                            backgroundColor: panelInfo.actor.get_background_color(),
+                            styleClasses: panelInfo.actor.get_style_class_name(),
+                        };
+                        this.debugLog(`Saved original styles for panel: ${panelInfo.id}`);
+                    } else {
+                        this.debugLog(`Panel ${panelInfo.id} already has saved styles - skipping to preserve original`);
+                    }
                 }
             });
 
@@ -209,6 +227,18 @@ class PanelStyler extends StylerBase {
                     this.debugLog(`Cleaned styles from additional panel: ${panelInfo.id}`);
                 }
             });
+
+            // Restore panel sub-box backgrounds
+            if (this._savedSubBoxStyles && this._savedSubBoxStyles.size > 0) {
+                for (const [box, style] of this._savedSubBoxStyles) {
+                    try {
+                        box.set_style(style);
+                    } catch (e) {
+                        this.debugLog("PanelStyler: error restoring sub-box style: " + e.message);
+                    }
+                }
+                this._savedSubBoxStyles.clear();
+            }
 
             // Force theme refresh
             try {
@@ -269,41 +299,59 @@ class PanelStyler extends StylerBase {
     applyPanelStyles() {
         try {
             this.debugLog("Applying panel styles to all panels");
+
+            // CRITICAL FIX: Restore original styles FIRST before applying new ones
+            // This ensures we start from clean theme state, not our previous modifications
+            if (Object.keys(this.originalPanelStyles).length > 0) {
+                this.debugLog("Restoring to clean theme state before applying new styles");
+                this.restoreOriginalStyles();
+
+                // Clear saved originals so we can save fresh ones
+                this.originalPanelStyles = {};
+                this._savedSubBoxStyles.clear();
+            }
+
+            // Now save the CLEAN original styles from theme
+            this.saveOriginalStyles();
+
+            // Update CSS variables with current settings
             this.extension.cssManager.updateAllVariables();
 
             // Prepare panel color once before applying to all panels
+            // Use BLACK BOX pattern: getCurrentPanelColor() handles override logic
             let panelColor;
             if (this.extension.overridePanelColor) {
-                panelColor = this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
+                // Use safe parser via ThemeDetector for user-provided override color
+                panelColor = this.extension.themeDetector._safeParseColor(
+                    this.extension.chooseOverridePanelColor,
+                    DEFAULT_COLORS.MINT_Y_DARK_FALLBACK,
+                    "panel override (panelStyler)"
+                );
+                this.debugLog("Using override panel color:", this.extension.chooseOverridePanelColor);
             } else {
-                // Only restore and invalidate cache if override state changed
-                const currentOverrideState =
-                    this.extension.overridePanelColor + ":" + this.extension.chooseOverridePanelColor;
-                if (this._lastOverrideState !== currentOverrideState) {
-                    // Temporarily restore original styles completely to get clean detection
-                    this.restoreOriginalStyles();
-                    // Force cache invalidation to ensure fresh detection
-                    this.extension.themeDetector.invalidateCache();
-                    this._lastOverrideState = currentOverrideState;
-                }
-                panelColor = this.extension.themeDetector.getPanelBaseColor();
+                // getCurrentPanelColor() returns a CSS string — normalize to {r,g,b} object
+                const panelColorRaw = this.extension.themeDetector.getCurrentPanelColor();
+                panelColor = this.extension.themeDetector._safeParseColor(
+                    panelColorRaw,
+                    DEFAULT_COLORS.MINT_Y_DARK_FALLBACK,
+                    "panel color (detected)"
+                );
                 this.debugLog(
-                    `Fresh detected color after restore: rgb(${panelColor.r}, ${panelColor.g}, ${panelColor.b})`
+                    "Using detected panel color:",
+                    `rgb(${panelColor.r}, ${panelColor.g}, ${panelColor.b})`
                 );
             }
 
             // Get all panels and apply styles
             let allPanels = this.getAllPanels();
             allPanels.forEach((panelInfo, index) => {
-                // FIX ATTEMPT: Skip hidden panels to avoid Monitor Constraint errors
-                // seems that it is Cinnamon bug for auto-hidden panels
-                if (!panelInfo.actor || !panelInfo.actor.visible) {
-                    this.debugLog(`Skipping hidden panel: ${panelInfo.id}`);
-                    return;
+                if (panelInfo.actor) {
+                    this.debugLog(`Applying styles to panel ${index + 1}/${allPanels.length}: ${panelInfo.id}`);
+                    this.applyPanelStyleToActor(panelInfo.actor, panelColor);
+                    this._clearSubBoxBackgrounds(panelInfo.panel);
+                } else {
+                    this.debugLog(`Warning: Panel ${panelInfo.id} has no actor`);
                 }
-
-                this.debugLog(`Applying styles to panel ${index + 1} (${panelInfo.id})`);
-                this.applyPanelStyleToActor(panelInfo.actor, panelColor);
             });
 
             this.debugLog(`Panel styling applied successfully to ${allPanels.length} panels`);
@@ -313,7 +361,9 @@ class PanelStyler extends StylerBase {
     }
 
     /**
-     * Apply styling to a specific panel actor
+     * Apply styling to a specific panel actor - SINGLE ACTOR approach
+     * Applies CSS directly to panel.actor without creating additional layers
+     *
      * @param {Clutter.Actor} actor - The panel actor to style
      * @param {Object} panelColor - The panel color to use (RGB object)
      */
@@ -323,33 +373,60 @@ class PanelStyler extends StylerBase {
         let effectiveBorderRadius = this.extension.cssManager.getEffectiveBorderRadius();
         let radius = this.extension.applyPanelRadius ? effectiveBorderRadius : 0;
 
-        this.debugLog("Applying blur effects to panel actor");
+        this.debugLog("Applying DIRECT styling to panel.actor (single-actor approach)");
 
-        // Add CSS blur class for advanced backdrop-filter effects
-        actor.add_style_class_name("transparency-panel-blur");
-        actor.add_style_class_name("profile-custom");
+        // Build configuration object for template generation
+        const config = {
+            backgroundColor: `rgba(${panelColor.r}, ${panelColor.g}, ${panelColor.b}, ${this.extension.panelOpacity})`,
+            borderRadius: radius,
+            blurRadius: this.extension.blurRadius,
+            blurSaturate: this.extension.blurSaturate,
+            blurContrast: this.extension.blurContrast,
+            blurBrightness: this.extension.blurBrightness,
+            borderColor: this.extension.blurBorderColor,
+            borderWidth: this.extension.blurBorderWidth,
+            transition: this.extension.blurTransition,
+        };
 
-        // Add fallback class if backdrop-filter is not supported
-        if (!this.extension.cssManager.hasBackdropFilter) {
-            actor.add_style_class_name("transparency-fallback-blur");
+        // Generate CSS and apply DIRECTLY to panel.actor
+        const css = this.extension.blurTemplateManager.generatePanelCSS(config);
+        actor.set_style(css);
+
+        this.debugLog(`Direct panel styling applied with opacity ${this.extension.panelOpacity}`);
+        this.debugLog(`Panel color: rgb(${panelColor.r}, ${panelColor.g}, ${panelColor.b})`);
+        this.debugLog(
+            `Border: ${this.extension.blurBorderWidth}px, Radius: ${radius}px, Blur: ${this.extension.blurRadius}px`
+        );
+
+        // Log cache stats periodically (every 10th call)
+        if (Math.random() < 0.1) {
+            this.extension.blurTemplateManager.logCacheStats();
         }
+    }
 
-        // Add advanced filter effects if supported
-        if (this.extension.cssManager.hasAdvancedFilters) {
-            actor.add_style_class_name("blur-enhanced");
+    /**
+     * Clear background styles on panel sub-boxes to prevent theme bleed-through.
+     * Saves originals for restoration on disable.
+     * @param {Object} panel - Cinnamon panel object with _leftBox/_centerBox/_rightBox
+     */
+    _clearSubBoxBackgrounds(panel) {
+        if (!panel) return;
+        const subBoxes = [panel._leftBox, panel._centerBox, panel._rightBox].filter(Boolean);
+        for (const box of subBoxes) {
+            if (!this._savedSubBoxStyles.has(box)) {
+                this._savedSubBoxStyles.set(box, box.get_style() || null);
+            }
+            const existingStyle = box.get_style() || '';
+            const cleaned = existingStyle
+                .replace(/background-color\s*:[^;]+;?/g, '')
+                .replace(/background-gradient-direction\s*:[^;]+;?/g, '')
+                .replace(/background-gradient-start\s*:[^;]+;?/g, '')
+                .replace(/background-gradient-end\s*:[^;]+;?/g, '')
+                .replace(/background\s*:[^;]+;?/g, '')
+                .trim();
+            const sep = cleaned.length > 0 && !cleaned.endsWith(';') ? '; ' : (cleaned.length > 0 ? ' ' : '');
+            box.set_style(cleaned + sep + 'background: transparent !important; background-gradient-direction: none !important;');
         }
-
-        // Apply inline styles directly
-        let backdropFilter = `blur(${this.extension.blurRadius}px) saturate(${this.extension.blurSaturate}) contrast(${this.extension.blurContrast}) brightness(${this.extension.blurBrightness})`;
-        let panelStyle = `
-            background-color: rgba(${panelColor.r}, ${panelColor.g}, ${panelColor.b}, ${this.extension.panelOpacity}) !important;
-            backdrop-filter: ${backdropFilter} !important;
-            -webkit-backdrop-filter: ${backdropFilter} !important;
-            opacity: ${this.extension.blurOpacity} !important;
-            border-radius: ${radius}px !important;
-            border: ${this.extension.blurBorderWidth}px solid ${this.extension.blurBorderColor} !important;
-        `;
-        actor.set_style(panelStyle);
     }
 }
 

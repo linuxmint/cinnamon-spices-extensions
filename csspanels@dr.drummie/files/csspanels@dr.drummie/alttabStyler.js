@@ -7,6 +7,7 @@ const Mainloop = imports.mainloop;
 const Gio = imports.gi.Gio;
 const Clutter = imports.gi.Clutter;
 const StylerBase = require("./stylerBase");
+const { TIMING, CSS_CLASSES, STYLING, SETTINGS_KEYS } = require("./constants");
 
 /**
  * AltTab Styler handles Alt-Tab switcher transparency and blur effects
@@ -47,7 +48,7 @@ class AltTabStyler extends StylerBase {
 
         try {
             const settings = new Gio.Settings({ schema: "org.cinnamon" });
-            const switcherStyle = settings.get_string("alttab-switcher-style");
+            const switcherStyle = settings.get_string(SETTINGS_KEYS.ALTTAB_SWITCHER_STYLE);
             this.debugLog("Current Alt-Tab switcher style:", switcherStyle);
 
             // Monkey patch different switcher types based on detected style
@@ -146,7 +147,11 @@ class AltTabStyler extends StylerBase {
         function search(currentActor) {
             if (currentActor && currentActor.get_style_class_name) {
                 const className = currentActor.get_style_class_name();
-                if (className && className.includes("switcher-list") && !className.includes("switcher-list-item")) {
+                if (
+                    className &&
+                    className.includes(CSS_CLASSES.SWITCHER_LIST) &&
+                    !className.includes(CSS_CLASSES.SWITCHER_LIST_ITEM)
+                ) {
                     return currentActor;
                 }
             }
@@ -377,30 +382,30 @@ class AltTabStyler extends StylerBase {
                 switcherColor = panelColor;
                 effectiveOpacity = this.extension.panelOpacity;
             } else {
-                // Use menu color and menu opacity for better readability
-                switcherColor = this.extension.cssManager.getMenuColor(panelColor);
+                // Use effective popup color and menu opacity for better readability
+                switcherColor = this.extension.themeDetector.getEffectivePopupColor();
                 effectiveOpacity = this.extension.menuOpacity;
             }
 
             // Apply common blur styling with Alt-Tab-specific additional styles
-            const additionalStyles = `
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-                padding: 12px !important;
-            `;
+            const config = {
+                backgroundColor: `rgba(${switcherColor.r}, ${switcherColor.g}, ${switcherColor.b}, ${effectiveOpacity})`,
+                opacity: this.extension.blurOpacity,
+                borderRadius: isPanel ? 1.0 : this.getAdjustedBorderRadius("alttab"),
+                blurRadius: this.getAdjustedBlurRadius("alttab"),
+                blurSaturate: this.extension.blurSaturate,
+                blurContrast: this.extension.blurContrast,
+                blurBrightness: this.extension.blurBrightness,
+                borderColor: this.extension.blurBorderColor,
+                borderWidth: this.extension.blurBorderWidth,
+                transition: this.extension.blurTransition,
+            };
 
-            this.applyCommonBlurStyling(
-                switcher.actor,
-                switcherColor,
-                effectiveOpacity,
-                this.getAdjustedBlurRadius("alttab"),
-                isPanel ? 1.0 : this.getAdjustedBorderRadius("alttab"),
-                this.extension.blurBorderColor,
-                this.extension.blurBorderWidth,
-                "alttab",
-                additionalStyles
-            );
+            // Generate CSS via template manager
+            const altTabCSS = this.extension.blurTemplateManager.generateAltTabCSS(config);
+            switcher.actor.set_style(altTabCSS);
 
-            this.debugLog("Alt-Tab switcher styled successfully");
+            this.debugLog("Alt-Tab switcher styled via template generation");
         } catch (e) {
             this.debugLog("Error styling switcher:", e);
         }
@@ -418,9 +423,9 @@ class AltTabStyler extends StylerBase {
                 }
 
                 // Remove our style classes
-                switcherActor.remove_style_class_name("transparency-alttab-blur");
-                switcherActor.remove_style_class_name("transparency-fallback-blur");
-                switcherActor.remove_style_class_name("profile-custom");
+                switcherActor.remove_style_class_name(CSS_CLASSES.ALTTAB_BLUR);
+                switcherActor.remove_style_class_name(CSS_CLASSES.FALLBACK_BLUR);
+                switcherActor.remove_style_class_name(CSS_CLASSES.CUSTOM_PROFILE);
             }
         } catch (e) {
             this.debugLog("Error restoring switcher style:", e);
@@ -531,35 +536,33 @@ class AltTabStyler extends StylerBase {
     }
 
     /**
-     * Apply styling to preview container element using existing applyCommonBlurStyling
+     * Apply styling to preview container element
      * @param {Object} previewContainer - The preview container element to style
      */
     applyThumbnailStyling(previewContainer) {
         if (!previewContainer) return;
 
         try {
-            let panelColor = this.extension.themeDetector.getPanelBaseColor();
-            let previewColor = this.extension.cssManager.getMenuColor(panelColor);
+            let previewColor = this.extension.themeDetector.getEffectivePopupColor();
 
-            const additionalStyles = `
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-                margin: 4px !important;
-                padding: 8px !important;
-            `;
+            const config = {
+                backgroundColor: `rgba(${previewColor.r}, ${previewColor.g}, ${previewColor.b}, ${this.extension.menuOpacity})`,
+                opacity: this.extension.blurOpacity,
+                borderRadius: this.getAdjustedBorderRadius("alttab"),
+                blurRadius: this.getAdjustedBlurRadius("alttab"),
+                blurSaturate: this.extension.blurSaturate,
+                blurContrast: this.extension.blurContrast,
+                blurBrightness: this.extension.blurBrightness,
+                borderColor: this.extension.blurBorderColor,
+                borderWidth: this.extension.blurBorderWidth,
+                transition: this.extension.blurTransition,
+            };
 
-            this.applyCommonBlurStyling(
-                previewContainer,
-                previewColor,
-                this.extension.menuOpacity,
-                this.getAdjustedBlurRadius("alttab"),
-                this.getAdjustedBorderRadius("alttab"),
-                this.extension.blurBorderColor,
-                this.extension.blurBorderWidth,
-                "alttab", // Uses 'transparency-alttab-blur' class
-                additionalStyles
-            );
+            // Generate CSS via template manager
+            const altTabCSS = this.extension.blurTemplateManager.generateAltTabCSS(config);
+            previewContainer.set_style(altTabCSS);
 
-            this.debugLog("Preview container styled successfully");
+            this.debugLog("Preview container styled via template generation");
         } catch (e) {
             this.debugLog("Error styling preview container:", e);
         }
@@ -596,10 +599,9 @@ class AltTabStyler extends StylerBase {
                     thumbnailElement.set_style_class_name(originalData.styleClasses);
                 }
 
-                // Remove style classes added by applyCommonBlurStyling
-                thumbnailElement.remove_style_class_name("transparency-alttab-blur");
-                thumbnailElement.remove_style_class_name("transparency-fallback-blur");
-                thumbnailElement.remove_style_class_name("profile-custom");
+                thumbnailElement.remove_style_class_name(CSS_CLASSES.ALTTAB_BLUR);
+                thumbnailElement.remove_style_class_name(CSS_CLASSES.FALLBACK_BLUR);
+                thumbnailElement.remove_style_class_name(CSS_CLASSES.CUSTOM_PROFILE);
             }
         } catch (e) {
             this.debugLog("Error restoring thumbnail style:", e);
@@ -620,7 +622,7 @@ class AltTabStyler extends StylerBase {
         }
 
         // Debounce the styling operation
-        this.titleStylingTimeout = imports.mainloop.timeout_add(50, () => {
+        this.titleStylingTimeout = imports.mainloop.timeout_add(TIMING.DEBOUNCE_SHORT, () => {
             this.performWindowTitleStyling(windowTitle, switcherInstance);
             this.titleStylingTimeout = null;
             return false;
@@ -636,28 +638,26 @@ class AltTabStyler extends StylerBase {
         if (!windowTitle) return;
 
         try {
-            let panelColor = this.extension.themeDetector.getPanelBaseColor();
-            // Always use menu color and opacity for window title (better readability)
-            let titleColor = this.extension.cssManager.getMenuColor(panelColor);
+            // Always use effective popup color and menu opacity for window title (better readability)
+            let titleColor = this.extension.themeDetector.getEffectivePopupColor();
             let titleOpacity = this.extension.menuOpacity;
 
-            const additionalStyles = `
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-                margin: 8px !important;
-                padding: 12px 16px !important;
-            `;
+            const config = {
+                backgroundColor: `rgba(${titleColor.r}, ${titleColor.g}, ${titleColor.b}, ${titleOpacity})`,
+                opacity: this.extension.blurOpacity,
+                borderRadius: this.getAdjustedBorderRadius("alttab"),
+                blurRadius: this.getAdjustedBlurRadius("alttab"),
+                blurSaturate: this.extension.blurSaturate,
+                blurContrast: this.extension.blurContrast,
+                blurBrightness: this.extension.blurBrightness,
+                borderColor: this.extension.blurBorderColor,
+                borderWidth: this.extension.blurBorderWidth,
+                transition: this.extension.blurTransition,
+            };
 
-            this.applyCommonBlurStyling(
-                windowTitle,
-                titleColor,
-                titleOpacity,
-                this.getAdjustedBlurRadius("alttab"),
-                this.getAdjustedBorderRadius("alttab"),
-                this.extension.blurBorderColor,
-                this.extension.blurBorderWidth,
-                "alttab", // Uses 'transparency-alttab-blur' class
-                additionalStyles
-            );
+            // Generate CSS via template manager
+            const altTabCSS = this.extension.blurTemplateManager.generateAltTabCSS(config);
+            windowTitle.set_style(altTabCSS);
 
             // Store for cleanup
             this.activeThumbnails.set(windowTitle, {
@@ -666,7 +666,7 @@ class AltTabStyler extends StylerBase {
                 switcherInstance: switcherInstance,
             });
 
-            this.debugLog("AppSwitcher3D window title styled successfully");
+            this.debugLog("AppSwitcher3D window title styled via template generation");
         } catch (e) {
             this.debugLog("Error styling window title:", e);
         }

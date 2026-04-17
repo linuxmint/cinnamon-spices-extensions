@@ -2,6 +2,7 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const GLib = imports.gi.GLib;
 const StylerBase = require("./stylerBase");
+const { TRAVERSAL, CSS_CLASSES, SIGNALS } = require("./constants");
 
 /**
  * Nemo Popup Styler handles popup menu transparency and blur effects for Nemo desktop
@@ -14,7 +15,6 @@ class NemoPopupStyler extends StylerBase {
      */
     constructor(extension) {
         super(extension, "NemoPopupStyler");
-        this.stageConnection = null;
         this.isEnabled = false;
     }
 
@@ -48,13 +48,12 @@ class NemoPopupStyler extends StylerBase {
         }
 
         try {
-            this.cleanupDesktopRightClickDetection();
             this.isEnabled = false; // Set flag early
             this.debugLog("NemoPopupStyler: Disable cleanup completed");
         } catch (e) {
             this.debugLog("Error disabling Nemo popup styling:", e);
         }
-        super.disable();
+        super.disable(); // Automatic signal cleanup via GlobalSignalsHandler
     }
 
     /**
@@ -63,8 +62,7 @@ class NemoPopupStyler extends StylerBase {
     refresh() {
         super.refresh();
         if (this.isEnabled) {
-            // Re-setup detection if needed
-            this.cleanupDesktopRightClickDetection();
+            // Re-setup detection - GlobalSignalsHandler will clean up old connections automatically
             this.setupDesktopRightClickDetection();
             this.debugLog("Nemo popup styling refreshed");
         }
@@ -74,9 +72,8 @@ class NemoPopupStyler extends StylerBase {
      * Setup desktop right-click detection
      */
     setupDesktopRightClickDetection() {
-        if (this.stageConnection) return;
-
-        this.stageConnection = global.stage.connect("button-press-event", (actor, event) => {
+        // Use GlobalSignalsHandler for automatic cleanup
+        this.addConnection(global.stage, SIGNALS.BUTTON_PRESS_EVENT, (actor, event) => {
             // Check if it's a right-click (button 3)
             if (event.get_button() === 3) {
                 this.handleDesktopRightClick(actor, event);
@@ -84,17 +81,6 @@ class NemoPopupStyler extends StylerBase {
         });
 
         this.debugLog("Desktop right-click detection setup");
-    }
-
-    /**
-     * Cleanup desktop right-click detection
-     */
-    cleanupDesktopRightClickDetection() {
-        if (this.stageConnection) {
-            global.stage.disconnect(this.stageConnection);
-            this.stageConnection = null;
-            this.debugLog("Desktop right-click detection cleaned up");
-        }
     }
 
     /**
@@ -123,7 +109,7 @@ class NemoPopupStyler extends StylerBase {
         // Check if actor is the desktop window or its children
         let current = actor;
         let depth = 0;
-        const MAX_DEPTH = 5;
+        const MAX_DEPTH = TRAVERSAL.MAX_DEPTH_DESKTOP;
 
         while (current && depth < MAX_DEPTH) {
             this.extension.cssManager.logActorDetails(current, depth);
@@ -140,10 +126,10 @@ class NemoPopupStyler extends StylerBase {
                 this.debugLog("Checking style classes for current actor:", current, "classes:", styleClasses);
                 if (
                     styleClasses &&
-                    (styleClasses.includes("desktop") ||
-                        styleClasses.includes("nemo-desktop") ||
-                        styleClasses.includes("nautilus-desktop") ||
-                        styleClasses.includes("caja-desktop"))
+                    (styleClasses.includes(CSS_CLASSES.DESKTOP) ||
+                        styleClasses.includes(CSS_CLASSES.NEMO_DESKTOP) ||
+                        styleClasses.includes(CSS_CLASSES.NAUTILUS_DESKTOP) ||
+                        styleClasses.includes(CSS_CLASSES.CAJA_DESKTOP))
                 ) {
                     return true;
                 }

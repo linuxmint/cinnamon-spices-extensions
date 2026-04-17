@@ -2,6 +2,7 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const MessageTray = imports.ui.messageTray;
 const StylerBase = require("./stylerBase");
+const { TIMING, TRAVERSAL, SIZE, STYLING, COLORS, DEFAULT_COLORS } = require("./constants");
 
 /**
  * Notification Styler handles popup notification transparency and blur effects
@@ -17,9 +18,6 @@ class NotificationStyler extends StylerBase {
         this.originalShowNotification = null;
         this.originalHideNotification = null;
         this.originalUpdateShowingNotification = null;
-
-        // Connection handlers
-        this.connections = [];
 
         // Debug tracking
         this.debugMode = true;
@@ -53,21 +51,24 @@ class NotificationStyler extends StylerBase {
         // Patch the main notification display method
         if (Main.messageTray && Main.messageTray._showNotification) {
             this.originalShowNotification = Main.messageTray._showNotification;
-            Main.messageTray._showNotification = this._patchedShowNotification.bind(this);
+            this._boundPatchedShowNotification = this._patchedShowNotification.bind(this);
+            Main.messageTray._showNotification = this._boundPatchedShowNotification;
             this.debugLog("Patched MessageTray._showNotification");
         }
 
         // Patch notification banner creation if available
         if (MessageTray.NotificationBanner && MessageTray.NotificationBanner.prototype._init) {
             this.originalBannerInit = MessageTray.NotificationBanner.prototype._init;
-            MessageTray.NotificationBanner.prototype._init = this._patchedBannerInit.bind(this);
+            this._boundPatchedBannerInit = this._patchedBannerInit.bind(this);
+            MessageTray.NotificationBanner.prototype._init = this._boundPatchedBannerInit;
             this.debugLog("Patched NotificationBanner._init");
         }
 
         // Alternative: Patch notification display in different Cinnamon versions
         if (Main.messageTray && Main.messageTray.showNotification) {
             this.originalShowNotificationAlt = Main.messageTray.showNotification;
-            Main.messageTray.showNotification = this._patchedShowNotificationAlt.bind(this);
+            this._boundPatchedShowNotificationAlt = this._patchedShowNotificationAlt.bind(this);
+            Main.messageTray.showNotification = this._boundPatchedShowNotificationAlt;
             this.debugLog("Patched MessageTray.showNotification (alternative)");
         }
     }
@@ -107,8 +108,8 @@ class NotificationStyler extends StylerBase {
         const result = this.originalShowNotificationAlt.apply(Main.messageTray, arguments);
 
         // Style with slight delay to ensure DOM is ready
-        imports.mainloop.timeout_add(50, () => {
-            this.styleCurrentNotification();
+        imports.mainloop.timeout_add(TIMING.DEBOUNCE_SHORT, () => {
+            this.searchForExistingNotifications();
             return false;
         });
 
@@ -239,7 +240,12 @@ class NotificationStyler extends StylerBase {
             const height = actor.get_height ? actor.get_height() : 0;
 
             // Reasonable notification dimensions - not too small/large
-            return width > 50 && height > 30 && width < 800 && height < 400;
+            return (
+                width > SIZE.NOTIFICATION_MIN_WIDTH_BASIC &&
+                height > SIZE.NOTIFICATION_MIN_HEIGHT_BASIC &&
+                width < SIZE.NOTIFICATION_MAX_WIDTH_BASIC &&
+                height < SIZE.NOTIFICATION_MAX_HEIGHT_BASIC
+            );
         } catch (e) {
             return false;
         }
@@ -251,7 +257,7 @@ class NotificationStyler extends StylerBase {
      * @param {number} depth - Current search depth
      */
     searchForNotificationActors(actor, depth = 0) {
-        if (!actor || depth > 8) return; // Limit search depth
+        if (!actor || depth > TRAVERSAL.MAX_DEPTH_NOTIFICATION) return; // Limit search depth
 
         try {
             // Check if this looks like a notification
@@ -330,13 +336,23 @@ class NotificationStyler extends StylerBase {
                 const y = actor.get_y();
 
                 // Typical notification dimensions and positioning
-                const isNotificationSize = width > 150 && width < 700 && height > 50 && height < 400;
+                const isNotificationSize =
+                    width > SIZE.NOTIFICATION_MIN_WIDTH &&
+                    width < SIZE.NOTIFICATION_MAX_WIDTH &&
+                    height > SIZE.NOTIFICATION_MIN_HEIGHT &&
+                    height < SIZE.NOTIFICATION_MAX_HEIGHT;
 
                 // Only consider elements positioned as floating notifications
                 // Must be positioned away from panel (not at 0,0) and in notification area
                 const isFloatingPosition = x > 0 && y > 0;
-                const isTopRight = x > global.screen_width - 700 && y > 5 && y < 300;
-                const isTopCenter = x > global.screen_width / 4 && x < (3 * global.screen_width) / 4 && y < 200;
+                const isTopRight =
+                    x > global.screen_width - SIZE.NOTIFICATION_MAX_WIDTH &&
+                    y > STYLING.NOTIFICATION_POSITION_TOP_OFFSET &&
+                    y < STYLING.NOTIFICATION_POSITION_TOP_RIGHT_MAX_Y;
+                const isTopCenter =
+                    x > global.screen_width / 4 &&
+                    x < (3 * global.screen_width) / 4 &&
+                    y < STYLING.NOTIFICATION_POSITION_TOP_CENTER_MAX_Y;
 
                 return isNotificationSize && (isTopRight || isTopCenter);
             }
@@ -459,36 +475,43 @@ class NotificationStyler extends StylerBase {
                 return;
             }
 
-            // Apply CSS classes for fallback support
-            element.add_style_class_name("transparency-notification-blur");
-            element.add_style_class_name("profile-custom");
+            // Apply enhanced notification styling using template generation
+            // Get effective popup color and apply notification-specific lightening for visibility
+            let notificationColor = this.extension.themeDetector.getEffectivePopupColor();
+            notificationColor = {
+                r: Math.min(notificationColor.r + DEFAULT_COLORS.NOTIFICATION_LIGHTEN_AMOUNT, 255),
+                g: Math.min(notificationColor.g + DEFAULT_COLORS.NOTIFICATION_LIGHTEN_AMOUNT, 255),
+                b: Math.min(notificationColor.b + DEFAULT_COLORS.NOTIFICATION_LIGHTEN_AMOUNT, 255),
+            };
 
-            if (!this.extension.cssManager.hasBackdropFilter) {
-                element.add_style_class_name("transparency-fallback-blur");
-            }
+            // Build configuration object for template generation
+            const config = {
+                backgroundColor: `rgba(${notificationColor.r}, ${notificationColor.g}, ${notificationColor.b}, ${this.extension.menuOpacity})`,
+                opacity: this.extension.blurOpacity,
+                borderRadius: this.getAdjustedBorderRadius("notification"),
+                blurRadius: this.getAdjustedBlurRadius("notification"),
+                blurSaturate: this.extension.blurSaturate,
+                blurContrast: this.extension.blurContrast,
+                blurBrightness: this.extension.blurBrightness,
+                borderColor: this.extension.blurBorderColor || STYLING.FALLBACK_BORDER_COLOR,
+                borderWidth: this.extension.blurBorderWidth || COLORS.DEFAULT_BLUR_BORDER_WIDTH,
+                transition: this.extension.blurTransition,
+            };
 
-            // Apply enhanced notification styling using base class method
-            const panelColor = this.extension.themeDetector.getPanelBaseColor();
-            const notificationColor = this.getNotificationColor(panelColor);
+            // Generate CSS via template manager
+            const notificationCSS = this.extension.blurTemplateManager.generateNotificationCSS(config);
 
-            // Apply common blur styling with notification-specific additional styles
-            const additionalStyles = `
-                box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.1) !important;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-                overflow: hidden !important;
+            // Add notification-specific enhancements
+            const enhancedCSS =
+                notificationCSS +
+                `
+                box-shadow: 0 ${STYLING.NOTIFICATION_SHADOW_OUTER_OFFSET}px ${STYLING.NOTIFICATION_SHADOW_OUTER_BLUR}px rgba(0, 0, 0, ${STYLING.NOTIFICATION_SHADOW_OUTER_OPACITY}), 0 ${STYLING.NOTIFICATION_SHADOW_INNER_OFFSET}px ${STYLING.NOTIFICATION_SHADOW_INNER_BLUR}px rgba(0, 0, 0, ${STYLING.NOTIFICATION_SHADOW_INNER_OPACITY}), inset 0 ${STYLING.NOTIFICATION_SHADOW_HIGHLIGHT_OFFSET}px 0 rgba(255, 255, 255, ${STYLING.NOTIFICATION_SHADOW_HIGHLIGHT_OPACITY});
+                transition: all ${STYLING.NOTIFICATION_TRANSITION_DURATION}s ${STYLING.NOTIFICATION_TRANSITION_CUBIC_BEZIER};
+                overflow: hidden;
             `;
 
-            this.applyCommonBlurStyling(
-                element,
-                notificationColor,
-                this.extension.menuOpacity,
-                this.getAdjustedBlurRadius("notification"),
-                this.getAdjustedBorderRadius("notification"),
-                this.extension.blurBorderColor || "rgba(255,255,255,0.1)",
-                this.extension.blurBorderWidth || 1,
-                "notification",
-                additionalStyles
-            );
+            // Apply inline CSS directly
+            element.set_style(enhancedCSS);
 
             this.trackNotificationDimensions(element, type, "after-styling");
 
@@ -544,7 +567,8 @@ class NotificationStyler extends StylerBase {
     monitorNotificationRemoval(element) {
         if (!element.connect) return;
 
-        const destroyConnection = element.connect("destroy", () => {
+        // Use GlobalSignalsHandler for automatic cleanup
+        this.addConnection(element, "destroy", () => {
             this.originalNotificationStyles.delete(element);
             this.activeNotifications.delete(element);
             this.debugLog("Cleaned up destroyed notification");
@@ -554,7 +578,7 @@ class NotificationStyler extends StylerBase {
         // Also monitor parent removal
         const parent = element.get_parent();
         if (parent && parent.connect) {
-            const parentDestroyConnection = parent.connect("destroy", () => {
+            this.addConnection(parent, "destroy", () => {
                 this.originalNotificationStyles.delete(element);
                 this.activeNotifications.delete(element);
             });
@@ -579,44 +603,23 @@ class NotificationStyler extends StylerBase {
     }
 
     /**
-     * Get notification color based on settings
-     * @param {Object} panelColor - Base panel color
-     * @returns {Object} RGB color object
-     */
-    getNotificationColor(panelColor) {
-        if (this.extension.overridePopupColor) {
-            return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePopupColor);
-        } else if (this.extension.overridePanelColor) {
-            return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
-        } else {
-            // Slightly brighter than panel for better visibility
-            return {
-                r: Math.min(panelColor.r + 25, 255),
-                g: Math.min(panelColor.g + 25, 255),
-                b: Math.min(panelColor.b + 25, 255),
-            };
-        }
-    }
-
-    /**
      * Setup fallback monitoring using stage events
      */
     setupFallbackMonitoring() {
         this.debugLog("Setting up fallback notification monitoring");
 
         if (global.stage) {
-            const stageConnection = global.stage.connect("actor-added", (stage, actor) => {
+            // Use GlobalSignalsHandler for automatic cleanup
+            this.addConnection(global.stage, "actor-added", (stage, actor) => {
                 if (this.isPopupNotification(actor)) {
                     this.debugLog("Detected notification via stage monitoring");
                     // Delay styling to allow full initialization
-                    imports.mainloop.timeout_add(100, () => {
+                    imports.mainloop.timeout_add(TIMING.DEBOUNCE_MEDIUM, () => {
                         this.styleNotificationElement(actor, "stage-detected");
                         return false;
                     });
                 }
             });
-
-            this.connections.push({ object: global.stage, id: stageConnection });
         }
     }
 
@@ -625,7 +628,7 @@ class NotificationStyler extends StylerBase {
      */
     monitorExistingNotifications() {
         // Style any currently visible notifications
-        imports.mainloop.timeout_add(100, () => {
+        imports.mainloop.timeout_add(TIMING.DEBOUNCE_MEDIUM, () => {
             this.findAndStylePopupNotifications();
             return false;
         });
@@ -641,13 +644,12 @@ class NotificationStyler extends StylerBase {
         try {
             this.restoreAllNotifications();
             this.restoreMonkeyPatches();
-            this.cleanupConnections();
             this.notificationTracker.clear(); // Clear tracking data
             this.debugLog("NotificationStyler: Disable cleanup completed");
         } catch (error) {
             this.debugLog("NotificationStyler: Error during disable:", error);
         }
-        super.disable();
+        super.disable(); // Automatic signal cleanup via GlobalSignalsHandler
     }
 
     /**
@@ -655,18 +657,27 @@ class NotificationStyler extends StylerBase {
      */
     restoreMonkeyPatches() {
         if (this.originalShowNotification && Main.messageTray) {
-            Main.messageTray._showNotification = this.originalShowNotification;
+            if (Main.messageTray._showNotification === this._boundPatchedShowNotification) {
+                Main.messageTray._showNotification = this.originalShowNotification;
+            }
             this.originalShowNotification = null;
+            this._boundPatchedShowNotification = null;
         }
 
         if (this.originalBannerInit && MessageTray.NotificationBanner) {
-            MessageTray.NotificationBanner.prototype._init = this.originalBannerInit;
+            if (MessageTray.NotificationBanner.prototype._init === this._boundPatchedBannerInit) {
+                MessageTray.NotificationBanner.prototype._init = this.originalBannerInit;
+            }
             this.originalBannerInit = null;
+            this._boundPatchedBannerInit = null;
         }
 
         if (this.originalShowNotificationAlt && Main.messageTray) {
-            Main.messageTray.showNotification = this.originalShowNotificationAlt;
+            if (Main.messageTray.showNotification === this._boundPatchedShowNotificationAlt) {
+                Main.messageTray.showNotification = this.originalShowNotificationAlt;
+            }
             this.originalShowNotificationAlt = null;
+            this._boundPatchedShowNotificationAlt = null;
         }
     }
 
@@ -704,19 +715,6 @@ class NotificationStyler extends StylerBase {
         classesToRemove.forEach((cls) => {
             element.remove_style_class_name(cls);
         });
-    }
-
-    /**
-     * Cleanup all connections
-     */
-    cleanupConnections() {
-        this.connections.forEach((conn) => {
-            if (conn.object && conn.id) {
-                this.debugLog("NotificationStyler: Disconnecting connection");
-                conn.object.disconnect(conn.id);
-            }
-        });
-        this.connections = [];
     }
 }
 

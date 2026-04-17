@@ -1,6 +1,7 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const GLib = imports.gi.GLib;
+const { VERSION, STYLING } = require("./constants");
 
 /**
  * CSS Manager handles all CSS variable management and styling system
@@ -86,7 +87,7 @@ class CSSManager {
 
             // Final fallback - assume modern Cinnamon versions support it
             let cinnamonVersion = this.getCinnamonVersion();
-            let supportsBackdrop = cinnamonVersion >= 5.0;
+            let supportsBackdrop = cinnamonVersion >= VERSION.CINNAMON_MIN_BACKDROP_FILTER;
 
             this.extension.debugLog(`Fallback: Cinnamon ${cinnamonVersion} backdrop support: ${supportsBackdrop}`);
             return supportsBackdrop;
@@ -108,13 +109,12 @@ class CSSManager {
                 return parseFloat(Main.cinnamonVersion);
             }
 
-            return 6.0;
+            return VERSION.CINNAMON_DEFAULT_VERSION;
         } catch (e) {
             this.extension.debugLog("Could not detect Cinnamon version:", e.message);
-            return 6.0;
+            return VERSION.CINNAMON_DEFAULT_VERSION;
         }
     }
-
     /**
      * Detect advanced backdrop-filter support
      * @returns {boolean} True if advanced filters are supported
@@ -125,9 +125,9 @@ class CSSManager {
         try {
             if (typeof CSS !== "undefined" && CSS.supports) {
                 let advancedSupport =
-                    CSS.supports("backdrop-filter", "blur(10px) saturate(150%)") &&
-                    CSS.supports("backdrop-filter", "contrast(120%)") &&
-                    CSS.supports("backdrop-filter", "brightness(110%)");
+                    CSS.supports("backdrop-filter", `blur(10px) saturate(${STYLING.FILTER_SATURATE_MULTIPLIER}%)`) &&
+                    CSS.supports("backdrop-filter", `contrast(${STYLING.FILTER_CONTRAST_MULTIPLIER}%)`) &&
+                    CSS.supports("backdrop-filter", `brightness(${STYLING.FILTER_BRIGHTNESS_MULTIPLIER}%)`);
 
                 if (advancedSupport) {
                     this.extension.debugLog("Advanced backdrop-filter effects are supported");
@@ -158,11 +158,12 @@ class CSSManager {
      */
     setCSSVariable(name, value) {
         try {
+            // document.documentElement is not a real DOM in GJS; this is a no-op in Cinnamon
             if (typeof document !== "undefined" && document.documentElement) {
                 document.documentElement.style.setProperty(`--${name}`, value);
             }
 
-            // Try to set on Cinnamon's theme manager
+            // _gtkThemeNode is a private Cinnamon API; guard ensures graceful fallback if absent
             try {
                 if (Main.themeManager && Main.themeManager._gtkThemeNode) {
                     Main.themeManager._gtkThemeNode.set_property(`--${name}`, value);
@@ -205,8 +206,12 @@ class CSSManager {
             this.setCSSVariable("menu-opacity", this.extension.menuOpacity.toString());
 
             // Determine popup/menu color based on override settings
-            let menuColor = this.getMenuColor(panelColor);
+            let menuColor = this.extension.themeDetector.getEffectivePopupColor();
             this.setCSSVariable("menu-bg-rgb", `${menuColor.r}, ${menuColor.g}, ${menuColor.b}`);
+
+            // Auto-generate highlight color for menu hover effects
+            let highlightColor = this.extension.themeDetector.getAutoHighlightColor(0.3);
+            this.setCSSVariable("menu-highlight-color", highlightColor);
 
             // Performance and capability variables
             this.setCSSVariable("advanced-filters", this.hasAdvancedFilters ? "true" : "false");
@@ -234,24 +239,6 @@ class CSSManager {
     }
 
     /**
-     * Get menu color based on override settings
-     * @param {Object} panelColor - Panel color object
-     * @returns {Object} Menu color object
-     */
-    getMenuColor(panelColor) {
-        if (this.extension.overridePopupColor) {
-            this.extension.debugLog("Using popup override color", this.extension.chooseOverridePopupColor);
-            return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePopupColor);
-        } else if (this.extension.overridePanelColor) {
-            this.extension.debugLog("Using panel override color for popups", this.extension.chooseOverridePanelColor);
-            return this.extension.themeDetector.parseColorString(this.extension.chooseOverridePanelColor);
-        } else {
-            this.extension.debugLog("Propagating detected panel color to popups");
-            return panelColor;
-        }
-    }
-
-    /**
      * Get adaptive blur radius based on background content
      * @returns {number} Optimized blur radius
      */
@@ -261,10 +248,10 @@ class CSSManager {
 
         let brightness = (panelColor.r + panelColor.g + panelColor.b) / 3;
 
-        if (brightness > 150) {
-            return Math.min(baseRadius * 1.3, 25);
-        } else if (brightness < 80) {
-            return Math.max(baseRadius * 0.8, 5);
+        if (brightness > STYLING.BRIGHTNESS_THRESHOLD_LIGHT) {
+            return Math.min(baseRadius * STYLING.ADAPTIVE_BLUR_MULTIPLIER_LIGHT, STYLING.ADAPTIVE_BLUR_MAX);
+        } else if (brightness < STYLING.BRIGHTNESS_THRESHOLD_DARK) {
+            return Math.max(baseRadius * STYLING.ADAPTIVE_BLUR_MULTIPLIER_DARK, STYLING.ADAPTIVE_BLUR_MIN);
         }
 
         return baseRadius;
@@ -375,6 +362,37 @@ class CSSManager {
             this.extension.debugLog(`${indent}Error inspecting element: ${e}`);
         }
     }
+
+    // ===== THEMEUTILS INTEGRATION - NEW METHODS =====
+
+    /**
+     * Update highlight color CSS variable for menu hover effects
+     * Allows manual override of auto-generated highlight color
+     *
+     * @param {string} cssColor - CSS rgba string (e.g., "rgba(255, 255, 255, 0.15)")
+     */
+    updateHighlightColor(cssColor) {
+        if (!cssColor) {
+            this.extension.debugLog("Warning: updateHighlightColor called with empty color");
+            return;
+        }
+
+        this.extension.debugLog(`Manually updating highlight color: ${cssColor}`);
+        this.setCSSVariable("menu-highlight-color", cssColor);
+    }
+
+    /**
+     * Reset highlight color to auto-generated value
+     * Useful after manual override
+     *
+     * @param {number} intensity - Highlight intensity (0-1, default: 0.3)
+     */
+    resetHighlightColor(intensity = 0.3) {
+        const highlightColor = this.extension.themeDetector.getAutoHighlightColor(intensity);
+        this.extension.debugLog(`Resetting highlight color to auto: ${highlightColor}`);
+        this.setCSSVariable("menu-highlight-color", highlightColor);
+    }
+
 }
 
 module.exports = CSSManager;

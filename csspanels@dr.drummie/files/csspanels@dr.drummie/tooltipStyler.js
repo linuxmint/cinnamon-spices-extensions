@@ -2,6 +2,7 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const Tooltips = imports.ui.tooltips;
 const StylerBase = require("./stylerBase");
+const { TIMING, TRAVERSAL, CSS_CLASSES, SIGNALS } = require("./constants");
 
 /**
  * Tooltip Styler handles tooltip transparency and blur effects
@@ -51,15 +52,8 @@ class TooltipStyler extends StylerBase {
 
         this.cleanupActiveTooltips();
 
-        // Disconnect stage monitoring
-        if (this.stageConnection) {
-            this.debugLog("TooltipStyler: Disconnecting stage connection");
-            global.stage.disconnect(this.stageConnection);
-            this.stageConnection = null;
-        }
-
         this.debugLog("TooltipStyler: Disable cleanup completed");
-        super.disable();
+        super.disable(); // Automatic signal cleanup via GlobalSignalsHandler
     }
 
     /**
@@ -71,14 +65,15 @@ class TooltipStyler extends StylerBase {
             this.originalTooltipShow = Tooltips.Tooltip.prototype.show;
             let self = this;
 
-            // Override the show method to intercept general Tooltip display
-            Tooltips.Tooltip.prototype.show = function () {
+            // Store patched function reference to enable idempotent restore
+            this._patchedTooltipShow = function () {
                 // Call the original method first
                 self.originalTooltipShow.call(this);
                 if (this._tooltip && this._tooltip.visible) {
                     self.styleTooltip(this);
                 }
             };
+            Tooltips.Tooltip.prototype.show = this._patchedTooltipShow;
 
             this.debugLog("General Tooltip monkey patch setup successfully");
         } catch (e) {
@@ -95,14 +90,15 @@ class TooltipStyler extends StylerBase {
             this.originalPanelItemTooltipShow = Tooltips.PanelItemTooltip.prototype.show;
             let self = this;
 
-            // Override the show method to intercept PanelItemTooltip display
-            Tooltips.PanelItemTooltip.prototype.show = function () {
+            // Store patched function reference to enable idempotent restore
+            this._patchedPanelItemTooltipShow = function () {
                 // Call the original method first
                 self.originalPanelItemTooltipShow.call(this);
                 if (this._tooltip && this._tooltip.visible) {
                     self.styleTooltip(this);
                 }
             };
+            Tooltips.PanelItemTooltip.prototype.show = this._patchedPanelItemTooltipShow;
 
             this.debugLog("PanelItemTooltip monkey patch setup successfully");
         } catch (e) {
@@ -142,29 +138,29 @@ class TooltipStyler extends StylerBase {
                 this.setupTooltipCloseHandlers(tooltip);
             }
 
-            let panelColor = this.extension.themeDetector.getPanelBaseColor();
-            let tooltipColor = this.extension.cssManager.getMenuColor(panelColor);
+            let tooltipColor = this.extension.themeDetector.getEffectivePopupColor();
 
             this.extension.cssManager.updateAllVariables();
 
-            // Apply common blur styling with tooltip-specific additional styles
-            const additionalStyles = `
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
-                padding: 6px 8px !important;
-                font-size: 0.9em !important;
-            `;
+            // Build configuration object for template generation
+            const config = {
+                backgroundColor: `rgba(${tooltipColor.r}, ${tooltipColor.g}, ${tooltipColor.b}, ${this.extension.menuOpacity})`,
+                opacity: this.extension.blurOpacity,
+                borderRadius: this.getAdjustedBorderRadius("tooltip"),
+                blurRadius: this.getAdjustedBlurRadius("tooltip"),
+                blurSaturate: this.extension.blurSaturate,
+                blurContrast: this.extension.blurContrast,
+                blurBrightness: this.extension.blurBrightness,
+                borderColor: this.extension.blurBorderColor,
+                borderWidth: this.extension.blurBorderWidth,
+                transition: this.extension.blurTransition,
+            };
 
-            this.applyCommonBlurStyling(
-                tooltip._tooltip,
-                tooltipColor,
-                this.extension.menuOpacity,
-                this.getAdjustedBlurRadius("tooltip"),
-                this.getAdjustedBorderRadius("tooltip"),
-                this.extension.blurBorderColor,
-                this.extension.blurBorderWidth,
-                "tooltip",
-                additionalStyles
-            );
+            // Generate CSS via template manager
+            const tooltipCSS = this.extension.blurTemplateManager.generateTooltipCSS(config);
+            tooltip._tooltip.set_style(tooltipCSS);
+
+            this.debugLog("Applying tooltip styles via template generation");
         } catch (e) {
             this.debugLog("Error styling tooltip:", e);
         }
@@ -216,9 +212,9 @@ class TooltipStyler extends StylerBase {
                 }
 
                 // Remove our style classes
-                tooltip._tooltip.remove_style_class_name("transparency-tooltip-blur");
-                tooltip._tooltip.remove_style_class_name("transparency-fallback-blur");
-                tooltip._tooltip.remove_style_class_name("profile-custom");
+                tooltip._tooltip.remove_style_class_name(CSS_CLASSES.TOOLTIP_BLUR);
+                tooltip._tooltip.remove_style_class_name(CSS_CLASSES.FALLBACK_BLUR);
+                tooltip._tooltip.remove_style_class_name(CSS_CLASSES.CUSTOM_PROFILE);
             }
         } catch (e) {
             this.debugLog("Error restoring tooltip style:", e);
@@ -231,8 +227,11 @@ class TooltipStyler extends StylerBase {
     restoreGeneralTooltipMonkeyPatch() {
         try {
             if (this.originalTooltipShow) {
-                Tooltips.Tooltip.prototype.show = this.originalTooltipShow;
+                if (Tooltips.Tooltip.prototype.show === this._patchedTooltipShow) {
+                    Tooltips.Tooltip.prototype.show = this.originalTooltipShow;
+                }
                 this.originalTooltipShow = null;
+                this._patchedTooltipShow = null;
                 this.debugLog("General Tooltip monkey patch restored");
             }
         } catch (e) {
@@ -246,8 +245,11 @@ class TooltipStyler extends StylerBase {
     restoreTooltipMonkeyPatch() {
         try {
             if (this.originalPanelItemTooltipShow) {
-                Tooltips.PanelItemTooltip.prototype.show = this.originalPanelItemTooltipShow;
+                if (Tooltips.PanelItemTooltip.prototype.show === this._patchedPanelItemTooltipShow) {
+                    Tooltips.PanelItemTooltip.prototype.show = this.originalPanelItemTooltipShow;
+                }
                 this.originalPanelItemTooltipShow = null;
+                this._patchedPanelItemTooltipShow = null;
                 this.debugLog("PanelItemTooltip monkey patch restored");
             }
         } catch (e) {
@@ -288,11 +290,11 @@ class TooltipStyler extends StylerBase {
     setupTooltipMonitoring() {
         this.debugLog("Setting up tooltip monitoring");
 
-        // Monitor global stage for new tooltip elements
+        // Monitor global stage for new tooltip elements - use GlobalSignalsHandler
         if (global.stage) {
-            this.stageConnection = global.stage.connect("actor-added", (stage, actor) => {
+            this.addConnection(global.stage, SIGNALS.ACTOR_ADDED, (stage, actor) => {
                 if (this.isTooltipElement(actor) && !this.activeTooltips.has(actor)) {
-                    imports.mainloop.timeout_add(50, () => {
+                    imports.mainloop.timeout_add(TIMING.DEBOUNCE_SHORT, () => {
                         this.styleTooltip(actor);
                         return false;
                     });
@@ -309,8 +311,8 @@ class TooltipStyler extends StylerBase {
      * @param {Clutter.Actor} actor - Actor to check
      * @returns {boolean} True if tooltip element
      */
-    isTooltipElement(actor) {
-        return actor && actor.has_style_class_name && actor.has_style_class_name("tooltip");
+    isTooltipByCSS(actor) {
+        return actor && actor.has_style_class_name && actor.has_style_class_name(CSS_CLASSES.TOOLTIP);
     }
 
     /**
@@ -331,7 +333,7 @@ class TooltipStyler extends StylerBase {
      * @param {number} depth - Current search depth
      */
     searchForExistingTooltips(actor, depth = 0) {
-        if (depth > 10) return;
+        if (depth > TRAVERSAL.MAX_DEPTH_PANEL) return;
         if (actor && actor instanceof Tooltips.Tooltip && actor._tooltip && actor.visible) {
             this.styleTooltip(actor);
         }
@@ -345,14 +347,14 @@ class TooltipStyler extends StylerBase {
      * @param {Clutter.Actor} actor - Actor to search
      * @param {number} depth - Current search depth
      */
-    forceTooltipReset(actor, depth = 0) {
-        if (depth > 10) return;
+    findPanelItemTooltipsInStage(actor, depth = 0) {
+        if (depth > TRAVERSAL.MAX_DEPTH_PANEL) return;
         if (actor && actor instanceof Tooltips.Tooltip && actor._tooltip) {
             try {
                 // Force hide and show to reset tooltip state without styling
                 if (actor.visible) {
                     actor.hide();
-                    imports.mainloop.timeout_add(10, () => {
+                    imports.mainloop.timeout_add(TIMING.DEBOUNCE_SHORT, () => {
                         actor.show();
                         return false;
                     });

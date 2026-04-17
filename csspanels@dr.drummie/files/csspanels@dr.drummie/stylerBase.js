@@ -1,5 +1,7 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
+const { TIMESTAMP, CSS_CLASSES, STYLING, TIMING } = require("./constants");
+const { GlobalSignalsHandler } = require("./signalHandler");
 
 /**
  * Base class for all styler modules providing common functionality
@@ -15,12 +17,43 @@ class StylerBase {
         this.extension = extension;
         this.stylerName = stylerName;
         this.isEnabled = false;
-        this.connections = [];
+        this._signalsHandler = new GlobalSignalsHandler();
         this.activeElements = new Map();
+        this._enableFailed = false; // Track enable failure state
+    }
+
+    /**
+     * Safe enable wrapper with automatic rollback on failure
+     * Wraps enable() with error boundary and user notification
+     *
+     * @returns {boolean} True if enable succeeded, false otherwise
+     */
+    safeEnable() {
+        try {
+            this.enable();
+            this._enableFailed = false;
+            return true;
+        } catch (error) {
+            this._enableFailed = true;
+            this.debugLog(`CRITICAL: Enable failed for ${this.stylerName}:`, error.message);
+
+            // Attempt automatic rollback
+            try {
+                this.disable();
+                this.debugLog(`Rollback successful for ${this.stylerName}`);
+            } catch (rollbackError) {
+                this.debugLog(`Rollback failed for ${this.stylerName}:`, rollbackError.message);
+            }
+
+            // Notify user of failure
+            this._notifyError(`Failed to enable ${this.stylerName}`, error.message);
+            return false;
+        }
     }
 
     /**
      * Enable the styler - to be overridden by subclasses
+     * NOTE: Use safeEnable() to call this with error boundary protection
      */
     enable() {
         this.isEnabled = true;
@@ -32,9 +65,31 @@ class StylerBase {
      */
     disable() {
         this.isEnabled = false;
-        this.cleanupConnections();
+        this._signalsHandler.destroy();
         this.cleanupActiveElements();
         this.debugLog("Styler disabled");
+    }
+
+    /**
+     * Notify user of critical error
+     *
+     * @param {string} title - Error title
+     * @param {string} message - Error message
+     * @private
+     */
+    _notifyError(title, message) {
+        try {
+            // Use Cinnamon's notification system if available
+            if (Main.notifyError) {
+                Main.notifyError(title, message);
+            } else {
+                // Fallback to global log
+                global.logError(`[CSSPanels] Error in ${title}: ${message}`);
+            }
+        } catch (e) {
+            // Silent fail - already in error state
+            global.log(`[CSSPanels] Error notification failed: ${e.message}`);
+        }
     }
 
     /**
@@ -46,31 +101,45 @@ class StylerBase {
     }
 
     /**
-     * Cleanup connections
-     */
-    cleanupConnections() {
-        this.connections.forEach((conn) => {
-            if (conn.object && conn.id) {
-                conn.object.disconnect(conn.id);
-            }
-        });
-        this.connections = [];
-    }
-
-    /**
-     * Cleanup active elements
+     * Cleanup active elements - remove all tracked timeout IDs and clear map
      */
     cleanupActiveElements() {
+        this.activeElements.forEach((data) => {
+            if (data.fadeTimeout) {
+                imports.gi.GLib.source_remove(data.fadeTimeout);
+            }
+        });
         this.activeElements.clear();
     }
 
     /**
-     * Add connection for cleanup
-     * @param {Object} object - Object with disconnect method
-     * @param {number} id - Connection ID
+     * Add signal connection for automatic cleanup
+     *
+     * Wrapper method for GlobalSignalsHandler.add() to maintain compatibility
+     * with existing code patterns while providing cleaner API.
+     *
+     * @param {GObject.Object} object - Object to connect signal to
+     * @param {string|Array} signal - Signal name(s) to connect
+     * @param {Function} callback - Callback function (should be bound if needed)
+     *
+     * @example
+     *   // Single signal
+     *   this.addConnection(settings, 'changed::key', this._onChanged.bind(this));
+     *
+     *   // Multiple signals
+     *   this.addConnection(menu, ['open-state-changed', 'destroy'], this._onMenuEvent.bind(this));
      */
-    addConnection(object, id) {
-        this.connections.push({ object, id });
+    addConnection(object, signal, callback) {
+        this._signalsHandler.add([object, signal, callback]);
+    }
+
+    /**
+     * Get count of tracked signals for debugging
+     *
+     * @returns {number} Number of active signal connections
+     */
+    getSignalCount() {
+        return this._signalsHandler.getSignalCount();
     }
 
     /**
@@ -78,9 +147,17 @@ class StylerBase {
      * @param {...any} args - Arguments to log
      */
     debugLog(...args) {
-        if (!this.extension.isEnabled && !args[0]?.includes("Disabling")) return;
+        // Allow logging during disable/cleanup phase
+        const isCleanupMessage =
+            args[0]?.includes("Disabling") ||
+            args[0]?.includes("Cleaning") ||
+            args[0]?.includes("Restored") ||
+            args[0]?.includes("disabled") ||
+            args[0]?.includes("cleanup");
+
+        if (!this.extension.isEnabled && !isCleanupMessage) return;
         if (!this.extension.debugLogging) return; // Only log when debug logging is enabled
-        const timestamp = new Date().toISOString().slice(11, 19); // HH:MM:SS format
+        const timestamp = new Date().toISOString().slice(TIMESTAMP.ISO_TIME_START, TIMESTAMP.ISO_TIME_END);
         global.log(`[CSSPanels] [${this.stylerName}] [${timestamp}] ${args.join(" ")}`);
     }
 
@@ -122,17 +199,17 @@ class StylerBase {
 
         try {
             // Add fade-out class for smooth transition
-            element.add_style_class_name("transparency-fade-out");
+            element.add_style_class_name(CSS_CLASSES.FADE_OUT);
 
             // Use GLib timeout for fade duration
             const timeoutId = imports.gi.GLib.timeout_add(
                 imports.gi.GLib.PRIORITY_DEFAULT,
-                150, // 150ms fade duration
+                TIMING.FADE_OUT_DURATION, // Fade-out animation duration
                 () => {
                     try {
                         // Remove fade class and execute callback
-                        element.remove_style_class_name("transparency-fade-out");
-                        element.remove_style_class_name("transparency-persistent-overlay");
+                        element.remove_style_class_name(CSS_CLASSES.FADE_OUT);
+                        element.remove_style_class_name(CSS_CLASSES.PERSISTENT_OVERLAY);
                         callback && callback();
                     } catch (e) {
                         this.debugLog("Error in fade-out callback:", e);
@@ -191,10 +268,10 @@ class StylerBase {
      */
     applyCommonBlurClasses(element, elementType) {
         element.add_style_class_name(`transparency-${elementType}-blur`);
-        element.add_style_class_name("profile-custom");
+        element.add_style_class_name(CSS_CLASSES.CUSTOM_PROFILE);
 
         if (!this.extension.cssManager.hasBackdropFilter) {
-            element.add_style_class_name("transparency-fallback-blur");
+            element.add_style_class_name(CSS_CLASSES.FALLBACK_BLUR);
         }
     }
 
@@ -205,53 +282,8 @@ class StylerBase {
      */
     removeCommonBlurClasses(element, elementType) {
         element.remove_style_class_name(`transparency-${elementType}-blur`);
-        element.remove_style_class_name("transparency-fallback-blur");
-        element.remove_style_class_name("profile-custom");
-    }
-
-    /**
-     * Apply common blur styling properties to element
-     * @param {Clutter.Actor} element - Element to style
-     * @param {Object} color - RGB color object {r, g, b}
-     * @param {number} opacity - Opacity value
-     * @param {number} blurRadius - Blur radius
-     * @param {number} borderRadius - Border radius
-     * @param {string} borderColor - Border color
-     * @param {number} borderWidth - Border width
-     * @param {string} elementType - Type identifier for classes
-     * @param {string} additionalStyles - Additional CSS styles to append
-     */
-    applyCommonBlurStyling(
-        element,
-        color,
-        opacity,
-        blurRadius,
-        borderRadius,
-        borderColor,
-        borderWidth,
-        elementType,
-        additionalStyles = ""
-    ) {
-        const backdropFilter = this.calculateBackdropFilter(
-            blurRadius,
-            this.extension.blurSaturate,
-            this.extension.blurContrast,
-            this.extension.blurBrightness
-        );
-
-        const style = `
-            background-color: rgba(${color.r}, ${color.g}, ${color.b}, ${opacity}) !important;
-            backdrop-filter: ${backdropFilter} !important;
-            -webkit-backdrop-filter: ${backdropFilter} !important;
-            opacity: ${this.extension.blurOpacity} !important;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-            border-radius: ${borderRadius}px !important;
-            border: ${borderWidth}px solid ${borderColor} !important;
-            ${additionalStyles}
-        `;
-
-        this.applyCommonBlurClasses(element, elementType);
-        element.set_style(style);
+        element.remove_style_class_name(CSS_CLASSES.FALLBACK_BLUR);
+        element.remove_style_class_name(CSS_CLASSES.CUSTOM_PROFILE);
     }
 
     /**
@@ -262,11 +294,11 @@ class StylerBase {
     getAdjustedBlurRadius(elementType) {
         const baseRadius = this.extension.blurRadius;
         const multipliers = {
-            menu: 0.9,
-            notification: 1.0,
-            osd: 1.3,
-            tooltip: 0.7,
-            alttab: 1.0,
+            menu: STYLING.BLUR_ADJUSTMENT_MENU,
+            notification: STYLING.BLUR_ADJUSTMENT_OSD,
+            osd: STYLING.BLUR_ADJUSTMENT_OSD,
+            tooltip: STYLING.BLUR_ADJUSTMENT_TOOLTIP,
+            alttab: STYLING.BLUR_ADJUSTMENT_ALTTAB,
         };
         return Math.round(baseRadius * (multipliers[elementType] || 1.0));
     }
@@ -279,13 +311,39 @@ class StylerBase {
     getAdjustedBorderRadius(elementType) {
         const baseRadius = this.extension.borderRadius;
         const multipliers = {
-            menu: 1.0,
-            notification: 1.0,
-            osd: 1.5,
-            tooltip: 0.8,
-            alttab: 1.0,
+            menu: STYLING.BORDER_ADJUSTMENT_MENU,
+            notification: STYLING.BORDER_ADJUSTMENT_OSD,
+            osd: STYLING.BORDER_ADJUSTMENT_OSD,
+            tooltip: STYLING.BORDER_ADJUSTMENT_TOOLTIP,
+            alttab: STYLING.BORDER_ADJUSTMENT_ALTTAB,
         };
         return Math.round(baseRadius * (multipliers[elementType] || 1.0));
+    }
+
+    /**
+     * Generate border-radius CSS value string for attached popup menus.
+     * Returns a 4-value CSS string with 0px on the side touching the panel.
+     * @param {number} baseRadius - Base border radius in pixels
+     * @param {number|null} orientation - St.Side enum value (0=TOP,1=BOTTOM,2=LEFT,3=RIGHT), or null for uniform
+     * @returns {string} CSS border-radius value, e.g. "0 0 8px 8px" or "8px"
+     */
+    getAttachedBorderRadiusCSS(baseRadius, orientation) {
+        const r = `${baseRadius}px`;
+        const z = "0";
+
+        // Map St.Side to CSS border-radius: top-left top-right bottom-right bottom-left
+        // Empirically verified from logs: 0=TOP, 1=RIGHT, 2=BOTTOM, 3=LEFT
+        const radiusMap = {
+            0: `${z} ${z} ${r} ${r}`,    // TOP: top corners flat (touching top panel)
+            1: `${r} ${z} ${z} ${r}`,    // RIGHT: right corners flat (touching right panel)
+            2: `${r} ${r} ${z} ${z}`,    // BOTTOM: bottom corners flat (touching bottom panel)
+            3: `${z} ${r} ${r} ${z}`,    // LEFT: left corners flat (touching left panel)
+        };
+
+        // Return mapped value or uniform fallback
+        return (orientation !== null && orientation !== undefined && radiusMap[orientation] !== undefined)
+            ? radiusMap[orientation]
+            : r;
     }
 }
 
