@@ -102,7 +102,6 @@ The extension provides comprehensive control over transparency, color theming, a
 - **Style OSD elements**: Apply visual effect styles to On-Screen Display (volume, brightness, Caps Lock, etc.).
 - **Style tooltip elements**: Apply visual effect styles to panel item tooltips.
 - **Style Alt-Tab switcher elements**: Apply visual effect styles to application switcher.
-- **Enable desktop context menu styling**: Apply visual effect styles to desktop right-click menus.
 
 **System Tray Indicator**
 
