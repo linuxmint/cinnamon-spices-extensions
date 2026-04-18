@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OSD150@claudiux 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-02-09 00:05+0100\n"
+"POT-Creation-Date: 2026-04-19 01:17+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: claudiux\n"
 "Language-Team: \n"
@@ -24,4 +24,44 @@ msgstr "Fenêtre OSD pour sound150"
 
 #. metadata.json->description
 msgid "The OSD Window handled by the Enhanced Sound Applet"
-msgstr "La fenêtre OSD gérée par l'Applet Son améliorée"
+msgstr ""
+"La fenêtre OSD gérée par l'Applet Son Améliorée et par Radio3.0"
+
+#. settings-schema.json->pagePosition->title
+msgid "Location"
+msgstr "Position"
+
+#. settings-schema.json->sectionOSDxLocation->title
+msgid "Relative horizontal location"
+msgstr "Position relative horizontale"
+
+#. settings-schema.json->sectionOSDyLocation->title
+msgid "Relative Vertical location"
+msgstr "Position relative verticale"
+
+#. settings-schema.json->OSDxLocation->description
+msgid "Horizontal offset from the default position (in pixels)"
+msgstr ""
+"Décalage horizontal par rapport à la position par défaut (en "
+"pixels)"
+
+#. settings-schema.json->OSDxLocation->tooltip
+msgid ""
+"Negative value: to the left.\n"
+"Positive value: to the right."
+msgstr ""
+"Valeur négative : vers la gauche.\\n\n"
+"Valeur positive : vers la droite."
+
+#. settings-schema.json->OSDyLocation->description
+msgid "Vertical offset from the default position (in pixels)"
+msgstr ""
+"Décalage vertical par rapport à la position par défaut (en pixels)"
+
+#. settings-schema.json->OSDyLocation->tooltip
+msgid ""
+"Negative value: to the top.\n"
+"Positive value: to the bottom."
+msgstr ""
+"Valeur négative : vers le haut.\n"
+"Valeur positive : vers le bas."

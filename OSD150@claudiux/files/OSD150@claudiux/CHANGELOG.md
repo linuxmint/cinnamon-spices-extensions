@@ -1,3 +1,6 @@
+### v2.0.0~20260418
+  * You can now change the position of the OSD window.
+
 ### v1.0.2~20260320
   * Makes the volume bar more smoother.
   * Fixes a bug.
