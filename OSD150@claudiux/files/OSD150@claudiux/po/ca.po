@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OSD150@claudiux 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-02-09 00:05+0100\n"
+"POT-Creation-Date: 2026-04-19 01:17+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -24,5 +24,36 @@ msgstr "Finestra de visualització en pantalla (OSD) per a sound150"
 
 #. metadata.json->description
 msgid "The OSD Window handled by the Enhanced Sound Applet"
+msgstr "La finestra OSD gestionada per la miniaplicació de so millorat"
+
+#. settings-schema.json->pagePosition->title
+msgid "Location"
 msgstr ""
-"La finestra OSD gestionada per la miniaplicació de so millorat"
+
+#. settings-schema.json->sectionOSDxLocation->title
+msgid "Relative horizontal location"
+msgstr ""
+
+#. settings-schema.json->sectionOSDyLocation->title
+msgid "Relative Vertical location"
+msgstr ""
+
+#. settings-schema.json->OSDxLocation->description
+msgid "Horizontal offset from the default position (in pixels)"
+msgstr ""
+
+#. settings-schema.json->OSDxLocation->tooltip
+msgid ""
+"Negative value: to the left.\n"
+"Positive value: to the right."
+msgstr ""
+
+#. settings-schema.json->OSDyLocation->description
+msgid "Vertical offset from the default position (in pixels)"
+msgstr ""
+
+#. settings-schema.json->OSDyLocation->tooltip
+msgid ""
+"Negative value: to the top.\n"
+"Positive value: to the bottom."
+msgstr ""

@@ -1,0 +1,48 @@
+{
+  "OSDlayout": {
+    "type": "layout",
+    "pages": [
+      "pagePosition"
+    ],
+    "pagePosition": {
+      "type": "page",
+      "title": "Location",
+      "sections": [
+        "sectionOSDxLocation",
+        "sectionOSDyLocation"
+      ]
+    },
+    "sectionOSDxLocation": {
+      "type": "section",
+      "title": "Relative horizontal location",
+      "keys": [
+        "OSDxLocation"
+      ]
+    },
+    "sectionOSDyLocation": {
+      "type": "section",
+      "title": "Relative Vertical location",
+      "keys": [
+        "OSDyLocation"
+      ]
+    }
+  },
+  "OSDxLocation": {
+    "type": "scale",
+    "default": 0,
+    "min": -775,
+    "max": 775,
+    "step": 25,
+    "description": "Horizontal offset from the default position (in pixels)",
+    "tooltip": "Negative value: to the left.\nPositive value: to the right."
+  },
+  "OSDyLocation": {
+    "type": "scale",
+    "default": 0,
+    "min": -975,
+    "max": 75,
+    "step": 25,
+    "description": "Vertical offset from the default position (in pixels)",
+    "tooltip": "Negative value: to the top.\nPositive value: to the bottom."
+  }
+}
