@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.9\n"
 
 #. metadata.json->name
 msgid "OSD Window for sound150"
@@ -27,32 +27,40 @@ msgstr "La ventana OSD manejada por el Applet de Sonido Mejorado"
 
 #. settings-schema.json->pagePosition->title
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #. settings-schema.json->sectionOSDxLocation->title
 msgid "Relative horizontal location"
-msgstr ""
+msgstr "Ubicación horizontal relativa"
 
 #. settings-schema.json->sectionOSDyLocation->title
 msgid "Relative Vertical location"
-msgstr ""
+msgstr "Ubicación vertical relativa"
 
 #. settings-schema.json->OSDxLocation->description
 msgid "Horizontal offset from the default position (in pixels)"
 msgstr ""
+"Desplazamiento horizontal respecto a la posición predeterminada "
+"(en píxeles)"
 
 #. settings-schema.json->OSDxLocation->tooltip
 msgid ""
 "Negative value: to the left.\n"
 "Positive value: to the right."
 msgstr ""
+"Valor negativo: hacia la izquierda.\n"
+"Valor positivo: hacia la derecha."
 
 #. settings-schema.json->OSDyLocation->description
 msgid "Vertical offset from the default position (in pixels)"
 msgstr ""
+"Desplazamiento vertical respecto a la posición predeterminada (en "
+"píxeles)"
 
 #. settings-schema.json->OSDyLocation->tooltip
 msgid ""
 "Negative value: to the top.\n"
 "Positive value: to the bottom."
 msgstr ""
+"Valor negativo: hacia arriba.\n"
+"Valor positivo: hacia abajo."
