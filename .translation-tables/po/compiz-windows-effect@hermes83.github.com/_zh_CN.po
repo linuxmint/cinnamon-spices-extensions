@@ -1,0 +1,114 @@
+# COMPIZ WINDOWS EFFECT
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# hermes83, 2022
+#
+msgid ""
+msgstr ""
+
+#. extension.js:190
+msgid "Error"
+msgstr ""
+
+#. extension.js:191
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Compiz window effects can not be disabled for that "
+"window"
+msgstr ""
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->exclude-page->title
+msgid "Exclude List"
+msgstr ""
+
+#. settings-schema.json->preset-section->title
+msgid "Compiz windows effect configuration"
+msgstr ""
+
+#. settings-schema.json->effect-settings-section->title
+msgid "Custom effect settings"
+msgstr ""
+
+#. settings-schema.json->exclude-section->title
+msgid "Application windows where no window effects will be applied"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Subtle"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Realistic"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Exaggerated"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Extreme"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+msgid "Custom"
+msgstr ""
+
+#. settings-schema.json->presetList->description
+msgid "Effect style"
+msgstr ""
+
+#. settings-schema.json->excludeList->description
+msgid "Application exclude list"
+msgstr ""
+
+#. settings-schema.json->excludeList->columns->title
+msgid "Application"
+msgstr ""
+
+#. settings-schema.json->excludeList->tooltip
+msgid ""
+"Defines a list of applications where the \"Compiz window effect\" effects "
+"will not be applied."
+msgstr ""
+
+#. settings-schema.json->excludeButton->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+
+#. settings-schema.json->excludeButton->tooltip
+msgid ""
+"Focus the window you want to disable window effects for, then return here "
+"and press this button."
+msgstr ""
+
+#. settings-schema.json->friction->description
+msgid "Friction "
+msgstr ""
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr ""
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup"
+msgstr ""
+
+#. settings-schema.json->mass->description
+msgid "Mass      "
+msgstr ""
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles  "
+msgstr ""
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles  "
+msgstr ""
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr ""

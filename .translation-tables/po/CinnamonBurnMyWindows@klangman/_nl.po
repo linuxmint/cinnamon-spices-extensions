@@ -1,0 +1,48 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-10-15 21:53-0400\n"
+"PO-Revision-Date: 2025-05-13 11:59+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. 6.2->settings-schema.json->power-page->title
+msgid "Power"
+msgstr ""
+
+#. 6.2->settings-schema.json->power-section->title
+msgid "Manage Burn-My-Windows power consumption"
+msgstr ""
+
+#. 6.2->settings-schema.json->power-dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows)."
+msgstr ""
+
+#. 6.2->settings-schema.json->power-onbattery->description
+msgid "Use different effects when running on battery power"
+msgstr ""
+
+#. 6.2->settings-schema.json->power-onbattery->tooltip
+msgid ""
+"When enabled, a set of options will appear allowing you to define which "
+"effects (if any) will be used when running on battery power and the battery "
+"charge state is less than the set limit. These settings will take precedence "
+"over both the general settings and any application specific settings when "
+"the battery charge state condition is met."
+msgstr ""
+
+#. 6.2->settings-schema.json->power-percent->description
+msgid "When battery is less than (percent)"
+msgstr ""

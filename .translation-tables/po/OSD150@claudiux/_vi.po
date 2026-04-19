@@ -1,0 +1,38 @@
+# OSD WINDOW FOR SOUND150
+# This file is put in the public domain.
+# claudiux, 2017
+#
+msgid ""
+msgstr ""
+
+#. settings-schema.json->pagePosition->title
+msgid "Location"
+msgstr ""
+
+#. settings-schema.json->sectionOSDxLocation->title
+msgid "Relative horizontal location"
+msgstr ""
+
+#. settings-schema.json->sectionOSDyLocation->title
+msgid "Relative Vertical location"
+msgstr ""
+
+#. settings-schema.json->OSDxLocation->description
+msgid "Horizontal offset from the default position (in pixels)"
+msgstr ""
+
+#. settings-schema.json->OSDxLocation->tooltip
+msgid ""
+"Negative value: to the left.\n"
+"Positive value: to the right."
+msgstr ""
+
+#. settings-schema.json->OSDyLocation->description
+msgid "Vertical offset from the default position (in pixels)"
+msgstr ""
+
+#. settings-schema.json->OSDyLocation->tooltip
+msgid ""
+"Negative value: to the top.\n"
+"Positive value: to the bottom."
+msgstr ""
