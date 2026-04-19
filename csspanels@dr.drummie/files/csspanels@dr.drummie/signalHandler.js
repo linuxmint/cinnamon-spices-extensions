@@ -104,8 +104,7 @@ class GlobalSignalsHandler {
                     // Silent failure for missing signals
                     // This allows connecting to optional signals without throwing
                     global.logError(
-                        e,
-                        `[CSSPanels:GlobalSignalsHandler] Error in signal connection '${signal}': ${e.message}`
+                        `[CSSPanels:GlobalSignalsHandler] Error in signal connection '${signal}': ${e.message}\n${e.stack || ""}`
                     );
                 }
             });

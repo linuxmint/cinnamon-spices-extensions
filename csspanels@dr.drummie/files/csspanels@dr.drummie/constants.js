@@ -126,6 +126,7 @@ const STYLING = {
         osd: 0.9, // OSD elements - slightly reduced (e.g., 10.8px @ 0.4)
         tooltip: 0.7, // Tooltips - subtle shadow (e.g., 8.4px @ 0.4)
         alttab: 1.1, // Alt-Tab switcher - prominent shadow (e.g., 13.2px @ 0.4)
+        desklet: 0.9, // Desktop widgets - slightly reduced shadow (e.g., 10.8px @ 0.4)
     },
 
     // Alt-Tab specific shadows
@@ -280,11 +281,13 @@ const SETTINGS_KEYS = {
     ENABLE_OSD_STYLING: "enable-osd-styling",
     ENABLE_TOOLTIP_STYLING: "enable-tooltip-styling",
     ENABLE_ALTTAB_STYLING: "enable-alttab-styling",
+    ENABLE_APPMENU_SIDEBAR_STYLING: "enable-appmenu-sidebar-styling",
     ENABLE_DESKTOP_CONTEXT_STYLING: "enable-desktop-context-styling",
 
     // System
     HIDE_TRAY_ICON: "hide-tray-icon",
     DEBUG_LOGGING: "debug-logging",
+    DARK_LIGHT_OVERRIDE: "dark-light-override",
 
     // Blur settings
     BLUR_RADIUS: "blur-radius",
@@ -364,6 +367,7 @@ const DEFAULT_COLORS = {
     FALLBACK_GREY: { r: 128, g: 128, b: 128 },     // Generic fallback
     FALLBACK_DARK: { r: 50, g: 50, b: 50 },         // Dark fallback
     MINT_Y_DARK_FALLBACK: { r: 46, g: 46, b: 51 },  // Mint-Y-Dark panel
+    SIDEBAR_LIGHT_FALLBACK: { r: 245, g: 245, b: 245 },  // Light theme sidebar fallback
     NORD_PANEL_COLOR: { r: 46, g: 52, b: 64 },      // Nord theme panel
     DEFAULT_ACCENT: { r: 136, g: 192, b: 208 },     // Default accent color from extension.js
 
@@ -497,11 +501,16 @@ const WALLPAPER_COLORS = {
     },
 
     // Dark/Light shade adjustment for dominant (panel) color
-    PANEL_SHADE_DARK: 0.15,                 // Lighten dominant 15% for dark theme
-    PANEL_SHADE_LIGHT: -0.10,               // Darken dominant 10% for light theme
+    PANEL_SHADE_DARK: -0.30,                // Darken dominant 30% for dark theme (white text readability)
+    PANEL_SHADE_LIGHT: 0.20,                // Lighten dominant 20% for light theme (black text readability)
 
     // Target HSL lightness (%) when boosting a too-dark accent to pass validation threshold
     ACCENT_BOOST_TARGET_LIGHTNESS: 38,
+
+    // Polar extraction parameters for wallpaper-based panel tinting
+    POLAR_PERCENTILE: 0.25,          // fraction of pixels taken from dark/light extreme
+    CONTRAST_SHADE_DARK:  -0.15,     // shade factor for polar panel tone (dark mode)
+    CONTRAST_SHADE_LIGHT:  0.15,     // shade factor for polar panel tone (light mode)
 };
 
 // ============================================================================

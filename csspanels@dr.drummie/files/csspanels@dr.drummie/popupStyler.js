@@ -224,7 +224,9 @@ class PopupStyler extends StylerBase {
 
             const storedData = this.activePopupMenus.get(menu);
             if (storedData && storedData.sidebarActor) {
-                this._styleAppMenuSidebar(storedData.sidebarActor);
+                this._styleAppMenuSidebar(storedData.sidebarActor).catch(e =>
+                    this.debugLog(`Error styling appmenu sidebar: ${e.message}`)
+                );
             }
         } catch (e) {
             this.debugLog("Error styling popup menu:", e);
@@ -461,11 +463,17 @@ class PopupStyler extends StylerBase {
      * blackbox. Preserves max-width inline style set by the applet's _sidebarToggle().
      * @param {Clutter.Actor} sidebarActor - The appmenu-sidebar actor
      */
-    _styleAppMenuSidebar(sidebarActor) {
+    async _styleAppMenuSidebar(sidebarActor) {
         if (!sidebarActor) return;
         try {
-            // Read sidebar color directly from cinnamon.css — stable, bypasses buggy blackbox
-            const panelColor = this._getAppMenuSidebarThemeColor();
+            // Sidebar color mode: when user opts-in, sidebar matches popup override color;
+            // otherwise it reads the Cinnamon theme color (grey for dark, white for light).
+            const useSidebarStyling = this.extension.settings.getValue(
+                "enable-appmenu-sidebar-styling"
+            );
+            const panelColor = useSidebarStyling
+                ? this.extension.themeDetector.getEffectivePopupColor()
+                : await this._getAppMenuSidebarThemeColor();
             const bgColor = `rgba(${panelColor.r}, ${panelColor.g}, ${panelColor.b}, ${this.extension.menuOpacity})`;
             this.debugLog(`_styleAppMenuSidebar: panel base color r=${panelColor.r} g=${panelColor.g} b=${panelColor.b}`);
 
@@ -502,9 +510,19 @@ class PopupStyler extends StylerBase {
      * Read the appmenu-sidebar background-color directly from the active Cinnamon
      * theme's cinnamon.css file. Stable alternative to getPanelBaseColor() blackbox.
      * Falls back to MINT_Y_DARK_FALLBACK if parsing fails.
-     * @returns {{r: number, g: number, b: number}} RGB color object
+     * @returns {Promise<{r: number, g: number, b: number}>} RGB color object
      */
-    _getAppMenuSidebarThemeColor() {
+    async _getAppMenuSidebarThemeColor() {
+        // When tone mode is explicitly forced, skip CSS reading and use constant directly.
+        // CSS parsing reflects the active theme regardless of force override, so we must
+        // bypass it to honour the user's explicit dark/light intent.
+        const toneMode = this.extension.darkLightOverride || 'auto';
+        if (toneMode !== 'auto') {
+            const isDark = this.extension.themeDetector.isDarkModePreferred();
+            this.debugLog(`_getAppMenuSidebarThemeColor: forced ${isDark ? 'dark (MINT_Y_DARK_FALLBACK)' : 'light (SIDEBAR_LIGHT_FALLBACK)'} (toneMode=${toneMode})`);
+            return isDark ? DEFAULT_COLORS.MINT_Y_DARK_FALLBACK : DEFAULT_COLORS.SIDEBAR_LIGHT_FALLBACK;
+        }
+
         try {
             const themeName = this.extension.themeDetector.getActiveGtkTheme();
             const themePaths = [
@@ -517,13 +535,21 @@ class PopupStyler extends StylerBase {
             for (const themePath of themePaths) {
                 const cssPath = `${themePath}/cinnamon/cinnamon.css`;
                 const cssFile = Gio.File.new_for_path(cssPath);
-                if (!cssFile.query_exists(null)) continue;
 
-                const [success, contents] = cssFile.load_contents(null);
-                if (!success) continue;
+                const contents = await new Promise((resolve) => {
+                    cssFile.load_contents_async(null, (source, result) => {
+                        try {
+                            const [success, data] = source.load_contents_finish(result);
+                            resolve(success ? data : null);
+                        } catch (e) {
+                            resolve(null);
+                        }
+                    });
+                });
+
+                if (!contents) continue;
 
                 const cssText = new TextDecoder().decode(contents);
-                // Match: .appmenu-sidebar { ... background-color: #xxxxxx; ... }
                 const match = cssText.match(/\.appmenu-sidebar\s*\{[^}]*background-color\s*:\s*(#[0-9a-fA-F]{6})/);
                 if (match) {
                     const hex = match[1].slice(1);
@@ -538,8 +564,9 @@ class PopupStyler extends StylerBase {
             this.debugLog(`_getAppMenuSidebarThemeColor: error reading theme CSS: ${e}`);
         }
 
-        this.debugLog(`_getAppMenuSidebarThemeColor: fallback to MINT_Y_DARK_FALLBACK`);
-        return DEFAULT_COLORS.MINT_Y_DARK_FALLBACK;
+        const isDark = this.extension.themeDetector.isDarkModePreferred();
+        this.debugLog(`_getAppMenuSidebarThemeColor: fallback to ${isDark ? "MINT_Y_DARK_FALLBACK" : "SIDEBAR_LIGHT_FALLBACK"}`);
+        return isDark ? DEFAULT_COLORS.MINT_Y_DARK_FALLBACK : DEFAULT_COLORS.SIDEBAR_LIGHT_FALLBACK;
     }
 }
 

@@ -744,6 +744,18 @@ class ThemeDetector {
             return false;
         }
 
+        // EXTENSION OVERRIDE: User-set dark/light mode override (dark-light-override setting)
+        // Applies globally: affects sidebar fallback, accent generation, and wallpaper extraction
+        const toneMode = this.extension.darkLightOverride || 'auto';
+        if (toneMode === 'dark') {
+            this.extension.debugLog("Dark mode: extension override = force dark ✓");
+            return true;
+        }
+        if (toneMode === 'light') {
+            this.extension.debugLog("Dark mode: extension override = force light (FALSE)");
+            return false;
+        }
+
         // FALLBACK 1: Check gtk-theme suffix or contains -Dark/-Light
         const gtkTheme = this.getActiveGtkTheme();
         this.extension.debugLog(`[isDarkModePreferred] Checking theme name: "${gtkTheme}"`);
@@ -851,10 +863,6 @@ class ThemeDetector {
     detectThemeAccentColor() {
         const themeName = this.getActiveGtkTheme();
         this.extension.debugLog(`Detecting accent from theme: ${themeName}`);
-        this.extension.debugLog(
-            `ThemeDetector methods: ${Object.getOwnPropertyNames(Object.getPrototypeOf(this)).join(", ")}`
-        );
-        this.extension.debugLog(`Has validateAccentColor: ${typeof this.validateAccentColor}`);
 
         // Theme paths to check (user themes take priority over system themes)
         // Priority order: XDG user > legacy user > system > local system
@@ -869,12 +877,11 @@ class ThemeDetector {
             const gtkCssPath = `${themePath}/gtk-3.0/gtk.css`;
             const cssFile = Gio.File.new_for_path(gtkCssPath);
 
-            if (!cssFile.query_exists(null)) {
-                this.extension.debugLog(`  → gtk.css not found at: ${gtkCssPath}`);
-                continue;
-            }
-
             try {
+                // Intentional sync load: isDarkModePreferred() is called from blurTemplateManager
+                // (CSS generation hot path) requiring a synchronous result. Converting to async
+                // would cascade through the entire template generation system. File is only read
+                // when theme data is stale; subsequent calls use cached currentPanelBaseColor.
                 const [success, contents] = cssFile.load_contents(null);
                 if (!success) {
                     this.extension.debugLog(`  → Failed to read: ${gtkCssPath}`);
@@ -975,11 +982,11 @@ class ThemeDetector {
             const gtkCssPath = `${themePath}/gtk-3.0/gtk.css`;
             const cssFile = Gio.File.new_for_path(gtkCssPath);
 
-            if (!cssFile.query_exists(null)) {
-                continue;
-            }
-
             try {
+                // Intentional sync load: isDarkModePreferred() is called from blurTemplateManager
+                // (CSS generation hot path) requiring a synchronous result. Converting to async
+                // would cascade through the entire template generation system. File is only read
+                // when theme data is stale; subsequent calls use cached currentPanelBaseColor.
                 const [success, contents] = cssFile.load_contents(null);
                 if (!success) continue;
 
@@ -1099,6 +1106,9 @@ class ThemeDetector {
     redetectAllThemeData() {
         this.extension.debugLog("Re-detecting all theme properties...");
 
+        // Refresh current theme name before logging detection summary
+        this._printAndSaveCurrentTheme();
+
         // Step 1: Clear cache ONCE at the beginning
         this.invalidateCache();
 
@@ -1126,7 +1136,7 @@ class ThemeDetector {
             detectedAccent = this.detectThemeAccentColor();
             if (detectedAccent) {
                 accentVariants = this.generateAccentSystem(detectedAccent, isDarkMode);
-                this.extension.debugLog(`Accent color: ${detectedAccent} (apply: true)`);
+                this.extension.debugLog(`Accent color: rgb(${detectedAccent.r}, ${detectedAccent.g}, ${detectedAccent.b}) (apply: true)`);
             }
         } else {
             this.extension.debugLog(`Accent auto-apply disabled (apply: false)`);

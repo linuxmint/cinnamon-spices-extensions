@@ -77,8 +77,9 @@ class ColorPalette {
                 Math.sqrt((width * height) / WALLPAPER_COLORS.COLOR_ANALYSIS_TARGET_SAMPLES)
             ));
 
-            const brightnessMin = isDarkMode ? 8  : 20;
-            const brightnessMax = isDarkMode ? 210 : 240;
+            const thresholds = WALLPAPER_COLORS.BRIGHTNESS_THRESHOLDS[isDarkMode ? 'dark' : 'light'];
+            const brightnessMin = thresholds.min;
+            const brightnessMax = thresholds.max;
 
             let totalR = 0, totalG = 0, totalB = 0, count = 0;
 
@@ -155,6 +156,9 @@ class ColorPalette {
             let pixbuf;
 
             try {
+                // GdkPixbuf.new_from_file_at_scale is synchronous but acceptable here:
+                // - only invoked on user-triggered wallpaper extraction, not in the event loop
+                // - GdkPixbuf has no stable async API in GJS/Cinnamon context
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
                     path,
                     MAX_DIMENSION,
@@ -482,6 +486,9 @@ class ColorPalette {
             let pixbuf;
 
             try {
+                // GdkPixbuf.new_from_file_at_scale is synchronous but acceptable here:
+                // - only invoked on user-triggered wallpaper extraction, not in the event loop
+                // - GdkPixbuf has no stable async API in GJS/Cinnamon context
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
                     path,
                     MAX_DIMENSION,
@@ -509,10 +516,11 @@ class ColorPalette {
                 Math.sqrt((width * height) / WALLPAPER_COLORS.COLOR_ANALYSIS_TARGET_SAMPLES)
             ));
 
-            // Brightness exclusion range — skip extreme black/white (pure noise)
-            // Wider range than analyzePixbuf: include all mid-tones regardless of saturation
-            const brightnessMin = isDarkMode ? 8  : 20;
-            const brightnessMax = isDarkMode ? 210 : 240;
+            // Brightness exclusion range — use centralized thresholds from WALLPAPER_COLORS
+            // Accepts mid-tones only; excludes extremes to align dominant with current theme mode
+            const thresholds = WALLPAPER_COLORS.BRIGHTNESS_THRESHOLDS[isDarkMode ? 'dark' : 'light'];
+            const brightnessMin = thresholds.min;
+            const brightnessMax = thresholds.max;
 
             // Collect samples for optional trimmed mean
             const samples = [];
@@ -583,6 +591,138 @@ class ColorPalette {
             return result;
         } catch (e) {
             this._debugLog(`extractDominantTone error: ${e.message}`);
+            return isDarkMode ? [46, 52, 64] : [236, 239, 244];
+        }
+    }
+
+    /**
+     * Extract polar tone from an already-loaded GdkPixbuf.
+     *
+     * Takes the darkest (dark mode) or lightest (light mode) POLAR_PERCENTILE fraction
+     * of all pixels sorted by HSP brightness. Unlike analyzePixbufForTone(), this method
+     * applies no brightness threshold filter — all non-transparent pixels are candidates.
+     * The resulting color is intentionally "extreme" to produce strong tonal contrast.
+     *
+     * The pixbuf is NOT disposed here; the caller owns its lifecycle.
+     *
+     * @param {GdkPixbuf.Pixbuf} pixbuf - Pre-loaded pixbuf
+     * @param {boolean} [isDarkMode=false] - When true, take darkest pixels; when false, lightest
+     * @returns {Array<number>} [r, g, b] average color from the extreme percentile
+     */
+    extractPolarTone(pixbuf, isDarkMode = false) {
+        if (!pixbuf) {
+            return isDarkMode ? [46, 52, 64] : [236, 239, 244];
+        }
+
+        try {
+            const width = pixbuf.get_width();
+            const height = pixbuf.get_height();
+            const nChannels = pixbuf.get_n_channels();
+            const rowstride = pixbuf.get_rowstride();
+            const pixels = pixbuf.get_pixels();
+            const hasAlpha = pixbuf.get_has_alpha();
+
+            const gridStep = Math.max(1, Math.round(
+                Math.sqrt((width * height) / WALLPAPER_COLORS.COLOR_ANALYSIS_TARGET_SAMPLES)
+            ));
+
+            const samples = [];
+
+            for (let y = 0; y < height; y += gridStep) {
+                for (let x = 0; x < width; x += gridStep) {
+                    const offset = y * rowstride + x * nChannels;
+                    const r = pixels[offset];
+                    const g = pixels[offset + 1];
+                    const b = pixels[offset + 2];
+                    const a = hasAlpha ? pixels[offset + 3] : 255;
+
+                    // Skip transparent pixels
+                    if (a < 128) continue;
+
+                    // No saturation filter — include grey and neutral pixels
+                    // No brightness threshold filter — include all non-transparent pixels
+                    const brightness = ThemeUtils.getHSP(r, g, b);
+                    samples.push([r, g, b, brightness]);
+                }
+            }
+
+            if (samples.length === 0) {
+                this._debugLog(`extractPolarTone: no valid pixels, using fallback`);
+                return isDarkMode ? [46, 52, 64] : [236, 239, 244];
+            }
+
+            // Sort by brightness ascending
+            samples.sort((a, b) => a[3] - b[3]);
+
+            // Take bottom (darkest) or top (lightest) POLAR_PERCENTILE fraction
+            const count = Math.max(1, Math.floor(samples.length * WALLPAPER_COLORS.POLAR_PERCENTILE));
+            const slice = isDarkMode
+                ? samples.slice(0, count)
+                : samples.slice(samples.length - count);
+
+            let totalR = 0, totalG = 0, totalB = 0;
+            for (const [r, g, b] of slice) {
+                totalR += r; totalG += g; totalB += b;
+            }
+
+            const result = [
+                Math.round(totalR / count),
+                Math.round(totalG / count),
+                Math.round(totalB / count),
+            ];
+
+            this._debugLog(
+                `Polar tone (${isDarkMode ? 'dark' : 'light'}): rgb(${result.join(', ')}) from ${count}/${samples.length} pixels`
+            );
+
+            return result;
+        } catch (e) {
+            this._debugLog(`extractPolarTone error: ${e.message}`);
+            return isDarkMode ? [46, 52, 64] : [236, 239, 244];
+        }
+    }
+
+    /**
+     * Extract polar tone from an image file path.
+     *
+     * Loads the image from disk, delegates to extractPolarTone(), then disposes
+     * the pixbuf. Use when no shared pixbuf is available.
+     * Falls back to a safe color if the image cannot be loaded.
+     *
+     * @param {string} path - Plain file path to image (e.g. /home/user/wallpaper.jpg)
+     * @param {boolean} [isDarkMode=false] - When true, take darkest pixels; when false, lightest
+     * @returns {Array<number>} [r, g, b] average color from the extreme percentile
+     */
+    extractPolarToneFromPath(path, isDarkMode = false) {
+        try {
+            const MAX_DIMENSION = WALLPAPER_COLORS.COLOR_ANALYSIS_MAX_DIMENSION;
+            let pixbuf;
+
+            try {
+                // GdkPixbuf.new_from_file_at_scale is synchronous but acceptable here:
+                // - only invoked on user-triggered wallpaper extraction, not in the event loop
+                // - GdkPixbuf has no stable async API in GJS/Cinnamon context
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
+                    path,
+                    MAX_DIMENSION,
+                    MAX_DIMENSION,
+                    true
+                );
+            } catch (loadErr) {
+                this._debugLog(`extractPolarToneFromPath: failed to load ${path}: ${loadErr.message}`);
+                return isDarkMode ? [46, 52, 64] : [236, 239, 244];
+            }
+
+            if (!pixbuf) {
+                return isDarkMode ? [46, 52, 64] : [236, 239, 244];
+            }
+
+            const result = this.extractPolarTone(pixbuf, isDarkMode);
+            try { pixbuf.run_dispose(); } catch (e) { /* ignore */ }
+
+            return result;
+        } catch (e) {
+            this._debugLog(`extractPolarToneFromPath error: ${e.message}`);
             return isDarkMode ? [46, 52, 64] : [236, 239, 244];
         }
     }

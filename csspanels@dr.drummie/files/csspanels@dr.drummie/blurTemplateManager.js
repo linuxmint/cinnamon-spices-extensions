@@ -957,6 +957,15 @@ class BlurTemplateManager {
         return this._generateElementCSS("alttab", config, true);
     }
 
+    /**
+     * Generate desklet CSS with blur and transparency effects
+     * @param {Object} config - Configuration object
+     * @returns {string} Complete inline CSS string
+     */
+    generateDeskletCSS(config) {
+        return this._generateElementCSS("desklet", config, true);
+    }
+
     // ===== CACHE MANAGEMENT METHODS =====
 
     /**

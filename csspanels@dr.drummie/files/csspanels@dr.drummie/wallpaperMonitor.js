@@ -74,8 +74,10 @@ class WallpaperMonitor {
             // Initial hash calculation
             if (initialPath) {
                 this._wallpaperPath = initialPath;
-                this._lastHash = this._calculateHash(initialPath);
-                this.debugLog(`Initial wallpaper hash: ${this._lastHash}`);
+                this._calculateHash(initialPath).then(hash => {
+                    this._lastHash = hash;
+                    this.debugLog(`Initial wallpaper hash: ${this._lastHash}`);
+                }).catch(e => this.debugLog(`Error calculating initial wallpaper hash: ${e.message}`));
             }
         } catch (e) {
             this.debugLog(`Error enabling wallpaper monitor: ${e.message}`);
@@ -129,7 +131,7 @@ class WallpaperMonitor {
 
         // Debounce wallpaper changes (prevent rapid-fire triggers)
         this._debounceTimeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, TIMING.WALLPAPER_DEBOUNCE || 1000, () => {
-            this._processWallpaperChange();
+            this._processWallpaperChange().catch(e => this.debugLog(`Error processing wallpaper change: ${e.message}`));
             this._debounceTimeout = null;
             return GLib.SOURCE_REMOVE;
         });
@@ -141,7 +143,7 @@ class WallpaperMonitor {
      * Process wallpaper change after debounce
      * @private
      */
-    _processWallpaperChange() {
+    async _processWallpaperChange() {
         try {
             const newPath = this._getCurrentWallpaperPath();
 
@@ -151,7 +153,7 @@ class WallpaperMonitor {
             }
 
             // Calculate hash for new wallpaper
-            const newHash = this._calculateHash(newPath);
+            const newHash = await this._calculateHash(newPath);
 
             // Check if wallpaper actually changed
             // Guard: skip only when both hashes are non-null AND path matches —
@@ -214,6 +216,9 @@ class WallpaperMonitor {
             // Load pixbuf once — both tone extraction and palette analysis share the same image data
             let sharedPixbuf;
             try {
+                // GdkPixbuf.new_from_file_at_scale is synchronous but acceptable here:
+                // - only invoked on user-triggered wallpaper extraction, not in the event loop
+                // - GdkPixbuf has no stable async API in GJS/Cinnamon context
                 sharedPixbuf = imports.gi.GdkPixbuf.Pixbuf.new_from_file_at_scale(
                     wallpaperPath, WALLPAPER_COLORS.COLOR_ANALYSIS_MAX_DIMENSION, WALLPAPER_COLORS.COLOR_ANALYSIS_MAX_DIMENSION, true
                 );
@@ -223,109 +228,188 @@ class WallpaperMonitor {
             }
             this.debugLog(`Pixbuf loaded once for dual-analysis (path: ${wallpaperPath})`);
 
-            // === STEP 1: Panel color — weighted average of ALL pixels (no saturation filter) ===
-            const dominantRgb = sharedPixbuf
-                ? cp.analyzePixbufForTone(sharedPixbuf, isDarkMode)
-                : cp.extractDominantTone(wallpaperPath, isDarkMode);
-            const shadeFactor = isDarkMode
-                ? WALLPAPER_COLORS.PANEL_SHADE_DARK
-                : WALLPAPER_COLORS.PANEL_SHADE_LIGHT;
-            const panelRgb = ThemeUtils.colorShade(dominantRgb, shadeFactor);
-            const panelOpacity = this._getPanelOpacity();
-            const panelCss = ThemeUtils.rgbaToCss(panelRgb[0], panelRgb[1], panelRgb[2], panelOpacity);
-            this.extension.settings.setValue('choose-override-panel-color', panelCss);
-            this.debugLog(`Panel color set: ${panelCss}`);
+            const strategy = this.extension.wallpaperColorStrategy || 'default';
 
-            // === STEP 2: Saturated palette — for accent/tint/glow colors only ===
-            const preferLight = !isDarkMode;
-            const palette = sharedPixbuf
-                ? cp.extractFromPixbuf(sharedPixbuf, 8, preferLight)
-                : cp.extractColorsFromImage(wallpaperPath, 8, preferLight);
-            this.debugLog(`Palette extracted: ${palette ? palette.length : 0} colors`);
+            if (strategy === 'contrast') {
+                // === CONTRAST STRATEGY: polar tones ===
 
-            // Dispose shared pixbuf now that both analyses are complete
-            if (sharedPixbuf) {
-                try { sharedPixbuf.run_dispose(); } catch (e) { /* ignore */ }
-            }
+                // STEP 1: Panel color — polar extreme (darkest/lightest pixels)
+                const dominantRgb = sharedPixbuf
+                    ? cp.extractPolarTone(sharedPixbuf, isDarkMode)
+                    : cp.extractPolarToneFromPath(wallpaperPath, isDarkMode);
+                const shadeFactor = isDarkMode
+                    ? WALLPAPER_COLORS.CONTRAST_SHADE_DARK
+                    : WALLPAPER_COLORS.CONTRAST_SHADE_LIGHT;
+                const panelRgb = ThemeUtils.colorShade(dominantRgb, shadeFactor);
+                const panelOpacity = this._getPanelOpacity();
+                const panelCss = ThemeUtils.rgbaToCss(panelRgb[0], panelRgb[1], panelRgb[2], panelOpacity);
+                this.extension.settings.setValue('choose-override-panel-color', panelCss);
+                this.debugLog(`Panel color set (contrast): ${panelCss}`);
 
-            // === STEP 3: Accent system (border, tint, shadow) ===
-            // Always apply accent tint/glow — this mirrors how theme detection works:
-            // panel is dark-base, but border/tint/shadow carry the accent color.
-            // fullAuto additionally updates blur/backdrop settings beyond tint.
-            const accentRgbArr = palette && palette.length > 0
-                ? cp.getBestAccentColor(palette)
-                : [DEFAULT_COLORS.DEFAULT_ACCENT.r, DEFAULT_COLORS.DEFAULT_ACCENT.g, DEFAULT_COLORS.DEFAULT_ACCENT.b];
+                // STEP 2: Palette from opposite end for accent/popup
+                // Invert preferLight: dark mode → prefer light palette for accent contrast
+                const preferLight = isDarkMode;
+                const palette = sharedPixbuf
+                    ? cp.extractFromPixbuf(sharedPixbuf, 8, preferLight)
+                    : cp.extractColorsFromImage(wallpaperPath, 8, preferLight);
+                this.debugLog(`Palette extracted (contrast): ${palette ? palette.length : 0} colors`);
 
-            const accentColor = { r: accentRgbArr[0], g: accentRgbArr[1], b: accentRgbArr[2] };
-            let accentForSystem = accentColor;
+                // Dispose shared pixbuf
+                if (sharedPixbuf) {
+                    try { sharedPixbuf.run_dispose(); } catch (e) { /* ignore */ }
+                }
 
-            if (this.extension.themeDetector && this.extension.themeDetector.validateAccentColor) {
-                const validation = this.extension.themeDetector.validateAccentColor(accentColor);
-                if (!validation.isValid) {
-                    // If the color is too dark (not too light or desaturated), attempt to
-                    // brighten it to a usable lightness before falling back to a generic default.
-                    // This keeps the accent tonally tied to the wallpaper palette.
-                    const isTooLight = validation.reason && validation.reason.includes('Too light');
-                    const isDesaturated = validation.reason && validation.reason.includes('Too desaturated');
-                    if (!isTooLight && !isDesaturated) {
-                        // Boost lightness to 38% — enough to pass L>=25% threshold, not washed out
-                        const hsl = ThemeUtils.rgbToHsl(accentColor.r, accentColor.g, accentColor.b);
-                        const boosted = ThemeUtils.hslToRgb(hsl[0], hsl[1], WALLPAPER_COLORS.ACCENT_BOOST_TARGET_LIGHTNESS);
-                        const revalidation = this.extension.themeDetector.validateAccentColor(
-                            { r: boosted[0], g: boosted[1], b: boosted[2] }
-                        );
-                        if (revalidation.isValid) {
-                            this.debugLog(
-                                `Accent brightened L:${hsl[2].toFixed(1)}%→${WALLPAPER_COLORS.ACCENT_BOOST_TARGET_LIGHTNESS}% ` +
-                                `rgb(${accentColor.r},${accentColor.g},${accentColor.b}) → ` +
-                                `rgb(${boosted[0]},${boosted[1]},${boosted[2]})`
+                // STEP 3: Accent system (identical to default flow)
+                const accentRgbArr = palette && palette.length > 0
+                    ? cp.getBestAccentColor(palette)
+                    : [DEFAULT_COLORS.DEFAULT_ACCENT.r, DEFAULT_COLORS.DEFAULT_ACCENT.g, DEFAULT_COLORS.DEFAULT_ACCENT.b];
+
+                const accentColor = { r: accentRgbArr[0], g: accentRgbArr[1], b: accentRgbArr[2] };
+                let accentForSystem = accentColor;
+
+                if (this.extension.themeDetector && this.extension.themeDetector.validateAccentColor) {
+                    const validation = this.extension.themeDetector.validateAccentColor(accentColor);
+                    if (!validation.isValid) {
+                        const isTooLight = validation.reason && validation.reason.includes('Too light');
+                        const isDesaturated = validation.reason && validation.reason.includes('Too desaturated');
+                        if (!isTooLight && !isDesaturated) {
+                            const hsl = ThemeUtils.rgbToHsl(accentColor.r, accentColor.g, accentColor.b);
+                            const boosted = ThemeUtils.hslToRgb(hsl[0], hsl[1], WALLPAPER_COLORS.ACCENT_BOOST_TARGET_LIGHTNESS);
+                            const revalidation = this.extension.themeDetector.validateAccentColor(
+                                { r: boosted[0], g: boosted[1], b: boosted[2] }
                             );
-                            accentForSystem = { r: boosted[0], g: boosted[1], b: boosted[2] };
+                            if (revalidation.isValid) {
+                                this.debugLog(`Accent brightened (contrast) rgb(${accentColor.r},${accentColor.g},${accentColor.b}) → rgb(${boosted[0]},${boosted[1]},${boosted[2]})`);
+                                accentForSystem = { r: boosted[0], g: boosted[1], b: boosted[2] };
+                            } else {
+                                this.debugLog(`Accent still invalid after boost (contrast) (${revalidation.reason}), using default`);
+                                accentForSystem = DEFAULT_COLORS.DEFAULT_ACCENT;
+                            }
                         } else {
-                            this.debugLog(`Accent still invalid after boost (${revalidation.reason}), using default`);
+                            this.debugLog(`Accent invalid (contrast) (${validation.reason}), using default`);
                             accentForSystem = DEFAULT_COLORS.DEFAULT_ACCENT;
                         }
-                    } else {
-                        this.debugLog(`Accent invalid (${validation.reason}), using default`);
-                        accentForSystem = DEFAULT_COLORS.DEFAULT_ACCENT;
                     }
                 }
-            }
 
-            if (this.extension.themeDetector && this.extension.themeDetector.generateAccentSystem) {
-                const accentVariants = this.extension.themeDetector.generateAccentSystem(accentForSystem, isDarkMode);
-                if (accentVariants) {
-                    this.extension.settings.setValue('blur-border-color', accentVariants.border);
-                    this.extension.settings.setValue('blur-background', accentVariants.tint);
-                    if (fullAuto) {
+                if (this.extension.themeDetector && this.extension.themeDetector.generateAccentSystem) {
+                    const accentVariants = this.extension.themeDetector.generateAccentSystem(accentForSystem, isDarkMode);
+                    if (accentVariants && fullAuto) {
+                        this.extension.settings.setValue('blur-border-color', accentVariants.border);
+                        this.extension.settings.setValue('blur-background', accentVariants.tint);
+                        this.extension.settings.setValue('accent-shadow-color', accentVariants.shadow);
+                        this.debugLog(`Accent system applied (contrast, full-auto): border=${accentVariants.border}`);
+                    }
+                }
+
+                // STEP 4: Popup color matches panel — same polar tone, menu opacity
+                const menuOpacity = this._getMenuOpacity();
+                const secondaryCss = ThemeUtils.rgbaToCss(panelRgb[0], panelRgb[1], panelRgb[2], menuOpacity);
+                this.extension.settings.setValue('choose-override-popup-color', secondaryCss);
+                this.debugLog(`Popup color set (contrast, panel-match): ${secondaryCss}`);
+
+            } else {
+                // === DEFAULT STRATEGY: existing weighted average flow ===
+
+                // === STEP 1: Panel color — weighted average of ALL pixels (no saturation filter) ===
+                const dominantRgb = sharedPixbuf
+                    ? cp.analyzePixbufForTone(sharedPixbuf, isDarkMode)
+                    : cp.extractDominantTone(wallpaperPath, isDarkMode);
+                const shadeFactor = isDarkMode
+                    ? WALLPAPER_COLORS.PANEL_SHADE_DARK
+                    : WALLPAPER_COLORS.PANEL_SHADE_LIGHT;
+                const panelRgb = ThemeUtils.colorShade(dominantRgb, shadeFactor);
+                const panelOpacity = this._getPanelOpacity();
+                const panelCss = ThemeUtils.rgbaToCss(panelRgb[0], panelRgb[1], panelRgb[2], panelOpacity);
+                this.extension.settings.setValue('choose-override-panel-color', panelCss);
+                this.debugLog(`Panel color set: ${panelCss}`);
+
+                // === STEP 2: Saturated palette — for accent/tint/glow colors only ===
+                const preferLight = !isDarkMode;
+                const palette = sharedPixbuf
+                    ? cp.extractFromPixbuf(sharedPixbuf, 8, preferLight)
+                    : cp.extractColorsFromImage(wallpaperPath, 8, preferLight);
+                this.debugLog(`Palette extracted: ${palette ? palette.length : 0} colors`);
+
+                // Dispose shared pixbuf now that both analyses are complete
+                if (sharedPixbuf) {
+                    try { sharedPixbuf.run_dispose(); } catch (e) { /* ignore */ }
+                }
+
+                // === STEP 3: Accent system (border, tint, shadow) ===
+                // Only apply when full-auto is active — leaves visual effects page untouched
+                // when full-auto experimental mode is disabled.
+                const accentRgbArr = palette && palette.length > 0
+                    ? cp.getBestAccentColor(palette)
+                    : [DEFAULT_COLORS.DEFAULT_ACCENT.r, DEFAULT_COLORS.DEFAULT_ACCENT.g, DEFAULT_COLORS.DEFAULT_ACCENT.b];
+
+                const accentColor = { r: accentRgbArr[0], g: accentRgbArr[1], b: accentRgbArr[2] };
+                let accentForSystem = accentColor;
+
+                if (this.extension.themeDetector && this.extension.themeDetector.validateAccentColor) {
+                    const validation = this.extension.themeDetector.validateAccentColor(accentColor);
+                    if (!validation.isValid) {
+                        // If the color is too dark (not too light or desaturated), attempt to
+                        // brighten it to a usable lightness before falling back to a generic default.
+                        // This keeps the accent tonally tied to the wallpaper palette.
+                        const isTooLight = validation.reason && validation.reason.includes('Too light');
+                        const isDesaturated = validation.reason && validation.reason.includes('Too desaturated');
+                        if (!isTooLight && !isDesaturated) {
+                            // Boost lightness to 38% — enough to pass L>=25% threshold, not washed out
+                            const hsl = ThemeUtils.rgbToHsl(accentColor.r, accentColor.g, accentColor.b);
+                            const boosted = ThemeUtils.hslToRgb(hsl[0], hsl[1], WALLPAPER_COLORS.ACCENT_BOOST_TARGET_LIGHTNESS);
+                            const revalidation = this.extension.themeDetector.validateAccentColor(
+                                { r: boosted[0], g: boosted[1], b: boosted[2] }
+                            );
+                            if (revalidation.isValid) {
+                                this.debugLog(
+                                    `Accent brightened L:${hsl[2].toFixed(1)}%→${WALLPAPER_COLORS.ACCENT_BOOST_TARGET_LIGHTNESS}% ` +
+                                    `rgb(${accentColor.r},${accentColor.g},${accentColor.b}) → ` +
+                                    `rgb(${boosted[0]},${boosted[1]},${boosted[2]})`
+                                );
+                                accentForSystem = { r: boosted[0], g: boosted[1], b: boosted[2] };
+                            } else {
+                                this.debugLog(`Accent still invalid after boost (${revalidation.reason}), using default`);
+                                accentForSystem = DEFAULT_COLORS.DEFAULT_ACCENT;
+                            }
+                        } else {
+                            this.debugLog(`Accent invalid (${validation.reason}), using default`);
+                            accentForSystem = DEFAULT_COLORS.DEFAULT_ACCENT;
+                        }
+                    }
+                }
+
+                if (this.extension.themeDetector && this.extension.themeDetector.generateAccentSystem) {
+                    const accentVariants = this.extension.themeDetector.generateAccentSystem(accentForSystem, isDarkMode);
+                    if (accentVariants && fullAuto) {
+                        this.extension.settings.setValue('blur-border-color', accentVariants.border);
+                        this.extension.settings.setValue('blur-background', accentVariants.tint);
                         this.extension.settings.setValue('accent-shadow-color', accentVariants.shadow);
                         this.debugLog(`Accent system applied (full-auto): border=${accentVariants.border}`);
-                    } else {
-                        this.debugLog(`Accent tint/border applied: border=${accentVariants.border}`);
                     }
                 }
-            }
 
-            // === STEP 4: Secondary color for popup background ===
-            const secondaryRgb = palette && palette.length > 0
-                ? cp.getSecondaryColor(palette, dominantRgb, isDarkMode)
-                : dominantRgb;
-            const menuOpacity = this._getMenuOpacity();
-            const secondaryCss = ThemeUtils.rgbaToCss(secondaryRgb[0], secondaryRgb[1], secondaryRgb[2], menuOpacity);
-            this.extension.settings.setValue('choose-override-popup-color', secondaryCss);
-            this.debugLog(`Popup color set: ${secondaryCss}`);
+                // === STEP 4: Secondary color for popup background ===
+                const secondaryRgb = palette && palette.length > 0
+                    ? cp.getSecondaryColor(palette, dominantRgb, isDarkMode)
+                    : dominantRgb;
+                const menuOpacity = this._getMenuOpacity();
+                const secondaryCss = ThemeUtils.rgbaToCss(secondaryRgb[0], secondaryRgb[1], secondaryRgb[2], menuOpacity);
+                this.extension.settings.setValue('choose-override-popup-color', secondaryCss);
+                this.debugLog(`Popup color set: ${secondaryCss}`);
+            }
 
             this.debugLog("Color extraction completed successfully");
 
-            // Activate override switches so extracted colors are actually applied.
+            // Activate panel override so extracted color applies to panel.
             // settings.setValue() does not fire the bindProperty IN callbacks for the color
-            // pickers — the switches must be enabled explicitly to propagate the new colors.
+            // pickers — the switch must be enabled explicitly to propagate the new color.
+            // Popup override is intentionally NOT auto-enabled — user controls it explicitly.
             this.extension.settings.setValue('override-panel-color', true);
-            this.extension.settings.setValue('override-popup-color', true);
 
-            // Commit path/hash state only on success — transient errors allow retry on next change
             this._wallpaperPath = wallpaperPath;
-            this._lastHash = this._calculateHash(wallpaperPath);
+            this._calculateHash(wallpaperPath).then(hash => { this._lastHash = hash; })
+                .catch(e => this.debugLog(`Error calculating wallpaper hash: ${e.message}`));
 
             // settings.setValue() does not trigger bindProperty IN callbacks — manual refresh required
             this._forceRefreshAfterExtraction();
@@ -413,11 +497,12 @@ class WallpaperMonitor {
             return false;
         }
 
-        // Use cached path if available; otherwise read directly from GSettings.
-        // This allows the button to work even when wallpaper detection is disabled.
-        let wallpaperPath = this._wallpaperPath;
+        // Always read current wallpaper from GSettings — cache may be stale when
+        // detection is disabled (no signal updates) and user changed the wallpaper.
+        // Fall back to cached path only if GSettings read fails.
+        let wallpaperPath = this._resolveCurrentWallpaperPath();
         if (!wallpaperPath) {
-            wallpaperPath = this._resolveCurrentWallpaperPath();
+            wallpaperPath = this._wallpaperPath;
         }
 
         if (!wallpaperPath) {
@@ -447,10 +532,6 @@ class WallpaperMonitor {
             if (!uri) return null;
 
             const file = Gio.File.new_for_uri(uri);
-            if (!file.query_exists(null)) {
-                this.debugLog(`⚠️  Wallpaper file not found: ${uri}`);
-                return null;
-            }
             return file.get_path();
         } catch (e) {
             this.debugLog(`Error resolving wallpaper path: ${e.message}`);
@@ -476,11 +557,6 @@ class WallpaperMonitor {
 
             // Use Gio.File for proper URI decoding (handles %20, UTF-8 paths, etc.)
             const file = Gio.File.new_for_uri(uri);
-            if (!file.query_exists(null)) {
-                this.debugLog(`⚠️  Wallpaper file not found: ${uri}`);
-                return null;
-            }
-
             return file.get_path();
         } catch (e) {
             this.debugLog(`Error getting wallpaper path: ${e.message}`);
@@ -491,24 +567,30 @@ class WallpaperMonitor {
     /**
      * Calculate simple hash for file (to detect changes)
      * @param {string} filePath - Path to file
-     * @returns {string|null} Hash string or null
+     * @returns {Promise<string|null>} Hash string or null
      * @private
      */
     _calculateHash(filePath) {
-        try {
+        return new Promise((resolve) => {
             const file = Gio.File.new_for_path(filePath);
-            const info = file.query_info("standard::size,time::modified", Gio.FileQueryInfoFlags.NONE, null);
-
-            // Simple hash: size + modification time
-            const size = info.get_size();
-            const mtime = info.get_modification_time().tv_sec;
-            const hash = `${size}_${mtime}`;
-
-            return hash;
-        } catch (e) {
-            this.debugLog(`Error calculating hash: ${e.message}`);
-            return null;
-        }
+            file.query_info_async(
+                "standard::size,time::modified",
+                Gio.FileQueryInfoFlags.NONE,
+                GLib.PRIORITY_DEFAULT,
+                null,
+                (source, result) => {
+                    try {
+                        const info = source.query_info_finish(result);
+                        const size = info.get_size();
+                        const mtime = info.get_modification_time().tv_sec;
+                        resolve(`${size}_${mtime}`);
+                    } catch (e) {
+                        this.debugLog(`Error calculating hash: ${e.message}`);
+                        resolve(null);
+                    }
+                }
+            );
+        });
     }
 
     /**
@@ -522,6 +604,12 @@ class WallpaperMonitor {
      * @private
      */
     _detectDarkMode() {
+        // Tone override: explicit setting takes priority over auto-detection
+        const toneMode = this.extension.darkLightOverride || 'auto';
+        if (toneMode === 'dark')  return true;
+        if (toneMode === 'light') return false;
+        // 'auto' falls through to existing isDarkModePreferred() logic below
+
         try {
             // Use ThemeDetector's robust dark mode detection (3-tier priority)
             if (this.extension.themeDetector && this.extension.themeDetector.isDarkModePreferred) {

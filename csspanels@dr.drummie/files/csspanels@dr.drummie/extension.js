@@ -15,6 +15,7 @@ const OSDStyler = require("./osdStyler");
 const NemoPopupStyler = require("./nemoPopupStyler");
 const TooltipStyler = require("./tooltipStyler");
 const AltTabStyler = require("./alttabStyler");
+const DeskletStyler = require("./deskletStyler");
 const SystemIndicator = require("./systemIndicator");
 const ThemeDetector = require("./themeDetector");
 const CSSManager = require("./cssManager");
@@ -167,6 +168,12 @@ class CSSPanelsExtension {
             "enableDesktopContextStyling",
             this.onDesktopContextStylingChanged.bind(this)
         );
+        this.settings.bindProperty(
+            Settings.BindingDirection.IN,
+            "enable-desklet-styling",
+            "enableDeskletStyling",
+            this.onDeskletStylingChanged.bind(this)
+        );
 
         // Blur effect settings
         this.bindBlurSettings();
@@ -179,7 +186,7 @@ class CSSPanelsExtension {
             this.onHideTrayIconChanged.bind(this)
         );
         this.settings.bindProperty(Settings.BindingDirection.IN, "debug-logging", "debugLogging", (value) => {
-            global.log(`[CSSPanels] Debug logging changed to: ${value}`);
+            global.logWarning(`[CSSPanels] Debug logging changed to: ${value}`);
             this.onDebugLoggingChanged();
         });
 
@@ -237,6 +244,13 @@ class CSSPanelsExtension {
             "fullAutoMode",
             this.onFullAutoModeChanged.bind(this)
         );
+        // Wallpaper extraction mode settings
+        this.settings.bindProperty(
+            Settings.BindingDirection.IN,
+            "wallpaper-color-strategy", "wallpaperColorStrategy", null);
+        this.settings.bindProperty(
+            Settings.BindingDirection.IN,
+            "dark-light-override",  "darkLightOverride",  null);
     }
 
     /**
@@ -290,6 +304,7 @@ class CSSPanelsExtension {
         if (this.enableTooltipStyling === undefined) this.enableTooltipStyling = true;
         if (this.enableAltTabStyling === undefined) this.enableAltTabStyling = false;
         if (this.enableDesktopContextStyling === undefined) this.enableDesktopContextStyling = false;
+        if (this.enableDeskletStyling === undefined) this.enableDeskletStyling = false;
 
         // System defaults
         if (this.hideTrayIcon === undefined) this.hideTrayIcon = true;
@@ -330,6 +345,7 @@ class CSSPanelsExtension {
         this.nemoPopupStyler = new NemoPopupStyler(this);
         this.tooltipStyler = new TooltipStyler(this);
         this.altTabStyler = new AltTabStyler(this);
+        this.deskletStyler = new DeskletStyler(this);
         this.systemIndicator = new SystemIndicator(this);
         this.hoverStyleManager = new HoverStyleManager(this);
         this.panelMonitoringTimeout = null;
@@ -355,9 +371,9 @@ class CSSPanelsExtension {
         if (this.debugLogging) {
             const timestamp = new Date().toISOString().slice(11, 19);
             if (data) {
-                global.log(`[CSSPanels] [${timestamp}] ${message}`, data);
+                global.logError(`[CSSPanels] [${timestamp}] ${message}`, data);
             } else {
-                global.log(`[CSSPanels] [${timestamp}] ${message}`);
+                global.logError(`[CSSPanels] [${timestamp}] ${message}`);
             }
         }
     }
@@ -486,8 +502,9 @@ class CSSPanelsExtension {
         if (this.enableNotificationStyling) enabledFeatures.push("Notification");
         if (this.enableOSDStyling) enabledFeatures.push("OSD");
         if (this.enableDesktopContextStyling) enabledFeatures.push("Desktop Context");
+        if (this.enableDeskletStyling) enabledFeatures.push("Desklet");
 
-        global.log(
+        global.logWarning(
             `[CSSPanels] Extension started - Theme: ${
                 this.themeDetector.currentTheme || "Unknown"
             }, Enabled features: Panel, Popup${enabledFeatures.length > 0 ? ", " + enabledFeatures.join(", ") : ""}`
@@ -530,6 +547,10 @@ class CSSPanelsExtension {
                 this.nemoPopupStyler.safeEnable();
             }
 
+            if (this.enableDeskletStyling) {
+                this.deskletStyler.safeEnable();
+            }
+
             // Enable wallpaper monitoring if enabled (Phase 2.5C)
             if (this.enableWallpaperDetection) {
                 this.wallpaperMonitor.enable();
@@ -557,27 +578,53 @@ class CSSPanelsExtension {
         // Return callbacks for external access
         return {
             resetBlurToDefaults: () => {
-                global.log("[CSSPanels] External resetBlurToDefaults called");
+                global.logWarning("[CSSPanels] External resetBlurToDefaults called");
                 this._resetBlurToDefaults();
             },
             applyDetectedAccent: () => {
-                global.log("[CSSPanels] External applyDetectedAccent called - using unified detection flow");
-                // NEW: Use unified flow instead of old detectAndApplyAccentColors()
+                global.logWarning("[CSSPanels] External applyDetectedAccent called");
                 const detectedThemeData = this.themeDetector.redetectAllThemeData();
                 this.applyDetectedThemeData(detectedThemeData);
-                // Reset to theme-default state: disable custom overrides and wallpaper detection
+                // Button always populates pickers with accent shadow regardless of auto-apply toggle.
+                // redetectAllThemeData() skips accent when auto-apply is OFF, so detect explicitly.
+                let accentVariants = detectedThemeData.accentColor.variants;
+                if (!accentVariants) {
+                    const accentColor = this.themeDetector.detectThemeAccentColor();
+                    if (accentColor) {
+                        accentVariants = this.themeDetector.generateAccentSystem(
+                            accentColor,
+                            detectedThemeData.isDarkMode
+                        );
+                    }
+                }
+                if (accentVariants) {
+                    // Apply accent to blur effects (border, tint, shadow settings).
+                    // applyDetectedThemeData() skipped this step because shouldApply is false;
+                    // button always applies regardless of auto-apply toggle.
+                    this.applyAccentSystemToBlurEffects(accentVariants);
+                    this.settings.setValue("choose-override-panel-color", accentVariants.shadow);
+                    this.settings.setValue("choose-override-popup-color", accentVariants.shadow);
+                    this.debugLog(`  ✓ override pickers set to accent shadow: ${accentVariants.shadow}`);
+                }
+                // Disable wallpaper detection (theme accent takes priority)
                 if (this.enableWallpaperDetection) {
                     this.settings.setValue("enable-wallpaper-detection", false);
                 }
-                if (this.overridePanelColor) {
-                    this.settings.setValue("override-panel-color", false);
+                // Enable panel override so accent shadow is immediately visible
+                if (!this.overridePanelColor) {
+                    this.settings.setValue("override-panel-color", true);
                 }
-                if (this.overridePopupColor) {
-                    this.settings.setValue("override-popup-color", false);
+                // Programmatic settings.setValue() does not trigger IN-bound callbacks;
+                // explicitly refresh all visual styles to reflect the newly written values.
+                if (accentVariants) {
+                    this.cssManager.updateAllVariables();
+                    this.panelStyler.applyPanelStyles();
+                    this.scheduleRefreshPanels();
+                    this.refreshAllActiveStyles();
                 }
             },
             extractWallpaperColors: () => {
-                global.log("[CSSPanels] External extractWallpaperColors called");
+                global.logWarning("[CSSPanels] External extractWallpaperColors called");
                 this.extractWallpaperColors();
             },
         };
@@ -605,6 +652,7 @@ class CSSPanelsExtension {
             }
 
             const stylers = [
+                ['deskletStyler', this.deskletStyler],
                 ['altTabStyler', this.altTabStyler],
                 ['tooltipStyler', this.tooltipStyler],
                 ['osdStyler', this.osdStyler],
@@ -748,6 +796,9 @@ class CSSPanelsExtension {
         }
         if (this.enableDesktopContextStyling) {
             this.nemoPopupStyler.refresh();
+        }
+        if (this.enableDeskletStyling && this.deskletStyler) {
+            this.deskletStyler.refreshAllDesklets();
         }
     }
 
@@ -938,12 +989,9 @@ class CSSPanelsExtension {
         this.debugLog(`Wallpaper detection changed to: ${this.enableWallpaperDetection}`);
 
         if (this.enableWallpaperDetection) {
-            // Auto-enable color overrides so extracted colors actually apply
+            // Auto-enable panel color override so extracted colors apply to panel
             if (!this.overridePanelColor) {
                 this.settings.setValue("override-panel-color", true);
-            }
-            if (!this.overridePopupColor) {
-                this.settings.setValue("override-popup-color", true);
             }
             this.wallpaperMonitor.enable();
         } else {
@@ -978,7 +1026,7 @@ class CSSPanelsExtension {
             return;
         }
 
-        const success = this.wallpaperMonitor.manualExtract(true);
+        const success = this.wallpaperMonitor.manualExtract(this.fullAutoMode);
 
         if (!success) {
             Main.notifyError("CSS Panels", "No wallpaper detected or extraction in progress");
@@ -1059,6 +1107,17 @@ class CSSPanelsExtension {
         }
     }
 
+    onDeskletStylingChanged() {
+        if (!this.isEnabled) return; // Prevent execution when disabled
+        this.debugLog(`Desklet styling changed to: ${this.enableDeskletStyling}`);
+        if (this.enableDeskletStyling) {
+            this.deskletStyler.safeEnable();
+        } else {
+            this.deskletStyler.restoreAllDesklets();
+            this.deskletStyler.disable();
+        }
+    }
+
     // === PHASE 2.5B - ACCENT COLOR CALLBACKS ===
 
     /**
@@ -1124,43 +1183,41 @@ class CSSPanelsExtension {
         }
 
         // 3. PANEL BASE COLOR DECISION
-        // LOGIC (Phase 2.5B+ proper-flow-fixed):
-        //   - Panel base color is ALWAYS determined and written to picker
-        //   - Decision priority:
-        //     1. IF auto-apply-accent ON → use accent shadow color
-        //     2. ELSE → use original theme color
-        //   - override-panel-color switch only affects getCurrentPanelColor() reads, not writes
+        // Panel base color always comes from detected theme color.
+        // Accent variants (border, tint, shadow) are applied separately via applyAccentSystemToBlurEffects.
+        // accent.shadow is a box-shadow color (deep dark, low alpha) — not suitable as panel background.
+        const panelBaseColor = detectedData.panelColor.detected;
+        this.themeDetector.currentPanelBaseColor = panelBaseColor; // Update stored base
 
-        let panelBaseColor;
-
-        if (detectedData.accentColor.shouldApply && detectedData.accentColor.variants) {
-            // Auto-apply accent ON → use shadow color as panel base
-            panelBaseColor = detectedData.accentColor.variants.shadow;
-            this.themeDetector.currentPanelBaseColor = panelBaseColor; // Update stored base
-            this.debugLog(`  ✓ panel-color: ${panelBaseColor} (from accent shadow - auto-apply ON)`);
+        if (detectedData.accentColor.shouldApply) {
+            this.debugLog(`  ✓ panel-color: ${panelBaseColor} (from theme - accent applied separately)`);
         } else {
-            // Auto-apply accent OFF → use original theme color
-            panelBaseColor = detectedData.panelColor.detected;
-            this.themeDetector.currentPanelBaseColor = panelBaseColor; // Update stored base
             this.debugLog(`  ✓ panel-color: ${panelBaseColor} (from theme - auto-apply OFF)`);
         }
 
-        // ALWAYS write to picker (proper-flow-fixed: step 3 is unconditional)
-        this.settings.setValue("choose-override-panel-color", panelBaseColor);
+        // Write accent shadow to picker when accent is available; else write theme base color.
+        // Guard: if user override is ON and auto-apply is OFF, preserve the user's chosen color.
+        // Note: picker alpha is ignored by cssManager (panel-bg-rgb uses r,g,b only).
+        if (detectedData.accentColor.shouldApply || !this.overridePanelColor) {
+            const pickerPanelColor = (detectedData.accentColor.shouldApply && detectedData.accentColor.variants)
+                ? detectedData.accentColor.variants.shadow
+                : panelBaseColor;
+            this.settings.setValue("choose-override-panel-color", pickerPanelColor);
+            this.debugLog(`  ✓ panel picker: ${pickerPanelColor} (${detectedData.accentColor.shouldApply ? "accent shadow" : "theme base"})`);
+        } else {
+            this.debugLog(`  ⊗ panel picker: preserved (user override active, auto-apply OFF)`);
+        }
         appliedCount++;
 
-        // 4. POPUP COLOR INHERITANCE (deferred)
-        // Uses BLACK BOX getCurrentPanelColor() which now returns fresh value from stored base
-        if (detectedData.popupColor.shouldApply) {
-            // getCurrentPanelColor() is BLACK BOX - returns currentPanelBaseColor (updated in step 3)
-            const freshPanelColor = this.themeDetector.getCurrentPanelColor();
-
-            this.settings.setValue("choose-override-popup-color", freshPanelColor);
-            this.debugLog(`  ✓ popup-color: ${freshPanelColor} (inherited from panel - deferred)`);
-            appliedCount++;
-        } else {
-            this.debugLog(`  ⊗ popup-color: skipped (manual override active)`);
-        }
+        // 4. POPUP COLOR: always update picker with detected theme color.
+        // Override switch is never auto-enabled — user controls it explicitly.
+        // Picker stays in sync so the correct color is ready whenever user enables override.
+        const pickerPopupColor = (detectedData.accentColor.shouldApply && detectedData.accentColor.variants)
+            ? detectedData.accentColor.variants.shadow
+            : this.themeDetector.getCurrentPanelColor();
+        this.settings.setValue("choose-override-popup-color", pickerPopupColor);
+        this.debugLog(`  ✓ popup picker: ${pickerPopupColor} (${detectedData.accentColor.shouldApply ? "accent shadow" : "inherited from panel"})`);
+        appliedCount++;
 
         // 5. Coordinated refresh ONCE at the end
         this.debugLog("► Refreshing all UI elements (coordinated single pass)...");
@@ -1264,7 +1321,7 @@ class CSSPanelsExtension {
 function init(metadata) {
     try {
         cssPanelsExtension = new CSSPanelsExtension(metadata);
-        global.log("[CSSPanels] Extension initialized");
+        global.logWarning("[CSSPanels] Extension initialized");
     } catch (error) {
         global.logError("[CSSPanels] Error in init: " + error.message);
     }

@@ -53,7 +53,7 @@ class SystemIndicator {
                 if (button === 1) {
                     // Left click - open extensions manager
                     this.extension.debugLog("Indicator clicked - opening Extensions Manager");
-                    Util.spawnCommandLine("cinnamon-settings extensions");
+                    Util.spawn(["cinnamon-settings", "extensions"]);
                 }
             });
 

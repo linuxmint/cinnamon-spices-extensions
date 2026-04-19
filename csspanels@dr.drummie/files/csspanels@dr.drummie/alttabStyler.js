@@ -38,6 +38,17 @@ class AltTabStyler extends StylerBase {
 
         // Store AppSwitcher3D methods
         this.originalAppSwitcher3DSetCurrentWindow = null;
+
+        // Patched function refs for identity checking on restore
+        this._patchedAppSwitcher3DInit = null;
+        this._patchedAppSwitcher3DHide = null;
+        this._patchedAppSwitcher3DSetCurrentWindow = null;
+        this._patchedClassicSwitcherShow = null;
+        this._patchedClassicSwitcherHide = null;
+        this._patchedClassicSwitcherCreateThumbnails = null;
+        this._patchedClassicSwitcherDestroyThumbnails = null;
+        this._patchedAppSwitcherShow = null;
+        this._patchedAppSwitcherHide = null;
     }
 
     /**
@@ -95,7 +106,7 @@ class AltTabStyler extends StylerBase {
         const stylerInstance = this;
 
         // Patch _init method
-        AppSwitcher3D.AppSwitcher3D.prototype._init = function (...params) {
+        this._patchedAppSwitcher3DInit = function (...params) {
             // Call original init
             stylerInstance.originalAppSwitcher3DInit.apply(this, params);
 
@@ -110,9 +121,10 @@ class AltTabStyler extends StylerBase {
                 });
             }
         };
+        AppSwitcher3D.AppSwitcher3D.prototype._init = this._patchedAppSwitcher3DInit;
 
         // Patch hide method
-        AppSwitcher3D.AppSwitcher3D.prototype._hide = function (...params) {
+        this._patchedAppSwitcher3DHide = function (...params) {
             // Clean up styling before hiding
             if (this.actor && stylerInstance.activeSwitchers.has(this.actor)) {
                 stylerInstance.debugLog("AppSwitcher3D hiding, cleaning up styles");
@@ -124,9 +136,10 @@ class AltTabStyler extends StylerBase {
             // Call original hide
             stylerInstance.originalAppSwitcher3DHide.apply(this, params);
         };
+        AppSwitcher3D.AppSwitcher3D.prototype._hide = this._patchedAppSwitcher3DHide;
 
         // Patch _setCurrentWindow method to style window title
-        AppSwitcher3D.AppSwitcher3D.prototype._setCurrentWindow = function (...params) {
+        this._patchedAppSwitcher3DSetCurrentWindow = function (...params) {
             // Call original method
             stylerInstance.originalAppSwitcher3DSetCurrentWindow.apply(this, params);
 
@@ -136,6 +149,7 @@ class AltTabStyler extends StylerBase {
                 stylerInstance.styleWindowTitle(this._windowTitle, this);
             }
         };
+        AppSwitcher3D.AppSwitcher3D.prototype._setCurrentWindow = this._patchedAppSwitcher3DSetCurrentWindow;
     }
 
     /**
@@ -181,7 +195,7 @@ class AltTabStyler extends StylerBase {
         const stylerInstance = this;
 
         // Patch show method
-        ClassicSwitcher.prototype._show = function (...params) {
+        this._patchedClassicSwitcherShow = function (...params) {
             // Call original show
             stylerInstance.originalClassicSwitcherShow.apply(this, params);
 
@@ -201,9 +215,10 @@ class AltTabStyler extends StylerBase {
                 }
             }
         };
+        ClassicSwitcher.prototype._show = this._patchedClassicSwitcherShow;
 
         // Patch hide method
-        ClassicSwitcher.prototype._hide = function (...params) {
+        this._patchedClassicSwitcherHide = function (...params) {
             // Clean up styling before hiding
             if (this.actor) {
                 const switcherList = stylerInstance.findSwitcherList(this.actor);
@@ -218,9 +233,10 @@ class AltTabStyler extends StylerBase {
             // Call original hide
             stylerInstance.originalClassicSwitcherHide.apply(this, params);
         };
+        ClassicSwitcher.prototype._hide = this._patchedClassicSwitcherHide;
 
         // Patch _createThumbnails method (working approach)
-        ClassicSwitcher.prototype._createThumbnails = function (...params) {
+        this._patchedClassicSwitcherCreateThumbnails = function (...params) {
             // Call original method
             stylerInstance.originalClassicSwitcherCreateThumbnails.apply(this, params);
 
@@ -230,9 +246,10 @@ class AltTabStyler extends StylerBase {
                 stylerInstance.styleThumbnails(this._thumbnails.actor, this);
             }
         };
+        ClassicSwitcher.prototype._createThumbnails = this._patchedClassicSwitcherCreateThumbnails;
 
         // Patch _destroyThumbnails method (working approach)
-        ClassicSwitcher.prototype._destroyThumbnails = function (...params) {
+        this._patchedClassicSwitcherDestroyThumbnails = function (...params) {
             // Clean up thumbnail styling before destroying
             if (this._thumbnails && this._thumbnails.actor) {
                 stylerInstance.cleanupThumbnails(this._thumbnails.actor);
@@ -241,6 +258,7 @@ class AltTabStyler extends StylerBase {
             // Call original method
             stylerInstance.originalClassicSwitcherDestroyThumbnails.apply(this, params);
         };
+        ClassicSwitcher.prototype._destroyThumbnails = this._patchedClassicSwitcherDestroyThumbnails;
     }
 
     /**
@@ -258,7 +276,7 @@ class AltTabStyler extends StylerBase {
         const stylerInstance = this;
 
         // Patch show method
-        AppSwitcher.AppSwitcher.prototype._show = function (...params) {
+        this._patchedAppSwitcherShow = function (...params) {
             // Call original show
             stylerInstance.originalAppSwitcherShow.apply(this, params);
 
@@ -273,9 +291,10 @@ class AltTabStyler extends StylerBase {
                 });
             }
         };
+        AppSwitcher.AppSwitcher.prototype._show = this._patchedAppSwitcherShow;
 
         // Patch hide method
-        AppSwitcher.AppSwitcher.prototype._hide = function (...params) {
+        this._patchedAppSwitcherHide = function (...params) {
             // Clean up styling before hiding
             if (this.actor && stylerInstance.activeSwitchers.has(this.actor)) {
                 stylerInstance.debugLog("AppSwitcher hiding, cleaning up styles");
@@ -287,6 +306,7 @@ class AltTabStyler extends StylerBase {
             // Call original hide
             stylerInstance.originalAppSwitcherHide.apply(this, params);
         };
+        AppSwitcher.AppSwitcher.prototype._hide = this._patchedAppSwitcherHide;
     }
 
     /**
@@ -332,33 +352,50 @@ class AltTabStyler extends StylerBase {
      * Restore all original methods
      */
     restoreOriginalMethods() {
-        // Restore AppSwitcher3D methods
-        if (this.originalAppSwitcher3DInit && AppSwitcher3D && AppSwitcher3D.AppSwitcher3D) {
-            AppSwitcher3D.AppSwitcher3D.prototype._init = this.originalAppSwitcher3DInit;
-            AppSwitcher3D.AppSwitcher3D.prototype._hide = this.originalAppSwitcher3DHide;
-            if (this.originalAppSwitcher3DSetCurrentWindow) {
+        // Restore AppSwitcher3D methods only if our patch is still active
+        if (AppSwitcher3D?.AppSwitcher3D) {
+            if (AppSwitcher3D.AppSwitcher3D.prototype._init === this._patchedAppSwitcher3DInit) {
+                AppSwitcher3D.AppSwitcher3D.prototype._init = this.originalAppSwitcher3DInit;
+            }
+            if (AppSwitcher3D.AppSwitcher3D.prototype._hide === this._patchedAppSwitcher3DHide) {
+                AppSwitcher3D.AppSwitcher3D.prototype._hide = this.originalAppSwitcher3DHide;
+            }
+            if (this._patchedAppSwitcher3DSetCurrentWindow &&
+                AppSwitcher3D.AppSwitcher3D.prototype._setCurrentWindow === this._patchedAppSwitcher3DSetCurrentWindow) {
                 AppSwitcher3D.AppSwitcher3D.prototype._setCurrentWindow = this.originalAppSwitcher3DSetCurrentWindow;
             }
         }
 
-        // Restore ClassicSwitcher methods
-        if (this.originalClassicSwitcherShow && ClassicSwitcher) {
-            ClassicSwitcher.prototype._show = this.originalClassicSwitcherShow;
-            ClassicSwitcher.prototype._hide = this.originalClassicSwitcherHide;
-
-            // Restore working thumbnail methods
-            if (this.originalClassicSwitcherCreateThumbnails) {
+        // Restore ClassicSwitcher methods only if our patch is still active
+        if (ClassicSwitcher) {
+            if (this._patchedClassicSwitcherShow &&
+                ClassicSwitcher.prototype._show === this._patchedClassicSwitcherShow) {
+                ClassicSwitcher.prototype._show = this.originalClassicSwitcherShow;
+            }
+            if (this._patchedClassicSwitcherHide &&
+                ClassicSwitcher.prototype._hide === this._patchedClassicSwitcherHide) {
+                ClassicSwitcher.prototype._hide = this.originalClassicSwitcherHide;
+            }
+            if (this._patchedClassicSwitcherCreateThumbnails &&
+                ClassicSwitcher.prototype._createThumbnails === this._patchedClassicSwitcherCreateThumbnails) {
                 ClassicSwitcher.prototype._createThumbnails = this.originalClassicSwitcherCreateThumbnails;
             }
-            if (this.originalClassicSwitcherDestroyThumbnails) {
+            if (this._patchedClassicSwitcherDestroyThumbnails &&
+                ClassicSwitcher.prototype._destroyThumbnails === this._patchedClassicSwitcherDestroyThumbnails) {
                 ClassicSwitcher.prototype._destroyThumbnails = this.originalClassicSwitcherDestroyThumbnails;
             }
         }
 
-        // Restore AppSwitcher methods
-        if (this.originalAppSwitcherShow && AppSwitcher && AppSwitcher.AppSwitcher) {
-            AppSwitcher.AppSwitcher.prototype._show = this.originalAppSwitcherShow;
-            AppSwitcher.AppSwitcher.prototype._hide = this.originalAppSwitcherHide;
+        // Restore AppSwitcher methods only if our patch is still active
+        if (AppSwitcher?.AppSwitcher) {
+            if (this._patchedAppSwitcherShow &&
+                AppSwitcher.AppSwitcher.prototype._show === this._patchedAppSwitcherShow) {
+                AppSwitcher.AppSwitcher.prototype._show = this.originalAppSwitcherShow;
+            }
+            if (this._patchedAppSwitcherHide &&
+                AppSwitcher.AppSwitcher.prototype._hide === this._patchedAppSwitcherHide) {
+                AppSwitcher.AppSwitcher.prototype._hide = this.originalAppSwitcherHide;
+            }
         }
     }
 

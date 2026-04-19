@@ -11,7 +11,7 @@
 
     "transparency-page": {
       "type": "page",
-      "title": "Appearance settings",
+      "title": "Appearance Settings",
       "sections": ["basic-transparency", "inset-glow-settings"]
     },
 
@@ -45,6 +45,7 @@
       "title": "Theme Integration",
       "keys": [
         "auto-apply-accent-on-theme-change",
+        "dark-light-override",
         "apply-detected-accent-button",
         "border-radius",
         "apply-panel-radius"
@@ -78,19 +79,21 @@
     "advanced-tools": {
       "type": "section",
       "title": "Advanced Tools",
-      "keys": ["enable-wallpaper-detection", "full-auto-mode", "extract-wallpaper-colors-button", "blur-template", "reset-blur-button"]
+      "keys": ["enable-wallpaper-detection", "full-auto-mode", "wallpaper-color-strategy", "extract-wallpaper-colors-button", "blur-template", "reset-blur-button"]
     },
 
     "extended-styling": {
       "type": "section",
       "title": "Extended UI Styling",
-      "keys": [
-        "enable-notification-styling",
-        "enable-osd-styling",
-        "enable-tooltip-styling",
-        "enable-alttab-styling",
-        "enable-desktop-context-styling"
-      ]
+    "keys": [
+      "enable-notification-styling",
+      "enable-osd-styling",
+      "enable-tooltip-styling",
+      "enable-alttab-styling",
+      "enable-appmenu-sidebar-styling",
+      "enable-desktop-context-styling",
+      "enable-desklet-styling"
+    ]
     },
 
     "indicator-settings": {
@@ -112,8 +115,8 @@
     "min": 0.1,
     "max": 1.0,
     "step": 0.05,
-    "description": "Panel Opacity",
-    "tooltip": "Adjust the transparency of the main panel (taskbar). Lower values create a more transparent panel. Click the system tray icon to cycle through quick presets."
+    "description": "Panel opacity",
+    "tooltip": "Adjust the transparency of all panels. Lower values create a more transparent panel."
   },
 
   "menu-opacity": {
@@ -122,13 +125,13 @@
     "min": 0.1,
     "max": 1.0,
     "step": 0.05,
-    "description": "Menu Opacity",
-    "tooltip": "Adjust the transparency of popup menus. Creates a semi-transparent appearance combined with tint and glow effects."
+    "description": "Menu opacity",
+    "tooltip": "Adjust the transparency of popup menus and some popup-based controls. Creates a semi-transparent appearance combined with tint and glow effects. Note: some Mint theme menus have a hardcoded background color that overrides transparency — this is a theme limitation, not an extension bug."
   },
 
   "override-panel-color": {
     "type": "checkbox",
-    "default": false,
+    "default": true,
     "description": "Override panel color",
     "tooltip": "When OFF: Panel color is auto-detected from the active GTK theme (adapts automatically on theme change). When ON: Panel uses the color picker below. This does NOT affect popup color - see 'Override popup color' setting."
   },
@@ -145,7 +148,7 @@
     "type": "checkbox",
     "default": false,
     "description": "Override popup color",
-    "tooltip": "When OFF: Popup menus match the ACTUAL panel color (either original theme or panel override picker). When ON: Popup menus use the color picker below, independent of panel color."
+    "tooltip": "When OFF: Popup menus and some popup-based controls inherit the current panel color (auto-detected theme color, or the panel override color if that is enabled). When ON: Uses the color picker below, independent of panel color."
   },
 
   "choose-override-popup-color": {
@@ -163,7 +166,7 @@
     "max": 12,
     "step": 1,
     "units": "px",
-    "description": "Border Radius",
+    "description": "Border radius",
     "tooltip": "Rounded corners for panels and menus. Used as fallback when auto-detect fails or finds inconsistent values. Set to 0 for completely flat appearance."
   },
 
@@ -207,11 +210,25 @@
     "tooltip": "Apply transparency and visual effect styles to Alt-Tab window switcher. Creates a consistent visual appearance for the application switcher."
   },
 
+  "enable-appmenu-sidebar-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style start menu sidebar",
+    "tooltip": "Apply popup color override to the start menu (menu@cinnamon.org) sidebar. When disabled (default), sidebar uses the Cinnamon theme color (grey/white). When enabled, sidebar matches the popup override color. Has no effect if the original Cinnamon menu applet is not active."
+  },
+
   "enable-desktop-context-styling": {
     "type": "generic",
     "default": false,
     "description": "Enable desktop context menu styling",
     "tooltip": "Apply transparency and visual effect styles to desktop right-click context menus"
+  },
+
+  "enable-desklet-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style desklet elements",
+    "tooltip": "Apply transparency and visual effect styles to desktop widgets (desklets). Creates a consistent visual appearance for desklets matching your panel style."
   },
 
   "full-auto-mode": {
@@ -220,6 +237,29 @@
     "dependency": "enable-wallpaper-detection",
     "description": "Wallpaper manages all shell colors (experimental)",
     "tooltip": "When enabled, every wallpaper change also updates blur and accent color settings (border color, background tint, shadow color). Panel and popup colors are always extracted regardless of this setting. Requires wallpaper detection to be active."
+  },
+
+  "wallpaper-color-strategy": {
+    "type": "combobox",
+    "default": "contrast",
+    "options": {
+      "Standard (weighted average)": "default",
+      "Contrast (polar tones)": "contrast"
+    },
+    "description": "Wallpaper color extraction mode",
+    "tooltip": "Standard: panel color is a weighted average of the entire image tone (stable, smooth). Contrast: panel uses the darkest/lightest pixels from the image — stronger tonal expression, more sensitive to extreme pixels in the wallpaper."
+  },
+
+  "dark-light-override": {
+    "type": "combobox",
+    "default": "auto",
+    "options": {
+      "Auto (follow system/theme)": "auto",
+      "Force dark": "dark",
+      "Force light": "light"
+    },
+    "description": "Dark/light mode override",
+    "tooltip": "Globally overrides dark/light mode detection for the entire extension — affects sidebar color fallback, accent color generation, and wallpaper extraction tone. 'Auto' follows the active GTK color scheme and theme name. 'Force dark' is recommended for mixed themes (e.g. Mint-Y-Aqua) where the panel is dark but the GTK theme has no -Dark suffix."
   },
 
   "blur-radius": {
@@ -325,13 +365,13 @@
     "type": "checkbox",
     "default": false,
     "description": "Enable wallpaper detection",
-    "tooltip": "Automatically extract and apply colors from your current wallpaper to panel and popup menus. Enabling this also activates panel and popup color overrides — without them, extracted colors would be ignored. Use the 'Extract colors from wallpaper' button for a manual one-time extraction."
+    "tooltip": "Automatically extract and apply colors from your current wallpaper to the panel. Enabling this also activates the panel color override — without it, extracted colors would be ignored. Popup menus automatically inherit the panel color; enable 'Override popup color' separately if you want independent popup customization. Use the 'Extract colors from wallpaper' button for a manual one-time extraction."
   },
 
   "extract-wallpaper-colors-button": {
     "type": "button",
     "description": "Extract colors from wallpaper",
-    "tooltip": "Immediately extract colors from your current wallpaper and apply them to panel, popup, border, tint, and shadow. Always runs in full-auto mode (updates all color settings). Does not require wallpaper detection to be enabled.",
+    "tooltip": "Immediately extract colors from your current wallpaper and apply them to the panel and popup color pickers. If 'Wallpaper manages all shell colors' is also enabled, also updates border, tint, and shadow colors. Does not require wallpaper detection to be enabled.",
     "callback": "extractWallpaperColors"
   },
 
@@ -348,7 +388,7 @@
       "Foggy Glass Dark": "foggy-glass-dark",
       "Clear Crystal Dark": "clear-crystal-dark"
     },
-    "description": "Effect Template",
+    "description": "Effect template",
     "tooltip": "Select an effect template to apply when using the 'Apply Selected Template' button. Each template defines preset values for all visual effect controls."
   },
 
@@ -369,14 +409,14 @@
   "apply-detected-accent-button": {
     "type": "button",
     "description": "Detect and apply accent from current theme",
-    "tooltip": "Detect accent colors from your current GTK theme and apply them to blur-border-color, blur-background, and accent-shadow-color. Also resets panel/popup color overrides and disables wallpaper detection, providing a clean theme-based color baseline.",
+    "tooltip": "Detect accent colors from your current GTK theme and apply them to panel/popup color pickers and blur effects (border, background, shadow). Enables the panel color override so the detected accent is immediately applied to the panel. Popup menus inherit the panel color automatically. Disables wallpaper detection if active.",
     "callback": "applyDetectedAccent"
   },
 
   "glow-mode": {
     "type": "combobox",
     "default": "inset",
-    "description": "Glow Effect Mode",
+    "description": "Glow effect mode",
     "tooltip": "Inset: Glow at edges/corners, darker center (classic). Outset: Glow at center, fade to edges (reverse). None: No glow effect.",
     "options": {
       "Inset (edges)": "inset",
@@ -392,9 +432,8 @@
     "max": 40,
     "step": 1,
     "units": "px",
-    "description": "Glow Blur Size",
-    "tooltip": "Controls the spread/size of the glow effect. Higher values = more diffused glow. For panels, minimum glow size is 4px to maintain visual consistency.",
-    "dependency": "glow-mode"
+    "description": "Glow blur size",
+    "tooltip": "Controls the spread/size of the glow effect. Higher values = more diffused glow. For panels, minimum glow size is 4px to maintain visual consistency."
   },
 
   "glow-intensity": {
@@ -403,9 +442,8 @@
     "min": 0.05,
     "max": 0.5,
     "step": 0.05,
-    "description": "Glow Intensity (Opacity)",
-    "tooltip": "Controls the brightness/visibility of the glow. Lower values (0.05-0.15) = subtle highlight, higher values (0.3-0.5) = prominent glossy effect. Demo example: 0.15 for balanced glossy look.",
-    "dependency": "glow-mode"
+    "description": "Glow intensity (opacity)",
+    "tooltip": "Controls the brightness/visibility of the glow. Lower values (0.05-0.15) = subtle highlight, higher values (0.3-0.5) = prominent glossy effect. Demo example: 0.15 for balanced glossy look."
   },
 
   "debug-logging": {

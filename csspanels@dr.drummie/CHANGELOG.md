@@ -2,6 +2,20 @@
 
 All notable changes to CSS Panels are documented in this file.
 
+## [2.0.7] - 2026-04-19
+
+### Added
+
+- **Desklet Styling**: Apply transparency, blur, and glow effects to desktop widgets (desklets) — toggle in Advanced settings.
+- **Start Menu Sidebar Styling**: Optionally apply the popup color to the Cinnamon start menu sidebar (`menu@cinnamon.org`) — disabled by default, sidebar keeps theme color.
+- **Dark/Light Mode Override**: New control to globally override dark/light mode detection — useful for mixed themes (e.g. Mint-Y-Aqua) where the panel is dark but the GTK theme has no `-Dark` suffix.
+- **Wallpaper Extraction Mode**: Choose between `Standard (weighted average)` and `Contrast (polar tones)` algorithms for panel color extraction.
+
+### Fixed
+
+- Safe color parsing: extension no longer crashes on invalid or malformed color strings from settings.
+- Theme detection race condition: 100ms debounce prevents stale color detection when theme changes fire before GTK CSS is fully loaded.
+
 ## [2.0.3] - 2026-04-17
 
 ### Fixed

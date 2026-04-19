@@ -210,8 +210,19 @@ class ThemeUtils {
      * ThemeUtils.hexToRgb("#fff");    // Returns [255, 255, 255]
      */
     static hexToRgb(hex) {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
+        // Match 6-digit (#RRGGBB) or 3-digit (#RGB) hex color strings
+        const result6 = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        if (result6) return [parseInt(result6[1], 16), parseInt(result6[2], 16), parseInt(result6[3], 16)];
+
+        const result3 = /^#?([a-f\d])([a-f\d])([a-f\d])$/i.exec(hex);
+        if (result3)
+            return [
+                parseInt(result3[1] + result3[1], 16),
+                parseInt(result3[2] + result3[2], 16),
+                parseInt(result3[3] + result3[3], 16),
+            ];
+
+        return null;
     }
 
     /**
