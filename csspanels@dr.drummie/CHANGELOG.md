@@ -2,6 +2,21 @@
 
 All notable changes to CSS Panels are documented in this file.
 
+## [2.0.8] - 2026-04-19
+
+### Fixed
+
+- Theme detection performance: three-state cache for GTK CSS file read in `themeDetector.js` — avoids repeated synchronous file scan on every `isDarkModePreferred()` call (hot path in CSS generation). Cache invalidated on theme change.
+- `global.logError()` call signature in `signalHandler.js`: was called with two arguments; GJS API accepts one — merged into a single string.
+- `global.log()` regression from 2.0.7: 8 error/warning call sites in `stylerBase.js` and `extension.js` were logged as error / warning in debug mode - restored to info level.
+- Unhandled promise in `wallpaperMonitor.js`: added `.catch()` handler to `_onWallpaperChanged()` fire-and-forget call.
+- `hexToRgb()` in `themeUtils.js`: added support for CSS `#RGB` 3-digit shorthand (e.g. `#f08`).
+- `restoreOriginalMethods()` in `alttabStyler.js`: added identity guard to prevent accidental loss of an intermediate monkey-patch.
+
+### Documentation
+
+- Known limitation: near-monochrome dark wallpapers (e.g. eclipse images) produce near-black panel color — mathematically correct behavior, documented as low-priority with workaround.
+
 ## [2.0.7] - 2026-04-19
 
 ### Added
@@ -15,6 +30,8 @@ All notable changes to CSS Panels are documented in this file.
 
 - Safe color parsing: extension no longer crashes on invalid or malformed color strings from settings.
 - Theme detection race condition: 100ms debounce prevents stale color detection when theme changes fire before GTK CSS is fully loaded.
+- Desklet styling: corrected style target from `desklet.actor` to `desklet.content` — background was invisible because the inner container covered it.
+- Desklet live toggle: use `DeskletManager.definitions` (live array) instead of `getDefinitions()` — desklet styling now works on every toggle without Cinnamon restart.
 
 ## [2.0.3] - 2026-04-17
 

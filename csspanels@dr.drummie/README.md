@@ -1,6 +1,8 @@
 # CSS Panels
 
-A Cinnamon extension for dynamic control of panels and popups colors and visual effects.
+**A Cinnamon extension for dynamic control of panels and popups colors and visual effects.**
+
+![screenshot.png](screenshot.png)
 
 ## Features
 
@@ -188,4 +190,4 @@ This extension is licensed under the GPL-3.0 License.
 
 **Note**: Best results with **Mint-Y** themes. **Mint-X** works well. **Mint-L** works but requires manual color customization — automatic adaptation on theme change is not fully supported yet. Fluent GTK themes are also supported but results may vary.
 
-Version: 2.0.7 | Last Edited: 2026-04-19
+Version: 2.0.8 | Last Edited: 2026-04-19

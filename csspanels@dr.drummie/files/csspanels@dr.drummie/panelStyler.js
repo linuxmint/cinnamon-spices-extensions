@@ -186,8 +186,9 @@ class PanelStyler extends StylerBase {
 
     /**
      * Restore panels to their original styling
+     * @param {boolean} skipThemeRefresh - Skip _changeTheme() call when re-applying immediately after (default: false)
      */
-    restoreOriginalStyles() {
+    restoreOriginalStyles(skipThemeRefresh = false) {
         try {
             // Scan for all panels for cleanup
             let allPanels = this.getAllPanels();
@@ -240,9 +241,9 @@ class PanelStyler extends StylerBase {
                 this._savedSubBoxStyles.clear();
             }
 
-            // Force theme refresh
+            // Force theme refresh only on actual disable (not during re-apply cycles)
             try {
-                if (Main.themeManager && Main.themeManager._changeTheme) {
+                if (!skipThemeRefresh && Main.themeManager && Main.themeManager._changeTheme) {
                     Main.themeManager._changeTheme();
                 }
             } catch (e) {
@@ -304,7 +305,7 @@ class PanelStyler extends StylerBase {
             // This ensures we start from clean theme state, not our previous modifications
             if (Object.keys(this.originalPanelStyles).length > 0) {
                 this.debugLog("Restoring to clean theme state before applying new styles");
-                this.restoreOriginalStyles();
+                this.restoreOriginalStyles(true); // skip _changeTheme(): re-applying immediately after
 
                 // Clear saved originals so we can save fresh ones
                 this.originalPanelStyles = {};

@@ -158,7 +158,7 @@ class StylerBase {
         if (!this.extension.isEnabled && !isCleanupMessage) return;
         if (!this.extension.debugLogging) return; // Only log when debug logging is enabled
         const timestamp = new Date().toISOString().slice(TIMESTAMP.ISO_TIME_START, TIMESTAMP.ISO_TIME_END);
-        global.logError(`[CSSPanels] [${this.stylerName}] [${timestamp}] ${args.join(" ")}`);
+        global.log(`[CSSPanels] [${this.stylerName}] [${timestamp}] ${args.join(" ")}`);
     }
 
     /**

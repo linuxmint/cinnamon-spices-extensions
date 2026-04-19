@@ -186,7 +186,7 @@ class CSSPanelsExtension {
             this.onHideTrayIconChanged.bind(this)
         );
         this.settings.bindProperty(Settings.BindingDirection.IN, "debug-logging", "debugLogging", (value) => {
-            global.logWarning(`[CSSPanels] Debug logging changed to: ${value}`);
+            global.log(`[CSSPanels] Debug logging changed to: ${value}`);
             this.onDebugLoggingChanged();
         });
 
@@ -371,9 +371,9 @@ class CSSPanelsExtension {
         if (this.debugLogging) {
             const timestamp = new Date().toISOString().slice(11, 19);
             if (data) {
-                global.logError(`[CSSPanels] [${timestamp}] ${message}`, data);
+                global.log(`[CSSPanels] [${timestamp}] ${message}`, data);
             } else {
-                global.logError(`[CSSPanels] [${timestamp}] ${message}`);
+                global.log(`[CSSPanels] [${timestamp}] ${message}`);
             }
         }
     }
@@ -504,7 +504,7 @@ class CSSPanelsExtension {
         if (this.enableDesktopContextStyling) enabledFeatures.push("Desktop Context");
         if (this.enableDeskletStyling) enabledFeatures.push("Desklet");
 
-        global.logWarning(
+        global.log(
             `[CSSPanels] Extension started - Theme: ${
                 this.themeDetector.currentTheme || "Unknown"
             }, Enabled features: Panel, Popup${enabledFeatures.length > 0 ? ", " + enabledFeatures.join(", ") : ""}`
@@ -1321,7 +1321,7 @@ class CSSPanelsExtension {
 function init(metadata) {
     try {
         cssPanelsExtension = new CSSPanelsExtension(metadata);
-        global.logWarning("[CSSPanels] Extension initialized");
+        global.log("[CSSPanels] Extension initialized");
     } catch (error) {
         global.logError("[CSSPanels] Error in init: " + error.message);
     }

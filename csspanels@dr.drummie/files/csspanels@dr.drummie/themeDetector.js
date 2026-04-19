@@ -25,6 +25,7 @@ class ThemeDetector {
         this.lastThemeCheck = 0;
         this.lastBorderRadiusCheck = 0;
         this.currentTheme = null; // Store current theme name
+        this._cachedGtkCssColor = undefined; // undefined = not yet computed; null = computed but not found
 
         // Performance optimization - cache detectAllThemeProperties
         this.themePropertiesCache = null;
@@ -126,6 +127,7 @@ class ThemeDetector {
         this.cachedPopupColor = null;
         this.lastThemeCheck = 0;
         this.lastBorderRadiusCheck = 0;
+        this._cachedGtkCssColor = undefined;
     }
 
     /**
@@ -878,10 +880,8 @@ class ThemeDetector {
             const cssFile = Gio.File.new_for_path(gtkCssPath);
 
             try {
-                // Intentional sync load: isDarkModePreferred() is called from blurTemplateManager
-                // (CSS generation hot path) requiring a synchronous result. Converting to async
-                // would cascade through the entire template generation system. File is only read
-                // when theme data is stale; subsequent calls use cached currentPanelBaseColor.
+                // Sync file read: runs only on theme changes and explicit button clicks,
+                // not on the CSS generation hot path. Async conversion not warranted here.
                 const [success, contents] = cssFile.load_contents(null);
                 if (!success) {
                     this.extension.debugLog(`  → Failed to read: ${gtkCssPath}`);
@@ -968,6 +968,15 @@ class ThemeDetector {
      * @returns {Object|null} {r, g, b, hsp, isDark} or null if not found
      */
     _detectPanelColorFromGtkCss() {
+        // Guard: return cached result to avoid sync file I/O on repeated calls.
+        // isDarkModePreferred() is called from blurTemplateManager (CSS generation hot path),
+        // so without caching every template render would trigger a filesystem read for
+        // themes without a -Dark/-Light suffix. Invalidated by invalidateCache() on every
+        // gtk-theme or color-scheme change.
+        if (this._cachedGtkCssColor !== undefined) {
+            return this._cachedGtkCssColor;
+        }
+
         const themeName = this.getActiveGtkTheme();
         this.extension.debugLog(`Reading panel bg from theme CSS: ${themeName}`);
 
@@ -983,10 +992,8 @@ class ThemeDetector {
             const cssFile = Gio.File.new_for_path(gtkCssPath);
 
             try {
-                // Intentional sync load: isDarkModePreferred() is called from blurTemplateManager
-                // (CSS generation hot path) requiring a synchronous result. Converting to async
-                // would cascade through the entire template generation system. File is only read
-                // when theme data is stale; subsequent calls use cached currentPanelBaseColor.
+                // Sync file read: result cached at function entry so this loop runs at most once
+                // per theme session. Async conversion would cascade through blurTemplateManager.
                 const [success, contents] = cssFile.load_contents(null);
                 if (!success) continue;
 
@@ -1007,6 +1014,7 @@ class ThemeDetector {
                         `  ✓ Panel bg from theme_bg_color: rgb(${color.r}, ${color.g}, ${color.b})`
                     );
                     this.extension.debugLog(`  → HSP: ${color.hsp.toFixed(1)}, isDark: ${color.isDark}`);
+                    this._cachedGtkCssColor = color;
                     return color;
                 }
             } catch (e) {
@@ -1015,6 +1023,7 @@ class ThemeDetector {
         }
 
         this.extension.debugLog(`  ✗ No theme_bg_color found in gtk.css, falling back to DOM detection`);
+        this._cachedGtkCssColor = null;
         return null;
     }
 
@@ -1324,7 +1333,8 @@ class ThemeDetector {
         const wasOverride = this.extension.overridePanelColor;
         this.extension.overridePanelColor = false;
 
-        this.invalidateCache(); // Force fresh detection
+        this.invalidateCache(); // Force fresh DOM detection
+        this._cachedGtkCssColor = null; // CSS already searched above; preserve not-found result
         const colorObj = this.getPanelBaseColor(); // Read DOM color
 
         this.extension.overridePanelColor = wasOverride; // Restore original setting
