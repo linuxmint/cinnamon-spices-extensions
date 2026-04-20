@@ -159,6 +159,11 @@ export class GridElementDelegate {
     return [areaX, areaY, areaWidth, areaHeight];
   }
 
+  /** Pixel rectangle for a single grid cell (same as manual one-cell selection). */
+  public computeCellBounds = (element: GridElement) => {
+    return this._computeAreaPositionSize(element, element);
+  };
+
   private _displayArea = (fromGridElement: GridElement, toGridElement: GridElement) => {
     let areaWidth, areaHeight, areaX, areaY;
     [areaX, areaY, areaWidth, areaHeight] = this._computeAreaPositionSize(fromGridElement, toGridElement);
