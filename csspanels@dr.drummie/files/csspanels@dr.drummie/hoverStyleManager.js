@@ -30,6 +30,7 @@ class HoverStyleManager {
     constructor(extension) {
         this.extension = extension;
         this._connections = [];
+        this._externalActors = [];
     }
 
     /**
@@ -40,6 +41,9 @@ class HoverStyleManager {
         this.extension.debugLog("HoverStyleManager: enabling");
         try {
             this._attachPanelHooks();
+            for (const actor of this._externalActors) {
+                this._hookActor(actor);
+            }
         } catch (e) {
             this.extension.debugLog("HoverStyleManager: error in enable: " + e.message + "\n" + e.stack);
         }
@@ -75,6 +79,32 @@ class HoverStyleManager {
         this.extension.debugLog("HoverStyleManager: refreshing");
         this.disable();
         this.enable();
+    }
+
+    /**
+     * Register an external actor for hover styling.
+     * Persists across refresh() cycles — actor is re-hooked automatically on each enable().
+     *
+     * @param {St.Widget} actor - Actor to register and hook immediately
+     */
+    hookExternalActor(actor) {
+        if (!actor) return;
+        if (!this._externalActors.includes(actor)) {
+            this._externalActors.push(actor);
+        }
+        this._hookActor(actor);
+    }
+
+    /**
+     * Unregister an external actor and restore its base style.
+     * Call this before destroying the actor.
+     *
+     * @param {St.Widget} actor - Actor to unregister and unhook
+     */
+    unhookExternalActor(actor) {
+        if (!actor) return;
+        this._externalActors = this._externalActors.filter(a => a !== actor);
+        this._unhookActor(actor);
     }
 
     /**

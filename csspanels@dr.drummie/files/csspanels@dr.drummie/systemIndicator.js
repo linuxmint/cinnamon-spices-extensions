@@ -2,7 +2,7 @@ const St = imports.gi.St;
 const Main = imports.ui.main;
 const Util = imports.misc.util;
 const Tooltips = imports.ui.tooltips;
-const { SYSTEM_INDICATOR, STYLING, SIZE } = require("./constants");
+const { SYSTEM_INDICATOR, SIZE } = require("./constants");
 
 /**
  * System Indicator handles the system tray indicator
@@ -51,25 +51,20 @@ class SystemIndicator {
             this.indicator.connect("button-press-event", (actor, event) => {
                 const button = event.get_button();
                 if (button === 1) {
-                    // Left click - open extensions manager
-                    this.extension.debugLog("Indicator clicked - opening Extensions Manager");
-                    Util.spawn(["cinnamon-settings", "extensions"]);
+                    // Left click - open extension settings directly
+                    this.extension.debugLog("Indicator clicked - opening extension settings");
+                    Util.spawnCommandLineAsync("xlet-settings extension csspanels@dr.drummie");
                 }
-            });
-
-            // Add hover effects
-            this.indicator.connect("enter-event", () => {
-                icon.opacity = STYLING.ICON_OPACITY_HOVER; // Full opacity on hover
-            });
-
-            this.indicator.connect("leave-event", () => {
-                icon.opacity = STYLING.ICON_OPACITY_NORMAL; // Slightly transparent normally
             });
 
             // Add to system tray using Cinnamon panel API
             if (Main.panel && Main.panel._rightBox) {
                 Main.panel._rightBox.insert_child_at_index(this.indicator, 0);
                 this.extension.debugLog("Indicator added to panel using _rightBox");
+
+                if (this.extension.hoverStyleManager) {
+                    this.extension.hoverStyleManager.hookExternalActor(this.indicator);
+                }
 
                 // Create tooltip with custom positioning for top panel
                 this.tooltip = new Tooltips.Tooltip(this.indicator, this.extension.metadata.name || "CSS Panels");
@@ -132,6 +127,9 @@ class SystemIndicator {
             // Remove from panel
             if (Main.panel && Main.panel._rightBox) {
                 try {
+                    if (this.extension.hoverStyleManager) {
+                        this.extension.hoverStyleManager.unhookExternalActor(this.indicator);
+                    }
                     Main.panel._rightBox.remove_child(this.indicator);
                     this.extension.debugLog("Indicator removed from panel successfully");
                 } catch (removeError) {

@@ -2,6 +2,18 @@
 
 All notable changes to CSS Panels are documented in this file.
 
+## [2.0.9] - 2026-04-21
+
+### Changed
+
+- System tray indicator left click now opens CSS Panels settings directly (`xlet-settings extension csspanels@dr.drummie`) instead of the generic Extensions Manager (`cinnamon-settings extensions`).
+- System tray indicator hover effect now matches panel applets: registered with `HoverStyleManager` on creation, unregistered on destroy — receives the same `background-color !important` highlight as other panel applets. Removed manual `enter-event`/`leave-event` opacity handlers.
+- `HoverStyleManager`: new `hookExternalActor(actor)` / `unhookExternalActor(actor)` public API for registering actors outside the standard applet hierarchy. External actors tracked in `_externalActors[]` and automatically re-hooked on `refresh()` cycles.
+
+### Fixed
+
+- `restoreOriginalStyles()` in `panelStyler.js`: added optional skip of `scheduleRefreshPanels()` — avoids an unnecessary panel refresh cycle when invoked from `HoverStyleManager` during cleanup.
+
 ## [2.0.8] - 2026-04-19
 
 ### Fixed

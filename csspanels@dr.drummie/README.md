@@ -14,11 +14,11 @@
 - **Glow Effect**: Inset or outset glow at panel/menu edges (three modes: inset, outset, none).
 - **Hover & Active Color Override**: Panel applets, taskbar items, and system tray elements use dynamically generated highlight colors derived from the panel color instead of the default theme color.
 - **Use Styles for Notifications and OSDs**: Optional propagation of popup panel settings to notification banner and OSD.
-- **Use Styles for App Switchers and Tooltips**: Optional propagation of popup panel settings to App Switchers and Tooltips.
+- **Use Styles for App Switchers and Tooltips**: Optional propagation of popup panel settings to App Switchers and Tooltips (tooltips disabled by default for theme color consistency).
 - **Start Menu Sidebar Styling**: Optionally apply the popup color to the Cinnamon start menu sidebar (menu@cinnamon.org). Disabled by default — sidebar keeps theme color.
-- **Desklet Styling**: Apply transparency, blur, and glow effects to desktop widgets (desklets). Toggle in Advanced settings.
+- **Desklet Styling**: Apply transparency, blur, and glow effects to desklets. Check Compatibility section for limitations. Disabled by default — toggle in Advanced settings.
 - **Wallpaper Color Extraction**: Automatically extract dominant colors from the current wallpaper and apply them to panel, menus, border, tint, and shadow — live on wallpaper change or via manual button.
-- **System Tray Indicator**: Optional quick-access icon for settings (hidden by default — enable in Advanced settings).
+- **System Tray Indicator**: Optional quick-access icon that opens extension settings directly (hidden by default — enable in Advanced settings).
 - **Theme Integration**: Automatic detection of theme accent colors.
 - **Debug Logging**: Enable detailed logging for troubleshooting.
 
@@ -81,7 +81,7 @@ The extension provides comprehensive control over transparency, color theming, a
 
 **Glow Effect Controls**
 
-- **Glow Effect Mode**: Three-way control — `Inset` (glow at edges/corners, classic glossy look), `Outset` (glow at center fading outward, ambient glow), `None` (no glow).
+- **Glow Effect Mode**: Three-way control — `Inset` (glow at edges/corners, classic glossy look), `Outset` (glow at center fading outward, ambient glow), `None` (no glow). See [Troubleshooting](#troubleshooting) for outset mode tips.
 - **Glow Blur Size**: Spread/size of the glow (4-40px, spinbutton control).
 - **Glow Intensity (Opacity)**: Brightness/visibility of glow (0.05-0.5, spinbutton control).
 
@@ -113,7 +113,7 @@ The extension provides comprehensive control over transparency, color theming, a
 
 **System Tray Indicator**
 
-- **Show system tray indicator**: Toggle visibility of tray icon.
+- **Show system tray indicator**: Toggle visibility of tray icon. Click opens extension settings directly.
 
 **Debugging**
 
@@ -153,6 +153,13 @@ The extension provides comprehensive control over transparency, color theming, a
   Cinnamon's popup or panel system simultaneously can cause visual glitches or broken styling.
   Disable conflicting extensions before using CSS Panels.
 
+**Desklet Compatibility**: Desklets are third-party widgets with their own styling systems.
+  CSS Panels can apply transparency, blur, and glow effects, but many desklets have hardcoded
+  background colors that cannot be overridden from outside. For such desklets, check their
+  own settings — if the desklet provides a background color option, setting it to fully
+  transparent (alpha: 0) will allow CSS Panels effects to show through. Results vary by
+  desklet implementation.
+
 ## Troubleshooting
 
 - If effects don't apply, check theme compatibility.
@@ -162,6 +169,8 @@ The extension provides comprehensive control over transparency, color theming, a
 - Actual background blur requires compositor shader support (e.g. BlurCinnamon) — this extension uses CSS effects only (transparency, glow, color). The `blur()` value is passed to the compositor but may not visually render on standard Cinnamon/Muffin.
 - Experiment — you could use the color chooser to select desired color and transparency from existing elements on the screen.
 - If wallpaper colors seem wrong, try switching to a different wallpaper and back, or use the manual extract button.
+- **Custom colors reset after restart?** The extension re-detects theme colors on every load (consequence of auto detection). To preserve your custom color overrides, disable **Auto-apply accent colors on theme change** in Theme Settings — otherwise the extension will overwrite them with detected theme values on next startup. Note: wallpaper color extraction is controlled separately via **Enable wallpaper detection** and follows its own trigger logic.
+- **Outset glow not visible or looks off?** The glow system is optimized for `Inset` mode. In `Outset` mode, results depend heavily on settings — try increasing **Glow Intensity**, reducing **Glow Blur Size**, or adjusting **Shadow Spread** and **Panel Opacity** to get the desired ambient effect.
 
 ## Contributing
 
@@ -184,10 +193,11 @@ This extension is licensed under the GPL-3.0 License.
 - **Monkey Patching**: Non-invasive interception of Cinnamon UI methods
 - **Modern CSS**: Generates inline CSS with `backdrop-filter`, `box-shadow`, and color filters. Note: `backdrop-filter` blur is passed to the compositor but may not render on Cinnamon/Muffin — transparency, glow, and color effects work reliably.
 - **Wallpaper Extraction**: GdkPixbuf-based pixel sampling and quantization via `colorPalette.js`
+- **See**: [docs/how-csspanels-work.md](docs/how-csspanels-work.md) for technical documentation
 - **Advanced Customization**: Advanced users can tweak behavior by editing `constants.js` directly in the extension directory — hover intensities (`HOVER_INTENSITY`, `ACTIVE_INTENSITY`), shadow multipliers, color fallbacks. Changes take effect after reloading the extension. Proceed at your own risk.
 
 ---
 
 **Note**: Best results with **Mint-Y** themes. **Mint-X** works well. **Mint-L** works but requires manual color customization — automatic adaptation on theme change is not fully supported yet. Fluent GTK themes are also supported but results may vary.
 
-Version: 2.0.8 | Last Edited: 2026-04-19
+Version: 2.0.9 | Last Edited: 2026-04-21
