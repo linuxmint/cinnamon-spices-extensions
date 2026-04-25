@@ -146,7 +146,7 @@ The extension provides comprehensive control over transparency, color theming, a
 
 ## Compatibility
 
-- **Cinnamon Version**: 6.0, 6.2, 6.4, 6.6
+- **Cinnamon Version**: 6.4, 6.6
 - **Multiversion**: Yes
 - **Extension Conflicts**: May conflict with other extensions that modify the same UI elements
   (panels, popup menus, notifications, OSD). Running multiple extensions that monkey-patch
