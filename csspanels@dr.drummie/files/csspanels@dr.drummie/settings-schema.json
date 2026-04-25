@@ -1,0 +1,462 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": ["theme-page", "transparency-page", "blur-page", "advanced-page"],
+
+    "theme-page": {
+      "type": "page",
+      "title": "Theme Settings",
+      "sections": ["theme-detection", "advanced-tools"]
+    },
+
+    "transparency-page": {
+      "type": "page",
+      "title": "Appearance Settings",
+      "sections": ["basic-transparency", "inset-glow-settings"]
+    },
+
+    "blur-page": {
+      "type": "page",
+      "title": "Visual Effects",
+      "sections": ["blur-custom"]
+    },
+
+    "advanced-page": {
+      "type": "page",
+      "title": "Advanced Settings",
+      "sections": ["extended-styling", "indicator-settings", "debugging"]
+    },
+
+    "basic-transparency": {
+      "type": "section",
+      "title": "Basic Appearance Controls",
+      "keys": [
+        "panel-opacity",
+        "menu-opacity",
+        "override-panel-color",
+        "choose-override-panel-color",
+        "override-popup-color",
+        "choose-override-popup-color"
+      ]
+    },
+
+    "theme-detection": {
+      "type": "section",
+      "title": "Theme Integration",
+      "keys": [
+        "auto-apply-accent-on-theme-change",
+        "dark-light-override",
+        "apply-detected-accent-button",
+        "border-radius",
+        "apply-panel-radius"
+      ]
+    },
+
+    "blur-custom": {
+      "type": "section",
+      "title": "Visual Effect Controls",
+      "keys": [
+        "blur-radius",
+        "blur-saturate",
+        "blur-contrast",
+        "blur-brightness",
+        "blur-background",
+        "blur-border-color",
+        "blur-border-width",
+        "blur-transition",
+        "blur-opacity",
+        "accent-shadow-color",
+        "shadow-spread"
+      ]
+    },
+
+    "inset-glow-settings": {
+      "type": "section",
+      "title": "Glow Effect Controls",
+      "keys": ["glow-mode", "glow-blur", "glow-intensity"]
+    },
+
+    "advanced-tools": {
+      "type": "section",
+      "title": "Advanced Tools",
+      "keys": ["enable-wallpaper-detection", "full-auto-mode", "wallpaper-color-strategy", "extract-wallpaper-colors-button", "blur-template", "reset-blur-button"]
+    },
+
+    "extended-styling": {
+      "type": "section",
+      "title": "Extended UI Styling",
+    "keys": [
+      "enable-notification-styling",
+      "enable-osd-styling",
+      "enable-tooltip-styling",
+      "enable-alttab-styling",
+      "enable-appmenu-sidebar-styling",
+      "enable-desktop-context-styling",
+      "enable-desklet-styling"
+    ]
+    },
+
+    "indicator-settings": {
+      "type": "section",
+      "title": "System Tray Indicator",
+      "keys": ["hide-tray-icon"]
+    },
+
+    "debugging": {
+      "type": "section",
+      "title": "Debugging",
+      "keys": ["debug-logging"]
+    }
+  },
+
+  "panel-opacity": {
+    "type": "scale",
+    "default": 1,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Panel opacity",
+    "tooltip": "Adjust the transparency of all panels. Lower values create a more transparent panel."
+  },
+
+  "menu-opacity": {
+    "type": "scale",
+    "default": 1,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Menu opacity",
+    "tooltip": "Adjust the transparency of popup menus and some popup-based controls. Creates a semi-transparent appearance combined with tint and glow effects. Note: some Mint theme menus have a hardcoded background color that overrides transparency — this is a theme limitation, not an extension bug."
+  },
+
+  "override-panel-color": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Override panel color",
+    "tooltip": "When OFF: Panel color is auto-detected from the active GTK theme (adapts automatically on theme change). When ON: Panel uses the color picker below. This does NOT affect popup color - see 'Override popup color' setting."
+  },
+
+  "choose-override-panel-color": {
+    "type": "colorchooser",
+    "default": "rgba(46, 52, 64, 0.8)",
+    "description": "Choose override panel color",
+    "tooltip": "Select the background color to use for the panel when 'Override panel color' is enabled. Supports transparency (alpha channel). This color is saved independently of theme changes.",
+    "dependency": "override-panel-color"
+  },
+
+  "override-popup-color": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Override popup color",
+    "tooltip": "When OFF: Popup menus and some popup-based controls inherit the current panel color (auto-detected theme color, or the panel override color if that is enabled). When ON: Uses the color picker below, independent of panel color."
+  },
+
+  "choose-override-popup-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 0.9)",
+    "description": "Choose override popup color",
+    "tooltip": "Select the background color to use for popup menus when 'Override popup color' is enabled. Supports transparency (alpha channel). Only active when 'Override popup color' is checked.",
+    "dependency": "override-popup-color"
+  },
+
+  "border-radius": {
+    "type": "spinbutton",
+    "default": 6,
+    "min": 0,
+    "max": 12,
+    "step": 1,
+    "units": "px",
+    "description": "Border radius",
+    "tooltip": "Rounded corners for panels and menus. Used as fallback when auto-detect fails or finds inconsistent values. Set to 0 for completely flat appearance."
+  },
+
+  "apply-panel-radius": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Apply border radius to main panel",
+    "tooltip": "Enable rounded corners on taskbar for modern appearance. May look odd at screen edges depending on your theme."
+  },
+
+  "auto-detect-radius": {
+    "type": "generic",
+    "default": false
+  },
+
+  "enable-notification-styling": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Style system notifications",
+    "tooltip": "Apply transparency and visual effect styles to system notifications (volume, brightness, etc.). This will make notifications match your panel's visual style."
+  },
+
+  "enable-osd-styling": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Style OSD (On-Screen Display) elements",
+    "tooltip": "Apply transparency and visual effect styles to On-Screen Display elements like volume sliders, brightness controls, and other overlay elements. Creates a consistent visual appearance."
+  },
+
+  "enable-tooltip-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style tooltip elements",
+    "tooltip": "Apply transparency and visual effect styles to tooltip elements that appear when hovering over panel items and other UI elements. Creates a consistent visual appearance."
+  },
+
+  "enable-alttab-styling": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Style Alt-Tab switcher elements",
+    "tooltip": "Apply transparency and visual effect styles to Alt-Tab window switcher. Creates a consistent visual appearance for the application switcher."
+  },
+
+  "enable-appmenu-sidebar-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style start menu sidebar",
+    "tooltip": "Apply popup color override to the start menu (menu@cinnamon.org) sidebar. When disabled (default), sidebar uses the Cinnamon theme color (grey/white). When enabled, sidebar matches the popup override color. Has no effect if the original Cinnamon menu applet is not active."
+  },
+
+  "enable-desktop-context-styling": {
+    "type": "generic",
+    "default": false,
+    "description": "Enable desktop context menu styling",
+    "tooltip": "Apply transparency and visual effect styles to desktop right-click context menus"
+  },
+
+  "enable-desklet-styling": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Style desklet elements",
+    "tooltip": "Apply transparency and visual effect styles to desktop widgets (desklets). Creates a consistent visual appearance for desklets matching your panel style."
+  },
+
+  "full-auto-mode": {
+    "type": "checkbox",
+    "default": false,
+    "dependency": "enable-wallpaper-detection",
+    "description": "Wallpaper manages all shell colors (experimental)",
+    "tooltip": "When enabled, every wallpaper change also updates blur and accent color settings (border color, background tint, shadow color). Panel and popup colors are always extracted regardless of this setting. Requires wallpaper detection to be active."
+  },
+
+  "wallpaper-color-strategy": {
+    "type": "combobox",
+    "default": "contrast",
+    "options": {
+      "Standard (weighted average)": "default",
+      "Contrast (polar tones)": "contrast"
+    },
+    "description": "Wallpaper color extraction mode",
+    "tooltip": "Standard: panel color is a weighted average of the entire image tone (stable, smooth). Contrast: panel uses the darkest/lightest pixels from the image — stronger tonal expression, more sensitive to extreme pixels in the wallpaper."
+  },
+
+  "dark-light-override": {
+    "type": "combobox",
+    "default": "auto",
+    "options": {
+      "Auto (follow system/theme)": "auto",
+      "Force dark": "dark",
+      "Force light": "light"
+    },
+    "description": "Dark/light mode override",
+    "tooltip": "Globally overrides dark/light mode detection for the entire extension — affects sidebar color fallback, accent color generation, and wallpaper extraction tone. 'Auto' follows the active GTK color scheme and theme name. 'Force dark' is recommended for mixed themes (e.g. Mint-Y-Aqua) where the panel is dark but the GTK theme has no -Dark suffix."
+  },
+
+  "blur-radius": {
+    "type": "spinbutton",
+    "default": 22,
+    "min": 1,
+    "max": 50,
+    "step": 1,
+    "units": "px",
+    "description": "Blur radius",
+    "tooltip": "Controls the intended blur intensity. Higher values produce stronger diffusion (e.g. 30px+ for a foggy look), lower values give a sharper, more subtle appearance. Note: actual blur rendering depends on compositor support — on most Cinnamon setups this has no visible effect, but the setting is preserved for compatible environments."
+  },
+
+  "blur-saturate": {
+    "type": "spinbutton",
+    "default": 0.95,
+    "min": 0.4,
+    "max": 2.0,
+    "step": 0.05,
+    "description": "Saturation multiplier",
+    "tooltip": "Adjusts color vibrancy of the transparent background. Values above 1.0 make colors more vivid, below 1.0 create muted, desaturated tones. Applied as part of backdrop-filter — effective only on compositors that support it."
+  },
+
+  "blur-contrast": {
+    "type": "spinbutton",
+    "default": 0.75,
+    "min": 0.4,
+    "max": 2.0,
+    "step": 0.05,
+    "description": "Contrast multiplier",
+    "tooltip": "Controls the difference between light and dark areas in the visual effect. Higher values (above 1.0) enhance depth and sharpness, lower values soften the appearance. Applied as part of backdrop-filter — effective only on compositors that support it."
+  },
+
+  "blur-brightness": {
+    "type": "spinbutton",
+    "default": 0.65,
+    "min": 0.4,
+    "max": 2.0,
+    "step": 0.05,
+    "description": "Brightness multiplier",
+    "tooltip": "Modifies the overall lightness of the effect layer. Increase above 1.0 for a brighter, illuminated look (ideal for light themes), decrease below 1.0 for darker, moodier tones. Applied as part of backdrop-filter — effective only on compositors that support it."
+  },
+
+  "blur-background": {
+    "type": "colorchooser",
+    "default": "rgba(0, 0, 0, 0.3)",
+    "description": "Background color/tint",
+    "tooltip": "Accent tint color, automatically populated from the active GTK theme (low-opacity variant of the accent color). Also used as a fallback glow color when no border color is set. You can adjust it manually - use semi-transparent colors for subtle color tinting."
+  },
+
+  "blur-border-color": {
+    "type": "colorchooser",
+    "default": "rgba(255, 255, 255, 0.15)",
+    "description": "Border color",
+    "tooltip": "Color of the subtle border framing styled elements. Also used as the primary glow color for the Glow Effect system, and as a fallback for the background tint. Automatically populated from the active GTK theme accent or wallpaper extraction. Adjust opacity for softer or more defined borders."
+  },
+
+  "blur-border-width": {
+    "type": "generic",
+    "default": 0,
+    "description": "Border width (deprecated - hardcoded to 0)",
+    "tooltip": "This setting is deprecated and hardcoded to 0. Border effects are now handled by the Glow Effect system."
+  },
+
+  "blur-transition": {
+    "type": "spinbutton",
+    "default": 0.3,
+    "min": 0,
+    "max": 2,
+    "step": 0.1,
+    "description": "Transition duration",
+    "tooltip": "Sets the speed of visual effect transitions when settings change. Shorter durations (0.1-0.5s) create snappy, responsive transitions for quick adjustments, while longer ones (1-2s) provide smooth, elegant fades for a polished feel."
+  },
+
+  "blur-opacity": {
+    "type": "spinbutton",
+    "default": 0.8,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Effect layer opacity",
+    "tooltip": "Controls the transparency of the entire effect layer. Higher values (0.8-1.0) make the visual effect more prominent and solid, while lower values (0.1-0.5) create a lighter, more subtle appearance that blends with the background."
+  },
+
+  "shadow-spread": {
+    "type": "spinbutton",
+    "default": 0.4,
+    "min": 0.1,
+    "max": 1.0,
+    "step": 0.05,
+    "description": "Shadow spread",
+    "tooltip": "Controls the spread of the shadow effect. Higher values (0.8-1.0) create a more pronounced shadow, while lower values (0.1-0.5) result in a softer, more diffused shadow."
+  },
+
+  "reset-blur-button": {
+    "type": "button",
+    "description": "Apply selected template",
+    "tooltip": "Apply the selected effect template to all visual effect controls. This will update radius, saturation, contrast, brightness, background, border color, border width, transition, and opacity to match the chosen template.",
+    "callback": "resetBlurToDefaults"
+  },
+
+  "enable-wallpaper-detection": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Enable wallpaper detection",
+    "tooltip": "Automatically extract and apply colors from your current wallpaper to the panel. Enabling this also activates the panel color override — without it, extracted colors would be ignored. Popup menus automatically inherit the panel color; enable 'Override popup color' separately if you want independent popup customization. Use the 'Extract colors from wallpaper' button for a manual one-time extraction."
+  },
+
+  "extract-wallpaper-colors-button": {
+    "type": "button",
+    "description": "Extract colors from wallpaper",
+    "tooltip": "Immediately extract colors from your current wallpaper and apply them to the panel and popup color pickers. If 'Wallpaper manages all shell colors' is also enabled, also updates border, tint, and shadow colors. Does not require wallpaper detection to be enabled.",
+    "callback": "extractWallpaperColors"
+  },
+
+  "blur-template": {
+    "type": "combobox",
+    "default": "frosted-glass-dark",
+    "options": {
+      "Frosted Glass": "frosted-glass",
+      "Wet Glass": "wet-glass",
+      "Foggy Glass": "foggy-glass",
+      "Clear Crystal": "clear-crystal",
+      "Frosted Glass Dark": "frosted-glass-dark",
+      "Wet Glass Dark": "wet-glass-dark",
+      "Foggy Glass Dark": "foggy-glass-dark",
+      "Clear Crystal Dark": "clear-crystal-dark"
+    },
+    "description": "Effect template",
+    "tooltip": "Select an effect template to apply when using the 'Apply Selected Template' button. Each template defines preset values for all visual effect controls."
+  },
+
+  "auto-apply-accent-on-theme-change": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Auto-apply accent colors on theme change",
+    "tooltip": "Automatically detect and apply accent colors from your active GTK theme whenever you change themes. When disabled, you can still manually apply accent colors using the button below. This allows you to keep your custom colors while changing themes."
+  },
+
+  "accent-shadow-color": {
+    "type": "colorchooser",
+    "default": "rgba(20, 29, 34, 0.3)",
+    "description": "Accent shadow/glow color",
+    "tooltip": "Shadow and glow color for box-shadow effects on all elements (panels, popups, notifications). Deep dark for dark themes or soft light for light themes. Automatically populated when accent colors are detected from the active GTK theme."
+  },
+
+  "apply-detected-accent-button": {
+    "type": "button",
+    "description": "Detect and apply accent from current theme",
+    "tooltip": "Detect accent colors from your current GTK theme and apply them to panel/popup color pickers and blur effects (border, background, shadow). Enables the panel color override so the detected accent is immediately applied to the panel. Popup menus inherit the panel color automatically. Disables wallpaper detection if active.",
+    "callback": "applyDetectedAccent"
+  },
+
+  "glow-mode": {
+    "type": "combobox",
+    "default": "inset",
+    "description": "Glow effect mode",
+    "tooltip": "Inset: Glow at edges/corners, darker center (classic). Outset: Glow at center, fade to edges (reverse). None: No glow effect.",
+    "options": {
+      "Inset (edges)": "inset",
+      "Outset (center)": "outset",
+      "None": "none"
+    }
+  },
+
+  "glow-blur": {
+    "type": "spinbutton",
+    "default": 22,
+    "min": 4,
+    "max": 40,
+    "step": 1,
+    "units": "px",
+    "description": "Glow blur size",
+    "tooltip": "Controls the spread/size of the glow effect. Higher values = more diffused glow. For panels, minimum glow size is 4px to maintain visual consistency."
+  },
+
+  "glow-intensity": {
+    "type": "spinbutton",
+    "default": 0.20,
+    "min": 0.05,
+    "max": 0.5,
+    "step": 0.05,
+    "description": "Glow intensity (opacity)",
+    "tooltip": "Controls the brightness/visibility of the glow. Lower values (0.05-0.15) = subtle highlight, higher values (0.3-0.5) = prominent glossy effect. Demo example: 0.15 for balanced glossy look."
+  },
+
+  "debug-logging": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Enable debug logging",
+    "tooltip": "Enable detailed logging for troubleshooting extension issues. Check terminal output with 'journalctl -f' for detailed information."
+  },
+
+  "hide-tray-icon": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Hide system tray indicator",
+    "tooltip": "Hide the transparency control icon from the system tray. You can still access settings through Cinnamon Settings > Extensions."
+  }
+}

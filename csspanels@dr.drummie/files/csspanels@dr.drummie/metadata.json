@@ -1,0 +1,11 @@
+{
+  "uuid": "csspanels@dr.drummie",
+  "name": "CSS Panels",
+  "description": "Dynamic control of panels and popups colors and visual effects",
+  "version": "2.0.9",
+  "author": "drdrummie",
+  "url": "https://github.com/drdrummie/cinnamon-spices-extensions/tree/master/csspanels@dr.drummie",
+  "cinnamon-version": ["6.4", "6.6"],
+  "multiversion": true,
+  "max-instances": 1
+}
