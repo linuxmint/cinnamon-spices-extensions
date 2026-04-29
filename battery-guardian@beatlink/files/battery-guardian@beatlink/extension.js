@@ -11,7 +11,7 @@ const Settings = imports.ui.settings
 const Dialog = imports.ui.dialog
 
 const UUID = "battery-guardian@beatlink"
-const dialogTitle = "Low Battery Warning"
+const dialogTitle = _("Low Battery Warning")
 
 const SystemCommands = {
     'shutdown': ['systemctl', 'poweroff'],
@@ -92,7 +92,7 @@ var MainDialog = GObject.registerClass({
         this._messageDialogContent.title = dialogTitle
 
         this.setButtons([{
-            label: 'Save Unfinished Work',
+            label: _('Save Unfinished Work'),
             action: () => onSave(),
             key: Clutter.KEY_Escape
         }])
@@ -172,8 +172,8 @@ class BatteryGuardianExtension {
     }
 
     _getFormattedMessage() {
-        return `Your system will ${this._action} in ${this._currentTime} seconds.\n` +
-            `Either connect to external power or save your unfinished work.`
+        return _("Your system will %s in %d seconds.\nEither connect to external power or save your unfinished work.")
+            .format(_(this._action), this._currentTime)
     }
 
     _updateUI() {
@@ -263,7 +263,6 @@ class BatteryGuardianExtension {
             return
         }
         try {
-            // trySpawn takes an array: ["command", "arg1", "arg2"]
             Util.trySpawn(SystemCommands[this._action])
         } catch (e) {
             global.logError("[" + UUID + "] Failed to execute " + this._action + ": " + e.message)
