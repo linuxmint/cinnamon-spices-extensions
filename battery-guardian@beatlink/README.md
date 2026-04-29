@@ -15,27 +15,29 @@ Unlike standard system notifications that are easily missed, Battery Guardian pr
 ## Key Features
 
 * **Two-Stage Warning System** :
-
   * **Main Dialog** : A focused modal window that demands your attention when the battery hits the threshold.
   * **Floating Guardian** : If you choose to keep working, a non-intrusive floating window stays on top of all other windows (even in fullscreen) to keep you aware of the remaining time.
-* **Intelligent Cancellation** : The moment you plug in your AC adapter, all warnings and countdowns automatically disappear and the scheduled action is cancelled.
-* **Customizable Battery Level** : You can set what battery percentage will trigger the countdown sequence. For best results, set it to a percentage higher than the built in low battery action level.
-* **Customizable Duration** : You can set how long the countdown will last before action is taken
+* **Audio Alerts** : Includes a looping alarm sound to ensure the warning isn't just seen, but heard.
+* **Customizable Sounds** : Use the built-in alarm or select any custom `.ogg` or `.wav` file from your system.
+* **Intelligent Cancellation** : The moment you plug in your AC adapter, all warnings, audio alerts and countdowns automatically disappear and the scheduled action is cancelled.
+* **Customizable Battery Level** : Set exactly what battery percentage triggers the sequence. For best results, set it higher than the built-in system low-battery level.
 * **Customizable Actions** : Choose whether the system should  **Shut Down** ,  **Suspend** , or  **Hibernate** .
-* **Test Mode** : Safely verify the UI and timing without actually shutting down your computer.
+* **Test Mode** : Safely verify the UI, audio, and timing without actually triggering a system power state change.
 
 ---
 
 ## Settings & Configuration
 
-You can find these options in the **Applet Settings** (Right-click the applet in the panel > Configure):
+Access these options via **Applet Settings** (Right-click the applet in the panel > Configure):
 
-| Setting                      | Description                                                                            | Default     |
-| ---------------------------- | -------------------------------------------------------------------------------------- | ----------- |
-| **Battery Threshold**  | The percentage (%) at which the warning will trigger.                                  | `10%`     |
-| **Action**             | What to do when time runs out (Power Off, Suspend, or Hibernate).                      | `Suspend` |
-| **Countdown Duration** | How many seconds you have to react before the action is forced.                        | `120s`    |
-| **Test Mode**          | If enabled, the dialog will count down normally, but**no action** will be taken. | `Off`     |
+| Setting                       | Description                                                       | Default     |
+| ----------------------------- | ----------------------------------------------------------------- | ----------- |
+| **Battery Threshold**   | The percentage (%) at which the warning triggers.                 | `10%`     |
+| **Action**              | What to do when time runs out (Power Off, Suspend, or Hibernate). | `Suspend` |
+| **Countdown Duration**  | How many seconds you have to react before the action is forced.   | `120s`    |
+| **Warning Sound**       | Select a custom audio file. Leave empty for the system default.   | `Default` |
+| **Sound Loop Interval** | Adjust the repeat rate (in ms) to match your sound file's length. | `1000ms`  |
+| **Test Mode**           | If enabled, the UI/Audio triggers but**no action**is taken. | `Off`     |
 
 ---
 
@@ -58,18 +60,16 @@ Before selecting Hibernate as your default action, please verify your system sup
 ### Method 1: Cinnamon Applet Download (Easiest)
 
 1. Right-click your Cinnamon panel and select  **Add Applets to the Panel** .
-2. Click the **Download** tab and click "Yes" to update the cache.
+2. Click the **Download** tab and update the cache.
 3. Search for  **Battery Guardian** .
-4. Click the **Download icon** next to it.
-5. Switch back to the **Manage** tab, select Battery Guardian, and click the **(+) Add** button.
+4. Click the  **Download icon** , then switch to the **Manage** tab to **(+) Add** it.
 
 ### Method 2: Manual Installation
 
 1. Create a folder named exactly `battery-guardian@beatlink`.
-2. Place `applet.js`, `metadata.json`, and `settings-schema.json` inside that folder.
+2. Place the project files inside that folder.
 3. Move the folder to: `~/.local/share/cinnamon/applets/`
-4. Restart Cinnamon (Press `Alt+F2`, type `r`, and hit `Enter`).
-5. Enable the applet via the **Applets** system settings.
+4. Restart Cinnamon (`Alt+F2`, type `r`, then `Enter`).
 
 ---
 
@@ -77,11 +77,11 @@ Before selecting Hibernate as your default action, please verify your system sup
 
 When your battery drops below your defined threshold:
 
-1. A **Main Dialog** appears with the option:  **"Save Unfinished Work"** .
-2. Clicking that button transforms the warning into a **small floating window** in the bottom-right corner.
-3. This allows you to quickly save your files while watching the timer.
-4. If the timer reaches  **0** , the system executes your chosen command (e.g., `systemctl suspend`).
-5. **Plugging in power at any time kills the timer and dismisses the UI immediately.**
+1. **The Alert** : A **Main Dialog** appears featuring a prominent message and a looping audio alert.
+2. **The Choice** : You can click **"Save Unfinished Work"** (or hit `Esc`) to transform the modal into a small **Floating Window** in the bottom-right corner.
+3. **The Workflow** : This allows you to continue saving files while the timer remains visible on top of all windows.
+4. **The Action** : If the timer reaches  **0** , the system executes your chosen command.
+5. **The Reset** : Plugging in power at any time kills the timer, stops the audio loop, and dismisses the UI immediately.
 
 ---
 
