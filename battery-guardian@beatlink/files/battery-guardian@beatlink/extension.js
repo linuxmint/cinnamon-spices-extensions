@@ -14,9 +14,9 @@ const UUID = "battery-guardian@beatlink"
 const dialogTitle = "Low Battery Warning"
 
 const SystemCommands = {
-    'shutdown': 'systemctl poweroff',
-    'suspend': 'systemctl suspend',
-    'hibernate': 'systemctl hibernate',
+    'shutdown': ['systemctl', 'poweroff'],
+    'suspend': ['systemctl', 'suspend'],
+    'hibernate': ['systemctl', 'hibernate'],
 }
 
 // ── Sound Player ──────────────────────────────────────────────────────────────
@@ -32,10 +32,8 @@ var SoundPlayer = class {
     }
 
     setSound(path) {
-        let isFile = path && path.includes('/')
-        let exists = isFile ? Gio.File.new_for_path(path).query_exists(null) : false
         this._path = path
-        this._isFile = isFile && exists
+        this._isFile = !!(path && path.includes('/'))
     }
 
     play() {
@@ -54,7 +52,13 @@ var SoundPlayer = class {
                 } else {
                     player.play_from_theme(this._path || 'alarm-clock-elapsed', 'bg-sound', this._cancellable)
                 }
-            } catch (e) { /* Ignore cancellations */ }
+            } catch (e) {
+                if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                    global.logWarning("[" + UUID + "] Sound file not found: " + this._path)
+                } else {
+                    global.logError("[" + UUID + "] Sound player error: " + e.message)
+                }
+            }
             return GLib.SOURCE_CONTINUE
         }
 
@@ -115,13 +119,9 @@ var FloatingDialog = class {
             vertical: true,
             reactive: true
         })
-
-        // Use the exact same widget as the Modal version
         this._messageDialogContent = new Dialog.MessageDialogContent()
         this._messageDialogContent.title = dialogTitle
-
         this.actor.add_child(this._messageDialogContent)
-
         Main.layoutManager.addChrome(this.actor, { visibleInFullscreen: true })
         this._signalId = this.actor.connect('notify::allocation', () => this._position())
     }
@@ -133,7 +133,6 @@ var FloatingDialog = class {
         this.actor.set_position(Math.floor(x), Math.floor(y))
     }
 
-    // Now this method signature is identical to the MainDialog update method
     update(message) {
         this._messageDialogContent.description = message
     }
@@ -198,11 +197,10 @@ class BatteryGuardianExtension {
                 let actualPath = this._soundFile.startsWith('file://')
                     ? GLib.filename_from_uri(this._soundFile, null)[0]
                     : this._soundFile
-
-                if (Gio.File.new_for_path(actualPath).query_exists(null)) {
-                    path = actualPath
-                }
-            } catch (e) { global.logError("[" + UUID + "] Path error: " + e) }
+                path = actualPath
+            } catch (e) {
+                global.logError("[" + UUID + "] Path conversion error: " + e)
+            }
         }
         this._soundPlayer.setSound(path)
         this._soundPlayer.loopInterval = this._loopInterval || 3500
@@ -260,7 +258,16 @@ class BatteryGuardianExtension {
 
     _executeFinalAction() {
         this._stopLogic()
-        if (!this._testMode) Util.spawnCommandLine(SystemCommands[this._action])
+        if (this._testMode) {
+            global.log("[" + UUID + "] Test Mode: Skipping execution of " + this._action)
+            return
+        }
+        try {
+            // trySpawn takes an array: ["command", "arg1", "arg2"]
+            Util.trySpawn(SystemCommands[this._action])
+        } catch (e) {
+            global.logError("[" + UUID + "] Failed to execute " + this._action + ": " + e.message)
+        }
     }
 
     _stopLogic() {
