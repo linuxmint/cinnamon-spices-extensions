@@ -1,0 +1,55 @@
+{
+  "battery-threshold": {
+    "type": "spinbutton",
+    "default": 10,
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "units": "%",
+    "description": "Battery level threshold",
+    "tooltip": "The applet will trigger the countdown dialog when battery drops to or below this percentage."
+  },
+  "action": {
+    "type": "combobox",
+    "default": "suspend",
+    "description": "Action to take when threshold is reached",
+    "tooltip": "The power action that will be forced after the countdown completes.",
+    "options": {
+      "Power off": "shutdown",
+      "Suspend (sleep)": "suspend",
+      "Hibernate": "hibernate"
+    }
+  },
+  "countdown-duration": {
+    "type": "spinbutton",
+    "default": 120,
+    "min": 5,
+    "max": 300,
+    "step": 5,
+    "units": "seconds",
+    "description": "Countdown duration",
+    "tooltip": "How long the countdown dialog will show before the action is forced."
+  },
+  "test-mode": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Test mode (no action will be taken)",
+    "tooltip": "When enabled, the countdown dialog will show and count down normally, but the power action will be skipped."
+  },
+  "sound-file": {
+    "type": "filechooser",
+    "default": "",
+    "description": "Warning sound effect",
+    "tooltip": "Select a sound to play on loop. Leave empty for the system default."
+  },
+  "sound-loop-interval": {
+    "type": "spinbutton",
+    "default": 1000,
+    "min": 500,
+    "max": 30000,
+    "step": 100,
+    "units": "ms",
+    "description": "Sound Loop Interval",
+    "tooltip": "How often the alert sound repeats in milliseconds. Adjust this to match the length of your sound file."
+  }
+}

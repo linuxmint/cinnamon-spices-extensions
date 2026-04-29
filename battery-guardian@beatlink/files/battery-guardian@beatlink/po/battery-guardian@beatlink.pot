@@ -1,0 +1,136 @@
+# BATTERY GUARDIAN
+# This file is put in the public domain.
+# beatlink, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: battery-guardian@beatlink 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-04-28 22:36-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. extension.js:14
+msgid "Low Battery Warning"
+msgstr ""
+
+#. extension.js:95
+msgid "Save Unfinished Work"
+msgstr ""
+
+#. extension.js:175
+#, javascript-format
+msgid ""
+"Your system will %s in %d seconds.\n"
+"Either connect to external power or save your unfinished work."
+msgstr ""
+
+#. Potential values for this._action
+msgid "shutdown"
+msgstr ""
+
+msgid "suspend"
+msgstr ""
+
+msgid "hibernate"
+msgstr ""
+
+#. metadata.json->name
+msgid "Battery Guardian"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Monitors battery level and forces a shutdown/suspend/hibernate action with "
+"an uncancellable countdown dialog when the battery drops below a "
+"configurable threshold."
+msgstr ""
+
+#. metadata.json->contributors
+msgid "BeatLink"
+msgstr ""
+
+#. settings-schema.json->battery-threshold->units
+msgid "%"
+msgstr ""
+
+#. settings-schema.json->battery-threshold->description
+msgid "Battery level threshold"
+msgstr ""
+
+#. settings-schema.json->battery-threshold->tooltip
+msgid ""
+"The applet will trigger the countdown dialog when battery drops to or below "
+"this percentage."
+msgstr ""
+
+#. settings-schema.json->action->description
+msgid "Action to take when threshold is reached"
+msgstr ""
+
+#. settings-schema.json->action->tooltip
+msgid "The power action that will be forced after the countdown completes."
+msgstr ""
+
+#. settings-schema.json->action->options
+msgid "Power off"
+msgstr ""
+
+#. settings-schema.json->action->options
+msgid "Suspend (sleep)"
+msgstr ""
+
+#. settings-schema.json->action->options
+msgid "Hibernate"
+msgstr ""
+
+#. settings-schema.json->countdown-duration->units
+msgid "seconds"
+msgstr ""
+
+#. settings-schema.json->countdown-duration->description
+msgid "Countdown duration"
+msgstr ""
+
+#. settings-schema.json->countdown-duration->tooltip
+msgid "How long the countdown dialog will show before the action is forced."
+msgstr ""
+
+#. settings-schema.json->test-mode->description
+msgid "Test mode (no action will be taken)"
+msgstr ""
+
+#. settings-schema.json->test-mode->tooltip
+msgid ""
+"When enabled, the countdown dialog will show and count down normally, but "
+"the power action will be skipped."
+msgstr ""
+
+#. settings-schema.json->sound-file->description
+msgid "Warning sound effect"
+msgstr ""
+
+#. settings-schema.json->sound-file->tooltip
+msgid "Select a sound to play on loop. Leave empty for the system default."
+msgstr ""
+
+#. settings-schema.json->sound-loop-interval->units
+msgid "ms"
+msgstr ""
+
+#. settings-schema.json->sound-loop-interval->description
+msgid "Sound Loop Interval"
+msgstr ""
+
+#. settings-schema.json->sound-loop-interval->tooltip
+msgid ""
+"How often the alert sound repeats in milliseconds. Adjust this to match the "
+"length of your sound file."
+msgstr ""
