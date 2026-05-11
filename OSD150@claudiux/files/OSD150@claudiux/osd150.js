@@ -163,7 +163,8 @@ class OsdWindow extends Clutter.Actor {
 );
 
 var OsdWindowManager = class {
-    constructor() {
+    constructor(settings) {
+        this.settings = settings;
         this._osdWindows = [];
 
         Main.layoutManager.connect('monitors-changed', () => { this._layoutChanged() });
@@ -217,6 +218,10 @@ var OsdWindowManager = class {
         this._osdWindows[monitorIndex].setLabel(label);
         this._osdWindows[monitorIndex].setMaxLevel(maxLevel);
         this._osdWindows[monitorIndex].setLevel(level);
+
+        this._osdWindows[monitorIndex].translation_y = this.settings.yRelocation;
+        this._osdWindows[monitorIndex].translation_x = this.settings.xRelocation;
+
         this._osdWindows[monitorIndex].show();
     }
 
