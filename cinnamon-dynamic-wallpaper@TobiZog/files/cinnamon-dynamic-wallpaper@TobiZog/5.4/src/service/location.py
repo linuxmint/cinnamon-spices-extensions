@@ -11,11 +11,11 @@ class Location():
         dict: latitude and longitude
     """
     if provider == NetworkLocationProvider.GEOJS:
-      url = "http://get.geojs.io/v1/ip/geo.json"
+      url = "https://get.geojs.io/v1/ip/geo.json"
     elif provider == NetworkLocationProvider.IPAPI:
-      url = "http://ip-api.com/json/?fields=61439"
+      url = "https://ip-api.com/json/?fields=61439"
     elif provider == NetworkLocationProvider.IPWHOIS:
-      url = "http://ipwho.is"
+      url = "https://ipwho.is"
 
     try:
       request = urllib.request.urlopen(url)
