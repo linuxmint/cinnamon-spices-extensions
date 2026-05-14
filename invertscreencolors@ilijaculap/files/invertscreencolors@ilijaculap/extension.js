@@ -1,3 +1,7 @@
+// Based on and thanks to:
+// https://github.com/linuxmint/cinnamon-spices-applets/tree/master/color-blind-filters%40rcalixte
+// https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/rnbdsh%40negateWindow
+
 const Lang = imports.lang;
 const Main = imports.ui.main;
 const Clutter = imports.gi.Clutter;
