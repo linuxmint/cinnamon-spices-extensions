@@ -3,3 +3,5 @@
 */gschemas.compiled
 node_modules/
 /.idea/
+*.code-workspace
+tasksync.md
