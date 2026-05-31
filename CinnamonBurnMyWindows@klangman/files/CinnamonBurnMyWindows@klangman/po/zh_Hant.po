@@ -1,0 +1,1240 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 1.0.3\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-10-15 21:53-0400\n"
+"PO-Revision-Date: 2026-05-31 20:00+0800\n"
+"Last-Translator: Alang Hsu <alang.hsu@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <zh_Lang@li.org>\n"
+"Language: zh_Hant\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. 6.2/extension.js:208 6.2/extension.js:286 6.2/extension.js:614
+msgid "Error"
+msgstr "錯誤"
+
+#. 6.2/extension.js:208
+msgid "was NOT enabled"
+msgstr "未啟用"
+
+#. 6.2/extension.js:209 6.2/extension.js:287
+msgid "The existing extension"
+msgstr "現有擴充套件"
+
+#. 6.2/extension.js:209
+msgid "conflicts with this extension."
+msgstr "與此擴充套件衝突。"
+
+#. 6.2/extension.js:286
+msgid "minimize/unminimize effects can not be enabled"
+msgstr "無法啟用最小化/還原效果"
+
+#. 6.2/extension.js:287
+msgid "already handles minimize/unminimize animation events."
+msgstr "已處理最小化/還原動畫事件。"
+
+#. 6.2/extension.js:615
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore application specific effects can not be applied to "
+"that window"
+msgstr "無法判定先前焦點視窗的應用程式或 WM_CLASS，因此無法對該視窗套用應用程式特定效果"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Apparition.js:94
+msgid "Apparition"
+msgstr "幽靈旋風"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/AuraGlow.js:103
+msgid "Aura Glow"
+msgstr "光暈光輝"
+
+#. effects/BrokenGlass.js:152
+msgid "Broken Glass"
+msgstr "玻璃碎裂"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Doom.js:101
+msgid "Doom"
+msgstr "毀滅戰士"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/EnergizeA.js:90
+msgid "Energize A"
+msgstr "碎片融解A"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/EnergizeB.js:92
+msgid "Energize B"
+msgstr "碎片融解B"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Fire.js:127
+msgid "Fire"
+msgstr "烈火燃燒"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:180
+msgid "Default Fire"
+msgstr "預設烈火燃燒效果"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:190
+msgid "Hell Fire"
+msgstr "地獄之火"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:200
+msgid "Dark and Smutty"
+msgstr "暗黑之火"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:210
+msgid "Cold Breeze"
+msgstr "冰火之舞"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:220
+msgid "Santa is Coming"
+msgstr "聖誕節來臨"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. effects/Fire.js:230
+msgid "Nuclear"
+msgstr "核子"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Focus.js:91
+msgid "Focus"
+msgstr "焦距模糊"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Glide.js:93
+msgid "Glide"
+msgstr "滑翔"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Glitch.js:97
+msgid "Glitch"
+msgstr "電子脈衝"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Hexagon.js:106
+msgid "Hexagon"
+msgstr "蜂巢拼圖"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Incinerate.js:144
+msgid "Incinerate"
+msgstr "燃燒蔓開"
+
+#. effects/Matrix.js:124
+msgid "Matrix"
+msgstr "駭客任務"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Mushroom.js:154
+msgid "Mushroom"
+msgstr "蘑菇爆炸"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:227
+msgid "8Bit Plumber"
+msgstr "8位元水管工"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:244
+msgid "New Bros 2"
+msgstr "新超級兄弟2"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:262
+msgid "The True North"
+msgstr "極北之光"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:280
+msgid "Red White and Blue"
+msgstr "紅白藍"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:297
+msgid "Rainbow"
+msgstr "彩虹"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:314
+msgid "Cattuccino"
+msgstr "貓咪奇諾"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:332
+msgid "Dracula"
+msgstr "德古拉"
+
+#. 6.2->settings-schema.json->mushroom-presets->options
+#. effects/Mushroom.js:349
+msgid "Sparkle"
+msgstr "閃耀"
+
+#. effects/PaintBrush.js:114
+msgid "Paint Brush"
+msgstr "畫筆"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/PixelWheel.js:88
+msgid "Pixel Wheel"
+msgstr "像素輪"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/PixelWipe.js:114
+msgid "Pixel Wipe"
+msgstr "像素清除"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Pixelate.js:88
+msgid "Pixelate"
+msgstr "像素化"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Portal.js:99
+msgid "Portal"
+msgstr "傳送門"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/RGBWarp.js:91
+msgid "RGB Warp"
+msgstr "RGB扭曲"
+
+#. effects/SnapOfDisintegration.js:124
+msgid "Snap of Disintegration"
+msgstr "碎片掉落"
+
+#. effects/TRexAttack.js:121
+msgid "T-Rex Attack"
+msgstr "霸王龍攻擊"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/TVEffect.js:90
+msgid "TV Effect"
+msgstr "電視效果"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/TVGlitch.js:99
+msgid "TV Glitch"
+msgstr "電視故障"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/TeamRocket.js:103
+msgid "Team Rocket"
+msgstr "火箭隊"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Wisps.js:101
+msgid "Wisps"
+msgstr "精靈飛散"
+
+#. metadata.json->name
+msgid "Burn My Windows"
+msgstr "Burn My Windows"
+
+#. metadata.json->description
+msgid ""
+"Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
+"Gnome extension by Schneegans"
+msgstr "基於 Schneegans 的 Burn-My-Windows GNOME 擴充套件，提供視窗開啟/關閉/最小化/還原效果"
+
+#. 6.2->settings-schema.json->general-page->title
+msgid "General"
+msgstr "一般"
+
+#. 6.2->settings-schema.json->effects-page->title
+msgid "Effect Settings"
+msgstr "效果設定"
+
+#. 6.2->settings-schema.json->application-page->title
+msgid "Application Specifics"
+msgstr "應用程式設定"
+
+#. 6.2->settings-schema.json->random-page->title
+msgid "Random Effects"
+msgstr "隨機效果"
+
+#. 6.2->settings-schema.json->power-page->title
+msgid "Power"
+msgstr "電源"
+
+#. 6.2->settings-schema.json->about-page->title
+msgid "About"
+msgstr "關於"
+
+#. 6.2->settings-schema.json->general-settings->title
+msgid "Burn My Windows General Settings"
+msgstr "Burn My Windows 一般設定"
+
+#. 6.2->settings-schema.json->app-specific-settings->title
+msgid "Application Specific Settings"
+msgstr "應用程式特定設定"
+
+#. 6.2->settings-schema.json->effect-selector-section->title
+msgid "Effect Selector"
+msgstr "效果選擇器"
+
+#. 6.2->settings-schema.json->effect-settings->title
+msgid "Effect Specific Settings"
+msgstr "效果詳細設定"
+
+#. 6.2->settings-schema.json->fire-custom-section->title
+#. 6.2->settings-schema.json->mushroom-custom-section->title
+msgid "Setting for the custom preset:"
+msgstr "自訂預設集設定："
+
+#. 6.2->settings-schema.json->random-section->title
+msgid "Effects included in the randomized sets:"
+msgstr "隨機組合中包含的效果："
+
+#. 6.2->settings-schema.json->power-section->title
+msgid "Manage Burn-My-Windows power consumption"
+msgstr "管理 Burn-My-Windows 電源消耗"
+
+#. 6.2->settings-schema.json->about-section->title
+msgid "About Cinnamon Burn-My-Windows"
+msgstr "關於 Cinnamon Burn-My-Windows"
+
+#. 6.2->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Disintegrate your windows with style.</b>\n"
+"Version: ext-version\n"
+"\n"
+"Ported to Cinnamon by Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
+"new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Website</a>\n"
+"\n"
+"Based on the Burn-My-Windows code by Schneegans and contributors\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
+"\n"
+"The Magic Lamp Effect is ported from code by hermes83\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
+"effect\">Github</a>"
+msgstr ""
+"\n"
+"<b>用風格來瓦解你的視窗。</b>\n"
+"版本：ext-version\n"
+"\n"
+"由 Kevin Langman 移植至 Cinnamon\n"
+"<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">GitHub</a> / <a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/new\">回報問題</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/103\">網站</a>\n"
+"\n"
+"基於 Schneegans 及貢獻者的 Burn-My-Windows 程式碼\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">GitHub</a> / <a href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
+"\n"
+"Magic Lamp 效果移植自 hermes83 的程式碼\n"
+"<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-effect\">GitHub</a>"
+
+#. 6.2->settings-schema.json->app-rules->description
+msgid "Application Specific Rules"
+msgstr "應用程式特定規則"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Enabled"
+msgstr "啟用"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Open"
+msgstr "開啟"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Close"
+msgstr "關閉"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Minimize"
+msgstr "最小化"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Unminimize"
+msgstr "還原"
+
+#. 6.2->settings-schema.json->app-rules->columns->title
+msgid "Application"
+msgstr "應用程式"
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name"
+msgstr "具有特殊效果規則的應用程式清單。應用程式可以為桌面檔案名稱或 WM_CLASS 名稱"
+
+#. 6.2->settings-schema.json->app-rules-button->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr "為最近取得焦點的視窗新增應用程式項目"
+
+#. 6.2->settings-schema.json->app-rules-button->tooltip
+msgid ""
+"Focus a window you want to enable application specific setting for then "
+"return here and press this button."
+msgstr "請將焦點移至您要設定特定效果的視窗，然後返回此處按下此按鈕。"
+
+#. 6.2->settings-schema.json->random-include->description
+msgid "Effects included in the randomized sets"
+msgstr "隨機組合中包含的效果"
+
+#. 6.2->settings-schema.json->random-include->tooltip
+msgid ""
+"Defines which effects are included in the randomized sets for each window "
+"event type. When 'Randomized' is selected for any event on the General tab "
+"these sets are used."
+msgstr "定義每個視窗事件類型的隨機組合中包含哪些效果。當在「一般」標籤中為任一事件選取了「隨機」時，將使用這些組合。"
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "Effect Name         "
+msgstr "效果名稱"
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Open        "
+msgstr "開啟"
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "      Close       "
+msgstr "關閉"
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "     Minimize     "
+msgstr "最小化"
+
+#. 6.2->settings-schema.json->random-include->columns->title
+msgid "    Unminimize    "
+msgstr "還原"
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+msgid "Magic Lamp"
+msgstr "魔法燈"
+
+#. 6.2->settings-schema.json->effect-selector->description
+msgid "Show settings for effect:"
+msgstr "顯示效果設定："
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+msgid "Randomized"
+msgstr "隨機"
+
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+msgid "None"
+msgstr "無"
+
+#. 6.2->settings-schema.json->open-window-effect->description
+#. 6.2->settings-schema.json->power-open-effect->description
+msgid "Open window effect"
+msgstr "開啟視窗效果"
+
+#. 6.2->settings-schema.json->close-window-effect->description
+#. 6.2->settings-schema.json->power-close-effect->description
+msgid "Close window effect"
+msgstr "關閉視窗效果"
+
+#. 6.2->settings-schema.json->dialog-special->description
+#. 6.2->settings-schema.json->power-dialog-special->description
+msgid "Special handling for dialog windows"
+msgstr "對話視窗特殊處理"
+
+#. 6.2->settings-schema.json->dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows). These settings will override any application "
+"specific settings that may have been defined."
+msgstr "允許您定義處理對話視窗類型（例如開啟檔案對話框）的特殊設定。這些設定將覆蓋任何可能已定義的應用程式特定設定。"
+
+#. 6.2->settings-schema.json->dialog-open-effect->description
+#. 6.2->settings-schema.json->power-dialog-open-effect->description
+msgid "Open dialog window effect"
+msgstr "開啟對話視窗效果"
+
+#. 6.2->settings-schema.json->dialog-close-effect->description
+#. 6.2->settings-schema.json->power-dialog-close-effect->description
+msgid "Close dialog window effect"
+msgstr "關閉對話視窗效果"
+
+#. 6.2->settings-schema.json->minimize-effect->description
+#. 6.2->settings-schema.json->power-minimize-effect->description
+msgid "Minimize window effect"
+msgstr "最小化視窗效果"
+
+#. 6.2->settings-schema.json->unminimize-effect->description
+#. 6.2->settings-schema.json->power-unminimize-effect->description
+msgid "Unminimize window effect"
+msgstr "還原視窗效果"
+
+#. 6.2->settings-schema.json->power-dialog-special->tooltip
+msgid ""
+"Allows you to define special settings for handling dialog window types (i.e. "
+"file open dialog windows)."
+msgstr "允許您定義處理對話視窗類型（例如開啟檔案對話框）的特殊設定。"
+
+#. 6.2->settings-schema.json->power-onbattery->description
+msgid "Use different effects when running on battery power"
+msgstr "使用電池時採用不同效果"
+
+#. 6.2->settings-schema.json->power-onbattery->tooltip
+msgid ""
+"When enabled, a set of options will appear allowing you to define which "
+"effects (if any) will be used when running on battery power and the battery "
+"charge state is less than the set limit. These settings will take precedence "
+"over both the general settings and any application specific settings when "
+"the battery charge state condition is met."
+msgstr ""
+"啟用後，將顯示一組選項，讓您定義在使用電池且電量低於設定閾值時要使用哪些效果（可選擇無效果）。當符合電池電量條件時，這些設定將優先於一般設定和應用程式特定設定。"
+
+#. 6.2->settings-schema.json->power-percent->description
+msgid "When battery is less than (percent)"
+msgstr "當電池電量低於（百分比）"
+
+#. 6.2->settings-schema.json->apparition-shake-intensity->description
+msgid "Shake Intensity"
+msgstr "晃動力度"
+
+#. 6.2->settings-schema.json->apparition-twirl-intensity->description
+msgid "Twirl Intensity"
+msgstr "扭曲力度"
+
+#. 6.2->settings-schema.json->apparition-suction-intensity->description
+msgid "Suction Intensity"
+msgstr "吸入力度"
+
+#. 6.2->settings-schema.json->apparition-randomness->description
+msgid "Randomness"
+msgstr "隨機值"
+
+#. 6.2->settings-schema.json->apparition-animation-time->description
+#. 6.2->settings-schema.json->aura-glow-animation-time->description
+#. 6.2->settings-schema.json->doom-animation-time->description
+#. 6.2->settings-schema.json->energize-a-animation-time->description
+#. 6.2->settings-schema.json->energize-b-animation-time->description
+#. 6.2->settings-schema.json->fire-animation-time->description
+#. 6.2->settings-schema.json->focus-animation-time->description
+#. 6.2->settings-schema.json->glide-animation-time->description
+#. 6.2->settings-schema.json->glitch-animation-time->description
+#. 6.2->settings-schema.json->hexagon-animation-time->description
+#. 6.2->settings-schema.json->incinerate-animation-time->description
+#. 6.2->settings-schema.json->magiclamp-animation-time->description
+#. 6.2->settings-schema.json->mushroom-animation-time->description
+#. 6.2->settings-schema.json->pixelate-animation-time->description
+#. 6.2->settings-schema.json->pixel-wheel-animation-time->description
+#. 6.2->settings-schema.json->pixel-wipe-animation-time->description
+#. 6.2->settings-schema.json->portal-animation-time->description
+#. 6.2->settings-schema.json->rgbwarp-animation-time->description
+#. 6.2->settings-schema.json->team-rocket-animation-time->description
+#. 6.2->settings-schema.json->tv-animation-time->description
+#. 6.2->settings-schema.json->tv-glitch-animation-time->description
+#. 6.2->settings-schema.json->wisps-animation-time->description
+msgid "Effect Duration (ms)"
+msgstr "效果持續時間（毫秒）"
+
+#. 6.2->settings-schema.json->apparition-reset->description
+#. 6.2->settings-schema.json->aura-glow-reset->description
+#. 6.2->settings-schema.json->doom-reset->description
+#. 6.2->settings-schema.json->energize-a-reset->description
+#. 6.2->settings-schema.json->energize-b-reset->description
+#. 6.2->settings-schema.json->fire-reset->description
+#. 6.2->settings-schema.json->focus-reset->description
+#. 6.2->settings-schema.json->glide-reset->description
+#. 6.2->settings-schema.json->glitch-reset->description
+#. 6.2->settings-schema.json->hexagon-reset->description
+#. 6.2->settings-schema.json->incinerate-reset->description
+#. 6.2->settings-schema.json->magiclamp-reset->description
+#. 6.2->settings-schema.json->mushroom-reset->description
+#. 6.2->settings-schema.json->pixelate-reset->description
+#. 6.2->settings-schema.json->pixel-wheel-reset->description
+#. 6.2->settings-schema.json->pixel-wipe-reset->description
+#. 6.2->settings-schema.json->portal-reset->description
+#. 6.2->settings-schema.json->rgbwarp-reset->description
+#. 6.2->settings-schema.json->team-rocket-reset->description
+#. 6.2->settings-schema.json->tv-reset->description
+#. 6.2->settings-schema.json->tv-glitch-reset->description
+#. 6.2->settings-schema.json->wisps-reset->description
+msgid "Reset to default"
+msgstr "重設為預設值"
+
+#. 6.2->settings-schema.json->aura-glow-random-color->description
+msgid "Random Color"
+msgstr "隨機顏色"
+
+#. 6.2->settings-schema.json->aura-glow-start-hue->description
+msgid "Start Hue"
+msgstr "起始色相"
+
+#. 6.2->settings-schema.json->aura-glow-speed->description
+#. 6.2->settings-schema.json->glitch-speed->description
+#. 6.2->settings-schema.json->tv-glitch-speed->description
+msgid "Speed"
+msgstr "速度"
+
+#. 6.2->settings-schema.json->aura-glow-saturation->description
+msgid "Saturation"
+msgstr "飽和度"
+
+#. 6.2->settings-schema.json->aura-glow-edge-size->description
+msgid "Edge Size"
+msgstr "邊緣大小"
+
+#. 6.2->settings-schema.json->aura-glow-edge-hardness->description
+msgid "Edge Hardness"
+msgstr "邊緣硬度"
+
+#. 6.2->settings-schema.json->aura-glow-blur->description
+#. 6.2->settings-schema.json->focus-blur-amount->description
+msgid "Blur Amount"
+msgstr "模糊程度"
+
+#. 6.2->settings-schema.json->doom-horizontal-scale->description
+msgid "Horizontal Scale"
+msgstr "水平比例"
+
+#. 6.2->settings-schema.json->doom-vertical-scale->description
+msgid "Vertical Scale"
+msgstr "垂直比例"
+
+#. 6.2->settings-schema.json->doom-pixel-size->description
+#. 6.2->settings-schema.json->pixelate-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wheel-pixel-size->description
+#. 6.2->settings-schema.json->pixel-wipe-pixel-size->description
+msgid "Pixel Size"
+msgstr "像素大小"
+
+#. 6.2->settings-schema.json->doom-y-hack->description
+msgid "Y offset fix for open/unminimize events"
+msgstr "開啟/還原事件的 Y 軸偏移修正"
+
+#. 6.2->settings-schema.json->doom-y-hack->tooltip
+msgid ""
+"Apply an offset to the Y axis window target position so that the open/"
+"unminimize animation completes at the right location. This is a hack fix for "
+"the Doom effect until I can find a proper fix"
+msgstr "對視窗目標位置的 Y 軸套用偏移，使開啟/還原動畫在正確位置完成。這是 Doom 效果的臨時修正，直到找到正式解決方案"
+
+#. 6.2->settings-schema.json->energize-a-scale->description
+#. 6.2->settings-schema.json->energize-b-scale->description
+#. 6.2->settings-schema.json->fire-custom-scale->description
+#. 6.2->settings-schema.json->glide-scale->description
+#. 6.2->settings-schema.json->glitch-scale->description
+#. 6.2->settings-schema.json->hexagon-scale->description
+#. 6.2->settings-schema.json->incinerate-scale->description
+#. 6.2->settings-schema.json->tv-glitch-scale->description
+#. 6.2->settings-schema.json->wisps-scale->description
+msgid "Scale"
+msgstr "比例"
+
+#. 6.2->settings-schema.json->energize-a-color->description
+#. 6.2->settings-schema.json->energize-b-color->description
+#. 6.2->settings-schema.json->glitch-color->description
+#. 6.2->settings-schema.json->incinerate-color->description
+#. 6.2->settings-schema.json->portal-color->description
+#. 6.2->settings-schema.json->tv-effect-color->description
+#. 6.2->settings-schema.json->tv-glitch-color->description
+msgid "Color"
+msgstr "顏色"
+
+#. 6.2->settings-schema.json->fire-presets->options
+#. 6.2->settings-schema.json->mushroom-presets->options
+msgid "Custom"
+msgstr "自訂"
+
+#. 6.2->settings-schema.json->fire-presets->description
+msgid "Fire Preset"
+msgstr "火焰預設集"
+
+#. 6.2->settings-schema.json->fire-custom-movement-speed->description
+msgid "Fire Movement Speed"
+msgstr "火焰移動速度"
+
+#. 6.2->settings-schema.json->fire-3d-noise->description
+msgid "Fire 3D Noise"
+msgstr "火焰 3D 雜訊"
+
+#. 6.2->settings-schema.json->fire-3d-noise->tooltip
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "創造更多動態火焰，但更耗費顯示卡資源。"
+
+#. 6.2->settings-schema.json->fire-random-color->description
+msgid "Use a Random Color (overrides other color settings)"
+msgstr "使用隨機顏色（覆蓋其他顏色設定）"
+
+#. 6.2->settings-schema.json->fire-random-color->tooltip
+msgid ""
+"Use a random fire color. This setting will override any preset or custom "
+"colors settings you select."
+msgstr "使用隨機火焰顏色。此設定將覆蓋您選取的任何預設集或自訂顏色設定。"
+
+#. 6.2->settings-schema.json->fire-colors->description
+msgid "Colors 1-5"
+msgstr "顏色 1-5"
+
+#. 6.2->settings-schema.json->focus-blur-quality->description
+msgid "Blur Quality"
+msgstr "模糊品質"
+
+#. 6.2->settings-schema.json->focus-blur-quality->tooltip
+msgid ""
+"The Quality of the Blur (Setting this too high may increase GPU load and "
+"affect performance)"
+msgstr "模糊品質（設定過高可能會增加 GPU 負載並影響效能）"
+
+#. 6.2->settings-schema.json->glide-squish->description
+msgid "Squish"
+msgstr "擠壓程度"
+
+#. 6.2->settings-schema.json->glide-tilt->description
+msgid "Tilt"
+msgstr "傾斜"
+
+#. 6.2->settings-schema.json->glide-shift->description
+msgid "Shift"
+msgstr "偏移"
+
+#. 6.2->settings-schema.json->glitch-strength->description
+#. 6.2->settings-schema.json->tv-glitch-strength->description
+msgid "Strength"
+msgstr "強度"
+
+#. 6.2->settings-schema.json->hexagon-line-width->description
+msgid "Mesh Line Width"
+msgstr "網格線寬"
+
+#. 6.2->settings-schema.json->hexagon-line-color->description
+msgid "Line Color"
+msgstr "線條顏色"
+
+#. 6.2->settings-schema.json->hexagon-glow-color->description
+msgid "Glow Color"
+msgstr "光暈顏色"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->description
+msgid "Additive Blending"
+msgstr "疊加融合"
+
+#. 6.2->settings-schema.json->hexagon-additive-blending->tooltip
+msgid "You may want to enable this for dark window themes."
+msgstr "在暗黑視窗主題中，您可能需要此特效。"
+
+#. 6.2->settings-schema.json->incinerate-turbulence->description
+msgid "Turbulence"
+msgstr "擾動"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->description
+msgid "Start at Pointer"
+msgstr "從遊標位置開始"
+
+#. 6.2->settings-schema.json->incinerate-use-pointer->tooltip
+msgid "If disabled, a random location will be chosen."
+msgstr "如果禁用，將從隨機位置開始。"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Curved"
+msgstr "弧形"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Wavy"
+msgstr "波浪"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Random"
+msgstr "隨機"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Appear: Curved / Disappear: Wavy"
+msgstr "出現：弧形 / 消失：波浪"
+
+#. 6.2->settings-schema.json->magiclamp-effect->options
+msgid "Appear: Wavy / Disappear: Curved"
+msgstr "出現：波浪 / 消失：弧形"
+
+#. 6.2->settings-schema.json->magiclamp-effect->description
+msgid "The type of effect"
+msgstr "效果類型"
+
+#. 6.2->settings-schema.json->magiclamp-effect->tooltip
+msgid ""
+"The effect can be a smooth curve or a wavy animation. The random option will "
+"randomly choose between the two and the Appear/Disappear options use "
+"different effects whether a window is appearing or disappearing from the "
+"screen"
+msgstr "效果可以為平滑曲線或波浪動畫。隨機選項將隨機選擇兩者之一；「出現/消失」選項則分別使用不同的效果來處理視窗的出現與消失。"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Top"
+msgstr "頂部"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Bottom"
+msgstr "底部"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Left"
+msgstr "左側"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Right"
+msgstr "右側"
+
+#. 6.2->settings-schema.json->magiclamp-edge->options
+msgid "Edge closest to mouse pointer"
+msgstr "最接近滑鼠游標的邊緣"
+
+#. 6.2->settings-schema.json->magiclamp-edge->description
+msgid "Open/Close Edge"
+msgstr "開啟/關閉邊緣"
+
+#. 6.2->settings-schema.json->magiclamp-edge->tooltip
+msgid ""
+"The monitor edge where a window should originate from when opening, or "
+"disappear towards when closing. This setting is not used for minimize or "
+"unminimize events"
+msgstr "視窗開啟時應從哪個螢幕邊緣出現，或關閉時消失至哪個邊緣。此設定不適用於最小化或還原事件。"
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->description
+msgid "Open/Close Edge Offset"
+msgstr "開啟/關閉邊緣偏移"
+
+#. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
+msgid ""
+"The offset from the top or left of the \"Open/Close Edge\" that the "
+"animation should use as the origin/target of the animation. This is a "
+"percentage of the monitors width/height and it does not apply to minimize/"
+"unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
+"to mouse pointer\""
+msgstr ""
+"動畫應使用的「開啟/關閉邊緣」從頂部或左側的偏移量，作為動畫的起點/終點。此為螢幕寬度/高度的百分比，不適用於最小化/還原事件，也不適用於「開啟/關閉邊緣」設為「最接近滑鼠游標的邊緣」的情況。"
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->description
+msgid "X Tiles"
+msgstr "X 分割數"
+
+#. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr "這會影響動畫的品質和效能成本"
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->description
+msgid "Y Tiles"
+msgstr "Y 分割數"
+
+#. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr "這會影響動畫的品質和效能成本"
+
+#. 6.2->settings-schema.json->mushroom-presets->description
+msgid "Mushroom Preset"
+msgstr "蘑菇預設集"
+
+#. 6.2->settings-schema.json->mushroom-custom-scale-style->description
+msgid "Scale Style"
+msgstr "縮放樣式"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-count->description
+msgid "Spark Count"
+msgstr "火花數量"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-color->description
+msgid "Spark Color"
+msgstr "火花顏色"
+
+#. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
+msgid "Spark Rotation"
+msgstr "火花旋轉"
+
+#. 6.2->settings-schema.json->mushroom-custom-rays-color->description
+msgid "Rays Color"
+msgstr "光芒顏色"
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-count->description
+msgid "Star Rings Count"
+msgstr "星環數量"
+
+#. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
+msgid "Star Ring Rotation"
+msgstr "星環旋轉"
+
+#. 6.2->settings-schema.json->mushroom-custom-star-count->description
+msgid "Stars Count Per Ring"
+msgstr "每環星星數"
+
+#. 6.2->settings-schema.json->mushroom-star-colors->description
+msgid "Colors 1-6"
+msgstr "顏色 1-6"
+
+#. 6.2->settings-schema.json->pixelate-noise->description
+msgid "Noise"
+msgstr "雜訊"
+
+#. 6.2->settings-schema.json->pixel-wheel-spoke-count->description
+msgid "Spoke Count"
+msgstr "輻條數量"
+
+#. 6.2->settings-schema.json->portal-rotation-speed->description
+msgid "Rotation Speed"
+msgstr "旋轉速度"
+
+#. 6.2->settings-schema.json->portal-whirling->description
+msgid "Whirling"
+msgstr "迴旋"
+
+#. 6.2->settings-schema.json->portal-details->description
+msgid "Details"
+msgstr "細節"
+
+#. 6.2->settings-schema.json->rgbwarp-brightness->description
+msgid "Brightness"
+msgstr "亮度"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-r->description
+msgid "Red Speed"
+msgstr "紅色速度"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-g->description
+msgid "Green Speed"
+msgstr "綠色速度"
+
+#. 6.2->settings-schema.json->rgbwarp-speed-b->description
+msgid "Blue Speed"
+msgstr "藍色速度"
+
+#. 6.2->settings-schema.json->team-rocket-animation-split->description
+msgid "Animation Split"
+msgstr "動畫分割"
+
+#. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
+#. position->description
+msgid "Horizontal Sparkle Position"
+msgstr "水平閃爍位置"
+
+#. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
+#. position->description
+msgid "Vertical Sparkle Position"
+msgstr "垂直閃爍位置"
+
+#. 6.2->settings-schema.json->team-rocket-window-rotation->description
+msgid "Rotate Window"
+msgstr "旋轉視窗"
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
+msgid "Sparkle Rotation"
+msgstr "閃爍旋轉"
+
+#. 6.2->settings-schema.json->team-rocket-sparkle-size->description
+msgid "Sparkle Size"
+msgstr "閃爍大小"
+
+#. 6.2->settings-schema.json->wisps-color-1->description
+msgid "Color #1"
+msgstr "顏色 1"
+
+#. 6.2->settings-schema.json->wisps-color-2->description
+msgid "Color #2"
+msgstr "顏色 2"
+
+#. 6.2->settings-schema.json->wisps-color-3->description
+msgid "Color #3"
+msgstr "顏色 3"
+
+#. 6.2->settings-schema.json->test-effect->description
+msgid "Open effect preview window"
+msgstr "開啟效果預覽視窗"
+
+#. 6.2->settings-schema.json->test-effect->tooltip
+msgid "Opens a window using the currently selected effect."
+msgstr "使用目前選取的效果開啟一個視窗。"
