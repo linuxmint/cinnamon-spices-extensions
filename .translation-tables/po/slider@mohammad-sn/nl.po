@@ -1,0 +1,66 @@
+# SLIDER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-26 21:42-0400\n"
+"PO-Revision-Date: 2024-11-27 11:43+0100\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. extension.js:133
+msgid "ERROR"
+msgstr "FOUT"
+
+#. extension.js:133
+msgid "Slider was NOT enabled"
+msgstr "Schuifregelaar was NIET ingeschakeld"
+
+#. extension.js:134
+msgid "This extension is currently incompatible with your version of Cinnamon."
+msgstr "Deze extensie is momenteel incompatibel met jouw versie van Cinnamon."
+
+#. metadata.json->description
+msgid "Yet another nice transition effect for ws switching."
+msgstr "Nog een mooi overgangseffect voor het wisselen van werkruimtes."
+
+#. metadata.json->name
+msgid "Slider"
+msgstr "Schuifregelaar"
+
+#. settings-schema.json->animation-duration->units
+msgid "milliseconds"
+msgstr "milliseconden"
+
+#. settings-schema.json->animation-duration->description
+msgid "Animation Duration:"
+msgstr "Animatieduur:"
+
+#. settings-schema.json->animation-effect->description
+msgid "Animation Easing:"
+msgstr "Animatie easing:"
+
+#. settings-schema.json->slip-factor->description
+msgid "Slip Factor:"
+msgstr "Glijfactor:"
+
+#. settings-schema.json->sliding-background->description
+msgid "Sliding Background"
+msgstr "Schuivende achtergrond"
+
+#. settings-schema.json->zoom-level->description
+msgid "Background Zoom Level:"
+msgstr "Zoomniveau van achtergrond:"
+
+#. settings-schema.json->vertical-position->description
+msgid "Background Vertical Position:"
+msgstr "Verticale positie van achtergrond:"

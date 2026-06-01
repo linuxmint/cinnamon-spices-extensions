@@ -1,0 +1,10 @@
+# MOUSE SHAKE ZOOM EXTENSION
+# This file is put in the public domain.
+# rcalixte, 2022
+#
+msgid ""
+msgstr ""
+
+#. 5.6->settings-schema.json->shake-threshold->units
+msgid "px"
+msgstr ""

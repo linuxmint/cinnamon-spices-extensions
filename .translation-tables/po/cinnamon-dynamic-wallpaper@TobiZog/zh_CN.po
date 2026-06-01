@@ -1,0 +1,281 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-08 19:35+0200\n"
+"PO-Revision-Date: 2024-05-24 09:09+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr "欢迎使用Cinnamon动态壁纸"
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr "点击偏好来选择动态壁纸"
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr ""
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr ""
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr "错误！"
+
+#: 5.4/extension.js:126
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr "Cinnamon动态壁纸运行循环脚本时出错。请在GitHub上创建一个问题。"
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr "打开设置"
+
+#. metadata.json->name
+msgid "Cinnamon Dynamic Wallpaper"
+msgstr "Cinnamon动态壁纸"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr "基于时间和位置的动态桌面背景的Cinnamon扩展"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "图片来源"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "图片集"
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr ""
+
+#: 5.4/res/preferences.glade:237
+msgid "HEIC file"
+msgstr "HEIC文件"
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr "来源文件夹"
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr "选择一个图片集"
+
+#: 5.4/res/preferences.glade:380
+msgid "Select a heic file to import"
+msgstr "选择一个HEIC文件以导入"
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr "选择一个来源文件夹"
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr "打开文件选择对话框"
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr "选择的图片"
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr "图片配置"
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr "周期判断"
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr "使用网络位置"
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr "自定义位置"
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr "自定义时间间隔"
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr "位置判断"
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr "通过网络刷新位置的间隔时间（分钟）"
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr "位置提供程序"
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr "纬度"
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr "经度"
+
+#: 5.4/res/preferences.glade:1358
+msgid "Period 1"
+msgstr "时段1"
+
+#: 5.4/res/preferences.glade:1372
+msgid "Period 2"
+msgstr "时段2"
+
+#: 5.4/res/preferences.glade:1386
+msgid "Period 3"
+msgstr "时段3"
+
+#: 5.4/res/preferences.glade:1400
+msgid "Period 4"
+msgstr "时段4"
+
+#: 5.4/res/preferences.glade:1414
+msgid "Period 5"
+msgstr "时段5"
+
+#: 5.4/res/preferences.glade:1915
+msgid "Period 6"
+msgstr "时段6"
+
+#: 5.4/res/preferences.glade:1929
+msgid "Period 7"
+msgstr "时段7"
+
+#: 5.4/res/preferences.glade:1943
+msgid "Period 9"
+msgstr "时段9"
+
+#: 5.4/res/preferences.glade:1957
+msgid "Period 8"
+msgstr "时段8"
+
+#: 5.4/res/preferences.glade:1971
+msgid "Period 10"
+msgstr "时段10"
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr "位置与时间"
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr "缩放"
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr "图片外观"
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr "登录屏幕"
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr "将背景图片设置为登录屏幕背景"
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr "动态背景颜色"
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr "使用动态背景颜色来创建梯度"
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr "行为"
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr "关于这个项目"
+
+#: 5.4/res/preferences.glade:2763
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"根据位置或用户选择，此扩展程序会计算一天的时间段并切换 Cinnamon 桌面的背景图"
+"像。该扩展提供一组预配置的壁纸作为图片来源，由用户导入的HEIC图像或包含单个图"
+"像的自定义文件夹。"
+
+#: 5.4/res/preferences.glade:2782
+msgid "Developed by TobiZog"
+msgstr "由TobiZog开发"
+
+#: 5.4/res/preferences.glade:2799
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr ""
+"如果你需要更新信息或者想要对此扩展评分，你可以访问Cinnamon Spices网站。"
+
+#: 5.4/res/preferences.glade:2810
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr "Cinnamon动态壁纸在Cinnamon Spices网站"
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr "源代码"
+
+#: 5.4/res/preferences.glade:2864
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr "这个项目是开源的。您可以在 GitHub 上查看此扩展的完整源代码。"
+
+#: 5.4/res/preferences.glade:2875
+msgid "Source Code on GitHub"
+msgstr "源代码在GitHub上"
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr "问题和增强功能"
+
+#: 5.4/res/preferences.glade:2929
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
+msgstr "你发现问题了吗？或者想要一个新功能？转到GitHub存储库并创建新问题。"
+
+#: 5.4/res/preferences.glade:2940
+msgid "Create a new issue on GitHub"
+msgstr "在GitHub上创建新问题"
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr "关于"
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr "应用并关闭此窗口"
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr "在不关闭此窗口的情况下应用设置"

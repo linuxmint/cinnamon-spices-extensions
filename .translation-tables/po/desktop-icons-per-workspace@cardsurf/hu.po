@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2021-04-11 19:41+0200\n"
+"Last-Translator: Balazs Bosak <bossbob88@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Állítsa be az asztali ikonok pozícióit munkaterületenként"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Asztali ikonok munkaterületenként"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Konfiguráció"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "ezredmásodperc"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Az asztal frissítésének késleltetése indításkor"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Ennyi ezredmásodpercet várjon az asztal kezdeti frissítésével a bővítmény "
+"indulását követően"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Asztal frissítési folyamat befejezésének késleltetése"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr "Ennyi ezredmásodpercet várjon az asztal frissítésének befejezésével"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "másodperc"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Mentés gyakorisága"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Milyen gyakran mentse az asztali ikonok pozícióját a fájlba. A 0 azt "
+"jelenti, hogy nem kell menteni a fájlba."
