@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-05-14 22:04+0200\n"
-"PO-Revision-Date: 2025-05-14 22:05+0200\n"
+"POT-Creation-Date: 2025-12-02 20:17+0100\n"
+"PO-Revision-Date: 2025-12-02 20:20+0100\n"
 "Last-Translator: claudiux\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -31,6 +31,38 @@ msgstr ""
 #. metadata.json->name
 msgid "Smart Panel"
 msgstr "Panneau intelligent (Smart Panel)"
+
+#. settings-schema.json->head0->description
+msgid "Panels: "
+msgstr "Panneaux : "
+
+#. settings-schema.json->concerned->description
+msgid "Which panels: "
+msgstr "Quels panneaux : "
+
+#. settings-schema.json->concerned->options
+msgid "Main panel only"
+msgstr "Panneau principal seulement"
+
+#. settings-schema.json->concerned->options
+msgid "Horizontal panels only"
+msgstr "Panneaux horizontaux seulement"
+
+#. settings-schema.json->concerned->options
+msgid "Vertical panels only"
+msgstr "Panneaux verticaux seulement"
+
+#. settings-schema.json->concerned->options
+msgid "All of them"
+msgstr "Tous les panneaux"
+
+#. settings-schema.json->concerned->tooltip
+msgid ""
+"The main panel is the first panel that was created (by Cinnamon).\n"
+"It is recommended that you restart Cinnamon after changing this setting."
+msgstr ""
+"Le panneau principal est le premier panneau qui a été créé (par Cinnamon).\n"
+"Il est recommandé de redémarrer Cinnamon après avoir modifié ce paramètre."
 
 #. settings-schema.json->head1->description
 msgid "Mouse scroll options: "

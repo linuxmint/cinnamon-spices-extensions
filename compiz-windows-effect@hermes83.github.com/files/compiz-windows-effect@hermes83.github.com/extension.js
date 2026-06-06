@@ -27,14 +27,35 @@ const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
 const Settings = imports.ui.settings;
 const Config = imports.misc.config;
+const SignalManager = imports.misc.signalManager;
+const Cinnamon = imports.gi.Cinnamon;
+const MessageTray = imports.ui.messageTray;
+const St = imports.gi.St;
+const Main = imports.ui.main;
 
 const IS_VERSION_BEFORE_5_4 = parseFloat(Config.PACKAGE_VERSION.split('.')[0] + '.' + Config.PACKAGE_VERSION.split('.')[1]) < 5.4;
+
+const Preset = {
+   Subtle: 1,
+   Realistic: 2,
+   Exaggerated: 3,
+   Extreme: 4,
+   Custom: 5
+}
+
+const Callbacks = {
+   on_exclude_button_pressed: function() {
+      if (settings) {
+         settings.window_add_button_pressed();
+      }
+   }
+}
 
 let settings;
 let extension;
 
 function init(metadata) {
-    settings = new SettingsHandler(metadata.uuid);
+    settings = new SettingsHandler(metadata);
 }
 
 function enable() {
@@ -42,26 +63,158 @@ function enable() {
     if (extension) {
         extension.enable();
     }
-}   
+    return Callbacks;
+}
 
 function disable() {
     if (extension) {
         extension.disable();
         extension = null;
     }
+    if (settings) {
+       settings.destroy();
+    }
+}
+
+function getAppForWindow(window) {
+    let windowTracker = Cinnamon.WindowTracker.get_default();
+    let app = windowTracker.get_window_app(window);
+    if (!app) {
+        app = windowTracker.get_app_from_pid(window.get_pid());
+    }
+    if (app)
+        return app;
+    return null;
 }
 
 class SettingsHandler {
-    constructor(uuid) {
-        this.settings = new Settings.ExtensionSettings(this, uuid);
-        this.settings.bindProperty(Settings.BindingDirection.IN, "friction", "friction", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN, "springK", "springK", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN, "speedupFactorDivider", "speedupFactorDivider", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN, "mass", "mass", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN, "xTiles", "xTiles", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN, "yTiles", "yTiles", function(){});
-        this.settings.bindProperty(Settings.BindingDirection.IN, "maxUnmaxFactor", "maxUnmaxFactor", function(){});
-    }    
+    constructor(metadata) {
+        this.meta = metadata;
+        this.settings = new Settings.ExtensionSettings(this, metadata.uuid);
+
+        this._signalManager = new SignalManager.SignalManager(null);
+        this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
+        this._signalManager.connect(this.settings, "changed::presetList", this._onPresetListChanged, this);
+
+        this.bind("friction", "customFriction", this._updateConfig);
+        this.bind("springK", "customSpringK", this._updateConfig);
+        this.bind("speedupFactorDivider", "customSpeedupFactorDivider", this._updateConfig);
+        this.bind("mass", "customMass", this._updateConfig);
+        this.bind("xTiles", "customXTiles", this._updateConfig);
+        this.bind("yTiles", "customYTiles", this._updateConfig);
+        this.bind("maxUnmaxFactor", "customMaxUnmaxFactor", this._updateConfig);
+
+        // Update the config based on the current presetList value
+        this._onPresetListChanged();
+    }
+
+    _updateConfig() {
+        this.friction = this.customFriction;
+        this.springK = this.customSpringK;
+        this.speedupFactorDivider = this.customSpeedupFactorDivider;
+        this.mass = this.customMass;
+        this.xTiles = this.customXTiles;
+        this.yTiles = this.customYTiles;
+        this.maxUnmaxFactor = this.customMaxUnmaxFactor;
+    }
+
+    _onFocusChanged() {
+        this.prev_focused_window = this.last_focused_window;
+        this.last_focused_window = global.display.get_focus_window();
+    }
+
+    _onPresetListChanged() {
+        let preset = this.settings.getValue("presetList");
+        switch (preset) {
+        case Preset.Subtle:
+            this.friction = 1.5;
+            this.springK = 1.0;
+            this.speedupFactorDivider = 2.7;
+            this.mass = 80;
+            this.xTiles = 6;
+            this.yTiles = 6;
+            this.maxUnmaxFactor = 1;
+            break;
+        case Preset.Realistic:
+            this.friction = 2.0;
+            this.springK = 1.8;
+            this.speedupFactorDivider = 5.4;
+            this.mass = 80;
+            this.xTiles = 6;
+            this.yTiles = 6;
+            this.maxUnmaxFactor = 2;
+            break;
+        case Preset.Exaggerated:
+            this.friction = 2.2;
+            this.springK = 2.2;
+            this.speedupFactorDivider = 6.5;
+            this.mass = 50;
+            this.xTiles = 6;
+            this.yTiles = 6;
+            this.maxUnmaxFactor = 3;
+            break;
+        case Preset.Extreme:
+            this.friction = 7.0;
+            this.springK = 5.5;
+            this.speedupFactorDivider = 19.0;
+            this.mass = 25;
+            this.xTiles = 10;
+            this.yTiles = 10;
+            this.maxUnmaxFactor = 5;
+            break;
+        case Preset.Custom:
+            this.friction = this.customFriction;
+            this.springK = this.customSpringK;
+            this.speedupFactorDivider = this.customSpeedupFactorDivider;
+            this.mass = this.customMass;
+            this.xTiles = this.customXTiles;
+            this.yTiles = this.customYTiles;
+            this.maxUnmaxFactor = this.customMaxUnmaxFactor;
+            break;
+        }
+    }
+
+    window_add_button_pressed() {
+        if (this.prev_focused_window) {
+            let app = getAppForWindow(this.prev_focused_window);
+            if (app && !app.is_window_backed()) {
+                let windowList = this.settings.getValue("excludeList");
+                windowList.push( {application:app.get_id()} );
+                this.settings.setValue("excludeList", windowList);
+            } else if (this.prev_focused_window.get_wm_class()) {
+                let windowList = this.settings.getValue("excludeList");
+                windowList.push( {application:this.prev_focused_window.get_wm_class()} );
+                this.settings.setValue("excludeList", windowList);
+            } else {
+                let source = new MessageTray.Source(this.meta.name);
+                let notification = new MessageTray.Notification(source, _("Error") + ": " + this.meta.name,
+                   _("Unable to determine the application or the WM_CLASS of the previously focused window, therefore Compiz window effects can not be disabled for that window"),
+                   {icon: new St.Icon({icon_name: "compiz-window-effect", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
+                   );
+                Main.messageTray.add(source);
+                source.notify(notification);
+            }
+        }
+    }
+
+    // Since Cinnamon's settings does not allow binding to custom type json entries we have to have our own
+    bind(key, variable, callback) {
+        this._signalManager.connect(this.settings, "changed::"+key, () => this._keyChanged(key, variable, callback));
+        this[variable] = this.settings.getValue(key);
+    }
+
+    _keyChanged(key, variable, callback) {
+        let old = this[variable];
+        this[variable] = this.settings.getValue(key);
+        if (callback && old != this[variable]) {
+            callback.apply(this);
+        }
+    }
+
+    destroy() {
+        this._signalManager .disconnectAllSignals();
+        this.settings.finalize();
+    }
 }
 
 class CompizWindowsEffectExtension {
@@ -107,7 +260,7 @@ class CompizWindowsEffectExtension {
         if (this.sizeChangeOpId != null) {
             global.window_manager.disconnect(this.sizeChangeOpId);
         }
-        
+
         global.get_window_actors().forEach(function (actor) {
             if (actor) {
                 let effect = actor.get_effect(this.EFFECT_NAME);
@@ -116,6 +269,18 @@ class CompizWindowsEffectExtension {
                 }
             }
         }, this );
+    }
+
+    shouldAnimateWindow(metaWindow) {
+        if (!metaWindow) {
+            return true;
+        }
+        let wmclass = metaWindow.get_wm_class();
+        let app = getAppForWindow(metaWindow);
+        let appId = app ? app.get_id() : null;
+        let excludeList = settings.settings.getValue("excludeList");
+        let entry = excludeList.find( (element) => {if (element.application == appId || element.application == wmclass) {return true;}} );
+        return (entry===undefined);
     }
 
     onBeginGrabOp(display, screen, window, op) {
@@ -133,10 +298,12 @@ class CompizWindowsEffectExtension {
             effect.destroy();
         }
 
-        effect = new WobblyEffect('move');
-        actor.add_effect_with_name(this.EFFECT_NAME, effect);
+        if (this.shouldAnimateWindow(window)) {
+            effect = new WobblyEffect('move');
+            actor.add_effect_with_name(this.EFFECT_NAME, effect);
+        }
     }
-    
+
     onEndGrabOp(display, screen, window, op) {
         if (op != Meta.GrabOp.MOVING) {
             return;
@@ -152,7 +319,7 @@ class CompizWindowsEffectExtension {
             effect.on_end_event(actor);
         }
     }
-    
+
     onUnmaximize(shellwm, actor) {
         if (!actor) {
             return;
@@ -163,12 +330,14 @@ class CompizWindowsEffectExtension {
             if (effect) {
                 effect.destroy();
             }
-            
-            effect = new WobblyEffect('unmaximized');
-            actor.add_effect_with_name(this.EFFECT_NAME, effect);   
+
+            if (this.shouldAnimateWindow(actor.get_meta_window())) {
+                effect = new WobblyEffect('unmaximized');
+                actor.add_effect_with_name(this.EFFECT_NAME, effect);
+            }
         }
     }
-    
+
     onMaximize(shellwm, actor) {
         if (!actor) {
             return;
@@ -179,9 +348,11 @@ class CompizWindowsEffectExtension {
             effect.destroy();
         }
 
-        actor.add_effect_with_name(this.EFFECT_NAME, new WobblyEffect('maximized'));
+        if (this.shouldAnimateWindow(actor.get_meta_window())) {
+            actor.add_effect_with_name(this.EFFECT_NAME, new WobblyEffect('maximized'));
+        }
     }
-    
+
     onTile(shellwm, actor) {
         if (!actor) {
             return;
@@ -192,7 +363,9 @@ class CompizWindowsEffectExtension {
             effect.destroy();
         }
 
-        actor.add_effect_with_name(this.EFFECT_NAME, new WobblyEffect('maximized'));
+        if (this.shouldAnimateWindow(actor.get_meta_window())) {
+            actor.add_effect_with_name(this.EFFECT_NAME, new WobblyEffect('maximized'));
+        }
     }
 
     onSizeChange(shellwm, actor, whichChange, oldFrameRect, _oldBufferRect) {
@@ -217,13 +390,13 @@ const WobblyEffect = new Lang.Class({
     _init: function(op) {
         this.parent();
         this.operationType = op;
-        
+
         this.paintEvent = null;
         this.moveEvent = null;
         this.resizedEvent = null;
         this.newFrameEvent = null;
         this.completedEvent = null;
-        
+
         this.timerId = null;
         this.deltaX = 0;
         this.deltaY = 0;
@@ -238,17 +411,17 @@ const WobblyEffect = new Lang.Class({
         this.deformedObjects = null;
         this.tilesX = 0;
         this.tilesY = 0;
-        
+
         this.CLUTTER_TIMELINE_DURATION = 1000 * 1000;
         this.FRICTION = settings.friction;
-        this.SPRING_K = settings.springK;            
+        this.SPRING_K = settings.springK;
         this.SPEEDUP_FACTOR = settings.speedupFactorDivider;
         this.MASS = settings.mass;
         this.X_TILES = 'maximized' === this.operationType ? 10 : settings.xTiles;
         this.Y_TILES = 'maximized' === this.operationType ? 10 : settings.yTiles;
 
         this.set_n_tiles(this.X_TILES, this.Y_TILES);
-        
+
         this.initialized = false;
         this.ended = false;
     },
@@ -267,17 +440,17 @@ const WobblyEffect = new Lang.Class({
 
             this.coeff = new Array(this.Y_TILES + 1);
             this.deformedObjects = new Array(this.Y_TILES + 1);
-        
+
             var x, y, tx, ty;
             for (y = 0; y <= this.Y_TILES; y++) {
                 ty = y / this.Y_TILES;
 
                 this.coeff[y] = new Array(this.X_TILES + 1);
                 this.deformedObjects[y] = new Array(this.X_TILES + 1);
-        
+
                 for (x = 0; x <= this.X_TILES; x++) {
                     tx = x / this.X_TILES;
-    
+
                     this.coeff[y][x] = new Array(16);    
                     this.coeff[y][x][0] = (1 - tx) * (1 - tx) * (1 - tx) * (1 - ty) * (1 - ty) * (1 - ty);
                     this.coeff[y][x][1] = 3 * tx * (1 - tx) * (1 - tx) * (1 - ty) * (1 - ty) * (1 - ty);
@@ -306,7 +479,7 @@ const WobblyEffect = new Lang.Class({
             if ('unmaximized' === this.operationType) {
                 this.wobblyModel.unmaximize(settings.maxUnmaxFactor);
                 this.ended = true;
-            } else if ('maximized' === this.operationType) {                    
+            } else if ('maximized' === this.operationType) {
                 this.wobblyModel.maximize(settings.maxUnmaxFactor);
                 this.ended = true;
             } else {
@@ -314,7 +487,7 @@ const WobblyEffect = new Lang.Class({
                 this.moveEvent = actor.connect('allocation-changed', Lang.bind(this, this.on_move_event));
                 this.resizedEvent = actor.connect('notify::size', Lang.bind(this, this.on_resized_event));
             }
-            
+
             this.paintEvent = actor.connect('paint', () => {});
 
             this.timerId = new Clutter.Timeline({duration: this.CLUTTER_TIMELINE_DURATION});
@@ -343,7 +516,7 @@ const WobblyEffect = new Lang.Class({
             this.wobblyModel.dispose();
             this.wobblyModel = null;
         }
-        
+
         let actor = this.get_actor();
         if (actor) {
             if (this.paintEvent) {
@@ -499,7 +672,7 @@ const WobblyEffect = new Lang.Class({
 class Obj {
     constructor(forceX, forceY, positionX, positionY, velocityX, velocityY, immobile) {
         [this.forceX, this.forceY, this.x, this.y, this.velocityX, this.velocityY, this.immobile] = [forceX, forceY, positionX, positionY, velocityX, velocityY, immobile];
-    }    
+    }
 }
 
 class Spring {
@@ -520,13 +693,13 @@ class WobblyModel {
         this.steps = 0;
         this.vertex_count = 0;
         this.immobileObjects = [];
-    
+
         this.width = config.sizeX;
         this.height = config.sizeY;
         this.friction = config.friction;
         this.springK = config.springK * 0.5;
         this.mass = 100 - config.mass;
-        
+
         this.initObjects();
         this.initSprings();
     }
@@ -538,7 +711,7 @@ class WobblyModel {
 
     initObjects() {
         var i = 0, gridY, gridX, gw = this.GRID_WIDTH - 1, gh = this.GRID_HEIGHT - 1;
-    
+
         for (gridY = 0; gridY < this.GRID_HEIGHT; gridY++) {
             for (gridX = 0; gridX < this.GRID_WIDTH; gridX++) {
                 this.objects[i++] = new Obj(0, 0, gridX * this.width / gw, gridY * this.height / gh, 0, 0, false);
@@ -548,17 +721,17 @@ class WobblyModel {
 
     initSprings() {
         var i = 0, numSprings = 0, gridY, gridX, hpad = this.width / (this.GRID_WIDTH - 1), vpad = this.height / (this.GRID_HEIGHT - 1);
-    
+
         for (gridY = 0; gridY < this.GRID_HEIGHT; gridY++) {
             for (gridX = 0; gridX < this.GRID_WIDTH; gridX++) {
                 if (gridX > 0) {
                     this.springs[numSprings++] = new Spring(this.objects[i - 1], this.objects[i], hpad, 0);
                 }
-    
+
                 if (gridY > 0) {
                     this.springs[numSprings++] = new Spring(this.objects[i - this.GRID_WIDTH], this.objects[i], 0, vpad);
                 }
-    
+
                 i++;
             }
         }
@@ -580,7 +753,7 @@ class WobblyModel {
 
         for (let i = this.objects.length - 1, object; i >= 0, object = this.objects[i]; --i) {
             distance = (object.x - x < 0 ? x - object.x : object.x - x) + (object.y - y < 0 ? y - object.y : object.y - y);
-    
+
             if (minDistance === -1 || distance < minDistance) {
                 minDistance = distance;
                 result = object;
@@ -661,7 +834,7 @@ class WobblyModel {
                 spring.a.velocityY -= spring.offsetY * intensity;
             }
         }
-        
+
         this.step(0);
     }
 
@@ -690,7 +863,7 @@ class WobblyModel {
                     object.y += object.velocityY;
 
                     movement |= Math.abs(object.velocityX) > 5 || Math.abs(object.velocityY) > 5 || Math.abs(object.forceX) > 5 || Math.abs(object.forceY) > 5;
-    
+
                     object.forceX = 0;
                     object.forceY = 0;
                 }

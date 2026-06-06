@@ -1,5 +1,110 @@
 # Changelog
 
+## 2.5.0
+
+* Added the ability to apply effects to the Classic (default) Alt-Tab switcher
+* Added the Monte Carlo Blur alorithum from Blur-my-shell as a new blur option (static and dynamic)
+* Added option to hide panels when the 3d Alt-Tab switchers are used (default enabled)
+* Implemented atrifact mitigation techniques to eliminate artifacts with Dynamic Blur for Application Windows (also removed the "experimental" label for Dynamic Application Window effects).
+* Allow Desklets to use Dynamic Blurring so that the Super+S (show desklets) option can blur background windows under desklets
+* Added option to allow theme setting to remain for Notifications and Tooltips
+* Improved how window stacking is tracked for dynamic blurring (fixes issues with showing incorrect background windows)
+* Fixed a number of issues to allow proper support for video wallpapers (i.e. Hidamari)
+* Fixes some most cases where Application Window Dynamic blurring would cause issue with moving/resizing windows
+* Fix some issues that occur after changing the UI scale and/or screen resolution
+* Better window tracking for the focused window backlight effect
+* A bunch of other fixes that I didn't remember to document
+
+## 2.0.1
+
+* Fixed graphical issue with blurred windows after the window is moved off of a dynamically blurred component and the window had been minimized in the past.
+* Added a fix to remove dynamic blur window clones when in the "show desktop" state (i.e. when using the "Show Desktop" or "Corner Bar" applets). Thanks to [dearvalentina](https://github.com/dearvalentina) for reporting the issue.
+* Fixed a performance issue with Popup menus where the responsiveness of the menu would degrade over time with each open/close sequence of a particular menu. A bunch of people reported this, but [Pilzinsel64](https://github.com/Pilzinsel64) recreate method got me to the solution.
+* Fixed missing Desklet blur actors in desklets clones (Desklet cloning is used for Dynamic blurring in Blur Cinnamon as well as in the "Desktop Cube" and "Flipper" extensions workspace switcher animations).
+* Fixed missing Desklet blur actors when using the "Corner Bar" middle click "Show the desklets" feature.
+
+## 2.0.0
+
+* Added a "Gaussian dynamic blur" option for Menus, Panels, Notifications and Tooltips. This allows the windows that are under the blurred component to be visible in the blurred element, resulting in an effect that allows the component to appear to float above the desktop wallpaper and windows rather then a static blur effect which shows just the desktop wallpaper under the component.
+* Added an experimental "Gaussian dynamic blur" option for Application windows. This option is experimental because it causes frequent graphical artifacts and missing elements of the blurred windows in the background of the windows where you have enabled dynamic Application window blurring effects. For this reason I do not recommend using this feature, and it will not be used automatically when the generic effect settings is set to use dynamic blurring.
+* Fixed the Notifications blurred element so that it does not appear above full-screen windows unless the Cinnamon Notifications option "Display notifications over fullscreen windows" is enabled. Thanks to [phiphifier](https://github.com/phiphifier) for reporting the issue.
+* Fixed the Notifications blurred element so that its size an position properly matches the Notification window when the Cinnamon Notifications option "Show notifications on the bottom side of the screen" is enabled. Thanks to misscuteblush for reporting the issue.
+* Fixed the rounding of the blurred elements for Menus, Notifications and Tooltips when the UI scaling factor is not 100%.
+* Fixed some issues with the generic effects settings not applying to Menus.
+* Added new default "Conky" and "Gnome Terminal" Application window configuration table entries to the Application window list. These will only appear for new installs (upgrades will have to add the entries manually). The new default table entries are disabled by default just like the other default entries.
+* Fix to allow Conky windows setup with the "own_window_type = 'desktop'" setting to have Blur Cinnamon effects applied. 
+* Changed the default effect type to be the new Dynamic Gaussian effect. This only effects new installs, upgraded installs will need to change the settings manually to enable the Dynamic Gaussian effects.
+* Thanks to those who beta tested the dynamic blur feature and reported issues (i.e. [Selinaru](https://github.com/Selinaru) and others)
+
+## 1.7.2
+
+* Added a panel settings option to "Brighten" (dim=0 and saturation=100) a panel when the mouse is hovering over a panel (disabled by default)
+* Fixed an issue where the 6.6 Menu sidebar was not maintaining its transparency after changing the "Maximum sidebar width" menu option.
+* Fixed an issue with the standard cinnamon minimize animation when a window has a blurred background applied.
+
+## 1.7.1
+
+* Added a "Transparent" option to Panels/Menus/Tooltips/Notifications setting. This will provide a true transparent option where whatever is below the effected element will be visible (no blurring, not saturation). For panels this is no different to the Transparent Panels extension.
+* Added a "Default window settings" row to the Windows effect table. When this row is enabled, all windows will have effects applied, except application windows that match some other row in the table, in which case that rows settings will apply (a disabled row will cause the window to have no effects applied despite the "Default window settings" row being enabled).
+* Added code to improve the Cinnamon 6.6 Menu effects (sidebar transparency).
+* Added code to improve the Cinnamon 6.6 "Cinnamon" theme support (might also help with other themes that use CSS padding).
+* Added a "Custom CSS" option to the "Advanced" panel setting table. Using this option, users who know CSS can apply options to control the panels like shrinking the panel to be less then the screen width, adding rounded corners, adding borders, etc.
+* Another attempt to improve the performance of opening menus after the 1st time any particular menu is opened.
+* Fixed some blurring artifacts seen when restoring a minimized window while using the "Focused window backlight effect".
+
+## 1.7.0
+
+* Added the ability to apply effects to Desklet backgrounds.
+* Significant configuration GUI redesign to use fewer tabs. Adding a new tab for Desklets would start to cause an unreasonable GUI window width.
+* Fixed the rounded corner effect so that it produces a much smoother edge.
+* Improved how the blurred panel animates when hiding or showing a panel.
+* Fix for Notification and Windows not getting updated when changing generic settings
+* Added an "About" tab to the configuration GUI
+* Modified the Icon so that it does not have a white border
+* Added a hack fix for panels with custom CSS sizes
+* Fix a naming conflict with the rounded corner effect during upgrading the extension.
+* Added options to use generic settings when using the panel specific settings option
+* Some improved configuration GUI option names and tooltips
+
+## 1.6.1
+
+* Fixed a 1.6.0 regression where the dimming of desktop effects are not removed after disabiling the desktop effects on the general page in the config window.
+* Added support for rounded cinnamon panels, but currently to enable rounded corners in Cinnamon panels you need to manually edit your cinnamon.css file.
+
+## 1.6.0
+
+* Added the ability to apply effects to application window backgrounds
+* Allows to you adjust the opacity of application windows so that the Blur Cinnamon application window effects can be seen below any window
+* Added a rounded corner effect which allows for rounded corners on the Blur Cinnamon effects when Popup Menus, Notifications, Tooltips and Application Windows are using rounded corners. Blur Cinnamon no longer overrides the rounded corner  settings that your theme defines for Menus, Notifications and Tooltips
+* Added the ability to set a dimming color to the desktop background image
+* Added an optional backlight effect to the focused window using the blur effect, allowing it to spill over the focused windows borders giving a backlight type effect. This is effect is disabled by default
+* Added the ability to apply effects to titlebar context popup menus
+* Added options so you can select which type of popup menus will have effects applied (applet popups, panel menus, titlebar menus)
+* Fixed a bug where the blur intensity slider control for some components was only shown when the expo blur type was set to Gaussian
+* Improve Popup Menu size tracking so that the blurred actor better follows the animated open/close effects
+
+## 1.5.2
+
+* When the theme override option is disabled, restore the theme's menu settings
+* Fix an issue with Alt-Tab support after the extension is reloaded (after an update) or disabled
+* Fix a typo in Notifications settings tab (Sent -> Send)
+
+## 1.5.1
+
+* Fix 1.5.0 regression, a missing function left out of the 1.5.0 merge into the spices repo
+
+## 1.5.0
+
+* Added effects to the Coverflow and Timeline Alt-Tab switchers (enabled by default)
+* Added the ability to apply effects to the Notification popups (disabled by default)
+* Added the ability to apply effects to the Panel Tooltip popups (disabled by default)
+* Added a welcome Notification popup with a button to open the configuration window
+* Added a panel option to restore the default (solid) look of the panel(s) when a window is maximized (thanks to [decsny](https://github.com/decsny) for some code)
+* Fixed an issue where a blurred element remains visible after a menu is closed (thanks to [SpeeQz1](https://github.com/SpeeQz1) for the bug report)
+* Fixed an issue where some signals are not disconnected when disabling the extension
+* Rewrote some parts of the code to make it easier to maintain and reduce code duplication
+* Improved popup menu performance in general, particularly when re-opening menus for a second time
+
 ## 1.4.2
 
 * Fixed a typo in the code that prevented the effects from being removed from the desktop background image after disabling the extension (thanks to OthorWight for finding the issue).
@@ -8,7 +113,7 @@
 
 ## 1.4.1
 
-* Fix for the main menu's favourite box fading from a solid color into it's blurred state on open (Mint-Y theme)
+* Fix for the main menu's favorite box fading from a solid color into it's blurred state on open (Mint-Y theme)
 * Take into account the popup-menu box margins when applying blurring so that blurring can be properly sized for the popup-menu (Orchis-Dark theme)
 * Fix a typo in the setting window
 * Properly free popup-menu blur elements

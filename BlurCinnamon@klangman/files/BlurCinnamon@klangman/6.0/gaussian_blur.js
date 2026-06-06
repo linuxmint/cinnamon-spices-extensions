@@ -4,7 +4,6 @@
 const GObject = imports.gi.GObject;
 
 const St = imports.gi.St;
-const Cinnamon = imports.gi.Cinnamon;
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 

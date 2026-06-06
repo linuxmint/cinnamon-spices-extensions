@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-05-14 22:04+0200\n"
-"PO-Revision-Date: 2023-12-07 15:38+0100\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"POT-Creation-Date: 2025-12-02 20:17+0100\n"
+"PO-Revision-Date: 2026-04-06 08:33+0200\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->description
 msgid ""
@@ -31,6 +31,39 @@ msgstr ""
 #. metadata.json->name
 msgid "Smart Panel"
 msgstr "Smart panel"
+
+#. settings-schema.json->head0->description
+msgid "Panels: "
+msgstr "Paneler: "
+
+#. settings-schema.json->concerned->description
+msgid "Which panels: "
+msgstr "Hvilke paneler: "
+
+#. settings-schema.json->concerned->options
+msgid "Main panel only"
+msgstr "Kun hovedpanel"
+
+#. settings-schema.json->concerned->options
+msgid "Horizontal panels only"
+msgstr "Kun vandrette paneler"
+
+#. settings-schema.json->concerned->options
+msgid "Vertical panels only"
+msgstr "Kun lodrette paneler"
+
+#. settings-schema.json->concerned->options
+msgid "All of them"
+msgstr "Alle"
+
+#. settings-schema.json->concerned->tooltip
+msgid ""
+"The main panel is the first panel that was created (by Cinnamon).\n"
+"It is recommended that you restart Cinnamon after changing this setting."
+msgstr ""
+"Hovedpanelet er det første panel, der blev oprettet (af Cinnamon).\n"
+"Det anbefales, at du genstarter Cinnamon, når du har ændret denne "
+"indstilling."
 
 #. settings-schema.json->head1->description
 msgid "Mouse scroll options: "
@@ -58,7 +91,7 @@ msgstr "Skift mellem vinduer"
 
 #. settings-schema.json->scroll-action->options
 msgid "Adjust sound volume"
-msgstr ""
+msgstr "Justér lydniveau"
 
 #. settings-schema.json->scroll-action->options
 #. settings-schema.json->scroll-action-up->options
@@ -90,7 +123,7 @@ msgstr "Forskellige handlinger ved rulning op og ned"
 
 #. settings-schema.json->show-osd->description
 msgid "Display OSD for workspace change notification"
-msgstr ""
+msgstr "Vis OSD for underretning om skift af arbejdsområde"
 
 #. settings-schema.json->scroll-action-up->description
 msgid "Action on scrolling up: "

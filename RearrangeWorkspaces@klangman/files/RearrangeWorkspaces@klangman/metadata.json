@@ -1,0 +1,9 @@
+{
+  "uuid": "RearrangeWorkspaces@klangman",
+  "name": "Rearrange Workspaces",
+  "version": "1.0.0",
+  "description": "Allows you to rearrange Cinnamon desktop workspaces",
+  "url": "https://github.com/klangman/RearrangeWorkspaces",
+  "website": "https://github.com/klangman/RearrangeWorkspaces",
+  "cinnamon-version": ["5.4"]
+}

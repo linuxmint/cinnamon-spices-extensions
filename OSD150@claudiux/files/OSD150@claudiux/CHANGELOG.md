@@ -1,2 +1,12 @@
+### v2.0.0~20260418
+  * You can now change the position of the OSD window.
+
+### v1.0.2~20260320
+  * Makes the volume bar more smoother.
+  * Fixes a bug.
+
+### v1.0.1~20250902
+  * Makes the volume bar smoother.
+
 ### v1.0.0~20250207
   * Creation of this extension OSD150@claudiux, fully handled by the sound150@claudiux (Enhanced Sound) applet.

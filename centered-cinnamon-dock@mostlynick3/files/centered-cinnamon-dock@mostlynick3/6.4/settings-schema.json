@@ -1,0 +1,18 @@
+{
+    "schema-version": {
+        "type": "generic",
+        "default": 0
+    },
+    "panel-settings": {
+        "type": "generic",
+        "default": {}
+    },
+    "panel-mode-old": {
+        "type": "generic",
+        "default": ""
+    },
+    "enabled-panels-old": {
+        "type": "generic",
+        "default": ""
+    }
+}

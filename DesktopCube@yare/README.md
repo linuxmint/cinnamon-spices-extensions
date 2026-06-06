@@ -28,7 +28,11 @@ There are a number of ways to switch the current workspace, all of following wil
 
 5. When changing the focus to a window on another workspace by using the Window-List or Alt-Tab when they are configured to show windows from other workspaces. (can be disabled in the configuration)
 
-6. When using the "Smart Panel" Applet features that change the workspace (Also plan to change "Desktop Scroller" to use Flipper as well in the near future)
+6. When using the "Smart Panel" Applet features that change the workspace
+
+7. When using "Desktop Scroller" or "Workspace Scroller" to change the workspace
+
+8. When using the touchpad gestures to change the workspace
 
 When switching the current workspace using Expo ("workspace selection screen" Default hotkey: Ctrl + Alt + Up_Arrow_Key) by clicking on a different workspace, the Desktop Cube effect will not be used. Since the Expo is not really a "face" on the cube it would break the Cube concept a bit, therefore I left it as is since I felt it was more logical that way.
 

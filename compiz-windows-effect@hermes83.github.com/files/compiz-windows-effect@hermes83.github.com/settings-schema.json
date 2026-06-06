@@ -1,14 +1,86 @@
 {
+  "layout" : {
+    "type" : "layout",
+    "pages" : ["general-page", "exclude-page"],
+
+    "general-page" : {
+      "type" : "page",
+      "title" : "General",
+      "sections" : ["preset-section", "effect-settings-section"]
+    },
+
+    "exclude-page" : {
+      "type" : "page",
+      "title" : "Exclude List",
+      "sections" : ["exclude-section"]
+    },
+
+    "preset-section" : {
+      "type" : "section",
+      "title" : "Compiz windows effect configuration",
+      "keys" : ["presetList"]
+    },
+
+    "effect-settings-section" : {
+      "type" : "section",
+      "title" : "Custom effect settings",
+      "dependency" : "presetList=5",
+      "keys" : ["friction", "springK", "speedupFactorDivider", "mass", "xTiles", "yTiles", "maxUnmaxFactor"]
+    },
+
+    "exclude-section" : {
+      "type" : "section",
+      "title" : "Application windows where no window effects will be applied",
+      "keys" : ["excludeList", "excludeButton"]
+    }
+
+  },
+
+  "presetList" : {
+    "type": "combobox",
+    "default": 5,
+    "options": {
+      "Subtle": 1,
+      "Realistic": 2,
+      "Exaggerated": 3,
+      "Extreme": 4,
+      "Custom": 5
+    },
+    "description": "Effect style"
+  },
+
+  "excludeList" : {
+    "type" : "list",
+    "height" : 375,
+    "description" : "Application exclude list",
+    "columns" : [
+      {"id": "application", "title": "Application", "type": "string", "default": ""}
+    ],
+    "tooltip": "Defines a list of applications where the \"Compiz window effect\" effects will not be applied.",
+    "default" : []
+  },
+
+  "excludeButton" : {
+    "type" : "button",
+    "description" : "Add entry for the application of the most recently focused window",
+    "callback" : "on_exclude_button_pressed",
+    "tooltip" : "Focus the window you want to disable window effects for, then return here and press this button."
+  },
+
   "friction" : {
-    "type" : "scale",
-    "description" : "Friction",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
+    "description" : "Friction ",
     "min" : 1.0,
     "max" : 10.0,
     "default" : 3.5,
     "step" : 0.1
   },
   "springK" : {
-    "type" : "scale",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
     "description" : "Spring K",
     "min" : 1.0,
     "max" : 10.0,
@@ -16,39 +88,49 @@
     "step" : 0.1
   },
   "speedupFactorDivider" : {
-    "type" : "scale",
-    "description" : "Speedup Factor",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
+    "description" : "Speedup",
     "min" : 2,
     "max" : 40.0,
     "default" : 16.0,
     "step" : 0.1
-  },  
+  },
   "mass" : {
-    "type" : "scale",
-    "description" : "Mass",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
+    "description" : "Mass      ",
     "min" : 20,
     "max" : 80,
     "default" : 50,
     "step" : 1
   },
   "xTiles" : {
-    "type" : "scale",
-    "description" : "X Tiles",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
+    "description" : "X Tiles  ",
     "min" : 3,
     "max" : 20,
     "default" : 6,
     "step" : 1
   },
   "yTiles" : {
-    "type" : "scale",
-    "description" : "Y Tiles",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
+    "description" : "Y Tiles  ",
     "min" : 3,
     "max" : 20,
     "default" : 6,
     "step" : 1
   },
   "maxUnmaxFactor" : {
-    "type" : "scale",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
     "description" : "Maximizing and Unmaximizing Factor",
     "min" : 0,
     "max" : 10,

@@ -1,4 +1,21 @@
 {
+    "head0" : {
+        "type" : "header",
+        "description" : "Panels: "
+    },
+    "concerned" : {
+        "type": "combobox",
+        "default" : "onlymain",
+        "description" : "Which panels: ",
+        "options" : {
+            "Main panel only" : "onlymain",
+            "Horizontal panels only" : "horizontal",
+            "Vertical panels only" : "vertical",
+            "All of them" : "all"
+        },
+        "tooltip" : "The main panel is the first panel that was created (by Cinnamon).\nIt is recommended that you restart Cinnamon after changing this setting."
+    },
+    
     "head1" : {
         "type" : "header",
         "description" : "Mouse scroll options: "

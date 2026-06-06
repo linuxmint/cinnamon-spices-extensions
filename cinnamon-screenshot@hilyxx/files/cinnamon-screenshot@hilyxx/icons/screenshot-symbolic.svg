@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="screenshot-symbolic.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview17"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="21.025"
+     inkscape:cx="5.6837099"
+     inkscape:cy="9.8692033"
+     inkscape:window-width="2560"
+     inkscape:window-height="1381"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg15"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050" />
+  <defs
+     id="defs5">
+    <clipPath
+       id="a">
+      <path
+         d="m 13,11 a 3,3 0 1 0 -3,3 3,3 0 0 0 3,-3 z m -3,5 a 5,5 0 1 1 5,-5 5,5 0 0 1 -5,5 z M 6.42,2.56 5.75,3.2 A 2,2 0 0 1 4.37,3.76 H 2 A 1.89,1.89 0 0 0 0,5.51 v 10.54 a 1.89,1.89 0 0 0 2,1.76 h 16 a 1.89,1.89 0 0 0 2,-1.76 V 5.51 A 1.89,1.89 0 0 0 18,3.75 H 15.63 A 2,2 0 0 1 14.25,3.19 L 13.58,2.55 A 2,2 0 0 0 12.2,2 H 7.8 A 2,2 0 0 0 6.42,2.56 Z"
+         clip-rule="evenodd"
+         id="path2" />
+    </clipPath>
+  </defs>
+  <title
+     id="title7">
+    camera
+  </title>
+  <path
+     fill-rule="evenodd"
+     d="M 10.361014,8.6556262 A 2.3575417,2.3575417 0 1 0 8.0034723,11.013168 2.3575417,2.3575417 0 0 0 10.361014,8.6556262 Z M 8.0034723,12.584863 A 3.9292362,3.9292362 0 1 1 11.932708,8.6556262 3.9292362,3.9292362 0 0 1 8.0034723,12.584863 Z M 5.1901391,2.0230756 4.6636215,2.5260178 A 1.5716945,1.5716945 0 0 1 3.5791524,2.9660923 H 1.7166945 A 1.4852513,1.4852513 0 0 0 0.145,4.3413249 v 8.2828301 a 1.4852513,1.4852513 0 0 0 1.5716945,1.383091 H 14.29025 a 1.4852513,1.4852513 0 0 0 1.571695,-1.383091 V 4.3413249 A 1.4852513,1.4852513 0 0 0 14.29025,2.9582338 H 12.427792 A 1.5716945,1.5716945 0 0 1 11.343323,2.5181594 L 10.816805,2.0152171 A 1.5716945,1.5716945 0 0 0 9.7323362,1.5830012 H 6.2746083 A 1.5716945,1.5716945 0 0 0 5.1901391,2.0230756 Z"
+     id="path9"
+     style="stroke-width:0.785847" />
+  <g
+     clip-path="url(#a)"
+     id="g13"
+     style="fill:#5e6167;fill-opacity:1"
+     transform="matrix(0.78584723,0,0,0.78584723,0.145,0.01130685)">
+    <path
+       d="M 0,0 H 20 V 20 H 0 Z"
+       id="path11"
+       style="fill:#5e6167;fill-opacity:1" />
+  </g>
+  <metadata
+     id="metadata834">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>
+    camera
+  </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
