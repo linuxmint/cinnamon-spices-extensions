@@ -9,16 +9,17 @@ const GLib = imports.gi.GLib;
 
 const UUID = "BlurCinnamon@klangman";
 
-const SHADER_FILENAME = 'gaussian_blur.glsl';
+const SHADER_FILENAME = 'monte_carlo_blur.glsl';
 const DEFAULT_PARAMS = {
-    radius: 30, brightness: .6,
-    width: 0, height: 0, direction: 0, chained_effect: null
+    radius: 2., iterations: 5, brightness: .6,
+    width: 0, height: 0, use_base_pixel: true,
+    prefer_closer_pixels: true
 };
 
 
-const GaussianBlurEffect =
+const MonteCarloBlurEffect =
     new GObject.registerClass({
-        GTypeName: `GaussianBlurEffect_${Math.floor(Math.random() * 100000) + 1}`,
+        GTypeName: `MonteCarloBlurEffect_${Math.floor(Math.random() * 100000) + 1}`,
         Properties: {
             'radius': GObject.ParamSpec.double(
                 `radius`,
@@ -26,7 +27,15 @@ const GaussianBlurEffect =
                 `Blur radius`,
                 GObject.ParamFlags.READWRITE,
                 0.0, 2000.0,
-                30.0,
+                2.0,
+            ),
+            'iterations': GObject.ParamSpec.int(
+                `iterations`,
+                `Iterations`,
+                `Blur iterations`,
+                GObject.ParamFlags.READWRITE,
+                0, 64,
+                5,
             ),
             'brightness': GObject.ParamSpec.double(
                 `brightness`,
@@ -52,55 +61,59 @@ const GaussianBlurEffect =
                 0.0, Number.MAX_SAFE_INTEGER,
                 0.0,
             ),
-            'direction': GObject.ParamSpec.int(
-                `direction`,
-                `Direction`,
-                `Direction`,
+            'use_base_pixel': GObject.ParamSpec.boolean(
+                `use_base_pixel`,
+                `Use base pixel`,
+                `Use base pixel`,
                 GObject.ParamFlags.READWRITE,
-                0, 1,
-                0,
+                true,
             ),
-            'chained_effect': GObject.ParamSpec.object(
-                `chained_effect`,
-                `Chained Effect`,
-                `Chained Effect`,
+            'prefer_closer_pixels': GObject.ParamSpec.boolean(
+                `prefer_closer_pixels`,
+                `Prefer closer pixels`,
+                `Prefer closer pixels`,
                 GObject.ParamFlags.READWRITE,
-                GObject.Object,
+                true,
             ),
         }
-    }, class GaussianBlurEffect extends Clutter.ShaderEffect {
+    }, class MonteCarloBlurEffect extends Clutter.ShaderEffect {
         constructor(params) {
             super(params);
 
             if (params && params.radius != undefined )
                this.radius = params.radius;
             else
-               this.radius = 30;
+               this.radius = 2.0;
 
-            if (params && params.brightness !== undefined)
+            if (params && params.iterations != undefined )
+               this.iterations = params.iterations;
+            else
+               this.iterations = 5;
+
+            if (params && params.brightness != undefined )
                this.brightness = params.brightness;
             else
                this.brightness = 0.6;
 
-            if (params && params.width)
+            if (params && params.width != undefined )
                this.width = params.width;
             else
                this.width = 0;
 
-            if (params && params.height)
+            if (params && params.height != undefined )
                this.height = params.height;
             else
                this.height = 0;
 
-            if (params && params.direction)
-               this.direction = params.direction;
+            if (params && params.use_base_pixel != undefined )
+               this.use_base_pixel = params.use_base_pixel;
             else
-               this.direction = 0;
+               this.use_base_pixel = true;
 
-            if (params && params.chained_effect)
-               this.chained_effect = params.chained_effect;
+            if (params && params.prefer_closer_pixels != undefined )
+               this.prefer_closer_pixels = params.prefer_closer_pixels;
             else
-               this.chained_effect = null;
+               this.prefer_closer_pixels = true;
 
             // set shader source
             this._source = this.get_shader_source(SHADER_FILENAME);
@@ -109,9 +122,10 @@ const GaussianBlurEffect =
 
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
             theme_context.connect(
-                'notify::scale-factor', () => {
-                this.set_uniform_value('sigma', parseFloat(this.radius * theme_context.scale_factor / 2 - 1e-6) );
-                }
+                'notify::scale-factor',
+                _ => this.set_uniform_value('radius',
+                    parseFloat(this._radius * theme_context.scale_factor - 1e-6)
+                )
             );
         }
 
@@ -126,21 +140,30 @@ const GaussianBlurEffect =
         }
 
         get radius() {
-            return this._radius;
+            return this._radius*10;
         }
 
         set radius(value) {
-            if (this._radius !== value) {
-                this._radius = value;
+            if (this._radius !== value/10) {
+                this._radius = value/10;
 
                 const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
 
-                // like Clutter, we use the assumption radius = 2*sigma
-                this.set_uniform_value('sigma', parseFloat(this._radius * scale_factor / 2 - 1e-6));
-                this.set_enabled(this.radius > 0.);
+                this.set_uniform_value('radius', parseFloat(this._radius * scale_factor - 1e-6));
+                this.set_enabled(this.radius > 0. && this.iterations > 0);
+            }
+        }
 
-                if (this.chained_effect)
-                    this.chained_effect.radius = value;
+        get iterations() {
+            return this._iterations;
+        }
+
+        set iterations(value) {
+            if (this._iterations !== value) {
+                this._iterations = value;
+
+                this.set_uniform_value('iterations', this._iterations);
+                this.set_enabled(this.radius > 0. && this.iterations > 0);
             }
         }
 
@@ -153,9 +176,6 @@ const GaussianBlurEffect =
                 this._brightness = value;
 
                 this.set_uniform_value('brightness', parseFloat(this._brightness - 1e-6));
-
-                if (this.chained_effect)
-                    this.chained_effect.brightness = value;
             }
         }
 
@@ -168,9 +188,6 @@ const GaussianBlurEffect =
                 this._width = value;
 
                 this.set_uniform_value('width', parseFloat(this._width + 3.0 - 1e-6));
-
-                if (this.chained_effect)
-                    this.chained_effect.width = value;
             }
         }
 
@@ -183,27 +200,31 @@ const GaussianBlurEffect =
                 this._height = value;
 
                 this.set_uniform_value('height', parseFloat(this._height + 3.0 - 1e-6));
-
-                if (this.chained_effect)
-                    this.chained_effect.height = value;
             }
         }
 
-        get direction() {
-            return this._direction;
+        get use_base_pixel() {
+            return this._use_base_pixel;
         }
 
-        set direction(value) {
-            if (this._direction !== value)
-                this._direction = value;
+        set use_base_pixel(value) {
+            if (this._use_base_pixel !== value) {
+                this._use_base_pixel = value;
+
+                this.set_uniform_value('use_base_pixel', this._use_base_pixel ? 1 : 0);
+            }
         }
 
-        get chained_effect() {
-            return this._chained_effect;
+        get prefer_closer_pixels() {
+            return this._prefer_closer_pixels;
         }
 
-        set chained_effect(value) {
-            this._chained_effect = value;
+        set prefer_closer_pixels(value) {
+            if (this._prefer_closer_pixels !== value) {
+                this._prefer_closer_pixels = value;
+
+                this.set_uniform_value('prefer_closer_pixels', this._prefer_closer_pixels ? 1 : 0);
+            }
         }
 
         vfunc_set_actor(actor) {
@@ -223,26 +244,5 @@ const GaussianBlurEffect =
                 this._actor_connection_size_id = null;
 
             super.vfunc_set_actor(actor);
-
-            if (this.direction == 0) {
-                if (this.chained_effect)
-                    this.chained_effect.get_actor()?.remove_effect(this.chained_effect);
-                else
-                    this.chained_effect = new GaussianBlurEffect({
-                        radius: this.radius,
-                        brightness: this.brightness,
-                        width: this.width,
-                        height: this.height,
-                        direction: 1
-                    });
-                if (actor !== null)
-                    actor.add_effect(this.chained_effect);
-            }
-        }
-
-        vfunc_paint_target(...params) {
-            this.set_uniform_value("dir", this.direction);
-
-            super.vfunc_paint_target(...params);
         }
     });

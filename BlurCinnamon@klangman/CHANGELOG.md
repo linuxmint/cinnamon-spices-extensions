@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.5.0
+
+* Added the ability to apply effects to the Classic (default) Alt-Tab switcher
+* Added the Monte Carlo Blur alorithum from Blur-my-shell as a new blur option (static and dynamic)
+* Added option to hide panels when the 3d Alt-Tab switchers are used (default enabled)
+* Implemented atrifact mitigation techniques to eliminate artifacts with Dynamic Blur for Application Windows (also removed the "experimental" label for Dynamic Application Window effects).
+* Allow Desklets to use Dynamic Blurring so that the Super+S (show desklets) option can blur background windows under desklets
+* Added option to allow theme setting to remain for Notifications and Tooltips
+* Improved how window stacking is tracked for dynamic blurring (fixes issues with showing incorrect background windows)
+* Fixed a number of issues to allow proper support for video wallpapers (i.e. Hidamari)
+* Fixes some most cases where Application Window Dynamic blurring would cause issue with moving/resizing windows
+* Fix some issues that occur after changing the UI scale and/or screen resolution
+* Better window tracking for the focused window backlight effect
+* A bunch of other fixes that I didn't remember to document
+
 ## 2.0.1
 
 * Fixed graphical issue with blurred windows after the window is moved off of a dynamically blurred component and the window had been minimized in the past.
