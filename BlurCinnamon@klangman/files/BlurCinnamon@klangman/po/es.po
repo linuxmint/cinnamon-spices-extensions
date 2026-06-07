@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. 6.0/extension.js:2600 6.0/extension.js:2603 6.0/extension.js:2713
 msgid "Default window settings"
@@ -40,7 +40,6 @@ msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
 #. 6.0/extension.js:3717
-#, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -50,14 +49,14 @@ msgid ""
 "changes to the effect properties like blur intensity, color saturation and "
 "dimming."
 msgstr ""
-"Esperamos que estés disfrutando de tus nuevos efectos Panel, Exposición, "
-"Vista general y Alt-Tab Coverflow/Linea de Tiempo.\n"
+"Espero que estés disfrutando de tus nuevos efectos en el Panel, la Expo, la "
+"Vista general y el Alt-Tab.\n"
 "\n"
-"Abre la configuración de Blur Cinnamon para habilitar efectos adicionales en "
+"Abre la configuración de Blur Cinnamon para activar efectos adicionales en "
 "otros elementos del escritorio, como menús, notificaciones y ventanas, o "
-"deshabilitar efectos en componentes que estaban habilitados por defecto. "
-"También puedes realizar cambios en las propiedades de los efectos, como la "
-"intensidad del desenfoque, la saturación del color y el oscurecimiento."
+"para desactivar efectos en componentes que estaban activados por defecto. "
+"También puedes modificar las propiedades de los efectos, como la intensidad "
+"del desenfoque, la saturación del color y el atenuado."
 
 #. 6.0/extension.js:3721
 msgid "Open Blur Cinnamon Settings"
@@ -118,9 +117,8 @@ msgid "Cinnamon desktop components where effects will be applied"
 msgstr "Componentes del escritorio Cinnamon a los que se aplicarán los efectos"
 
 #. 6.0->settings-schema.json->monte-carlo-settings->title
-#, fuzzy
 msgid "Monte Carlo specific settings"
-msgstr "Configuraciones específicas del panel"
+msgstr "Configuración específica de Monte Carlo"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
@@ -309,7 +307,6 @@ msgid "Show settings for component:"
 msgstr "Mostrar configuración del componente:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -330,21 +327,21 @@ msgid ""
 "nailfarmer"
 msgstr ""
 "\n"
-"<b>Dando protagonismo a tu estilo</b>\n"
+"<b>Pon tu estilo en primer plano</b>\n"
 "Versión: ext-version\n"
 "\n"
 "Desarrollado por: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
-"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Reportar un "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Informar de un "
 "problema</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
 "view/104\">Sitio web</a>\n"
 "\n"
-"Las esquinas redondeadas y los efectos gaussianos se basan en el código de "
-"aunetx (Blur-my-shell).\n"
+"Las esquinas redondeadas y los efectos gaussianos y Monte Carlo\n"
+"se basan en el código de aunetx (Blur-my-shell)\n"
 "<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
 "\n"
-"El efecto Vista general se basa parcialmente en la extensión BlurOverview de "
+"El efecto Overview se basa parcialmente en la extensión BlurOverview de "
 "nailfarmer"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
@@ -435,16 +432,12 @@ msgstr ""
 "modo que se vea el fondo difuminado."
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->description
-#, fuzzy
 msgid "Alt-Tab application switcher"
-msgstr "Selector de aplicaciones Alt-Tab (solo Coverflow y Línea de tiempo)"
+msgstr "Selector de aplicaciones Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->tooltip
-#, fuzzy
 msgid "Apply effects to the Alt-Tab application switcher background"
-msgstr ""
-"Aplicar efectos al fondo del selector de aplicaciones Alt-Tab cuando se "
-"configura para usar los estilos Coverflow o Línea de tiempo"
+msgstr "Aplicar efectos al fondo del selector de aplicaciones Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-tooltips-effects->description
 msgid "Panel tooltips (Please read tooltip)"
@@ -550,12 +543,10 @@ msgstr ""
 
 #. 6.0->settings-schema.json->allow-transparent-color-
 #. notifications->description
-#, fuzzy
 msgid "Override some of the notification theme settings (recommended)"
-msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
+msgstr "Anular algunos de los ajustes del tema de notificaciones (recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-notifications->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the notification transparency and background "
 "color settings. If this is disabled the extension will only apply a blur "
@@ -563,19 +554,20 @@ msgid ""
 "when the theme already uses transparent notifications and you want the "
 "themes setting to apply."
 msgstr ""
-"Permite que esta extensión modifique la configuración de transparencia y "
-"color de fondo de los paneles. Si se desactiva, la extensión solo aplicará "
-"un fondo difuminado debajo de los paneles. Esta configuración solo debe "
-"desactivarse cuando el tema ya utilice paneles transparentes y se desee "
-"aplicar la configuración del tema."
+"Permite que esta extensión modifique la transparencia de las notificaciones "
+"y la configuración del color de fondo. Si se desactiva esta opción, la "
+"extensión solo aplicará un fondo difuminado debajo de las notificaciones. "
+"Esta configuración solo debe desactivarse cuando el tema ya utilice "
+"notificaciones transparentes y desees que se aplique la configuración del "
+"tema."
 
 #. 6.0->settings-schema.json->allow-transparent-color-tooltips->description
-#, fuzzy
 msgid "Override some of the tooltip theme settings (recommended)"
-msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
+msgstr ""
+"Anular algunos de los ajustes del tema de las descripciones emergentes "
+"(recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-tooltips->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the tooltip transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -583,16 +575,16 @@ msgid ""
 "theme already uses transparent tooltips and you want the themes setting to "
 "apply."
 msgstr ""
-"Permite que esta extensión modifique la configuración de transparencia y "
-"color de fondo de los paneles. Si se desactiva, la extensión solo aplicará "
-"un fondo difuminado debajo de los paneles. Esta configuración solo debe "
-"desactivarse cuando el tema ya utilice paneles transparentes y se desee "
-"aplicar la configuración del tema."
+"Permite que esta extensión modifique la transparencia de las descripciones "
+"emergentes y la configuración del color de fondo. Si se desactiva esta "
+"opción, la extensión solo aplicará un fondo difuminado debajo de las "
+"descripciones emergentes. Esta configuración solo debe desactivarse cuando "
+"el tema ya utilice descripciones emergentes transparentes y se desee que se "
+"aplique la configuración del tema."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Overview"
-msgstr "Usar ajustes de efectos exclusivos para la Vista general"
+msgstr "Anular la configuración de efectos genérica de la Vista general"
 
 #. 6.0->settings-schema.json->enable-overview-override->tooltip
 #. 6.0->settings-schema.json->enable-expo-override->tooltip
@@ -607,52 +599,46 @@ msgid ""
 "Override the settings found on the \"Generic effect settings\" tab with "
 "unique settings for this cinnamon component."
 msgstr ""
+"Sustituye los ajustes que se encuentran en la pestaña \"Ajustes generales de "
+"efectos\" por ajustes específicos para este componente de Cinnamon."
 
 #. 6.0->settings-schema.json->enable-expo-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Expo"
-msgstr "Usar ajustes de efectos exclusivos para el efecto Exposición"
+msgstr "Anular la configuración de efectos genérica del efecto Exposición"
 
 #. 6.0->settings-schema.json->enable-panels-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Panels"
-msgstr "Usar ajustes de efectos exclusivos para los Paneles"
+msgstr "Anular la configuración de efectos genérica de los Paneles"
 
 #. 6.0->settings-schema.json->enable-popup-override->description
-#, fuzzy
 msgid "Override the generic effect settings for popup menus"
-msgstr "Usar ajustes de efectos exclusivos para los menús emergentes"
+msgstr "Anular la configuración de efectos genérica de los menús emergentes"
 
 #. 6.0->settings-schema.json->enable-desktop-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the desktop background"
-msgstr ""
-"Utiliza una configuración de efectos exclusivos para el fondo de escritorio"
+msgstr "Anular la configuración genérica de efectos del fondo de escritorio"
 
 #. 6.0->settings-schema.json->enable-notification-override->description
-#, fuzzy
 msgid "Override the generic effect settings for notification popups"
 msgstr ""
-"Usar ajustes de efectos exclusivos para las ventanas emergentes de "
-"notificación"
+"Anular la configuración genérica de los efectos de las ventanas emergentes "
+"de notificación"
 
 #. 6.0->settings-schema.json->enable-appswitcher-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Alt-Tab app switcher"
 msgstr ""
-"Usar ajustes de efectos exclusivos para el selector de aplicaciones Alt-Tab"
+"Anular la configuración de efectos genérica del selector de aplicaciones Alt-"
+"Tab"
 
 #. 6.0->settings-schema.json->enable-tooltips-override->description
-#, fuzzy
 msgid "Override the generic effect settings for panel tooltips"
 msgstr ""
-"Usar ajustes de efectos exclusivos para las descripciones emergentes del "
-"panel"
+"Anular la configuración genérica de efectos para las descripciones "
+"emergentes de los paneles"
 
 #. 6.0->settings-schema.json->enable-desklets-override->description
-#, fuzzy
 msgid "Override the generic effect settings for Desklets"
-msgstr "Utiliza ajustes de efectos únicos para los Desklets"
+msgstr "Anular la configuración de efectos genérica de los Desklets"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->description
 msgid "Enable advanced options to apply unique settings for each Desklet"
@@ -874,14 +860,12 @@ msgstr "Desenfoque dinámico gaussiano (si procede)"
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
-#, fuzzy
 msgid "Monte Carlo static blur"
-msgstr "Desenfoque estático simple"
+msgstr "Desenfoque Monte Carlo estático"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "Monte Carlo dynamic blur (if applicable)"
-msgstr "Desenfoque dinámico gaussiano (si procede)"
+msgstr "Desenfoque dinámico Monte Carlo (si procede)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -911,9 +895,8 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-radius->description
 #. 6.0->settings-schema.json->tooltips-radius->description
 #. 6.0->settings-schema.json->desklets-radius->description
-#, fuzzy
 msgid "Blur intensity"
-msgstr "Intensidad del desenfoque gaussiano"
+msgstr "Intensidad del desenfoque"
 
 #. 6.0->settings-schema.json->radius->tooltip
 #. 6.0->settings-schema.json->overview-radius->tooltip
@@ -962,40 +945,45 @@ msgstr ""
 "hasta color completo."
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->description
-#, fuzzy
 msgid "Iterations"
-msgstr "Saturación"
+msgstr "Iteraciones"
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->tooltip
 msgid ""
 "Increasing number of iterations will make the blur appear smoother at the "
 "cost of some CPU power."
 msgstr ""
+"Aumentar el número de iteraciones hará que el desenfoque resulte más suave, "
+"aunque a costa de un mayor consumo de recursos de la CPU."
 
 #. 6.0->settings-schema.json->monte-carlo-use-base-pixel->description
 msgid "Use base pixel"
-msgstr ""
+msgstr "Usar píxel base"
 
 #. 6.0->settings-schema.json->monte-carlo-use-base-pixel->tooltip
 msgid ""
 "Whether or not the original pixel is counted for the blur. If it is, the "
 "image will be more legible."
 msgstr ""
+"Si se tiene en cuenta o no el píxel original para el desenfoque. Si se tiene "
+"en cuenta, la imagen resultará más legible."
 
 #. 6.0->settings-schema.json->monte-carlo-prefer-closer-pixels->description
 msgid "Prefer closer pixels"
-msgstr ""
+msgstr "Preferir píxeles más cercanos"
 
 #. 6.0->settings-schema.json->monte-carlo-prefer-closer-pixels->tooltip
 msgid ""
 "Whether or not the pixels that are closer to the original pixel will have "
 "more weight."
-msgstr ""
+msgstr "Si los píxeles más cercanos al píxel original tendrán mayor peso o no."
 
 #. 6.0->settings-schema.json->monte-carlo-label->description
 msgid ""
 "<b>Note:</b> These Monte Carlo settings are used globally for all components"
 msgstr ""
+"<b>Nota:</b> Estos ajustes de Monte Carlo se aplican de forma global a todos "
+"los componentes"
 
 #. 6.0->settings-schema.json->monte-carlo-label->tooltip
 msgid ""
@@ -1003,6 +991,10 @@ msgid ""
 "configured to use the Monte Carlo blur algorithm, these settings can not be "
 "configured separately for each component"
 msgstr ""
+"Los parámetros de Monte Carlo indicados anteriormente se aplican de forma "
+"global a todos los componentes configurados para utilizar el algoritmo de "
+"desenfoque Monte Carlo; estos parámetros no se pueden configurar por "
+"separado para cada componente"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -1028,7 +1020,7 @@ msgstr "Gaussiano"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Monte Carlo"
-msgstr ""
+msgstr "Monte Carlo"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
@@ -1059,9 +1051,8 @@ msgstr "Desenfoque dinámico gaussiano"
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
-#, fuzzy
 msgid "Monte Carlo dynamic blur"
-msgstr "Desenfoque dinámico gaussiano"
+msgstr "Desenfoque dinámico Monte Carlo"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1158,18 +1149,19 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-disable-3d-panels->description
 msgid "Hide panels while using the Coverflow/Timeline 3D Alt-Tab switchers"
 msgstr ""
+"Ocultar paneles al utilizar los cambiadores Alt-Tab de Coverflow/Timeline 3D"
 
 #. 6.0->settings-schema.json->appswitcher-disable-3d-panels->tooltip
 msgid ""
 "Make the panels invisible when using the Coverflow or the Timeline 3D Alt-"
 "Tab switchers"
 msgstr ""
+"Ocultar los paneles al utilizar los cambiadores Alt-Tab de Coverflow o "
+"Timeline 3D"
 
 #. 6.0->settings-schema.json->appswitcher-allow-classic->description
-#, fuzzy
 msgid "Apply effects to the standard Alt-Tab switcher"
-msgstr ""
-"Usar ajustes de efectos exclusivos para el selector de aplicaciones Alt-Tab"
+msgstr "Aplicar efectos al selector estándar Alt-Tab"
 
 #. 6.0->settings-schema.json->appswitcher-allow-classic->tooltip
 msgid ""
@@ -1177,12 +1169,14 @@ msgid ""
 "options without \"previews\" are supported. The standard Alt-Tab switcher "
 "can use static or dynamic blur, but dynamic is recommended."
 msgstr ""
+"Permite aplicar efectos al selector Alt-Tab estándar. Solo se admiten las "
+"opciones del selector que no incluyen \"vistas previas\". El selector Alt-"
+"Tab estándar puede utilizar desenfoque estático o dinámico, aunque se "
+"recomienda el dinámico."
 
 #. 6.0->settings-schema.json->appswitcher-allow-3d->description
-#, fuzzy
 msgid "Apply effects to the 3D Alt-Tab switchers"
-msgstr ""
-"Usar ajustes de efectos exclusivos para el selector de aplicaciones Alt-Tab"
+msgstr "Aplicar efectos a los conmutadores Alt-Tab 3D"
 
 #. 6.0->settings-schema.json->appswitcher-allow-3d->tooltip
 msgid ""
@@ -1190,6 +1184,10 @@ msgid ""
 "The 3D Alt-Tab switchers will use static blurring even when dynamic blurring "
 "is selected since they don't benifit from dynamic blurring."
 msgstr ""
+"Permite aplicar efectos a los selectores 3D de Coverflow y de la línea de "
+"tiempo en Alt-Tab. Los selectores 3D de Alt-Tab utilizarán desenfoque "
+"estático incluso cuando se haya seleccionado el desenfoque dinámico, ya que "
+"no se benefician de este último."
 
 #. 6.0->settings-schema.json->appswitcher-blurType->tooltip
 msgid ""
@@ -1197,6 +1195,10 @@ msgid ""
 "blur type can be used for the standard switcher but static blurring is "
 "always used for the 3D switchers as they do not benefit from dynamic effects."
 msgstr ""
+"¿Qué tipo de algoritmo de desenfoque se debe utilizar para desenfocar el "
+"fondo? Para el selector estándar se puede utilizar un tipo de desenfoque "
+"dinámico, pero para los selectores 3D siempre se utiliza el desenfoque "
+"estático, ya que estos no se benefician de los efectos dinámicos."
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
@@ -1269,7 +1271,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->windows-atrifact-mitigation->description
 msgid "Use artifact mitigation techniques"
-msgstr ""
+msgstr "Utilizar técnicas de mitigación de artefactos"
 
 #. 6.0->settings-schema.json->windows-atrifact-mitigation->tooltip
 msgid ""
@@ -1279,6 +1281,12 @@ msgid ""
 "on top of two or more other windows. This option is recommended unless you "
 "are using video wallpaper like Hidamari"
 msgstr ""
+"Cuando esté activada, se aplicarán medidas para eliminar los artefactos "
+"gráficos de fondo en las ventanas que utilicen efectos de desenfoque "
+"dinámico. Estas medidas de mitigación supondrán un ligero consumo adicional "
+"y persistente de la CPU cuando una ventana con desenfoque dinámico se "
+"encuentre sobre otras dos o más ventanas. Se recomienda esta opción a menos "
+"que utilices un fondo de pantalla en vídeo como Hidamari"
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
