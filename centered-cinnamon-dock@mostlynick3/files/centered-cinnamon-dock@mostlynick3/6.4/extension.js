@@ -1185,8 +1185,14 @@ function initializePanels() {
                 state.isShowing = false;
                 panel.actor.opacity = 0;
                 panel.actor.show();
-                
+
                 checkAndApplyStyle(panel, true);
+                // Restore visibility after a workspace switch. The handler blanks the
+                // panel (opacity=0) to recompute geometry, but applyStyle() re-saves the
+                // current (0) opacity and nothing else restores it on the autoHide:false /
+                // no-fullscreen path, leaving the dock invisible. The 100ms timeout below
+                // re-hides it when hideOnFullscreen/autoHide actually require it.
+                panel.actor.opacity = 255;
             } catch(e) {}
         });
         
