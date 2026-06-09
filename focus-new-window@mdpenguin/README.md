@@ -7,9 +7,12 @@ GNOME's handling of window focus to prevent focus-stealing has caused a lot of p
 ## Options
 - Raise window only of listed programs
     - When selected, only windows from the programs that you list will be affected by the extension
-    - When unselected, windows from all programs will be affected by the extension
+    - When unselected, windows from all programs will be affected by the extension unless included in "Programs to exclude"
 - Programs to include
     - A comma separated list of programs to include
+    - The list is not case sensitive and spaces between programs is optional
+- Programs to exclude
+    - A comma separated list of programs that should not have their windows automatically receive focus
     - The list is not case sensitive and spaces between programs is optional
 
 ## Troubleshooting
