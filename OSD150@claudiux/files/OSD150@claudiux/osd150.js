@@ -162,7 +162,7 @@ class OsdWindow extends Clutter.Actor {
 }
 );
 
-var OsdWindowManager = class {
+var OsdWindowManager = class OsdWindowManager {
     constructor(settings) {
         this.settings = settings;
         this._osdWindows = [];
