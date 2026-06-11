@@ -1,0 +1,10 @@
+{
+	"uuid": "smile-autopaste@turtl.cc",
+	"name": "Smile Autopaste",
+	"description": "Automatically pastes emojis selected in Smile into the previously focused window.",
+	"version": "1.0",
+    "cinnamon-version": ["6.6"],
+    "author": "megaturtl",
+	"website": "https://turtl.cc",
+	"url": "https://github.com/megaturtl/smile-autopaste"
+}
