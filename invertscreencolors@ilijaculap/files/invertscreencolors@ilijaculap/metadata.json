@@ -1,7 +1,7 @@
 {
     "website": "https://github.com/ilijaculap/invertscreencolors-cinnamon",
     "url": "https://github.com/ilijaculap/invertscreencolors-cinnamon",
-    "description": "This simple Cinnamon extension lets you invert either the entire screen or only the active window’s colors, with configurable keyboard shortcuts for both.",
+    "description": "This simple Cinnamon extension lets you invert either the entire screen or only the active windows colors, with configurable keyboard shortcuts for both.",
     "version": "0.2",
     "cinnamon-version": [
         "6.4",
