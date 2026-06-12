@@ -5,26 +5,25 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
+"Project-Id-Version: BlurCinnamon@klangman 2.5.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-06-06 17:40-0400\n"
-"PO-Revision-Date: 2025-03-30 10:53+0300\n"
-"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"PO-Revision-Date: 2026-06-06 21:14-0400\n"
+"Last-Translator: Grom-TS\n"
 "Language-Team: \n"
-"Language: fi\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
 
 #. 6.0/extension.js:2600 6.0/extension.js:2603 6.0/extension.js:2713
 msgid "Default window settings"
-msgstr ""
+msgstr "Настройки окон по умолчанию"
 
 #. 6.0/extension.js:2861
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #. 6.0/extension.js:2862
 msgid ""
@@ -32,11 +31,12 @@ msgid ""
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
 "window"
 msgstr ""
+"Не удалось определить приложение или WM_CLASS ранее активного окна, поэтому "
+"эффекты Blur Cinnamon не могут быть применены к этому окну"
 
 #. 6.0/extension.js:3716
-#, fuzzy
 msgid "Welcome to Blur Cinnamon"
-msgstr "Blur Cinnamon"
+msgstr "Добро пожаловать в Blur Cinnamon"
 
 #. 6.0/extension.js:3717
 msgid ""
@@ -48,15 +48,21 @@ msgid ""
 "changes to the effect properties like blur intensity, color saturation and "
 "dimming."
 msgstr ""
+"Надеемся, вам нравятся новые эффекты Панели, Экспо, Обзора и Alt-Tab.\n"
+"\n"
+"Откройте настройки Blur Cinnamon, чтобы включить дополнительные эффекты для "
+"других элементов рабочего стола, таких как меню, уведомления и окна, либо "
+"отключить эффекты для компонентов, которые были включены по умолчанию. Вы "
+"также можете настроить параметры эффектов, такие как интенсивность "
+"размытия, насыщенность цвета и затемнение."
 
 #. 6.0/extension.js:3721
-#, fuzzy
 msgid "Open Blur Cinnamon Settings"
-msgstr "Blur Cinnamon"
+msgstr "Открыть настройки Blur Cinnamon"
 
 #. 6.0/extension.js:3806
 msgid "Testing Blur Cinnamon Notification Effects"
-msgstr ""
+msgstr "Тестирование эффектов уведомлений Blur Cinnamon"
 
 #. 6.0/extension.js:3807
 msgid ""
@@ -66,146 +72,137 @@ msgid ""
 "Making further changes to the notification effect settings will "
 "automatically apply to this notification message."
 msgstr ""
+"Так будут выглядеть уведомления при использовании текущих эффектов "
+"всплывающих уведомлений Blur Cinnamon.\n"
+"\n"
+"Любые дальнейшие изменения настроек эффектов уведомлений будут "
+"автоматически применяться к этому уведомлению."
 
 #. metadata.json->name
 msgid "Blur Cinnamon"
 msgstr "Blur Cinnamon"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, colorize, desaturate and adjust the dimming of several "
 "Cinnamon Desktop components"
 msgstr ""
-"Mahdollistaa Cinnamon Desktop komponenttien sumentaminen, värittäminen, "
-"himmennyksen ja läpikuultavuuden (esim. paneeli, ponnahdusvalikko, ohjelmat "
-"näkymä, työtila)"
+"Позволяет применять размытие, цветовую тонировку, обесцвечивание и настраивать "
+"затемнение различных компонентов рабочего стола Cinnamon"
 
 #. 6.0->settings-schema.json->general-page->title
-#, fuzzy
 msgid "General setup"
-msgstr "Yleinen"
+msgstr "Общие настройки"
 
 #. 6.0->settings-schema.json->generic-settings-page->title
 #. 6.0->settings-schema.json->generic-effect-settings->title
 msgid "Generic effect settings"
-msgstr "Tehosteasetukset"
+msgstr "Общие настройки эффектов"
 
 #. 6.0->settings-schema.json->component-setting-page->title
-#, fuzzy
 msgid "Component specific settings"
-msgstr "Paneelikohtaiset asetukset"
+msgstr "Настройки отдельных компонентов"
 
 #. 6.0->settings-schema.json->about-page->title
 msgid "About"
-msgstr ""
+msgstr "О расширении"
 
 #. 6.0->settings-schema.json->general-settings->title
-#, fuzzy
 msgid "Cinnamon desktop components where effects will be applied"
-msgstr "Cinnamon komponentit. Valitse mihin tehoste lisätään"
+msgstr "Компоненты рабочего стола Cinnamon, к которым будут применяться эффекты"
 
 #. 6.0->settings-schema.json->monte-carlo-settings->title
-#, fuzzy
 msgid "Monte Carlo specific settings"
-msgstr "Paneelikohtaiset asetukset"
+msgstr "Настройки Monte Carlo"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
-msgstr ""
+msgstr "Выбор компонентов"
 
 #. 6.0->settings-schema.json->component-specific-section->title
-#, fuzzy
 msgid "Component Specific Settings"
-msgstr "Paneelikohtaiset asetukset"
+msgstr "Настройки отдельных компонентов"
 
 #. 6.0->settings-schema.json->about-section->title
-#, fuzzy
 msgid "About Blur Cinnamon"
-msgstr "Blur Cinnamon"
+msgstr "О Blur Cinnamon"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
-#, fuzzy
 msgid ""
 "Note: The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
-msgstr "Varoitus: Paneelin tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+msgstr ""
+"Примечание: эффекты Alt-Tab в настоящее время отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->desklets-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
-msgstr "Varoitus: Paneelin tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+msgstr ""
+"Примечание: эффекты десклетов отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->desktop-warning->description
-#, fuzzy
 msgid ""
 "Note: The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Varoitus: Tauskakuvien tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+"Примечание: эффекты рабочего стола отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->expo-warning->description
-#, fuzzy
 msgid ""
 "Note: The Expo effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Varoitus: Työtilojen tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+"Примечание: эффекты Expo отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->popup-warning->description
-#, fuzzy
 msgid ""
 "Note: The Menu effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Varoitus: Ponnahdusvalikoiden tehosteet ovat pois käytöstä Yleinen-"
-"välilehdellä."
+"Примечание: эффекты меню отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->notification-warning->description
-#, fuzzy
 msgid ""
 "Note: The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Varoitus: Työtilojen tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+"Примечание: эффекты уведомлений отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->overview-warning->description
-#, fuzzy
 msgid ""
 "Note: The Overview effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Varoitus: Ohjelmat näkymän tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+"Примечание: эффекты обзора отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->panel-warning->description
-#, fuzzy
 msgid ""
 "Note: The Panel effects are currently disabled under the \"General setup\" "
 "tab."
-msgstr "Varoitus: Paneelin tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+msgstr ""
+"Примечание: эффекты панели отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
-#, fuzzy
 msgid ""
 "Note: The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
-msgstr "Varoitus: Paneelin tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+msgstr ""
+"Примечание: эффекты всплывающих подсказок отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->windows-warning->description
-#, fuzzy
 msgid ""
 "Note: The Window effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Varoitus: Työtilojen tehosteet ovat pois käytöstä Yleinen-välilehdellä."
+"Примечание: эффекты окон отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->desklets-label->description
 msgid ""
 "<b>Note:</b> You must configure your Desklets to be transparent! (see "
 "tooltip)"
 msgstr ""
+"Примечание: необходимо настроить десклеты на прозрачность (см. подсказку)"
 
 #. 6.0->settings-schema.json->desklets-label->tooltip
 msgid ""
@@ -215,12 +212,17 @@ msgid ""
 "backgrounds. On the Desktop, right-click on a Desklet, select the "
 "\"Configure...\" menu item to open a Desklet's configuration window."
 msgstr ""
+"Чтобы эффекты Blur Cinnamon для десклетов были видимыми, фон десклетов должен быть прозрачным. "
+"Это позволяет эффекту размытия проявляться под десклетом. Большинство десклетов можно настроить "
+"на прозрачный фон. На рабочем столе щёлкните правой кнопкой мыши по десклету и выберите пункт "
+"«Настроить…», чтобы открыть окно конфигурации десклета."
 
 #. 6.0->settings-schema.json->windows-label->description
 msgid ""
 "<b>Note:</b> Read tooltip for information about the \"Default window "
 "settings\""
 msgstr ""
+"Примечание: см. подсказку для информации о «настройках окон по умолчанию»"
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -230,54 +232,57 @@ msgid ""
 "\"Enabled\" option is unchecked for a particular application then effects "
 "will be disabled even if the \"Default window settings\" row is enabled."
 msgstr ""
+"Если включена специальная запись таблицы «настройки окон по умолчанию», эффекты будут применяться ко всем окнам. "
+"Если она отключена, эффекты будут применяться только к приложениям, указанным в таблице. "
+"Если для конкретного приложения не отмечен параметр «Включено», эффекты будут отключены, "
+"даже если включена строка «настройки окон по умолчанию»."
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Alt-Tab"
-msgstr ""
+msgstr "Alt-Tab"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-desklet-effects->description
 msgid "Desklets"
-msgstr ""
+msgstr "Десклеты"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Desktop"
-msgstr ""
+msgstr "Рабочий стол"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-expo-effects->description
 msgid "Expo"
-msgstr "Työtilat"
+msgstr "Expo"
 
 #. 6.0->settings-schema.json->component-selector->options
-#, fuzzy
 msgid "Menus"
-msgstr "Ponnahdusvalikot"
+msgstr "Меню"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Notifications"
-msgstr ""
+msgstr "Уведомления"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-overview-effects->description
 msgid "Overview"
-msgstr "Ohjelmat"
+msgstr "Обзор"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Panels"
-msgstr "Paneelit"
+msgstr "Панели"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Tooltips"
-msgstr ""
+msgstr "Всплывающие подсказки"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Windows"
-msgstr ""
+msgstr "Окна"
 
 #. 6.0->settings-schema.json->component-selector->description
 msgid "Show settings for component:"
-msgstr ""
+msgstr "Показывать настройки для компонента:"
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
@@ -299,25 +304,39 @@ msgid ""
 "The Overview effect is partially based on the BlurOverview extension by "
 "nailfarmer"
 msgstr ""
+"\n"
+"<b>Ваш стиль — в фокусе</b>\n"
+"Версия: ext-version\n"
+"\n"
+"Разработчик: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Сообщить о проблеме</a> / <a "
+"href=\"https://cinnamon-spices.linuxmint.com/extensions/view/104\">Сайт</a>\n"
+"\n"
+"Эффекты скруглённых углов, Гаусса и Монте-Карло\n"
+"основаны на коде aunetx (Blur-my-shell)\n"
+"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"Эффект Overview частично основан на расширении BlurOverview от nailfarmer"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
 "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
 "hot corner)"
 msgstr ""
-"Käytä tehosteita ohjelmat näkymässä (oletus: Ctrl+Alt+⬇ / näyttää kaikki "
-"ohjelmien avoimet ikkunat)"
+"Применять эффекты к режиму обзора (по умолчанию: Ctrl+Alt+Down / горячий угол «Показать все окна»)"
 
 #. 6.0->settings-schema.json->enable-expo-effects->tooltip
 msgid ""
 "Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot "
 "corner)"
 msgstr ""
-"Käytä tehosteita työtiloissa (oletus: Ctrl+Alt+⬆ / näyttää kaikki työtilat)"
+"Применять эффекты к Expo (по умолчанию: Ctrl+Alt+Up / горячий угол «Показать все рабочие столы»)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->description
 msgid "Panels  (Please read tooltip)"
-msgstr "Paneelit (lue työkaluvihje)"
+msgstr "Панели (см. подсказку)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->tooltip
 msgid ""
@@ -327,17 +346,16 @@ msgid ""
 "image. It overrides some themes settings to achieve a (semi-)transparent "
 "panel so that the blurred background is visible."
 msgstr ""
-"Käytä tehosteita paneeleihin. Toimii varsin hyvin tummien teemojen kanssa. "
-"Vaaleat teemat voidaan saada toimimaan käyttämällä luovasti himmentäviä "
-"väriasetuksia ja sopivaa taustakuvaa. Ohittaa osan teema-asetuksista "
-"saadakseen läpikuultavan paneelin, jolloin sumennettu tausta näkyy."
+"Применять эффекты к панелям. Эта опция хорошо работает с большинством тёмных тем рабочего стола, "
+"однако светлые темы также можно адаптировать с помощью настройки цвета затемнения и подходящего фонового изображения. "
+"Она переопределяет некоторые настройки темы, чтобы добиться (полу)прозрачной панели, "
+"позволяя видеть размытый фон."
 
 #. 6.0->settings-schema.json->enable-popup-effects->description
 msgid "Popup Menus  (Please read tooltip)"
-msgstr "Ponnahdusvalikot (lue työkaluvihje)"
+msgstr "Всплывающие меню (см. подсказку)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to panel popup menus. This option is intended for the Cinnamon "
 "(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
@@ -346,34 +364,29 @@ msgid ""
 "background image. It overrides some theme settings to achieve a "
 "(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
-"Käytä tehosteita ponnahdusvalikoissa mm valikossa ja kalenterissa. Tämä "
-"toimii parhaiten Cinnamon (6.4) ja Mint-Y tummille teemoille. Saattaa toimia "
-"hyvin muiden teemojen kanssa. Vaaleat teemat eivät tuota hyviä tuloksia, "
-"mutta voidaan saada toimimaan käyttämällä luovasti himmentäviä väriasetuksia "
-"ja sopivaa taustakuvaa. Ohittaa osan teema-asetuksista saadakseen "
-"läpikuultavan valikon, jolloin sumennettu tausta näkyy.  Poistaa myös "
-"pyöristetyt kulmat, jotta epäselvä tausta ei valu pyöristetyille reunoille."
+"Применять эффекты к всплывающим меню панели. Эта опция предназначена для тем Cinnamon (6.4) и тёмной темы Mint-Y, "
+"но может также хорошо работать с другими темами. Светлые темы, скорее всего, не дадут хорошего результата, "
+"но их можно адаптировать с помощью настройки цвета затемнения и подходящего фонового изображения. "
+"Она переопределяет некоторые настройки темы, чтобы добиться (полу)прозрачного меню, "
+"позволяя видеть размытый фон."
 
 #. 6.0->settings-schema.json->enable-desktop-effects->description
 msgid "Desktop background"
-msgstr "Taustakuva"
+msgstr "Фон рабочего стола"
 
 #. 6.0->settings-schema.json->enable-desktop-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to desktop background image. Desktop effects can be applies "
 "always or just when a window has the focus."
 msgstr ""
-"Käytä tehosteita taustakuvaan. Taustakuva välilehdellä voit valita, "
-"sovelletaanko tehostetta aina vai silloin kun ikkuna on kohdistettu."
+"Применять эффекты к фоновому изображению рабочего стола. Эффекты рабочего стола могут применяться "
+"всегда или только когда окно находится в фокусе."
 
 #. 6.0->settings-schema.json->enable-notification-effects->description
-#, fuzzy
 msgid "Notification popups (Please read tooltip)"
-msgstr "Ponnahdusvalikot (lue työkaluvihje)"
+msgstr "Всплывающие уведомления (см. подсказку)"
 
 #. 6.0->settings-schema.json->enable-notification-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the notification popups. This option has been tested with "
 "the Cinnamon (6.4) and Mint-Y dark desktop themes but might work will with "
@@ -381,47 +394,34 @@ msgid ""
 "(semi-)transparent Notification popup window so that the blurred background "
 "is visible."
 msgstr ""
-"Käytä tehosteita ponnahdusvalikoissa mm valikossa ja kalenterissa. Tämä "
-"toimii parhaiten Cinnamon (6.4) ja Mint-Y tummille teemoille. Saattaa toimia "
-"hyvin muiden teemojen kanssa. Vaaleat teemat eivät tuota hyviä tuloksia, "
-"mutta voidaan saada toimimaan käyttämällä luovasti himmentäviä väriasetuksia "
-"ja sopivaa taustakuvaa. Ohittaa osan teema-asetuksista saadakseen "
-"läpikuultavan valikon, jolloin sumennettu tausta näkyy.  Poistaa myös "
-"pyöristetyt kulmat, jotta epäselvä tausta ei valu pyöristetyille reunoille."
+"Применять эффекты к всплывающим уведомлениям. Эта опция тестировалась с темами Cinnamon (6.4) и тёмной темой Mint-Y, "
+"но может также работать с другими темами. Она переопределяет некоторые настройки темы, чтобы добиться "
+"(полу)прозрачного окна уведомления, позволяя видеть размытый фон."
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->description
 msgid "Alt-Tab application switcher"
-msgstr ""
+msgstr "Переключатель приложений Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->tooltip
-#, fuzzy
 msgid "Apply effects to the Alt-Tab application switcher background"
-msgstr "Käytä tehosteita ponnahdusikkunoissa"
+msgstr "Применять эффекты к фону переключателя приложений Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-tooltips-effects->description
-#, fuzzy
 msgid "Panel tooltips (Please read tooltip)"
-msgstr "Paneelit (lue työkaluvihje)"
+msgstr "Подсказки панели (см. подсказку)"
 
 #. 6.0->settings-schema.json->enable-tooltips-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the panel tooltip backgrounds. It overrides some theme "
 "settings to achieve a (semi-)transparent tooltip so that the blurred "
 "background is visible."
 msgstr ""
-"Käytä tehosteita ponnahdusvalikoissa mm valikossa ja kalenterissa. Tämä "
-"toimii parhaiten Cinnamon (6.4) ja Mint-Y tummille teemoille. Saattaa toimia "
-"hyvin muiden teemojen kanssa. Vaaleat teemat eivät tuota hyviä tuloksia, "
-"mutta voidaan saada toimimaan käyttämällä luovasti himmentäviä väriasetuksia "
-"ja sopivaa taustakuvaa. Ohittaa osan teema-asetuksista saadakseen "
-"läpikuultavan valikon, jolloin sumennettu tausta näkyy.  Poistaa myös "
-"pyöristetyt kulmat, jotta epäselvä tausta ei valu pyöristetyille reunoille."
+"Применять эффекты к фону подсказок панели. Переопределяет некоторые настройки темы, "
+"чтобы добиться (полу)прозрачной подсказки, позволяя видеть размытый фон."
 
 #. 6.0->settings-schema.json->enable-window-effects->description
-#, fuzzy
 msgid "Application windows (Please read tooltip)"
-msgstr "Ponnahdusvalikot (lue työkaluvihje)"
+msgstr "Окна приложений (см. подсказку)"
 
 #. 6.0->settings-schema.json->enable-window-effects->tooltip
 msgid ""
@@ -433,24 +433,22 @@ msgid ""
 "any) will have effects applied to its windows, enabling this option alone "
 "will not add effects to any windows."
 msgstr ""
+"Разрешить применение эффектов к фону окон приложений, добавляя слой эффектов под всеми существующими графическими элементами затронутых окон. "
+"Это означает, что эффекты НЕ будут видны, если приложение не настроено на прозрачность или если параметр «Непрозрачность» окна не меньше 100%. "
+"Таблица в настройках компонента «Окна» используется для определения того, к каким приложениям (если вообще) будут применяться эффекты к их окнам; "
+"включение этой опции само по себе не добавляет эффекты ни к одному окну."
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to Desklet backgrounds. Desklets must be setup to be "
 "transparent in order for the Blur Cinnamon effects to be visible."
 msgstr ""
-"Käytä tehosteita ponnahdusvalikoissa mm valikossa ja kalenterissa. Tämä "
-"toimii parhaiten Cinnamon (6.4) ja Mint-Y tummille teemoille. Saattaa toimia "
-"hyvin muiden teemojen kanssa. Vaaleat teemat eivät tuota hyviä tuloksia, "
-"mutta voidaan saada toimimaan käyttämällä luovasti himmentäviä väriasetuksia "
-"ja sopivaa taustakuvaa. Ohittaa osan teema-asetuksista saadakseen "
-"läpikuultavan valikon, jolloin sumennettu tausta näkyy.  Poistaa myös "
-"pyöristetyt kulmat, jotta epäselvä tausta ei valu pyöristetyille reunoille."
+"Применять эффекты к фону десклетов. Десклеты должны быть настроены на прозрачность, "
+"чтобы эффекты Blur Cinnamon были видимыми."
 
 #. 6.0->settings-schema.json->focused-window-backlight->description
 msgid "Focused window backlight effect"
-msgstr ""
+msgstr "Эффект подсветки активного окна"
 
 #. 6.0->settings-schema.json->focused-window-backlight->tooltip
 msgid ""
@@ -459,13 +457,15 @@ msgid ""
 "appear to glow around the edges. If the focused window is transparent, this "
 "effect will also show a blurred background image behind the window."
 msgstr ""
+"Применять эффект подсветки активного окна на основе фонового изображения. "
+"Эффект выходит за границы активного окна, создавая ощущение свечения по краям. "
+"Если активное окно прозрачное, этот эффект также показывает размытое фоновое изображение за окном."
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->description
 msgid "Override some of the panels theme settings (recommended)"
-msgstr "Ohita jotkin paneelin teema-asetukset (suositus)"
+msgstr "Переопределять некоторые настройки темы панелей (рекомендуется)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-panels->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the panels transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -473,18 +473,16 @@ msgid ""
 "theme already uses transparent panels and you want the themes setting to "
 "apply."
 msgstr ""
-"Salli tämän laajennuksen muokata paneelien läpinäkyvyyttä ja taustavärin "
-"asetuksia. Jos tämä ei ole käytössä, laajennus lisää vain sumennetun "
-"peittokuvan paneelin alle. Tämä asetus poistetaan käytöstä vain, jos "
-"teemassa on jo käytössä läpinäkyvä paneeli tai haluat käyttää teeman omia "
-"asetuksia."
+"Разрешить этому расширению изменять настройки прозрачности и цвета фона панелей. "
+"Если эта опция отключена, расширение будет применять только размытие фона под панелями. "
+"Эту настройку следует отключать только в том случае, если тема уже использует прозрачные панели "
+"и вы хотите, чтобы применялись настройки темы."
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->description
 msgid "Override some of the popup menu theme settings (recommended)"
-msgstr "Ohita jotkin ponnahdusvalikon teema-asetukset (suositus)"
+msgstr "Переопределять некоторые настройки темы всплывающих меню (рекомендуется)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the popup Menu transparency and background "
 "color settings. If this is disabled the extension will only apply a blur "
@@ -492,20 +490,17 @@ msgid ""
 "the theme already uses transparent popup menus and you want the themes "
 "setting to apply."
 msgstr ""
-"Salli tämän laajennuksen muokata ponnahdusvalikon läpinäkyvyyttä, "
-"taustaväriä ja pyöristettyjen kulmien asetuksia. Jos tämä ei ole käytössä, "
-"laajennus käyttää vain sumennettua peittokuvaa ponnahdusvalikossa. Asetus "
-"tulee poistaa käytöstä vain, jos teema käyttää jo läpinäkyvää "
-"ponnahdusvalikkoa ja haluat käyttää omaa teema-asetusta."
+"Разрешить этому расширению изменять настройки прозрачности и цвета фона всплывающих меню. "
+"Если эта опция отключена, расширение будет применять только размытие фона под всплывающими меню. "
+"Эту настройку следует отключать только в том случае, если тема уже использует прозрачные всплывающие меню "
+"и вы хотите, чтобы применялись настройки темы."
 
 #. 6.0->settings-schema.json->allow-transparent-color-
 #. notifications->description
-#, fuzzy
 msgid "Override some of the notification theme settings (recommended)"
-msgstr "Ohita jotkin paneelin teema-asetukset (suositus)"
+msgstr "Переопределять некоторые настройки темы уведомлений (рекомендуется)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-notifications->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the notification transparency and background "
 "color settings. If this is disabled the extension will only apply a blur "
@@ -513,19 +508,16 @@ msgid ""
 "when the theme already uses transparent notifications and you want the "
 "themes setting to apply."
 msgstr ""
-"Salli tämän laajennuksen muokata paneelien läpinäkyvyyttä ja taustavärin "
-"asetuksia. Jos tämä ei ole käytössä, laajennus lisää vain sumennetun "
-"peittokuvan paneelin alle. Tämä asetus poistetaan käytöstä vain, jos "
-"teemassa on jo käytössä läpinäkyvä paneeli tai haluat käyttää teeman omia "
-"asetuksia."
+"Разрешить этому расширению изменять настройки прозрачности и цвета фона уведомлений. "
+"Если эта опция отключена, расширение будет применять только размытие фона под уведомлениями. "
+"Эту настройку следует отключать только в том случае, если тема уже использует прозрачные уведомления "
+"и вы хотите, чтобы применялись настройки темы."
 
 #. 6.0->settings-schema.json->allow-transparent-color-tooltips->description
-#, fuzzy
 msgid "Override some of the tooltip theme settings (recommended)"
-msgstr "Ohita jotkin paneelin teema-asetukset (suositus)"
+msgstr "Переопределять некоторые настройки темы всплывающих подсказок (рекомендуется)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-tooltips->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the tooltip transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -533,16 +525,14 @@ msgid ""
 "theme already uses transparent tooltips and you want the themes setting to "
 "apply."
 msgstr ""
-"Salli tämän laajennuksen muokata paneelien läpinäkyvyyttä ja taustavärin "
-"asetuksia. Jos tämä ei ole käytössä, laajennus lisää vain sumennetun "
-"peittokuvan paneelin alle. Tämä asetus poistetaan käytöstä vain, jos "
-"teemassa on jo käytössä läpinäkyvä paneeli tai haluat käyttää teeman omia "
-"asetuksia."
+"Разрешить этому расширению изменять настройки прозрачности и цвета фона всплывающих подсказок. "
+"Если эта опция отключена, расширение будет применять только размытие фона под подсказками. "
+"Эту настройку следует отключать только в том случае, если тема уже использует прозрачные всплывающие подсказки "
+"и вы хотите, чтобы применялись настройки темы."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Overview"
-msgstr "Käytä tehosteita ohjelmat näkymässä"
+msgstr "Переопределять общие настройки эффектов для режима обзора"
 
 #. 6.0->settings-schema.json->enable-overview-override->tooltip
 #. 6.0->settings-schema.json->enable-expo-override->tooltip
@@ -557,133 +547,127 @@ msgid ""
 "Override the settings found on the \"Generic effect settings\" tab with "
 "unique settings for this cinnamon component."
 msgstr ""
+"Переопределять настройки, указанные на вкладке «Общие настройки эффектов», "
+"используя уникальные параметры для этого компонента Cinnamon."
 
 #. 6.0->settings-schema.json->enable-expo-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Expo"
-msgstr "Käytä tehosteita työtilan näkymässä"
+msgstr "Переопределять общие настройки эффектов для Expo"
 
 #. 6.0->settings-schema.json->enable-panels-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Panels"
-msgstr "Käytä tehosteita paneelissa"
+msgstr "Переопределять общие настройки эффектов для панелей"
 
 #. 6.0->settings-schema.json->enable-popup-override->description
-#, fuzzy
 msgid "Override the generic effect settings for popup menus"
-msgstr "Käytä tehosteita ponnahdusikkunoissa"
+msgstr "Переопределять общие настройки эффектов для всплывающих меню"
 
 #. 6.0->settings-schema.json->enable-desktop-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the desktop background"
-msgstr "Käytä tehosteita taustakuvassa"
+msgstr "Переопределять общие настройки эффектов для фона рабочего стола"
 
 #. 6.0->settings-schema.json->enable-notification-override->description
-#, fuzzy
 msgid "Override the generic effect settings for notification popups"
-msgstr "Käytä tehosteita ponnahdusikkunoissa"
+msgstr "Переопределять общие настройки эффектов для всплывающих уведомлений"
 
 #. 6.0->settings-schema.json->enable-appswitcher-override->description
-#, fuzzy
 msgid "Override the generic effect settings for the Alt-Tab app switcher"
-msgstr "Käytä tehosteita ponnahdusikkunoissa"
+msgstr "Переопределять общие настройки эффектов для переключателя приложений Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-tooltips-override->description
-#, fuzzy
 msgid "Override the generic effect settings for panel tooltips"
-msgstr "Käytä tehosteita paneelissa"
+msgstr "Переопределять общие настройки эффектов для всплывающих подсказок панели"
 
 #. 6.0->settings-schema.json->enable-desklets-override->description
-#, fuzzy
 msgid "Override the generic effect settings for Desklets"
-msgstr "Käytä tehosteita paneelissa"
+msgstr "Переопределять общие настройки эффектов для десклетов"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->description
 msgid "Enable advanced options to apply unique settings for each Desklet"
-msgstr ""
+msgstr "Включить расширенные параметры для применения индивидуальных настроек к каждому десклету"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->tooltip
 msgid ""
 "With this option enabled each Desklet can use different settings or you can "
 "disable effects completely for some Desklets."
 msgstr ""
+"Если эта опция включена, каждый десклет может использовать отдельные настройки, "
+"либо вы можете полностью отключить эффекты для некоторых десклетов."
 
 #. 6.0->settings-schema.json->window-settings-button->description
 msgid "Open Alt-Tab Cinnamon settings"
-msgstr ""
+msgstr "Открыть настройки Alt-Tab Cinnamon"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->description
-#, fuzzy
 msgid "Enable advanced options to apply unique settings for each panel"
-msgstr "Käytä tehosteita jokaisessa paneelissa erikseen"
+msgstr "Включить расширенные параметры для применения индивидуальных настроек к каждой панели"
 
 #. 6.0->settings-schema.json->enable-panel-unique-settings->tooltip
 msgid ""
 "With this option enabled each panel can use different settings or you can "
 "disable effects completely for some panels."
 msgstr ""
+"Если эта опция включена, каждая панель может использовать отдельные настройки, "
+"либо вы можете полностью отключить эффекты для некоторых панелей."
 
 #. 6.0->settings-schema.json->panel-unique-settings->description
 msgid "Panel specific settings"
-msgstr "Paneelikohtaiset asetukset"
+msgstr "Индивидуальные настройки панелей"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Enabled"
-msgstr "Käytössä"
+msgstr "Включено"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Panel"
-msgstr "Paneeli"
+msgstr "Панель"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Monitor"
-msgstr "Näyttö"
+msgstr "Монитор"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Custom"
-msgstr ""
+msgstr "Пользовательский"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
-#, fuzzy
 msgid "Dim"
-msgstr "Himmennys"
+msgstr "Затемнение"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Color"
-msgstr "Väri"
+msgstr "Цвет"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
-#, fuzzy
 msgid "Background"
-msgstr "Taustakuva"
+msgstr "Фон"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Intensity"
-msgstr "Vahvuus"
+msgstr "Интенсивность"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Saturation"
-msgstr "Kylläisyys"
+msgstr "Насыщенность"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Custom CSS"
-msgstr ""
+msgstr "Пользовательский CSS"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
-#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
@@ -693,14 +677,16 @@ msgid ""
 "field is in the rgb(#,#,#) syntax and black will be used when a color is not "
 "provided or is in an incorrect syntax"
 msgstr ""
-"Määrittää eri paneeleihin sovellettavat tehosteet. Jos paneeli ei täytä "
-"mitään tässä luettelossa olevaa ehtoja, siihen ei sovelleta tehostetta. "
-"Värikenttä merkitään rgb(#,#,#) arvoilla. #000 on musta ja käytetään, jos "
-"väriä ei ole annettu tai se on väärässä muodossa"
+"Определяет эффекты, применяемые к различным панелям. Если панель не соответствует "
+"критериям ни одной включённой записи в этом списке, к ней не будут применены эффекты. "
+"Будет использоваться первая подходящая запись для данной панели. "
+"Флажок \"Custom\" определяет, используются ли общие настройки эффектов или "
+"пользовательские настройки этой таблицы. Поле цвета задаётся в формате rgb(#,#,#), "
+"а при отсутствии цвета или ошибочном формате будет использоваться чёрный."
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->description
 msgid "Restore theme settings when a window is maximized"
-msgstr ""
+msgstr "Восстанавливать настройки темы при развернутом окне"
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->tooltip
 msgid ""
@@ -710,10 +696,14 @@ msgid ""
 "blurring, so if your theme uses a transparent panel then this setting may "
 "have no effect."
 msgstr ""
+"Восстанавливает настройки панели темы, когда любое окно развёрнуто на том же "
+"мониторе, где находится панель. Для большинства тем это возвращает сплошной "
+"фон панели при максимизации окна. Примечание: это не отключает размытие, "
+"поэтому если тема использует прозрачную панель, настройка может не иметь эффекта."
 
 #. 6.0->settings-schema.json->hover-brighten-panels->description
 msgid "Brighten panel when mouse is hovering a panel"
-msgstr ""
+msgstr "Осветлять панель при наведении курсора"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
 msgid ""
@@ -722,6 +712,9 @@ msgid ""
 "only effective when either dimming is greater than 0 or saturation is less "
 "than 100."
 msgstr ""
+"При наведении мыши на панель значение затемнения устанавливается в 0, а насыщенность "
+"— в 100, чтобы панель выглядела ярче. Эта настройка работает только если уровень "
+"затемнения больше 0 или насыщенность меньше 100."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -731,9 +724,8 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-opacity->description
 #. 6.0->settings-schema.json->appswitcher-opacity->description
 #. 6.0->settings-schema.json->tooltips-opacity->description
-#, fuzzy
 msgid "Dim/Colorize Background (%)"
-msgstr "Himmennä/värjää taustaa (prosenttia)"
+msgstr "Затемнение/окрашивание фона (%)"
 
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
@@ -746,7 +738,7 @@ msgstr "Himmennä/värjää taustaa (prosenttia)"
 #. 6.0->settings-schema.json->tooltips-blendColor->description
 #. 6.0->settings-schema.json->desklets-blendColor->description
 msgid "Dimming overlay color"
-msgstr "Himmentävä peittoväri"
+msgstr "Цвет затемняющего слоя"
 
 #. 6.0->settings-schema.json->blendColor->tooltip
 #. 6.0->settings-schema.json->overview-blendColor->tooltip
@@ -763,14 +755,12 @@ msgid ""
 "control above. Use black for a normal dimming effect or some other color for "
 "a color blend effect"
 msgstr ""
-"Määrittää värin, joka sekoitetaan taustaan ​​yllä olevan säätimen perusteella. "
-"Käytä mustaa normaaliin himmentämiseen tai jotain muuta väriä "
-"värisekoitukseen"
+"Определяет цвет, который смешивается с фоном на основе настройки затемнения выше. "
+"Используйте чёрный для обычного эффекта затемнения или другой цвет для эффекта цветового смешивания"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "None / Transparent to wallpaper"
-msgstr "Taustakuva"
+msgstr "Нет / Прозрачно до обоев"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -780,7 +770,7 @@ msgstr "Taustakuva"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "Simple static blur"
-msgstr ""
+msgstr "Простое статическое размытие"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -789,13 +779,12 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
-#, fuzzy
 msgid "Gaussian static blur"
-msgstr "Sumennuksen voimakkuus"
+msgstr "Статическое гауссово размытие"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Gaussian dynamic blur (if applicable)"
-msgstr ""
+msgstr "Гауссово динамическое размытие (если применимо)"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -804,13 +793,12 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
-#, fuzzy
 msgid "Monte Carlo static blur"
-msgstr "Sumennuksen voimakkuus"
+msgstr "Статическое размытие Монте-Карло"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Monte Carlo dynamic blur (if applicable)"
-msgstr ""
+msgstr "Динамическое размытие Монте-Карло (если применимо)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -819,7 +807,7 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-blurType->description
 #. 6.0->settings-schema.json->desklets-blurType->description
 msgid "Type of blur effect"
-msgstr "Sumeustehoste"
+msgstr "Тип эффекта размытия"
 
 #. 6.0->settings-schema.json->blurType->tooltip
 #. 6.0->settings-schema.json->overview-blurType->tooltip
@@ -827,7 +815,7 @@ msgstr "Sumeustehoste"
 #. 6.0->settings-schema.json->desktop-blurType->tooltip
 #. 6.0->settings-schema.json->desklets-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
-msgstr "Mitä sumennusalgoritmia tulisi käyttää taustan sumentamiseen"
+msgstr "Какой алгоритм размытия следует использовать для размытия фона"
 
 #. 6.0->settings-schema.json->radius->description
 #. 6.0->settings-schema.json->overview-radius->description
@@ -839,9 +827,8 @@ msgstr "Mitä sumennusalgoritmia tulisi käyttää taustan sumentamiseen"
 #. 6.0->settings-schema.json->appswitcher-radius->description
 #. 6.0->settings-schema.json->tooltips-radius->description
 #. 6.0->settings-schema.json->desklets-radius->description
-#, fuzzy
 msgid "Blur intensity"
-msgstr "Sumennuksen voimakkuus"
+msgstr "Интенсивность размытия"
 
 #. 6.0->settings-schema.json->radius->tooltip
 #. 6.0->settings-schema.json->overview-radius->tooltip
@@ -856,7 +843,9 @@ msgstr "Sumennuksen voimakkuus"
 msgid ""
 "Adjusts the intensity of the blur effect by changing the radius use by the "
 "effect."
-msgstr "Säätää sumennuksen voimakkuutta muuttamalla tehosteen säteen käyttöä."
+msgstr ""
+"Регулирует интенсивность эффекта размытия, изменяя радиус, используемый "
+"эффектом."
 
 #. 6.0->settings-schema.json->saturation->description
 #. 6.0->settings-schema.json->overview-saturation->description
@@ -868,7 +857,7 @@ msgstr "Säätää sumennuksen voimakkuutta muuttamalla tehosteen säteen käytt
 #. 6.0->settings-schema.json->tooltips-saturation->description
 #. 6.0->settings-schema.json->desklets-saturation->description
 msgid "Background color saturation"
-msgstr "Taustan värikylläisyys"
+msgstr "Насыщенность цвета фона"
 
 #. 6.0->settings-schema.json->saturation->tooltip
 #. 6.0->settings-schema.json->overview-saturation->tooltip
@@ -880,47 +869,50 @@ msgstr "Taustan värikylläisyys"
 #. 6.0->settings-schema.json->appswitcher-saturation->tooltip
 #. 6.0->settings-schema.json->tooltips-saturation->tooltip
 #. 6.0->settings-schema.json->desklets-saturation->tooltip
-#, fuzzy
 msgid ""
 "Adjusts the color saturation of the background image from gray-scale to full "
 "color."
-msgstr "Säätää taustakuvan värikylläisyyttä."
+msgstr ""
+"Регулирует насыщенность цвета фонового изображения — от оттенков серого до полноцветного отображения."
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->description
-#, fuzzy
 msgid "Iterations"
-msgstr "Kylläisyys"
+msgstr "Итерации"
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->tooltip
 msgid ""
 "Increasing number of iterations will make the blur appear smoother at the "
 "cost of some CPU power."
 msgstr ""
+"Увеличение числа итераций делает размытие более плавным, но увеличивает нагрузку на процессор."
 
 #. 6.0->settings-schema.json->monte-carlo-use-base-pixel->description
 msgid "Use base pixel"
-msgstr ""
+msgstr "Использовать исходный пиксель"
 
 #. 6.0->settings-schema.json->monte-carlo-use-base-pixel->tooltip
 msgid ""
 "Whether or not the original pixel is counted for the blur. If it is, the "
 "image will be more legible."
 msgstr ""
+"Определяет, учитывается ли исходный пиксель при размытии. Если да, изображение будет более читаемым."
 
 #. 6.0->settings-schema.json->monte-carlo-prefer-closer-pixels->description
 msgid "Prefer closer pixels"
-msgstr ""
+msgstr "Предпочитать более близкие пиксели"
 
 #. 6.0->settings-schema.json->monte-carlo-prefer-closer-pixels->tooltip
 msgid ""
 "Whether or not the pixels that are closer to the original pixel will have "
 "more weight."
 msgstr ""
+"Определяет, будут ли пиксели, расположенные ближе к исходному пикселю, иметь больший вес."
 
 #. 6.0->settings-schema.json->monte-carlo-label->description
 msgid ""
 "<b>Note:</b> These Monte Carlo settings are used globally for all components"
 msgstr ""
+"<b>Примечание:</b> Эти настройки Монте-Карло используются глобально для всех компонентов"
 
 #. 6.0->settings-schema.json->monte-carlo-label->tooltip
 msgid ""
@@ -928,6 +920,9 @@ msgid ""
 "configured to use the Monte Carlo blur algorithm, these settings can not be "
 "configured separately for each component"
 msgstr ""
+"Указанные выше настройки Монте-Карло используются глобально для всех компонентов, "
+"которые настроены на использование алгоритма размытия Монте-Карло; эти параметры "
+"нельзя настраивать отдельно для каждого компонента"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -935,40 +930,39 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 msgid "None"
-msgstr "Ei mitään"
+msgstr "Нет"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Simple"
-msgstr "Vakio"
+msgstr "Простое"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Gaussian"
-msgstr "Gaussian"
+msgstr "Гауссово"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Monte Carlo"
-msgstr ""
+msgstr "Монте-Карло"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 msgid "Transparent"
-msgstr ""
+msgstr "Прозрачный"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
-#, fuzzy
 msgid "Transparent to wallpaper"
-msgstr "Taustakuva"
+msgstr "Прозрачный до обоев"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
@@ -976,9 +970,8 @@ msgstr "Taustakuva"
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
-#, fuzzy
 msgid "Gaussian dynamic blur"
-msgstr "Sumennuksen voimakkuus"
+msgstr "Гауссово динамическое размытие"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
@@ -986,41 +979,38 @@ msgstr "Sumennuksen voimakkuus"
 #. 6.0->settings-schema.json->appswitcher-blurType->options
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
-#, fuzzy
 msgid "Monte Carlo dynamic blur"
-msgstr "Sumennuksen voimakkuus"
+msgstr "Динамическое размытие Монте-Карло"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->notification-blurType->description
 #. 6.0->settings-schema.json->tooltips-blurType->description
-#, fuzzy
 msgid "Type of background effect"
-msgstr "Sumeustehoste"
+msgstr "Тип фонового эффекта"
 
 #. 6.0->settings-schema.json->panels-blurType->tooltip
 #. 6.0->settings-schema.json->popup-blurType->tooltip
 #. 6.0->settings-schema.json->notification-blurType->tooltip
 #. 6.0->settings-schema.json->tooltips-blurType->tooltip
 msgid "What type of background effect should be applied"
-msgstr ""
+msgstr "Какой тип фонового эффекта следует применить"
 
 #. 6.0->settings-schema.json->popup-applet-menu-effects->description
 msgid "Apply effects to applet popup menus"
-msgstr ""
+msgstr "Применять эффекты к всплывающим меню апплетов"
 
 #. 6.0->settings-schema.json->popup-panel-menu-effects->description
 msgid "Apply effects to panel context menus"
-msgstr ""
+msgstr "Применять эффекты к контекстным меню панели"
 
 #. 6.0->settings-schema.json->popup-title-menu-effects->description
 msgid "Apply effects to window title bar context menus"
-msgstr ""
+msgstr "Применять эффекты к контекстным меню заголовка окна"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements dimming (%)"
-msgstr "Ponnahdusvalikon korostusvärin himmennys (prosenttia)"
+msgstr "Дополнительное затемнение акцентных элементов всплывающего меню (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
@@ -1028,70 +1018,70 @@ msgid ""
 "(i.e. the main menu favorites box and entry boxes) which allow these "
 "elements to stand out from the other popup menu areas"
 msgstr ""
-"Määrittää ponnahdusvalikon kenttien korostusvärin (eli päävalikon "
-"suosikkeihin ja kirjoituskenttiin) sovellettava lisähimmennys, jonka avulla "
-"nämä kentät erottuvat muista ponnahdusvalikon alueista"
+"Определяет дополнительное затемнение акцентных элементов всплывающего меню "
+"(например, блока избранного в главном меню и полей ввода), что позволяет этим "
+"элементам выделяться на фоне остальных областей всплывающего меню"
 
 #. 6.0->settings-schema.json->popup-saturation->description
 msgid "Background image color saturation"
-msgstr "Taustakuvan värikylläisyys"
+msgstr "Насыщенность цвета фонового изображения"
 
 #. 6.0->settings-schema.json->desktop-without-focus->description
 msgid "Only apply effect settings if the desktop is not in focus"
-msgstr "Käytä tehostetta vain jos työpöytää ei ole tarkennettu"
+msgstr "Применять эффекты только если рабочий стол не в фокусе"
 
 #. 6.0->settings-schema.json->desktop-without-focus->tooltip
 msgid ""
 "When enabled, the desktop background image effects will only apply when the "
 "desktop is not in focus"
 msgstr ""
-"Kun käytössä, pöydän taustakuvaan liittyvät tehosteet ovat käytössä vain kun "
-"työpöytä ei ole tarkennettu"
+"Если включено, эффекты фонового изображения рабочего стола применяются только "
+"когда рабочий стол не находится в фокусе"
 
 #. 6.0->settings-schema.json->desktop-with-focus->description
 msgid "Apply the generic effect settings when the desktop is in focus"
-msgstr "Käytä yleisiä tehosteita kun työpöytä on tarkennettu"
+msgstr "Применять общие настройки эффектов, когда рабочий стол находится в фокусе"
 
 #. 6.0->settings-schema.json->desktop-with-focus->tooltip
-#, fuzzy
 msgid ""
 "When enabled, the generic effect settings (on the \"Generic effect "
 "settings\" tab) will apply to the desktop background image when the desktop "
 "is in focus"
 msgstr ""
-"Kun käytössä, yleiset tehosteiden asetukset (Yleiset-välilehdellä) koskevat "
-"taustakuvaa kun pöytä on tarkennettu"
+"Если включено, общие настройки эффектов (на вкладке «Общие настройки эффектов») "
+"будут применяться к фоновому изображению рабочего стола, когда рабочий стол находится в фокусе"
 
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
-#, fuzzy
 msgid "Dim/Colorize background Image (%)"
-msgstr "Himmennä/värjää taustaa (prosenttia)"
+msgstr "Затемнение/окрашивание фонового изображения (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
-msgstr ""
+msgstr "Отправить тестовое уведомление"
 
 #. 6.0->settings-schema.json->notification-test-button->tooltip
 msgid ""
 "This button will cause a notification message to appear so you can see how "
 "your notification setting behave."
 msgstr ""
+"Эта кнопка вызовет появление уведомления, чтобы вы могли увидеть, как ведут себя "
+"настройки уведомлений"
 
 #. 6.0->settings-schema.json->appswitcher-disable-3d-panels->description
 msgid "Hide panels while using the Coverflow/Timeline 3D Alt-Tab switchers"
-msgstr ""
+msgstr "Скрывать панели при использовании переключателей Alt-Tab Coverflow/Timeline 3D"
 
 #. 6.0->settings-schema.json->appswitcher-disable-3d-panels->tooltip
 msgid ""
 "Make the panels invisible when using the Coverflow or the Timeline 3D Alt-"
 "Tab switchers"
 msgstr ""
+"Делает панели невидимыми при использовании переключателей Alt-Tab Coverflow или Timeline 3D"
 
 #. 6.0->settings-schema.json->appswitcher-allow-classic->description
-#, fuzzy
 msgid "Apply effects to the standard Alt-Tab switcher"
-msgstr "Käytä tehosteita ponnahdusikkunoissa"
+msgstr "Применять эффекты к стандартному переключателю Alt-Tab"
 
 #. 6.0->settings-schema.json->appswitcher-allow-classic->tooltip
 msgid ""
@@ -1099,11 +1089,13 @@ msgid ""
 "options without \"previews\" are supported. The standard Alt-Tab switcher "
 "can use static or dynamic blur, but dynamic is recommended."
 msgstr ""
+"Разрешает применение эффектов к стандартному переключателю Alt-Tab. Поддерживаются "
+"только варианты переключателя без предварительного просмотра. Стандартный Alt-Tab "
+"может использовать статическое или динамическое размытие, но рекомендуется динамическое."
 
 #. 6.0->settings-schema.json->appswitcher-allow-3d->description
-#, fuzzy
 msgid "Apply effects to the 3D Alt-Tab switchers"
-msgstr "Käytä tehosteita ponnahdusikkunoissa"
+msgstr "Применять эффекты к 3D-переключателям Alt-Tab"
 
 #. 6.0->settings-schema.json->appswitcher-allow-3d->tooltip
 msgid ""
@@ -1111,6 +1103,9 @@ msgid ""
 "The 3D Alt-Tab switchers will use static blurring even when dynamic blurring "
 "is selected since they don't benifit from dynamic blurring."
 msgstr ""
+"Разрешает применение эффектов к 3D-переключателям Alt-Tab Coverflow и Timeline. "
+"3D-переключатели Alt-Tab будут использовать статическое размытие даже при выборе "
+"динамического, так как они не получают преимуществ от динамического размытия."
 
 #. 6.0->settings-schema.json->appswitcher-blurType->tooltip
 msgid ""
@@ -1118,30 +1113,33 @@ msgid ""
 "blur type can be used for the standard switcher but static blurring is "
 "always used for the 3D switchers as they do not benefit from dynamic effects."
 msgstr ""
+"Какой алгоритм размытия следует использовать для размытия фона. Динамическое "
+"размытие может использоваться для стандартного переключателя, но для 3D-переключателей "
+"всегда используется статическое размытие, так как они не получают преимуществ от динамических эффектов."
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
-msgstr ""
+msgstr "Список включаемых окон приложений"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Application"
-msgstr ""
+msgstr "Приложение"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Opacity"
-msgstr ""
+msgstr "Непрозрачность"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Corner Radius"
-msgstr ""
+msgstr "Радиус углов"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Rounded Top"
-msgstr ""
+msgstr "Скругление сверху"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 msgid "Rounded Bottom"
-msgstr ""
+msgstr "Скругление снизу"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->tooltip
 msgid ""
@@ -1150,20 +1148,25 @@ msgid ""
 "table will apply, otherwise the \"Generic effect settings\" will apply. The "
 "\"Application\" field can be a WM_CLASS or a desktop file name."
 msgstr ""
+"Эта таблица определяет, к каким окнам приложений будут применяться эффекты и их настройки. "
+"Когда включён режим «Custom», используются настройки, заданные в этой таблице, в противном "
+"случае применяются «Общие настройки эффектов». Поле «Application» может содержать WM_CLASS "
+"или имя desktop-файла."
 
 #. 6.0->settings-schema.json->windows-add-button->description
 msgid "Add entry for the application of the most recently focused window"
-msgstr ""
+msgstr "Добавить запись для приложения последнего активного окна"
 
 #. 6.0->settings-schema.json->windows-add-button->tooltip
 msgid ""
 "Focus a window you want to enable window effects on then return here and "
 "press this button."
 msgstr ""
+"Переведите фокус на окно, для которого нужно включить эффекты, затем вернитесь сюда и нажмите эту кнопку."
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
-msgstr ""
+msgstr "Отключать эффекты «Compiz» для окон с эффектами Blur Cinnamon"
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->tooltip
 msgid ""
@@ -1172,10 +1175,13 @@ msgid ""
 "applied. This option will have no effect unless the \"Compiz window effect\" "
 "extension is installed and active."
 msgstr ""
+"Если включено, эффект перемещения окон, создаваемый расширением «Compiz windows effect», "
+"будет отключён для окон, к которым применены эффекты Blur Cinnamon. Эта опция не будет "
+"иметь эффекта, если расширение «Compiz window effect» не установлено и не активно."
 
 #. 6.0->settings-schema.json->windows-atrifact-mitigation->description
 msgid "Use artifact mitigation techniques"
-msgstr ""
+msgstr "Использовать методы устранения артефактов"
 
 #. 6.0->settings-schema.json->windows-atrifact-mitigation->tooltip
 msgid ""
@@ -1185,10 +1191,14 @@ msgid ""
 "on top of two or more other windows. This option is recommended unless you "
 "are using video wallpaper like Hidamari"
 msgstr ""
+"Если включено, применяются меры для устранения графических артефактов фона у окон, "
+"использующих динамическое размытие. Эти меры приводят к небольшому постоянному "
+"использованию процессора, если окно с динамическим размытием находится поверх двух или "
+"более других окон. Рекомендуется включить эту опцию, если вы не используете видеообои, например Hidamari"
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
-msgstr ""
+msgstr "Автоматически включать эффекты для новых десклетов"
 
 #. 6.0->settings-schema.json->desklets-auto->tooltip
 msgid ""
@@ -1197,22 +1207,25 @@ msgid ""
 "applied when manually enabled in the table below. By default the settings "
 "applied to new Desklets will be the generic effect settings."
 msgstr ""
+"Если включено, к новым десклетам, добавленным на рабочий стол, автоматически применяются эффекты Blur Cinnamon. "
+"Если отключено, эффекты применяются только к тем десклетам, которые вручную добавлены в таблицу ниже. "
+"По умолчанию к новым десклетам применяются общие настройки эффектов."
 
 #. 6.0->settings-schema.json->desklets-list->description
 msgid "Active Desklet list"
-msgstr ""
+msgstr "Список активных десклетов"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Blur"
-msgstr "Sumeus"
+msgstr "Размытие"
 
 #. 6.0->settings-schema.json->desklets-list->tooltip
 msgid ""
@@ -1221,3 +1234,7 @@ msgid ""
 "settings or the custom settings defined in this table. The custom settings "
 "can be modified by double clicking on a table row."
 msgstr ""
+"Флажок «Enabled» определяет, к каким десклетам будут применяться эффекты. "
+"Флажок «Custom» определяет, будет ли десклет использовать общие настройки эффектов "
+"или пользовательские настройки, заданные в этой таблице. Пользовательские настройки "
+"можно изменить двойным щелчком по строке таблицы."

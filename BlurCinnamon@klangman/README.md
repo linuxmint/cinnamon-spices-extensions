@@ -11,7 +11,7 @@ Cinnamon components you can apply effects to (currently):
 5. The Desktop background image **(#)**
 6. Desktop Notification popups **(#)**
 7. The panel tooltip popups **(#)**
-8. The Coverflow and Timeline 3D Alt-Tab switchers (not the Cinnamon default Alt-Tab switcher!)
+8. Alt-Tab switchers (the standard and 3D switchers)
 9. Application window backgrounds **(#)**
 10. Desklet backgrounds **(#)**
 
@@ -19,19 +19,21 @@ Cinnamon components you can apply effects to (currently):
 
 ## Background (Blur) Effect Options
 
-| Effect                   | Components                                     | Description                                                                                                           |
-| ------------------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| None                     | Alt-Tab, Desklets, Desktop, Expo, Overview     | Will not apply any blurring, but allows you to apply other effects like dimming and desaturation.                     |
-| Transparent              | Panels, Menus, Notifications, Tooltips         | Makes the component transparent allowing whatever is under it to appear, but no blurring is applied.                  |
-| Transparent to wallpaper | Panels, Menu, Notifications, Tooltips, Windows | Applies a background to the component that shows a copy of the desktop wallpaper, no blur effects.                    |
-| Simple static blur       | Panels, Menu, Notifications, Tooltips, Windows | Uses the Cinnamon blur effect (it's very subtle) on top of the desktop wallpaper                                      |
-| Gaussian static blur     | Panels, Menu, Notifications, Tooltips, Windows | Uses a Gaussian blur effect on top of the desktop wallpaper                                                           |
-| Gaussian dynamic blur    | Panels, Menu, Notifications, Tooltips, Windows | Uses a Gaussian blur effect on top of a full desktop clone with windows and the desktop wallpaper                     |
-| Simple / Gaussian        | Alt-Tab, Desklets, Desktop, Expo, Overview     | These components can't benefit from anything other than static blurring (blur effect on top of the desktop wallpaper) |
+| Effect                          | Components                                               | Description                                                                                                           |
+| ------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| None                            | Alt-Tab, Desklets, Desktop, Expo, Overview               | Will not apply any blurring, but allows you to apply other effects like dimming and desaturation.                     |
+| Transparent                     | Panels, Menus, Notifications, Tooltips                   | Makes the component transparent allowing whatever is under it to appear, but no blurring is applied.                  |
+| Transparent to wallpaper        | Panels, Menu, Notifications, Tooltips, Windows           | Applies a background to the component that shows a copy of the desktop wallpaper, no blur effects.                    |
+| Simple static blur              | Panels, Menu, Notifications, Tooltips, Windows           | Uses the Cinnamon blur effect (it's very subtle) on top of the desktop wallpaper                                      |
+| Gaussian static blur            | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Gaussian blur effect on top of the desktop wallpaper                                                           |
+| Gaussian dynamic blur           | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Gaussian blur effect on top of a full desktop clone with windows and the desktop wallpaper                     |
+| Monte Carlo static blur         | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Monte Carlo blur effect on top of the desktop wallpaper                                                        |
+| Monte Carlo dynamic blur        | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Monte Carlo blur effect on top of a full desktop clone with windows and the desktop wallpaper                  |
+| Simple / Gaussian / Monte Carlo | Desktop, Expo, Overview                                  | These components can't benefit from anything other than static blurring (blur effect on top of the desktop wallpaper) |
 
 ## Features
 
-- Gaussian blur algorithm (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
+- Gaussian and Monte Carlo blur algorithms (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
 - Simple blur algorithm (the Cinnamon built-in algorithm) which I would only recommend for very old computers
 - Dimming overlay with user configurable color and intensity (fully-transparent to a solid color)
 - Makes the components transparent (when needed) so that the desktop background image effects are visible
@@ -41,6 +43,7 @@ Cinnamon components you can apply effects to (currently):
 - Option to add a backlight effect to the focused window using a background image blur effect spilling over the focused windows borders
 - You can use general settings across all Cinnamon components or use unique settings for each component type
 - Allows you to apply custom CSS code to panels to achieve a number of custom panel effects like rounded corners, borders, changing the panel width, etc. Careful though, you can mess up your panels, but remember everything will go back to normal if you simply remove any Custom CSS settings you added to Blur Cinnamon.
+- Support for Video Wallpaper (only tested Hidamari)
 
 ## Requirements
 
@@ -58,8 +61,7 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 
 1. The Applet popup menu effects are intended to be used with the Cinnamon (6.4) theme or the Mint-Y dark desktop themes. The effects might work will with some other themes but I have not tested them so the effects might not work out just right. You can try the Mint-Y light themes but it might be hard to read the menu items without some playing around with the settings and the background image. Blur Cinnamon Popup-menu effects are disabled by default.
 2. The Applet popup-menu effects works for all the applets that I have tested except "Cinnamenu". Cinnamenu is preventing other code from receiving the "open-state-changed" event which Blur Cinnamon uses to know when to apply popup-menu theme setting and when to resize and show the blur background element. This issue is fixed in the latest Cinnamenu from [Fredcw GitHub](https://github.com/fredcw/Cinnamenu) but you will need to manually fix the current Cinnamon Spices version of Cinnamenu (see [here](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873))
-3. The experimental dynamic blur effect for application windows causes several artifacts and flashing graphical issues, therefore I don't recommend using this experimental option. If I can find a solution to these issues I will remove "experimental" from the description in a future release.
-4. This extension currently does not work under Wayland, it only works under X11. The extension automatically detects Wayland and disables most of the features of the extension.
+3. This extension currently does not work under Wayland, it only works under X11. The extension automatically detects Wayland and disables most of the features of the extension.
 
 ## Installation
 
@@ -69,6 +71,26 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 - Click the "Install" button on the right and then return to the "Manage" tab
 - Select the new "Blur Cinnamon" entry and then click the "+" button at the bottom of the window
 - Use the "gears" icon next to the "Blur Cinnamon" entry to open the setting window and setup the preferred behavior
+
+## Blurred Applciation Windows:
+
+No application windows will have effects applied even with "Application windows" support enabled on the "General setup" tab of Blur Cinnamons configuation window. 
+
+
+
+You MUST enabled specific application windows in the "Componenet specific settings" tab under the "Windows" setting page in order to have effects appled. 
+
+
+
+Even then the effects will only be visible when the application window (i.e Terminal) is configured to be transparent. 
+
+
+
+For windows that can't be configied to have transparent elements, you have the option of reducing the "Opacity" in Blur Cinnamon setting for the window, or by using the "Opacity Slider" extension. With a windows Opacity set to less than 100% you will see the Blur Cinnamon effects behind the window.
+
+
+
+There is also a "Default window settings" entry in the Blur Cinnamon Windows setting page. With this entry enabled all normal windows will have effects applied. Specific windows can still be excluded by adding table entries for the windows you what to exclude and making sure the Enabled setting for the each entry is NOT checked.
 
 ## Custom Panel CSS Examples:
 
@@ -105,6 +127,6 @@ If you like this Cinnamon extension, please give it a "star" here any maybe on m
 
 Some code was borrowed from the [BlurOverview](https://cinnamon-spices.linuxmint.com/extensions/view/72) Extension by nailfarmer.
 
-The Gaussian and rounded corner effect code was borrowed from the Gnome [Blur my shell](https://github.com/aunetx/blur-my-shell) extension by [Aurélien Hamy](https://github.com/aunetx).
+The Gaussian, Monte Carlo and rounded corner effects code was borrowed from the Gnome [Blur my shell](https://github.com/aunetx/blur-my-shell) extension by [Aurélien Hamy](https://github.com/aunetx).
 
 The Blur Cinnamon icon was generated by Google Gemini

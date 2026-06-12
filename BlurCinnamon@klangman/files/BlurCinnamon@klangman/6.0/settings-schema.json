@@ -11,7 +11,7 @@
       "generic-settings-page" : {
          "type" : "page",
          "title" : "Generic effect settings",
-         "sections" : ["generic-effect-settings"]
+         "sections" : ["generic-effect-settings", "monte-carlo-settings"]
       },
       "component-setting-page" : {
          "type" : "page",
@@ -36,6 +36,12 @@
          "keys" : ["opacity", "blendColor", "blurType", "radius", "saturation"]
       },
 
+      "monte-carlo-settings" : {
+         "type" : "section",
+         "title" : "Monte Carlo specific settings",
+         "keys" : ["monte-carlo-iterations", "monte-carlo-use-base-pixel", "monte-carlo-prefer-closer-pixels", "monte-carlo-label"]
+      },
+
       "component-selector-section" : {
          "type" : "section",
          "title" : "Component Selector",
@@ -50,10 +56,10 @@
                     "panel-warning", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized", "hover-brighten-panels", "enable-panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation", "panel-unique-settings",
                     "popup-warning", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup", "popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation",
                     "desktop-warning", "enable-desktop-override", "desktop-without-focus", "desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation",
-                    "notification-warning", "enable-notification-override", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
-                    "appswitcher-warning", "enable-appswitcher-override", "appswitcher-info", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation",
-                    "tooltips-warning", "enable-tooltips-override", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation",
-                    "windows-warning", "windows-inclusion-list", "windows-label", "windows-add-button", "windows-compiz-mitigation",
+                    "notification-warning", "enable-notification-override", "allow-transparent-color-notifications", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
+                    "appswitcher-warning", "enable-appswitcher-override", "appswitcher-disable-3d-panels", "appswitcher-allow-classic", "appswitcher-allow-3d", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation",
+                    "tooltips-warning", "enable-tooltips-override", "allow-transparent-color-tooltips", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation",
+                    "windows-warning", "windows-inclusion-list", "windows-label", "windows-add-button", "windows-atrifact-mitigation", "windows-compiz-mitigation",
                     "desklets-warning", "enable-desklets-override", "enable-desklets-unique-settings", "desklets-opacity", "desklets-blendColor", "desklets-blurType", "desklets-radius", "desklets-saturation", "desklets-list", "desklets-auto", "desklets-label",
                     "info-label"
                   ]
@@ -162,7 +168,7 @@
       "type" : "custom",
       "file" : "CustomWidgets.py",
       "widget" : "About",
-      "description" : "\n<b>Bringing your style into focus</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/104\">Website</a>\n\nThe rounded corners and Gaussian effects are based on code by aunetx (Blur-my-shell)\n<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n\nThe Overview effect is partially based on the BlurOverview extension by nailfarmer",
+      "description" : "\n<b>Bringing your style into focus</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/104\">Website</a>\n\nThe rounded corners, Gaussian and Monte Carlo effects\nare based on code by aunetx (Blur-my-shell)\n<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n\nThe Overview effect is partially based on the BlurOverview extension by nailfarmer",
       "icon" : "/icon.png"
    },
 
@@ -204,8 +210,8 @@
    },
    "enable-appswitcher-effects" : {
       "type": "switch",
-      "description": "Alt-Tab application switcher (Coverflow & Timeline only)",
-      "tooltip": "Apply effects to the Alt-Tab application switcher background when setup to use the Coverflow or Timeline styles",
+      "description": "Alt-Tab application switcher",
+      "tooltip": "Apply effects to the Alt-Tab application switcher background",
       "default": true
    },
    "enable-tooltips-effects" : {
@@ -253,59 +259,82 @@
         "default": true,
         "dependency" : "enable-popup-effects & component-selector=4"
     },
+    "allow-transparent-color-notifications" : {
+        "type": "switch",
+        "description": "Override some of the notification theme settings (recommended)",
+        "tooltip": "Allow this extension to modify the notification transparency and background color settings. If this is disabled the extension will only apply a blur background under the notifications. This setting should only be disabled when the theme already uses transparent notifications and you want the themes setting to apply.",
+        "default": true,
+        "dependency" : "enable-notification-effects & component-selector=5"
+    },
+    "allow-transparent-color-tooltips" : {
+        "type": "switch",
+        "description": "Override some of the tooltip theme settings (recommended)",
+        "tooltip": "Allow this extension to modify the tooltip transparency and background color settings. If this is disabled the extension will only apply a blur background under the tooltips. This setting should only be disabled when the theme already uses transparent tooltips and you want the themes setting to apply.",
+        "default": true,
+        "dependency" : "enable-tooltips-effects & component-selector=8"
+    },
 
     "enable-overview-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the Overview",
+        "description": "Override the generic effect settings for the Overview",
         "dependency" : "enable-overview-effects & component-selector=6",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-expo-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the Expo",
+        "description": "Override the generic effect settings for the Expo",
         "dependency" : "enable-expo-effects & component-selector=3",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-panels-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the Panels",
+        "description": "Override the generic effect settings for the Panels",
         "dependency" : "enable-panels-effects & component-selector=7",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-popup-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the popup menus",
+        "description": "Override the generic effect settings for popup menus",
         "dependency" : "enable-popup-effects & component-selector=4",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-desktop-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the desktop background",
+        "description": "Override the generic effect settings for the desktop background",
         "dependency" : "enable-desktop-effects & component-selector=2",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-notification-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the notification popups",
+        "description": "Override the generic effect settings for notification popups",
         "dependency" : "enable-notification-effects & component-selector=5",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-appswitcher-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the Alt-Tab app switcher",
+        "description": "Override the generic effect settings for the Alt-Tab app switcher",
         "dependency" : "enable-appswitcher-effects & component-selector=0",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-tooltips-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the panel tooltips",
+        "description": "Override the generic effect settings for panel tooltips",
         "dependency" : "enable-tooltips-effects & component-selector=8",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
     "enable-desklets-override" : {
         "type": "switch",
-        "description": "Use unique effect settings for the Desklets",
+        "description": "Override the generic effect settings for Desklets",
         "dependency" : "enable-desklet-effects & component-selector=1",
+        "tooltip": "Override the settings found on the \"Generic effect settings\" tab with unique settings for this cinnamon component.",
         "default": false
     },
 
@@ -343,7 +372,7 @@
             {"id": "override",  "title": "Custom",    "type": "boolean", "default": true},
             {"id": "opacity",   "title": "Dim",       "type": "integer", "default": 40,  "min": 0, "max": 100},
             {"id": "color",     "title": "Color",     "type": "string",  "default": "rgb(0,0,0)"},
-            {"id": "blurtype",  "title": "Background","type": "integer", "default": 4, "options": { "Transparent": 3, "Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4 } },
+            {"id": "blurtype",  "title": "Background","type": "integer", "default": 4, "options": { "Transparent": 3, "Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4, "Monte Carlo static blur": 5, "Monte Carlo dynamic blur": 6 } },
             {"id": "radius",    "title": "Intensity", "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation","title": "Saturation","type": "integer", "default": 100, "min": 0, "max": 100},
             {"id": "customCSS", "title": "Custom CSS","type": "string",  "default": ""}
@@ -398,7 +427,9 @@
             "None / Transparent to wallpaper": 0,
             "Simple static blur": 1,
             "Gaussian static blur": 2,
-            "Gaussian dynamic blur (if applicable)": 4
+            "Gaussian dynamic blur (if applicable)": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur (if applicable)": 6
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background"
@@ -408,11 +439,11 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "dependency" : "blurType=2 | blurType=4",
+        "dependency" : "blurType>1",
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9
     },
@@ -427,6 +458,40 @@
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100
+    },
+
+    "monte-carlo-iterations": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Iterations",
+        "min": 0,
+        "max": 64,
+        "default": 5,
+        "step": 1,
+        "tooltip": "Increasing number of iterations will make the blur appear smoother at the cost of some CPU power."
+    },
+
+    "monte-carlo-use-base-pixel": {
+        "type": "switch",
+        "description": "Use base pixel",
+        "tooltip": "Whether or not the original pixel is counted for the blur. If it is, the image will be more legible.",
+        "default": true
+    },
+
+    "monte-carlo-prefer-closer-pixels": {
+        "type": "switch",
+        "description": "Prefer closer pixels",
+        "tooltip": "Whether or not the pixels that are closer to the original pixel will have more weight.",
+        "default": true
+    },
+
+    "monte-carlo-label": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "LabelWithTooltip",
+        "description" : "<b>Note:</b> These Monte Carlo settings are used globally for all components",
+        "tooltip": "The above Monte Carlo settings are used globally for all components that are configured to use the Monte Carlo blur algorithm, these settings can not be configured separately for each component"
     },
 
     "overview-opacity": {
@@ -455,7 +520,8 @@
         "options": {
             "None": 0,
             "Simple": 1,
-            "Gaussian": 2
+            "Gaussian": 2,
+            "Monte Carlo": 5
         },
         "description": "Type of blur effect",
         "dependency" : "enable-overview-effects & component-selector=6 & enable-overview-override",
@@ -466,11 +532,11 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
-        "dependency" : "enable-overview-effects & component-selector=6 & overview-blurType=2 & enable-overview-override",
+        "dependency" : "enable-overview-effects & component-selector=6 & overview-blurType>1 & enable-overview-override",
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9
     },
@@ -515,7 +581,8 @@
         "options": {
             "None": 0,
             "Simple": 1,
-            "Gaussian": 2
+            "Gaussian": 2,
+            "Monte Carlo": 5
         },
         "description": "Type of blur effect",
         "dependency" : "enable-expo-effects & component-selector=3 & enable-expo-override",
@@ -526,13 +593,13 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "enable-expo-effects & component-selector=3 & expo-blurType=2 & enable-expo-override"
+        "dependency" : "enable-expo-effects & component-selector=3 & expo-blurType>1 & enable-expo-override"
     },
 
     "expo-saturation": {
@@ -577,7 +644,9 @@
             "Transparent to wallpaper": 0,
             "Simple static blur": 1,
             "Gaussian static blur": 2,
-            "Gaussian dynamic blur": 4
+            "Gaussian dynamic blur": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur": 6
         },
         "description": "Type of background effect",
         "tooltip": "What type of background effect should be applied",
@@ -588,7 +657,7 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
@@ -653,7 +722,7 @@
         "max": 100,
         "default": 50,
         "step": 1,
-        "dependency" : "enable-popup-effects & component-selector=4 & enable-popup-override",
+        "dependency" : "enable-popup-effects & component-selector=4",
         "tooltip": "Defines the additional dimming applied to the popup menu accent elements (i.e. the main menu favorites box and entry boxes) which allow these elements to stand out from the other popup menu areas"
     },
 
@@ -673,7 +742,9 @@
             "Transparent to wallpaper": 0,
             "Simple static blur": 1,
             "Gaussian static blur": 2,
-            "Gaussian dynamic blur": 4
+            "Gaussian dynamic blur": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur": 6
         },
         "description": "Type of background effect",
         "tooltip": "What type of background effect should be applied",
@@ -684,7 +755,7 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
@@ -749,7 +820,8 @@
         "options": {
             "None": 0,
             "Simple": 1,
-            "Gaussian": 2
+            "Gaussian": 2,
+            "Monte Carlo": 5
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background",
@@ -760,13 +832,13 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 20,
-        "dependency" : "enable-desktop-effects & component-selector=2 & desktop-blurType=2 & enable-desktop-override"
+        "dependency" : "enable-desktop-effects & component-selector=2 & desktop-blurType>1 & enable-desktop-override"
     },
 
     "desktop-saturation": {
@@ -811,7 +883,9 @@
             "Transparent to wallpaper": 0,
             "Simple static blur": 1,
             "Gaussian static blur": 2,
-            "Gaussian dynamic blur": 4
+            "Gaussian dynamic blur": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur": 6
         },
         "description": "Type of background effect",
         "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override",
@@ -822,7 +896,7 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
@@ -852,10 +926,28 @@
       "tooltip" : "This button will cause a notification message to appear so you can see how your notification setting behave."
     },
 
-    "appswitcher-info" : {
-        "type" : "label",
-        "description" : "Note: Alt-Tab effects only apply to the Coverflow and Timeline 3D Alt-Tab configurations",
-        "dependency" : "enable-appswitcher-effects & component-selector=0"
+    "appswitcher-disable-3d-panels" : {
+        "type": "switch",
+        "description": "Hide panels while using the Coverflow/Timeline 3D Alt-Tab switchers",
+        "tooltip": "Make the panels invisible when using the Coverflow or the Timeline 3D Alt-Tab switchers",
+        "dependency" : "enable-appswitcher-effects & component-selector=0",
+        "default": true
+    },
+
+    "appswitcher-allow-classic" : {
+        "type": "switch",
+        "description": "Apply effects to the standard Alt-Tab switcher",
+        "tooltip": "Allow applying effects to the standard Alt-Tab switcher. Only the switcher options without \"previews\" are supported. The standard Alt-Tab switcher can use static or dynamic blur, but dynamic is recommended.",
+        "dependency" : "enable-appswitcher-effects & component-selector=0",
+        "default": true
+    },
+
+    "appswitcher-allow-3d" : {
+        "type": "switch",
+        "description": "Apply effects to the 3D Alt-Tab switchers",
+        "tooltip": "Allow applying effects to the Coverflow and Timeline 3D Alt-Tab switchers. The 3D Alt-Tab switchers will use static blurring even when dynamic blurring is selected since they don't benifit from dynamic blurring.",
+        "dependency" : "enable-appswitcher-effects & component-selector=0",
+        "default": true
     },
 
     "appswitcher-opacity" : {
@@ -880,28 +972,31 @@
 
     "appswitcher-blurType": {
         "type": "combobox",
-        "default": 2,
+        "default": 4,
         "options": {
             "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "Simple static blur": 1,
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur": 6
         },
         "description": "Type of blur effect",
         "dependency" : "enable-appswitcher-effects & component-selector=0 & enable-appswitcher-override",
-        "tooltip": "What type of blur algorithm should be used to blur the background"
+        "tooltip": "What type of blur algorithm should be used to blur the background. A dynamic blur type can be used for the standard switcher but static blurring is always used for the 3D switchers as they do not benefit from dynamic effects."
     },
 
     "appswitcher-radius": {
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 9,
-        "dependency" : "enable-appswitcher-effects & component-selector=0 & appswitcher-blurType=2 & enable-appswitcher-override"
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & appswitcher-blurType>1 & enable-appswitcher-override"
     },
 
     "appswitcher-saturation": {
@@ -945,7 +1040,9 @@
             "Transparent to wallpaper": 0,
             "Simple static blur": 1,
             "Gaussian static blur": 2,
-            "Gaussian dynamic blur": 4
+            "Gaussian dynamic blur": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur": 6
         },
         "description": "Type of background effect",
         "dependency" : "enable-tooltips-effects & component-selector=8 & enable-tooltips-override",
@@ -956,7 +1053,7 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
@@ -1004,8 +1101,11 @@
         "default": 2,
         "options": {
             "None": 0,
-            "Simple": 1,
-            "Gaussian": 2
+            "Simple static blur": 1,
+            "Gaussian static blur": 2,
+            "Gaussian dynamic blur": 4,
+            "Monte Carlo static blur": 5,
+            "Monte Carlo dynamic blur": 6
         },
         "description": "Type of blur effect",
         "tooltip": "What type of blur algorithm should be used to blur the background",
@@ -1016,13 +1116,13 @@
         "type" : "custom",
         "file" : "CustomWidgets.py",
         "widget" : "CompactScale",
-        "description" : "Gaussian blur intensity",
+        "description" : "Blur intensity",
         "min" : 0.0,
         "max" : 100,
         "step" : 0.1,
         "tooltip": "Adjusts the intensity of the blur effect by changing the radius use by the effect.",
         "default": 20,
-        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & desklets-blurType=2 & enable-desklets-override"
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & desklets-blurType>1 & enable-desklets-override"
     },
 
     "desklets-saturation": {
@@ -1050,7 +1150,7 @@
             {"id": "override",      "title": "Custom",       "type": "boolean", "default": true},
             {"id": "opacity",       "title": "Dim",          "type": "integer", "default": 0,  "min": 0, "max": 100},
             {"id": "color",         "title": "Color",        "type": "string",  "default": "rgb(0,0,0)"},
-            {"id": "blurtype",      "title": "Background",   "type": "integer", "default": 2, "options": {"Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur (experimental)": 4} },
+            {"id": "blurtype",      "title": "Background",   "type": "integer", "default": 2, "options": {"Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4, "Monte Carlo static blur": 5, "Monte Carlo dynamic blur": 6 } },
             {"id": "radius",        "title": "Intensity",    "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation",    "title": "Saturation",   "type": "integer", "default": 100, "min": 0, "max": 100},
             {"id": "corner_radius", "title": "Corner Radius","type": "integer", "default": 10, "min": 0, "max": 25},
@@ -1085,6 +1185,14 @@
         "tooltip": "When enabled, the window moving effect created by the \"Compiz windows effect\" extension will be disabled for windows with Blur Cinnamon effects applied. This option will have no effect unless the \"Compiz window effect\" extension is installed and active."
     },
 
+    "windows-atrifact-mitigation": {
+        "type": "switch",
+        "default": true,
+        "description": "Use artifact mitigation techniques",
+        "dependency" : "enable-window-effects & component-selector=9",
+        "tooltip": "When enabled, steps will be taken to eliminate background graphical artifacts for windows that use dynamic blur effects. The mitigation steps will have some minor persistent CPU costs when a dynamic blurred window is on top of two or more other windows. This option is recommended unless you are using video wallpaper like Hidamari"
+    },
+
     "desklets-auto": {
         "type": "switch",
         "default": true,
@@ -1106,7 +1214,7 @@
             {"id": "override",   "title": "Custom",     "type": "boolean", "default": true},
             {"id": "opacity",    "title": "Dim",        "type": "integer", "default": 0,  "min": 0, "max": 100},
             {"id": "color",      "title": "Color",      "type": "string",  "default": "rgb(0,0,0)"},
-            {"id": "blurtype",   "title": "Blur",       "type": "integer", "default": 2, "options": { "None": 0, "Simple": 1, "Gaussian": 2 } },
+            {"id": "blurtype",   "title": "Blur",       "type": "integer", "default": 2, "options": { "None": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4, "Monte Carlo static blur": 5, "Monte Carlo dynamic blur": 6 } },
             {"id": "radius",     "title": "Intensity",  "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation", "title": "Saturation", "type": "integer", "default": 100, "min": 0, "max": 100}
         ],
