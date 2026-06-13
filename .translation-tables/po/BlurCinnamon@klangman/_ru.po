@@ -1,0 +1,132 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+
+#. 6.0/extension.js:2861
+msgid "Error"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
+#. 6.0->settings-schema.json->enable-desklet-effects->description
+msgid "Desklets"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
+msgid "Menus"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
+msgid "Notifications"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
+#. 6.0->settings-schema.json->enable-overview-effects->description
+msgid "Overview"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
+msgid "Panels"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
+msgid "Windows"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Enabled"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Panel"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+msgid "Monitor"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Custom"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Dim"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Color"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Background"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Intensity"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Saturation"
+msgstr ""
+
+#. 6.0->settings-schema.json->monte-carlo-iterations->description
+msgid "Iterations"
+msgstr ""
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+msgid "None"
+msgstr ""
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Simple"
+msgstr ""
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Gaussian"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+msgid "Transparent"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Application"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Opacity"
+msgstr ""
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Name"
+msgstr ""
+
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Blur"
+msgstr ""

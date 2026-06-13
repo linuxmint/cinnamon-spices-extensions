@@ -1,0 +1,258 @@
+# MOUSE CLICK EFFECTS
+# This file is put in the public domain.
+# anaximeno, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mouse-click-effects@anaximeno 1.0.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Mouse Click Effects"
+msgstr "Mouse Click Effects"
+
+#. metadata.json->description
+msgid "Display mouse click effects on Cinnamon."
+msgstr "Hiiren painamiselle erilaisia tehosteita."
+
+#. 5.4->settings-schema.json->general-page->title
+#. 5.4->settings-schema.json->general-section->title
+msgid "General"
+msgstr "Yleinen"
+
+#. 5.4->settings-schema.json->style-page->title
+#. 5.4->settings-schema.json->style-section->title
+msgid "Style"
+msgstr "Tyyli"
+
+#. 5.4->settings-schema.json->effects-section->title
+msgid "Effects"
+msgstr "Tehosteet"
+
+#. 5.4->settings-schema.json->colors-section->title
+msgid "Colors"
+msgstr "Värit"
+
+#. 5.4->settings-schema.json->icon-mode->description
+msgid "Icon Mode"
+msgstr "Kuvakkeet"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Simple"
+msgstr "Koruton"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Trigun"
+msgstr "Leima"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Nublo"
+msgstr "Varjo"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Risco"
+msgstr "Kapea"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Wolf"
+msgstr "Roso"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Pincel"
+msgstr "Suti"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Claw"
+msgstr "Kynsi"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Metropoli"
+msgstr "Metropoli"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Flowey"
+msgstr "Punos"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Kusco"
+msgstr "Sormus"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Ouroboros"
+msgstr "Lohikäärme"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Helix"
+msgstr "Sylinteri"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Direction"
+msgstr "Suunta"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Spinks"
+msgstr "Ratas"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Thatch"
+msgstr "Suihke"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Cotton"
+msgstr "Puuvilla"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Circle"
+msgstr "Ympyrä"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Gear"
+msgstr "Pyörä"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "H-Star"
+msgstr "Tähti"
+
+#. 5.4->settings-schema.json->icon-mode->options
+msgid "Aim"
+msgstr "Tähtäin"
+
+#. 5.4->settings-schema.json->size->units
+msgid "px"
+msgstr "px"
+
+#. 5.4->settings-schema.json->size->description
+msgid "Icon Size"
+msgstr "Koko kuvake"
+
+#. 5.4->settings-schema.json->animation-mode->description
+msgid "Click Animation Mode"
+msgstr "Painamisen animaatio"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Blink"
+msgstr "Vilkku"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Bounce"
+msgstr "Pomppu"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Retract"
+msgstr "Vetäytyvä"
+
+#. 5.4->settings-schema.json->animation-mode->options
+#. 5.4->settings-schema.json->idle-animation-mode->options
+msgid "Expand"
+msgstr "Laajeneva"
+
+#. 5.4->settings-schema.json->animation-time->units
+#. 5.4->settings-schema.json->idle-animation-delay->units
+#. 5.4->settings-schema.json->idle-animation-period->units
+msgid "ms"
+msgstr "ms"
+
+#. 5.4->settings-schema.json->animation-time->description
+msgid "Animation Time"
+msgstr "Animaatioaika"
+
+#. 5.4->settings-schema.json->idle-animation-mode->description
+msgid "Idle Mouse Animation Mode"
+msgstr "Hiiren vapaa-animaatiotila"
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+msgid "Idle Mouse Animation Delay"
+msgstr "Hiiren vapaa-animaatioviive"
+
+#. 5.4->settings-schema.json->idle-animation-period->description
+msgid "Idle Mouse Animation Period"
+msgstr "Hiiren vapaa-animaatiojakso"
+
+#. 5.4->settings-schema.json->general-opacity->description
+msgid "General Opacity"
+msgstr "Yleinen peittävyys"
+
+#. 5.4->settings-schema.json->deactivate-in-fullscreen->description
+msgid "Deactivate In Fullscreen"
+msgstr "Poista käytöstä koko näytössä"
+
+#. 5.4->settings-schema.json->pause-effects-binding->description
+msgid "Pause Effects Keybinding"
+msgstr "Lopeta tehosteet näppäinyhdistelmä"
+
+#. 5.4->settings-schema.json->pause-effects-binding->tooltip
+msgid "Set keybinding to pause or continue the effects"
+msgstr "Aseta näppäinyhdistelmä, jolla lopetetaan tai jatketaan tehosteita"
+
+#. 5.4->settings-schema.json->left-click-effect-enabled->description
+msgid "Animate Left Click"
+msgstr "Animoi hiiren vasen-painike"
+
+#. 5.4->settings-schema.json->middle-click-effect-enabled->description
+msgid "Animate Middle Click"
+msgstr "Animoi hiiren keski-painike"
+
+#. 5.4->settings-schema.json->right-click-effect-enabled->description
+msgid "Animate Right Click"
+msgstr "Animoi hiiren oikea-painike"
+
+#. 5.4->settings-schema.json->pause-animation-effects-enabled->description
+msgid "Animate Pause"
+msgstr "Animoi keskeytys"
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->description
+msgid "Mouse Movement Tracker (experimental)"
+msgstr "Hiiren liikeseuranta (kokeellinen)"
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
+msgstr ""
+"Vielä kokeellinen ja saattaa häiritä paneelia tai joissakin vedä ja pudota "
+"toiminnoissa."
+
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
+msgid "Persist Movement Tracker On Stopped (experimental)"
+msgstr "Pysyvä liikeseuranta, myös pysähtyneenä (kokeellinen)"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
+msgid "Mouse Idle Watcher"
+msgstr "Hiiri toimettomana"
+
+#. 5.4->settings-schema.json->left-click-color->description
+msgid "Left Click Color"
+msgstr "Väri vasen-painike"
+
+#. 5.4->settings-schema.json->middle-click-color->description
+msgid "Middle Click Color"
+msgstr "Väri keski-painike"
+
+#. 5.4->settings-schema.json->right-click-color->description
+msgid "Right Click Color"
+msgstr "Väri oikea-painike"
+
+#. 5.4->settings-schema.json->mouse-movement-color->description
+msgid "Mouse Movement Tracker Color"
+msgstr "Hiiren liikeseurannan väri"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-color->description
+msgid "Mouse Idle Watcher Color"
+msgstr "Hiiren väri toimettomana"

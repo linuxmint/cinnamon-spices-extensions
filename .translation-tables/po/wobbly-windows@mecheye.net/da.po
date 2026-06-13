@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-30 01:33+0800\n"
+"PO-Revision-Date: 2017-06-12 19:59+0200\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. wobbly-windows@mecheye.net->metadata.json->name
+msgid "Wobbly Windows"
+msgstr "Blævrende vinduer"
+
+#. wobbly-windows@mecheye.net->metadata.json->description
+msgid "Compiz shall live again!"
+msgstr "Compiz lever igen!"
+
+#. wobbly-windows@mecheye.net->settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "Fjederkonstant"
+
+#. wobbly-windows@mecheye.net->settings-schema.json->gridRes->description
+msgid "Grid Resolution"
+msgstr "Gitteropløsning"
+
+#. wobbly-windows@mecheye.net->settings-schema.json->friction->description
+msgid "Friction"
+msgstr "Modstand"

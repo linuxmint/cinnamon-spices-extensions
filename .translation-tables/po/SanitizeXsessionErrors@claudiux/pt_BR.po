@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Marcelo Aof, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-24 20:53+0100\n"
+"PO-Revision-Date: 2021-09-26 21:23-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. metadata.json->name
+#: 4.8/extension.js:72
+msgid "Sanitize ~/.xsession-errors"
+msgstr "Filtrar os erros da sessão (~/.xsession-errors)"
+
+#: 4.8/extension.js:73
+msgid ""
+"This extension has been disabled because it was no longer needed since "
+"Cinnamon 4.8."
+msgstr ""
+"Essa extensão foi desativada porque não é mais necessária desde o Cinnamon "
+"4.8."
+
+#. metadata.json->description
+msgid ""
+"Filter messages sent to ~/.xsession-errors, to avoid flooding and save your "
+"SSD."
+msgstr ""
+"Filtre as mensagens a serem consideradas erros da sessão (~/.xsession-"
+"errors), de modo a evitar encher o armazenamento do seu disco."
+
+#. settings-schema.json->section0->description
+msgid "Filter \"Log level 128\" messages starting with these words"
+msgstr ""
+"Filtrar mensagens de \"Nível de registro 128\" que comecem com estas palavras"
+
+#. settings-schema.json->forbidden_words->description
+msgid "Word list"
+msgstr "Lista de palavras"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "Words"
+msgstr "Palavras"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "To filter?"
+msgstr "Filtrar?"
+
+#. settings-schema.json->section1->description
+msgid "~/.xsession-errors monitor"
+msgstr "Monitor dos erros da sessão (~/.xsession-errors)"
+
+#. settings-schema.json->open_log->description
+msgid "Show the contents of ~/.xsession-errors in real time"
+msgstr ""
+"Exibir o conteúdo dos erros da sessão (~/.xsession-errors) em tempo real"
