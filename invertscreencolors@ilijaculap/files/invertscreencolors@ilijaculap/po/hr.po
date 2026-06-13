@@ -12,10 +12,11 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->description
 msgid ""
@@ -23,19 +24,22 @@ msgid ""
 "only the active windows colors, with configurable keyboard shortcuts for "
 "both."
 msgstr ""
+"Ovo jednostavno Cinnamon proširenje omogućava inverziju boja cijelog "
+"zaslona ili samo aktivnog prozora s prečacima tipkovnice definiranim od "
+"strane korisnika."
 
 #. metadata.json->name
 msgid "Invert screen colors"
-msgstr ""
+msgstr "Inverzija boje zaslona"
 
 #. settings-schema.json->keybinding-header->description
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Prečaci tipkovnice"
 
 #. settings-schema.json->kb-shortcut-fs->description
 msgid "Invert colors for whole screen"
-msgstr ""
+msgstr "Invertiraj boje za cijeli zaslon"
 
 #. settings-schema.json->kb-shortcut-wd->description
 msgid "Invert colors for active window"
-msgstr ""
+msgstr "Invertiraj boje za aktivni prozor"
