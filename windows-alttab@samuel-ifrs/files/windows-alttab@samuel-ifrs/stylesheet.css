@@ -1,0 +1,46 @@
+#altTabPopup {
+  spacing: 10px;
+}
+
+.windows-switcher-list {
+  background-color: rgba(120, 120, 120, 0.5);
+  border: 1px solid rgba(200, 200, 200, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  padding: 10px;
+}
+
+.windows-switcher-list .switcher-list-item-container {
+  spacing: 10px;
+}
+
+.windows-switcher-list .item-box {
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  background-color: rgba(18, 18, 18, 0.9);
+}
+
+.windows-switcher-list .item-box:selected {
+  border-color: rgba(91, 178, 255, 0.95);
+  background-color: rgba(26, 26, 26, 0.95);
+}
+
+.windows-alt-tab-app {
+  spacing: 7px;
+}
+
+.windows-alt-tab-preview-bin {
+  border-radius: 4px;
+  background-color: #000;
+}
+
+.windows-alt-tab-info-box {
+  spacing: 6px;
+  min-height: 22px;
+}
+
+.windows-alt-tab-title {
+  font-size: 10pt;
+  color: #f5f5f5;
+}
