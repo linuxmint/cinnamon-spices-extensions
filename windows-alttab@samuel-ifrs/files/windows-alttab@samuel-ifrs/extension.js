@@ -13,7 +13,7 @@ function enable() {
   if (enabled) return;
 
   if (!CustomSwitcherModule || !CustomSwitcherModule.WindowsClassicSwitcher) {
-    Main.notify("Windows Alt+Tab", "O switcher nao pode ser carregado.");
+    Main.notify("Windows Alt+Tab", "Could not load the switcher.");
     return;
   }
 
@@ -55,5 +55,5 @@ function disable() {
 
   enabled = false;
 
-  Main.notify("Windows Alt+Tab", "Switcher estilo Windows desabilitado");
+  Main.notify("Windows Alt+Tab", "Windows-style switcher disabled.");
 }

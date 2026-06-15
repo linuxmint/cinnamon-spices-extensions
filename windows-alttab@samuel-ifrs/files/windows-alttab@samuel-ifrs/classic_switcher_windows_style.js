@@ -4,7 +4,6 @@ const Clutter = imports.gi.Clutter;
 const St = imports.gi.St;
 const Cinnamon = imports.gi.Cinnamon;
 const Meta = imports.gi.Meta;
-const Lang = imports.lang;
 const Pango = imports.gi.Pango;
 
 const Main = imports.ui.main;
@@ -134,7 +133,7 @@ WindowsAppIcon.prototype = {
     }
 
     this._iconBin.set_size(previewWidth, previewHeight);
-    this._iconBin.child = this.icon;
+    this._iconBin.set_child(this.icon);
 
     this.label.clutter_text.set_width(Math.max(80, previewWidth - 34));
   },
@@ -148,6 +147,9 @@ WindowsAppList.prototype = {
   __proto__: ClassicSwitcherModule.AppList.prototype,
 
   _init: function (windows, showThumbnails, activeMonitor) {
+    // Call SwitcherList._init directly (not AppList._init) because AppList._init
+    // would create AppIcons of the wrong type. AppList._init sets up no signals —
+    // only icon creation — so nothing important is skipped here.
     ClassicSwitcherModule.SwitcherList.prototype._init.call(
       this,
       false,
@@ -168,6 +170,7 @@ WindowsAppList.prototype = {
     this._iconSize = 0;
     this._mouseTimeOutId = 0;
     this._activeMonitor = activeMonitor;
+    this._rowsCache = null;
   },
 
   // Sobrescreve para interceptar o clique com o botão do meio: ao invés de
@@ -176,13 +179,14 @@ WindowsAppList.prototype = {
   // O Cinnamon trata a destruição da janela em _removeDestroyedWindow,
   // reconstruindo a lista (ou fechando o switcher se era a última janela).
   _addIcon: function (appIcon) {
+    this._rowsCache = null;
     this.icons.push(appIcon);
     this.addItem(appIcon.actor, appIcon.label);
 
     let bbox = this._items[this._items.length - 1];
     bbox.connect(
       "button-press-event",
-      Lang.bind(this, function (actor, event) {
+      (actor, event) => {
         let button = event.get_button();
 
         // Botão do meio: fecha a janela daquele item (igual ao "X"),
@@ -218,7 +222,7 @@ WindowsAppList.prototype = {
         }
 
         return Clutter.EVENT_PROPAGATE;
-      }),
+      },
     );
   },
 
@@ -227,6 +231,7 @@ WindowsAppList.prototype = {
     for (let i = 0; i < this.icons.length; i++) {
       if (this.icons[i].icon !== null) continue;
       this.icons[i].set_size(this._iconSize);
+      this._rowsCache = null; // icon preferred size changed
     }
   },
 
@@ -234,6 +239,8 @@ WindowsAppList.prototype = {
   // limite (90% da largura do monitor). Retorna { rows, width, height } com a
   // largura/altura totais já considerando o espaçamento entre itens e linhas.
   _computeRows: function () {
+    if (this._rowsCache) return this._rowsCache;
+
     let spacing = this._list.spacing > -1 ? this._list.spacing : 10;
     // Usa o monitor onde o alt+tab está sendo exibido (não necessariamente o
     // primário). _activeMonitor é o objeto de geometria do monitor ativo.
@@ -260,7 +267,11 @@ WindowsAppList.prototype = {
         extra = 0;
       }
 
-      current.items.push({ child: this._items[i], width: childNatW, height: childNatH });
+      current.items.push({
+        child: this._items[i],
+        width: childNatW,
+        height: childNatH,
+      });
       current.width += extra + childNatW;
       current.height = Math.max(current.height, childNatH);
     }
@@ -275,7 +286,8 @@ WindowsAppList.prototype = {
     }
     height += spacing * Math.max(0, rows.length - 1);
 
-    return { rows: rows, width: width, height: height };
+    this._rowsCache = { rows: rows, width: width, height: height };
+    return this._rowsCache;
   },
 
   _getPreferredWidth: function (actor, forHeight, alloc) {
@@ -392,11 +404,11 @@ WindowsClassicSwitcher.prototype = {
 
     this._applist_act_id = this._appList.connect(
       "item-activated",
-      Lang.bind(this, this._appActivated),
+      this._appActivated.bind(this),
     );
     this._applist_enter_id = this._appList.connect(
       "item-entered",
-      Lang.bind(this, this._appEntered),
+      this._appEntered.bind(this),
     );
 
     this._appIcons = this._appList.icons;
