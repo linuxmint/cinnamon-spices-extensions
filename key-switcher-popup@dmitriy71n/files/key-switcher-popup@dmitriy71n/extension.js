@@ -4,6 +4,15 @@ const GLib = imports.gi.GLib;
 const Clutter = imports.gi.Clutter;
 const Gio = imports.gi.Gio;
 const Settings = imports.ui.settings;
+const Gettext = imports.gettext; // Импортируем Gettext
+
+// Регистрируем домен перевода расширения (используем ваш UUID)
+const UUID = "key-switcher-popup@dmitriy71n";
+Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/cinnamon/extensions/" + UUID + "/mo");
+
+function _(str) {
+    return Gettext.dgettext(UUID, str);
+}
 
 let osds = [];
 let signalSubscriptionId = null;
@@ -29,10 +38,10 @@ let settingsValues = {
 function init(metadata) {}
 
 function enable() {
-    global.log('LayoutPopup: Активация.');
+    global.log('LayoutPopup: Activated.');
 
     try {
-        settings = new Settings.ExtensionSettings(settingsValues, 'key-switcher-popup@dmitriy71n');
+        settings = new Settings.ExtensionSettings(settingsValues, UUID);
         settings.bind('show_on_all_monitors', 'show_on_all_monitors', () => {});
         settings.bind('timeout_ms', 'timeout_ms', () => {});
         settings.bind('popup_position', 'popup_position', () => {});
@@ -47,9 +56,9 @@ function enable() {
         settings.bind('bg_color', 'bg_color', () => {});
         settings.bind('border_color', 'border_color', () => {});
         
-        global.log('LayoutPopup: Связь с GUI настроек успешно установлена.');
+        global.log('LayoutPopup: Settings GUI binding successful.');
     } catch (e) {
-        global.logError('LayoutPopup: Критическая ошибка связи с настройками: ' + e.message);
+        global.logError('LayoutPopup: Critical settings binding error: ' + e.message);
     }
 
     try {
@@ -64,7 +73,7 @@ function enable() {
             _onCinnamonDbusSignal
         );
     } catch (e) {
-        global.logError('LayoutPopup: Ошибка подписки на D-Bus: ' + e.message);
+        global.logError('LayoutPopup: D-Bus subscription error: ' + e.message);
     }
 }
 
@@ -106,7 +115,7 @@ function _onCinnamonDbusSignal(connection, sender_name, object_path, interface_n
             showLayoutPopup(lang);
         }
     } catch (e) {
-        global.logError('LayoutPopup: Ошибка обработки сигнала: ' + e.message);
+        global.logError('LayoutPopup: Signal processing error: ' + e.message);
     }
 }
 
@@ -288,7 +297,7 @@ function getMonitorAtMousePosition() {
             }
         }
     } catch (e) {
-        global.logError('LayoutPopup: Ошибка определения монитора: ' + e.message);
+        global.logError('LayoutPopup: Error detecting monitor: ' + e.message);
     }
     return Main.layoutManager.primaryMonitor;
 }
