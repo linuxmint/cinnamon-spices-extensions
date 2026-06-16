@@ -24,3 +24,6 @@ That is exactly how the idea for this extension was born — to display a large,
   * **Font and Sizes:** Change the text size (the font family automatically adapts to the one used in your system).
   * **Color Palette:** Custom choice for text color, background color, and border color (HEX and RGB formats are fully supported).
   * **Opacity and Geometry:** Fine-tune background transparency and panel corner radius for a perfect blend with your system theme.
+  * 
+### Credits
+This project was developed with the assistance of local AI models and assistants, including **Gemini Flash** and **Qwen3 Code**, which helped with optimization and formatting compatibility.
