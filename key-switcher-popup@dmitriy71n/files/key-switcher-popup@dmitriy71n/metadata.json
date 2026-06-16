@@ -1,15 +1,9 @@
 {
-  "uuid": "key-switcher-popup@dmitriy71n",
-  "name": "Keyboard Switcher Popup",
-  "description": "Displays a clean modal popup in the corner of the screen whenever you change the keyboard layout.",
-  "author": "dmitriy71n, Gemini Flash, Qwen3 Code",
-  "version": "1.1.0.3",
-  "cinnamon-version": [
-    "6.0",
-    "6.2",
-    "6.4",
-    "6.6"
-  ],
-  "settings-schema": "settings-schema.json"
+    "uuid": "key-switcher-popup@dmitriy71n",
+    "name": "Keyboard Switcher Popup",
+    "description": "When you change the keyboard layout, a modal window appears in the corner of the screen displaying information about the current layout.",
+    "author": "dmitriy71n, Gemini, Qwen3 Code",
+    "version": "1.1.0.4",
+    "cinnamon-version": ["6.0", "6.2", "6.4", "6.6"]
 }
 
