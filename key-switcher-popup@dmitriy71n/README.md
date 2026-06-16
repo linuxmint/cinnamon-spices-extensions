@@ -1,5 +1,5 @@
 ### Backstory
-In practice, I constantly use three keyboard layouts: my native language for personal communication and texting, English for terminal work and layout design, and the official state language of the country where I live.
+In practice, I constantly use three keyboard layouts: my native language for personal communication and texting, English for terminal work and HTML/CSS authoring, and the official state language of the country where I live.
 
 One day, while working on a dual-monitor setup, I realized how incredibly inconvenient it was: just to check the current language, I had to constantly look away from the text, turn my head, shift my gaze to the second monitor, and search for the tiny letters of the indicator in the system tray. Constant typos due to the wrong layout were extremely annoying and kept breaking my workflow.
 
