@@ -1,27 +1,23 @@
-const St = imports.gi.St;
-const Main = imports.ui.main;
-const GLib = imports.gi.GLib;
-const Clutter = imports.gi.Clutter;
-const Gio = imports.gi.Gio;
-const Settings = imports.ui.settings;
-const Gettext = imports.gettext;
+var St = imports.gi.St;
+var Main = imports.ui.main;
+var GLib = imports.gi.GLib;
+var Clutter = imports.gi.Clutter;
+var Gio = imports.gi.Gio;
+var Settings = imports.ui.settings;
+var Gettext = imports.gettext;
 
-const UUID = "key-switcher-popup@dmitriy71n";
-let extensionPath = null;
+var UUID = "key-switcher-popup@dmitriy71n";
 
 function _(str) {
-    if (extensionPath) {
-        return Gettext.dgettext(UUID, str);
-    }
-    return str;
+    return Gettext.dgettext(UUID, str);
 }
 
-let osds = [];
-let signalSubscriptionId = null;
-let settings = null;
-let timeoutId = null;
+var osds = [];
+var signalSubscriptionId = null;
+var settings = null;
+var timeoutId = null;
 
-let settingsValues = {
+var settingsValues = {
     show_on_all_monitors: false,
     timeout_ms: 3000,
     popup_position: 'center',
@@ -38,8 +34,7 @@ let settingsValues = {
 };
 
 function init(metadata) {
-    extensionPath = metadata.path;
-    Gettext.bindtextdomain(UUID, extensionPath + "/mo");
+    Gettext.bindtextdomain(UUID, metadata.path + "/mo");
 }
 
 function enable() {
@@ -47,19 +42,19 @@ function enable() {
 
     try {
         settings = new Settings.ExtensionSettings(settingsValues, UUID);
-        settings.bind('show_on_all_monitors', 'show_on_all_monitors', () => {});
-        settings.bind('timeout_ms', 'timeout_ms', () => {});
-        settings.bind('popup_position', 'popup_position', () => {});
-        settings.bind('font_size', 'font_size', () => {});
-        settings.bind('padding_vertical', 'padding_vertical', () => {});
-        settings.bind('padding_horizontal', 'padding_horizontal', () => {});
-        settings.bind('margin_vertical', 'margin_vertical', () => {});
-        settings.bind('margin_horizontal', 'margin_horizontal', () => {});
-        settings.bind('border_radius', 'border_radius', () => {});
-        settings.bind('bg_opacity', 'bg_opacity', () => {});
-        settings.bind('text_color', 'text_color', () => {});
-        settings.bind('bg_color', 'bg_color', () => {});
-        settings.bind('border_color', 'border_color', () => {});
+        settings.bind('show_on_all_monitors', 'show_on_all_monitors', function() {});
+        settings.bind('timeout_ms', 'timeout_ms', function() {});
+        settings.bind('popup_position', 'popup_position', function() {});
+        settings.bind('font_size', 'font_size', function() {});
+        settings.bind('padding_vertical', 'padding_vertical', function() {});
+        settings.bind('padding_horizontal', 'padding_horizontal', function() {});
+        settings.bind('margin_vertical', 'margin_vertical', function() {});
+        settings.bind('margin_horizontal', 'margin_horizontal', function() {});
+        settings.bind('border_radius', 'border_radius', function() {});
+        settings.bind('bg_opacity', 'bg_opacity', function() {});
+        settings.bind('text_color', 'text_color', function() {});
+        settings.bind('bg_color', 'bg_color', function() {});
+        settings.bind('border_color', 'border_color', function() {});
         
         global.log('LayoutPopup: Settings GUI binding successful.');
     } catch (e) {
@@ -67,7 +62,7 @@ function enable() {
     }
 
     try {
-        const sessionBus = Gio.bus_get_sync(Gio.BusType.SESSION, null);
+        var sessionBus = Gio.bus_get_sync(Gio.BusType.SESSION, null);
         signalSubscriptionId = sessionBus.signal_subscribe(
             null,
             'org.Cinnamon',
@@ -85,9 +80,11 @@ function enable() {
 function disable() {
     if (signalSubscriptionId) {
         try {
-            const sessionBus = Gio.bus_get_sync(Gio.BusType.SESSION, null);
+            var sessionBus = Gio.bus_get_sync(Gio.BusType.SESSION, null);
             sessionBus.signal_unsubscribe(signalSubscriptionId);
-        } catch (e) {}
+        } catch (e) {
+            void 0;
+        }
         signalSubscriptionId = null;
     }
 
@@ -106,10 +103,10 @@ function disable() {
 function _onCinnamonDbusSignal(connection, sender_name, object_path, interface_name, signal_name, parameters) {
     try {
         if (parameters.n_children() > 0) {
-            const rawVariant = parameters.get_child_value(0);
-            const rawLangCode = rawVariant.get_string()[0];
+            var rawVariant = parameters.get_child_value(0);
+            var rawLangCode = rawVariant.get_string()[0];
 
-            let lang = rawLangCode.toUpperCase();
+            var lang = rawLangCode.toUpperCase();
             if (lang === 'US') lang = 'EN';
 
             if (timeoutId) {
@@ -127,17 +124,17 @@ function _onCinnamonDbusSignal(connection, sender_name, object_path, interface_n
 function showLayoutPopup(text) {
     destroyAllOSDs();
 
-    let targets = [];
+    var targets = [];
 
     if (settingsValues.show_on_all_monitors) {
-        const monitors = Main.layoutManager.monitors;
+        var monitors = Main.layoutManager.monitors;
         if (monitors && monitors.length > 0) {
-            for (let i = 0; i < monitors.length; i++) {
+            for (var i = 0; i < monitors.length; i++) {
                 targets.push(monitors[i]);
             }
         }
     } else {
-        const currentMonitor = getMonitorAtMousePosition();
+        var currentMonitor = getMonitorAtMousePosition();
         if (currentMonitor) {
             targets.push(currentMonitor);
         }
@@ -145,57 +142,59 @@ function showLayoutPopup(text) {
 
     if (targets.length === 0) return;
 
-    let systemFont = 'sans-serif';
+    var systemFont = 'sans-serif';
     try {
-        const ifaceSettings = new Gio.Settings({ schema: 'org.cinnamon.desktop.interface' });
-        const fontName = ifaceSettings.get_string('font-name');
+        var ifaceSettings = new Gio.Settings({ schema: 'org.cinnamon.desktop.interface' });
+        var fontName = ifaceSettings.get_string('font-name');
         if (fontName) {
-            const parts = fontName.trim().split(' ');
+            var parts = fontName.trim().split(' ');
             if (parts.length > 1 && !isNaN(parseFloat(parts[parts.length - 1]))) {
                 parts.pop();
             }
             systemFont = parts.join(' ') || 'sans-serif';
         }
-    } catch (e) {}
+    } catch (e) {
+        void 0;
+    }
 
-    let alpha = settingsValues.bg_opacity / 100;
-    let bg = settingsValues.bg_color;
-    let finalBgColor = bg;
+    var alpha = settingsValues.bg_opacity / 100;
+    var bg = settingsValues.bg_color;
+    var finalBgColor = bg;
 
     if (bg.startsWith('rgb(')) {
         finalBgColor = bg.replace('rgb(', 'rgba(').replace(')', `, ${alpha})`);
     } else if (bg.startsWith('#')) {
-        let hex = bg.replace('#', '');
+        var hex = bg.replace('#', '');
         if (hex.length === 3) {
             hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
         }
-        let r = parseInt(hex.substring(0, 2), 16);
-        let g = parseInt(hex.substring(2, 4), 16);
-        let b = parseInt(hex.substring(4, 6), 16);
+        var r = parseInt(hex.substring(0, 2), 16);
+        var g = parseInt(hex.substring(2, 4), 16);
+        var b = parseInt(hex.substring(4, 6), 16);
         finalBgColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
-    const containerStyle = `
+    var containerStyle = `
         background-color: ${finalBgColor};
         border-radius: ${settingsValues.border_radius}px;
         border: 1px solid ${settingsValues.border_color};
         padding: ${settingsValues.padding_vertical}px ${settingsValues.padding_horizontal}px;
     `;
 
-    const labelStyle = `
+    var labelStyle = `
         font-family: "${systemFont}";
         font-size: ${settingsValues.font_size}px;
         font-weight: bold;
         color: ${settingsValues.text_color};
     `;
 
-    targets.forEach(monitor => {
-        let container = new St.BoxLayout({
+    targets.forEach(function(monitor) {
+        var container = new St.BoxLayout({
             style: containerStyle,
             reactive: false,
         });
 
-        let label = new St.Label({
+        var label = new St.Label({
             style: labelStyle,
             text: text
         });
@@ -205,14 +204,16 @@ function showLayoutPopup(text) {
         Main.uiGroup.add_child(container);
         container.raise_top();
 
-        let [, naturalWidth] = container.get_preferred_width(-1);
-        let [, naturalHeight] = container.get_preferred_height(-1);
+        var widthResult = container.get_preferred_width(-1);
+        var naturalWidth = widthResult[1];
+        var heightResult = container.get_preferred_height(-1);
+        var naturalHeight = heightResult[1];
 
-        let marginX = settingsValues.margin_horizontal;
-        let marginY = settingsValues.margin_vertical;
+        var marginX = settingsValues.margin_horizontal;
+        var marginY = settingsValues.margin_vertical;
 
-        let x = monitor.x + marginX;
-        let y = monitor.y + marginY;
+        var x = monitor.x + marginX;
+        var y = monitor.y + marginY;
 
         switch (settingsValues.popup_position) {
             case 'top_right':
@@ -258,7 +259,7 @@ function showLayoutPopup(text) {
         osds.push(container);
     });
 
-    timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, settingsValues.timeout_ms, () => {
+    timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, settingsValues.timeout_ms, function() {
         hideAllOSDs();
         timeoutId = null;
         return GLib.SOURCE_REMOVE;
@@ -267,13 +268,13 @@ function showLayoutPopup(text) {
 
 function hideAllOSDs() {
     if (osds.length === 0) return;
-    osds.forEach(osd => {
+    osds.forEach(function(osd) {
         if (osd && !osd.is_finalized()) {
             osd.ease({
                 opacity: 0,
                 duration: 250,
                 mode: Clutter.AnimationMode.EASE_IN_QUAD,
-                onComplete: () => {
+                onComplete: function() {
                     if (osd && !osd.is_finalized()) osd.destroy();
                 }
             });
@@ -284,7 +285,7 @@ function hideAllOSDs() {
 
 function destroyAllOSDs() {
     if (osds.length === 0) return;
-    osds.forEach(osd => {
+    osds.forEach(function(osd) {
         if (osd && !osd.is_finalized()) osd.destroy();
     });
     osds = [];
@@ -292,10 +293,12 @@ function destroyAllOSDs() {
 
 function getMonitorAtMousePosition() {
     try {
-        const [mouseX, mouseY] = global.get_pointer();
-        const monitors = Main.layoutManager.monitors;
-        for (let i = 0; i < monitors.length; i++) {
-            const mon = monitors[i];
+        var coords = global.get_pointer();
+        var mouseX = coords[0];
+        var mouseY = coords[1];
+        var monitors = Main.layoutManager.monitors;
+        for (var i = 0; i < monitors.length; i++) {
+            var mon = monitors[i];
             if (mouseX >= mon.x && mouseX < mon.x + mon.width &&
                 mouseY >= mon.y && mouseY < mon.y + mon.height) {
                 return mon;
