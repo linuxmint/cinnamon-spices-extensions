@@ -4,14 +4,16 @@ const GLib = imports.gi.GLib;
 const Clutter = imports.gi.Clutter;
 const Gio = imports.gi.Gio;
 const Settings = imports.ui.settings;
-const Gettext = imports.gettext; // Импортируем Gettext
+const Gettext = imports.gettext;
 
-// Регистрируем домен перевода расширения (используем ваш UUID)
 const UUID = "key-switcher-popup@dmitriy71n";
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/cinnamon/extensions/" + UUID + "/mo");
+let extensionPath = null;
 
 function _(str) {
-    return Gettext.dgettext(UUID, str);
+    if (extensionPath) {
+        return Gettext.dgettext(UUID, str);
+    }
+    return str;
 }
 
 let osds = [];
@@ -35,7 +37,10 @@ let settingsValues = {
     border_color: 'rgb(50,50,50)'
 };
 
-function init(metadata) {}
+function init(metadata) {
+    extensionPath = metadata.path;
+    Gettext.bindtextdomain(UUID, extensionPath + "/mo");
+}
 
 function enable() {
     global.log('LayoutPopup: Activated.');
