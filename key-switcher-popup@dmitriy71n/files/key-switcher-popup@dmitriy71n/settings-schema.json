@@ -33,7 +33,7 @@
         "min": 12,
         "max": 72,
         "step": 1,
-        "units": "px ",
+        "units": "px",
         "description": "Window font size"
     },
     "padding_vertical": {
