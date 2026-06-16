@@ -1,0 +1,75 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Keyboard Switcher Popup\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+# Перевод metadata.json
+msgid "Keyboard Switcher Popup"
+msgstr "Всплывающее окно переключения клавиатуры"
+
+msgid "When you change the keyboard layout, a modal window appears in the corner of the screen displaying information about the current layout."
+msgstr "При изменении раскладки клавиатуры в углу экрана появляется модальное окно с информацией о текущей раскладке."
+
+# Перевод settings-schema.json
+msgid "Show on multiple monitors simultaneously"
+msgstr "Показывать на нескольких мониторах одновременно"
+
+msgid "Modal window screen delay"
+msgstr "Задержка отображения модального окна"
+
+msgid "Position of the modal window on the screen"
+msgstr "Позиция модального окна на экране"
+
+msgid "In the center of the screen"
+msgstr "В центре экрана"
+
+msgid "Upper left corner"
+msgstr "Верхний левый угол"
+
+msgid "Upper right corner"
+msgstr "Верхний правый угол"
+
+msgid "Lower right corner"
+msgstr "Нижний правый угол"
+
+msgid "Lower left corner"
+msgstr "Нижний левый угол"
+
+msgid "At the top center of the screen"
+msgstr "Вверху по центру экрана"
+
+msgid "At the bottom middle of the screen"
+msgstr "Внизу по центру экрана"
+
+msgid "Window font size"
+msgstr "Размер шрифта окна"
+
+msgid "Inner padding (top / bottom)"
+msgstr "Внутренний отступ (верх / низ)"
+
+msgid "Inner padding (left / right)"
+msgstr "Внутренний отступ (лево / право)"
+
+msgid "Margin from screen edges (top / bottom)"
+msgstr "Отступ от краев экрана (верх / низ)"
+
+msgid "Margin from screen edges (left / right)"
+msgstr "Отступ от краев экрана (лево / право)"
+
+msgid "Window corner rounding radius"
+msgstr "Радиус округления углов окна"
+
+msgid "Background opacity"
+msgstr "Прозрачность фона"
+
+msgid "Font color"
+msgstr "Цвет шрифта"
+
+msgid "Window background color"
+msgstr "Цвет фона окна"
+
+msgid "Window frame color"
+msgstr "Цвет рамки окна"
