@@ -3,7 +3,7 @@
   "name": "Keyboard Switcher Popup",
   "description": "Displays a clean modal popup in the corner of the screen whenever you change the keyboard layout.",
   "author": "dmitriy71n, Gemini, Qwen3 Code",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "cinnamon-version": [
     "6.0",
     "6.2",
