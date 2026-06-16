@@ -161,9 +161,9 @@ function showLayoutPopup(text) {
     var bg = settingsValues.bg_color;
     var finalBgColor = bg;
 
-    if (bg.startsWith('rgb(')) {
-        finalBgColor = bg.replace('rgb(', 'rgba(').replace(')', `, ${alpha})`);
-    } else if (bg.startsWith('#')) {
+    if (bg.indexOf('rgb(') === 0) {
+        finalBgColor = bg.replace('rgb(', 'rgba(').replace(')', ', ' + alpha + ')');
+    } else if (bg.indexOf('#') === 0) {
         var hex = bg.replace('#', '');
         if (hex.length === 3) {
             hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
@@ -171,22 +171,18 @@ function showLayoutPopup(text) {
         var r = parseInt(hex.substring(0, 2), 16);
         var g = parseInt(hex.substring(2, 4), 16);
         var b = parseInt(hex.substring(4, 6), 16);
-        finalBgColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        finalBgColor = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
     }
 
-    var containerStyle = `
-        background-color: ${finalBgColor};
-        border-radius: ${settingsValues.border_radius}px;
-        border: 1px solid ${settingsValues.border_color};
-        padding: ${settingsValues.padding_vertical}px ${settingsValues.padding_horizontal}px;
-    `;
+    var containerStyle = 'background-color: ' + finalBgColor + '; ' +
+                         'border-radius: ' + settingsValues.border_radius + 'px; ' +
+                         'border: 1px solid ' + settingsValues.border_color + '; ' +
+                         'padding: ' + settingsValues.padding_vertical + 'px ' + settingsValues.padding_horizontal + 'px;';
 
-    var labelStyle = `
-        font-family: "${systemFont}";
-        font-size: ${settingsValues.font_size}px;
-        font-weight: bold;
-        color: ${settingsValues.text_color};
-    `;
+    var labelStyle = 'font-family: "' + systemFont + '"; ' +
+                     'font-size: ' + settingsValues.font_size + 'px; ' +
+                     'font-weight: bold; ' +
+                     'color: ' + settingsValues.text_color + ';';
 
     targets.forEach(function(monitor) {
         var container = new St.BoxLayout({
