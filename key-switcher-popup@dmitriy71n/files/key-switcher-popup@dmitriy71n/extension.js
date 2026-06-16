@@ -3,7 +3,6 @@ const Main = imports.ui.main;
 const GLib = imports.gi.GLib;
 const Clutter = imports.gi.Clutter;
 const Gio = imports.gi.Gio;
-const Gdk = imports.gi.Gdk;
 const Settings = imports.ui.settings;
 
 let osds = [];
@@ -162,7 +161,6 @@ function showLayoutPopup(text) {
         finalBgColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
-    // Чистый инлайновый стиль без лишних свойств
     const containerStyle = `
         background-color: ${finalBgColor};
         border-radius: ${settingsValues.border_radius}px;
@@ -280,21 +278,6 @@ function destroyAllOSDs() {
 
 function getMonitorAtMousePosition() {
     try {
-        const display = Gdk.Display.get_default();
-        if (display) {
-            const seat = display.get_default_seat();
-            if (seat) {
-                const pointer = seat.get_pointer();
-                if (pointer) {
-                    const [screen, mouseX, mouseY] = pointer.get_position();
-                    const gdkMonitor = display.get_monitor_at_point(mouseX, mouseY);
-                    if (gdkMonitor) return gdkMonitor.get_geometry();
-                }
-            }
-        }
-    } catch (e) {}
-
-    try {
         const [mouseX, mouseY] = global.get_pointer();
         const monitors = Main.layoutManager.monitors;
         for (let i = 0; i < monitors.length; i++) {
@@ -304,6 +287,8 @@ function getMonitorAtMousePosition() {
                 return mon;
             }
         }
-    } catch (e) {}
+    } catch (e) {
+        global.logError('LayoutPopup: Ошибка определения монитора: ' + e.message);
+    }
     return Main.layoutManager.primaryMonitor;
 }
