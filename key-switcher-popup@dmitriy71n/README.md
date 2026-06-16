@@ -1,14 +1,26 @@
-### Extended Description
-This extension improves the user experience when switching keyboard layouts in Cinnamon. Instead of relying solely on the tray indicator, it displays a clean, modern modal popup in the corner of the screen immediately after the layout changes. 
+### Backstory
+In practice, I constantly use three keyboard layouts: my native language for personal communication and texting, English for terminal work and layout design, and the official state language of the country where I live.
 
-The popup fades out automatically after a short delay, providing clear visual feedback without interrupting the user's workflow.
+One day, while working on a dual-monitor setup, I realized how incredibly inconvenient it was: just to check the current language, I had to constantly look away from the text, turn my head, shift my gaze to the second monitor, and search for the tiny letters of the indicator in the system tray. Constant typos due to the wrong layout were extremely annoying and kept breaking my workflow.
 
-### Technical Details & Implementation
-- **Triggers:** Listens to the keyboard layout change signals via Cinnamon/GObject API.
-- **UI Component:** Uses St (Shell Toolkit) to create a native modal dialog boxed container.
-- **Compatibility:** Tailored for Cinnamon 6.0+ and tested to ensure it doesn't conflict with default system OSD notifications.
+That is exactly how the idea for this extension was born — to display a large, clean, and noticeable popup window with the current language right in your focus of vision at the exact moment of switching.
 
-### How to Test
-1. Enable the extension in System Settings -> Extensions.
-2. Change your keyboard layout using your preferred shortcut (e.g., Super+Space or Alt+Shift).
-3. Verify that a modal popup appears with the correct layout indicator and smoothly disappears.
+### What does this extension do?
+**Keyboard Switcher Popup** is a lightweight and functional extension for the Cinnamon desktop environment (Linux Mint) that displays a beautiful overlay with the current keyboard layout when it changes. It is designed for those who value ergonomics and work with multiple monitors or languages.
+
+### Key Features:
+
+* **Multi-monitor support:** You can configure the notification to appear only on the monitor where the mouse pointer is currently located, or duplicate the popup window simultaneously across all connected screens.
+* **Flexible positioning (6 positions):** The window is not locked to a single spot. In the settings, you can choose any convenient display point:
+  * Top Left
+  * Top Center
+  * Top Right
+  * Bottom Left
+  * Bottom Center
+  * Bottom Right
+  * Exactly in the Center of the screen
+* **Full appearance customization:** You don't need to edit style files manually. Everything is configured via a user-friendly graphical interface (GUI):
+  * **Display Time:** Adjust the delay (in milliseconds) before the window smoothly fades away.
+  * **Font and Sizes:** Change the text size (the font family automatically adapts to the one used in your system).
+  * **Color Palette:** Custom choice for text color, background color, and border color (HEX and RGB formats are fully supported).
+  * **Opacity and Geometry:** Fine-tune background transparency and panel corner radius for a perfect blend with your system theme.
