@@ -1,0 +1,7 @@
+{
+    "author": "antoni-acevedo",
+    "original_author": "antoni-acevedo",
+    "name": "Window Borders",
+    "description": "Adds a customizable colored border to all windows. Adjust width, color, and corner radius from System Settings > Extensions. Works with all window types (NORMAL, DIALOG, MODAL_DIALOG).",
+    "url": "https://github.com/antoni-acevedo/cinnamon-window-borders"
+}
