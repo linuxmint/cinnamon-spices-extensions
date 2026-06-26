@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"POT-Creation-Date: 2026-06-26 01:26-0100\n"
 "PO-Revision-Date: 2024-05-28 11:48+0800\n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -34,6 +34,10 @@ msgstr "常规"
 #. 5.4->settings-schema.json->style-page->title
 #. 5.4->settings-schema.json->style-section->title
 msgid "Style"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
 msgstr ""
 
 #. 5.4->settings-schema.json->effects-section->title
@@ -161,7 +165,6 @@ msgid "Expand"
 msgstr "扩张"
 
 #. 5.4->settings-schema.json->animation-time->units
-#. 5.4->settings-schema.json->idle-animation-delay->units
 #. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "毫秒"
@@ -175,9 +178,13 @@ msgstr "动画时间"
 msgid "Idle Mouse Animation Mode"
 msgstr "点击动画模式"
 
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr ""
+
 #. 5.4->settings-schema.json->idle-animation-delay->description
 #, fuzzy
-msgid "Idle Mouse Animation Delay"
+msgid "Start Idle Animation After"
 msgstr "点击动画模式"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
@@ -239,6 +246,10 @@ msgstr ""
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
 msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
