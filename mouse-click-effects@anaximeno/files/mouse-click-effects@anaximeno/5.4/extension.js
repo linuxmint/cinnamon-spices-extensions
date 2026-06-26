@@ -25,7 +25,7 @@ const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer, logInfo, logError, IdleMonitor } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, IDLE_TIME } = require("./constants.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS } = require("./constants.js");
 const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
@@ -69,6 +69,8 @@ class MouseClickEffects {
 		this.listener = null;
 		this._mouse_click_listener_registered = false;
 		this.idleMonitor = null;
+		this._idle_listener_id = 0;
+		this._idle_animation_source_id = 0;
 
 		this.mouse_movement_tracker = null;
 
@@ -117,17 +119,17 @@ class MouseClickEffects {
 			{
 				key: "idle-animation-mode",
 				value: "idle_animation_mode",
-				cb: null, // TODO
+				cb: null,
 			},
 			{
 				key: "idle-animation-period",
 				value: "idle_animation_period",
-				cb: null, // TODO
+				cb: this.handle_idle_watcher_property_updated,
 			},
 			{
 				key: "idle-animation-delay",
 				value: "idle_animation_delay",
-				cb: null, // TODO
+				cb: this.handle_idle_watcher_property_updated,
 			},
 			{
 				key: "left-click-effect-enabled",
@@ -162,7 +164,7 @@ class MouseClickEffects {
 			{
 				key: "mouse-idle-watcher-enabled",
 				value: "mouse_idle_watcher_enabled",
-				cb: null, // TODO
+				cb: () => this.set_active(this.enabled),
 			},
 			{
 				key: "left-click-color",
@@ -223,6 +225,12 @@ class MouseClickEffects {
 		));
 
 		return settings;
+	}
+
+	get effects_blocked_by_fullscreen() {
+		return this.deactivate_in_fullscreen &&
+			global.display.focus_window &&
+			global.display.focus_window.is_fullscreen();
 	}
 
 	dragMotion = ((event) => {
@@ -326,6 +334,13 @@ class MouseClickEffects {
 			this._start_mouse_movement_tracker();
 	}, 300);
 
+	handle_idle_watcher_property_updated = (new Debouncer()).debounce(() => {
+		this._stop_idle_monitor();
+
+		if (this.enabled)
+			this._start_idle_monitor();
+	}, 300);
+
 	_get_mouse_click_listener() {
 		if (!this.listener)
 			this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
@@ -376,33 +391,83 @@ class MouseClickEffects {
 		this.mouse_movement_tracker = null;
 	}
 
+	_start_idle_monitor() {
+		if (!this.mouse_idle_watcher_enabled || this.idleMonitor)
+			return;
+
+		this.idleMonitor = new IdleMonitor(this._get_idle_delay_ms());
+		this._idle_listener_id = this.idleMonitor.add_idle_listener(this._handle_idle_state_changed.bind(this));
+
+		if (this.idleMonitor.idle)
+			this._start_idle_animation_loop();
+	}
+
+	_get_idle_delay_ms() {
+		let delay_minutes = this.idle_animation_delay;
+
+		if (delay_minutes > 120)
+			delay_minutes = 10;
+
+		delay_minutes = Math.max(1, Math.min(120, delay_minutes));
+		return delay_minutes * 60 * 1000;
+	}
+
+	_stop_idle_monitor() {
+		this._stop_idle_animation_loop();
+
+		if (!this.idleMonitor)
+			return;
+
+		if (this._idle_listener_id) {
+			this.idleMonitor.remove_idle_listener(this._idle_listener_id);
+			this._idle_listener_id = 0;
+		}
+
+		this.idleMonitor.destroy();
+		this.idleMonitor = null;
+	}
+
+	_handle_idle_state_changed(is_idle) {
+		if (is_idle) {
+			this._start_idle_animation_loop();
+		} else {
+			this._stop_idle_animation_loop();
+		}
+	}
+
+	_start_idle_animation_loop() {
+		if (this._idle_animation_source_id)
+			return;
+
+		this.display_idle_animation();
+
+		let period = Math.max(100, this.idle_animation_period);
+		this._idle_animation_source_id = GLib.timeout_add(GLib.PRIORITY_DEFAULT, period, () => {
+			this.display_idle_animation();
+			return GLib.SOURCE_CONTINUE;
+		});
+		GLib.Source.set_name_by_id(this._idle_animation_source_id, '[cinnamon mouse-click-effects] MouseClickEffects._start_idle_animation_loop');
+	}
+
+	_stop_idle_animation_loop() {
+		if (!this._idle_animation_source_id)
+			return;
+
+		GLib.source_remove(this._idle_animation_source_id);
+		this._idle_animation_source_id = 0;
+	}
+
 	set_active(enabled) {
 		this.enabled = enabled;
 
 		this._deregister_mouse_click_listener();
 		this._stop_mouse_movement_tracker();
-		if (this.idleMonitor) {
-			this.idleMonitor.stop();
-			this.idleMonitor = null;
-		}
+		this._stop_idle_monitor();
 
 		if (enabled) {
 			this._register_mouse_click_listener();
-
 			this._start_mouse_movement_tracker();
-
-			// TODO
-			// if (this.mouse_idle_watcher_enabled) {
-			// 	// XXX: only enable according w respective settings
-			// 	this.idleMonitor = new IdleMonitor({
-			// 		idle_delay: IDLE_TIME,
-			// 		on_idle: this.on_idle_handler,
-			// 		on_active: this.on_active_handler,
-			// 		on_finish: this.on_finish_handler,
-			// 	});
-			// 	this.idleMonitor.start();
-			// }
-
+			this._start_idle_monitor();
 			logInfo("activated");
 		} else {
 			logInfo("deactivated");
@@ -434,12 +499,19 @@ class MouseClickEffects {
 	}
 
 	display_click = (new Debouncer()).debounce((...args) => {
-		if (this.deactivate_in_fullscreen && global.display.focus_window && global.display.focus_window.is_fullscreen()) {
+		if (this.effects_blocked_by_fullscreen) {
 			logInfo("Click effects not displayed due to being disabled for fullscreen focused windows");
 			return;
 		}
 		this.animate_click(...args);
 	}, CLICK_DEBOUNCE_MS);
+
+	display_idle_animation() {
+		if (!this.enabled || !this.mouse_idle_watcher_enabled || this.effects_blocked_by_fullscreen)
+			return;
+
+		this.animate_idle();
+	}
 
 	animate_click(click_type, color) {
 		this.update_animation_mode();
@@ -465,6 +537,20 @@ class MouseClickEffects {
 			});
 		} else {
 			logError(`Couldn't get Click Icon (mode = ${this.icon_mode}, type = ${click_type}, color = ${color})`)
+		}
+	}
+
+	animate_idle() {
+		let icon = this.get_click_icon(this.icon_mode, ClickType.MOUSE_IDLE, this.mouse_idle_watcher_color);
+
+		if (icon) {
+			ClickAnimationFactory.createForMode(this.idle_animation_mode).animateClick(icon, {
+				opacity: this.general_opacity,
+				icon_size: this.size,
+				timeout: this.animation_time,
+			});
+		} else {
+			logError(`Couldn't get Idle Icon (mode = ${this.icon_mode}, color = ${this.mouse_idle_watcher_color})`)
 		}
 	}
 

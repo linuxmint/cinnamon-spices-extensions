@@ -63,11 +63,17 @@ var IdleMonitor = class IdleMonitor {
         this.idle_delay = idle_delay;
 
         this.idle_monitor = Meta.IdleMonitor.get_core();
-        this._idle_watch_id = this.idle_monitor.add_idle_watch(this.idle_delay, this._handle_idle.bind(this));
+        this._idle_watch_id = 0;
         this.idle = this.idle_monitor.get_idletime() > this.idle_delay;
 
         this._listener_counter = 0;
         this._idle_listeners = new Map();
+
+        if (this.idle) {
+            this._idle_watch_id = this.idle_monitor.add_user_active_watch(this._handle_active.bind(this));
+        } else {
+            this._idle_watch_id = this.idle_monitor.add_idle_watch(this.idle_delay, this._handle_idle.bind(this));
+        }
     }
 
     add_idle_listener(callback) {
@@ -87,7 +93,9 @@ var IdleMonitor = class IdleMonitor {
     }
 
     destroy() {
-        this.idle_monitor.remove_watch(this._idle_watch_id);
+        if (this.idle_monitor && this._idle_watch_id)
+            this.idle_monitor.remove_watch(this._idle_watch_id);
+
         this._idle_listeners.clear();
         this._listener_counter = 0;
         this._idle_watch_id = 0;
@@ -96,14 +104,18 @@ var IdleMonitor = class IdleMonitor {
 
     _handle_idle() {
         this.idle = true;
-        this.idle_monitor.remove_watch(this._idle_watch_id);
+        if (this._idle_watch_id)
+            this.idle_monitor.remove_watch(this._idle_watch_id);
+
         this._idle_watch_id = this.idle_monitor.add_user_active_watch(this._handle_active.bind(this));
         this.trigger_idle_callbacks();
     }
 
     _handle_active() {
         this.idle = false;
-        this.idle_monitor.remove_watch(this._idle_watch_id);
+        if (this._idle_watch_id)
+            this.idle_monitor.remove_watch(this._idle_watch_id);
+
         this._idle_watch_id = this.idle_monitor.add_idle_watch(this.idle_delay, this._handle_idle.bind(this));
         this.trigger_idle_callbacks();
     }
