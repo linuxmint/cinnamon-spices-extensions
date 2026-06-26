@@ -17,18 +17,28 @@
  */
 'use strict';
 
-const DEBUG = false;
+var DEBUG = false;
 
-const UUID = "mouse-click-effects@anaximeno";
+var UUID = "mouse-click-effects@anaximeno";
 
-const PAUSE_EFFECTS_KEY = `${UUID}-bind-pause-effects`;
+var PAUSE_EFFECTS_KEY = `${UUID}-bind-pause-effects`;
 
-const CLICK_DEBOUNCE_MS = 16;
+var CLICK_DEBOUNCE_MS = 16;
 
-const POINTER_WATCH_MS = 16;
+var POINTER_WATCH_MS = 16;
 
-const MOUSE_PARADE_DELAY_MS = 256;
+var MOUSE_PARADE_DELAY_MS = 256;
 
-const MOUSE_PARADE_ANIMATION_MS = 256;
+var MOUSE_PARADE_ANIMATION_MS = 256;
 
-const IDLE_TIME = 1024;
+var IDLE_TIME = 1024;
+
+var ClickType = Object.freeze({
+	LEFT: "left_click",
+	MIDDLE: "middle_click",
+	RIGHT: "right_click",
+	PAUSE_ON: "pause_on",
+	PAUSE_OFF: "pause_off",
+	MOUSE_IDLE: "mouse_idle",
+	MOUSE_MOV: "mouse_mov",
+});

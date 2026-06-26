@@ -24,9 +24,8 @@ const Gettext = imports.gettext;
 const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
-const { Debouncer, logInfo, logError } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, POINTER_WATCH_MS, IDLE_TIME } = require("./constants.js");
-const { IdleMonitor } = require("./idleMonitor.js");
+const { Debouncer, logInfo, logError, IdleMonitor } = require("./helpers.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, IDLE_TIME, ClickType } = require("./constants.js");
 const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
@@ -36,17 +35,6 @@ function _(text) {
 	let localized = Gettext.dgettext(UUID, text);
 	return localized != text ? localized : window._(text);
 }
-
-
-const ClickType = Object.freeze({
-	LEFT: "left_click",
-	MIDDLE: "middle_click",
-	RIGHT: "right_click",
-	PAUSE_ON: "pause_on",
-	PAUSE_OFF: "pause_off",
-	MOUSE_IDLE: "mouse_idle",
-	MOUSE_MOV: "mouse_mov",
-});
 
 
 class MouseClickEffects {
@@ -264,8 +252,15 @@ class MouseClickEffects {
 		}
 	}
 
+	get_icon_cache_name(mode, click_type, color) {
+		let safe_mode = String(mode).replace(/[^a-zA-Z0-9._-]/g, "_");
+		let safe_click_type = String(click_type).replace(/[^a-zA-Z0-9._-]/g, "_");
+		let safe_color = String(color).replace(/[^a-zA-Z0-9._-]/g, "_");
+		return `${safe_mode}_${safe_click_type}_${safe_color}.svg`;
+	}
+
 	get_click_icon(mode, click_type, color) {
-		let name = `${mode}_${click_type}_${color}.svg`;
+		let name = this.get_icon_cache_name(mode, click_type, color);
 		let path = `${this.data_dir}/icons/${name}`;
 		return this.get_icon_cached(path);
 	}
@@ -305,29 +300,38 @@ class MouseClickEffects {
 	}
 
 	handle_mouse_movement_tracker_property_updated = (new Debouncer()).debounce(() => {
-		if (this.mouse_movement_tracker) {
-			this.mouse_movement_tracker.stop();
-			this.mouse_movement_tracker = null;
-		}
-		if (this.mouse_movement_tracker_enabled) {
-			this.mouse_movement_tracker = new MouseMovementTracker(this, {
-				icon: this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color),
-				opacity: this.general_opacity,
-				persist: this.mouse_movement_tracker_persist_on_stopped_enabled,
-				size: this.size,
-			});
-			this.mouse_movement_tracker.start();
-		}
+		this._stop_mouse_movement_tracker();
+
+		if (this.enabled)
+			this._start_mouse_movement_tracker();
 	}, 300);
+
+	_start_mouse_movement_tracker() {
+		if (!this.mouse_movement_tracker_enabled || this.mouse_movement_tracker)
+			return;
+
+		this.mouse_movement_tracker = new MouseMovementTracker(this, {
+			icon: this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color),
+			opacity: this.general_opacity,
+			persist: this.mouse_movement_tracker_persist_on_stopped_enabled,
+			size: this.size,
+		});
+		this.mouse_movement_tracker.start();
+	}
+
+	_stop_mouse_movement_tracker() {
+		if (!this.mouse_movement_tracker)
+			return;
+
+		this.mouse_movement_tracker.stop();
+		this.mouse_movement_tracker = null;
+	}
 
 	set_active(enabled) {
 		this.enabled = enabled;
 
 		this.listener.deregister('mouse');
-		if (this.mouse_movement_tracker) {
-			this.mouse_movement_tracker.stop();
-			this.mouse_movement_tracker = null;
-		}
+		this._stop_mouse_movement_tracker();
 		if (this.idleMonitor) {
 			this.idleMonitor.stop();
 			this.idleMonitor = null;
@@ -336,15 +340,7 @@ class MouseClickEffects {
 		if (enabled) {
 			this.listener.register('mouse');
 
-			if (this.mouse_movement_tracker_enabled) {
-				this.mouse_movement_tracker = new MouseMovementTracker(this, {
-					icon: this.get_click_icon(this.icon_mode, ClickType.MOUSE_MOV, this.mouse_movement_color),
-					opacity: this.general_opacity,
-					persist: this.mouse_movement_tracker_persist_on_stopped_enabled,
-					size: this.size,
-				});
-				this.mouse_movement_tracker.start();
-			}
+			this._start_mouse_movement_tracker();
 
 			// TODO
 			// if (this.mouse_idle_watcher_enabled) {
@@ -374,7 +370,7 @@ class MouseClickEffects {
 		contents = ByteArray.toString(contents);
 		contents = contents.replace('fill="#000000"', `fill="${color}"`);
 
-		let name = `${this.icon_mode}_${click_type}_${color}.svg`;
+		let name = this.get_icon_cache_name(this.icon_mode, click_type, color);
 		let path = `${this.data_dir}/icons/${name}`;
 		let dest = Gio.File.new_for_path(path);
 

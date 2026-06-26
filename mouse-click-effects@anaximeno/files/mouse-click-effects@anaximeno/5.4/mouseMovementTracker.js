@@ -17,6 +17,9 @@ var MouseMovementTracker = class MouseMovementTracker {
         this.signals = new SignalManager.SignalManager(null);
         this.iconActor = null;
         this.listener = null;
+        this._paradeDebouncer = new Debouncer();
+        this._isFading = false;
+        this.handle_parade = this._paradeDebouncer.debounce(this._fade_after_movement_stops.bind(this), MOUSE_PARADE_DELAY_MS);
     }
 
     get is_fullscreen_block() {
@@ -40,6 +43,9 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     start() {
+        if (this.iconActor)
+            return;
+
         this.iconActor = new St.Icon({
             reactive: false,
             can_focus: false,
@@ -68,10 +74,22 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     stop() {
+        this._paradeDebouncer.clear();
         this.signals.disconnectAllSignals();
-        Main.uiGroup.remove_child(this.iconActor);
-        this.listener.remove();
-        this.iconActor.destroy();
+
+        if (this.listener) {
+            this.listener.remove();
+            this.listener = null;
+        }
+
+        if (this.iconActor) {
+            this.iconActor.remove_all_transitions();
+            Main.uiGroup.remove_child(this.iconActor);
+            this.iconActor.destroy();
+            this.iconActor = null;
+        }
+
+        this._isFading = false;
         logInfo("mouse movement tracker stopped");
     }
 
@@ -84,29 +102,37 @@ var MouseMovementTracker = class MouseMovementTracker {
             return;
         }
 
-        this.iconActor.ease({
-            x: x - this._halfIconSize,
-            y: y - this._halfIconSize,
-            scale_x: 1,
-            scale_y: 1,
-            duration: 0,
-            opacity: this.opacity,
-        });
+        if (this._isFading) {
+            this.iconActor.remove_all_transitions();
+            this._isFading = false;
+        }
+
+        this.iconActor.set_position(x - this._halfIconSize, y - this._halfIconSize);
+        this.iconActor.set_scale(1, 1);
+        this.iconActor.opacity = this.opacity;
 
         this.iconActor.show();
         this.handle_parade();
     }
 
-    handle_parade = (new Debouncer()).debounce(() => {
-        if (!this.persist && this.iconActor) {
-            this.iconActor.ease({
-                opacity: 0,
-                duration: MOUSE_PARADE_ANIMATION_MS,
-                mode: Clutter.AnimationMode.EASE_IN_OUT_CUBIC,
-                onComplete: () => this.iconActor.hide(),
-            })
-        }
-    }, MOUSE_PARADE_DELAY_MS);
+    _fade_after_movement_stops() {
+        if (this.persist || !this.iconActor)
+            return;
+
+        this._isFading = true;
+        this.iconActor.ease({
+            opacity: 0,
+            duration: MOUSE_PARADE_ANIMATION_MS,
+            mode: Clutter.AnimationMode.EASE_IN_OUT_CUBIC,
+            onComplete: () => {
+                if (!this.iconActor || !this._isFading)
+                    return;
+
+                this.iconActor.hide();
+                this._isFading = false;
+            },
+        });
+    }
 
     handle_monitors_changed() {
         // Update icon size to take into account new ui scale
