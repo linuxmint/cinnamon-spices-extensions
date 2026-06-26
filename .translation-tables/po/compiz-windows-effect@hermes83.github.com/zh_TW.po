@@ -1,0 +1,129 @@
+# COMPIZ WINDOWS EFFECT
+# This file is put in the public domain.
+# hermes83, 2022
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: compiz-windows-effect@hermes83.github.com 2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-11-25 10:07-0500\n"
+"PO-Revision-Date: 2026-06-01 14:02+0800\n"
+"Last-Translator: Alang Hsu <alang.hsu@gmail.com>\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Hermes Agent + po_gen.py\n"
+
+#. extension.js:190
+msgid "Error"
+msgstr "錯誤"
+
+#. extension.js:191
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously focused window, therefore Compiz window effects can not be disabled for that window"
+msgstr "無法判斷先前聚焦的視窗或其 WM_CLASS，因此無法對該視窗停用 Compiz 視窗效果"
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr "基於 Compiz 插件引擎的果凍視窗效果"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Compiz 視窗效果"
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "一般"
+
+#. settings-schema.json->exclude-page->title
+msgid "Exclude List"
+msgstr "排除清單"
+
+#. settings-schema.json->preset-section->title
+msgid "Compiz windows effect configuration"
+msgstr "Compiz 視窗效果設定"
+
+#. settings-schema.json->effect-settings-section->title
+msgid "Custom effect settings"
+msgstr "自訂效果設定"
+
+#. settings-schema.json->exclude-section->title
+msgid "Application windows where no window effects will be applied"
+msgstr "不套用視窗效果的應用程式視窗"
+
+#. settings-schema.json->presetList->options
+msgid "Subtle"
+msgstr "輕柔"
+
+#. settings-schema.json->presetList->options
+msgid "Realistic"
+msgstr "寫實"
+
+#. settings-schema.json->presetList->options
+msgid "Exaggerated"
+msgstr "誇張"
+
+#. settings-schema.json->presetList->options
+msgid "Extreme"
+msgstr "極致"
+
+#. settings-schema.json->presetList->options
+msgid "Custom"
+msgstr "自訂"
+
+#. settings-schema.json->presetList->description
+msgid "Effect style"
+msgstr "效果樣式"
+
+#. settings-schema.json->excludeList->description
+msgid "Application exclude list"
+msgstr "應用程式排除清單"
+
+#. settings-schema.json->excludeList->columns->title
+msgid "Application"
+msgstr "應用程式"
+
+#. settings-schema.json->excludeList->tooltip
+msgid ""
+"Defines a list of applications where the \"Compiz window effect\" effects will not be applied."
+msgstr "定義不套用「Compiz 視窗效果」的應用程式清單。"
+
+#. settings-schema.json->excludeButton->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr "為最近聚焦的視窗新增項目"
+
+#. settings-schema.json->excludeButton->tooltip
+msgid ""
+"Focus the window you want to disable window effects for, then return here and press this button."
+msgstr "聚焦您想要停用視窗效果的視窗，然後返回此處並按下此按鈕。"
+
+#. settings-schema.json->friction->description
+msgid "Friction "
+msgstr "摩擦力"
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "彈性係數 K"
+
+#. settings-schema.json->speedupFactorDivider->description
+msgid "Speedup"
+msgstr "加速"
+
+#. settings-schema.json->mass->description
+msgid "Mass      "
+msgstr "質量"
+
+#. settings-schema.json->xTiles->description
+msgid "X Tiles  "
+msgstr "X 軸拼貼"
+
+#. settings-schema.json->yTiles->description
+msgid "Y Tiles  "
+msgstr "Y 軸拼貼"
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "最大化與還原係數"

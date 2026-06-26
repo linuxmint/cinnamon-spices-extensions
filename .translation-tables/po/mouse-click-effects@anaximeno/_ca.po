@@ -1,0 +1,22 @@
+# MOUSE CLICK EFFECTS
+# This file is put in the public domain.
+# Odyssey <odysseyhyd@gmail.com>, 2024
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr ""
+
+#. 5.4->settings-schema.json->idle-animation-delay->description
+msgid "Start Idle Animation After"
+msgstr ""
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
+msgstr ""

@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Mahaigaineko ikonoen posizioak ezarri lan-espazio bakoitzeko"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Mahai gaineko ikonoak lan espazioka"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Ezarpenak"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "milisegundoak"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Mahaigaineko freskatzearen atzerapena hasieratik"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr "Itxaron behar diren milisegundo kopurua mahaigaina freskatzeko hedapena"
+"hasi ondoren"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Mahaigaineko freskatzea amaitu aurreko atzerapena"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr "Itxaron behar diren milisegundo kopurua mahaigaineko freskatzea amaitu aurretik"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "segundoak"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Denak gorde."
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Zenbat aldiz gorde mahaigaineko ikonoaren posizioak fitxategian. 0k"
+"fitxategian ez dela godeko esan nahi du"

@@ -1,0 +1,96 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s включено"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr "Откройте настройки расширения и преобразите ваши панели"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "Открыть настройки"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "Улучшенные прозрачные панели (Transparent panels reloaded)"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr ""
+"Сделайте ваши панели прозрачными (или нет) и измените их цвет по своему "
+"желанию"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Общие настройки"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr ""
+
+#. settings-schema.json->transparency-always->description
+#, fuzzy
+msgid "Always transparent"
+msgstr "Полная прозрачность"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
+msgstr ""
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr ""
+
+#. settings-schema.json->custom-panel-color->description
+#, fuzzy
+msgid "Custom panel color"
+msgstr "Нижняя панель"
+
+#. settings-schema.json->section-filters->description
+#, fuzzy
+msgid "Filter panels (WIP)"
+msgstr "Выбор панелей"
+
+#. settings-schema.json->filters-description->description
+#, fuzzy
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
+msgstr "Выберите панели для которых будет применено расширение."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Верхняя панель"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Правая панель"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Нижняя панель"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Левая панель"
