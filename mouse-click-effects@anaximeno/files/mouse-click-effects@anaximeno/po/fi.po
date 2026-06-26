@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 1.0.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"POT-Creation-Date: 2026-06-26 01:26-0100\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: fi\n"
 
 #. metadata.json->name
 msgid "Mouse Click Effects"
@@ -35,6 +35,10 @@ msgstr "Yleinen"
 #. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr "Tyyli"
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
+msgstr ""
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -161,7 +165,6 @@ msgid "Expand"
 msgstr "Laajeneva"
 
 #. 5.4->settings-schema.json->animation-time->units
-#. 5.4->settings-schema.json->idle-animation-delay->units
 #. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
@@ -174,9 +177,14 @@ msgstr "Animaatioaika"
 msgid "Idle Mouse Animation Mode"
 msgstr "Hiiren vapaa-animaatiotila"
 
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr ""
+
 #. 5.4->settings-schema.json->idle-animation-delay->description
-msgid "Idle Mouse Animation Delay"
-msgstr "Hiiren vapaa-animaatioviive"
+#, fuzzy
+msgid "Start Idle Animation After"
+msgstr "Hiiren vapaa-animaatiojakso"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -236,6 +244,10 @@ msgstr "Pysyvä liikeseuranta, myös pysähtyneenä (kokeellinen)"
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
 msgstr "Hiiri toimettomana"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"

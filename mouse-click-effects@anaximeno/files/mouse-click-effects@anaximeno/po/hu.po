@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"POT-Creation-Date: 2026-06-26 01:26-0100\n"
 "PO-Revision-Date: 2024-10-02 10:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -35,6 +35,10 @@ msgstr "Általános"
 #. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr "Stílus"
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
+msgstr ""
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -161,7 +165,6 @@ msgid "Expand"
 msgstr "Kibontás"
 
 #. 5.4->settings-schema.json->animation-time->units
-#. 5.4->settings-schema.json->idle-animation-delay->units
 #. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
@@ -174,9 +177,14 @@ msgstr "Animáció ideje"
 msgid "Idle Mouse Animation Mode"
 msgstr "Tétlen egér animációs mód"
 
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr ""
+
 #. 5.4->settings-schema.json->idle-animation-delay->description
-msgid "Idle Mouse Animation Delay"
-msgstr "Tétlen egér animációs késleltetés"
+#, fuzzy
+msgid "Start Idle Animation After"
+msgstr "Tétlen egér animációs periódus"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -227,8 +235,8 @@ msgid ""
 "This is still experimental and may interfere when clicking on the panel or "
 "in some drag-and-drop operations."
 msgstr ""
-"Ez még csak kísérleti jellegű, és zavarhatja a panelre kattintást vagy "
-"egyes fogd és vidd műveleteket."
+"Ez még csak kísérleti jellegű, és zavarhatja a panelre kattintást vagy egyes "
+"fogd és vidd műveleteket."
 
 #. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
 #. enabled->description
@@ -238,6 +246,10 @@ msgstr "Mozgáskövetés megtartása ha áll (kísérleti)"
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
 msgstr "Tétlen egér figyelő"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"

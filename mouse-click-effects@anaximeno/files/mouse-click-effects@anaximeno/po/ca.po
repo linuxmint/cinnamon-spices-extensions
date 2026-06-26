@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"POT-Creation-Date: 2026-06-26 01:26-0100\n"
 "PO-Revision-Date: 2024-09-21 22:17+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -35,6 +35,10 @@ msgstr "General"
 #. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr "Estil"
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
+msgstr ""
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -161,7 +165,6 @@ msgid "Expand"
 msgstr "Expandir"
 
 #. 5.4->settings-schema.json->animation-time->units
-#. 5.4->settings-schema.json->idle-animation-delay->units
 #. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
@@ -174,9 +177,14 @@ msgstr "Temps d'animació"
 msgid "Idle Mouse Animation Mode"
 msgstr "Mode d'animació del ratolí inactiu"
 
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr ""
+
 #. 5.4->settings-schema.json->idle-animation-delay->description
-msgid "Idle Mouse Animation Delay"
-msgstr "Retard d'animació del ratolí inactiu"
+#, fuzzy
+msgid "Start Idle Animation After"
+msgstr "Període d'animació del ratolí inactiu"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -236,6 +244,10 @@ msgstr "Rastrejador de moviment persistent en estat detingut (experimental)"
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
 msgstr "Observador d'inactivitat del ratolí"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"

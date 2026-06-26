@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 1.0.2\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2024-09-22 17:02-0100\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-06-26 01:26-0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -34,6 +35,10 @@ msgstr "Generale"
 #. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr "Stile"
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
+msgstr ""
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -160,7 +165,6 @@ msgid "Expand"
 msgstr "Espandi"
 
 #. 5.4->settings-schema.json->animation-time->units
-#. 5.4->settings-schema.json->idle-animation-delay->units
 #. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
@@ -173,9 +177,14 @@ msgstr "Tempo animazione"
 msgid "Idle Mouse Animation Mode"
 msgstr "Modalità animazione mouse inattivo"
 
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr ""
+
 #. 5.4->settings-schema.json->idle-animation-delay->description
-msgid "Idle Mouse Animation Delay"
-msgstr "Ritardo animazione mouse inattivo"
+#, fuzzy
+msgid "Start Idle Animation After"
+msgstr "Periodo animazione mouse inattivo"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -218,18 +227,27 @@ msgid "Mouse Movement Tracker (experimental)"
 msgstr "Tracciatore movimento mouse (sperimentale)"
 
 #. 5.4->settings-schema.json->mouse-movement-tracker-enabled->tooltip
-#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-enabled->tooltip
-msgid "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->tooltip
+msgid ""
+"This is still experimental and may interfere when clicking on the panel or "
+"in some drag-and-drop operations."
 msgstr ""
-"Questa funzione è ancora sperimentale e può interferire con clic sul pannello o alcune operazioni di trascinamento."
+"Questa funzione è ancora sperimentale e può interferire con clic sul "
+"pannello o alcune operazioni di trascinamento."
 
-#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-enabled->description
+#. 5.4->settings-schema.json->mouse-movement-tracker-persist-on-stopped-
+#. enabled->description
 msgid "Persist Movement Tracker On Stopped (experimental)"
 msgstr "Mantieni il tracciatore movimento quando fermo (sperimentale)"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
 msgstr "Rilevatore inattività mouse"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2024-09-22 17:02-0100\n"
-"PO-Revision-Date: 2024-09-20 22:03-0100\n"
+"POT-Creation-Date: 2026-06-26 01:26-0100\n"
+"PO-Revision-Date: 2026-06-26 01:27-0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.9\n"
 
 #. metadata.json->name
 msgid "Mouse Click Effects"
@@ -35,6 +35,10 @@ msgstr "Geral"
 #. 5.4->settings-schema.json->style-section->title
 msgid "Style"
 msgstr "Estilo"
+
+#. 5.4->settings-schema.json->idle-section->title
+msgid "Idle"
+msgstr "Ocioso"
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -161,7 +165,6 @@ msgid "Expand"
 msgstr "Expandir"
 
 #. 5.4->settings-schema.json->animation-time->units
-#. 5.4->settings-schema.json->idle-animation-delay->units
 #. 5.4->settings-schema.json->idle-animation-period->units
 msgid "ms"
 msgstr "ms"
@@ -174,9 +177,13 @@ msgstr "Duração da Animação"
 msgid "Idle Mouse Animation Mode"
 msgstr "Modo de Animação do Rato Ocioso"
 
+#. 5.4->settings-schema.json->idle-animation-delay->units
+msgid "min"
+msgstr "min"
+
 #. 5.4->settings-schema.json->idle-animation-delay->description
-msgid "Idle Mouse Animation Delay"
-msgstr "Atraso da Animação do Rato Ocioso"
+msgid "Start Idle Animation After"
+msgstr "Inicia Animações de Ocioso Após"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -236,6 +243,10 @@ msgstr "Persistir Rastreador de Movimento do Rato Quando Parado (experimental)"
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->description
 msgid "Mouse Idle Watcher"
 msgstr "Observador do Rato Ocioso"
+
+#. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
+msgid "Displays animations when the system enters idle state."
+msgstr "Apresenta animações quando o sistema entra no estado ocioso."
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
