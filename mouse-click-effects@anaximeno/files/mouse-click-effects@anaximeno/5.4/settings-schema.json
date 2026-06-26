@@ -10,6 +10,7 @@
 			"title": "General",
 			"sections": [
 				"general-section",
+				"idle-section",
 				"effects-section"
 			]
 		},
@@ -27,11 +28,18 @@
 			"keys": [
 				"animation-mode",
 				"animation-time",
-				"idle-animation-mode",
-				"idle-animation-period",
-				"idle-animation-delay",
 				"deactivate-in-fullscreen",
 				"pause-effects-binding"
+			]
+		},
+		"idle-section": {
+			"dependency": "mouse-idle-watcher-enabled",
+			"type": "section",
+			"title": "Idle",
+			"keys": [
+				"idle-animation-delay",
+				"idle-animation-period",
+				"idle-animation-mode"
 			]
 		},
 		"effects-section": {
@@ -139,12 +147,12 @@
 	"idle-animation-delay": {
 		"type": "spinbutton",
 		"dependency": "mouse-idle-watcher-enabled",
-		"default": 400,
-		"min": 100,
-		"max": 5000,
-		"step": 50,
-		"units": "ms",
-		"description": "Idle Mouse Animation Delay"
+		"default": 10,
+		"min": 1,
+		"max": 120,
+		"step": 1,
+		"units": "min",
+		"description": "Start Idle Animation After"
 	},
 	"idle-animation-period": {
 		"type": "spinbutton",
@@ -209,33 +217,34 @@
 		"tooltip": "This is still experimental and may interfere when clicking on the panel or in some drag-and-drop operations."
 	},
 	"mouse-idle-watcher-enabled": {
-		"type": "generic",
+		"type": "switch",
 		"default": false,
-		"description": "Mouse Idle Watcher"
+		"description": "Mouse Idle Watcher",
+		"tooltip": "Displays animations when the system enters idle state."
 	},
 	"left-click-color": {
 		"type": "colorchooser",
-		"default": "#0c75de",
+		"default": "#3B82F6",
 		"description": "Left Click Color"
 	},
 	"middle-click-color": {
 		"type": "colorchooser",
-		"default": "#40BEBF",
+		"default": "#F59E0B",
 		"description": "Middle Click Color"
 	},
 	"right-click-color": {
 		"type": "colorchooser",
-		"default": "#4077BF",
+		"default": "#EF4444",
 		"description": "Right Click Color"
 	},
 	"mouse-movement-color": {
 		"type": "colorchooser",
-		"default": "#4077BF",
+		"default": "#06B6D4",
 		"description": "Mouse Movement Tracker Color"
 	},
 	"mouse-idle-watcher-color": {
 		"type": "colorchooser",
-		"default": "#4077BF",
+		"default": "#A855F7",
 		"description": "Mouse Idle Watcher Color",
 		"dependency": "mouse-idle-watcher-enabled"
 	}

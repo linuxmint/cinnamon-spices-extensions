@@ -1,10 +1,10 @@
-const { St, Clutter } = imports.gi;
+const { St, Clutter, GLib } = imports.gi;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
 
 const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
 const { POINTER_WATCH_MS, MOUSE_PARADE_DELAY_MS, MOUSE_PARADE_ANIMATION_MS } = require("./constants.js");
-const { Debouncer, logInfo } = require("./helpers.js");
+const { logInfo } = require("./helpers.js");
 
 
 var MouseMovementTracker = class MouseMovementTracker {
@@ -17,6 +17,9 @@ var MouseMovementTracker = class MouseMovementTracker {
         this.signals = new SignalManager.SignalManager(null);
         this.iconActor = null;
         this.listener = null;
+        this._paradeTimeoutId = 0;
+        this._lastMoveTime = 0;
+        this._isFading = false;
     }
 
     get is_fullscreen_block() {
@@ -40,6 +43,9 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     start() {
+        if (this.iconActor)
+            return;
+
         this.iconActor = new St.Icon({
             reactive: false,
             can_focus: false,
@@ -68,10 +74,22 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     stop() {
+        this._clear_parade_timeout();
         this.signals.disconnectAllSignals();
-        Main.uiGroup.remove_child(this.iconActor);
-        this.listener.remove();
-        this.iconActor.destroy();
+
+        if (this.listener) {
+            this.listener.remove();
+            this.listener = null;
+        }
+
+        if (this.iconActor) {
+            this.iconActor.remove_all_transitions();
+            Main.uiGroup.remove_child(this.iconActor);
+            this.iconActor.destroy();
+            this.iconActor = null;
+        }
+
+        this._isFading = false;
         logInfo("mouse movement tracker stopped");
     }
 
@@ -84,29 +102,76 @@ var MouseMovementTracker = class MouseMovementTracker {
             return;
         }
 
-        this.iconActor.ease({
-            x: x - this._halfIconSize,
-            y: y - this._halfIconSize,
-            scale_x: 1,
-            scale_y: 1,
-            duration: 0,
-            opacity: this.opacity,
-        });
+        if (this._isFading) {
+            this.iconActor.remove_all_transitions();
+            this._isFading = false;
+        }
+
+        this.iconActor.set_position(x - this._halfIconSize, y - this._halfIconSize);
+        this.iconActor.set_scale(1, 1);
+        this.iconActor.opacity = this.opacity;
 
         this.iconActor.show();
-        this.handle_parade();
+        this._schedule_parade();
     }
 
-    handle_parade = (new Debouncer()).debounce(() => {
-        if (!this.persist && this.iconActor) {
-            this.iconActor.ease({
-                opacity: 0,
-                duration: MOUSE_PARADE_ANIMATION_MS,
-                mode: Clutter.AnimationMode.EASE_IN_OUT_CUBIC,
-                onComplete: () => this.iconActor.hide(),
-            })
+    _schedule_parade() {
+        if (this.persist)
+            return;
+
+        this._lastMoveTime = GLib.get_monotonic_time() / 1000;
+
+        if (this._paradeTimeoutId)
+            return;
+
+        this._paradeTimeoutId = GLib.timeout_add(
+            GLib.PRIORITY_DEFAULT,
+            Math.min(MOUSE_PARADE_DELAY_MS, 64),
+            this._handle_parade_timeout.bind(this)
+        );
+        GLib.Source.set_name_by_id(this._paradeTimeoutId, '[cinnamon mouse-click-effects] MouseMovementTracker._schedule_parade');
+    }
+
+    _clear_parade_timeout() {
+        if (!this._paradeTimeoutId)
+            return;
+
+        GLib.source_remove(this._paradeTimeoutId);
+        this._paradeTimeoutId = 0;
+    }
+
+    _handle_parade_timeout() {
+        if (this.persist || !this.iconActor) {
+            this._paradeTimeoutId = 0;
+            return GLib.SOURCE_REMOVE;
         }
-    }, MOUSE_PARADE_DELAY_MS);
+
+        if (GLib.get_monotonic_time() / 1000 - this._lastMoveTime < MOUSE_PARADE_DELAY_MS)
+            return GLib.SOURCE_CONTINUE;
+
+        this._paradeTimeoutId = 0;
+        this._fade_after_movement_stops();
+        return GLib.SOURCE_REMOVE;
+    }
+
+    _fade_after_movement_stops() {
+        if (this.persist || !this.iconActor)
+            return;
+
+        this._isFading = true;
+        this.iconActor.ease({
+            opacity: 0,
+            duration: MOUSE_PARADE_ANIMATION_MS,
+            mode: Clutter.AnimationMode.EASE_IN_OUT_CUBIC,
+            onComplete: () => {
+                if (!this.iconActor || !this._isFading)
+                    return;
+
+                this.iconActor.hide();
+                this._isFading = false;
+            },
+        });
+    }
 
     handle_monitors_changed() {
         // Update icon size to take into account new ui scale
