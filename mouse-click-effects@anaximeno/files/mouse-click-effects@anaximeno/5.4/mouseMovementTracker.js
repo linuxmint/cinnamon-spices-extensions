@@ -1,10 +1,10 @@
-const { St, Clutter } = imports.gi;
+const { St, Clutter, GLib } = imports.gi;
 const Main = imports.ui.main;
 const SignalManager = imports.misc.signalManager;
 
 const PointerWatcher = require("./pointerWatcher.js").getPointerWatcher();
 const { POINTER_WATCH_MS, MOUSE_PARADE_DELAY_MS, MOUSE_PARADE_ANIMATION_MS } = require("./constants.js");
-const { Debouncer, logInfo } = require("./helpers.js");
+const { logInfo } = require("./helpers.js");
 
 
 var MouseMovementTracker = class MouseMovementTracker {
@@ -17,9 +17,9 @@ var MouseMovementTracker = class MouseMovementTracker {
         this.signals = new SignalManager.SignalManager(null);
         this.iconActor = null;
         this.listener = null;
-        this._paradeDebouncer = new Debouncer();
+        this._paradeTimeoutId = 0;
+        this._lastMoveTime = 0;
         this._isFading = false;
-        this.handle_parade = this._paradeDebouncer.debounce(this._fade_after_movement_stops.bind(this), MOUSE_PARADE_DELAY_MS);
     }
 
     get is_fullscreen_block() {
@@ -74,7 +74,7 @@ var MouseMovementTracker = class MouseMovementTracker {
     }
 
     stop() {
-        this._paradeDebouncer.clear();
+        this._clear_parade_timeout();
         this.signals.disconnectAllSignals();
 
         if (this.listener) {
@@ -112,7 +112,46 @@ var MouseMovementTracker = class MouseMovementTracker {
         this.iconActor.opacity = this.opacity;
 
         this.iconActor.show();
-        this.handle_parade();
+        this._schedule_parade();
+    }
+
+    _schedule_parade() {
+        if (this.persist)
+            return;
+
+        this._lastMoveTime = GLib.get_monotonic_time() / 1000;
+
+        if (this._paradeTimeoutId)
+            return;
+
+        this._paradeTimeoutId = GLib.timeout_add(
+            GLib.PRIORITY_DEFAULT,
+            Math.min(MOUSE_PARADE_DELAY_MS, 64),
+            this._handle_parade_timeout.bind(this)
+        );
+        GLib.Source.set_name_by_id(this._paradeTimeoutId, '[cinnamon mouse-click-effects] MouseMovementTracker._schedule_parade');
+    }
+
+    _clear_parade_timeout() {
+        if (!this._paradeTimeoutId)
+            return;
+
+        GLib.source_remove(this._paradeTimeoutId);
+        this._paradeTimeoutId = 0;
+    }
+
+    _handle_parade_timeout() {
+        if (this.persist || !this.iconActor) {
+            this._paradeTimeoutId = 0;
+            return GLib.SOURCE_REMOVE;
+        }
+
+        if (GLib.get_monotonic_time() / 1000 - this._lastMoveTime < MOUSE_PARADE_DELAY_MS)
+            return GLib.SOURCE_CONTINUE;
+
+        this._paradeTimeoutId = 0;
+        this._fade_after_movement_stops();
+        return GLib.SOURCE_REMOVE;
     }
 
     _fade_after_movement_stops() {
