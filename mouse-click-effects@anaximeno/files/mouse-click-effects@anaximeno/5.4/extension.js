@@ -25,11 +25,29 @@ const ByteArray = imports.byteArray;
 const { Atspi, GLib, Gio } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer, logInfo, logError, IdleMonitor } = require("./helpers.js");
-const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, IDLE_TIME, ClickType } = require("./constants.js");
+const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS, IDLE_TIME } = require("./constants.js");
 const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 
 Gettext.bindtextdomain(UUID, `${GLib.get_home_dir()}/.local/share/locale`);
 
+const MOUSE_CLICK_EVENTS = Object.freeze([
+	'mouse:b1p',
+	'mouse:b2p',
+	'mouse:b3p',
+	'mouse:button:1p',
+	'mouse:button:2p',
+	'mouse:button:3p'
+]);
+
+const ClickType = Object.freeze({
+	LEFT: "left_click",
+	MIDDLE: "middle_click",
+	RIGHT: "right_click",
+	PAUSE_ON: "pause_on",
+	PAUSE_OFF: "pause_off",
+	MOUSE_IDLE: "mouse_idle",
+	MOUSE_MOV: "mouse_mov",
+});
 
 function _(text) {
 	let localized = Gettext.dgettext(UUID, text);
@@ -48,7 +66,8 @@ class MouseClickEffects {
 
 		this.clickAnimator = ClickAnimationFactory.createForMode(this.animation_mode);
 
-		this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
+		this.listener = null;
+		this._mouse_click_listener_registered = false;
 		this.idleMonitor = null;
 
 		this.mouse_movement_tracker = null;
@@ -284,6 +303,7 @@ class MouseClickEffects {
 	destroy() {
 		DND.removeDragMonitor(this);
 		this.set_active(false);
+		this._destroy_mouse_click_listener();
 		this.unset_keybindings();
 		this.settings.finalize();
 		this.colored_icon_store = null;
@@ -305,6 +325,35 @@ class MouseClickEffects {
 		if (this.enabled)
 			this._start_mouse_movement_tracker();
 	}, 300);
+
+	_get_mouse_click_listener() {
+		if (!this.listener)
+			this.listener = Atspi.EventListener.new(this.on_mouse_click.bind(this));
+
+		return this.listener;
+	}
+
+	_register_mouse_click_listener() {
+		if (this._mouse_click_listener_registered)
+			return;
+
+		let listener = this._get_mouse_click_listener();
+		MOUSE_CLICK_EVENTS.forEach(event_name => listener.register(event_name));
+		this._mouse_click_listener_registered = true;
+	}
+
+	_deregister_mouse_click_listener() {
+		if (!this.listener || !this._mouse_click_listener_registered)
+			return;
+
+		MOUSE_CLICK_EVENTS.forEach(event_name => this.listener.deregister(event_name));
+		this._mouse_click_listener_registered = false;
+	}
+
+	_destroy_mouse_click_listener() {
+		this._deregister_mouse_click_listener();
+		this.listener = null;
+	}
 
 	_start_mouse_movement_tracker() {
 		if (!this.mouse_movement_tracker_enabled || this.mouse_movement_tracker)
@@ -330,7 +379,7 @@ class MouseClickEffects {
 	set_active(enabled) {
 		this.enabled = enabled;
 
-		this.listener.deregister('mouse');
+		this._deregister_mouse_click_listener();
 		this._stop_mouse_movement_tracker();
 		if (this.idleMonitor) {
 			this.idleMonitor.stop();
@@ -338,7 +387,7 @@ class MouseClickEffects {
 		}
 
 		if (enabled) {
-			this.listener.register('mouse');
+			this._register_mouse_click_listener();
 
 			this._start_mouse_movement_tracker();
 
@@ -421,14 +470,17 @@ class MouseClickEffects {
 
 	on_mouse_click(event) {
 		switch (event.type) {
+			case 'mouse:b1p':
 			case 'mouse:button:1p':
 				if (this.left_click_effect_enabled)
 					this.display_click(ClickType.LEFT, this.left_click_color);
 				break;
+			case 'mouse:b2p':
 			case 'mouse:button:2p':
 				if (this.middle_click_effect_enabled)
 					this.display_click(ClickType.MIDDLE, this.middle_click_color);
 				break;
+			case 'mouse:b3p':
 			case 'mouse:button:3p':
 				if (this.right_click_effect_enabled)
 					this.display_click(ClickType.RIGHT, this.right_click_color);

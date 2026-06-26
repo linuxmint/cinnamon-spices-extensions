@@ -32,13 +32,3 @@ var MOUSE_PARADE_DELAY_MS = 256;
 var MOUSE_PARADE_ANIMATION_MS = 256;
 
 var IDLE_TIME = 1024;
-
-var ClickType = Object.freeze({
-	LEFT: "left_click",
-	MIDDLE: "middle_click",
-	RIGHT: "right_click",
-	PAUSE_ON: "pause_on",
-	PAUSE_OFF: "pause_off",
-	MOUSE_IDLE: "mouse_idle",
-	MOUSE_MOV: "mouse_mov",
-});
