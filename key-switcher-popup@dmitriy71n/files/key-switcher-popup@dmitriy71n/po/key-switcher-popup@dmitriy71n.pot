@@ -1,0 +1,86 @@
+# Keyboard Switcher Popup Translation Template.
+# Copyright (C) 2026 dmitriy71n
+# This file is distributed under the same license as the key-switcher-popup@dmitriy71n package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Keyboard Switcher Popup 1.1.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-16 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# metadata.json
+msgid "Keyboard Switcher Popup"
+msgstr ""
+
+msgid "When you change the keyboard layout, a modal window appears in the corner of the screen displaying information about the current layout."
+msgstr ""
+
+# settings-schema.json
+msgid "Show on multiple monitors simultaneously"
+msgstr ""
+
+msgid "Modal window screen delay"
+msgstr ""
+
+msgid "Position of the modal window on the screen"
+msgstr ""
+
+msgid "In the center of the screen"
+msgstr ""
+
+msgid "Upper left corner"
+msgstr ""
+
+msgid "Upper right corner"
+msgstr ""
+
+msgid "Lower right corner"
+msgstr ""
+
+msgid "Lower left corner"
+msgstr ""
+
+msgid "At the top center of the screen"
+msgstr ""
+
+msgid "At the bottom middle of the screen"
+msgstr ""
+
+msgid "Window font size"
+msgstr ""
+
+msgid "Inner padding (top / bottom)"
+msgstr ""
+
+msgid "Inner padding (left / right)"
+msgstr ""
+
+msgid "Margin from screen edges (top / bottom)"
+msgstr ""
+
+msgid "Margin from screen edges (left / right)"
+msgstr ""
+
+msgid "Window corner rounding radius"
+msgstr ""
+
+msgid "Background opacity"
+msgstr ""
+
+msgid "Font color"
+msgstr ""
+
+msgid "Window background color"
+msgstr ""
+
+msgid "Window frame color"
+msgstr ""

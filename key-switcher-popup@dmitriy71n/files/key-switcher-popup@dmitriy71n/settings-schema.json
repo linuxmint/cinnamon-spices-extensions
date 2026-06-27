@@ -1,0 +1,108 @@
+{
+    "show_on_all_monitors": {
+        "type": "switch",
+        "default": false,
+        "description": "Show on multiple monitors simultaneously"
+    },
+    "timeout_ms": {
+        "type": "spinbutton",
+        "default": 3000,
+        "min": 500,
+        "max": 10000,
+        "step": 250,
+        "units": "ms",
+        "description": "Modal window screen delay"
+    },
+    "popup_position": {
+        "type": "combobox",
+        "default": "center",
+        "description": "Position of the modal window on the screen",
+        "options": {
+            "In the center of the screen": "center",
+            "Upper left corner": "top_left",
+            "Upper right corner": "top_right",
+            "Lower right corner": "bottom_right",
+            "Lower left corner": "bottom_left",
+            "At the top center of the screen": "top_center",
+            "At the bottom middle of the screen": "bottom_center"
+        }
+    },
+    "font_size": {
+        "type": "spinbutton",
+        "default": 32,
+        "min": 12,
+        "max": 72,
+        "step": 1,
+        "units": "px",
+        "description": "Window font size"
+    },
+    "padding_vertical": {
+        "type": "spinbutton",
+        "default": 24,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "units": "px",
+        "description": "Inner padding (top / bottom)"
+    },
+    "padding_horizontal": {
+        "type": "spinbutton",
+        "default": 32,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "units": "px",
+        "description": "Inner padding (left / right)"
+    },
+    "margin_vertical": {
+        "type": "spinbutton",
+        "default": 32,
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "units": "px",
+        "description": "Margin from screen edges (top / bottom)"
+    },
+    "margin_horizontal": {
+        "type": "spinbutton",
+        "default": 32,
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "units": "px",
+        "description": "Margin from screen edges (left / right)"
+    },
+    "border_radius": {
+        "type": "spinbutton",
+        "default": 12,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "units": "px",
+        "description": "Window corner rounding radius"
+    },
+    "bg_opacity": {
+        "type": "spinbutton",
+        "default": 75,
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "units": "%",
+        "description": "Background opacity"
+    },
+    "text_color": {
+        "type": "colorchooser",
+        "default": "rgb(255,255,255)",
+        "description": "Font color"
+    },
+    "bg_color": {
+        "type": "colorchooser",
+        "default": "rgb(50,50,50)",
+        "description": "Window background color"
+    },
+    "border_color": {
+        "type": "colorchooser",
+        "default": "rgb(50,50,50)",
+        "description": "Window frame color"
+    }
+}
