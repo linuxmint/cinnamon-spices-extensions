@@ -1,0 +1,189 @@
+# DESKTOP CUBE
+# This file is put in the public domain.
+# yare, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: DesktopCube@yare 2.0.6\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-09-06 23:46-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Desktop Cube"
+msgstr "Khối Màn hình"
+
+#. metadata.json->description
+msgid "Compiz Cube-like animation for workspace switching"
+msgstr "Hoạt ảnh giống Khối Compiz để chuyển đổi không gian làm việc"
+
+#. 2.0->settings-schema.json->header1->description
+#. 5.4->settings-schema.json->header1->description
+msgid "General"
+msgstr "Chung"
+
+#. 2.0->settings-schema.json->animationTime->description
+msgid "Animation duration"
+msgstr "Thời lượng hoạt ảnh"
+
+#. 2.0->settings-schema.json->pullaway->description
+msgid "Pullaway proportion from screen"
+msgstr "Tỷ lệ kéo ra khỏi màn hình"
+
+#. 2.0->settings-schema.json->header2->description
+msgid "Effects"
+msgstr "Hiệu ứng"
+
+#. 2.0->settings-schema.json->scaleEffect->description
+msgid "Scale effect"
+msgstr "Hiệu ứng tỷ lệ"
+
+#. 2.0->settings-schema.json->unscaleEffect->description
+msgid "Unscale effect"
+msgstr "Hiệu ứng bỏ tỷ lệ"
+
+#. 2.0->settings-schema.json->rotateEffect->description
+msgid "Begin rotate effect"
+msgstr "Bắt đầu hiệu ứng xoay"
+
+#. 2.0->settings-schema.json->unrotateEffect->description
+msgid "End rotate effect"
+msgstr "Kết thúc hiệu ứng xoay"
+
+#. 2.0->settings-schema.json->header3->description
+#. 5.4->settings-schema.json->header3->description
+msgid "System Settings"
+msgstr "Cài đặt Hệ thống"
+
+#. 2.0->settings-schema.json->workspaces_btn->description
+#. 5.4->settings-schema.json->workspaces_btn->description
+msgid "Open Cinnamon Settings to manage Workspaces"
+msgstr "Mở Cài đặt Cinnamon để quản lý Không gian làm việc"
+
+#. 5.4->settings-schema.json->animationTimeSec->description
+msgid "Animation duration (seconds)"
+msgstr "Thời lượng hoạt ảnh (giây)"
+
+#. 5.4->settings-schema.json->pullawayPercent->description
+msgid "Cube size (percent of screen size)"
+msgstr "Kích thước khối (phần trăm kích thước màn hình)"
+
+#. 5.4->settings-schema.json->includePanels->description
+msgid "Include Panels"
+msgstr "Bao gồm Panel"
+
+#. 5.4->settings-schema.json->includePanels->tooltip
+msgid ""
+"Include the panels while animating. In most cases the panels are not "
+"properly painted or completely invisible anyhow, so it's best to leave this "
+"disabled"
+msgstr "Bao gồm các panel trong khi tạo hoạt ảnh. Trong hầu hết các trường hợp, các panel không được vẽ đúng cách hoặc hoàn toàn không hiển thị, vì vậy tốt nhất nên để tùy chọn này bị tắt"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->description
+msgid "Use Cube effect with the Workspace Switcher applet"
+msgstr "Sử dụng hiệu ứng Khối với applet Bộ chuyển đổi Không gian làm việc"
+
+#. 5.4->settings-schema.json->patchmoveToWorkspace->tooltip
+msgid ""
+"Override the moveToWorkspace() API so that the Cube effect is used by the "
+"Workspace Switcher Applet when changing the current workspace"
+msgstr "Ghi đè API moveToWorkspace() để hiệu ứng Khối được sử dụng bởi Applet Bộ chuyển đổi Không gian làm việc khi thay đổi không gian làm việc hiện tại"
+
+#. 5.4->settings-schema.json->patchActivateWindow->description
+msgid "Use Cube effect when changing focus causes a workspace switch"
+msgstr "Sử dụng hiệu ứng Khối khi thay đổi tiêu điểm gây ra chuyển đổi không gian làm việc"
+
+#. 5.4->settings-schema.json->patchActivateWindow->tooltip
+msgid ""
+"Override the activateWindow() API so that when a window on another workspace "
+"is given the focus, the Cube effect is used to change the current workspace"
+msgstr "Ghi đè API activateWindow() để khi một cửa sổ trên không gian làm việc khác được cấp tiêu điểm, hiệu ứng Khối được sử dụng để thay đổi không gian làm việc hiện tại"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+msgid "Use Cube effect when switching workspaces using touchpad gestures"
+msgstr "Sử dụng hiệu ứng Khối khi chuyển đổi không gian làm việc bằng cử chỉ touchpad"
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Cube effect"
+msgstr "Ghi đè API WorkspaceSwitchAction để các cử chỉ touchpad chuyển đổi không gian làm việc sẽ sử dụng hiệu ứng Khối"
+
+#. 5.4->settings-schema.json->header2->description
+msgid "Effect Easing"
+msgstr "Làm mượt Hiệu ứng"
+
+#. 5.4->settings-schema.json->newScaleEffect->description
+msgid "Scale easing"
+msgstr "Làm mượt tỷ lệ"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Back"
+msgstr "Back"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Bounce"
+msgstr "Bounce"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Circ"
+msgstr "Circ"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Cubic"
+msgstr "Cubic"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Elastic"
+msgstr "Elastic"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Expo"
+msgstr "Expo"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Sine"
+msgstr "Sine"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quad"
+msgstr "Quad"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quart"
+msgstr "Quart"
+
+#. 5.4->settings-schema.json->newScaleEffect->options
+#. 5.4->settings-schema.json->newRotateEffect->options
+msgid "Quint"
+msgstr "Quint"
+
+#. 5.4->settings-schema.json->newRotateEffect->description
+msgid "Rotate easing"
+msgstr "Làm mượt xoay"
+
+#. 5.4->settings-schema.json->easing_btn->description
+msgid "Open easing information website"
+msgstr "Mở trang web thông tin làm mượt"
+
+#. 5.4->settings-schema.json->hotkeys_btn->description
+msgid "Open Cinnamon Keyboard Settings to manage Workspace hotkeys"
+msgstr "Mở Cài đặt Bàn phím Cinnamon để quản lý phím tắt Không gian làm việc"

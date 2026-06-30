@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2023-09-13 12:20+0200\n"
+"Last-Translator: Nathan POirier <nathan@poirier.io>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Radius"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Udton toppen"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "x-forskydning"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "y-forskydning"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Uigennemsigtighed"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Klassenavn"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Tilstand"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Importér"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Eksportér"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Indstil fra …"
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Vælg, hvor konfigurationen skal gemmes"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Vælg en konfiguration, der skal indlæses"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Brugerskygger"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Tilpas Cinnamonvinduers skygge"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Forudindstillede skygger"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Standard"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Ingen skygger"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Tilpasset"

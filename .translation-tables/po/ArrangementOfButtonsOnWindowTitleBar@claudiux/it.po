@@ -1,0 +1,155 @@
+# ARRANGEMENT OF BUTTONS ON WINDOW TITLE BAR (ABWTB)
+# This file is put in the public domain.
+# claudiux, 2025
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ArrangementOfButtonsOnWindowTitleBar@claudiux 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-29 07:09+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Arrangement Of Buttons On Window Title Bar (ABWTB)"
+msgstr ""
+"Disposizione dei pulsanti sulla barra del titolo della finestra (ABWTB)"
+
+#. metadata.json->description
+msgid "Arranges the buttons on the title bar of windows"
+msgstr "Dispone i pulsanti sulla barra del titolo delle finestre"
+
+#. settings-schema.json->arrangement->title
+msgid "Button layout on the window title bar"
+msgstr "Disposizione dei pulsanti sulla barra del titolo della finestra"
+
+#. settings-schema.json->pageexpert->title
+msgid "Expert Mode"
+msgstr "Modalità Esperto"
+
+#. settings-schema.json->section-left->title
+msgid "Left side of title bar"
+msgstr "Lato sinistro della barra del titolo"
+
+#. settings-schema.json->section-right->title
+msgid "Right side of title bar"
+msgstr "Lato destro della barra del titolo"
+
+#. settings-schema.json->section-accessibility->title
+msgid "Accessibility"
+msgstr "Accessibilità"
+
+#. settings-schema.json->section-explainEM->title
+msgid "Explanation"
+msgstr "Spiegazione"
+
+#. settings-schema.json->section-stringEM->title
+msgid "Button Layout"
+msgstr "Disposizione Pulsanti"
+
+#. settings-schema.json->section-switchEM->title
+msgid "Apply changes"
+msgstr "Applica cambiamenti"
+
+#. settings-schema.json->leftMenu->description
+#. settings-schema.json->rightMenu->description
+msgid "Menu"
+msgstr "Menù"
+
+#. settings-schema.json->leftClose->description
+#. settings-schema.json->rightClose->description
+msgid "Close"
+msgstr "Chiudi"
+
+#. settings-schema.json->leftMaximize->description
+#. settings-schema.json->rightMaximize->description
+msgid "Maximize"
+msgstr "Massimizza"
+
+#. settings-schema.json->leftMinimize->description
+#. settings-schema.json->rightMinimize->description
+msgid "Minimize"
+msgstr "Minimizza"
+
+#. settings-schema.json->spacer->description
+msgid "Add a space between adjacent buttons"
+msgstr "Aggiungi uno spazio tra i pulsanti adiacenti"
+
+#. settings-schema.json->labelComment->description
+msgid "Please wait 2 seconds for the changes to take effect."
+msgstr "Attendi 2 secondi affinché le modifiche abbiano effetto."
+
+#. settings-schema.json->labelComment2->description
+msgid "Expert Mode enabled. Please use the Expert Mode tab."
+msgstr "Modalità Esperto abilitata. Utilizza la scheda Modalità Esperto."
+
+#. settings-schema.json->explanationEM->description
+msgid ""
+"Arrangement of buttons on the titlebar.\n"
+"The value should be a string, such as 'menu:minimize,maximize,spacer,"
+"close'.\n"
+"The colon separates the left corner of the window from the right corner, and "
+"the button names are comma-separated.\n"
+"Duplicate buttons are not allowed.\n"
+"Unknown button names are silently ignored so that buttons can be added in "
+"future versions without breaking older versions.\n"
+"A special 'spacer' tag can be used to insert some space between two adjacent "
+"buttons.\n"
+"Valid buttons and tags are:\n"
+"\tclose\n"
+"\tmenu\n"
+"\tminimize\n"
+"\tmaximize\n"
+"\tspacer\n"
+"Other buttons, not taken into account:\n"
+"\tabove\n"
+"\tlower\n"
+"\tshade\n"
+"\tstick"
+msgstr ""
+"Disposizione dei pulsanti sulla barra del titolo.\n"
+"Il valore deve essere una stringa, ad esempio 'menu:minimize,maximize,spacer,"
+"close'.\n"
+"I due punti separano l'angolo sinistro della finestra da quello destro e i "
+"nomi dei pulsanti sono separati da virgole.\n"
+"Non sono ammessi pulsanti duplicati.\n"
+"I nomi dei pulsanti sconosciuti vengono ignorati automaticamente in modo che "
+"i pulsanti possano essere aggiunti in versioni future senza compromettere le "
+"versioni precedenti.\n"
+"È possibile utilizzare uno speciale tag 'spacer' per inserire uno spazio tra "
+"due pulsanti adiacenti.\n"
+"Pulsanti e tag validi sono:\n"
+"\tclose\n"
+"\tmenu\n"
+"\tminimize\n"
+"\tmaximize\n"
+"\tspacer\n"
+"Altri pulsanti, non presi in considerazione:\n"
+"\tabove\n"
+"\tlower\n"
+"\tshade\n"
+"\tstick"
+
+#. settings-schema.json->explanationNotEM->description
+msgid "Expert Mode disabled. Please use the first tab."
+msgstr "Modalità esperto disattivata. Utilizzare la prima scheda."
+
+#. settings-schema.json->stringEM->description
+msgid "Value"
+msgstr "Valore"
+
+#. settings-schema.json->applyChangesEM->description
+msgid "Apply this button layout"
+msgstr "Applica questa disposizione dei pulsanti"
+
+#. settings-schema.json->useEM->description
+msgid "Use only Expert Mode"
+msgstr "Utilizza solo la modalità Esperto"

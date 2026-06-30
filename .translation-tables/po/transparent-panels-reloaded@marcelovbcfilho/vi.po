@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: transparent-panels-reloaded@marcelovbcfilho "
+"4.0~20220727\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: 2025-10-19 02:56+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s đã được bật"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr "Mở cài đặt tiện ích mở rộng và tùy chỉnh panel của bạn"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "Mở cài đặt"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "Panel trong suốt tải lại"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr "Làm cho panel của bạn trong suốt (hoặc không) và thay đổi màu sắc theo ý muốn"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Chung"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr "Mức độ mờ"
+
+#. settings-schema.json->transparency-always->description
+msgid "Always transparent"
+msgstr "Luôn trong suốt"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
+msgstr "Nếu bật, panel sẽ luôn trong suốt, nếu tắt, chỉ trong suốt khi không có cửa sổ nào được phóng to"
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr "Sử dụng màu panel tùy chỉnh"
+
+#. settings-schema.json->custom-panel-color->description
+msgid "Custom panel color"
+msgstr "Màu panel tùy chỉnh"
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels (WIP)"
+msgstr "Lọc panel (Đang phát triển)"
+
+#. settings-schema.json->filters-description->description
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
+msgstr "Chọn các panel sẽ bị ảnh hưởng bởi tiện ích mở rộng này. (Đang phát triển/chưa hoạt động)"
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Panel trên"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Panel phải"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Panel dưới"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Panel trái"
