@@ -181,13 +181,12 @@ msgstr ""
 "pestaña \"Configuración general\"."
 
 #. 6.0->settings-schema.json->osd-warning->description
-#, fuzzy
 msgid ""
 "Note: The On-Screen-Display effects are currently disabled under the "
 "\"General setup\" tab."
 msgstr ""
-"Nota: Los efectos del panel están actualmente desactivados en la pestaña "
-"\"Configuración general\"."
+"Nota: Los efectos de visualización en pantalla están desactivados "
+"actualmente en la pestaña \"Configuración general\"."
 
 #. 6.0->settings-schema.json->overview-warning->description
 msgid ""
@@ -498,7 +497,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->enable-osd-effects->description
 msgid "On-screen display"
-msgstr ""
+msgstr "Menú en pantalla"
 
 #. 6.0->settings-schema.json->enable-osd-effects->tooltip
 msgid ""
@@ -506,6 +505,9 @@ msgid ""
 "when changing volumn using the media keys, changing the screen brightness, "
 "and switching workspaces."
 msgstr ""
+"Aplica efectos al fondo de la pantalla de menú (OSD). La pantalla de menú se "
+"utiliza al ajustar el volumen con las teclas multimedia, al modificar el "
+"brillo de la pantalla y al cambiar de espacio de trabajo."
 
 #. 6.0->settings-schema.json->focused-window-backlight->description
 msgid "Focused window backlight effect"
@@ -603,13 +605,13 @@ msgstr ""
 "aplique la configuración del tema."
 
 #. 6.0->settings-schema.json->allow-transparent-color-switcher->description
-#, fuzzy
 msgid ""
 "Override some of the standard Alt-Tab switcher theme settings (recommended)"
-msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
+msgstr ""
+"Anular algunos de los ajustes predeterminados del tema del selector Alt-Tab "
+"(recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-switcher->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the standard Alt-Tab switcher transparency "
 "and background color settings. If this is disabled the extension will only "
@@ -617,19 +619,17 @@ msgid ""
 "disabled when the theme already uses a transparent switcher and you want the "
 "themes setting to apply."
 msgstr ""
-"Permite que esta extensión modifique la configuración de transparencia y "
-"color de fondo de los paneles. Si se desactiva, la extensión solo aplicará "
-"un fondo difuminado debajo de los paneles. Esta configuración solo debe "
-"desactivarse cuando el tema ya utilice paneles transparentes y se desee "
-"aplicar la configuración del tema."
+"Permite que esta extensión modifique la transparencia y el color de fondo "
+"predeterminados del selector Alt-Tab. Si se desactiva esta opción, la "
+"extensión solo aplicará un fondo difuminado debajo del selector. Esta opción "
+"solo debe desactivarse cuando el tema ya utilice un selector transparente y "
+"se desee que se apliquen los ajustes del tema."
 
 #. 6.0->settings-schema.json->allow-transparent-color-osd->description
-#, fuzzy
 msgid "Override some of the OSD theme settings (recommended)"
-msgstr "Anular algunos ajustes del tema de los paneles (recomendado)"
+msgstr "Anular algunos de los ajustes del tema del OSD (recomendado)"
 
 #. 6.0->settings-schema.json->allow-transparent-color-osd->tooltip
-#, fuzzy
 msgid ""
 "Allow this extension to modify the OSD transparency and background color "
 "settings. If this is disabled the extension will only apply a blur "
@@ -637,11 +637,11 @@ msgid ""
 "theme already uses a transparent OSD and you want the themes setting to "
 "apply."
 msgstr ""
-"Permite que esta extensión modifique la configuración de transparencia y "
-"color de fondo de los paneles. Si se desactiva, la extensión solo aplicará "
-"un fondo difuminado debajo de los paneles. Esta configuración solo debe "
-"desactivarse cuando el tema ya utilice paneles transparentes y se desee "
-"aplicar la configuración del tema."
+"Permite que esta extensión modifique la transparencia del OSD y la "
+"configuración del color de fondo. Si esta opción está desactivada, la "
+"extensión solo aplicará un fondo difuminado debajo del OSD. Esta "
+"configuración solo debe desactivarse cuando el tema ya utilice un OSD "
+"transparente y se desee que se aplique la configuración del tema."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
 msgid "Override the generic effect settings for the Overview"
@@ -703,9 +703,8 @@ msgid "Override the generic effect settings for Desklets"
 msgstr "Anular la configuración de efectos genérica de los Desklets"
 
 #. 6.0->settings-schema.json->enable-osd-override->description
-#, fuzzy
 msgid "Override the generic effect settings for OSD windows"
-msgstr "Anular la configuración de efectos genérica de los Paneles"
+msgstr "Anular la configuración genérica de efectos para las ventanas OSD"
 
 #. 6.0->settings-schema.json->enable-desklets-unique-settings->description
 msgid "Enable advanced options to apply unique settings for each Desklet"
@@ -1284,12 +1283,11 @@ msgstr ""
 
 #. 6.0->settings-schema.json->osd-slider-effects->description
 msgid "Apply effects to volumn and brightness OSD windows"
-msgstr ""
+msgstr "Aplicar efectos al volumen y al brillo de las ventanas OSD"
 
 #. 6.0->settings-schema.json->osd-workspace-effects->description
-#, fuzzy
 msgid "Apply effects to the workspace switching OSD window"
-msgstr "Aplicar efectos a los conmutadores Alt-Tab 3D"
+msgstr "Aplicar efectos a la ventana OSD de cambio de espacio de trabajo"
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
