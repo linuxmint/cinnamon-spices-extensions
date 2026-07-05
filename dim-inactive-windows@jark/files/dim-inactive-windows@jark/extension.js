@@ -9,7 +9,10 @@
 
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
+const GLib = imports.gi.GLib;
 const Settings = imports.ui.settings;
+
+const FRAME_MS = 16;   // ~60 fps
 
 const EFFECT_DESAT = "dim-inactive-desat";
 const EFFECT_DIM = "dim-inactive-dim";
@@ -129,49 +132,76 @@ DimInactiveWindows.prototype = {
     },
 
     // --- Effect handling with fade --------------------------------------
-    // Each managed actor carries two named Clutter effects that are eased
-    // toward their target on every focus change (via the actor easing patched
-    // in by Cinnamon's environment.js, mirroring core's WindowDimmer). A dimmed
-    // window has its brightness pushed below neutral and its colour desaturated;
-    // the focused window eases back to neutral, where the effects are disabled
-    // again so idle windows pay no GPU cost.
+    // Each managed actor carries a float "level" in [0, 1] (0 = active/neutral,
+    // 1 = fully dimmed) that is animated by a ~60 fps GLib timeout. Every frame
+    // we set both effect values from that float with full precision, so the fade
+    // stays perfectly smooth: set_brightness() takes a float, whereas easing the
+    // BrightnessContrastEffect.brightness *property* would quantise it to an
+    // integer Clutter.Color and look stepped. A plain GLib source is used because
+    // a stand-alone Clutter.Timeline has no frame clock in this Muffin version.
 
     _setDim: function(actor, dimmed, instant) {
-        // Snap (no fade) the first time we see an actor, or when asked to.
-        let firstSight = actor._diwSeen !== true;
-        let duration = (instant || firstSight) ? 0 : this.animationTime;
-        actor._diwSeen = true;
-        actor._diwDimmed = dimmed;
+        let target = dimmed ? 1 : 0;
+        let firstSight = actor._diwLevel === undefined;
+        let duration = this.animationTime;
 
-        let desat = this._effect(actor, EFFECT_DESAT,
-            () => new Clutter.DesaturateEffect({ factor: 0 }));
-        let dim = this._effect(actor, EFFECT_DIM,
-            () => new Clutter.BrightnessContrastEffect());
+        this._effect(actor, EFFECT_DESAT, () => new Clutter.DesaturateEffect({ factor: 0 }));
+        this._effect(actor, EFFECT_DIM, () => new Clutter.BrightnessContrastEffect());
 
-        let desatOn = this.mode === "both" || this.mode === "desaturate";
-        let dimOn = this.mode === "both" || this.mode === "dim";
-        let factor = (dimmed && desatOn) ? this.desaturateAmount : 0;
-        // BrightnessContrastEffect.brightness is a Clutter.Color where 127 is
-        // neutral; brightness b in [-1, 0] maps to a neutral grey 127*(1 + b).
-        let b = (dimmed && dimOn) ? -this.dimAmount : 0;
-        let val = Math.round(127 * (1 + b));
-        let color = Clutter.Color.new(val, val, val, 255);
+        // Snap (no fade) on first sighting or when an instant update is asked for.
+        if (firstSight || instant || duration <= 0) {
+            this._stopAnim(actor);
+            actor._diwLevel = target;
+            actor._diwTarget = target;
+            this._apply(actor, target);
+            return;
+        }
 
-        // Keep effects live while (re)animating; _syncEnabled turns off the
-        // ones that settle back at neutral.
-        desat.enabled = true;
-        dim.enabled = true;
+        if (actor._diwTarget === target)
+            return;   // already at or heading toward this target
 
-        actor.ease_property("@effects." + EFFECT_DESAT + ".factor", factor, {
-            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-            duration: duration,
-            onComplete: () => this._syncEnabled(actor)
+        this._stopAnim(actor);
+        let from = actor._diwLevel;
+        actor._diwTarget = target;
+        let start = GLib.get_monotonic_time();   // microseconds
+
+        actor._diwTimer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, FRAME_MS, () => {
+            let t = (GLib.get_monotonic_time() - start) / 1000 / duration;
+            if (t >= 1) {
+                actor._diwLevel = target;
+                this._apply(actor, target);
+                actor._diwTimer = 0;
+                return GLib.SOURCE_REMOVE;
+            }
+            let p = 1 - (1 - t) * (1 - t);   // easeOutQuad
+            actor._diwLevel = from + (target - from) * p;
+            this._apply(actor, actor._diwLevel);
+            return GLib.SOURCE_CONTINUE;
         });
-        actor.ease_property("@effects." + EFFECT_DIM + ".brightness", color, {
-            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
-            duration: duration,
-            onComplete: () => this._syncEnabled(actor)
-        });
+    },
+
+    // Apply a float level to both effects; disable an effect at neutral so idle
+    // (active) windows pay no GPU cost.
+    _apply: function(actor, level) {
+        try {
+            let desatOn = this.mode === "both" || this.mode === "desaturate";
+            let dimOn = this.mode === "both" || this.mode === "dim";
+
+            let desat = actor.get_effect(EFFECT_DESAT);
+            if (desat) {
+                let on = level > EPS && desatOn;
+                desat.enabled = on;
+                desat.set_factor(on ? level * this.desaturateAmount : 0);
+            }
+            let dim = actor.get_effect(EFFECT_DIM);
+            if (dim) {
+                let on = level > EPS && dimOn;
+                dim.enabled = on;
+                dim.set_brightness(on ? -(level * this.dimAmount) : 0);
+            }
+        } catch (e) {
+            // Actor may have been destroyed mid-fade; nothing to do.
+        }
     },
 
     _effect: function(actor, name, create) {
@@ -183,36 +213,23 @@ DimInactiveWindows.prototype = {
         return e;
     },
 
-    // Disable an effect once it has settled at neutral (no transition running),
-    // mirroring Cinnamon's own WindowDimmer so idle windows cost nothing.
-    _syncEnabled: function(actor) {
-        try {
-            let desat = actor.get_effect(EFFECT_DESAT);
-            if (desat) {
-                let animating = actor.get_transition("@effects." + EFFECT_DESAT + ".factor") != null;
-                desat.enabled = animating || desat.factor > EPS;
-            }
-            let dim = actor.get_effect(EFFECT_DIM);
-            if (dim) {
-                let animating = actor.get_transition("@effects." + EFFECT_DIM + ".brightness") != null;
-                dim.enabled = animating || dim.brightness.red != 127;
-            }
-        } catch (e) {
-            // Actor may have been destroyed mid-fade; nothing to do.
+    _stopAnim: function(actor) {
+        if (actor._diwTimer) {
+            try { GLib.source_remove(actor._diwTimer); } catch (e) {}
+            actor._diwTimer = 0;
         }
     },
 
     _reset: function(actor) {
+        this._stopAnim(actor);
         try {
-            actor.remove_transition("@effects." + EFFECT_DESAT + ".factor");
-            actor.remove_transition("@effects." + EFFECT_DIM + ".brightness");
             if (actor.get_effect(EFFECT_DESAT))
                 actor.remove_effect_by_name(EFFECT_DESAT);
             if (actor.get_effect(EFFECT_DIM))
                 actor.remove_effect_by_name(EFFECT_DIM);
         } catch (e) {}
-        delete actor._diwSeen;
-        delete actor._diwDimmed;
+        delete actor._diwLevel;
+        delete actor._diwTarget;
     },
 
     _clearAll: function() {
