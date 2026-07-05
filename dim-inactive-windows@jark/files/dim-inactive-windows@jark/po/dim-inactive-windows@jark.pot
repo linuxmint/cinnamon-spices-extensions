@@ -1,0 +1,76 @@
+# Dim Inactive Windows - translation template.
+# Copyright (C) 2026
+# This file is distributed under the same license as the extension.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dim-inactive-windows@jark 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-04 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Dim Inactive Windows"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Dims and desaturates inactive windows (per window, not per app) so the "
+"focused window is unmistakable."
+msgstr ""
+
+#. settings-schema.json->head-effect->description
+msgid "Effect for inactive windows"
+msgstr ""
+
+#. settings-schema.json->mode->description
+msgid "What happens to inactive windows"
+msgstr ""
+
+#. settings-schema.json->mode->options
+msgid "Dim and desaturate"
+msgstr ""
+
+#. settings-schema.json->mode->options
+msgid "Dim only"
+msgstr ""
+
+#. settings-schema.json->mode->options
+msgid "Desaturate only"
+msgstr ""
+
+#. settings-schema.json->dim-amount->description
+msgid "Dim strength (0 = none, 0.8 = very dark)"
+msgstr ""
+
+#. settings-schema.json->desaturate-amount->description
+msgid "Desaturation strength (0 = full color, 1 = grayscale)"
+msgstr ""
+
+#. settings-schema.json->animation-time->description
+msgid "Fade duration on focus change (0 = instant)"
+msgstr ""
+
+#. settings-schema.json->head-behavior->description
+msgid "Behavior"
+msgstr ""
+
+#. settings-schema.json->respect-transient->description
+msgid ""
+"Keep a window bright while a MODAL dialog of it holds focus. Off = strict "
+"per-window (recommended; treats e.g. a PhpStorm floating window as its own "
+"window)"
+msgstr ""
+
+#. settings-schema.json->dim-when-no-focus->description
+msgid ""
+"Also dim every window when nothing is focused (e.g. after clicking the "
+"desktop)"
+msgstr ""

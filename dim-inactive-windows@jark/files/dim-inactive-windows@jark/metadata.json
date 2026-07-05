@@ -1,0 +1,10 @@
+{
+    "uuid": "dim-inactive-windows@jark",
+    "name": "Dim Inactive Windows",
+    "description": "Dims and desaturates inactive windows (per window, not per app) so the focused window is unmistakable.",
+    "version": "1.0.0",
+    "cinnamon-version": ["6.0", "6.2", "6.4"],
+    "author": "jark",
+    "url": "https://github.com/jarkt/dim-inactive-windows",
+    "settings-schema": "settings-schema"
+}
