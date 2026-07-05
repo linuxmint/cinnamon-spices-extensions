@@ -10,7 +10,6 @@
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
 const Settings = imports.ui.settings;
-const Tweener = imports.ui.tweener;
 
 const EFFECT_DESAT = "dim-inactive-desat";
 const EFFECT_DIM = "dim-inactive-dim";
@@ -130,86 +129,90 @@ DimInactiveWindows.prototype = {
     },
 
     // --- Effect handling with fade --------------------------------------
-    // Each managed actor carries a state object { level } in [0, 1]:
-    //   0 = fully active (no effect), 1 = fully dimmed.
+    // Each managed actor carries two named Clutter effects that are eased
+    // toward their target on every focus change (via the actor easing patched
+    // in by Cinnamon's environment.js, mirroring core's WindowDimmer). A dimmed
+    // window has its brightness pushed below neutral and its colour desaturated;
+    // the focused window eases back to neutral, where the effects are disabled
+    // again so idle windows pay no GPU cost.
 
     _setDim: function(actor, dimmed, instant) {
-        let target = dimmed ? 1 : 0;
-        let time = this.animationTime / 1000;
+        // Snap (no fade) the first time we see an actor, or when asked to.
+        let firstSight = actor._diwSeen !== true;
+        let duration = (instant || firstSight) ? 0 : this.animationTime;
+        actor._diwSeen = true;
+        actor._diwDimmed = dimmed;
 
-        // First time we see this actor: snap, don't fade (avoids a flash).
-        if (!actor._dimState) {
-            actor._dimState = { level: target };
-            actor._dimTarget = target;
-            this._apply(actor, target);
-            return;
-        }
+        let desat = this._effect(actor, EFFECT_DESAT,
+            () => new Clutter.DesaturateEffect({ factor: 0 }));
+        let dim = this._effect(actor, EFFECT_DIM,
+            () => new Clutter.BrightnessContrastEffect());
 
-        if (instant || time <= 0) {
-            Tweener.removeTweens(actor._dimState);
-            actor._dimTarget = target;
-            actor._dimState.level = target;
-            this._apply(actor, target);
-            return;
-        }
+        let desatOn = this.mode === "both" || this.mode === "desaturate";
+        let dimOn = this.mode === "both" || this.mode === "dim";
+        let factor = (dimmed && desatOn) ? this.desaturateAmount : 0;
+        // BrightnessContrastEffect.brightness is a Clutter.Color where 127 is
+        // neutral; brightness b in [-1, 0] maps to a neutral grey 127*(1 + b).
+        let b = (dimmed && dimOn) ? -this.dimAmount : 0;
+        let val = Math.round(127 * (1 + b));
+        let color = Clutter.Color.new(val, val, val, 255);
 
-        if (actor._dimTarget === target)
-            return;   // already heading there
+        // Keep effects live while (re)animating; _syncEnabled turns off the
+        // ones that settle back at neutral.
+        desat.enabled = true;
+        dim.enabled = true;
 
-        actor._dimTarget = target;
-        Tweener.removeTweens(actor._dimState);
-        Tweener.addTween(actor._dimState, {
-            level: target,
-            time: time,
-            transition: "easeOutQuad",
-            onUpdate: () => this._apply(actor, actor._dimState.level),
-            onComplete: () => this._apply(actor, target)
+        actor.ease_property("@effects." + EFFECT_DESAT + ".factor", factor, {
+            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+            duration: duration,
+            onComplete: () => this._syncEnabled(actor)
+        });
+        actor.ease_property("@effects." + EFFECT_DIM + ".brightness", color, {
+            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+            duration: duration,
+            onComplete: () => this._syncEnabled(actor)
         });
     },
 
-    _apply: function(actor, level) {
+    _effect: function(actor, name, create) {
+        let e = actor.get_effect(name);
+        if (!e) {
+            e = create();
+            actor.add_effect_with_name(name, e);
+        }
+        return e;
+    },
+
+    // Disable an effect once it has settled at neutral (no transition running),
+    // mirroring Cinnamon's own WindowDimmer so idle windows cost nothing.
+    _syncEnabled: function(actor) {
         try {
-            let wantDesat = level > EPS && (this.mode === "both" || this.mode === "desaturate");
-            let wantDim = level > EPS && (this.mode === "both" || this.mode === "dim");
-
-            if (wantDesat) {
-                let e = actor.get_effect(EFFECT_DESAT);
-                if (!e) {
-                    e = new Clutter.DesaturateEffect({ factor: 0 });
-                    actor.add_effect_with_name(EFFECT_DESAT, e);
-                }
-                e.set_factor(level * this.desaturateAmount);
-            } else if (actor.get_effect(EFFECT_DESAT)) {
-                actor.remove_effect_by_name(EFFECT_DESAT);
+            let desat = actor.get_effect(EFFECT_DESAT);
+            if (desat) {
+                let animating = actor.get_transition("@effects." + EFFECT_DESAT + ".factor") != null;
+                desat.enabled = animating || desat.factor > EPS;
             }
-
-            if (wantDim) {
-                let e = actor.get_effect(EFFECT_DIM);
-                if (!e) {
-                    e = new Clutter.BrightnessContrastEffect();
-                    actor.add_effect_with_name(EFFECT_DIM, e);
-                }
-                e.set_brightness(-(level * this.dimAmount));
-            } else if (actor.get_effect(EFFECT_DIM)) {
-                actor.remove_effect_by_name(EFFECT_DIM);
+            let dim = actor.get_effect(EFFECT_DIM);
+            if (dim) {
+                let animating = actor.get_transition("@effects." + EFFECT_DIM + ".brightness") != null;
+                dim.enabled = animating || dim.brightness.red != 127;
             }
         } catch (e) {
-            // Actor may have been destroyed mid-tween; nothing to do.
+            // Actor may have been destroyed mid-fade; nothing to do.
         }
     },
 
     _reset: function(actor) {
-        if (actor._dimState) {
-            Tweener.removeTweens(actor._dimState);
-            delete actor._dimState;
-            delete actor._dimTarget;
-        }
         try {
+            actor.remove_transition("@effects." + EFFECT_DESAT + ".factor");
+            actor.remove_transition("@effects." + EFFECT_DIM + ".brightness");
             if (actor.get_effect(EFFECT_DESAT))
                 actor.remove_effect_by_name(EFFECT_DESAT);
             if (actor.get_effect(EFFECT_DIM))
                 actor.remove_effect_by_name(EFFECT_DIM);
         } catch (e) {}
+        delete actor._diwSeen;
+        delete actor._diwDimmed;
     },
 
     _clearAll: function() {
