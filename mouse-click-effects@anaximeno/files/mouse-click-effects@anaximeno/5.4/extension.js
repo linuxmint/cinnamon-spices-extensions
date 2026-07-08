@@ -588,8 +588,6 @@ function disable() {
 }
 
 function init(metadata) {
-	if (!extension) {
-		Atspi.init();
-		extension = new MouseClickEffects(metadata);
-	};
+	if (!Atspi.is_initialized()) Atspi.init();
+	if (!extension) extension = new MouseClickEffects(metadata);
 }
