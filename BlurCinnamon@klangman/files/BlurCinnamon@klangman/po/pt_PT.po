@@ -20,7 +20,7 @@ msgstr ""
 
 #. 6.0/extension.js:2819 6.0/extension.js:2822 6.0/extension.js:2932
 msgid "Default window settings"
-msgstr ""
+msgstr "Opções de janela por omissão"
 
 #. 6.0/extension.js:3080
 msgid "Error"
@@ -50,6 +50,13 @@ msgid ""
 "changes to the effect properties like blur intensity, color saturation and "
 "dimming."
 msgstr ""
+"Espero que goste dos efeitos de Painel, Expo, Vista de Resumo e Alt-Tab.\n"
+"\n"
+"Abra as definições do Blur Cinnamon para ativar efeitos adicionais noutros "
+"elementos de ambiente de trabalho como menus, notificações e janelas, ou "
+"desative efeitos em componentes para as quais os efeitos foram ativados por "
+"omissão. Também pode fazer alterações às propriedades dos efeitos como a "
+"intensidade de desfoque, saturação da cor ou escurecimento."
 
 #. 6.0/extension.js:3968
 msgid "Open Blur Cinnamon Settings"
@@ -233,6 +240,8 @@ msgid ""
 "<b>Note:</b> Read tooltip for information about the \"Default window "
 "settings\""
 msgstr ""
+"<b>Nota:</b> Leia a dica para obter informação sobre as \"Opções de janela "
+"por omissão\""
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -254,7 +263,7 @@ msgstr "Mini-Aplicações"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Desktop"
-msgstr ""
+msgstr "Ambiente de trabalho"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-expo-effects->description
@@ -649,7 +658,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->panel-unique-settings->description
 msgid "Panel specific settings"
-msgstr ""
+msgstr "Definições específicas para Painel"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -830,11 +839,11 @@ msgstr "Desfoque Guassiano dinâmico (se disponível)"
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
 msgid "Monte Carlo static blur"
-msgstr "Desfoque estático Monte Carlo"
+msgstr "Desfoque Monte Carlo estático"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Monte Carlo dynamic blur (if applicable)"
-msgstr "Desfoque dinâmico Monte Carlo (quando disponível)"
+msgstr "Desfoque Monte Carlo dinâmico (quando disponível)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -1021,7 +1030,7 @@ msgstr "Desfoque Guassiano dinâmico"
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
 msgid "Monte Carlo dynamic blur"
-msgstr "Desfoque dinâmico Monte Carlo"
+msgstr "Desfoque Monte Carlo dinâmico"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1062,7 +1071,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->popup-saturation->description
 msgid "Background image color saturation"
-msgstr ""
+msgstr "Saturação da cor da imagem de fundo"
 
 #. 6.0->settings-schema.json->desktop-without-focus->description
 msgid "Only apply effect settings if the desktop is not in focus"
@@ -1261,7 +1270,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->desklets-list->description
 msgid "Active Desklet list"
-msgstr ""
+msgstr "Lista de Mini-Aplicações ativas"
 
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Name"
