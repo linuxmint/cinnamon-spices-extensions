@@ -272,7 +272,7 @@ msgstr "Notificações"
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-overview-effects->description
 msgid "Overview"
-msgstr ""
+msgstr "Resumo"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "Panels"
@@ -320,25 +320,29 @@ msgstr ""
 "problema</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
 "view/104\">Website</a>\n"
 "\n"
-"The rounded corners, Gaussian and Monte Carlo effects\n"
-"are based on code by aunetx (Blur-my-shell)\n"
+"Os efeitos de cantos arredondados, Guassiano e Monte Carlo\n"
+"têm por base código desenvolvido por aunetx (Blur-my-shell)\n"
 "<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
 "\n"
-"The Overview effect is partially based on the BlurOverview extension by "
-"nailfarmer"
+"O efeito da vista de Resumo foi desenvolvido em parte com base na extensão "
+"BlurOverview por nailfarmer"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
 "Apply effects to the Overview (default: Ctrl+Alt+Down / 'Show all windows` "
 "hot corner)"
 msgstr ""
+"Aplicar efeitos à vista de Resumo (por omissão: Ctrl+Alt+Down / 'Mostrar "
+"todas as janelas` em Locais de ativação)"
 
 #. 6.0->settings-schema.json->enable-expo-effects->tooltip
 msgid ""
 "Apply effects to the Expo (default: Ctrl+Alt+Up / 'Show all workspaces` hot "
 "corner)"
 msgstr ""
+"Aplicar efeitos ao Expo (por omissão: Ctrl+Alt+Up / 'Mostrar todas as áreas "
+"de trabalho` em Locais de ativação)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->description
 msgid "Panels  (Please read tooltip)"
@@ -366,6 +370,13 @@ msgid ""
 "background image. It overrides some theme settings to achieve a "
 "(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
+"Aplicar efeitos ao menus de popup do painel. Esta opção é indicada para o "
+"Cinnamon (6.4) e para o tema de ambiente de trabalho Mint-Y-Dark mas poderá "
+"funcionar bem com outros temas. Temas claros poderão não produzir resultados "
+"satisfatórios mas poderá funcionar com uso criativo dos efeitos de "
+"escurecimento e uma imagem de fundo apropriada. Esta opção sobrepõe-se a "
+"algumas definições do tema atual de forma a criar um efeito "
+"(semi-)transparente e tornar a imagem de fundo desfocada."
 
 #. 6.0->settings-schema.json->enable-desktop-effects->description
 msgid "Desktop background"
@@ -398,7 +409,7 @@ msgstr "Alternador de aplicações Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-appswitcher-effects->tooltip
 msgid "Apply effects to the Alt-Tab application switcher background"
-msgstr ""
+msgstr "Aplica efeitos ao fundo do alternador de aplicações Alt-Tab"
 
 #. 6.0->settings-schema.json->enable-tooltips-effects->description
 msgid "Panel tooltips (Please read tooltip)"
@@ -617,6 +628,9 @@ msgid ""
 "With this option enabled each Desklet can use different settings or you can "
 "disable effects completely for some Desklets."
 msgstr ""
+"Com esta opção ativada cada Mini-Aplicação pode usar definições "
+"personalizadas ou impedir a aplicação de efeitos para algumas Mini-"
+"Aplicações."
 
 #. 6.0->settings-schema.json->window-settings-button->description
 msgid "Open Alt-Tab Cinnamon settings"
@@ -649,7 +663,7 @@ msgstr "Painel"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Monitor"
-msgstr ""
+msgstr "Monitor"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -801,11 +815,11 @@ msgstr "Desfoque estático simples"
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
 msgid "Gaussian static blur"
-msgstr ""
+msgstr "Desfoque Guassiano estático"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "Gaussian dynamic blur (if applicable)"
-msgstr ""
+msgstr "Desfoque Guassiano dinâmico (se disponível)"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -967,7 +981,7 @@ msgstr "Simples"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Gaussian"
-msgstr ""
+msgstr "Guassiano"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -997,7 +1011,7 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
 msgid "Gaussian dynamic blur"
-msgstr ""
+msgstr "Desfoque Guassiano dinâmico"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
@@ -1029,7 +1043,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->popup-panel-menu-effects->description
 msgid "Apply effects to panel context menus"
-msgstr ""
+msgstr "Aplicar efeitos aos menus de contexto do painel"
 
 #. 6.0->settings-schema.json->popup-title-menu-effects->description
 msgid "Apply effects to window title bar context menus"
@@ -1195,6 +1209,7 @@ msgstr ""
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
 msgstr ""
+"Desativar efeitos do \"Compiz\" para as janelas com efeitos do Blur Cinnamon"
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->tooltip
 msgid ""
@@ -1203,6 +1218,10 @@ msgid ""
 "applied. This option will have no effect unless the \"Compiz window effect\" "
 "extension is installed and active."
 msgstr ""
+"Quanto ativado, o efeito de movimento de janelas criado pela extensão "
+"\"Compiz windows effect\" serão desativados para as janelas com efeitos "
+"aplicados pelo Blur Cinnamon. Esta opção não terá efeito caso a extensão "
+"\"Compiz window effect\" não esteja instalada e ativa."
 
 #. 6.0->settings-schema.json->windows-atrifact-mitigation->description
 msgid "Use artifact mitigation techniques"
@@ -1216,6 +1235,12 @@ msgid ""
 "on top of two or more other windows. This option is recommended unless you "
 "are using video wallpaper like Hidamari"
 msgstr ""
+"Quando ativado, irão ser tomadas medidas para eliminar os artefactos "
+"gráficos de fundo de janelas que usem efeitos de desfoque dinâmico. Estas "
+"medidas de mitigação necessitam de um pequeno processamento persistente pela "
+"CPU quando uma janela com efeitos de desfoque dinâmico está sobre duas ou "
+"mais janelas. Esta opção é recomendada a não ser que esteja em uso um fundo "
+"de ambiente de trabalho em forma de vídeo como o Hidamari"
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
