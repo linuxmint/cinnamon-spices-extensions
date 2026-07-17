@@ -244,8 +244,8 @@ msgid ""
 "<b>Note:</b> Read tooltip for information about the \"Default window "
 "settings\""
 msgstr ""
-"<b>Nota:</b> Leia a dica para obter informação sobre as \"Opções de janela "
-"por omissão\""
+"<b>Nota:</b> Leia a dica para obter informação sobre as \"Opções padrão para "
+"janelas\""
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -467,6 +467,13 @@ msgid ""
 "any) will have effects applied to its windows, enabling this option alone "
 "will not add effects to any windows."
 msgstr ""
+"Permitir efeitos no fundo das janelas ao adicionar um elemento gráfico por "
+"baixo de todos os outros já existentes na janelas afetadas. Isto significa "
+"que os efeitos NÃO irão ser visíveis até que a aplicação seja configurada "
+"para ser transparente ou o valor \"Opacidade\" para a janela seja inferior a "
+"100%. A tabela na configuração do componente \"Janelas\" determina que "
+"aplicações (se alguma) terão efeitos aplicados às suas janelas, portanto "
+"ativar esta opção por si só não irá adicionar quaisquer efeitos às janelas."
 
 #. 6.0->settings-schema.json->enable-desklet-effects->tooltip
 msgid ""
@@ -520,6 +527,11 @@ msgid ""
 "theme already uses transparent panels and you want the themes setting to "
 "apply."
 msgstr ""
+"Permite que esta extensão altere as propriedades de transparência e cor de "
+"fundo dos painéis. Se este valor estiver desativado, a extensão apenas irá "
+"aplicar um efeito de desfoque ao fundo por baixo dos painéis. Este valor "
+"deve apenas ser desativado quando o tema já usa transparência nos painéis e "
+"pretende que o tema controle o seu efeito."
 
 #. 6.0->settings-schema.json->allow-transparent-color-popup->description
 msgid "Override some of the popup menu theme settings (recommended)"
@@ -533,6 +545,11 @@ msgid ""
 "the theme already uses transparent popup menus and you want the themes "
 "setting to apply."
 msgstr ""
+"Permite que esta extensão altere as propriedades de transparência e cor de "
+"fundo dos menus. Se este valor estiver desativado, a extensão apenas irá "
+"aplicar um efeito de desfoque ao fundo por baixo dos menus. Este valor deve "
+"apenas ser desativado quando o tema já usa transparência nos menus e "
+"pretende que o tema controle o seu efeito."
 
 #. 6.0->settings-schema.json->allow-transparent-color-
 #. notifications->description
@@ -548,6 +565,11 @@ msgid ""
 "when the theme already uses transparent notifications and you want the "
 "themes setting to apply."
 msgstr ""
+"Permite que esta extensão altere as propriedades de transparência e cor de "
+"fundo da notificação. Se este valor estiver desativado, a extensão apenas "
+"irá aplicar um efeito de desfoque ao fundo por baixo das notificações. Este "
+"valor deve apenas ser desativado quando o tema já usa transparência nas "
+"notificações e pretende que o tema controle o seu efeito."
 
 #. 6.0->settings-schema.json->allow-transparent-color-tooltips->description
 msgid "Override some of the tooltip theme settings (recommended)"
@@ -561,6 +583,11 @@ msgid ""
 "theme already uses transparent tooltips and you want the themes setting to "
 "apply."
 msgstr ""
+"Permite que esta extensão altere as propriedades de transparência e cor de "
+"fundo das dicas. Se este valor estiver desativado, a extensão apenas irá "
+"aplicar um efeito de desfoque ao fundo por baixo das dicas. Este valor deve "
+"apenas ser desativado quando o tema já usa transparência nas dicas e "
+"pretende que o tema controle o seu efeito."
 
 #. 6.0->settings-schema.json->allow-transparent-color-switcher->description
 msgid ""
@@ -577,6 +604,12 @@ msgid ""
 "disabled when the theme already uses a transparent switcher and you want the "
 "themes setting to apply."
 msgstr ""
+"Permite que esta extensão altere as propriedades de transparência e cor de "
+"fundo dos alternadores de aplicação Alt-Tab padrão. Se este valor estiver "
+"desativado, a extensão apenas irá aplicar um efeito de desfoque ao fundo por "
+"baixo dos alternadores de aplicação Alt-Tab padrão. Este valor deve apenas "
+"ser desativado quando o tema já usa transparência nos alternadores de "
+"aplicação Alt-Tab padrão e pretende que o tema controle o seu efeito."
 
 #. 6.0->settings-schema.json->allow-transparent-color-osd->description
 msgid "Override some of the OSD theme settings (recommended)"
@@ -590,6 +623,11 @@ msgid ""
 "theme already uses a transparent OSD and you want the themes setting to "
 "apply."
 msgstr ""
+"Permite que esta extensão altere as propriedades de transparência e cor de "
+"fundo das janelas de ecrã OSD. Se este valor estiver desativado, a extensão "
+"apenas irá aplicar um efeito de desfoque ao fundo por baixo das janelas OSD. "
+"Este valor deve apenas ser desativado quando o tema já usa transparência nas "
+"janelas OSD e pretende que o tema controle o seu efeito."
 
 #. 6.0->settings-schema.json->enable-overview-override->description
 msgid "Override the generic effect settings for the Overview"
@@ -838,6 +876,10 @@ msgid ""
 "control above. Use black for a normal dimming effect or some other color for "
 "a color blend effect"
 msgstr ""
+"Define a cor que é misturada com o fundo do ambiente de trabalho seguindo a "
+"definição Escurecer/Colorir acima. Use cor preta para um efeito de "
+"escurecimento tradicional o qualquer outra cor para obter um efeito de "
+"mistura"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "None / Transparent to wallpaper"
@@ -932,6 +974,8 @@ msgid ""
 "Adjusts the intensity of the blur effect by changing the radius use by the "
 "effect."
 msgstr ""
+"Ajusta a intensidade do efeito de desfoque ao alterar o raio de ação usado "
+"pelo efeito."
 
 #. 6.0->settings-schema.json->saturation->description
 #. 6.0->settings-schema.json->overview-saturation->description
@@ -1014,7 +1058,7 @@ msgid ""
 msgstr ""
 "As definições Monte Carlo acima são usadas de forma global para todos os "
 "componentes que estejam configurados para usar o algoritmo de desfoque Monte "
-"Carlo. Estas definições são podem ser configuradas individualmente para cada "
+"Carlo. Estas definições podem ser configuradas individualmente para cada "
 "componente"
 
 #. 6.0->settings-schema.json->overview-blurType->options
@@ -1109,6 +1153,7 @@ msgstr ""
 #. 6.0->settings-schema.json->popup-accent-opacity->description
 msgid "Additional popup menu accent elements dimming (%)"
 msgstr ""
+"Escurecimento adicional para os elementos em destaque dos menus de popup (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
@@ -1116,6 +1161,9 @@ msgid ""
 "e. the main menu favorites box and entry boxes) which allow these elements "
 "to stand out from the other popup menu areas"
 msgstr ""
+"Define o efeito de escurecimento adicional aplicado às cores de destaque do "
+"menu (ex: caixa de favoritos do menu principal e caixas de entrada) "
+"permitindo que estes elementos se destaquem de outras áreas do menu"
 
 #. 6.0->settings-schema.json->popup-saturation->description
 msgid "Background image color saturation"
@@ -1189,6 +1237,10 @@ msgid ""
 "options without \"previews\" are supported. The standard Alt-Tab switcher "
 "can use static or dynamic blur, but dynamic is recommended."
 msgstr ""
+"Permite aplicar efeitos aos alternadores de aplicação Alt-Tab padrão. Apenas "
+"os alternadores sem \"pré-visualizações\" são suportados. O alternador Alt-"
+"Tab pode usar efeitos de desfoque estáticos ou dinâmicos, mas é recomendado "
+"usar um efeito dinâmico."
 
 #. 6.0->settings-schema.json->appswitcher-allow-3d->description
 msgid "Apply effects to the 3D Alt-Tab switchers"
@@ -1200,6 +1252,10 @@ msgid ""
 "The 3D Alt-Tab switchers will use static blurring even when dynamic blurring "
 "is selected since they don't benifit from dynamic blurring."
 msgstr ""
+"Permitir aplicar efeitos aos alternadores de aplicação Alt-Tab 3D Coverflow "
+"e Timeline. Os alternadores de aplicação Alt-Tab 3D irão usar um efeito de "
+"desfoque estático mesmo se o efeito de desfoque dinâmico estiver selecionado "
+"visto que estes alternadores 3D não beneficiam deste tipo de desfoque."
 
 #. 6.0->settings-schema.json->appswitcher-blurType->tooltip
 msgid ""
