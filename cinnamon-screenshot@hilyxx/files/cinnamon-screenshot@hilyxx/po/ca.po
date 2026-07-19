@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-10-25 18:56+0200\n"
+"POT-Creation-Date: 2026-07-19 19:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -18,179 +18,199 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:385
+#. editOverlay.js:428
 msgid "Brush"
 msgstr "Pinzell"
 
-#. editOverlay.js:386
+#. editOverlay.js:429
 msgid "Eraser"
 msgstr "Goma d'esborrar"
 
-#. editOverlay.js:387
+#. editOverlay.js:430
 msgid "Arrow"
 msgstr "Fletxa"
 
-#. editOverlay.js:388
+#. editOverlay.js:431
+msgid "Line"
+msgstr "Línia"
+
+#. editOverlay.js:432
 msgid "Rectangle"
 msgstr "Rectangle"
 
-#. editOverlay.js:389
+#. editOverlay.js:433
 msgid "Ellipse"
 msgstr "El·lipsi"
 
-#. editOverlay.js:390
+#. editOverlay.js:434
+msgid "Triangle"
+msgstr "Triangle"
+
+#. editOverlay.js:435
+msgid "Filled Rectangle"
+msgstr "Rectangle ple"
+
+#. editOverlay.js:436
+msgid "Filled Ellipse"
+msgstr "El·lipsi plena"
+
+#. editOverlay.js:437
+msgid "Filled Triangle"
+msgstr "Triangle ple"
+
+#. editOverlay.js:438
 msgid "Pixelization"
 msgstr "Pixelització"
 
-#. editOverlay.js:391
+#. editOverlay.js:439
 msgid "Text"
 msgstr "Text"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Black"
 msgstr "Negre"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "White"
 msgstr "Blanc"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Red"
 msgstr "Vermell"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Blue"
 msgstr "Blau"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Green"
 msgstr "Verd"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Yellow"
 msgstr "Groc"
 
-#. editOverlay.js:563
+#. editOverlay.js:611
 msgid "Thickness/size"
 msgstr "Gruix/mida"
 
-#. editOverlay.js:568
+#. editOverlay.js:616
 msgid "Save changes to the canvas"
 msgstr "Desar els canvis al llenç"
 
-#. editOverlay.js:569
+#. editOverlay.js:617
 msgid "Cancel all changes"
 msgstr "Cancel·lar tots els canvis"
 
-#. editOverlay.js:570 overlay.js:51 overlay.js:75
+#. editOverlay.js:618 overlay.js:93 overlay.js:119
 msgid "Close"
 msgstr "Tancar"
 
-#. editOverlay.js:937
+#. editOverlay.js:993
 msgid "Apply changes?"
 msgstr "Aplicar els canvis?"
 
-#. editOverlay.js:942
+#. editOverlay.js:998
 msgid "Merge canvas with image"
 msgstr "Combinar el llenç amb la imatge"
 
-#. editOverlay.js:946
+#. editOverlay.js:1002
 msgid "Save modified copy as…"
 msgstr "Desar còpia modificada com..."
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
+#. editOverlay.js:1006 editOverlay.js:1160 preview.js:244 preview.js:333
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#. editOverlay.js:960
+#. editOverlay.js:1016
 msgid "Quit without apply changes?"
 msgstr "Surt sense aplicar els canvis?"
 
-#. editOverlay.js:964
+#. editOverlay.js:1020
 msgid "Yes"
 msgstr "Sí"
 
-#. editOverlay.js:979
+#. editOverlay.js:1035
 msgid "No"
 msgstr "No"
 
-#. editOverlay.js:1009 editOverlay.js:1104
+#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1185
 msgid "Error saving"
 msgstr "Error en desar"
 
-#. editOverlay.js:1036 preview.js:330
+#. editOverlay.js:1137 preview.js:321
 msgid "Script gtk-filechooser.py not available"
 msgstr "L'script gtk-filechooser.py no està disponible"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:336
-msgid "Save as..."
-msgstr "Desar com..."
-
-#. editOverlay.js:1059 preview.js:339
-msgid "Images"
-msgstr "Imatges"
-
-#. editOverlay.js:1060 preview.js:340
-msgid "Save"
-msgstr "Desar"
-
-#. overlay.js:48
-msgid "Full Screen"
-msgstr "Pantalla completa"
-
-#. overlay.js:49
-msgid "Active Window"
-msgstr "Finestra activa"
-
-#. overlay.js:50 overlay.js:124
-msgid "Selection"
-msgstr "Selecció"
-
-#. overlay.js:77
-msgid "Mouse Pointer :"
-msgstr "Punter del ratolí :"
-
-#. overlay.js:126
-msgid "Timer (s) :"
-msgstr "Temporitzador (s) :"
-
-#. preview.js:188
-msgid "Edit image"
-msgstr "Editar imatge"
-
-#. preview.js:189
-msgid "Copy to clipboard"
-msgstr "Copiar al porta-papers"
-
-#. preview.js:223
-msgid "Back"
-msgstr "Tornar"
-
-#. preview.js:313 preview.js:318 preview.js:323
-msgid "Invalid filename"
-msgstr "Nom de fitxer invàlid"
-
-#. preview.js:313
-msgid "Filename cannot be empty."
-msgstr "El nom del fitxer no pot ser buit."
-
-#. preview.js:318
-msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
-msgstr "El nom del fitxer conté caràcters no permesos: \\ / : * ? \" < > |"
-
-#. preview.js:323
-msgid "Filename must end with .png"
-msgstr "El nom del fitxer ha d'acabar en .png"
-
-#. preview.js:330
+#. editOverlay.js:1137 preview.js:321
 msgid "Unable to open file chooser."
 msgstr "No s'ha pogut obrir el seleccionador de fitxers."
 
-#. preview.js:419
+#. editOverlay.js:1155 preview.js:228 preview.js:328
+msgid "Save as..."
+msgstr "Desar com..."
+
+#. editOverlay.js:1158 preview.js:331
+msgid "Images"
+msgstr "Imatges"
+
+#. editOverlay.js:1159 preview.js:332
+msgid "Save"
+msgstr "Desar"
+
+#. overlay.js:90
+msgid "Full Screen"
+msgstr "Pantalla completa"
+
+#. overlay.js:91
+msgid "Active Window"
+msgstr "Finestra activa"
+
+#. overlay.js:92 overlay.js:160
+msgid "Selection"
+msgstr "Selecció"
+
+#. overlay.js:121
+msgid "Mouse Pointer :"
+msgstr "Punter del ratolí :"
+
+#. overlay.js:162
+msgid "Timer (s) :"
+msgstr "Temporitzador (s) :"
+
+#. preview.js:212
+msgid "Edit image"
+msgstr "Editar imatge"
+
+#. preview.js:213
+msgid "Copy to clipboard"
+msgstr "Copiar al porta-papers"
+
+#. preview.js:234
+msgid "Back"
+msgstr "Tornar"
+
+#. preview.js:294 preview.js:298 preview.js:302
+msgid "Invalid filename"
+msgstr "Nom de fitxer invàlid"
+
+#. preview.js:294
+msgid "Filename cannot be empty."
+msgstr "El nom del fitxer no pot ser buit."
+
+#. preview.js:298
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
+msgstr "El nom del fitxer conté caràcters no permesos: \\ / : * ? \" < > |"
+
+#. preview.js:302
+msgid "Filename must end with .png"
+msgstr "El nom del fitxer ha d'acabar en .png"
+
+#. preview.js:410
 msgid "Copy failed"
 msgstr "Error en copiar"
 
-#. preview.js:419
+#. preview.js:410
 msgid "Unable to copy image to clipboard."
 msgstr "No s'ha pogut copiar la imatge al porta-papers"
 

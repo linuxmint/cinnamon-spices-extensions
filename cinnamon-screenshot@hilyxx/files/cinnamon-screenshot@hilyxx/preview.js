@@ -1,15 +1,18 @@
 // === IMPORTS & CONSTANTS ===
-const ModalDialog = imports.ui.modalDialog;
 const { St, Clutter, Gio, GLib, GdkPixbuf } = imports.gi;
 const Main = imports.ui.main;
 const GObject = imports.gi.GObject;
 const Layout = imports.ui.layout;
+const ExtensionSystem = imports.ui.extensionSystem;
 
 const { _ } = require('./translation');
 const { ScreenshotEditDialog } = require('./editOverlay');
 
-const ICONS_PATH = __meta.path + '/icons/';
-const scriptPath = __meta.path + '/lib/gtk-filechooser.py';
+const UUID = 'cinnamon-screenshot@hilyxx';
+const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
+
+const ICONS_PATH = EXTENSION_DIR + '/icons/';
+const scriptPath = EXTENSION_DIR + '/lib/gtk-filechooser.py';
 
 const previewTempFileCache = {};
 
@@ -25,11 +28,56 @@ var ScreenshotPreviewDialog;
 if (typeof ScreenshotPreviewDialog !== 'function') {
     ScreenshotPreviewDialog = GObject.registerClass({
         GTypeName: `ScreenshotPreviewDialog_${Date.now()}_${Math.floor(Math.random() * 100000)}`,
-    }, class ScreenshotPreviewDialog extends ModalDialog.ModalDialog {
-        constructor(filepath, onSave, onOptionSelected, showBackButton = false, editState = null) {
+    }, class ScreenshotPreviewDialog extends St.Widget {
+        
+        _init(filepath, onSave, onOptionSelected, showBackButton = false, editState = null) {
             cleanupOldPreviewTempFiles();
-            super({ styleClass: 'preview', cinnamonReactive: true });
+            
+            // Giant background covering all screens
+            super._init({ 
+                reactive: true,
+                x: 0, y: 0,
+                width: global.stage.width,
+                height: global.stage.height,
+                style_class: 'custom-fullscreen-bg'
+            });
+
+            // Block clicks below
+            this.connect('button-press-event', () => Clutter.EVENT_STOP);
+            this.connect('scroll-event', () => Clutter.EVENT_STOP);
+
             const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
+
+            // Find the active monitor
+            const [mouseX, mouseY] = global.get_pointer();
+            let monitors = Main.layoutManager.monitors;
+            let currentMonitor = monitors[0];
+            for (let i = 0; i < monitors.length; i++) {
+                if (mouseX >= monitors[i].x && mouseX < monitors[i].x + monitors[i].width &&
+                    mouseY >= monitors[i].y && mouseY < monitors[i].y + monitors[i].height) {
+                    currentMonitor = monitors[i];
+                    break;
+                }
+            }
+
+            // Centered container for the active monitor
+            const monitorBox = new St.Widget({
+                x: currentMonitor.x, y: currentMonitor.y,
+                width: currentMonitor.width, height: currentMonitor.height,
+                layout_manager: new Clutter.BinLayout()
+            });
+            this.add_child(monitorBox);
+
+            const centerWrapper = new St.BoxLayout({
+                x_align: Clutter.ActorAlign.CENTER,
+                y_align: Clutter.ActorAlign.CENTER,
+                style_class: 'preview'
+            });
+            monitorBox.add_child(centerWrapper);
+
+            // Container vertical principal
+            const contentLayout = new St.BoxLayout({ vertical: true });
+            centerWrapper.add_child(contentLayout);
 
             // Properties
             this._filepath = filepath;
@@ -46,9 +94,9 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             const modalHeight = 230 * scale;
             const maxW = 380 * scale;
             const maxH = 220 * scale;
-            const entryWidth = modalWidth - 10 * scale; // visual margin
+            const entryWidth = modalWidth - 10 * scale; 
 
-            // Main layout
+            // Main layout boxes
             const previewMainBox = new St.BoxLayout({ vertical: true, style_class: 'preview-content' });
             previewMainBox.set_width(modalWidth);
             previewMainBox.set_height(modalHeight);
@@ -60,7 +108,6 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             previewContainer.set_x_align(Clutter.ActorAlign.CENTER);
             previewContainer.set_y_align(Clutter.ActorAlign.CENTER);
 
-            // Load image dimensions & preview temp file
             let imgWidth = 400, imgHeight = 300;
             let previewW = maxW, previewH = maxH;
             try {
@@ -76,7 +123,6 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             const tempPath = getOrCreatePreviewTempFile(filepath, previewW, previewH);
             const texture = St.TextureCache.get_default().load_uri_async('file://' + tempPath, previewW, previewH);
 
-            // Image widget
             let image = new St.Bin({ style_class: 'preview-image' });
             image.set_width(previewW);
             image.set_height(previewH);
@@ -85,7 +131,6 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             image.set_child(texture);
             previewContainer.add_child(image);
 
-            // Image dimensions label
             const dimensionLabel = new St.Label({
                 text: `${imgWidth} x ${imgHeight} px`,
                 style_class: 'preview-dimensions-label'
@@ -94,74 +139,63 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             dimensionLabel.set_y_align(Clutter.ActorAlign.START);
             dimensionLabel.set_width(modalWidth / 1.25);
 
-            // Tool buttons: edit & clipboard
+            // Tools (Edit & Clipboard)
             const editButton = new St.Button({ style_class: 'preview-tool-btn' });
-            const editIconFile = new Gio.FileIcon({
-                file: Gio.File.new_for_path(ICONS_PATH + 'edit-symbolic.svg')
-            });
-            const toolIconSize = 24;
             const editIcon = new St.Icon({
-                gicon: editIconFile,
-                icon_size: (scale <= 1) ? toolIconSize : Math.floor(BTN_TOOL * scale * 0.4),
+                gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'edit-symbolic.svg') }),
+                icon_size: (scale <= 1) ? 24 : Math.floor(BTN_TOOL * scale * 0.4),
                 style_class: 'preview-tool-icon'
             });
             editButton.set_child(editIcon);
             editButton.set_size(BTN_TOOL * scale, BTN_TOOL * scale);
             editButton.connect('clicked', () => {
-                this.close();
+                // Capture variables BEFORE closing the preview
+                const currentFilepath = this._filepath;
+                const currentOnSave = this._onSave;
+                const currentOnOptionSelected = this._originalOnOptionSelected;
+                const currentShowBackButton = this._showBackButton;
+                const currentEditState = this._editState;
+
+                this.close(); // Destroy the preview window
+
                 GLib.timeout_add(GLib.PRIORITY_DEFAULT, 150, () => {
-                    const overlay = new ScreenshotEditDialog(filepath, (newEditState) => {
-                            showScreenshotPreview(filepath, this._onSave, this._originalOnOptionSelected, this._showBackButton, newEditState);
-                        }, this._editState, this, this._showBackButton, this._originalOnOptionSelected );
-                    log('Opening edit overlay: ' + overlay);
+                    const overlay = new ScreenshotEditDialog(
+                        currentFilepath, 
+                        (newEditState) => {
+                            showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, newEditState);
+                        }, 
+                        currentEditState, 
+                        null, // DO NOT PASS 'this' (it is destroyed!)
+                        currentShowBackButton, 
+                        currentOnOptionSelected 
+                    );
                     overlay.open();
                     return GLib.SOURCE_REMOVE;
                 });
             });
 
             const clipboardButton = new St.Button({ style_class: 'preview-tool-btn' });
-            const clipboardIconFile = new Gio.FileIcon({
-                file: Gio.File.new_for_path(ICONS_PATH + 'capture-clipboard-symbolic.svg')
-            });
             const clipboardIcon = new St.Icon({
-                gicon: clipboardIconFile,
-                icon_size: (scale <= 1) ? toolIconSize : Math.floor(BTN_TOOL * scale * 0.4),
+                gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'capture-clipboard-symbolic.svg') }),
+                icon_size: (scale <= 1) ? 24 : Math.floor(BTN_TOOL * scale * 0.4),
                 style_class: 'preview-tool-icon'
             });
             clipboardButton.set_child(clipboardIcon);
             clipboardButton.set_size(BTN_TOOL * scale, BTN_TOOL * scale);
             this._clipboardIcon = clipboardIcon;
-            clipboardButton.connect('clicked', () => {
-                this._copyToClipboard();
-            });
+            clipboardButton.connect('clicked', () => this._copyToClipboard());
 
-            // Tooltip
-            this._tooltip = new St.Label({
-                style_class: 'global-tooltip',
-                text: '',
-                visible: false
-            });
+            // Tooltips
+            this._tooltip = new St.Label({ style_class: 'global-tooltip', text: '', visible: false });
             this.add_child(this._tooltip);
             this._tooltipTimeoutId = null;
 
             const attachTooltip = (btn, text) => {
                 btn.connect('enter-event', () => {
-                    if (this._tooltipTimeoutId) {
-                        GLib.source_remove(this._tooltipTimeoutId);
-                        this._tooltipTimeoutId = null;
-                    }
+                    if (this._tooltipTimeoutId) { GLib.source_remove(this._tooltipTimeoutId); this._tooltipTimeoutId = null; }
                     this._tooltipTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 750, () => {
-                        const [x, y, mods] = global.get_pointer();
-                        let actorAtPointer = global.stage.get_actor_at_pos(Clutter.PickMode.ALL, x, y);
-                        let isOverButton = false;
-                        while (actorAtPointer) {
-                            if (actorAtPointer === btn) {
-                                isOverButton = true;
-                                break;
-                            }
-                            actorAtPointer = actorAtPointer.get_parent && actorAtPointer.get_parent();
-                        }
-                        if (isOverButton && !(mods & Clutter.ModifierType.BUTTON1_MASK) && this._tooltip) {
+                        const [x, y] = global.get_pointer();
+                        if (this._tooltip) {
                             this._tooltip.set_text(text);
                             this._tooltip.set_position(x + 10, y + 10);
                             this._tooltip.show();
@@ -171,122 +205,73 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
                     });
                 });
                 btn.connect('leave-event', () => {
-                    if (this._tooltipTimeoutId) {
-                        GLib.source_remove(this._tooltipTimeoutId);
-                        this._tooltipTimeoutId = null;
-                    }
-                    if (this._tooltip) this._tooltip.hide();
-                });
-                btn.connect('button-press-event', () => {
-                    if (this._tooltipTimeoutId) {
-                        GLib.source_remove(this._tooltipTimeoutId);
-                        this._tooltipTimeoutId = null;
-                    }
+                    if (this._tooltipTimeoutId) { GLib.source_remove(this._tooltipTimeoutId); this._tooltipTimeoutId = null; }
                     if (this._tooltip) this._tooltip.hide();
                 });
             };
             attachTooltip(editButton, _('Edit image'));
             attachTooltip(clipboardButton, _('Copy to clipboard'));
 
-            // Global tooltip cancel on mouse release
+            // Cancel Tooltip global
             this._cancelTooltip = () => {
-                if (this._tooltipTimeoutId) {
-                    GLib.source_remove(this._tooltipTimeoutId);
-                    this._tooltipTimeoutId = null;
-                }
+                if (this._tooltipTimeoutId) { GLib.source_remove(this._tooltipTimeoutId); this._tooltipTimeoutId = null; }
                 if (this._tooltip) this._tooltip.hide();
             };
-            this._globalButtonReleaseId = global.stage.connect('button-release-event', () => {
-                this._cancelTooltip();
-            });
+            this._globalButtonReleaseId = global.stage.connect('button-release-event', () => this._cancelTooltip());
 
-            // Filename entry field
+            // Entry and Save/Cancel buttons
             const basename = GLib.path_get_basename(filepath);
             this._entry = new St.Entry({ text: basename, style_class: 'entry preview-entry' });
             this._entry.set_x_align(Clutter.ActorAlign.CENTER);
             this._entry.set_width(entryWidth);
 
-            // Action buttons: save, cancel & back
-            const saveButton = new St.Button({
-                label: _('Save as...'),
-                style_class: 'dialog-button preview-save-btn',
-                can_focus: true
-            });
+            const saveButton = new St.Button({ label: _('Save as...'), style_class: 'dialog-button preview-save-btn', can_focus: true });
             saveButton.set_width(entryWidth);
-            saveButton.connect('clicked', () => {
-                this._openFileChooser();
-            });
+            saveButton.connect('clicked', () => this._openFileChooser());
 
             let backButton = null;
             if (this._showBackButton) {
-                backButton = new St.Button({
-                    label: _('Back'),
-                    style_class: 'dialog-button preview-back-btn',
-                    can_focus: true
-                });
+                backButton = new St.Button({ label: _('Back'), style_class: 'dialog-button preview-back-btn', can_focus: true });
                 backButton.set_width(entryWidth / 2);
                 backButton.connect('clicked', () => {
                     this._deleteTempFile();
-                    if (this._onOptionSelected) {
-                        this._onOptionSelected();
-                    }
+                    if (this._onOptionSelected) this._onOptionSelected();
                     this.close();
                 });
             }
 
             const cancelButtonWidth = this._showBackButton ? (entryWidth / 2) : entryWidth;
-            const cancelButton = new St.Button({
-                label: _('Cancel'),
-                style_class: 'dialog-button preview-cancel-btn',
-                can_focus: true
-            });
+            const cancelButton = new St.Button({ label: _('Cancel'), style_class: 'dialog-button preview-cancel-btn', can_focus: true });
             cancelButton.set_width(cancelButtonWidth);
-            if (backButton) {
-                cancelButton.add_style_class_name('preview-cancel-with-back-btn');
-            }
-            cancelButton.connect('clicked', () => {
-                this._deleteTempFile();
-                this.close();
-            });
+            if (backButton) cancelButton.add_style_class_name('preview-cancel-with-back-btn');
+            cancelButton.connect('clicked', () => { this._deleteTempFile(); this.close(); });
 
-            // Layout for back & cancel buttons
             const backCancelBox = new St.BoxLayout({ vertical: false });
             backCancelBox.set_x_align(Clutter.ActorAlign.CENTER);
-            backCancelBox.set_y_align(Clutter.ActorAlign.CENTER);
-            if (backButton) {
-                backCancelBox.add_child(backButton);
-            }
+            if (backButton) backCancelBox.add_child(backButton);
             backCancelBox.add_child(cancelButton);
 
-            // layout for dimensions label & clipboard button
             const clipboardBox = new St.BoxLayout({ vertical: false, style_class: 'preview-clipboard-box' });
             clipboardBox.set_x_align(Clutter.ActorAlign.CENTER);
-            clipboardBox.set_y_align(Clutter.ActorAlign.START);
-
             clipboardBox.add_child(editButton);
             clipboardBox.add_child(dimensionLabel);
             clipboardBox.add_child(clipboardButton);
 
-            // Vertical container for all buttons
             const buttonsContainer = new St.BoxLayout({ vertical: true, style_class: 'preview-buttons-box' });
             buttonsContainer.set_x_align(Clutter.ActorAlign.CENTER);
-            buttonsContainer.set_y_align(Clutter.ActorAlign.START);
-
             buttonsContainer.add_child(clipboardBox);
             buttonsContainer.add_child(this._entry);
             buttonsContainer.add_child(saveButton);
             buttonsContainer.add_child(backCancelBox);
 
-            // Add all to main layout
             buttonMainBox.add_child(buttonsContainer);
             previewMainBox.add_child(previewContainer);
-            this.contentLayout.add_child(previewMainBox);
-            this.contentLayout.add_child(buttonMainBox);
+            
+            contentLayout.add_child(previewMainBox);
+            contentLayout.add_child(buttonMainBox);
 
-            // Handle ESC key to close the preview dialog
             this.connect('key-press-event', (actor, event) => {
-                const keySymbol = event.get_key_symbol();
-                if (keySymbol === Clutter.KEY_Escape) {
+                if (event.get_key_symbol() === Clutter.KEY_Escape) {
                     this.close();
                     return Clutter.EVENT_STOP;
                 }
@@ -294,86 +279,92 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             });
         }
 
-        // === FILE CHOOSER & FILENAME VALIDATION ===
         _openFileChooser() {
-            this.close();
             let defaultName = '';
             try {
                 if (this._entry && typeof this._entry.get_text === 'function')
                     defaultName = this._entry.get_text();
             } catch (e) {
-                global.log('CS: error accessing _entry (openFileChooser): ' + e);
-                defaultName = '';
+                global.log('CS: error accessing _entry: ' + e);
             }
-            const picturesDir = getPicturesDir();
 
             // Security: validate filename
             const invalidChars = new RegExp('[\\\\/:*?"<>|]', 'g');
             if (!defaultName || defaultName.trim().length === 0) {
                 Main.notifyError(_('Invalid filename'), _('Filename cannot be empty.'));
-                showScreenshotPreview(this._filepath, this._onSave, this._onOptionSelected, this._showBackButton, this._editState);
-                return;
+                return; 
             }
             if (invalidChars.test(defaultName)) {
                 Main.notifyError(_('Invalid filename'), _('Filename contains forbidden characters: \\ / : * ? " < > |'));
-                showScreenshotPreview(this._filepath, this._onSave, this._onOptionSelected, this._showBackButton, this._editState);
                 return;
             }
             if (!/\.(png)$/i.test(defaultName)) {
                 Main.notifyError(_('Invalid filename'), _('Filename must end with .png'));
-                showScreenshotPreview(this._filepath, this._onSave, this._onOptionSelected, this._showBackButton, this._editState);
                 return;
             }
-            // Use Python script with GtkFileChooserDialog in SAVE mode
-            const file = Gio.File.new_for_path(scriptPath);
-            if (!file.query_exists(null)) {
-                Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
-                this._deleteTempFile();
-                return;
-            }
-            const argv = [
-                'python3', scriptPath,
-                '--title', _('Save as...'),
-                '--filename', defaultName,
-                '--directory', picturesDir,
-                '--filter', _('Images'),
-                '--save-button', _('Save'),
-                '--cancel-button', _('Cancel')
-            ];
-            const proc = new Gio.Subprocess({
-                argv: argv,
-                flags: Gio.SubprocessFlags.STDOUT_PIPE
-            });
-            proc.init(null);
-            proc.communicate_utf8_async(null, null, (proc, res) => {
-                try {
-                    const [, stdout] = proc.communicate_utf8_finish(res);
-                    const filename = stdout.trim();
-                    if (filename) {
-                        this._saveTo(filename);
-                    } else {
-                        // Relaunch the preview properly
-                        showScreenshotPreview(this._filepath, this._onSave, this._onOptionSelected, this._showBackButton, this._editState);
-                    }
-                } catch (e) {
-                    // Cancel or error: relaunch preview
-                    showScreenshotPreview(this._filepath, this._onSave, this._onOptionSelected, this._showBackButton, this._editState);
-                }
-            });
-        }
 
-        // === SAVE TO FILE & TEMP FILE DELETION ===
-        _saveTo(destPath) {
-            try {
-                const file = Gio.File.new_for_path(this._filepath);
-                const dest = Gio.File.new_for_path(destPath);
-                file.move(dest, Gio.FileCopyFlags.OVERWRITE, null, null);
-                this._onSave(destPath, this._editState);
-                this._deleteTempFile();
-            } catch (e) {
-                global.log('Cs: error while saving screenshot: ' + e);
-            }
+            // Capture variables before destruction
+            const currentFilepath = this._filepath;
+            const currentOnSave = this._onSave;
+            const currentOnOptionSelected = this._originalOnOptionSelected;
+            const currentShowBackButton = this._showBackButton;
+            const currentEditState = this._editState;
+
+            // Immediate close (object destruction)
             this.close();
+
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+                const picturesDir = getPicturesDir();
+                const file = Gio.File.new_for_path(scriptPath);
+                
+                if (!file.query_exists(null)) {
+                    Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
+                    showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
+                    return GLib.SOURCE_REMOVE;
+                }
+
+                const argv = [
+                    'python3', scriptPath,
+                    '--title', _('Save as...'),
+                    '--filename', defaultName,
+                    '--directory', picturesDir,
+                    '--filter', _('Images'),
+                    '--save-button', _('Save'),
+                    '--cancel-button', _('Cancel')
+                ];
+
+                const proc = new Gio.Subprocess({
+                    argv: argv,
+                    flags: Gio.SubprocessFlags.STDOUT_PIPE
+                });
+                proc.init(null);
+
+                proc.communicate_utf8_async(null, null, (proc, res) => {
+                    try {
+                        const [, stdout] = proc.communicate_utf8_finish(res);
+                        const filename = stdout.trim();
+                        
+                        if (filename) {
+                            try {
+                                const sourceFile = Gio.File.new_for_path(currentFilepath);
+                                const destFile = Gio.File.new_for_path(filename);
+                                sourceFile.move(destFile, Gio.FileCopyFlags.OVERWRITE, null, null);
+                                if (currentOnSave) currentOnSave(filename, currentEditState);
+                                                              
+                            } catch (e) {
+                                global.log('CS: error while saving screenshot: ' + e);
+                            }
+                        } else {
+                            // Cancelled by user: reopening preview interface
+                            showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
+                        }
+                    } catch (e) {
+                        global.log('CS: error gtk-filechooser.py: ' + e);
+                        showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
+                    }
+                });
+                return GLib.SOURCE_REMOVE;
+            });
         }
 
         _deleteTempFile() {
@@ -420,14 +411,25 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             }
         }
 
-        // === CLOSE DIALOG & TOOLTIP CLEANUP ===
+        // === OPEN/CLOSE DIALOG & TOOLTIP CLEANUP ===
+        open() {
+            Main.uiGroup.add_child(this);
+            Main.pushModal(this);
+            global.stage.set_key_focus(this); // Donne le focus pour pouvoir taper dans St.Entry
+        }
+
         close(returnedEditState = null) {
             cleanupOldPreviewTempFiles();
             this._destroyTooltip();
             if (this._onSave) {
                 this._onSave(null, returnedEditState || this._editState);
             }
-            super.close();
+            
+            Main.popModal(this);
+            if (this.get_parent()) {
+                this.get_parent().remove_child(this);
+            }
+            this.destroy();
         }
 
         _destroyTooltip() {

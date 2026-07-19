@@ -16,7 +16,7 @@
 }
 
 /*** OVERLAY ***/
-.dialog.overlay {
+.overlay-content-box {
     background-color: rgb(36,36,36) !important;
     background-image: none;
     border-image: none;
@@ -25,17 +25,6 @@
     border: 1px solid rgb(40,40,40) !important;
     padding: 14px !important;
     font-family: inherit !important;
-}
-
-.dialog.overlay > StBoxLayout:first-child {
-    padding: 0px 0px 0px 0px !important;
-    margin: 0px !important;
-    spacing: 0px !important;
-}
-
-.overlay .dialog-button-box,
-.dialog.overlay .dialog-button-box {
-    padding: 0px !important; 
 }
 
 .overlay-title-label {
@@ -183,7 +172,7 @@
 }
 
 /*** PREVIEW ***/
-.dialog.preview {
+.preview {
     background-color: rgb(36,36,36) !important;
     background-image: none;
     border-image: none;
@@ -194,24 +183,12 @@
     margin: 0 !important;
 }
 
-.preview-content,
-.dialog.preview > *,
-.dialog-content-box.preview,
-.dialog.preview > StBoxLayout:first-child {
+.preview-content {
     background-image: none;
     border-image: none;
     border: none;
     padding: 0 !important;
     margin: 0 !important;
-    spacing: 0 !important;
-}
-
-.preview .dialog-button-box,
-.dialog.preview .dialog-button-box {
-    background-image: none;
-    border-image: none;
-    padding: 0 !important;
-    margin-bottom: 6px !important;
     spacing: 0 !important;
 }
 
@@ -336,26 +313,14 @@
     margin-left: 2px !important;
 }
 
-/*** EDIT MOD ***/
-.dialog.edit-modal {
-    background-color: rgba(0,0,0,0.11) !important;
-    background-image: none !important;
-    border: none !important;
-    border-image: none !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+/*** MULTI-SCREEN BACKGROUND ***/
+.custom-fullscreen-bg {
+    background-color: rgba(0, 0, 0, 0.4); 
 }
 
-.dialog.edit-modal> *,
-.dialog-content-box.edit-modal,
-.dialog.edit-modal > StBoxLayout:first-child {
-    background-image: none;
-    border-image: none;
-    border: none;
-    padding: 0 !important;
-    margin: 0 !important;
-    spacing: 0 !important;
+/*** EDIT MOD ***/
+.edit-background-barrier {
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .edit-image {
@@ -409,7 +374,7 @@
 .edit-toolbar-btn:active,
 .edit-toolbar-btn.colors:active,
 .edit-toolbar-btn.thicknesses:active {
-    background-color: #4a90e0;
+    background-color: #64a3d2;
     color: white;
 }
 
@@ -488,7 +453,7 @@
     border-radius: 8px;
     border: none;
     color: white !important;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     font-family: inherit !important;
     padding: 8px 16px;

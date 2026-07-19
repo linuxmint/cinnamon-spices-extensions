@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-10-25 18:56+0200\n"
+"POT-Creation-Date: 2026-07-19 19:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,179 +18,199 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:385
+#. editOverlay.js:428
 msgid "Brush"
 msgstr "Ecset"
 
-#. editOverlay.js:386
+#. editOverlay.js:429
 msgid "Eraser"
 msgstr "Radír"
 
-#. editOverlay.js:387
+#. editOverlay.js:430
 msgid "Arrow"
 msgstr "Nyíl"
 
-#. editOverlay.js:388
+#. editOverlay.js:431
+msgid "Line"
+msgstr "Vonal"
+
+#. editOverlay.js:432
 msgid "Rectangle"
 msgstr "Négyszög"
 
-#. editOverlay.js:389
+#. editOverlay.js:433
 msgid "Ellipse"
 msgstr "Elipszis"
 
-#. editOverlay.js:390
+#. editOverlay.js:434
+msgid "Triangle"
+msgstr "Háromszög"
+
+#. editOverlay.js:435
+msgid "Filled Rectangle"
+msgstr "Kitöltött Téglalap"
+
+#. editOverlay.js:436
+msgid "Filled Ellipse"
+msgstr "Kitöltött Ellipszis"
+
+#. editOverlay.js:437
+msgid "Filled Triangle"
+msgstr "Kitöltött Háromszög"
+
+#. editOverlay.js:438
 msgid "Pixelization"
 msgstr "Pixelesítés"
 
-#. editOverlay.js:391
+#. editOverlay.js:439
 msgid "Text"
 msgstr "Szöveg"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Black"
 msgstr "Fekete"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "White"
 msgstr "Fehér"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Red"
 msgstr "Piros"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Blue"
 msgstr "Kék"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Green"
 msgstr "Zöld"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Yellow"
 msgstr "Sárga"
 
-#. editOverlay.js:563
+#. editOverlay.js:611
 msgid "Thickness/size"
 msgstr "Vastagság/méret"
 
-#. editOverlay.js:568
+#. editOverlay.js:616
 msgid "Save changes to the canvas"
 msgstr "Változtatások mentése a vászonra"
 
-#. editOverlay.js:569
+#. editOverlay.js:617
 msgid "Cancel all changes"
 msgstr "Összes módosítás visszavonása"
 
-#. editOverlay.js:570 overlay.js:51 overlay.js:75
+#. editOverlay.js:618 overlay.js:93 overlay.js:119
 msgid "Close"
 msgstr "Bezár"
 
-#. editOverlay.js:937
+#. editOverlay.js:993
 msgid "Apply changes?"
 msgstr "Alkalmazza a módosításokat?"
 
-#. editOverlay.js:942
+#. editOverlay.js:998
 msgid "Merge canvas with image"
 msgstr "Vászon egyesítése képpel"
 
-#. editOverlay.js:946
+#. editOverlay.js:1002
 msgid "Save modified copy as…"
 msgstr "Módosított másolat mentése más néven…"
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
+#. editOverlay.js:1006 editOverlay.js:1160 preview.js:244 preview.js:333
 msgid "Cancel"
 msgstr "Mégse"
 
-#. editOverlay.js:960
+#. editOverlay.js:1016
 msgid "Quit without apply changes?"
 msgstr "Kilépés a változtatások alkalmazása nélkül?"
 
-#. editOverlay.js:964
+#. editOverlay.js:1020
 msgid "Yes"
 msgstr "Igen"
 
-#. editOverlay.js:979
+#. editOverlay.js:1035
 msgid "No"
 msgstr "Nem"
 
-#. editOverlay.js:1009 editOverlay.js:1104
+#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1185
 msgid "Error saving"
 msgstr "Hiba a mentés során"
 
-#. editOverlay.js:1036 preview.js:330
+#. editOverlay.js:1137 preview.js:321
 msgid "Script gtk-filechooser.py not available"
 msgstr "A gtk-filechooser.py szkript nem érhető el"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:336
-msgid "Save as..."
-msgstr "Mentés másként..."
-
-#. editOverlay.js:1059 preview.js:339
-msgid "Images"
-msgstr "Képek"
-
-#. editOverlay.js:1060 preview.js:340
-msgid "Save"
-msgstr "Mentés"
-
-#. overlay.js:48
-msgid "Full Screen"
-msgstr "Teljes képernyő"
-
-#. overlay.js:49
-msgid "Active Window"
-msgstr "Aktív ablak"
-
-#. overlay.js:50 overlay.js:124
-msgid "Selection"
-msgstr "Kiválasztás"
-
-#. overlay.js:77
-msgid "Mouse Pointer :"
-msgstr "Egérmutató :"
-
-#. overlay.js:126
-msgid "Timer (s) :"
-msgstr "Időzítő (mp) :"
-
-#. preview.js:188
-msgid "Edit image"
-msgstr "Kép szerkesztése"
-
-#. preview.js:189
-msgid "Copy to clipboard"
-msgstr "Másolás a vágólapra"
-
-#. preview.js:223
-msgid "Back"
-msgstr "Vissza"
-
-#. preview.js:313 preview.js:318 preview.js:323
-msgid "Invalid filename"
-msgstr "Érvénytelen fájlnév"
-
-#. preview.js:313
-msgid "Filename cannot be empty."
-msgstr "A fájlnév nem lehet üres."
-
-#. preview.js:318
-msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
-msgstr "A fájlnév tiltott karaktereket tartalmaz: \\ / : * ? \" < > |"
-
-#. preview.js:323
-msgid "Filename must end with .png"
-msgstr "A fájlnévnek .png kiterjesztésűnek kell lennie"
-
-#. preview.js:330
+#. editOverlay.js:1137 preview.js:321
 msgid "Unable to open file chooser."
 msgstr "Nem sikerült megnyitni a fájlválasztót."
 
-#. preview.js:419
+#. editOverlay.js:1155 preview.js:228 preview.js:328
+msgid "Save as..."
+msgstr "Mentés másként..."
+
+#. editOverlay.js:1158 preview.js:331
+msgid "Images"
+msgstr "Képek"
+
+#. editOverlay.js:1159 preview.js:332
+msgid "Save"
+msgstr "Mentés"
+
+#. overlay.js:90
+msgid "Full Screen"
+msgstr "Teljes képernyő"
+
+#. overlay.js:91
+msgid "Active Window"
+msgstr "Aktív ablak"
+
+#. overlay.js:92 overlay.js:160
+msgid "Selection"
+msgstr "Kiválasztás"
+
+#. overlay.js:121
+msgid "Mouse Pointer :"
+msgstr "Egérmutató :"
+
+#. overlay.js:162
+msgid "Timer (s) :"
+msgstr "Időzítő (mp) :"
+
+#. preview.js:212
+msgid "Edit image"
+msgstr "Kép szerkesztése"
+
+#. preview.js:213
+msgid "Copy to clipboard"
+msgstr "Másolás a vágólapra"
+
+#. preview.js:234
+msgid "Back"
+msgstr "Vissza"
+
+#. preview.js:294 preview.js:298 preview.js:302
+msgid "Invalid filename"
+msgstr "Érvénytelen fájlnév"
+
+#. preview.js:294
+msgid "Filename cannot be empty."
+msgstr "A fájlnév nem lehet üres."
+
+#. preview.js:298
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
+msgstr "A fájlnév tiltott karaktereket tartalmaz: \\ / : * ? \" < > |"
+
+#. preview.js:302
+msgid "Filename must end with .png"
+msgstr "A fájlnévnek .png kiterjesztésűnek kell lennie"
+
+#. preview.js:410
 msgid "Copy failed"
 msgstr "Másolás sikertelen"
 
-#. preview.js:419
+#. preview.js:410
 msgid "Unable to copy image to clipboard."
 msgstr "Nem sikerült a képet a vágólapra másolni."
 

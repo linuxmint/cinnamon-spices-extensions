@@ -1,33 +1,74 @@
 // === IMPORTS & CONSTANTS ===
-const ModalDialog = imports.ui.modalDialog;
 const St = imports.gi.St;
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
-const Layout = imports.ui.layout;
+const Main = imports.ui.main;
+const ExtensionSystem = imports.ui.extensionSystem;
 const { _ } = require('./translation');
 
 const Overlay = { showOverlay };
-const ICONS_PATH = __meta.path + '/icons/';
+
+const UUID = 'cinnamon-screenshot@hilyxx';
+
+const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
+const ICONS_PATH = EXTENSION_DIR + '/icons/';
 
 const BTN_POINTER = 32;
 const BTN_TIMER_W = 34, BTN_TIMER_H = 16;
 
-let dialog = null;
-let timerValue = 0; // default value
+let overlayWidget = null;
+let timerValue = 0;
 
 // === MAIN OVERLAY FUNCTION ===
 function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
-    if (dialog) return;
+    if (overlayWidget) return;
 
     const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
-    dialog = new ModalDialog.ModalDialog({ styleClass: 'overlay', destroyOnClose: true, cinnamonReactive: true });
-    dialog.connect('closed', () => {
-        dialog = null;
-        timerValue = 0;
-    });
-    // Use the passed mouse pointer visibility state
     let currentMousePointerVisible = mousePointerVisible !== undefined ? mousePointerVisible : true;
+
+    // Giant background covering all screens
+    overlayWidget = new St.Widget({
+        reactive: true,
+        x: 0, y: 0,
+        width: global.stage.width,
+        height: global.stage.height,
+        style_class: 'custom-fullscreen-bg'
+    });
+
+    // Block clicks below
+    overlayWidget.connect('button-press-event', () => Clutter.EVENT_STOP);
+    overlayWidget.connect('button-release-event', () => Clutter.EVENT_STOP);
+    overlayWidget.connect('scroll-event', () => Clutter.EVENT_STOP);
+
+    // Find the active monitor
+    const [mouseX, mouseY] = global.get_pointer();
+    let monitors = Main.layoutManager.monitors;
+    let currentMonitor = monitors[0];
+    for (let i = 0; i < monitors.length; i++) {
+        if (mouseX >= monitors[i].x && mouseX < monitors[i].x + monitors[i].width &&
+            mouseY >= monitors[i].y && mouseY < monitors[i].y + monitors[i].height) {
+            currentMonitor = monitors[i];
+            break;
+        }
+    }
+
+    // Container aligned to the active monitor with BinLayout to center its content
+    const monitorBox = new St.Widget({
+        x: currentMonitor.x,
+        y: currentMonitor.y,
+        width: currentMonitor.width,
+        height: currentMonitor.height,
+        layout_manager: new Clutter.BinLayout()
+    });
+    overlayWidget.add_child(monitorBox);
+
+    // Centered wrapper for the content box
+    const centerWrapper = new St.BoxLayout({
+        x_align: Clutter.ActorAlign.CENTER,
+        y_align: Clutter.ActorAlign.CENTER
+    });
+    monitorBox.add_child(centerWrapper);
 
     // === MAIN CONTENT BOX ===
     const contentBox = new St.BoxLayout({ vertical: true, style_class: 'overlay-content-box' });
@@ -41,7 +82,8 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
 
     const label = new St.Label({ text: 'Cinnamon-Screenshot', style_class: 'overlay-title-label' });
     contentBox.add_child(label);
-    dialog.contentLayout.add_child(contentBox);
+    
+    centerWrapper.add_child(contentBox);
 
     // === CREATE MAIN OVERLAY UI ===
     const buttons = [
@@ -63,10 +105,12 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
             x_expand: true
         });
         button.connect('clicked', () => {
-            dialog.close();
+            const selectedTimer = timerValue;            
+            hideOverlay();
+            
             if (buttonInfo.mode) {
                 GLib.timeout_add(GLib.PRIORITY_DEFAULT, 10, () => {
-                    onOptionSelected(buttonInfo.mode, timerValue, currentMousePointerVisible);
+                    onOptionSelected(buttonInfo.mode, selectedTimer, currentMousePointerVisible);
                     return GLib.SOURCE_REMOVE;
                 });
             }
@@ -79,12 +123,8 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
             const mousePointerButton = new St.Button({ style_class: 'overlay-mouse-pointer-toggle', x_expand: false });
             mousePointerButton.set_size(BTN_POINTER * scale, BTN_POINTER * scale);
             
-            const pointerIconFile = new Gio.FileIcon({
-                file: Gio.File.new_for_path(ICONS_PATH + 'pointer-symbolic.svg')
-            });
-            const noPointerIconFile = new Gio.FileIcon({
-                file: Gio.File.new_for_path(ICONS_PATH + 'no-pointer-symbolic.svg')
-            });  
+            const pointerIconFile = new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'pointer-symbolic.svg') });
+            const noPointerIconFile = new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'no-pointer-symbolic.svg') });  
             const mouseIconSize = 24;
             const mousePointerIcon = new St.Icon({ 
                 gicon: currentMousePointerVisible ? pointerIconFile : noPointerIconFile,
@@ -92,7 +132,6 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
             });
             mousePointerButton.set_child(mousePointerIcon);
             
-            // Set initial color based on state
             if (currentMousePointerVisible) {
                 mousePointerIcon.set_style('color: #4caf50;');
             } else {
@@ -101,10 +140,7 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
             
             mousePointerButton.connect('clicked', () => {
                 currentMousePointerVisible = !currentMousePointerVisible;
-                // Save to settings
-                if (saveCallback) {
-                    saveCallback(currentMousePointerVisible);
-                }
+                if (saveCallback) saveCallback(currentMousePointerVisible);
                 if (currentMousePointerVisible) {
                     mousePointerIcon.set_gicon(pointerIconFile);
                     mousePointerIcon.set_style('color: #4caf50;');
@@ -128,7 +164,6 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
 
             const minusButton = new St.Button({ style_class: 'overlay-timer-minus', x_expand: false });
             minusButton.set_size(BTN_TIMER_W * scale, BTN_TIMER_H * scale);
-
             const minusIcon = new St.Icon({ 
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'timer-decrease-symbolic.svg') }),
                 icon_size: (scale <= 1) ? timerIconSize : Math.floor(Math.min(BTN_TIMER_W * scale, BTN_TIMER_H * scale) * 0.6)
@@ -137,7 +172,6 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
 
             const plusButton = new St.Button({ style_class: 'overlay-timer-plus', x_expand: false });
             plusButton.set_size(BTN_TIMER_W * scale, BTN_TIMER_H * scale);
-
             const plusIcon = new St.Icon({ 
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'timer-increase-symbolic.svg') }),
                 icon_size: (scale <= 1) ? timerIconSize : Math.floor(Math.min(BTN_TIMER_W * scale, BTN_TIMER_H * scale) * 0.6)
@@ -148,7 +182,6 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
             
             const resetButton = new St.Button({ style_class: 'overlay-timer-reset', x_expand: false });
             resetButton.set_size(BTN_TIMER_W * scale, BTN_TIMER_H * scale);
-
             const resetIcon = new St.Icon({
                 gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'timer-reset-symbolic.svg') }),
                 icon_size: (scale <= 1) ? timerIconSize : Math.floor(Math.min(BTN_TIMER_W * scale, BTN_TIMER_H * scale) * 0.6)
@@ -158,20 +191,13 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
             const valueLabel = new St.Label({ text: timerValue.toString(), style_class: 'overlay-timer-value' });
 
             minusButton.connect('clicked', () => {
-                if (timerValue > 0) {
-                    timerValue--;
-                    valueLabel.set_text(timerValue.toString());
-                }
+                if (timerValue > 0) { timerValue--; valueLabel.set_text(timerValue.toString()); }
             });
             plusButton.connect('clicked', () => {
-                if (timerValue < 60) {
-                    timerValue++;
-                    valueLabel.set_text(timerValue.toString());
-                }
+                if (timerValue < 60) { timerValue++; valueLabel.set_text(timerValue.toString()); }
             });
             resetButton.connect('clicked', () => {
-                timerValue = 0;
-                valueLabel.set_text(timerValue.toString());
+                timerValue = 0; valueLabel.set_text(timerValue.toString());
             });
 
             timerRow.add_child(timerLabel);
@@ -184,22 +210,28 @@ function showOverlay(onOptionSelected, mousePointerVisible, saveCallback) {
         }
     }
 
-    dialog.connect('key-press-event', (actor, event) => {
-        const keySymbol = event.get_key_symbol();
-        if (keySymbol === Clutter.KEY_Escape) {
-            dialog.close();
+    // Escape key
+    overlayWidget.connect('key-press-event', (actor, event) => {
+        if (event.get_key_symbol() === Clutter.KEY_Escape) {
+            hideOverlay();
             return Clutter.EVENT_STOP;
         }
         return Clutter.EVENT_PROPAGATE;
     });
 
-    dialog.open();
+    Main.uiGroup.add_child(overlayWidget);
+    Main.pushModal(overlayWidget);
+    global.stage.set_key_focus(overlayWidget);
 }
 
 function hideOverlay() {
-    if (dialog) {
-        dialog.close();
-        dialog = null;
+    if (overlayWidget) {
+        Main.popModal(overlayWidget);
+        if (overlayWidget.get_parent()) {
+            overlayWidget.get_parent().remove_child(overlayWidget);
+        }
+        overlayWidget.destroy();
+        overlayWidget = null;
         timerValue = 0;
     }
 }

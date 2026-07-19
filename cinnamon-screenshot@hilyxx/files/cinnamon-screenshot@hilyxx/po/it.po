@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.22\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-10-25 18:56+0200\n"
+"POT-Creation-Date: 2026-07-19 19:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -16,181 +16,201 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:385
+#. editOverlay.js:428
 msgid "Brush"
 msgstr "Pennello"
 
-#. editOverlay.js:386
+#. editOverlay.js:429
 msgid "Eraser"
 msgstr "Gomma"
 
-#. editOverlay.js:387
+#. editOverlay.js:430
 msgid "Arrow"
 msgstr "Freccia"
 
-#. editOverlay.js:388
+#. editOverlay.js:431
+msgid "Line"
+msgstr "Linea"
+
+#. editOverlay.js:432
 msgid "Rectangle"
 msgstr "Rettangolo"
 
-#. editOverlay.js:389
+#. editOverlay.js:433
 msgid "Ellipse"
 msgstr "Ellisse"
 
-#. editOverlay.js:390
+#. editOverlay.js:434
+msgid "Triangle"
+msgstr "Triangolo"
+
+#. editOverlay.js:435
+msgid "Filled Rectangle"
+msgstr "Rettangolo Pieno"
+
+#. editOverlay.js:436
+msgid "Filled Ellipse"
+msgstr "Ellisse Piena"
+
+#. editOverlay.js:437
+msgid "Filled Triangle"
+msgstr "Triangolo Pieno"
+
+#. editOverlay.js:438
 msgid "Pixelization"
 msgstr "Pixellatura"
 
-#. editOverlay.js:391
+#. editOverlay.js:439
 msgid "Text"
 msgstr "Testo"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Black"
 msgstr "Nero"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "White"
 msgstr "Bianco"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Red"
 msgstr "Rosso"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Blue"
 msgstr "Blu"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Green"
 msgstr "Verde"
 
-#. editOverlay.js:445
+#. editOverlay.js:493
 msgid "Yellow"
 msgstr "Giallo"
 
-#. editOverlay.js:563
+#. editOverlay.js:611
 msgid "Thickness/size"
 msgstr "Spessore/dimensione"
 
-#. editOverlay.js:568
+#. editOverlay.js:616
 msgid "Save changes to the canvas"
 msgstr "Salva le modifiche sulla tela"
 
-#. editOverlay.js:569
+#. editOverlay.js:617
 msgid "Cancel all changes"
 msgstr "Annulla tutte le modifiche"
 
-#. editOverlay.js:570 overlay.js:51 overlay.js:75
+#. editOverlay.js:618 overlay.js:93 overlay.js:119
 msgid "Close"
 msgstr "Chiudi"
 
-#. editOverlay.js:937
+#. editOverlay.js:993
 msgid "Apply changes?"
 msgstr "Applicare le modifiche?"
 
-#. editOverlay.js:942
+#. editOverlay.js:998
 msgid "Merge canvas with image"
 msgstr "Unisci la tela con l'immagine"
 
-#. editOverlay.js:946
+#. editOverlay.js:1002
 msgid "Save modified copy as…"
 msgstr "Salva copia modificata come…"
 
-#. editOverlay.js:950 editOverlay.js:1061 preview.js:239 preview.js:341
+#. editOverlay.js:1006 editOverlay.js:1160 preview.js:244 preview.js:333
 msgid "Cancel"
 msgstr "Annulla"
 
-#. editOverlay.js:960
+#. editOverlay.js:1016
 msgid "Quit without apply changes?"
 msgstr "Uscire senza applicare le modifiche?"
 
-#. editOverlay.js:964
+#. editOverlay.js:1020
 msgid "Yes"
 msgstr "Sì"
 
-#. editOverlay.js:979
+#. editOverlay.js:1035
 msgid "No"
 msgstr "No"
 
-#. editOverlay.js:1009 editOverlay.js:1104
+#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1185
 msgid "Error saving"
 msgstr "Errore nel salvataggio"
 
-#. editOverlay.js:1036 preview.js:330
+#. editOverlay.js:1137 preview.js:321
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py non disponibile"
 
-#. editOverlay.js:1056 preview.js:211 preview.js:336
-msgid "Save as..."
-msgstr "Salva come..."
-
-#. editOverlay.js:1059 preview.js:339
-msgid "Images"
-msgstr "Immagini"
-
-#. editOverlay.js:1060 preview.js:340
-msgid "Save"
-msgstr "Salva"
-
-#. overlay.js:48
-msgid "Full Screen"
-msgstr "Schermo intero"
-
-#. overlay.js:49
-msgid "Active Window"
-msgstr "Finestra attiva"
-
-#. overlay.js:50 overlay.js:124
-msgid "Selection"
-msgstr "Selezione"
-
-#. overlay.js:77
-msgid "Mouse Pointer :"
-msgstr "Puntatore mouse:"
-
-#. overlay.js:126
-msgid "Timer (s) :"
-msgstr "Timer (s):"
-
-#. preview.js:188
-msgid "Edit image"
-msgstr "Modifica immagine"
-
-#. preview.js:189
-msgid "Copy to clipboard"
-msgstr "Copia negli appunti"
-
-#. preview.js:223
-msgid "Back"
-msgstr "Indietro"
-
-#. preview.js:313 preview.js:318 preview.js:323
-msgid "Invalid filename"
-msgstr "Nome file non valido"
-
-#. preview.js:313
-msgid "Filename cannot be empty."
-msgstr "Il nome file non può essere vuoto."
-
-#. preview.js:318
-msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
-msgstr "Il nome file contiene caratteri non consentiti: \\ / : * ? \" < > |"
-
-#. preview.js:323
-msgid "Filename must end with .png"
-msgstr "Il nome file deve terminare con .png"
-
-#. preview.js:330
+#. editOverlay.js:1137 preview.js:321
 msgid "Unable to open file chooser."
 msgstr "Impossibile aprire il selettore file."
 
-#. preview.js:419
+#. editOverlay.js:1155 preview.js:228 preview.js:328
+msgid "Save as..."
+msgstr "Salva come..."
+
+#. editOverlay.js:1158 preview.js:331
+msgid "Images"
+msgstr "Immagini"
+
+#. editOverlay.js:1159 preview.js:332
+msgid "Save"
+msgstr "Salva"
+
+#. overlay.js:90
+msgid "Full Screen"
+msgstr "Schermo intero"
+
+#. overlay.js:91
+msgid "Active Window"
+msgstr "Finestra attiva"
+
+#. overlay.js:92 overlay.js:160
+msgid "Selection"
+msgstr "Selezione"
+
+#. overlay.js:121
+msgid "Mouse Pointer :"
+msgstr "Puntatore mouse:"
+
+#. overlay.js:162
+msgid "Timer (s) :"
+msgstr "Timer (s):"
+
+#. preview.js:212
+msgid "Edit image"
+msgstr "Modifica immagine"
+
+#. preview.js:213
+msgid "Copy to clipboard"
+msgstr "Copia negli appunti"
+
+#. preview.js:234
+msgid "Back"
+msgstr "Indietro"
+
+#. preview.js:294 preview.js:298 preview.js:302
+msgid "Invalid filename"
+msgstr "Nome file non valido"
+
+#. preview.js:294
+msgid "Filename cannot be empty."
+msgstr "Il nome file non può essere vuoto."
+
+#. preview.js:298
+msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
+msgstr "Il nome file contiene caratteri non consentiti: \\ / : * ? \" < > |"
+
+#. preview.js:302
+msgid "Filename must end with .png"
+msgstr "Il nome file deve terminare con .png"
+
+#. preview.js:410
 msgid "Copy failed"
 msgstr "Copia fallita"
 
-#. preview.js:419
+#. preview.js:410
 msgid "Unable to copy image to clipboard."
 msgstr "Impossibile copiare l'immagine negli appunti."
 
