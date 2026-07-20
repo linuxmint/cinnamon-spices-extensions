@@ -20,7 +20,7 @@ const BTN_TOOL = 30;
 
 function getPicturesDir() {
     return GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
-        || GLib.get_home_dir() + '/Pictures';
+        || GLib.get_home_dir();
 }
 
 // === MAIN PREVIEW DIALOG CLASS ===
@@ -317,10 +317,14 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
                 const picturesDir = getPicturesDir();
                 const file = Gio.File.new_for_path(scriptPath);
                 
-                if (!file.query_exists(null)) {
-                    Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
-                    showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
-                    return GLib.SOURCE_REMOVE;
+                try {
+                    file.query_info('standard::type', 0, null);
+                } catch (e) {
+                    if (e.matches && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                        Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
+                        showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
+                        return GLib.SOURCE_REMOVE;
+                    }
                 }
 
                 const argv = [
@@ -457,9 +461,9 @@ let _currentDialog = null;
 function isPngReadable(filepath) {
     try {
         const file = Gio.File.new_for_path(filepath);
-        if (!file.query_exists(null)) return false;
         const info = file.query_info('standard::size', 0, null);
         const size = info.get_attribute_uint64('standard::size');
+
         if (size === 0) return false;
         const pixbuf = GdkPixbuf.Pixbuf.new_from_file(filepath);
         return !!pixbuf;
@@ -507,13 +511,11 @@ function showScreenshotPreview(filepath, onSave, onOptionSelected, showBackButto
                         if (!previewTempFileCache[cacheKey]) {
                             // Pre-create the preview file
                             const file = Gio.File.new_for_path(filepath);
-                            if (file.query_exists(null)) {
-                                const info = file.query_info('standard::size', 0, null);
-                                const size = info.get_attribute_uint64('standard::size');
-                                if (size > 0) {
-                                    // Pre-create the preview cache
-                                    getOrCreatePreviewTempFile(filepath, 380, 220);
-                                }
+                            const info = file.query_info('standard::size', 0, null);
+                            const size = info.get_attribute_uint64('standard::size');
+                            if (size > 0) {
+                                // Pre-create the preview cache
+                                getOrCreatePreviewTempFile(filepath, 380, 220);
                             }
                         }
                     } catch (e) {
@@ -549,8 +551,6 @@ function getOrCreatePreviewTempFile(filepath, previewW, previewH) {
     try {
         // Quick check before full loading
         const file = Gio.File.new_for_path(filepath);
-        if (!file.query_exists(null)) return filepath;
-        
         const info = file.query_info('standard::size', 0, null);
         const size = info.get_attribute_uint64('standard::size');
         if (size === 0) return filepath;
@@ -561,10 +561,12 @@ function getOrCreatePreviewTempFile(filepath, previewW, previewH) {
         scaled.savev(tmpPath, 'png', [], []);
         previewTempFileCache[cacheKey] = tmpPath;
         return tmpPath;
-    } catch (e) {
-        global.log('CS: error creating preview temp file: ' + e);
-        return filepath; // fallback
-    }
+        } catch (e) {
+            if (!e.matches || !e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                global.log('CS: error creating preview temp file: ' + e);
+            }
+            return filepath; // fallback
+        }
 }
 
 function cleanupOldPreviewTempFiles() {

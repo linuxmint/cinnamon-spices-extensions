@@ -1133,14 +1133,18 @@ if (typeof ScreenshotEditDialog !== 'function') {
 
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
                 const file = Gio.File.new_for_path(scriptPath);
-                if (!file.query_exists(null)) {
-                    Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
-                    safeReopenPreview(currentState);
-                    return GLib.SOURCE_REMOVE;
+                try {
+                    file.query_info('standard::type', 0, null);
+                } catch (e) {
+                    if (e.matches && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                        Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
+                        safeReopenPreview(currentState);
+                        return GLib.SOURCE_REMOVE;
+                    }
                 }
 
                 const picturesDir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
-                    || GLib.get_home_dir() + '/Pictures';
+                    || GLib.get_home_dir();
 
                 let defaultName = GLib.path_get_basename(filepath);
                 let extIndex = defaultName.lastIndexOf('.');

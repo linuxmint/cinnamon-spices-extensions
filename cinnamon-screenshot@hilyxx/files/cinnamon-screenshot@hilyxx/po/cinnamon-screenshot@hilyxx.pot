@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-19 19:38+0200\n"
+"POT-Creation-Date: 2026-07-20 16:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Save modified copy as…"
 msgstr ""
 
-#. editOverlay.js:1006 editOverlay.js:1160 preview.js:244 preview.js:333
+#. editOverlay.js:1006 editOverlay.js:1164 preview.js:244 preview.js:337
 msgid "Cancel"
 msgstr ""
 
@@ -133,27 +133,27 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1185
+#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1189
 msgid "Error saving"
 msgstr ""
 
-#. editOverlay.js:1137 preview.js:321
+#. editOverlay.js:1140 preview.js:324
 msgid "Script gtk-filechooser.py not available"
 msgstr ""
 
-#. editOverlay.js:1137 preview.js:321
+#. editOverlay.js:1140 preview.js:324
 msgid "Unable to open file chooser."
 msgstr ""
 
-#. editOverlay.js:1155 preview.js:228 preview.js:328
+#. editOverlay.js:1159 preview.js:228 preview.js:332
 msgid "Save as..."
 msgstr ""
 
-#. editOverlay.js:1158 preview.js:331
+#. editOverlay.js:1162 preview.js:335
 msgid "Images"
 msgstr ""
 
-#. editOverlay.js:1159 preview.js:332
+#. editOverlay.js:1163 preview.js:336
 msgid "Save"
 msgstr ""
 
@@ -205,11 +205,11 @@ msgstr ""
 msgid "Filename must end with .png"
 msgstr ""
 
-#. preview.js:410
+#. preview.js:414
 msgid "Copy failed"
 msgstr ""
 
-#. preview.js:410
+#. preview.js:414
 msgid "Unable to copy image to clipboard."
 msgstr ""
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-19 19:38+0200\n"
+"POT-Creation-Date: 2026-07-20 16:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -118,7 +118,7 @@ msgstr "Mesclar edições com a imagem"
 msgid "Save modified copy as…"
 msgstr "Salvar copia modificada como..."
 
-#. editOverlay.js:1006 editOverlay.js:1160 preview.js:244 preview.js:333
+#. editOverlay.js:1006 editOverlay.js:1164 preview.js:244 preview.js:337
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -134,27 +134,27 @@ msgstr "Sim"
 msgid "No"
 msgstr "Não"
 
-#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1185
+#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1189
 msgid "Error saving"
 msgstr "Erro ao salvar"
 
-#. editOverlay.js:1137 preview.js:321
+#. editOverlay.js:1140 preview.js:324
 msgid "Script gtk-filechooser.py not available"
 msgstr "O script gtk-filechooser.py não está disponível"
 
-#. editOverlay.js:1137 preview.js:321
+#. editOverlay.js:1140 preview.js:324
 msgid "Unable to open file chooser."
 msgstr "Não foi possível abrir o arquivo escolhido."
 
-#. editOverlay.js:1155 preview.js:228 preview.js:328
+#. editOverlay.js:1159 preview.js:228 preview.js:332
 msgid "Save as..."
 msgstr "Salvar como..."
 
-#. editOverlay.js:1158 preview.js:331
+#. editOverlay.js:1162 preview.js:335
 msgid "Images"
 msgstr "Imagens"
 
-#. editOverlay.js:1159 preview.js:332
+#. editOverlay.js:1163 preview.js:336
 msgid "Save"
 msgstr "Salvar"
 
@@ -206,11 +206,11 @@ msgstr "Nome do arquivo contem caracteres inválidos: \\ / : * ? \" < > |"
 msgid "Filename must end with .png"
 msgstr "Nome do arquivo não pode terminar com .png"
 
-#. preview.js:410
+#. preview.js:414
 msgid "Copy failed"
 msgstr "Copia falhou"
 
-#. preview.js:410
+#. preview.js:414
 msgid "Unable to copy image to clipboard."
 msgstr "Não foi possível copiar a imagem para a área de transferência."
 
