@@ -23,6 +23,29 @@ function getPicturesDir() {
         || GLib.get_home_dir();
 }
 
+function queryInfoAsync(file, attributes) {
+    return new Promise((resolve, reject) => {
+        try {
+            file.query_info_async(
+                attributes,
+                Gio.FileQueryInfoFlags.NONE,
+                0,
+                null,
+                (source, res) => {
+                    try {
+                        const info = source.query_info_finish(res);
+                        resolve(info);
+                    } catch (e) {
+                        reject(e);
+                    }
+                }
+            );
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 // === MAIN PREVIEW DIALOG CLASS ===
 var ScreenshotPreviewDialog;
 if (typeof ScreenshotPreviewDialog !== 'function') {
@@ -314,60 +337,64 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
             this.close();
 
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-                const picturesDir = getPicturesDir();
-                const file = Gio.File.new_for_path(scriptPath);
-                
-                try {
-                    file.query_info('standard::type', 0, null);
-                } catch (e) {
-                    if (e.matches && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
-                        Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
-                        showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
-                        return GLib.SOURCE_REMOVE;
-                    }
-                }
-
-                const argv = [
-                    'python3', scriptPath,
-                    '--title', _('Save as...'),
-                    '--filename', defaultName,
-                    '--directory', picturesDir,
-                    '--filter', _('Images'),
-                    '--save-button', _('Save'),
-                    '--cancel-button', _('Cancel')
-                ];
-
-                const proc = new Gio.Subprocess({
-                    argv: argv,
-                    flags: Gio.SubprocessFlags.STDOUT_PIPE
-                });
-                proc.init(null);
-
-                proc.communicate_utf8_async(null, null, (proc, res) => {
+                // Wrapper asynchrone IIFE
+                (async () => {
+                    const picturesDir = getPicturesDir();
+                    const file = Gio.File.new_for_path(scriptPath);
+                    
                     try {
-                        const [, stdout] = proc.communicate_utf8_finish(res);
-                        const filename = stdout.trim();
-                        
-                        if (filename) {
-                            try {
-                                const sourceFile = Gio.File.new_for_path(currentFilepath);
-                                const destFile = Gio.File.new_for_path(filename);
-                                sourceFile.move(destFile, Gio.FileCopyFlags.OVERWRITE, null, null);
-                                if (currentOnSave) currentOnSave(filename, currentEditState);
-                                                              
-                            } catch (e) {
-                                global.log('CS: error while saving screenshot: ' + e);
+                        await queryInfoAsync(file, 'standard::type');
+                    } catch (e) {
+                        if (e.matches && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                            Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
+                            showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
+                            return;
+                        }
+                    }
+
+                    const argv = [
+                        'python3', scriptPath,
+                        '--title', _('Save as...'),
+                        '--filename', defaultName,
+                        '--directory', picturesDir,
+                        '--filter', _('Images'),
+                        '--save-button', _('Save'),
+                        '--cancel-button', _('Cancel')
+                    ];
+
+                    const proc = new Gio.Subprocess({
+                        argv: argv,
+                        flags: Gio.SubprocessFlags.STDOUT_PIPE
+                    });
+                    proc.init(null);
+
+                    proc.communicate_utf8_async(null, null, (proc, res) => {
+                        try {
+                            const [, stdout] = proc.communicate_utf8_finish(res);
+                            const filename = stdout.trim();
+                            
+                            if (filename) {
+                                try {
+                                    const sourceFile = Gio.File.new_for_path(currentFilepath);
+                                    const destFile = Gio.File.new_for_path(filename);
+                                    sourceFile.move(destFile, Gio.FileCopyFlags.OVERWRITE, null, null);
+                                    if (currentOnSave) currentOnSave(filename, currentEditState);
+                                                                  
+                                } catch (e) {
+                                    global.log('CS: error while saving screenshot: ' + e);
+                                }
+                            } else {
+                                // Cancelled by user: reopening preview interface
+                                showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
                             }
-                        } else {
-                            // Cancelled by user: reopening preview interface
+                        } catch (e) {
+                            global.log('CS: error gtk-filechooser.py: ' + e);
                             showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
                         }
-                    } catch (e) {
-                        global.log('CS: error gtk-filechooser.py: ' + e);
-                        showScreenshotPreview(currentFilepath, currentOnSave, currentOnOptionSelected, currentShowBackButton, currentEditState);
-                    }
-                });
-                return GLib.SOURCE_REMOVE;
+                    });
+                })().catch(err => global.logError('CS Error in _openFileChooser: ' + err));
+                
+                return GLib.SOURCE_REMOVE; 
             });
         }
 
@@ -419,7 +446,7 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
         open() {
             Main.uiGroup.add_child(this);
             Main.pushModal(this);
-            global.stage.set_key_focus(this); // Donne le focus pour pouvoir taper dans St.Entry
+            global.stage.set_key_focus(this);
         }
 
         close(returnedEditState = null) {
@@ -458,18 +485,20 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
 let _currentDialog = null;
 
 // === PNG READABILITY CHECK ===
-function isPngReadable(filepath) {
-    try {
-        const file = Gio.File.new_for_path(filepath);
-        const info = file.query_info('standard::size', 0, null);
-        const size = info.get_attribute_uint64('standard::size');
+function isPngReadableAsync(filepath) {
+    return (async () => {
+        try {
+            const file = Gio.File.new_for_path(filepath);
+            const info = await queryInfoAsync(file, 'standard::size');
+            const size = info.get_attribute_uint64('standard::size');
 
-        if (size === 0) return false;
-        const pixbuf = GdkPixbuf.Pixbuf.new_from_file(filepath);
-        return !!pixbuf;
-    } catch (e) {
-        return false;
-    }
+            if (size === 0) return false;
+            const pixbuf = GdkPixbuf.Pixbuf.new_from_file(filepath);
+            return !!pixbuf;
+        } catch (e) {
+            return false;
+        }
+    })();
 }
 
 // === MAIN ENTRY POINT: SHOW PREVIEW DIALOG ===
@@ -493,40 +522,49 @@ function showScreenshotPreview(filepath, onSave, onOptionSelected, showBackButto
     let dialogPrepared = false;
     
     const waitForReadable = () => {
-        if (isPngReadable(filepath) || elapsed >= maxWait) {
-            if (elapsed >= maxWait) {
-                global.log('CS: PNG not readable after delay, trying preview anyway');
-            }
-            createDialog();
-        } else {
-            elapsed += interval;
-            
-            // Prepare the dialog in parallel after 100ms
-            if (!dialogPrepared && elapsed >= 100) {
-                dialogPrepared = true;
-                // Preload the image in the background
-                GLib.timeout_add(GLib.PRIORITY_DEFAULT, 0, () => {
-                    try {
-                        const cacheKey = getCacheKey(filepath);
-                        if (!previewTempFileCache[cacheKey]) {
-                            // Pre-create the preview file
-                            const file = Gio.File.new_for_path(filepath);
-                            const info = file.query_info('standard::size', 0, null);
-                            const size = info.get_attribute_uint64('standard::size');
-                            if (size > 0) {
-                                // Pre-create the preview cache
-                                getOrCreatePreviewTempFile(filepath, 380, 220);
+        (async () => {
+            const isReadable = await isPngReadableAsync(filepath);
+            if (isReadable || elapsed >= maxWait) {
+                if (elapsed >= maxWait) {
+                    global.log('CS: PNG not readable after delay, trying preview anyway');
+                }
+                createDialog();
+            } else {
+                elapsed += interval;
+                
+                // Prepare the dialog in parallel after 100ms
+                if (!dialogPrepared && elapsed >= 100) {
+                    dialogPrepared = true;
+                    // Preload the image in the background
+                    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 0, () => {
+                        // asynchrone IIFE for the pre-load
+                        (async () => {
+                            try {
+                                const cacheKey = getCacheKey(filepath);
+                                if (!previewTempFileCache[cacheKey]) {
+                                    // Pre-create the preview file
+                                    const file = Gio.File.new_for_path(filepath);
+                                    const info = await queryInfoAsync(file, 'standard::size');
+                                    const size = info.get_attribute_uint64('standard::size');
+                                    if (size > 0) {
+                                        // Pre-create the preview cache
+                                        getOrCreatePreviewTempFile(filepath, 380, 220);
+                                    }
+                                }
+                            } catch (e) {
                             }
-                        }
-                    } catch (e) {
-
-                    }
-                    return GLib.SOURCE_REMOVE;
-                });
+                        })().catch(err => global.logError('CS Error in preload: ' + err));
+                        
+                        return GLib.SOURCE_REMOVE;
+                    });
+                }
+                
+                GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, waitForReadable);
             }
-            
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, waitForReadable);
-        }
+        })().catch(err => {
+            global.logError('CS Error in waitForReadable: ' + err);
+        });
+        
         return GLib.SOURCE_REMOVE;
     };
     waitForReadable();

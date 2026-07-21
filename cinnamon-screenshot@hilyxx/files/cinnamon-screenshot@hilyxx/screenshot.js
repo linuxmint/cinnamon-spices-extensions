@@ -3,8 +3,9 @@ const GLib = imports.gi.GLib;
 const Main = imports.ui.main;
 const messageTray = imports.ui.messageTray;
 const St = imports.gi.St;
+
 const { _ } = require('./translation');
-const { isPngReadable } = require('./preview');
+const { isPngReadableAsync } = require('./preview');
 
 const Screenshot = { takeScreenshot };
 
@@ -116,16 +117,23 @@ function takeScreenshot(type, timer, mouse, callback) {
                     let elapsed = 0;
                     const interval = 75;
                     const maxWait = (timer && timer > 0) ? (timer * 1000 + 20000) : 20000;
+                    
                     const waitForFile = () => {
-                        if (isPngReadable(filename)) {
-                            callback(filename);
-                        } else if (elapsed >= maxWait) {
-                            global.log('CS: file not found after capture, no preview');
-                            callback(null);
-                        } else {
-                            elapsed += interval;
-                            GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, waitForFile);
-                        }
+                        (async () => {
+                            const isReadable = await isPngReadableAsync(filename);
+                            if (isReadable) {
+                                callback(filename);
+                            } else if (elapsed >= maxWait) {
+                                global.log('CS: file not found after capture, no preview');
+                                callback(null);
+                            } else {
+                                elapsed += interval;
+                                GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, waitForFile);
+                            }
+                        })().catch(err => {
+                            global.logError('CS Error in waitForFile: ' + err);
+                            callback(null); 
+                        });
                         return GLib.SOURCE_REMOVE;
                     };
                     if (timer && timer > 0) {
@@ -140,17 +148,24 @@ function takeScreenshot(type, timer, mouse, callback) {
                     // === WAIT FOR FILE CREATION (FULL/WINDOW) ===
                     let elapsed = 0;
                     const interval = 75;
-                    const maxWait = (timer && timer > 0) ? (timer * 1000 + 10000) : 10000;
+                    const maxWait = (timer && timer > 0) ? (timer * 1000 + 20000) : 10000;
+                    
                     const waitForFile = () => {
-                        if (isPngReadable(filename)) {
-                            callback(filename);
-                        } else if (elapsed >= maxWait) {
-                            global.log('CS: file not found after capture, no preview');
-                            callback(null);
-                        } else {
-                            elapsed += interval;
-                            GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, waitForFile);
-                        }
+                        (async () => {
+                            const isReadable = await isPngReadableAsync(filename);
+                            if (isReadable) {
+                                callback(filename);
+                            } else if (elapsed >= maxWait) {
+                                global.log('CS: file not found after capture, no preview');
+                                callback(null);
+                            } else {
+                                elapsed += interval;
+                                GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, waitForFile);
+                            }
+                        })().catch(err => {
+                            global.logError('CS Error in waitForFile: ' + err);
+                            callback(null); 
+                        });
                         return GLib.SOURCE_REMOVE;
                     };
                     waitForFile();

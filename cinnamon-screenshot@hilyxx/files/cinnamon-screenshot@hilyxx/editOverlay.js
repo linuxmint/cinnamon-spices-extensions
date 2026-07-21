@@ -31,6 +31,30 @@ const MOSAIC_INTENSITY_MIN = 0.15;         // Minimum mosaic effect
 const MOSAIC_INTENSITY_RANGE = 0.25;       // Mosaic intensity range
 const MOSAIC_BLEND_FACTOR = 0.8;           // Color preservation factor
 
+
+function queryInfoAsync(file, attributes) {
+    return new Promise((resolve, reject) => {
+        try {
+            file.query_info_async(
+                attributes,
+                Gio.FileQueryInfoFlags.NONE,
+                0,
+                null,
+                (source, res) => {
+                    try {
+                        const info = source.query_info_finish(res);
+                        resolve(info);
+                    } catch (e) {
+                        reject(e);
+                    }
+                }
+            );
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 // === MAIN EDIT DIALOG CLASS: INITIALIZATION & UI SETUP ===
 var ScreenshotEditDialog;
 if (typeof ScreenshotEditDialog !== 'function') {
@@ -1132,73 +1156,77 @@ if (typeof ScreenshotEditDialog !== 'function') {
             this._cleanupAndClose(true);
 
             GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-                const file = Gio.File.new_for_path(scriptPath);
-                try {
-                    file.query_info('standard::type', 0, null);
-                } catch (e) {
-                    if (e.matches && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
-                        Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
-                        safeReopenPreview(currentState);
-                        return GLib.SOURCE_REMOVE;
-                    }
-                }
-
-                const picturesDir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
-                    || GLib.get_home_dir();
-
-                let defaultName = GLib.path_get_basename(filepath);
-                let extIndex = defaultName.lastIndexOf('.');
-                if (extIndex > 0) {
-                    defaultName = defaultName.slice(0, extIndex) + '_copy' + defaultName.slice(extIndex);
-                } else {
-                    defaultName = defaultName + '_copy';
-                }
-
-                const argv = [
-                    'python3', scriptPath,
-                    '--title', _('Save as...'),
-                    '--filename', defaultName,
-                    '--directory', picturesDir,
-                    '--filter', _('Images'),
-                    '--save-button', _('Save'),
-                    '--cancel-button', _('Cancel')
-                ];
-
-                const proc = new Gio.Subprocess({
-                    argv: argv,
-                    flags: Gio.SubprocessFlags.STDOUT_PIPE
-                });
-                proc.init(null);
-
-                proc.communicate_utf8_async(null, null, (proc, res) => {
+                // Wrapper asynchrone IIFE
+                (async () => {
+                    const file = Gio.File.new_for_path(scriptPath);
                     try {
-                        const [, stdout] = proc.communicate_utf8_finish(res);
-                        const destPath = stdout.trim();
-                        
-                        if (destPath) {
-                            try {
-                                // Save the final rendered copy
-                                pixbufOut.savev(destPath, 'png', [], []);
-                                
-                                // SUCCESS: The original temporary file still exists!
-                                // We reopen the preview with 'null' state to show the unmodified capture.
-                                safeReopenPreview(null);
-                                
-                            } catch (e) {
-                                global.log('CS: error saving copy: ' + e);
-                                Main.notifyError(_('Error saving'), '' + e);
+                        await queryInfoAsync(file, 'standard::type');
+                    } catch (e) {
+                        if (e.matches && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                            Main.notifyError(_('Script gtk-filechooser.py not available'), _('Unable to open file chooser.'));
+                            safeReopenPreview(currentState);
+                            return;
+                        }
+                    }
+
+                    const picturesDir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)
+                        || GLib.get_home_dir();
+
+                    let defaultName = GLib.path_get_basename(filepath);
+                    let extIndex = defaultName.lastIndexOf('.');
+                    if (extIndex > 0) {
+                        defaultName = defaultName.slice(0, extIndex) + '_copy' + defaultName.slice(extIndex);
+                    } else {
+                        defaultName = defaultName + '_copy';
+                    }
+
+                    const argv = [
+                        'python3', scriptPath,
+                        '--title', _('Save as...'),
+                        '--filename', defaultName,
+                        '--directory', picturesDir,
+                        '--filter', _('Images'),
+                        '--save-button', _('Save'),
+                        '--cancel-button', _('Cancel')
+                    ];
+
+                    const proc = new Gio.Subprocess({
+                        argv: argv,
+                        flags: Gio.SubprocessFlags.STDOUT_PIPE
+                    });
+                    proc.init(null);
+
+                    proc.communicate_utf8_async(null, null, (proc, res) => {
+                        try {
+                            const [, stdout] = proc.communicate_utf8_finish(res);
+                            const destPath = stdout.trim();
+                            
+                            if (destPath) {
+                                try {
+                                    // Save the final rendered copy
+                                    pixbufOut.savev(destPath, 'png', [], []);
+                                    
+                                    // SUCCESS: The original temporary file still exists!
+                                    // We reopen the preview with 'null' state to show the unmodified capture.
+                                    safeReopenPreview(null);
+                                    
+                                } catch (e) {
+                                    global.log('CS: error saving copy: ' + e);
+                                    Main.notifyError(_('Error saving'), '' + e);
+                                    safeReopenPreview(currentState);
+                                }
+                            } else {
+                                // Cancelled by user: restore edit state
                                 safeReopenPreview(currentState);
                             }
-                        } else {
-                            // Cancelled by user: restore edit state
+                        } catch (e) {
+                            global.log('CS: error gtk-filechooser.py: ' + e);
                             safeReopenPreview(currentState);
                         }
-                    } catch (e) {
-                        global.log('CS: error gtk-filechooser.py: ' + e);
-                        safeReopenPreview(currentState);
-                    }
-                });
-                return GLib.SOURCE_REMOVE;
+                    });
+                })().catch(err => global.logError('CS Error in _saveAsCopy: ' + err));
+                
+                return GLib.SOURCE_REMOVE; 
             });
         }
 

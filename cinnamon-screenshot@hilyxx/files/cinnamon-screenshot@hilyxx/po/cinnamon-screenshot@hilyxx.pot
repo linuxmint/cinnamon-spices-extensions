@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-20 16:45+0200\n"
+"POT-Creation-Date: 2026-07-21 17:10+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,143 +17,143 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. editOverlay.js:428
+#. editOverlay.js:452
 msgid "Brush"
 msgstr ""
 
-#. editOverlay.js:429
+#. editOverlay.js:453
 msgid "Eraser"
 msgstr ""
 
-#. editOverlay.js:430
+#. editOverlay.js:454
 msgid "Arrow"
 msgstr ""
 
-#. editOverlay.js:431
+#. editOverlay.js:455
 msgid "Line"
 msgstr ""
 
-#. editOverlay.js:432
+#. editOverlay.js:456
 msgid "Rectangle"
 msgstr ""
 
-#. editOverlay.js:433
+#. editOverlay.js:457
 msgid "Ellipse"
 msgstr ""
 
-#. editOverlay.js:434
+#. editOverlay.js:458
 msgid "Triangle"
 msgstr ""
 
-#. editOverlay.js:435
+#. editOverlay.js:459
 msgid "Filled Rectangle"
 msgstr ""
 
-#. editOverlay.js:436
+#. editOverlay.js:460
 msgid "Filled Ellipse"
 msgstr ""
 
-#. editOverlay.js:437
+#. editOverlay.js:461
 msgid "Filled Triangle"
 msgstr ""
 
-#. editOverlay.js:438
+#. editOverlay.js:462
 msgid "Pixelization"
 msgstr ""
 
-#. editOverlay.js:439
+#. editOverlay.js:463
 msgid "Text"
 msgstr ""
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Black"
 msgstr ""
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "White"
 msgstr ""
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Red"
 msgstr ""
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Blue"
 msgstr ""
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Green"
 msgstr ""
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Yellow"
 msgstr ""
 
-#. editOverlay.js:611
+#. editOverlay.js:635
 msgid "Thickness/size"
 msgstr ""
 
-#. editOverlay.js:616
+#. editOverlay.js:640
 msgid "Save changes to the canvas"
 msgstr ""
 
-#. editOverlay.js:617
+#. editOverlay.js:641
 msgid "Cancel all changes"
 msgstr ""
 
-#. editOverlay.js:618 overlay.js:93 overlay.js:119
+#. editOverlay.js:642 overlay.js:93 overlay.js:119
 msgid "Close"
 msgstr ""
 
-#. editOverlay.js:993
+#. editOverlay.js:1017
 msgid "Apply changes?"
 msgstr ""
 
-#. editOverlay.js:998
+#. editOverlay.js:1022
 msgid "Merge canvas with image"
 msgstr ""
 
-#. editOverlay.js:1002
+#. editOverlay.js:1026
 msgid "Save modified copy as…"
 msgstr ""
 
-#. editOverlay.js:1006 editOverlay.js:1164 preview.js:244 preview.js:337
+#. editOverlay.js:1030 editOverlay.js:1190 preview.js:267 preview.js:362
 msgid "Cancel"
 msgstr ""
 
-#. editOverlay.js:1016
+#. editOverlay.js:1040
 msgid "Quit without apply changes?"
 msgstr ""
 
-#. editOverlay.js:1020
+#. editOverlay.js:1044
 msgid "Yes"
 msgstr ""
 
-#. editOverlay.js:1035
+#. editOverlay.js:1059
 msgid "No"
 msgstr ""
 
-#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1189
+#. editOverlay.js:1089 editOverlay.js:1129 editOverlay.js:1215
 msgid "Error saving"
 msgstr ""
 
-#. editOverlay.js:1140 preview.js:324
+#. editOverlay.js:1166 preview.js:349
 msgid "Script gtk-filechooser.py not available"
 msgstr ""
 
-#. editOverlay.js:1140 preview.js:324
+#. editOverlay.js:1166 preview.js:349
 msgid "Unable to open file chooser."
 msgstr ""
 
-#. editOverlay.js:1159 preview.js:228 preview.js:332
+#. editOverlay.js:1185 preview.js:251 preview.js:357
 msgid "Save as..."
 msgstr ""
 
-#. editOverlay.js:1162 preview.js:335
+#. editOverlay.js:1188 preview.js:360
 msgid "Images"
 msgstr ""
 
-#. editOverlay.js:1163 preview.js:336
+#. editOverlay.js:1189 preview.js:361
 msgid "Save"
 msgstr ""
 
@@ -177,47 +177,47 @@ msgstr ""
 msgid "Timer (s) :"
 msgstr ""
 
-#. preview.js:212
+#. preview.js:235
 msgid "Edit image"
 msgstr ""
 
-#. preview.js:213
+#. preview.js:236
 msgid "Copy to clipboard"
 msgstr ""
 
-#. preview.js:234
+#. preview.js:257
 msgid "Back"
 msgstr ""
 
-#. preview.js:294 preview.js:298 preview.js:302
+#. preview.js:317 preview.js:321 preview.js:325
 msgid "Invalid filename"
 msgstr ""
 
-#. preview.js:294
+#. preview.js:317
 msgid "Filename cannot be empty."
 msgstr ""
 
-#. preview.js:298
+#. preview.js:321
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr ""
 
-#. preview.js:302
+#. preview.js:325
 msgid "Filename must end with .png"
 msgstr ""
 
-#. preview.js:414
+#. preview.js:441
 msgid "Copy failed"
 msgstr ""
 
-#. preview.js:414
+#. preview.js:441
 msgid "Unable to copy image to clipboard."
 msgstr ""
 
-#. screenshot.js:69
+#. screenshot.js:70
 msgid "Cinnamon-Screenshot extension error"
 msgstr ""
 
-#. screenshot.js:70
+#. screenshot.js:71
 msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."

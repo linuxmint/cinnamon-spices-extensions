@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-20 16:45+0200\n"
+"POT-Creation-Date: 2026-07-21 17:10+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: \n"
@@ -18,143 +18,143 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:428
+#. editOverlay.js:452
 msgid "Brush"
 msgstr "Pinzell"
 
-#. editOverlay.js:429
+#. editOverlay.js:453
 msgid "Eraser"
 msgstr "Goma d'esborrar"
 
-#. editOverlay.js:430
+#. editOverlay.js:454
 msgid "Arrow"
 msgstr "Fletxa"
 
-#. editOverlay.js:431
+#. editOverlay.js:455
 msgid "Line"
 msgstr "Línia"
 
-#. editOverlay.js:432
+#. editOverlay.js:456
 msgid "Rectangle"
 msgstr "Rectangle"
 
-#. editOverlay.js:433
+#. editOverlay.js:457
 msgid "Ellipse"
 msgstr "El·lipsi"
 
-#. editOverlay.js:434
+#. editOverlay.js:458
 msgid "Triangle"
 msgstr "Triangle"
 
-#. editOverlay.js:435
+#. editOverlay.js:459
 msgid "Filled Rectangle"
 msgstr "Rectangle ple"
 
-#. editOverlay.js:436
+#. editOverlay.js:460
 msgid "Filled Ellipse"
 msgstr "El·lipsi plena"
 
-#. editOverlay.js:437
+#. editOverlay.js:461
 msgid "Filled Triangle"
 msgstr "Triangle ple"
 
-#. editOverlay.js:438
+#. editOverlay.js:462
 msgid "Pixelization"
 msgstr "Pixelització"
 
-#. editOverlay.js:439
+#. editOverlay.js:463
 msgid "Text"
 msgstr "Text"
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Black"
 msgstr "Negre"
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "White"
 msgstr "Blanc"
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Red"
 msgstr "Vermell"
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Blue"
 msgstr "Blau"
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Green"
 msgstr "Verd"
 
-#. editOverlay.js:493
+#. editOverlay.js:517
 msgid "Yellow"
 msgstr "Groc"
 
-#. editOverlay.js:611
+#. editOverlay.js:635
 msgid "Thickness/size"
 msgstr "Gruix/mida"
 
-#. editOverlay.js:616
+#. editOverlay.js:640
 msgid "Save changes to the canvas"
 msgstr "Desar els canvis al llenç"
 
-#. editOverlay.js:617
+#. editOverlay.js:641
 msgid "Cancel all changes"
 msgstr "Cancel·lar tots els canvis"
 
-#. editOverlay.js:618 overlay.js:93 overlay.js:119
+#. editOverlay.js:642 overlay.js:93 overlay.js:119
 msgid "Close"
 msgstr "Tancar"
 
-#. editOverlay.js:993
+#. editOverlay.js:1017
 msgid "Apply changes?"
 msgstr "Aplicar els canvis?"
 
-#. editOverlay.js:998
+#. editOverlay.js:1022
 msgid "Merge canvas with image"
 msgstr "Combinar el llenç amb la imatge"
 
-#. editOverlay.js:1002
+#. editOverlay.js:1026
 msgid "Save modified copy as…"
 msgstr "Desar còpia modificada com..."
 
-#. editOverlay.js:1006 editOverlay.js:1164 preview.js:244 preview.js:337
+#. editOverlay.js:1030 editOverlay.js:1190 preview.js:267 preview.js:362
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#. editOverlay.js:1016
+#. editOverlay.js:1040
 msgid "Quit without apply changes?"
 msgstr "Surt sense aplicar els canvis?"
 
-#. editOverlay.js:1020
+#. editOverlay.js:1044
 msgid "Yes"
 msgstr "Sí"
 
-#. editOverlay.js:1035
+#. editOverlay.js:1059
 msgid "No"
 msgstr "No"
 
-#. editOverlay.js:1065 editOverlay.js:1105 editOverlay.js:1189
+#. editOverlay.js:1089 editOverlay.js:1129 editOverlay.js:1215
 msgid "Error saving"
 msgstr "Error en desar"
 
-#. editOverlay.js:1140 preview.js:324
+#. editOverlay.js:1166 preview.js:349
 msgid "Script gtk-filechooser.py not available"
 msgstr "L'script gtk-filechooser.py no està disponible"
 
-#. editOverlay.js:1140 preview.js:324
+#. editOverlay.js:1166 preview.js:349
 msgid "Unable to open file chooser."
 msgstr "No s'ha pogut obrir el seleccionador de fitxers."
 
-#. editOverlay.js:1159 preview.js:228 preview.js:332
+#. editOverlay.js:1185 preview.js:251 preview.js:357
 msgid "Save as..."
 msgstr "Desar com..."
 
-#. editOverlay.js:1162 preview.js:335
+#. editOverlay.js:1188 preview.js:360
 msgid "Images"
 msgstr "Imatges"
 
-#. editOverlay.js:1163 preview.js:336
+#. editOverlay.js:1189 preview.js:361
 msgid "Save"
 msgstr "Desar"
 
@@ -178,47 +178,47 @@ msgstr "Punter del ratolí :"
 msgid "Timer (s) :"
 msgstr "Temporitzador (s) :"
 
-#. preview.js:212
+#. preview.js:235
 msgid "Edit image"
 msgstr "Editar imatge"
 
-#. preview.js:213
+#. preview.js:236
 msgid "Copy to clipboard"
 msgstr "Copiar al porta-papers"
 
-#. preview.js:234
+#. preview.js:257
 msgid "Back"
 msgstr "Tornar"
 
-#. preview.js:294 preview.js:298 preview.js:302
+#. preview.js:317 preview.js:321 preview.js:325
 msgid "Invalid filename"
 msgstr "Nom de fitxer invàlid"
 
-#. preview.js:294
+#. preview.js:317
 msgid "Filename cannot be empty."
 msgstr "El nom del fitxer no pot ser buit."
 
-#. preview.js:298
+#. preview.js:321
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "El nom del fitxer conté caràcters no permesos: \\ / : * ? \" < > |"
 
-#. preview.js:302
+#. preview.js:325
 msgid "Filename must end with .png"
 msgstr "El nom del fitxer ha d'acabar en .png"
 
-#. preview.js:414
+#. preview.js:441
 msgid "Copy failed"
 msgstr "Error en copiar"
 
-#. preview.js:414
+#. preview.js:441
 msgid "Unable to copy image to clipboard."
 msgstr "No s'ha pogut copiar la imatge al porta-papers"
 
-#. screenshot.js:69
+#. screenshot.js:70
 msgid "Cinnamon-Screenshot extension error"
 msgstr "Error en l'extensió Cinnamon-Screenshot"
 
-#. screenshot.js:70
+#. screenshot.js:71
 msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."
