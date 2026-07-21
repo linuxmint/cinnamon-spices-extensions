@@ -1044,15 +1044,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                         label: _('Yes'),
                         onClick: () => {
                             this._resetDrawing();
-                            if (typeof require === 'function') {
-                                try {
-                                    const { showScreenshotPreview } = require('./preview');
-                                    showScreenshotPreview(this._filepath, () => {}, this._onOptionSelected, this._showBackButton);
-                                } catch (e) {
-                                    global.log('CS: error returning to preview: ' + e);
-                                }
-                            }
-                            this.close(true);
+                            this.close(true, false);
                         }
                     },
                     {
@@ -1090,14 +1082,13 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 return;
             }
             this._resetDrawing();
-            this._transitionManager.fadeOut(this, { instant: true, onComplete: () => this._cleanupAndClose(true) });
-            if (typeof require === 'function') {
-                try {
-                    const { showScreenshotPreview } = require('./preview');
-                    showScreenshotPreview(this._filepath, () => {}, this._onOptionSelected, this._showBackButton);
-                } catch (e) {
-                    global.log('CS: error returning to preview: ' + e);
-                }
+            if (this._transitionManager) {
+                this._transitionManager.fadeOut(this, { 
+                    instant: true, 
+                    onComplete: () => this._cleanupAndClose(false) 
+                });
+            } else {
+                this._cleanupAndClose(false);
             }
         }
 
@@ -1133,19 +1124,11 @@ if (typeof ScreenshotEditDialog !== 'function') {
             // CAPTURE VARIABLES FOR REOPENING
             let currentState = this._getCurrentState();
             let filepath = this._filepath;
-            let onOptionSelected = this._onOptionSelected;
-            let showBackButton = this._showBackButton;
 
-            // Define a local function
             const safeReopenPreview = (stateToRestore) => {
                 GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
-                    if (typeof require === 'function') {
-                        try {
-                            const { showScreenshotPreview } = require('./preview');
-                            showScreenshotPreview(filepath, () => {}, onOptionSelected, showBackButton, stateToRestore);
-                        } catch (e) {
-                            global.log('CS: error returning to preview: ' + e);
-                        }
+                    if (typeof this._onClose === 'function') {
+                        this._onClose(stateToRestore);
                     }
                     return GLib.SOURCE_REMOVE;
                 });
@@ -1692,23 +1675,14 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 return;
             }
 
-            if (this._onClose && !skipPreview) {
-                try {
-                    const { showScreenshotPreview } = require('./preview');
-                    showScreenshotPreview(this._filepath, () => {}, this._onOptionSelected, this._showBackButton);
-                } catch (e) {
-                    global.log('CS: error returning to preview: ' + e);
-                }
-            }
-            
             if (this._transitionManager) {
                 this._transitionManager.fadeOut(this, {
                     onComplete: () => {
-                        this._cleanupAndClose(true);
+                        this._cleanupAndClose(skipPreview);
                     }
                 });
             } else {
-                this._cleanupAndClose(true);
+                this._cleanupAndClose(skipPreview);
             }
         }
 

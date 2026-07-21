@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-21 17:10+0200\n"
+"POT-Creation-Date: 2026-07-21 20:21+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -118,7 +118,7 @@ msgstr "Unisci la tela con l'immagine"
 msgid "Save modified copy as…"
 msgstr "Salva copia modificata come…"
 
-#. editOverlay.js:1030 editOverlay.js:1190 preview.js:267 preview.js:362
+#. editOverlay.js:1030 editOverlay.js:1173 preview.js:267 preview.js:362
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -130,31 +130,31 @@ msgstr "Uscire senza applicare le modifiche?"
 msgid "Yes"
 msgstr "Sì"
 
-#. editOverlay.js:1059
+#. editOverlay.js:1051
 msgid "No"
 msgstr "No"
 
-#. editOverlay.js:1089 editOverlay.js:1129 editOverlay.js:1215
+#. editOverlay.js:1081 editOverlay.js:1120 editOverlay.js:1198
 msgid "Error saving"
 msgstr "Errore nel salvataggio"
 
-#. editOverlay.js:1166 preview.js:349
+#. editOverlay.js:1149 preview.js:349
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py non disponibile"
 
-#. editOverlay.js:1166 preview.js:349
+#. editOverlay.js:1149 preview.js:349
 msgid "Unable to open file chooser."
 msgstr "Impossibile aprire il selettore file."
 
-#. editOverlay.js:1185 preview.js:251 preview.js:357
+#. editOverlay.js:1168 preview.js:251 preview.js:357
 msgid "Save as..."
 msgstr "Salva come..."
 
-#. editOverlay.js:1188 preview.js:360
+#. editOverlay.js:1171 preview.js:360
 msgid "Images"
 msgstr "Immagini"
 
-#. editOverlay.js:1189 preview.js:361
+#. editOverlay.js:1172 preview.js:361
 msgid "Save"
 msgstr "Salva"
 

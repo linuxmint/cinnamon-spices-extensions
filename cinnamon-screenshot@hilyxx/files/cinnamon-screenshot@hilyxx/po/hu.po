@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-21 17:10+0200\n"
+"POT-Creation-Date: 2026-07-21 20:21+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -118,7 +118,7 @@ msgstr "Vászon egyesítése képpel"
 msgid "Save modified copy as…"
 msgstr "Módosított másolat mentése más néven…"
 
-#. editOverlay.js:1030 editOverlay.js:1190 preview.js:267 preview.js:362
+#. editOverlay.js:1030 editOverlay.js:1173 preview.js:267 preview.js:362
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -130,31 +130,31 @@ msgstr "Kilépés a változtatások alkalmazása nélkül?"
 msgid "Yes"
 msgstr "Igen"
 
-#. editOverlay.js:1059
+#. editOverlay.js:1051
 msgid "No"
 msgstr "Nem"
 
-#. editOverlay.js:1089 editOverlay.js:1129 editOverlay.js:1215
+#. editOverlay.js:1081 editOverlay.js:1120 editOverlay.js:1198
 msgid "Error saving"
 msgstr "Hiba a mentés során"
 
-#. editOverlay.js:1166 preview.js:349
+#. editOverlay.js:1149 preview.js:349
 msgid "Script gtk-filechooser.py not available"
 msgstr "A gtk-filechooser.py szkript nem érhető el"
 
-#. editOverlay.js:1166 preview.js:349
+#. editOverlay.js:1149 preview.js:349
 msgid "Unable to open file chooser."
 msgstr "Nem sikerült megnyitni a fájlválasztót."
 
-#. editOverlay.js:1185 preview.js:251 preview.js:357
+#. editOverlay.js:1168 preview.js:251 preview.js:357
 msgid "Save as..."
 msgstr "Mentés másként..."
 
-#. editOverlay.js:1188 preview.js:360
+#. editOverlay.js:1171 preview.js:360
 msgid "Images"
 msgstr "Képek"
 
-#. editOverlay.js:1189 preview.js:361
+#. editOverlay.js:1172 preview.js:361
 msgid "Save"
 msgstr "Mentés"
 
