@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: transparent-panels-reloaded@marcelovbcfilho "
+"4.0~20220727\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: 2026-06-01 15:17+0800\n"
+"Last-Translator: Alang Hsu <alang.hsu@gmail.com>\n"
+"Language-Team: Chinese (Traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Hermes Agent + po_gen.py\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s 已啟用"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr "開啟擴充套件設定並自訂您的面板"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "開啟設定"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "透明面板重載版"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr "讓您的面板透明（或不透明）並隨心所欲變更其顏色"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "一般"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr "不透明度"
+
+#. settings-schema.json->transparency-always->description
+msgid "Always transparent"
+msgstr "始終透明"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be transparent if there is no maximized windows"
+msgstr "啟用後面板將始終透明，停用後則僅在無最大化視窗時透明"
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr "使用自訂面板顏色"
+
+#. settings-schema.json->custom-panel-color->description
+msgid "Custom panel color"
+msgstr "自訂面板顏色"
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels (WIP)"
+msgstr "篩選面板（開發中）"
+
+#. settings-schema.json->filters-description->description
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/not working)"
+msgstr "選擇將受此擴充套件影響的面板。（開發中，可能不運作）"
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "上方面板"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "右方面板"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "下方面板"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "左方面板"

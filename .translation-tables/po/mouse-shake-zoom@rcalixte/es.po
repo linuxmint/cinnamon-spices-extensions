@@ -1,0 +1,56 @@
+# Mouse Shake Zoom Extension
+# Copyright (C) 2022
+# Rick Calixte <10281587+rcalixte@users.noreply.github.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-06 22:34-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#. metadata.json->description
+msgid "Quickly shake the mouse pointer back and forth to zoom the cursor"
+msgstr ""
+"Agite rápidamente el puntero del ratón hacia delante y hacia atrás para "
+"ampliar el cursor"
+
+#. metadata.json->name
+msgid "Mouse Shake Zoom Extension"
+msgstr "Extensión de zoom con movimiento del mouse"
+
+#. 5.6->settings-schema.json->growth-speed->description
+msgid "Growth speed"
+msgstr "Velocidad de crecimiento"
+
+#. 5.6->settings-schema.json->growth-speed->tooltip
+msgid "How fast the cursor grows"
+msgstr "A qué velocidad crece el cursor"
+
+#. 5.6->settings-schema.json->shrink-speed->description
+msgid "Shrink speed"
+msgstr "Velocidad de encogimiento"
+
+#. 5.6->settings-schema.json->shrink-speed->tooltip
+msgid "How fast the cursor shrinks"
+msgstr "A qué velocidad se encoge el cursor"
+
+#. 5.6->settings-schema.json->shake-threshold->description
+msgid "Shake threshold"
+msgstr "Umbral de agitación"
+
+#. 5.6->settings-schema.json->shake-threshold->tooltip
+msgid "How much the pointer needs to move to activate"
+msgstr "Cuánto debe moverse el puntero para activarse"
+
+#. 5.6->settings-schema.json->shake-threshold->units
+msgid "px"
+msgstr "px"

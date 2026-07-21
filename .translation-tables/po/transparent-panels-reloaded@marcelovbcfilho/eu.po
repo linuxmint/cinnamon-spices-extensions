@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: transparent-panels-reloaded@marcelovbcfilho 4.0~20220727\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s gaituta"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr "Ireki hedapen konfigurazioa eta pertsonalizatu zure panelak"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "Ireki konfigurazioa"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "Panel Gardenak Birsortua"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr ""
+"Zure panelak gardenak izan daitezela (edo ez) eta kolorea alda dezatela nahi"
+" duzun bezala."
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Orokorra"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr "Opakutasuna"
+
+#. settings-schema.json->transparency-always->description
+msgid "Always transparent"
+msgstr "Beti garden"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
+msgstr ""
+"Panelak beti gardenak izango badira, desaktibatuta badaude, leiho "
+"maximizaturik ez badago bakarrik izango dira gardenak."
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr "Erabili paneleko kolore pertsonalizatua"
+
+#. settings-schema.json->custom-panel-color->description
+msgid "Custom panel color"
+msgstr "Panelaren kolore pertsonalizatua"
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels (WIP)"
+msgstr "Iragazteko panelak (WIP)"
+
+#. settings-schema.json->filters-description->description
+msgid ""
+"Select the panels that will be affected by this extension. (Work in "
+"progress/not working)"
+msgstr ""
+"Aukeratu hedapen honek eragingo dien panelak. (Lanean ari gara/ez dugu lan "
+"egiten)"
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Goiko panela"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Eskuineko panela"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Beheko panela"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Ezkerreko panela"

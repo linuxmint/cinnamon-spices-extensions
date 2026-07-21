@@ -1,0 +1,282 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-08 19:35+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr "Chào mừng đến với Hình nền Động Cinnamon"
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr "Kiểm tra tùy chọn để chọn hình nền động"
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr "imagemagick chưa được cài đặt"
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr "Vui lòng cài đặt gói thủ công để có đầy đủ chức năng"
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr "Lỗi!"
+
+#: 5.4/extension.js:126
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr "Hình nền Động Cinnamon gặp lỗi khi chạy tập lệnh vòng lặp. Vui lòng tạo vấn đề trên GitHub."
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr "Mở cài đặt"
+
+#. metadata.json->name
+msgid "Cinnamon Dynamic Wallpaper"
+msgstr "Hình nền Động Cinnamon"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr "Tiện ích mở rộng Cinnamon cho hình nền động dựa trên thời gian và vị trí"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "Nguồn Ảnh"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "Bộ Ảnh"
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr "Vui lòng cài đặt 'imagemagick' thủ công và mở lại cửa sổ cấu hình này"
+
+#: 5.4/res/preferences.glade:237
+msgid "HEIC file"
+msgstr "Tập tin HEIC"
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr "Thư mục Nguồn"
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr "Chọn một bộ ảnh"
+
+#: 5.4/res/preferences.glade:380
+msgid "Select a heic file to import"
+msgstr "Chọn tập tin heic để nhập"
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr "Chọn thư mục nguồn"
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr "Mở hộp thoại chọn tập tin"
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr "Lựa chọn Ảnh"
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr "Cấu hình Ảnh"
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr "Ước tính khoảng thời gian"
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr "Sử dụng Vị trí Mạng"
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr "Vị trí Tùy chỉnh"
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr "Khoảng Thời gian Tùy chỉnh"
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr "Ước tính vị trí"
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr "Thời gian khoảng cách để làm mới vị trí qua mạng (phút)"
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr "Nhà cung cấp vị trí"
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr "Vĩ độ"
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr "Kinh độ"
+
+#: 5.4/res/preferences.glade:1358
+msgid "Period 1"
+msgstr "Khoảng thời gian 1"
+
+#: 5.4/res/preferences.glade:1372
+msgid "Period 2"
+msgstr "Khoảng thời gian 2"
+
+#: 5.4/res/preferences.glade:1386
+msgid "Period 3"
+msgstr "Khoảng thời gian 3"
+
+#: 5.4/res/preferences.glade:1400
+msgid "Period 4"
+msgstr "Khoảng thời gian 4"
+
+#: 5.4/res/preferences.glade:1414
+msgid "Period 5"
+msgstr "Khoảng thời gian 5"
+
+#: 5.4/res/preferences.glade:1915
+msgid "Period 6"
+msgstr "Khoảng thời gian 6"
+
+#: 5.4/res/preferences.glade:1929
+msgid "Period 7"
+msgstr "Khoảng thời gian 7"
+
+#: 5.4/res/preferences.glade:1943
+msgid "Period 9"
+msgstr "Khoảng thời gian 9"
+
+#: 5.4/res/preferences.glade:1957
+msgid "Period 8"
+msgstr "Khoảng thời gian 8"
+
+#: 5.4/res/preferences.glade:1971
+msgid "Period 10"
+msgstr "Khoảng thời gian 10"
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr "Vị trí & Thời gian"
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr "Tỷ lệ"
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr "Tỷ lệ ảnh"
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr "Màn hình Đăng nhập"
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr "Đặt hình nền làm nền Màn hình Đăng nhập"
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr "Màu nền Động"
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr "Sử dụng màu nền động để tạo gradient"
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr "Hành vi"
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr "Về dự án"
+
+#: 5.4/res/preferences.glade:2763
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"Dựa trên vị trí hoặc theo lựa chọn của người dùng, tiện ích mở rộng này tính "
+"toán các khoảng thời gian trong ngày và chuyển đổi hình nền của màn hình "
+"Cinnamon của bạn. Tiện ích mở rộng cung cấp các nguồn ảnh như một bộ hình "
+"nền được cấu hình sẵn, nhập ảnh heic từ người dùng hoặc một thư mục tùy "
+"chỉnh với các ảnh đơn lẻ."
+
+#: 5.4/res/preferences.glade:2782
+msgid "Developed by TobiZog"
+msgstr "Được phát triển bởi TobiZog"
+
+#: 5.4/res/preferences.glade:2799
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr "Nếu bạn cần thêm thông tin hoặc muốn đánh giá tiện ích mở rộng, bạn có thể truy cập Trang web Cinnamon Spices."
+
+#: 5.4/res/preferences.glade:2810
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr "Hình nền Động Cinnamon trên Trang web Cinnamon Spices"
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr "Mã nguồn"
+
+#: 5.4/res/preferences.glade:2864
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr "Dự án này là Mã nguồn Mở. Bạn có thể xem toàn bộ mã nguồn của tiện ích mở rộng này trên GitHub."
+
+#: 5.4/res/preferences.glade:2875
+msgid "Source Code on GitHub"
+msgstr "Mã nguồn trên GitHub"
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr "Vấn đề và Cải tiến"
+
+#: 5.4/res/preferences.glade:2929
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
+msgstr "Bạn tìm thấy một vấn đề? Hoặc muốn một tính năng mới? Hãy đến kho lưu trữ GitHub và tạo một vấn đề mới."
+
+#: 5.4/res/preferences.glade:2940
+msgid "Create a new issue on GitHub"
+msgstr "Tạo vấn đề mới trên GitHub"
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr "Giới thiệu"
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr "Áp dụng và đóng cửa sổ này"
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr "Áp dụng cài đặt mà không đóng cửa sổ này"

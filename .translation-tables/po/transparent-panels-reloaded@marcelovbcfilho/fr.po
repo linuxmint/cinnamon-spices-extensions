@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Philippe Loctaux <https://philippeloctaux.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s activé"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr ""
+"Ouvrir les paramètres de l'extension et personnaliser vos tableaux de bords"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "Ouvrir les paramètres"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "Tableaux de bords transparents"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr ""
+"Rendre transparents vos tableaux de bords lorsqu'il n'y a pas de fenêtres "
+"agrandies."
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Général"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr ""
+
+#. settings-schema.json->transparency-always->description
+#, fuzzy
+msgid "Always transparent"
+msgstr "Entièrement transparent"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
+msgstr ""
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr ""
+
+#. settings-schema.json->custom-panel-color->description
+#, fuzzy
+msgid "Custom panel color"
+msgstr "Tableau de bord en bas"
+
+#. settings-schema.json->section-filters->description
+#, fuzzy
+msgid "Filter panels (WIP)"
+msgstr "Filtrer les tableaux de bord"
+
+#. settings-schema.json->filters-description->description
+#, fuzzy
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
+msgstr ""
+"Choisissez les tableaux de bords qui seront affectés par cette extension."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Tableau de bord en haut"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Tableau de bord à droite"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Tableau de bord en bas"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Tableau de bord à gauche"

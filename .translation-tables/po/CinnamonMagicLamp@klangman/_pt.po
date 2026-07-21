@@ -1,0 +1,38 @@
+# MAGIC LAMP EFFECT
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+
+#. 5.6/extension.js:83
+msgid "ERROR"
+msgstr ""
+
+#. 5.6/extension.js:83
+msgid "was NOT enabled"
+msgstr ""
+
+#. 5.6/extension.js:84
+msgid "The existing extension"
+msgstr ""
+
+#. 5.6/extension.js:84
+msgid "conflicts with this extension."
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr ""
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr ""
+
+#. 5.6->settings-schema.json->duration->description
+msgid "Effect duration (ms)"
+msgstr ""

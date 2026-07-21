@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2023-11-02 11:08-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr ""
+"Establecer ubicaciones de iconos de escritorio por espacio de trabajo"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Iconos de escritorio por espacio de trabajo"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Configuración"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "milisegundos"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Retraso de la actualización del escritorio al iniciarse"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Número de milisegundos de espera para la actualización inicial del "
+"escritorio tras el inicio de la extensión"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Retraso en la actualización del escritorio"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr ""
+"Número de milisegundos que hay que esperar antes de completar la "
+"actualización del escritorio"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "segundos"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Guardar cada"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Con qué frecuencia guardar en el archivo las posiciones de los iconos del "
+"escritorio. 0 significa no guardar en el archivo."
