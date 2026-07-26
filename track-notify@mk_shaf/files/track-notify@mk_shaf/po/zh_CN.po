@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 00:00+0300\n"
+"PO-Revision-Date: 2026-07-25 00:00+0300\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr "显示当前曲目的弹出层 (MPRIS)"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Show notification"
+msgstr "显示通知"
+
+msgid "Appearance"
+msgstr "外观"
+
+msgid "Background color"
+msgstr "背景颜色"
+
+msgid "Background opacity (%)"
+msgstr "背景不透明度 (%)"
+
+msgid "Text color"
+msgstr "文字颜色"
+
+msgid "Font size (px)"
+msgstr "字体大小 (px)"
+
+msgid "Header text"
+msgstr "标题文字"
+
+msgid "Show cover art"
+msgstr "显示封面"
+
+msgid "Cover size (px)"
+msgstr "封面大小 (px)"
+
+msgid "Behavior"
+msgstr "行为"
+
+msgid "Display time (sec)"
+msgstr "显示时间 (秒)"
+
+msgid "Fade in/out duration (ms)"
+msgstr "淡入/淡出时长 (毫秒)"
+
+msgid "Opacity on hover (%)"
+msgstr "鼠标悬停时的不透明度 (%)"
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr "显示前的延迟，毫秒（防重复）"
+
+msgid "Position"
+msgstr "位置"
+
+msgid "Screen position"
+msgstr "屏幕位置"
+
+msgid "Top left"
+msgstr "左上"
+
+msgid "Top center"
+msgstr "顶部居中"
+
+msgid "Top right"
+msgstr "右上"
+
+msgid "Bottom left"
+msgstr "左下"
+
+msgid "Bottom center"
+msgstr "底部居中"
+
+msgid "Bottom right"
+msgstr "右下"
+
+msgid "Screen edge margin (px)"
+msgstr "距屏幕边缘的间距 (px)"
+
+msgid "Maximum text width (px)"
+msgstr "最大文本宽度 (px)"
+
+msgid "Test artist"
+msgstr "测试艺术家"
+
+msgid "Test track title"
+msgstr "测试曲目标题"
