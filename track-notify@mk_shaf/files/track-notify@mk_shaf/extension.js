@@ -392,7 +392,7 @@ TrackNotify.prototype = {
 
 function init(metadata) {
     uuid = metadata.uuid;
-    Gettext.bindtextdomain(uuid, GLib.get_home_dir() + "/.local/share/locale");
+    Gettext.bindtextdomain(uuid, GLib.get_user_data_dir() + "/locale");
     ext = new TrackNotify(metadata);
 }
 function disable()      { ext.disable(); }
