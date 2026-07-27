@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-06-26 01:26-0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"PO-Revision-Date: 2027-07-27 08:01+0200\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Stil"
 
 #. 5.4->settings-schema.json->idle-section->title
 msgid "Idle"
-msgstr ""
+msgstr "Inaktiv"
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -179,12 +179,11 @@ msgstr "Animationstilstand ved inaktiv mus"
 
 #. 5.4->settings-schema.json->idle-animation-delay->units
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #. 5.4->settings-schema.json->idle-animation-delay->description
-#, fuzzy
 msgid "Start Idle Animation After"
-msgstr "Animationsperiode ved inaktiv mus"
+msgstr "Start inaktiv animation efter"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -247,7 +246,7 @@ msgstr "Overvågning af museinaktivitet"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
 msgid "Displays animations when the system enters idle state."
-msgstr ""
+msgstr "Viser animationer, når systemet går i inaktiv tilstand."
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
