@@ -1,0 +1,84 @@
+# Dim Inactive Windows - translation template.
+# Copyright (C) 2026
+# This file is distributed under the same license as the extension.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dim-inactive-windows@jark 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-04 00:00+0000\n"
+"PO-Revision-Date: 2026-07-27 09:52+0200\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Dim Inactive Windows"
+msgstr "Dæmp inaktive vinduer"
+
+#. metadata.json->description
+msgid ""
+"Dims and desaturates inactive windows (per window, not per app) so the "
+"focused window is unmistakable."
+msgstr ""
+"Dæmper lysstyrken og fjerner farverne fra inaktive vinduer (pr. vindue, "
+"ikke pr. app), så det vindue, der har fokus, er umiskendeligt."
+
+#. settings-schema.json->head-effect->description
+msgid "Effect for inactive windows"
+msgstr "Effekt for inaktive vinduer"
+
+#. settings-schema.json->mode->description
+msgid "What happens to inactive windows"
+msgstr "Hvad skal der ske med inaktive vinduer"
+
+#. settings-schema.json->mode->options
+msgid "Dim and desaturate"
+msgstr "Dæmp og fjern farver"
+
+#. settings-schema.json->mode->options
+msgid "Dim only"
+msgstr "Dæmp kun"
+
+#. settings-schema.json->mode->options
+msgid "Desaturate only"
+msgstr "Fjern kun farver"
+
+#. settings-schema.json->dim-amount->description
+msgid "Dim strength (0 = none, 0.8 = very dark)"
+msgstr "Dæmpningsstyrke (0 = ingen; 0,8 = meget mørk)"
+
+#. settings-schema.json->desaturate-amount->description
+msgid "Desaturation strength (0 = full color, 1 = grayscale)"
+msgstr "Styrke af farvefjerning (0 = alle farver; 1 = gråtoner)"
+
+#. settings-schema.json->animation-time->description
+msgid "Fade duration on focus change (0 = instant)"
+msgstr "Udtoningsvarighed ved fokusskift (0 = øjeblikkelig)"
+
+#. settings-schema.json->head-behavior->description
+msgid "Behavior"
+msgstr "Opførsel"
+
+#. settings-schema.json->respect-transient->description
+msgid ""
+"Keep a window bright while a MODAL dialog of it holds focus. Off = strict "
+"per-window (recommended; treats e.g. a PhpStorm floating window as its own "
+"window)"
+msgstr ""
+"Hold et vindue lyst, mens en modal dialogboks i det har fokus. Fra = "
+"strengt pr. vindue (anbefales; behandler f.eks. et flydende PhpStorm-"
+"vindue som et selvstændigt vindue)"
+
+#. settings-schema.json->dim-when-no-focus->description
+msgid ""
+"Also dim every window when nothing is focused (e.g. after clicking the "
+"desktop)"
+msgstr ""
+"Dæmp også alle vinduer, når intet har fokus (f.eks. efter klik på "
+"skrivebordet)"
