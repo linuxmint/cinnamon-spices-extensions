@@ -75,18 +75,32 @@ if (typeof ScreenshotEditDialog !== 'function') {
 
             this._scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
 
-            // Block clicks below
-            this.connect('button-press-event', () => Clutter.EVENT_STOP);
+            // Block clicks below and secure focus
+            this.connect('button-press-event', () => {
+                global.stage.set_key_focus(this);
+                return Clutter.EVENT_STOP;
+            });
             this.connect('button-release-event', () => Clutter.EVENT_STOP);
             this.connect('scroll-event', () => Clutter.EVENT_STOP);
 
-            // Escape key
+            // === KEYBOARD EVENT HANDLING ===
             this.connect('key-press-event', (actor, event) => {
                 const keySymbol = event.get_key_symbol();
+                const state = event.get_state();
+                const isCtrl = (state & Clutter.ModifierType.CONTROL_MASK) !== 0;
+
+                // Handle ESC key to close the edit dialog
                 if (keySymbol === Clutter.KEY_Escape) {
                     this.close();
                     return Clutter.EVENT_STOP;
                 }
+
+                // Ctrl + Z shortcut to undo the last modification
+                if (isCtrl && (keySymbol === Clutter.KEY_z || keySymbol === Clutter.KEY_Z)) {
+                    this._undoLastAction();
+                    return Clutter.EVENT_STOP;
+                }
+
                 return Clutter.EVENT_PROPAGATE;
             });
 
@@ -247,17 +261,6 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     return GLib.SOURCE_REMOVE;
                 });
 
-            // === KEYBOARD EVENT HANDLING ===
-            // Handle ESC key to close the edit dialog
-            this.connect('key-press-event', (actor, event) => {
-                const keySymbol = event.get_key_symbol();
-                if (keySymbol === Clutter.KEY_Escape) {
-                    this.close();
-                    return Clutter.EVENT_STOP;
-                }
-                return Clutter.EVENT_PROPAGATE;
-            });
-
             // === INTERACTIONS: Drawing event handling ===
             // Manages mouse interactions for all drawing tools
             const getLocalCoords = (event) => {
@@ -272,7 +275,11 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     this._shapeCurrent = localCoords;
                 };
 
-                this._drawingActor.connect('button-press-event', (actor, event) => {
+                   this._drawingActor.connect('button-press-event', (actor, event) => {
+                     // Return focus to the main editor unless you are about to create some text
+                    if (this._currentTool !== 'text') {
+                        global.stage.set_key_focus(this);
+                    }
                     const localCoords = getLocalCoords(event);
 
                     if (this._currentTool === 'eraser') {
@@ -774,6 +781,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                         let [x, y] = child.get_position ? child.get_position() : [0, 0];
                         let entryHeight = child._entryHeight || (child.get_height ? child.get_height() : 32);
                         let baselineY = y + (entryHeight * 0.8);
+
                         // Convert from box coordinates to canvas coordinates
                         const [canvasX, canvasY] = this._drawingActor.get_transformed_position();
                         const [boxX, boxY] = this._superposeBox.get_transformed_position();
@@ -796,7 +804,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 }
             }
             if (grabFocus && hadTextEntry) {
-                global.stage.grab_key_focus();
+                global.stage.set_key_focus(this); // Remplace global.stage.grab_key_focus();
             }
             if (hadTextEntry && this._drawingCanvas)
                 this._drawingCanvas.invalidate();
@@ -812,6 +820,18 @@ if (typeof ScreenshotEditDialog !== 'function') {
             let canvasLocalY = stageY - canvasY;
 
             const textEntry = new St.Entry({ text: '', style_class: 'edit-text-entry' });
+            textEntry.connect('key-press-event', (actor, event) => {
+                const keySymbol = event.get_key_symbol();
+                const state = event.get_state();
+                const isCtrl = (state & Clutter.ModifierType.CONTROL_MASK) !== 0;
+
+                if (isCtrl && (keySymbol === Clutter.KEY_z || keySymbol === Clutter.KEY_Z)) {
+                    this._undoLastAction();
+                    return Clutter.EVENT_STOP;
+                }
+                return Clutter.EVENT_PROPAGATE;
+            });
+
             textEntry._textColor = this._color;
             textEntry._textThickness = this._thickness;
             textEntry._canvasX = localCoords[0];
@@ -845,6 +865,18 @@ if (typeof ScreenshotEditDialog !== 'function') {
         /** Creates an interactive text field from a static text path (for re-editing) */
         _createTextEntryFromPath(path) {
             const textEntry = new St.Entry({ text: path.text, style_class: 'edit-text-entry' });
+            textEntry.connect('key-press-event', (actor, event) => {
+                const keySymbol = event.get_key_symbol();
+                const state = event.get_state();
+                const isCtrl = (state & Clutter.ModifierType.CONTROL_MASK) !== 0;
+
+                if (isCtrl && (keySymbol === Clutter.KEY_z || keySymbol === Clutter.KEY_Z)) {
+                    this._undoLastAction();
+                    return Clutter.EVENT_STOP;
+                }
+                return Clutter.EVENT_PROPAGATE;
+            });
+
             textEntry._textColor = path.color;
             textEntry._textThickness = path.thickness;
             const [canvasX, canvasY] = this._drawingActor.get_transformed_position();
@@ -1234,6 +1266,39 @@ if (typeof ScreenshotEditDialog !== 'function') {
             if (this._drawingCanvas)
                 this._drawingCanvas.invalidate();
             this._updateActionBtnStates();
+        }
+
+        _undoLastAction() {
+            // Cancel a text field whilst typing
+            let entryWasEmpty = false;
+            if (this._superposeBox) {
+                let children = this._superposeBox.get_children();
+                for (let i = children.length - 1; i >= 0; i--) {
+                    let child = children[i];
+                    if (child.has_style_class_name && child.has_style_class_name('edit-text-entry')) {
+                        const text = child.get_text();
+                        if (text.trim().length === 0) {
+                            entryWasEmpty = true;
+                        }
+                        this._superposeBox.remove_child(child);
+                        child.destroy();
+                        this._updateActionBtnStates();
+                        global.stage.set_key_focus(this);
+                        
+                        if (!entryWasEmpty) return;
+                        break; 
+                    }
+                }
+            }
+
+            // Undo the last line/shape
+            if (this._paths && this._paths.length > 0) {
+                this._paths.pop();
+                if (this._drawingCanvas) {
+                    this._drawingCanvas.invalidate();
+                }
+                this._updateActionBtnStates();
+            }
         }
 
         _getCurrentState() {

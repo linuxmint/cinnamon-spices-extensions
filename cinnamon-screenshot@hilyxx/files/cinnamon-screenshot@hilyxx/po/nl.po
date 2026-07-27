@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-21 20:21+0200\n"
+"POT-Creation-Date: 2026-07-27 18:41+0200\n"
 "PO-Revision-Date: 2026-07-15 03:41+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -17,143 +17,143 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:452
+#. editOverlay.js:459
 msgid "Brush"
 msgstr "Borstel"
 
-#. editOverlay.js:453
+#. editOverlay.js:460
 msgid "Eraser"
 msgstr "Gum"
 
-#. editOverlay.js:454
+#. editOverlay.js:461
 msgid "Arrow"
 msgstr "Pijl"
 
-#. editOverlay.js:455
+#. editOverlay.js:462
 msgid "Line"
 msgstr "Lijn"
 
-#. editOverlay.js:456
+#. editOverlay.js:463
 msgid "Rectangle"
 msgstr "Rechthoek"
 
-#. editOverlay.js:457
+#. editOverlay.js:464
 msgid "Ellipse"
 msgstr "Ellips"
 
-#. editOverlay.js:458
+#. editOverlay.js:465
 msgid "Triangle"
 msgstr "Driehoek"
 
-#. editOverlay.js:459
+#. editOverlay.js:466
 msgid "Filled Rectangle"
 msgstr "Gevulde Rechthoek"
 
-#. editOverlay.js:460
+#. editOverlay.js:467
 msgid "Filled Ellipse"
 msgstr "Gevulde Ellips"
 
-#. editOverlay.js:461
+#. editOverlay.js:468
 msgid "Filled Triangle"
 msgstr "Gevulde Driehoek"
 
-#. editOverlay.js:462
+#. editOverlay.js:469
 msgid "Pixelization"
 msgstr "Pixelisatie"
 
-#. editOverlay.js:463
+#. editOverlay.js:470
 msgid "Text"
 msgstr "Tekst"
 
-#. editOverlay.js:517
+#. editOverlay.js:524
 msgid "Black"
 msgstr "Zwart"
 
-#. editOverlay.js:517
+#. editOverlay.js:524
 msgid "White"
 msgstr "Wit"
 
-#. editOverlay.js:517
+#. editOverlay.js:524
 msgid "Red"
 msgstr "Rood"
 
-#. editOverlay.js:517
+#. editOverlay.js:524
 msgid "Blue"
 msgstr "Blauw"
 
-#. editOverlay.js:517
+#. editOverlay.js:524
 msgid "Green"
 msgstr "Groen"
 
-#. editOverlay.js:517
+#. editOverlay.js:524
 msgid "Yellow"
 msgstr "Geel"
 
-#. editOverlay.js:635
+#. editOverlay.js:642
 msgid "Thickness/size"
 msgstr "Dikte/grootte"
 
-#. editOverlay.js:640
+#. editOverlay.js:647
 msgid "Save changes to the canvas"
 msgstr "Wijzigingen op het canvas opslaan"
 
-#. editOverlay.js:641
+#. editOverlay.js:648
 msgid "Cancel all changes"
 msgstr "Alle wijzigingen annuleren"
 
-#. editOverlay.js:642 overlay.js:93 overlay.js:119
+#. editOverlay.js:649 overlay.js:93 overlay.js:119
 msgid "Close"
 msgstr "Sluiten"
 
-#. editOverlay.js:1017
+#. editOverlay.js:1049
 msgid "Apply changes?"
 msgstr "Wijzigingen toepassen?"
 
-#. editOverlay.js:1022
+#. editOverlay.js:1054
 msgid "Merge canvas with image"
 msgstr "Canvas samenvoegen met afbeelding"
 
-#. editOverlay.js:1026
+#. editOverlay.js:1058
 msgid "Save modified copy as…"
 msgstr "Gewijzigde kopie opslaan als…"
 
-#. editOverlay.js:1030 editOverlay.js:1173 preview.js:267 preview.js:362
+#. editOverlay.js:1062 editOverlay.js:1205 preview.js:267 preview.js:362
 msgid "Cancel"
 msgstr "Annuleren"
 
-#. editOverlay.js:1040
+#. editOverlay.js:1072
 msgid "Quit without apply changes?"
 msgstr "Afsluiten zonder wijzigingen toe te passen?"
 
-#. editOverlay.js:1044
+#. editOverlay.js:1076
 msgid "Yes"
 msgstr "Ja"
 
-#. editOverlay.js:1051
+#. editOverlay.js:1083
 msgid "No"
 msgstr "Nee"
 
-#. editOverlay.js:1081 editOverlay.js:1120 editOverlay.js:1198
+#. editOverlay.js:1113 editOverlay.js:1152 editOverlay.js:1230
 msgid "Error saving"
 msgstr "Fout bij opslaan"
 
-#. editOverlay.js:1149 preview.js:349
+#. editOverlay.js:1181 preview.js:349
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py niet beschikbaar"
 
-#. editOverlay.js:1149 preview.js:349
+#. editOverlay.js:1181 preview.js:349
 msgid "Unable to open file chooser."
 msgstr "Kan bestandkiezer niet openen."
 
-#. editOverlay.js:1168 preview.js:251 preview.js:357
+#. editOverlay.js:1200 preview.js:251 preview.js:357
 msgid "Save as..."
 msgstr "Opslaan als..."
 
-#. editOverlay.js:1171 preview.js:360
+#. editOverlay.js:1203 preview.js:360
 msgid "Images"
 msgstr "Afbeeldingen"
 
-#. editOverlay.js:1172 preview.js:361
+#. editOverlay.js:1204 preview.js:361
 msgid "Save"
 msgstr "Opslaan"
 
