@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-04-19 01:17+0200\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2026-07-27 07:34+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -28,32 +28,36 @@ msgstr "OSD-vinduet håndteret af det forbedrede lydpanelprogram"
 
 #. settings-schema.json->pagePosition->title
 msgid "Location"
-msgstr ""
+msgstr "Placering"
 
 #. settings-schema.json->sectionOSDxLocation->title
 msgid "Relative horizontal location"
-msgstr ""
+msgstr "Relativ vandret placering"
 
 #. settings-schema.json->sectionOSDyLocation->title
 msgid "Relative Vertical location"
-msgstr ""
+msgstr "Relativ lodret placering"
 
 #. settings-schema.json->OSDxLocation->description
 msgid "Horizontal offset from the default position (in pixels)"
-msgstr ""
+msgstr "Vandret forskydning i forhold til standardplaceringen (pixels)"
 
 #. settings-schema.json->OSDxLocation->tooltip
 msgid ""
 "Negative value: to the left.\n"
 "Positive value: to the right."
 msgstr ""
+"Negativ værdi: til venstre.\n"
+"Positiv værdi: til højre."
 
 #. settings-schema.json->OSDyLocation->description
 msgid "Vertical offset from the default position (in pixels)"
-msgstr ""
+msgstr "Lodret forskydning i forhold til standardplaceringen (pixels)"
 
 #. settings-schema.json->OSDyLocation->tooltip
 msgid ""
 "Negative value: to the top.\n"
 "Positive value: to the bottom."
 msgstr ""
+"Negativ værdi: mod toppen.\n"
+"Positiv værdi: mod bunden."
