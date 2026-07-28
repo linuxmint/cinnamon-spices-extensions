@@ -1,0 +1,396 @@
+# TILER
+# This file is put in the public domain.
+# zquestz, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tiler@zquestz 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"PO-Revision-Date: 2026-07-28 19:50-1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. tiler.js:948
+msgid "Main Left"
+msgstr "Hoved venstre"
+
+#. tiler.js:949
+msgid ""
+"The focused window fills the left half, and the rest stack on the right."
+msgstr ""
+"Det fokuserede vindue fylder venstre halvdel, og resten stables til højre."
+
+#. tiler.js:953
+msgid "Main Right"
+msgstr "Hoved højre"
+
+#. tiler.js:954
+msgid ""
+"The focused window fills the right half, and the rest stack on the left."
+msgstr ""
+"Det fokuserede vindue fylder højre halvdel, og resten stables til venstre."
+
+#. tiler.js:958
+msgid "Equal Left"
+msgstr "Ens venstre"
+
+#. tiler.js:959
+msgid "Every window shares two equal columns, led from the top left."
+msgstr ""
+"Alle vinduer deler to lige store kolonner, anført fra øverste venstre hjørne."
+
+#. tiler.js:963
+msgid "Equal Right"
+msgstr "Ens højre"
+
+#. tiler.js:964
+msgid "Every window shares two equal columns, led from the top right."
+msgstr ""
+"Alle vinduer deler to lige store kolonner, anført fra øverste højre hjørne."
+
+#. keybindings.py:26
+msgid "Arrows"
+msgstr "Piletaster"
+
+#. keybindings.py:26
+msgid "Move the selection"
+msgstr "Flyt markeringen"
+
+#. keybindings.py:27
+msgid "Shift+Arrow"
+msgstr "Skift+Pil"
+
+#. keybindings.py:27
+msgid "Grow the selection"
+msgstr "Udvid markeringen"
+
+#. keybindings.py:28
+msgid "1-4"
+msgstr "1-4"
+
+#. keybindings.py:28
+msgid "Switch between grids"
+msgstr "Skift mellem gitre"
+
+#. keybindings.py:29
+msgid "L / R"
+msgstr "L / R"
+
+#. keybindings.py:29
+msgid "Main Left, Main Right"
+msgstr "Hoved venstre, Hoved højre"
+
+#. keybindings.py:30
+msgid "Shift+L / R"
+msgstr "Skift+L / R"
+
+#. keybindings.py:30
+msgid "Equal Left, Equal Right"
+msgstr "Ens venstre, Ens højre"
+
+#. keybindings.py:31
+msgid "Enter/Space"
+msgstr "Enter/Mellemrum"
+
+#. keybindings.py:31
+msgid "Confirm selection"
+msgstr "Bekræft markeringen"
+
+#. keybindings.py:32
+msgid "Escape"
+msgstr "Esc"
+
+#. keybindings.py:32
+msgid "Cancel"
+msgstr "Annuller"
+
+#. metadata.json->name
+msgid "Tiler"
+msgstr "Tiler"
+
+#. metadata.json->description
+msgid ""
+"Grid-based window tiling with gaps, reserved screen space, and one-press "
+"auto-tiling. Inspired by gTile."
+msgstr ""
+"Vinduer i gitter med mellemrum, reserveret skærmplads og automatisk "
+"fliselægning med ét tryk. Inspireret af gTile."
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "Generelt"
+
+#. settings-schema.json->spacing-page->title
+msgid "Spacing"
+msgstr "Afstand"
+
+#. settings-schema.json->hotkeys-section->title
+msgid "Hotkeys"
+msgstr "Genvejstaster"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling options"
+msgstr "Fliseindstillinger"
+
+#. settings-schema.json->gaps-section->title
+msgid "Gaps"
+msgstr "Mellemrum"
+
+#. settings-schema.json->reserved-section->title
+msgid "Reserved space"
+msgstr "Reserveret plads"
+
+#. settings-schema.json->grids-page->title
+msgid "Grids"
+msgstr "Gitre"
+
+#. settings-schema.json->grid-1-section->title
+msgid "Grid 1"
+msgstr "Gitter 1"
+
+#. settings-schema.json->grid-2-section->title
+msgid "Grid 2"
+msgstr "Gitter 2"
+
+#. settings-schema.json->grid-3-section->title
+msgid "Grid 3"
+msgstr "Gitter 3"
+
+#. settings-schema.json->grid-4-section->title
+msgid "Grid 4"
+msgstr "Gitter 4"
+
+#. settings-schema.json->keybindings-section->title
+msgid "Keybindings"
+msgstr "Tastebindinger"
+
+#. settings-schema.json->hotkey->description
+msgid "Tile the focused window"
+msgstr "Fliselæg det fokuserede vindue"
+
+#. settings-schema.json->hotkey->tooltip
+msgid "Keyboard shortcut that opens Tiler for the focused window."
+msgstr "Genvejstast der åbner Tiler for det fokuserede vindue."
+
+#. settings-schema.json->center-on-window->description
+msgid "Center the grid on the focused window"
+msgstr "Centrér gitteret over det fokuserede vindue"
+
+#. settings-schema.json->center-on-window->tooltip
+msgid ""
+"The grid normally appears in the middle of the screen. Turn this on to have "
+"it appear over the window being tiled instead."
+msgstr ""
+"Gitteret vises normalt midt på skærmen. Slå dette til for i stedet at vise "
+"det over vinduet der fliselægges."
+
+#. settings-schema.json->tile-dialogs->description
+msgid "Tile dialog windows"
+msgstr "Fliselæg dialogvinduer"
+
+#. settings-schema.json->tile-dialogs->tooltip
+msgid ""
+"Ordinary windows are always tiled. This adds dialogs such as preferences and "
+"file choosers; dialogs that cannot be resized are skipped."
+msgstr ""
+"Almindelige vinduer fliselægges altid. Dette tilføjer dialoger såsom "
+"indstillinger og filvælgere; dialoger der ikke kan ændre størrelse springes "
+"over."
+
+#. settings-schema.json->tile-toolboxes->description
+msgid "Tile toolboxes and palettes"
+msgstr "Fliselæg værktøjskasser og paletter"
+
+#. settings-schema.json->tile-toolboxes->tooltip
+msgid "Floating tool windows, like the ones used by image editors."
+msgstr "Svævende værktøjsvinduer, som dem billedredigeringsprogrammer bruger."
+
+#. settings-schema.json->show-autotile->description
+msgid "Show auto-tile actions on the grid"
+msgstr "Vis auto-fliselægning på gitteret"
+
+#. settings-schema.json->show-autotile->tooltip
+msgid ""
+"Adds a row of arrangements to the grid that tile every window on the "
+"workspace at once: a main window beside a stack, or everything shared out "
+"equally."
+msgstr ""
+"Tilføjer en række arrangementer til gitteret som fliselægger alle vinduer på "
+"arbejdsområdet på én gang: et hovedvindue ved siden af en stak, eller alt "
+"delt ligeligt."
+
+#. settings-schema.json->window-gap->units
+#. settings-schema.json->edge-gap->units
+#. settings-schema.json->reserved-top->units
+#. settings-schema.json->reserved-bottom->units
+#. settings-schema.json->reserved-left->units
+#. settings-schema.json->reserved-right->units
+msgid "pixels"
+msgstr "pixel"
+
+#. settings-schema.json->window-gap->description
+msgid "Gap between windows"
+msgstr "Mellemrum mellem vinduer"
+
+#. settings-schema.json->window-gap->tooltip
+msgid "Space left between two windows tiled next to each other."
+msgstr "Plads mellem to vinduer der fliselægges ved siden af hinanden."
+
+#. settings-schema.json->edge-gap->description
+msgid "Gap at screen edges"
+msgstr "Mellemrum ved skærmens kanter"
+
+#. settings-schema.json->edge-gap->tooltip
+msgid ""
+"Space left between a tiled window and the edge of the usable screen area."
+msgstr ""
+"Plads mellem et fliselagt vindue og kanten af det brugbare skærmområde."
+
+#. settings-schema.json->reserved-scope->description
+msgid "Reserve space on"
+msgstr "Reservér plads på"
+
+#. settings-schema.json->reserved-scope->tooltip
+msgid ""
+"Choose whether reserved space applies to every monitor or only the primary "
+"monitor."
+msgstr ""
+"Vælg om den reserverede plads gælder alle skærme eller kun den primære skærm."
+
+#. settings-schema.json->reserved-scope->options
+msgid "All monitors"
+msgstr "Alle skærme"
+
+#. settings-schema.json->reserved-scope->options
+msgid "Primary monitor only"
+msgstr "Kun primær skærm"
+
+#. settings-schema.json->reserved-top->description
+msgid "Reserved space at the top"
+msgstr "Reserveret plads foroven"
+
+#. settings-schema.json->reserved-top->tooltip
+#. settings-schema.json->reserved-bottom->tooltip
+#. settings-schema.json->reserved-left->tooltip
+#. settings-schema.json->reserved-right->tooltip
+msgid ""
+"Windows are never tiled into this area. Useful for Conky or docks that do "
+"not reserve space themselves."
+msgstr ""
+"Vinduer fliselægges aldrig i dette område. Nyttigt til Conky eller docks der "
+"ikke selv reserverer plads."
+
+#. settings-schema.json->reserved-bottom->description
+msgid "Reserved space at the bottom"
+msgstr "Reserveret plads forneden"
+
+#. settings-schema.json->reserved-left->description
+msgid "Reserved space on the left"
+msgstr "Reserveret plads til venstre"
+
+#. settings-schema.json->reserved-right->description
+msgid "Reserved space on the right"
+msgstr "Reserveret plads til højre"
+
+#. settings-schema.json->grid-1-cols->units
+#. settings-schema.json->grid-2-cols->units
+#. settings-schema.json->grid-3-cols->units
+#. settings-schema.json->grid-4-cols->units
+msgid "columns"
+msgstr "kolonner"
+
+#. settings-schema.json->grid-1-cols->description
+#. settings-schema.json->grid-2-cols->description
+#. settings-schema.json->grid-3-cols->description
+#. settings-schema.json->grid-4-cols->description
+msgid "Columns"
+msgstr "Kolonner"
+
+#. settings-schema.json->grid-1-cols->tooltip
+#. settings-schema.json->grid-2-cols->tooltip
+#. settings-schema.json->grid-3-cols->tooltip
+#. settings-schema.json->grid-4-cols->tooltip
+msgid "How many columns this grid is divided into."
+msgstr "Hvor mange kolonner dette gitter er delt i."
+
+#. settings-schema.json->grid-1-rows->units
+#. settings-schema.json->grid-2-rows->units
+#. settings-schema.json->grid-3-rows->units
+#. settings-schema.json->grid-4-rows->units
+msgid "rows"
+msgstr "rækker"
+
+#. settings-schema.json->grid-1-rows->description
+#. settings-schema.json->grid-2-rows->description
+#. settings-schema.json->grid-3-rows->description
+#. settings-schema.json->grid-4-rows->description
+msgid "Rows"
+msgstr "Rækker"
+
+#. settings-schema.json->grid-1-rows->tooltip
+#. settings-schema.json->grid-2-rows->tooltip
+#. settings-schema.json->grid-3-rows->tooltip
+#. settings-schema.json->grid-4-rows->tooltip
+msgid "How many rows this grid is divided into."
+msgstr "Hvor mange rækker dette gitter er delt i."
+
+#. settings-schema.json->grid-1-layout->description
+#. settings-schema.json->grid-2-layout->description
+#. settings-schema.json->grid-3-layout->description
+#. settings-schema.json->grid-4-layout->description
+msgid "Layout"
+msgstr "Layout"
+
+#. settings-schema.json->grid-1-layout->tooltip
+#. settings-schema.json->grid-2-layout->tooltip
+#. settings-schema.json->grid-3-layout->tooltip
+#. settings-schema.json->grid-4-layout->tooltip
+msgid ""
+"Columns, then rows. Sizes can be given one by one to make some tracks larger "
+"than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
+"width of its neighbours. Changing the numbers above rewrites this, and "
+"anything that cannot be read falls back to them."
+msgstr ""
+"Kolonner, derefter rækker. Størrelser kan angives én ad gangen for at gøre "
+"nogle spor større: 1,2,1 x 1,1 er tre kolonner hvor den midterste er dobbelt "
+"så bred som naboerne. Ændres tallene ovenfor omskrives dette, og alt der "
+"ikke kan læses falder tilbage på dem."
+
+#. settings-schema.json->grid-1-name->description
+#. settings-schema.json->grid-2-name->description
+#. settings-schema.json->grid-3-name->description
+#. settings-schema.json->grid-4-name->description
+msgid "Name"
+msgstr "Navn"
+
+#. settings-schema.json->grid-1-name->tooltip
+#. settings-schema.json->grid-2-name->tooltip
+#. settings-schema.json->grid-3-name->tooltip
+#. settings-schema.json->grid-4-name->tooltip
+msgid ""
+"What this grid is called on the grid selector. Long names are shortened to "
+"fit. Left empty, it is named after its size."
+msgstr ""
+"Hvad dette gitter kaldes i gittervælgeren. Lange navne forkortes så de "
+"passer. Efterlades det tomt, opkaldes det efter sin størrelse."
+
+#. settings-schema.json->grid-1-tooltip->description
+#. settings-schema.json->grid-2-tooltip->description
+#. settings-schema.json->grid-3-tooltip->description
+#. settings-schema.json->grid-4-tooltip->description
+msgid "Description"
+msgstr "Beskrivelse"
+
+#. settings-schema.json->grid-1-tooltip->tooltip
+#. settings-schema.json->grid-2-tooltip->tooltip
+#. settings-schema.json->grid-3-tooltip->tooltip
+#. settings-schema.json->grid-4-tooltip->tooltip
+msgid "Shown when hovering this grid on the selector."
+msgstr "Vises når musen holdes over dette gitter i vælgeren."

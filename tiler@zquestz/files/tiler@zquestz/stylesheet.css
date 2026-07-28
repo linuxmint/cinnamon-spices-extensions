@@ -1,0 +1,37 @@
+/*
+ * Tiler takes its colours from the theme in use rather than setting its own:
+ * the grid is drawn as one of that theme's windows, in the colours it fills,
+ * writes on and marks a selection with. Those are read when the grid is
+ * shown, so only the shapes a theme has no way of knowing about are set here.
+ */
+
+.tiler-panel {
+  padding: 12px;
+}
+
+.tiler-cell {
+  border-radius: 3px;
+}
+
+.tiler-preview {
+  border-radius: 4px;
+}
+
+.tiler-header {
+  padding-bottom: 10px;
+}
+
+.tiler-strip {
+  padding-top: 8px;
+}
+
+.tiler-chip {
+  border-radius: 3px;
+  padding: 4px 2px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.tiler-actions {
+  padding-top: 12px;
+}

@@ -1,0 +1,397 @@
+# TILER
+# This file is put in the public domain.
+# zquestz, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tiler@zquestz 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"PO-Revision-Date: 2026-07-28 19:50-1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. tiler.js:948
+msgid "Main Left"
+msgstr "Haupt links"
+
+#. tiler.js:949
+msgid ""
+"The focused window fills the left half, and the rest stack on the right."
+msgstr ""
+"Das fokussierte Fenster füllt die linke Hälfte, der Rest stapelt sich rechts."
+
+#. tiler.js:953
+msgid "Main Right"
+msgstr "Haupt rechts"
+
+#. tiler.js:954
+msgid ""
+"The focused window fills the right half, and the rest stack on the left."
+msgstr ""
+"Das fokussierte Fenster füllt die rechte Hälfte, der Rest stapelt sich links."
+
+#. tiler.js:958
+msgid "Equal Left"
+msgstr "Gleich links"
+
+#. tiler.js:959
+msgid "Every window shares two equal columns, led from the top left."
+msgstr "Alle Fenster teilen sich zwei gleiche Spalten, angeführt oben links."
+
+#. tiler.js:963
+msgid "Equal Right"
+msgstr "Gleich rechts"
+
+#. tiler.js:964
+msgid "Every window shares two equal columns, led from the top right."
+msgstr "Alle Fenster teilen sich zwei gleiche Spalten, angeführt oben rechts."
+
+#. keybindings.py:26
+msgid "Arrows"
+msgstr "Pfeiltasten"
+
+#. keybindings.py:26
+msgid "Move the selection"
+msgstr "Auswahl bewegen"
+
+#. keybindings.py:27
+msgid "Shift+Arrow"
+msgstr "Umschalt+Pfeil"
+
+#. keybindings.py:27
+msgid "Grow the selection"
+msgstr "Auswahl erweitern"
+
+#. keybindings.py:28
+msgid "1-4"
+msgstr "1-4"
+
+#. keybindings.py:28
+msgid "Switch between grids"
+msgstr "Zwischen Rastern wechseln"
+
+#. keybindings.py:29
+msgid "L / R"
+msgstr "L / R"
+
+#. keybindings.py:29
+msgid "Main Left, Main Right"
+msgstr "Haupt links, Haupt rechts"
+
+#. keybindings.py:30
+msgid "Shift+L / R"
+msgstr "Umschalt+L / R"
+
+#. keybindings.py:30
+msgid "Equal Left, Equal Right"
+msgstr "Gleich links, Gleich rechts"
+
+#. keybindings.py:31
+msgid "Enter/Space"
+msgstr "Eingabe/Leertaste"
+
+#. keybindings.py:31
+msgid "Confirm selection"
+msgstr "Auswahl bestätigen"
+
+#. keybindings.py:32
+msgid "Escape"
+msgstr "Esc"
+
+#. keybindings.py:32
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#. metadata.json->name
+msgid "Tiler"
+msgstr "Tiler"
+
+#. metadata.json->description
+msgid ""
+"Grid-based window tiling with gaps, reserved screen space, and one-press "
+"auto-tiling. Inspired by gTile."
+msgstr ""
+"Fensteranordnung im Raster mit Abständen, reserviertem Bildschirmplatz und "
+"Auto-Anordnung auf Knopfdruck. Inspiriert von gTile."
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "Allgemein"
+
+#. settings-schema.json->spacing-page->title
+msgid "Spacing"
+msgstr "Abstände"
+
+#. settings-schema.json->hotkeys-section->title
+msgid "Hotkeys"
+msgstr "Tastenkürzel"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling options"
+msgstr "Anordnungsoptionen"
+
+#. settings-schema.json->gaps-section->title
+msgid "Gaps"
+msgstr "Lücken"
+
+#. settings-schema.json->reserved-section->title
+msgid "Reserved space"
+msgstr "Reservierter Bereich"
+
+#. settings-schema.json->grids-page->title
+msgid "Grids"
+msgstr "Raster"
+
+#. settings-schema.json->grid-1-section->title
+msgid "Grid 1"
+msgstr "Raster 1"
+
+#. settings-schema.json->grid-2-section->title
+msgid "Grid 2"
+msgstr "Raster 2"
+
+#. settings-schema.json->grid-3-section->title
+msgid "Grid 3"
+msgstr "Raster 3"
+
+#. settings-schema.json->grid-4-section->title
+msgid "Grid 4"
+msgstr "Raster 4"
+
+#. settings-schema.json->keybindings-section->title
+msgid "Keybindings"
+msgstr "Tastenbelegung"
+
+#. settings-schema.json->hotkey->description
+msgid "Tile the focused window"
+msgstr "Fokussiertes Fenster anordnen"
+
+#. settings-schema.json->hotkey->tooltip
+msgid "Keyboard shortcut that opens Tiler for the focused window."
+msgstr "Tastenkürzel, das Tiler für das fokussierte Fenster öffnet."
+
+#. settings-schema.json->center-on-window->description
+msgid "Center the grid on the focused window"
+msgstr "Raster über dem fokussierten Fenster zentrieren"
+
+#. settings-schema.json->center-on-window->tooltip
+msgid ""
+"The grid normally appears in the middle of the screen. Turn this on to have "
+"it appear over the window being tiled instead."
+msgstr ""
+"Das Raster erscheint normalerweise in der Bildschirmmitte. Bei Aktivierung "
+"erscheint es stattdessen über dem anzuordnenden Fenster."
+
+#. settings-schema.json->tile-dialogs->description
+msgid "Tile dialog windows"
+msgstr "Dialogfenster anordnen"
+
+#. settings-schema.json->tile-dialogs->tooltip
+msgid ""
+"Ordinary windows are always tiled. This adds dialogs such as preferences and "
+"file choosers; dialogs that cannot be resized are skipped."
+msgstr ""
+"Gewöhnliche Fenster werden immer angeordnet. Dies bezieht Dialoge wie "
+"Einstellungen und Dateiauswahlen mit ein; Dialoge mit fester Größe werden "
+"übersprungen."
+
+#. settings-schema.json->tile-toolboxes->description
+msgid "Tile toolboxes and palettes"
+msgstr "Werkzeugkästen und Paletten anordnen"
+
+#. settings-schema.json->tile-toolboxes->tooltip
+msgid "Floating tool windows, like the ones used by image editors."
+msgstr ""
+"Schwebende Werkzeugfenster, wie sie Bildbearbeitungsprogramme verwenden."
+
+#. settings-schema.json->show-autotile->description
+msgid "Show auto-tile actions on the grid"
+msgstr "Auto-Anordnen-Aktionen im Raster anzeigen"
+
+#. settings-schema.json->show-autotile->tooltip
+msgid ""
+"Adds a row of arrangements to the grid that tile every window on the "
+"workspace at once: a main window beside a stack, or everything shared out "
+"equally."
+msgstr ""
+"Fügt dem Raster eine Reihe von Anordnungen hinzu, die alle Fenster der "
+"Arbeitsfläche auf einmal anordnen: ein Hauptfenster neben einem Stapel oder "
+"alles gleichmäßig verteilt."
+
+#. settings-schema.json->window-gap->units
+#. settings-schema.json->edge-gap->units
+#. settings-schema.json->reserved-top->units
+#. settings-schema.json->reserved-bottom->units
+#. settings-schema.json->reserved-left->units
+#. settings-schema.json->reserved-right->units
+msgid "pixels"
+msgstr "Pixel"
+
+#. settings-schema.json->window-gap->description
+msgid "Gap between windows"
+msgstr "Abstand zwischen Fenstern"
+
+#. settings-schema.json->window-gap->tooltip
+msgid "Space left between two windows tiled next to each other."
+msgstr "Abstand zwischen zwei nebeneinander angeordneten Fenstern."
+
+#. settings-schema.json->edge-gap->description
+msgid "Gap at screen edges"
+msgstr "Abstand an den Bildschirmrändern"
+
+#. settings-schema.json->edge-gap->tooltip
+msgid ""
+"Space left between a tiled window and the edge of the usable screen area."
+msgstr ""
+"Abstand zwischen einem angeordneten Fenster und dem Rand des nutzbaren "
+"Bildschirmbereichs."
+
+#. settings-schema.json->reserved-scope->description
+msgid "Reserve space on"
+msgstr "Platz reservieren auf"
+
+#. settings-schema.json->reserved-scope->tooltip
+msgid ""
+"Choose whether reserved space applies to every monitor or only the primary "
+"monitor."
+msgstr ""
+"Wählen Sie, ob der reservierte Platz für alle Monitore oder nur für den "
+"Hauptmonitor gilt."
+
+#. settings-schema.json->reserved-scope->options
+msgid "All monitors"
+msgstr "Alle Monitore"
+
+#. settings-schema.json->reserved-scope->options
+msgid "Primary monitor only"
+msgstr "Nur Hauptmonitor"
+
+#. settings-schema.json->reserved-top->description
+msgid "Reserved space at the top"
+msgstr "Reservierter Platz oben"
+
+#. settings-schema.json->reserved-top->tooltip
+#. settings-schema.json->reserved-bottom->tooltip
+#. settings-schema.json->reserved-left->tooltip
+#. settings-schema.json->reserved-right->tooltip
+msgid ""
+"Windows are never tiled into this area. Useful for Conky or docks that do "
+"not reserve space themselves."
+msgstr ""
+"In diesem Bereich werden nie Fenster angeordnet. Nützlich für Conky oder "
+"Docks, die selbst keinen Platz reservieren."
+
+#. settings-schema.json->reserved-bottom->description
+msgid "Reserved space at the bottom"
+msgstr "Reservierter Platz unten"
+
+#. settings-schema.json->reserved-left->description
+msgid "Reserved space on the left"
+msgstr "Reservierter Platz links"
+
+#. settings-schema.json->reserved-right->description
+msgid "Reserved space on the right"
+msgstr "Reservierter Platz rechts"
+
+#. settings-schema.json->grid-1-cols->units
+#. settings-schema.json->grid-2-cols->units
+#. settings-schema.json->grid-3-cols->units
+#. settings-schema.json->grid-4-cols->units
+msgid "columns"
+msgstr "Spalten"
+
+#. settings-schema.json->grid-1-cols->description
+#. settings-schema.json->grid-2-cols->description
+#. settings-schema.json->grid-3-cols->description
+#. settings-schema.json->grid-4-cols->description
+msgid "Columns"
+msgstr "Spalten"
+
+#. settings-schema.json->grid-1-cols->tooltip
+#. settings-schema.json->grid-2-cols->tooltip
+#. settings-schema.json->grid-3-cols->tooltip
+#. settings-schema.json->grid-4-cols->tooltip
+msgid "How many columns this grid is divided into."
+msgstr "In wie viele Spalten dieses Raster unterteilt ist."
+
+#. settings-schema.json->grid-1-rows->units
+#. settings-schema.json->grid-2-rows->units
+#. settings-schema.json->grid-3-rows->units
+#. settings-schema.json->grid-4-rows->units
+msgid "rows"
+msgstr "Zeilen"
+
+#. settings-schema.json->grid-1-rows->description
+#. settings-schema.json->grid-2-rows->description
+#. settings-schema.json->grid-3-rows->description
+#. settings-schema.json->grid-4-rows->description
+msgid "Rows"
+msgstr "Zeilen"
+
+#. settings-schema.json->grid-1-rows->tooltip
+#. settings-schema.json->grid-2-rows->tooltip
+#. settings-schema.json->grid-3-rows->tooltip
+#. settings-schema.json->grid-4-rows->tooltip
+msgid "How many rows this grid is divided into."
+msgstr "In wie viele Zeilen dieses Raster unterteilt ist."
+
+#. settings-schema.json->grid-1-layout->description
+#. settings-schema.json->grid-2-layout->description
+#. settings-schema.json->grid-3-layout->description
+#. settings-schema.json->grid-4-layout->description
+msgid "Layout"
+msgstr "Aufteilung"
+
+#. settings-schema.json->grid-1-layout->tooltip
+#. settings-schema.json->grid-2-layout->tooltip
+#. settings-schema.json->grid-3-layout->tooltip
+#. settings-schema.json->grid-4-layout->tooltip
+msgid ""
+"Columns, then rows. Sizes can be given one by one to make some tracks larger "
+"than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
+"width of its neighbours. Changing the numbers above rewrites this, and "
+"anything that cannot be read falls back to them."
+msgstr ""
+"Spalten, dann Zeilen. Größen können einzeln angegeben werden, um manche "
+"Spuren größer zu machen: 1,2,1 x 1,1 sind drei Spalten, deren mittlere "
+"doppelt so breit ist wie ihre Nachbarn. Das Ändern der Zahlen oben "
+"überschreibt dies, und alles Unlesbare fällt auf sie zurück."
+
+#. settings-schema.json->grid-1-name->description
+#. settings-schema.json->grid-2-name->description
+#. settings-schema.json->grid-3-name->description
+#. settings-schema.json->grid-4-name->description
+msgid "Name"
+msgstr "Name"
+
+#. settings-schema.json->grid-1-name->tooltip
+#. settings-schema.json->grid-2-name->tooltip
+#. settings-schema.json->grid-3-name->tooltip
+#. settings-schema.json->grid-4-name->tooltip
+msgid ""
+"What this grid is called on the grid selector. Long names are shortened to "
+"fit. Left empty, it is named after its size."
+msgstr ""
+"So heißt dieses Raster in der Rasterauswahl. Lange Namen werden passend "
+"gekürzt. Bleibt es leer, wird es nach seiner Größe benannt."
+
+#. settings-schema.json->grid-1-tooltip->description
+#. settings-schema.json->grid-2-tooltip->description
+#. settings-schema.json->grid-3-tooltip->description
+#. settings-schema.json->grid-4-tooltip->description
+msgid "Description"
+msgstr "Beschreibung"
+
+#. settings-schema.json->grid-1-tooltip->tooltip
+#. settings-schema.json->grid-2-tooltip->tooltip
+#. settings-schema.json->grid-3-tooltip->tooltip
+#. settings-schema.json->grid-4-tooltip->tooltip
+msgid "Shown when hovering this grid on the selector."
+msgstr "Wird angezeigt, wenn dieses Raster in der Auswahl überfahren wird."
