@@ -72,6 +72,24 @@ Because Cinnamon is missing a required API, the following effects are disabled. 
 5. Select the new "Burn My Windows" entry and then click the "+" button at the bottom of the window
 6. Use the "gears" icon next to the "Burn My Windows" entry to open the setting window and setup the preferred behaviour
 
+
+
+## Sound Effects
+
+Burn My  Windows can now play **unique sound effects** for each type of window effect. 
+
+By default the sound effects are disabled and **no sounds are shipped with the extension**, but you can download your own sound files and go to the "Effect Settings" tab in the Burn My Windows configuration (System-settings->Extension->Burn My Window->Configure(button)) to select different sound files to to be played when windows appear or disappear.
+
+**Burn My Windows respects the Cinnamon sound settings** and will only play sounds when the "Opening new windows", "Closing windows" and the "Minimizing windows" options are enabled under System-Setting->Sounds->Sounds(Tab), but the sound file played will be the one selected for the active Burn My Windows effect settings. The system wide sound file will play when no custom sound is selected for the active Burn My Windows effect.
+
+Cinnamon only supports a subset of sound file formats. You can convert most sound files using the following terminal command:
+
+```
+ffmpeg -i <input_sound_file_name> -c:a libvorbis -q:a 5 <output_sound_file_name>.ogg
+```
+
+You can also use GUI tools like "Audacity" to convert the files as well as do more functions like trimming, removing clicks, fading, volume adjustments and much more.
+
 ## Feedback
 
 Please leave a comment here on cinnamon-spices.linuxmint.com or you can create an issue on my Github (https://github.com/klangman/CinnamonBurnMyWindows) to give me feedback or to report any issues you find. 

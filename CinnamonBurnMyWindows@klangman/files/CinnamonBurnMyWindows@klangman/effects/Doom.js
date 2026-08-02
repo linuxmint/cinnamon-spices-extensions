@@ -123,4 +123,13 @@ var Effect = class Effect {
     let actorScale = 2.0 * Math.max(1.0, global.stage.height / actor.height);
     return {x: 1.0, y: actorScale};
   }
+
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("doom-open-sound");
+     } else {
+        return settings.getValue("doom-close-sound");
+     }
+  }
 }

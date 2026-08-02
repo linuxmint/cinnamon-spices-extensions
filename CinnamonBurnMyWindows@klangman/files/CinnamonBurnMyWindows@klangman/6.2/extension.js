@@ -58,6 +58,7 @@ const Cinnamon = imports.gi.Cinnamon;
 const Util = imports.misc.util;
 const SignalManager = imports.misc.signalManager;
 const UPowerGlib = imports.gi.UPowerGlib;
+const SoundManager = imports.ui.soundManager;
 
 const Effect = {
   Apparition:  {idx: 0,  name: "Apparition"},
@@ -191,6 +192,7 @@ class BurnMyWindows {
       this._settings.bind("dialog-close-effect", "dialogCloseEffect");
       this._settings.bind("power-close-effect", "powerCloseEffect");
       this._settings.bind("power-dialog-close-effect", "powerDialogCloseEffect");
+      this._settings.bind("enable-sound", "enableSound", this._enableSounds);
 
       // Keep track of the previously focused Application
       this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
@@ -218,6 +220,9 @@ class BurnMyWindows {
       // This call will only connect to minimize/unminimize events if needed, that way MagicLampEffect can still work if it's installed
       this._enableMinimizeEffects();
 
+      // Monkey Patch the SoundManager.play() function if required
+      this._enableSounds();
+
       // Make sure to remove any effects if requested by the window manager.
       this._killEffectsSignal = global.window_manager.connect('kill-window-effects', (wm, actor) => {
          const shader = actor.get_effect('burn-my-windows-effect');
@@ -225,6 +230,26 @@ class BurnMyWindows {
             shader.endAnimation();
          }
       });
+  }
+
+  // Make sure the SoundManager Monkey patching is setup correctly according to the this.enableSound value
+  _enableSounds() {
+     if (this.enableSound && !this._originalPlay) {
+        this._originalPlay = SoundManager.SoundManager.prototype.play;
+        SoundManager.SoundManager.prototype.play = this._soundManager_play;
+     } else if (!this.enableSound && this._originalPlay) {
+        SoundManager.SoundManager.prototype.play = this._originalPlay;
+        delete this._originalPlay;
+     }
+  }
+
+  // Monkey patched play function, `this` will be a SoundManager instance
+  _soundManager_play(event) {
+     if (event == "map" || event == "close" || event == "minimize") {
+        // We will play these sounds later on when we know what file to play
+        return;
+     }
+     extensionThis._originalPlay.call(this, event);
   }
 
   // This function will rebuild the "random-include" list. After an upgrade,
@@ -318,6 +343,39 @@ class BurnMyWindows {
       Main.wm.desktop_effects_close_type = "traditional";
       Main.wm.desktop_effects_minimize_type = "traditional";
 
+      // If sound effects are enabled and the chosen effect has a sound effect file, then override the cinnamon effect file
+      if (extensionThis.enableSound) {
+         let soundSettings = new Gio.Settings({ schema_id: "org.cinnamon.sounds" });
+         let sfx = chosenEffect.effect.constructor.getSFX(extensionThis._settings, (event & ShouldAnimateManager.Events.MapWindow) || (event & ShouldAnimateManager.Events.Unminimize) );
+         switch(event) {
+            case ShouldAnimateManager.Events.MapWindow:
+               if (soundSettings.get_boolean("map-enabled")) {
+                  if (sfx)
+                     Main.soundManager.playSoundFile(0, sfx);
+                  else
+                     extensionThis._originalPlay.call(Main.soundManager, "map");
+               }
+               break;
+            case ShouldAnimateManager.Events.DestroyWindow:
+               if (soundSettings.get_boolean("close-enabled")) {
+                  if (sfx)
+                     Main.soundManager.playSoundFile(0, sfx);
+                  else
+                     extensionThis._originalPlay.call(Main.soundManager, "close");
+               }
+               break;
+            case ShouldAnimateManager.Events.Minimize:
+            case ShouldAnimateManager.Events.Unminimize:
+               if (soundSettings.get_boolean("minimize-enabled")) {
+                  if (sfx)
+                     Main.soundManager.playSoundFile(0, sfx);
+                  else
+                     extensionThis._originalPlay.call(Main.soundManager, "minimize");
+               }
+               break;
+         }
+      }
+
       // Record the windows current position before Cinnamon mucks with it's position
       let actorX = actor.x;
       let actorY = actor.y;
@@ -369,6 +427,12 @@ class BurnMyWindows {
 
     // Restore the original window-open, window-close, Minimize and Unminimize animations.
     this.shouldAnimateManager.disconnect();
+
+    // Restore the monkey patched SoundManager if it has been patched
+    if (this._originalPlay) {
+       SoundManager.SoundManager.prototype.play = this._originalPlay;
+       delete this._originalPlay;
+    }
 
     this._settings.finalize();
     this._settings = null;
