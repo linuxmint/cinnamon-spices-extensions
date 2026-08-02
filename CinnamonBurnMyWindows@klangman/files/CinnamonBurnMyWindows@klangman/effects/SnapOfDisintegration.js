@@ -61,7 +61,7 @@ var Effect = class Effect {
       if (!this._dustTexture) {
         const dustData    = GdkPixbuf.Pixbuf.new_from_file( GLib.get_home_dir() +
            '/.local/share/cinnamon/extensions/' + UUID + '/resources/img/dust.png');
-        this._dustTexture = new Clutter.Image();
+        this._dustTexture = new St.ImageContent({preferred_width: dustData.width, preferred_height: dustData.height});
         this._dustTexture.set_data(dustData.get_pixels(), Cogl.PixelFormat.RGB_888,
                                    dustData.width, dustData.height, dustData.rowstride);
       }
@@ -141,5 +141,14 @@ var Effect = class Effect {
   // bounds of the actor. This only works for GNOME 3.38+.
   static getActorScale(settings, forOpening, actor) {
     return {x: 1.2, y: 1.2};
+  }
+
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("snap-open-sound");
+     } else {
+        return settings.getValue("snap-close-sound");
+     }
   }
 }

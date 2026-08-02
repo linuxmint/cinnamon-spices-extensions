@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+
+* Improved the Fire and Mushroom effect settings to be more clean, the custom settings now only show when "custom" is selected in the drop-down list.
+
+* Added Effect settings sound options for each effect, allowing you to setup custom sounds for each effect open/unminimize and close/minimize events.. There are no default effects but you can download sound files and add them to BurnMyWindows.
+
 ## 1.0.3
 
 * Fix the location of the icon file used in the About tab of the configuration window.

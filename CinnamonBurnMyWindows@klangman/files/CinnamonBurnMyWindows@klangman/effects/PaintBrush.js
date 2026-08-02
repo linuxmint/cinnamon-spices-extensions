@@ -59,7 +59,7 @@ var Effect = class Effect {
       if (!this._brushTexture) {
         const brushData = GdkPixbuf.Pixbuf.new_from_file( GLib.get_home_dir() +
            '/.local/share/cinnamon/extensions/' + UUID + '/resources/img/brush.png');
-        this._brushTexture = new Clutter.Image();
+        this._brushTexture = new St.ImageContent({preferred_width: brushData.width, preferred_height: brushData.height});
         this._brushTexture.set_data(brushData.get_pixels(),
                                     Cogl.PixelFormat.RGBA_8888_PRE, brushData.width,
                                     brushData.height, brushData.rowstride);
@@ -130,5 +130,14 @@ var Effect = class Effect {
   // bounds of the actor. This only works for GNOME 3.38+.
   static getActorScale(settings, forOpening, actor) {
     return {x: 1.0, y: 1.0};
+  }
+
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("paint-brush-open-sound");
+     } else {
+        return settings.getValue("paint-brush-close-sound");
+     }
   }
 }

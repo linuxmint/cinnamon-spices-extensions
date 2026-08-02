@@ -25,6 +25,8 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Cogl = imports.gi.Cogl;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
+const St = imports.gi.St;
+
 
 const UUID = "CinnamonBurnMyWindows@klangman";
 
@@ -68,12 +70,11 @@ var Effect = class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._shardTexture) {
-        const shardData    = GdkPixbuf.Pixbuf.new_from_file( GLib.get_home_dir() +
+        const shardData = GdkPixbuf.Pixbuf.new_from_file( GLib.get_home_dir() +
            '/.local/share/cinnamon/extensions/' + UUID + '/resources/img/shards.png');
-        this._shardTexture = new Clutter.Image();
+        this._shardTexture = new St.ImageContent({preferred_width: shardData.width, preferred_height: shardData.height});
         this._shardTexture.set_data(shardData.get_pixels(), Cogl.PixelFormat.RGB_888,
-                                    shardData.width, shardData.height,
-                                    shardData.rowstride);
+                                    shardData.width, shardData.height, shardData.rowstride);
       }
 
       // Store all uniform locations.
@@ -92,7 +93,7 @@ var Effect = class Effect {
           let epicenterY = 0.5;
 
           // However, if this option is set, we use the mouse pointer position.
-          if (!forOpening && settings.get_boolean('broken-glass-use-pointer')) {
+          if (!forOpening && settings.getValue('broken-glass-use-pointer')) {
             const [x, y]               = global.get_pointer();
             const [ok, localX, localY] = actor.transform_stage_point(x, y);
 
@@ -171,5 +172,14 @@ var Effect = class Effect {
   // bounds of the actor. This only works for GNOME 3.38+.
   static getActorScale(settings, forOpening, actor) {
     return {x: 2.0, y: 2.0};
+  }
+
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("broken-glass-open-sound");
+     } else {
+        return settings.getValue("broken-glass-close-sound");
+     }
   }
 }

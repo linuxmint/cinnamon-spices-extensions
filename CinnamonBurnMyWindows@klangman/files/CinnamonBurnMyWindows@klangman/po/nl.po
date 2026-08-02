@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2025-10-15 21:53-0400\n"
+"POT-Creation-Date: 2026-08-02 12:18-0400\n"
 "PO-Revision-Date: 2025-05-13 11:59+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -16,31 +16,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.2/extension.js:208 6.2/extension.js:286 6.2/extension.js:614
+#. 6.2/extension.js:210 6.2/extension.js:311 6.2/extension.js:678
 msgid "Error"
 msgstr "Fout"
 
-#. 6.2/extension.js:208
+#. 6.2/extension.js:210
 msgid "was NOT enabled"
 msgstr "was NIET ingeschakeld"
 
-#. 6.2/extension.js:209 6.2/extension.js:287
+#. 6.2/extension.js:211 6.2/extension.js:312
 msgid "The existing extension"
 msgstr "De bestaande extensie"
 
-#. 6.2/extension.js:209
+#. 6.2/extension.js:211
 msgid "conflicts with this extension."
 msgstr "conflicteert met deze extensie."
 
-#. 6.2/extension.js:286
+#. 6.2/extension.js:311
 msgid "minimize/unminimize effects can not be enabled"
 msgstr "minimaliseer-/onminimaliseer-effecten kunnen niet worden ingeschakeld"
 
-#. 6.2/extension.js:287
+#. 6.2/extension.js:312
 msgid "already handles minimize/unminimize animation events."
 msgstr "behandelt al minimaliseer-/onminimaliseer-animatiegebeurtenissen."
 
-#. 6.2/extension.js:615
+#. 6.2/extension.js:679
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore application specific effects can not be applied to "
@@ -84,7 +84,7 @@ msgstr "Verschijning"
 msgid "Aura Glow"
 msgstr "Aura Gloed"
 
-#. effects/BrokenGlass.js:152
+#. effects/BrokenGlass.js:153
 msgid "Broken Glass"
 msgstr "Gebroken Glas"
 
@@ -157,32 +157,32 @@ msgid "Fire"
 msgstr "Vuur"
 
 #. 6.2->settings-schema.json->fire-presets->options
-#. effects/Fire.js:180
+#. effects/Fire.js:189
 msgid "Default Fire"
 msgstr "Standaard Vuur"
 
 #. 6.2->settings-schema.json->fire-presets->options
-#. effects/Fire.js:190
+#. effects/Fire.js:199
 msgid "Hell Fire"
 msgstr "Hel Vuur"
 
 #. 6.2->settings-schema.json->fire-presets->options
-#. effects/Fire.js:200
+#. effects/Fire.js:209
 msgid "Dark and Smutty"
 msgstr "Donker en Smerig"
 
 #. 6.2->settings-schema.json->fire-presets->options
-#. effects/Fire.js:210
+#. effects/Fire.js:219
 msgid "Cold Breeze"
 msgstr "Koude Bries"
 
 #. 6.2->settings-schema.json->fire-presets->options
-#. effects/Fire.js:220
+#. effects/Fire.js:229
 msgid "Santa is Coming"
 msgstr "Kerstman komt eraan"
 
 #. 6.2->settings-schema.json->fire-presets->options
-#. effects/Fire.js:230
+#. effects/Fire.js:239
 msgid "Nuclear"
 msgstr "Nucleair"
 
@@ -293,42 +293,42 @@ msgid "Mushroom"
 msgstr "Paddenstoel"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:227
+#. effects/Mushroom.js:236
 msgid "8Bit Plumber"
 msgstr "8Bit Plumber"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:244
+#. effects/Mushroom.js:253
 msgid "New Bros 2"
 msgstr "New Bros 2"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:262
+#. effects/Mushroom.js:271
 msgid "The True North"
 msgstr "The True North"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:280
+#. effects/Mushroom.js:289
 msgid "Red White and Blue"
 msgstr "Rood Wit en Blauw"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:297
+#. effects/Mushroom.js:306
 msgid "Rainbow"
 msgstr "Regenboog"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:314
+#. effects/Mushroom.js:323
 msgid "Cattuccino"
 msgstr "Cattuccino"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:332
+#. effects/Mushroom.js:341
 msgid "Dracula"
 msgstr "Dracula"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
-#. effects/Mushroom.js:349
+#. effects/Mushroom.js:358
 msgid "Sparkle"
 msgstr "Schittering"
 
@@ -497,6 +497,19 @@ msgstr "Team Rocket"
 msgid "Wisps"
 msgstr "Slierten"
 
+#. 6.2/CustomWidgets.py:509
+msgid "_Cancel"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:510
+#, fuzzy
+msgid "_Open"
+msgstr "Openen"
+
+#. 6.2/CustomWidgets.py:520
+msgid "Sound files"
+msgstr ""
+
 #. metadata.json->name
 msgid "Burn My Windows"
 msgstr "Verbrand Mijn Vensters"
@@ -548,11 +561,6 @@ msgstr "Effect Selector"
 #. 6.2->settings-schema.json->effect-settings->title
 msgid "Effect Specific Settings"
 msgstr "Effect Specifieke Instellingen"
-
-#. 6.2->settings-schema.json->fire-custom-section->title
-#. 6.2->settings-schema.json->mushroom-custom-section->title
-msgid "Setting for the custom preset:"
-msgstr "Instelling voor de aangepaste voorinstelling:"
 
 #. 6.2->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
@@ -747,6 +755,20 @@ msgstr "Open venster effect"
 msgid "Close window effect"
 msgstr "Sluit venster effect"
 
+#. 6.2->settings-schema.json->enable-sound->description
+msgid "Allow Burn My Windows to override cinnamon sound effects"
+msgstr ""
+
+#. 6.2->settings-schema.json->enable-sound->tooltip
+msgid ""
+"Allow Burn My Windows to override Cinnamon's window open/close/minimize "
+"sound effects with unique ones defined in the Effect Settings tab for each "
+"Burn My Windows effect. Note: Sounds will only play when Cinnamon's open/"
+"close/minimize sound effects are enabled under Cinnamon sounds settings. The "
+"default cinnamon sounds will be used unless a sound effect file is chosen "
+"for the active Burn My Windows effect."
+msgstr ""
+
 #. 6.2->settings-schema.json->dialog-special->description
 #. 6.2->settings-schema.json->power-dialog-special->description
 msgid "Special handling for dialog windows"
@@ -877,6 +899,56 @@ msgstr "Effect Duur (ms)"
 msgid "Reset to default"
 msgstr "Reset naar standaard"
 
+#. 6.2->settings-schema.json->apparition-open-sound->description
+#. 6.2->settings-schema.json->aura-glow-open-sound->description
+#. 6.2->settings-schema.json->doom-open-sound->description
+#. 6.2->settings-schema.json->energize-a-open-sound->description
+#. 6.2->settings-schema.json->energize-b-open-sound->description
+#. 6.2->settings-schema.json->fire-open-sound->description
+#. 6.2->settings-schema.json->focus-open-sound->description
+#. 6.2->settings-schema.json->glide-open-sound->description
+#. 6.2->settings-schema.json->glitch-open-sound->description
+#. 6.2->settings-schema.json->hexagon-open-sound->description
+#. 6.2->settings-schema.json->incinerate-open-sound->description
+#. 6.2->settings-schema.json->magiclamp-open-sound->description
+#. 6.2->settings-schema.json->mushroom-open-sound->description
+#. 6.2->settings-schema.json->pixelate-open-sound->description
+#. 6.2->settings-schema.json->pixel-wheel-open-sound->description
+#. 6.2->settings-schema.json->pixel-wipe-open-sound->description
+#. 6.2->settings-schema.json->portal-open-sound->description
+#. 6.2->settings-schema.json->rgbwarp-open-sound->description
+#. 6.2->settings-schema.json->team-rocket-open-sound->description
+#. 6.2->settings-schema.json->tv-open-sound->description
+#. 6.2->settings-schema.json->tv-glitch-open-sound->description
+#. 6.2->settings-schema.json->wisps-open-sound->description
+msgid "Sound on window appear events"
+msgstr ""
+
+#. 6.2->settings-schema.json->apparition-close-sound->description
+#. 6.2->settings-schema.json->aura-glow-close-sound->description
+#. 6.2->settings-schema.json->doom-close-sound->description
+#. 6.2->settings-schema.json->energize-a-close-sound->description
+#. 6.2->settings-schema.json->energize-b-close-sound->description
+#. 6.2->settings-schema.json->fire-close-sound->description
+#. 6.2->settings-schema.json->focus-close-sound->description
+#. 6.2->settings-schema.json->glide-close-sound->description
+#. 6.2->settings-schema.json->glitch-close-sound->description
+#. 6.2->settings-schema.json->hexagon-close-sound->description
+#. 6.2->settings-schema.json->incinerate-close-sound->description
+#. 6.2->settings-schema.json->magiclamp-close-sound->description
+#. 6.2->settings-schema.json->mushroom-close-sound->description
+#. 6.2->settings-schema.json->pixelate-close-sound->description
+#. 6.2->settings-schema.json->pixel-wheel-close-sound->description
+#. 6.2->settings-schema.json->pixel-wipe-close-sound->description
+#. 6.2->settings-schema.json->portal-close-sound->description
+#. 6.2->settings-schema.json->rgbwarp-close-sound->description
+#. 6.2->settings-schema.json->team-rocket-close-sound->description
+#. 6.2->settings-schema.json->tv-close-sound->description
+#. 6.2->settings-schema.json->tv-glitch-close-sound->description
+#. 6.2->settings-schema.json->wisps-close-sound->description
+msgid "Sound on window disappear events"
+msgstr ""
+
 #. 6.2->settings-schema.json->aura-glow-random-color->description
 msgid "Random Color"
 msgstr "Willekeurige kleur"
@@ -966,8 +1038,8 @@ msgid "Custom"
 msgstr "Aangepast"
 
 #. 6.2->settings-schema.json->fire-presets->description
-msgid "Fire Preset"
-msgstr "Vuur-voorinstelling"
+msgid "Fire effect style"
+msgstr ""
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
@@ -1163,7 +1235,8 @@ msgid "This effects the quality and the costs of the animation"
 msgstr "Dit beïnvloedt de kwaliteit en de kosten van de animatie"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
-msgid "Mushroom Preset"
+#, fuzzy
+msgid "Mushroom effect style"
 msgstr "Paddenstoel-voorinstelling"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description

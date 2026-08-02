@@ -171,6 +171,15 @@ var Effect = class Effect {
     return {x: 1.0, y: 1.0};
   }
 
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("fire-open-sound");
+     } else {
+        return settings.getValue("fire-close-sound");
+     }
+  }
+
   // ----------------------------------------------------------------------- private stuff
 
   // This set the fire effects settings based on the preset value currently set

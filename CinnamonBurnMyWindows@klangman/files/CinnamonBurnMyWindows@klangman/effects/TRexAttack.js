@@ -56,7 +56,7 @@ var Effect = class Effect {
       if (!this._clawTexture) {
         const clawData    = GdkPixbuf.Pixbuf.new_from_file( GLib.get_home_dir() +
            '/.local/share/cinnamon/extensions/' + UUID + '/resources/img/claws.png');
-        this._clawTexture = new Clutter.Image();
+        this._clawTexture = new St.ImageContent({preferred_width: clawData.width, preferred_height: clawData.height});
         this._clawTexture.set_data(clawData.get_pixels(), Cogl.PixelFormat.RGB_888,
                                    clawData.width, clawData.height, clawData.rowstride);
       }
@@ -71,7 +71,7 @@ var Effect = class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        const c = Clutter.Color.from_string(settings.get_string('trex-scratch-color'))[1];
+        const c = Clutter.Color.from_string(settings.getValue('trex-scratch-color'))[1];
 
         // clang-format off
         shader.set_uniform_float(shader._uFlashColor,    4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
@@ -139,7 +139,16 @@ var Effect = class Effect {
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
   static getActorScale(settings, forOpening, actor) {
-    const scale = 1.0 + 0.5 * settings.get_double('trex-scratch-warp');
+    const scale = 1.0 + 0.5 * settings.getValue('trex-scratch-warp');
     return {x: scale, y: scale};
+  }
+
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("trex-scratch-open-sound");
+     } else {
+        return settings.getValue("trex-scratch-close-sound");
+     }
   }
 }
