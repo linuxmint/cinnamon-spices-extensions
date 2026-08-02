@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.9\n"
 
 #. 6.2/extension.js:210 6.2/extension.js:311 6.2/extension.js:678
 msgid "Error"
@@ -500,16 +500,15 @@ msgstr "Motas"
 
 #. 6.2/CustomWidgets.py:509
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #. 6.2/CustomWidgets.py:510
-#, fuzzy
 msgid "_Open"
-msgstr "Abrir"
+msgstr "_Abrir"
 
 #. 6.2/CustomWidgets.py:520
 msgid "Sound files"
-msgstr ""
+msgstr "Archivos de sonido"
 
 #. metadata.json->name
 msgid "Burn My Windows"
@@ -758,7 +757,7 @@ msgstr "Efecto para cerrar ventana"
 
 #. 6.2->settings-schema.json->enable-sound->description
 msgid "Allow Burn My Windows to override cinnamon sound effects"
-msgstr ""
+msgstr "Permitir que Burn My Windows anule los efectos de sonido de Cinnamon"
 
 #. 6.2->settings-schema.json->enable-sound->tooltip
 msgid ""
@@ -769,6 +768,14 @@ msgid ""
 "default cinnamon sounds will be used unless a sound effect file is chosen "
 "for the active Burn My Windows effect."
 msgstr ""
+"Permite que Burn My Windows sustituya los efectos de sonido de Cinnamon para "
+"abrir, cerrar y minimizar ventanas por otros únicos, definidos en la pestaña "
+"'Configuración de efectos' para cada efecto de Burn My Windows. Nota: Los "
+"sonidos solo se reproducirán cuando los efectos de sonido de Cinnamon para "
+"abrir, cerrar y minimizar estén activados en la configuración de sonidos de "
+"Cinnamon. Se utilizarán los sonidos predeterminados de Cinnamon a menos que "
+"se seleccione un archivo de efecto de sonido para el efecto activo de Burn "
+"My Windows.\\"
 
 #. 6.2->settings-schema.json->dialog-special->description
 #. 6.2->settings-schema.json->power-dialog-special->description
@@ -926,7 +933,7 @@ msgstr "Restablecer a valores por defecto"
 #. 6.2->settings-schema.json->tv-glitch-open-sound->description
 #. 6.2->settings-schema.json->wisps-open-sound->description
 msgid "Sound on window appear events"
-msgstr ""
+msgstr "Reproducir un sonido cuando se produzcan eventos en la ventana"
 
 #. 6.2->settings-schema.json->apparition-close-sound->description
 #. 6.2->settings-schema.json->aura-glow-close-sound->description
@@ -951,7 +958,7 @@ msgstr ""
 #. 6.2->settings-schema.json->tv-glitch-close-sound->description
 #. 6.2->settings-schema.json->wisps-close-sound->description
 msgid "Sound on window disappear events"
-msgstr ""
+msgstr "Sonido al desaparecer de la ventana"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
 msgid "Random Color"
@@ -1043,7 +1050,7 @@ msgstr "Personalizar"
 
 #. 6.2->settings-schema.json->fire-presets->description
 msgid "Fire effect style"
-msgstr ""
+msgstr "Estilo efecto fuego"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
@@ -1240,9 +1247,8 @@ msgid "This effects the quality and the costs of the animation"
 msgstr "Esto repercute en la calidad y el coste de la animación"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
-#, fuzzy
 msgid "Mushroom effect style"
-msgstr "Preajuste de setas"
+msgstr "Estilo efecto seta"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
 msgid "Scale Style"
