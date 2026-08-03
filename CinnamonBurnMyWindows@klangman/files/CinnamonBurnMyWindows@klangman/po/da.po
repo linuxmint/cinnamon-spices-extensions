@@ -502,16 +502,15 @@ msgstr "Lysglimt"
 
 #. 6.2/CustomWidgets.py:509
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annullér"
 
 #. 6.2/CustomWidgets.py:510
-#, fuzzy
 msgid "_Open"
-msgstr "Åbn"
+msgstr "_Åbn"
 
 #. 6.2/CustomWidgets.py:520
 msgid "Sound files"
-msgstr ""
+msgstr "Lydfiler"
 
 #. metadata.json->name
 msgid "Burn My Windows"
@@ -604,8 +603,8 @@ msgstr ""
 "Porteret til Cinnamon af Kevin Langman\n"
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
-"new\">Rapportér et problem</a> / <a href=\"https://cinnamon-"
-"spices.linuxmint.com/extensions/view/103\">Website</a>\n"
+"new\">Rapportér et problem</a> / <a href=\"https://cinnamon-spices.linuxmint."
+"com/extensions/view/103\">Website</a>\n"
 "\n"
 "Baseret på Burn-My-Windows-koden af Schneegans og bidragydere\n"
 "<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
@@ -759,7 +758,7 @@ msgstr "Luk vindue-effekt"
 
 #. 6.2->settings-schema.json->enable-sound->description
 msgid "Allow Burn My Windows to override cinnamon sound effects"
-msgstr ""
+msgstr "Tillad, at Brænd mine vinduer tilsidesætter Cinnamons lydeffekter"
 
 #. 6.2->settings-schema.json->enable-sound->tooltip
 msgid ""
@@ -770,6 +769,13 @@ msgid ""
 "default cinnamon sounds will be used unless a sound effect file is chosen "
 "for the active Burn My Windows effect."
 msgstr ""
+"Tillad, at Brænd mine vinduer tilsidesætter Cinnamons lydeffekter ved "
+"åbning, lukning og minimering af vinduer med unikke lydeffekter, der er "
+"defineret under fanen “Effektindstillinger” for hver enkelt Brænf mine "
+"vinduer-effekt. Bemærk: Lydene afspilles kun, når Cinnamons lydeffekter ved "
+"åbning, lukning og minimering er aktiveret under Cinnamons lydindstillinger. "
+"Cinnamons standardlyde vil blive brugt, medmindre der vælges en lydeffektfil "
+"til den aktive Brænd mine vinduer-effekt."
 
 #. 6.2->settings-schema.json->dialog-special->description
 #. 6.2->settings-schema.json->power-dialog-special->description
@@ -927,7 +933,7 @@ msgstr "Gendan standardindstillinger"
 #. 6.2->settings-schema.json->tv-glitch-open-sound->description
 #. 6.2->settings-schema.json->wisps-open-sound->description
 msgid "Sound on window appear events"
-msgstr ""
+msgstr "Lyd når vindue dukker op"
 
 #. 6.2->settings-schema.json->apparition-close-sound->description
 #. 6.2->settings-schema.json->aura-glow-close-sound->description
@@ -952,7 +958,7 @@ msgstr ""
 #. 6.2->settings-schema.json->tv-glitch-close-sound->description
 #. 6.2->settings-schema.json->wisps-close-sound->description
 msgid "Sound on window disappear events"
-msgstr ""
+msgstr "Lyd når vindue forsvinder"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
 msgid "Random Color"
@@ -1044,7 +1050,7 @@ msgstr "Brugerdefineret"
 
 #. 6.2->settings-schema.json->fire-presets->description
 msgid "Fire effect style"
-msgstr ""
+msgstr "Stil for ildeffekt"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
@@ -1239,9 +1245,8 @@ msgid "This effects the quality and the costs of the animation"
 msgstr "Påvirker animationens kvalitet og omkostning"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
-#, fuzzy
 msgid "Mushroom effect style"
-msgstr "Forudindstilling for Svamp"
+msgstr "Effektstil for Svamp"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
 msgid "Scale Style"
