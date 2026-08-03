@@ -4,10 +4,11 @@ A Cinnamon extension that allows you to define hotkeys which will activate the n
 
 By default the Super+Alt+(arrow-keys) are defined as the hotkeys to move to adjacent windows, but this can be changed in the configuration. If for example, you like the Vim key bindings, you could change the hotkeys to be Super+h/j/k/l. The default hotkey for activating windows underneath the current window is Super+Alt+Insert (Keypad).
 
-There are also two useful options the can be enabled in the configuration dialog:
+There are also three useful options that can be enabled in the configuration dialog:
 
 1. An option to enable activating to windows on different monitors.
 2. An option to "warp" the mouse cursor to the center of the window receiving the focus.
+3. An option to wrap around to the opposite edge when no window is found in the desired direction.
 
 ## Requirements
 
