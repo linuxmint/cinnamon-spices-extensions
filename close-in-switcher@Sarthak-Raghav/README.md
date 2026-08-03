@@ -7,3 +7,5 @@ windows in one Alt-Tab hold.
 Restores behaviour familiar from Windows.
 
 Tested on Cinnamon 6.6.
+
+![demo](demo.gif)
