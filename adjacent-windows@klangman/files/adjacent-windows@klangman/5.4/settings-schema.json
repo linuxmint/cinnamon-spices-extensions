@@ -86,5 +86,11 @@
     "type": "switch",
     "default": false,
     "description": "Warp the cursor to the center of the focused window"
+  },
+  "enable-wrap-around": {
+    "type": "switch",
+    "default": false,
+    "description": "Wrap around to the opposite edge when no window is found",
+    "tooltip": "When enabled, if there is no window in the selected direction, focus will wrap around to the window on the opposite edge of the screen (e.g., pressing left with no windows to the left will focus the rightmost window)"
   }
 }
