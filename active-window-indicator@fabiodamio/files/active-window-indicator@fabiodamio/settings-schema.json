@@ -1,0 +1,63 @@
+{
+  "line-height": {
+    "type": "spinbutton",
+    "default": 6,
+    "min": 1,
+    "max": 25,
+    "step": 1,
+    "units": "px",
+    "description": "Line height",
+    "tooltip": "Set the height of the indicator line"
+  },
+  "width-percent": {
+    "type": "spinbutton",
+    "default": 80,
+    "min": 10,
+    "max": 100,
+    "step": 5,
+    "units": "%",
+    "description": "Width relative to window"
+  },
+  "slant-percent": {
+    "type": "spinbutton",
+    "default": 10,
+    "min": 0,
+    "max": 40,
+    "step": 1,
+    "units": "px",
+    "description": "End slant"
+  },
+  "alpha-percent": {
+    "type": "spinbutton",
+    "default": 80,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "units": "%",
+    "description": "Opacity / Transparency"
+  },
+  "anim-speed": {
+    "type": "scale",
+    "default": 5,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "description": "Gradient animation speed (1 = slow, 20 = fast)"
+  },
+  "color-start": {
+    "type": "colorchooser",
+    "default": "rgb(0, 210, 255)",
+    "description": "Start color"
+  },
+  "color-end": {
+    "type": "colorchooser",
+    "default": "rgb(58, 123, 213)",
+    "description": "End color"
+  },
+  "restart-button": {
+    "type": "custom",
+    "file": "settings-widget.py",
+    "widget": "CustomRestartButton",
+    "dependency": ""
+  }
+}
