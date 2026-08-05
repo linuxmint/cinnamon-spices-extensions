@@ -1,0 +1,14 @@
+{
+  "uuid": "active-window-indicator@fabiodamio",
+  "name": "Active Window Indicator",
+  "description": "Highlights the active window with a customizable top bar.",
+  "version": "1.0.0",
+  "cinnamon-version": [
+    "5.0",
+    "5.2",
+    "5.4",
+    "5.6",
+    "5.8",
+    "6.0"
+  ]
+}
