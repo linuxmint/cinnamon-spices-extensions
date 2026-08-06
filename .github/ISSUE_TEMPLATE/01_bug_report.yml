@@ -43,6 +43,7 @@ body:
     label: Extension name and maintainer
     options:
     - ''
+    - active-window-indicator@fabiodamio @fabiodamio
     - adjacent-windows@klangman @klangman
     - ArrangementOfButtonsOnWindowTitleBar@claudiux @claudiux
     - auto-move-windows@JeffHanna @JeffHanna
@@ -59,6 +60,7 @@ body:
     - desktop-icons-per-workspace@cardsurf @cardsurf
     - desktop-scroller@ccadeptic23
     - DesktopCube@yare @klangman
+    - dim-inactive-windows@jark @jarkt
     - extra-panel-settings@gr3q @gr3q
     - Flipper@connerdev @klangman
     - focus-new-window@mdpenguin @mdpenguin
