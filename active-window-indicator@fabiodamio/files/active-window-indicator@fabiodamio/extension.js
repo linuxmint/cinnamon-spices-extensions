@@ -127,8 +127,8 @@ function drawTrapezoid(canvasActor, cr, width, height) {
     let alpha = alphaPercent / 100.0;
     let slant = Math.min(slantPixels, width / 2);
 
-    cr.moveTo(0, 0);                    
-    cr.lineTo(width, 0);                
+    cr.moveTo(0, 0);
+    cr.lineTo(width, 0);
     cr.lineTo(width - slant, height); 
     cr.lineTo(slant, height);         
     cr.closePath();
