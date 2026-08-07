@@ -11,6 +11,8 @@ let sizeSignal = null;
 let positionSignal = null;
 let stateSignal = null;
 let workspaceSignal = null;
+let overviewOpenId = null;
+let overviewCloseId = null;
 
 let currentWindow = null;
 let indicator = null;
@@ -59,7 +61,6 @@ function parseColorRGB(colorStr) {
     return [0, 0.8, 1];
 }
 
-// Calcola un colore intermedio interpolato
 function interpolateColor(c1, c2, factor) {
     return [
         c1[0] + (c2[0] - c1[0]) * factor,
@@ -71,14 +72,12 @@ function interpolateColor(c1, c2, factor) {
 function startAnimLoop() {
     if (animLoopId) return;
     
-    // Ciclo di circa 30 FPS (~33ms)
     animLoopId = Mainloop.timeout_add(33, () => {
         let animSpeed = 5;
         if (settings) {
             try { animSpeed = settings.getValue('anim-speed'); } catch (e) {}
         }
 
-        // Incremento proporzionale allo slider (da 1 a 20)
         let step = (animSpeed * 0.005);
         animProgress += step * animDirection;
 
@@ -94,7 +93,7 @@ function startAnimLoop() {
             canvas.invalidate();
         }
 
-        return true; // Continua il loop
+        return true;
     });
 }
 
@@ -128,8 +127,8 @@ function drawTrapezoid(canvasActor, cr, width, height) {
     let alpha = alphaPercent / 100.0;
     let slant = Math.min(slantPixels, width / 2);
 
-    cr.moveTo(0, 0);                  
-    cr.lineTo(width, 0);              
+    cr.moveTo(0, 0);
+    cr.lineTo(width, 0);
     cr.lineTo(width - slant, height); 
     cr.lineTo(slant, height);         
     cr.closePath();
@@ -138,7 +137,6 @@ function drawTrapezoid(canvasActor, cr, width, height) {
     let cStart = parseColorRGB(rawColorStart);
     let cEnd = parseColorRGB(rawColorEnd);
 
-    // Effetto animato: i due colori sfumano continuamente l'uno nell'altro
     let currentStart = interpolateColor(cStart, cEnd, animProgress);
     let currentEnd = interpolateColor(cEnd, cStart, animProgress);
 
@@ -150,6 +148,18 @@ function drawTrapezoid(canvasActor, cr, width, height) {
 }
 
 function updateIndicator() {
+    if (Main.overview && Main.overview.visible) {
+        if (indicator && indicator.visible) {
+            indicator.ease({
+                opacity: 0,
+                duration: 100,
+                mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+                onComplete: () => { indicator.hide(); }
+            });
+        }
+        return;
+    }
+
     let focusWindow = global.display.focus_window;
     let activeWorkspace = global.workspace_manager.get_active_workspace();
 
@@ -160,7 +170,14 @@ function updateIndicator() {
         focusWindow.window_type !== Meta.WindowType.NORMAL ||
         !focusWindow.located_on_workspace(activeWorkspace)) {
         
-        if (indicator) indicator.hide();
+        if (indicator && indicator.visible) {
+            indicator.ease({
+                opacity: 0,
+                duration: 100,
+                mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+                onComplete: () => { indicator.hide(); }
+            });
+        }
         return;
     }
 
@@ -187,7 +204,8 @@ function updateIndicator() {
     if (!indicator) {
         indicator = new St.Widget({
             name: 'ActiveWindowIndicator',
-            reactive: false
+            reactive: false,
+            opacity: 0 // Partiamo trasparenti
         });
         indicator.set_content(canvas);
         Main.uiGroup.add_actor(indicator);
@@ -197,8 +215,15 @@ function updateIndicator() {
     indicator.set_size(barWidth, lineHeight);
     
     canvas.invalidate();
+    
+    // Mostriamo e animiamo il fade-in verso opacità piena (255)
     indicator.show();
     indicator.raise_top();
+    indicator.ease({
+        opacity: 255,
+        duration: 150,
+        mode: Clutter.AnimationMode.EASE_OUT_QUAD
+    });
 }
 
 function onFocusChanged() {
@@ -238,6 +263,25 @@ function enable() {
     focusSignal = global.display.connect('notify::focus-window', onFocusChanged);
     workspaceSignal = global.workspace_manager.connect('active-workspace-changed', updateIndicator);
     
+    if (Main.overview) {
+        overviewOpenId = Main.overview.connect('showing', () => {
+            if (indicator && indicator.visible) {
+                indicator.ease({
+                    opacity: 0,
+                    duration: 100,
+                    mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+                    onComplete: () => { indicator.hide(); }
+                });
+            }
+        });
+        overviewCloseId = Main.overview.connect('hidden', () => {
+            Mainloop.timeout_add(50, () => {
+                updateIndicator();
+                return false;
+            });
+        });
+    }
+
     startAnimLoop();
     onFocusChanged();
 }
@@ -253,6 +297,17 @@ function disable() {
     if (workspaceSignal) {
         global.workspace_manager.disconnect(workspaceSignal);
         workspaceSignal = null;
+    }
+
+    if (Main.overview) {
+        if (overviewOpenId) {
+            Main.overview.disconnect(overviewOpenId);
+            overviewOpenId = null;
+        }
+        if (overviewCloseId) {
+            Main.overview.disconnect(overviewCloseId);
+            overviewCloseId = null;
+        }
     }
 
     cleanupWindowSignals();
