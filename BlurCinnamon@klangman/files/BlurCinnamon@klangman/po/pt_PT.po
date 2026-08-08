@@ -1426,7 +1426,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
 msgid "Blur window title bars (please read tooltip)"
-msgstr "Desfocar barras de titulo das janelas (Por favor leia a dica)"
+msgstr "Desfocar barras de título das janelas (Por favor leia a dica)"
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->tooltip
 msgid ""
