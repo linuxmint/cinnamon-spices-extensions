@@ -114,7 +114,6 @@ msgid "Cinnamon desktop components where effects will be applied"
 msgstr "Componentes do Cinammon onde serão aplicados os efeitos"
 
 #. 6.0->settings-schema.json->monte-carlo-settings->title
-#, fuzzy
 msgid "Additional Monte Carlo specific settings"
 msgstr "Definições específicas Monte Carlo"
 
@@ -131,105 +130,92 @@ msgid "About Blur Cinnamon"
 msgstr "Sobre o Blur Cinnamon"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
-#, fuzzy
 msgid ""
 "💡 The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Nota: Os efeitos do alternador Alt-Tab estão atualmente desativados no "
+"💡 Os efeitos do alternador Alt-Tab estão atualmente desativados no "
 "separador \"Geral\"."
 
 #. 6.0->settings-schema.json->desklets-warning->description
-#, fuzzy
 msgid ""
 "💡 The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Nota: Os efeitos das Mini-Aplicações estão atualmente desativados no "
-"separador \"Geral\"."
+"💡 Os efeitos das Mini-Aplicações estão atualmente desativados no separador "
+"\"Geral\"."
 
 #. 6.0->settings-schema.json->desktop-warning->description
-#, fuzzy
 msgid ""
 "💡 The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Nota: Os efeitos do Fundo do ambiente de trabalho estão atualmente "
-"desativados no separador \"Geral\"."
+"💡 Os efeitos do Fundo do ambiente de trabalho estão atualmente desativados "
+"no separador \"Geral\"."
 
 #. 6.0->settings-schema.json->expo-warning->description
-#, fuzzy
 msgid ""
 "💡 The Expo effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Nota: Os efeitos do Expo estão atualmente desativados no separador \"Geral\"."
+"💡 Os efeitos do Expo estão atualmente desativados no separador \"Geral\"."
 
 #. 6.0->settings-schema.json->popup-warning->description
-#, fuzzy
 msgid ""
 "💡 The Menu effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Nota: Os efeitos dos Menus estão atualmente desativados no separador "
-"\"Geral\"."
+"💡 Os efeitos dos Menus estão atualmente desativados no separador \"Geral\"."
 
 #. 6.0->settings-schema.json->notification-warning->description
-#, fuzzy
 msgid ""
 "💡 The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Nota: Os efeitos das Notificações estão atualmente desativados no separador "
+"💡 Os efeitos das Notificações estão atualmente desativados no separador "
 "\"Geral\"."
 
 #. 6.0->settings-schema.json->osd-warning->description
-#, fuzzy
 msgid ""
 "💡 The On-Screen-Display effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Nota: Os efeitos das Janelas de ecrã (OSD) estão atualmente desativados no "
+"💡 Os efeitos das Janelas de ecrã (OSD) estão atualmente desativados no "
 "separador \"Geral\"."
 
 #. 6.0->settings-schema.json->overview-warning->description
-#, fuzzy
 msgid ""
 "💡 The Overview effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Nota: Os efeitos da Vista Global estão atualmente desativados no separador "
+"💡 Os efeitos da Vista Global estão atualmente desativados no separador "
 "\"Geral\"."
 
 #. 6.0->settings-schema.json->panel-warning->description
-#, fuzzy
 msgid ""
 "💡 The Panel effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Nota: Os efeitos dos Painéis estão atualmente desativados no separador "
+"💡 Os efeitos dos Painéis estão atualmente desativados no separador "
 "\"Geral\"."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
-#, fuzzy
 msgid ""
 "💡 The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Nota: Os efeitos da Dicas de painel estão atualmente desativados no "
-"separador \"Geral\"."
+"💡 Os efeitos da Dicas de painel estão atualmente desativados no separador "
+"\"Geral\"."
 
 #. 6.0->settings-schema.json->windows-warning->description
-#, fuzzy
 msgid ""
 "💡 The Window effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Nota: Os efeitos das Janelas de aplicações estão atualmente desativados no "
+"💡 Os efeitos das Janelas de aplicações estão atualmente desativados no "
 "separador \"Geral\"."
 
 #. 6.0->settings-schema.json->desklets-label->description
-#, fuzzy
 msgid "💡 You must configure your Desklets to be transparent! (see tooltip)"
 msgstr ""
-"<b>Nota:</b> É necessário configurar as Mini-Aplicações para serem "
-"transparentes! (leia a dica)"
+"💡 É necessário configurar as Mini-Aplicações para serem transparentes! "
+"(leia a dica)"
 
 #. 6.0->settings-schema.json->desklets-label->tooltip
 msgid ""
@@ -247,11 +233,9 @@ msgstr ""
 "a opção \"Configurar...\" para abrir as respetivas definições."
 
 #. 6.0->settings-schema.json->windows-label->description
-#, fuzzy
 msgid "💡 Read tooltip for information about the \"Default window settings\""
 msgstr ""
-"<b>Nota:</b> Leia a dica para obter informação sobre as \"Opções padrão para "
-"janelas\""
+"💡 Leia a dica para obter informação sobre as \"Opções padrão para janelas\""
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -316,7 +300,6 @@ msgid "Show settings for component:"
 msgstr "Mostrar definições para o componente:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -325,8 +308,8 @@ msgid ""
 "Developed by: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
 "\n"
 "The rounded corners, Gaussian and Monte Carlo effects are\n"
 "based on code by aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/"
@@ -353,6 +336,9 @@ msgstr ""
 "têm por base código desenvolvido por aunetx (Blur-my-shell)\n"
 "<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"O efeito Dual Kawase foi escrito por <a href=\"https://github.com/Lucas-X-"
+"A\">Lucas-X-A</a>\n"
 "\n"
 "O efeito da Vista Global foi desenvolvido em parte com base na extensão "
 "BlurOverview por nailfarmer"
@@ -904,7 +890,7 @@ msgstr "Nenhum / Transparente para fundo de ambiente de trabalho"
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
 msgid "Simple static blur"
-msgstr "Desfoque estático simples"
+msgstr "Desfoque simples estático"
 
 #. 6.0->settings-schema.json->blurType->options
 #. 6.0->settings-schema.json->panels-blurType->options
@@ -944,14 +930,12 @@ msgstr "Desfoque Monte Carlo dinâmico (quando disponível)"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Dual Kawase static blur"
-msgstr "Desfoque estático simples"
+msgstr "Desfoque Dual Kawase estático"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "Dual Kawase dynamic blur (if applicable)"
-msgstr "Desfoque Guassiano dinâmico (se disponível)"
+msgstr "Desfoque Dual Kawase dinâmico (se disponível)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -974,7 +958,7 @@ msgstr "Qual o tipo de algoritmo a utilizar para desfocar o fundo"
 
 #. 6.0->settings-schema.json->show-blur-info->description
 msgid "💡 Blur Algorithm Guide (see tooltip)"
-msgstr ""
+msgstr "💡 Guia de Algoritmos de Desfoque (leia a dica)"
 
 #. 6.0->settings-schema.json->show-blur-info->tooltip
 msgid ""
@@ -991,6 +975,20 @@ msgid ""
 " <b>• Static:</b> Only blurs the wallpaper, like x-ray vision to the desktop "
 "wallpaper."
 msgstr ""
+"<b>Guia de Algoritmos de Desfoque:</b>\n"
+" <b>• Guassiano:</b> Desfoque suave e de boa qualidade, pode requerer mais "
+"poder da placa gráfica.\n"
+" <b>• Dual Kawase:</b> Desfoque suave e de alta qualidade, otimizado para "
+"placas gráficas de gama baixa.\n"
+" <b>• Monte Carlo:</b> Desfoque com efeito de vidro fosco e granular, com "
+"ruído.\n"
+" <b>• Simples:</b> Desfoque subtil e básico para computadores mais antigos.\n"
+"\n"
+"<b>Estático vs Dinâmico:</b>\n"
+" <b>• Dinâmico:</b> Desfoca os elementos principais e em segundo plano em "
+"tempo real.\n"
+" <b>• Estático:</b> Apenas desfoca o fundo do ambiente de trabalho, similar "
+"a uma visão raio-x do fundo do ambiente de trabalho."
 
 #. 6.0->settings-schema.json->radius->description
 #. 6.0->settings-schema.json->overview-radius->description
@@ -1060,13 +1058,12 @@ msgid "Iterations"
 msgstr "Iterações"
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->tooltip
-#, fuzzy
 msgid ""
 "Increasing number of iterations will make the blur appear smoother at the "
 "cost of some GPU power."
 msgstr ""
 "Aumentar o número de iterações irá tornar o efeito de desfoque mais suave à "
-"custa de maior utilização da CPU."
+"custa de maior utilização da placa gráfica."
 
 #. 6.0->settings-schema.json->monte-carlo-use-base-pixel->description
 msgid "Use base pixel"
@@ -1092,11 +1089,10 @@ msgstr ""
 "Define se os pixeis que estão mais perto irão ou não ter maior ponderação."
 
 #. 6.0->settings-schema.json->monte-carlo-label->description
-#, fuzzy
 msgid "💡 The above Monte Carlo settings are used globally for all components"
 msgstr ""
-"<b>Nota:</b> Estas definições Monte Carlo são usadas de forma geral para "
-"todos os componentes"
+"💡 Estas definições Monte Carlo são usadas de forma geral para todos os "
+"componentes"
 
 #. 6.0->settings-schema.json->monte-carlo-label->tooltip
 msgid ""
@@ -1140,7 +1136,7 @@ msgstr "Monte Carlo"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Dual Kawase"
-msgstr ""
+msgstr "Dual Kawase"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
@@ -1183,9 +1179,8 @@ msgstr "Desfoque Monte Carlo dinâmico"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Dual Kawase dynamic blur"
-msgstr "Desfoque Guassiano dinâmico"
+msgstr "Desfoque Dual Kawase dinâmico"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1222,9 +1217,9 @@ msgstr ""
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements "
-"(i.e. the main menu favorites box and entry boxes) which allow these "
-"elements to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
 msgstr ""
 "Define o efeito de escurecimento adicional aplicado às cores de destaque do "
 "menu (ex: caixa de favoritos do menu principal e caixas de entrada) "
@@ -1430,9 +1425,8 @@ msgstr ""
 "de ambiente de trabalho em forma de vídeo como o Hidamari"
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
-#, fuzzy
 msgid "Blur window title bars (please read tooltip)"
-msgstr "Janelas de aplicações (Por favor leia a dica)"
+msgstr "Desfocar barras de titulo das janelas (Por favor leia a dica)"
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->tooltip
 msgid ""
@@ -1444,6 +1438,14 @@ msgid ""
 "configured to be semi-transparent which MUST be done using CSS. See the Blur "
 "Cinnamon website for instructions."
 msgstr ""
+"Quando ativado, a área da barra de título da maioria das janelas será "
+"desfocada exceto para janelas GTK4 e com barras de título personalizadas. "
+"Esta opção usa as mesmas definições da entrada \"Opções padrão para "
+"janelas\", mas apenas desfoca as barras de título em vez de toda a janela. "
+"Nota: O efeito de desfoque da barra de título apenas será visível quando as "
+"barras de título estão configuradas para serem semi-transparentes, que por "
+"sua vez TEM de ser feito usando CSS. Veja o site do Blur Cinnamon para "
+"instruções."
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
