@@ -108,15 +108,12 @@ const GaussianBlurEffect =
                 this.set_shader_source(this._source);
 
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
-            theme_context.connect(
-                'notify::scale-factor', () => {
-                this.set_uniform_value('sigma', parseFloat(this.radius * theme_context.scale_factor / 2 - 1e-6) );
-                }
-            );
+            this.set_uniform_value('sigma', parseFloat(this.radius * theme_context.scale_factor / 2 - 1e-6));
+            this.set_enabled(this.radius > 0.);
         }
 
         get_shader_source(shader_filename) {
-            let file_name = GLib.get_home_dir() + '/.local/share/cinnamon/extensions/' + UUID + "/6.0/" + shader_filename;
+            let file_name = GLib.get_user_data_dir() + '/cinnamon/extensions/' + UUID + "/6.0/" + shader_filename;
             let [ok, content] = GLib.file_get_contents(file_name);
             return (new TextDecoder().decode(content));
         }
@@ -211,6 +208,12 @@ const GaussianBlurEffect =
                 let old_actor = this.get_actor();
                 old_actor?.disconnect(this._actor_connection_size_id);
             }
+
+            if (this._scale_connection_id) {
+                St.ThemeContext.get_for_stage(global.stage).disconnect(this._scale_connection_id);
+                this._scale_connection_id = null;
+            }
+
             if (actor) {
                 this.width = actor.width;
                 this.height = actor.height;
@@ -218,16 +221,30 @@ const GaussianBlurEffect =
                     this.width = actor.width;
                     this.height = actor.height;
                 });
-            }
-            else
+
+                this._scale_connection_id = St.ThemeContext.get_for_stage(global.stage).connect('notify::scale-factor', () => {
+                    const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+                    this.set_uniform_value('sigma', parseFloat(this._radius * scale_factor / 2 - 1e-6));
+                });
+            } else {
                 this._actor_connection_size_id = null;
+            }
 
             super.vfunc_set_actor(actor);
 
             if (this.direction == 0) {
-                if (this.chained_effect)
-                    this.chained_effect.get_actor()?.remove_effect(this.chained_effect);
-                else
+                // Clear the old effect, if it exists
+                if (this.chained_effect) {
+                    try {
+                        let current_actor = this.chained_effect.get_actor();
+                        if (current_actor) current_actor.remove_effect(this.chained_effect);
+                    } catch (e) {}
+
+                    this.chained_effect = null; 
+                }
+
+                // If there is a valid actor, recreate the effect and add it
+                if (actor !== null && actor !== undefined) {
                     this.chained_effect = new GaussianBlurEffect({
                         radius: this.radius,
                         brightness: this.brightness,
@@ -235,8 +252,8 @@ const GaussianBlurEffect =
                         height: this.height,
                         direction: 1
                     });
-                if (actor !== null)
                     actor.add_effect(this.chained_effect);
+                }
             }
         }
 

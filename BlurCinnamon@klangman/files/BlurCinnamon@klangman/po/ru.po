@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 2.5.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-03 10:34-0400\n"
+"POT-Creation-Date: 2026-08-07 15:04-0400\n"
 "PO-Revision-Date: 2026-06-06 21:14-0400\n"
 "Last-Translator: Grom-TS\n"
 "Language-Team: \n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.0/extension.js:2819 6.0/extension.js:2822 6.0/extension.js:2932
+#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2974
 msgid "Default window settings"
 msgstr "Настройки окон по умолчанию"
 
-#. 6.0/extension.js:3080
+#. 6.0/extension.js:3140
 msgid "Error"
 msgstr "Ошибка"
 
-#. 6.0/extension.js:3081
+#. 6.0/extension.js:3141
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -34,11 +34,11 @@ msgstr ""
 "Не удалось определить приложение или WM_CLASS ранее активного окна, поэтому "
 "эффекты Blur Cinnamon не могут быть применены к этому окну"
 
-#. 6.0/extension.js:3963
+#. 6.0/extension.js:4023
 msgid "Welcome to Blur Cinnamon"
 msgstr "Добро пожаловать в Blur Cinnamon"
 
-#. 6.0/extension.js:3964
+#. 6.0/extension.js:4024
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -56,15 +56,15 @@ msgstr ""
 "также можете настроить параметры эффектов, такие как интенсивность размытия, "
 "насыщенность цвета и затемнение."
 
-#. 6.0/extension.js:3968
+#. 6.0/extension.js:4028
 msgid "Open Blur Cinnamon Settings"
 msgstr "Открыть настройки Blur Cinnamon"
 
-#. 6.0/extension.js:4058
+#. 6.0/extension.js:4118
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Тестирование эффектов уведомлений Blur Cinnamon"
 
-#. 6.0/extension.js:4059
+#. 6.0/extension.js:4119
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -113,7 +113,8 @@ msgstr ""
 "Компоненты рабочего стола Cinnamon, к которым будут применяться эффекты"
 
 #. 6.0->settings-schema.json->monte-carlo-settings->title
-msgid "Monte Carlo specific settings"
+#, fuzzy
+msgid "Additional Monte Carlo specific settings"
 msgstr "Настройки Monte Carlo"
 
 #. 6.0->settings-schema.json->component-selector-section->title
@@ -129,41 +130,45 @@ msgid "About Blur Cinnamon"
 msgstr "О Blur Cinnamon"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
+#, fuzzy
 msgid ""
-"Note: The Alt-Tab effects are currently disabled under the \"General setup\" "
+"💡 The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
 "Примечание: эффекты Alt-Tab в настоящее время отключены на вкладке «Общие "
 "настройки»."
 
 #. 6.0->settings-schema.json->desklets-warning->description
+#, fuzzy
 msgid ""
-"Note: The Desklet effects are currently disabled under the \"General setup\" "
+"💡 The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr "Примечание: эффекты десклетов отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->desktop-warning->description
+#, fuzzy
 msgid ""
-"Note: The Desktop effects are currently disabled under the \"General setup\" "
+"💡 The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
 "Примечание: эффекты рабочего стола отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->expo-warning->description
+#, fuzzy
 msgid ""
-"Note: The Expo effects are currently disabled under the \"General setup\" "
-"tab."
+"💡 The Expo effects are currently disabled under the \"General setup\" tab."
 msgstr "Примечание: эффекты Expo отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->popup-warning->description
+#, fuzzy
 msgid ""
-"Note: The Menu effects are currently disabled under the \"General setup\" "
-"tab."
+"💡 The Menu effects are currently disabled under the \"General setup\" tab."
 msgstr "Примечание: эффекты меню отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->notification-warning->description
+#, fuzzy
 msgid ""
-"Note: The Notification effects are currently disabled under the \"General "
+"💡 The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
 "Примечание: эффекты уведомлений отключены на вкладке «Общие настройки»."
@@ -171,40 +176,41 @@ msgstr ""
 #. 6.0->settings-schema.json->osd-warning->description
 #, fuzzy
 msgid ""
-"Note: The On-Screen-Display effects are currently disabled under the "
-"\"General setup\" tab."
+"💡 The On-Screen-Display effects are currently disabled under the \"General "
+"setup\" tab."
 msgstr "Примечание: эффекты панели отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->overview-warning->description
+#, fuzzy
 msgid ""
-"Note: The Overview effects are currently disabled under the \"General "
-"setup\" tab."
+"💡 The Overview effects are currently disabled under the \"General setup\" "
+"tab."
 msgstr "Примечание: эффекты обзора отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->panel-warning->description
+#, fuzzy
 msgid ""
-"Note: The Panel effects are currently disabled under the \"General setup\" "
-"tab."
+"💡 The Panel effects are currently disabled under the \"General setup\" tab."
 msgstr "Примечание: эффекты панели отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
+#, fuzzy
 msgid ""
-"Note: The Tooltip effects are currently disabled under the \"General setup\" "
+"💡 The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
 "Примечание: эффекты всплывающих подсказок отключены на вкладке «Общие "
 "настройки»."
 
 #. 6.0->settings-schema.json->windows-warning->description
+#, fuzzy
 msgid ""
-"Note: The Window effects are currently disabled under the \"General setup\" "
-"tab."
+"💡 The Window effects are currently disabled under the \"General setup\" tab."
 msgstr "Примечание: эффекты окон отключены на вкладке «Общие настройки»."
 
 #. 6.0->settings-schema.json->desklets-label->description
-msgid ""
-"<b>Note:</b> You must configure your Desklets to be transparent! (see "
-"tooltip)"
+#, fuzzy
+msgid "💡 You must configure your Desklets to be transparent! (see tooltip)"
 msgstr ""
 "Примечание: необходимо настроить десклеты на прозрачность (см. подсказку)"
 
@@ -223,9 +229,8 @@ msgstr ""
 "«Настроить…», чтобы открыть окно конфигурации десклета."
 
 #. 6.0->settings-schema.json->windows-label->description
-msgid ""
-"<b>Note:</b> Read tooltip for information about the \"Default window "
-"settings\""
+#, fuzzy
+msgid "💡 Read tooltip for information about the \"Default window settings\""
 msgstr ""
 "Примечание: см. подсказку для информации о «настройках окон по умолчанию»"
 
@@ -291,6 +296,7 @@ msgid "Show settings for component:"
 msgstr "Показывать настройки для компонента:"
 
 #. 6.0->settings-schema.json->about-text->description
+#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -302,10 +308,13 @@ msgid ""
 "issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
 "104\">Website</a>\n"
 "\n"
-"The rounded corners, Gaussian and Monte Carlo effects\n"
-"are based on code by aunetx (Blur-my-shell)\n"
-"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
-"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"The rounded corners, Gaussian and Monte Carlo effects are\n"
+"based on code by aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/"
+"blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</"
+"a>)\n"
+"\n"
+"The Dual Kawase effect was written by <a href=\"https://github.com/Lucas-X-"
+"A\">Lucas-X-A</a>\n"
 "\n"
 "The Overview effect is partially based on the BlurOverview extension by "
 "nailfarmer"
@@ -896,6 +905,23 @@ msgstr "Статическое размытие Монте-Карло"
 msgid "Monte Carlo dynamic blur (if applicable)"
 msgstr "Динамическое размытие Монте-Карло (если применимо)"
 
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+#. 6.0->settings-schema.json->osd-blurType->options
+#, fuzzy
+msgid "Dual Kawase static blur"
+msgstr "Простое статическое размытие"
+
+#. 6.0->settings-schema.json->blurType->options
+#, fuzzy
+msgid "Dual Kawase dynamic blur (if applicable)"
+msgstr "Гауссово динамическое размытие (если применимо)"
+
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
 #. 6.0->settings-schema.json->expo-blurType->description
@@ -914,6 +940,26 @@ msgstr "Тип эффекта размытия"
 #. 6.0->settings-schema.json->osd-blurType->tooltip
 msgid "What type of blur algorithm should be used to blur the background"
 msgstr "Какой алгоритм размытия следует использовать для размытия фона"
+
+#. 6.0->settings-schema.json->show-blur-info->description
+msgid "💡 Blur Algorithm Guide (see tooltip)"
+msgstr ""
+
+#. 6.0->settings-schema.json->show-blur-info->tooltip
+msgid ""
+"<b>Blur Algorithm Guide:</b>\n"
+" <b>• Gaussian:</b> Good quality smooth blur, can be GPU intensive.\n"
+" <b>• Dual Kawase:</b> High quality smooth blur, optimized for low-end "
+"GPUs.\n"
+" <b>• Monte Carlo:</b> Grainy, frosted-glass style noisy blur.\n"
+" <b>• Simple:</b> Basic subtle blur for ancient computers.\n"
+"\n"
+"<b>Static vs Dynamic:</b>\n"
+" <b>• Dynamic:</b> Blurs background elements behind the blurred element in "
+"real-time.\n"
+" <b>• Static:</b> Only blurs the wallpaper, like x-ray vision to the desktop "
+"wallpaper."
+msgstr ""
 
 #. 6.0->settings-schema.json->radius->description
 #. 6.0->settings-schema.json->overview-radius->description
@@ -983,9 +1029,10 @@ msgid "Iterations"
 msgstr "Итерации"
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->tooltip
+#, fuzzy
 msgid ""
 "Increasing number of iterations will make the blur appear smoother at the "
-"cost of some CPU power."
+"cost of some GPU power."
 msgstr ""
 "Увеличение числа итераций делает размытие более плавным, но увеличивает "
 "нагрузку на процессор."
@@ -1015,8 +1062,8 @@ msgstr ""
 "больший вес."
 
 #. 6.0->settings-schema.json->monte-carlo-label->description
-msgid ""
-"<b>Note:</b> These Monte Carlo settings are used globally for all components"
+#, fuzzy
+msgid "💡 The above Monte Carlo settings are used globally for all components"
 msgstr ""
 "<b>Примечание:</b> Эти настройки Монте-Карло используются глобально для всех "
 "компонентов"
@@ -1058,6 +1105,12 @@ msgstr "Гауссово"
 msgid "Monte Carlo"
 msgstr "Монте-Карло"
 
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Dual Kawase"
+msgstr ""
+
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
 #. 6.0->settings-schema.json->notification-blurType->options
@@ -1091,6 +1144,17 @@ msgstr "Гауссово динамическое размытие"
 #. 6.0->settings-schema.json->osd-blurType->options
 msgid "Monte Carlo dynamic blur"
 msgstr "Динамическое размытие Монте-Карло"
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+#. 6.0->settings-schema.json->osd-blurType->options
+#, fuzzy
+msgid "Dual Kawase dynamic blur"
+msgstr "Гауссово динамическое размытие"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1326,6 +1390,22 @@ msgstr ""
 "постоянному использованию процессора, если окно с динамическим размытием "
 "находится поверх двух или более других окон. Рекомендуется включить эту "
 "опцию, если вы не используете видеообои, например Hidamari"
+
+#. 6.0->settings-schema.json->windows-titlebar-blur->description
+#, fuzzy
+msgid "Blur window title bars (please read tooltip)"
+msgstr "Окна приложений (см. подсказку)"
+
+#. 6.0->settings-schema.json->windows-titlebar-blur->tooltip
+msgid ""
+"When enabled, the title bar area under most windows will be blurred "
+"excluding GTK4 windows and windows with custom title bars. This behaves like "
+"\"Default window settings\" entry above and even uses its settings, but with "
+"this option only title bar areas are blurred rather than the entire window. "
+"Note: The title bar blurring will only be visible when the title bars are "
+"configured to be semi-transparent which MUST be done using CSS. See the Blur "
+"Cinnamon website for instructions."
+msgstr ""
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
