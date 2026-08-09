@@ -9,14 +9,37 @@ const Main = imports.ui.main
 const ModalDialog = imports.ui.modalDialog
 const Settings = imports.ui.settings
 const Dialog = imports.ui.dialog
+const Gettext = imports.gettext
 
 const UUID = "battery-guardian@beatlink"
+
+Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale")
+
+// Cinnamon's global _() is Gettext.gettext, which resolves against the
+// "cinnamon" text domain, so this extension's own catalogue is never consulted.
+// Look our domain up first and fall back to Cinnamon's for the strings it
+// already translates. Declared before any _() call site is evaluated.
+function _(str) {
+    let translated = Gettext.dgettext(UUID, str)
+    return translated !== str ? translated : window._(str)
+}
+
 const dialogTitle = _("Low Battery Warning")
 
 const SystemCommands = {
     'shutdown': ['systemctl', 'poweroff'],
     'suspend': ['systemctl', 'suspend'],
     'hibernate': ['systemctl', 'hibernate'],
+}
+
+// The action name is interpolated into the warning message. xgettext cannot
+// follow a _(variable) lookup, so the possible values are spelled out here as
+// literals; that keeps them in the .pot file across regenerations. Wrapped in
+// thunks so the lookup stays lazy rather than resolving at module load.
+const ActionNames = {
+    'shutdown': () => _("shutdown"),
+    'suspend': () => _("suspend"),
+    'hibernate': () => _("hibernate"),
 }
 
 // ── Sound Player ──────────────────────────────────────────────────────────────
@@ -32,8 +55,18 @@ var SoundPlayer = class {
     }
 
     setSound(path) {
+        // play_from_file() is asynchronous and fails silently, so a path that
+        // has since been deleted or renamed would leave the user with no
+        // audible warning at all. Verify it up front and drop to the theme
+        // sound instead, which is the one thing guaranteed to be playable.
+        let isFile = !!(path && path.includes('/'))
+        if (isFile && !Gio.File.new_for_path(path).query_exists(null)) {
+            global.logWarning("[" + UUID + "] Sound file not found, using theme sound: " + path)
+            isFile = false
+            path = null
+        }
         this._path = path
-        this._isFile = !!(path && path.includes('/'))
+        this._isFile = isFile
     }
 
     play() {
@@ -53,10 +86,14 @@ var SoundPlayer = class {
                     player.play_from_theme(this._path || 'alarm-clock-elapsed', 'bg-sound', this._cancellable)
                 }
             } catch (e) {
-                if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+                // Only GErrors carry matches(). Calling it on a plain JS error
+                // would throw out of the catch block, which escapes this
+                // callback: the loop source dies while _loopId still holds its
+                // id, and the next stop() then trips a GLib critical.
+                if (e instanceof GLib.Error && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
                     global.logWarning("[" + UUID + "] Sound file not found: " + this._path)
                 } else {
-                    global.logError("[" + UUID + "] Sound player error: " + e.message)
+                    global.logError("[" + UUID + "] Sound player error: " + e)
                 }
             }
             return GLib.SOURCE_CONTINUE
@@ -172,8 +209,9 @@ class BatteryGuardianExtension {
     }
 
     _getFormattedMessage() {
+        let action = ActionNames[this._action] ? ActionNames[this._action]() : this._action
         return _("Your system will %s in %d seconds.\nEither connect to external power or save your unfinished work.")
-            .format(_(this._action), this._currentTime)
+            .format(action, this._currentTime)
     }
 
     _updateUI() {
@@ -197,7 +235,14 @@ class BatteryGuardianExtension {
                 let actualPath = this._soundFile.startsWith('file://')
                     ? GLib.filename_from_uri(this._soundFile, null)[0]
                     : this._soundFile
-                path = actualPath
+
+                // Keep the bundled sound when the configured file has gone
+                // away, rather than silently leaving the alert mute.
+                if (Gio.File.new_for_path(actualPath).query_exists(null)) {
+                    path = actualPath
+                } else {
+                    global.logWarning("[" + UUID + "] Configured sound file is missing, using the default: " + actualPath)
+                }
             } catch (e) {
                 global.logError("[" + UUID + "] Path conversion error: " + e)
             }
@@ -218,9 +263,20 @@ class BatteryGuardianExtension {
     _onBatteryChanged() {
         if (!this._device) return
         let state = this._device.state
-        let onAC = (state === UPowerGlib.DeviceState.CHARGING || state === UPowerGlib.DeviceState.FULLY_CHARGED)
 
-        if (onAC) {
+        // Only act when UPower says we are actually running off the battery.
+        // Testing for "not charging" is not enough: UNKNOWN is what the
+        // composite device reports when no battery is present (desktops, and
+        // briefly at login or after resume) and PENDING_CHARGE is reported when
+        // AC is connected but the battery is not taking a charge (firmware
+        // charge thresholds). Both come with percentage 0 or a low percentage,
+        // so treating them as "on battery" started the countdown and powered
+        // the machine off while it was plugged in, or had no battery at all.
+        let onBattery = (state === UPowerGlib.DeviceState.DISCHARGING ||
+                         state === UPowerGlib.DeviceState.PENDING_DISCHARGE ||
+                         state === UPowerGlib.DeviceState.EMPTY)
+
+        if (!onBattery) {
             this._stopLogic()
         } else if (!this._timerId && this._device.percentage <= this._threshold) {
             this._startLogic()
@@ -286,7 +342,15 @@ class BatteryGuardianExtension {
         if (this._device) {
             this._device.disconnect(this._sigPct)
             this._device.disconnect(this._sigState)
+            this._sigPct = null
+            this._sigState = null
             this._device = null
+        }
+        // Without this the settings file monitor and every bound property stay
+        // connected after the extension is unloaded, and leak again on reload.
+        if (this._settings) {
+            this._settings.finalize()
+            this._settings = null
         }
     }
 }
