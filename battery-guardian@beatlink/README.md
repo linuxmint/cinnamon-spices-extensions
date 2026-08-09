@@ -1,14 +1,16 @@
 # Battery Guardian
 
-**Battery Guardian** is a robust power-management applet for the Cinnamon Desktop Environment. It acts as a final safety net for your work, ensuring you never lose data due to an unexpected battery death.
+**Battery Guardian** is a robust power-management extension for the Cinnamon Desktop Environment. It acts as a final safety net for your work, ensuring you never lose data due to an unexpected battery death.
 
 Unlike standard system notifications that are easily missed, Battery Guardian provides a clear, persistent countdown when your battery reaches a critical level, giving you ample time to save your progress or plug in your charger.
 
+**Requires Cinnamon 6.4 or newer.**
+
 ---
 
-## Demo
+## Screenshot
 
-![Demo Video](./BatteryGuardian.mp4)
+![Battery Guardian countdown dialog](./screenshot.png)
 
 ---
 
@@ -28,7 +30,7 @@ Unlike standard system notifications that are easily missed, Battery Guardian pr
 
 ## Settings & Configuration
 
-Access these options via **Applet Settings** (Right-click the applet in the panel > Configure):
+Access these options via **Menu > System Settings > Extensions**, then select **Battery Guardian** on the **Manage** tab and click the gear (⚙) button:
 
 | Setting                       | Description                                                       | Default     |
 | ----------------------------- | ----------------------------------------------------------------- | ----------- |
@@ -57,19 +59,20 @@ Before selecting Hibernate as your default action, please verify your system sup
 
 ## Installation
 
-### Method 1: Cinnamon Applet Download (Easiest)
+### Method 1: Cinnamon Extension Download (Easiest)
 
-1. Right-click your Cinnamon panel and select  **Add Applets to the Panel** .
+1. Open  **Menu > System Settings > Extensions** .
 2. Click the **Download** tab and update the cache.
 3. Search for  **Battery Guardian** .
-4. Click the  **Download icon** , then switch to the **Manage** tab to **(+) Add** it.
+4. Click the  **Download icon** , then switch to the **Manage** tab and tick the checkbox to enable it.
 
 ### Method 2: Manual Installation
 
 1. Create a folder named exactly `battery-guardian@beatlink`.
 2. Place the project files inside that folder.
-3. Move the folder to: `~/.local/share/cinnamon/applets/`
+3. Move the folder to: `~/.local/share/cinnamon/extensions/`
 4. Restart Cinnamon (`Alt+F2`, type `r`, then `Enter`).
+5. Enable it under **Menu > System Settings > Extensions > Manage** .
 
 ---
 

@@ -13,7 +13,7 @@ const Gettext = imports.gettext
 
 const UUID = "battery-guardian@beatlink"
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale")
+Gettext.bindtextdomain(UUID, GLib.build_filenamev([GLib.get_user_data_dir(), 'locale']))
 
 // Cinnamon's global _() is Gettext.gettext, which resolves against the
 // "cinnamon" text domain, so this extension's own catalogue is never consulted.
@@ -51,22 +51,67 @@ var SoundPlayer = class {
         this._cancellable = null
         this._path = null
         this._isFile = false
+        this._probeCancellable = null
+        this._probeGeneration = 0
         this.loopInterval = 3500
     }
 
-    setSound(path) {
-        // play_from_file() is asynchronous and fails silently, so a path that
-        // has since been deleted or renamed would leave the user with no
-        // audible warning at all. Verify it up front and drop to the theme
-        // sound instead, which is the one thing guaranteed to be playable.
-        let isFile = !!(path && path.includes('/'))
-        if (isFile && !Gio.File.new_for_path(path).query_exists(null)) {
-            global.logWarning("[" + UUID + "] Sound file not found, using theme sound: " + path)
-            isFile = false
-            path = null
+    /**
+     * Selects the first of @candidates that exists on disk, falling back to the
+     * sound theme when none do.
+     *
+     * play_from_file() is fire-and-forget — it returns void and reports no
+     * error — so a path that has since been deleted or renamed would leave the
+     * alert silent with nothing to catch. The candidates therefore have to be
+     * probed up front, but asynchronously: query_exists() blocks, and on a slow
+     * or network-mounted home directory that would stall the compositor.
+     *
+     * Until a probe resolves, the previously selected sound stays in effect
+     * (initially the theme sound), so there is no window in which the alert
+     * could be silent.
+     */
+    setSound(candidates) {
+        // Supersede any probe still in flight, so that a slow result from an
+        // earlier call cannot overwrite the outcome of a later one.
+        this._probeGeneration++
+        if (this._probeCancellable) this._probeCancellable.cancel()
+        this._probeCancellable = new Gio.Cancellable()
+
+        let paths = candidates.filter(p => p && p.includes('/'))
+        this._probe(paths, 0, this._probeGeneration, this._probeCancellable)
+    }
+
+    _probe(paths, index, generation, cancellable) {
+        if (generation !== this._probeGeneration) return
+
+        if (index >= paths.length) {
+            // Nothing usable: play_from_theme() is the one path that cannot fail.
+            this._path = null
+            this._isFile = false
+            return
         }
-        this._path = path
-        this._isFile = isFile
+
+        let path = paths[index]
+        let file = Gio.File.new_for_path(path)
+        file.query_info_async(
+            Gio.FILE_ATTRIBUTE_STANDARD_TYPE,
+            Gio.FileQueryInfoFlags.NONE,
+            GLib.PRIORITY_DEFAULT,
+            cancellable,
+            (obj, res) => {
+                if (generation !== this._probeGeneration) return
+                try {
+                    file.query_info_finish(res)
+                    this._path = path
+                    this._isFile = true
+                } catch (e) {
+                    // A cancellation means a newer setSound() took over; the
+                    // generation check above normally catches it, so just stop.
+                    if (e instanceof GLib.Error && e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) return
+                    global.logWarning("[" + UUID + "] Sound file unavailable, falling back: " + path)
+                    this._probe(paths, index + 1, generation, cancellable)
+                }
+            })
     }
 
     play() {
@@ -112,6 +157,17 @@ var SoundPlayer = class {
         if (this._cancellable) {
             this._cancellable.cancel()
             this._cancellable = null
+        }
+    }
+
+    destroy() {
+        this.stop()
+        // Abandon any probe still in flight so its callback cannot run against
+        // an extension that has already been unloaded.
+        this._probeGeneration++
+        if (this._probeCancellable) {
+            this._probeCancellable.cancel()
+            this._probeCancellable = null
         }
     }
 }
@@ -229,25 +285,22 @@ class BatteryGuardianExtension {
     }
 
     _updateSound() {
-        let path = this._defaultSoundPath
+        // Ordered fallback chain: the user's file, then the bundled sound, then
+        // the sound theme if neither is readable. SoundPlayer picks the first
+        // that exists, asynchronously.
+        let candidates = []
         if (this._soundFile) {
             try {
-                let actualPath = this._soundFile.startsWith('file://')
+                candidates.push(this._soundFile.startsWith('file://')
                     ? GLib.filename_from_uri(this._soundFile, null)[0]
-                    : this._soundFile
-
-                // Keep the bundled sound when the configured file has gone
-                // away, rather than silently leaving the alert mute.
-                if (Gio.File.new_for_path(actualPath).query_exists(null)) {
-                    path = actualPath
-                } else {
-                    global.logWarning("[" + UUID + "] Configured sound file is missing, using the default: " + actualPath)
-                }
+                    : this._soundFile)
             } catch (e) {
                 global.logError("[" + UUID + "] Path conversion error: " + e)
             }
         }
-        this._soundPlayer.setSound(path)
+        candidates.push(this._defaultSoundPath)
+
+        this._soundPlayer.setSound(candidates)
         this._soundPlayer.loopInterval = this._loopInterval || 3500
     }
 
@@ -288,12 +341,15 @@ class BatteryGuardianExtension {
         this._soundPlayer.play()
         this._showMainDialog()
 
+        // Decrement first, then test: testing before the decrement spent one
+        // extra tick displaying "0 seconds", so the action fired a second late.
+        // Now a duration of N seconds counts N-1 … 1 and acts exactly on N.
         this._timerId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+            this._currentTime--
             if (this._currentTime <= 0) {
                 this._executeFinalAction()
                 return GLib.SOURCE_REMOVE
             }
-            this._currentTime--
             this._updateUI()
             return GLib.SOURCE_CONTINUE
         })
@@ -303,7 +359,15 @@ class BatteryGuardianExtension {
         if (this._dialog) this._dialog.destroy()
         this._dialog = new MainDialog(() => this._showFloatingDialog())
         this._updateUI()
-        this._dialog.open()
+
+        // open() returns false when the modal grab cannot be taken, e.g. another
+        // modal already holds it. Ignoring that left the countdown running behind
+        // an invisible dialog and powered the machine off with no warning shown.
+        // The floating warning needs no grab, so fall back to it.
+        if (!this._dialog.open()) {
+            global.logWarning("[" + UUID + "] Could not take the modal grab; showing the floating warning instead.")
+            this._showFloatingDialog()
+        }
     }
 
     _showFloatingDialog() {
@@ -339,6 +403,7 @@ class BatteryGuardianExtension {
 
     disable() {
         this._stopLogic()
+        this._soundPlayer.destroy()
         if (this._device) {
             this._device.disconnect(this._sigPct)
             this._device.disconnect(this._sigState)

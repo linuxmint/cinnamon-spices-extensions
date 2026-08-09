@@ -7,7 +7,7 @@
     "step": 1,
     "units": "%",
     "description": "Battery level threshold",
-    "tooltip": "The applet will trigger the countdown dialog when battery drops to or below this percentage."
+    "tooltip": "The extension will trigger the countdown dialog when battery drops to or below this percentage."
   },
   "action": {
     "type": "combobox",
