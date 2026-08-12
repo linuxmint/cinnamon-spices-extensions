@@ -47,6 +47,7 @@ let uuid = null;
 let config = null;
 let keymapIndex = null;
 let keymapWatch = null;      // {keymap, handlerId}
+let keymapMissingLogged = false;
 let appletWatchId = null;
 let patches = [];            // [{proto, original}]
 
@@ -82,11 +83,36 @@ Config.prototype = {
 
 // ------------------------------------------------------------- keymap index
 
+/* Gdk is used here because nothing else exposes what this needs: the keysyms
+ * bound to a hardware keycode across all keyboard groups. Clutter's backend has
+ * no introspectable keymap, Meta's backend exposes no keymap methods, and
+ * Cinnamon's own API has no equivalent. Cinnamon core itself imports Gdk
+ * (js/ui/modalDialog.js, js/ui/osdWindow.js), so this adds no new dependency.
+ *
+ * There may still be no display to ask -- a session where Gdk has no default
+ * display. That is not an error worth reporting on every keystroke, so it is
+ * logged once and layout matching simply stays off. */
+function getKeymap() {
+    let display = Gdk.Display.get_default();
+    if (display === null) {
+        if (!keymapMissingLogged) {
+            keymapMissingLogged = true;
+            global.logWarning(`[${uuid}] no Gdk display available, `
+                              + `matching across keyboard layouts is disabled`);
+        }
+        return null;
+    }
+    return Gdk.Keymap.get_for_display(display);
+}
+
 /* Walk every hardware keycode and record which character each
  * (keycode, group, level) slot produces. That gives both directions at once:
  * character -> physical key, and physical key -> character in another group. */
 function buildKeymapIndex() {
-    let keymap = Gdk.Keymap.get_for_display(Gdk.Display.get_default());
+    let keymap = getKeymap();
+    if (keymap === null)
+        return null;
+
     let byKey = new Map();     // "keycode:group:level" -> character
     let byChar = new Map();    // character -> {keycode, group, level}
     let groups = new Set();
@@ -129,8 +155,7 @@ function getKeymapIndex() {
 /* Retype `pattern` as though the same physical keys had been pressed with
  * keyboard group `group` active. Characters that are not on the keyboard at
  * all (digits shared across groups, punctuation, emoji) pass through. */
-function translateToGroup(pattern, group) {
-    let index = getKeymapIndex();
+function translateToGroup(index, pattern, group) {
     let out = '';
     for (let ch of pattern) {
         let slot = index.byChar.get(ch);
@@ -144,10 +169,14 @@ function translateToGroup(pattern, group) {
  * duplicate each other (X pads the group list out) collapse here, and the
  * pattern as literally typed is dropped -- the menu just searched for it. */
 function layoutVariants(pattern) {
+    let index = getKeymapIndex();
+    if (index === null)
+        return [];
+
     let seen = new Set([pattern]);
     let variants = [];
-    for (let group of getKeymapIndex().groups) {
-        let candidate = translateToGroup(pattern, group);
+    for (let group of index.groups) {
+        let candidate = translateToGroup(index, pattern, group);
         if (seen.has(candidate))
             continue;
         seen.add(candidate);
@@ -264,7 +293,10 @@ function unpatchAll() {
 }
 
 function watchKeymap() {
-    let keymap = Gdk.Keymap.get_for_display(Gdk.Display.get_default());
+    let keymap = getKeymap();
+    if (keymap === null)
+        return;
+
     keymapWatch = {
         keymap: keymap,
         handlerId: keymap.connect('keys-changed', () => { keymapIndex = null; }),
@@ -277,6 +309,7 @@ function unwatchKeymap() {
         keymapWatch = null;
     }
     keymapIndex = null;
+    keymapMissingLogged = false;
 }
 
 // ---------------------------------------------------------------- lifecycle
