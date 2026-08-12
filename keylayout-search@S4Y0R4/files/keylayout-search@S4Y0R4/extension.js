@@ -106,15 +106,21 @@ function getKeymap() {
 }
 
 /* Walk every hardware keycode and record which character each
- * (keycode, group, level) slot produces. That gives both directions at once:
- * character -> physical key, and physical key -> character in another group. */
+ * (keycode, group, level) slot produces, indexed both ways.
+ *
+ * The character index is keyed by group as well as by character, which matters
+ * whenever two enabled layouts share an alphabet but disagree on key positions
+ * -- English and German swap z and y, Dvorak rearranges nearly everything. A
+ * plain character-to-key index would have to pick one of those keys and would
+ * mistranslate anything typed on the other layout. */
 function buildKeymapIndex() {
     let keymap = getKeymap();
     if (keymap === null)
         return null;
 
     let byKey = new Map();     // "keycode:group:level" -> character
-    let byChar = new Map();    // character -> {keycode, group, level}
+    let slots = [];            // every distinct {keycode, level}, keycode order
+    let seenSlots = new Set();
     let groups = new Set();
 
     for (let keycode = 8; keycode < 256; keycode++) {
@@ -130,20 +136,55 @@ function buildKeymapIndex() {
                 continue;
 
             let ch = String.fromCodePoint(unichar).toLowerCase();
-            let slot = `${keycode}:${keys[i].group}:${keys[i].level}`;
+            let group = keys[i].group;
+            let level = keys[i].level;
 
-            // First writer wins, which keeps the plain character for a slot
-            // rather than whatever a later duplicate keycode reports.
-            if (!byKey.has(slot))
-                byKey.set(slot, ch);
-            if (!byChar.has(ch))
-                byChar.set(ch, {keycode: keycode, group: keys[i].group, level: keys[i].level});
+            let slotKey = `${keycode}:${group}:${level}`;
+            if (!byKey.has(slotKey)) {
+                byKey.set(slotKey, ch);
+                if (!seenSlots.has(`${keycode}:${level}`)) {
+                    seenSlots.add(`${keycode}:${level}`);
+                    slots.push({keycode: keycode, level: level});
+                }
+            }
 
-            groups.add(keys[i].group);
+            groups.add(group);
         }
     }
 
-    return {byKey: byKey, byChar: byChar, groups: Array.from(groups).sort((a, b) => a - b)};
+    let index = {
+        byKey: byKey,
+        byChar: new Map(),     // "group:character" -> {keycode, level}
+        groups: Array.from(groups).sort((a, b) => a - b),
+    };
+
+    // Now that every slot is known, resolve each group's characters through the
+    // same fallback the lookups use. Slots are in ascending keycode order, so a
+    // character a layout puts on more than one key (digits, which also sit on
+    // the numeric keypad) resolves to the one in the main block.
+    for (let group of index.groups) {
+        for (let slot of slots) {
+            let ch = slotChar(index, slot.keycode, group, slot.level);
+            if (ch === undefined)
+                continue;
+            let charKey = `${group}:${ch}`;
+            if (!index.byChar.has(charKey))
+                index.byChar.set(charKey, slot);
+        }
+    }
+
+    return index;
+}
+
+/* The character a slot produces.
+ *
+ * X omits a key from a group when that group does not change it, and falls back
+ * to the first group -- which is how "Dvorak leaves A alone" is stored. Mirror
+ * that rule here, in one place, so both directions of translation agree with
+ * what the keyboard actually does. */
+function slotChar(index, keycode, group, level) {
+    let ch = index.byKey.get(`${keycode}:${group}:${level}`);
+    return (ch !== undefined) ? ch : index.byKey.get(`${keycode}:0:${level}`);
 }
 
 function getKeymapIndex() {
@@ -152,36 +193,79 @@ function getKeymapIndex() {
     return keymapIndex;
 }
 
-/* Retype `pattern` as though the same physical keys had been pressed with
- * keyboard group `group` active. Characters that are not on the keyboard at
- * all (digits shared across groups, punctuation, emoji) pass through. */
-function translateToGroup(index, pattern, group) {
+/* Where each character of `chars` sits on the keyboard with `sourceGroup`
+ * active, or null if that layout cannot produce the whole thing. */
+function resolveSlots(index, chars, sourceGroup) {
+    let slots = [];
+    for (let ch of chars) {
+        let slot = index.byChar.get(`${sourceGroup}:${ch}`);
+        // A single unreachable character rules the layout out: it cannot be
+        // what was being typed on, so translating from it would be guesswork.
+        if (slot === undefined)
+            return null;
+        slots.push(slot);
+    }
+    return slots;
+}
+
+/* What those same physical keys produce with `targetGroup` active instead, or
+ * null if any of them produces nothing there.
+ *
+ * A key can resolve at a level the target layout has no character for at all:
+ * Ukrainian keeps Cyrillic yeru on the third level of the key English uses for
+ * s, and English has no third level on that key. Passing such a character
+ * through untranslated would build a word mixing both alphabets, which is not a
+ * reading of anything -- so the whole variant is dropped instead. */
+function retype(index, slots, targetGroup) {
     let out = '';
-    for (let ch of pattern) {
-        let slot = index.byChar.get(ch);
-        let translated = slot ? index.byKey.get(`${slot.keycode}:${group}:${slot.level}`) : null;
-        out += (translated != null) ? translated : ch;
+    for (let slot of slots) {
+        let translated = slotChar(index, slot.keycode, targetGroup, slot.level);
+        if (translated === undefined)
+            return null;
+        out += translated;
     }
     return out;
 }
 
-/* Every distinct reading of the pressed keys in another layout. Groups that
- * duplicate each other (X pads the group list out) collapse here, and the
- * pattern as literally typed is dropped -- the menu just searched for it. */
+/* Every distinct reading of the pressed keys in a layout other than the one
+ * they were typed on.
+ *
+ * Which layout was actually active cannot be known here -- the menu hands over
+ * text, and by then the key presses are gone -- so every layout that could have
+ * produced the pattern is tried against every other layout. Two enabled
+ * layouts sharing an alphabet therefore both get their say instead of one
+ * silently winning.
+ *
+ * Readings equal to what was typed are dropped, since the menu has already
+ * searched for that, and duplicates collapse: X reports a fixed set of groups
+ * and pads the unused ones with copies. */
 function layoutVariants(pattern) {
     let index = getKeymapIndex();
     if (index === null)
         return [];
 
+    let chars = Array.from(pattern);
     let seen = new Set([pattern]);
     let variants = [];
-    for (let group of index.groups) {
-        let candidate = translateToGroup(index, pattern, group);
-        if (seen.has(candidate))
+
+    for (let sourceGroup of index.groups) {
+        let slots = resolveSlots(index, chars, sourceGroup);
+        if (slots === null)
             continue;
-        seen.add(candidate);
-        variants.push(candidate);
+
+        for (let targetGroup of index.groups) {
+            if (targetGroup === sourceGroup)
+                continue;
+
+            let candidate = retype(index, slots, targetGroup);
+            if (candidate === null || seen.has(candidate))
+                continue;
+
+            seen.add(candidate);
+            variants.push(candidate);
+        }
     }
+
     return variants;
 }
 

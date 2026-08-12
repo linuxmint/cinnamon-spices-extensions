@@ -10,11 +10,16 @@ You press Super, type `vesk` to launch Vesktop, and get nothing — because the 
 
 The key mapping is **not** a hardcoded us↔ru table. It is read from the live X keymap: every hardware keycode is walked and each `(keycode, group, level)` slot is recorded along with the character it produces. That gives both directions at once — character to physical key, and physical key to character in another layout group.
 
+Which layout was active when you typed cannot be known here — the menu hands over text, and by then the key presses are gone. So every layout that could have produced the query is tried against every other one, and each reading is searched for. Readings equal to what you typed are dropped, since the menu has already searched for those.
+
 Consequences:
 
-- Any pair of layouts works, not just Latin and Cyrillic. Greek, Armenian, Hebrew, kana — all of them are just other groups on the same keys.
+- Any number of layouts works, not just two, and not just Latin and Cyrillic. Greek, Armenian, Hebrew, kana — all of them are just other groups on the same keys.
+- Two layouts that share an alphabet but disagree on key positions — English and German swapping z and y, or Dvorak rearranging nearly everything — both get their say. Neither silently wins, because nothing has to guess which key a character came from.
 - Adding or removing a layout takes effect immediately; the table is rebuilt on the keymap's `keys-changed` signal.
 - There is nothing to configure per language and nothing to keep updated.
+
+Two details of how X stores keymaps are mirrored deliberately. A key missing from a group falls back to the first group, which is how "Dvorak leaves A alone" is recorded — so the same fallback is applied on lookup. And a reading is only produced when *every* key yields a character in the target layout: Ukrainian keeps Cyrillic yeru on the third level of the key English uses for `s`, where English has no third level at all, and passing that character through untranslated would build a word mixing both alphabets that matches nothing.
 
 Matching hooks into the menu applet's own `_listApplications()`. The original runs first and reports what matched as typed; the extension then scans the same button list for the retyped spellings and appends whatever it missed. So:
 
