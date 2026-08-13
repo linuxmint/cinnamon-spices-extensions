@@ -2,19 +2,28 @@ const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const Main = imports.ui.main;
 const Mainloop = imports.mainloop;
-const PopupMenu = imports.ui.popupMenu;
-const ModalDialog = imports.ui.modalDialog;
-const St = imports.gi.St;
-const Clutter = imports.gi.Clutter;
 
 class WorkspaceDesktopExtension {
     constructor() {
         this._workspaceManager = global.screen;
         this._signalId = null;
+        this._gsettings = null;
     }
 
     enable() {
         log('Workspace Desktop extension enabled');
+        
+        try {
+            // Initialize GSettings for workspace configuration
+            this._gsettings = new Gio.Settings({
+                schema_id: 'org.cinnamon.desktop.wm.preferences'
+            });
+            
+            // Pre-create workspace directories based on num-workspaces setting
+            this._preCreateWorkspaceDirectories();
+        } catch (e) {
+            logError(e, 'Failed to initialize GSettings');
+        }
         
         // Listen for workspace changes
         this._signalId = this._workspaceManager.connect(
@@ -32,9 +41,34 @@ class WorkspaceDesktopExtension {
             this._workspaceManager.disconnect(this._signalId);
             this._signalId = null;
         }
+        if (this._gsettings) {
+            this._gsettings = null;
+        }
         // Merge workspace subfolders back into main ~/Desktop and clean up
         this._mergeWorkspacesBack();
         log('Workspace Desktop extension disabled');
+    }
+
+    _preCreateWorkspaceDirectories() {
+        try {
+            // Get the number of workspaces from GSettings
+            const numWorkspaces = this._gsettings.get_int('num-workspaces');
+            const homeDir = GLib.get_home_dir();
+            const desktopBaseDir = `${homeDir}/Desktop`;
+            
+            log(`Creating directories for ${numWorkspaces} workspaces`);
+            
+            // Pre-create all workspace directories
+            for (let i = 0; i < numWorkspaces; i++) {
+                const workspaceDir = `${desktopBaseDir}/workspace${i}`;
+                this._ensureDirectoryExists(workspaceDir);
+                
+                // Copy existing root Desktop files into the workspace folder on first creation
+                this._copyRootDesktopFilesToWorkspace(desktopBaseDir, workspaceDir);
+            }
+        } catch (e) {
+            logError(e, 'Error pre-creating workspace directories');
+        }
     }
 
     _onWorkspaceChanged() {
@@ -51,16 +85,13 @@ class WorkspaceDesktopExtension {
             const desktopBaseDir = `${homeDir}/Desktop`;
             const workspaceDir = `${desktopBaseDir}/workspace${workspaceIndex}`;
 
-            // 1. Create workspace directory if missing
+            // 1. Ensure workspace directory exists (in case it was deleted)
             this._ensureDirectoryExists(workspaceDir);
 
-            // 2. Copy existing root Desktop files into the workspace folder (if empty or on initial run)
-            this._copyRootDesktopFilesToWorkspace(desktopBaseDir, workspaceDir);
-
-            // 3. Update XDG Desktop directory target
+            // 2. Update XDG Desktop directory target
             this._updateXdgDesktopDir(workspaceDir);
 
-            // 4. Refresh desktop icons
+            // 3. Refresh desktop icons
             this._refreshDesktopIcons();
 
         } catch (e) {
@@ -85,6 +116,25 @@ class WorkspaceDesktopExtension {
         const wsDir = Gio.File.new_for_path(workspacePath);
 
         if (!desktopDir.query_exists(null)) return;
+
+        try {
+            // Only copy if the workspace directory is empty (first time)
+            const enumerator = wsDir.enumerate_children(
+                'standard::*',
+                Gio.FileQueryInfoFlags.NONE,
+                null
+            );
+            
+            let info = enumerator.next_file(null);
+            if (info !== null) {
+                // Directory is not empty, skip copying
+                log(`Workspace directory ${workspacePath} is not empty, skipping initial copy`);
+                return;
+            }
+        } catch (e) {
+            // If error checking, proceed with copy anyway
+            log(`Could not check if workspace directory is empty: ${e.message}`);
+        }
 
         try {
             const enumerator = desktopDir.enumerate_children(
@@ -195,7 +245,6 @@ class WorkspaceDesktopExtension {
             // SECURITY FIX: Use spawn_async with argument array instead of spawn_command_line_async
             // to prevent command injection attacks
             const argv = ['xdg-user-dirs-update', '--set', 'DESKTOP', path];
-            let exitStatus = 0;
             GLib.spawn_sync(
                 null,  // working directory
                 argv,  // argument array
