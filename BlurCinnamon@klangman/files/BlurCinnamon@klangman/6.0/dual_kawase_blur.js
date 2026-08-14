@@ -8,10 +8,12 @@ const GLib     = imports.gi.GLib;
 
 const UUID = "BlurCinnamon@klangman";
 
+const SHADER_CACHE = {};
+
 const DEFAULT_PARAMS = {
     radius: 0, brightness: 1,
     width: 0, height: 0, 
-    pass_index: 0, total_passes: 1, chained_effect: null
+    pass_index: 0, total_passes: 1
 };
 
 var DualFilteringBlurEffect =
@@ -66,13 +68,6 @@ var DualFilteringBlurEffect =
                 1, 16,
                 1,
             ),
-            'chained_effect': GObject.ParamSpec.object(
-                `chained_effect`,
-                `Chained Effect`,
-                `Chained Effect`,
-                GObject.ParamFlags.READWRITE,
-                GObject.Object,
-            ),
         }
     }, class DualFilteringBlurEffect extends Clutter.ShaderEffect {
         constructor(params) {
@@ -94,7 +89,6 @@ var DualFilteringBlurEffect =
             this.brightness = params?.brightness ?? 1;
             this.width = params?.width ?? 0;
             this.height = params?.height ?? 0;
-            this.chained_effect = params?.chained_effect ?? null;
 
             // Fetches the scale factor safely
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
@@ -106,9 +100,22 @@ var DualFilteringBlurEffect =
         }
 
         get_shader_source(shader_filename) {
-            let file_name = GLib.get_user_data_dir() + '/cinnamon/extensions/' + UUID + "/6.0/" + shader_filename;
+          if (SHADER_CACHE[shader_filename]) {
+            return SHADER_CACHE[shader_filename];
+          }
+
+          let file_name = GLib.get_user_data_dir() + '/cinnamon/extensions/' + UUID + "/6.0/" + shader_filename;
+          try {
             let [ok, content] = GLib.file_get_contents(file_name);
-            return (new TextDecoder().decode(content));
+            if (ok) {
+              let decoded_shader = new TextDecoder().decode(content);
+              SHADER_CACHE[shader_filename] = decoded_shader;
+              return decoded_shader;
+            }
+          } catch (e) {
+            global.logError(`BlurCinnamon: Error loading shader ${shader_filename}: ${e.message}`);
+          }
+          return null;
         }
 
         static get default_params() {
@@ -194,14 +201,6 @@ var DualFilteringBlurEffect =
             this._total_passes = value;
         }
 
-        get chained_effect() {
-            return this._chained_effect;
-        }
-
-        set chained_effect(value) {
-            this._chained_effect = value;
-        }
-
         _update_uniforms(scale_factor) {
             // Treat the UI radius as an intensity percentage 
             let effective_radius = Math.min(this.radius, 100.0); 
@@ -238,14 +237,17 @@ var DualFilteringBlurEffect =
             if (actor) {
                 this.width = actor.width;
                 this.height = actor.height;
-                this._actor_connection_size_id = actor.connect('notify::size', _ => {
-                    this.width = actor.width;
-                    this.height = actor.height;
-                });
+                // Only connect to size/scale signals for the first pass
+                if (this.pass_index === 0) {
+                    this._actor_connection_size_id = actor.connect('notify::size', _ => {
+                        this.width = actor.width;
+                        this.height = actor.height;
+                    });
 
-                this._scale_connection_id = St.ThemeContext.get_for_stage(global.stage).connect('notify::scale-factor', () => {
-                    this._update_uniforms(St.ThemeContext.get_for_stage(global.stage).scale_factor);
-                });
+                    this._scale_connection_id = St.ThemeContext.get_for_stage(global.stage).connect('notify::scale-factor', () => {
+                        this._update_uniforms(St.ThemeContext.get_for_stage(global.stage).scale_factor);
+                    });
+                }
             } else {
                 this._actor_connection_size_id = null;
             }
@@ -261,6 +263,10 @@ var DualFilteringBlurEffect =
                         } catch (e) {
                             // Ignores silently if the actor has already been cleaned up by the Cinnamon engine
                         }
+                        // Forces the immediate destruction of the GObject
+                        if (typeof effect.run_dispose === 'function') {
+                            effect.run_dispose();
+                        }
                     });
                 }
                 this._sub_effects = [];
@@ -269,7 +275,6 @@ var DualFilteringBlurEffect =
                     let total_depth = 7;
 
                     this.total_passes = total_depth;
-                    this.chained_effect = this; 
 
                     for (let i = 1; i < total_depth; i++) {
                         let new_pass = new DualFilteringBlurEffect({ 
