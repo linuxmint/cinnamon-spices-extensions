@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-07 15:04-0400\n"
+"POT-Creation-Date: 2026-08-14 09:13-0400\n"
 "PO-Revision-Date: 2026-07-27 10:34-0400\n"
 "Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2974
+#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2972
 msgid "Default window settings"
 msgstr "Standardvinduesindstillinger"
 
-#. 6.0/extension.js:3140
+#. 6.0/extension.js:3139
 msgid "Error"
 msgstr "Fejl"
 
-#. 6.0/extension.js:3141
+#. 6.0/extension.js:3140
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -36,11 +36,11 @@ msgstr ""
 "vindue, der tidligere var i fokus, tilhører, og derfor kan Blur Cinnamon-"
 "effekterne ikke anvendes på dette vindue"
 
-#. 6.0/extension.js:4023
+#. 6.0/extension.js:4022
 msgid "Welcome to Blur Cinnamon"
 msgstr "Velkommen til Sløret Cinnamon"
 
-#. 6.0/extension.js:4024
+#. 6.0/extension.js:4023
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -59,15 +59,15 @@ msgstr ""
 "kan også foretage ændringer i effektens egenskaber, såsom sløringens "
 "intensitet, farvemætning og dæmpning."
 
-#. 6.0/extension.js:4028
+#. 6.0/extension.js:4027
 msgid "Open Blur Cinnamon Settings"
 msgstr "Åbn Sløret Cinnamon-indstillinger"
 
-#. 6.0/extension.js:4118
+#. 6.0/extension.js:4117
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Tester Sløret Cinnamons underretningseffekter"
 
-#. 6.0/extension.js:4119
+#. 6.0/extension.js:4118
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"

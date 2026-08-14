@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-07 15:04-0400\n"
+"POT-Creation-Date: 2026-08-14 09:13-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
 
-#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2974
+#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2972
 msgid "Default window settings"
 msgstr "Configuración predeterminada de la ventana"
 
-#. 6.0/extension.js:3140
+#. 6.0/extension.js:3139
 msgid "Error"
 msgstr "Error"
 
-#. 6.0/extension.js:3141
+#. 6.0/extension.js:3140
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -35,11 +35,11 @@ msgstr ""
 "tenía el foco anteriormente, por lo que no se pueden aplicar los efectos de "
 "Desenfoque Cinnamon a esa ventana"
 
-#. 6.0/extension.js:4023
+#. 6.0/extension.js:4022
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:4024
+#. 6.0/extension.js:4023
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -58,15 +58,15 @@ msgstr ""
 "También puedes modificar las propiedades de los efectos, como la intensidad "
 "del desenfoque, la saturación del color y el atenuado."
 
-#. 6.0/extension.js:4028
+#. 6.0/extension.js:4027
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir configuración de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:4118
+#. 6.0/extension.js:4117
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:4119
+#. 6.0/extension.js:4118
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
