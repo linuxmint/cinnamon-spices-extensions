@@ -3,11 +3,19 @@ const GLib = imports.gi.GLib;
 const Main = imports.ui.main;
 const messageTray = imports.ui.messageTray;
 const St = imports.gi.St;
+const ExtensionSystem = imports.ui.extensionSystem;
 
-const { _ } = require('./translation');
-const { isPngReadableAsync } = require('./preview');
+const UUID = 'cinnamon-screenshot@hilyxx';
+const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
 
-const Screenshot = { takeScreenshot };
+if (imports.searchPath.indexOf(EXTENSION_DIR) === -1) {
+    imports.searchPath.push(EXTENSION_DIR);
+}
+
+const { _ } = imports.translation;
+const { isPngReadableAsync } = imports.preview;
+
+var Screenshot = { takeScreenshot };
 
 // === TIMER OVERLAY STATE ===
 let timerOverlayLabel = null;

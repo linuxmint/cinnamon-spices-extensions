@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-27 18:41+0200\n"
+"POT-Creation-Date: 2026-08-20 16:22+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -18,207 +18,207 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:459
+#. editOverlay.js:463
 msgid "Brush"
 msgstr "Cọ vẽ"
 
-#. editOverlay.js:460
+#. editOverlay.js:464
 msgid "Eraser"
 msgstr "Tẩy"
 
-#. editOverlay.js:461
+#. editOverlay.js:465
 msgid "Arrow"
 msgstr "Mũi tên"
 
-#. editOverlay.js:462
+#. editOverlay.js:466
 msgid "Line"
 msgstr "Đường Thẳng"
 
-#. editOverlay.js:463
+#. editOverlay.js:467
 msgid "Rectangle"
 msgstr "Hình chữ nhật"
 
-#. editOverlay.js:464
+#. editOverlay.js:468
 msgid "Ellipse"
 msgstr "Hình elip"
 
-#. editOverlay.js:465
+#. editOverlay.js:469
 msgid "Triangle"
 msgstr "Tam Giác"
 
-#. editOverlay.js:466
+#. editOverlay.js:470
 msgid "Filled Rectangle"
 msgstr "Hình Chữ Nhật Đặc"
 
-#. editOverlay.js:467
+#. editOverlay.js:471
 msgid "Filled Ellipse"
 msgstr "Hình Elip Đặc"
 
-#. editOverlay.js:468
+#. editOverlay.js:472
 msgid "Filled Triangle"
 msgstr "Tam Giác Đặc"
 
-#. editOverlay.js:469
+#. editOverlay.js:473
 msgid "Pixelization"
 msgstr "Làm mờ pixel"
 
-#. editOverlay.js:470
+#. editOverlay.js:474
 msgid "Text"
 msgstr "Văn bản"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Black"
 msgstr "Đen"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "White"
 msgstr "Trắng"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Red"
 msgstr "Đỏ"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Blue"
 msgstr "Xanh dương"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Green"
 msgstr "Xanh lá"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Yellow"
 msgstr "Vàng"
 
-#. editOverlay.js:642
+#. editOverlay.js:646
 msgid "Thickness/size"
 msgstr "Độ dày/kích thước"
 
-#. editOverlay.js:647
+#. editOverlay.js:651
 msgid "Save changes to the canvas"
 msgstr "Lưu thay đổi vào canvas"
 
-#. editOverlay.js:648
+#. editOverlay.js:652
 msgid "Cancel all changes"
 msgstr "Hủy tất cả thay đổi"
 
-#. editOverlay.js:649 overlay.js:93 overlay.js:119
+#. editOverlay.js:653 overlay.js:97 overlay.js:123
 msgid "Close"
 msgstr "Đóng"
 
-#. editOverlay.js:1049
+#. editOverlay.js:1053
 msgid "Apply changes?"
 msgstr "Áp dụng thay đổi?"
 
-#. editOverlay.js:1054
+#. editOverlay.js:1058
 msgid "Merge canvas with image"
 msgstr "Hợp nhất canvas với ảnh"
 
-#. editOverlay.js:1058
+#. editOverlay.js:1062
 msgid "Save modified copy as…"
 msgstr "Lưu bản sao đã chỉnh sửa thành…"
 
-#. editOverlay.js:1062 editOverlay.js:1205 preview.js:267 preview.js:362
+#. editOverlay.js:1066 editOverlay.js:1209 preview.js:271 preview.js:366
 msgid "Cancel"
 msgstr "Hủy"
 
-#. editOverlay.js:1072
+#. editOverlay.js:1076
 msgid "Quit without apply changes?"
 msgstr "Thoát mà không áp dụng thay đổi?"
 
-#. editOverlay.js:1076
+#. editOverlay.js:1080
 msgid "Yes"
 msgstr "Có"
 
-#. editOverlay.js:1083
+#. editOverlay.js:1087
 msgid "No"
 msgstr "Không"
 
-#. editOverlay.js:1113 editOverlay.js:1152 editOverlay.js:1230
+#. editOverlay.js:1117 editOverlay.js:1156 editOverlay.js:1234
 msgid "Error saving"
 msgstr "Lỗi khi lưu"
 
-#. editOverlay.js:1181 preview.js:349
+#. editOverlay.js:1185 preview.js:353
 msgid "Script gtk-filechooser.py not available"
 msgstr "Tập lệnh gtk-filechooser.py không khả dụng"
 
-#. editOverlay.js:1181 preview.js:349
+#. editOverlay.js:1185 preview.js:353
 msgid "Unable to open file chooser."
 msgstr "Không thể mở trình chọn tập tin."
 
-#. editOverlay.js:1200 preview.js:251 preview.js:357
+#. editOverlay.js:1204 preview.js:255 preview.js:361
 msgid "Save as..."
 msgstr "Lưu thành..."
 
-#. editOverlay.js:1203 preview.js:360
+#. editOverlay.js:1207 preview.js:364
 msgid "Images"
 msgstr "Hình ảnh"
 
-#. editOverlay.js:1204 preview.js:361
+#. editOverlay.js:1208 preview.js:365
 msgid "Save"
 msgstr "Lưu"
 
-#. overlay.js:90
+#. overlay.js:94
 msgid "Full Screen"
 msgstr "Toàn màn hình"
 
-#. overlay.js:91
+#. overlay.js:95
 msgid "Active Window"
 msgstr "Cửa sổ đang hoạt động"
 
-#. overlay.js:92 overlay.js:160
+#. overlay.js:96 overlay.js:164
 msgid "Selection"
 msgstr "Vùng chọn"
 
-#. overlay.js:121
+#. overlay.js:125
 msgid "Mouse Pointer :"
 msgstr "Con trỏ chuột:"
 
-#. overlay.js:162
+#. overlay.js:166
 msgid "Timer (s) :"
 msgstr "Hẹn giờ (giây):"
 
-#. preview.js:235
+#. preview.js:239
 msgid "Edit image"
 msgstr "Chỉnh sửa ảnh"
 
-#. preview.js:236
+#. preview.js:240
 msgid "Copy to clipboard"
 msgstr "Sao chép vào clipboard"
 
-#. preview.js:257
+#. preview.js:261
 msgid "Back"
 msgstr "Quay lại"
 
-#. preview.js:317 preview.js:321 preview.js:325
+#. preview.js:321 preview.js:325 preview.js:329
 msgid "Invalid filename"
 msgstr "Tên tập tin không hợp lệ"
 
-#. preview.js:317
+#. preview.js:321
 msgid "Filename cannot be empty."
 msgstr "Tên tập tin không được để trống."
 
-#. preview.js:321
+#. preview.js:325
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "Tên tập tin chứa ký tự bị cấm: \\ / : * ? \" < > |"
 
-#. preview.js:325
+#. preview.js:329
 msgid "Filename must end with .png"
 msgstr "Tên tập tin phải kết thúc bằng .png"
 
-#. preview.js:441
+#. preview.js:445
 msgid "Copy failed"
 msgstr "Sao chép thất bại"
 
-#. preview.js:441
+#. preview.js:445
 msgid "Unable to copy image to clipboard."
 msgstr "Không thể sao chép ảnh vào clipboard."
 
-#. screenshot.js:70
+#. screenshot.js:78
 msgid "Cinnamon-Screenshot extension error"
 msgstr "Lỗi tiện ích mở rộng Cinnamon-Screenshot"
 
-#. screenshot.js:71
+#. screenshot.js:79
 msgid ""
 "\"Gnome-screenshot\" utility is not installed. Please install it for the "
 "extension to work."

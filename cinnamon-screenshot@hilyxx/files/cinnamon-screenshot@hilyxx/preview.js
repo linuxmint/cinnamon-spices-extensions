@@ -5,11 +5,15 @@ const GObject = imports.gi.GObject;
 const Layout = imports.ui.layout;
 const ExtensionSystem = imports.ui.extensionSystem;
 
-const { _ } = require('./translation');
-const { ScreenshotEditDialog } = require('./editOverlay');
-
 const UUID = 'cinnamon-screenshot@hilyxx';
 const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
+
+if (imports.searchPath.indexOf(EXTENSION_DIR) === -1) {
+    imports.searchPath.push(EXTENSION_DIR);
+}
+
+const { _ } = imports.translation;
+const { ScreenshotEditDialog } = imports.editOverlay;
 
 const ICONS_PATH = EXTENSION_DIR + '/icons/';
 const scriptPath = EXTENSION_DIR + '/lib/gtk-filechooser.py';
@@ -485,7 +489,7 @@ if (typeof ScreenshotPreviewDialog !== 'function') {
 let _currentDialog = null;
 
 // === PNG READABILITY CHECK ===
-function isPngReadableAsync(filepath) {
+var isPngReadableAsync = function(filepath) {
     return (async () => {
         try {
             const file = Gio.File.new_for_path(filepath);
@@ -502,7 +506,7 @@ function isPngReadableAsync(filepath) {
 }
 
 // === MAIN ENTRY POINT: SHOW PREVIEW DIALOG ===
-function showScreenshotPreview(filepath, onSave, onOptionSelected, showBackButton = false, editState = null) {
+var showScreenshotPreview = function(filepath, onSave, onOptionSelected, showBackButton = false, editState = null) {
     if (_currentDialog) {
         _currentDialog.close();
         _currentDialog = null;
