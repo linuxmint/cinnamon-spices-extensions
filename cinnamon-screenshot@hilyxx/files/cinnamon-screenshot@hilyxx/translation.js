@@ -6,7 +6,7 @@ let currentUUID = null;
 // Initialize gettext with the provided UUID
 var initTranslation = function(uuid) {
     currentUUID = uuid;
-    Gettext.bindtextdomain(uuid, GLib.get_user_data_dir() + '/locale');
+    Gettext.bindtextdomain(uuid, GLib.get_home_dir() + '/.local/share/locale');
 }
 
 var _ = function(str) {
