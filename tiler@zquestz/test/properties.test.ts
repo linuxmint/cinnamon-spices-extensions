@@ -41,10 +41,14 @@ const AREAS: Rect[] = [
 const WINDOW_GAPS = [0, 1, 4, 10, 37, 100];
 const EDGE_GAPS = [0, 1, 10, 50];
 
-const cellRect = (area: Rect, grid: GridSize, col: number, row: number): Rect =>
-  cellRangeToRect(area, grid, { col, row, colEnd: col, rowEnd: row }, gapsOf);
-
-let gapsOf: Gaps;
+const cellRect = (
+  area: Rect,
+  grid: GridSize,
+  gaps: Gaps,
+  col: number,
+  row: number,
+): Rect =>
+  cellRangeToRect(area, grid, { col, row, colEnd: col, rowEnd: row }, gaps);
 
 function forEveryCase(
   visit: (area: Rect, grid: GridSize, gaps: Gaps) => void,
@@ -56,8 +60,7 @@ function forEveryCase(
       for (const rows of SPAN_SHAPES) {
         for (const window of WINDOW_GAPS) {
           for (const edge of EDGE_GAPS) {
-            gapsOf = { window, edge };
-            visit(area, { cols, rows }, gapsOf);
+            visit(area, { cols, rows }, { window, edge });
             cases++;
           }
         }
@@ -79,7 +82,7 @@ test("every cell of every grid obeys the laws", () => {
     for (let row = 0; row < rows; row++) {
       const line: Rect[] = [];
       for (let col = 0; col < cols; col++) {
-        line.push(cellRect(area, grid, col, row));
+        line.push(cellRect(area, grid, gaps, col, row));
       }
       rects.push(line);
     }
@@ -107,10 +110,14 @@ test("every cell of every grid obeys the laws", () => {
         assert.equal(rect.width, rects[0][col].width, name);
 
         if (col > 0) {
-          horizontal.push(rect.x - (rects[row][col - 1].x + rects[row][col - 1].width));
+          horizontal.push(
+            rect.x - (rects[row][col - 1].x + rects[row][col - 1].width),
+          );
         }
         if (row > 0) {
-          vertical.push(rect.y - (rects[row - 1][col].y + rects[row - 1][col].height));
+          vertical.push(
+            rect.y - (rects[row - 1][col].y + rects[row - 1][col].height),
+          );
         }
       }
     }
@@ -169,7 +176,12 @@ test("every auto-tile arrangement obeys the laws", () => {
   let cases = 0;
 
   for (const area of AREAS) {
-    for (const mode of ["main-left", "main-right", "equal-left", "equal-right"] as const) {
+    for (const mode of [
+      "main-left",
+      "main-right",
+      "equal-left",
+      "equal-right",
+    ] as const) {
       for (let count = 1; count <= 13; count++) {
         for (const window of WINDOW_GAPS) {
           for (const edge of EDGE_GAPS) {
@@ -200,6 +212,41 @@ test("every auto-tile arrangement obeys the laws", () => {
                   two.y + two.height <= one.y;
 
                 assert.ok(apart, `${name}: windows ${a} and ${b} overlap`);
+              }
+            }
+
+            // The founding law, asserted for sweeps as well: the clear air
+            // between side-by-side windows is one uniform gap, never wider
+            // than asked, and it survives whenever the area can afford it.
+            const separations: number[] = [];
+            for (const one of rects) {
+              for (const two of rects) {
+                const besides =
+                  one.x + one.width <= two.x &&
+                  one.y < two.y + two.height &&
+                  two.y < one.y + one.height;
+                if (besides) {
+                  separations.push(two.x - (one.x + one.width));
+                }
+              }
+            }
+
+            for (const gap of separations) {
+              assert.equal(gap, separations[0], `${name}: side gaps differ`);
+              assert.ok(gap <= window, `${name}: side gap exceeds the ask`);
+            }
+            if (count >= 2 && window >= 1) {
+              assert.ok(
+                separations.length > 0,
+                `${name}: no side-by-side neighbours`,
+              );
+              // Room for the tallest stack to keep pixel tracks and gaps
+              // even after the edge insets have taken their share.
+              if (area.height >= 7 * count) {
+                assert.ok(
+                  separations[0] >= 1,
+                  `${name}: the sweep's gap was talked away`,
+                );
               }
             }
           }

@@ -1,34 +1,21 @@
 {
   "layout": {
     "type": "layout",
-    "pages": [
-      "general-page",
-      "grids-page",
-      "spacing-page"
-    ],
+    "pages": ["general-page", "grids-page", "spacing-page"],
     "general-page": {
       "type": "page",
       "title": "General",
-      "sections": [
-        "hotkeys-section",
-        "tiling-section",
-        "keybindings-section"
-      ]
+      "sections": ["hotkeys-section", "tiling-section", "keybindings-section"]
     },
     "spacing-page": {
       "type": "page",
       "title": "Spacing",
-      "sections": [
-        "gaps-section",
-        "reserved-section"
-      ]
+      "sections": ["gaps-section", "reserved-section"]
     },
     "hotkeys-section": {
       "type": "section",
       "title": "Hotkeys",
-      "keys": [
-        "hotkey"
-      ]
+      "keys": ["hotkey", "use-push-tile"]
     },
     "tiling-section": {
       "type": "section",
@@ -43,10 +30,7 @@
     "gaps-section": {
       "type": "section",
       "title": "Gaps",
-      "keys": [
-        "window-gap",
-        "edge-gap"
-      ]
+      "keys": ["window-gap", "edge-gap"]
     },
     "reserved-section": {
       "type": "section",
@@ -116,9 +100,7 @@
     "keybindings-section": {
       "type": "section",
       "title": "Keybindings",
-      "keys": [
-        "grid-keys-legend"
-      ]
+      "keys": ["grid-keys-legend"]
     }
   },
   "hotkey": {
@@ -126,6 +108,12 @@
     "default": "<Super>t",
     "description": "Tile the focused window",
     "tooltip": "Keyboard shortcut that opens Tiler for the focused window."
+  },
+  "use-push-tile": {
+    "type": "switch",
+    "default": true,
+    "description": "Use Cinnamon's tiling shortcuts",
+    "tooltip": "Super with an arrow key tiles the focused window as it always has, but with Tiler's gaps and reserved space. Turn this off to leave those shortcuts to Cinnamon."
   },
   "grid-keys-legend": {
     "type": "custom",
@@ -250,7 +238,7 @@
     "type": "entry",
     "default": "2x2",
     "description": "Layout",
-    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbours. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
   },
   "grid-1-name": {
     "type": "entry",
@@ -288,7 +276,7 @@
     "type": "entry",
     "default": "1,2,1 x 1,1",
     "description": "Layout",
-    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbours. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
   },
   "grid-2-name": {
     "type": "entry",
@@ -326,7 +314,7 @@
     "type": "entry",
     "default": "4x4",
     "description": "Layout",
-    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbours. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
   },
   "grid-3-name": {
     "type": "entry",
@@ -364,7 +352,7 @@
     "type": "entry",
     "default": "6x6",
     "description": "Layout",
-    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbours. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
   },
   "grid-4-name": {
     "type": "entry",

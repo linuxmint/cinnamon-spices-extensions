@@ -9,15 +9,13 @@
  * do to a window placed by hand.
  */
 
+import { toFinite } from "./coerce.ts";
 import { cellRangeToRect } from "./geometry.ts";
 import type { CellRange, Gaps, GridSize, Rect } from "./geometry.ts";
 
 /** The arrangements on offer: two kinds, each led from either side. */
 export type AutotileMode =
-  | "main-left"
-  | "main-right"
-  | "equal-left"
-  | "equal-right";
+  "main-left" | "main-right" | "equal-left" | "equal-right";
 
 /** The side an arrangement leads from. */
 type Side = "left" | "right";
@@ -96,7 +94,7 @@ export function autotileRects(
   area: Rect,
   gaps: Gaps,
 ): Rect[] {
-  const wanted = Number.isFinite(count) ? Math.floor(count) : 0;
+  const wanted = Math.floor(toFinite(count));
   if (wanted <= 0) {
     return [];
   }

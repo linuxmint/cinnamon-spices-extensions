@@ -5,6 +5,8 @@
  * easy to reason about on its own.
  */
 
+import { toFinite } from "./coerce.ts";
+
 /** A rectangle in absolute screen coordinates. */
 export interface Rect {
   x: number;
@@ -74,15 +76,6 @@ export interface Gaps {
 const MAX_GAP_SHARE = 0.25;
 
 /**
- * Falls back to zero for anything that is not a usable number. Settings are
- * stored as JSON that users can edit by hand, so a value that never went
- * through the settings widgets can arrive here as anything at all.
- */
-function toFinite(value: number): number {
-  return Number.isFinite(value) ? value : 0;
-}
-
-/**
  * The sizes of one axis of a grid, with anything unusable left out. An axis
  * with nothing usable left is one track filling the whole run, which is the
  * least surprising thing to show for a grid that could not be read.
@@ -117,11 +110,7 @@ function spanTotal(spans: number[]): number {
 
 /** Clamps a cell index to a grid of `count` tracks. */
 function clampIndex(value: number, count: number): number {
-  if (!Number.isFinite(value)) {
-    return 0;
-  }
-
-  return Math.max(0, Math.min(Math.floor(value), count - 1));
+  return Math.max(0, Math.min(Math.floor(toFinite(value)), count - 1));
 }
 
 /**
@@ -330,10 +319,6 @@ function trackAt(
   spacing: number,
 ): number {
   const point = toFinite(offset);
-  if (!Number.isFinite(offset)) {
-    return 0;
-  }
-
   const gap = Math.max(0, toFinite(spacing));
   const sizes = trackSizes(length, spans, gap);
 
@@ -423,6 +408,19 @@ export function moveFocus(
   };
 
   return { anchor: extend ? selection.anchor : focus, focus };
+}
+
+/**
+ * Whether two rectangles describe the same place. Used to tell whether a
+ * window was actually moved, rather than merely taken hold of.
+ */
+export function sameRect(one: Rect, two: Rect): boolean {
+  return (
+    toFinite(one.x) === toFinite(two.x) &&
+    toFinite(one.y) === toFinite(two.y) &&
+    toFinite(one.width) === toFinite(two.width) &&
+    toFinite(one.height) === toFinite(two.height)
+  );
 }
 
 /** Whether a cell range covers every cell of the grid. */

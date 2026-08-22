@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,38 +16,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "Hoofd links"
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr "Het actieve venster vult de linkerhelft, de rest stapelt rechts."
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "Hoofd rechts"
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr "Het actieve venster vult de rechterhelft, de rest stapelt links."
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "Gelijk links"
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr ""
 "Alle vensters delen twee gelijke kolommen, aangevoerd vanaf linksboven."
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "Gelijk rechts"
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr ""
 "Alle vensters delen twee gelijke kolommen, aangevoerd vanaf rechtsboven."
@@ -116,10 +115,11 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
 msgstr ""
-"Vensters tegelen op een raster, met tussenruimtes, gereserveerde "
-"schermruimte en automatisch tegelen met één druk. Geïnspireerd door gTile."
+"Vensters tegelen op een raster, met tussenruimtes, gereserveerde schermruimte"
+" en automatisch tegelen met één druk. Tegelen met Super+pijl volgt dezelfde "
+"tussenruimtes. Geïnspireerd door gTile."
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -176,6 +176,20 @@ msgstr "Het actieve venster tegelen"
 #. settings-schema.json->hotkey->tooltip
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "Sneltoets die Tiler opent voor het actieve venster."
+
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Tegelsneltoetsen van Cinnamon gebruiken"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super met een pijltoets tegelt het actieve venster zoals altijd, maar met de "
+"tussenruimtes en gereserveerde ruimte van Tiler. Schakel dit uit om die "
+"sneltoetsen aan Cinnamon over te laten."
 
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
@@ -280,8 +294,8 @@ msgstr "Gereserveerde ruimte bovenaan"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr ""
 "Vensters worden nooit in dit gebied getegeld. Handig voor Conky of docks die "
 "zelf geen ruimte reserveren."
@@ -354,13 +368,13 @@ msgstr "Indeling"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
-"Kolommen, dan rijen. Groottes kunnen één voor één worden opgegeven om "
-"sommige banen groter te maken: 1,2,1 x 1,1 is drie kolommen waarvan de "
-"middelste twee keer zo breed is als haar buren. Het wijzigen van de getallen "
-"hierboven herschrijft dit, en alles wat niet leesbaar is valt daarop terug."
+"Kolommen, dan rijen. Groottes kunnen één voor één worden opgegeven om sommige"
+" banen groter te maken: 1,2,1 x 1,1 is drie kolommen waarvan de middelste "
+"twee keer zo breed is als haar buren. Het wijzigen van de getallen hierboven "
+"herschrijft dit, en alles wat niet leesbaar is valt daarop terug."
 
 #. settings-schema.json->grid-1-name->description
 #. settings-schema.json->grid-2-name->description

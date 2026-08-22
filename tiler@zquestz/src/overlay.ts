@@ -8,6 +8,7 @@
  * reserved space included.
  */
 
+import { toFinite } from "./coerce.ts";
 import {
   cellAt,
   cellRangeToRect,
@@ -32,6 +33,7 @@ import { _ } from "./i18n.ts";
 import { GRID_COUNT } from "./preset.ts";
 import type { Preset } from "./preset.ts";
 import { rgba, windowColours } from "./theme.ts";
+import type { Colour } from "./theme.ts";
 import { appOf, titleOf } from "./winops.ts";
 import type { MetaWindow } from "./winops.ts";
 
@@ -52,8 +54,8 @@ const HEADER_ICON = 16;
 /** The shape the grid falls back to when the area has none to take. */
 const DEFAULT_SHAPE = 9 / 16;
 
-/** Nothing the grid draws is allowed to disappear entirely. */
-const MIN_CELL = 1;
+/** No chip may be squeezed out of existence, however many share a row. */
+const MIN_CHIP = 1;
 
 /** The button that chooses. The others are left to mean whatever they mean. */
 const PRIMARY_BUTTON = 1;
@@ -78,6 +80,8 @@ const OPACITY = {
   chosenBorder: 0.95,
   previewFill: 0.22,
   previewBorder: 0.85,
+  text: 0.85,
+  textBright: 0.95,
 };
 
 type KeyAction =
@@ -95,17 +99,37 @@ type KeyAction =
  */
 const KEYS: Array<{ name: string; binding: string; act: KeyAction }> = [
   { name: "tiler-close", binding: "Escape", act: { kind: "close" } },
-  { name: "tiler-tile-return", binding: "Return", act: { kind: "tile" } },
-  { name: "tiler-tile-enter", binding: "KP_Enter", act: { kind: "tile" } },
-  { name: "tiler-tile-space", binding: "space", act: { kind: "tile" } },
+  // "::" separates alternative bindings for one action, as Cinnamon writes
+  // its own shortcuts.
+  {
+    name: "tiler-commit",
+    binding: "Return::KP_Enter::space",
+    act: { kind: "tile" },
+  },
   { name: "tiler-up", binding: "Up", act: { kind: "move", to: "up" } },
   { name: "tiler-down", binding: "Down", act: { kind: "move", to: "down" } },
   { name: "tiler-left", binding: "Left", act: { kind: "move", to: "left" } },
   { name: "tiler-right", binding: "Right", act: { kind: "move", to: "right" } },
-  { name: "tiler-grow-up", binding: "<Shift>Up", act: { kind: "grow", to: "up" } },
-  { name: "tiler-grow-down", binding: "<Shift>Down", act: { kind: "grow", to: "down" } },
-  { name: "tiler-grow-left", binding: "<Shift>Left", act: { kind: "grow", to: "left" } },
-  { name: "tiler-grow-right", binding: "<Shift>Right", act: { kind: "grow", to: "right" } },
+  {
+    name: "tiler-grow-up",
+    binding: "<Shift>Up",
+    act: { kind: "grow", to: "up" },
+  },
+  {
+    name: "tiler-grow-down",
+    binding: "<Shift>Down",
+    act: { kind: "grow", to: "down" },
+  },
+  {
+    name: "tiler-grow-left",
+    binding: "<Shift>Left",
+    act: { kind: "grow", to: "left" },
+  },
+  {
+    name: "tiler-grow-right",
+    binding: "<Shift>Right",
+    act: { kind: "grow", to: "right" },
+  },
   // One number key per grid, so that however many grids there are, there is
   // a key for each of them.
   ...Array.from({ length: GRID_COUNT }, (_unused, index) => ({
@@ -120,16 +144,33 @@ const KEYS: Array<{ name: string; binding: string; act: KeyAction }> = [
  * are only taken over when the action row is shown, so that with the row
  * hidden the feature is genuinely absent rather than merely invisible.
  */
-const AUTOTILE_KEYS: Array<{ name: string; binding: string; act: KeyAction }> = [
-  { name: "tiler-auto-main-left", binding: "l", act: { kind: "autotile", mode: "main-left" } },
-  { name: "tiler-auto-main-right", binding: "r", act: { kind: "autotile", mode: "main-right" } },
-  { name: "tiler-auto-equal-left", binding: "<Shift>l", act: { kind: "autotile", mode: "equal-left" } },
-  { name: "tiler-auto-equal-right", binding: "<Shift>r", act: { kind: "autotile", mode: "equal-right" } },
-];
+const AUTOTILE_KEYS: Array<{ name: string; binding: string; act: KeyAction }> =
+  [
+    {
+      name: "tiler-auto-main-left",
+      binding: "l",
+      act: { kind: "autotile", mode: "main-left" },
+    },
+    {
+      name: "tiler-auto-main-right",
+      binding: "r",
+      act: { kind: "autotile", mode: "main-right" },
+    },
+    {
+      name: "tiler-auto-equal-left",
+      binding: "<Shift>l",
+      act: { kind: "autotile", mode: "equal-left" },
+    },
+    {
+      name: "tiler-auto-equal-right",
+      binding: "<Shift>r",
+      act: { kind: "autotile", mode: "equal-right" },
+    },
+  ];
 
 /** Clutter hands back measurements that it may have no answer for. */
 function measure(value: number | null | undefined): number {
-  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+  return toFinite(value as number);
 }
 
 /** Whether a cell falls inside a range. */
@@ -142,7 +183,6 @@ function covers(range: CellRange | null, col: number, row: number): boolean {
     row <= range.rowEnd
   );
 }
-
 
 export interface OverlayOptions {
   /** The window this grid will move, named in its header. */
@@ -243,8 +283,8 @@ export class Overlay {
     const colours = windowColours();
     this.inactiveCellStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)};`;
     this.activeCellStyle = `background-color: ${rgba(colours.accent, OPACITY.chosenFill)}; border: ${BORDER.cell}px solid ${rgba(colours.accent, OPACITY.chosenBorder)};`;
-    this.chipStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, 0.85)};`;
-    this.hoverChipStyle = `background-color: ${rgba(colours.text, OPACITY.chipHoverFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, 0.95)};`;
+    this.chipStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, OPACITY.text)};`;
+    this.hoverChipStyle = `background-color: ${rgba(colours.text, OPACITY.chipHoverFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, OPACITY.textBright)};`;
     this.chosenChipStyle = `background-color: ${rgba(colours.accent, OPACITY.chosenFill)}; border: ${BORDER.cell}px solid ${rgba(colours.accent, OPACITY.chosenBorder)}; color: ${rgba(colours.onAccent, 1)};`;
 
     // Invisible, reactive, and underneath everything Tiler draws, so that a
@@ -385,8 +425,11 @@ export class Overlay {
    * It swallows clicks: a header is where the eye expects a titlebar, and a
    * press there should not read as reaching for a cell.
    */
-  private buildHeader(text: { red: number; green: number; blue: number }): imports.gi.St.BoxLayout {
-    const header = new St.BoxLayout({ style_class: "tiler-header", reactive: true });
+  private buildHeader(text: Colour): imports.gi.St.BoxLayout {
+    const header = new St.BoxLayout({
+      style_class: "tiler-header",
+      reactive: true,
+    });
     header.set_style(`spacing: ${this.spacing * 2}px;`);
     // Held to the panel's width. Ellipsize only cuts a title once the label
     // is denied its natural size; left free, a long title would widen the
@@ -407,7 +450,7 @@ export class Overlay {
 
     const title = new St.Label({ text: titleOf(this.options.window) });
     title.clutter_text.ellipsize = Pango.EllipsizeMode.END;
-    title.set_style(`color: ${rgba(text, 0.85)};`);
+    title.set_style(`color: ${rgba(text, OPACITY.text)};`);
     header.add_child(title);
 
     return header;
@@ -418,7 +461,7 @@ export class Overlay {
     const width = this.panelWidth();
 
     return Math.max(
-      MIN_CELL,
+      MIN_CHIP,
       Math.round((width - this.spacing * (count - 1)) / count),
     );
   }
@@ -488,25 +531,37 @@ export class Overlay {
     const row = new St.BoxLayout({ style_class: "tiler-actions" });
     row.set_style(`spacing: ${this.spacing}px;`);
 
-    const arrangements: Array<{ label: string; tooltip: string; mode: AutotileMode }> = [
+    const arrangements: Array<{
+      label: string;
+      tooltip: string;
+      mode: AutotileMode;
+    }> = [
       {
         label: _("Main Left"),
-        tooltip: _("The focused window fills the left half, and the rest stack on the right."),
+        tooltip: _(
+          "The focused window fills the left half, and the rest stack on the right.",
+        ),
         mode: "main-left",
       },
       {
         label: _("Main Right"),
-        tooltip: _("The focused window fills the right half, and the rest stack on the left."),
+        tooltip: _(
+          "The focused window fills the right half, and the rest stack on the left.",
+        ),
         mode: "main-right",
       },
       {
         label: _("Equal Left"),
-        tooltip: _("Every window shares two equal columns, led from the top left."),
+        tooltip: _(
+          "Every window shares two equal columns, led from the top left.",
+        ),
         mode: "equal-left",
       },
       {
         label: _("Equal Right"),
-        tooltip: _("Every window shares two equal columns, led from the top right."),
+        tooltip: _(
+          "Every window shares two equal columns, led from the top right.",
+        ),
         mode: "equal-right",
       },
     ];
@@ -566,10 +621,11 @@ export class Overlay {
     this.pointerCell = null;
     this.dragging = false;
 
+    // The new grid takes the old one's place: just before the strip.
     this.panel.remove_child(this.grid);
     this.grid.destroy();
     this.grid = this.buildGrid();
-    this.panel.insert_child_at_index(this.grid, 1);
+    this.panel.insert_child_below(this.grid, this.strip);
 
     this.dressChips();
     this.place();
@@ -730,6 +786,13 @@ export class Overlay {
   ): boolean => {
     if (event.get_button() !== PRIMARY_BUTTON) {
       return false;
+    }
+
+    // Pressing where hovering says nothing should choose nothing too: only
+    // the grid takes a press. Reading the nearest cell is for drags that
+    // start on the grid and stray, not for presses that were never on it.
+    if (!this.overGrid(event)) {
+      return true;
     }
 
     const cell = this.cellUnder(event);

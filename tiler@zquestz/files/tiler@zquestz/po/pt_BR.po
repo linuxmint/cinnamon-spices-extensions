@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,41 +16,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "Principal esq."
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr ""
 "A janela em foco ocupa a metade esquerda e as demais se empilham à direita."
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "Principal dir."
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr ""
 "A janela em foco ocupa a metade direita e as demais se empilham à esquerda."
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "Igual esq."
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr ""
 "Todas as janelas dividem duas colunas iguais, começando do canto superior "
 "esquerdo."
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "Igual dir."
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr ""
 "Todas as janelas dividem duas colunas iguais, começando do canto superior "
@@ -120,10 +119,11 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
 msgstr ""
 "Organização de janelas em grade com espaçamentos, espaço de tela reservado e "
-"organização automática com um toque. Inspirado no gTile."
+"organização automática com um toque. A organização com Super+seta segue o "
+"mesmo espaçamento. Inspirado no gTile."
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -181,6 +181,20 @@ msgstr "Organizar a janela em foco"
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "Atalho de teclado que abre o Tiler para a janela em foco."
 
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Usar os atalhos de organização do Cinnamon"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super com uma tecla de seta organiza a janela em foco como sempre fez, mas "
+"com os espaçamentos e o espaço reservado do Tiler. Desative isto para deixar "
+"esses atalhos para o Cinnamon."
+
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
 msgstr "Centralizar a grade na janela em foco"
@@ -202,9 +216,9 @@ msgid ""
 "Ordinary windows are always tiled. This adds dialogs such as preferences and "
 "file choosers; dialogs that cannot be resized are skipped."
 msgstr ""
-"Janelas comuns sempre são organizadas. Isto inclui diálogos como "
-"preferências e seletores de arquivos; diálogos que não podem ser "
-"redimensionados são ignorados."
+"Janelas comuns sempre são organizadas. Isto inclui diálogos como preferências"
+" e seletores de arquivos; diálogos que não podem ser redimensionados são "
+"ignorados."
 
 #. settings-schema.json->tile-toolboxes->description
 msgid "Tile toolboxes and palettes"
@@ -285,8 +299,8 @@ msgstr "Espaço reservado no topo"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr ""
 "As janelas nunca são organizadas nesta área. Útil para o Conky ou docks que "
 "não reservam espaço por conta própria."
@@ -359,13 +373,13 @@ msgstr "Layout"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
 "Colunas, depois linhas. Os tamanhos podem ser dados um a um para tornar "
 "algumas faixas maiores: 1,2,1 x 1,1 são três colunas cuja coluna do meio tem "
-"o dobro da largura das vizinhas. Alterar os números acima reescreve isto, e "
-"o que não puder ser lido volta para eles."
+"o dobro da largura das vizinhas. Alterar os números acima reescreve isto, e o"
+" que não puder ser lido volta para eles."
 
 #. settings-schema.json->grid-1-name->description
 #. settings-schema.json->grid-2-name->description

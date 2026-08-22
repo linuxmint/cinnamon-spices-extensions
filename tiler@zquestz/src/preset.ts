@@ -11,6 +11,7 @@
  * a desktop to read it on.
  */
 
+import { toFinite } from "./coerce.ts";
 import { tracks } from "./geometry.ts";
 import type { GridSize } from "./geometry.ts";
 
@@ -41,9 +42,7 @@ export interface Preset {
  * empty one.
  */
 function equalTracks(count: number): number[] {
-  const wanted = Number.isFinite(count)
-    ? Math.max(1, Math.min(MAX_TRACKS, Math.floor(count)))
-    : 1;
+  const wanted = Math.max(1, Math.min(MAX_TRACKS, Math.floor(toFinite(count))));
 
   return new Array(wanted).fill(1);
 }

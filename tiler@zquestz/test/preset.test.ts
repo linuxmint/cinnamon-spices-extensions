@@ -75,6 +75,14 @@ test("refuses anything that is not text at all", () => {
   assert.equal(parseLayout(7 as unknown as string), null);
 });
 
+test("accepts the sixteen tracks it promises, and no more", () => {
+  const sixteen = new Array(16).fill(1);
+
+  assert.deepEqual(parseLayout("16x2")!.cols, sixteen);
+  assert.deepEqual(parseLayout(`${sixteen.join(",")} x 1`)!.cols, sixteen);
+  assert.equal(uniformLayout(999, 2), "16x2", "counts clamp to the cap");
+});
+
 test("writes a grid of equal tracks the short way", () => {
   assert.equal(uniformLayout(3, 2), "3x2");
   assert.equal(uniformLayout(1, 1), "1x1");
@@ -121,14 +129,20 @@ test("a preset is named after its size unless it is given a name", () => {
   assert.equal(toPreset(3, 2, "3x2", "", "").label, "3x2");
   assert.equal(toPreset(3, 2, "1,2,1 x 1,1", "", "").label, "3x2");
   assert.equal(toPreset(3, 2, "3x2", "Dev", "").label, "Dev");
-  assert.equal(toPreset(3, 2, "3x2", "   ", "").label, "3x2", "blank is no name");
+  assert.equal(
+    toPreset(3, 2, "3x2", "   ", "").label,
+    "3x2",
+    "blank is no name",
+  );
   assert.equal(toPreset(3, 2, "3x2", "  Dev  ", "").label, "Dev", "tidied up");
 });
 
 test("a preset says nothing on hover unless it is given something to say", () => {
   assert.equal(toPreset(3, 2, "3x2", "", "").tooltip, "");
-  assert.equal(toPreset(3, 2, "3x2", "", "editor and terminal").tooltip,
-    "editor and terminal");
+  assert.equal(
+    toPreset(3, 2, "3x2", "", "editor and terminal").tooltip,
+    "editor and terminal",
+  );
   assert.equal(toPreset(3, 2, "3x2", "", "   ").tooltip, "");
 });
 

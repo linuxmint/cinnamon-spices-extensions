@@ -5,6 +5,7 @@
  * report what is currently configured, without needing to be refreshed.
  */
 
+import { toBoolean, toFinite, toKeybinding, toSize } from "./coerce.ts";
 import type { Gaps } from "./geometry.ts";
 import { GRID_COUNT, toPreset, uniformLayout } from "./preset.ts";
 import type { Preset } from "./preset.ts";
@@ -17,38 +18,12 @@ const Settings = imports.ui.settings;
 export type ReservedScope = "all" | "primary";
 
 /**
- * Settings live in a JSON file users can edit by hand, so a value that never
- * passed through the settings widgets may be of any type. The bound fields
- * below are private and every reader goes through one of the accessors, so
- * whatever leaves this module is of the type it claims to be and the rest of
- * Tiler can use it without checking first.
+ * The bound fields below are private and every reader goes through one of the
+ * accessors, which coerce as they go, so whatever leaves this module is of
+ * the type it claims to be and the rest of Tiler can use it without checking
+ * first. The coercions themselves live in `coerce.ts`, where they can be
+ * tested away from a running desktop.
  */
-function toNumber(value: number): number {
-  return Number.isFinite(value) ? value : 0;
-}
-
-/**
- * A measurement in pixels, which can never be negative. The settings widgets
- * enforce their own minimum, but a file edited by hand does not go near them,
- * and a negative size would grow the area it was meant to shrink.
- */
-function toSize(value: number): number {
-  return Math.max(0, toNumber(value));
-}
-
-/**
- * Only a real boolean counts as on. A hand-edited settings file can hold the
- * string "false", which JavaScript would otherwise treat as true.
- */
-function toBoolean(value: boolean): boolean {
-  return value === true;
-}
-
-/** Anything that is not a string is no keybinding at all. */
-function toKeybinding(value: string): string {
-  return typeof value === "string" ? value : "";
-}
-
 export class Config {
   // Binding replaces each of these with an accessor onto the stored setting.
   // The values assigned here are the fallbacks Tiler runs with if a binding
@@ -56,6 +31,7 @@ export class Config {
   // readonly because the accessors Cinnamon installs also write: assigning to
   // one of these fields would silently rewrite the user's settings.
   private readonly rawHotkey: string = "";
+  private readonly rawUsePushTile: boolean = true;
   private readonly rawCenterOnWindow: boolean = false;
   private readonly rawTileDialogs: boolean = false;
   private readonly rawTileToolboxes: boolean = false;
@@ -73,14 +49,21 @@ export class Config {
   /**
    * @param uuid the extension uuid, used to find the settings schema
    * @param onHotkeyChanged called whenever the configured hotkey changes
+   * @param onUsePushTileChanged called when Cinnamon's tiling shortcuts are
+   *   taken over or handed back
    */
-  constructor(uuid: string, onHotkeyChanged: () => void) {
+  constructor(
+    uuid: string,
+    onHotkeyChanged: () => void,
+    onUsePushTileChanged: () => void,
+  ) {
     this.settings = new Settings.ExtensionSettings(this, uuid);
 
     // Each bind returns false if the key is missing from the schema or holds
     // an unusable value. Cinnamon logs the offending key itself, and the
     // fallbacks above keep Tiler working, so there is nothing to add here.
     this.settings.bind("hotkey", "rawHotkey", onHotkeyChanged);
+    this.settings.bind("use-push-tile", "rawUsePushTile", onUsePushTileChanged);
     this.settings.bind("center-on-window", "rawCenterOnWindow");
     this.settings.bind("tile-dialogs", "rawTileDialogs");
     this.settings.bind("tile-toolboxes", "rawTileToolboxes");
@@ -124,7 +107,7 @@ export class Config {
    */
   public get lastGrid(): number {
     const stored = this.settings.getValue<number>("last-grid");
-    const index = Number.isFinite(stored) ? Math.floor(stored) : 0;
+    const index = Math.floor(toFinite(stored));
 
     return index >= 0 && index < GRID_COUNT ? index : 0;
   }
@@ -158,6 +141,11 @@ export class Config {
 
   public get reservedScope(): ReservedScope {
     return this.rawReservedScope === "primary" ? "primary" : "all";
+  }
+
+  /** Whether Cinnamon's own tiling shortcuts are placed Tiler's way. */
+  public get usePushTile(): boolean {
+    return toBoolean(this.rawUsePushTile);
   }
 
   public get showAutotile(): boolean {

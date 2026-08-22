@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,37 +16,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "左主窗"
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr "当前窗口占据左半屏，其余窗口在右侧堆叠。"
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "右主窗"
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr "当前窗口占据右半屏，其余窗口在左侧堆叠。"
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "左均分"
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr "所有窗口均分两列，从左上角开始排列。"
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "右均分"
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr "所有窗口均分两列，从右上角开始排列。"
 
@@ -114,9 +113,8 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
-msgstr ""
-"基于网格的窗口平铺，支持间距、保留屏幕空间和一键自动平铺。灵感来自 gTile。"
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
+msgstr "基于网格的窗口平铺，支持间距、保留屏幕空间和一键自动平铺。Super+方向键平铺也使用相同的间距。灵感来自 gTile。"
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -174,6 +172,17 @@ msgstr "平铺当前窗口"
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "打开 Tiler 以平铺当前窗口的快捷键。"
 
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "使用 Cinnamon 的平铺快捷键"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr "Super 加方向键会像以往一样平铺当前窗口，但会应用 Tiler 的间隙和保留空间。关闭此项可将这些快捷键交还给 Cinnamon。"
+
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
 msgstr "将网格居中于当前窗口"
@@ -192,9 +201,7 @@ msgstr "平铺对话框窗口"
 msgid ""
 "Ordinary windows are always tiled. This adds dialogs such as preferences and "
 "file choosers; dialogs that cannot be resized are skipped."
-msgstr ""
-"普通窗口总是会被平铺。开启后还包括偏好设置、文件选择器等对话框；无法调整大小"
-"的对话框将被跳过。"
+msgstr "普通窗口总是会被平铺。开启后还包括偏好设置、文件选择器等对话框；无法调整大小的对话框将被跳过。"
 
 #. settings-schema.json->tile-toolboxes->description
 msgid "Tile toolboxes and palettes"
@@ -213,9 +220,7 @@ msgid ""
 "Adds a row of arrangements to the grid that tile every window on the "
 "workspace at once: a main window beside a stack, or everything shared out "
 "equally."
-msgstr ""
-"在网格上添加一排布局操作，一次平铺工作区中的所有窗口：主窗口加堆叠，或全部均"
-"分。"
+msgstr "在网格上添加一排布局操作，一次平铺工作区中的所有窗口：主窗口加堆叠，或全部均分。"
 
 #. settings-schema.json->window-gap->units
 #. settings-schema.json->edge-gap->units
@@ -270,8 +275,8 @@ msgstr "顶部保留空间"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr "窗口永远不会平铺到此区域。适用于 Conky 或不自行保留空间的停靠栏。"
 
 #. settings-schema.json->reserved-bottom->description
@@ -342,11 +347,11 @@ msgstr "布局"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
-"先列后行。可以逐个给出大小，让某些轨道更大：1,2,1 x 1,1 表示三列，中间一列是"
-"两侧的两倍宽。更改上面的数字会重写此项；无法解析的内容将回退到这些数字。"
+"先列后行。可以逐个给出大小，让某些轨道更大：1,2,1 x 1,1 "
+"表示三列，中间一列是两侧的两倍宽。更改上面的数字会重写此项；无法解析的内容将回退到这些数字。"
 
 #. settings-schema.json->grid-1-name->description
 #. settings-schema.json->grid-2-name->description

@@ -7,19 +7,32 @@ import { autotileRects } from "./autotile.ts";
 import type { AutotileMode } from "./autotile.ts";
 import { Config } from "./config.ts";
 import { cellRangeToRect, coversFullGrid } from "./geometry.ts";
-import type { CellRange, Gaps, GridSize, Rect } from "./geometry.ts";
+import type { CellRange, Direction, Gaps, GridSize, Rect } from "./geometry.ts";
 import type { Preset } from "./preset.ts";
 import { Overlay } from "./overlay.ts";
+import {
+  PUSH_GRID,
+  nextTileMode,
+  readPushState,
+  tileModeRange,
+} from "./pushtile.ts";
+import type { PushNote } from "./pushtile.ts";
 import { getUsableArea, hasReserved } from "./workarea.ts";
 import type { Reserved } from "./workarea.ts";
 import {
   frameOf,
   getTargetWindow,
+  isMaximized,
   isPrimaryMonitor,
+  isResizeable,
   listTileableWindows,
   monitorBounds,
   monitorOf,
+  releasePushTileKeys,
+  releaseWindow,
+  takePushTileKeys,
   tile,
+  tileModeOfWindow,
   workAreaOf,
 } from "./winops.ts";
 import type { MetaWindow } from "./winops.ts";
@@ -63,15 +76,41 @@ interface Session {
   overlay: Overlay;
 }
 
+/**
+ * Where Cinnamon's tiling shortcuts have put a window, and the size it had
+ * before they first moved it.
+ *
+ * The window manager records a position of its own, but only for windows it
+ * placed itself, and it will not be told about Tiler's placements: its
+ * tile-mode cannot be written to, and the call that would set it is not
+ * available to extensions. So Tiler keeps its own note, which is also the
+ * only way to describe positions the manager has no name for.
+ *
+ * `placed` is the frame the window actually got, read back after the
+ * placement, so windows that adjust what they are given (terminals snapping
+ * to their character grid) are recorded as they came out. It is what says
+ * whether the note can still be believed: a window that is not where the
+ * note put it has been moved by something since, and the note is dropped
+ * rather than trusted.
+ */
+interface Pushed extends PushNote {
+  saved: Rect;
+}
+
 export class App {
   private readonly config: Config;
   private readonly signals = new SignalManager.SignalManager(null);
   private hotkeyRegistered = false;
+  private pushTileHeld = false;
   private session: Session | null = null;
 
+  // Keyed by the window, so a window that closes takes its note with it.
+  private readonly pushed = new WeakMap<MetaWindow, Pushed>();
+
   constructor(uuid: string) {
-    this.config = new Config(uuid, this.registerHotkey);
+    this.config = new Config(uuid, this.registerHotkey, this.syncPushTileKeys);
     this.registerHotkey();
+    this.syncPushTileKeys();
 
     // A grid is only good for the screen it was measured against, and there
     // is no sense guessing what the user wants once that screen has changed
@@ -87,7 +126,50 @@ export class App {
     this.signals.disconnectAllSignals();
     this.closeOverlay();
     this.removeHotkey();
+    this.releasePushTile();
     this.config.destroy();
+  }
+
+  /**
+   * Places a window, and forgets whatever Cinnamon's tiling shortcuts had
+   * noted about it.
+   *
+   * Every placement Tiler makes goes through here, so that a window put
+   * somewhere by the grid, or by an all-at-once arrangement, starts those
+   * shortcuts afresh rather than carrying on from a position it is no longer
+   * in. A grid selection has no name among those positions to be translated
+   * into: only halves and corners do, and grids are whatever the user made
+   * them.
+   */
+  private placeWindow(window: MetaWindow, rect: Rect, maximize: boolean): void {
+    tile(window, rect, maximize);
+    this.pushed.delete(window);
+  }
+
+  /**
+   * Takes Cinnamon's tiling shortcuts over, or gives them back, to match the
+   * setting. Held is tracked so that handing them back is only ever done from
+   * having taken them, whatever order the settings arrive in.
+   */
+  private syncPushTileKeys = (): void => {
+    if (!this.config.usePushTile) {
+      this.releasePushTile();
+      return;
+    }
+
+    if (!this.pushTileHeld) {
+      takePushTileKeys(this.onPush);
+      this.pushTileHeld = true;
+    }
+  };
+
+  private releasePushTile(): void {
+    if (!this.pushTileHeld) {
+      return;
+    }
+
+    releasePushTileKeys();
+    this.pushTileHeld = false;
   }
 
   private registerHotkey = (): void => {
@@ -126,6 +208,51 @@ export class App {
     }
 
     return this.config.reserved;
+  }
+
+  /**
+   * The area a window may be tiled into on its monitor, with the reserved
+   * space that shaped it, or null when that leaves too little to tile into.
+   */
+  private usableAreaFor(window: MetaWindow): {
+    monitorIndex: number;
+    reserved: Reserved | null;
+    area: Rect;
+  } | null {
+    const monitorIndex = monitorOf(window);
+    const reserved = this.reservedFor(monitorIndex);
+    const area = getUsableArea(workAreaOf(window, monitorIndex), reserved);
+
+    // Negated so that a width or height that is not a number fails the test
+    // rather than slipping through it.
+    if (!(area.width >= MIN_TILE_AREA) || !(area.height >= MIN_TILE_AREA)) {
+      return null;
+    }
+
+    return { monitorIndex, reserved, area };
+  }
+
+  /**
+   * Whether a placement that covers everything should be a real maximize, so
+   * the window keeps its maximized state rather than merely filling the
+   * screen. Muffin maximizes to its own idea of the work area, which accounts
+   * for panels but knows nothing about Tiler's spacing, so it is only asked
+   * for when nothing is held back from the edges.
+   */
+  private fillsWholeArea(
+    covers: boolean,
+    gaps: Gaps,
+    reserved: Reserved | null,
+  ): boolean {
+    return covers && gaps.edge === 0 && !hasReserved(reserved);
+  }
+
+  /** Ends the session and hands back what it was: how every commit begins. */
+  private takeSession(): Session | null {
+    const session = this.session;
+    this.closeOverlay();
+
+    return session;
   }
 
   /**
@@ -180,14 +307,11 @@ export class App {
       return;
     }
 
-    const monitorIndex = monitorOf(window);
-    const reserved = this.reservedFor(monitorIndex);
-    const area = getUsableArea(workAreaOf(window, monitorIndex), reserved);
-    // Negated so that a width or height that is not a number fails the test
-    // rather than slipping through it.
-    if (!(area.width >= MIN_TILE_AREA) || !(area.height >= MIN_TILE_AREA)) {
+    const usable = this.usableAreaFor(window);
+    if (!usable) {
       return;
     }
+    const { monitorIndex, reserved, area } = usable;
 
     const bounds = monitorBounds(monitorIndex) ?? area;
 
@@ -231,9 +355,7 @@ export class App {
    * still among them; otherwise the most recent one does.
    */
   private onAutotile = (mode: AutotileMode): void => {
-    const session = this.session;
-    this.closeOverlay();
-
+    const session = this.takeSession();
     if (!session) {
       return;
     }
@@ -254,22 +376,101 @@ export class App {
 
     const rects = autotileRects(mode, windows.length, session.area, session.gaps);
 
-    // A lone window filling the whole area is the maximize case, under the
-    // same conditions as a full-grid selection.
-    const fillsArea =
-      windows.length === 1 &&
-      session.gaps.edge === 0 &&
-      !hasReserved(session.reserved);
+    // A lone window filling the whole area is the maximize case.
+    const fillsArea = this.fillsWholeArea(
+      windows.length === 1,
+      session.gaps,
+      session.reserved,
+    );
 
     windows.forEach((window, index) => {
-      tile(window, rects[index], fillsArea);
+      this.placeWindow(window, rects[index], fillsArea);
     });
   };
 
-  private onTile = (range: CellRange): void => {
-    const session = this.session;
+  /**
+   * One of Cinnamon's tiling shortcuts, answered Tiler's way.
+   *
+   * The window goes exactly where the shortcut has always sent it, since the
+   * rules in `pushtile.ts` are the window manager's own, but it is placed
+   * through the same conversion the grid uses, so it keeps clear of reserved
+   * space and leaves the configured gap beside its neighbours.
+   */
+  private onPush = (direction: Direction, window: MetaWindow | null): void => {
+    if (!window || !isResizeable(window)) {
+      return;
+    }
+
+    // The grid is drawn for where a window was, so it has nothing left to say
+    // once one of these has moved it.
     this.closeOverlay();
 
+    // Where to carry on from: the window's own maximized state first, as the
+    // window manager decides it, then Tiler's note if the window is still
+    // where the note put it, then whatever the manager remembers, so a window
+    // tiled by a drag carries on from there. A note that no longer stands is
+    // dropped along with the size it saved: it described a life this window
+    // has moved on from.
+    const noted = this.pushed.get(window) ?? null;
+    const { mode: current, standing } = readPushState(
+      isMaximized(window),
+      frameOf(window),
+      noted,
+      tileModeOfWindow(window),
+    );
+    if (noted && !standing) {
+      this.pushed.delete(window);
+    }
+    const record = standing ? noted : null;
+
+    const next = nextTileMode(direction, current);
+    if (next === current) {
+      return;
+    }
+
+    if (next === "none") {
+      // Tiler restores the size it wrote down; without a note of its own the
+      // window manager has one, and letting the window go is what asks for it.
+      if (record) {
+        this.placeWindow(window, record.saved, false);
+      } else {
+        releaseWindow(window);
+      }
+
+      return;
+    }
+
+    const range = tileModeRange(next);
+    if (!range) {
+      return;
+    }
+
+    const usable = this.usableAreaFor(window);
+    if (!usable) {
+      return;
+    }
+    const { reserved, area } = usable;
+
+    // The size to come back to is the one the window had before any of this
+    // started. Letting it go first is what recovers that size from the window
+    // manager, and nothing is drawn between there and the placement below.
+    if (!record) {
+      releaseWindow(window);
+    }
+    const saved = record?.saved ?? frameOf(window);
+
+    const gaps = this.config.gaps;
+    const rect = cellRangeToRect(area, PUSH_GRID, range, gaps);
+    const fillsArea = this.fillsWholeArea(next === "maximized", gaps, reserved);
+
+    this.placeWindow(window, rect, fillsArea);
+    // The frame is read back rather than assumed: what the window took is
+    // what a later push must find it still holding.
+    this.pushed.set(window, { mode: next, saved, placed: frameOf(window) });
+  };
+
+  private onTile = (range: CellRange): void => {
+    const session = this.takeSession();
     if (!session) {
       return;
     }
@@ -285,16 +486,12 @@ export class App {
 
     const { gaps, grid } = session;
     const rect = cellRangeToRect(session.area, grid, range, gaps);
+    const fillsArea = this.fillsWholeArea(
+      coversFullGrid(grid, range),
+      gaps,
+      session.reserved,
+    );
 
-    // Covering the whole area is a real maximize, so the window keeps its
-    // maximized state. Muffin maximizes to its own idea of the work area,
-    // which accounts for panels but knows nothing about reserved space, so
-    // anything held back rules it out.
-    const fillsArea =
-      coversFullGrid(grid, range) &&
-      gaps.edge === 0 &&
-      !hasReserved(session.reserved);
-
-    tile(window, rect, fillsArea);
+    this.placeWindow(window, rect, fillsArea);
   };
 }

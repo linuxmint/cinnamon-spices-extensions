@@ -1,9 +1,12 @@
 /**
  * Every question Tiler asks the window manager, and every instruction it
- * gives, is here. The rest of the extension deals in plain rectangles.
+ * gives, is here. The rest of the extension deals in plain rectangles and
+ * names.
  */
 
-import type { Rect } from "./geometry.ts";
+import type { Direction, Rect } from "./geometry.ts";
+import { tileModeOf } from "./pushtile.ts";
+import type { TileMode } from "./pushtile.ts";
 
 const Cinnamon = imports.gi.Cinnamon;
 const Main = imports.ui.main;
@@ -41,6 +44,18 @@ function isTileableType(
 }
 
 /**
+ * Whether a window can be resized at all.
+ *
+ * allows_resize() reports whether the window can be resized in the state it
+ * is in, and a maximized window cannot be. Tiler clears that state before
+ * placing a window, so the question that matters is whether the window
+ * could ever be resized.
+ */
+export function isResizeable(window: MetaWindow): boolean {
+  return !!window.resizeable;
+}
+
+/**
  * Returns the window Tiler should act on, or null when the focused window is
  * not one that can sensibly be tiled: a kind of window the user has not asked
  * for, or a window that cannot be resized at all.
@@ -55,11 +70,7 @@ export function getTargetWindow(filter: WindowFilter): MetaWindow | null {
     return null;
   }
 
-  // allows_resize() reports whether the window can be resized in the state it
-  // is in, and a maximized window cannot be. Tiler clears that state before
-  // placing a window, so the question that matters is whether the window can
-  // be resized at all.
-  if (!window.resizeable) {
+  if (!isResizeable(window)) {
     return null;
   }
 
@@ -80,15 +91,15 @@ export function listTileableWindows(
   const workspace = global.workspace_manager.get_active_workspace();
   const all = global.display.get_tab_list(Meta.TabList.NORMAL_ALL, workspace);
 
-  const seen: Record<number, boolean> = {};
+  const seen = new Set<number>();
   const windows: MetaWindow[] = [];
   for (const window of all) {
     // The list can rarely name a window twice.
     const sequence = window.get_stable_sequence();
-    if (seen[sequence]) {
+    if (seen.has(sequence)) {
       continue;
     }
-    seen[sequence] = true;
+    seen.add(sequence);
 
     if (window.minimized) {
       continue;
@@ -99,7 +110,7 @@ export function listTileableWindows(
     if (!isTileableType(window.get_window_type(), filter)) {
       continue;
     }
-    if (!window.resizeable) {
+    if (!isResizeable(window)) {
       continue;
     }
 
@@ -112,6 +123,44 @@ export function listTileableWindows(
 /** Which monitor a window is currently on. */
 export function monitorOf(window: MetaWindow): number {
   return window.get_monitor();
+}
+
+/** Whether the window manager is holding a window maximized. */
+export function isMaximized(window: MetaWindow): boolean {
+  return !!window.get_maximized();
+}
+
+/**
+ * Where the window manager itself believes a window is tiled. Windows it
+ * tiled, by a drag to a screen edge, carry a position here that Tiler knows
+ * nothing about otherwise.
+ */
+export function tileModeOfWindow(window: MetaWindow): TileMode {
+  const mode = window.tile_mode;
+
+  return tileModeOf(typeof mode === "number" ? mode : 0);
+}
+
+/** What a window calls itself, for saying which window a grid will move. */
+export function titleOf(window: MetaWindow): string {
+  return window.get_title() || "";
+}
+
+/** The application a window belongs to, or null for one that has none. */
+export function appOf(window: MetaWindow): imports.gi.Cinnamon.App | null {
+  return Cinnamon.WindowTracker.get_default().get_window_app(window) || null;
+}
+
+/** Where a window currently sits, decorations included. */
+export function frameOf(window: MetaWindow): Rect {
+  const frame = window.get_frame_rect();
+
+  return {
+    x: frame.x,
+    y: frame.y,
+    width: frame.width,
+    height: frame.height,
+  };
 }
 
 /** Whether a monitor is the primary one. */
@@ -151,28 +200,6 @@ export function workAreaOf(window: MetaWindow, monitorIndex: number): Rect {
   return { x: area.x, y: area.y, width: area.width, height: area.height };
 }
 
-/** What a window calls itself, for saying which window a grid will move. */
-export function titleOf(window: MetaWindow): string {
-  return window.get_title() || "";
-}
-
-/** The application a window belongs to, or null for one that has none. */
-export function appOf(window: MetaWindow): imports.gi.Cinnamon.App | null {
-  return Cinnamon.WindowTracker.get_default().get_window_app(window) || null;
-}
-
-/** Where a window currently sits, decorations included. */
-export function frameOf(window: MetaWindow): Rect {
-  const frame = window.get_frame_rect();
-
-  return {
-    x: frame.x,
-    y: frame.y,
-    width: frame.width,
-    height: frame.height,
-  };
-}
-
 /**
  * Clears the states that hold a window at a fixed size. Fullscreen and
  * maximized windows keep their geometry whatever they are asked to do, so
@@ -191,6 +218,15 @@ function release(window: MetaWindow): void {
   if (window.get_maximized()) {
     window.unmaximize(Meta.MaximizeFlags.BOTH);
   }
+}
+
+/**
+ * Lets a window out of whatever is holding it at a fixed size, without
+ * placing it anywhere. A window the window manager tiled or maximized has a
+ * size of its own remembered, and this is what returns it to that size.
+ */
+export function releaseWindow(window: MetaWindow): void {
+  release(window);
 }
 
 /**
@@ -216,4 +252,48 @@ export function tile(window: MetaWindow, rect: Rect, maximize: boolean): void {
   // Some windows, terminals in particular, only settle at the new position
   // once they have been resized, so ask a second time.
   window.move_frame(true, rect.x, rect.y);
+}
+
+/** Cinnamon's own tiling shortcuts, and the way each one pushes a window. */
+const PUSH_KEYS: Array<{ name: string; direction: Direction }> = [
+  { name: "push-tile-left", direction: "left" },
+  { name: "push-tile-right", direction: "right" },
+  { name: "push-tile-up", direction: "up" },
+  { name: "push-tile-down", direction: "down" },
+];
+
+/**
+ * Answers Cinnamon's tiling shortcuts with `onPush` rather than leaving them
+ * to the window manager.
+ *
+ * What is replaced is the handler, not the shortcut: whichever keys the user
+ * has these bound to go on working, a rebinding is picked up without Tiler
+ * being told, and nothing in their settings is written to. The window comes
+ * from the window manager, which passes the focused one because these
+ * shortcuts are declared as acting on a window.
+ */
+export function takePushTileKeys(
+  onPush: (direction: Direction, window: MetaWindow | null) => void,
+): void {
+  for (const { name, direction } of PUSH_KEYS) {
+    Meta.keybindings_set_custom_handler(name, (_display, window) => {
+      onPush(direction, window ?? null);
+    });
+  }
+}
+
+/**
+ * Hands the shortcuts back. The window manager keeps its own handler beside
+ * any replacement and returns to it the moment the replacement is cleared, so
+ * this leaves the keys behaving exactly as they did before Tiler was enabled.
+ *
+ * A replacement can only be cleared, never read, so if some other extension
+ * had replaced these first, this returns them to the window manager rather
+ * than to that extension. There is nothing in the API to do better with;
+ * Cinnamon replaces handlers of its own on the same terms.
+ */
+export function releasePushTileKeys(): void {
+  for (const { name } of PUSH_KEYS) {
+    Meta.keybindings_set_custom_handler(name, null);
+  }
 }

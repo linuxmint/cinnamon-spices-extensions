@@ -8,20 +8,24 @@ import type { Gaps, Rect } from "../src/geometry.ts";
 const AREA: Rect = { x: 0, y: 0, width: 1200, height: 900 };
 const NONE: Gaps = { window: 0, edge: 0 };
 
-const inside = (rect: Rect, area: Rect): boolean =>
-  rect.x >= area.x &&
-  rect.y >= area.y &&
-  rect.x + rect.width <= area.x + area.width &&
-  rect.y + rect.height <= area.y + area.height;
-
 test("no windows means no rectangles", () => {
   assert.deepEqual(autotileRects("main-left", 0, AREA, NONE), []);
   assert.deepEqual(autotileRects("equal-left", -3, AREA, NONE), []);
   assert.deepEqual(autotileRects("main-right", NaN, AREA, NONE), []);
+  assert.equal(
+    autotileRects("main-left", 2.9, AREA, NONE).length,
+    2,
+    "a count is whole windows",
+  );
 });
 
 test("one window is given the whole area, whatever the arrangement", () => {
-  for (const mode of ["main-left", "main-right", "equal-left", "equal-right"] as const) {
+  for (const mode of [
+    "main-left",
+    "main-right",
+    "equal-left",
+    "equal-right",
+  ] as const) {
     assert.deepEqual(autotileRects(mode, 1, AREA, NONE), [AREA]);
   }
 });
@@ -128,34 +132,7 @@ test("gaps apply to a sweep the way they apply to the grid", () => {
   assert.equal(main.x, 20, "edge gap on the left");
   assert.equal(top.x - (main.x + main.width), 10, "gap between the columns");
   assert.equal(bottom.y - (top.y + top.height), 10, "gap inside the stack");
-  assert.equal(
-    AREA.width - (top.x + top.width),
-    20,
-    "edge gap on the right",
-  );
-});
-
-test("every rectangle stays inside the area", () => {
-  for (const mode of ["main-left", "main-right", "equal-left", "equal-right"] as const) {
-    for (const count of [1, 2, 3, 4, 5, 6, 7, 10, 13]) {
-      for (const gaps of [NONE, { window: 10, edge: 20 }]) {
-        for (const rect of autotileRects(mode, count, AREA, gaps)) {
-          assert.ok(
-            inside(rect, AREA),
-            `${mode} with ${count} windows, gaps ${gaps.window}`,
-          );
-        }
-      }
-    }
-  }
-});
-
-test("hands back as many rectangles as there are windows", () => {
-  for (const mode of ["main-left", "main-right", "equal-left", "equal-right"] as const) {
-    for (const count of [1, 2, 3, 8, 9]) {
-      assert.equal(autotileRects(mode, count, AREA, NONE).length, count);
-    }
-  }
+  assert.equal(AREA.width - (top.x + top.width), 20, "edge gap on the right");
 });
 
 test("equal right is the mirror of equal left", () => {

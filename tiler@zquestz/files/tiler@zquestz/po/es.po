@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,43 +16,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "Principal izq."
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr ""
 "La ventana enfocada ocupa la mitad izquierda y las demás se apilan a la "
 "derecha."
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "Principal dcha."
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr ""
 "La ventana enfocada ocupa la mitad derecha y las demás se apilan a la "
 "izquierda."
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "Igual izq."
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr ""
 "Todas las ventanas se reparten en dos columnas iguales, empezando por arriba "
 "a la izquierda."
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "Igual dcha."
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr ""
 "Todas las ventanas se reparten en dos columnas iguales, empezando por arriba "
@@ -122,10 +121,11 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
 msgstr ""
 "Mosaico de ventanas en cuadrícula con separaciones, espacio de pantalla "
-"reservado y auto-mosaico con una sola pulsación. Inspirado en gTile."
+"reservado y auto-mosaico con una sola pulsación. El mosaico con Super+flecha "
+"sigue el mismo espaciado. Inspirado en gTile."
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -182,6 +182,20 @@ msgstr "Colocar la ventana enfocada"
 #. settings-schema.json->hotkey->tooltip
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "Atajo de teclado que abre Tiler para la ventana enfocada."
+
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Usar los atajos de mosaico de Cinnamon"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super con una tecla de flecha coloca la ventana enfocada como siempre lo ha "
+"hecho, pero con las separaciones y el espacio reservado de Tiler. Desactive "
+"esta opción para dejar esos atajos a Cinnamon."
 
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
@@ -288,8 +302,8 @@ msgstr "Espacio reservado arriba"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr ""
 "Las ventanas nunca se colocan en esta zona. Útil para Conky o docks que no "
 "reservan espacio por sí mismos."
@@ -362,14 +376,13 @@ msgstr "Disposición"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
-"Columnas, luego filas. Los tamaños pueden indicarse uno a uno para hacer "
-"unas pistas más grandes que otras: 1,2,1 x 1,1 son tres columnas cuya "
-"columna central es el doble de ancha que sus vecinas. Cambiar los números de "
-"arriba reescribe esto, y cualquier cosa que no se pueda interpretar recurre "
-"a ellos."
+"Columnas, luego filas. Los tamaños pueden indicarse uno a uno para hacer unas"
+" pistas más grandes que otras: 1,2,1 x 1,1 son tres columnas cuya columna "
+"central es el doble de ancha que sus vecinas. Cambiar los números de arriba "
+"reescribe esto, y cualquier cosa que no se pueda interpretar recurre a ellos."
 
 #. settings-schema.json->grid-1-name->description
 #. settings-schema.json->grid-2-name->description

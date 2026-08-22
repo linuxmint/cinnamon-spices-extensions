@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,40 +16,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "Hoved venstre"
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr ""
 "Det fokuserede vindue fylder venstre halvdel, og resten stables til højre."
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "Hoved højre"
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr ""
 "Det fokuserede vindue fylder højre halvdel, og resten stables til venstre."
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "Ens venstre"
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr ""
 "Alle vinduer deler to lige store kolonner, anført fra øverste venstre hjørne."
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "Ens højre"
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr ""
 "Alle vinduer deler to lige store kolonner, anført fra øverste højre hjørne."
@@ -118,10 +117,11 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
 msgstr ""
 "Vinduer i gitter med mellemrum, reserveret skærmplads og automatisk "
-"fliselægning med ét tryk. Inspireret af gTile."
+"fliselægning med ét tryk. Fliselægning med Super+pil følger samme mellemrum. "
+"Inspireret af gTile."
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -178,6 +178,20 @@ msgstr "Fliselæg det fokuserede vindue"
 #. settings-schema.json->hotkey->tooltip
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "Genvejstast der åbner Tiler for det fokuserede vindue."
+
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Brug Cinnamons fliselægningsgenveje"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super med en piletast fliselægger det fokuserede vindue som altid, men med "
+"Tilers mellemrum og reserverede plads. Slå dette fra for at overlade de "
+"genveje til Cinnamon."
 
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
@@ -281,8 +295,8 @@ msgstr "Reserveret plads foroven"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr ""
 "Vinduer fliselægges aldrig i dette område. Nyttigt til Conky eller docks der "
 "ikke selv reserverer plads."
@@ -355,13 +369,13 @@ msgstr "Layout"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
 "Kolonner, derefter rækker. Størrelser kan angives én ad gangen for at gøre "
 "nogle spor større: 1,2,1 x 1,1 er tre kolonner hvor den midterste er dobbelt "
-"så bred som naboerne. Ændres tallene ovenfor omskrives dette, og alt der "
-"ikke kan læses falder tilbage på dem."
+"så bred som naboerne. Ændres tallene ovenfor omskrives dette, og alt der ikke"
+" kan læses falder tilbage på dem."
 
 #. settings-schema.json->grid-1-name->description
 #. settings-schema.json->grid-2-name->description

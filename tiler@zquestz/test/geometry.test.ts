@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {
   cellAt,
   moveFocus,
+  sameRect,
   selectionRange,
   trackSizes,
   cellRangeToRect,
@@ -11,12 +12,7 @@ import {
   coversFullGrid,
   normalizeRange,
 } from "../src/geometry.ts";
-import type {
-  CellRange,
-  GridSize,
-  Rect,
-  Selection,
-} from "../src/geometry.ts";
+import type { CellRange, GridSize, Rect, Selection } from "../src/geometry.ts";
 
 /** A 2560x1440 screen with a 40 pixel panel along the bottom. */
 const SCREEN: Rect = { x: 0, y: 0, width: 2560, height: 1400 };
@@ -41,7 +37,8 @@ const rectOf = (
   range: CellRange,
   windowGap: number,
   edgeGap: number,
-): Rect => cellRangeToRect(area, grid, range, { window: windowGap, edge: edgeGap });
+): Rect =>
+  cellRangeToRect(area, grid, range, { window: windowGap, edge: edgeGap });
 
 test("splits an area into equal cells when there is no spacing", () => {
   const grid = { cols: [1, 1], rows: [1, 1] };
@@ -61,7 +58,13 @@ test("splits an area into equal cells when there is no spacing", () => {
 });
 
 test("a range covering every cell fills the area exactly", () => {
-  const rect = rectOf(SCREEN, { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] }, span(0, 0, 5, 5), 10, 0);
+  const rect = rectOf(
+    SCREEN,
+    { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] },
+    span(0, 0, 5, 5),
+    10,
+    0,
+  );
 
   assert.deepEqual(rect, SCREEN);
 });
@@ -103,9 +106,21 @@ test("keeps gaps a user could plausibly want", () => {
     { area: SCREEN, grid: { cols: [1, 1], rows: [1, 1] }, gap: 10 },
     { area: SCREEN, grid: { cols: [1, 1], rows: [1, 1] }, gap: 20 },
     { area: SCREEN, grid: { cols: [1, 1, 1, 1], rows: [1, 1, 1, 1] }, gap: 10 },
-    { area: SCREEN, grid: { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] }, gap: 10 },
-    { area: { x: 0, y: 0, width: 1920, height: 1040 }, grid: { cols: [1, 1, 1, 1], rows: [1, 1, 1, 1] }, gap: 20 },
-    { area: { x: 0, y: 0, width: 3840, height: 2120 }, grid: { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] }, gap: 30 },
+    {
+      area: SCREEN,
+      grid: { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] },
+      gap: 10,
+    },
+    {
+      area: { x: 0, y: 0, width: 1920, height: 1040 },
+      grid: { cols: [1, 1, 1, 1], rows: [1, 1, 1, 1] },
+      gap: 20,
+    },
+    {
+      area: { x: 0, y: 0, width: 3840, height: 2120 },
+      grid: { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] },
+      gap: 30,
+    },
   ];
 
   for (const { area, grid, gap } of cases) {
@@ -113,7 +128,11 @@ test("keeps gaps a user could plausibly want", () => {
     const second = rectOf(area, grid, cell(1, 0), gap, 0);
     const applied = second.x - (first.x + first.width);
 
-    assert.equal(applied, gap, `${area.width}x${area.height} ${grid.cols.length}x${grid.rows.length} gap ${gap}`);
+    assert.equal(
+      applied,
+      gap,
+      `${area.width}x${area.height} ${grid.cols.length}x${grid.rows.length} gap ${gap}`,
+    );
   }
 });
 
@@ -128,7 +147,10 @@ test("reduces spacing that would leave windows nothing to occupy", () => {
   const applied = second.x - (first.x + first.width);
   assert.ok(applied < 100, "the requested gap does not fit");
   assert.ok(applied > 0, "some spacing survives");
-  assert.ok(first.width > applied, "windows are wider than the gaps between them");
+  assert.ok(
+    first.width > applied,
+    "windows are wider than the gaps between them",
+  );
 });
 
 test("applies the same gap horizontally and vertically", () => {
@@ -195,7 +217,13 @@ test("the last cell finishes exactly on the edge of the area", () => {
     { cols: [1, 1, 1, 1, 1, 1], rows: [1, 1, 1, 1, 1, 1] },
   ]) {
     for (const gap of [0, 7, 10, 33]) {
-      const last = rectOf(SCREEN, grid, cell(grid.cols.length - 1, grid.rows.length - 1), gap, 0);
+      const last = rectOf(
+        SCREEN,
+        grid,
+        cell(grid.cols.length - 1, grid.rows.length - 1),
+        gap,
+        0,
+      );
 
       assert.equal(last.x + last.width, SCREEN.x + SCREEN.width);
       assert.equal(last.y + last.height, SCREEN.y + SCREEN.height);
@@ -211,7 +239,13 @@ test("measures every rectangle in whole pixels", () => {
   ];
 
   for (const [area, gap, edge] of awkward) {
-    const rect = rectOf(area, { cols: [1, 1, 1], rows: [1, 1, 1] }, cell(1, 1), gap, edge);
+    const rect = rectOf(
+      area,
+      { cols: [1, 1, 1], rows: [1, 1, 1] },
+      cell(1, 1),
+      gap,
+      edge,
+    );
 
     for (const [name, value] of Object.entries(rect)) {
       assert.ok(Number.isInteger(value), `${name} is ${value}`);
@@ -226,13 +260,24 @@ test("survives settings and areas that make no sense", () => {
     { area: SCREEN, gaps: { window: "wide" as unknown as number, edge: 10 } },
     { area: SCREEN, gaps: { window: -50, edge: -50 } },
     { area: SCREEN, gaps: { window: Infinity, edge: 10 } },
-    { area: { x: NaN, y: 0, width: 2560, height: 1400 }, gaps: { window: 10, edge: 10 } },
-    { area: { x: 0, y: 0, width: NaN, height: 1400 }, gaps: { window: 10, edge: 10 } },
+    {
+      area: { x: NaN, y: 0, width: 2560, height: 1400 },
+      gaps: { window: 10, edge: 10 },
+    },
+    {
+      area: { x: 0, y: 0, width: NaN, height: 1400 },
+      gaps: { window: 10, edge: 10 },
+    },
     { area: {} as unknown as Rect, gaps: { window: 10, edge: 10 } },
   ];
 
   for (const { area, gaps } of nonsense) {
-    const rect = cellRangeToRect(area, { cols: [1, 1], rows: [1, 1] }, cell(0, 0), gaps);
+    const rect = cellRangeToRect(
+      area,
+      { cols: [1, 1], rows: [1, 1] },
+      cell(0, 0),
+      gaps,
+    );
 
     for (const [name, value] of Object.entries(rect)) {
       assert.ok(Number.isFinite(value), `${name} is ${value}`);
@@ -304,7 +349,11 @@ test("recognises a full grid however the range was drawn", () => {
 
   assert.equal(coversFullGrid(grid, span(0, 0, 1, 1)), true);
   assert.equal(coversFullGrid(grid, span(1, 1, 0, 0)), true, "drawn backwards");
-  assert.equal(coversFullGrid(grid, span(0, 0, 9, 9)), true, "drawn past the edge");
+  assert.equal(
+    coversFullGrid(grid, span(0, 0, 9, 9)),
+    true,
+    "drawn past the edge",
+  );
   assert.equal(coversFullGrid(grid, cell(0, 0)), false, "a single cell");
   assert.equal(coversFullGrid(grid, span(0, 0, 1, 0)), false, "one row of two");
 });
@@ -357,14 +406,42 @@ test("centres the grid on a monitor that is not the first one", () => {
   assert.deepEqual(box, { x: 3350, y: 200, width: 340, height: 200 });
 });
 
+test("centring survives measurements that are not numbers", () => {
+  // The panel is placed by this, so a measurement Clutter had no answer for
+  // must still come out somewhere on the monitor.
+  const monitor: Rect = { x: 0, y: 0, width: 2560, height: 1440 };
+  const box = centerOn(
+    { width: NaN, height: Infinity },
+    { x: NaN, y: 100, width: undefined as unknown as number, height: 600 },
+    monitor,
+  );
+
+  for (const [name, value] of Object.entries(box)) {
+    assert.ok(Number.isFinite(value), `${name} is ${value}`);
+  }
+  assert.ok(box.x >= 0 && box.y >= 0, "still on the monitor");
+});
+
 test("works out which cell the pointer is over", () => {
   const box: Rect = { x: 100, y: 50, width: 300, height: 200 };
   const grid = { cols: [1, 1, 1], rows: [1, 1] };
 
   assert.deepEqual(cellAt(100, 50, box, grid), { col: 0, row: 0 }, "top left");
-  assert.deepEqual(cellAt(250, 60, box, grid), { col: 1, row: 0 }, "top middle");
-  assert.deepEqual(cellAt(399, 249, box, grid), { col: 2, row: 1 }, "bottom right");
-  assert.deepEqual(cellAt(150, 200, box, grid), { col: 0, row: 1 }, "bottom left");
+  assert.deepEqual(
+    cellAt(250, 60, box, grid),
+    { col: 1, row: 0 },
+    "top middle",
+  );
+  assert.deepEqual(
+    cellAt(399, 249, box, grid),
+    { col: 2, row: 1 },
+    "bottom right",
+  );
+  assert.deepEqual(
+    cellAt(150, 200, box, grid),
+    { col: 0, row: 1 },
+    "bottom left",
+  );
 });
 
 test("reads a pointer that has strayed off the grid as the nearest cell", () => {
@@ -533,7 +610,11 @@ test("finds the cell under a pointer when tracks differ in size", () => {
   // The tracks take up 100, 200 and 100 pixels of the box in turn.
   assert.deepEqual(cellAt(50, 50, box, grid), { col: 0, row: 0 });
   assert.deepEqual(cellAt(150, 50, box, grid), { col: 1, row: 0 });
-  assert.deepEqual(cellAt(250, 50, box, grid), { col: 1, row: 0 }, "still middle");
+  assert.deepEqual(
+    cellAt(250, 50, box, grid),
+    { col: 1, row: 0 },
+    "still middle",
+  );
   assert.deepEqual(cellAt(350, 50, box, grid), { col: 2, row: 0 });
 });
 
@@ -616,8 +697,16 @@ test("a click inside a drawn cell always selects that cell", () => {
   const grid = { cols: [4, 1, 1], rows: [1] };
 
   // The wide cell is drawn 0..397; the next cell starts at 401.
-  assert.deepEqual(cellAt(401, 50, box, grid, 4), { col: 1, row: 0 }, "first pixel of the narrow cell");
-  assert.deepEqual(cellAt(396, 50, box, grid, 4), { col: 0, row: 0 }, "last pixel of the wide cell");
+  assert.deepEqual(
+    cellAt(401, 50, box, grid, 4),
+    { col: 1, row: 0 },
+    "first pixel of the narrow cell",
+  );
+  assert.deepEqual(
+    cellAt(396, 50, box, grid, 4),
+    { col: 0, row: 0 },
+    "last pixel of the wide cell",
+  );
 });
 
 test("hit-testing still survives hostile points", () => {
@@ -638,11 +727,46 @@ test("vertical gutters split down the middle too", () => {
   assert.deepEqual(cellAt(50, 203, box, grid, 4), { col: 0, row: 1 });
 });
 
+test("a window that has not been touched is in the same place", () => {
+  const where: Rect = { x: 100, y: 50, width: 800, height: 600 };
+
+  assert.equal(sameRect(where, { ...where }), true);
+  assert.equal(sameRect(where, where), true, "against itself");
+});
+
+test("a window moved or resized by any amount is somewhere else", () => {
+  const where: Rect = { x: 100, y: 50, width: 800, height: 600 };
+
+  assert.equal(sameRect(where, { ...where, x: 101 }), false, "moved across");
+  assert.equal(sameRect(where, { ...where, y: 49 }), false, "moved down");
+  assert.equal(sameRect(where, { ...where, width: 799 }), false, "narrower");
+  assert.equal(sameRect(where, { ...where, height: 601 }), false, "taller");
+});
+
+test("comparing places survives measurements that are not numbers", () => {
+  // The window manager can answer with nothing at all, and two windows whose
+  // geometry could not be read must not read as having been left alone.
+  const where: Rect = { x: 100, y: 50, width: 800, height: 600 };
+  const broken = { x: NaN, y: 50, width: 800, height: 600 } as Rect;
+
+  assert.equal(sameRect(where, broken), false);
+  assert.equal(sameRect(broken, broken), true, "unreadable, but unchanged");
+  assert.equal(sameRect(where, {} as Rect), false);
+});
+
 test("a click inside a drawn cell selects it on the vertical axis as well", () => {
   const box: Rect = { x: 0, y: 0, width: 100, height: 604 };
   const grid = { cols: [1], rows: [4, 1, 1] };
 
   // The tall cell is drawn 0..397; the next cell starts at 401.
-  assert.deepEqual(cellAt(50, 401, box, grid, 4), { col: 0, row: 1 }, "first pixel of the short cell");
-  assert.deepEqual(cellAt(50, 396, box, grid, 4), { col: 0, row: 0 }, "last pixel of the tall cell");
+  assert.deepEqual(
+    cellAt(50, 401, box, grid, 4),
+    { col: 0, row: 1 },
+    "first pixel of the short cell",
+  );
+  assert.deepEqual(
+    cellAt(50, 396, box, grid, 4),
+    { col: 0, row: 0 },
+    "last pixel of the tall cell",
+  );
 });

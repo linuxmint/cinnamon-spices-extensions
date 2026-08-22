@@ -27,11 +27,22 @@ __export(extension_exports, {
 });
 module.exports = __toCommonJS(extension_exports);
 
-// src/geometry.ts
-var MAX_GAP_SHARE = 0.25;
+// src/coerce.ts
 function toFinite(value) {
   return Number.isFinite(value) ? value : 0;
 }
+function toSize(value) {
+  return Math.max(0, toFinite(value));
+}
+function toBoolean(value) {
+  return value === true;
+}
+function toKeybinding(value) {
+  return typeof value === "string" ? value : "";
+}
+
+// src/geometry.ts
+var MAX_GAP_SHARE = 0.25;
 function tracks(spans) {
   const usable = Array.isArray(spans) ? spans.filter((span) => Number.isFinite(span) && span > 0) : [];
   return usable.length > 0 ? usable : [1];
@@ -50,10 +61,7 @@ function spanTotal(spans) {
   return spanBefore(spans, spans.length);
 }
 function clampIndex(value, count) {
-  if (!Number.isFinite(value)) {
-    return 0;
-  }
-  return Math.max(0, Math.min(Math.floor(value), count - 1));
+  return Math.max(0, Math.min(Math.floor(toFinite(value)), count - 1));
 }
 function normalizeRange(grid, range) {
   const cols = trackCount(grid.cols);
@@ -158,9 +166,6 @@ function centerOn(size, target, bounds) {
 }
 function trackAt(offset, length, spans, spacing) {
   const point = toFinite(offset);
-  if (!Number.isFinite(offset)) {
-    return 0;
-  }
   const gap = Math.max(0, toFinite(spacing));
   const sizes = trackSizes(length, spans, gap);
   let edge = 0;
@@ -210,6 +215,9 @@ function moveFocus(selection, direction, grid, extend) {
   };
   return { anchor: extend ? selection.anchor : focus, focus };
 }
+function sameRect(one, two) {
+  return toFinite(one.x) === toFinite(two.x) && toFinite(one.y) === toFinite(two.y) && toFinite(one.width) === toFinite(two.width) && toFinite(one.height) === toFinite(two.height);
+}
 function coversFullGrid(grid, range) {
   const cells = normalizeRange(grid, range);
   return cells.col === 0 && cells.row === 0 && cells.colEnd === trackCount(grid.cols) - 1 && cells.rowEnd === trackCount(grid.rows) - 1;
@@ -254,7 +262,7 @@ function equal(side, count, area, gaps) {
   return rects;
 }
 function autotileRects(mode, count, area, gaps) {
-  const wanted = Number.isFinite(count) ? Math.floor(count) : 0;
+  const wanted = Math.floor(toFinite(count));
   if (wanted <= 0) {
     return [];
   }
@@ -269,7 +277,7 @@ function autotileRects(mode, count, area, gaps) {
 var GRID_COUNT = 4;
 var MAX_TRACKS = 16;
 function equalTracks(count) {
-  const wanted = Number.isFinite(count) ? Math.max(1, Math.min(MAX_TRACKS, Math.floor(count))) : 1;
+  const wanted = Math.max(1, Math.min(MAX_TRACKS, Math.floor(toFinite(count))));
   return new Array(wanted).fill(1);
 }
 function parseAxis(text) {
@@ -320,30 +328,21 @@ function toPreset(cols, rows, layout, name, tooltip) {
 
 // src/config.ts
 var Settings = imports.ui.settings;
-function toNumber(value) {
-  return Number.isFinite(value) ? value : 0;
-}
-function toSize(value) {
-  return Math.max(0, toNumber(value));
-}
-function toBoolean(value) {
-  return value === true;
-}
-function toKeybinding(value) {
-  return typeof value === "string" ? value : "";
-}
 var Config = class {
   /**
    * @param uuid the extension uuid, used to find the settings schema
    * @param onHotkeyChanged called whenever the configured hotkey changes
+   * @param onUsePushTileChanged called when Cinnamon's tiling shortcuts are
+   *   taken over or handed back
    */
-  constructor(uuid2, onHotkeyChanged) {
+  constructor(uuid2, onHotkeyChanged, onUsePushTileChanged) {
     // Binding replaces each of these with an accessor onto the stored setting.
     // The values assigned here are the fallbacks Tiler runs with if a binding
     // fails, which Cinnamon does report but does not treat as fatal. They are
     // readonly because the accessors Cinnamon installs also write: assigning to
     // one of these fields would silently rewrite the user's settings.
     this.rawHotkey = "";
+    this.rawUsePushTile = true;
     this.rawCenterOnWindow = false;
     this.rawTileDialogs = false;
     this.rawTileToolboxes = false;
@@ -357,6 +356,7 @@ var Config = class {
     this.rawReservedRight = 0;
     this.settings = new Settings.ExtensionSettings(this, uuid2);
     this.settings.bind("hotkey", "rawHotkey", onHotkeyChanged);
+    this.settings.bind("use-push-tile", "rawUsePushTile", onUsePushTileChanged);
     this.settings.bind("center-on-window", "rawCenterOnWindow");
     this.settings.bind("tile-dialogs", "rawTileDialogs");
     this.settings.bind("tile-toolboxes", "rawTileToolboxes");
@@ -390,7 +390,7 @@ var Config = class {
    */
   get lastGrid() {
     const stored = this.settings.getValue("last-grid");
-    const index = Number.isFinite(stored) ? Math.floor(stored) : 0;
+    const index = Math.floor(toFinite(stored));
     return index >= 0 && index < GRID_COUNT ? index : 0;
   }
   set lastGrid(index) {
@@ -417,6 +417,10 @@ var Config = class {
   }
   get reservedScope() {
     return this.rawReservedScope === "primary" ? "primary" : "all";
+  }
+  /** Whether Cinnamon's own tiling shortcuts are placed Tiler's way. */
+  get usePushTile() {
+    return toBoolean(this.rawUsePushTile);
   }
   get showAutotile() {
     return toBoolean(this.rawShowAutotile);
@@ -493,12 +497,80 @@ function windowColours() {
       accent: read("theme_selected_bg_color", FALLBACK.accent),
       onAccent: read("theme_selected_fg_color", FALLBACK.onAccent)
     };
-  } catch (error) {
+  } catch {
     return FALLBACK;
   }
 }
 function rgba(colour, alpha) {
   return `rgba(${colour.red}, ${colour.green}, ${colour.blue}, ${alpha})`;
+}
+
+// src/pushtile.ts
+var PUSH_GRID = { cols: [1, 1], rows: [1, 1] };
+var ASKED = {
+  left: "left",
+  right: "right",
+  up: "top",
+  down: "bottom"
+};
+var NEXT = {
+  none: { left: "left", right: "right", top: "top", bottom: "bottom" },
+  // Down from a maximized window gives the top half, not the window back.
+  maximized: { left: "left", right: "right", top: "top", bottom: "top" },
+  left: { left: "left", right: "none", top: "ulc", bottom: "llc" },
+  right: { left: "none", right: "right", top: "urc", bottom: "lrc" },
+  top: { left: "ulc", right: "urc", top: "maximized", bottom: "none" },
+  bottom: { left: "llc", right: "lrc", top: "none", bottom: "bottom" },
+  ulc: { left: "ulc", right: "top", top: "ulc", bottom: "left" },
+  llc: { left: "llc", right: "bottom", top: "left", bottom: "llc" },
+  urc: { left: "top", right: "urc", top: "urc", bottom: "right" },
+  lrc: { left: "bottom", right: "lrc", top: "right", bottom: "lrc" }
+};
+var RANGES = {
+  none: null,
+  left: { col: 0, row: 0, colEnd: 0, rowEnd: 1 },
+  right: { col: 1, row: 0, colEnd: 1, rowEnd: 1 },
+  top: { col: 0, row: 0, colEnd: 1, rowEnd: 0 },
+  bottom: { col: 0, row: 1, colEnd: 1, rowEnd: 1 },
+  ulc: { col: 0, row: 0, colEnd: 0, rowEnd: 0 },
+  llc: { col: 0, row: 1, colEnd: 0, rowEnd: 1 },
+  urc: { col: 1, row: 0, colEnd: 1, rowEnd: 0 },
+  lrc: { col: 1, row: 1, colEnd: 1, rowEnd: 1 },
+  maximized: { col: 0, row: 0, colEnd: 1, rowEnd: 1 }
+};
+var MUFFIN_MODES = [
+  "none",
+  "left",
+  "right",
+  "ulc",
+  "llc",
+  "urc",
+  "lrc",
+  "top",
+  "bottom",
+  "maximized"
+];
+function nextTileMode(direction, current) {
+  const asked = ASKED[direction];
+  const rules = NEXT[current];
+  return asked && rules ? rules[asked] : current;
+}
+function tileModeRange(mode) {
+  const range = RANGES[mode];
+  return range ? { ...range } : null;
+}
+function tileModeOf(muffinTileMode) {
+  const index = Math.trunc(Number(muffinTileMode));
+  return MUFFIN_MODES[index] ?? "none";
+}
+function readPushState(maximized, frame, noted, managerMode) {
+  if (maximized) {
+    return { mode: "maximized", standing: noted !== null };
+  }
+  if (noted && sameRect(frame, noted.placed)) {
+    return { mode: noted.mode, standing: true };
+  }
+  return { mode: managerMode, standing: false };
 }
 
 // src/winops.ts
@@ -518,6 +590,9 @@ function isTileableType(type, filter) {
       return false;
   }
 }
+function isResizeable(window) {
+  return !!window.resizeable;
+}
 function getTargetWindow(filter) {
   const window = global.display.get_focus_window();
   if (!window) {
@@ -526,7 +601,7 @@ function getTargetWindow(filter) {
   if (!isTileableType(window.get_window_type(), filter)) {
     return null;
   }
-  if (!window.resizeable) {
+  if (!isResizeable(window)) {
     return null;
   }
   return window;
@@ -534,14 +609,14 @@ function getTargetWindow(filter) {
 function listTileableWindows(filter, monitorIndex) {
   const workspace = global.workspace_manager.get_active_workspace();
   const all = global.display.get_tab_list(Meta.TabList.NORMAL_ALL, workspace);
-  const seen = {};
+  const seen = /* @__PURE__ */ new Set();
   const windows = [];
   for (const window of all) {
     const sequence = window.get_stable_sequence();
-    if (seen[sequence]) {
+    if (seen.has(sequence)) {
       continue;
     }
-    seen[sequence] = true;
+    seen.add(sequence);
     if (window.minimized) {
       continue;
     }
@@ -551,7 +626,7 @@ function listTileableWindows(filter, monitorIndex) {
     if (!isTileableType(window.get_window_type(), filter)) {
       continue;
     }
-    if (!window.resizeable) {
+    if (!isResizeable(window)) {
       continue;
     }
     windows.push(window);
@@ -560,6 +635,28 @@ function listTileableWindows(filter, monitorIndex) {
 }
 function monitorOf(window) {
   return window.get_monitor();
+}
+function isMaximized(window) {
+  return !!window.get_maximized();
+}
+function tileModeOfWindow(window) {
+  const mode = window.tile_mode;
+  return tileModeOf(typeof mode === "number" ? mode : 0);
+}
+function titleOf(window) {
+  return window.get_title() || "";
+}
+function appOf(window) {
+  return Cinnamon.WindowTracker.get_default().get_window_app(window) || null;
+}
+function frameOf(window) {
+  const frame = window.get_frame_rect();
+  return {
+    x: frame.x,
+    y: frame.y,
+    width: frame.width,
+    height: frame.height
+  };
 }
 function isPrimaryMonitor(monitorIndex) {
   return monitorIndex === Main.layoutManager.primaryIndex;
@@ -583,21 +680,6 @@ function workAreaOf(window, monitorIndex) {
   }
   return { x: area.x, y: area.y, width: area.width, height: area.height };
 }
-function titleOf(window) {
-  return window.get_title() || "";
-}
-function appOf(window) {
-  return Cinnamon.WindowTracker.get_default().get_window_app(window) || null;
-}
-function frameOf(window) {
-  const frame = window.get_frame_rect();
-  return {
-    x: frame.x,
-    y: frame.y,
-    width: frame.width,
-    height: frame.height
-  };
-}
 function release(window) {
   if (window.is_fullscreen()) {
     window.unmake_fullscreen();
@@ -605,6 +687,9 @@ function release(window) {
   if (window.get_maximized()) {
     window.unmaximize(Meta.MaximizeFlags.BOTH);
   }
+}
+function releaseWindow(window) {
+  release(window);
 }
 function tile(window, rect, maximize) {
   release(window);
@@ -616,6 +701,24 @@ function tile(window, rect, maximize) {
   window.move_resize_frame(true, rect.x, rect.y, rect.width, rect.height);
   window.move_frame(true, rect.x, rect.y);
 }
+var PUSH_KEYS = [
+  { name: "push-tile-left", direction: "left" },
+  { name: "push-tile-right", direction: "right" },
+  { name: "push-tile-up", direction: "up" },
+  { name: "push-tile-down", direction: "down" }
+];
+function takePushTileKeys(onPush) {
+  for (const { name, direction } of PUSH_KEYS) {
+    Meta.keybindings_set_custom_handler(name, (_display, window) => {
+      onPush(direction, window ?? null);
+    });
+  }
+}
+function releasePushTileKeys() {
+  for (const { name } of PUSH_KEYS) {
+    Meta.keybindings_set_custom_handler(name, null);
+  }
+}
 
 // src/overlay.ts
 var Main2 = imports.ui.main;
@@ -626,7 +729,7 @@ var PANEL_WIDTH = 320;
 var CELL_SPACING = 4;
 var HEADER_ICON = 16;
 var DEFAULT_SHAPE = 9 / 16;
-var MIN_CELL = 1;
+var MIN_CHIP = 1;
 var PRIMARY_BUTTON = 1;
 var BORDER = {
   panel: 1,
@@ -641,21 +744,43 @@ var OPACITY = {
   chosenFill: 0.75,
   chosenBorder: 0.95,
   previewFill: 0.22,
-  previewBorder: 0.85
+  previewBorder: 0.85,
+  text: 0.85,
+  textBright: 0.95
 };
 var KEYS = [
   { name: "tiler-close", binding: "Escape", act: { kind: "close" } },
-  { name: "tiler-tile-return", binding: "Return", act: { kind: "tile" } },
-  { name: "tiler-tile-enter", binding: "KP_Enter", act: { kind: "tile" } },
-  { name: "tiler-tile-space", binding: "space", act: { kind: "tile" } },
+  // "::" separates alternative bindings for one action, as Cinnamon writes
+  // its own shortcuts.
+  {
+    name: "tiler-commit",
+    binding: "Return::KP_Enter::space",
+    act: { kind: "tile" }
+  },
   { name: "tiler-up", binding: "Up", act: { kind: "move", to: "up" } },
   { name: "tiler-down", binding: "Down", act: { kind: "move", to: "down" } },
   { name: "tiler-left", binding: "Left", act: { kind: "move", to: "left" } },
   { name: "tiler-right", binding: "Right", act: { kind: "move", to: "right" } },
-  { name: "tiler-grow-up", binding: "<Shift>Up", act: { kind: "grow", to: "up" } },
-  { name: "tiler-grow-down", binding: "<Shift>Down", act: { kind: "grow", to: "down" } },
-  { name: "tiler-grow-left", binding: "<Shift>Left", act: { kind: "grow", to: "left" } },
-  { name: "tiler-grow-right", binding: "<Shift>Right", act: { kind: "grow", to: "right" } },
+  {
+    name: "tiler-grow-up",
+    binding: "<Shift>Up",
+    act: { kind: "grow", to: "up" }
+  },
+  {
+    name: "tiler-grow-down",
+    binding: "<Shift>Down",
+    act: { kind: "grow", to: "down" }
+  },
+  {
+    name: "tiler-grow-left",
+    binding: "<Shift>Left",
+    act: { kind: "grow", to: "left" }
+  },
+  {
+    name: "tiler-grow-right",
+    binding: "<Shift>Right",
+    act: { kind: "grow", to: "right" }
+  },
   // One number key per grid, so that however many grids there are, there is
   // a key for each of them.
   ...Array.from({ length: GRID_COUNT }, (_unused, index) => ({
@@ -665,13 +790,29 @@ var KEYS = [
   }))
 ];
 var AUTOTILE_KEYS = [
-  { name: "tiler-auto-main-left", binding: "l", act: { kind: "autotile", mode: "main-left" } },
-  { name: "tiler-auto-main-right", binding: "r", act: { kind: "autotile", mode: "main-right" } },
-  { name: "tiler-auto-equal-left", binding: "<Shift>l", act: { kind: "autotile", mode: "equal-left" } },
-  { name: "tiler-auto-equal-right", binding: "<Shift>r", act: { kind: "autotile", mode: "equal-right" } }
+  {
+    name: "tiler-auto-main-left",
+    binding: "l",
+    act: { kind: "autotile", mode: "main-left" }
+  },
+  {
+    name: "tiler-auto-main-right",
+    binding: "r",
+    act: { kind: "autotile", mode: "main-right" }
+  },
+  {
+    name: "tiler-auto-equal-left",
+    binding: "<Shift>l",
+    act: { kind: "autotile", mode: "equal-left" }
+  },
+  {
+    name: "tiler-auto-equal-right",
+    binding: "<Shift>r",
+    act: { kind: "autotile", mode: "equal-right" }
+  }
 ];
 function measure(value) {
-  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+  return toFinite(value);
 }
 function covers(range, col, row) {
   return range !== null && col >= range.col && col <= range.colEnd && row >= range.row && row <= range.rowEnd;
@@ -697,6 +838,9 @@ var Overlay = class {
     this.onPress = (_actor, event) => {
       if (event.get_button() !== PRIMARY_BUTTON) {
         return false;
+      }
+      if (!this.overGrid(event)) {
+        return true;
       }
       const cell2 = this.cellUnder(event);
       this.pointerCell = cell2;
@@ -749,8 +893,8 @@ var Overlay = class {
     const colours = windowColours();
     this.inactiveCellStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)};`;
     this.activeCellStyle = `background-color: ${rgba(colours.accent, OPACITY.chosenFill)}; border: ${BORDER.cell}px solid ${rgba(colours.accent, OPACITY.chosenBorder)};`;
-    this.chipStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, 0.85)};`;
-    this.hoverChipStyle = `background-color: ${rgba(colours.text, OPACITY.chipHoverFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, 0.95)};`;
+    this.chipStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, OPACITY.text)};`;
+    this.hoverChipStyle = `background-color: ${rgba(colours.text, OPACITY.chipHoverFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, OPACITY.textBright)};`;
     this.chosenChipStyle = `background-color: ${rgba(colours.accent, OPACITY.chosenFill)}; border: ${BORDER.cell}px solid ${rgba(colours.accent, OPACITY.chosenBorder)}; color: ${rgba(colours.onAccent, 1)};`;
     this.elsewhere = new St.Widget({ reactive: true });
     this.elsewhere.set_position(0, 0);
@@ -867,7 +1011,10 @@ var Overlay = class {
    * press there should not read as reaching for a cell.
    */
   buildHeader(text) {
-    const header = new St.BoxLayout({ style_class: "tiler-header", reactive: true });
+    const header = new St.BoxLayout({
+      style_class: "tiler-header",
+      reactive: true
+    });
     header.set_style(`spacing: ${this.spacing * 2}px;`);
     header.set_width(this.panelWidth());
     header.connect("button-press-event", () => true);
@@ -883,7 +1030,7 @@ var Overlay = class {
     }
     const title = new St.Label({ text: titleOf(this.options.window) });
     title.clutter_text.ellipsize = Pango.EllipsizeMode.END;
-    title.set_style(`color: ${rgba(text, 0.85)};`);
+    title.set_style(`color: ${rgba(text, OPACITY.text)};`);
     header.add_child(title);
     return header;
   }
@@ -891,7 +1038,7 @@ var Overlay = class {
   chipWidth(count) {
     const width = this.panelWidth();
     return Math.max(
-      MIN_CELL,
+      MIN_CHIP,
       Math.round((width - this.spacing * (count - 1)) / count)
     );
   }
@@ -946,22 +1093,30 @@ var Overlay = class {
     const arrangements = [
       {
         label: _("Main Left"),
-        tooltip: _("The focused window fills the left half, and the rest stack on the right."),
+        tooltip: _(
+          "The focused window fills the left half, and the rest stack on the right."
+        ),
         mode: "main-left"
       },
       {
         label: _("Main Right"),
-        tooltip: _("The focused window fills the right half, and the rest stack on the left."),
+        tooltip: _(
+          "The focused window fills the right half, and the rest stack on the left."
+        ),
         mode: "main-right"
       },
       {
         label: _("Equal Left"),
-        tooltip: _("Every window shares two equal columns, led from the top left."),
+        tooltip: _(
+          "Every window shares two equal columns, led from the top left."
+        ),
         mode: "equal-left"
       },
       {
         label: _("Equal Right"),
-        tooltip: _("Every window shares two equal columns, led from the top right."),
+        tooltip: _(
+          "Every window shares two equal columns, led from the top right."
+        ),
         mode: "equal-right"
       }
     ];
@@ -1013,7 +1168,7 @@ var Overlay = class {
     this.panel.remove_child(this.grid);
     this.grid.destroy();
     this.grid = this.buildGrid();
-    this.panel.insert_child_at_index(this.grid, 1);
+    this.panel.insert_child_below(this.grid, this.strip);
     this.dressChips();
     this.place();
   }
@@ -1151,16 +1306,10 @@ function hasReserved(reserved) {
   return reserved.top > 0 || reserved.bottom > 0 || reserved.left > 0 || reserved.right > 0;
 }
 function getUsableArea(workArea, reserved) {
-  let left = workArea.x;
-  let top = workArea.y;
-  let right = workArea.x + workArea.width;
-  let bottom = workArea.y + workArea.height;
-  if (reserved) {
-    top += reserved.top;
-    bottom -= reserved.bottom;
-    left += reserved.left;
-    right -= reserved.right;
-  }
+  const left = workArea.x + (reserved?.left ?? 0);
+  const top = workArea.y + (reserved?.top ?? 0);
+  const right = workArea.x + workArea.width - (reserved?.right ?? 0);
+  const bottom = workArea.y + workArea.height - (reserved?.bottom ?? 0);
   return {
     x: left,
     y: top,
@@ -1179,7 +1328,25 @@ var App = class {
   constructor(uuid2) {
     this.signals = new SignalManager.SignalManager(null);
     this.hotkeyRegistered = false;
+    this.pushTileHeld = false;
     this.session = null;
+    // Keyed by the window, so a window that closes takes its note with it.
+    this.pushed = /* @__PURE__ */ new WeakMap();
+    /**
+     * Takes Cinnamon's tiling shortcuts over, or gives them back, to match the
+     * setting. Held is tracked so that handing them back is only ever done from
+     * having taken them, whatever order the settings arrive in.
+     */
+    this.syncPushTileKeys = () => {
+      if (!this.config.usePushTile) {
+        this.releasePushTile();
+        return;
+      }
+      if (!this.pushTileHeld) {
+        takePushTileKeys(this.onPush);
+        this.pushTileHeld = true;
+      }
+    };
     this.registerHotkey = () => {
       this.removeHotkey();
       const binding = this.config.hotkey;
@@ -1228,12 +1395,11 @@ var App = class {
       if (!window) {
         return;
       }
-      const monitorIndex = monitorOf(window);
-      const reserved = this.reservedFor(monitorIndex);
-      const area = getUsableArea(workAreaOf(window, monitorIndex), reserved);
-      if (!(area.width >= MIN_TILE_AREA) || !(area.height >= MIN_TILE_AREA)) {
+      const usable = this.usableAreaFor(window);
+      if (!usable) {
         return;
       }
+      const { monitorIndex, reserved, area } = usable;
       const bounds = monitorBounds(monitorIndex) ?? area;
       const gaps = this.config.gaps;
       const presets = this.config.presets;
@@ -1273,8 +1439,7 @@ var App = class {
      * still among them; otherwise the most recent one does.
      */
     this.onAutotile = (mode) => {
-      const session = this.session;
-      this.closeOverlay();
+      const session = this.takeSession();
       if (!session) {
         return;
       }
@@ -1291,14 +1456,72 @@ var App = class {
         windows.unshift(session.window);
       }
       const rects = autotileRects(mode, windows.length, session.area, session.gaps);
-      const fillsArea = windows.length === 1 && session.gaps.edge === 0 && !hasReserved(session.reserved);
+      const fillsArea = this.fillsWholeArea(
+        windows.length === 1,
+        session.gaps,
+        session.reserved
+      );
       windows.forEach((window, index) => {
-        tile(window, rects[index], fillsArea);
+        this.placeWindow(window, rects[index], fillsArea);
       });
     };
-    this.onTile = (range) => {
-      const session = this.session;
+    /**
+     * One of Cinnamon's tiling shortcuts, answered Tiler's way.
+     *
+     * The window goes exactly where the shortcut has always sent it, since the
+     * rules in `pushtile.ts` are the window manager's own, but it is placed
+     * through the same conversion the grid uses, so it keeps clear of reserved
+     * space and leaves the configured gap beside its neighbours.
+     */
+    this.onPush = (direction, window) => {
+      if (!window || !isResizeable(window)) {
+        return;
+      }
       this.closeOverlay();
+      const noted = this.pushed.get(window) ?? null;
+      const { mode: current, standing } = readPushState(
+        isMaximized(window),
+        frameOf(window),
+        noted,
+        tileModeOfWindow(window)
+      );
+      if (noted && !standing) {
+        this.pushed.delete(window);
+      }
+      const record = standing ? noted : null;
+      const next = nextTileMode(direction, current);
+      if (next === current) {
+        return;
+      }
+      if (next === "none") {
+        if (record) {
+          this.placeWindow(window, record.saved, false);
+        } else {
+          releaseWindow(window);
+        }
+        return;
+      }
+      const range = tileModeRange(next);
+      if (!range) {
+        return;
+      }
+      const usable = this.usableAreaFor(window);
+      if (!usable) {
+        return;
+      }
+      const { reserved, area } = usable;
+      if (!record) {
+        releaseWindow(window);
+      }
+      const saved = record?.saved ?? frameOf(window);
+      const gaps = this.config.gaps;
+      const rect = cellRangeToRect(area, PUSH_GRID, range, gaps);
+      const fillsArea = this.fillsWholeArea(next === "maximized", gaps, reserved);
+      this.placeWindow(window, rect, fillsArea);
+      this.pushed.set(window, { mode: next, saved, placed: frameOf(window) });
+    };
+    this.onTile = (range) => {
+      const session = this.takeSession();
       if (!session) {
         return;
       }
@@ -1308,11 +1531,16 @@ var App = class {
       }
       const { gaps, grid } = session;
       const rect = cellRangeToRect(session.area, grid, range, gaps);
-      const fillsArea = coversFullGrid(grid, range) && gaps.edge === 0 && !hasReserved(session.reserved);
-      tile(window, rect, fillsArea);
+      const fillsArea = this.fillsWholeArea(
+        coversFullGrid(grid, range),
+        gaps,
+        session.reserved
+      );
+      this.placeWindow(window, rect, fillsArea);
     };
-    this.config = new Config(uuid2, this.registerHotkey);
+    this.config = new Config(uuid2, this.registerHotkey, this.syncPushTileKeys);
     this.registerHotkey();
+    this.syncPushTileKeys();
     this.signals.connect(
       Main3.layoutManager,
       "monitors-changed",
@@ -1323,7 +1551,30 @@ var App = class {
     this.signals.disconnectAllSignals();
     this.closeOverlay();
     this.removeHotkey();
+    this.releasePushTile();
     this.config.destroy();
+  }
+  /**
+   * Places a window, and forgets whatever Cinnamon's tiling shortcuts had
+   * noted about it.
+   *
+   * Every placement Tiler makes goes through here, so that a window put
+   * somewhere by the grid, or by an all-at-once arrangement, starts those
+   * shortcuts afresh rather than carrying on from a position it is no longer
+   * in. A grid selection has no name among those positions to be translated
+   * into: only halves and corners do, and grids are whatever the user made
+   * them.
+   */
+  placeWindow(window, rect, maximize) {
+    tile(window, rect, maximize);
+    this.pushed.delete(window);
+  }
+  releasePushTile() {
+    if (!this.pushTileHeld) {
+      return;
+    }
+    releasePushTileKeys();
+    this.pushTileHeld = false;
   }
   removeHotkey() {
     if (!this.hotkeyRegistered) {
@@ -1338,6 +1589,35 @@ var App = class {
       return null;
     }
     return this.config.reserved;
+  }
+  /**
+   * The area a window may be tiled into on its monitor, with the reserved
+   * space that shaped it, or null when that leaves too little to tile into.
+   */
+  usableAreaFor(window) {
+    const monitorIndex = monitorOf(window);
+    const reserved = this.reservedFor(monitorIndex);
+    const area = getUsableArea(workAreaOf(window, monitorIndex), reserved);
+    if (!(area.width >= MIN_TILE_AREA) || !(area.height >= MIN_TILE_AREA)) {
+      return null;
+    }
+    return { monitorIndex, reserved, area };
+  }
+  /**
+   * Whether a placement that covers everything should be a real maximize, so
+   * the window keeps its maximized state rather than merely filling the
+   * screen. Muffin maximizes to its own idea of the work area, which accounts
+   * for panels but knows nothing about Tiler's spacing, so it is only asked
+   * for when nothing is held back from the edges.
+   */
+  fillsWholeArea(covers2, gaps, reserved) {
+    return covers2 && gaps.edge === 0 && !hasReserved(reserved);
+  }
+  /** Ends the session and hands back what it was: how every commit begins. */
+  takeSession() {
+    const session = this.session;
+    this.closeOverlay();
+    return session;
   }
 };
 
@@ -1378,9 +1658,3 @@ function disable() {
     app = null;
   }
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  disable,
-  enable,
-  init
-});

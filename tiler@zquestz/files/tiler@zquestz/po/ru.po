@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,40 +14,39 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "Главное слева"
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr "Активное окно занимает левую половину, остальные складываются справа."
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "Главное справа"
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr "Активное окно занимает правую половину, остальные складываются слева."
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "Поровну слева"
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr "Все окна делят две равные колонки, начиная с левого верхнего угла."
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "Поровну справа"
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr "Все окна делят две равные колонки, начиная с правого верхнего угла."
 
@@ -115,10 +113,11 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
 msgstr ""
 "Плиточное размещение окон по сетке с отступами, зарезервированным местом на "
-"экране и авторазмещением одним нажатием. Вдохновлено gTile."
+"экране и авторазмещением одним нажатием. Размещение по Super+стрелка "
+"использует те же промежутки. Вдохновлено gTile."
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -176,6 +175,20 @@ msgstr "Разместить активное окно"
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "Сочетание клавиш, открывающее Tiler для активного окна."
 
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Использовать сочетания клавиш размещения Cinnamon"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super со стрелкой размещает активное окно как и прежде, но с промежутками и "
+"зарезервированным местом Tiler. Отключите это, чтобы оставить эти сочетания "
+"клавиш Cinnamon."
+
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
 msgstr "Центрировать сетку по активному окну"
@@ -197,8 +210,8 @@ msgid ""
 "Ordinary windows are always tiled. This adds dialogs such as preferences and "
 "file choosers; dialogs that cannot be resized are skipped."
 msgstr ""
-"Обычные окна размещаются всегда. Это добавляет диалоги, такие как настройки "
-"и выбор файлов; диалоги фиксированного размера пропускаются."
+"Обычные окна размещаются всегда. Это добавляет диалоги, такие как настройки и"
+" выбор файлов; диалоги фиксированного размера пропускаются."
 
 #. settings-schema.json->tile-toolboxes->description
 msgid "Tile toolboxes and palettes"
@@ -276,8 +289,8 @@ msgstr "Зарезервированное место сверху"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr ""
 "Окна никогда не размещаются в этой области. Полезно для Conky или док-"
 "панелей, которые сами не резервируют место."
@@ -350,13 +363,13 @@ msgstr "Компоновка"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
 "Столбцы, затем строки. Размеры можно задавать по одному, чтобы одни дорожки "
 "были больше других: 1,2,1 x 1,1 — это три столбца, средний из которых вдвое "
-"шире соседних. Изменение чисел выше перезаписывает это поле, а всё "
-"нечитаемое возвращается к ним."
+"шире соседних. Изменение чисел выше перезаписывает это поле, а всё нечитаемое"
+" возвращается к ним."
 
 #. settings-schema.json->grid-1-name->description
 #. settings-schema.json->grid-2-name->description
@@ -373,8 +386,8 @@ msgid ""
 "What this grid is called on the grid selector. Long names are shortened to "
 "fit. Left empty, it is named after its size."
 msgstr ""
-"Название этой сетки в переключателе сеток. Длинные названия сокращаются. "
-"Если оставить пустым, сетка получает имя по своему размеру."
+"Название этой сетки в переключателе сеток. Длинные названия сокращаются. Если"
+" оставить пустым, сетка получает имя по своему размеру."
 
 #. settings-schema.json->grid-1-tooltip->description
 #. settings-schema.json->grid-2-tooltip->description

@@ -3,8 +3,9 @@
  *
  * Settings and metadata are translated by Cinnamon, but anything written on
  * an actor is Tiler's own job. Translators work against the template in po/,
- * and installed translations land under the user's locale directory, which
- * is where the domain is bound to.
+ * and Cinnamon installs the compiled translations to this literal path (see
+ * Spices.py), so the domain is bound there rather than to XDG_DATA_HOME,
+ * which Cinnamon never reads for this.
  */
 
 const Gettext = imports.gettext;

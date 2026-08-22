@@ -1,11 +1,16 @@
 {
   "name": "tiler",
   "private": true,
+  "type": "module",
   "description": "Build toolchain for the Tiler Cinnamon extension",
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=22.18"
+  },
   "scripts": {
     "check": "tsc --noEmit",
     "test": "node --test \"test/*.test.ts\"",
-    "bundle": "esbuild src/extension.ts --bundle --format=cjs --platform=node --target=es2020 --legal-comments=inline --banner:js='/* GENERATED FILE - built from src/ by npm run build. Do not edit. */' --outfile=files/tiler@zquestz/tiler.js",
+    "bundle": "esbuild src/extension.ts --bundle --format=cjs --platform=neutral --target=es2020 --legal-comments=inline --banner:js='/* GENERATED FILE - built from src/ by npm run build. Do not edit. */' --outfile=files/tiler@zquestz/tiler.js",
     "build": "npm run check && npm run bundle",
     "watch": "npm run bundle -- --watch"
   },

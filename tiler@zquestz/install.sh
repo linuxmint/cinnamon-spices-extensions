@@ -89,6 +89,13 @@ uninstall_tiler() {
   fi
 }
 
+usage() {
+  echo "Usage: $(basename "$0") [--uninstall]" >&2
+  exit 2
+}
+
+[ "$#" -le 1 ] || usage
+
 case "${1-}" in
   "")
     install_tiler
@@ -97,7 +104,6 @@ case "${1-}" in
     uninstall_tiler
     ;;
   *)
-    echo "Usage: $(basename "$0") [--uninstall]" >&2
-    exit 2
+    usage
     ;;
 esac

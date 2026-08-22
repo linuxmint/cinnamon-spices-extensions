@@ -5,9 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2026-08-16 16:40-1000\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-08-21 16:03-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,39 +16,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. tiler.js:948
+#. tiler.js:1095
 msgid "Main Left"
 msgstr "Haupt links"
 
-#. tiler.js:949
+#. tiler.js:1097
 msgid ""
 "The focused window fills the left half, and the rest stack on the right."
 msgstr ""
 "Das fokussierte Fenster füllt die linke Hälfte, der Rest stapelt sich rechts."
 
-#. tiler.js:953
+#. tiler.js:1102
 msgid "Main Right"
 msgstr "Haupt rechts"
 
-#. tiler.js:954
+#. tiler.js:1104
 msgid ""
 "The focused window fills the right half, and the rest stack on the left."
 msgstr ""
 "Das fokussierte Fenster füllt die rechte Hälfte, der Rest stapelt sich links."
 
-#. tiler.js:958
+#. tiler.js:1109
 msgid "Equal Left"
 msgstr "Gleich links"
 
-#. tiler.js:959
+#. tiler.js:1111
 msgid "Every window shares two equal columns, led from the top left."
 msgstr "Alle Fenster teilen sich zwei gleiche Spalten, angeführt oben links."
 
-#. tiler.js:963
+#. tiler.js:1116
 msgid "Equal Right"
 msgstr "Gleich rechts"
 
-#. tiler.js:964
+#. tiler.js:1118
 msgid "Every window shares two equal columns, led from the top right."
 msgstr "Alle Fenster teilen sich zwei gleiche Spalten, angeführt oben rechts."
 
@@ -116,10 +115,11 @@ msgstr "Tiler"
 #. metadata.json->description
 msgid ""
 "Grid-based window tiling with gaps, reserved screen space, and one-press "
-"auto-tiling. Inspired by gTile."
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
 msgstr ""
 "Fensteranordnung im Raster mit Abständen, reserviertem Bildschirmplatz und "
-"Auto-Anordnung auf Knopfdruck. Inspiriert von gTile."
+"Auto-Anordnung auf Knopfdruck. Die Anordnung mit Super+Pfeiltaste folgt "
+"denselben Abständen. Inspiriert von gTile."
 
 #. settings-schema.json->general-page->title
 msgid "General"
@@ -176,6 +176,20 @@ msgstr "Fokussiertes Fenster anordnen"
 #. settings-schema.json->hotkey->tooltip
 msgid "Keyboard shortcut that opens Tiler for the focused window."
 msgstr "Tastenkürzel, das Tiler für das fokussierte Fenster öffnet."
+
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Anordnungs-Tastenkürzel von Cinnamon verwenden"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super mit einer Pfeiltaste ordnet das fokussierte Fenster wie gewohnt an, "
+"jedoch mit den Lücken und dem reservierten Bereich von Tiler. Deaktivieren "
+"Sie dies, um diese Tastenkürzel Cinnamon zu überlassen."
 
 #. settings-schema.json->center-on-window->description
 msgid "Center the grid on the focused window"
@@ -282,8 +296,8 @@ msgstr "Reservierter Platz oben"
 #. settings-schema.json->reserved-left->tooltip
 #. settings-schema.json->reserved-right->tooltip
 msgid ""
-"Windows are never tiled into this area. Useful for Conky or docks that do "
-"not reserve space themselves."
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
 msgstr ""
 "In diesem Bereich werden nie Fenster angeordnet. Nützlich für Conky oder "
 "Docks, die selbst keinen Platz reservieren."
@@ -356,7 +370,7 @@ msgstr "Aufteilung"
 msgid ""
 "Columns, then rows. Sizes can be given one by one to make some tracks larger "
 "than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
-"width of its neighbours. Changing the numbers above rewrites this, and "
+"width of its neighbors. Changing the numbers above rewrites this, and "
 "anything that cannot be read falls back to them."
 msgstr ""
 "Spalten, dann Zeilen. Größen können einzeln angegeben werden, um manche "

@@ -18,10 +18,7 @@ const reserve = (sides: Partial<Reserved>): Reserved => ({
 
 test("uses the work area as it stands when nothing is reserved", () => {
   assert.deepEqual(getUsableArea(WORK_AREA, null), WORK_AREA);
-  assert.deepEqual(
-    getUsableArea(WORK_AREA, reserve({})),
-    WORK_AREA,
-  );
+  assert.deepEqual(getUsableArea(WORK_AREA, reserve({})), WORK_AREA);
 });
 
 test("holds back space on the side it was asked to", () => {

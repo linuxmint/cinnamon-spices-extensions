@@ -78,7 +78,7 @@ export function windowColours(): Palette {
       accent: read("theme_selected_bg_color", FALLBACK.accent),
       onAccent: read("theme_selected_fg_color", FALLBACK.onAccent),
     };
-  } catch (error) {
+  } catch {
     return FALLBACK;
   }
 }
