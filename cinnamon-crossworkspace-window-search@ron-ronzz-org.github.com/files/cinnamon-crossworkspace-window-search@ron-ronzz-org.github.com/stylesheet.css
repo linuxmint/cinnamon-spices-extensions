@@ -1,0 +1,112 @@
+/* Cross-Workspace Window Search — v0.1.0 */
+
+/* Full-screen overlay backdrop */
+.window-search-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Central container — centered by parent's x_align, small top spacing */
+.window-search-main-box {
+    width: 700px;
+    max-width: 80%;
+    margin-top: 20px;
+    spacing: 0;
+}
+
+/* Search entry at the top */
+.window-search-entry {
+    background-color: rgba(45, 45, 55, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 1.2em;
+    caret-color: #8bc34a;
+    selection-background-color: #4a7ab5;
+    selected-color: #ffffff;
+}
+
+.window-search-entry:focus {
+    border-color: #8bc34a;
+    background-color: rgba(55, 55, 70, 0.95);
+}
+
+/* Scrollable results area */
+.window-search-results {
+    background-color: rgba(35, 35, 45, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0 0 8px 8px;
+    border-top: none;
+    min-height: 100px;
+    max-height: 55vh;
+}
+
+.window-search-results-box {
+    padding: 4px 0;
+    spacing: 0;
+}
+
+/* Individual result row */
+.window-search-row {
+    padding: 8px 16px;
+    border-radius: 0;
+    transition-duration: 0;
+}
+
+.window-search-row:hover,
+.window-search-row:selected,
+.window-search-row.selected {
+    background-color: rgba(74, 122, 181, 0.35);
+}
+
+/* Row layout: [icon] [title + subtitle] [workspace badge] */
+.window-search-row-box {
+    spacing: 12px;
+}
+
+.window-search-row-icon {
+    icon-size: 24px;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.window-search-row-text-box {
+    spacing: 2px;
+}
+
+.window-search-row-title {
+    font-weight: bold;
+    font-size: 1.0em;
+    color: #eeeeee;
+}
+
+.window-search-row-subtitle {
+    font-size: 0.85em;
+    color: rgba(200, 200, 200, 0.7);
+}
+
+.window-search-row-workspace {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.6);
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Footer hints */
+.window-search-footer {
+    background-color: rgba(25, 25, 35, 0.9);
+    padding: 6px 16px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.4);
+    border-radius: 0 0 8px 8px;
+}
+
+/* Empty state */
+.window-search-empty {
+    padding: 32px 16px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.0em;
+}
