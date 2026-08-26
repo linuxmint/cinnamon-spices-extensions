@@ -37,6 +37,7 @@ DimInactiveWindows.prototype = {
         this.animationTime = 150;      // ms
         this.respectTransient = false;
         this.dimWhenNoFocus = false;
+        this.skipFullscreen = true;
 
         this.settings = new Settings.ExtensionSettings(this, this.uuid);
         let reapply = () => this._updateAll(true);   // instant re-apply on change
@@ -46,6 +47,7 @@ DimInactiveWindows.prototype = {
         this.settings.bind("animation-time", "animationTime", reapply);
         this.settings.bind("respect-transient", "respectTransient", reapply);
         this.settings.bind("dim-when-no-focus", "dimWhenNoFocus", reapply);
+        this.settings.bind("skip-fullscreen", "skipFullscreen", reapply);
     },
 
     enable: function() {
@@ -53,6 +55,9 @@ DimInactiveWindows.prototype = {
         this._connect(global.window_manager, "map");
         this._connect(global.window_manager, "destroy");
         this._connect(global.window_manager, "switch-workspace");
+        // A window on another monitor can go fullscreen while the focus stays
+        // where it is, so the focus signal alone would not catch it.
+        this._connect(global.display, "in-fullscreen-changed");
         this._updateAll(true);   // snap to correct state, no initial fade
     },
 
@@ -103,6 +108,11 @@ DimInactiveWindows.prototype = {
     // its parent while a MODAL dialog child holds focus. Deliberately no app /
     // PID grouping, so sibling windows of one app stay independent.
     _isActive: function(mw, focus) {
+        // Real fullscreen (not merely maximised) is always left alone when the
+        // option is on: on a multi-monitor setup a video keeps playing at full
+        // brightness on one screen while you work on another.
+        if (this.skipFullscreen && mw.is_fullscreen())
+            return true;
         if (!focus)
             return !this.dimWhenNoFocus;
         if (mw === focus)
