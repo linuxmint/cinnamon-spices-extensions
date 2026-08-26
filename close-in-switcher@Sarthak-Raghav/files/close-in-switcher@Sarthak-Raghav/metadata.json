@@ -1,0 +1,9 @@
+{
+    "uuid": "close-in-switcher@Sarthak-Raghav",
+    "name": "Close in Switcher",
+    "description": "Press Delete in the Alt-Tab switcher to close the highlighted window.",
+    "version": "1.0.0",
+    "url": "https://github.com/Sarthak-Raghav/close-in-switcher",
+    "author": "Sarthak-Raghav",
+    "cinnamon-version": ["6.6"]
+}
