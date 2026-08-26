@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 class Images:
 	""" Class for image operations
@@ -53,7 +54,7 @@ class Images:
 				os.remove(extract_folder + file)
 
 			# Extract the HEIC file
-			os.system("heif-convert '" + file_uri + "' '" + extract_folder + file_name + ".jpg'")
+			subprocess.run(["heif-convert", file_uri, extract_folder + file_name + ".jpg"], check=True)
 
 			return True
 		except:
