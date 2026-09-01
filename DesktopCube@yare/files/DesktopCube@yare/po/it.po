@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2025-09-06 23:46-0400\n"
-"PO-Revision-Date: 2025-08-26 18:24+0200\n"
+"PO-Revision-Date: 2026-09-01 16:48+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -122,17 +122,18 @@ msgstr ""
 "modificare l'area di lavoro corrente"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->description
-#, fuzzy
 msgid "Use Cube effect when switching workspaces using touchpad gestures"
 msgstr ""
-"Usa l'effetto Cubo quando la modifica dello stato attivo provoca un cambio "
-"di area di lavoro"
+"Utilizza l'effetto Cubo quando cambi area di lavoro tramite gesti del "
+"touchpad"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->tooltip
 msgid ""
 "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
 "will use the Cube effect"
 msgstr ""
+"Sovrascrivi l'API WorkspaceSwitchAction in modo che i gesti del touchpad per "
+"il cambio di area di lavoro utilizzino l'effetto Cubo"
 
 #. 5.4->settings-schema.json->header2->description
 msgid "Effect Easing"
