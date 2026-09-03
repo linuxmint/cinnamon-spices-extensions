@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-20 16:22+0200\n"
+"POT-Creation-Date: 2026-09-03 21:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -214,17 +214,17 @@ msgstr "Sao chép thất bại"
 msgid "Unable to copy image to clipboard."
 msgstr "Không thể sao chép ảnh vào clipboard."
 
-#. screenshot.js:78
+#. screenshot.js:86
 msgid "Cinnamon-Screenshot extension error"
 msgstr "Lỗi tiện ích mở rộng Cinnamon-Screenshot"
 
-#. screenshot.js:79
+#. screenshot.js:87
 msgid ""
-"\"Gnome-screenshot\" utility is not installed. Please install it for the "
-"extension to work."
+"Neither \"cinnamon-screenshot\" nor \"gnome-screenshot\" utility is "
+"installed. Please install one for the extension to work."
 msgstr ""
-"Tiện ích \"gnome-screenshot\" chưa được cài đặt. Vui lòng cài đặt để tiện "
-"ích mở rộng hoạt động."
+"Tiện ích \"cinnamon-screenshot\" hoặc \"gnome-screenshot\" chưa được cài "
+"đặt. Vui lòng cài đặt một trong hai để tiện ích mở rộng hoạt động."
 
 #. metadata.json->name
 msgid "Cinnamon-Screenshot"

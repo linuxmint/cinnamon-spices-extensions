@@ -68,15 +68,23 @@ function clearTimerOverlay() {
     }
 }
 
-// === MAIN SCREENSHOT LOGIC ===
 function takeScreenshot(type, timer, mouse, callback) {
-    if (!GLib.find_program_in_path('gnome-screenshot')) {
+    // if x11 gnome-screenshot is used
+    // if Wayland cinnamon-screenshot is used
+    let screenshotTool = null;
+    if (GLib.find_program_in_path('cinnamon-screenshot')) {
+        screenshotTool = 'cinnamon-screenshot';
+    } else if (GLib.find_program_in_path('gnome-screenshot')) {
+        screenshotTool = 'gnome-screenshot';
+    }
+
+    if (!screenshotTool) {
         const source = new messageTray.SystemNotificationSource();
         Main.messageTray.add(source);
         const notification = new messageTray.Notification(
             source,
             _('Cinnamon-Screenshot extension error'),
-            _('"Gnome-screenshot" utility is not installed. Please install it for the extension to work.')
+            _('Neither "cinnamon-screenshot" nor "gnome-screenshot" utility is installed. Please install one for the extension to work.')
         );
         notification.setResident(true);
         notification.setTransient(false);
@@ -99,15 +107,24 @@ function takeScreenshot(type, timer, mouse, callback) {
                        String(now.getSeconds()).padStart(2, '0');
         
         const filename = tmpDir + '/Capture_' + timestamp + '.png';
-        const args = ['gnome-screenshot'];
+        
+        const args = [];
+        if (screenshotTool === 'gnome-screenshot') {
+            args.push('env', 'XDG_CURRENT_DESKTOP=GNOME', 'gnome-screenshot');
+        } else {
+            // Cinnamon 6.8+ with Wayland
+            args.push('cinnamon-screenshot');
+        }
 
         if (type === 'window') args.push('-w');
         else if (type === 'selection') args.push('-a');
+        
         // Only add -d for selection, or if skipTimer is false
         if (type === 'selection' && timer && timer > 0) {
             args.push('-d');
             args.push(timer.toString());
         }
+        
         // Add mouse pointer option
         if (mouse) {
             args.push('--include-pointer');
@@ -115,11 +132,13 @@ function takeScreenshot(type, timer, mouse, callback) {
         args.push('-f');
         args.push(filename);
 
-        global.log('CS: using gnome-screenshot: ' + args.join(' '));
+        global.log(`CS: using ${screenshotTool}: ` + args.join(' '));
+        
         const delay = (type === 'window') ? 350 : 0;
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, delay, () => {
             try {
                 GLib.spawn_command_line_async(args.join(' '));
+                
                 if (type === 'selection') {
                     // === WAIT FOR FILE CREATION (SELECTION) ===
                     let elapsed = 0;
@@ -179,7 +198,7 @@ function takeScreenshot(type, timer, mouse, callback) {
                     waitForFile();
                 }
             } catch (e) {
-                global.log('CS: error with gnome-screenshot: ' + e);
+                global.log(`CS: error with ${screenshotTool}: ` + e);
                 callback(null);
             }
             return GLib.SOURCE_REMOVE;

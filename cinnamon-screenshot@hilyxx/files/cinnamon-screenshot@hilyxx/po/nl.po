@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-20 16:22+0200\n"
-"PO-Revision-Date: 2026-07-15 03:41+0200\n"
+"POT-Creation-Date: 2026-09-03 21:05+0200\n"
+"PO-Revision-Date: 2026-09-03 21:10+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -213,17 +213,17 @@ msgstr "Kopiëren mislukt"
 msgid "Unable to copy image to clipboard."
 msgstr "Kan afbeelding niet naar klembord kopiëren."
 
-#. screenshot.js:78
+#. screenshot.js:86
 msgid "Cinnamon-Screenshot extension error"
 msgstr "Fout bij Cinnamon-Screenshot extensie"
 
-#. screenshot.js:79
+#. screenshot.js:87
 msgid ""
-"\"Gnome-screenshot\" utility is not installed. Please install it for the "
-"extension to work."
+"Neither \"cinnamon-screenshot\" nor \"gnome-screenshot\" utility is "
+"installed. Please install one for the extension to work."
 msgstr ""
-"\"Gnome-screenshot\" hulpprogramma is niet geïnstalleerd. Installeer dit om "
-"de extensie te laten werken."
+"Noch het hulpprogramma \"cinnamon-screenshot\" noch \"gnome-screenshot\" is "
+"geïnstalleerd. Installeer er een zodat de extensie kan werken."
 
 #. metadata.json->name
 msgid "Cinnamon-Screenshot"

@@ -4,6 +4,7 @@
 ## 1.3.3
 
 * Improve compatibility with cinnamon 6.8 (Remove deprecated require() and module.exports)
+* Improve compatibility with wayland and the new native cinnamon-screenshot application.
 
 ## 1.3.2
 
