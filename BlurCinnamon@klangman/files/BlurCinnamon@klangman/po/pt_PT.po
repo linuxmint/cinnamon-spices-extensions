@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 2.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-07 15:04-0400\n"
+"POT-Creation-Date: 2026-08-14 09:13-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: André Silva\n"
 "Language-Team: \n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2974
+#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2972
 msgid "Default window settings"
 msgstr "Opções padrão para janelas"
 
-#. 6.0/extension.js:3140
+#. 6.0/extension.js:3139
 msgid "Error"
 msgstr "Erro"
 
-#. 6.0/extension.js:3141
+#. 6.0/extension.js:3140
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -36,11 +36,11 @@ msgstr ""
 "recente e, por esse motivo, os efeitos do Blur Cinnamon não podem ser "
 "aplicados a essa janela"
 
-#. 6.0/extension.js:4023
+#. 6.0/extension.js:4022
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bem-vindo ao Blur Cinnamon"
 
-#. 6.0/extension.js:4024
+#. 6.0/extension.js:4023
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -58,15 +58,15 @@ msgstr ""
 "omissão. Também pode fazer alterações às propriedades dos efeitos como a "
 "intensidade de desfoque, saturação da cor ou escurecimento."
 
-#. 6.0/extension.js:4028
+#. 6.0/extension.js:4027
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir definições do Blur Cinnamon"
 
-#. 6.0/extension.js:4118
+#. 6.0/extension.js:4117
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Teste dos Efeitos de Notificação do Blur Cinnamon"
 
-#. 6.0/extension.js:4119
+#. 6.0/extension.js:4118
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -308,8 +308,8 @@ msgid ""
 "Developed by: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
-"view/104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
+"104\">Website</a>\n"
 "\n"
 "The rounded corners, Gaussian and Monte Carlo effects are\n"
 "based on code by aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/"
@@ -1217,9 +1217,9 @@ msgstr ""
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements (i."
-"e. the main menu favorites box and entry boxes) which allow these elements "
-"to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements "
+"(i.e. the main menu favorites box and entry boxes) which allow these "
+"elements to stand out from the other popup menu areas"
 msgstr ""
 "Define o efeito de escurecimento adicional aplicado às cores de destaque do "
 "menu (ex: caixa de favoritos do menu principal e caixas de entrada) "

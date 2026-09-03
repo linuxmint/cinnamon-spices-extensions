@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 2.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-07 15:04-0400\n"
+"POT-Creation-Date: 2026-08-14 09:13-0400\n"
 "PO-Revision-Date: 2026-06-01 18:00+0800\n"
 "Last-Translator: Alang Hsu <alang.hsu@gmail.com>\n"
 "Language-Team: \n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2974
+#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2972
 msgid "Default window settings"
 msgstr "預設視窗設定"
 
-#. 6.0/extension.js:3140
+#. 6.0/extension.js:3139
 msgid "Error"
 msgstr "錯誤"
 
-#. 6.0/extension.js:3141
+#. 6.0/extension.js:3140
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
 "focused window, therefore Blur Cinnamon effects can not be applied to that "
@@ -32,11 +32,11 @@ msgid ""
 msgstr ""
 "無法判斷先前聚焦的視窗或其 WM_CLASS，因此無法對該視窗套用 Blur Cinnamon 效果"
 
-#. 6.0/extension.js:4023
+#. 6.0/extension.js:4022
 msgid "Welcome to Blur Cinnamon"
 msgstr "歡迎使用 Blur Cinnamon"
 
-#. 6.0/extension.js:4024
+#. 6.0/extension.js:4023
 #, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
@@ -52,15 +52,15 @@ msgstr ""
 "開啟 Blur Cinnamon 設定以啟用其他桌面元素（如選單、通知和視窗）的效果，或停用"
 "預設啟用的元件效果。您也可以調整效果屬性，如模糊強度、色彩飽和度和調暗程度。"
 
-#. 6.0/extension.js:4028
+#. 6.0/extension.js:4027
 msgid "Open Blur Cinnamon Settings"
 msgstr "開啟 Blur Cinnamon 設定"
 
-#. 6.0/extension.js:4118
+#. 6.0/extension.js:4117
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "測試 Blur Cinnamon 通知效果"
 
-#. 6.0/extension.js:4119
+#. 6.0/extension.js:4118
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"

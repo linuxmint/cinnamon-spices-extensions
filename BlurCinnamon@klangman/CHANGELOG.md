@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.6.1
+
+* Fix a memory leak with Dual Kawase effect.
+* Optimize Dual Kawase effect by caching the shaders and removing unnecessary listeners.
+* Fix cases where title bar blurring leaves a 3px title bar blur actor in cases where the title bar height can not be calculated.
+* Fix Expo monkey patching so that disabling then re-enabling Expo burring does not cause a Cinnamon keyboard and mouse lockout
+
 ## 2.6.0
 
 * Added a new Dual Kawase Blur algorithm written by Lucas-X-A which gives a Gaussian like smooth blur that is faster (better for low end GPUs) and produces better results in many cases as compared to the Gaussian blur algorithm. This is the new default algorithm for new installs, but people upgrading to this version will need to manually switch to Dual Kawase if they want to take advantage of this new algorithm.
@@ -10,9 +17,10 @@
 * Fix some issues around UI scaling
 * Fix a memory leak due to not removing some listeners
 * Fix for window blurring not resizing properly when windows are "shaded"
+* Fix for blurred windows being made very slightly opaque even when opacity was set to 100
 * Add an blur algorithm information guide to the "Generic effect settings" tab
 
-Special thanks to <a href=\"https://github.com/Lucas-X-A\">Lucas-X-A</a> for his many contributions to this release!
+Special thanks to [Lucas-X-A](https://github.com/Lucas-X-A) for his many contributions to this release!
 
 ## 2.5.2
 
