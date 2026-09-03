@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-26 00:00+0300\n"
+"PO-Revision-Date: 2026-07-26 00:00+0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Show notification"
+msgstr ""
+
+msgid "Appearance"
+msgstr ""
+
+msgid "Background color"
+msgstr ""
+
+msgid "Background opacity (%)"
+msgstr ""
+
+msgid "Text color"
+msgstr ""
+
+msgid "Font size (px)"
+msgstr ""
+
+msgid "Header text"
+msgstr ""
+
+msgid "Show cover art"
+msgstr ""
+
+msgid "Cover size (px)"
+msgstr ""
+
+msgid "Behavior"
+msgstr ""
+
+msgid "Display time (sec)"
+msgstr ""
+
+msgid "Fade in/out duration (ms)"
+msgstr ""
+
+msgid "Opacity on hover (%)"
+msgstr ""
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr ""
+
+msgid "Position"
+msgstr ""
+
+msgid "Screen position"
+msgstr ""
+
+msgid "Top left"
+msgstr ""
+
+msgid "Top center"
+msgstr ""
+
+msgid "Top right"
+msgstr ""
+
+msgid "Bottom left"
+msgstr ""
+
+msgid "Bottom center"
+msgstr ""
+
+msgid "Bottom right"
+msgstr ""
+
+msgid "Screen edge margin (px)"
+msgstr ""
+
+msgid "Maximum text width (px)"
+msgstr ""
+
+msgid "Test artist"
+msgstr ""
+
+msgid "Test track title"
+msgstr ""

@@ -1,0 +1,7 @@
+{
+  "uuid": "track-notify@mk_shaf",
+  "name": "Track Notifier",
+  "description": "Popup overlay with the current track (MPRIS)",
+  "version": "2.1",
+  "cinnamon-version": ["5.0", "5.2", "5.4", "5.6", "5.8", "6.0", "6.2", "6.4"]
+}
