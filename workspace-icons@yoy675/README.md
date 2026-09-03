@@ -11,7 +11,8 @@ This Cinnamon extension lets you present a different Desktop folder (and therefo
 - Per-workspace Desktop folder handling (creates ~/Desktop/workspace0, workspace1, ...)
 - Copies existing Desktop contents into workspace folders on first use to give each workspace a starting set of icons
 - Restores/merges workspace contents back into ~/Desktop when the extension is disabled
-- Refreshes desktop icons when workspace changes
+- Refreshes desktop icons (but not desklets) when workspace changes
+- The system remembers the placing of each icon per workspace, but desklets will not change placing between workspaces.
 
 ## Requirements
 
@@ -29,7 +30,7 @@ mkdir -p ~/.local/share/cinnamon/extensions
 cp -r "workspace-icons@yoy675" ~/.local/share/cinnamon/extensions/
 ```
 
-2. Restart Cinnamon (log out and in, or run):
+2. Restart Cinnamon (log out and in, or run) (not needed in my experience):
 
 ```bash
 cinnamon --replace &
