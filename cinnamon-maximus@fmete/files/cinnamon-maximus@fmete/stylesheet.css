@@ -1,0 +1,41 @@
+/* Overlay window buttons drawn at the top corner of undecorated windows. */
+.maximus-overlay {
+    background-color: rgba(28, 28, 30, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top-width: 0;
+    padding: 2px 4px 3px 4px;
+    spacing: 2px;
+}
+
+.maximus-overlay-right {
+    border-radius: 0 0 0 10px;
+    border-right-width: 0;
+}
+
+.maximus-overlay-left {
+    border-radius: 0 0 10px 0;
+    border-left-width: 0;
+}
+
+.maximus-overlay-button {
+    padding: 4px;
+    border-radius: 6px;
+    color: #f0f0f0;
+}
+
+.maximus-overlay-button:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.maximus-overlay-button:active {
+    background-color: rgba(255, 255, 255, 0.32);
+}
+
+.maximus-overlay-button-close:hover {
+    background-color: #e0443e;
+    color: #ffffff;
+}
+
+.maximus-overlay-button-close:active {
+    background-color: #c0302b;
+}
