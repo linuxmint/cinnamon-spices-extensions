@@ -5,14 +5,18 @@ const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const Main = imports.ui.main;
 const ExtensionSystem = imports.ui.extensionSystem;
-const { _ } = require('./translation');
-
-const Overlay = { showOverlay };
 
 const UUID = 'cinnamon-screenshot@hilyxx';
-
 const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
+
+if (imports.searchPath.indexOf(EXTENSION_DIR) === -1) {
+    imports.searchPath.push(EXTENSION_DIR);
+}
+
+const { _ } = imports.translation;
 const ICONS_PATH = EXTENSION_DIR + '/icons/';
+
+var Overlay = { showOverlay };
 
 const BTN_POINTER = 32;
 const BTN_TIMER_W = 34, BTN_TIMER_H = 16;

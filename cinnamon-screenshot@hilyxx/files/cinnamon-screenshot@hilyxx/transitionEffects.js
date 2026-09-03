@@ -125,7 +125,7 @@ class TransitionManager {
  */
 let _transitionManager = null;
 
-function getTransitionManager() {
+var getTransitionManager = function() {
     if (!_transitionManager) {
         _transitionManager = new TransitionManager();
     }
