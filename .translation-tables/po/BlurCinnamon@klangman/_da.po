@@ -1,0 +1,174 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+
+#. 6.0->settings-schema.json->monte-carlo-settings->title
+msgid "Additional Monte Carlo specific settings"
+msgstr ""
+
+#. 6.0->settings-schema.json->appswitcher-warning->description
+msgid ""
+" The Alt-Tab effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->desklets-warning->description
+msgid ""
+" The Desklet effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->desktop-warning->description
+msgid ""
+" The Desktop effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->expo-warning->description
+msgid ""
+" The Expo effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->popup-warning->description
+msgid ""
+" The Menu effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->notification-warning->description
+msgid ""
+" The Notification effects are currently disabled under the \"General setup\" "
+"tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->osd-warning->description
+msgid ""
+" The On-Screen-Display effects are currently disabled under the \"General "
+"setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->overview-warning->description
+msgid ""
+" The Overview effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-warning->description
+msgid ""
+" The Panel effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->tooltips-warning->description
+msgid ""
+" The Tooltip effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-warning->description
+msgid ""
+" The Window effects are currently disabled under the \"General setup\" tab."
+msgstr ""
+
+#. 6.0->settings-schema.json->desklets-label->description
+msgid " You must configure your Desklets to be transparent! (see tooltip)"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-label->description
+msgid " Read tooltip for information about the \"Default window settings\""
+msgstr ""
+
+#. 6.0->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Bringing your style into focus</b>\n"
+"Version: ext-version\n"
+"\n"
+"Developed by: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
+"\n"
+"The rounded corners, Gaussian and Monte Carlo effects are\n"
+"based on code by aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/"
+"blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</"
+"a>)\n"
+"\n"
+"The Dual Kawase effect was written by <a href=\"https://github.com/Lucas-X-"
+"A\">Lucas-X-A</a>\n"
+"\n"
+"The Overview effect is partially based on the BlurOverview extension by "
+"nailfarmer"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+#. 6.0->settings-schema.json->osd-blurType->options
+msgid "Dual Kawase static blur"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Dual Kawase dynamic blur (if applicable)"
+msgstr ""
+
+#. 6.0->settings-schema.json->show-blur-info->description
+msgid " Blur Algorithm Guide (see tooltip)"
+msgstr ""
+
+#. 6.0->settings-schema.json->show-blur-info->tooltip
+msgid ""
+"<b>Blur Algorithm Guide:</b>\n"
+" <b> Gaussian:</b> Good quality smooth blur, can be GPU intensive.\n"
+" <b> Dual Kawase:</b> High quality smooth blur, optimized for low-end GPUs.\n"
+" <b> Monte Carlo:</b> Grainy, frosted-glass style noisy blur.\n"
+" <b> Simple:</b> Basic subtle blur for ancient computers.\n"
+"\n"
+"<b>Static vs Dynamic:</b>\n"
+" <b> Dynamic:</b> Blurs background elements behind the blurred element in "
+"real-time.\n"
+" <b> Static:</b> Only blurs the wallpaper, like x-ray vision to the desktop "
+"wallpaper."
+msgstr ""
+
+#. 6.0->settings-schema.json->monte-carlo-iterations->tooltip
+msgid ""
+"Increasing number of iterations will make the blur appear smoother at the "
+"cost of some GPU power."
+msgstr ""
+
+#. 6.0->settings-schema.json->monte-carlo-label->description
+msgid " The above Monte Carlo settings are used globally for all components"
+msgstr ""
+
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Dual Kawase"
+msgstr ""
+
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+#. 6.0->settings-schema.json->osd-blurType->options
+msgid "Dual Kawase dynamic blur"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-titlebar-blur->description
+msgid "Blur window title bars (please read tooltip)"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-titlebar-blur->tooltip
+msgid ""
+"When enabled, the title bar area under most windows will be blurred "
+"excluding GTK4 windows and windows with custom title bars. This behaves like "
+"\"Default window settings\" entry above and even uses its settings, but with "
+"this option only title bar areas are blurred rather than the entire window. "
+"Note: The title bar blurring will only be visible when the title bars are "
+"configured to be semi-transparent which MUST be done using CSS. See the Blur "
+"Cinnamon website for instructions."
+msgstr ""

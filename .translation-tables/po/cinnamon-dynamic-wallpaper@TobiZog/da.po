@@ -1,0 +1,291 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-08 19:35+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr "Velkommen til Dynamisk skrivebordsbaggrund til Cinnamon"
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr "Tjek indstillingerne for at vælge en dynamisk skrivebordsbaggrund"
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr "imagemagick er ikke installeret"
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr "Installér pakken manuelt for at få alle funktioner"
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr "Fejl!"
+
+#: 5.4/extension.js:126
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr ""
+"Dynamisk skrivebordsbaggrund til Cinnamon fik en fejl under kørsel af loop-"
+"scriptet. Opret venligst en fejlrapport på GitHub."
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr "Åbn indstillinger"
+
+#. metadata.json->name
+msgid "Cinnamon Dynamic Wallpaper"
+msgstr "Dynamisk skrivebordsbaggrund til Cinnamon"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr ""
+"Cinnamon-udvidelse med dynamiske skrivebordsbaggrunde baseret på tid og sted"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "Billedkilde"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "Billedsæt"
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr "Installér “imagemagick” manuelt og åbn dette konfigurationsvindue igen"
+
+#: 5.4/res/preferences.glade:237
+msgid "HEIC file"
+msgstr "HEIC-fil"
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr "Kildemappe"
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr "Vælg et billedsæt"
+
+#: 5.4/res/preferences.glade:380
+msgid "Select a heic file to import"
+msgstr "Vælg en HEIC-fil, der skal importeres"
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr "Vælg en kildemappe"
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr "Åbn filvælgerdialog"
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr "Billedudvalg"
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr "Billedkonfiguration"
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr "Periodeestimering"
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr "Brug netværksplacering"
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr "Tilpasset placering"
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr "Tilpassede tidsperioder"
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr "Estimering af placering"
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr "Interval for opdatering af placering via netværk (min)"
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr "Placeringsleverandør"
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr "Breddegrad"
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr "Længdegrad"
+
+#: 5.4/res/preferences.glade:1358
+msgid "Period 1"
+msgstr "Periode 1"
+
+#: 5.4/res/preferences.glade:1372
+msgid "Period 2"
+msgstr "Periode 2"
+
+#: 5.4/res/preferences.glade:1386
+msgid "Period 3"
+msgstr "Periode 3"
+
+#: 5.4/res/preferences.glade:1400
+msgid "Period 4"
+msgstr "Periode 4"
+
+#: 5.4/res/preferences.glade:1414
+msgid "Period 5"
+msgstr "Periode 5"
+
+#: 5.4/res/preferences.glade:1915
+msgid "Period 6"
+msgstr "Periode 6"
+
+#: 5.4/res/preferences.glade:1929
+msgid "Period 7"
+msgstr "Periode 7"
+
+#: 5.4/res/preferences.glade:1943
+msgid "Period 9"
+msgstr "Periode 9"
+
+#: 5.4/res/preferences.glade:1957
+msgid "Period 8"
+msgstr "Periode 8"
+
+#: 5.4/res/preferences.glade:1971
+msgid "Period 10"
+msgstr "Periode 10"
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr "Placering og klokkeslæt"
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr "Skalering"
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr "Billedproportioner"
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr "Loginskærm"
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr "Angiv baggrundsbillede som loginskærmens baggrund"
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr "Dynamisk baggrundsfarve"
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr "Brug dynamisk baggrundsfarve til oprettelse af farveovergang"
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr "Opførsel"
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr "Om projektet"
+
+#: 5.4/res/preferences.glade:2763
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"Baseret på en placering eller efter brugerens valg beregner denne udvidelse "
+"perioderne i løbet af en dag og skifter baggrundsbilledet på dit Cinnamon-"
+"skrivebord. Udvidelsen tilbyder som billedkilder et sæt forudkonfigurerede "
+"baggrundsbilleder, et HEIC-billede importeret af brugeren eller en "
+"brugerdefineret mappe med enkeltbilleder."
+
+#: 5.4/res/preferences.glade:2782
+msgid "Developed by TobiZog"
+msgstr "Udviklet af TobiZog"
+
+#: 5.4/res/preferences.glade:2799
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr ""
+"Hvis du har brug for flere oplysninger eller ønsker at bedømme udvidelsen, "
+"kan du besøge Cinnamon Spices' hjemmeside."
+
+#: 5.4/res/preferences.glade:2810
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr "Dynamisk skrivebordsbaggrund til Cinnamons website hos Cinnamon Spices"
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr "Kildekode"
+
+#: 5.4/res/preferences.glade:2864
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr ""
+"Dette projekt er open source. Du kan se hele kildekoden til denne udvidelse "
+"på GitHub."
+
+#: 5.4/res/preferences.glade:2875
+msgid "Source Code on GitHub"
+msgstr "Kildekode på GitHub"
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr "Problemer og forbedringer"
+
+#: 5.4/res/preferences.glade:2929
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
+msgstr ""
+"Har du fundet et problem? Eller ønsker du en ny funktion? Gå til GitHub-"
+"arkivet og opret en ny sag."
+
+#: 5.4/res/preferences.glade:2940
+msgid "Create a new issue on GitHub"
+msgstr "Opret en ny sag på GitHub"
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr "Om"
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr "Udfør og luk vinduet"
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr "Udfør indstillingerne uden at lukke vinduet"

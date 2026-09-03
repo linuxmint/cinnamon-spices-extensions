@@ -1,0 +1,110 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: NikoKrause\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s aktiviert"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "Einstellungen der Erweiterung öffnen und Leisten anpassen"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "Einstellungen öffnen"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Transparente Leisten"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr "Macht Leisten durchsichtig, wenn Fenster nicht maximiert sind"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Allgemein"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "Art der Transparenz"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "Mit Schatten"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Durchsichtig"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Halbdurchsichtig"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "Wählen Sie die gewünschte Transparenzart."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Aktuellen Themen-Stil verwenden"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Nur für unterstützte Themen. Lassen Sie das Thema die Leisten gestalten, "
+"anstatt die Voreinstellungen der Erweiterung zu verwenden. Verwenden Sie "
+"dies, wenn die Transparenz der Leisten nicht korrekt eingestellt ist."
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "Transparenz des Themas entfernen (experimentell)"
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr "Leistentransparenz entfernen, wenn Leiste nicht transparent ist."
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Leistenauswahl"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr ""
+"Auswahl der Leisten, die von dieser Erweiterung verändert werden sollen."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Obere Leiste"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Rechte Leiste"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Untere Leiste"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Linke Leiste"
+
+#~ msgid "Defined by theme"
+#~ msgstr "Definiert nach Thema"

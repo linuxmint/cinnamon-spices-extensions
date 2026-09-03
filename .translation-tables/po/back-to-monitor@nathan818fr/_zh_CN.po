@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+
+#. metadata.json->name
+msgid "Back to Monitor"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Move windows back to their original location when (re-)connecting a monitor."
+msgstr ""
+
+#. settings-schema.json->rememberState->description
+msgid "Remember window locations based on monitor connection"
+msgstr ""
+
+#. settings-schema.json->minimize->description
+msgid "Minimize windows when a monitor is disconnected"
+msgstr ""

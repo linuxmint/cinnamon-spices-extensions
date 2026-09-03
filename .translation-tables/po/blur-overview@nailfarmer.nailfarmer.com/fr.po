@@ -1,0 +1,93 @@
+# BLUR OVERVIEW
+# This file is put in the public domain.
+# nailfarmer, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: blur-overview@nailfarmer.nailfarmer.com 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: claudiux\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Effet de Flou sur la vue d'ensemble (Blur Overview)"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur and adjust the dimming of the overview's background "
+"(window selection screen)"
+msgstr ""
+"Permet d'estomper et de régler la luminosité de l'arrière-plan de la vue "
+"d'ensemble (écran de sélection des fenêtres)"
+
+#. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr "Paramètres du flou de l'écran de sélection de fenêtre"
+
+#. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr "Opacité du fond"
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr "Flou du fond"
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr "Activer l'effet Mélange des couleurs"
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+"Utiliser une couleur personnalisée comme couleur d'obscurcissement de "
+"l'arrière-plan. L'intensité de la couleur peut être contrôlée à l'aide du "
+"curseur « Opacité du fond » situé au-dessus"
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr "Effet Mélange de couleurs"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr "Aucun"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr "Simple"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr "Gaussien"
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr "Type de flou"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr "Type d'algorithme de flou utilisé pour flouter l'arrière-plan"
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr "Intensité du flou gaussien"
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
+"Règle l'intensité de l'effet de flou en modifiant le rayon de l'effet."

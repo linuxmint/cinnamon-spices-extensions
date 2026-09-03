@@ -1,0 +1,67 @@
+# ACTIVE WINDOW INDICATOR
+# This file is put in the public domain.
+# fabiodamio, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: active-window-indicator@fabiodamio 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-08-04 18:18+0200\n"
+"PO-Revision-Date: 2026-08-04 18:14+0200\n"
+"Last-Translator: fabiodamio\n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Active Window Indicator"
+msgstr "Indicatore Finestra Attiva"
+
+#. metadata.json->description
+msgid "Highlights the active window with a customizable top bar."
+msgstr "Evidenzia la finestra attiva con una barra superiore personalizzabile."
+
+#. settings-schema.json->line-height->units
+#. settings-schema.json->slant-percent->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->line-height->description
+msgid "Line height"
+msgstr "Spessore della barra"
+
+#. settings-schema.json->line-height->tooltip
+msgid "Set the height of the indicator line"
+msgstr "Imposta l'altezza della linea dell'indicatore"
+
+#. settings-schema.json->width-percent->units
+#. settings-schema.json->alpha-percent->units
+msgid "%"
+msgstr "%"
+
+#. settings-schema.json->width-percent->description
+msgid "Width relative to window"
+msgstr "Larghezza rispetto alla finestra"
+
+#. settings-schema.json->slant-percent->description
+msgid "End slant"
+msgstr "Svasatura estremità"
+
+#. settings-schema.json->alpha-percent->description
+msgid "Opacity / Transparency"
+msgstr "Opacità / Trasparenza"
+
+#. settings-schema.json->anim-speed->description
+msgid "Gradient animation speed (1 = slow, 20 = fast)"
+msgstr "Velocità animazione sfumatura (1 = lenta, 20 = veloce)"
+
+#. settings-schema.json->color-start->description
+msgid "Start color"
+msgstr "Colore di inizio"
+
+#. settings-schema.json->color-end->description
+msgid "End color"
+msgstr "Colore di fine"

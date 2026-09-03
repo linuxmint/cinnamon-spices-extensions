@@ -1,0 +1,86 @@
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Erradioa"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Goiko iluntzea"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "X Konpentzazio"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Y Konpentzazio"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Opakutasuna"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Klasearen izena"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Estatua"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Inportatu"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Esportatu"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Ezarri nondik..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Aukeratu non gorde zure konfigurazioa"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Aukeratu konfigurazio bat kargatzeko"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Erabiltzailearen itzalak"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Cinnamonen leihoen itzalak pertsonalizatu."
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Itzalen lehenetsiak"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Lehenetsia"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Itzalik ez"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Pertsonalizatua"

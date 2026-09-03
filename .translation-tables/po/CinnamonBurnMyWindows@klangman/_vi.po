@@ -1,0 +1,90 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+
+#. 6.2/CustomWidgets.py:509
+msgid "_Cancel"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:510
+msgid "_Open"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:520
+msgid "Sound files"
+msgstr ""
+
+#. 6.2->settings-schema.json->enable-sound->description
+msgid "Allow Burn My Windows to override cinnamon sound effects"
+msgstr ""
+
+#. 6.2->settings-schema.json->enable-sound->tooltip
+msgid ""
+"Allow Burn My Windows to override Cinnamon's window open/close/minimize "
+"sound effects with unique ones defined in the Effect Settings tab for each "
+"Burn My Windows effect. Note: Sounds will only play when Cinnamon's open/"
+"close/minimize sound effects are enabled under Cinnamon sounds settings. The "
+"default cinnamon sounds will be used unless a sound effect file is chosen "
+"for the active Burn My Windows effect."
+msgstr ""
+
+#. 6.2->settings-schema.json->apparition-open-sound->description
+#. 6.2->settings-schema.json->aura-glow-open-sound->description
+#. 6.2->settings-schema.json->doom-open-sound->description
+#. 6.2->settings-schema.json->energize-a-open-sound->description
+#. 6.2->settings-schema.json->energize-b-open-sound->description
+#. 6.2->settings-schema.json->fire-open-sound->description
+#. 6.2->settings-schema.json->focus-open-sound->description
+#. 6.2->settings-schema.json->glide-open-sound->description
+#. 6.2->settings-schema.json->glitch-open-sound->description
+#. 6.2->settings-schema.json->hexagon-open-sound->description
+#. 6.2->settings-schema.json->incinerate-open-sound->description
+#. 6.2->settings-schema.json->magiclamp-open-sound->description
+#. 6.2->settings-schema.json->mushroom-open-sound->description
+#. 6.2->settings-schema.json->pixelate-open-sound->description
+#. 6.2->settings-schema.json->pixel-wheel-open-sound->description
+#. 6.2->settings-schema.json->pixel-wipe-open-sound->description
+#. 6.2->settings-schema.json->portal-open-sound->description
+#. 6.2->settings-schema.json->rgbwarp-open-sound->description
+#. 6.2->settings-schema.json->team-rocket-open-sound->description
+#. 6.2->settings-schema.json->tv-open-sound->description
+#. 6.2->settings-schema.json->tv-glitch-open-sound->description
+#. 6.2->settings-schema.json->wisps-open-sound->description
+msgid "Sound on window appear events"
+msgstr ""
+
+#. 6.2->settings-schema.json->apparition-close-sound->description
+#. 6.2->settings-schema.json->aura-glow-close-sound->description
+#. 6.2->settings-schema.json->doom-close-sound->description
+#. 6.2->settings-schema.json->energize-a-close-sound->description
+#. 6.2->settings-schema.json->energize-b-close-sound->description
+#. 6.2->settings-schema.json->fire-close-sound->description
+#. 6.2->settings-schema.json->focus-close-sound->description
+#. 6.2->settings-schema.json->glide-close-sound->description
+#. 6.2->settings-schema.json->glitch-close-sound->description
+#. 6.2->settings-schema.json->hexagon-close-sound->description
+#. 6.2->settings-schema.json->incinerate-close-sound->description
+#. 6.2->settings-schema.json->magiclamp-close-sound->description
+#. 6.2->settings-schema.json->mushroom-close-sound->description
+#. 6.2->settings-schema.json->pixelate-close-sound->description
+#. 6.2->settings-schema.json->pixel-wheel-close-sound->description
+#. 6.2->settings-schema.json->pixel-wipe-close-sound->description
+#. 6.2->settings-schema.json->portal-close-sound->description
+#. 6.2->settings-schema.json->rgbwarp-close-sound->description
+#. 6.2->settings-schema.json->team-rocket-close-sound->description
+#. 6.2->settings-schema.json->tv-close-sound->description
+#. 6.2->settings-schema.json->tv-glitch-close-sound->description
+#. 6.2->settings-schema.json->wisps-close-sound->description
+msgid "Sound on window disappear events"
+msgstr ""
+
+#. 6.2->settings-schema.json->fire-presets->description
+msgid "Fire effect style"
+msgstr ""
+
+#. 6.2->settings-schema.json->mushroom-presets->description
+msgid "Mushroom effect style"
+msgstr ""

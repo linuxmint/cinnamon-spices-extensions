@@ -1,0 +1,94 @@
+# BLUR OVERVIEW
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# nailfarmer, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
+"PO-Revision-Date: 2025-04-12 08:23+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Elmosott áttekintés"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur and adjust the dimming of the overview's background "
+"(window selection screen)"
+msgstr ""
+"Lehetővé teszi az áttekintés hátterének elhomályosítását és tompítását "
+"(ablakválasztó képernyő)"
+
+#. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr "Elmosott áttekintés (ablakválasztó képernyő) beállításai"
+
+#. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr "Háttér halványítása (százalék)"
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr "Háttér elmosódása"
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr "Színkeverési effektus engedélyezése"
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+"Használjon egyéni színt tompító fedőszínként. A színintenzitás a fenti "
+"„Háttér homályos” csúszkával szabályozható"
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr "Blend effektus Szín"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr "Semmi"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr "Egyszerű"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr "Gauss-féle"
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr "Az elmosódási hatás típusa"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr ""
+"Milyen típusú elmosódási algoritmust kell használni a háttér elmosásához"
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr "Gauss-elmosódás intenzitása"
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
+"Beállítja az elmosódás intenzitását az effektus sugárhasználatának "
+"módosításával."
