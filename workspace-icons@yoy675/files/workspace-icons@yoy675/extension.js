@@ -5,7 +5,7 @@ const Mainloop = imports.mainloop;
 
 class WorkspaceDesktopExtension {
     constructor() {
-        this._workspaceManager = global.screen;
+        this._workspaceManager = global.workspace_manager;
         this._signalId = null;
         this._gsettings = null;
     }
@@ -72,8 +72,7 @@ class WorkspaceDesktopExtension {
     }
 
     _onWorkspaceChanged() {
-        const activeWorkspace = this._workspaceManager.get_active_workspace();
-        const workspaceIndex = activeWorkspace.index();
+        const workspaceIndex = this._workspaceManager.get_active_workspace_index();
         
         log(`Workspace changed to: ${workspaceIndex}`);
         this._runOnWorkspaceChange(workspaceIndex);
@@ -101,13 +100,15 @@ class WorkspaceDesktopExtension {
 
     _ensureDirectoryExists(path) {
         const file = Gio.file_new_for_path(path);
-        if (!file.query_exists(null)) {
-            try {
-                file.make_directory_with_parents(null);
-                log(`Created directory: ${path}`);
-            } catch (e) {
-                logError(e, `Failed to create directory: ${path}`);
+        try {
+            file.make_directory_with_parents(null);
+            log(`Created directory: ${path}`);
+        } catch (e) {
+            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
+                // Directory already exists, that's fine
+                return;
             }
+            logError(e, `Failed to create directory: ${path}`);
         }
     }
 
@@ -115,57 +116,56 @@ class WorkspaceDesktopExtension {
         const desktopDir = Gio.File.new_for_path(desktopPath);
         const wsDir = Gio.File.new_for_path(workspacePath);
 
-        if (!desktopDir.query_exists(null)) return;
-
         try {
-            // Only copy if the workspace directory is empty (first time)
-            const enumerator = wsDir.enumerate_children(
+            // Try to enumerate the desktop directory directly
+            // If it doesn't exist, this will throw and we return early
+            const desktopEnumerator = desktopDir.enumerate_children_async(
                 'standard::*',
                 Gio.FileQueryInfoFlags.NONE,
                 null
             );
-            
-            let info = enumerator.next_file(null);
-            if (info !== null) {
-                // Directory is not empty, skip copying
-                log(`Workspace directory ${workspacePath} is not empty, skipping initial copy`);
-                return;
+
+            try {
+                // Check if workspace directory is empty
+                const wsEnumerator = wsDir.enumerate_children_async(
+                    'standard::*',
+                    Gio.FileQueryInfoFlags.NONE,
+                    null
+                );
+                
+                if (wsEnumerator.next_file(null) !== null) {
+                    log(`Workspace directory ${workspacePath} is not empty, skipping initial copy`);
+                    return;
+                }
+            } catch (e) {
+                log(`Could not check if workspace directory is empty: ${e.message}`);
             }
-        } catch (e) {
-            // If error checking, proceed with copy anyway
-            log(`Could not check if workspace directory is empty: ${e.message}`);
-        }
-
-        try {
-            const enumerator = desktopDir.enumerate_children(
-                'standard::*',
-                Gio.FileQueryInfoFlags.NONE,
-                null
-            );
-
+    
+            // Copy files from desktop
             let info;
-            while ((info = enumerator.next_file(null)) !== null) {
+            while ((info = desktopEnumerator.next_file(null)) !== null) {
                 const name = info.get_name();
-
-                // Skip workspace folders to avoid recursive copying
                 if (name.match(/^workspace\d+$/)) continue;
-
+    
                 const srcFile = desktopDir.get_child(name);
                 const destFile = wsDir.get_child(name);
-
-                // Copy only if file/folder doesn't already exist in the target workspace
-                if (!destFile.query_exists(null)) {
-                    try {
-                        srcFile.copy(destFile, Gio.FileCopyFlags.NONE, null, null);
-                        log(`Copied ${name} -> ${workspacePath}`);
-                    } catch (err) {
+    
+                try {
+                    // Try to copy; if file exists, copy() will throw
+                    srcFile.copy(destFile, Gio.FileCopyFlags.NONE, null, null);
+                    log(`Copied ${name} -> ${workspacePath}`);
+                } catch (err) {
+                    // File already exists or other copy error
+                    if (!err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
                         logError(err, `Failed copying ${name} to workspace`);
                     }
                 }
             }
         } catch (e) {
-            logError(e, 'Error reading root Desktop folder');
+            // Desktop directory doesn't exist or can't be read
+            log(`Desktop directory not accessible: ${e.message}`);
         }
+
     }
 
     _mergeWorkspacesBack() {
@@ -173,37 +173,36 @@ class WorkspaceDesktopExtension {
         const mainDesktopPath = `${homeDir}/Desktop`;
         const desktopDir = Gio.File.new_for_path(mainDesktopPath);
 
-        if (desktopDir.query_exists(null)) {
-            try {
-                const enumerator = desktopDir.enumerate_children(
-                    'standard::*',
-                    Gio.FileQueryInfoFlags.NONE,
-                    null
-                );
-
-                let info;
-                while ((info = enumerator.next_file(null)) !== null) {
-                    const name = info.get_name();
-
-                    // Find workspace directories
-                    if (name.match(/^workspace\d+$/)) {
-                        const wsDir = desktopDir.get_child(name);
-                        
-                        // Move contents out of workspace folder into ~/Desktop
-                        this._emptyDirectoryToDestination(wsDir, desktopDir);
-                        
-                        // Delete the now-empty workspace folder
-                        try {
-                            wsDir.delete(null);
-                            log(`Deleted directory: ${name}`);
-                        } catch (err) {
-                            logError(err, `Could not remove folder ${name}`);
-                        }
+        try {
+            const enumerator = desktopDir.enumerate_children_async(
+                'standard::*',
+                Gio.FileQueryInfoFlags.NONE,
+                null
+            );
+        
+            let info;
+            while ((info = enumerator.next_file(null)) !== null) {
+                const name = info.get_name();
+    
+                // Find workspace directories
+                if (name.match(/^workspace\d+$/)) {
+                    const wsDir = desktopDir.get_child(name);
+                    
+                    // Move contents out of workspace folder into ~/Desktop
+                    this._emptyDirectoryToDestination(wsDir, desktopDir);
+                    
+                    // Delete the now-empty workspace folder
+                    try {
+                        wsDir.delete(null);
+                        log(`Deleted directory: ${name}`);
+                    } catch (err) {
+                        logError(err, `Could not remove folder ${name}`);
                     }
                 }
-            } catch (e) {
-                logError(e, 'Error restoring workspace files to ~/Desktop');
             }
+        } catch (e) {
+            // Desktop directory doesn't exist or can't be enumerated
+            log(`Desktop directory not accessible: ${e.message}`);
         }
 
         // Reset XDG user directory back to original ~/Desktop
@@ -212,10 +211,8 @@ class WorkspaceDesktopExtension {
     }
 
     _emptyDirectoryToDestination(srcDir, destDir) {
-        if (!srcDir.query_exists(null)) return;
-
         try {
-            const enumerator = srcDir.enumerate_children(
+            const enumerator = srcDir.enumerate_children_async(
                 'standard::*',
                 Gio.FileQueryInfoFlags.NONE,
                 null
@@ -236,8 +233,10 @@ class WorkspaceDesktopExtension {
                 }
             }
         } catch (e) {
-            logError(e, 'Error iterating directory contents during merge');
+            // Source directory doesn't exist or can't be enumerated
+            log(`Source directory not accessible: ${e.message}`);
         }
+
     }
 
     _updateXdgDesktopDir(path) {
@@ -245,7 +244,7 @@ class WorkspaceDesktopExtension {
             // SECURITY FIX: Use spawn_async with argument array instead of spawn_command_line_async
             // to prevent command injection attacks
             const argv = ['xdg-user-dirs-update', '--set', 'DESKTOP', path];
-            GLib.spawn_sync(
+            GLib.spawn_async(
                 null,  // working directory
                 argv,  // argument array
                 null,  // environment
@@ -265,7 +264,7 @@ class WorkspaceDesktopExtension {
             if (desktopSession.includes('Cinnamon')) {
                 // SECURITY FIX: Use spawn_async with argument array
                 this._spawnCommand(['nemo-desktop', '-q']);
-                Mainloop.timeout_add(100, () => {
+                Mainloop.timeout_add(50, () => {
                     this._spawnCommand(['nemo-desktop']);
                     return false;
                 });
