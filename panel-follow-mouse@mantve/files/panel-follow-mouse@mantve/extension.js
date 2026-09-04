@@ -227,7 +227,7 @@ function _rebuildBarriers() {
 
 function init(metadata) {
     uuid = metadata.uuid;
-    Gettext.bindtextdomain(uuid, GLib.get_home_dir() + "/.local/share/locale");
+    Gettext.bindtextdomain(uuid, GLib.get_user_data_dir() + "/locale");
     cinnamonSettings = new Gio.Settings({ schema_id: 'org.cinnamon' });
 
     settingsProvider = new Settings.ExtensionSettings(boundSettings, uuid);
