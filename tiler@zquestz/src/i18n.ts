@@ -3,9 +3,10 @@
  *
  * Settings and metadata are translated by Cinnamon, but anything written on
  * an actor is Tiler's own job. Translators work against the template in po/,
- * and Cinnamon installs the compiled translations to this literal path (see
- * Spices.py), so the domain is bound there rather than to XDG_DATA_HOME,
- * which Cinnamon never reads for this.
+ * and Cinnamon's installer (harvester.py, since commit 7d315875) compiles the
+ * translations into the locale directory under the user data directory, so
+ * the domain is bound there. Cinnamon 6.x installed to ~/.local/share/locale
+ * outright, which is the same place unless XDG_DATA_HOME points elsewhere.
  */
 
 const Gettext = imports.gettext;
@@ -16,7 +17,10 @@ let domain = "";
 /** Points the translation domain at this extension. Called once, at load. */
 export function initTranslations(uuid: string): void {
   domain = uuid;
-  Gettext.bindtextdomain(uuid, GLib.get_home_dir() + "/.local/share/locale");
+  Gettext.bindtextdomain(
+    uuid,
+    GLib.build_filenamev([GLib.get_user_data_dir(), "locale"]),
+  );
 }
 
 /** The given text in the user's language, or as written when there is none. */

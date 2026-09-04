@@ -8,15 +8,15 @@ them.
 import gettext
 import os
 
-from gi.repository import Gtk
+from gi.repository import GLib, Gtk
 from JsonSettingsWidgets import SettingsWidget
 
 UUID = "tiler@zquestz"
 
-# Cinnamon compiles translations into this directory on install. With
-# fallback=True a missing catalogue (an English desktop, say) means plain
-# English rather than an error.
-LOCALE_DIR = os.path.join(os.path.expanduser("~"), ".local/share/locale")
+# Cinnamon compiles translations into this directory on install, the same
+# one the extension itself reads from. With fallback=True a missing catalogue
+# (an English desktop, say) means plain English rather than an error.
+LOCALE_DIR = os.path.join(GLib.get_user_data_dir(), "locale")
 _ = gettext.translation(UUID, LOCALE_DIR, fallback=True).gettext
 
 # What each key means while the grid is open. Even the rows naming bare keys

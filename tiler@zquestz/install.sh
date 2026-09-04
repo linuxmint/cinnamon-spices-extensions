@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #
 # Installs Tiler the way the Spices store does: the extension's files go to
-# ~/.local/share/cinnamon/extensions, and its translations are compiled into
-# ~/.local/share/locale. Since those are the same places the store uses,
-# installing from System Settings later simply takes this copy over.
+# the extensions directory under the user data directory, and its
+# translations are compiled into the locale directory beside it. Since those
+# are the same places the store uses, installing from System Settings later
+# simply takes this copy over.
 #
 #   ./install.sh              install or update Tiler
 #   ./install.sh --uninstall  remove it again
@@ -14,13 +15,16 @@ set -euo pipefail
 
 UUID="tiler@zquestz"
 
-# The Spices store installs to these literal paths (Spices.py) rather than
-# reading XDG_DATA_HOME, and the settings UI lists extensions from the same
-# place, so this matches the store exactly.
-EXTENSIONS="$HOME/.local/share/cinnamon/extensions"
-LOCALES="$HOME/.local/share/locale"
+# Cinnamon finds the user data directory through XDG_DATA_HOME: the extension
+# is loaded from it, and Cinnamon's installer (harvester.py) puts both the
+# extension and the compiled translations there. Cinnamon 6.x installed to
+# ~/.local/share outright, which is the same place unless XDG_DATA_HOME is
+# set.
+DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
+EXTENSIONS="$DATA/cinnamon/extensions"
+LOCALES="$DATA/locale"
 
-# Settings are different: Cinnamon reads them through XDG_CONFIG_HOME.
+# Settings live under the config directory, read through XDG_CONFIG_HOME.
 SETTINGS="${XDG_CONFIG_HOME:-$HOME/.config}/cinnamon/spices/$UUID"
 
 HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"

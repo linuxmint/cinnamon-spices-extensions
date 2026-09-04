@@ -459,7 +459,10 @@ var GLib = imports.gi.GLib;
 var domain = "";
 function initTranslations(uuid2) {
   domain = uuid2;
-  Gettext.bindtextdomain(uuid2, GLib.get_home_dir() + "/.local/share/locale");
+  Gettext.bindtextdomain(
+    uuid2,
+    GLib.build_filenamev([GLib.get_user_data_dir(), "locale"])
+  );
 }
 function _(text) {
   return domain ? Gettext.dgettext(domain, text) : text;
