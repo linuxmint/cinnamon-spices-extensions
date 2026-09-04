@@ -18,10 +18,3 @@ while an app is fullscreen there.
 - **Panel ID** - which panel follows the mouse. The Detect button fills it
   in automatically.
 - **Hold time** - how long the cursor must stay against the edge.
-
-## Limitations
-
-The panel is only summoned by holding its own edge. With vertically stacked
-monitors and a bottom panel, the upper monitor's bottom edge is the seam, so
-it has no trigger spot. Per-monitor panel heights (`panels-height`) are not
-moved along with the panel.
