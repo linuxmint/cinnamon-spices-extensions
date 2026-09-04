@@ -24,7 +24,8 @@
         "center-on-window",
         "tile-dialogs",
         "tile-toolboxes",
-        "show-autotile"
+        "show-autotile",
+        "overflow-windows"
       ]
     },
     "gaps-section": {
@@ -142,7 +143,19 @@
     "type": "switch",
     "default": true,
     "description": "Show auto-tile actions on the grid",
-    "tooltip": "Adds a row of arrangements to the grid that tile every window on the workspace at once: a main window beside a stack, or everything shared out equally."
+    "tooltip": "Adds a row of arrangements to the grid that tile every window on the workspace at once: a main window beside the rest, or everything shared out equally, each newcomer halving the largest cell."
+  },
+  "overflow-windows": {
+    "type": "combobox",
+    "default": "ignore",
+    "description": "Windows that do not fit",
+    "tooltip": "When an auto-tile arrangement has no room for a window, this says what becomes of it: left where it was, taken out of the way, or gathered around the middle of the screen.",
+    "options": {
+      "Ignore": "ignore",
+      "Minimize": "minimize",
+      "Center": "center",
+      "Cascade": "cascade"
+    }
   },
   "window-gap": {
     "type": "spinbutton",

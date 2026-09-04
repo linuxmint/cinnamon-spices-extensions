@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {
   cellAt,
   moveFocus,
+  overflowRects,
   sameRect,
   selectionRange,
   trackSizes,
@@ -12,7 +13,13 @@ import {
   coversFullGrid,
   normalizeRange,
 } from "../src/geometry.ts";
-import type { CellRange, GridSize, Rect, Selection } from "../src/geometry.ts";
+import type {
+  CellRange,
+  GridSize,
+  Rect,
+  Selection,
+  Size,
+} from "../src/geometry.ts";
 
 /** A 2560x1440 screen with a 40 pixel panel along the bottom. */
 const SCREEN: Rect = { x: 0, y: 0, width: 2560, height: 1400 };
@@ -420,6 +427,64 @@ test("centring survives measurements that are not numbers", () => {
     assert.ok(Number.isFinite(value), `${name} is ${value}`);
   }
   assert.ok(box.x >= 0 && box.y >= 0, "still on the monitor");
+});
+
+test("centres a single overflow window exactly", () => {
+  // The commonest overflow: one fixed-size window pushed out. It lands dead
+  // centre, and the step does not move it, since a lone window has no
+  // staircase to lean along.
+  const area: Rect = { x: 0, y: 0, width: 1000, height: 800 };
+  const [spot] = overflowRects([{ width: 400, height: 300 }], area, area, 40);
+
+  assert.deepEqual(spot, { x: 300, y: 250, width: 400, height: 300 });
+});
+
+test("piles overflow windows on the centre of the area with no step", () => {
+  const area: Rect = { x: 0, y: 0, width: 1000, height: 800 };
+  const sizes: Size[] = [
+    { width: 400, height: 300 },
+    { width: 200, height: 200 },
+  ];
+  const spots = overflowRects(sizes, area, area, 0);
+
+  // Each window keeps its size and is centred on the same middle.
+  assert.deepEqual(spots[0], { x: 300, y: 250, width: 400, height: 300 });
+  assert.deepEqual(spots[1], { x: 400, y: 300, width: 200, height: 200 });
+});
+
+test("cascades overflow windows in a balanced staircase", () => {
+  // Three same-size windows, stepped by 40; the staircase is centred, so the
+  // first leans as far one way as the last leans the other.
+  const area: Rect = { x: 0, y: 0, width: 1000, height: 800 };
+  const sizes: Size[] = [
+    { width: 300, height: 200 },
+    { width: 300, height: 200 },
+    { width: 300, height: 200 },
+  ];
+  const spots = overflowRects(sizes, area, area, 40);
+
+  assert.equal(spots[1].x, 350, "the middle one is centred");
+  assert.equal(spots[0].x, 310, "the first leans back one step");
+  assert.equal(spots[2].x, 390, "the last leans forward one step");
+  assert.equal(spots[2].x - spots[1].x, spots[1].x - spots[0].x, "even steps");
+});
+
+test("keeps cascaded windows on the monitor", () => {
+  // A long cascade whose steps would run off the bottom right is held inside
+  // the bounds, so the pile just crowds the corner rather than leaving.
+  const area: Rect = { x: 0, y: 0, width: 800, height: 600 };
+  const sizes: Size[] = new Array(8).fill({ width: 400, height: 300 });
+  const spots = overflowRects(sizes, area, area, 100);
+
+  for (const spot of spots) {
+    assert.ok(spot.x >= 0 && spot.y >= 0, "not past the top left");
+    assert.ok(spot.x + spot.width <= 800, "not past the right");
+    assert.ok(spot.y + spot.height <= 600, "not past the bottom");
+  }
+});
+
+test("has nothing to place when nothing overflowed", () => {
+  assert.deepEqual(overflowRects([], { x: 0, y: 0, width: 800, height: 600 }, { x: 0, y: 0, width: 800, height: 600 }, 40), []);
 });
 
 test("works out which cell the pointer is over", () => {

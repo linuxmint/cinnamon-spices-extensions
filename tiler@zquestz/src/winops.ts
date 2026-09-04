@@ -11,6 +11,7 @@ import type { TileMode } from "./pushtile.ts";
 const Cinnamon = imports.gi.Cinnamon;
 const Main = imports.ui.main;
 const Meta = imports.gi.Meta;
+const St = imports.gi.St;
 
 export type MetaWindow = imports.gi.Meta.Window;
 
@@ -168,6 +169,11 @@ export function isPrimaryMonitor(monitorIndex: number): boolean {
   return monitorIndex === Main.layoutManager.primaryIndex;
 }
 
+/** How much the display scales what is drawn on it, for sizing in pixels. */
+export function displayScale(): number {
+  return St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
+}
+
 /** The whole of a monitor, or nothing if there is no such monitor. */
 export function monitorBounds(monitorIndex: number): Rect | null {
   const monitor = Main.layoutManager.monitors[monitorIndex];
@@ -252,6 +258,19 @@ export function tile(window: MetaWindow, rect: Rect, maximize: boolean): void {
   // Some windows, terminals in particular, only settle at the new position
   // once they have been resized, so ask a second time.
   window.move_frame(true, rect.x, rect.y);
+}
+
+/** Takes a window out of the way, for one that could not be tiled. */
+export function minimizeWindow(window: MetaWindow): void {
+  window.minimize();
+}
+
+/**
+ * Lifts a window above the others. Used for windows gathered into a pile or
+ * a cascade, which are of no use where they cannot be seen.
+ */
+export function raiseWindow(window: MetaWindow): void {
+  window.raise();
 }
 
 /** Cinnamon's own tiling shortcuts, and the way each one pushes a window. */

@@ -225,24 +225,53 @@ test("every auto-tile arrangement obeys the laws", () => {
                   one.x + one.width <= two.x &&
                   one.y < two.y + two.height &&
                   two.y < one.y + one.height;
-                if (besides) {
-                  separations.push(two.x - (one.x + one.width));
+                if (!besides) {
+                  continue;
+                }
+
+                // Neighbours only: with cells cut inside cells, two windows
+                // can face each other across a third, and the air between
+                // them then belongs to that one, not to a gap.
+                const left = one.x + one.width;
+                const right = two.x;
+                const top = Math.max(one.y, two.y);
+                const bottom = Math.min(one.y + one.height, two.y + two.height);
+                const between = rects.some(
+                  (r) =>
+                    r !== one &&
+                    r !== two &&
+                    r.x < right &&
+                    r.x + r.width > left &&
+                    r.y < bottom &&
+                    r.y + r.height > top,
+                );
+                if (!between) {
+                  separations.push(right - left);
                 }
               }
             }
 
+            // A cell can only afford the full gap when it is at least four
+            // times as long as the gap along the side being cut, so
+            // uniformity is only owed while the smallest cell has that room.
+            // The ceiling holds regardless.
+            const smallest = Math.min(
+              ...rects.map((r) => Math.min(r.width, r.height)),
+            );
             for (const gap of separations) {
-              assert.equal(gap, separations[0], `${name}: side gaps differ`);
               assert.ok(gap <= window, `${name}: side gap exceeds the ask`);
+              if (smallest >= 4 * window) {
+                assert.equal(gap, separations[0], `${name}: side gaps differ`);
+              }
             }
             if (count >= 2 && window >= 1) {
               assert.ok(
                 separations.length > 0,
                 `${name}: no side-by-side neighbours`,
               );
-              // Room for the tallest stack to keep pixel tracks and gaps
-              // even after the edge insets have taken their share.
-              if (area.height >= 7 * count) {
+              // Room for the cuts to keep pixel cells and gaps even after
+              // the edge insets have taken their share.
+              if (smallest >= 4) {
                 assert.ok(
                   separations[0] >= 1,
                   `${name}: the sweep's gap was talked away`,

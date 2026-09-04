@@ -3,11 +3,18 @@
  * action they drive.
  */
 
-import { autotileRects } from "./autotile.ts";
+import { assignCells, autotileRects, refusesCell } from "./autotile.ts";
 import type { AutotileMode } from "./autotile.ts";
 import { Config } from "./config.ts";
-import { cellRangeToRect, coversFullGrid } from "./geometry.ts";
-import type { CellRange, Direction, Gaps, GridSize, Rect } from "./geometry.ts";
+import { cellRangeToRect, coversFullGrid, overflowRects } from "./geometry.ts";
+import type {
+  CellRange,
+  Direction,
+  Gaps,
+  GridSize,
+  Rect,
+  Size,
+} from "./geometry.ts";
 import type { Preset } from "./preset.ts";
 import { Overlay } from "./overlay.ts";
 import {
@@ -20,14 +27,17 @@ import type { PushNote } from "./pushtile.ts";
 import { getUsableArea, hasReserved } from "./workarea.ts";
 import type { Reserved } from "./workarea.ts";
 import {
+  displayScale,
   frameOf,
   getTargetWindow,
   isMaximized,
   isPrimaryMonitor,
   isResizeable,
   listTileableWindows,
+  minimizeWindow,
   monitorBounds,
   monitorOf,
+  raiseWindow,
   releasePushTileKeys,
   releaseWindow,
   takePushTileKeys,
@@ -56,6 +66,9 @@ const UNBOUND = "::";
  * something unusable, Tiler does nothing at all.
  */
 const MIN_TILE_AREA = 250;
+
+/** How far each cascaded overflow window is offset from the one before it. */
+const CASCADE_STEP = 32;
 
 /**
  * What Tiler is working on while the grid is up.
@@ -353,6 +366,14 @@ export class App {
    * but they are placed into the area and spacing this session was opened
    * with, like any other placement. The grid's own window leads when it is
    * still among them; otherwise the most recent one does.
+   *
+   * Nothing says beforehand how small a window will go, so placing it is
+   * what finds out: a window that refuses its cell comes back at the
+   * smallest size it accepts, and the arrangement is planned again around
+   * that, trading it a larger cell for one that will shrink. A window that
+   * fits no cell at all is set aside and put back where it was. Each pass
+   * either finishes, learns a window's size, or sets one aside, and all of
+   * them happen before anything is drawn.
    */
   private onAutotile = (mode: AutotileMode): void => {
     const session = this.takeSession();
@@ -374,19 +395,110 @@ export class App {
       windows.unshift(session.window);
     }
 
-    const rects = autotileRects(mode, windows.length, session.area, session.gaps);
-
-    // A lone window filling the whole area is the maximize case.
-    const fillsArea = this.fillsWholeArea(
-      windows.length === 1,
-      session.gaps,
-      session.reserved,
+    const before = new Map(
+      windows.map((window): [MetaWindow, Rect] => [window, frameOf(window)]),
     );
+    const needs = new Map<MetaWindow, Size>();
+    let arranged = windows;
 
-    windows.forEach((window, index) => {
-      this.placeWindow(window, rects[index], fillsArea);
-    });
+    // Each pass either sets a window aside or learns one's size, and neither
+    // can happen to the same window twice, so twice the count is more passes
+    // than can ever be needed. The bound is a guard, not an expectation.
+    for (let pass = 0; pass <= windows.length * 2; pass++) {
+      const rects = autotileRects(
+        mode,
+        arranged.length,
+        session.area,
+        session.gaps,
+      );
+      const plan = assignCells(
+        rects,
+        arranged.map((window) => needs.get(window) ?? null),
+      );
+
+      if (plan.left.length > 0) {
+        const aside = new Set(plan.left.map((index) => arranged[index]));
+        arranged = arranged.filter((window) => !aside.has(window));
+        continue;
+      }
+
+      // A lone window filling the whole area is the maximize case.
+      const fillsArea = this.fillsWholeArea(
+        arranged.length === 1,
+        session.gaps,
+        session.reserved,
+      );
+      let refused = false;
+      arranged.forEach((window, index) => {
+        const target = rects[plan.cell[index]];
+        this.placeWindow(window, target, fillsArea);
+
+        // The leader keeps its cell whatever it needs, so a refusal from it
+        // is nothing to plan around: noting it would only re-plan to the
+        // same arrangement, pass after pass. Every other window can be given
+        // a larger cell, so its refusal is worth learning.
+        const frame = frameOf(window);
+        if (index > 0 && refusesCell(frame, target)) {
+          needs.set(window, { width: frame.width, height: frame.height });
+          refused = true;
+        }
+      });
+      if (!refused) {
+        break;
+      }
+    }
+
+    const overflow = windows.filter((window) => !arranged.includes(window));
+    this.handleOverflow(overflow, before, session);
   };
+
+  /**
+   * Deals with the windows an arrangement had no room to tile, however the
+   * user has asked for them to be dealt with: left where they were, taken
+   * out of the way, or gathered around the middle in a pile or a cascade.
+   */
+  private handleOverflow(
+    overflow: MetaWindow[],
+    before: Map<MetaWindow, Rect>,
+    session: Session,
+  ): void {
+    const mode = this.config.overflowWindows;
+
+    if (mode === "minimize") {
+      overflow.forEach((window) => minimizeWindow(window));
+      return;
+    }
+
+    if (mode === "center" || mode === "cascade") {
+      const sizes = overflow.map((window) => {
+        const home = before.get(window) ?? frameOf(window);
+        return { width: home.width, height: home.height };
+      });
+      const step =
+        mode === "cascade" ? Math.round(CASCADE_STEP * displayScale()) : 0;
+      const bounds = monitorBounds(session.monitorIndex) ?? session.area;
+      const spots = overflowRects(sizes, session.area, bounds, step);
+      overflow.forEach((window, index) => {
+        this.placeWindow(window, spots[index], false);
+      });
+
+      // Raised above the tiled windows, where gathering the pile would
+      // otherwise be no use. Raised most recent last, so the window most
+      // likely wanted sits on top rather than buried under the older ones.
+      for (let i = overflow.length - 1; i >= 0; i--) {
+        raiseWindow(overflow[i]);
+      }
+      return;
+    }
+
+    // Ignored: put each back where it was before the arrangement touched it.
+    overflow.forEach((window) => {
+      const home = before.get(window);
+      if (home) {
+        this.placeWindow(window, home, false);
+      }
+    });
+  }
 
   /**
    * One of Cinnamon's tiling shortcuts, answered Tiler's way.

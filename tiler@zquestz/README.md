@@ -34,11 +34,15 @@ scratch for modern Cinnamon.
   middle, for a wide window between two narrow ones. Each grid can be given a
   name and a description of its own.
 - **Auto-tile**: one press arranges every window on the workspace at once:
-  a main window beside a stack, or everything shared into two equal columns,
-  either way led from whichever side you prefer. Minimized windows are left
-  alone; buried ones are dug out and given a place. Auto-tiled windows honor
-  the same gaps and reserved space as everything else, and the action row
-  can be hidden if you never use it.
+  a main window beside the rest, or everything shared out equally, either
+  way led from whichever side you prefer. Every window after the first
+  halves the largest cell rather than adding a row, so cells stay even and
+  keep the shape of the screen. A window that cannot shrink into its cell is
+  given a larger one instead, and one that fits nowhere is left where it was,
+  minimized, centered, or cascaded, whichever you choose. Minimized windows
+  are left alone; buried ones are dug out and given a place. Auto-tiled
+  windows honor the same gaps and reserved space as everything else, and the
+  action row can be hidden if you never use it.
 - **Window spacing**: pixel-perfect gaps, configured separately for
   window-to-window and window-to-screen-edge. Adjacent windows get exactly
   the configured gap (no doubled inner gaps). Neither kind of gap takes up

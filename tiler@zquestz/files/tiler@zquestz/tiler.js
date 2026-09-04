@@ -164,6 +164,20 @@ function centerOn(size, target, bounds) {
     height
   };
 }
+function overflowRects(sizes, area, bounds, step) {
+  const shift = toFinite(step);
+  const middle = (sizes.length - 1) / 2;
+  return sizes.map((size, index) => {
+    const offset = shift * (index - middle);
+    const spot = {
+      x: toFinite(area.x) + offset,
+      y: toFinite(area.y) + offset,
+      width: toFinite(area.width),
+      height: toFinite(area.height)
+    };
+    return centerOn(size, spot, bounds);
+  });
+}
 function trackAt(offset, length, spans, spacing) {
   const point = toFinite(offset);
   const gap = Math.max(0, toFinite(spacing));
@@ -224,53 +238,118 @@ function coversFullGrid(grid, range) {
 }
 
 // src/autotile.ts
-function columns(rows) {
-  return { cols: [1, 1], rows: new Array(Math.max(1, rows)).fill(1) };
+var WHOLE = { cols: [1], rows: [1] };
+var SIDE_BY_SIDE = { cols: [1, 1], rows: [1] };
+var STACKED = { cols: [1], rows: [1, 1] };
+function cell(col, row) {
+  return { col, row, colEnd: col, rowEnd: row };
 }
-function cell(col, row, colEnd = col, rowEnd = row) {
-  return { col, row, colEnd, rowEnd };
+function areaOf(size) {
+  return size.width * size.height;
 }
-function mainAndStack(side, count, area, gaps) {
-  const stacked = count - 1;
-  const grid = columns(stacked);
-  const mainCol = side === "left" ? 0 : 1;
-  const stackCol = 1 - mainCol;
-  const rects = [
-    cellRangeToRect(area, grid, cell(mainCol, 0, mainCol, stacked - 1), gaps)
+function fits(need, rect) {
+  return need.width <= rect.width && need.height <= rect.height;
+}
+function halve(rect, sideBySide, gap) {
+  const grid = sideBySide ? SIDE_BY_SIDE : STACKED;
+  const gaps = { window: gap, edge: 0 };
+  const second = sideBySide ? cell(1, 0) : cell(0, 1);
+  return [
+    cellRangeToRect(rect, grid, cell(0, 0), gaps),
+    cellRangeToRect(rect, grid, second, gaps)
   ];
-  for (let row = 0; row < stacked; row++) {
-    rects.push(cellRangeToRect(area, grid, cell(stackCol, row), gaps));
-  }
-  return rects;
 }
-function equal(side, count, area, gaps) {
-  const rows = Math.ceil(count / 2);
-  const grid = columns(rows);
-  const leadRows = count % 2 === 1 ? 2 : 1;
-  const leadCol = side === "left" ? 0 : 1;
-  const farCol = 1 - leadCol;
-  const rects = [
-    cellRangeToRect(area, grid, cell(leadCol, 0, leadCol, leadRows - 1), gaps)
-  ];
-  let placed = 1;
-  for (let row = 0; row < rows && placed < count; row++, placed++) {
-    rects.push(cellRangeToRect(area, grid, cell(farCol, row), gaps));
+function cut(rect, gap) {
+  return halve(rect, rect.width >= rect.height, gap);
+}
+function largest(cells, from) {
+  let pick = from;
+  for (let i = from + 1; i < cells.length; i++) {
+    if (areaOf(cells[i]) >= areaOf(cells[pick])) {
+      pick = i;
+    }
   }
-  for (let row = leadRows; row < rows && placed < count; row++, placed++) {
-    rects.push(cellRangeToRect(area, grid, cell(leadCol, row), gaps));
-  }
-  return rects;
+  return pick;
+}
+function mirror(rect, area) {
+  return {
+    x: area.x + area.width - (rect.x - area.x) - rect.width,
+    y: rect.y,
+    width: rect.width,
+    height: rect.height
+  };
 }
 function autotileRects(mode, count, area, gaps) {
   const wanted = Math.floor(toFinite(count));
   if (wanted <= 0) {
     return [];
   }
+  const whole = cellRangeToRect(area, WHOLE, cell(0, 0), gaps);
   if (wanted === 1) {
-    return [cellRangeToRect(area, { cols: [1], rows: [1] }, cell(0, 0), gaps)];
+    return [whole];
   }
-  const side = mode.endsWith("left") ? "left" : "right";
-  return mode.startsWith("equal") ? equal(side, wanted, area, gaps) : mainAndStack(side, wanted, area, gaps);
+  const main = mode.startsWith("main");
+  const cells = main ? halve(whole, true, gaps.window) : [whole];
+  const immune = main ? 1 : 0;
+  while (cells.length < wanted) {
+    const at = largest(cells, immune);
+    const [kept, made] = cut(cells[at], gaps.window);
+    cells[at] = kept;
+    cells.push(made);
+  }
+  return mode.endsWith("right") ? cells.map((rect) => mirror(rect, area)) : cells;
+}
+function refusesCell(frame, rect) {
+  return frame.width > rect.width || frame.height > rect.height;
+}
+function assignCells(cells, needs) {
+  const cell_ = cells.map(() => -1);
+  const free = new Set(cells.map((_2, index) => index));
+  const left = [];
+  const take = (window, at) => {
+    cell_[window] = at;
+    free.delete(at);
+  };
+  const biggestFree = (need) => {
+    let best = -1;
+    for (const at of free) {
+      if (!fits(need, cells[at])) {
+        continue;
+      }
+      if (best < 0 || areaOf(cells[at]) > areaOf(cells[best])) {
+        best = at;
+      }
+    }
+    return best;
+  };
+  if (cells.length === 0) {
+    return { cell: cell_, left };
+  }
+  take(0, 0);
+  const constrained = needs.flatMap((need, index) => need && index > 0 ? [{ need, index }] : []).sort((a, b) => areaOf(b.need) - areaOf(a.need) || a.index - b.index);
+  for (const { need, index } of constrained) {
+    const own = free.has(index) && fits(need, cells[index]);
+    const at = own ? index : biggestFree(need);
+    if (at < 0) {
+      left.push(index);
+    } else {
+      take(index, at);
+    }
+  }
+  const rest = needs.flatMap(
+    (need, index) => need || index === 0 ? [] : [index]
+  );
+  for (const index of rest) {
+    if (free.has(index)) {
+      take(index, index);
+    }
+  }
+  for (const index of rest) {
+    if (cell_[index] < 0) {
+      take(index, Math.min(...free));
+    }
+  }
+  return { cell: cell_, left };
 }
 
 // src/preset.ts
@@ -347,6 +426,7 @@ var Config = class {
     this.rawTileDialogs = false;
     this.rawTileToolboxes = false;
     this.rawShowAutotile = true;
+    this.rawOverflowWindows = "ignore";
     this.rawWindowGap = 0;
     this.rawEdgeGap = 0;
     this.rawReservedScope = "all";
@@ -361,6 +441,7 @@ var Config = class {
     this.settings.bind("tile-dialogs", "rawTileDialogs");
     this.settings.bind("tile-toolboxes", "rawTileToolboxes");
     this.settings.bind("show-autotile", "rawShowAutotile");
+    this.settings.bind("overflow-windows", "rawOverflowWindows");
     this.settings.bind("window-gap", "rawWindowGap");
     this.settings.bind("edge-gap", "rawEdgeGap");
     this.settings.bind("reserved-scope", "rawReservedScope");
@@ -417,6 +498,17 @@ var Config = class {
   }
   get reservedScope() {
     return this.rawReservedScope === "primary" ? "primary" : "all";
+  }
+  /** What to do with windows an arrangement could not find room for. */
+  get overflowWindows() {
+    switch (this.rawOverflowWindows) {
+      case "minimize":
+      case "center":
+      case "cascade":
+        return this.rawOverflowWindows;
+      default:
+        return "ignore";
+    }
   }
   /** Whether Cinnamon's own tiling shortcuts are placed Tiler's way. */
   get usePushTile() {
@@ -580,6 +672,7 @@ function readPushState(maximized, frame, noted, managerMode) {
 var Cinnamon = imports.gi.Cinnamon;
 var Main = imports.ui.main;
 var Meta = imports.gi.Meta;
+var St = imports.gi.St;
 function isTileableType(type, filter) {
   switch (type) {
     case Meta.WindowType.NORMAL:
@@ -664,6 +757,9 @@ function frameOf(window) {
 function isPrimaryMonitor(monitorIndex) {
   return monitorIndex === Main.layoutManager.primaryIndex;
 }
+function displayScale() {
+  return St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
+}
 function monitorBounds(monitorIndex) {
   const monitor = Main.layoutManager.monitors[monitorIndex];
   if (!monitor) {
@@ -704,6 +800,12 @@ function tile(window, rect, maximize) {
   window.move_resize_frame(true, rect.x, rect.y, rect.width, rect.height);
   window.move_frame(true, rect.x, rect.y);
 }
+function minimizeWindow(window) {
+  window.minimize();
+}
+function raiseWindow(window) {
+  window.raise();
+}
 var PUSH_KEYS = [
   { name: "push-tile-left", direction: "left" },
   { name: "push-tile-right", direction: "right" },
@@ -725,7 +827,7 @@ function releasePushTileKeys() {
 
 // src/overlay.ts
 var Main2 = imports.ui.main;
-var St = imports.gi.St;
+var St2 = imports.gi.St;
 var Pango = imports.gi.Pango;
 var Tooltips = imports.ui.tooltips;
 var PANEL_WIDTH = 320;
@@ -889,7 +991,7 @@ var Overlay = class {
     };
     this.options = options;
     this.chosen = options.chosen;
-    const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
+    const scale = St2.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
     const spacing = Math.max(1, Math.round(CELL_SPACING * scale));
     this.scale = scale;
     this.spacing = spacing;
@@ -899,14 +1001,14 @@ var Overlay = class {
     this.chipStyle = `background-color: ${rgba(colours.text, OPACITY.cellFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, OPACITY.text)};`;
     this.hoverChipStyle = `background-color: ${rgba(colours.text, OPACITY.chipHoverFill)}; border: ${BORDER.cell}px solid ${rgba(colours.text, OPACITY.cellBorder)}; color: ${rgba(colours.text, OPACITY.textBright)};`;
     this.chosenChipStyle = `background-color: ${rgba(colours.accent, OPACITY.chosenFill)}; border: ${BORDER.cell}px solid ${rgba(colours.accent, OPACITY.chosenBorder)}; color: ${rgba(colours.onAccent, 1)};`;
-    this.elsewhere = new St.Widget({ reactive: true });
+    this.elsewhere = new St2.Widget({ reactive: true });
     this.elsewhere.set_position(0, 0);
     this.elsewhere.set_size(global.screen_width, global.screen_height);
     this.elsewhere.connect("button-press-event", () => {
       options.onClose();
       return true;
     });
-    this.preview = new St.Widget({ style_class: "tiler-preview" });
+    this.preview = new St2.Widget({ style_class: "tiler-preview" });
     this.preview.set_style(
       `background-color: ${rgba(colours.accent, OPACITY.previewFill)}; border: ${BORDER.preview}px solid ${rgba(colours.accent, OPACITY.previewBorder)};`
     );
@@ -915,7 +1017,7 @@ var Overlay = class {
     this.grid = this.buildGrid();
     this.strip = this.buildStrip();
     this.actions = options.autotile ? this.buildActions() : null;
-    this.panel = new St.BoxLayout({
+    this.panel = new St2.BoxLayout({
       style_class: "tiler-panel",
       vertical: true,
       reactive: true
@@ -981,15 +1083,15 @@ var Overlay = class {
     const height = Math.round(width * shape);
     const colSizes = trackSizes(width, grid.cols, spacing);
     const rowSizes = trackSizes(height, grid.rows, spacing);
-    const table = new St.BoxLayout({ vertical: true });
+    const table = new St2.BoxLayout({ vertical: true });
     table.set_style(`spacing: ${spacing}px;`);
     this.cells = [];
     for (let row = 0; row < rows; row++) {
-      const line = new St.BoxLayout();
+      const line = new St2.BoxLayout();
       line.set_style(`spacing: ${spacing}px;`);
       const built = [];
       for (let col = 0; col < cols; col++) {
-        const cell2 = new St.Widget({ style_class: "tiler-cell" });
+        const cell2 = new St2.Widget({ style_class: "tiler-cell" });
         cell2.set_style(this.inactiveCellStyle);
         cell2.set_size(colSizes[col], rowSizes[row]);
         line.add_child(cell2);
@@ -1014,7 +1116,7 @@ var Overlay = class {
    * press there should not read as reaching for a cell.
    */
   buildHeader(text) {
-    const header = new St.BoxLayout({
+    const header = new St2.BoxLayout({
       style_class: "tiler-header",
       reactive: true
     });
@@ -1031,7 +1133,7 @@ var Overlay = class {
         )
       );
     }
-    const title = new St.Label({ text: titleOf(this.options.window) });
+    const title = new St2.Label({ text: titleOf(this.options.window) });
     title.clutter_text.ellipsize = Pango.EllipsizeMode.END;
     title.set_style(`color: ${rgba(text, OPACITY.text)};`);
     header.add_child(title);
@@ -1051,9 +1153,9 @@ var Overlay = class {
    * row, with the tooltip there to say the whole of it.
    */
   makeChip(label, width, tooltip) {
-    const text = new St.Label({ text: label });
+    const text = new St2.Label({ text: label });
     text.clutter_text.ellipsize = Pango.EllipsizeMode.END;
-    const chip = new St.Button({
+    const chip = new St2.Button({
       style_class: "tiler-chip",
       reactive: true,
       track_hover: true
@@ -1067,7 +1169,7 @@ var Overlay = class {
   }
   /** Builds the strip of grids to pick from. */
   buildStrip() {
-    const strip = new St.BoxLayout({ style_class: "tiler-strip" });
+    const strip = new St2.BoxLayout({ style_class: "tiler-strip" });
     strip.set_style(`spacing: ${this.spacing}px;`);
     const presets = this.options.presets;
     const each = this.chipWidth(presets.length);
@@ -1091,34 +1193,34 @@ var Overlay = class {
    * each chip explains itself on hover.
    */
   buildActions() {
-    const row = new St.BoxLayout({ style_class: "tiler-actions" });
+    const row = new St2.BoxLayout({ style_class: "tiler-actions" });
     row.set_style(`spacing: ${this.spacing}px;`);
     const arrangements = [
       {
         label: _("Main Left"),
         tooltip: _(
-          "The focused window fills the left half, and the rest stack on the right."
+          "The focused window keeps the left half. The rest share the right, each newcomer halving the largest cell."
         ),
         mode: "main-left"
       },
       {
         label: _("Main Right"),
         tooltip: _(
-          "The focused window fills the right half, and the rest stack on the left."
+          "The focused window keeps the right half. The rest share the left, each newcomer halving the largest cell."
         ),
         mode: "main-right"
       },
       {
         label: _("Equal Left"),
         tooltip: _(
-          "Every window shares two equal columns, led from the top left."
+          "Every window shares the screen, led from the left, each newcomer halving the largest cell."
         ),
         mode: "equal-left"
       },
       {
         label: _("Equal Right"),
         tooltip: _(
-          "Every window shares two equal columns, led from the top right."
+          "Every window shares the screen, led from the right, each newcomer halving the largest cell."
         ),
         mode: "equal-right"
       }
@@ -1327,6 +1429,7 @@ var SignalManager = imports.misc.signalManager;
 var HOTKEY_NAME = "tiler-tile";
 var UNBOUND = "::";
 var MIN_TILE_AREA = 250;
+var CASCADE_STEP = 32;
 var App = class {
   constructor(uuid2) {
     this.signals = new SignalManager.SignalManager(null);
@@ -1440,6 +1543,14 @@ var App = class {
      * but they are placed into the area and spacing this session was opened
      * with, like any other placement. The grid's own window leads when it is
      * still among them; otherwise the most recent one does.
+     *
+     * Nothing says beforehand how small a window will go, so placing it is
+     * what finds out: a window that refuses its cell comes back at the
+     * smallest size it accepts, and the arrangement is planned again around
+     * that, trading it a larger cell for one that will shrink. A window that
+     * fits no cell at all is set aside and put back where it was. Each pass
+     * either finishes, learns a window's size, or sets one aside, and all of
+     * them happen before anything is drawn.
      */
     this.onAutotile = (mode) => {
       const session = this.takeSession();
@@ -1458,15 +1569,48 @@ var App = class {
         windows.splice(lead, 1);
         windows.unshift(session.window);
       }
-      const rects = autotileRects(mode, windows.length, session.area, session.gaps);
-      const fillsArea = this.fillsWholeArea(
-        windows.length === 1,
-        session.gaps,
-        session.reserved
+      const before = new Map(
+        windows.map((window) => [window, frameOf(window)])
       );
-      windows.forEach((window, index) => {
-        this.placeWindow(window, rects[index], fillsArea);
-      });
+      const needs = /* @__PURE__ */ new Map();
+      let arranged = windows;
+      for (let pass = 0; pass <= windows.length * 2; pass++) {
+        const rects = autotileRects(
+          mode,
+          arranged.length,
+          session.area,
+          session.gaps
+        );
+        const plan = assignCells(
+          rects,
+          arranged.map((window) => needs.get(window) ?? null)
+        );
+        if (plan.left.length > 0) {
+          const aside = new Set(plan.left.map((index) => arranged[index]));
+          arranged = arranged.filter((window) => !aside.has(window));
+          continue;
+        }
+        const fillsArea = this.fillsWholeArea(
+          arranged.length === 1,
+          session.gaps,
+          session.reserved
+        );
+        let refused = false;
+        arranged.forEach((window, index) => {
+          const target = rects[plan.cell[index]];
+          this.placeWindow(window, target, fillsArea);
+          const frame = frameOf(window);
+          if (index > 0 && refusesCell(frame, target)) {
+            needs.set(window, { width: frame.width, height: frame.height });
+            refused = true;
+          }
+        });
+        if (!refused) {
+          break;
+        }
+      }
+      const overflow = windows.filter((window) => !arranged.includes(window));
+      this.handleOverflow(overflow, before, session);
     };
     /**
      * One of Cinnamon's tiling shortcuts, answered Tiler's way.
@@ -1621,6 +1765,40 @@ var App = class {
     const session = this.session;
     this.closeOverlay();
     return session;
+  }
+  /**
+   * Deals with the windows an arrangement had no room to tile, however the
+   * user has asked for them to be dealt with: left where they were, taken
+   * out of the way, or gathered around the middle in a pile or a cascade.
+   */
+  handleOverflow(overflow, before, session) {
+    const mode = this.config.overflowWindows;
+    if (mode === "minimize") {
+      overflow.forEach((window) => minimizeWindow(window));
+      return;
+    }
+    if (mode === "center" || mode === "cascade") {
+      const sizes = overflow.map((window) => {
+        const home = before.get(window) ?? frameOf(window);
+        return { width: home.width, height: home.height };
+      });
+      const step = mode === "cascade" ? Math.round(CASCADE_STEP * displayScale()) : 0;
+      const bounds = monitorBounds(session.monitorIndex) ?? session.area;
+      const spots = overflowRects(sizes, session.area, bounds, step);
+      overflow.forEach((window, index) => {
+        this.placeWindow(window, spots[index], false);
+      });
+      for (let i = overflow.length - 1; i >= 0; i--) {
+        raiseWindow(overflow[i]);
+      }
+      return;
+    }
+    overflow.forEach((window) => {
+      const home = before.get(window);
+      if (home) {
+        this.placeWindow(window, home, false);
+      }
+    });
   }
 };
 

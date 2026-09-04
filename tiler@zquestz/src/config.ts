@@ -17,6 +17,9 @@ const Settings = imports.ui.settings;
 /** Which monitors reserved space applies to. */
 export type ReservedScope = "all" | "primary";
 
+/** What becomes of a window an arrangement had no room to tile. */
+export type OverflowMode = "ignore" | "minimize" | "center" | "cascade";
+
 /**
  * The bound fields below are private and every reader goes through one of the
  * accessors, which coerce as they go, so whatever leaves this module is of
@@ -36,6 +39,7 @@ export class Config {
   private readonly rawTileDialogs: boolean = false;
   private readonly rawTileToolboxes: boolean = false;
   private readonly rawShowAutotile: boolean = true;
+  private readonly rawOverflowWindows: OverflowMode = "ignore";
   private readonly rawWindowGap: number = 0;
   private readonly rawEdgeGap: number = 0;
   private readonly rawReservedScope: ReservedScope = "all";
@@ -68,6 +72,7 @@ export class Config {
     this.settings.bind("tile-dialogs", "rawTileDialogs");
     this.settings.bind("tile-toolboxes", "rawTileToolboxes");
     this.settings.bind("show-autotile", "rawShowAutotile");
+    this.settings.bind("overflow-windows", "rawOverflowWindows");
     this.settings.bind("window-gap", "rawWindowGap");
     this.settings.bind("edge-gap", "rawEdgeGap");
     this.settings.bind("reserved-scope", "rawReservedScope");
@@ -141,6 +146,18 @@ export class Config {
 
   public get reservedScope(): ReservedScope {
     return this.rawReservedScope === "primary" ? "primary" : "all";
+  }
+
+  /** What to do with windows an arrangement could not find room for. */
+  public get overflowWindows(): OverflowMode {
+    switch (this.rawOverflowWindows) {
+      case "minimize":
+      case "center":
+      case "cascade":
+        return this.rawOverflowWindows;
+      default:
+        return "ignore";
+    }
   }
 
   /** Whether Cinnamon's own tiling shortcuts are placed Tiler's way. */

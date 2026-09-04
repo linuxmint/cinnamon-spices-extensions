@@ -539,28 +539,28 @@ export class Overlay {
       {
         label: _("Main Left"),
         tooltip: _(
-          "The focused window fills the left half, and the rest stack on the right.",
+          "The focused window keeps the left half. The rest share the right, each newcomer halving the largest cell.",
         ),
         mode: "main-left",
       },
       {
         label: _("Main Right"),
         tooltip: _(
-          "The focused window fills the right half, and the rest stack on the left.",
+          "The focused window keeps the right half. The rest share the left, each newcomer halving the largest cell.",
         ),
         mode: "main-right",
       },
       {
         label: _("Equal Left"),
         tooltip: _(
-          "Every window shares two equal columns, led from the top left.",
+          "Every window shares the screen, led from the left, each newcomer halving the largest cell.",
         ),
         mode: "equal-left",
       },
       {
         label: _("Equal Right"),
         tooltip: _(
-          "Every window shares two equal columns, led from the top right.",
+          "Every window shares the screen, led from the right, each newcomer halving the largest cell.",
         ),
         mode: "equal-right",
       },

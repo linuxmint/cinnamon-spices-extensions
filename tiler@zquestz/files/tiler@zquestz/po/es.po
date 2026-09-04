@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2026-08-21 16:03-1000\n"
+"POT-Creation-Date: 2026-09-03 17:29-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,47 +16,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. tiler.js:1095
+#. tiler.js:1200
 msgid "Main Left"
 msgstr "Principal izq."
 
-#. tiler.js:1097
+#. tiler.js:1202
 msgid ""
-"The focused window fills the left half, and the rest stack on the right."
+"The focused window keeps the left half. The rest share the right, each "
+"newcomer halving the largest cell."
 msgstr ""
-"La ventana enfocada ocupa la mitad izquierda y las demás se apilan a la "
-"derecha."
+"La ventana enfocada conserva la mitad izquierda. El resto comparte la "
+"derecha, y cada ventana nueva divide por la mitad la celda más grande."
 
-#. tiler.js:1102
+#. tiler.js:1207
 msgid "Main Right"
 msgstr "Principal dcha."
 
-#. tiler.js:1104
+#. tiler.js:1209
 msgid ""
-"The focused window fills the right half, and the rest stack on the left."
+"The focused window keeps the right half. The rest share the left, each "
+"newcomer halving the largest cell."
 msgstr ""
-"La ventana enfocada ocupa la mitad derecha y las demás se apilan a la "
-"izquierda."
+"La ventana enfocada conserva la mitad derecha. El resto comparte la "
+"izquierda, y cada ventana nueva divide por la mitad la celda más grande."
 
-#. tiler.js:1109
+#. tiler.js:1214
 msgid "Equal Left"
 msgstr "Igual izq."
 
-#. tiler.js:1111
-msgid "Every window shares two equal columns, led from the top left."
+#. tiler.js:1216
+msgid ""
+"Every window shares the screen, led from the left, each newcomer halving the "
+"largest cell."
 msgstr ""
-"Todas las ventanas se reparten en dos columnas iguales, empezando por arriba "
-"a la izquierda."
+"Todas las ventanas comparten la pantalla, empezando por la izquierda, y cada "
+"ventana nueva divide por la mitad la celda más grande."
 
-#. tiler.js:1116
+#. tiler.js:1221
 msgid "Equal Right"
 msgstr "Igual dcha."
 
-#. tiler.js:1118
-msgid "Every window shares two equal columns, led from the top right."
+#. tiler.js:1223
+msgid ""
+"Every window shares the screen, led from the right, each newcomer halving the"
+" largest cell."
 msgstr ""
-"Todas las ventanas se reparten en dos columnas iguales, empezando por arriba "
-"a la derecha."
+"Todas las ventanas comparten la pantalla, empezando por la derecha, y cada "
+"ventana nueva divide por la mitad la celda más grande."
 
 #. keybindings.py:26
 msgid "Arrows"
@@ -238,12 +244,43 @@ msgstr "Mostrar acciones de auto-mosaico en la cuadrícula"
 #. settings-schema.json->show-autotile->tooltip
 msgid ""
 "Adds a row of arrangements to the grid that tile every window on the "
-"workspace at once: a main window beside a stack, or everything shared out "
-"equally."
+"workspace at once: a main window beside the rest, or everything shared out "
+"equally, each newcomer halving the largest cell."
 msgstr ""
 "Añade a la cuadrícula una fila de disposiciones que colocan todas las "
-"ventanas del área de trabajo a la vez: una ventana principal junto a una "
-"pila, o todo repartido por igual."
+"ventanas del área de trabajo a la vez: una ventana principal junto al resto, "
+"o todo repartido por igual, y cada ventana nueva divide por la mitad la celda"
+" más grande."
+
+#. settings-schema.json->overflow-windows->description
+msgid "Windows that do not fit"
+msgstr "Ventanas que no caben"
+
+#. settings-schema.json->overflow-windows->tooltip
+msgid ""
+"When an auto-tile arrangement has no room for a window, this says what "
+"becomes of it: left where it was, taken out of the way, or gathered around "
+"the middle of the screen."
+msgstr ""
+"Cuando una disposición de mosaico no tiene sitio para una ventana, esto "
+"indica qué se hace con ella: dejarla donde estaba, apartarla o agruparla en "
+"el centro de la pantalla."
+
+#. settings-schema.json->overflow-windows->options
+msgid "Ignore"
+msgstr "Ignorar"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Minimize"
+msgstr "Minimizar"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Center"
+msgstr "Centrar"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Cascade"
+msgstr "Cascada"
 
 #. settings-schema.json->window-gap->units
 #. settings-schema.json->edge-gap->units

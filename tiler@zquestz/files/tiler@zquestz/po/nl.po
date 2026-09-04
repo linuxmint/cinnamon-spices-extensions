@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tiler@zquestz 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2026-08-21 16:03-1000\n"
+"POT-Creation-Date: 2026-09-03 17:29-1000\n"
 "PO-Revision-Date: 2026-07-28 19:50-1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,41 +16,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. tiler.js:1095
+#. tiler.js:1200
 msgid "Main Left"
 msgstr "Hoofd links"
 
-#. tiler.js:1097
+#. tiler.js:1202
 msgid ""
-"The focused window fills the left half, and the rest stack on the right."
-msgstr "Het actieve venster vult de linkerhelft, de rest stapelt rechts."
+"The focused window keeps the left half. The rest share the right, each "
+"newcomer halving the largest cell."
+msgstr ""
+"Het actieve venster houdt de linkerhelft. De rest deelt de rechterhelft, "
+"waarbij elk nieuw venster de grootste cel halveert."
 
-#. tiler.js:1102
+#. tiler.js:1207
 msgid "Main Right"
 msgstr "Hoofd rechts"
 
-#. tiler.js:1104
+#. tiler.js:1209
 msgid ""
-"The focused window fills the right half, and the rest stack on the left."
-msgstr "Het actieve venster vult de rechterhelft, de rest stapelt links."
+"The focused window keeps the right half. The rest share the left, each "
+"newcomer halving the largest cell."
+msgstr ""
+"Het actieve venster houdt de rechterhelft. De rest deelt de linkerhelft, "
+"waarbij elk nieuw venster de grootste cel halveert."
 
-#. tiler.js:1109
+#. tiler.js:1214
 msgid "Equal Left"
 msgstr "Gelijk links"
 
-#. tiler.js:1111
-msgid "Every window shares two equal columns, led from the top left."
+#. tiler.js:1216
+msgid ""
+"Every window shares the screen, led from the left, each newcomer halving the "
+"largest cell."
 msgstr ""
-"Alle vensters delen twee gelijke kolommen, aangevoerd vanaf linksboven."
+"Alle vensters delen het scherm, beginnend van links, waarbij elk nieuw "
+"venster de grootste cel halveert."
 
-#. tiler.js:1116
+#. tiler.js:1221
 msgid "Equal Right"
 msgstr "Gelijk rechts"
 
-#. tiler.js:1118
-msgid "Every window shares two equal columns, led from the top right."
+#. tiler.js:1223
+msgid ""
+"Every window shares the screen, led from the right, each newcomer halving the"
+" largest cell."
 msgstr ""
-"Alle vensters delen twee gelijke kolommen, aangevoerd vanaf rechtsboven."
+"Alle vensters delen het scherm, beginnend van rechts, waarbij elk nieuw "
+"venster de grootste cel halveert."
 
 #. keybindings.py:26
 msgid "Arrows"
@@ -231,12 +243,42 @@ msgstr "Automatisch tegelen tonen op het raster"
 #. settings-schema.json->show-autotile->tooltip
 msgid ""
 "Adds a row of arrangements to the grid that tile every window on the "
-"workspace at once: a main window beside a stack, or everything shared out "
-"equally."
+"workspace at once: a main window beside the rest, or everything shared out "
+"equally, each newcomer halving the largest cell."
 msgstr ""
-"Voegt een rij schikkingen aan het raster toe die alle vensters op de "
-"werkruimte in één keer tegelen: een hoofdvenster naast een stapel, of alles "
-"gelijk verdeeld."
+"Voegt een rij indelingen aan het raster toe die alle vensters op de "
+"werkruimte in één keer tegelen: een hoofdvenster naast de rest, of alles "
+"gelijk verdeeld, waarbij elk nieuw venster de grootste cel halveert."
+
+#. settings-schema.json->overflow-windows->description
+msgid "Windows that do not fit"
+msgstr "Vensters die niet passen"
+
+#. settings-schema.json->overflow-windows->tooltip
+msgid ""
+"When an auto-tile arrangement has no room for a window, this says what "
+"becomes of it: left where it was, taken out of the way, or gathered around "
+"the middle of the screen."
+msgstr ""
+"Wanneer een tegelindeling geen ruimte voor een venster heeft, bepaalt dit wat"
+" ermee gebeurt: laten staan, uit de weg zetten of in het midden van het "
+"scherm verzamelen."
+
+#. settings-schema.json->overflow-windows->options
+msgid "Ignore"
+msgstr "Negeren"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Minimize"
+msgstr "Minimaliseren"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Center"
+msgstr "Centreren"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Cascade"
+msgstr "Cascade"
 
 #. settings-schema.json->window-gap->units
 #. settings-schema.json->edge-gap->units

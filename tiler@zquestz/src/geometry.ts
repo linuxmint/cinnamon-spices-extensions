@@ -308,6 +308,37 @@ export function centerOn(size: Size, target: Rect, bounds: Rect): Rect {
 }
 
 /**
+ * Where to put windows that could not be tiled, each kept at its own size and
+ * gathered around the middle of `area`, held inside `bounds`. With `step` at
+ * zero they pile up concentric; with a step they cascade, the staircase
+ * centred so it sits balanced rather than trailing off one corner.
+ *
+ * The nth of `count` windows is offset by `step * (n - (count - 1) / 2)`, so
+ * the first and last lean equally far from the middle.
+ */
+export function overflowRects(
+  sizes: Size[],
+  area: Rect,
+  bounds: Rect,
+  step: number,
+): Rect[] {
+  const shift = toFinite(step);
+  const middle = (sizes.length - 1) / 2;
+
+  return sizes.map((size, index) => {
+    const offset = shift * (index - middle);
+    const spot: Rect = {
+      x: toFinite(area.x) + offset,
+      y: toFinite(area.y) + offset,
+      width: toFinite(area.width),
+      height: toFinite(area.height),
+    };
+
+    return centerOn(size, spot, bounds);
+  });
+}
+
+/**
  * Which track of an axis an offset along that axis falls in, judged against
  * the tracks as they are drawn: the space between two tracks belongs half to
  * each, so a point in a gutter reads as the nearer of its neighbours.
