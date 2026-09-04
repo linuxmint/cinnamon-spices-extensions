@@ -1,0 +1,7 @@
+{
+    "uuid": "panel-follow-mouse@mantve",
+    "name": "Panel Follow Mouse",
+    "description": "Moves a panel to whichever monitor the cursor hits at the panel's edge",
+    "version": "0.1",
+    "cinnamon-version": ["6.6"]
+}
