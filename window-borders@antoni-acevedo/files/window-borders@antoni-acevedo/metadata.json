@@ -1,0 +1,7 @@
+{
+    "uuid": "window-borders@antoni-acevedo",
+    "name": "Window Borders",
+    "description": "Añade un borde coloreado a todas las ventanas. Grosor, color y redondeo ajustables desde Configuración > Extensiones.",
+    "version": 1,
+    "cinnamon-version": ["6.6", "6.7", "6.8"]
+}
