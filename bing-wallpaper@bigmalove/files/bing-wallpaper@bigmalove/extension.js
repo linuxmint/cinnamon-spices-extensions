@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  *
  * Downloads the Bing "image of the day" and sets it as the desktop background.
- * Works on Cinnamon 5.x (libsoup 2.4) and Cinnamon 6.x (libsoup 3).
+ * Works on Cinnamon 5.4+ (libsoup 2.4 or 3).
  *
  * Lifecycle: init() -> enable() -> ... -> disable()
  * The object returned by enable() exposes the callbacks used by the buttons in
@@ -47,7 +47,7 @@ const IMAGE_FILE_PATTERN = /^\d{8}_.+\.jpe?g$/i;
 // Distance of the desktop image information from the edges of the work area (px).
 const OVERLAY_MARGIN = 24;
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+Gettext.bindtextdomain(UUID, GLib.build_filenamev([GLib.get_user_data_dir(), "locale"]));
 
 function _(str) {
     let translated = Gettext.dgettext(UUID, str);
@@ -415,8 +415,8 @@ class InfoOverlay {
         if (!monitor)
             return null;
         try {
-            let manager = global.workspace_manager || global.screen;
-            let area = manager.get_active_workspace().get_work_area_for_monitor(Main.layoutManager.primaryIndex);
+            let workspace = global.workspace_manager.get_active_workspace();
+            let area = workspace.get_work_area_for_monitor(Main.layoutManager.primaryIndex);
             if (area && area.width > 0)
                 return area;
         } catch (e) {
