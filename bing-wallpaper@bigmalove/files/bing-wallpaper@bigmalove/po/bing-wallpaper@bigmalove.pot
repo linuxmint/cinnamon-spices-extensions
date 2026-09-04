@@ -1,0 +1,316 @@
+# Bing Wallpaper - Cinnamon extension
+# This file is put in the public domain.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bing-wallpaper@bigmalove 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/bigmalove/cinnamon-bing-wallpaper/issues\n"
+"POT-Creation-Date: 2026-09-04 19:10+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: metadata.json->name
+msgid "Bing Wallpaper"
+msgstr ""
+
+#: metadata.json->description
+msgid "Downloads the Bing image of the day and sets it as your desktop wallpaper automatically"
+msgstr ""
+
+#: extension.js:478
+msgid "No Bing image has been downloaded yet."
+msgstr ""
+
+#: extension.js:755
+msgid "Could not update the Bing wallpaper"
+msgstr ""
+
+#: extension.js:756
+msgid "It will be retried automatically."
+msgstr ""
+
+#: extension.js:781
+msgid "The wallpaper is already up to date"
+msgstr ""
+
+#: extension.js:881
+msgid "Bing image of the day"
+msgstr ""
+
+#: settings-schema.json->layout->page-general->title
+msgid "General"
+msgstr ""
+
+#: settings-schema.json->layout->page-storage->title
+msgid "Storage and updates"
+msgstr ""
+
+#: settings-schema.json->layout->section-image->title
+msgid "Bing image"
+msgstr ""
+
+#: settings-schema.json->layout->section-desktop->title
+msgid "Desktop"
+msgstr ""
+
+#: settings-schema.json->layout->section-overlay->title
+msgid "Image information on the desktop"
+msgstr ""
+
+#: settings-schema.json->layout->section-actions->title
+msgid "Actions"
+msgstr ""
+
+#: settings-schema.json->layout->section-folder->title
+msgid "Download folder"
+msgstr ""
+
+#: settings-schema.json->layout->section-updates->title
+msgid "Update checks"
+msgstr ""
+
+#: settings-schema.json->market->description
+msgid "Bing region (market)"
+msgstr ""
+
+#: settings-schema.json->market->tooltip
+msgid "Some regions get a different image of the day. 'Automatic' follows the system language."
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Automatic (system language)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "China (zh-CN)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "United States (en-US)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "United Kingdom (en-GB)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Canada - English (en-CA)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Canada - French (fr-CA)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Australia (en-AU)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "New Zealand (en-NZ)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "India (en-IN)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Japan (ja-JP)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Germany (de-DE)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "France (fr-FR)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Spain (es-ES)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Italy (it-IT)"
+msgstr ""
+
+#: settings-schema.json->market->options
+msgid "Brazil (pt-BR)"
+msgstr ""
+
+#: settings-schema.json->resolution->description
+msgid "Image resolution"
+msgstr ""
+
+#: settings-schema.json->resolution->tooltip
+msgid "If the chosen resolution is not available for an image, 1920x1200 or 1920x1080 is used instead."
+msgstr ""
+
+#: settings-schema.json->resolution->options
+msgid "4K UHD (3840x2160)"
+msgstr ""
+
+#: settings-schema.json->resolution->options
+msgid "1920x1200"
+msgstr ""
+
+#: settings-schema.json->resolution->options
+msgid "1920x1080"
+msgstr ""
+
+#: settings-schema.json->resolution->options
+msgid "1366x768"
+msgstr ""
+
+#: settings-schema.json->picture-options->description
+msgid "Picture aspect"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Zoom"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Scaled"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Stretched"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Centered"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Spanned"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Mosaic"
+msgstr ""
+
+#: settings-schema.json->picture-options->options
+msgid "Keep the current system setting"
+msgstr ""
+
+#: settings-schema.json->notify-on-change->description
+msgid "Show a notification when the wallpaper changes"
+msgstr ""
+
+#: settings-schema.json->refresh-now->description
+msgid "Refresh now"
+msgstr ""
+
+#: settings-schema.json->show-info-overlay->description
+msgid "Show the title and copyright of the current image on the desktop"
+msgstr ""
+
+#: settings-schema.json->show-info-overlay->tooltip
+msgid "Plain text in the top-right corner of the primary monitor, below the panel. It sits on the desktop behind application windows."
+msgstr ""
+
+#: settings-schema.json->overlay-color->description
+msgid "Text color"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->description
+msgid "Text effect"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->tooltip
+msgid "Makes the text easier to read on bright or busy wallpapers."
+msgstr ""
+
+#: settings-schema.json->overlay-effect->options
+msgid "None"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->options
+msgid "Shadow"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->options
+msgid "Strong shadow"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->options
+msgid "Glow"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->options
+msgid "Outline"
+msgstr ""
+
+#: settings-schema.json->overlay-effect->options
+msgid "Background block"
+msgstr ""
+
+#: settings-schema.json->overlay-chars-per-line->description
+msgid "Characters per line"
+msgstr ""
+
+#: settings-schema.json->overlay-chars-per-line->tooltip
+msgid "Lines are broken after this many characters. Spaces are preferred as break points when there are any."
+msgstr ""
+
+#: settings-schema.json->overlay-chars-per-line->units
+msgid "characters"
+msgstr ""
+
+#: settings-schema.json->overlay-font-size->description
+msgid "Font size (0 = theme default)"
+msgstr ""
+
+#: settings-schema.json->overlay-font-size->units
+msgid "pt"
+msgstr ""
+
+#: settings-schema.json->open-bing->description
+msgid "Open the image description on Bing"
+msgstr ""
+
+#: settings-schema.json->open-folder->description
+msgid "Open the wallpaper folder"
+msgstr ""
+
+#: settings-schema.json->save-dir->description
+msgid "Save wallpapers to"
+msgstr ""
+
+#: settings-schema.json->save-dir->tooltip
+msgid "Leave empty to use the 'BingWallpapers' folder inside your Pictures folder."
+msgstr ""
+
+#: settings-schema.json->keep-count->description
+msgid "Number of downloaded images to keep"
+msgstr ""
+
+#: settings-schema.json->keep-count->tooltip
+msgid "Older Bing images in the download folder are deleted automatically. Other files are never touched."
+msgstr ""
+
+#: settings-schema.json->keep-count->units
+msgid "images"
+msgstr ""
+
+#: settings-schema.json->check-interval->description
+msgid "Check for a new image every"
+msgstr ""
+
+#: settings-schema.json->check-interval->tooltip
+msgid "Bing publishes one image per day. A check is a very small request."
+msgstr ""
+
+#: settings-schema.json->check-interval->units
+msgid "minutes"
+msgstr ""
+
+#: settings-schema.json->skip-metered->description
+msgid "Do not download on metered connections"
+msgstr ""
