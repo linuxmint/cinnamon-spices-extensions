@@ -215,6 +215,7 @@ function _rebuildBarriers() {
     for (let i = 0; i < monitors.length; i++) {
         if (i === panelEntry.monitor) continue;
         if (global.display.get_monitor_in_fullscreen(i)) continue;
+        if (entries.some(e => e.id !== boundSettings.panelId && e.monitor === i && e.position === panelEntry.position)) continue;
         let seams = _seamSegments(monitors[i], i, panelEntry.position, monitors);
         for (let s of _outerSegments(monitors[i], panelEntry.position, seams)) {
             if (!_addBarrier(i, _barrierGeometry(panelEntry.position, monitors[i], s.a, s.b))) failed++;
