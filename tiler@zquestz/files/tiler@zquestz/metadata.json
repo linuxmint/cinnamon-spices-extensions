@@ -1,0 +1,8 @@
+{
+  "uuid": "tiler@zquestz",
+  "name": "Tiler",
+  "description": "Grid-based window tiling with gaps, reserved screen space, and one-press auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile.",
+  "version": "1.1.0",
+  "cinnamon-version": ["6.0"],
+  "url": "https://github.com/linuxmint/cinnamon-spices-extensions"
+}
