@@ -39,10 +39,11 @@ scratch for modern Cinnamon.
   halves the largest cell rather than adding a row, so cells stay even and
   keep the shape of the screen. A window that cannot shrink into its cell is
   given a larger one instead, and one that fits nowhere is left where it was,
-  minimized, centered, or cascaded, whichever you choose. Minimized windows
-  are left alone; buried ones are dug out and given a place. Auto-tiled
-  windows honor the same gaps and reserved space as everything else, and the
-  action row can be hidden if you never use it.
+  minimized, centered, or cascaded, whichever you choose. Minimized windows,
+  and windows kept always on top such as a picture-in-picture player, are
+  left alone; buried ones are dug out and given a place. Auto-tiled windows
+  honor the same gaps and reserved space as everything else, and the action
+  row can be hidden if you never use it.
 - **Window spacing**: pixel-perfect gaps, configured separately for
   window-to-window and window-to-screen-edge. Adjacent windows get exactly
   the configured gap (no doubled inner gaps). Neither kind of gap takes up
@@ -55,6 +56,9 @@ scratch for modern Cinnamon.
   little room to tile into, Tiler leaves windows where they are.
 - **Tiles what you expect**: ordinary application windows by default, with
   dialogs and floating toolboxes available as options.
+- **Keeps shapes**: a window that keeps its aspect ratio, like a video
+  player, is fitted into whatever cell it is given at that shape, flush with
+  the cell's top left corner, rather than overhanging it.
 - **Multi-monitor aware**: the grid appears on the monitor holding the
   window being tiled, and works from that monitor's own usable area. Send a
   window to another monitor or workspace with Cinnamon's own shortcuts and

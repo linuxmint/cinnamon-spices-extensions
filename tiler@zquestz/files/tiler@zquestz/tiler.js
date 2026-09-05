@@ -241,7 +241,7 @@ function coversFullGrid(grid, range) {
 var WHOLE = { cols: [1], rows: [1] };
 var SIDE_BY_SIDE = { cols: [1, 1], rows: [1] };
 var STACKED = { cols: [1], rows: [1, 1] };
-function cell(col, row) {
+function cellAt2(col, row) {
   return { col, row, colEnd: col, rowEnd: row };
 }
 function areaOf(size) {
@@ -253,9 +253,9 @@ function fits(need, rect) {
 function halve(rect, sideBySide, gap) {
   const grid = sideBySide ? SIDE_BY_SIDE : STACKED;
   const gaps = { window: gap, edge: 0 };
-  const second = sideBySide ? cell(1, 0) : cell(0, 1);
+  const second = sideBySide ? cellAt2(1, 0) : cellAt2(0, 1);
   return [
-    cellRangeToRect(rect, grid, cell(0, 0), gaps),
+    cellRangeToRect(rect, grid, cellAt2(0, 0), gaps),
     cellRangeToRect(rect, grid, second, gaps)
   ];
 }
@@ -284,7 +284,7 @@ function autotileRects(mode, count, area, gaps) {
   if (wanted <= 0) {
     return [];
   }
-  const whole = cellRangeToRect(area, WHOLE, cell(0, 0), gaps);
+  const whole = cellRangeToRect(area, WHOLE, cellAt2(0, 0), gaps);
   if (wanted === 1) {
     return [whole];
   }
@@ -299,15 +299,15 @@ function autotileRects(mode, count, area, gaps) {
   }
   return mode.endsWith("right") ? cells.map((rect) => mirror(rect, area)) : cells;
 }
-function refusesCell(frame, rect) {
-  return frame.width > rect.width || frame.height > rect.height;
-}
 function assignCells(cells, needs) {
-  const cell_ = cells.map(() => -1);
+  if (cells.length === 0) {
+    return { cell: [], left: [] };
+  }
+  const cell = cells.map(() => -1);
   const free = new Set(cells.map((_2, index) => index));
   const left = [];
   const take = (window, at) => {
-    cell_[window] = at;
+    cell[window] = at;
     free.delete(at);
   };
   const biggestFree = (need) => {
@@ -322,9 +322,6 @@ function assignCells(cells, needs) {
     }
     return best;
   };
-  if (cells.length === 0) {
-    return { cell: cell_, left };
-  }
   take(0, 0);
   const constrained = needs.flatMap((need, index) => need && index > 0 ? [{ need, index }] : []).sort((a, b) => areaOf(b.need) - areaOf(a.need) || a.index - b.index);
   for (const { need, index } of constrained) {
@@ -345,11 +342,84 @@ function assignCells(cells, needs) {
     }
   }
   for (const index of rest) {
-    if (cell_[index] < 0) {
+    if (cell[index] < 0) {
       take(index, Math.min(...free));
     }
   }
-  return { cell: cell_, left };
+  return { cell, left };
+}
+function refusesCell(frame, rect) {
+  return frame.width > rect.width || frame.height > rect.height;
+}
+function settle(place, window, cell, maximize) {
+  let settled = place(window, cell, maximize);
+  if (!refusesCell(settled, cell)) {
+    return settled;
+  }
+  const ratio = toFinite(settled.width) / toFinite(settled.height);
+  if (!(ratio > 0 && ratio < Infinity)) {
+    return settled;
+  }
+  let room = { width: cell.width, height: cell.height };
+  for (let tries = 0; tries < 17; tries++) {
+    const width = Math.min(room.width, room.height * ratio);
+    const box = {
+      x: cell.x,
+      y: cell.y,
+      width: Math.max(1, Math.round(width)),
+      height: Math.max(1, Math.round(width / ratio))
+    };
+    const previous = settled;
+    settled = place(window, box, false);
+    if (!refusesCell(settled, cell)) {
+      return settled;
+    }
+    if (tries > 0 && settled.width === previous.width && settled.height === previous.height) {
+      break;
+    }
+    room = {
+      width: box.width - Math.max(0, settled.width - cell.width),
+      height: box.height - Math.max(0, settled.height - cell.height)
+    };
+    if (room.width < 1 || room.height < 1) {
+      break;
+    }
+  }
+  return settled;
+}
+function arrange(windows, mode, area, gaps, maximizeAlone, place) {
+  const needs = /* @__PURE__ */ new Map();
+  let arranged = windows;
+  for (let pass = 0; pass <= windows.length * 2; pass++) {
+    const rects = autotileRects(mode, arranged.length, area, gaps);
+    const plan = assignCells(
+      rects,
+      arranged.map((window) => needs.get(window) ?? null)
+    );
+    if (plan.left.length > 0) {
+      const aside = new Set(plan.left.map((index) => arranged[index]));
+      arranged = arranged.filter((window) => !aside.has(window));
+      continue;
+    }
+    const maximize = arranged.length === 1 && maximizeAlone;
+    let refused = false;
+    arranged.forEach((window, index) => {
+      const target = rects[plan.cell[index]];
+      const frame = settle(place, window, target, maximize);
+      if (index > 0 && refusesCell(frame, target)) {
+        needs.set(window, { width: frame.width, height: frame.height });
+        refused = true;
+      }
+    });
+    if (!refused) {
+      break;
+    }
+  }
+  const kept = new Set(arranged);
+  return {
+    placed: arranged,
+    overflow: windows.filter((window) => !kept.has(window))
+  };
 }
 
 // src/preset.ts
@@ -716,6 +786,9 @@ function listTileableWindows(filter, monitorIndex) {
     if (window.minimized) {
       continue;
     }
+    if (window.is_above()) {
+      continue;
+    }
     if (window.get_monitor() !== monitorIndex) {
       continue;
     }
@@ -947,10 +1020,10 @@ var Overlay = class {
       if (!this.overGrid(event)) {
         return true;
       }
-      const cell2 = this.cellUnder(event);
-      this.pointerCell = cell2;
+      const cell = this.cellUnder(event);
+      this.pointerCell = cell;
       this.dragging = true;
-      this.choose({ anchor: cell2, focus: cell2 });
+      this.choose({ anchor: cell, focus: cell });
       return true;
     };
     this.onMotion = (_actor, event) => {
@@ -961,13 +1034,13 @@ var Overlay = class {
         }
         return true;
       }
-      const cell2 = this.cellUnder(event);
+      const cell = this.cellUnder(event);
       const seen = this.pointerCell;
-      this.pointerCell = cell2;
-      if (this.selection && (!seen || seen.col === cell2.col && seen.row === cell2.row)) {
+      this.pointerCell = cell;
+      if (this.selection && (!seen || seen.col === cell.col && seen.row === cell.row)) {
         return true;
       }
-      this.reachTo(cell2);
+      this.reachTo(cell);
       return true;
     };
     this.onRelease = (_actor, event) => {
@@ -1091,11 +1164,11 @@ var Overlay = class {
       line.set_style(`spacing: ${spacing}px;`);
       const built = [];
       for (let col = 0; col < cols; col++) {
-        const cell2 = new St2.Widget({ style_class: "tiler-cell" });
-        cell2.set_style(this.inactiveCellStyle);
-        cell2.set_size(colSizes[col], rowSizes[row]);
-        line.add_child(cell2);
-        built.push(cell2);
+        const cell = new St2.Widget({ style_class: "tiler-cell" });
+        cell.set_style(this.inactiveCellStyle);
+        cell.set_size(colSizes[col], rowSizes[row]);
+        line.add_child(cell);
+        built.push(cell);
       }
       this.cells.push(built);
       table.add_child(line);
@@ -1344,10 +1417,10 @@ var Overlay = class {
     this.highlight(null);
   }
   /** Moves the pointer end of the selection to a cell. */
-  reachTo(cell2) {
+  reachTo(cell) {
     const current = this.selection;
-    const anchor = this.dragging && current ? current.anchor : cell2;
-    this.choose({ anchor, focus: cell2 });
+    const anchor = this.dragging && current ? current.anchor : cell;
+    this.choose({ anchor, focus: cell });
   }
   onKey(act) {
     switch (act.kind) {
@@ -1392,12 +1465,12 @@ var Overlay = class {
     const before = this.lit;
     this.lit = chosen;
     this.cells.forEach((line, row) => {
-      line.forEach((cell2, col) => {
+      line.forEach((cell, col) => {
         const now = covers(chosen, col, row);
         if (now === covers(before, col, row)) {
           return;
         }
-        cell2.set_style(now ? this.activeCellStyle : this.inactiveCellStyle);
+        cell.set_style(now ? this.activeCellStyle : this.inactiveCellStyle);
       });
     });
   }
@@ -1438,6 +1511,15 @@ var App = class {
     this.session = null;
     // Keyed by the window, so a window that closes takes its note with it.
     this.pushed = /* @__PURE__ */ new WeakMap();
+    /**
+     * Puts a window somewhere and reports where it ended up: the one thing
+     * `settle` and `arrange` ask of the window manager, so that every way of
+     * tiling a window settles it the same way.
+     */
+    this.placer = (window, rect, maximize) => {
+      this.placeWindow(window, rect, maximize);
+      return frameOf(window);
+    };
     /**
      * Takes Cinnamon's tiling shortcuts over, or gives them back, to match the
      * setting. Held is tracked so that handing them back is only ever done from
@@ -1544,13 +1626,10 @@ var App = class {
      * with, like any other placement. The grid's own window leads when it is
      * still among them; otherwise the most recent one does.
      *
-     * Nothing says beforehand how small a window will go, so placing it is
-     * what finds out: a window that refuses its cell comes back at the
-     * smallest size it accepts, and the arrangement is planned again around
-     * that, trading it a larger cell for one that will shrink. A window that
-     * fits no cell at all is set aside and put back where it was. Each pass
-     * either finishes, learns a window's size, or sets one aside, and all of
-     * them happen before anything is drawn.
+     * The arranging itself, passes and all, is `arrange` in autotile.ts, so
+     * that it can be tested against a stand-in for the window manager. All of
+     * it happens here before anything is drawn. Windows it had no room for
+     * are then dealt with as the overflow setting says.
      */
     this.onAutotile = (mode) => {
       const session = this.takeSession();
@@ -1572,44 +1651,19 @@ var App = class {
       const before = new Map(
         windows.map((window) => [window, frameOf(window)])
       );
-      const needs = /* @__PURE__ */ new Map();
-      let arranged = windows;
-      for (let pass = 0; pass <= windows.length * 2; pass++) {
-        const rects = autotileRects(
-          mode,
-          arranged.length,
-          session.area,
-          session.gaps
-        );
-        const plan = assignCells(
-          rects,
-          arranged.map((window) => needs.get(window) ?? null)
-        );
-        if (plan.left.length > 0) {
-          const aside = new Set(plan.left.map((index) => arranged[index]));
-          arranged = arranged.filter((window) => !aside.has(window));
-          continue;
-        }
-        const fillsArea = this.fillsWholeArea(
-          arranged.length === 1,
-          session.gaps,
-          session.reserved
-        );
-        let refused = false;
-        arranged.forEach((window, index) => {
-          const target = rects[plan.cell[index]];
-          this.placeWindow(window, target, fillsArea);
-          const frame = frameOf(window);
-          if (index > 0 && refusesCell(frame, target)) {
-            needs.set(window, { width: frame.width, height: frame.height });
-            refused = true;
-          }
-        });
-        if (!refused) {
-          break;
-        }
-      }
-      const overflow = windows.filter((window) => !arranged.includes(window));
+      const maximizeAlone = this.fillsWholeArea(
+        true,
+        session.gaps,
+        session.reserved
+      );
+      const { overflow } = arrange(
+        windows,
+        mode,
+        session.area,
+        session.gaps,
+        maximizeAlone,
+        this.placer
+      );
       this.handleOverflow(overflow, before, session);
     };
     /**
@@ -1664,8 +1718,8 @@ var App = class {
       const gaps = this.config.gaps;
       const rect = cellRangeToRect(area, PUSH_GRID, range, gaps);
       const fillsArea = this.fillsWholeArea(next === "maximized", gaps, reserved);
-      this.placeWindow(window, rect, fillsArea);
-      this.pushed.set(window, { mode: next, saved, placed: frameOf(window) });
+      const placed = settle(this.placer, window, rect, fillsArea);
+      this.pushed.set(window, { mode: next, saved, placed });
     };
     this.onTile = (range) => {
       const session = this.takeSession();
@@ -1683,7 +1737,7 @@ var App = class {
         gaps,
         session.reserved
       );
-      this.placeWindow(window, rect, fillsArea);
+      settle(this.placer, window, rect, fillsArea);
     };
     this.config = new Config(uuid2, this.registerHotkey, this.syncPushTileKeys);
     this.registerHotkey();

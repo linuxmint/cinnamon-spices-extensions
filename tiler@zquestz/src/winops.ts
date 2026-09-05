@@ -105,6 +105,13 @@ export function listTileableWindows(
     if (window.minimized) {
       continue;
     }
+    // A window kept above all others, as picture-in-picture players are, is
+    // floating on purpose and is left to float: an arrangement does not
+    // sweep it up. It can still be tiled on its own, from the grid or by a
+    // shortcut, since those act on the one window they are given.
+    if (window.is_above()) {
+      continue;
+    }
     if (window.get_monitor() !== monitorIndex) {
       continue;
     }

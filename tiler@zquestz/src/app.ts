@@ -3,18 +3,11 @@
  * action they drive.
  */
 
-import { assignCells, autotileRects, refusesCell } from "./autotile.ts";
-import type { AutotileMode } from "./autotile.ts";
+import { arrange, settle } from "./autotile.ts";
+import type { AutotileMode, Placer } from "./autotile.ts";
 import { Config } from "./config.ts";
 import { cellRangeToRect, coversFullGrid, overflowRects } from "./geometry.ts";
-import type {
-  CellRange,
-  Direction,
-  Gaps,
-  GridSize,
-  Rect,
-  Size,
-} from "./geometry.ts";
+import type { CellRange, Direction, Gaps, GridSize, Rect } from "./geometry.ts";
 import type { Preset } from "./preset.ts";
 import { Overlay } from "./overlay.ts";
 import {
@@ -158,6 +151,16 @@ export class App {
     tile(window, rect, maximize);
     this.pushed.delete(window);
   }
+
+  /**
+   * Puts a window somewhere and reports where it ended up: the one thing
+   * `settle` and `arrange` ask of the window manager, so that every way of
+   * tiling a window settles it the same way.
+   */
+  private readonly placer: Placer<MetaWindow> = (window, rect, maximize) => {
+    this.placeWindow(window, rect, maximize);
+    return frameOf(window);
+  };
 
   /**
    * Takes Cinnamon's tiling shortcuts over, or gives them back, to match the
@@ -367,13 +370,10 @@ export class App {
    * with, like any other placement. The grid's own window leads when it is
    * still among them; otherwise the most recent one does.
    *
-   * Nothing says beforehand how small a window will go, so placing it is
-   * what finds out: a window that refuses its cell comes back at the
-   * smallest size it accepts, and the arrangement is planned again around
-   * that, trading it a larger cell for one that will shrink. A window that
-   * fits no cell at all is set aside and put back where it was. Each pass
-   * either finishes, learns a window's size, or sets one aside, and all of
-   * them happen before anything is drawn.
+   * The arranging itself, passes and all, is `arrange` in autotile.ts, so
+   * that it can be tested against a stand-in for the window manager. All of
+   * it happens here before anything is drawn. Windows it had no room for
+   * are then dealt with as the overflow setting says.
    */
   private onAutotile = (mode: AutotileMode): void => {
     const session = this.takeSession();
@@ -398,57 +398,21 @@ export class App {
     const before = new Map(
       windows.map((window): [MetaWindow, Rect] => [window, frameOf(window)]),
     );
-    const needs = new Map<MetaWindow, Size>();
-    let arranged = windows;
+    // A lone window filling the whole area is the maximize case.
+    const maximizeAlone = this.fillsWholeArea(
+      true,
+      session.gaps,
+      session.reserved,
+    );
+    const { overflow } = arrange(
+      windows,
+      mode,
+      session.area,
+      session.gaps,
+      maximizeAlone,
+      this.placer,
+    );
 
-    // Each pass either sets a window aside or learns one's size, and neither
-    // can happen to the same window twice, so twice the count is more passes
-    // than can ever be needed. The bound is a guard, not an expectation.
-    for (let pass = 0; pass <= windows.length * 2; pass++) {
-      const rects = autotileRects(
-        mode,
-        arranged.length,
-        session.area,
-        session.gaps,
-      );
-      const plan = assignCells(
-        rects,
-        arranged.map((window) => needs.get(window) ?? null),
-      );
-
-      if (plan.left.length > 0) {
-        const aside = new Set(plan.left.map((index) => arranged[index]));
-        arranged = arranged.filter((window) => !aside.has(window));
-        continue;
-      }
-
-      // A lone window filling the whole area is the maximize case.
-      const fillsArea = this.fillsWholeArea(
-        arranged.length === 1,
-        session.gaps,
-        session.reserved,
-      );
-      let refused = false;
-      arranged.forEach((window, index) => {
-        const target = rects[plan.cell[index]];
-        this.placeWindow(window, target, fillsArea);
-
-        // The leader keeps its cell whatever it needs, so a refusal from it
-        // is nothing to plan around: noting it would only re-plan to the
-        // same arrangement, pass after pass. Every other window can be given
-        // a larger cell, so its refusal is worth learning.
-        const frame = frameOf(window);
-        if (index > 0 && refusesCell(frame, target)) {
-          needs.set(window, { width: frame.width, height: frame.height });
-          refused = true;
-        }
-      });
-      if (!refused) {
-        break;
-      }
-    }
-
-    const overflow = windows.filter((window) => !arranged.includes(window));
     this.handleOverflow(overflow, before, session);
   };
 
@@ -575,10 +539,10 @@ export class App {
     const rect = cellRangeToRect(area, PUSH_GRID, range, gaps);
     const fillsArea = this.fillsWholeArea(next === "maximized", gaps, reserved);
 
-    this.placeWindow(window, rect, fillsArea);
     // The frame is read back rather than assumed: what the window took is
     // what a later push must find it still holding.
-    this.pushed.set(window, { mode: next, saved, placed: frameOf(window) });
+    const placed = settle(this.placer, window, rect, fillsArea);
+    this.pushed.set(window, { mode: next, saved, placed });
   };
 
   private onTile = (range: CellRange): void => {
@@ -604,6 +568,6 @@ export class App {
       session.reserved,
     );
 
-    this.placeWindow(window, rect, fillsArea);
+    settle(this.placer, window, rect, fillsArea);
   };
 }
