@@ -501,16 +501,15 @@ msgstr "Fili di fumo"
 
 #. 6.2/CustomWidgets.py:509
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annulla"
 
 #. 6.2/CustomWidgets.py:510
-#, fuzzy
 msgid "_Open"
-msgstr "Apri"
+msgstr "_Apri"
 
 #. 6.2/CustomWidgets.py:520
 msgid "Sound files"
-msgstr ""
+msgstr "File audio"
 
 #. metadata.json->name
 msgid "Burn My Windows"
@@ -542,7 +541,7 @@ msgstr "Effetti casuali"
 
 #. 6.2->settings-schema.json->power-page->title
 msgid "Power"
-msgstr ""
+msgstr "Energia"
 
 #. 6.2->settings-schema.json->about-page->title
 msgid "About"
@@ -570,7 +569,7 @@ msgstr "Effetti inclusi nei set casuali:"
 
 #. 6.2->settings-schema.json->power-section->title
 msgid "Manage Burn-My-Windows power consumption"
-msgstr ""
+msgstr "Gestisci il consumo energetico di Brucia le mie finestre"
 
 #. 6.2->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
@@ -603,8 +602,8 @@ msgstr ""
 "Portato su Cinnamon da Kevin Langman\n"
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
-"new\">Segnala un problema</a> / <a href=\"https://cinnamon-"
-"spices.linuxmint.com/extensions/view/103\">Sito web</a>\n"
+"new\">Segnala un problema</a> / <a href=\"https://cinnamon-spices.linuxmint."
+"com/extensions/view/103\">Sito web</a>\n"
 "\n"
 "Basato sul codice Burn-My-Windows di Schneegans e collaboratori\n"
 "<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
@@ -761,6 +760,8 @@ msgstr "Effetto chiusura finestra"
 #. 6.2->settings-schema.json->enable-sound->description
 msgid "Allow Burn My Windows to override cinnamon sound effects"
 msgstr ""
+"Permetti a Brucia le mie finestre di sovrascrivere gli effetti sonori di "
+"Cinnamon"
 
 #. 6.2->settings-schema.json->enable-sound->tooltip
 msgid ""
@@ -771,6 +772,14 @@ msgid ""
 "default cinnamon sounds will be used unless a sound effect file is chosen "
 "for the active Burn My Windows effect."
 msgstr ""
+"Consenti a Brucia le mie finestre di sovrascrivere gli effetti sonori di "
+"apertura/chiusura/minimizzazione delle finestre di Cinnamon con effetti "
+"sonori personalizzati definiti nella scheda Impostazioni effetti per ciascun "
+"effetto di Brucia le mie finestre. Nota: i suoni verranno riprodotti solo "
+"quando gli effetti sonori di apertura/chiusura/minimizzazione di Cinnamon "
+"sono abilitati nelle impostazioni audio di Cinnamon. Verranno utilizzati i "
+"suoni predefiniti di Cinnamon a meno che non venga selezionato un file di "
+"effetti sonori per l'effetto di Brucia le mie finestre attivo."
 
 #. 6.2->settings-schema.json->dialog-special->description
 #. 6.2->settings-schema.json->power-dialog-special->description
@@ -808,18 +817,17 @@ msgid "Unminimize window effect"
 msgstr "Effetto ripristino finestra"
 
 #. 6.2->settings-schema.json->power-dialog-special->tooltip
-#, fuzzy
 msgid ""
 "Allows you to define special settings for handling dialog window types (i.e. "
 "file open dialog windows)."
 msgstr ""
-"Consente di definire impostazioni speciali per la gestione delle finestre di "
-"dialogo (ad esempio, finestre di dialogo 'Apri file'). Queste impostazioni "
-"sovrascriveranno quelle specifiche dell'applicazione eventualmente definite."
+"Consente di definire impostazioni speciali per la gestione dei tipi di "
+"finestre di dialogo (ad esempio, le finestre di dialogo per l'apertura dei "
+"file)."
 
 #. 6.2->settings-schema.json->power-onbattery->description
 msgid "Use different effects when running on battery power"
-msgstr ""
+msgstr "Utilizza effetti diversi quando alimentato a batteria"
 
 #. 6.2->settings-schema.json->power-onbattery->tooltip
 msgid ""
@@ -829,10 +837,17 @@ msgid ""
 "over both the general settings and any application specific settings when "
 "the battery charge state condition is met."
 msgstr ""
+"Quando questa opzione è abilitata, verrà visualizzato un set di impostazioni "
+"che consentono di definire quali effetti (se presenti) verranno utilizzati "
+"quando si utilizza l'alimentazione a batteria e il livello di carica della "
+"batteria è inferiore al limite impostato. Queste impostazioni avranno la "
+"precedenza sia sulle impostazioni generali che su eventuali impostazioni "
+"specifiche dell'applicazione quando viene soddisfatta la condizione relativa "
+"al livello di carica della batteria."
 
 #. 6.2->settings-schema.json->power-percent->description
 msgid "When battery is less than (percent)"
-msgstr ""
+msgstr "Quando la batteria è inferiore al (percento)"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 msgid "Shake Intensity"
@@ -923,7 +938,7 @@ msgstr "Ripristina ai valori predefiniti"
 #. 6.2->settings-schema.json->tv-glitch-open-sound->description
 #. 6.2->settings-schema.json->wisps-open-sound->description
 msgid "Sound on window appear events"
-msgstr ""
+msgstr "Suono all'evento di comparsa finestra"
 
 #. 6.2->settings-schema.json->apparition-close-sound->description
 #. 6.2->settings-schema.json->aura-glow-close-sound->description
@@ -948,7 +963,7 @@ msgstr ""
 #. 6.2->settings-schema.json->tv-glitch-close-sound->description
 #. 6.2->settings-schema.json->wisps-close-sound->description
 msgid "Sound on window disappear events"
-msgstr ""
+msgstr "Suono all'evento di scomparsa finestra"
 
 #. 6.2->settings-schema.json->aura-glow-random-color->description
 msgid "Random Color"
@@ -1040,7 +1055,7 @@ msgstr "Personalizzato"
 
 #. 6.2->settings-schema.json->fire-presets->description
 msgid "Fire effect style"
-msgstr ""
+msgstr "Stile effetto fuoco"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
@@ -1237,9 +1252,8 @@ msgid "This effects the quality and the costs of the animation"
 msgstr "Questo influisce sulla qualità e sul costo dell'animazione"
 
 #. 6.2->settings-schema.json->mushroom-presets->description
-#, fuzzy
 msgid "Mushroom effect style"
-msgstr "Preimpostazione Mushroom"
+msgstr "Stile effetto fungo"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
 msgid "Scale Style"

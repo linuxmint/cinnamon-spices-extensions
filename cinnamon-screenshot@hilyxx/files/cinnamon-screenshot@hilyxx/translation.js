@@ -4,12 +4,12 @@ const GLib = imports.gi.GLib;
 let currentUUID = null;
 
 // Initialize gettext with the provided UUID
-function initTranslation(uuid) {
+var initTranslation = function(uuid) {
     currentUUID = uuid;
-    Gettext.bindtextdomain(uuid, GLib.get_home_dir() + '/.local/share/locale');
+    Gettext.bindtextdomain(uuid, GLib.get_user_data_dir() + '/locale');
 }
 
-function _(str) {
+var _ = function(str) {
     if (currentUUID) {
         const customTranslation = Gettext.dgettext(currentUUID, str);
         if (customTranslation != str) {
@@ -17,4 +17,4 @@ function _(str) {
         }
     }
     return Gettext.gettext(str);
-} 
+}

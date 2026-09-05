@@ -2,7 +2,7 @@ Cinnamon-Screenshot
 -------------------
 Cinnamon extension for screenshots with modern interface and advanced options.
 
-This extension uses Gnome-Screenshot utility (which works seamlessly with both X11 and Wayland) and is fully integrated into the Cinnamon desktop.
+This extension uses Gnome-Screenshot and cinnamon-Screenshot utility (which works seamlessly with both X11 and Wayland - only in cinnamon 6.8) and is fully integrated into the Cinnamon desktop.
 
 #### A wide variety of options are included to ensure a good user experience: 
 

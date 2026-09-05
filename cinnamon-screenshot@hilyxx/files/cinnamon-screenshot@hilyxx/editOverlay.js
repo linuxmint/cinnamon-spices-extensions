@@ -11,11 +11,15 @@ const GLib = imports.gi.GLib;
 const ExtensionSystem = imports.ui.extensionSystem;
 const { GObject } = imports.gi;
 
-const { _ } = require('./translation');
-const { getTransitionManager } = require('./transitionEffects');
-
 const UUID = 'cinnamon-screenshot@hilyxx';
-const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path
+const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
+
+if (imports.searchPath.indexOf(EXTENSION_DIR) === -1) {
+    imports.searchPath.push(EXTENSION_DIR);
+}
+
+const { _ } = imports.translation;
+const { getTransitionManager } = imports.transitionEffects;
 
 const ICONS_PATH = EXTENSION_DIR + '/icons/';
 const scriptPath = EXTENSION_DIR + '/lib/gtk-filechooser.py';
@@ -422,7 +426,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                                 thickness: this._thickness
                             });
                         } else {
-                            // Specific preview for pixelization (blue zone)
+                            // Specific preview for pixelization (blur zone)
                             let x = Math.min(this._shapeStart[0], this._shapeCurrent[0]);
                             let y = Math.min(this._shapeStart[1], this._shapeCurrent[1]);
                             let w = Math.abs(this._shapeCurrent[0] - this._shapeStart[0]);
@@ -804,7 +808,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 }
             }
             if (grabFocus && hadTextEntry) {
-                global.stage.set_key_focus(this); // Remplace global.stage.grab_key_focus();
+                global.stage.set_key_focus(this);
             }
             if (hadTextEntry && this._drawingCanvas)
                 this._drawingCanvas.invalidate();
@@ -1596,7 +1600,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
 
         // === ERASER UTILITIES ===
         _eraseAtCoords(localCoords) {
-            // 1. Erase a static text
+            // Erase a static text
             for (let i = this._paths.length - 1; i >= 0; i--) {
                 let path = this._paths[i];
                 if (path.type === 'text') {
@@ -1612,7 +1616,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     }
                 }
             }
-            // 2. Erase another shape (brush, rect, etc.)
+            // Erase another shape (brush, rect, etc.)
             const hitIndex = this._findPathAt(localCoords);
             if (hitIndex !== -1) {
                 this._paths.splice(hitIndex, 1);
@@ -1705,9 +1709,9 @@ if (typeof ScreenshotEditDialog !== 'function') {
                     this._drawFilledTriangle(cr, path.start, path.end);
                 } else if (path.type === 'blur') {
                     if (forSave) {
-                        this._drawBlur(cr, path.start, path.end, path.thickness, false); // Pass false for useCache
+                        this._drawBlur(cr, path.start, path.end, path.thickness, false);
                     } else {
-                        this._drawBlur(cr, path.start, path.end, path.thickness, true); // Pass true for useCache
+                        this._drawBlur(cr, path.start, path.end, path.thickness, true);
                     }
                 }
             }

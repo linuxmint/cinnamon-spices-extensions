@@ -38,7 +38,7 @@ msgstr "Stile"
 
 #. 5.4->settings-schema.json->idle-section->title
 msgid "Idle"
-msgstr ""
+msgstr "Inattività"
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -179,12 +179,11 @@ msgstr "Modalità animazione mouse inattivo"
 
 #. 5.4->settings-schema.json->idle-animation-delay->units
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #. 5.4->settings-schema.json->idle-animation-delay->description
-#, fuzzy
 msgid "Start Idle Animation After"
-msgstr "Periodo animazione mouse inattivo"
+msgstr "Avviare l'animazione di inattività dopo"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -247,7 +246,7 @@ msgstr "Rilevatore inattività mouse"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
 msgid "Displays animations when the system enters idle state."
-msgstr ""
+msgstr "Visualizza animazioni quando il sistema entra in stato di inattività."
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"

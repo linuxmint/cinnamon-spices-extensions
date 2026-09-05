@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-07-27 18:41+0200\n"
+"POT-Creation-Date: 2026-09-03 21:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,213 +18,213 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. editOverlay.js:459
+#. editOverlay.js:463
 msgid "Brush"
 msgstr "Pincel"
 
-#. editOverlay.js:460
+#. editOverlay.js:464
 msgid "Eraser"
 msgstr "Apagar"
 
-#. editOverlay.js:461
+#. editOverlay.js:465
 msgid "Arrow"
 msgstr "Seta"
 
-#. editOverlay.js:462
+#. editOverlay.js:466
 msgid "Line"
 msgstr "Linha"
 
-#. editOverlay.js:463
+#. editOverlay.js:467
 msgid "Rectangle"
 msgstr "Retângulo"
 
-#. editOverlay.js:464
+#. editOverlay.js:468
 msgid "Ellipse"
 msgstr "Elipse"
 
-#. editOverlay.js:465
+#. editOverlay.js:469
 msgid "Triangle"
 msgstr "Triângulo"
 
-#. editOverlay.js:466
+#. editOverlay.js:470
 msgid "Filled Rectangle"
 msgstr "Retângulo Preenchido"
 
-#. editOverlay.js:467
+#. editOverlay.js:471
 msgid "Filled Ellipse"
 msgstr "Elipse Preenchida"
 
-#. editOverlay.js:468
+#. editOverlay.js:472
 msgid "Filled Triangle"
 msgstr "Triângulo Preenchido"
 
-#. editOverlay.js:469
+#. editOverlay.js:473
 msgid "Pixelization"
 msgstr "Pixelizar"
 
-#. editOverlay.js:470
+#. editOverlay.js:474
 msgid "Text"
 msgstr "Texto"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Black"
 msgstr "Preto"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "White"
 msgstr "Branco"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Red"
 msgstr "Vermelho"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Blue"
 msgstr "Azul"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Green"
 msgstr "Verde"
 
-#. editOverlay.js:524
+#. editOverlay.js:528
 msgid "Yellow"
 msgstr "Amarelo"
 
-#. editOverlay.js:642
+#. editOverlay.js:646
 msgid "Thickness/size"
 msgstr "Espessura/Tamanho"
 
-#. editOverlay.js:647
+#. editOverlay.js:651
 msgid "Save changes to the canvas"
 msgstr "Salvar mudanças na imagem"
 
-#. editOverlay.js:648
+#. editOverlay.js:652
 msgid "Cancel all changes"
 msgstr "Cancelar todas as mudanças"
 
-#. editOverlay.js:649 overlay.js:93 overlay.js:119
+#. editOverlay.js:653 overlay.js:97 overlay.js:123
 msgid "Close"
 msgstr "Fechar"
 
-#. editOverlay.js:1049
+#. editOverlay.js:1053
 msgid "Apply changes?"
 msgstr "Aplicar alterações?"
 
-#. editOverlay.js:1054
+#. editOverlay.js:1058
 msgid "Merge canvas with image"
 msgstr "Mesclar edições com a imagem"
 
-#. editOverlay.js:1058
+#. editOverlay.js:1062
 msgid "Save modified copy as…"
 msgstr "Salvar copia modificada como..."
 
-#. editOverlay.js:1062 editOverlay.js:1205 preview.js:267 preview.js:362
+#. editOverlay.js:1066 editOverlay.js:1209 preview.js:271 preview.js:366
 msgid "Cancel"
 msgstr "Cancelar"
 
-#. editOverlay.js:1072
+#. editOverlay.js:1076
 msgid "Quit without apply changes?"
 msgstr "Sair sem aplicar as mudanças?"
 
-#. editOverlay.js:1076
+#. editOverlay.js:1080
 msgid "Yes"
 msgstr "Sim"
 
-#. editOverlay.js:1083
+#. editOverlay.js:1087
 msgid "No"
 msgstr "Não"
 
-#. editOverlay.js:1113 editOverlay.js:1152 editOverlay.js:1230
+#. editOverlay.js:1117 editOverlay.js:1156 editOverlay.js:1234
 msgid "Error saving"
 msgstr "Erro ao salvar"
 
-#. editOverlay.js:1181 preview.js:349
+#. editOverlay.js:1185 preview.js:353
 msgid "Script gtk-filechooser.py not available"
 msgstr "O script gtk-filechooser.py não está disponível"
 
-#. editOverlay.js:1181 preview.js:349
+#. editOverlay.js:1185 preview.js:353
 msgid "Unable to open file chooser."
 msgstr "Não foi possível abrir o arquivo escolhido."
 
-#. editOverlay.js:1200 preview.js:251 preview.js:357
+#. editOverlay.js:1204 preview.js:255 preview.js:361
 msgid "Save as..."
 msgstr "Salvar como..."
 
-#. editOverlay.js:1203 preview.js:360
+#. editOverlay.js:1207 preview.js:364
 msgid "Images"
 msgstr "Imagens"
 
-#. editOverlay.js:1204 preview.js:361
+#. editOverlay.js:1208 preview.js:365
 msgid "Save"
 msgstr "Salvar"
 
-#. overlay.js:90
+#. overlay.js:94
 msgid "Full Screen"
 msgstr "Tela Cheia"
 
-#. overlay.js:91
+#. overlay.js:95
 msgid "Active Window"
 msgstr "Janela Ativa"
 
-#. overlay.js:92 overlay.js:160
+#. overlay.js:96 overlay.js:164
 msgid "Selection"
 msgstr "Seleção"
 
-#. overlay.js:121
+#. overlay.js:125
 msgid "Mouse Pointer :"
 msgstr "Ponteiro do Mouse:"
 
-#. overlay.js:162
+#. overlay.js:166
 msgid "Timer (s) :"
 msgstr "Temporizador (s):"
 
-#. preview.js:235
+#. preview.js:239
 msgid "Edit image"
 msgstr "Editar imagem"
 
-#. preview.js:236
+#. preview.js:240
 msgid "Copy to clipboard"
 msgstr "Copiar para área de transferência"
 
-#. preview.js:257
+#. preview.js:261
 msgid "Back"
 msgstr "Voltar"
 
-#. preview.js:317 preview.js:321 preview.js:325
+#. preview.js:321 preview.js:325 preview.js:329
 msgid "Invalid filename"
 msgstr "Nome do arquivo invalido"
 
-#. preview.js:317
+#. preview.js:321
 msgid "Filename cannot be empty."
 msgstr "Nome do arquivo não pode ser vazio."
 
-#. preview.js:321
+#. preview.js:325
 msgid "Filename contains forbidden characters: \\ / : * ? \" < > |"
 msgstr "Nome do arquivo contem caracteres inválidos: \\ / : * ? \" < > |"
 
-#. preview.js:325
+#. preview.js:329
 msgid "Filename must end with .png"
 msgstr "Nome do arquivo não pode terminar com .png"
 
-#. preview.js:441
+#. preview.js:445
 msgid "Copy failed"
 msgstr "Copia falhou"
 
-#. preview.js:441
+#. preview.js:445
 msgid "Unable to copy image to clipboard."
 msgstr "Não foi possível copiar a imagem para a área de transferência."
 
-#. screenshot.js:70
+#. screenshot.js:86
 msgid "Cinnamon-Screenshot extension error"
 msgstr "Erro da extensão Cinnamon-Screenshot"
 
-#. screenshot.js:71
+#. screenshot.js:87
 msgid ""
-"\"Gnome-screenshot\" utility is not installed. Please install it for the "
-"extension to work."
+"Neither \"cinnamon-screenshot\" nor \"gnome-screenshot\" utility is "
+"installed. Please install one for the extension to work."
 msgstr ""
-"O utilitário \"Gnome-screenshot\" não está instalado. Por favor, instale-o "
-"para que a extensão funcione."
+"Nenhuma das utilidades \"cinnamon-screenshot\" ou \"gnome-screenshot\" "
+"está instalada. Por favor, instale uma delas para que a extensão funcione."
 
 #. metadata.json->name
 msgid "Cinnamon-Screenshot"
