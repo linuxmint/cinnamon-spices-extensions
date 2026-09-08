@@ -1,0 +1,150 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": ["highlight-page"],
+    "highlight-page": {
+      "type": "page",
+      "title": "Highlight",
+      "sections": ["top-bar-section", "frame-section"]
+    },
+    "top-bar-section": {
+      "type": "section",
+      "title": "Top highlight bar",
+      "keys": [
+        "show-top-bar",
+        "line-height",
+        "width-percent",
+        "slant-percent",
+        "alpha-percent",
+        "anim-speed",
+        "color-start",
+        "color-end"
+      ]
+    },
+    "frame-section": {
+      "type": "section",
+      "title": "Window frame",
+      "keys": [
+        "show-frame",
+        "frame-width",
+        "round-top-corners",
+        "frame-radius-control",
+        "frame-alpha-percent",
+        "frame-color"
+      ]
+    }
+  },
+  "show-top-bar": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Show top highlight bar"
+  },
+  "line-height": {
+    "type": "spinbutton",
+    "default": 4,
+    "min": 1,
+    "max": 25,
+    "step": 1,
+    "units": "px",
+    "description": "Top bar height"
+  },
+  "width-percent": {
+    "type": "spinbutton",
+    "default": 80,
+    "min": 10,
+    "max": 100,
+    "step": 5,
+    "units": "%",
+    "description": "Top bar width relative to window"
+  },
+  "slant-percent": {
+    "type": "spinbutton",
+    "default": 10,
+    "min": 0,
+    "max": 40,
+    "step": 1,
+    "units": "px",
+    "description": "Top bar end slant"
+  },
+  "alpha-percent": {
+    "type": "spinbutton",
+    "default": 80,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "units": "%",
+    "description": "Top bar opacity"
+  },
+  "anim-speed": {
+    "type": "scale",
+    "default": 5,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "description": "Gradient animation speed"
+  },
+  "color-start": {
+    "type": "colorchooser",
+    "default": "rgb(0, 210, 255)",
+    "description": "Top bar start color"
+  },
+  "color-end": {
+    "type": "colorchooser",
+    "default": "rgb(58, 123, 213)",
+    "description": "Top bar end color"
+  },
+  "show-frame": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Show frame around active window"
+  },
+  "frame-width": {
+    "type": "spinbutton",
+    "default": 1,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "px",
+    "description": "Frame width"
+  },
+  "frame-radius": {
+    "type": "spinbutton",
+    "default": 8,
+    "min": 0,
+    "max": 64,
+    "step": 1,
+    "units": "px",
+    "description": "Top corner radius"
+  },
+  "frame-radius-control": {
+    "type": "custom",
+    "file": "FrameRadiusWidget.py",
+    "widget": "FrameRadiusWidget",
+    "default": "",
+    "min": 0,
+    "max": 64,
+    "step": 1,
+    "units": "px",
+    "description": "Top corner radius",
+    "tooltip": "Disabled when square top corners are selected"
+  },
+  "round-top-corners": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Round top corners"
+  },
+  "frame-alpha-percent": {
+    "type": "spinbutton",
+    "default": 80,
+    "min": 5,
+    "max": 100,
+    "step": 5,
+    "units": "%",
+    "description": "Frame opacity"
+  },
+  "frame-color": {
+    "type": "colorchooser",
+    "default": "rgb(0, 190, 255)",
+    "description": "Frame color"
+  }
+}
