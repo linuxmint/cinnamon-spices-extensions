@@ -1,12 +1,12 @@
 # Active Window Highlight
 
-![Active Window Highlight on a dark Cinnamon window](screenshot.png)
+![Active Window Highlight Cinnamon settings](screenshot.png)
 
 A clear, toolkit-independent focus indicator for Cinnamon. It draws an
 animated top marker and configurable frame around the focused window at the
 compositor level, including GTK, Qt, Wine and other window toolkits.
 
-This is the `2.0.0` public-release payload for the OSS Singularity project.
+This is the `2.0.1` public-release payload for the OSS Singularity project.
 
 ## Features
 

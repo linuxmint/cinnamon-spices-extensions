@@ -2,7 +2,7 @@
   "uuid": "active-window-highlight@oss-singularity",
   "name": "Active Window Highlight",
   "description": "Highlights the focused window with a configurable top bar and frame.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "cinnamon-version": ["5.8", "6.0", "6.2", "6.4", "6.6"],
   "author": "Claudiu Schuster",
   "url": "https://github.com/oss-singularity/cinnamon-active-window-highlight",

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.1 — 2026-09-08
+
+- Use the focused Cinnamon settings screenshot as the official Spices/Store
+  preview and keep the public packaging source reproducible.
+
 ## 2.0.0 — 2026-09-08
 
 - Keep the top highlight bar visible for fully maximized windows while hiding
