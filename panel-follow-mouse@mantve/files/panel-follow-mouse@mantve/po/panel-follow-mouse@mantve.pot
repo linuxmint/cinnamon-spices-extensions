@@ -1,0 +1,76 @@
+# PANEL FOLLOW MOUSE
+# This file is put in the public domain.
+# Mantve, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: panel-follow-mouse@mantve 0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-09-04 22:46+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+#. extension.js:58 extension.js:60 extension.js:63 extension.js:229
+msgid "Panel Follow Mouse"
+msgstr ""
+
+#. extension.js:58
+#, javascript-format
+msgid "Set panel ID to %s (%s, monitor %d)."
+msgstr ""
+
+#. extension.js:60
+msgid "No panels found."
+msgstr ""
+
+#. extension.js:63
+#, javascript-format
+msgid ""
+"Multiple panels found -- set panel-id manually:\n"
+"%s"
+msgstr ""
+
+#. extension.js:229
+#, javascript-format
+msgid ""
+"Couldn't create %d barrier(s) — another xlet's barrier may be in the way."
+msgstr ""
+
+#. metadata.json->description
+msgid "Moves a panel to whichever monitor the cursor hits at the panel's edge"
+msgstr ""
+
+#. settings-schema.json->panel-id->description
+msgid "Panel ID to track"
+msgstr ""
+
+#. settings-schema.json->panel-id->tooltip
+msgid ""
+"Use the Detect button below to get the IDs list"
+msgstr ""
+
+#. settings-schema.json->detect-panel-button->description
+msgid "Detect panel IDs"
+msgstr ""
+
+#. settings-schema.json->hold-ms->units
+msgid "ms"
+msgstr ""
+
+#. settings-schema.json->hold-ms->description
+msgid "Hold time before switching"
+msgstr ""
+
+#. settings-schema.json->hold-ms->tooltip
+msgid ""
+"How long you need to hold the cursor against the monitor edge before the "
+"panel actually moves"
+msgstr ""
