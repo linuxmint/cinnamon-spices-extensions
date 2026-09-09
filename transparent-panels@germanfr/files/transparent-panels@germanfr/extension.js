@@ -77,6 +77,7 @@ MyExtension.prototype = {
 		this.settings.bind("panel-left", "enable_position_left", this.on_settings_changed);
 
 		this._signals.connect(Main.layoutManager, 'monitors-changed', this.on_monitors_changed, this);
+		this._signals.connect(global.settings, 'changed::panels-enabled', this.on_monitors_changed, this);
 		this._classname = this.theme_defined ? this.transparency_type : this.transparency_type + INTERNAL_PREFIX;
 
 		Gettext.bindtextdomain(meta.uuid, GLib.get_home_dir() + "/.local/share/locale");
