@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 00:00+0300\n"
+"PO-Revision-Date: 2026-07-25 00:00+0300\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr "Geçerli parça için açılır kaplama (MPRIS)"
+
+msgid "Preview"
+msgstr "Önizleme"
+
+msgid "Show notification"
+msgstr "Bildirimi göster"
+
+msgid "Appearance"
+msgstr "Görünüm"
+
+msgid "Background color"
+msgstr "Arka plan rengi"
+
+msgid "Background opacity (%)"
+msgstr "Arka plan opaklığı (%)"
+
+msgid "Text color"
+msgstr "Metin rengi"
+
+msgid "Font size (px)"
+msgstr "Yazı tipi boyutu (px)"
+
+msgid "Header text"
+msgstr "Başlık metni"
+
+msgid "Show cover art"
+msgstr "Kapağı göster"
+
+msgid "Cover size (px)"
+msgstr "Kapak boyutu (px)"
+
+msgid "Behavior"
+msgstr "Davranış"
+
+msgid "Display time (sec)"
+msgstr "Gösterim süresi (sn)"
+
+msgid "Fade in/out duration (ms)"
+msgstr "Belirme/kaybolma süresi (ms)"
+
+msgid "Opacity on hover (%)"
+msgstr "Fare üzerindeyken opaklık (%)"
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr "Göstermeden önce gecikme, ms (yinelenmeye karşı koruma)"
+
+msgid "Position"
+msgstr "Konum"
+
+msgid "Screen position"
+msgstr "Ekrandaki konum"
+
+msgid "Top left"
+msgstr "Sol üst"
+
+msgid "Top center"
+msgstr "Üst orta"
+
+msgid "Top right"
+msgstr "Sağ üst"
+
+msgid "Bottom left"
+msgstr "Sol alt"
+
+msgid "Bottom center"
+msgstr "Alt orta"
+
+msgid "Bottom right"
+msgstr "Sağ alt"
+
+msgid "Screen edge margin (px)"
+msgstr "Ekran kenarından boşluk (px)"
+
+msgid "Maximum text width (px)"
+msgstr "Maksimum metin genişliği (px)"
+
+msgid "Test artist"
+msgstr "Test sanatçısı"
+
+msgid "Test track title"
+msgstr "Test parça adı"

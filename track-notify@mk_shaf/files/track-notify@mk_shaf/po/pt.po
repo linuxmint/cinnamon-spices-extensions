@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 00:00+0300\n"
+"PO-Revision-Date: 2026-07-25 00:00+0300\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr "Sobreposição pop-up com a faixa atual (MPRIS)"
+
+msgid "Preview"
+msgstr "Pré-visualização"
+
+msgid "Show notification"
+msgstr "Mostrar notificação"
+
+msgid "Appearance"
+msgstr "Aparência"
+
+msgid "Background color"
+msgstr "Cor de fundo"
+
+msgid "Background opacity (%)"
+msgstr "Opacidade do fundo (%)"
+
+msgid "Text color"
+msgstr "Cor do texto"
+
+msgid "Font size (px)"
+msgstr "Tamanho da fonte (px)"
+
+msgid "Header text"
+msgstr "Texto do cabeçalho"
+
+msgid "Show cover art"
+msgstr "Mostrar capa"
+
+msgid "Cover size (px)"
+msgstr "Tamanho da capa (px)"
+
+msgid "Behavior"
+msgstr "Comportamento"
+
+msgid "Display time (sec)"
+msgstr "Tempo de exibição (seg)"
+
+msgid "Fade in/out duration (ms)"
+msgstr "Duração do fade in/out (ms)"
+
+msgid "Opacity on hover (%)"
+msgstr "Opacidade ao passar o rato (%)"
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr "Atraso antes de mostrar, ms (proteção contra duplicados)"
+
+msgid "Position"
+msgstr "Posição"
+
+msgid "Screen position"
+msgstr "Posição no ecrã"
+
+msgid "Top left"
+msgstr "Superior esquerdo"
+
+msgid "Top center"
+msgstr "Superior centro"
+
+msgid "Top right"
+msgstr "Superior direito"
+
+msgid "Bottom left"
+msgstr "Inferior esquerdo"
+
+msgid "Bottom center"
+msgstr "Inferior centro"
+
+msgid "Bottom right"
+msgstr "Inferior direito"
+
+msgid "Screen edge margin (px)"
+msgstr "Margem da borda do ecrã (px)"
+
+msgid "Maximum text width (px)"
+msgstr "Largura máxima do texto (px)"
+
+msgid "Test artist"
+msgstr "Artista de teste"
+
+msgid "Test track title"
+msgstr "Título de faixa de teste"

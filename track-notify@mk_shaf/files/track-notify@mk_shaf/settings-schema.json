@@ -1,0 +1,168 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": ["page-appearance", "page-behavior", "page-position"],
+
+    "page-appearance": {
+      "type": "page",
+      "title": "Appearance",
+      "sections": ["section-preview-appearance", "section-appearance"]
+    },
+    "section-preview-appearance": {
+      "type": "section",
+      "title": "Preview",
+      "keys": ["preview-button"]
+    },
+    "section-appearance": {
+      "type": "section",
+      "title": "Appearance",
+      "keys": ["bg-color", "bg-opacity", "text-color", "font-size", "header-text", "show-cover", "cover-size"]
+    },
+
+    "page-behavior": {
+      "type": "page",
+      "title": "Behavior",
+      "sections": ["section-preview-behavior", "section-behavior"]
+    },
+    "section-preview-behavior": {
+      "type": "section",
+      "title": "Preview",
+      "keys": ["preview-button"]
+    },
+    "section-behavior": {
+      "type": "section",
+      "title": "Behavior",
+      "keys": ["duration", "fade-time", "hover-opacity", "debounce"]
+    },
+
+    "page-position": {
+      "type": "page",
+      "title": "Position",
+      "sections": ["section-preview-position", "section-position"]
+    },
+    "section-preview-position": {
+      "type": "section",
+      "title": "Preview",
+      "keys": ["preview-button"]
+    },
+    "section-position": {
+      "type": "section",
+      "title": "Position",
+      "keys": ["position", "margin", "max-width"]
+    }
+  },
+
+  "preview-button": {
+    "type": "button",
+    "description": "Show notification",
+    "callback": "previewNotification"
+  },
+
+  "bg-color": {
+    "type": "colorchooser",
+    "default": "rgb(0,0,0)",
+    "description": "Background color"
+  },
+  "bg-opacity": {
+    "type": "scale",
+    "default": 75,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "description": "Background opacity (%)"
+  },
+  "text-color": {
+    "type": "colorchooser",
+    "default": "rgb(255,255,255)",
+    "description": "Text color"
+  },
+  "font-size": {
+    "type": "scale",
+    "default": 14,
+    "min": 8,
+    "max": 32,
+    "step": 1,
+    "description": "Font size (px)"
+  },
+  "header-text": {
+    "type": "entry",
+    "default": "Now playing:",
+    "description": "Header text"
+  },
+  "show-cover": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Show cover art"
+  },
+  "cover-size": {
+    "type": "scale",
+    "default": 56,
+    "min": 24,
+    "max": 128,
+    "step": 4,
+    "description": "Cover size (px)"
+  },
+
+  "duration": {
+    "type": "scale",
+    "default": 3,
+    "min": 1,
+    "max": 15,
+    "step": 0.5,
+    "description": "Display time (sec)"
+  },
+  "fade-time": {
+    "type": "scale",
+    "default": 400,
+    "min": 50,
+    "max": 2000,
+    "step": 50,
+    "description": "Fade in/out duration (ms)"
+  },
+  "hover-opacity": {
+    "type": "scale",
+    "default": 10,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "description": "Opacity on hover (%)"
+  },
+  "debounce": {
+    "type": "scale",
+    "default": 400,
+    "min": 100,
+    "max": 2000,
+    "step": 50,
+    "description": "Delay before showing, ms (duplicate protection)"
+  },
+
+  "position": {
+    "type": "combobox",
+    "default": "top-right",
+    "options": {
+      "Top left": "top-left",
+      "Top center": "top-center",
+      "Top right": "top-right",
+      "Bottom left": "bottom-left",
+      "Bottom center": "bottom-center",
+      "Bottom right": "bottom-right"
+    },
+    "description": "Screen position"
+  },
+  "margin": {
+    "type": "scale",
+    "default": 24,
+    "min": 0,
+    "max": 200,
+    "step": 4,
+    "description": "Screen edge margin (px)"
+  },
+  "max-width": {
+    "type": "scale",
+    "default": 460,
+    "min": 200,
+    "max": 900,
+    "step": 20,
+    "description": "Maximum text width (px)"
+  }
+}
