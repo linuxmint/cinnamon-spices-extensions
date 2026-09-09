@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { getUsableArea, hasReserved } from "../src/workarea.ts";
+import { getUsableArea, hasReserved, scaleReserved } from "../src/workarea.ts";
 import type { Reserved } from "../src/workarea.ts";
 import type { Rect } from "../src/geometry.ts";
 
@@ -93,4 +93,22 @@ test("knows whether any space is being held back", () => {
   assert.equal(hasReserved(reserve({ bottom: 150 })), true);
   assert.equal(hasReserved(reserve({ left: 60 })), true);
   assert.equal(hasReserved(reserve({ right: 60 })), true);
+});
+
+test("reserved space scales to the display, in whole pixels", () => {
+  const set = reserve({ top: 24, bottom: 25, right: 100 });
+
+  assert.deepEqual(scaleReserved(set, 1), set, "unchanged at 1");
+  assert.deepEqual(scaleReserved(set, 2), {
+    top: 48,
+    bottom: 50,
+    left: 0,
+    right: 200,
+  });
+  assert.deepEqual(
+    scaleReserved(set, 1.5),
+    { top: 36, bottom: 38, left: 0, right: 150 },
+    "a fractional scale rounds to whole pixels",
+  );
+  assert.equal(scaleReserved(null, 2), null, "no reserved space stays none");
 });

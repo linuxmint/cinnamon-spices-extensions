@@ -6,7 +6,12 @@
 import { arrange, settle } from "./autotile.ts";
 import type { AutotileMode, Placer } from "./autotile.ts";
 import { Config } from "./config.ts";
-import { cellRangeToRect, coversFullGrid, overflowRects } from "./geometry.ts";
+import {
+  cellRangeToRect,
+  coversFullGrid,
+  overflowRects,
+  scaleGaps,
+} from "./geometry.ts";
 import type { CellRange, Direction, Gaps, GridSize, Rect } from "./geometry.ts";
 import type { Preset } from "./preset.ts";
 import { Overlay } from "./overlay.ts";
@@ -17,7 +22,7 @@ import {
   tileModeRange,
 } from "./pushtile.ts";
 import type { PushNote } from "./pushtile.ts";
-import { getUsableArea, hasReserved } from "./workarea.ts";
+import { getUsableArea, hasReserved, scaleReserved } from "./workarea.ts";
 import type { Reserved } from "./workarea.ts";
 import {
   displayScale,
@@ -53,10 +58,11 @@ const HOTKEY_NAME = "tiler-tile";
 const UNBOUND = "::";
 
 /**
- * The smallest usable area, on either axis, that is still worth tiling into.
- * Reserved space is applied exactly as configured, so it is possible to leave
- * a monitor with almost nothing to tile; rather than shrink windows to
- * something unusable, Tiler does nothing at all.
+ * The smallest usable area, on either axis, that is still worth tiling into,
+ * in the pixels the user sees. Reserved space is applied exactly as
+ * configured, so it is possible to leave a monitor with almost nothing to
+ * tile; rather than shrink windows to something unusable, Tiler does nothing
+ * at all.
  */
 const MIN_TILE_AREA = 250;
 
@@ -214,7 +220,20 @@ export class App {
     this.hotkeyRegistered = false;
   }
 
-  /** Reserved space for a monitor, or null when the scope excludes it. */
+  /**
+   * The configured gaps in the pixels of the device. Settings are in the
+   * pixels the user sees, and on a scaled display each of those is several
+   * of the device's, which is what the window manager places windows in.
+   * Read at each use rather than kept, so a change of display is picked up.
+   */
+  private gapsAtScale(): Gaps {
+    return scaleGaps(this.config.gaps, displayScale());
+  }
+
+  /**
+   * Reserved space for a monitor in the pixels of the device, or null when
+   * the scope excludes it.
+   */
   private reservedFor(monitorIndex: number): Reserved | null {
     if (
       this.config.reservedScope === "primary" &&
@@ -223,7 +242,7 @@ export class App {
       return null;
     }
 
-    return this.config.reserved;
+    return scaleReserved(this.config.reserved, displayScale());
   }
 
   /**
@@ -241,7 +260,8 @@ export class App {
 
     // Negated so that a width or height that is not a number fails the test
     // rather than slipping through it.
-    if (!(area.width >= MIN_TILE_AREA) || !(area.height >= MIN_TILE_AREA)) {
+    const least = MIN_TILE_AREA * displayScale();
+    if (!(area.width >= least) || !(area.height >= least)) {
       return null;
     }
 
@@ -331,7 +351,7 @@ export class App {
 
     const bounds = monitorBounds(monitorIndex) ?? area;
 
-    const gaps = this.config.gaps;
+    const gaps = this.gapsAtScale();
     const presets = this.config.presets;
     const chosen = this.config.lastGrid;
     const overlay = new Overlay({
@@ -535,7 +555,7 @@ export class App {
     }
     const saved = record?.saved ?? frameOf(window);
 
-    const gaps = this.config.gaps;
+    const gaps = this.gapsAtScale();
     const rect = cellRangeToRect(area, PUSH_GRID, range, gaps);
     const fillsArea = this.fillsWholeArea(next === "maximized", gaps, reserved);
 

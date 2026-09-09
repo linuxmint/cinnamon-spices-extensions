@@ -15,6 +15,27 @@ export interface Reserved {
   right: number;
 }
 
+/**
+ * The reserved space at a display scale, in whole pixels, or null for none.
+ * Settings are in the pixels the user sees; the window manager works in the
+ * pixels of the device, which on a scaled display are more of them.
+ */
+export function scaleReserved(
+  reserved: Reserved | null,
+  factor: number,
+): Reserved | null {
+  if (!reserved) {
+    return null;
+  }
+
+  return {
+    top: Math.round(reserved.top * factor),
+    bottom: Math.round(reserved.bottom * factor),
+    left: Math.round(reserved.left * factor),
+    right: Math.round(reserved.right * factor),
+  };
+}
+
 /** Whether any space is actually being held back on a monitor. */
 export function hasReserved(reserved: Reserved | null): boolean {
   if (!reserved) {

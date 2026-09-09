@@ -69,6 +69,18 @@ export interface Gaps {
 }
 
 /**
+ * The gaps at a display scale, in whole pixels. Settings are in the pixels
+ * the user sees; the window manager works in the pixels of the device, which
+ * on a scaled display are more of them.
+ */
+export function scaleGaps(gaps: Gaps, factor: number): Gaps {
+  return {
+    window: Math.round(gaps.window * factor),
+    edge: Math.round(gaps.edge * factor),
+  };
+}
+
+/**
  * The share of a run that may be given up to spacing. Gaps asking for more
  * than this are reduced to fit, so that windows keep a usable size on small
  * screens and dense grids.

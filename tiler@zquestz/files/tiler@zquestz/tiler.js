@@ -42,6 +42,12 @@ function toKeybinding(value) {
 }
 
 // src/geometry.ts
+function scaleGaps(gaps, factor) {
+  return {
+    window: Math.round(gaps.window * factor),
+    edge: Math.round(gaps.edge * factor)
+  };
+}
 var MAX_GAP_SHARE = 0.25;
 function tracks(spans) {
   const usable = Array.isArray(spans) ? spans.filter((span) => Number.isFinite(span) && span > 0) : [];
@@ -1477,6 +1483,17 @@ var Overlay = class {
 };
 
 // src/workarea.ts
+function scaleReserved(reserved, factor) {
+  if (!reserved) {
+    return null;
+  }
+  return {
+    top: Math.round(reserved.top * factor),
+    bottom: Math.round(reserved.bottom * factor),
+    left: Math.round(reserved.left * factor),
+    right: Math.round(reserved.right * factor)
+  };
+}
 function hasReserved(reserved) {
   if (!reserved) {
     return false;
@@ -1589,7 +1606,7 @@ var App = class {
       }
       const { monitorIndex, reserved, area } = usable;
       const bounds = monitorBounds(monitorIndex) ?? area;
-      const gaps = this.config.gaps;
+      const gaps = this.gapsAtScale();
       const presets = this.config.presets;
       const chosen = this.config.lastGrid;
       const overlay = new Overlay({
@@ -1715,7 +1732,7 @@ var App = class {
         releaseWindow(window);
       }
       const saved = record?.saved ?? frameOf(window);
-      const gaps = this.config.gaps;
+      const gaps = this.gapsAtScale();
       const rect = cellRangeToRect(area, PUSH_GRID, range, gaps);
       const fillsArea = this.fillsWholeArea(next === "maximized", gaps, reserved);
       const placed = settle(this.placer, window, rect, fillsArea);
@@ -1784,12 +1801,24 @@ var App = class {
     Main3.keybindingManager.removeHotKey(HOTKEY_NAME);
     this.hotkeyRegistered = false;
   }
-  /** Reserved space for a monitor, or null when the scope excludes it. */
+  /**
+   * The configured gaps in the pixels of the device. Settings are in the
+   * pixels the user sees, and on a scaled display each of those is several
+   * of the device's, which is what the window manager places windows in.
+   * Read at each use rather than kept, so a change of display is picked up.
+   */
+  gapsAtScale() {
+    return scaleGaps(this.config.gaps, displayScale());
+  }
+  /**
+   * Reserved space for a monitor in the pixels of the device, or null when
+   * the scope excludes it.
+   */
   reservedFor(monitorIndex) {
     if (this.config.reservedScope === "primary" && !isPrimaryMonitor(monitorIndex)) {
       return null;
     }
-    return this.config.reserved;
+    return scaleReserved(this.config.reserved, displayScale());
   }
   /**
    * The area a window may be tiled into on its monitor, with the reserved
@@ -1799,7 +1828,8 @@ var App = class {
     const monitorIndex = monitorOf(window);
     const reserved = this.reservedFor(monitorIndex);
     const area = getUsableArea(workAreaOf(window, monitorIndex), reserved);
-    if (!(area.width >= MIN_TILE_AREA) || !(area.height >= MIN_TILE_AREA)) {
+    const least = MIN_TILE_AREA * displayScale();
+    if (!(area.width >= least) || !(area.height >= least)) {
       return null;
     }
     return { monitorIndex, reserved, area };

@@ -48,7 +48,9 @@ scratch for modern Cinnamon.
   window-to-window and window-to-screen-edge. Adjacent windows get exactly
   the configured gap (no doubled inner gaps). Neither kind of gap takes up
   more than a quarter of the space available to it, so gaps shrink to fit on
-  dense grids and small screens rather than squeezing windows out.
+  dense grids and small screens rather than squeezing windows out. Gaps and
+  reserved space are in the pixels you see, so they look the same on a
+  high-resolution display.
 - **Reserved space**: keep pixels at the top, bottom, left, or right of the
   screen permanently tile-free; ideal for Conky or docks such as Plank
   Reloaded that don't reserve struts. Applies to all monitors or the primary

@@ -14,6 +14,8 @@
   for: left where it is, minimized, centered, or cascaded.
 - Windows that keep their shape, like video players, are fitted into their
   cell at that shape rather than overhanging it, however they are tiled.
+- Gaps and reserved space follow the display's scale, so a gap of 24 pixels
+  looks the same on a high-resolution display as on any other.
 - Translations are read from the locale directory under the user data
   directory, where Cinnamon's installer now puts them, so they follow
   `XDG_DATA_HOME`.

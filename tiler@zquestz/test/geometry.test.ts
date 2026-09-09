@@ -6,6 +6,7 @@ import {
   moveFocus,
   overflowRects,
   sameRect,
+  scaleGaps,
   selectionRange,
   trackSizes,
   cellRangeToRect,
@@ -15,6 +16,7 @@ import {
 } from "../src/geometry.ts";
 import type {
   CellRange,
+  Gaps,
   GridSize,
   Rect,
   Selection,
@@ -427,6 +429,23 @@ test("centring survives measurements that are not numbers", () => {
     assert.ok(Number.isFinite(value), `${name} is ${value}`);
   }
   assert.ok(box.x >= 0 && box.y >= 0, "still on the monitor");
+});
+
+test("gaps scale to the display, in whole pixels", () => {
+  const gaps: Gaps = { window: 24, edge: 25 };
+
+  assert.deepEqual(scaleGaps(gaps, 1), gaps, "unchanged at 1");
+  assert.deepEqual(scaleGaps(gaps, 2), { window: 48, edge: 50 });
+  assert.deepEqual(
+    scaleGaps(gaps, 1.5),
+    { window: 36, edge: 38 },
+    "a fractional scale rounds to whole pixels",
+  );
+  assert.deepEqual(
+    scaleGaps({ window: 0, edge: 0 }, 2),
+    { window: 0, edge: 0 },
+    "no gap stays no gap",
+  );
 });
 
 test("centres a single overflow window exactly", () => {
