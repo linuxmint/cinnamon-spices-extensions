@@ -2620,6 +2620,7 @@ function hidePanel(panel) {
                         state.isHiding = false;
                         if (!hasActiveMenus(panel)) {
                             panel.actor.set_scale(0.0, 0.0);
+                            panel.actor.hide();
                         } else {
                             state.isHidden = false;
                             showPanel(panel);
@@ -2689,6 +2690,7 @@ function hidePanel(panel) {
                         state.isHiding = false;
                         if (!hasActiveMenus(panel)) {
                             panel.actor.set_scale(0.0, 0.0);
+                            panel.actor.hide();
                         } else {
                             state.isHidden = false;
                             showPanel(panel);
@@ -2733,6 +2735,7 @@ function hidePanel(panel) {
                     state.isHiding = false;
                     if (!hasActiveMenus(panel)) {
                         panel.actor.set_scale(0.0, 0.0);
+                        panel.actor.hide();
                     } else {
                         state.isHidden = false;
                         showPanel(panel);
