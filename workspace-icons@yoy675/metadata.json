@@ -1,0 +1,10 @@
+{
+  "uuid": "workspace-icons@yoy675",
+  "name": "Workspace Icons",
+  "description": "Switch desktop folders and icons when changing Cinnamon workspaces.",
+  "version": "1.0",
+  "cinnamon-version": ["5.0", "5.2", "5.4", "6.0"],
+  "url": "https://github.com/yoy675/workspace-icons",
+  "author": "yoy675",
+  "icon": "icon.png"
+}
