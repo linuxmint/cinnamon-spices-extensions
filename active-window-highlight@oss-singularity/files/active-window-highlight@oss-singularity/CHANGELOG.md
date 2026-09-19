@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.2 — 2026-09-20
+
+- Restore the documented `make install` and `make uninstall` targets, which
+  had been declared phony without a matching rule.
+- Ship `CHANGELOG.md` with local installs so the installer payload matches
+  the packaging manifest.
+- Remove pre-rename `active-window-highlight@claudiu.local` installations
+  during install so the old copy cannot run alongside the renamed uuid, and
+  carry pre-rename settings across the uuid change.
+
 ## 2.0.1 — 2026-09-08
 
 - Use the focused Cinnamon settings screenshot as the official Spices/Store
