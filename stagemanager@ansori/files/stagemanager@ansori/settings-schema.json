@@ -1,0 +1,80 @@
+{
+    "layout": {
+        "type": "header",
+        "description": "Layout Settings"
+    },
+    "display-mode": {
+        "type": "combobox",
+        "default": "hybrid",
+        "description": "Sidebar Mode",
+        "options": {
+            "Hybrid (Scrollable)": "hybrid",
+            "True Mac Style (Max Limit)": "mac"
+        }
+    },
+    "max-mac-windows": {
+        "type": "spinbutton",
+        "default": 5,
+        "min": 2,
+        "max": 10,
+        "step": 1,
+        "units": "wins",
+        "description": "Max Windows (Mac Style Only)"
+    },
+    "stage-position": {
+        "type": "combobox",
+        "default": "center",
+        "description": "Stage Window Position",
+        "options": {
+            "Top": "top",
+            "Center": "center",
+            "Bottom": "bottom"
+        }
+    },
+    "sidebar-width": {
+        "type": "spinbutton",
+        "default": 150,
+        "min": 100,
+        "max": 300,
+        "step": 5,
+        "units": "px",
+        "description": "Sidebar Width"
+    },
+    "top-panel-height": {
+        "type": "spinbutton",
+        "default": 60,
+        "min": 0,
+        "max": 300,
+        "step": 1,
+        "units": "px",
+        "description": "Top Panel Margin (Top Panel Height)"
+    },
+    "bottom-panel-height": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 300,
+        "step": 1,
+        "units": "px",
+        "description": "Bottom Panel Margin (Bottom Panel Height)"
+    },
+    "appearance": {
+        "type": "header",
+        "description": "Appearance Settings"
+    },
+    "show-title": {
+        "type": "switch",
+        "default": true,
+        "description": "Show Window Title"
+    },
+    "show-thumbnail": {
+        "type": "switch",
+        "default": true,
+        "description": "Show Live Preview (Thumbnail)"
+    },
+    "show-nav-buttons": {
+        "type": "switch",
+        "default": true,
+        "description": "Show Scroll Indicator Icons (Hybrid Mode)"
+    }
+}
