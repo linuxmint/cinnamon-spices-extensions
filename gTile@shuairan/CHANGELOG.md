@@ -1,3 +1,7 @@
+### 2.4.0
+
+* Add auto-tile action that places windows into cells of the **currently selected grid layout** (row-major order, focused window first). Uses the same geometry as manual single-cell tiling, including weighted rows and columns.
+
 ### 2.3.0
 
 * Add back old behavior as an option - Display UI on all monitors at the same time

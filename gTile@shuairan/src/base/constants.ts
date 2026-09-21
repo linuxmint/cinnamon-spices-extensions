@@ -3,7 +3,7 @@ import { _ } from "./utils";
 export const SETTINGS_AUTO_CLOSE = 'autoclose';
 export const SETTINGS_ANIMATION = 'animation';
 
-export type TooltipKeys = typeof SETTINGS_AUTO_CLOSE | typeof SETTINGS_ANIMATION | "action-main-list" | "action-two-list";
+export type TooltipKeys = typeof SETTINGS_AUTO_CLOSE | typeof SETTINGS_ANIMATION | "action-main-list" | "action-two-list" | "action-preset-grid";
 export type SettingKeys = 
     "hotkey" |
     "lastGridRows" |
@@ -23,7 +23,8 @@ export const TOOLTIPS: Record<TooltipKeys, string> = {
   [SETTINGS_AUTO_CLOSE]: _("Auto close"),
   [SETTINGS_ANIMATION]: _("Animations"),
   'action-main-list': _("Auto tile main and list"),
-  'action-two-list': _("Auto tile two lists")
+  'action-two-list': _("Auto tile two lists"),
+  'action-preset-grid': _("Auto-tile to current layout"),
 };
 
 export const KEYCONTROL = {
