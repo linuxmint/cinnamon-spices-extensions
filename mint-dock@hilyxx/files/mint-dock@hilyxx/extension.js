@@ -1958,7 +1958,10 @@ class DashDock {
 
         let baseLuminance = (299 * r + 587 * g + 114 * b) / 1000;
         
-        let borderColor = baseLuminance > 120 ? 'rgba(0, 0, 0, 0.11)' : 'rgba(255, 255, 255, 0.095)';
+        // Remove the border when the opacity is set to 0
+        let borderAlphaDark = alpha === 0 ? 0 : 0.11;
+        let borderAlphaLight = alpha === 0 ? 0 : 0.095;
+        let borderColor = baseLuminance > 120 ? `rgba(0, 0, 0, ${borderAlphaDark})` : `rgba(255, 255, 255, ${borderAlphaLight})`;
 
         this.actor.set_style(`background-color: rgba(${r}, ${g}, ${b}, ${alpha}); border-radius: ${radius}px; border-color: ${borderColor};`);
 
