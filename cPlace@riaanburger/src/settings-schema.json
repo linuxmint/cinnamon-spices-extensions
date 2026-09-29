@@ -1,0 +1,164 @@
+{
+    "cascade-header": {
+        "type": "header",
+        "description": "Cascade"
+    },
+    "cascade-window-width": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 10000,
+        "step": 10,
+        "units": "px",
+        "description": "Width of every cascaded window; 0 for half the work area's"
+    },
+    "cascade-window-height": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 10000,
+        "step": 10,
+        "units": "px",
+        "description": "Height of every cascaded window; 0 for half the work area's"
+    },
+    "cascade-offset-across": {
+        "type": "spinbutton",
+        "default": 95,
+        "min": 0,
+        "max": 2000,
+        "step": 1,
+        "units": "px",
+        "description": "Offset from one window to the next, rightward from a left corner and leftward from a right one"
+    },
+    "cascade-offset-up": {
+        "type": "spinbutton",
+        "default": 70,
+        "min": 0,
+        "max": 2000,
+        "step": 1,
+        "units": "px",
+        "description": "Offset from one window to the next, upward from a bottom corner and downward from a top one"
+    },
+    "cascade-margin-across": {
+        "type": "spinbutton",
+        "default": 10,
+        "min": -3000,
+        "max": 1000,
+        "step": 1,
+        "units": "px",
+        "description": "The anchor's distance from the corner's side edge; negative pulls it past the edge and trims the windows that would leave the screen"
+    },
+    "cascade-margin-up": {
+        "type": "spinbutton",
+        "default": 10,
+        "min": -3000,
+        "max": 1000,
+        "step": 1,
+        "units": "px",
+        "description": "The anchor's distance from the corner's top or bottom edge; negative pulls it past the edge and trims the windows that would leave the screen"
+    },
+    "cascade-corner": {
+        "type": "combobox",
+        "default": "top-left",
+        "options": {
+            "Bottom left": "bottom-left",
+            "Bottom right": "bottom-right",
+            "Top left": "top-left",
+            "Top right": "top-right"
+        },
+        "description": "Corner the cascade starts from"
+    },
+    "cascade-spread": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Spread the windows across the whole work area, never wrapping"
+    },
+    "columns-header": {
+        "type": "header",
+        "description": "Columns"
+    },
+    "columns-count": {
+        "type": "spinbutton",
+        "default": 2,
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "description": "Number of columns the windows are dealt into"
+    },
+    "columns-area": {
+        "type": "generic",
+        "default": null,
+        "description": "The area the columns fill, as grid cells, managed from the chooser; empty for the whole work area"
+    },
+    "grid-header": {
+        "type": "header",
+        "description": "Grid"
+    },
+    "grid-layouts": {
+        "type": "list",
+        "description": "Grid layouts: spans typed as numbers with spaces between, 1 2 1 for a wide middle column",
+        "columns": [
+            {
+                "id": "name",
+                "title": "Name",
+                "type": "string"
+            },
+            {
+                "id": "columns",
+                "title": "Columns",
+                "type": "string"
+            },
+            {
+                "id": "rows",
+                "title": "Rows",
+                "type": "string"
+            }
+        ],
+        "default": [
+            {
+                "name": "",
+                "columns": "1 1",
+                "rows": "1 1"
+            },
+            {
+                "name": "",
+                "columns": "1 2 1",
+                "rows": "1 1"
+            },
+            {
+                "name": "",
+                "columns": "1 1 1 1",
+                "rows": "1 1 1 1"
+            },
+            {
+                "name": "",
+                "columns": "1 1 1 1 1 1",
+                "rows": "1 1 1 1 1 1"
+            }
+        ]
+    },
+    "grid-last-layout": {
+        "type": "generic",
+        "default": 0,
+        "description": "The layout the grid last showed, managed from the chooser"
+    },
+    "chooser-header": {
+        "type": "header",
+        "description": "Chooser"
+    },
+    "participants": {
+        "type": "entry",
+        "default": "",
+        "description": "Desktop ids of the applications ticked by default, comma-separated; empty ticks the focused window's application"
+    },
+    "place-hotkey": {
+        "type": "keybinding",
+        "default": "<Super>z",
+        "description": "Open the chooser"
+    },
+    "presets": {
+        "type": "generic",
+        "default": "{}",
+        "description": "Saved presets, managed from the chooser"
+    }
+}
