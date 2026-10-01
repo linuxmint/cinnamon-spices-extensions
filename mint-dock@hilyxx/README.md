@@ -10,4 +10,5 @@ A native and customizable dock for Cinnamon.
 * Two hiding modes: smart hiding (Intellihide) or automatic hiding
 * Several configurable options: show tooltips, show separators, show trash etc.
 * The notification badge and progress bar are displayed
+* Compatible with both X11 and Wayland
 * And much more!
