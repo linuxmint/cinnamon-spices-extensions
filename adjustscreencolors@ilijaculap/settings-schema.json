@@ -1,0 +1,77 @@
+{
+   "common-header": {
+      "type": "header",
+      "description": "Options"
+   },
+   "kb-shortcut": {
+      "type": "keybinding",
+      "default": "<Super>j",
+      "description": "Keyboard shortcut for color adjustment"
+   },
+   "mode": {
+    "type": "combobox",
+    "description": "Select mode",
+    "default": "fullscreen",
+    "options": {
+      "Apply to entire screen": "fullscreen",
+      "Apply only to active window": "windowonly"
+    }
+  },
+   "hsv-header": {
+      "type": "header",
+      "description": "HSV Adjustments"
+   },
+   "hue-shift": {
+    "type": "scale",
+    "description": "Hue",
+    "default": 0,
+    "min": 0,
+    "max": 100,
+    "step": 1
+   },
+   "saturation": {
+    "type": "scale",
+    "description": "Saturation",
+    "default": 100,
+    "min": 1,
+    "max": 199,
+    "step": 1
+   },
+   "value": {
+    "type": "scale",
+    "description": "Value (brightness)",
+    "default": 100,
+    "min": 1,
+    "max": 199,
+    "step": 1
+   },
+   "rgb-header": {
+      "type": "header",
+      "description": "RGB Adjustments"
+   },
+   "brightness": {
+    "type": "scale",
+    "description": "Brightness",
+    "default": 100,
+    "min": 1,
+    "max": 199,
+    "step": 1
+   },
+   "contrast": {
+    "type": "scale",
+    "description": "Contrast",
+    "default": 100,
+    "min": 1,
+    "max": 199,
+    "step": 1
+   },
+   "gamma": {
+    "type": "scale",
+    "description": "Gamma correction",
+    "default": 100,
+    "min": 1,
+    "max": 199,
+    "step": 1
+   }
+}
+
