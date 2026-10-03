@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mint-dock@hilyxx 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-09-25 17:48+0200\n"
+"POT-Creation-Date: 2026-10-03 19:03+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. extension.js:530
+#. extension.js:560
 msgid "System Settings"
 msgstr ""
 
-#. extension.js:877
+#. extension.js:917
 msgid "Unpin from dock"
 msgstr ""
 
-#. extension.js:877
+#. extension.js:917
 msgid "Pin to dock"
 msgstr ""
 
-#. extension.js:897
+#. extension.js:937
 msgid "Quit"
 msgstr ""
 
-#. extension.js:1492
+#. extension.js:1538
 msgid "Trash"
 msgstr ""
 
-#. extension.js:1575
+#. extension.js:1621
 msgid "Empty Trash"
 msgstr ""
 
-#. extension.js:1880
+#. extension.js:1928
 msgid "Dock settings"
 msgstr ""
 

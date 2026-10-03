@@ -19,6 +19,14 @@ let dock;
 
 const SETTINGS_APP_ID = 'cinnamon-settings.desktop';
 
+// === UI CONSTANTS ===
+const UI_DOCK_MARGIN = 10;
+const UI_SCREEN_MARGIN = 20;
+const UI_ICON_CSS_SPACE = 20;
+const UI_SEP_CSS_SPACE = 30;
+const UI_HOVER_ZONE = 10;
+const UI_ANIM_SLIDE = 20;
+
 // === INITIALIZATION ===
 function _(str) {
     return Gettext.dgettext(UUID, str);
@@ -83,8 +91,7 @@ class DockAppList {
 
         let themeContext = St.ThemeContext.get_for_stage(global.stage);
         this._scaleChangedId = themeContext.connect('notify::scale-factor', () => {
-            this._updateAppList(true);
-            if (this.onSizeChanged) this.onSizeChanged();
+            this._updateAppList(true); 
         });
 
         this._badgeLoopId = Mainloop.timeout_add(1000, () => {
@@ -108,10 +115,7 @@ class DockAppList {
 
     setIconSize(newSize) {
         this.iconSize = newSize;
-        this.actor.destroy_all_children();
-        this.buttons.clear();
         this._updateAppList(true);
-        if (this.onSizeChanged) this.onSizeChanged();
     }
 
     setPosition(newPosition) {
@@ -119,8 +123,12 @@ class DockAppList {
         let isVert = newPosition === 'left' || newPosition === 'right';
         this.actor.set_vertical(isVert);
         
-        this.actor.destroy_all_children();
-        this.buttons.clear();
+        let sepElements = this.buttons.get('dock-separator');
+        if (sepElements && sepElements.button) {
+            let sepStyle = isVert ? 'width: 30px; height: 2px; margin: 6px 0px;' : 'width: 2px; height: 30px; margin: 0px 6px;';
+            sepElements.button.get_child().set_style(sepStyle);
+        }
+
         this._updateAppList(true);
     }
 
@@ -139,44 +147,112 @@ class DockAppList {
         this._updateAppList(true);
     }
 
+    _matchAppToWindow(targetAppId, runningApp, window) {
+        if (!targetAppId || !runningApp) return false;
+
+        let runningAppId = runningApp.get_id();
+        let wmClass = window ? (window.get_wm_class() || '').toLowerCase() : '';
+        
+        // 1. Exact match of the system ID
+        if (runningAppId === targetAppId) return true;
+
+        // 2. Hard-coded exceptions (e.g., Cinnamon settings)
+        if (targetAppId === SETTINGS_APP_ID && wmClass.includes('cinnamon-settings')) return true;
+
+        let lowerTargetId = targetAppId.toLowerCase();
+        
+        // 3. Exact match to the .desktop file
+        if (lowerTargetId === wmClass + '.desktop') return true;
+        
+        // 4. Standardized match (without hyphens or the file extension)
+        let cleanTarget = lowerTargetId.replace('.desktop', '').replace(/-/g, '');
+        let cleanWm = wmClass.replace(/-/g, '');
+        if (cleanTarget === cleanWm) return true;
+
+        // 5. Last-resort heuristic (Flatpaks)
+        let packageWord = cleanTarget.split('.').pop();
+        if (cleanWm.length > 2 && cleanTarget.length > 2) {
+            if (packageWord === cleanWm || cleanTarget.endsWith('.' + cleanWm)) return true;
+            
+            if (cleanTarget.includes(cleanWm) || cleanWm.includes(cleanTarget)) return true;
+        }
+
+        return false;
+    }
+
+     /*
+     * Reliably retrieves the .desktop file to extract Quicklists/Actions (e.g., Flatpaks).
+     * 
+     * 1: Native Cinnamon Object - Best for pinned Flatpaks where ID paths are non-standard.
+     * 2: Standard Gio Lookup - Fallback for standard system packages.
+     * 3: Fuzzy Match Fallback - Cinnamon's tracker often fails if an app is hidden 
+     *         from the menu (NoDisplay=true, e.g., File Roller) or if a running window's 
+     *         wm_class differs from its package name. This scans all apps, stripping 
+     *         dashes and casing to force a match.
+     */
+    _getDesktopAppInfo(app, appId, wmClassLower) {
+        if (app && typeof app.get_app_info === 'function') {
+            let nativeInfo = app.get_app_info();
+            if (nativeInfo && typeof nativeInfo.list_actions === 'function') {
+                return { info: nativeInfo, fuzzy: false };
+            }
+        }
+
+        let info = Gio.DesktopAppInfo.new(appId);
+        if (info) return { info: info, fuzzy: false };
+
+        let allApps = Gio.AppInfo.get_all();
+        let cleanWm = wmClassLower.replace(/-/g, '');
+        let cleanAppId = appId.toLowerCase().replace('.desktop', '').replace(/-/g, '');
+        
+        let exactMatch = null;
+        let partialMatch = null;
+
+        for (let appInfo of allApps) {
+            let id = appInfo.get_id();
+            if (!id) continue;
+            
+            let lowerId = id.toLowerCase();
+            let cleanId = lowerId.replace('.desktop', '').replace(/-/g, ''); 
+            
+            if (cleanWm && (cleanId === cleanWm || lowerId === wmClassLower + '.desktop')) {
+                exactMatch = appInfo; break;
+            }
+            if (cleanId === cleanAppId || lowerId === appId.toLowerCase()) {
+                exactMatch = appInfo; break;
+            }
+            
+            let packageWord = cleanId.split('.').pop(); 
+            if (packageWord && packageWord.length > 0) {
+                if (cleanWm && (packageWord === cleanWm || cleanId.endsWith('.' + cleanWm))) partialMatch = appInfo; 
+                if (packageWord === cleanAppId || cleanId.endsWith('.' + cleanAppId)) partialMatch = appInfo; 
+            }
+        }
+        
+        let matchInfo = exactMatch || partialMatch;
+        if (matchInfo && matchInfo.get_id()) {
+            info = Gio.DesktopAppInfo.new(matchInfo.get_id());
+            if (info) return { info: info, fuzzy: true };
+        }
+
+        return { info: null, fuzzy: false };
+    }
+
     _getAppWindows(appId) {
         let collectedWindows = [];
         
         let app = this.appSystem.lookup_app(appId);
         if (app) {
-            let appWindows = app.get_windows();
-            for (let w of appWindows) collectedWindows.push(w);
+            for (let w of app.get_windows()) collectedWindows.push(w);
         }
 
         let runningApps = this.appSystem.get_running();
-        let lowerId = appId.toLowerCase();
-        let searchId = lowerId.replace('.desktop', '').replace(/-/g, '');
 
         for (let rApp of runningApps) {
             let rWins = rApp.get_windows();
             if (rWins.length === 0) continue;
 
-            let wmClass = (rWins[0].get_wm_class() || '').toLowerCase();
-            let cleanWm = wmClass.replace(/-/g, '');
-            
-            let isMatch = false;
-            if (rApp.get_id() === appId) {
-                isMatch = true;
-            } else if (appId === SETTINGS_APP_ID && wmClass.includes('cinnamon-settings')) {
-                isMatch = true;
-            } else if (searchId === cleanWm || lowerId === wmClass + '.desktop') {
-                isMatch = true;
-            } else {
-                let packageWord = searchId.split('.').pop();
-                if (packageWord && packageWord.length > 0 && cleanWm.length > 0) {
-                    if (packageWord === cleanWm || searchId.endsWith('.' + cleanWm)) {
-                        isMatch = true;
-                    }
-                }
-            }
-
-            // Aggregate all matching windows
-            if (isMatch) {
+            if (this._matchAppToWindow(appId, rApp, rWins[0])) {
                 for (let w of rWins) {
                     if (!collectedWindows.includes(w)) {
                         collectedWindows.push(w);
@@ -188,6 +264,29 @@ class DockAppList {
     }
 
     _updateAppList(forceRebuild = false) {
+        if (forceRebuild) {
+            this._pendingForceRebuild = true;
+        }
+
+        if (this._updateAppListTimeoutId > 0) {
+            return;
+        }
+
+        this._updateAppListTimeoutId = Mainloop.timeout_add(50, () => {
+            this._updateAppListTimeoutId = 0;
+            
+            // Perform the actual rendering by compiling the requests
+            if (this.actor) {
+                this._renderAppList(this._pendingForceRebuild);
+            }
+            
+            this._pendingForceRebuild = false;
+            
+            return false;
+        });
+    }
+
+    _renderAppList(forceRebuild = false) {
         try {
             let favIds = this._getPinnedApps();
             let allRunningApps = this.appSystem.get_running();
@@ -223,10 +322,7 @@ class DockAppList {
                 
                 let isAlreadyHandled = false;
                 for (let favId of validFavIds) { 
-                    if (!favId || favId.length < 3) continue;
-                    
-                    let favSearchId = favId.toLowerCase().replace('.desktop', '');
-                    if (wmClass && (favSearchId.includes(wmClass) || wmClass.includes(favSearchId))) {
+                    if (windows.length > 0 && this._matchAppToWindow(favId, app, windows[0])) {
                         isAlreadyHandled = true;
                         break;
                     }
@@ -295,12 +391,11 @@ class DockAppList {
             let totalIcons = appDataCount + sysIcons;
             let totalSeps = sepCount + (showSettings && showSeparators ? 1 : 0) + (showTrash && showSeparators ? 1 : 0);
 
-            let screenMargin = isFullWidth ? 0 : 20;
+            let screenMargin = isFullWidth ? 0 : UI_SCREEN_MARGIN;
             
             let sf = St.ThemeContext.get_for_stage(global.stage).scale_factor || 1;
 
-            //CSS margins of buttons: ~20px per button, ~30px per separator)
-            let fixedSpace = screenMargin + (totalIcons * 20 * sf) + (totalSeps * 30 * sf);
+            let fixedSpace = screenMargin + (totalIcons * UI_ICON_CSS_SPACE * sf) + (totalSeps * UI_SEP_CSS_SPACE * sf);
 
             // Dynamically scale icon size to prevent overflow by calculating available
             // screen space minus fixed UI elements and margins.            
@@ -407,10 +502,10 @@ class DockAppList {
                           elements.button.opacity = 0; 
                           
                           if (!sizeChanged && spawnAnimType === 'slide') {
-                              if (this.dockPosition === 'top') elements.button.translation_y = -20;
-                              else if (this.dockPosition === 'bottom') elements.button.translation_y = 20;
-                              else if (this.dockPosition === 'left') elements.button.translation_x = -20;
-                              else if (this.dockPosition === 'right') elements.button.translation_x = 20;
+                              if (this.dockPosition === 'top') elements.button.translation_y = -UI_ANIM_SLIDE;
+                              else if (this.dockPosition === 'bottom') elements.button.translation_y = UI_ANIM_SLIDE;
+                              else if (this.dockPosition === 'left') elements.button.translation_x = -UI_ANIM_SLIDE;
+                              else if (this.dockPosition === 'right') elements.button.translation_x = UI_ANIM_SLIDE;
                           } else {
                               elements.button.set_pivot_point(0.5, 0.5);
                               elements.button.set_scale(0.5, 0.5);
@@ -454,76 +549,11 @@ class DockAppList {
     _createAppButton(app, forcedAppId) {
         let appId = forcedAppId || (app ? app.get_id() : '');
 
-         /*
-         * Reliably retrieves the .desktop file to extract Quicklists/Actions (e.g., Flatpaks).
-         * 
-         * 1: Native Cinnamon Object - Best for pinned Flatpaks where ID paths are non-standard.
-         * 2: Standard Gio Lookup - Fallback for standard system packages.
-         * 3: Fuzzy Match Fallback - Cinnamon's tracker often fails if an app is hidden 
-         *         from the menu (NoDisplay=true, e.g., File Roller) or if a running window's 
-         *         wm_class differs from its package name. This scans all apps, stripping 
-         *         dashes and casing to force a match.
-         */
-        
         let windows = this._getAppWindows(appId);
         let wmClass = windows.length > 0 ? (windows[0].get_wm_class() || '') : '';
         let wmClassLower = wmClass.toLowerCase();
 
-        let desktopAppInfo = null;
-        let usedFuzzyMatch = false; 
-        
-        if (app && typeof app.get_app_info === 'function') {
-            let nativeInfo = app.get_app_info();
-            if (nativeInfo && typeof nativeInfo.list_actions === 'function') {
-                desktopAppInfo = nativeInfo;
-            }
-        }
-
-        if (!desktopAppInfo) {
-            desktopAppInfo = Gio.DesktopAppInfo.new(appId);
-        }
-
-        if (!desktopAppInfo) { 
-            let allApps = Gio.AppInfo.get_all();
-            let cleanWm = wmClassLower.replace(/-/g, '');
-            let cleanAppId = appId.toLowerCase().replace('.desktop', '').replace(/-/g, '');
-            
-            let exactMatch = null;
-            let partialMatch = null;
-
-            for (let info of allApps) {
-                let id = info.get_id();
-                if (!id) continue;
-                
-                let lowerId = id.toLowerCase();
-                let cleanId = lowerId.replace('.desktop', '').replace(/-/g, ''); 
-                
-                if (cleanWm && (cleanId === cleanWm || lowerId === wmClassLower + '.desktop')) {
-                    exactMatch = info;
-                    break;
-                }
-                if (cleanId === cleanAppId || lowerId === appId.toLowerCase()) {
-                    exactMatch = info;
-                    break;
-                }
-                
-                let packageWord = cleanId.split('.').pop(); 
-                if (packageWord && packageWord.length > 0) {
-                    if (cleanWm && (packageWord === cleanWm || cleanId.endsWith('.' + cleanWm))) {
-                        partialMatch = info; 
-                    }
-                    if (packageWord === cleanAppId || cleanId.endsWith('.' + cleanAppId)) {
-                        partialMatch = info; 
-                    }
-                }
-            }
-            
-            let matchInfo = exactMatch || partialMatch;
-            if (matchInfo && matchInfo.get_id()) {
-                desktopAppInfo = Gio.DesktopAppInfo.new(matchInfo.get_id());
-                if (desktopAppInfo) usedFuzzyMatch = true; 
-            }
-        }
+        let { info: desktopAppInfo, fuzzy: usedFuzzyMatch } = this._getDesktopAppInfo(app, appId, wmClassLower);
 
         let appName = app ? app.get_name() : '';
         if (appId === SETTINGS_APP_ID) {
@@ -829,7 +859,12 @@ class DockAppList {
                         });
                         
                         closeButton.connect('clicked', () => {
-                            win.delete(global.get_current_time());
+                            let currentWindows = this._getAppWindows(appId);
+                            
+                            if (currentWindows.includes(win)) {
+                                win.delete(global.get_current_time());
+                            }
+                            
                             menu.close();
                         });
 
@@ -838,7 +873,12 @@ class DockAppList {
                         winItem.addActor(box, { expand: true });
 
                         winItem.connect('activate', () => {
-                            Main.activateWindow(win);
+                            let currentWindows = this._getAppWindows(appId);
+                            
+                            if (currentWindows.includes(win)) {
+                                Main.activateWindow(win);
+                            }
+                            
                             menu.close();
                         });
 
@@ -948,6 +988,7 @@ class DockAppList {
 
             let windows = this._getAppWindows(appId);
             let currentWorkspace = global.workspace_manager.get_active_workspace();
+            if (!currentWorkspace) return Clutter.EVENT_PROPAGATE;
             windows = windows.filter(w => w.get_workspace() === currentWorkspace || w.is_on_all_workspaces());
 
             if (windows.length === 0) return Clutter.EVENT_PROPAGATE;
@@ -1114,7 +1155,7 @@ class DockAppList {
     }
 
     _updateBadges() {
-/**
+     /**
      * Workaround for a known Cinnamon NotificationDaemon issue 
      * where applications (especially Flatpaks) sharing the 'xdg-desktop-portal' are 
      * incorrectly grouped together under the first app that sends a notification.
@@ -1306,6 +1347,11 @@ class DockAppList {
         if (this._badgeLoopId) {
             Mainloop.source_remove(this._badgeLoopId);
             this._badgeLoopId = 0;
+        }
+
+        if (this._updateAppListTimeoutId) {
+            Mainloop.source_remove(this._updateAppListTimeoutId);
+            this._updateAppListTimeoutId = 0;
         }
 
         this.actor.destroy();
@@ -1645,7 +1691,9 @@ class DashDock {
                 let dockW = this.actor.get_width();
                 let dockH = this.actor.get_height();
                 
-                if (x >= dockX - 10 && x <= dockX + dockW + 10 && y >= dockY - 10 && y <= dockY + dockH + 10) {
+                if (x >= dockX - UI_HOVER_ZONE && x <= dockX + dockW + UI_HOVER_ZONE && 
+                    y >= dockY - UI_HOVER_ZONE && y <= dockY + dockH + UI_HOVER_ZONE) {
+
                     this.dockMenu.toggle();
                     return Clutter.EVENT_STOP;
                 }
@@ -1698,7 +1746,7 @@ class DashDock {
             
             this._themeTimeoutId = Mainloop.timeout_add(150, () => {
                 this._themeTimeoutId = 0;
-                if (this.actor) {
+                if (this.actor && this.appList && this.appList.actor) {
                     this._themeChanging = false;
                     this._updateAppearance(); 
                     this.appList.actor.queue_relayout();
@@ -1781,10 +1829,10 @@ class DashDock {
                     this.trashButton.opacity = 0;
                     
                     if (spawnAnimType === 'slide') {
-                        if (this.dockPosition === 'top') this.trashButton.translation_y = -20;
-                        else if (this.dockPosition === 'bottom') this.trashButton.translation_y = 20;
-                        else if (this.dockPosition === 'left') this.trashButton.translation_x = -20;
-                        else if (this.dockPosition === 'right') this.trashButton.translation_x = 20;
+                        if (this.dockPosition === 'top') this.trashButton.translation_y = -UI_ANIM_SLIDE;
+                        else if (this.dockPosition === 'bottom') this.trashButton.translation_y = UI_ANIM_SLIDE;
+                        else if (this.dockPosition === 'left') this.trashButton.translation_x = -UI_ANIM_SLIDE;
+                        else if (this.dockPosition === 'right') this.trashButton.translation_x = UI_ANIM_SLIDE;
                         
                         this.trashButton.ease({
                             opacity: 255,
@@ -2142,8 +2190,8 @@ class DashDock {
             let dockW = this.fullWidth && !isVert ? workArea.width : natW;
             let dockH = this.fullWidth && isVert ? workArea.height : natH;
             
-            let margin = this.fullWidth ? 0 : 10;
-            let orthoMargin = this.fullWidth ? 0 : 10; 
+            let margin = this.fullWidth ? 0 : UI_DOCK_MARGIN;
+            let orthoMargin = this.fullWidth ? 0 : UI_DOCK_MARGIN;
             
             let finalX = 0;
             
@@ -2270,22 +2318,21 @@ class DashDock {
         let [mouseX, mouseY] = global.get_pointer();
         let [dockX, dockY] = this.actor.get_transformed_position();
         
-        let margin = 10;
-        let isHoveringDock = (mouseX >= dockX - margin && mouseX <= dockX + this.actor.width + margin && 
-                              mouseY >= dockY - margin && mouseY <= dockY + this.actor.height + margin);
+        let isHoveringDock = (mouseX >= dockX - UI_HOVER_ZONE && mouseX <= dockX + this.actor.width + UI_HOVER_ZONE && 
+                              mouseY >= dockY - UI_HOVER_ZONE && mouseY <= dockY + this.actor.height + UI_HOVER_ZONE);
         
         let isHoveringEdge = false;
         
         let isMouseOnTargetMonitor = (
-            mouseX >= monitor.x - 10 && mouseX <= monitor.x + monitor.width + 10 &&
-            mouseY >= monitor.y - 10 && mouseY <= monitor.y + monitor.height + 10
+            mouseX >= monitor.x - UI_HOVER_ZONE && mouseX <= monitor.x + monitor.width + UI_HOVER_ZONE &&
+            mouseY >= monitor.y - UI_HOVER_ZONE && mouseY <= monitor.y + monitor.height + UI_HOVER_ZONE
         );
 
         if (isMouseOnTargetMonitor) {
-            if (this.dockPosition === 'top') isHoveringEdge = (mouseY <= monitor.y + 10);
-            else if (this.dockPosition === 'bottom') isHoveringEdge = (mouseY >= monitor.y + monitor.height - 10);
-            else if (this.dockPosition === 'left') isHoveringEdge = (mouseX <= monitor.x + 10);
-            else if (this.dockPosition === 'right') isHoveringEdge = (mouseX >= monitor.x + monitor.width - 10);
+            if (this.dockPosition === 'top') isHoveringEdge = (mouseY <= monitor.y + UI_HOVER_ZONE);
+            else if (this.dockPosition === 'bottom') isHoveringEdge = (mouseY >= monitor.y + monitor.height - UI_HOVER_ZONE);
+            else if (this.dockPosition === 'left') isHoveringEdge = (mouseX <= monitor.x + UI_HOVER_ZONE);
+            else if (this.dockPosition === 'right') isHoveringEdge = (mouseX >= monitor.x + monitor.width - UI_HOVER_ZONE);
         }
 
         let isHovered = isHoveringDock || isHoveringEdge;
@@ -2452,7 +2499,7 @@ class DashDock {
         this._updateZIndex();
         
         let tweenProps = { duration: 150, mode: Clutter.AnimationMode.EASE_OUT_QUAD };
-        let margin = this.fullWidth ? 0 : 10;
+        let margin = this.fullWidth ? 0 : UI_DOCK_MARGIN;
         
         if (this.dockPosition === 'left') tweenProps.translation_x = -(this.actor.width + margin);
         else if (this.dockPosition === 'right') tweenProps.translation_x = (this.actor.width + margin);
