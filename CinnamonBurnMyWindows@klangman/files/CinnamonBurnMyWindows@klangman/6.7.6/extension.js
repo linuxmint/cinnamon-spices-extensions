@@ -19,7 +19,7 @@
 const AperturePanels = require('./effects/AperturePanels.js');
 const Apparition = require('./effects/Apparition.js');
 const AuraGlow = require('./effects/AuraGlow.js');
-//const BrokenGlass = require('./effects/BrokenGlass.js');
+const BrokenGlass = require('./effects/BrokenGlass.js');
 const Doom = require('./effects/Doom.js');
 const EnergizeA = require('./effects/EnergizeA.js');
 const EnergizeB = require('./effects/EnergizeB.js');
@@ -31,17 +31,17 @@ const Hexagon = require('./effects/Hexagon.js');
 const Incinerate = require('./effects/Incinerate.js');
 const MagicLamp = require('./effects/MagicLamp.js');
 const Morph = require('./effects/Morph.js');
-//const Matrix = require('./effects/Matrix.js');
+const Matrix = require('./effects/Matrix.js');
 const Mushroom = require('./effects/Mushroom.js');
-//const PaintBrush = require('./effects/PaintBrush.js');
+const PaintBrush = require('./effects/PaintBrush.js');
 const Pixelate = require('./effects/Pixelate.js');
 const PixelWheel = require('./effects/PixelWheel.js');
 const PixelWipe = require('./effects/PixelWipe.js');
 const Portal = require('./effects/Portal.js');
 const RGBWarp = require('./effects/RGBWarp.js');
-//const SnapOfDisintegration = require('./effects/SnapOfDisintegration.js');
+const SnapOfDisintegration = require('./effects/SnapOfDisintegration.js');
 const TeamRocket = require('./effects/TeamRocket.js');
-//const TRexAttack = require('./effects/TRexAttack.js');
+const TRexAttack = require('./effects/TRexAttack.js');
 const TVEffect = require('./effects/TVEffect.js');
 const TVGlitch = require('./effects/TVGlitch.js');
 const Wisps = require('./effects/Wisps.js');
@@ -69,7 +69,7 @@ const Effect = {
   AperturePanels: {idx: 27, name: "Aperture Panels"},
   Apparition:  {idx: 0,  name: "Apparition"},
   AuraGlow:    {idx: 22, name: "Aura Glow"},
-  //BrokenGlass: {idx: 1,  name: "Broken Glass"},
+  BrokenGlass: {idx: 1,  name: "Broken Glass"},
   Doom:        {idx: 2,  name: "Doom"},
   EnergizeA:   {idx: 3,  name: "Energize A"},
   EnergizeB:   {idx: 4,  name: "Energize B"},
@@ -82,16 +82,16 @@ const Effect = {
   MagicLamp:   {idx: 26, name: "Magic Lamp"},
   Morph:       {idx: 29, name: "Morph"},
   Mushroom:    {idx: 25, name: "Mushroom"},
-  //Matrix:      {idx: 10, name: "Matrix"},
-  //PaintBrush:  {idx: 11, name: "Paint Brush"},
+  Matrix:      {idx: 10, name: "Matrix"},
+  PaintBrush:  {idx: 11, name: "Paint Brush"},
   Pixelate:    {idx: 12, name: "Pixelate"},
   PixelWheel:  {idx: 13, name: "Pixel Wheel"},
   PixelWipe:   {idx: 14, name: "Pixel Wipe"},
   Portal:      {idx: 15, name: "Portal"},
   RGBWarp:     {idx: 24, name: "RGB Warp"},
-  //SnapOfDisintegration: {idx: 16, name: "Snap Of Disintegration"},
+  SnapOfDisintegration: {idx: 16, name: "Snap Of Disintegration"},
   TeamRocket:  {idx: 23, name: "Team Rocket"},
-  //TRexAttack:  {idx: 17, name: "TRex Attack"},
+  TRexAttack:  {idx: 17, name: "TRex Attack"},
   TVEffect:    {idx: 18, name: "TV Effect"},
   TVGlitch:    {idx: 19, name: "TV Glitch"},
   Wisps:       {idx: 20, name: "Wisps"},
@@ -172,7 +172,7 @@ class BurnMyWindows {
       // therefore the order in this array, might not be alphabetical.
       this._ALL_EFFECTS = [
          new Apparition.Effect(),
-         null, //new BrokenGlass.Effect(),
+         new BrokenGlass.Effect(),
          new Doom.Effect(),
          new EnergizeA.Effect(),
          new EnergizeB.Effect(),
@@ -181,14 +181,14 @@ class BurnMyWindows {
          new Glitch.Effect(),
          new Hexagon.Effect(),
          new Incinerate.Effect(),
-         null, //new Matrix.Effect(),
-         null, //new PaintBrush.Effect(),
+         new Matrix.Effect(),
+         new PaintBrush.Effect(),
          new Pixelate.Effect(),
          new PixelWheel.Effect(),
          new PixelWipe.Effect(),
          new Portal.Effect(),
-         null, //new SnapOfDisintegration.Effect(),
-         null, //new TRexAttack.Effect(),
+         new SnapOfDisintegration.Effect(),
+         new TRexAttack.Effect(),
          new TVEffect.Effect(),
          new TVGlitch.Effect(),
          new Wisps.Effect(),
@@ -557,6 +557,8 @@ class BurnMyWindows {
     let dialog = ( ((!power && this._settings.getValue("dialog-special")) || (power && this._settings.getValue("power-dialog-special"))) &&
                    (windowType === Meta.WindowType.DIALOG || windowType === Meta.WindowType.MODAL_DIALOG));
     let appRule = (!dialog) ? this.getAppRule(metaWindow, power) : null;
+
+    //log( `Battery state: ${this._upDisplayDevice.state}  ${this._upDisplayDevice.percentage}%` );
 
     switch (event) {
       case ShouldAnimateManager.Events.MapWindow:

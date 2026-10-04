@@ -23,6 +23,7 @@ const {ShaderFactory} = require('./ShaderFactory.js');
 const Clutter = imports.gi.Clutter;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Cogl = imports.gi.Cogl;
+const St = imports.gi.St;
 
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
