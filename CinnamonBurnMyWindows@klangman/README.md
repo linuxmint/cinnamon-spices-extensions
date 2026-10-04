@@ -19,16 +19,17 @@ Cinnamon 6.2 (Mint 22) or better.
 
 This extension needs the Cinnamon.GLSLEffect class which is only available in Cinnamon 6.2 or better.
 
+To enable all the effects you need Cinnamon 6.7.6 (Mint 23) or better
+
 ## Known issues
 
 1. When closing the Steam Client "setting" window the 'close window effect' does not show the windows contents, resulting in the closing effect to show where the window had existed but otherwise has no negative effect.
 2. When running VirtualBox, some actions (like restarting Cinnamon or changing panel hide settings) will show a full screen animation of both the Open and Close effect. I assume this is caused by some weirdness with how VirtualBox was written. The problem can be avoided by using two "Application specific settings" list entries to disable open/close animations for the "VirtualBox" and "VirtualBoxVM" WM_CLASS names (entered under the "Application" entry box). New installs of this extension will have these entries by default, but installs that are upgraded to the latest version will need to manually enter these app rules to avoid the issues.
-3. The Doom open effect seems to finish animating at a noticeably lower position than where the window is actually located. This results in the sudden jump up after the animation is completed. When used as a close effect it works correctly. There is a Doom effect option called "Y offset fix for open/unminimize events" which allows you to manually fix this issue while I look for a proper fix that works for everyone.
-4. The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
-5. After upgrading to 0.9.8 the Fire effect setting and the effects included in the randomized sets will be reset to default.
-6. After upgrading to 1.0.1 the Fire and Mushroom preset selections will be reset to default.
+3. The window shadows are not part of the animation and therefore they suddenly appear or disappear right after or before the animation.
+4. After upgrading to 0.9.8 the Fire effect setting and the effects included in the randomized sets will be reset to default.
+5. After upgrading to 1.0.1 the Fire and Mushroom preset selections will be reset to default.
 
-### Currently these effects are working in Cinnamon:
+### Effects working in Cinnamon 6.2 (Mint 22) or better:
 
 - Apparition
 - Aura Glow
@@ -53,15 +54,25 @@ This extension needs the Cinnamon.GLSLEffect class which is only available in Ci
 - TV Glitch
 - Wisps
 
-### Effects currently disabled:
+### Effects working in Cinnamon 6.7.6 (Mint 23) or better:
 
-Because Cinnamon is missing a required API, the following effects are disabled. I am hoping I can enable these effect when Cinnamon 6.6 is available later this year:
+After adding a new API to Cinnamon 6.7.6 the following effects have been enabled:
 
 - Broken Glass
 - Matrix
 - PaintBrush
 - Snap Of Disintegration
 - TRex Attack
+
+The first stable Cinnamon release that will run these 5 effects is 6.8 which is expected later this year (2026) with Linux Mint 23. 
+
+### Effects using layers (Cinnamon 6.2+)
+
+I added a "layers" feature to Cinnamon Burn My Windows which gives the effects access to 3 layers (the wallpaper, background windows and the target window). This enables new type of effects that can manipulate the desktop under an appearing/disappearing window. I added three new effects that utilize this new "layers" feature.
+
+- Aperture Panels
+- Morph
+- Wormhole
 
 ## Installation
 
@@ -71,8 +82,6 @@ Because Cinnamon is missing a required API, the following effects are disabled. 
 4. Click the "Install" button on the right and then return to the "Manage" tab
 5. Select the new "Burn My Windows" entry and then click the "+" button at the bottom of the window
 6. Use the "gears" icon next to the "Burn My Windows" entry to open the setting window and setup the preferred behaviour
-
-
 
 ## Sound Effects
 
@@ -115,3 +124,5 @@ https://github.com/Schneegans/Burn-My-Windows
 The Magic Lamp Effect is based on code by hermes83
 
 https://github.com/hermes83/compiz-alike-magic-lamp-effect
+
+The Aperture Panels, Morph and Wormhole effects were developed by Kevin Langman with assistance from Claude AI.

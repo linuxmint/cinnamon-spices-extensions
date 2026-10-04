@@ -135,12 +135,24 @@ uniform sampler2D uTexture;
 uniform vec2 uSize;
 uniform float uPadding;
 
+// Where the window sits inside uTexture, in texture coordinates: x, y, width, height.
+// (0, 0, 1, 1) for normal effects. Effects that get extra canvas from an unscaled canvas
+// actor (instead of scaling the window) see the window at its native size somewhere inside
+// a larger texture; this maps the shader's usual 0..1 window coordinates onto it.
+uniform vec4 uInputRect;
+
+// Where this effect's texture sits inside the canvas the shader expects, as fractions of that
+// canvas: x, y, width, height. (0, 0, 1, 1) normally. With an unscaled canvas, only the
+// on-screen part of the canvas is built; this maps iTexCoord back to the full canvas so the
+// shaders' own maths is unchanged.
+uniform vec4 uCanvasRect;
+
 // On GNOME, we set iTexCoord to be an alias for the cogl variables.
-#define iTexCoord vec2(cogl_tex_coord_in[0])
+#define iTexCoord (uCanvasRect.xy + vec2(cogl_tex_coord_in[0]) * uCanvasRect.zw)
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
 vec4 getInputColor(vec2 coords) {
-  vec4 color = texture2D(uTexture, coords);
+  vec4 color = texture2D(uTexture, uInputRect.xy + coords * uInputRect.zw);
 
   if (color.a > 0.0) {
     color.rgb /= color.a;

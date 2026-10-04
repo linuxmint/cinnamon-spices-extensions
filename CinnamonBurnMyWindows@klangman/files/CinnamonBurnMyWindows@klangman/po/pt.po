@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-02 12:18-0400\n"
+"POT-Creation-Date: 2026-10-04 13:28-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,31 +18,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#. 6.2/extension.js:210 6.2/extension.js:311 6.2/extension.js:678
+#. 6.2/extension.js:237 6.2/extension.js:429 6.2/extension.js:1245
+#. 6.7.6/extension.js:237 6.7.6/extension.js:429 6.7.6/extension.js:1247
 msgid "Error"
 msgstr "Erro"
 
-#. 6.2/extension.js:210
+#. 6.2/extension.js:237 6.7.6/extension.js:237
 msgid "was NOT enabled"
 msgstr "não foi ativo"
 
-#. 6.2/extension.js:211 6.2/extension.js:312
+#. 6.2/extension.js:238 6.2/extension.js:430 6.7.6/extension.js:238
+#. 6.7.6/extension.js:430
 msgid "The existing extension"
 msgstr "A extensão existente"
 
-#. 6.2/extension.js:211
+#. 6.2/extension.js:238 6.7.6/extension.js:238
 msgid "conflicts with this extension."
 msgstr "conflita com esta extensão."
 
-#. 6.2/extension.js:311
+#. 6.2/extension.js:429 6.7.6/extension.js:429
 msgid "minimize/unminimize effects can not be enabled"
 msgstr ""
 
-#. 6.2/extension.js:312
+#. 6.2/extension.js:430 6.7.6/extension.js:430
 msgid "already handles minimize/unminimize animation events."
 msgstr ""
 
-#. 6.2/extension.js:679
+#. 6.2/extension.js:1246 6.7.6/extension.js:1248
 #, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of the previously "
@@ -53,36 +55,14 @@ msgstr ""
 "portanto efeitos específicos para aplicações não podem ser aplicadas a essa "
 "janela"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/AperturePanels.js:334
+msgid "Aperture Panels"
+msgstr ""
+
 #. effects/Apparition.js:94
 msgid "Apparition"
 msgstr "Aparição"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/AuraGlow.js:103
 msgid "Aura Glow"
 msgstr ""
@@ -91,185 +71,74 @@ msgstr ""
 msgid "Broken Glass"
 msgstr "Vidro Quebrado"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Doom.js:101
 msgid "Doom"
 msgstr "Ruína"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/EnergizeA.js:90
 msgid "Energize A"
 msgstr "Energizar A"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/EnergizeB.js:92
 msgid "Energize B"
 msgstr "Energizar B"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Fire.js:127
 msgid "Fire"
 msgstr "Fogo"
 
 #. 6.2->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
 #. effects/Fire.js:189
 msgid "Default Fire"
 msgstr "Fogo Padrão"
 
 #. 6.2->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
 #. effects/Fire.js:199
 msgid "Hell Fire"
 msgstr "Fogo do Inferno"
 
 #. 6.2->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
 #. effects/Fire.js:209
 msgid "Dark and Smutty"
 msgstr "Escuro e Sujo"
 
 #. 6.2->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
 #. effects/Fire.js:219
 msgid "Cold Breeze"
 msgstr "Briza Fria"
 
 #. 6.2->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
 #. effects/Fire.js:229
 msgid "Santa is Coming"
 msgstr "O Pai Natal está Vindo"
 
 #. 6.2->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
 #. effects/Fire.js:239
 msgid "Nuclear"
 msgstr ""
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Focus.js:91
 msgid "Focus"
 msgstr ""
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Glide.js:93
 msgid "Glide"
 msgstr "Deslizar"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Glitch.js:97
 msgid "Glitch"
 msgstr "Falha Gráfica"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Hexagon.js:106
 msgid "Hexagon"
 msgstr "Hexágono"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Incinerate.js:144
 msgid "Incinerate"
 msgstr "Incenerar"
@@ -278,237 +147,123 @@ msgstr "Incenerar"
 msgid "Matrix"
 msgstr "Matriz"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. effects/Morph.js:234
+msgid "Morph"
+msgstr ""
+
 #. effects/Mushroom.js:154
 msgid "Mushroom"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:236
 msgid "8Bit Plumber"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:253
 msgid "New Bros 2"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:271
 msgid "The True North"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:289
 msgid "Red White and Blue"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:306
 msgid "Rainbow"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:323
 msgid "Cattuccino"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:341
 msgid "Dracula"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:358
 msgid "Sparkle"
 msgstr ""
 
-#. effects/PaintBrush.js:114
+#. effects/PaintBrush.js:115
 msgid "Paint Brush"
 msgstr "Pincel"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/PixelWheel.js:88
 msgid "Pixel Wheel"
 msgstr "Roda de Pixeis"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/PixelWipe.js:114
 msgid "Pixel Wipe"
 msgstr "Limpeza de Pixeis"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Pixelate.js:88
 msgid "Pixelate"
 msgstr "Pixelizar"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Portal.js:99
 msgid "Portal"
 msgstr "Portal"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/RGBWarp.js:91
 msgid "RGB Warp"
 msgstr ""
 
-#. effects/SnapOfDisintegration.js:124
+#. effects/SnapOfDisintegration.js:125
 msgid "Snap of Disintegration"
 msgstr "Estalo de Desintegração"
 
-#. effects/TRexAttack.js:121
+#. effects/TRexAttack.js:122
 msgid "T-Rex Attack"
 msgstr "Ataque do T-Rex"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/TVEffect.js:90
 msgid "TV Effect"
 msgstr "Efeito de TV"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/TVGlitch.js:99
 msgid "TV Glitch"
 msgstr "Falha Gráfica de TV"
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/TeamRocket.js:103
 msgid "Team Rocket"
 msgstr ""
 
-#. 6.2->settings-schema.json->effect-selector->options
-#. 6.2->settings-schema.json->open-window-effect->options
-#. 6.2->settings-schema.json->close-window-effect->options
-#. 6.2->settings-schema.json->dialog-open-effect->options
-#. 6.2->settings-schema.json->dialog-close-effect->options
-#. 6.2->settings-schema.json->minimize-effect->options
-#. 6.2->settings-schema.json->unminimize-effect->options
-#. 6.2->settings-schema.json->power-open-effect->options
-#. 6.2->settings-schema.json->power-close-effect->options
-#. 6.2->settings-schema.json->power-minimize-effect->options
-#. 6.2->settings-schema.json->power-unminimize-effect->options
-#. 6.2->settings-schema.json->power-dialog-open-effect->options
-#. 6.2->settings-schema.json->power-dialog-close-effect->options
 #. effects/Wisps.js:101
 msgid "Wisps"
 msgstr "Fogos-Fátuos"
 
-#. 6.2/CustomWidgets.py:509
+#. effects/Wormhole.js:259
+msgid "Wormhole"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:509 6.7.6/CustomWidgets.py:509
 msgid "_Cancel"
 msgstr ""
 
-#. 6.2/CustomWidgets.py:510
+#. 6.2/CustomWidgets.py:510 6.7.6/CustomWidgets.py:510
 msgid "_Open"
 msgstr ""
 
-#. 6.2/CustomWidgets.py:520
+#. 6.2/CustomWidgets.py:520 6.7.6/CustomWidgets.py:520
 msgid "Sound files"
 msgstr ""
 
@@ -526,59 +281,73 @@ msgstr ""
 "Windows' do Schneegans"
 
 #. 6.2->settings-schema.json->general-page->title
+#. 6.7.6->settings-schema.json->general-page->title
 msgid "General"
 msgstr "Geral"
 
 #. 6.2->settings-schema.json->effects-page->title
+#. 6.7.6->settings-schema.json->effects-page->title
 msgid "Effect Settings"
 msgstr "Definições de Efeitos"
 
 #. 6.2->settings-schema.json->application-page->title
+#. 6.7.6->settings-schema.json->application-page->title
 #, fuzzy
 msgid "Application Specifics"
 msgstr "Regras para Aplicações Específicas"
 
 #. 6.2->settings-schema.json->random-page->title
+#. 6.7.6->settings-schema.json->random-page->title
 msgid "Random Effects"
 msgstr "Efeitos Aleatórios"
 
 #. 6.2->settings-schema.json->power-page->title
+#. 6.7.6->settings-schema.json->power-page->title
 msgid "Power"
 msgstr ""
 
 #. 6.2->settings-schema.json->about-page->title
+#. 6.7.6->settings-schema.json->about-page->title
 msgid "About"
 msgstr ""
 
 #. 6.2->settings-schema.json->general-settings->title
+#. 6.7.6->settings-schema.json->general-settings->title
 msgid "Burn My Windows General Settings"
 msgstr "Definições Gerais da Extensão Queime Minha Janela"
 
 #. 6.2->settings-schema.json->app-specific-settings->title
+#. 6.7.6->settings-schema.json->app-specific-settings->title
 msgid "Application Specific Settings"
 msgstr "Definições Específicas para Aplicações"
 
 #. 6.2->settings-schema.json->effect-selector-section->title
+#. 6.7.6->settings-schema.json->effect-selector-section->title
 msgid "Effect Selector"
 msgstr "Selecionador de Efeitos"
 
 #. 6.2->settings-schema.json->effect-settings->title
+#. 6.7.6->settings-schema.json->effect-settings->title
 msgid "Effect Specific Settings"
 msgstr "Definições Específicas do Efeito"
 
 #. 6.2->settings-schema.json->random-section->title
+#. 6.7.6->settings-schema.json->random-section->title
 msgid "Effects included in the randomized sets:"
 msgstr "Efeitos incluídos no grupo randomizado:"
 
 #. 6.2->settings-schema.json->power-section->title
+#. 6.7.6->settings-schema.json->power-section->title
 msgid "Manage Burn-My-Windows power consumption"
 msgstr ""
 
 #. 6.2->settings-schema.json->about-section->title
+#. 6.7.6->settings-schema.json->about-section->title
 msgid "About Cinnamon Burn-My-Windows"
 msgstr ""
 
 #. 6.2->settings-schema.json->about-text->description
+#. 6.7.6->settings-schema.json->about-text->description
 msgid ""
 "\n"
 "<b>Disintegrate your windows with style.</b>\n"
@@ -600,34 +369,42 @@ msgid ""
 msgstr ""
 
 #. 6.2->settings-schema.json->app-rules->description
+#. 6.7.6->settings-schema.json->app-rules->description
 msgid "Application Specific Rules"
 msgstr "Regras para Aplicações Específicas"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
+#. 6.7.6->settings-schema.json->app-rules->columns->title
 msgid "Enabled"
 msgstr "Ativo"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
+#. 6.7.6->settings-schema.json->app-rules->columns->title
 msgid "Open"
 msgstr ""
 
 #. 6.2->settings-schema.json->app-rules->columns->title
+#. 6.7.6->settings-schema.json->app-rules->columns->title
 msgid "Close"
 msgstr ""
 
 #. 6.2->settings-schema.json->app-rules->columns->title
+#. 6.7.6->settings-schema.json->app-rules->columns->title
 msgid "Minimize"
 msgstr ""
 
 #. 6.2->settings-schema.json->app-rules->columns->title
+#. 6.7.6->settings-schema.json->app-rules->columns->title
 msgid "Unminimize"
 msgstr ""
 
 #. 6.2->settings-schema.json->app-rules->columns->title
+#. 6.7.6->settings-schema.json->app-rules->columns->title
 msgid "Application"
 msgstr "Aplicação"
 
 #. 6.2->settings-schema.json->app-rules->tooltip
+#. 6.7.6->settings-schema.json->app-rules->tooltip
 #, fuzzy
 msgid ""
 "A list of applications with special effect rules. The application can be a "
@@ -635,10 +412,12 @@ msgid ""
 msgstr "Uma lista de aplicações com regras de efeitos especiais"
 
 #. 6.2->settings-schema.json->app-rules-button->description
+#. 6.7.6->settings-schema.json->app-rules-button->description
 msgid "Add entry for the application of the most recently focused window"
 msgstr "Adicionar entrada para a aplicação da janela focada mais recentemente"
 
 #. 6.2->settings-schema.json->app-rules-button->tooltip
+#. 6.7.6->settings-schema.json->app-rules-button->tooltip
 msgid ""
 "Focus a window you want to enable application specific setting for then "
 "return here and press this button."
@@ -647,11 +426,13 @@ msgstr ""
 "aplicação, volte aqui e pressione este botão."
 
 #. 6.2->settings-schema.json->random-include->description
+#. 6.7.6->settings-schema.json->random-include->description
 #, fuzzy
 msgid "Effects included in the randomized sets"
 msgstr "Efeitos incluídos no grupo randomizado:"
 
 #. 6.2->settings-schema.json->random-include->tooltip
+#. 6.7.6->settings-schema.json->random-include->tooltip
 msgid ""
 "Defines which effects are included in the randomized sets for each window "
 "event type. When 'Randomized' is selected for any event on the General tab "
@@ -659,22 +440,27 @@ msgid ""
 msgstr ""
 
 #. 6.2->settings-schema.json->random-include->columns->title
+#. 6.7.6->settings-schema.json->random-include->columns->title
 msgid "Effect Name         "
 msgstr ""
 
 #. 6.2->settings-schema.json->random-include->columns->title
+#. 6.7.6->settings-schema.json->random-include->columns->title
 msgid "      Open        "
 msgstr ""
 
 #. 6.2->settings-schema.json->random-include->columns->title
+#. 6.7.6->settings-schema.json->random-include->columns->title
 msgid "      Close       "
 msgstr ""
 
 #. 6.2->settings-schema.json->random-include->columns->title
+#. 6.7.6->settings-schema.json->random-include->columns->title
 msgid "     Minimize     "
 msgstr ""
 
 #. 6.2->settings-schema.json->random-include->columns->title
+#. 6.7.6->settings-schema.json->random-include->columns->title
 msgid "    Unminimize    "
 msgstr ""
 
@@ -691,10 +477,1155 @@ msgstr ""
 #. 6.2->settings-schema.json->power-unminimize-effect->options
 #. 6.2->settings-schema.json->power-dialog-open-effect->options
 #. 6.2->settings-schema.json->power-dialog-close-effect->options
-msgid "Magic Lamp"
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "0"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "1"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "2"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "3"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "4"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "5"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "6"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "7"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "8"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "9"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "10"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "11"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "12"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "13"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "14"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "15"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "16"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "17"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "18"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "19"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "20"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "21"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "22"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "23"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "24"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "25"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "26"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "27"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "28"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "29"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "30"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "31"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "32"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "33"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "34"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "35"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "36"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "37"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "38"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-selector->options
+#. 6.2->settings-schema.json->open-window-effect->options
+#. 6.2->settings-schema.json->close-window-effect->options
+#. 6.2->settings-schema.json->dialog-open-effect->options
+#. 6.2->settings-schema.json->dialog-close-effect->options
+#. 6.2->settings-schema.json->minimize-effect->options
+#. 6.2->settings-schema.json->unminimize-effect->options
+#. 6.2->settings-schema.json->power-open-effect->options
+#. 6.2->settings-schema.json->power-close-effect->options
+#. 6.2->settings-schema.json->power-minimize-effect->options
+#. 6.2->settings-schema.json->power-unminimize-effect->options
+#. 6.2->settings-schema.json->power-dialog-open-effect->options
+#. 6.2->settings-schema.json->power-dialog-close-effect->options
+#. 6.7.6->settings-schema.json->effect-selector->options
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "39"
 msgstr ""
 
 #. 6.2->settings-schema.json->effect-selector->description
+#. 6.7.6->settings-schema.json->effect-selector->description
 msgid "Show settings for effect:"
 msgstr "Mostrar definições para o efeito:"
 
@@ -710,8 +1641,20 @@ msgstr "Mostrar definições para o efeito:"
 #. 6.2->settings-schema.json->power-unminimize-effect->options
 #. 6.2->settings-schema.json->power-dialog-open-effect->options
 #. 6.2->settings-schema.json->power-dialog-close-effect->options
-msgid "Randomized"
-msgstr "Randomizado"
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "999"
+msgstr ""
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
@@ -725,24 +1668,42 @@ msgstr "Randomizado"
 #. 6.2->settings-schema.json->power-unminimize-effect->options
 #. 6.2->settings-schema.json->power-dialog-open-effect->options
 #. 6.2->settings-schema.json->power-dialog-close-effect->options
-msgid "None"
-msgstr "Nenhum"
+#. 6.7.6->settings-schema.json->open-window-effect->options
+#. 6.7.6->settings-schema.json->close-window-effect->options
+#. 6.7.6->settings-schema.json->dialog-open-effect->options
+#. 6.7.6->settings-schema.json->dialog-close-effect->options
+#. 6.7.6->settings-schema.json->minimize-effect->options
+#. 6.7.6->settings-schema.json->unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-open-effect->options
+#. 6.7.6->settings-schema.json->power-close-effect->options
+#. 6.7.6->settings-schema.json->power-minimize-effect->options
+#. 6.7.6->settings-schema.json->power-unminimize-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->options
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->options
+msgid "1000"
+msgstr ""
 
 #. 6.2->settings-schema.json->open-window-effect->description
 #. 6.2->settings-schema.json->power-open-effect->description
+#. 6.7.6->settings-schema.json->open-window-effect->description
+#. 6.7.6->settings-schema.json->power-open-effect->description
 msgid "Open window effect"
 msgstr "Efeito de abertura da janela"
 
 #. 6.2->settings-schema.json->close-window-effect->description
 #. 6.2->settings-schema.json->power-close-effect->description
+#. 6.7.6->settings-schema.json->close-window-effect->description
+#. 6.7.6->settings-schema.json->power-close-effect->description
 msgid "Close window effect"
 msgstr "Efeito de fechamento da janela"
 
 #. 6.2->settings-schema.json->enable-sound->description
+#. 6.7.6->settings-schema.json->enable-sound->description
 msgid "Allow Burn My Windows to override cinnamon sound effects"
 msgstr ""
 
 #. 6.2->settings-schema.json->enable-sound->tooltip
+#. 6.7.6->settings-schema.json->enable-sound->tooltip
 msgid ""
 "Allow Burn My Windows to override Cinnamon's window open/close/minimize "
 "sound effects with unique ones defined in the Effect Settings tab for each "
@@ -754,10 +1715,13 @@ msgstr ""
 
 #. 6.2->settings-schema.json->dialog-special->description
 #. 6.2->settings-schema.json->power-dialog-special->description
+#. 6.7.6->settings-schema.json->dialog-special->description
+#. 6.7.6->settings-schema.json->power-dialog-special->description
 msgid "Special handling for dialog windows"
 msgstr ""
 
 #. 6.2->settings-schema.json->dialog-special->tooltip
+#. 6.7.6->settings-schema.json->dialog-special->tooltip
 msgid ""
 "Allows you to define special settings for handling dialog window types (i.e. "
 "file open dialog windows). These settings will override any application "
@@ -766,39 +1730,50 @@ msgstr ""
 
 #. 6.2->settings-schema.json->dialog-open-effect->description
 #. 6.2->settings-schema.json->power-dialog-open-effect->description
+#. 6.7.6->settings-schema.json->dialog-open-effect->description
+#. 6.7.6->settings-schema.json->power-dialog-open-effect->description
 #, fuzzy
 msgid "Open dialog window effect"
 msgstr "Efeito de abertura da janela"
 
 #. 6.2->settings-schema.json->dialog-close-effect->description
 #. 6.2->settings-schema.json->power-dialog-close-effect->description
+#. 6.7.6->settings-schema.json->dialog-close-effect->description
+#. 6.7.6->settings-schema.json->power-dialog-close-effect->description
 #, fuzzy
 msgid "Close dialog window effect"
 msgstr "Efeito de fechamento da janela"
 
 #. 6.2->settings-schema.json->minimize-effect->description
 #. 6.2->settings-schema.json->power-minimize-effect->description
+#. 6.7.6->settings-schema.json->minimize-effect->description
+#. 6.7.6->settings-schema.json->power-minimize-effect->description
 #, fuzzy
 msgid "Minimize window effect"
 msgstr "Efeito de abertura da janela"
 
 #. 6.2->settings-schema.json->unminimize-effect->description
 #. 6.2->settings-schema.json->power-unminimize-effect->description
+#. 6.7.6->settings-schema.json->unminimize-effect->description
+#. 6.7.6->settings-schema.json->power-unminimize-effect->description
 #, fuzzy
 msgid "Unminimize window effect"
 msgstr "Efeito de abertura da janela"
 
 #. 6.2->settings-schema.json->power-dialog-special->tooltip
+#. 6.7.6->settings-schema.json->power-dialog-special->tooltip
 msgid ""
 "Allows you to define special settings for handling dialog window types (i.e. "
 "file open dialog windows)."
 msgstr ""
 
 #. 6.2->settings-schema.json->power-onbattery->description
+#. 6.7.6->settings-schema.json->power-onbattery->description
 msgid "Use different effects when running on battery power"
 msgstr ""
 
 #. 6.2->settings-schema.json->power-onbattery->tooltip
+#. 6.7.6->settings-schema.json->power-onbattery->tooltip
 msgid ""
 "When enabled, a set of options will appear allowing you to define which "
 "effects (if any) will be used when running on battery power and the battery "
@@ -808,25 +1783,160 @@ msgid ""
 msgstr ""
 
 #. 6.2->settings-schema.json->power-percent->description
+#. 6.7.6->settings-schema.json->power-percent->description
 msgid "When battery is less than (percent)"
 msgstr ""
 
-#. 6.2->settings-schema.json->apparition-shake-intensity->description
-msgid "Shake Intensity"
-msgstr "Intensidade da Agitação"
+#. 6.2->settings-schema.json->aperture-panels-panel-size->description
+#. 6.7.6->settings-schema.json->aperture-panels-panel-size->description
+#, fuzzy
+msgid "Panel Size (px)"
+msgstr "Tamanho do Pixel"
 
-#. 6.2->settings-schema.json->apparition-twirl-intensity->description
-msgid "Twirl Intensity"
-msgstr "Intensidade do Giro"
+#. 6.2->settings-schema.json->aperture-panels-panel-size->tooltip
+#. 6.7.6->settings-schema.json->aperture-panels-panel-size->tooltip
+msgid ""
+"The approximate size of the panels. It is adjusted a little so that a whole "
+"number of panels fits the window exactly."
+msgstr ""
 
-#. 6.2->settings-schema.json->apparition-suction-intensity->description
-msgid "Suction Intensity"
-msgstr "Intensidade de Sucção"
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
+msgid "Diagonal"
+msgstr ""
 
-#. 6.2->settings-schema.json->apparition-randomness->description
-msgid "Randomness"
-msgstr "Aleatoriedade"
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
+msgid "Arc from a corner"
+msgstr ""
 
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
+msgid "Wavy diagonal"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
+msgid "Organic diagonal"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
+msgid "Ripple from the center"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.2->settings-schema.json->aperture-panels-flip-axis->options
+#. 6.2->settings-schema.json->magiclamp-effect->options
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
+#. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
+#. 6.7.6->settings-schema.json->magiclamp-effect->options
+#, fuzzy
+msgid "Random"
+msgstr "Randomizado"
+
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->description
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->description
+msgid "Wave Shape"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-wave-shape->tooltip
+#. 6.7.6->settings-schema.json->aperture-panels-wave-shape->tooltip
+msgid ""
+"The shape of the wave of panels flipping across the window. Random picks one "
+"of the shapes for each animation."
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-flip-axis->options
+#. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
+#, fuzzy
+msgid "Vertical"
+msgstr "Escala  Vertical"
+
+#. 6.2->settings-schema.json->aperture-panels-flip-axis->options
+#. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
+#, fuzzy
+msgid "Horizontal"
+msgstr "Escala Horizontal"
+
+#. 6.2->settings-schema.json->aperture-panels-flip-axis->description
+#. 6.7.6->settings-schema.json->aperture-panels-flip-axis->description
+msgid "Flip Axis"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-flip-axis->tooltip
+#. 6.7.6->settings-schema.json->aperture-panels-flip-axis->tooltip
+msgid "The axis the panels turn around. Random picks one for each animation."
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->options
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
+msgid "Wallpaper"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->options
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
+msgid "Black void"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->description
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->description
+msgid "Backdrop"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->tooltip
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->tooltip
+msgid ""
+"What is seen behind the panels as they turn. Wallpaper: the desktop stays in "
+"place and only the windows behind are on the panels. Black void: the desktop "
+"is on the panels too and flips with them, revealing a black void."
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->options
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->options
+msgid "None"
+msgstr "Nenhum"
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->options
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->options
+msgid "While flipping"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->options
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->options
+msgid "Ahead of the wave"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->options
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->options
+msgid "Behind the wave"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->options
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->options
+msgid "Ahead of and behind the wave"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->description
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->description
+#, fuzzy
+msgid "Border Style"
+msgstr "Escala"
+
+#. 6.2->settings-schema.json->aperture-panels-border-style->tooltip
+#. 6.7.6->settings-schema.json->aperture-panels-border-style->tooltip
+msgid ""
+"When the outlines of the panels are shown: only while a panel flips, or also "
+"in a band ahead of and/or behind the wave of flipping panels."
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-border-color->description
+#. 6.7.6->settings-schema.json->aperture-panels-border-color->description
+#, fuzzy
+msgid "Border Color"
+msgstr "Cor da Linha"
+
+#. 6.2->settings-schema.json->aperture-panels-animation-time->description
 #. 6.2->settings-schema.json->apparition-animation-time->description
 #. 6.2->settings-schema.json->aura-glow-animation-time->description
 #. 6.2->settings-schema.json->doom-animation-time->description
@@ -839,6 +1949,7 @@ msgstr "Aleatoriedade"
 #. 6.2->settings-schema.json->hexagon-animation-time->description
 #. 6.2->settings-schema.json->incinerate-animation-time->description
 #. 6.2->settings-schema.json->magiclamp-animation-time->description
+#. 6.2->settings-schema.json->morph-animation-time->description
 #. 6.2->settings-schema.json->mushroom-animation-time->description
 #. 6.2->settings-schema.json->pixelate-animation-time->description
 #. 6.2->settings-schema.json->pixel-wheel-animation-time->description
@@ -849,10 +1960,42 @@ msgstr "Aleatoriedade"
 #. 6.2->settings-schema.json->tv-animation-time->description
 #. 6.2->settings-schema.json->tv-glitch-animation-time->description
 #. 6.2->settings-schema.json->wisps-animation-time->description
+#. 6.2->settings-schema.json->wormhole-animation-time->description
+#. 6.7.6->settings-schema.json->aperture-panels-animation-time->description
+#. 6.7.6->settings-schema.json->apparition-animation-time->description
+#. 6.7.6->settings-schema.json->aura-glow-animation-time->description
+#. 6.7.6->settings-schema.json->broken-glass-animation-time->description
+#. 6.7.6->settings-schema.json->doom-animation-time->description
+#. 6.7.6->settings-schema.json->energize-a-animation-time->description
+#. 6.7.6->settings-schema.json->energize-b-animation-time->description
+#. 6.7.6->settings-schema.json->fire-animation-time->description
+#. 6.7.6->settings-schema.json->focus-animation-time->description
+#. 6.7.6->settings-schema.json->glide-animation-time->description
+#. 6.7.6->settings-schema.json->glitch-animation-time->description
+#. 6.7.6->settings-schema.json->hexagon-animation-time->description
+#. 6.7.6->settings-schema.json->incinerate-animation-time->description
+#. 6.7.6->settings-schema.json->magiclamp-animation-time->description
+#. 6.7.6->settings-schema.json->matrix-animation-time->description
+#. 6.7.6->settings-schema.json->morph-animation-time->description
+#. 6.7.6->settings-schema.json->mushroom-animation-time->description
+#. 6.7.6->settings-schema.json->paint-brush-animation-time->description
+#. 6.7.6->settings-schema.json->pixelate-animation-time->description
+#. 6.7.6->settings-schema.json->pixel-wheel-animation-time->description
+#. 6.7.6->settings-schema.json->pixel-wipe-animation-time->description
+#. 6.7.6->settings-schema.json->portal-animation-time->description
+#. 6.7.6->settings-schema.json->rgbwarp-animation-time->description
+#. 6.7.6->settings-schema.json->snap-animation-time->description
+#. 6.7.6->settings-schema.json->team-rocket-animation-time->description
+#. 6.7.6->settings-schema.json->trex-animation-time->description
+#. 6.7.6->settings-schema.json->tv-animation-time->description
+#. 6.7.6->settings-schema.json->tv-glitch-animation-time->description
+#. 6.7.6->settings-schema.json->wisps-animation-time->description
+#. 6.7.6->settings-schema.json->wormhole-animation-time->description
 #, fuzzy
 msgid "Effect Duration (ms)"
 msgstr "Duração do Efeito (milissegundos)"
 
+#. 6.2->settings-schema.json->aperture-panels-reset->description
 #. 6.2->settings-schema.json->apparition-reset->description
 #. 6.2->settings-schema.json->aura-glow-reset->description
 #. 6.2->settings-schema.json->doom-reset->description
@@ -865,6 +2008,7 @@ msgstr "Duração do Efeito (milissegundos)"
 #. 6.2->settings-schema.json->hexagon-reset->description
 #. 6.2->settings-schema.json->incinerate-reset->description
 #. 6.2->settings-schema.json->magiclamp-reset->description
+#. 6.2->settings-schema.json->morph-reset->description
 #. 6.2->settings-schema.json->mushroom-reset->description
 #. 6.2->settings-schema.json->pixelate-reset->description
 #. 6.2->settings-schema.json->pixel-wheel-reset->description
@@ -875,10 +2019,40 @@ msgstr "Duração do Efeito (milissegundos)"
 #. 6.2->settings-schema.json->tv-reset->description
 #. 6.2->settings-schema.json->tv-glitch-reset->description
 #. 6.2->settings-schema.json->wisps-reset->description
+#. 6.2->settings-schema.json->wormhole-reset->description
+#. 6.7.6->settings-schema.json->aperture-panels-reset->description
+#. 6.7.6->settings-schema.json->apparition-reset->description
+#. 6.7.6->settings-schema.json->aura-glow-reset->description
+#. 6.7.6->settings-schema.json->doom-reset->description
+#. 6.7.6->settings-schema.json->energize-a-reset->description
+#. 6.7.6->settings-schema.json->energize-b-reset->description
+#. 6.7.6->settings-schema.json->fire-reset->description
+#. 6.7.6->settings-schema.json->focus-reset->description
+#. 6.7.6->settings-schema.json->glide-reset->description
+#. 6.7.6->settings-schema.json->glitch-reset->description
+#. 6.7.6->settings-schema.json->hexagon-reset->description
+#. 6.7.6->settings-schema.json->incinerate-reset->description
+#. 6.7.6->settings-schema.json->magiclamp-reset->description
+#. 6.7.6->settings-schema.json->morph-reset->description
+#. 6.7.6->settings-schema.json->mushroom-reset->description
+#. 6.7.6->settings-schema.json->paint-brush-reset->description
+#. 6.7.6->settings-schema.json->pixelate-reset->description
+#. 6.7.6->settings-schema.json->pixel-wheel-reset->description
+#. 6.7.6->settings-schema.json->pixel-wipe-reset->description
+#. 6.7.6->settings-schema.json->portal-reset->description
+#. 6.7.6->settings-schema.json->rgbwarp-reset->description
+#. 6.7.6->settings-schema.json->snap-reset->description
+#. 6.7.6->settings-schema.json->team-rocket-reset->description
+#. 6.7.6->settings-schema.json->trex-scratch-reset->description
+#. 6.7.6->settings-schema.json->tv-reset->description
+#. 6.7.6->settings-schema.json->tv-glitch-reset->description
+#. 6.7.6->settings-schema.json->wisps-reset->description
+#. 6.7.6->settings-schema.json->wormhole-reset->description
 #, fuzzy
 msgid "Reset to default"
 msgstr "Fogo Padrão"
 
+#. 6.2->settings-schema.json->aperture-panels-open-sound->description
 #. 6.2->settings-schema.json->apparition-open-sound->description
 #. 6.2->settings-schema.json->aura-glow-open-sound->description
 #. 6.2->settings-schema.json->doom-open-sound->description
@@ -891,6 +2065,7 @@ msgstr "Fogo Padrão"
 #. 6.2->settings-schema.json->hexagon-open-sound->description
 #. 6.2->settings-schema.json->incinerate-open-sound->description
 #. 6.2->settings-schema.json->magiclamp-open-sound->description
+#. 6.2->settings-schema.json->morph-open-sound->description
 #. 6.2->settings-schema.json->mushroom-open-sound->description
 #. 6.2->settings-schema.json->pixelate-open-sound->description
 #. 6.2->settings-schema.json->pixel-wheel-open-sound->description
@@ -901,9 +2076,41 @@ msgstr "Fogo Padrão"
 #. 6.2->settings-schema.json->tv-open-sound->description
 #. 6.2->settings-schema.json->tv-glitch-open-sound->description
 #. 6.2->settings-schema.json->wisps-open-sound->description
+#. 6.2->settings-schema.json->wormhole-open-sound->description
+#. 6.7.6->settings-schema.json->aperture-panels-open-sound->description
+#. 6.7.6->settings-schema.json->apparition-open-sound->description
+#. 6.7.6->settings-schema.json->aura-glow-open-sound->description
+#. 6.7.6->settings-schema.json->broken-glass-open-sound->description
+#. 6.7.6->settings-schema.json->doom-open-sound->description
+#. 6.7.6->settings-schema.json->energize-a-open-sound->description
+#. 6.7.6->settings-schema.json->energize-b-open-sound->description
+#. 6.7.6->settings-schema.json->fire-open-sound->description
+#. 6.7.6->settings-schema.json->focus-open-sound->description
+#. 6.7.6->settings-schema.json->glide-open-sound->description
+#. 6.7.6->settings-schema.json->glitch-open-sound->description
+#. 6.7.6->settings-schema.json->hexagon-open-sound->description
+#. 6.7.6->settings-schema.json->incinerate-open-sound->description
+#. 6.7.6->settings-schema.json->magiclamp-open-sound->description
+#. 6.7.6->settings-schema.json->matrix-open-sound->description
+#. 6.7.6->settings-schema.json->morph-open-sound->description
+#. 6.7.6->settings-schema.json->mushroom-open-sound->description
+#. 6.7.6->settings-schema.json->paint-brush-open-sound->description
+#. 6.7.6->settings-schema.json->pixelate-open-sound->description
+#. 6.7.6->settings-schema.json->pixel-wheel-open-sound->description
+#. 6.7.6->settings-schema.json->pixel-wipe-open-sound->description
+#. 6.7.6->settings-schema.json->portal-open-sound->description
+#. 6.7.6->settings-schema.json->rgbwarp-open-sound->description
+#. 6.7.6->settings-schema.json->snap-open-sound->description
+#. 6.7.6->settings-schema.json->team-rocket-open-sound->description
+#. 6.7.6->settings-schema.json->trex-scratch-open-sound->description
+#. 6.7.6->settings-schema.json->tv-open-sound->description
+#. 6.7.6->settings-schema.json->tv-glitch-open-sound->description
+#. 6.7.6->settings-schema.json->wisps-open-sound->description
+#. 6.7.6->settings-schema.json->wormhole-open-sound->description
 msgid "Sound on window appear events"
 msgstr ""
 
+#. 6.2->settings-schema.json->aperture-panels-close-sound->description
 #. 6.2->settings-schema.json->apparition-close-sound->description
 #. 6.2->settings-schema.json->aura-glow-close-sound->description
 #. 6.2->settings-schema.json->doom-close-sound->description
@@ -916,6 +2123,7 @@ msgstr ""
 #. 6.2->settings-schema.json->hexagon-close-sound->description
 #. 6.2->settings-schema.json->incinerate-close-sound->description
 #. 6.2->settings-schema.json->magiclamp-close-sound->description
+#. 6.2->settings-schema.json->morph-close-sound->description
 #. 6.2->settings-schema.json->mushroom-close-sound->description
 #. 6.2->settings-schema.json->pixelate-close-sound->description
 #. 6.2->settings-schema.json->pixel-wheel-close-sound->description
@@ -926,48 +2134,112 @@ msgstr ""
 #. 6.2->settings-schema.json->tv-close-sound->description
 #. 6.2->settings-schema.json->tv-glitch-close-sound->description
 #. 6.2->settings-schema.json->wisps-close-sound->description
+#. 6.2->settings-schema.json->wormhole-close-sound->description
+#. 6.7.6->settings-schema.json->aperture-panels-close-sound->description
+#. 6.7.6->settings-schema.json->apparition-close-sound->description
+#. 6.7.6->settings-schema.json->aura-glow-close-sound->description
+#. 6.7.6->settings-schema.json->broken-glass-close-sound->description
+#. 6.7.6->settings-schema.json->doom-close-sound->description
+#. 6.7.6->settings-schema.json->energize-a-close-sound->description
+#. 6.7.6->settings-schema.json->energize-b-close-sound->description
+#. 6.7.6->settings-schema.json->fire-close-sound->description
+#. 6.7.6->settings-schema.json->focus-close-sound->description
+#. 6.7.6->settings-schema.json->glide-close-sound->description
+#. 6.7.6->settings-schema.json->glitch-close-sound->description
+#. 6.7.6->settings-schema.json->hexagon-close-sound->description
+#. 6.7.6->settings-schema.json->incinerate-close-sound->description
+#. 6.7.6->settings-schema.json->magiclamp-close-sound->description
+#. 6.7.6->settings-schema.json->matrix-close-sound->description
+#. 6.7.6->settings-schema.json->morph-close-sound->description
+#. 6.7.6->settings-schema.json->mushroom-close-sound->description
+#. 6.7.6->settings-schema.json->paint-brush-close-sound->description
+#. 6.7.6->settings-schema.json->pixelate-close-sound->description
+#. 6.7.6->settings-schema.json->pixel-wheel-close-sound->description
+#. 6.7.6->settings-schema.json->pixel-wipe-close-sound->description
+#. 6.7.6->settings-schema.json->portal-close-sound->description
+#. 6.7.6->settings-schema.json->rgbwarp-close-sound->description
+#. 6.7.6->settings-schema.json->snap-close-sound->description
+#. 6.7.6->settings-schema.json->team-rocket-close-sound->description
+#. 6.7.6->settings-schema.json->trex-scratch-close-sound->description
+#. 6.7.6->settings-schema.json->tv-close-sound->description
+#. 6.7.6->settings-schema.json->tv-glitch-close-sound->description
+#. 6.7.6->settings-schema.json->wisps-close-sound->description
+#. 6.7.6->settings-schema.json->wormhole-close-sound->description
 msgid "Sound on window disappear events"
 msgstr ""
 
+#. 6.2->settings-schema.json->apparition-shake-intensity->description
+#. 6.7.6->settings-schema.json->apparition-shake-intensity->description
+msgid "Shake Intensity"
+msgstr "Intensidade da Agitação"
+
+#. 6.2->settings-schema.json->apparition-twirl-intensity->description
+#. 6.7.6->settings-schema.json->apparition-twirl-intensity->description
+msgid "Twirl Intensity"
+msgstr "Intensidade do Giro"
+
+#. 6.2->settings-schema.json->apparition-suction-intensity->description
+#. 6.7.6->settings-schema.json->apparition-suction-intensity->description
+msgid "Suction Intensity"
+msgstr "Intensidade de Sucção"
+
+#. 6.2->settings-schema.json->apparition-randomness->description
+#. 6.7.6->settings-schema.json->apparition-randomness->description
+#. 6.7.6->settings-schema.json->matrix-randomness->description
+msgid "Randomness"
+msgstr "Aleatoriedade"
+
 #. 6.2->settings-schema.json->aura-glow-random-color->description
+#. 6.7.6->settings-schema.json->aura-glow-random-color->description
 #, fuzzy
 msgid "Random Color"
 msgstr "Cor da Linha"
 
 #. 6.2->settings-schema.json->aura-glow-start-hue->description
+#. 6.7.6->settings-schema.json->aura-glow-start-hue->description
 msgid "Start Hue"
 msgstr ""
 
 #. 6.2->settings-schema.json->aura-glow-speed->description
 #. 6.2->settings-schema.json->glitch-speed->description
 #. 6.2->settings-schema.json->tv-glitch-speed->description
+#. 6.7.6->settings-schema.json->aura-glow-speed->description
+#. 6.7.6->settings-schema.json->glitch-speed->description
+#. 6.7.6->settings-schema.json->tv-glitch-speed->description
 msgid "Speed"
 msgstr "Velocidade"
 
 #. 6.2->settings-schema.json->aura-glow-saturation->description
+#. 6.7.6->settings-schema.json->aura-glow-saturation->description
 #, fuzzy
 msgid "Saturation"
 msgstr "Aparição"
 
 #. 6.2->settings-schema.json->aura-glow-edge-size->description
+#. 6.7.6->settings-schema.json->aura-glow-edge-size->description
 #, fuzzy
 msgid "Edge Size"
 msgstr "Tamanho do Pixel"
 
 #. 6.2->settings-schema.json->aura-glow-edge-hardness->description
+#. 6.7.6->settings-schema.json->aura-glow-edge-hardness->description
 msgid "Edge Hardness"
 msgstr ""
 
 #. 6.2->settings-schema.json->aura-glow-blur->description
 #. 6.2->settings-schema.json->focus-blur-amount->description
+#. 6.7.6->settings-schema.json->aura-glow-blur->description
+#. 6.7.6->settings-schema.json->focus-blur-amount->description
 msgid "Blur Amount"
 msgstr ""
 
 #. 6.2->settings-schema.json->doom-horizontal-scale->description
+#. 6.7.6->settings-schema.json->doom-horizontal-scale->description
 msgid "Horizontal Scale"
 msgstr "Escala Horizontal"
 
 #. 6.2->settings-schema.json->doom-vertical-scale->description
+#. 6.7.6->settings-schema.json->doom-vertical-scale->description
 msgid "Vertical Scale"
 msgstr "Escala  Vertical"
 
@@ -975,19 +2247,12 @@ msgstr "Escala  Vertical"
 #. 6.2->settings-schema.json->pixelate-pixel-size->description
 #. 6.2->settings-schema.json->pixel-wheel-pixel-size->description
 #. 6.2->settings-schema.json->pixel-wipe-pixel-size->description
+#. 6.7.6->settings-schema.json->doom-pixel-size->description
+#. 6.7.6->settings-schema.json->pixelate-pixel-size->description
+#. 6.7.6->settings-schema.json->pixel-wheel-pixel-size->description
+#. 6.7.6->settings-schema.json->pixel-wipe-pixel-size->description
 msgid "Pixel Size"
 msgstr "Tamanho do Pixel"
-
-#. 6.2->settings-schema.json->doom-y-hack->description
-msgid "Y offset fix for open/unminimize events"
-msgstr ""
-
-#. 6.2->settings-schema.json->doom-y-hack->tooltip
-msgid ""
-"Apply an offset to the Y axis window target position so that the open/"
-"unminimize animation completes at the right location. This is a hack fix for "
-"the Doom effect until I can find a proper fix"
-msgstr ""
 
 #. 6.2->settings-schema.json->energize-a-scale->description
 #. 6.2->settings-schema.json->energize-b-scale->description
@@ -998,6 +2263,18 @@ msgstr ""
 #. 6.2->settings-schema.json->incinerate-scale->description
 #. 6.2->settings-schema.json->tv-glitch-scale->description
 #. 6.2->settings-schema.json->wisps-scale->description
+#. 6.7.6->settings-schema.json->broken-glass-scale->description
+#. 6.7.6->settings-schema.json->energize-a-scale->description
+#. 6.7.6->settings-schema.json->energize-b-scale->description
+#. 6.7.6->settings-schema.json->fire-custom-scale->description
+#. 6.7.6->settings-schema.json->glide-scale->description
+#. 6.7.6->settings-schema.json->glitch-scale->description
+#. 6.7.6->settings-schema.json->hexagon-scale->description
+#. 6.7.6->settings-schema.json->incinerate-scale->description
+#. 6.7.6->settings-schema.json->matrix-scale->description
+#. 6.7.6->settings-schema.json->snap-scale->description
+#. 6.7.6->settings-schema.json->tv-glitch-scale->description
+#. 6.7.6->settings-schema.json->wisps-scale->description
 msgid "Scale"
 msgstr "Escala"
 
@@ -1008,131 +2285,167 @@ msgstr "Escala"
 #. 6.2->settings-schema.json->portal-color->description
 #. 6.2->settings-schema.json->tv-effect-color->description
 #. 6.2->settings-schema.json->tv-glitch-color->description
+#. 6.7.6->settings-schema.json->energize-a-color->description
+#. 6.7.6->settings-schema.json->energize-b-color->description
+#. 6.7.6->settings-schema.json->glitch-color->description
+#. 6.7.6->settings-schema.json->incinerate-color->description
+#. 6.7.6->settings-schema.json->portal-color->description
+#. 6.7.6->settings-schema.json->snap-color->description
+#. 6.7.6->settings-schema.json->trex-scratch-color->description
+#. 6.7.6->settings-schema.json->tv-effect-color->description
+#. 6.7.6->settings-schema.json->tv-glitch-color->description
 msgid "Color"
 msgstr "Cor"
 
 #. 6.2->settings-schema.json->fire-presets->options
 #. 6.2->settings-schema.json->mushroom-presets->options
+#. 6.7.6->settings-schema.json->fire-presets->options
+#. 6.7.6->settings-schema.json->mushroom-presets->options
 msgid "Custom"
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-presets->description
+#. 6.7.6->settings-schema.json->fire-presets->description
 msgid "Fire effect style"
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
+#. 6.7.6->settings-schema.json->fire-custom-movement-speed->description
 msgid "Fire Movement Speed"
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-3d-noise->description
+#. 6.7.6->settings-schema.json->fire-3d-noise->description
 msgid "Fire 3D Noise"
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-3d-noise->tooltip
+#. 6.7.6->settings-schema.json->fire-3d-noise->tooltip
 msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-random-color->description
+#. 6.7.6->settings-schema.json->fire-random-color->description
 msgid "Use a Random Color (overrides other color settings)"
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-random-color->tooltip
+#. 6.7.6->settings-schema.json->fire-random-color->tooltip
 msgid ""
 "Use a random fire color. This setting will override any preset or custom "
 "colors settings you select."
 msgstr ""
 
 #. 6.2->settings-schema.json->fire-colors->description
+#. 6.7.6->settings-schema.json->fire-colors->description
 #, fuzzy
 msgid "Colors 1-5"
 msgstr "Cor #1"
 
 #. 6.2->settings-schema.json->focus-blur-quality->description
+#. 6.7.6->settings-schema.json->focus-blur-quality->description
 msgid "Blur Quality"
 msgstr ""
 
 #. 6.2->settings-schema.json->focus-blur-quality->tooltip
+#. 6.7.6->settings-schema.json->focus-blur-quality->tooltip
 msgid ""
 "The Quality of the Blur (Setting this too high may increase GPU load and "
 "affect performance)"
 msgstr ""
 
 #. 6.2->settings-schema.json->glide-squish->description
+#. 6.7.6->settings-schema.json->glide-squish->description
 msgid "Squish"
 msgstr "Esmagadura"
 
 #. 6.2->settings-schema.json->glide-tilt->description
+#. 6.7.6->settings-schema.json->glide-tilt->description
 msgid "Tilt"
 msgstr "Inclinação"
 
 #. 6.2->settings-schema.json->glide-shift->description
+#. 6.7.6->settings-schema.json->glide-shift->description
 msgid "Shift"
 msgstr "Desvio"
 
 #. 6.2->settings-schema.json->glitch-strength->description
+#. 6.2->settings-schema.json->morph-strength->description
 #. 6.2->settings-schema.json->tv-glitch-strength->description
+#. 6.7.6->settings-schema.json->glitch-strength->description
+#. 6.7.6->settings-schema.json->morph-strength->description
+#. 6.7.6->settings-schema.json->tv-glitch-strength->description
 msgid "Strength"
 msgstr "Força"
 
 #. 6.2->settings-schema.json->hexagon-line-width->description
+#. 6.7.6->settings-schema.json->hexagon-line-width->description
 msgid "Mesh Line Width"
 msgstr "Largura da Linha de Malha"
 
 #. 6.2->settings-schema.json->hexagon-line-color->description
+#. 6.7.6->settings-schema.json->hexagon-line-color->description
 msgid "Line Color"
 msgstr "Cor da Linha"
 
 #. 6.2->settings-schema.json->hexagon-glow-color->description
+#. 6.7.6->settings-schema.json->hexagon-glow-color->description
 msgid "Glow Color"
 msgstr "Cor do Brilho"
 
 #. 6.2->settings-schema.json->hexagon-additive-blending->description
+#. 6.7.6->settings-schema.json->hexagon-additive-blending->description
 msgid "Additive Blending"
 msgstr "Mistura de Aditivos"
 
 #. 6.2->settings-schema.json->hexagon-additive-blending->tooltip
+#. 6.7.6->settings-schema.json->hexagon-additive-blending->tooltip
 msgid "You may want to enable this for dark window themes."
 msgstr "Pode querer ativar isto para temas de janelas escuras."
 
 #. 6.2->settings-schema.json->incinerate-turbulence->description
+#. 6.7.6->settings-schema.json->incinerate-turbulence->description
 msgid "Turbulence"
 msgstr "Turbulência"
 
 #. 6.2->settings-schema.json->incinerate-use-pointer->description
+#. 6.7.6->settings-schema.json->incinerate-use-pointer->description
 msgid "Start at Pointer"
 msgstr "Iniciar a Partir do Ponteiro"
 
 #. 6.2->settings-schema.json->incinerate-use-pointer->tooltip
+#. 6.7.6->settings-schema.json->incinerate-use-pointer->tooltip
 msgid "If disabled, a random location will be chosen."
 msgstr "Caso desativado, uma localização aleatória será escolhida."
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
+#. 6.7.6->settings-schema.json->magiclamp-effect->options
 msgid "Curved"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
+#. 6.7.6->settings-schema.json->magiclamp-effect->options
 msgid "Wavy"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
-#, fuzzy
-msgid "Random"
-msgstr "Randomizado"
-
-#. 6.2->settings-schema.json->magiclamp-effect->options
+#. 6.7.6->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Curved / Disappear: Wavy"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->options
+#. 6.7.6->settings-schema.json->magiclamp-effect->options
 msgid "Appear: Wavy / Disappear: Curved"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-effect->description
+#. 6.7.6->settings-schema.json->magiclamp-effect->description
 #, fuzzy
 msgid "The type of effect"
 msgstr "Efeito de abertura da janela"
 
 #. 6.2->settings-schema.json->magiclamp-effect->tooltip
+#. 6.7.6->settings-schema.json->magiclamp-effect->tooltip
 msgid ""
 "The effect can be a smooth curve or a wavy animation. The random option will "
 "randomly choose between the two and the Appear/Disappear options use "
@@ -1141,30 +2454,37 @@ msgid ""
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
+#. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Top"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
+#. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Bottom"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
+#. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Left"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
+#. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Right"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
+#. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Edge closest to mouse pointer"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->description
+#. 6.7.6->settings-schema.json->magiclamp-edge->description
 msgid "Open/Close Edge"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge->tooltip
+#. 6.7.6->settings-schema.json->magiclamp-edge->tooltip
 msgid ""
 "The monitor edge where a window should originate from when opening, or "
 "disappear towards when closing. This setting is not used for minimize or "
@@ -1172,10 +2492,12 @@ msgid ""
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->description
+#. 6.7.6->settings-schema.json->magiclamp-edge-offset->description
 msgid "Open/Close Edge Offset"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
+#. 6.7.6->settings-schema.json->magiclamp-edge-offset->tooltip
 msgid ""
 "The offset from the top or left of the \"Open/Close Edge\" that the "
 "animation should use as the origin/target of the animation. This is a "
@@ -1185,111 +2507,168 @@ msgid ""
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
+#. 6.7.6->settings-schema.json->magiclamp-x-tiles->description
 msgid "X Tiles"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->tooltip
+#. 6.7.6->settings-schema.json->magiclamp-x-tiles->tooltip
 msgid "This effects the quality and the cost of the animation"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->description
+#. 6.7.6->settings-schema.json->magiclamp-y-tiles->description
 msgid "Y Tiles"
 msgstr ""
 
 #. 6.2->settings-schema.json->magiclamp-y-tiles->tooltip
+#. 6.7.6->settings-schema.json->magiclamp-y-tiles->tooltip
 msgid "This effects the quality and the costs of the animation"
 msgstr ""
 
+#. 6.2->settings-schema.json->morph-style->options
+#. 6.7.6->settings-schema.json->morph-style->options
+msgid "Liquid flow"
+msgstr ""
+
+#. 6.2->settings-schema.json->morph-style->options
+#. 6.7.6->settings-schema.json->morph-style->options
+msgid "Melt"
+msgstr ""
+
+#. 6.2->settings-schema.json->morph-style->description
+#. 6.7.6->settings-schema.json->morph-style->description
+#, fuzzy
+msgid "Style"
+msgstr "Escala"
+
+#. 6.2->settings-schema.json->morph-style->tooltip
+#. 6.7.6->settings-schema.json->morph-style->tooltip
+msgid ""
+"Liquid flow: the area swirls into the window like liquid. Melt: each image "
+"flows along its own edges, so what's behind melts away and the window's "
+"outlines form first."
+msgstr ""
+
+#. 6.2->settings-schema.json->morph-strength->tooltip
+#. 6.7.6->settings-schema.json->morph-strength->tooltip
+msgid ""
+"How far things move during the morph. 1 is the default; 0 is a plain "
+"dissolve."
+msgstr ""
+
 #. 6.2->settings-schema.json->mushroom-presets->description
+#. 6.7.6->settings-schema.json->mushroom-presets->description
 msgid "Mushroom effect style"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
+#. 6.7.6->settings-schema.json->mushroom-custom-scale-style->description
 #, fuzzy
 msgid "Scale Style"
 msgstr "Escala"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-count->description
+#. 6.7.6->settings-schema.json->mushroom-custom-spark-count->description
 #, fuzzy
 msgid "Spark Count"
 msgstr "Contagem de Raios"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-color->description
+#. 6.7.6->settings-schema.json->mushroom-custom-spark-color->description
 #, fuzzy
 msgid "Spark Color"
 msgstr "Cor"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-rotation->description
+#. 6.7.6->settings-schema.json->mushroom-custom-spark-rotation->description
 msgid "Spark Rotation"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-custom-rays-color->description
+#. 6.7.6->settings-schema.json->mushroom-custom-rays-color->description
 #, fuzzy
 msgid "Rays Color"
 msgstr "Cor"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-count->description
+#. 6.7.6->settings-schema.json->mushroom-custom-ring-count->description
 #, fuzzy
 msgid "Star Rings Count"
 msgstr "O Pai Natal está Vindo"
 
 #. 6.2->settings-schema.json->mushroom-custom-ring-rotation->description
+#. 6.7.6->settings-schema.json->mushroom-custom-ring-rotation->description
 msgid "Star Ring Rotation"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-custom-star-count->description
+#. 6.7.6->settings-schema.json->mushroom-custom-star-count->description
 msgid "Stars Count Per Ring"
 msgstr ""
 
 #. 6.2->settings-schema.json->mushroom-star-colors->description
+#. 6.7.6->settings-schema.json->mushroom-star-colors->description
 #, fuzzy
 msgid "Colors 1-6"
 msgstr "Cor #1"
 
 #. 6.2->settings-schema.json->pixelate-noise->description
+#. 6.7.6->settings-schema.json->pixelate-noise->description
 msgid "Noise"
 msgstr "Ruído"
 
 #. 6.2->settings-schema.json->pixel-wheel-spoke-count->description
+#. 6.7.6->settings-schema.json->pixel-wheel-spoke-count->description
 msgid "Spoke Count"
 msgstr "Contagem de Raios"
 
 #. 6.2->settings-schema.json->portal-rotation-speed->description
+#. 6.7.6->settings-schema.json->portal-rotation-speed->description
 msgid "Rotation Speed"
 msgstr "Velocidade de Rotação"
 
 #. 6.2->settings-schema.json->portal-whirling->description
+#. 6.7.6->settings-schema.json->portal-whirling->description
 msgid "Whirling"
 msgstr "Girando"
 
 #. 6.2->settings-schema.json->portal-details->description
+#. 6.7.6->settings-schema.json->portal-details->description
 msgid "Details"
 msgstr "Detalhes"
 
 #. 6.2->settings-schema.json->rgbwarp-brightness->description
+#. 6.7.6->settings-schema.json->rgbwarp-brightness->description
 msgid "Brightness"
 msgstr ""
 
 #. 6.2->settings-schema.json->rgbwarp-speed-r->description
+#. 6.7.6->settings-schema.json->rgbwarp-speed-r->description
 #, fuzzy
 msgid "Red Speed"
 msgstr "Velocidade"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-g->description
+#. 6.7.6->settings-schema.json->rgbwarp-speed-g->description
 #, fuzzy
 msgid "Green Speed"
 msgstr "Velocidade"
 
 #. 6.2->settings-schema.json->rgbwarp-speed-b->description
+#. 6.7.6->settings-schema.json->rgbwarp-speed-b->description
 #, fuzzy
 msgid "Blue Speed"
 msgstr "Velocidade"
 
 #. 6.2->settings-schema.json->team-rocket-animation-split->description
+#. 6.7.6->settings-schema.json->team-rocket-animation-split->description
 msgid "Animation Split"
 msgstr ""
 
 #. 6.2->settings-schema.json->team-rocket-horizontal-sparkle-
+#. position->description
+#. 6.7.6->settings-schema.json->team-rocket-horizontal-sparkle-
 #. position->description
 #, fuzzy
 msgid "Horizontal Sparkle Position"
@@ -1297,38 +2676,121 @@ msgstr "Escala Horizontal"
 
 #. 6.2->settings-schema.json->team-rocket-vertical-sparkle-
 #. position->description
+#. 6.7.6->settings-schema.json->team-rocket-vertical-sparkle-
+#. position->description
 #, fuzzy
 msgid "Vertical Sparkle Position"
 msgstr "Escala  Vertical"
 
 #. 6.2->settings-schema.json->team-rocket-window-rotation->description
+#. 6.7.6->settings-schema.json->team-rocket-window-rotation->description
 msgid "Rotate Window"
 msgstr ""
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-rot->description
+#. 6.7.6->settings-schema.json->team-rocket-sparkle-rot->description
 msgid "Sparkle Rotation"
 msgstr ""
 
 #. 6.2->settings-schema.json->team-rocket-sparkle-size->description
+#. 6.7.6->settings-schema.json->team-rocket-sparkle-size->description
 msgid "Sparkle Size"
 msgstr ""
 
 #. 6.2->settings-schema.json->wisps-color-1->description
+#. 6.7.6->settings-schema.json->wisps-color-1->description
 msgid "Color #1"
 msgstr "Cor #1"
 
 #. 6.2->settings-schema.json->wisps-color-2->description
+#. 6.7.6->settings-schema.json->wisps-color-2->description
 msgid "Color #2"
 msgstr "Cor #2"
 
 #. 6.2->settings-schema.json->wisps-color-3->description
+#. 6.7.6->settings-schema.json->wisps-color-3->description
 msgid "Color #3"
 msgstr "Cor #3"
 
+#. 6.2->settings-schema.json->wormhole-void-size->description
+#. 6.7.6->settings-schema.json->wormhole-void-size->description
+#, fuzzy
+msgid "Void Size"
+msgstr "Tamanho do Pixel"
+
+#. 6.2->settings-schema.json->wormhole-tunnel-depth->description
+#. 6.7.6->settings-schema.json->wormhole-tunnel-depth->description
+msgid "Tunnel Depth"
+msgstr ""
+
+#. 6.2->settings-schema.json->wormhole-funnel-size->description
+#. 6.7.6->settings-schema.json->wormhole-funnel-size->description
+#, fuzzy
+msgid "Funnel Size"
+msgstr "Tamanho do Pixel"
+
+#. 6.2->settings-schema.json->wormhole-bounce->description
+#. 6.7.6->settings-schema.json->wormhole-bounce->description
+msgid "Bounce"
+msgstr ""
+
+#. 6.2->settings-schema.json->wormhole-bounce->tooltip
+#. 6.7.6->settings-schema.json->wormhole-bounce->tooltip
+msgid "How much the desktop bounces when the effect lands (0 = no bounce)"
+msgstr ""
+
 #. 6.2->settings-schema.json->test-effect->description
+#. 6.7.6->settings-schema.json->test-effect->description
 msgid "Open effect preview window"
 msgstr ""
 
 #. 6.2->settings-schema.json->test-effect->tooltip
+#. 6.7.6->settings-schema.json->test-effect->tooltip
 msgid "Opens a window using the currently selected effect."
 msgstr ""
+
+#. 6.7.6->settings-schema.json->broken-glass-gravity->description
+msgid "Gravity"
+msgstr ""
+
+#. 6.7.6->settings-schema.json->broken-glass-blow-force->description
+#, fuzzy
+msgid "Blow Force"
+msgstr "Cor do Brilho"
+
+#. 6.7.6->settings-schema.json->broken-glass-use-pointer->description
+msgid "Shatter From Pointer Location"
+msgstr ""
+
+#. 6.7.6->settings-schema.json->matrix-tip-color->description
+#, fuzzy
+msgid "Tip Color"
+msgstr "Cor da Linha"
+
+#. 6.7.6->settings-schema.json->matrix-trail-color->description
+#, fuzzy
+msgid "Trail Color"
+msgstr "Cor da Linha"
+
+#. 6.7.6->settings-schema.json->matrix-overshoot->description
+#, fuzzy
+msgid "Vertical Overshooting"
+msgstr "Escala  Vertical"
+
+#. 6.7.6->settings-schema.json->paint-brush-size->description
+msgid "Brush Size"
+msgstr ""
+
+#. 6.7.6->settings-schema.json->trex-scratch-scale->description
+msgid "Claw Scratch Scale"
+msgstr ""
+
+#. 6.7.6->settings-schema.json->trex-scratch-warp->description
+#, fuzzy
+msgid "Warp Effect"
+msgstr "Efeito de TV"
+
+#. 6.7.6->settings-schema.json->trex-scratch-count->description
+#, fuzzy
+msgid "Scratch Count"
+msgstr "Contagem de Raios"
