@@ -1400,8 +1400,6 @@ class DashDock {
         this.actor.add_actor(this.trashSeparatorBin);
         this.actor.add_actor(this.trashButton);
         this.actor.add_actor(this.rightSpacer);
-        
-        this.appList.onSizeChanged = () => this._updatePosition();
 
         // Enable global drag and drop targeting the dock background
         this.actor._delegate = {
@@ -1420,7 +1418,13 @@ class DashDock {
             }
         };
 
+        this.appList.onSizeChanged = () => { 
+            this._isBooting = false; 
+            this._updatePosition(); 
+        };
+
         this.isHidden = false;
+        this._isBooting = true;
         this._grabInProgress = false;
         this._hideTimeoutId = 0;
         this._showTimeoutId = 0;
@@ -2291,7 +2295,7 @@ class DashDock {
                 }
             }
 
-            if (this.actor.opacity === 0 && !this._themeChanging && !this.isHidden) {
+            if (this.actor.opacity === 0 && !this._themeChanging && !this.isHidden && !this._isBooting) {
                 this.actor.opacity = 255;
             }
             
