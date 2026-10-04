@@ -1,0 +1,255 @@
+# German translation for Sizely.
+# Mnemonics are aligned with the German Cinnamon window menu:
+# n, m, w, v, g, o, s, d, a, c are already taken there.
+msgid ""
+msgstr ""
+"Project-Id-Version: sizely@gossardla\n"
+"PO-Revision-Date: 2026-08-27 12:00+0200\n"
+"Last-Translator: Lars Gossard <lars@familie-gossard.de>\n"
+"Language-Team: Deutsch\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: settings-schema.json:standard-family-16-10
+msgid "16:10"
+msgstr "16:10"
+
+#: settings-schema.json:standard-family-16-9
+msgid "16:9"
+msgstr "16:9"
+
+#: settings-schema.json:standard-family-21-9
+msgid "21:9"
+msgstr "21:9"
+
+#: settings-schema.json:standard-family-32-9
+msgid "32:9"
+msgstr "32:9"
+
+#: settings-schema.json:standard-family-4-3
+msgid "4:3 / 5:4"
+msgstr "4:3 / 5:4"
+
+#: settings-schema.json:standard-hint
+msgid ""
+"A built-in list of common display resolutions, grouped by aspect ratio. They "
+"follow the unit setting above."
+msgstr ""
+"Eine eingebaute Liste gängiger Bildschirmauflösungen, nach Seitenverhältnis "
+"gruppiert. Sie folgen der Einheiten-Einstellung weiter oben."
+
+#: settings-schema.json:ratioSection
+msgid "Aspect ratios"
+msgstr "Seitenverhältnisse"
+
+#: settings-schema.json:standard-family-phones
+msgid ""
+"CSS viewport sizes, not panel resolutions — that is what a browser window "
+"needs for responsive testing."
+msgstr "CSS-Viewport-Größen, nicht Panel-Auflösungen – das ist, was ein Browserfenster zum Testen von Responsive-Layouts braucht."
+
+#: extension.js:217
+msgid "C_enter on Monitor"
+msgstr "Auf Monitor _zentrieren"
+
+#: settings-schema.json:presets
+msgid "Center"
+msgstr "Zentrieren"
+
+#: settings-schema.json:standard-center
+msgid "Center the window after picking a standard resolution"
+msgstr "Fenster nach Wahl einer Standardauflösung zentrieren"
+
+#: settings-schema.json:center-keybinding
+msgid ""
+"Centers the focused window on the monitor it currently sits on, without "
+"changing its size."
+msgstr ""
+"Zentriert das fokussierte Fenster auf dem Monitor, auf dem es gerade liegt, "
+"ohne die Größe zu verändern."
+
+#: settings-schema.json:presetsPage
+msgid "Custom Sizes"
+msgstr "Eigene Größen"
+
+#: settings-schema.json:presetsSection settings-schema.json:presets
+msgid "Custom sizes"
+msgstr "Eigene Größen"
+
+#: settings-schema.json:standard-family-dci
+msgid "Digital Cinema"
+msgstr "Digital Cinema"
+
+#: settings-schema.json:standardSection
+msgid "Display"
+msgstr "Anzeige"
+
+#: settings-schema.json:show-in-window-menu
+msgid "Extend the window menu (right-click on the title bar)"
+msgstr "Fenstermenü erweitern (Rechtsklick auf die Titelleiste)"
+
+#: settings-schema.json:generalPage
+msgid "General"
+msgstr "Allgemein"
+
+#: settings-schema.json:use-submenu
+msgid "Group custom sizes in a \"Size\" submenu"
+msgstr "Eigene Größen in einem Untermenü „Größe“ bündeln"
+
+#: settings-schema.json:presets
+msgid "Height"
+msgstr "Höhe"
+
+#: settings-schema.json:shortcutSection
+msgid "Keyboard shortcut"
+msgstr "Tastenkombination"
+
+#: settings-schema.json:size-unit
+msgid "Logical pixels (HiDPI-scaled)"
+msgstr "Logische Pixel (HiDPI-skaliert)"
+
+#: settings-schema.json:size-unit
+msgid ""
+"Logical: sizes are multiplied by the UI scaling factor, so \"1920 x 1080\" "
+"covers the same area a Full HD screen would. Physical: raw screen pixels."
+msgstr ""
+"Logisch: Die Größen werden mit dem UI-Skalierungsfaktor multipliziert – "
+"„1920 x 1080“ bedeckt damit dieselbe Fläche wie ein Full-HD-Bildschirm. "
+"Physisch: rohe Bildschirmpixel."
+
+#: settings-schema.json:presets
+msgid "Name"
+msgstr "Bezeichnung"
+
+#: settings-schema.json:use-submenu
+msgid ""
+"Off: every custom size sits directly in the window menu — one click instead "
+"of two. Handy when you only have a few."
+msgstr ""
+"Aus: Jede eigene Größe liegt direkt im Fenstermenü – ein Klick statt zwei. "
+"Praktisch, wenn es nur wenige sind."
+
+#: settings-schema.json:standard-fit-only
+msgid "Only list resolutions that fit on the current monitor"
+msgstr "Nur Auflösungen anzeigen, die auf den aktuellen Monitor passen"
+
+#: settings-schema.json:standard-family-phones
+msgid "Phones"
+msgstr "Smartphones"
+
+#: settings-schema.json:size-unit
+msgid "Physical pixels"
+msgstr "Physische Pixel"
+
+#: settings-schema.json:standard-fit-only
+msgid ""
+"Resolutions larger than the monitor's work area would just be clamped to it, "
+"so they are hidden by default. The check uses the scaled size."
+msgstr ""
+"Auflösungen, die größer als der Arbeitsbereich des Monitors sind, würden "
+"ohnehin auf ihn begrenzt und sind deshalb ausgeblendet. Geprüft wird die "
+"skalierte Größe."
+
+#: settings-schema.json:center-keybinding
+msgid "Shortcut for \"Center on Monitor\""
+msgstr "Tastenkombination für „Auf Monitor zentrieren“"
+
+#: settings-schema.json:show-center-item
+msgid "Show \"Center on Monitor\" in the window menu"
+msgstr "Eintrag „Auf Monitor zentrieren“ im Fenstermenü anzeigen"
+
+#: settings-schema.json:show-standard-resolutions
+msgid "Show the \"Standard resolutions\" submenu"
+msgstr "Untermenü „Standardauflösungen“ anzeigen"
+
+#: settings-schema.json:sizeSection
+msgid "Sizes"
+msgstr "Größen"
+
+#: settings-schema.json:presets-hint
+msgid ""
+"Sizes you define yourself. Every row becomes an entry in the window menu. "
+"\"Center\" places the window in the middle of the current monitor after "
+"resizing."
+msgstr ""
+"Selbst definierte Größen. Jede Zeile wird zu einem Eintrag im Fenstermenü. "
+"„Zentrieren“ setzt das Fenster nach dem Anpassen mittig auf den aktuellen "
+"Monitor."
+
+#: extension.js:235
+msgid "Stan_dard Resolutions"
+msgstr "Standardauf_lösungen"
+
+#: settings-schema.json:standardPage
+msgid "Standard Resolutions"
+msgstr "Standardauflösungen"
+
+#: settings-schema.json:size-unit
+msgid "Unit for all sizes"
+msgstr "Einheit für alle Größen"
+
+#: settings-schema.json:show-in-window-menu
+msgid "When off, only the keyboard shortcuts are active."
+msgstr "Aus: Nur die Tastenkombinationen sind aktiv."
+
+#: settings-schema.json:presets
+msgid "Width"
+msgstr "Breite"
+
+#: settings-schema.json:menuSection
+msgid "Window menu"
+msgstr "Fenstermenü"
+
+#: extension.js:199
+msgid "_Size"
+msgstr "Größe _festlegen"
+
+#~ msgid "Presets"
+#~ msgstr "Presets"
+
+#~ msgid "Your presets"
+#~ msgstr "Eigene Presets"
+
+#~ msgid "When off, every preset is shown directly in the window menu."
+#~ msgstr "Aus: Alle Presets erscheinen direkt im Fenstermenü."
+
+#~ msgid "Centering"
+#~ msgstr "Zentrieren"
+
+#~ msgid "Standard resolutions"
+#~ msgstr "Standardauflösungen"
+
+#~ msgid "Shortcut"
+#~ msgstr "Tastenkombination"
+
+#~ msgid "Shortcut for preset row 1"
+#~ msgstr "Tastenkombination für Preset-Zeile 1"
+
+#~ msgid "Shortcut for preset row 2"
+#~ msgstr "Tastenkombination für Preset-Zeile 2"
+
+#~ msgid "Shortcut for preset row 3"
+#~ msgstr "Tastenkombination für Preset-Zeile 3"
+
+#~ msgid "Shortcut for preset row 4"
+#~ msgstr "Tastenkombination für Preset-Zeile 4"
+
+#~ msgid "Shortcut for preset row 5"
+#~ msgstr "Tastenkombination für Preset-Zeile 5"
+
+#~ msgid ""
+#~ "Shortcuts for the first preset rows, counted from the top of the table "
+#~ "above."
+#~ msgstr "Tastenkombinationen für die ersten Preset-Zeilen, von oben gezählt."
+
+#~ msgid ""
+#~ "Logical: sizes are multiplied by the UI scaling factor, which is what you "
+#~ "visually expect on HiDPI displays. Physical: raw screen pixels. Standard "
+#~ "resolutions are always physical pixels."
+#~ msgstr ""
+#~ "Logisch: Die Größen werden mit dem UI-Skalierungsfaktor multipliziert – "
+#~ "auf HiDPI-Displays das, was du optisch erwartest. Physisch: rohe "
+#~ "Bildschirmpixel. Standardauflösungen sind immer physische Pixel."
