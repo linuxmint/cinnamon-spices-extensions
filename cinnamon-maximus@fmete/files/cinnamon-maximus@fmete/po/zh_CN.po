@@ -2,9 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
-"extensions/issues\n"
-"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-09-03 10:55+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: 张鹏 <scbeta@qq.com>\n"
 "Language-Team: \n"
@@ -68,6 +67,33 @@ msgid ""
 "Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
 "regexp allowed)"
 msgstr "自动取消装饰应用程序（使用“,”分隔应用程序，允许部分匹配和正则表达式）"
+
+#. settings-schema.json->overlayHead->description
+msgid "Overlay window buttons"
+msgstr "悬浮窗口按钮"
+
+#. settings-schema.json->overlayButtons->description
+msgid ""
+"Draw minimize/maximize/close buttons at the top corner of undecorated "
+"windows"
+msgstr "在被去掉标题栏的窗口顶角显示最小化/最大化/关闭按钮"
+
+#. settings-schema.json->overlayIdleOpacity->units
+msgid "%"
+msgstr "%"
+
+#. settings-schema.json->overlayIdleOpacity->description
+msgid ""
+"Button opacity when the mouse is not over them (0 = reveal only on hover)"
+msgstr "鼠标未悬停时按钮的不透明度（0 = 仅悬停时显示）"
+
+#. settings-schema.json->overlayButtonSize->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->overlayButtonSize->description
+msgid "Button icon size"
+msgstr "按钮图标大小"
 
 #. settings-schema.json->keepQTAppsFocus->description
 msgid "Keep the focus for QT Apps (Experimental)"

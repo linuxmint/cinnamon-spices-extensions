@@ -1,6 +1,13 @@
 /* Cinnamon Extension: Cinnamon-Maximus v0.4.0
  * Release Date: 2020.07.17
  *
+ * v0.5.0 (2026-09): overlay window buttons.
+ * - Removing the decorations also removes the title bar buttons, which leaves
+ *   apps that only have server-side decorations without any window controls
+ *   once maximized (issue #594). The extension now draws minimize/maximize/close
+ *   back at the top corner of every window it undecorated.
+ *   See the "Overlay window buttons" section near the end of this file.
+ *
  * Author:
  * - Fatih Mete <fatihmete@live.com>
  *
@@ -88,6 +95,8 @@ const Settings = imports.ui.settings;
 const Main = imports.ui.main;
 const Lang = imports.lang;
 const Clutter = imports.gi.Clutter;
+const St = imports.gi.St;
+const Gio = imports.gi.Gio;
 /*
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -111,6 +120,7 @@ let workspaces = [];
 
 let oldFullscreenPref = null;
 let settings = null;
+let overlay = null;
 
 let commaRegexp = new RegExp(/,/, "g");
 
@@ -210,6 +220,11 @@ function setDecorated(win, decorated) {
     }
     logMessage(cmd.join(" "));
     Util.spawn(cmd);
+    // remember what we did so the button overlay knows which windows lost their title bar
+    win._maximusHidden = !decorated;
+    if (overlay) {
+        overlay.scheduleRefresh();
+    }
     // #25: when undecorating a Qt app (texmaker, keepassx) somehow focus is lost.
     // However, is there a use case where this would happen legitimately?
     // For some reaons the Qt apps seem to take a while to be refocused.
@@ -540,6 +555,12 @@ function startUndecorating() {
     Meta.prefs_set_force_fullscreen(false);
 
 
+    /* Overlay window buttons. Created regardless of onlyManual so that
+     * hotkey-undecorated windows get their buttons too. */
+    if (settings.overlayButtons && !overlay) {
+        overlay = new ButtonOverlay();
+    }
+
     /* Go through already-maximized windows & undecorate.
      * This needs a delay as the window list is not yet loaded
      *  when the extension is loaded.
@@ -572,6 +593,10 @@ function startUndecorating() {
 /** Stop listening to events, restore all windows back to their original
  * decoration state. */
 function stopUndecorating() {
+    if (overlay) {
+        overlay.destroy();
+        overlay = null;
+    }
     if (maximizeEventID) global.window_manager.disconnect(maximizeEventID);
     if (minimizeEventID) global.window_manager.disconnect(minimizeEventID);
     if (sizeChangeEventID) global.window_manager.disconnect(sizeChangeEventID);
@@ -614,6 +639,7 @@ function stopUndecorating() {
         }
         delete win._maximusDecoratedOriginal;
         delete win._maximusUndecorated;
+        delete win._maximusHidden;
     }
 
     if (oldFullscreenPref !== null) {
@@ -651,6 +677,246 @@ function enableHotkey() {
 function disableHotkey() {
     Main.keybindingManager.removeHotKey('toggleDecor');
 }
+
+/**** Overlay window buttons ****
+ *
+ * Removing the decorations of a window also removes its title bar buttons.
+ * Apps that rely purely on server-side decorations (most GTK menubar apps,
+ * Qt apps, Java, Wine, ...) are then left without minimize/maximize/close.
+ *
+ * ButtonOverlay draws those buttons as a small piece of Cinnamon chrome
+ * (Main.layoutManager.addChrome) glued to the top corner of the *focused*
+ * window whenever that window has been undecorated by this extension
+ * (win._maximusHidden === true). Which corner is used, and the button order,
+ * follow the WM button-layout (org.cinnamon.desktop.wm.preferences).
+ *
+ * Only the focused window gets buttons: it is the one on top, and there is
+ * exactly one pointer to click them with.
+ */
+const OVERLAY_ACTIONS = {
+    minimize: {
+        icon: (win) => "window-minimize-symbolic",
+        allowed: (win) => win.can_minimize(),
+        run: (win) => win.minimize()
+    },
+    maximize: {
+        icon: (win) => (win.get_maximized() ? "window-restore-symbolic" : "window-maximize-symbolic"),
+        allowed: (win) => win.can_maximize(),
+        run: (win) => {
+            if (win.get_maximized()) {
+                win.unmaximize(Meta.MaximizeFlags.BOTH);
+            } else {
+                win.maximize(Meta.MaximizeFlags.BOTH);
+            }
+        }
+    },
+    close: {
+        icon: (win) => "window-close-symbolic",
+        allowed: (win) => win.can_close(),
+        run: (win) => win.delete(global.get_current_time())
+    }
+};
+
+function ButtonOverlay() {
+    this._init();
+}
+
+ButtonOverlay.prototype = {
+    _init: function () {
+        this._win = null;        // window the boxes are currently attached to
+        this._winIds = [];       // signal ids on this._win
+        this._boxes = [];        // [{actor, side, buttons: [{kind, actor, icon}]}]
+        this._refreshId = 0;
+        this._signals = [];      // [[object, id]] for cleanup
+        this._wmPrefs = new Gio.Settings({ schema_id: "org.cinnamon.desktop.wm.preferences" });
+
+        this._connect(global.display, "notify::focus-window", () => this.scheduleRefresh());
+        this._connect(global.window_manager, "size-change", () => this.scheduleRefresh());
+        this._connect(Main.layoutManager, "monitors-changed", () => this.scheduleRefresh());
+        this._connect(this._wmPrefs, "changed::button-layout", () => this.rebuild());
+        for (let ui of [Main.overview, Main.expo]) {
+            this._connect(ui, "showing", () => this._hideAll());
+            this._connect(ui, "hidden", () => this.scheduleRefresh());
+        }
+        this.rebuild();
+    },
+
+    _connect: function (obj, name, callback) {
+        this._signals.push([obj, obj.connect(name, callback)]);
+    },
+
+    /** (Re)creates the button boxes from the WM button-layout, e.g. "menu:minimize,maximize,close".
+     * Buttons before the colon go to the top-left corner, the rest to the top-right. */
+    rebuild: function () {
+        this._destroyBoxes();
+        let layout = this._wmPrefs.get_string("button-layout") || ":minimize,maximize,close";
+        let parts = layout.split(":");
+        let sides = [["left", parts[0] || ""], ["right", parts[1] || ""]];
+        for (let [side, spec] of sides) {
+            let kinds = spec.split(",").map(k => k.trim()).filter(k => k in OVERLAY_ACTIONS);
+            if (kinds.length === 0) {
+                continue;
+            }
+            let box = new St.BoxLayout({
+                style_class: `maximus-overlay maximus-overlay-${side}`,
+                reactive: true,
+                track_hover: true
+            });
+            let buttons = kinds.map(kind => this._makeButton(kind));
+            buttons.forEach(b => box.add_actor(b.actor));
+            box.connect("notify::hover", () => this._applyOpacity(box));
+            Main.layoutManager.addChrome(box, { affectsInputRegion: true, affectsStruts: false });
+            box.hide();
+            this._boxes.push({ actor: box, side: side, buttons: buttons });
+        }
+        logMessage(`overlay: built ${this._boxes.length} button box(es) from layout '${layout}'`);
+        this.scheduleRefresh();
+    },
+
+    _makeButton: function (kind) {
+        let icon = new St.Icon({
+            icon_type: St.IconType.SYMBOLIC,
+            icon_size: settings.overlayButtonSize,
+            style_class: "maximus-overlay-icon"
+        });
+        let button = new St.Button({
+            style_class: `maximus-overlay-button maximus-overlay-button-${kind}`,
+            child: icon,
+            reactive: true,
+            can_focus: false,
+            track_hover: true
+        });
+        button.connect("clicked", () => {
+            let win = this._win;
+            if (!win) {
+                return;
+            }
+            try {
+                logMessage(`overlay: ${kind} -> ${win.title}`);
+                OVERLAY_ACTIONS[kind].run(win);
+            } catch (e) {
+                logError(e, true);
+            }
+        });
+        return { kind: kind, actor: button, icon: icon };
+    },
+
+    /** Coalesces bursts of events into a single refresh on the next idle. */
+    scheduleRefresh: function () {
+        if (this._refreshId) {
+            return;
+        }
+        this._refreshId = Mainloop.idle_add(() => {
+            this._refreshId = 0;
+            this.refresh();
+            return GLib.SOURCE_REMOVE;
+        });
+    },
+
+    _isEligible: function (win) {
+        if (!win || win._maximusHidden !== true) {
+            return false;
+        }
+        if (win.minimized || win.is_fullscreen()) {
+            return false;
+        }
+        if (!win.get_compositor_private()) {
+            return false;
+        }
+        if (Main.overview.visible || Main.expo.visible) {
+            return false;
+        }
+        return true;
+    },
+
+    refresh: function () {
+        let win = global.display.focus_window;
+        if (!this._isEligible(win)) {
+            this._detach();
+            this._hideAll();
+            return;
+        }
+        if (win !== this._win) {
+            this._detach();
+            this._win = win;
+            for (let name of ["size-changed", "position-changed", "unmanaged", "notify::minimized"]) {
+                this._winIds.push(win.connect(name, () => this.scheduleRefresh()));
+            }
+        }
+        this._place(win);
+    },
+
+    _place: function (win) {
+        let rect = win.get_frame_rect();
+        for (let box of this._boxes) {
+            let anyVisible = false;
+            for (let b of box.buttons) {
+                let ok = OVERLAY_ACTIONS[b.kind].allowed(win);
+                b.actor.visible = ok;
+                if (ok) {
+                    b.icon.icon_name = OVERLAY_ACTIONS[b.kind].icon(win);
+                    anyVisible = true;
+                }
+            }
+            if (!anyVisible) {
+                box.actor.hide();
+                continue;
+            }
+            let [, natWidth] = box.actor.get_preferred_width(-1);
+            let x = (box.side === "right") ? rect.x + rect.width - natWidth : rect.x;
+            box.actor.set_position(Math.round(x), rect.y);
+            this._applyOpacity(box.actor);
+            box.actor.show();
+        }
+    },
+
+    _applyOpacity: function (actor) {
+        let percent = Math.max(0, Math.min(100, settings.overlayIdleOpacity));
+        actor.opacity = actor.hover ? 255 : Math.round(percent * 2.55);
+    },
+
+    _hideAll: function () {
+        for (let box of this._boxes) {
+            box.actor.hide();
+        }
+    },
+
+    _detach: function () {
+        if (this._win) {
+            for (let id of this._winIds) {
+                try {
+                    this._win.disconnect(id);
+                } catch (e) {
+                    // window already gone
+                }
+            }
+        }
+        this._winIds = [];
+        this._win = null;
+    },
+
+    _destroyBoxes: function () {
+        for (let box of this._boxes) {
+            Main.layoutManager.removeChrome(box.actor);
+            box.actor.destroy();
+        }
+        this._boxes = [];
+    },
+
+    destroy: function () {
+        if (this._refreshId) {
+            Mainloop.source_remove(this._refreshId);
+            this._refreshId = 0;
+        }
+        this._detach();
+        this._destroyBoxes();
+        for (let [obj, id] of this._signals) {
+            obj.disconnect(id);
+        }
+        this._signals = [];
+        this._wmPrefs = null;
+    }
+};
 
 function init(metadata)
 {
@@ -712,6 +978,26 @@ SettingsHandler.prototype = {
 
         this.settings.bindProperty(Settings.BindingDirection.IN,
             "autoUndecorAppsList", "autoUndecorAppsList", function(){
+            });
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "overlayButtons", "overlayButtons", function(){
+                if (settings.overlayButtons && !overlay) {
+                    overlay = new ButtonOverlay();
+                } else if (!settings.overlayButtons && overlay) {
+                    overlay.destroy();
+                    overlay = null;
+                }
+            });
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "overlayIdleOpacity", "overlayIdleOpacity", function(){
+                if (overlay) overlay.scheduleRefresh();
+            });
+
+        this.settings.bindProperty(Settings.BindingDirection.IN,
+            "overlayButtonSize", "overlayButtonSize", function(){
+                if (overlay) overlay.rebuild();
             });
 
         this.settings.bindProperty(Settings.BindingDirection.IN,
