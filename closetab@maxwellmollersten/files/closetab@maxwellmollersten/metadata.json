@@ -1,0 +1,11 @@
+{
+    "uuid": "closetab@maxwellmollersten",
+    "name": "CloseTab - Alt+Tab close buttons",
+    "description": "Adds a Windows 11 style close (X) button to every preview in Cinnamon's normal Alt+Tab switcher. Clicking the X closes that window without activating it and without dismissing the switcher. Q closes the selected window, middle-click closes the hovered one.",
+    "version": "1.0.0",
+    "cinnamon-version": [
+        "6.6"
+    ],
+    "author": "maxwellmollersten",
+    "url": "https://github.com/maxwellmollersten/cinnamon-closetab"
+}
