@@ -427,7 +427,9 @@ class DockAppList {
                 return !newIds.includes(id) && elements && elements.button && !elements.button._isDying;
             });
 
-            if (animEnabled && idsToRemove.length > 0 && !sizeChanged) {
+            let realAppsToRemove = idsToRemove.filter(id => id !== 'dock-separator');
+
+            if (animEnabled && realAppsToRemove.length > 0 && !sizeChanged) {
                 let isVert = this.dockPosition === 'left' || this.dockPosition === 'right';
                 
                 for (let id of idsToRemove) {

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mint-dock@hilyxx 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-04 18:39+0200\n"
+"POT-Creation-Date: 2026-10-06 06:37+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,31 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. extension.js:560
+#. extension.js:562
 msgid "System Settings"
 msgstr "Rendszerbeállítások"
 
-#. extension.js:917
+#. extension.js:919
 msgid "Unpin from dock"
 msgstr "Levétel a dokkról"
 
-#. extension.js:917
+#. extension.js:919
 msgid "Pin to dock"
 msgstr "Rögzítés a dokkon"
 
-#. extension.js:937
+#. extension.js:939
 msgid "Quit"
 msgstr "Kilépés"
 
-#. extension.js:1542
+#. extension.js:1544
 msgid "Trash"
 msgstr "Kuka"
 
-#. extension.js:1625
+#. extension.js:1627
 msgid "Empty Trash"
 msgstr "Kuka ürítése"
 
-#. extension.js:1932
+#. extension.js:1934
 msgid "Dock settings"
 msgstr "Dokkoló beállításai"
 
