@@ -1,0 +1,18 @@
+{
+  "uuid": "notification-filter@nort",
+  "name": "Notification Filter",
+  "description": "Filter notifications from selected apps: hide completely, show without sound, or silent without history.",
+  "version": "1.3.0",
+  "icon": "notification-filter@nort",
+  "cinnamon-version": [
+    "5.8",
+    "6.0",
+    "6.2",
+    "6.4",
+    "6.6",
+    "6.8",
+    "7.0"
+  ],
+  "author": "nort",
+  "url": "https://cinnamon-spices.linuxmint.com"
+}

@@ -1,0 +1,80 @@
+# Russian translation for Notification Filter.
+msgid ""
+msgstr ""
+"Project-Id-Version: notification-filter@nort 1.3.0\n"
+"Last-Translator: nort\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Notification Filter"
+msgstr "Фильтр уведомлений"
+
+#. metadata.json->description
+msgid "Control notifications from selected apps: fully hide, silent popup, or silent without history."
+msgstr "Управление уведомлениями выбранных приложений: полное скрытие, без звука, или без звука и без истории."
+
+#. settings-schema.json->mode->description
+msgid "Action for listed applications"
+msgstr "Действие для приложений из списка"
+
+#. settings-schema.json->mode->options
+msgid "Hide completely"
+msgstr "Полностью скрывать"
+
+#. settings-schema.json->mode->options
+msgid "Show without sound"
+msgstr "Показывать без звука"
+
+#. settings-schema.json->mode->options
+msgid "Show without sound, don't keep in history"
+msgstr "Без звука и не сохранять в истории"
+
+#. settings-schema.json->mode->tooltip
+msgid ""
+"Hide completely = notification never appears.\n"
+"Show without sound = popup appears, no sound, same duration as system.\n"
+"Without history = same + not saved in notification history."
+msgstr ""
+"Полностью скрывать — уведомление вообще не появляется.\n"
+"Показывать без звука — всплывашка есть, звука нет, время как в системе.\n"
+"Без истории — то же + не попадает в журнал уведомлений."
+
+#. settings-schema.json->blockedApps->description
+msgid "Applications (name or title)"
+msgstr "Приложения (название или заголовок)"
+
+#. settings-schema.json->blockedApps->tooltip
+msgid "One name per line (or comma / semicolon separated). Matches exact names and substrings (case-insensitive)."
+msgstr "По одному названию в строке (или через запятую / точку с запятой). Совпадает точное имя и подстрока (регистр не важен)."
+
+#. settings-schema.json->logApps->description
+msgid "Log application names of notifications"
+msgstr "Записывать названия приложений из уведомлений"
+
+#. settings-schema.json->logApps->tooltip
+msgid "When enabled, every notification is written to the Cinnamon log (Looking Glass)."
+msgstr "Когда включено, каждое уведомление записывается в журнал Cinnamon (Looking Glass)."
+
+#. settings-schema.json->help-text->description
+msgid ""
+"How to find the exact app name:\n"
+"1. Enable logging above\n"
+"2. Press Alt+F2, type lg, press Enter\n"
+"3. Open the Log tab\n"
+"4. Trigger a notification from the unwanted app\n"
+"5. Look for a line like:\n"
+"   notification-filter@nort: notification from app 'AppName', summary 'Title'\n"
+"6. Copy the app name or title into the list above"
+msgstr ""
+"Как узнать точное название приложения:\n"
+"1. Включите логирование выше\n"
+"2. Нажмите Alt+F2, введите lg, нажмите Enter\n"
+"3. Откройте вкладку Log\n"
+"4. Вызовите уведомление от ненужного приложения\n"
+"5. Найдите строку вида:\n"
+"   notification-filter@nort: notification from app 'ИмяПриложения', summary 'Заголовок'\n"
+"6. Скопируйте имя приложения или заголовок в список выше"

@@ -1,0 +1,30 @@
+{
+    "mode": {
+        "type": "combobox",
+        "description": "Action for listed applications",
+        "options": {
+            "Hide completely": "hide",
+            "Show without sound": "silent",
+            "Show without sound, don't keep in history": "silent-transient"
+        },
+        "default": "hide",
+        "tooltip": "Hide completely = notification never appears.\nShow without sound = popup appears, no sound, same duration as system.\nWithout history = same + not saved in notification history."
+    },
+    "blockedApps": {
+        "type": "textview",
+        "description": "Applications (name or title)",
+        "tooltip": "One name per line (or comma / semicolon separated). Matches exact names and substrings (case-insensitive).",
+        "height": 160,
+        "default": "AB Download Manager\nAmneziaVPN"
+    },
+    "logApps": {
+        "type": "checkbox",
+        "description": "Log application names of notifications",
+        "tooltip": "When enabled, every notification is written to the Cinnamon log (Looking Glass).",
+        "default": false
+    },
+    "help-text": {
+        "type": "label",
+        "description": "How to find the exact app name:\n1. Enable logging above\n2. Press Alt+F2, type lg, press Enter\n3. Open the Log tab\n4. Trigger a notification from the unwanted app\n5. Look for a line like:\n   notification-filter@nort: notification from app 'AppName', summary 'Title'\n6. Copy the app name or title into the list above"
+    }
+}
