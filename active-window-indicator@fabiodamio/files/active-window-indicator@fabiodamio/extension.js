@@ -71,7 +71,7 @@ function interpolateColor(c1, c2, factor) {
 
 function startAnimLoop() {
     if (animLoopId) return;
-
+    
     animLoopId = Mainloop.timeout_add(33, () => {
         let animSpeed = 5;
         if (settings) {
@@ -127,10 +127,10 @@ function drawTrapezoid(canvasActor, cr, width, height) {
     let alpha = alphaPercent / 100.0;
     let slant = Math.min(slantPixels, width / 2);
 
-    cr.moveTo(0, 0);
-    cr.lineTo(width, 0);
-    cr.lineTo(width - slant, height);
-    cr.lineTo(slant, height);
+    cr.moveTo(0, 0);                        
+    cr.lineTo(width, 0);                    
+    cr.lineTo(width - slant, height); 
+    cr.lineTo(slant, height);         
     cr.closePath();
 
     let pattern = new Cairo.LinearGradient(0, 0, width, 0);
@@ -163,13 +163,13 @@ function updateIndicator() {
     let focusWindow = global.display.focus_window;
     let activeWorkspace = global.workspace_manager.get_active_workspace();
 
-    if (!focusWindow ||
-        focusWindow.is_override_redirect() ||
+    if (!focusWindow || 
+        focusWindow.is_override_redirect() || 
         focusWindow.is_fullscreen() ||
         focusWindow.minimized ||
         focusWindow.window_type !== Meta.WindowType.NORMAL ||
         !focusWindow.located_on_workspace(activeWorkspace)) {
-
+        
         if (indicator && indicator.visible) {
             indicator.ease({
                 opacity: 0,
@@ -180,56 +180,57 @@ function updateIndicator() {
         }
         return;
     }
-
+    
     let rect = focusWindow.get_frame_rect();
 
     let lineHeight = 6;
-    let widthPercent = 80;
+    let widthPercent = 100;
+    let marginLR = 12;
+    let marginTop = 4;
 
     if (settings) {
         try { lineHeight = settings.getValue('line-height'); } catch (e) {}
         try { widthPercent = settings.getValue('width-percent'); } catch (e) {}
+        try { marginLR = settings.getValue('margin-left-right'); } catch (e) {}
+        try { marginTop = settings.getValue('margin-top'); } catch (e) {}
     }
 
-    let barWidth = Math.round((rect.width * widthPercent) / 100);
+    // Larghezza utile interna considerando i margini laterali (sia a sinistra che a destra)
+    let availableWidth = Math.max(10, rect.width - (marginLR * 2));
+    let barWidth = Math.round((availableWidth * widthPercent) / 100);
+    
+    // Posizionamento centrato con applicazione dei margini
     let offsetX = Math.round((rect.width - barWidth) / 2);
-
-    // Coordinate esatte occupate dalla barra sul monitor
     let barX1 = rect.x + offsetX;
     let barX2 = rect.x + offsetX + barWidth;
-    let barY = rect.y;
+    let barY = rect.y + marginTop;
 
-    // Controlla se c'è un'altra finestra normale che copre specificamente la nostra barra
     let windows = global.get_window_actors().map(w => w.meta_window);
     let isCovered = false;
-
+    
     let ourIndex = windows.indexOf(focusWindow);
     if (ourIndex !== -1) {
         for (let i = ourIndex + 1; i < windows.length; i++) {
             let win = windows[i];
-            if (win.minimized || win.is_override_redirect() || win.window_type !== Meta.WindowType.NORMAL) {
+            if (!win || win.minimized || win.is_override_redirect() || win.window_type !== Meta.WindowType.NORMAL) {
                 continue;
             }
             if (win.located_on_workspace(activeWorkspace)) {
                 let winRect = win.get_frame_rect();
+                
+                let intersectsX = (winRect.x < barX2) && (winRect.x + winRect.width > barX1);
+                let intersectsY = (winRect.y < barY + lineHeight) && (winRect.y + winRect.height > barY);
 
-                // Una finestra copre la barra se:
-                // 1. Si sovrappone orizzontalmente alla barra [barX1, barX2]
-                // 2. Si estende verticalmente coprendo la coordinata della barra (barY si trova tra la cima e il fondo della finestra sopra)
-                let overlapsX = (winRect.x < barX2) && (winRect.x + winRect.width > barX1);
-                // Espandiamo leggermente il controllo verticale per includere interamente lo spessore della barra
-                let overlapsY = (winRect.y <= barY + lineHeight) && (winRect.y + winRect.height >= barY);
-
-                if (overlapsX && overlapsY) {
-                    isCovered = true;
-                    break;
+                if (intersectsX && intersectsY) {
+                    if (win.is_above ? win.is_above(focusWindow) : true) {
+                        isCovered = true;
+                        break;
+                    }
                 }
             }
         }
     }
 
-    // Se la finestra è coperta, nascondiamo la barra e pianifichiamo un controllo a breve
-    // per intercettare il momento in cui sale in primo piano dopo il clic (fondamentale per sloppy).
     if (isCovered) {
         if (indicator && indicator.visible) {
             indicator.ease({
@@ -239,12 +240,6 @@ function updateIndicator() {
                 onComplete: () => { indicator.hide(); }
             });
         }
-
-        Mainloop.timeout_add(200, () => {
-            updateIndicator();
-            return false;
-        });
-
         return;
     }
 
@@ -252,8 +247,7 @@ function updateIndicator() {
         canvas = new Clutter.Canvas();
         canvas.connect('draw', drawTrapezoid);
     }
-
-    // Assegnazione forzata delle dimensioni aggiornate al canvas e all'indicatore
+    
     canvas.set_size(barWidth, lineHeight);
 
     if (!indicator) {
@@ -266,11 +260,11 @@ function updateIndicator() {
         Main.uiGroup.add_actor(indicator);
     }
 
-    indicator.set_position(rect.x + offsetX, rect.y);
+    indicator.set_position(barX1, barY);
     indicator.set_size(barWidth, lineHeight);
-
+    
     canvas.invalidate();
-
+    
     indicator.show();
     indicator.raise_top();
     indicator.ease({
@@ -288,7 +282,7 @@ function onFocusChanged() {
         currentWindow = focusWindow;
         positionSignal = currentWindow.connect('position-changed', updateIndicator);
         sizeSignal = currentWindow.connect('size-changed', updateIndicator);
-
+        
         try {
             stateSignal = currentWindow.connect('window-state-changed', () => {
                 updateIndicator();
@@ -296,7 +290,10 @@ function onFocusChanged() {
         } catch (e) {}
     }
 
-    updateIndicator();
+    Mainloop.timeout_add(40, () => {
+        updateIndicator();
+        return false;
+    });
 }
 
 function init(metadata) {
@@ -312,13 +309,15 @@ function enable() {
         settings.bind('anim-speed', 'animSpeed', updateIndicator);
         settings.bind('color-start', 'colorStart', updateIndicator);
         settings.bind('color-end', 'colorEnd', updateIndicator);
+        settings.bind('margin-left-right', 'marginLeftRight', updateIndicator);
+        settings.bind('margin-top', 'marginTop', updateIndicator);
     } catch (e) {
         global.logError('Errore nell\'inizializzazione delle impostazioni:', e);
     }
 
     focusSignal = global.display.connect('notify::focus-window', onFocusChanged);
     workspaceSignal = global.workspace_manager.connect('active-workspace-changed', updateIndicator);
-
+    
     if (Main.overview) {
         overviewOpenId = Main.overview.connect('showing', () => {
             if (indicator && indicator.visible) {
@@ -349,7 +348,7 @@ function disable() {
         global.display.disconnect(focusSignal);
         focusSignal = null;
     }
-
+    
     if (workspaceSignal) {
         global.workspace_manager.disconnect(workspaceSignal);
         workspaceSignal = null;
@@ -372,7 +371,7 @@ function disable() {
         indicator.destroy();
         indicator = null;
     }
-
+    
     canvas = null;
     settings = null;
 }

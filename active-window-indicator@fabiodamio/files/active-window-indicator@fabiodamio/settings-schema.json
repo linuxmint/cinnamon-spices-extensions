@@ -27,6 +27,26 @@
     "units": "px",
     "description": "End slant"
   },
+  "margin-left-right": {
+    "type": "spinbutton",
+    "default": 12,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "px",
+    "description": "Left and Right Margin",
+    "tooltip": "Margin to avoid rounded window corners"
+  },
+  "margin-top": {
+    "type": "spinbutton",
+    "default": 4,
+    "min": 0,
+    "max": 50,
+    "step": 1,
+    "units": "px",
+    "description": "Top Margin",
+    "tooltip": "Distance from the top edge of the window"
+  },
   "alpha-percent": {
     "type": "spinbutton",
     "default": 80,
