@@ -78,6 +78,10 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       this._progress = 0;
       this._time     = 0;
 
+      // Shaders animating in lock-step with this one (see beginFollowing()).
+      this._followers = [];
+      this._leader    = null;
+
       // Store standard uniform locations.
       this._uForOpening   = this.get_uniform_location('uForOpening');
       this._uIsFullscreen = this.get_uniform_location('uIsFullscreen');
@@ -85,6 +89,8 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       this._uDuration     = this.get_uniform_location('uDuration');
       this._uSize         = this.get_uniform_location('uSize');
       this._uPadding      = this.get_uniform_location('uPadding');
+      this._uInputRect    = this.get_uniform_location('uInputRect');
+      this._uCanvasRect   = this.get_uniform_location('uCanvasRect');
 
       // Create a timeline to drive the animation.
       this._timeline = new Clutter.Timeline();
@@ -126,6 +132,39 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       this._progress = 0;
       this._testMode = testMode;
 
+      this._setStandardUniforms(forOpening, duration, actor);
+
+      this.emit('begin-animation', settings, forOpening, testMode, actor);
+    }
+
+    // For effects that draw on more than one actor (e.g. Aperture Panels): makes this shader
+    // animate in lock-step with `leader`, whose animation is started as usual with
+    // beginAnimation(). This shader gets the same standard uniforms and its own
+    // 'begin-animation' signal, but no timeline of its own: every progress update of the
+    // leader is passed on to it. Call stopFollowing() when the leader's animation ends.
+    beginFollowing(leader, settings, forOpening, testMode, duration, actor) {
+      this.stopFollowing();
+      this._leader   = leader;
+      leader._followers.push(this);
+
+      this._progress = testMode ? 0.5 : 0;
+      this._testMode = testMode;
+
+      this._setStandardUniforms(forOpening, duration, actor);
+
+      this.emit('begin-animation', settings, forOpening, testMode, actor);
+    }
+
+    stopFollowing() {
+      if (this._leader) {
+        const i = this._leader._followers.indexOf(this);
+        if (i >= 0) this._leader._followers.splice(i, 1);
+        this._leader = null;
+      }
+    }
+
+    // The uniforms every shader gets at the start of an animation.
+    _setStandardUniforms(forOpening, duration, actor) {
       // This is not necessarily symmetric, but I haven't figured out a way to
       // get the actual values...
       const padding = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
@@ -139,7 +178,10 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       this.set_uniform_float(this._uDuration, 1, [duration * 0.001]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 
-      this.emit('begin-animation', settings, forOpening, testMode, actor);
+      // The window fills the whole texture unless extension.js puts the effect on an
+      // unscaled canvas; then it updates this every frame (see _setupEffect).
+      this.set_uniform_float(this._uInputRect, 4, [0, 0, 1, 1]);
+      this.set_uniform_float(this._uCanvasRect, 4, [0, 0, 1, 1]);
     }
 
     // This is called at each frame during the animation.
@@ -150,6 +192,10 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       this._progress = progress;
 
       this.queue_repaint();
+
+      for (const follower of this._followers) {
+        follower.updateAnimation(progress);
+      }
     }
 
     // This will stop any running animation and emit the end-animation signal.
@@ -200,6 +246,41 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
 
       this.set_uniform_float(this._uProgress, 1, [this._progress]);
       super.vfunc_paint_target(...params);
+    }
+
+    // Where this effect's offscreen texture lies relative to the top-left corner of the
+    // actor it is attached to, as [x, y, width, height] in that actor's coordinates, or null
+    // before the first paint. `width` and `height` are the actor's size; its paint volume
+    // must be its allocation (clip_to_allocation, as for extension.js's unscaled canvas and
+    // the layered effects' layers).
+    //
+    // Only the size of get_target_rect() is used. Its position is wherever the actor was
+    // painted first this frame, which can be a clone of it inside another offscreen effect
+    // (e.g. a BlurCinnamon blurred window background, painted before our actors as it lives
+    // in global.window_group); it is then relative to that effect's framebuffer, not the
+    // stage. The origin follows from the actor's own size instead, the way Clutter pads the
+    // box (_clutter_actor_box_enlarge_for_effects).
+    //
+    // texPadding: 'enlarged' (stock Muffin: x2' = ceil(x2 + 0.75), x1' = x2' - width, so
+    // most of the 3px is on the left / top), 'centred' (Muffin patched to pad evenly), or
+    // anything else for no padding offset.
+    getTextureRect(width, height, texPadding) {
+      let w, h;
+      try {
+        const [ok, r] = this.get_target_rect();
+        if (!ok) return null;
+        w = r.get_width();
+        h = r.get_height();
+      } catch (e) {
+        return null;
+      }
+      if (texPadding === 'centred') {
+        return [-(w - width) / 2, -(h - height) / 2, w, h];
+      }
+      if (texPadding === 'enlarged') {
+        return [Math.ceil(width + 0.75) - w, Math.ceil(height + 0.75) - h, w, h];
+      }
+      return [0, 0, w, h];
     }
 
     // --------------------------------------------------------------------- private stuff
