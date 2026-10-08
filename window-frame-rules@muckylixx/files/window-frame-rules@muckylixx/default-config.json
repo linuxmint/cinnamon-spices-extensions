@@ -1,0 +1,111 @@
+{
+    "general": {
+        "frame_width": 4,
+        "corner_radius": 7,
+        "offset_left": 4,
+        "offset_right": 1,
+        "offset_top": 1,
+        "offset_bottom": 1,
+        "active_opacity": 100,
+        "inactive_opacity": 48,
+        "glow_enabled": true,
+        "glow_radius": 5,
+        "include_maximized": true,
+        "include_fullscreen": false,
+        "debug": false
+    },
+    "fallback": {
+        "enabled": false,
+        "active_color": "#FFE65C",
+        "inactive_color": "#5E5726"
+    },
+    "rules": [
+        {
+            "name": "Root shell",
+            "enabled": true,
+            "priority": 1000,
+            "title_contains": "root@",
+            "class_contains": "",
+            "instance_contains": "",
+            "window_types": [],
+            "active_color": "#FF9D24",
+            "inactive_color": "#663E18"
+        },
+        {
+            "name": "Linuxmaid",
+            "enabled": true,
+            "priority": 900,
+            "title_contains": "linuxmaid",
+            "class_contains": "",
+            "instance_contains": "",
+            "window_types": [],
+            "active_color": "#38F58A",
+            "inactive_color": "#174D2E"
+        },
+        {
+            "name": "Blackmaid / Blackmate",
+            "enabled": true,
+            "priority": 900,
+            "title_contains": "blackma",
+            "class_contains": "",
+            "instance_contains": "",
+            "window_types": [],
+            "active_color": "#C15CFF",
+            "inactive_color": "#4D2863"
+        },
+        {
+            "name": "Hitomi-Go",
+            "enabled": true,
+            "priority": 900,
+            "title_contains": "hitomi-go",
+            "class_contains": "",
+            "instance_contains": "",
+            "window_types": [],
+            "active_color": "#FF405C",
+            "inactive_color": "#63202B"
+        },
+        {
+            "name": "Cube local terminal",
+            "enabled": true,
+            "priority": 500,
+            "title_contains": "@cube",
+            "class_contains": "",
+            "instance_contains": "",
+            "window_types": [],
+            "active_color": "#00DDFF",
+            "inactive_color": "#145363"
+        },
+        {
+            "name": "GNOME Terminal",
+            "enabled": true,
+            "priority": 100,
+            "title_contains": "",
+            "class_contains": "gnome-terminal",
+            "instance_contains": "",
+            "window_types": [
+                "normal",
+                "dialog",
+                "modal_dialog",
+                "utility"
+            ],
+            "active_color": "#00DDFF",
+            "inactive_color": "#145363"
+        },
+        {
+            "name": "Other terminals",
+            "enabled": true,
+            "priority": 90,
+            "title_contains": "",
+            "class_contains": "terminal",
+            "instance_contains": "",
+            "window_types": [
+                "normal",
+                "dialog",
+                "modal_dialog",
+                "utility"
+            ],
+            "active_color": "#00DDFF",
+            "inactive_color": "#145363"
+        }
+    ]
+}
