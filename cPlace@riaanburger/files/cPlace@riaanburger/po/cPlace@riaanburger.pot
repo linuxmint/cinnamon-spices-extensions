@@ -1,0 +1,386 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-29 07:08+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: extension.js:336
+msgid "None saved; Ctrl+digit saves one."
+msgstr ""
+
+#: extension.js:478
+msgid "Delete preset {digit}?"
+msgstr ""
+
+#: extension.js:678
+msgid "Arrangement"
+msgstr ""
+
+#: extension.js:714
+msgid "Presets"
+msgstr ""
+
+#: extension.js:783 extension.js:2340
+msgid "Monitor {number}"
+msgstr ""
+
+#: extension.js:1457
+msgid "Apply"
+msgstr ""
+
+#: extension.js:1458
+msgid "Undo"
+msgstr ""
+
+#: extension.js:1459
+msgid "Cancel"
+msgstr ""
+
+#: extension.js:1504
+msgid "U undoes the last one."
+msgstr ""
+
+#: extension.js:1783 extension.js:3999
+msgid "{count} window"
+msgid_plural "{count} windows"
+msgstr[0] ""
+msgstr[1] ""
+
+#: extension.js:1784 extension.js:2732 extension.js:3900
+msgid "{width} × {height}"
+msgstr ""
+
+#: extension.js:1821
+msgid "Variables"
+msgstr ""
+
+#: extension.js:2232
+msgid "Windows"
+msgstr ""
+
+#: extension.js:2307
+msgid "Include minimised windows"
+msgstr ""
+
+#: extension.js:2347
+msgid "{application}: {title}"
+msgstr ""
+
+#: extension.js:2375
+msgid "{title}  (focused)"
+msgstr ""
+
+#: extension.js:2382
+msgid "{application} ({count})"
+msgstr ""
+
+#: extension.js:2402
+msgid "Send {application} to the end"
+msgstr ""
+
+#: extension.js:2585
+msgid ""
+"Tab moves focus and Space toggles. Digits run presets, Ctrl+digit saves one."
+" Escape changes nothing."
+msgstr ""
+
+#: extension.js:2692
+msgid "width"
+msgstr ""
+
+#: extension.js:2693
+msgid "height"
+msgstr ""
+
+#: extension.js:2694
+msgid "across"
+msgstr ""
+
+#: extension.js:2695 extension.js:2867
+msgid "up"
+msgstr ""
+
+#: extension.js:2696
+msgid "margin across"
+msgstr ""
+
+#: extension.js:2697 extension.js:2869
+msgid "margin up"
+msgstr ""
+
+#. settings-schema.json->cascade-header->description
+#: extension.js:2708
+msgid "Cascade"
+msgstr ""
+
+#: extension.js:2721
+msgid ""
+"The arrow on an application's row sends its windows to the end. Tab moves "
+"focus and Space toggles. Digits run presets, Ctrl+digit saves one."
+msgstr ""
+
+#: extension.js:2737
+msgid "{applications} last"
+msgstr ""
+
+#: extension.js:2796
+msgid "Spread the windows across the work area"
+msgstr ""
+
+#: extension.js:2856
+msgid "step {across} across, {climb} down"
+msgstr ""
+
+#: extension.js:2856
+msgid "step {across} across, {climb} up"
+msgstr ""
+
+#: extension.js:2867
+msgid "down"
+msgstr ""
+
+#: extension.js:2869
+msgid "margin down"
+msgstr ""
+
+#: extension.js:3348
+msgid "cell {across} across, {down} down"
+msgstr ""
+
+#: extension.js:3348
+msgid "cells {across} across, {down} down"
+msgstr ""
+
+#: extension.js:3413
+msgid "columns"
+msgstr ""
+
+#. settings-schema.json->columns-header->description
+#. settings-schema.json->grid-layouts->columns->title
+#: extension.js:3423
+msgid "Columns"
+msgstr ""
+
+#: extension.js:3445
+msgid ""
+"Two clicks on the preview choose the area. Tab moves focus, Space toggles, "
+"Ctrl+digit saves a preset."
+msgstr ""
+
+#: extension.js:3459
+msgid "{count} column"
+msgid_plural "{count} columns"
+msgstr[0] ""
+msgstr[1] ""
+
+#: extension.js:3463
+msgid "{count} column in {area}"
+msgid_plural "{count} columns in {area}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: extension.js:3498
+msgid "Area"
+msgstr ""
+
+#: extension.js:3538
+msgid "{count} row"
+msgid_plural "{count} rows"
+msgstr[0] ""
+msgstr[1] ""
+
+#: extension.js:3540
+msgid "{count} row in {width} × {height} at {x}, {y}"
+msgid_plural "{count} rows in {width} × {height} at {x}, {y}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: extension.js:3600
+msgid "No focused window to place."
+msgstr ""
+
+#: extension.js:3610
+msgid "{title} – {application}"
+msgstr ""
+
+#. settings-schema.json->grid-header->description
+#: extension.js:3642
+msgid "Grid"
+msgstr ""
+
+#: extension.js:3671
+msgid "Window"
+msgstr ""
+
+#: extension.js:3673
+msgid "Layout"
+msgstr ""
+
+#: extension.js:3737
+msgid ""
+"Two clicks place the window; arrows move, Shift grows, Enter places. "
+"Ctrl+digit saves a preset."
+msgstr ""
+
+#: extension.js:3904
+msgid "target {width} × {height} at {x}, {y}"
+msgstr ""
+
+#: extension.js:4050
+msgid "All monitors"
+msgstr ""
+
+#: extension.js:4071
+msgid "Recorded"
+msgstr ""
+
+#: extension.js:4114
+msgid ""
+"Ctrl+digit records the ticked windows and the digit puts them back. Point at"
+" a recording to see it; × or Delete removes one."
+msgstr ""
+
+#: extension.js:4171
+msgid "{found} of {total} window found"
+msgid_plural "{found} of {total} windows found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: extension.js:4198
+msgid "as Ctrl+digit records them"
+msgstr ""
+
+#. metadata.json->name
+msgid "cPlace"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Mise en place for your desktop. Arranges windows into cascades, grids, and "
+"whatever else you write."
+msgstr ""
+
+#. settings-schema.json->cascade-window-width->units
+#. settings-schema.json->cascade-window-height->units
+#. settings-schema.json->cascade-offset-across->units
+#. settings-schema.json->cascade-offset-up->units
+#. settings-schema.json->cascade-margin-across->units
+#. settings-schema.json->cascade-margin-up->units
+msgid "px"
+msgstr ""
+
+#. settings-schema.json->cascade-window-width->description
+msgid "Width of every cascaded window; 0 for half the work area's"
+msgstr ""
+
+#. settings-schema.json->cascade-window-height->description
+msgid "Height of every cascaded window; 0 for half the work area's"
+msgstr ""
+
+#. settings-schema.json->cascade-offset-across->description
+msgid ""
+"Offset from one window to the next, rightward from a left corner and "
+"leftward from a right one"
+msgstr ""
+
+#. settings-schema.json->cascade-offset-up->description
+msgid ""
+"Offset from one window to the next, upward from a bottom corner and downward"
+" from a top one"
+msgstr ""
+
+#. settings-schema.json->cascade-margin-across->description
+msgid ""
+"The anchor's distance from the corner's side edge; negative pulls it past "
+"the edge and trims the windows that would leave the screen"
+msgstr ""
+
+#. settings-schema.json->cascade-margin-up->description
+msgid ""
+"The anchor's distance from the corner's top or bottom edge; negative pulls "
+"it past the edge and trims the windows that would leave the screen"
+msgstr ""
+
+#. settings-schema.json->cascade-corner->options
+msgid "Bottom left"
+msgstr ""
+
+#. settings-schema.json->cascade-corner->options
+msgid "Bottom right"
+msgstr ""
+
+#. settings-schema.json->cascade-corner->options
+msgid "Top left"
+msgstr ""
+
+#. settings-schema.json->cascade-corner->options
+msgid "Top right"
+msgstr ""
+
+#. settings-schema.json->cascade-corner->description
+msgid "Corner the cascade starts from"
+msgstr ""
+
+#. settings-schema.json->cascade-spread->description
+msgid "Spread the windows across the whole work area, never wrapping"
+msgstr ""
+
+#. settings-schema.json->columns-count->description
+msgid "Number of columns the windows are dealt into"
+msgstr ""
+
+#. settings-schema.json->columns-area->description
+msgid ""
+"The area the columns fill, as grid cells, managed from the chooser; empty "
+"for the whole work area"
+msgstr ""
+
+#. settings-schema.json->grid-layouts->description
+msgid ""
+"Grid layouts: spans typed as numbers with spaces between, 1 2 1 for a wide "
+"middle column"
+msgstr ""
+
+#. settings-schema.json->grid-layouts->columns->title
+msgid "Name"
+msgstr ""
+
+#. settings-schema.json->grid-layouts->columns->title
+msgid "Rows"
+msgstr ""
+
+#. settings-schema.json->grid-last-layout->description
+msgid "The layout the grid last showed, managed from the chooser"
+msgstr ""
+
+#. settings-schema.json->chooser-header->description
+msgid "Chooser"
+msgstr ""
+
+#. settings-schema.json->participants->description
+msgid ""
+"Desktop ids of the applications ticked by default, comma-separated; empty "
+"ticks the focused window's application"
+msgstr ""
+
+#. settings-schema.json->place-hotkey->description
+msgid "Open the chooser"
+msgstr ""
+
+#. settings-schema.json->presets->description
+msgid "Saved presets, managed from the chooser"
+msgstr ""
