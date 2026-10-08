@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-08-14 09:13-0400\n"
-"PO-Revision-Date: 2026-07-27 10:34-0400\n"
+"PO-Revision-Date: 2026-10-08 09:07+0200\n"
 "Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -112,9 +112,8 @@ msgid "Cinnamon desktop components where effects will be applied"
 msgstr "Cinnamon-skrivebordskomponenter som vil blive påvirket af effekter"
 
 #. 6.0->settings-schema.json->monte-carlo-settings->title
-#, fuzzy
 msgid "Additional Monte Carlo specific settings"
-msgstr "Monte Carlo-specifikke indstillinger"
+msgstr "Yderligere Monte Carlo-specifikke indstillinger"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
@@ -129,106 +128,94 @@ msgid "About Blur Cinnamon"
 msgstr "Om Sløret Cinnamon"
 
 #. 6.0->settings-schema.json->appswitcher-warning->description
-#, fuzzy
 msgid ""
 "💡 The Alt-Tab effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Bemærk: Alt-Tab-effekter er i øjeblikket deaktiveret under fanebladet "
-"“Generel opsætning”."
+"💡 Alt-Tab-effekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->desklets-warning->description
-#, fuzzy
 msgid ""
 "💡 The Desklet effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Bemærk: Skrivebordsprogrameffekter er i øjeblikket deaktiveret under "
-"fanebladet “Generel opsætning”."
+"💡 Skrivebordsprogrameffekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->desktop-warning->description
-#, fuzzy
 msgid ""
 "💡 The Desktop effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Bemærk: Skrivebordseffekter er i øjeblikket deaktiveret under fanebladet "
-"“Generel opsætning”."
+"💡 Skrivebordseffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->expo-warning->description
-#, fuzzy
 msgid ""
 "💡 The Expo effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Bemærk: Vis arbejdsområde-effekter er i øjeblikket deaktiveret under "
-"fanebladet “Generel opsætning”."
+"💡 Vis arbejdsområde-effekter er i øjeblikket deaktiveret under fanebladet "
+"“Generel opsætning”."
 
 #. 6.0->settings-schema.json->popup-warning->description
-#, fuzzy
 msgid ""
 "💡 The Menu effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Bemærk: Menueffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"💡 Menueffekter er i øjeblikket deaktiveret under fanebladet “Generel "
 "opsætning”."
 
 #. 6.0->settings-schema.json->notification-warning->description
-#, fuzzy
 msgid ""
 "💡 The Notification effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Bemærk: Underretningseffekter er i øjeblikket deaktiveret under fanebladet "
+"💡 Underretningseffekter er i øjeblikket deaktiveret under fanebladet "
 "“Generel opsætning”."
 
 #. 6.0->settings-schema.json->osd-warning->description
-#, fuzzy
 msgid ""
 "💡 The On-Screen-Display effects are currently disabled under the \"General "
 "setup\" tab."
 msgstr ""
-"Bemærk: Effekter for skærmbaseret visning er i øjeblikket deaktiveret under "
+"💡 Effekter for skærmbaseret visning er i øjeblikket deaktiveret under "
 "fanebladet “Generel opsætning”."
 
 #. 6.0->settings-schema.json->overview-warning->description
-#, fuzzy
 msgid ""
 "💡 The Overview effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Bemærk: Oversigtseffekter er i øjeblikket deaktiveret under fanebladet "
-"“Generel opsætning”."
+"💡 Oversigtseffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->panel-warning->description
-#, fuzzy
 msgid ""
 "💡 The Panel effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Bemærk: Paneleffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"💡 Paneleffekter er i øjeblikket deaktiveret under fanebladet “Generel "
 "opsætning”."
 
 #. 6.0->settings-schema.json->tooltips-warning->description
-#, fuzzy
 msgid ""
 "💡 The Tooltip effects are currently disabled under the \"General setup\" "
 "tab."
 msgstr ""
-"Bemærk: Værktøjstipeffekter er i øjeblikket deaktiveret under fanebladet "
-"“Generel opsætning”."
+"💡 Værktøjstipeffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->windows-warning->description
-#, fuzzy
 msgid ""
 "💡 The Window effects are currently disabled under the \"General setup\" tab."
 msgstr ""
-"Bemærk: Vindueseffekter er i øjeblikket deaktiveret under fanebladet "
-"“Generel opsætning”."
+"💡 Vindueseffekter er i øjeblikket deaktiveret under fanebladet “Generel "
+"opsætning”."
 
 #. 6.0->settings-schema.json->desklets-label->description
-#, fuzzy
 msgid "💡 You must configure your Desklets to be transparent! (see tooltip)"
 msgstr ""
-"<b>Bemærk:</b> Du skal indstille dine skrivebordsprogrammer til at være "
-"gennemsigtige! (se værktøjstip)"
+"💡 Du skal indstille dine skrivebordsprogrammer til at være gennemsigtige! "
+"(se værktøjstip)"
 
 #. 6.0->settings-schema.json->desklets-label->tooltip
 msgid ""
@@ -246,11 +233,9 @@ msgstr ""
 "skrivebordsprogrammets konfigurationsvindue."
 
 #. 6.0->settings-schema.json->windows-label->description
-#, fuzzy
 msgid "💡 Read tooltip for information about the \"Default window settings\""
 msgstr ""
-"<b>Bemærk:</b> Læs værktøjstippet for oplysninger om "
-"“Standardvinduesindstillinger”"
+"💡 Læs værktøjstippet for oplysninger om “Standardvinduesindstillinger”"
 
 #. 6.0->settings-schema.json->windows-label->tooltip
 msgid ""
@@ -315,7 +300,6 @@ msgid "Show settings for component:"
 msgstr "Vis indstillinger for komponent:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -324,8 +308,8 @@ msgid ""
 "Developed by: Kevin Langman\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
 "\n"
 "The rounded corners, Gaussian and Monte Carlo effects are\n"
 "based on code by aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/"
@@ -352,6 +336,9 @@ msgstr ""
 "er baserede på kode af aunetx (Blur-my-shell)\n"
 "<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
+"\n"
+"Effekten Dual Kawase er skrevet af <a href=\"https://github.com/Lucas-X-"
+"A\">Lucas-X-A</a>\n"
 "\n"
 "Effekten Oversigt er delvist baseret på udvidelsen BlurOverview af nailfarmer"
 
@@ -942,14 +929,12 @@ msgstr "Monte Carlo dynamisk sløring (hvis tilgængelig)"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Dual Kawase static blur"
-msgstr "Enkel statisk sløring"
+msgstr "Dual Kawasa statisk sløring"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "Dual Kawase dynamic blur (if applicable)"
-msgstr "Gaussisk dynamisk sløring (hvis tilgængelig)"
+msgstr "Dual Kawase sløring (hvis tilgængelig)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -972,7 +957,7 @@ msgstr "Hvilken type sløringsalgoritme skal bruges til at sløre baggrunden."
 
 #. 6.0->settings-schema.json->show-blur-info->description
 msgid "💡 Blur Algorithm Guide (see tooltip)"
-msgstr ""
+msgstr "💡 Vejledning til sløringsalgoritme (se værktøjstip)"
 
 #. 6.0->settings-schema.json->show-blur-info->tooltip
 msgid ""
@@ -989,6 +974,18 @@ msgid ""
 " <b>• Static:</b> Only blurs the wallpaper, like x-ray vision to the desktop "
 "wallpaper."
 msgstr ""
+"<b>Vejledning til sløringsalgoritmer:</b>\n"
+" <b>• Gaussisk:</b> Jævn sløring i god kvalitet, kan være GPU-krævende.\n"
+" <b>• Dual Kawase:</b> Jævn sløring i høj kvalitet, optimeret til GPU’er i "
+"den lavere ende.\n"
+" <b>• Monte Carlo:</b> Kornet, støjende sløring i frostet glas-stil.\n"
+" <b>• Simpel:</b> Grundlæggende, diskret sløring til ældre computere.\n"
+"\n"
+"<b>Statisk vs. dynamisk:</b>\n"
+" <b>• Dynamisk:</b> Slører baggrundselementer bag det slørede element i "
+"realtid.\n"
+" <b>• Statisk:</b> Slører kun baggrundsbilledet, som et røntgensyn på "
+"skrivebordets baggrundsbillede."
 
 #. 6.0->settings-schema.json->radius->description
 #. 6.0->settings-schema.json->overview-radius->description
@@ -1056,13 +1053,12 @@ msgid "Iterations"
 msgstr "Gentagelser"
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->tooltip
-#, fuzzy
 msgid ""
 "Increasing number of iterations will make the blur appear smoother at the "
 "cost of some GPU power."
 msgstr ""
 "Øges antallet af iterationer, vil sløringen fremstå mere jævn, men det vil "
-"kræve lidt mere CPU-kraft."
+"kræve lidt mere GPU-kraft."
 
 #. 6.0->settings-schema.json->monte-carlo-use-base-pixel->description
 msgid "Use base pixel"
@@ -1089,11 +1085,9 @@ msgstr ""
 "vægt eller ej."
 
 #. 6.0->settings-schema.json->monte-carlo-label->description
-#, fuzzy
 msgid "💡 The above Monte Carlo settings are used globally for all components"
 msgstr ""
-"<b>Bemærk:</b> Disse Monte Carlo-indstillinger anvendes globalt til alle "
-"komponenter"
+"💡 Disse Monte Carlo-indstillinger anvendes globalt til alle komponenter"
 
 #. 6.0->settings-schema.json->monte-carlo-label->tooltip
 msgid ""
@@ -1136,7 +1130,7 @@ msgstr "Monte Carlo"
 #. 6.0->settings-schema.json->expo-blurType->options
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Dual Kawase"
-msgstr ""
+msgstr "Dual Kawase"
 
 #. 6.0->settings-schema.json->panels-blurType->options
 #. 6.0->settings-schema.json->popup-blurType->options
@@ -1179,9 +1173,8 @@ msgstr "Monte Carlo dynamisk sløring"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Dual Kawase dynamic blur"
-msgstr "Gaussisk dynamisk sløring"
+msgstr "Dual Kawase dynamisk sløring"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1215,9 +1208,9 @@ msgstr "Yderligere dæmpning af fremhævede pop op-menuelementer (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements "
-"(i.e. the main menu favorites box and entry boxes) which allow these "
-"elements to stand out from the other popup menu areas"
+"Defines the additional dimming applied to the popup menu accent elements (i."
+"e. the main menu favorites box and entry boxes) which allow these elements "
+"to stand out from the other popup menu areas"
 msgstr ""
 "Definerer den ekstra dæmpning, der anvendes på pop op-menuenes fremhævede "
 "elementer (dvs. hovedmenuenes favoritfelt og indtastningsfelter), som gør "
@@ -1419,9 +1412,8 @@ msgstr ""
 "du bruger videobaggrund som f.eks. Hidamari."
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
-#, fuzzy
 msgid "Blur window title bars (please read tooltip)"
-msgstr "Programvinduer (læs værktøjstip)"
+msgstr "Slørede vinduers titelbjælker (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->tooltip
 msgid ""
@@ -1433,6 +1425,14 @@ msgid ""
 "configured to be semi-transparent which MUST be done using CSS. See the Blur "
 "Cinnamon website for instructions."
 msgstr ""
+"Når denne indstilling er aktiveret, vil titellinjeområdet under de fleste "
+"vinduer blive sløret, med undtagelse af GTK4-vinduer og vinduer med "
+"brugerdefinerede titellinjer. Dette fungerer på samme måde som punktet "
+"“Standardvinduesindstillinger” ovenfor og bruger endda dets indstillinger, "
+"men med denne indstilling sløres kun titellinjeområderne i stedet for hele "
+"vinduet. Bemærk: Sløringen af titellinjen vil kun være synlig, når "
+"titellinjerne er konfigureret til at være halvgennemsigtige, hvilket SKAL "
+"gøres ved hjælp af CSS. Se Sløret Cinnamon-webstedet for vejledning."
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
