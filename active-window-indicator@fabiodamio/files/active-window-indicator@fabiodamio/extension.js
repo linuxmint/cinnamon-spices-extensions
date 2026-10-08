@@ -184,22 +184,27 @@ function updateIndicator() {
     let rect = focusWindow.get_frame_rect();
 
     let lineHeight = 6;
-    let widthPercent = 80;
+    let widthPercent = 100;
+    let marginLR = 12;
+    let marginTop = 4;
 
     if (settings) {
         try { lineHeight = settings.getValue('line-height'); } catch (e) {}
         try { widthPercent = settings.getValue('width-percent'); } catch (e) {}
+        try { marginLR = settings.getValue('margin-left-right'); } catch (e) {}
+        try { marginTop = settings.getValue('margin-top'); } catch (e) {}
     }
 
-    let barWidth = Math.round((rect.width * widthPercent) / 100);
+    // Larghezza utile interna considerando i margini laterali (sia a sinistra che a destra)
+    let availableWidth = Math.max(10, rect.width - (marginLR * 2));
+    let barWidth = Math.round((availableWidth * widthPercent) / 100);
+    
+    // Posizionamento centrato con applicazione dei margini
     let offsetX = Math.round((rect.width - barWidth) / 2);
-
-    // Coordinate esatte occupate dalla barra sul monitor
     let barX1 = rect.x + offsetX;
     let barX2 = rect.x + offsetX + barWidth;
-    let barY = rect.y;
+    let barY = rect.y + marginTop;
 
-    // Controlla se c'è un'altra finestra normale che copre specificamente la nostra barra
     let windows = global.get_window_actors().map(w => w.meta_window);
     let isCovered = false;
 
@@ -207,29 +212,25 @@ function updateIndicator() {
     if (ourIndex !== -1) {
         for (let i = ourIndex + 1; i < windows.length; i++) {
             let win = windows[i];
-            if (win.minimized || win.is_override_redirect() || win.window_type !== Meta.WindowType.NORMAL) {
+            if (!win || win.minimized || win.is_override_redirect() || win.window_type !== Meta.WindowType.NORMAL) {
                 continue;
             }
             if (win.located_on_workspace(activeWorkspace)) {
                 let winRect = win.get_frame_rect();
+                
+                let intersectsX = (winRect.x < barX2) && (winRect.x + winRect.width > barX1);
+                let intersectsY = (winRect.y < barY + lineHeight) && (winRect.y + winRect.height > barY);
 
-                // Una finestra copre la barra se:
-                // 1. Si sovrappone orizzontalmente alla barra [barX1, barX2]
-                // 2. Si estende verticalmente coprendo la coordinata della barra (barY si trova tra la cima e il fondo della finestra sopra)
-                let overlapsX = (winRect.x < barX2) && (winRect.x + winRect.width > barX1);
-                // Espandiamo leggermente il controllo verticale per includere interamente lo spessore della barra
-                let overlapsY = (winRect.y <= barY + lineHeight) && (winRect.y + winRect.height >= barY);
-
-                if (overlapsX && overlapsY) {
-                    isCovered = true;
-                    break;
+                if (intersectsX && intersectsY) {
+                    if (win.is_above ? win.is_above(focusWindow) : true) {
+                        isCovered = true;
+                        break;
+                    }
                 }
             }
         }
     }
 
-    // Se la finestra è coperta, nascondiamo la barra e pianifichiamo un controllo a breve
-    // per intercettare il momento in cui sale in primo piano dopo il clic (fondamentale per sloppy).
     if (isCovered) {
         if (indicator && indicator.visible) {
             indicator.ease({
@@ -239,12 +240,6 @@ function updateIndicator() {
                 onComplete: () => { indicator.hide(); }
             });
         }
-
-        Mainloop.timeout_add(200, () => {
-            updateIndicator();
-            return false;
-        });
-
         return;
     }
 
@@ -252,8 +247,7 @@ function updateIndicator() {
         canvas = new Clutter.Canvas();
         canvas.connect('draw', drawTrapezoid);
     }
-
-    // Assegnazione forzata delle dimensioni aggiornate al canvas e all'indicatore
+    
     canvas.set_size(barWidth, lineHeight);
 
     if (!indicator) {
@@ -266,7 +260,7 @@ function updateIndicator() {
         Main.uiGroup.add_actor(indicator);
     }
 
-    indicator.set_position(rect.x + offsetX, rect.y);
+    indicator.set_position(barX1, barY);
     indicator.set_size(barWidth, lineHeight);
 
     canvas.invalidate();
@@ -296,7 +290,10 @@ function onFocusChanged() {
         } catch (e) {}
     }
 
-    updateIndicator();
+    Mainloop.timeout_add(40, () => {
+        updateIndicator();
+        return false;
+    });
 }
 
 function init(metadata) {
@@ -312,6 +309,8 @@ function enable() {
         settings.bind('anim-speed', 'animSpeed', updateIndicator);
         settings.bind('color-start', 'colorStart', updateIndicator);
         settings.bind('color-end', 'colorEnd', updateIndicator);
+        settings.bind('margin-left-right', 'marginLeftRight', updateIndicator);
+        settings.bind('margin-top', 'marginTop', updateIndicator);
     } catch (e) {
         global.logError('Errore nell\'inizializzazione delle impostazioni:', e);
     }
