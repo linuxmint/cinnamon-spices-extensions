@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Mouse Click Effects"
@@ -38,7 +38,7 @@ msgstr "Tyyli"
 
 #. 5.4->settings-schema.json->idle-section->title
 msgid "Idle"
-msgstr ""
+msgstr "Jouten"
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -138,11 +138,11 @@ msgstr "px"
 
 #. 5.4->settings-schema.json->size->description
 msgid "Icon Size"
-msgstr "Koko kuvake"
+msgstr "Kuvakkeen koko"
 
 #. 5.4->settings-schema.json->animation-mode->description
 msgid "Click Animation Mode"
-msgstr "Painamisen animaatio"
+msgstr "Hiiren animaatio"
 
 #. 5.4->settings-schema.json->animation-mode->options
 #. 5.4->settings-schema.json->idle-animation-mode->options
@@ -175,20 +175,19 @@ msgstr "Animaatioaika"
 
 #. 5.4->settings-schema.json->idle-animation-mode->description
 msgid "Idle Mouse Animation Mode"
-msgstr "Hiiren vapaa-animaatiotila"
+msgstr "Hiiren animaatio"
 
 #. 5.4->settings-schema.json->idle-animation-delay->units
 msgid "min"
-msgstr ""
+msgstr "min"
 
 #. 5.4->settings-schema.json->idle-animation-delay->description
-#, fuzzy
 msgid "Start Idle Animation After"
-msgstr "Hiiren vapaa-animaatiojakso"
+msgstr "Aloita joutoajan animaatio"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
-msgstr "Hiiren vapaa-animaatiojakso"
+msgstr "Hiiren joutoaika animaatio"
 
 #. 5.4->settings-schema.json->general-opacity->description
 msgid "General Opacity"
@@ -247,7 +246,7 @@ msgstr "Hiiri toimettomana"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
 msgid "Displays animations when the system enters idle state."
-msgstr ""
+msgstr "Näyttää valittua animaatiota kun joutoaika täyttyy."
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"
