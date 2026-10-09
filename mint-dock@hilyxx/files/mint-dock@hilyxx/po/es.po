@@ -1,0 +1,247 @@
+# MINT-DOCK
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mint-dock@hilyxx 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-10-06 06:37+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. extension.js:562
+msgid "System Settings"
+msgstr "Configuración del sistema"
+
+#. extension.js:919
+msgid "Unpin from dock"
+msgstr "Desfijar del dock"
+
+#. extension.js:919
+msgid "Pin to dock"
+msgstr "Fijar en el dock"
+
+#. extension.js:939
+msgid "Quit"
+msgstr "Salir"
+
+#. extension.js:1544
+msgid "Trash"
+msgstr "Papelera"
+
+#. extension.js:1627
+msgid "Empty Trash"
+msgstr "Vaciar la papelera"
+
+#. extension.js:1934
+msgid "Dock settings"
+msgstr "Configuración del dock"
+
+# Do not translate
+#. metadata.json->name
+msgid "Mint-Dock"
+msgstr "Mint-Dock"
+
+#. metadata.json->description
+msgid "A native and customizable dock for Cinnamon."
+msgstr "Un dock nativo y personalizable para Cinnamon."
+
+#. settings-schema.json->page_appearance->title
+msgid "Appearance"
+msgstr "Apariencia"
+
+#. settings-schema.json->page_behavior->title
+#. settings-schema.json->section_dock_behavior->title
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#. settings-schema.json->section_dock_appearance->title
+msgid "Dock Appearance"
+msgstr "Apariencia del dock"
+
+#. settings-schema.json->section_dock_display->title
+msgid "Display"
+msgstr "Pantalla"
+
+#. settings-schema.json->section_animations->title
+msgid "Animations"
+msgstr "Animaciones"
+
+#. settings-schema.json->section_windows->title
+msgid "Windows"
+msgstr "Ventanas"
+
+#. settings-schema.json->use-primary-monitor->description
+msgid "On primary display"
+msgstr "En la pantalla principal"
+
+#. settings-schema.json->monitor-index->description
+msgid "Show the dock on screen:"
+msgstr "Mostrar el dock en la pantalla:"
+
+#. settings-schema.json->monitor-index->tooltip
+msgid "Choose which screen to display the dock on."
+msgstr "Elija en qué pantalla mostrar el dock."
+
+#. settings-schema.json->dock-position->description
+msgid "Dock position on screen"
+msgstr "Posición del dock en la pantalla"
+
+#. settings-schema.json->dock-position->options
+msgid "Top"
+msgstr "Arriba"
+
+#. settings-schema.json->dock-position->options
+msgid "Bottom"
+msgstr "Abajo"
+
+#. settings-schema.json->dock-position->options
+msgid "Left"
+msgstr "Izquierda"
+
+#. settings-schema.json->dock-position->options
+msgid "Right"
+msgstr "Derecha"
+
+#. settings-schema.json->dock-alignment->description
+msgid "Dock Alignment"
+msgstr "Alineación del dock"
+
+#. settings-schema.json->dock-alignment->options
+msgid "Start"
+msgstr "Inicio"
+
+#. settings-schema.json->dock-alignment->options
+msgid "Center"
+msgstr "Centro"
+
+#. settings-schema.json->dock-alignment->options
+msgid "End"
+msgstr "Final"
+
+#. settings-schema.json->full-width->description
+msgid "Extend dock"
+msgstr "Extender el dock"
+
+#. settings-schema.json->bg-color->description
+msgid "Background color"
+msgstr "Color de fondo"
+
+#. settings-schema.json->border-radius->units
+#. settings-schema.json->icon-size->units
+msgid "px"
+msgstr "píxeles"
+
+#. settings-schema.json->border-radius->description
+msgid "Corner radius"
+msgstr "Radio de las esquinas"
+
+#. settings-schema.json->icon-size->description
+msgid "Icons size"
+msgstr "Tamaño de los iconos"
+
+#. settings-schema.json->bg-opacity->description
+msgid "Background opacity (%)"
+msgstr "Opacidad del fondo (%)"
+
+#. settings-schema.json->enable-animations->description
+msgid "Enable dock animations"
+msgstr "Activar las animaciones del dock"
+
+#. settings-schema.json->spawn-animation-type->description
+msgid "Spawn animation style"
+msgstr "Estilo de animación al aparecer"
+
+#. settings-schema.json->spawn-animation-type->options
+#. settings-schema.json->click-animation-type->options
+msgid "Bounce"
+msgstr "Rebote"
+
+#. settings-schema.json->spawn-animation-type->options
+msgid "Slide"
+msgstr "Deslizamiento"
+
+#. settings-schema.json->click-animation-type->description
+msgid "Click animation style"
+msgstr "Estilo de animación al hacer clic"
+
+#. settings-schema.json->click-animation-type->options
+msgid "None"
+msgstr "Ninguno"
+
+#. settings-schema.json->show-tooltips->description
+msgid "Show tooltips"
+msgstr "Mostrar información emergente"
+
+#. settings-schema.json->show-separators->description
+msgid "Show separators"
+msgstr "Mostrar separadores"
+
+#. settings-schema.json->show-trash->description
+msgid "Show Trash icon"
+msgstr "Mostrar el icono de la papelera"
+
+#. settings-schema.json->show-settings-icon->tooltip
+msgid ""
+"If disabled, you can still access the settings by right-clicking on the "
+"edges of the dock."
+msgstr ""
+"Si está desactivado, aún puedes acceder a la configuración haciendo clic "
+"derecho en los bordes del dock."
+
+#. settings-schema.json->show-settings-icon->description
+msgid "Show dock settings icon"
+msgstr "Mostrar el icono de configuración del dock"
+
+#. settings-schema.json->hide-enabled->description
+msgid "Hide dock"
+msgstr "Ocultar el dock"
+
+#. settings-schema.json->hide-mode->description
+msgid "Autohide mode"
+msgstr "Modo de ocultación automática"
+
+#. settings-schema.json->hide-mode->options
+msgid "Intelligent hide (dodges windows)"
+msgstr "Ocultación inteligente (evita las ventanas)"
+
+#. settings-schema.json->hide-mode->options
+msgid "Auto hide"
+msgstr "Ocultar automáticamente"
+
+#. settings-schema.json->show-delay->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->show-delay->description
+msgid "Unhide delay (Sensitivity)"
+msgstr "Retraso para mostrar (sensibilidad)"
+
+#. settings-schema.json->show-delay->tooltip
+msgid ""
+"Time to wait before showing the dock. A higher value prevents accidental "
+"triggers (default: 500ms)."
+msgstr ""
+"Tiempo de espera antes de mostrar el dock. Un valor más alto evita "
+"activaciones accidentales (predeterminado: 500 ms)."
+
+#. settings-schema.json->scroll-action->description
+msgid "Mouse scroll action on icons"
+msgstr "Acción de la rueda del ratón sobre los iconos"
+
+#. settings-schema.json->scroll-action->options
+msgid "Cycle through open windows"
+msgstr "Alternar entre ventanas abiertas"
+
+#. settings-schema.json->scroll-action->options
+msgid "Minimize / Restore window"
+msgstr "Minimizar / Restaurar ventana"

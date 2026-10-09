@@ -1,0 +1,16 @@
+{
+    "uuid": "mint-dock@hilyxx",
+    "name": "Mint-Dock",
+    "author": "hilyxx",
+    "version": "1.0",
+    "description": "A native and customizable dock for Cinnamon.",
+    "url": "https://github.com/Hilyxx/cinnamon-spices-extensions.git",
+    "cinnamon-version": [
+        "5.8",
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6",
+        "6.8"
+    ]
+}

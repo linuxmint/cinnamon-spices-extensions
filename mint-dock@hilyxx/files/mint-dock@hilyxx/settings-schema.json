@@ -1,0 +1,241 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "page_appearance",
+            "page_behavior"
+        ],
+        "page_appearance": {
+            "type": "page",
+            "title": "Appearance",
+            "sections": [
+                "section_dock_display",
+                "section_dock_appearance"
+            ]
+        },
+        "page_behavior": {
+            "type": "page",
+            "title": "Behavior",
+            "sections": [
+                "section_animations",
+                "section_dock_behavior",
+                 "section_windows"
+            ]
+        },
+        "section_dock_appearance": {
+            "type": "section",
+            "title": "Dock Appearance",
+            "keys": [
+                "dock-position",
+                "dock-alignment",
+                "full-width",
+                "bg-color",
+                "border-radius",
+                "icon-size",
+                "bg-opacity"
+            ]
+        },
+        "section_dock_display": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "use-primary-monitor",
+                "monitor-index"
+            ]
+        },
+        "section_animations": {
+            "type": "section",
+            "title": "Animations",
+            "keys": [
+                "enable-animations",
+                "spawn-animation-type",
+                "click-animation-type"
+            ]
+        },
+        "section_dock_behavior": {
+            "type": "section",
+            "title": "Behavior",
+            "keys": [
+                "show-tooltips",
+                "show-separators",
+                "show-trash",
+                "show-settings-icon",
+                "hide-enabled",
+                "hide-mode",
+                "show-delay"
+            ]
+        },
+        "section_windows": {
+            "type": "section",
+            "title": "Windows",
+            "keys": [
+                "scroll-action"
+            ]
+        }
+    },
+    "use-primary-monitor": {
+        "type": "checkbox",
+        "default": true,
+        "description": "On primary display"
+    },
+    "monitor-index": {
+        "type": "custom",
+        "file": "MonitorSelector.py",
+        "widget": "MonitorSelector",
+        "default": 0,
+        "description": "Show the dock on screen:",
+        "tooltip": "Choose which screen to display the dock on.",
+        "dependency": "!use-primary-monitor"
+    },
+    "dock-position": {
+        "type": "combobox",
+        "default": "left",
+        "description": "Dock position on screen",
+        "options": {
+            "Top": "top",
+            "Bottom": "bottom",
+            "Left": "left",
+            "Right": "right"
+        }
+    },
+    "dock-alignment": {
+        "type": "combobox",
+        "default": "center",
+        "description": "Dock Alignment",
+        "options": {
+            "Start": "start",
+            "Center": "center",
+            "End": "end"
+        }
+    },
+    "full-width": {
+        "type": "switch",
+        "default": false,
+        "description": "Extend dock"
+    },
+    "bg-color": {
+        "type": "colorchooser",
+        "default": "rgba(30, 30, 30, 1.0)",
+        "description": "Background color"
+    },
+    "border-radius": {
+        "type": "spinbutton",
+        "default": 20,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "units": "px",
+        "description": "Corner radius"
+    },
+    "icon-size": {
+        "type": "spinbutton",
+        "default": 50,
+        "min": 16,
+        "max": 96,
+        "step": 2,
+        "units": "px",
+        "description": "Icons size"
+    },
+    "bg-opacity": {
+        "type": "scale",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "description": "Background opacity (%)"
+    },
+    "enable-animations": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Enable dock animations"
+    },
+    "spawn-animation-type": {
+        "type": "combobox",
+        "default": "bounce",
+        "description": "Spawn animation style",
+        "options": {
+            "Bounce": "bounce",
+            "Slide": "slide"
+        },
+        "dependency": "enable-animations"
+    },
+    "click-animation-type": {
+        "type": "combobox",
+        "default": "none",
+        "description": "Click animation style",
+        "options": {
+            "None": "none",
+            "Bounce": "bounce"
+        },
+        "dependency": "enable-animations"
+    },
+    "show-tooltips": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Show tooltips"
+    },
+    "show-separators": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show separators"
+    },
+    "show-trash": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show Trash icon"
+    },
+    "show-settings-icon": {
+        "type": "switch",
+        "default": false,
+        "tooltip": "If disabled, you can still access the settings by right-clicking on the edges of the dock.",
+        "description": "Show dock settings icon"
+    },
+    "hide-enabled": {
+        "type": "switch",
+        "default": true,
+        "description": "Hide dock"
+    },
+    "hide-mode": {
+        "type": "combobox",
+        "default": "intelli",
+        "description": "Autohide mode",
+        "options": {
+            "Intelligent hide (dodges windows)": "intelli",
+            "Auto hide": "auto"
+        },
+        "dependency": "hide-enabled"
+    },
+    "show-delay": {
+        "type": "spinbutton",
+        "default": 500,
+        "min": 0,
+        "max": 1000,
+        "step": 50,
+        "units": "ms",
+        "description": "Unhide delay (Sensitivity)",
+        "tooltip": "Time to wait before showing the dock. A higher value prevents accidental triggers (default: 500ms).",
+        "dependency": "hide-enabled"
+    },
+    "scroll-action": {
+        "type": "combobox",
+        "default": "cycle",
+        "description": "Mouse scroll action on icons",
+        "options": {
+            "Cycle through open windows": "cycle",
+            "Minimize / Restore window": "minimize"
+        }
+    },
+    "pinned-apps": {
+        "type": "generic",
+        "default": [
+            "nemo.desktop",
+            "firefox.desktop",
+            "org.gnome.Terminal.desktop",
+            "org.gnome.Calendar.desktop",
+            "org.gnome.Calculator.desktop",
+            "org.gnome.Rhythmbox3.desktop",
+            "org.x.clockenstein.Calendar.desktop",
+            "mintinstall.desktop"
+        ]
+    }
+}
