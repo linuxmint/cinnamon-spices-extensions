@@ -56,7 +56,7 @@ msgstr ""
 
 #. effects/AperturePanels.js:334
 msgid "Aperture Panels"
-msgstr ""
+msgstr "Aukkopaneelit"
 
 #. effects/Apparition.js:94
 msgid "Apparition"
@@ -64,11 +64,11 @@ msgstr "Ilmestyminen"
 
 #. effects/AuraGlow.js:103
 msgid "Aura Glow"
-msgstr "Auran hehku"
+msgstr "Auranhohto"
 
 #. effects/BrokenGlass.js:153
 msgid "Broken Glass"
-msgstr "Särkynyt lasi"
+msgstr "Lasinsirut"
 
 #. effects/Doom.js:101
 msgid "Doom"
@@ -148,7 +148,7 @@ msgstr "Matrix"
 
 #. effects/Morph.js:234
 msgid "Morph"
-msgstr ""
+msgstr "Mudonmuutos"
 
 #. effects/Mushroom.js:154
 msgid "Mushroom"
@@ -176,7 +176,7 @@ msgstr "Aito pohjoinen"
 #. 6.7.6->settings-schema.json->mushroom-presets->options
 #. effects/Mushroom.js:289
 msgid "Red White and Blue"
-msgstr "Puna-valko-sininen"
+msgstr "Punainen valkoinen sininen"
 
 #. 6.2->settings-schema.json->mushroom-presets->options
 #. 6.7.6->settings-schema.json->mushroom-presets->options
@@ -252,20 +252,19 @@ msgstr "Hiukkaset"
 
 #. effects/Wormhole.js:259
 msgid "Wormhole"
-msgstr ""
+msgstr "Madonreikä"
 
 #. 6.2/CustomWidgets.py:509 6.7.6/CustomWidgets.py:509
 msgid "_Cancel"
-msgstr ""
+msgstr "_Peru"
 
 #. 6.2/CustomWidgets.py:510 6.7.6/CustomWidgets.py:510
-#, fuzzy
 msgid "_Open"
-msgstr "Avaa"
+msgstr "_Avaa"
 
 #. 6.2/CustomWidgets.py:520 6.7.6/CustomWidgets.py:520
 msgid "Sound files"
-msgstr ""
+msgstr "Äänitiedostot"
 
 #. metadata.json->name
 msgid "Burn My Windows"
@@ -302,7 +301,7 @@ msgstr "Satunnaisuus"
 #. 6.2->settings-schema.json->power-page->title
 #. 6.7.6->settings-schema.json->power-page->title
 msgid "Power"
-msgstr ""
+msgstr "Virta"
 
 #. 6.2->settings-schema.json->about-page->title
 #. 6.7.6->settings-schema.json->about-page->title
@@ -337,7 +336,7 @@ msgstr "Satunnaisiin sisältyvät tehosteet:"
 #. 6.2->settings-schema.json->power-section->title
 #. 6.7.6->settings-schema.json->power-section->title
 msgid "Manage Burn-My-Windows power consumption"
-msgstr ""
+msgstr "Hallitse Burn-My-Windows virrankulutusta"
 
 #. 6.2->settings-schema.json->about-section->title
 #. 6.7.6->settings-schema.json->about-section->title
@@ -346,7 +345,6 @@ msgstr "Tietoja Cinnamon Burn-My-Windows"
 
 #. 6.2->settings-schema.json->about-text->description
 #. 6.7.6->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Disintegrate your windows with style.</b>\n"
@@ -373,10 +371,12 @@ msgstr ""
 "Ported to Cinnamon by Kevin Langman\n"
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / "
 "<a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/"
-"new\">Report an issue</a>\n"
+"new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/"
+"extensions/view/103\">Website</a>\n"
 "\n"
 "Based on the Burn-My-Windows code by Schneegans and contributors\n"
-"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a>\n"
+"<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a "
+"href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n"
 "\n"
 "The Magic Lamp Effect is ported from code by hermes83\n"
 "<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-"
@@ -508,7 +508,7 @@ msgstr "    Palauttaa    "
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -537,7 +537,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -566,7 +566,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -595,7 +595,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -624,7 +624,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -653,7 +653,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -682,7 +682,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -711,7 +711,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -740,7 +740,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -769,7 +769,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -798,7 +798,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -827,7 +827,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "11"
-msgstr ""
+msgstr "11"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -856,7 +856,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -885,7 +885,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "13"
-msgstr ""
+msgstr "13"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -914,7 +914,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "14"
-msgstr ""
+msgstr "14"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -943,7 +943,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "15"
-msgstr ""
+msgstr "15"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -972,7 +972,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "16"
-msgstr ""
+msgstr "16"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1001,7 +1001,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "17"
-msgstr ""
+msgstr "17"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1030,7 +1030,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "18"
-msgstr ""
+msgstr "18"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1059,7 +1059,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "19"
-msgstr ""
+msgstr "19"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1088,7 +1088,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "20"
-msgstr ""
+msgstr "20"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1117,7 +1117,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "21"
-msgstr ""
+msgstr "21"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1146,7 +1146,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "22"
-msgstr ""
+msgstr "22"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1175,7 +1175,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "23"
-msgstr ""
+msgstr "23"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1204,7 +1204,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "24"
-msgstr ""
+msgstr "24"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1233,7 +1233,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1262,7 +1262,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "26"
-msgstr ""
+msgstr "26"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1291,7 +1291,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "27"
-msgstr ""
+msgstr "27"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1320,7 +1320,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1349,7 +1349,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "29"
-msgstr ""
+msgstr "29"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1378,7 +1378,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "30"
-msgstr ""
+msgstr "30"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1407,7 +1407,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "31"
-msgstr ""
+msgstr "31"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1436,7 +1436,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "32"
-msgstr ""
+msgstr "32"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1465,7 +1465,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "33"
-msgstr ""
+msgstr "33"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1494,7 +1494,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "34"
-msgstr ""
+msgstr "34"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1523,7 +1523,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "35"
-msgstr ""
+msgstr "35"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1552,7 +1552,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1581,7 +1581,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "37"
-msgstr ""
+msgstr "37"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1610,7 +1610,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "38"
-msgstr ""
+msgstr "38"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1639,7 +1639,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #. 6.2->settings-schema.json->effect-selector->description
 #. 6.7.6->settings-schema.json->effect-selector->description
@@ -1671,7 +1671,7 @@ msgstr "Näytä asetukset tehosteelle:"
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "999"
-msgstr ""
+msgstr "999"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
@@ -1698,7 +1698,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "1000"
-msgstr ""
+msgstr "1000"
 
 #. 6.2->settings-schema.json->open-window-effect->description
 #. 6.2->settings-schema.json->power-open-effect->description
@@ -1717,7 +1717,7 @@ msgstr "Tehoste Ikkunan sulkemiselle"
 #. 6.2->settings-schema.json->enable-sound->description
 #. 6.7.6->settings-schema.json->enable-sound->description
 msgid "Allow Burn My Windows to override cinnamon sound effects"
-msgstr ""
+msgstr "Salli Burn My Windows ohittaa Cinnamon ääniefektit"
 
 #. 6.2->settings-schema.json->enable-sound->tooltip
 #. 6.7.6->settings-schema.json->enable-sound->tooltip
@@ -1729,13 +1729,18 @@ msgid ""
 "default cinnamon sounds will be used unless a sound effect file is chosen "
 "for the active Burn My Windows effect."
 msgstr ""
+"Voit sallia Burn My Windows korvata Cinnamon ikkunoiden avaamiseen, "
+"sulkemiseen ja pienentämiseen liittyvät ääniefektit omilla äänillä "
+"Efektiasetukset -välilehdessä. Huomaa: Äänet kuuluvat vain, jos Cinnamon "
+"asetuksissa on käytössä ääniefektit ja Burn My Windows -efektille ole "
+"valittu oma äänitiedosto."
 
 #. 6.2->settings-schema.json->dialog-special->description
 #. 6.2->settings-schema.json->power-dialog-special->description
 #. 6.7.6->settings-schema.json->dialog-special->description
 #. 6.7.6->settings-schema.json->power-dialog-special->description
 msgid "Special handling for dialog windows"
-msgstr "Erikoiskäsittely valintaikkunoihin"
+msgstr "Käsittely valintaikkunossa"
 
 #. 6.2->settings-schema.json->dialog-special->tooltip
 #. 6.7.6->settings-schema.json->dialog-special->tooltip
@@ -1744,9 +1749,8 @@ msgid ""
 "file open dialog windows). These settings will override any application "
 "specific settings that may have been defined."
 msgstr ""
-"Mahdollistaa sasetusten määrittämisen valintaikkunatyyppien käsittelylle "
-"(eli tiedostojen avausikkunat). Nämä asetukset ohittavat kaikki mahdolliset "
-"määritetyt sovelluskohtaiset asetukset."
+"Mahdollistaa asetusten määrittämisen valintaikkunaan (kuten ikkunaan "
+"tiedoston avaamiseksi). Asetukset ohittavat sovelluksen omat asetukset."
 
 #. 6.2->settings-schema.json->dialog-open-effect->description
 #. 6.2->settings-schema.json->power-dialog-open-effect->description
@@ -1778,19 +1782,17 @@ msgstr "Tehoste Ikkunan palauttamiselle"
 
 #. 6.2->settings-schema.json->power-dialog-special->tooltip
 #. 6.7.6->settings-schema.json->power-dialog-special->tooltip
-#, fuzzy
 msgid ""
 "Allows you to define special settings for handling dialog window types (i.e. "
 "file open dialog windows)."
 msgstr ""
-"Mahdollistaa sasetusten määrittämisen valintaikkunatyyppien käsittelylle "
-"(eli tiedostojen avausikkunat). Nämä asetukset ohittavat kaikki mahdolliset "
-"määritetyt sovelluskohtaiset asetukset."
+"Mahdollistaa asetusten määrittämisen valintaikkunaan (kuten ikkunaan "
+"tiedoston avaamiseksi)."
 
 #. 6.2->settings-schema.json->power-onbattery->description
 #. 6.7.6->settings-schema.json->power-onbattery->description
 msgid "Use different effects when running on battery power"
-msgstr ""
+msgstr "Eri tehosteet käytössä kun kone käyttää akkua"
 
 #. 6.2->settings-schema.json->power-onbattery->tooltip
 #. 6.7.6->settings-schema.json->power-onbattery->tooltip
@@ -1801,17 +1803,19 @@ msgid ""
 "over both the general settings and any application specific settings when "
 "the battery charge state condition is met."
 msgstr ""
+"Kun käytössä näkyviin tulee valintoja, mitä tehosteita (jos mitään) "
+"käytetään, kun kone saa virtansa akusta ja varaustaso on rajaa alhaisempi. "
+"Nämä asetukset ohittavat koneen omat ja sovellusten asetukset."
 
 #. 6.2->settings-schema.json->power-percent->description
 #. 6.7.6->settings-schema.json->power-percent->description
 msgid "When battery is less than (percent)"
-msgstr ""
+msgstr "Kun akun varaustaso on alle (prosenttia)"
 
 #. 6.2->settings-schema.json->aperture-panels-panel-size->description
 #. 6.7.6->settings-schema.json->aperture-panels-panel-size->description
-#, fuzzy
 msgid "Panel Size (px)"
-msgstr "Pikselikoko"
+msgstr "Paneelin koko (px)"
 
 #. 6.2->settings-schema.json->aperture-panels-panel-size->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-panel-size->tooltip
@@ -1819,31 +1823,33 @@ msgid ""
 "The approximate size of the panels. It is adjusted a little so that a whole "
 "number of panels fits the window exactly."
 msgstr ""
+"Paneelien likimääräinen koko säätää niin että paneelit sopii täsmälleen "
+"ikkunaan."
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Diagonal"
-msgstr ""
+msgstr "Vinoviiva"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Arc from a corner"
-msgstr ""
+msgstr "Kaari kulma"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Wavy diagonal"
-msgstr ""
+msgstr "Aaltoileva vinoviiva"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Organic diagonal"
-msgstr ""
+msgstr "Orgaaninen vinoviiva"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Ripple from the center"
-msgstr ""
+msgstr "Väreilyä keskellä"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->options
@@ -1857,7 +1863,7 @@ msgstr "Satunnainen"
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->description
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->description
 msgid "Wave Shape"
-msgstr ""
+msgstr "Aallon muoto"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->tooltip
@@ -1865,43 +1871,45 @@ msgid ""
 "The shape of the wave of panels flipping across the window. Random picks one "
 "of the shapes for each animation."
 msgstr ""
+"Paneelien aaltomainen liike ikkunan yli. Valitsee satunnaisesti yhden näistä "
+"muodoista kutakin animaatiota varten."
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->options
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
-#, fuzzy
 msgid "Vertical"
-msgstr "Pystysuora skaalaus"
+msgstr "Pystysuora"
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->options
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
-#, fuzzy
 msgid "Horizontal"
-msgstr "Vaakasuora skaalaus"
+msgstr "Vaakasuora"
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->description
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->description
 msgid "Flip Axis"
-msgstr ""
+msgstr "Käännä akseli"
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->tooltip
 msgid "The axis the panels turn around. Random picks one for each animation."
 msgstr ""
+"Akseli, jonka ympäri paneelit pyörivät.Valitsee satunnaisesti yhden kutakin "
+"animaatiota varten."
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
 msgid "Wallpaper"
-msgstr ""
+msgstr "Taustakuva"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
 msgid "Black void"
-msgstr ""
+msgstr "Musta tyhjiö"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->description
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->description
 msgid "Backdrop"
-msgstr ""
+msgstr "Tausta"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->tooltip
@@ -1910,6 +1918,9 @@ msgid ""
 "place and only the windows behind are on the panels. Black void: the desktop "
 "is on the panels too and flips with them, revealing a black void."
 msgstr ""
+"Mitä paneelien takana näkyy niiden kääntyessä? Taustakuva: työpöytä pysyy "
+"paikallaan. Musta tyhjiö: myös työpöytä on paneeleissa ja kääntyy kaikkien "
+"mukana paljastaen mustan tyhjiön."
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
@@ -1919,28 +1930,27 @@ msgstr "Ei mikään"
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "While flipping"
-msgstr ""
+msgstr "Käännettäessä"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "Ahead of the wave"
-msgstr ""
+msgstr "Aallon edellä"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "Behind the wave"
-msgstr ""
+msgstr "Aallon takana"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "Ahead of and behind the wave"
-msgstr ""
+msgstr "Aallon edellä ja takana"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->description
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->description
-#, fuzzy
 msgid "Border Style"
-msgstr "Skaalaustyyli"
+msgstr "Reunatyyli"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->tooltip
@@ -1948,12 +1958,13 @@ msgid ""
 "When the outlines of the panels are shown: only while a panel flips, or also "
 "in a band ahead of and/or behind the wave of flipping panels."
 msgstr ""
+"Kun paneelien ääriviivat näytetään: vain paneelin kääntyessä tai myös "
+"kääntyvien paneelien aallon edellä ja/tai takana."
 
 #. 6.2->settings-schema.json->aperture-panels-border-color->description
 #. 6.7.6->settings-schema.json->aperture-panels-border-color->description
-#, fuzzy
 msgid "Border Color"
-msgstr "Viivan väri"
+msgstr "Reunan väri"
 
 #. 6.2->settings-schema.json->aperture-panels-animation-time->description
 #. 6.2->settings-schema.json->apparition-animation-time->description
@@ -2125,7 +2136,7 @@ msgstr "Palauta oletuksiin"
 #. 6.7.6->settings-schema.json->wisps-open-sound->description
 #. 6.7.6->settings-schema.json->wormhole-open-sound->description
 msgid "Sound on window appear events"
-msgstr ""
+msgstr "Ääni ikkunan avautumiseen"
 
 #. 6.2->settings-schema.json->aperture-panels-close-sound->description
 #. 6.2->settings-schema.json->apparition-close-sound->description
@@ -2183,7 +2194,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->wisps-close-sound->description
 #. 6.7.6->settings-schema.json->wormhole-close-sound->description
 msgid "Sound on window disappear events"
-msgstr ""
+msgstr "Ääni ikkunan sulkemiseen"
 
 #. 6.2->settings-schema.json->apparition-shake-intensity->description
 #. 6.7.6->settings-schema.json->apparition-shake-intensity->description
@@ -2321,7 +2332,7 @@ msgstr "Mukautettu"
 #. 6.2->settings-schema.json->fire-presets->description
 #. 6.7.6->settings-schema.json->fire-presets->description
 msgid "Fire effect style"
-msgstr ""
+msgstr "Tuliefekti"
 
 #. 6.2->settings-schema.json->fire-custom-movement-speed->description
 #. 6.7.6->settings-schema.json->fire-custom-movement-speed->description
@@ -2474,32 +2485,32 @@ msgstr ""
 #. 6.2->settings-schema.json->magiclamp-edge->options
 #. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Top"
-msgstr ""
+msgstr "Ylös"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 #. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Bottom"
-msgstr ""
+msgstr "Alas"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 #. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Left"
-msgstr ""
+msgstr "Vasen"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 #. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Right"
-msgstr ""
+msgstr "Oikea"
 
 #. 6.2->settings-schema.json->magiclamp-edge->options
 #. 6.7.6->settings-schema.json->magiclamp-edge->options
 msgid "Edge closest to mouse pointer"
-msgstr ""
+msgstr "Hiiren osoitinta lähinnä oleva reuna"
 
 #. 6.2->settings-schema.json->magiclamp-edge->description
 #. 6.7.6->settings-schema.json->magiclamp-edge->description
 msgid "Open/Close Edge"
-msgstr ""
+msgstr "Avoimet/suljetut reunat"
 
 #. 6.2->settings-schema.json->magiclamp-edge->tooltip
 #. 6.7.6->settings-schema.json->magiclamp-edge->tooltip
@@ -2508,11 +2519,14 @@ msgid ""
 "disappear towards when closing. This setting is not used for minimize or "
 "unminimize events"
 msgstr ""
+"Näytön reuna, josta ikkuna ilmestyy avattaessa tai johon se katoaa "
+"suljettaessa. Tätä asetusta ei käytetä ikkunan pienentämisen tai "
+"palauttamisen yhteydessä"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->description
 #. 6.7.6->settings-schema.json->magiclamp-edge-offset->description
 msgid "Open/Close Edge Offset"
-msgstr ""
+msgstr "Avoimen/suljetun reunan etäisyys"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->tooltip
 #. 6.7.6->settings-schema.json->magiclamp-edge-offset->tooltip
@@ -2523,6 +2537,10 @@ msgid ""
 "unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest "
 "to mouse pointer\""
 msgstr ""
+"Etäisyys ylä- tai vasemmasta reunasta; tätä kohtaa käytetään animaation "
+"aloitus- tai päätepisteenä. Arvo ilmoitetaan prosenttina näytön leveydestä "
+"tai korkeudesta. Ei vaikuta ikkunan pienentämiseen tai palauttamiseen eikä "
+"tilanteisiin, joissa on valittu ”hiiren osoitinta lähinnä oleva reuna”."
 
 #. 6.2->settings-schema.json->magiclamp-x-tiles->description
 #. 6.7.6->settings-schema.json->magiclamp-x-tiles->description
@@ -2547,18 +2565,17 @@ msgstr "Vaikuttaa animaation laatuun ja aikaan"
 #. 6.2->settings-schema.json->morph-style->options
 #. 6.7.6->settings-schema.json->morph-style->options
 msgid "Liquid flow"
-msgstr ""
+msgstr "Nesteen virtaus"
 
 #. 6.2->settings-schema.json->morph-style->options
 #. 6.7.6->settings-schema.json->morph-style->options
 msgid "Melt"
-msgstr ""
+msgstr "Sulaminen"
 
 #. 6.2->settings-schema.json->morph-style->description
 #. 6.7.6->settings-schema.json->morph-style->description
-#, fuzzy
 msgid "Style"
-msgstr "Skaalaustyyli"
+msgstr "Tyyli"
 
 #. 6.2->settings-schema.json->morph-style->tooltip
 #. 6.7.6->settings-schema.json->morph-style->tooltip
@@ -2567,6 +2584,9 @@ msgid ""
 "flows along its own edges, so what's behind melts away and the window's "
 "outlines form first."
 msgstr ""
+"Nestemäinen virtaus: alue kiertyy ikkunaan kuin neste. Sulaminen: kukin kuva "
+"valuu omia reunojaan pitkin, jolloin taustalla oleva sulaa pois ja "
+"ääriviivat muodostuvat ensin."
 
 #. 6.2->settings-schema.json->morph-strength->tooltip
 #. 6.7.6->settings-schema.json->morph-strength->tooltip
@@ -2574,17 +2594,18 @@ msgid ""
 "How far things move during the morph. 1 is the default; 0 is a plain "
 "dissolve."
 msgstr ""
+"Kuinka pitkälle kohteet liikkuvat muodonmuutoksen aikana. Oletus on 1; arvo "
+"0 tarkoittaa tavallista häivytystä."
 
 #. 6.2->settings-schema.json->mushroom-presets->description
 #. 6.7.6->settings-schema.json->mushroom-presets->description
-#, fuzzy
 msgid "Mushroom effect style"
-msgstr "Pyörre esiasetus"
+msgstr "Sienipilvi efekti"
 
 #. 6.2->settings-schema.json->mushroom-custom-scale-style->description
 #. 6.7.6->settings-schema.json->mushroom-custom-scale-style->description
 msgid "Scale Style"
-msgstr "Skaalaustyyli"
+msgstr "Skaalaava efekti"
 
 #. 6.2->settings-schema.json->mushroom-custom-spark-count->description
 #. 6.7.6->settings-schema.json->mushroom-custom-spark-count->description
@@ -2722,30 +2743,28 @@ msgstr "Väri #3"
 
 #. 6.2->settings-schema.json->wormhole-void-size->description
 #. 6.7.6->settings-schema.json->wormhole-void-size->description
-#, fuzzy
 msgid "Void Size"
-msgstr "Reunan koko"
+msgstr "Tyhjän tilan koko"
 
 #. 6.2->settings-schema.json->wormhole-tunnel-depth->description
 #. 6.7.6->settings-schema.json->wormhole-tunnel-depth->description
 msgid "Tunnel Depth"
-msgstr ""
+msgstr "Tunnelin syvyys"
 
 #. 6.2->settings-schema.json->wormhole-funnel-size->description
 #. 6.7.6->settings-schema.json->wormhole-funnel-size->description
-#, fuzzy
 msgid "Funnel Size"
-msgstr "Pikselikoko"
+msgstr "Suppilon koko"
 
 #. 6.2->settings-schema.json->wormhole-bounce->description
 #. 6.7.6->settings-schema.json->wormhole-bounce->description
 msgid "Bounce"
-msgstr ""
+msgstr "Pomppu"
 
 #. 6.2->settings-schema.json->wormhole-bounce->tooltip
 #. 6.7.6->settings-schema.json->wormhole-bounce->tooltip
 msgid "How much the desktop bounces when the effect lands (0 = no bounce)"
-msgstr ""
+msgstr "Työpöydän kimmoisuuden määrä tehosteen osuessa (0 = ei kimmoisuutta)"
 
 #. 6.2->settings-schema.json->test-effect->description
 #. 6.7.6->settings-schema.json->test-effect->description
@@ -2759,46 +2778,40 @@ msgstr "Avaa ikkunan, joka käyttää valittua tehostetta."
 
 #. 6.7.6->settings-schema.json->broken-glass-gravity->description
 msgid "Gravity"
-msgstr ""
+msgstr "Painovoima"
 
 #. 6.7.6->settings-schema.json->broken-glass-blow-force->description
-#, fuzzy
 msgid "Blow Force"
-msgstr "Hehkuväri"
+msgstr "Puhallusvoima"
 
 #. 6.7.6->settings-schema.json->broken-glass-use-pointer->description
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Sirpaloituminen osoittimen kohdasta"
 
 #. 6.7.6->settings-schema.json->matrix-tip-color->description
-#, fuzzy
 msgid "Tip Color"
-msgstr "Viivan väri"
+msgstr "Kärjen väri"
 
 #. 6.7.6->settings-schema.json->matrix-trail-color->description
-#, fuzzy
 msgid "Trail Color"
-msgstr "Viivan väri"
+msgstr "Jäljen väri"
 
 #. 6.7.6->settings-schema.json->matrix-overshoot->description
-#, fuzzy
 msgid "Vertical Overshooting"
-msgstr "Pystysuora kimallus"
+msgstr "Kohdealueen ohitus"
 
 #. 6.7.6->settings-schema.json->paint-brush-size->description
 msgid "Brush Size"
-msgstr ""
+msgstr "Siveltimen koko"
 
 #. 6.7.6->settings-schema.json->trex-scratch-scale->description
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Raapaisun kokoa"
 
 #. 6.7.6->settings-schema.json->trex-scratch-warp->description
-#, fuzzy
 msgid "Warp Effect"
-msgstr "TV pois"
+msgstr "Poimuefekti"
 
 #. 6.7.6->settings-schema.json->trex-scratch-count->description
-#, fuzzy
 msgid "Scratch Count"
-msgstr "Kipinämäärä"
+msgstr "Raapaisujen määrä"
