@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2021-09-26 08:37+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s engedélyezett"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "Nyissa meg a kiegészítő beállításait és szabja testre paneljait"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "Beállítások megnyitása"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Áttetsző panel"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr "Átlátszóvá teheti a paneleket, ha nincsenek maximalizált ablakok"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Általános"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "Áttetszőség típusa"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "Árnyékkal"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Teljesen áttetsző"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Félig áttetsző"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "Válassza ki milyen típusú áttetszőséget szeretne."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Jelenlegi téma használata"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Csak támogatott témákhoz. Hagyja, hogy a téma stílusozza a paneleket a "
+"bővítmény előre beállított stílusa helyett. Ezt abban az esetben használja, "
+"ha a panelek átlátszósága nem megfelelően van beállítva."
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "Téma áttetszőség eltávolítása (kísérleti)"
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr "Panel áttetszőségének eltávolítása ahol az nem áttetsző."
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Panelek szűrése"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "Panelek kiválasztása amelyekre ez a kiegészítő hatással lesz."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Felső panel"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Jobb panel"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Alsó panel"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Bal panel"

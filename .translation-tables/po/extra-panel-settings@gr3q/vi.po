@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-01 08:53+0000\n"
+"PO-Revision-Date: 2025-10-19 02:33+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Extra Panel Settings"
+msgstr "Cài đặt Panel Bổ sung"
+
+#. metadata.json->description
+msgid "Extra configuration options for your Panels"
+msgstr "Các tùy chọn cấu hình bổ sung cho Panel của bạn"
+
+#. 3.8->settings-schema.json->global-tab->title
+msgid "Global Panel Settings"
+msgstr "Cài đặt Panel Toàn cục"
+
+#. 3.8->settings-schema.json->font-section->title
+msgid "Font Settings"
+msgstr "Cài đặt Phông chữ"
+
+#. 3.8->settings-schema.json->panelFont->description
+msgid "Font used in Panels"
+msgstr "Phông chữ sử dụng trong Panel"

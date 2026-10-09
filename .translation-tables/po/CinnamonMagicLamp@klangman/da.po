@@ -1,0 +1,106 @@
+# MAGIC LAMP EFFECT
+# This file is put in the public domain.
+# klangman, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonMagicLamp@klangman 1.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-01 12:42-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 5.6/extension.js:83
+msgid "ERROR"
+msgstr "FEJL"
+
+#. 5.6/extension.js:83
+msgid "was NOT enabled"
+msgstr "var ikke aktiveret"
+
+#. 5.6/extension.js:84
+msgid "The existing extension"
+msgstr "Den eksisterende udvidelse"
+
+#. 5.6/extension.js:84
+msgid "conflicts with this extension."
+msgstr "er i konflikt med denne udvidelse."
+
+#. metadata.json->name
+msgid "Magic Lamp Effect"
+msgstr "Magisk lampe-effekt"
+
+#. metadata.json->description
+msgid ""
+"A minimize/unminimize magic lamp effect based on hermes83's Gnome extension"
+msgstr ""
+"En minimér/gendan fra minimeret-effekt med en magisk lampe baseret på "
+"hermes83s Gnome-udvidelse"
+
+#. 5.6->settings-schema.json->keybinding-header->description
+msgid "Cinnamon Magic Lamp Settings"
+msgstr "Indstillinger for magisk lampe"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "default"
+msgstr "standard"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "sine"
+msgstr "sinus"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr "tilfældig"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr "Minimér: standard; Gendan fra minimeret: sinus"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr "Minimér: sinus; Gendan fra minimeret: standard"
+
+#. 5.6->settings-schema.json->effect->description
+msgid "The type of effect"
+msgstr "Effekttypen"
+
+#. 5.6->settings-schema.json->effect->tooltip
+msgid ""
+"Using 'default' will result in a curved effect where using 'sine' will "
+"result in a more wavy effect"
+msgstr ""
+"Brug af “standard” giver en kurvet effekt, mens brug af “sinus” giver en "
+"mere bølget effekt."
+
+#. 5.6->settings-schema.json->duration->description
+msgid "Effect duration (ms)"
+msgstr "Effektvarighed (ms)"
+
+#. 5.6->settings-schema.json->duration->tooltip
+msgid "The time (in milliseconds) that the effect takes to complete"
+msgstr "Tiden (i millisekunder) som effekten varer"
+
+#. 5.6->settings-schema.json->x-tiles->description
+msgid "X Tiles"
+msgstr "x-fliser"
+
+#. 5.6->settings-schema.json->x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr "Påvirker animationens kvalitet og omkostning"
+
+#. 5.6->settings-schema.json->y-tiles->description
+msgid "Y Tiles"
+msgstr "y-fliser"
+
+#. 5.6->settings-schema.json->y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr "Påvirker animationens kvalitet og omkostning"

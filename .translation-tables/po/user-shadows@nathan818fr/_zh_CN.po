@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr ""
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr ""
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr ""
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr ""
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr ""
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr ""
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr ""
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr ""
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr ""
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr ""
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr ""
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr ""
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr ""
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr ""

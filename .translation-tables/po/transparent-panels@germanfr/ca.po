@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2024-07-25 18:39+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s activat"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "Obriu les opcions de l'extensió i personalitzeu els vostres taulers"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "Obrir configuració"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Taulers transparents"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr ""
+"Convertiu els vostres taulers en transparents quan no hi hagi finestres "
+"maximitzades"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "General"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "Tipus de transparència"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "Amb ombres"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Transparent del tot"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Semi-transparent"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "Trieu el tipus de transparència que voleu."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Utilitzar l'estil del tema actual"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Només per a temes suportats. Permet que el tema estilitzi els taulers en "
+"lloc de l'extensió. Utilitzeu això si la transparència dels taulers sembla "
+"errònia."
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "Eliminar la transparència del tema (experimental)"
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr "Eliminar la transparència del tauler quan no és transparent."
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Filtrar taulers"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "Seleccioneu els taulers que seran afectats per aquesta extensió."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Tauler de dalt"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Tauler de la dreta"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Tauler de baix"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Tauler de l'esquerra"

@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-24 20:53+0100\n"
+"PO-Revision-Date: 2023-11-02 09:45-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#. metadata.json->name
+#: 4.8/extension.js:72
+msgid "Sanitize ~/.xsession-errors"
+msgstr "Sanitizar ~/.xsession-errors"
+
+#: 4.8/extension.js:73
+msgid ""
+"This extension has been disabled because it was no longer needed since "
+"Cinnamon 4.8."
+msgstr ""
+"Esta extensión se ha deshabilitado porque ya no era necesaria a partir de "
+"Cinnamon 4.8."
+
+#. metadata.json->description
+msgid ""
+"Filter messages sent to ~/.xsession-errors, to avoid flooding and save your "
+"SSD."
+msgstr ""
+"Filtra los mensajes enviados a ~/.xsession-errors, para evitar flooding y "
+"salvaguardar su SSD."
+
+#. settings-schema.json->section0->description
+msgid "Filter \"Log level 128\" messages starting with these words"
+msgstr ""
+"Filtrar los mensajes de \"Nivel de registro 128\" que empiecen por estas "
+"palabras"
+
+#. settings-schema.json->forbidden_words->description
+msgid "Word list"
+msgstr "Lista de palabras"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "Words"
+msgstr "Palabras"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "To filter?"
+msgstr "A filtrar?"
+
+#. settings-schema.json->section1->description
+msgid "~/.xsession-errors monitor"
+msgstr "monitor ~/.xsession-errors"
+
+#. settings-schema.json->open_log->description
+msgid "Show the contents of ~/.xsession-errors in real time"
+msgstr "Mostrar el contenido de ~/.xsession-errors en tiempo real"

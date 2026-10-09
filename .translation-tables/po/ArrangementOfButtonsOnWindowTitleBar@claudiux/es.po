@@ -1,0 +1,152 @@
+# ARRANGEMENT OF BUTTONS ON WINDOW TITLE BAR (ABWTB)
+# This file is put in the public domain.
+# claudiux, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ArrangementOfButtonsOnWindowTitleBar@claudiux 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-05-29 07:09+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#. metadata.json->name
+msgid "Arrangement Of Buttons On Window Title Bar (ABWTB)"
+msgstr "Disposición de los botones en la barra de título de la ventana (ABWTB)"
+
+#. metadata.json->description
+msgid "Arranges the buttons on the title bar of windows"
+msgstr "Ordena los botones de la barra de título de las ventanas"
+
+#. settings-schema.json->arrangement->title
+msgid "Button layout on the window title bar"
+msgstr "Disposición de los botones en la barra de título de la ventana"
+
+#. settings-schema.json->pageexpert->title
+msgid "Expert Mode"
+msgstr "Modo experto"
+
+#. settings-schema.json->section-left->title
+msgid "Left side of title bar"
+msgstr "Parte izquierda de la barra de título"
+
+#. settings-schema.json->section-right->title
+msgid "Right side of title bar"
+msgstr "Parte derecha de la barra de título"
+
+#. settings-schema.json->section-accessibility->title
+msgid "Accessibility"
+msgstr "Accesibilidad"
+
+#. settings-schema.json->section-explainEM->title
+msgid "Explanation"
+msgstr "Explicación"
+
+#. settings-schema.json->section-stringEM->title
+msgid "Button Layout"
+msgstr "Disposición de los botones"
+
+#. settings-schema.json->section-switchEM->title
+msgid "Apply changes"
+msgstr "Aplicar cambios"
+
+#. settings-schema.json->leftMenu->description
+#. settings-schema.json->rightMenu->description
+msgid "Menu"
+msgstr "Menú"
+
+#. settings-schema.json->leftClose->description
+#. settings-schema.json->rightClose->description
+msgid "Close"
+msgstr "Cerrar"
+
+#. settings-schema.json->leftMaximize->description
+#. settings-schema.json->rightMaximize->description
+msgid "Maximize"
+msgstr "Maximizar"
+
+#. settings-schema.json->leftMinimize->description
+#. settings-schema.json->rightMinimize->description
+msgid "Minimize"
+msgstr "Minimizar"
+
+#. settings-schema.json->spacer->description
+msgid "Add a space between adjacent buttons"
+msgstr "Añadir un espacio entre botones adyacentes"
+
+#. settings-schema.json->labelComment->description
+msgid "Please wait 2 seconds for the changes to take effect."
+msgstr "Espere 2 segundos para que los cambios surtan efecto."
+
+#. settings-schema.json->labelComment2->description
+msgid "Expert Mode enabled. Please use the Expert Mode tab."
+msgstr "Modo Experto activado. Utilice la pestaña Modo experto."
+
+#. settings-schema.json->explanationEM->description
+msgid ""
+"Arrangement of buttons on the titlebar.\n"
+"The value should be a string, such as "
+"'menu:minimize,maximize,spacer,close'.\n"
+"The colon separates the left corner of the window from the right corner, and "
+"the button names are comma-separated.\n"
+"Duplicate buttons are not allowed.\n"
+"Unknown button names are silently ignored so that buttons can be added in "
+"future versions without breaking older versions.\n"
+"A special 'spacer' tag can be used to insert some space between two adjacent "
+"buttons.\n"
+"Valid buttons and tags are:\n"
+"\tclose\n"
+"\tmenu\n"
+"\tminimize\n"
+"\tmaximize\n"
+"\tspacer\n"
+"Other buttons, not taken into account:\n"
+"\tabove\n"
+"\tlower\n"
+"\tshade\n"
+"\tstick"
+msgstr ""
+"Disposición de los botones en la barra de título.\n"
+"El valor debe ser una cadena, como "
+"'menú:minimizar,maximizar,espaciador,cerrar'.\n"
+"Los dos puntos separan la esquina izquierda de la ventana de la esquina "
+"derecha, y los nombres de los botones están separados por comas.\n"
+"No se permiten botones duplicados.\n"
+"Los nombres de botones desconocidos se ignoran para que se puedan añadir en "
+"futuras versiones sin afectar a las versiones anteriores.\n"
+"Se puede utilizar una etiqueta especial 'espaciador' para insertar espacio "
+"entre dos botones adyacentes.\n"
+"Los botones y etiquetas válidos son\n"
+"\tcerrar\n"
+"\tmenú\n"
+"\tminimizar\n"
+"\tmaximizar\n"
+"\tespaciador\n"
+"Otros botones, no se tienen en cuenta:\n"
+"\tarriba\n"
+"\tabajo\n"
+"\tsombrear\n"
+"\tpegar"
+
+#. settings-schema.json->explanationNotEM->description
+msgid "Expert Mode disabled. Please use the first tab."
+msgstr "Modo experto desactivado. Utilice la primera pestaña."
+
+#. settings-schema.json->stringEM->description
+msgid "Value"
+msgstr "Valor"
+
+#. settings-schema.json->applyChangesEM->description
+msgid "Apply this button layout"
+msgstr "Aplicar esta disposición de botones"
+
+#. settings-schema.json->useEM->description
+msgid "Use only Expert Mode"
+msgstr "Utilizar sólo el Modo Experto"

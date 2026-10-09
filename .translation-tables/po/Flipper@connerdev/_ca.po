@@ -1,0 +1,17 @@
+# FLIPPER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->patchGestureSwitch->description
+msgid "Use Flipper effect when switching workspaces using touchpad gestures"
+msgstr ""
+
+#. 5.4->settings-schema.json->patchGestureSwitch->tooltip
+msgid ""
+"Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
+"will use the Flipper effect"
+msgstr ""

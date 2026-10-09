@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2024-11-04 23:02+0200\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Säde"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Ylähäivytys"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "X-siirtymä"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Y-siirtymä"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Peittävyys"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Luokan nimi"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Tila"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Tuo"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Vie"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Asetukset..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Valitse, minne haluat tallentaa määritykset"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Valitse, mistä haluat ladata määritykset"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "User Shadows"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Mukauta, lataa ja tallenna ikkunoiden varjostuksen asetuksia"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Varjostuksen esiasetukset"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Oletus"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Ei varjoa"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Mukautettu"

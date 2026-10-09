@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2024-04-16 15:39+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Stel posities van bureaubladpictogrammen per werkruimte in"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Bureaubladpictogrammen per werkruimte"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Configuratie"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "milliseconden"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Vertraging bij vernieuwen bureaublad bij opstarten"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Een aantal milliseconden wachten op de initiële bureaubladvernieuwing nadat "
+"de extensie is gestart"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Vertraging bij voltooien bureaubladvernieuwing"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr ""
+"Een aantal milliseconden wachten alvorens voltooien van de "
+"bureaubladvernieuwing"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "seconden"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Opslaan elke"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Hoe vaak posities van bureaubladpictogrammen naar het bestand worden "
+"opgeslagen. 0 betekent niet opslaan naar het bestand."

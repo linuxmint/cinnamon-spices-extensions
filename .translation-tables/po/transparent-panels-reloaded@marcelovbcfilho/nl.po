@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: 2024-07-23 20:33+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s ingeschakeld"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr "Open de instellingen van de extensie en pas uw panelen aan"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "Instellingen openen"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "Transparante panelen reloaded"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr ""
+"Maak uw panelen transparant (of niet) en verander hun kleur zoals u wilt"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Algemeen"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr "Hoeveelheid doorzichtigheid"
+
+#. settings-schema.json->transparency-always->description
+msgid "Always transparent"
+msgstr "Altijd transparant"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
+msgstr ""
+"Indien ingeschakeld, zullen de panelen altijd doorzichtig zijn; indien "
+"uitgeschakeld, zullen ze alleen doorzichtig zijn als er geen "
+"gemaximaliseerde vensters zijn."
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr "Gebruik aangepaste paneelkleur"
+
+#. settings-schema.json->custom-panel-color->description
+msgid "Custom panel color"
+msgstr "Aangepaste paneelkleur"
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels (WIP)"
+msgstr "Filter panelen (werk in uitvoering)"
+
+#. settings-schema.json->filters-description->description
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
+msgstr ""
+"Selecteer de panelen die door deze extensie worden beïnvloed. (Werk in "
+"uitvoering/niet werkend)"
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Bovenste paneel"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Rechter paneel"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Onderste paneel"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Linker paneel"

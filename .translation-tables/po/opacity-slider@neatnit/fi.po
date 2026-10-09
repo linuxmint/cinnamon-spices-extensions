@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: opacity-slider@neatnit 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-21 03:08+0300\n"
+"PO-Revision-Date: 2024-07-25 21:19+0300\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: extension.js:94 extension.js:99
+msgid "Opacity"
+msgstr "Peittävyys"
+
+#. metadata.json->name
+msgid "Opacity Slider"
+msgstr "Opacity Slider"
+
+#. metadata.json->description
+msgid "Change a window's opacity from the title bar right-click menu."
+msgstr ""
+"Muuta ikkunan päittävyyttä painamalla otsikkorivillä hiiren oikeaa ja säädä "
+"sitä liukusäätimellä."

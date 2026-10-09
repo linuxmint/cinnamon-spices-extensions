@@ -1,0 +1,86 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2024-07-25 18:45+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Radi"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Dissipació superior"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "Desplaçament en X"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Desplaçament en Y"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Opacitat"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Nom de la classe"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Estat"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Importar"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Exportar"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Definir a partir de..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Trieu a on guardar la vostra configuració"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Trieu una configuració a carregar"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Ombres de l'usuari"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Personalitzeu les ombres de les finestres de Cinnamon"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Preconfiguració d'ombres"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Per defecte"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Sense ombres"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Personalitzat"

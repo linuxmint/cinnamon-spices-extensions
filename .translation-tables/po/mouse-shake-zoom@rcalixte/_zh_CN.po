@@ -1,0 +1,42 @@
+# MOUSE SHAKE ZOOM EXTENSION
+# This file is put in the public domain.
+# rcalixte, 2022
+#
+msgid ""
+msgstr ""
+
+#. metadata.json->description
+msgid "Quickly shake the mouse pointer back and forth to zoom the cursor"
+msgstr ""
+
+#. metadata.json->name
+msgid "Mouse Shake Zoom Extension"
+msgstr ""
+
+#. 5.6->settings-schema.json->growth-speed->description
+msgid "Growth speed"
+msgstr ""
+
+#. 5.6->settings-schema.json->growth-speed->tooltip
+msgid "How fast the cursor grows"
+msgstr ""
+
+#. 5.6->settings-schema.json->shrink-speed->description
+msgid "Shrink speed"
+msgstr ""
+
+#. 5.6->settings-schema.json->shrink-speed->tooltip
+msgid "How fast the cursor shrinks"
+msgstr ""
+
+#. 5.6->settings-schema.json->shake-threshold->description
+msgid "Shake threshold"
+msgstr ""
+
+#. 5.6->settings-schema.json->shake-threshold->tooltip
+msgid "How much the pointer needs to move to activate"
+msgstr ""
+
+#. 5.6->settings-schema.json->shake-threshold->units
+msgid "px"
+msgstr ""
