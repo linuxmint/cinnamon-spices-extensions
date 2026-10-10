@@ -1,0 +1,8 @@
+{
+    "uuid": "cinnamon-launcher@anaximeno",
+    "name": "Cinnamon App Launcher",
+    "description": "A centered, search-first launcher for cinnamon.",
+    "version": "0.1.0",
+    "url": "https://github.com/anaximeno/cinnamon-spices-extensions",
+    "cinnamon-version": ["6.4", "6.6", "6.8"]
+}
