@@ -1,0 +1,8 @@
+{
+    "uuid": "CinnShift@pzim-devdata",
+    "name": "CinnShift",
+    "description": "Shift the accent color of the active Cinnamon and GTK themes. Pick a color, generate a random one, choose palettes and CSS selectors, apply instantly. The original themes are never modified.",
+    "cinnamon-version": "6.0",
+    "version": "1.0.0",
+    "url": "https://github.com/pzim-devdata/CinnShift"
+}

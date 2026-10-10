@@ -1,0 +1,149 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 pzim-devdata
+# This file is distributed under the same license as the CinnShift package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnShift@pzim-devdata 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/pzim-devdata/CinnShift\n"
+"POT-Creation-Date: 2026-09-12 12:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings-schema.json
+msgid "Color"
+msgstr ""
+
+#: settings-schema.json
+msgid "Fixed accent color (used in 'manual' mode)"
+msgstr ""
+
+#: settings-schema.json
+msgid "Leave default purple and switch mode to change it"
+msgstr ""
+
+#: settings-schema.json
+msgid "Manual hex color (overrides the picker)"
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"Six digits with #, e.g. #6d4aff. Used when Color mode is manual and this "
+"field is valid."
+msgstr ""
+
+#: settings-schema.json
+msgid "Color mode"
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"manual: use the color above; random: new random color; none: keep the "
+"existing accent"
+msgstr ""
+
+#: settings-schema.json
+msgid "Palette constraint"
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"Constrains the chosen color, or transforms the existing accent when no "
+"color is applied"
+msgstr ""
+
+#: settings-schema.json
+msgid "Recommended CSS selectors"
+msgstr ""
+
+#: settings-schema.json
+msgid "Not recommended (unchecked by default)"
+msgstr ""
+
+#: settings-schema.json
+msgid "Use with caution (background carriers)"
+msgstr ""
+
+#: settings-schema.json
+msgid "Custom CSS selectors (advanced)"
+msgstr ""
+
+#: settings-schema.json
+msgid "Extra CSS selectors"
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"Comma or semicolon separated. Terminate with , or ; to apply. Generic "
+"selectors recolor whole blocks: use with caution."
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"Syntax: separate several selectors with , or ; \n"
+"The shift starts when a separator is typed. \n"
+"Examples: .menu-application-button, .menu-favorites-box,"
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"Find a selector for an Applet: grep -rn 'application' "
+"~/.local/share/cinnamon/applets/Cinnamenu@json/ \n"
+"Or find a selector in a Theme : grep -i 'menu' "
+"/usr/share/cinnamon/theme/cinnamon.css. \n"
+"See the README for examples and grep tips."
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"There is a command-line version in Python : CinnShift CLI for scripting "
+"theme shifting at startup or via cron, with per-selector flags and "
+"variant control. See the README."
+msgstr ""
+
+#: settings-schema.json
+msgid ""
+"MIT License Copyright (c) 2026 pzim-devdata \n"
+"https://github.com/pzim-devdata/CinnShift"
+msgstr ""
+
+#: extension.js
+msgid "Theme not found: "
+msgstr ""
+
+#: extension.js
+msgid "Accent color not detected for "
+msgstr ""
+
+#: extension.js
+msgid "Nothing to do (no color, no selector)"
+msgstr ""
+
+#: extension.js
+msgid " file(s), "
+msgstr ""
+
+#: extension.js
+msgid " selector sub(s)"
+msgstr ""
+
+#: extension.js
+msgid "CinnShift failed: "
+msgstr ""
+
+#: extension.js
+msgid "Applications="
+msgstr ""
+
+#: extension.js
+msgid "Desktop="
+msgstr ""
+
+#: metadata.json
+msgid ""
+"Shift the accent color of the active Cinnamon and GTK themes. Pick a "
+"color, generate a random one, choose palettes and CSS selectors, apply "
+"instantly. The original themes are never modified."
+msgstr ""
