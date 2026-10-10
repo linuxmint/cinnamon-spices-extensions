@@ -3,15 +3,12 @@ const GLib = imports.gi.GLib;
 const Meta = imports.gi.Meta;
 const SignalManager = imports.misc.signalManager;
 const Signals = imports.signals;
-const Gdk = imports.gi.Gdk;
-const CinnamonDesktop = imports.gi.CinnamonDesktop;
 const {globalLogger: logger} = require('src/logger');
 const {callSafely, delayQueue, addSignalHook, removeSignalHooks} = require('src/utils');
 
 class ScreenWatcher {
     constructor() {
         this._metaScreen = global.screen;
-        this._rrScreen = CinnamonDesktop.RRScreen.new(Gdk.Screen.get_default());
     }
 
     register() {
@@ -33,7 +30,7 @@ class ScreenWatcher {
                     this._onRRScreenChanged
                 );
             } else {
-                this._signalManager.connect(this._rrScreen, 'changed', this._onRRScreenChanged);
+                this._signalManager.connect(Meta.MonitorManager.get(), 'monitors-changed', this._onRRScreenChanged);  
             }
             this._signalManager.connect(
                 this._metaScreen,
@@ -42,7 +39,7 @@ class ScreenWatcher {
             );
 
             // Call _onRRScreenChanged() immediately to initialize _outputsRect.
-            this._onRRScreenChanged(this._rrScreen);
+            this._onRRScreenChanged();
         } finally {
             this._loading = false;
         }
@@ -61,9 +58,10 @@ class ScreenWatcher {
 
     _onRRScreenChanged = () => {
         const rrOutputsRect = this._captureRROutputsRect();
-        const rrOutputs = this._rrScreen.list_outputs();
-        for (const rrOutput of rrOutputs) {
-            const name = rrOutput.get_name();
+        // Union of currently detected xrandr outputs and previously known outputs, so we can detect
+        // both newly connected and newly disconnected outputs without CinnamonDesktop.RRScreen.
+        const names = new Set([...Object.keys(rrOutputsRect), ...this._outputsRect.keys()]);
+        for (const name of names) {
             const rect = rrOutputsRect[name];
             const prevRect = this._outputsRect.get(name);
 
