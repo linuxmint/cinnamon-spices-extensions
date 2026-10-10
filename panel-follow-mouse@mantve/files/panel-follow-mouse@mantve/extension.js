@@ -113,7 +113,7 @@ function _seamSegments(rect, index, position, monitors) {
     return segments;
 }
 
-function _outerSegments(rect, position, seams) {
+function _outerSegments(rect, position, seams, deadzone = 0) {
     let start, end;
     if (position === 'top' || position === 'bottom') {
         start = rect.x;
@@ -125,10 +125,10 @@ function _outerSegments(rect, position, seams) {
     let outer = [];
     let cur = start;
     for (let s of seams.slice().sort((p, q) => p.a - q.a)) {
-        if (s.a > cur) outer.push({ a: cur, b: s.a });
+        if (cur + deadzone < s.a - deadzone) outer.push({ a: cur + deadzone, b: s.a - deadzone });
         cur = Math.max(cur, s.b);
     }
-    if (cur < end) outer.push({ a: cur, b: end });
+    if (cur + deadzone < end - deadzone) outer.push({ a: cur + deadzone, b: end - deadzone });
     return outer;
 }
 
@@ -217,7 +217,7 @@ function _rebuildBarriers() {
         if (global.display.get_monitor_in_fullscreen(i)) continue;
         if (entries.some(e => e.id !== boundSettings.panelId && e.monitor === i && e.position === panelEntry.position)) continue;
         let seams = _seamSegments(monitors[i], i, panelEntry.position, monitors);
-        for (let s of _outerSegments(monitors[i], panelEntry.position, seams)) {
+        for (let s of _outerSegments(monitors[i], panelEntry.position, seams, boundSettings.deadzonePx)) {
             if (!_addBarrier(i, _barrierGeometry(panelEntry.position, monitors[i], s.a, s.b))) failed++;
         }
     }
@@ -234,6 +234,7 @@ function init(metadata) {
     settingsProvider = new Settings.ExtensionSettings(boundSettings, uuid);
     settingsProvider.bindProperty(Settings.BindingDirection.IN, "panel-id", "panelId", _rebuildBarriers, null);
     settingsProvider.bindProperty(Settings.BindingDirection.IN, "hold-ms", "holdMs", null, null);
+    settingsProvider.bindProperty(Settings.BindingDirection.IN, "deadzone-px", "deadzonePx", _rebuildBarriers, null);
 }
 
 function enable() {

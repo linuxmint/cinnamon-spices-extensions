@@ -1,6 +1,6 @@
 # PANEL FOLLOW MOUSE
 # This file is put in the public domain.
-# Mantve, 2017
+# Mantve, 2026
 #
 #, fuzzy
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: panel-follow-mouse@mantve 0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-09-04 22:46+0300\n"
+"POT-Creation-Date: 2026-10-10 21:48+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,27 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. metadata.json->name
-#. extension.js:58 extension.js:60 extension.js:63 extension.js:229
+#. extension.js:52 extension.js:54 extension.js:57 extension.js:227
 msgid "Panel Follow Mouse"
 msgstr ""
 
-#. extension.js:58
+#. extension.js:52
 #, javascript-format
 msgid "Set panel ID to %s (%s, monitor %d)."
 msgstr ""
 
-#. extension.js:60
+#. extension.js:54
 msgid "No panels found."
 msgstr ""
 
-#. extension.js:63
+#. extension.js:57
 #, javascript-format
 msgid ""
 "Multiple panels found -- set panel-id manually:\n"
 "%s"
 msgstr ""
 
-#. extension.js:229
+#. extension.js:227
 #, javascript-format
 msgid ""
 "Couldn't create %d barrier(s) — another xlet's barrier may be in the way."
@@ -53,8 +53,7 @@ msgid "Panel ID to track"
 msgstr ""
 
 #. settings-schema.json->panel-id->tooltip
-msgid ""
-"Use the Detect button below to get the IDs list"
+msgid "Use the Detect button below to get the IDs list"
 msgstr ""
 
 #. settings-schema.json->detect-panel-button->description
@@ -73,4 +72,18 @@ msgstr ""
 msgid ""
 "How long you need to hold the cursor against the monitor edge before the "
 "panel actually moves"
+msgstr ""
+
+#. settings-schema.json->deadzone-px->units
+msgid "px"
+msgstr ""
+
+#. settings-schema.json->deadzone-px->description
+msgid "Deadzone at barrier ends"
+msgstr ""
+
+#. settings-schema.json->deadzone-px->tooltip
+msgid ""
+"How many pixels to leave untriggered at the ends of each edge, protecting "
+"screen corners and monitor seams"
 msgstr ""

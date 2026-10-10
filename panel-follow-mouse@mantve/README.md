@@ -18,3 +18,6 @@ while an app is fullscreen there.
 - **Panel ID** - which panel follows the mouse. The Detect button fills it
   in automatically.
 - **Hold time** - how long the cursor must stay against the edge.
+- **Deadzone** - how many pixels at each end of every trigger edge are left
+  untriggered, so screen corners and the corners where monitors meet don't
+  switch the panel accidentally.
