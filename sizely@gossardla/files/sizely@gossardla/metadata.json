@@ -1,0 +1,15 @@
+{
+    "uuid": "sizely@gossardla",
+    "name": "Sizely",
+    "description": "Resize windows to configurable sizes and center them on the current monitor, from the title bar menu or by keyboard shortcut.",
+    "version": "1.0.0",
+    "author": "Lars Gossard",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6"
+    ],
+    "url": "https://github.com/lasse-tech/sizely",
+    "website": "https://github.com/lasse-tech/sizely"
+}
