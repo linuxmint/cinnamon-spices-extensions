@@ -1,0 +1,13 @@
+{
+    "uuid": "stagemanager@ansori",
+    "name": "Stage Manager Clone",
+    "description": "A macOS-like Stage Manager extension for Linux Cinnamon, allowing you to manage and preview your opened windows in a sleek sidebar on the left side of your screen.",
+    "cinnamon-version": [
+        "5.6",
+        "5.8",
+        "6.0",
+        "6.2",
+        "6.4"
+    ],
+    "url": "https://github.com/oriewancu/cinnamon-extension-stage-manager-clone"
+}
