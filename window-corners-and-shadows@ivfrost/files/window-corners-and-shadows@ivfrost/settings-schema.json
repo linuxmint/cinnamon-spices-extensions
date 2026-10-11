@@ -1,0 +1,64 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "general"
+        ],
+        "general": {
+            "type": "page",
+            "title": "Rounded Window Corners",
+            "sections": [
+                "appearance",
+                "behaviour"
+            ]
+        },
+        "appearance": {
+            "type": "section",
+            "title": "Appearance",
+            "keys": [
+                "radius",
+                "border-width"
+            ]
+        },
+        "behaviour": {
+            "type": "section",
+            "title": "Behaviour",
+            "keys": [
+                "custom-shadow",
+                "round-maximized"
+            ]
+        }
+    },
+    "radius": {
+        "type": "spinbutton",
+        "default": 12,
+        "min": 0,
+        "max": 48,
+        "step": 1,
+        "units": "px",
+        "description": "Corner radius",
+        "tooltip": "How round the corners are. 0 turns rounding off."
+    },
+    "border-width": {
+        "type": "spinbutton",
+        "default": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "units": "px",
+        "description": "Border width",
+        "tooltip": "Width of the hairline around each window. The colour is taken from the window itself - lightened on a dark window, deepened on a light one - so it stays in keeping with whatever theme and app it is drawn on. 0 clips the corners without drawing an edge."
+    },
+    "custom-shadow": {
+        "type": "switch",
+        "default": true,
+        "description": "Draw window shadows",
+        "tooltip": "Draws the shadow behind each window from three layers - a tight contact shadow, a middle one and a wide soft one - so it follows the rounded corners and lifts off the desktop the way a native window does. Off, the window keeps the shadow its own toolkit drew."
+    },
+    "round-maximized": {
+        "type": "switch",
+        "default": false,
+        "description": "Round maximized windows",
+        "tooltip": "Normally maximized windows keep square corners. Fullscreen windows are never rounded."
+    }
+}
