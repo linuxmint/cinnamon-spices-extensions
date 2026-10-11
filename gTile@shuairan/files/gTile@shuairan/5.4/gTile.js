@@ -3,7 +3,7 @@ var gtile;
 /******/ 	"use strict";
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -16,12 +16,12 @@ var gtile;
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -32,7 +32,7 @@ var gtile;
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // ESM COMPAT FLAG
@@ -1065,8 +1065,18 @@ let Grid = class Grid {
                 }
             }
             this.elementsDelegate._destroy();
-            this.topbar._destroy();
+
+            if (this.topbar) {
+                this.topbar._destroy();
+            }
+
             this.Reset();
+
+            // Fix for Issue #512: Explicitly destroy actor to clear GPU textures
+            if (this.actor) {
+                this.actor.destroy();
+            }
+
             this.monitor = null;
             this.rows = null;
             this.title = null;
@@ -1361,16 +1371,25 @@ class App {
         this.ReInitialize = () => {
             this.monitors = app_Main.layoutManager.monitors;
             this.DestroyGrid();
-            this.InitGrid();
+
+            // Fix for Issue #512: Delay re-initialization to ensure driver/compositor readiness
+            imports.gi.GLib.timeout_add(imports.gi.GLib.PRIORITY_DEFAULT, 750, () => {
+                this.InitGrid();
+                // GLib.SOURCE_REMOVE
+                return false;
+            });
         };
         this.DestroyGrid = () => {
             this.RemoveKeyControls();
             for (const grid of this.grids) {
-                if (typeof grid != 'undefined') {
+                if (typeof grid !== 'undefined' && grid !== null) {
                     grid.Hide(true);
                     app_Main.layoutManager.removeChrome(grid.actor);
+                    // Explicitly destroy the grid instance to clear visual actors
+                    grid.destroy();
                 }
             }
+            this.grids = [];
         };
         this.MoveUIActor = () => {
             if (!this.visible) {
@@ -1523,7 +1542,9 @@ class App {
         this.config = new Config(this);
         this.InitGrid();
         this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
-        global.screen.connect('monitors-changed', this.ReInitialize);
+
+        // Track the signal ID for cleanup
+        this.monitorsChangedId = global.screen.connect('monitors-changed', this.ReInitialize);
     }
     get CurrentMonitor() {
         return this.currentMonitor;
@@ -1539,6 +1560,11 @@ class App {
         return this.grids;
     }
     destroy() {
+        // Disconnect monitors-changed signal to prevent ghost instances
+        if (this.monitorsChangedId) {
+            global.screen.disconnect(this.monitorsChangedId);
+            this.monitorsChangedId = null;
+        }
         this.config.destroy();
         this.DestroyGrid();
         this.ResetFocusedWindow();
