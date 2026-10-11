@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 00:00+0300\n"
+"PO-Revision-Date: 2026-07-25 00:00+0300\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr "Спливаюче накладення з поточним треком (MPRIS)"
+
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+msgid "Show notification"
+msgstr "Показати сповіщення"
+
+msgid "Appearance"
+msgstr "Зовнішній вигляд"
+
+msgid "Background color"
+msgstr "Колір фону"
+
+msgid "Background opacity (%)"
+msgstr "Непрозорість фону (%)"
+
+msgid "Text color"
+msgstr "Колір тексту"
+
+msgid "Font size (px)"
+msgstr "Розмір шрифту (px)"
+
+msgid "Header text"
+msgstr "Текст заголовка"
+
+msgid "Show cover art"
+msgstr "Показувати обкладинку"
+
+msgid "Cover size (px)"
+msgstr "Розмір обкладинки (px)"
+
+msgid "Behavior"
+msgstr "Поведінка"
+
+msgid "Display time (sec)"
+msgstr "Час показу (сек)"
+
+msgid "Fade in/out duration (ms)"
+msgstr "Тривалість появи/зникнення (мс)"
+
+msgid "Opacity on hover (%)"
+msgstr "Непрозорість при наведенні миші (%)"
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr "Затримка перед показом, мс (захист від дублів)"
+
+msgid "Position"
+msgstr "Розташування"
+
+msgid "Screen position"
+msgstr "Розташування на екрані"
+
+msgid "Top left"
+msgstr "Зверху зліва"
+
+msgid "Top center"
+msgstr "Зверху по центру"
+
+msgid "Top right"
+msgstr "Зверху справа"
+
+msgid "Bottom left"
+msgstr "Знизу зліва"
+
+msgid "Bottom center"
+msgstr "Знизу по центру"
+
+msgid "Bottom right"
+msgstr "Знизу справа"
+
+msgid "Screen edge margin (px)"
+msgstr "Відступ від краю екрана (px)"
+
+msgid "Maximum text width (px)"
+msgstr "Максимальна ширина тексту (px)"
+
+msgid "Test artist"
+msgstr "Тестовий виконавець"
+
+msgid "Test track title"
+msgstr "Тестова назва треку"

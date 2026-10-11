@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 00:00+0300\n"
+"PO-Revision-Date: 2026-07-25 00:00+0300\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr "Nakładka z aktualnie odtwarzanym utworem (MPRIS)"
+
+msgid "Preview"
+msgstr "Podgląd"
+
+msgid "Show notification"
+msgstr "Pokaż powiadomienie"
+
+msgid "Appearance"
+msgstr "Wygląd"
+
+msgid "Background color"
+msgstr "Kolor tła"
+
+msgid "Background opacity (%)"
+msgstr "Nieprzezroczystość tła (%)"
+
+msgid "Text color"
+msgstr "Kolor tekstu"
+
+msgid "Font size (px)"
+msgstr "Rozmiar czcionki (px)"
+
+msgid "Header text"
+msgstr "Tekst nagłówka"
+
+msgid "Show cover art"
+msgstr "Pokaż okładkę"
+
+msgid "Cover size (px)"
+msgstr "Rozmiar okładki (px)"
+
+msgid "Behavior"
+msgstr "Zachowanie"
+
+msgid "Display time (sec)"
+msgstr "Czas wyświetlania (sek)"
+
+msgid "Fade in/out duration (ms)"
+msgstr "Czas pojawiania/znikania (ms)"
+
+msgid "Opacity on hover (%)"
+msgstr "Nieprzezroczystość po najechaniu (%)"
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr "Opóźnienie przed wyświetleniem, ms (ochrona przed duplikatami)"
+
+msgid "Position"
+msgstr "Położenie"
+
+msgid "Screen position"
+msgstr "Położenie na ekranie"
+
+msgid "Top left"
+msgstr "Góra lewo"
+
+msgid "Top center"
+msgstr "Góra środek"
+
+msgid "Top right"
+msgstr "Góra prawo"
+
+msgid "Bottom left"
+msgstr "Dół lewo"
+
+msgid "Bottom center"
+msgstr "Dół środek"
+
+msgid "Bottom right"
+msgstr "Dół prawo"
+
+msgid "Screen edge margin (px)"
+msgstr "Margines od krawędzi ekranu (px)"
+
+msgid "Maximum text width (px)"
+msgstr "Maksymalna szerokość tekstu (px)"
+
+msgid "Test artist"
+msgstr "Testowy wykonawca"
+
+msgid "Test track title"
+msgstr "Testowy tytuł utworu"
