@@ -1,0 +1,6 @@
+/* Window Frame Rules
+ * Geometry and colors are applied dynamically by extension.js.
+ */
+.window-frame-rules-frame {
+    background-color: transparent;
+}

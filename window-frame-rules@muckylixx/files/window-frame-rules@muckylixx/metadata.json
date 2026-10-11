@@ -1,0 +1,11 @@
+{
+    "uuid": "window-frame-rules@muckylixx",
+    "name": "Window Frame Rules",
+    "description": "Configurable colored window frames based on title, class, type and focus state.",
+    "version": "1.0.0",
+    "cinnamon-version": [
+        "6.4"
+    ],
+    "external-configuration-app": "configurator.py",
+    "url": "https://github.com/Muckylixx/window-frame-rules"
+}
