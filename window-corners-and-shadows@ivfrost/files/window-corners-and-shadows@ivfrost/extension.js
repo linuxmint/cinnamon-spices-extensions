@@ -325,20 +325,23 @@ function enable() {
         global.display.connect('restacked', () => restackShadows()),
     ]);
 
-    // While workspaces slide, the windows move with their workspace and the
-    // shadows do not: a shadow follows the window actor's own position, and the
-    // actor keeps its position inside the workspace that is moving, so the
-    // constraints that place it have nothing to follow. They are taken away for
-    // the animation and put back when it is over.
+    // The shadows are deliberately left alone while the workspaces slide. This
+    // used to take them all away for the animation and put them back when it
+    // was over, on the assumption that a slide moves the container holding the
+    // windows rather than the windows themselves - which would leave each
+    // shadow standing where its window used to be. That is not what happens
+    // here: window actors are children of the window group, and the slide moves
+    // them directly, so the constraints that place each shadow follow it. All
+    // hiding them achieved was making them blink out and redraw on every
+    // switch, as if the extension had just been re-enabled.
     globalIds.push([
         global.window_manager,
         global.window_manager.connect('switch-workspace', () => {
+            // Still arms the per-frame pass that keeps the corner effects
+            // pointed at their windows through the slide. The shadows need no
+            // such help: their constraints follow the actors, which the slide
+            // moves directly.
             switching = true;
-            for (const [, entry] of tracked) {
-                if (entry.shadow)
-                    entry.shadow.visible = false;
-            }
-
             keepUpDuringSwitch();
 
             if (switchSettleId)
@@ -677,7 +680,7 @@ function updateShadow(actor, entry, frame, roundable) {
     const transformed = Math.abs(actor.scale_x - 1) > 0.01 ||
                         Math.abs(actor.scale_y - 1) > 0.01;
 
-    const wanted = roundable && state.custom_shadow && !switching &&
+    const wanted = roundable && state.custom_shadow &&
                    !win.minimized && actor.visible && !transformed;
 
     // The actor this entry was made for may be gone. Muffin replaces a window's
