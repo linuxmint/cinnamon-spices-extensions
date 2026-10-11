@@ -1,0 +1,87 @@
+# WINDOW CORNERS AND SHADOWS
+# This file is put in the public domain.
+# ivfrost, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: window-corners-and-shadows@ivfrost 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-10-11 17:53+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+#. settings-schema.json->general->title
+msgid "Window Corners and Shadows"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Rounds the corners of every window - including ones that draw their own "
+"decorations, such as GTK headerbar apps and browsers - and can draw a "
+"configurable border and drop shadow behind them. It works on the window "
+"itself rather than on the theme. Maximized windows can optionally be rounded "
+"too."
+msgstr ""
+
+#. settings-schema.json->appearance->title
+msgid "Appearance"
+msgstr ""
+
+#. settings-schema.json->behaviour->title
+msgid "Behaviour"
+msgstr ""
+
+#. settings-schema.json->radius->units
+#. settings-schema.json->border-width->units
+msgid "px"
+msgstr ""
+
+#. settings-schema.json->radius->description
+msgid "Corner radius"
+msgstr ""
+
+#. settings-schema.json->radius->tooltip
+msgid "How round the corners are. 0 turns rounding off."
+msgstr ""
+
+#. settings-schema.json->border-width->description
+msgid "Border width"
+msgstr ""
+
+#. settings-schema.json->border-width->tooltip
+msgid ""
+"Width of the hairline around each window. The colour is taken from the "
+"window itself - lightened on a dark window, deepened on a light one - so it "
+"stays in keeping with whatever theme and app it is drawn on. 0 clips the "
+"corners without drawing an edge."
+msgstr ""
+
+#. settings-schema.json->custom-shadow->description
+msgid "Draw window shadows"
+msgstr ""
+
+#. settings-schema.json->custom-shadow->tooltip
+msgid ""
+"Draws the shadow behind each window from three layers - a tight contact "
+"shadow, a middle one and a wide soft one - so it follows the rounded corners "
+"and lifts off the desktop the way a native window does. Off, the window "
+"keeps the shadow its own toolkit drew."
+msgstr ""
+
+#. settings-schema.json->round-maximized->description
+msgid "Round maximized windows"
+msgstr ""
+
+#. settings-schema.json->round-maximized->tooltip
+msgid ""
+"Normally maximized windows keep square corners. Fullscreen windows are never "
+"rounded."
+msgstr ""
