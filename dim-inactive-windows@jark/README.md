@@ -24,6 +24,8 @@ stands out at a glance while inactive content stays fully readable.
 - Smooth fade on focus change (configurable duration, or instant).
 - Leaves menus, tooltips, notifications, panels and the desktop untouched.
 - Optional: keep a window bright while one of its *modal* dialogs is focused.
+- Optional: never dim windows in *real* fullscreen — a video keeps playing at
+  full brightness on one monitor while you work on another.
 - No compositor patching, no overlays — uses Clutter effects on the window actors.
 
 ## Requirements
@@ -63,6 +65,7 @@ Open **System Settings → Extensions → Dim Inactive Windows → ⚙ (Configur
 | Fade duration | 150 ms | 0 = instant switch |
 | Keep parent bright for modal dialogs | off | Strict per-window when off (recommended) |
 | Dim when nothing is focused | off | Also dim everything after clicking the desktop |
+| Never dim fullscreen windows | on | A video in *real* fullscreen stays bright while you work on another monitor. Maximized windows are unaffected |
 
 ## How it works
 
