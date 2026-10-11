@@ -6,7 +6,7 @@
         ],
         "general": {
             "type": "page",
-            "title": "Rounded Window Corners",
+            "title": "Window Corners and Shadows",
             "sections": [
                 "appearance",
                 "behaviour"
