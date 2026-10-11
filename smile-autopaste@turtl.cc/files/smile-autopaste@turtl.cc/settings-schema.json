@@ -1,0 +1,12 @@
+{
+	"paste-delay": {
+		"type": "spinbutton",
+		"default": 100,
+		"min": 50,
+		"max": 500,
+		"step": 50,
+		"units": "ms",
+		"description": "Paste delay",
+		"tooltip": "How long to wait after Smile closes before sending Ctrl+V. Increase this if the paste is not landing your target window."
+	}
+}
