@@ -1,0 +1,19 @@
+/* Bing Wallpaper - image information drawn on the desktop.
+   Colour, font size and the text effect (shadow, outline, ...) are applied from the settings at runtime. */
+
+.bing-wallpaper-info {
+    spacing: 4px;
+}
+
+.bing-wallpaper-info-title {
+    font-weight: bold;
+    font-size: 1.15em;
+}
+
+.bing-wallpaper-info-copyright {
+    font-size: 0.95em;
+}
+
+.bing-wallpaper-info-date {
+    font-size: 0.85em;
+}
