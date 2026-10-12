@@ -1,0 +1,87 @@
+{
+    "section-animation": {
+        "type": "section",
+        "description": "Animation"
+    },
+    "glide-profile": {
+        "type": "combobox",
+        "default": "calm",
+        "description": "Release animation",
+        "options": {
+            "Responsive": "responsive",
+            "Relaxed": "relaxed",
+            "Calm (default)": "calm",
+            "Gentle": "gentle"
+        },
+        "tooltip": "How the window glides into place after you lift your fingers.\nResponsive: quickest.\nRelaxed: a little calmer.\nCalm: smooth, unhurried glide (default).\nGentle: slowest, softest landing.\nIn every profile the glide continues at the speed of your fingers, and fast flicks finish just as quickly."
+    },
+    "animation-note": {
+        "type": "label",
+        "description": "Applies from the next swipe. A swipe already in progress is never interrupted."
+    },
+
+    "section-touchpad": {
+        "type": "section",
+        "description": "Touchpad Sensitivity"
+    },
+    "flick-profile": {
+        "type": "combobox",
+        "default": "balanced",
+        "description": "Switching sensitivity",
+        "options": {
+            "Balanced (default)": "balanced",
+            "Sensitive": "sensitive",
+            "Less sensitive": "less-sensitive",
+            "Flick-friendly": "flick-friendly",
+            "Deliberate": "deliberate"
+        },
+        "tooltip": "Decides whether a swipe switches windows when you lift your fingers.\nBalanced: past half switches; a quick flick switches earlier; a slow short swipe cancels (default).\nSensitive: slow swipes switch from 40%; flicks switch more easily.\nLess sensitive: slow swipes need 60%; flicks must be faster.\nFlick-friendly: short, quick flicks switch; slow partial swipes still cancel.\nDeliberate: mostly how far you swiped decides; only very fast flicks switch early."
+    },
+    "touchpad-note": {
+        "type": "label",
+        "description": "These presets only change what happens when you lift your fingers. How far your fingers must travel is set by Touchégg and your touchpad driver and is not changed by this extension."
+    },
+
+    "section-navigation": {
+        "type": "section",
+        "description": "Navigation"
+    },
+    "navigation-order": {
+        "type": "combobox",
+        "default": "dock",
+        "description": "Window order",
+        "options": {
+            "Plank dock order (default)": "dock",
+            "Window opening order": "opening"
+        },
+        "tooltip": "Plank dock order: windows follow the order of their apps in Plank; apps not in the dock come after, in the order they were opened. Used only while Plank is running; otherwise windows are in opening order.\nWindow opening order: the order the windows were opened."
+    },
+    "swipe-fingers": {
+        "type": "combobox",
+        "default": "3-and-4",
+        "description": "Fingers",
+        "options": {
+            "Three and four fingers (default)": "3-and-4",
+            "Three fingers only": "3",
+            "Four fingers only": "4"
+        },
+        "tooltip": "Which horizontal swipes slide between windows. Swipes with the other finger count keep the action set for them in System Settings > Gestures."
+    },
+    "navigation-note": {
+        "type": "label",
+        "description": "Swipe left for the next window and right for the previous one, among the windows of the current workspace and monitor (minimized windows included). From the desktop, swipe left for the first window and right for the last."
+    },
+
+    "section-info": {
+        "type": "section",
+        "description": "Information"
+    },
+    "info-requirements": {
+        "type": "label",
+        "description": "Requires Touchégg and touchpad gestures enabled in System Settings > Gestures, with an action assigned to the horizontal three- and four-finger swipes (any action; Window Swipe takes these swipes over while it is enabled)."
+    },
+    "info-limitation": {
+        "type": "label",
+        "description": "Known limitation: within one swipe you can move toward a neighbour and back, but not past the starting window to the other side (Touchégg reports a swipe in one direction only). Lift your fingers and swipe again instead."
+    }
+}
