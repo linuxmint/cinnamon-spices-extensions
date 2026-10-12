@@ -33,6 +33,10 @@ msgstr ""
 msgid "Auto tile two lists"
 msgstr ""
 
+#: 3.8/gTile.js:307 5.4/gTile.js:307
+msgid "Auto-tile to current layout"
+msgstr ""
+
 #. metadata.json->name
 msgid "gTile"
 msgstr ""
