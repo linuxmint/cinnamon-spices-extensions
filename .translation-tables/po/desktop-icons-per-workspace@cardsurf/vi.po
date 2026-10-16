@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2025-10-19 02:28+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Đặt vị trí biểu tượng màn hình cho mỗi không gian làm việc"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Biểu tượng màn hình theo không gian làm việc"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "mili giây"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Độ trễ làm mới màn hình khi khởi động"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr "Số mili giây chờ để làm mới màn hình ban đầu sau khi tiện ích mở rộng được khởi động"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Độ trễ hoàn thành làm mới màn hình"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr "Số mili giây chờ trước khi hoàn thành việc làm mới màn hình"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "giây"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Lưu mỗi"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr "Tần suất lưu vị trí biểu tượng màn hình vào tập tin. 0 có nghĩa là không lưu vào tập tin."

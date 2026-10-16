@@ -1,0 +1,329 @@
+# SMART PANEL
+# This file is put in the public domain.
+# mohammad-sn, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: smart-panel@mohammad-sn 1.6.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2025-12-02 20:17+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->description
+msgid ""
+"Switch between workspaces, show desktop, activate overview or expo, ... by "
+"scrolling, double click, mouse gestures etc on free space of the panel."
+msgstr ""
+"Chuyển đổi giữa các không gian làm việc, hiển thị màn hình, kích hoạt tổng "
+"quan hoặc expo, ... bằng cách cuộn, nhấp đúp, cử chỉ chuột, v.v. trên khoảng "
+"trống của panel."
+
+#. metadata.json->name
+msgid "Smart Panel"
+msgstr "Panel Thông minh"
+
+#. settings-schema.json->head0->description
+msgid "Panels: "
+msgstr ""
+
+#. settings-schema.json->concerned->description
+msgid "Which panels: "
+msgstr ""
+
+#. settings-schema.json->concerned->options
+msgid "Main panel only"
+msgstr ""
+
+#. settings-schema.json->concerned->options
+msgid "Horizontal panels only"
+msgstr ""
+
+#. settings-schema.json->concerned->options
+msgid "Vertical panels only"
+msgstr ""
+
+#. settings-schema.json->concerned->options
+msgid "All of them"
+msgstr ""
+
+#. settings-schema.json->concerned->tooltip
+msgid ""
+"The main panel is the first panel that was created (by Cinnamon).\n"
+"It is recommended that you restart Cinnamon after changing this setting."
+msgstr ""
+
+#. settings-schema.json->head1->description
+msgid "Mouse scroll options: "
+msgstr "Tùy chọn cuộn chuột: "
+
+#. settings-schema.json->scroll-action->description
+msgid "Action on scrolling: "
+msgstr "Hành động khi cuộn: "
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between workspaces"
+msgstr "Chuyển đổi giữa các không gian làm việc"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust opacity of windows"
+msgstr "Điều chỉnh độ mờ của cửa sổ"
+
+#. settings-schema.json->scroll-action->options
+msgid "Toggle show desktop"
+msgstr "Bật/tắt hiển thị màn hình"
+
+#. settings-schema.json->scroll-action->options
+msgid "Switch between windows"
+msgstr "Chuyển đổi giữa các cửa sổ"
+
+#. settings-schema.json->scroll-action->options
+msgid "Adjust sound volume"
+msgstr "Điều chỉnh âm lượng"
+
+#. settings-schema.json->scroll-action->options
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "None"
+msgstr "Không"
+
+#. settings-schema.json->prev-fast-scroll->description
+msgid "Prevent accidental workspace/window switching on rapid scrolling"
+msgstr ""
+"Ngăn chặn chuyển đổi không gian làm việc/cửa sổ ngẫu nhiên khi cuộn nhanh"
+
+#. settings-schema.json->scroll-delay->description
+msgid "Minimum delay between scrolls:"
+msgstr "Độ trễ tối thiểu giữa các lần cuộn:"
+
+#. settings-schema.json->scroll-delay->units
+msgid "milliseconds"
+msgstr "mili giây"
+
+#. settings-schema.json->sep-scroll-action->description
+msgid "Independent actions for scrolling up and down"
+msgstr "Hành động độc lập cho cuộn lên và xuống"
+
+#. settings-schema.json->show-osd->description
+msgid "Display OSD for workspace change notification"
+msgstr "Hiển thị OSD để thông báo thay đổi không gian làm việc"
+
+#. settings-schema.json->scroll-action-up->description
+msgid "Action on scrolling up: "
+msgstr "Hành động khi cuộn lên: "
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Expo"
+msgstr "Expo"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Overview"
+msgstr "Tổng quan"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Launch App Switcher"
+msgstr "Khởi chạy Bộ chuyển đổi Ứng dụng"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Show Desktop"
+msgstr "Hiển thị Màn hình"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 1st Custom Command"
+msgstr "Chạy Lệnh Tùy chỉnh 1"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 2nd Custom Command"
+msgstr "Chạy Lệnh Tùy chỉnh 2"
+
+#. settings-schema.json->scroll-action-up->options
+#. settings-schema.json->scroll-action-down->options
+#. settings-schema.json->dblclck-action->options
+#. settings-schema.json->mdlclck-action->options
+#. settings-schema.json->vert-out-action->options
+msgid "Run 3rd Custom Command"
+msgstr "Chạy Lệnh Tùy chỉnh 3"
+
+#. settings-schema.json->scroll-action-down->description
+msgid "Action on scrolling down: "
+msgstr "Hành động khi cuộn xuống: "
+
+#. settings-schema.json->head2->description
+msgid "Mouse click options: "
+msgstr "Tùy chọn nhấp chuột: "
+
+#. settings-schema.json->dblclck-action->description
+msgid "Action on panel double click: "
+msgstr "Hành động khi nhấp đúp panel: "
+
+#. settings-schema.json->mdlclck-action->description
+msgid "Action on panel middle click: "
+msgstr "Hành động khi nhấp giữa panel: "
+
+#. settings-schema.json->head3->description
+msgid "Mouse gestures: "
+msgstr "Cử chỉ chuột: "
+
+#. settings-schema.json->use-gestures->description
+msgid "Use mouse gestures on the panel"
+msgstr "Sử dụng cử chỉ chuột trên panel"
+
+#. settings-schema.json->to-right-action->description
+msgid "↦ Dragging to the right: "
+msgstr "↦ Kéo sang phải: "
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to left Workspace"
+msgstr "Đến Không gian làm việc Trái"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to first Workspace"
+msgstr "Đến Không gian làm việc Đầu tiên"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to right Workspace"
+msgstr "Đến Không gian làm việc Phải"
+
+#. settings-schema.json->to-right-action->options
+#. settings-schema.json->to-left-action->options
+msgid "Go to last Workspace"
+msgstr "Đến Không gian làm việc Cuối cùng"
+
+#. settings-schema.json->to-left-action->description
+msgid "↤ Dragging to the left: "
+msgstr "↤ Kéo sang trái: "
+
+#. settings-schema.json->vert-out-action->description
+msgid "Click at the edge of the screen and drag away vertically: "
+msgstr "Nhấp vào cạnh màn hình và kéo ra theo chiều dọc: "
+
+#. settings-schema.json->head4->description
+msgid "Custom Commands: "
+msgstr "Lệnh Tùy chỉnh: "
+
+#. settings-schema.json->cc1-action->description
+msgid "1st Custom Command:"
+msgstr "Lệnh Tùy chỉnh 1:"
+
+#. settings-schema.json->cc2-action->description
+msgid "2nd Custom Command:"
+msgstr "Lệnh Tùy chỉnh 2:"
+
+#. settings-schema.json->cc3-action->description
+msgid "3rd Custom Command:"
+msgstr "Lệnh Tùy chỉnh 3:"
+
+#. settings-schema.json->head5->description
+msgid "App Switcher Settings: "
+msgstr "Cài đặt Bộ chuyển đổi Ứng dụng: "
+
+#. settings-schema.json->appswitcher-style->description
+msgid "App switcher style: "
+msgstr "Kiểu bộ chuyển đổi ứng dụng: "
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons only"
+msgstr "Chỉ biểu tượng"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Thumbnails only"
+msgstr "Chỉ hình thu nhỏ"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and thumbnails"
+msgstr "Biểu tượng và hình thu nhỏ"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Icons and window preview"
+msgstr "Biểu tượng và xem trước cửa sổ"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Window preview (no icons)"
+msgstr "Xem trước cửa sổ (không có biểu tượng)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Coverflow (3D)"
+msgstr "Coverflow (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "Timeline (3D)"
+msgstr "Timeline (3D)"
+
+#. settings-schema.json->appswitcher-style->options
+msgid "System default"
+msgstr "Mặc định hệ thống"
+
+#. settings-schema.json->appswitcher-scope->description
+msgid "Switch between windows from: "
+msgstr "Chuyển đổi giữa các cửa sổ từ: "
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Current workspace"
+msgstr "Không gian làm việc hiện tại"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "All workspaces"
+msgstr "Tất cả không gian làm việc"
+
+#. settings-schema.json->appswitcher-scope->options
+#. settings-schema.json->scope-modified->options
+msgid "Curret Application"
+msgstr "Ứng dụng hiện tại"
+
+#. settings-schema.json->scope-modified->description
+msgid "When a modifier key is pressed, switch between windows from: "
+msgstr "Khi một phím sửa đổi được nhấn, chuyển đổi giữa các cửa sổ từ: "
+
+#. settings-schema.json->appswitcher-modifier->description
+msgid "Modifier key: "
+msgstr "Phím sửa đổi: "
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. settings-schema.json->appswitcher-modifier->options
+msgid "Shift"
+msgstr "Shift"

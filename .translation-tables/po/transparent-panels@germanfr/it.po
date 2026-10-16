@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2022-06-03 11:18+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s abilitato"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "Apri le impostazioni dell'estensione e personalizza i tuoi pannelli"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "Apri le Impostazioni"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Pannelli trasparenti"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr ""
+"Rendi trasparenti i tuoi pannelli quando non ci sono finestre ingrandite"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "Generale"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "Tipo di trasparenza"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "Con ombreggiatura"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "Completamente trasparente"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "Semi-trasparente"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "Scegli il tipo di trasparenza che desideri."
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "Usa gli stili del tema corrente"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"Solo per temi supportati. Lascia che il tema modifichi i pannelli anziché "
+"utilizzare i predefiniti dell'estensione. Utilizza questo nel caso in cui la "
+"trasparenza dei pannelli sia impostata correttamente."
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "Rimuovi trasparenza tema (sperimentale)"
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr "Rimuove la trasparenza del pannello quando non è trasparente."
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "Filtro pannelli"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "Seleziona i pannelli che saranno interessati da questa estensione."
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "Pannello in alto"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "Pannello a destra"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "Pannello in basso"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "Pannello a sinistra"

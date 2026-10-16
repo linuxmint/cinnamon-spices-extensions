@@ -1,0 +1,82 @@
+# German translation for Dim Inactive Windows.
+# Copyright (C) 2026
+# This file is distributed under the same license as the extension.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dim-inactive-windows@jark 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-04 00:00+0000\n"
+"PO-Revision-Date: 2026-07-04 00:00+0000\n"
+"Last-Translator: jarkt\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Dim Inactive Windows"
+msgstr "Inaktive Fenster abdunkeln"
+
+#. metadata.json->description
+msgid ""
+"Dims and desaturates inactive windows (per window, not per app) so the "
+"focused window is unmistakable."
+msgstr ""
+"Dunkelt inaktive Fenster ab und entsättigt sie (pro Fenster, nicht pro App), "
+"damit das aktive Fenster eindeutig erkennbar ist."
+
+#. settings-schema.json->head-effect->description
+msgid "Effect for inactive windows"
+msgstr "Effekt für inaktive Fenster"
+
+#. settings-schema.json->mode->description
+msgid "What happens to inactive windows"
+msgstr "Was mit inaktiven Fenstern passiert"
+
+#. settings-schema.json->mode->options
+msgid "Dim and desaturate"
+msgstr "Abdunkeln und entsättigen"
+
+#. settings-schema.json->mode->options
+msgid "Dim only"
+msgstr "Nur abdunkeln"
+
+#. settings-schema.json->mode->options
+msgid "Desaturate only"
+msgstr "Nur entsättigen"
+
+#. settings-schema.json->dim-amount->description
+msgid "Dim strength (0 = none, 0.8 = very dark)"
+msgstr "Stärke des Abdunkelns (0 = keins, 0.8 = sehr dunkel)"
+
+#. settings-schema.json->desaturate-amount->description
+msgid "Desaturation strength (0 = full color, 1 = grayscale)"
+msgstr "Stärke der Entsättigung (0 = volle Farbe, 1 = Graustufen)"
+
+#. settings-schema.json->animation-time->description
+msgid "Fade duration on focus change (0 = instant)"
+msgstr "Überblenddauer beim Fokuswechsel (0 = sofort)"
+
+#. settings-schema.json->head-behavior->description
+msgid "Behavior"
+msgstr "Verhalten"
+
+#. settings-schema.json->respect-transient->description
+msgid ""
+"Keep a window bright while a MODAL dialog of it holds focus. Off = strict "
+"per-window (recommended; treats e.g. a PhpStorm floating window as its own "
+"window)"
+msgstr ""
+"Fenster hell lassen, während einer seiner MODALEN Dialoge den Fokus hat. Aus "
+"= strikt pro Fenster (empfohlen; behandelt z. B. ein PhpStorm-Floating-"
+"Fenster als eigenes Fenster)"
+
+#. settings-schema.json->dim-when-no-focus->description
+msgid ""
+"Also dim every window when nothing is focused (e.g. after clicking the "
+"desktop)"
+msgstr ""
+"Auch alle Fenster abdunkeln, wenn nichts fokussiert ist (z. B. nach Klick auf "
+"den Desktop)"
