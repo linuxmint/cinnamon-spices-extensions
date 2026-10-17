@@ -1,0 +1,146 @@
+{
+    "headDrag": {
+        "type": "header",
+        "description": "Drag to the top of the screen"
+    },
+    "drag-to-top": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show the layout bar when dragging a window to the top",
+        "tooltip": "Drag a window toward the middle of the top edge to reveal the layouts, then drop it on a zone."
+    },
+    "reveal-threshold": {
+        "type": "spinbutton",
+        "default": 24,
+        "min": 4,
+        "max": 120,
+        "step": 2,
+        "units": "pixels",
+        "description": "Distance from the top edge that reveals it",
+        "tooltip": "The hint appears at twice this distance and expands into the full bar at this one."
+    },
+    "sep0": {
+        "type": "separator"
+    },
+    "headSpacing": {
+        "type": "header",
+        "description": "Spacing"
+    },
+    "inner-gap": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 64,
+        "step": 1,
+        "units": "pixels",
+        "description": "Gap between windows",
+        "tooltip": "Space left between two neighbouring windows."
+    },
+    "outer-gap": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 64,
+        "step": 1,
+        "units": "pixels",
+        "description": "Margin around the screen",
+        "tooltip": "Space left between the windows and the edges of the work area."
+    },
+    "sep1": {
+        "type": "separator"
+    },
+    "headKeys": {
+        "type": "header",
+        "description": "Keyboard shortcuts"
+    },
+    "kb-left": {
+        "type": "keybinding",
+        "default": "<Super><Ctrl>Left",
+        "description": "Left half"
+    },
+    "kb-right": {
+        "type": "keybinding",
+        "default": "<Super><Ctrl>Right",
+        "description": "Right half"
+    },
+    "kb-top": {
+        "type": "keybinding",
+        "default": "<Super><Ctrl>Up",
+        "description": "Top half"
+    },
+    "kb-bottom": {
+        "type": "keybinding",
+        "default": "<Super><Ctrl>Down",
+        "description": "Bottom half"
+    },
+    "kb-fill": {
+        "type": "keybinding",
+        "default": "<Super><Ctrl>Return",
+        "description": "Fill the work area"
+    },
+    "kb-center": {
+        "type": "keybinding",
+        "default": "<Super><Ctrl>c",
+        "description": "Center the window"
+    },
+    "kb-picker": {
+        "type": "keybinding",
+        "default": "<Super>z",
+        "description": "Open the layout picker"
+    },
+    "kb-editor": {
+        "type": "keybinding",
+        "default": "<Super><Shift>z",
+        "description": "Open the zone editor"
+    },
+    "kb-groups": {
+        "type": "keybinding",
+        "default": "<Super>g",
+        "description": "Open saved arrangements"
+    },
+    "sepCustom": {
+        "type": "separator"
+    },
+    "headCustom": {
+        "type": "header",
+        "description": "Custom layouts"
+    },
+    "custom-layouts": {
+        "type": "generic",
+        "default": []
+    },
+    "clear-custom": {
+        "type": "button",
+        "description": "Delete all custom layouts",
+        "callback": "clearCustomLayouts"
+    },
+    "sepGroups": {
+        "type": "separator"
+    },
+    "headGroups": {
+        "type": "header",
+        "description": "Saved arrangements"
+    },
+    "saved-groups": {
+        "type": "generic",
+        "default": []
+    },
+    "clear-groups": {
+        "type": "button",
+        "description": "Delete all saved arrangements",
+        "callback": "clearSavedGroups"
+    },
+    "sep2": {
+        "type": "separator"
+    },
+    "headAdvanced": {
+        "type": "header",
+        "description": "Advanced"
+    },
+    "debug": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Verbose logging",
+        "tooltip": "Writes placement details to the Cinnamon log (~/.xsession-errors). Enable only for troubleshooting."
+    }
+}
