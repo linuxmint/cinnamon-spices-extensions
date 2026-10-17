@@ -1,0 +1,50 @@
+.cinnamon-launcher-dialog {
+    padding: 1.2em;
+}
+
+.cinnamon-launcher-search {
+    font-size: 1.3em;
+    padding: 0.5em 0.8em;
+    margin-bottom: 1em;
+    border-radius: 8px;
+}
+
+.cinnamon-launcher-search-icon {
+    padding: 0 0.4em;
+}
+
+.cinnamon-launcher-row {
+    padding: 0.5em 0.7em;
+    border-radius: 6px;
+    spacing: 0.7em;
+}
+
+.cinnamon-launcher-row:selected {
+    background-color: rgba(128, 128, 128, 0.25);
+}
+
+.cinnamon-launcher-row-label {
+    font-size: 1em;
+}
+
+.cinnamon-launcher-row-subtitle {
+    font-size: 0.82em;
+    opacity: 0.6;
+}
+
+.cinnamon-launcher-row-hero {
+    padding: 0.7em;
+}
+
+.cinnamon-launcher-row-hero .cinnamon-launcher-row-label {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.cinnamon-launcher-section-header {
+    font-size: 0.78em;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0.5;
+    padding: 0.7em 0.7em 0.3em 0.7em;
+}
