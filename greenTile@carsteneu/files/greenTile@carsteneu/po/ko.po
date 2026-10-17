@@ -1,0 +1,483 @@
+# Korean translation for greenTile (greenTile@carsteneu).
+# Based on the Korean translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Kevin Kim <chaeya@gmail.com>, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.2.7\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2024-08-11 23:42+0900\n"
+"Last-Translator: Kevin Kim <chaeya@gmail.com>\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: lib/ui/editor.js:72
+msgid "Please enter a name."
+msgstr "이름을 입력하세요."
+
+#: lib/ui/editor.js:144
+#, javascript-format
+msgid "from %d"
+msgstr "%d개 이상"
+
+#: lib/ui/editor.js:431
+msgid "Rules (by window count)"
+msgstr "규칙 (창 개수별)"
+
+#: lib/ui/editor.js:435
+msgid "Rule"
+msgstr "규칙"
+
+#: lib/ui/editor.js:436
+msgid "Delete rule"
+msgstr "규칙 삭제"
+
+#: lib/ui/editor.js:444
+msgid "Rule applies from"
+msgstr "규칙 적용 조건:"
+
+#: lib/ui/editor.js:451
+msgid "windows"
+msgstr "개 창 이상"
+
+#: lib/ui/editor.js:453
+msgid "Painter"
+msgstr "레이아웃 그리기"
+
+#: lib/ui/editor.js:471
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"클릭 또는 드래그: 행으로 열에 들어갈 창 개수를 정합니다. 오른쪽 클릭하면 열"
+"이 제거됩니다."
+
+#: lib/ui/editor.js:476
+msgid "Name"
+msgstr "이름"
+
+#: lib/ui/editor.js:477
+msgid "Preset name"
+msgstr "프리셋 이름"
+
+#: lib/ui/editor.js:482
+msgid "Delete preset"
+msgstr "프리셋 삭제"
+
+#: lib/ui/editor.js:485
+msgid "Really delete?"
+msgstr "정말 삭제할까요?"
+
+#: lib/ui/editor.js:486
+msgid "Delete"
+msgstr "삭제"
+
+#: lib/ui/editor.js:490
+msgid "Save"
+msgstr "저장"
+
+#: lib/ui/editor.js:515
+#, javascript-format
+msgid "Result: %s"
+msgstr "결과: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "프리셋 편집"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "할당됨"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "할당 해제"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "창 사이 간격"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "크기 초기화"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "프리셋 — 작업 공간 %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "프리셋 만들기"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "%s 편집"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "뒤로"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "자동: 켬"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "자동: 끔"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "어두운 테마"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "밝은 테마"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "아직 프리셋이 없습니다."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "창 %d개 미리보기"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "창 %d개 미리보기"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "열린 창 없음 — 기본 레이아웃"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "새 프리셋"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"카드를 클릭하면 이 작업 공간에 프리셋을 적용하고 창을 즉시 타일링합니다"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"작업 공간별 프리셋, 자동 모드, 놓을 때 스냅을 지원하는 열 타일링입니다. "
+"shuairan의 gTile에서 포크했습니다."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "설정"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "단축키"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "자동 타일링 단축키"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "작업 공간 프리셋"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "타일링된 창 크기 조절"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "창 위치 바꾸기"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "타일링"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "타일링 안 함"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "프리셋 패널"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "모든 창을 6열로 타일링"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "모든 창을 3열로 타일링"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr "이 작업 공간의 자동 타일링을 켜고 지금 타일링"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "이 작업 공간의 자동 타일링 끄기"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "프리셋 패널 열기"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr "포커스된 타일링 창 너비 늘리기 (한 번 누르면 1 px, 길게 누르면 빨라짐)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "포커스된 타일링 창 너비 줄이기"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "포커스된 타일링 창 높이 늘리기"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "포커스된 타일링 창 높이 줄이기"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "포커스된 타일링 창을 왼쪽 창과 바꾸기"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "포커스된 타일링 창을 오른쪽 창과 바꾸기"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "포커스된 타일링 창을 위쪽 창과 바꾸기"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "포커스된 타일링 창을 아래쪽 창과 바꾸기"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "프리셋 정의 (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "포커스된 창의 '타일링 안 함' 전환"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "설치된 애플리케이션 추가"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"애플리케이션을 선택하면 아래 목록에 추가됩니다. 콤보 상자는 선택할 때마다 초"
+"기화됩니다."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "애플리케이션 추가…"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"이 행 중 하나와 일치하는 창은 타일링되지 않으며, 놓은 위치에서 자유롭게 떠 있"
+"습니다"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "일치 대상"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "텍스트"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"타일링된 창 사이 간격 (프리셋 패널의 − / +로 설정, 이 대화 상자에는 표시되지 "
+"않음)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "타일링 애니메이션"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "창이 새 위치로 부드럽게 이동합니다. 끔: 즉시 그 위치로 이동합니다."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "포커스된 창 주위의 테두리"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Super+화살표로 포커스를 옮기면 새로 포커스된 창을 3초 동안 상태 색의 얇은 테"
+"두리로 표시합니다. 마우스 클릭과 Alt+Tab으로는 표시되지 않습니다."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "단일 창으로 모니터 채우기"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"자동 타일링 또는 프리셋이 켜져 있으면 타일링된 단일 창이 그대로 두지 않고 사"
+"용 가능한 전체 영역을 채웁니다."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "창 하나"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"자동 타일링이나 프리셋이 켜져 있을 때 창이 하나만 남으면 어떻게 할지 정합니"
+"다. 그대로 두기: 아무것도 하지 않습니다. 모니터 채우기: 사용 가능한 영역 전체"
+"를 채웁니다. 창 가운데 정렬: 너비의 약 62 %(황금비), 높이의 90 %로 가운데에 "
+"배치합니다."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "그대로 두기"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "모니터 채우기"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "창 가운데 정렬"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "프리셋 패널 테마"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"'시스템 설정 따르기'는 데스크톱 색 구성표를 실시간으로 따르며, '밝게'와 '어둡"
+"게'는 이를 무시합니다."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "시스템 설정 따르기"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "밝게"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "어둡게"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "강조 색"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"'테마 따르기'는 Cinnamon 테마의 강조 색을 실시간으로 따릅니다. '사용자 지"
+"정'은 아래 색을 사용합니다."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "테마 따르기"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "사용자 지정"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "사용자 지정 강조 색"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr "'강조 색'이 '사용자 지정'일 때 프리셋 패널과 편집기의 강조 색입니다."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "상태 색"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"'자동: 켬' 표시, 할당된 프리셋 카드, 포커스 테두리의 색입니다. '녹색'은 현재 "
+"모양을 유지합니다. '테마 따르기'는 Cinnamon 테마의 강조 색을 실시간으로 따릅"
+"니다. '사용자 지정'은 아래 색을 사용합니다."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "녹색"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "사용자 지정 상태 색"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"'상태 색'이 '사용자 지정'일 때 프리셋 패널과 포커스 테두리의 상태 색입니다."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "창 플로팅"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "창 다시 타일링"

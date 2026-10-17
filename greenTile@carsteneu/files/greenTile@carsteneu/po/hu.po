@@ -1,0 +1,495 @@
+# Hungarian translation for greenTile (greenTile@carsteneu).
+# Based on the Hungarian translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Kálmán „KAMI” Szalai <kami911@gmail.com>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.2.7\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2023-01-09 21:16+0100\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: Hungarian\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: lib/ui/editor.js:72
+msgid "Please enter a name."
+msgstr "Adj meg egy nevet."
+
+#: lib/ui/editor.js:144
+#, javascript-format
+msgid "from %d"
+msgstr "legalább %d"
+
+#: lib/ui/editor.js:431
+msgid "Rules (by window count)"
+msgstr "Szabályok (ablakszám szerint)"
+
+#: lib/ui/editor.js:435
+msgid "Rule"
+msgstr "Szabály"
+
+#: lib/ui/editor.js:436
+msgid "Delete rule"
+msgstr "Szabály törlése"
+
+#: lib/ui/editor.js:444
+msgid "Rule applies from"
+msgstr "A szabály érvényes legalább"
+
+#: lib/ui/editor.js:451
+msgid "windows"
+msgstr "ablak esetén"
+
+#: lib/ui/editor.js:453
+msgid "Painter"
+msgstr "Rajzterület"
+
+#: lib/ui/editor.js:471
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Kattints vagy húzd: a sor határozza meg, hány ablak fér az oszlopba. A jobb "
+"kattintás eltávolít egy oszlopot."
+
+#: lib/ui/editor.js:476
+msgid "Name"
+msgstr "Név"
+
+#: lib/ui/editor.js:477
+msgid "Preset name"
+msgstr "Előbeállítás neve"
+
+#: lib/ui/editor.js:482
+msgid "Delete preset"
+msgstr "Előbeállítás törlése"
+
+#: lib/ui/editor.js:485
+msgid "Really delete?"
+msgstr "Biztosan törlöd?"
+
+#: lib/ui/editor.js:486
+msgid "Delete"
+msgstr "Törlés"
+
+#: lib/ui/editor.js:490
+msgid "Save"
+msgstr "Mentés"
+
+#: lib/ui/editor.js:515
+#, javascript-format
+msgid "Result: %s"
+msgstr "Eredmény: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Előbeállítás szerkesztése"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Hozzárendelve"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Hozzárendelés megszüntetése"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Ablakok közötti távolság"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Méretek visszaállítása"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Előbeállítások — %d. munkaterület · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Előbeállítás létrehozása"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "%s szerkesztése"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Vissza"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: be"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: ki"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Sötét téma"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Világos téma"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Még nincsenek előbeállítások."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Előnézet %d ablak esetén"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Előnézet %d ablak esetén"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Nincs nyitott ablak — alapelrendezés"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Új előbeállítás"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Kattints egy kártyára, hogy alkalmazd az előbeállítást ezen a "
+"munkaterületen, és azonnal csempézd az ablakokat"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Oszlopos csempézés munkaterületenkénti előbeállításokkal, automatikus móddal "
+"és elengedéskori illesztéssel. A shuairan által készített gTile forkja."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Beállítások"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Gyorsbillentyűk"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Automatikus csempézés gyorsbillentyűi"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Munkaterület-előbeállítások"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Csempézett ablakok átméretezése"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Ablakok felcserélése"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Csempézés"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Soha ne csempézzen"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Előbeállítás-panel"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Az összes ablak csempézése 6 oszlopba"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Az összes ablak csempézése 3 oszlopba"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Automatikus csempézés bekapcsolása ezen a munkaterületen, és azonnali "
+"csempézés"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Automatikus csempézés kikapcsolása ezen a munkaterületen"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Az előbeállítás-panel megnyitása"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"A fókuszált csempézett ablak szélesítése (koppintás = 1 px, nyomva tartás "
+"gyorsít)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "A fókuszált csempézett ablak keskenyítése"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "A fókuszált csempézett ablak magasítása"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "A fókuszált csempézett ablak alacsonyítása"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "A fókuszált csempézett ablak felcserélése a bal oldali szomszédjával"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "A fókuszált csempézett ablak felcserélése a jobb oldali szomszédjával"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "A fókuszált csempézett ablak felcserélése a felette lévő szomszédjával"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "A fókuszált csempézett ablak felcserélése az alatta lévő szomszédjával"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Előbeállítás-definíciók (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "A „Soha ne csempézzen” be- és kikapcsolása a fókuszált ablaknál"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Telepített alkalmazás hozzáadása"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Válassz egy alkalmazást, és az bekerül az alábbi listába. A legördülő lista "
+"minden választás után visszaáll."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Alkalmazás hozzáadása …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Az ezen sorok egyikére illeszkedő ablakok soha nem lesznek csempézve; "
+"szabadon lebegnek, bárhová teszed őket"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Egyezés"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Szöveg"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Csempézett ablakok közötti távolság (beállítás: − / + az előbeállítás-"
+"panelen; ebben a párbeszédablakban nem jelenik meg)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Csempézés animálása"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "Az ablakok az új helyükre siklanak. Kikapcsolva: azonnal odaugranak."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Keret a fókuszált ablak körül"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Super+Nyíl fókuszváltás után három másodpercig vékony, állapotszínű kerettel "
+"jelöli az újonnan fókuszba került ablakot. Egérkattintásnál és Alt+Tab "
+"használatakor nem jelenik meg."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "A monitor kitöltése egyetlen ablakkal"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Automatikus csempézéssel vagy előbeállítással egyetlen csempézett ablak "
+"kitölti a teljes használható területet ahelyett, hogy érintetlenül maradna."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Egyetlen ablak"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Mi történik az egyetlen csempézett ablakkal, ha az automatikus csempézés "
+"vagy egy előbeállítás be van kapcsolva. Hagyd érintetlenül: nem tesz vele "
+"semmit. Töltse ki a monitort: kitölti a teljes hasznos területet. Ablak "
+"középre: körülbelül a szélesség 62 %-ánál (aranymetszés) és a magasság 90 %-"
+"ánál középre igazítja."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Hagyd érintetlenül"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Töltse ki a monitort"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Ablak középre"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Az előbeállítás-panel témája"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"A „Rendszer követése” valós időben követi az asztal színsémáját; a „Világos” "
+"és a „Sötét” felülbírálja."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Rendszer követése"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Világos"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Sötét"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Kiemelőszín"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"A „Téma követése” valós időben átveszi a Cinnamon-téma kiemelőszínét. Az "
+"„Egyéni” az alábbi színt használja."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Téma követése"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Egyéni"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Egyéni kiemelőszín"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Az előbeállítás-panel és a szerkesztő kiemelőszíne, ha a Kiemelőszín értéke "
+"„Egyéni”."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Állapotszín"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Az „Auto: be” jelölő, a hozzárendelt előbeállítás-kártyák és a fókuszkeret "
+"színe. A „Zöld” megtartja a jelenlegi megjelenést. A „Téma követése” valós "
+"időben átveszi a Cinnamon-téma kiemelőszínét. Az „Egyéni” az alábbi színt "
+"használja."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Zöld"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Egyéni állapotszín"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Az előbeállítás-panel és a fókuszkeret állapotszíne, ha az Állapotszín "
+"értéke „Egyéni”."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Az ablak lebeg"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Az ablak ismét csempézve"

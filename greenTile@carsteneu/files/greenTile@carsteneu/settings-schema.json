@@ -1,0 +1,305 @@
+{
+   "layout": {
+      "type": "layout",
+      "pages": [
+         "settings-tab",
+         "hotkeys-tab"
+      ],
+      "settings-tab": {
+         "type": "page",
+         "title": "Settings",
+         "sections": [
+            "tiling-section",
+            "panel-section",
+            "exclusion-section"
+         ]
+      },
+      "hotkeys-tab": {
+         "type": "page",
+         "title": "Hotkeys",
+      "sections": [
+         "columns-hotkey-section",
+         "preset-section",
+         "resize-section",
+         "swap-section",
+         "exclusion-hotkey-section"
+      ]
+      },
+      "columns-hotkey-section": {
+         "type": "section",
+         "title": "Auto-Tile Hotkeys",
+         "keys": [
+            "columns6Hotkey",
+            "columns3Hotkey",
+            "autoOnHotkey",
+            "autoOffHotkey"
+         ]
+      },
+      "preset-section": {
+         "type": "section",
+         "title": "Workspace Presets",
+         "keys": [
+            "presetHotkey",
+            "presets"
+         ]
+      },
+      "resize-section": {
+         "type": "section",
+         "title": "Resize tiled windows",
+         "keys": [
+            "resizeWiderHotkey",
+            "resizeNarrowerHotkey",
+            "resizeTallerHotkey",
+            "resizeShorterHotkey"
+         ]
+      },
+      "swap-section": {
+         "type": "section",
+         "title": "Swap windows",
+         "keys": [
+            "swapLeftHotkey",
+            "swapRightHotkey",
+            "swapUpHotkey",
+            "swapDownHotkey"
+         ]
+      },
+      "tiling-section": {
+         "type": "section",
+         "title": "Tiling",
+         "keys": [
+            "tileAnimation",
+            "focusBorder",
+            "singleWindowMode"
+         ]
+      },
+      "exclusion-section": {
+         "type": "section",
+         "title": "Never tile",
+         "keys": [
+            "excludeAppPicker",
+            "exclusions"
+         ]
+      },
+      "exclusion-hotkey-section": {
+         "type": "section",
+         "title": "Never tile",
+         "keys": [
+            "excludeHotkey"
+         ]
+      },
+      "panel-section": {
+         "type": "section",
+         "title": "Preset panel",
+         "keys": [
+            "panelTheme",
+            "accentMode",
+            "accentColor",
+            "stateMode",
+            "stateColor"
+         ]
+      }
+   },
+   "columns6Hotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>6",
+      "description": "Tile all windows into 6 columns"
+   },
+   "columns3Hotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>3",
+      "description": "Tile all windows into 3 columns"
+   },
+   "autoOnHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>a",
+      "description": "Turn automatic tiling on for this workspace and tile now"
+   },
+   "autoOffHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>d",
+      "description": "Turn automatic tiling off for this workspace"
+   },
+   "presetHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>p",
+      "description": "Open the preset panel"
+   },
+   "resizeWiderHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Alt>Right",
+      "description": "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+   },
+   "resizeNarrowerHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Alt>Left",
+      "description": "Make the focused tiled window narrower"
+   },
+   "resizeTallerHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Alt>Down",
+      "description": "Make the focused tiled window taller"
+   },
+   "resizeShorterHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Alt>Up",
+      "description": "Make the focused tiled window shorter"
+   },
+   "swapLeftHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>Left",
+      "description": "Swap the focused tiled window with its neighbor to the left"
+   },
+   "swapRightHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>Right",
+      "description": "Swap the focused tiled window with its neighbor to the right"
+   },
+   "swapUpHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>Up",
+      "description": "Swap the focused tiled window with its neighbor above"
+   },
+   "swapDownHotkey": {
+      "type": "keybinding",
+      "default": "<Super><Ctrl>Down",
+      "description": "Swap the focused tiled window with its neighbor below"
+   },
+   "presets": {
+      "type": "string",
+      "default": "[{\"id\":\"p1\",\"name\":\"Two columns\",\"rules\":[{\"min\":2,\"stacks\":[1,1]}]},{\"id\":\"p2\",\"name\":\"Three columns\",\"rules\":[{\"min\":2,\"stacks\":[1,1,1]}]},{\"id\":\"p3\",\"name\":\"Four columns\",\"rules\":[{\"min\":2,\"stacks\":[1,1,1,1]}]},{\"id\":\"p4\",\"name\":\"Six columns\",\"rules\":[{\"min\":2,\"stacks\":[1,1,1,1,1,1]}]},{\"id\":\"p5\",\"name\":\"Vertical stack\",\"rules\":[{\"min\":2,\"stacks\":[2]}]},{\"id\":\"p6\",\"name\":\"Five columns\",\"rules\":[{\"min\":2,\"stacks\":[1,1,1,1,1]}]},{\"id\":\"p7\",\"name\":\"Grid 2 × 2\",\"rules\":[{\"min\":2,\"stacks\":[2,2]}]},{\"id\":\"p8\",\"name\":\"Grid 3 × 2\",\"rules\":[{\"min\":2,\"stacks\":[2,2,2]}]},{\"id\":\"p9\",\"name\":\"Grid 4 × 2\",\"rules\":[{\"min\":2,\"stacks\":[2,2,2,2]}]},{\"id\":\"p10\",\"name\":\"Left main + stacks\",\"rules\":[{\"min\":2,\"stacks\":[1,2,2]}]},{\"id\":\"p11\",\"name\":\"Right main\",\"rules\":[{\"min\":2,\"stacks\":[3,1]}]},{\"id\":\"p12\",\"name\":\"Center main\",\"rules\":[{\"min\":2,\"stacks\":[2,1,2]}]},{\"id\":\"p13\",\"name\":\"Wide center\",\"rules\":[{\"min\":2,\"stacks\":[1,1,1],\"spans\":[1,4,1]}]},{\"id\":\"p14\",\"name\":\"Wide center + stacks\",\"rules\":[{\"min\":2,\"stacks\":[2,1,2],\"spans\":[1,4,1]}]},{\"id\":\"p15\",\"name\":\"Two thirds left\",\"rules\":[{\"min\":2,\"stacks\":[1,2],\"spans\":[4,2]}]},{\"id\":\"p16\",\"name\":\"Two thirds right\",\"rules\":[{\"min\":2,\"stacks\":[2,1],\"spans\":[2,4]}]}]",
+      "description": "Preset definitions (JSON)"
+   },
+   "starterPresetsImported": {
+      "type": "generic",
+      "default": false
+   },
+   "starterGeneration": {
+      "type": "generic",
+      "default": 1
+   },
+   "excludeHotkey": {
+      "type": "keybinding",
+      "default": "<Super>g",
+      "description": "Toggle 'never tile' for the focused window"
+   },
+   "excludeAppPicker": {
+      "type": "combobox",
+      "default": "picker",
+      "description": "Add an installed application",
+      "tooltip": "Pick an application and it is added to the list below. The combobox resets after each pick.",
+      "options": {
+         "Add application …": "picker"
+      }
+   },
+   "exclusions": {
+      "type": "list",
+      "description": "Windows matching one of these rows are never tiled; they float freely wherever you put them",
+      "columns": [
+         {"id": "match", "title": "Match", "type": "string", "options": {"Window class": "class", "Title contains": "title", "App id": "app"}},
+         {"id": "text", "title": "Text", "type": "string"}
+      ],
+      "default": [
+         {"match": "class", "text": "xlet-settings.py"}
+      ]
+   },
+   "exclusionsSeeded": {
+      "type": "generic",
+      "default": false
+   },
+   "layouts": {
+      "type": "generic",
+      "default": ""
+   },
+   "panelSize": {
+      "type": "generic",
+      "default": "{\"list\":{\"w\":800,\"h\":560}}"
+   },
+   "windowGap": {
+      "type": "spinbutton",
+      "description": "Gap between tiled windows (set with − / + in the preset panel; not shown in this dialog)",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "units": "px",
+      "default": 0
+   },
+   "tileAnimation": {
+      "type": "switch",
+      "default": true,
+      "description": "Animate tiling",
+      "tooltip": "Windows glide into their new place. Off: they jump there at once."
+   },
+   "focusBorder": {
+      "type": "switch",
+      "default": true,
+      "description": "Border around the focused window",
+      "tooltip": "After a Super+Arrow focus move, mark the newly focused window with a thin border in the state color for three seconds. Mouse clicks and Alt+Tab do not show it."
+   },
+   "fillSingleWindow": {
+      "type": "switch",
+      "default": false,
+      "description": "Fill the monitor with a single window",
+      "tooltip": "With automatic tiling or a preset on, a single tiled window fills the whole usable area instead of being left untouched."
+   },
+   "singleWindowMode": {
+      "type": "combobox",
+      "default": "center",
+      "description": "A single window",
+      "tooltip": "What happens to a lone tiled window when automatic tiling or a preset is on. \"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it fill the whole usable area. \"Center the window\" centers it at about 62 % of the width (golden ratio) and 90 % of the height.",
+      "options": {
+         "Leave it untouched": "leave",
+         "Fill the monitor": "fill",
+         "Center the window": "center"
+      }
+   },
+   "singleWindowMigrated": {
+      "type": "generic",
+      "default": false
+   },
+   "panelTheme": {
+      "type": "combobox",
+      "default": "system",
+      "description": "Theme of the preset panel",
+      "tooltip": "Follow system tracks the desktop color scheme live; Light and Dark override it.",
+      "options": {
+         "Follow system": "system",
+         "Light": "light",
+         "Dark": "dark"
+      }
+   },
+   "accentMode": {
+      "type": "combobox",
+      "default": "theme",
+      "description": "Accent color",
+      "tooltip": "Follow theme tracks the accent color of the Cinnamon theme live. Custom uses the color below.",
+      "options": {
+         "Follow theme": "theme",
+         "Custom": "own"
+      }
+   },
+   "accentColor": {
+      "type": "colorchooser",
+      "default": "rgb(255,150,64)",
+      "description": "Custom accent color",
+      "tooltip": "Accent of the preset panel and editor when Accent color is Custom.",
+      "dependency": "accentMode=own"
+   },
+   "stateMode": {
+      "type": "combobox",
+      "default": "green",
+      "description": "State color",
+      "tooltip": "Color of the \"Auto: on\" marker, the assigned preset cards and the focus border. Green keeps today's look. Follow theme tracks the accent color of the Cinnamon theme live. Custom uses the color below.",
+      "options": {
+         "Green": "green",
+         "Follow theme": "theme",
+         "Custom": "own"
+      }
+   },
+   "stateColor": {
+      "type": "colorchooser",
+      "default": "rgb(156,224,114)",
+      "description": "Custom state color",
+      "tooltip": "State color of the preset panel and the focus border when State color is Custom.",
+      "dependency": "stateMode=own"
+   }
+}

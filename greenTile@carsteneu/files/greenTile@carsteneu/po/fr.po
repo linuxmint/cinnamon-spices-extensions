@@ -1,0 +1,495 @@
+# French translation for greenTile (greenTile@carsteneu).
+# Based on the French translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# claudiux, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.2.7\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2025-02-05 18:38+0100\n"
+"Last-Translator: claudiux\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: lib/ui/editor.js:72
+msgid "Please enter a name."
+msgstr "Veuillez saisir un nom."
+
+#: lib/ui/editor.js:144
+#, javascript-format
+msgid "from %d"
+msgstr "dès %d"
+
+#: lib/ui/editor.js:431
+msgid "Rules (by window count)"
+msgstr "Règles (selon le nombre de fenêtres)"
+
+#: lib/ui/editor.js:435
+msgid "Rule"
+msgstr "Règle"
+
+#: lib/ui/editor.js:436
+msgid "Delete rule"
+msgstr "Supprimer la règle"
+
+#: lib/ui/editor.js:444
+msgid "Rule applies from"
+msgstr "La règle s'applique à partir de"
+
+#: lib/ui/editor.js:451
+msgid "windows"
+msgstr "fenêtres"
+
+#: lib/ui/editor.js:453
+msgid "Painter"
+msgstr "Zone de dessin"
+
+#: lib/ui/editor.js:471
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Cliquez ou faites glisser : la ligne définit le nombre de fenêtres que "
+"contient la colonne. Un clic droit supprime une colonne."
+
+#: lib/ui/editor.js:476
+msgid "Name"
+msgstr "Nom"
+
+#: lib/ui/editor.js:477
+msgid "Preset name"
+msgstr "Nom du préréglage"
+
+#: lib/ui/editor.js:482
+msgid "Delete preset"
+msgstr "Supprimer le préréglage"
+
+#: lib/ui/editor.js:485
+msgid "Really delete?"
+msgstr "Vraiment supprimer ?"
+
+#: lib/ui/editor.js:486
+msgid "Delete"
+msgstr "Supprimer"
+
+#: lib/ui/editor.js:490
+msgid "Save"
+msgstr "Enregistrer"
+
+#: lib/ui/editor.js:515
+#, javascript-format
+msgid "Result: %s"
+msgstr "Résultat : %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Modifier le préréglage"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Attribué"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Retirer l'attribution"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Espacement entre les fenêtres"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Réinitialiser les tailles"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Préréglages — espace de travail %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Créer un préréglage"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Modifier %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Retour"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto : activé"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto : désactivé"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Thème sombre"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Thème clair"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Aucun préréglage pour l'instant."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Aperçu pour %d fenêtre"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Aperçu pour %d fenêtres"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Aucune fenêtre ouverte — disposition de base"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Nouveau préréglage"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Cliquez sur une carte pour l'appliquer à cet espace de travail et tuiler les "
+"fenêtres immédiatement"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Tuilage en colonnes avec préréglages par espace de travail, mode automatique "
+"et ancrage au relâchement. Dérivé de gTile par shuairan."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Paramètres"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Raccourcis clavier"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Raccourcis clavier du tuilage automatique"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Préréglages des espaces de travail"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Redimensionner les fenêtres tuilées"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Échanger les fenêtres"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Tuilage"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Ne jamais tuiler"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Panneau des préréglages"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Tuiler toutes les fenêtres en 6 colonnes"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Tuiler toutes les fenêtres en 3 colonnes"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Activer le tuilage automatique pour cet espace de travail et tuiler "
+"maintenant"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Désactiver le tuilage automatique pour cet espace de travail"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Ouvrir le panneau des préréglages"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Rendre la fenêtre tuilée active plus large (appui = 1 px, maintenir pour "
+"accélérer)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Rendre la fenêtre tuilée active plus étroite"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Rendre la fenêtre tuilée active plus haute"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Rendre la fenêtre tuilée active plus basse"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Échanger la fenêtre tuilée active avec sa voisine de gauche"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Échanger la fenêtre tuilée active avec sa voisine de droite"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Échanger la fenêtre tuilée active avec sa voisine du dessus"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Échanger la fenêtre tuilée active avec sa voisine du dessous"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Définitions des préréglages (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Activer/désactiver « Ne jamais tuiler » pour la fenêtre active"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Ajouter une application installée"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Choisissez une application : elle est ajoutée à la liste ci-dessous. La "
+"liste déroulante se réinitialise après chaque choix."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Ajouter une application …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Les fenêtres correspondant à l'une de ces lignes ne sont jamais tuilées ; "
+"elles flottent librement là où vous les placez"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Correspondance"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Texte"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Espacement entre les fenêtres tuilées (réglé avec − / + dans le panneau des "
+"préréglages ; non affiché dans cette boîte de dialogue)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Animer le tuilage"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+"Les fenêtres glissent vers leur nouvelle place. Désactivé : elles y sautent "
+"instantanément."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Bordure autour de la fenêtre active"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Après un déplacement du focus avec Super+Flèche, marque la nouvelle fenêtre "
+"active d'une fine bordure de la couleur d'état pendant trois secondes. Les "
+"clics de souris et Alt+Tab ne l'affichent pas."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Remplir l'écran avec une seule fenêtre"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Avec le tuilage automatique ou un préréglage actif, une fenêtre isolée "
+"tuilée remplit toute la zone utile au lieu d'être laissée intacte."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Une seule fenêtre"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Ce qui arrive à une fenêtre pavée seule lorsque le pavage automatique ou un "
+"préréglage est actif. Ne pas y toucher : ne lui fait rien. Remplir l'écran : "
+"elle occupe toute la zone utile. Centrer la fenêtre : elle est centrée à "
+"environ 62 % de la largeur (nombre d'or) et 90 % de la hauteur."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Ne pas y toucher"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Remplir l'écran"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Centrer la fenêtre"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Thème du panneau des préréglages"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"« Suivre le système » suit en direct le jeu de couleurs du bureau ; « Clair "
+"» et « Sombre » le remplacent."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Suivre le système"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Clair"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Sombre"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Couleur d'accentuation"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"« Suivre le thème » reprend en direct la couleur d'accentuation du thème "
+"Cinnamon. « Personnalisée » utilise la couleur ci-dessous."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Suivre le thème"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Personnalisée"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Couleur d'accentuation personnalisée"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Accentuation du panneau des préréglages et de l'éditeur lorsque « Couleur "
+"d'accentuation » est sur « Personnalisée »."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Couleur d'état"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Couleur du marqueur « Auto : activé », des cartes de préréglage attribuées "
+"et de la bordure de focus. « Vert » conserve l'apparence actuelle. « Suivre "
+"le thème » reprend en direct la couleur d'accentuation du thème Cinnamon. « "
+"Personnalisée » utilise la couleur ci-dessous."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Vert"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Couleur d'état personnalisée"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Couleur d'état du panneau des préréglages et de la bordure de focus lorsque "
+"« Couleur d'état » est sur « Personnalisée »."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Fenêtre flottante"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Fenêtre de nouveau tuilée"

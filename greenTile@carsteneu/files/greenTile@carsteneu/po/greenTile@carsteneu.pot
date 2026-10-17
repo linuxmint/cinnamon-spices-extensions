@@ -1,0 +1,452 @@
+# Translation template for greenTile (greenTile@carsteneu).
+# Copyright (C) vibou, shuairan and the gTile contributors
+# Copyright (C) 2026 carsten_eu
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.2.7\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/ui/editor.js:72
+msgid "Please enter a name."
+msgstr ""
+
+#: lib/ui/editor.js:144
+#, javascript-format
+msgid "from %d"
+msgstr ""
+
+#: lib/ui/editor.js:431
+msgid "Rules (by window count)"
+msgstr ""
+
+#: lib/ui/editor.js:435
+msgid "Rule"
+msgstr ""
+
+#: lib/ui/editor.js:436
+msgid "Delete rule"
+msgstr ""
+
+#: lib/ui/editor.js:444
+msgid "Rule applies from"
+msgstr ""
+
+#: lib/ui/editor.js:451
+msgid "windows"
+msgstr ""
+
+#: lib/ui/editor.js:453
+msgid "Painter"
+msgstr ""
+
+#: lib/ui/editor.js:471
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+
+#: lib/ui/editor.js:476
+msgid "Name"
+msgstr ""
+
+#: lib/ui/editor.js:477
+msgid "Preset name"
+msgstr ""
+
+#: lib/ui/editor.js:482
+msgid "Delete preset"
+msgstr ""
+
+#: lib/ui/editor.js:485
+msgid "Really delete?"
+msgstr ""
+
+#: lib/ui/editor.js:486
+msgid "Delete"
+msgstr ""
+
+#: lib/ui/editor.js:490
+msgid "Save"
+msgstr ""
+
+#: lib/ui/editor.js:515
+#, javascript-format
+msgid "Result: %s"
+msgstr ""
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr ""
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr ""
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr ""
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr ""
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr ""
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr ""
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr ""
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr ""
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr ""
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr ""
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr ""
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr ""
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr ""
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr ""
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr ""
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr ""
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr ""
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr ""
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr ""
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr ""
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr ""
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr ""
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr ""
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr ""
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr ""
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr ""
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr ""
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr ""
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr ""
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr ""
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr ""
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr ""
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr ""
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr ""
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr ""
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr ""
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr ""
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr ""
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr ""
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr ""
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr ""
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr ""
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr ""
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr ""
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr ""
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr ""
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr ""
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr ""
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr ""
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+
+#. settings-schema.json->singleWindowMode->description
+msgid "A single window"
+msgstr ""
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr ""
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Fill the monitor"
+msgstr ""
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Center the window"
+msgstr ""
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr ""
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr ""
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr ""
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr ""
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr ""
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr ""
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr ""
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr ""
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr ""
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr ""
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr ""
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr ""
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr ""
