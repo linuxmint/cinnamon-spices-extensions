@@ -455,7 +455,7 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 x_align: St.Align.START,
                 y_align: St.Align.START
             });
-            this._toolbar.set_width(1120 * this._scale);
+            this._toolbar.set_width(1150 * this._scale);
             this._toolbar.set_height(54 * this._scale);
             this._toolbar.set_position(30 * this._scale, 30 * this._scale);
 
@@ -491,30 +491,124 @@ if (typeof ScreenshotEditDialog !== 'function') {
             const separator = new St.BoxLayout({ vertical: true, style_class: 'edit-toolbar-separator' });
             this._toolbar.add_child(separator);
 
-            // Thicknesses buttons
-            this._thicknesses = [5, 9, 15];
-            this._thicknessButtons = [];
-            const THICKNESS_ICON_SIZES = { 5: 12, 9: 24, 15: 36 };
-            for (const t of this._thicknesses) {
-                const thickIconSize = THICKNESS_ICON_SIZES[t];
-                let clampRatio = 1.0;
-                if (t === 15) clampRatio = 0.5;
-                if (t === 9) clampRatio = 0.5;
-                if (t === 5) clampRatio = 0.5;
-                const iconSize = (this._scale <= 1) ? thickIconSize : Math.min(Math.floor(thickIconSize * this._scale * clampRatio));
-                const btn = new St.Button({ style_class: 'edit-toolbar-btn thicknesses' });
-                const icon = new St.Icon({
-                    gicon: new Gio.FileIcon({ file: Gio.File.new_for_path(ICONS_PATH + 'thickness-symbolic.svg')}),
-                    icon_size: iconSize
-                });
-                btn.set_child(icon);
-                btn.set_size(BTN_TOOLBAR * this._scale, BTN_TOOLBAR * this._scale);
-                btn.connect('clicked', () => {
-                    this._setThickness(t);
-                });
-                this._toolbar.add_child(btn);
-                this._thicknessButtons.push(btn);
-            }
+            // === THICKNESS SLIDER (CUSTOM) ===
+            this._minThick = 2;
+            this._maxThick = 30;
+            
+            this._thicknessBox = new St.BoxLayout({
+                vertical: false,
+                style_class: 'edit-toolbar-thickness-box',
+                y_align: Clutter.ActorAlign.CENTER
+            });
+            this._thicknessBox.set_style('margin-left: 12px; margin-right: 12px;');
+
+            const sliderWidth = 100 * this._scale;
+            this._thicknessSlider = new St.Widget({
+                reactive: true,
+                width: sliderWidth,
+                height: 20 * this._scale,
+                y_align: Clutter.ActorAlign.CENTER
+            });
+
+            const track = new St.Widget({
+                width: sliderWidth,
+                height: 4 * this._scale,
+                y: Math.round(8 * this._scale),
+                style: 'background-color: rgba(255,255,255,0.25); border-radius: 2px;'
+            });
+            
+            const fill = new St.Widget({
+                width: 0,
+                height: 4 * this._scale,
+                y: Math.round(8 * this._scale),
+                style: 'background-color: rgba(255,255,255,0.9); border-radius: 2px;'
+            });
+            
+            const handleSize = 14 * this._scale;
+            const handle = new St.Widget({
+                width: handleSize,
+                height: handleSize,
+                y: Math.round(3 * this._scale),
+                style: `background-color: #ffffff; border-radius: ${7 * this._scale}px; box-shadow: 0px 1px 3px rgba(0,0,0,0.5);`
+            });
+
+            this._thicknessSlider.add_child(track);
+            this._thicknessSlider.add_child(fill);
+            this._thicknessSlider.add_child(handle);
+
+            const initialDisplayVal = this._currentTool === 'text' ? this._thickness * 5 : this._thickness;
+            this._thicknessLabel = new St.Label({
+                text: `${initialDisplayVal}px`,
+                y_align: Clutter.ActorAlign.CENTER,
+                style: `color: rgba(255,255,255,0.9); font-size: ${Math.round(13 * this._scale)}px; margin-left: 10px; width: ${40 * this._scale}px;`
+            });
+
+            this._thicknessSlider.updateValue = (val) => {
+                const clampedVal = Math.max(0, Math.min(1, val));
+                const handleX = Math.round(clampedVal * (sliderWidth - handleSize));
+                
+                handle.set_x(handleX);
+                fill.set_width(handleX + (handleSize / 2));
+                
+                let newThickness = Math.round(clampedVal * (this._maxThick - this._minThick) + this._minThick);
+                
+                if (this._thicknessLabel) {
+                    const displayVal = this._currentTool === 'text' ? newThickness * 5 : newThickness;
+                    this._thicknessLabel.set_text(`${displayVal}px`);
+                }
+
+                if (this._thickness !== newThickness) {
+                    this._thickness = newThickness;
+                    this._applyColorToActiveTextEntries();
+                }
+            };
+
+            let capturedEventId = 0;
+
+            const updateSliderFromEvent = (event) => {
+                const [x] = event.get_coords();
+                const [actorX] = this._thicknessSlider.get_transformed_position();
+                this._thicknessSlider.updateValue((x - actorX - handleSize / 2) / (sliderWidth - handleSize));
+            };
+
+            const stopDrag = () => {
+                if (capturedEventId) {
+                    global.stage.disconnect(capturedEventId);
+                    capturedEventId = 0;
+                }
+            };
+
+            this._thicknessSlider.connect('button-press-event', (actor, event) => {
+                updateSliderFromEvent(event);
+                global.stage.set_key_focus(this);
+
+                if (!capturedEventId) {
+                    capturedEventId = global.stage.connect('captured-event', (stage, evt) => {
+                        const type = evt.type();
+                        
+                        if (type === Clutter.EventType.MOTION) {
+                            updateSliderFromEvent(evt);
+                            return Clutter.EVENT_STOP;
+                        } else if (type === Clutter.EventType.BUTTON_RELEASE) {
+                            updateSliderFromEvent(evt);
+                            stopDrag();
+                            return Clutter.EVENT_STOP;
+                        }
+                        
+                        return Clutter.EVENT_PROPAGATE;
+                    });
+                }
+                return Clutter.EVENT_STOP;
+            });
+
+            this.connect('destroy', stopDrag);
+
+            const initialVal = (this._thickness - this._minThick) / (this._maxThick - this._minThick);
+            this._thicknessSlider.updateValue(initialVal);
+
+            this._thicknessBox.add_child(this._thicknessSlider);
+            this._thicknessBox.add_child(this._thicknessLabel);
+            this._toolbar.add_child(this._thicknessBox);
 
             // Colors buttons
             this._colors = [
@@ -642,9 +736,6 @@ if (typeof ScreenshotEditDialog !== 'function') {
                 const btn = this[config.name];
                 if (btn) attachTooltip(btn, config.tooltip);
             });
-            this._thicknessButtons.forEach((btn, i) => {
-                attachTooltip(btn, _('Thickness/size') + " " + this._thicknesses[i]);
-            });
             this._colorButtons.forEach((btn, i) => {
                 attachTooltip(btn, this._colorTooltips[i]);
             });
@@ -693,6 +784,11 @@ if (typeof ScreenshotEditDialog !== 'function') {
             };
             Object.values(toolMap).forEach(btn => btn && btn.remove_style_pseudo_class('active'));
             toolMap[tool] && toolMap[tool].add_style_pseudo_class('active');
+
+            if (this._thicknessLabel) {
+                const displayVal = this._currentTool === 'text' ? this._thickness * 5 : this._thickness;
+                this._thicknessLabel.set_text(`${displayVal}px`);
+            }
             
             // Update thickness and color states based on tool
             this._setThickness(this._thickness);
@@ -703,19 +799,20 @@ if (typeof ScreenshotEditDialog !== 'function') {
             this._thickness = t;
             const disableThickness = (this._currentTool === 'eraser');
             
-            // Visual feedback on selected button
-            this._thicknessButtons.forEach((btn, i) => {
+            if (this._thicknessBox && this._thicknessSlider) {
                 if (disableThickness) {
-                    btn.add_style_class_name('disabled');
-                    btn.reactive = false;
-                    btn.remove_style_pseudo_class('active');
+                    this._thicknessSlider.reactive = false;
+                    this._thicknessBox.set_opacity(100);    
                 } else {
-                    btn.remove_style_class_name('disabled');
-                    btn.reactive = true;
-                    if (this._thicknesses[i] === t) btn.add_style_pseudo_class('active');
-                    else btn.remove_style_pseudo_class('active');
+                    this._thicknessSlider.reactive = true;
+                    this._thicknessBox.set_opacity(255);
+                    
+                    const value = (t - this._minThick) / (this._maxThick - this._minThick);
+                    if (typeof this._thicknessSlider.updateValue === 'function') {
+                        this._thicknessSlider.updateValue(value);
+                    }
                 }
-            });
+            }
             this._applyColorToActiveTextEntries();
         }
 
@@ -1224,9 +1321,6 @@ if (typeof ScreenshotEditDialog !== 'function') {
                                 try {
                                     // Save the final rendered copy
                                     pixbufOut.savev(destPath, 'png', [], []);
-                                    
-                                    // SUCCESS: The original temporary file still exists!
-                                    // We reopen the preview with 'null' state to show the unmodified capture.
                                     safeReopenPreview(null);
                                     
                                 } catch (e) {

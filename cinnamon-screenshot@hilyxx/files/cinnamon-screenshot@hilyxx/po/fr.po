@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.2\n"
+"Project-Id-Version: cinnamon-screenshot@hilyxx 1.3.4\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-09-03 21:05+0200\n"
+"POT-Creation-Date: 2026-10-19 19:33+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -66,95 +66,91 @@ msgstr "Pixellisation"
 msgid "Text"
 msgstr "Texte"
 
-#. editOverlay.js:528
+#. editOverlay.js:622
 msgid "Black"
 msgstr "Noir"
 
-#. editOverlay.js:528
+#. editOverlay.js:622
 msgid "White"
 msgstr "Blanc"
 
-#. editOverlay.js:528
+#. editOverlay.js:622
 msgid "Red"
 msgstr "Rouge"
 
-#. editOverlay.js:528
+#. editOverlay.js:622
 msgid "Blue"
 msgstr "Bleu"
 
-#. editOverlay.js:528
+#. editOverlay.js:622
 msgid "Green"
 msgstr "Vert"
 
-#. editOverlay.js:528
+#. editOverlay.js:622
 msgid "Yellow"
 msgstr "Jaune"
 
-#. editOverlay.js:646
-msgid "Thickness/size"
-msgstr "Épaisseur/Taille"
-
-#. editOverlay.js:651
+#. editOverlay.js:742
 msgid "Save changes to the canvas"
 msgstr "Enregistrer les modifications du canvas"
 
-#. editOverlay.js:652
+#. editOverlay.js:743
 msgid "Cancel all changes"
 msgstr "Annuler toutes les modifications"
 
-#. editOverlay.js:653 overlay.js:97 overlay.js:123
+#. editOverlay.js:744 overlay.js:97 overlay.js:123
 msgid "Close"
 msgstr "Fermer"
 
-#. editOverlay.js:1053
+#. editOverlay.js:1150
 msgid "Apply changes?"
 msgstr "Appliquer les modifications ?"
 
-#. editOverlay.js:1058
+#. editOverlay.js:1155
 msgid "Merge canvas with image"
 msgstr "Fusionner le canvas avec l'image"
 
-#. editOverlay.js:1062
+#. editOverlay.js:1159
 msgid "Save modified copy as…"
 msgstr "Enregistrer une copie modifiée sous..."
 
-#. editOverlay.js:1066 editOverlay.js:1209 preview.js:271 preview.js:366
+#. editOverlay.js:1163 editOverlay.js:1306 preview.js:271 preview.js:366
 msgid "Cancel"
 msgstr "Annuler"
 
-#. editOverlay.js:1076
+#. editOverlay.js:1173
 msgid "Quit without apply changes?"
 msgstr "Quitter sans appliquer les changements ?"
 
-#. editOverlay.js:1080
+#. editOverlay.js:1177
 msgid "Yes"
 msgstr "Oui"
 
-#. editOverlay.js:1087
+#. editOverlay.js:1184
 msgid "No"
 msgstr "Non"
 
-#. editOverlay.js:1117 editOverlay.js:1156 editOverlay.js:1234
+#. editOverlay.js:1214 editOverlay.js:1253 editOverlay.js:1328
 msgid "Error saving"
 msgstr "Erreur pendant la sauvegarde"
 
-#. editOverlay.js:1185 preview.js:353
+#. editOverlay.js:1282 preview.js:353
 msgid "Script gtk-filechooser.py not available"
 msgstr "Script gtk-filechooser.py non disponible"
 
-#. editOverlay.js:1185 preview.js:353
+#. editOverlay.js:1282 preview.js:353
 msgid "Unable to open file chooser."
 msgstr "Impossible d’ouvrir le sélecteur de fichiers."
 
-#. editOverlay.js:1204 preview.js:255 preview.js:361
+#. editOverlay.js:1301 preview.js:255 preview.js:361
 msgid "Save as..."
 msgstr "Enregistrer sous..."
 
-#. editOverlay.js:1207 preview.js:364
+#. editOverlay.js:1304 preview.js:364
 msgid "Images"
 msgstr "Images"
 
-#. editOverlay.js:1208 preview.js:365
+#. editOverlay.js:1305 preview.js:365
 msgid "Save"
 msgstr "Sauvegarder"
 

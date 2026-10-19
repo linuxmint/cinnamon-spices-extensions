@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 1.3.4
+
+* Add a slider to adjust text and shape size
+
 ## 1.3.3
 
 * Improve compatibility with cinnamon 6.8 (Remove deprecated require() and module.exports)
