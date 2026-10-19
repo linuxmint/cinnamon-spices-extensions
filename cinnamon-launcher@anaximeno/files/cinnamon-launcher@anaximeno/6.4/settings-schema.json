@@ -1,0 +1,94 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": ["main-page"],
+        "main-page": {
+            "type": "page",
+            "title": "General",
+            "sections": [
+                "general-section",
+                "search-section"
+            ]
+        },
+        "general-section": {
+            "type": "section",
+            "title": "General",
+            "keys": ["launcher-scale", "open-launcher", "enable-animations"]
+        },
+        "search-section": {
+            "type": "section",
+            "title": "Search",
+            "keys": [
+                "fuzzy-search",
+                "enable-calculator",
+                "enable-system-actions",
+                "show-frequent-apps",
+                "max-frequent-apps",
+                "show-descriptions"
+            ]
+        }
+    },
+
+    "open-launcher": {
+        "type": "keybinding",
+        "default": "<Control>space::<Super>m",
+        "description": "Open launcher keybinding"
+    },
+
+    "fuzzy-search": {
+        "type": "switch",
+        "default": true,
+        "description": "Use fuzzy search",
+        "tooltip": "Matches letters in any order, like Alfred/Raycast. Disable for plain substring search, like the Cinnamon Menu."
+    },
+    "enable-calculator": {
+        "type": "switch",
+        "default": true,
+        "description": "Enable the inline calculator",
+        "tooltip": "Typing a sum like 12*(3+4) shows the result; Enter copies it to the clipboard."
+    },
+
+    "enable-system-actions": {
+        "type": "switch",
+        "default": true,
+        "description": "Show system actions",
+        "tooltip": "Lock Screen, Log Out, Shut Down and Open Settings, searchable from the same box."
+    },
+    "show-frequent-apps": {
+        "type": "switch",
+        "default": true,
+        "description": "Show frequently used applications when the launcher opens"
+    },
+    "max-frequent-apps": {
+        "type": "spinbutton",
+        "default": 3,
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "description": "Maximum number of frequently used applications to show",
+        "dependency": "show-frequent-apps=true"
+    },
+    "show-descriptions": {
+        "type": "switch",
+        "default": true,
+        "description": "Show descriptions under each result"
+    },
+
+    "enable-animations": {
+        "type": "switch",
+        "default": false,
+        "description": "Enable animations"
+    },
+
+    "launcher-scale": {
+        "type": "combobox",
+        "default": 80,
+        "description": "Launcher size",
+        "tooltip": "Overall size of the launcher window, independent of display scaling.",
+        "options": {
+            "Small": 60,
+            "Medium": 80,
+            "Large": 100
+        }
+    }
+}

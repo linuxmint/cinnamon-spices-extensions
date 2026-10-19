@@ -1,0 +1,161 @@
+# CINNAMON APP LAUNCHER
+# This file is put in the public domain.
+# anaximeno, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-launcher@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-09-08 23:20-0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. launcher.js:308
+msgid "Lock Screen"
+msgstr ""
+
+#. launcher.js:309
+msgid "lock screen screensaver"
+msgstr ""
+
+#. launcher.js:315
+msgid "Log Out"
+msgstr ""
+
+#. launcher.js:316
+msgid "logout sign out leave session"
+msgstr ""
+
+#. launcher.js:322
+msgid "Shut Down"
+msgstr ""
+
+#. launcher.js:323
+msgid "shutdown power off turn off"
+msgstr ""
+
+#. launcher.js:329
+msgid "Open Settings"
+msgstr ""
+
+#. launcher.js:330
+msgid "preferences control panel"
+msgstr ""
+
+#. launcher.js:486
+msgid "Search apps, actions, or type a sum…"
+msgstr ""
+
+#. launcher.js:703
+msgid "System Action"
+msgstr ""
+
+#. launcher.js:822
+msgid "Frequently Used"
+msgstr ""
+
+#. launcher.js:824
+msgid "All Applications"
+msgstr ""
+
+#. launcher.js:866
+msgid "Applications"
+msgstr ""
+
+#. launcher.js:869
+msgid "Actions"
+msgstr ""
+
+#. metadata.json->name
+msgid "Cinnamon App Launcher"
+msgstr ""
+
+#. metadata.json->description
+msgid "A centered, search-first launcher for cinnamon."
+msgstr ""
+
+#. settings-schema.json->main-page->title
+#. settings-schema.json->general-section->title
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->search-section->title
+msgid "Search"
+msgstr ""
+
+#. settings-schema.json->open-launcher->description
+msgid "Open launcher keybinding"
+msgstr ""
+
+#. settings-schema.json->fuzzy-search->description
+msgid "Use fuzzy search"
+msgstr ""
+
+#. settings-schema.json->fuzzy-search->tooltip
+msgid ""
+"Matches letters in any order, like Alfred/Raycast. Disable for plain "
+"substring search, like the Cinnamon Menu."
+msgstr ""
+
+#. settings-schema.json->enable-calculator->description
+msgid "Enable the inline calculator"
+msgstr ""
+
+#. settings-schema.json->enable-calculator->tooltip
+msgid ""
+"Typing a sum like 12*(3+4) shows the result; Enter copies it to the "
+"clipboard."
+msgstr ""
+
+#. settings-schema.json->enable-system-actions->description
+msgid "Show system actions"
+msgstr ""
+
+#. settings-schema.json->enable-system-actions->tooltip
+msgid ""
+"Lock Screen, Log Out, Shut Down and Open Settings, searchable from the same "
+"box."
+msgstr ""
+
+#. settings-schema.json->show-frequent-apps->description
+msgid "Show frequently used applications when the launcher opens"
+msgstr ""
+
+#. settings-schema.json->max-frequent-apps->description
+msgid "Maximum number of frequently used applications to show"
+msgstr ""
+
+#. settings-schema.json->show-descriptions->description
+msgid "Show descriptions under each result"
+msgstr ""
+
+#. settings-schema.json->enable-animations->description
+msgid "Enable animations"
+msgstr ""
+
+#. settings-schema.json->launcher-scale->description
+msgid "Launcher size"
+msgstr ""
+
+#. settings-schema.json->launcher-scale->tooltip
+msgid "Overall size of the launcher window, independent of display scaling."
+msgstr ""
+
+#. settings-schema.json->launcher-scale->options
+msgid "Small"
+msgstr ""
+
+#. settings-schema.json->launcher-scale->options
+msgid "Medium"
+msgstr ""
+
+#. settings-schema.json->launcher-scale->options
+msgid "Large"
+msgstr ""
