@@ -1,0 +1,417 @@
+# TILER
+# This file is put in the public domain.
+# zquestz, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tiler@zquestz 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-09-03 17:29-1000\n"
+"PO-Revision-Date: 2026-07-28 19:50-1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. tiler.js:1200
+msgid "Main Left"
+msgstr "左主窗"
+
+#. tiler.js:1202
+msgid ""
+"The focused window keeps the left half. The rest share the right, each "
+"newcomer halving the largest cell."
+msgstr "当前窗口保留左半屏。其余窗口共享右半屏，每个新窗口都会将最大的单元格一分为二。"
+
+#. tiler.js:1207
+msgid "Main Right"
+msgstr "右主窗"
+
+#. tiler.js:1209
+msgid ""
+"The focused window keeps the right half. The rest share the left, each "
+"newcomer halving the largest cell."
+msgstr "当前窗口保留右半屏。其余窗口共享左半屏，每个新窗口都会将最大的单元格一分为二。"
+
+#. tiler.js:1214
+msgid "Equal Left"
+msgstr "左均分"
+
+#. tiler.js:1216
+msgid ""
+"Every window shares the screen, led from the left, each newcomer halving the "
+"largest cell."
+msgstr "所有窗口共享屏幕，从左侧开始，每个新窗口都会将最大的单元格一分为二。"
+
+#. tiler.js:1221
+msgid "Equal Right"
+msgstr "右均分"
+
+#. tiler.js:1223
+msgid ""
+"Every window shares the screen, led from the right, each newcomer halving the"
+" largest cell."
+msgstr "所有窗口共享屏幕，从右侧开始，每个新窗口都会将最大的单元格一分为二。"
+
+#. keybindings.py:26
+msgid "Arrows"
+msgstr "方向键"
+
+#. keybindings.py:26
+msgid "Move the selection"
+msgstr "移动选区"
+
+#. keybindings.py:27
+msgid "Shift+Arrow"
+msgstr "Shift+方向键"
+
+#. keybindings.py:27
+msgid "Grow the selection"
+msgstr "扩大选区"
+
+#. keybindings.py:28
+msgid "1-4"
+msgstr "1-4"
+
+#. keybindings.py:28
+msgid "Switch between grids"
+msgstr "切换网格"
+
+#. keybindings.py:29
+msgid "L / R"
+msgstr "L / R"
+
+#. keybindings.py:29
+msgid "Main Left, Main Right"
+msgstr "左主窗、右主窗"
+
+#. keybindings.py:30
+msgid "Shift+L / R"
+msgstr "Shift+L / R"
+
+#. keybindings.py:30
+msgid "Equal Left, Equal Right"
+msgstr "左均分、右均分"
+
+#. keybindings.py:31
+msgid "Enter/Space"
+msgstr "回车/空格"
+
+#. keybindings.py:31
+msgid "Confirm selection"
+msgstr "确认选区"
+
+#. keybindings.py:32
+msgid "Escape"
+msgstr "Esc"
+
+#. keybindings.py:32
+msgid "Cancel"
+msgstr "取消"
+
+#. metadata.json->name
+msgid "Tiler"
+msgstr "Tiler"
+
+#. metadata.json->description
+msgid ""
+"Grid-based window tiling with gaps, reserved screen space, and one-press "
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
+msgstr "基于网格的窗口平铺，支持间距、保留屏幕空间和一键自动平铺。Super+方向键平铺也使用相同的间距。灵感来自 gTile。"
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "常规"
+
+#. settings-schema.json->spacing-page->title
+msgid "Spacing"
+msgstr "间距"
+
+#. settings-schema.json->hotkeys-section->title
+msgid "Hotkeys"
+msgstr "快捷键"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling options"
+msgstr "平铺选项"
+
+#. settings-schema.json->gaps-section->title
+msgid "Gaps"
+msgstr "间隙"
+
+#. settings-schema.json->reserved-section->title
+msgid "Reserved space"
+msgstr "保留空间"
+
+#. settings-schema.json->grids-page->title
+msgid "Grids"
+msgstr "网格"
+
+#. settings-schema.json->grid-1-section->title
+msgid "Grid 1"
+msgstr "网格 1"
+
+#. settings-schema.json->grid-2-section->title
+msgid "Grid 2"
+msgstr "网格 2"
+
+#. settings-schema.json->grid-3-section->title
+msgid "Grid 3"
+msgstr "网格 3"
+
+#. settings-schema.json->grid-4-section->title
+msgid "Grid 4"
+msgstr "网格 4"
+
+#. settings-schema.json->keybindings-section->title
+msgid "Keybindings"
+msgstr "按键绑定"
+
+#. settings-schema.json->hotkey->description
+msgid "Tile the focused window"
+msgstr "平铺当前窗口"
+
+#. settings-schema.json->hotkey->tooltip
+msgid "Keyboard shortcut that opens Tiler for the focused window."
+msgstr "打开 Tiler 以平铺当前窗口的快捷键。"
+
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "使用 Cinnamon 的平铺快捷键"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr "Super 加方向键会像以往一样平铺当前窗口，但会应用 Tiler 的间隙和保留空间。关闭此项可将这些快捷键交还给 Cinnamon。"
+
+#. settings-schema.json->center-on-window->description
+msgid "Center the grid on the focused window"
+msgstr "将网格居中于当前窗口"
+
+#. settings-schema.json->center-on-window->tooltip
+msgid ""
+"The grid normally appears in the middle of the screen. Turn this on to have "
+"it appear over the window being tiled instead."
+msgstr "网格通常显示在屏幕中央。开启后将显示在要平铺的窗口上方。"
+
+#. settings-schema.json->tile-dialogs->description
+msgid "Tile dialog windows"
+msgstr "平铺对话框窗口"
+
+#. settings-schema.json->tile-dialogs->tooltip
+msgid ""
+"Ordinary windows are always tiled. This adds dialogs such as preferences and "
+"file choosers; dialogs that cannot be resized are skipped."
+msgstr "普通窗口总是会被平铺。开启后还包括偏好设置、文件选择器等对话框；无法调整大小的对话框将被跳过。"
+
+#. settings-schema.json->tile-toolboxes->description
+msgid "Tile toolboxes and palettes"
+msgstr "平铺工具箱和调色板"
+
+#. settings-schema.json->tile-toolboxes->tooltip
+msgid "Floating tool windows, like the ones used by image editors."
+msgstr "浮动工具窗口，例如图像编辑器使用的窗口。"
+
+#. settings-schema.json->show-autotile->description
+msgid "Show auto-tile actions on the grid"
+msgstr "在网格上显示自动平铺操作"
+
+#. settings-schema.json->show-autotile->tooltip
+msgid ""
+"Adds a row of arrangements to the grid that tile every window on the "
+"workspace at once: a main window beside the rest, or everything shared out "
+"equally, each newcomer halving the largest cell."
+msgstr "在网格上添加一行排列方式，一键平铺工作区中的所有窗口：一个主窗口位于其余窗口旁边，或者全部平均分配，每个新窗口都会将最大的单元格一分为二。"
+
+#. settings-schema.json->overflow-windows->description
+msgid "Windows that do not fit"
+msgstr "放不下的窗口"
+
+#. settings-schema.json->overflow-windows->tooltip
+msgid ""
+"When an auto-tile arrangement has no room for a window, this says what "
+"becomes of it: left where it was, taken out of the way, or gathered around "
+"the middle of the screen."
+msgstr "当某个自动平铺布局放不下某个窗口时，此项决定它的去向：保持原位、移开，或聚拢到屏幕中央。"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Ignore"
+msgstr "忽略"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Minimize"
+msgstr "最小化"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Center"
+msgstr "居中"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Cascade"
+msgstr "层叠"
+
+#. settings-schema.json->window-gap->units
+#. settings-schema.json->edge-gap->units
+#. settings-schema.json->reserved-top->units
+#. settings-schema.json->reserved-bottom->units
+#. settings-schema.json->reserved-left->units
+#. settings-schema.json->reserved-right->units
+msgid "pixels"
+msgstr "像素"
+
+#. settings-schema.json->window-gap->description
+msgid "Gap between windows"
+msgstr "窗口之间的间隙"
+
+#. settings-schema.json->window-gap->tooltip
+msgid "Space left between two windows tiled next to each other."
+msgstr "相邻平铺的两个窗口之间留出的空间。"
+
+#. settings-schema.json->edge-gap->description
+msgid "Gap at screen edges"
+msgstr "屏幕边缘的间隙"
+
+#. settings-schema.json->edge-gap->tooltip
+msgid ""
+"Space left between a tiled window and the edge of the usable screen area."
+msgstr "平铺窗口与可用屏幕区域边缘之间留出的空间。"
+
+#. settings-schema.json->reserved-scope->description
+msgid "Reserve space on"
+msgstr "保留空间于"
+
+#. settings-schema.json->reserved-scope->tooltip
+msgid ""
+"Choose whether reserved space applies to every monitor or only the primary "
+"monitor."
+msgstr "选择保留空间应用于所有显示器还是仅主显示器。"
+
+#. settings-schema.json->reserved-scope->options
+msgid "All monitors"
+msgstr "所有显示器"
+
+#. settings-schema.json->reserved-scope->options
+msgid "Primary monitor only"
+msgstr "仅主显示器"
+
+#. settings-schema.json->reserved-top->description
+msgid "Reserved space at the top"
+msgstr "顶部保留空间"
+
+#. settings-schema.json->reserved-top->tooltip
+#. settings-schema.json->reserved-bottom->tooltip
+#. settings-schema.json->reserved-left->tooltip
+#. settings-schema.json->reserved-right->tooltip
+msgid ""
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
+msgstr "窗口永远不会平铺到此区域。适用于 Conky 或不自行保留空间的停靠栏。"
+
+#. settings-schema.json->reserved-bottom->description
+msgid "Reserved space at the bottom"
+msgstr "底部保留空间"
+
+#. settings-schema.json->reserved-left->description
+msgid "Reserved space on the left"
+msgstr "左侧保留空间"
+
+#. settings-schema.json->reserved-right->description
+msgid "Reserved space on the right"
+msgstr "右侧保留空间"
+
+#. settings-schema.json->grid-1-cols->units
+#. settings-schema.json->grid-2-cols->units
+#. settings-schema.json->grid-3-cols->units
+#. settings-schema.json->grid-4-cols->units
+msgid "columns"
+msgstr "列"
+
+#. settings-schema.json->grid-1-cols->description
+#. settings-schema.json->grid-2-cols->description
+#. settings-schema.json->grid-3-cols->description
+#. settings-schema.json->grid-4-cols->description
+msgid "Columns"
+msgstr "列数"
+
+#. settings-schema.json->grid-1-cols->tooltip
+#. settings-schema.json->grid-2-cols->tooltip
+#. settings-schema.json->grid-3-cols->tooltip
+#. settings-schema.json->grid-4-cols->tooltip
+msgid "How many columns this grid is divided into."
+msgstr "此网格划分的列数。"
+
+#. settings-schema.json->grid-1-rows->units
+#. settings-schema.json->grid-2-rows->units
+#. settings-schema.json->grid-3-rows->units
+#. settings-schema.json->grid-4-rows->units
+msgid "rows"
+msgstr "行"
+
+#. settings-schema.json->grid-1-rows->description
+#. settings-schema.json->grid-2-rows->description
+#. settings-schema.json->grid-3-rows->description
+#. settings-schema.json->grid-4-rows->description
+msgid "Rows"
+msgstr "行数"
+
+#. settings-schema.json->grid-1-rows->tooltip
+#. settings-schema.json->grid-2-rows->tooltip
+#. settings-schema.json->grid-3-rows->tooltip
+#. settings-schema.json->grid-4-rows->tooltip
+msgid "How many rows this grid is divided into."
+msgstr "此网格划分的行数。"
+
+#. settings-schema.json->grid-1-layout->description
+#. settings-schema.json->grid-2-layout->description
+#. settings-schema.json->grid-3-layout->description
+#. settings-schema.json->grid-4-layout->description
+msgid "Layout"
+msgstr "布局"
+
+#. settings-schema.json->grid-1-layout->tooltip
+#. settings-schema.json->grid-2-layout->tooltip
+#. settings-schema.json->grid-3-layout->tooltip
+#. settings-schema.json->grid-4-layout->tooltip
+msgid ""
+"Columns, then rows. Sizes can be given one by one to make some tracks larger "
+"than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
+"width of its neighbors. Changing the numbers above rewrites this, and "
+"anything that cannot be read falls back to them."
+msgstr ""
+"先列后行。可以逐个给出大小，让某些轨道更大：1,2,1 x 1,1 "
+"表示三列，中间一列是两侧的两倍宽。更改上面的数字会重写此项；无法解析的内容将回退到这些数字。"
+
+#. settings-schema.json->grid-1-name->description
+#. settings-schema.json->grid-2-name->description
+#. settings-schema.json->grid-3-name->description
+#. settings-schema.json->grid-4-name->description
+msgid "Name"
+msgstr "名称"
+
+#. settings-schema.json->grid-1-name->tooltip
+#. settings-schema.json->grid-2-name->tooltip
+#. settings-schema.json->grid-3-name->tooltip
+#. settings-schema.json->grid-4-name->tooltip
+msgid ""
+"What this grid is called on the grid selector. Long names are shortened to "
+"fit. Left empty, it is named after its size."
+msgstr "此网格在选择器上的名称。过长的名称会被截断。留空时以其尺寸命名。"
+
+#. settings-schema.json->grid-1-tooltip->description
+#. settings-schema.json->grid-2-tooltip->description
+#. settings-schema.json->grid-3-tooltip->description
+#. settings-schema.json->grid-4-tooltip->description
+msgid "Description"
+msgstr "描述"
+
+#. settings-schema.json->grid-1-tooltip->tooltip
+#. settings-schema.json->grid-2-tooltip->tooltip
+#. settings-schema.json->grid-3-tooltip->tooltip
+#. settings-schema.json->grid-4-tooltip->tooltip
+msgid "Shown when hovering this grid on the selector."
+msgstr "悬停在选择器中的此网格上时显示。"
