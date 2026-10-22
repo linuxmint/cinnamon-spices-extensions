@@ -1,0 +1,13 @@
+{
+    "uuid": "window-corners-and-shadows@ivfrost",
+    "name": "Window Corners and Shadows",
+    "description": "Rounds the corners of every window - including ones that draw their own decorations, such as GTK headerbar apps and browsers - and can draw a configurable border and drop shadow behind them. It works on the window itself rather than on the theme. Maximized windows can optionally be rounded too.",
+    "version": "1.0.0",
+    "cinnamon-version": [
+        "6.2",
+        "6.4",
+        "6.6"
+    ],
+    "author": "ivfrost",
+    "url": "https://github.com/ivfrost/window-corners-and-shadows"
+}
