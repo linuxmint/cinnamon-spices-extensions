@@ -1,0 +1,365 @@
+# Nebula Theme Studio — 面向用户的字符串模板
+# 由 tools/make-pot.js 生成，请勿手工编辑。
+# 改完 settings-schema.json 或 metadata.json 后重跑该脚本。
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nebula-theme-studio@yoo\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2026-10-23 13:30\n"
+"PO-Revision-Date: 2026-10-23 13:30\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. metadata.json->name
+msgid "Nebula Theme Studio"
+msgstr "Nebula主题工坊"
+
+#. metadata.json->description
+msgid "Nebula Theme Studio: automatically installs the bundled Nebula themes and gives you live control over opacity, accent color, corner radius, font size and more; builds and applies a custom theme in one click; supports resetting and saving/loading presets."
+msgstr "Nebula主题工坊：自动安装预置主题，提供透明度、强调色、圆角、字号等参数的实时调整，一键生成定制主题并应用；支持重置与预设方案保存/载入。"
+
+#. settings-schema.json->variant->description
+msgid "主题变体"
+msgstr ""
+
+#. settings-schema.json->variant->tooltip
+msgid "选择要调整哪一套主题。生成结果写入 ~/.themes/Nebula-Dark-Studio 或 ~/.themes/Nebula-Light-Studio"
+msgstr ""
+
+#. settings-schema.json->variant->options->Nebula-Dark（深色）
+msgid "Nebula-Dark（深色）"
+msgstr ""
+
+#. settings-schema.json->variant->options->Nebula-Light（浅色）
+msgid "Nebula-Light（浅色）"
+msgstr ""
+
+#. settings-schema.json->terminal-palette->description
+msgid "终端配色（ANSI 16 色）"
+msgstr ""
+
+#. settings-schema.json->terminal-palette->tooltip
+msgid "写到 gnome-terminal 的全部配置档案。只改 ANSI 16 色，终端的前景色/背景色仍跟随 GTK 主题，所以半透明终端的搭配不受影响。已打开的终端窗口不会变色，需要新开一个。"
+msgstr ""
+
+#. settings-schema.json->terminal-palette->options->跟随系统（不干预）
+msgid "跟随系统（不干预）"
+msgstr ""
+
+#. settings-schema.json->terminal-palette->options->Nebula 深色
+msgid "Nebula 深色"
+msgstr ""
+
+#. settings-schema.json->terminal-palette->options->Nebula 浅色
+msgid "Nebula 浅色"
+msgstr ""
+
+#. settings-schema.json->terminal-palette->options->中性通用
+msgid "中性通用"
+msgstr ""
+
+#. settings-schema.json->terminal-opacity->description
+msgid "终端输入区不透明度"
+msgstr ""
+
+#. settings-schema.json->terminal-opacity->tooltip
+msgid "100% = 强制完全不透明。滑杆顶到头会真的把终端输入区写成不透明，而不是「恢复原样」—— 想回到你原本的配置，用维护里的「恢复原始主题」。只改输入区背景，不碰前景色、字体、光标。新开的终端窗口才能看到。"
+msgstr ""
+
+#. settings-schema.json->auto-apply->description
+msgid "参数变化后自动重新生成并应用"
+msgstr ""
+
+#. settings-schema.json->auto-apply->tooltip
+msgid "关闭时需要手动点击「生成并应用」。打开后拖动滑块会在停顿约 0.35 秒后自动应用。"
+msgstr ""
+
+#. settings-schema.json->apply-now->description
+msgid "生成并应用"
+msgstr ""
+
+#. settings-schema.json->panel-opacity->description
+msgid "面板不透明度"
+msgstr ""
+
+#. settings-schema.json->panel-opacity->tooltip
+msgid "顶栏/底栏/侧栏，以及 GTK 应用的标题栏、工具栏、菜单栏"
+msgstr ""
+
+#. settings-schema.json->menu-opacity->description
+msgid "菜单 / 弹出层不透明度"
+msgstr ""
+
+#. settings-schema.json->menu-opacity->tooltip
+msgid "开始菜单、右键菜单、通知、日历、OSD、提示气泡"
+msgstr ""
+
+#. settings-schema.json->window-opacity->description
+msgid "窗口底色不透明度"
+msgstr ""
+
+#. settings-schema.json->window-opacity->tooltip
+msgid "GTK 窗口主背景、概览遮罩、对话框底"
+msgstr ""
+
+#. settings-schema.json->hover-opacity->description
+msgid "悬停 / 按下态不透明度"
+msgstr ""
+
+#. settings-schema.json->hover-opacity->tooltip
+msgid "鼠标悬停、按下、选中项的高亮底色"
+msgstr ""
+
+#. settings-schema.json->selection-alpha->description
+msgid "强调淡底浓度"
+msgstr ""
+
+#. settings-schema.json->selection-alpha->tooltip
+msgid "菜单选中行、启动器选中项等「淡强调底」的浓淡。切换变体时会自动改为该变体的默认值（深色 15% / 浅色 20%）。不影响强调描边与焦点环。"
+msgstr ""
+
+#. settings-schema.json->bg-color->description
+msgid "主背景色"
+msgstr ""
+
+#. settings-schema.json->bg-color->tooltip
+msgid "窗口、输入框、菜单内容的底色。只替换背景类位置：按钮上的文字、白色高光与焦点环等前景语义保持原样。底色的浓淡仍由「窗口底色不透明度」控制。"
+msgstr ""
+
+#. settings-schema.json->panel-color->description
+msgid "面板背景色"
+msgstr ""
+
+#. settings-schema.json->panel-color->tooltip
+msgid "Cinnamon 面板、GTK 标题栏/工具栏/菜单栏的底色。底色的浓淡仍由「面板不透明度」控制。"
+msgstr ""
+
+#. settings-schema.json->menu-color->description
+msgid "菜单背景色"
+msgstr ""
+
+#. settings-schema.json->menu-color->tooltip
+msgid "开始菜单、右键弹窗、提示气泡等浮层的底色。底色的浓淡仍由「菜单不透明度」控制。"
+msgstr ""
+
+#. settings-schema.json->accent-color->description
+msgid "强调色"
+msgstr ""
+
+#. settings-schema.json->accent-color->tooltip
+msgid "选中、焦点环、进度条、开关、建议按钮"
+msgstr ""
+
+#. settings-schema.json->border-color->description
+msgid "边框色"
+msgstr ""
+
+#. settings-schema.json->border-color->tooltip
+msgid "控件描边、分隔线、滚动条槽。透明度保持主题原样。"
+msgstr ""
+
+#. settings-schema.json->fg-color->description
+msgid "主文字色"
+msgstr ""
+
+#. settings-schema.json->fg-dim-color->description
+msgid "次级文字色"
+msgstr ""
+
+#. settings-schema.json->fg-dim-color->tooltip
+msgid "禁用态、说明文字、未聚焦窗口标题"
+msgstr ""
+
+#. settings-schema.json->danger-color->description
+msgid "危险色"
+msgstr ""
+
+#. settings-schema.json->danger-color->tooltip
+msgid "删除、关机、破坏性操作按钮"
+msgstr ""
+
+#. settings-schema.json->warn-color->description
+msgid "警告色"
+msgstr ""
+
+#. settings-schema.json->warn-color->tooltip
+msgid "提示条、结束会话确认"
+msgstr ""
+
+#. settings-schema.json->success-color->description
+msgid "成功色"
+msgstr ""
+
+#. settings-schema.json->window-radius->description
+msgid "窗口 / 菜单圆角（px）"
+msgstr ""
+
+#. settings-schema.json->window-radius->tooltip
+msgid "菜单、弹出层、提示、OSD、GTK 窗口与装饰的圆角。标题栏自身的「上圆下方」形状保持不变。"
+msgstr ""
+
+#. settings-schema.json->control-radius->description
+msgid "控件圆角（px）"
+msgstr ""
+
+#. settings-schema.json->control-radius->tooltip
+msgid "按钮、输入框、菜单项、面板按钮等小控件"
+msgstr ""
+
+#. settings-schema.json->base-font-size->description
+msgid "Cinnamon 基准字号（pt）"
+msgstr ""
+
+#. settings-schema.json->base-font-size->tooltip
+msgid "以 10pt 为基准等比缩放 Cinnamon 面板与菜单里的所有字号。GTK 应用字号由应用自身/系统字体设置决定，不受影响。"
+msgstr ""
+
+#. settings-schema.json->preset-name->description
+msgid "方案名"
+msgstr ""
+
+#. settings-schema.json->preset-name->tooltip
+msgid "保存 / 载入 / 删除都以此处的名称为准，支持中文"
+msgstr ""
+
+#. settings-schema.json->save-preset->description
+msgid "保存为方案（生成可切换的主题）"
+msgstr ""
+
+#. settings-schema.json->load-preset->description
+msgid "载入方案并应用"
+msgstr ""
+
+#. settings-schema.json->delete-preset->description
+msgid "删除方案及其主题目录"
+msgstr ""
+
+#. settings-schema.json->open-presets-folder->description
+msgid "打开方案目录"
+msgstr ""
+
+#. settings-schema.json->reset-theme->description
+msgid "重置本主题为默认值"
+msgstr ""
+
+#. settings-schema.json->restore-original->description
+msgid "恢复原始主题并删除生成结果"
+msgstr ""
+
+#. settings-schema.json->uninstall-themes->description
+msgid "卸载扩展安装的两个主题"
+msgstr ""
+
+#. settings-schema.json->about-flow->description
+msgid "启用扩展会把两个源主题装进 ~/.themes（已存在则跳过，不覆盖你自己的改动）。「生成并应用」产出工作主题，「保存为方案」产出独立存档主题，两者都与普通主题并列，可随时选用与删除；源主题始终不被修改。"
+msgstr ""
+
+#. settings-schema.json->note-variant->description
+msgid "两个变体的参数各自记忆：切走时自动存档，切回时整套恢复。首次切到某变体时，仍是默认值的颜色会迁移到该变体的默认色。"
+msgstr ""
+
+#. settings-schema.json->note-terminal->description
+msgid "终端配色选「跟随系统」完全不干预，被覆盖过则切回即还原。输入区不透明度相反：顶到 100% 会强制写成完全不透明，接管前的原值记在状态文件里，可用「恢复原始主题」还回去。两项都只在「生成并应用」时写入，新开终端窗口才看得到。"
+msgstr ""
+
+#. settings-schema.json->note-working->description
+msgid "工作主题 Nebula-<变体>-Studio 是试参数的地方，下次生成就覆盖；「保存为方案」才冻结出独立命名的存档主题，方案存于 ~/.config/nebula-theme-studio/presets/，支持中文名，各方案互不覆盖。方案名留空时会提示已有方案列表。"
+msgstr ""
+
+#. settings-schema.json->note-refresh->description
+msgid "面板与菜单由 Cinnamon 即时重载；已打开的 GTK 应用通过一次中转切换强制刷新，个别应用仍会缓存，重开即可。"
+msgstr ""
+
+#. settings-schema.json->open-readme->description
+msgid "打开 README 文档"
+msgstr ""
+
+#. settings-schema.json->layout->p-base->title
+msgid "基础"
+msgstr ""
+
+#. settings-schema.json->layout->s-variant->title
+msgid "主题与终端"
+msgstr ""
+
+#. settings-schema.json->layout->s-apply->title
+msgid "工作主题"
+msgstr ""
+
+#. settings-schema.json->layout->p-opacity->title
+msgid "透明度"
+msgstr ""
+
+#. settings-schema.json->layout->s-surface-alpha->title
+msgid "界面底色"
+msgstr ""
+
+#. settings-schema.json->layout->s-state-alpha->title
+msgid "悬停与选中"
+msgstr ""
+
+#. settings-schema.json->layout->p-color->title
+msgid "颜色"
+msgstr ""
+
+#. settings-schema.json->layout->s-bg->title
+msgid "背景"
+msgstr ""
+
+#. settings-schema.json->layout->s-accent->title
+msgid "强调与边框"
+msgstr ""
+
+#. settings-schema.json->layout->s-text->title
+msgid "文字"
+msgstr ""
+
+#. settings-schema.json->layout->s-semantic->title
+msgid "语义色"
+msgstr ""
+
+#. settings-schema.json->layout->p-shape->title
+msgid "形状与字号"
+msgstr ""
+
+#. settings-schema.json->layout->s-radius->title
+msgid "圆角"
+msgstr ""
+
+#. settings-schema.json->layout->s-metrics->title
+msgid "字号"
+msgstr ""
+
+#. settings-schema.json->layout->p-preset->title
+msgid "方案"
+msgstr ""
+
+#. settings-schema.json->layout->s-preset-io->title
+msgid "保存 / 载入"
+msgstr ""
+
+#. settings-schema.json->layout->s-preset-maint->title
+msgid "维护"
+msgstr ""
+
+#. settings-schema.json->layout->p-maint->title
+msgid "说明"
+msgstr ""
+
+#. settings-schema.json->layout->s-about->title
+msgid "工作方式"
+msgstr ""
+
+#. settings-schema.json->layout->s-notes->title
+msgid "其他"
+msgstr ""
+
+#. settings-schema.json->layout->s-doc->title
+msgid "文档"
+msgstr ""
