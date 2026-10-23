@@ -1,0 +1,106 @@
+# MAGIC LAMP EFFECT
+# This file is put in the public domain.
+# klangman, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonMagicLamp@klangman 1.0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-01 12:42-0500\n"
+"PO-Revision-Date: 2025-02-13 23:35+0100\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 5.6/extension.js:83
+msgid "ERROR"
+msgstr "ERROR"
+
+#. 5.6/extension.js:83
+msgid "was NOT enabled"
+msgstr "NO s'ha activat"
+
+#. 5.6/extension.js:84
+msgid "The existing extension"
+msgstr "L'extensió present"
+
+#. 5.6/extension.js:84
+msgid "conflicts with this extension."
+msgstr "conflictivitza amb aquesta extensió."
+
+#. metadata.json->name
+msgid "Magic Lamp Effect"
+msgstr "Efecte de Llàntia Màgica"
+
+#. metadata.json->description
+msgid ""
+"A minimize/unminimize magic lamp effect based on hermes83's Gnome extension"
+msgstr ""
+"Un efecte de llàntia màgica en minimitzar/desminimitzar basat en l'extensió "
+"de Gnome d'hermes83"
+
+#. 5.6->settings-schema.json->keybinding-header->description
+msgid "Cinnamon Magic Lamp Settings"
+msgstr "Configuració de la llàntia màgica de Cinnamon"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "default"
+msgstr "per defecte"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "sine"
+msgstr "sinus"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr "aleatori"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr "Minimitzar: Per defecte - Desminimitzar: Sinus"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr "Minimitzar: Sinus - Desminimitzar: Per defecte"
+
+#. 5.6->settings-schema.json->effect->description
+msgid "The type of effect"
+msgstr "El tipus d'efecte"
+
+#. 5.6->settings-schema.json->effect->tooltip
+msgid ""
+"Using 'default' will result in a curved effect where using 'sine' will "
+"result in a more wavy effect"
+msgstr ""
+"Utilitzar 'per defecte' crearà un efecte de corba, mentre que 'sinus' crearà "
+"un efecte més ondulat"
+
+#. 5.6->settings-schema.json->duration->description
+msgid "Effect duration (ms)"
+msgstr "Durada de l'efecte (ms)"
+
+#. 5.6->settings-schema.json->duration->tooltip
+msgid "The time (in milliseconds) that the effect takes to complete"
+msgstr "El temps (en mil·lisegons) que tarda en completar-se l'efecte"
+
+#. 5.6->settings-schema.json->x-tiles->description
+msgid "X Tiles"
+msgstr "Mida horitzontal de la graella"
+
+#. 5.6->settings-schema.json->x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr "Això afecta a la qualitat i els recursos necessaris per a l'animació"
+
+#. 5.6->settings-schema.json->y-tiles->description
+msgid "Y Tiles"
+msgstr "Mida vertical de la graella"
+
+#. 5.6->settings-schema.json->y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr "Això afecta a la qualitat i els recursos necessaris per a l'animació"

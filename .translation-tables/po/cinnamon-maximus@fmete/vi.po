@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-maximus@fmete 0.4.7\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-04 18:45+0200\n"
+"PO-Revision-Date: 2025-10-19 02:06+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Cinnamon Maximus"
+msgstr "Cinnamon Maximus"
+
+#. metadata.json->description
+msgid "Undecorate windows as you like."
+msgstr "Ẩn thanh tiêu đề cửa sổ theo ý muốn."
+
+#. settings-schema.json->head->description
+msgid "Cinnamon-Maximus Settings"
+msgstr "Cài đặt Cinnamon-Maximus"
+
+#. settings-schema.json->onlyManual->description
+msgid "Undecorating only with hotkey"
+msgstr "Chỉ ẩn thanh tiêu đề bằng phím tắt"
+
+#. settings-schema.json->useHotkey->description
+msgid "Use Hotkey to toggle decoration of current window"
+msgstr "Sử dụng phím tắt để bật/tắt thanh tiêu đề cửa sổ hiện tại"
+
+#. settings-schema.json->hotkey->description
+msgid "Global Hotkey to toggle decoration of current window (Experimental)"
+msgstr "Phím tắt toàn cục để bật/tắt thanh tiêu đề cửa sổ hiện tại (Thử nghiệm)"
+
+#. settings-schema.json->undecorateTile->description
+msgid "Undecorate when tile"
+msgstr "Ẩn thanh tiêu đề khi xếp ô"
+
+#. settings-schema.json->undecorateAll->description
+msgid ""
+"Undecorate All Windows (Experimental, please close and re-open all windows)"
+msgstr "Ẩn thanh tiêu đề Tất cả Cửa sổ (Thử nghiệm, vui lòng đóng và mở lại tất cả cửa sổ)"
+
+#. settings-schema.json->useIgnoreList->description
+msgid "Use Ignoring List"
+msgstr "Sử dụng Danh sách Bỏ qua"
+
+#. settings-schema.json->ignoreAppsList->description
+msgid ""
+"Ignored Apps (use \",\" for seperate apps, partial match and regexp allowed)"
+msgstr "Ứng dụng được Bỏ qua (sử dụng \",\" để phân tách ứng dụng, cho phép khớp một phần và regexp)"
+
+#. settings-schema.json->useAutoUndecorList->description
+msgid "Use Auto Undecorating for apps"
+msgstr "Tự động ẩn thanh tiêu đề cho ứng dụng"
+
+#. settings-schema.json->autoUndecorAppsList->description
+msgid ""
+"Auto Undecorating Apps (use \",\" for seperate apps, partial match and "
+"regexp allowed)"
+msgstr "Ứng dụng Tự động Ẩn thanh tiêu đề (sử dụng \",\" để phân tách ứng dụng, cho phép khớp một phần và regexp)"
+
+#. settings-schema.json->keepQTAppsFocus->description
+msgid "Keep the focus for QT Apps (Experimental)"
+msgstr "Giữ tiêu điểm cho Ứng dụng QT (Thử nghiệm)"
+
+#. settings-schema.json->enableLogs->description
+msgid "Logging (see Melange - Log)"
+msgstr "Ghi nhật ký (xem Melange - Nhật ký)"
