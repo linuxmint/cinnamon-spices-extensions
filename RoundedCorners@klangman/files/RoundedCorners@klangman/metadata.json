@@ -1,0 +1,10 @@
+{
+    "uuid": "RoundedCorners@klangman",
+    "name": "Rounded Corners",
+    "version": "1.0.0",
+    "description": "Allows you to round the corners of windows with custom borders and shadows",
+    "url": "https://github.com/klangman/CinnamonRoundedCorners",
+    "cinnamon-version": [
+        "6.0"
+    ]
+}
