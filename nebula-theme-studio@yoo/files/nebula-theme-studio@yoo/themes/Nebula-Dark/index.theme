@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Nebula-Dark
+Comment=半透明毛玻璃深色主题 (Nebula-Dark)
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Nebula-Dark
+MetacityTheme=Nebula-Dark
+IconTheme=Papirus-Dark
+CursorTheme=Adwaita
+ButtonLayout=:minimize,maximize,close
