@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<g><rect x="9" y="108" width="148" height="118" rx="12" fill="#f5f6f7"/><path d="M12 136 V120 a9 9 0 0 1 9 -9 H145 a9 9 0 0 1 9 9 V136 Z" fill="#8d9aa3"/><rect x="9" y="108" width="148" height="118" rx="12" fill="none" stroke="#3b4750" stroke-width="6"/></g>
+<g><rect x="39" y="82" width="148" height="118" rx="12" fill="#f5f6f7"/><path d="M42 110 V94 a9 9 0 0 1 9 -9 H175 a9 9 0 0 1 9 9 V110 Z" fill="#8d9aa3"/><rect x="39" y="82" width="148" height="118" rx="12" fill="none" stroke="#3b4750" stroke-width="6"/></g>
+<g><rect x="69" y="56" width="148" height="118" rx="12" fill="#f5f6f7"/><path d="M72 84 V68 a9 9 0 0 1 9 -9 H205 a9 9 0 0 1 9 9 V84 Z" fill="#8d9aa3"/><rect x="69" y="56" width="148" height="118" rx="12" fill="none" stroke="#3b4750" stroke-width="6"/></g>
+<g><rect x="99" y="30" width="148" height="118" rx="12" fill="#f5f6f7"/><path d="M102 58 V42 a9 9 0 0 1 9 -9 H235 a9 9 0 0 1 9 9 V58 Z" fill="#2a9dd6"/><rect x="99" y="30" width="148" height="118" rx="12" fill="none" stroke="#3b4750" stroke-width="6"/></g>
+</svg>
