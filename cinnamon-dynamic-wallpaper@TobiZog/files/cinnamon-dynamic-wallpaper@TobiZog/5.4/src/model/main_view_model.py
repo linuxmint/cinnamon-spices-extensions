@@ -2,7 +2,7 @@
 from gi.repository import Gio, Gdk, GLib
 
 # Packages
-import os, time, locale, subprocess, getpass
+import os, time, locale, subprocess, getpass, shlex
 from PIL import Image
 
 # Local scripts
@@ -194,7 +194,7 @@ class Main_View_Model:
 				subprocess.run(['pkexec', 'install', '-o', getpass.getuser(), '-d', directory])
 			
 			# Copy the current image to the temp folder for the login screen
-			os.system("cp " + self.current_image_uri + " " + directory + "/login_image.jpg")
+			os.system("cp " + shlex.quote(self.current_image_uri) + " " + shlex.quote(directory + "/login_image.jpg"))
 
 		# Set background stretching
 		self.background_settings['picture-options'] = self.cinnamon_prefs.picture_aspect
