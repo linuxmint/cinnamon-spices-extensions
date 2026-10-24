@@ -1,0 +1,493 @@
+# Russian translation for greenTile (greenTile@carsteneu).
+# Based on the Russian translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# blogdron.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.2.7\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#: lib/ui/editor.js:72
+msgid "Please enter a name."
+msgstr "Введите название."
+
+#: lib/ui/editor.js:144
+#, javascript-format
+msgid "from %d"
+msgstr "от %d"
+
+#: lib/ui/editor.js:431
+msgid "Rules (by window count)"
+msgstr "Правила (по числу окон)"
+
+#: lib/ui/editor.js:435
+msgid "Rule"
+msgstr "Правило"
+
+#: lib/ui/editor.js:436
+msgid "Delete rule"
+msgstr "Удалить правило"
+
+#: lib/ui/editor.js:444
+msgid "Rule applies from"
+msgstr "Правило действует от"
+
+#: lib/ui/editor.js:451
+msgid "windows"
+msgstr "окон"
+
+#: lib/ui/editor.js:453
+msgid "Painter"
+msgstr "Область рисования"
+
+#: lib/ui/editor.js:471
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Щелчок или перетаскивание: строка задаёт, сколько окон вмещает столбец. "
+"Щелчок правой кнопкой удаляет столбец."
+
+#: lib/ui/editor.js:476
+msgid "Name"
+msgstr "Название"
+
+#: lib/ui/editor.js:477
+msgid "Preset name"
+msgstr "Название преднастройки"
+
+#: lib/ui/editor.js:482
+msgid "Delete preset"
+msgstr "Удалить преднастройку"
+
+#: lib/ui/editor.js:485
+msgid "Really delete?"
+msgstr "Действительно удалить?"
+
+#: lib/ui/editor.js:486
+msgid "Delete"
+msgstr "Удалить"
+
+#: lib/ui/editor.js:490
+msgid "Save"
+msgstr "Сохранить"
+
+#: lib/ui/editor.js:515
+#, javascript-format
+msgid "Result: %s"
+msgstr "Результат: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Изменить преднастройку"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Назначена"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Отменить назначение"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Отступ между окнами"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Сбросить размеры"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Преднастройки — рабочая область %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Создать преднастройку"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Изменить %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Назад"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Авто: вкл."
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Авто: выкл."
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Тёмная тема"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Светлая тема"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Преднастроек пока нет."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Предпросмотр — число окон: %d"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Предпросмотр — число окон: %d"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Нет открытых окон — базовая раскладка"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Новая преднастройка"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Щёлкните по карточке, чтобы применить преднастройку к этой рабочей области и "
+"сразу расположить окна мозаикой"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Разбиение окон на столбцы с преднастройками для каждой рабочей области, "
+"автоматическим режимом и привязкой при отпускании. Форк gTile от shuairan."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Настройки"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Клавиатурные сочетания"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Клавиатурные сочетания автоматического разбиения"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Преднастройки рабочих областей"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Изменение размера окон в разбиении"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Обмен окон местами"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Разбиение"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Без разбиения"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Панель преднастроек"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Разбить все окна на 6 столбцов"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Разбить все окна на 3 столбца"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Включить автоматическое разбиение для этой рабочей области и сразу разбить "
+"окна"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Выключить автоматическое разбиение для этой рабочей области"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Открыть панель преднастроек"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Сделать активное окно в разбиении шире (нажатие = 1 px, удержание ускоряет)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Сделать активное окно в разбиении уже"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Сделать активное окно в разбиении выше"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Сделать активное окно в разбиении ниже"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Поменять активное окно в разбиении местами с соседним слева"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Поменять активное окно в разбиении местами с соседним справа"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Поменять активное окно в разбиении местами с соседним сверху"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Поменять активное окно в разбиении местами с соседним снизу"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Определения преднастроек (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Переключить «Без разбиения» для активного окна"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Добавить установленное приложение"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Выбранное приложение добавляется в список ниже. После каждого выбора "
+"раскрывающийся список сбрасывается."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Добавить приложение …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Окна, подходящие под одну из этих строк, никогда не включаются в разбиение; "
+"они свободно остаются там, куда их поместили"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Сопоставление"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Текст"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Отступ между окнами в разбиении (задаётся кнопками − / + на панели "
+"преднастроек; в этом диалоге не показывается)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Анимировать разбиение"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+"Окна плавно перемещаются на новое место. Если выключено, они сразу "
+"оказываются там."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Рамка вокруг активного окна"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"После перемещения фокуса клавишами Super+стрелка новое активное окно на три "
+"секунды выделяется тонкой рамкой цвета состояния. Щелчки мышью и Alt+Tab её "
+"не показывают."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Заполнить монитор одним окном"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Если включена автоматическая разбивка или преднастройка, одно разбитое окно "
+"занимает всю доступную область вместо того, чтобы оставаться нетронутым."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Одно окно"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Что происходит с единственным окном в плитке, когда включено автоматическое "
+"размещение или предустановка. Не трогать: ничего с ним не делает. Заполнить "
+"монитор: занимает всю доступную область. Центрировать окно: центрирует его "
+"примерно на 62 % ширины (золотое сечение) и 90 % высоты."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Не трогать"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Заполнить монитор"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Центрировать окно"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Тема панели преднастроек"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"«Как в системе» отслеживает цветовую схему рабочего стола в реальном "
+"времени; «Светлая» и «Тёмная» её переопределяют."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Как в системе"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Светлая"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Тёмная"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Акцентный цвет"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"«Как в теме» в реальном времени берёт акцентный цвет темы Cinnamon. «Свой» "
+"использует цвет, выбранный ниже."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Как в теме"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Свой"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Свой акцентный цвет"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Акцент панели преднастроек и редактора, когда для параметра «Акцентный цвет» "
+"выбрано «Свой»."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Цвет состояния"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Цвет метки «Авто: вкл.», назначенных карточек преднастроек и рамки фокуса. "
+"«Зелёный» сохраняет привычный вид. «Как в теме» в реальном времени берёт "
+"акцентный цвет темы Cinnamon. «Свой» использует цвет, выбранный ниже."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Зелёный"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Свой цвет состояния"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Цвет состояния панели преднастроек и рамки фокуса, когда для параметра «Цвет "
+"состояния» выбрано «Свой»."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Окно свободно"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Окно снова в разбиении"
