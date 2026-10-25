@@ -16,7 +16,7 @@ const FileUtils = imports.misc.fileUtils;
 const UUID = 'force-quit-menu@J0nathan550';
 const GWL_UUID = 'grouped-window-list@cinnamon.org';
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + '/locale');
 
 function _(text) {
     return Gettext.dgettext(UUID, text);
