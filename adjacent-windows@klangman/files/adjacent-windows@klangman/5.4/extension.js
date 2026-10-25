@@ -187,6 +187,15 @@ class AdjacentWindows {
          } else if (nextFocusType === Activate.Closest){
             newWindow = this.getClosestWindow(focusedWindow, focusedMonitor, focusedRec, windows, direction);
          }
+         if(!newWindow && this.settings.getValue("enable-wrap-around") && direction !== Direction.Under) {
+            if (nextFocusType === Activate.VisibleCorner) {
+               newWindow = this.getFurthestWindowVisibleCorner(focusedWindow, focusedMonitor, focusedRec, windows, this.getOppositeDirection(direction));
+            } else if (nextFocusType === Activate.HighestZ){
+               newWindow = this.getFurthestWindowHighestZ(focusedWindow, focusedMonitor, focusedRec, windows, direction);
+            } else if (nextFocusType === Activate.Closest){
+               newWindow = this.getFurthestWindowClosest(focusedWindow, focusedMonitor, focusedRec, windows, direction);
+            }
+         }
          if (newWindow) {
             this.activateWindow(newWindow);
             if (this.peekStack() != focusedWindow)
@@ -265,7 +274,7 @@ class AdjacentWindows {
                   bestWindow = metaWindow;
                }
             } else if (direction == Direction.Right) {
-               if (rec.x > focusedRec.x && (!bestWindow || isAbove(metaWindow, bestWindow))) {
+               if (rec.x+rec.width > focusedRec.x+focusedRec.width && (!bestWindow || isAbove(metaWindow, bestWindow))) {
                   bestWindow = metaWindow;
                }
             } else if (direction == Direction.Up) {
@@ -273,7 +282,7 @@ class AdjacentWindows {
                   bestWindow = metaWindow;
                }
             } else if (direction == Direction.Down) {
-               if (rec.y > focusedRec.y && (!bestWindow || isAbove(metaWindow, bestWindow))) {
+               if (rec.y+rec.height > focusedRec.y+focusedRec.height && (!bestWindow || isAbove(metaWindow, bestWindow))) {
                   bestWindow = metaWindow;
                }
             }
@@ -282,12 +291,11 @@ class AdjacentWindows {
       return bestWindow;
    }
 
-   // Look for all windows that have some corner of their window in the direction of the direction parameter.
-   // Sort the candidate list by z-order (descending user_time)
-   // Return the window closes to the current window that still has a corner visible
-   getClosestVisibleWindows(focusedWindow, focusedMonitor, focusedRec, windowList, direction) {
+   // Returns a list of windows that have a visible corner in the desired direction
+   // The returned list a is sorted by z-order (most recently focused is first in the list)
+   getVisibleWindowCanidates(focusedWindow, focusedMonitor, focusedRec, windowList, direction) {
       let candidateList = [];
-      let windowVisibilityList = [];
+      let windowVisibility;
       let allowOtherMon  = this.settings.getValue("include-other-monitors");
       let zoneReductionPercent = this.settings.getValue("boost-restriction");
       let zoneReduction = Math.round( ((direction == Direction.Left || direction == Direction.Right)? focusedRec.height : focusedRec.width) * (zoneReductionPercent/100) / 2 );
@@ -304,52 +312,60 @@ class AdjacentWindows {
          {
             let rec = metaWindow.get_frame_rect();
             // overlapping: Does the window occupy any part of the same space as the focused window in the desired direction
-            let idx = windowVisibilityList.push({window: metaWindow, rec: rec, cornerVisibility: null, overlapping: false}) - 1;
+            windowVisibility = {window: metaWindow, rec: rec, cornerVisibility: null, overlapping: false};
             if (metaWindow != focusedWindow) {
                if (direction == Direction.Left) {
                   if (rec.x < focusedRec.x) {
-                     windowVisibilityList[idx].overlapping = (rec.y < focusedRec.y+focusedRec.height-zoneReduction && rec.y+rec.height > focusedRec.y+zoneReduction);
+                     windowVisibility.overlapping = (rec.y < focusedRec.y+focusedRec.height-zoneReduction && rec.y+rec.height > focusedRec.y+zoneReduction);
                      rec.width = Math.min(rec.width, focusedRec.x-1-rec.x);
                      if (rec.width >= cornerAllowance && rec.height >= cornerAllowance) {
-                        windowVisibilityList[idx].cornerVisibility = this.getCornerVisibility( windowVisibilityList[idx], windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
-                        candidateList.push(windowVisibilityList[idx]);
+                        windowVisibility.cornerVisibility = this.getCornerVisibility( windowVisibility, windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
+                        candidateList.push(windowVisibility);
                      }
                   }
                } else if (direction == Direction.Right) {
                   if (rec.x+rec.width > focusedRec.x+focusedRec.width) {
-                     windowVisibilityList[idx].overlapping = (rec.y < focusedRec.y+focusedRec.height-zoneReduction && rec.y+rec.height > focusedRec.y+zoneReduction);
+                     windowVisibility.overlapping = (rec.y < focusedRec.y+focusedRec.height-zoneReduction && rec.y+rec.height > focusedRec.y+zoneReduction);
                      let x2 = rec.x+rec.width;
                      rec.x = Math.max(rec.x, focusedRec.x+focusedRec.width+1);
                      rec.width = x2 - rec.x;
                      if (rec.width >= cornerAllowance && rec.height >= cornerAllowance) {
-                        windowVisibilityList[idx].cornerVisibility = this.getCornerVisibility( windowVisibilityList[idx], windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
-                        candidateList.push(windowVisibilityList[idx]);
+                        windowVisibility.cornerVisibility = this.getCornerVisibility( windowVisibility, windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
+                        candidateList.push(windowVisibility);
                      }
                   }
                } else if (direction == Direction.Up) {
                   if (rec.y < focusedRec.y) {
-                     windowVisibilityList[idx].overlapping = (rec.x < focusedRec.x+focusedRec.width-zoneReduction && rec.x+rec.width > focusedRec.x+zoneReduction)
+                     windowVisibility.overlapping = (rec.x < focusedRec.x+focusedRec.width-zoneReduction && rec.x+rec.width > focusedRec.x+zoneReduction)
                      rec.height = Math.min(rec.height, focusedRec.y-1-rec.y);
                      if (rec.width >= cornerAllowance && rec.height >= cornerAllowance) {
-                        windowVisibilityList[idx].cornerVisibility = this.getCornerVisibility( windowVisibilityList[idx], windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
-                        candidateList.push(windowVisibilityList[idx]);
+                        windowVisibility.cornerVisibility = this.getCornerVisibility( windowVisibility, windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
+                        candidateList.push(windowVisibility);
                      }
                   }
                } else if (direction == Direction.Down) {
                   if (rec.y+rec.height > focusedRec.y+focusedRec.height) {
-                     windowVisibilityList[idx].overlapping = (rec.x < focusedRec.x+focusedRec.width-zoneReduction && rec.x+rec.width > focusedRec.x+zoneReduction)
+                     windowVisibility.overlapping = (rec.x < focusedRec.x+focusedRec.width-zoneReduction && rec.x+rec.width > focusedRec.x+zoneReduction)
                      let y2 = rec.y+rec.height;
                      rec.y = Math.max(rec.y, focusedRec.y+focusedRec.height+1);
                      rec.height = y2 - rec.y;
                      if (rec.width >= cornerAllowance && rec.height >= cornerAllowance) {
-                        windowVisibilityList[idx].cornerVisibility = this.getCornerVisibility( windowVisibilityList[idx], windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
-                        candidateList.push(windowVisibilityList[idx]);
+                        windowVisibility.cornerVisibility = this.getCornerVisibility( windowVisibility, windowList, rec.x+cornerAllowance, rec.x+rec.width-cornerAllowance, rec.y+cornerAllowance, rec.y+rec.height-cornerAllowance );
+                        candidateList.push(windowVisibility);
                      }
                   }
                }
             }
          }
       }
+      return candidateList;
+   }
+
+   // Look for all windows that have some corner of their window in the direction of the direction parameter.
+   // Sort the candidate list by z-order (descending user_time)
+   // Return the window closes to the current window that still has a corner visible
+   getClosestVisibleWindows(focusedWindow, focusedMonitor, focusedRec, windowList, direction) {
+      let candidateList = this.getVisibleWindowCanidates(focusedWindow, focusedMonitor, focusedRec, windowList, direction);
       // If there are any candidate windows find the best one
       if (candidateList.length > 1) {
          // Find the closest window that has at least one corner visible
@@ -442,6 +458,181 @@ class AdjacentWindows {
       return null;
    }
 
+   // Wrap-around for "Closest" mode: find furthest window in opposite direction
+   getFurthestWindowClosest(focusedWindow, focusedMonitor, focusedRec, windowList, direction) {
+      let bestWindow = null;
+      let bestRec = null;
+      let allowMinimized = this.settings.getValue("include-minimized");
+      let allowOtherMon  = this.settings.getValue("include-other-monitors");
+      for (let i = 0; i < windowList.length; i++) {
+         let metaWindow = windowList[i];
+         if (metaWindow != focusedWindow && Main.isInteresting(metaWindow) &&
+            (allowMinimized || !metaWindow.minimized) &&
+            (allowOtherMon || focusedMonitor == metaWindow.get_monitor()))
+         {
+            let rec = metaWindow.get_frame_rect();
+            if (direction == Direction.Left) {
+               // Wrap left = find rightmost window
+               if (!bestWindow || rec.x + rec.width > bestRec.x + bestRec.width) {
+                  bestWindow = metaWindow;
+                  bestRec = rec;
+               }
+            } else if (direction == Direction.Right) {
+               // Wrap right = find leftmost window
+               if (!bestWindow || rec.x < bestRec.x) {
+                  bestWindow = metaWindow;
+                  bestRec = rec;
+               }
+            } else if (direction == Direction.Up) {
+               // Wrap up = find bottommost window
+               if (!bestWindow || rec.y + rec.height > bestRec.y + bestRec.height) {
+                  bestWindow = metaWindow;
+                  bestRec = rec;
+               }
+            } else if (direction == Direction.Down) {
+               // Wrap down = find topmost window
+               if (!bestWindow || rec.y < bestRec.y) {
+                  bestWindow = metaWindow;
+                  bestRec = rec;
+               }
+            }
+         }
+      }
+      return bestWindow;
+   }
+
+   // Wrap-around for "HighestZ" mode: find highest z-order window on opposite edge
+   getFurthestWindowHighestZ(focusedWindow, focusedMonitor, focusedRec, windowList, direction) {
+      let bestWindow = null;
+      let allowOtherMon  = this.settings.getValue("include-other-monitors");
+
+      for (let i = 0; i < windowList.length; i++) {
+         let metaWindow = windowList[i];
+         if (metaWindow != focusedWindow && Main.isInteresting(metaWindow) && !metaWindow.minimized &&
+            (allowOtherMon || focusedMonitor == metaWindow.get_monitor()))
+         {
+            let rec = metaWindow.get_frame_rect();
+            let isCandidate = false;
+
+            if (direction == Direction.Left) {
+               // Wrap left = find rightmost window
+               if (!bestWindow || rec.x + rec.width > windowList[windowList.indexOf(bestWindow)].get_frame_rect().x + windowList[windowList.indexOf(bestWindow)].get_frame_rect().width) {
+                  isCandidate = true;
+               }
+            } else if (direction == Direction.Right) {
+               // Wrap right = find leftmost window
+               if (!bestWindow || rec.x < windowList[windowList.indexOf(bestWindow)].get_frame_rect().x) {
+                  isCandidate = true;
+               }
+            } else if (direction == Direction.Up) {
+               // Wrap up = find bottommost window
+               if (!bestWindow || rec.y + rec.height > windowList[windowList.indexOf(bestWindow)].get_frame_rect().y + windowList[windowList.indexOf(bestWindow)].get_frame_rect().height) {
+                  isCandidate = true;
+               }
+            } else if (direction == Direction.Down) {
+               // Wrap down = find topmost window
+               if (!bestWindow || rec.y < windowList[windowList.indexOf(bestWindow)].get_frame_rect().y) {
+                  isCandidate = true;
+               }
+            }
+
+            if (isCandidate && (!bestWindow || isAbove(metaWindow, bestWindow))) {
+               bestWindow = metaWindow;
+            }
+         }
+      }
+      return bestWindow;
+   }
+
+   // Wrap-around for "VisibleCorner" mode: find highest z-order window with visible corner on opposite edge
+   getFurthestWindowVisibleCorner(focusedWindow, focusedMonitor, focusedRec, windowList, direction) {
+      let candidateList = this.getVisibleWindowCanidates(focusedWindow, focusedMonitor, focusedRec, windowList, direction);
+      // If there are any candidate windows find the best one
+      if (candidateList.length > 1) {
+         // Find the closest window that has at least one corner visible
+         // When two windows are the same distance, use the highest z-order window
+         // The 1st entry in the candidate list will be the highest z-order and for sure visible
+         let bestWindow = null;
+         let bestWindowOffset;
+         for (let i=0 ; i < candidateList.length ; i++) {
+            let candidate = candidateList[i];
+            let visibleCorner = (candidate.cornerVisibility.topLeft || candidate.cornerVisibility.bottomLeft || candidate.cornerVisibility.topRight || candidate.cornerVisibility.bottomRight);
+            let candidateIsBetter = (!bestWindow || (candidate.overlapping && !bestWindow.overlapping));
+            if (visibleCorner && (!bestWindow || !bestWindow.overlapping || candidate.overlapping)) {
+               if (direction == Direction.Left) {
+                  if (candidate.cornerVisibility.topRight || candidate.cornerVisibility.bottomRight) {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.x+candidate.rec.width < bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.x+candidate.rec.width;
+                     }
+                  } else {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.x < bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.x;
+                     }
+                  }
+               } else if (direction == Direction.Right) {
+                  if (candidate.cornerVisibility.topLeft || candidate.cornerVisibility.bottomLeft) {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.x > bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.x;
+                     }
+                  } else {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.x+candidate.rec.width > bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.x+candidate.rec.width;
+                     }
+                  }
+               } else if (direction == Direction.Up) {
+                  if (candidate.cornerVisibility.bottomLeft || candidate.cornerVisibility.bottomRight) {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.y+candidate.rec.height < bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.y+candidate.rec.height;
+                     }
+                  } else {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.y < bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.y;
+                     }
+                  }
+               } else if (direction == Direction.Down) {
+                  if (candidate.cornerVisibility.topLeft || candidate.cornerVisibility.topRight) {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.y > bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.y;
+                     }
+                  } else {
+                     if (candidateIsBetter || (candidate.overlapping == bestWindow.overlapping && candidate.rec.y+candidate.rec.height > bestWindowOffset)) {
+                        bestWindow = candidate;
+                        bestWindowOffset = candidate.rec.y+candidate.rec.height;
+                     }
+                  }
+               }
+            }
+         }
+         if (bestWindow)
+            return bestWindow.window;
+      } else if (candidateList.length == 1){
+         return candidateList[0].window;
+      }
+      return null;
+   }
+
+   getOppositeDirection(direction) {
+      switch(direction) {
+         case Direction.Left:
+            return Direction.Right;
+         case Direction.Right:
+            return Direction.Left;
+         case Direction.Up:
+            return Direction.Down;
+         case Direction.Down:
+            return Direction.Up;
+         default:
+            return direction;
+      }
+   }
+
    // Calculate the visibility of the corners for the 'window' parm.
    // The passed in window coordinates exclude any portion of the window that is covered by the focused window
    // Assumes the windowList parm is in z-order with focused window at index 0
@@ -486,15 +677,17 @@ class AdjacentWindows {
          focusedRec = focusedWindow.get_frame_rect();
          i = windows.indexOf(focusedWindow);
       }
-      let fy2 = focusedRec.y+focusedRec.height;
-      let fx2 = focusedRec.x+focusedRec.width;
+      let fx = focusedRec.x;
+      let fy = focusedRec.y;
+      let fy2 = fy+focusedRec.height;
+      let fx2 = fx+focusedRec.width;
       for ( ; i < windows.length ; i++ ){
          let metaWindow = windows[i];
          if (metaWindow != focusedWindow && Main.isInteresting(metaWindow) && !metaWindow.minimized) {
             let rec = metaWindow.get_frame_rect();
             let y2 = rec.y+rec.height;
             let x2 = rec.x+rec.width;
-            if (rec.x < fx2 && x2 > focusedRec.x && rec.y < fy2 && y2 > focusedRec.y) {
+            if (rec.x < fx2 && x2 > fx && rec.y < fy2 && y2 > fy) {
                if (this.underDelay) {
                   let doIt = GLib.MainContext.default().find_source_by_id(this.underDelay);
                   if (doIt) Mainloop.source_remove(this.underDelay);

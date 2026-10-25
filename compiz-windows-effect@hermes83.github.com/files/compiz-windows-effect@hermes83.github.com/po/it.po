@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-07-04 10:37-0400\n"
-"PO-Revision-Date: 2023-03-31 10:38+0200\n"
+"PO-Revision-Date: 2026-09-01 16:59+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. extension.js:197
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #. extension.js:198
 msgid ""
@@ -29,6 +29,9 @@ msgid ""
 "focused window, therefore Compiz window effects can not be disabled for that "
 "window"
 msgstr ""
+"Impossibile determinare l'applicazione o la WM_CLASS della finestra "
+"precedentemente attiva, pertanto gli effetti di Compiz non possono essere "
+"disabilitati per tale finestra"
 
 #. metadata.json->description
 msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
@@ -42,73 +45,75 @@ msgstr "Effetto stile Compiz per le finestre"
 
 #. settings-schema.json->general-page->title
 msgid "General"
-msgstr ""
+msgstr "Generale"
 
 #. settings-schema.json->exclude-page->title
 msgid "Exclude List"
-msgstr ""
+msgstr "Elenco esclusioni"
 
 #. settings-schema.json->power-page->title
 msgid "Power"
-msgstr ""
+msgstr "Energia"
 
 #. settings-schema.json->preset-section->title
-#, fuzzy
 msgid "Compiz windows effect configuration"
-msgstr "Effetto stile Compiz per le finestre"
+msgstr "Configurazione degli effetti delle finestre di Compiz"
 
 #. settings-schema.json->effect-settings-section->title
 msgid "Custom effect settings"
-msgstr ""
+msgstr "Impostazioni degli effetti personalizzati"
 
 #. settings-schema.json->exclude-section->title
 msgid "Application windows where no window effects will be applied"
 msgstr ""
+"Finestre dell'applicazione in cui non verranno applicati effetti finestra"
 
 #. settings-schema.json->power-section->title
 msgid "Manage power consumption"
-msgstr ""
+msgstr "Gestione consumo energetico"
 
 #. settings-schema.json->presetList->options
 #. settings-schema.json->powerPresetList->options
 msgid "Subtle"
-msgstr ""
+msgstr "Impercettibile"
 
 #. settings-schema.json->presetList->options
 #. settings-schema.json->powerPresetList->options
 msgid "Realistic"
-msgstr ""
+msgstr "Realistico"
 
 #. settings-schema.json->presetList->options
 #. settings-schema.json->powerPresetList->options
 msgid "Exaggerated"
-msgstr ""
+msgstr "Esagerato"
 
 #. settings-schema.json->presetList->options
 #. settings-schema.json->powerPresetList->options
 msgid "Extreme"
-msgstr ""
+msgstr "Estremo"
 
 #. settings-schema.json->presetList->options
 #. settings-schema.json->powerPresetList->options
 msgid "Custom"
-msgstr ""
+msgstr "Personalizzato"
 
 #. settings-schema.json->presetList->description
 msgid "Effect style"
-msgstr ""
+msgstr "Stile effetto"
 
 #. settings-schema.json->powerPresetList->options
 msgid "None"
-msgstr ""
+msgstr "Nessuna"
 
 #. settings-schema.json->powerPresetList->description
 msgid "Effect style when running on battery power"
-msgstr ""
+msgstr "Stile effetto quando si utilizza l'alimentazione a batteria"
 
 #. settings-schema.json->power-onbattery->description
 msgid "Use different effect settings when running on battery power"
 msgstr ""
+"Utilizza impostazioni degli effetti diverse quando si utilizza "
+"l'alimentazione a batteria"
 
 #. settings-schema.json->power-onbattery->tooltip
 msgid ""
@@ -117,63 +122,70 @@ msgid ""
 "less than the set limit. These settings will take precedence over the "
 "general settings when the battery charge state condition is met."
 msgstr ""
+"Quando questa opzione è abilitata, verrà visualizzato un set di impostazioni "
+"che consentono di definire le modalità di funzionamento quando si utilizza "
+"l'alimentazione a batteria e il livello di carica della batteria è inferiore "
+"al limite impostato. Tali impostazioni avranno la precedenza sulle "
+"impostazioni generali quando viene soddisfatta la condizione relativa al "
+"livello di carica della batteria."
 
 #. settings-schema.json->power-percent->description
 msgid "When battery is less than (percent)"
-msgstr ""
+msgstr "Quando la batteria è inferiore al (percento)"
 
 #. settings-schema.json->excludeList->description
 msgid "Application exclude list"
-msgstr ""
+msgstr "Elenco applicazioni escluse"
 
 #. settings-schema.json->excludeList->columns->title
-#, fuzzy
 msgid "Application"
-msgstr "Attrito"
+msgstr "Applicazione"
 
 #. settings-schema.json->excludeList->tooltip
 msgid ""
 "Defines a list of applications where the \"Compiz window effect\" effects "
 "will not be applied."
 msgstr ""
+"Definisce un elenco di applicazioni in cui gli \"Effetti Finestra di "
+"Compiz\" non verranno applicati."
 
 #. settings-schema.json->excludeButton->description
 msgid "Add entry for the application of the most recently focused window"
 msgstr ""
+"Aggiungi la voce per l'applicazione della finestra più recentemente "
+"selezionata"
 
 #. settings-schema.json->excludeButton->tooltip
 msgid ""
 "Focus the window you want to disable window effects for, then return here "
 "and press this button."
 msgstr ""
+"Seleziona la finestra per la quale desideri disabilitare gli effetti, quindi "
+"torna qui e premi questo pulsante."
 
 #. settings-schema.json->friction->description
-#, fuzzy
 msgid "Friction "
-msgstr "Attrito"
+msgstr "Attrito "
 
 #. settings-schema.json->springK->description
 msgid "Spring K"
 msgstr "Molleggiamento"
 
 #. settings-schema.json->speedupFactorDivider->description
-#, fuzzy
 msgid "Speedup"
-msgstr "Fattore di accelerazione"
+msgstr "Accelerazione"
 
 #. settings-schema.json->mass->description
 msgid "Mass      "
-msgstr ""
+msgstr "Massa     "
 
 #. settings-schema.json->xTiles->description
-#, fuzzy
 msgid "X Tiles  "
-msgstr "Dimensione X della griglia"
+msgstr "Piastrelle X  "
 
 #. settings-schema.json->yTiles->description
-#, fuzzy
 msgid "Y Tiles  "
-msgstr "Dimensione Y della griglia"
+msgstr "Piastrelle Y  "
 
 #. settings-schema.json->maxUnmaxFactor->description
 msgid "Maximizing and Unmaximizing Factor"

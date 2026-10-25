@@ -1,3 +1,6 @@
+### v2.0.2~20260727
+  * Solves a compatibility problem with Cinnamon 6.6+.
+
 ### v2.0.1~20260610
   * Ready for Linux Mint 23.
 

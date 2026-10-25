@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-02-06 17:50-0500\n"
-"PO-Revision-Date: 2025-08-26 18:26+0200\n"
+"PO-Revision-Date: 2026-09-01 16:49+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -365,17 +365,18 @@ msgstr ""
 "per cambiare l'area di lavoro corrente"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->description
-#, fuzzy
 msgid "Use Flipper effect when switching workspaces using touchpad gestures"
 msgstr ""
-"Usa l'effetto Flipper quando la modifica dello stato attivo provoca il "
-"cambio area di lavoro"
+"Utilizza l'effetto Flipper quando cambi area di lavoro tramite gesti del "
+"touchpad"
 
 #. 5.4->settings-schema.json->patchGestureSwitch->tooltip
 msgid ""
 "Override the WorkspaceSwitchAction API so workspace switch touchpad gestures "
 "will use the Flipper effect"
 msgstr ""
+"Sovrascrivi l'API WorkspaceSwitchAction in modo che i gesti del touchpad per "
+"il cambio di area di lavoro utilizzino l'effetto Flipper"
 
 #. 5.4->settings-schema.json->includePanels->description
 msgid "Include Panels"

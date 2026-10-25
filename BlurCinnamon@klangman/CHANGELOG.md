@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.6.1
+
+* Fix a memory leak with Dual Kawase effect.
+* Optimize Dual Kawase effect by caching the shaders and removing unnecessary listeners.
+* Fix cases where title bar blurring leaves a 3px title bar blur actor in cases where the title bar height can not be calculated.
+* Fix Expo monkey patching so that disabling then re-enabling Expo burring does not cause a Cinnamon keyboard and mouse lockout
+
+## 2.6.0
+
+* Added a new Dual Kawase Blur algorithm written by Lucas-X-A which gives a Gaussian like smooth blur that is faster (better for low end GPUs) and produces better results in many cases as compared to the Gaussian blur algorithm. This is the new default algorithm for new installs, but people upgrading to this version will need to manually switch to Dual Kawase if they want to take advantage of this new algorithm.
+* Added an option to blur window title bars. This feature requires changes to your theme's CSS code, see the website for instruction (GTK3 and Mint-Y only)
+* Fix an Cinnamon crash when closing a non-focused blurred application window when the focused window is also a blurred application window.
+* Fix an issue where the desktop icons were not showing up the the Dynamic blur backgrounds
+* Fix a small delay before Dynamic blur effects appear when using the show desklets (Super+S) Cinnamon feature.
+* Fix some issues around UI scaling
+* Fix a memory leak due to not removing some listeners
+* Fix for window blurring not resizing properly when windows are "shaded"
+* Fix for blurred windows being made very slightly opaque even when opacity was set to 100
+* Add an blur algorithm information guide to the "Generic effect settings" tab
+
+Special thanks to [Lucas-X-A](https://github.com/Lucas-X-A) for his many contributions to this release!
+
 ## 2.5.2
 
 * Fix a 2.5.1 regression with handling fullscreen windows
@@ -11,9 +33,9 @@
 * Fix for the blurred background of panels disappearing after closing the active workspace
 * Fix for the standard Alt-Tab switcher effects not disabling after unchecking the Alt-Tab effect on the General Setup tab
 * Simplified tracking of visible windows for dynamic blurring, hopefully fixing some cases of sticky clones
-* Fixes cases were new windows added while showing desklets (Super+S) would not get added to the clones for Desklets
+* Fixes cases were new windows added while showing desklets (Super+S) would not get added to the clones for Desklet dynamic blurring
 * Fixed the Standard Alt-Tab switcher effects so that it respects the app switcher "Override" option
-* Fixed performance issue casued failing to disconnect a signal for the Classic Alt-Tab switcher
+* Fixed a performance issue caused by failing to disconnect a signal for the Classic Alt-Tab switcher
 * Fixed some cases where the blurred background was placed in the wrong location for the standards Alt-Tab switcher
 * Fixed a "flash" of the desktop image in the blurred standard Alt-Tab switcher when using Dynamic effects
 
@@ -27,7 +49,7 @@
 * Added option to allow theme setting to remain for Notifications and Tooltips
 * Improved how window stacking is tracked for dynamic blurring (fixes issues with showing incorrect background windows)
 * Fixed a number of issues to allow proper support for video wallpapers (i.e. Hidamari)
-* Fixes some most cases where Application Window Dynamic blurring would cause issue with moving/resizing windows
+* Fixes most cases where Application Window Dynamic blurring would cause issue with moving/resizing windows
 * Fix some issues that occur after changing the UI scale and/or screen resolution
 * Better window tracking for the focused window backlight effect
 * A bunch of other fixes that I didn't remember to document

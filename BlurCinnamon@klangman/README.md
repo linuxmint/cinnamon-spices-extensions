@@ -29,10 +29,13 @@ Cinnamon components you can apply effects to (currently):
 | Gaussian dynamic blur           | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Gaussian blur effect on top of a full desktop clone with windows and the desktop wallpaper                     |
 | Monte Carlo static blur         | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Monte Carlo blur effect on top of the desktop wallpaper                                                        |
 | Monte Carlo dynamic blur        | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Monte Carlo blur effect on top of a full desktop clone with windows and the desktop wallpaper                  |
+| Dual Kawase static blur         | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Dual Kawase blur effect on top of the desktop wallpaper                                                        |
+| Dual Kawase dynamic blur        | Panels, Menu, Notifications, Tooltips, Windows, Desklets | Uses a Dual Kawase blur effect on top of a full desktop clone with windows and the desktop wallpaper                  |
 | Simple / Gaussian / Monte Carlo | Desktop, Expo, Overview                                  | These components can't benefit from anything other than static blurring (blur effect on top of the desktop wallpaper) |
 
 ## Features
 
+- A Dual Kawase blur algorithm which is efficient on low end GPUs/CPUs.
 - Gaussian and Monte Carlo blur algorithms (borrowed from the Gnome extension Blur-my-Shell) with a user configurable intensity
 - Simple blur algorithm (the Cinnamon built-in algorithm) which I would only recommend for very old computers
 - Dimming overlay with user configurable color and intensity (fully-transparent to a solid color)
@@ -76,9 +79,9 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 
 Blur Cinnamon can apply a blurred background to just about any window, but no application windows will have effects applied unless the "Application windows" support is enabled on the "General setup" tab of the Blur Cinnamon configuration window **<u>and</u>** the table under the "Component specific settings" for "windows" has been setup to allow specific windows to have effects enabled. 
 
-Even then the effects will only be visible when the application window (i.e Terminal) is configured to be transparent.  Many Terminal programs have options in their preferences that allows the Terminal to be transparent.
+Even then the **effects will only be visible when the application window (i.e Terminal) is configured to be transparent**.  Many Terminal programs have options in their preferences that allows the Terminal to be transparent.
 
-For windows that can't be configured to have transparent elements, you have the option of reducing the "Opacity" in Blur Cinnamon setting for the window, or by using the "Opacity Slider" extension. With a windows Opacity set to less than 100% you will see the Blur Cinnamon effects behind the window.
+For windows that can't be configured to have transparent elements, you have the option of **reducing the "Opacity" in Blur Cinnamon setting** for the window, or by using the "Opacity Slider" extension. With a windows Opacity set to less than 100% you will see the Blur Cinnamon effects behind the window.
 
 There is also a "Default window settings" entry in the Blur Cinnamon Windows setting page. With this entry enabled all normal windows will have effects applied. Specific windows can still be excluded by adding table entries for the windows you what to exclude and making sure the Enabled setting for the entry is **NOT** checked.
 
@@ -107,6 +110,37 @@ padding-left: 10px; padding-right: 10px; border-radius: 20px; border-width: 1px;
 
 The border radius rounds the corners, the padding adds space on each end of the panel to accommodate the rounded corners better, and the margins shrink the panel so that it does not fill the width of the screen resulting in a centered panel. 
 
+## Window Title Bar Blurring
+
+To enable application window title bar blurring for GTK3 windows when using the Mint-Y theme:
+
+1. Enable the "Blur window title bars" option under the "Component specific settings" tab with the "Windows" component selected.
+
+2. Add the following CSS code into the `~/.config/gtk-3.0/gtk.css` file. Create the file if it does not exist, which will likely be the case.
+   
+   ```
+   /* Make the titlebars semi-transparent, Opacity 0.5 */
+   headerbar, .titlebar {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      box-shadow: none;
+   }
+   ```
+
+3. Restart Cinnamon: ALT-F2, type r, press Enter
+
+You can modify the `rgba` values to achieve different colors (i.e. a blue glass look) and/or change the opacity of the title bar. But don't reduce the opacity to `0` or the window title bar controls will also disappear.
+
+Limitations:
+
+1. This only works for GTK3 windows, GTK4 windows will not be effected, and as I understand it they can not be changed to have transparent title bars.
+
+2. The title bar controls (close, minimize, maximize, etc.) will also be made semi-transparent, I was unable to find a way to have solid controls, but maybe someone that knows Cinnamon/GTK3 CSS better than I can make it solid?
+
+3. Applications that draw their own title bars (ie. Firefox, Chrome, Discord, etc.) will not be effected. In fact chrome will have a transparent title bar, but Blur Cinnamon is unable to determine the height of the title bar and therefore it is left without blurring effects. For Chrome you can enable the "Use system title bar and borders" option.
+
+4. The CSS code here only works for Mint-Y Application themes. The Mint-X theme does not work, but maybe it could be made to work with different CSS code.
+
 ## Feedback
 
 Please leave a comment here on cinnamon-spices.linuxmint.com or you can create an issue on my [Github](https://github.com/klangman/BlurCinnamon) to give me feedback, make a suggestion or to report any issues you find.
@@ -118,5 +152,7 @@ If you like this Cinnamon extension, please give it a "star" here any maybe on m
 Some code was borrowed from the [BlurOverview](https://cinnamon-spices.linuxmint.com/extensions/view/72) Extension by nailfarmer.
 
 The Gaussian, Monte Carlo and rounded corner effects code was borrowed from the Gnome [Blur my shell](https://github.com/aunetx/blur-my-shell) extension by [Aurélien Hamy](https://github.com/aunetx).
+
+The Dual Kawase algorithm effect code was written by [Lucas-X-A](https://github.com/Lucas-X-A).
 
 The Blur Cinnamon icon was generated by Google Gemini

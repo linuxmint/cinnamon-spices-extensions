@@ -3,14 +3,20 @@ const Main = imports.ui.main;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Settings = imports.ui.settings;
-
-const { Overlay } = require('./overlay');
-const { Screenshot } = require('./screenshot');
-const { showScreenshotPreview } = require('./preview');
-const { _, initTranslation } = require('./translation');
-const { getTransitionManager } = require('./transitionEffects');
+const ExtensionSystem = imports.ui.extensionSystem;
 
 const UUID = 'cinnamon-screenshot@hilyxx';
+const EXTENSION_DIR = ExtensionSystem.extensionMeta[UUID].path;
+
+if (imports.searchPath.indexOf(EXTENSION_DIR) === -1) {
+    imports.searchPath.push(EXTENSION_DIR);
+}
+
+const { Overlay } = imports.overlay;
+const { Screenshot } = imports.screenshot;
+const { showScreenshotPreview } = imports.preview;
+const { _, initTranslation } = imports.translation;
+const { getTransitionManager } = imports.transitionEffects;
 
 initTranslation(UUID);
 

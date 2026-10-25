@@ -13,6 +13,7 @@ OsdWithNumber@JosephMcc/*                          @JosephMcc
 RearrangeWorkspaces@klangman/*                     @klangman
 SanitizeXsessionErrors@claudiux/*                  @claudiux
 ShadowParameters@mikhail-ekzi/*                    @mikhail-ekzi
+active-window-indicator@fabiodamio/*               @fabiodamio
 adjacent-windows@klangman/*                        @klangman
 auto-move-windows@JeffHanna/*                      @JeffHanna
 back-to-monitor@nathan818fr/*                      @nathan818fr
@@ -22,6 +23,7 @@ cinnamon-dynamic-wallpaper@TobiZog/*               @TobiZog
 cinnamon-screenshot@hilyxx/*                       @hilyxx
 compiz-windows-effect@hermes83.github.com/*        @hermes83
 desktop-icons-per-workspace@cardsurf/*             @cardsurf
+dim-inactive-windows@jark/*                        @jarkt
 extra-panel-settings@gr3q/*                        @gr3q
 focus-new-window@mdpenguin/*                       @mdpenguin
 invertscreencolors@ilijaculap/*                    @ilijaculap

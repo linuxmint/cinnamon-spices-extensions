@@ -1,0 +1,171 @@
+/*
+█   █ ███ █   █ █████    ████   ███   ███  █   █ 
+██ ██  █  ██  █   █      █   █ █   █ █     █  █  
+█ █ █  █  █ █ █   █      █   █ █   █ █     ███   
+█   █  █  █  ██   █      █   █ █   █ █     █  █  
+█   █ ███ █   █   █      ████   ███   ███  █   █ 
+
+Do not modify
+*/
+
+.dash-dock-container {
+    padding: 6px 12px;
+    border: 1px solid;
+}
+
+.dock-app-button {
+    border-radius: 20px;
+    transition-duration: 200ms;
+}
+
+.dock-app-button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dash-dock-light .dock-app-button:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.dock-app-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 20px;
+    background-color: transparent; 
+    transition-duration: 200ms;
+}
+
+/* if dark backgound -> white dot */
+.dock-app-indicator-running {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* if light backgound -> black dot */
+.dash-dock-light .dock-app-indicator-running {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+.dock-app-indicator-focused {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.dash-dock-light .dock-app-indicator-focused {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* if dark backgound -> white separator */
+.dock-separator {
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* if light backgound -> black separator */
+.dash-dock-light .dock-separator {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.dash-dock-tooltip {
+    background-color: rgba(30, 30, 30, 0.85);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    margin: 6px;
+}
+
+.dock-app-badge {
+    background-color: #ed5353;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* if dark backgound -> white progress bar */
+.dock-progress-fill {
+    background-color: rgba(255, 255, 255, 0.9);
+    height: 5px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* if light backgound -> black progress bar */
+.dash-dock-light .dock-progress-fill {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+.dock-window-close-button {
+    padding: 0px 4px;
+    margin-left: 12px;
+    border-radius: 4px;
+    transition-duration: 150ms;
+}
+
+.dock-window-close-button:hover {
+    color: #ff5555;
+    background-color: rgba(255, 85, 85, 0.15);
+}
+
+.dock-window-close-button:active {
+    color: #ff0000;
+    background-color: rgba(255, 0, 0, 0.25);
+}
+
+/* --- Drag and Drop --- */
+/*dark backgound*/
+
+.dock-drag-hover-left, 
+.dock-drag-hover-right, 
+.dock-drag-hover-top, 
+.dock-drag-hover-bottom {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+.dock-drag-hover-left {
+    box-shadow: inset 3px 0px 0px 0px rgba(255, 255, 255, 0.5);
+}
+.dock-drag-hover-right {
+    box-shadow: inset -3px 0px 0px 0px rgba(255, 255, 255, 0.5);
+}
+.dock-drag-hover-top {
+    box-shadow: inset 0px 3px 0px 0px rgba(255, 255, 255, 0.5);
+}
+.dock-drag-hover-bottom {
+    box-shadow: inset 0px -3px 0px 0px rgba(255, 255, 255, 0.5);
+}
+
+/*light backgound*/
+
+.dash-dock-light .dock-drag-hover-left, 
+.dash-dock-light .dock-drag-hover-right, 
+.dash-dock-light .dock-drag-hover-top, 
+.dash-dock-light .dock-drag-hover-bottom {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+
+.dash-dock-light .dock-drag-hover-left {
+    box-shadow: inset 3px 0px 0px 0px rgba(0, 0, 0, 0.6);
+}
+.dash-dock-light .dock-drag-hover-right {
+    box-shadow: inset -3px 0px 0px 0px rgba(0, 0, 0, 0.6);
+}
+.dash-dock-light .dock-drag-hover-top {
+    box-shadow: inset 0px 3px 0px 0px rgba(0, 0, 0, 0.6);
+}
+.dash-dock-light .dock-drag-hover-bottom {
+    box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, 0.6);
+}

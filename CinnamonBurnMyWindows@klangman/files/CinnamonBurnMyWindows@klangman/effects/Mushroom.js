@@ -215,6 +215,15 @@ var Effect = class Effect {
     return {x: 1.0, y: 1.0};
   }
 
+  // The getSFX() is called from extension.js to get the sound effect file for this effect
+  static getSFX(settings, forOpening) {
+     if (forOpening) {
+        return settings.getValue("mushroom-open-sound");
+     } else {
+        return settings.getValue("mushroom-close-sound");
+     }
+  }
+
   // ---------------------------------------------------------------- Presets
 
   // This function initializes the preset dropdown menu for configuring fire options.

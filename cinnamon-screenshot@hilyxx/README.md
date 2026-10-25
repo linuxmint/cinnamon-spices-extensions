@@ -2,7 +2,7 @@ Cinnamon-Screenshot
 -------------------
 Cinnamon extension for screenshots with modern interface and advanced options.
 
-This extension uses Gnome-Screenshot utility (which works seamlessly with both X11 and Wayland) and is fully integrated into the Cinnamon desktop.
+This extension uses Gnome-Screenshot /or the new Cinnamon-Screenshot utility (only in Cinnamon 6.8)
 
 #### A wide variety of options are included to ensure a good user experience: 
 
@@ -11,6 +11,7 @@ This extension uses Gnome-Screenshot utility (which works seamlessly with both X
 * A timer (up to 60 seconds)
 * A preview of the screenshot along with its pixel dimensions
 * A clipboard option
+* Compatible both X11 or Wayland
 
 By default, ‘CTRL + Q’ keyboard shortcut is used to open the extension. 
 You can customize this shortcut in the extension settings.
@@ -18,10 +19,9 @@ You can customize this shortcut in the extension settings.
 
 ## FAQ
 
-#### → Is this extension only compatible with Cinnamon version 6.4 (and above)?
+#### → Which version of Cinnamon is this extension compatible with?
 
-Yes, because Cinnamon-Screenshot uses the new dialog boxes introduced in version 6.4.<br/>
-This update brings more possibilities and features.
+This extension supports Cinnamon versions 6.0 through 6.8, and is expected to remain compatible with future versions beyond 6.8.
 
 #### → Will there be more features added in the future, especially in the editor mode?
 

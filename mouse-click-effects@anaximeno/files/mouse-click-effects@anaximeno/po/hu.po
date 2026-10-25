@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-06-26 01:26-0100\n"
-"PO-Revision-Date: 2024-10-02 10:15+0200\n"
+"PO-Revision-Date: 2026-09-08 19:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -38,7 +38,7 @@ msgstr "Stílus"
 
 #. 5.4->settings-schema.json->idle-section->title
 msgid "Idle"
-msgstr ""
+msgstr "Tétlen"
 
 #. 5.4->settings-schema.json->effects-section->title
 msgid "Effects"
@@ -179,12 +179,11 @@ msgstr "Tétlen egér animációs mód"
 
 #. 5.4->settings-schema.json->idle-animation-delay->units
 msgid "min"
-msgstr ""
+msgstr "perc"
 
 #. 5.4->settings-schema.json->idle-animation-delay->description
-#, fuzzy
 msgid "Start Idle Animation After"
-msgstr "Tétlen egér animációs periódus"
+msgstr "Üresjárati animáció indítása ezután"
 
 #. 5.4->settings-schema.json->idle-animation-period->description
 msgid "Idle Mouse Animation Period"
@@ -249,7 +248,7 @@ msgstr "Tétlen egér figyelő"
 
 #. 5.4->settings-schema.json->mouse-idle-watcher-enabled->tooltip
 msgid "Displays animations when the system enters idle state."
-msgstr ""
+msgstr "Animációkat jelenít meg, amikor a rendszer tétlen állapotba lép."
 
 #. 5.4->settings-schema.json->left-click-color->description
 msgid "Left Click Color"

@@ -7,17 +7,16 @@ msgstr ""
 "Project-Id-Version: adjacent-windows@klangman 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-02-18 18:57-0500\n"
-"PO-Revision-Date: 2024-07-26 07:06-0400\n"
+"POT-Creation-Date: 2026-08-03 15:30-0400\n"
+"PO-Revision-Date: 2026-09-08 19:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"extensions/issues\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. metadata.json->name
 msgid "Adjacent Windows"
@@ -154,4 +153,18 @@ msgstr "Lehetővé teszi az ablakváltást más monitorokon"
 
 #. 5.4->settings-schema.json->warp-cursor-pointer->description
 msgid "Warp the cursor to the center of the focused window"
-msgstr "A kurzor elmozdítása a fókuszált ablak közepére."
+msgstr "A kurzor elmozdítása a fókuszált ablak közepére"
+
+#. 5.4->settings-schema.json->enable-wrap-around->description
+msgid "Wrap around to the opposite edge when no window is found"
+msgstr "Ha nem található ablak, akkor körbefut az ellenkező széléig"
+
+#. 5.4->settings-schema.json->enable-wrap-around->tooltip
+msgid ""
+"When enabled, if there is no window in the selected direction, focus will "
+"wrap around to the window on the opposite edge of the screen (e.g., pressing "
+"left with no windows to the left will focus the rightmost window)"
+msgstr ""
+"Ha engedélyezve van, és a kiválasztott irányban nincs ablak, a fókusz a "
+"képernyő másik szélén lévő ablakra fog átugrani (pl. ha balra nyomjuk meg, "
+"és nincs bal oldali ablak, akkor a jobb szélső ablakra fog fókuszálni)."

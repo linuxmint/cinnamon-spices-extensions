@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+* Added an option to wrap around to the opposite edge when no window is found in the desired direction.
+
 ## 1.2.1
 
 * Fixed an issue preventing the "Activate window under" hotkey from being registered unless the "Activate window below" is also defined. Thanks to [Yateen00](https://github.com/Yateen00) for reporting the issue.

@@ -1,0 +1,401 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "page-general",
+            "page-borders",
+            "page-shadow",
+            "page-about"
+        ],
+        "page-general": {
+            "type": "page",
+            "title": "Corners",
+            "sections": [
+                "section-windows",
+                "section-applications"
+            ]
+        },
+        "page-borders": {
+            "type": "page",
+            "title": "Borders",
+            "sections": [
+                "section-border",
+                "section-border-apps"
+            ]
+        },
+        "page-shadow": {
+            "type": "page",
+            "title": "Shadows",
+            "sections": [
+                "section-shadow"
+            ]
+        },
+        "page-about": {
+            "type": "page",
+            "title": "About",
+            "sections": [
+                "section-about"
+            ]
+        },
+        "section-windows": {
+            "type": "section",
+            "title": "Windows",
+            "keys": [
+                "note-corners",
+                "auto-include",
+                "corner-radius",
+                "corners-top",
+                "corners-bottom",
+                "disable-maximized"
+            ]
+        },
+        "section-applications": {
+            "type": "section",
+            "title": "Applications",
+            "keys": [
+                "windows-inclusion-list",
+                "windows-exclusion-list",
+                "pick-application-window"
+            ]
+        },
+        "section-border": {
+            "type": "section",
+            "title": "Window border",
+            "keys": [
+                "note-borders",
+                "border-mode",
+                "border-width",
+                "border-contrast",
+                "border-color",
+                "border-color-unfocused"
+            ]
+        },
+        "section-border-apps": {
+            "type": "section",
+            "title": "Application borders",
+            "keys": [
+                "border-app-list",
+                "pick-border-window"
+            ]
+        },
+        "section-shadow": {
+            "type": "section",
+            "title": "Window shadow",
+            "keys": [
+                "note-shadows",
+                "shadow-enabled",
+                "shadow-size",
+                "shadow-offset",
+                "shadow-opacity",
+                "shadow-unfocused-opacity"
+            ]
+        },
+        "section-about": {
+            "type": "section",
+            "title": "About Rounded Corners",
+            "keys": [
+                "about-text"
+            ]
+        }
+    },
+    "note-corners": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "Note",
+        "description": "Most themes round the top corners of title bars, and this extension can’t undo that. A radius smaller than the theme’s will leave a gap between the border/shadow and the window corners. See the <a href=\"https://github.com/klangman/CinnamonRoundedCorners\">Rounded Corners website</a> for how to override the theme’s rounding."
+    },
+    "note-borders": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "Note",
+        "description": "Borders are only drawn on windows that have rounded corners (see the <b>Corners</b> tab). An application in the list below gets no border unless its windows are also rounded."
+    },
+    "note-shadows": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "Note",
+        "description": "This shadow is only drawn on windows that have rounded corners (see the <b>Corners</b> tab), replacing the desktop's own shadow for those windows. Other windows keep their normal shadow."
+    },
+    "auto-include": {
+        "type": "switch",
+        "description": "Round the corners of all windows by default",
+        "default": false
+    },
+    "corner-radius": {
+        "type": "spinbutton",
+        "description": "Corner radius",
+        "dependency": "auto-include",
+        "default": 12,
+        "min": 0,
+        "max": 25,
+        "step": 1,
+        "units": "pixels",
+        "tooltip": "The radius of the rounded corners applied to windows that are rounded by default (those not in the exclusion list)."
+    },
+    "corners-top": {
+        "type": "switch",
+        "description": "Round the top corners (recommended)",
+        "dependency": "auto-include",
+        "default": true,
+        "tooltip": "If you disable top corner rounding but the theme does some rounding of it's own, the squared off top corner shadows will cause a ligher section to appear where the theme has rounded the corners. You may have better results if you enable top rounding to match the themes rounding radius."
+    },
+    "corners-bottom": {
+        "type": "switch",
+        "description": "Round the bottom corners",
+        "dependency": "auto-include",
+        "default": true
+    },
+    "disable-maximized": {
+        "type": "switch",
+        "description": "Don't round maximized windows",
+        "default": true,
+        "tooltip": "Removes the rounded corners, border and shadow while a window is maximized, and restores them when it is unmaximized. Fullscreen windows are never rounded."
+    },
+    "windows-inclusion-list": {
+        "type": "list",
+        "height": 200,
+        "description": "Application window inclusion list",
+        "dependency": "!auto-include",
+        "columns": [
+            {
+                "id": "enabled",
+                "title": "Enabled",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "application",
+                "title": "Application",
+                "type": "string",
+                "default": ""
+            },
+            {
+                "id": "corner_radius",
+                "title": "Corner Radius",
+                "type": "integer",
+                "default": 12,
+                "min": 0,
+                "max": 25
+            },
+            {
+                "id": "corner_top",
+                "title": "Rounded Top",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "corner_bottom",
+                "title": "Rounded Bottom",
+                "type": "boolean",
+                "default": false
+            }
+        ],
+        "tooltip": "Defines a list of application windows where rounded corner effects will be applied and what effects to apply. The \"Application\" field can be a WM_CLASS or a desktop file name.",
+        "default": []
+    },
+    "windows-exclusion-list": {
+        "type": "list",
+        "height": 200,
+        "description": "Application window exclusion list",
+        "dependency": "auto-include",
+        "columns": [
+            {
+                "id": "enabled",
+                "title": "Exclude",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "application",
+                "title": "Application",
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "tooltip": "Defines a list of application windows where rounded corner effects will NOT be applied. The \"Application\" field can be a WM_CLASS or a desktop file name.",
+        "default": []
+    },
+    "pick-application-window": {
+        "type": "button",
+        "description": "Pick a window to add…",
+        "callback": "on_pick_application_window",
+        "tooltip": "Click this, then click any window to add its application to the list above (the exclusion list when windows are rounded by default, otherwise the inclusion list). Press Esc or right-click to cancel."
+    },
+    "border-mode": {
+        "type": "combobox",
+        "description": "Border",
+        "default": "match",
+        "options": {
+            "None": "none",
+            "Match the window's own border": "match",
+            "Automatic (contrast with the window edge)": "auto",
+            "Custom": "custom-colors"
+        },
+        "tooltip": "Draws a thin border just inside the rounded edge of rounded windows. Match continues the window's own border colours around the rounded corners. Automatic darkens light edges and lightens dark ones. Custom draws the colours you choose, one for the focused window and one for other windows."
+    },
+    "border-width": {
+        "type": "spinbutton",
+        "description": "Border width",
+        "dependency": "border-mode!=none",
+        "default": 1,
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "units": "pixels",
+        "tooltip": "How many pixels in from the rounded edge the border reaches. With Match, nothing is drawn on the straight edges; this sets how many of the window's own edge pixel layers are carried around the rounded corners. Set it to the width of the theme's border lines (usually 1 or 2): any extra repeats the window's content colours from the edges into the corners."
+    },
+    "border-contrast": {
+        "type": "spinbutton",
+        "description": "Border contrast",
+        "dependency": "border-mode=auto",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "units": "%",
+        "tooltip": "How far the border colour is moved from the window's edge colour towards black (on light edges) or white (on dark edges)."
+    },
+    "border-color": {
+        "type": "colorchooser",
+        "description": "Border colour (focused window)",
+        "dependency": "border-mode=custom-colors",
+        "default": "rgba(0,0,0,0.3)"
+    },
+    "border-color-unfocused": {
+        "type": "colorchooser",
+        "description": "Border colour (other windows)",
+        "dependency": "border-mode=custom-colors",
+        "default": "rgba(0,0,0,0.15)"
+    },
+    "border-app-list": {
+        "type": "list",
+        "height": 250,
+        "description": "Application border list",
+        "columns": [
+            {
+                "id": "enabled",
+                "title": "Enabled",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "application",
+                "title": "Application",
+                "type": "string",
+                "default": ""
+            },
+            {
+                "id": "mode",
+                "title": "Border",
+                "type": "string",
+                "default": "custom-colors",
+                "options": {
+                    "None": "none",
+                    "Match the window's own border": "match",
+                    "Automatic (contrast with the window edge)": "auto",
+                    "Custom": "custom-colors"
+                }
+            },
+            {
+                "id": "width",
+                "title": "Width",
+                "type": "integer",
+                "default": 1,
+                "min": 1,
+                "max": 4
+            },
+            {
+                "id": "contrast",
+                "title": "Contrast %",
+                "type": "integer",
+                "default": 20,
+                "min": 0,
+                "max": 100
+            },
+            {
+                "id": "color",
+                "title": "Colour (focused)",
+                "type": "string",
+                "default": "rgba(0,0,0,0.3)",
+                "color-chooser": "optional"
+            },
+            {
+                "id": "color_unfocused",
+                "title": "Colour (other)",
+                "type": "string",
+                "default": "rgba(0,0,0,0.15)",
+                "color-chooser": "optional"
+            }
+        ],
+        "tooltip": "Gives particular applications their own border, overriding the settings above. The \"Application\" field can be a WM_CLASS or a desktop file name. Contrast is only used by Automatic, and the colours only by Custom. Click a colour in the list to change it. A colour set to Default uses the matching colour above.",
+        "default": []
+    },
+    "pick-border-window": {
+        "type": "button",
+        "description": "Pick a window to add…",
+        "callback": "on_pick_border_window",
+        "tooltip": "Click this, then click any window to add its application to the application border list. Press Esc or right-click to cancel."
+    },
+    "shadow-enabled": {
+        "type": "switch",
+        "description": "Draw a shadow that follows the rounded corners",
+        "default": true,
+        "tooltip": "Muffin's own shadow is always turned off for rounded windows, because it doesn't follow the rounded corners. With this off, rounded windows have no shadow."
+    },
+    "shadow-size": {
+        "type": "spinbutton",
+        "description": "Shadow size",
+        "dependency": "shadow-enabled",
+        "default": 20,
+        "min": 2,
+        "max": 60,
+        "step": 1,
+        "units": "pixels"
+    },
+    "shadow-offset": {
+        "type": "spinbutton",
+        "description": "Shadow vertical offset",
+        "dependency": "shadow-enabled",
+        "default": 3,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "units": "pixels",
+        "tooltip": "Moves the shadow down, as if lit from above."
+    },
+    "shadow-opacity": {
+        "type": "spinbutton",
+        "description": "Shadow strength (focused window)",
+        "dependency": "shadow-enabled",
+        "default": 40,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "units": "%"
+    },
+    "shadow-unfocused-opacity": {
+        "type": "spinbutton",
+        "description": "Shadow strength (other windows)",
+        "dependency": "shadow-enabled",
+        "default": 25,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "units": "%"
+    },
+    "about-text": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "About",
+        "description": "\n<b>Rounded Corners</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/CinnamonRoundedCorners\">Github</a> / <a href=\"https://github.com/klangman/CinnamonRoundedCorners/issues/new\">Report an issue</a>\n\nThe rounded corners effect is based on Blur-my-shell code by aunetx and contributors <a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>",
+        "icon": "/icon.png"
+    },
+    "ext-version": {
+        "type": "generic",
+        "default": ""
+    },
+    "new-install": {
+        "type": "generic",
+        "default": 1
+    }
+}
