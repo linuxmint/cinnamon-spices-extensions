@@ -27,3 +27,6 @@
  * Correct size and trigger zone of side panels, and alignment with side indicators
  * Add and set new default auto hide mode, hide if focused window covers full screen
  * Add welcome modal to new users, offering easy method to enable initial panels
+
+### 1.4
+ * Hide the dock actor after auto-hide, so it no longer occupies screen area or captures clicks
