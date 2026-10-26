@@ -15,7 +15,7 @@
 const XLET = imports.extensions['greenTile@carsteneu'];
 
 const { usableArea, focusWindow } = XLET.lib.tiling.screen;
-const { collectWindows, windowTileable, windowMaximizedOrFullscreen } = XLET.lib.tiling.windows;
+const { collectWindows, windowTileable, windowMaximizedOrFullscreen, windowMoveResize } = XLET.lib.tiling.windows;
 const { placeCell, placeFit } = XLET.lib.tiling.place;
 const { sortReadingOrder } = XLET.lib.tiling.order;
 const { orderSort } = XLET.lib.model['window-order'];
@@ -447,5 +447,33 @@ var exclRetile = (app) => {
         else if (layout.auto) {
             app.auto.scheduleMonitor(app, i, 150);
         }
+    }
+};
+// Hands every window of this monitor+workspace back the state it had before greenTile
+// first placed it: the recorded frame, or the maximize mask the placement took away
+// (lib/tiling/windows.js windowReset). Muffin keeps no default size, so there is no
+// "WM default" to fall back on — a window greenTile never placed has no record and
+// stays exactly where it is. The record is spent here: a second auto-off moves nothing.
+/**
+ * @param {AppFacade} app
+ * @param {number} monitorIndex
+ * @param {number} wsIndex
+ */
+var restoreFrames = (app, monitorIndex, wsIndex) => {
+    const Main = imports.ui.main;
+    const monitor = Main.layoutManager.monitors[monitorIndex];
+    if (!monitor) {
+        return;
+    }
+    for (const w of collectWindows(app, monitor, null, wsIndex)) {
+        const before = app.session.takeFrame(w);
+        if (!before) {
+            continue;
+        }
+        if (before.maximized) {
+            w.maximize(before.maximized);
+            continue;
+        }
+        windowMoveResize(w, before.rect[0], before.rect[1], before.rect[2], before.rect[3]);
     }
 };

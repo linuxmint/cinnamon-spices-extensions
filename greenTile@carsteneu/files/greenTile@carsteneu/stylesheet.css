@@ -145,6 +145,35 @@
     background-color: rgba(156, 224, 114, 0.13);
 }
 
+/* An assigned card on a workspace whose Auto is off places nothing — every retile
+   gates on autoAllowed (lib/tiling/layout.js) — so it reads as resting: the state
+   accent gives way to the neutral gray, here and in the generated state rules
+   (stateCss, lib/model/state.js). The .gk-panel prefix plus the extra class keep
+   these in front of the generated rules, which are appended after this sheet. */
+.gk-panel .gk-card-idle.gk-card-assigned {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.gk-panel .gk-card-idle .gk-card-stripe {
+    background-color: #5f6672;
+}
+
+.gk-panel .gk-card-idle .gk-sub {
+    color: #8b91a0;
+}
+
+.gk-panel.gk-light .gk-card-idle.gk-card-assigned {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.gk-panel.gk-light .gk-card-idle .gk-card-stripe {
+    background-color: #c3c9d6;
+}
+
+.gk-panel.gk-light .gk-card-idle .gk-sub {
+    color: #5f6672;
+}
+
 .gk-card-stripe {
     width: 3px;
     background-color: #9ce072;
@@ -450,6 +479,15 @@
     color: #6b7180;
     font-size: 11px;
     padding-top: 8px;
+}
+
+/* The "Assigned on" slots: read-only text in the column's secondary tone, a step
+   brighter than the faint hints below it in the dark theme; the light theme keeps
+   one secondary tone for both (see the .gk-light rules). */
+.gk-ed-used {
+    color: #8b91a0;
+    font-size: 11px;
+    padding-top: 2px;
 }
 
 .gk-ed-name-row {
@@ -797,6 +835,10 @@
 }
 
 .gk-light .gk-ed-faint {
+    color: #5f6672;
+}
+
+.gk-light .gk-ed-used {
     color: #5f6672;
 }
 

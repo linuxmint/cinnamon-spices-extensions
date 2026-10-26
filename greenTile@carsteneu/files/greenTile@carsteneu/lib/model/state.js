@@ -58,6 +58,11 @@ var stateTones = (base) => {
  * Same shape as accentCss: the generated rules are prefixed with the
  * panel root class, so they outrank the base rules of stylesheet.css in both
  * scopes (.gk-light rules carry the base alphas, only the colors differ).
+ *
+ * The `idle` rules close a reported trap: an assigned preset on a workspace whose
+ * Auto is off places nothing (every retile gates on autoAllowed), yet the card
+ * looked exactly like a live arrangement. They carry the neutral gray instead of
+ * the state tone, and outrank the assignment rules above by source order.
  * @param {StateTones} tones
  * @returns {string}
  */
@@ -71,11 +76,17 @@ var stateCss = (tones) => {
         `.gk-panel .gk-card-assigned:hover { background-color: ${rgba(tones.tint, 0.13)}; }`,
         `.gk-panel .gk-card-stripe { background-color: ${rgb(tones.tint)}; }`,
         `.gk-panel .gk-sub { color: ${rgb(tones.text)}; }`,
+        `.gk-panel .gk-card-idle { background-color: rgba(255, 255, 255, 0.03); }`,
+        `.gk-panel .gk-card-idle .gk-card-stripe { background-color: #5f6672; }`,
+        `.gk-panel .gk-card-idle .gk-sub { color: #8b91a0; }`,
         `.gk-panel.gk-light .gk-auto-on { color: ${rgb(tones.lightText)}; border-color: ${rgba(tones.lightTint, 0.5)}; background-color: ${rgba(tones.lightTint, 0.1)}; }`,
         `.gk-panel.gk-light .gk-auto-on:hover { color: ${rgb(tones.lightText)}; background-color: ${rgba(tones.lightTint, 0.18)}; }`,
         `.gk-panel.gk-light .gk-card-assigned { background-color: ${rgba(tones.lightTint, 0.08)}; }`,
         `.gk-panel.gk-light .gk-card-assigned:hover { background-color: ${rgba(tones.lightTint, 0.16)}; }`,
         `.gk-panel.gk-light .gk-card-stripe { background-color: ${rgb(tones.lightTint)}; }`,
         `.gk-panel.gk-light .gk-sub { color: ${rgb(tones.lightText)}; }`,
+        `.gk-panel.gk-light .gk-card-idle { background-color: rgba(0, 0, 0, 0.03); }`,
+        `.gk-panel.gk-light .gk-card-idle .gk-card-stripe { background-color: #c3c9d6; }`,
+        `.gk-panel.gk-light .gk-card-idle .gk-sub { color: #5f6672; }`,
     ].join('\n');
 };

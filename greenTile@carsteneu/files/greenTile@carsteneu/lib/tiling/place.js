@@ -33,6 +33,19 @@ const { SETTINGS_KEYS } = XLET.lib.model['settings-keys'];
 // are cancelled and the record survives so its values are still repaired. The
 // visible animation is the shell's in both cases.
 var ANIMATE_MS = 250;
+// ANIMATE_MS is the default of the duration setting (tileAnimationDuration) and
+// the fallback for a value that is not a number; the bounds mirror the setting's
+// spinbutton so a hand-edited settings file cannot animate for ever or not at all.
+var ANIMATE_MS_MIN = 50;
+var ANIMATE_MS_MAX = 1000;
+/**
+ * @param {any} v raw stored duration, validated here
+ * @returns {number}
+ */
+var animateMs = (v) => {
+    const ms = (typeof v === 'number' && Number.isFinite(v)) ? Math.round(v) : ANIMATE_MS;
+    return Math.min(Math.max(ms, ANIMATE_MS_MIN), ANIMATE_MS_MAX);
+};
 // The properties greenTile parks and eases on the compositor actor. Single
 // source of truth for three things that must never disagree: the park below,
 // the ease targets and the per-App ownership table (the parked values are
@@ -103,6 +116,7 @@ var place = (app, metaWindow, x, y, width, height, animate = true) => {
     // lands exactly that many pixels off, the persistent actor/buffer offset
     // observed live on workspace switches.
     const next = { x, y, width, height };
+    const duration = animateMs(app.config.settings.getValue(SETTINGS_KEYS.tileAnimationDuration));
     for (const p of EASE_PROPS) {
         actor[p.field] = p.kind === 'offset'
             ? oldRect[p.axis] + actor[p.field] - next[p.axis]
@@ -121,7 +135,7 @@ var place = (app, metaWindow, x, y, width, height, animate = true) => {
     }
     actor.ease({
         ...identityTargets,
-        duration: ANIMATE_MS,
+        duration: duration,
         mode: Clutter.AnimationMode.EASE_OUT_QUAD,
     });
     // after the ease: the transitions exist, so the owner can take exactly them
@@ -157,6 +171,10 @@ var placeCell = (app, metaWindow, x, y, width, height, area, animate = true) => 
         || cx < ax || cy < ay || cx + cw > ax + aw || cy + ch > ay + ah) {
         return null;
     }
+    // The frame the window has right now is its original one: whatever greenTile does
+    // below is what the auto-off hotkey takes back (lib/tiling/retile.js restoreFrames).
+    // Recorded once per window — a later placement would record the tiled frame.
+    app.session.rememberFrame(metaWindow);
     // The reset belongs before the watch: a maximized window carries a different actor
     // offset than the tiled one, so the baseline must be the geometry state the placement
     // actually starts from.

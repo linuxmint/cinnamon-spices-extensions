@@ -35,6 +35,17 @@ const { disconnectEach } = XLET.lib.model.teardown;
 // SORT_OVERRIDE_MS when no retile came)
 const SORT_OVERRIDE_MS = 2000;
 
+// How long a window event waits for its retile. The two directions are not
+// symmetric: a window that APPEARS has to be mapped and positioned before it can
+// be placed, so that path keeps its wait. A window that DISAPPEARS leaves an empty
+// surface — the freed area shows the desktop until the retile places the
+// neighbours, and that wait is the dominant part of the flicker reported in issue
+// #2 (measured live 2026-10-26: 314 ms between minimize and the first placement,
+// against ~140 ms of animation gap). The vanish path therefore waits only long
+// enough to coalesce a burst of closes into one retile.
+const RETILE_APPEAR_MS = 300;
+const RETILE_VANISH_MS = 100;
+
 // A plain click on a title bar is a MOVING grab that ends exactly where it began:
 // Cinnamon starts a move grab on every button press on a title bar, motion or not
 // (verified live). Retiling the surface for it re-places every tile, and any small
@@ -111,6 +122,7 @@ const SWITCH_PRESS_CAP = 32;
  * @property {(app: AppFacade, monitorIndex: number, wsIndex: number) => { auto: boolean }} layoutFor
  * @property {(app: AppFacade, monitorIndex: number, wsIndex: number, patch: {}) => boolean} layoutSet
  * @property {(app: AppFacade, monitorIndex: number, focused: CinnamonWindow | null, animate?: boolean, wsIndex?: number | null, actionLayout?: Layout | null, settle?: boolean) => void} retileMonitor
+ * @property {(app: AppFacade, monitorIndex: number, wsIndex: number) => void} restoreFrames
  * @property {() => void} borderUpdate
  * @property {(op: string) => boolean} grabIsResize
  * @property {(app: AppFacade, w: CinnamonWindow, op: string) => boolean} dropBegin
@@ -517,8 +529,9 @@ var Auto = class {
                     // the debounced active path above covers it
                     continue;
                 }
-                // layoutFor's auto is exactly "a preset is assigned, or auto tiling
-                // was switched on explicitly" — the same gate retileMonitor applies
+                // layoutFor's auto is exactly "a preset is assigned (a stored id whose
+                // preset is gone counts as one, falling back to the grid), or auto
+                // tiling was switched on explicitly" — the gate retileMonitor applies
                 if (!this._deps.layoutFor(app, i, ws).auto) {
                     continue;
                 }
@@ -778,6 +791,10 @@ var Auto = class {
         }
         this._pending.delete(monitorIndex);
         this._global.log('greenTile auto tiling off for ws' + wsIndex);
+        // Tiling off owns no placement any more, so every window of this surface goes
+        // back to the state it had before the first placement — the user's own arrange-
+        // ment, restored at the moment he asked for it (lib/tiling/retile.js).
+        this._deps.restoreFrames(app, monitorIndex, wsIndex);
         // no retile follows auto off — the border has no geometry event to hide it,
         // so refresh right here (the border update lives in lib/runtime/border.js but
         // is only ever CALLED at runtime)
@@ -804,7 +821,7 @@ var Auto = class {
         }
         pending.add(w.get_stable_sequence());
         this._lastMonitor.set(w.get_stable_sequence(), monitorIndex);
-        this.scheduleMonitor(app, monitorIndex, 300);
+        this.scheduleMonitor(app, monitorIndex, RETILE_APPEAR_MS);
     }
 
     /**
@@ -835,7 +852,7 @@ var Auto = class {
         // The window cannot be re-appended: drop its fresh record, so the per-monitor
         // sets stay bounded on a paused monitor, where no retile ever drains them.
         this.pendingForget(seq);
-        this.scheduleMonitor(app, monitorIndex, 300);
+        this.scheduleMonitor(app, monitorIndex, RETILE_VANISH_MS);
     }
 
     /**
@@ -925,7 +942,8 @@ var Auto = class {
         if (w.get_workspace() !== this._global.workspace_manager.get_active_workspace()) {
             return;
         }
-        this.scheduleMonitor(app, w.get_monitor(), 300);
+        this.scheduleMonitor(app, w.get_monitor(),
+            w.minimized ? RETILE_VANISH_MS : RETILE_APPEAR_MS);
     }
 
     /**

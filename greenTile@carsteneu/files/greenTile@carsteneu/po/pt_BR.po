@@ -6,7 +6,7 @@
 # Marcelo Aof, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.2.7\n"
+"Project-Id-Version: greenTile 2.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
 "POT-Creation-Date: 2026-10-07 17:41+0200\n"
 "PO-Revision-Date: 2022-02-09 15:35-0300\n"
@@ -19,40 +19,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: lib/ui/editor.js:72
+#: lib/ui/editor.js:77
 msgid "Please enter a name."
 msgstr "Insira um nome."
 
-#: lib/ui/editor.js:144
+#: lib/ui/editor.js:149
 #, javascript-format
 msgid "from %d"
 msgstr "a partir de %d"
 
-#: lib/ui/editor.js:431
+#: lib/ui/editor.js:436
 msgid "Rules (by window count)"
 msgstr "Regras (por número de janelas)"
 
-#: lib/ui/editor.js:435
+#: lib/ui/editor.js:440
 msgid "Rule"
 msgstr "Regra"
 
-#: lib/ui/editor.js:436
+#: lib/ui/editor.js:441
 msgid "Delete rule"
 msgstr "Excluir regra"
 
-#: lib/ui/editor.js:444
+#: lib/ui/editor.js:449
 msgid "Rule applies from"
 msgstr "A regra vale a partir de"
 
-#: lib/ui/editor.js:451
+#: lib/ui/editor.js:456
 msgid "windows"
 msgstr "janelas"
 
-#: lib/ui/editor.js:453
+#: lib/ui/editor.js:458
 msgid "Painter"
 msgstr "Área de desenho"
 
-#: lib/ui/editor.js:471
+#: lib/ui/editor.js:476
 msgid ""
 "Click or drag: the row sets how many windows the column holds. Right-click "
 "removes a column."
@@ -60,31 +60,31 @@ msgstr ""
 "Clique ou arraste: a linha define quantas janelas a coluna comporta. O "
 "clique direito remove uma coluna."
 
-#: lib/ui/editor.js:476
+#: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nome"
 
-#: lib/ui/editor.js:477
+#: lib/ui/editor.js:509
 msgid "Preset name"
 msgstr "Nome da predefinição"
 
-#: lib/ui/editor.js:482
+#: lib/ui/editor.js:514
 msgid "Delete preset"
 msgstr "Excluir predefinição"
 
-#: lib/ui/editor.js:485
+#: lib/ui/editor.js:517
 msgid "Really delete?"
 msgstr "Excluir mesmo?"
 
-#: lib/ui/editor.js:486
+#: lib/ui/editor.js:518
 msgid "Delete"
 msgstr "Excluir"
 
-#: lib/ui/editor.js:490
+#: lib/ui/editor.js:522
 msgid "Save"
 msgstr "Salvar"
 
-#: lib/ui/editor.js:515
+#: lib/ui/editor.js:547
 #, javascript-format
 msgid "Result: %s"
 msgstr "Resultado: %s"
@@ -341,6 +341,22 @@ msgstr "Animar a organização lado a lado"
 msgid "Windows glide into their new place. Off: they jump there at once."
 msgstr ""
 "As janelas deslizam até o novo lugar. Desligado: elas saltam para lá na hora."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Duração da animação"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Quanto tempo uma janela leva para deslizar até o lugar, em milissegundos. A "
+"janela ainda chega de imediato ao seu quadro final; só a imagem viaja."
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"

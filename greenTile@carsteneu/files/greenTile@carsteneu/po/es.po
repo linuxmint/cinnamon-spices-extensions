@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.2.7\n"
+"Project-Id-Version: greenTile 2.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
 "POT-Creation-Date: 2026-10-07 17:41+0200\n"
 "PO-Revision-Date: 2023-11-02 11:34-0300\n"
@@ -17,40 +17,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4\n"
 
-#: lib/ui/editor.js:72
+#: lib/ui/editor.js:77
 msgid "Please enter a name."
 msgstr "Introduzca un nombre."
 
-#: lib/ui/editor.js:144
+#: lib/ui/editor.js:149
 #, javascript-format
 msgid "from %d"
 msgstr "desde %d"
 
-#: lib/ui/editor.js:431
+#: lib/ui/editor.js:436
 msgid "Rules (by window count)"
 msgstr "Reglas (según el número de ventanas)"
 
-#: lib/ui/editor.js:435
+#: lib/ui/editor.js:440
 msgid "Rule"
 msgstr "Regla"
 
-#: lib/ui/editor.js:436
+#: lib/ui/editor.js:441
 msgid "Delete rule"
 msgstr "Eliminar regla"
 
-#: lib/ui/editor.js:444
+#: lib/ui/editor.js:449
 msgid "Rule applies from"
 msgstr "La regla se aplica a partir de"
 
-#: lib/ui/editor.js:451
+#: lib/ui/editor.js:456
 msgid "windows"
 msgstr "ventanas"
 
-#: lib/ui/editor.js:453
+#: lib/ui/editor.js:458
 msgid "Painter"
 msgstr "Área de dibujo"
 
-#: lib/ui/editor.js:471
+#: lib/ui/editor.js:476
 msgid ""
 "Click or drag: the row sets how many windows the column holds. Right-click "
 "removes a column."
@@ -58,31 +58,31 @@ msgstr ""
 "Haga clic o arrastre: la fila determina cuántas ventanas contiene la "
 "columna. Con el clic derecho se elimina una columna."
 
-#: lib/ui/editor.js:476
+#: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nombre"
 
-#: lib/ui/editor.js:477
+#: lib/ui/editor.js:509
 msgid "Preset name"
 msgstr "Nombre del preajuste"
 
-#: lib/ui/editor.js:482
+#: lib/ui/editor.js:514
 msgid "Delete preset"
 msgstr "Eliminar preajuste"
 
-#: lib/ui/editor.js:485
+#: lib/ui/editor.js:517
 msgid "Really delete?"
 msgstr "¿Eliminar de verdad?"
 
-#: lib/ui/editor.js:486
+#: lib/ui/editor.js:518
 msgid "Delete"
 msgstr "Eliminar"
 
-#: lib/ui/editor.js:490
+#: lib/ui/editor.js:522
 msgid "Save"
 msgstr "Guardar"
 
-#: lib/ui/editor.js:515
+#: lib/ui/editor.js:547
 #, javascript-format
 msgid "Result: %s"
 msgstr "Resultado: %s"
@@ -342,6 +342,23 @@ msgid "Windows glide into their new place. Off: they jump there at once."
 msgstr ""
 "Las ventanas se deslizan hasta su nueva posición. Desactivado: saltan allí "
 "de inmediato."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Duración de la animación"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Cuánto tarda una ventana en deslizarse hasta su posición, en milisegundos. "
+"La ventana sigue llegando de inmediato a su marco final; solo viaja la "
+"imagen."
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"

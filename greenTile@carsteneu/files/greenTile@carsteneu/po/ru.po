@@ -6,7 +6,7 @@
 # blogdron.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.2.7\n"
+"Project-Id-Version: greenTile 2.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
 "POT-Creation-Date: 2026-10-07 17:41+0200\n"
 "PO-Revision-Date: \n"
@@ -18,40 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4\n"
 
-#: lib/ui/editor.js:72
+#: lib/ui/editor.js:77
 msgid "Please enter a name."
 msgstr "Введите название."
 
-#: lib/ui/editor.js:144
+#: lib/ui/editor.js:149
 #, javascript-format
 msgid "from %d"
 msgstr "от %d"
 
-#: lib/ui/editor.js:431
+#: lib/ui/editor.js:436
 msgid "Rules (by window count)"
 msgstr "Правила (по числу окон)"
 
-#: lib/ui/editor.js:435
+#: lib/ui/editor.js:440
 msgid "Rule"
 msgstr "Правило"
 
-#: lib/ui/editor.js:436
+#: lib/ui/editor.js:441
 msgid "Delete rule"
 msgstr "Удалить правило"
 
-#: lib/ui/editor.js:444
+#: lib/ui/editor.js:449
 msgid "Rule applies from"
 msgstr "Правило действует от"
 
-#: lib/ui/editor.js:451
+#: lib/ui/editor.js:456
 msgid "windows"
 msgstr "окон"
 
-#: lib/ui/editor.js:453
+#: lib/ui/editor.js:458
 msgid "Painter"
 msgstr "Область рисования"
 
-#: lib/ui/editor.js:471
+#: lib/ui/editor.js:476
 msgid ""
 "Click or drag: the row sets how many windows the column holds. Right-click "
 "removes a column."
@@ -59,31 +59,31 @@ msgstr ""
 "Щелчок или перетаскивание: строка задаёт, сколько окон вмещает столбец. "
 "Щелчок правой кнопкой удаляет столбец."
 
-#: lib/ui/editor.js:476
+#: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Название"
 
-#: lib/ui/editor.js:477
+#: lib/ui/editor.js:509
 msgid "Preset name"
 msgstr "Название преднастройки"
 
-#: lib/ui/editor.js:482
+#: lib/ui/editor.js:514
 msgid "Delete preset"
 msgstr "Удалить преднастройку"
 
-#: lib/ui/editor.js:485
+#: lib/ui/editor.js:517
 msgid "Really delete?"
 msgstr "Действительно удалить?"
 
-#: lib/ui/editor.js:486
+#: lib/ui/editor.js:518
 msgid "Delete"
 msgstr "Удалить"
 
-#: lib/ui/editor.js:490
+#: lib/ui/editor.js:522
 msgid "Save"
 msgstr "Сохранить"
 
-#: lib/ui/editor.js:515
+#: lib/ui/editor.js:547
 #, javascript-format
 msgid "Result: %s"
 msgstr "Результат: %s"
@@ -340,6 +340,23 @@ msgid "Windows glide into their new place. Off: they jump there at once."
 msgstr ""
 "Окна плавно перемещаются на новое место. Если выключено, они сразу "
 "оказываются там."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Длительность анимации"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Сколько времени окно скользит на новое место, в миллисекундах. Окно "
+"по-прежнему сразу оказывается в своей итоговой рамке; перемещается только "
+"изображение."
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"

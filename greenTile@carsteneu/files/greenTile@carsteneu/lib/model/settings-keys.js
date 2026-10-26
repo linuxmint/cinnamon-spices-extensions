@@ -41,6 +41,7 @@ var SETTINGS_KEYS = Object.freeze({
     panelSize: 'panelSize',
     windowGap: 'windowGap',
     tileAnimation: 'tileAnimation',
+    tileAnimationDuration: 'tileAnimationDuration',
     focusBorder: 'focusBorder',
     // Hidden since the select replaced it: kept in the schema so Cinnamon's
     // _doUpgrade preserves the stored boolean, read once by the migration.

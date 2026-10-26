@@ -16,7 +16,7 @@
 const XLET = imports.extensions['greenTile@carsteneu'];
 
 const { usableArea, focusWindow } = XLET.lib.tiling.screen;
-const { collectWindows, windowTileable } = XLET.lib.tiling.windows;
+const { collectWindows, windowTileable, windowMoveResize } = XLET.lib.tiling.windows;
 const { layoutShape, layoutShapeWs, autoAllowed } = XLET.lib.tiling.layout;
 const { sortReadingOrder } = XLET.lib.tiling.order;
 const { retileMonitor } = XLET.lib.tiling.retile;
@@ -79,6 +79,47 @@ var landingCells = (app, targetMonitor, monitorIndex, wsIndex, n, layout, others
     const fit = app.split.fit(app, monitorIndex, wsIndex, n, layout,
         app.split.minsFor(app, monitorIndex, wsIndex, n, ordered, source), usableArea(targetMonitor), gap(app));
     return splitRects(fit.kind, fit.shape, fit.split, usableArea(targetMonitor));
+};
+/**
+ * Moves the window onto the landing monitor, verifying the move. Muffin's
+ * move_to_monitor() silently keeps a window TALLER than the target's work area on its
+ * source monitor: no error, no frame change. Live-verified 2026-10-14 on Cinnamon
+ * 6.6/X11 with two 3440x1440 monitors, the one at x=0 behind a 40 px panel (1400 px
+ * work area): a full-height tile of the panel-less monitor (1716x1440) did not move,
+ * the same window at 1400 px (exactly the target work area) and at 1390 px did. The
+ * width is not checked (a 4000 px wide window moved). A greenTile tile fills its
+ * surface's work-area height, so every push out of the roomier monitor used to fail:
+ * the target's retile never counted the incoming window (its monitor had not changed)
+ * and the source's placed it back into the cell it came from. The fallback places the
+ * window on the target itself — the size clamped into the target work area, at the
+ * position it held inside the source work area, which is what move_to_monitor would
+ * have produced. The retile that follows then fits it to the target's slot.
+ * @param {CinnamonWindow} w
+ * @param {CinnamonMonitor} source
+ * @param {CinnamonMonitor} target
+ * @param {number} targetIndex
+ * @param {Rect} frame the window's frame at the push
+ */
+var moveToMonitor = (w, source, target, targetIndex, frame) => {
+    w.move_to_monitor(targetIndex);
+    let landed;
+    try {
+        landed = w.get_monitor();
+    }
+    catch (_e) {
+        // a wrapper finalized mid-push: nothing is left to place
+        return;
+    }
+    if (landed === targetIndex) {
+        return;
+    }
+    const from = usableArea(source);
+    const area = usableArea(target);
+    const width = Math.min(frame[2], area[2]);
+    const height = Math.min(frame[3], area[3]);
+    const x = area[0] + Math.min(Math.max(frame[0] - from[0], 0), area[2] - width);
+    const y = area[1] + Math.min(Math.max(frame[1] - from[1], 0), area[3] - height);
+    windowMoveResize(w, x, y, width, height);
 };
 /**
  * @param {AppFacade} app
@@ -163,9 +204,10 @@ var swapHotkey = (app, dir) => {
     }
     // On a target without active tiling — none set up, paused, or a retained pause
     // (the same autoAllowed decision as for the source and the retile gate) — the
-    // window lands untiled (move only, frame kept as far as Muffin's move_to_monitor
-    // keeps it): no slot is computed and no override is armed that the gated retile
-    // would never consume. Gate and shape read the same, explicit workspace.
+    // window lands untiled (move only, its frame kept as far as it fits the target
+    // work area — see moveToMonitor): no slot is computed and no override is armed
+    // that the gated retile would never consume. Gate and shape read the same,
+    // explicit workspace.
     if (step.kind === 'monitor') {
         const others = collectWindows(app, targetMonitor, null);
         const nTarget = others.length + 1;
@@ -178,7 +220,7 @@ var swapHotkey = (app, dir) => {
                 swapOverride(app, focused, targetCells[slotIdx]);
             }
         }
-        focused.move_to_monitor(step.monitor);
+        moveToMonitor(focused, monitor, targetMonitor, step.monitor, frameRect);
         if (sourceTiled) {
             dropDisplacedSizes(app, monitorIndex, wsIndex, n);
         }
@@ -204,7 +246,7 @@ var swapHotkey = (app, dir) => {
     // Muffin's signature is (index, append); Cinnamon's main.js passes a third time
     // argument that GJS drops with a "Too many arguments" warning.
     focused.change_workspace_by_index(targetWsIndex, false);
-    focused.move_to_monitor(step.monitor);
+    moveToMonitor(focused, monitor, targetMonitor, step.monitor, frameRect);
     global.workspace_manager.get_workspace_by_index(targetWsIndex).activate_with_focus(focused, global.get_current_time());
     const targetLayout = autoAllowed(app, step.monitor, targetWsIndex) ? layoutShapeWs(app, step.monitor, targetWsIndex, nTarget) : null;
     if (targetLayout) {

@@ -175,6 +175,11 @@ var Session = class {
         // App recreations — layoutSet and presetsDelete share it
         // (same class as monitorFallbackLogged).
         this.layoutsWriteGuardLogged = false;
+        // "stale preset id" fallback log-once flag: session lifetime, survives App
+        // recreations (same class as monitorFallbackLogged) — layoutFor reports the
+        // first vanished preset id and stays quiet afterwards, so an automatic
+        // retile loop cannot flood the log with the same line.
+        this.stalePresetLogged = false;
         // Accent stylesheet generation sequence: Cinnamon's St keeps its interned
         // theme nodes across load/unload_stylesheet, so a rebuilt panel would get
         // the node computed with the OLD sheet unless every load takes a fresh
@@ -195,6 +200,14 @@ var Session = class {
         // session destroy; never persisted.
         this.exclToggles = new Map();
         this.exclWatches = new Map();
+        // The frame each window had BEFORE greenTile first placed it, plus the maximize
+        // mask the placement takes away — keyed by stable sequence, so the record dies
+        // with the window and needs no id bookkeeping. Muffin keeps no "default size",
+        // so this record IS the original state; the auto-off path hands it back
+        // (lib/tiling/retile.js restoreFrames). First write wins: a later placement
+        // would record the tiled frame. Leftovers are dropped with the session.
+        /** @type {Map<number, { rect: number[], maximized: number }>} */
+        this.preTiling = new Map();
         // Surfaces whose stored restart order was already used: the store
         // (lib/runtime/orders.js) consumes it for the FIRST retile of a
         // monitor+workspace in this restore epoch. A monitor change starts a new
@@ -346,6 +359,49 @@ var Session = class {
         const kept = this.pendingAuto.filter(
             (c) => !this.sameSlot(app, c.monitorIndex, c.wsIndex, monitorIndex, wsIndex));
         this.pendingAuto = kept;
+    }
+
+    /**
+     * Remembers the frame and maximize mask a window has right now, before greenTile
+     * places it for the first time. First write wins — every later placement would
+     * record the tiled frame instead of the original one.
+     * @param {CinnamonWindow} w
+     */
+    rememberFrame(w) {
+        try {
+            const seq = w.get_stable_sequence();
+            if (this.preTiling.has(seq)) {
+                return;
+            }
+            const frame = w.get_frame_rect();
+            this.preTiling.set(seq, {
+                rect: [frame.x, frame.y, frame.width, frame.height],
+                maximized: w.get_maximized(),
+            });
+        }
+        catch (_e) {
+            // a wrapper that is already gone (the window died before this placement):
+            // there is no frame to remember — and no window left to hand one back to
+        }
+    }
+
+    /**
+     * The recorded pre-tiling state of a window, removed: the auto-off restore hands
+     * it back exactly once.
+     * @param {CinnamonWindow} w
+     * @returns {{ rect: number[], maximized: number } | null}
+     */
+    takeFrame(w) {
+        try {
+            const seq = w.get_stable_sequence();
+            const record = this.preTiling.get(seq) || null;
+            this.preTiling.delete(seq);
+            return record;
+        }
+        catch (_e) {
+            // a wrapper that is already gone: nothing to hand back
+            return null;
+        }
     }
 
     /**

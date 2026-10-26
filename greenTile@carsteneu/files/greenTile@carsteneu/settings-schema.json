@@ -68,6 +68,7 @@
          "title": "Tiling",
          "keys": [
             "tileAnimation",
+            "tileAnimationDuration",
             "focusBorder",
             "singleWindowMode"
          ]
@@ -218,7 +219,7 @@
       "type": "spinbutton",
       "description": "Gap between tiled windows (set with − / + in the preset panel; not shown in this dialog)",
       "min": 0,
-      "max": 48,
+      "max": 49,
       "step": 2,
       "units": "px",
       "default": 0
@@ -228,6 +229,17 @@
       "default": true,
       "description": "Animate tiling",
       "tooltip": "Windows glide into their new place. Off: they jump there at once."
+   },
+   "tileAnimationDuration": {
+      "type": "spinbutton",
+      "default": 250,
+      "min": 50,
+      "max": 1000,
+      "step": 50,
+      "units": "ms",
+      "description": "Animation duration",
+      "tooltip": "How long a window glides into its place, in milliseconds. The window still lands on its final frame at once; only the picture travels.",
+      "dependency": "tileAnimation"
    },
    "focusBorder": {
       "type": "switch",

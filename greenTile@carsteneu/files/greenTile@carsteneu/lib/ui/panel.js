@@ -80,7 +80,7 @@ const PRESET_CARD_CHROME_W = 2 + 3 + 2 * PRESET_CARD_PAD;
  * @param {number} chrome scaled horizontal card chrome in px the preview does not get
  * @param {(preset: Preset) => void} onApply
  * @param {() => void} onUnassign
- * @returns {{ preset: Preset, actor: AnyRecord, setAssigned: (assigned: boolean) => void, setWidth: (width: number) => void }}
+ * @returns {{ preset: Preset, actor: AnyRecord, setAssigned: (assigned: boolean, idle?: boolean) => void, setWidth: (width: number) => void }}
  */
 const panelCard = (app, preset, n, width, chrome, onApply, onUnassign) => {
     const St = imports.gi.St;
@@ -124,18 +124,25 @@ const panelCard = (app, preset, n, width, chrome, onApply, onUnassign) => {
     // Assigned row: built always, shown by setAssigned. Its ✕ clears only this
     // workspace's assignment (never the preset) and must not apply via the card.
     const stateRow = new St.BoxLayout({ style_class: 'gk-card-state' });
-    stateRow.add(new St.Label({ text: '✓ ' + _("Assigned"), style_class: 'gk-sub' }), { expand: true, x_fill: true, y_fill: false, y_align: St.Align.MIDDLE });
+    const stateText = new St.Label({ text: '✓ ' + _("Assigned"), style_class: 'gk-sub' });
+    stateRow.add(stateText, { expand: true, x_fill: true, y_fill: false, y_align: St.Align.MIDDLE });
     const un = new St.Button({ label: '✕', style_class: 'gk-icon-btn gk-card-unassign', track_hover: true });
     new Tooltips.Tooltip(un, _("Remove assignment"));
     un.connect('clicked', () => onUnassign());
     stateRow.add(un, panelMiddle());
     box.add(stateRow);
     card.connect('clicked', () => onApply(preset));
-    /** @param {boolean} value */
-    const setAssigned = (value) => {
+    /**
+     * @param {boolean} value
+     * @param {boolean} [idle] the assignment is stored, but this workspace's Auto
+     *   is off, so nothing places windows (autoAllowed gates every retile) — the
+     *   row says why it rests instead of reading as a live arrangement
+     */
+    const setAssigned = (value, idle = false) => {
         stripe.visible = value;
         stateRow.visible = value;
-        card.style_class = 'gk-card' + (value ? ' gk-card-assigned' : '');
+        stateText.text = '✓ ' + _("Assigned") + (value && idle ? ' · ' + _("Auto: off") : '');
+        card.style_class = 'gk-card' + (value ? ' gk-card-assigned' + (idle ? ' gk-card-idle' : '') : '');
     };
     // Cards are resized in place when the panel width changes inside one column
     // band: the preview follows the card instead of being clipped.
@@ -453,7 +460,7 @@ const panelOpen = (app) => {
         // rebuilds the rows when the COLUMN count changes (panel resize) and only
         // resizes the cards when the width alone changes, so a plain apply never
         // touches the scroll position and a grip drag does not thrash the tree.
-        /** @type {Array<{ preset: Preset, actor: AnyRecord, setAssigned: (a: boolean) => void, setWidth: (w: number) => void }>} */
+        /** @type {Array<{ preset: Preset, actor: AnyRecord, setAssigned: (a: boolean, idle?: boolean) => void, setWidth: (w: number) => void }>} */
         const cards = [];
         let lastCols = 0;
         let lastCardW = 0;
@@ -463,8 +470,11 @@ const panelOpen = (app) => {
             return assigned != null && assigned.id === preset.id;
         };
         const syncCards = () => {
+            // Auto is one decision for the whole surface, so it is read once; every
+            // card describes the same workspace.
+            const resting = !layoutFor(app, monitorIndex, wsIndex).auto;
             for (const card of cards) {
-                card.setAssigned(assignedHere(card.preset));
+                card.setAssigned(assignedHere(card.preset), resting);
             }
         };
         // A card click assigns the preset AND turns automatic tiling on, then
@@ -475,7 +485,7 @@ const panelOpen = (app) => {
         const applyPreset = (preset) => {
             const assigned = layoutSet(app, monitorIndex, wsIndex, { preset: preset.id });
             if (assigned) {
-                global.log('greenTile preset "' + preset.name + '" assigned ws' + wsIndex);
+                global.log('greenTile preset "' + preset.name + '" assigned ws' + (wsIndex + 1));
                 app.session.dropIntent(app, monitorIndex, wsIndex);
             }
             if (!layoutFor(app, monitorIndex, wsIndex).auto) {
@@ -506,7 +516,7 @@ const panelOpen = (app) => {
         // full rebuild before.
         const unassign = () => {
             layoutSet(app, monitorIndex, wsIndex, { preset: null });
-            global.log('greenTile preset unassigned ws' + wsIndex);
+            global.log('greenTile preset unassigned ws' + (wsIndex + 1));
             syncCards();
             syncAuto();
             fitScroll();

@@ -14,7 +14,8 @@
 // (Super+Ctrl+A on, Super+Ctrl+D off, per workspace) — with the runtime state as a
 // per-App component in lib/runtime/auto.js (app.auto): debounce timers, pending
 // sets, monitor maps, the workspace/window observers and the sort-rect overrides.
-// Triggers: window added/removed on the active workspace (debounced 300ms) and
+// Triggers: window added/removed on the active workspace (debounced 300ms for an
+// appearing window, 100ms for one that disappears) and
 // manual window moves on release (grab-op-end, 250ms) — the moved window snaps
 // into the grid slot nearest its drop position, manual arranging stays possible.
 // Dialogs/popups never trigger (NORMAL type + wm_class checks, collector

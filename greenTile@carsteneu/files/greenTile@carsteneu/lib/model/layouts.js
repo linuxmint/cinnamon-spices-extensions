@@ -15,7 +15,9 @@
  * Per monitor AND workspace layout assignments, stored in the string setting layouts:
  * { "<monitor key>": { "<workspace number from 1 | *>": { preset?: id, auto?: boolean, splits?: { "<window count>": split } } } }
  * (splits: movable borders, see split-model).
- * Missing entry/field: no preset, automatic tiling on exactly when a preset is assigned.
+ * Missing entry/field: no preset. Automatic tiling is on exactly when a preset is
+ * assigned — that includes a stored id the preset list no longer contains: the
+ * assignment falls back to the automatic grid, and reading never writes that back.
  * Nothing is inherited from other monitors or workspaces; invalid data is ignored on read.
  * @param {string} raw raw stored JSON, validated here
  * @returns {any} LayoutsMap when the JSON parses to a plain object, otherwise null
@@ -35,7 +37,8 @@ var layoutsParse = (raw) => {
 };
 /**
  * (monitor, workspace) entry resolved: the assigned preset id or null, and whether
- * automatic tiling is on (explicit auto, or no preset assigned).
+ * automatic tiling is on (explicit auto, or a preset assigned — a stored id the
+ * preset list no longer contains counts as assigned and falls back to the grid).
  * @param {any} layouts raw stored layouts, validated here
  * @param {MonitorKey} mkey
  * @param {WsKey} wskey
@@ -49,8 +52,26 @@ var layoutsEntry = (layouts, mkey, wskey, presetIds) => {
     if (typeof entry.preset === 'string' && presetIds.indexOf(entry.preset) !== -1) {
         preset = entry.preset;
     }
-    const auto = typeof entry.auto === 'boolean' ? entry.auto : preset != null;
+    const referenced = typeof entry.preset === 'string' && entry.preset !== '';
+    const dangling = referenced && presetIds.indexOf(entry.preset) === -1;
+    const auto = typeof entry.auto === 'boolean' ? entry.auto : (preset != null || dangling);
     return { preset: preset, auto: auto };
+};
+/**
+ * The stored preset id of an entry when the preset list no longer contains it — the
+ * fallback layoutsEntry applies, reported as the raw stored string, else null.
+ * @param {any} layouts raw stored layouts, validated here
+ * @param {MonitorKey} mkey
+ * @param {WsKey} wskey
+ * @param {string[]} presetIds
+ * @returns {string | null}
+ */
+var layoutsStalePreset = (layouts, mkey, wskey, presetIds) => {
+    const isObject = (/** @type {any} */ v) => Object.prototype.toString.call(v) === '[object Object]';
+    const monitor = isObject(layouts) && isObject(layouts[mkey]) ? layouts[mkey] : {};
+    const entry = isObject(monitor[wskey]) ? monitor[wskey] : {};
+    const referenced = typeof entry.preset === 'string' && entry.preset !== '';
+    return referenced && presetIds.indexOf(entry.preset) === -1 ? entry.preset : null;
 };
 /**
  * Raw "splits" object of an entry ({ "<window count>": split }), {} when missing.
@@ -179,6 +200,33 @@ var layoutsSet = (layouts, mkey, wskey, patch) => {
         next[mkey] = monitor;
     }
     return next;
+};
+/**
+ * Every stored preset reference as { mkey, wskey, preset }, in object order;
+ * anything else (missing, empty, corrupt) yields an empty array. Raw strings —
+ * nothing is resolved against a preset list here.
+ * @param {any} layouts raw stored layouts, validated here
+ * @returns {Array<{ mkey: MonitorKey, wskey: WsKey, preset: string }>}
+ */
+var layoutsRefs = (layouts) => {
+    const isObject = (/** @type {any} */ v) => Object.prototype.toString.call(v) === '[object Object]';
+    /** @type {Array<{ mkey: MonitorKey, wskey: WsKey, preset: string }>} */
+    const refs = [];
+    if (!isObject(layouts)) {
+        return refs;
+    }
+    for (const mkey of Object.keys(layouts)) {
+        if (!isObject(layouts[mkey])) {
+            continue;
+        }
+        for (const wskey of Object.keys(layouts[mkey])) {
+            const entry = layouts[mkey][wskey];
+            if (isObject(entry) && typeof entry.preset === 'string' && entry.preset !== '') {
+                refs.push({ mkey: mkey, wskey: wskey, preset: entry.preset });
+            }
+        }
+    }
+    return refs;
 };
 /**
  * Removes every reference to a deleted preset id, same semantics as ✕ unassign:

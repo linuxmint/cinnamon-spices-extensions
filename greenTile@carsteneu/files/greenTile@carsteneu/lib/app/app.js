@@ -47,7 +47,7 @@ const { collectWindows, windowMoveResize } = XLET.lib.tiling.windows;
 const { gap, placeFit } = XLET.lib.tiling.place;
 const { presetsRead, presetsWrite, layoutFor, layoutSet, layoutShape, rulesPick } = XLET.lib.tiling.layout;
 const { sortReadingOrder } = XLET.lib.tiling.order;
-const { retileMonitor, exclRetile } = XLET.lib.tiling.retile;
+const { retileMonitor, exclRetile, restoreFrames } = XLET.lib.tiling.retile;
 const { focusHotkey } = XLET.lib.tiling['focus-nav'];
 const { grabOpName, grabIsResize } = XLET.lib.tiling.grab;
 const { Config } = XLET.lib.app.config;
@@ -263,6 +263,7 @@ var App = class {
             layoutFor,
             layoutSet,
             retileMonitor,
+            restoreFrames,
             borderUpdate: () => this.border.update(),
             grabIsResize,
             dropBegin: (/** @type {AppFacade} */ grabApp, /** @type {CinnamonWindow} */ w, /** @type {string} */ op) => grabApp.drop.begin(grabApp, w, op),

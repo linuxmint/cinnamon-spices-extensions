@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.2.7\n"
+"Project-Id-Version: greenTile 2.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
 "POT-Creation-Date: 2026-10-07 17:41+0200\n"
 "PO-Revision-Date: 2022-12-15 23:42+0900\n"
@@ -18,40 +18,40 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: lib/ui/editor.js:72
+#: lib/ui/editor.js:77
 msgid "Please enter a name."
 msgstr "名前を入力してください。"
 
-#: lib/ui/editor.js:144
+#: lib/ui/editor.js:149
 #, javascript-format
 msgid "from %d"
 msgstr "%d 以上"
 
-#: lib/ui/editor.js:431
+#: lib/ui/editor.js:436
 msgid "Rules (by window count)"
 msgstr "ルール (ウィンドウ数別)"
 
-#: lib/ui/editor.js:435
+#: lib/ui/editor.js:440
 msgid "Rule"
 msgstr "ルール"
 
-#: lib/ui/editor.js:436
+#: lib/ui/editor.js:441
 msgid "Delete rule"
 msgstr "ルールを削除"
 
-#: lib/ui/editor.js:444
+#: lib/ui/editor.js:449
 msgid "Rule applies from"
 msgstr "ルールの適用条件:"
 
-#: lib/ui/editor.js:451
+#: lib/ui/editor.js:456
 msgid "windows"
 msgstr "ウィンドウ以上"
 
-#: lib/ui/editor.js:453
+#: lib/ui/editor.js:458
 msgid "Painter"
 msgstr "レイアウト描画"
 
-#: lib/ui/editor.js:471
+#: lib/ui/editor.js:476
 msgid ""
 "Click or drag: the row sets how many windows the column holds. Right-click "
 "removes a column."
@@ -59,31 +59,31 @@ msgstr ""
 "クリックまたはドラッグ: 行で列に収めるウィンドウ数を指定します。右クリックで"
 "列を削除します。"
 
-#: lib/ui/editor.js:476
+#: lib/ui/editor.js:508
 msgid "Name"
 msgstr "名前"
 
-#: lib/ui/editor.js:477
+#: lib/ui/editor.js:509
 msgid "Preset name"
 msgstr "プリセット名"
 
-#: lib/ui/editor.js:482
+#: lib/ui/editor.js:514
 msgid "Delete preset"
 msgstr "プリセットを削除"
 
-#: lib/ui/editor.js:485
+#: lib/ui/editor.js:517
 msgid "Really delete?"
 msgstr "本当に削除しますか？"
 
-#: lib/ui/editor.js:486
+#: lib/ui/editor.js:518
 msgid "Delete"
 msgstr "削除"
 
-#: lib/ui/editor.js:490
+#: lib/ui/editor.js:522
 msgid "Save"
 msgstr "保存"
 
-#: lib/ui/editor.js:515
+#: lib/ui/editor.js:547
 #, javascript-format
 msgid "Result: %s"
 msgstr "結果: %s"
@@ -338,6 +338,21 @@ msgid "Windows glide into their new place. Off: they jump there at once."
 msgstr ""
 "ウィンドウが新しい位置へ滑らかに移動します。オフ: すぐにその位置へ移動しま"
 "す。"
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "アニメーションの長さ"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"ウィンドウが所定の位置へ滑る時間 (ミリ秒)。ウィンドウ自体はすぐに最終的な枠に収まり、画像だけが移動します。"
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"

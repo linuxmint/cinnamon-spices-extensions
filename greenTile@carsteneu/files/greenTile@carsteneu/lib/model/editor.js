@@ -225,11 +225,15 @@ var editorStepMin = (rules, index, delta) => {
  */
 var editorValidate = (draft) => (String(draft.name || '').trim() ? null : 'name');
 /**
- * The next free generated preset id ("p<max + 1>").
+ * The next free generated preset id ("p<max + 1>"), stepped past every id in
+ * `taken` — the ids the layouts still reference without holding a preset.
+ * The taken set is indexed once: stepping with a linear scan per candidate made
+ * this quadratic in the size of the stored layouts.
  * @param {Preset[]} presets
+ * @param {string[]} [taken] ids in use that the list does not carry
  * @returns {string}
  */
-var editorNewId = (presets) => {
+var editorNewId = (presets, taken = []) => {
     let max = 0;
     for (const p of presets) {
         const found = /^p(\d+)$/.exec(String(p.id));
@@ -237,7 +241,12 @@ var editorNewId = (presets) => {
             max = Math.max(max, parseInt(found[1], 10));
         }
     }
-    return 'p' + (max + 1);
+    const reserved = new Set(taken);
+    let n = max + 1;
+    while (reserved.has('p' + n)) {
+        n++;
+    }
+    return 'p' + n;
 };
 /**
  * Inserts or replaces a preset by id in the stored list.

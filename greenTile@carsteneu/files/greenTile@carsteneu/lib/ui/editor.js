@@ -19,7 +19,7 @@ const XLET = imports.extensions['greenTile@carsteneu'];
 // `imports` was live at first load, and the Node tests re-evaluate the entry
 // per fresh fake environment against a cached require graph.
 const { editorCols, editorRows, editorMinFloor, editorClamp, editorSpans, editorPaint, editorPaintRange, editorRemove, editorMerge, editorSplit, editorSort, editorAddRule, editorDeleteRule, editorStepMin, editorValidate, editorNewId, editorCommit, editorDeletePreset } = XLET.lib.model.editor;
-const { layoutsParse, layoutsRemovePreset } = XLET.lib.model.layouts;
+const { layoutsParse, layoutsRefs, layoutsRemovePreset } = XLET.lib.model.layouts;
 const { accentHandleInk } = XLET.lib.model.accent;
 const { panelRoundRect, panelRoundRectStroke, panelThumb, panelMiddle } = XLET.lib.ui.draw;
 const { _ } = XLET.lib.ui.i18n;
@@ -48,7 +48,12 @@ var editorOpen = (app, preset) => {
 /** @param {AppFacade} app */
 var editorOpenNew = (app) => {
     const { presetsRead } = app.ops;
-    editorOpen(app, { id: editorNewId(presetsRead(app)), name: '', rules: [{ min: editorMinFloor, stacks: [1, 1] }], isNew: true });
+    // A fresh id must stay unused in BOTH directions: the preset list (editorNewId)
+    // and the assignments the layouts still point at — deleting a preset only clears
+    // its references on the non-corrupt path, so an id can survive in the layouts.
+    const layouts = layoutsParse(app.config.settings.getValue(SETTINGS_KEYS.layouts) || '');
+    const taken = layouts ? layoutsRefs(layouts).map((r) => r.preset) : [];
+    editorOpen(app, { id: editorNewId(presetsRead(app), taken), name: '', rules: [{ min: editorMinFloor, stacks: [1, 1] }], isNew: true });
 };
 /** @param {AppFacade} app */
 var editorBack = (app) => {
@@ -472,6 +477,33 @@ var editorBody = (app) => {
     hint.clutter_text.line_wrap = true;
     hint.clutter_text.ellipsize = imports.gi.Pango.EllipsizeMode.NONE;
     right.add(hint);
+    // A stored assignment is keyed by the preset id alone, so the editor names the
+    // slots this preset hangs on. Read-only on purpose: it informs what a save would
+    // reshape, it does not ask. Corrupt layouts read as "assigned nowhere".
+    const used = layoutsRefs(layoutsParse(app.config.settings.getValue(SETTINGS_KEYS.layouts) || ''))
+        .filter((r) => r.preset === draft.id);
+    right.add(new St.Label({ text: _("Assigned on").toUpperCase(), style_class: 'gk-ed-label' }));
+    if (used.length === 0) {
+        right.add(new St.Label({ text: _("Not assigned anywhere."), style_class: 'gk-ed-faint' }));
+    }
+    else {
+        for (const ref of used.slice(0, 5)) {
+            const label = app.monitors.labels[app.monitors.keys.indexOf(ref.mkey)] || ref.mkey;
+            // Only a CANONICAL workspace key ("3") reads as a number; "*" is its own word,
+            // and anything else ("01", "1.5", "1e3", " 3 ", "abc") shows its stored form —
+            // the layout lookup keys on the canonical string, so a formatted one would name
+            // a slot that does not exist.
+            const number = Number(ref.wskey);
+            const canonical = Number.isInteger(number) && String(number) === ref.wskey && number >= 1;
+            const where = ref.wskey === '*'
+                ? _("all workspaces")
+                : (canonical ? _("workspace %d").format(number) : ref.wskey);
+            right.add(new St.Label({ text: label + ' · ' + where, style_class: 'gk-ed-used' }));
+        }
+        if (used.length > 5) {
+            right.add(new St.Label({ text: _("+%d more").format(used.length - 5), style_class: 'gk-ed-used' }));
+        }
+    }
     const nameRow = new St.BoxLayout({ style_class: 'gk-ed-name-row' });
     nameRow.add(new St.Label({ text: _("Name").toUpperCase(), style_class: 'gk-ed-label' }), middle);
     const entry = new St.Entry({ style_class: 'gk-entry', text: draft.name, hint_text: _("Preset name"), can_focus: true, x_expand: true });

@@ -14,7 +14,7 @@
 
 const XLET = imports.extensions['greenTile@carsteneu'];
 
-const { layoutsParse, layoutsEntry, layoutsShapes, layoutsSet, layoutResolve } = XLET.lib.model.layouts;
+const { layoutsParse, layoutsEntry, layoutsStalePreset, layoutsShapes, layoutsSet, layoutResolve } = XLET.lib.model.layouts;
 const { fillStacks, autoRows, autoNarrowStacks } = XLET.lib.model.fill;
 const { singleMode, singleActive, singleBase } = XLET.lib.model.single;
 const { gapValue } = XLET.lib.model.gap;
@@ -120,8 +120,33 @@ var layoutFor = (app, monitorIndex, wsIndex) => {
         return { preset: null, auto: false };
     }
     const presets = presetsRead(app);
+    const presetIds = presets.map((p) => p.id);
     const layouts = layoutsParse(app.config.settings.getValue(SETTINGS_KEYS.layouts) || '');
-    const entry = layoutsEntry(layouts, app.monitors.keys[monitorIndex], app.monitors.wsKey(monitorIndex, wsIndex), presets.map((p) => p.id));
+    const mkey = app.monitors.keys[monitorIndex];
+    const wskey = app.monitors.wsKey(monitorIndex, wsIndex);
+    const entry = layoutsEntry(layouts, mkey, wskey, presetIds);
+    // A stored preset id the list no longer contains falls back to the automatic grid
+    // (layoutsEntry); the fallback is otherwise silent, so report it once per session —
+    // the user has to learn why six workspaces changed shape at once.
+    // The gate is the STORED decision (entry.auto), never the fully effective one: a
+    // retained pause can still hold the grid back, but asking for it here would run
+    // holdsPause, which NORMALISES the retained-intent queue — a read must not touch it.
+    // So this line reports the fallback the stored state asks for; a slot the user
+    // paused outright is never reported at all.
+    // The id is echoed in a shape that cannot reshape the line: whitespace, control
+    // characters (C0/C1, so CR/LF/NEL/NUL/ESC included) and the quote that delimits the
+    // message all collapse to a space, and what is left is capped.
+    const stale = layoutsStalePreset(layouts, mkey, wskey, presetIds);
+    if (stale && entry.auto && !app.session.stalePresetLogged) {
+        app.session.stalePresetLogged = true;
+        // The control range is the point of this class, not an accident — hence the
+        // explicit acknowledgement of the lint rule that guards against it.
+        // eslint-disable-next-line no-control-regex
+        const collapsed = String(stale).replace(/[\s"\u0000-\u001f\u007f-\u009f]+/g, ' ');
+        // Capped by code points: cutting by UTF-16 unit leaves half a character behind.
+        const echoed = [...collapsed].slice(0, 64).join('');
+        global.log('greenTile preset "' + echoed + '" no longer exists, using the automatic grid');
+    }
     return {
         preset: entry.preset ? presets.find((p) => p.id === entry.preset) || null : null,
         auto: entry.auto,
