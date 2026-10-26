@@ -1462,9 +1462,8 @@ function initPanel(panel) {
         let state = panelStates[panel.panelId];
         if (!state || !state.isEnabled) return;
         
-        if (state.isHidden && getPanelSetting(panel, "autoHide")) {
+        if (state.isHidden && (getPanelSetting(panel, "autoHide") || getPanelSetting(panel, "hideOnFullscreen"))) {
             panel.actor.hide();
-            state.isHidden = false;
         }
     });
 }
