@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4
+
+* Smoother start of the animation: the target workspace is now activated when the animation ends instead of before it starts. Activating it maps its windows and wakes up their applications, which used to stall the first frames of the animation (up to 300 ms on workspaces with several heavy applications).
+
 ## 2.0.3
 
 * Added the ability to use the Flipper effect when changing the workspace using touchpad gestures

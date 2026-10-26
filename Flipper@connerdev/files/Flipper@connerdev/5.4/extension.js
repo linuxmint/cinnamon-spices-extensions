@@ -19,6 +19,7 @@ const Panel = imports.ui.panel;
 const SignalManager = imports.misc.signalManager;
 const Actions = imports.ui.gestures.actions;
 const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 
 const UUID = "Flipper@connerdev";
 
@@ -94,6 +95,8 @@ Flipper.prototype = {
         this.to = null;
         this.is_animating = false;
         this.destroy_requested = false;
+        this.pending_workspace = null;
+        this.follow_window = null;
         this.queued_direction = null;
         this.monitor = Main.layoutManager.primaryMonitor;
         if (!settings)
@@ -250,14 +253,8 @@ Flipper.prototype = {
         if (window.get_workspace() !== workspace) {
            window.change_workspace(workspace);
         }
-        Mainloop.idle_add(Lang.bind(this, function() {
-            // Unless this is done a bit later,
-            // window is sometimes not activated
-            if (window.get_workspace() === global.screen.get_active_workspace()) {
-                //window.activate(global.get_current_time());
-                Main.activateWindow(window);
-            }
-        }));
+        // The workspace is activated when the animation ends, the window is activated after that
+        this.follow_window = window;
 
         this.moveWindowClone(window, active_index, new_index);
         return true;
@@ -467,7 +464,9 @@ Flipper.prototype = {
       this.last_direction = direction;
 
       this.new_workspace = new_workspace;
-      new_workspace.activate(global.get_current_time());
+      // Activating the workspace maps its windows and wakes up their applications, which
+      // stalls the first frames of the animation. Defer it until the animation is done.
+      this.pending_workspace = new_workspace;
       this.prepare(from_workspace, to_workspace, direction);
     },
 
@@ -1371,6 +1370,24 @@ Flipper.prototype = {
     unsetIsAnimating: function() {
       // this.from.hide();
       this.is_animating = false;
+
+      if (this.pending_workspace) {
+        this.pending_workspace.activate(global.display.get_current_time_roundtrip());
+        this.pending_workspace = null;
+      }
+      if (this.follow_window) {
+        let window = this.follow_window;
+        this.follow_window = null;
+        Mainloop.idle_add(Lang.bind(this, function() {
+            // Unless this is done a bit later,
+            // window is sometimes not activated
+            if (window.get_workspace() === global.screen.get_active_workspace()) {
+                //window.activate(global.get_current_time());
+                Main.activateWindow(window);
+            }
+            return GLib.SOURCE_REMOVE;
+        }));
+      }
 
       if( this.queued_action ){
         let action = this.queued_action;
