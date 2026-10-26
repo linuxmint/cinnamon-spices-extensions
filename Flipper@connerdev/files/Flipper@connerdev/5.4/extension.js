@@ -54,6 +54,8 @@ let original_main_activateWindow;
 let original_WorkspaceSwitchAction;
 
 let curFlipper;
+// The Flipper that is currently on the screen
+let activeFlipper = null;
 
 // Our version of WorkspaceSwitchAction class which will replace the cinnamon version
 // This is a copy of the cinnamon version but uses the Flipper effect to switch the workspace
@@ -101,6 +103,9 @@ Flipper.prototype = {
         this.destroy_requested = false;
         this.pending_workspace = null;
         this.follow_window = null;
+        this.destroying = false;
+        this.destroyed = false;
+        this.has_grab = false;
         this.queued_direction = null;
         this.monitor = Main.layoutManager.primaryMonitor;
         if (!settings)
@@ -155,6 +160,8 @@ Flipper.prototype = {
             Main.wm.showWorkspaceOSD();
             return;
         }
+        this.has_grab = true;
+        activeFlipper = this;
 
         // Keep the panels visible above the animation
         this.keep_panels = settings.includePanels;
@@ -1390,7 +1397,12 @@ Flipper.prototype = {
 
         // PRIORITY_DEFAULT, a default idle would starve while CONTINUOUS_REDRAW is on
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, windowLists.length ? WINDOW_LIST_FADE_TIME : 0, () => {
+            // The keyboard grab may already be released, which would let Cinnamon play
+            // its own workspace switch effect on the real windows
+            let save = Main.animations_enabled;
+            Main.animations_enabled = false;
             workspace.activate(global.display.get_current_time_roundtrip());
+            Main.animations_enabled = save;
             windowLists.forEach(function(actor) {
                 actor.ease({
                     opacity: 255,
@@ -1421,8 +1433,10 @@ Flipper.prototype = {
       if (!this.destroy_requested && this._modifierMask) {
         // The modifier key could have been released before we got the grab
         let [x, y, mods] = global.get_pointer();
-        if ((mods & this._modifierMask) == 0)
+        if ((mods & this._modifierMask) == 0) {
           this.destroy_requested = true;
+          this.releaseGrab();
+        }
       }
 
       if( this.queued_action ){
@@ -1541,9 +1555,47 @@ Flipper.prototype = {
 
     },
 
+    // Release the keyboard grab once the modifier keys are released. Further workspace
+    // switch key bindings then reach Cinnamon normally and are passed to queueAction().
+    // Keeping the grab would make Cinnamon see a lone Super key press when e.g. Super+F4
+    // is pressed again, which opens the menu.
+    releaseGrab: function() {
+      if (!this.has_grab)
+        return;
+      this.has_grab = false;
+      Main.popModal(this.actor);
+    },
+
+    // A workspace switch key binding was used while this Flipper is on the screen
+    queueAction: function(action) {
+      if (this.destroying) {
+        this.destroying = false;
+        Tweener.removeTweens(this.metaBackgroundActor);
+        this.dimBackground();
+      }
+      // There is no grab to wait for a modifier release, finish once idle
+      this.destroy_requested = true;
+      if (this.is_animating) {
+        this.hurry = true;
+        this.queued_action = action;
+      } else {
+        this.hurry = false;
+        this.processKeypress(action);
+        if (!this.is_animating)
+          this.onDestroy();
+      }
+    },
+
     _keyPressEvent: function(actor, event) {
       // Make sure we don't accidentally destroy the scene
       this.destroy_requested = false;
+      if (this.destroying) {
+        // A key was pressed while the scene was fading out. Keep the scene and
+        // the grab, otherwise the key release would end up outside of it
+        this.destroying = false;
+        Tweener.removeTweens(this.metaBackgroundActor);
+        this.dimBackground();
+      }
 
       let event_state = Cinnamon.get_event_state(event);
       if (this.is_animating) {
@@ -1565,6 +1617,7 @@ Flipper.prototype = {
 
 
         if (state == 0) {
+          this.releaseGrab();
           if (this.is_animating) {
             this.destroy_requested = true;
           } else {
@@ -1615,6 +1668,10 @@ Flipper.prototype = {
     },
 
     onDestroy: function() {
+      if (this.destroying || this.destroyed)
+        return;
+      this.destroying = true;
+      this.releaseGrab();
       this.undimBackground();
       this.destroy_requested = false;
       //global.log("onDestroy done");
@@ -1622,6 +1679,13 @@ Flipper.prototype = {
 
     destroy: function() {
       //global.log("destroy called");
+      if (this.destroyed)
+        return;
+      this.destroyed = true;
+      this.destroying = false;
+      this.releaseGrab();
+      if (activeFlipper === this)
+        activeFlipper = null;
       Main.uiGroup.remove_actor(this._backgroundGroup);
       Main.uiGroup.remove_actor(this.actor);
 
@@ -1690,6 +1754,14 @@ function onSwitch(display, window, binding) {
     } else {
        direction = Meta.MotionDirection.RIGHT;
     }
+    if (activeFlipper) {
+        let move = bindingName.startsWith("move");
+        if (direction === Meta.MotionDirection.LEFT)
+            activeFlipper.queueAction(move ? Meta.KeyBindingAction.MOVE_TO_WORKSPACE_LEFT : Meta.KeyBindingAction.WORKSPACE_LEFT);
+        else
+            activeFlipper.queueAction(move ? Meta.KeyBindingAction.MOVE_TO_WORKSPACE_RIGHT : Meta.KeyBindingAction.WORKSPACE_RIGHT);
+        return;
+    }
     let new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
     let mask = binding.get_mask();
     let modifierMask = imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
@@ -1712,6 +1784,8 @@ function switchToWorkspace(display, window, binding) {
       Main.soundManager.play('switch');
       new_workspace.activate(global.get_current_time());
       Main.wm.showWorkspaceOSD();
+   } else if (activeFlipper) {
+      activeFlipper.queueAction(Meta.KeyBindingAction.WORKSPACE_1 + newWSIdx);
    } else {
       let [transitions_needed, direction] = getTransitionsAndDirection(new_workspace);
       if (transitions_needed) {
@@ -1727,6 +1801,8 @@ function switchToWorkspace(display, window, binding) {
 function moveToWorkspace(workspace, direction_hint) {
     if (Main.expo._shown) {
        original_mw_moveToWorkspace(workspace, direction_hint);
+    } else if (activeFlipper) {
+        activeFlipper.queueAction(Meta.KeyBindingAction.WORKSPACE_1 + workspace.index());
     } else {
         let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
         if (transitions_needed) {
