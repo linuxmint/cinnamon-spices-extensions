@@ -138,13 +138,25 @@ Flipper.prototype = {
 
         Main.uiGroup.add_child(this.actor);
 
+        if (!Main.pushModal(this.actor)) {
+            // Without the grab we would never see the modifier key release and the
+            // workspace clones would stay on the screen, so just switch the workspace
+            this.actor.destroy();
+            if (window && window.get_window_type() !== Meta.WindowType.DESKTOP && !window.is_on_all_workspaces()) {
+                window.change_workspace(new_workspace);
+                new_workspace.activate_with_focus(window, global.get_current_time());
+            } else {
+                new_workspace.activate(global.get_current_time());
+            }
+            Main.wm.showWorkspaceOSD();
+            return;
+        }
+
         this.releaseID = this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
         this.pressID = this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
 
         this.initBackground();
         this.dimBackground();
-
-        Main.pushModal(this.actor);
 
         this._modifierMask = modifierMask;
         // If there are no modifiers, we can destroy right away
@@ -1380,7 +1392,8 @@ Flipper.prototype = {
         let workspace = this.pending_workspace;
         this.pending_workspace = null;
         this.is_animating = true;
-        Mainloop.idle_add(Lang.bind(this, function() {
+        // PRIORITY_DEFAULT, a default idle would starve while CONTINUOUS_REDRAW is on
+        GLib.idle_add(GLib.PRIORITY_DEFAULT, Lang.bind(this, function() {
             workspace.activate(global.display.get_current_time_roundtrip());
             this.unsetIsAnimating();
             return GLib.SOURCE_REMOVE;
@@ -1399,6 +1412,13 @@ Flipper.prototype = {
             }
             return GLib.SOURCE_REMOVE;
         }));
+      }
+
+      if (!this.destroy_requested && this._modifierMask) {
+        // The modifier key could have been released before we got the grab
+        let [x, y, mods] = global.get_pointer();
+        if ((mods & this._modifierMask) == 0)
+          this.destroy_requested = true;
       }
 
       if( this.queued_action ){
