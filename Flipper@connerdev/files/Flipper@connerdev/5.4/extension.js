@@ -24,7 +24,8 @@ const AppletManager = imports.ui.appletManager;
 
 const UUID = "Flipper@connerdev";
 
-const WINDOW_LIST_FADE_TIME = 100;  // ms
+const WINDOW_LIST_FADE_OUT_TIME = 200; // ms, runs during the animation
+const WINDOW_LIST_FADE_IN_TIME = 100;  // ms
 const WINDOW_LIST_SETTLE_TIME = 50; // ms
 
 const TransitionEffect = {
@@ -436,6 +437,19 @@ Flipper.prototype = {
 
       // Allow Cinnamon to play the switcher sound if it's enabled.
       Main.soundManager.play('switch');
+
+      // The window list on the visible panels is rebuilt for the new workspace,
+      // fade it out during the animation instead of letting it jump at the end
+      if (this.keep_panels) {
+        this.getWindowListActors().forEach(function(actor) {
+            actor.ease({
+                opacity: 0,
+                duration: WINDOW_LIST_FADE_OUT_TIME,
+                mode: Clutter.AnimationMode.EASE_IN_OUT_QUAD
+            });
+        });
+        this.window_list_faded_at = GLib.get_monotonic_time() + WINDOW_LIST_FADE_OUT_TIME * 1000;
+      }
 
       // This is a workaround for poor animation, we enable it only during the animation
       // sequence so users don't need to set it using export CLUTTER_PAINT...
@@ -1384,19 +1398,13 @@ Flipper.prototype = {
         this.pending_workspace = null;
         this.is_animating = true;
 
-        // The window list on the visible panels is rebuilt for the new workspace,
-        // fade it out and back in instead of letting it jump
+        // The window list fades out during the animation, wait for it only when
+        // the animation is shorter than the fade
         let windowLists = this.keep_panels ? this.getWindowListActors() : [];
-        windowLists.forEach(function(actor) {
-            actor.ease({
-                opacity: 0,
-                duration: WINDOW_LIST_FADE_TIME,
-                mode: Clutter.AnimationMode.EASE_OUT_QUAD
-            });
-        });
+        let wait = windowLists.length ? Math.max(0, Math.ceil((this.window_list_faded_at - GLib.get_monotonic_time()) / 1000)) : 0;
 
         // PRIORITY_DEFAULT, a default idle would starve while CONTINUOUS_REDRAW is on
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, windowLists.length ? WINDOW_LIST_FADE_TIME : 0, () => {
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, wait, () => {
             // The keyboard grab may already be released, which would let Cinnamon play
             // its own workspace switch effect on the real windows
             let save = Main.animations_enabled;
@@ -1407,8 +1415,8 @@ Flipper.prototype = {
                 actor.ease({
                     opacity: 255,
                     delay: WINDOW_LIST_SETTLE_TIME,
-                    duration: WINDOW_LIST_FADE_TIME,
-                    mode: Clutter.AnimationMode.EASE_IN_QUAD
+                    duration: WINDOW_LIST_FADE_IN_TIME,
+                    mode: Clutter.AnimationMode.EASE_IN_OUT_QUAD
                 });
             });
             this.unsetIsAnimating();
