@@ -6,6 +6,7 @@
 * Window clones are now stacked in the real stacking order instead of by user time, so windows no longer swap places at the end of the animation.
 * Fading workspaces are now rendered as a whole, so overlapping windows no longer show through each other during the animation.
 * Fixed the screen getting stuck on the animation (windows and panels hidden, no input) when the keyboard grab could not be acquired, or when the modifier key was released before it was acquired. This happened more often with "Include Panels" enabled.
+* The "Include Panels" option is now "Keep panels visible": the panels stay in place above the animation instead of being cloned into it. The window list is faded out and back in around the workspace switch, instead of showing the old list on the new workspace and the panels disappearing at the end.
 
 ## 2.0.3
 

@@ -15,13 +15,17 @@ const Cinnamon = imports.gi.Cinnamon;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
-const Panel = imports.ui.panel;
 const SignalManager = imports.misc.signalManager;
 const Actions = imports.ui.gestures.actions;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const Extension = imports.ui.extension;
+const AppletManager = imports.ui.appletManager;
 
 const UUID = "Flipper@connerdev";
+
+const WINDOW_LIST_FADE_TIME = 100;  // ms
+const WINDOW_LIST_SETTLE_TIME = 50; // ms
 
 const TransitionEffect = {
    Cube:       0,
@@ -152,6 +156,11 @@ Flipper.prototype = {
             return;
         }
 
+        // Keep the panels visible above the animation
+        this.keep_panels = settings.includePanels;
+        if (this.keep_panels)
+            Main.panelManager.lowerActorBelowPanels(this.actor);
+
         this.releaseID = this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
         this.pressID = this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
 
@@ -165,9 +174,11 @@ Flipper.prototype = {
         }
         global.window_group.hide();
 
-        Main.getPanels().forEach(function(panel){
-          panel.disable();
-        });
+        if (!this.keep_panels) {
+          Main.getPanels().forEach(function(panel){
+            panel.disable();
+          });
+        }
 
         if (window && window.get_window_type() !== Meta.WindowType.DESKTOP)
             this.moveWindow(window, new_workspace);
@@ -324,33 +335,6 @@ Flipper.prototype = {
             clone.workspaceWindowActors.push(windowClone);
         }
         clone.workspaceWindows = workspaceWindows;
-        if (settings.includePanels) {
-           let chromeGroup = new St.Group();
-           Main.getPanels().concat(Main.uiGroup.get_children()).forEach(
-               function (panel) {
-                   // Is it a non-autohideable panel, or is it a visible, tracked
-                   // chrome object? TODO: Make more human-readable the logic
-                   // below in clone.add_child().
-                   if ((panel.actor && !panel._hideable)
-                      || (panel &&  Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
-                       let chromeClone = new Clutter.Clone({
-                           source: panel.actor ? panel.actor : panel,
-                           x : panel.actor ? panel.actor.x : panel.x,
-                           y : panel.actor ? (panel.panelPosition === Panel.PanelLoc.bottom ?
-                           Main.layoutManager.primaryMonitor.y +
-                           Main.layoutManager.primaryMonitor.height -
-                           panel.actor.height :
-                           Main.layoutManager.primaryMonitor.y) : panel.y});
-                       chromeGroup.add_child(chromeClone);
-                       //chromeClone.raise_top();
-                       chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
-                   }
-               });
-           clone.add_child(chromeGroup);
-           //chromeGroup.raise_top();
-           chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
-           clone.chromeGroup = chromeGroup;
-        }
         clone.index = workspaceIndex;
         return clone;
     },
@@ -1392,9 +1376,29 @@ Flipper.prototype = {
         let workspace = this.pending_workspace;
         this.pending_workspace = null;
         this.is_animating = true;
+
+        // The window list on the visible panels is rebuilt for the new workspace,
+        // fade it out and back in instead of letting it jump
+        let windowLists = this.keep_panels ? this.getWindowListActors() : [];
+        windowLists.forEach(function(actor) {
+            actor.ease({
+                opacity: 0,
+                duration: WINDOW_LIST_FADE_TIME,
+                mode: Clutter.AnimationMode.EASE_OUT_QUAD
+            });
+        });
+
         // PRIORITY_DEFAULT, a default idle would starve while CONTINUOUS_REDRAW is on
-        GLib.idle_add(GLib.PRIORITY_DEFAULT, Lang.bind(this, function() {
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, windowLists.length ? WINDOW_LIST_FADE_TIME : 0, Lang.bind(this, function() {
             workspace.activate(global.display.get_current_time_roundtrip());
+            windowLists.forEach(function(actor) {
+                actor.ease({
+                    opacity: 255,
+                    delay: WINDOW_LIST_SETTLE_TIME,
+                    duration: WINDOW_LIST_FADE_TIME,
+                    mode: Clutter.AnimationMode.EASE_IN_QUAD
+                });
+            });
             this.unsetIsAnimating();
             return GLib.SOURCE_REMOVE;
         }));
@@ -1431,6 +1435,16 @@ Flipper.prototype = {
       }
       //Main.wm.showWorkspaceOSD();
       Meta.remove_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
+    },
+
+    // The applets that show the window list, Cinnamon gives this role to window list applets
+    getWindowListActors: function() {
+        let uuid = Extension.Type.APPLET.roles.windowattentionhandler;
+        if (!uuid)
+            return [];
+        return AppletManager.getRunningInstancesForUuid(uuid).map(function(applet) {
+            return applet.actor;
+        });
     },
 
     // Change the workspace to parm ws_cur
@@ -1611,9 +1625,11 @@ Flipper.prototype = {
       Main.uiGroup.remove_actor(this._backgroundGroup);
       Main.uiGroup.remove_actor(this.actor);
 
-      Main.getPanels().forEach(function(panel){
-        panel.enable();
-      });
+      if (!this.keep_panels) {
+        Main.getPanels().forEach(function(panel){
+          panel.enable();
+        });
+      }
 
       global.window_group.show();
       this.actor.disconnect(this.releaseID);
