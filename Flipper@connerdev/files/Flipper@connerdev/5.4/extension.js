@@ -270,6 +270,8 @@ Flipper.prototype = {
 
     get_workspace_clone: function(workspaceIndex) {
         let clone = new St.Group({clip_to_allocation: true});
+        // Fade the workspace as a whole, so overlapping windows don't show through each other
+        clone.set_offscreen_redirect(Clutter.OffscreenRedirect.AUTOMATIC_FOR_OPACITY);
         clone.set_size(this.monitor.width, this.monitor.height);
 
         //if(settings.includeBackground) {
@@ -369,8 +371,9 @@ Flipper.prototype = {
             }
         }
 
-        workspaceWindows.sort(Lang.bind(this, this._sortWindow));
-        return workspaceWindows;
+        // Clone the windows in their real stacking order, otherwise windows visibly
+        // swap places when the clones are replaced by the real windows
+        return global.display.sort_windows_by_stacking(workspaceWindows);
         // return workspaceWindows.reverse();
     },
 

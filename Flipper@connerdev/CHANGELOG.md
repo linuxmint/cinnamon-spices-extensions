@@ -3,6 +3,8 @@
 ## 2.0.4
 
 * Smoother start of the animation: the target workspace is now activated when the animation ends instead of before it starts. Activating it maps its windows and wakes up their applications, which used to stall the first frames of the animation (up to 300 ms on workspaces with several heavy applications).
+* Window clones are now stacked in the real stacking order instead of by user time, so windows no longer swap places at the end of the animation.
+* Fading workspaces are now rendered as a whole, so overlapping windows no longer show through each other during the animation.
 
 ## 2.0.3
 
