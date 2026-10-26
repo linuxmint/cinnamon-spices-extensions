@@ -60,6 +60,7 @@
                 "show-separators",
                 "show-trash",
                 "show-settings-icon",
+                "hide-unpinned",
                 "hide-enabled",
                 "hide-mode",
                 "show-delay"
@@ -190,6 +191,11 @@
         "tooltip": "If disabled, you can still access the settings by right-clicking on the edges of the dock.",
         "description": "Show dock settings icon"
     },
+    "hide-unpinned": {
+        "type": "switch",
+        "default": false,
+        "description": "Hide unpinned applications"
+    },
     "hide-enabled": {
         "type": "switch",
         "default": true,
@@ -235,6 +241,7 @@
             "org.gnome.Calculator.desktop",
             "org.gnome.Rhythmbox3.desktop",
             "org.x.clockenstein.Calendar.desktop",
+            "org.x.velocitty.desktop",
             "mintinstall.desktop"
         ]
     }

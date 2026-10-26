@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mint-dock@hilyxx 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-06 06:37+0200\n"
+"POT-Creation-Date: 2026-10-25 21:46+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,31 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#. extension.js:562
+#. extension.js:594
 msgid "System Settings"
 msgstr "Configuración del sistema"
 
-#. extension.js:919
+#. extension.js:598
+msgid "Application"
+msgstr "Aplicación"
+
+#. extension.js:951
 msgid "Unpin from dock"
 msgstr "Desfijar del dock"
 
-#. extension.js:919
+#. extension.js:951
 msgid "Pin to dock"
 msgstr "Fijar en el dock"
 
-#. extension.js:939
+#. extension.js:971
 msgid "Quit"
 msgstr "Salir"
 
-#. extension.js:1544
+#. extension.js:1650
 msgid "Trash"
 msgstr "Papelera"
 
-#. extension.js:1627
+#. extension.js:1733
 msgid "Empty Trash"
 msgstr "Vaciar la papelera"
 
-#. extension.js:1934
+#. extension.js:2058
 msgid "Dock settings"
 msgstr "Configuración del dock"
 
@@ -201,6 +205,10 @@ msgstr ""
 #. settings-schema.json->show-settings-icon->description
 msgid "Show dock settings icon"
 msgstr "Mostrar el icono de configuración del dock"
+
+#. settings-schema.json->hide-unpinned->description
+msgid "Hide unpinned applications"
+msgstr "Ocultar aplicaciones no ancladas"
 
 #. settings-schema.json->hide-enabled->description
 msgid "Hide dock"

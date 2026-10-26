@@ -78,12 +78,23 @@ class DockAppList {
         });
         
         this.appSystem = Cinnamon.AppSystem.get_default();
+        this.windowTracker = Cinnamon.WindowTracker.get_default();
         this.buttons = new Map();
         this.iconSize = this.settings.getValue('icon-size');
 
         this.runningOrder = [];
+        this.startingApps = new Set();
 
-        this._stateChangedId = this.appSystem.connect('app-state-changed', () => this._updateAppList());
+        this._stateChangedId = this.appSystem.connect('app-state-changed', (appSys, app) => {
+            if (app) {
+                if (app.get_state() === Cinnamon.AppState.STARTING) {
+                    this.startingApps.add(app);
+                } else {
+                    this.startingApps.delete(app);
+                }
+            }
+            this._updateAppList();
+        });
         this._favoritesChangedId = this.settings.connect('changed::pinned-apps', () => this._updateAppList());
         this._installedChangedId = this.appSystem.connect('installed-changed', () => this._updateAppList());
         this._windowCreatedId = global.display.connect('window-created', () => this._updateAppList());
@@ -150,32 +161,33 @@ class DockAppList {
     _matchAppToWindow(targetAppId, runningApp, window) {
         if (!targetAppId || !runningApp) return false;
 
-        let runningAppId = runningApp.get_id();
-        let wmClass = window ? (window.get_wm_class() || '').toLowerCase() : '';
-        
         // 1. Exact match of the system ID
-        if (runningAppId === targetAppId) return true;
+        if (runningApp.get_id() === targetAppId) return true;
 
-        // 2. Hard-coded exceptions (e.g., Cinnamon settings)
+        // 2. Native Cinnamon WindowTracker lookup
+        if (window && this.windowTracker) {
+            let trackedApp = this.windowTracker.get_window_app(window);
+            if (trackedApp && trackedApp.get_id() === targetAppId) return true;
+        }
+
+        let wmClass = window ? (window.get_wm_class() || '').toLowerCase() : '';
+        if (!wmClass) return false;
+
+        // 3. Hard-coded exceptions (e.g., Cinnamon settings)
         if (targetAppId === SETTINGS_APP_ID && wmClass.includes('cinnamon-settings')) return true;
 
         let lowerTargetId = targetAppId.toLowerCase();
         
-        // 3. Exact match to the .desktop file
+        // 4. Exact match to the .desktop file
         if (lowerTargetId === wmClass + '.desktop') return true;
         
-        // 4. Standardized match (without hyphens or the file extension)
+        // 5. Standardized match (without hyphens or the file extension)
         let cleanTarget = lowerTargetId.replace('.desktop', '').replace(/-/g, '');
         let cleanWm = wmClass.replace(/-/g, '');
         if (cleanTarget === cleanWm) return true;
 
-        // 5. Last-resort heuristic (Flatpaks)
-        let packageWord = cleanTarget.split('.').pop();
-        if (cleanWm.length > 2 && cleanTarget.length > 2) {
-            if (packageWord === cleanWm || cleanTarget.endsWith('.' + cleanWm)) return true;
-            
-            if (cleanTarget.includes(cleanWm) || cleanWm.includes(cleanTarget)) return true;
-        }
+        // 6. Reverse-DNS / Flatpak segment match
+        if (cleanWm.length > 2 && cleanTarget.split('.').slice(1).includes(cleanWm)) return true;
 
         return false;
     }
@@ -222,10 +234,10 @@ class DockAppList {
                 exactMatch = appInfo; break;
             }
             
-            let packageWord = cleanId.split('.').pop(); 
-            if (packageWord && packageWord.length > 0) {
-                if (cleanWm && (packageWord === cleanWm || cleanId.endsWith('.' + cleanWm))) partialMatch = appInfo; 
-                if (packageWord === cleanAppId || cleanId.endsWith('.' + cleanAppId)) partialMatch = appInfo; 
+            let segments = cleanId.split('.').slice(1);
+            if (segments.length > 0) {
+                if (cleanWm.length > 2 && segments.includes(cleanWm)) partialMatch = appInfo;
+                if (cleanAppId.length > 2 && segments.includes(cleanAppId)) partialMatch = appInfo;
             }
         }
         
@@ -289,7 +301,24 @@ class DockAppList {
     _renderAppList(forceRebuild = false) {
         try {
             let favIds = this._getPinnedApps();
-            let allRunningApps = this.appSystem.get_running();
+            let allRunningApps = this.appSystem.get_running().slice();
+
+            // Inject apps currently in STARTING state
+            for (let startApp of this.startingApps) {
+                if (startApp.get_state() !== Cinnamon.AppState.STARTING) {
+                    this.startingApps.delete(startApp);
+                    continue;
+                }
+                let alreadyRunning = allRunningApps.some(rApp => 
+                    rApp === startApp || 
+                    (rApp.get_windows().length > 0 && this._matchAppToWindow(startApp.get_id(), rApp, rApp.get_windows()[0]))
+                );
+                if (!alreadyRunning) {
+                    allRunningApps.push(startApp);
+                } else {
+                    this.startingApps.delete(startApp);
+                }
+            }
             
             let appData = [];
             let newIds = [];
@@ -311,30 +340,32 @@ class DockAppList {
             let tempUnpinnedApps = [];
             let tempUnpinnedIds = []; // Memory array to prevent duplicate icons from multi-process apps
 
-            for (let app of allRunningApps) {
-                let id = app.get_id();
-                let windows = app.get_windows();
-                let wmClass = windows.length > 0 ? (windows[0].get_wm_class() || '').toLowerCase() : '';
-                
-                if (wmClass.includes('cinnamon-settings')) {
-                    id = SETTINGS_APP_ID;
-                }
-                
-                let isAlreadyHandled = false;
-                for (let favId of validFavIds) { 
-                    if (windows.length > 0 && this._matchAppToWindow(favId, app, windows[0])) {
-                        isAlreadyHandled = true;
-                        break;
+            if (!this.settings.getValue('hide-unpinned')) {
+                for (let app of allRunningApps) {
+                    let id = app.get_id();
+                    let windows = app.get_windows();
+                    let wmClass = windows.length > 0 ? (windows[0].get_wm_class() || '').toLowerCase() : '';
+                    
+                    if (wmClass.includes('cinnamon-settings')) {
+                        id = SETTINGS_APP_ID;
                     }
-                }
-                
-                if (newIds.includes(id) || tempUnpinnedIds.includes(id) || isAlreadyHandled) continue;
-                
-                let hasWindows = windows.length > 0;
-                let isStarting = app.get_state() === Cinnamon.AppState.STARTING;
-                if (hasWindows || isStarting) {
-                    tempUnpinnedApps.push({ isSeparator: false, app: app, id: id });
-                    tempUnpinnedIds.push(id);
+                    
+                    let isAlreadyHandled = false;
+                    for (let favId of validFavIds) { 
+                        if (windows.length > 0 && this._matchAppToWindow(favId, app, windows[0])) {
+                            isAlreadyHandled = true;
+                            break;
+                        }
+                    }
+                    
+                    if (newIds.includes(id) || tempUnpinnedIds.includes(id) || isAlreadyHandled) continue;
+                    
+                    let hasWindows = windows.length > 0;
+                    let isStarting = app.get_state() === Cinnamon.AppState.STARTING;
+                    if (hasWindows || isStarting) {
+                        tempUnpinnedApps.push({ isSeparator: false, app: app, id: id });
+                        tempUnpinnedIds.push(id);
+                    }
                 }
             }
             
@@ -376,7 +407,8 @@ class DockAppList {
                 ? Main.layoutManager.primaryIndex 
                 : mIndex;
                 
-            let monitor = Main.layoutManager.monitors[targetIndex];
+            let monitor = Main.layoutManager.monitors[targetIndex] || Main.layoutManager.primaryMonitor;
+            if (!monitor) return;
             
             let isVert = this.dockPosition === 'left' || this.dockPosition === 'right';
             let availableSpace = isVert ? monitor.height : monitor.width;
@@ -563,7 +595,7 @@ class DockAppList {
         } else if (desktopAppInfo) {
             appName = desktopAppInfo.get_name() || appName; 
         }
-        if (!appName) appName = "Application";
+        if (!appName) appName = _("Application");
 
         let tooltipLabel = new St.Label({ style_class: 'dash-dock-tooltip', text: appName });
         Main.uiGroup.add_actor(tooltipLabel);
@@ -1009,12 +1041,12 @@ class DockAppList {
 
             // 1: minimize mode
             if (scrollAction === 'minimize') {
-                let targetWin = windows.find(w => w.has_focus()) || windows[0];
-                
+                let targetWin = windows.find(w => this._isWindowFocused(w)) || windows[0];
+
                 if (direction === Clutter.ScrollDirection.UP) {
                     Main.activateWindow(targetWin, global.get_current_time());
                 } else if (direction === Clutter.ScrollDirection.DOWN) {
-                    if (targetWin.has_focus()) {
+                    if (this._isWindowFocused(targetWin) && targetWin.showing_on_its_workspace()) {
                         targetWin.minimize();
                     } else {
                         Main.activateWindow(targetWin, global.get_current_time());
@@ -1023,10 +1055,9 @@ class DockAppList {
                 return Clutter.EVENT_STOP;
             }
 
-                // 2: Cycle mode
-                if (scrollAction === 'cycle') {                
-                let activeWindow = global.display.focus_window;
-                let currentIndex = windows.indexOf(activeWindow);
+            // 2: Cycle mode
+            if (scrollAction === 'cycle') {                
+                let currentIndex = windows.findIndex(w => this._isWindowFocused(w));
                 let nextIndex = 0;
 
                 if (direction === Clutter.ScrollDirection.UP) {
@@ -1054,6 +1085,43 @@ class DockAppList {
         };
     }
 
+    _isWindowFocused(win) {
+        if (!win) return false;
+        if (win.has_focus()) return true;
+
+        let focusWin = global.display.focus_window;
+        if (!focusWin) return false;
+
+        let winType = focusWin.get_window_type();
+        if (winType === Meta.WindowType.DESKTOP || winType === Meta.WindowType.DOCK) {
+            return false;
+        }
+
+        // Check transient parent chain (modal dialogs, child windows)
+        let parent = focusWin.get_transient_for();
+        let depth = 0;
+        while (parent && depth < 5) {
+            if (parent === win) return true;
+            parent = parent.get_transient_for();
+            depth++;
+        }
+
+        // Fallback for custom-skinned apps (e.g. VLC with a skin) where the visible window
+        // is SKIP_TASKBAR but shares the exact same PID and WM_CLASS as the main window
+        if (focusWin.is_skip_taskbar()) {
+            let winPid = win.get_pid();
+            if (winPid > 0 && winPid === focusWin.get_pid()) {
+                let winClass = (win.get_wm_class() || '').toLowerCase();
+                let focusClass = (focusWin.get_wm_class() || '').toLowerCase();
+                if (winClass && winClass === focusClass) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     _updateFocusState() {
         let focusedWindow = global.display.focus_window;
 
@@ -1068,7 +1136,7 @@ class DockAppList {
             let isRunning = windows.length > 0 || isStarting;
             
             if (isRunning) {
-                let isFocused = windows.some(win => win === focusedWindow);
+                let isFocused = windows.some(win => this._isWindowFocused(win));
                 
                 // The dot is only displayed if there is no progress bar
                 if (!elements.currentProgress || elements.currentProgress === 0) {
@@ -1122,11 +1190,12 @@ class DockAppList {
 
             if (appProgress === 0) continue;
 
-            let sAppId = app.get_id().toLowerCase();
+            let windows = app.get_windows();
             for (let [appId, elements] of this.buttons.entries()) {
-                let safeAppId = appId.toLowerCase().replace('.desktop', '');
-                if (sAppId === appId.toLowerCase() || sAppId.includes(safeAppId)) {
-                    elements.currentProgress = appProgress;
+                if (this._matchAppToWindow(appId, app, windows[0])) {
+                    if (appProgress > (elements.currentProgress || 0)) {
+                        elements.currentProgress = appProgress;
+                    }
                 }
             }
         }
@@ -1136,9 +1205,9 @@ class DockAppList {
 
             if (elements.currentProgress > 0) {
                 let totalWidth = elements.progressTrack.width || 48;
-                let ratio = elements.currentProgress > 1.0 ? (elements.currentProgress / 100.0) : elements.currentProgress;
+                let ratio = Math.min(1.0, Math.max(0.0, elements.currentProgress / 100.0));
                 
-                elements.progressFill.width = totalWidth * ratio;
+                elements.progressFill.width = Math.round(totalWidth * ratio);
                 
                 if (!elements.progressTrack.visible) elements.progressTrack.show();
                 
@@ -1168,8 +1237,26 @@ class DockAppList {
      * individual notification before the system merges and overwrites their identities.
      */
 
-        if (!Main.notificationDaemon || !Main.notificationDaemon._sources) return;
-        let appSystem = Cinnamon.AppSystem.get_default();
+     if (!Main.notificationDaemon || !Main.notificationDaemon._sources) return;
+
+        let hasNotifications = Main.notificationDaemon._sources.some(
+            s => s && Array.isArray(s.notifications) && s.notifications.length > 0
+        );
+
+        // Fast exit: no string or lookup operations when notification tray is empty
+        if (!hasNotifications) {
+            for (let elements of this.buttons.values()) {
+                if (elements.badge) {
+                    elements.rawBadgeCount = 0;
+                    elements.ignoredCount = 0;
+                    elements.badgeCount = 0;
+                    if (elements.badge.visible) elements.badge.hide();
+                }
+            }
+            return;
+        }
+
+        let appSystem = this.appSystem;
         let dockApps = [];
         
         for (let [appId, elements] of this.buttons.entries()) {
@@ -1215,11 +1302,18 @@ class DockAppList {
                             targetAppId = dockApp.appId; break;
                         }
                     }
-                    if (notifTitle && (notifTitle.includes(packageWord) || (sysName && notifTitle.includes(sysName)))) {
-                        targetAppId = dockApp.appId; break;
-                    }
-                    if (notifBody && (notifBody.includes(packageWord) || (sysName && notifBody.includes(sysName)))) {
-                        targetAppId = dockApp.appId; break;
+                }
+
+                if (!targetAppId && (!rawAppName || rawAppName === 'xdg-desktop-portal' || rawAppName === 'notify-send')) {
+                    for (let dockApp of dockApps) {
+                        let { packageWord, sysName } = dockApp;
+
+                        if (notifTitle && (notifTitle.includes(packageWord) || (sysName && notifTitle.includes(sysName)))) {
+                            targetAppId = dockApp.appId; break;
+                        }
+                        if (notifBody && (notifBody.includes(packageWord) || (sysName && notifBody.includes(sysName)))) {
+                            targetAppId = dockApp.appId; break;
+                        }
                     }
                 }
 
@@ -1263,19 +1357,23 @@ class DockAppList {
     _clearAppNotifications(targetAppId) {
         if (!targetAppId) return;
         
-        let safeTargetId = targetAppId.toLowerCase().replace('.desktop', '');
+        let changed = false;
+        let focusApp = this.windowTracker ? this.windowTracker.focus_app : null;
+        let focusWin = global.display.focus_window;
 
         for (let [appId, elements] of this.buttons.entries()) {
-            let safeAppId = appId.toLowerCase().replace('.desktop', '');
+            let isMatch = (appId.toLowerCase() === targetAppId.toLowerCase()) ||
+                          (focusApp && this._matchAppToWindow(appId, focusApp, focusWin));
             
-            if (safeAppId === safeTargetId || appId.toLowerCase() === targetAppId.toLowerCase()) {
-                if (elements.rawBadgeCount !== undefined) {
-                    elements.ignoredCount = elements.rawBadgeCount;
-                }
+            if (isMatch && elements.rawBadgeCount > 0 && elements.ignoredCount !== elements.rawBadgeCount) {
+                elements.ignoredCount = elements.rawBadgeCount;
+                changed = true;
             }
         }
         
-        this._updateBadges();
+        if (changed) {
+            this._updateBadges();
+        }
     }
 
     _onAppClicked(appId, button) {
@@ -1299,7 +1397,7 @@ class DockAppList {
         }
 
         if (windows.length > 0) {
-            let hasFocus = windows.some(win => win.has_focus());
+            let hasFocus = windows.some(win => this._isWindowFocused(win) && !win.minimized && win.showing_on_its_workspace());
 
             if (hasFocus) {
                 for (let win of windows) {
@@ -1313,7 +1411,9 @@ class DockAppList {
         } else {
             let app = this.appSystem.lookup_app(appId);
             if (app) {
-                app.open_new_window(-1);
+               if (app.get_state() !== Cinnamon.AppState.STARTING) {
+                   app.open_new_window(-1);
+                 }
             } else if (appId === SETTINGS_APP_ID) {
                 Util.spawn(['cinnamon-settings']);
             }
@@ -1354,6 +1454,10 @@ class DockAppList {
         if (this._updateAppListTimeoutId) {
             Mainloop.source_remove(this._updateAppListTimeoutId);
             this._updateAppListTimeoutId = 0;
+        }
+
+        if (this.startingApps) {
+            this.startingApps.clear();
         }
 
         this.actor.destroy();
@@ -1409,11 +1513,13 @@ class DashDock {
                 let dragId = getDraggedAppId(source);
                 return dragId ? DND.DragMotionResult.MOVE_DROP : DND.DragMotionResult.NO_DROP;
             },
-            acceptDrop: (source, dragActor, x) => {
+            acceptDrop: (source, dragActor, x, y) => {
                 let dragId = getDraggedAppId(source);
                 if (dragId) {
-                    if (x < this.actor.width / 2) this.appList.reorderApp(dragId, null, 'start');
-                    else this.appList.reorderApp(dragId, null, 'end');
+                    let isVert = (this.dockPosition === 'left' || this.dockPosition === 'right');
+                    let isStart = isVert ? (y < this.actor.height / 2) : (x < this.actor.width / 2);
+                    
+                    this.appList.reorderApp(dragId, null, isStart ? 'start' : 'end');
                     return true;
                 }
                 return false;
@@ -1685,6 +1791,7 @@ class DashDock {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'show-trash', 'showTrash', this._updateTrashVisibility.bind(this), null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'show-separators', 'showSeparators', this._onShowSeparatorsChanged.bind(this), null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'use-primary-monitor', 'usePrimaryMonitor', this._onMonitorSettingsChanged.bind(this), null);
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'hide-unpinned', 'hideUnpinned', () => this.appList && this.appList._updateAppList(true), null);
         this.settings.connect('changed::monitor-index', this._onMonitorSettingsChanged.bind(this));
     }
 
@@ -1714,18 +1821,39 @@ class DashDock {
         const connectDisplay = (sig, cb) => this._windowSignals.push({ obj: global.display, id: global.display.connect(sig, cb) });
         const connectWM = (sig, cb) => this._windowSignals.push({ obj: global.window_manager, id: global.window_manager.connect(sig, cb) });
 
+        this._inScale = false;
+        this._inExpo = false;
         this._inOverview = false;
         this._shellSignals = [];
         const connectShell = (obj, sig, cb) => this._shellSignals.push({ obj: obj, id: obj.connect(sig, cb) });
 
-       // Hide the dock (wrapper included) in overview and expo mode
-        connectShell(Main.overview, 'showing', () => { this._inOverview = true; this.wrapper.hide(); });
-        connectShell(Main.overview, 'hiding', () => { this._inOverview = false; this.wrapper.show(); this._updateVisibility(); });
-        connectShell(Main.expo, 'showing', () => { this._inOverview = true; this.wrapper.hide(); });
-        connectShell(Main.expo, 'hiding', () => { this._inOverview = false; this.wrapper.show(); this._updateVisibility(); });
+        const updateOverviewState = () => {
+            this._inOverview = this._inScale || this._inExpo;
+            if (this._inOverview) {
+                if (this._showTimeoutId > 0) {
+                    Mainloop.source_remove(this._showTimeoutId);
+                    this._showTimeoutId = 0;
+                }
+                if (this._hideTimeoutId > 0) {
+                    Mainloop.source_remove(this._hideTimeoutId);
+                    this._hideTimeoutId = 0;
+                }
+                this.wrapper.hide();
+            } else {
+                this.wrapper.show();
+                this._updateVisibility();
+            }
+        };
+
+        // Hide the dock (wrapper included) in overview and expo mode
+        connectShell(Main.overview, 'showing', () => { this._inScale = true; updateOverviewState(); });
+        connectShell(Main.overview, 'hiding', () => { this._inScale = false; updateOverviewState(); });
+        connectShell(Main.expo, 'showing', () => { this._inExpo = true; updateOverviewState(); });
+        connectShell(Main.expo, 'hiding', () => { this._inExpo = false; updateOverviewState(); });
 
         connectWM('switch-workspace', () => this._updateVisibility());
         connectDisplay('restacked', () => this._updateVisibility());
+        connectDisplay('showing-desktop-changed', () => this._updateVisibility());
         connectDisplay('workareas-changed', () => this._updatePosition());
         connectDisplay('window-entered-monitor', () => this._updateVisibility());
         connectDisplay('window-left-monitor', () => this._updateVisibility());
@@ -1762,11 +1890,7 @@ class DashDock {
             });
         });
         
-        // Polling loop for active autohide
-        this._visibilityLoopId = Mainloop.timeout_add(250, () => {
-            if (this.hideEnabled) this._updateVisibility();
-            return true;
-        });
+        this._visibilityLoopId = 0;
 
         // Track actual physical size changes to prevent dock displacement during icon resizing
         this._lastAllocW = 0;
@@ -1806,17 +1930,17 @@ class DashDock {
             GLib.PRIORITY_DEFAULT,
             null,
             (file, res) => {
+                let count = 0;
                 try {
                     let info = file.query_info_finish(res);
-                    let count = info.get_attribute_uint32('trash::item-count');
-                    
-                    if (this.trashIcon) {
-                        this.trashIcon.set_icon_name(count > 0 ? 'user-trash-full' : 'user-trash');
-                    }
+                    count = info.get_attribute_uint32('trash::item-count');
                 } catch (e) {
-                    if (this.trashIcon) {
-                        this.trashIcon.set_icon_name('user-trash');
-                    }
+                    count = 0;
+                }
+
+                // Verify that the dock and icon are still alive on the Clutter stage
+                if (this.actor && this.trashIcon && this.trashIcon.get_stage()) {
+                    this.trashIcon.set_icon_name(count > 0 ? 'user-trash-full' : 'user-trash');
                 }
             }
         );
@@ -1964,9 +2088,16 @@ class DashDock {
         let isVert = this.dockPosition === 'left' || this.dockPosition === 'right';
         this.actor.set_vertical(isVert);
 
+        this.actor.remove_all_transitions();
+        this.actor.translation_x = 0;
+        this.actor.translation_y = 0;
+
         this.appList.setPosition(this.dockPosition);
         this._buildDockMenu();
         this._updateSeparatorsVisibility();
+
+        this._showDock();
+        this._updateVisibility();
     }
 
     _onMonitorSettingsChanged() {
@@ -2060,15 +2191,18 @@ class DashDock {
         });
     }
 
-   _onHideSettingsChanged() {
+    _onHideSettingsChanged() {
         if (!this.actor) return;
 
         // Update positions before applying the strut to avoid 0x0 size errors and Cinnamon crash
         this._updatePosition();
 
         if (!this.hideEnabled) {
-            if (this.strutActor) {
-                Main.layoutManager.removeChrome(this.strutActor);
+            if (this._visibilityLoopId > 0) {
+                Mainloop.source_remove(this._visibilityLoopId);
+                this._visibilityLoopId = 0;
+            }
+            if (this.strutActor && !this.strutActor.get_parent()) {
                 Main.layoutManager.addChrome(this.strutActor, { 
                     affectsStruts: true,
                     affectsInputRegion: false
@@ -2080,8 +2214,14 @@ class DashDock {
             }
             this._showDock();
         } else {
-            if (this.strutActor) {
+            if (this.strutActor && this.strutActor.get_parent()) {
                 Main.layoutManager.removeChrome(this.strutActor);
+            }
+            if (!this._visibilityLoopId) {
+                this._visibilityLoopId = Mainloop.timeout_add(250, () => {
+                    if (this.hideEnabled) this._updateVisibility();
+                    return true;
+                });
             }
             this._updateVisibility();
         }
@@ -2134,14 +2274,16 @@ class DashDock {
             }
         }
 
-        let monitor = Main.layoutManager.monitors[targetIndex];
-        let activeWorkspace = global.workspace_manager.get_active_workspace();
-        let workArea = activeWorkspace ? activeWorkspace.get_work_area_for_monitor(targetIndex) : monitor;
-
         let isVert = this.dockPosition === 'left' || this.dockPosition === 'right';
         let alignment = this.dockAlignment || 'center';
 
         try {
+            let monitor = Main.layoutManager.monitors[targetIndex] || Main.layoutManager.primaryMonitor;
+            if (!monitor) return;
+
+            let activeWorkspace = global.workspace_manager.get_active_workspace();
+            let workArea = activeWorkspace ? activeWorkspace.get_work_area_for_monitor(targetIndex) : monitor;
+
             if (this.fullWidth) {
                 this.actor.add_style_class_name('dash-dock-full-width');
                 
@@ -2319,7 +2461,8 @@ class DashDock {
         let targetIndex = (this.usePrimaryMonitor || isNaN(mIndexVis) || mIndexVis >= Main.layoutManager.monitors.length || mIndexVis < 0) 
             ? Main.layoutManager.primaryIndex 
             : mIndexVis;
-        let monitor = Main.layoutManager.monitors[targetIndex];
+        let monitor = Main.layoutManager.monitors[targetIndex] || Main.layoutManager.primaryMonitor;
+        if (!monitor) return;
 
         let [mouseX, mouseY] = global.get_pointer();
         let [dockX, dockY] = this.actor.get_transformed_position();
@@ -2422,7 +2565,7 @@ class DashDock {
             : mIndexOver;
 
         for (let win of windows) {
-            if (win.minimized) continue; 
+            if (win.minimized || !win.showing_on_its_workspace()) continue;
             if (win.get_window_type() === Meta.WindowType.DESKTOP || win.get_window_type() === Meta.WindowType.DOCK) continue;
             if (win.get_monitor() !== targetIndex) continue;
 
@@ -2472,6 +2615,8 @@ class DashDock {
     }
 
     _showDock() {
+        if (this._inOverview) return;
+
         if (this._hideTimeoutId > 0) {
             Mainloop.source_remove(this._hideTimeoutId);
             this._hideTimeoutId = 0;
@@ -2495,6 +2640,8 @@ class DashDock {
     }
 
     _hideDock() {
+        if (this._inOverview) return;
+
         if (this.isHidden) return;
         this.isHidden = true;
 
@@ -2584,7 +2731,9 @@ class DashDock {
         }
 
         if (this.strutActor) {
-            Main.layoutManager.removeChrome(this.strutActor);
+            if (this.strutActor.get_parent()) {
+                Main.layoutManager.removeChrome(this.strutActor);
+            }
             this.strutActor.destroy();
             this.strutActor = null;
         }
