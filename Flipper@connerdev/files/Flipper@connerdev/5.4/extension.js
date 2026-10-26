@@ -1375,8 +1375,17 @@ Flipper.prototype = {
       this.is_animating = false;
 
       if (this.pending_workspace) {
-        this.pending_workspace.activate(global.display.get_current_time_roundtrip());
+        // Activate the workspace only once the last frame of the animation is painted,
+        // keep queueing key presses until then
+        let workspace = this.pending_workspace;
         this.pending_workspace = null;
+        this.is_animating = true;
+        Mainloop.idle_add(Lang.bind(this, function() {
+            workspace.activate(global.display.get_current_time_roundtrip());
+            this.unsetIsAnimating();
+            return GLib.SOURCE_REMOVE;
+        }));
+        return;
       }
       if (this.follow_window) {
         let window = this.follow_window;
