@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <filter id="soft" x="-30%" y="-30%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="11" stdDeviation="11" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <clipPath id="body"><rect x="44" y="40" width="168" height="150" rx="26"/></clipPath>
+  </defs>
+  <rect x="44" y="40" width="168" height="150" rx="26" fill="#dcdcdc" filter="url(#soft)"/>
+  <g clip-path="url(#body)">
+    <rect x="44" y="40" width="168" height="34" fill="#b2b2b2"/>
+    <circle cx="68" cy="57" r="6" fill="#878787"/>
+    <circle cx="90" cy="57" r="6" fill="#878787"/>
+  </g>
+  <rect x="44" y="40" width="168" height="150" rx="26" fill="none" stroke="#6f6f6f" stroke-width="3"/>
+</svg>
