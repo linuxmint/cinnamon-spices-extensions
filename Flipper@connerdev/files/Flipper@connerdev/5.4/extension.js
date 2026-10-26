@@ -1389,7 +1389,7 @@ Flipper.prototype = {
         });
 
         // PRIORITY_DEFAULT, a default idle would starve while CONTINUOUS_REDRAW is on
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, windowLists.length ? WINDOW_LIST_FADE_TIME : 0, Lang.bind(this, function() {
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, windowLists.length ? WINDOW_LIST_FADE_TIME : 0, () => {
             workspace.activate(global.display.get_current_time_roundtrip());
             windowLists.forEach(function(actor) {
                 actor.ease({
@@ -1401,21 +1401,21 @@ Flipper.prototype = {
             });
             this.unsetIsAnimating();
             return GLib.SOURCE_REMOVE;
-        }));
+        });
         return;
       }
       if (this.follow_window) {
         let window = this.follow_window;
         this.follow_window = null;
-        Mainloop.idle_add(Lang.bind(this, function() {
+        Mainloop.idle_add(() => {
             // Unless this is done a bit later,
             // window is sometimes not activated
-            if (window.get_workspace() === global.screen.get_active_workspace()) {
+            if (window.get_workspace() === global.workspace_manager.get_active_workspace()) {
                 //window.activate(global.get_current_time());
                 Main.activateWindow(window);
             }
             return GLib.SOURCE_REMOVE;
-        }));
+        });
       }
 
       if (!this.destroy_requested && this._modifierMask) {
