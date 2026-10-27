@@ -5,10 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: mint-dock@hilyxx 1.0\n"
+"Project-Id-Version: mint-dock@hilyxx 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-06 06:37+0200\n"
+"POT-Creation-Date: 2026-10-25 21:46+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,31 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. extension.js:562
+#. extension.js:594
 msgid "System Settings"
 msgstr ""
 
-#. extension.js:919
+#. extension.js:598
+msgid "Application"
+msgstr ""
+
+#. extension.js:951
 msgid "Unpin from dock"
 msgstr ""
 
-#. extension.js:919
+#. extension.js:951
 msgid "Pin to dock"
 msgstr ""
 
-#. extension.js:939
+#. extension.js:971
 msgid "Quit"
 msgstr ""
 
-#. extension.js:1544
+#. extension.js:1650
 msgid "Trash"
 msgstr ""
 
-#. extension.js:1627
+#. extension.js:1733
 msgid "Empty Trash"
 msgstr ""
 
-#. extension.js:1934
+#. extension.js:2058
 msgid "Dock settings"
 msgstr ""
 
@@ -196,6 +200,10 @@ msgstr ""
 
 #. settings-schema.json->show-settings-icon->description
 msgid "Show dock settings icon"
+msgstr ""
+
+#. settings-schema.json->hide-unpinned->description
+msgid "Hide unpinned applications"
 msgstr ""
 
 #. settings-schema.json->hide-enabled->description

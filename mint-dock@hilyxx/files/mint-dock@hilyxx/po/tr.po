@@ -8,41 +8,45 @@ msgstr ""
 "Project-Id-Version: mint-dock@hilyxx 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-06 06:37+0200\n"
-"PO-Revision-Date: 2026-10-23 02:12+0300\n"
+"POT-Creation-Date: 2026-10-25 21:46+0100\n"
+"PO-Revision-Date: 2026-10-27 18:22+0100\n"
 "Last-Translator: Gökhan Gökkaya <wirelessanten@gmail.com>\n"
 "Language-Team: \n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.6\n"
 
-#. extension.js:562
+#. extension.js:594
 msgid "System Settings"
 msgstr "Sistem Ayarları"
 
-#. extension.js:919
+#. extension.js:598
+msgid "Application"
+msgstr ""
+
+#. extension.js:951
 msgid "Unpin from dock"
 msgstr "Rıhtımdan ayır"
 
-#. extension.js:919
+#. extension.js:951
 msgid "Pin to dock"
 msgstr "Rıhtıma ekle"
 
-#. extension.js:939
+#. extension.js:971
 msgid "Quit"
 msgstr "Kapat"
 
-#. extension.js:1544
+#. extension.js:1650
 msgid "Trash"
 msgstr "Çöp"
 
-#. extension.js:1627
+#. extension.js:1733
 msgid "Empty Trash"
 msgstr "Çöpü boşalt"
 
-#. extension.js:1934
+#. extension.js:2058
 msgid "Dock settings"
 msgstr "Rıhtım ayarları"
 
@@ -200,6 +204,10 @@ msgstr ""
 #. settings-schema.json->show-settings-icon->description
 msgid "Show dock settings icon"
 msgstr "Rıhtım ayarları simgesini göster"
+
+#. settings-schema.json->hide-unpinned->description
+msgid "Hide unpinned applications"
+msgstr ""
 
 #. settings-schema.json->hide-enabled->description
 msgid "Hide dock"
