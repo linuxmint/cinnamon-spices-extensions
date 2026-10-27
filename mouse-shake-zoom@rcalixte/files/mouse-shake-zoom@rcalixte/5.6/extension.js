@@ -1,5 +1,6 @@
 // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*
 const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 const Mainloop = imports.mainloop;
 const Settings = imports.ui.settings;
 const UUID = "mouse-shake-zoom@rcalixte";
@@ -93,14 +94,10 @@ MouseShakeZoom.prototype = {
      */
     _history_check: function () {
         // get the current loop timestamp
-        let now = new Date().getTime();
+        let now = GLib.get_monotonic_time() / 1000;
 
         // prune stale buffer
-        for (let i = 0; i < this.history.length; ++i) {
-            if (now - this.history[i].t > HISTORY_MAX) {
-                this.history.splice(i, 1);
-            }
-        }
+        this.history = this.history.filter(p => now - p.t <= HISTORY_MAX);
 
         // reset degrees so we can add them again
         let degrees = 0;
@@ -133,7 +130,7 @@ MouseShakeZoom.prototype = {
         }
         this.history.push({
             x: this.lastX = x, y: this.lastY = y,
-            t: new Date().getTime()
+            t: GLib.get_monotonic_time() / 1000
         });
     },
 
