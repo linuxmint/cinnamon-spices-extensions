@@ -28,6 +28,12 @@ notification, as one JSON line per notification in
 - **Privacy**: the list of private apps and sites.
 - **Storage**: retention period, open the log folder, or delete all logs.
 
+![History](screenshot.png)
+
+![Privacy](privacy.png)
+
+![Storage](storage.png)
+
 The log is plain text in your home folder (`~/.local/state` is where the XDG spec puts
 history and logs), readable only by you, like your shell or browser history. Use the
 private list for apps whose notifications contain messages.

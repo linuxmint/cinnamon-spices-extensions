@@ -156,7 +156,7 @@ class HistoryPage(SettingsPage):
             apps[source] = apps.get(source, 0) + 1
             try:
                 when = datetime.fromisoformat(r['time'])
-                time = when.strftime('%d.%m.%Y %H:%M:%S')
+                time = when.strftime('%Y-%m-%d %H:%M:%S')
             except (KeyError, ValueError):
                 time = r.get('time', '')
             body = r.get('body') or ''
