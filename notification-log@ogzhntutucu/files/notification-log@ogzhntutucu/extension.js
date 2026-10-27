@@ -116,24 +116,49 @@ function flush() {
     });
 }
 
-// Monthly files are deleted once the whole month is older than the retention period
+// Monthly files are deleted once the whole month is older than the retention period.
+// Everything is async so the main loop is never blocked by disk access.
 function prune() {
+    let pruneError = (e) => global.logError('notification-log: prune: ' + e);
     try {
         let days = settings.getValue('retention-days');
         if (!days || days <= 0)
             return GLib.SOURCE_CONTINUE;
         let cutoff = GLib.DateTime.new_now_local().add_days(-days).format('%Y-%m');
         let dir = Gio.File.new_for_path(LOG_DIR);
-        let children = dir.enumerate_children('standard::name', Gio.FileQueryInfoFlags.NONE, null);
-        let info;
-        while ((info = children.next_file(null)) != null) {
-            let m = info.get_name().match(/^(\d{4}-\d{2})\.jsonl$/);
-            if (m && m[1] < cutoff)
-                dir.get_child(info.get_name()).delete(null);
-        }
-        children.close(null);
+        let nextBatch = (children) => {
+            children.next_files_async(32, GLib.PRIORITY_LOW, null, (en, res) => {
+                let infos;
+                try {
+                    infos = en.next_files_finish(res);
+                } catch (e) {
+                    infos = [];
+                    pruneError(e);
+                }
+                if (infos.length == 0) {
+                    en.close_async(GLib.PRIORITY_LOW, null, null);
+                    return;
+                }
+                for (let info of infos) {
+                    let m = info.get_name().match(/^(\d{4}-\d{2})\.jsonl$/);
+                    if (m && m[1] < cutoff) {
+                        dir.get_child(info.get_name()).delete_async(GLib.PRIORITY_LOW, null, (file, r) => {
+                            try { file.delete_finish(r); } catch (e) { pruneError(e); }
+                        });
+                    }
+                }
+                nextBatch(en);
+            });
+        };
+        dir.enumerate_children_async('standard::name', Gio.FileQueryInfoFlags.NONE, GLib.PRIORITY_LOW, null, (d, res) => {
+            try {
+                nextBatch(d.enumerate_children_finish(res));
+            } catch (e) {
+                pruneError(e);
+            }
+        });
     } catch (e) {
-        global.logError('notification-log: prune: ' + e);
+        pruneError(e);
     }
     return GLib.SOURCE_CONTINUE;
 }
