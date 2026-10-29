@@ -1,0 +1,13 @@
+{
+    "uuid": "force-quit-menu@J0nathan550",
+    "name": "Force Quit from Panel",
+    "description": "Adds a Force quit item to the right-click menu of apps in the panel window list, to kill frozen apps.",
+    "version": "1.0.0",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6"
+    ],
+    "url": "https://github.com/linuxmint/cinnamon-spices-extensions/tree/master/force-quit-menu%40J0nathan550"
+}
