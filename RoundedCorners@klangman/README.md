@@ -5,33 +5,21 @@ A Cinnamon extension that allows you to round the corners of windows with custom
 ### **Primary use cases:**
 
 * Round window bottoms to match window tops.
-
 * Increase the radius of your theme's top corner rounding
-
 * Customize your window border
-
 * Use different border colors for different application, and/or the focused window
-
 * Customize your window shadows
-
 * Use different shadow strength the focused window
 
 ## Features
 
 - Allows you to Round the top and bottom corners of application windows.
-
 - Adds custom borders and shadows to windows that have rounding effects applied
-
 - Allow you to exclude specific applications when rounding <u>is</u> enabled by default
-
 - Allows you to select specific applications to round when rounding is <u>not</u> enabled by default
-
 - Allows you to specify different borders setting (i.e colors) for different application windows
-
 - Allows for different custom borders and shadow strengths for the focused window vs. all the unfocused windows.
-
 - Has a border matching option allowing the border of the rounded corners to match the windows natural borders
-
 - Supports Gtk3, libhandy, Gtk4, Adwaita and Qt application windows. It should work reasonably well for just about any type of window
 
 ## Requirements
