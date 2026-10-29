@@ -844,6 +844,7 @@ function enable() {
 }
 
 function disable() {
+   CornerEffect.cancelFramebufferGC();
    if (roundedCorners) {
       roundedCorners.disable();
       roundedCorners.destroy();
