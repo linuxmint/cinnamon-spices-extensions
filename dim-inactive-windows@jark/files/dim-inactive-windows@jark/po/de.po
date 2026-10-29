@@ -80,3 +80,13 @@ msgid ""
 msgstr ""
 "Auch alle Fenster abdunkeln, wenn nichts fokussiert ist (z. B. nach Klick auf "
 "den Desktop)"
+
+#. settings-schema.json->skip-fullscreen->description
+msgid ""
+"Never dim windows in real fullscreen mode (videos, presentations). Maximized "
+"windows are not affected by this. Only makes a difference on multi-monitor "
+"setups"
+msgstr ""
+"Fenster im echten Vollbildmodus nie abdunkeln (Videos, Präsentationen). "
+"Maximierte Fenster sind davon nicht betroffen. Wirkt sich nur bei mehreren "
+"Monitoren aus"

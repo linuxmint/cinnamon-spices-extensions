@@ -51,5 +51,10 @@
         "type": "checkbox",
         "default": false,
         "description": "Also dim every window when nothing is focused (e.g. after clicking the desktop)"
+    },
+    "skip-fullscreen": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Never dim windows in real fullscreen mode (videos, presentations). Maximized windows are not affected by this. Only makes a difference on multi-monitor setups"
     }
 }
