@@ -1,0 +1,33 @@
+{
+    "panel-id": {
+        "type": "entry",
+        "default": "1",
+        "description": "Panel ID to track",
+        "tooltip": "Use the Detect button below to get the IDs list"
+    },
+    "detect-panel-button": {
+        "type": "button",
+        "description": "Detect panel IDs",
+        "callback": "_detectPanel"
+    },
+    "hold-ms": {
+        "type": "spinbutton",
+        "default": 250,
+        "min": 0,
+        "max": 3000,
+        "step": 50,
+        "units": "ms",
+        "description": "Hold time before switching",
+        "tooltip": "How long you need to hold the cursor against the monitor edge before the panel actually moves"
+    },
+    "deadzone-px": {
+        "type": "spinbutton",
+        "default": 100,
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "units": "px",
+        "description": "Deadzone at barrier ends",
+        "tooltip": "How many pixels to leave untriggered at the ends of each edge, protecting screen corners and monitor seams"
+    }
+}
