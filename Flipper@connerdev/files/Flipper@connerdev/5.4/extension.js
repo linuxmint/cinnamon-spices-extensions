@@ -15,12 +15,18 @@ const Cinnamon = imports.gi.Cinnamon;
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const Settings = imports.ui.settings;
-const Panel = imports.ui.panel;
 const SignalManager = imports.misc.signalManager;
 const Actions = imports.ui.gestures.actions;
 const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
+const Extension = imports.ui.extension;
+const AppletManager = imports.ui.appletManager;
 
 const UUID = "Flipper@connerdev";
+
+const WINDOW_LIST_FADE_OUT_TIME = 200; // ms, runs during the animation
+const WINDOW_LIST_FADE_IN_TIME = 100;  // ms
+const WINDOW_LIST_SETTLE_TIME = 50; // ms
 
 const TransitionEffect = {
    Cube:       0,
@@ -49,6 +55,8 @@ let original_main_activateWindow;
 let original_WorkspaceSwitchAction;
 
 let curFlipper;
+// The Flipper that is currently on the screen
+let activeFlipper = null;
 
 // Our version of WorkspaceSwitchAction class which will replace the cinnamon version
 // This is a copy of the cinnamon version but uses the Flipper effect to switch the workspace
@@ -94,6 +102,11 @@ Flipper.prototype = {
         this.to = null;
         this.is_animating = false;
         this.destroy_requested = false;
+        this.pending_workspace = null;
+        this.follow_window = null;
+        this.destroying = false;
+        this.destroyed = false;
+        this.has_grab = false;
         this.queued_direction = null;
         this.monitor = Main.layoutManager.primaryMonitor;
         if (!settings)
@@ -135,13 +148,32 @@ Flipper.prototype = {
 
         Main.uiGroup.add_child(this.actor);
 
+        if (!Main.pushModal(this.actor)) {
+            // Without the grab we would never see the modifier key release and the
+            // workspace clones would stay on the screen, so just switch the workspace
+            this.actor.destroy();
+            if (window && window.get_window_type() !== Meta.WindowType.DESKTOP && !window.is_on_all_workspaces()) {
+                window.change_workspace(new_workspace);
+                new_workspace.activate_with_focus(window, global.get_current_time());
+            } else {
+                new_workspace.activate(global.get_current_time());
+            }
+            Main.wm.showWorkspaceOSD();
+            return;
+        }
+        this.has_grab = true;
+        activeFlipper = this;
+
+        // Keep the panels visible above the animation
+        this.keep_panels = settings.includePanels;
+        if (this.keep_panels)
+            Main.panelManager.lowerActorBelowPanels(this.actor);
+
         this.releaseID = this.actor.connect('key-release-event', Lang.bind(this, this._keyReleaseEvent));
         this.pressID = this.actor.connect('key-press-event', Lang.bind(this, this._keyPressEvent));
 
         this.initBackground();
         this.dimBackground();
-
-        Main.pushModal(this.actor);
 
         this._modifierMask = modifierMask;
         // If there are no modifiers, we can destroy right away
@@ -150,9 +182,11 @@ Flipper.prototype = {
         }
         global.window_group.hide();
 
-        Main.getPanels().forEach(function(panel){
-          panel.disable();
-        });
+        if (!this.keep_panels) {
+          Main.getPanels().forEach(function(panel){
+            panel.disable();
+          });
+        }
 
         if (window && window.get_window_type() !== Meta.WindowType.DESKTOP)
             this.moveWindow(window, new_workspace);
@@ -250,14 +284,8 @@ Flipper.prototype = {
         if (window.get_workspace() !== workspace) {
            window.change_workspace(workspace);
         }
-        Mainloop.idle_add(Lang.bind(this, function() {
-            // Unless this is done a bit later,
-            // window is sometimes not activated
-            if (window.get_workspace() === global.screen.get_active_workspace()) {
-                //window.activate(global.get_current_time());
-                Main.activateWindow(window);
-            }
-        }));
+        // The workspace is activated when the animation ends, the window is activated after that
+        this.follow_window = window;
 
         this.moveWindowClone(window, active_index, new_index);
         return true;
@@ -273,6 +301,8 @@ Flipper.prototype = {
 
     get_workspace_clone: function(workspaceIndex) {
         let clone = new St.Group({clip_to_allocation: true});
+        // Fade the workspace as a whole, so overlapping windows don't show through each other
+        clone.set_offscreen_redirect(Clutter.OffscreenRedirect.AUTOMATIC_FOR_OPACITY);
         clone.set_size(this.monitor.width, this.monitor.height);
 
         //if(settings.includeBackground) {
@@ -313,33 +343,6 @@ Flipper.prototype = {
             clone.workspaceWindowActors.push(windowClone);
         }
         clone.workspaceWindows = workspaceWindows;
-        if (settings.includePanels) {
-           let chromeGroup = new St.Group();
-           Main.getPanels().concat(Main.uiGroup.get_children()).forEach(
-               function (panel) {
-                   // Is it a non-autohideable panel, or is it a visible, tracked
-                   // chrome object? TODO: Make more human-readable the logic
-                   // below in clone.add_child().
-                   if ((panel.actor && !panel._hideable)
-                      || (panel &&  Main.layoutManager.isTrackingChrome(panel) && panel.visible)) {
-                       let chromeClone = new Clutter.Clone({
-                           source: panel.actor ? panel.actor : panel,
-                           x : panel.actor ? panel.actor.x : panel.x,
-                           y : panel.actor ? (panel.panelPosition === Panel.PanelLoc.bottom ?
-                           Main.layoutManager.primaryMonitor.y +
-                           Main.layoutManager.primaryMonitor.height -
-                           panel.actor.height :
-                           Main.layoutManager.primaryMonitor.y) : panel.y});
-                       chromeGroup.add_child(chromeClone);
-                       //chromeClone.raise_top();
-                       chromeClone.get_parent().set_child_above_sibling(chromeClone, null);
-                   }
-               });
-           clone.add_child(chromeGroup);
-           //chromeGroup.raise_top();
-           chromeGroup.get_parent().set_child_above_sibling(chromeGroup, null);
-           clone.chromeGroup = chromeGroup;
-        }
         clone.index = workspaceIndex;
         return clone;
     },
@@ -372,8 +375,9 @@ Flipper.prototype = {
             }
         }
 
-        workspaceWindows.sort(Lang.bind(this, this._sortWindow));
-        return workspaceWindows;
+        // Clone the windows in their real stacking order, otherwise windows visibly
+        // swap places when the clones are replaced by the real windows
+        return global.display.sort_windows_by_stacking(workspaceWindows);
         // return workspaceWindows.reverse();
     },
 
@@ -434,6 +438,19 @@ Flipper.prototype = {
       // Allow Cinnamon to play the switcher sound if it's enabled.
       Main.soundManager.play('switch');
 
+      // The window list on the visible panels is rebuilt for the new workspace,
+      // fade it out during the animation instead of letting it jump at the end
+      if (this.keep_panels) {
+        this.getWindowListActors().forEach(function(actor) {
+            actor.ease({
+                opacity: 0,
+                duration: WINDOW_LIST_FADE_OUT_TIME,
+                mode: Clutter.AnimationMode.EASE_IN_OUT_QUAD
+            });
+        });
+        this.window_list_faded_at = GLib.get_monotonic_time() + WINDOW_LIST_FADE_OUT_TIME * 1000;
+      }
+
       // This is a workaround for poor animation, we enable it only during the animation
       // sequence so users don't need to set it using export CLUTTER_PAINT...
       Meta.add_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
@@ -467,7 +484,9 @@ Flipper.prototype = {
       this.last_direction = direction;
 
       this.new_workspace = new_workspace;
-      new_workspace.activate(global.get_current_time());
+      // Activating the workspace maps its windows and wakes up their applications, which
+      // stalls the first frames of the animation. Defer it until the animation is done.
+      this.pending_workspace = new_workspace;
       this.prepare(from_workspace, to_workspace, direction);
     },
 
@@ -1372,6 +1391,62 @@ Flipper.prototype = {
       // this.from.hide();
       this.is_animating = false;
 
+      if (this.pending_workspace) {
+        // Activate the workspace only once the last frame of the animation is painted,
+        // keep queueing key presses until then
+        let workspace = this.pending_workspace;
+        this.pending_workspace = null;
+        this.is_animating = true;
+
+        // The window list fades out during the animation, wait for it only when
+        // the animation is shorter than the fade
+        let windowLists = this.keep_panels ? this.getWindowListActors() : [];
+        let wait = windowLists.length ? Math.max(0, Math.ceil((this.window_list_faded_at - GLib.get_monotonic_time()) / 1000)) : 0;
+
+        // PRIORITY_DEFAULT, a default idle would starve while CONTINUOUS_REDRAW is on
+        GLib.timeout_add(GLib.PRIORITY_DEFAULT, wait, () => {
+            // The keyboard grab may already be released, which would let Cinnamon play
+            // its own workspace switch effect on the real windows
+            let save = Main.animations_enabled;
+            Main.animations_enabled = false;
+            workspace.activate(global.display.get_current_time_roundtrip());
+            Main.animations_enabled = save;
+            windowLists.forEach(function(actor) {
+                actor.ease({
+                    opacity: 255,
+                    delay: WINDOW_LIST_SETTLE_TIME,
+                    duration: WINDOW_LIST_FADE_IN_TIME,
+                    mode: Clutter.AnimationMode.EASE_IN_OUT_QUAD
+                });
+            });
+            this.unsetIsAnimating();
+            return GLib.SOURCE_REMOVE;
+        });
+        return;
+      }
+      if (this.follow_window) {
+        let window = this.follow_window;
+        this.follow_window = null;
+        Mainloop.idle_add(() => {
+            // Unless this is done a bit later,
+            // window is sometimes not activated
+            if (window.get_workspace() === global.workspace_manager.get_active_workspace()) {
+                //window.activate(global.get_current_time());
+                Main.activateWindow(window);
+            }
+            return GLib.SOURCE_REMOVE;
+        });
+      }
+
+      if (!this.destroy_requested && this._modifierMask) {
+        // The modifier key could have been released before we got the grab
+        let [x, y, mods] = global.get_pointer();
+        if ((mods & this._modifierMask) == 0) {
+          this.destroy_requested = true;
+          this.releaseGrab();
+        }
+      }
+
       if( this.queued_action ){
         let action = this.queued_action;
         this.queued_action = null;
@@ -1382,6 +1457,16 @@ Flipper.prototype = {
       }
       //Main.wm.showWorkspaceOSD();
       Meta.remove_clutter_debug_flags( 0, 1 << 6, 0 ); // CLUTTER_DEBUG_CONTINUOUS_REDRAW
+    },
+
+    // The applets that show the window list, Cinnamon gives this role to window list applets
+    getWindowListActors: function() {
+        let uuid = Extension.Type.APPLET.roles.windowattentionhandler;
+        if (!uuid)
+            return [];
+        return AppletManager.getRunningInstancesForUuid(uuid).map(function(applet) {
+            return applet.actor;
+        });
     },
 
     // Change the workspace to parm ws_cur
@@ -1478,9 +1563,47 @@ Flipper.prototype = {
 
     },
 
+    // Release the keyboard grab once the modifier keys are released. Further workspace
+    // switch key bindings then reach Cinnamon normally and are passed to queueAction().
+    // Keeping the grab would make Cinnamon see a lone Super key press when e.g. Super+F4
+    // is pressed again, which opens the menu.
+    releaseGrab: function() {
+      if (!this.has_grab)
+        return;
+      this.has_grab = false;
+      Main.popModal(this.actor);
+    },
+
+    // A workspace switch key binding was used while this Flipper is on the screen
+    queueAction: function(action) {
+      if (this.destroying) {
+        this.destroying = false;
+        Tweener.removeTweens(this.metaBackgroundActor);
+        this.dimBackground();
+      }
+      // There is no grab to wait for a modifier release, finish once idle
+      this.destroy_requested = true;
+      if (this.is_animating) {
+        this.hurry = true;
+        this.queued_action = action;
+      } else {
+        this.hurry = false;
+        this.processKeypress(action);
+        if (!this.is_animating)
+          this.onDestroy();
+      }
+    },
+
     _keyPressEvent: function(actor, event) {
       // Make sure we don't accidentally destroy the scene
       this.destroy_requested = false;
+      if (this.destroying) {
+        // A key was pressed while the scene was fading out. Keep the scene and
+        // the grab, otherwise the key release would end up outside of it
+        this.destroying = false;
+        Tweener.removeTweens(this.metaBackgroundActor);
+        this.dimBackground();
+      }
 
       let event_state = Cinnamon.get_event_state(event);
       if (this.is_animating) {
@@ -1502,6 +1625,7 @@ Flipper.prototype = {
 
 
         if (state == 0) {
+          this.releaseGrab();
           if (this.is_animating) {
             this.destroy_requested = true;
           } else {
@@ -1552,6 +1676,10 @@ Flipper.prototype = {
     },
 
     onDestroy: function() {
+      if (this.destroying || this.destroyed)
+        return;
+      this.destroying = true;
+      this.releaseGrab();
       this.undimBackground();
       this.destroy_requested = false;
       //global.log("onDestroy done");
@@ -1559,12 +1687,21 @@ Flipper.prototype = {
 
     destroy: function() {
       //global.log("destroy called");
+      if (this.destroyed)
+        return;
+      this.destroyed = true;
+      this.destroying = false;
+      this.releaseGrab();
+      if (activeFlipper === this)
+        activeFlipper = null;
       Main.uiGroup.remove_actor(this._backgroundGroup);
       Main.uiGroup.remove_actor(this.actor);
 
-      Main.getPanels().forEach(function(panel){
-        panel.enable();
-      });
+      if (!this.keep_panels) {
+        Main.getPanels().forEach(function(panel){
+          panel.enable();
+        });
+      }
 
       global.window_group.show();
       this.actor.disconnect(this.releaseID);
@@ -1625,6 +1762,14 @@ function onSwitch(display, window, binding) {
     } else {
        direction = Meta.MotionDirection.RIGHT;
     }
+    if (activeFlipper) {
+        let move = bindingName.startsWith("move");
+        if (direction === Meta.MotionDirection.LEFT)
+            activeFlipper.queueAction(move ? Meta.KeyBindingAction.MOVE_TO_WORKSPACE_LEFT : Meta.KeyBindingAction.WORKSPACE_LEFT);
+        else
+            activeFlipper.queueAction(move ? Meta.KeyBindingAction.MOVE_TO_WORKSPACE_RIGHT : Meta.KeyBindingAction.WORKSPACE_RIGHT);
+        return;
+    }
     let new_workspace = global.screen.get_active_workspace().get_neighbor(direction);
     let mask = binding.get_mask();
     let modifierMask = imports.ui.appSwitcher.appSwitcher.primaryModifier(mask);
@@ -1647,6 +1792,8 @@ function switchToWorkspace(display, window, binding) {
       Main.soundManager.play('switch');
       new_workspace.activate(global.get_current_time());
       Main.wm.showWorkspaceOSD();
+   } else if (activeFlipper) {
+      activeFlipper.queueAction(Meta.KeyBindingAction.WORKSPACE_1 + newWSIdx);
    } else {
       let [transitions_needed, direction] = getTransitionsAndDirection(new_workspace);
       if (transitions_needed) {
@@ -1662,6 +1809,8 @@ function switchToWorkspace(display, window, binding) {
 function moveToWorkspace(workspace, direction_hint) {
     if (Main.expo._shown) {
        original_mw_moveToWorkspace(workspace, direction_hint);
+    } else if (activeFlipper) {
+        activeFlipper.queueAction(Meta.KeyBindingAction.WORKSPACE_1 + workspace.index());
     } else {
         let [transitions_needed, direction] = getTransitionsAndDirection(workspace);
         if (transitions_needed) {
