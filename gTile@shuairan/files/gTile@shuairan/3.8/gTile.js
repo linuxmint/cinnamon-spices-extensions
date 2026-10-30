@@ -1040,14 +1040,16 @@ let Grid = class Grid {
             this.app.MoveToMonitor(this.app.CurrentMonitor, monitor !== null && monitor !== void 0 ? monitor : this.app.CurrentMonitor);
         };
         this.destroy = () => {
+            this.Reset();
             for (let r in this.elements) {
                 for (let c in this.elements[r]) {
                     this.elements[r][c]._destroy();
                 }
             }
             this.elementsDelegate._destroy();
-            this.topbar._destroy();
-            this.Reset();
+            // TopBar has no _destroy(). Destroying the grid actor also destroys
+            // the top bar, the buttons and their tooltips.
+            this.actor.destroy();
             this.monitor = null;
             this.rows = null;
             this.title = null;
@@ -1336,8 +1338,10 @@ class App {
                 if (typeof grid != 'undefined') {
                     grid.Hide(true);
                     app_Main.layoutManager.removeChrome(grid.actor);
+                    grid.destroy();
                 }
             }
+            this.grids = [];
         };
         this.MoveUIActor = () => {
             if (!this.visible) {
@@ -1429,8 +1433,8 @@ class App {
         app_Main.uiGroup.add_actor(this.area);
         this.config = new Config(this);
         this.InitGrid();
-        this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
-        global.screen.connect('monitors-changed', this.ReInitialize);
+        this.focusAppSignal = this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
+        this.monitorsChangedSignal = global.screen.connect('monitors-changed', this.ReInitialize);
     }
     get CurrentMonitor() {
         return this.currentMonitor;
@@ -1446,9 +1450,12 @@ class App {
         return this.grids;
     }
     destroy() {
+        this.tracker.disconnect(this.focusAppSignal);
+        global.screen.disconnect(this.monitorsChangedSignal);
         this.config.destroy();
         this.DestroyGrid();
         this.ResetFocusedWindow();
+        this.area.destroy();
     }
     InitGrid() {
         this.currentMonitor = app_Main.layoutManager.primaryMonitor;

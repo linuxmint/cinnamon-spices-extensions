@@ -43,6 +43,8 @@ export class App implements IApp {
     return this.grids;
   }
   private grids: Grid[] = [];
+  private focusAppSignal = 0;
+  private monitorsChangedSignal = 0;
 
   public readonly config: Config;
 
@@ -51,14 +53,17 @@ export class App implements IApp {
       Main.uiGroup.add_actor(this.area);
       this.config = new Config(this);
       this.InitGrid();
-      this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
-      global.screen.connect('monitors-changed', this.ReInitialize);
+      this.focusAppSignal = this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
+      this.monitorsChangedSignal = global.screen.connect('monitors-changed', this.ReInitialize);
   }
 
   public destroy() {
+    this.tracker.disconnect(this.focusAppSignal);
+    global.screen.disconnect(this.monitorsChangedSignal);
     this.config.destroy();
     this.DestroyGrid();
     this.ResetFocusedWindow();
+    this.area.destroy();
   }
 
   public RefreshGrid = () => {
@@ -208,8 +213,10 @@ export class App implements IApp {
         if (typeof grid != 'undefined') {
             grid.Hide(true);
             Main.layoutManager.removeChrome(grid.actor);
+            grid.destroy();
         }
     }
+    this.grids = [];
   }
 
   //#endregion
