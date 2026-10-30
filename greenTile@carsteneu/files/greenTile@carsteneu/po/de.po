@@ -1,0 +1,533 @@
+# German translation for greenTile (greenTile@carsteneu).
+# Based on the German translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Original gTile German translation: 2021, translator not recorded.
+# carsten_eu, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2026-10-06 14:32+0200\n"
+"Last-Translator: carsten_eu\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Bitte einen Namen eingeben."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "ab %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Regeln (nach Fensterzahl)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Regel"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Regel löschen"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Regel gilt ab"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "Fenstern"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Malerei"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Klicken oder ziehen: Die Zeile legt fest, wie viele Fenster die Spalte "
+"aufnimmt. Rechtsklick entfernt eine Spalte."
+
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Zugewiesen auf"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Nirgends zugewiesen."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "alle Arbeitsflächen"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "Arbeitsfläche %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d weitere"
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Name"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Name des Presets"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Preset löschen"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Wirklich löschen?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Löschen"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Speichern"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Ergebnis: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Preset bearbeiten"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Zugewiesen"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Zuweisung entfernen"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Abstand zwischen Fenstern"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Größen zurücksetzen"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Presets — Arbeitsfläche %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Neues Preset"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "%s bearbeiten"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "zurück"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: an"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: aus"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Dunkles Design"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Helles Design"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Noch keine Presets vorhanden."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Vorschau für %d Fenster"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Vorschau für %d Fenster"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Keine Fenster offen — Grundlayout"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Neu anlegen"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr "Klick auf eine Karte = sofort auf dieser Fläche anwenden & kacheln"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Fenster in Spalten kacheln, mit Presets pro Arbeitsfläche, Auto-Modus und "
+"Einrasten nach dem Verschieben. Ein Fork von shuairans gTile."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Tastenkürzel"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Tastenkürzel für automatisches Kacheln"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Presets für Arbeitsflächen"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Größe gekachelter Fenster ändern"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Fenster tauschen"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Kacheln"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Nie kacheln"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Preset-Panel"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Alle Fenster in 6 Spalten kacheln"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Alle Fenster in 3 Spalten kacheln"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Automatisches Kacheln für diese Arbeitsfläche einschalten und sofort kacheln"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Automatisches Kacheln für diese Arbeitsfläche ausschalten"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Preset-Panel öffnen"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Fokussiertes gekacheltes Fenster breiter machen (Tippen = 1 px, Halten "
+"beschleunigt)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Fokussiertes gekacheltes Fenster schmaler machen"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Fokussiertes gekacheltes Fenster höher machen"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Fokussiertes gekacheltes Fenster niedriger machen"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Das fokussierte gekachelte Fenster mit dem Nachbarn links tauschen"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Das fokussierte gekachelte Fenster mit dem Nachbarn rechts tauschen"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Das fokussierte gekachelte Fenster mit dem Nachbarn darüber tauschen"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Das fokussierte gekachelte Fenster mit dem Nachbarn darunter tauschen"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Preset-Definitionen (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "„Nie kacheln“ für das fokussierte Fenster ein- und ausschalten"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Eine installierte Anwendung hinzufügen"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Wählt man eine Anwendung aus, landet sie in der untenstehenden Liste. Die "
+"Auswahlbox springt danach zurück."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Anwendung hinzufügen …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Fenster, die auf eine dieser Zeilen passen, werden nie gekachelt — sie "
+"schweben frei, egal wo sie abgelegt werden"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Abgleich"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Text"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Abstand zwischen gekachelten Fenstern (mit − / + im Preset-Panel; nicht in "
+"diesem Dialog angezeigt)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Kacheln animieren"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+"Fenster gleiten an ihren neuen Platz. Aus: Sie springen sofort dorthin."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Animationsdauer"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Wie lange ein Fenster bis zu seinem Platz gleitet, in Millisekunden. Das "
+"Fenster landet weiterhin sofort auf seinem endgültigen Rahmen; nur das Bild "
+"wandert."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Rahmen um das fokussierte Fenster"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Markiert nach einem Fokuswechsel mit Super+Pfeil das neu fokussierte Fenster "
+"drei Sekunden lang mit einem dünnen Rahmen in der Statusfarbe. Mausklicks "
+"und Alt+Tab zeigen ihn nicht."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Monitor mit einem einzelnen Fenster füllen"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Läuft automatisches Kacheln oder ein Preset, füllt ein einzelnes gekacheltes "
+"Fenster den gesamten nutzbaren Bereich, statt unbeachtet zu bleiben."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Ein einzelnes Fenster"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Was mit einem einzelnen gekachelten Fenster geschieht, wenn automatisches "
+"Kacheln oder ein Preset aktiv ist. Unverändert lassen: keine Wirkung. "
+"Monitor füllen: das Fenster nimmt die ganze nutzbare Fläche ein. Fenster "
+"zentrieren: das Fenster wird bei etwa 62 % der Breite (Goldener Schnitt) und "
+"90 % der Höhe zentriert."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Unverändert lassen"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Monitor füllen"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Fenster zentrieren"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Design des Preset-Panels"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"Systemvorgabe folgt live dem Desktop-Farbschema; Hell und Dunkel "
+"überschreiben sie."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Systemvorgabe folgen"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Hell"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Dunkel"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Akzentfarbe"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"Designfarbe folgen übernimmt live die Akzentfarbe des Cinnamon-Designs. "
+"Eigene Farbe verwendet die unten gewählte Farbe."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Designfarbe folgen"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Eigene Farbe"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Eigene Akzentfarbe"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Akzentfarbe von Preset-Panel und Editor, wenn die Akzentfarbe auf Eigene "
+"Farbe steht."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Statusfarbe"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Farbe der Auto-an-Markierung, der zugewiesenen Preset-Karten und des "
+"Fokusrahmens. Grün erhält das heutige Aussehen. Designfarbe folgen übernimmt "
+"live die Akzentfarbe des Cinnamon-Designs. Eigene Farbe verwendet die unten "
+"gewählte Farbe."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Grün"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Eigene Statusfarbe"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Statusfarbe des Preset-Panels und des Fokusrahmens, wenn die Statusfarbe auf "
+"Eigene Farbe steht."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Fenster schwebt frei"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Fenster wird wieder gekachelt"

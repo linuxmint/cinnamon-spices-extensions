@@ -1,0 +1,857 @@
+/*
+ * greenTile — stylesheet
+ *
+ * Original file based on 5.4/stylesheet.css from gTile (UUID gTile@shuairan),
+ * version 2.2.1, by vibou, shuairan and the gTile contributors. The gTile
+ * rules were removed together with the classic grid; the gk-* rules for the
+ * preset panel were added by carsten_eu, 2026.
+ *
+ * Copyright (C) vibou, shuairan and the gTile contributors
+ * Copyright (C) 2026 carsten_eu
+ *
+ * Licensed under the GNU General Public License version 3, see LICENSE.
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+
+/* gKachel preset panel — tokens 1:1 from the approved HTML mockup
+   (base font 16px, card grid spacing 14px, card padding 8px, preview 58px high).
+   One-sided borders: full border + zero widths (St has no reliable
+   per-side colours, Mint-X uses the same pattern). */
+.gk-panel {
+    width: 600px;
+    background-color: rgba(28, 31, 40, 0.98);
+    border: 1px solid #3a4050;
+    border-radius: 6px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    color: #e8eaf0;
+    font-size: 16px;
+}
+
+.gk-panel-header {
+    background-color: #262a35;
+    border: 1px solid #333846;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-radius: 6px 6px 0 0;
+    padding: 10px 14px;
+}
+
+.gk-title {
+    color: #e8eaf0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.gk-close {
+    color: #8b91a0;
+    font-size: 16px;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+.gk-close:hover {
+    color: #e8eaf0;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.gk-settings {
+    margin-right: 6px;
+}
+
+.gk-theme {
+    margin-right: 6px;
+}
+
+/* Shared preview context line between the title bar and the card grid; carries
+   the header background so it reads as part of the title bar. */
+.gk-preview {
+    color: #8b91a0;
+    font-size: 11px;
+    padding: 0 14px 8px 14px;
+    background-color: #262a35;
+    border-bottom: 1px solid #333846;
+}
+
+/* Auto tiling state of the workspace in the title bar: grey when off, the
+   "assigned" green when on. */
+.gk-auto {
+    color: #8b91a0;
+    font-size: 12px;
+    padding: 2px 8px;
+    margin-right: 8px;
+    border-radius: 3px;
+    border: 1px solid #3a4050;
+}
+
+.gk-auto:hover {
+    color: #e8eaf0;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* The state rules below (the green of "Auto: on", assigned cards and the card
+   stripe down to .gk-sub) are overridden at runtime by the generated
+   stylesheet (setting "State color"); keep them in sync with
+   stateCss in lib/model/state.js. */
+.gk-auto-on {
+    color: #9ce072;
+    border-color: rgba(156, 224, 114, 0.5);
+    background-color: rgba(156, 224, 114, 0.08);
+}
+
+.gk-auto-on:hover {
+    color: #9ce072;
+    background-color: rgba(156, 224, 114, 0.16);
+}
+
+/* Preset cards: a responsive grid whose column count is computed in
+   lib/model/grid.js from the panel width. The row/column spacing here must stay
+   PRESET_CARD_GAP (14px), the .gk-card-box padding PRESET_CARD_PAD (8px) and the
+   stripe 3px plus the 1px .gk-card border — panel.js subtracts them from the
+   preview width (PRESET_CARD_CHROME_W).
+   Only the card area scrolls; the header, gap row and New preset stay put. */
+.gk-cards {
+    padding: 10px 14px 4px 14px;
+    spacing: 14px;
+}
+
+.gk-card-row {
+    spacing: 14px;
+}
+
+.gk-card {
+    padding: 0;
+    background-color: #232733;
+    border: 1px solid #2a2e39;
+    border-radius: 6px;
+}
+
+.gk-card:hover {
+    background-color: #262a35;
+    border-color: #3a4050;
+}
+
+/* Keyboard focus is separate from hover and always visible (never hover-only). */
+.gk-card:focus {
+    border-color: #8b91a0;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.gk-card-assigned {
+    background-color: rgba(156, 224, 114, 0.06);
+}
+
+.gk-card-assigned:hover {
+    background-color: rgba(156, 224, 114, 0.13);
+}
+
+/* An assigned card on a workspace whose Auto is off places nothing — every retile
+   gates on autoAllowed (lib/tiling/layout.js) — so it reads as resting: the state
+   accent gives way to the neutral gray, here and in the generated state rules
+   (stateCss, lib/model/state.js). The .gk-panel prefix plus the extra class keep
+   these in front of the generated rules, which are appended after this sheet. */
+.gk-panel .gk-card-idle.gk-card-assigned {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.gk-panel .gk-card-idle .gk-card-stripe {
+    background-color: #5f6672;
+}
+
+.gk-panel .gk-card-idle .gk-sub {
+    color: #8b91a0;
+}
+
+.gk-panel.gk-light .gk-card-idle.gk-card-assigned {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.gk-panel.gk-light .gk-card-idle .gk-card-stripe {
+    background-color: #c3c9d6;
+}
+
+.gk-panel.gk-light .gk-card-idle .gk-sub {
+    color: #5f6672;
+}
+
+.gk-card-stripe {
+    width: 3px;
+    background-color: #9ce072;
+    border-radius: 5px 0 0 5px;
+}
+
+.gk-card-box {
+    padding: 8px;
+    spacing: 4px;
+}
+
+.gk-card-top {
+    spacing: 4px;
+}
+
+.gk-card-state {
+    spacing: 4px;
+}
+
+.gk-name {
+    color: #e8eaf0;
+    font-size: 14px;
+}
+
+.gk-sub {
+    color: #9ce072;
+    font-size: 11px;
+}
+
+/* Icon buttons. The card's pencil (.gk-card-edit) and unassign ✕
+   (.gk-card-unassign) carry no rule of their own: they take this look, and the
+   class names serve as stable selectors for the panel tests. */
+.gk-icon-btn {
+    color: #8b91a0;
+    font-size: 16px;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.gk-icon-btn:hover {
+    color: #e8eaf0;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* The accent rules below (orange tones down to .gk-light .gk-entry:focus) are
+   overridden at runtime by the generated accent stylesheet (setting
+   "Accent color"); keep them in sync with accentCss in lib/model/accent.js. */
+.gk-plus {
+    color: #ff9640;
+    font-size: 16px;
+    padding: 12px 14px;
+    background-color: #232733;
+    border: 1px solid #2a2e39;
+    border-top-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+}
+
+.gk-plus:hover {
+    color: #ffb070;
+    background-color: #2a2f3d;
+    border-top-color: #333846;
+}
+
+.gk-hint {
+    color: #6b7180;
+    font-size: 11px;
+    padding: 8px 14px 12px 14px;
+}
+
+/* Bottom row: the list's hint and the resize grip in the corner (both views). */
+.gk-footer {
+    spacing: 0;
+}
+
+.gk-grip {
+    color: #4a5063;
+    font-size: 12px;
+    padding: 0 3px 1px 6px;
+}
+
+.gk-grip:hover {
+    color: #ff9640;
+}
+
+/* "Gap between windows  − 8 px +" between the list and New preset. */
+.gk-gap-row {
+    padding: 8px 14px;
+    spacing: 6px;
+    border-top: 1px solid #2a2e39;
+}
+
+.gk-gap-label {
+    color: #b8bdc9;
+    font-size: 13px;
+}
+
+.gk-gap-value {
+    color: #e8eaf0;
+    font-size: 13px;
+    min-width: 48px;
+    text-align: center;
+}
+
+.gk-gap-btn {
+    color: #e8eaf0;
+    font-size: 15px;
+    width: 26px;
+    height: 24px;
+    border-radius: 3px;
+    border: 1px solid #3a4050;
+}
+
+.gk-gap-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.gk-reset-btn {
+    color: #e8eaf0;
+    font-size: 12px;
+    height: 24px;
+    padding: 0 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 1px solid #3a4050;
+}
+
+.gk-reset-btn:hover {
+    background-color: rgba(255, 150, 64, 0.18);
+    border-color: #ff9640;
+}
+
+.gk-muted {
+    color: #8b91a0;
+    font-size: 11px;
+    padding: 8px 14px;
+}
+
+/* Selection view only: one pixel smaller; editor typography stays unchanged. */
+.gk-panel-list {
+    font-size: 15px;
+}
+
+.gk-panel-list .gk-title {
+    font-size: 15px;
+}
+
+.gk-panel-list .gk-name {
+    font-size: 13px;
+}
+
+.gk-panel-list .gk-plus {
+    font-size: 15px;
+}
+
+/* Preset editor (view 2) — tokens from the approved prototype: labels 11px
+   #8b91a0 uppercase, rule rows padding 8px 10px, active rule orange stripe
+   2px + tint, painter #14161d with 6px inset, button #ff9640 on #14161d. */
+.gk-back {
+    color: #8b91a0;
+    font-size: 16px;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+.gk-back:hover {
+    color: #e8eaf0;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.gk-ed-body {
+    padding: 14px;
+    spacing: 16px;
+}
+
+.gk-ed-left {
+    width: 170px;
+}
+
+.gk-ed-label {
+    color: #8b91a0;
+    font-size: 11px;
+    padding-bottom: 6px;
+}
+
+.gk-ed-rules {
+    border: 1px solid #2a2e39;
+    border-radius: 4px;
+}
+
+.gk-ed-rule {
+    border: 1px solid #2a2e39;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.gk-ed-rule-last {
+    border-bottom-width: 0;
+}
+
+.gk-ed-rule:hover {
+    background-color: #262a35;
+}
+
+.gk-ed-rule-active {
+    background-color: rgba(255, 150, 64, 0.08);
+}
+
+.gk-ed-rule-active:hover {
+    background-color: rgba(255, 150, 64, 0.14);
+}
+
+.gk-ed-rule-stripe {
+    width: 2px;
+    background-color: #ff9640;
+}
+
+.gk-ed-rule-box {
+    padding: 8px 10px;
+    spacing: 8px;
+}
+
+.gk-ed-rule-label {
+    color: #c8ccd8;
+    font-size: 16px;
+}
+
+.gk-ed-rule-active .gk-ed-rule-label {
+    color: #e8eaf0;
+}
+
+.gk-ed-actions {
+    spacing: 12px;
+    padding-top: 8px;
+}
+
+.gk-ed-add {
+    color: #ff9640;
+    font-size: 15px;
+}
+
+.gk-ed-add:hover {
+    color: #ffb070;
+}
+
+.gk-ed-del {
+    color: #8b91a0;
+    font-size: 15px;
+}
+
+.gk-ed-del:hover {
+    color: #e8eaf0;
+}
+
+.gk-ed-del:insensitive {
+    color: #4a4f5c;
+}
+
+.gk-stepper {
+    spacing: 8px;
+    padding-bottom: 10px;
+}
+
+.gk-stepper .gk-ed-label {
+    padding-bottom: 0;
+}
+
+.gk-stepper-btn {
+    color: #e8eaf0;
+    font-size: 15px;
+    background-color: #262a35;
+    border: 1px solid #2a2e39;
+    border-radius: 3px;
+    padding: 0 8px;
+}
+
+.gk-stepper-btn:hover {
+    border-color: #ff9640;
+}
+
+.gk-stepper-value {
+    color: #e8eaf0;
+    font-size: 16px;
+    font-weight: bold;
+    width: 22px;
+    text-align: center;
+}
+
+.gk-painter {
+    background-color: #14161d;
+    border: 1px solid #2a2e39;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.gk-painter-area {
+    height: 136px;
+}
+
+.gk-ed-faint {
+    color: #6b7180;
+    font-size: 11px;
+    padding-top: 8px;
+}
+
+/* The "Assigned on" slots: read-only text in the column's secondary tone, a step
+   brighter than the faint hints below it in the dark theme; the light theme keeps
+   one secondary tone for both (see the .gk-light rules). */
+.gk-ed-used {
+    color: #8b91a0;
+    font-size: 11px;
+    padding-top: 2px;
+}
+
+.gk-ed-name-row {
+    spacing: 10px;
+    padding-top: 14px;
+}
+
+.gk-ed-name-row .gk-ed-label {
+    padding-bottom: 0;
+}
+
+.gk-entry {
+    color: #e8eaf0;
+    font-size: 16px;
+    background-color: #1c1f28;
+    border: 1px solid #2a2e39;
+    border-radius: 3px;
+    padding: 5px 10px;
+    caret-color: #e8eaf0;
+    selection-background-color: #ff9640;
+    selected-color: #14161d;
+}
+
+.gk-entry:focus {
+    border-color: #ff9640;
+}
+
+.gk-entry:indeterminate {
+    color: #6b7180;
+}
+
+.gk-ed-save-row {
+    spacing: 10px;
+    padding-top: 14px;
+}
+
+.gk-save {
+    color: #14161d;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #ff9640;
+    border-radius: 4px;
+    padding: 7px 16px;
+}
+
+.gk-save:hover {
+    background-color: #ffab66;
+}
+
+.gk-error {
+    color: #ff6b6b;
+    font-size: 11px;
+}
+
+/* The delete-preset button and its inline confirmation are ALWAYS the same fixed
+   red, in the dark and the light panel and under every theme accent — therefore
+   they have no .gk-light overrides and never appear in the generated accent css
+   (panel-accent.css cannot restyle them). Solid red background with white text
+   for maximum contrast. */
+.gk-preset-del {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #c23636;
+    border-radius: 4px;
+    padding: 7px 14px;
+}
+
+.gk-preset-del:hover {
+    background-color: #d94343;
+}
+
+.gk-preset-del-row {
+    spacing: 8px;
+}
+
+.gk-preset-del-question {
+    color: #d94343;
+    font-size: 11px;
+}
+
+.gk-preset-del-cancel {
+    color: #8b91a0;
+    font-size: 15px;
+}
+
+.gk-preset-del-cancel:hover {
+    color: #e8eaf0;
+}
+
+/* Light theme ("panelTheme": "light", or "system" with a light desktop): every
+   rule lives under the gk-light class that lib/runtime/theme.js puts on the panel root,
+   so the dark look above stays untouched. Same tones, inverted: panels and
+   fields go white-grey, text goes dark, greens and oranges are darkened for
+   contrast on the light background. */
+.gk-light.gk-panel {
+    background-color: rgba(246, 247, 250, 0.98);
+    border-color: #d5d9e2;
+    color: #2b2f3a;
+}
+
+.gk-light .gk-panel-header {
+    background-color: #e9ecf2;
+    border-color: #d5d9e2;
+}
+
+.gk-light .gk-title {
+    color: #2b2f3a;
+}
+
+.gk-light .gk-close {
+    color: #5f6672;
+}
+
+.gk-light .gk-close:hover {
+    color: #2b2f3a;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.gk-light .gk-auto {
+    color: #5f6672;
+    border-color: #c3c9d6;
+}
+
+.gk-light .gk-auto:hover {
+    color: #2b2f3a;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.gk-light .gk-preview {
+    color: #5f6672;
+    background-color: #e9ecf2;
+    border-bottom-color: #d5d9e2;
+}
+
+/* The light state rules below are overridden at runtime by the generated
+   stylesheet (setting "State color"). */
+.gk-light .gk-auto-on {
+    color: #3f8f22;
+    border-color: rgba(78, 165, 48, 0.5);
+    background-color: rgba(78, 165, 48, 0.1);
+}
+
+.gk-light .gk-auto-on:hover {
+    color: #3f8f22;
+    background-color: rgba(78, 165, 48, 0.18);
+}
+
+.gk-light .gk-card {
+    background-color: #eef0f5;
+    border-color: #d5d9e2;
+}
+
+.gk-light .gk-card:hover {
+    background-color: #e4e8f0;
+    border-color: #c3c9d6;
+}
+
+.gk-light .gk-card:focus {
+    border-color: #5f6672;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.gk-light .gk-card-assigned {
+    background-color: rgba(78, 165, 48, 0.08);
+}
+
+.gk-light .gk-card-assigned:hover {
+    background-color: rgba(78, 165, 48, 0.16);
+}
+
+.gk-light .gk-card-stripe {
+    background-color: #4ea530;
+}
+
+.gk-light .gk-name {
+    color: #2b2f3a;
+}
+
+.gk-light .gk-sub {
+    color: #3f8f22;
+}
+
+.gk-light .gk-icon-btn {
+    color: #5f6672;
+}
+
+.gk-light .gk-icon-btn:hover {
+    color: #2b2f3a;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.gk-light .gk-plus {
+    color: #d97a24;
+    background-color: #eef0f5;
+    border-color: #d5d9e2;
+}
+
+.gk-light .gk-plus:hover {
+    color: #e89a3f;
+    background-color: #e4e8f0;
+    border-top-color: #c3c9d6;
+}
+
+.gk-light .gk-grip {
+    color: #8a90a0;
+}
+
+.gk-light .gk-grip:hover {
+    color: #d97a24;
+}
+
+.gk-light .gk-hint {
+    color: #5f6672;
+}
+
+.gk-light .gk-gap-row {
+    border-top-color: #d5d9e2;
+}
+
+.gk-light .gk-gap-label {
+    color: #3a4050;
+}
+
+.gk-light .gk-gap-value {
+    color: #2b2f3a;
+}
+
+.gk-light .gk-gap-btn {
+    color: #2b2f3a;
+    border-color: #c3c9d6;
+}
+
+.gk-light .gk-gap-btn:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.gk-light .gk-reset-btn {
+    color: #2b2f3a;
+    border-color: #c3c9d6;
+}
+
+.gk-light .gk-reset-btn:hover {
+    background-color: rgba(255, 150, 64, 0.22);
+    border-color: #d97a24;
+}
+
+.gk-light .gk-muted {
+    color: #5f6672;
+}
+
+.gk-light .gk-back {
+    color: #5f6672;
+}
+
+.gk-light .gk-back:hover {
+    color: #2b2f3a;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.gk-light .gk-ed-label {
+    color: #5f6672;
+}
+
+.gk-light .gk-ed-rules {
+    border-color: #d5d9e2;
+}
+
+.gk-light .gk-ed-rule {
+    border-color: #d5d9e2;
+}
+
+.gk-light .gk-ed-rule:hover {
+    background-color: #eceef5;
+}
+
+.gk-light .gk-ed-rule-active {
+    background-color: rgba(255, 150, 64, 0.14);
+}
+
+.gk-light .gk-ed-rule-active:hover {
+    background-color: rgba(255, 150, 64, 0.2);
+}
+
+.gk-light .gk-ed-rule-stripe {
+    background-color: #d97a24;
+}
+
+.gk-light .gk-ed-rule-label {
+    color: #3a4050;
+}
+
+.gk-light .gk-ed-rule-active .gk-ed-rule-label {
+    color: #2b2f3a;
+}
+
+.gk-light .gk-ed-add {
+    color: #d97a24;
+}
+
+.gk-light .gk-ed-add:hover {
+    color: #e89a3f;
+}
+
+.gk-light .gk-ed-del {
+    color: #5f6672;
+}
+
+.gk-light .gk-ed-del:hover {
+    color: #2b2f3a;
+}
+
+.gk-light .gk-ed-del:insensitive {
+    color: #b8bdc9;
+}
+
+.gk-light .gk-stepper-btn {
+    color: #2b2f3a;
+    background-color: #e9ecf2;
+    border-color: #c3c9d6;
+}
+
+.gk-light .gk-stepper-btn:hover {
+    border-color: #d97a24;
+}
+
+.gk-light .gk-stepper-value {
+    color: #2b2f3a;
+}
+
+.gk-light .gk-painter {
+    background-color: #e8ebf1;
+    border-color: #c3c9d6;
+}
+
+.gk-light .gk-entry {
+    color: #2b2f3a;
+    background-color: #ffffff;
+    border-color: #c3c9d6;
+    caret-color: #2b2f3a;
+}
+
+.gk-light .gk-entry:focus {
+    border-color: #d97a24;
+}
+
+.gk-light .gk-ed-faint {
+    color: #5f6672;
+}
+
+.gk-light .gk-ed-used {
+    color: #5f6672;
+}
+
+.gk-light .gk-error {
+    color: #c94b4b;
+}
+
+/* Grey cancel ✕ of the delete confirmation follows the light theme; the red
+   classes stay fixed on purpose (see the dark rules above). */
+.gk-light .gk-preset-del-cancel {
+    color: #5f6672;
+}
+
+.gk-light .gk-preset-del-cancel:hover {
+    color: #2b2f3a;
+}

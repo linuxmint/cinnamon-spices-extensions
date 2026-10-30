@@ -1,0 +1,480 @@
+# Simplified Chinese translation for greenTile (greenTile@carsteneu).
+# Based on the Simplified Chinese translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Simplified Chinese\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "请输入名称。"
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "%d 个及以上"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "规则（按窗口数量）"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "规则"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "删除规则"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "规则适用于"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "个及以上窗口"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "布局绘制区"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr "单击或拖动：所在行决定该列容纳的窗口数。右键单击可删除一列。"
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "名称"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "预设名称"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "删除预设"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "确定要删除吗？"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "删除"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "保存"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "结果：%s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "编辑预设"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "已分配"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "取消分配"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "窗口间距"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "重置大小"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "预设 — 工作区 %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "创建预设"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "编辑 %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "返回"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "自动：开"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "自动：关"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "深色主题"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "浅色主题"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "尚无预设。"
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "%d 个窗口的预览"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "%d 个窗口的预览"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "没有打开的窗口 — 基础布局"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "新建预设"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr "单击卡片，将预设应用到此工作区并立即平铺窗口"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"按列平铺窗口，支持按工作区设置预设、自动模式和松开时吸附。基于 shuairan 的 "
+"gTile 分支开发。"
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "设置"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "热键"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "自动平铺热键"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "工作区预设"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "调整平铺窗口大小"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "交换窗口"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "平铺"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "从不平铺"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "预设面板"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "将所有窗口平铺为 6 列"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "将所有窗口平铺为 3 列"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr "为此工作区开启自动平铺并立即平铺"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "为此工作区关闭自动平铺"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "打开预设面板"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr "增加聚焦的平铺窗口的宽度（按一下 = 1 px，按住可加速）"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "减小聚焦的平铺窗口的宽度"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "增加聚焦的平铺窗口的高度"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "减小聚焦的平铺窗口的高度"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "将聚焦的平铺窗口与左侧相邻窗口交换"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "将聚焦的平铺窗口与右侧相邻窗口交换"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "将聚焦的平铺窗口与上方相邻窗口交换"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "将聚焦的平铺窗口与下方相邻窗口交换"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "预设定义（JSON）"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "切换聚焦窗口的“从不平铺”状态"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "添加已安装的应用程序"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr "选择一个应用程序即可将其添加到下方列表。每次选择后组合框都会重置。"
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "添加应用程序…"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr "与其中任一行匹配的窗口永不平铺，无论放在哪里都会自由浮动"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "匹配对象"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "文本"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr "平铺窗口之间的间距（在预设面板中通过 − / + 设置；不在此对话框中显示）"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "平铺动画"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "窗口平滑移动到新位置。关闭时：窗口立即跳到新位置。"
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "动画时长"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"窗口滑入其位置的时长，以毫秒为单位。窗口仍会立即落在最终边框上，只有画面在移动。"
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "聚焦窗口周围的边框"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"使用 Super+方向键移动焦点后，用状态色细边框标记新获得焦点的窗口三秒钟。鼠标点"
+"击和 Alt+Tab 不会显示它。"
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "用单个窗口填满显示器"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr "启用自动平铺或预设时，单个平铺窗口会填满整个可用区域，而不是保持不变。"
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "单个窗口"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"开启自动平铺或使用预设时，只有一个平铺窗口时的处理方式。不做处理: 不对窗口做"
+"任何调整。铺满显示器: 窗口占满整个可用区域。窗口居中: 窗口宽度约为 62 %（黄金"
+"比例）、高度为 90 %，并居中显示。"
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "不做处理"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "铺满显示器"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "窗口居中"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "预设面板的主题"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr "“跟随系统”会实时跟随桌面配色方案；“浅色”和“深色”会覆盖它。"
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "跟随系统"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "浅色"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "深色"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "强调色"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr "“跟随主题”会实时跟随 Cinnamon 主题的强调色。“自定义”使用下方的颜色。"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "跟随主题"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "自定义"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "自定义强调色"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr "当“强调色”为“自定义”时，预设面板和编辑器使用的强调色。"
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "状态色"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"“自动：开”标记、已分配的预设卡片和焦点边框的颜色。“绿色”保持当前外观。“跟随主"
+"题”会实时跟随 Cinnamon 主题的强调色。“自定义”使用下方的颜色。"
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "绿色"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "自定义状态色"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr "当“状态色”为“自定义”时，预设面板和焦点边框使用的状态色。"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "窗口已浮动"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "窗口已恢复平铺"

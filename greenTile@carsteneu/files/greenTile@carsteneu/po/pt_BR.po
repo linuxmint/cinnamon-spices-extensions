@@ -1,0 +1,511 @@
+# Brazilian Portuguese translation for greenTile (greenTile@carsteneu).
+# Based on the Brazilian Portuguese translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Marcelo Aof, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2022-02-09 15:35-0300\n"
+"Last-Translator: Marcelo Aof\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Insira um nome."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "a partir de %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Regras (por número de janelas)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Regra"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Excluir regra"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "A regra vale a partir de"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "janelas"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Área de desenho"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Clique ou arraste: a linha define quantas janelas a coluna comporta. O "
+"clique direito remove uma coluna."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Nome"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Nome da predefinição"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Excluir predefinição"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Excluir mesmo?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Excluir"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Salvar"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Resultado: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Editar predefinição"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Atribuída"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Remover atribuição"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Espaço entre janelas"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Redefinir tamanhos"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Predefinições — área de trabalho %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Criar predefinição"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Editar %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Voltar"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: ligado"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: desligado"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Tema escuro"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Tema claro"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Nenhuma predefinição ainda."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Prévia para %d janela"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Prévia para %d janelas"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Nenhuma janela aberta — layout base"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Nova predefinição"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Clique em um cartão para aplicá-lo a esta área de trabalho e organizar as "
+"janelas lado a lado imediatamente"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Janelas lado a lado em colunas, com predefinições por área de trabalho, modo "
+"automático e encaixe ao soltar. Fork do gTile de shuairan."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Configurações"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Atalhos de teclado"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Atalhos de teclado do lado a lado automático"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Predefinições das áreas de trabalho"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Redimensionar janelas lado a lado"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Trocar janelas"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Lado a lado"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Nunca organizar lado a lado"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Painel de predefinições"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Organizar todas as janelas lado a lado em 6 colunas"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Organizar todas as janelas lado a lado em 3 colunas"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Ativar o lado a lado automático nesta área de trabalho e organizar as "
+"janelas agora"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Desativar o lado a lado automático nesta área de trabalho"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Abrir o painel de predefinições"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Deixar a janela focada lado a lado mais larga (toque = 1 px, segure para "
+"acelerar)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Deixar a janela focada lado a lado mais estreita"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Deixar a janela focada lado a lado mais alta"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Deixar a janela focada lado a lado mais baixa"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Trocar a janela focada lado a lado com a vizinha à esquerda"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Trocar a janela focada lado a lado com a vizinha à direita"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Trocar a janela focada lado a lado com a vizinha de cima"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Trocar a janela focada lado a lado com a vizinha de baixo"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Definições das predefinições (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Alternar “nunca organizar lado a lado” para a janela focada"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Adicionar um aplicativo instalado"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Escolha um aplicativo e ele será adicionado à lista abaixo. A caixa de "
+"seleção é redefinida após cada escolha."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Adicionar aplicativo …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"As janelas que correspondem a uma destas linhas nunca são organizadas lado a "
+"lado; elas flutuam livremente onde você as colocar"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Correspondência"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Texto"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Espaço entre janelas lado a lado (definido com − / + no painel de "
+"predefinições; não exibido nesta caixa de diálogo)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Animar a organização lado a lado"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+"As janelas deslizam até o novo lugar. Desligado: elas saltam para lá na hora."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Duração da animação"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Quanto tempo uma janela leva para deslizar até o lugar, em milissegundos. A "
+"janela ainda chega de imediato ao seu quadro final; só a imagem viaja."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Borda ao redor da janela focada"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Após mover o foco com Super+Seta, marca a janela que recebeu o foco com uma "
+"borda fina na cor de estado por três segundos. Cliques do mouse e Alt+Tab "
+"não a mostram."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Preencher o monitor com uma única janela"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Com a organização automática ou uma predefinição ativados, uma única janela "
+"organizada preenche toda a área útil em vez de ficar intocada."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Uma única janela"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"O que acontece com uma janela lado a lado sozinha quando o mosaico "
+"automático ou uma predefinição está ativo. Deixar como está: não faz nada "
+"com ela. Preencher o monitor: ocupa toda a área útil. Centralizar a janela: "
+"centraliza em cerca de 62 % da largura (proporção áurea) e 90 % da altura."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Deixar como está"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Preencher o monitor"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Centralizar a janela"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Tema do painel de predefinições"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"Seguir o sistema acompanha em tempo real o esquema de cores do ambiente "
+"gráfico; Claro e Escuro o substituem."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Seguir o sistema"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Claro"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Escuro"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Cor de destaque"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"Seguir o tema acompanha em tempo real a cor de destaque do tema do Cinnamon. "
+"Personalizada usa a cor abaixo."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Seguir o tema"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Personalizada"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Cor de destaque personalizada"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Destaque do painel de predefinições e do editor quando Cor de destaque está "
+"em Personalizada."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Cor de estado"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Cor do marcador “Auto: ligado”, dos cartões de predefinição atribuídos e da "
+"borda de foco. Verde mantém a aparência atual. Seguir o tema acompanha em "
+"tempo real a cor de destaque do tema do Cinnamon. Personalizada usa a cor "
+"abaixo."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Verde"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Cor de estado personalizada"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Cor de estado do painel de predefinições e da borda de foco quando Cor de "
+"estado está em Personalizada."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Janela flutua livremente"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Janela volta a ficar lado a lado"

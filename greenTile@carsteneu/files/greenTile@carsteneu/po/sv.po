@@ -1,0 +1,507 @@
+# Swedish translation for greenTile (greenTile@carsteneu).
+# Based on the Swedish translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017, 2019, 2021
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2021-01-12 21:08+0100\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Ange ett namn."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "från %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Regler (efter antal fönster)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Regel"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Ta bort regel"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Regeln gäller från"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "fönster"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Rityta"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Klicka eller dra: raden anger hur många fönster kolumnen rymmer. Högerklick "
+"tar bort en kolumn."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Namn"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Namn på förinställning"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Ta bort förinställning"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Verkligen ta bort?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Ta bort"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Spara"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Resultat: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Redigera förinställning"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Tilldelad"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Ta bort tilldelning"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Avstånd mellan fönster"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Återställ storlekar"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Förinställningar — arbetsyta %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Skapa förinställning"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Redigera %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Tillbaka"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: på"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: av"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Mörkt tema"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Ljust tema"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Inga förinställningar än."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Förhandsvisning för %d fönster"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Förhandsvisning för %d fönster"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Inga öppna fönster — grundlayout"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Ny förinställning"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Klicka på ett kort för att tillämpa det på den här arbetsytan och ordna "
+"fönstren enligt layouten direkt"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Kakling i kolumner med förinställningar per arbetsyta, automatiskt läge och "
+"fästning vid släpp. Fork av gTile av shuairan."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Inställningar"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Snabbtangenter"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Snabbtangenter för automatisk kakling"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Förinställningar för arbetsytor"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Ändra storlek på kaklade fönster"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Byt plats på fönster"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Kakling"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Kakla aldrig"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Förinställningspanel"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Kakla alla fönster i 6 kolumner"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Kakla alla fönster i 3 kolumner"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr "Slå på automatisk kakling för den här arbetsytan och kakla nu"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Slå av automatisk kakling för den här arbetsytan"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Öppna förinställningspanelen"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Gör det fokuserade kaklade fönstret bredare (tryck = 1 px, håll ned för att "
+"öka farten)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Gör det fokuserade kaklade fönstret smalare"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Gör det fokuserade kaklade fönstret högre"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Gör det fokuserade kaklade fönstret lägre"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Byt plats på det fokuserade kaklade fönstret och grannen till vänster"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Byt plats på det fokuserade kaklade fönstret och grannen till höger"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Byt plats på det fokuserade kaklade fönstret och grannen ovanför"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Byt plats på det fokuserade kaklade fönstret och grannen nedanför"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Definitioner av förinställningar (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Växla 'kakla aldrig' för det fokuserade fönstret"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Lägg till ett installerat program"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Välj ett program så läggs det till i listan nedan. Kombinationsrutan "
+"återställs efter varje val."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Lägg till program …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Fönster som matchar någon av dessa rader kaklas aldrig; de flyter fritt var "
+"du än placerar dem"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Matchning"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Text"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Avstånd mellan kaklade fönster (ställs in med − / + i "
+"förinställningspanelen; visas inte i den här dialogrutan)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Animera kakling"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "Fönstren glider till sin nya plats. Av: de hoppar dit direkt."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Animationens längd"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Hur länge ett fönster glider till sin plats, i millisekunder. Fönstret "
+"landar fortfarande direkt på sin slutliga ram; det är bara bilden som "
+"färdas."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Ram runt det fokuserade fönstret"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Efter ett fokusbyte med Super+Pil markeras det nyligen fokuserade fönstret i "
+"tre sekunder med en tunn ram i statusfärg. Musklick och Alt+Tab visar den "
+"inte."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Fyll skärmen med ett enda fönster"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"När automatisk kakling eller en förinställning är på fyller ett ensamt "
+"kaklat fönster hela det användbara området istället för att lämnas orört."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Ett enstaka fönster"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Vad som händer med ett ensamt rutnätsfönster när automatisk rutnätning eller "
+"en förinställning är på. Låt det vara: gör ingenting med det. Fyll skärmen: "
+"låter det fylla hela det användbara området. Centrera fönstret: centrerar "
+"det vid cirka 62 % av bredden (gyllene snittet) och 90 % av höjden."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Låt det vara"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Fyll skärmen"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Centrera fönstret"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Tema för förinställningspanelen"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"Följ systemet följer skrivbordets färgschema live; Ljust och Mörkt "
+"åsidosätter det."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Följ systemet"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Ljust"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Mörkt"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Accentfärg"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"Följ temat följer Cinnamon-temats accentfärg live. Anpassad använder färgen "
+"nedan."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Följ temat"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Anpassad"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Anpassad accentfärg"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Accent för förinställningspanelen och redigeraren när Accentfärg är Anpassad."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Statusfärg"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Färg på markeringen \"Auto: på\", de tilldelade förinställningskorten och "
+"fokusramen. Grön behåller dagens utseende. Följ temat följer Cinnamon-temats "
+"accentfärg live. Anpassad använder färgen nedan."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Grön"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Anpassad statusfärg"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Statusfärg för förinställningspanelen och fokusramen när Statusfärg är "
+"Anpassad."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Fönstret flyter"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Fönstret kaklas igen"

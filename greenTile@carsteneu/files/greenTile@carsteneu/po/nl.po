@@ -1,0 +1,509 @@
+# Dutch translation for greenTile (greenTile@carsteneu).
+# Based on the Dutch translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# qadzek, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2024-04-17 10:36+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Voer een naam in."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "vanaf %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Regels (naar aantal vensters)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Regel"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Regel verwijderen"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Regel geldt vanaf"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "vensters"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Tekenvlak"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Klik of sleep: de rij bepaalt hoeveel vensters de kolom bevat. Rechtsklik "
+"verwijdert een kolom."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Naam"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Naam van voorinstelling"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Voorinstelling verwijderen"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Echt verwijderen?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Opslaan"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Resultaat: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Voorinstelling bewerken"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Toegewezen"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Toewijzing verwijderen"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Ruimte tussen vensters"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Afmetingen herstellen"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Voorinstellingen — werkblad %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Voorinstelling maken"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "%s bewerken"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Terug"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: aan"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: uit"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Donker thema"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Licht thema"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Nog geen voorinstellingen."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Voorbeeld voor %d venster"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Voorbeeld voor %d vensters"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Geen vensters open — basisindeling"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Nieuwe voorinstelling"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Klik op een kaart om deze op dit werkblad toe te passen en de vensters "
+"meteen te tegelen"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Tegelen in kolommen met voorinstellingen per werkblad, automatische modus en "
+"uitlijnen bij loslaten. Fork van gTile door shuairan."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Instellingen"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Sneltoetsen"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Sneltoetsen voor automatisch tegelen"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Voorinstellingen voor werkbladen"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Grootte van getegelde vensters wijzigen"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Vensters verwisselen"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Tegelen"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Nooit tegelen"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Voorinstellingenpaneel"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Alle vensters in 6 kolommen tegelen"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Alle vensters in 3 kolommen tegelen"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr "Automatisch tegelen voor dit werkblad inschakelen en nu tegelen"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Automatisch tegelen voor dit werkblad uitschakelen"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Voorinstellingenpaneel openen"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Het gefocuste getegelde venster breder maken (tikken = 1 px, ingedrukt "
+"houden versnelt)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Het gefocuste getegelde venster smaller maken"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Het gefocuste getegelde venster hoger maken"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Het gefocuste getegelde venster lager maken"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Het gefocuste getegelde venster verwisselen met het buurvenster links"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Het gefocuste getegelde venster verwisselen met het buurvenster rechts"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr ""
+"Het gefocuste getegelde venster verwisselen met het buurvenster erboven"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr ""
+"Het gefocuste getegelde venster verwisselen met het buurvenster eronder"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Definities van voorinstellingen (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "'Nooit tegelen' in- of uitschakelen voor het gefocuste venster"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Een geïnstalleerde toepassing toevoegen"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Kies een toepassing en die wordt aan de lijst hieronder toegevoegd. De "
+"keuzelijst wordt na elke keuze teruggezet."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Toepassing toevoegen …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Vensters die met een van deze rijen overeenkomen, worden nooit getegeld; ze "
+"zweven vrij, waar ze ook worden neergezet"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Vergelijking"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Tekst"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Ruimte tussen getegelde vensters (in te stellen met − / + in het "
+"voorinstellingenpaneel; niet getoond in dit venster)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Tegelen animeren"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+"Vensters glijden naar hun nieuwe plek. Uit: ze springen er meteen heen."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Duur van de animatie"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Hoe lang een venster naar zijn plek glijdt, in milliseconden. Het venster "
+"staat nog steeds meteen op zijn definitieve kader; alleen het beeld beweegt."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Rand om het gefocuste venster"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Markeert na een focuswissel met Super+Pijl het nieuw gefocuste venster drie "
+"seconden lang met een dunne rand in de statuskleur. Muisklikken en Alt+Tab "
+"tonen hem niet."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Beeldscherm vullen met één venster"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Met automatisch tegelen of een voorinstelling actief vult één getegeld "
+"venster het hele bruikbare gebied in plaats van onaangeroerd te blijven."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Eén venster"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Wat er gebeurt met één tegelt venster als automatisch tegelen of een "
+"voorinstelling aan staat. Onaangeroerd laten: doet er niets mee. Vul het "
+"scherm: het vult het hele bruikbare gebied. Venster centreren: centreert het "
+"op ongeveer 62 % van de breedte (gulden snede) en 90 % van de hoogte."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Onaangeroerd laten"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Vul het scherm"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Venster centreren"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Thema van het voorinstellingenpaneel"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"Systeem volgen volgt live het kleurenschema van het bureaublad; Licht en "
+"Donker overschrijven dit."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Systeem volgen"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Licht"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Donker"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Accentkleur"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"Thema volgen neemt live de accentkleur van het Cinnamon-thema over. "
+"Aangepast gebruikt de kleur hieronder."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Thema volgen"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Aangepast"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Aangepaste accentkleur"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Accent van het voorinstellingenpaneel en de editor als Accentkleur op "
+"Aangepast staat."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Statuskleur"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Kleur van de markering \"Auto: aan\", de toegewezen voorinstellingskaarten "
+"en de focusrand. Groen behoudt het huidige uiterlijk. Thema volgen neemt "
+"live de accentkleur van het Cinnamon-thema over. Aangepast gebruikt de kleur "
+"hieronder."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Groen"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Aangepaste statuskleur"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Statuskleur van het voorinstellingenpaneel en de focusrand als Statuskleur "
+"op Aangepast staat."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Venster zweeft"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Venster wordt weer getegeld"

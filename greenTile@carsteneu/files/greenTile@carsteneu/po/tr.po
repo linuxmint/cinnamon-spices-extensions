@@ -1,0 +1,510 @@
+# Turkish translation for greenTile (greenTile@carsteneu).
+# Based on the Turkish translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Gökhan GÖKKAYA <gokhanlnx@gmail.com>, 2018.
+# Erdem Uygun <uygun.erdem@gmail.com>, 2025.
+# Fatih Altun <fatih.altun@pardus.org.tr>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2025-03-05 17:30+0300\n"
+"Last-Translator: Erdem Uygun <uygun.erdem@gmail.com>\n"
+"Language-Team: Turkish <dev@pardus.org.tr>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Lütfen bir ad girin."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "%d ve üzeri"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Kurallar (pencere sayısına göre)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Kural"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Kuralı sil"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Kural geçerli:"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "pencereden itibaren"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Çizim alanı"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Tıklayın veya sürükleyin: satır, sütunun kaç pencere alacağını belirler. Sağ "
+"tıklama bir sütunu kaldırır."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Ad"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Ön ayar adı"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Ön ayarı sil"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Gerçekten silinsin mi?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Sil"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Kaydet"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Sonuç: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Ön ayarı düzenle"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Atanmış"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Atamayı kaldır"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Pencereler arası boşluk"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Boyutları sıfırla"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Ön ayarlar — çalışma alanı %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Ön ayar oluştur"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Düzenle: %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Geri"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Otomatik: açık"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Otomatik: kapalı"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Koyu tema"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Açık tema"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Henüz ön ayar yok."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "%d pencere için önizleme"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "%d pencere için önizleme"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Açık pencere yok — temel düzen"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Yeni ön ayar"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Ön ayarı bu çalışma alanına uygulamak ve pencereleri hemen döşemek için bir "
+"karta tıklayın"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Çalışma alanı başına ön ayarlar, otomatik kip ve bırakınca yerine oturtma "
+"ile sütun döşeme. shuairan'ın gTile uygulamasının çatalıdır."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Ayarlar"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Kısayol tuşları"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Otomatik döşeme kısayol tuşları"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Çalışma alanı ön ayarları"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Döşenmiş pencereleri yeniden boyutlandır"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Pencerelerin yerini değiştir"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Döşeme"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Asla döşeme"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Ön ayar paneli"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Tüm pencereleri 6 sütuna döşe"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Tüm pencereleri 3 sütuna döşe"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr "Bu çalışma alanı için otomatik döşemeyi aç ve hemen döşe"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Bu çalışma alanı için otomatik döşemeyi kapat"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Ön ayar panelini aç"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Odaklanmış döşenmiş pencereyi genişlet (dokunma = 1 px, basılı tutunca "
+"hızlanır)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Odaklanmış döşenmiş pencereyi daralt"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Odaklanmış döşenmiş pencerenin yüksekliğini artır"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Odaklanmış döşenmiş pencerenin yüksekliğini azalt"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Odaklanmış döşenmiş pencerenin yerini soldaki komşusuyla değiştir"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Odaklanmış döşenmiş pencerenin yerini sağdaki komşusuyla değiştir"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Odaklanmış döşenmiş pencerenin yerini üstteki komşusuyla değiştir"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Odaklanmış döşenmiş pencerenin yerini alttaki komşusuyla değiştir"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Ön ayar tanımları (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Odaklanmış pencere için “Asla döşeme” ayarını aç/kapat"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Yüklü bir uygulama ekle"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Seçtiğiniz uygulama aşağıdaki listeye eklenir. Açılır kutu her seçimden "
+"sonra sıfırlanır."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Uygulama ekle …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Bu satırlardan biriyle eşleşen pencereler hiçbir zaman döşenmez; nereye "
+"koyarsanız orada serbestçe durur"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Eşleşme"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Metin"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Döşenmiş pencereler arası boşluk (ön ayar panelinde − / + ile ayarlanır; bu "
+"iletişim kutusunda gösterilmez)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Döşemeyi canlandır"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "Pencereler yeni yerlerine kayarak geçer. Kapalı: hemen oraya atlarlar."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Canlandırma süresi"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Bir pencerenin yerine kayma süresi, milisaniye olarak. Pencere yine de hemen "
+"son çerçevesine oturur; yalnızca görüntü hareket eder."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Odaklanmış pencerenin etrafına çerçeve"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Super+Ok ile odak taşındıktan sonra yeni odaklanan pencereyi üç saniye "
+"boyunca durum renginde ince bir çerçeveyle işaretler. Fare tıklamaları ve "
+"Alt+Tab bunu göstermez."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Monitörü tek pencereyle doldur"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Otomatik döşeme veya bir ön ayar açıkken, döşenen tek pencere olduğu gibi "
+"bırakılmak yerine kullanılabilir alanın tamamını doldurur."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Tek pencere"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Otomatik döşeme veya bir ön ayar açıkken tek kalan döşenmiş pencereye ne "
+"olacağını belirler. Olduğu gibi bırak: ona dokunmaz. Monitörü doldur: "
+"kullanılabilir alanın tamamını kaplar. Pencereyi ortala: genişliğin yaklaşık "
+"% 62'sinde (altın oran) ve yüksekliğin % 90'ında ortalar."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Olduğu gibi bırak"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Monitörü doldur"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Pencereyi ortala"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Ön ayar panelinin teması"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"“Sistemi izle” masaüstü renk düzenini canlı olarak takip eder; “Açık” ve "
+"“Koyu” bunu geçersiz kılar."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Sistemi izle"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Açık"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Koyu"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Vurgu rengi"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"“Temayı izle” Cinnamon temasının vurgu rengini canlı olarak takip eder. "
+"“Özel” aşağıdaki rengi kullanır."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Temayı izle"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Özel"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Özel vurgu rengi"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"“Vurgu rengi” “Özel” olarak ayarlandığında ön ayar paneli ve düzenleyicinin "
+"vurgu rengi."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Durum rengi"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"“Otomatik: açık” işaretinin, atanmış ön ayar kartlarının ve odak "
+"çerçevesinin rengi. “Yeşil” bugünkü görünümü korur. “Temayı izle” Cinnamon "
+"temasının vurgu rengini canlı olarak takip eder. “Özel” aşağıdaki rengi "
+"kullanır."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Yeşil"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Özel durum rengi"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"“Durum rengi” “Özel” olarak ayarlandığında ön ayar panelinin ve odak "
+"çerçevesinin durum rengi."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Pencere serbest"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Pencere yeniden döşeniyor"

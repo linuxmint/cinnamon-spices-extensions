@@ -1,0 +1,513 @@
+# Basque translation for greenTile (greenTile@carsteneu).
+# Based on the Basque translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# Muxutruk <muxutruk2@users.noreply.github.com>, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Idatzi izen bat."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "gutxienez %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Arauak (leiho kopuruaren arabera)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Araua"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Ezabatu araua"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Araua aplikatzen da gutxienez"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "leihorekin"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Marrazketa-eremua"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Egin klik edo arrastatu: errenkadak zehazten du zutabeak zenbat leiho "
+"hartzen dituen. Eskuineko klikak zutabe bat kentzen du."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Izena"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Aurrezarpenaren izena"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Ezabatu aurrezarpena"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Benetan ezabatu?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Gorde"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Emaitza: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Editatu aurrezarpena"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Esleituta"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Kendu esleipena"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Leihoen arteko tartea"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Berrezarri tamainak"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Aurrezarpenak — %d. laneko area · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Sortu aurrezarpena"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Editatu %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Atzera"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: aktibatuta"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: desaktibatuta"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Gai iluna"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Gai argia"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Oraindik ez dago aurrezarpenik."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Aurrebista — leiho kopurua: %d"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Aurrebista — leiho kopurua: %d"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Ez dago leiho irekirik — oinarrizko antolamendua"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Aurrezarpen berria"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Egin klik txartel batean aurrezarpena laneko area honetan aplikatzeko eta "
+"leihoak berehala mosaikoan antolatzeko"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Zutabeetako mosaikoa, laneko area bakoitzeko aurrezarpenekin, modu "
+"automatikoarekin eta askatzean doitzearekin. gTile-ren adarkatzea (egilea: "
+"shuairan)."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Ezarpenak"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Lasterbideak"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Mosaiko automatikoaren lasterbideak"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Laneko areen aurrezarpenak"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Aldatu mosaikoko leihoen tamaina"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Trukatu leihoak"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Mosaikoa"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Ez antolatu inoiz mosaikoan"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Aurrezarpenen panela"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Antolatu leiho guztiak mosaikoan 6 zutabetan"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Antolatu leiho guztiak mosaikoan 3 zutabetan"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Aktibatu mosaiko automatikoa laneko area honetan eta antolatu leihoak orain"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Desaktibatu mosaiko automatikoa laneko area honetan"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Ireki aurrezarpenen panela"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Egin zabalagoa mosaikoko fokuako leihoa (sakatu = 1 px, eutsi azkartzeko)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Egin estuagoa mosaikoko fokuako leihoa"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Egin altuagoa mosaikoko fokuako leihoa"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Egin baxuagoa mosaikoko fokuako leihoa"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Trukatu mosaikoko fokuako leihoa ezkerrean duen leihoarekin"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Trukatu mosaikoko fokuako leihoa eskuinean duen leihoarekin"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Trukatu mosaikoko fokuako leihoa goian duen leihoarekin"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Trukatu mosaikoko fokuako leihoa behean duen leihoarekin"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Aurrezarpenen definizioak (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr ""
+"Aktibatu/desaktibatu «ez antolatu inoiz mosaikoan» fokuako leihoarentzat"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Gehitu instalatutako aplikazio bat"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Aukeratu aplikazio bat eta beheko zerrendara gehituko da. Konbinazio-koadroa "
+"berrezarri egiten da aukeraketa bakoitzaren ondoren."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Gehitu aplikazioa …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Errenkada hauetako batekin bat datozen leihoak ez dira inoiz mosaikoan "
+"antolatzen; libre flotatzen dute jartzen dituzun lekuan"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Parekatzea"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Testua"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Mosaikoko leihoen arteko tartea (− / + bidez ezartzen da aurrezarpenen "
+"panelean; ez da elkarrizketa-koadro honetan erakusten)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Animatu mosaikoa"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr ""
+"Leihoak beren leku berrira irristatzen dira. Desaktibatuta: berehala jauzi "
+"egiten dute hara."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Animazioaren iraupena"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Zenbat denbora behar duen leiho batek bere lekura irristatzeko, "
+"milisegundotan. Leihoa bere azken markora berehala iristen da oraindik; "
+"irudia baino ez da mugitzen."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Fokuako leihoaren inguruko ertza"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Super+Gezia erabilita fokua mugitu ondoren, fokua jaso duen leihoa egoera "
+"koloreko ertz mehe batekin markatzen du hiru segundoz. Saguaren klikek eta "
+"Alt+Tab-ek ez dute erakusten."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Bete monitorea leiho bakarrarekin"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Mosaiko automatikoa edo aurrezarpena aktibatuta dagoenean, mosaikoko leiho "
+"bakar batek erabilgarri dagoen eremu osoa betetzen du, dagoen bezala uztea "
+"beharrean."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Leiho bakarra"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Zer gertatzen zaion lauza bakarreko leiho bati mosaiko automatikoa edo "
+"aurrezarpen bat aktibo dagoenean. Utzi ukitu gabe: ez dio ezer egiten. Bete "
+"monitorea: erabilgarri dagoen azalera osoa hartzen du. Zentratu leihoa: "
+"zabaleraren % 62 inguruan (urrezko proportzioa) eta altueraren % 90ean "
+"zentratzen du."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Utzi ukitu gabe"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Bete monitorea"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Zentratu leihoa"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Aurrezarpenen panelaren gaia"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"Jarraitu sistemari aukerak mahaigainaren kolore-eskema jarraitzen du "
+"zuzenean; Argia eta Iluna aukerek gainidazten dute."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Jarraitu sistemari"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Argia"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Iluna"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Nabarmentze-kolorea"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"Jarraitu gaiari aukerak Cinnamon gaiaren nabarmentze-kolorea jarraitzen du "
+"zuzenean. Pertsonalizatua aukerak beheko kolorea erabiltzen du."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Jarraitu gaiari"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Pertsonalizatua"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Nabarmentze-kolore pertsonalizatua"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Aurrezarpenen panelaren eta editorearen nabarmentze-kolorea, Nabarmentze-"
+"kolorea Pertsonalizatua denean."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Egoera kolorea"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"«Auto: aktibatuta» markaren, esleitutako aurrezarpen-txartelen eta fokuaren "
+"ertzaren kolorea. Berdea aukerak orain arteko itxura mantentzen du. Jarraitu "
+"gaiari aukerak Cinnamon gaiaren nabarmentze-kolorea jarraitzen du zuzenean. "
+"Pertsonalizatua aukerak beheko kolorea erabiltzen du."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Berdea"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Egoera kolore pertsonalizatua"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Aurrezarpenen panelaren eta fokuaren ertzaren egoera kolorea, Egoera kolorea "
+"Pertsonalizatua denean."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Leihoa flotatzen dago"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Leihoa mosaikoan dago berriro"
