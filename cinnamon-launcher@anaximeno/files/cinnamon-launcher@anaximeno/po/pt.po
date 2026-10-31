@@ -1,0 +1,169 @@
+# CINNAMON APP LAUNCHER
+# This file is put in the public domain.
+# anaximeno, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-launcher@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-09-08 23:20-0100\n"
+"PO-Revision-Date: 2026-09-08 04:00-0100\n"
+"Last-Translator: anaximeno <anaximenobrito@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#. launcher.js:308
+msgid "Lock Screen"
+msgstr "Bloquear Ecrã"
+
+#. launcher.js:309
+msgid "lock screen screensaver"
+msgstr "bloquear ecrã proteção de ecrã"
+
+#. launcher.js:315
+msgid "Log Out"
+msgstr "Terminar Sessão"
+
+#. launcher.js:316
+msgid "logout sign out leave session"
+msgstr "terminar sessão sair encerrar sessão"
+
+#. launcher.js:322
+msgid "Shut Down"
+msgstr "Desligar"
+
+#. launcher.js:323
+msgid "shutdown power off turn off"
+msgstr "desligar encerrar apagar"
+
+#. launcher.js:329
+msgid "Open Settings"
+msgstr "Abrir Definições"
+
+#. launcher.js:330
+msgid "preferences control panel"
+msgstr "preferências painel de controlo"
+
+#. launcher.js:486
+msgid "Search apps, actions, or type a sum…"
+msgstr "Pesquisar aplicações, ações ou escrever uma soma…"
+
+#. launcher.js:703
+msgid "System Action"
+msgstr "Ação do Sistema"
+
+#. launcher.js:822
+msgid "Frequently Used"
+msgstr "Utilizadas com Frequência"
+
+#. launcher.js:824
+msgid "All Applications"
+msgstr "Todas as Aplicações"
+
+#. launcher.js:866
+msgid "Applications"
+msgstr "Aplicações"
+
+#. launcher.js:869
+msgid "Actions"
+msgstr "Ações"
+
+#. metadata.json->name
+msgid "Cinnamon App Launcher"
+msgstr "Lançador de Aplicações do Cinnamon"
+
+#. metadata.json->description
+msgid "A centered, search-first launcher for cinnamon."
+msgstr ""
+"Um lançador centrado, com a pesquisa em primeiro plano, para o Cinnamon."
+
+#. settings-schema.json->main-page->title
+#. settings-schema.json->general-section->title
+msgid "General"
+msgstr "Geral"
+
+#. settings-schema.json->search-section->title
+msgid "Search"
+msgstr "Pesquisa"
+
+#. settings-schema.json->open-launcher->description
+msgid "Open launcher keybinding"
+msgstr "Atalho para abrir o lançador"
+
+#. settings-schema.json->fuzzy-search->description
+msgid "Use fuzzy search"
+msgstr "Usar pesquisa difusa"
+
+#. settings-schema.json->fuzzy-search->tooltip
+msgid ""
+"Matches letters in any order, like Alfred/Raycast. Disable for plain "
+"substring search, like the Cinnamon Menu."
+msgstr ""
+"Corresponde a letras em qualquer ordem, tal como no Alfred/Raycast. Desative "
+"para uma pesquisa simples por substring, como no Menu do Cinnamon."
+
+#. settings-schema.json->enable-calculator->description
+msgid "Enable the inline calculator"
+msgstr "Ativar a calculadora integrada"
+
+#. settings-schema.json->enable-calculator->tooltip
+msgid ""
+"Typing a sum like 12*(3+4) shows the result; Enter copies it to the "
+"clipboard."
+msgstr ""
+"Escrever uma soma como 12*(3+4) mostra o resultado; o Enter copia-o para a "
+"área de transferência."
+
+#. settings-schema.json->enable-system-actions->description
+msgid "Show system actions"
+msgstr "Mostrar ações do sistema"
+
+#. settings-schema.json->enable-system-actions->tooltip
+msgid ""
+"Lock Screen, Log Out, Shut Down and Open Settings, searchable from the same "
+"box."
+msgstr ""
+"Bloquear Ecrã, Terminar Sessão, Desligar e Abrir Definições, pesquisáveis na "
+"mesma caixa."
+
+#. settings-schema.json->show-frequent-apps->description
+msgid "Show frequently used applications when the launcher opens"
+msgstr "Mostrar aplicações utilizadas com frequência ao abrir o lançador"
+
+#. settings-schema.json->max-frequent-apps->description
+msgid "Maximum number of frequently used applications to show"
+msgstr "Número máximo de aplicações frequentes a mostrar"
+
+#. settings-schema.json->show-descriptions->description
+msgid "Show descriptions under each result"
+msgstr "Mostrar descrições sob cada resultado"
+
+#. settings-schema.json->enable-animations->description
+msgid "Enable animations"
+msgstr "Ativar animações"
+
+#. settings-schema.json->launcher-scale->description
+msgid "Launcher size"
+msgstr "Tamanho do lançador"
+
+#. settings-schema.json->launcher-scale->tooltip
+msgid "Overall size of the launcher window, independent of display scaling."
+msgstr ""
+"Tamanho geral da janela do lançador, independente do escalamento do ecrã."
+
+#. settings-schema.json->launcher-scale->options
+msgid "Small"
+msgstr "Pequeno"
+
+#. settings-schema.json->launcher-scale->options
+msgid "Medium"
+msgstr "Médio"
+
+#. settings-schema.json->launcher-scale->options
+msgid "Large"
+msgstr "Grande"
