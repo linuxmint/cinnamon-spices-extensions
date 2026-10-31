@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-14 09:13-0400\n"
+"POT-Creation-Date: 2026-10-30 22:39-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -18,29 +18,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:2862 6.0/extension.js:2865 6.0/extension.js:2972
-msgid "Default window settings"
-msgstr "Impostazioni predefinite della finestra"
-
-#. 6.0/extension.js:3139
-msgid "Error"
-msgstr "Errore"
-
-#. 6.0/extension.js:3140
+#. 6.0/extension.js:5354
 msgid ""
-"Unable to determine the application or the WM_CLASS of the previously "
-"focused window, therefore Blur Cinnamon effects can not be applied to that "
-"window"
+"Click a window to add its application to the Blur Cinnamon window list.  Esc "
+"or right-click to cancel."
+msgstr ""
+
+#. 6.0/extension.js:5365
+msgid "Couldn't start the window picker. Close any open menus and try again."
+msgstr ""
+
+#. 6.0/extension.js:5439
+#, fuzzy
+msgid "(unknown application)"
+msgstr "Applicazione"
+
+#. 6.0/extension.js:5474
+msgid ""
+"Note: The blur is only visible behind transparent windows. If this "
+"application doesn't support transparency, set its \"Opacity\" in the window "
+"list to less than 100."
+msgstr ""
+
+#. 6.0/extension.js:5477
+#, fuzzy
+msgid ""
+"Unable to determine the application or the WM_CLASS of that window, "
+"therefore Blur Cinnamon effects can not be applied to it."
 msgstr ""
 "Impossibile determinare l'applicazione o la WM_CLASS della finestra "
 "precedentemente attiva, pertanto gli effetti Sfoca Cinnamon non possono "
 "essere applicati a tale finestra."
 
-#. 6.0/extension.js:4022
+#. 6.0/extension.js:5485
+#, javascript-format
+msgid "\"%s\" is already in the window list."
+msgstr ""
+
+#. 6.0/extension.js:5490
+#, javascript-format
+msgid "Enabled \"%s\" in the window list."
+msgstr ""
+
+#. 6.0/extension.js:5494
+#, javascript-format
+msgid ""
+"Added \"%s\" to the window list. Adjust its effect settings in the table."
+msgstr ""
+
+#. 6.0/extension.js:6585
 msgid "Welcome to Blur Cinnamon"
 msgstr "Benvenuti in Sfoca Cinnamom"
 
-#. 6.0/extension.js:4023
+#. 6.0/extension.js:6586
+#, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -48,7 +79,7 @@ msgid ""
 "other desktop elements like menus, notifications and windows, or disable "
 "effects on components that were enabled by default. You can also make "
 "changes to the effect properties like blur intensity, color saturation and "
-"dimming."
+"tint."
 msgstr ""
 "Speriamo che ti piacciano i nuovi effetti per Pannello, Expo, Panoramica e "
 "Alt-Tab.\n"
@@ -59,15 +90,15 @@ msgstr ""
 "predefinita. Puoi anche modificare le proprietà dell'effetto, come "
 "l'intensità della sfocatura, la saturazione del colore e l'attenuazione."
 
-#. 6.0/extension.js:4027
+#. 6.0/extension.js:6590
 msgid "Open Blur Cinnamon Settings"
 msgstr "Apri le Impostazioni di Sfoca Cinnamom"
 
-#. 6.0/extension.js:4117
+#. 6.0/extension.js:6696
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Notifica di prova di Effetti di Sfocatura Cinnamon"
 
-#. 6.0/extension.js:4118
+#. 6.0/extension.js:6697
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -81,14 +112,27 @@ msgstr ""
 "Qualsiasi ulteriore modifica alle impostazioni dell'effetto di notifica "
 "verrà applicata automaticamente a questo messaggio di notifica."
 
+#. 6.0/CustomWidgets.py:138
+msgid "When off, the default colour is used"
+msgstr ""
+
+#. 6.0/CustomWidgets.py:194
+msgid "Default"
+msgstr ""
+
+#. 6.0/CustomWidgets.py:230
+msgid "Use Default"
+msgstr ""
+
 #. metadata.json->name
 msgid "Blur Cinnamon"
 msgstr "Sfoca Cinnamom"
 
 #. metadata.json->description
+#, fuzzy
 msgid ""
-"Allows you to blur, colorize, desaturate and adjust the dimming of several "
-"Cinnamon Desktop components"
+"Allows you to blur, tint and adjust the saturation of several Cinnamon "
+"Desktop components"
 msgstr ""
 "Consente di sfocare, colorare, desaturare e regolare l'attenuazione di "
 "diversi componenti del Desktop Cinnamon"
@@ -102,6 +146,11 @@ msgstr "Impostazioni generali"
 msgid "Generic effect settings"
 msgstr "Impostazioni effetti generici"
 
+#. 6.0->settings-schema.json->additional-settings-page->title
+#, fuzzy
+msgid "Additional settings"
+msgstr "Impostazioni aggiuntive specifiche per Monte Carlo"
+
 #. 6.0->settings-schema.json->component-setting-page->title
 msgid "Component specific settings"
 msgstr "Impostazioni specifiche dei componenti"
@@ -114,8 +163,9 @@ msgstr "Informazioni"
 msgid "Cinnamon desktop components where effects will be applied"
 msgstr "Componenti desktop di Cinnamon a cui verranno applicati gli effetti"
 
-#. 6.0->settings-schema.json->monte-carlo-settings->title
-msgid "Additional Monte Carlo specific settings"
+#. 6.0->settings-schema.json->effect-specific-settings->title
+#, fuzzy
+msgid "Additional effect specific settings"
 msgstr "Impostazioni aggiuntive specifiche per Monte Carlo"
 
 #. 6.0->settings-schema.json->component-selector-section->title
@@ -283,6 +333,10 @@ msgid "Notifications"
 msgstr "Notifiche"
 
 #. 6.0->settings-schema.json->component-selector->options
+msgid "OSD"
+msgstr ""
+
+#. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-overview-effects->description
 msgid "Overview"
 msgstr "Panoramica"
@@ -304,27 +358,31 @@ msgid "Show settings for component:"
 msgstr "Mostra le impostazioni del componente:"
 
 #. 6.0->settings-schema.json->about-text->description
+#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
 "Version: ext-version\n"
 "\n"
-"Developed by: Kevin Langman\n"
+"Developed by: Kevin Langman and <a href=\"https://github.com/klangman/"
+"BlurCinnamon/graphs/contributors\">contributors</a>\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
-"view/104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
+"104\">Website</a>\n"
 "\n"
-"The rounded corners, Gaussian and Monte Carlo effects are\n"
-"based on code by aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/"
-"blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</"
-"a>)\n"
+"The rounded corners, Gaussian, Monte Carlo and Liquid Glass effects\n"
+"are based on Blur-my-shell code by aunetx and contributors <a href=\"https://"
+"github.com/aunetx/blur-my-shell\">Github</a> / <a href=\"https://ko-fi.com/"
+"aunetx\">Ko-fi</a>\n"
 "\n"
 "The Dual Kawase effect was written by <a href=\"https://github.com/Lucas-X-"
 "A\">Lucas-X-A</a>\n"
 "\n"
 "The Overview effect is partially based on the BlurOverview extension by "
-"nailfarmer"
+"nailfarmer\n"
+"The Blur Cinnamon icon was designed by <a href=\"https://github.com/"
+"Selinaru\">Selinaru</a>"
 msgstr ""
 "\n"
 "<b>Metti a fuoco il tuo stile</b>\n"
@@ -368,12 +426,13 @@ msgid "Panels  (Please read tooltip)"
 msgstr "Pannelli  (Leggi il tooltip)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->tooltip
+#, fuzzy
 msgid ""
 "Apply effects to the Panels. This option should work well with most dark "
 "desktop themes but light themes could also be made to work with some "
-"creative use of the dimming color settings and an appropriate background "
-"image. It overrides some themes settings to achieve a (semi-)transparent "
-"panel so that the blurred background is visible."
+"creative use of the tint color settings and an appropriate background image. "
+"It overrides some themes settings to achieve a (semi-)transparent panel so "
+"that the blurred background is visible."
 msgstr ""
 "Applica effetti ai pannelli. Questa opzione dovrebbe funzionare bene con la "
 "maggior parte dei temi desktop scuri, ma anche i temi chiari potrebbero "
@@ -387,11 +446,12 @@ msgid "Popup Menus  (Please read tooltip)"
 msgstr "Menù a comparsa  (Leggi il tooltip)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
+#, fuzzy
 msgid ""
 "Apply effects to panel popup menus. This option is intended for the Cinnamon "
 "(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
 "Light themes are unlikely to give good results but might be made to work "
-"with some creative use of the dimming color settings and an appropriate "
+"with some creative use of the tint color settings and an appropriate "
 "background image. It overrides some theme settings to achieve a "
 "(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
@@ -760,8 +820,8 @@ msgstr "Personalizzato"
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
-msgid "Dim"
-msgstr "Attenuazione"
+msgid "Tint"
+msgstr ""
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -791,14 +851,14 @@ msgid "Custom CSS"
 msgstr "CSS Personalizzato"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
+#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
 "applied. The settings of the first entry in this list that can apply to a "
 "given panel will take effect. The \"Custom\" check box determines if the "
-"generic effect settings are uses or this tables custom settings. The color "
-"field is in the rgb(#,#,#) syntax and black will be used when a color is not "
-"provided or is in an incorrect syntax"
+"generic effect settings are uses or this tables custom settings. Click a "
+"color in the table to change it"
 msgstr ""
 "Definisce gli effetti applicati ai diversi pannelli. Se un pannello non "
 "soddisfa i criteri di nessuna voce abilitata in questo elenco, non gli verrà "
@@ -834,11 +894,12 @@ msgid "Brighten panel when mouse is hovering a panel"
 msgstr "Illumina il pannello quando il mouse si trova sopra di esso"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
+#, fuzzy
 msgid ""
-"While the mouse is hovering over a panel, set the panels dimming to 0 and "
-"the saturation to 100 so that the panel appears brighter. This setting is "
-"only effective when either dimming is greater than 0 or saturation is less "
-"than 100."
+"While the mouse is hovering over a panel, set the panels tint strength to 0 "
+"and the saturation to 100 so that the panel appears brighter. This setting "
+"is only effective when either the tint strength is greater than 0 or "
+"saturation is less than 100."
 msgstr ""
 "Mentre il puntatore del mouse si trova sopra un pannello, imposta la "
 "luminosità del pannello a 0 e la saturazione a 100 in modo che il pannello "
@@ -853,8 +914,8 @@ msgstr ""
 #. 6.0->settings-schema.json->notification-opacity->description
 #. 6.0->settings-schema.json->appswitcher-opacity->description
 #. 6.0->settings-schema.json->tooltips-opacity->description
-msgid "Dim/Colorize Background (%)"
-msgstr "Attenua/colora lo sfondo (%)"
+msgid "Tint strength (%)"
+msgstr ""
 
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
@@ -867,8 +928,8 @@ msgstr "Attenua/colora lo sfondo (%)"
 #. 6.0->settings-schema.json->tooltips-blendColor->description
 #. 6.0->settings-schema.json->desklets-blendColor->description
 #. 6.0->settings-schema.json->osd-blendColor->description
-msgid "Dimming overlay color"
-msgstr "Colore di sovrapposizione oscurante"
+msgid "Tint color"
+msgstr ""
 
 #. 6.0->settings-schema.json->blendColor->tooltip
 #. 6.0->settings-schema.json->overview-blendColor->tooltip
@@ -881,10 +942,11 @@ msgstr "Colore di sovrapposizione oscurante"
 #. 6.0->settings-schema.json->tooltips-blendColor->tooltip
 #. 6.0->settings-schema.json->desklets-blendColor->tooltip
 #. 6.0->settings-schema.json->osd-blendColor->tooltip
+#, fuzzy
 msgid ""
-"Defines the color that is blended into the background based on the dimming "
-"control above. Use black for a normal dimming effect or some other color for "
-"a color blend effect"
+"Defines the color that is blended into the background, weighted by the tint "
+"strength above. Use black to dim the background or some other color for a "
+"color blend effect"
 msgstr ""
 "Definisce il colore che viene sfumato sullo sfondo in base al controllo di "
 "attenuazione sopra. Utilizzare il nero per un effetto di attenuazione "
@@ -950,6 +1012,23 @@ msgstr "Sfocatura statica doppia Kawase"
 msgid "Dual Kawase dynamic blur (if applicable)"
 msgstr "Sfocatura dinamica Dual Kawasaki (se applicabile)"
 
+#. 6.0->settings-schema.json->blurType->options
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+#. 6.0->settings-schema.json->osd-blurType->options
+#, fuzzy
+msgid "Liquid Glass static blur"
+msgstr "Sfocatura statica gaussiana"
+
+#. 6.0->settings-schema.json->blurType->options
+#, fuzzy
+msgid "Liquid Glass dynamic blur (if applicable)"
+msgstr "Sfocatura dinamica gaussiana (se applicabile)"
+
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
 #. 6.0->settings-schema.json->expo-blurType->description
@@ -976,12 +1055,15 @@ msgid "💡 Blur Algorithm Guide (see tooltip)"
 msgstr "💡 Guida all'algoritmo di sfocatura (vedi tooltip)"
 
 #. 6.0->settings-schema.json->show-blur-info->tooltip
+#, fuzzy
 msgid ""
 "<b>Blur Algorithm Guide:</b>\n"
 " <b>• Gaussian:</b> Good quality smooth blur, can be GPU intensive.\n"
 " <b>• Dual Kawase:</b> High quality smooth blur, optimized for low-end "
 "GPUs.\n"
 " <b>• Monte Carlo:</b> Grainy, frosted-glass style noisy blur.\n"
+" <b>• Liquid Glass:</b> Glossy translucent glass with refracted edges and "
+"rim lighting.\n"
 " <b>• Simple:</b> Basic subtle blur for ancient computers.\n"
 "\n"
 "<b>Static vs Dynamic:</b>\n"
@@ -1074,6 +1156,26 @@ msgstr ""
 "Regola la saturazione del colore dell'immagine di sfondo, passando dalla "
 "scala di grigi al colore pieno."
 
+#. 6.0->settings-schema.json->effect-specific-type->options
+#. 6.0->settings-schema.json->overview-blurType->options
+#. 6.0->settings-schema.json->expo-blurType->options
+#. 6.0->settings-schema.json->desktop-blurType->options
+msgid "Monte Carlo"
+msgstr "Monte Carlo"
+
+#. 6.0->settings-schema.json->effect-specific-type->options
+msgid "Liquid Glass"
+msgstr ""
+
+#. 6.0->settings-schema.json->effect-specific-type->description
+#, fuzzy
+msgid "Additional settings for"
+msgstr "Impostazioni aggiuntive specifiche per Monte Carlo"
+
+#. 6.0->settings-schema.json->effect-specific-type->tooltip
+msgid "Choose which effect's additional settings to show and edit."
+msgstr ""
+
 #. 6.0->settings-schema.json->monte-carlo-iterations->description
 msgid "Iterations"
 msgstr "Iterazioni"
@@ -1109,22 +1211,108 @@ msgid ""
 msgstr ""
 "Se i pixel più vicini al pixel originale avranno o meno un peso maggiore."
 
-#. 6.0->settings-schema.json->monte-carlo-label->description
-msgid "💡 The above Monte Carlo settings are used globally for all components"
+#. 6.0->settings-schema.json->additional-settings-label->description
+#, fuzzy
+msgid ""
+"💡 The above additional settings are used globally for all components that "
+"use this effect"
 msgstr ""
 "💡 Le impostazioni Monte Carlo sopra riportate vengono utilizzate "
 "globalmente per tutti i componenti"
 
-#. 6.0->settings-schema.json->monte-carlo-label->tooltip
+#. 6.0->settings-schema.json->additional-settings-label->tooltip
+#, fuzzy
 msgid ""
-"The above Monte Carlo settings are used globally for all components that are "
-"configured to use the Monte Carlo blur algorithm, these settings can not be "
+"The above additional settings are used globally for all components that are "
+"configured to use the selected algorithm, these settings can not be "
 "configured separately for each component"
 msgstr ""
 "Le impostazioni di Monte Carlo sopra riportate vengono utilizzate a livello "
 "globale per tutti i componenti configurati per utilizzare l'algoritmo di "
 "sfocatura di Monte Carlo; queste impostazioni non possono essere configurate "
 "separatamente per ciascun componente."
+
+#. 6.0->settings-schema.json->liquid-glass-strength->description
+#, fuzzy
+msgid "Refraction scale"
+msgstr "Iterazioni"
+
+#. 6.0->settings-schema.json->liquid-glass-strength->tooltip
+msgid "How strongly the glass bends the sampled blur texture."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-edge-size->description
+msgid "Bezel width"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-edge-size->tooltip
+msgid "How far the liquid-glass lens reaches inward from the edge."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-rim-width->description
+msgid "Rim spread"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-rim-width->tooltip
+msgid "How far the refraction eases inward from the glass edge."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-falloff->description
+msgid "Glass thickness"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-falloff->tooltip
+msgid "Depth used by the Snell-style refraction profile."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-gloss->description
+msgid "Fresnel glare"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-gloss->tooltip
+msgid "Strength of the Schlick fresnel rim glare from the glass edge."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-backdrop-zoom->description
+msgid "Backdrop zoom"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-backdrop-zoom->tooltip
+msgid "Zoom level of the backdrop visible through the glass."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-shadow->description
+msgid "Inner shadow"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-shadow->tooltip
+msgid "Darkens the lower and inner edge for a deeper glass surface."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-rgb-fringing->description
+msgid "Chromatic dispersion"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-rgb-fringing->tooltip
+msgid "Physical per-channel refraction dispersion at the glass edge."
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-texture-repeat->options
+msgid "Clamp"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-texture-repeat->options
+#, fuzzy
+msgid "Mirror"
+msgstr "Errore"
+
+#. 6.0->settings-schema.json->liquid-glass-texture-repeat->description
+msgid "Edge behavior"
+msgstr ""
+
+#. 6.0->settings-schema.json->liquid-glass-texture-repeat->tooltip
+msgid "How texture coordinates outside the actor are sampled."
+msgstr ""
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -1146,12 +1334,6 @@ msgstr "Semplice"
 #. 6.0->settings-schema.json->desktop-blurType->options
 msgid "Gaussian"
 msgstr "Gaussiana"
-
-#. 6.0->settings-schema.json->overview-blurType->options
-#. 6.0->settings-schema.json->expo-blurType->options
-#. 6.0->settings-schema.json->desktop-blurType->options
-msgid "Monte Carlo"
-msgstr "Monte Carlo"
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -1203,6 +1385,17 @@ msgstr "Sfocatura dinamica Monte Carlo"
 msgid "Dual Kawase dynamic blur"
 msgstr "Doppio effetto di sfocatura dinamica Kawasaki"
 
+#. 6.0->settings-schema.json->panels-blurType->options
+#. 6.0->settings-schema.json->popup-blurType->options
+#. 6.0->settings-schema.json->notification-blurType->options
+#. 6.0->settings-schema.json->appswitcher-blurType->options
+#. 6.0->settings-schema.json->tooltips-blurType->options
+#. 6.0->settings-schema.json->desklets-blurType->options
+#. 6.0->settings-schema.json->osd-blurType->options
+#, fuzzy
+msgid "Liquid Glass dynamic blur"
+msgstr "Sfocatura dinamica gaussiana"
+
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
 #. 6.0->settings-schema.json->notification-blurType->description
@@ -1231,15 +1424,17 @@ msgstr ""
 "Applica effetti ai menù contestuali della barra del titolo della finestra"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-msgid "Additional popup menu accent elements dimming (%)"
+#, fuzzy
+msgid "Additional popup menu accent elements tint (%)"
 msgstr ""
 "Attenuazione degli elementi di accento aggiuntivi del menù a comparsa (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
+#, fuzzy
 msgid ""
-"Defines the additional dimming applied to the popup menu accent elements (i."
-"e. the main menu favorites box and entry boxes) which allow these elements "
-"to stand out from the other popup menu areas"
+"Defines the additional tint applied to the popup menu accent elements (i.e. "
+"the main menu favorites box and entry boxes) which allow these elements to "
+"stand out from the other popup menu areas"
 msgstr ""
 "Definisce l'oscuramento aggiuntivo applicato agli elementi di accento del "
 "menù a comparsa (ad esempio la casella dei preferiti del menù principale e "
@@ -1281,7 +1476,8 @@ msgstr ""
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
 #. 6.0->settings-schema.json->osd-opacity->description
-msgid "Dim/Colorize background Image (%)"
+#, fuzzy
+msgid "Tint background image strength (%)"
 msgstr "Attenua/colora lo sfondo (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
@@ -1398,18 +1594,15 @@ msgstr ""
 "nome di un file desktop."
 
 #. 6.0->settings-schema.json->windows-add-button->description
-msgid "Add entry for the application of the most recently focused window"
+msgid "Pick a window to blur…"
 msgstr ""
-"Aggiungi la voce per l'applicazione della finestra più recentemente "
-"selezionata"
 
 #. 6.0->settings-schema.json->windows-add-button->tooltip
 msgid ""
-"Focus a window you want to enable window effects on then return here and "
-"press this button."
+"Click this, then click any window to add its application to the window list "
+"above with effects enabled. If the application is already in the list but "
+"disabled, it is enabled instead. Press Esc or right-click to cancel."
 msgstr ""
-"Seleziona la finestra su cui desideri applicare gli effetti, quindi torna "
-"qui e premi questo pulsante."
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
@@ -1472,6 +1665,20 @@ msgstr ""
 "barra del titolo sarà visibile solo quando le barre del titolo sono "
 "configurate come semitrasparenti, operazione che DEVE essere eseguita "
 "tramite CSS. Consultare il sito web di Sfoca Cinnamon per le istruzioni."
+
+#. 6.0->settings-schema.json->windows-rounded-corners-sync->description
+msgid "Match the corner radius set by the \"Rounded Corners\" extension"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-rounded-corners-sync->tooltip
+msgid ""
+"When enabled, windows rounded by the \"Rounded Corners\" extension will use "
+"that extension's corner radius for their Blur Cinnamon effects instead of "
+"the corner settings in the table above. Windows, or the top/bottom corners "
+"of a window, that \"Rounded Corners\" is not rounding (e.g. maximized "
+"windows) still use the table settings. This option will have no effect "
+"unless the \"Rounded Corners\" extension is installed and active."
+msgstr ""
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
