@@ -4,11 +4,16 @@
 const GObject  = imports.gi.GObject;
 const St       = imports.gi.St;
 const Cinnamon = imports.gi.Cinnamon;
+const Utils    = require("./utils.js");
 const Clutter  = imports.gi.Clutter;
 const Gio      = imports.gi.Gio;
 const GLib     = imports.gi.GLib;
 
+const EffectBase = (typeof global === 'undefined') ? null : require("./effect_base").EffectBase;
+
 const SHADER_FILENAME = 'corner.glsl';
+// The uuid passed to the first CornerEffect, for get_effect_source()
+let shaderUuid = null;
 const DEFAULT_PARAMS = {
     radius: 12, width: 0, height: 0,
     corners_top: true, corners_bottom: true,
@@ -81,8 +86,9 @@ var CornerEffect = (typeof global === 'undefined') ?
                 0.0,
             ),
         }
-    }, class CornerEffect extends Clutter.ShaderEffect {
+    }, class CornerEffect extends EffectBase {
         constructor(uuid, params) {
+            shaderUuid = uuid;
             super(params);
 
             this._clip_x0 = null;
@@ -90,20 +96,23 @@ var CornerEffect = (typeof global === 'undefined') ?
             this._clip_width = null;
             this._clip_height = null;
 
-            this._radius = (params.radius) ? params.radius : DEFAULT_PARAMS.radius;
+            this._radius = params.radius ?? DEFAULT_PARAMS.radius;
             this._width = (params.width) ? params.width : DEFAULT_PARAMS.width;
             this._height = (params.height) ? params.height : DEFAULT_PARAMS.height;
-            this._corners_top = (params.corners_top) ? params.corners_top : DEFAULT_PARAMS.corners_top;
-            this._corners_bottom = (params.corners_bottom) ? params.corners_bottom : DEFAULT_PARAMS.corners_bottom;
+            // corners_top/corners_bottom are booleans, so `params.corners_top ? ... : default`
+            // silently discarded an explicit `false` (a falsy value indistinguishable from "not
+            // provided" under that pattern) and fell back to DEFAULT_PARAMS's `true`. Check for
+            // undefined instead, so an explicit false is respected.
+            this._corners_top = (params.corners_top !== undefined) ? params.corners_top : DEFAULT_PARAMS.corners_top;
+            this._corners_bottom = (params.corners_bottom !== undefined) ? params.corners_bottom : DEFAULT_PARAMS.corners_bottom;
             this._clip = (params.clip) ? params.clip : DEFAULT_PARAMS.clip;
-
-            // set shader source
-            this._source = loadShaderResource(uuid, SHADER_FILENAME);
-            if (this._source)
-                this.set_shader_source(this._source);
 
             // Safe fetch of the current scale factor 
             this.update_radius();
+        }
+
+        get_effect_source() {
+            return loadShaderResource(shaderUuid, SHADER_FILENAME);
         }
 
         static get default_params() {
@@ -195,6 +204,37 @@ var CornerEffect = (typeof global === 'undefined') ?
             this.set_uniform_value('clip_width', parseFloat(this._clip_width + 3 - 1e-6));
             this.set_uniform_value('clip_height', parseFloat(this._clip_height + 3 - 1e-6));
             this.update_radius();
+        }
+
+        set_viewport_clip(value) {
+            if (!Array.isArray(value) || value.length !== 4 ||
+                !Number.isFinite(value[0]) || !Number.isFinite(value[1]) ||
+                !Number.isFinite(value[2]) || !Number.isFinite(value[3]) ||
+                value[2] <= 0 || value[3] <= 0) {
+              
+                this._clip_x0 = this._clip_y0 = this._clip_width = this._clip_height = 0;
+
+                // Puts the mask outside the texture
+                this.set_uniform_value('clip_x0', -1.000001);
+                this.set_uniform_value('clip_y0', -1.000001);
+                this.set_uniform_value('clip_width', 1e-6);
+                this.set_uniform_value('clip_height', 1e-6);
+                this.update_radius();
+                return;
+            }
+            [this._clip_x0, this._clip_y0, this._clip_width, this._clip_height] = value;
+            this.set_uniform_value('clip_x0', parseFloat(this._clip_x0 + 2 - 1e-6));
+            this.set_uniform_value('clip_y0', parseFloat(this._clip_y0 + 2 - 1e-6));
+            this.set_uniform_value('clip_width', parseFloat(Math.max(1e-6, this._clip_width - 1e-6)));
+            this.set_uniform_value('clip_height', parseFloat(Math.max(1e-6, this._clip_height - 1e-6)));
+            this.update_radius();
+        }
+
+        vfunc_pre_paint(paintContext) {
+            if (!super.vfunc_pre_paint(paintContext))
+                return false;
+            Utils.extendOffscreenViewport(paintContext, this.get_actor());
+            return true;
         }
 
         vfunc_set_actor(actor) {

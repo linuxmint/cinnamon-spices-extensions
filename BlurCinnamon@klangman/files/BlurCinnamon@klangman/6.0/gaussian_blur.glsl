@@ -21,7 +21,7 @@ vec4 getTexture(vec2 uv) {
     return texture2D(tex, uv);
 }
 
-void main(void) {
+void blurcinnamon_main() {
     vec2 uv = cogl_tex_coord_in[0].xy;
     vec2 direction = vec2(dir, (1.0 - dir));
 
@@ -47,7 +47,9 @@ void main(void) {
         float coefficient_subtotal = gauss_coefficient.x;
         gauss_coefficient.xy *= gauss_coefficient.yz;
         coefficient_subtotal += gauss_coefficient.x;
-
+        if (coefficient_subtotal <= 0.0)
+            break;
+        
         float gauss_ratio = gauss_coefficient.x / coefficient_subtotal;
 
         float foffset = float(i) + gauss_ratio;
@@ -67,4 +69,13 @@ void main(void) {
     }
 
     cogl_color_out = outColor;
+}
+
+// Apply the actor's paint opacity. ClutterOffscreenEffect passes the actor's paint opacity to the final
+// on-screen pass only as the (premultiplied) pipeline colour, cogl_color_in. Inner passes in an effect chain
+// are rendered with the opacity forced to 255 (cogl_color_in == 1), so multiplying in every shader applies
+// the opacity exactly once. Without this, actor.opacity has no effect on any actor using these effects.
+void main() {
+    blurcinnamon_main();
+    cogl_color_out *= cogl_color_in;
 }
