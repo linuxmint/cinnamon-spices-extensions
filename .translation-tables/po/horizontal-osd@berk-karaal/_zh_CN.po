@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. settings-schema.json->general->title
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->general-icon-configs->title
+#. settings-schema.json->icon-colors->title
+#. settings-schema.json->advanced-icon-configs->title
+msgid "Icon"
+msgstr ""
+
+#. settings-schema.json->general-level-bar-configs->title
+#. settings-schema.json->level-bar-colors->title
+#. settings-schema.json->advanced-level-bar-configs->title
+msgid "Level Bar"
+msgstr ""
+
+#. settings-schema.json->general-label-configs->title
+#. settings-schema.json->label-colors->title
+#. settings-schema.json->advanced-label-configs->title
+msgid "Label"
+msgstr ""
+
+#. settings-schema.json->colors->title
+msgid "Colors"
+msgstr ""
+
+#. settings-schema.json->advanced->title
+msgid "Advanced"
+msgstr ""
+
+#. settings-schema.json->level-bar-border-radius->description
+msgid "Border radius of level bar (in pixels)"
+msgstr ""
+
+#. settings-schema.json->label-show->description
+msgid "Show label"
+msgstr ""
+
+#. settings-schema.json->label-vertical-align-correction->description
+msgid ""
+"Label can not be centered correctly for now. You can adjust or decrease top "
+"margin of label here. (value: positive or negative int)"
+msgstr ""
+
+#. settings-schema.json->icon-overwrite-colors->description
+msgid "Overwrite icon color"
+msgstr ""
+
+#. settings-schema.json->icon-color->description
+msgid "Icon color"
+msgstr ""
+
+#. settings-schema.json->level-bar-overwrite-colors->description
+msgid "Overwrite level bar colors"
+msgstr ""
+
+#. settings-schema.json->level-bar-foreground-color->description
+msgid "Level bar foreground color"
+msgstr ""
+
+#. settings-schema.json->level-bar-background-color->description
+msgid "Level bar background color"
+msgstr ""
+
+#. settings-schema.json->label-overwrite-colors->description
+msgid "Overwrite label color"
+msgstr ""
+
+#. settings-schema.json->label-color->description
+msgid "Label color"
+msgstr ""

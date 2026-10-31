@@ -1,0 +1,70 @@
+# SLIDER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-09-26 21:42-0400\n"
+"PO-Revision-Date: 2022-08-06 01:54+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. extension.js:133
+msgid "ERROR"
+msgstr ""
+
+#. extension.js:133
+msgid "Slider was NOT enabled"
+msgstr ""
+
+#. extension.js:134
+msgid "This extension is currently incompatible with your version of Cinnamon."
+msgstr ""
+
+#. metadata.json->description
+msgid "Yet another nice transition effect for ws switching."
+msgstr ""
+"Încă un efect de tranziție frumos pentru trecerea la alt spațiu de lucru."
+
+#. metadata.json->name
+msgid "Slider"
+msgstr "Glisieră"
+
+#. settings-schema.json->animation-duration->units
+msgid "milliseconds"
+msgstr "milisecunde"
+
+#. settings-schema.json->animation-duration->description
+msgid "Animation Duration:"
+msgstr "Durata animației:"
+
+#. settings-schema.json->animation-effect->description
+msgid "Animation Easing:"
+msgstr "Temperarea animației:"
+
+#. settings-schema.json->slip-factor->description
+msgid "Slip Factor:"
+msgstr "Factor de alunecare:"
+
+#. settings-schema.json->sliding-background->description
+msgid "Sliding Background"
+msgstr "Fundal glisant"
+
+#. settings-schema.json->zoom-level->description
+msgid "Background Zoom Level:"
+msgstr "Nivel de zoom pe fundal:"
+
+#. settings-schema.json->vertical-position->description
+msgid "Background Vertical Position:"
+msgstr "Poziție verticală fundal:"

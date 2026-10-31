@@ -1,0 +1,105 @@
+# MAGIC LAMP EFFECT
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonMagicLamp@klangman 1.0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-01 12:42-0500\n"
+"PO-Revision-Date: 2024-12-01 16:10-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. 5.6/extension.js:83
+msgid "ERROR"
+msgstr "ERROR"
+
+#. 5.6/extension.js:83
+msgid "was NOT enabled"
+msgstr "no estaba habilitada"
+
+#. 5.6/extension.js:84
+msgid "The existing extension"
+msgstr "La extensión existente"
+
+#. 5.6/extension.js:84
+msgid "conflicts with this extension."
+msgstr "entra en conflicto con esta extensión."
+
+#. metadata.json->name
+msgid "Magic Lamp Effect"
+msgstr "Efecto Lámpara Mágica"
+
+#. metadata.json->description
+msgid ""
+"A minimize/unminimize magic lamp effect based on hermes83's Gnome extension"
+msgstr ""
+"Un efecto de minimizar/desminimizar lámpara mágica basado en la extensión "
+"Gnome de hermes83"
+
+#. 5.6->settings-schema.json->keybinding-header->description
+msgid "Cinnamon Magic Lamp Settings"
+msgstr "Configuración de la lámpara mágica de Cinnamon"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "default"
+msgstr "por defecto"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "sine"
+msgstr "seno"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr "aleatorio"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr "Minimizar: Por defecto - Desminimizar: Seno"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr "Minimizar: Seno - Desminimizar: Por defecto"
+
+#. 5.6->settings-schema.json->effect->description
+msgid "The type of effect"
+msgstr "Tipo de efecto"
+
+#. 5.6->settings-schema.json->effect->tooltip
+msgid ""
+"Using 'default' will result in a curved effect where using 'sine' will "
+"result in a more wavy effect"
+msgstr ""
+"Si se utiliza «por defecto», el efecto será curvo, mientras que si se "
+"utiliza «seno», el efecto será más ondulado"
+
+#. 5.6->settings-schema.json->duration->description
+msgid "Effect duration (ms)"
+msgstr "Duración del efecto (ms)"
+
+#. 5.6->settings-schema.json->duration->tooltip
+msgid "The time (in milliseconds) that the effect takes to complete"
+msgstr "Tiempo (en milisegundos) que tarda en completarse el efecto"
+
+#. 5.6->settings-schema.json->x-tiles->description
+msgid "X Tiles"
+msgstr "Mosaico X"
+
+#. 5.6->settings-schema.json->x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr "Esto afecta la calidad y el costo de la animación"
+
+#. 5.6->settings-schema.json->y-tiles->description
+msgid "Y Tiles"
+msgstr "Mosaico Y"
+
+#. 5.6->settings-schema.json->y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr "Esto afecta la calidad y el costo de la animación"

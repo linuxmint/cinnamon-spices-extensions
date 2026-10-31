@@ -1,0 +1,322 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-03 15:24-0500\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: extension.js:43 3.8/gTile.js:303 5.4/gTile.js:303
+msgid "Auto close"
+msgstr "Automatikoki itxi"
+
+#: extension.js:44 3.8/gTile.js:304 5.4/gTile.js:304
+msgid "Animations"
+msgstr "Animazioak"
+
+#: extension.js:45 3.8/gTile.js:305 5.4/gTile.js:305
+msgid "Auto tile main and list"
+msgstr "Teila nagusi automatikoak eta zerrendatu"
+
+#: extension.js:46 3.8/gTile.js:306 5.4/gTile.js:306
+msgid "Auto tile two lists"
+msgstr "Teila automatikoak eta bi zerrenda"
+
+#. metadata.json->name
+msgid "gTile"
+msgstr "gTile"
+
+#. metadata.json->description
+msgid "Tile your windows as you like."
+msgstr "Teila itzazu leihoak nahi duzun bezala."
+
+#. settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "Lasterbideak:"
+
+#. settings-schema.json->hotkey->description
+#. 3.8->settings-schema.json->hotkey->description
+#. 5.4->settings-schema.json->hotkey->description
+msgid "Global Hotkey for gTile"
+msgstr "Lasterbide orokorrak gTilerako"
+
+#. settings-schema.json->headerBehavior->description
+msgid "Behavior:"
+msgstr "Portaera:"
+
+#. settings-schema.json->animation->description
+#. 3.8->settings-schema.json->animation->description
+#. 5.4->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "Animazioa"
+
+#. settings-schema.json->autoclose->description
+#. 3.8->settings-schema.json->autoclose->description
+#. 5.4->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "Automatikoki itxi"
+
+#. settings-schema.json->header1->description
+msgid "Layout for Button 1:"
+msgstr "1. botoirako maketazioa:"
+
+#. settings-schema.json->gridbutton1x->units
+#. settings-schema.json->gridbutton2x->units
+#. settings-schema.json->gridbutton3x->units
+#. settings-schema.json->gridbutton4x->units
+msgid "x"
+msgstr "x"
+
+#. settings-schema.json->gridbutton1x->description
+#. settings-schema.json->gridbutton2x->description
+#. settings-schema.json->gridbutton3x->description
+#. settings-schema.json->gridbutton4x->description
+#. 3.8->settings-schema.json->columns->description
+#. 3.8->settings-schema.json->grid1x->description
+#. 3.8->settings-schema.json->grid2x->description
+#. 3.8->settings-schema.json->grid3x->description
+#. 3.8->settings-schema.json->grid4x->description
+#. 5.4->settings-schema.json->columns->description
+#. 5.4->settings-schema.json->grid1x->description
+#. 5.4->settings-schema.json->grid2x->description
+#. 5.4->settings-schema.json->grid3x->description
+#. 5.4->settings-schema.json->grid4x->description
+msgid "Columns"
+msgstr "Zutabeak"
+
+#. settings-schema.json->gridbutton1y->units
+#. settings-schema.json->gridbutton2y->units
+#. settings-schema.json->gridbutton3y->units
+#. settings-schema.json->gridbutton4y->units
+msgid "y"
+msgstr "y"
+
+#. settings-schema.json->gridbutton1y->description
+#. settings-schema.json->gridbutton2y->description
+#. settings-schema.json->gridbutton3y->description
+#. settings-schema.json->gridbutton4y->description
+#. 3.8->settings-schema.json->rows->description
+#. 3.8->settings-schema.json->grid1y->description
+#. 3.8->settings-schema.json->grid2y->description
+#. 3.8->settings-schema.json->grid3y->description
+#. 3.8->settings-schema.json->grid4y->description
+#. 5.4->settings-schema.json->rows->description
+#. 5.4->settings-schema.json->grid1y->description
+#. 5.4->settings-schema.json->grid2y->description
+#. 5.4->settings-schema.json->grid3y->description
+#. 5.4->settings-schema.json->grid4y->description
+msgid "Rows"
+msgstr "Ilarak"
+
+#. settings-schema.json->header2->description
+msgid "Layout for Button 2:"
+msgstr "2 Botoirako maketazioa:"
+
+#. settings-schema.json->header3->description
+msgid "Layout for Button 3:"
+msgstr "3 Botoirako maketazioa:"
+
+#. settings-schema.json->header4->description
+msgid "Layout for Button 4:"
+msgstr "4 botoirako maketazioa:"
+
+#. 3.8->settings-schema.json->hotkeys-tab->title
+#. 5.4->settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Lasterbideak"
+
+#. 3.8->settings-schema.json->behaviour-tab->title
+#. 3.8->settings-schema.json->behaviour-section->title
+#. 5.4->settings-schema.json->behaviour-tab->title
+#. 5.4->settings-schema.json->behaviour-section->title
+msgid "Behavior"
+msgstr "Portaera"
+
+#. 3.8->settings-schema.json->layout-tab->title
+#. 5.4->settings-schema.json->layout-tab->title
+msgid "Layout"
+msgstr "Maketazioa"
+
+#. 3.8->settings-schema.json->help->title
+#. 5.4->settings-schema.json->help->title
+msgid "Help"
+msgstr "Laguntza"
+
+#. 3.8->settings-schema.json->hotkey-section->title
+#. 5.4->settings-schema.json->hotkey-section->title
+msgid "Global Hotkey"
+msgstr "Lasterbide orokorra"
+
+#. 3.8->settings-schema.json->keybindings-legend-section->title
+#. 5.4->settings-schema.json->keybindings-legend-section->title
+msgid "Keybindings Legend (when open)"
+msgstr "Lasterbide legenda (irekitzean)"
+
+#. 3.8->settings-schema.json->grid1-section->title
+#. 5.4->settings-schema.json->grid1-section->title
+msgid "Layout For Button 1"
+msgstr "1 Botoirako Maketazioa"
+
+#. 3.8->settings-schema.json->grid2-section->title
+#. 5.4->settings-schema.json->grid2-section->title
+msgid "Layout For Button 2"
+msgstr "2 Botoirako Maketazioa"
+
+#. 3.8->settings-schema.json->grid3-section->title
+#. 5.4->settings-schema.json->grid3-section->title
+msgid "Layout For Button 3"
+msgstr "3 Botoirako Maketazioa"
+
+#. 3.8->settings-schema.json->grid4-section->title
+#. 5.4->settings-schema.json->grid4-section->title
+msgid "Layout For Button 4"
+msgstr "4 Botoirako Maketazioa"
+
+#. 3.8->settings-schema.json->help-section->title
+#. 5.4->settings-schema.json->help-section->title
+msgid "More Info"
+msgstr "Informazio gehiago"
+
+#. 3.8->settings-schema.json->hotkeys-legend->description
+#. 5.4->settings-schema.json->hotkeys-legend->description
+msgid ""
+"Escape:\t\t\tHide gTile\n"
+"Enter or Space:\tCommit current selection\n"
+"Left:\t\t\tMove Left inside Grid\n"
+"Right:\t\t\tMove Right inside Grid\n"
+"Up:\t\t\t\tMove Up inside Grid\n"
+"Down:\t\t\tMove Down inside Grid\n"
+"<Shift>Left:\t\tInclude column to the Left in selection\n"
+"<Shift>Right:\t\tInclude column to the Right in selection\n"
+"<Shift>Up:\t\tInclude row Above in selection\n"
+"<Shift>Down:\tInclude row Below in selection\n"
+"<Alt>Left:\t\tMove to the monitor on the Left\n"
+"<Alt>Right:\t\tMove to the monitor on the Right\n"
+"<Alt>Up:\t\t\tMove to the monitor Above\n"
+"<Alt>Down:\t\tMove to the monitor Below\n"
+"1:\t\t\t\tSelect the first grid layout\n"
+"2:\t\t\t\tSelect the second grid layout\n"
+"3:\t\t\t\tSelect the third grid layout\n"
+"4:\t\t\t\tSelect the fourth grid layout"
+msgstr ""
+"Esc:\t\t\tEzkutatu gTile\n"
+"Enter edo Zuriune:\t Egungo hautaketa konprometitu\n"
+"Ezkerra:\t\t\t Mugitu ezkerrera sare barruan\n"
+"Eskuina:\t\t\tMugitu eskuinera sare barruan\n"
+"Gora:\t\t\t\tMugitu gora sare barruan\n"
+"Behera:\t\t\tMugitu behera sare barruan\n"
+"<Shift>Ezkerra:\t\tHautatu ezkerreko zutabea\n"
+"<Shift>Eskuina:\t\tHautatu eskuineko zutabea\n"
+"<Shift>Gora:\t\tHautatu goiko errenkada\n"
+"<Shift>Behera:\t\tHautatu beheko errenkada\n"
+"<Alt>Ezkerra:\t\t\tEraman ezkerreko monitorera\n"
+"<Alt>Eskuina:\t\t\tEraman eskuineko monitorera\n"
+"<Alt>Gora:\t\t\tEraman goiko monitorera\n"
+"<Alt>Behera:\t\t\tEraman beheko monitorera\n"
+"1:\t\t\t\tHautatu lehenengo sareta diseinua\n"
+"2:\t\t\t\tHautatu bigarren sareta diseinua\n"
+"3:\t\t\t\tHautatu hirugarren sareta diseinua\n"
+"4:\t\t\t\tHautatu laugarren sareta diseinua"
+#. 3.8->settings-schema.json->aspect-ratio->description
+#. 5.4->settings-schema.json->aspect-ratio->description
+msgid "Use monitor aspect ratio"
+msgstr "Erabili monitorearen itxura erlazioa"
+
+#. 3.8->settings-schema.json->aspect-ratio->tooltip
+#. 5.4->settings-schema.json->aspect-ratio->tooltip
+msgid ""
+"Should the popup's grid reflect the current monitor's aspect ratio or not."
+msgstr "Laster-lehioaren sareak monitorearen itxura islatzen duen ala ez."
+
+#. 3.8->settings-schema.json->useMonitorCenter->description
+#. 5.4->settings-schema.json->useMonitorCenter->description
+msgid "UI always centered to monitor"
+msgstr "Erabiltzaile Interfazea monitorera zentratuta dago beti"
+
+#. 3.8->settings-schema.json->useMonitorCenter->tooltip
+#. 5.4->settings-schema.json->useMonitorCenter->tooltip
+msgid ""
+"By default the grid UI shows up in the middle of the active window. With "
+"this, it always displays in the middle of the monitor."
+msgstr ""
+"Besterik ezean, Erabiltzaile Interfaze sarea leiho aktiboaren erdian"
+"agertzen da. Honekin, monitorearen erdian agertzen da beti."
+
+#. 3.8->settings-schema.json->showGridOnAllMonitors->description
+#. 5.4->settings-schema.json->showGridOnAllMonitors->description
+msgid "Show UI and all monitors at the same time"
+msgstr "Erakutsi Erabiltzaile Interfazea eta monitore guztiak aldi berean."
+
+#. 3.8->settings-schema.json->grid1NameOverride->description
+#. 3.8->settings-schema.json->grid2NameOverride->description
+#. 3.8->settings-schema.json->grid3NameOverride->description
+#. 3.8->settings-schema.json->grid4NameOverride->description
+#. 5.4->settings-schema.json->grid2NameOverride->description
+#. 5.4->settings-schema.json->grid3NameOverride->description
+#. 5.4->settings-schema.json->grid4NameOverride->description
+msgid "Name Override"
+msgstr "Izen Jainjarria"
+
+#. 3.8->settings-schema.json->grid1x->tooltip
+#. 3.8->settings-schema.json->grid2x->tooltip
+#. 3.8->settings-schema.json->grid3x->tooltip
+#. 3.8->settings-schema.json->grid4x->tooltip
+#. 5.4->settings-schema.json->grid1x->tooltip
+#. 5.4->settings-schema.json->grid2x->tooltip
+#. 5.4->settings-schema.json->grid3x->tooltip
+#. 5.4->settings-schema.json->grid4x->tooltip
+msgid ""
+"Each row represents a column. Span is how much space a column should take up"
+" compared to the other columns. Default is 1."
+msgstr ""
+"Ilara bakoitzak zutabe bat irudikatzen du. 'Span' zutabe batek beste zutabeen "
+"aldean zenbat espazio hartu behar duen da. Lehenetsia 1 da."
+
+#. 3.8->settings-schema.json->grid1x->columns->title
+#. 3.8->settings-schema.json->grid1y->columns->title
+#. 3.8->settings-schema.json->grid2x->columns->title
+#. 3.8->settings-schema.json->grid2y->columns->title
+#. 3.8->settings-schema.json->grid3x->columns->title
+#. 3.8->settings-schema.json->grid3y->columns->title
+#. 3.8->settings-schema.json->grid4x->columns->title
+#. 3.8->settings-schema.json->grid4y->columns->title
+#. 5.4->settings-schema.json->grid1x->columns->title
+#. 5.4->settings-schema.json->grid1y->columns->title
+#. 5.4->settings-schema.json->grid2x->columns->title
+#. 5.4->settings-schema.json->grid2y->columns->title
+#. 5.4->settings-schema.json->grid3x->columns->title
+#. 5.4->settings-schema.json->grid3y->columns->title
+#. 5.4->settings-schema.json->grid4x->columns->title
+#. 5.4->settings-schema.json->grid4y->columns->title
+msgid "Span"
+msgstr "Span"
+
+#. 3.8->settings-schema.json->grid1y->tooltip
+#. 3.8->settings-schema.json->grid2y->tooltip
+#. 3.8->settings-schema.json->grid3y->tooltip
+#. 3.8->settings-schema.json->grid4y->tooltip
+#. 5.4->settings-schema.json->grid1y->tooltip
+#. 5.4->settings-schema.json->grid2y->tooltip
+#. 5.4->settings-schema.json->grid3y->tooltip
+#. 5.4->settings-schema.json->grid4y->tooltip
+msgid ""
+"Each row represents a row. Span is how much space a row should take up "
+"compared to the other columns. Default is 1."
+msgstr ""
+"Ilara bakoitzak ilara bat irudikatzen du. Span da zenbat leku hartu behar "
+"duen ilara batek beste zutabeen aldean. Lehenetsia 1 da."
+
+#. 5.4->settings-schema.json->grid1NameOverride->description
+msgid "Name Override on the UI"
+msgstr "Izen Jainjarria Erabiltzaile Interfazean"
