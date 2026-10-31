@@ -16,6 +16,7 @@ import type { WindowTarget } from "../arrangement";
 import { _ } from "../i18n";
 import type { EnterAction, KeyRoute } from "./chooser-keys";
 import { captureEnter, enterAction, keyOf, routeKey } from "./chooser-keys";
+import type { RadioGroup } from "./cinnamon-ticks";
 import {
     arrangementChoice,
     hintLabel,
@@ -63,7 +64,7 @@ export interface ChooserInsides {
 
 export class Chooser {
     private dialog: imports.ui.modalDialog.ModalDialog | null = null;
-    private radioGroup: imports.ui.radioButton.RadioButtonGroup | null = null;
+    private radioGroup: RadioGroup | null = null;
     private presets: PresetColumn | null = null;
     private contentBin: imports.gi.St.Bin | null = null;
     private hintLabel: imports.gi.St.Label | null = null;
@@ -120,6 +121,10 @@ export class Chooser {
         }
         this.pretendHeight = pretendHeight ?? null;
         const dialog = this.built();
+        // The content takes the keys. Cinnamon gives the first focus to the
+        // dialog's default button once the open has animated, which from
+        // 6.8 comes after the grab below and would take the letters away.
+        dialog.setInitialKeyFocus(dialog.contentLayout);
         // A dialog can't take the keyboard while a menu or the window
         // switcher holds it, and one that never showed is never destroyed
         // by closing, so it is let go of here instead.

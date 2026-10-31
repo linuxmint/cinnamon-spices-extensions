@@ -1,17 +1,17 @@
 // The chooser's parts: the widgets the shell is built from, each made here
 // and wired by the chooser, which keeps what they do. Cinnamon's own radio
-// buttons choose the arrangement, with the compacted marks, each made to
-// ask for its label's width as well as its mark's.
+// buttons choose the arrangement, in cPlace's own group, with the compacted
+// marks, each made to ask for its label's width as well as its mark's.
 
 import { _ } from "../i18n";
 import type { ArrangementPage, PageSizes } from "./page";
 import type { PresetColumnEvents } from "./preset-column";
 import { PresetColumn } from "./preset-column";
 import type { EngineSettings } from "./settings";
+import { RadioGroup } from "./cinnamon-ticks";
 import { compactTick, heading } from "./widgets";
 
 const St = imports.gi.St;
-const RadioButtons = imports.ui.radioButton;
 const NAME = "cPlace";
 
 /** The sizes the stylesheet sets on the content, in pixels: St turns the
@@ -65,36 +65,31 @@ export function arrangementChoice(
     onChoose: (index: number) => void,
 ): {
     actor: imports.gi.St.BoxLayout;
-    group: imports.ui.radioButton.RadioButtonGroup;
+    group: RadioGroup;
 } {
     const actor = new St.BoxLayout({
         vertical: true,
         style_class: "cplace-column",
     });
     actor.add_child(heading(_("Arrangement")));
-    const group = new RadioButtons.RadioButtonGroup();
-    for (const page of pages) {
-        group.addButton(page.key, `${page.name}  (${page.letter})`);
-    }
-    for (const child of group.actor.get_children()) {
-        // The children are the group's own St.Buttons; the list is typed as
-        // bare actors.
-        (child as imports.gi.St.Widget).add_style_class_name("cplace-radio");
-        compactTick(child as imports.gi.St.Button);
-        widenToLabel(child as imports.gi.St.Button);
-    }
-    group.connect("radio-changed", (_group, buttonId) => {
+    const group = new RadioGroup((buttonId) => {
         const index = pages.findIndex((page) => page.key === buttonId);
         if (index >= 0) {
             onChoose(index);
         }
     });
+    for (const page of pages) {
+        const radio = group.addButton(page.key, `${page.name}  (${page.letter})`);
+        radio.actor.add_style_class_name("cplace-radio");
+        compactTick(radio.actor);
+        widenToLabel(radio.actor);
+    }
     actor.add_child(group.actor);
     return { actor, group };
 }
 
 /** A radio button that asks for room enough to show its label whole.
- * Cinnamon's radio container, in radioButton.js, answers a width request
+ * Cinnamon's radio container up to 6.6, in radioButton.js, answers a width request
  * with its mark's width and its spacing alone, leaving out the label, and
  * then gives the label the row's width less the mark and the spacing
  * twice over: its right edge is set at the row's width less the label's
@@ -105,10 +100,13 @@ export function arrangementChoice(
  * the label's width and the mark and spacing a second time; should
  * Cinnamon mend its allocation, the column keeps a little room over. */
 function widenToLabel(button: imports.gi.St.Button): void {
-    const container =
-        button.get_child() as imports.gi.Cinnamon.GenericContainer | null;
-    const label = container?.get_children()[1];
-    if (container === null || label === undefined) {
+    const container = button.get_child();
+    // From 6.8 the container is a box layout, which asks right by itself.
+    if (!(container instanceof imports.gi.Cinnamon.GenericContainer)) {
+        return;
+    }
+    const label = container.get_children()[1];
+    if (label === undefined) {
         return;
     }
     container.connect("get-preferred-width", (_owner, _forHeight, alloc) => {

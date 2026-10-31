@@ -6,7 +6,7 @@
 // it; a page that acts on the focused window need not. Where the page leads
 // with the focused window, the list marks it so the reason is on screen,
 // and a page may ask for a toggle on each application's row that sends its
-// windows to the end, as the cascade does. Built on the shell's CheckBox
+// windows to the end, as the cascade does. Built on Cinnamon's check box
 // with the compacted marks.
 
 import type {
@@ -18,13 +18,14 @@ import type {
 } from "./window-choice";
 import { _, fill } from "../i18n";
 import { WindowChoice } from "./window-choice";
+import type { Tick } from "./cinnamon-ticks";
+import { tickBox } from "./cinnamon-ticks";
 import { compactTick, heading } from "./widgets";
 
 const St = imports.gi.St;
-const CheckBoxes = imports.ui.checkBox;
 
 type MetaWindow = imports.gi.Meta.Window;
-type CheckBox = imports.ui.checkBox.CheckBox;
+type CheckBox = Tick;
 
 export class WindowList {
     readonly actor: imports.gi.St.BoxLayout;
@@ -87,7 +88,7 @@ export class WindowList {
         if (index !== null) {
             this.windowBoxes
                 .get(index)
-                ?.setToggleState(this.choice.isTicked(index));
+                ?.actor.set_checked(this.choice.isTicked(index));
         }
     }
 
@@ -183,7 +184,7 @@ export class WindowList {
 
     private tickApp(appId: string, ticked: boolean): void {
         for (const gatheredIndex of this.choice.tickApp(appId, ticked)) {
-            this.windowBoxes.get(gatheredIndex)?.setToggleState(ticked);
+            this.windowBoxes.get(gatheredIndex)?.actor.set_checked(ticked);
         }
         this.onChange();
     }
@@ -191,7 +192,7 @@ export class WindowList {
     private tickWindow(gatheredIndex: number, ticked: boolean): void {
         const app = this.choice.tickWindow(gatheredIndex, ticked);
         if (app !== null) {
-            this.appBoxes.get(app.appId)?.setToggleState(app.allTicked);
+            this.appBoxes.get(app.appId)?.actor.set_checked(app.allTicked);
         }
         this.onChange();
     }
@@ -275,12 +276,12 @@ export class WindowList {
         ticked: boolean,
         onToggle: (ticked: boolean) => void,
     ): CheckBox {
-        const box = new CheckBoxes.CheckBox(text, {}, ticked);
+        const box = tickBox(text, ticked);
         box.actor.add_style_class_name("cplace-check");
         compactTick(box.actor);
         // A long title ends in an ellipsis at the list's own width, which
         // follows the font, rather than at a count of characters.
-        box.getLabelActor().clutter_text.set_ellipsize(
+        box.label.clutter_text.set_ellipsize(
             imports.gi.Pango.EllipsizeMode.END,
         );
         box.actor.connect("clicked", () => {

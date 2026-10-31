@@ -4,8 +4,9 @@
 #   check.sh build   the source typechecks, and the development and release
 #                    bundles build, the release one with nothing of the
 #                    development handle in it, its _() and ngettext() calls
-#                    under their own names, and the translation template
-#                    holding its phrases; fails hard
+#                    under their own names, in the form both of Cinnamon's
+#                    loaders read, and the translation template holding its
+#                    phrases; fails hard
 #   check.sh test    the contract tests, through node --test; fails hard
 #   check.sh lint    the ESLint report over src/ and tests/; its warnings
 #                    inform, its errors fail
@@ -40,6 +41,7 @@ case "${1:-all}" in
             echo "check build: the bundle renamed _() or ngettext()" >&2
             exit 1
         fi
+        node tools/check-bundle.mjs files/cPlace@riaanburger/extension.js
         tools/makepot.sh --check
         ;;
     test)

@@ -18,11 +18,11 @@ import type { PreviewView } from "../preview";
 import { logical, logicalRoom, toDevice } from "../logical";
 import { addHandles } from "../preview";
 import type { EngineSettings } from "../settings";
+import { tickBox } from "../cinnamon-ticks";
 import { compactTick } from "../widgets";
 import type { NumberVariable } from "../variables";
 import { ListPage, stringList } from "./list-page";
 
-const CheckBoxes = imports.ui.checkBox;
 
 const corners: CascadeCorner[] = [
     "bottom-left",
@@ -189,9 +189,8 @@ class CascadePage extends ListPage<CascadeSettings> {
         );
         this.renameVariables = variables.rename;
         const column = variables.actor;
-        const spreadTick = new CheckBoxes.CheckBox(
+        const spreadTick = tickBox(
             _("Spread the windows across the work area"),
-            {},
             this.settings().spread,
         );
         spreadTick.actor.add_style_class_name("cplace-check");

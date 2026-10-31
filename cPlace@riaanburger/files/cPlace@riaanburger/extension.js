@@ -1,31 +1,3 @@
-"use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-
-// src/extension.ts
-var extension_exports = {};
-__export(extension_exports, {
-  disable: () => disable,
-  enable: () => enable,
-  init: () => init
-});
-module.exports = __toCommonJS(extension_exports);
-
 // src/engine/apply.ts
 var lastApplied = [];
 function place(window, frame) {
@@ -485,6 +457,56 @@ var PresetColumn = class {
   }
 };
 
+// src/engine/cinnamon-ticks.ts
+var St2 = imports.gi.St;
+var CheckBoxes = imports.ui.checkBox;
+var RadioButtons = imports.ui.radioButton;
+function asTick(made) {
+  const actor = made instanceof St2.Button ? made : made.actor;
+  if (actor === void 0) {
+    throw new Error("cPlace: Cinnamon's tick has no actor");
+  }
+  return { actor, label: made.getLabelActor() };
+}
+function tickBox(label, checked) {
+  const tick = asTick(new CheckBoxes.CheckBox(label, {}, checked));
+  tick.actor.checked = checked;
+  return tick;
+}
+function radioButton(label) {
+  return asTick(new RadioButtons.RadioButton(label));
+}
+var RadioGroup = class {
+  constructor(onChange) {
+    this.onChange = onChange;
+  }
+  onChange;
+  actor = new St2.BoxLayout({ vertical: true });
+  buttons = [];
+  activeId = null;
+  addButton(id, label) {
+    const tick = radioButton(label);
+    tick.actor.connect("clicked", () => {
+      this.setActive(id);
+    });
+    this.buttons.push({ id, tick });
+    this.actor.add_child(tick.actor);
+    return tick;
+  }
+  setActive(id) {
+    for (const button of this.buttons) {
+      button.tick.actor.checked = button.id === id;
+    }
+    if (this.activeId !== id) {
+      this.activeId = id;
+      this.onChange(id);
+    }
+  }
+  getActive() {
+    return this.activeId;
+  }
+};
+
 // src/engine/spin-step.ts
 function nextStep(value, step, direction, bounds) {
   const size = step > 0 ? step : 1;
@@ -493,9 +515,9 @@ function nextStep(value, step, direction, bounds) {
 }
 
 // src/engine/widgets.ts
-var St2 = imports.gi.St;
+var St3 = imports.gi.St;
 function heading(text) {
-  return new St2.Label({ text, style_class: "cplace-heading" });
+  return new St3.Label({ text, style_class: "cplace-heading" });
 }
 function replaceChild(bin2, child) {
   const old = bin2.get_child();
@@ -508,7 +530,7 @@ function bounded(spec, value) {
   return Math.min(spec.max, Math.max(spec.min, value));
 }
 function numberEntry(spec, styleClass, shown, commit) {
-  const entry = new St2.Entry({
+  const entry = new St3.Entry({
     text: String(spec.value),
     style_class: styleClass
   });
@@ -526,17 +548,17 @@ function numberEntry(spec, styleClass, shown, commit) {
   return entry;
 }
 function stepPicker(steps) {
-  const frame = new St2.BoxLayout({
+  const frame = new St3.BoxLayout({
     vertical: false,
     style_class: "cplace-steps"
   });
   let active = steps[0] ?? 1;
   const buttons = steps.map((step) => {
-    const button = new St2.Button({
+    const button = new St3.Button({
       style_class: "cplace-step",
       can_focus: true,
-      x_align: St2.Align.MIDDLE,
-      child: new St2.Label({ text: String(step) })
+      x_align: St3.Align.MIDDLE,
+      child: new St3.Label({ text: String(step) })
     });
     button.connect("clicked", () => {
       active = step;
@@ -560,11 +582,11 @@ function litOnFocus(frame, entry) {
   });
 }
 function framedSpin(spec) {
-  const row = new St2.BoxLayout({
+  const row = new St3.BoxLayout({
     vertical: false,
     style_class: "cplace-variable-row"
   });
-  const frame = new St2.BoxLayout({
+  const frame = new St3.BoxLayout({
     vertical: false,
     style_class: "cplace-spin"
   });
@@ -621,12 +643,12 @@ function compactTick(actor) {
   }
 }
 function spinButton(iconName, sideClass, onClick) {
-  const button = new St2.Button({
+  const button = new St3.Button({
     style_class: `cplace-spin-button ${sideClass}`,
     can_focus: true,
-    child: new St2.Icon({
+    child: new St3.Icon({
       icon_name: iconName,
-      icon_type: St2.IconType.SYMBOLIC,
+      icon_type: St3.IconType.SYMBOLIC,
       icon_size: 12
     })
   });
@@ -635,8 +657,7 @@ function spinButton(iconName, sideClass, onClick) {
 }
 
 // src/engine/chooser-parts.ts
-var St3 = imports.gi.St;
-var RadioButtons = imports.ui.radioButton;
+var St4 = imports.gi.St;
 var NAME = "cPlace";
 function pageSizes(content) {
   const node = content.get_theme_node();
@@ -646,21 +667,21 @@ function pageSizes(content) {
   };
 }
 function hintLabel() {
-  const label = new St3.Label({ style_class: "cplace-hint" });
+  const label = new St4.Label({ style_class: "cplace-hint" });
   label.clutter_text.line_wrap = true;
   label.clutter_text.ellipsize = imports.gi.Pango.EllipsizeMode.NONE;
   return label;
 }
 function shellHeader(onClose) {
-  const actor = new St3.BoxLayout({ vertical: false });
+  const actor = new St4.BoxLayout({ vertical: false });
   actor.add_child(heading(NAME));
-  actor.add_child(new St3.Bin({ x_expand: true }));
-  const closeButton = new St3.Button({
+  actor.add_child(new St4.Bin({ x_expand: true }));
+  const closeButton = new St4.Button({
     style_class: "cplace-close-button",
     can_focus: true,
-    child: new St3.Icon({
+    child: new St4.Icon({
       icon_name: "window-close",
-      icon_type: St3.IconType.SYMBOLIC,
+      icon_type: St4.IconType.SYMBOLIC,
       icon_size: 16
     })
   });
@@ -671,33 +692,33 @@ function shellHeader(onClose) {
   return { actor, closeButton };
 }
 function arrangementChoice(pages, onChoose) {
-  const actor = new St3.BoxLayout({
+  const actor = new St4.BoxLayout({
     vertical: true,
     style_class: "cplace-column"
   });
   actor.add_child(heading(_("Arrangement")));
-  const group = new RadioButtons.RadioButtonGroup();
-  for (const page of pages) {
-    group.addButton(page.key, `${page.name}  (${page.letter})`);
-  }
-  for (const child of group.actor.get_children()) {
-    child.add_style_class_name("cplace-radio");
-    compactTick(child);
-    widenToLabel(child);
-  }
-  group.connect("radio-changed", (_group, buttonId) => {
+  const group = new RadioGroup((buttonId) => {
     const index = pages.findIndex((page) => page.key === buttonId);
     if (index >= 0) {
       onChoose(index);
     }
   });
+  for (const page of pages) {
+    const radio = group.addButton(page.key, `${page.name}  (${page.letter})`);
+    radio.actor.add_style_class_name("cplace-radio");
+    compactTick(radio.actor);
+    widenToLabel(radio.actor);
+  }
   actor.add_child(group.actor);
   return { actor, group };
 }
 function widenToLabel(button) {
   const container = button.get_child();
-  const label = container?.get_children()[1];
-  if (container === null || label === void 0) {
+  if (!(container instanceof imports.gi.Cinnamon.GenericContainer)) {
+    return;
+  }
+  const label = container.get_children()[1];
+  if (label === void 0) {
     return;
   }
   container.connect("get-preferred-width", (_owner, _forHeight, alloc) => {
@@ -707,7 +728,7 @@ function widenToLabel(button) {
   });
 }
 function presetsColumn(settings, events) {
-  const actor = new St3.BoxLayout({
+  const actor = new St4.BoxLayout({
     vertical: true,
     style_class: "cplace-column"
   });
@@ -1052,9 +1073,9 @@ ${body}
 }
 
 // src/engine/theme-colours.ts
-var St4 = imports.gi.St;
+var St5 = imports.gi.St;
 var bin = (style, pseudo) => ({
-  make: St4.Bin,
+  make: St5.Bin,
   style,
   pseudo
 });
@@ -1076,7 +1097,7 @@ function probed(chain, read) {
     }
     if (inner === null) {
       outer = actor;
-    } else if (inner instanceof St4.Bin) {
+    } else if (inner instanceof St5.Bin) {
       inner.set_child(actor);
     } else {
       inner.add_child(actor);
@@ -1097,7 +1118,7 @@ function probed(chain, read) {
 function paintOf(chain) {
   return probed(chain, (node) => ({
     fill: rgba(node.get_background_color()),
-    border: rgba(node.get_border_color(St4.Side.TOP)),
+    border: rgba(node.get_border_color(St5.Side.TOP)),
     text: rgba(node.get_foreground_color())
   }));
 }
@@ -1118,15 +1139,15 @@ function graphWindow(state) {
 function readThemeColours() {
   const dialogButton = (pseudo) => [
     bin("dialog"),
-    { make: St4.Button, style: "dialog-button", pseudo }
+    { make: St5.Button, style: "dialog-button", pseudo }
   ];
   const menuItem = (pseudo) => [
     bin("popup-menu"),
     bin("popup-menu-content"),
-    { make: St4.BoxLayout, style: "popup-menu-item", pseudo }
+    { make: St5.BoxLayout, style: "popup-menu-item", pseudo }
   ];
   const entry = (pseudo) => [
-    { make: St4.Entry, style: "run-dialog-entry", pseudo }
+    { make: St5.Entry, style: "run-dialog-entry", pseudo }
   ];
   return {
     text: paintOf([bin("dialog"), bin("dialog-content-box")]).text,
@@ -1148,23 +1169,21 @@ function readThemeColours() {
 // src/engine/theme-sheet.ts
 var Gio = imports.gi.Gio;
 var GLib = imports.gi.GLib;
-var St5 = imports.gi.St;
+var St6 = imports.gi.St;
 function themeContext() {
-  return St5.ThemeContext.get_for_stage(global.stage);
+  return St6.ThemeContext.get_for_stage(global.stage);
 }
-function sheetFile(scope) {
+function sheetFile(scope, instance) {
   return Gio.File.new_for_path(
     GLib.build_filenamev([
       GLib.get_user_runtime_dir(),
       "cplace",
-      `${scope}.css`
+      `${scope}-${instance}.css`
     ])
   );
 }
 function deleteSheet(file) {
-  file.delete_async(GLib.PRIORITY_DEFAULT, null, () => {
-    file.get_parent()?.delete_async(GLib.PRIORITY_DEFAULT, null, null);
-  });
+  file.delete_async(GLib.PRIORITY_DEFAULT, null, null);
 }
 function writeSheet(file, rules, written) {
   const bytes = GLib.Bytes.new(rules);
@@ -1203,6 +1222,8 @@ var ThemeSheet = class {
   /** The sheet the latest write is for, null once removed. */
   latest = null;
   changedId = 0;
+  /** This enabling's own part of every sheet's name. */
+  instance = GLib.uuid_string_random().slice(0, 8);
   /** The rules written now, and again whenever the theme changes. */
   follow() {
     this.prepare();
@@ -1241,7 +1262,7 @@ var ThemeSheet = class {
     }
     this.generation += 1;
     const generation = this.generation;
-    const file = sheetFile(sheet.scope);
+    const file = sheetFile(sheet.scope, this.instance);
     this.latest = file;
     writeSheet(file, sheet.rules, () => {
       if (generation === this.generation && theme === themeContext().get_theme()) {
@@ -1284,7 +1305,7 @@ var ThemeSheet = class {
 
 // src/engine/chooser.ts
 var Clutter2 = imports.gi.Clutter;
-var St6 = imports.gi.St;
+var St7 = imports.gi.St;
 var ModalDialog = imports.ui.modalDialog;
 function handled(taken) {
   return taken ? Clutter2.EVENT_STOP : Clutter2.EVENT_PROPAGATE;
@@ -1344,6 +1365,7 @@ var Chooser = class {
     }
     this.pretendHeight = pretendHeight ?? null;
     const dialog = this.built();
+    dialog.setInitialKeyFocus(dialog.contentLayout);
     if (!dialog.open(global.get_current_time())) {
       this.forget();
       dialog.destroy();
@@ -1448,7 +1470,7 @@ var Chooser = class {
     const header = shellHeader(() => this.close());
     this.closeButton = header.closeButton;
     content.add_child(header.actor);
-    this.contentBin = new St6.Bin({ x_align: St6.Align.START });
+    this.contentBin = new St7.Bin({ x_align: St7.Align.START });
     this.hintLabel = hintLabel();
     content.add_child(this.buildArrangementsRow());
     content.add_child(this.contentBin);
@@ -1464,7 +1486,7 @@ var Chooser = class {
   /** The choice of arrangement and the chosen one's presets, side by
    * side above the page. */
   buildArrangementsRow() {
-    const row = new St6.BoxLayout({
+    const row = new St7.BoxLayout({
       vertical: false,
       style_class: "cplace-arrangements-row"
     });
@@ -1721,9 +1743,9 @@ function toDevice(values, lengths, scale = global.ui_scale) {
 
 // src/engine/preview.ts
 var Clutter3 = imports.gi.Clutter;
-var St7 = imports.gi.St;
+var St8 = imports.gi.St;
 function buildPreview(workArea, targets, layers, width) {
-  const column = new St7.BoxLayout({ vertical: true });
+  const column = new St8.BoxLayout({ vertical: true });
   if (width > 0) {
     const view = previewView(workArea, width);
     const canvas = screenCanvas(view);
@@ -1751,7 +1773,7 @@ function screenCanvas(view) {
   const canvas = new Clutter3.Actor();
   canvas.set_size(view.width, view.height);
   canvas.set_clip_to_allocation(true);
-  const screen = new St7.Bin({ style_class: "cplace-preview-screen" });
+  const screen = new St8.Bin({ style_class: "cplace-preview-screen" });
   screen.set_position(0, 0);
   screen.set_size(view.width, view.height);
   canvas.add_child(screen);
@@ -1759,14 +1781,14 @@ function screenCanvas(view) {
 }
 function slotFor(target, view, atEnd) {
   const { x, y, width, height } = target.frame;
-  const slot = new St7.Bin({
+  const slot = new St8.Bin({
     style_class: atEnd === true ? "cplace-preview-slot cplace-preview-slot-end" : "cplace-preview-slot"
   });
   if (atEnd === true) {
     slot.set_child(
-      new St7.Icon({
+      new St8.Icon({
         icon_name: "go-last",
-        icon_type: St7.IconType.SYMBOLIC,
+        icon_type: St8.IconType.SYMBOLIC,
         style_class: "cplace-end-mark"
       })
     );
@@ -1785,7 +1807,7 @@ function caption(workArea, count, layers) {
     width: logical(workArea.width),
     height: logical(workArea.height)
   });
-  return new St7.Label({
+  return new St8.Label({
     text: listed(layers.place ?? "", size, windows, layers.note),
     style_class: "cplace-preview-caption"
   });
@@ -1796,7 +1818,7 @@ function addHandles(canvas, handles) {
     if (place2.id === handles.active) {
       classes.push(`${handles.family}-active`);
     }
-    const button = new St7.Button({
+    const button = new St8.Button({
       style_class: classes.join(" "),
       can_focus: true
     });
@@ -1809,12 +1831,12 @@ function addHandles(canvas, handles) {
 }
 
 // src/engine/variables.ts
-var St8 = imports.gi.St;
+var St9 = imports.gi.St;
 function nameOf(number) {
   return typeof number.name === "string" ? number.name : number.name();
 }
 function variablesColumn(store, numbers2, changed) {
-  const column = new St8.BoxLayout({
+  const column = new St9.BoxLayout({
     vertical: true,
     style_class: "cplace-column"
   });
@@ -1851,11 +1873,11 @@ function alignNames(labels) {
   }
 }
 function variableRow(store, number, changed) {
-  const row = new St8.BoxLayout({
+  const row = new St9.BoxLayout({
     vertical: false,
     style_class: "cplace-variable-row"
   });
-  const label = new St8.Label({
+  const label = new St9.Label({
     text: nameOf(number),
     style_class: "cplace-variable-name"
   });
@@ -2233,8 +2255,7 @@ var WindowChoice = class {
 };
 
 // src/engine/window-list.ts
-var St9 = imports.gi.St;
-var CheckBoxes = imports.ui.checkBox;
+var St10 = imports.gi.St;
 var WindowList = class {
   /** The seeds are the applications that arrive ticked. The focus rules
    * are the page's, none by default, and so is the toggle that sends an
@@ -2242,16 +2263,16 @@ var WindowList = class {
   constructor(seeds, onChange, focus = { focusedFirst: false }, sendsToEnd = false) {
     this.onChange = onChange;
     this.choice = new WindowChoice(seeds, focus, sendsToEnd);
-    this.actor = new St9.BoxLayout({
+    this.actor = new St10.BoxLayout({
       vertical: true,
       style_class: "cplace-windows-block"
     });
     this.headingLabel = heading(_("Windows"));
     this.actor.add_child(this.headingLabel);
-    this.scroll = new St9.ScrollView({
-      hscrollbar_policy: St9.PolicyType.NEVER
+    this.scroll = new St10.ScrollView({
+      hscrollbar_policy: St10.PolicyType.NEVER
     });
-    this.column = new St9.BoxLayout({
+    this.column = new St10.BoxLayout({
       vertical: true,
       style_class: "cplace-column"
     });
@@ -2285,7 +2306,7 @@ var WindowList = class {
   refocus() {
     const index = this.choice.applyFocusRule();
     if (index !== null) {
-      this.windowBoxes.get(index)?.setToggleState(this.choice.isTicked(index));
+      this.windowBoxes.get(index)?.actor.set_checked(this.choice.isTicked(index));
     }
   }
   /** The list stands no taller than this, heading and all, and scrolls
@@ -2374,14 +2395,14 @@ var WindowList = class {
   }
   tickApp(appId, ticked) {
     for (const gatheredIndex of this.choice.tickApp(appId, ticked)) {
-      this.windowBoxes.get(gatheredIndex)?.setToggleState(ticked);
+      this.windowBoxes.get(gatheredIndex)?.actor.set_checked(ticked);
     }
     this.onChange();
   }
   tickWindow(gatheredIndex, ticked) {
     const app = this.choice.tickWindow(gatheredIndex, ticked);
     if (app !== null) {
-      this.appBoxes.get(app.appId)?.setToggleState(app.allTicked);
+      this.appBoxes.get(app.appId)?.actor.set_checked(app.allTicked);
     }
     this.onChange();
   }
@@ -2404,7 +2425,7 @@ var WindowList = class {
       this.column.add_child(box.actor);
       return box;
     }
-    const row = new St9.BoxLayout({ vertical: false });
+    const row = new St10.BoxLayout({ vertical: false });
     box.actor.x_expand = true;
     row.add_child(box.actor);
     row.add_child(this.endToggle(appId, name));
@@ -2414,7 +2435,7 @@ var WindowList = class {
   /** The toggle that sends an application's windows to the end, lit
    * while it does. */
   endToggle(appId, name) {
-    const toggle = new St9.Button({
+    const toggle = new St10.Button({
       style_class: "cplace-end-toggle",
       accessible_name: fill(_("Send {application} to the end"), {
         application: name
@@ -2422,9 +2443,9 @@ var WindowList = class {
       toggle_mode: true,
       can_focus: true,
       checked: this.choice.isSentToEnd(appId),
-      child: new St9.Icon({
+      child: new St10.Icon({
         icon_name: "go-last",
-        icon_type: St9.IconType.SYMBOLIC,
+        icon_type: St10.IconType.SYMBOLIC,
         icon_size: 12
       })
     });
@@ -2439,9 +2460,9 @@ var WindowList = class {
     if (extraClass === "") {
       this.column.add_child(box.actor);
     } else {
-      const wrapper = new St9.Bin({
+      const wrapper = new St10.Bin({
         style_class: extraClass,
-        x_align: St9.Align.START,
+        x_align: St10.Align.START,
         child: box.actor
       });
       this.column.add_child(wrapper);
@@ -2449,10 +2470,10 @@ var WindowList = class {
     return box;
   }
   tickBox(text, ticked, onToggle) {
-    const box = new CheckBoxes.CheckBox(text, {}, ticked);
+    const box = tickBox(text, ticked);
     box.actor.add_style_class_name("cplace-check");
     compactTick(box.actor);
-    box.getLabelActor().clutter_text.set_ellipsize(
+    box.label.clutter_text.set_ellipsize(
       imports.gi.Pango.EllipsizeMode.END
     );
     box.actor.connect("clicked", () => {
@@ -2463,25 +2484,25 @@ var WindowList = class {
 };
 
 // src/engine/pages/list-body.ts
-var St10 = imports.gi.St;
+var St11 = imports.gi.St;
 var ListBody = class {
   constructor(list, previewWidth, beside = {}) {
     this.list = list;
     this.width = previewWidth;
     this.least = previewWidth / 4;
-    this.actor = new St10.BoxLayout({
+    this.actor = new St11.BoxLayout({
       vertical: false,
       style_class: "cplace-body"
     });
     this.actor.add_child(list.actor);
-    this.right = new St10.BoxLayout({
+    this.right = new St11.BoxLayout({
       vertical: true,
       style_class: "cplace-right"
     });
     if (beside.above !== void 0) {
       this.right.add_child(beside.above);
     }
-    this.previewBin = new St10.Bin();
+    this.previewBin = new St11.Bin();
     this.right.add_child(this.previewBin);
     this.below = beside.below;
     if (this.below !== void 0) {
@@ -2689,7 +2710,6 @@ var ListPage = class {
 };
 
 // src/engine/pages/cascade.ts
-var CheckBoxes2 = imports.ui.checkBox;
 var corners = [
   "bottom-left",
   "bottom-right",
@@ -2809,9 +2829,8 @@ var CascadePage = class extends ListPage {
     );
     this.renameVariables = variables.rename;
     const column = variables.actor;
-    const spreadTick = new CheckBoxes2.CheckBox(
+    const spreadTick = tickBox(
       _("Spread the windows across the work area"),
-      {},
       this.settings().spread
     );
     spreadTick.actor.add_style_class_name("cplace-check");
@@ -3092,7 +3111,7 @@ function sameSpans(left, right) {
 
 // src/engine/grid-view.ts
 var Clutter4 = imports.gi.Clutter;
-var St11 = imports.gi.St;
+var St12 = imports.gi.St;
 function border() {
   return 2 * global.ui_scale;
 }
@@ -3114,7 +3133,7 @@ var GridView = class {
     this.actor = new Clutter4.Actor();
     this.actor.set_size(width, height);
     this.actor.set_clip_to_allocation(true);
-    const screen = new St11.Bin({ style_class: "cplace-preview-screen" });
+    const screen = new St12.Bin({ style_class: "cplace-preview-screen" });
     screen.set_size(width, height);
     this.actor.add_child(screen);
     const frame = border();
@@ -3144,7 +3163,7 @@ var GridView = class {
   addGhost(frame, toX, toY) {
     const left = toX(frame.x);
     const top = toY(frame.y);
-    const ghost = new St11.Bin({ style_class: "cplace-grid-ghost" });
+    const ghost = new St12.Bin({ style_class: "cplace-grid-ghost" });
     ghost.set_position(left, top);
     ghost.set_size(
       Math.max(2, toX(frame.x + frame.width) - left),
@@ -3184,7 +3203,7 @@ function cellButton(cell, layer) {
   const top = ys[cell.row] ?? 0;
   const right = xs[cell.column + 1] ?? left;
   const bottom = ys[cell.row + 1] ?? top;
-  const button = new St11.Button({
+  const button = new St12.Button({
     style_class: layer.styleClass,
     reactive: true,
     track_hover: true,
@@ -3209,7 +3228,7 @@ function cellButton(cell, layer) {
 function fillLayoutButtons(row, layouts, active, pick) {
   row.destroy_all_children();
   layouts.forEach((layout, index) => {
-    const button = new St11.Button({
+    const button = new St12.Button({
       label: layout.label,
       style_class: "cplace-layout-button",
       can_focus: true
@@ -3225,7 +3244,7 @@ function fillLayoutButtons(row, layouts, active, pick) {
 }
 
 // src/engine/area-picker.ts
-var St12 = imports.gi.St;
+var St13 = imports.gi.St;
 var AreaPicker = class {
   constructor(area, chosen) {
     this.area = area;
@@ -3279,7 +3298,7 @@ var AreaPicker = class {
   }
   /** The chosen area's outline, above the slots. */
   above(canvas) {
-    this.outline = new St12.Bin({ style_class: "cplace-area-outline" });
+    this.outline = new St13.Bin({ style_class: "cplace-area-outline" });
     canvas.add_child(this.outline);
     this.frame(this.area.cells);
   }
@@ -3424,7 +3443,7 @@ function whollyOutside(frame, area) {
 }
 
 // src/engine/pages/columns.ts
-var St13 = imports.gi.St;
+var St14 = imports.gi.St;
 var columnCount = {
   key: "columns-count",
   name: () => _("columns"),
@@ -3508,12 +3527,12 @@ var ColumnsPage = class extends ListPage {
   }
   /** The area's heading and its layouts, above the preview. */
   aboveThePreview() {
-    const column = new St13.BoxLayout({
+    const column = new St14.BoxLayout({
       vertical: true,
       style_class: "cplace-column"
     });
     column.add_child(heading(_("Area")));
-    this.layoutRow = new St13.BoxLayout({
+    this.layoutRow = new St14.BoxLayout({
       vertical: false,
       style_class: "cplace-layouts"
     });
@@ -3605,16 +3624,16 @@ function columnsPage(store) {
 // src/engine/pages/window-header.ts
 var Cinnamon = imports.gi.Cinnamon;
 var Pango = imports.gi.Pango;
-var St14 = imports.gi.St;
+var St15 = imports.gi.St;
 var ICON_SIZE = 20;
 function windowHeader(window, width) {
-  const row = new St14.BoxLayout({
+  const row = new St15.BoxLayout({
     vertical: false,
     style_class: "cplace-window-header"
   });
   row.set_width(width);
   if (window === null) {
-    row.add_child(new St14.Label({ text: _("No focused window to place.") }));
+    row.add_child(new St15.Label({ text: _("No focused window to place.") }));
     return row;
   }
   const app = Cinnamon.WindowTracker.get_default().get_window_app(window);
@@ -3623,7 +3642,7 @@ function windowHeader(window, width) {
   }
   const appName2 = windowAppName(window);
   const title = window.get_title();
-  const label = new St14.Label({
+  const label = new St15.Label({
     text: appName2 === null ? title : fill(_("{title} \u2013 {application}"), {
       title,
       application: appName2
@@ -3637,7 +3656,7 @@ function windowHeader(window, width) {
 
 // src/engine/pages/grid.ts
 var Clutter5 = imports.gi.Clutter;
-var St15 = imports.gi.St;
+var St16 = imports.gi.St;
 var LAST_KEY = "grid-last-layout";
 var arrowDirections = /* @__PURE__ */ new Map([
   [Clutter5.KEY_Left, "left"],
@@ -3681,21 +3700,21 @@ var GridPage = class {
     this.workArea = currentWorkArea();
     this.layouts = layoutsOr(this.store.list(GRID_LAYOUTS_KEY));
     this.useLayout(this.store.number(LAST_KEY, 0));
-    const page = new St15.BoxLayout({
+    const page = new St16.BoxLayout({
       vertical: true,
       style_class: "cplace-column cplace-grid-page"
     });
     page.add_child(heading(_("Window")));
     page.add_child(windowHeader(this.window, host.sizes.page));
     page.add_child(heading(_("Layout")));
-    this.layoutRow = new St15.BoxLayout({
+    this.layoutRow = new St16.BoxLayout({
       vertical: false,
       style_class: "cplace-layouts"
     });
     page.add_child(this.layoutRow);
-    this.viewBin = new St15.Bin({ x_align: St15.Align.START });
+    this.viewBin = new St16.Bin({ x_align: St16.Align.START });
     page.add_child(this.viewBin);
-    this.caption = new St15.Label({ style_class: "cplace-preview-caption" });
+    this.caption = new St16.Label({ style_class: "cplace-preview-caption" });
     page.add_child(this.caption);
     this.redraw();
     return page;
@@ -4062,14 +4081,14 @@ function recallOf(recording) {
 }
 
 // src/engine/pages/recorded.ts
-var St16 = imports.gi.St;
+var St17 = imports.gi.St;
 function drawnOver(workArea) {
   return monitorCount() > 1 ? { area: desktopArea(), place: _("All monitors") } : { area: workArea, place: "" };
 }
 function outlineMissing(canvas, view, missing) {
   for (const entry of missing) {
     const frame = trimmed(view.workArea, entry.frame);
-    const outline = new St16.Bin({ style_class: "cplace-preview-missing" });
+    const outline = new St17.Bin({ style_class: "cplace-preview-missing" });
     outline.set_position(view.toX(frame.x), view.toY(frame.y));
     outline.set_size(
       Math.max(2, view.toX(frame.x + frame.width) - view.toX(frame.x)),

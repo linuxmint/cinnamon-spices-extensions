@@ -5,8 +5,12 @@
 // chooser touches no disk. They go to the user's runtime directory under
 // the name of the class that scopes them, which colour-rules.ts takes from
 // their text, because St keeps a stylesheet's parse by its path, so changed
-// rules need a new name to be read afresh. A theme change replaces St's
-// theme, which the sheet is loaded into afresh.
+// rules need a new name to be read afresh. The name also carries a token of
+// its own for each time the extension is enabled, so that a write or a
+// deletion still under way from before a quick disable and enable reaches
+// only its own file; the folder they share is left, empty, for logout to
+// clear. A theme change replaces St's theme, which the sheet is loaded into
+// afresh.
 
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
@@ -22,22 +26,19 @@ function themeContext(): imports.gi.St.ThemeContext {
     return St.ThemeContext.get_for_stage(global.stage);
 }
 
-function sheetFile(scope: string): imports.gi.Gio.File {
+function sheetFile(scope: string, instance: string): imports.gi.Gio.File {
     return Gio.File.new_for_path(
         GLib.build_filenamev([
             GLib.get_user_runtime_dir(),
             "cplace",
-            `${scope}.css`,
+            `${scope}-${instance}.css`,
         ]),
     );
 }
 
-/** A file, and then its folder once no file is left in it, deleted in the
- * background; a folder still holding a file stays. */
+/** A file deleted in the background. */
 function deleteSheet(file: imports.gi.Gio.File): void {
-    file.delete_async(GLib.PRIORITY_DEFAULT, null, () => {
-        file.get_parent()?.delete_async(GLib.PRIORITY_DEFAULT, null, null);
-    });
+    file.delete_async(GLib.PRIORITY_DEFAULT, null, null);
 }
 
 /** The rules written to the file in the background, its folder made first
@@ -87,6 +88,8 @@ export class ThemeSheet {
     /** The sheet the latest write is for, null once removed. */
     private latest: imports.gi.Gio.File | null = null;
     private changedId = 0;
+    /** This enabling's own part of every sheet's name. */
+    private readonly instance = GLib.uuid_string_random().slice(0, 8);
 
     constructor(private readonly rulesNow: () => ColourSheet) {}
 
@@ -135,7 +138,7 @@ export class ThemeSheet {
         }
         this.generation += 1;
         const generation = this.generation;
-        const file = sheetFile(sheet.scope);
+        const file = sheetFile(sheet.scope, this.instance);
         this.latest = file;
         writeSheet(file, sheet.rules, () => {
             if (

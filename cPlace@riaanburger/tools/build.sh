@@ -15,11 +15,14 @@
 # that, and tsconfig.json's library keeps out newer methods, which esbuild
 # can't lower.
 #
-# CommonJS output on purpose: Cinnamon's requireModule (misc/fileUtils.js)
-# wraps the file in a function and, when the file assigns module.exports
-# itself, uses that as the module. esbuild's cjs output does exactly that,
-# so init, enable and disable are real exports rather than declarations
-# scraped by the loader's line-anchored regex fallback.
+# The bundle is esbuild's ES module output with its closing export statement
+# cut off, so that init, enable and disable stand as top-level function
+# declarations and nothing else is exported or assigned. That is the one
+# form both of Cinnamon's loaders read: up to 6.6, requireModule in
+# misc/fileUtils.js finds no module.exports line and gathers the top-level
+# declarations itself; from 6.8, the native importer exports the top-level
+# var and function declarations, and module is undefined while the main
+# file loads, so a module.exports line would throw before init was found.
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -49,11 +52,22 @@ esac
 mkdir -p "${OUT}"
 npx esbuild src/extension.ts \
     --bundle \
-    --format=cjs \
+    --format=esm \
     --target=firefox78 \
     --define:CPLACE_DEVELOPMENT="${DEVELOPMENT}" \
     --outfile="${OUT}/extension.js" \
     --log-level=warning
+# The export statement is the file's last, from "export {" to the closing
+# brace; the three names stay as top-level functions above it.
+python3 - "${OUT}/extension.js" <<'PY'
+import re, sys
+path = sys.argv[1]
+text = open(path).read()
+cut = re.sub(r"\nexport \{[^}]*\};\n?$", "\n", text)
+if cut == text or re.search(r"^(export |import |module\.exports)", cut, re.M):
+    sys.exit("build.sh: the bundle is not in the form both loaders read")
+open(path, "w").write(cut)
+PY
 cp src/metadata.json "${OUT}/metadata.json"
 cp src/settings-schema.json "${OUT}/settings-schema.json"
 cp src/stylesheet.css "${OUT}/stylesheet.css"
