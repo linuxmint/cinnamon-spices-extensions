@@ -1,0 +1,139 @@
+{
+    "section-general": {
+        "type": "section",
+        "description": "General"
+    },
+    "monitor": {
+        "type": "combobox",
+        "default": "primary",
+        "description": "Monitor",
+        "tooltip": "Which monitor the dock is shown on.",
+        "options": {
+            "Primary monitor": "primary",
+            "Secondary monitor": "secondary",
+            "All monitors": "all"
+        }
+    },
+    "dock-position": {
+        "type": "combobox",
+        "default": "bottom",
+        "description": "Dock position",
+        "tooltip": "Screen edge the dock is attached to.",
+        "options": {
+            "Bottom": "bottom",
+            "Top": "top",
+            "Left": "left",
+            "Right": "right"
+        }
+    },
+    "icon-size": {
+        "type": "spinbutton",
+        "default": 48,
+        "min": 24,
+        "max": 96,
+        "step": 2,
+        "description": "Icon size",
+        "tooltip": "Size of the application icons in pixels."
+    },
+    "edge-margin": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 48,
+        "step": 2,
+        "description": "Gap from the screen edge",
+        "tooltip": "Distance between the dock and the edge it is attached to."
+    },
+    "reveal-size": {
+        "type": "spinbutton",
+        "default": 4,
+        "min": 2,
+        "max": 24,
+        "step": 1,
+        "description": "Autohide trigger thickness",
+        "tooltip": "Thickness of the invisible strip at the screen edge that brings the dock back."
+    },
+
+    "section-behavior": {
+        "type": "section",
+        "description": "Behavior"
+    },
+    "autohide-mode": {
+        "type": "combobox",
+        "default": "intelligent",
+        "description": "Autohide",
+        "tooltip": "Intelligent hides the dock only when a window overlaps it, Always always hides it, Never keeps it on screen.",
+        "options": {
+            "Intelligent": "intelligent",
+            "Always": "always",
+            "Never": "never"
+        }
+    },
+    "autohide-delay": {
+        "type": "spinbutton",
+        "default": 350,
+        "min": 0,
+        "max": 3000,
+        "step": 50,
+        "description": "Hide delay (ms)",
+        "tooltip": "How long the pointer has to leave the dock before it hides."
+    },
+    "click-action": {
+        "type": "combobox",
+        "default": "minimize",
+        "description": "Click action",
+        "tooltip": "What a left click does on an application that already has windows.",
+        "options": {
+            "Minimize / focus": "minimize",
+            "Cycle through windows": "cycle",
+            "Show window previews": "preview"
+        }
+    },
+    "middle-click-action": {
+        "type": "combobox",
+        "default": "new-window",
+        "description": "Middle click action",
+        "options": {
+            "Open a new window": "new-window",
+            "Nothing": "nothing"
+        }
+    },
+    "isolate-workspaces": {
+        "type": "switch",
+        "default": false,
+        "description": "Show only windows from the current workspace",
+        "tooltip": "When off, the dock also shows and focuses windows from other workspaces."
+    },
+    "show-all-monitors": {
+        "type": "switch",
+        "default": true,
+        "description": "Show windows from all monitors",
+        "tooltip": "When off, only windows on the monitor that hosts the dock are listed."
+    },
+
+    "section-appearance": {
+        "type": "section",
+        "description": "Appearance"
+    },
+    "background-opacity": {
+        "type": "scale",
+        "default": 85,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "units": "%",
+        "digits": 0,
+        "description": "Background opacity",
+        "tooltip": "Opacity of the dock background. The border radius and padding come from stylesheet.css."
+    },
+    "animate-hover": {
+        "type": "switch",
+        "default": true,
+        "description": "Animate icons on hover"
+    },
+    "show-tooltips": {
+        "type": "switch",
+        "default": true,
+        "description": "Show application tooltips"
+    }
+}
