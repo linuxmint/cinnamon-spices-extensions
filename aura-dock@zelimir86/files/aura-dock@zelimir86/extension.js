@@ -9,8 +9,9 @@ const Me = Extension.getCurrentExtension();
 let metadata = null;
 let controllers = [];
 let _recreateScheduled = false;
+let _monitorsChangedId = 0;
 
-function _readMonitorMode() {
+function _readMonitorMode(callback) {
     try {
         const Gio = imports.gi.Gio;
         const path = GLib.build_filenamev([
@@ -18,17 +19,25 @@ function _readMonitorMode() {
             metadata.uuid, metadata.uuid + '.json'
         ]);
         const file = Gio.File.new_for_path(path);
-        const [ok, bytes] = file.load_contents(null);
-        if (ok) {
-            const text = imports.byteArray.toString(bytes);
-            const data = JSON.parse(text);
-            if (data && data.monitor && data.monitor.value)
-                return data.monitor.value;
-        }
+        file.load_contents_async(null, (f, res) => {
+            try {
+                const [ok, bytes] = f.load_contents_finish(res);
+                if (ok) {
+                    const text = imports.byteArray.toString(bytes);
+                    const data = JSON.parse(text);
+                    if (data && data.monitor && data.monitor.value) {
+                        callback(data.monitor.value);
+                        return;
+                    }
+                }
+            } catch (e) {
+                // Fall back to the primary monitor.
+            }
+            callback('primary');
+        });
     } catch (e) {
-        // Fall back to the primary monitor.
+        callback('primary');
     }
-    return 'primary';
 }
 
 function _monitorIndicesForMode(mode) {
@@ -62,21 +71,31 @@ function _destroyAll() {
     if (global.auraDock) delete global.auraDock;
 }
 
-function _recreateAll(mode) {
+function _recreateAll(mode, callback) {
     const { DockController } = Me.imports.dock;
-    if (!mode)
-        mode = _readMonitorMode();
-    const indices = _monitorIndicesForMode(mode);
-    for (const idx of indices) {
-        try {
-            const c = new DockController(idx, metadata, _recreateAll);
-            c.enable();
-            controllers.push(c);
-        } catch (e) {
-            global.logError(e, 'Aura Dock: failed to create dock for monitor ' + idx);
+    const doCreate = (m) => {
+        const indices = _monitorIndicesForMode(m);
+        for (const idx of indices) {
+            try {
+                const c = new DockController(idx, metadata, (newMode) => {
+                    _destroyAll();
+                    _recreateAll(newMode);
+                });
+                c.enable();
+                controllers.push(c);
+            } catch (e) {
+                global.logError(e, 'Aura Dock: failed to create dock for monitor ' + idx);
+            }
         }
+        global.auraDock = controllers.length ? controllers[0] : null;
+        if (callback) callback();
+    };
+
+    if (mode) {
+        doCreate(mode);
+    } else {
+        _readMonitorMode(doCreate);
     }
-    global.auraDock = controllers.length ? controllers[0] : null;
 }
 
 function _scheduleRecreate() {
@@ -98,8 +117,6 @@ function _scheduleRecreate() {
 function init(meta) {
     metadata = meta;
 }
-
-let _monitorsChangedId = 0;
 
 function enable() {
     _recreateAll();

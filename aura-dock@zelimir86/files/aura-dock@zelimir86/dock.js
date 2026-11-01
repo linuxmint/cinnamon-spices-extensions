@@ -78,16 +78,17 @@ var DockController = class DockController {
 
         // Follow the GTK theme's accent colour for the running indicator.
         this._gnomeSettings = new Gio.Settings({ schema_id: 'org.cinnamon.desktop.interface' });
-        this.accentColor = this._resolveAccentColor();
+        this.accentColor = '#92b372';
         this._gnomeSettings.connect('changed', () => {
-            const newColor = this._resolveAccentColor();
-            if (newColor !== this.accentColor) {
-                this.accentColor = newColor;
-                for (const icon of this._icons.values()) {
-                    icon._indicatorKey = null;
-                    icon._updateIndicator();
+            this._resolveAccentColor((color) => {
+                if (color !== this.accentColor) {
+                    this.accentColor = color;
+                    for (const icon of this._icons.values()) {
+                        icon._indicatorKey = null;
+                        icon._updateIndicator();
+                    }
                 }
-            }
+            });
         });
     }
 
@@ -166,29 +167,44 @@ var DockController = class DockController {
         return value;
     }
 
-    _resolveAccentColor() {
+    _resolveAccentColor(callback) {
         try {
             const theme = this._gnomeSettings.get_string('gtk-theme') || 'Mint-L';
             const candidates = [theme, theme.replace(/-Dark$/, ''), 'Mint-L'];
-            for (const candidate of candidates) {
+            const tryCandidate = (i) => {
+                if (i >= candidates.length) {
+                    callback('#92b372');
+                    return;
+                }
+                const candidate = candidates[i];
                 const path = GLib.build_filenamev(['/usr/share/themes', candidate, 'gtk-3.0', 'gtk.css']);
                 const file = Gio.File.new_for_path(path);
-                const [ok, bytes] = file.load_contents(null);
-                if (!ok)
-                    continue;
-                const text = imports.byteArray.toString(bytes);
-                let color = this._resolveDefineColor(text, 'theme_selected_bg_color');
-                if (!color)
-                    color = this._resolveDefineColor(text, 'accent_bg_color');
-                if (!color)
-                    color = this._resolveDefineColor(text, 'accent_color');
-                if (color && !color.startsWith('@'))
-                    return color;
-            }
+                file.load_contents_async(null, (f, res) => {
+                    try {
+                        const [ok, bytes] = f.load_contents_finish(res);
+                        if (ok) {
+                            const text = imports.byteArray.toString(bytes);
+                            let color = this._resolveDefineColor(text, 'theme_selected_bg_color');
+                            if (!color)
+                                color = this._resolveDefineColor(text, 'accent_bg_color');
+                            if (!color)
+                                color = this._resolveDefineColor(text, 'accent_color');
+                            if (color && !color.startsWith('@')) {
+                                callback(color);
+                                return;
+                            }
+                        }
+                    } catch (e) {
+                        // Try next candidate.
+                    }
+                    tryCandidate(i + 1);
+                });
+            };
+            tryCandidate(0);
         } catch (e) {
             global.logError(e, 'Aura Dock: could not resolve accent colour');
+            callback('#92b372');
         }
-        return '#92b372';
     }
 
     enable() {
@@ -221,6 +237,16 @@ var DockController = class DockController {
         this._connectSignals();
         this._applyDockStyle();
         this._sync(true);
+
+        // Resolve the GTK theme's accent colour asynchronously and apply it to
+        // the running indicators.
+        this._resolveAccentColor((color) => {
+            this.accentColor = color;
+            for (const icon of this._icons.values()) {
+                icon._indicatorKey = null;
+                icon._updateIndicator();
+            }
+        });
 
         // Show the dock once on startup, then let autohide take over. Without
         // this a fresh install on a full screen would look like nothing
