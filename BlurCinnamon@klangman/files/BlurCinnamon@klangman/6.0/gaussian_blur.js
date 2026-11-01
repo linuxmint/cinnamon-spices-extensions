@@ -4,8 +4,12 @@
 const GObject = imports.gi.GObject;
 
 const St = imports.gi.St;
+const Utils    = require("./utils.js");
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
+
+const EffectBaseModule = require("./effect_base");
+const EffectBase = EffectBaseModule.EffectBase;
 
 const UUID = "BlurCinnamon@klangman";
 
@@ -14,6 +18,34 @@ const DEFAULT_PARAMS = {
     radius: 30, brightness: .6,
     width: 0, height: 0, direction: 0, chained_effect: null
 };
+
+// Pool of released direction=1 "chained" effects, keyed by nothing in particular - any one of
+// them can serve any future top-level (direction=0) instance's chained partner, since they're
+// all identical in shape and just need their radius/brightness/width/height refreshed. Reusing
+// one avoids constructing a fresh GaussianBlurEffect. Capped like BlurBase's gaussian pool (one
+// chained effect per top-level effect); see effect_base.js.
+const CHAINED_EFFECT_CACHE = [];
+
+function _acquireChainedEffect(params) {
+    if (CHAINED_EFFECT_CACHE.length > 0) {
+        let effect = CHAINED_EFFECT_CACHE.pop();
+        effect.radius = params.radius;
+        effect.brightness = params.brightness;
+        effect.width = params.width;
+        effect.height = params.height;
+        return effect;
+    }
+    return new GaussianBlurEffect({ ...params, direction: 1 });
+}
+
+function _releaseChainedEffect(effect) {
+    EffectBaseModule.releaseToPool(CHAINED_EFFECT_CACHE, effect);
+}
+
+// Called from the extension's disable(), after the top-level gaussian pool has been drained
+function drainPools() {
+    EffectBaseModule.drainPool(CHAINED_EFFECT_CACHE);
+}
 
 
 const GaussianBlurEffect =
@@ -68,7 +100,7 @@ const GaussianBlurEffect =
                 GObject.Object,
             ),
         }
-    }, class GaussianBlurEffect extends Clutter.ShaderEffect {
+    }, class GaussianBlurEffect extends EffectBase {
         constructor(params) {
             super(params);
 
@@ -102,14 +134,13 @@ const GaussianBlurEffect =
             else
                this.chained_effect = null;
 
-            // set shader source
-            this._source = this.get_shader_source(SHADER_FILENAME);
-            if (this._source)
-                this.set_shader_source(this._source);
-
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
             this.set_uniform_value('sigma', parseFloat(this.radius * theme_context.scale_factor / 2 - 1e-6));
             this.set_enabled(this.radius > 0.);
+        }
+
+        get_effect_source() {
+            return this.get_shader_source(SHADER_FILENAME);
         }
 
         get_shader_source(shader_filename) {
@@ -139,6 +170,15 @@ const GaussianBlurEffect =
                 if (this.chained_effect)
                     this.chained_effect.radius = value;
             }
+        }
+
+        // The furthest distance (in pixels, along one axis) from a pixel that gaussian_blur.glsl samples:
+        // the loop takes 2*ceil(1.5*sigma) steps out from the centre, i.e. about 3 sigma.
+        get sample_reach() {
+            if (this._radius <= 0)
+                return 0;
+            const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+            return 2 * Math.ceil(1.5 * (this._radius * scale_factor / 2));
         }
 
         get brightness() {
@@ -203,6 +243,13 @@ const GaussianBlurEffect =
             this._chained_effect = value;
         }
 
+        vfunc_pre_paint(paintContext) {
+            if (!super.vfunc_pre_paint(paintContext))
+                return false;
+            Utils.extendOffscreenViewport(paintContext, this.get_actor());
+            return true;
+        }
+
         vfunc_set_actor(actor) {
             if (this._actor_connection_size_id) {
                 let old_actor = this.get_actor();
@@ -231,26 +278,58 @@ const GaussianBlurEffect =
             }
 
             super.vfunc_set_actor(actor);
-
+            
+            if (actor) {
+               const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+               this.set_uniform_value('sigma', parseFloat(this._radius * scale_factor / 2 - 1e-6));
+            }
+          
             if (this.direction == 0) {
-                // Clear the old effect, if it exists
                 if (this.chained_effect) {
+                    // Detach the existing chained_effect from its old actor first.
                     try {
                         let current_actor = this.chained_effect.get_actor();
                         if (current_actor) current_actor.remove_effect(this.chained_effect);
                     } catch (e) {}
 
-                    this.chained_effect = null; 
-                }
-
-                // If there is a valid actor, recreate the effect and add it
-                if (actor !== null && actor !== undefined) {
-                    this.chained_effect = new GaussianBlurEffect({
+                    if (actor !== null && actor !== undefined) {
+                        // If its old actor was destroyed under it, reattaching it would log
+                        // criticals (see effect_base.js), so use a fresh one instead.
+                        if (EffectBaseModule.shouldDiscard(this.chained_effect)) {
+                            _releaseChainedEffect(this.chained_effect);
+                            this.chained_effect = _acquireChainedEffect({
+                                radius: this.radius, brightness: this.brightness,
+                                width: this.width, height: this.height
+                            });
+                        }
+                        // Reuse the SAME chained_effect instance rather than destroying it and
+                        // constructing a fresh one - refresh its properties (going through the
+                        // normal setters keeps its own uniforms in sync) and just move it to the
+                        // new actor. This is what avoids recompiling its shader program on every
+                        // reattachment (e.g. every time a cached top-level effect - see
+                        // BlurBase's effect caches in extension.js - gets acquired and reattached
+                        // to a different window's actor).
+                        this.chained_effect.radius = this.radius;
+                        this.chained_effect.brightness = this.brightness;
+                        this.chained_effect.width = this.width;
+                        this.chained_effect.height = this.height;
+                        actor.add_effect(this.chained_effect);
+                    } else {
+                        // Real teardown (not just a reattachment) - release the chained_effect
+                        // into the shared pool instead of discarding it, so some other
+                        // GaussianBlurEffect can reuse its already-compiled shader later instead
+                        // of triggering a fresh compile.
+                        _releaseChainedEffect(this.chained_effect);
+                        this.chained_effect = null;
+                    }
+                } else if (actor !== null && actor !== undefined) {
+                    // First attach - acquire one (from the pool if available, otherwise a fresh
+                    // instance) rather than always constructing new.
+                    this.chained_effect = _acquireChainedEffect({
                         radius: this.radius,
                         brightness: this.brightness,
                         width: this.width,
-                        height: this.height,
-                        direction: 1
+                        height: this.height
                     });
                     actor.add_effect(this.chained_effect);
                 }

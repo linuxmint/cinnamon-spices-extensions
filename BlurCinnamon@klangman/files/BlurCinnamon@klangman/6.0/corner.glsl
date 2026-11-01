@@ -76,7 +76,7 @@ float rounded_rect_coverage(vec2 p, vec4 bounds, float clip_radius) {
     return circle_bounds(p, center, clip_radius);
 }
 
-void main(void) {
+void blurcinnamon_main() {
     vec2 uv = cogl_tex_coord_in[0].xy;
     vec2 pos = uv * vec2(width, height);
     vec4 c = getTexture(uv);
@@ -91,4 +91,13 @@ void main(void) {
     float alpha = rounded_rect_coverage(pos, bounds, radius);
 
     cogl_color_out = vec4(c.rgb * alpha, min(alpha, c.a));
+}
+
+// Apply the actor's paint opacity. ClutterOffscreenEffect passes the actor's paint opacity to the final
+// on-screen pass only as the (premultiplied) pipeline colour, cogl_color_in. Inner passes in an effect chain
+// are rendered with the opacity forced to 255 (cogl_color_in == 1), so multiplying in every shader applies
+// the opacity exactly once. Without this, actor.opacity has no effect on any actor using these effects.
+void main() {
+    blurcinnamon_main();
+    cogl_color_out *= cogl_color_in;
 }

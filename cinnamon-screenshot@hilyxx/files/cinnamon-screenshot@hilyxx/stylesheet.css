@@ -356,7 +356,6 @@
 }
 
 .edit-toolbar-btn,
-.edit-toolbar-btn.thicknesses,
 .edit-toolbar-btn.colors {
     background-color: rgba(80,80,80,0.7);
     border-radius: 99px;
@@ -370,16 +369,13 @@
 
 .edit-toolbar-btn:hover,
 .edit-toolbar-btn.colors:hover,
-.edit-toolbar-btn.thicknesses:hover,
 .edit-toolbar-btn:active,
-.edit-toolbar-btn.colors:active,
-.edit-toolbar-btn.thicknesses:active {
+.edit-toolbar-btn.colors:active {
     background-color: #64a3d2;
     color: white;
 }
 
-.edit-toolbar-btn.disabled,
-.edit-toolbar-btn.thicknesses.disabled {
+.edit-toolbar-btn.disabled {
     background-color: rgba(80,80,80,0.35);
     color: rgba(110,110,110,0.45);
 }

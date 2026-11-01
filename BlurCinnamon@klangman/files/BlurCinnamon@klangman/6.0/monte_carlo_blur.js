@@ -4,8 +4,11 @@
 const GObject = imports.gi.GObject;
 
 const St = imports.gi.St;
+const Utils    = require("./utils.js");
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
+
+const EffectBase = require("./effect_base").EffectBase;
 
 const UUID = "BlurCinnamon@klangman";
 
@@ -76,7 +79,7 @@ const MonteCarloBlurEffect =
                 true,
             ),
         }
-    }, class MonteCarloBlurEffect extends Clutter.ShaderEffect {
+    }, class MonteCarloBlurEffect extends EffectBase {
         constructor(params) {
             super(params);
 
@@ -115,13 +118,12 @@ const MonteCarloBlurEffect =
             else
                this.prefer_closer_pixels = true;
 
-            // set shader source
-            this._source = this.get_shader_source(SHADER_FILENAME);
-            if (this._source)
-                this.set_shader_source(this._source);
-
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
             this.set_uniform_value('radius', parseFloat(this._radius * theme_context.scale_factor - 1e-6));
+        }
+
+        get_effect_source() {
+            return this.get_shader_source(SHADER_FILENAME);
         }
 
         get_shader_source(shader_filename) {
@@ -160,6 +162,16 @@ const MonteCarloBlurEffect =
                 this.set_uniform_value('iterations', this._iterations);
                 this.set_enabled(this.radius > 0. && this.iterations > 0);
             }
+        }
+
+        // The furthest distance (in pixels, in any direction) from a pixel that monte_carlo_blur.glsl samples:
+        // the shader offsets each sample by rv.x * dir * (16 * radius), with |rv.x| <= 1 and dir a unit vector.
+        // (this._radius is already the UI radius / 10 here.)
+        get sample_reach() {
+            if (this._radius <= 0 || this._iterations <= 0)
+                return 0;
+            const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+            return 16 * this._radius * scale_factor;
         }
 
         get brightness() {
@@ -222,6 +234,13 @@ const MonteCarloBlurEffect =
             }
         }
 
+        vfunc_pre_paint(paintContext) {
+            if (!super.vfunc_pre_paint(paintContext))
+                return false;
+            Utils.extendOffscreenViewport(paintContext, this.get_actor());
+            return true;
+        }
+
         vfunc_set_actor(actor) {
             if (this._actor_connection_size_id) {
                 let old_actor = this.get_actor();
@@ -250,5 +269,10 @@ const MonteCarloBlurEffect =
             }
 
             super.vfunc_set_actor(actor);
+
+            if (actor) {
+               const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+               this.set_uniform_value('radius', parseFloat(this._radius * scale_factor - 1e-6));
+            }
         }
     });

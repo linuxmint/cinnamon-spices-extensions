@@ -1,5 +1,68 @@
 # Changelog
 
+## 2.7.0
+
+### New features
+
+* Added a new "Liquid Glass" effect (based on the Blur-my-Shell implementation) with its own set of tuning options (refraction scale, bezel width, rim spread, glass thickness, Fresnel glare, backdrop zoom, inner shadow, chromatic dispersion and edge behavior). The glass backdrop is blurred using the Dual Kawase algorithm.
+* On-screen display (OSD) blurring is now available (volume, brightness and workspace switch popups), including support for Cinnamon 6.0.x.
+* Added support for blurring the Centered Cinnamon Dock extension.
+* Added interoperability with the "Rounded Corners" extension; blurred windows can match the corner radius set by that extension (new option, enabled by default).
+* Improved interoperability with the Burn-My-Windows extension, including correct blur positioning during window open effects.
+* Added support for PanelTranslator 1.3.
+* Dynamic window blurring now takes the window's opacity into account.
+* Replaced the "Add entry for the most recently focused window" button with a new "Pick a window to blur…" window picker.
+* List tables and the list entry editor now show a colour swatch for the tint colour.
+* The additional effect-specific settings (Monte Carlo and Liquid Glass) have been moved to their own tab in the settings GUI.
+* Renamed "Dimming/Colorize" to "Tint" throughout the settings since that better describes what it does.
+* A first, experimental attempt at Wayland support (Cinnamon 6.6 only).
+* Fixed translation support.
+* New icon designed by [Selinaru](https://github.com/Selinaru).
+
+### Performance improvements
+
+* Fixed a GPU memory leak on Cinnamon 6.2+ by building all effects on Cinnamon.GLSLEffect instead of Clutter.ShaderEffect.
+* Added effect caching/pooling to reduce memory usage.
+* Blur and desaturation effects are now applied only to the visible area of a component rather than the entire unclipped background actor.
+* Optimized the artifact mitigation logic for application window blurring; it no longer repaints windows that don't overlap and avoids needless cascading of paint re-queues.
+* Only the shader uniforms that changed since the last paint are sent to the GPU.
+* Window clone rescans are coalesced and needless stacking checks are skipped, making dragging blurred windows and animating panels cheaper.
+* The Liquid Glass shader was made cheaper (12-17% less GPU time on older Intel GPUs) with identical output.
+* Reduced the number of Dual Kawase passes for lower blur radius settings, and tuned the Dual Kawase pixel offsets.
+* Title bar blurring no longer creates a hidden background for windows that are already blurred.
+
+### Fixes
+
+* Fix a Cinnamon crash when a Plank dock window was blurred (Plank is now never blurred).
+* Fix restored (unminimized) windows sometimes staying invisible until a popup or thumbnail was opened.
+* Fix a brightening/glowing band along the screen edges under blurred backgrounds when a window hangs off the screen.
+* Fix blurred backgrounds being clipped on the right/bottom when a blurred window is resized larger than the display.
+* Fix a focused window disappearing from the dynamic blur of a keep-above ("always on top") window.
+* Fix wallpaper bleeding into the bottom of the title bar blur, and title bar clipping that left a pixel or two of unblurred background.
+* Fix title bar background corner clipping so the title bar is properly covered, and make title bar blurring smoother near edges.
+* Fix some wallpaper bleeding caused by Muffin culling the paint area of invisible regions.
+* Fix blur backgrounds extending past the limits of some components, and handle fractional viewports and invalid clip bounds.
+* Fix several OSD issues: artifacts and missing blur when switching workspaces, wrong bounds, window stacking order behind the OSD, and blur opacity not following OSD fades.
+* Fix tooltip blur flickering when a tooltip is shown.
+* Fix several Liquid Glass glitches: edge clipping, the glass freezing while drag-resizing a window, and the backdrop jumping when menus, tooltips or windows open, move or resize.
+* Fix how dynamic blur window clones are destroyed, and an event listener that was not disconnected.
+* Fix Focus Effect signals not being disconnected properly.
+* Fix duplicate window and desklet backgrounds, and window stacking issues when backgrounds were rebuilt.
+* Fix notification and tooltip styles not being restored when the extension is disabled, and pending timers/callbacks not being cancelled on cleanup.
+* Critical notifications are now honoured when a fullscreen window is active.
+* Fix the clearing of some CSS styling, which removed the scroll bars from the Radio3.0 applet’s popup menu.
+* Fix handling of translated versions of the "Default window settings" entry.
+* Fix running under older Cinnamon versions, and make the enhanced settings dependencies and revealers work with the upcoming Cinnamon release.
+* Reduce some Clutter warning messages in the logs.
+
+Special thanks to [Lucas-X-A](https://github.com/Lucas-X-A) and [anthonytheinventor](https://github.com/anthonytheinventor) for their many code contributions to this release!
+
+As you can see, this is a truly massive update. I am hoping there is not an equally massive number of new bugs. Many person-hours were put into this release along with a good chunk of Claude AI assistance to help debug and develop, making it possible to put together such a large number of changes in a short time.
+
+I also need to thank all of the people who contributed through bug reports and suggestions. Please continue to help by reporting any issues that you happen to see.
+
+Hopefully everyone appreciates the results of the work that the many contributors have put into this release.
+
 ## 2.6.1
 
 * Fix a memory leak with Dual Kawase effect.

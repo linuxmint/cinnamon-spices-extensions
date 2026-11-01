@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+* Added a Cinnamon 6.7.6 branch. This version includes the 5 missing Gnome effect (Broken Glass, Matrix, Paint Brush, Snap of Disintegration and TRex Attack). Cinnamon 6.7.6-unstable has the missing API needed to enable these effects, and this 6.7.6 support will automatically be used in Cinnamon 6.8 when it's released later this year.
+* Added three new effects (Aperture Panels, Morph, Wormhole). These effects make use of a new CinnamonBurnMyWindows "Layers" feature that allows effects to manipulate the desktop below the target windows location giving the new effects an additional dimension that was not possible before now.
+* Added a new feature to replace the window scaling process which was used to allow some effects (i.e Doom) to expand outside the bounds of the window it applies to. With this new "Canvas" feature over sized effects can operate without the bugs associated with window scaling. This fixes the Doom effect and removed the need for it's "hack" setting. It also allows many of the 5 (previously missing) Gnome effects to work correctly as well as the 2 of the 3 new effects that use the new "Layers" feature.
+* Some other minor fixes and some changes to improve maintainability.
+
 ## 1.0.4
 
 * Improved the Fire and Mushroom effect settings to be more clean, the custom settings now only show when "custom" is selected in the drop-down list.

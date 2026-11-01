@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: active-window-indicator@fabiodamio 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-08-04 18:18+0200\n"
-"PO-Revision-Date: 2026-08-04 18:14+0200\n"
+"POT-Creation-Date: 2026-10-07 21:00+0200\n"
+"PO-Revision-Date: 2026-10-07 21:00+0200\n"
 "Last-Translator: fabiodamio\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -26,6 +26,8 @@ msgstr "Evidenzia la finestra attiva con una barra superiore personalizzabile."
 
 #. settings-schema.json->line-height->units
 #. settings-schema.json->slant-percent->units
+#. settings-schema.json->margin-left-right->units
+#. settings-schema.json->margin-top->units
 msgid "px"
 msgstr "px"
 
@@ -49,6 +51,22 @@ msgstr "Larghezza rispetto alla finestra"
 #. settings-schema.json->slant-percent->description
 msgid "End slant"
 msgstr "Svasatura estremità"
+
+#. settings-schema.json->margin-left-right->description
+msgid "Left and Right Margin"
+msgstr "Margine sinistro e destro"
+
+#. settings-schema.json->margin-left-right->tooltip
+msgid "Margin to avoid rounded window corners"
+msgstr "Margine per evitare gli angoli arrotondati della finestra"
+
+#. settings-schema.json->margin-top->description
+msgid "Top Margin"
+msgstr "Margine superiore"
+
+#. settings-schema.json->margin-top->tooltip
+msgid "Distance from the top edge of the window"
+msgstr "Distanza dal bordo superiore della finestra"
 
 #. settings-schema.json->alpha-percent->description
 msgid "Opacity / Transparency"

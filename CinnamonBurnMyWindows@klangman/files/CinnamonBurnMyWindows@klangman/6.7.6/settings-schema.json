@@ -1,0 +1,2956 @@
+{
+  "layout" : {
+    "type" : "layout",
+    "pages" : ["general-page", "effects-page", "application-page", "random-page", "power-page", "about-page"],
+
+    "general-page" : {
+      "type" : "page",
+      "title" : "General",
+      "sections" : ["general-settings"]
+    },
+    "effects-page" : {
+      "type" : "page",
+      "title" : "Effect Settings",
+      "sections" : ["effect-selector-section", "effect-settings"]
+    },
+    "application-page": {
+      "type" : "page",
+      "title" : "Application Specifics",
+      "sections" : ["app-specific-settings"]
+    },
+    "random-page" : {
+      "type" : "page",
+      "title" : "Random Effects",
+      "sections" : ["random-section"]
+    },
+    "power-page" : {
+      "type" : "page",
+      "title" : "Power",
+      "sections" : ["power-section", "power-dialog-section"]
+    },
+    "about-page" : {
+      "type" : "page",
+      "title" : "About",
+      "sections" : ["about-section"]
+    },
+
+    "general-settings" : {
+      "type" : "section",
+      "title" : "Burn My Windows General Settings",
+      "keys" : ["open-window-effect", "close-window-effect", "minimize-effect", "unminimize-effect", "enable-sound", "dialog-special", "dialog-open-effect", "dialog-close-effect"]
+    },
+
+    "app-specific-settings" : {
+      "type" : "section",
+      "title" : "Application Specific Settings",
+      "keys" : ["app-rules","app-rules-button"]
+    },
+
+    "effect-selector-section" : {
+      "type" : "section",
+      "title" : "Effect Selector",
+      "keys" : ["effect-selector"]
+    },
+    "effect-settings" : {
+      "type" : "section",
+      "title" : "Effect Specific Settings",
+      "keys" : ["aperture-panels-panel-size", "aperture-panels-wave-shape", "aperture-panels-flip-axis", "aperture-panels-backdrop", "aperture-panels-border-style", "aperture-panels-border-color", "aperture-panels-animation-time", "aperture-panels-open-sound", "aperture-panels-close-sound", "aperture-panels-reset",
+                "apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time", "apparition-open-sound", "apparition-close-sound", "apparition-reset",
+                "aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time", "aura-glow-open-sound", "aura-glow-close-sound", "aura-glow-reset",
+                "broken-glass-scale", "broken-glass-gravity", "broken-glass-blow-force", "broken-glass-use-pointer", "broken-glass-animation-time", "broken-glass-open-sound", "broken-glass-close-sound",
+                "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time", "doom-open-sound", "doom-close-sound", "doom-reset",
+                "energize-a-scale", "energize-a-color", "energize-a-animation-time", "energize-a-open-sound", "energize-a-close-sound", "energize-a-reset",
+                "energize-b-scale", "energize-b-color", "energize-b-animation-time", "energize-b-open-sound", "energize-b-close-sound", "energize-b-reset",
+                "fire-presets", "fire-custom-scale", "fire-custom-movement-speed", "fire-colors", "fire-3d-noise", "fire-random-color", "fire-animation-time", "fire-open-sound", "fire-close-sound", "fire-reset",
+                "focus-blur-amount", "focus-blur-quality", "focus-animation-time", "focus-open-sound", "focus-close-sound", "focus-reset",
+                "glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time", "glide-open-sound", "glide-close-sound", "glide-reset",
+                "glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time", "glitch-open-sound", "glitch-close-sound", "glitch-reset",
+                "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time", "hexagon-open-sound", "hexagon-close-sound", "hexagon-reset",
+                "incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time", "incinerate-open-sound", "incinerate-close-sound", "incinerate-reset",
+                "magiclamp-effect", "magiclamp-edge", "magiclamp-edge-offset", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time", "magiclamp-open-sound", "magiclamp-close-sound", "magiclamp-reset",
+                "morph-style", "morph-strength", "morph-animation-time", "morph-open-sound", "morph-close-sound", "morph-reset",
+                "matrix-scale", "matrix-randomness", "matrix-tip-color", "matrix-trail-color", "matrix-overshoot", "matrix-animation-time", "matrix-open-sound", "matrix-close-sound",
+                "mushroom-presets", "mushroom-custom-scale-style", "mushroom-custom-spark-count", "mushroom-custom-spark-color", "mushroom-custom-spark-rotation", "mushroom-custom-rays-color", "mushroom-custom-ring-count", "mushroom-custom-ring-rotation", "mushroom-custom-star-count", "mushroom-star-colors", "mushroom-animation-time", "mushroom-open-sound", "mushroom-close-sound", "mushroom-reset",
+                "paint-brush-size", "paint-brush-animation-time", "paint-brush-open-sound", "paint-brush-close-sound", "paint-brush-reset",
+                "pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time", "pixelate-open-sound", "pixelate-close-sound", "pixelate-reset",
+                "pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time", "pixel-wheel-open-sound", "pixel-wheel-close-sound", "pixel-wheel-reset",
+                "pixel-wipe-pixel-size", "pixel-wipe-animation-time", "pixel-wipe-open-sound", "pixel-wipe-close-sound", "pixel-wipe-reset",
+                "portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time", "portal-open-sound", "portal-close-sound", "portal-reset",
+                "rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time", "rgbwarp-open-sound", "rgbwarp-close-sound", "rgbwarp-reset",
+                "snap-scale", "snap-color", "snap-animation-time", "snap-open-sound", "snap-close-sound", "snap-reset",
+                "team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time", "team-rocket-open-sound", "team-rocket-close-sound", "team-rocket-reset",
+                "trex-scratch-color", "trex-scratch-scale", "trex-scratch-warp", "trex-scratch-count", "trex-animation-time", "trex-scratch-open-sound", "trex-scratch-close-sound", "trex-scratch-reset",
+                "tv-effect-color", "tv-animation-time", "tv-open-sound", "tv-close-sound", "tv-reset",
+                "tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time", "tv-glitch-open-sound", "tv-glitch-close-sound", "tv-glitch-reset",
+                "wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time", "wisps-open-sound", "wisps-close-sound", "wisps-reset",
+                "wormhole-void-size", "wormhole-tunnel-depth", "wormhole-funnel-size", "wormhole-bounce", "wormhole-animation-time", "wormhole-open-sound", "wormhole-close-sound", "wormhole-reset",
+                "test-effect"]
+    },
+    "random-section" : {
+      "type" : "section",
+      "title" : "Effects included in the randomized sets:",
+      "keys" : ["random-include", "random-buttons"]
+    },
+    "power-section" : {
+      "type" : "section",
+      "title" : "Manage Burn-My-Windows power consumption",
+      "keys" : ["power-onbattery", "power-percent", "power-open-effect", "power-close-effect", "power-minimize-effect", "power-unminimize-effect"]
+    },
+    "power-dialog-section": {
+      "type" : "section",
+      "title" : "",
+      "keys" : ["power-dialog-special", "power-dialog-open-effect", "power-dialog-close-effect"],
+      "dependency" : "power-onbattery=true"
+    },
+    "about-section" : {
+      "type" : "section",
+      "title" : "About Cinnamon Burn-My-Windows",
+      "keys" : ["about-text"]
+    }
+  },
+
+  "about-text": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "About",
+    "description" : "\n<b>Disintegrate your windows with style.</b>\nVersion: ext-version\n\nPorted to Cinnamon by Kevin Langman\n<a href=\"https://github.com/klangman/CinnamonBurnMyWindows\">Github</a> / <a href=\"https://github.com/klangman/CinnamonBurnMyWindows/issues/new\">Report an issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/103\">Website</a>\n\nBased on the Burn-My-Windows code by Schneegans and contributors\n<a href=\"https://github.com/Schneegans/Burn-My-Windows\">Github</a> / <a href=\"https://ko-fi.com/schneegans\">Ko-fi</a>\n\nThe Magic Lamp Effect is ported from code by hermes83\n<a href=\"https://github.com/hermes83/compiz-alike-magic-lamp-effect\">Github</a>",
+    "icon" : "/icons/cinnamon-burn-my-window.png"
+  },
+
+  "app-rules": {
+    "type" : "list",
+    "description" : "Application Specific Rules",
+    "columns" : [
+        {"id": "enabled",     "title": "Enabled",      "type": "boolean", "default": true},
+        {"id": "open",        "title": "Open",  "type": "integer", "default": 0, "options": {
+            "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+            "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+            "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+            "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39
+           }
+        },
+        {"id": "close",       "title": "Close", "type": "integer", "default": 0, "options": {
+            "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+            "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+            "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+            "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39
+           }
+        },
+        {"id": "minimize",       "title": "Minimize", "type": "integer", "default": 1000, "options": {
+            "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+            "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+            "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+            "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39
+           }
+        },
+        {"id": "unminimize",       "title": "Unminimize", "type": "integer", "default": 1000, "options": {
+            "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+            "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+            "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+            "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39
+           }
+        },
+        {"id": "application", "title": "Application",  "type": "string"}
+    ],
+    "tooltip": "A list of applications with special effect rules. The application can be a desktop file name or a WM_CLASS name",
+    "default": [ { "enabled": true,
+                   "open": 1000,
+                   "close": 1000,
+                   "minimize": 1000,
+                   "unminimize": 1000,
+                   "application": "VirtualBox"
+                 },
+                 { "enabled": true,
+                   "open": 1000,
+                   "close": 1000,
+                   "minimize": 1000,
+                   "unminimize": 1000,
+                   "application": "VirtualBoxVM"
+                 }
+               ]
+  },
+  "app-rules-button" : {
+    "type" : "button",
+    "description" : "Add entry for the application of the most recently focused window",
+    "callback" : "on_config_button_pressed",
+    "tooltip" : "Focus a window you want to enable application specific setting for then return here and press this button."
+  },
+
+  "random-include" : {
+    "type" : "list",
+    "description" : "Effects included in the randomized sets",
+    "tooltip": "Defines which effects are included in the randomized sets for each window event type. When 'Randomized' is selected for any event on the General tab these sets are used.",
+    "show-buttons" : false,
+    "height" : 450,
+    "columns" : [
+        {"id": "name",       "title": "Effect Name         ", "type": "string",  "default": ""},
+        {"id": "open",       "title": "      Open        ", "type": "boolean", "default": true},
+        {"id": "close",      "title": "      Close       ", "type": "boolean", "default": true},
+        {"id": "minimize",   "title": "     Minimize     ", "type": "boolean", "default": true},
+        {"id": "unminimize", "title": "    Unminimize    ", "type": "boolean", "default": true}
+        ],
+    "default": [
+        { "name": "Aperture Panels", "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Apparition",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Aura Glow",   "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Doom",        "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Energize A",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Energize B",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Fire",        "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Focus",       "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Glide",       "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Glitch",      "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Hexagon",     "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Incinerate",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Morph",       "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Pixelate",    "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Pixel Wheel", "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Pixel Wipe",  "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Portal",      "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Team Rocket", "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "TV Effect",   "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "TV Glitch",   "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Wisps",       "open": true, "close": true, "minimize": true, "unminimize": true },
+        { "name": "Wormhole",    "open": true, "close": true, "minimize": true, "unminimize": true }
+        ]
+  },
+
+  "random-buttons" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "SetClearButtons",
+     "set-button" : "Set all check boxes",
+     "clear-button" : "Clear all check boxes"
+  },
+
+  "effect-selector": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39
+    },
+    "description": "Show settings for effect:"
+  },
+
+  "open-window-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Open window effect"
+  },
+
+  "close-window-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Close window effect"
+  },
+
+  "enable-sound": {
+    "type" : "switch",
+    "description": "Allow Burn My Windows to override cinnamon sound effects",
+    "tooltip": "Allow Burn My Windows to override Cinnamon's window open/close/minimize sound effects with unique ones defined in the Effect Settings tab for each Burn My Windows effect. Note: Sounds will only play when Cinnamon's open/close/minimize sound effects are enabled under Cinnamon sounds settings. The default cinnamon sounds will be used unless a sound effect file is chosen for the active Burn My Windows effect.",
+     "default": true
+  },
+
+  "dialog-special": {
+    "type" : "switch",
+    "description": "Special handling for dialog windows",
+    "tooltip": "Allows you to define special settings for handling dialog window types (i.e. file open dialog windows). These settings will override any application specific settings that may have been defined.",
+     "default": false
+  },
+
+  "dialog-open-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Open dialog window effect",
+    "dependency" : "dialog-special=true"
+  },
+
+  "dialog-close-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Close dialog window effect",
+    "dependency" : "dialog-special=true"
+  },
+
+  "minimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Minimize window effect"
+  },
+
+  "unminimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Unminimize window effect"
+  },
+
+  "power-open-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Open window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-close-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Close window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-minimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Minimize window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-unminimize-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Unminimize window effect",
+    "dependency" : "power-onbattery=true"
+  },
+
+  "power-dialog-special": {
+    "type" : "switch",
+    "description": "Special handling for dialog windows",
+    "tooltip": "Allows you to define special settings for handling dialog window types (i.e. file open dialog windows).",
+     "default": false
+  },
+
+  "power-dialog-open-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Open dialog window effect",
+    "dependency" : "power-dialog-special=true"
+  },
+
+  "power-dialog-close-effect": {
+    "type": "combobox",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Close dialog window effect",
+    "dependency" : "power-dialog-special=true"
+  },
+
+  "power-onbattery": {
+    "type" : "switch",
+    "description": "Use different effects when running on battery power",
+    "tooltip" : "When enabled, a set of options will appear allowing you to define which effects (if any) will be used when running on battery power and the battery charge state is less than the set limit. These settings will take precedence over both the general settings and any application specific settings when the battery charge state condition is met.",
+    "default": false
+  },
+
+  "power-percent": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "When battery is less than (percent)",
+     "min" : 0,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "power-onbattery=true",
+     "default": 50
+  },
+
+  "aperture-panels-panel-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Panel Size (px)",
+     "min" : 16,
+     "max" : 200,
+     "step" : 1,
+     "dependency" : "effect-selector=27",
+     "default": 88,
+     "tooltip": "The approximate size of the panels. It is adjusted a little so that a whole number of panels fits the window exactly."
+  },
+
+  "aperture-panels-wave-shape": {
+    "type": "combobox",
+    "default": 4,
+    "options": {
+      "Diagonal": 0,
+      "Arc from a corner": 1,
+      "Wavy diagonal": 2,
+      "Organic diagonal": 3,
+      "Ripple from the center": 4,
+      "Random": 5
+    },
+    "description": "Wave Shape",
+    "dependency" : "effect-selector=27",
+    "tooltip": "The shape of the wave of panels flipping across the window. Random picks one of the shapes for each animation."
+  },
+
+  "aperture-panels-flip-axis": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Vertical": 0,
+      "Horizontal": 1,
+      "Random": 2
+    },
+    "description": "Flip Axis",
+    "dependency" : "effect-selector=27",
+    "tooltip": "The axis the panels turn around. Random picks one for each animation."
+  },
+
+  "aperture-panels-backdrop": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Wallpaper": 0,
+      "Black void": 1
+    },
+    "description": "Backdrop",
+    "dependency" : "effect-selector=27",
+    "tooltip": "What is seen behind the panels as they turn. Wallpaper: the desktop stays in place and only the windows behind are on the panels. Black void: the desktop is on the panels too and flips with them, revealing a black void."
+  },
+
+  "aperture-panels-border-style": {
+    "type": "combobox",
+    "default": 4,
+    "options": {
+      "None": 0,
+      "While flipping": 1,
+      "Ahead of the wave": 2,
+      "Behind the wave": 3,
+      "Ahead of and behind the wave": 4
+    },
+    "description": "Border Style",
+    "dependency" : "effect-selector=27",
+    "tooltip": "When the outlines of the panels are shown: only while a panel flips, or also in a band ahead of and/or behind the wave of flipping panels."
+  },
+
+  "aperture-panels-border-color": {
+     "type": "colorchooser",
+     "description" : "Border Color",
+     "dependency" : "effect-selector=27 & aperture-panels-border-style!=0",
+     "default": "rgba(0, 0, 0, 0.4)"
+  },
+
+  "aperture-panels-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 500,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=27",
+     "default": 2000
+  },
+
+  "aperture-panels-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=27",
+     "keys" : ["aperture-panels-panel-size", "aperture-panels-wave-shape", "aperture-panels-flip-axis", "aperture-panels-backdrop", "aperture-panels-border-style", "aperture-panels-border-color", "aperture-panels-animation-time"]
+  },
+
+  "aperture-panels-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=27 & enable-sound=true",
+     "default" : ""
+  },
+
+  "aperture-panels-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=27 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "apparition-shake-intensity": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Shake Intensity",
+     "min" : 0.0,
+     "max" : 10.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=0",
+     "default": 3.0
+  },
+
+  "apparition-twirl-intensity": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Twirl Intensity",
+     "min" : -10.0,
+     "max" : 10.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=0",
+     "default": 5.0
+  },
+
+  "apparition-suction-intensity": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Suction Intensity",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=0",
+     "default": 0.75
+  },
+
+  "apparition-randomness": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Randomness",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=0",
+     "default": 0.5
+  },
+
+  "apparition-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 2000,
+     "step" : 10,
+     "dependency" : "effect-selector=0",
+     "default": 300
+  },
+
+  "apparition-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=0",
+     "keys" : ["apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time"]
+  },
+
+  "apparition-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=0 & enable-sound=true",
+     "default" : ""
+  },
+
+  "apparition-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=0 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "aura-glow-random-color": {
+    "type" : "switch",
+    "description": "Random Color",
+     "dependency" : "effect-selector=22",
+     "default": false
+  },
+
+  "aura-glow-start-hue": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Start Hue",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=22",
+     "default": 0.0
+  },
+
+  "aura-glow-speed": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Speed",
+     "min" : -5,
+     "max" : 5,
+     "step" : 0.25,
+     "dependency" : "effect-selector=22",
+     "default": 2.5
+  },
+
+  "aura-glow-saturation": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Saturation",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=22",
+     "default": 0.75
+  },
+
+  "aura-glow-edge-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Edge Size",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.05,
+     "dependency" : "effect-selector=22",
+     "default": 0.75
+  },
+
+  "aura-glow-edge-hardness": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Edge Hardness",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=22",
+     "default": 0.25
+  },
+
+  "aura-glow-blur": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Blur Amount",
+     "min" : 0,
+     "max" : 30,
+     "step" : 0.5,
+     "dependency" : "effect-selector=22",
+     "default": 15
+  },
+
+  "aura-glow-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=22",
+     "default": 750
+  },
+
+  "aura-glow-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=22",
+     "keys" : ["aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time"]
+  },
+
+  "aura-glow-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=22 & enable-sound=true",
+     "default" : ""
+  },
+
+  "aura-glow-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=22 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "broken-glass-scale" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.2,
+     "max" : 5.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=1",
+     "default": 1.0
+  },
+
+  "broken-glass-gravity" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Gravity",
+     "min" : -2.0,
+     "max" : 2.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=1",
+     "default": -1.0
+  },
+
+  "broken-glass-blow-force" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Blow Force",
+     "min" : -2.0,
+     "max" : 2.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=1",
+     "default": 0.5
+  },
+
+  "broken-glass-use-pointer" : {
+     "type" : "switch",
+     "description": "Shatter From Pointer Location",
+     "dependency" : "effect-selector=1",
+     "default": false
+  },
+
+  "broken-glass-animation-time" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=1",
+     "default": 1000
+  },
+
+  "broken-glass-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=1 & enable-sound=true",
+     "default" : ""
+  },
+
+  "broken-glass-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=1 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "doom-horizontal-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Horizontal Scale",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=2",
+     "default": 10.0
+  },
+
+  "doom-vertical-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Vertical Scale",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=2",
+     "default": 10.0
+  },
+
+  "doom-pixel-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Pixel Size",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=2",
+     "default": 10
+  },
+
+
+  "doom-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=2",
+     "default": 1000
+  },
+
+  "doom-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=2",
+     "keys" : ["doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time"]
+  },
+
+  "doom-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=2 & enable-sound=true",
+     "default" : ""
+  },
+
+  "doom-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=2 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "energize-a-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=3",
+     "default": 1.0
+  },
+
+  "energize-a-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=3",
+     "default": "rgb(255,200,50)"
+  },
+
+  "energize-a-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=3",
+     "default": 2000
+  },
+
+  "energize-a-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=3",
+     "keys" : ["energize-a-scale", "energize-a-color", "energize-a-animation-time"]
+  },
+
+  "energize-a-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=3 & enable-sound=true",
+     "default" : ""
+  },
+
+  "energize-a-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=3 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "energize-b-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=4",
+     "default": 1.0
+  },
+
+  "energize-b-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=4",
+     "default": "rgb(160,180,255)"
+  },
+
+  "energize-b-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=4",
+     "default": 1000
+  },
+
+  "energize-b-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=4",
+     "keys" : ["energize-b-scale", "energize-b-color", "energize-b-animation-time"]
+  },
+
+  "energize-b-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=4 & enable-sound=true",
+     "default" : ""
+  },
+
+  "energize-b-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=4 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "fire-presets": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Default Fire": 0,
+      "Hell Fire" : 1,
+      "Dark and Smutty" : 2,
+      "Cold Breeze" : 3,
+      "Santa is Coming" : 4,
+      "Nuclear" : 5,
+      "Custom" : 1000
+    },
+    "description": "Fire effect style",
+    "dependency" : "effect-selector=5"
+  },
+
+  "fire-custom-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 3,
+     "step" : 0.01,
+     "dependency" : "effect-selector=5 & fire-presets=1000",
+     "default": 0.5
+  },
+
+  "fire-custom-movement-speed": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Fire Movement Speed",
+     "min" : -2,
+     "max" : 2,
+     "step" : 0.01,
+     "dependency" : "effect-selector=5 & fire-presets=1000",
+     "default": 0.5
+  },
+
+  "fire-3d-noise": {
+    "type" : "switch",
+    "description": "Fire 3D Noise",
+    "tooltip": "Creates a more dynamic fire but requires more GPU power.",
+    "dependency" : "effect-selector=5 & fire-presets=1000",
+    "default": false
+  },
+
+  "fire-random-color": {
+    "type" : "switch",
+    "description": "Use a Random Color (overrides other color settings)",
+    "tooltip": "Use a random fire color. This setting will override any preset or custom colors settings you select.",
+    "dependency" : "effect-selector=5",
+    "default": false
+  },
+
+  "fire-colors": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "FireColorChooser",
+    "description" : "Colors 1-5",
+    "dependency" : "effect-selector=5 & fire-presets=1000",
+    "color1" : "fire-custom-color-1",
+    "color2" : "fire-custom-color-2",
+    "color3" : "fire-custom-color-3",
+    "color4" : "fire-custom-color-4",
+    "color5" : "fire-custom-color-5"
+  },
+
+  "fire-custom-color-1": {
+     "type": "generic",
+     "default": "rgba(76, 51, 25, 0.0)"
+  },
+
+  "fire-custom-color-2": {
+     "type": "generic",
+     "default": "rgba(180, 55, 30, 0.7)"
+  },
+
+  "fire-custom-color-3": {
+     "type": "generic",
+     "default": "rgba(255, 76, 38, 0.9)"
+  },
+
+  "fire-custom-color-4": {
+     "type": "generic",
+     "default": "rgba(255, 166, 25, 1)"
+  },
+
+  "fire-custom-color-5": {
+     "type": "generic",
+     "default": "rgba(255, 255, 255, 1)"
+  },
+
+  "fire-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=5",
+     "default": 1500
+  },
+
+  "fire-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=5",
+     "keys" : ["fire-presets", "fire-3d-noise", "fire-animation-time", "fire-custom-scale", "fire-custom-movement-speed", "fire-custom-color-1", "fire-custom-color-2", "fire-custom-color-3", "fire-custom-color-4", "fire-custom-color-5"]
+  },
+
+  "fire-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=5 & enable-sound=true",
+     "default" : ""
+  },
+
+  "fire-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=5 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "focus-blur-amount": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Blur Amount",
+     "min" : 0,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "effect-selector=21",
+     "default": 50
+  },
+
+  "focus-blur-quality": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Blur Quality",
+     "min" : 1,
+     "max" : 10,
+     "step" : 1,
+     "dependency" : "effect-selector=21",
+     "tooltip": "The Quality of the Blur (Setting this too high may increase GPU load and affect performance)",
+     "default": 3
+  },
+
+  "focus-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=21",
+     "default": 500
+  },
+
+  "focus-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=21",
+     "keys" : ["focus-blur-amount", "focus-blur-quality", "focus-animation-time"]
+  },
+
+  "focus-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=21 & enable-sound=true",
+     "default" : ""
+  },
+
+  "focus-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=21 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "glide-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=6",
+     "default": 0.95
+  },
+
+  "glide-squish": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Squish",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=6",
+     "default": 0.15
+  },
+
+  "glide-tilt": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Tilt",
+     "min" : -1,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=6",
+     "default": -0.3
+  },
+
+  "glide-shift": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Shift",
+     "min" : -1,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=6",
+     "default": -0.05
+  },
+
+  "glide-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 2000,
+     "step" : 10,
+     "dependency" : "effect-selector=6",
+     "default": 250
+  },
+
+  "glide-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=6",
+     "keys" : ["glide-scale", "glide-squish", "glide-tilt", "glide-shift", "glide-animation-time"]
+  },
+
+  "glide-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=6 & enable-sound=true",
+     "default" : ""
+  },
+
+  "glide-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=6 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "glitch-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=7",
+     "default": 1.0
+  },
+
+  "glitch-strength": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Strength",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=7",
+     "default": 2.0
+  },
+
+  "glitch-speed": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Speed",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=7",
+     "default": 2.0
+  },
+
+  "glitch-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=7",
+     "default": "rgb(100,160,255)"
+  },
+
+  "glitch-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 2000,
+     "step" : 10,
+     "dependency" : "effect-selector=7",
+     "default": 750
+  },
+
+  "glitch-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=7",
+     "keys" : ["glitch-scale", "glitch-strength", "glitch-speed", "glitch-color", "glitch-animation-time"]
+  },
+  "glitch-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=7 & enable-sound=true",
+     "default" : ""
+  },
+
+  "glitch-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=7 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "hexagon-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=8",
+     "default": 3.0
+  },
+
+  "hexagon-line-width": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Mesh Line Width",
+     "min" : 0,
+     "max" : 10,
+     "step" : 0.1,
+     "dependency" : "effect-selector=8",
+     "default": 2.0
+  },
+
+  "hexagon-line-color": {
+     "type": "colorchooser",
+     "description" : "Line Color",
+     "dependency" : "effect-selector=8",
+     "default": "rgba(200,255,255,0.5)"
+  },
+
+  "hexagon-glow-color": {
+     "type": "colorchooser",
+     "description" : "Glow Color",
+     "dependency" : "effect-selector=8",
+     "default": "rgba(20, 80, 255, 0.5)"
+  },
+
+  "hexagon-additive-blending": {
+    "type" : "switch",
+    "description": "Additive Blending",
+    "tooltip": "You may want to enable this for dark window themes.",
+     "dependency" : "effect-selector=8",
+     "default": true
+  },
+
+  "hexagon-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=8",
+     "default": 1500
+  },
+
+  "hexagon-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=8",
+     "keys" : ["hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time"]
+  },
+
+  "hexagon-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=8 & enable-sound=true",
+     "default" : ""
+  },
+
+  "hexagon-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=8 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "incinerate-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=9",
+     "default": 1.0
+  },
+
+  "incinerate-turbulence": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Turbulence",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=9",
+     "default": 0.3
+  },
+
+  "incinerate-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=9",
+     "default": "rgb(255,180,127)"
+  },
+
+  "incinerate-use-pointer": {
+    "type" : "switch",
+    "description": "Start at Pointer",
+    "tooltip": "If disabled, a random location will be chosen.",
+     "dependency" : "effect-selector=9",
+     "default": true
+  },
+
+  "incinerate-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=9",
+     "default": 2000
+  },
+
+  "incinerate-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=9",
+     "keys" : ["incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time"]
+  },
+
+  "incinerate-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=9 & enable-sound=true",
+     "default" : ""
+  },
+
+  "incinerate-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=9 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "magiclamp-effect": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Curved": 0,
+      "Wavy": 1,
+      "Random": 2,
+      "Appear: Curved / Disappear: Wavy": 3,
+      "Appear: Wavy / Disappear: Curved": 4
+    },
+    "description": "The type of effect",
+    "dependency" : "effect-selector=26",
+    "tooltip": "The effect can be a smooth curve or a wavy animation. The random option will randomly choose between the two and the Appear/Disappear options use different effects whether a window is appearing or disappearing from the screen"
+  },
+
+  "magiclamp-edge": {
+    "type": "combobox",
+    "default": 4,
+    "options": {
+      "Top": 0,
+      "Bottom": 1,
+      "Left": 2,
+      "Right": 3,
+      "Edge closest to mouse pointer": 4
+    },
+    "description": "Open/Close Edge",
+    "dependency" : "effect-selector=26",
+    "tooltip": "The monitor edge where a window should originate from when opening, or disappear towards when closing. This setting is not used for minimize or unminimize events"
+  },
+
+  "magiclamp-edge-offset": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "default": 50,
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "description": "Open/Close Edge Offset",
+     "dependency" : "effect-selector=26",
+     "tooltip": "The offset from the top or left of the \"Open/Close Edge\" that the animation should use as the origin/target of the animation. This is a percentage of the monitors width/height and it does not apply to minimize/unminimize events or when the \"Open/Close Edge\" is set to \"Edge closest to mouse pointer\""
+  },
+
+  "magiclamp-x-tiles": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "default": 20,
+     "min": 3,
+     "max": 50,
+     "step": 1,
+     "description": "X Tiles",
+     "dependency" : "effect-selector=26",
+     "tooltip": "This effects the quality and the cost of the animation"
+  },
+
+  "magiclamp-y-tiles": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "default": 20,
+     "min": 3,
+     "max": 50,
+     "step": 1,
+     "description": "Y Tiles",
+     "dependency" : "effect-selector=26",
+     "tooltip": "This effects the quality and the costs of the animation"
+  },
+
+  "magiclamp-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=26",
+     "default": 1200
+  },
+
+  "magiclamp-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=26",
+     "keys" : ["magiclamp-effect", "magiclamp-edge", "magiclamp-edge-offset", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time"]
+  },
+
+  "magiclamp-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=26 & enable-sound=true",
+     "default" : ""
+  },
+
+  "magiclamp-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=26 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "matrix-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 5,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=10",
+     "default": 20
+  },
+
+  "matrix-randomness": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Randomness",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=10",
+     "default": 1.0
+  },
+
+  "matrix-tip-color": {
+     "type": "colorchooser",
+     "description" : "Tip Color",
+     "dependency" : "effect-selector=10",
+     "default": "rgb(255, 255, 255)"
+  },
+
+  "matrix-trail-color": {
+     "type": "colorchooser",
+     "description" : "Trail Color",
+     "dependency" : "effect-selector=10",
+     "default": "rgb(25, 255, 89)"
+  },
+
+  "matrix-overshoot": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Vertical Overshooting",
+     "min" : 0.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=10",
+     "default": 0.25
+  },
+
+  "matrix-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=10",
+     "default": 1500
+  },
+
+  "matrix-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=10 & enable-sound=true",
+     "default" : ""
+  },
+
+  "matrix-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=10 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "morph-style": {
+    "type": "combobox",
+    "default": 0,
+    "options": {
+      "Liquid flow": 0,
+      "Melt": 1
+    },
+    "description": "Style",
+    "dependency" : "effect-selector=29",
+    "tooltip": "Liquid flow: the area swirls into the window like liquid. Melt: each image flows along its own edges, so what's behind melts away and the window's outlines form first."
+  },
+
+  "morph-strength": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Strength",
+     "min" : 0.0,
+     "max" : 2.5,
+     "step" : 0.05,
+     "dependency" : "effect-selector=29",
+     "tooltip" : "How far things move during the morph. 1 is the default; 0 is a plain dissolve.",
+     "default": 1.0
+  },
+
+  "morph-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 500,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=29",
+     "default": 1500
+  },
+
+  "morph-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=29",
+     "keys" : ["morph-style", "morph-strength", "morph-animation-time"]
+  },
+
+  "morph-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=29 & enable-sound=true",
+     "default" : ""
+  },
+
+  "morph-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=29 & enable-sound=true",
+     "default" : ""
+  },
+
+  "mushroom-presets": {
+    "type": "combobox",
+    "default": 1,
+    "options": {
+      "8Bit Plumber" : 0,
+      "New Bros 2" : 1,
+      "The True North" : 2,
+      "Red White and Blue" : 3,
+      "Rainbow" : 4,
+      "Cattuccino" : 5,
+      "Dracula" : 6,
+      "Sparkle" : 7,
+      "Custom" : 1000
+    },
+    "description": "Mushroom effect style",
+    "dependency" : "effect-selector=25"
+  },
+
+  "mushroom-custom-scale-style": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale Style",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.1,
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": 1
+  },
+
+  "mushroom-custom-spark-count": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Spark Count",
+     "min" : 0,
+     "max" : 25,
+     "step" : 1,
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": 4
+  },
+
+  "mushroom-custom-spark-color": {
+     "type": "colorchooser",
+     "description" : "Spark Color",
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": "rgba(255, 255, 255, 1.0)"
+  },
+
+  "mushroom-custom-spark-rotation": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Spark Rotation",
+     "min" : -3,
+     "max" : 3,
+     "step" : 0.5,
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": 0.3
+  },
+
+  "mushroom-custom-rays-color": {
+     "type": "colorchooser",
+     "description" : "Rays Color",
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": "rgba(255, 255, 255, 1.0)"
+  },
+
+  "mushroom-custom-ring-count": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Star Rings Count",
+     "min" : 0,
+     "max" : 5,
+     "step" : 1,
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": 3
+  },
+
+  "mushroom-custom-ring-rotation": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Star Ring Rotation",
+     "min" : -3,
+     "max" : 3,
+     "step" : 0.25,
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": 1.33
+  },
+
+  "mushroom-custom-star-count": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Stars Count Per Ring",
+     "min" : 0,
+     "max" : 7,
+     "step" : 1,
+     "dependency" : "effect-selector=25 & mushroom-presets=1000",
+     "default": 4
+  },
+
+  "mushroom-star-colors": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "MushroomColorChooser",
+    "description" : "Colors 1-6",
+    "dependency" : "effect-selector=25 & mushroom-presets=1000",
+    "color1" : "mushroom-custom-star-color-0",
+    "color2" : "mushroom-custom-star-color-1",
+    "color3" : "mushroom-custom-star-color-2",
+    "color4" : "mushroom-custom-star-color-3",
+    "color5" : "mushroom-custom-star-color-4",
+    "color6" : "mushroom-custom-star-color-5"
+  },
+
+  "mushroom-custom-star-color-0": {
+     "type": "generic",
+     "default": "rgba(233,249,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-1": {
+     "type": "generic",
+     "default": "rgba(233,249,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-2": {
+     "type": "generic",
+     "default": "rgba(91,255,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-3": {
+     "type": "generic",
+     "default": "rgba(91,255,0,1.0)"
+  },
+
+  "mushroom-custom-star-color-4": {
+     "type": "generic",
+     "default": "rgba(0,240,236,1.0)"
+  },
+
+  "mushroom-custom-star-color-5": {
+     "type": "generic",
+     "default": "rgba(0,240,236,1.0)"
+  },
+
+  "mushroom-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=25",
+     "default": 1500
+  },
+
+  "mushroom-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=25",
+     "keys" : ["mushroom-presets", "mushroom-animation-time", "mushroom-custom-scale-style", "mushroom-custom-spark-count", "mushroom-custom-spark-color", "mushroom-custom-spark-rotation", "mushroom-custom-rays-color", "mushroom-custom-ring-count", "mushroom-custom-ring-rotation", "mushroom-custom-star-count", "mushroom-custom-star-color-0", "mushroom-custom-star-color-1", "mushroom-custom-star-color-2", "mushroom-custom-star-color-3", "mushroom-custom-star-color-4", "mushroom-custom-star-color-5"]
+  },
+
+  "mushroom-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=25 & enable-sound=true",
+     "default" : ""
+  },
+
+  "mushroom-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=25 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "paint-brush-size" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Brush Size",
+     "min" : 1,
+     "max" : 4,
+     "step" : 1,
+     "dependency" : "effect-selector=11",
+     "default": 3
+  },
+
+  "paint-brush-animation-time" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=11",
+     "default": 1000
+  },
+
+  "paint-brush-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=11 & enable-sound=true",
+     "default" : ""
+  },
+
+  "paint-brush-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=11 & enable-sound=true",
+     "default" : ""
+  },
+
+  "paint-brush-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=11",
+     "keys" : ["paint-brush-size", "paint-brush-animation-time"]
+  },
+
+
+  "pixelate-noise": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Noise",
+     "min" : 1,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "effect-selector=12",
+     "default": 40
+  },
+
+  "pixelate-pixel-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Pixel Size",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=12",
+     "default": 10
+  },
+
+  "pixelate-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=12",
+     "default": 500
+  },
+
+  "pixelate-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=12",
+     "keys" : ["pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time"]
+  },
+
+  "pixelate-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=12 & enable-sound=true",
+     "default" : ""
+  },
+
+  "pixelate-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=12 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "pixel-wheel-spoke-count": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Spoke Count",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=13",
+     "default": 12
+  },
+
+  "pixel-wheel-pixel-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Pixel Size",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=13",
+     "default": 10
+  },
+
+  "pixel-wheel-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 2000,
+     "step" : 10,
+     "dependency" : "effect-selector=13",
+     "default": 300
+  },
+
+  "pixel-wheel-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=13",
+     "keys" : ["pixel-wheel-spoke-count", "pixel-wheel-pixel-size", "pixel-wheel-animation-time"]
+  },
+
+  "pixel-wheel-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=13 & enable-sound=true",
+     "default" : ""
+  },
+
+  "pixel-wheel-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=13 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "pixel-wipe-pixel-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Pixel Size",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=14",
+     "default": 10
+  },
+
+  "pixel-wipe-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=14",
+     "default": 1000
+  },
+
+  "pixel-wipe-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=14",
+     "keys" : ["pixel-wipe-pixel-size", "pixel-wipe-animation-time"]
+  },
+
+  "pixel-wipe-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=14 & enable-sound=true",
+     "default" : ""
+  },
+
+  "pixel-wipe-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=14 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "portal-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=15",
+     "default": "rgb(121,233,24)"
+  },
+
+  "portal-rotation-speed": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Rotation Speed",
+     "min" : -2,
+     "max" : 2,
+     "step" : 0.1,
+     "dependency" : "effect-selector=15",
+     "default": 0.3
+  },
+
+  "portal-whirling": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Whirling",
+     "min" : -2,
+     "max" : 2,
+     "step" : 0.1,
+     "dependency" : "effect-selector=15",
+     "default": 1.0
+  },
+
+  "portal-details": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Details",
+     "min" : 1,
+     "max" : 100,
+     "step" : 1,
+     "dependency" : "effect-selector=15",
+     "default": 15.0
+  },
+
+  "portal-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 500,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=15",
+     "default": 1250
+  },
+
+  "portal-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=15",
+     "keys" : ["portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time"]
+  },
+  "portal-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=15 & enable-sound=true",
+     "default" : ""
+  },
+
+  "portal-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=15 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "rgbwarp-brightness": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Brightness",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.1,
+     "dependency" : "effect-selector=24",
+     "default": 1
+  },
+
+  "rgbwarp-speed-r": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Red Speed",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=24",
+     "default": 1.0
+  },
+
+  "rgbwarp-speed-g": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Green Speed",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=24",
+     "default": 0.9
+  },
+
+  "rgbwarp-speed-b": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Blue Speed",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=24",
+     "default": 0.8
+  },
+
+  "rgbwarp-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=24",
+     "default": 750
+  },
+
+  "rgbwarp-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=24",
+     "keys" : ["rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time"]
+  },
+
+  "rgbwarp-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=24 & enable-sound=true",
+     "default" : ""
+  },
+
+  "rgbwarp-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=24 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "snap-scale" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 20,
+     "step" : 0.01,
+     "dependency" : "effect-selector=16",
+     "default": 3.0
+  },
+
+  "snap-color" : {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=16",
+     "default": "rgb(50, 40, 35)"
+  },
+
+  "snap-animation-time" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=16",
+     "default": 1500
+  },
+
+  "snap-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=16 & enable-sound=true",
+     "default" : ""
+  },
+
+  "snap-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=16 & enable-sound=true",
+     "default" : ""
+  },
+
+  "snap-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=16",
+     "keys" : ["snap-scale", "snap-color"]
+  },
+
+
+  "team-rocket-animation-split": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Animation Split",
+     "min" : 0.2,
+     "max" : 0.8,
+     "step" : 0.01,
+     "dependency" : "effect-selector=23",
+     "default": 0.5
+  },
+
+  "team-rocket-horizontal-sparkle-position": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Horizontal Sparkle Position",
+     "min" : -1.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=23",
+     "default": 0.0
+  },
+
+  "team-rocket-vertical-sparkle-position": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Vertical Sparkle Position",
+     "min" : -1.0,
+     "max" : 1.0,
+     "step" : 0.01,
+     "dependency" : "effect-selector=23",
+     "default": 0.5
+  },
+
+  "team-rocket-window-rotation": {
+    "type" : "switch",
+    "description": "Rotate Window",
+     "dependency" : "effect-selector=23",
+     "default": true
+  },
+
+  "team-rocket-sparkle-rot": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Sparkle Rotation",
+     "min" : -1.0,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=23",
+     "default": 0.33
+  },
+
+  "team-rocket-sparkle-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Sparkle Size",
+     "min" : 0.5,
+     "max" : 1.0,
+     "step" : 0.1,
+     "dependency" : "effect-selector=23",
+     "default": 0.75
+  },
+
+  "team-rocket-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 5000,
+     "step" : 10,
+     "dependency" : "effect-selector=23",
+     "default": 1500
+  },
+
+  "team-rocket-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=23",
+     "keys" : ["team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time"]
+  },
+
+  "team-rocket-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=23 & enable-sound=true",
+     "default" : ""
+  },
+
+  "team-rocket-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=23 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "trex-scratch-color" : {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=17",
+     "default": "rgb(170, 0, 0)"
+  },
+
+  "trex-scratch-scale" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Claw Scratch Scale",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.1,
+     "dependency" : "effect-selector=17",
+     "default": 1
+  },
+
+  "trex-scratch-warp" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Warp Effect",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=17",
+     "default": 0.15
+  },
+
+  "trex-scratch-count" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scratch Count",
+     "min" : 1,
+     "max" : 50,
+     "step" : 1,
+     "dependency" : "effect-selector=17",
+     "default": 5
+  },
+
+  "trex-animation-time" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=17",
+     "default": 1000
+  },
+
+  "trex-scratch-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=17 & enable-sound=true",
+     "default" : ""
+  },
+
+  "trex-scratch-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=17 & enable-sound=true",
+     "default" : ""
+  },
+
+  "trex-scratch-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=17",
+     "keys" : ["trex-scratch-color", "trex-scratch-scale", "trex-scratch-warp", "trex-scratch-count", "trex-animation-time"]
+  },
+
+
+  "tv-effect-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=18",
+     "default": "rgb(255,255,255)"
+  },
+
+  "tv-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=18",
+     "default": 400
+  },
+
+  "tv-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=18",
+     "keys" : ["tv-effect-color", "tv-animation-time"]
+  },
+  
+  "tv-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=18 & enable-sound=true",
+     "default" : ""
+  },
+
+  "tv-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=18 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "tv-glitch-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=19",
+     "default": 1.0
+  },
+
+  "tv-glitch-strength": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Strength",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=19",
+     "default": 2.0
+  },
+
+  "tv-glitch-speed": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Speed",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=19",
+     "default": 2.0
+  },
+
+  "tv-glitch-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "dependency" : "effect-selector=19",
+     "default": "rgb(100,160,255)"
+  },
+
+  "tv-glitch-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 2000,
+     "step" : 10,
+     "dependency" : "effect-selector=19",
+     "default": 750
+  },
+
+  "tv-glitch-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=19",
+     "keys" : ["tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time"]
+  },
+
+  "tv-glitch-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=19 & enable-sound=true",
+     "default" : ""
+  },
+
+  "tv-glitch-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=19 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "wisps-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Scale",
+     "min" : 0.1,
+     "max" : 10,
+     "step" : 0.01,
+     "dependency" : "effect-selector=20",
+     "default": 1.0
+  },
+
+  "wisps-color-1": {
+     "type": "colorchooser",
+     "description" : "Color #1",
+     "dependency" : "effect-selector=20",
+     "default": "rgb(255,100,200)"
+  },
+
+  "wisps-color-2": {
+     "type": "colorchooser",
+     "description" : "Color #2",
+     "dependency" : "effect-selector=20",
+     "default": "rgb(100,100,255)"
+  },
+
+  "wisps-color-3": {
+     "type": "colorchooser",
+     "description" : "Color #3",
+     "dependency" : "effect-selector=20",
+     "default": "rgb(100,200,255)"
+  },
+
+  "wisps-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=20",
+     "default": 1500
+  },
+
+  "wisps-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=20",
+     "keys" : ["wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time"]
+  },
+
+  "wisps-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=20 & enable-sound=true",
+     "default" : ""
+  },
+
+  "wisps-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=20 & enable-sound=true",
+     "default" : ""
+  },
+
+  "wormhole-void-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Void Size",
+     "min" : 0.2,
+     "max" : 0.9,
+     "step" : 0.01,
+     "dependency" : "effect-selector=28",
+     "default": 0.65
+  },
+
+  "wormhole-tunnel-depth": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Tunnel Depth",
+     "min" : 0.25,
+     "max" : 3.0,
+     "step" : 0.05,
+     "dependency" : "effect-selector=28",
+     "default": 1.0
+  },
+
+  "wormhole-funnel-size": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Funnel Size",
+     "min" : 1.0,
+     "max" : 2.5,
+     "step" : 0.05,
+     "dependency" : "effect-selector=28",
+     "default": 1.35
+  },
+
+  "wormhole-bounce": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Bounce",
+     "tooltip" : "How much the desktop bounces when the effect lands (0 = no bounce)",
+     "min" : 0.0,
+     "max" : 0.7,
+     "step" : 0.05,
+     "dependency" : "effect-selector=28",
+     "default": 0.5
+  },
+
+  "wormhole-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 500,
+     "max" : 10000,
+     "step" : 10,
+     "dependency" : "effect-selector=28",
+     "default": 2000
+  },
+
+  "wormhole-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=28",
+     "keys" : ["wormhole-void-size", "wormhole-tunnel-depth", "wormhole-funnel-size", "wormhole-bounce", "wormhole-animation-time"]
+  },
+
+  "wormhole-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=28 & enable-sound=true",
+     "default" : ""
+  },
+
+  "wormhole-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=28 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "test-effect" : {
+     "type" : "button",
+     "description" : "Open effect preview window",
+     "callback" : "on_test_button_pressed",
+     "tooltip" : "Opens a window using the currently selected effect."
+  },
+
+  "ext-version" : {
+     "type": "generic",
+     "default": ""
+  },
+
+  "test-mode": {
+     "type": "generic",
+     "default": 0
+  }
+}
