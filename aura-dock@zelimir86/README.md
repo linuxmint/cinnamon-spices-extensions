@@ -108,9 +108,9 @@ dbus-send --session --print-reply --dest=org.Cinnamon /org/Cinnamon \
 
 ## Limitations
 
-- Window thumbnails in the icon menu are not implemented (only window
-  titles).
-- The dock lives on the primary monitor only.
+- Window thumbnails require the window to have been composited at least once;
+  very recently created windows may show a text-only row until the next menu
+  open.
 - Hover-reveal cannot be exercised without a real pointer on Wayland; the
   autohide state machine is otherwise covered by the settings.
 
