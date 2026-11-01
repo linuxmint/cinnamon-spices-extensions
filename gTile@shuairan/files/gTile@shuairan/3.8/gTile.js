@@ -1434,7 +1434,7 @@ class App {
         this.config = new Config(this);
         this.InitGrid();
         this.focusAppSignal = this.tracker.connect("notify::focus-app", this.OnFocusedWindowChanged);
-        this.monitorsChangedSignal = global.screen.connect('monitors-changed', this.ReInitialize);
+        this.monitorsChangedSignal = app_Main.layoutManager.connect('monitors-changed', this.ReInitialize);
     }
     get CurrentMonitor() {
         return this.currentMonitor;
@@ -1451,7 +1451,7 @@ class App {
     }
     destroy() {
         this.tracker.disconnect(this.focusAppSignal);
-        global.screen.disconnect(this.monitorsChangedSignal);
+        app_Main.layoutManager.disconnect(this.monitorsChangedSignal);
         this.config.destroy();
         this.DestroyGrid();
         this.ResetFocusedWindow();
