@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mouse-click-effects@anaximeno 0.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-06-26 01:26-0100\n"
+"POT-Creation-Date: 2026-11-02 12:27-0100\n"
 "PO-Revision-Date: 2024-11-27 11:41+0100\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -15,6 +15,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. 5.4/extension.js:306
+msgid ""
+"Click effects aren't available on Wayland in this version of Cinnamon, they "
+"require Cinnamon 6.8 or later. The remaining effects will continue to work."
+msgstr ""
 
 #. metadata.json->name
 msgid "Mouse Click Effects"
@@ -203,6 +209,10 @@ msgstr "Sneltoets pauzeer effecten"
 #. 5.4->settings-schema.json->pause-effects-binding->tooltip
 msgid "Set keybinding to pause or continue the effects"
 msgstr "Stel sneltoets in om de effecten te pauzeren of voort te zetten"
+
+#. 5.4->settings-schema.json->wayland-click-effects-info->description
+msgid "Note: on Wayland, click effects require Cinnamon 6.8 or later"
+msgstr ""
 
 #. 5.4->settings-schema.json->left-click-effect-enabled->description
 msgid "Animate Left Click"
