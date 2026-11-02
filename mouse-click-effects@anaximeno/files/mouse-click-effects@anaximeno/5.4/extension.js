@@ -18,11 +18,12 @@
 'use strict';
 
 const Main = imports.ui.main;
+const MessageTray = imports.ui.messageTray;
 const Settings = imports.ui.settings;
 const DND = imports.ui.dnd;
 const Gettext = imports.gettext;
 const ByteArray = imports.byteArray;
-const { GLib, Gio } = imports.gi;
+const { GLib, Gio, St } = imports.gi;
 const { ClickAnimationFactory, ClickAnimationModes } = require("./clickAnimations.js");
 const { Debouncer, logInfo, logError, IdleMonitor } = require("./helpers.js");
 const { UUID, PAUSE_EFFECTS_KEY, CLICK_DEBOUNCE_MS } = require("./constants.js");
@@ -30,6 +31,8 @@ const { MouseMovementTracker } = require("./mouseMovementTracker.js");
 const { MouseClickListener } = require("./mouseClickListener.js");
 
 Gettext.bindtextdomain(UUID, `${GLib.get_user_data_dir()}/locale`);
+
+const CLICK_EFFECTS_UNSUPPORTED_NOTIFIED_KEY = "click-effects-unsupported-notified";
 
 const ClickType = Object.freeze({
 	LEFT: "left_click",
@@ -271,7 +274,7 @@ class MouseClickEffects {
 	}
 
 	get_pause_icon() {
-		if (!this._pause_icon && GLib.file_test(this.pause_icon_path, GLib.FileTest.IS_REGULAR))
+		if (!this._pause_icon)
 			this._pause_icon = Gio.icon_new_for_string(this.pause_icon_path);
 
 		return this._pause_icon;
@@ -292,6 +295,27 @@ class MouseClickEffects {
 		this._pause_icon = null;
 		this.display_click = null;
 		this.click_animator = null;
+	}
+
+	_notify_once_if_click_effects_unsupported() {
+		if (this.mouse_click_listener.active ||
+			this.settings.getValue(CLICK_EFFECTS_UNSUPPORTED_NOTIFIED_KEY))
+			return;
+
+		this.settings.setValue(CLICK_EFFECTS_UNSUPPORTED_NOTIFIED_KEY, true);
+		this._notify(_("Click effects aren't available on Wayland in this version of Cinnamon, " +
+			"they require Cinnamon 6.8 or later. The remaining effects will continue to work."));
+	}
+
+	_notify(message) {
+		let source = new MessageTray.Source(this.metadata.name);
+		let icon = new St.Icon({
+			gicon: Gio.icon_new_for_string(`${this.metadata.path}/../icon.png`),
+			icon_size: source.ICON_SIZE,
+		});
+		let notification = new MessageTray.Notification(source, this.metadata.name, message, { icon });
+		Main.messageTray.add(source);
+		source.notify(notification);
 	}
 
 	update_colored_icons() {
@@ -412,6 +436,7 @@ class MouseClickEffects {
 
 		if (enabled) {
 			this.mouse_click_listener.start();
+			this._notify_once_if_click_effects_unsupported();
 			this._start_mouse_movement_tracker();
 			this._start_idle_monitor();
 			logInfo("activated");

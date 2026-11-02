@@ -47,6 +47,10 @@ var MouseClickListener = class MouseClickListener {
         this._active = false;
     }
 
+    get active() {
+        return this._active;
+    }
+
     start() {
         if (this._active)
             return;
@@ -89,13 +93,12 @@ var MouseClickListener = class MouseClickListener {
             this._pointer_button_signal_id = this._cursor_tracker.connect(
                 'pointer-button', (tracker, button, pressed) => {
                     logInfo(`pointer-button event: button=${button} pressed=${pressed}`);
-                    if (pressed)
-                        this._on_click(button);
+                    if (pressed) this._on_click(button);
                 });
             logInfo("pointer-button signal connected");
             return true;
         } catch (e) {
-            logInfo(`pointer-button signal unavailable (${e}), using AT-SPI instead`);
+            logInfo(`pointer-button signal unavailable (${e}), click events can't be listened to on this Wayland session`);
             this._cursor_tracker = null;
             return false;
         }
@@ -110,8 +113,7 @@ var MouseClickListener = class MouseClickListener {
 
             this._atspi_listener = Atspi.EventListener.new(event => {
                 let button = ATSPI_BUTTON_BY_EVENT_TYPE[event.type];
-                if (button)
-                    this._on_click(button);
+                if (button) this._on_click(button);
             });
         }
 
