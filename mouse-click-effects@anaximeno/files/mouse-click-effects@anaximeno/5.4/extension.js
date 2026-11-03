@@ -61,14 +61,15 @@ class MouseClickEffects {
 
 		this.click_animator = ClickAnimationFactory.createForMode(this.animation_mode);
 
-		this.mouse_click_listener = new MouseClickListener(this._dispatch_click.bind(this));
+		this.mouse_click_listener = null;
+		this.mouse_movement_tracker = null;
+
 		this.idle_monitor = null;
 		this._idle_listener_id = 0;
 		this._idle_animation_source_id = 0;
 
-		this.mouse_movement_tracker = null;
-
 		this._enable_on_drag_end = false;
+		this._destroyed = false;
 		DND.addDragMonitor(this);
 
 		this.enabled = false;
@@ -87,8 +88,8 @@ class MouseClickEffects {
 			{
 				key: "icon-mode",
 				value: "icon_mode",
-				cb: () => {
-					this.update_colored_icons();
+				cb: async () => {
+					await this.update_colored_icons();
 					this.handle_mouse_movement_tracker_property_updated();
 				},
 			},
@@ -167,8 +168,8 @@ class MouseClickEffects {
 			{
 				key: "mouse-movement-color",
 				value: "mouse_movement_color",
-				cb: () => {
-					this.update_colored_icons();
+				cb: async () => {
+					await this.update_colored_icons();
 					this.handle_mouse_movement_tracker_property_updated();
 				},
 			},
@@ -230,8 +231,14 @@ class MouseClickEffects {
 		}
 	}).bind(this);
 
-	enable() {
-		this.update_colored_icons();
+	async enable() {
+		// icons are loaded asynchronously now, so we need to wait before
+		// activating effects that need them.
+		await this.update_colored_icons();
+
+		if (this._destroyed)
+			return;
+
 		this.set_keybindings();
 		this.set_active(true);
 	}
@@ -285,10 +292,9 @@ class MouseClickEffects {
 	}
 
 	destroy() {
+		this._destroyed = true;
 		DND.removeDragMonitor(this);
 		this.set_active(false);
-		this.mouse_click_listener.destroy();
-		this.mouse_click_listener = null;
 		this.unset_keybindings();
 		this.settings.finalize();
 		this.colored_icon_store = null;
@@ -319,11 +325,13 @@ class MouseClickEffects {
 	}
 
 	update_colored_icons() {
-		this.create_icon_data(ClickType.LEFT, this.left_click_color);
-		this.create_icon_data(ClickType.MIDDLE, this.middle_click_color);
-		this.create_icon_data(ClickType.RIGHT, this.right_click_color);
-		this.create_icon_data(ClickType.MOUSE_IDLE, this.mouse_idle_watcher_color);
-		this.create_icon_data(ClickType.MOUSE_MOV, this.mouse_movement_color);
+		return Promise.all([
+			this.create_icon_data(ClickType.LEFT, this.left_click_color),
+			this.create_icon_data(ClickType.MIDDLE, this.middle_click_color),
+			this.create_icon_data(ClickType.RIGHT, this.right_click_color),
+			this.create_icon_data(ClickType.MOUSE_IDLE, this.mouse_idle_watcher_color),
+			this.create_icon_data(ClickType.MOUSE_MOV, this.mouse_movement_color),
+		]);
 	}
 
 	handle_mouse_movement_tracker_property_updated = (new Debouncer()).debounce(() => {
@@ -340,6 +348,17 @@ class MouseClickEffects {
 			this._start_idle_monitor();
 	}, 300);
 
+	_start_mouse_click_listener() {
+		if (!this.left_click_effect_enabled && !this.right_click_effect_enabled && !this.middle_click_effect_enabled)
+			return;
+
+		this.mouse_click_listener = new MouseClickListener(this._dispatch_click.bind(this));
+		this.mouse_click_listener.start();
+
+		// notify at least once in case of click effects not supported yet (expects Cinnamon 6.8+)
+		this._notify_once_if_click_effects_unsupported();
+	}
+
 	_start_mouse_movement_tracker() {
 		if (!this.mouse_movement_tracker_enabled || this.mouse_movement_tracker)
 			return;
@@ -351,6 +370,14 @@ class MouseClickEffects {
 			size: this.size,
 		});
 		this.mouse_movement_tracker.start();
+	}
+
+	_stop_mouse_click_listener() {
+		if (!this.mouse_click_listener)
+			return;
+
+		this.mouse_click_listener.destroy();
+		this.mouse_click_listener = null;
 	}
 
 	_stop_mouse_movement_tracker() {
@@ -430,13 +457,12 @@ class MouseClickEffects {
 	set_active(enabled) {
 		this.enabled = enabled;
 
-		this.mouse_click_listener.stop();
+		this._stop_mouse_click_listener();
 		this._stop_mouse_movement_tracker();
 		this._stop_idle_monitor();
 
 		if (enabled) {
-			this.mouse_click_listener.start();
-			this._notify_once_if_click_effects_unsupported();
+			this._start_mouse_click_listener();
 			this._start_mouse_movement_tracker();
 			this._start_idle_monitor();
 			logInfo("activated");
@@ -448,20 +474,31 @@ class MouseClickEffects {
 	create_icon_data(click_type, color) {
 		let key = this.get_icon_cache_key(this.icon_mode, click_type, color);
 		if (this.colored_icon_store[key])
-			return;
+			return Promise.resolve();
 
-		let source = Gio.File.new_for_path(`${this.app_icons_dir}/${this.icon_mode}.svg`);
-		source.load_contents_async(null, (src, result) => {
-			let contents;
-			try {
-				[, contents] = src.load_contents_finish(result);
-			} catch (e) {
-				logError(`failed to read icon source for ${this.icon_mode}: ${e}`);
-				return;
-			}
+		let icon_mode = this.icon_mode;
+		let source = Gio.File.new_for_path(`${this.app_icons_dir}/${icon_mode}.svg`);
 
-			contents = ByteArray.toString(contents).replace('fill="#000000"', `fill="${color}"`);
-			this.colored_icon_store[key] = Gio.BytesIcon.new(new GLib.Bytes(contents));
+		// always resolves (never rejects), so a single failed icon doesn't block activation
+		return new Promise(resolve => {
+			source.load_contents_async(null, (src, result) => {
+				let contents;
+				try {
+					[, contents] = src.load_contents_finish(result);
+				} catch (e) {
+					logError(`failed to read icon source for ${icon_mode}: ${e}`);
+					resolve();
+					return;
+				}
+
+				// the extension may have been disabled while the icon was loading
+				if (this.colored_icon_store) {
+					contents = ByteArray.toString(contents).replace('fill="#000000"', `fill="${color}"`);
+					this.colored_icon_store[key] = Gio.BytesIcon.new(new GLib.Bytes(contents));
+				}
+
+				resolve();
+			});
 		});
 	}
 
