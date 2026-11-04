@@ -255,12 +255,28 @@ class UsageTracker {
     constructor() {
         this._path = GLib.build_filenamev([GLib.get_user_data_dir(), UUID, "usage.json"]);
         this._data = {};
-        this._load();
+        this._enabled = false;
+        // bumped on every enable/disable so a
+        // load still in flight can't resurrect
+        // cleared data.
+        this._generation = 0;
+    }
+
+    setEnabled(enabled) {
+        this._enabled = enabled;
+        this._generation++;
+        if (enabled)
+            this._load();
+        else
+            this._clear();
     }
 
     _load() {
+        let generation = this._generation;
         let file = Gio.File.new_for_path(this._path);
         file.load_contents_async(null, (source, result) => {
+            if (generation !== this._generation)
+                return;
             try {
                 let [ok, contents] = source.load_contents_finish(result);
                 if (ok)
@@ -280,7 +296,19 @@ class UsageTracker {
         }
     }
 
+    _clear() {
+        this._data = {};
+        try {
+            Gio.File.new_for_path(this._path).delete(null);
+        } catch (e) {
+            if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND))
+                log(`cinnamon-launcher: failed to remove usage data: ${e}`);
+        }
+    }
+
     recordLaunch(appId) {
+        if (!this._enabled)
+            return;
         let entry = this._data[appId] || { count: 0, last: 0 };
         entry.count += 1;
         entry.last = Date.now();
@@ -492,6 +520,7 @@ class LauncherDialog extends ModalDialog.ModalDialog {
 
         this._metrics = computeMetrics(this.launcher_scale);
         this._usage = new UsageTracker();
+        this._usage.setEnabled(this.show_frequent_apps);
 
         this._searchEntry = new St.Entry({
             style_class: "cinnamon-launcher-search",
@@ -575,7 +604,7 @@ class LauncherDialog extends ModalDialog.ModalDialog {
             ["fuzzy-search", "fuzzy_search", null],
             ["enable-calculator", "enable_calculator", null],
             ["enable-system-actions", "enable_system_actions", null],
-            ["show-frequent-apps", "show_frequent_apps", null],
+            ["show-frequent-apps", "show_frequent_apps", () => this._usage.setEnabled(this.show_frequent_apps)],
             ["max-frequent-apps", "max_frequent_apps", null],
             ["show-descriptions", "show_descriptions", () => this._updateSubtitleVisibility()],
             ["enable-animations", "enable_animations", () => this._updateOpenAndCloseTime()],

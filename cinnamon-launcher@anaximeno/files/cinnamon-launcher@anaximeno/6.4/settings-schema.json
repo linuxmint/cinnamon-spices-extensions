@@ -57,7 +57,8 @@
     "show-frequent-apps": {
         "type": "switch",
         "default": true,
-        "description": "Show frequently used applications when the launcher opens"
+        "description": "Show frequently used applications when the launcher opens",
+        "tooltip": "Launches are tracked locally to rank frequently used applications. Disabling this stops tracking and deletes the recorded usage history."
     },
     "max-frequent-apps": {
         "type": "spinbutton",
