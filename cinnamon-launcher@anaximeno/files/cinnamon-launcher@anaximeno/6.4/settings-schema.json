@@ -31,7 +31,7 @@
 
     "open-launcher": {
         "type": "keybinding",
-        "default": "<Control>space::<Super>m",
+        "default": "<Super>m",
         "description": "Open launcher keybinding"
     },
 
