@@ -1462,9 +1462,8 @@ function initPanel(panel) {
         let state = panelStates[panel.panelId];
         if (!state || !state.isEnabled) return;
         
-        if (state.isHidden && getPanelSetting(panel, "autoHide")) {
+        if (state.isHidden && (getPanelSetting(panel, "autoHide") || getPanelSetting(panel, "hideOnFullscreen"))) {
             panel.actor.hide();
-            state.isHidden = false;
         }
     });
 }
@@ -2620,6 +2619,7 @@ function hidePanel(panel) {
                         state.isHiding = false;
                         if (!hasActiveMenus(panel)) {
                             panel.actor.set_scale(0.0, 0.0);
+                            panel.actor.hide();
                         } else {
                             state.isHidden = false;
                             showPanel(panel);
@@ -2689,6 +2689,7 @@ function hidePanel(panel) {
                         state.isHiding = false;
                         if (!hasActiveMenus(panel)) {
                             panel.actor.set_scale(0.0, 0.0);
+                            panel.actor.hide();
                         } else {
                             state.isHidden = false;
                             showPanel(panel);
@@ -2733,6 +2734,7 @@ function hidePanel(panel) {
                     state.isHiding = false;
                     if (!hasActiveMenus(panel)) {
                         panel.actor.set_scale(0.0, 0.0);
+                        panel.actor.hide();
                     } else {
                         state.isHidden = false;
                         showPanel(panel);
