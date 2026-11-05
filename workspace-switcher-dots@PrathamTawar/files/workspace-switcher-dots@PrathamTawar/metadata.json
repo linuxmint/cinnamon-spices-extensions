@@ -1,0 +1,8 @@
+{
+    "name": "Workspace Switcher Dots",
+    "version": "1.0",
+    "description": "Turns the Workspace Switcher (Simple buttons mode) into small dots with a wider bar for the active workspace. Light and dark modes plus custom colors. Works with any theme.",
+    "cinnamon-version": ["6.6"],
+    "uuid": "workspace-switcher-dots@PrathamTawar",
+    "author": "PrathamTawar"
+}

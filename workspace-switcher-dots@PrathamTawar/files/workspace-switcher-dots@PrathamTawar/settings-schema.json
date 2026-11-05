@@ -1,0 +1,32 @@
+{
+  "mode": {
+    "type": "combobox",
+    "default": "light",
+    "description": "Mode",
+    "tooltip": "Light: white dots (for dark panels). Dark: dark gray dots (for light panels). Custom: use the three colors below.",
+    "options": {
+      "Light (white dots)": "light",
+      "Dark (dark gray dots)": "dark",
+      "custom": "custom-colors"
+    }
+  },
+  "custom-header": {
+    "type": "header",
+    "description": "Custom colors (used when Mode is Custom)"
+  },
+  "custom-inactive": {
+    "type": "colorchooser",
+    "default": "rgba(254,254,254,0.45)",
+    "description": "Inactive workspace dot color"
+  },
+  "custom-hover": {
+    "type": "colorchooser",
+    "default": "#727fff",
+    "description": "Inactive workspace dot hover color"
+  },
+  "custom-active": {
+    "type": "colorchooser",
+    "default": "#3f51ff",
+    "description": "Active workspace pill color"
+  }
+}
