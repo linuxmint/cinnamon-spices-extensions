@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-11-02 12:27-0100\n"
-"PO-Revision-Date: 2027-07-27 08:01+0200\n"
+"PO-Revision-Date: 2027-11-06 08:01+0200\n"
 "Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -23,6 +23,8 @@ msgid ""
 "Click effects aren't available on Wayland in this version of Cinnamon, they "
 "require Cinnamon 6.8 or later. The remaining effects will continue to work."
 msgstr ""
+"Klikeffekter er ikke tilgængelige på Wayland i denne version af Cinnamon; "
+"de kræver Cinnamon 6.8 eller nyere. De øvrige effekter vil fortsat fungere."
 
 #. metadata.json->name
 msgid "Mouse Click Effects"
@@ -213,7 +215,7 @@ msgstr "Indstil genvejstast til at pause eller fortsætte effekterne"
 
 #. 5.4->settings-schema.json->wayland-click-effects-info->description
 msgid "Note: on Wayland, click effects require Cinnamon 6.8 or later"
-msgstr ""
+msgstr "Bemærk: På Wayland kræver klikeffekter Cinnamon 6.8 eller senere"
 
 #. 5.4->settings-schema.json->left-click-effect-enabled->description
 msgid "Animate Left Click"
