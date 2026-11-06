@@ -1,0 +1,552 @@
+# ROUNDED CORNERS
+# This file is put in the public domain.
+# klangman, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RoundedCorners@klangman 1.0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-10-29 09:56-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#. 6.0/extension.js:51
+msgid ""
+"Click a window to add its application to the inclusion list.  Esc or right-"
+"click to cancel."
+msgstr ""
+"Haz clic en una ventana para añadir su aplicación a la lista de inclusión. "
+"Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
+
+#. 6.0/extension.js:52
+#, javascript-format
+msgid "\"%s\" is already in the inclusion list."
+msgstr "\"%s\" ya figura en la lista de inclusión."
+
+#. 6.0/extension.js:53
+#, javascript-format
+msgid "Enabled \"%s\" in the inclusion list."
+msgstr "Se ha habilitado \"%s\" en la lista de inclusión."
+
+#. 6.0/extension.js:54
+#, javascript-format
+msgid "Added \"%s\" to the inclusion list."
+msgstr "Se ha añadido \"%s\" a la lista de inclusión."
+
+#. 6.0/extension.js:56
+msgid ""
+"Click a window to add its application to the exclusion list.  Esc or right-"
+"click to cancel."
+msgstr ""
+"Haz clic en una ventana para añadir su aplicación a la lista de "
+"exclusiones. Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
+
+#. 6.0/extension.js:57
+#, javascript-format
+msgid "\"%s\" is already in the exclusion list."
+msgstr "\"%s\" ya figura en la lista de exclusiones."
+
+#. 6.0/extension.js:58
+#, javascript-format
+msgid "Enabled \"%s\" in the exclusion list."
+msgstr "Se ha activado \"%s\" en la lista de exclusiones."
+
+#. 6.0/extension.js:59
+#, javascript-format
+msgid "Added \"%s\" to the exclusion list."
+msgstr "Se ha añadido \"%s\"a la lista de exclusiones."
+
+#. 6.0/extension.js:61
+msgid ""
+"Click a window to add its application to the application border list.  Esc "
+"or right-click to cancel."
+msgstr ""
+"Haz clic en una ventana para añadir su aplicación a la lista de "
+"aplicaciones del borde. Pulsa 'Esc' o haz clic con el botón derecho para "
+"cancelar."
+
+#. 6.0/extension.js:62
+#, javascript-format
+msgid "\"%s\" is already in the application border list."
+msgstr "\"%s\" ya figura en la lista de límites de la aplicación."
+
+#. 6.0/extension.js:63
+#, javascript-format
+msgid "Enabled \"%s\" in the application border list."
+msgstr "Se ha activado \"%s\" en la lista de bordes de la aplicación."
+
+#. 6.0/extension.js:64
+#, javascript-format
+msgid "Added \"%s\" to the application border list."
+msgstr "Se ha añadido \"%s\" a la lista de bordes de la aplicación."
+
+#. 6.0/extension.js:220
+msgid "Welcome to Rounded Corners"
+msgstr "Bienvenidos a Esquinas redondeadas"
+
+#. 6.0/extension.js:221
+msgid ""
+"Thanks for installing Rounded Corners!\n"
+"\n"
+"By default no window corners will be rounded until you change the settings "
+"to allow it. Open the Rounded Corners settings to either round the corners "
+"of all windows by default, or add the applications you want rounded to the "
+"inclusion list. You can also adjust the corner radius, and add borders and "
+"shadows."
+msgstr ""
+"¡Gracias por instalar Esquinas redondeadas!\n"
+"\n"
+"Por defecto, las esquinas de las ventanas no se redondearán hasta que "
+"modifiques la configuración para permitirlo. Abre la configuración de "
+"Esquinas redondeadas para redondear las esquinas de todas las ventanas de "
+"forma predeterminada o para añadir a la lista de aplicaciones incluidas "
+"aquellas cuyas esquinas quieras redondear. También puedes ajustar el radio "
+"de las esquinas y añadir bordes y sombras."
+
+#. 6.0/extension.js:224
+msgid "Open Rounded Corners Settings"
+msgstr "Abrir la configuración de esquinas redondeadas"
+
+#. 6.0/extension.js:690
+msgid "Couldn't start the window picker. Close any open menus and try again."
+msgstr ""
+"No se ha podido iniciar el selector de ventanas. Cierra todos los menús "
+"abiertos e inténtalo de nuevo."
+
+#. 6.0/extension.js:764
+msgid "(unknown application)"
+msgstr "(aplicación desconocida)"
+
+#. 6.0/extension.js:800
+msgid "That window has no WM_CLASS or application id, so it can't be added."
+msgstr ""
+"Esa ventana no tiene ningún WM_CLASS ni identificador de aplicación, por lo "
+"que no se puede añadir."
+
+#. 6.0/CustomWidgets.py:135
+msgid "When off, the default colour is used"
+msgstr "Cuando está desactivado, se utiliza el color predeterminado"
+
+#. 6.0/CustomWidgets.py:191
+msgid "Default"
+msgstr "Predeterminado"
+
+#. 6.0/CustomWidgets.py:227
+msgid "Use Default"
+msgstr "Usar la configuración predeterminada"
+
+#. metadata.json->name
+msgid "Rounded Corners"
+msgstr "Esquinas redondeadas"
+
+#. metadata.json->description
+msgid ""
+"Allows you to round the corners of windows with custom borders and shadows"
+msgstr ""
+"Te permite redondear las esquinas de las ventanas con bordes y sombras "
+"personalizados"
+
+#. 6.0->settings-schema.json->page-general->title
+msgid "Corners"
+msgstr "Esquinas"
+
+#. 6.0->settings-schema.json->page-borders->title
+msgid "Borders"
+msgstr "Bordes"
+
+#. 6.0->settings-schema.json->page-shadow->title
+msgid "Shadows"
+msgstr "Sombras"
+
+#. 6.0->settings-schema.json->page-about->title
+msgid "About"
+msgstr "Acerca de"
+
+#. 6.0->settings-schema.json->section-windows->title
+msgid "Windows"
+msgstr "Ventanas"
+
+#. 6.0->settings-schema.json->section-applications->title
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#. 6.0->settings-schema.json->section-border->title
+msgid "Window border"
+msgstr "Borde de la ventana"
+
+#. 6.0->settings-schema.json->section-border-apps->title
+msgid "Application borders"
+msgstr "Bordes de la aplicación"
+
+#. 6.0->settings-schema.json->section-shadow->title
+msgid "Window shadow"
+msgstr "Sombra de la ventana"
+
+#. 6.0->settings-schema.json->section-about->title
+msgid "About Rounded Corners"
+msgstr "Acerca de Esquinas redondeadas"
+
+#. 6.0->settings-schema.json->note-corners->description
+msgid ""
+"Most themes round the top corners of title bars, and this extension can’t "
+"undo that. A radius smaller than the theme’s will leave a gap between the "
+"border/shadow and the window corners. See the <a href=\"https://github.com/"
+"klangman/CinnamonRoundedCorners\">Rounded Corners website</a> for how to "
+"override the theme’s rounding."
+msgstr ""
+"La mayoría de los temas redondean las esquinas superiores de las barras de "
+"título, y esta extensión no puede revertir ese efecto. Si se establece un "
+"radio menor que el del tema, quedará un espacio entre el borde o la sombra "
+"y las esquinas de la ventana. Consulta la página web <a href=\"https://"
+"github.com/klangman/CinnamonRoundedCorners\">Esquinas redondeadas</a> para "
+"saber cómo anular el redondeo del tema."
+
+#. 6.0->settings-schema.json->note-borders->description
+msgid ""
+"Borders are only drawn on windows that have rounded corners (see the "
+"<b>Corners</b> tab). An application in the list below gets no border unless "
+"its windows are also rounded."
+msgstr ""
+"Los bordes solo se dibujan en las ventanas que tienen esquinas redondeadas "
+"(consulta la pestaña <b>Esquinas</b>). Una aplicación de la lista que "
+"aparece a continuación no tendrá borde a menos que sus ventanas también "
+"tengan las esquinas redondeadas."
+
+#. 6.0->settings-schema.json->note-shadows->description
+msgid ""
+"This shadow is only drawn on windows that have rounded corners (see the "
+"<b>Corners</b> tab), replacing the desktop's own shadow for those windows. "
+"Other windows keep their normal shadow."
+msgstr ""
+"Esta sombra solo se dibuja en las ventanas que tienen esquinas redondeadas "
+"(consulta la pestaña <b>Esquinas</b>), sustituyendo la sombra propia del "
+"escritorio en esas ventanas. El resto de ventanas conservan su sombra "
+"habitual."
+
+#. 6.0->settings-schema.json->auto-include->description
+msgid "Round the corners of all windows by default"
+msgstr "Redondear las esquinas de todas las ventanas de forma predeterminada"
+
+#. 6.0->settings-schema.json->corner-radius->description
+msgid "Corner radius"
+msgstr "Radio de la esquina"
+
+#. 6.0->settings-schema.json->corner-radius->units
+#. 6.0->settings-schema.json->border-width->units
+#. 6.0->settings-schema.json->shadow-size->units
+#. 6.0->settings-schema.json->shadow-offset->units
+msgid "pixels"
+msgstr "pixeles"
+
+#. 6.0->settings-schema.json->corner-radius->tooltip
+msgid ""
+"The radius of the rounded corners applied to windows that are rounded by "
+"default (those not in the exclusion list)."
+msgstr ""
+"El radio de las esquinas redondeadas que se aplica a las ventanas que están "
+"redondeadas por defecto (las que no figuran en la lista de exclusión)."
+
+#. 6.0->settings-schema.json->corners-top->description
+msgid "Round the top corners (recommended)"
+msgstr "Redondea las esquinas superiores (recomendado)"
+
+#. 6.0->settings-schema.json->corners-top->tooltip
+msgid ""
+"If you disable top corner rounding but the theme does some rounding of it's "
+"own, the squared off top corner shadows will cause a ligher section to "
+"appear where the theme has rounded the corners. You may have better results "
+"if you enable top rounding to match the themes rounding radius."
+msgstr ""
+"Si desactivas el redondeo de las esquinas superiores, pero el tema aplica "
+"su propio redondeo, las sombras de las esquinas superiores, que quedan "
+"cuadradas, harán que aparezca una zona más clara justo donde el tema ha "
+"redondeado las esquinas. Es posible que obtengas mejores resultados si "
+"activas el redondeo de las esquinas superiores para que coincida con el "
+"radio de redondeo del tema."
+
+#. 6.0->settings-schema.json->corners-bottom->description
+msgid "Round the bottom corners"
+msgstr "Redondea las esquinas inferiores"
+
+#. 6.0->settings-schema.json->disable-maximized->description
+msgid "Don't round maximized windows"
+msgstr "No redondear las ventanas maximizadas"
+
+#. 6.0->settings-schema.json->disable-maximized->tooltip
+msgid ""
+"Removes the rounded corners, border and shadow while a window is maximized, "
+"and restores them when it is unmaximized. Fullscreen windows are never "
+"rounded."
+msgstr ""
+"Elimina las esquinas redondeadas, el borde y la sombra cuando una ventana "
+"está maximizada, y los restaura cuando deja de estarlo. Las ventanas a "
+"pantalla completa nunca tienen esquinas redondeadas."
+
+#. 6.0->settings-schema.json->windows-inclusion-list->description
+msgid "Application window inclusion list"
+msgstr "Lista de inclusión de ventanas de aplicaciones"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Enabled"
+msgstr "Habilitado"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->windows-exclusion-list->columns->title
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Application"
+msgstr "Aplicación"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Corner Radius"
+msgstr "Radio de la esquina"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Top"
+msgstr "Parte superior redondeada"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Bottom"
+msgstr "Parte inferior redondeada"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where rounded corner effects will be "
+"applied and what effects to apply. The \"Application\" field can be a "
+"WM_CLASS or a desktop file name."
+msgstr ""
+"Define una lista de ventanas de aplicaciones a las que se aplicarán efectos "
+"de esquinas redondeadas, así como los efectos que se aplicarán. El campo "
+"'Aplicación' puede ser un WM_CLASS o el nombre de un archivo de escritorio."
+
+#. 6.0->settings-schema.json->windows-exclusion-list->description
+msgid "Application window exclusion list"
+msgstr "Lista de exclusión de ventanas de aplicaciones"
+
+#. 6.0->settings-schema.json->windows-exclusion-list->columns->title
+msgid "Exclude"
+msgstr "Excluir"
+
+#. 6.0->settings-schema.json->windows-exclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where rounded corner effects will NOT "
+"be applied. The \"Application\" field can be a WM_CLASS or a desktop file "
+"name."
+msgstr ""
+"Define una lista de ventanas de aplicaciones a las que NO se aplicarán los "
+"efectos de esquinas redondeadas. El campo 'Aplicación' puede ser un "
+"WM_CLASS o el nombre de un archivo de escritorio."
+
+#. 6.0->settings-schema.json->pick-application-window->description
+#. 6.0->settings-schema.json->pick-border-window->description
+msgid "Pick a window to add…"
+msgstr "Elige una ventana para añadir…"
+
+#. 6.0->settings-schema.json->pick-application-window->tooltip
+msgid ""
+"Click this, then click any window to add its application to the list above "
+"(the exclusion list when windows are rounded by default, otherwise the "
+"inclusion list). Press Esc or right-click to cancel."
+msgstr ""
+"Haz clic aquí y, a continuación, haz clic en cualquier ventana para añadir "
+"su aplicación a la lista de arriba (la lista de exclusión cuando las "
+"ventanas se redondean de forma predeterminada; en caso contrario, la lista "
+"de inclusión). Pulsa 'Esc' o haz clic con el botón derecho del ratón para "
+"cancelar."
+
+#. 6.0->settings-schema.json->border-mode->description
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Border"
+msgstr "Borde"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "None"
+msgstr "Ninguno"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Match the window's own border"
+msgstr "Ajustar al borde de la propia ventana"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Automatic (contrast with the window edge)"
+msgstr "Automático (en contraste con el borde de la ventana)"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Custom"
+msgstr "Personalizado"
+
+#. 6.0->settings-schema.json->border-mode->tooltip
+msgid ""
+"Draws a thin border just inside the rounded edge of rounded windows. Match "
+"continues the window's own border colours around the rounded corners. "
+"Automatic darkens light edges and lightens dark ones. Custom draws the "
+"colours you choose, one for the focused window and one for other windows."
+msgstr ""
+"Dibuja un borde fino justo en el interior del borde redondeado de las "
+"ventanas redondeadas. La opción 'Ajustar' mantiene los colores del borde de "
+"la propia ventana alrededor de las esquinas redondeadas. La opción "
+"'Automático' oscurece los bordes claros y aclara los oscuros. La opción "
+"'Personalizado' dibuja los colores que elijas: uno para la ventana activa y "
+"otro para el resto de ventanas."
+
+#. 6.0->settings-schema.json->border-width->description
+msgid "Border width"
+msgstr "Ancho del borde"
+
+#. 6.0->settings-schema.json->border-width->tooltip
+msgid ""
+"How many pixels in from the rounded edge the border reaches. With Match, "
+"nothing is drawn on the straight edges; this sets how many of the window's "
+"own edge pixel layers are carried around the rounded corners. Set it to the "
+"width of the theme's border lines (usually 1 or 2): any extra repeats the "
+"window's content colours from the edges into the corners."
+msgstr ""
+"Cuántos píxeles desde el borde redondeado llega el borde. Con la opción "
+"'Ajustar', no se dibuja nada en los bordes rectos; esto establece cuántas "
+"capas de píxeles del propio borde de la ventana se extienden alrededor de "
+"las esquinas redondeadas. Establece este valor en el ancho de las líneas "
+"del borde del tema (normalmente 1 o 2): cualquier valor adicional repetirá "
+"los colores del contenido de la ventana desde los bordes hasta las esquinas."
+
+#. 6.0->settings-schema.json->border-contrast->description
+msgid "Border contrast"
+msgstr "Contraste de bordes"
+
+#. 6.0->settings-schema.json->border-contrast->units
+#. 6.0->settings-schema.json->shadow-opacity->units
+#. 6.0->settings-schema.json->shadow-unfocused-opacity->units
+msgid "%"
+msgstr "%"
+
+#. 6.0->settings-schema.json->border-contrast->tooltip
+msgid ""
+"How far the border colour is moved from the window's edge colour towards "
+"black (on light edges) or white (on dark edges)."
+msgstr ""
+"La distancia a la que se desplaza el color del borde desde el color del "
+"borde de la ventana hacia el negro (en bordes claros) o hacia el blanco (en "
+"bordes oscuros)."
+
+#. 6.0->settings-schema.json->border-color->description
+msgid "Border colour (focused window)"
+msgstr "Color del borde (ventana activa)"
+
+#. 6.0->settings-schema.json->border-color-unfocused->description
+msgid "Border colour (other windows)"
+msgstr "Color del borde (demás ventanas)"
+
+#. 6.0->settings-schema.json->border-app-list->description
+msgid "Application border list"
+msgstr "Lista de bordes de aplicación"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Width"
+msgstr "Ancho"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Contrast %"
+msgstr "Contraste %"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Colour (focused)"
+msgstr "Color (enfoque)"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Colour (other)"
+msgstr "Color (otro)"
+
+#. 6.0->settings-schema.json->border-app-list->tooltip
+msgid ""
+"Gives particular applications their own border, overriding the settings "
+"above. The \"Application\" field can be a WM_CLASS or a desktop file name. "
+"Contrast is only used by Automatic, and the colours only by Custom. Click a "
+"colour in the list to change it. A colour set to Default uses the matching "
+"colour above."
+msgstr ""
+"Asigna a determinadas aplicaciones su propio borde, anulando la "
+"configuración anterior. El campo 'Aplicación' puede ser un WM_CLASS o el "
+"nombre de un archivo de escritorio. El contraste solo se utiliza en el modo "
+"'Automático', y los colores, únicamente en el modo 'Personalizado'. Haz "
+"clic en un color de la lista para cambiarlo. Si se establece un color como "
+"'Predeterminado', se utilizará el color correspondiente de la lista "
+"anterior."
+
+#. 6.0->settings-schema.json->pick-border-window->tooltip
+msgid ""
+"Click this, then click any window to add its application to the application "
+"border list. Press Esc or right-click to cancel."
+msgstr ""
+"Haz clic aquí y, a continuación, haz clic en cualquier ventana para añadir "
+"su aplicación a la lista del borde de aplicaciones. Pulsa 'Esc' o haz clic "
+"con el botón derecho del ratón para cancelar."
+
+#. 6.0->settings-schema.json->shadow-enabled->description
+msgid "Draw a shadow that follows the rounded corners"
+msgstr "Dibuja una sombra que siga las esquinas redondeadas"
+
+#. 6.0->settings-schema.json->shadow-enabled->tooltip
+msgid ""
+"Muffin's own shadow is always turned off for rounded windows, because it "
+"doesn't follow the rounded corners. With this off, rounded windows have no "
+"shadow."
+msgstr ""
+"La sombra propia de Muffin siempre está desactivada en las ventanas "
+"redondeadas, ya que no se adapta a las esquinas redondeadas. Al "
+"desactivarla, las ventanas redondeadas no tienen sombra."
+
+#. 6.0->settings-schema.json->shadow-size->description
+msgid "Shadow size"
+msgstr "Tamaño de la sombra"
+
+#. 6.0->settings-schema.json->shadow-offset->description
+msgid "Shadow vertical offset"
+msgstr "Desplazamiento vertical de la sombra"
+
+#. 6.0->settings-schema.json->shadow-offset->tooltip
+msgid "Moves the shadow down, as if lit from above."
+msgstr ""
+"Desplaza la sombra hacia abajo, como si estuviera iluminada desde arriba."
+
+#. 6.0->settings-schema.json->shadow-opacity->description
+msgid "Shadow strength (focused window)"
+msgstr "Intensidad de la sombra (ventana seleccionada)"
+
+#. 6.0->settings-schema.json->shadow-unfocused-opacity->description
+msgid "Shadow strength (other windows)"
+msgstr "Intensidad de la sombra (otras ventanas)"
+
+#. 6.0->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Rounded Corners</b>\n"
+"Version: ext-version\n"
+"\n"
+"Developed by: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners/issues/"
+"new\">Report an issue</a>\n"
+"\n"
+"The rounded corners effect is based on Blur-my-shell code by aunetx and "
+"contributors <a href=\"https://github.com/aunetx/blur-my-shell\">Github</"
+"a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>"
+msgstr ""
+"\n"
+"<b>Esquinas redondeadas</b>\n"
+"Versión: ext-version\n"
+"\n"
+"Desarrollado por: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners/issues/"
+"new\">Informar de un problema</a>\n"
+"\n"
+"El efecto de esquinas redondeadas se basa en el código 'Blur-my-shell' de "
+"aunetx y otros colaboradores <a href=\"https://github.com/aunetx/blur-my-"
+"shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>"

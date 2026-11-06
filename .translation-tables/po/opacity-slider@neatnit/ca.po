@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# Odyssey <odysseyhyd@gmail.com>, 2024
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: opacity-slider@neatnit 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-07-21 03:08+0300\n"
+"PO-Revision-Date: 2024-07-25 18:14+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: extension.js:94 extension.js:99
+msgid "Opacity"
+msgstr "Opacitat"
+
+#. metadata.json->name
+msgid "Opacity Slider"
+msgstr "Control d'opacitat"
+
+#. metadata.json->description
+msgid "Change a window's opacity from the title bar right-click menu."
+msgstr ""
+"Canvieu la opacitat d'una finestra mitjançant un clic dret a la "
+"barra del títol."

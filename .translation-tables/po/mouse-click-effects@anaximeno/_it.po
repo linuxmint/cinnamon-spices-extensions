@@ -1,0 +1,16 @@
+# MOUSE CLICK EFFECTS
+# This file is put in the public domain.
+# anaximeno, 2024
+#
+msgid ""
+msgstr ""
+
+#. 5.4/extension.js:306
+msgid ""
+"Click effects aren't available on Wayland in this version of Cinnamon, they "
+"require Cinnamon 6.8 or later. The remaining effects will continue to work."
+msgstr ""
+
+#. 5.4->settings-schema.json->wayland-click-effects-info->description
+msgid "Note: on Wayland, click effects require Cinnamon 6.8 or later"
+msgstr ""

@@ -1,0 +1,173 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 22:20+0000\n"
+"PO-Revision-Date: 2018-12-25 21:22+0100\n"
+"Last-Translator: Germán Franco <dev.germanfr@gmail.com>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr "Marca de agua"
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr "Coloca una marca de agua en el escritorio."
+
+#. 3.8->settings-schema.json->section0->description
+#. 3.2->settings-schema.json->section0->description
+msgid "Appearance"
+msgstr "Apariencia"
+
+#. 3.8->settings-schema.json->icon->description
+#. 3.2->settings-schema.json->icon->description
+msgid "Watermark logo"
+msgstr "Logo de la marca de agua"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Cinnamon"
+msgstr "Cinnamon"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Antergos"
+msgstr "Antergos"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Arch"
+msgstr "Arch"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Debian"
+msgstr "Debian"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux"
+msgstr "Linux"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux Mint"
+msgstr "Linux Mint"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro"
+msgstr "Manjaro"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro (with text)"
+msgstr "Manjaro (con nombre)"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Custom..."
+msgstr "Otro..."
+
+#. 3.8->settings-schema.json->custom-icon->description
+#. 3.2->settings-schema.json->custom-icon->description
+msgid "Custom icon or image"
+msgstr "Imagen o icono personalizado"
+
+#. 3.8->settings-schema.json->alpha->description
+#. 3.2->settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr "Opacidad (%)"
+
+#. 3.8->settings-schema.json->invert->description
+#. 3.2->settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr "Invertir colores"
+
+#. 3.8->settings-schema.json->invert->tooltip
+#. 3.2->settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr ""
+"Esto invierte los colores de la imagen completamente. Es útil en fondos "
+"claros."
+
+#. 3.8->settings-schema.json->section1->description
+#. 3.2->settings-schema.json->section1->description
+msgid "Position"
+msgstr "Posición"
+
+#. 3.8->settings-schema.json->position-x->description
+#. 3.2->settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "Alineación horizontal"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Left"
+msgstr "Izquierda"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Center"
+msgstr "Centro"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Right"
+msgstr "Derecha"
+
+#. 3.8->settings-schema.json->margin-x->description
+#. 3.2->settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "Margen horizontal"
+
+#. 3.8->settings-schema.json->margin-x->units
+#. 3.8->settings-schema.json->margin-y->units
+#. 3.8->settings-schema.json->size->units
+#. 3.2->settings-schema.json->margin-x->units
+#. 3.2->settings-schema.json->margin-y->units
+#. 3.2->settings-schema.json->size->units
+msgid "px"
+msgstr "px"
+
+#. 3.8->settings-schema.json->position-y->description
+#. 3.2->settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "Alineación vertical"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Top"
+msgstr "Arriba"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "Abajo"
+
+#. 3.8->settings-schema.json->margin-y->description
+#. 3.2->settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "Margen vertical"
+
+#. 3.8->settings-schema.json->section2->description
+#. 3.8->settings-schema.json->size->description
+#. 3.2->settings-schema.json->section2->description
+#. 3.2->settings-schema.json->size->description
+msgid "Size"
+msgstr "Tamaño"
+
+#. 3.8->settings-schema.json->use-custom-size->description
+#. 3.2->settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr "Usar tamaño personalizado"

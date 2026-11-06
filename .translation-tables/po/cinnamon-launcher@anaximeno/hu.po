@@ -1,0 +1,178 @@
+# CINNAMON APP LAUNCHER
+# This file is put in the public domain.
+# anaximeno, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-launcher@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-11-04 13:44-0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.4/launcher.js:341
+msgid "Lock Screen"
+msgstr "Képernyő Zárolása"
+
+#. 6.4/launcher.js:342
+msgid "lock screen screensaver"
+msgstr "zárolási képernyő képernyővédője"
+
+#. 6.4/launcher.js:348
+msgid "Log Out"
+msgstr "Kijelentkezés"
+
+#. 6.4/launcher.js:349
+msgid "logout sign out leave session"
+msgstr "kijelentkezés, kilépés, munkamenet elhagyása"
+
+#. 6.4/launcher.js:355
+msgid "Shut Down"
+msgstr "Leállítás"
+
+#. 6.4/launcher.js:356
+msgid "shutdown power off turn off"
+msgstr "leállítás, kikapcsolás"
+
+#. 6.4/launcher.js:362
+msgid "Open Settings"
+msgstr "Beállítások Megnyitása"
+
+#. 6.4/launcher.js:363
+msgid "preferences control panel"
+msgstr "beállítások vezérlőpanelje"
+
+#. 6.4/launcher.js:527
+msgid "Search apps, actions, or type a sum…"
+msgstr "Keress alkalmazások, műveletek között, vagy írj be egy összeget…"
+
+#. 6.4/launcher.js:751
+msgid "System Action"
+msgstr "Rendszerművelet"
+
+#. 6.4/launcher.js:872
+msgid "Frequently Used"
+msgstr "Gyakran Használt"
+
+#. 6.4/launcher.js:874
+msgid "All Applications"
+msgstr "Minden Alkalmazás"
+
+#. 6.4/launcher.js:916
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#. 6.4/launcher.js:919
+msgid "Actions"
+msgstr "Műveletek"
+
+#. metadata.json->name
+msgid "Cinnamon App Launcher"
+msgstr "Cinnamon Alkalmazás Indító"
+
+#. metadata.json->description
+msgid "A centered, search-first launcher for cinnamon."
+msgstr "Középre igazított, keresés-központú indító a Cinnamonhoz."
+
+#. 6.4->settings-schema.json->main-page->title
+#. 6.4->settings-schema.json->general-section->title
+msgid "General"
+msgstr "Általános"
+
+#. 6.4->settings-schema.json->search-section->title
+msgid "Search"
+msgstr "Keresés"
+
+#. 6.4->settings-schema.json->open-launcher->description
+msgid "Open launcher keybinding"
+msgstr "Indító gyorsbillentyűje"
+
+#. 6.4->settings-schema.json->fuzzy-search->description
+msgid "Use fuzzy search"
+msgstr "Használjon hozzávetőleges keresést"
+
+#. 6.4->settings-schema.json->fuzzy-search->tooltip
+msgid ""
+"Matches letters in any order, like Alfred/Raycast. Disable for plain "
+"substring search, like the Cinnamon Menu."
+msgstr ""
+"Tetszőleges sorrendben illeszti a karaktereket – ahogyan az Alfred vagy a "
+"Raycast esetében. Kapcsold ki, ha egyszerű részkarakterlánc-keresést "
+"szeretnél (mint a Cinnamon menüben)."
+
+#. 6.4->settings-schema.json->enable-calculator->description
+msgid "Enable the inline calculator"
+msgstr "A beágyazott számológép engedélyezése"
+
+#. 6.4->settings-schema.json->enable-calculator->tooltip
+msgid ""
+"Typing a sum like 12*(3+4) shows the result; Enter copies it to the "
+"clipboard."
+msgstr ""
+"Egy olyan kifejezés beírása, mint a 12*(3+4), megjeleníti az eredményt; az "
+"Enter billentyű pedig a vágólapra másolja azt."
+
+#. 6.4->settings-schema.json->enable-system-actions->description
+msgid "Show system actions"
+msgstr "Rendszerműveletek megjelenítése"
+
+#. 6.4->settings-schema.json->enable-system-actions->tooltip
+msgid ""
+"Lock Screen, Log Out, Shut Down and Open Settings, searchable from the same "
+"box."
+msgstr ""
+"Képernyő zárolása, kijelentkezés, leállítás és a beállítások megnyitása – "
+"mindez ugyanabból a mezőből kereshető."
+
+#. 6.4->settings-schema.json->show-frequent-apps->description
+msgid "Show frequently used applications when the launcher opens"
+msgstr "Gyakran használt alkalmazások megjelenítése az indító megnyitásakor"
+
+#. 6.4->settings-schema.json->show-frequent-apps->tooltip
+msgid ""
+"Launches are tracked locally to rank frequently used applications. Disabling "
+"this stops tracking and deletes the recorded usage history."
+msgstr ""
+"Az alkalmazások indításait a rendszer helyileg rögzíti, hogy rangsorolni "
+"lehessen a gyakran használt alkalmazásokat. A funkció letiltása leállítja a "
+"nyomon követést, és törli a rögzített használati előzményeket."
+
+#. 6.4->settings-schema.json->max-frequent-apps->description
+msgid "Maximum number of frequently used applications to show"
+msgstr "A gyakran használt alkalmazások maximális száma megjeleníthető"
+
+#. 6.4->settings-schema.json->show-descriptions->description
+msgid "Show descriptions under each result"
+msgstr "Leírások megjelenítése az egyes találatok alatt"
+
+#. 6.4->settings-schema.json->enable-animations->description
+msgid "Enable animations"
+msgstr "Animációk engedélyezése"
+
+#. 6.4->settings-schema.json->launcher-scale->description
+msgid "Launcher size"
+msgstr "Indító mérete"
+
+#. 6.4->settings-schema.json->launcher-scale->tooltip
+msgid "Overall size of the launcher window, independent of display scaling."
+msgstr "Az indítóablak teljes mérete, a kijelzőméretezéstől függetlenül."
+
+#. 6.4->settings-schema.json->launcher-scale->options
+msgid "Small"
+msgstr "Kicsi"
+
+#. 6.4->settings-schema.json->launcher-scale->options
+msgid "Medium"
+msgstr "Közepes"
+
+#. 6.4->settings-schema.json->launcher-scale->options
+msgid "Large"
+msgstr "Nagy"

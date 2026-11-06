@@ -1,0 +1,89 @@
+# BLUR OVERVIEW
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# nailfarmer, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
+"PO-Revision-Date: 2025-08-26 18:34+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Sfocatura della Panoramica"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur and adjust the dimming of the overview's background (window selection "
+"screen)"
+msgstr ""
+"Permette di sfocare e regolare l'oscuramento dello sfondo della panoramica (schermata di "
+"selezione finestra)"
+
+#. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr "Impostazioni sfocatura panoramica (schermata selezione finestra)"
+
+#. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr "Oscuramento sfondo (percentuale)"
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr "Sfoca sfondo"
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr "Abilita effetto fusione colore"
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be controlled "
+"using the \"Dim Background\" slider control above"
+msgstr ""
+"Usa un colore personalizzato come colore di sovrapposizione per l'oscuramento. "
+"L'intensità del colore può essere regolata con il cursore \"Oscuramento sfondo\" sopra"
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr "Colore effetto fusione"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr "Nessuno"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr "Semplice"
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr "Gaussiano"
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr "Tipo di effetto sfocatura"
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr "Tipo di algoritmo di sfocatura da usare per lo sfondo"
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr "Intensità sfocatura gaussiana"
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid "Adjusts the intensity of the blur effect by changing the radius use by the effect."
+msgstr "Regola l'intensità dell'effetto sfocatura modificando il raggio usato dall'effetto."

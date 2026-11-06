@@ -1,0 +1,19 @@
+# SLIDER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# mohammad-sn, 2017
+#
+msgid ""
+msgstr ""
+
+#. extension.js:133
+msgid "ERROR"
+msgstr ""
+
+#. extension.js:133
+msgid "Slider was NOT enabled"
+msgstr ""
+
+#. extension.js:134
+msgid "This extension is currently incompatible with your version of Cinnamon."
+msgstr ""

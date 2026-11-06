@@ -1,0 +1,74 @@
+# DESKTOP SCROLLER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ccadeptic23, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 12:37-0500\n"
+"PO-Revision-Date: 2025-02-21 14:17+0100\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Desktop Scroller"
+msgstr "Bureaublad Scroller"
+
+#. metadata.json->description
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Wissel tussen bureaubladen door te scrollen aan de linker- en rechterranden "
+"van het scherm."
+
+#. settings-schema.json->showDirectionArrow->description
+msgid "Show direction arrow"
+msgstr "Toon richtingspijl"
+
+#. settings-schema.json->showDirectionArrow->tooltip
+msgid "Check this to show an arrow indicating scroll direction."
+msgstr "Vink dit aan om een pijl te tonen die de scrollrichting aangeeft."
+
+#. settings-schema.json->activationAreaWidth->units
+msgid "pixels"
+msgstr "pixels"
+
+#. settings-schema.json->activationAreaWidth->description
+msgid "Activation area width:"
+msgstr "Breedte van activeringsgebied:"
+
+#. settings-schema.json->activationAreaWidth->tooltip
+msgid "Width of activation areas"
+msgstr "Breedte van de activeringsgebieden"
+
+#. settings-schema.json->showActivationAreas->description
+msgid "Show activation areas"
+msgstr "Toon activeringsgebieden"
+
+#. settings-schema.json->showActivationAreas->tooltip
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Vink dit aan om de gebieden te tonen waar erover scrollen het bureaublad zal "
+"wisselen."
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr "Gebruik een werkruimtewisselaar-extensie indien geïnstalleerd"
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extensions to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""
+"Sta een Cinnamon-extensie toe om de werkruimtewisseling te animeren. Deze "
+"optie heeft geen effect tenzij een compatibele extensie is geïnstalleerd. "
+"Vereist Desktop Cube 2.0.2 of Flipper 2.0.0 en Cinnamon 5.4 of hoger."

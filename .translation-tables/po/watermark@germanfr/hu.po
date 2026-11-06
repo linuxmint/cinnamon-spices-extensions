@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 22:20+0000\n"
+"PO-Revision-Date: 2021-09-26 08:31+0200\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+#. metadata.json->name
+msgid "Watermark"
+msgstr "Vízjel"
+
+#. metadata.json->description
+msgid "Place a watermark on the desktop."
+msgstr "Vízjel helyezése az asztalra."
+
+#. 3.8->settings-schema.json->section0->description
+#. 3.2->settings-schema.json->section0->description
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#. 3.8->settings-schema.json->icon->description
+#. 3.2->settings-schema.json->icon->description
+msgid "Watermark logo"
+msgstr "Vízjel logó"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Cinnamon"
+msgstr "Cinnamon"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Antergos"
+msgstr "Antergos"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Arch"
+msgstr "Arch"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Debian"
+msgstr "Debian"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux"
+msgstr "Linux"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Linux Mint"
+msgstr "Linux Mint"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro"
+msgstr "Manjaro"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Manjaro (with text)"
+msgstr "Manjaro (szöveggel)"
+
+#. 3.8->settings-schema.json->icon->options
+#. 3.2->settings-schema.json->icon->options
+msgid "Custom..."
+msgstr "Egyéni…"
+
+#. 3.8->settings-schema.json->custom-icon->description
+#. 3.2->settings-schema.json->custom-icon->description
+msgid "Custom icon or image"
+msgstr "Egyéni ikon vagy kép"
+
+#. 3.8->settings-schema.json->alpha->description
+#. 3.2->settings-schema.json->alpha->description
+msgid "Opacity (%)"
+msgstr "Átlátszatlanság (%)"
+
+#. 3.8->settings-schema.json->invert->description
+#. 3.2->settings-schema.json->invert->description
+msgid "Invert colors"
+msgstr "Színek invertálása"
+
+#. 3.8->settings-schema.json->invert->tooltip
+#. 3.2->settings-schema.json->invert->tooltip
+msgid "This completely inverts the image colors. Useful on light backgrounds."
+msgstr "Ez teljesen invertálja a képek színét. Előnyös világos háttereknél."
+
+#. 3.8->settings-schema.json->section1->description
+#. 3.2->settings-schema.json->section1->description
+msgid "Position"
+msgstr "Pozíció"
+
+#. 3.8->settings-schema.json->position-x->description
+#. 3.2->settings-schema.json->position-x->description
+msgid "Horizontal align"
+msgstr "Vízszintes igazítás"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Left"
+msgstr "Balra"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Center"
+msgstr "Középre"
+
+#. 3.8->settings-schema.json->position-x->options
+#. 3.2->settings-schema.json->position-x->options
+msgid "Right"
+msgstr "Jobbra"
+
+#. 3.8->settings-schema.json->margin-x->description
+#. 3.2->settings-schema.json->margin-x->description
+msgid "Horizontal margin"
+msgstr "Vízszintes margó"
+
+#. 3.8->settings-schema.json->margin-x->units
+#. 3.8->settings-schema.json->margin-y->units
+#. 3.8->settings-schema.json->size->units
+#. 3.2->settings-schema.json->margin-x->units
+#. 3.2->settings-schema.json->margin-y->units
+#. 3.2->settings-schema.json->size->units
+msgid "px"
+msgstr "px"
+
+#. 3.8->settings-schema.json->position-y->description
+#. 3.2->settings-schema.json->position-y->description
+msgid "Vertical align"
+msgstr "Függőleges igazítás"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Top"
+msgstr "Fent"
+
+#. 3.8->settings-schema.json->position-y->options
+#. 3.2->settings-schema.json->position-y->options
+msgid "Bottom"
+msgstr "Lent"
+
+#. 3.8->settings-schema.json->margin-y->description
+#. 3.2->settings-schema.json->margin-y->description
+msgid "Vertical margin"
+msgstr "Függőleges margó"
+
+#. 3.8->settings-schema.json->section2->description
+#. 3.8->settings-schema.json->size->description
+#. 3.2->settings-schema.json->section2->description
+#. 3.2->settings-schema.json->size->description
+msgid "Size"
+msgstr "Méret"
+
+#. 3.8->settings-schema.json->use-custom-size->description
+#. 3.2->settings-schema.json->use-custom-size->description
+msgid "Use a custom size"
+msgstr "Egyéni méret használata"

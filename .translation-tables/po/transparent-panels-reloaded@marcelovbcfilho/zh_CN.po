@@ -1,0 +1,91 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-04-17 14:43-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: extension.js:199
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s已启用"
+
+#: extension.js:200
+msgid "Open the extension settings and customize your panels"
+msgstr "打开扩展设置并自定义您的面板"
+
+#: extension.js:203
+msgid "Open settings"
+msgstr "打开设置"
+
+#. metadata.json->name
+msgid "Transparent panels reloaded"
+msgstr "透明面板重置版"
+
+#. metadata.json->description
+msgid ""
+"Make your panels transparent (or not) and change their color as you wish"
+msgstr "使您的面板透明（或不透明）并根据需要更改其颜色"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "常规"
+
+#. settings-schema.json->transparency-amount->description
+#. settings-schema.json->transparency-amount->tooltip
+msgid "Opacity amount"
+msgstr "透明度"
+
+#. settings-schema.json->transparency-always->description
+msgid "Always transparent"
+msgstr "始终透明"
+
+#. settings-schema.json->transparency-always->tooltip
+msgid ""
+"If enable the panels will always be transparent, if disable, only will be "
+"transparent if there is no maximized windows"
+msgstr "如果启用，面板将始终是透明的，如果禁用，则仅在没有最大化窗口时才透明"
+
+#. settings-schema.json->use-custom-panel-color->description
+msgid "Use custom panel color"
+msgstr "使用自定义面板颜色"
+
+#. settings-schema.json->custom-panel-color->description
+msgid "Custom panel color"
+msgstr "自定义面板颜色"
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels (WIP)"
+msgstr "筛选面板（半成品）"
+
+#. settings-schema.json->filters-description->description
+msgid ""
+"Select the panels that will be affected by this extension. (Work in progress/"
+"not working)"
+msgstr "选择将受此扩展影响的面板。（开发中，可能不工作）"
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "顶部面板"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "右侧面板"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "底部面板"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "左侧面板"

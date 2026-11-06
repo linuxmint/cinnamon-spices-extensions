@@ -1,0 +1,72 @@
+# DESKTOP SCROLLER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ccadeptic23, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 12:37-0500\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Desktop Scroller"
+msgstr "Mahigaineko Korritzailea"
+
+#. metadata.json->description
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Mahigainen artean aldatu, pantailako ezkerreko eta eskuineko ertzetan "
+"korritzen."
+
+#. settings-schema.json->showDirectionArrow->description
+msgid "Show direction arrow"
+msgstr "Erakutsi norabide-gezia"
+
+#. settings-schema.json->showDirectionArrow->tooltip
+msgid "Check this to show an arrow indicating scroll direction."
+msgstr "Aukera hau ezarri korritzearen norabide-gezia erakusteko."
+
+#. settings-schema.json->activationAreaWidth->units
+msgid "pixels"
+msgstr "pixel"
+
+#. settings-schema.json->activationAreaWidth->description
+msgid "Activation area width:"
+msgstr "Aktibazio-eremuaren zabalera:"
+
+#. settings-schema.json->activationAreaWidth->tooltip
+msgid "Width of activation areas"
+msgstr "Pantailaren ertzetako aktibazio-eremuaren zabalera"
+
+#. settings-schema.json->showActivationAreas->description
+msgid "Show activation areas"
+msgstr "Erakutsi aktibazio-eremuak"
+
+#. settings-schema.json->showActivationAreas->tooltip
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Aukera hau ezarri, ikusteko zer eremutan korritu behar den idazmahaia "
+"aldatzeko."
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr ""
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extensions to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""

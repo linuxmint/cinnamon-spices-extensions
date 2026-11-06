@@ -1,0 +1,326 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-03 15:24-0500\n"
+"PO-Revision-Date: 2025-02-05 18:38+0100\n"
+"Last-Translator: claudiux\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: extension.js:43 3.8/gTile.js:303 5.4/gTile.js:303
+msgid "Auto close"
+msgstr "Fermeture auto"
+
+#: extension.js:44 3.8/gTile.js:304 5.4/gTile.js:304
+msgid "Animations"
+msgstr "Animations"
+
+#: extension.js:45 3.8/gTile.js:305 5.4/gTile.js:305
+msgid "Auto tile main and list"
+msgstr "Mosaïque auto principale et liste"
+
+#: extension.js:46 3.8/gTile.js:306 5.4/gTile.js:306
+msgid "Auto tile two lists"
+msgstr "Mosaïque auto des deux listes"
+
+#. metadata.json->name
+msgid "gTile"
+msgstr "gTile"
+
+#. metadata.json->description
+msgid "Tile your windows as you like."
+msgstr "Disposez vos fenêtres comme vous le souhaitez."
+
+#. settings-schema.json->headerKeys->description
+msgid "Hotkeys:"
+msgstr "Raccourcis clavier :"
+
+#. settings-schema.json->hotkey->description
+#. 3.8->settings-schema.json->hotkey->description
+#. 5.4->settings-schema.json->hotkey->description
+msgid "Global Hotkey for gTile"
+msgstr "Touche de raccourci globale pour gTile"
+
+#. settings-schema.json->headerBehavior->description
+msgid "Behavior:"
+msgstr "Comportement :"
+
+#. settings-schema.json->animation->description
+#. 3.8->settings-schema.json->animation->description
+#. 5.4->settings-schema.json->animation->description
+msgid "Animation"
+msgstr "Animation"
+
+#. settings-schema.json->autoclose->description
+#. 3.8->settings-schema.json->autoclose->description
+#. 5.4->settings-schema.json->autoclose->description
+msgid "Auto-Close"
+msgstr "Fermeture auto"
+
+#. settings-schema.json->header1->description
+msgid "Layout for Button 1:"
+msgstr "Disposition du Bouton 1 :"
+
+#. settings-schema.json->gridbutton1x->units
+#. settings-schema.json->gridbutton2x->units
+#. settings-schema.json->gridbutton3x->units
+#. settings-schema.json->gridbutton4x->units
+msgid "x"
+msgstr "x"
+
+#. settings-schema.json->gridbutton1x->description
+#. settings-schema.json->gridbutton2x->description
+#. settings-schema.json->gridbutton3x->description
+#. settings-schema.json->gridbutton4x->description
+#. 3.8->settings-schema.json->columns->description
+#. 3.8->settings-schema.json->grid1x->description
+#. 3.8->settings-schema.json->grid2x->description
+#. 3.8->settings-schema.json->grid3x->description
+#. 3.8->settings-schema.json->grid4x->description
+#. 5.4->settings-schema.json->columns->description
+#. 5.4->settings-schema.json->grid1x->description
+#. 5.4->settings-schema.json->grid2x->description
+#. 5.4->settings-schema.json->grid3x->description
+#. 5.4->settings-schema.json->grid4x->description
+msgid "Columns"
+msgstr "Colonnes"
+
+#. settings-schema.json->gridbutton1y->units
+#. settings-schema.json->gridbutton2y->units
+#. settings-schema.json->gridbutton3y->units
+#. settings-schema.json->gridbutton4y->units
+msgid "y"
+msgstr "y"
+
+#. settings-schema.json->gridbutton1y->description
+#. settings-schema.json->gridbutton2y->description
+#. settings-schema.json->gridbutton3y->description
+#. settings-schema.json->gridbutton4y->description
+#. 3.8->settings-schema.json->rows->description
+#. 3.8->settings-schema.json->grid1y->description
+#. 3.8->settings-schema.json->grid2y->description
+#. 3.8->settings-schema.json->grid3y->description
+#. 3.8->settings-schema.json->grid4y->description
+#. 5.4->settings-schema.json->rows->description
+#. 5.4->settings-schema.json->grid1y->description
+#. 5.4->settings-schema.json->grid2y->description
+#. 5.4->settings-schema.json->grid3y->description
+#. 5.4->settings-schema.json->grid4y->description
+msgid "Rows"
+msgstr "Rangées"
+
+#. settings-schema.json->header2->description
+msgid "Layout for Button 2:"
+msgstr "Disposition du Bouton 2 :"
+
+#. settings-schema.json->header3->description
+msgid "Layout for Button 3:"
+msgstr "Disposition du Bouton 3:"
+
+#. settings-schema.json->header4->description
+msgid "Layout for Button 4:"
+msgstr "Disposition du Bouton 4 :"
+
+#. 3.8->settings-schema.json->hotkeys-tab->title
+#. 5.4->settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Raccourcis clavier"
+
+#. 3.8->settings-schema.json->behaviour-tab->title
+#. 3.8->settings-schema.json->behaviour-section->title
+#. 5.4->settings-schema.json->behaviour-tab->title
+#. 5.4->settings-schema.json->behaviour-section->title
+msgid "Behavior"
+msgstr "Comportement"
+
+#. 3.8->settings-schema.json->layout-tab->title
+#. 5.4->settings-schema.json->layout-tab->title
+msgid "Layout"
+msgstr "Disposition"
+
+#. 3.8->settings-schema.json->help->title
+#. 5.4->settings-schema.json->help->title
+msgid "Help"
+msgstr "Aide"
+
+#. 3.8->settings-schema.json->hotkey-section->title
+#. 5.4->settings-schema.json->hotkey-section->title
+msgid "Global Hotkey"
+msgstr "Touche de raccourci globale"
+
+#. 3.8->settings-schema.json->keybindings-legend-section->title
+#. 5.4->settings-schema.json->keybindings-legend-section->title
+msgid "Keybindings Legend (when open)"
+msgstr "Légende des raccourcis clavier (à l'ouverture)"
+
+#. 3.8->settings-schema.json->grid1-section->title
+#. 5.4->settings-schema.json->grid1-section->title
+msgid "Layout For Button 1"
+msgstr "Disposition du Bouton 1"
+
+#. 3.8->settings-schema.json->grid2-section->title
+#. 5.4->settings-schema.json->grid2-section->title
+msgid "Layout For Button 2"
+msgstr "Disposition du Bouton 2"
+
+#. 3.8->settings-schema.json->grid3-section->title
+#. 5.4->settings-schema.json->grid3-section->title
+msgid "Layout For Button 3"
+msgstr "Disposition du Bouton 3"
+
+#. 3.8->settings-schema.json->grid4-section->title
+#. 5.4->settings-schema.json->grid4-section->title
+msgid "Layout For Button 4"
+msgstr "Disposition du Bouton 4"
+
+#. 3.8->settings-schema.json->help-section->title
+#. 5.4->settings-schema.json->help-section->title
+msgid "More Info"
+msgstr "Plus d'info"
+
+#. 3.8->settings-schema.json->hotkeys-legend->description
+#. 5.4->settings-schema.json->hotkeys-legend->description
+msgid ""
+"Escape:\t\t\tHide gTile\n"
+"Enter or Space:\tCommit current selection\n"
+"Left:\t\t\tMove Left inside Grid\n"
+"Right:\t\t\tMove Right inside Grid\n"
+"Up:\t\t\t\tMove Up inside Grid\n"
+"Down:\t\t\tMove Down inside Grid\n"
+"<Shift>Left:\t\tInclude column to the Left in selection\n"
+"<Shift>Right:\t\tInclude column to the Right in selection\n"
+"<Shift>Up:\t\tInclude row Above in selection\n"
+"<Shift>Down:\tInclude row Below in selection\n"
+"<Alt>Left:\t\tMove to the monitor on the Left\n"
+"<Alt>Right:\t\tMove to the monitor on the Right\n"
+"<Alt>Up:\t\t\tMove to the monitor Above\n"
+"<Alt>Down:\t\tMove to the monitor Below\n"
+"1:\t\t\t\tSelect the first grid layout\n"
+"2:\t\t\t\tSelect the second grid layout\n"
+"3:\t\t\t\tSelect the third grid layout\n"
+"4:\t\t\t\tSelect the fourth grid layout"
+msgstr ""
+"Échap:\\t\\tMasquer gTile\\n\n"
+"Entrer ou Espace:\\tValider la sélection actuelle\\n\n"
+"Gauche:\\t\\tDéplacer vers la gauche à l'intérieur de la grille\\n\n"
+"Droite:\\t\\tDéplacer vers la droite à l'intérieur de la grille\\n\n"
+"Haut:\\t\\t\\tDéplacer vers le haut à l'intérieur de la grille\\n\n"
+"Bas:\\t\\tDéplacer vers le bas à l'intérieur de la grille.\n"
+"<Shift>Gauche:\\t\\tInclure la colonne de gauche dans la sélection\\n\n"
+"<Shift>Droite:\\t\\tInclure la colonne de droite dans la sélection\\n\n"
+"<Shift>Haut:\\t\\tInclure la ligne au-dessus dans la sélection\\n\n"
+"<Shift>Bas:\\tInclure la ligne au-dessous dans la sélection\\n\n"
+"<Alt>Gauche:\\t\\tDéplacer vers le moniteur de gauche\\n\n"
+"<Alt>Right:\\t\\tDéplacer vers le moniteur de droite\\n\n"
+"<Alt>Haut:\\t\\tDéplacer vers le moniteur au dessus\\n\n"
+"<Alt>Down:\\t\\tDéplacer vers le moniteur du bas\n"
+"1:\\t\\t\\tSélectionner la première disposition de la grille\\n\n"
+"2:\\t\\t\\tSelectionner la deuxième disposition de la grille\\n\n"
+"3:\\t\\t\\tSelectionner la troisième disposition de la grille\\n\n"
+"4:\\t\\t\\t\\tSelectionner la quatrième disposition de la grille"
+
+#. 3.8->settings-schema.json->aspect-ratio->description
+#. 5.4->settings-schema.json->aspect-ratio->description
+msgid "Use monitor aspect ratio"
+msgstr "Utiliser le ratio d'aspect de l'écran"
+
+#. 3.8->settings-schema.json->aspect-ratio->tooltip
+#. 5.4->settings-schema.json->aspect-ratio->tooltip
+msgid ""
+"Should the popup's grid reflect the current monitor's aspect ratio or not."
+msgstr ""
+"La grille de la fenêtre contextuelle doit-elle ou non refléter le rapport "
+"hauteur/largeur de l'écran actuel ?"
+
+#. 3.8->settings-schema.json->useMonitorCenter->description
+#. 5.4->settings-schema.json->useMonitorCenter->description
+msgid "UI always centered to monitor"
+msgstr "Interface utilisateur toujours centrée sur le moniteur"
+
+#. 3.8->settings-schema.json->useMonitorCenter->tooltip
+#. 5.4->settings-schema.json->useMonitorCenter->tooltip
+msgid ""
+"By default the grid UI shows up in the middle of the active window. With "
+"this, it always displays in the middle of the monitor."
+msgstr ""
+"Par défaut, la grille s'affiche au centre de la fenêtre active. Avec cette "
+"option, elle s'affiche toujours au centre de l'écran."
+
+#. 3.8->settings-schema.json->showGridOnAllMonitors->description
+#. 5.4->settings-schema.json->showGridOnAllMonitors->description
+msgid "Show UI and all monitors at the same time"
+msgstr "Afficher l'interface utilisateur et tous les moniteurs en même temps"
+
+#. 3.8->settings-schema.json->grid1NameOverride->description
+#. 3.8->settings-schema.json->grid2NameOverride->description
+#. 3.8->settings-schema.json->grid3NameOverride->description
+#. 3.8->settings-schema.json->grid4NameOverride->description
+#. 5.4->settings-schema.json->grid2NameOverride->description
+#. 5.4->settings-schema.json->grid3NameOverride->description
+#. 5.4->settings-schema.json->grid4NameOverride->description
+msgid "Name Override"
+msgstr "Remplacement du nom"
+
+#. 3.8->settings-schema.json->grid1x->tooltip
+#. 3.8->settings-schema.json->grid2x->tooltip
+#. 3.8->settings-schema.json->grid3x->tooltip
+#. 3.8->settings-schema.json->grid4x->tooltip
+#. 5.4->settings-schema.json->grid1x->tooltip
+#. 5.4->settings-schema.json->grid2x->tooltip
+#. 5.4->settings-schema.json->grid3x->tooltip
+#. 5.4->settings-schema.json->grid4x->tooltip
+msgid ""
+"Each row represents a column. Span is how much space a column should take up "
+"compared to the other columns. Default is 1."
+msgstr ""
+"Chaque ligne représente une colonne. L'espace est l'espace qu'une colonne "
+"doit occuper par rapport aux autres colonnes. La valeur par défaut est 1."
+
+#. 3.8->settings-schema.json->grid1x->columns->title
+#. 3.8->settings-schema.json->grid1y->columns->title
+#. 3.8->settings-schema.json->grid2x->columns->title
+#. 3.8->settings-schema.json->grid2y->columns->title
+#. 3.8->settings-schema.json->grid3x->columns->title
+#. 3.8->settings-schema.json->grid3y->columns->title
+#. 3.8->settings-schema.json->grid4x->columns->title
+#. 3.8->settings-schema.json->grid4y->columns->title
+#. 5.4->settings-schema.json->grid1x->columns->title
+#. 5.4->settings-schema.json->grid1y->columns->title
+#. 5.4->settings-schema.json->grid2x->columns->title
+#. 5.4->settings-schema.json->grid2y->columns->title
+#. 5.4->settings-schema.json->grid3x->columns->title
+#. 5.4->settings-schema.json->grid3y->columns->title
+#. 5.4->settings-schema.json->grid4x->columns->title
+#. 5.4->settings-schema.json->grid4y->columns->title
+msgid "Span"
+msgstr "Portée"
+
+#. 3.8->settings-schema.json->grid1y->tooltip
+#. 3.8->settings-schema.json->grid2y->tooltip
+#. 3.8->settings-schema.json->grid3y->tooltip
+#. 3.8->settings-schema.json->grid4y->tooltip
+#. 5.4->settings-schema.json->grid1y->tooltip
+#. 5.4->settings-schema.json->grid2y->tooltip
+#. 5.4->settings-schema.json->grid3y->tooltip
+#. 5.4->settings-schema.json->grid4y->tooltip
+msgid ""
+"Each row represents a row. Span is how much space a row should take up "
+"compared to the other columns. Default is 1."
+msgstr ""
+"Chaque ligne représente une ligne. L'espace est l'espace qu'une ligne doit "
+"occuper par rapport aux autres lignes. La valeur par défaut est 1."
+
+#. 5.4->settings-schema.json->grid1NameOverride->description
+msgid "Name Override on the UI"
+msgstr "Remplacement du nom sur l'interface utilisateur"

@@ -1,0 +1,552 @@
+# ROUNDED CORNERS
+# This file is put in the public domain.
+# klangman, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RoundedCorners@klangman 1.0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-10-29 09:56-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.0/extension.js:51
+msgid ""
+"Click a window to add its application to the inclusion list.  Esc or right-"
+"click to cancel."
+msgstr ""
+"Kattintson egy ablakra, hogy hozzáadja az alkalmazását a befogadási "
+"listához.  Esc vagy jobb klikk a megszakításhoz."
+
+#. 6.0/extension.js:52
+#, javascript-format
+msgid "\"%s\" is already in the inclusion list."
+msgstr "A(z) „%s” már szerepel a felvételi listán."
+
+#. 6.0/extension.js:53
+#, javascript-format
+msgid "Enabled \"%s\" in the inclusion list."
+msgstr "Engedélyezve: „%s” a befogadási listában."
+
+#. 6.0/extension.js:54
+#, javascript-format
+msgid "Added \"%s\" to the inclusion list."
+msgstr "„%s” hozzáadva a befogadási listához."
+
+#. 6.0/extension.js:56
+msgid ""
+"Click a window to add its application to the exclusion list.  Esc or right-"
+"click to cancel."
+msgstr ""
+"Kattintson egy ablakra, hogy hozzáadja az alkalmazását a kivételek "
+"listájához.  Esc vagy jobb klikk a megszakításhoz."
+
+#. 6.0/extension.js:57
+#, javascript-format
+msgid "\"%s\" is already in the exclusion list."
+msgstr "A(z) „%s” már szerepel a kizárási listán."
+
+#. 6.0/extension.js:58
+#, javascript-format
+msgid "Enabled \"%s\" in the exclusion list."
+msgstr "Engedélyezve: „%s” a kizárási listában."
+
+#. 6.0/extension.js:59
+#, javascript-format
+msgid "Added \"%s\" to the exclusion list."
+msgstr "„%s” hozzáadva a kizárási listához."
+
+#. 6.0/extension.js:61
+msgid ""
+"Click a window to add its application to the application border list.  Esc "
+"or right-click to cancel."
+msgstr ""
+"Kattintson egy ablakra, hogy hozzáadja az alkalmazását az alkalmazásszegély-"
+"listához.  Esc vagy jobb klikk a megszakításhoz."
+
+#. 6.0/extension.js:62
+#, javascript-format
+msgid "\"%s\" is already in the application border list."
+msgstr "A(z) „%s” már szerepel az alkalmazásszegély-listában."
+
+#. 6.0/extension.js:63
+#, javascript-format
+msgid "Enabled \"%s\" in the application border list."
+msgstr "Engedélyezve: „%s” az alkalmazásszegély-listában."
+
+#. 6.0/extension.js:64
+#, javascript-format
+msgid "Added \"%s\" to the application border list."
+msgstr "„%s” hozzáadva az alkalmazásszegély-listához."
+
+#. 6.0/extension.js:220
+msgid "Welcome to Rounded Corners"
+msgstr "Üdvözöljük a Lekerekített Sarkoknál"
+
+#. 6.0/extension.js:221
+msgid ""
+"Thanks for installing Rounded Corners!\n"
+"\n"
+"By default no window corners will be rounded until you change the settings "
+"to allow it. Open the Rounded Corners settings to either round the corners "
+"of all windows by default, or add the applications you want rounded to the "
+"inclusion list. You can also adjust the corner radius, and add borders and "
+"shadows."
+msgstr ""
+"Köszönjük, hogy telepítetted a Lekerekített Sarkokat!\n"
+"\n"
+"Alapértelmezés szerint egyetlen ablak sarka sem lesz lekerekítve, amíg ezt "
+"a beállításokban nem engedélyezed. Nyisd meg a Rounded Corners "
+"beállításait, és válaszd ki, hogy az összes ablak sarkát lekerekítse-e a "
+"program, vagy add hozzá a kiválasztott alkalmazásokat egy engedélyezési "
+"listához. Emellett módosíthatod a sarkok lekerekítésének mértékét, valamint "
+"szegélyeket és árnyékokat is hozzáadhatsz."
+
+#. 6.0/extension.js:224
+msgid "Open Rounded Corners Settings"
+msgstr "Lekerekített Sarkok beállításainak megnyitása"
+
+#. 6.0/extension.js:690
+msgid "Couldn't start the window picker. Close any open menus and try again."
+msgstr ""
+"Nem sikerült elindítani az ablakválasztót. Zárjon be minden megnyitott "
+"menüt, majd próbálja újra."
+
+#. 6.0/extension.js:764
+msgid "(unknown application)"
+msgstr "(ismeretlen alkalmazás)"
+
+#. 6.0/extension.js:800
+msgid "That window has no WM_CLASS or application id, so it can't be added."
+msgstr ""
+"Az ablak nem rendelkezik WM_CLASS-szal vagy alkalmazásazonosítóval, ezért "
+"nem adható hozzá."
+
+#. 6.0/CustomWidgets.py:135
+msgid "When off, the default colour is used"
+msgstr "Kikapcsolt állapotban az alapértelmezett szín használatos."
+
+#. 6.0/CustomWidgets.py:191
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#. 6.0/CustomWidgets.py:227
+msgid "Use Default"
+msgstr "Alapértelmezett használata"
+
+#. metadata.json->name
+msgid "Rounded Corners"
+msgstr "Lekerekített Sarkok"
+
+#. metadata.json->description
+msgid ""
+"Allows you to round the corners of windows with custom borders and shadows"
+msgstr ""
+"Lehetővé teszi az ablakok sarkainak lekerekítését egyéni keretekkel és "
+"árnyékokkal"
+
+#. 6.0->settings-schema.json->page-general->title
+msgid "Corners"
+msgstr "Sarkok"
+
+#. 6.0->settings-schema.json->page-borders->title
+msgid "Borders"
+msgstr "Szegélyek"
+
+#. 6.0->settings-schema.json->page-shadow->title
+msgid "Shadows"
+msgstr "Árnyékok"
+
+#. 6.0->settings-schema.json->page-about->title
+msgid "About"
+msgstr "Súgó"
+
+#. 6.0->settings-schema.json->section-windows->title
+msgid "Windows"
+msgstr "Ablakok"
+
+#. 6.0->settings-schema.json->section-applications->title
+msgid "Applications"
+msgstr "Alkalmazások"
+
+#. 6.0->settings-schema.json->section-border->title
+msgid "Window border"
+msgstr "Ablak szegélye"
+
+#. 6.0->settings-schema.json->section-border-apps->title
+msgid "Application borders"
+msgstr "Alkalmazás szegélyek"
+
+#. 6.0->settings-schema.json->section-shadow->title
+msgid "Window shadow"
+msgstr "Ablak árnyéka"
+
+#. 6.0->settings-schema.json->section-about->title
+msgid "About Rounded Corners"
+msgstr "A Lekerekített Sarkokról"
+
+#. 6.0->settings-schema.json->note-corners->description
+msgid ""
+"Most themes round the top corners of title bars, and this extension can’t "
+"undo that. A radius smaller than the theme’s will leave a gap between the "
+"border/shadow and the window corners. See the <a href=\"https://github.com/"
+"klangman/CinnamonRoundedCorners\">Rounded Corners website</a> for how to "
+"override the theme’s rounding."
+msgstr ""
+"A legtöbb téma lekerekíti a címsorok felső sarkait, és ez a kiegészítő ezt "
+"nem tudja megváltoztatni. Ha a megadott lekerekítési sugár kisebb, mint a "
+"témáé, akkor rés keletkezik a szegély/árnyék és az ablak sarkai között. A "
+"téma által meghatározott lekerekítés felülbírálásának módjáról a <a "
+"href=\"https://github.com/klangman/CinnamonRoundedCorners\">Lekerekített "
+"Sarkok weboldalán</a> tájékozódhat."
+
+#. 6.0->settings-schema.json->note-borders->description
+msgid ""
+"Borders are only drawn on windows that have rounded corners (see the "
+"<b>Corners</b> tab). An application in the list below gets no border unless "
+"its windows are also rounded."
+msgstr ""
+"Szegélyek csak azokon az ablakokon jelennek meg, amelyek lekerekített "
+"sarkokkal rendelkeznek (lásd a <b>Sarkok</b> lapot). Az alábbi listában "
+"szereplő alkalmazások ablakai nem kapnak szegélyt, kivéve, ha maguk az "
+"ablakok is lekerekítettek."
+
+#. 6.0->settings-schema.json->note-shadows->description
+msgid ""
+"This shadow is only drawn on windows that have rounded corners (see the "
+"<b>Corners</b> tab), replacing the desktop's own shadow for those windows. "
+"Other windows keep their normal shadow."
+msgstr ""
+"Ez az árnyék csak lekerekített sarkú ablakokon rajzolódik (lásd a "
+"<b>Sarkok</b> fület), és az asztal saját árnyékát helyettesíti ezeknél az "
+"ablakoknál. A többi ablak megtartja a normál méretét."
+
+#. 6.0->settings-schema.json->auto-include->description
+msgid "Round the corners of all windows by default"
+msgstr "Alapértelmezés szerint kerekítse le az összes ablak sarkát"
+
+#. 6.0->settings-schema.json->corner-radius->description
+msgid "Corner radius"
+msgstr "Sarok sugara"
+
+#. 6.0->settings-schema.json->corner-radius->units
+#. 6.0->settings-schema.json->border-width->units
+#. 6.0->settings-schema.json->shadow-size->units
+#. 6.0->settings-schema.json->shadow-offset->units
+msgid "pixels"
+msgstr "képpont"
+
+#. 6.0->settings-schema.json->corner-radius->tooltip
+msgid ""
+"The radius of the rounded corners applied to windows that are rounded by "
+"default (those not in the exclusion list)."
+msgstr ""
+"Az alapértelmezés szerint lekerekített sarkú ablakokra (azokra, amelyek nem "
+"szerepelnek a kivételek listáján) alkalmazott lekerekítés sugara."
+
+#. 6.0->settings-schema.json->corners-top->description
+msgid "Round the top corners (recommended)"
+msgstr "Kerekítse le a felső sarkokat (ajánlott)"
+
+#. 6.0->settings-schema.json->corners-top->tooltip
+msgid ""
+"If you disable top corner rounding but the theme does some rounding of it's "
+"own, the squared off top corner shadows will cause a ligher section to "
+"appear where the theme has rounded the corners. You may have better results "
+"if you enable top rounding to match the themes rounding radius."
+msgstr ""
+"Ha kikapcsolja a felső sarkok lekerekítését, de a téma maga is alkalmaz "
+"valamilyen lekerekítést, akkor a szögletes felső sarkok árnyékai miatt egy "
+"világosabb sáv jelenhet meg ott, ahol a téma lekerekítette a sarkokat. Jobb "
+"eredményt érhet el, ha engedélyezi a felső sarkok lekerekítését, és azt a "
+"téma lekerekítési sugarához igazítja."
+
+#. 6.0->settings-schema.json->corners-bottom->description
+msgid "Round the bottom corners"
+msgstr "Kerekítsd le az alsó sarkokat"
+
+#. 6.0->settings-schema.json->disable-maximized->description
+msgid "Don't round maximized windows"
+msgstr "Ne kerekítse a maximalizált ablakokat"
+
+#. 6.0->settings-schema.json->disable-maximized->tooltip
+msgid ""
+"Removes the rounded corners, border and shadow while a window is maximized, "
+"and restores them when it is unmaximized. Fullscreen windows are never "
+"rounded."
+msgstr ""
+"Az ablak maximalizált állapotában eltávolítja a lekerekített sarkokat, a "
+"keretet és az árnyékot, az ablak méretének csökkentésekor pedig "
+"visszaállítja azokat. A teljes képernyős ablakok sarkai sosem "
+"lekerekítettek."
+
+#. 6.0->settings-schema.json->windows-inclusion-list->description
+msgid "Application window inclusion list"
+msgstr "Alkalmazásablak-felvételi lista"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Enabled"
+msgstr "Bekapcsolva"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->windows-exclusion-list->columns->title
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Application"
+msgstr "Alkalmazás"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Corner Radius"
+msgstr "Sarok Sugara"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Top"
+msgstr "Lekerekített tető"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+msgid "Rounded Bottom"
+msgstr "Lekerekített alj"
+
+#. 6.0->settings-schema.json->windows-inclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where rounded corner effects will be "
+"applied and what effects to apply. The \"Application\" field can be a "
+"WM_CLASS or a desktop file name."
+msgstr ""
+"Meghatározza azon alkalmazásablakok listáját, amelyeken a lekerekített "
+"sarkok effektusai alkalmazásra kerülnek, valamint azt, hogy pontosan milyen "
+"effektusokról van szó. Az „Alkalmazás” (Application) mező megadható "
+"WM_CLASS-ként vagy egy asztali fájl (desktop file) neveként."
+
+#. 6.0->settings-schema.json->windows-exclusion-list->description
+msgid "Application window exclusion list"
+msgstr "Alkalmazásablak-kizárási lista"
+
+#. 6.0->settings-schema.json->windows-exclusion-list->columns->title
+msgid "Exclude"
+msgstr "Kizárás"
+
+#. 6.0->settings-schema.json->windows-exclusion-list->tooltip
+msgid ""
+"Defines a list of application windows where rounded corner effects will NOT "
+"be applied. The \"Application\" field can be a WM_CLASS or a desktop file "
+"name."
+msgstr ""
+"Meghatározza azon alkalmazásablakok listáját, amelyeken a lekerekített "
+"sarkok effektusa NEM jelenik meg. Az „Alkalmazás” (Application) mező "
+"megadható WM_CLASS-ként vagy egy asztali fájl (desktop file) neveként."
+
+#. 6.0->settings-schema.json->pick-application-window->description
+#. 6.0->settings-schema.json->pick-border-window->description
+msgid "Pick a window to add…"
+msgstr "Válassz ki egy ablakot a hozzáadáshoz…"
+
+#. 6.0->settings-schema.json->pick-application-window->tooltip
+msgid ""
+"Click this, then click any window to add its application to the list above "
+"(the exclusion list when windows are rounded by default, otherwise the "
+"inclusion list). Press Esc or right-click to cancel."
+msgstr ""
+"Kattints ide, majd jelölj ki egy tetszőleges ablakot, hogy hozzáadd az "
+"alkalmazását a fenti listához (ez az a lista, amely az alapértelmezés "
+"szerint lekerekített sarkú ablakokat tartalmazza – vagyis a kivételek "
+"listáját –, egyéb esetben pedig a belefoglalandó elemek listáját). A "
+"művelet megszakításához nyomd meg az Esc billentyűt, vagy kattints a jobb "
+"egérgombbal."
+
+#. 6.0->settings-schema.json->border-mode->description
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Border"
+msgstr "Szegély"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "None"
+msgstr "Semmi"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Match the window's own border"
+msgstr "Igazodjon az ablak saját szegélyéhez"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Automatic (contrast with the window edge)"
+msgstr "Automatikus (az ablak széléhez viszonyítva)"
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Custom"
+msgstr "Egyéni"
+
+#. 6.0->settings-schema.json->border-mode->tooltip
+msgid ""
+"Draws a thin border just inside the rounded edge of rounded windows. Match "
+"continues the window's own border colours around the rounded corners. "
+"Automatic darkens light edges and lightens dark ones. Custom draws the "
+"colours you choose, one for the focused window and one for other windows."
+msgstr ""
+"Vékony szegélyt rajzol a lekerekített ablakok lekerekített széleinek belső "
+"oldala mentén. A „Match” (illeszkedés) beállítás az ablak saját "
+"szegélyszíneit követi a lekerekített sarkoknál. Az "
+"„Automatic” (automatikus) mód sötétíti a világos széleket, a sötéteket "
+"pedig világosítja. A „Custom” (egyéni) beállításnál a felhasználó által "
+"választott színek jelennek meg: egy a fókuszban lévő ablakhoz, egy pedig a "
+"többi ablakhoz."
+
+#. 6.0->settings-schema.json->border-width->description
+msgid "Border width"
+msgstr "Szegélyvastagság"
+
+#. 6.0->settings-schema.json->border-width->tooltip
+msgid ""
+"How many pixels in from the rounded edge the border reaches. With Match, "
+"nothing is drawn on the straight edges; this sets how many of the window's "
+"own edge pixel layers are carried around the rounded corners. Set it to the "
+"width of the theme's border lines (usually 1 or 2): any extra repeats the "
+"window's content colours from the edges into the corners."
+msgstr ""
+"Meghatározza, hogy a keret hány képpontnyira nyúlik be a lekerekített "
+"szélektől. „Illesztés” (Match) beállítás esetén az egyenes élek mentén nem "
+"jelenik meg rajzolat; ez az érték határozza meg, hogy az ablak saját szélét "
+"alkotó képpontrétegekből hányat vezessenek át a lekerekített sarkokba. "
+"Érdemes a téma keretvonalainak vastagságára (általában 1 vagy 2 képpontra) "
+"állítani; ezen felül a rendszer az ablak szélein található színeket ismétli "
+"meg a sarkokban."
+
+#. 6.0->settings-schema.json->border-contrast->description
+msgid "Border contrast"
+msgstr "Szegélykontraszt"
+
+#. 6.0->settings-schema.json->border-contrast->units
+#. 6.0->settings-schema.json->shadow-opacity->units
+#. 6.0->settings-schema.json->shadow-unfocused-opacity->units
+msgid "%"
+msgstr "%"
+
+#. 6.0->settings-schema.json->border-contrast->tooltip
+msgid ""
+"How far the border colour is moved from the window's edge colour towards "
+"black (on light edges) or white (on dark edges)."
+msgstr ""
+"Milyen mértékben tolódik el a szegély színe az ablak szélének színétől a "
+"fekete (világos szélek esetén) vagy a fehér (sötét szélek esetén) irányába."
+
+#. 6.0->settings-schema.json->border-color->description
+msgid "Border colour (focused window)"
+msgstr "Szegélyszín (fókuszált ablak)"
+
+#. 6.0->settings-schema.json->border-color-unfocused->description
+msgid "Border colour (other windows)"
+msgstr "Szegélyszín (egyéb ablakok)"
+
+#. 6.0->settings-schema.json->border-app-list->description
+msgid "Application border list"
+msgstr "Alkalmazásszegély-lista"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Width"
+msgstr "Szélesség"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Contrast %"
+msgstr "Kontraszt %"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Colour (focused)"
+msgstr "Szín (fókuszált)"
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Colour (other)"
+msgstr "Szín (egyéb)"
+
+#. 6.0->settings-schema.json->border-app-list->tooltip
+msgid ""
+"Gives particular applications their own border, overriding the settings "
+"above. The \"Application\" field can be a WM_CLASS or a desktop file name. "
+"Contrast is only used by Automatic, and the colours only by Custom. Click a "
+"colour in the list to change it. A colour set to Default uses the matching "
+"colour above."
+msgstr ""
+"Lehetővé teszi, hogy egyes alkalmazások saját szegélyt kapjanak, "
+"felülbírálva a fenti beállításokat. Az „Alkalmazás” mezőben megadható "
+"WM_CLASS érték vagy egy asztali fájl (desktop file) neve. A kontraszt "
+"beállítása csak az „Automatikus” módban, a színek pedig csak az „Egyéni” "
+"módban használatosak. A módosításhoz kattintson egy színre a listában. Az "
+"„Alapértelmezett” értékre állított szín a fentebb megadott megfelelő színt "
+"veszi át."
+
+#. 6.0->settings-schema.json->pick-border-window->tooltip
+msgid ""
+"Click this, then click any window to add its application to the application "
+"border list. Press Esc or right-click to cancel."
+msgstr ""
+"Kattints ide, majd kattints bármelyik ablakra, hogy hozzáadd az adott "
+"alkalmazást az alkalmazásszegély-listához. A megszakításhoz nyomd meg az "
+"Esc billentyűt vagy kattints a jobb egérgombbal."
+
+#. 6.0->settings-schema.json->shadow-enabled->description
+msgid "Draw a shadow that follows the rounded corners"
+msgstr "Rajzoljon egy árnyékot, amely követi a lekerekített sarkokat"
+
+#. 6.0->settings-schema.json->shadow-enabled->tooltip
+msgid ""
+"Muffin's own shadow is always turned off for rounded windows, because it "
+"doesn't follow the rounded corners. With this off, rounded windows have no "
+"shadow."
+msgstr ""
+"A Muffin saját árnyéka lekerekített ablakok esetén mindig ki van kapcsolva, "
+"mivel az nem követi a lekerekített sarkokat. Ha ez ki van kapcsolva, a "
+"lekerekített ablakoknak nincs árnyékuk."
+
+#. 6.0->settings-schema.json->shadow-size->description
+msgid "Shadow size"
+msgstr "Árnyék mérete"
+
+#. 6.0->settings-schema.json->shadow-offset->description
+msgid "Shadow vertical offset"
+msgstr "Árnyék függőleges eltolása"
+
+#. 6.0->settings-schema.json->shadow-offset->tooltip
+msgid "Moves the shadow down, as if lit from above."
+msgstr "Lefelé tolja az árnyékot, mintha felülről érkezne a fény."
+
+#. 6.0->settings-schema.json->shadow-opacity->description
+msgid "Shadow strength (focused window)"
+msgstr "Árnyék erőssége (fókuszált ablak)"
+
+#. 6.0->settings-schema.json->shadow-unfocused-opacity->description
+msgid "Shadow strength (other windows)"
+msgstr "Árnyék erőssége (egyéb ablakok)"
+
+#. 6.0->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Rounded Corners</b>\n"
+"Version: ext-version\n"
+"\n"
+"Developed by: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners/issues/"
+"new\">Report an issue</a>\n"
+"\n"
+"The rounded corners effect is based on Blur-my-shell code by aunetx and "
+"contributors <a href=\"https://github.com/aunetx/blur-my-shell\">Github</"
+"a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>"
+msgstr ""
+"\n"
+"<b>Lekerekített Sarkok</b>\n"
+"Verzió: ext-version\n"
+"\n"
+"Fejlesztő: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners\">Github</a> / "
+"<a href=\"https://github.com/klangman/CinnamonRoundedCorners/issues/"
+"new\">Hiba bejelentése</a>\n"
+"\n"
+"A lekerekített sarkok effektus az aunetx és közreműködői által készített "
+"„Blur-my-shell” kódján alapul. <a href=\"https://github.com/aunetx/blur-my-"
+"shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>"

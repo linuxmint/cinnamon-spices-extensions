@@ -1,0 +1,186 @@
+# CENTERED CINNAMON DOCK
+# This file is put in the public domain.
+# mostlynick3, 2025
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: centered-cinnamon-dock@mostlynick3 1.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-01-31 03:42+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.4/extension.js:68
+msgid "Welcome to Centered Cinnamon Dock!"
+msgstr "Tervetuloa Centered Cinnamon Dock!"
+
+#. 6.4/extension.js:76
+msgid "Which panel(s) would you like to turn into a dock?"
+msgstr "Minkä paneelin haluat muuttaa kelluvaksi telakaksi?"
+
+#. 6.4/extension.js:124
+msgid "Right click any panel to change your mind or configure the docks later."
+msgstr ""
+"Paina mitä tahansa paneelia hiiren oikealla, jos haluat muuttaa valintaasi "
+"tai määrittää ne myöhemmin."
+
+#. 6.4/extension.js:134
+msgid "Skip"
+msgstr "Ohita"
+
+#. 6.4/extension.js:135
+msgid "Enable"
+msgstr "Käytä"
+
+#. 6.4/extension.js:202
+#, javascript-format
+msgid "Bottom Panel (Monitor %d)"
+msgstr "Paneeli alhaalla (näyttö %d)"
+
+#. 6.4/extension.js:204
+#, javascript-format
+msgid "Top Panel (Monitor %d)"
+msgstr "Paneeli ylhäällä (näyttö %d)"
+
+#. 6.4/extension.js:206
+#, javascript-format
+msgid "Left Panel (Monitor %d)"
+msgstr "Paneeli vasemmalla (näyttö %d)"
+
+#. 6.4/extension.js:208
+#, javascript-format
+msgid "Right Panel (Monitor %d)"
+msgstr "Paneeli oikealla (näyttö %d)"
+
+#. 6.4/extension.js:212 6.4/extension.js:1019
+msgid "Centered Dock Settings"
+msgstr "Keskitetyn telakan asetukset"
+
+#. 6.4/extension.js:235
+msgid "Cancel"
+msgstr "Peru"
+
+#. 6.4/extension.js:240
+msgid "Apply"
+msgstr "Käytä"
+
+#. 6.4/extension.js:244
+msgid "OK"
+msgstr "OK"
+
+#. 6.4/extension.js:252
+msgid "General"
+msgstr "Yleinen"
+
+#. 6.4/extension.js:255
+msgid "Enable Centered Dock for this panel"
+msgstr "Keskitetty telakka tähän paneeliin"
+
+#. 6.4/extension.js:262
+msgid "Height offset (negative = up, positive = down)"
+msgstr "Korkeus (vähemmän = ylös, enemmän = alas)"
+
+#. 6.4/extension.js:270
+msgid "Don't shift windows (disable panel struts)"
+msgstr "Älä siirrä ikkunoita (poista asettelu käytöstä)"
+
+#. 6.4/extension.js:275
+msgid "Fade animation duration (ms)"
+msgstr "Animaation kesto (ms)"
+
+#. 6.4/extension.js:282
+msgid "Appearance"
+msgstr "Ulkoasu"
+
+#. 6.4/extension.js:285
+msgid "Transparency (%)"
+msgstr "Läpinäkyvyys (%)"
+
+#. 6.4/extension.js:293
+msgid "Minimum dock width"
+msgstr "Minimileveys"
+
+#. 6.4/extension.js:301
+msgid "Enable zoom effect on hover"
+msgstr "Skaalava tehoste hiiren osoituksella"
+
+#. 6.4/extension.js:306
+msgid "Zoom scale factor"
+msgstr "Mittakaavan kerroin"
+
+#. 6.4/extension.js:313
+msgid "Auto-hide Behavior"
+msgstr "Automaattinen piilotus"
+
+#. 6.4/extension.js:316
+msgid "Choose one auto-hide mode (mutually exclusive):"
+msgstr "Valitse yksi piilotustapa (vaihtoehdot sulkevat toisensa pois):"
+
+#. 6.4/extension.js:329
+msgid "Auto-hide dock when focusing apps"
+msgstr "Piilota telakka kun joku sovellus on aktiivinen"
+
+#. 6.4/extension.js:334
+msgid "    ↳ Show dock when no window is focused"
+msgstr "    ↳ Näytä telakka, kun ikkunaa ei ole kohdistettuna"
+
+#. 6.4/extension.js:341
+msgid "Show dock unless window covers full screen"
+msgstr "Näytä telakka, ellei ikkuna peitä koko näyttöä"
+
+#. 6.4/extension.js:346
+msgid "(Dock visible unless a window covers the full screen)"
+msgstr "(Telakka näkyvissä, ellei ikkuna peitä sitä)"
+
+#. 6.4/extension.js:357
+msgid "Auto-hide timing settings:"
+msgstr "Piilotuksen aika-asetukset:"
+
+#. 6.4/extension.js:366
+msgid "Delay before auto-hiding (ms)"
+msgstr "Viive ennen piilottamista (ms)"
+
+#. 6.4/extension.js:374
+msgid "Height of trigger zone to show panel (px)"
+msgstr "Korkeus joka aktivoi telakan (px)"
+
+#. 6.4/extension.js:381
+msgid "Auto-hide Indicator"
+msgstr "Piiloutuva ilmaisin"
+
+#. 6.4/extension.js:384
+msgid "Show indicator of dock location in trigger zone"
+msgstr "Näytä telakan ilmaisin sen aktivointialueella"
+
+#. 6.4/extension.js:389
+msgid "Indicator color"
+msgstr "Ilmaisimen väri"
+
+#. 6.4/extension.js:663
+msgid "Hex color:"
+msgstr "Hex-väri:"
+
+#. 6.4/extension.js:671
+msgid "Type hex color"
+msgstr "Kirjoita heksavärikoodi"
+
+#. metadata.json->name
+msgid "Centered Cinnamon Dock"
+msgstr "Centered Cinnamon Dock"
+
+#. metadata.json->description
+msgid ""
+"Centers the panel with dock styling and customization options. Configure per "
+"panel by right-clicking it."
+msgstr ""
+"Tee paneelista keskitetty kelluva telakka. Paljon tyyliasetuksia ja "
+"mukautuksia mieltymysten mukaan. Määritä asetukset paneelikohtaisesti "
+"painamalla sitä hiiren oikealla."
