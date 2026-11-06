@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
 "POT-Creation-Date: 2026-10-30 22:39-0400\n"
-"PO-Revision-Date: 2026-10-08 09:07+0200\n"
+"PO-Revision-Date: 2026-11-06 16:04+0100\n"
 "Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -23,15 +23,16 @@ msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
 "or right-click to cancel."
 msgstr ""
+"Klik på et vindue for at tilføje programmet til Sløret Cinnamon-"
+"vindueslisten. Tryk på Esc eller højreklik for at annullere."
 
 #. 6.0/extension.js:5365
 msgid "Couldn't start the window picker. Close any open menus and try again."
-msgstr ""
+msgstr "Kunne ikke starte vinduesvælgeren. Luk åbne menuer og prøv igen."
 
 #. 6.0/extension.js:5439
-#, fuzzy
 msgid "(unknown application)"
-msgstr "Program"
+msgstr "(ukendt program)"
 
 #. 6.0/extension.js:5474
 msgid ""
@@ -39,39 +40,40 @@ msgid ""
 "application doesn't support transparency, set its \"Opacity\" in the window "
 "list to less than 100."
 msgstr ""
+"Bemærk: Sløringen kan kun ses bag gennemsigtige vinduer. Hvis dette program "
+"ikke understøtter gennemsigtighed, skal du indstille “Uigennemsigtighed” i "
+"vindueslisten til mindre end 100."
 
 #. 6.0/extension.js:5477
-#, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
 "therefore Blur Cinnamon effects can not be applied to it."
 msgstr ""
-"Det er ikke muligt at fastslå, hvilket program eller hvilken WM_CLASS det "
-"vindue, der tidligere var i fokus, tilhører, og derfor kan Blur Cinnamon-"
-"effekterne ikke anvendes på dette vindue"
+"Det er ikke muligt at fastslå programmet eller WM_CLASS for det vindue, og "
+"derfor kan Blur Cinnamon-effekterne ikke anvendes på vinduet."
 
 #. 6.0/extension.js:5485
 #, javascript-format
 msgid "\"%s\" is already in the window list."
-msgstr ""
+msgstr "“%s” er allerede i vindueslisten."
 
 #. 6.0/extension.js:5490
 #, javascript-format
 msgid "Enabled \"%s\" in the window list."
-msgstr ""
+msgstr "Aktiverede “%s” i vindueslisten."
 
 #. 6.0/extension.js:5494
 #, javascript-format
 msgid ""
 "Added \"%s\" to the window list. Adjust its effect settings in the table."
 msgstr ""
+"Tilføjede “%s” til vindueslisten. Justér effektindstillingerne i tabellen."
 
 #. 6.0/extension.js:6585
 msgid "Welcome to Blur Cinnamon"
 msgstr "Velkommen til Sløret Cinnamon"
 
 #. 6.0/extension.js:6586
-#, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -88,7 +90,7 @@ msgstr ""
 "flere andre skrivebordselementer, såsom menuer, underretninger og vinduer, "
 "eller deaktivere effekter på komponenter, der var aktiveret som standard. Du "
 "kan også foretage ændringer i effektens egenskaber, såsom sløringens "
-"intensitet, farvemætning og dæmpning."
+"intensitet, farvemætning og farvetone."
 
 #. 6.0/extension.js:6590
 msgid "Open Blur Cinnamon Settings"
@@ -111,27 +113,26 @@ msgstr ""
 
 #. 6.0/CustomWidgets.py:138
 msgid "When off, the default colour is used"
-msgstr ""
+msgstr "Standardfarven bruges, hvis der er slukket"
 
 #. 6.0/CustomWidgets.py:194
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #. 6.0/CustomWidgets.py:230
 msgid "Use Default"
-msgstr ""
+msgstr "Anvend standard"
 
 #. metadata.json->name
 msgid "Blur Cinnamon"
 msgstr "Sløret Cinnamon"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, tint and adjust the saturation of several Cinnamon "
 "Desktop components"
 msgstr ""
-"Giver dig mulighed for at sløre, farvelægge, fjerne mætningen og justere "
+"Giver dig mulighed for at sløre, tone, fjerne mætningen og justere "
 "dæmpningen af flere Cinnamon-skrivebordskomponenter"
 
 #. 6.0->settings-schema.json->general-page->title
@@ -144,9 +145,8 @@ msgid "Generic effect settings"
 msgstr "Generelle effektindstillinger"
 
 #. 6.0->settings-schema.json->additional-settings-page->title
-#, fuzzy
 msgid "Additional settings"
-msgstr "Yderligere Monte Carlo-specifikke indstillinger"
+msgstr "Yderligere indstillinger"
 
 #. 6.0->settings-schema.json->component-setting-page->title
 msgid "Component specific settings"
@@ -161,9 +161,8 @@ msgid "Cinnamon desktop components where effects will be applied"
 msgstr "Cinnamon-skrivebordskomponenter som vil blive påvirket af effekter"
 
 #. 6.0->settings-schema.json->effect-specific-settings->title
-#, fuzzy
 msgid "Additional effect specific settings"
-msgstr "Yderligere Monte Carlo-specifikke indstillinger"
+msgstr "Yderligere effektspecifikke indstillinger"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
@@ -330,7 +329,7 @@ msgstr "Underretninger"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-overview-effects->description
@@ -354,7 +353,6 @@ msgid "Show settings for component:"
 msgstr "Vis indstillinger for komponent:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -364,8 +362,8 @@ msgid ""
 "BlurCinnamon/graphs/contributors\">contributors</a>\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
 "\n"
 "The rounded corners, Gaussian, Monte Carlo and Liquid Glass effects\n"
 "are based on Blur-my-shell code by aunetx and contributors <a href=\"https://"
@@ -384,21 +382,25 @@ msgstr ""
 "<b>Bringer din stil i fokus</b>\n"
 "Version: ext-version\n"
 "\n"
-"Udviklet af: Kevin Langman\n"
+"Udviklet af: Kevin Langman og <a href=\"https://github.com/klangman/"
+"BlurCinnamon/graphs/contributors\">bidragydere</a>\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Rapportér et "
 "problem</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
 "view/104\">Websted</a>\n"
 "\n"
 "Effekterne afrundede hjørner, gaussisk og Monte Carlo\n"
-"er baserede på kode af aunetx (Blur-my-shell)\n"
-"<a href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"er baserede på kode (Blur-my-shell) af aunetx og bidragydere <a "
+"href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
 "href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
 "\n"
 "Effekten Dual Kawase er skrevet af <a href=\"https://github.com/Lucas-X-"
 "A\">Lucas-X-A</a>\n"
 "\n"
-"Effekten Oversigt er delvist baseret på udvidelsen BlurOverview af nailfarmer"
+"Effekten Oversigt er delvist baseret på udvidelsen BlurOverview af "
+"nailfarmer\n"
+"Sløret Cinnamon-ikonet er designet af <a href=\"https://github.com/"
+"Selinaru\">Selinaru</a>"
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -421,7 +423,6 @@ msgid "Panels  (Please read tooltip)"
 msgstr "Paneler (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the Panels. This option should work well with most dark "
 "desktop themes but light themes could also be made to work with some "
@@ -431,7 +432,7 @@ msgid ""
 msgstr ""
 "Anvend effekter på Panelerne. Denne indstilling bør fungere godt med de "
 "fleste mørke skrivebordstemaer, men lyse temaer kan også fås til at fungere "
-"ved kreativ brug af indstillingerne for dæmpning af farver og et passende "
+"ved kreativ brug af indstillingerne for farvetone og et passende "
 "baggrundsbillede. Den tilsidesætter nogle temaindstillinger for at opnå et "
 "(halv)gennemsigtigt panel, så den slørede baggrund er synlig."
 
@@ -440,7 +441,6 @@ msgid "Popup Menus  (Please read tooltip)"
 msgstr "Pop op-menuer (læs værktøjstip)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to panel popup menus. This option is intended for the Cinnamon "
 "(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
@@ -453,7 +453,7 @@ msgstr ""
 "til Cinnamon- (6.4) og mørk Mint-Y-skrivebordstemaerne, men kan også fungere "
 "godt med andre temaer. Lyse temaer giver sandsynligvis ikke gode resultater, "
 "men kan muligvis fås til at fungere ved kreativ brug af indstillingerne for "
-"dæmpning af farver og et passende baggrundsbillede. Den tilsidesætter nogle "
+"farvetone og et passende baggrundsbillede. Den tilsidesætter nogle "
 "temaindstillinger for at opnå en (halv)gennemsigtig menu, så den slørede "
 "baggrund er synlig."
 
@@ -809,7 +809,7 @@ msgstr "Brugerdefineret"
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Tint"
-msgstr ""
+msgstr "Farvetone"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -839,7 +839,6 @@ msgid "Custom CSS"
 msgstr "Tilpasset CSS"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
-#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
@@ -854,9 +853,7 @@ msgstr ""
 "første element på denne liste, der kan anvendes på et givet panel, vil træde "
 "i kraft. Afkrydsningsfeltet “Brugerdefineret” bestemmer, om de generelle "
 "effektindstillinger skal anvendes, eller om denne tabels brugerdefinerede "
-"indstillinger skal anvendes. Farvefeltet er i rgb(#,#,#)-syntaks, og sort "
-"vil blive anvendt, hvis der ikke angives en farve, eller hvis syntaksen er "
-"forkert."
+"indstillinger skal anvendes. Klik på en farve i tabellen for at ændre den."
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->description
 msgid "Restore theme settings when a window is maximized"
@@ -881,16 +878,15 @@ msgid "Brighten panel when mouse is hovering a panel"
 msgstr "Gør panelet lysere, når markøren er over panelet"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
-#, fuzzy
 msgid ""
 "While the mouse is hovering over a panel, set the panels tint strength to 0 "
 "and the saturation to 100 so that the panel appears brighter. This setting "
 "is only effective when either the tint strength is greater than 0 or "
 "saturation is less than 100."
 msgstr ""
-"Når musen holdes over et panel, indstilles panelets dæmpning til 0 og "
+"Når musen holdes over et panel, indstilles panelets farvestyrke til 0 og "
 "mætningen til 100, så panelet fremstår lysere. Denne indstilling virker kun, "
-"hvis enten dæmpningen er større end 0, eller mætningen er mindre end 100."
+"hvis enten farvestyrken er større end 0, eller mætningen er mindre end 100."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -901,7 +897,7 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-opacity->description
 #. 6.0->settings-schema.json->tooltips-opacity->description
 msgid "Tint strength (%)"
-msgstr ""
+msgstr "Farvestyrke (%)"
 
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
@@ -915,7 +911,7 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-blendColor->description
 #. 6.0->settings-schema.json->osd-blendColor->description
 msgid "Tint color"
-msgstr ""
+msgstr "Toningsfarve"
 
 #. 6.0->settings-schema.json->blendColor->tooltip
 #. 6.0->settings-schema.json->overview-blendColor->tooltip
@@ -928,15 +924,14 @@ msgstr ""
 #. 6.0->settings-schema.json->tooltips-blendColor->tooltip
 #. 6.0->settings-schema.json->desklets-blendColor->tooltip
 #. 6.0->settings-schema.json->osd-blendColor->tooltip
-#, fuzzy
 msgid ""
 "Defines the color that is blended into the background, weighted by the tint "
 "strength above. Use black to dim the background or some other color for a "
 "color blend effect"
 msgstr ""
-"Definerer den farve, der blandes ind i baggrunden baseret på "
-"dæmpningskontrollen ovenfor. Brug sort for en normal dæmpningseffekt eller "
-"en anden farve for en farveblandingseffekt"
+"Definerer den farve, der blandes ind i baggrunden baseret på farvestyrken "
+"ovenfor. Brug sort for at dæmpe baggrunden eller en anden farve for en "
+"farveblandingseffekt"
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "None / Transparent to wallpaper"
@@ -1006,14 +1001,12 @@ msgstr "Dual Kawase sløring (hvis tilgængelig)"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Liquid Glass static blur"
-msgstr "Gaussisk statisk sløring"
+msgstr "Flydende glas statisk sløring"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "Liquid Glass dynamic blur (if applicable)"
-msgstr "Gaussisk dynamisk sløring (hvis tilgængelig)"
+msgstr "Flydende glas dynamisk sløring (hvis tilgængelig)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -1039,7 +1032,6 @@ msgid "💡 Blur Algorithm Guide (see tooltip)"
 msgstr "💡 Vejledning til sløringsalgoritme (se værktøjstip)"
 
 #. 6.0->settings-schema.json->show-blur-info->tooltip
-#, fuzzy
 msgid ""
 "<b>Blur Algorithm Guide:</b>\n"
 " <b>• Gaussian:</b> Good quality smooth blur, can be GPU intensive.\n"
@@ -1061,6 +1053,8 @@ msgstr ""
 " <b>• Dual Kawase:</b> Jævn sløring i høj kvalitet, optimeret til GPU’er i "
 "den lavere ende.\n"
 " <b>• Monte Carlo:</b> Kornet, støjende sløring i frostet glas-stil.\n"
+"<b>• Flydende glas:</b> Blankt, gennemskinneligt glas med affasede kanter og "
+"kantbelysning.\n"
 " <b>• Simpel:</b> Grundlæggende, diskret sløring til ældre computere.\n"
 "\n"
 "<b>Statisk vs. dynamisk:</b>\n"
@@ -1139,16 +1133,16 @@ msgstr "Monte Carlo"
 
 #. 6.0->settings-schema.json->effect-specific-type->options
 msgid "Liquid Glass"
-msgstr ""
+msgstr "Flydende glas"
 
 #. 6.0->settings-schema.json->effect-specific-type->description
-#, fuzzy
 msgid "Additional settings for"
-msgstr "Yderligere Monte Carlo-specifikke indstillinger"
+msgstr "Yderligere indstillinger for"
 
 #. 6.0->settings-schema.json->effect-specific-type->tooltip
 msgid "Choose which effect's additional settings to show and edit."
 msgstr ""
+"Vælg, hvilken effekts yderligere indstillinger skal vises og redigeres."
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->description
 msgid "Iterations"
@@ -1187,105 +1181,103 @@ msgstr ""
 "vægt eller ej."
 
 #. 6.0->settings-schema.json->additional-settings-label->description
-#, fuzzy
 msgid ""
 "💡 The above additional settings are used globally for all components that "
 "use this effect"
 msgstr ""
-"💡 Disse Monte Carlo-indstillinger anvendes globalt til alle komponenter"
+"💡 De yderligere indstillinger ovenfor anvendes globalt til alle "
+"komponenter, som anvender denne effekt"
 
 #. 6.0->settings-schema.json->additional-settings-label->tooltip
-#, fuzzy
 msgid ""
 "The above additional settings are used globally for all components that are "
 "configured to use the selected algorithm, these settings can not be "
 "configured separately for each component"
 msgstr ""
-"Ovenstående Monte Carlo-indstillinger anvendes globalt på alle komponenter, "
-"der er konfigureret til at anvende Monte Carlo-sløringsalgoritmen. Disse "
-"indstillinger kan ikke konfigureres separat for hver enkelt komponent."
+"Ovenstående yderligere indstillinger anvendes globalt på alle komponenter, "
+"der er konfigureret til at anvende den valgte algoritme. Disse indstillinger "
+"kan ikke konfigureres separat for hver enkelt komponent."
 
 #. 6.0->settings-schema.json->liquid-glass-strength->description
-#, fuzzy
 msgid "Refraction scale"
-msgstr "Gentagelser"
+msgstr "Brydningsskala"
 
 #. 6.0->settings-schema.json->liquid-glass-strength->tooltip
 msgid "How strongly the glass bends the sampled blur texture."
-msgstr ""
+msgstr "Hvor kraftigt glasset bøjer den samplede sløringstekstur."
 
 #. 6.0->settings-schema.json->liquid-glass-edge-size->description
 msgid "Bezel width"
-msgstr ""
+msgstr "Rammebredde"
 
 #. 6.0->settings-schema.json->liquid-glass-edge-size->tooltip
 msgid "How far the liquid-glass lens reaches inward from the edge."
-msgstr ""
+msgstr "Hvor langt den flydende glaslinse strækker sig indad fra kanten."
 
 #. 6.0->settings-schema.json->liquid-glass-rim-width->description
 msgid "Rim spread"
-msgstr ""
+msgstr "Randspredning"
 
 #. 6.0->settings-schema.json->liquid-glass-rim-width->tooltip
 msgid "How far the refraction eases inward from the glass edge."
 msgstr ""
+"Hvor langt ind mod midten af glasset brydningen aftager fra glasskanten."
 
 #. 6.0->settings-schema.json->liquid-glass-falloff->description
 msgid "Glass thickness"
-msgstr ""
+msgstr "Glastykkelse"
 
 #. 6.0->settings-schema.json->liquid-glass-falloff->tooltip
 msgid "Depth used by the Snell-style refraction profile."
-msgstr ""
+msgstr "Dybde der anvendes i brydningsprofilen af Snell-typen."
 
 #. 6.0->settings-schema.json->liquid-glass-gloss->description
 msgid "Fresnel glare"
-msgstr ""
+msgstr "Fresnel-blænding"
 
 #. 6.0->settings-schema.json->liquid-glass-gloss->tooltip
 msgid "Strength of the Schlick fresnel rim glare from the glass edge."
-msgstr ""
+msgstr "Intensiteten af Schlick-fresnel-kantblændingen fra glaskanten."
 
 #. 6.0->settings-schema.json->liquid-glass-backdrop-zoom->description
 msgid "Backdrop zoom"
-msgstr ""
+msgstr "Baggrundszoom"
 
 #. 6.0->settings-schema.json->liquid-glass-backdrop-zoom->tooltip
 msgid "Zoom level of the backdrop visible through the glass."
-msgstr ""
+msgstr "Zoomniveau for baggrunden der kan ses gennem glasset."
 
 #. 6.0->settings-schema.json->liquid-glass-shadow->description
 msgid "Inner shadow"
-msgstr ""
+msgstr "Indre skygge"
 
 #. 6.0->settings-schema.json->liquid-glass-shadow->tooltip
 msgid "Darkens the lower and inner edge for a deeper glass surface."
-msgstr ""
+msgstr "Gør den nedre og indre kant mørkere, så glasoverfladen virker dybere."
 
 #. 6.0->settings-schema.json->liquid-glass-rgb-fringing->description
 msgid "Chromatic dispersion"
-msgstr ""
+msgstr "Kromatisk dispersion"
 
 #. 6.0->settings-schema.json->liquid-glass-rgb-fringing->tooltip
 msgid "Physical per-channel refraction dispersion at the glass edge."
-msgstr ""
+msgstr "Fysisk brydningsdispersion pr. kanal ved glaskanten."
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->options
 msgid "Clamp"
-msgstr ""
+msgstr "Fasthold"
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->options
-#, fuzzy
 msgid "Mirror"
-msgstr "Fejl"
+msgstr "Spejl"
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->description
 msgid "Edge behavior"
-msgstr ""
+msgstr "Kantopførsel"
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->tooltip
 msgid "How texture coordinates outside the actor are sampled."
-msgstr ""
+msgstr "Hvordan teksturkoordinater uden for aktøren udtages."
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -1365,9 +1357,8 @@ msgstr "Dual Kawase dynamisk sløring"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Liquid Glass dynamic blur"
-msgstr "Gaussisk dynamisk sløring"
+msgstr "Flydende glas dynamisk sløring"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1396,19 +1387,17 @@ msgid "Apply effects to window title bar context menus"
 msgstr "Anvend effekter på genvejsmenuer i vinduers titellinje"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements tint (%)"
-msgstr "Yderligere dæmpning af fremhævede pop op-menuelementer (%)"
+msgstr "Yderligere farvetone til fremhævede pop op-menuelementer (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
-#, fuzzy
 msgid ""
 "Defines the additional tint applied to the popup menu accent elements (i.e. "
 "the main menu favorites box and entry boxes) which allow these elements to "
 "stand out from the other popup menu areas"
 msgstr ""
-"Definerer den ekstra dæmpning, der anvendes på pop op-menuenes fremhævede "
-"elementer (dvs. hovedmenuenes favoritfelt og indtastningsfelter), som gør "
+"Definerer den ekstra farvetone, der anvendes på pop op-menuernes fremhævede "
+"elementer (dvs. hovedmenuernes favoritfelt og indtastningsfelter), som gør "
 "det muligt for disse elementer at skille sig ud fra de øvrige pop op-"
 "menuområder"
 
@@ -1445,9 +1434,8 @@ msgstr ""
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
 #. 6.0->settings-schema.json->osd-opacity->description
-#, fuzzy
 msgid "Tint background image strength (%)"
-msgstr "Dæmp/farvelæg baggrundsbillede (%)"
+msgstr "Farvestyrke til baggrundsbillede (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -1562,7 +1550,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->windows-add-button->description
 msgid "Pick a window to blur…"
-msgstr ""
+msgstr "Vælg et vindue, som skal sløres …"
 
 #. 6.0->settings-schema.json->windows-add-button->tooltip
 msgid ""
@@ -1570,6 +1558,10 @@ msgid ""
 "above with effects enabled. If the application is already in the list but "
 "disabled, it is enabled instead. Press Esc or right-click to cancel."
 msgstr ""
+"Klik her, og klik derefter på et vilkårligt vindue for at tilføje det til "
+"listen over vinduer ovenfor med effekter aktiveret. Hvis programmet allerede "
+"er på listen, men er deaktiveret, bliver det i stedet aktiveret. Tryk på Esc "
+"eller højreklik for at annullere."
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
@@ -1631,7 +1623,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->windows-rounded-corners-sync->description
 msgid "Match the corner radius set by the \"Rounded Corners\" extension"
-msgstr ""
+msgstr "Match hjørneradius indstillet i udvidelsen “Afrundede hjørner”"
 
 #. 6.0->settings-schema.json->windows-rounded-corners-sync->tooltip
 msgid ""
@@ -1642,6 +1634,13 @@ msgid ""
 "windows) still use the table settings. This option will have no effect "
 "unless the \"Rounded Corners\" extension is installed and active."
 msgstr ""
+"Når aktiveret vil vinduer, der er afrundet af udvidelsen “Afrundede hjørner” "
+"anvende denne udvidelses hjørneradius til deres Sløret Cinnamon-effekter i "
+"stedet for hjørneindstillingerne i tabellen ovenfor. Vinduer, eller de "
+"øverste/nederste hjørner af et vindue, som “Afrundede hjørner” ikke afrunder "
+"(f.eks. maksimerede vinduer), bruger stadig indstillingerne i tabellen. "
+"Denne indstilling har ingen effekt, medmindre udvidelsen “Afrundede hjørner” "
+"er installeret og aktiv."
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
