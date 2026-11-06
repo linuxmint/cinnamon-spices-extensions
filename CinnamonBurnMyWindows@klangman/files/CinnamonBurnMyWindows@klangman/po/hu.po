@@ -58,7 +58,7 @@ msgstr ""
 
 #. effects/AperturePanels.js:334
 msgid "Aperture Panels"
-msgstr ""
+msgstr "Nyíláspanelek"
 
 #. effects/Apparition.js:94
 msgid "Apparition"
@@ -150,7 +150,7 @@ msgstr "Mátrix"
 
 #. effects/Morph.js:234
 msgid "Morph"
-msgstr ""
+msgstr "Átalakulás"
 
 #. effects/Mushroom.js:154
 msgid "Mushroom"
@@ -254,7 +254,7 @@ msgstr "Foszlányok"
 
 #. effects/Wormhole.js:259
 msgid "Wormhole"
-msgstr ""
+msgstr "Féreglyuk"
 
 #. 6.2/CustomWidgets.py:509 6.7.6/CustomWidgets.py:509
 msgid "_Cancel"
@@ -511,7 +511,7 @@ msgstr "    Minimalizálás megszüntetése    "
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -540,7 +540,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -569,7 +569,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -598,7 +598,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -627,7 +627,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -656,7 +656,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -685,7 +685,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -714,7 +714,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -743,7 +743,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -772,7 +772,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -801,7 +801,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -830,7 +830,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "11"
-msgstr ""
+msgstr "11"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -859,7 +859,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -888,7 +888,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "13"
-msgstr ""
+msgstr "13"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -917,7 +917,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "14"
-msgstr ""
+msgstr "14"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -946,7 +946,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "15"
-msgstr ""
+msgstr "15"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -975,7 +975,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "16"
-msgstr ""
+msgstr "16"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1004,7 +1004,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "17"
-msgstr ""
+msgstr "17"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1033,7 +1033,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "18"
-msgstr ""
+msgstr "18"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1062,7 +1062,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "19"
-msgstr ""
+msgstr "19"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1091,7 +1091,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "20"
-msgstr ""
+msgstr "20"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1120,7 +1120,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "21"
-msgstr ""
+msgstr "21"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1149,7 +1149,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "22"
-msgstr ""
+msgstr "22"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1178,7 +1178,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "23"
-msgstr ""
+msgstr "23"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1207,7 +1207,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "24"
-msgstr ""
+msgstr "24"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1236,7 +1236,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "25"
-msgstr ""
+msgstr "25"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1265,7 +1265,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "26"
-msgstr ""
+msgstr "26"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1294,7 +1294,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "27"
-msgstr ""
+msgstr "27"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1323,7 +1323,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1352,7 +1352,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "29"
-msgstr ""
+msgstr "29"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1381,7 +1381,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "30"
-msgstr ""
+msgstr "30"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1410,7 +1410,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "31"
-msgstr ""
+msgstr "31"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1439,7 +1439,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "32"
-msgstr ""
+msgstr "32"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1468,7 +1468,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "33"
-msgstr ""
+msgstr "33"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1497,7 +1497,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "34"
-msgstr ""
+msgstr "34"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1526,7 +1526,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "35"
-msgstr ""
+msgstr "35"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1555,7 +1555,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1584,7 +1584,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "37"
-msgstr ""
+msgstr "37"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1613,7 +1613,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "38"
-msgstr ""
+msgstr "38"
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -1642,7 +1642,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "39"
-msgstr ""
+msgstr "39"
 
 #. 6.2->settings-schema.json->effect-selector->description
 #. 6.7.6->settings-schema.json->effect-selector->description
@@ -1674,7 +1674,7 @@ msgstr "A hatás beállításainak megjelenítése:"
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "999"
-msgstr ""
+msgstr "999"
 
 #. 6.2->settings-schema.json->open-window-effect->options
 #. 6.2->settings-schema.json->close-window-effect->options
@@ -1701,7 +1701,7 @@ msgstr ""
 #. 6.7.6->settings-schema.json->power-dialog-open-effect->options
 #. 6.7.6->settings-schema.json->power-dialog-close-effect->options
 msgid "1000"
-msgstr ""
+msgstr "1000"
 
 #. 6.2->settings-schema.json->open-window-effect->description
 #. 6.2->settings-schema.json->power-open-effect->description
@@ -1827,9 +1827,8 @@ msgstr "Amikor az akkumulátor töltöttségi szintje kevesebb, mint (százalék
 
 #. 6.2->settings-schema.json->aperture-panels-panel-size->description
 #. 6.7.6->settings-schema.json->aperture-panels-panel-size->description
-#, fuzzy
 msgid "Panel Size (px)"
-msgstr "Képpont méret"
+msgstr "Panelméret (px)"
 
 #. 6.2->settings-schema.json->aperture-panels-panel-size->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-panel-size->tooltip
@@ -1837,31 +1836,33 @@ msgid ""
 "The approximate size of the panels. It is adjusted a little so that a whole "
 "number of panels fits the window exactly."
 msgstr ""
+"A panelek hozzávetőleges mérete. Ezt kismértékben módosítjuk, hogy egész "
+"számú panel pontosan illeszkedjen az ablakhoz."
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Diagonal"
-msgstr ""
+msgstr "Átlós"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Arc from a corner"
-msgstr ""
+msgstr "Ív a sarokból"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Wavy diagonal"
-msgstr ""
+msgstr "Hullámos átlós"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Organic diagonal"
-msgstr ""
+msgstr "Organikus átlós"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->options
 msgid "Ripple from the center"
-msgstr ""
+msgstr "Középről örvénylő"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->options
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->options
@@ -1875,7 +1876,7 @@ msgstr "Véletlenszerű"
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->description
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->description
 msgid "Wave Shape"
-msgstr ""
+msgstr "Hullámforma"
 
 #. 6.2->settings-schema.json->aperture-panels-wave-shape->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-wave-shape->tooltip
@@ -1883,43 +1884,46 @@ msgid ""
 "The shape of the wave of panels flipping across the window. Random picks one "
 "of the shapes for each animation."
 msgstr ""
+"Az ablakon végigfutó, átforduló panelek hullámának alakja. Az animációkhoz a "
+"rendszer minden alkalommal véletlenszerűen választ ki egyet az alakzatok "
+"közül."
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->options
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
-#, fuzzy
 msgid "Vertical"
-msgstr "Függőleges skála"
+msgstr "Függőleges"
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->options
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->options
-#, fuzzy
 msgid "Horizontal"
-msgstr "Vízszintes skála"
+msgstr "Vízszintes"
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->description
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->description
 msgid "Flip Axis"
-msgstr ""
+msgstr "Tengely megfordítása"
 
 #. 6.2->settings-schema.json->aperture-panels-flip-axis->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-flip-axis->tooltip
 msgid "The axis the panels turn around. Random picks one for each animation."
 msgstr ""
+"A tengely, amely körül a panelek elfordulnak. Minden animációnál "
+"véletlenszerűen választ egyet."
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
 msgid "Wallpaper"
-msgstr ""
+msgstr "Háttér"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
 msgid "Black void"
-msgstr ""
+msgstr "Fekete üresség"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->description
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->description
 msgid "Backdrop"
-msgstr ""
+msgstr "Háttér"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->tooltip
@@ -1928,6 +1932,10 @@ msgid ""
 "place and only the windows behind are on the panels. Black void: the desktop "
 "is on the panels too and flips with them, revealing a black void."
 msgstr ""
+"Mi látszik a panelek mögött, miközben azok elfordulnak? Háttérkép: az asztal "
+"a helyén marad, és csak a mögötte lévő ablakok találhatók a paneleken. "
+"Fekete üresség: az asztal is a paneleken van, és velük együtt fordul át, "
+"feltárva egy fekete ürességet."
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
@@ -1937,28 +1945,27 @@ msgstr "Semmi"
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "While flipping"
-msgstr ""
+msgstr "Lapozgatás közben"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "Ahead of the wave"
-msgstr ""
+msgstr "Hullám előtt"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "Behind the wave"
-msgstr ""
+msgstr "Hullám mögött"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
 msgid "Ahead of and behind the wave"
-msgstr ""
+msgstr "A hullám előtt és mögött"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->description
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->description
-#, fuzzy
 msgid "Border Style"
-msgstr "Skála stílusa"
+msgstr "Szegély stílusa"
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->tooltip
@@ -1966,12 +1973,14 @@ msgid ""
 "When the outlines of the panels are shown: only while a panel flips, or also "
 "in a band ahead of and/or behind the wave of flipping panels."
 msgstr ""
+"Amikor a panelek körvonalai láthatók: csak a panelek átfordulása közben, "
+"vagy pedig az átforduló panelek hulláma előtt és/vagy mögött húzódó sávban "
+"is."
 
 #. 6.2->settings-schema.json->aperture-panels-border-color->description
 #. 6.7.6->settings-schema.json->aperture-panels-border-color->description
-#, fuzzy
 msgid "Border Color"
-msgstr "Vonal színe"
+msgstr "Szegély színe"
 
 #. 6.2->settings-schema.json->aperture-panels-animation-time->description
 #. 6.2->settings-schema.json->apparition-animation-time->description
@@ -2576,18 +2585,17 @@ msgstr "Ez befolyásolja az animáció minőségét és költségeit"
 #. 6.2->settings-schema.json->morph-style->options
 #. 6.7.6->settings-schema.json->morph-style->options
 msgid "Liquid flow"
-msgstr ""
+msgstr "Folyadékáramlás"
 
 #. 6.2->settings-schema.json->morph-style->options
 #. 6.7.6->settings-schema.json->morph-style->options
 msgid "Melt"
-msgstr ""
+msgstr "Olvadás"
 
 #. 6.2->settings-schema.json->morph-style->description
 #. 6.7.6->settings-schema.json->morph-style->description
-#, fuzzy
 msgid "Style"
-msgstr "Skála stílusa"
+msgstr "Stílus"
 
 #. 6.2->settings-schema.json->morph-style->tooltip
 #. 6.7.6->settings-schema.json->morph-style->tooltip
@@ -2596,6 +2604,9 @@ msgid ""
 "flows along its own edges, so what's behind melts away and the window's "
 "outlines form first."
 msgstr ""
+"Folyékony áramlás: a terület folyadékként örvénylik be az ablakba. Olvadás: "
+"minden kép a saját szélei mentén áramlik, így a mögötte lévő rész elolvad, "
+"és először az ablak körvonalai rajzolódnak ki."
 
 #. 6.2->settings-schema.json->morph-strength->tooltip
 #. 6.7.6->settings-schema.json->morph-strength->tooltip
@@ -2603,6 +2614,8 @@ msgid ""
 "How far things move during the morph. 1 is the default; 0 is a plain "
 "dissolve."
 msgstr ""
+"Milyen mértékben mozdulnak el az elemek az átalakulás (morph) során. Az "
+"alapértelmezett érték az 1; a 0 egyszerű áttűnést (dissolve) eredményez."
 
 #. 6.2->settings-schema.json->mushroom-presets->description
 #. 6.7.6->settings-schema.json->mushroom-presets->description
@@ -2750,30 +2763,30 @@ msgstr "Szín #3"
 
 #. 6.2->settings-schema.json->wormhole-void-size->description
 #. 6.7.6->settings-schema.json->wormhole-void-size->description
-#, fuzzy
 msgid "Void Size"
-msgstr "Szélek mérete"
+msgstr "Űr mérete"
 
 #. 6.2->settings-schema.json->wormhole-tunnel-depth->description
 #. 6.7.6->settings-schema.json->wormhole-tunnel-depth->description
 msgid "Tunnel Depth"
-msgstr ""
+msgstr "Alagút mélysége"
 
 #. 6.2->settings-schema.json->wormhole-funnel-size->description
 #. 6.7.6->settings-schema.json->wormhole-funnel-size->description
-#, fuzzy
 msgid "Funnel Size"
-msgstr "Képpont méret"
+msgstr "Tölcsérméret"
 
 #. 6.2->settings-schema.json->wormhole-bounce->description
 #. 6.7.6->settings-schema.json->wormhole-bounce->description
 msgid "Bounce"
-msgstr ""
+msgstr "Ruganyos"
 
 #. 6.2->settings-schema.json->wormhole-bounce->tooltip
 #. 6.7.6->settings-schema.json->wormhole-bounce->tooltip
 msgid "How much the desktop bounces when the effect lands (0 = no bounce)"
 msgstr ""
+"Mekkora mértékben ugrik meg az asztal, amikor a hatás érvényesül (0 = nincs "
+"ugrás)"
 
 #. 6.2->settings-schema.json->test-effect->description
 #. 6.7.6->settings-schema.json->test-effect->description
@@ -2787,46 +2800,40 @@ msgstr "Megnyit egy ablakot az aktuálisan kiválasztott effektussal."
 
 #. 6.7.6->settings-schema.json->broken-glass-gravity->description
 msgid "Gravity"
-msgstr ""
+msgstr "Gravitáció"
 
 #. 6.7.6->settings-schema.json->broken-glass-blow-force->description
-#, fuzzy
 msgid "Blow Force"
-msgstr "Ragyogás színe"
+msgstr "Ragyogás ereje"
 
 #. 6.7.6->settings-schema.json->broken-glass-use-pointer->description
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Szétzúzás a mutató helyétől"
 
 #. 6.7.6->settings-schema.json->matrix-tip-color->description
-#, fuzzy
 msgid "Tip Color"
-msgstr "Vonal színe"
+msgstr "Csúcs színe"
 
 #. 6.7.6->settings-schema.json->matrix-trail-color->description
-#, fuzzy
 msgid "Trail Color"
-msgstr "Vonal színe"
+msgstr "Vég színe"
 
 #. 6.7.6->settings-schema.json->matrix-overshoot->description
-#, fuzzy
 msgid "Vertical Overshooting"
-msgstr "Függőleges szikrapozíció"
+msgstr "Függőleges túllendülés"
 
 #. 6.7.6->settings-schema.json->paint-brush-size->description
 msgid "Brush Size"
-msgstr ""
+msgstr "Ecset mérete"
 
 #. 6.7.6->settings-schema.json->trex-scratch-scale->description
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Karomkarcolási skála"
 
 #. 6.7.6->settings-schema.json->trex-scratch-warp->description
-#, fuzzy
 msgid "Warp Effect"
-msgstr "TV effektus"
+msgstr "Torzító hatás"
 
 #. 6.7.6->settings-schema.json->trex-scratch-count->description
-#, fuzzy
 msgid "Scratch Count"
-msgstr "Szikrák száma"
+msgstr "Karcolások száma"
