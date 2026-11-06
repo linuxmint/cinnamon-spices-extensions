@@ -23,15 +23,18 @@ msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
 "or right-click to cancel."
 msgstr ""
+"Kattints egy ablakra, hogy hozzáadd az alkalmazását a Cinnamon "
+"Elhomályosítása ablaklistához.  Esc vagy jobb klikk a megszakításhoz."
 
 #. 6.0/extension.js:5365
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
+"Nem sikerült elindítani az ablakválasztót. Zárjon be minden megnyitott "
+"menüt, majd próbálja újra."
 
 #. 6.0/extension.js:5439
-#, fuzzy
 msgid "(unknown application)"
-msgstr "Alkalmazás"
+msgstr "(ismeretlen alkalmazás)"
 
 #. 6.0/extension.js:5474
 msgid ""
@@ -39,39 +42,41 @@ msgid ""
 "application doesn't support transparency, set its \"Opacity\" in the window "
 "list to less than 100."
 msgstr ""
+"Megjegyzés: Az elmosódás csak az átlátszó ablakok mögött látható. Ha az "
+"alkalmazás nem támogatja az átlátszóságot, állítsa be az "
+"„Átlátszatlanság” (Opacity) értékét 100-nál kisebbre az ablaklistában."
 
 #. 6.0/extension.js:5477
-#, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
 "therefore Blur Cinnamon effects can not be applied to it."
 msgstr ""
-"Nem sikerült meghatározni az alkalmazást vagy a korábban fókuszált ablak "
-"WM_CLASS osztályát, ezért a Cinnamon Elhomályosítása effektek nem "
-"alkalmazhatók erre az ablakra"
+"Nem sikerült meghatározni az adott ablak alkalmazását vagy WM_CLASS értékét, "
+"ezért a Cinnamon elmosódási (blur) effektusai nem alkalmazhatók rá."
 
 #. 6.0/extension.js:5485
 #, javascript-format
 msgid "\"%s\" is already in the window list."
-msgstr ""
+msgstr "A(z) „%s” már szerepel az ablaklistában."
 
 #. 6.0/extension.js:5490
 #, javascript-format
 msgid "Enabled \"%s\" in the window list."
-msgstr ""
+msgstr "Engedélyezve: „%s” az ablaklistában."
 
 #. 6.0/extension.js:5494
 #, javascript-format
 msgid ""
 "Added \"%s\" to the window list. Adjust its effect settings in the table."
 msgstr ""
+"Hozzáadva a(z) „%s” az ablaklistához. A hatásbeállításait a táblázatban "
+"módosíthatja."
 
 #. 6.0/extension.js:6585
 msgid "Welcome to Blur Cinnamon"
 msgstr "Üdvözöljük a Cinnamon Elhomályosításában"
 
 #. 6.0/extension.js:6586
-#, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -81,13 +86,14 @@ msgid ""
 "changes to the effect properties like blur intensity, color saturation and "
 "tint."
 msgstr ""
-"Reméljük, élvezed az új Panel, Expo, Áttekintés és Alt-Tab effekteket.\n"
+"Reméljük, élvezed az új Panel, Expo, Overview és Alt-Tab effektusokat.\n"
 "\n"
-"Nyisd meg a Blur Cinnamon beállításokat, hogy további effekteket engedélyezz "
-"számos más asztali elemen, például menükön, értesítéseken és ablakokon, vagy "
-"letiltsd az alapértelmezés szerint engedélyezve lévő effekteket. "
-"Módosíthatod az effektek tulajdonságait is, például az elmosás intenzitását, "
-"a színtelítettséget és a fényerőt."
+"Nyisd meg a Cinnamon Elhomályosítása beállításait, ha további effektusokat "
+"szeretnél engedélyezni más asztali elemeken – például menükön, értesítéseken "
+"és ablakokon –, vagy ha ki szeretnéd kapcsolni azokat az effektusokat, "
+"amelyek alapértelmezés szerint aktívak voltak. Emellett módosíthatod az "
+"effektusok tulajdonságait is, például az elmosódás mértékét, a "
+"színtelítettséget és az árnyalatot."
 
 #. 6.0/extension.js:6590
 msgid "Open Blur Cinnamon Settings"
@@ -113,28 +119,27 @@ msgstr ""
 
 #. 6.0/CustomWidgets.py:138
 msgid "When off, the default colour is used"
-msgstr ""
+msgstr "Kikapcsolt állapotban az alapértelmezett szín használatos."
 
 #. 6.0/CustomWidgets.py:194
 msgid "Default"
-msgstr ""
+msgstr "Alapértelmezett"
 
 #. 6.0/CustomWidgets.py:230
 msgid "Use Default"
-msgstr ""
+msgstr "Alapértelmezett használata"
 
 #. metadata.json->name
 msgid "Blur Cinnamon"
 msgstr "Cinnamon Elhomályosítása"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Allows you to blur, tint and adjust the saturation of several Cinnamon "
 "Desktop components"
 msgstr ""
-"Lehetővé teszi számos Cinnamon Asztal komponens elhomályosítását, "
-"színezését, telítettségének csökkentését és a fényerő beállítását"
+"Lehetővé teszi a Cinnamon asztali környezet számos összetevőjének elmosását, "
+"színezését és telítettségének módosítását."
 
 #. 6.0->settings-schema.json->general-page->title
 msgid "General setup"
@@ -146,9 +151,8 @@ msgid "Generic effect settings"
 msgstr "Általános effekt beállítások"
 
 #. 6.0->settings-schema.json->additional-settings-page->title
-#, fuzzy
 msgid "Additional settings"
-msgstr "További Monte Carlo-specifikus beállítások"
+msgstr "További beállítások"
 
 #. 6.0->settings-schema.json->component-setting-page->title
 msgid "Component specific settings"
@@ -163,9 +167,8 @@ msgid "Cinnamon desktop components where effects will be applied"
 msgstr "Cinnamon asztali komponensek, ahol az effektek alkalmazásra kerülnek"
 
 #. 6.0->settings-schema.json->effect-specific-settings->title
-#, fuzzy
 msgid "Additional effect specific settings"
-msgstr "További Monte Carlo-specifikus beállítások"
+msgstr "További, effektus-specifikus beállítások"
 
 #. 6.0->settings-schema.json->component-selector-section->title
 msgid "Component Selector"
@@ -331,7 +334,7 @@ msgstr "Értesítések"
 
 #. 6.0->settings-schema.json->component-selector->options
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
 #. 6.0->settings-schema.json->component-selector->options
 #. 6.0->settings-schema.json->enable-overview-effects->description
@@ -355,7 +358,6 @@ msgid "Show settings for component:"
 msgstr "Az összetevő beállításainak megjelenítése:"
 
 #. 6.0->settings-schema.json->about-text->description
-#, fuzzy
 msgid ""
 "\n"
 "<b>Bringing your style into focus</b>\n"
@@ -365,8 +367,8 @@ msgid ""
 "BlurCinnamon/graphs/contributors\">contributors</a>\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
 "href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Report an "
-"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Website</a>\n"
+"issue</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Website</a>\n"
 "\n"
 "The rounded corners, Gaussian, Monte Carlo and Liquid Glass effects\n"
 "are based on Blur-my-shell code by aunetx and contributors <a href=\"https://"
@@ -382,24 +384,29 @@ msgid ""
 "Selinaru\">Selinaru</a>"
 msgstr ""
 "\n"
-"<b>A stílusod fókuszba hozása</b>\n"
+"<b>Stílusod a középpontban</b>\n"
 "Verzió: ext-version\n"
 "\n"
-"Fejlesztő: Kevin Langman\n"
+"Fejlesztők: Kevin Langman és <a href=\"https://github.com/klangman/"
+"BlurCinnamon/graphs/contributors\">közreműködők</a>\n"
 "<a href=\"https://github.com/klangman/BlurCinnamon\">Github</a> / <a "
-"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Hiba jelentése</"
-"a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/view/"
-"104\">Weboldal</a>\n"
+"href=\"https://github.com/klangman/BlurCinnamon/issues/new\">Hiba "
+"bejelentése</a> / <a href=\"https://cinnamon-spices.linuxmint.com/extensions/"
+"view/104\">Weboldal</a>\n"
 "\n"
-"A lekerekített sarkok, a Gauss- és a Monte Carlo-effektusok\n"
-"az aunetx (Blur-my-shell <a href=\"https://github.com/aunetx/blur-my-"
-"shell\">Github</a> / <a href=\"https://ko-fi.com/aunetx\">Ko-fi</a>) kódján "
-"alapulnak.\n"
+"A lekerekített sarkok, valamint a Gaussian, Monte Carlo és Liquid Glass "
+"effektusok\n"
+"az aunetx és közreműködői által készített Blur-my-shell kódján alapulnak: <a "
+"href=\"https://github.com/aunetx/blur-my-shell\">Github</a> / <a "
+"href=\"https://ko-fi.com/aunetx\">Ko-fi</a>\n"
 "\n"
-"A Dual Kawase effektust <a írta. href=\"https://github.com/Lucas-X-A\">Lucas-"
-"X-A</a>\n"
+"A Dual Kawase effektust <a href=\"https://github.com/Lucas-X-A\">Lucas-X-A</"
+"a> készítette.\n"
 "\n"
-"Az Áttekintés effekt részben a nailfarmer BlurOverview kiterjesztésére épül."
+"Az Overview effektus részben a nailfarmer által jegyzett BlurOverview "
+"kiterjesztésen alapul.\n"
+"A Cinnamon Elhomályosítása ikonját <a href=\"https://github.com/"
+"Selinaru\">Selinaru</a> tervezte."
 
 #. 6.0->settings-schema.json->enable-overview-effects->tooltip
 msgid ""
@@ -422,7 +429,6 @@ msgid "Panels  (Please read tooltip)"
 msgstr "Panelek  (Kérjük, olvassa el az eszközleírást)"
 
 #. 6.0->settings-schema.json->enable-panels-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to the Panels. This option should work well with most dark "
 "desktop themes but light themes could also be made to work with some "
@@ -430,18 +436,18 @@ msgid ""
 "It overrides some themes settings to achieve a (semi-)transparent panel so "
 "that the blurred background is visible."
 msgstr ""
-"Alkalmazzon effektusokat a panelekre. Ennek az opciónak jól kell működnie a "
-"legtöbb sötét asztali témával, de a világos témákat az elsötétítő "
-"színbeállítások és a megfelelő háttérkép kreatív használatával is működhet. "
-"Felülír néhány témabeállítást, hogy (félig) átlátszó panelt kapjon, így az "
-"elmosódott háttér látható."
+"Alkalmazz effektusokat a panelekre. Ez a beállítás a legtöbb sötét asztali "
+"témával jól működik, de a világos témák is használhatóvá tehetők a színezési "
+"beállítások kreatív alkalmazásával és egy megfelelő háttérkép "
+"kiválasztásával. A funkció felülbírál bizonyos témabeállításokat, hogy "
+"(félig) átlátszó paneleket hozzon létre, így láthatóvá válik az elmosódott "
+"háttér."
 
 #. 6.0->settings-schema.json->enable-popup-effects->description
 msgid "Popup Menus  (Please read tooltip)"
 msgstr "Előugró menük  (Kérjük, olvassa el az eszközleírást)"
 
 #. 6.0->settings-schema.json->enable-popup-effects->tooltip
-#, fuzzy
 msgid ""
 "Apply effects to panel popup menus. This option is intended for the Cinnamon "
 "(6.4) and Mint-Y dark desktop themes but might work well with other themes. "
@@ -450,12 +456,13 @@ msgid ""
 "background image. It overrides some theme settings to achieve a "
 "(semi-)transparent menu so that the blurred background is visible."
 msgstr ""
-"Effektusok alkalmazása a panelek felugró menüire. Ez a beállítás a Cinnamon "
-"(6.4) és a Mint-Y sötét asztali témákhoz készült, de más témákkal is jól "
-"működhet. A világos témák valószínűleg nem hoznak jó eredményt, de a "
-"halványító színbeállítások kreatív használatával és egy megfelelő "
-"háttérképpel működőképessé tehetők. Felülír néhány témabeállítást, hogy egy "
-"(félig) átlátszó menüt érjen el, így az elmosódott háttér látható."
+"Effektek alkalmazása a panel felugró menüin. Ez a beállítás a Cinnamon (6.4) "
+"és a Mint-Y sötét asztali témákhoz készült, de más témákkal is jól működhet. "
+"Világos témák esetén valószínűleg nem lesz megfelelő az eredmény, bár némi "
+"kreativitással – a színezési beállítások módosításával és egy megfelelő "
+"háttérkép kiválasztásával – ezeknél is működőképessé tehető. A funkció "
+"felülír bizonyos témabeállításokat, hogy (félig) átlátszó menüket hozzon "
+"létre, így láthatóvá válik az elmosott háttér."
 
 #. 6.0->settings-schema.json->enable-desktop-effects->description
 msgid "Desktop background"
@@ -801,7 +808,7 @@ msgstr "Egyéni"
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
 #. 6.0->settings-schema.json->desklets-list->columns->title
 msgid "Tint"
-msgstr ""
+msgstr "Árnyalat"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
 #. 6.0->settings-schema.json->windows-inclusion-list->columns->title
@@ -831,7 +838,6 @@ msgid "Custom CSS"
 msgstr "Egyéni CSS"
 
 #. 6.0->settings-schema.json->panel-unique-settings->tooltip
-#, fuzzy
 msgid ""
 "Defines the effects applied to different panels. If a panel does not meet "
 "the criteria of any enabled entry in this list, it will have no effects "
@@ -841,13 +847,13 @@ msgid ""
 "color in the table to change it"
 msgstr ""
 "Meghatározza a különböző panelekre alkalmazott effektusokat. Ha egy panel "
-"nem felel meg a lista egyik engedélyezett bejegyzésének kritériumainak, "
-"akkor nem lesz alkalmazva rá effektus. A lista első olyan bejegyzésének "
-"beállításai lépnek életbe, amely egy adott panelre alkalmazható. Az „Egyéni” "
-"jelölőnégyzet határozza meg, hogy az általános effektusbeállítások vagy a "
-"táblázat egyéni beállításai kerülnek-e felhasználásra. A színmező rgb(#,#,#) "
-"szintaxisban van, és a fekete szín kerül felhasználásra, ha a szín nincs "
-"megadva, vagy helytelen szintaxisban van megadva"
+"nem felel meg a listában szereplő egyetlen engedélyezett bejegyzés "
+"feltételeinek sem, akkor arra nem kerülnek effektusok alkalmazásra. A "
+"listában szereplő első olyan bejegyzés beállításai lépnek érvénybe, amely "
+"alkalmazható az adott panelre. Az „Egyéni” (Custom) jelölőnégyzet határozza "
+"meg, hogy az általános effektusbeállítások, vagy pedig a táblázatban "
+"megadott egyéni beállítások kerüljenek-e alkalmazásra. A táblázatban egy "
+"színre kattintva módosíthatja azt."
 
 #. 6.0->settings-schema.json->no-panel-effects-maximized->description
 msgid "Restore theme settings when a window is maximized"
@@ -872,17 +878,16 @@ msgid "Brighten panel when mouse is hovering a panel"
 msgstr "Panel világosítása, amikor az egérmutató a panel fölé kerül"
 
 #. 6.0->settings-schema.json->hover-brighten-panels->tooltip
-#, fuzzy
 msgid ""
 "While the mouse is hovering over a panel, set the panels tint strength to 0 "
 "and the saturation to 100 so that the panel appears brighter. This setting "
 "is only effective when either the tint strength is greater than 0 or "
 "saturation is less than 100."
 msgstr ""
-"Miközben az egérmutatót egy panel fölé viszi, állítsa a panelek fényerejét 0-"
+"Amikor az egér egy panel fölé kerül, állítsa a panel színezési erősségét 0-"
 "ra, a telítettségét pedig 100-ra, hogy a panel világosabbnak tűnjön. Ez a "
-"beállítás csak akkor érvényes, ha a fényerő nagyobb, mint 0, vagy a "
-"telítettség kisebb, mint 100."
+"beállítás csak akkor hatásos, ha a színezési erősség nagyobb 0-nál, vagy a "
+"telítettség kisebb 100-nál."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -893,7 +898,7 @@ msgstr ""
 #. 6.0->settings-schema.json->appswitcher-opacity->description
 #. 6.0->settings-schema.json->tooltips-opacity->description
 msgid "Tint strength (%)"
-msgstr ""
+msgstr "Árnyalat ereje (%)"
 
 #. 6.0->settings-schema.json->blendColor->description
 #. 6.0->settings-schema.json->overview-blendColor->description
@@ -907,7 +912,7 @@ msgstr ""
 #. 6.0->settings-schema.json->desklets-blendColor->description
 #. 6.0->settings-schema.json->osd-blendColor->description
 msgid "Tint color"
-msgstr ""
+msgstr "Árnyalat színe"
 
 #. 6.0->settings-schema.json->blendColor->tooltip
 #. 6.0->settings-schema.json->overview-blendColor->tooltip
@@ -920,15 +925,14 @@ msgstr ""
 #. 6.0->settings-schema.json->tooltips-blendColor->tooltip
 #. 6.0->settings-schema.json->desklets-blendColor->tooltip
 #. 6.0->settings-schema.json->osd-blendColor->tooltip
-#, fuzzy
 msgid ""
 "Defines the color that is blended into the background, weighted by the tint "
 "strength above. Use black to dim the background or some other color for a "
 "color blend effect"
 msgstr ""
-"Meghatározza azt a színt, amely a háttérbe keveredik a fenti elsötétítési "
-"vezérlő alapján. Használjon feketét a normál tompításhoz, vagy más színt a "
-"színkeverési hatáshoz"
+"Meghatározza azt a színt, amely a háttérbe keveredik – a keveredés mértékét "
+"a fenti árnyalaterősség határozza meg. Használjon feketét a háttér "
+"sötétítéséhez, vagy más színt, ha színkeverési hatást szeretne elérni."
 
 #. 6.0->settings-schema.json->blurType->options
 msgid "None / Transparent to wallpaper"
@@ -998,14 +1002,12 @@ msgstr "Kettős Kawase dinamikus elmosás (ha alkalmazható)"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Liquid Glass static blur"
-msgstr "Gauss-féle statikus elmosódás"
+msgstr "Folyékony üveg statikus elmosódás"
 
 #. 6.0->settings-schema.json->blurType->options
-#, fuzzy
 msgid "Liquid Glass dynamic blur (if applicable)"
-msgstr "Gauss-féle dinamikus elmosás (ha alkalmazható)"
+msgstr "Folyékony üveg dinamikus elmosódás (ha alkalmazható)"
 
 #. 6.0->settings-schema.json->blurType->description
 #. 6.0->settings-schema.json->overview-blurType->description
@@ -1032,7 +1034,6 @@ msgid "💡 Blur Algorithm Guide (see tooltip)"
 msgstr "💡 Elmosás algoritmus útmutató (lásd az elemleírást)"
 
 #. 6.0->settings-schema.json->show-blur-info->tooltip
-#, fuzzy
 msgid ""
 "<b>Blur Algorithm Guide:</b>\n"
 " <b>• Gaussian:</b> Good quality smooth blur, can be GPU intensive.\n"
@@ -1049,18 +1050,22 @@ msgid ""
 " <b>• Static:</b> Only blurs the wallpaper, like x-ray vision to the desktop "
 "wallpaper."
 msgstr ""
-"<b>Elmosási algoritmus útmutató:</b>\n"
-"<b>• Gauss:</b> Jó minőségű, sima elmosás, GPU-igényes lehet.\n"
-"<b>• Dual Kawase:</b> Kiváló minőségű, sima elmosás, alsó kategóriás GPU-"
-"khoz optimalizálva.\n"
-"<b>• Monte Carlo:</b> Szemcsés, matt üveg stílusú zajos elmosás.\n"
-"<b>• Egyszerű:</b> Alapvető finom elmosás ősi számítógépekhez.\n"
+"<b>Elmosási algoritmusok útmutatója:</b>\n"
+"<b>• Gauss-elmosás (Gaussian):</b> Jó minőségű, lágy elmosás; jelentős GPU-"
+"terheléssel járhat. \n"
+"<b>• Dual Kawase:</b> Kiváló minőségű, lágy elmosás; gyengébb GPU-kra "
+"optimalizálva. \n"
+"<b>• Monte Carlo:</b> Szemcsés, matt üvegre emlékeztető, zajos elmosás. \n"
+"<b>• Liquid Glass (Folyékony üveg):</b> Fényes, áttetsző üvegfelület, "
+"fénytöréses élekkel és peremfény-effektussal. \n"
+"<b>• Egyszerű (Simple):</b> Alapvető, finom elmosás – kifejezetten régi "
+"számítógépekhez.\n"
 "\n"
 "<b>Statikus vs. Dinamikus:</b>\n"
-"<b>• Dinamikus:</b> Valós időben elmosja az elmosott elem mögötti "
-"háttérelemeket.\n"
-"<b>• Statikus:</b> Csak a háttérképet homályosítja el, mint a "
-"röntgenfelvétel az asztali háttérképet."
+"<b>• Dinamikus:</b> Valós időben mossa el az elmosott elem mögött található "
+"háttérelemeket. \n"
+"<b>• Statikus:</b> Kizárólag a háttérképet mossa el – mintha az asztali "
+"háttérképre „látnánk rá” egyfajta röntgenlátással."
 
 #. 6.0->settings-schema.json->radius->description
 #. 6.0->settings-schema.json->overview-radius->description
@@ -1133,16 +1138,17 @@ msgstr "Monte Carlo"
 
 #. 6.0->settings-schema.json->effect-specific-type->options
 msgid "Liquid Glass"
-msgstr ""
+msgstr "Folyékony üveg"
 
 #. 6.0->settings-schema.json->effect-specific-type->description
-#, fuzzy
 msgid "Additional settings for"
-msgstr "További Monte Carlo-specifikus beállítások"
+msgstr "További beállítások a következőhöz:"
 
 #. 6.0->settings-schema.json->effect-specific-type->tooltip
 msgid "Choose which effect's additional settings to show and edit."
 msgstr ""
+"Válaszd ki, melyik effekt további beállításait szeretnéd megjeleníteni és "
+"szerkeszteni."
 
 #. 6.0->settings-schema.json->monte-carlo-iterations->description
 msgid "Iterations"
@@ -1180,103 +1186,104 @@ msgstr ""
 "Vajon az eredeti pixelhez közelebb lévő pixeleknek nagyobb lesz-e a súlyuk?"
 
 #. 6.0->settings-schema.json->additional-settings-label->description
-#, fuzzy
 msgid ""
 "💡 The above additional settings are used globally for all components that "
 "use this effect"
 msgstr ""
-"Vajon az eredeti pixelhez közelebb lévő pixeleknek nagyobb lesz-e a súlyuk?"
+"💡 A fenti további beállítások globálisan érvényesek minden olyan "
+"összetevőre, amely ezt az effektust használja."
 
 #. 6.0->settings-schema.json->additional-settings-label->tooltip
-#, fuzzy
 msgid ""
 "The above additional settings are used globally for all components that are "
 "configured to use the selected algorithm, these settings can not be "
 "configured separately for each component"
 msgstr ""
-"Vajon az eredeti pixelhez közelebb lévő pixeleknek nagyobb lesz-e a súlyuk?"
+"A fenti további beállítások globálisan érvényesek minden olyan összetevőre, "
+"amely a kiválasztott algoritmus használatára van konfigurálva; ezek a "
+"beállítások nem konfigurálhatók külön-külön az egyes összetevők számára."
 
 #. 6.0->settings-schema.json->liquid-glass-strength->description
-#, fuzzy
 msgid "Refraction scale"
-msgstr "Iterációk"
+msgstr "Fénytörési skála"
 
 #. 6.0->settings-schema.json->liquid-glass-strength->tooltip
 msgid "How strongly the glass bends the sampled blur texture."
 msgstr ""
+"Milyen mértékben téríti el az üveg a mintavételezett elmosódási textúrát."
 
 #. 6.0->settings-schema.json->liquid-glass-edge-size->description
 msgid "Bezel width"
-msgstr ""
+msgstr "Káva szélessége"
 
 #. 6.0->settings-schema.json->liquid-glass-edge-size->tooltip
 msgid "How far the liquid-glass lens reaches inward from the edge."
-msgstr ""
+msgstr "Hogy a folyékonyüveg lencse a peremtől milyen messzire nyúlik befelé."
 
 #. 6.0->settings-schema.json->liquid-glass-rim-width->description
 msgid "Rim spread"
-msgstr ""
+msgstr "Perem szélessége"
 
 #. 6.0->settings-schema.json->liquid-glass-rim-width->tooltip
 msgid "How far the refraction eases inward from the glass edge."
-msgstr ""
+msgstr "Milyen mértékben enyhül a fénytörés az üveg szélétől befelé haladva."
 
 #. 6.0->settings-schema.json->liquid-glass-falloff->description
 msgid "Glass thickness"
-msgstr ""
+msgstr "Üvegvastagság"
 
 #. 6.0->settings-schema.json->liquid-glass-falloff->tooltip
 msgid "Depth used by the Snell-style refraction profile."
-msgstr ""
+msgstr "A Snell-típusú törési profil által használt mélység."
 
 #. 6.0->settings-schema.json->liquid-glass-gloss->description
 msgid "Fresnel glare"
-msgstr ""
+msgstr "Fresnel-típusú vakítás"
 
 #. 6.0->settings-schema.json->liquid-glass-gloss->tooltip
 msgid "Strength of the Schlick fresnel rim glare from the glass edge."
-msgstr ""
+msgstr "Az üvegélről visszaverődő, Schlick-féle Fresnel-peremfény erőssége."
 
 #. 6.0->settings-schema.json->liquid-glass-backdrop-zoom->description
 msgid "Backdrop zoom"
-msgstr ""
+msgstr "Háttér-zoom"
 
 #. 6.0->settings-schema.json->liquid-glass-backdrop-zoom->tooltip
 msgid "Zoom level of the backdrop visible through the glass."
-msgstr ""
+msgstr "Az üvegen keresztül látható háttér nagyítási szintje."
 
 #. 6.0->settings-schema.json->liquid-glass-shadow->description
 msgid "Inner shadow"
-msgstr ""
+msgstr "Belső árnyék"
 
 #. 6.0->settings-schema.json->liquid-glass-shadow->tooltip
 msgid "Darkens the lower and inner edge for a deeper glass surface."
 msgstr ""
+"Sötétíti az alsó és a belső peremet, mélyebb üvegfelületet eredményezve."
 
 #. 6.0->settings-schema.json->liquid-glass-rgb-fringing->description
 msgid "Chromatic dispersion"
-msgstr ""
+msgstr "Kromatikus diszperzió"
 
 #. 6.0->settings-schema.json->liquid-glass-rgb-fringing->tooltip
 msgid "Physical per-channel refraction dispersion at the glass edge."
-msgstr ""
+msgstr "Csatornánkénti fizikai törési diszperzió az üveg szélénél."
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->options
 msgid "Clamp"
-msgstr ""
+msgstr "Szorító"
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->options
-#, fuzzy
 msgid "Mirror"
-msgstr "Hiba"
+msgstr "Tükör"
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->description
 msgid "Edge behavior"
-msgstr ""
+msgstr "Él viselkedése"
 
 #. 6.0->settings-schema.json->liquid-glass-texture-repeat->tooltip
 msgid "How texture coordinates outside the actor are sampled."
-msgstr ""
+msgstr "Hogyan történik a textúrakoordináták mintavételezése az aktoron kívül."
 
 #. 6.0->settings-schema.json->overview-blurType->options
 #. 6.0->settings-schema.json->expo-blurType->options
@@ -1356,9 +1363,8 @@ msgstr "Kettős Kawase dinamikus elmosódás"
 #. 6.0->settings-schema.json->tooltips-blurType->options
 #. 6.0->settings-schema.json->desklets-blurType->options
 #. 6.0->settings-schema.json->osd-blurType->options
-#, fuzzy
 msgid "Liquid Glass dynamic blur"
-msgstr "Gauss-féle dinamikus elmosódás"
+msgstr "Folyékony üveg dinamikus elmosódás"
 
 #. 6.0->settings-schema.json->panels-blurType->description
 #. 6.0->settings-schema.json->popup-blurType->description
@@ -1387,21 +1393,19 @@ msgid "Apply effects to window title bar context menus"
 msgstr "Effektusok alkalmazása az ablak címsorának helyi menüire"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->description
-#, fuzzy
 msgid "Additional popup menu accent elements tint (%)"
-msgstr "További felugró menü kiemelő elemeinek halványítása (%)"
+msgstr "További felugró menü kiemelő elemeinek árnyalata (%)"
 
 #. 6.0->settings-schema.json->popup-accent-opacity->tooltip
-#, fuzzy
 msgid ""
 "Defines the additional tint applied to the popup menu accent elements (i.e. "
 "the main menu favorites box and entry boxes) which allow these elements to "
 "stand out from the other popup menu areas"
 msgstr ""
-"Meghatározza a felugró menü ékezetes elemeire (azaz a főmenü kedvencei "
-"mezőjére és a beviteli mezőkre) alkalmazott további tompítást, amely "
-"lehetővé teszi, hogy ezek az elemek kitűnjenek a többi előugró menü terület "
-"közül"
+"Meghatározza azt a kiegészítő színezést, amely a felugró menü kiemelt "
+"elemeire (azaz a főmenü kedvencek mezőjére és a beviteli mezőkre) "
+"vonatkozik, lehetővé téve, hogy ezek az elemek elüssenek a felugró menü "
+"többi részétől."
 
 #. 6.0->settings-schema.json->popup-saturation->description
 msgid "Background image color saturation"
@@ -1438,9 +1442,8 @@ msgstr ""
 #. 6.0->settings-schema.json->desktop-opacity->description
 #. 6.0->settings-schema.json->desklets-opacity->description
 #. 6.0->settings-schema.json->osd-opacity->description
-#, fuzzy
 msgid "Tint background image strength (%)"
-msgstr "Háttérkép halványítása/színezése (%)"
+msgstr "Háttérkép színezésének erőssége (%)"
 
 #. 6.0->settings-schema.json->notification-test-button->description
 msgid "Send a test notification"
@@ -1555,7 +1558,7 @@ msgstr ""
 
 #. 6.0->settings-schema.json->windows-add-button->description
 msgid "Pick a window to blur…"
-msgstr ""
+msgstr "Válassz ki egy ablakot az elhomályosításhoz…"
 
 #. 6.0->settings-schema.json->windows-add-button->tooltip
 msgid ""
@@ -1563,6 +1566,11 @@ msgid ""
 "above with effects enabled. If the application is already in the list but "
 "disabled, it is enabled instead. Press Esc or right-click to cancel."
 msgstr ""
+"Kattintson ide, majd válasszon ki egy tetszőleges ablakot, hogy az "
+"alkalmazását – effektekkel együtt – hozzáadja a fenti ablaklistához. Ha az "
+"alkalmazás már szerepel a listában, de le van tiltva, akkor ez a művelet "
+"engedélyezi azt. A művelet megszakításához nyomja meg az Esc billentyűt, "
+"vagy kattintson a jobb egérgombbal."
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
@@ -1626,6 +1634,8 @@ msgstr ""
 #. 6.0->settings-schema.json->windows-rounded-corners-sync->description
 msgid "Match the corner radius set by the \"Rounded Corners\" extension"
 msgstr ""
+"Igazodjon a „Lekerekített sarkok” (Rounded Corners) kiegészítő által "
+"beállított saroksugárhoz"
 
 #. 6.0->settings-schema.json->windows-rounded-corners-sync->tooltip
 msgid ""
@@ -1636,6 +1646,14 @@ msgid ""
 "windows) still use the table settings. This option will have no effect "
 "unless the \"Rounded Corners\" extension is installed and active."
 msgstr ""
+"Ha ez a beállítás engedélyezve van, a „Rounded Corners” (lekerekített "
+"sarkok) kiterjesztés által lekerekített ablakok a Cinnamon elmosódási (Blur) "
+"effektusaihoz az adott kiterjesztésben megadott saroksugarat használják, a "
+"fenti táblázatban szereplő értékek helyett. Azok az ablakok – vagy egy ablak "
+"adott (felső/alsó) sarkai –, amelyeket a „Rounded Corners” nem kerekít le "
+"(például a maximalizált ablakok), továbbra is a táblázatban megadott "
+"beállításokat használják. Ez az opció csak akkor fejti ki hatását, ha a "
+"„Rounded Corners” kiterjesztés telepítve van és aktív."
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
