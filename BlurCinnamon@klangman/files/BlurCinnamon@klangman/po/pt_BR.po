@@ -17,11 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. This label is translated through the DEFAULT_WINDOW_SETTINGS constant.
-#. 6.0/extension.js:4792
-msgid "Default window settings"
-msgstr "Configurações padrão de janelas"
-
 #. 6.0/extension.js:5354
 msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "

@@ -17,11 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. This label is translated through the DEFAULT_WINDOW_SETTINGS constant.
-#. 6.0/extension.js:4792
-msgid "Default window settings"
-msgstr ""
-
 #. 6.0/extension.js:5354
 msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
@@ -477,7 +472,8 @@ msgid ""
 "setting to apply."
 msgstr ""
 
-#. 6.0->settings-schema.json->allow-transparent-color-notifications->description
+#. 6.0->settings-schema.json->allow-transparent-color-
+#. notifications->description
 msgid "Override some of the notification theme settings (recommended)"
 msgstr ""
 
