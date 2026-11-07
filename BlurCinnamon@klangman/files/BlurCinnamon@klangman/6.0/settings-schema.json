@@ -67,7 +67,7 @@
                     "notification-warning", "enable-notification-override", "allow-transparent-color-notifications", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
                     "appswitcher-warning", "enable-appswitcher-override", "appswitcher-disable-3d-panels", "appswitcher-allow-classic", "allow-transparent-color-switcher", "appswitcher-allow-3d", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation",
                     "tooltips-warning", "enable-tooltips-override", "allow-transparent-color-tooltips", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation",
-                    "windows-warning", "windows-inclusion-list", "windows-label", "windows-add-button", "windows-titlebar-blur", "windows-rounded-corners-sync", "windows-atrifact-mitigation", "windows-compiz-mitigation",
+                    "windows-warning", "windows-inclusion-list", "windows-label", "windows-add-button", "windows-opaque-maximized", "windows-titlebar-blur", "windows-rounded-corners-sync", "windows-atrifact-mitigation", "windows-compiz-mitigation",
                     "desklets-warning", "enable-desklets-override", "enable-desklets-unique-settings", "desklets-opacity", "desklets-blendColor", "desklets-blurType", "desklets-radius", "desklets-saturation", "desklets-list", "desklets-auto", "desklets-label",
                     "info-label"
                   ]
@@ -1482,6 +1482,14 @@
         "description": "Use artifact mitigation techniques",
         "dependency" : "enable-window-effects & component-selector=9",
         "tooltip": "When enabled, steps will be taken to eliminate background graphical artifacts for windows that use dynamic blur effects. The mitigation steps will have some minor persistent CPU costs when a dynamic blurred window is on top of two or more other windows. This option is recommended unless you are using video wallpaper like Hidamari"
+    },
+
+    "windows-opaque-maximized": {
+        "type": "switch",
+        "default": false,
+        "description": "Make windows opaque when maximized or full-screen",
+        "dependency" : "enable-window-effects & component-selector=9",
+        "tooltip": "When enabled, windows with Blur Cinnamon effects will be made fully opaque while they are maximized or full-screen, ignoring the \"Opacity\" setting in the table above. The configured opacity is restored once the window is no longer maximized or full-screen."
     },
 
     "windows-titlebar-blur": {
