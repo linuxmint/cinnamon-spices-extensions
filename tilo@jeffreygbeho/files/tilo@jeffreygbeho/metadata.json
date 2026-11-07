@@ -1,0 +1,14 @@
+{
+    "uuid": "tilo@jeffreygbeho",
+    "name": "Tilo",
+    "description": "Modern window tiling for Cinnamon - grids, zones and shortcuts, with zero dependencies.",
+    "version": "0.6.1",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4"
+    ],
+    "author": "Jeffrey Gbeho",
+    "url": "https://github.com/JeffreyGbeho/tilo",
+    "max-instances": 1
+}
