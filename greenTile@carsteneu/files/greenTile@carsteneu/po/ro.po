@@ -1,0 +1,510 @@
+# Romanian translation for greenTile (greenTile@carsteneu).
+# Based on the Romanian translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Introdu un nume."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "de la %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Reguli (după numărul de ferestre)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Regulă"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Șterge regula"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Regula se aplică de la"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "ferestre"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Zonă de desen"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Clic sau trage: rândul stabilește câte ferestre încap în coloană. Clic "
+"dreapta elimină o coloană."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Nume"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Numele presetării"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Șterge presetarea"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Ștergi definitiv?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Șterge"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Salvează"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Rezultat: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Editează presetarea"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Atribuită"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Elimină atribuirea"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Spațiu între ferestre"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Resetează dimensiunile"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Presetări — spațiul de lucru %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Creează presetare"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Editează %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Înapoi"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Auto: pornit"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Auto: oprit"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Temă întunecată"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Temă luminoasă"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Nicio presetare încă."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Previzualizare pentru %d fereastră"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Previzualizare — ferestre: %d"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Nicio fereastră deschisă — aranjament de bază"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Presetare nouă"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Fă clic pe un card pentru a-l aplica acestui spațiu de lucru și a aranja "
+"imediat ferestrele în mozaic"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Aranjare în coloane cu presetări per spațiu de lucru, mod automat și fixare "
+"la eliberare. Fork al gTile de shuairan."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Setări"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Tastele de acces rapid"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Taste rapide pentru aranjarea automată"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Presetări pentru spațiile de lucru"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Redimensionare ferestre aranjate"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Schimbare ferestre între ele"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Aranjare"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Nu aranja niciodată"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Panou de presetări"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Aranjează toate ferestrele în 6 coloane"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Aranjează toate ferestrele în 3 coloane"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr ""
+"Activează aranjarea automată pentru acest spațiu de lucru și aranjează acum"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Dezactivează aranjarea automată pentru acest spațiu de lucru"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Deschide panoul de presetări"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Lărgește fereastra aranjată focalizată (apăsare = 1 px, ține apăsat pentru "
+"accelerare)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Îngustează fereastra aranjată focalizată"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Mărește înălțimea ferestrei aranjate focalizate"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Micșorează înălțimea ferestrei aranjate focalizate"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Schimbă fereastra aranjată focalizată cu vecina din stânga"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Schimbă fereastra aranjată focalizată cu vecina din dreapta"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Schimbă fereastra aranjată focalizată cu vecina de deasupra"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Schimbă fereastra aranjată focalizată cu vecina de dedesubt"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Definiții de presetări (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Comută „Nu aranja niciodată” pentru fereastra focalizată"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Adaugă o aplicație instalată"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Alege o aplicație și aceasta va fi adăugată în lista de mai jos. Lista "
+"derulantă se resetează după fiecare alegere."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Adaugă aplicație …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Ferestrele care corespund unuia dintre aceste rânduri nu sunt aranjate "
+"niciodată; ele plutesc liber oriunde le așezi"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Potrivire"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Text"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Spațiu între ferestrele aranjate (setat cu − / + în panoul de presetări; nu "
+"este afișat în acest dialog)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Animează aranjarea"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "Ferestrele alunecă la noul loc. Oprit: sar acolo imediat."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Durata animației"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Cât durează alunecarea unei ferestre la locul ei, în milisecunde. Fereastra "
+"ajunge în continuare imediat la cadrul final; doar imaginea călătorește."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Chenar în jurul ferestrei focalizate"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"După mutarea focalizării cu Super+Săgeată, marchează fereastra nou "
+"focalizată cu un chenar subțire în culoarea de stare timp de trei secunde. "
+"Clicurile de mouse și Alt+Tab nu îl afișează."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Umple monitorul cu o singură fereastră"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Când aranjarea automată sau o presetare sunt active, o singură fereastră "
+"aranjată umple întreaga zonă utilizabilă în loc să rămână neatinsă."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "O singură fereastră"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Ce se întâmplă cu o fereastră singură aranjată în mozaic când aranjarea "
+"automată sau un preset este activ. Lasă-o neatinsă: nu face nimic cu ea. "
+"Umple monitorul: ocupă toată zona utilizabilă. Centrează fereastra: o "
+"centrează la aproximativ 62 % din lățime (proporția de aur) și 90 % din "
+"înălțime."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Lasă-o neatinsă"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Umple monitorul"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Centrează fereastra"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Tema panoului de presetări"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"„Urmează sistemul” preia în timp real schema de culori a desktopului; "
+"„Luminos” și „Întunecat” o suprascriu."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Urmează sistemul"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Luminos"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Întunecat"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Culoare de accent"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"„Urmează tema” preia în timp real culoarea de accent a temei Cinnamon. "
+"„Personalizat” folosește culoarea de mai jos."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Urmează tema"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Personalizat"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Culoare de accent personalizată"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Culoarea de accent a panoului de presetări și a editorului când Culoare de "
+"accent este „Personalizat”."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Culoare de stare"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Culoarea marcajului „Auto: pornit”, a cardurilor de presetare atribuite și a "
+"chenarului de focalizare. „Verde” păstrează aspectul actual. „Urmează tema” "
+"preia în timp real culoarea de accent a temei Cinnamon. „Personalizat” "
+"folosește culoarea de mai jos."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Verde"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Culoare de stare personalizată"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Culoarea de stare a panoului de presetări și a chenarului de focalizare când "
+"Culoare de stare este „Personalizat”."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Fereastra plutește"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Fereastra este din nou aranjată"

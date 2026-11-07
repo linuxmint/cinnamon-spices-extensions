@@ -1,0 +1,505 @@
+# Vietnamese translation for greenTile (greenTile@carsteneu).
+# Based on the Vietnamese translation of gTile (gTile@shuairan).
+# Copyright (C) the gTile and greenTile translators
+# This file is distributed under the same license as the greenTile package (GPL-3.0-only).
+#
+# loccun <huynhloc.contact@gmail.com>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: greenTile 2.3.0\n"
+"Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
+"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"PO-Revision-Date: 2025-10-19 02:39+0700\n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: lib/ui/editor.js:77
+msgid "Please enter a name."
+msgstr "Vui lòng nhập tên."
+
+#: lib/ui/editor.js:149
+#, javascript-format
+msgid "from %d"
+msgstr "từ %d"
+
+#: lib/ui/editor.js:436
+msgid "Rules (by window count)"
+msgstr "Quy tắc (theo số cửa sổ)"
+
+#: lib/ui/editor.js:440
+msgid "Rule"
+msgstr "Quy tắc"
+
+#: lib/ui/editor.js:441
+msgid "Delete rule"
+msgstr "Xóa quy tắc"
+
+#: lib/ui/editor.js:449
+msgid "Rule applies from"
+msgstr "Quy tắc áp dụng từ"
+
+#: lib/ui/editor.js:456
+msgid "windows"
+msgstr "cửa sổ"
+
+#: lib/ui/editor.js:458
+msgid "Painter"
+msgstr "Vùng vẽ"
+
+#: lib/ui/editor.js:476
+msgid ""
+"Click or drag: the row sets how many windows the column holds. Right-click "
+"removes a column."
+msgstr ""
+"Nhấp hoặc kéo: hàng xác định số cửa sổ trong cột. Nhấp chuột phải để xóa một "
+"cột."
+
+#: lib/ui/editor.js:508
+msgid "Name"
+msgstr "Tên"
+
+#: lib/ui/editor.js:509
+msgid "Preset name"
+msgstr "Tên cấu hình sẵn"
+
+#: lib/ui/editor.js:514
+msgid "Delete preset"
+msgstr "Xóa cấu hình sẵn"
+
+#: lib/ui/editor.js:517
+msgid "Really delete?"
+msgstr "Xóa thật chứ?"
+
+#: lib/ui/editor.js:518
+msgid "Delete"
+msgstr "Xóa"
+
+#: lib/ui/editor.js:522
+msgid "Save"
+msgstr "Lưu"
+
+#: lib/ui/editor.js:547
+#, javascript-format
+msgid "Result: %s"
+msgstr "Kết quả: %s"
+
+#: lib/ui/panel.js:107
+msgid "Edit preset"
+msgstr "Sửa cấu hình sẵn"
+
+#: lib/ui/panel.js:127
+msgid "Assigned"
+msgstr "Đã gán"
+
+#: lib/ui/panel.js:129
+msgid "Remove assignment"
+msgstr "Bỏ gán"
+
+#: lib/ui/panel.js:164
+msgid "Gap between windows"
+msgstr "Khoảng cách giữa các cửa sổ"
+
+#: lib/ui/panel.js:170
+#, javascript-format
+msgid "%d px"
+msgstr "%d px"
+
+#: lib/ui/panel.js:190
+msgid "Reset sizes"
+msgstr "Đặt lại kích thước"
+
+#: lib/ui/panel.js:261
+#, javascript-format
+msgid "Presets — workspace %d · %s"
+msgstr "Cấu hình sẵn — không gian làm việc %d · %s"
+
+#: lib/ui/panel.js:263
+msgid "Create preset"
+msgstr "Tạo cấu hình sẵn"
+
+#: lib/ui/panel.js:263
+#, javascript-format
+msgid "Edit %s"
+msgstr "Sửa %s"
+
+#: lib/ui/panel.js:278
+msgid "Back"
+msgstr "Quay lại"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: on"
+msgstr "Tự động: bật"
+
+#: lib/ui/panel.js:287 lib/ui/panel.js:293
+msgid "Auto: off"
+msgstr "Tự động: tắt"
+
+#: lib/ui/panel.js:315
+msgid "Dark theme"
+msgstr "Chủ đề tối"
+
+#: lib/ui/panel.js:315
+msgid "Light theme"
+msgstr "Chủ đề sáng"
+
+#: lib/ui/panel.js:535
+msgid "No presets yet."
+msgstr "Chưa có cấu hình sẵn nào."
+
+#: lib/ui/panel.js:555
+#, javascript-format
+msgid "Preview for %d window"
+msgstr "Xem trước cho %d cửa sổ"
+
+#: lib/ui/panel.js:556
+#, javascript-format
+msgid "Preview for %d windows"
+msgstr "Xem trước cho %d cửa sổ"
+
+#: lib/ui/panel.js:556
+msgid "No windows open — base layout"
+msgstr "Không có cửa sổ nào đang mở — bố cục cơ bản"
+
+#: lib/ui/panel.js:570
+msgid "New preset"
+msgstr "Cấu hình sẵn mới"
+
+#: lib/ui/panel.js:573
+msgid "Click a card to apply it to this workspace and tile right away"
+msgstr ""
+"Nhấp vào một thẻ để áp dụng cấu hình sẵn cho không gian làm việc này và xếp "
+"ô các cửa sổ ngay"
+
+#. metadata.json->name
+msgid "greenTile"
+msgstr "greenTile"
+
+#. metadata.json->description
+msgid ""
+"Column tiling with per-workspace presets, auto mode and snap-on-release. "
+"Fork of gTile by shuairan."
+msgstr ""
+"Xếp ô theo cột với cấu hình sẵn cho từng không gian làm việc, chế độ tự động "
+"và tự khớp khi thả. Bản fork của gTile do shuairan phát triển."
+
+#. settings-schema.json->settings-tab->title
+msgid "Settings"
+msgstr "Cài đặt"
+
+#. settings-schema.json->hotkeys-tab->title
+msgid "Hotkeys"
+msgstr "Phím tắt"
+
+#. settings-schema.json->columns-hotkey-section->title
+msgid "Auto-Tile Hotkeys"
+msgstr "Phím tắt tự động xếp ô"
+
+#. settings-schema.json->preset-section->title
+msgid "Workspace Presets"
+msgstr "Cấu hình sẵn cho không gian làm việc"
+
+#. settings-schema.json->resize-section->title
+msgid "Resize tiled windows"
+msgstr "Đổi kích thước cửa sổ đã xếp ô"
+
+#. settings-schema.json->swap-section->title
+msgid "Swap windows"
+msgstr "Hoán đổi cửa sổ"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling"
+msgstr "Xếp ô"
+
+#. settings-schema.json->exclusion-section->title
+#. settings-schema.json->exclusion-hotkey-section->title
+msgid "Never tile"
+msgstr "Không bao giờ xếp ô"
+
+#. settings-schema.json->panel-section->title
+msgid "Preset panel"
+msgstr "Bảng cấu hình sẵn"
+
+#. settings-schema.json->columns6Hotkey->description
+msgid "Tile all windows into 6 columns"
+msgstr "Xếp tất cả cửa sổ thành 6 cột"
+
+#. settings-schema.json->columns3Hotkey->description
+msgid "Tile all windows into 3 columns"
+msgstr "Xếp tất cả cửa sổ thành 3 cột"
+
+#. settings-schema.json->autoOnHotkey->description
+msgid "Turn automatic tiling on for this workspace and tile now"
+msgstr "Bật tự động xếp ô cho không gian làm việc này và xếp ô ngay"
+
+#. settings-schema.json->autoOffHotkey->description
+msgid "Turn automatic tiling off for this workspace"
+msgstr "Tắt tự động xếp ô cho không gian làm việc này"
+
+#. settings-schema.json->presetHotkey->description
+msgid "Open the preset panel"
+msgstr "Mở bảng cấu hình sẵn"
+
+#. settings-schema.json->resizeWiderHotkey->description
+msgid "Make the focused tiled window wider (tap = 1 px, hold to speed up)"
+msgstr ""
+"Làm cửa sổ đã xếp ô có tiêu điểm rộng hơn (nhấn = 1 px, giữ để tăng tốc)"
+
+#. settings-schema.json->resizeNarrowerHotkey->description
+msgid "Make the focused tiled window narrower"
+msgstr "Làm cửa sổ đã xếp ô có tiêu điểm hẹp hơn"
+
+#. settings-schema.json->resizeTallerHotkey->description
+msgid "Make the focused tiled window taller"
+msgstr "Làm cửa sổ đã xếp ô có tiêu điểm cao hơn"
+
+#. settings-schema.json->resizeShorterHotkey->description
+msgid "Make the focused tiled window shorter"
+msgstr "Làm cửa sổ đã xếp ô có tiêu điểm thấp hơn"
+
+#. settings-schema.json->swapLeftHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the left"
+msgstr "Hoán đổi cửa sổ đã xếp ô có tiêu điểm với cửa sổ bên trái"
+
+#. settings-schema.json->swapRightHotkey->description
+msgid "Swap the focused tiled window with its neighbor to the right"
+msgstr "Hoán đổi cửa sổ đã xếp ô có tiêu điểm với cửa sổ bên phải"
+
+#. settings-schema.json->swapUpHotkey->description
+msgid "Swap the focused tiled window with its neighbor above"
+msgstr "Hoán đổi cửa sổ đã xếp ô có tiêu điểm với cửa sổ phía trên"
+
+#. settings-schema.json->swapDownHotkey->description
+msgid "Swap the focused tiled window with its neighbor below"
+msgstr "Hoán đổi cửa sổ đã xếp ô có tiêu điểm với cửa sổ phía dưới"
+
+#. settings-schema.json->presets->description
+msgid "Preset definitions (JSON)"
+msgstr "Định nghĩa cấu hình sẵn (JSON)"
+
+#. settings-schema.json->excludeHotkey->description
+msgid "Toggle 'never tile' for the focused window"
+msgstr "Bật/tắt “Không bao giờ xếp ô” cho cửa sổ có tiêu điểm"
+
+#. settings-schema.json->excludeAppPicker->description
+msgid "Add an installed application"
+msgstr "Thêm một ứng dụng đã cài đặt"
+
+#. settings-schema.json->excludeAppPicker->tooltip
+msgid ""
+"Pick an application and it is added to the list below. The combobox resets "
+"after each pick."
+msgstr ""
+"Chọn một ứng dụng để thêm vào danh sách bên dưới. Hộp chọn sẽ được đặt lại "
+"sau mỗi lần chọn."
+
+#. settings-schema.json->excludeAppPicker->options
+msgid "Add application …"
+msgstr "Thêm ứng dụng …"
+
+#. settings-schema.json->exclusions->description
+msgid ""
+"Windows matching one of these rows are never tiled; they float freely "
+"wherever you put them"
+msgstr ""
+"Cửa sổ khớp với một trong các dòng này sẽ không bao giờ được xếp ô; chúng "
+"nổi tự do ở bất cứ đâu bạn đặt"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Match"
+msgstr "Khớp theo"
+
+#. settings-schema.json->exclusions->columns->title
+msgid "Text"
+msgstr "Văn bản"
+
+#. settings-schema.json->windowGap->description
+msgid ""
+"Gap between tiled windows (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Khoảng cách giữa các cửa sổ đã xếp ô (đặt bằng − / + trong bảng cấu hình "
+"sẵn; không hiển thị trong hộp thoại này)"
+
+#. settings-schema.json->windowGap->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->tileAnimation->description
+msgid "Animate tiling"
+msgstr "Hiệu ứng động khi xếp ô"
+
+#. settings-schema.json->tileAnimation->tooltip
+msgid "Windows glide into their new place. Off: they jump there at once."
+msgstr "Cửa sổ lướt êm đến vị trí mới. Tắt: chúng nhảy đến đó ngay lập tức."
+
+#. settings-schema.json->tileAnimationDuration->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->tileAnimationDuration->description
+msgid "Animation duration"
+msgstr "Thời lượng hiệu ứng"
+
+#. settings-schema.json->tileAnimationDuration->tooltip
+msgid ""
+"How long a window glides into its place, in milliseconds. The window still "
+"lands on its final frame at once; only the picture travels."
+msgstr ""
+"Thời gian một cửa sổ trượt về vị trí của nó, tính bằng mili giây. Cửa sổ vẫn "
+"vào đúng khung cuối cùng ngay lập tức; chỉ hình ảnh di chuyển."
+
+#. settings-schema.json->focusBorder->description
+msgid "Border around the focused window"
+msgstr "Viền quanh cửa sổ có tiêu điểm"
+
+#. settings-schema.json->focusBorder->tooltip
+msgid ""
+"After a Super+Arrow focus move, mark the newly focused window with a thin "
+"border in the state color for three seconds. Mouse clicks and Alt+Tab do not "
+"show it."
+msgstr ""
+"Sau khi chuyển tiêu điểm bằng Super+Mũi tên, đánh dấu cửa sổ vừa nhận tiêu "
+"điểm bằng một viền mảnh màu trạng thái trong ba giây. Nhấp chuột và Alt+Tab "
+"không hiển thị viền này."
+
+#. settings-schema.json->fillSingleWindow->description
+msgid "Fill the monitor with a single window"
+msgstr "Lấp đầy màn hình bằng một cửa sổ duy nhất"
+
+#. settings-schema.json->fillSingleWindow->tooltip
+msgid ""
+"With automatic tiling or a preset on, a single tiled window fills the whole "
+"usable area instead of being left untouched."
+msgstr ""
+"Khi tự động xếp ô hoặc một cấu hình sẵn đang bật, một cửa sổ được xếp ô duy "
+"nhất sẽ lấp đầy toàn bộ khu vực sử dụng được thay vì để nguyên như vậy."
+
+#. settings-schema.json->singleWindowMode->description
+#| msgid "Resize tiled windows"
+msgid "A single window"
+msgstr "Một cửa sổ"
+
+#. settings-schema.json->singleWindowMode->tooltip
+msgid ""
+"What happens to a lone tiled window when automatic tiling or a preset is on. "
+"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
+"fill the whole usable area. \"Center the window\" centers it at about 62 % "
+"of the width (golden ratio) and 90 % of the height."
+msgstr ""
+"Điều gì xảy ra với cửa sổ được xếp ô duy nhất khi tính năng xếp ô tự động "
+"hoặc một cấu hình sẵn đang bật. Giữ nguyên: không làm gì với nó. Lấp đầy màn "
+"hình: chiếm toàn bộ vùng sử dụng được. Căn giữa cửa sổ: căn giữa ở khoảng 62 "
+"% chiều rộng (tỷ lệ vàng) và 90 % chiều cao."
+
+#. settings-schema.json->singleWindowMode->options
+msgid "Leave it untouched"
+msgstr "Giữ nguyên"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Fill the monitor with a single window"
+msgid "Fill the monitor"
+msgstr "Lấp đầy màn hình"
+
+#. settings-schema.json->singleWindowMode->options
+#| msgid "Resize tiled windows"
+msgid "Center the window"
+msgstr "Căn giữa cửa sổ"
+
+#. settings-schema.json->panelTheme->description
+msgid "Theme of the preset panel"
+msgstr "Chủ đề của bảng cấu hình sẵn"
+
+#. settings-schema.json->panelTheme->tooltip
+msgid ""
+"Follow system tracks the desktop color scheme live; Light and Dark override "
+"it."
+msgstr ""
+"“Theo hệ thống” bám theo bảng màu của màn hình nền theo thời gian thực; "
+"“Sáng” và “Tối” sẽ ghi đè lên."
+
+#. settings-schema.json->panelTheme->options
+msgid "Follow system"
+msgstr "Theo hệ thống"
+
+#. settings-schema.json->panelTheme->options
+msgid "Light"
+msgstr "Sáng"
+
+#. settings-schema.json->panelTheme->options
+msgid "Dark"
+msgstr "Tối"
+
+#. settings-schema.json->accentMode->description
+msgid "Accent color"
+msgstr "Màu nhấn"
+
+#. settings-schema.json->accentMode->tooltip
+msgid ""
+"Follow theme tracks the accent color of the Cinnamon theme live. Custom uses "
+"the color below."
+msgstr ""
+"“Theo chủ đề” lấy màu nhấn của chủ đề Cinnamon theo thời gian thực. “Tùy "
+"chỉnh” dùng màu bên dưới."
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Follow theme"
+msgstr "Theo chủ đề"
+
+#. settings-schema.json->accentMode->options
+#. settings-schema.json->stateMode->options
+msgid "Custom"
+msgstr "Tùy chỉnh"
+
+#. settings-schema.json->accentColor->description
+msgid "Custom accent color"
+msgstr "Màu nhấn tùy chỉnh"
+
+#. settings-schema.json->accentColor->tooltip
+msgid "Accent of the preset panel and editor when Accent color is Custom."
+msgstr ""
+"Màu nhấn của bảng cấu hình sẵn và trình chỉnh sửa khi “Màu nhấn” là “Tùy "
+"chỉnh”."
+
+#. settings-schema.json->stateMode->description
+msgid "State color"
+msgstr "Màu trạng thái"
+
+#. settings-schema.json->stateMode->tooltip
+msgid ""
+"Color of the \"Auto: on\" marker, the assigned preset cards and the focus "
+"border. Green keeps today's look. Follow theme tracks the accent color of "
+"the Cinnamon theme live. Custom uses the color below."
+msgstr ""
+"Màu của dấu “Tự động: bật”, các thẻ cấu hình sẵn đã gán và viền tiêu điểm. "
+"“Xanh lá” giữ giao diện hiện tại. “Theo chủ đề” lấy màu nhấn của chủ đề "
+"Cinnamon theo thời gian thực. “Tùy chỉnh” dùng màu bên dưới."
+
+#. settings-schema.json->stateMode->options
+msgid "Green"
+msgstr "Xanh lá"
+
+#. settings-schema.json->stateColor->description
+msgid "Custom state color"
+msgstr "Màu trạng thái tùy chỉnh"
+
+#. settings-schema.json->stateColor->tooltip
+msgid ""
+"State color of the preset panel and the focus border when State color is "
+"Custom."
+msgstr ""
+"Màu trạng thái của bảng cấu hình sẵn và viền tiêu điểm khi “Màu trạng thái” "
+"là “Tùy chỉnh”."
+
+#: lib/runtime/exclusions.js:270
+msgid "Window floats"
+msgstr "Cửa sổ nổi tự do"
+
+#: lib/runtime/exclusions.js:270
+msgid "Window tiles again"
+msgstr "Cửa sổ được xếp ô lại"
