@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-30 22:39-0400\n"
+"POT-Creation-Date: 2026-11-07 15:45-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.10\n"
 
-#. 6.0/extension.js:5354
+#. 6.0/extension.js:5454
 msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
 "or right-click to cancel."
@@ -25,17 +25,17 @@ msgstr ""
 "Haz clic en una ventana para añadir su aplicación a la lista de ventanas de "
 "Blur Cinnamon. Pulsa Esc o haz clic con el botón derecho para cancelar."
 
-#. 6.0/extension.js:5365
+#. 6.0/extension.js:5465
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 "No se ha podido iniciar el selector de ventanas. Cierra todos los menús "
 "abiertos e inténtalo de nuevo."
 
-#. 6.0/extension.js:5439
+#. 6.0/extension.js:5539
 msgid "(unknown application)"
 msgstr "(aplicación desconocida)"
 
-#. 6.0/extension.js:5474
+#. 6.0/extension.js:5574
 msgid ""
 "Note: The blur is only visible behind transparent windows. If this "
 "application doesn't support transparency, set its \"Opacity\" in the window "
@@ -45,7 +45,7 @@ msgstr ""
 "transparentes. Si esta aplicación no admite la transparencia, configura su "
 "\"Opacidad\" en la lista de ventanas a un valor inferior a 100."
 
-#. 6.0/extension.js:5477
+#. 6.0/extension.js:5577
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
 "therefore Blur Cinnamon effects can not be applied to it."
@@ -53,17 +53,17 @@ msgstr ""
 "No se ha podido determinar la aplicación ni el WM_CLASS de esa ventana, por "
 "lo que no se pueden aplicar los efectos de Desenfoque de Cinnamon a la misma."
 
-#. 6.0/extension.js:5485
+#. 6.0/extension.js:5585
 #, javascript-format
 msgid "\"%s\" is already in the window list."
 msgstr "\"%s\" ya figura en la lista de ventanas."
 
-#. 6.0/extension.js:5490
+#. 6.0/extension.js:5590
 #, javascript-format
 msgid "Enabled \"%s\" in the window list."
 msgstr "Se ha activado \"%s\" en la lista de ventanas."
 
-#. 6.0/extension.js:5494
+#. 6.0/extension.js:5594
 #, javascript-format
 msgid ""
 "Added \"%s\" to the window list. Adjust its effect settings in the table."
@@ -71,11 +71,11 @@ msgstr ""
 "Se ha añadido \"%s\"  a la lista de ventanas. Ajusta sus parámetros de "
 "efecto en la tabla."
 
-#. 6.0/extension.js:6585
+#. 6.0/extension.js:6726
 msgid "Welcome to Blur Cinnamon"
 msgstr "Bienvenido a Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:6586
+#. 6.0/extension.js:6727
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -94,15 +94,15 @@ msgstr ""
 "También puedes modificar las propiedades de los efectos, como la intensidad "
 "del desenfoque, la saturación del color y el tinte."
 
-#. 6.0/extension.js:6590
+#. 6.0/extension.js:6731
 msgid "Open Blur Cinnamon Settings"
 msgstr "Abrir configuración de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:6696
+#. 6.0/extension.js:6837
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Probando los efectos de notificación de Desenfoque de Cinnamon"
 
-#. 6.0/extension.js:6697
+#. 6.0/extension.js:6838
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -1632,6 +1632,18 @@ msgstr ""
 "y persistente de la CPU cuando una ventana con desenfoque dinámico se "
 "encuentre sobre otras dos o más ventanas. Se recomienda esta opción a menos "
 "que utilices un fondo de pantalla en vídeo como Hidamari"
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->description
+msgid "Make windows opaque when maximized or full-screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->tooltip
+msgid ""
+"When enabled, windows with Blur Cinnamon effects will be made fully opaque "
+"while they are maximized or full-screen, ignoring the \"Opacity\" setting in "
+"the table above. The configured opacity is restored once the window is no "
+"longer maximized or full-screen."
+msgstr ""
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
 msgid "Blur window title bars (please read tooltip)"
