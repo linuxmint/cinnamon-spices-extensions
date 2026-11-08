@@ -22,13 +22,19 @@
 //const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 
 //const _ = await utils.importGettext();
-const {ShaderFactory} = require('./ShaderFactory.js');
+// The modules this file needs are handed in by extension.js through setModules(): the
+// file is shared by the Cinnamon 6.2 code (old module loader) and the 6.7.6+ code
+// (native importer), so it doesn't import them itself.
+let ShaderFactory = null;
+function setModules(modules) {
+  ({ShaderFactory} = modules);
+}
 
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
 const UUID = "CinnamonBurnMyWindows@klangman";
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + "/locale");
 
 function _(text) {
   let locText = Gettext.dgettext(UUID, text);
@@ -104,6 +110,12 @@ var Effect = class Effect {
   }
 
   // ---------------------------------------------------------------- API for extension.js
+
+  // Whether this effect can be used as a raise effect (see RaiseEffect.js). The windows that
+  // covered the raised window blur out of focus and fade away.
+  static supportsRaise() {
+    return true;
+  }
 
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual

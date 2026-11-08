@@ -29,7 +29,13 @@ const Gettext = imports.gettext;
 const Panel = imports.ui.panel;
 //const Mainloop = imports.mainloop;
 
-const ShouldAnimateManager = require("ShouldAnimateManager.js");
+// The modules this file needs are handed in by extension.js through setModules(): the
+// file is shared by the Cinnamon 6.2 code (old module loader) and the 6.7.6+ code
+// (native importer), so it doesn't import them itself.
+let ShouldAnimateManager = null;
+function setModules(modules) {
+  ({ShouldAnimateManager} = modules);
+}
 
 const MINIMIZE_EFFECT_NAME = "minimize-magic-lamp-effect";
 const UNMINIMIZE_EFFECT_NAME = "unminimize-magic-lamp-effect";
@@ -52,7 +58,7 @@ const Edge = {
    Mouse: 4
 }
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + "/locale");
 
 function _(text) {
   let locText = Gettext.dgettext(UUID, text);
@@ -63,10 +69,16 @@ function _(text) {
 }
 
 // Returns the geometry of the icon used to determine where the animation should emerge from or disappear towards
-// For open/close events the geometry is controlled by the edge & offset parameters
-// For minimize/unminimize events the geometry is the result of the Meta.get_icon_geometry() API call
-// When get_icon_geometry() fails then a "best guess" is used based where panels exist
+// For all events the window's window-list button (Meta.Window.get_icon_geometry()) is used when there is one
+// When get_icon_geometry() fails:
+//    - For open/close events the geometry is controlled by the edge & offset parameters. This is the usual
+//      case when opening, since the window list hasn't laid out the new window's button yet.
+//    - For minimize/unminimize events a "best guess" is used based where panels exist
 function getIcon(actor, event, edge, offset) {
+   let [success, icon] = actor.meta_window.get_icon_geometry();
+   if (success && icon.width > 0 && icon.height > 0) {
+      return icon;
+   }
    // Open/Close event?
    if (event === ShouldAnimateManager.Events.MapWindow || event === ShouldAnimateManager.Events.DestroyWindow) {
       let icon;
@@ -104,14 +116,10 @@ function getIcon(actor, event, edge, offset) {
       }
       return icon;
    }
-   // Must be a minimize/unminimize event, get the windows icon location
-   let [success, icon] = actor.meta_window.get_icon_geometry();
-   if (success) {
-      return icon;
-   }
-   // Failed to get window's icon location!
-   let monitor = actor.meta_window.get_monitor();
-   let panels = Main.panelManager.getPanelsInMonitor(monitor);
+   // Must be a minimize/unminimize event and we failed to get window's icon location!
+   let monitorIndex = actor.meta_window.get_monitor();
+   let monitor = Main.layoutManager.monitors[monitorIndex];
+   let panels = Main.panelManager.getPanelsInMonitor(monitorIndex);
    let loc = -1;
    icon = {x: monitor.x + monitor.width / 2, y: monitor.y + monitor.height, width: 32, height: 32};
    // Find a panel and set the icon location to be the middle of the panel.

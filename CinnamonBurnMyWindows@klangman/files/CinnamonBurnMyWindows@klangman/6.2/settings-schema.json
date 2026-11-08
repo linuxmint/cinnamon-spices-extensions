@@ -37,7 +37,7 @@
     "general-settings" : {
       "type" : "section",
       "title" : "Burn My Windows General Settings",
-      "keys" : ["open-window-effect", "close-window-effect", "minimize-effect", "unminimize-effect", "enable-sound", "dialog-special", "dialog-open-effect", "dialog-close-effect"]
+      "keys" : ["open-window-effect", "close-window-effect", "minimize-effect", "unminimize-effect", "raise-effect", "raise-animation-time", "enable-sound", "dialog-special", "dialog-open-effect", "dialog-close-effect"]
     },
 
     "app-specific-settings" : {
@@ -53,8 +53,8 @@
     },
     "effect-settings" : {
       "type" : "section",
-      "title" : "Effect Specific Settings",
-      "keys" : ["aperture-panels-panel-size", "aperture-panels-wave-shape", "aperture-panels-flip-axis", "aperture-panels-backdrop", "aperture-panels-border-style", "aperture-panels-border-color", "aperture-panels-animation-time", "aperture-panels-open-sound", "aperture-panels-close-sound", "aperture-panels-reset",
+      "title" : "Global Effect Settings",
+      "keys" : ["aperture-panels-panel-size", "aperture-panels-wave-shape", "aperture-panels-flip-axis", "aperture-panels-backdrop", "aperture-panels-border-style", "aperture-panels-border-color", "aperture-panels-animation-time", "aperture-panels-easter-egg", "aperture-panels-open-sound", "aperture-panels-close-sound", "aperture-panels-reset",
                 "apparition-shake-intensity", "apparition-twirl-intensity", "apparition-suction-intensity", "apparition-randomness", "apparition-animation-time", "apparition-open-sound", "apparition-close-sound", "apparition-reset",
                 "aura-glow-random-color", "aura-glow-start-hue", "aura-glow-speed", "aura-glow-saturation", "aura-glow-edge-size", "aura-glow-edge-hardness", "aura-glow-blur", "aura-glow-animation-time", "aura-glow-open-sound", "aura-glow-close-sound", "aura-glow-reset",
                 "doom-horizontal-scale", "doom-vertical-scale", "doom-pixel-size", "doom-animation-time", "doom-open-sound", "doom-close-sound", "doom-reset",
@@ -67,6 +67,7 @@
                 "hexagon-scale", "hexagon-line-width", "hexagon-line-color", "hexagon-glow-color", "hexagon-additive-blending", "hexagon-animation-time", "hexagon-open-sound", "hexagon-close-sound", "hexagon-reset",
                 "incinerate-scale", "incinerate-turbulence", "incinerate-color", "incinerate-use-pointer", "incinerate-animation-time", "incinerate-open-sound", "incinerate-close-sound", "incinerate-reset",
                 "magiclamp-effect", "magiclamp-edge", "magiclamp-edge-offset", "magiclamp-x-tiles", "magiclamp-y-tiles", "magiclamp-animation-time", "magiclamp-open-sound", "magiclamp-close-sound", "magiclamp-reset",
+                "materialize-start-scale", "materialize-steps", "materialize-color", "materialize-animation-time", "materialize-open-sound", "materialize-close-sound", "materialize-reset",
                 "morph-style", "morph-strength", "morph-animation-time", "morph-open-sound", "morph-close-sound", "morph-reset",
                 "mushroom-presets", "mushroom-custom-scale-style", "mushroom-custom-spark-count", "mushroom-custom-spark-color", "mushroom-custom-spark-rotation", "mushroom-custom-rays-color", "mushroom-custom-ring-count", "mushroom-custom-ring-rotation", "mushroom-custom-star-count", "mushroom-star-colors", "mushroom-animation-time", "mushroom-open-sound", "mushroom-close-sound", "mushroom-reset",
                 "pixelate-noise", "pixelate-pixel-size", "pixelate-animation-time", "pixelate-open-sound", "pixelate-close-sound", "pixelate-reset",
@@ -74,9 +75,11 @@
                 "pixel-wipe-pixel-size", "pixel-wipe-animation-time", "pixel-wipe-open-sound", "pixel-wipe-close-sound", "pixel-wipe-reset",
                 "portal-color", "portal-rotation-speed", "portal-whirling", "portal-details", "portal-animation-time", "portal-open-sound", "portal-close-sound", "portal-reset",
                 "rgbwarp-brightness", "rgbwarp-speed-r", "rgbwarp-speed-g", "rgbwarp-speed-b", "rgbwarp-animation-time", "rgbwarp-open-sound", "rgbwarp-close-sound", "rgbwarp-reset",
+                "shredder-strips", "shredder-randomness", "shredder-rough-edges", "shredder-animation-time", "shredder-open-sound", "shredder-close-sound", "shredder-reset",
                 "team-rocket-animation-split", "team-rocket-horizontal-sparkle-position", "team-rocket-vertical-sparkle-position", "team-rocket-window-rotation", "team-rocket-sparkle-rot", "team-rocket-sparkle-size", "team-rocket-animation-time", "team-rocket-open-sound", "team-rocket-close-sound", "team-rocket-reset",
                 "tv-effect-color", "tv-animation-time", "tv-open-sound", "tv-close-sound", "tv-reset",
                 "tv-glitch-scale", "tv-glitch-strength", "tv-glitch-speed", "tv-glitch-color", "tv-glitch-animation-time", "tv-glitch-open-sound", "tv-glitch-close-sound", "tv-glitch-reset",
+                "venetian-blinds-slats", "venetian-blinds-delay", "venetian-blinds-perspective", "venetian-blinds-pull-up", "venetian-blinds-animation-time", "venetian-blinds-open-sound", "venetian-blinds-close-sound", "venetian-blinds-reset",
                 "wisps-scale", "wisps-color-1", "wisps-color-2", "wisps-color-3", "wisps-animation-time", "wisps-open-sound", "wisps-close-sound", "wisps-reset",
                 "wormhole-void-size", "wormhole-tunnel-depth", "wormhole-funnel-size", "wormhole-bounce", "wormhole-animation-time", "wormhole-open-sound", "wormhole-close-sound", "wormhole-reset",
                 "test-effect"]
@@ -89,7 +92,7 @@
     "power-section" : {
       "type" : "section",
       "title" : "Manage Burn-My-Windows power consumption",
-      "keys" : ["power-onbattery", "power-percent", "power-open-effect", "power-close-effect", "power-minimize-effect", "power-unminimize-effect"]
+      "keys" : ["power-onbattery", "power-percent", "power-open-effect", "power-close-effect", "power-minimize-effect", "power-unminimize-effect", "power-raise-effect"]
     },
     "power-dialog-section": {
       "type" : "section",
@@ -113,7 +116,9 @@
   },
 
   "app-rules": {
-    "type" : "list",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "AppRulesList",
     "description" : "Application Specific Rules",
     "columns" : [
         {"id": "enabled",     "title": "Enabled",      "type": "boolean", "default": true},
@@ -147,7 +152,7 @@
         },
         {"id": "application", "title": "Application",  "type": "string"}
     ],
-    "tooltip": "A list of applications with special effect rules. The application can be a desktop file name or a WM_CLASS name",
+    "tooltip": "A list of applications with special effect rules. The application can be a desktop file name or a WM_CLASS name. Click a rule, then click a cell to change it. Hover over an effect and click the gear icon beside it to configure custom effect settings for that application.",
     "default": [ { "enabled": true,
                    "open": 1000,
                    "close": 1000,
@@ -166,15 +171,17 @@
   },
   "app-rules-button" : {
     "type" : "button",
-    "description" : "Add entry for the application of the most recently focused window",
-    "callback" : "on_config_button_pressed",
-    "tooltip" : "Focus a window you want to enable application specific setting for then return here and press this button."
+    "description" : "Pick a window to add…",
+    "callback" : "on_pick_application_window",
+    "tooltip" : "Click this, then click any window to add an entry for its application to the list above. Press Esc or right-click to cancel."
   },
 
   "random-include" : {
-    "type" : "list",
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "RandomIncludeList",
     "description" : "Effects included in the randomized sets",
-    "tooltip": "Defines which effects are included in the randomized sets for each window event type. When 'Randomized' is selected for any event on the General tab these sets are used.",
+    "tooltip": "Defines which effects are included in the randomized sets for each window event type. When 'Randomized' is selected for any event on the General tab these sets are used. Hover over a ticked box and click the gear icon beside it to configure custom effect settings, used when that effect is randomly chosen for that event.",
     "show-buttons" : false,
     "height" : 450,
     "columns" : [
@@ -182,32 +189,46 @@
         {"id": "open",       "title": "      Open        ", "type": "boolean", "default": true},
         {"id": "close",      "title": "      Close       ", "type": "boolean", "default": true},
         {"id": "minimize",   "title": "     Minimize     ", "type": "boolean", "default": true},
-        {"id": "unminimize", "title": "    Unminimize    ", "type": "boolean", "default": true}
+        {"id": "unminimize", "title": "    Unminimize    ", "type": "boolean", "default": true},
+        {"id": "raise",      "title": "      Raise       ", "type": "boolean", "default": true, "only-for": "raise-capable-effects"}
         ],
     "default": [
-        { "name": "Aperture Panels", "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Apparition",  "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Aura Glow",   "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Doom",        "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Energize A",  "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Energize B",  "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Fire",        "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Focus",       "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Glide",       "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Glitch",      "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Hexagon",     "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Incinerate",  "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Morph",       "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Pixelate",    "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Pixel Wheel", "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Pixel Wipe",  "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Portal",      "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Team Rocket", "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "TV Effect",   "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "TV Glitch",   "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Wisps",       "open": true, "close": true, "minimize": true, "unminimize": true },
-        { "name": "Wormhole",    "open": true, "close": true, "minimize": true, "unminimize": true }
+        { "name": "Aperture Panels", "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Apparition",  "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Aura Glow",   "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Doom",        "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Energize A",  "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Energize B",  "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Fire",        "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Focus",       "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Glide",       "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Glitch",      "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Hexagon",     "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Incinerate",  "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Materialize", "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Morph",       "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Pixelate",    "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Pixel Wheel", "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Pixel Wipe",  "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Portal",      "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Shredder",    "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Team Rocket", "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "TV Effect",   "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "TV Glitch",   "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Venetian Blinds", "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Wisps",       "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true },
+        { "name": "Wormhole",    "open": true, "close": true, "minimize": true, "unminimize": true, "raise": true }
         ]
+  },
+
+  "raise-capable-effects" : {
+     "type" : "generic",
+     "default" : []
+  },
+
+  "effect-overrides" : {
+     "type" : "generic",
+     "default" : {}
   },
 
   "random-buttons" : {
@@ -231,7 +252,9 @@
   },
 
   "open-window-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 0,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -243,7 +266,9 @@
   },
 
   "close-window-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 0,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -269,7 +294,9 @@
   },
 
   "dialog-open-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 0,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -282,7 +309,9 @@
   },
 
   "dialog-close-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 0,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -295,7 +324,9 @@
   },
 
   "minimize-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -307,7 +338,9 @@
   },
 
   "unminimize-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -318,8 +351,37 @@
     "description": "Unminimize window effect"
   },
 
+  "raise-effect": {
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Raise window effect",
+    "tooltip": "Played when a window that is partly covered by other windows is raised. Only the parts that were covered are animated. Only effects that support raising are listed."
+  },
+
+  "raise-animation-time": {
+    "type" : "custom",
+    "file" : "CustomWidgets.py",
+    "widget" : "CompactScale",
+    "description" : "Raise effect duration (ms)",
+    "min" : 100,
+    "max" : 2000,
+    "step" : 10,
+    "dependency" : "raise-effect!=1000",
+    "default": 350
+  },
+
   "power-open-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -332,7 +394,9 @@
   },
 
   "power-close-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -345,7 +409,9 @@
   },
 
   "power-minimize-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -358,7 +424,9 @@
   },
 
   "power-unminimize-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -370,6 +438,22 @@
     "dependency" : "power-onbattery=true"
   },
 
+  "power-raise-effect": {
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
+    "default": 1000,
+    "options": {
+      "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+      "10": 10, "11": 11, "12": 12, "13": 13, "14": 14, "15": 15, "16": 16, "17": 17, "18": 18, "19": 19,
+      "20": 20, "21": 21, "22": 22, "23": 23, "24": 24, "25": 25, "26": 26, "27": 27, "28": 28, "29": 29,
+      "30": 30, "31": 31, "32": 32, "33": 33, "34": 34, "35": 35, "36": 36, "37": 37, "38": 38, "39": 39, "999": 999, "1000": 1000
+    },
+    "description": "Raise window effect",
+    "tooltip": "Played instead of the General tab's raise effect while on low battery power. Only effects that support raising are listed.",
+    "dependency" : "power-onbattery=true"
+  },
+
   "power-dialog-special": {
     "type" : "switch",
     "description": "Special handling for dialog windows",
@@ -378,7 +462,9 @@
   },
 
   "power-dialog-open-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -391,7 +477,9 @@
   },
 
   "power-dialog-close-effect": {
-    "type": "combobox",
+    "type": "custom",
+    "file": "CustomWidgets.py",
+    "widget": "EffectSelector",
     "default": 1000,
     "options": {
       "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
@@ -469,11 +557,14 @@
     "default": 0,
     "options": {
       "Wallpaper": 0,
-      "Black void": 1
+      "Black void": 1,
+      "Transparent": 2,
+      "Star field": 3,
+      "Nebula": 4
     },
     "description": "Backdrop",
     "dependency" : "effect-selector=27",
-    "tooltip": "What is seen behind the panels as they turn. Wallpaper: the desktop stays in place and only the windows behind are on the panels. Black void: the desktop is on the panels too and flips with them, revealing a black void."
+    "tooltip": "What is seen behind the panels as they turn. Wallpaper: the desktop stays in place and only the windows behind are on the panels. Black void: the desktop is on the panels too and flips with them, revealing a black void. Transparent: nothing is drawn behind the panels, so the real screen shows through the gaps. Star field: like Black void, with twinkling stars in the void. Nebula: the star field with a colourful nebula behind the stars."
   },
 
   "aperture-panels-border-style": {
@@ -510,13 +601,20 @@
      "default": 2000
   },
 
+  "aperture-panels-easter-egg": {
+    "type": "switch",
+    "default": true,
+    "description": "🎁",
+    "dependency" : "effect-selector=27"
+  },
+
   "aperture-panels-reset" : {
      "type" : "custom",
      "file" : "CustomWidgets.py",
      "widget" : "ResetToDefault",
      "description" : "Reset to default",
      "dependency" : "effect-selector=27",
-     "keys" : ["aperture-panels-panel-size", "aperture-panels-wave-shape", "aperture-panels-flip-axis", "aperture-panels-backdrop", "aperture-panels-border-style", "aperture-panels-border-color", "aperture-panels-animation-time"]
+     "keys" : ["aperture-panels-panel-size", "aperture-panels-wave-shape", "aperture-panels-flip-axis", "aperture-panels-backdrop", "aperture-panels-border-style", "aperture-panels-border-color", "aperture-panels-animation-time", "aperture-panels-easter-egg"]
   },
 
   "aperture-panels-open-sound" : {
@@ -1501,7 +1599,7 @@
     },
     "description": "Open/Close Edge",
     "dependency" : "effect-selector=26",
-    "tooltip": "The monitor edge where a window should originate from when opening, or disappear towards when closing. This setting is not used for minimize or unminimize events"
+    "tooltip": "The monitor edge where a window should originate from when opening, or disappear towards when closing, when the window has no window-list button to use (usually the case when opening). This setting is not used for minimize or unminimize events"
   },
 
   "magiclamp-edge-offset": {
@@ -1583,16 +1681,91 @@
   },
 
 
+  "materialize-start-scale": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Start Scale",
+     "min" : 0.1,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=30",
+     "tooltip" : "The initial size of the panel relative to the window.",
+     "default": 0.6
+  },
+
+  "materialize-steps": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Steps",
+     "min" : 0,
+     "max" : 12,
+     "step" : 1,
+     "dependency" : "effect-selector=30",
+     "tooltip" : "The number of discrete animation steps. Zero gives a smooth animation.",
+     "default": 4
+  },
+
+  "materialize-color": {
+     "type": "colorchooser",
+     "description" : "Color",
+     "tooltip": "The color of the panel before the window content appears.",
+     "dependency" : "effect-selector=30",
+     "default": "rgba(130,190,60,0.85)"
+  },
+
+  "materialize-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=30",
+     "default": 250
+  },
+
+  "materialize-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=30",
+     "keys" : ["materialize-start-scale", "materialize-steps", "materialize-color", "materialize-animation-time"]
+  },
+
+  "materialize-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=30 & enable-sound=true",
+     "default" : ""
+  },
+
+  "materialize-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=30 & enable-sound=true",
+     "default" : ""
+  },
+
+
   "morph-style": {
     "type": "combobox",
     "default": 0,
     "options": {
       "Liquid flow": 0,
-      "Melt": 1
+      "Melt": 1,
+      "Pixelate": 2
     },
     "description": "Style",
     "dependency" : "effect-selector=29",
-    "tooltip": "Liquid flow: the area swirls into the window like liquid. Melt: each image flows along its own edges, so what's behind melts away and the window's outlines form first."
+    "tooltip": "Liquid flow: the area swirls into the window like liquid. Melt: each image flows along its own edges, so what's behind melts away and the window's outlines form first. Pixelate: the area turns into blocks that change colour one by one into the window's, then sharpen."
   },
 
   "morph-strength": {
@@ -1604,7 +1777,7 @@
      "max" : 2.5,
      "step" : 0.05,
      "dependency" : "effect-selector=29",
-     "tooltip" : "How far things move during the morph. 1 is the default; 0 is a plain dissolve.",
+     "tooltip" : "How far things move during the morph (for Pixelate, how big the blocks get). 1 is the default; 0 is a plain dissolve.",
      "default": 1.0
   },
 
@@ -2185,6 +2358,80 @@
   },
 
 
+  "shredder-strips": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Number of Strips",
+     "min" : 4,
+     "max" : 40,
+     "step" : 1,
+     "dependency" : "effect-selector=31",
+     "tooltip" : "The number of strips the window is cut into.",
+     "default": 20
+  },
+
+  "shredder-randomness": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Randomness",
+     "min" : 0,
+     "max" : 1,
+     "step" : 0.01,
+     "dependency" : "effect-selector=31",
+     "tooltip" : "How much the strips differ in when they start to fall.",
+     "default": 0.7
+  },
+
+  "shredder-rough-edges": {
+     "type" : "switch",
+     "description": "Rough Edges",
+     "tooltip": "Give the strips jagged edges like torn paper.",
+     "dependency" : "effect-selector=31",
+     "default": true
+  },
+
+  "shredder-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=31",
+     "default": 600
+  },
+
+  "shredder-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=31",
+     "keys" : ["shredder-strips", "shredder-randomness", "shredder-rough-edges", "shredder-animation-time"]
+  },
+
+  "shredder-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=31 & enable-sound=true",
+     "default" : ""
+  },
+
+  "shredder-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=31 & enable-sound=true",
+     "default" : ""
+  },
+
+
   "team-rocket-animation-split": {
      "type" : "custom",
      "file" : "CustomWidgets.py",
@@ -2418,6 +2665,88 @@
      "widget" : "ClearableSoundFileChooser",
      "description" : "Sound on window disappear events",
      "dependency" : "effect-selector=19 & enable-sound=true",
+     "default" : ""
+  },
+
+
+  "venetian-blinds-slats": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Number of Slats",
+     "min" : 2,
+     "max" : 15,
+     "step" : 1,
+     "dependency" : "effect-selector=32",
+     "tooltip" : "The number of slats the window is split into.",
+     "default": 9
+  },
+
+  "venetian-blinds-delay": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Delay",
+     "min" : 0,
+     "max" : 0.7,
+     "step" : 0.01,
+     "dependency" : "effect-selector=32",
+     "tooltip" : "How much later the last slat starts to turn than the first one, relative to the animation time.",
+     "default": 0.4
+  },
+
+  "venetian-blinds-perspective": {
+     "type" : "switch",
+     "description": "Perspective",
+     "tooltip": "Draw the turning slats with perspective.",
+     "dependency" : "effect-selector=32",
+     "default": false
+  },
+
+  "venetian-blinds-pull-up": {
+     "type" : "switch",
+     "description": "Pull Up",
+     "tooltip": "Pull the blind up, so that the slats fold at the top of the window.",
+     "dependency" : "effect-selector=32",
+     "default": false
+  },
+
+  "venetian-blinds-animation-time": {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "CompactScale",
+     "description" : "Effect Duration (ms)",
+     "min" : 100,
+     "max" : 3000,
+     "step" : 10,
+     "dependency" : "effect-selector=32",
+     "default": 700
+  },
+
+  "venetian-blinds-reset" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ResetToDefault",
+     "description" : "Reset to default",
+     "dependency" : "effect-selector=32",
+     "keys" : ["venetian-blinds-slats", "venetian-blinds-delay", "venetian-blinds-perspective", "venetian-blinds-pull-up", "venetian-blinds-animation-time"]
+  },
+
+  "venetian-blinds-open-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window appear events",
+     "dependency" : "effect-selector=32 & enable-sound=true",
+     "default" : ""
+  },
+
+  "venetian-blinds-close-sound" : {
+     "type" : "custom",
+     "file" : "CustomWidgets.py",
+     "widget" : "ClearableSoundFileChooser",
+     "description" : "Sound on window disappear events",
+     "dependency" : "effect-selector=32 & enable-sound=true",
      "default" : ""
   },
 

@@ -9,6 +9,7 @@
 //                                 |__/                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// SPDX-FileCopyrightText: Kevin Langman <klangman@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // The content from common.glsl is automatically prepended to each shader effect.
@@ -39,9 +40,7 @@
 //   sends the depth to infinity as u approaches the throat.                            //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-uniform float uLayer;      // 0 = surface (what's behind the window), 1 = the window
-uniform vec4  uTexRect;    // this layer's offscreen texture, in layer pixels: x, y, width, height
-uniform vec2  uLayerSize;  // the layer actor's size in pixels
+// uLayer, uLayerSize and uTexRect, and getLayerPx(), are in common.glsl.
 uniform vec2  uCenter;     // portal centre (= centre of the visible window), layer pixels
 uniform vec2  uAxes;       // portal semi-axes in pixels (funnel reaches norm 1 there)
 uniform vec2  uFrameHalf;  // half size of the visible window in pixels
@@ -108,6 +107,11 @@ const vec2 T_RISE   = vec2(0.40, 0.95);  // ...growing to its full size on scree
 const bool  BOUNCE          = true;   // opening
 const bool  BOUNCE_ON_CLOSE = true;   // closing / minimizing
 const int   BOUNCE_COUNT    = 3;
+// true: the timeline before the landing phase (opening: until the sheet starts flattening,
+// T_FLAT.x; closing: until the funnel starts collapsing, T_SINK.y) runs at its normal pace,
+// and the landing phase (fall + bounces) is one EASE_OUT_BOUNCE curve over the time left.
+// false: the whole timeline is sped up to make room for the bounces.
+const bool  BOUNCE_KEEP_INTRO = true;
 // Opening: 0 = the window lands at full size and stays there; only the sheet under it
 // bounces, so the bounce shows as the window itself warping into the dimple and back
 // (it lies on the sheet). 1 = the window also shrinks with each dip.
@@ -232,12 +236,27 @@ void main() {
   bool  closeBounce = bounceOn && BOUNCE_ON_CLOSE && !uForOpening;
   float dip         = 0.0;
   bool  landed      = false;
-  if (openBounce || closeBounce) {
+  float landAt      = 1.0;  // elapsed time (uProgress) of the landing
+  if ((openBounce || closeBounce) && BOUNCE_KEEP_INTRO) {
+    // Normal pace until the landing phase starts at `knee`; then the fall runs (1 + bounce
+    // time) times faster, so fall + bounces exactly fill the rest of the animation.
+    float knee    = openBounce ? T_FLAT.x : 1.0 - T_SINK.y;
+    float speed   = 1.0 + bounceTime();
+    float fallDur = (1.0 - knee) / speed;
+    landAt        = knee + fallDur;
+    float p       = uProgress <= knee ? uProgress : min(knee + (uProgress - knee) * speed, 1.0);
+    gProgress     = uForOpening ? p : 1.0 - p;
+    if (uProgress > landAt) {
+      landed = true;
+      dip    = bounceDip((uProgress - landAt) / fallDur);
+    }
+  } else if (openBounce || closeBounce) {
     vec2  fall     = openBounce ? T_FLAT : T_SINK;
     float fallTime = fall.y - fall.x;
     float mainPart = 1.0 / (1.0 + bounceTime() * fallTime);
     float p        = min(uProgress / mainPart, 1.0);
     gProgress      = uForOpening ? p : 1.0 - p;
+    landAt         = mainPart;
     if (uProgress > mainPart) {
       landed = true;
       dip    = bounceDip((uProgress - mainPart) / (mainPart * fallTime));
@@ -260,13 +279,19 @@ void main() {
     flatT = 1.0 - dip;
   }
   float riseT = openBounce ? fallSpan(vec2(T_RISE.x, T_FLAT.y)) - dip * BOUNCE_WINDOW : span(T_RISE);
-  float flat  = 1.0 - flatT;
+  if (openBounce && BOUNCE_KEEP_INTRO) {
+    // The window's rise starts (T_RISE.x) before the knee; fall it in real time to the
+    // landing so its speed has no kink where the timeline speeds up.
+    float x = clamp((uProgress - T_RISE.x) / (landAt - T_RISE.x), 0.0, 1.0);
+    riseT   = x * x - dip * BOUNCE_WINDOW;
+  }
+  float flatness = 1.0 - flatT;
   // The floor rises as the sheet flattens. When the close bounces, it also rises as the
   // funnel collapses, so the void closes from below and each dip is a shallow dimple.
   float floorT = closeBounce ? max(flatT, 1.0 - sink) : flatT;
   gFloor       = FLOOR_START + FLOOR_RISE * floorT * floorT;
-  gAmp        = AMPLITUDE * sink * mix(AMP_START, 1.0, widen) * flat;
-  gThroat     = uVoidSize * sink * mix(THROAT_START, 1.0, widen) * flat;
+  gAmp        = AMPLITUDE * sink * mix(AMP_START, 1.0, widen) * flatness;
+  gThroat     = uVoidSize * sink * mix(THROAT_START, 1.0, widen) * flatness;
   gAxes       = uAxes * mix(SPREAD_START, 1.0, widen);
 
   // The window's on-screen size grows geometrically (an even rate of growth to the eye),
@@ -281,7 +306,7 @@ void main() {
   float extent = shapeNorm(uFrameHalf / gAxes) * gWinSize / TUBE_FIT;  // screen norm needed
   gWinDepth    = extent >= 1.0 ? 0.0 : surfaceDepth(unproject(extent));
 
-  vec2  px = uTexRect.xy + iTexCoord.st * uTexRect.zw;  // pixel position in the layer
+  vec2  px = getLayerPx();  // pixel position in the layer
   vec2  v  = (px - uCenter) / gAxes;                     // portal space
   float uq = shapeNorm(v);                               // screen norm of this fragment
 

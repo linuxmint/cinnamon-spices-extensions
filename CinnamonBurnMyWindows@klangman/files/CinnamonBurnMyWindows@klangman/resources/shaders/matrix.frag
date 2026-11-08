@@ -29,6 +29,11 @@ const float FINAL_FADE_START_TIME = 0.8;
 const float LETTER_TILES          = 16.0;
 const float LETTER_FLICKER_SPEED  = 2.0;
 
+// The vertical overshooting actually used. As a raise effect it is always 0: the raise path
+// doesn't enlarge the canvas (getActorScale()), and the rain couldn't go beyond the raised
+// window anyway, as the cover is clipped to it. Set at the top of main().
+float gOverShoot;
+
 // This returns a flickering grid of random letters.
 float getText(vec2 fragCoord) {
   vec2 pixelCoords = fragCoord * uSize;
@@ -64,7 +69,8 @@ vec2 getRain(vec2 fragCoord) {
 
   // Add some variation to the drop start and end position.
   float shorten =
-    fract(sin(column + 42.0) * 33.423) * mix(0.0, uOverShoot * 0.25, uRandomness);
+    fract(sin(column + 42.0) * 33.423) * mix(0.0, gOverShoot * 0.25, uRandomness);
+  shorten = max(shorten, 1e-4);  // no division by zero when overshooting is off
   rainAlpha *= smoothstep(0.0, 1.0, clamp(iTexCoord.y / shorten, 0.0, 1.0));
   rainAlpha *= smoothstep(0.0, 1.0, clamp((1.0 - iTexCoord.y) / shorten, 0.0, 1.0));
 
@@ -76,8 +82,9 @@ vec2 getRain(vec2 fragCoord) {
 }
 
 void main() {
+  gOverShoot  = uRaise > 0.5 ? 0.0 : uOverShoot;
   vec2 coords = iTexCoord.st;
-  coords.y    = coords.y * (uOverShoot + 1.0) - uOverShoot * 0.5;
+  coords.y    = coords.y * (gOverShoot + 1.0) - gOverShoot * 0.5;
 
   // Get a cool matrix effect. See comments for those methods above.
   vec2 rainMask  = getRain(coords);
@@ -94,6 +101,11 @@ void main() {
     1.0 -
     clamp((uProgress - FINAL_FADE_START_TIME) / (1.0 - FINAL_FADE_START_TIME), 0.0, 1.0);
   float rainAlpha = finalFade * rainMask.x;
+
+  // As a raise effect, the rain only falls where windows covered the raised window.
+  if (uRaise > 0.5) {
+    rainAlpha *= getInputColor(coords).a;
+  }
 
   // Add the matrix effect to the window.
   vec4 text = vec4(mix(uTrailColor, uTipColor, min(1.0, pow(rainAlpha + 0.1, 4.0))),

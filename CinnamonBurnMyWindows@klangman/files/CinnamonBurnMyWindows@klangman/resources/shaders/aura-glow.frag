@@ -81,7 +81,11 @@ void main() {
   // Get the color from the window texture. We gradually blur the input color based on
   // the progress of the animation. We also slightly scale the UV coordinates to make
   // the window scale up during the animation.
-  vec2 windowUV = (iTexCoord.st - 0.5) * mix(1.1, 1.0, easeOutCubic(progress)) + 0.5;
+  // Not as a raise effect: the texture is the windows that covered the raised window, and
+  // scaling it about the raised window's centre would slide their edges over its uncovered
+  // parts.
+  float zoom    = uRaise > 0.5 ? 1.0 : 1.1;
+  vec2 windowUV = (iTexCoord.st - 0.5) * mix(zoom, 1.0, easeOutCubic(progress)) + 0.5;
   vec4 windowColor;
   if (uBlur > 0.0) {
     windowColor = getBlurredInputColor(windowUV, (1.0 - progress) * uBlur, 3.0);

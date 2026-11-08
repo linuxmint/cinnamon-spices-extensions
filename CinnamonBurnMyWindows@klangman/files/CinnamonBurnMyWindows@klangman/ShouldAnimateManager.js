@@ -34,16 +34,16 @@
 const Main = imports.ui.main;
 const Meta = imports.gi.Meta;
 
-const Events = {
+var Events = {
    Minimize:      1,
    Unminimize:    2,
    MapWindow:     4,
    DestroyWindow: 8
 }
 
-const RUN_ORIGINAL_FUNCTION = 2
+var RUN_ORIGINAL_FUNCTION = 2
 
-class ShouldAnimateManager {
+var ShouldAnimateManager = class ShouldAnimateManager {
 
    constructor(uuid) {
       this._uuid = uuid;
@@ -112,4 +112,4 @@ class ShouldAnimateManager {
       return Main.wm._shouldAnimateManager_Original_Function.apply(this, [actor, types]);
    }
 
-}
+};
