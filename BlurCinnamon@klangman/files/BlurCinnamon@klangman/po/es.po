@@ -1636,6 +1636,8 @@ msgstr ""
 #. 6.0->settings-schema.json->windows-opaque-maximized->description
 msgid "Make windows opaque when maximized or full-screen"
 msgstr ""
+"Hacer que las ventanas sean opacas cuando estén maximizadas o en pantalla "
+"completa"
 
 #. 6.0->settings-schema.json->windows-opaque-maximized->tooltip
 msgid ""
@@ -1644,6 +1646,11 @@ msgid ""
 "the table above. The configured opacity is restored once the window is no "
 "longer maximized or full-screen."
 msgstr ""
+"Cuando esta opción esté activada, las ventanas con efectos Desenfoque de "
+"Cinnamon se volverán totalmente opacas mientras estén maximizadas o en "
+"pantalla completa, sin tener en cuenta el ajuste de Opacidad de la tabla "
+"anterior. La opacidad configurada se restablecerá en cuanto la ventana deje "
+"de estar maximizada o en pantalla completa."
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
 msgid "Blur window title bars (please read tooltip)"
