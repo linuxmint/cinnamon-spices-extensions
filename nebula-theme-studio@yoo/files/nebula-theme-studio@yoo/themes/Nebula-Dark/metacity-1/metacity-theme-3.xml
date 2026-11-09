@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+<!-- ===== Nebula-Dark 窗口装饰 (Muffin / Metacity v3) ===== -->
+<!-- M5 阶段: 全量标题栏与按钮装饰. Metacity 不支持 rgba 透明,
+     此处使用第 3 节色板的实色等价值;半透明由 GTK CSD 侧呈现 -->
+<metacity_theme>
+  <info>
+    <name>Nebula-Dark</name>
+    <author>Nebula-Dark Theme</author>
+    <copyright>半透明毛玻璃深色主题</copyright>
+    <date>2026-09-29</date>
+    <description>Nebula-Dark window decoration, full stage</description>
+  </info>
+
+  <!-- 调色板常量,取值对应规格文档第 3 节色彩系统(实色等价) -->
+  <constant name="nebula_bg_solid" value="#0d1117"/>
+  <constant name="nebula_bg_alt" value="#161b22"/>
+  <constant name="nebula_panel" value="#1c2128"/>
+  <constant name="nebula_hover" value="#21262d"/>
+  <constant name="nebula_border" value="#30363d"/>
+  <constant name="nebula_fg" value="#e6edf3"/>
+  <constant name="nebula_fg_dim" value="#8b949e"/>
+  <constant name="nebula_accent" value="#58a6ff"/>
+  <constant name="nebula_ok" value="#3fb950"/>
+  <constant name="nebula_warn" value="#d29922"/>
+  <constant name="nebula_err" value="#f85149"/>
+
+  <!-- ===== 框架几何: 标题栏 38px,圆角 8px ===== -->
+
+  <frame_geometry name="nebula_normal" title_scale="medium" rounded_top_left="8" rounded_top_right="8" rounded_bottom_left="8" rounded_bottom_right="8">
+    <distance name="left_width" value="1"/>
+    <distance name="right_width" value="1"/>
+    <distance name="bottom_height" value="1"/>
+    <distance name="left_titlebar_edge" value="8"/>
+    <distance name="right_titlebar_edge" value="8"/>
+    <distance name="button_width" value="22"/>
+    <distance name="button_height" value="22"/>
+    <distance name="title_vertical_pad" value="4"/>
+    <border name="title_border" left="8" right="8" top="0" bottom="0"/>
+    <border name="button_border" left="2" right="2" top="0" bottom="0"/>
+  </frame_geometry>
+
+  <frame_geometry name="nebula_max" parent="nebula_normal" rounded_top_left="false" rounded_top_right="false" rounded_bottom_left="false" rounded_bottom_right="false">
+    <distance name="left_width" value="0"/>
+    <distance name="right_width" value="0"/>
+    <distance name="bottom_height" value="0"/>
+  </frame_geometry>
+
+  <frame_geometry name="nebula_small" parent="nebula_normal" title_scale="small" rounded_top_left="8" rounded_top_right="8" rounded_bottom_left="8" rounded_bottom_right="8">
+    <distance name="button_width" value="20"/>
+    <distance name="button_height" value="20"/>
+    <distance name="title_vertical_pad" value="4"/>
+  </frame_geometry>
+
+  <frame_geometry name="nebula_borderless" parent="nebula_normal" has_title="false" rounded_top_left="false" rounded_top_right="false" rounded_bottom_left="false" rounded_bottom_right="false">
+    <distance name="left_width" value="1"/>
+    <distance name="right_width" value="1"/>
+    <distance name="bottom_height" value="1"/>
+  </frame_geometry>
+
+  <!-- ===== 背景绘制 ===== -->
+
+  <draw_ops name="nebula_entire_focused">
+    <rectangle color="C:nebula_panel" x="0" y="0" width="width" height="height" filled="true"/>
+    <rectangle color="C:nebula_border" x="0" y="0" width="width" height="height" filled="false"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_entire_unfocused">
+    <rectangle color="C:nebula_bg_alt" x="0" y="0" width="width" height="height" filled="true"/>
+    <rectangle color="C:nebula_border" x="0" y="0" width="width" height="height" filled="false"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_titlebar_focused">
+    <rectangle color="C:nebula_panel" x="1" y="1" width="width - 2" height="30" filled="true"/>
+    <line color="C:nebula_border" x1="1" y1="30" x2="width - 1" y2="30" width="1"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_titlebar_unfocused">
+    <rectangle color="C:nebula_bg_alt" x="1" y="1" width="width - 2" height="30" filled="true"/>
+    <line color="C:nebula_border" x1="1" y1="30" x2="width - 1" y2="30" width="1"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_title_focused">
+    <title x="(0 `max` ((width - title_width) / 2))" y="(((height - title_height) / 2) `max` 0)" color="C:nebula_fg"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_title_unfocused">
+    <title x="(0 `max` ((width - title_width) / 2))" y="(((height - title_height) / 2) `max` 0)" color="C:nebula_fg_dim"/>
+  </draw_ops>
+
+  <!-- ===== 按钮底: 6px 圆角,三态区分 ===== -->
+
+  <draw_ops name="nebula_btn_f">
+    <roundrect color="C:nebula_hover" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_btn_f_hover">
+    <roundrect color="C:nebula_border" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_btn_f_active">
+    <roundrect color="C:nebula_bg_alt" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_btn_u">
+    <roundrect color="C:nebula_hover" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_btn_u_hover">
+    <roundrect color="C:nebula_border" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_btn_u_active">
+    <roundrect color="C:nebula_bg_solid" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_btn_close_hover">
+    <roundrect color="C:nebula_err" x="0" y="0" width="width" height="height" filled="true" radius="6"/>
+  </draw_ops>
+
+  <!-- ===== 按钮图标(焦点态 #e6edf3 / 非焦点 #8b949e) ===== -->
+
+  <draw_ops name="nebula_icon_close_f">
+    <line color="C:nebula_fg" x1="8" y1="8" x2="18" y2="18" width="2"/>
+    <line color="C:nebula_fg" x1="18" y1="8" x2="8" y2="18" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_close_u">
+    <line color="C:nebula_fg_dim" x1="8" y1="8" x2="18" y2="18" width="2"/>
+    <line color="C:nebula_fg_dim" x1="18" y1="8" x2="8" y2="18" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_max_f">
+    <rectangle color="C:nebula_fg" x="8" y="8" width="11" height="11" filled="false"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_max_u">
+    <rectangle color="C:nebula_fg_dim" x="8" y="8" width="11" height="11" filled="false"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_unmax_f">
+    <rectangle color="C:nebula_fg" x="10" y="6" width="10" height="10" filled="false"/>
+    <rectangle color="C:nebula_panel" x="10" y="6" width="10" height="4" filled="true"/>
+    <rectangle color="C:nebula_fg" x="6" y="10" width="10" height="10" filled="false"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_unmax_u">
+    <rectangle color="C:nebula_fg_dim" x="10" y="6" width="10" height="10" filled="false"/>
+    <rectangle color="C:nebula_bg_alt" x="10" y="6" width="10" height="4" filled="true"/>
+    <rectangle color="C:nebula_fg_dim" x="6" y="10" width="10" height="10" filled="false"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_min_f">
+    <line color="C:nebula_fg" x1="8" y1="17" x2="18" y2="17" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_min_u">
+    <line color="C:nebula_fg_dim" x1="8" y1="17" x2="18" y2="17" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_menu_f">
+    <line color="C:nebula_fg" x1="8" y1="9" x2="18" y2="9" width="2"/>
+    <line color="C:nebula_fg" x1="8" y1="13" x2="18" y2="13" width="2"/>
+    <line color="C:nebula_fg" x1="8" y1="17" x2="18" y2="17" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_menu_u">
+    <line color="C:nebula_fg_dim" x1="8" y1="9" x2="18" y2="9" width="2"/>
+    <line color="C:nebula_fg_dim" x1="8" y1="13" x2="18" y2="13" width="2"/>
+    <line color="C:nebula_fg_dim" x1="8" y1="17" x2="18" y2="17" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_shade_f">
+    <line color="C:nebula_fg" x1="8" y1="10" x2="13" y2="15" width="2"/>
+    <line color="C:nebula_fg" x1="13" y1="15" x2="18" y2="10" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_shade_u">
+    <line color="C:nebula_fg_dim" x1="8" y1="10" x2="13" y2="15" width="2"/>
+    <line color="C:nebula_fg_dim" x1="13" y1="15" x2="18" y2="10" width="2"/>
+  </draw_ops>
+
+  <!-- ===== 按钮组合: 底 + 图标 ===== -->
+
+  <draw_ops name="nebula_close_f">
+    <include draw_ops="nebula_btn_f"/>
+    <include draw_ops="nebula_icon_close_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_icon_close_dark">
+    <line color="C:nebula_bg_solid" x1="8" y1="8" x2="18" y2="18" width="2"/>
+    <line color="C:nebula_bg_solid" x1="18" y1="8" x2="8" y2="18" width="2"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_close_f_hover">
+    <include draw_ops="nebula_btn_close_hover"/>
+    <include draw_ops="nebula_icon_close_dark"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_close_f_active">
+    <include draw_ops="nebula_btn_f_active"/>
+    <include draw_ops="nebula_icon_close_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_close_u">
+    <include draw_ops="nebula_btn_u"/>
+    <include draw_ops="nebula_icon_close_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_close_u_hover">
+    <include draw_ops="nebula_btn_close_hover"/>
+    <include draw_ops="nebula_icon_close_dark"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_close_u_active">
+    <include draw_ops="nebula_btn_u_active"/>
+    <include draw_ops="nebula_icon_close_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_max_f">
+    <include draw_ops="nebula_btn_f"/>
+    <include draw_ops="nebula_icon_max_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_max_f_hover">
+    <include draw_ops="nebula_btn_f_hover"/>
+    <include draw_ops="nebula_icon_max_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_max_f_active">
+    <include draw_ops="nebula_btn_f_active"/>
+    <include draw_ops="nebula_icon_max_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_unmax_f">
+    <include draw_ops="nebula_btn_f"/>
+    <include draw_ops="nebula_icon_unmax_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_unmax_f_hover">
+    <include draw_ops="nebula_btn_f_hover"/>
+    <include draw_ops="nebula_icon_unmax_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_unmax_f_active">
+    <include draw_ops="nebula_btn_f_active"/>
+    <include draw_ops="nebula_icon_unmax_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_max_u">
+    <include draw_ops="nebula_btn_u"/>
+    <include draw_ops="nebula_icon_max_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_max_u_hover">
+    <include draw_ops="nebula_btn_u_hover"/>
+    <include draw_ops="nebula_icon_max_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_max_u_active">
+    <include draw_ops="nebula_btn_u_active"/>
+    <include draw_ops="nebula_icon_max_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_unmax_u">
+    <include draw_ops="nebula_btn_u"/>
+    <include draw_ops="nebula_icon_unmax_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_unmax_u_hover">
+    <include draw_ops="nebula_btn_u_hover"/>
+    <include draw_ops="nebula_icon_unmax_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_unmax_u_active">
+    <include draw_ops="nebula_btn_u_active"/>
+    <include draw_ops="nebula_icon_unmax_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_min_f">
+    <include draw_ops="nebula_btn_f"/>
+    <include draw_ops="nebula_icon_min_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_min_f_hover">
+    <include draw_ops="nebula_btn_f_hover"/>
+    <include draw_ops="nebula_icon_min_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_min_f_active">
+    <include draw_ops="nebula_btn_f_active"/>
+    <include draw_ops="nebula_icon_min_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_min_u">
+    <include draw_ops="nebula_btn_u"/>
+    <include draw_ops="nebula_icon_min_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_min_u_hover">
+    <include draw_ops="nebula_btn_u_hover"/>
+    <include draw_ops="nebula_icon_min_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_min_u_active">
+    <include draw_ops="nebula_btn_u_active"/>
+    <include draw_ops="nebula_icon_min_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_menu_f">
+    <include draw_ops="nebula_btn_f"/>
+    <include draw_ops="nebula_icon_menu_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_menu_f_hover">
+    <include draw_ops="nebula_btn_f_hover"/>
+    <include draw_ops="nebula_icon_menu_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_menu_f_active">
+    <include draw_ops="nebula_btn_f_active"/>
+    <include draw_ops="nebula_icon_menu_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_menu_u">
+    <include draw_ops="nebula_btn_u"/>
+    <include draw_ops="nebula_icon_menu_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_menu_u_hover">
+    <include draw_ops="nebula_btn_u_hover"/>
+    <include draw_ops="nebula_icon_menu_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_menu_u_active">
+    <include draw_ops="nebula_btn_u_active"/>
+    <include draw_ops="nebula_icon_menu_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_shade_f">
+    <include draw_ops="nebula_btn_f"/>
+    <include draw_ops="nebula_icon_shade_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_shade_f_hover">
+    <include draw_ops="nebula_btn_f_hover"/>
+    <include draw_ops="nebula_icon_shade_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_shade_f_active">
+    <include draw_ops="nebula_btn_f_active"/>
+    <include draw_ops="nebula_icon_shade_f"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_shade_u">
+    <include draw_ops="nebula_btn_u"/>
+    <include draw_ops="nebula_icon_shade_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_shade_u_hover">
+    <include draw_ops="nebula_btn_u_hover"/>
+    <include draw_ops="nebula_icon_shade_u"/>
+  </draw_ops>
+
+  <draw_ops name="nebula_shade_u_active">
+    <include draw_ops="nebula_btn_u_active"/>
+    <include draw_ops="nebula_icon_shade_u"/>
+  </draw_ops>
+
+  <!-- ===== 框架样式: 焦点 / 非焦点可辨识 ===== -->
+
+  <frame_style name="nebula_focused" geometry="nebula_normal">
+    <piece position="entire_background" draw_ops="nebula_entire_focused"/>
+    <piece position="titlebar" draw_ops="nebula_titlebar_focused"/>
+    <piece position="title" draw_ops="nebula_title_focused"/>
+    <button function="close" state="normal" draw_ops="nebula_close_f"/>
+    <button function="close" state="prelight" draw_ops="nebula_close_f_hover"/>
+    <button function="close" state="pressed" draw_ops="nebula_close_f_active"/>
+    <button function="maximize" state="normal" draw_ops="nebula_max_f"/>
+    <button function="maximize" state="prelight" draw_ops="nebula_max_f_hover"/>
+    <button function="maximize" state="pressed" draw_ops="nebula_max_f_active"/>
+    <button function="maximize" state="maximized" draw_ops="nebula_unmax_f"/>
+    <button function="maximize" state="maximized_prelight" draw_ops="nebula_unmax_f_hover"/>
+    <button function="maximize" state="maximized_pressed" draw_ops="nebula_unmax_f_active"/>
+    <button function="minimize" state="normal" draw_ops="nebula_min_f"/>
+    <button function="minimize" state="prelight" draw_ops="nebula_min_f_hover"/>
+    <button function="minimize" state="pressed" draw_ops="nebula_min_f_active"/>
+    <button function="menu" state="normal" draw_ops="nebula_menu_f"/>
+    <button function="menu" state="prelight" draw_ops="nebula_menu_f_hover"/>
+    <button function="menu" state="pressed" draw_ops="nebula_menu_f_active"/>
+    <button function="shade" state="normal" draw_ops="nebula_shade_f"/>
+    <button function="shade" state="prelight" draw_ops="nebula_shade_f_hover"/>
+    <button function="shade" state="pressed" draw_ops="nebula_shade_f_active"/>
+    <button function="shade" state="shaded" draw_ops="nebula_shade_f"/>
+    <button function="shade" state="shaded_prelight" draw_ops="nebula_shade_f_hover"/>
+    <button function="shade" state="shaded_pressed" draw_ops="nebula_shade_f_active"/>
+  </frame_style>
+
+  <frame_style name="nebula_unfocused" geometry="nebula_normal">
+    <piece position="entire_background" draw_ops="nebula_entire_unfocused"/>
+    <piece position="titlebar" draw_ops="nebula_titlebar_unfocused"/>
+    <piece position="title" draw_ops="nebula_title_unfocused"/>
+    <button function="close" state="normal" draw_ops="nebula_close_u"/>
+    <button function="close" state="prelight" draw_ops="nebula_close_u_hover"/>
+    <button function="close" state="pressed" draw_ops="nebula_close_u_active"/>
+    <button function="maximize" state="normal" draw_ops="nebula_max_u"/>
+    <button function="maximize" state="prelight" draw_ops="nebula_max_u_hover"/>
+    <button function="maximize" state="pressed" draw_ops="nebula_max_u_active"/>
+    <button function="maximize" state="maximized" draw_ops="nebula_unmax_u"/>
+    <button function="maximize" state="maximized_prelight" draw_ops="nebula_unmax_u_hover"/>
+    <button function="maximize" state="maximized_pressed" draw_ops="nebula_unmax_u_active"/>
+    <button function="minimize" state="normal" draw_ops="nebula_min_u"/>
+    <button function="minimize" state="prelight" draw_ops="nebula_min_u_hover"/>
+    <button function="minimize" state="pressed" draw_ops="nebula_min_u_active"/>
+    <button function="menu" state="normal" draw_ops="nebula_menu_u"/>
+    <button function="menu" state="prelight" draw_ops="nebula_menu_u_hover"/>
+    <button function="menu" state="pressed" draw_ops="nebula_menu_u_active"/>
+    <button function="shade" state="normal" draw_ops="nebula_shade_u"/>
+    <button function="shade" state="prelight" draw_ops="nebula_shade_u_hover"/>
+    <button function="shade" state="pressed" draw_ops="nebula_shade_u_active"/>
+    <button function="shade" state="shaded" draw_ops="nebula_shade_u"/>
+    <button function="shade" state="shaded_prelight" draw_ops="nebula_shade_u_hover"/>
+    <button function="shade" state="shaded_pressed" draw_ops="nebula_shade_u_active"/>
+  </frame_style>
+
+  <frame_style name="nebula_focused_max" geometry="nebula_max">
+    <piece position="entire_background" draw_ops="nebula_entire_focused"/>
+    <piece position="titlebar" draw_ops="nebula_titlebar_focused"/>
+    <piece position="title" draw_ops="nebula_title_focused"/>
+    <button function="close" state="normal" draw_ops="nebula_close_f"/>
+    <button function="close" state="prelight" draw_ops="nebula_close_f_hover"/>
+    <button function="close" state="pressed" draw_ops="nebula_close_f_active"/>
+    <button function="maximize" state="maximized" draw_ops="nebula_unmax_f"/>
+    <button function="maximize" state="maximized_prelight" draw_ops="nebula_unmax_f_hover"/>
+    <button function="maximize" state="maximized_pressed" draw_ops="nebula_unmax_f_active"/>
+    <button function="minimize" state="normal" draw_ops="nebula_min_f"/>
+    <button function="minimize" state="prelight" draw_ops="nebula_min_f_hover"/>
+    <button function="minimize" state="pressed" draw_ops="nebula_min_f_active"/>
+    <button function="menu" state="normal" draw_ops="nebula_menu_f"/>
+    <button function="menu" state="prelight" draw_ops="nebula_menu_f_hover"/>
+    <button function="menu" state="pressed" draw_ops="nebula_menu_f_active"/>
+  </frame_style>
+
+  <frame_style name="nebula_unfocused_max" geometry="nebula_max">
+    <piece position="entire_background" draw_ops="nebula_entire_unfocused"/>
+    <piece position="titlebar" draw_ops="nebula_titlebar_unfocused"/>
+    <piece position="title" draw_ops="nebula_title_unfocused"/>
+    <button function="close" state="normal" draw_ops="nebula_close_u"/>
+    <button function="close" state="prelight" draw_ops="nebula_close_u_hover"/>
+    <button function="close" state="pressed" draw_ops="nebula_close_u_active"/>
+    <button function="maximize" state="maximized" draw_ops="nebula_unmax_u"/>
+    <button function="maximize" state="maximized_prelight" draw_ops="nebula_unmax_u_hover"/>
+    <button function="maximize" state="maximized_pressed" draw_ops="nebula_unmax_u_active"/>
+    <button function="minimize" state="normal" draw_ops="nebula_min_u"/>
+    <button function="minimize" state="prelight" draw_ops="nebula_min_u_hover"/>
+    <button function="minimize" state="pressed" draw_ops="nebula_min_u_active"/>
+    <button function="menu" state="normal" draw_ops="nebula_menu_u"/>
+    <button function="menu" state="prelight" draw_ops="nebula_menu_u_hover"/>
+    <button function="menu" state="pressed" draw_ops="nebula_menu_u_active"/>
+  </frame_style>
+
+  <frame_style name="nebula_utility_focused" geometry="nebula_small">
+    <piece position="entire_background" draw_ops="nebula_entire_focused"/>
+    <piece position="titlebar" draw_ops="nebula_titlebar_focused"/>
+    <piece position="title" draw_ops="nebula_title_focused"/>
+    <button function="close" state="normal" draw_ops="nebula_close_f"/>
+    <button function="close" state="prelight" draw_ops="nebula_close_f_hover"/>
+    <button function="close" state="pressed" draw_ops="nebula_close_f_active"/>
+  </frame_style>
+
+  <frame_style name="nebula_utility_unfocused" geometry="nebula_small">
+    <piece position="entire_background" draw_ops="nebula_entire_unfocused"/>
+    <piece position="titlebar" draw_ops="nebula_titlebar_unfocused"/>
+    <piece position="title" draw_ops="nebula_title_unfocused"/>
+    <button function="close" state="normal" draw_ops="nebula_close_u"/>
+    <button function="close" state="prelight" draw_ops="nebula_close_u_hover"/>
+    <button function="close" state="pressed" draw_ops="nebula_close_u_active"/>
+  </frame_style>
+
+  <frame_style name="nebula_border" geometry="nebula_borderless">
+    <piece position="entire_background" draw_ops="nebula_entire_focused"/>
+  </frame_style>
+
+  <!-- ===== 样式集合 ===== -->
+
+  <frame_style_set name="nebula">
+    <frame focus="yes" state="normal" resize="both" style="nebula_focused"/>
+    <frame focus="no" state="normal" resize="both" style="nebula_unfocused"/>
+    <frame focus="yes" state="dialog" resize="both" style="nebula_focused"/>
+    <frame focus="no" state="dialog" resize="both" style="nebula_unfocused"/>
+    <frame focus="yes" state="modal_dialog" resize="both" style="nebula_focused"/>
+    <frame focus="no" state="modal_dialog" resize="both" style="nebula_unfocused"/>
+    <frame focus="yes" state="maximized" resize="both" style="nebula_focused_max"/>
+    <frame focus="no" state="maximized" resize="both" style="nebula_unfocused_max"/>
+    <frame focus="yes" state="shaded" resize="both" style="nebula_focused"/>
+    <frame focus="no" state="shaded" resize="both" style="nebula_unfocused"/>
+    <frame focus="yes" state="maximized_and_shaded" resize="both" style="nebula_focused_max"/>
+    <frame focus="no" state="maximized_and_shaded" resize="both" style="nebula_unfocused_max"/>
+    <frame focus="yes" state="fullscreen" resize="both" style="nebula_focused_max"/>
+    <frame focus="no" state="fullscreen" resize="both" style="nebula_unfocused_max"/>
+    <frame focus="yes" state="tiled_left" resize="both" style="nebula_focused_max"/>
+    <frame focus="no" state="tiled_left" resize="both" style="nebula_unfocused_max"/>
+    <frame focus="yes" state="tiled_right" resize="both" style="nebula_focused_max"/>
+    <frame focus="no" state="tiled_right" resize="both" style="nebula_unfocused_max"/>
+  </frame_style_set>
+
+  <frame_style_set name="nebula_utility">
+    <frame focus="yes" state="normal" resize="both" style="nebula_utility_focused"/>
+    <frame focus="no" state="normal" resize="both" style="nebula_utility_unfocused"/>
+    <frame focus="yes" state="dialog" resize="both" style="nebula_utility_focused"/>
+    <frame focus="no" state="dialog" resize="both" style="nebula_utility_unfocused"/>
+    <frame focus="yes" state="maximized" resize="both" style="nebula_focused_max"/>
+    <frame focus="no" state="maximized" resize="both" style="nebula_unfocused_max"/>
+  </frame_style_set>
+
+  <frame_style_set name="nebula_border">
+    <frame focus="yes" state="normal" resize="both" style="nebula_border"/>
+    <frame focus="no" state="normal" resize="both" style="nebula_border"/>
+  </frame_style_set>
+
+  <!-- ===== 窗口类型映射 ===== -->
+
+  <window type="normal" style_set="nebula"/>
+  <window type="dialog" style_set="nebula"/>
+  <window type="modal_dialog" style_set="nebula"/>
+  <window type="utility" style_set="nebula_utility"/>
+  <window type="toolbar" style_set="nebula_utility"/>
+  <window type="menu" style_set="nebula_border"/>
+  <window type="border" style_set="nebula_border"/>
+  <window type="attached" style_set="nebula"/>
+</metacity_theme>

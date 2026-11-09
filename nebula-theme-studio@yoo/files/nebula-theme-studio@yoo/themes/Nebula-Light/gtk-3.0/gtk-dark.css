@@ -1,0 +1,5 @@
+/* Nebula-Light GTK3 变体: 内容与 gtk.css 同步 */
+/* 浅色主题不区分明暗变体 —— 此文件存在的意义是拦住"应用强制深色"
+   (如 Firefox / libadwaita 的 prefer-dark) 时回落到 Adwaita-dark,
+   保证任何情况下都拿到 Nebula-Light 的浅色观感 */
+@import url("gtk.css");

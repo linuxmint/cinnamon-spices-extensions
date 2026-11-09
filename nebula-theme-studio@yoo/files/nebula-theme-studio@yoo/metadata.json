@@ -1,0 +1,7 @@
+{
+    "uuid": "nebula-theme-studio@yoo",
+    "name": "Nebula Theme Studio",
+    "description": "Nebula Theme Studio: automatically installs the bundled Nebula themes and gives you live control over opacity, accent color, corner radius, font size and more; builds and applies a custom theme in one click; supports resetting and saving/loading presets.",
+    "version": "1.0.3",
+    "cinnamon-version": ["6.0", "6.2", "6.4", "6.6"]
+}

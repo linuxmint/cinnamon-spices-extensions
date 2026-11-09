@@ -1,0 +1,370 @@
+# English translation for Nebula Theme Studio.
+# 由 tools/make-pot.js 与本文件合并维护；新增条目后重跑 gjs tools/make-pot.js。
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nebula-theme-studio@yoo\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2026-10-23 13:30\n"
+"PO-Revision-Date: 2026-10-11 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. metadata.json->name
+msgid "Nebula Theme Studio"
+msgstr "Nebula Theme Studio"
+
+#. metadata.json->description
+msgid "Nebula Theme Studio: automatically installs the bundled Nebula themes and gives you live control over opacity, accent color, corner radius, font size and more; builds and applies a custom theme in one click; supports resetting and saving/loading presets."
+msgstr "Nebula Theme Studio: automatically installs the bundled Nebula themes and gives you live control over opacity, accent color, corner radius, font size and more; builds and applies a custom theme in one click; supports resetting and saving/loading presets."
+
+#. settings-schema.json->variant->description
+msgid "主题变体"
+msgstr "Theme variant"
+
+#. settings-schema.json->variant->tooltip
+msgid "选择要调整哪一套主题。生成结果写入 ~/.themes/Nebula-Dark-Studio 或 ~/.themes/Nebula-Light-Studio"
+msgstr "Choose which theme to adjust. The result is written to ~/.themes/Nebula-Dark-Studio or ~/.themes/Nebula-Light-Studio"
+
+#. settings-schema.json->variant->options->Nebula-Dark（深色）
+msgid "Nebula-Dark（深色）"
+msgstr "Nebula-Dark (dark)"
+
+#. settings-schema.json->variant->options->Nebula-Light（浅色）
+msgid "Nebula-Light（浅色）"
+msgstr "Nebula-Light (light)"
+
+#. settings-schema.json->terminal-palette->description
+msgid "终端配色（ANSI 16 色）"
+msgstr "Terminal palette (ANSI 16 colors)"
+
+#. settings-schema.json->terminal-palette->tooltip
+msgid "写到 gnome-terminal 的全部配置档案。只改 ANSI 16 色，终端的前景色/背景色仍跟随 GTK 主题，所以半透明终端的搭配不受影响。已打开的终端窗口不会变色，需要新开一个。"
+msgstr "Written to every gnome-terminal profile. Only the 16 ANSI colors change; the terminal's foreground and background still follow the GTK theme, so a translucent terminal keeps working as before. Already-open terminal windows won't change color - open a new one."
+
+#. settings-schema.json->terminal-palette->options->跟随系统（不干预）
+msgid "跟随系统（不干预）"
+msgstr "Follow the system (no changes)"
+
+#. settings-schema.json->terminal-palette->options->Nebula 深色
+msgid "Nebula 深色"
+msgstr "Nebula dark"
+
+#. settings-schema.json->terminal-palette->options->Nebula 浅色
+msgid "Nebula 浅色"
+msgstr "Nebula light"
+
+#. settings-schema.json->terminal-palette->options->中性通用
+msgid "中性通用"
+msgstr "Neutral"
+
+#. settings-schema.json->terminal-opacity->description
+msgid "终端输入区不透明度"
+msgstr "Terminal input area opacity"
+
+#. settings-schema.json->terminal-opacity->tooltip
+msgid "100% = 强制完全不透明。滑杆顶到头会真的把终端输入区写成不透明，而不是「恢复原样」—— 想回到你原本的配置，用维护里的「恢复原始主题」。只改输入区背景，不碰前景色、字体、光标。新开的终端窗口才能看到。"
+msgstr "100% forces a fully opaque terminal input area. Pushing the slider to the top actually writes an opaque background instead of \"restoring the original\" - to get your own settings back, use \"Restore original theme\" under Maintenance. Only the input area background is touched; foreground color, font and cursor are left alone. Open a new terminal window to see it."
+
+#. settings-schema.json->auto-apply->description
+msgid "参数变化后自动重新生成并应用"
+msgstr "Rebuild and apply automatically when parameters change"
+
+#. settings-schema.json->auto-apply->tooltip
+msgid "关闭时需要手动点击「生成并应用」。打开后拖动滑块会在停顿约 0.35 秒后自动应用。"
+msgstr "When off you have to click \"Build and apply\" yourself. When on, dragging a slider applies after a pause of about 0.35 s."
+
+#. settings-schema.json->apply-now->description
+msgid "生成并应用"
+msgstr "Build and apply"
+
+#. settings-schema.json->panel-opacity->description
+msgid "面板不透明度"
+msgstr "Panel opacity"
+
+#. settings-schema.json->panel-opacity->tooltip
+msgid "顶栏/底栏/侧栏，以及 GTK 应用的标题栏、工具栏、菜单栏"
+msgstr "Top bar, bottom bar and side bars, plus title bars, toolbars and menu bars in GTK apps"
+
+#. settings-schema.json->menu-opacity->description
+msgid "菜单 / 弹出层不透明度"
+msgstr "Menu / popup opacity"
+
+#. settings-schema.json->menu-opacity->tooltip
+msgid "开始菜单、右键菜单、通知、日历、OSD、提示气泡"
+msgstr "Mint menu, context menus, notifications, calendar, OSD and tooltips"
+
+#. settings-schema.json->window-opacity->description
+msgid "窗口底色不透明度"
+msgstr "Window background opacity"
+
+#. settings-schema.json->window-opacity->tooltip
+msgid "GTK 窗口主背景、概览遮罩、对话框底"
+msgstr "GTK window backgrounds, the overview backdrop and dialog backgrounds"
+
+#. settings-schema.json->hover-opacity->description
+msgid "悬停 / 按下态不透明度"
+msgstr "Hover / active state opacity"
+
+#. settings-schema.json->hover-opacity->tooltip
+msgid "鼠标悬停、按下、选中项的高亮底色"
+msgstr "Highlight color under the pointer, pressed items and selected entries"
+
+#. settings-schema.json->selection-alpha->description
+msgid "强调淡底浓度"
+msgstr "Soft accent fill opacity"
+
+#. settings-schema.json->selection-alpha->tooltip
+msgid "菜单选中行、启动器选中项等「淡强调底」的浓淡。切换变体时会自动改为该变体的默认值（深色 15% / 浅色 20%）。不影响强调描边与焦点环。"
+msgstr "How strong the \"soft accent\" fill is, e.g. on selected menu rows or launcher icons. Switching variants also switches this to that variant's default (15% dark / 20% light). The accent outline and focus ring are not affected."
+
+#. settings-schema.json->bg-color->description
+msgid "主背景色"
+msgstr "Main background color"
+
+#. settings-schema.json->bg-color->tooltip
+msgid "窗口、输入框、菜单内容的底色。只替换背景类位置：按钮上的文字、白色高光与焦点环等前景语义保持原样。底色的浓淡仍由「窗口底色不透明度」控制。"
+msgstr "The base color of windows, entries and menu content. Only background-type spots are replaced: foreground semantics such as button text, white highlights and focus rings keep their original color. The translucency of this base color is still controlled by \"Window background opacity\"."
+
+#. settings-schema.json->panel-color->description
+msgid "面板背景色"
+msgstr "Panel background color"
+
+#. settings-schema.json->panel-color->tooltip
+msgid "Cinnamon 面板、GTK 标题栏/工具栏/菜单栏的底色。底色的浓淡仍由「面板不透明度」控制。"
+msgstr "The base color of the Cinnamon panel and GTK headerbars/toolbars/menubars. Its translucency is still controlled by \"Panel opacity\"."
+
+#. settings-schema.json->menu-color->description
+msgid "菜单背景色"
+msgstr "Menu background color"
+
+#. settings-schema.json->menu-color->tooltip
+msgid "开始菜单、右键弹窗、提示气泡等浮层的底色。底色的浓淡仍由「菜单不透明度」控制。"
+msgstr "The base color of floating layers such as the start menu, right-click popups and tooltips. Its translucency is still controlled by \"Menu opacity\"."
+
+#. settings-schema.json->accent-color->description
+msgid "强调色"
+msgstr "Accent color"
+
+#. settings-schema.json->accent-color->tooltip
+msgid "选中、焦点环、进度条、开关、建议按钮"
+msgstr "Selection, focus ring, progress bars, switches and suggested buttons"
+
+#. settings-schema.json->border-color->description
+msgid "边框色"
+msgstr "Border color"
+
+#. settings-schema.json->border-color->tooltip
+msgid "控件描边、分隔线、滚动条槽。透明度保持主题原样。"
+msgstr "Control outlines, separators and scrollbar troughs. Opacity is left as the theme has it."
+
+#. settings-schema.json->fg-color->description
+msgid "主文字色"
+msgstr "Primary text color"
+
+#. settings-schema.json->fg-dim-color->description
+msgid "次级文字色"
+msgstr "Secondary text color"
+
+#. settings-schema.json->fg-dim-color->tooltip
+msgid "禁用态、说明文字、未聚焦窗口标题"
+msgstr "Disabled state, hint text and unfocused window titles"
+
+#. settings-schema.json->danger-color->description
+msgid "危险色"
+msgstr "Danger color"
+
+#. settings-schema.json->danger-color->tooltip
+msgid "删除、关机、破坏性操作按钮"
+msgstr "Delete, shut down and other destructive actions"
+
+#. settings-schema.json->warn-color->description
+msgid "警告色"
+msgstr "Warning color"
+
+#. settings-schema.json->warn-color->tooltip
+msgid "提示条、结束会话确认"
+msgstr "Info bars and end-session confirmation"
+
+#. settings-schema.json->success-color->description
+msgid "成功色"
+msgstr "Success color"
+
+#. settings-schema.json->window-radius->description
+msgid "窗口 / 菜单圆角（px）"
+msgstr "Window / menu corner radius (px)"
+
+#. settings-schema.json->window-radius->tooltip
+msgid "菜单、弹出层、提示、OSD、GTK 窗口与装饰的圆角。标题栏自身的「上圆下方」形状保持不变。"
+msgstr "Corner radius of menus, popups, tooltips, OSD, GTK windows and decorations. The title bar's own \"rounded top, square bottom\" shape is preserved."
+
+#. settings-schema.json->control-radius->description
+msgid "控件圆角（px）"
+msgstr "Control corner radius (px)"
+
+#. settings-schema.json->control-radius->tooltip
+msgid "按钮、输入框、菜单项、面板按钮等小控件"
+msgstr "Small controls such as buttons, entry fields, menu items and panel buttons"
+
+#. settings-schema.json->base-font-size->description
+msgid "Cinnamon 基准字号（pt）"
+msgstr "Cinnamon base font size (pt)"
+
+#. settings-schema.json->base-font-size->tooltip
+msgid "以 10pt 为基准等比缩放 Cinnamon 面板与菜单里的所有字号。GTK 应用字号由应用自身/系统字体设置决定，不受影响。"
+msgstr "All font sizes in the Cinnamon panel and menus are scaled proportionally from a 10 pt baseline. Font sizes in GTK apps are decided by the app and the system font settings, and are not affected."
+
+#. settings-schema.json->preset-name->description
+msgid "方案名"
+msgstr "Preset name"
+
+#. settings-schema.json->preset-name->tooltip
+msgid "保存 / 载入 / 删除都以此处的名称为准，支持中文"
+msgstr "Saving, loading and deleting all use this name; Chinese characters are supported"
+
+#. settings-schema.json->save-preset->description
+msgid "保存为方案（生成可切换的主题）"
+msgstr "Save as preset (generates a switchable theme)"
+
+#. settings-schema.json->load-preset->description
+msgid "载入方案并应用"
+msgstr "Load preset and apply"
+
+#. settings-schema.json->delete-preset->description
+msgid "删除方案及其主题目录"
+msgstr "Delete preset and its theme directory"
+
+#. settings-schema.json->open-presets-folder->description
+msgid "打开方案目录"
+msgstr "Open preset folder"
+
+#. settings-schema.json->reset-theme->description
+msgid "重置本主题为默认值"
+msgstr "Reset this theme to defaults"
+
+#. settings-schema.json->restore-original->description
+msgid "恢复原始主题并删除生成结果"
+msgstr "Restore the original theme and delete generated output"
+
+#. settings-schema.json->uninstall-themes->description
+msgid "卸载扩展安装的两个主题"
+msgstr "Uninstall the two themes installed by the extension"
+
+#. settings-schema.json->about-flow->description
+msgid "启用扩展会把两个源主题装进 ~/.themes（已存在则跳过，不覆盖你自己的改动）。「生成并应用」产出工作主题，「保存为方案」产出独立存档主题，两者都与普通主题并列，可随时选用与删除；源主题始终不被修改。"
+msgstr "Enabling the extension installs Nebula-Dark / Nebula-Light into ~/.themes (skipped if they already exist, so your own edits are never overwritten). \"Build and apply\" produces the working theme Nebula-<variant>-Studio; \"Save as preset\" produces an independently named archived theme Nebula-<variant>-<preset name>, which sits alongside normal themes on the Themes page and can be picked and switched at any time. Both kinds of output can be deleted at any time, and the source themes are never modified."
+
+#. settings-schema.json->note-variant->description
+msgid "两个变体的参数各自记忆：切走时自动存档，切回时整套恢复。首次切到某变体时，仍是默认值的颜色会迁移到该变体的默认色。"
+msgstr "Each variant remembers its own parameters: they are saved when you switch away and restored in full when you switch back. On the first switch to a variant, colors still at their defaults migrate to that variant's defaults."
+
+#. settings-schema.json->note-terminal->description
+msgid "终端配色选「跟随系统」完全不干预，被覆盖过则切回即还原。输入区不透明度相反：顶到 100% 会强制写成完全不透明，接管前的原值记在状态文件里，可用「恢复原始主题」还回去。两项都只在「生成并应用」时写入，新开终端窗口才看得到。"
+msgstr "\"Follow the system\" means the terminal palette is left completely alone; if this extension had overwritten it earlier, switching back restores the original values. Terminal input area opacity works the other way round: 100% force-writes a fully opaque background, and the values from before the extension took over are saved to the state file first, so \"Restore original theme\" can put them back. Both are only written when you click \"Build and apply\", and you see the result in a newly opened terminal window."
+
+#. settings-schema.json->note-working->description
+msgid "工作主题 Nebula-<变体>-Studio 是试参数的地方，下次生成就覆盖；「保存为方案」才冻结出独立命名的存档主题，方案存于 ~/.config/nebula-theme-studio/presets/，支持中文名，各方案互不覆盖。方案名留空时会提示已有方案列表。"
+msgstr "The working theme Nebula-<variant>-Studio is for trying parameters and is overwritten by the next build; \"Save as preset\" is what freezes an independently named archived theme. Presets live in ~/.config/nebula-theme-studio/presets/, support Chinese names, and never overwrite each other. Leaving the name empty shows the list of existing presets."
+
+#. settings-schema.json->note-refresh->description
+msgid "面板与菜单由 Cinnamon 即时重载；已打开的 GTK 应用通过一次中转切换强制刷新，个别应用仍会缓存，重开即可。"
+msgstr "The panel and menu reload instantly through Cinnamon; already-open GTK apps are force-refreshed by a transit theme switch. A few still cache, so reopen them."
+
+#. settings-schema.json->open-readme->description
+msgid "打开 README 文档"
+msgstr "Open the README document"
+
+#. settings-schema.json->layout->p-base->title
+msgid "基础"
+msgstr "Basic"
+
+#. settings-schema.json->layout->s-variant->title
+msgid "主题与终端"
+msgstr "Theme and terminal"
+
+#. settings-schema.json->layout->s-apply->title
+msgid "工作主题"
+msgstr "Working theme"
+
+#. settings-schema.json->layout->p-opacity->title
+msgid "透明度"
+msgstr "Opacity"
+
+#. settings-schema.json->layout->s-surface-alpha->title
+msgid "界面底色"
+msgstr "Surface colors"
+
+#. settings-schema.json->layout->s-state-alpha->title
+msgid "悬停与选中"
+msgstr "Hover and selection"
+
+#. settings-schema.json->layout->p-color->title
+msgid "颜色"
+msgstr "Colors"
+
+#. settings-schema.json->layout->s-bg->title
+msgid "背景"
+msgstr "Background"
+
+#. settings-schema.json->layout->s-accent->title
+msgid "强调与边框"
+msgstr "Accent and borders"
+
+#. settings-schema.json->layout->s-text->title
+msgid "文字"
+msgstr "Text"
+
+#. settings-schema.json->layout->s-semantic->title
+msgid "语义色"
+msgstr "Semantic colors"
+
+#. settings-schema.json->layout->p-shape->title
+msgid "形状与字号"
+msgstr "Shape and type"
+
+#. settings-schema.json->layout->s-radius->title
+msgid "圆角"
+msgstr "Corner radius"
+
+#. settings-schema.json->layout->s-metrics->title
+msgid "字号"
+msgstr "Font size"
+
+#. settings-schema.json->layout->p-preset->title
+msgid "方案"
+msgstr "Presets"
+
+#. settings-schema.json->layout->s-preset-io->title
+msgid "保存 / 载入"
+msgstr "Save / load"
+
+#. settings-schema.json->layout->s-preset-maint->title
+msgid "维护"
+msgstr "Maintenance"
+
+#. settings-schema.json->layout->p-maint->title
+msgid "说明"
+msgstr "About"
+
+#. settings-schema.json->layout->s-about->title
+msgid "工作方式"
+msgstr "How it works"
+
+#. settings-schema.json->layout->s-notes->title
+msgid "其他"
+msgstr "Other"
+
+#. settings-schema.json->layout->s-doc->title
+msgid "文档"
+msgstr "Docs"
+
+#~ msgid "Nebula主题工坊"
+#~ msgstr "Nebula Theme Studio"
+
+#~ msgid "Nebula 主题工坊：自动安装 Nebula-Dark / Nebula-Light，提供透明度、强调色、圆角、字号等参数的实时调整，一键生成定制主题并应用；支持重置与预设方案保存/载入。"
+#~ msgstr "Nebula theme workshop: installs Nebula-Dark / Nebula-Light automatically and gives you live control over opacity, accent color, corner radius, font size and more, then builds and applies a custom theme in one click; supports resetting and saving/loading presets."

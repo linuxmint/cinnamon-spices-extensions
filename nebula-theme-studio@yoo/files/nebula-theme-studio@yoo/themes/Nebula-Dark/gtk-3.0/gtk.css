@@ -1,0 +1,1502 @@
+/* ===== Nebula 调色板 (GTK3) ===== */
+/* 色值来源: 规格文档第 3 节色彩系统,全部以 rgba() 表达透明度 */
+
+@define-color nebula_bg             rgba(13, 17, 23, 0.85);
+@define-color nebula_bg_solid       #0d1117;
+@define-color nebula_bg_alt         rgba(22, 27, 34, 0.80);
+/* 菜单底色独立成一支:菜单与 popover 同为「弹出层」,但语义不同 ——
+   菜单是用户主动唤起的操作面(右键菜单),popover 是控件浮出的壳。
+   共用一支的话,想单独调菜单就得连 popover 一起动。 */
+@define-color nebula_menu_bg       rgba(22, 27, 34, 0.80);
+@define-color nebula_panel          rgba(28, 33, 40, 0.70);
+@define-color nebula_hover          rgba(33, 38, 45, 0.60);
+@define-color nebula_border         rgba(48, 54, 61, 0.40);
+@define-color nebula_fg             #e6edf3;
+@define-color nebula_fg_dim         #8b949e;
+@define-color nebula_accent         #58a6ff;
+@define-color nebula_accent_border  rgba(88, 166, 255, 0.80);
+@define-color nebula_float_border rgba(139, 148, 158, 0.38); /* 浮层描边:底色半透明时全靠它勾边,深色下需比 @nebula_border 更亮 */
+@define-color nebula_ok             #3fb950;
+@define-color nebula_warn           #d29922;
+@define-color nebula_err            #f85149;
+
+/* ===== 标准主题色(供自绘部件读取,实色等价) ===== */
+
+@define-color theme_fg_color              #e6edf3;
+@define-color theme_text_color            #e6edf3;
+@define-color fg_color                    #e6edf3;
+@define-color text_color                  #e6edf3;
+@define-color theme_bg_color              #0d1117;
+@define-color bg_color                    #0d1117;
+@define-color theme_base_color            #0d1117;
+@define-color base_color                  #0d1117;
+@define-color theme_selected_bg_color     #58a6ff;
+@define-color selected_bg_color           #58a6ff;
+@define-color accent_color                #58a6ff;
+@define-color theme_selected_fg_color     #0d1117;
+@define-color selected_fg_color           #0d1117;
+@define-color theme_tooltip_bg_color      #161b22;
+@define-color theme_tooltip_fg_color      #e6edf3;
+@define-color theme_tooltip_border_color  #30363d;
+@define-color insensitive_bg_color        #21262d;
+@define-color insensitive_fg_color        #8b949e;
+@define-color insensitive_base_color      #0d1117;
+@define-color theme_unfocused_fg_color    #8b949e;
+@define-color theme_unfocused_text_color  #8b949e;
+@define-color theme_unfocused_bg_color    #0d1117;
+@define-color theme_unfocused_base_color  #0d1117;
+@define-color theme_unfocused_selected_bg_color #3a5a7d;
+@define-color theme_unfocused_selected_fg_color #e6edf3;
+@define-color borders                     #30363d;
+@define-color unfocused_borders           #30363d;
+@define-color warning_color               #d29922;
+@define-color error_color                 #f85149;
+@define-color success_color               #3fb950;
+@define-color content_view_bg             #0d1117;
+@define-color wm_title                    #e6edf3;
+@define-color wm_title_unfocused          #8b949e;
+@define-color wm_bg                       #1c2128;
+
+/* ===== M2 阶段: GTK3 全量组件样式 ===== */
+
+/* ===== 基底 ===== */
+
+* {
+  outline-color: rgba(88, 166, 255, 0.35);
+  outline-style: solid;
+  outline-offset: -3px;
+  outline-width: 1px;
+}
+
+.background {
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+}
+
+window, window.background {
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+}
+
+/* 注意: decoration 节点必须保持透明(Mint-Y 亦然),
+   否则它会盖住整个窗口、与菜单底叠成双层不透明 */
+
+/* 弹出/提示窗的 window 底必须透明,否则 margin 区会被涂黑,
+   从圆角菜单四角漏出方形黑块 */
+
+window.popup, window.tooltip {
+  background-color: transparent;
+}
+
+window:backdrop, window.background:backdrop {
+  background-color: rgba(13, 17, 23, 0.85);
+  color: @nebula_fg_dim;
+}
+
+/* 外框: 无硬边框,描边与阴影都走 box-shadow(仿 Mint-Y 柔和做法);
+   各场景分别处理,避免最大化/平铺/SSD 出现垫边错位 */
+
+decoration {
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.30), 0 4px 24px rgba(0, 0, 0, 0.30);
+  margin: 10px;
+}
+
+decoration:backdrop {
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.20), 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.maximized decoration, .fullscreen decoration {
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.tiled decoration, .tiled-top decoration, .tiled-right decoration,
+.tiled-bottom decoration, .tiled-left decoration {
+  border-radius: 0;
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.30);
+  margin: 0;
+}
+
+.ssd decoration {
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.30);
+}
+
+.ssd decoration:backdrop {
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.20);
+}
+
+.ssd.maximized decoration, .ssd.maximized decoration:backdrop {
+  box-shadow: none;
+  margin: 0;
+}
+
+.csd.popup decoration {
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.30), 0 1px 4px rgba(0, 0, 0, 0.20);
+}
+
+.popup decoration {
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(48, 54, 61, 0.30), 0 1px 4px rgba(0, 0, 0, 0.20);
+}
+
+tooltip.csd decoration {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.solid-csd decoration {
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+label {
+  color: @nebula_fg;
+}
+
+label:disabled, label:backdrop {
+  color: @nebula_fg_dim;
+}
+
+label:selected, selection {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+.dim-label {
+  color: @nebula_fg_dim;
+}
+
+/* Nemo 图标视图重命名框(EelEditableLabel 自绘,通用兜底) */
+/* 参照 Mint-Y:兜底选中用实色(对比度按我方要求配深字) */
+
+.gtkstyle-fallback:selected, .gtkstyle-fallback:selected:focus {
+  background-color: #58a6ff;
+  color: #0d1117;
+}
+
+/* ===== 标题栏 ===== */
+
+headerbar, .titlebar {
+  background-color: rgba(28, 33, 40, 0.70); /* 标题栏取面板色并加深一档,保证标题可读 */
+  border-bottom: none; /* 去发丝线,靠色块分隔(用户确认) */
+  border-radius: 8px 8px 0 0;
+  min-height: 30px;
+  padding: 0; /* 背景满宽:headerbar 自身 padding 会被 CSD 收窄分配,两侧留出未绘制条 */
+  color: @nebula_fg;
+  box-shadow: inset 0 1px 0 rgba(48, 54, 61, 0.50);
+}
+
+/* 标题栏内容内缩放在子节点上做:headerbar 自身的横向 padding 在 CSD 下会
+   把标题栏分配收窄,两侧露出未绘制的透明条(深色壁纸上表现为黑缺口) */
+
+headerbar > button, headerbar > label, headerbar > entry,
+headerbar > spinbutton, headerbar > box, headerbar > menu,
+.titlebar > button, .titlebar > label, .titlebar > entry,
+.titlebar > spinbutton, .titlebar > box, .titlebar > menu {
+  margin: 0 8px;
+}
+
+/* 未聚焦标题栏用 panel 字面量(与聚焦态同色系), 不用 surface:
+   让 Nebula Theme Studio 的面板背景色通道能认领它 */
+
+headerbar:backdrop, .titlebar:backdrop {
+  background-color: rgba(28, 33, 40, 0.62);
+  color: @nebula_fg_dim;
+}
+
+/* 最大化/全屏/贴靠:标题栏圆角清零,否则顶上两角露出桌面(与 decoration 处理配套) */
+
+.maximized headerbar, .maximized .titlebar,
+.fullscreen headerbar, .fullscreen .titlebar,
+.tiled headerbar, .tiled .titlebar,
+.tiled-top headerbar, .tiled-top .titlebar,
+.tiled-bottom headerbar, .tiled-bottom .titlebar,
+.tiled-left headerbar, .tiled-left .titlebar,
+.tiled-right headerbar, .tiled-right .titlebar {
+  border-radius: 0;
+}
+
+headerbar .title, .titlebar .title {
+  color: @nebula_fg;
+  font-weight: bold;
+  padding: 0 12px;
+}
+
+headerbar .title:backdrop, .titlebar .title:backdrop {
+  color: @nebula_fg_dim;
+}
+
+headerbar .subtitle, .titlebar .subtitle {
+  color: @nebula_fg_dim;
+  font-size: smaller;
+}
+
+headerbar button, .titlebar button {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 3px 10px;
+}
+
+/* ===== 按钮 ===== */
+
+button {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid @nebula_border;
+  border-radius: 6px;
+  color: @nebula_fg;
+  padding: 5px 12px;
+}
+
+button:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+}
+
+button:active, button:checked {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+/* 页签类分段控件选中态用强调色,保证一眼可辨 */
+
+stackswitcher button:checked, headerbar stackswitcher button:checked {
+  background-color: rgba(88, 166, 255, 0.35);
+  border-color: rgba(88, 166, 255, 0.80);
+  box-shadow: inset 0 0 0 1px rgba(88, 166, 255, 0.80);
+  color: @nebula_fg;
+}
+
+button:disabled {
+  background-color: rgba(33, 38, 45, 0.30);
+  border-color: rgba(48, 54, 61, 0.20);
+  color: @nebula_fg_dim;
+}
+
+button:backdrop {
+  background-color: rgba(33, 38, 45, 0.40);
+  color: @nebula_fg_dim;
+}
+
+button.suggested-action {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-color: rgba(88, 166, 255, 0.80);
+  color: @nebula_bg_solid;
+}
+
+button.suggested-action:hover {
+  background-color: @nebula_accent;
+}
+
+button.suggested-action:active, button.suggested-action:checked {
+  background-color: rgba(88, 166, 255, 0.60);
+  color: @nebula_bg_solid;
+}
+
+button.suggested-action:disabled {
+  background-color: rgba(88, 166, 255, 0.30);
+  border-color: rgba(88, 166, 255, 0.20);
+  color: @nebula_fg_dim;
+}
+
+/* 危险操作: 柔红半透明底配浅色文字(默认 11.0 / 悬停 6.85 / 按下 5.14:1);
+   三态以透明度梯度区分,色值均取自第 3 节系统 */
+
+button.destructive-action {
+  background-color: rgba(248, 81, 73, 0.35);
+  border-color: rgba(248, 81, 73, 0.60);
+  color: @nebula_fg;
+}
+
+button.destructive-action:hover {
+  background-color: rgba(248, 81, 73, 0.55);
+  border-color: rgba(248, 81, 73, 0.80);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: @nebula_fg;
+}
+
+button.destructive-action:active, button.destructive-action:checked {
+  background-color: rgba(248, 81, 73, 0.70);
+  border-color: rgba(48, 54, 61, 0.50);
+  box-shadow: none;
+  color: @nebula_fg;
+}
+
+/* 彩色按钮的文字必须显式指定:label 规则会直接命中按钮内的 GtkLabel 节点,
+   使按钮的 color 失去继承效果(主按钮因此把深字渲染成浅字,3.08:1) */
+
+button.suggested-action label,
+button.destructive-action label {
+  color: @nebula_bg_solid;
+}
+
+button.destructive-action label,
+button.destructive-action:hover label,
+button.destructive-action:active label,
+button.destructive-action:checked label {
+  color: @nebula_fg;
+}
+
+button.suggested-action:disabled label,
+button.destructive-action:disabled label {
+  color: @nebula_fg_dim;
+}
+
+button.flat {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+button.flat:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+  border-color: @nebula_border;
+}
+
+button.flat:active, button.flat:checked {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+button.flat:disabled {
+  background-color: transparent;
+  color: @nebula_fg_dim;
+}
+
+button.link, button.link:hover, button.link:active {
+  background-color: transparent;
+  border-color: transparent;
+  color: @nebula_accent;
+}
+
+button.link:visited {
+  color: @nebula_accent;
+}
+
+.link {
+  color: @nebula_accent;
+}
+
+.link:visited {
+  color: @nebula_accent;
+}
+
+/* 标题栏窗口控制按钮 */
+
+headerbar button.titlebutton, .titlebar button.titlebutton {
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 6px;
+  color: @nebula_fg_dim;
+  padding: 3px;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+headerbar button.titlebutton:hover, .titlebar button.titlebutton:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+  color: @nebula_fg;
+}
+
+headerbar button.titlebutton:active, .titlebar button.titlebutton:active {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+headerbar button.titlebutton.close:hover, .titlebar button.titlebutton.close:hover {
+  background-color: rgba(248, 81, 73, 0.35);
+  border-color: rgba(248, 81, 73, 0.60);
+  color: @nebula_fg;
+}
+
+/* 组合按钮 */
+
+.linked > button, .linked > button:first-child, .linked > button:last-child {
+  border-radius: 6px;
+}
+
+.linked.horizontal > button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+  border-left-style: none;
+}
+
+.linked.horizontal > button:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.linked.horizontal > button:last-child {
+  border-radius: 0 6px 6px 0;
+  border-left-style: none;
+}
+
+.linked.vertical > button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+  border-top-style: none;
+}
+
+.linked.vertical > button:first-child {
+  border-radius: 6px 6px 0 0;
+}
+
+.linked.vertical > button:last-child {
+  border-radius: 0 0 6px 6px;
+  border-top-style: none;
+}
+
+/* 分段选中项恢复被吃掉的接缝边并盖住邻边,保证选中圈完整 */
+
+.linked.horizontal > button:checked:not(:first-child) {
+  border-left-style: solid;
+  margin-left: -1px;
+}
+
+.linked.vertical > button:checked:not(:first-child) {
+  border-top-style: solid;
+  margin-top: -1px;
+}
+
+/* 修复左边框裸边：接缝收边规则默认 .linked 里的按钮是贴合的，两类例外会漏——
+   1) combobox 内部盒是单按钮的 .linked（按钮既是 first 又是 last），
+      last-child 收边会删掉它的左边框、压平左角（选择框左侧裸边的根因）；
+   2) stack-switcher 页签之间有间距，非首个页签删掉左边框就是裸边。 */
+.linked.horizontal > button:first-child:last-child {
+  border-left-style: solid;
+  border-radius: 6px;
+}
+
+.linked.vertical > button:first-child:last-child {
+  border-top-style: solid;
+  border-radius: 6px;
+}
+
+.linked.horizontal.stack-switcher > button {
+  border-radius: 6px;
+}
+
+.linked.horizontal.stack-switcher > button:not(:first-child) {
+  border-left-style: solid;
+  border-radius: 6px;
+}
+
+/* ===== 输入框 ===== */
+
+entry {
+  background-color: rgba(13, 17, 23, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.50);
+  border-radius: 6px;
+  color: @nebula_fg;
+  padding: 5px 8px;
+  caret-color: @nebula_accent;
+}
+
+entry:focus {
+  border-color: rgba(88, 166, 255, 0.80);
+  /* 内侧光晕从 2px 压到 1px：原来描边 1px + 内光 2px = 3px 的强调色带，
+     看着像描边变粗去压后面的按钮。Mint-Y 只改 1px 描边颜色，什么都不加。 */
+  box-shadow: inset 0 0 0 1px rgba(88, 166, 255, 0.45);
+  /* 全局 * 规则给了 1px 外框线，条目聚焦时必须显式关掉 ——
+     否则那条线会画在输入框的外边框之外，压住后面紧挨的按钮。
+     聚焦指示只靠描边变色 + 内侧光晕就够了。 */
+  outline-style: none;
+  outline-width: 0;
+}
+
+/* 焦点环一律画在内侧:3px 外扩环会压住相邻控件(如截图工具"延迟秒数"
+   的输入框会盖住减号按钮并溢出圆角端),与 Nebula-Light 的做法一致 */
+
+.linked > entry:focus, .linked > entry:focus-within {
+  box-shadow: inset 0 0 0 1px rgba(88, 166, 255, 0.55);
+  outline-style: none;
+  outline-width: 0;
+}
+
+entry:disabled {
+  background-color: rgba(33, 38, 45, 0.30);
+  border-color: rgba(48, 54, 61, 0.20);
+  color: @nebula_fg_dim;
+}
+
+entry:backdrop {
+  background-color: rgba(13, 17, 23, 0.50);
+  color: @nebula_fg_dim;
+}
+
+entry selection, entry:selected {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+/* Nemo 图标视图重命名(EelEditableLabel 自绘,节点名 widget + entry 类):
+   widget.entry 是 Mint-Y 在生产环境验证过的命中写法,照抄;
+   实色青蓝配深字盖过单元格底 */
+
+.entry:selected,
+widget.entry:selected {
+  background-color: rgba(88, 166, 255, 0.80);
+  color: #0d1117;
+}
+
+/* Nemo 图标视图注:Nemo 用自绘 canvas 而非 GtkIconView,选中底走容器上下文,
+   失焦选中色已在色板区定义(theme_unfocused_selected_*),此处不再加无效规则 */
+
+/* Nemo 图标区选中用实色(与列表行对齐;分屏非活动窗格/菜单打开失焦时也一样可见,
+   对标 Mint-Y .nemo-inactive-pane 实色写法) */
+
+.nemo-window .nemo-window-pane iconview:selected,
+.nemo-window .nemo-window-pane iconview:selected:focus,
+.nemo-window .nemo-inactive-pane iconview:selected,
+.nemo-window .nemo-inactive-pane iconview:selected:focus,
+.nemo-window .nemo-window-pane .view:selected,
+.nemo-window .nemo-window-pane .view:selected:focus,
+.nemo-window .nemo-inactive-pane .view:selected,
+.nemo-window .nemo-inactive-pane .view:selected:focus {
+  background-color: #58a6ff;
+  color: #0d1117;
+}
+
+entry progress {
+  background-color: rgba(88, 166, 255, 0.35);
+  border-radius: 6px;
+}
+
+entry image {
+  color: @nebula_fg_dim;
+}
+
+spinbutton entry {
+  border-radius: 6px 0 0 6px;
+  border-right-style: none;
+}
+
+/* 输入框聚焦时，相邻按钮的贴边染成焦点色 —— 照抄 Mint-Y 的做法。
+   否则输入框右边是强调色、按钮左边是灰色，接缝处断色，看着像描边压了过去。 */
+spinbutton > entry:focus + button {
+  border-left-color: rgba(88, 166, 255, 0.80);
+}
+.linked > entry:focus + button {
+  border-left-color: rgba(88, 166, 255, 0.80);
+}
+
+spinbutton button {
+  border-radius: 0;
+}
+
+spinbutton button:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+/* ===== 文本视图 / 列表视图 ===== */
+
+.view, textview, textview text, iconview {
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+}
+
+.view:backdrop, textview:backdrop, iconview:backdrop {
+  background-color: rgba(13, 17, 23, 0.85);
+  color: @nebula_fg_dim;
+}
+
+.view:disabled, textview:disabled, iconview:disabled {
+  background-color: rgba(22, 27, 34, 0.70);
+  color: @nebula_fg_dim;
+}
+
+.view:selected, iconview:selected, .view:selected:focus, iconview:selected:focus {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+  border-radius: 6px;
+}
+
+textview selection, .view selection {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+/* M6 打磨: 选中行内文字强制前景色,避免 label 显式颜色覆盖选中继承 */
+
+row:selected label, row:selected image,
+.view:selected label, iconview:selected label,
+treeview.view:selected label,
+list > row:selected label, listbox > row:selected label,
+.sidebar row:selected label,
+placessidebar.sidebar row:selected label,
+.nemo-places-sidebar.frame row:selected label {
+  color: @nebula_fg;
+}
+
+/* ===== 列表框 (GtkListBox,如系统设置扩展/小程序管理列表) ===== */
+
+list, listbox {
+  border-radius: 6px;
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+}
+
+list > row, listbox > row {
+  border-radius: 6px;
+  color: @nebula_fg;
+  padding: 2px 10px;
+}
+
+list > row:hover, listbox > row:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+list > row:selected, listbox > row:selected {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+list > row:selected:hover, listbox > row:selected:hover {
+  background-color: rgba(88, 166, 255, 0.45);
+}
+
+list > row:disabled, listbox > row:disabled {
+  color: @nebula_fg_dim;
+}
+
+list separator, listbox separator {
+  background-color: @nebula_border;
+  margin: 6px 4px;
+  min-height: 1px;
+}
+
+textview border {
+  background-color: rgba(22, 27, 34, 0.80);
+}
+
+/* ===== 树形视图 ===== */
+
+treeview.view {
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+  border-left-color: @nebula_fg_dim;
+}
+
+treeview.view:selected, treeview.view:selected:focus {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+  border-radius: 0;
+}
+
+treeview.view:disabled {
+  color: @nebula_fg_dim;
+}
+
+treeview.view.separator {
+  background-color: transparent;
+  color: @nebula_border;
+  min-height: 2px;
+}
+
+treeview header button {
+  background-color: rgba(28, 33, 40, 0.70);
+  border: none;
+  border-bottom: 1px solid @nebula_border;
+  border-radius: 0;
+  color: @nebula_fg_dim;
+  padding: 5px 8px;
+}
+
+treeview header button:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  color: @nebula_fg;
+}
+
+treeview header button:active {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+treeview .progressbar {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 6px;
+}
+
+/* ===== 侧边栏 ===== */
+
+.sidebar, placessidebar.sidebar, .nemo-places-sidebar.frame {
+  background-color: rgba(22, 27, 34, 0.80);
+  color: @nebula_fg;
+}
+
+.sidebar row, placessidebar.sidebar row, .nemo-places-sidebar.frame row {
+  border-radius: 6px;
+  color: @nebula_fg;
+  min-height: 34px;
+  padding: 4px 8px;
+}
+
+.sidebar row:hover, placessidebar.sidebar row:hover, .nemo-places-sidebar.frame row:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+.sidebar row:selected, placessidebar.sidebar row:selected, .nemo-places-sidebar.frame row:selected {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+.sidebar row:selected:hover, placessidebar.sidebar row:selected:hover {
+  background-color: rgba(88, 166, 255, 0.45);
+}
+
+.sidebar row:disabled, placessidebar.sidebar row:disabled {
+  color: @nebula_fg_dim;
+}
+
+.sidebar .sidebar-icon, placessidebar.sidebar .sidebar-icon {
+  color: @nebula_fg_dim;
+  padding-right: 8px;
+}
+
+.sidebar row:selected .sidebar-icon, placessidebar.sidebar row:selected .sidebar-icon {
+  color: @nebula_accent;
+}
+
+/* ===== 笔记本 / 标签页 ===== */
+
+notebook {
+  background-color: rgba(13, 17, 23, 0.90);
+}
+
+notebook.frame {
+  border: 1px solid @nebula_border;
+  border-radius: 8px;
+}
+
+notebook header {
+  background-color: rgba(22, 27, 34, 0.80);
+  border-bottom: 1px solid @nebula_border;
+  padding: 4px;
+}
+
+notebook header.top tabs {
+  margin-bottom: -1px;
+}
+
+notebook tab {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: @nebula_fg_dim;
+  padding: 5px 12px;
+  margin: 2px;
+}
+
+notebook tab:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  color: @nebula_fg;
+}
+
+notebook tab:checked {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-color: @nebula_border;
+  color: @nebula_fg;
+}
+
+/* ===== 菜单栏 / 菜单 / 弹出层 ===== */
+
+menubar {
+  background-color: rgba(28, 33, 40, 0.75);
+  color: @nebula_fg;
+  padding: 4px 8px;
+}
+
+menubar > menuitem {
+  border-radius: 6px;
+  color: @nebula_fg;
+  padding: 4px 10px;
+}
+
+menubar > menuitem:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+menu, .menu, context-menu {
+  background-color: @nebula_menu_bg;
+  border: 1px solid @nebula_float_border;
+  border-radius: 12px;
+  box-shadow: none;
+  padding: 4px 2px;
+}
+
+menu menuitem, .menu menuitem {
+  border-radius: 6px;
+  color: @nebula_fg;
+  min-height: 16px;
+  min-width: 40px;
+  padding: 4px 8px;
+  margin: 0 2px;
+}
+
+menu menuitem:hover, .menu menuitem:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+menu menuitem:disabled, .menu menuitem:disabled {
+  color: @nebula_fg_dim;
+}
+
+menu separator, .menu separator {
+  background-color: @nebula_border;
+  margin: 2px 4px;
+  min-height: 1px;
+}
+
+menu arrow, .menu arrow {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+  color: @nebula_fg_dim;
+  min-width: 16px;
+  min-height: 16px;
+  margin-left: 10px;
+}
+
+menu arrow:dir(rtl), .menu arrow:dir(rtl) {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+/* 菜单溢出时的上下滚动箭头(勿用左右箭头,仿 Mint-Y) */
+
+menu > arrow.top, .menu > arrow.top {
+  -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+  margin-left: 0;
+  margin-right: 0;
+}
+
+menu > arrow.bottom, .menu > arrow.bottom {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  margin-left: 0;
+  margin-right: 0;
+}
+
+menu > arrow:disabled, .menu > arrow:disabled {
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* 浮层本体必须自带底色:GtkMenuButton 这类菜单把菜单塞进 popover,
+   没有 contents 节点,若 popover 透明则菜单壳完全不画背景(只剩浮着的文字),
+   叠在同深色窗口上等于隐形。对标 Mint-Y 的 popover 本体着色 */
+
+popover, popover.background {
+  background-color: @nebula_bg_alt;
+  border: 1px solid @nebula_float_border;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 5px;
+}
+
+popover > contents {
+  /* contents 只是布局节点 —— 底色、描边、阴影一律由外层 popover 画。
+     这里原本又画了一遍，于是弹出层（以及装在 popover 里的托盘图标右键菜单）
+     会出现两条相隔 5px 的同心描边：改边框色时两条一起变色，看着像一层叠一层。
+     半透明底色同样叠了两层，弹出层比设定值更不透明。
+     Adwaita 只给 popover / popover.background 上色，不碰 contents。 */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 5px;
+}
+
+popover > contents list > row {
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+popover > contents list > row:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+popover > contents separator {
+  background-color: @nebula_border;
+  margin: 6px 4px;
+  min-height: 1px;
+}
+
+/* GtkMenuButton + GMenuModel 的菜单在 GTK3 下弹出的是 GtkPopoverMenu：条目是
+   GtkModelButton（CSS 节点名 modelbutton），不是 menuitem；且 GTK3 的 popover 里
+   没有 contents 节点（GTK4 才有，见 gtk-4.0 的同名规则）。只写 menu menuitem 的话
+   这些菜单条目没有任何内边距/圆角、鼠标悬停也无高亮 —— gnome-screenshot /
+   Celluloid 右上角的下拉菜单正是这一类。 */
+
+popover.menu modelbutton {
+  border-radius: 6px;
+  color: @nebula_fg;
+  min-height: 16px;
+  min-width: 40px;
+  padding: 4px 8px;
+  margin: 0 2px;
+}
+
+popover.menu modelbutton:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+popover.menu modelbutton:disabled {
+  color: @nebula_fg_dim;
+}
+
+combobox > box > button.combo {
+  /* 上下内边距 3px，对齐 Mint-Y：原来 5px 让选择栏比 Mint-Y 高 4px。 */
+  padding: 3px 8px;
+}
+
+combobox arrow {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+  color: @nebula_fg_dim;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+combobox button.combo:disabled arrow {
+  color: @nebula_fg_dim;
+}
+
+/* ===== 滚动条 ===== */
+
+/* 滚动条两端的箭头(stepper)整条去掉。
+   做法是改 GtkScrollbar 的 has-backward/has-forward-stepper 属性而不是把 stepper
+   画成透明:前者连按钮本身都不创建,不会在轨道两端留下两格空白。
+   `*` 覆盖全部滚动条 —— 竖直方向的是上下箭头,水平方向的是左右箭头。
+   系统里 117 个主题(Mint 全家桶等)用的都是这一份配方。 */
+* {
+  -GtkScrollbar-has-backward-stepper: false;
+  -GtkScrollbar-has-forward-stepper: false;
+}
+
+scrollbar {
+  background-color: transparent;
+  border: none;
+}
+
+scrollbar trough {
+  background-color: transparent;
+}
+
+scrollbar slider {
+  background-color: rgba(139, 148, 158, 0.40);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+scrollbar slider:hover {
+  background-color: rgba(139, 148, 158, 0.60);
+}
+
+scrollbar slider:active {
+  background-color: rgba(139, 148, 158, 0.70);
+}
+
+scrollbar slider:disabled {
+  background-color: rgba(139, 148, 158, 0.20);
+}
+
+scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
+  background-color: rgba(139, 148, 158, 0.40);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  margin: 0;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+scrollbar.overlay-indicator.dragging slider,
+scrollbar.overlay-indicator.hovering slider {
+  background-color: rgba(139, 148, 158, 0.60);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  margin: 0;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+scrollbar button {
+  background-color: transparent;
+  border: none;
+  color: @nebula_fg_dim;
+  min-width: 8px;
+  min-height: 8px;
+  padding: 0;
+}
+
+/* ===== 滑杆 ===== */
+
+scale trough {
+  background-color: rgba(48, 54, 61, 0.40);
+  border-radius: 4px;
+  min-height: 4px;
+  min-width: 4px;
+}
+
+scale trough highlight {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 4px;
+}
+
+scale trough highlight:disabled {
+  background-color: rgba(88, 166, 255, 0.30);
+}
+
+scale.horizontal trough {
+  padding: 0 4px;
+}
+
+scale.horizontal highlight, scale.horizontal fill {
+  margin: 0 -4px;
+}
+
+scale.vertical trough {
+  padding: 4px 0;
+}
+
+scale.vertical highlight, scale.vertical fill {
+  margin: -4px 0;
+}
+
+scale slider {
+  background-color: @nebula_fg;
+  border: 1px solid @nebula_border;
+  border-radius: 50%;
+  min-width: 15px;
+  min-height: 15px;
+  margin: -6px;
+}
+
+scale.fine-tune slider {
+  margin: -4px;
+}
+
+scale slider:active {
+  background-color: @nebula_accent;
+  border-color: @nebula_accent;
+}
+
+scale slider:disabled {
+  background-color: @nebula_fg_dim;
+}
+
+scale marks, scale value {
+  color: @nebula_fg_dim;
+}
+
+/* 数值标签与旋钮之间留空：旋钮带 -6px 负边距会向上/下探出自身分配区，
+   不预留间距时会贴住甚至盖住百分比文字（设置窗透明度页实测遮挡）。 */
+scale.horizontal value.top {
+  margin-bottom: 8px;
+}
+
+scale.horizontal value.bottom {
+  margin-top: 8px;
+}
+
+/* ===== 进度条 ===== */
+
+progressbar trough {
+  background-color: rgba(48, 54, 61, 0.40);
+  border-radius: 4px;
+  min-height: 6px;
+  min-width: 6px;
+}
+
+progressbar progress {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 4px;
+}
+
+progressbar text {
+  color: @nebula_fg;
+}
+
+levelbar trough {
+  background-color: rgba(48, 54, 61, 0.40);
+  border-radius: 4px;
+  min-height: 6px;
+  padding: 1px;
+}
+
+levelbar block.filled {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 4px;
+}
+
+levelbar block.filled.high {
+  background-color: @nebula_ok;
+}
+
+levelbar block.filled.low {
+  background-color: @nebula_warn;
+}
+
+levelbar block.empty {
+  background-color: transparent;
+}
+
+/* ===== 复选框 / 单选钮 ===== */
+/* 字形来自 assets PNG 资源(Mint-Y 同款转 Nebula 配色),节点本身透明 */
+
+check, radio {
+  background-color: transparent;
+  border: none;
+  min-width: 16px;
+  min-height: 16px;
+  margin: 0 2px;
+}
+
+check:checked {
+  -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked@2.png"));
+}
+
+check:indeterminate {
+  -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked@2.png"));
+}
+
+radio:checked {
+  -gtk-icon-source: -gtk-scaled(url("assets/radio-checked.png"), url("assets/radio-checked@2.png"));
+}
+
+check:not(:checked) {
+  -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked.png"), url("assets/checkbox-unchecked@2.png"));
+}
+
+radio:not(:checked) {
+  -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked.png"), url("assets/radio-unchecked@2.png"));
+}
+
+row:selected check:checked, .view:selected check:checked,
+list > row:selected check:checked, listbox > row:selected check:checked {
+  -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-selected.png"), url("assets/checkbox-checked-selected@2.png"));
+}
+
+row:selected radio:checked, .view:selected radio:checked,
+list > row:selected radio:checked, listbox > row:selected radio:checked {
+  -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-selected.png"), url("assets/radio-checked-selected@2.png"));
+}
+
+/* 菜单内选中态用普通版资源(白底 -selected 版只适合纯蓝行,仿 Mint-Y 不区分菜单) */
+
+menu menuitem check:checked, popover modelbutton check:checked {
+  -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked@2.png"));
+}
+
+menu menuitem radio:checked, popover modelbutton radio:checked {
+  -gtk-icon-source: -gtk-scaled(url("assets/radio-checked.png"), url("assets/radio-checked@2.png"));
+}
+
+checkbutton label, radiobutton label {
+  color: @nebula_fg;
+}
+
+checkbutton:disabled label, radiobutton:disabled label {
+  color: @nebula_fg_dim;
+}
+
+menu menuitem check, menu menuitem radio {
+  margin: 0 6px 0 2px;
+  padding: 0;
+}
+
+menu menuitem check:dir(rtl), menu menuitem radio:dir(rtl) {
+  margin: 0 2px 0 6px;
+}
+
+/* ===== 开关 ===== */
+
+switch {
+  /* 把轨道里的状态字形掐掉：GTK 会在开关里画个白色"I"（开着时在左），
+     跟旋钮挤在一起，看着像旋钮被拉成椭圆。实测 font-size: 1px 压不住它，
+     必须把 color 也设成透明 —— 字形是用前景色画的。Mint-Y 只写了前者，
+     这里两个都写，双保险。 */
+  font-size: 1px;
+  color: transparent;
+  background-color: rgba(48, 54, 61, 0.40);
+  border: 1px solid rgba(48, 54, 61, 0.50);
+  border-radius: 10px;
+  min-width: 50px;
+  min-height: 20px;
+}
+
+switch:checked {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-color: rgba(88, 166, 255, 0.80);
+}
+
+switch:disabled {
+  background-color: rgba(33, 38, 45, 0.30);
+  border-color: rgba(48, 54, 61, 0.20);
+}
+
+switch slider {
+  /* 旋钮用固定半径的 radial-gradient 画圆，不依赖分配盒是不是正方形。
+     GTK 给 slider 的宽高分配经常不是正方形（实测 38x18），border-radius: 50%
+     会被拉成椭圆。这里圆心居中、半径写死，盒子再怎么拉长，看到的永远是个正圆。 */
+  background-color: transparent;
+  background-image: radial-gradient(circle 8px at center, @nebula_fg 7.75px, transparent 8.25px);
+  border: none;
+  border-radius: 0;
+  min-width: 18px;
+  min-height: 18px;
+  margin: 0;
+}
+
+switch:disabled slider {
+  background-image: radial-gradient(circle 8px at center, @nebula_fg_dim 7.75px, transparent 8.25px);
+}
+
+/* ===== 工具栏 / 状态栏 / 分隔符 ===== */
+
+toolbar, .toolbar {
+  background-color: rgba(28, 33, 40, 0.70);
+  padding: 4px;
+}
+
+toolbar button, .toolbar button {
+  margin: 2px;
+}
+
+statusbar, .statusbar {
+  background-color: rgba(22, 27, 34, 0.80);
+  border-top: 1px solid @nebula_border;
+  color: @nebula_fg_dim;
+  padding: 4px 8px;
+}
+
+separator {
+  background-color: @nebula_border;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+paned > separator {
+  background-color: @nebula_border;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+frame, .frame {
+  border: 1px solid @nebula_border;
+  border-radius: 8px;
+}
+
+frame > border, .frame > border {
+  border: none;
+}
+
+/* ===== 提示框 ===== */
+
+tooltip, tooltip.background {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid @nebula_border;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: @nebula_fg;
+  padding: 5px 8px;
+}
+
+tooltip label {
+  color: @nebula_fg;
+}
+
+infobar {
+  border-bottom: 1px solid @nebula_border;
+}
+
+infobar.info {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+infobar.question {
+  background-color: rgba(88, 166, 255, 0.35);
+  color: @nebula_fg;
+}
+
+infobar.warning {
+  background-color: rgba(210, 153, 34, 0.35);
+  color: @nebula_fg;
+}
+
+infobar.error {
+  background-color: rgba(248, 81, 73, 0.35);
+  color: @nebula_fg;
+}
+
+infobar button {
+  margin: 4px;
+}
+
+/* ===== 对话框 / 消息框 ===== */
+
+messagedialog, messagedialog.background {
+  background-color: rgba(13, 17, 23, 0.90);
+}
+
+messagedialog .dialog-action-box button {
+  padding: 8px 14px;
+}
+
+dialog .dialog-action-area, .dialog-action-area {
+  border-top: 1px solid @nebula_border;
+  padding: 8px;
+}
+
+/* ===== 屏幕显示 / 通知浮层 ===== */
+
+.osd {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid @nebula_border;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: @nebula_fg;
+  padding: 12px;
+}
+
+.osd button {
+  margin: 2px;
+}
+
+/* ===== 文件管理器 (Nemo) ===== */
+/* 说明: 侧栏/内容区透明度高于 §5.3 一档,属玻璃化定制(与规格默认值偏离,介意可改回) */
+
+.nemo-window .view, .nemo-window iconview {
+  background-color: rgba(13, 17, 23, 0.70);
+  color: @nebula_fg;
+}
+
+.nemo-window .nemo-inactive-pane .view,
+.nemo-window .nemo-inactive-pane iconview {
+  background-color: rgba(13, 17, 23, 0.65);
+  color: @nebula_fg_dim;
+}
+
+.nemo-window .nemo-places-sidebar.frame {
+  background-color: rgba(28, 33, 40, 0.60);
+}
+
+/* 状态栏: 瘦身去框, 按钮拍扁(参照默认主题的紧凑做法)。
+   信息区背景透明 —— 与栏内按钮同一底色, 透出底部容器(工具栏语义)的色,
+   否则调色后中段会留下一块与整条栏格格不入的旧色块 */
+
+.nemo-window statusbar, .nemo-window .statusbar {
+  background-color: transparent;
+  border-top: none;
+  padding: 2px 6px;
+}
+
+.nemo-window statusbar frame, .nemo-window .statusbar frame {
+  border: none;
+  box-shadow: none;
+}
+
+.nemo-window statusbar button, .nemo-window .statusbar button {
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 6px;
+  min-height: 22px;
+  min-width: 22px;
+  padding: 2px 6px;
+}
+
+.nemo-window statusbar button:hover, .nemo-window .statusbar button:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+  border-color: @nebula_border;
+}
+
+.nemo-window statusbar button:active, .nemo-window .statusbar button:active,
+.nemo-window statusbar button:checked, .nemo-window .statusbar button:checked {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+/* 磁盘占用条: 白槽蓝条(覆盖 Nemo 自带 fallback 的近黑槽) */
+
+.places-treeview {
+  -NemoPlacesTreeView-disk-full-bg-color: #e6edf3;
+  -NemoPlacesTreeView-disk-full-fg-color: #58a6ff;
+}
+
+.nemo-window .nemo-window-pane widget.entry {
+  background-color: rgba(88, 166, 255, 0.35);
+  border: 1px solid rgba(88, 166, 255, 0.65);
+  border-radius: 6px;
+  color: @nebula_fg;
+  padding: 5px 8px;
+}
+
+.nemo-window grid > paned > separator {
+  background-color: @nebula_border;
+}
+
+.nemo-window .toolbar {
+  background-color: rgba(28, 33, 40, 0.75);
+}
+
+/* ===== 终端 ===== */
+
+terminal-window, .terminal-window notebook, .terminal-screen {
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+}
+
+vte-terminal {
+  background-color: rgba(13, 17, 23, 0.90);
+  color: @nebula_fg;
+}
+
+/* ===== Firefox / Gecko 内容区兜底 ===== */
+
+window.background > box {
+  background-color: transparent;
+}
+
+/* ===== 禁用态全局兜底 ===== */
+
+*:disabled {
+  text-shadow: none;
+}
+
+image:disabled {
+  color: @nebula_fg_dim;
+}
+
+
+/* 审计补漏: spinner/searchbar/actionbar 最小样式,避免回落默认主题 */
+
+/* 转圈动画:GTK3 原生转圈依赖图标主题提供"动画版" process-working,
+   Papirus-Dark 是静态图,于是转圈冻住(实测 4 帧像素完全一致);
+   改由 CSS 自己驱动旋转,:checked 精确跟随运行态(探针实测 start/stop 即开即关) */
+
+@keyframes nebula_spin {
+  from { -gtk-icon-transform: rotate(0turn); }
+  to { -gtk-icon-transform: rotate(1turn); }
+}
+
+spinner {
+  -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+  color: @nebula_accent;
+}
+
+spinner:checked {
+  animation: nebula_spin 1s linear infinite;
+}
+
+spinner:disabled {
+  color: @nebula_fg_dim;
+}
+
+searchbar {
+  background-color: rgba(28, 33, 40, 0.85);
+  color: @nebula_fg;
+  border-bottom: 1px solid @nebula_border;
+}
+
+actionbar {
+  background-color: rgba(28, 33, 40, 0.85);
+  color: @nebula_fg;
+  border-top: 1px solid @nebula_border;
+}
