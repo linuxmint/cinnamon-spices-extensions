@@ -1,0 +1,487 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Gaitu Window Memory"
+
+msgid "Remember window size"
+msgstr "Gogoratu leihoaren tamaina"
+
+msgid "Remember window position"
+msgstr "Gogoratu leihoaren posizioa"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Leheneratu monitore berean, konektatuta dagoenean"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Desgaituta dagoenean, posizioa leihoa irekitzen den monitorearekiko mantentzen da."
+
+msgid "Remember workspace"
+msgstr "Gogoratu laneko area"
+
+msgid "Remember maximized state"
+msgstr "Gogoratu egoera maximizatua"
+
+msgid "Remember minimized state"
+msgstr "Gogoratu egoera minimizatua"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Gordetzean minimizatuta zegoen leihoa minimizatuta irekitzen da berriro."
+
+msgid "Match windows by"
+msgstr "Leihoak identifikatzeko irizpidea"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Aplikazio batek gogoratutako leiho asko dituenean, leiho bakoitzak gordetako zein posizio hartuko duen aukeratzen du.\n\n«Aplikazioa soilik»: leihoak bere aplikazioaren gordetako posizio berriena hartzen du, irekitako beste leiho batek erabiltzen ez duena. Aukerarik errazena da, eta programa gehienentzat egokia.\n\n«Aplikazioa eta leihoaren izenburua»: Window Memory-k lehenik izenburu bera zuen leiho baten gordetako posizioa bilatzen du (maiuskulak eta minuskulak ez dira kontuan hartzen), beraz beti izenburu berarekin irekitzen diren leihoak, adibidez dokumentu bera edo webgune bera, beren posiziora itzultzen dira. Izenburuak ez badator bat, «Aplikazioa soilik» bezala jokatzen du.\n\n«Gogoratu egoera minimizatua» aktibatuta badago, leihoa minimizatuta ez zegoen gordetako posizioa lehenesten da, aplikazio batek leiho bat minimizatuta eta beste bat normal zituenean gutxienez bat ikusgai ireki dadin. Bat datorren izenburuak lehentasuna izaten jarraitzen du."
+
+msgid "Application only"
+msgstr "Aplikazioa soilik"
+
+msgid "Application and window title"
+msgstr "Aplikazioa eta leihoaren izenburua"
+
+msgid "Also remember dialog windows"
+msgstr "Gogoratu elkarrizketa-leihoak ere"
+
+msgid "Never remember these applications"
+msgstr "Ez gogoratu inoiz aplikazio hauek"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Ez gogoratu inoiz aplikazio hauek (WM klasea)"
+
+msgid "Maximum remembered windows"
+msgstr "Gogoratutako leiho kopuru maximoa"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Lehenik, aspaldian ikusi gabeko leihoak kentzen dira."
+
+msgid "windows"
+msgstr "leiho"
+
+msgid "Forget the focused window"
+msgstr "Ahaztu leiho aktiboa"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Ahaztu gogoratutako leiho guztiak (ezin da desegin, Esc bertan behera uzteko)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Egin babeskopia edo leheneratu ezarpenak eta gogoratutako leihoak"
+
+msgid "Export backup…"
+msgstr "Esportatu babeskopia…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Gorde ezarpen guztiak, inoiz gogoratu behar ez diren aplikazioen zerrenda eta gogoratutako leihoak fitxategi batean."
+
+msgid "Import backup…"
+msgstr "Inportatu babeskopia…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Ordezkatu ezarpen eta gogoratutako leiho guztiak babeskopia-fitxategi batean daudenekin. Aurretik galdetzen du."
+
+msgid "Version"
+msgstr "Bertsioa"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Leiho bakoitzaren tamaina, posizioa, monitorea, laneko area, egoera maximizatua eta egoera minimizatua automatikoki gogoratzen ditu, eta aplikazioa berriro irekitzean leheneratzen ditu."
+
+msgid "Forgot the remembered window of %s."
+msgstr "%s aplikazioaren gogoratutako leihoa ahaztu da."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s ez dago gogoratuta, beraz ez da ezer ahaztu."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Ezin izan da gogoratutako leihoa ahaztu. Ikusi erregistroa."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Leiho aktiboa ez dago gogoratuta, beraz ez da ezer ahaztu."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory bere kabuz gelditu da segurtasunagatik: behar duen funtzio bat falta da Cinnamon-en bertsio honetan."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory bere kabuz gelditu da segurtasunagatik: akats gehiegi izan dira."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory bere kabuz gelditu da segurtasunagatik: Cinnamon behin eta berriz berrabiarazi da."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory bere kabuz gelditu da segurtasunagatik: ezin izan da abiarazi."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Arazoa konpondu ondoren berrekiteko, ezabatu ~/.config/window-memory/safety.json. Berriz gertatzen bada, jakinarazi arazo bat."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Berrekiteko, desgaitu eta berriro gaitu «Gaitu Window Memory» bere ezarpenetan. Berriz gertatzen bada, jakinarazi arazo bat."
+
+msgid "Forgot all remembered windows."
+msgstr "Gogoratutako leiho guztiak ahaztu dira."
+
+msgid "Forget all remembered windows?"
+msgstr "Gogoratutako leiho guztiak ahaztu nahi dituzu?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Ez zegoen leihorik gogoratuta, beraz ez dago ezer ahazteko."
+
+msgid "The remembered windows were not forgotten."
+msgstr "Gogoratutako leihoak ez dira ahaztu."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Ez dago jakiterik gogoratutako leihoak ahaztu diren ala ez."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory-k ez du garaiz erantzun."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Gogoratutako leiho guztiak ahaztu dira, baina aldaketa ezin izan da gorde."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Baliteke gogoratutako leihoak berriro agertzea Window Memory hurrengoan abiatzen denean."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory ez dago martxan. Gaitu Sistemaren ezarpenetan eta saiatu berriro."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "Gogoratutako %(count)d leiho ahaztu da."
+msgstr[1] "Gogoratutako %(count)d leiho ahaztu dira."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory-k ez du garaiz berretsi leheneratzea."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Baliteke gogoratutako leihoak ordezkatu izana edo ez, eta gainerako ezarpenak lehen zeuden bezala utzi dira. Babeskopia bera berriro inportatzea segurua da."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Fitxategia 20 MB baino handiagoa da, Window Memory-ren babeskopia izateko handiegia."
+
+msgid "Could not save the backup."
+msgstr "Ezin izan da babeskopia gorde."
+
+msgid "Could not restore the backup."
+msgstr "Ezin izan da babeskopia leheneratu."
+
+msgid "Nothing was changed."
+msgstr "Ez da ezer aldatu."
+
+msgid "The settings were not changed."
+msgstr "Ez dira ezarpenak aldatu."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "Ez dira aldatu gogoratutako leihoak eta gainerako ezarpenak."
+
+msgid "Importing the same backup again is safe."
+msgstr "Babeskopia bera berriro inportatzea segurua da."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Ezin da ezarpenen eskema irakurri: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Ezin da ezarpenen eskema irakurri: ez da JSON objektu bat."
+
+msgid "the state file is not valid JSON"
+msgstr "egoera-fitxategia ez da baliozko JSON bat"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "egoera-fitxategia ez da %(version)d. bertsioko egoera bat"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Ezin da fitxategia irakurri: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Fitxategia ez da fitxategi arrunta."
+
+msgid "The file is not UTF-8 text."
+msgstr "Fitxategia ez da UTF-8 testua."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Fitxategia ez da baliozko JSON bat: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Babeskopiako «%(key)s» ezarpena ez da egiazko/faltsu balio bat."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Babeskopiako «%(key)s» ezarpena ez da zenbaki osoa."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Babeskopiako «%(key)s» ezarpena %(min)s eta %(max)s arteko tartetik kanpo dago."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Babeskopiako «%(key)s» ezarpena ez da bere aukeretako bat."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Babeskopiako «%(key)s» ezarpena ez da zerrenda bat."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Babeskopiako «%(key)s» ezarpenak objektua ez den sarrera bat du."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Babeskopiako «%(key)s» ezarpenak «%(column)s» testu-baliorik gabeko sarrera bat du."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Babeskopiako «%(key)s» ezarpena ez da testua."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Fitxategia ez da Window Memory-ren babeskopia bat: ez dauka JSON objekturik."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Fitxategia ez da Window Memory-ren babeskopia bat: bere «format» ez da «%(format)s»."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Babeskopia Window Memory-ren bertsio berriago batek egin du (babeskopiaren formatua: %(found)d). Bertsio honek %(supported)d. formatua bakarrik irakurtzen du."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "Babeskopiaren «version» ez da %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Babeskopiak ez du «settings» objekturik."
+
+msgid "The backup has no \"state\" object."
+msgstr "Babeskopiak ez du «state» objekturik."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "Babeskopiako «state» objektuaren «version» ez da %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "Babeskopiako «state» objektuaren «windows» ez da zerrenda bat."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d ezarpen"
+msgstr[1] "%(count)d ezarpen"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "gogoratutako %(count)d leiho"
+msgstr[1] "gogoratutako %(count)d leiho"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Babeskopia gorde da: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Oraindik ez dago leihorik gogoratuta."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "Ezin izan dira gogoratutako leihoak irakurri (%(problem)s), beraz bat ere ez da gorde."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Ezarpenak eta gogoratutako %(count)d leiho ordezkatu nahi dituzu babeskopia honekin (%(time)s)?"
+msgstr[1] "Ezarpenak eta gogoratutako %(count)d leiho ordezkatu nahi dituzu babeskopia honekin (%(time)s)?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Ezarpenak eta gogoratutako %(count)d leiho ordezkatu nahi dituzu babeskopia honekin?"
+msgstr[1] "Ezarpenak eta gogoratutako %(count)d leiho ordezkatu nahi dituzu babeskopia honekin?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Uneko ezarpenak eta gogoratutako leihoak galdu egingo dira. Ezin da desegin."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Leheneratu dira: %(settings)s eta %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "Babeskopiako %(count)d ezarpen ez da ezaguna Window Memory-ren bertsio honetan, eta kanpoan utzi da."
+msgstr[1] "Babeskopiako %(count)d ezarpen ez dira ezagunak Window Memory-ren bertsio honetan, eta kanpoan utzi dira."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Gogoratutako %(count)d leiho leheneratu da, baina ez ezarpen guztiak."
+msgstr[1] "Gogoratutako %(count)d leiho leheneratu dira, baina ez ezarpen guztiak."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Ezin izan da «%(key)s» ezarpena ezarri: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "Haren ondorengo %(count)d ezarpen ere ez da ezarri."
+msgstr[1] "Haren ondorengo %(count)d ezarpen ere ez dira ezarri."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "Ezin izan zaizkio gogoratutako leihoak Window Memory-ri eman: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Ezarpen-fitxategiak ez du baliorik «%(key)s» gakorako."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Ezin da %(path)s idatzi: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Ezin izan da «%(key)s» ezarpena %(value)d balioan ezarri leheneratu aurretik: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "«%(key)s» ezarpena %(new)d balioan ezarri da leheneratzeko, eta ezin izan da %(old)d balioan berriro ezarri: %(reason)s"
+
+msgid "Export backup"
+msgstr "Esportatu babeskopia"
+
+msgid "_Cancel"
+msgstr "_Utzi"
+
+msgid "_Save"
+msgstr "_Gorde"
+
+msgid "Import backup"
+msgstr "Inportatu babeskopia"
+
+msgid "_Open"
+msgstr "_Ireki"
+
+msgid "JSON files"
+msgstr "JSON fitxategiak"
+
+msgid "All files"
+msgstr "Fitxategi guztiak"
+
+msgid "_Replace"
+msgstr "_Ordezkatu"
+
+msgid "unknown"
+msgstr "ezezaguna"
+
+msgid "(uncommitted changes)"
+msgstr "(commit egin gabeko aldaketak)"
+
+msgid "Report an issue"
+msgstr "Jakinarazi arazo bat"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (esperimentala)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Cinnamon-en Wayland saioa erabiltzen ari zara, oraindik esperimentala dena. Window Memory probatu da saio horrekin Cinnamon 6.0.5-en. Leiho bat espero bezala gogoratzen ez bada, erabili «Jakinarazi arazo bat»."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Aplikazio hauek saioa hastean abiatzen dira, eta Window Memory-k haien leihoak leku berean jartzen ditu, «Ez gogoratu inoiz aplikazio hauek» zerrendan gaituta daudenak izan ezik. Abioko aplikazioetan dagoen zerrenda bera da."
+
+msgid "No applications start at login."
+msgstr "Ez da aplikaziorik abiatzen saioa hastean."
+
+msgid "Pick a window to start at login"
+msgstr "Hautatu saioa hastean abiatu behar den leiho bat"
+
+msgid "Remove"
+msgstr "Kendu"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Gehitu edo editatu Abioko aplikazioetan…"
+
+msgid "(system entry)"
+msgstr "(sistemako sarrera)"
+
+msgid "delay %(seconds)d s"
+msgstr "atzerapena %(seconds)d s"
+
+msgid "Undo"
+msgstr "Desegin"
+
+msgid "Added %(name)s"
+msgstr "%(name)s gehituta"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s zerrendan dago jada"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s aktibatuta"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s berreskuratuta"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s aldatu egin da bitartean eta bere horretan utzi da."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Ezin izan dira abioko aplikazioak irakurri: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Ezin izan da %(name)s gehitu: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Ezin izan da %(name)s aldatu: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Ezin izan da hautapena hasi: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Ezin izan dira Abioko aplikazioak ireki: %(reason)s"
+
+msgid "Start at login"
+msgstr "Abiatu saioa hastean"
+
+msgid "Name"
+msgstr "Izena"
+
+msgid "Command"
+msgstr "Komandoa"
+
+msgid "Comment"
+msgstr "Iruzkina"
+
+msgid "Startup delay"
+msgstr "Abioko atzerapena"
+
+msgid "Cancel"
+msgstr "Utzi"
+
+msgid "Add"
+msgstr "Gehitu"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Komando hau leihoan oinarritutako aieru bat da. Egiaztatu gehitu aurretik."
+
+msgid "The command cannot be empty."
+msgstr "Komandoa ezin da hutsik egon."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Komandoa ez da baliozkoa: %(reason)s"
+
+msgid "General"
+msgstr "Orokorra"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "window-memory@bootkicker(r)en ezarpenak"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Egin klik leiho batean haren aplikazioa inoiz ez gogoratzeko.  Esc edo eskuineko klika bertan behera uzteko."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Egin klik leiho batean haren aplikazioa saioa hastean abiarazteko.  Esc edo eskuineko klika bertan behera uzteko."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Egin klik hemen eta, ondoren, inoiz gogoratu behar ez diren aplikazioen zerrendara gehitu nahi duzun leihoan. Escape teklak edo eskuineko klikak bertan behera uzten du."
+
+msgid "Enabled"
+msgstr "Gaituta"
+
+msgid "Max windows"
+msgstr "Leiho kop. max."
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Gogoratutako leiho kopuru maximoa. Duela gehien ikusitako leihoak lehenengo kentzen dira."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Hautatu inoiz gogoratu behar ez den leiho bat (egin klik, Esc edo eskuineko klika bertan behera uzteko)"
+
+msgid "Startup apps"
+msgstr "Abioko aplikazioak"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Babeskopiako «%(key)s» ezarpenak sarrera bat du, eta haren «%(column)s» balioa ez da true edo false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Aplikazio hauen leihoak ez dira inoiz gordetzen edo leheneratzen. Sartu WM_CLASS: exekutatu xprop WM_CLASS terminal batean eta egin klik leihoan. Bat-etortzeak ez ditu maiuskulak eta minuskulak bereizten, eta izenaren zati bat onartzen du. Markatu gabeko sarrera zerrendan geratzen da, baina ez ikusiarena egiten zaio: aplikazio horren leihoak berriro gogoratzen dira. Sarrerak automatikoki gehitzeko, «Hautatu leiho bat» botoia ere erabil dezakezu."

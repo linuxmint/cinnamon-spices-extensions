@@ -1,0 +1,479 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Window Memory 사용"
+
+msgid "Remember window size"
+msgstr "창 크기 기억"
+
+msgid "Remember window position"
+msgstr "창 위치 기억"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "모니터가 연결되어 있으면 같은 모니터로 복원"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "끄면 창이 열리는 모니터를 기준으로 한 상대 위치가 유지됩니다."
+
+msgid "Remember workspace"
+msgstr "작업 공간 기억"
+
+msgid "Remember maximized state"
+msgstr "최대화 상태 기억"
+
+msgid "Remember minimized state"
+msgstr "최소화 상태 기억"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "저장할 때 최소화되어 있던 창은 다시 열 때도 최소화된 상태로 열립니다."
+
+msgid "Match windows by"
+msgstr "창 구분 기준"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "프로그램에 기억된 창이 여러 개일 때, 창이 어떤 저장된 위치를 사용할지 정합니다.\n\n“프로그램만”: 창은 해당 프로그램의 저장된 위치 중 열려 있는 다른 창이 사용하고 있지 않은 가장 최근 위치를 사용합니다. 가장 간단한 선택이며 대부분의 프로그램에 알맞습니다.\n\n“프로그램 및 창 제목”: Window Memory는 먼저 제목이 같았던 창의 저장된 위치를 찾습니다(대소문자는 구분하지 않습니다). 그래서 같은 문서나 웹사이트처럼 항상 같은 제목으로 열리는 창은 원래 자기 위치로 돌아갑니다. 제목이 일치하는 위치가 없으면 “프로그램만”과 같게 동작합니다.\n\n“최소화 상태 기억”이 켜져 있으면 창이 최소화되지 않았던 저장된 위치가 우선됩니다. 그래서 프로그램에 최소화된 창과 일반 창이 하나씩 있었더라도 적어도 하나는 보이는 상태로 열립니다. 제목이 일치하는 경우는 여전히 가장 먼저 적용됩니다."
+
+msgid "Application only"
+msgstr "프로그램만"
+
+msgid "Application and window title"
+msgstr "프로그램 및 창 제목"
+
+msgid "Also remember dialog windows"
+msgstr "대화 상자 창도 기억"
+
+msgid "Never remember these applications"
+msgstr "다음 프로그램은 기억하지 않음"
+
+msgid "Never remember these applications (WM class)"
+msgstr "다음 프로그램은 기억하지 않음 (WM 클래스)"
+
+msgid "Maximum remembered windows"
+msgstr "기억된 창의 최대 개수"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "가장 오래전에 확인된 창부터 먼저 제거됩니다."
+
+msgid "windows"
+msgstr "개"
+
+msgid "Forget the focused window"
+msgstr "포커스된 창 잊기"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "기억된 창 모두 잊기 (되돌릴 수 없음, Esc로 취소)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "설정 및 기억된 창 백업 또는 복원"
+
+msgid "Export backup…"
+msgstr "백업 내보내기…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "모든 설정, 기억하지 않음 목록, 기억된 창을 파일에 저장합니다."
+
+msgid "Import backup…"
+msgstr "백업 가져오기…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "모든 설정과 기억된 창을 백업 파일의 내용으로 바꿉니다. 먼저 확인합니다."
+
+msgid "Version"
+msgstr "버전"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "각 창의 크기, 위치, 모니터, 작업 공간, 최대화 상태, 최소화 상태를 자동으로 기억하고, 프로그램을 다시 열 때 복원합니다."
+
+msgid "Forgot the remembered window of %s."
+msgstr "%s의 기억된 창을 잊었습니다."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s은(는) 기억되어 있지 않으므로 아무것도 잊지 않았습니다."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "기억된 창을 잊지 못했습니다. 로그를 확인하세요."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "포커스된 창은 기억되어 있지 않으므로 아무것도 잊지 않았습니다."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory가 안전을 위해 스스로 중지되었습니다. 필요한 기능이 이 버전의 Cinnamon에 없습니다."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory가 안전을 위해 스스로 중지되었습니다. 오류가 너무 많았습니다."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory가 안전을 위해 스스로 중지되었습니다. Cinnamon이 반복해서 다시 시작되었습니다."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory가 안전을 위해 스스로 중지되었습니다. 시작할 수 없었습니다."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "문제가 해결된 후 재개하려면 ~/.config/window-memory/safety.json 파일을 삭제하세요. 이런 일이 또 발생하면 문제를 신고해 주세요."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "재개하려면 설정에서 \"Window Memory 사용\"을 껐다가 다시 켜세요. 이런 일이 또 발생하면 문제를 신고해 주세요."
+
+msgid "Forgot all remembered windows."
+msgstr "기억된 창을 모두 잊었습니다."
+
+msgid "Forget all remembered windows?"
+msgstr "기억된 창을 모두 잊으시겠습니까?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "기억된 창이 없으므로 잊을 것이 없습니다."
+
+msgid "The remembered windows were not forgotten."
+msgstr "기억된 창을 잊지 못했습니다."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "기억된 창을 잊었는지 알 수 없습니다."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory가 제때 응답하지 않았습니다."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "기억된 창을 모두 잊었지만 변경 사항을 저장하지 못했습니다."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "다음에 Window Memory가 시작될 때 기억된 창이 다시 나타날 수 있습니다."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory가 실행 중이 아닙니다. 시스템 설정에서 사용하도록 설정한 후 다시 시도하세요."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "기억된 창 %(count)d개를 잊었습니다."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory가 제때 복원을 확인하지 않았습니다."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "기억된 창은 교체되었을 수도 있고 아닐 수도 있으며, 다른 설정은 그대로 유지되었습니다. 같은 백업을 다시 가져와도 안전합니다."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "파일이 20 MB를 넘어 Window Memory 백업으로 보기에는 너무 큽니다."
+
+msgid "Could not save the backup."
+msgstr "백업을 저장하지 못했습니다."
+
+msgid "Could not restore the backup."
+msgstr "백업을 복원하지 못했습니다."
+
+msgid "Nothing was changed."
+msgstr "아무것도 변경되지 않았습니다."
+
+msgid "The settings were not changed."
+msgstr "설정이 변경되지 않았습니다."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "기억된 창과 다른 설정이 변경되지 않았습니다."
+
+msgid "Importing the same backup again is safe."
+msgstr "같은 백업을 다시 가져와도 안전합니다."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "설정 스키마를 읽을 수 없습니다: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "설정 스키마를 읽을 수 없습니다: JSON 객체가 아닙니다."
+
+msgid "the state file is not valid JSON"
+msgstr "상태 파일이 올바른 JSON이 아닙니다"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "상태 파일이 버전 %(version)d의 상태가 아닙니다"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "파일을 읽을 수 없습니다: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "파일이 일반 파일이 아닙니다."
+
+msgid "The file is not UTF-8 text."
+msgstr "파일이 UTF-8 텍스트가 아닙니다."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "파일이 올바른 JSON이 아닙니다: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "백업의 “%(key)s” 설정이 true 또는 false가 아닙니다."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "백업의 “%(key)s” 설정이 정수가 아닙니다."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "백업의 “%(key)s” 설정이 %(min)s부터 %(max)s까지의 범위를 벗어났습니다."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "백업의 “%(key)s” 설정이 선택할 수 있는 값 중 하나가 아닙니다."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "백업의 “%(key)s” 설정이 목록이 아닙니다."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "백업의 “%(key)s” 설정에 객체가 아닌 항목이 있습니다."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "백업의 “%(key)s” 설정에 텍스트 “%(column)s” 값이 없는 항목이 있습니다."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "백업의 “%(key)s” 설정이 텍스트가 아닙니다."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "파일이 Window Memory 백업이 아닙니다: JSON 객체가 들어 있지 않습니다."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "파일이 Window Memory 백업이 아닙니다: “format” 값이 “%(format)s”이(가) 아닙니다."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "이 백업은 더 새로운 버전의 Window Memory에서 만들어졌습니다(백업 형식 %(found)d). 이 버전은 형식 %(supported)d만 읽을 수 있습니다."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "백업의 “version” 값이 %(version)d이(가) 아닙니다."
+
+msgid "The backup has no \"settings\" object."
+msgstr "백업에 “settings” 객체가 없습니다."
+
+msgid "The backup has no \"state\" object."
+msgstr "백업에 “state” 객체가 없습니다."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "백업 안 “state”의 “version” 값이 %(version)d이(가) 아닙니다."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "백업 안 “state”의 “windows”가 목록이 아닙니다."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "설정 %(count)d개"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "기억된 창 %(count)d개"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "백업을 저장했습니다: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "기억된 창이 아직 없습니다."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "기억된 창을 읽을 수 없어(%(problem)s) 아무것도 저장하지 못했습니다."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "설정과 기억된 창 %(count)d개를 %(time)s의 이 백업으로 바꾸시겠습니까?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "설정과 기억된 창 %(count)d개를 이 백업으로 바꾸시겠습니까?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "현재 설정과 기억된 창이 사라집니다. 이 작업은 되돌릴 수 없습니다."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "복원했습니다: %(settings)s 및 %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "백업의 설정 %(count)d개는 이 버전의 Window Memory에서 인식할 수 없어 제외되었습니다."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "기억된 창 %(count)d개를 복원했지만 일부 설정은 복원하지 못했습니다."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "“%(key)s” 설정을 적용하지 못했습니다: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "이후 설정 %(count)d개도 적용하지 못했습니다."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "기억된 창을 Window Memory에 전달하지 못했습니다: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "설정 파일에 “%(key)s” 값이 없습니다."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "%(path)s에 쓸 수 없습니다: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "복원 전에 “%(key)s” 설정을 %(value)d(으)로 적용하지 못했습니다: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "복원을 위해 “%(key)s” 설정을 %(new)d(으)로 적용했지만 %(old)d(으)로 되돌리지 못했습니다: %(reason)s"
+
+msgid "Export backup"
+msgstr "백업 내보내기"
+
+msgid "_Cancel"
+msgstr "취소(_C)"
+
+msgid "_Save"
+msgstr "저장(_S)"
+
+msgid "Import backup"
+msgstr "백업 가져오기"
+
+msgid "_Open"
+msgstr "열기(_O)"
+
+msgid "JSON files"
+msgstr "JSON 파일"
+
+msgid "All files"
+msgstr "모든 파일"
+
+msgid "_Replace"
+msgstr "바꾸기(_R)"
+
+msgid "unknown"
+msgstr "알 수 없음"
+
+msgid "(uncommitted changes)"
+msgstr "(커밋되지 않은 변경 사항)"
+
+msgid "Report an issue"
+msgstr "문제 신고"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (실험적)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Cinnamon의 Wayland 세션을 사용하고 있습니다. 이 세션은 아직 실험적입니다. Window Memory는 Cinnamon 6.0.5에서 이 세션으로 테스트되었습니다. 창이 예상대로 기억되지 않으면 “문제 신고”를 이용해 주세요."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "이 애플리케이션은 로그인할 때 시작되며, ‘다음 프로그램은 기억하지 않음’ 목록에서 활성화된 항목을 제외하고 Window Memory가 해당 창을 제자리로 되돌립니다. 시작 애플리케이션과 같은 목록입니다."
+
+msgid "No applications start at login."
+msgstr "로그인할 때 시작되는 애플리케이션이 없습니다."
+
+msgid "Pick a window to start at login"
+msgstr "로그인할 때 시작할 창 선택"
+
+msgid "Remove"
+msgstr "제거"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "시작 애플리케이션에서 추가 또는 편집…"
+
+msgid "(system entry)"
+msgstr "(시스템 항목)"
+
+msgid "delay %(seconds)d s"
+msgstr "지연 %(seconds)d초"
+
+msgid "Undo"
+msgstr "실행 취소"
+
+msgid "Added %(name)s"
+msgstr "%(name)s 추가됨"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s은(는) 이미 목록에 있습니다"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s 사용함"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s 복원됨"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s은(는) 그동안 변경되어 그대로 두었습니다."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "시작 애플리케이션을 읽을 수 없습니다: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "%(name)s을(를) 추가할 수 없습니다: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "%(name)s을(를) 변경할 수 없습니다: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "선택을 시작할 수 없습니다: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "시작 애플리케이션을 열 수 없습니다: %(reason)s"
+
+msgid "Start at login"
+msgstr "로그인 시 시작"
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Command"
+msgstr "명령"
+
+msgid "Comment"
+msgstr "의견"
+
+msgid "Startup delay"
+msgstr "시작 지연 시간"
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Add"
+msgstr "추가"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "이 명령은 창에서 추측한 것입니다. 추가하기 전에 확인하세요."
+
+msgid "The command cannot be empty."
+msgstr "명령은 비워 둘 수 없습니다."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "명령이 올바르지 않습니다: %(reason)s"
+
+msgid "General"
+msgstr "일반"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "window-memory@bootkicker 설정"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "창을 클릭하면 해당 애플리케이션을 기억하지 않습니다. Esc 또는 오른쪽 클릭으로 취소합니다."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "창을 클릭하면 해당 애플리케이션을 로그인 시 시작합니다. Esc 또는 오른쪽 클릭으로 취소합니다."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "여기를 클릭한 다음, 기억하지 않음 목록에 추가할 창을 클릭하세요. Escape를 누르거나 오른쪽 클릭하면 취소됩니다."
+
+msgid "Enabled"
+msgstr "활성화됨"
+
+msgid "Max windows"
+msgstr "최대 창 수"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "기억할 창의 최대 개수입니다. 가장 오래전에 본 창부터 삭제됩니다."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "기억하지 않을 창 선택 (클릭하여 선택, Esc 또는 오른쪽 클릭으로 취소)"
+
+msgid "Startup apps"
+msgstr "시작 앱"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "백업의 “%(key)s” 설정에 “%(column)s” 값이 true 또는 false가 아닌 항목이 있습니다."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "이 프로그램들의 창은 절대 저장되거나 복원되지 않습니다. WM_CLASS를 입력하세요. 터미널에서 xprop WM_CLASS를 실행한 다음 창을 클릭하면 알 수 있습니다. 대소문자는 구분하지 않으며 이름의 일부만 입력해도 일치합니다. 선택 해제된 항목은 목록에 남아 있지만 무시되며, 해당 애플리케이션의 창은 다시 기억됩니다. 대신 “창 선택” 버튼을 사용하면 항목을 자동으로 추가할 수도 있습니다."

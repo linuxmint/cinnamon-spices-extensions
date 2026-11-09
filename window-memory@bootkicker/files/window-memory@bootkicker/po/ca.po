@@ -1,0 +1,487 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Activa Window Memory"
+
+msgid "Remember window size"
+msgstr "Recorda la mida de la finestra"
+
+msgid "Remember window position"
+msgstr "Recorda la posició de la finestra"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Restaura al mateix monitor quan estigui connectat"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Si està desactivat, la posició es manté relativa al monitor on s'obre la finestra."
+
+msgid "Remember workspace"
+msgstr "Recorda l'espai de treball"
+
+msgid "Remember maximized state"
+msgstr "Recorda l'estat maximitzat"
+
+msgid "Remember minimized state"
+msgstr "Recorda l'estat minimitzat"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Una finestra que estava minimitzada quan es va desar es reobre minimitzada."
+
+msgid "Match windows by"
+msgstr "Identifica les finestres per"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Tria quina posició desada rep una finestra quan una aplicació té diverses finestres recordades.\n\n«Només l'aplicació»: una finestra pren la posició desada més recent de la seva aplicació que cap altra finestra oberta no estigui fent servir. És l'opció més senzilla i és la correcta per a la majoria de programes.\n\n«Aplicació i títol de la finestra»: Window Memory busca primer una posició desada la finestra de la qual tenia el mateix títol (les majúscules i minúscules no importen), de manera que les finestres que s'obren sempre amb el mateix títol, com ara el mateix document o lloc web, tornen a la seva posició. Si cap títol coincideix, es comporta com «Només l'aplicació».\n\nSi «Recorda l'estat minimitzat» està activat, es prefereix una posició desada en què la finestra no estava minimitzada, de manera que, quan una aplicació tenia una finestra minimitzada i una de normal, almenys una s'obre visible. Un títol coincident continua tenint prioritat."
+
+msgid "Application only"
+msgstr "Només l'aplicació"
+
+msgid "Application and window title"
+msgstr "Aplicació i títol de la finestra"
+
+msgid "Also remember dialog windows"
+msgstr "Recorda també les finestres de diàleg"
+
+msgid "Never remember these applications"
+msgstr "No recordis mai aquestes aplicacions"
+
+msgid "Never remember these applications (WM class)"
+msgstr "No recordis mai aquestes aplicacions (classe WM)"
+
+msgid "Maximum remembered windows"
+msgstr "Nombre màxim de finestres recordades"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Primer s'eliminen les finestres vistes fa més temps."
+
+msgid "windows"
+msgstr "finestres"
+
+msgid "Forget the focused window"
+msgstr "Oblida la finestra activa"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Oblida totes les finestres recordades (no es pot desfer, Esc per cancel·lar)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Còpia de seguretat i restauració de paràmetres i finestres recordades"
+
+msgid "Export backup…"
+msgstr "Exporta la còpia de seguretat…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Desa en un fitxer tots els paràmetres, la llista d'aplicacions que no es recorden mai i les finestres recordades."
+
+msgid "Import backup…"
+msgstr "Importa la còpia de seguretat…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Substitueix tots els paràmetres i les finestres recordades pel contingut d'un fitxer de còpia de seguretat. Primer ho pregunta."
+
+msgid "Version"
+msgstr "Versió"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Recorda automàticament la mida, la posició, el monitor, l'espai de treball, l'estat maximitzat i l'estat minimitzat de cada finestra i els restaura quan l'aplicació torna a obrir-se."
+
+msgid "Forgot the remembered window of %s."
+msgstr "S'ha oblidat la finestra recordada per a %s."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "No hi ha cap finestra recordada per a %s, de manera que no s'ha oblidat res."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "No s'ha pogut oblidar la finestra recordada. Consulteu el registre."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "La finestra activa no està recordada, de manera que no s'ha oblidat res."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory s'ha aturat per seguretat: falta una funció que necessita en aquesta versió de Cinnamon."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory s'ha aturat per seguretat: hi ha hagut massa errors."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory s'ha aturat per seguretat: Cinnamon s'ha reiniciat repetidament."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory s'ha aturat per seguretat: no s'ha pogut iniciar."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Per reprendre'l un cop resolt el problema, elimina ~/.config/window-memory/safety.json. Si torna a passar, informa d'un problema."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Per reprendre'l, desactiva i torna a activar «Activa Window Memory» a la seva configuració. Si torna a passar, informa d'un problema."
+
+msgid "Forgot all remembered windows."
+msgstr "S'han oblidat totes les finestres recordades."
+
+msgid "Forget all remembered windows?"
+msgstr "Voleu oblidar totes les finestres recordades?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "No hi havia cap finestra recordada, de manera que no hi ha res a oblidar."
+
+msgid "The remembered windows were not forgotten."
+msgstr "No s'han oblidat les finestres recordades."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "No es sap si s'han oblidat les finestres recordades."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory no ha respost a temps."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "S'han oblidat totes les finestres recordades, però no s'ha pogut desar el canvi."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Les finestres recordades poden tornar a aparèixer la propera vegada que s'iniciï Window Memory."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory no s'està executant. Activeu-lo a la Configuració del sistema i torneu-ho a provar."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "S'ha oblidat %(count)d finestra recordada."
+msgstr[1] "S'han oblidat %(count)d finestres recordades."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory no ha confirmat la restauració a temps."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "És possible que les finestres recordades s'hagin substituït o no, i la resta de paràmetres s'han deixat tal com estaven. Tornar a importar la mateixa còpia de seguretat no comporta cap risc."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "El fitxer té més de 20 MB, massa gran per ser una còpia de seguretat de Window Memory."
+
+msgid "Could not save the backup."
+msgstr "No s'ha pogut desar la còpia de seguretat."
+
+msgid "Could not restore the backup."
+msgstr "No s'ha pogut restaurar la còpia de seguretat."
+
+msgid "Nothing was changed."
+msgstr "No s'ha canviat res."
+
+msgid "The settings were not changed."
+msgstr "No s'han canviat els paràmetres."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "No s'han canviat les finestres recordades ni la resta de paràmetres."
+
+msgid "Importing the same backup again is safe."
+msgstr "Tornar a importar la mateixa còpia de seguretat no comporta cap risc."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "No es pot llegir l'esquema de paràmetres: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "No es pot llegir l'esquema de paràmetres: no és un objecte JSON."
+
+msgid "the state file is not valid JSON"
+msgstr "el fitxer d'estat no és un JSON vàlid"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "el fitxer d'estat no és un estat de la versió %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "No es pot llegir el fitxer: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "El fitxer no és un fitxer normal."
+
+msgid "The file is not UTF-8 text."
+msgstr "El fitxer no és text UTF-8."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "El fitxer no és un JSON vàlid: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat no és ni cert ni fals."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat no és un nombre enter."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat és fora de l'interval de %(min)s a %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat no és cap de les opcions possibles."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat no és una llista."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat té una entrada que no és un objecte."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat té una entrada sense el text «%(column)s»."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat no és text."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "El fitxer no és una còpia de seguretat de Window Memory: no conté cap objecte JSON."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "El fitxer no és una còpia de seguretat de Window Memory: el seu «format» no és «%(format)s»."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "La còpia de seguretat l'ha feta una versió més recent de Window Memory (format de còpia de seguretat %(found)d). Aquesta versió només llegeix el format %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "La «version» de la còpia de seguretat no és %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "La còpia de seguretat no té cap objecte «settings»."
+
+msgid "The backup has no \"state\" object."
+msgstr "La còpia de seguretat no té cap objecte «state»."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "La «version» de l'objecte «state» de la còpia de seguretat no és %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "Les «windows» de l'objecte «state» de la còpia de seguretat no són una llista."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d paràmetre"
+msgstr[1] "%(count)d paràmetres"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d finestra recordada"
+msgstr[1] "%(count)d finestres recordades"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "S'ha desat la còpia de seguretat: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Encara no hi ha cap finestra recordada."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "No s'han pogut llegir les finestres recordades (%(problem)s), de manera que no se n'ha desat cap."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Voleu substituir els paràmetres i %(count)d finestra recordada per aquesta còpia de seguretat (%(time)s)?"
+msgstr[1] "Voleu substituir els paràmetres i %(count)d finestres recordades per aquesta còpia de seguretat (%(time)s)?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Voleu substituir els paràmetres i %(count)d finestra recordada per aquesta còpia de seguretat?"
+msgstr[1] "Voleu substituir els paràmetres i %(count)d finestres recordades per aquesta còpia de seguretat?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Es perdran els paràmetres actuals i les finestres recordades. No es pot desfer."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "S'han restaurat %(settings)s i %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d paràmetre de la còpia de seguretat no és conegut per aquesta versió de Window Memory i s'ha omès."
+msgstr[1] "%(count)d paràmetres de la còpia de seguretat no són coneguts per aquesta versió de Window Memory i s'han omès."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "S'ha restaurat %(count)d finestra recordada, però no tots els paràmetres."
+msgstr[1] "S'han restaurat %(count)d finestres recordades, però no tots els paràmetres."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "No s'ha pogut establir el paràmetre «%(key)s»: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "Tampoc no s'ha establert %(count)d paràmetre posterior."
+msgstr[1] "Tampoc no s'han establert %(count)d paràmetres posteriors."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "No s'han pogut lliurar les finestres recordades a Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "El fitxer de paràmetres no té cap valor per a «%(key)s»."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "No es pot escriure a %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "No s'ha pogut establir el paràmetre «%(key)s» a %(value)d abans de la restauració: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "El paràmetre «%(key)s» s'ha establert a %(new)d per a la restauració i no s'ha pogut tornar a establir a %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Exporta la còpia de seguretat"
+
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+msgid "_Save"
+msgstr "_Desa"
+
+msgid "Import backup"
+msgstr "Importa la còpia de seguretat"
+
+msgid "_Open"
+msgstr "_Obre"
+
+msgid "JSON files"
+msgstr "Fitxers JSON"
+
+msgid "All files"
+msgstr "Tots els fitxers"
+
+msgid "_Replace"
+msgstr "_Substitueix"
+
+msgid "unknown"
+msgstr "desconeguda"
+
+msgid "(uncommitted changes)"
+msgstr "(canvis no confirmats)"
+
+msgid "Report an issue"
+msgstr "Informa d'un problema"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (experimental)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Esteu utilitzant la sessió Wayland de Cinnamon, que encara és experimental. Window Memory s'ha provat amb aquesta sessió a Cinnamon 6.0.5. Si una finestra no es recorda com s'esperava, feu servir «Informa d'un problema»."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Aquestes aplicacions s'inicien en iniciar la sessió i Window Memory en torna a posar les finestres al seu lloc, tret que estiguin activades a la llista «No recordis mai aquestes aplicacions». És la mateixa llista que a Aplicacions a l'inici."
+
+msgid "No applications start at login."
+msgstr "Cap aplicació s'inicia en iniciar la sessió."
+
+msgid "Pick a window to start at login"
+msgstr "Trieu una finestra per iniciar-la en iniciar la sessió"
+
+msgid "Remove"
+msgstr "Elimina"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Afegiu o editeu a Aplicacions a l'inici…"
+
+msgid "(system entry)"
+msgstr "(entrada del sistema)"
+
+msgid "delay %(seconds)d s"
+msgstr "retard %(seconds)d s"
+
+msgid "Undo"
+msgstr "Desfés"
+
+msgid "Added %(name)s"
+msgstr "S'ha afegit %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s ja és a la llista"
+
+msgid "%(name)s switched on"
+msgstr "S'ha activat %(name)s"
+
+msgid "%(name)s brought back"
+msgstr "S'ha restaurat %(name)s"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s ha canviat mentrestant i s'ha deixat tal com estava."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "No s'han pogut llegir les aplicacions a l'inici: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "No s'ha pogut afegir %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "No s'ha pogut canviar %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "No s'ha pogut iniciar la selecció: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "No s'ha pogut obrir Aplicacions a l'inici: %(reason)s"
+
+msgid "Start at login"
+msgstr "Inicia en iniciar la sessió"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Command"
+msgstr "Ordre"
+
+msgid "Comment"
+msgstr "Comentari"
+
+msgid "Startup delay"
+msgstr "Retard a l'inici"
+
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgid "Add"
+msgstr "Afegeix"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Aquesta ordre és una suposició a partir de la finestra. Comproveu-la abans d'afegir-la."
+
+msgid "The command cannot be empty."
+msgstr "L'ordre no pot ser buida."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "L'ordre no és vàlida: %(reason)s"
+
+msgid "General"
+msgstr "General"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Ajusts de window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Feu clic en una finestra per no recordar mai la seva aplicació.  Esc o clic dret per cancel·lar."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Feu clic en una finestra per iniciar la seva aplicació en iniciar la sessió.  Esc o clic dret per cancel·lar."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Feu clic aquí i després a la finestra que vulgueu afegir a la llista d'aplicacions que no es recorden mai. Escape o un clic dret cancel·la."
+
+msgid "Enabled"
+msgstr "Activat"
+
+msgid "Max windows"
+msgstr "Màx. de finestres"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Nombre màxim de finestres recordades. Les finestres vistes fa més temps s'eliminen primer."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Trieu una finestra que no es recordarà mai (feu-hi clic, Esc o clic dret per cancel·lar)"
+
+msgid "Startup apps"
+msgstr "Apps a l'inici"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "El paràmetre «%(key)s» de la còpia de seguretat té una entrada on «%(column)s» no és true ni false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Les finestres d'aquestes aplicacions no es desen ni es restauren mai. Introduïu el WM_CLASS: executeu xprop WM_CLASS en un terminal i feu clic a la finestra. La coincidència no distingeix entre majúscules i minúscules i accepta una part del nom. Una entrada sense marcar es manté a la llista, però s'ignora: es tornen a recordar les finestres d'aquesta aplicació. També podeu fer servir el botó «Trieu una finestra» per afegir entrades automàticament."

@@ -1,0 +1,495 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Activează Window Memory"
+
+msgid "Remember window size"
+msgstr "Memorează dimensiunea ferestrei"
+
+msgid "Remember window position"
+msgstr "Memorează poziția ferestrei"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Restaurează pe același monitor când acesta este conectat"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Când este dezactivat, poziția se păstrează în raport cu monitorul pe care se deschide fereastra."
+
+msgid "Remember workspace"
+msgstr "Memorează spațiul de lucru"
+
+msgid "Remember maximized state"
+msgstr "Memorează starea maximizată"
+
+msgid "Remember minimized state"
+msgstr "Memorează starea minimizată"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "O fereastră care era minimizată când a fost salvată se redeschide minimizată."
+
+msgid "Match windows by"
+msgstr "Potrivește ferestrele după"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Alege ce loc salvat primește o fereastră atunci când o aplicație are mai multe ferestre memorate.\n\nDoar aplicația: o fereastră primește cel mai nou loc salvat al aplicației sale pe care nu îl folosește nicio altă fereastră deschisă. Este cea mai simplă alegere și este potrivită pentru majoritatea programelor.\n\nAplicația și titlul ferestrei: Window Memory caută mai întâi un loc salvat a cărui fereastră avea același titlu (majusculele nu contează), astfel încât ferestrele care se deschid întotdeauna cu același titlu, cum ar fi același document sau același site web, revin la locul lor. Dacă niciun titlu nu se potrivește, se comportă ca „Doar aplicația”.\n\nDacă „Memorează starea minimizată” este activat, se preferă un loc salvat în care fereastra nu era minimizată, astfel încât, atunci când o aplicație avea o fereastră minimizată și una normală, cel puțin una dintre ele să se deschidă vizibilă. Un titlu care se potrivește rămâne totuși pe primul loc."
+
+msgid "Application only"
+msgstr "Doar aplicația"
+
+msgid "Application and window title"
+msgstr "Aplicația și titlul ferestrei"
+
+msgid "Also remember dialog windows"
+msgstr "Memorează și ferestrele de dialog"
+
+msgid "Never remember these applications"
+msgstr "Nu memora niciodată aceste aplicații"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Nu memora niciodată aceste aplicații (clasa WM)"
+
+msgid "Maximum remembered windows"
+msgstr "Număr maxim de ferestre memorate"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Ferestrele văzute cel mai demult sunt eliminate primele."
+
+msgid "windows"
+msgstr "ferestre"
+
+msgid "Forget the focused window"
+msgstr "Uită fereastra activă"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Uită toate ferestrele memorate (nu se poate anula, Esc pentru a anula)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Copie de rezervă sau restaurare pentru setări și ferestrele memorate"
+
+msgid "Export backup…"
+msgstr "Exportă copia de rezervă…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Salvează într-un fișier toate setările, lista „nu memora niciodată” și ferestrele memorate."
+
+msgid "Import backup…"
+msgstr "Importă copia de rezervă…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Înlocuiește toate setările și ferestrele memorate cu cele dintr-un fișier de copie de rezervă. Cere mai întâi confirmarea."
+
+msgid "Version"
+msgstr "Versiune"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Memorează automat dimensiunea, poziția, monitorul, spațiul de lucru, starea maximizată și starea minimizată ale fiecărei ferestre și le restaurează când aplicația se deschide din nou."
+
+msgid "Forgot the remembered window of %s."
+msgstr "A fost uitată fereastra memorată pentru %s."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "Pentru %s nu există nicio fereastră memorată, deci nu s-a uitat nimic."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Fereastra memorată nu a putut fi uitată. Consultați jurnalul."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Fereastra activă nu este memorată, deci nu s-a uitat nimic."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory s-a oprit singur din motive de siguranță: lipsește o funcție de care are nevoie din această versiune de Cinnamon."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory s-a oprit singur din motive de siguranță: prea multe erori."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory s-a oprit singur din motive de siguranță: Cinnamon a repornit de mai multe ori la rând."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory s-a oprit singur din motive de siguranță: nu a putut porni."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Pentru a relua după remedierea problemei, ștergeți ~/.config/window-memory/safety.json. Dacă se întâmplă din nou, raportați o problemă."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Pentru a relua, dezactivați și apoi activați din nou „Activează Window Memory” în setările sale. Dacă se întâmplă din nou, raportați o problemă."
+
+msgid "Forgot all remembered windows."
+msgstr "Au fost uitate toate ferestrele memorate."
+
+msgid "Forget all remembered windows?"
+msgstr "Uitați toate ferestrele memorate?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Nu era memorată nicio fereastră, deci nu e nimic de uitat."
+
+msgid "The remembered windows were not forgotten."
+msgstr "Ferestrele memorate nu au fost uitate."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Nu se știe dacă ferestrele memorate au fost uitate."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory nu a răspuns la timp."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Au fost uitate toate ferestrele memorate, dar modificarea nu a putut fi salvată."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Ferestrele memorate pot reapărea la următoarea pornire a Window Memory."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory nu rulează. Activați-l din Setările sistemului, apoi încercați din nou."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "A fost uitată %(count)d fereastră memorată."
+msgstr[1] "Au fost uitate %(count)d ferestre memorate."
+msgstr[2] "Au fost uitate %(count)d de ferestre memorate."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory nu a confirmat restaurarea la timp."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Este posibil ca ferestrele memorate să fi fost înlocuite sau nu, iar celelalte setări au rămas neschimbate. Importarea din nou a aceleiași copii de rezervă este sigură."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Fișierul este mai mare de 20 MB, prea mare pentru a fi o copie de rezervă Window Memory."
+
+msgid "Could not save the backup."
+msgstr "Copia de rezervă nu a putut fi salvată."
+
+msgid "Could not restore the backup."
+msgstr "Copia de rezervă nu a putut fi restaurată."
+
+msgid "Nothing was changed."
+msgstr "Nu s-a modificat nimic."
+
+msgid "The settings were not changed."
+msgstr "Setările nu au fost modificate."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "Ferestrele memorate și celelalte setări nu au fost modificate."
+
+msgid "Importing the same backup again is safe."
+msgstr "Importarea din nou a aceleiași copii de rezervă este sigură."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Schema setărilor nu poate fi citită: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Schema setărilor nu poate fi citită: nu este un obiect JSON."
+
+msgid "the state file is not valid JSON"
+msgstr "fișierul de stare nu este JSON valid"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "fișierul de stare nu este o stare de versiunea %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Fișierul nu poate fi citit: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Fișierul nu este un fișier obișnuit."
+
+msgid "The file is not UTF-8 text."
+msgstr "Fișierul nu este text UTF-8."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Fișierul nu este JSON valid: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Setarea „%(key)s” din copia de rezervă nu este true sau false."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Setarea „%(key)s” din copia de rezervă nu este un număr întreg."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Setarea „%(key)s” din copia de rezervă este în afara intervalului de la %(min)s la %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Setarea „%(key)s” din copia de rezervă nu este una dintre opțiunile sale."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Setarea „%(key)s” din copia de rezervă nu este o listă."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Setarea „%(key)s” din copia de rezervă are o intrare care nu este un obiect."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Setarea „%(key)s” din copia de rezervă are o intrare fără un text „%(column)s”."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Setarea „%(key)s” din copia de rezervă nu este text."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Fișierul nu este o copie de rezervă Window Memory: nu conține un obiect JSON."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Fișierul nu este o copie de rezervă Window Memory: câmpul „format” nu este „%(format)s”."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Copia de rezervă a fost creată de o versiune mai nouă a Window Memory (format de copie %(found)d). Această versiune citește numai formatul %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "Câmpul „version” din copia de rezervă nu este %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Copia de rezervă nu are obiectul „settings”."
+
+msgid "The backup has no \"state\" object."
+msgstr "Copia de rezervă nu are obiectul „state”."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "Câmpul „version” din „state” în copia de rezervă nu este %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "Câmpul „windows” din „state” în copia de rezervă nu este o listă."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d setare"
+msgstr[1] "%(count)d setări"
+msgstr[2] "%(count)d de setări"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d fereastră memorată"
+msgstr[1] "%(count)d ferestre memorate"
+msgstr[2] "%(count)d de ferestre memorate"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Copie de rezervă salvată: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Încă nu este memorată nicio fereastră."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "Ferestrele memorate nu au putut fi citite (%(problem)s), deci nu a fost salvată niciuna."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Înlocuiți setările și %(count)d fereastră memorată cu această copie de rezervă din %(time)s?"
+msgstr[1] "Înlocuiți setările și %(count)d ferestre memorate cu această copie de rezervă din %(time)s?"
+msgstr[2] "Înlocuiți setările și %(count)d de ferestre memorate cu această copie de rezervă din %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Înlocuiți setările și %(count)d fereastră memorată cu această copie de rezervă?"
+msgstr[1] "Înlocuiți setările și %(count)d ferestre memorate cu această copie de rezervă?"
+msgstr[2] "Înlocuiți setările și %(count)d de ferestre memorate cu această copie de rezervă?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Setările și ferestrele memorate actuale se pierd. Acțiunea nu poate fi anulată."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Restaurat: %(settings)s și %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "În copia de rezervă, %(count)d setare nu este cunoscută de această versiune a Window Memory și a fost omisă."
+msgstr[1] "În copia de rezervă, %(count)d setări nu sunt cunoscute de această versiune a Window Memory și au fost omise."
+msgstr[2] "În copia de rezervă, %(count)d de setări nu sunt cunoscute de această versiune a Window Memory și au fost omise."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "A fost restaurată %(count)d fereastră memorată, dar nu toate setările."
+msgstr[1] "Au fost restaurate %(count)d ferestre memorate, dar nu toate setările."
+msgstr[2] "Au fost restaurate %(count)d de ferestre memorate, dar nu toate setările."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Setarea „%(key)s” nu a putut fi aplicată: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "A rămas neaplicată și %(count)d setare de după aceasta."
+msgstr[1] "Au rămas neaplicate și %(count)d setări de după aceasta."
+msgstr[2] "Au rămas neaplicate și %(count)d de setări de după aceasta."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "Ferestrele memorate nu au putut fi transmise către Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Fișierul de setări nu are nicio valoare pentru „%(key)s”."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Nu se poate scrie în %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Setarea „%(key)s” nu a putut fi stabilită la %(value)d înainte de restaurare: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Setarea „%(key)s” a fost stabilită la %(new)d pentru restaurare și nu a putut fi readusă la %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Exportă copia de rezervă"
+
+msgid "_Cancel"
+msgstr "_Anulează"
+
+msgid "_Save"
+msgstr "_Salvează"
+
+msgid "Import backup"
+msgstr "Importă copia de rezervă"
+
+msgid "_Open"
+msgstr "_Deschide"
+
+msgid "JSON files"
+msgstr "Fișiere JSON"
+
+msgid "All files"
+msgstr "Toate fișierele"
+
+msgid "_Replace"
+msgstr "În_locuiește"
+
+msgid "unknown"
+msgstr "necunoscută"
+
+msgid "(uncommitted changes)"
+msgstr "(modificări necomise)"
+
+msgid "Report an issue"
+msgstr "Raportați o problemă"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (experimental)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Folosiți sesiunea Wayland a Cinnamon, care este încă experimentală. Window Memory a fost testat cu ea pe Cinnamon 6.0.5. Dacă o fereastră nu este memorată așa cum vă așteptați, folosiți „Raportați o problemă”."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Aceste aplicații se lansează când vă conectați, iar Window Memory le pune ferestrele la loc, cu excepția celor activate în lista „Nu memora niciodată aceste aplicații”. Este aceeași listă ca în Aplicații lansate la pornire."
+
+msgid "No applications start at login."
+msgstr "Nicio aplicație nu se lansează la conectare."
+
+msgid "Pick a window to start at login"
+msgstr "Alegeți o fereastră de lansat la conectare"
+
+msgid "Remove"
+msgstr "Șterge"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Adăugați sau editați în Aplicații lansate la pornire…"
+
+msgid "(system entry)"
+msgstr "(intrare de sistem)"
+
+msgid "delay %(seconds)d s"
+msgstr "întârziere %(seconds)d s"
+
+msgid "Undo"
+msgstr "Revenire"
+
+msgid "Added %(name)s"
+msgstr "Adăugat: %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s este deja în listă"
+
+msgid "%(name)s switched on"
+msgstr "Activat: %(name)s"
+
+msgid "%(name)s brought back"
+msgstr "Restaurat: %(name)s"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s s-a modificat între timp și a fost lăsat neschimbat."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Nu s-au putut citi aplicațiile lansate la pornire: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Nu s-a putut adăuga %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Nu s-a putut modifica %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Nu s-a putut porni selectarea: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Nu s-a putut deschide Aplicații lansate la pornire: %(reason)s"
+
+msgid "Start at login"
+msgstr "Lansare la conectare"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Command"
+msgstr "Comandă"
+
+msgid "Comment"
+msgstr "Comentariu"
+
+msgid "Startup delay"
+msgstr "Întârziere lansare"
+
+msgid "Cancel"
+msgstr "Renunță"
+
+msgid "Add"
+msgstr "Adaugă"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Această comandă este o presupunere pornind de la fereastră. Verificați-o înainte de a adăuga."
+
+msgid "The command cannot be empty."
+msgstr "Comanda nu poate fi goală."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Comanda nu este validă: %(reason)s"
+
+msgid "General"
+msgstr "General"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Configurări pentru window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Faceți clic pe o fereastră pentru ca aplicația ei să nu fie memorată niciodată.  Esc sau clic dreapta pentru a anula."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Faceți clic pe o fereastră pentru ca aplicația ei să fie pornită la conectare.  Esc sau clic dreapta pentru a anula."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Faceți clic aici, apoi faceți clic pe fereastra pe care doriți să o adăugați în lista „nu memora niciodată”. Escape sau un clic dreapta anulează."
+
+msgid "Enabled"
+msgstr "Activat"
+
+msgid "Max windows"
+msgstr "Nr. maxim ferestre"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Numărul maxim de ferestre memorate. Ferestrele văzute cel mai demult sunt eliminate primele."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Alegeți o fereastră care să nu fie memorată niciodată (faceți clic pe ea, Esc sau clic dreapta pentru a anula)"
+
+msgid "Startup apps"
+msgstr "Aplicații la pornire"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Setarea „%(key)s” din copia de rezervă are o intrare al cărei „%(column)s” nu este true sau false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Ferestrele acestor aplicații nu sunt niciodată salvate sau restaurate. Introduceți WM_CLASS: rulați xprop WM_CLASS într-un terminal, apoi faceți clic pe fereastră. Potrivirea ignoră diferența dintre majuscule și minuscule și acceptă o parte din nume. O intrare debifată rămâne în listă, dar este ignorată: ferestrele acelei aplicații sunt memorate din nou. Puteți folosi și butonul „Alegeți o fereastră” pentru a adăuga intrări automat."

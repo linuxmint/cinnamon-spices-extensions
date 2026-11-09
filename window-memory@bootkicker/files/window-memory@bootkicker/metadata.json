@@ -1,0 +1,11 @@
+{
+    "uuid": "window-memory@bootkicker",
+    "name": "Window Memory",
+    "version": "0.4.2",
+    "description": "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again.",
+    "cinnamon-version": [
+        "6.0"
+    ],
+    "author": "bootkicker",
+    "url": "https://github.com/bootkicker/window-memory"
+}
