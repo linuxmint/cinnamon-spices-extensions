@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: notification-log@ogzhntutucu 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-10-17 21:37+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: settings.py:99
+msgid "Search"
+msgstr ""
+
+#: settings.py:110
+msgid "Refresh"
+msgstr ""
+
+#: settings.py:122
+msgid "Time"
+msgstr ""
+
+#: settings.py:122
+msgid "App"
+msgstr ""
+
+#: settings.py:122
+msgid "Title"
+msgstr ""
+
+#: settings.py:122
+msgid "Text"
+msgstr ""
+
+#: settings.py:171
+msgid "All"
+msgstr ""
+
+#: settings.py:171
+msgid "None"
+msgstr ""
+
+#: settings.py:212
+#, python-format
+msgid "Apps (%d/%d)"
+msgstr ""
+
+#: settings.py:214
+msgid ""
+"No notifications logged yet. New notifications will appear here after you "
+"press Refresh."
+msgstr ""
+
+#: settings.py:219
+#, python-format
+msgid "%d notification. Right-click a row for more actions."
+msgid_plural "%d notifications. Right-click a row for more actions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: settings.py:223
+#, python-format
+msgid "Showing %d of %d notification. Right-click a row for more actions."
+msgid_plural ""
+"Showing %d of %d notifications. Right-click a row for more actions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: settings.py:267
+msgid "Copy text"
+msgstr ""
+
+#: settings.py:271
+#, python-format
+msgid "Hide notifications from \"%s\""
+msgstr ""
+
+#: settings.py:274
+#, python-format
+msgid "Hide notifications from site \"%s\""
+msgstr ""
+
+#: settings.py:276
+msgid "Delete this record"
+msgstr ""
+
+#: settings.py:296
+#, python-format
+msgid "Notifications matching \"%s\" will no longer be logged."
+msgstr ""
+
+#: settings.py:297
+#, python-format
+msgid "Also hide the text of the record already logged?"
+msgid_plural "Also hide the text of the %d records already logged?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: settings.py:300
+msgid "Hide existing records"
+msgstr ""
+
+#: settings.py:323 settings.py:359
+msgid "Keep"
+msgstr ""
+
+#: settings.py:335
+msgid "Open log folder"
+msgstr ""
+
+#: settings.py:338
+msgid "Delete all logs…"
+msgstr ""
+
+#: settings.py:347
+#, python-format
+msgid "%d file, %s"
+msgid_plural "%d files, %s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: settings.py:357
+msgid "Delete all logged notifications?"
+msgstr ""
+
+#: settings.py:358
+msgid "This cannot be undone. New notifications will still be logged."
+msgstr ""
+
+#: settings.py:360
+msgid "Delete all"
+msgstr ""
+
+#. metadata.json->name
+msgid "Notification Log"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Keep a persistent log of every notification, including Cinnamon's own, as "
+"JSON lines in ~/.local/state/notifications."
+msgstr ""
+
+#. settings-schema.json->history-page->title
+msgid "History"
+msgstr ""
+
+#. settings-schema.json->privacy-page->title
+msgid "Privacy"
+msgstr ""
+
+#. settings-schema.json->privacy-section->title
+#. settings-schema.json->hidden-apps->description
+msgid "Private apps and sites"
+msgstr ""
+
+#. settings-schema.json->storage-page->title
+#. settings-schema.json->storage-section->title
+msgid "Storage"
+msgstr ""
+
+#. settings-schema.json->privacy-help->description
+msgid ""
+"Notifications are saved as plain text in your home folder, readable only by "
+"you. For a matching app or site, only the time and app are saved: the text "
+"becomes [hidden], and so does the title unless you untick \"Hide title too\""
+" (messengers put the sender's name in the title). An entry matches part of "
+"the app's name or desktop file id (\"discord\" also matches "
+"\"com.discordapp.Discord\"), or part of the text, which is where browsers "
+"show the site (\"mail.example.com\"). You can also add entries from the "
+"History tab."
+msgstr ""
+
+#. settings-schema.json->hidden-apps->columns->title
+msgid "Enabled"
+msgstr ""
+
+#. settings-schema.json->hidden-apps->columns->title
+msgid "App or text"
+msgstr ""
+
+#. settings-schema.json->hidden-apps->columns->title
+msgid "Hide title too"
+msgstr ""
+
+#. settings-schema.json->storage-help->description
+msgid "Logs are kept in ~/.local/state/notifications, one file per month."
+msgstr ""
+
+#. settings-schema.json->retention-days->description
+msgid "Keep logs for"
+msgstr ""
+
+#. settings-schema.json->retention-days->units
+msgid "days"
+msgstr ""
+
+#. settings-schema.json->retention-days->tooltip
+msgid ""
+"A monthly file is deleted once the whole month is older than this. 0 keeps "
+"everything."
+msgstr ""
