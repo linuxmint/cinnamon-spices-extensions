@@ -1,0 +1,248 @@
+/* cPlace chooser styling: sizes and spacing alone. Every colour is the
+   theme's, read off the theme's own classes each time the chooser opens,
+   readied by src/engine/palette.ts and written into rules of their own by
+   src/engine/colour-rules.ts. Widths around text are set in em, so they
+   follow the desktop's font; pixels are drawn at the desktop's scale. Any
+   theme may override these classes. */
+
+/* The page's width, which the grid's page takes whole so that switching
+   pages leaves the dialog's width alone, and the preview's; the list
+   pages' columns below add up to the first. */
+.cplace-content {
+    spacing: 10px;
+    -cplace-page-width: 57.6em;
+    -cplace-preview-width: 27em;
+}
+
+.cplace-body {
+    spacing: 2.1em;
+}
+
+.cplace-arrangements-row {
+    spacing: 40px;
+}
+
+.cplace-windows-block {
+    width: 25.5em;
+}
+
+.cplace-right {
+    spacing: 6px;
+    width: 30em;
+}
+
+.cplace-column {
+    spacing: 2px;
+}
+
+.cplace-heading {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 6px 0 2px 0;
+}
+
+.cplace-hint {
+    font-size: 0.9em;
+    padding-top: 8px;
+}
+
+.cplace-indent {
+    padding-left: 26px;
+}
+
+.cplace-preset-row {
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.cplace-preset-line {
+    spacing: 2px;
+}
+
+/* A preset's delete mark stays quiet until pointed at. */
+.cplace-preset-delete {
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+/* The arrow on an application's row that sends its windows to the end,
+   lit while it does. */
+.cplace-end-toggle {
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.cplace-close-button {
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.cplace-variable-row {
+    spacing: 8px;
+}
+
+.cplace-variable-name {
+    min-width: 6.9em;
+}
+
+.cplace-spin {
+    border-width: 1px;
+    border-radius: 6px;
+}
+
+/* The pill's frame is the buttons' outline: a button of its own border
+   doubles against the frame wherever they touch, so each button carries
+   only the separator on its inner edge, against the entry. */
+.cplace-spin-button {
+    padding: 2px 14px;
+    border-width: 0;
+}
+
+.cplace-spin-minus {
+    border-right-width: 1px;
+    border-radius: 5px 0 0 5px;
+}
+
+.cplace-spin-plus {
+    border-left-width: 1px;
+    border-radius: 0 5px 5px 0;
+}
+
+/* The uneven vertical padding is measured, not aesthetic: the digits' ink
+   sits a pixel below the box centre when the box is centred, so the box
+   rides one pixel high to put the ink in the middle. */
+.cplace-spin-entry {
+    width: 4.8em;
+    border-width: 0;
+    background-color: transparent;
+    background-gradient-direction: none;
+    padding-top: 1px;
+    padding-bottom: 3px;
+}
+
+.cplace-steps {
+    padding-left: 10px;
+    spacing: 4px;
+}
+
+/* Rigid width: inside a squeezed row a box layout collapses the only
+   flexible children, and these buttons must never be that. */
+.cplace-step {
+    padding: 2px 0;
+    width: 3em;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* The tick marks and their containers are compacted in code, in
+   widgets.ts compactTick: the theme's own .check-box rules outrank a
+   same-specificity rule from an extension stylesheet. */
+.cplace-check,
+.cplace-radio {
+    padding: 0;
+}
+
+.cplace-preview-screen {
+    border-width: 2px;
+    border-radius: 4px;
+}
+
+.cplace-preview-slot {
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+/* The arrow in the slot of a window sent to the end. */
+.cplace-end-mark {
+    icon-size: 1em;
+}
+
+/* A recorded window with nowhere to go: its frame outlined, not filled. */
+.cplace-preview-missing {
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+.cplace-preview-caption {
+    font-size: 0.85em;
+    padding-top: 4px;
+}
+
+/* The corner brackets on the preview: two sides of a square hugging each
+   corner of the screen, the cascade's starting corner lit. Only the widths
+   differ per corner; the colour is one rule, so the active and hover states
+   need only recolour. */
+.cplace-corner {
+    width: 18px;
+    height: 18px;
+    border-width: 0;
+}
+
+.cplace-corner-top-left {
+    border-top-width: 3px;
+    border-left-width: 3px;
+}
+
+.cplace-corner-top-right {
+    border-top-width: 3px;
+    border-right-width: 3px;
+}
+
+.cplace-corner-bottom-left {
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.cplace-corner-bottom-right {
+    border-bottom-width: 3px;
+    border-right-width: 3px;
+}
+
+/* The grid's page: the window it places, the layouts, and the cells. */
+.cplace-grid-page {
+    spacing: 4px;
+}
+
+.cplace-window-header {
+    spacing: 8px;
+}
+
+.cplace-layouts {
+    spacing: 4px;
+    padding-bottom: 6px;
+}
+
+.cplace-layout-button {
+    padding: 2px 10px;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* A cell is a button a little inside its share of the screen; the chosen
+   cells are lit as the preview's slots are, and the keyboard's cursor
+   among them carries an edge in the dialog's text colour. */
+.cplace-grid-cell {
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+/* Where the window stands now, drawn behind the cells. */
+.cplace-grid-ghost {
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+/* The columns page's area: its cells faint beneath the preview's slots,
+   lighting under the pointer, and the chosen area outlined above them,
+   following the pointer between the two clicks that choose it. */
+.cplace-area-cell {
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+.cplace-area-outline {
+    border-width: 2px;
+    border-radius: 2px;
+}
