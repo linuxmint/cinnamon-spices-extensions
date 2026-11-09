@@ -484,7 +484,7 @@ class RoundedCorners {
          // under the window). Under an opaque square title bar the extra shadow is hidden.
          // Bottom corners follow the setting, since they are more often translucent.
          data.shadowEffect.update(width, height, [margin, margin, margin + clip[2], margin + clip[3]],
-                                  Object.assign({ radius: data.radius, top: true, bottom: bottom,
+                                  Object.assign({ radius: data.effect.effectiveRadius, top: true, bottom: bottom,
                                                   cutoutInset: BORDER_OUTSET + 1 }, shadow));
          data.shadowActor.show();
       } else {

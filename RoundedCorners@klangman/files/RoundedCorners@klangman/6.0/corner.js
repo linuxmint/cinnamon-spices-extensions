@@ -313,7 +313,7 @@ var CornerEffect = (typeof global === 'undefined') ?
             }
         }
 
-        update_radius() {
+        get effectiveRadius() {
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
             let radius = Math.min(
                 this.radius * theme_context.scale_factor,
@@ -322,7 +322,11 @@ var CornerEffect = (typeof global === 'undefined') ?
             if (this._clip_width >= 0 || this._clip_height >= 0)
                 radius = Math.min(radius, this._clip_width / 2, this._clip_height / 2);
 
-            this.set_uniform_value('radius', parseFloat(radius - 1e-6));
+            return radius;
+        }
+
+        update_radius() {
+            this.set_uniform_value('radius', parseFloat(this.effectiveRadius - 1e-6));
         }
 
         get width() {
