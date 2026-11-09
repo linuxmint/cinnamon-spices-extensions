@@ -1,0 +1,10 @@
+{
+    "uuid": "display-scale-extension@rasmarc",
+    "name": "Display Scale - Additional Features",
+    "description": "Optional panel, desklet and OSD150 adjustments for the Display Scale applet.",
+    "version": "1.0.4",
+    "author": "rasmarc",
+    "cinnamon-version": [
+        "6.6"
+    ]
+}
