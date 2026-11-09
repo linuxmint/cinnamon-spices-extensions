@@ -21,7 +21,9 @@ const Clutter = imports.gi.Clutter;
 const Cogl = imports.gi.Cogl;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Meta = imports.gi.Meta;
 const Main = imports.ui.main;
 const { PanelLoc } = imports.ui.panel;
 const Settings = imports.ui.settings;
@@ -32,6 +34,7 @@ const Mainloop = imports.mainloop;
 
 const ERROR_ICON_NAME = 'face-sad-symbolic';
 const DEFAULT_ICON_SIZE = 128;
+const IS_WAYLAND = typeof Meta.is_wayland_compositor === "function" && Meta.is_wayland_compositor();
 
 function MyExtension(meta) {
 	this._init(meta);
@@ -69,6 +72,15 @@ MyExtension.prototype = {
 		for (let prop of ['enabled', 'height', 'resizable', 'autohide']) {
 			this._signals.connect(global.settings, 'changed::panels-'+prop, on_desktop_size_changed);
 		}
+
+		// Older Muffin versions emit restacked on Meta.Screen.
+		let stackSource = [global.display, global.screen].find(source =>
+			source && GObject.signal_lookup('restacked', source.constructor.$gtype));
+		if (stackSource)
+			this._signals.connect(stackSource, 'restacked', () => {
+				for (let wm of this.watermarks)
+					wm.update_layer();
+			});
 
 		this._init_watermarks();
 		this._detect_os();
@@ -167,11 +179,46 @@ Watermark.prototype = {
 		this.actor = new St.Bin();
 		this.watermark = null;
 
-		global.background_actor.add_actor(this.actor);
+		this.update_layer();
 
 		/* Position can't be calculated until size is set, and that is async */
 		this.actor.connect('queue-redraw', () => this.update_position());
 		this.update();
+	},
+
+	update_layer: function() {
+		let layer = global.bottom_window_group;
+		if (!IS_WAYLAND) {
+			// The wallpaper actor may be clipped to the primary monitor on X11.
+			let desktop = global.get_window_actors().find(actor =>
+				actor.meta_window && actor.meta_window.get_window_type() === Meta.WindowType.DESKTOP &&
+				actor.get_parent());
+			let background = global.background_actor;
+			let backgroundGroup = background.get_parent();
+			layer = desktop ? desktop.get_parent() :
+				(backgroundGroup === global.window_group ? background : backgroundGroup);
+		}
+
+		let parent = this.actor.get_parent();
+		if (parent !== layer) {
+			if (parent)
+				this.actor.reparent(layer);
+			else
+				layer.add_actor(this.actor);
+		}
+
+		// Keep the watermark above the desktop surfaces and below normal windows.
+		let children = layer.get_children();
+		let desktopIndex = children.length - 1;
+		while (desktopIndex >= 0) {
+			let window = children[desktopIndex].meta_window;
+			if (window && window.get_window_type() === Meta.WindowType.DESKTOP)
+				break;
+			desktopIndex--;
+		}
+		if (desktopIndex >= 0 && (parent !== layer || children.indexOf(this.actor) < desktopIndex))
+			layer.set_child_above_sibling(this.actor, children[desktopIndex]);
+		this.update_position();
 	},
 
 	update: function() {
@@ -228,7 +275,15 @@ Watermark.prototype = {
 		box = this.manager.position_y === 50 ? this.monitor : desktop;
 		let y = box.y + (box.height - this.actor.height) * this.manager.position_y / 100;
 
-		this.actor.set_position(Math.floor(x), Math.floor(y));
+		// The desktop groups translate their children in stage coordinates.
+		let [originX, originY] = this.actor.get_parent().get_transformed_position();
+		this.actor.set_position(Math.floor(x) - Math.round(originX), Math.floor(y) - Math.round(originY));
+	},
+
+	// Wayland lays out actors in logical units. Watermark sizes are image pixels.
+	get_output_scale: function() {
+		return IS_WAYLAND && typeof global.display.get_monitor_scale === "function"
+			? global.display.get_monitor_scale(this.monitor.index) : 1;
 	},
 
 	get_watermark: function () {
@@ -249,11 +304,12 @@ Watermark.prototype = {
 		let icon_name = path_or_name.endsWith('-symbolic') ? path_or_name : path_or_name + '-symbolic';
 		if (Gtk.IconTheme.get_default().has_icon(icon_name)) { // Icon name
 			let icon_size = this.manager.use_custom_size ? size : DEFAULT_ICON_SIZE;
+			icon_size = Math.round(icon_size / this.get_output_scale());
 			return new St.Icon({ icon_name, icon_size, icon_type: St.IconType.SYMBOLIC });
 		}
 
 		global.logError(this.manager.meta.uuid + ": watermark file not found (" + path_or_name + ")");
-		return new St.Icon({ icon_name: ERROR_ICON_NAME, icon_size: DEFAULT_ICON_SIZE, icon_type: St.IconType.SYMBOLIC });
+		return new St.Icon({ icon_name: ERROR_ICON_NAME, icon_size: Math.round(DEFAULT_ICON_SIZE / this.get_output_scale()), icon_type: St.IconType.SYMBOLIC });
 	},
 
 	get_image: function(path, size) {
@@ -274,9 +330,10 @@ Watermark.prototype = {
 		               pixbuf.get_height(),
 		               pixbuf.get_rowstride());
 
+		let scale = this.get_output_scale();
 		return new Clutter.Actor({ content: image,
-		                           width: pixbuf.get_width(),
-		                           height: pixbuf.get_height() });
+		                           width: pixbuf.get_width() / scale,
+		                           height: pixbuf.get_height() / scale });
 	},
 
 	invert_pixels: function(pixbuf) {
