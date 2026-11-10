@@ -238,8 +238,9 @@ class CompizWindowsEffectExtension {
     }
 
     enable() {
-        this._upClient = new UPowerGlib.Client();
-        this._upDisplayDevice = this._upClient.get_display_device();
+        //Avoid unnecessary creation of UPowerGlib.Client(), which causes a crash in libupower-glib during GC in CJS 140.
+        this._upClient = null;
+        this._upDisplayDevice = null;
 
         this.beginGrabOpId = global.display.connect('grab-op-begin', this.onBeginGrabOp.bind(this));
         this.endGrabOpId = global.display.connect('grab-op-end', this.onEndGrabOp.bind(this));
@@ -292,6 +293,7 @@ class CompizWindowsEffectExtension {
         let entry = excludeList.find( (element) => {if (element.application == appId || element.application == wmclass) {return true;}} );
         if (!entry) {
             let power = ( settings.settings.getValue("power-onbattery") === true &&
+                  this._upDisplayDevice &&
                   this._upDisplayDevice.state === UPowerGlib.DeviceState.DISCHARGING &&
                   this._upDisplayDevice.percentage < settings.settings.getValue("power-percent") );
             if (power && settings.settings.getValue("powerPresetList") === Preset.None) {
@@ -509,7 +511,8 @@ const WobblyEffect = new Lang.Class({
                 this.ended = true;
             } else {
                 this.wobblyModel.grab(this.mouseX - this.newX, this.mouseY - this.newY);
-                this.moveEvent = actor.connect('allocation-changed', Lang.bind(this, this.on_move_event));
+                // In Cinnamon 6.8 (Muffin 6.8), the 'allocation-changed' signal has been removed, so we connect to 'notify::allocation' instead.
+                this.moveEvent = actor.connect('notify::allocation', Lang.bind(this, this.on_move_event));
                 this.resizedEvent = actor.connect('notify::size', Lang.bind(this, this.on_resized_event));
             }
 
