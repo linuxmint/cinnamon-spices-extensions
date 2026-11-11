@@ -122,15 +122,15 @@ msgstr "Ευθυγράμμιση δοκού"
 
 #. settings-schema.json->dock-alignment->options
 msgid "Start"
-msgstr "Εκκίνηση"
+msgstr "Στην αρχή"
 
 #. settings-schema.json->dock-alignment->options
 msgid "Center"
-msgstr "Κέντρο"
+msgstr "Στο κέντρο"
 
 #. settings-schema.json->dock-alignment->options
 msgid "End"
-msgstr "Τέλος"
+msgstr "Στο τέλος"
 
 #. settings-schema.json->full-width->description
 msgid "Extend dock"
@@ -199,7 +199,7 @@ msgid ""
 "If disabled, you can still access the settings by right-clicking on the "
 "edges of the dock."
 msgstr ""
-"αν είναι απενεργοποιημένο, μπορείτε ακόμα να αποκτήσετε πρόσβαση στις "
+"Αν είναι απενεργοποιημένο, μπορείτε ακόμα να αποκτήσετε πρόσβαση στις "
 "ρυθμίσεις κάνοντας δεξί κλικ στις άκρες της δοκού."
 
 #. settings-schema.json->show-settings-icon->description
