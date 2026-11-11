@@ -61,5 +61,12 @@ void main() {
   float alpha = clamp(noise + 1.0 + fadeDelay - (3.0 + fadeDelay) * progress, 0.0, 1.0);
   oColor.a *= alpha;
 
+  // As a raise effect, most of the texture is transparent (only the windows that covered the
+  // raised window are in it). The tints above change the colour of those transparent pixels
+  // too; make sure nothing of them can show, however the output is blended.
+  if (uRaise > 0.5 && oColor.a <= 0.0) {
+    oColor = vec4(0.0);
+  }
+
   setOutputColor(oColor);
 }

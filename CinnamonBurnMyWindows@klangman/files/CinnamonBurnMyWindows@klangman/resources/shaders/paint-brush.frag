@@ -15,15 +15,30 @@
 // The content from common.glsl is automatically prepended to each shader effect.
 
 // See assets/README.md for how this texture was created.
+// brush.png is a 2048x1024 atlas: the left half holds brush sizes 1-3 in its R, G and B
+// channels, the right half holds brush size 4 (grey). It used to be a single RGBA image,
+// but St.TextureCache uploads with premultiplied alpha, which would scale R, G and B by
+// the size-4 mask in the alpha channel.
 uniform sampler2D uBrushTexture;
 uniform float uBrushSize;
 
 const float SHADOW_WIDTH = 0.03;
 const float SHADOW_STEPS = 10.0;
 
+// Returns the brush mask value of the selected brush size at texCoord.
+float getBrush(vec2 texCoord) {
+  int size = int(uBrushSize - 1.0);
+  // Texel centres of one half, so linear filtering never samples the other half.
+  float u = (0.5 + clamp(texCoord.x, 0.0, 1.0) * 1023.0) / 2048.0;
+  if (size < 3) {
+    return texture2D(uBrushTexture, vec2(u, texCoord.y))[size];
+  }
+  return texture2D(uBrushTexture, vec2(u + 0.5, texCoord.y)).r;
+}
+
 // Returns 1.0 if the window texture at the given texCoord should be painted.
 float getMask(vec2 texCoord, float progress) {
-  float brush = texture2D(uBrushTexture, texCoord)[int(uBrushSize - 1.0)];
+  float brush = getBrush(texCoord);
   if (uForOpening) {
     return step(brush, progress);
   }

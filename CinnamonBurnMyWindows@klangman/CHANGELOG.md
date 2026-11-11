@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.2.0
+
+* New effects: **Materialize** (by eboye), **Shredder** and **Venetian Blinds** (by Ido Greenfeld), all ported from the Gnome version.
+* Added a new **Raise** effect event type using some of the existing effects (up to 8 of them) that activates when a window that was covered (fully or partly) by other windows is raised (e.g. given the focus).
+* New **Custom effect settings** which allow users to specify unique effect settings for different event types. e.g. you can have a red Fire effect for window opening and a blue Fire effect for window closing. The "Gear" icon is used for this, which now appears beside all effect types for general events, power events, in the application specific list and the random effect list.
+* Improvements to **Aperture Panels**: New **Star Field**, **Nebula** and **Transparent** backdrop options, an Easter Egg (can you spot it?), a more realistic flip animation and I added a command line script you can use to create sound effects using sound files from your copy of Portal 2.
+* Improvement to **Morph** effect: Added a new **Pixelate** style option.
+* Improvement to **Wormhole** effect: The bounce looks more natural.
+* Fix for Layered effects where higher z-order windows were not moving in lock-step during an in-progress animation.
+* Fix some compatibility issues with the upcoming Cinnamon 6.8 release.
+* The button used to add entries to the Application Specific list is now a window picker: click it, then click any window to add its application to the list.
+
 ## 1.1.0
 
 * Added a Cinnamon 6.7.6 branch. This version includes the 5 missing Gnome effect (Broken Glass, Matrix, Paint Brush, Snap of Disintegration and TRex Attack). Cinnamon 6.7.6-unstable has the missing API needed to enable these effects, and this 6.7.6 support will automatically be used in Cinnamon 6.8 when it's released later this year.

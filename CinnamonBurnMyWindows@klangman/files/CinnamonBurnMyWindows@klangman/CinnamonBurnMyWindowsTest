@@ -6,4 +6,4 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib 
 
-os.execvp(GLib.get_home_dir() + "/.local/share/cinnamon/extensions/CinnamonBurnMyWindows@klangman/CinnamonBurnMyWindowsTest.py", (" ",) + tuple(sys.argv[1:]))
+os.execvp(GLib.get_user_data_dir() + "/cinnamon/extensions/CinnamonBurnMyWindows@klangman/CinnamonBurnMyWindowsTest.py", (" ",) + tuple(sys.argv[1:]))
