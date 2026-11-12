@@ -11,7 +11,6 @@ const Mainloop = imports.mainloop;
 const DND = imports.ui.dnd;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
-const Gdk = imports.gi.Gdk;
 const Gettext = imports.gettext;
 
 let UUID;
@@ -2122,28 +2121,12 @@ class DashDock {
         return this._pickerIndexToLayoutIndex(pickerIdx);
     }
 
-    // The settings picker (MonitorSelector.py) lists screens in GDK order, which puts the
-    // primary screen first, while Cinnamon's layoutManager may order them differently.
-    // Translate the picker's index to the layoutManager index by matching geometry.
+    // The settings picker (MonitorSelector.py) lists screens in GDK/Xinerama order,
+    // while Main.layoutManager uses Muffin's logical order, which can differ.
     _pickerIndexToLayoutIndex(pickerIdx) {
-        try {
-            let display = Gdk.Display.get_default();
-            if (!display || pickerIdx >= display.get_n_monitors()) return pickerIdx;
-            let gdkMon = display.get_monitor(pickerIdx);
-            if (!gdkMon) return pickerIdx;
-            let g = gdkMon.get_geometry();
-            let s = gdkMon.get_scale_factor() || 1;
-            let monitors = Main.layoutManager.monitors;
-            for (let i = 0; i < monitors.length; i++) {
-                let m = monitors[i];
-                if (m.x === g.x * s && m.y === g.y * s && m.width === g.width * s && m.height === g.height * s) {
-                    return i;
-                }
-            }
-        } catch (e) {
-            global.logError(`[${UUID}] Could not map monitor index: ${e}`);
-        }
-        return pickerIdx;
+        if (pickerIdx >= global.display.get_n_monitors()) return pickerIdx;
+        let logicalIdx = global.display.xinerama_index_to_logical_index(pickerIdx);
+        return logicalIdx >= 0 ? logicalIdx : pickerIdx;
     }
 
     _onFollowCursorChanged() {
