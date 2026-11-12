@@ -1,0 +1,137 @@
+{
+    "section-color": {
+        "type": "section",
+        "description": "Color"
+    },
+    "accent-color": {
+        "type": "colorchooser",
+        "description": "Fixed accent color (used in 'manual' mode)",
+        "tooltip": "Leave default purple and switch mode to change it",
+        "default": "#6d4aff"
+    },
+        "accent-hex": {
+        "type": "entry",
+        "description": "Manual hex color (overrides the picker)",
+        "tooltip": "Six digits with #, e.g. #6d4aff. Used when Color mode is manual and this field is valid.",
+        "default": ""
+    },
+    "color-mode": {
+        "type": "combobox",
+        "description": "Color mode",
+        "tooltip": "manual: use the color above; random: new random color; none: keep the existing accent",
+        "default": "none",
+        "options": {
+            "none": "none",
+            "manual": "manual",
+            "random": "random"
+        }
+    },
+    "palette": {
+        "type": "combobox",
+        "description": "Palette constraint",
+        "tooltip": "Constrains the chosen color, or transforms the existing accent when no color is applied",
+        "default": "soft",
+        "options": {
+            "none": "none",
+            "pale": "pale",
+            "vibrant": "vibrant",
+            "neon": "neon",
+            "grayscale": "grayscale",
+            "dark": "dark",
+            "soft": "soft"
+        }
+    },
+    "section-pre": {
+        "type": "section",
+        "description": "Recommended CSS selectors"
+    },
+    "s-hover": { "type": "switch", "description": "hover", "default": true },
+    "s-active": { "type": "switch", "description": "active", "default": true },
+    "s-checked": { "type": "switch", "description": "checked", "default": true },
+    "s-separator": { "type": "switch", "description": "separator", "default": true },
+    "s-calendar-cin": { "type": "switch", "description": "calendar-cin", "default": true },
+    "s-menu-app": { "type": "switch", "description": "menu-app", "default": true },
+    "section-other": {
+        "type": "section",
+        "description": "Not recommended (unchecked by default)"
+    },
+    "s-headerbar": { "type": "switch", "description": "headerbar", "default": false },
+    "s-titlebar": { "type": "switch", "description": "titlebar", "default": false },
+    "s-decoration": { "type": "switch", "description": "decoration", "default": false },
+    "s-wm-border": { "type": "switch", "description": "wm-border", "default": false },
+    "s-dialog": { "type": "switch", "description": "dialog", "default": false },
+        "s-expo": { "type": "switch", "description": "expo", "default": false },
+    "s-sidebar": { "type": "switch", "description": "sidebar", "default": false },
+    "s-paned": { "type": "switch", "description": "paned", "default": false },
+    "s-statusbar": { "type": "switch", "description": "statusbar", "default": false },
+    "s-toolbar": { "type": "switch", "description": "toolbar", "default": false },
+    "s-frame": { "type": "switch", "description": "frame", "default": false },
+    "s-border": { "type": "switch", "description": "border", "default": false },
+    "s-infobar": { "type": "switch", "description": "infobar", "default": false },
+    "s-button": { "type": "switch", "description": "button", "default": false },
+    "s-entry": { "type": "switch", "description": "entry", "default": false },
+    "s-switch-el": { "type": "switch", "description": "switch", "default": false },
+    "s-checkbox": { "type": "switch", "description": "checkbox", "default": false },
+    "s-radio": { "type": "switch", "description": "radio", "default": false },
+    "s-slider": { "type": "switch", "description": "slider", "default": false },
+    "s-progress": { "type": "switch", "description": "progress", "default": false },
+    "s-scrollbar": { "type": "switch", "description": "scrollbar", "default": false },
+    "s-spinbutton": { "type": "switch", "description": "spinbutton", "default": false },
+    "s-combobox": { "type": "switch", "description": "combobox", "default": false },
+    "s-tabs": { "type": "switch", "description": "tabs", "default": false },
+    "s-treeview": { "type": "switch", "description": "treeview", "default": false },
+    "s-rows": { "type": "switch", "description": "rows", "default": false },
+    "s-link": { "type": "switch", "description": "link", "default": false },
+    "s-spinner-el": { "type": "switch", "description": "spinner", "default": false },
+    "s-workspace": { "type": "switch", "description": "workspace", "default": false },
+    "s-alt-tab": { "type": "switch", "description": "alt-tab", "default": false },
+    "s-desklet": { "type": "switch", "description": "desklet", "default": false },
+    "s-window-list": { "type": "switch", "description": "window-list", "default": false },
+    "s-grouped-list": { "type": "switch", "description": "grouped-list", "default": false },
+    "s-focus": { "type": "switch", "description": "focus", "default": false },
+    "s-focus-visible": { "type": "switch", "description": "focus-visible", "default": false },
+    "s-disabled": { "type": "switch", "description": "disabled", "default": false },
+    "s-visited": { "type": "switch", "description": "visited", "default": false },
+    "s-indeterminate": { "type": "switch", "description": "indeterminate", "default": false },
+    "s-backdrop": { "type": "switch", "description": "backdrop", "default": false },
+    "s-drop": { "type": "switch", "description": "drop", "default": false },
+    "s-drag": { "type": "switch", "description": "drag", "default": false },
+    "section-caution": {
+        "type": "section",
+        "description": "Use with caution (background carriers)"
+    },
+    "s-selected": { "type": "switch", "description": "selected", "default": false },
+    "s-tooltip-el": { "type": "switch", "description": "tooltip", "default": false },
+    "s-menu-cin": { "type": "switch", "description": "menu-cin", "default": false },
+    "s-popover": { "type": "switch", "description": "popover", "default": false },
+    "s-menu": { "type": "switch", "description": "menu", "default": false },
+    "s-notification": { "type": "switch", "description": "notification", "default": false },
+    "s-osd": { "type": "switch", "description": "osd", "default": false },
+    "s-panel": { "type": "switch", "description": "panel", "default": false },
+    "section-custom": {
+        "type": "section",
+        "description": "Custom CSS selectors (advanced)"
+    },
+    "custom-css": {
+        "type": "entry",
+        "description": "Extra CSS selectors",
+        "tooltip": "Comma or semicolon separated. Terminate with , or ; to apply. Generic selectors recolor whole blocks: use with caution.",
+        "default": ""
+    },
+    "custom-css-help": {
+        "type": "label",
+        "description": "Syntax: separate several selectors with , or ; \nThe shift starts when a separator is typed. \nExamples: .menu-application-button, .menu-favorites-box,"
+    },
+    "custom-css-help2": {
+        "type": "label",
+        "description": "Find a selector for an Applet: grep -rn 'application' ~/.local/share/cinnamon/applets/Cinnamenu@json/ \nOr find a selector in a Theme : grep -i 'menu' /usr/share/cinnamon/theme/cinnamon.css. \nSee the README for examples and grep tips."
+    },
+    "custom-css-help3": {
+        "type": "label",
+        "description": "There is a command-line version in Python : CinnShift CLI for scripting theme shifting at startup or via cron, with per-selector flags and variant control. See the README."
+    },
+    "custom-css-help4": {
+        "type": "label",
+        "description": "MIT License Copyright (c) 2026 pzim-devdata \nhttps://github.com/pzim-devdata/CinnShift"
+    }
+}
