@@ -1,0 +1,386 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": ["general-page", "grids-page", "spacing-page"],
+    "general-page": {
+      "type": "page",
+      "title": "General",
+      "sections": ["hotkeys-section", "tiling-section", "keybindings-section"]
+    },
+    "spacing-page": {
+      "type": "page",
+      "title": "Spacing",
+      "sections": ["gaps-section", "reserved-section"]
+    },
+    "hotkeys-section": {
+      "type": "section",
+      "title": "Hotkeys",
+      "keys": ["hotkey", "use-push-tile"]
+    },
+    "tiling-section": {
+      "type": "section",
+      "title": "Tiling options",
+      "keys": [
+        "center-on-window",
+        "tile-dialogs",
+        "tile-toolboxes",
+        "show-autotile",
+        "overflow-windows"
+      ]
+    },
+    "gaps-section": {
+      "type": "section",
+      "title": "Gaps",
+      "keys": ["window-gap", "edge-gap"]
+    },
+    "reserved-section": {
+      "type": "section",
+      "title": "Reserved space",
+      "keys": [
+        "reserved-scope",
+        "reserved-top",
+        "reserved-bottom",
+        "reserved-left",
+        "reserved-right"
+      ]
+    },
+    "grids-page": {
+      "type": "page",
+      "title": "Grids",
+      "sections": [
+        "grid-1-section",
+        "grid-2-section",
+        "grid-3-section",
+        "grid-4-section"
+      ]
+    },
+    "grid-1-section": {
+      "type": "section",
+      "title": "Grid 1",
+      "keys": [
+        "grid-1-cols",
+        "grid-1-rows",
+        "grid-1-layout",
+        "grid-1-name",
+        "grid-1-tooltip"
+      ]
+    },
+    "grid-2-section": {
+      "type": "section",
+      "title": "Grid 2",
+      "keys": [
+        "grid-2-cols",
+        "grid-2-rows",
+        "grid-2-layout",
+        "grid-2-name",
+        "grid-2-tooltip"
+      ]
+    },
+    "grid-3-section": {
+      "type": "section",
+      "title": "Grid 3",
+      "keys": [
+        "grid-3-cols",
+        "grid-3-rows",
+        "grid-3-layout",
+        "grid-3-name",
+        "grid-3-tooltip"
+      ]
+    },
+    "grid-4-section": {
+      "type": "section",
+      "title": "Grid 4",
+      "keys": [
+        "grid-4-cols",
+        "grid-4-rows",
+        "grid-4-layout",
+        "grid-4-name",
+        "grid-4-tooltip"
+      ]
+    },
+    "keybindings-section": {
+      "type": "section",
+      "title": "Keybindings",
+      "keys": ["grid-keys-legend"]
+    }
+  },
+  "hotkey": {
+    "type": "keybinding",
+    "default": "<Super>t",
+    "description": "Tile the focused window",
+    "tooltip": "Keyboard shortcut that opens Tiler for the focused window."
+  },
+  "use-push-tile": {
+    "type": "switch",
+    "default": true,
+    "description": "Use Cinnamon's tiling shortcuts",
+    "tooltip": "Super with an arrow key tiles the focused window as it always has, but with Tiler's gaps and reserved space. Turn this off to leave those shortcuts to Cinnamon."
+  },
+  "grid-keys-legend": {
+    "type": "custom",
+    "file": "keybindings.py",
+    "widget": "KeybindingsWidget"
+  },
+  "center-on-window": {
+    "type": "switch",
+    "default": false,
+    "description": "Center the grid on the focused window",
+    "tooltip": "The grid normally appears in the middle of the screen. Turn this on to have it appear over the window being tiled instead."
+  },
+  "tile-dialogs": {
+    "type": "switch",
+    "default": false,
+    "description": "Tile dialog windows",
+    "tooltip": "Ordinary windows are always tiled. This adds dialogs such as preferences and file choosers; dialogs that cannot be resized are skipped."
+  },
+  "tile-toolboxes": {
+    "type": "switch",
+    "default": false,
+    "description": "Tile toolboxes and palettes",
+    "tooltip": "Floating tool windows, like the ones used by image editors."
+  },
+  "show-autotile": {
+    "type": "switch",
+    "default": true,
+    "description": "Show auto-tile actions on the grid",
+    "tooltip": "Adds a row of arrangements to the grid that tile every window on the workspace at once: a main window beside the rest, or everything shared out equally, each newcomer halving the largest cell."
+  },
+  "overflow-windows": {
+    "type": "combobox",
+    "default": "ignore",
+    "description": "Windows that do not fit",
+    "tooltip": "When an auto-tile arrangement has no room for a window, this says what becomes of it: left where it was, taken out of the way, or gathered around the middle of the screen.",
+    "options": {
+      "Ignore": "ignore",
+      "Minimize": "minimize",
+      "Center": "center",
+      "Cascade": "cascade"
+    }
+  },
+  "window-gap": {
+    "type": "spinbutton",
+    "default": 0,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "pixels",
+    "description": "Gap between windows",
+    "tooltip": "Space left between two windows tiled next to each other."
+  },
+  "edge-gap": {
+    "type": "spinbutton",
+    "default": 0,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "pixels",
+    "description": "Gap at screen edges",
+    "tooltip": "Space left between a tiled window and the edge of the usable screen area."
+  },
+  "reserved-scope": {
+    "type": "combobox",
+    "default": "all",
+    "description": "Reserve space on",
+    "tooltip": "Choose whether reserved space applies to every monitor or only the primary monitor.",
+    "options": {
+      "All monitors": "all",
+      "Primary monitor only": "primary"
+    }
+  },
+  "reserved-top": {
+    "type": "spinbutton",
+    "default": 0,
+    "min": 0,
+    "max": 500,
+    "step": 1,
+    "units": "pixels",
+    "description": "Reserved space at the top",
+    "tooltip": "Windows are never tiled into this area. Useful for Conky or docks that do not reserve space themselves."
+  },
+  "reserved-bottom": {
+    "type": "spinbutton",
+    "default": 0,
+    "min": 0,
+    "max": 500,
+    "step": 1,
+    "units": "pixels",
+    "description": "Reserved space at the bottom",
+    "tooltip": "Windows are never tiled into this area. Useful for Conky or docks that do not reserve space themselves."
+  },
+  "reserved-left": {
+    "type": "spinbutton",
+    "default": 0,
+    "min": 0,
+    "max": 500,
+    "step": 1,
+    "units": "pixels",
+    "description": "Reserved space on the left",
+    "tooltip": "Windows are never tiled into this area. Useful for Conky or docks that do not reserve space themselves."
+  },
+  "reserved-right": {
+    "type": "spinbutton",
+    "default": 0,
+    "min": 0,
+    "max": 500,
+    "step": 1,
+    "units": "pixels",
+    "description": "Reserved space on the right",
+    "tooltip": "Windows are never tiled into this area. Useful for Conky or docks that do not reserve space themselves."
+  },
+  "grid-1-cols": {
+    "type": "spinbutton",
+    "default": 2,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "columns",
+    "description": "Columns",
+    "tooltip": "How many columns this grid is divided into."
+  },
+  "grid-1-rows": {
+    "type": "spinbutton",
+    "default": 2,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "rows",
+    "description": "Rows",
+    "tooltip": "How many rows this grid is divided into."
+  },
+  "grid-1-layout": {
+    "type": "entry",
+    "default": "2x2",
+    "description": "Layout",
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+  },
+  "grid-1-name": {
+    "type": "entry",
+    "default": "",
+    "description": "Name",
+    "tooltip": "What this grid is called on the grid selector. Long names are shortened to fit. Left empty, it is named after its size."
+  },
+  "grid-1-tooltip": {
+    "type": "entry",
+    "default": "",
+    "description": "Description",
+    "tooltip": "Shown when hovering this grid on the selector."
+  },
+  "grid-2-cols": {
+    "type": "spinbutton",
+    "default": 3,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "columns",
+    "description": "Columns",
+    "tooltip": "How many columns this grid is divided into."
+  },
+  "grid-2-rows": {
+    "type": "spinbutton",
+    "default": 2,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "rows",
+    "description": "Rows",
+    "tooltip": "How many rows this grid is divided into."
+  },
+  "grid-2-layout": {
+    "type": "entry",
+    "default": "1,2,1 x 1,1",
+    "description": "Layout",
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+  },
+  "grid-2-name": {
+    "type": "entry",
+    "default": "",
+    "description": "Name",
+    "tooltip": "What this grid is called on the grid selector. Long names are shortened to fit. Left empty, it is named after its size."
+  },
+  "grid-2-tooltip": {
+    "type": "entry",
+    "default": "",
+    "description": "Description",
+    "tooltip": "Shown when hovering this grid on the selector."
+  },
+  "grid-3-cols": {
+    "type": "spinbutton",
+    "default": 4,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "columns",
+    "description": "Columns",
+    "tooltip": "How many columns this grid is divided into."
+  },
+  "grid-3-rows": {
+    "type": "spinbutton",
+    "default": 4,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "rows",
+    "description": "Rows",
+    "tooltip": "How many rows this grid is divided into."
+  },
+  "grid-3-layout": {
+    "type": "entry",
+    "default": "4x4",
+    "description": "Layout",
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+  },
+  "grid-3-name": {
+    "type": "entry",
+    "default": "",
+    "description": "Name",
+    "tooltip": "What this grid is called on the grid selector. Long names are shortened to fit. Left empty, it is named after its size."
+  },
+  "grid-3-tooltip": {
+    "type": "entry",
+    "default": "",
+    "description": "Description",
+    "tooltip": "Shown when hovering this grid on the selector."
+  },
+  "grid-4-cols": {
+    "type": "spinbutton",
+    "default": 6,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "columns",
+    "description": "Columns",
+    "tooltip": "How many columns this grid is divided into."
+  },
+  "grid-4-rows": {
+    "type": "spinbutton",
+    "default": 6,
+    "min": 1,
+    "max": 16,
+    "step": 1,
+    "units": "rows",
+    "description": "Rows",
+    "tooltip": "How many rows this grid is divided into."
+  },
+  "grid-4-layout": {
+    "type": "entry",
+    "default": "6x6",
+    "description": "Layout",
+    "tooltip": "Columns, then rows. Sizes can be given one by one to make some tracks larger than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the width of its neighbors. Changing the numbers above rewrites this, and anything that cannot be read falls back to them."
+  },
+  "grid-4-name": {
+    "type": "entry",
+    "default": "",
+    "description": "Name",
+    "tooltip": "What this grid is called on the grid selector. Long names are shortened to fit. Left empty, it is named after its size."
+  },
+  "grid-4-tooltip": {
+    "type": "entry",
+    "default": "",
+    "description": "Description",
+    "tooltip": "Shown when hovering this grid on the selector."
+  },
+  "last-grid": {
+    "type": "generic",
+    "default": 0
+  }
+}
