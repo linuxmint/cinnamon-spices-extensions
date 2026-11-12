@@ -48,42 +48,42 @@ msgid ""
 "Click a window to add its application to the application specific rules.  "
 "Esc or right-click to cancel."
 msgstr ""
+"Haz clic en una ventana para añadir su aplicación a las reglas específicas "
+"de la aplicación.  Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
 
 #. 6.2/extension.js:1374 6.7.6/extension.js:1376
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
+"No se ha podido iniciar el selector de ventanas. Cierra los menús que tengas "
+"abiertos e inténtalo de nuevo."
 
 #. 6.2/extension.js:1448 6.7.6/extension.js:1450
-#, fuzzy
 msgid "(unknown application)"
-msgstr "Aplicación"
+msgstr "(aplicación desconocida)"
 
 #. 6.2/extension.js:1488 6.7.6/extension.js:1490
-#, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
 "therefore application specific effects can not be applied to it"
 msgstr ""
-"No se puede determinar la aplicación o la WM_CLASS de la ventana previamente "
-"enfocada, por lo que no se pueden aplicar efectos específicos de la "
-"aplicación a esa ventana"
+"No se ha podido determinar la aplicación ni el WM_CLASS de esa ventana, por "
+"lo que no se le pueden aplicar los efectos específicos de la aplicación"
 
 #. 6.2/extension.js:1496 6.7.6/extension.js:1498
 msgid "There is already an entry for"
-msgstr ""
+msgstr "Ya hay una entrada para"
 
 #. 6.2/extension.js:1497 6.7.6/extension.js:1499
-#, fuzzy
 msgid "not enabled"
-msgstr "Habilitado"
+msgstr "no está habilitado"
 
 #. 6.2/extension.js:1510 6.7.6/extension.js:1512
 msgid "Added an entry for"
-msgstr ""
+msgstr "Se ha añadido una entrada para"
 
 #. 6.2/extension.js:1510 6.7.6/extension.js:1512
 msgid "Choose its effects, then enable it."
-msgstr ""
+msgstr "Elige los efectos y, a continuación, actívalo."
 
 #. effects/AperturePanels.js:199
 msgid "Aperture Panels"
@@ -175,7 +175,7 @@ msgstr "Incinerar"
 
 #. effects/Materialize.js:104
 msgid "Materialize"
-msgstr ""
+msgstr "Materializar"
 
 #. effects/Matrix.js:127
 msgid "Matrix"
@@ -265,7 +265,7 @@ msgstr "Deformación RGB"
 
 #. effects/Shredder.js:104
 msgid "Shredder"
-msgstr ""
+msgstr "Trituradora"
 
 #. effects/SnapOfDisintegration.js:129
 msgid "Snap of Disintegration"
@@ -289,7 +289,7 @@ msgstr "Equipo Rocket"
 
 #. effects/VenetianBlinds.js:100
 msgid "Venetian Blinds"
-msgstr ""
+msgstr "Persianas venecianas"
 
 #. effects/Wisps.js:107
 msgid "Wisps"
@@ -300,23 +300,20 @@ msgid "Wormhole"
 msgstr "Agujero de gusano"
 
 #. 6.2/CustomWidgets.py:635 6.7.6/CustomWidgets.py:635
-#, fuzzy
 msgid "Randomized"
 msgstr "Aleatorio"
 
 #. 6.2/CustomWidgets.py:678 6.2/CustomWidgets.py:1319 6.2/CustomWidgets.py:1654
 #. 6.7.6/CustomWidgets.py:678 6.7.6/CustomWidgets.py:1319
 #. 6.7.6/CustomWidgets.py:1654
-#, fuzzy
 msgid "Custom settings are in use for this effect"
-msgstr "Muestra la configuración del efecto:"
+msgstr "Para este efecto se están utilizando ajustes personalizados"
 
 #. 6.2/CustomWidgets.py:679 6.2/CustomWidgets.py:1322 6.2/CustomWidgets.py:1655
 #. 6.7.6/CustomWidgets.py:679 6.7.6/CustomWidgets.py:1322
 #. 6.7.6/CustomWidgets.py:1655
-#, fuzzy
 msgid "Configure custom settings for this effect"
-msgstr "Muestra la configuración del efecto:"
+msgstr "Configurar los ajustes personalizados para este efecto"
 
 #. 6.2/CustomWidgets.py:745 6.7.6/CustomWidgets.py:745
 msgid "_Cancel"
@@ -337,28 +334,28 @@ msgid "Close"
 msgstr "Cerrar"
 
 #. 6.2/CustomWidgets.py:1212 6.7.6/CustomWidgets.py:1212
-#, fuzzy
 msgid "Use custom settings"
-msgstr "Ajustes de efectos"
+msgstr "Utilizar ajustes personalizados"
 
 #. 6.2/CustomWidgets.py:1216 6.7.6/CustomWidgets.py:1216
 msgid "Copy global settings"
-msgstr ""
+msgstr "Copiar la configuración global"
 
 #. 6.2/CustomWidgets.py:1217 6.7.6/CustomWidgets.py:1217
 msgid "Replace the custom settings with the settings from the Effects page"
-msgstr ""
+msgstr "Sustituye los ajustes personalizados por los de la página 'Efectos'"
 
 #. 6.2/CustomWidgets.py:1222 6.7.6/CustomWidgets.py:1222
 msgid ""
 "When off, this effect uses the settings from the Effects page (shown greyed "
 "out)"
 msgstr ""
+"Cuando está desactivado, este efecto utiliza los ajustes de la página "
+"'Efectos' (que aparecen en gris)."
 
 #. 6.2/CustomWidgets.py:1226 6.7.6/CustomWidgets.py:1226
-#, fuzzy
 msgid "Custom Effect Settings"
-msgstr "Ajustes de efectos"
+msgstr "Configuración de efectos personalizados"
 
 #. 6.2->settings-schema.json->app-rules->columns->title
 #. 6.7.6->settings-schema.json->app-rules->columns->title
@@ -375,19 +372,19 @@ msgstr "Aplicación"
 
 #. 6.2/CustomWidgets.py:1420 6.7.6/CustomWidgets.py:1420
 msgid "Add a rule"
-msgstr ""
+msgstr "Añadir una regla"
 
 #. 6.2/CustomWidgets.py:1421 6.7.6/CustomWidgets.py:1421
 msgid "Remove the selected rule"
-msgstr ""
+msgstr "Eliminar la regla seleccionada"
 
 #. 6.2/CustomWidgets.py:1422 6.7.6/CustomWidgets.py:1422
 msgid "Move the selected rule up"
-msgstr ""
+msgstr "Subir la regla seleccionada"
 
 #. 6.2/CustomWidgets.py:1423 6.7.6/CustomWidgets.py:1423
 msgid "Move the selected rule down"
-msgstr ""
+msgstr "Bajar la regla seleccionada"
 
 #. metadata.json->name
 msgid "Burn My Windows"
@@ -448,9 +445,8 @@ msgstr "Selector de efecto"
 
 #. 6.2->settings-schema.json->effect-settings->title
 #. 6.7.6->settings-schema.json->effect-settings->title
-#, fuzzy
 msgid "Global Effect Settings"
-msgstr "Ajustes de efectos"
+msgstr "Configuración de efectos globales"
 
 #. 6.2->settings-schema.json->random-section->title
 #. 6.7.6->settings-schema.json->random-section->title
@@ -534,11 +530,17 @@ msgid ""
 "change it. Hover over an effect and click the gear icon beside it to "
 "configure custom effect settings for that application."
 msgstr ""
+"Lista de aplicaciones con reglas de efectos especiales. La aplicación puede "
+"ser un nombre de archivo de escritorio o un nombre WM_CLASS. Haz clic en una "
+"regla y, a continuación, en una celda para modificarla. Pasa el cursor por "
+"encima de un efecto y haz clic en el icono de engranaje situado junto a él "
+"para configurar los ajustes personalizados de ese efecto para dicha "
+"aplicación."
 
 #. 6.2->settings-schema.json->app-rules-button->description
 #. 6.7.6->settings-schema.json->app-rules-button->description
 msgid "Pick a window to add…"
-msgstr ""
+msgstr "Elige una ventana para añadirla…"
 
 #. 6.2->settings-schema.json->app-rules-button->tooltip
 #. 6.7.6->settings-schema.json->app-rules-button->tooltip
@@ -546,6 +548,9 @@ msgid ""
 "Click this, then click any window to add an entry for its application to the "
 "list above. Press Esc or right-click to cancel."
 msgstr ""
+"Haz clic aquí y, a continuación, haz clic en cualquier ventana para añadir "
+"una entrada de su aplicación a la lista anterior. Pulsa 'Esc' o haz clic con "
+"el botón derecho del ratón para cancelar."
 
 #. 6.2->settings-schema.json->random-include->description
 #. 6.7.6->settings-schema.json->random-include->description
@@ -554,7 +559,6 @@ msgstr "Efectos incluidos en las series aleatorias"
 
 #. 6.2->settings-schema.json->random-include->tooltip
 #. 6.7.6->settings-schema.json->random-include->tooltip
-#, fuzzy
 msgid ""
 "Defines which effects are included in the randomized sets for each window "
 "event type. When 'Randomized' is selected for any event on the General tab "
@@ -564,7 +568,10 @@ msgid ""
 msgstr ""
 "Define qué efectos se incluyen en los conjuntos aleatorios para cada tipo de "
 "evento de ventana. Cuando se selecciona 'Aleatorio' para cualquier evento en "
-"la pestaña General se utilizan estos conjuntos."
+"la pestaña 'General', se utilizan estos conjuntos. Pasa el cursor por encima "
+"de una casilla marcada y haz clic en el icono de engranaje que hay junto a "
+"ella para configurar los ajustes personalizados del efecto, que se "
+"utilizarán cuando ese efecto se elija aleatoriamente para ese evento."
 
 #. 6.2->settings-schema.json->random-include->columns->title
 #. 6.7.6->settings-schema.json->random-include->columns->title
@@ -593,9 +600,8 @@ msgstr "    Maximizar    "
 
 #. 6.2->settings-schema.json->random-include->columns->title
 #. 6.7.6->settings-schema.json->random-include->columns->title
-#, fuzzy
 msgid "      Raise       "
-msgstr "      Cerrar       "
+msgstr "      Subir       "
 
 #. 6.2->settings-schema.json->effect-selector->options
 #. 6.2->settings-schema.json->open-window-effect->options
@@ -2083,9 +2089,8 @@ msgstr "Maximizar el efecto ventana"
 #. 6.2->settings-schema.json->power-raise-effect->description
 #. 6.7.6->settings-schema.json->raise-effect->description
 #. 6.7.6->settings-schema.json->power-raise-effect->description
-#, fuzzy
 msgid "Raise window effect"
-msgstr "Efecto para cerrar ventana"
+msgstr "Efecto de subir la ventana"
 
 #. 6.2->settings-schema.json->raise-effect->tooltip
 #. 6.7.6->settings-schema.json->raise-effect->tooltip
@@ -2094,12 +2099,14 @@ msgid ""
 "the parts that were covered are animated. Only effects that support raising "
 "are listed."
 msgstr ""
+"Se reproduce cuando se abre una ventana que está parcialmente cubierta por "
+"otras ventanas. Solo se animan las partes que estaban cubiertas. Solo se "
+"muestran los efectos compatibles con la acción de abrir."
 
 #. 6.2->settings-schema.json->raise-animation-time->description
 #. 6.7.6->settings-schema.json->raise-animation-time->description
-#, fuzzy
 msgid "Raise effect duration (ms)"
-msgstr "Duración del efecto (ms)"
+msgstr "Duración del efecto de subir la ventana (ms)"
 
 #. 6.2->settings-schema.json->power-raise-effect->tooltip
 #. 6.7.6->settings-schema.json->power-raise-effect->tooltip
@@ -2107,6 +2114,9 @@ msgid ""
 "Played instead of the General tab's raise effect while on low battery power. "
 "Only effects that support raising are listed."
 msgstr ""
+"Se aplica en lugar del efecto de aumento de la pestaña 'General' cuando el "
+"nivel de batería es bajo. Solo se muestran los efectos que admiten el "
+"aumento."
 
 #. 6.2->settings-schema.json->power-dialog-special->tooltip
 #. 6.7.6->settings-schema.json->power-dialog-special->tooltip
@@ -2240,18 +2250,17 @@ msgstr "Vacío oscuro"
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
 msgid "Transparent"
-msgstr ""
+msgstr "Transparente"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
-#, fuzzy
 msgid "Star field"
-msgstr "Iniciar tono"
+msgstr "Campo estelar"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->options
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
 msgid "Nebula"
-msgstr ""
+msgstr "Nebula"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->description
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->description
@@ -2260,7 +2269,6 @@ msgstr "Fondo"
 
 #. 6.2->settings-schema.json->aperture-panels-backdrop->tooltip
 #. 6.7.6->settings-schema.json->aperture-panels-backdrop->tooltip
-#, fuzzy
 msgid ""
 "What is seen behind the panels as they turn. Wallpaper: the desktop stays in "
 "place and only the windows behind are on the panels. Black void: the desktop "
@@ -2269,10 +2277,14 @@ msgid ""
 "through the gaps. Star field: like Black void, with twinkling stars in the "
 "void. Nebula: the star field with a colourful nebula behind the stars."
 msgstr ""
-"Lo que se ve detrás de los paneles a medida que giran. Fondo de pantalla: el "
+"Lo que se ve detrás de los paneles al girar. Fondo de pantalla: el "
 "escritorio permanece fijo y solo las ventanas que hay detrás aparecen en los "
 "paneles. Vacío oscuro: el escritorio también aparece en los paneles y gira "
-"con ellos, dejando al descubierto un vacío negro."
+"con ellos, dejando al descubierto un vacío oscuro. Transparente: no se "
+"dibuja nada detrás de los paneles, por lo que la pantalla real se ve a "
+"través de los huecos. Campo estelar: igual que el «Vacío negro», pero con "
+"estrellas titilantes en el vacío. Nebulosa: el campo estelar con una "
+"nebulosa de colores detrás de las estrellas."
 
 #. 6.2->settings-schema.json->aperture-panels-border-style->options
 #. 6.7.6->settings-schema.json->aperture-panels-border-style->options
@@ -2386,7 +2398,7 @@ msgstr "Duración del efecto (ms)"
 #. 6.2->settings-schema.json->aperture-panels-easter-egg->description
 #. 6.7.6->settings-schema.json->aperture-panels-easter-egg->description
 msgid "🎁"
-msgstr ""
+msgstr "🎁"
 
 #. 6.2->settings-schema.json->aperture-panels-reset->description
 #. 6.2->settings-schema.json->apparition-reset->description
@@ -2903,16 +2915,16 @@ msgstr "Abrir/Cerrar borde"
 
 #. 6.2->settings-schema.json->magiclamp-edge->tooltip
 #. 6.7.6->settings-schema.json->magiclamp-edge->tooltip
-#, fuzzy
 msgid ""
 "The monitor edge where a window should originate from when opening, or "
 "disappear towards when closing, when the window has no window-list button to "
 "use (usually the case when opening). This setting is not used for minimize "
 "or unminimize events"
 msgstr ""
-"El borde del monitor desde el que debe originarse una ventana al abrirse, o "
-"hacia el que debe desaparecer al cerrarse. Esta configuración no se utiliza "
-"para minimizar o desminimizar eventos"
+"El borde de la pantalla desde el que debe aparecer una ventana al abrirse, o "
+"hacia el que debe desaparecer al cerrarse, cuando la ventana no dispone de "
+"ningún botón de la barra de ventanas (lo que suele ocurrir al abrirla). Este "
+"ajuste no se utiliza para los eventos de minimización o restablecimiento"
 
 #. 6.2->settings-schema.json->magiclamp-edge-offset->description
 #. 6.7.6->settings-schema.json->magiclamp-edge-offset->description
@@ -2956,29 +2968,30 @@ msgstr "Esto repercute en la calidad y el coste de la animación"
 
 #. 6.2->settings-schema.json->materialize-start-scale->description
 #. 6.7.6->settings-schema.json->materialize-start-scale->description
-#, fuzzy
 msgid "Start Scale"
-msgstr "Iniciar tono"
+msgstr "Escala inicial"
 
 #. 6.2->settings-schema.json->materialize-start-scale->tooltip
 #. 6.7.6->settings-schema.json->materialize-start-scale->tooltip
 msgid "The initial size of the panel relative to the window."
-msgstr ""
+msgstr "El tamaño inicial del panel en relación con la ventana."
 
 #. 6.2->settings-schema.json->materialize-steps->description
 #. 6.7.6->settings-schema.json->materialize-steps->description
 msgid "Steps"
-msgstr ""
+msgstr "Pasos"
 
 #. 6.2->settings-schema.json->materialize-steps->tooltip
 #. 6.7.6->settings-schema.json->materialize-steps->tooltip
 msgid "The number of discrete animation steps. Zero gives a smooth animation."
 msgstr ""
+"El número de pasos discretos de la animación. Si se establece en cero, la "
+"animación resulta fluida."
 
 #. 6.2->settings-schema.json->materialize-color->tooltip
 #. 6.7.6->settings-schema.json->materialize-color->tooltip
 msgid "The color of the panel before the window content appears."
-msgstr ""
+msgstr "El color del panel antes de que aparezca el contenido de la ventana."
 
 #. 6.2->settings-schema.json->morph-style->options
 #. 6.7.6->settings-schema.json->morph-style->options
@@ -2997,7 +3010,6 @@ msgstr "Estilo"
 
 #. 6.2->settings-schema.json->morph-style->tooltip
 #. 6.7.6->settings-schema.json->morph-style->tooltip
-#, fuzzy
 msgid ""
 "Liquid flow: the area swirls into the window like liquid. Melt: each image "
 "flows along its own edges, so what's behind melts away and the window's "
@@ -3006,18 +3018,19 @@ msgid ""
 msgstr ""
 "Flujo líquido: el área se arremolina hacia la ventana como si fuera líquido. "
 "Derretir: cada imagen fluye a lo largo de sus propios bordes, de modo que lo "
-"que hay detrás se desvanece y los contornos de la ventana se definen primero."
+"que hay detrás se desvanece y los contornos de la ventana se definen "
+"primero. Pixelado: el área se convierte en bloques que cambian de color uno "
+"a uno hasta adoptar el de la ventana y, a continuación, se definen."
 
 #. 6.2->settings-schema.json->morph-strength->tooltip
 #. 6.7.6->settings-schema.json->morph-strength->tooltip
-#, fuzzy
 msgid ""
 "How far things move during the morph (for Pixelate, how big the blocks get). "
 "1 is the default; 0 is a plain dissolve."
 msgstr ""
-"La distancia a la que se desplazan los elementos durante la transición. El "
-"valor 1 es el predeterminado; 0 corresponde a una transición de fundido "
-"simple."
+"La distancia que recorren los elementos durante la transición (en el caso de "
+"Pixelate, el tamaño que alcanzan los bloques). El valor predeterminado es 1; "
+"0 equivale a una disolución simple."
 
 #. 6.2->settings-schema.json->mushroom-presets->description
 #. 6.7.6->settings-schema.json->mushroom-presets->description
@@ -3117,27 +3130,29 @@ msgstr "Velocidad del azul"
 #. 6.2->settings-schema.json->shredder-strips->description
 #. 6.7.6->settings-schema.json->shredder-strips->description
 msgid "Number of Strips"
-msgstr ""
+msgstr "Número de tiras"
 
 #. 6.2->settings-schema.json->shredder-strips->tooltip
 #. 6.7.6->settings-schema.json->shredder-strips->tooltip
 msgid "The number of strips the window is cut into."
-msgstr ""
+msgstr "El número de tiras en las que se corta la ventana."
 
 #. 6.2->settings-schema.json->shredder-randomness->tooltip
 #. 6.7.6->settings-schema.json->shredder-randomness->tooltip
 msgid "How much the strips differ in when they start to fall."
 msgstr ""
+"En qué medida varían las tiras en cuanto al momento en que empiezan a caer."
 
 #. 6.2->settings-schema.json->shredder-rough-edges->description
 #. 6.7.6->settings-schema.json->shredder-rough-edges->description
 msgid "Rough Edges"
-msgstr ""
+msgstr "Bordes irregulares"
 
 #. 6.2->settings-schema.json->shredder-rough-edges->tooltip
 #. 6.7.6->settings-schema.json->shredder-rough-edges->tooltip
 msgid "Give the strips jagged edges like torn paper."
 msgstr ""
+"Dale a las tiras unos bordes irregulares, como si fueran de papel rasgado."
 
 #. 6.2->settings-schema.json->team-rocket-animation-split->description
 #. 6.7.6->settings-schema.json->team-rocket-animation-split->description
@@ -3176,17 +3191,17 @@ msgstr "Tamaño del destello"
 #. 6.2->settings-schema.json->venetian-blinds-slats->description
 #. 6.7.6->settings-schema.json->venetian-blinds-slats->description
 msgid "Number of Slats"
-msgstr ""
+msgstr "Número de rejillas"
 
 #. 6.2->settings-schema.json->venetian-blinds-slats->tooltip
 #. 6.7.6->settings-schema.json->venetian-blinds-slats->tooltip
 msgid "The number of slats the window is split into."
-msgstr ""
+msgstr "El número de rejillas en los que se divide la ventana."
 
 #. 6.2->settings-schema.json->venetian-blinds-delay->description
 #. 6.7.6->settings-schema.json->venetian-blinds-delay->description
 msgid "Delay"
-msgstr ""
+msgstr "Retardo"
 
 #. 6.2->settings-schema.json->venetian-blinds-delay->tooltip
 #. 6.7.6->settings-schema.json->venetian-blinds-delay->tooltip
@@ -3194,26 +3209,30 @@ msgid ""
 "How much later the last slat starts to turn than the first one, relative to "
 "the animation time."
 msgstr ""
+"Cuánto tiempo más tarde empieza a girar la última rejilla respecto a la "
+"primera, en relación con el tiempo de la animación."
 
 #. 6.2->settings-schema.json->venetian-blinds-perspective->description
 #. 6.7.6->settings-schema.json->venetian-blinds-perspective->description
 msgid "Perspective"
-msgstr ""
+msgstr "Perspectiva"
 
 #. 6.2->settings-schema.json->venetian-blinds-perspective->tooltip
 #. 6.7.6->settings-schema.json->venetian-blinds-perspective->tooltip
 msgid "Draw the turning slats with perspective."
-msgstr ""
+msgstr "Dibuja las rejillas giratorias con perspectiva."
 
 #. 6.2->settings-schema.json->venetian-blinds-pull-up->description
 #. 6.7.6->settings-schema.json->venetian-blinds-pull-up->description
 msgid "Pull Up"
-msgstr ""
+msgstr "Tracción"
 
 #. 6.2->settings-schema.json->venetian-blinds-pull-up->tooltip
 #. 6.7.6->settings-schema.json->venetian-blinds-pull-up->tooltip
 msgid "Pull the blind up, so that the slats fold at the top of the window."
 msgstr ""
+"Sube la persiana, de modo que las rejillas queden plegadas en la parte "
+"superior de la ventana."
 
 #. 6.2->settings-schema.json->wisps-color-1->description
 #. 6.7.6->settings-schema.json->wisps-color-1->description
