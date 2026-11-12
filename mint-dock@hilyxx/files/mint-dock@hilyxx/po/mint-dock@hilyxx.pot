@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mint-dock@hilyxx 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-25 21:46+0100\n"
+"POT-Creation-Date: 2026-11-12 16:59+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. extension.js:594
+#. extension.js:596
 msgid "System Settings"
 msgstr ""
 
-#. extension.js:598
+#. extension.js:600
 msgid "Application"
 msgstr ""
 
-#. extension.js:951
+#. extension.js:953
 msgid "Unpin from dock"
 msgstr ""
 
-#. extension.js:951
+#. extension.js:953
 msgid "Pin to dock"
 msgstr ""
 
-#. extension.js:971
+#. extension.js:973
 msgid "Quit"
 msgstr ""
 
-#. extension.js:1650
+#. extension.js:1657
 msgid "Trash"
 msgstr ""
 
-#. extension.js:1733
+#. extension.js:1740
 msgid "Empty Trash"
 msgstr ""
 
-#. extension.js:2058
+#. extension.js:2066
 msgid "Dock settings"
 msgstr ""
 
@@ -82,6 +82,16 @@ msgstr ""
 msgid "Windows"
 msgstr ""
 
+#. settings-schema.json->follow-cursor->description
+msgid "Follow the mouse across screens"
+msgstr ""
+
+#. settings-schema.json->follow-cursor->tooltip
+msgid ""
+"Move the dock to the screen the mouse pointer is on. The screen chosen below "
+"is used at startup."
+msgstr ""
+
 #. settings-schema.json->use-primary-monitor->description
 msgid "On primary display"
 msgstr ""
@@ -92,16 +102,6 @@ msgstr ""
 
 #. settings-schema.json->monitor-index->tooltip
 msgid "Choose which screen to display the dock on."
-msgstr ""
-
-#. settings-schema.json->follow-cursor->description
-msgid "Follow the mouse across screens"
-msgstr ""
-
-#. settings-schema.json->follow-cursor->tooltip
-msgid ""
-"Move the dock to the screen the mouse pointer is on. The screen chosen below "
-"is used at startup."
 msgstr ""
 
 #. settings-schema.json->dock-position->description

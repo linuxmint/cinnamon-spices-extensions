@@ -2157,7 +2157,7 @@ class DashDock {
         if (this.followCursor) {
             this._followCursorLoopId = Mainloop.timeout_add(150, () => {
                 this._followCursorMonitor();
-                return true;
+                return GLib.SOURCE_CONTINUE;
             });
         } else if (this._currentMonitorIndex !== null && this._currentMonitorIndex !== undefined) {
             // Go back to the screen chosen in the Display settings
@@ -2216,7 +2216,7 @@ class DashDock {
                 this._monitorSwitchTimeoutId = 0;
                 this._monitorSwitching = false;
                 this._updateVisibility();
-                return false;
+                return GLib.SOURCE_REMOVE;
             });
         }
     }
