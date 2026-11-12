@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2022-12-15 23:42+0900\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
@@ -59,6 +59,28 @@ msgstr ""
 "クリックまたはドラッグ: 行で列に収めるウィンドウ数を指定します。右クリックで"
 "列を削除します。"
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "割り当て先"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "どこにも割り当てられていません。"
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "すべてのワークスペース"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "ワークスペース %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "他 %d 件"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "名前"
@@ -92,84 +114,88 @@ msgstr "結果: %s"
 msgid "Edit preset"
 msgstr "プリセットを編集"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "割り当て済み"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "割り当てを解除"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "自動: オフ"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "ウィンドウ間の間隔"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "サイズをリセット"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "画面端までの余白"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "プリセット — ワークスペース %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "プリセットを作成"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "%s を編集"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "戻る"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "自動: オン"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "自動: オフ"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "ダークテーマ"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "ライトテーマ"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "プリセットはまだありません。"
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "%d 個のウィンドウのプレビュー"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "%d 個のウィンドウのプレビュー"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "開いているウィンドウなし — 基本レイアウト"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "新規プリセット"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "カードをクリックすると、このワークスペースにプリセットを適用し、すぐにウィン"
@@ -326,8 +352,24 @@ msgstr ""
 "ログには表示されません)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr "画面端までの余白 (プリセットパネルの − / + で設定。このダイアログには表示されません)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"タイル配置したウィンドウが使用可能領域の端から保つ距離です。パネルの端も含み"
+"ます。ウィンドウ間の間隔とは独立しており、0 では端に密着します。"
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -352,7 +394,8 @@ msgid ""
 "How long a window glides into its place, in milliseconds. The window still "
 "lands on its final frame at once; only the picture travels."
 msgstr ""
-"ウィンドウが所定の位置へ滑る時間 (ミリ秒)。ウィンドウ自体はすぐに最終的な枠に収まり、画像だけが移動します。"
+"ウィンドウが所定の位置へ滑る時間 (ミリ秒)。ウィンドウ自体はすぐに最終的な枠に"
+"収まり、画像だけが移動します。"
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"
@@ -381,33 +424,22 @@ msgstr ""
 "まま置かれる代わりに、使用可能な領域全体を埋めます。"
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "ウィンドウ 1 枚"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"自動タイルまたはプリセットが有効なとき、タイル表示のウィンドウが 1 枚だけに"
-"なった場合の動作。そのままにする: 何もしません。モニター全体に広げる: 使用可"
-"能な領域全体を占めます。ウィンドウを中央に: 幅の約 62 %（黄金比）、高さの 90 "
-"% で中央に配置します。"
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "自動タイルまたはプリセットが有効なときの単独ウィンドウ：そのままにする、使用可能領域を埋める、中央に配置する。"
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "そのままにする"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "モニター全体に広げる"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "ウィンドウを中央に"
 

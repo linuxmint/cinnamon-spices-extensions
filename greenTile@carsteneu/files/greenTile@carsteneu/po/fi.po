@@ -6,9 +6,9 @@
 # Kimmo Kujansuu <mrkujansuu@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2024-07-25 20:23+0300\n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -60,6 +60,28 @@ msgstr ""
 "Napsauta tai vedä: rivi määrää, montako ikkunaa sarakkeeseen mahtuu. Oikea "
 "napsautus poistaa sarakkeen."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Määritetty:"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Ei määritetty mihinkään."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "kaikki työtilat"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "työtila %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d lisää"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nimi"
@@ -93,84 +115,88 @@ msgstr "Tulos: %s"
 msgid "Edit preset"
 msgstr "Muokkaa esiasetusta"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Määritetty"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Poista määritys"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: pois"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Ikkunoiden väli"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Palauta koot"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Tila näytön reunaan"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Esiasetukset — työtila %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Luo esiasetus"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Muokkaa: %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Takaisin"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: päällä"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: pois"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Tumma teema"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Vaalea teema"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Ei vielä esiasetuksia."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Esikatselu: %d ikkuna"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Esikatselu: %d ikkunaa"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Ei avoimia ikkunoita — perusasettelu"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Uusi esiasetus"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Napsauta korttia ottaaksesi sen käyttöön tässä työtilassa ja laatoittaaksesi "
@@ -332,8 +358,27 @@ msgstr ""
 "esiasetuspaneelissa; ei näy tässä ikkunassa)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Tila näytön reunaan (asetetaan painikkeilla − / + esiasetuspaneelissa; ei "
+"näy tässä ikkunassa)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Etäisyys, jonka laatoitetut ikkunat pitävät käytettävissä olevan alueen "
+"reunoihin, paneelin reuna mukaan lukien. Riippumaton ikkunoiden välisestä "
+"välistä; 0 pitää ne reunoja vasten."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -388,34 +433,22 @@ msgstr ""
 "koskemattomaksi."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Yksi ikkuna"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Mitä yksittäiselle tiilille asetellulle ikkunalle tapahtuu, kun "
-"automaattinen tiilisyys tai esiasetus on päällä. Jätä ennalleen: ei tee "
-"sille mitään. Täytä näyttö: ikkuna täyttää koko käytettävissä olevan alueen. "
-"Keskitä ikkuna: keskittää sen noin 62 %:iin leveydestä (kultainen leikkaus) "
-"ja 90 %:iin korkeudesta."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Yksittäinen ikkuna, kun automaattinen ruudutus tai esiasetus on päällä: jätä koskemattomaksi, täytä käytettävissä oleva alue tai keskitä."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Jätä ennalleen"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Täytä näyttö"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Keskitä ikkuna"
 

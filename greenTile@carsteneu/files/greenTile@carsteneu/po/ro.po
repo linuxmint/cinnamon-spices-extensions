@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2022-08-06 01:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
@@ -60,6 +60,28 @@ msgstr ""
 "Clic sau trage: rândul stabilește câte ferestre încap în coloană. Clic "
 "dreapta elimină o coloană."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Atribuită pe"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Nu este atribuită nicăieri."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "toate spațiile de lucru"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "spațiul de lucru %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d altele"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nume"
@@ -93,84 +115,88 @@ msgstr "Rezultat: %s"
 msgid "Edit preset"
 msgstr "Editează presetarea"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Atribuită"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Elimină atribuirea"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: oprit"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Spațiu între ferestre"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Resetează dimensiunile"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Spațiu până la marginea ecranului"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Presetări — spațiul de lucru %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Creează presetare"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Editează %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Înapoi"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: pornit"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: oprit"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Temă întunecată"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Temă luminoasă"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Nicio presetare încă."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Previzualizare pentru %d fereastră"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Previzualizare — ferestre: %d"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Nicio fereastră deschisă — aranjament de bază"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Presetare nouă"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Fă clic pe un card pentru a-l aplica acestui spațiu de lucru și a aranja "
@@ -329,8 +355,27 @@ msgstr ""
 "este afișat în acest dialog)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Spațiu până la marginea ecranului (setat cu − / + în panoul de presetări; "
+"nu este afișat în acest dialog)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Distanța pe care ferestrele aranjate în mozaic o păstrează față de marginile "
+"zonei utilizabile, inclusiv marginea panoului. Independentă de spațiul "
+"dintre ferestre; 0 le lasă lipite de margini."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -383,34 +428,22 @@ msgstr ""
 "aranjată umple întreaga zonă utilizabilă în loc să rămână neatinsă."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "O singură fereastră"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Ce se întâmplă cu o fereastră singură aranjată în mozaic când aranjarea "
-"automată sau un preset este activ. Lasă-o neatinsă: nu face nimic cu ea. "
-"Umple monitorul: ocupă toată zona utilizabilă. Centrează fereastra: o "
-"centrează la aproximativ 62 % din lățime (proporția de aur) și 90 % din "
-"înălțime."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "O singură fereastră cât timp placarea automată sau o presetare este activă: las-o neatinsă, las-o să umple zona utilizabilă sau centreaz-o."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Lasă-o neatinsă"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Umple monitorul"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Centrează fereastra"
 

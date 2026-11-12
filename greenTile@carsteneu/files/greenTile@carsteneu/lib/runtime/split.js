@@ -45,7 +45,7 @@ var SPLIT_FLUSH_MS = 500;
  * mainloop (imports.mainloop), glib (imports.gi.GLib), gio (imports.gi.Gio),
  * global (the global object), main (imports.ui.main — layoutManager),
  * focusWindow, layoutFor, layoutShape, layoutSet, collectWindows,
- * usableArea, gap, retileMonitor, grabOpName, sortReadingOrder.
+ * layoutArea, gap, retileMonitor, grabOpName, sortReadingOrder.
  * @typedef {Object} SplitDeps
  * @property {AnyRecord} mainloop imports.mainloop
  * @property {AnyRecord} glib imports.gi.GLib
@@ -57,7 +57,7 @@ var SPLIT_FLUSH_MS = 500;
  * @property {(app: AppFacade, monitorIndex: number, windowCount: number) => DragLayout | null} layoutShape
  * @property {(app: AppFacade, monitorIndex: number, wsIndex: number, patch: {}) => void} layoutSet
  * @property {(monitor: CinnamonMonitor, focus: CinnamonWindow | null, ws?: number | null) => CinnamonWindow[]} collectWindows
- * @property {(monitor: CinnamonMonitor) => Rect} usableArea
+ * @property {(app: AppFacade, monitor: CinnamonMonitor) => Rect} layoutArea
  * @property {(app: AppFacade) => number} gap
  * @property {(app: AppFacade, monitorIndex: number, focused: CinnamonWindow | null, animate?: boolean, wsIndex?: number | null, actionLayout?: Layout | null, settle?: boolean) => void} retileMonitor
  * @property {(op: string) => string} grabOpName
@@ -126,7 +126,7 @@ var Split = class {
         const base = valid || weights;
         const monitor = this._main.layoutManager.monitors[monitorIndex];
         return monitor ? splitMinimal(layout.kind, layout.shape, base,
-            this._deps.usableArea(monitor), this._deps.gap(app), SPLIT_MIN_PX) : base;
+            this._deps.layoutArea(app, monitor), this._deps.gap(app), SPLIT_MIN_PX) : base;
     }
 
     /**
@@ -242,7 +242,7 @@ var Split = class {
             return recorded;
         }
         const fit = this.fit(app, monitorIndex, wsIndex, n, layout,
-            Array.from({ length: n }, () => ({ w: 0, h: 0 })), this._deps.usableArea(monitor), this._deps.gap(app));
+            Array.from({ length: n }, () => ({ w: 0, h: 0 })), this._deps.layoutArea(app, monitor), this._deps.gap(app));
         // A changed window set has not been placed yet: its live frames, not a former
         // count's fit, are the current hit/focus geometry. Large frames imply no minima.
         const ref = this.ref(app, monitorIndex, wsIndex, n);
@@ -539,7 +539,7 @@ var Split = class {
         }
         const ordered = this._deps.sortReadingOrder(app, windows, layout.kind === 'cols', false);
         const fit = this.effective(app, monitorIndex, wsIndex, n, layout, ordered);
-        const area = fit.area || this._deps.usableArea(monitor);
+        const area = fit.area || this._deps.layoutArea(app, monitor);
         const split = fit.split;
         const f = w.get_frame_rect();
         const idx = splitCellAt(fit.cells || splitRects(fit.kind, fit.shape, split, area), [f.x, f.y, f.width, f.height]);
@@ -597,6 +597,20 @@ var Split = class {
             return;
         }
         const n = windows.length;
+        const f = w.get_frame_rect();
+        /** @type {Rect} */
+        const end = [f.x, f.y, f.width, f.height];
+        // Only edges that really moved count: a click on the edge without dragging must not
+        // store anything (the frame edge never sits exactly on the computed border — rounding,
+        // terminals snap their size to character cells).
+        const moved = splitFrameEdges(start.rect, end);
+        // A lone window the user resizes keeps what he made of it: the single-window mode
+        // marks it and lets go instead of scheduling the retile that would reset it (and
+        // no border is stored for a one-cell shape anyway — lib/model/split.js splitEdgeRef).
+        // A click on the border resizes nothing and releases nothing.
+        if (moved.length !== 0 && app.auto.detachLone(app, w)) {
+            return;
+        }
         const layout = this._deps.layoutShape(app, monitorIndex, n);
         const ref = this.ref(app, monitorIndex, wsIndex, n);
         if (!layout || !ref) {
@@ -607,16 +621,9 @@ var Split = class {
         app.auto.sortOverride(seq, start.rect, this._glib.get_monotonic_time() / 1000);
         const ordered = this._deps.sortReadingOrder(app, windows, layout.kind === 'cols', false);
         const fit = this.effective(app, monitorIndex, wsIndex, n, layout, ordered);
-        const area = fit.area || this._deps.usableArea(monitor);
+        const area = fit.area || this._deps.layoutArea(app, monitor);
         let split = fit.split;
         const idx = splitCellAt(fit.cells || splitRects(fit.kind, fit.shape, split, area), start.rect);
-        const f = w.get_frame_rect();
-        /** @type {Rect} */
-        const end = [f.x, f.y, f.width, f.height];
-        // Only edges that really moved count: a click on the edge without dragging must not
-        // store anything (the frame edge never sits exactly on the computed border — rounding,
-        // terminals snap their size to character cells).
-        const moved = splitFrameEdges(start.rect, end);
         const named = splitOpEdges(this._deps.grabOpName(op));
         const edges = named.length ? named.filter((/** @type {string} */ e) => moved.indexOf(e) !== -1) : moved;
         // The gap sits half on each side of a border (gapCell): border = frame edge + half gap outward.

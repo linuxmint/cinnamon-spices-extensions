@@ -15,7 +15,7 @@
 
 const XLET = imports.extensions['greenTile@carsteneu'];
 
-const { usableArea, focusWindow } = XLET.lib.tiling.screen;
+const { usableArea, layoutArea, focusWindow } = XLET.lib.tiling.screen;
 const { collectWindows, windowTileable, windowMoveResize } = XLET.lib.tiling.windows;
 const { layoutShape, layoutShapeWs, autoAllowed } = XLET.lib.tiling.layout;
 const { sortReadingOrder } = XLET.lib.tiling.order;
@@ -77,8 +77,8 @@ var dropDisplacedSizes = (app, monitorIndex, wsIndex, n) => {
 var landingCells = (app, targetMonitor, monitorIndex, wsIndex, n, layout, others, incoming, source) => {
     const ordered = sortReadingOrder(app, others, layout.kind === 'cols', false).concat([incoming]);
     const fit = app.split.fit(app, monitorIndex, wsIndex, n, layout,
-        app.split.minsFor(app, monitorIndex, wsIndex, n, ordered, source), usableArea(targetMonitor), gap(app));
-    return splitRects(fit.kind, fit.shape, fit.split, usableArea(targetMonitor));
+        app.split.minsFor(app, monitorIndex, wsIndex, n, ordered, source), layoutArea(app, targetMonitor), gap(app));
+    return splitRects(fit.kind, fit.shape, fit.split, layoutArea(app, targetMonitor));
 };
 /**
  * Moves the window onto the landing monitor, verifying the move. Muffin's
@@ -113,6 +113,10 @@ var moveToMonitor = (w, source, target, targetIndex, frame) => {
     if (landed === targetIndex) {
         return;
     }
+    // DELIBERATELY the raw work area, not layoutArea: Muffin refuses a move whose
+    // frame is taller than the target's WORK area, and this only repairs such a
+    // landing. The screen-edge margin belongs to tiling geometry; the retile that
+    // follows this move pulls the frame into it. Do not "fix" this to layoutArea.
     const from = usableArea(source);
     const area = usableArea(target);
     const width = Math.min(frame[2], area[2]);
@@ -151,7 +155,7 @@ var swapHotkey = (app, dir) => {
     // decision 2026-10-08), so a window travels through untiled and paused surfaces
     // instead of getting stuck; Up/Down have no chain and stay no-ops there.
     const sourceTiled = autoAllowed(app, monitorIndex, wsIndex);
-    const area = usableArea(monitor);
+    const area = layoutArea(app, monitor);
     const frame = focused.get_frame_rect();
     /** @type {Rect} */
     const frameRect = [frame.x, frame.y, frame.width, frame.height];
@@ -224,6 +228,10 @@ var swapHotkey = (app, dir) => {
         if (sourceTiled) {
             dropDisplacedSizes(app, monitorIndex, wsIndex, n);
         }
+        // The push is an explicit placement: a lone window the single-window mode had let
+        // go of is taken back, or the landing retile would hang on the lone-window skip
+        // and the window would stay unplaced on the target monitor.
+        app.auto.detachClear(focused.get_stable_sequence());
         retileMonitor(app, step.monitor, focused);
         if (sourceTiled) {
             retileMonitor(app, monitorIndex, null, true, wsIndex);
@@ -261,6 +269,8 @@ var swapHotkey = (app, dir) => {
     if (sourceTiled) {
         dropDisplacedSizes(app, monitorIndex, wsIndex, n);
     }
+    // same as the monitor landing above: the push is an explicit placement
+    app.auto.detachClear(focused.get_stable_sequence());
     retileMonitor(app, step.monitor, focused, true, targetWsIndex);
     if (sourceTiled) {
         retileMonitor(app, monitorIndex, null, true, wsIndex);

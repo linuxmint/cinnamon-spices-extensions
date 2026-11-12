@@ -147,7 +147,8 @@ var place = (app, metaWindow, x, y, width, height, animate = true) => {
  * @returns {number}
  */
 var gap = (app) => gapValue(app.config.settings.getValue(SETTINGS_KEYS.windowGap));
-// Places a window into a layout cell of the usable area, minus the window gap.
+// Places a window into a layout cell of the layout area (already inset by the
+// screen-edge setting), minus the window gap.
 /**
  * @param {AppFacade} app
  * @param {CinnamonWindow} metaWindow
@@ -175,6 +176,11 @@ var placeCell = (app, metaWindow, x, y, width, height, area, animate = true) => 
     // below is what the auto-off hotkey takes back (lib/tiling/retile.js restoreFrames).
     // Recorded once per window — a later placement would record the tiled frame.
     app.session.rememberFrame(metaWindow);
+    // A placement is the tiling taking the window back: a lone window the single-window
+    // mode had let go (moved or resized by the user, lib/runtime/auto.js detachLone) is
+    // owned again from here on. Every placement runs through this seam, so no handler
+    // can forget it.
+    app.auto.detachClear(metaWindow.get_stable_sequence());
     // The reset belongs before the watch: a maximized window carries a different actor
     // offset than the tiled one, so the baseline must be the geometry state the placement
     // actually starts from.

@@ -6,9 +6,9 @@
 # Alan Mortensen <alanmortensen.am@gmail.com>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2023-12-07 15:21+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -60,6 +60,28 @@ msgstr ""
 "Klik eller træk: rækken bestemmer, hvor mange vinduer kolonnen rummer. "
 "Højreklik fjerner en kolonne."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Tildelt på"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Ikke tildelt nogetsteds."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "alle arbejdsområder"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "arbejdsområde %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d mere"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Navn"
@@ -93,84 +115,88 @@ msgstr "Resultat: %s"
 msgid "Edit preset"
 msgstr "Rediger forudindstilling"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Tildelt"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Fjern tildeling"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: fra"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Afstand mellem vinduer"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Nulstil størrelser"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Afstand til skærmkanten"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Forudindstillinger — arbejdsområde %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Opret forudindstilling"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Rediger %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Tilbage"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: til"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: fra"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Mørkt tema"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Lyst tema"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Ingen forudindstillinger endnu."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Forhåndsvisning for %d vindue"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Forhåndsvisning for %d vinduer"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Ingen vinduer åbne — grundlayout"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Ny forudindstilling"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Klik på et kort for at anvende det på dette arbejdsområde og arrangere "
@@ -328,8 +354,27 @@ msgstr ""
 "forudindstillingspanelet; vises ikke i denne dialog)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Afstand til skærmkanten (indstilles med − / + i forudindstillingspanelet; "
+"vises ikke i denne dialog)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Afstand som flisede vinduer holder til kanterne af det brugbare område, "
+"inklusive panelkanten. Uafhængig af afstanden mellem vinduer; 0 lader dem "
+"flugte med kanterne."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -383,33 +428,22 @@ msgstr ""
 "fliset vindue hele det anvendelige område i stedet for at blive urørt."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Et enkelt vindue"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Hvad der sker med et enkelt tilet vindue, når automatisk tiling eller en "
-"forudindstilling er slået til. Lad det være: gør ingenting ved det. Fyld "
-"skærmen: lader det fylde hele det brugbare område. Centrér vinduet: "
-"centrerer det ved cirka 62 % af bredden (det gyldne snit) og 90 % af højden."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Et enkelt vindue mens automatisk fliseinddeling eller en forudindstilling er aktiv: lad det være, lad det fylde det brugbare område eller centrér det."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Lad det være"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Fyld skærmen"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Centrér vinduet"
 

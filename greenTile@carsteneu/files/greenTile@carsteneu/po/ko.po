@@ -6,9 +6,9 @@
 # Kevin Kim <chaeya@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2024-08-11 23:42+0900\n"
 "Last-Translator: Kevin Kim <chaeya@gmail.com>\n"
 "Language-Team: Korean\n"
@@ -59,6 +59,28 @@ msgstr ""
 "클릭 또는 드래그: 행으로 열에 들어갈 창 개수를 정합니다. 오른쪽 클릭하면 열"
 "이 제거됩니다."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "할당 위치"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "어디에도 할당되지 않았습니다."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "모든 작업 공간"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "작업 공간 %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "외 %d개"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "이름"
@@ -92,84 +114,88 @@ msgstr "결과: %s"
 msgid "Edit preset"
 msgstr "프리셋 편집"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "할당됨"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "할당 해제"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "자동: 끔"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "창 사이 간격"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "크기 초기화"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "화면 가장자리 여백"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "프리셋 — 작업 공간 %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "프리셋 만들기"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "%s 편집"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "뒤로"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "자동: 켬"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "자동: 끔"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "어두운 테마"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "밝은 테마"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "아직 프리셋이 없습니다."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "창 %d개 미리보기"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "창 %d개 미리보기"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "열린 창 없음 — 기본 레이아웃"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "새 프리셋"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "카드를 클릭하면 이 작업 공간에 프리셋을 적용하고 창을 즉시 타일링합니다"
@@ -324,8 +350,24 @@ msgstr ""
 "않음)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr "화면 가장자리 여백 (프리셋 패널의 − / +로 설정, 이 대화 상자에는 표시되지 않음)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"타일로 배치된 창이 사용 가능 영역의 가장자리에서 유지하는 거리입니다. 패널 가"
+"장자리도 포함합니다. 창 사이 간격과는 무관하며, 0이면 가장자리에 붙습니다."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -348,7 +390,8 @@ msgid ""
 "How long a window glides into its place, in milliseconds. The window still "
 "lands on its final frame at once; only the picture travels."
 msgstr ""
-"창이 제자리로 미끄러지는 시간(밀리초)입니다. 창은 즉시 최종 프레임에 자리 잡고, 그림만 이동합니다."
+"창이 제자리로 미끄러지는 시간(밀리초)입니다. 창은 즉시 최종 프레임에 자리 잡"
+"고, 그림만 이동합니다."
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"
@@ -376,33 +419,22 @@ msgstr ""
 "용 가능한 전체 영역을 채웁니다."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "창 하나"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"자동 타일링이나 프리셋이 켜져 있을 때 창이 하나만 남으면 어떻게 할지 정합니"
-"다. 그대로 두기: 아무것도 하지 않습니다. 모니터 채우기: 사용 가능한 영역 전체"
-"를 채웁니다. 창 가운데 정렬: 너비의 약 62 %(황금비), 높이의 90 %로 가운데에 "
-"배치합니다."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "자동 타일링이나 프리셋이 켜져 있을 때의 단일 창: 그대로 두기, 사용 가능한 영역 채우기, 가운데 정렬."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "그대로 두기"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "모니터 채우기"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "창 가운데 정렬"
 

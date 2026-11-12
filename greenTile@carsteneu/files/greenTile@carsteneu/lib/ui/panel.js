@@ -19,7 +19,7 @@ const XLET = imports.extensions['greenTile@carsteneu'];
 // lib/runtime's injected deps: a module top-level alias would bind to whatever
 // `imports` was live at first load, and the Node tests re-evaluate the entry
 // per fresh fake environment against a cached require graph.
-const { GAP_MAX, GAP_STEP, gapValue } = XLET.lib.model.gap;
+const { GAP_MAX, GAP_STEP, gapValue, EDGE_MAX, EDGE_STEP, edgeValue } = XLET.lib.model.gap;
 const { PANEL_MIN, panelSizeParse, panelSizeSet, panelSizeClamp } = XLET.lib.model['panel-size'];
 const { themeToggleTarget } = XLET.lib.model.theme;
 const { fillStacks } = XLET.lib.model.fill;
@@ -198,6 +198,9 @@ const panelGapRow = (app, resetCtl) => {
         reset.connect('clicked', () => {
             app.split.reset(app, monitorIndex, wsIndex);
             if (layoutFor(app, monitorIndex, wsIndex).auto) {
+                // An explicit reset takes this monitor's released lone windows back too;
+                // without it the retile would land nowhere for them.
+                app.auto.detachClearMonitor(app, monitorIndex);
                 retileMonitor(app, monitorIndex, null);
             }
             panelRebuild(app);
@@ -222,6 +225,43 @@ const panelGapRow = (app, resetCtl) => {
     row.add(value, { y_fill: false, y_align: St.Align.MIDDLE });
     row.add(plus, { y_fill: false, y_align: St.Align.MIDDLE });
     show(gap(app));
+    return row;
+};
+// "Space to the screen edge  − 0 px +" directly below the gap row: the second
+// spacing setting, same behaviour — each click stores the value and retiles this
+// monitor shortly after (debounced), so the margin shows live.
+/**
+ * @param {AppFacade} app
+ */
+const panelEdgeRow = (app) => {
+    const St = imports.gi.St;
+    const { focusMonitorIndex, edge } = app.ops;
+    const row = new St.BoxLayout({ style_class: 'gk-gap-row gk-edge-row' });
+    row.add(new St.Label({ text: _("Space to the screen edge"), style_class: 'gk-gap-label' }), { expand: true, x_fill: true, y_fill: false, y_align: St.Align.MIDDLE });
+    const minus = new St.Button({ label: '−', style_class: 'gk-gap-btn', track_hover: true });
+    const value = new St.Label({ style_class: 'gk-gap-value' });
+    const plus = new St.Button({ label: '+', style_class: 'gk-gap-btn', track_hover: true });
+    /** @param {number} px */
+    const show = (px) => {
+        value.text = _("%d px").format(px);
+        minus.reactive = px > 0;
+        minus.opacity = px > 0 ? 255 : 90;
+        plus.reactive = px < EDGE_MAX;
+        plus.opacity = px < EDGE_MAX ? 255 : 90;
+    };
+    /** @param {number} delta */
+    const change = (delta) => {
+        const next = edgeValue(edge(app) + delta);
+        app.config.settings.setValue(SETTINGS_KEYS.edgeGap, next);
+        show(next);
+        app.auto.scheduleMonitor(app, focusMonitorIndex(), 150);
+    };
+    minus.connect('clicked', () => change(-EDGE_STEP));
+    plus.connect('clicked', () => change(EDGE_STEP));
+    row.add(minus, { y_fill: false, y_align: St.Align.MIDDLE });
+    row.add(value, { y_fill: false, y_align: St.Align.MIDDLE });
+    row.add(plus, { y_fill: false, y_align: St.Align.MIDDLE });
+    show(edge(app));
     return row;
 };
 /** @param {AppFacade} app */
@@ -487,6 +527,11 @@ const panelOpen = (app) => {
             if (assigned) {
                 global.log('greenTile preset "' + preset.name + '" assigned ws' + (wsIndex + 1));
                 app.session.dropIntent(app, monitorIndex, wsIndex);
+                // The click is an explicit reset of this monitor's released lone windows
+                // too: the retile below would otherwise hang on the lone-window skip and
+                // the click would land nowhere. Gated like the split reset above — a
+                // refused write supersedes nothing.
+                app.auto.detachClearMonitor(app, monitorIndex);
             }
             if (!layoutFor(app, monitorIndex, wsIndex).auto) {
                 layoutSet(app, monitorIndex, wsIndex, { auto: true });
@@ -502,6 +547,9 @@ const panelOpen = (app) => {
                 app.split.reset(app, monitorIndex, wsIndex);
                 resetCtl.sync();
             }
+            // The click is also an explicit reset of this monitor's released lone windows:
+            // the retile below would otherwise hang on the lone-window skip and the click
+            // would land nowhere.
             retileMonitor(app, monitorIndex, focusWindow());
             // The panel stays open so several presets can be tried in a row; the
             // assigned look moves in place, without a rebuild that would jump.
@@ -577,6 +625,7 @@ const panelOpen = (app) => {
         scroll.add_actor(rowsBox);
         panel.add(scroll);
         panel.add(panelGapRow(app, resetCtl));
+        panel.add(panelEdgeRow(app));
         const plus = new St.Button({ label: '＋ ' + _("New preset"), style_class: 'gk-plus', x_fill: true, track_hover: true });
         plus.connect('clicked', () => editorOpenNew(app));
         panel.add(plus);

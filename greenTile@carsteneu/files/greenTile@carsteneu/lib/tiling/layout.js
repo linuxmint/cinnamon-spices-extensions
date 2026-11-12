@@ -18,7 +18,7 @@ const { layoutsParse, layoutsEntry, layoutsStalePreset, layoutsShapes, layoutsSe
 const { fillStacks, autoRows, autoNarrowStacks } = XLET.lib.model.fill;
 const { singleMode, singleActive, singleBase } = XLET.lib.model.single;
 const { gapValue } = XLET.lib.model.gap;
-const { usableArea } = XLET.lib.tiling.screen;
+const { layoutArea } = XLET.lib.tiling.screen;
 const { SETTINGS_KEYS } = XLET.lib.model['settings-keys'];
 const { editorCols, editorRows, editorMinFloor, editorMinCeiling } = XLET.lib.model.editor;
 
@@ -31,6 +31,8 @@ const { editorCols, editorRows, editorMinFloor, editorMinCeiling } = XLET.lib.mo
  * @param {number} n
  * @returns {DragLayout}
  */
+// The threshold measures the MONITOR, not the layout area: it is a property of how
+// much screen there is, so the screen-edge margin deliberately does not shift it.
 var autoShape = (monitor, n) => (monitor.width < 2100 && n > 3)
     ? { kind: 'cols', shape: autoNarrowStacks(n) }
     : { kind: 'rows', shape: autoRows(n) };
@@ -244,8 +246,10 @@ var layoutShapeWs = (app, monitorIndex, wsIndex, n) => {
         return null;
     }
     // The lone-window layout for the mode (fill = full area, center = the golden
-    // frame); only reached for n = 1, where the guard above let it through.
-    const lone = () => singleBase(mode, usableArea(monitor), gapValue(app.config.settings.getValue(SETTINGS_KEYS.windowGap)));
+    // frame); only reached for n = 1, where the guard above let it through. Both are
+    // measured in the layout area, so a screen-edge margin shrinks the centered frame
+    // as well and `fill` fills the inset box.
+    const lone = () => singleBase(mode, layoutArea(app, monitor), gapValue(app.config.settings.getValue(SETTINGS_KEYS.windowGap)));
     /** @type {DragLayout | null} */
     let base = null;
     if (layoutState.preset) {

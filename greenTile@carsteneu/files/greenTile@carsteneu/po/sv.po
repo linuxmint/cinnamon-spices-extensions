@@ -6,9 +6,9 @@
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2017, 2019, 2021
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2021-01-12 21:08+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -60,6 +60,28 @@ msgstr ""
 "Klicka eller dra: raden anger hur många fönster kolumnen rymmer. Högerklick "
 "tar bort en kolumn."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Tilldelad på"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Inte tilldelad någonstans."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "alla arbetsytor"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "arbetsyta %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d till"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Namn"
@@ -93,84 +115,88 @@ msgstr "Resultat: %s"
 msgid "Edit preset"
 msgstr "Redigera förinställning"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Tilldelad"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Ta bort tilldelning"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: av"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Avstånd mellan fönster"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Återställ storlekar"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Avstånd till skärmkanten"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Förinställningar — arbetsyta %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Skapa förinställning"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Redigera %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Tillbaka"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: på"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: av"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Mörkt tema"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Ljust tema"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Inga förinställningar än."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Förhandsvisning för %d fönster"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Förhandsvisning för %d fönster"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Inga öppna fönster — grundlayout"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Ny förinställning"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Klicka på ett kort för att tillämpa det på den här arbetsytan och ordna "
@@ -328,8 +354,27 @@ msgstr ""
 "förinställningspanelen; visas inte i den här dialogrutan)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Avstånd till skärmkanten (ställs in med − / + i förinställningspanelen; "
+"visas inte i den här dialogrutan)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Avstånd som kaklade fönster håller till kanterna av det användbara området, "
+"inklusive panelkanten. Oberoende av avståndet mellan fönster; 0 låter dem "
+"ligga an mot kanterna."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -353,8 +398,7 @@ msgid ""
 "lands on its final frame at once; only the picture travels."
 msgstr ""
 "Hur länge ett fönster glider till sin plats, i millisekunder. Fönstret "
-"landar fortfarande direkt på sin slutliga ram; det är bara bilden som "
-"färdas."
+"landar fortfarande direkt på sin slutliga ram; det är bara bilden som färdas."
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"
@@ -383,33 +427,22 @@ msgstr ""
 "kaklat fönster hela det användbara området istället för att lämnas orört."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Ett enstaka fönster"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Vad som händer med ett ensamt rutnätsfönster när automatisk rutnätning eller "
-"en förinställning är på. Låt det vara: gör ingenting med det. Fyll skärmen: "
-"låter det fylla hela det användbara området. Centrera fönstret: centrerar "
-"det vid cirka 62 % av bredden (gyllene snittet) och 90 % av höjden."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Ett ensamt fönster medan automatisk kakling eller en förinställning är på: lämna det orört, låt det fylla det användbara området eller centrera det."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Låt det vara"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Fyll skärmen"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Centrera fönstret"
 

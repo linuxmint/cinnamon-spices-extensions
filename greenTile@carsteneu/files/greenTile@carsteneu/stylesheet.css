@@ -260,11 +260,16 @@
     color: #ff9640;
 }
 
-/* "Gap between windows  − 8 px +" between the list and New preset. */
+/* "Gap between windows  − 8 px +" between the list and New preset, directly
+   followed by "Space to the screen edge": one block, one separator line. */
 .gk-gap-row {
     padding: 8px 14px;
     spacing: 6px;
     border-top: 1px solid #2a2e39;
+}
+
+.gk-edge-row {
+    border-top: none;
 }
 
 .gk-gap-label {

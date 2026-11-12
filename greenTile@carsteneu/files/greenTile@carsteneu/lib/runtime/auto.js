@@ -28,6 +28,8 @@ const XLET = imports.extensions['greenTile@carsteneu'];
 
 const { createScope } = XLET.lib.runtime.scope;
 const { disconnectEach } = XLET.lib.model.teardown;
+const { singleActive } = XLET.lib.model.single;
+const { SETTINGS_KEYS } = XLET.lib.model['settings-keys'];
 
 // sortRectOverride on this component: stable sequence -> frame to sort by
 // instead of the current one (set after an edge resize or a swap: the dragged window
@@ -119,6 +121,7 @@ const SWITCH_PRESS_CAP = 32;
  * @property {AnyRecord} glib imports.gi.GLib (monotonic clock of the switch hold and its total bound)
  * @property {() => CinnamonWindow | null} focusWindow
  * @property {() => number} focusMonitorIndex
+ * @property {(monitor: CinnamonMonitor, focus: CinnamonWindow | null, ws?: number | null) => CinnamonWindow[]} collectWindows
  * @property {(app: AppFacade, monitorIndex: number, wsIndex: number) => { auto: boolean }} layoutFor
  * @property {(app: AppFacade, monitorIndex: number, wsIndex: number, patch: {}) => boolean} layoutSet
  * @property {(app: AppFacade, monitorIndex: number, focused: CinnamonWindow | null, animate?: boolean, wsIndex?: number | null, actionLayout?: Layout | null, settle?: boolean) => void} retileMonitor
@@ -165,6 +168,12 @@ var Auto = class {
         this._moveStart = new Map();
         // _resizeStart: stable sequence -> { rect, monitor } at the start of an edge resize.
         this._resizeStart = new Map();
+        // _detached: stable sequences of lone windows the user moved or resized. The
+        // single-window mode lets go of them (lib/tiling/retile.js modeLeavesLone) until
+        // the tiling actually places them again — a second window, a preset, auto on.
+        // Memory only, on purpose: a Cinnamon restart (and the App recreation a monitor
+        // change causes) forgets it.
+        this._detached = new Set();
         /** @type {Array<[AnyRecord, number, number]>} */
         this._workspaceSignals = [];
         /** @type {Array<[CinnamonWindow, number, number, number]>} */
@@ -752,6 +761,11 @@ var Auto = class {
         const focusWindow = this._deps.focusWindow();
         const monitorIndex = focusWindow ? focusWindow.get_monitor() : this._main.layoutManager.primaryIndex;
         const wsIndex = this._global.workspace_manager.get_active_workspace().index();
+        // This monitor's released lone windows are taken back FIRST: the hotkey is the
+        // documented way back, and a refused or deferred write below must not swallow it
+        // (the retile it defers would otherwise hang on the lone-window skip). No other
+        // monitor than the focused one loses its markers.
+        this.detachClearMonitor(app, monitorIndex);
         if (!this._monitorWritable(app, monitorIndex)) {
             this._deferAuto(app, monitorIndex, wsIndex, true);
             return;
@@ -856,6 +870,73 @@ var Auto = class {
     }
 
     /**
+     * Whether the tiling has let go of this window: the single-window mode marked it
+     * when the user moved or resized it, and every placement drops the mark again
+     * (lib/tiling/place.js placeCell), so the mode leaves it where it is until one runs.
+     * @param {number} seq
+     * @returns {boolean}
+     */
+    detached(seq) {
+        return this._detached.has(seq);
+    }
+
+    /**
+     * Marks the window as let go when it is the only one on its monitor and the
+     * single-window mode is on: the grab-end paths report this instead of scheduling
+     * the retile that would snap it back. Any other count keeps the plain retile, and
+     * the placement itself clears the mark.
+     * @param {AppFacade} app
+     * @param {CinnamonWindow} w
+     * @returns {boolean} whether the window was marked
+     */
+    detachLone(app, w) {
+        if (!singleActive(app.config.settings.getValue(SETTINGS_KEYS.singleWindowMode), 1)) {
+            return false;
+        }
+        const monitorIndex = w.get_monitor();
+        const monitor = this._main.layoutManager.monitors[monitorIndex];
+        if (!monitor) {
+            return false;
+        }
+        // A surface that does not tile places nothing, so there is nothing to let go of —
+        // and the mark would survive a later auto on that does not come through the hotkey.
+        if (!this._deps.layoutFor(app, monitorIndex, this._global.workspace_manager.get_active_workspace().index()).auto) {
+            return false;
+        }
+        const windows = this._deps.collectWindows(monitor, null);
+        if (windows.length !== 1 || windows[0] !== w) {
+            return false;
+        }
+        this._detached.add(w.get_stable_sequence());
+        return true;
+    }
+
+    /**
+     * The tiling placed the window: the mode owns it again.
+     * @param {number} seq
+     */
+    detachClear(seq) {
+        this._detached.delete(seq);
+    }
+
+    /**
+     * Drops every release marker of this monitor's windows. An explicit reset for the
+     * commands that retile without an actionLayout (auto on, a preset click) — they
+     * would otherwise hang on the lone-window skip and land nowhere.
+     * @param {AppFacade} app
+     * @param {number} monitorIndex
+     */
+    detachClearMonitor(app, monitorIndex) {
+        const monitor = this._main.layoutManager.monitors[monitorIndex];
+        if (!monitor) {
+            return;
+        }
+        for (const w of this._deps.collectWindows(monitor, null)) {
+            this._detached.delete(w.get_stable_sequence());
+        }
+    }
+
+    /**
      * @param {AppFacade} app
      * @param {CinnamonWindow} w
      * @param {string} op
@@ -919,6 +1000,15 @@ var Auto = class {
         const from = this._grabMonitor.get(seq);
         this._grabMonitor.delete(seq);
         const to = w.get_monitor();
+        // A lone window the user moves is let go instead of snapped back: the mode
+        // marks it, and only a placement or an explicit reset takes it back. A monitor
+        // the window left still retiles — its remaining windows have to fill the space.
+        if (this.detachLone(app, w)) {
+            if (from !== undefined && from !== to) {
+                this.scheduleMonitor(app, from, 250);
+            }
+            return;
+        }
         // Manual moves can cross monitors: both the monitor at grab start and the one at
         // release may need a retile (one call when equal, per-monitor timers anyway).
         if (from !== undefined && from !== to) {
@@ -1004,6 +1094,7 @@ var Auto = class {
         this._grabMonitor.delete(seq);
         this._moveStart.delete(seq);
         this._resizeStart.delete(seq);
+        this._detached.delete(seq);
         // The close path is the guaranteed one: window-removed may arrive on an
         // inactive workspace, or after this handler. Drop the fresh record here too,
         // so the per-monitor sets stay bounded on a paused monitor where no retile
@@ -1325,6 +1416,7 @@ var Auto = class {
         this._grabMonitor.clear();
         this._moveStart.clear();
         this._resizeStart.clear();
+        this._detached.clear();
         try {
             this._deps.dropStop();
         }

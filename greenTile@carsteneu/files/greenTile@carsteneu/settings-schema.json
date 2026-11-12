@@ -17,13 +17,13 @@
       "hotkeys-tab": {
          "type": "page",
          "title": "Hotkeys",
-      "sections": [
-         "columns-hotkey-section",
-         "preset-section",
-         "resize-section",
-         "swap-section",
-         "exclusion-hotkey-section"
-      ]
+         "sections": [
+            "columns-hotkey-section",
+            "preset-section",
+            "resize-section",
+            "swap-section",
+            "exclusion-hotkey-section"
+         ]
       },
       "columns-hotkey-section": {
          "type": "section",
@@ -196,11 +196,27 @@
       "type": "list",
       "description": "Windows matching one of these rows are never tiled; they float freely wherever you put them",
       "columns": [
-         {"id": "match", "title": "Match", "type": "string", "options": {"Window class": "class", "Title contains": "title", "App id": "app"}},
-         {"id": "text", "title": "Text", "type": "string"}
+         {
+            "id": "match",
+            "title": "Match",
+            "type": "string",
+            "options": {
+               "Window class": "class",
+               "Title contains": "title",
+               "App id": "app"
+            }
+         },
+         {
+            "id": "text",
+            "title": "Text",
+            "type": "string"
+         }
       ],
       "default": [
-         {"match": "class", "text": "xlet-settings.py"}
+         {
+            "match": "class",
+            "text": "xlet-settings.py"
+         }
       ]
    },
    "exclusionsSeeded": {
@@ -221,6 +237,16 @@
       "min": 0,
       "max": 49,
       "step": 2,
+      "units": "px",
+      "default": 0
+   },
+   "edgeGap": {
+      "type": "spinbutton",
+      "description": "Space to the screen edge (set with − / + in the preset panel; not shown in this dialog)",
+      "tooltip": "Distance tiled windows keep from the edges of the usable area, the panel edge included. Independent of the gap between windows; 0 leaves them flush with the edges.",
+      "min": 0,
+      "max": 49,
+      "step": 1,
       "units": "px",
       "default": 0
    },
@@ -257,7 +283,7 @@
       "type": "combobox",
       "default": "center",
       "description": "A single window",
-      "tooltip": "What happens to a lone tiled window when automatic tiling or a preset is on. \"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it fill the whole usable area. \"Center the window\" centers it at about 62 % of the width (golden ratio) and 90 % of the height.",
+      "tooltip": "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it.",
       "options": {
          "Leave it untouched": "leave",
          "Fill the monitor": "fill",

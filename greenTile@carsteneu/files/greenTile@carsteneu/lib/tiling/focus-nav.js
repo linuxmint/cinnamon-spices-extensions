@@ -14,7 +14,7 @@
 
 const XLET = imports.extensions['greenTile@carsteneu'];
 
-const { usableArea } = XLET.lib.tiling.screen;
+const { layoutArea } = XLET.lib.tiling.screen;
 const { collectWindows } = XLET.lib.tiling.windows;
 const { layoutFor, layoutShape } = XLET.lib.tiling.layout;
 const { sortReadingOrder } = XLET.lib.tiling.order;
@@ -80,7 +80,7 @@ var focusHotkey = (app, dir) => (/** @type {AnyRecord} */ display, /** @type {Ci
     if (layout) {
         ordered = sortReadingOrder(app, windows, layout.kind === 'cols', false);
         const fit = app.split.effective(app, monitorIndex, wsIndex, n, layout, ordered);
-        cells = fit.cells || splitRects(fit.kind, fit.shape, fit.split, fit.area || usableArea(monitor));
+        cells = fit.cells || splitRects(fit.kind, fit.shape, fit.split, fit.area || layoutArea(app, monitor));
         const selfIdx = ordered.indexOf(window);
         // a tiling-managed focus window is one of the collected ones; anything else
         // (floating, dialog accidentally focused) keeps the native key behaviour.

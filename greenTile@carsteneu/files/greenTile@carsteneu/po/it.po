@@ -6,9 +6,9 @@
 # Dragone2 <dragone2@risposteinformatiche.it>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2023-03-31 10:43+0200\n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: Italian\n"
@@ -60,6 +60,28 @@ msgstr ""
 "Fare clic o trascinare: la riga stabilisce quante finestre contiene la "
 "colonna. Il clic destro rimuove una colonna."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Assegnata a"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Non assegnata da nessuna parte."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "tutte le aree di lavoro"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "area di lavoro %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d altre"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nome"
@@ -93,84 +115,88 @@ msgstr "Risultato: %s"
 msgid "Edit preset"
 msgstr "Modifica preimpostazione"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Assegnata"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Rimuovi assegnazione"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: disattivato"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Spaziatura tra le finestre"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Ripristina dimensioni"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Spazio dal bordo dello schermo"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Preimpostazioni — area di lavoro %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Crea preimpostazione"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Modifica %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Indietro"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: attivato"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: disattivato"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Tema scuro"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Tema chiaro"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Ancora nessuna preimpostazione."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Anteprima per %d finestra"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Anteprima per %d finestre"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Nessuna finestra aperta — disposizione di base"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Nuova preimpostazione"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Fai clic su una scheda per applicarla a questa area di lavoro e affiancare "
@@ -329,8 +355,27 @@ msgstr ""
 "delle preimpostazioni; non mostrata in questa finestra)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Spazio dal bordo dello schermo (impostata con − / + nel pannello delle "
+"preimpostazioni; non mostrata in questa finestra)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Distanza che le finestre affiancate mantengono dai bordi dell'area "
+"utilizzabile, bordo del pannello compreso. Indipendente dalla spaziatura tra "
+"le finestre; 0 le lascia a filo dei bordi."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -386,33 +431,22 @@ msgstr ""
 "finestra affiancata riempie tutta l'area utile invece di restare invariata."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Una sola finestra"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Cosa succede a una finestra affiancata singola quando la disposizione "
-"automatica o un preset sono attivi. Non toccarla: non le fa nulla. Riempi il "
-"monitor: occupa tutta l'area utilizzabile. Centra la finestra: la centra a "
-"circa il 62 % della larghezza (sezione aurea) e al 90 % dell'altezza."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Una finestra sola mentre la disposizione automatica o un preset è attivo: lasciarla intatta, farla riempire l’area utilizzabile o centrarla."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Non toccarla"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Riempi il monitor"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Centra la finestra"
 

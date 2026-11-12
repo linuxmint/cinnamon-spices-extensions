@@ -6,9 +6,9 @@
 # Muxutruk <muxutruk2@users.noreply.github.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2024-05-30 9:50+1\n"
 "Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
 "Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
@@ -58,6 +58,28 @@ msgstr ""
 "Egin klik edo arrastatu: errenkadak zehazten du zutabeak zenbat leiho "
 "hartzen dituen. Eskuineko klikak zutabe bat kentzen du."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Esleituta hemen:"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Ez dago inon esleituta."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "laneko area guztiak"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "%d. laneko area"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d gehiago"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Izena"
@@ -91,84 +113,88 @@ msgstr "Emaitza: %s"
 msgid "Edit preset"
 msgstr "Editatu aurrezarpena"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Esleituta"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Kendu esleipena"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: desaktibatuta"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Leihoen arteko tartea"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Berrezarri tamainak"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Tartea pantailaren ertzera"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Aurrezarpenak — %d. laneko area · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Sortu aurrezarpena"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Editatu %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Atzera"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: aktibatuta"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: desaktibatuta"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Gai iluna"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Gai argia"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Oraindik ez dago aurrezarpenik."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Aurrebista — leiho kopurua: %d"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Aurrebista — leiho kopurua: %d"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Ez dago leiho irekirik — oinarrizko antolamendua"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Aurrezarpen berria"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Egin klik txartel batean aurrezarpena laneko area honetan aplikatzeko eta "
@@ -328,8 +354,27 @@ msgstr ""
 "panelean; ez da elkarrizketa-koadro honetan erakusten)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Tartea pantailaren ertzera (− / + bidez ezartzen da aurrezarpenen panelean; "
+"ez da elkarrizketa-koadro honetan erakusten)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Leiho kokatuek erabilgarri den eremuaren ertzetara gordetzen duten tartea, "
+"panelaren ertza barne. Leihoen arteko tartearekiko independentea; 0 balioak "
+"ertzetara itsatsita uzten ditu."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -386,34 +431,22 @@ msgstr ""
 "beharrean."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Leiho bakarra"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Zer gertatzen zaion lauza bakarreko leiho bati mosaiko automatikoa edo "
-"aurrezarpen bat aktibo dagoenean. Utzi ukitu gabe: ez dio ezer egiten. Bete "
-"monitorea: erabilgarri dagoen azalera osoa hartzen du. Zentratu leihoa: "
-"zabaleraren % 62 inguruan (urrezko proportzioa) eta altueraren % 90ean "
-"zentratzen du."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Leiho bakarra mosaiko automatikoa edo aurrezarpen bat aktibo dagoela: ukitu gabe utzi, erabil daitekeen eremua bete edo erdiratu."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Utzi ukitu gabe"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Bete monitorea"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Zentratu leihoa"
 

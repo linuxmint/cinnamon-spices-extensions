@@ -14,7 +14,7 @@
 
 const XLET = imports.extensions['greenTile@carsteneu'];
 
-const { usableArea, focusWindow } = XLET.lib.tiling.screen;
+const { layoutArea, focusWindow } = XLET.lib.tiling.screen;
 const { collectWindows, windowTileable, windowMaximizedOrFullscreen, windowMoveResize } = XLET.lib.tiling.windows;
 const { placeCell, placeFit } = XLET.lib.tiling.place;
 const { sortReadingOrder } = XLET.lib.tiling.order;
@@ -51,13 +51,14 @@ var windowDescription = (w) => {
 const loneWindow = (windows, focused, hasFocus) => (windows.length + (hasFocus ? 1 : 0) === 1)
     ? (hasFocus ? focused : windows[0]) : null;
 /**
- * Whether the single-window mode must leave this lone window untouched because it
- * is already maximized (both directions) or fullscreen: the user's own full-area
- * placement, which a placement would unmaximize (windowReset) and shrink into the
- * centered frame. Only the mode's own lone placement skips here — a landing that
- * passes an explicit actionLayout (the split/drop route) still places, and any
- * count of two or more is untouched by this. The lone window's state is read only
- * once there IS a lone window, so no other count touches the window API.
+ * Whether the single-window mode must leave this lone window untouched: it is already
+ * maximized (both directions) or fullscreen — the user's own full-area placement, which
+ * a placement would unmaximize (windowReset) and shrink into the centered frame — or the
+ * user moved or resized it himself and the mode let go of it (app.auto.detachLone). Only
+ * the mode's own lone placement skips here — a landing that passes an explicit
+ * actionLayout (the split/drop route) still places, and any count of two or more is
+ * untouched by this. The lone window's state is read only once there IS a lone window,
+ * so no other count touches the window API.
  * @param {AppFacade} app
  * @param {CinnamonWindow[]} windows collected windows of the monitor/workspace
  * @param {CinnamonWindow | null} focused
@@ -70,7 +71,13 @@ const modeLeavesLone = (app, windows, focused, hasFocus, actionLayout) => {
         return false;
     }
     const lone = loneWindow(windows, focused, hasFocus);
-    return lone != null && singleLeavesMaximized(
+    if (lone == null) {
+        return false;
+    }
+    if (app.auto.detached(lone.get_stable_sequence())) {
+        return true;
+    }
+    return singleLeavesMaximized(
         app.config.settings.getValue(SETTINGS_KEYS.singleWindowMode), 1, windowMaximizedOrFullscreen(lone));
 };
 
@@ -85,7 +92,7 @@ var appColumns = (app, cols) => {
         return;
     }
     const monitor = Main.layoutManager.monitors[focused.get_monitor()];
-    const [screenX, screenY, screenWidth, screenHeight] = usableArea(monitor);
+    const [screenX, screenY, screenWidth, screenHeight] = layoutArea(app, monitor);
     const windows = collectWindows(app, monitor, focused);
     debugCount(app, monitor, focused, windows);
     if (windows.length === 0) {
@@ -253,7 +260,7 @@ var appAuto = (app, monitorIndex, focused, animate = true, wsIndex = null, actio
         return;
     }
     const ws = wsIndex != null ? wsIndex : global.workspace_manager.get_active_workspace().index();
-    const area = usableArea(monitor);
+    const area = layoutArea(app, monitor);
     const windows = collectWindows(app, monitor, focused, ws);
     debugCount(app, monitor, focused, windows, ws);
     const hasFocus = Boolean(focused && windowTileable(focused) && focused.get_monitor() === monitorIndex
@@ -309,7 +316,7 @@ var presetRetile = (app, monitorIndex, focused, animate = true, wsIndex = null, 
     if (!preset) {
         return;
     }
-    const area = usableArea(monitor);
+    const area = layoutArea(app, monitor);
     const windows = collectWindows(app, monitor, focused, ws);
     const hasFocus = Boolean(focused && windowTileable(focused) && focused.get_monitor() === monitorIndex
         && !app.excl.isExcluded(focused));

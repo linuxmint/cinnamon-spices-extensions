@@ -6,9 +6,9 @@
 # Odyssey <odysseyhyd@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2024-07-25 17:53+0200\n"
 "Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
 "Language-Team: Catalan\n"
@@ -59,6 +59,28 @@ msgstr ""
 "Fes clic o arrossega: la fila determina quantes finestres té la columna. El "
 "clic dret elimina una columna."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Assignada a"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "No s'assigna enlloc."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "tots els espais de treball"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "espai de treball %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d més"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nom"
@@ -92,84 +114,88 @@ msgstr "Resultat: %s"
 msgid "Edit preset"
 msgstr "Edita la predefinició"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Assignada"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Elimina l'assignació"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: desactivat"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Espai entre finestres"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Restableix les mides"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Espai fins a la vora de la pantalla"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Predefinicions — espai de treball %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Crea una predefinició"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Edita %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Enrere"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: activat"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: desactivat"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Tema fosc"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Tema clar"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Encara no hi ha cap predefinició."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Vista prèvia per a %d finestra"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Vista prèvia per a %d finestres"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Cap finestra oberta — disposició base"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Predefinició nova"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Fes clic en una targeta per aplicar-la a aquest espai de treball i posar les "
@@ -329,8 +355,27 @@ msgstr ""
 "predefinicions; no es mostra en aquest diàleg)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Espai fins a la vora de la pantalla (es defineix amb − / + al tauler de "
+"predefinicions; no es mostra en aquest diàleg)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Distància que les finestres emmotllades mantenen amb les vores de l'àrea "
+"útil, inclosa la vora del panell. Independent de l'espai entre finestres; 0 "
+"les deixa arran de les vores."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -384,33 +429,22 @@ msgstr ""
 "mosaic omple tota l'àrea útil en lloc de deixar-se sense tocar."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Una sola finestra"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Què passa amb una finestra sola en mosaic quan el mosaic automàtic o un "
-"predefinit està activat. Deixa-la sense tocar: no hi fa res. Omple el "
-"monitor: ocupa tota l'àrea útil. Centra la finestra: la centra a un 62 % de "
-"l'amplada (proporció àuria) i un 90 % de l'alçada."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Una finestra sola mentre el mosaic automàtic o un preajust està actiu: deixar-la intacta, fer que ompli l'àrea utilitzable o centrar-la."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Deixa-la sense tocar"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Omple el monitor"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Centra la finestra"
 

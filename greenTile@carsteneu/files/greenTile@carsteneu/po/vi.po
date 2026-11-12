@@ -6,9 +6,9 @@
 # loccun <huynhloc.contact@gmail.com>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2025-10-19 02:39+0700\n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: Vietnamese\n"
@@ -59,6 +59,28 @@ msgstr ""
 "Nhấp hoặc kéo: hàng xác định số cửa sổ trong cột. Nhấp chuột phải để xóa một "
 "cột."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Đã gán trên"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Chưa được gán ở đâu."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "tất cả không gian làm việc"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "không gian làm việc %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d mục nữa"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Tên"
@@ -92,84 +114,88 @@ msgstr "Kết quả: %s"
 msgid "Edit preset"
 msgstr "Sửa cấu hình sẵn"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Đã gán"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Bỏ gán"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Tự động: tắt"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Khoảng cách giữa các cửa sổ"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Đặt lại kích thước"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Khoảng cách tới mép màn hình"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Cấu hình sẵn — không gian làm việc %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Tạo cấu hình sẵn"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Sửa %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Quay lại"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Tự động: bật"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Tự động: tắt"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Chủ đề tối"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Chủ đề sáng"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Chưa có cấu hình sẵn nào."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Xem trước cho %d cửa sổ"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Xem trước cho %d cửa sổ"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Không có cửa sổ nào đang mở — bố cục cơ bản"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Cấu hình sẵn mới"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Nhấp vào một thẻ để áp dụng cấu hình sẵn cho không gian làm việc này và xếp "
@@ -326,8 +352,27 @@ msgstr ""
 "sẵn; không hiển thị trong hộp thoại này)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Khoảng cách tới mép màn hình (đặt bằng − / + trong bảng cấu hình sẵn; không "
+"hiển thị trong hộp thoại này)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Khoảng cách mà các cửa sổ được xếp giữ với mép của vùng khả dụng, kể cả mép "
+"bảng điều khiển. Độc lập với khoảng cách giữa các cửa sổ; 0 giữ chúng sát "
+"mép."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -380,33 +425,22 @@ msgstr ""
 "nhất sẽ lấp đầy toàn bộ khu vực sử dụng được thay vì để nguyên như vậy."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Một cửa sổ"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Điều gì xảy ra với cửa sổ được xếp ô duy nhất khi tính năng xếp ô tự động "
-"hoặc một cấu hình sẵn đang bật. Giữ nguyên: không làm gì với nó. Lấp đầy màn "
-"hình: chiếm toàn bộ vùng sử dụng được. Căn giữa cửa sổ: căn giữa ở khoảng 62 "
-"% chiều rộng (tỷ lệ vàng) và 90 % chiều cao."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Một cửa sổ đơn lẻ khi bật xếp gạch tự động hoặc một preset: để nguyên, lấp đầy vùng khả dụng hoặc căn giữa."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Giữ nguyên"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Lấp đầy màn hình"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Căn giữa cửa sổ"
 

@@ -6,9 +6,9 @@
 # Marcelo Aof, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2022-02-09 15:35-0300\n"
 "Last-Translator: Marcelo Aof\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -60,6 +60,28 @@ msgstr ""
 "Clique ou arraste: a linha define quantas janelas a coluna comporta. O "
 "clique direito remove uma coluna."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Atribuída em"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Não atribuída em lugar nenhum."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "todas as áreas de trabalho"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "área de trabalho %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d mais"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Nome"
@@ -93,84 +115,88 @@ msgstr "Resultado: %s"
 msgid "Edit preset"
 msgstr "Editar predefinição"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Atribuída"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Remover atribuição"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: desligado"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Espaço entre janelas"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Redefinir tamanhos"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Espaço até a borda da tela"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Predefinições — área de trabalho %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Criar predefinição"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "Editar %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Voltar"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: ligado"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: desligado"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Tema escuro"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Tema claro"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Nenhuma predefinição ainda."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Prévia para %d janela"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Prévia para %d janelas"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Nenhuma janela aberta — layout base"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Nova predefinição"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Clique em um cartão para aplicá-lo a esta área de trabalho e organizar as "
@@ -330,8 +356,27 @@ msgstr ""
 "predefinições; não exibido nesta caixa de diálogo)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Espaço até a borda da tela (definido com − / + no painel de predefinições; "
+"não exibido nesta caixa de diálogo)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Distância que as janelas em mosaico mantêm das bordas da área utilizável, "
+"incluindo a borda do painel. Independente do espaço entre janelas; 0 as "
+"deixa rentes às bordas."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -385,33 +430,22 @@ msgstr ""
 "organizada preenche toda a área útil em vez de ficar intocada."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Uma única janela"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"O que acontece com uma janela lado a lado sozinha quando o mosaico "
-"automático ou uma predefinição está ativo. Deixar como está: não faz nada "
-"com ela. Preencher o monitor: ocupa toda a área útil. Centralizar a janela: "
-"centraliza em cerca de 62 % da largura (proporção áurea) e 90 % da altura."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Uma janela sozinha enquanto o mosaico automático ou uma predefinição está ativo: deixá-la intacta, fazê-la preencher a área utilizável ou centralizá-la."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Deixar como está"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Preencher o monitor"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Centralizar a janela"
 

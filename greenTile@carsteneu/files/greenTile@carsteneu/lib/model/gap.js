@@ -10,15 +10,20 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-// Gap between tiled windows (setting windowGap, set with − / + in the preset panel).
-// Every side of a cell that borders another cell moves in by half the gap, so two
-// neighbours end up exactly one gap apart; sides on the edge of the usable screen area
-// stay flush. Edges are rounded before the insets, so fractional cell widths
-// (1920/7) do not make the gaps drift.
+// Space to the screen edge (setting edgeGap, set with − / + in the preset panel).
+// It is a property of the AREA, not of a cell: the layout is solved inside an area
+// that is already inset (insetArea), so the fit machinery, the minima, the splits and
+// the drop preview all see the same smaller box and cannot disagree. gapCell keeps
+// insetting only the sides that border a neighbour. Edges are rounded before the
+// insets, so fractional cell widths (1920/7) do not make the gaps drift.
 /** Largest gap in px a stored value can reach. */
 var GAP_MAX = 48;
 /** Step in px the −/+ buttons in the preset panel change the gap by. */
 var GAP_STEP = 2;
+/** Largest distance in px a stored screen-edge value can reach. */
+var EDGE_MAX = 48;
+/** Step in px the −/+ buttons in the preset panel change the edge distance by. */
+var EDGE_STEP = 1;
 /**
  * Clamps a stored gap value to [0, GAP_MAX] rounded down to GAP_STEP; anything
  * non-finite becomes 0.
@@ -33,9 +38,44 @@ var gapValue = (v) => {
     return Math.min(Math.max(stepped, 0), GAP_MAX);
 };
 /**
+ * Clamps a stored screen-edge distance to [0, EDGE_MAX] on EDGE_STEP; anything
+ * non-finite becomes 0.
+ * @param {any} v raw stored value, validated here
+ * @returns {number}
+ */
+var edgeValue = (v) => {
+    if (typeof v !== 'number' || !Number.isFinite(v)) {
+        return 0;
+    }
+    const stepped = Math.floor(v / EDGE_STEP) * EDGE_STEP;
+    return Math.min(Math.max(stepped, 0), EDGE_MAX);
+};
+/**
+ * The area the layout is solved in: the usable area moved in by the screen-edge
+ * distance on all four sides. An edge of 0 returns the input unchanged. An area too
+ * small for the distance keeps a 1 px axis centred in its own extent instead of
+ * ending up outside the monitor; a DEGENERATE axis (shorter than 1 px, which
+ * usableArea returns when panels use up the whole monitor) stays degenerate, because
+ * the placement layer declines exactly that case and a fabricated 1 px would place a
+ * window where the default places none.
+ * @param {Rect} area
+ * @param {number} edge
+ * @returns {Rect}
+ */
+var insetArea = (area, edge) => {
+    const [x, y, w, h] = area;
+    if (!(edge > 0)) {
+        return /** @type {Rect} */ ([x, y, w, h]);
+    }
+    const dx = Math.min(edge, Math.max(Math.floor((w - 1) / 2), 0));
+    const dy = Math.min(edge, Math.max(Math.floor((h - 1) / 2), 0));
+    return /** @type {Rect} */ ([x + dx, y + dy,
+        w >= 1 ? Math.max(w - 2 * dx, 1) : w, h >= 1 ? Math.max(h - 2 * dy, 1) : h]);
+};
+/**
  * Cell rectangle with half the gap inset on every side bordering another cell; sides
- * on the edge of the usable area stay flush. Edges are rounded before the insets,
- * so fractional cell widths do not make the gaps drift.
+ * on the edge of the (already inset) area stay flush. Edges are rounded before the
+ * insets, so fractional cell widths do not make the gaps drift.
  * @param {Rect} cell
  * @param {Rect} area
  * @param {number} gap

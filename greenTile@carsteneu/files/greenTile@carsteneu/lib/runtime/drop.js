@@ -34,7 +34,7 @@ const { SETTINGS_KEYS } = XLET.lib.model['settings-keys'];
 
 // deps: meta (imports.gi.Meta), main (imports.ui.main — uiGroup), global
 // (the global object), mainloop (imports.mainloop), st (imports.gi.St),
-// collectWindows, excludeCheck, layoutShape, layoutSet, usableArea,
+// collectWindows, excludeCheck, layoutShape, layoutSet, layoutArea,
 // gap, placeFit, accentRgb (() => the theme component's resolved accent rgb).
 /**
  * @typedef {Object} DropDeps
@@ -47,7 +47,7 @@ const { SETTINGS_KEYS } = XLET.lib.model['settings-keys'];
  * @property {(monitor: CinnamonMonitor, focus: CinnamonWindow | null, ws?: number) => CinnamonWindow[]} collectWindows
  * @property {(app: AppFacade, monitorIndex: number, windowCount: number) => Layout | null} layoutShape
  * @property {(app: AppFacade, monitorIndex: number, wsIndex: number, patch: {}) => void} layoutSet
- * @property {(monitor: CinnamonMonitor) => Rect} usableArea
+ * @property {(app: AppFacade, monitor: CinnamonMonitor) => Rect} layoutArea
  * @property {(app: AppFacade) => number} gap
  * @property {(app: AppFacade, wins: CinnamonWindow[], layout: Layout, area: Rect, animate: boolean, monitorIndex: number, wsIndex: number, n: number) => FittedLayout} placeFit
  * @property {() => Rgb} accentRgb
@@ -182,7 +182,7 @@ var Drop = class {
         const indices = sortOrder(rects, layout.kind === 'cols');
         const ordered = indices.map((/** @type {number} */ i) => windows[i]);
         const fromIndex = ordered.indexOf(w);
-        const area = this._deps.usableArea(monitor);
+        const area = this._deps.layoutArea(app, monitor);
         // The hit test must use the cells the windows actually sit in — after an
         // application-minimum adaptation the settled arrangement is not the nominal
         // splitRects output, and a nominal hit test would pick the wrong neighbour.
@@ -243,7 +243,7 @@ var Drop = class {
             this.stop();
             return false;
         }
-        const area = this._deps.usableArea(monitor);
+        const area = this._deps.layoutArea(app, monitor);
         const wsIndex = this._global.workspace_manager.get_active_workspace().index();
         const n = hit.next.order.length;
         // A's cell in the new layout; a cross-monitor A sits at the end of the order.
@@ -308,7 +308,7 @@ var Drop = class {
         app.split.forget(ref.key);
         this._deps.layoutSet(app, hit.monitorIndex, wsIndex, { shapes: { [ref.n]: { kind: hit.next.kind, shape: hit.next.shape } }, splits: { [ref.n]: null } });
         const monitor = this._main.layoutManager.monitors[hit.monitorIndex];
-        const area = this._deps.usableArea(monitor);
+        const area = this._deps.layoutArea(app, monitor);
         const orderedByNext = hit.next.order.map((/** @type {number} */ i) => (i === hit.ordered.length ? w : hit.ordered[i]));
         // A drop landing inside a workspace-switch effect (a switch during the drag)
         // waits like every retile (lib/runtime/auto.js): placed now, its frames would

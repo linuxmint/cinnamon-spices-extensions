@@ -15,8 +15,8 @@
  *
  * - 'leave'  the window is not placed at all.
  * - 'fill'   it fills the whole usable area (singleLayout).
- * - 'center' it is placed centered — golden-ratio width, 90 % height, equal
- *            margins (singleCenterLayout).
+ * - 'center' it is placed centered — SINGLE_CENTER_WIDTH of the width,
+ *            90 % height, equal margins (singleCenterLayout).
  *
  * singleMode normalises a stored value — anything that is not a known mode
  * reads as 'leave', so a corrupt or legacy value never tiles a lone window by
@@ -51,14 +51,27 @@ var singleActive = (raw, n) => n === 1 && singleMode(raw) !== 'leave';
 var singleLeavesMaximized = (raw, n, maximized) => singleActive(raw, n) && maximized;
 var singleLayout = Object.freeze({ kind: 'rows', shape: Object.freeze([1]) });
 
-/** Share of the usable width a centered window keeps (the golden ratio 1/φ). */
-var SINGLE_CENTER_WIDTH = 0.6180339887;
+/**
+ * Share of the usable width a centered window keeps.
+ *
+ * The golden ratio (0.618) was the original value and it reads well up to about
+ * 2560 px of usable width. Above that the frame stops looking "centered" and
+ * starts looking like a wall of text: at 5120 px it covered 3164 px, which the
+ * author measured as roughly a tenth too wide. 0.556 is the golden ratio less
+ * that tenth — a share, not a pixel ceiling, so the frame keeps its proportion
+ * on every screen instead of stopping at one number that only fits one monitor.
+ *
+ * Deliberately a constant and not a setting: the number is the product decision,
+ * so changing it again should be a reasoned change and not a slider.
+ */
+var SINGLE_CENTER_WIDTH = 0.5562;
 /** Share of the usable height a centered window keeps. */
 var SINGLE_CENTER_HEIGHT = 0.9;
 /**
- * The centered window's frame: golden-ratio width, 90 % height, its margins
- * equal on each axis. Width and height round, the offsets floor, so the frame
- * stays inside the usable area (1920x1040 -> [366, 52, 1187, 936]).
+ * The centered window's frame: SINGLE_CENTER_WIDTH of the width, 90 % of the
+ * height, its margins equal on each axis. Width and height round, the offsets
+ * floor, so the frame stays inside the usable area (1920x1040 -> [426, 52, 1068,
+ * 936]; 5120x1400 -> [1136, 70, 2848, 1260]).
  * @param {Rect} area
  * @returns {Rect}
  */
@@ -82,7 +95,8 @@ var singleCenterRect = (area) => {
  * An application minimum larger than the frame is not overruled: the window then
  * grows from the frame's top-left corner, exactly like a full-area single window
  * that refuses to shrink. The fit machinery raises cell sizes, never re-centers a
- * refused frame, so a very large minimum can push the window off center.
+ * refused frame, so a very large minimum can push the window off center — the
+ * larger the minimum relative to the frame, the further right it ends up.
  *
  * `area` also reaches the placement record (lib/tiling/place.js); re-applying a
  * stored manual split is guarded by splitValid, and no split can be stored for a

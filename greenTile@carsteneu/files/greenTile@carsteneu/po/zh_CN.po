@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Simplified Chinese\n"
@@ -57,6 +57,28 @@ msgid ""
 "removes a column."
 msgstr "单击或拖动：所在行决定该列容纳的窗口数。右键单击可删除一列。"
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "分配位置"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "尚未分配到任何位置。"
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "所有工作区"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "工作区 %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "另有 %d 个"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "名称"
@@ -90,84 +112,88 @@ msgstr "结果：%s"
 msgid "Edit preset"
 msgstr "编辑预设"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "已分配"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "取消分配"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "自动：关"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "窗口间距"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "重置大小"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "屏幕边缘间距"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "预设 — 工作区 %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "创建预设"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "编辑 %s"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "返回"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "自动：开"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "自动：关"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "深色主题"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "浅色主题"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "尚无预设。"
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "%d 个窗口的预览"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "%d 个窗口的预览"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "没有打开的窗口 — 基础布局"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "新建预设"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr "单击卡片，将预设应用到此工作区并立即平铺窗口"
 
@@ -315,8 +341,24 @@ msgid ""
 msgstr "平铺窗口之间的间距（在预设面板中通过 − / + 设置；不在此对话框中显示）"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr "屏幕边缘间距（在预设面板中通过 − / + 设置；不在此对话框中显示）"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"平铺窗口与可用区域边缘之间保留的距离，包括面板边缘。与窗口间距相互独立；0 表"
+"示紧贴边缘。"
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -339,7 +381,8 @@ msgid ""
 "How long a window glides into its place, in milliseconds. The window still "
 "lands on its final frame at once; only the picture travels."
 msgstr ""
-"窗口滑入其位置的时长，以毫秒为单位。窗口仍会立即落在最终边框上，只有画面在移动。"
+"窗口滑入其位置的时长，以毫秒为单位。窗口仍会立即落在最终边框上，只有画面在移"
+"动。"
 
 #. settings-schema.json->focusBorder->description
 msgid "Border around the focused window"
@@ -365,32 +408,22 @@ msgid ""
 msgstr "启用自动平铺或预设时，单个平铺窗口会填满整个可用区域，而不是保持不变。"
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "单个窗口"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"开启自动平铺或使用预设时，只有一个平铺窗口时的处理方式。不做处理: 不对窗口做"
-"任何调整。铺满显示器: 窗口占满整个可用区域。窗口居中: 窗口宽度约为 62 %（黄金"
-"比例）、高度为 90 %，并居中显示。"
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "自动平铺或预设启用时的单个窗口：保持原样、填满可用区域或居中。"
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "不做处理"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "铺满显示器"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "窗口居中"
 

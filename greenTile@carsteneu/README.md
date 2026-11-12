@@ -6,12 +6,13 @@ Window tiling for Cinnamon: presets per monitor and workspace, an auto mode, sna
 
 - **Presets per monitor and workspace** — rules by window count, e.g. "3 windows = 2 columns", "6 = 2·2·2". Assigned presets reapply when the window count changes.
 - **Auto mode** (`Super+Ctrl+A`) — new and restored windows retile after 300 ms, closed and minimized ones after 100 ms; new windows normally join the end, while an explicit successful drop keeps its chosen position. `Super+Ctrl+D` pauses automatic tiling, snap-on-release and swapping without removing the preset; `Super+Ctrl+Left/Right` can still send the focused window away.
-- **Preset panel** (`Super+Ctrl+P`) — apply presets with one click, set the gap between windows (0–48 px), switch auto mode, all on the monitor of the focused window.
+- **Preset panel** (`Super+Ctrl+P`) — apply presets with one click, set the gap between windows and the space to the screen edge (0–48 px each), switch auto mode, all on the monitor of the focused window.
 - **Preset editor** — paint up to 6 columns × 4 rows, name it, and the preset retiles immediately if it is in use. Delete presets you no longer want.
 - **Moving borders** — drag a border or use `Super+Alt+Arrow` for finer control; neighbours follow, and border positions are remembered per window count. The 120 px minimum is a target where space allows, not a guarantee for overloaded layouts or application-enforced minimum sizes.
 - **Splitting by drag** — drop a window at the edge zone of a tiled window to stack it, add a column or a row; a preview shows where it lands.
 - **Swapping** — `Super+Ctrl+Arrow` swaps the focused window with its neighbour; Left/Right continue across monitors and workspaces, also through untiled or paused ones, which they leave as they are; there the window is only moved over and may lie on top of the windows already there, and one that is too tall for the target monitor is clamped into it instead of being left behind.
 - **Focus navigation** — `Super+Arrow` moves the focus, with a short border flash so you can see where it went.
+- **A single window** — the last tiled window of a workspace is centered at about 56 % of the width and 90 % of the height, fills the monitor, or is left untouched; new installs center it. Move or resize it and the tiling lets go: it stays where you put it; a second window, a preset or `Super+Ctrl+A` takes it back — and so does any command that places it.
 - **Never tile** — a settings list by window class, title or app id (covers flatpaks); `Super+G` floats a single window temporarily.
 - **Theming** — light/dark/follow-system panel theme, accent and state colors (follow the Cinnamon theme or custom), animated tiling with an adjustable duration (250 ms by default).
 
@@ -19,7 +20,7 @@ Window tiling for Cinnamon: presets per monitor and workspace, an auto mode, sna
 
 | Key | Action |
 |---|---|
-| `Super+Ctrl+A` / `D` | Auto mode on / off for this monitor and workspace |
+| `Super+Ctrl+A` / `D` | Auto mode on / off for this monitor and workspace; `A` also takes back a released window |
 | `Super+Ctrl+P` | Open or close the preset panel |
 | `Super+Ctrl+3` / `6` | Tile all windows into 3 / 6 equal columns |
 | `Super+Ctrl+←/→/↑/↓` | Swap the focused window with its neighbour |

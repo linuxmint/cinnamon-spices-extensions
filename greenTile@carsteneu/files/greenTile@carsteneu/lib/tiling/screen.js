@@ -17,6 +17,8 @@
 const XLET = imports.extensions['greenTile@carsteneu'];
 
 const { windowTileable } = XLET.lib.tiling.windows;
+const { insetArea, edgeValue } = XLET.lib.model.gap;
+const { SETTINGS_KEYS } = XLET.lib.model['settings-keys'];
 
 /**
  * @param {AnyRecord} panel
@@ -59,6 +61,19 @@ var usableArea = (monitor) => {
     const height = bottom > top ? bottom - top : 0;
     return [left, top, width, height];
 };
+/** @param {AppFacade} app @returns {number} the stored screen-edge distance, clamped */
+var edge = (app) => edgeValue(app.config.settings.getValue(SETTINGS_KEYS.edgeGap));
+/**
+ * The box every layout is solved in: the usable area moved in by the screen-edge
+ * setting (edgeGap). This is the ONE place the margin enters geometry — fit, minima,
+ * splits, spans, hit tests and the drop preview all read it, so none of them can
+ * disagree about how much room a window really has. With the default 0 it is the
+ * usable area itself.
+ * @param {AppFacade} app
+ * @param {CinnamonMonitor} monitor
+ * @returns {Rect}
+ */
+var layoutArea = (app, monitor) => insetArea(usableArea(monitor), edge(app));
 // The real focus may sit on another workspace (e.g. a maximized terminal there);
 // muffin ignores resizes on maximized windows, so such a window would claim a slot
 // and leave it empty. Accept only visible normal windows of the active workspace,

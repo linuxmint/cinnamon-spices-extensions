@@ -6,9 +6,9 @@
 # qadzek, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.3.0\n"
+"Project-Id-Version: greenTile 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
-"POT-Creation-Date: 2026-10-07 17:41+0200\n"
+"POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2024-04-17 10:36+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: Dutch\n"
@@ -58,6 +58,28 @@ msgstr ""
 "Klik of sleep: de rij bepaalt hoeveel vensters de kolom bevat. Rechtsklik "
 "verwijdert een kolom."
 
+#: lib/ui/editor.js:485
+msgid "Assigned on"
+msgstr "Toegewezen op"
+
+#: lib/ui/editor.js:487
+msgid "Not assigned anywhere."
+msgstr "Nergens toegewezen."
+
+#: lib/ui/editor.js:499
+msgid "all workspaces"
+msgstr "alle werkbladen"
+
+#: lib/ui/editor.js:500
+#, javascript-format
+msgid "workspace %d"
+msgstr "werkblad %d"
+
+#: lib/ui/editor.js:504
+#, javascript-format
+msgid "+%d more"
+msgstr "+%d meer"
+
 #: lib/ui/editor.js:508
 msgid "Name"
 msgstr "Naam"
@@ -91,84 +113,88 @@ msgstr "Resultaat: %s"
 msgid "Edit preset"
 msgstr "Voorinstelling bewerken"
 
-#: lib/ui/panel.js:127
+#: lib/ui/panel.js:127 lib/ui/panel.js:144
 msgid "Assigned"
 msgstr "Toegewezen"
 
-#: lib/ui/panel.js:129
+#: lib/ui/panel.js:130
 msgid "Remove assignment"
 msgstr "Toewijzing verwijderen"
 
-#: lib/ui/panel.js:164
+#: lib/ui/panel.js:144 lib/ui/panel.js:331 lib/ui/panel.js:337
+msgid "Auto: off"
+msgstr "Auto: uit"
+
+#: lib/ui/panel.js:171
 msgid "Gap between windows"
 msgstr "Ruimte tussen vensters"
 
-#: lib/ui/panel.js:170
+#: lib/ui/panel.js:177 lib/ui/panel.js:243
 #, javascript-format
 msgid "%d px"
 msgstr "%d px"
 
-#: lib/ui/panel.js:190
+#: lib/ui/panel.js:197
 msgid "Reset sizes"
 msgstr "Afmetingen herstellen"
 
-#: lib/ui/panel.js:261
+#: lib/ui/panel.js:237
+msgid "Space to the screen edge"
+msgstr "Ruimte tot de schermrand"
+
+#: lib/ui/panel.js:305
 #, javascript-format
 msgid "Presets — workspace %d · %s"
 msgstr "Voorinstellingen — werkblad %d · %s"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 msgid "Create preset"
 msgstr "Voorinstelling maken"
 
-#: lib/ui/panel.js:263
+#: lib/ui/panel.js:307
 #, javascript-format
 msgid "Edit %s"
 msgstr "%s bewerken"
 
-#: lib/ui/panel.js:278
+#: lib/ui/panel.js:322
 msgid "Back"
 msgstr "Terug"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
+#: lib/ui/panel.js:331 lib/ui/panel.js:337
 msgid "Auto: on"
 msgstr "Auto: aan"
 
-#: lib/ui/panel.js:287 lib/ui/panel.js:293
-msgid "Auto: off"
-msgstr "Auto: uit"
-
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Dark theme"
 msgstr "Donker thema"
 
-#: lib/ui/panel.js:315
+#: lib/ui/panel.js:359
 msgid "Light theme"
 msgstr "Licht thema"
 
-#: lib/ui/panel.js:535
+#: lib/ui/panel.js:582
 msgid "No presets yet."
 msgstr "Nog geen voorinstellingen."
 
-#: lib/ui/panel.js:555
+#: lib/ui/panel.js:602
 #, javascript-format
 msgid "Preview for %d window"
 msgstr "Voorbeeld voor %d venster"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 #, javascript-format
 msgid "Preview for %d windows"
 msgstr "Voorbeeld voor %d vensters"
 
-#: lib/ui/panel.js:556
+#: lib/ui/panel.js:603
 msgid "No windows open — base layout"
 msgstr "Geen vensters open — basisindeling"
 
-#: lib/ui/panel.js:570
+#: lib/ui/panel.js:618
 msgid "New preset"
 msgstr "Nieuwe voorinstelling"
 
-#: lib/ui/panel.js:573
+#: lib/ui/panel.js:621
 msgid "Click a card to apply it to this workspace and tile right away"
 msgstr ""
 "Klik op een kaart om deze op dit werkblad toe te passen en de vensters "
@@ -328,8 +354,27 @@ msgstr ""
 "voorinstellingenpaneel; niet getoond in dit venster)"
 
 #. settings-schema.json->windowGap->units
+#. settings-schema.json->edgeGap->units
 msgid "px"
 msgstr "px"
+
+#. settings-schema.json->edgeGap->description
+msgid ""
+"Space to the screen edge (set with − / + in the preset panel; not shown in "
+"this dialog)"
+msgstr ""
+"Ruimte tot de schermrand (in te stellen met − / + in het "
+"voorinstellingenpaneel; niet getoond in dit venster)"
+
+#. settings-schema.json->edgeGap->tooltip
+msgid ""
+"Distance tiled windows keep from the edges of the usable area, the panel "
+"edge included. Independent of the gap between windows; 0 leaves them flush "
+"with the edges."
+msgstr ""
+"Afstand die betegelde vensters houden tot de randen van het bruikbare "
+"gebied, inclusief de rand van het paneel. Onafhankelijk van de ruimte tussen "
+"vensters; 0 laat ze tegen de randen aansluiten."
 
 #. settings-schema.json->tileAnimation->description
 msgid "Animate tiling"
@@ -383,33 +428,22 @@ msgstr ""
 "venster het hele bruikbare gebied in plaats van onaangeroerd te blijven."
 
 #. settings-schema.json->singleWindowMode->description
-#| msgid "Resize tiled windows"
 msgid "A single window"
 msgstr "Eén venster"
 
 #. settings-schema.json->singleWindowMode->tooltip
-msgid ""
-"What happens to a lone tiled window when automatic tiling or a preset is on. "
-"\"Leave it untouched\" does nothing to it. \"Fill the monitor\" makes it "
-"fill the whole usable area. \"Center the window\" centers it at about 62 % "
-"of the width (golden ratio) and 90 % of the height."
-msgstr ""
-"Wat er gebeurt met één tegelt venster als automatisch tegelen of een "
-"voorinstelling aan staat. Onaangeroerd laten: doet er niets mee. Vul het "
-"scherm: het vult het hele bruikbare gebied. Venster centreren: centreert het "
-"op ongeveer 62 % van de breedte (gulden snede) en 90 % van de hoogte."
+msgid "A lone window while automatic tiling or a preset is on: leave it untouched, let it fill the usable area, or center it."
+msgstr "Een enkel venster terwijl automatisch tegelen of een preset actief is: ongemoeid laten, het bruikbare gebied laten vullen of centreren."
 
 #. settings-schema.json->singleWindowMode->options
 msgid "Leave it untouched"
 msgstr "Onaangeroerd laten"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Fill the monitor with a single window"
 msgid "Fill the monitor"
 msgstr "Vul het scherm"
 
 #. settings-schema.json->singleWindowMode->options
-#| msgid "Resize tiled windows"
 msgid "Center the window"
 msgstr "Venster centreren"
 

@@ -40,6 +40,10 @@ var SETTINGS_KEYS = Object.freeze({
     layouts: 'layouts',
     panelSize: 'panelSize',
     windowGap: 'windowGap',
+    // Distance tiled windows keep from the edges of the usable area; set only from
+    // the preset panel, never rendered in the dialog (same reachable-maximum trick
+    // as windowGap: schema max 49, code clamp 48).
+    edgeGap: 'edgeGap',
     tileAnimation: 'tileAnimation',
     tileAnimationDuration: 'tileAnimationDuration',
     focusBorder: 'focusBorder',

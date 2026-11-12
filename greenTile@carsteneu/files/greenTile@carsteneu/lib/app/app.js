@@ -42,7 +42,7 @@ const { Exclusions } = XLET.lib.runtime.exclusions;
 const { PanelState } = XLET.lib.runtime['panel-state'];
 const { _ } = XLET.lib.ui.i18n;
 const { panelRebuild, panelWindowCount } = XLET.lib.ui.panel;
-const { usableArea, focusWindow, focusMonitorIndex } = XLET.lib.tiling.screen;
+const { layoutArea, edge, focusWindow, focusMonitorIndex } = XLET.lib.tiling.screen;
 const { collectWindows, windowMoveResize } = XLET.lib.tiling.windows;
 const { gap, placeFit } = XLET.lib.tiling.place;
 const { presetsRead, presetsWrite, layoutFor, layoutSet, layoutShape, rulesPick } = XLET.lib.tiling.layout;
@@ -126,7 +126,7 @@ var App = class {
             layoutShape,
             layoutSet,
             collectWindows: (/** @type {any} */ monitor, /** @type {any} */ focus, /** @type {any} */ ws) => collectWindows(this, monitor, focus, ws),
-            usableArea,
+            layoutArea,
             gap,
             retileMonitor,
             grabOpName,
@@ -245,11 +245,12 @@ var App = class {
             excludeCheck: (/** @type {any} */ w) => this.excl.isExcluded(w),
             layoutShape,
             layoutSet,
-            usableArea,
+            layoutArea,
             gap,
             placeFit,
             accentRgb: () => this.theme.rgb,
         });
+        /** @type {AutoFacade} */
         this.auto = new Auto({
             mainloop: Mainloop,
             meta: cinnamon.meta,
@@ -260,6 +261,7 @@ var App = class {
             glib: GLib,
             focusWindow,
             focusMonitorIndex,
+            collectWindows: (/** @type {CinnamonMonitor} */ monitor, /** @type {CinnamonWindow | null} */ focus, /** @type {number | null | undefined} */ ws) => collectWindows(this, monitor, focus, ws),
             layoutFor,
             layoutSet,
             retileMonitor,
@@ -284,6 +286,7 @@ var App = class {
             presetsRead,
             presetsWrite,
             gap,
+            edge,
             rulesPick,
             windowCount: panelWindowCount,
             rebuild: panelRebuild,

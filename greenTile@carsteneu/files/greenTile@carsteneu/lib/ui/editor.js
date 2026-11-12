@@ -101,6 +101,9 @@ const editorSave = (app, errorLabel) => {
     for (let i = 0; i < monCount; i++) {
         const layout = layoutFor(app, i, wsIndex);
         if (layout.preset && layout.preset.id === preset.id && layout.auto) {
+            // The saved rule applies immediately, a released lone window included: without
+            // the clear its retile would hang on the lone-window skip.
+            app.auto.detachClearMonitor(app, i);
             retileMonitor(app, i, null, true, wsIndex);
         }
     }
