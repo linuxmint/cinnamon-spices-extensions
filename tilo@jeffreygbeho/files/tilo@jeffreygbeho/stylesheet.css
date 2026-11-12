@@ -1,0 +1,136 @@
+/*
+ * tilo stylesheet.
+ *
+ * Radii follow the Fluent geometry tokens Windows 11 publishes: 8px on the
+ * container, 4px on the elements inside it. Durations and easing live in
+ * layoutPicker.js (250ms in, 167ms out, 83ms on hover).
+ *
+ * St has no backdrop blur, so the panel leans on a near opaque fill and a
+ * hairline highlight rather than acrylic. It has to stay legible over a white
+ * browser window and over a dark wallpaper alike, which rules out the low
+ * opacity a blurred surface could afford.
+ */
+
+.tilo-bar {
+    background-color: rgba(24, 25, 28, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+}
+
+/*
+ * The teaser hangs from the top edge for the whole drag. Square at the top so
+ * it reads as attached to the screen edge rather than floating, and quieter
+ * than the bar it leads to, because it is an offer and not a demand.
+ */
+.tilo-teaser {
+    background-color: rgba(24, 25, 28, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.tilo-teaser-thumb {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+}
+
+.tilo-teaser-mini {
+    background-color: rgba(236, 239, 245, 0.42);
+    border-radius: 2px;
+}
+
+/* One thumbnail is one miniature of the whole screen. */
+.tilo-thumb {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 5px;
+}
+
+.tilo-thumb-active {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+/* One zone inside a thumbnail. */
+.tilo-mini {
+    background-color: rgba(236, 239, 245, 0.45);
+    border-radius: 4px;
+}
+
+.tilo-mini-active {
+    background-color: rgb(96, 156, 255);
+    border: 1px solid rgba(200, 222, 255, 0.95);
+}
+
+/*
+ * The full size preview over the real target area. A thumbnail a few
+ * millimetres wide is not enough to judge where a window will land.
+ */
+.tilo-ghost {
+    background-color: rgba(96, 156, 255, 0.22);
+    border: 2px solid rgba(96, 156, 255, 0.90);
+    border-radius: 8px;
+}
+
+/* The zone editor, shown full screen over the desktop. */
+.tilo-editor {
+    background-color: rgba(12, 13, 16, 0.80);
+}
+
+.tilo-editor-zone {
+    background-color: rgba(236, 239, 245, 0.13);
+    border: 2px solid rgba(236, 239, 245, 0.70);
+    border-radius: 8px;
+}
+
+.tilo-editor-zone-hover {
+    background-color: rgba(96, 156, 255, 0.26);
+    border: 2px solid rgb(96, 156, 255);
+}
+
+.tilo-editor-help {
+    background-color: rgba(24, 25, 28, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+    color: rgba(236, 239, 245, 0.92);
+    font-size: 12px;
+    padding: 10px 18px;
+}
+
+/* Saved arrangements. */
+.tilo-switcher {
+    background-color: rgba(12, 13, 16, 0.80);
+}
+
+.tilo-switcher-panel {
+    background-color: rgba(24, 25, 28, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+}
+
+.tilo-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+.tilo-card-hover {
+    background-color: rgba(96, 156, 255, 0.22);
+    border: 1px solid rgb(96, 156, 255);
+}
+
+.tilo-card-save {
+    border: 1px dashed rgba(255, 255, 255, 0.28);
+}
+
+.tilo-card-preview {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 5px;
+}
+
+.tilo-card-name {
+    color: rgba(236, 239, 245, 0.85);
+    font-size: 11px;
+}
