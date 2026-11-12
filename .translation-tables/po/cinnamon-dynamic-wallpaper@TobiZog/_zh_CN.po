@@ -1,0 +1,155 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+msgid ""
+msgstr ""
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr ""
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr ""
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr ""
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr ""
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr ""
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr ""
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr ""
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr ""
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr ""
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr ""
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr ""
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr ""
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr ""
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr ""
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr ""
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr ""
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr ""
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr ""

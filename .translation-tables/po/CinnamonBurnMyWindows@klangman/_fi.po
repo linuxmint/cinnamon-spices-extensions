@@ -1,0 +1,337 @@
+# BURN MY WINDOWS
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonBurnMyWindows@klangman 0.9.5\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-11-10 23:09-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 6.2/extension.js:1363 6.7.6/extension.js:1365
+msgid ""
+"Click a window to add its application to the application specific rules.  "
+"Esc or right-click to cancel."
+msgstr ""
+
+#. 6.2/extension.js:1374 6.7.6/extension.js:1376
+msgid "Couldn't start the window picker. Close any open menus and try again."
+msgstr ""
+
+#. 6.2/extension.js:1448 6.7.6/extension.js:1450
+msgid "(unknown application)"
+msgstr ""
+
+#. 6.2/extension.js:1488 6.7.6/extension.js:1490
+msgid ""
+"Unable to determine the application or the WM_CLASS of that window, "
+"therefore application specific effects can not be applied to it"
+msgstr ""
+
+#. 6.2/extension.js:1496 6.7.6/extension.js:1498
+msgid "There is already an entry for"
+msgstr ""
+
+#. 6.2/extension.js:1497 6.7.6/extension.js:1499
+msgid "not enabled"
+msgstr ""
+
+#. 6.2/extension.js:1510 6.7.6/extension.js:1512
+msgid "Added an entry for"
+msgstr ""
+
+#. 6.2/extension.js:1510 6.7.6/extension.js:1512
+msgid "Choose its effects, then enable it."
+msgstr ""
+
+#. effects/Materialize.js:104
+msgid "Materialize"
+msgstr ""
+
+#. effects/Shredder.js:104
+msgid "Shredder"
+msgstr ""
+
+#. effects/VenetianBlinds.js:100
+msgid "Venetian Blinds"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:635 6.7.6/CustomWidgets.py:635
+msgid "Randomized"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:678 6.2/CustomWidgets.py:1319 6.2/CustomWidgets.py:1654
+#. 6.7.6/CustomWidgets.py:678 6.7.6/CustomWidgets.py:1319
+#. 6.7.6/CustomWidgets.py:1654
+msgid "Custom settings are in use for this effect"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:679 6.2/CustomWidgets.py:1322 6.2/CustomWidgets.py:1655
+#. 6.7.6/CustomWidgets.py:679 6.7.6/CustomWidgets.py:1322
+#. 6.7.6/CustomWidgets.py:1655
+msgid "Configure custom settings for this effect"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1212 6.7.6/CustomWidgets.py:1212
+msgid "Use custom settings"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1216 6.7.6/CustomWidgets.py:1216
+msgid "Copy global settings"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1217 6.7.6/CustomWidgets.py:1217
+msgid "Replace the custom settings with the settings from the Effects page"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1222 6.7.6/CustomWidgets.py:1222
+msgid ""
+"When off, this effect uses the settings from the Effects page (shown greyed "
+"out)"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1226 6.7.6/CustomWidgets.py:1226
+msgid "Custom Effect Settings"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1420 6.7.6/CustomWidgets.py:1420
+msgid "Add a rule"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1421 6.7.6/CustomWidgets.py:1421
+msgid "Remove the selected rule"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1422 6.7.6/CustomWidgets.py:1422
+msgid "Move the selected rule up"
+msgstr ""
+
+#. 6.2/CustomWidgets.py:1423 6.7.6/CustomWidgets.py:1423
+msgid "Move the selected rule down"
+msgstr ""
+
+#. 6.2->settings-schema.json->effect-settings->title
+#. 6.7.6->settings-schema.json->effect-settings->title
+msgid "Global Effect Settings"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules->tooltip
+#. 6.7.6->settings-schema.json->app-rules->tooltip
+msgid ""
+"A list of applications with special effect rules. The application can be a "
+"desktop file name or a WM_CLASS name. Click a rule, then click a cell to "
+"change it. Hover over an effect and click the gear icon beside it to "
+"configure custom effect settings for that application."
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules-button->description
+#. 6.7.6->settings-schema.json->app-rules-button->description
+msgid "Pick a window to add…"
+msgstr ""
+
+#. 6.2->settings-schema.json->app-rules-button->tooltip
+#. 6.7.6->settings-schema.json->app-rules-button->tooltip
+msgid ""
+"Click this, then click any window to add an entry for its application to the "
+"list above. Press Esc or right-click to cancel."
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->tooltip
+#. 6.7.6->settings-schema.json->random-include->tooltip
+msgid ""
+"Defines which effects are included in the randomized sets for each window "
+"event type. When 'Randomized' is selected for any event on the General tab "
+"these sets are used. Hover over a ticked box and click the gear icon beside "
+"it to configure custom effect settings, used when that effect is randomly "
+"chosen for that event."
+msgstr ""
+
+#. 6.2->settings-schema.json->random-include->columns->title
+#. 6.7.6->settings-schema.json->random-include->columns->title
+msgid "      Raise       "
+msgstr ""
+
+#. 6.2->settings-schema.json->raise-effect->description
+#. 6.2->settings-schema.json->power-raise-effect->description
+#. 6.7.6->settings-schema.json->raise-effect->description
+#. 6.7.6->settings-schema.json->power-raise-effect->description
+msgid "Raise window effect"
+msgstr ""
+
+#. 6.2->settings-schema.json->raise-effect->tooltip
+#. 6.7.6->settings-schema.json->raise-effect->tooltip
+msgid ""
+"Played when a window that is partly covered by other windows is raised. Only "
+"the parts that were covered are animated. Only effects that support raising "
+"are listed."
+msgstr ""
+
+#. 6.2->settings-schema.json->raise-animation-time->description
+#. 6.7.6->settings-schema.json->raise-animation-time->description
+msgid "Raise effect duration (ms)"
+msgstr ""
+
+#. 6.2->settings-schema.json->power-raise-effect->tooltip
+#. 6.7.6->settings-schema.json->power-raise-effect->tooltip
+msgid ""
+"Played instead of the General tab's raise effect while on low battery power. "
+"Only effects that support raising are listed."
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->options
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
+msgid "Transparent"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->options
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
+msgid "Star field"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->options
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->options
+msgid "Nebula"
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-backdrop->tooltip
+#. 6.7.6->settings-schema.json->aperture-panels-backdrop->tooltip
+msgid ""
+"What is seen behind the panels as they turn. Wallpaper: the desktop stays in "
+"place and only the windows behind are on the panels. Black void: the desktop "
+"is on the panels too and flips with them, revealing a black void. "
+"Transparent: nothing is drawn behind the panels, so the real screen shows "
+"through the gaps. Star field: like Black void, with twinkling stars in the "
+"void. Nebula: the star field with a colourful nebula behind the stars."
+msgstr ""
+
+#. 6.2->settings-schema.json->aperture-panels-easter-egg->description
+#. 6.7.6->settings-schema.json->aperture-panels-easter-egg->description
+msgid "🎁"
+msgstr ""
+
+#. 6.2->settings-schema.json->magiclamp-edge->tooltip
+#. 6.7.6->settings-schema.json->magiclamp-edge->tooltip
+msgid ""
+"The monitor edge where a window should originate from when opening, or "
+"disappear towards when closing, when the window has no window-list button to "
+"use (usually the case when opening). This setting is not used for minimize "
+"or unminimize events"
+msgstr ""
+
+#. 6.2->settings-schema.json->materialize-start-scale->description
+#. 6.7.6->settings-schema.json->materialize-start-scale->description
+msgid "Start Scale"
+msgstr ""
+
+#. 6.2->settings-schema.json->materialize-start-scale->tooltip
+#. 6.7.6->settings-schema.json->materialize-start-scale->tooltip
+msgid "The initial size of the panel relative to the window."
+msgstr ""
+
+#. 6.2->settings-schema.json->materialize-steps->description
+#. 6.7.6->settings-schema.json->materialize-steps->description
+msgid "Steps"
+msgstr ""
+
+#. 6.2->settings-schema.json->materialize-steps->tooltip
+#. 6.7.6->settings-schema.json->materialize-steps->tooltip
+msgid "The number of discrete animation steps. Zero gives a smooth animation."
+msgstr ""
+
+#. 6.2->settings-schema.json->materialize-color->tooltip
+#. 6.7.6->settings-schema.json->materialize-color->tooltip
+msgid "The color of the panel before the window content appears."
+msgstr ""
+
+#. 6.2->settings-schema.json->morph-style->tooltip
+#. 6.7.6->settings-schema.json->morph-style->tooltip
+msgid ""
+"Liquid flow: the area swirls into the window like liquid. Melt: each image "
+"flows along its own edges, so what's behind melts away and the window's "
+"outlines form first. Pixelate: the area turns into blocks that change colour "
+"one by one into the window's, then sharpen."
+msgstr ""
+
+#. 6.2->settings-schema.json->morph-strength->tooltip
+#. 6.7.6->settings-schema.json->morph-strength->tooltip
+msgid ""
+"How far things move during the morph (for Pixelate, how big the blocks get). "
+"1 is the default; 0 is a plain dissolve."
+msgstr ""
+
+#. 6.2->settings-schema.json->shredder-strips->description
+#. 6.7.6->settings-schema.json->shredder-strips->description
+msgid "Number of Strips"
+msgstr ""
+
+#. 6.2->settings-schema.json->shredder-strips->tooltip
+#. 6.7.6->settings-schema.json->shredder-strips->tooltip
+msgid "The number of strips the window is cut into."
+msgstr ""
+
+#. 6.2->settings-schema.json->shredder-randomness->tooltip
+#. 6.7.6->settings-schema.json->shredder-randomness->tooltip
+msgid "How much the strips differ in when they start to fall."
+msgstr ""
+
+#. 6.2->settings-schema.json->shredder-rough-edges->description
+#. 6.7.6->settings-schema.json->shredder-rough-edges->description
+msgid "Rough Edges"
+msgstr ""
+
+#. 6.2->settings-schema.json->shredder-rough-edges->tooltip
+#. 6.7.6->settings-schema.json->shredder-rough-edges->tooltip
+msgid "Give the strips jagged edges like torn paper."
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-slats->description
+#. 6.7.6->settings-schema.json->venetian-blinds-slats->description
+msgid "Number of Slats"
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-slats->tooltip
+#. 6.7.6->settings-schema.json->venetian-blinds-slats->tooltip
+msgid "The number of slats the window is split into."
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-delay->description
+#. 6.7.6->settings-schema.json->venetian-blinds-delay->description
+msgid "Delay"
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-delay->tooltip
+#. 6.7.6->settings-schema.json->venetian-blinds-delay->tooltip
+msgid ""
+"How much later the last slat starts to turn than the first one, relative to "
+"the animation time."
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-perspective->description
+#. 6.7.6->settings-schema.json->venetian-blinds-perspective->description
+msgid "Perspective"
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-perspective->tooltip
+#. 6.7.6->settings-schema.json->venetian-blinds-perspective->tooltip
+msgid "Draw the turning slats with perspective."
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-pull-up->description
+#. 6.7.6->settings-schema.json->venetian-blinds-pull-up->description
+msgid "Pull Up"
+msgstr ""
+
+#. 6.2->settings-schema.json->venetian-blinds-pull-up->tooltip
+#. 6.7.6->settings-schema.json->venetian-blinds-pull-up->tooltip
+msgid "Pull the blind up, so that the slats fold at the top of the window."
+msgstr ""

@@ -1,0 +1,88 @@
+# ROUNDED CORNERS
+# This file is put in the public domain.
+# klangman, 2026
+#
+msgid ""
+msgstr ""
+
+#. 6.0/extension.js:59
+#, javascript-format
+msgid "Added \"%s\" to the exclusion list."
+msgstr ""
+
+#. 6.0/CustomWidgets.py:191
+msgid "Default"
+msgstr ""
+
+#. metadata.json->name
+msgid "Rounded Corners"
+msgstr ""
+
+#. 6.0->settings-schema.json->page-general->title
+msgid "Corners"
+msgstr ""
+
+#. 6.0->settings-schema.json->page-borders->title
+msgid "Borders"
+msgstr ""
+
+#. 6.0->settings-schema.json->page-shadow->title
+msgid "Shadows"
+msgstr ""
+
+#. 6.0->settings-schema.json->page-about->title
+msgid "About"
+msgstr ""
+
+#. 6.0->settings-schema.json->section-windows->title
+msgid "Windows"
+msgstr ""
+
+#. 6.0->settings-schema.json->section-applications->title
+msgid "Applications"
+msgstr ""
+
+#. 6.0->settings-schema.json->corner-radius->units
+#. 6.0->settings-schema.json->border-width->units
+#. 6.0->settings-schema.json->shadow-size->units
+#. 6.0->settings-schema.json->shadow-offset->units
+msgid "pixels"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Enabled"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->windows-exclusion-list->columns->title
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Application"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-exclusion-list->columns->title
+msgid "Exclude"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-mode->description
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Border"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "None"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-mode->options
+msgid "Custom"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-contrast->units
+#. 6.0->settings-schema.json->shadow-opacity->units
+#. 6.0->settings-schema.json->shadow-unfocused-opacity->units
+msgid "%"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Width"
+msgstr ""

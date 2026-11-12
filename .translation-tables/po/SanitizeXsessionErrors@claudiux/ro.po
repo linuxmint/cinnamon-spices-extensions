@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-24 20:53+0100\n"
+"PO-Revision-Date: 2022-08-06 01:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->name
+#: 4.8/extension.js:72
+msgid "Sanitize ~/.xsession-errors"
+msgstr "Curăță ~/.xsession-errors"
+
+#: 4.8/extension.js:73
+msgid ""
+"This extension has been disabled because it was no longer needed since "
+"Cinnamon 4.8."
+msgstr ""
+"Această extensie a fost dezactivată deoarece nu mai era necesară începând cu "
+"Cinnamon 4.8."
+
+#. metadata.json->description
+msgid ""
+"Filter messages sent to ~/.xsession-errors, to avoid flooding and save your "
+"SSD."
+msgstr ""
+"Filtrează mesajele trimise la ~/.xsession-errors, pentru a evita inundarea "
+"acestuia și pentru a scuti SSD-ul."
+
+#. settings-schema.json->section0->description
+msgid "Filter \"Log level 128\" messages starting with these words"
+msgstr "Filtrează mesajele \"Log level 128\" care încep cu aceste cuvinte"
+
+#. settings-schema.json->forbidden_words->description
+msgid "Word list"
+msgstr "Lista de cuvinte"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "Words"
+msgstr "Cuvinte"
+
+#. settings-schema.json->forbidden_words->columns->title
+msgid "To filter?"
+msgstr "Se filtrează?"
+
+#. settings-schema.json->section1->description
+msgid "~/.xsession-errors monitor"
+msgstr "~/.xsession-errors monitor"
+
+#. settings-schema.json->open_log->description
+msgid "Show the contents of ~/.xsession-errors in real time"
+msgstr "Afișează conținutul ~/.xsession-errors în timp real"

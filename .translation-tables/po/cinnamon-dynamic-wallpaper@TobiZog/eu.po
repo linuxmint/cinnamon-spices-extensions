@@ -1,0 +1,290 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-08 19:35+0200\n"
+"PO-Revision-Date: 2024-05-27 17:32+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr "Ongi etorri Cinnamon Horma-Paper Dinamikora"
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr "Begiratu ezarpenetan horma-paper dinamiko bat aukeratzeko"
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr ""
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr ""
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr "Errore!"
+
+#: 5.4/extension.js:126
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr ""
+"Cinnamon Horma-Paper dinamikoak errore bat izan du begizta nagusia "
+"exekutatzean. Mesedez, sortu arazo bat GitHuben."
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr "Ezarpenak zabaldu"
+
+#. metadata.json->name
+msgid "Cinnamon Dynamic Wallpaper"
+msgstr "Cinnamon Horma-Paper Dinamikoa"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr "Cinnamonen luzapena horma-peper dinamikoak denboraren arabera izateko"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "Argazki jatorria"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "Argazki multzoa"
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr ""
+
+#: 5.4/res/preferences.glade:237
+msgid "HEIC file"
+msgstr "HEIC fitxategia"
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr "Jatorrizko karpeta"
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr "Aukeratu argazki multzoa"
+
+#: 5.4/res/preferences.glade:380
+msgid "Select a heic file to import"
+msgstr "Aukeratu inportatzeko heic fitxategia"
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr "Aukeratu jatorrizko karpeta bat"
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr "Zabaldu fitxategia aukeratzeko pantaila"
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr "Argazki Aukeraketa"
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr "Argazkiaren Konfigurazioa"
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr "Denboraldiaren estimazioa"
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr "Erabili Sarearen Kokapena"
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr "Ezarri Kokapena"
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr "Ezarri Denboraldiak"
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr "Kokapen estimazioa"
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr "Kokapena sarearen bidez freskatzeko bitartea (min)"
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr "Kokapen hornitzailea"
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr "Latitude"
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr "Luzera"
+
+#: 5.4/res/preferences.glade:1358
+msgid "Period 1"
+msgstr "1 denboraldia"
+
+#: 5.4/res/preferences.glade:1372
+msgid "Period 2"
+msgstr "2 denboraldia"
+
+#: 5.4/res/preferences.glade:1386
+msgid "Period 3"
+msgstr "3 denboraldia"
+
+#: 5.4/res/preferences.glade:1400
+msgid "Period 4"
+msgstr "4 denboraldia"
+
+#: 5.4/res/preferences.glade:1414
+msgid "Period 5"
+msgstr "5 denboraldia"
+
+#: 5.4/res/preferences.glade:1915
+msgid "Period 6"
+msgstr "6 denboraldia"
+
+#: 5.4/res/preferences.glade:1929
+msgid "Period 7"
+msgstr "7 denboraldia"
+
+#: 5.4/res/preferences.glade:1943
+msgid "Period 9"
+msgstr "9 denboraldia"
+
+#: 5.4/res/preferences.glade:1957
+msgid "Period 8"
+msgstr "8 denboraldia"
+
+#: 5.4/res/preferences.glade:1971
+msgid "Period 10"
+msgstr "10 denboraldia"
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr "Kokapena eta Denborak"
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr "Eskalatzea"
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr "Argazkiaren itxura"
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr "Saio-hasiera pantaila"
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr "Ezarri horma-papera saio-hasierako horma-papera bezala"
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr "Horma-paperaren kolore dinamikoa"
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr "Erabili Horma-paper dinamikoaren kolorea gradiente bat sortzeko"
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr "Portaera"
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr "Proiektuari buruz"
+
+#: 5.4/res/preferences.glade:2763
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"Kokapen batean oinarrituta edo erabiltzaileak aukeratuta, luzapen hauek "
+"eguneko denboraldiak kalkulatzen ditu eta zure Cannamon mahigaineko horma-"
+"papera aldatzen du. Hedapenak, irudi iturri gisa, aurrez konfiguratutako "
+"horma-irudi multzo bat, erabiltzaileak egindako irudi heic bat edo irudi "
+"bakarreko karpeta pertsonalizatu bat eskaintzen du."
+
+#: 5.4/res/preferences.glade:2782
+msgid "Developed by TobiZog"
+msgstr "TobiZog-ek garatua"
+
+#: 5.4/res/preferences.glade:2799
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr ""
+"Informazio gehiago nahi baduzu edo hedapenaren iritzi bat egin nahi baduzu, "
+"Cinnamon Spices Webgunea bisitatu dezakezu."
+
+#: 5.4/res/preferences.glade:2810
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr "Cinnamon Horma-Paper Dinamikoa Cinnamon Spices Webgunean"
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr "Iturburu-kodea"
+
+#: 5.4/res/preferences.glade:2864
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr ""
+"Proiektu hau Software Librea da. Hedapen honen iturburu-kode guztiari "
+"begiratu bat eman diezaiokezu GitHuben."
+
+#: 5.4/res/preferences.glade:2875
+msgid "Source Code on GitHub"
+msgstr "Iturburu-kodea GitHuben"
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr "Arazoak eta Hobekuntzak"
+
+#: 5.4/res/preferences.glade:2929
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
+msgstr ""
+"Arazorik topatu duzu? Ala ezaugarri berri bat nahi duzu? Joan GitHubeko "
+"orrira eta sortu arazo berri bat."
+
+#: 5.4/res/preferences.glade:2940
+msgid "Create a new issue on GitHub"
+msgstr "Arazo berri bat sortu GitHuben"
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr "Honi buruz"
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr "Aplikatu eta itxi lehio hau"
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr "Ezarpenak aplikatu lehioa itxi gabe"

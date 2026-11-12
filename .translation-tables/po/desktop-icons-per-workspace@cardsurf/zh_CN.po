@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2024-05-24 13:42+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "设置每个工作区的桌面图标位置"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "每个工作区的桌面图标"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "配置"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "毫秒"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "启动时延迟刷新桌面"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr "扩展启动后等待初始桌面刷新的毫秒数"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "桌面刷新完成延迟"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr "在完成桌面刷新之前等待的毫秒数"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "秒"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "每多久保存"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr "将桌面图标位置保存到文件中的频率。0 表示不保存到文件。"

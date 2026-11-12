@@ -1,0 +1,67 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: blogdron\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Установите независимое расположение значков на разных рабочих столах"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Независимое размещение значков (Desktop icons per workspace)"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Настройка"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "миллисекунд"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Задержка обновления рабочего стола при запуске"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Сколько миллисекунд ждать перед обновлением рабочего стола, после запуска "
+"расширения"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Задержка обновления рабочего стола"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr "Сколько миллисекунд ждать после завершения обновления рабочего стола"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "секунд"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Периодичность сохранения"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Как часто нужно сохранять положение значков в файл. Значение 0 означает "
+"отсутствие сохранения в файл."

@@ -1,0 +1,188 @@
+# WORKSPACE SCROLLER
+# This file is put in the public domain.
+# ori, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: workspace-scroller@ori 1.0.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 17:57-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Workspace Scroller"
+msgstr "Bộ cuộn Không gian làm việc"
+
+#. metadata.json->description
+msgid "Switch workspaces using mouse scroll at screen edges."
+msgstr "Chuyển đổi không gian làm việc bằng cách cuộn chuột tại các cạnh màn hình."
+
+#. settings-schema.json->edgesHeader->description
+msgid "Edges"
+msgstr "Cạnh"
+
+#. settings-schema.json->Left->description
+msgid "Use left edge"
+msgstr "Sử dụng cạnh trái"
+
+#. settings-schema.json->LeftUp->description
+#. settings-schema.json->RightUp->description
+#. settings-schema.json->TopUp->description
+#. settings-schema.json->BottomUp->description
+#. settings-schema.json->TopLeftUp->description
+#. settings-schema.json->TopRightUp->description
+#. settings-schema.json->BottomLeftUp->description
+#. settings-schema.json->BottomRightUp->description
+msgid " — Scroll up: "
+msgstr " — Cuộn lên: "
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "None"
+msgstr "Không"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Switch left"
+msgstr "Chuyển trái"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Switch right"
+msgstr "Chuyển phải"
+
+#. settings-schema.json->LeftUp->options
+#. settings-schema.json->LeftDown->options
+#. settings-schema.json->RightUp->options
+#. settings-schema.json->RightDown->options
+#. settings-schema.json->TopUp->options
+#. settings-schema.json->TopDown->options
+#. settings-schema.json->BottomUp->options
+#. settings-schema.json->BottomDown->options
+#. settings-schema.json->TopLeftUp->options
+#. settings-schema.json->TopLeftDown->options
+#. settings-schema.json->TopRightUp->options
+#. settings-schema.json->TopRightDown->options
+#. settings-schema.json->BottomLeftUp->options
+#. settings-schema.json->BottomLeftDown->options
+#. settings-schema.json->BottomRightUp->options
+#. settings-schema.json->BottomRightDown->options
+msgid "Show expo"
+msgstr "Hiển thị expo"
+
+#. settings-schema.json->LeftDown->description
+#. settings-schema.json->RightDown->description
+#. settings-schema.json->TopDown->description
+#. settings-schema.json->BottomDown->description
+#. settings-schema.json->TopLeftDown->description
+#. settings-schema.json->TopRightDown->description
+#. settings-schema.json->BottomLeftDown->description
+#. settings-schema.json->BottomRightDown->description
+msgid " — Scroll down: "
+msgstr " — Cuộn xuống: "
+
+#. settings-schema.json->Right->description
+msgid "Use right edge"
+msgstr "Sử dụng cạnh phải"
+
+#. settings-schema.json->Top->description
+msgid "Use top edge"
+msgstr "Sử dụng cạnh trên"
+
+#. settings-schema.json->Bottom->description
+msgid "Use bottom edge"
+msgstr "Sử dụng cạnh dưới"
+
+#. settings-schema.json->cornersHeader->description
+msgid "Corner"
+msgstr "Góc"
+
+#. settings-schema.json->TopLeft->description
+msgid "Use top left corner"
+msgstr "Sử dụng góc trên trái"
+
+#. settings-schema.json->TopRight->description
+msgid "Use top right corner"
+msgstr "Sử dụng góc trên phải"
+
+#. settings-schema.json->BottomLeft->description
+msgid "Use bottom left corner"
+msgstr "Sử dụng góc dưới trái"
+
+#. settings-schema.json->BottomRight->description
+msgid "Use bottom right corner"
+msgstr "Sử dụng góc dưới phải"
+
+#. settings-schema.json->cornerSize->units
+msgid "pixels"
+msgstr "pixel"
+
+#. settings-schema.json->cornerSize->description
+msgid "Corners areas size: "
+msgstr "Kích thước vùng góc: "
+
+#. settings-schema.json->generalHeader->description
+msgid "General"
+msgstr "Chung"
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr "Sử dụng tiện ích mở rộng chuyển đổi không gian làm việc nếu được cài đặt"
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extension to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr "Cho phép tiện ích mở rộng Cinnamon tạo hoạt ảnh cho việc thay đổi không gian làm việc. Tùy chọn này không có tác dụng trừ khi có tiện ích mở rộng tương thích được cài đặt. Yêu cầu Desktop Cube 2.0.2 hoặc Flipper 2.0.0 và Cinnamon 5.4 trở lên."

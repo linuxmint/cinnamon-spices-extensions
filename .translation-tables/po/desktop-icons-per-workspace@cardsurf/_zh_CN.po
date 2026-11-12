@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr ""
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr ""
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr ""
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr ""
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr ""
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr ""
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr ""
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr ""
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr ""

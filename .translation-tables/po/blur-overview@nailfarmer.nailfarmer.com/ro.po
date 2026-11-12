@@ -1,0 +1,89 @@
+# BLUR OVERVIEW
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# nailfarmer, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-11-25 19:55-0500\n"
+"PO-Revision-Date: 2022-08-06 01:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. metadata.json->name
+msgid "Blur Overview"
+msgstr "Estomparea Vederii Generale (Blur Overview)"
+
+#. metadata.json->description
+msgid ""
+"Allows you to blur and adjust the dimming of the overview's background "
+"(window selection screen)"
+msgstr ""
+
+#. settings-schema.json->header->description
+#. 6.0->settings-schema.json->header->description
+msgid "Blur Overview (window selection screen) settings"
+msgstr ""
+
+#. settings-schema.json->opacity->description
+#. 6.0->settings-schema.json->opacity->description
+msgid "Dim Background (percentage)"
+msgstr ""
+
+#. settings-schema.json->blur->description
+msgid "Blur Background"
+msgstr ""
+
+#. 6.0->settings-schema.json->colorBlend->description
+msgid "Enable color blend effect"
+msgstr ""
+
+#. 6.0->settings-schema.json->colorBlend->tooltip
+msgid ""
+"Use a custom color as the dimming overlay color. The color intensity can be "
+"controlled using the \"Dim Background\" slider control above"
+msgstr ""
+
+#. 6.0->settings-schema.json->blendColor->description
+msgid "Blend effect Color"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "None"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Simple"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->options
+msgid "Gaussian"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->description
+msgid "Type of blur effect"
+msgstr ""
+
+#. 6.0->settings-schema.json->blurType->tooltip
+msgid "What type of blur algorithm should be used to blur the background"
+msgstr ""
+
+#. 6.0->settings-schema.json->radius->description
+msgid "Gaussian blur intensity"
+msgstr ""
+
+#. 6.0->settings-schema.json->radius->tooltip
+msgid ""
+"Adjusts the intensity of the blur effect by changing the radius use by the "
+"effect."
+msgstr ""
