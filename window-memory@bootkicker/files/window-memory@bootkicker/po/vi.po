@@ -1,0 +1,479 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Bật Window Memory"
+
+msgid "Remember window size"
+msgstr "Ghi nhớ kích thước cửa sổ"
+
+msgid "Remember window position"
+msgstr "Ghi nhớ vị trí cửa sổ"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Khôi phục về cùng màn hình khi màn hình đó được kết nối"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Khi tắt, vị trí được giữ tương đối so với màn hình nơi cửa sổ mở ra."
+
+msgid "Remember workspace"
+msgstr "Ghi nhớ không gian làm việc"
+
+msgid "Remember maximized state"
+msgstr "Ghi nhớ trạng thái phóng to"
+
+msgid "Remember minimized state"
+msgstr "Ghi nhớ trạng thái thu nhỏ"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Cửa sổ đã bị thu nhỏ khi được lưu sẽ mở lại ở trạng thái thu nhỏ."
+
+msgid "Match windows by"
+msgstr "Khớp cửa sổ theo"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Chọn vị trí đã lưu nào sẽ được gán cho một cửa sổ khi một ứng dụng có nhiều cửa sổ được ghi nhớ.\n\nChỉ ứng dụng: cửa sổ nhận vị trí đã lưu mới nhất của ứng dụng đó mà không có cửa sổ đang mở nào khác sử dụng. Đây là lựa chọn đơn giản nhất và phù hợp với hầu hết các chương trình.\n\nỨng dụng và tiêu đề cửa sổ: Window Memory trước tiên tìm vị trí đã lưu mà cửa sổ của nó có cùng tiêu đề (không phân biệt chữ hoa chữ thường), nhờ vậy những cửa sổ luôn được mở với cùng một tiêu đề, chẳng hạn cùng một tài liệu hoặc trang web, sẽ trở về đúng vị trí của mình. Nếu không có tiêu đề nào khớp, nó hoạt động giống như “Chỉ ứng dụng”.\n\nNếu “Ghi nhớ trạng thái thu nhỏ” được bật, vị trí đã lưu mà cửa sổ không bị thu nhỏ sẽ được ưu tiên, để khi một ứng dụng có một cửa sổ bị thu nhỏ và một cửa sổ bình thường thì ít nhất một trong hai sẽ mở ra và hiển thị. Tiêu đề khớp vẫn được ưu tiên trước."
+
+msgid "Application only"
+msgstr "Chỉ ứng dụng"
+
+msgid "Application and window title"
+msgstr "Ứng dụng và tiêu đề cửa sổ"
+
+msgid "Also remember dialog windows"
+msgstr "Ghi nhớ cả cửa sổ hộp thoại"
+
+msgid "Never remember these applications"
+msgstr "Không bao giờ ghi nhớ các ứng dụng này"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Không bao giờ ghi nhớ các ứng dụng này (lớp WM)"
+
+msgid "Maximum remembered windows"
+msgstr "Số cửa sổ đã ghi nhớ tối đa"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Các cửa sổ lâu nhất không xuất hiện sẽ bị loại bỏ trước."
+
+msgid "windows"
+msgstr "cửa sổ"
+
+msgid "Forget the focused window"
+msgstr "Quên cửa sổ đang hoạt động"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Quên tất cả cửa sổ đã ghi nhớ (không thể hoàn tác, nhấn Esc để hủy)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Sao lưu hoặc khôi phục cài đặt và cửa sổ đã ghi nhớ"
+
+msgid "Export backup…"
+msgstr "Xuất bản sao lưu…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Lưu mọi cài đặt, danh sách không bao giờ ghi nhớ và các cửa sổ đã ghi nhớ vào một tập tin."
+
+msgid "Import backup…"
+msgstr "Nhập bản sao lưu…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Thay thế mọi cài đặt và cửa sổ đã ghi nhớ bằng nội dung trong tập tin sao lưu. Sẽ hỏi trước."
+
+msgid "Version"
+msgstr "Phiên bản"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Tự động ghi nhớ kích thước, vị trí, màn hình, không gian làm việc, trạng thái phóng to và trạng thái thu nhỏ của từng cửa sổ, rồi khôi phục chúng khi ứng dụng được mở lại."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Đã quên cửa sổ đã ghi nhớ của %s."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s chưa được ghi nhớ nên không có gì bị quên."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Không thể quên cửa sổ đã ghi nhớ. Xem nhật ký."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Cửa sổ đang hoạt động chưa được ghi nhớ nên không có gì bị quên."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory đã tự dừng để đảm bảo an toàn: phiên bản Cinnamon này thiếu một chức năng mà nó cần."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory đã tự dừng để đảm bảo an toàn: có quá nhiều lỗi."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory đã tự dừng để đảm bảo an toàn: Cinnamon đã khởi động lại nhiều lần liên tiếp."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory đã tự dừng để đảm bảo an toàn: không thể khởi động."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Để tiếp tục sau khi sự cố được khắc phục, hãy xóa ~/.config/window-memory/safety.json. Nếu điều này xảy ra lần nữa, vui lòng báo cáo sự cố."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Để tiếp tục, hãy tắt rồi bật lại “Bật Window Memory” trong phần cài đặt của nó. Nếu điều này xảy ra lần nữa, vui lòng báo cáo sự cố."
+
+msgid "Forgot all remembered windows."
+msgstr "Đã quên tất cả cửa sổ đã ghi nhớ."
+
+msgid "Forget all remembered windows?"
+msgstr "Quên tất cả cửa sổ đã ghi nhớ?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Không có cửa sổ nào được ghi nhớ nên không có gì để quên."
+
+msgid "The remembered windows were not forgotten."
+msgstr "Các cửa sổ đã ghi nhớ chưa bị quên."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Không rõ các cửa sổ đã ghi nhớ đã bị quên hay chưa."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory không trả lời kịp thời."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Đã quên tất cả cửa sổ đã ghi nhớ, nhưng không thể lưu thay đổi."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Các cửa sổ đã ghi nhớ có thể quay lại vào lần Window Memory khởi động tiếp theo."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory không chạy. Hãy bật nó trong Cài đặt hệ thống, rồi thử lại."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "Đã quên %(count)d cửa sổ đã ghi nhớ."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory không xác nhận việc khôi phục kịp thời."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Các cửa sổ đã ghi nhớ có thể đã được thay thế hoặc chưa, còn các cài đặt khác được giữ nguyên. Nhập lại cùng bản sao lưu là an toàn."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Tập tin lớn hơn 20 MB, quá lớn để là bản sao lưu của Window Memory."
+
+msgid "Could not save the backup."
+msgstr "Không thể lưu bản sao lưu."
+
+msgid "Could not restore the backup."
+msgstr "Không thể khôi phục bản sao lưu."
+
+msgid "Nothing was changed."
+msgstr "Không có gì bị thay đổi."
+
+msgid "The settings were not changed."
+msgstr "Các cài đặt chưa bị thay đổi."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "Các cửa sổ đã ghi nhớ và các cài đặt khác chưa bị thay đổi."
+
+msgid "Importing the same backup again is safe."
+msgstr "Nhập lại cùng bản sao lưu là an toàn."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Không thể đọc lược đồ cài đặt: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Không thể đọc lược đồ cài đặt: nó không phải đối tượng JSON."
+
+msgid "the state file is not valid JSON"
+msgstr "tập tin trạng thái không phải JSON hợp lệ"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "tập tin trạng thái không phải trạng thái của phiên bản %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Không thể đọc tập tin: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Tập tin này không phải tập tin thông thường."
+
+msgid "The file is not UTF-8 text."
+msgstr "Tập tin này không phải văn bản UTF-8."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Tập tin này không phải JSON hợp lệ: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu không phải true hay false."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu không phải số nguyên."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu nằm ngoài phạm vi từ %(min)s đến %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu không phải một trong các lựa chọn của nó."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu không phải danh sách."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu có một mục không phải đối tượng."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu có một mục thiếu văn bản “%(column)s”."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu không phải văn bản."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Tập tin này không phải bản sao lưu của Window Memory: nó không chứa đối tượng JSON."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Tập tin này không phải bản sao lưu của Window Memory: “format” của nó không phải “%(format)s”."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Bản sao lưu được tạo bởi phiên bản Window Memory mới hơn (định dạng sao lưu %(found)d). Phiên bản này chỉ đọc được định dạng %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "“version” của bản sao lưu không phải %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Bản sao lưu không có đối tượng “settings”."
+
+msgid "The backup has no \"state\" object."
+msgstr "Bản sao lưu không có đối tượng “state”."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "“version” của “state” trong bản sao lưu không phải %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "“windows” của “state” trong bản sao lưu không phải danh sách."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d cài đặt"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d cửa sổ đã ghi nhớ"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Đã lưu bản sao lưu: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Chưa có cửa sổ nào được ghi nhớ."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "Không thể đọc các cửa sổ đã ghi nhớ (%(problem)s) nên không có cửa sổ nào được lưu."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Thay thế các cài đặt và %(count)d cửa sổ đã ghi nhớ bằng bản sao lưu này từ %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Thay thế các cài đặt và %(count)d cửa sổ đã ghi nhớ bằng bản sao lưu này?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Các cài đặt và cửa sổ đã ghi nhớ hiện tại sẽ bị mất. Không thể hoàn tác thao tác này."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Đã khôi phục %(settings)s và %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d cài đặt trong bản sao lưu không được phiên bản Window Memory này biết đến và đã bị bỏ qua."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Đã khôi phục %(count)d cửa sổ đã ghi nhớ, nhưng không phải tất cả cài đặt."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Không thể đặt cài đặt “%(key)s”: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "%(count)d cài đặt phía sau nó cũng chưa được đặt."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "Không thể chuyển các cửa sổ đã ghi nhớ cho Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Tập tin cài đặt không có giá trị cho “%(key)s”."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Không thể ghi %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Không thể đặt cài đặt “%(key)s” thành %(value)d trước khi khôi phục: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Cài đặt “%(key)s” đã được đặt thành %(new)d cho việc khôi phục và không thể đặt lại về %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Xuất bản sao lưu"
+
+msgid "_Cancel"
+msgstr "_Hủy"
+
+msgid "_Save"
+msgstr "_Lưu"
+
+msgid "Import backup"
+msgstr "Nhập bản sao lưu"
+
+msgid "_Open"
+msgstr "_Mở"
+
+msgid "JSON files"
+msgstr "Tập tin JSON"
+
+msgid "All files"
+msgstr "Mọi tập tin"
+
+msgid "_Replace"
+msgstr "_Thay thế"
+
+msgid "unknown"
+msgstr "không rõ"
+
+msgid "(uncommitted changes)"
+msgstr "(có thay đổi chưa commit)"
+
+msgid "Report an issue"
+msgstr "Báo cáo sự cố"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (thử nghiệm)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Bạn đang dùng phiên Wayland của Cinnamon, hiện vẫn đang trong giai đoạn thử nghiệm. Window Memory đã được thử nghiệm với phiên này trên Cinnamon 6.0.5. Nếu một cửa sổ không được ghi nhớ như mong đợi, vui lòng dùng “Báo cáo sự cố”."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Các ứng dụng này khởi chạy khi bạn đăng nhập, và Window Memory đặt các cửa sổ của chúng về lại vị trí cũ, trừ khi chúng được bật trong danh sách “Không bao giờ ghi nhớ các ứng dụng này”. Đây là cùng một danh sách với Ứng dụng Khởi chạy."
+
+msgid "No applications start at login."
+msgstr "Không có ứng dụng nào khởi chạy khi đăng nhập."
+
+msgid "Pick a window to start at login"
+msgstr "Chọn một cửa sổ để khởi chạy khi đăng nhập"
+
+msgid "Remove"
+msgstr "Loại bỏ"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Thêm hoặc sửa trong Ứng dụng Khởi chạy…"
+
+msgid "(system entry)"
+msgstr "(mục hệ thống)"
+
+msgid "delay %(seconds)d s"
+msgstr "chờ %(seconds)d giây"
+
+msgid "Undo"
+msgstr "Hoàn tác"
+
+msgid "Added %(name)s"
+msgstr "Đã thêm %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s đã có trong danh sách"
+
+msgid "%(name)s switched on"
+msgstr "Đã bật %(name)s"
+
+msgid "%(name)s brought back"
+msgstr "Đã khôi phục %(name)s"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s đã thay đổi trong lúc đó và được giữ nguyên."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Không thể đọc các ứng dụng khởi chạy: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Không thể thêm %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Không thể thay đổi %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Không thể bắt đầu việc chọn: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Không thể mở Ứng dụng Khởi chạy: %(reason)s"
+
+msgid "Start at login"
+msgstr "Khởi chạy khi đăng nhập"
+
+msgid "Name"
+msgstr "Tên"
+
+msgid "Command"
+msgstr "Lệnh"
+
+msgid "Comment"
+msgstr "Chú thích"
+
+msgid "Startup delay"
+msgstr "Khoảng chờ khởi chạy"
+
+msgid "Cancel"
+msgstr "Hủy"
+
+msgid "Add"
+msgstr "Thêm"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Lệnh này chỉ là phỏng đoán từ cửa sổ. Hãy kiểm tra trước khi thêm."
+
+msgid "The command cannot be empty."
+msgstr "Lệnh không được để trống."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Lệnh không hợp lệ: %(reason)s"
+
+msgid "General"
+msgstr "Chung"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Thiết lập cho window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Nhấp vào một cửa sổ để không bao giờ ghi nhớ ứng dụng của nó.  Nhấn Esc hoặc nhấp chuột phải để hủy."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Nhấp vào một cửa sổ để khởi chạy ứng dụng của nó khi đăng nhập.  Nhấn Esc hoặc nhấp chuột phải để hủy."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Nhấp vào đây, rồi nhấp vào cửa sổ bạn muốn thêm vào danh sách không bao giờ ghi nhớ. Nhấn Escape hoặc nhấp chuột phải để hủy."
+
+msgid "Enabled"
+msgstr "Đã bật"
+
+msgid "Max windows"
+msgstr "Số cửa sổ tối đa"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Số cửa sổ đã ghi nhớ tối đa. Các cửa sổ lâu nhất chưa thấy sẽ bị loại bỏ trước."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Chọn một cửa sổ không bao giờ ghi nhớ (nhấp vào cửa sổ, nhấn Esc hoặc nhấp chuột phải để hủy)"
+
+msgid "Startup apps"
+msgstr "Ứng dụng khởi chạy"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Cài đặt “%(key)s” trong bản sao lưu có một mục mà “%(column)s” không phải true hoặc false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Cửa sổ của các ứng dụng này không bao giờ được lưu hoặc khôi phục. Hãy nhập WM_CLASS: chạy xprop WM_CLASS trong terminal, rồi nhấp vào cửa sổ. Việc khớp không phân biệt chữ hoa chữ thường và chấp nhận một phần của tên. Mục bỏ chọn vẫn nằm trong danh sách nhưng bị bỏ qua: cửa sổ của ứng dụng đó sẽ được ghi nhớ trở lại. Bạn cũng có thể dùng nút “Chọn một cửa sổ” để thêm mục tự động."
