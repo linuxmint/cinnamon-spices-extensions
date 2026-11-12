@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.4
+
+* Smoother start of the animation: the target workspace is now activated when the animation ends instead of before it starts. Activating it maps its windows and wakes up their applications, which used to stall the first frames of the animation (up to 300 ms on workspaces with several heavy applications).
+* Window clones are now stacked in the real stacking order instead of by user time, so windows no longer swap places at the end of the animation.
+* Fading workspaces are now rendered as a whole, so overlapping windows no longer show through each other during the animation.
+* Fixed the screen getting stuck on the animation (windows and panels hidden, no input) when the keyboard grab could not be acquired, or when the modifier key was released before it was acquired. This happened more often with "Include Panels" enabled.
+* Fixed the menu opening and the screen getting stuck when a Super based workspace shortcut (e.g. Super+F4) was pressed again during a workspace switch. The keyboard grab is now released as soon as the modifier keys are released, and shortcuts used while a switch is still on the screen are added to it.
+* The "Include Panels" option is now "Keep panels visible": the panels stay in place above the animation instead of being cloned into it. The window list is faded out and back in around the workspace switch, instead of showing the old list on the new workspace and the panels disappearing at the end. The fade out runs during the animation, so it does not delay the switch.
+
 ## 2.0.3
 
 * Added the ability to use the Flipper effect when changing the workspace using touchpad gestures

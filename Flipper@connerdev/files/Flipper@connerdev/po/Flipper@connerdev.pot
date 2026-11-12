@@ -361,14 +361,14 @@ msgid ""
 msgstr ""
 
 #. 5.4->settings-schema.json->includePanels->description
-msgid "Include Panels"
+msgid "Keep panels visible"
 msgstr ""
 
 #. 5.4->settings-schema.json->includePanels->tooltip
 msgid ""
-"Exclude the panels while animating. In most cases the panels are not "
-"properly painted or completely invisible anyhow, so it's best to leave this "
-"disabled"
+"Keep the panels visible above the animation instead of hiding them while "
+"switching workspaces. The window list is faded out and back in when it "
+"changes"
 msgstr ""
 
 #. 5.4->settings-schema.json->effect-selector->description
