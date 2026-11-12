@@ -94,6 +94,16 @@ msgstr ""
 msgid "Choose which screen to display the dock on."
 msgstr ""
 
+#. settings-schema.json->follow-cursor->description
+msgid "Follow the mouse across screens"
+msgstr ""
+
+#. settings-schema.json->follow-cursor->tooltip
+msgid ""
+"Move the dock to the screen the mouse pointer is on. The screen chosen below "
+"is used at startup."
+msgstr ""
+
 #. settings-schema.json->dock-position->description
 msgid "Dock position on screen"
 msgstr ""

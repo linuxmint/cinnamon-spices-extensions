@@ -11,6 +11,7 @@ const Mainloop = imports.mainloop;
 const DND = imports.ui.dnd;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
+const Gdk = imports.gi.Gdk;
 const Gettext = imports.gettext;
 
 let UUID;
@@ -406,6 +407,7 @@ class DockAppList {
             let targetIndex = (usePrimary || isNaN(mIndex) || mIndex >= Main.layoutManager.monitors.length || mIndex < 0) 
                 ? Main.layoutManager.primaryIndex 
                 : mIndex;
+            if (dock) targetIndex = dock._applyMonitorOverrides(targetIndex);
                 
             let monitor = Main.layoutManager.monitors[targetIndex] || Main.layoutManager.primaryMonitor;
             if (!monitor) return;
@@ -1547,6 +1549,11 @@ class DashDock {
         this._onHideSettingsChanged();
         this._updateAppearance(); 
         this._updateTrashVisibility();
+
+        // Optionally follow the screen that holds the mouse pointer
+        this._followCursorLoopId = 0;
+        this._monitorSwitchTimeoutId = 0;
+        this._onFollowCursorChanged();
     }
 
     _buildSettingsButton() {
@@ -1793,6 +1800,7 @@ class DashDock {
         this.settings.bindProperty(Settings.BindingDirection.IN, 'use-primary-monitor', 'usePrimaryMonitor', this._onMonitorSettingsChanged.bind(this), null);
         this.settings.bindProperty(Settings.BindingDirection.IN, 'hide-unpinned', 'hideUnpinned', () => this.appList && this.appList._updateAppList(true), null);
         this.settings.connect('changed::monitor-index', this._onMonitorSettingsChanged.bind(this));
+        this.settings.bindProperty(Settings.BindingDirection.IN, 'follow-cursor', 'followCursor', this._onFollowCursorChanged.bind(this), null);
     }
 
     _connectSignals() {
@@ -2100,7 +2108,131 @@ class DashDock {
         this._updateVisibility();
     }
 
+    // Lets the "Follow the mouse across screens" option and the screen picker
+    // decide the final screen, after the original screen choice has been made.
+    _applyMonitorOverrides(targetIndex) {
+        let monitors = Main.layoutManager.monitors;
+        let cur = this._currentMonitorIndex;
+        if (this.followCursor && cur !== null && cur !== undefined && cur >= 0 && cur < monitors.length) {
+            return cur;
+        }
+        if (this.settings.getValue('use-primary-monitor')) return targetIndex;
+        let pickerIdx = parseInt(this.settings.getValue('monitor-index'), 10);
+        if (pickerIdx !== targetIndex) return targetIndex;
+        return this._pickerIndexToLayoutIndex(pickerIdx);
+    }
+
+    // The settings picker (MonitorSelector.py) lists screens in GDK order, which puts the
+    // primary screen first, while Cinnamon's layoutManager may order them differently.
+    // Translate the picker's index to the layoutManager index by matching geometry.
+    _pickerIndexToLayoutIndex(pickerIdx) {
+        try {
+            let display = Gdk.Display.get_default();
+            if (!display || pickerIdx >= display.get_n_monitors()) return pickerIdx;
+            let gdkMon = display.get_monitor(pickerIdx);
+            if (!gdkMon) return pickerIdx;
+            let g = gdkMon.get_geometry();
+            let s = gdkMon.get_scale_factor() || 1;
+            let monitors = Main.layoutManager.monitors;
+            for (let i = 0; i < monitors.length; i++) {
+                let m = monitors[i];
+                if (m.x === g.x * s && m.y === g.y * s && m.width === g.width * s && m.height === g.height * s) {
+                    return i;
+                }
+            }
+        } catch (e) {
+            global.logError(`[${UUID}] Could not map monitor index: ${e}`);
+        }
+        return pickerIdx;
+    }
+
+    _onFollowCursorChanged() {
+        if (this._followCursorLoopId) {
+            Mainloop.source_remove(this._followCursorLoopId);
+            this._followCursorLoopId = 0;
+        }
+        this._pendingMonitorIndex = -1;
+        this._pendingMonitorTicks = 0;
+
+        if (this.followCursor) {
+            this._followCursorLoopId = Mainloop.timeout_add(150, () => {
+                this._followCursorMonitor();
+                return true;
+            });
+        } else if (this._currentMonitorIndex !== null && this._currentMonitorIndex !== undefined) {
+            // Go back to the screen chosen in the Display settings
+            this._currentMonitorIndex = null;
+            this._updatePosition();
+            if (this.appList && this.appList._updateAppList) this.appList._updateAppList();
+            if (this.hideEnabled) this._updateVisibility();
+        }
+    }
+
+    // Moves the dock to the screen under the pointer (debounced, skipped during menus/drags).
+    _followCursorMonitor() {
+        if (!this.followCursor || !this.actor || this._inOverview || this._grabInProgress) return;
+        let monitors = Main.layoutManager.monitors;
+        if (monitors.length <= 1) return;
+
+        let dockMenuOpen = this.menuManager && this.menuManager._activeMenu;
+        let appMenuOpen = this.appList && this.appList.isAnyMenuOpen && this.appList.isAnyMenuOpen();
+        if (dockMenuOpen || appMenuOpen) return;
+
+        let [mouseX, mouseY] = global.get_pointer();
+        let mouseIdx = Main.layoutManager.findMonitorIndexAt(mouseX, mouseY);
+        if (mouseIdx < 0 || mouseIdx >= monitors.length) return;
+
+        if (mouseIdx === this._dockMonitorIndex) {
+            this._pendingMonitorIndex = -1;
+            this._pendingMonitorTicks = 0;
+            return;
+        }
+
+        // Require the pointer to stay on the new screen for ~300ms before moving
+        if (this._pendingMonitorIndex !== mouseIdx) {
+            this._pendingMonitorIndex = mouseIdx;
+            this._pendingMonitorTicks = 1;
+            return;
+        }
+        if (++this._pendingMonitorTicks < 2) return;
+        this._pendingMonitorIndex = -1;
+        this._pendingMonitorTicks = 0;
+
+        // Arrive hidden so the dock never flashes on the new screen
+        if (this.hideEnabled && !this.isHidden) {
+            this._hideDock();
+        }
+        this._currentMonitorIndex = mouseIdx;
+        this._updatePosition();
+        if (this.appList && this.appList._updateAppList) this.appList._updateAppList();
+
+        if (this.hideEnabled) {
+            this.actor.remove_all_transitions();
+            this._applyHiddenTranslation();
+            // Let Clutter lay out the dock at its new place before deciding to reveal it
+            this._monitorSwitching = true;
+            if (this._monitorSwitchTimeoutId) Mainloop.source_remove(this._monitorSwitchTimeoutId);
+            this._monitorSwitchTimeoutId = Mainloop.timeout_add(100, () => {
+                this._monitorSwitchTimeoutId = 0;
+                this._monitorSwitching = false;
+                this._updateVisibility();
+                return false;
+            });
+        }
+    }
+
+    _applyHiddenTranslation() {
+        if (!this.isHidden) return;
+        let margin = this.fullWidth ? 0 : UI_DOCK_MARGIN;
+        this.actor.translation_x = 0;
+        this.actor.translation_y = 0;
+        if (this.dockPosition === 'left') this.actor.translation_x = -(this.actor.width + margin);
+        else if (this.dockPosition === 'right') this.actor.translation_x = this.actor.width + margin;
+        else if (this.dockPosition === 'top') this.actor.translation_y = -(this.actor.height + margin);
+        else if (this.dockPosition === 'bottom') this.actor.translation_y = this.actor.height + margin;
+    }
     _onMonitorSettingsChanged() {
+        this._currentMonitorIndex = null;
         if (this._monitorTimeoutId) {
             Mainloop.source_remove(this._monitorTimeoutId);
         }
@@ -2273,6 +2405,8 @@ class DashDock {
                 targetIndex = Main.layoutManager.primaryIndex;
             }
         }
+        targetIndex = this._applyMonitorOverrides(targetIndex);
+        this._dockMonitorIndex = targetIndex;
 
         let isVert = this.dockPosition === 'left' || this.dockPosition === 'right';
         let alignment = this.dockAlignment || 'center';
@@ -2452,6 +2586,7 @@ class DashDock {
 
     // Updates the dock visibility based on auto-hide settings and window overlap.
     _updateVisibility() {
+        if (this._monitorSwitching) return;
         if (this._inOverview) return;
         if (!this.hideEnabled || this._grabInProgress) return;
         if (!this.actor) return;
@@ -2461,6 +2596,7 @@ class DashDock {
         let targetIndex = (this.usePrimaryMonitor || isNaN(mIndexVis) || mIndexVis >= Main.layoutManager.monitors.length || mIndexVis < 0) 
             ? Main.layoutManager.primaryIndex 
             : mIndexVis;
+        targetIndex = this._applyMonitorOverrides(targetIndex);
         let monitor = Main.layoutManager.monitors[targetIndex] || Main.layoutManager.primaryMonitor;
         if (!monitor) return;
 
@@ -2563,6 +2699,7 @@ class DashDock {
         let targetIndex = (this.usePrimaryMonitor || isNaN(mIndexOver) || mIndexOver >= Main.layoutManager.monitors.length || mIndexOver < 0) 
             ? Main.layoutManager.primaryIndex 
             : mIndexOver;
+        targetIndex = this._applyMonitorOverrides(targetIndex);
 
         for (let win of windows) {
             if (win.minimized || !win.showing_on_its_workspace()) continue;
@@ -2693,6 +2830,8 @@ class DashDock {
         if (this._hideTimeoutId) Mainloop.source_remove(this._hideTimeoutId);
         if (this._showTimeoutId) Mainloop.source_remove(this._showTimeoutId);
         if (this._visibilityLoopId) Mainloop.source_remove(this._visibilityLoopId);
+        if (this._followCursorLoopId) Mainloop.source_remove(this._followCursorLoopId);
+        if (this._monitorSwitchTimeoutId) Mainloop.source_remove(this._monitorSwitchTimeoutId);
         if (this._monitorsChangedId) Main.layoutManager.disconnect(this._monitorsChangedId);
         if (this._themeSetId) Main.themeManager.disconnect(this._themeSetId);
 
