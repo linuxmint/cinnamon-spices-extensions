@@ -9,11 +9,11 @@
  * created from lib/app, the composition root.
  *
  * Loading works through both module generations: the 6.6 legacy loader wraps
- * this file as createExports and, without an explicit module.exports line,
- * exports the top-level function declarations itself; the native importer
- * exposes them as public namespace properties. That is also why no
- * module.exports line may return: under native loading the module global does
- * not exist (upstream only shims it inside the deprecated require stack).
+ * this file as createExports and, without an export line of its own, exports the
+ * top-level function declarations itself; the native importer exposes them as
+ * public namespace properties. That is also why such an export line must not come
+ * back: under native loading the module global does not exist (upstream only
+ * shims it inside the deprecated require stack).
  *
  * Copyright (C) vibou, shuairan and the gTile contributors
  * Copyright (C) 2026 carsten_eu
@@ -27,9 +27,10 @@ const { App } = XLET.lib.app.app;
 const { Session } = XLET.lib.runtime.session;
 
 // init/enable/disable are called member-style on the loaded module in both
-// generations (extensionSystem.js: getModuleByIndex(i).enable() legacy,
-// extension.module.enable() native), yet the session does not ride `this`: the
-// extensibility of a natively imported namespace is not a contract we rely on.
+// generations (the legacy loader calls them on the module object of the
+// extension system, the native one on the imported namespace), yet the session
+// does not ride `this`: the extensibility of a natively imported namespace is
+// not a contract we rely on.
 // The module-private holder below owns the session instead — the one allowed
 // top-level mutable binding (see zero-module-state.test.js). Reload semantics
 // differ per generation and are safe here only because nothing else lives at

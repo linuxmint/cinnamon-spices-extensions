@@ -6,7 +6,7 @@
 # Odyssey <odysseyhyd@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: greenTile 2.4.1\n"
+"Project-Id-Version: greenTile 2.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/carsteneu\n"
 "POT-Creation-Date: 2026-11-11 10:42+0100\n"
 "PO-Revision-Date: 2024-07-25 17:53+0200\n"
