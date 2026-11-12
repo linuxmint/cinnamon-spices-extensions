@@ -1,0 +1,600 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-island@rovillela 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/rovillela-afk/cinnamon-island/issues\n"
+"POT-Creation-Date: 2026-10-10 18:00-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "now"
+msgstr ""
+
+msgid "%d min"
+msgstr ""
+
+msgid "in %d min"
+msgstr ""
+
+msgid "Volume"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "Clock"
+msgstr ""
+
+msgid "Agenda"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Clipboard"
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Weather"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+msgid "Microphone muted"
+msgstr ""
+
+msgid "Microphone on"
+msgstr ""
+
+msgid "Link cleaned of trackers"
+msgstr ""
+
+msgid "%s copied"
+msgstr ""
+
+msgid "Text copied (%d characters)"
+msgstr ""
+
+msgid "No text found in that area"
+msgstr ""
+
+msgid "Needs tesseract-ocr"
+msgstr ""
+
+msgid "Couldn't keep the screen awake"
+msgstr ""
+
+msgid "Couldn't read the color"
+msgstr ""
+
+msgid "Couldn't open the camera"
+msgstr ""
+
+msgid "Something went wrong"
+msgstr ""
+
+msgid "%s connected"
+msgstr ""
+
+msgid "Device"
+msgstr ""
+
+msgid "%s: %d% battery"
+msgstr ""
+
+msgid "Today"
+msgstr ""
+
+msgid "Tomorrow"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "all day"
+msgstr ""
+
+msgid "The Cinnamon Island engine is not running"
+msgstr ""
+
+msgid "The calendar link in the settings isn't a valid link"
+msgstr ""
+
+msgid "To see your events here, add your calendar link in the Cinnamon Island settings"
+msgstr ""
+
+msgid "Couldn't load the calendar"
+msgstr ""
+
+msgid "No upcoming events"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Clear all"
+msgstr ""
+
+msgid "Click a line to copy it again · right-click removes it"
+msgstr ""
+
+msgid "Copied"
+msgstr ""
+
+msgid "Nothing copied yet"
+msgstr ""
+
+msgid "Drag files here"
+msgstr ""
+
+msgid "Click opens · drag it out to use it · × removes"
+msgstr ""
+
+msgid "Click opens the app · right-click dismisses"
+msgstr ""
+
+msgid "Couldn't find the program to open"
+msgstr ""
+
+msgid "Could not listen to system notifications"
+msgstr ""
+
+msgid "Notifications are turned off in the settings"
+msgstr ""
+
+msgid "No notifications"
+msgstr ""
+
+msgid "Lyrics"
+msgstr ""
+
+msgid "Turn on lyrics"
+msgstr ""
+
+msgid "Nothing playing"
+msgstr ""
+
+msgid "Opening Spotify…"
+msgstr ""
+
+msgid "Last played on Spotify"
+msgstr ""
+
+msgid "Open Spotify"
+msgstr ""
+
+msgid "Up next: %s"
+msgstr ""
+
+msgid "To find lyrics, Cinnamon Island sends the song's title and artist to lrclib.net."
+msgstr ""
+
+msgid "Looking for the lyrics…"
+msgstr ""
+
+msgid "Couldn't load the lyrics"
+msgstr ""
+
+msgid "No synced lyrics for this one"
+msgstr ""
+
+msgid "Write a quick note…"
+msgstr ""
+
+msgid "Save to Files"
+msgstr ""
+
+msgid "Saved automatically"
+msgstr ""
+
+msgid "What are you working on?"
+msgstr ""
+
+msgid "Focus"
+msgstr ""
+
+msgid "Short break"
+msgstr ""
+
+msgid "Long break"
+msgstr ""
+
+msgid "Today: %d · This week: %d"
+msgstr ""
+
+msgid "Disk"
+msgstr ""
+
+msgid "HDD"
+msgstr ""
+
+msgid "USB"
+msgstr ""
+
+msgid "SSD"
+msgstr ""
+
+msgid "%s free"
+msgstr ""
+
+msgid "not mounted"
+msgstr ""
+
+msgid "CPU"
+msgstr ""
+
+msgid "Memory"
+msgstr ""
+
+msgid "Graphics"
+msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid "Battery"
+msgstr ""
+
+msgid "Charging"
+msgstr ""
+
+msgid "On battery"
+msgstr ""
+
+msgid "Plugged in"
+msgstr ""
+
+msgid "Time's up"
+msgstr ""
+
+msgid "Timer"
+msgstr ""
+
+msgid "Stopwatch"
+msgstr ""
+
+msgid "Pomodoro"
+msgstr ""
+
+msgid "Until turned off"
+msgstr ""
+
+msgid "Keep awake"
+msgstr ""
+
+msgid "Color picker"
+msgstr ""
+
+msgid "Capture area"
+msgstr ""
+
+msgid "Capture screen"
+msgstr ""
+
+msgid "Copy text"
+msgstr ""
+
+msgid "Camera"
+msgstr ""
+
+msgid "Copies the color code"
+msgstr ""
+
+msgid "Goes to Files"
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+msgid "From an area of the screen"
+msgstr ""
+
+msgid "On · click to close"
+msgstr ""
+
+msgid "Mirror below the island"
+msgstr ""
+
+msgid "Display"
+msgstr ""
+
+msgid "Headphones"
+msgstr ""
+
+msgid "Digital output"
+msgstr ""
+
+msgid "Speakers"
+msgstr ""
+
+msgid "Output"
+msgstr ""
+
+msgid "No audio output found"
+msgstr ""
+
+msgid "Master"
+msgstr ""
+
+msgid "Mic"
+msgstr ""
+
+msgid "Clear sky"
+msgstr ""
+
+msgid "Partly cloudy"
+msgstr ""
+
+msgid "Cloudy"
+msgstr ""
+
+msgid "Fog"
+msgstr ""
+
+msgid "Drizzle"
+msgstr ""
+
+msgid "Rain"
+msgstr ""
+
+msgid "Snow"
+msgstr ""
+
+msgid "Showers"
+msgstr ""
+
+msgid "Thunderstorm"
+msgstr ""
+
+msgid "Cities"
+msgstr ""
+
+msgid "Search for a city…"
+msgstr ""
+
+msgid "Add city"
+msgstr ""
+
+msgid "Loading the forecast…"
+msgstr ""
+
+msgid "Couldn't load the forecast"
+msgstr ""
+
+msgid "Searching…"
+msgstr ""
+
+msgid "No city found"
+msgstr ""
+
+msgid "Type the name and pick from the list"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Tabs"
+msgstr ""
+
+msgid "Island"
+msgstr ""
+
+msgid "Glass"
+msgstr ""
+
+msgid "Tabs shown on the island"
+msgstr ""
+
+msgid "Times"
+msgstr ""
+
+msgid "When a cycle ends"
+msgstr ""
+
+msgid "Calendar"
+msgstr ""
+
+msgid "Notices"
+msgstr ""
+
+msgid "Shown on the closed island"
+msgstr ""
+
+msgid "Sound shortcuts"
+msgstr ""
+
+msgid "Music"
+msgstr ""
+
+msgid "Opening and closing"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Same as the system"
+msgstr ""
+
+msgid "Português (Brasil)"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Position on the screen"
+msgstr ""
+
+msgid "Top"
+msgstr ""
+
+msgid "Bottom"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Shortcut to open and close"
+msgstr ""
+
+msgid "ms"
+msgstr ""
+
+msgid "Delay before collapsing when the mouse leaves"
+msgstr ""
+
+msgid "Blur what is behind the island"
+msgstr ""
+
+msgid "Glass tint opacity (%)"
+msgstr ""
+
+msgid "min"
+msgstr ""
+
+msgid "Focus time"
+msgstr ""
+
+msgid "Focus cycles before a long break"
+msgstr ""
+
+msgid "Pause the music when a break starts"
+msgstr ""
+
+msgid "Play a sound when a cycle ends"
+msgstr ""
+
+msgid "Sound"
+msgstr ""
+
+msgid "Times the sound plays"
+msgstr ""
+
+msgid "Calendar link (iCal)"
+msgstr ""
+
+msgid "A web link that lets Cinnamon Island read your events. In Google Calendar: Settings > your calendar > Secret address in iCal format. It starts with https://"
+msgstr ""
+
+msgid "A download finished"
+msgstr ""
+
+msgid "Countdown to the next calendar event"
+msgstr ""
+
+msgid "An accessory connected or its battery is low"
+msgstr ""
+
+msgid "Mute or unmute the microphone"
+msgstr ""
+
+msgid "Switch to the next audio output"
+msgstr ""
+
+msgid "Bars on the closed island follow the sound"
+msgstr ""
+
+msgid "Cinnamon Island listens to what your computer is playing to move the bars. Nothing is saved or sent anywhere."
+msgstr ""
+
+msgid "Look up synced lyrics online"
+msgstr ""
+
+msgid "Sends the title, artist, album and length of the song to lrclib.net. Never used for what plays in web browsers."
+msgstr ""
+
+msgid "Open the island"
+msgstr ""
+
+msgid "When the mouse passes over it"
+msgstr ""
+
+msgid "With a click"
+msgstr ""
+
+msgid "Wait before opening on hover"
+msgstr ""
+
+msgid "Hide the island while it is closed"
+msgstr ""
+
+msgid "It comes back when the mouse touches the screen edge where it sits, and whenever there is a notice to show."
+msgstr ""
+
+msgid "Order and visibility (the first tab, Volume, is always shown)"
+msgstr ""
+
+msgid "Tab"
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
+msgid "Clicking the calendar opens"
+msgstr ""
+
+msgid "Google Calendar in the browser"
+msgstr ""
+
+msgid "The default calendar app"
+msgstr ""
+
+msgid "Nothing"
+msgstr ""
+
+msgid "Remove trackers from copied links"
+msgstr ""
+
+msgid "When you copy a web link, Cinnamon Island replaces it with the same link without tracking codes (utm_…, fbclid, si and the like)."
+msgstr ""
+
+msgid "System notifications (adds the Notifications tab)"
+msgstr ""
+
+msgid "Off by default. When on, the island shows the notifications apps send and keeps them in a Notifications tab until you dismiss them. Nothing is saved to disk. Your desktop keeps showing its own notifications as before."
+msgstr ""
+
+msgid "Cinnamon Island"
+msgstr ""
+
+msgid "A glass notch on the screen edge that expands into tabs on hover (dynamic island for Cinnamon)"
+msgstr ""

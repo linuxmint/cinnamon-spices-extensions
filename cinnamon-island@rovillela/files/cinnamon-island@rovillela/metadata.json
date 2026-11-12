@@ -1,0 +1,11 @@
+{
+    "uuid": "cinnamon-island@rovillela",
+    "name": "Cinnamon Island",
+    "description": "A glass notch on the screen edge that expands into tabs on hover (dynamic island for Cinnamon)",
+    "version": "0.1.0",
+    "cinnamon-version": [
+        "6.6"
+    ],
+    "url": "https://github.com/rovillela-afk/cinnamon-island",
+    "author": "Rodrigo Villela"
+}
