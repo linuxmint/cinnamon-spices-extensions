@@ -1,0 +1,397 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": [
+      "page-general",
+      "page-layout",
+      "page-expo",
+      "page-scoring",
+      "page-algorithms"
+    ],
+    "page-general": {
+      "type": "page",
+      "title": "General",
+      "sections": [
+        "sec-general"
+      ]
+    },
+    "page-layout": {
+      "type": "page",
+      "title": "Show all windows",
+      "sections": [
+        "sec-scale-enable",
+        "sec-layout"
+      ]
+    },
+    "page-expo": {
+      "type": "page",
+      "title": "Show all workspaces",
+      "sections": [
+        "sec-expo-enable",
+        "sec-expo"
+      ]
+    },
+    "page-scoring": {
+      "type": "page",
+      "title": "Scoring",
+      "sections": [
+        "sec-scoring"
+      ]
+    },
+    "page-algorithms": {
+      "type": "page",
+      "title": "Algorithms",
+      "sections": [
+        "sec-optimizer",
+        "sec-push",
+        "sec-rows"
+      ]
+    },
+    "sec-general": {
+      "type": "section",
+      "title": "General",
+      "keys": [
+        "use-cache",
+        "debug-log"
+      ]
+    },
+    "sec-scale-enable": {
+      "type": "section",
+      "title": "Show all windows (Scale)",
+      "keys": [
+        "scale-enabled"
+      ]
+    },
+    "sec-layout": {
+      "type": "section",
+      "title": "Arrangement",
+      "dependency": "scale-enabled",
+      "keys": [
+        "algorithm",
+        "margin",
+        "gap",
+        "fidelity",
+        "max-scale",
+        "centered",
+        "fill",
+        "max-growth"
+      ]
+    },
+    "sec-scoring": {
+      "type": "section",
+      "title": "What makes a good layout",
+      "keys": [
+        "w-size",
+        "w-place",
+        "w-relations",
+        "relations-method",
+        "neighbor-focus"
+      ]
+    },
+    "sec-optimizer": {
+      "type": "section",
+      "title": "Optimizer",
+      "keys": [
+        "optimizer-effort"
+      ]
+    },
+    "sec-push": {
+      "type": "section",
+      "title": "Push apart (also a starting point for the optimizer)",
+      "keys": [
+        "push-strength",
+        "push-match-shape"
+      ]
+    },
+    "sec-rows": {
+      "type": "section",
+      "title": "Ordered rows (also a starting point for the optimizer)",
+      "keys": [
+        "rows-count"
+      ]
+    },
+    "sec-expo-enable": {
+      "type": "section",
+      "title": "Show all workspaces (Expo)",
+      "keys": [
+        "expo-enabled"
+      ]
+    },
+    "sec-expo": {
+      "type": "section",
+      "title": "Arrangement",
+      "dependency": "expo-enabled",
+      "keys": [
+        "expo-algorithm",
+        "expo-margin",
+        "expo-gap",
+        "expo-fidelity",
+        "expo-max-scale",
+        "expo-centered",
+        "expo-fill",
+        "expo-max-growth"
+      ]
+    }
+  },
+  "algorithm": {
+    "type": "combobox",
+    "default": "optimizer",
+    "description": "Layout algorithm",
+    "options": {
+      "Optimizer": "optimizer",
+      "Push apart": "push",
+      "Ordered rows": "rows",
+      "Equal grid": "grid"
+    },
+    "tooltip": "How thumbnails are arranged. None of the algorithms use stacking order or focus.\n\nOptimizer: searches for the best balance of thumbnail size, staying in place and keeping relations (Scoring tab). Slowest: from a few milliseconds up to a few tens with many windows, when windows have changed.\n\nPush apart: starts where the windows are, pushes overlapping ones apart, then scales everything to fit. Fast.\n\nOrdered rows: rows from top to bottom, left to right within a row. Fast.\n\nEqual grid: like Cinnamon's own grid, each window shrunk to fit its cell, but in the cell nearest to where it really is. Fast."
+  },
+  "use-cache": {
+    "type": "switch",
+    "default": true,
+    "description": "Layout caching",
+    "tooltip": "Reuses the previous arrangement of a workspace when its windows and the settings haven't changed since, which keeps the views quick; the result is the same either way. Focusing other windows, changing the stacking order, or minimizing and restoring windows don't count as changes. Leave this on; switching it off is only useful for troubleshooting."
+  },
+  "debug-log": {
+    "type": "switch",
+    "default": false,
+    "description": "Write diagnostics to the log",
+    "tooltip": "Writes information for troubleshooting to the log. View it in Looking Glass (Alt+F2, then lg) under Log."
+  },
+  "margin": {
+    "type": "scale",
+    "default": 8,
+    "min": 0,
+    "max": 200,
+    "step": 2,
+    "description": "Margin around the screen edge (px)",
+    "tooltip": "Empty border kept around the edge of the screen."
+  },
+  "gap": {
+    "type": "scale",
+    "default": 4,
+    "min": 0,
+    "max": 200,
+    "step": 2,
+    "description": "Gap between thumbnails (px)",
+    "tooltip": "Space between thumbnails."
+  },
+  "fidelity": {
+    "type": "scale",
+    "default": 0.8,
+    "min": 0,
+    "max": 1,
+    "step": 0.05,
+    "description": "Size fidelity",
+    "tooltip": "1 keeps true size ratios between windows; 0 gives every thumbnail the same area; values in between compress size differences.",
+    "dependency": "algorithm!=grid"
+  },
+  "max-scale": {
+    "type": "scale",
+    "default": 0.9,
+    "min": 0.2,
+    "max": 1,
+    "step": 0.05,
+    "description": "Largest thumbnail scale",
+    "tooltip": "Largest size of a thumbnail compared with its real window; 1 means real size."
+  },
+  "centered": {
+    "type": "switch",
+    "default": false,
+    "description": "Always center the arrangement",
+    "tooltip": "When off, the arrangement is moved toward where the real windows are, as far as the screen allows.",
+    "dependency": "algorithm!=grid"
+  },
+  "fill": {
+    "type": "switch",
+    "default": false,
+    "description": "Fill gaps afterwards",
+    "tooltip": "Lets thumbnails grow into free space after layout. Uses space better but makes sizes less faithful.",
+    "dependency": "algorithm!=grid"
+  },
+  "max-growth": {
+    "type": "scale",
+    "default": 1.5,
+    "min": 1,
+    "max": 3,
+    "step": 0.1,
+    "description": "Fill gaps: maximum growth",
+    "tooltip": "The most a thumbnail may grow while filling gaps.",
+    "dependency": "fill"
+  },
+  "w-size": {
+    "type": "scale",
+    "default": 3,
+    "min": 0,
+    "max": 5,
+    "step": 0.1,
+    "description": "Thumbnail size",
+    "tooltip": "Reward for bigger thumbnails."
+  },
+  "w-place": {
+    "type": "scale",
+    "default": 2,
+    "min": 0,
+    "max": 5,
+    "step": 0.1,
+    "description": "Stay in place",
+    "tooltip": "Reward for thumbnails staying near their real window."
+  },
+  "w-relations": {
+    "type": "scale",
+    "default": 1,
+    "min": 0,
+    "max": 5,
+    "step": 0.1,
+    "description": "Keep relations",
+    "tooltip": "Reward for windows keeping how they sit relative to each other."
+  },
+  "relations-method": {
+    "type": "combobox",
+    "default": "direction",
+    "description": "Relations method",
+    "options": {
+      "Order (left/right, above/below)": "order",
+      "Direction (angles)": "direction"
+    },
+    "tooltip": "Order only cares whether windows swap sides; Direction compares the angles between windows and is stricter."
+  },
+  "neighbor-focus": {
+    "type": "scale",
+    "default": 0.5,
+    "min": 0,
+    "max": 1,
+    "step": 0.05,
+    "description": "Neighbor focus",
+    "tooltip": "How much more nearby windows matter than distant ones.",
+    "dependency": "relations-method=direction"
+  },
+  "optimizer-effort": {
+    "type": "spinbutton",
+    "default": 10,
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "description": "Effort",
+    "tooltip": "How hard the optimizer works. More gives better layouts but takes longer, and the more windows there are, the longer it takes. If opening the views gets choppy, lower this."
+  },
+  "push-strength": {
+    "type": "scale",
+    "default": 0.3,
+    "min": 0.05,
+    "max": 1,
+    "step": 0.05,
+    "description": "Push strength",
+    "tooltip": "How far each push moves an overlapping pair."
+  },
+  "push-match-shape": {
+    "type": "scale",
+    "default": 0.5,
+    "min": 0,
+    "max": 1,
+    "step": 0.05,
+    "description": "Match screen shape",
+    "tooltip": "Bias pushes toward the screen's shape."
+  },
+  "scale-enabled": {
+    "type": "switch",
+    "default": true,
+    "description": "Enable Window Spread",
+    "tooltip": "When off, Cinnamon arranges Show all windows itself."
+  },
+  "expo-enabled": {
+    "type": "switch",
+    "default": true,
+    "description": "Enable Window Spread",
+    "tooltip": "When off, Cinnamon arranges the windows in Show all workspaces itself."
+  },
+  "expo-algorithm": {
+    "type": "combobox",
+    "default": "optimizer",
+    "description": "Layout algorithm",
+    "options": {
+      "Optimizer": "optimizer",
+      "Push apart": "push",
+      "Ordered rows": "rows",
+      "Equal grid": "grid"
+    },
+    "tooltip": "How windows are arranged inside each workspace. None of the algorithms use stacking order or focus.\n\nOptimizer: searches for the best balance of thumbnail size, staying in place and keeping relations (Scoring tab). Slowest: from a few milliseconds up to a few tens with many windows, when windows have changed.\n\nPush apart: starts where the windows are, pushes overlapping ones apart, then scales everything to fit. Fast.\n\nOrdered rows: rows from top to bottom, left to right within a row. Fast.\n\nEqual grid: like Cinnamon's own grid, each window shrunk to fit its cell, but in the cell nearest to where it really is. Fast. Makes even small windows reasonably big, which helps in the small previews."
+  },
+  "expo-margin": {
+    "type": "scale",
+    "default": 14,
+    "min": 0,
+    "max": 200,
+    "step": 2,
+    "description": "Margin around the edge (px)",
+    "tooltip": "Empty border inside each workspace preview."
+  },
+  "expo-gap": {
+    "type": "scale",
+    "default": 14,
+    "min": 0,
+    "max": 200,
+    "step": 2,
+    "description": "Gap between thumbnails (px)",
+    "tooltip": "Space between windows inside each workspace preview."
+  },
+  "expo-fidelity": {
+    "type": "scale",
+    "default": 0.8,
+    "min": 0,
+    "max": 1,
+    "step": 0.05,
+    "description": "Size fidelity",
+    "tooltip": "1 keeps true size ratios between windows; 0 gives every thumbnail the same area; values in between compress size differences. Lower values make small windows easier to see in the small previews.",
+    "dependency": "expo-algorithm!=grid"
+  },
+  "expo-max-scale": {
+    "type": "scale",
+    "default": 0.9,
+    "min": 0.2,
+    "max": 1,
+    "step": 0.05,
+    "description": "Largest thumbnail scale",
+    "tooltip": "Largest size of a thumbnail compared with its real window; 1 means real size."
+  },
+  "expo-centered": {
+    "type": "switch",
+    "default": false,
+    "description": "Always center the arrangement",
+    "tooltip": "When off, the arrangement is moved toward where the real windows are, as far as the preview allows.",
+    "dependency": "expo-algorithm!=grid"
+  },
+  "expo-fill": {
+    "type": "switch",
+    "default": false,
+    "description": "Fill gaps afterwards",
+    "tooltip": "Lets thumbnails grow into free space after layout. Uses space better but makes sizes less faithful.",
+    "dependency": "expo-algorithm!=grid"
+  },
+  "expo-max-growth": {
+    "type": "scale",
+    "default": 1.5,
+    "min": 1,
+    "max": 3,
+    "step": 0.1,
+    "description": "Fill gaps: maximum growth",
+    "tooltip": "The most a thumbnail may grow while filling gaps.",
+    "dependency": "expo-fill"
+  },
+  "rows-count": {
+    "type": "combobox",
+    "default": 0,
+    "description": "Number of rows",
+    "options": {
+      "Automatic": 0,
+      "1 row": 1,
+      "2 rows": 2,
+      "3 rows": 3,
+      "4 rows": 4,
+      "5 rows": 5,
+      "6 rows": 6,
+      "7 rows": 7,
+      "8 rows": 8
+    },
+    "tooltip": "Automatic tries every possible number of rows and uses the one that gives the biggest thumbnails."
+  }
+}
