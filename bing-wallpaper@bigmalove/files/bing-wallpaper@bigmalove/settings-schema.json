@@ -1,0 +1,248 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "page-general",
+            "page-storage"
+        ],
+        "page-general": {
+            "type": "page",
+            "title": "General",
+            "sections": [
+                "section-image",
+                "section-desktop",
+                "section-overlay",
+                "section-actions"
+            ]
+        },
+        "page-storage": {
+            "type": "page",
+            "title": "Storage and updates",
+            "sections": [
+                "section-folder",
+                "section-updates"
+            ]
+        },
+        "section-image": {
+            "type": "section",
+            "title": "Bing image",
+            "keys": [
+                "market",
+                "resolution"
+            ]
+        },
+        "section-desktop": {
+            "type": "section",
+            "title": "Desktop",
+            "keys": [
+                "picture-options",
+                "notify-on-change"
+            ]
+        },
+        "section-overlay": {
+            "type": "section",
+            "title": "Image information on the desktop",
+            "keys": [
+                "show-info-overlay",
+                "overlay-color",
+                "overlay-effect",
+                "overlay-chars-per-line",
+                "overlay-font-size"
+            ]
+        },
+        "section-actions": {
+            "type": "section",
+            "title": "Actions",
+            "keys": [
+                "refresh-now",
+                "open-bing",
+                "open-folder"
+            ]
+        },
+        "section-folder": {
+            "type": "section",
+            "title": "Download folder",
+            "keys": [
+                "save-dir",
+                "keep-count"
+            ]
+        },
+        "section-updates": {
+            "type": "section",
+            "title": "Update checks",
+            "keys": [
+                "check-interval",
+                "skip-metered"
+            ]
+        }
+    },
+    "market": {
+        "type": "combobox",
+        "default": "auto",
+        "description": "Bing region (market)",
+        "tooltip": "Some regions get a different image of the day. 'Automatic' follows the system language.",
+        "options": {
+            "Automatic (system language)": "auto",
+            "China (zh-CN)": "zh-CN",
+            "United States (en-US)": "en-US",
+            "United Kingdom (en-GB)": "en-GB",
+            "Canada - English (en-CA)": "en-CA",
+            "Canada - French (fr-CA)": "fr-CA",
+            "Australia (en-AU)": "en-AU",
+            "New Zealand (en-NZ)": "en-NZ",
+            "India (en-IN)": "en-IN",
+            "Japan (ja-JP)": "ja-JP",
+            "Germany (de-DE)": "de-DE",
+            "France (fr-FR)": "fr-FR",
+            "Spain (es-ES)": "es-ES",
+            "Italy (it-IT)": "it-IT",
+            "Brazil (pt-BR)": "pt-BR"
+        }
+    },
+    "resolution": {
+        "type": "combobox",
+        "default": "UHD",
+        "description": "Image resolution",
+        "tooltip": "If the chosen resolution is not available for an image, 1920x1200 or 1920x1080 is used instead.",
+        "options": {
+            "4K UHD (3840x2160)": "UHD",
+            "1920x1200": "1920x1200",
+            "1920x1080": "1920x1080",
+            "1366x768": "1366x768"
+        }
+    },
+    "picture-options": {
+        "type": "combobox",
+        "default": "zoom",
+        "description": "Picture aspect",
+        "options": {
+            "Zoom": "zoom",
+            "Scaled": "scaled",
+            "Stretched": "stretched",
+            "Centered": "centered",
+            "Spanned": "spanned",
+            "Mosaic": "wallpaper",
+            "Keep the current system setting": "keep"
+        }
+    },
+    "notify-on-change": {
+        "type": "switch",
+        "default": true,
+        "description": "Show a notification when the wallpaper changes"
+    },
+    "refresh-now": {
+        "type": "button",
+        "description": "Refresh now",
+        "callback": "onRefreshNow"
+    },
+    "show-info-overlay": {
+        "type": "switch",
+        "default": false,
+        "description": "Show the title and copyright of the current image on the desktop",
+        "tooltip": "Plain text in the top-right corner of the primary monitor, below the panel. It sits on the desktop behind application windows."
+    },
+    "overlay-color": {
+        "type": "colorchooser",
+        "default": "rgb(255,255,255)",
+        "description": "Text color",
+        "dependency": "show-info-overlay"
+    },
+    "overlay-effect": {
+        "type": "combobox",
+        "default": "shadow",
+        "description": "Text effect",
+        "tooltip": "Makes the text easier to read on bright or busy wallpapers.",
+        "options": {
+            "None": "none",
+            "Shadow": "shadow",
+            "Strong shadow": "strong-shadow",
+            "Glow": "glow",
+            "Outline": "outline",
+            "Background block": "background"
+        },
+        "dependency": "show-info-overlay"
+    },
+    "overlay-chars-per-line": {
+        "type": "spinbutton",
+        "default": 24,
+        "min": 4,
+        "max": 200,
+        "step": 1,
+        "units": "characters",
+        "description": "Characters per line",
+        "tooltip": "Lines are broken after this many characters. Spaces are preferred as break points when there are any.",
+        "dependency": "show-info-overlay"
+    },
+    "overlay-font-size": {
+        "type": "spinbutton",
+        "default": 12,
+        "min": 0,
+        "max": 96,
+        "step": 1,
+        "units": "pt",
+        "description": "Font size (0 = theme default)",
+        "dependency": "show-info-overlay"
+    },
+    "open-bing": {
+        "type": "button",
+        "description": "Open the image description on Bing",
+        "callback": "onOpenBingPage"
+    },
+    "open-folder": {
+        "type": "button",
+        "description": "Open the wallpaper folder",
+        "callback": "onOpenFolder"
+    },
+    "save-dir": {
+        "type": "filechooser",
+        "select-dir": true,
+        "default": "",
+        "description": "Save wallpapers to",
+        "tooltip": "Leave empty to use the 'BingWallpapers' folder inside your Pictures folder."
+    },
+    "keep-count": {
+        "type": "spinbutton",
+        "default": 30,
+        "min": 1,
+        "max": 3650,
+        "step": 1,
+        "units": "images",
+        "description": "Number of downloaded images to keep",
+        "tooltip": "Older Bing images in the download folder are deleted automatically. Other files are never touched."
+    },
+    "check-interval": {
+        "type": "spinbutton",
+        "default": 60,
+        "min": 10,
+        "max": 1440,
+        "step": 10,
+        "units": "minutes",
+        "description": "Check for a new image every",
+        "tooltip": "Bing publishes one image per day. A check is a very small request."
+    },
+    "skip-metered": {
+        "type": "switch",
+        "default": false,
+        "description": "Do not download on metered connections"
+    },
+    "last-date": {
+        "type": "generic",
+        "default": ""
+    },
+    "last-file": {
+        "type": "generic",
+        "default": ""
+    },
+    "last-title": {
+        "type": "generic",
+        "default": ""
+    },
+    "last-copyright": {
+        "type": "generic",
+        "default": ""
+    },
+    "last-link": {
+        "type": "generic",
+        "default": ""
+    }
+}
