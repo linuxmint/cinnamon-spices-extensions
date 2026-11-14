@@ -1,0 +1,10 @@
+{
+    "uuid": "window-swipe@ghareeb",
+    "name": "Window Swipe",
+    "description": "Three- and four-finger horizontal touchpad swipes slide between the windows of the current workspace, following your fingers, with smooth momentum and continuous rapid swipes. Window order follows the Plank dock. Requires Touchegg and Cinnamon touchpad gestures.",
+    "version": "1.0.0",
+    "author": "m7ghareeb",
+    "cinnamon-version": [
+        "6.6"
+    ]
+}
