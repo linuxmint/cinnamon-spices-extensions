@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.10\n"
 
 #. 6.0/extension.js:5454
 msgid ""
@@ -1575,8 +1575,8 @@ msgstr ""
 #. 6.0->settings-schema.json->windows-compiz-mitigation->description
 msgid "Disable \"Compiz\" effects for windows with Blur Cinnamon effects"
 msgstr ""
-"Tiltsa le a \"Compiz\" effekteket a Blur Cinnamon effektusokkal rendelkező "
-"ablakokban"
+"Tiltsa le a \"Compiz\" effekteket a Cinnamon Elhomályosítása effektusokkal "
+"rendelkező ablakokban"
 
 #. 6.0->settings-schema.json->windows-compiz-mitigation->tooltip
 msgid ""
@@ -1611,6 +1611,7 @@ msgstr ""
 #. 6.0->settings-schema.json->windows-opaque-maximized->description
 msgid "Make windows opaque when maximized or full-screen"
 msgstr ""
+"Ablakok átlátszatlanná tétele maximalizált vagy teljes képernyős nézetben"
 
 #. 6.0->settings-schema.json->windows-opaque-maximized->tooltip
 msgid ""
@@ -1619,6 +1620,12 @@ msgid ""
 "the table above. The configured opacity is restored once the window is no "
 "longer maximized or full-screen."
 msgstr ""
+"Ha ez engedélyezve van, a Cinnamon Elhomályosítása effekttel rendelkező "
+"ablakok teljesen átlátszatlanná válnak, amikor maximalizált vagy teljes "
+"képernyős állapotban vannak – figyelmen kívül hagyva a fenti táblázatban "
+"megadott „Átlátszatlanság” beállítást. Amint az ablak már nincs maximalizált "
+"vagy teljes képernyős állapotban, a rendszer visszaállítja a beállított "
+"átlátszatlansági értéket."
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
 msgid "Blur window title bars (please read tooltip)"
@@ -1658,14 +1665,14 @@ msgid ""
 "windows) still use the table settings. This option will have no effect "
 "unless the \"Rounded Corners\" extension is installed and active."
 msgstr ""
-"Ha ez a beállítás engedélyezve van, a „Rounded Corners” (lekerekített "
-"sarkok) kiterjesztés által lekerekített ablakok a Cinnamon elmosódási (Blur) "
-"effektusaihoz az adott kiterjesztésben megadott saroksugarat használják, a "
-"fenti táblázatban szereplő értékek helyett. Azok az ablakok – vagy egy ablak "
-"adott (felső/alsó) sarkai –, amelyeket a „Rounded Corners” nem kerekít le "
-"(például a maximalizált ablakok), továbbra is a táblázatban megadott "
-"beállításokat használják. Ez az opció csak akkor fejti ki hatását, ha a "
-"„Rounded Corners” kiterjesztés telepítve van és aktív."
+"Ha ez a beállítás engedélyezve van, a Lekerekített Sarkok kiterjesztés által "
+"lekerekített ablakok a Cinnamon Elhomályosítása effektusaihoz az adott "
+"kiterjesztésben megadott saroksugarat használják, a fenti táblázatban "
+"szereplő értékek helyett. Azok az ablakok – vagy egy ablak adott (felső/"
+"alsó) sarkai –, amelyeket a Lekerekített Sarkok nem kerekít le (például a "
+"maximalizált ablakok), továbbra is a táblázatban megadott beállításokat "
+"használják. Ez az opció csak akkor fejti ki hatását, ha a Lekerekített "
+"Sarkok kiterjesztés telepítve van és aktív."
 
 #. 6.0->settings-schema.json->desklets-auto->description
 msgid "Automatically enable effects for newly added Desklets"
