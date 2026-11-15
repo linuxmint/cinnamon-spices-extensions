@@ -1,0 +1,9 @@
+{
+    "uuid": "Desktop-Cube-Reloaded@klangman",
+    "name": "Desktop Cube Reloaded",
+    "description": "Rotate your workspaces as the faces of a 3D cube. A port of the GNOME Desktop Cube extension by Simon Schneegans.",
+    "version": "1.0.0",
+    "multiversion": true,
+    "cinnamon-version": ["6.0"],
+    "url": "https://github.com/klangman/Desktop-Cube-Reloaded"
+}

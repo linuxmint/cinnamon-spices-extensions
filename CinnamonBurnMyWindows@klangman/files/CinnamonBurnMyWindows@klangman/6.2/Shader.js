@@ -91,6 +91,12 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       this._uPadding      = this.get_uniform_location('uPadding');
       this._uInputRect    = this.get_uniform_location('uInputRect');
       this._uCanvasRect   = this.get_uniform_location('uCanvasRect');
+      this._uRaise        = this.get_uniform_location('uRaise');
+
+      // Only used by layered effects (see LayeredEffect.js), -1 elsewhere.
+      this._uLayer        = this.get_uniform_location('uLayer');
+      this._uLayerSize    = this.get_uniform_location('uLayerSize');
+      this._uTexRect      = this.get_uniform_location('uTexRect');
 
       // Create a timeline to drive the animation.
       this._timeline = new Clutter.Timeline();
@@ -182,6 +188,9 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
       // unscaled canvas; then it updates this every frame (see _setupEffect).
       this.set_uniform_float(this._uInputRect, 4, [0, 0, 1, 1]);
       this.set_uniform_float(this._uCanvasRect, 4, [0, 0, 1, 1]);
+
+      // 1 only while running as a raise effect (set by extension.js after this).
+      this.set_uniform_float(this._uRaise, 1, [0]);
     }
 
     // This is called at each frame during the animation.
@@ -289,11 +298,11 @@ class Shader extends Cinnamon.GLSLEffect {  // ---------------------------------
     // code from "common.glsl" is prepended automatically.
     _loadShaderResource(path) {
       let file;
-      file = Gio.File.new_for_path( GLib.get_home_dir() + '/.local/share/cinnamon/extensions/'
+      file = Gio.File.new_for_path( GLib.get_user_data_dir() + '/cinnamon/extensions/'
                                                   + UUID + '/resources/shaders/common.glsl' );
       let [data, etag] =  file.load_bytes(null);
       let common = new TextDecoder().decode(data.get_data());
-      file = Gio.File.new_for_path( GLib.get_home_dir() + '/.local/share/cinnamon/extensions/'
+      file = Gio.File.new_for_path( GLib.get_user_data_dir() + '/cinnamon/extensions/'
                                                                + UUID + '/resources' + path );
       [data, etag] = file.load_bytes(null);
       let code = new TextDecoder().decode(data.get_data());

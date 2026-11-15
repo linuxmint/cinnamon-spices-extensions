@@ -9,8 +9,7 @@
 //                                 |__/                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// SPDX-License-Identifier: GPL-3.0-or-later
-
+// SPDX-FileCopyrightText: Kevin Langman <klangman@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // The content from common.glsl is automatically prepended to each shader effect.
@@ -33,12 +32,13 @@
 // front shows the windows behind as they are, and back shows the window's shadow       //
 // fading in as the nearest edge panel turns. Inside the grid, front draws the windows  //
 // behind on every panel (squashed as it turns) and back draws the window on panels     //
-// that are past 90 degrees. Gaps are transparent in both, so the wall shows through.   //
+// that are past 90 degrees. Gaps are transparent in both, so the wall shows through,   //
+// except with the "Black Void" backdrop (uBlackVoid), where front paints them black    //
+// itself rather than relying on a black wall actor being drawn behind it (with stars   //
+// for the "Star Field" backdrop, uStarField, and a nebula as well for "Nebula").       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-uniform float uLayer;      // 0 = front (windows behind), 1 = back (the window)
-uniform vec4  uTexRect;    // this layer's offscreen texture, in layer pixels: x, y, width, height
-uniform vec2  uLayerSize;  // the layer actor's size in pixels
+// uLayer, uLayerSize and uTexRect, and getLayerPx(), are in common.glsl.
 uniform vec4  uFrame;      // visible window inside the layer: x, y, width, height (pixels)
 uniform vec2  uCell;       // panel size in pixels; divides the visible window exactly
 
@@ -48,6 +48,13 @@ uniform float uVerticalAxis; // 1 = panels turn around a vertical axis (squash s
 uniform float uBorderStyle;  // 0 = none, 1 = while flipping, 2 = ahead of the wave,
                              // 3 = behind the wave, 4 = ahead of and behind the wave
 uniform vec4  uBorderColor;  // straight alpha
+uniform float uBlackVoid;    // 1 = "Black Void" backdrop: front paints the gaps opaque black
+uniform float uShowCake;     // 1 = Easter egg: a cake on the backdrop ("The cake is a lie!")
+uniform vec2  uCakePos;      // random 0..1 per axis: where the cake sits, kept fully inside the window
+uniform float uStarField;    // 1 = "Star Field" backdrop: stars in the black void (uBlackVoid is set too)
+uniform float uNebula;       // 1 = "Nebula" backdrop: a nebula behind the stars (uStarField is set too)
+uniform float uStarSeed;     // random 0..1 per animation: a different sky each time
+uniform vec2  uScreenOrigin; // the layers' top-left on the screen, in pixels (stars are fixed to the screen)
 
 // ---- Tunables (candidates for user settings) ----
 
@@ -66,7 +73,37 @@ const float BORDER_TRAIL  = 0.15;
 const float BORDER_PX     = 1.0;   // line width drawn by each panel (neighbours add up to ~2px)
 const float EDGE_SHADE    = 0.4;   // brightness of a panel seen edge-on (1 = no shading)
 
-const float PI            = 3.14159265;
+const float PERSPECTIVE = 2.5;  // camera distance in window sizes; larger = subtler 3D
+
+const float PI = 3.14159265;
+
+// Easter egg ("The cake is a lie!"), when uShowCake is set: a CAKE_PX cake at a random spot
+// (uCakePos) on the backdrop, peeking through the gaps between the turning panels; only on
+// windows at least CAKE_MIN_SCALE times its size in each direction.
+const float CAKE_PX        = 128.0;
+const float CAKE_MIN_SCALE = 3.0;
+
+// "Star Field" backdrop: STAR_LAYERS layers of stars on grids of STAR_CELL_PX, + STAR_CELL_STEP
+// per layer (a larger grid = rarer stars, drawn larger and brighter). In each grid cell there
+// is a star with a chance of STAR_DENSITY (- STAR_DENSITY_STEP per layer).
+const int   STAR_LAYERS       = 3;
+const float STAR_CELL_PX      = 22.0;
+const float STAR_CELL_STEP    = 28.0;
+const float STAR_DENSITY      = 0.45;
+const float STAR_DENSITY_STEP = 0.1;
+const float STAR_TWINKLE      = 0.4;   // how much the stars twinkle (0 = steady, 1 = fully)
+const float STAR_GLOW         = 0.15;  // soft halo around the largest stars
+
+// "Nebula" backdrop: gently warped fractal noise, only where a larger-scale noise says there
+// is a cloud, coloured along the warp, with bright cores and darker dust lanes.
+const float NEBULA_SCALE  = 520.0;  // size of the cloud features, in pixels
+const float NEBULA_WARP   = 1.6;    // how swirly the clouds are
+const float NEBULA_BRIGHT = 1.5;
+const float NEBULA_DRIFT  = 0.04;   // how fast the clouds drift (noise units per second)
+const vec3  NEBULA_COL_A  = vec3(0.16, 0.06, 0.38);  // deep violet
+const vec3  NEBULA_COL_B  = vec3(0.62, 0.14, 0.52);  // magenta
+const vec3  NEBULA_COL_C  = vec3(0.10, 0.50, 0.66);  // teal
+const vec3  NEBULA_CORE   = vec3(1.00, 0.86, 0.80);  // bright cores
 
 // Animation progress: 0 = everything behind the window showing, 1 = the window showing.
 // Opening runs 0 -> 1, closing 1 -> 0. Set at the start of main().
@@ -83,12 +120,6 @@ float panelHash(vec2 p) {
   p = fract(p * vec2(123.34, 456.21));
   p += dot(p, p + 45.32);
   return fract(p.x * p.y);
-}
-
-// This layer's colour at pixel position p (layer coordinates).
-vec4 layerAt(vec2 p) {
-  p = clamp(p, vec2(0.5), uLayerSize - 0.5);
-  return getInputColor((p - uTexRect.xy) / uTexRect.zw);
 }
 
 // Where along the sweep (0..1) the panel at grid position `cell` sits. 0 flips first,
@@ -145,6 +176,107 @@ float cellBorder(vec2 cell) {
   return gBorder ? fadeIn * (1.0 - fadeOut) : 0.0;
 }
 
+float sdRoundBox(vec2 p, vec2 b, float r) {
+  vec2 d = abs(p) - b + r;
+  return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0) - r;
+}
+
+// The cake, in straight alpha. p: centred on the cake, y up, the cake fits in [-0.8, 0.8].
+// aa: the size of one pixel in those units. t: time in seconds (for the candle flame).
+vec4 drawCake(vec2 p, float aa, float t) {
+  vec3  col = vec3(0.0);
+  float a   = 0.0;
+  #define CAKE_LAYER(d, c) { float m = smoothstep(aa, -aa, d); col = mix(col, c, m); a = max(a, m); }
+
+  vec3 sponge  = vec3(0.26, 0.13, 0.07);
+  vec3 filling = vec3(0.45, 0.26, 0.15);  // chocolate mousse
+  vec3 icing   = vec3(0.17, 0.08, 0.04);  // dark chocolate glaze
+  vec3 cream   = vec3(0.98, 0.95, 0.90);  // whipped cream under the cherries
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, -0.58), vec2(0.78, 0.04), 0.04), vec3(0.78, 0.80, 0.82)); // plate
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, -0.26), vec2(0.56, 0.29), 0.06), sponge);                  // sponge
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, -0.26), vec2(0.56, 0.03), 0.02), filling);                // filling
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0,  0.06), vec2(0.58, 0.07), 0.07), icing);                  // glaze
+  for (int i = 0; i < 6; i++) {                                                                  // drips
+    float x   = -0.45 + float(i) * 0.18;
+    float len = 0.04 + 0.05 * fract(sin(float(i) * 12.9898) * 43758.5453);
+    CAKE_LAYER(sdRoundBox(p - vec2(x, -0.02 - len * 0.5), vec2(0.035, len), 0.035), icing);
+  }
+  CAKE_LAYER(sdRoundBox(p - vec2(-0.12, 0.10), vec2(0.30, 0.012), 0.012), vec3(0.42, 0.25, 0.15)); // glaze shine
+  for (int i = 0; i < 4; i++) {                                                                  // cherries
+    float x = (i < 2) ? -0.42 + float(i) * 0.2 : 0.22 + float(i - 2) * 0.2;
+    CAKE_LAYER(length(p - vec2(x, 0.15)) - 0.06, cream);
+    CAKE_LAYER(length(p - vec2(x, 0.21)) - 0.055, vec3(0.70, 0.05, 0.08));
+  }
+  vec3 stripe = mix(vec3(1.0), vec3(0.85, 0.15, 0.2), step(0.5, fract((p.y + p.x) * 14.0)));
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, 0.30), vec2(0.03, 0.17), 0.01), stripe);                  // candle
+  vec2  fp    = p - vec2(0.01 * sin(t * 31.0), 0.56);                                            // flame
+  float flame = length(fp * vec2(1.0, 0.55 + 0.15 * step(0.0, fp.y))) - 0.045;
+  CAKE_LAYER(flame, mix(vec3(1.0, 0.55, 0.1), vec3(1.0, 0.95, 0.6), smoothstep(0.0, -0.04, flame)));
+
+  #undef CAKE_LAYER
+  return vec4(col, a);
+}
+
+vec2 starHash2(vec2 p) {
+  p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+  return fract(sin(p) * 43758.5453);
+}
+
+// The star field at screen position p (pixels), at time t (seconds). Black where there is no
+// star. Stars never sit near a cell's edge, so each pixel only needs to look at its own cell.
+vec3 starField(vec2 p, float t) {
+  vec3 col = vec3(0.0);
+  for (int i = 0; i < STAR_LAYERS; i++) {
+    float fi     = float(i);
+    float cellPx = STAR_CELL_PX + fi * STAR_CELL_STEP;
+    vec2  sp     = p / cellPx + vec2(uStarSeed * 97.3 + fi * 17.7, uStarSeed * 53.1 - fi * 11.3);
+    vec2  cell   = floor(sp);
+    vec2  h1     = starHash2(cell);                      // position, twinkle
+    vec2  h2     = starHash2(cell + vec2(5.17, 9.73));   // present?, size / brightness
+
+    if (h2.x < STAR_DENSITY - fi * STAR_DENSITY_STEP) {
+      vec2  star   = cell + 0.15 + 0.7 * h1;             // the star's centre, in cells
+      float d      = length(sp - star) * cellPx;         // distance in pixels
+      float radius = mix(0.6, 0.9 + fi * 0.5, h2.y);
+      float bright = mix(0.5, 1.0, fract(h2.y * 7.31)) * (0.75 + 0.15 * fi);
+      float twinkle =
+        1.0 - STAR_TWINKLE * (0.5 + 0.5 * sin(t * (2.0 + 5.0 * h1.x) + 6.2832 * h1.y));
+      vec3  tint   = mix(vec3(0.72, 0.82, 1.0), vec3(1.0, 0.88, 0.72), fract(h1.x * 13.7));
+
+      float core = exp(-(d * d) / (radius * radius));
+      float halo = fi == float(STAR_LAYERS - 1) ? STAR_GLOW * exp(-d / (radius * 3.0)) : 0.0;
+      col += tint * bright * twinkle * (core + halo);
+    }
+  }
+  return min(col, vec3(1.0));
+}
+
+// The nebula at screen position p (pixels), at time t (seconds): rgb, and its density in a.
+vec4 nebula(vec2 p, float t) {
+  vec2 u = p / NEBULA_SCALE + vec2(uStarSeed * 41.7, -uStarSeed * 23.3);
+
+  // Where the nebula is at all: large, soft clouds with empty space between them.
+  float big  = simplex2DFractal(u * 0.45 + vec2(11.3, -4.1));
+  float mask = smoothstep(0.33, 0.60, big);
+
+  // Gently warped detail.
+  vec2  q     = vec2(simplex2DFractal(u), simplex2DFractal(u + vec2(5.2, 1.3)));
+  float f     = simplex2DFractal(u + NEBULA_WARP * q + vec2(NEBULA_DRIFT * t, 0.0));
+  float dens  = mask * smoothstep(0.25, 0.75, f);
+
+  // Colour by position along the warp, bright cores where it's densest.
+  vec3 col = mix(NEBULA_COL_A, NEBULA_COL_B, smoothstep(0.35, 0.65, q.x));
+  col      = mix(col, NEBULA_COL_C, smoothstep(0.40, 0.65, big) * smoothstep(0.45, 0.60, q.y));
+  float core = smoothstep(0.6, 0.95, dens);
+  col      = mix(col, NEBULA_CORE, core * core * 0.5);
+
+  // Darker dust lanes.
+  float dust = smoothstep(0.45, 0.60, simplex2DFractal(u * 2.1 + vec2(3.1, -7.7)));
+  float lum  = pow(dens, 1.05) * NEBULA_BRIGHT * mix(0.45, 1.0, dust);
+
+  return vec4(col * lum, dens);
+}
+
 void main() {
   gProgress = uForOpening ? uProgress : 1.0 - uProgress;
 
@@ -157,7 +289,7 @@ void main() {
 
   vec4 oColor = vec4(0.0);
   bool back   = uLayer > 0.5;
-  vec2 px     = uTexRect.xy + iTexCoord.st * uTexRect.zw;  // pixel position in the layer
+  vec2 px     = getLayerPx();  // pixel position in the layer
   vec2 q      = px - uFrame.xy;                            // relative to the visible window
 
   if (any(lessThan(q, vec2(0.0))) || any(greaterThanEqual(q, uFrame.zw))) {
@@ -178,24 +310,48 @@ void main() {
     float local  = cellProgress(cell);
     float squash = abs(cos(local * PI));
 
-    // Squash the cell around its centre to fake the rotation: sideways for a vertical
-    // axis, up/down for a horizontal one. panelUV is the position on the panel itself.
-    vec2 panelUV = cellUV;
-    if (gVertical) {
-      panelUV.x = (cellUV.x - 0.5) / max(squash, 0.001) + 0.5;
-    } else {
-      panelUV.y = (cellUV.y - 0.5) / max(squash, 0.001) + 0.5;
+    // Rotate the panel around its centre axis and project it with the vanishing point in
+    // the middle of the window. We invert the projection: from the screen position, find
+    // the position on the panel itself (panelUV). a = across the rotation axis, b = along
+    // it.
+    float theta = local * PI;
+    float cT    = cos(theta);
+    float sT    = sin(theta);
+    float dist  = PERSPECTIVE * max(uFrame.z, uFrame.w);  // camera distance
+
+    vec2 centre =
+      (cell + 0.5) * uCell - uFrame.zw * 0.5;       // panel centre from window centre
+    vec2 screen = centre + (cellUV - 0.5) * uCell;  // fragment from window centre
+    if (!gVertical) {
+      centre = centre.yx;
+      screen = screen.yx;
     }
 
-    bool onPanel = all(greaterThanEqual(panelUV, vec2(0.0))) &&
-                   all(lessThanEqual(panelUV, vec2(1.0)));
+    bool onPanel = false;
+    vec2 panelUV = cellUV;
+    float den    = dist * cT + screen.x * sT;
+    if (abs(den) > 0.001) {
+      float u = dist * (screen.x - centre.x) / den;
+      float s = dist / (dist - u * sT);
+      float v = screen.y / s - centre.y;
+      if (local > 0.5) u = -u;  // the back face is not mirrored
+      vec2 m  = gVertical ? vec2(u, v) : vec2(v, u);
+      panelUV = m / uCell + 0.5;
+
+      // The inverse projection loses a little precision (the panel centre is subtracted
+      // again), so a pixel on a shared edge can land just outside [0, 1] and leave a gap.
+      const float EPS = 0.002;
+      onPanel = dist - u * sT > 0.0 && all(greaterThanEqual(panelUV, vec2(-EPS))) &&
+                all(lessThanEqual(panelUV, vec2(1.0 + EPS)));
+      panelUV = clamp(panelUV, 0.0, 1.0);
+    }
 
     // front: the windows behind, on every panel. Under a turned panel they only show
     // through the window's transparent bits (rounded corners), which keeps the final frame
     // exact. back: the window, only once the panel is past 90 degrees.
     if (onPanel && (!back || local > 0.5)) {
       vec2 src   = uFrame.xy + (cell + panelUV) * uCell;
-      vec4 panel = layerAt(src);
+      vec4 panel = getLayerColor(src);
 
       // Shade the panel as it turns edge-on (none at local = 0 and 1).
       panel.rgb *= mix(EDGE_SHADE, 1.0, squash);
@@ -216,6 +372,34 @@ void main() {
       }
 
       oColor = panel;
+    } else if (!back) {
+      // A gap between turning panels: the black void (the wallpaper is on the panels), with
+      // stars for the "Star Field" backdrop, or transparent so the wall shows through.
+      if (uBlackVoid > 0.5) {
+        oColor = vec4(0.0, 0.0, 0.0, 1.0);
+        if (uStarField > 0.5) {
+          vec2  screenPx = uScreenOrigin + px;
+          float t        = uProgress * uDuration;
+          vec3  stars    = starField(screenPx, t);
+          if (uNebula > 0.5) {
+            // Stars dimmed a little where the nebula is dense, as if seen through it.
+            vec4 neb   = nebula(screenPx, t);
+            oColor.rgb = min(neb.rgb + stars * (1.0 - 0.6 * neb.a), vec3(1.0));
+          } else {
+            oColor.rgb = stars;
+          }
+        }
+      }
+
+      // Easter egg: the cake sits on the backdrop, so it only peeks through the gaps.
+      if (uShowCake > 0.5 && all(greaterThanEqual(uFrame.zw, vec2(CAKE_PX * CAKE_MIN_SCALE)))) {
+        vec2 centre = CAKE_PX * 0.5 + uCakePos * (uFrame.zw - CAKE_PX);
+        vec2 c      = (q - centre) / (CAKE_PX * 0.5) * 0.8;  // cake units, see drawCake()
+        c.y    = -c.y;
+        if (all(lessThanEqual(abs(c), vec2(0.82)))) {
+          oColor = alphaOver(oColor, drawCake(c, 0.8 / (CAKE_PX * 0.5), uProgress * uDuration));
+        }
+      }
     }
   }
 

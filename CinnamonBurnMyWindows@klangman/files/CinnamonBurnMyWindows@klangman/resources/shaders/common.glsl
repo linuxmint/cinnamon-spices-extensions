@@ -40,6 +40,10 @@ uniform bool uIsFullscreen;
 uniform float uProgress;
 uniform float uDuration;
 
+// 1.0 while the effect runs as a raise effect (see RaiseEffect.js), 0.0 otherwise. The
+// texture is then the windows that covered the raised window, transparent elsewhere.
+uniform float uRaise;
+
 #if defined(KWIN)  // --------------------------------------------------------------------
 
 #if defined(PLASMA6)
@@ -162,6 +166,22 @@ vec4 getInputColor(vec2 coords) {
 }
 
 void setOutputColor(vec4 outColor) { cogl_color_out = outColor; }
+
+// Layered effects (see LayeredEffect.js): the effect hides the window and draws on actors
+// of its own, the "layers", which all have the same size and position. Set by
+// LayeredEffect.js; unused (and optimized away) in other effects.
+uniform float uLayer;      // 0 = surface (what's behind the window), 1 = the window
+uniform vec2  uLayerSize;  // the layer actor's size in pixels
+uniform vec4  uTexRect;    // this layer's offscreen texture, in layer pixels: x, y, width, height
+
+// The current fragment's position in the layer, in pixels.
+vec2 getLayerPx() { return uTexRect.xy + iTexCoord.st * uTexRect.zw; }
+
+// This layer's colour at pixel position p (layer coordinates), clamped to the layer.
+vec4 getLayerColor(vec2 p) {
+  p = clamp(p, vec2(0.5), uLayerSize - 0.5);
+  return getInputColor((p - uTexRect.xy) / uTexRect.zw);
+}
 
 #endif  // -------------------------------------------------------------------------------
 

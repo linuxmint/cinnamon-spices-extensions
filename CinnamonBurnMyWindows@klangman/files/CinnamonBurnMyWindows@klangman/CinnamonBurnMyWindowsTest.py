@@ -6,7 +6,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 
 UUID = "CinnamonBurnMyWindows@klangman"
-extensions_path  = GLib.get_home_dir() + "/.local/share/cinnamon/extensions/"
+extensions_path  = GLib.get_user_data_dir() + "/cinnamon/extensions/"
 
 class TestWindow(Gtk.Window):
     def __init__(self):

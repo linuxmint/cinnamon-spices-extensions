@@ -155,5 +155,14 @@ void main() {
     }
   }
 
+  // As a raise effect, only the parts of the raised window that were covered burn: the
+  // texture is the windows that covered it, transparent elsewhere. Everything drawn above
+  // (smoke, embers, flames, the burning edge and the scorch tint, which changes the colour
+  // without adding alpha) is limited to where the cover has content. Both colour and alpha
+  // are scaled, so this holds whether the output is blended straight or premultiplied.
+  if (uRaise > 0.5) {
+    oColor *= getInputColor(iTexCoord).a;
+  }
+
   setOutputColor(oColor);
 }

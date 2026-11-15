@@ -30,6 +30,7 @@ const Glitch = require('./effects/Glitch.js');
 const Hexagon = require('./effects/Hexagon.js');
 const Incinerate = require('./effects/Incinerate.js');
 const MagicLamp = require('./effects/MagicLamp.js');
+const Materialize = require('./effects/Materialize.js');
 const Morph = require('./effects/Morph.js');
 //const Matrix = require('./effects/Matrix.js');
 const Mushroom = require('./effects/Mushroom.js');
@@ -39,15 +40,39 @@ const PixelWheel = require('./effects/PixelWheel.js');
 const PixelWipe = require('./effects/PixelWipe.js');
 const Portal = require('./effects/Portal.js');
 const RGBWarp = require('./effects/RGBWarp.js');
+const Shredder = require('./effects/Shredder.js');
 //const SnapOfDisintegration = require('./effects/SnapOfDisintegration.js');
 const TeamRocket = require('./effects/TeamRocket.js');
 //const TRexAttack = require('./effects/TRexAttack.js');
 const TVEffect = require('./effects/TVEffect.js');
 const TVGlitch = require('./effects/TVGlitch.js');
+const VenetianBlinds = require('./effects/VenetianBlinds.js');
 const Wisps = require('./effects/Wisps.js');
 const Wormhole = require('./effects/Wormhole.js');
 
 const ShouldAnimateManager = require("ShouldAnimateManager.js");
+const Layers = require('./LayeredEffect.js');
+const RaiseEffect = require('./RaiseEffect.js');
+const ShaderModule = require('./Shader.js');
+const ShaderFactoryModule = require('./ShaderFactory.js');
+
+// The shared modules (effects/, LayeredEffect.js, ...) are loaded differently on
+// Cinnamon 6.2 and 6.7.6+, so they don't import each other. Hand them the modules
+// they need before anything gets constructed.
+const SHARED_MODULES = {
+  Shader:               ShaderModule,
+  ShaderFactory:        ShaderFactoryModule.ShaderFactory,
+  Layers:               Layers,
+  LayeredEffect:        Layers.LayeredEffect,
+  ShouldAnimateManager: ShouldAnimateManager,
+};
+for (const mod of [ShaderFactoryModule, RaiseEffect, AperturePanels, Apparition,
+                   AuraGlow, Doom, EnergizeA, EnergizeB, Fire, Focus, Glide, Glitch,
+                   Hexagon, Incinerate, MagicLamp, Materialize, Morph, Mushroom,
+                   Pixelate, PixelWheel, PixelWipe, Portal, RGBWarp, Shredder,
+                   TeamRocket, TVEffect, TVGlitch, VenetianBlinds, Wisps, Wormhole]) {
+  mod.setModules(SHARED_MODULES);
+}
 
 const Main = imports.ui.main;
 const Gio = imports.gi.Gio;
@@ -80,6 +105,7 @@ const Effect = {
   Hexagon:     {idx: 8,  name: "Hexagon"},
   Incinerate:  {idx: 9,  name: "Incinerate"},
   MagicLamp:   {idx: 26, name: "Magic Lamp"},
+  Materialize: {idx: 30, name: "Materialize"},
   Morph:       {idx: 29, name: "Morph"},
   Mushroom:    {idx: 25, name: "Mushroom"},
   //Matrix:      {idx: 10, name: "Matrix"},
@@ -89,11 +115,13 @@ const Effect = {
   PixelWipe:   {idx: 14, name: "Pixel Wipe"},
   Portal:      {idx: 15, name: "Portal"},
   RGBWarp:     {idx: 24, name: "RGB Warp"},
+  Shredder:    {idx: 31, name: "Shredder"},
   //SnapOfDisintegration: {idx: 16, name: "Snap Of Disintegration"},
   TeamRocket:  {idx: 23, name: "Team Rocket"},
   //TRexAttack:  {idx: 17, name: "TRex Attack"},
   TVEffect:    {idx: 18, name: "TV Effect"},
   TVGlitch:    {idx: 19, name: "TV Glitch"},
+  VenetianBlinds: {idx: 32, name: "Venetian Blinds"},
   Wisps:       {idx: 20, name: "Wisps"},
   Wormhole:    {idx: 28, name: "Wormhole"},
   Randomized:  {idx: 999, name: "Randomized"},
@@ -107,6 +135,25 @@ function EffectIndex(name) {
   return(undefined);
 }
 
+// The settings an effect uses when the selector that chose it has custom settings for it (see the
+// "effect-overrides" key and EffectSelector in CustomWidgets.py). Effects only call getValue(), so this
+// can be passed anywhere the settings object is. Keys without a custom value fall back to the global
+// settings (i.e. keys added by a newer version of the extension since the custom values were saved).
+// A new instance is created for every animation, so values that effects cache on the settings object
+// (i.e. Fire's settings.fireColor) don't leak into the global settings or other animations.
+class EffectProfile {
+  constructor(settings, values) {
+    this._settings = settings;
+    this._values = values;
+  }
+
+  getValue(key) {
+    if (Object.prototype.hasOwnProperty.call(this._values, key))
+      return this._values[key];
+    return this._settings.getValue(key);
+  }
+}
+
 const UUID = "CinnamonBurnMyWindows@klangman";
 
 // Effects that need extra canvas (getActorScale() other than (1,1)) get it from an unscaled
@@ -114,9 +161,8 @@ const UUID = "CinnamonBurnMyWindows@klangman";
 // window caused a visible jump at the end of the animation on Cinnamon
 const USE_UNSCALED_CANVAS  = true;        // false = old behaviour: scale the window actor
 const CANVAS_BEHIND_MARGIN = 64;          // px around the window covered by the behind layer
-const CANVAS_TEX_PADDING   = 'enlarged';  // how Clutter splits the 3px offscreen-texture padding:
-                                          // 'enlarged' = stock Muffin (mostly left/top),
-                                          // 'centred'  = Muffin patched to pad evenly
+// How Clutter splits the 3px offscreen-texture padding: see TEX_PADDING in LayeredEffect.js.
+const CANVAS_TEX_PADDING   = Layers.TEX_PADDING;
 
 var extensionThis;
 
@@ -201,28 +247,40 @@ class BurnMyWindows {
          new AperturePanels.Effect(),
          new Wormhole.Effect(),
          new Morph.Effect(),
+         new Materialize.Effect(),
+         new Shredder.Effect(),
+         new VenetianBlinds.Effect(),
       ];
 
       // We will use extensionThis to refer to the extension inside the patched methods.
       extensionThis = this;
 
-      // Bind variables to setting effect values
-      this._settings.bind("minimize-effect", "minimizeEffect", this._enableMinimizeEffects);
-      this._settings.bind("unminimize-effect", "unminimizeEffect", this._enableMinimizeEffects);
-      this._settings.bind("power-minimize-effect", "powerMinimizeEffect", this._enableMinimizeEffects);
-      this._settings.bind("power-unminimize-effect", "powerUnminimizeEffect", this._enableMinimizeEffects);
-      this._settings.bind("open-window-effect", "openEffect");
-      this._settings.bind("dialog-open-effect", "dialogOpenEffect");
-      this._settings.bind("power-open-effect", "powerOpenEffect");
-      this._settings.bind("power-dialog-open-effect", "powerDialogOpenEffect");
-      this._settings.bind("close-window-effect", "closeEffect");
-      this._settings.bind("dialog-close-effect", "dialogCloseEffect");
-      this._settings.bind("power-close-effect", "powerCloseEffect");
-      this._settings.bind("power-dialog-close-effect", "powerDialogCloseEffect");
-      this._settings.bind("enable-sound", "enableSound", this._enableSounds);
+      // Raise effects (see RaiseEffect.js). Only effects that say they support raising
+      // (static supportsRaise()) are offered, so this list is built from _ALL_EFFECTS.
+      this._raiseEffects = new Set();
+      this._raiseWatcher = new RaiseEffect.RaiseWatcher(
+         (entries) => this._startRaiseEffect(entries),
+         () => this._endRaiseEffects());
+      this._syncRaiseEffectOptions();
+      this._bindCustom("raise-effect", "raiseEffect", this._enableRaiseEffects);
+      this._bindCustom("power-raise-effect", "powerRaiseEffect", this._enableRaiseEffects);
+      this._settings.bind("power-onbattery", "powerOnBattery", this._enableRaiseEffects);
+      this._enableRaiseEffects();
 
-      // Keep track of the previously focused Application
-      this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
+      // Bind variables to setting effect values
+      this._bindCustom("minimize-effect", "minimizeEffect", this._enableMinimizeEffects);
+      this._bindCustom("unminimize-effect", "unminimizeEffect", this._enableMinimizeEffects);
+      this._bindCustom("power-minimize-effect", "powerMinimizeEffect", this._enableMinimizeEffects);
+      this._bindCustom("power-unminimize-effect", "powerUnminimizeEffect", this._enableMinimizeEffects);
+      this._bindCustom("open-window-effect", "openEffect");
+      this._bindCustom("dialog-open-effect", "dialogOpenEffect");
+      this._bindCustom("power-open-effect", "powerOpenEffect");
+      this._bindCustom("power-dialog-open-effect", "powerDialogOpenEffect");
+      this._bindCustom("close-window-effect", "closeEffect");
+      this._bindCustom("dialog-close-effect", "dialogCloseEffect");
+      this._bindCustom("power-close-effect", "powerCloseEffect");
+      this._bindCustom("power-dialog-close-effect", "powerDialogCloseEffect");
+      this._settings.bind("enable-sound", "enableSound", this._enableSounds);
 
       // WindowTracker so we can map windows to application
       this._windowTracker = Cinnamon.WindowTracker.get_default();
@@ -255,6 +313,9 @@ class BurnMyWindows {
          const shader = actor.get_effect('burn-my-windows-effect');
          if (shader) {
             shader.endAnimation();
+         }
+         if (actor._bmwRaiseShader) {
+            actor._bmwRaiseShader.endAnimation();
          }
       });
   }
@@ -384,9 +445,11 @@ class BurnMyWindows {
         if (effects[i][1].idx < 900) {// An idx of 900 or higher is reserved for non-effect types, i.e. None and Random
            let element = randomInclude.find((element) => element.name == effects[i][1].name);
            if (element) {
+              // Rows from before raise effects existed get the raise box ticked.
+              if (element.raise === undefined) element.raise = true;
               newRandomInclude.push(element);
            } else {
-              newRandomInclude.push( {name: effects[i][1].name, open: true, close: true, minimize: true, unminimize: true} );
+              newRandomInclude.push( {name: effects[i][1].name, open: true, close: true, minimize: true, unminimize: true, raise: true} );
            }
         }
      }
@@ -480,7 +543,7 @@ class BurnMyWindows {
       if (extensionThis.enableSound) {
         let soundSettings = new Gio.Settings({ schema_id: "org.cinnamon.sounds" });
         if (soundSettings && soundSettings.get_boolean(eventName+"-enabled")) {
-           let sfx = chosenEffect.effect.constructor.getSFX(extensionThis._settings, (event & ShouldAnimateManager.Events.MapWindow) || (event & ShouldAnimateManager.Events.Unminimize) );
+           let sfx = chosenEffect.effect.constructor.getSFX(chosenEffect.profile, (event & ShouldAnimateManager.Events.MapWindow) || (event & ShouldAnimateManager.Events.Unminimize) );
            if (sfx)
               Main.soundManager.playSoundFile(0, sfx);
            else
@@ -525,6 +588,16 @@ class BurnMyWindows {
   // This function could be called after the extension is uninstalled, disabled in GNOME
   // Tweaks, when you log out or when the screen locks.
   disable() {
+    // Make sure the window picker isn't left holding the desktop
+    this._endPick();
+
+    // Stop watching for raised windows and remove any running raise effect
+    if (this._raiseWatcher) {
+      this._raiseWatcher.disable();
+      this._raiseWatcher = null;
+    }
+    this._endRaiseEffects();
+
     // Stop monitoring signals
     this._signalManager.disconnectAllSignals();
 
@@ -558,50 +631,65 @@ class BurnMyWindows {
                    (windowType === Meta.WindowType.DIALOG || windowType === Meta.WindowType.MODAL_DIALOG));
     let appRule = (!dialog) ? this.getAppRule(metaWindow, power) : null;
 
+    //log( `Battery state: ${this._upDisplayDevice.state}  ${this._upDisplayDevice.percentage}%` );
+
+    // The "effect-overrides" scope of the selector that chose the effect (its settings key name),
+    // or null when there can't be custom settings (application rules, for now)
+    let scope = null;
+    // The "effect-overrides" scope of the application rule's effect (see AppRulesList in CustomWidgets.py)
+    let appScope = null;
+
     switch (event) {
       case ShouldAnimateManager.Events.MapWindow:
         if (appRule) {
           effectIdx = appRule.open;
+          appScope = this._appRuleScope(appRule, "open");
         } else {
           if (power) {
-            effectIdx = (!dialog) ? this.powerOpenEffect : this.powerDialogOpenEffect;
+            scope = (!dialog) ? "power-open-effect" : "power-dialog-open-effect";
           } else {
-            effectIdx = (!dialog) ? this.openEffect : this.dialogOpenEffect;
+            scope = (!dialog) ? "open-window-effect" : "dialog-open-effect";
           }
         }
         break;
       case ShouldAnimateManager.Events.DestroyWindow:
         if (appRule) {
           effectIdx = appRule.close;
+          appScope = this._appRuleScope(appRule, "close");
         } else {
           if (power) {
-            effectIdx = (!dialog) ? this.powerCloseEffect : this.powerDialogCloseEffect;
+            scope = (!dialog) ? "power-close-effect" : "power-dialog-close-effect";
           } else {
-            effectIdx = (!dialog) ? this.closeEffect : this.dialogCloseEffect;
+            scope = (!dialog) ? "close-window-effect" : "dialog-close-effect";
           }
         }
         break;
       case ShouldAnimateManager.Events.Minimize:
         if (appRule) {
           effectIdx = appRule.minimize;
+          appScope = this._appRuleScope(appRule, "minimize");
         } else {
-          effectIdx = (power) ? this.powerMinimizeEffect : this.minimizeEffect;
+          scope = (power) ? "power-minimize-effect" : "minimize-effect";
         }
         break;
       case ShouldAnimateManager.Events.Unminimize:
         if (appRule) {
           effectIdx = appRule.unminimize;
+          appScope = this._appRuleScope(appRule, "unminimize");
         } else {
-          effectIdx = (power) ? this.powerUnminimizeEffect : this.unminimizeEffect;
+          scope = (power) ? "power-unminimize-effect" : "unminimize-effect";
         }
         break;
+    }
+    if (scope) {
+      effectIdx = this[this._scopeProperty[scope]];
     }
     if (effectIdx === Effect.None.idx) {
       // No effect should be applied
       return(null);
     } else if (effectIdx != Effect.Randomized.idx) {
       // Return the effect that the setting reflects
-      return {effect: this._ALL_EFFECTS[effectIdx], profile: this._settings};
+      return {effect: this._ALL_EFFECTS[effectIdx], profile: this._makeProfile(appScope || scope, effectIdx)};
     } else {
       // Add the effect indexes for each effect that is included in this events randomized set
       let effectOptions = [];
@@ -629,11 +717,68 @@ class BurnMyWindows {
       }
       // If any random options are enabled, return a randomly chosen effect, else return null
       if (effectOptions.length > 0) {
-        return {effect: this._ALL_EFFECTS[effectOptions[(Math.floor(Math.random() * effectOptions.length))]], profile: this._settings};
+        let randomIdx = effectOptions[(Math.floor(Math.random() * effectOptions.length))];
+        // A randomly chosen effect uses the custom settings from the Randomized list (its gear buttons) for
+        // this event, never those of the selector that chose Randomized.
+        let randomScope = (event === ShouldAnimateManager.Events.MapWindow)     ? "random-open" :
+                          (event === ShouldAnimateManager.Events.DestroyWindow) ? "random-close" :
+                          (event === ShouldAnimateManager.Events.Minimize)      ? "random-minimize" :
+                          (event === ShouldAnimateManager.Events.Unminimize)    ? "random-unminimize" : null;
+        return {effect: this._ALL_EFFECTS[randomIdx], profile: this._makeProfile(randomScope, randomIdx)};
       } else {
         return null;
       }
     }
+  }
+
+  // Like this._settings.bind(), for keys with the "custom" settings type (i.e. the EffectSelector keys),
+  // which bind() refuses since it only accepts Cinnamon's built in types. getValue(), setValue() and the
+  // "changed::<key>" signal work for keys of any type.
+  _bindCustom(key, property, callback) {
+    Object.defineProperty(this, property, {
+      get: () => this._settings.getValue(key),
+      set: (value) => this._settings.setValue(key, value),
+      enumerable: true,
+      configurable: true
+    });
+    if (callback) {
+      this._signalManager.connect(this._settings, "changed::" + key, () => callback.call(this));
+    }
+  }
+
+  // The bound property holding each selector's value, by "effect-overrides" scope (the selector's key name)
+  get _scopeProperty() {
+    return {
+      "open-window-effect": "openEffect",               "dialog-open-effect": "dialogOpenEffect",
+      "close-window-effect": "closeEffect",             "dialog-close-effect": "dialogCloseEffect",
+      "minimize-effect": "minimizeEffect",              "unminimize-effect": "unminimizeEffect",
+      "power-open-effect": "powerOpenEffect",           "power-dialog-open-effect": "powerDialogOpenEffect",
+      "power-close-effect": "powerCloseEffect",         "power-dialog-close-effect": "powerDialogCloseEffect",
+      "power-minimize-effect": "powerMinimizeEffect",   "power-unminimize-effect": "powerUnminimizeEffect"
+    };
+  }
+
+  // The settings the given effect should use: the selector's custom settings for that effect when they
+  // are enabled (see EffectSelector in CustomWidgets.py), otherwise the global settings.
+  // The "effect-overrides" scope of an application rule's effect for an event. A rule only has custom settings
+  // once it has an id, which the settings window gives it the first time its gear is used.
+  _appRuleScope(rule, event) {
+    return (rule && rule.id) ? "app-" + rule.id + "-" + event : null;
+  }
+
+  _makeProfile(scope, effectIdx) {
+    if (!scope) return this._settings;
+    let overrides = this._settings.getValue("effect-overrides");
+    let entry = (overrides && overrides[scope]) ? overrides[scope][String(effectIdx)] : null;
+    if (!entry || !entry.enabled || !entry.values) return this._settings;
+    let profile = new EffectProfile(this._settings, entry.values);
+    // Effects with presets (Fire, Mushroom) compute values from the settings and store them on the
+    // settings object for their shaders to use, so they need to do that for this profile as well.
+    let effect = this._ALL_EFFECTS[effectIdx];
+    if (effect && typeof effect._setupUsingPresets === "function") {
+      effect._setupUsingPresets(profile);
+    }
+    return profile;
   }
 
   // Get the application specific rules for the given metaWindow
@@ -690,7 +835,7 @@ class BurnMyWindows {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.constructor.getActorScale(this._settings, forOpening, actor);
+    const actorScale = effect.constructor.getActorScale(profile, forOpening, actor);
 
     // Effects that draw on more than just the window (e.g. Aperture Panels) build their own
     // actors in createLayers() (below), instead of using the canvas or scaling.
@@ -706,9 +851,9 @@ class BurnMyWindows {
     let canvas = null, canvasClone = null, behindLayer = null, aboveLayer = null;
     let syncCanvas = null;  // set below when useCanvas; called once a frame
 
-    // Which windows are above / below this one while the clone layers of the canvas and of
-    // layered effects are built (see _createStackTracker()).
-    const stack = (useCanvas || layered) ? this._createStackTracker(actor, !forOpening) : null;
+    // Which windows are above / below this one while the clone layers of the canvas are
+    // built (see createStackTracker() in LayeredEffect.js). Layered effects have their own.
+    const stack = useCanvas ? Layers.createStackTracker(actor, !forOpening) : null;
 
     // The canvas the effect expects is the size the scaled window would have had, centred on
     // the window (the "virtual" canvas, v*). Only its on-screen part (c*) is actually built:
@@ -756,15 +901,15 @@ class BurnMyWindows {
       // draw on, so the animation keeps the window's place in the stacking order (a window
       // closing behind others stays behind them) and transparent parts of the effect don't
       // depend on Muffin painting what's under a hidden window (which it doesn't reliably do).
-      // See _insertAboveWindows() for where they go.
+      // See insertAboveWindows() in LayeredEffect.js for where they go.
       const cover = coverRect(geo);
       behindLayer = this._createBehindLayer(actor, cover, stack);
       aboveLayer  = this._createAboveLayer(actor, cover, stack);
-      this._insertAboveWindows([behindLayer, canvas, aboveLayer]);
+      Layers.insertAboveWindows([behindLayer, canvas, aboveLayer]);
 
       // Hide the real window; the clone still renders it. _bmwEffectContainer is set before
       // the opacity drops and cleared before it comes back, so other code watching the
-      // window's opacity (e.g. clones in other extensions, _addWindowClone()) can tell a window
+      // window's opacity (e.g. clones in other extensions, addWindowClone()) can tell a window
       // hidden by an animation from a hidden one, and clone the animation instead.
       actor._bmwEffectContainer = canvas;
       actor.opacity = 0;
@@ -837,16 +982,12 @@ class BurnMyWindows {
       8000 :
       profile.getValue(effect.constructor.getNick() + '-animation-time');
 
-    // Layered effects: the effect hides the window, stacks its own actors over it and
-    // tells us which one gets the shader. It follows the window in layers.update() (called
-    // once a frame, see onFrame below) and cleans up in layers.destroy().
+    // Layered effects (see LayeredEffect.js): the effect hides the window, stacks its own
+    // actors over it and tells us which one gets the shader. It follows the window (and the
+    // stacking order) on its own, once a frame, and cleans up in layers.destroy().
     let layers = null;
     if (layered) {
-      layers = effect.createLayers(actor, shader, {
-        settings: profile, forOpening, testMode, duration, texPadding: CANVAS_TEX_PADDING, stack,
-        insertAboveWindows: (actors) => this._insertAboveWindows(actors),
-        cloneWindow: (layer, wa, ox, oy) => this._addWindowClone(layer, wa, ox, oy)
-      });
+      layers = effect.createLayers(actor, shader, {settings: profile, forOpening, testMode, duration});
       paintTarget = layers.paintTarget;
       actor._bmwEffectContainer = paintTarget;
     }
@@ -934,24 +1075,16 @@ class BurnMyWindows {
     //    is its last frame, which doesn't change any more, while the client may already have
     //    changed its buffer (Electron drops its shadow margins on minimize); moving the actor
     //    to the new buffer rect then makes the window jump at the start instead.
-    // 2. The canvas / layers follow the window (and the stacking order).
+    // 2. The canvas follows the window (and the stacking order).
+    // Layered effects do both themselves (see LayeredEffect.js).
     const followBuffer = !!forOpening;
     const metaWindow   = actor.get_meta_window();
     const onFrame = () => {
       if (stack) stack.frame();
-      if (followBuffer) {
-        const b = metaWindow.get_buffer_rect();
-        if (actor.x !== b.x || actor.y !== b.y) {
-          actor.set_position(b.x, b.y);
-        }
-        if (actor.width !== b.width || actor.height !== b.height) {
-          actor.set_size(b.width, b.height);
-        }
-      }
+      if (followBuffer) Layers.followBufferRect(actor, metaWindow);
       if (syncCanvas) syncCanvas();
-      if (layers && layers.update) layers.update();
     };
-    if (shader._timeline) {
+    if (shader._timeline && !layered) {
       shader._bmwFrameId = shader._timeline.connect('new-frame', onFrame);
     }
 
@@ -981,34 +1114,196 @@ class BurnMyWindows {
     }
   }
 
-  // Puts `actors` (bottom to top) where effects that don't draw on the window itself put
-  // their actors: in the window group's parent (Main.uiGroup), right above the window group.
-  // Not inside the window group: while Muffin paints it, it limits each window to its
-  // unobscured / freshly damaged region, and clones painted in that same pass inherit the
-  // limit (holes and flashing). Above it, they are painted after all windows but still below
-  // panels, Cinnamon's menus and application popup menus (global.top_window_group), as a
-  // window would be. They also go above any other effect's actors that are still there, so
-  // the newest animation, which has cloned those into its own layers, is drawn on top.
-  _insertAboveWindows(actors) {
-    const wg = global.window_group;
-    let parent  = wg ? wg.get_parent() : null;
-    let sibling = wg;
-    if (!parent) {
-      parent  = Main.uiGroup;
-      sibling = null;
-    }
-    while (sibling && sibling.get_next_sibling() && sibling.get_next_sibling()._bmwEffectLayer) {
-      sibling = sibling.get_next_sibling();
-    }
-    for (const a of actors) {
-      a._bmwEffectLayer = true;
-      if (sibling) {
-        parent.insert_child_above(a, sibling);
-      } else {
-        parent.add_child(a);
+  // ---- Raise effects ----
+  // See RaiseEffect.js. The effect runs, in its hide direction, on a "cover" actor holding
+  // clones of the windows the raised window was below, so the covered parts of the raised
+  // window appear as the effect removes what covered them.
+
+  // Indexes of the effects that can be used as a raise effect.
+  _raiseCapableIndexes() {
+    let indexes = [];
+    for (let i = 0; i < this._ALL_EFFECTS.length; i++) {
+      const effect = this._ALL_EFFECTS[i];
+      if (effect && typeof effect.constructor.supportsRaise === 'function' &&
+          effect.constructor.supportsRaise()) {
+        indexes.push(i);
       }
-      sibling = a;
     }
+    return indexes;
+  }
+
+  // The raise effect combobox only offers raise capable effects (plus Randomized / None).
+  _syncRaiseEffectOptions() {
+    const settingsData = this._settings.settingsData;
+    if (!settingsData["raise-effect"]) return;
+    const capable = this._raiseCapableIndexes();
+
+    // The Random Effects list (RandomIncludeList in CustomWidgets.py) only shows a Raise
+    // check box for these effects. The settings dialog can't ask the effects themselves.
+    const capableNames = Object.values(Effect)
+      .filter(effect => effect.idx < 900 && capable.includes(effect.idx))
+      .map(effect => effect.name);
+    const oldNames = this._settings.getValue("raise-capable-effects") || [];
+    if (oldNames.join("\n") !== capableNames.join("\n")) {
+      this._settings.setValue("raise-capable-effects", capableNames);
+    }
+    let options = {};
+    for (let effect of Object.values(Effect)) {
+      if (effect.idx < 900 && capable.includes(effect.idx)) {
+        options[effect.name] = effect.idx;
+      }
+    }
+    options[Effect.Randomized.name] = Effect.Randomized.idx;
+    options[Effect.None.name] = Effect.None.idx;
+    // The General tab's and the Power tab's raise effect selectors.
+    let changed = false;
+    for (const key of ["raise-effect", "power-raise-effect"]) {
+      if (!settingsData[key] || this._optionsEqual(settingsData[key].options, options)) continue;
+      settingsData[key].options = options;
+      // An effect that lost raise support (or was retired) falls back to None.
+      if (!Object.values(options).includes(settingsData[key].value)) {
+        settingsData[key].value = Effect.None.idx;
+      }
+      changed = true;
+    }
+    if (changed) {
+      this._settings._saveToFile();
+    }
+  }
+
+  // True while on battery below the Power tab's threshold (if that tab is enabled): the
+  // Power tab's effects are used then.
+  _onLowPower() {
+    return this._settings.getValue("power-onbattery") === true &&
+           this._upDisplayDevice.state === UPowerGlib.DeviceState.DISCHARGING &&
+           this._upDisplayDevice.percentage < this._settings.getValue("power-percent");
+  }
+
+  // Only watch for raised windows while a raise effect is selected.
+  _enableRaiseEffects() {
+    if (!this._raiseWatcher) return;
+    // Watch while either raise effect could be used; which one is decided per raise, as the
+    // battery level changes (see _chooseRaiseEffect()).
+    const powerUsed = this.powerOnBattery === true && this.powerRaiseEffect !== Effect.None.idx;
+    if (this.raiseEffect !== Effect.None.idx || powerUsed) {
+      this._raiseWatcher.enable();
+    } else {
+      this._raiseWatcher.disable();
+      this._endRaiseEffects();
+    }
+  }
+
+  // Returns {effect, profile} (profile: the settings the effect uses, see _makeProfile()), or null.
+  _chooseRaiseEffect() {
+    const lowPower = this._onLowPower();
+    const idx = lowPower ? this.powerRaiseEffect : this.raiseEffect;
+    if (idx === Effect.None.idx || idx === undefined) return null;
+    const capable = this._raiseCapableIndexes();
+    if (idx === Effect.Randomized.idx) {
+      // The raise capable effects ticked in the Raise column of the Random Effects list.
+      const randomInclude = this._settings.getValue("random-include") || [];
+      const options = capable.filter(i => randomInclude.some(r =>
+        r.raise !== false && EffectIndex(r.name) === i));
+      if (options.length === 0) return null;
+      const randomIdx = options[Math.floor(Math.random() * options.length)];
+      return {effect: this._ALL_EFFECTS[randomIdx], profile: this._makeProfile("random-raise", randomIdx)};
+    }
+    if (!capable.includes(idx)) return null;
+    return {effect: this._ALL_EFFECTS[idx], profile: this._makeProfile(lowPower ? "power-raise-effect" : "raise-effect", idx)};
+  }
+
+  // Stop every running raise effect (they clean up in their end-animation handler).
+  _endRaiseEffects() {
+    if (!this._raiseEffects) return;
+    for (const shader of Array.from(this._raiseEffects)) {
+      shader.endAnimation();
+    }
+  }
+
+  // entries: from RaiseWatcher, one per window of the raised family (a window and its
+  // dialogs) that was covered, bottom to top. They all get the same effect, each on a cover
+  // of its own; the covers are stacked in the same order, so a dialog's is above its parent's.
+  _startRaiseEffect(entries) {
+    // Not windows that are still opening / unminimizing (or animated by something else).
+    entries = entries.filter(e => {
+      const actor = e.window.get_compositor_private();
+      return actor && !actor._bmwEffectContainer && !actor.get_effect('burn-my-windows-effect');
+    });
+    if (entries.length === 0) return;
+
+    const chosen = this._chooseRaiseEffect();
+    if (!chosen) return;
+    const {effect, profile} = chosen;
+
+    // A cover from an earlier raise sits above all windows, so it would hide these.
+    this._endRaiseEffects();
+
+    const testMode = this._settings.getValue('test-mode');
+    // Custom settings for raising (see EffectSettingsDialog in CustomWidgets.py) can have their own duration
+    const duration = testMode ? 8000 : profile.getValue('raise-animation-time');
+
+    // Each window's shadow ring leaves out the frames of the family windows below it: their
+    // own covers animate there (see createCover()).
+    const below = [];
+    for (const e of entries) {
+      this._startRaiseCover(e.window, e.coverers, e.above, effect, profile, duration, testMode, below.slice());
+      const f = e.window.get_frame_rect();
+      below.push({x: f.x, y: f.y, width: f.width, height: f.height});
+    }
+  }
+
+  // One window's cover and shader (see _startRaiseEffect()).
+  _startRaiseCover(metaWindow, coverers, above, effect, profile, duration, testMode, exclude) {
+    const actor = metaWindow.get_compositor_private();
+
+    const {group: coverGroup, target: cover, ring} = RaiseEffect.createCover(metaWindow, coverers, above, exclude);
+    const shader = effect.shaderFactory.getShader();
+    cover.add_effect_with_name('burn-my-windows-raise-effect', shader);
+    actor._bmwRaiseShader = shader;
+    this._raiseEffects.add(shader);
+
+    // The cover is a snapshot of where the windows were. If the raised window moves or
+    // resizes (e.g. the click that raised it starts a drag), just stop.
+    const windowIds = [
+      metaWindow.connect('position-changed', () => shader.endAnimation()),
+      metaWindow.connect('size-changed', () => shader.endAnimation()),
+      metaWindow.connect('unmanaged', () => shader.endAnimation())
+    ];
+
+    // The ring around the frame (the raised window's shadow and border) has no effect on it;
+    // it fades out so they fade in, between RAISE_RING_FADE_START and RAISE_RING_FADE_END of
+    // the animation, eased. Not from the start: when the raised window was covered entirely
+    // (e.g. by a modal dialog's parent), the effect still shows the covering window over the
+    // whole frame for a while, and an early shadow looks like a dimmed copy of that window
+    // around it.
+    const RAISE_RING_FADE_START = 0.3;
+    const RAISE_RING_FADE_END   = 0.9;
+    const fadeRing = (progress) => {
+      const t = Math.max(0, Math.min(1, (progress - RAISE_RING_FADE_START) /
+                                        (RAISE_RING_FADE_END - RAISE_RING_FADE_START)));
+      ring.opacity = Math.round(255 * (1 - t * t * (3 - 2 * t)));
+    };
+    const ringId = shader._timeline.connect('new-frame', (t) => {
+      fadeRing(testMode ? 0.5 : t.get_progress());
+    });
+
+    const endID = shader.connect('end-animation', () => {
+      shader.disconnect(endID);
+      shader._timeline.disconnect(ringId);
+      for (const id of windowIds) {
+        try { metaWindow.disconnect(id); } catch (e) { /* window already gone */ }
+      }
+      this._raiseEffects.delete(shader);
+      if (actor._bmwRaiseShader === shader) actor._bmwRaiseShader = null;
+      cover.remove_effect(shader);
+      shader.returnToFactory();
+      coverGroup.destroy();  // also destroys the cover
+    });
+
+    // forOpening = false: the effect makes the cover (what used to be on top) disappear.
+    shader.beginAnimation(profile, false, testMode, duration, cover);
+    // Tells shaders that care (e.g. Incinerate) to draw only where the cover has content.
+    shader.set_uniform_float(shader._uRaise, 1, [1]);
   }
 
   // An empty, clipped actor covering `rect` (stage coordinates).
@@ -1017,194 +1312,24 @@ class BurnMyWindows {
                               clip_to_allocation: true, reactive: false});
   }
 
-  // Adds a clone of any actor to `layer`, whose top-left is at ox, oy on the stage.
-  _addClone(layer, source, ox, oy) {
-    const [sx, sy] = source.get_transformed_position();
-    layer.add_child(new Clutter.Clone({source: source, reactive: false,
-                                       x: Math.round(sx - ox), y: Math.round(sy - oy)}));
-  }
-
-  // Adds a clone of window actor `wa` to `layer`, whose top-left is at ox, oy on the stage.
-  // - Placed by wa.x / y: at map time the transformed position can still report the old
-  //   allocation.
-  // - A clone ignores its source's opacity, so the clone follows the window's opacity
-  //   (0 while the window is hidden by an effect of its own, Cinnamon's opacity settings).
-  // - If the window is being animated by an effect that draws elsewhere (canvas, layers),
-  //   its effect actor is cloned on top, so that animation shows through ours. Once it ends
-  //   that clone goes blank and the window clone (opacity back to 255) takes over.
-  _addWindowClone(layer, wa, ox, oy) {
-    const clone = new Clutter.Clone({source: wa, reactive: false,
-                                     x: Math.round(wa.x - ox), y: Math.round(wa.y - oy)});
-    wa.bind_property('opacity', clone, 'opacity', GObject.BindingFlags.SYNC_CREATE);
-    layer.add_child(clone);
-    if (wa._bmwEffectContainer) {
-      this._addClone(layer, wa._bmwEffectContainer, ox, oy);
-    }
-  }
-
-  // Keeps track of which windows are above and below `actor` while its clone layers are
-  // built, and says when that changed (takeDirty(), checked once a frame).
-  // - Normally that's simply the order of the window actors.
-  // - But while a window disappears (close / minimize, `disappearing`), Muffin keeps its
-  //   actor where it was until the animation ends, even above windows raised meanwhile
-  //   (meta_compositor_sync_stack() keeps hidden / unmanaging windows with an effect in
-  //   progress in their old place). So a window raised during the animation is treated as
-  //   above it, together with everything stacked above that window. Two ways to notice:
-  //   * its 'raised' signal (clicking an unfocused window, Alt-Tab, ...);
-  //   * a mouse button pressed over it. Clicking the window that already has the focus
-  //     doesn't raise it: on X11 Muffin only grabs the buttons of unfocused windows, so it
-  //     never sees that click. The pointer state is polled once a frame instead.
-  //   Anything before the animation's first frame (stack.frame()) doesn't count: that's
-  //   Muffin passing the focus on because this window is going away, and putting that
-  //   window on top would hide most of the animation. Focus changes alone don't count
-  //   either (focus-follows-mouse doesn't raise), nor does the desktop.
-  // windowsNear(rect, above): the visible windows below (above = false) or above
-  // (above = true) `actor` that intersect `rect`. Windows just outside `rect` count too, as
-  // their shadow may reach into it (the layers are opaque, so the real one is hidden there).
-  _createStackTracker(actor, disappearing) {
-    const self     = actor.get_meta_window();
-    const raised   = new Set();   // MetaWindows raised during the animation
-    const ids      = new Map();   // window actor -> small number, for the stacking signature
-    const handlers = [];          // [object, handler id]
-    let   watching = false;
-    let   lastSig  = null;
-
-    const BUTTONS = Clutter.ModifierType.BUTTON1_MASK | Clutter.ModifierType.BUTTON2_MASK |
-                    Clutter.ModifierType.BUTTON3_MASK;
-    const buttonsDown = () => {
-      const [x, y, mods] = global.get_pointer();
-      return [x, y, (mods & BUTTONS) !== 0];
-    };
-    // A button already held when the animation starts (e.g. the click that closed the
-    // window) is not a new click.
-    let buttonWasDown = buttonsDown()[2];
-
-    // The window a click at x, y went to, or null (a panel, a menu, the desktop, ...).
-    const clickedWindow = (x, y) => {
-      // Chrome (panels, menus) is above the windows and reactive; don't look further.
-      const picked = global.stage.get_actor_at_pos(Clutter.PickMode.REACTIVE, x, y);
-      if (picked && picked !== global.stage && !global.window_group.contains(picked)) {
-        return null;
-      }
-      const actors = global.get_window_actors().filter(a => a !== actor);
-      for (let i = actors.length - 1; i >= 0; i--) {
-        const wa = actors[i];
-        if (!wa.visible) continue;
-        const mw = wa.get_meta_window();
-        if (!mw || mw.minimized) continue;
-        const f = mw.get_frame_rect();
-        if (x >= f.x && x < f.x + f.width && y >= f.y && y < f.y + f.height) {
-          return mw.get_window_type() === Meta.WindowType.DESKTOP ? null : mw;
-        }
-      }
-      return null;
-    };
-
-    if (disappearing) {
-      for (const wa of global.get_window_actors()) {
-        const mw = wa.get_meta_window();
-        if (!mw || mw === self) continue;
-        try {
-          handlers.push([mw, mw.connect('raised', () => {
-            if (watching && mw.get_window_type() !== Meta.WindowType.DESKTOP) raised.add(mw);
-          })]);
-        } catch (e) {
-          // No 'raised' signal in this Muffin: windows raised meanwhile stay below.
-        }
-      }
-    }
-
-    const orderOf = () => {
-      const actors = global.get_window_actors();
-      const idx    = actors.indexOf(actor);
-      const others = actors.filter(a => a !== actor);
-      const onTop  = new Set(idx >= 0 ? actors.slice(idx + 1) : []);
-      const first  = others.findIndex(a => {
-        try {
-          return raised.has(a.get_meta_window());
-        } catch (e) {
-          return false;
-        }
-      });
-      if (first >= 0) others.slice(first).forEach(a => onTop.add(a));
-      return {others, onTop};
-    };
-
-    // Which windows are above / below, as a string, to notice changes.
-    const signature = () => {
-      const {others, onTop} = orderOf();
-      const id = (a) => {
-        if (!ids.has(a)) ids.set(a, ids.size + 1);
-        return ids.get(a);
-      };
-      return others.map(a => (onTop.has(a) ? '+' : '-') + id(a)).join(',');
-    };
-    // The layers are built right after this with the same order.
-    lastSig = signature();
-
-    return {
-      frame: () => {
-        watching = true;
-        if (!disappearing) return;
-        const [x, y, down] = buttonsDown();
-        if (down && !buttonWasDown) {
-          const mw = clickedWindow(x, y);
-          if (mw && mw !== self) raised.add(mw);
-        }
-        buttonWasDown = down;
-      },
-
-      // True when the windows above / below changed since the last call (or since the
-      // tracker was created). Checked every frame rather than on 'restacked', which Muffin
-      // emits over and over while a hidden window is being animated.
-      takeDirty: () => {
-        const sig     = signature();
-        const changed = sig !== lastSig;
-        lastSig = sig;
-        return changed;
-      },
-
-      windowsNear: (rect, above) => {
-        const {others, onTop} = orderOf();
-        const M = CANVAS_BEHIND_MARGIN;
-        return others.filter(wa => onTop.has(wa) === above && wa.visible &&
-          wa.x - M < rect.x + rect.width  && wa.x + wa.width  + M > rect.x &&
-          wa.y - M < rect.y + rect.height && wa.y + wa.height + M > rect.y);
-      },
-
-      destroy: () => {
-        for (const [obj, id] of handlers) {
-          try {
-            obj.disconnect(id);
-          } catch (e) {
-            // The window is gone already.
-          }
-        }
-        handlers.length = 0;
-        ids.clear();
-        raised.clear();
-      }
-    };
-  }
-
   // Clones of everything behind `actor` (wallpaper, desktop icons, desklets, lower windows)
   // covering `rect`. Opaque.
   _createBehindLayer(actor, rect, stack) {
     const layer = this._createCloneLayer(rect);
 
-    if (global.background_actor) this._addClone(layer, global.background_actor, rect.x, rect.y);
+    for (const bg of Layers.getBackgroundActors()) Layers.addClone(layer, bg, rect.x, rect.y);
 
     const desklets = (Main.deskletContainer && Main.deskletContainer.actor) || null;
     let deskletsAdded = false;
     for (const wa of stack.windowsNear(rect, false)) {
       // Desklets sit above the desktop window(s) and below normal windows.
       if (!deskletsAdded && desklets && wa.get_meta_window().get_window_type() !== Meta.WindowType.DESKTOP) {
-        this._addClone(layer, desklets, rect.x, rect.y);
+        Layers.addClone(layer, desklets, rect.x, rect.y);
         deskletsAdded = true;
       }
-      this._addWindowClone(layer, wa, rect.x, rect.y);
+      Layers.addWindowClone(layer, wa, rect.x, rect.y);
     }
-    if (!deskletsAdded && desklets) this._addClone(layer, desklets, rect.x, rect.y);
+    if (!deskletsAdded && desklets) Layers.addClone(layer, desklets, rect.x, rect.y);
 
     return layer;
   }
@@ -1214,42 +1339,184 @@ class BurnMyWindows {
   _createAboveLayer(actor, rect, stack) {
     const layer = this._createCloneLayer(rect);
     for (const wa of stack.windowsNear(rect, true)) {
-      this._addWindowClone(layer, wa, rect.x, rect.y);
+      Layers.addWindowClone(layer, wa, rect.x, rect.y);
     }
     return layer;
   }
 
-  _onFocusChanged() {
-     this.prev_focused_window = this.last_focused_window;
-     this.last_focused_window = global.display.get_focus_window();
+  // ---- Window picker ----
+  // Started from the "Pick a window to add..." button in the settings dialog. The user clicks the
+  // window they mean and its application is added to the application specific rules list. While
+  // picking, a transparent modal overlay covers the screen: it highlights the window under the
+  // pointer and names it, a click picks it, and Esc, a right-click or a 30 second timeout cancels.
+  pickWindow() {
+    if (this._picker)
+      return;
+    let overlay = new St.Widget({ reactive: true, can_focus: true, x: 0, y: 0,
+                                  width: global.screen_width, height: global.screen_height });
+    let highlight = new St.Widget({ visible: false,
+       style: "border: 2px solid rgba(53,132,228,1); background-color: rgba(53,132,228,0.2); border-radius: 6px;" });
+    let highlightLabel = new St.Label({ x: 10, y: 10,
+       style: "background-color: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold;" });
+    highlight.add_child(highlightLabel);
+    overlay.add_child(highlight);
+    let hint = new St.Label({ text: _("Click a window to add its application to the application specific rules.  Esc or right-click to cancel."),
+       style: "background-color: rgba(0,0,0,0.85); color: white; padding: 10px 18px; border-radius: 8px; font-size: 11pt;" });
+    overlay.add_child(hint);
+    Main.uiGroup.add_child(overlay);
+    Main.uiGroup.set_child_above_sibling(overlay, null);
+    let monitor = Main.layoutManager.primaryMonitor;
+    let [, hintWidth] = hint.get_preferred_width(-1);
+    hint.set_position(monitor.x + Math.floor((monitor.width - hintWidth) / 2), monitor.y + 60);
+
+    if (!Main.pushModal(overlay)) {
+      overlay.destroy();
+      this._notify(_("Couldn't start the window picker. Close any open menus and try again."));
+      return;
+    }
+    this._picker = { overlay: overlay, highlight: highlight, label: highlightLabel, window: null, timeoutId: 0 };
+    overlay.grab_key_focus();
+    if (Cinnamon.Cursor && Cinnamon.Cursor.CROSSHAIR !== undefined)
+      global.set_cursor(Cinnamon.Cursor.CROSSHAIR);
+
+    overlay.connect("motion-event", (actor, event) => {
+      let [x, y] = event.get_coords();
+      this._pickerHover(x, y);
+      return Clutter.EVENT_STOP;
+    });
+    overlay.connect("button-press-event", () => Clutter.EVENT_STOP);
+    overlay.connect("scroll-event", () => Clutter.EVENT_STOP);
+    // Act on the release, so it doesn't reach the window underneath once the grab is gone
+    overlay.connect("button-release-event", (actor, event) => {
+      if (event.get_button() === 1) {
+        let [x, y] = event.get_coords();
+        let metaWindow = this._windowAtPoint(x, y);
+        if (metaWindow) {   // a click on the desktop or a panel just keeps picking
+          this._endPick();
+          this._addWindowToAppRules(metaWindow);
+        }
+      } else {
+        this._endPick();
+      }
+      return Clutter.EVENT_STOP;
+    });
+    overlay.connect("key-press-event", (actor, event) => {
+      if (event.get_key_symbol() === Clutter.KEY_Escape)
+        this._endPick();
+      return Clutter.EVENT_STOP;
+    });
+    // Never leave the desktop grabbed if something goes wrong
+    this._picker.timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 30, () => {
+      if (this._picker)
+        this._picker.timeoutId = 0;
+      this._endPick();
+      return GLib.SOURCE_REMOVE;
+    });
+
+    let [px, py] = global.get_pointer();
+    this._pickerHover(px, py);
   }
 
-  // When the button is pressed we will determine what the last focused was and add
-  // and entry in the app specific list for that windows app
-  on_config_button_pressed() {
-    if (this.prev_focused_window) {
-      let app = this._windowTracker.get_window_app(this.prev_focused_window);
-      if (!app) {
-        app = this._windowTracker.get_app_from_pid(this.prev_focused_window.get_pid());
-      }
-      if (app && !app.is_window_backed()) {
-         let appRules = this._settings.getValue("app-rules");
-         appRules.push( {enabled:false, open:0, close:0, application:app.get_id()} );
-         this._settings.setValue("app-rules", appRules);
-      } else if (this.prev_focused_window.get_wm_class()) {
-         let appRules = this._settings.getValue("app-rules");
-         appRules.push( {enabled:false, open:0, close:0, application:this.prev_focused_window.get_wm_class()} );
-         this._settings.setValue("app-rules", appRules);
-      } else {
-        let source = new MessageTray.Source(this.meta.name);
-        let notification = new MessageTray.Notification(source, _("Error") + ": " + this.meta.name,
-          _("Unable to determine the application or the WM_CLASS of the previously focused window, therefore application specific effects can not be applied to that window"),
-          {icon: new St.Icon({icon_name: "cinnamon-burn-my-window", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
-          );
-        Main.messageTray.add(source);
-        source.notify(notification);
-      }
+  _endPick() {
+    let picker = this._picker;
+    if (!picker)
+      return;
+    this._picker = null;
+    if (picker.timeoutId)
+      GLib.source_remove(picker.timeoutId);
+    global.unset_cursor();
+    Main.popModal(picker.overlay);
+    picker.overlay.destroy();
+  }
+
+  // Highlight the window under the pointer and show the name it would be added as
+  _pickerHover(x, y) {
+    let picker = this._picker;
+    if (!picker)
+      return;
+    let metaWindow = this._windowAtPoint(x, y);
+    if (metaWindow === picker.window)
+      return;
+    picker.window = metaWindow;
+    if (!metaWindow) {
+      picker.highlight.hide();
+      return;
     }
+    let rect = metaWindow.get_frame_rect();
+    picker.highlight.set_position(rect.x, rect.y);
+    picker.highlight.set_size(rect.width, rect.height);
+    picker.label.text = this._getWindowRuleName(metaWindow) || _("(unknown application)");
+    picker.highlight.show();
+  }
+
+  // The topmost visible window on the current workspace whose frame contains (x, y), or null
+  _windowAtPoint(x, y) {
+    let workspace = global.workspace_manager.get_active_workspace();
+    let types = [Meta.WindowType.NORMAL, Meta.WindowType.DIALOG, Meta.WindowType.MODAL_DIALOG, Meta.WindowType.UTILITY];
+    let windows = global.display.list_windows(0).filter(w =>
+       types.includes(w.get_window_type()) && !w.minimized && w.showing_on_its_workspace() &&
+       (w.is_on_all_workspaces() || w.get_workspace() === workspace));
+    windows = global.display.sort_windows_by_stacking(windows);   // bottom to top
+    for (let i = windows.length - 1; i >= 0; i--) {
+      let rect = windows[i].get_frame_rect();
+      if (x >= rect.x && x < rect.x + rect.width && y >= rect.y && y < rect.y + rect.height)
+        return windows[i];
+    }
+    return null;
+  }
+
+  // The application id of a window (null when Cinnamon only knows it as a bare window)
+  _getWindowAppId(metaWindow) {
+    let app = this._windowTracker.get_window_app(metaWindow);
+    if (!app) {
+      app = this._windowTracker.get_app_from_pid(metaWindow.get_pid());
+    }
+    return (app && !app.is_window_backed()) ? app.get_id() : null;
+  }
+
+  // The name a picked window is added to the rules as: its application id, or failing that its WM_CLASS
+  // (the same two names getAppRule() matches against)
+  _getWindowRuleName(metaWindow) {
+    return this._getWindowAppId(metaWindow) || metaWindow.get_wm_class() || null;
+  }
+
+  // Add a (disabled) application specific rule for the window's application, so the user can
+  // choose its effects and then enable it. Nothing is added if the application already has a rule.
+  _addWindowToAppRules(metaWindow) {
+    let name = this._getWindowRuleName(metaWindow);
+    if (!name) {
+      this._notify(_("Unable to determine the application or the WM_CLASS of that window, therefore application specific effects can not be applied to it"));
+      return;
+    }
+    let appID = this._getWindowAppId(metaWindow);
+    let wmClass = metaWindow.get_wm_class();
+    let appRules = (this._settings.getValue("app-rules") || []).map(rule => Object.assign({}, rule));
+    let existing = appRules.find(rule => rule.application && ((appID && rule.application == appID) || (wmClass && rule.application == wmClass)));
+    if (existing) {
+      this._notify(_("There is already an entry for") + " \"" + existing.application + "\"" +
+                   (existing.enabled ? "" : " (" + _("not enabled") + ")") + ".");
+      return;
+    }
+    let entry = {};
+    let data = this._settings.settingsData ? this._settings.settingsData["app-rules"] : null;
+    for (let column of (data && data.columns) || []) {
+      if (column.default !== undefined)
+        entry[column.id] = column.default;
+    }
+    entry.enabled = false;
+    entry.application = name;
+    appRules.push(entry);
+    this._settings.setValue("app-rules", appRules);
+    this._notify(_("Added an entry for") + " \"" + name + "\". " + _("Choose its effects, then enable it."));
+  }
+
+  _notify(text) {
+    let source = new MessageTray.Source(this.meta.name);
+    let notification = new MessageTray.Notification(source, this.meta.name, text,
+      {icon: new St.Icon({icon_name: "cinnamon-burn-my-window", icon_type: St.IconType.FULLCOLOR, icon_size: source.ICON_SIZE })}
+      );
+    Main.messageTray.add(source);
+    source.notify(notification);
   }
 
   on_test_button_pressed() {
@@ -1278,8 +1545,9 @@ function init(metadata) {
 }
 
 const Callbacks = {
-  on_config_button_pressed: function() {
-     extension.on_config_button_pressed();
+  on_pick_application_window: function() {
+     if (extension)
+        extension.pickWindow();
   },
   on_test_button_pressed: function() {
      extension.on_test_button_pressed();
