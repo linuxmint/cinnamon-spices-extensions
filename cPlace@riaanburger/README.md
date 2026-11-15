@@ -1,4 +1,3 @@
-
 # cPlace
 
 cPlace arranges the windows on a Cinnamon desktop. `Super+Z` opens a chooser
@@ -92,8 +91,9 @@ desktop's font and scale.
 
 ## Requirements and Limitations
 
-- Cinnamon 5.4 to 6.6, which is Linux Mint 21 to 22.3, in an X11 session or in
-  Cinnamon's Wayland session, which Cinnamon itself still calls experimental.
+- Cinnamon 5.4 to 6.8, which is Linux Mint 21 to 22.3 and the Mint now being
+  made, in an X11 session or in Cinnamon's Wayland session, which Cinnamon
+  itself still calls experimental.
 - More than one monitor. cPlace arranges on the monitor the focused window
   stands on, and the chooser opens there. Windows on other monitors are listed
   apart, under their monitor's name, and are left where they are unless you tick
