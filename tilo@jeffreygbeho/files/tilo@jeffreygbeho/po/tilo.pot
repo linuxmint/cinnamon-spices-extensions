@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the tilo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: tilo 0.6.1-1\n"
+"Report-Msgid-Bugs-To: https://github.com/JeffreyGbeho/tilo/issues\n"
+"POT-Creation-Date: 2026-09-08 20:02-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/tilo@jeffreygbeho/extension.js:311
+msgid "Group"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/extension.js:356
+#: src/tilo@jeffreygbeho/lib/layouts.js:58
+msgid "Custom"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/groupSwitcher.js:27
+msgid "Click to restore"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/groupSwitcher.js:27
+msgid "Right click to forget"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/groupSwitcher.js:27
+msgid "Esc to close"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/groupSwitcher.js:140
+msgid "Save what is on screen"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/layouts.js:31
+msgid "Two halves"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/layouts.js:34
+msgid "Three columns"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/layouts.js:37
+msgid "Main plus two"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/layouts.js:40
+msgid "Four quarters"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/layouts.js:43
+msgid "Grid 4 x 3"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/zoneEditor.js:24
+msgid "Click to split side by side"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/zoneEditor.js:24
+msgid "Ctrl+click to stack"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/zoneEditor.js:25
+msgid "Right click to remove"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/zoneEditor.js:25
+msgid "Enter to save"
+msgstr ""
+
+#: src/tilo@jeffreygbeho/lib/zoneEditor.js:25
+msgid "Esc to cancel"
+msgstr ""
+
+#: settings-schema.json:headDrag
+msgid "Drag to the top of the screen"
+msgstr ""
+
+#: settings-schema.json:drag-to-top
+msgid "Show the layout bar when dragging a window to the top"
+msgstr ""
+
+#: settings-schema.json:drag-to-top
+msgid "Drag a window toward the middle of the top edge to reveal the layouts, then drop it on a zone."
+msgstr ""
+
+#: settings-schema.json:reveal-threshold
+msgid "Distance from the top edge that reveals it"
+msgstr ""
+
+#: settings-schema.json:reveal-threshold
+msgid "The hint appears at twice this distance and expands into the full bar at this one."
+msgstr ""
+
+#: settings-schema.json:reveal-threshold
+msgid "pixels"
+msgstr ""
+
+#: settings-schema.json:headSpacing
+msgid "Spacing"
+msgstr ""
+
+#: settings-schema.json:inner-gap
+msgid "Gap between windows"
+msgstr ""
+
+#: settings-schema.json:inner-gap
+msgid "Space left between two neighbouring windows."
+msgstr ""
+
+#: settings-schema.json:outer-gap
+msgid "Margin around the screen"
+msgstr ""
+
+#: settings-schema.json:outer-gap
+msgid "Space left between the windows and the edges of the work area."
+msgstr ""
+
+#: settings-schema.json:headKeys
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: settings-schema.json:kb-left
+msgid "Left half"
+msgstr ""
+
+#: settings-schema.json:kb-right
+msgid "Right half"
+msgstr ""
+
+#: settings-schema.json:kb-top
+msgid "Top half"
+msgstr ""
+
+#: settings-schema.json:kb-bottom
+msgid "Bottom half"
+msgstr ""
+
+#: settings-schema.json:kb-fill
+msgid "Fill the work area"
+msgstr ""
+
+#: settings-schema.json:kb-center
+msgid "Center the window"
+msgstr ""
+
+#: settings-schema.json:kb-picker
+msgid "Open the layout picker"
+msgstr ""
+
+#: settings-schema.json:kb-editor
+msgid "Open the zone editor"
+msgstr ""
+
+#: settings-schema.json:kb-groups
+msgid "Open saved arrangements"
+msgstr ""
+
+#: settings-schema.json:headCustom
+msgid "Custom layouts"
+msgstr ""
+
+#: settings-schema.json:clear-custom
+msgid "Delete all custom layouts"
+msgstr ""
+
+#: settings-schema.json:headGroups
+msgid "Saved arrangements"
+msgstr ""
+
+#: settings-schema.json:clear-groups
+msgid "Delete all saved arrangements"
+msgstr ""
+
+#: settings-schema.json:headAdvanced
+msgid "Advanced"
+msgstr ""
+
+#: settings-schema.json:debug
+msgid "Verbose logging"
+msgstr ""
+
+#: settings-schema.json:debug
+msgid "Writes placement details to the Cinnamon log (~/.xsession-errors). Enable only for troubleshooting."
+msgstr ""
+
