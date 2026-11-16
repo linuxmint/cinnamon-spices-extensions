@@ -197,8 +197,8 @@
   "centered": {
     "type": "switch",
     "default": false,
-    "description": "Always center the arrangement",
-    "tooltip": "When off, the arrangement is moved toward where the real windows are, as far as the screen allows.",
+    "description": "Center the arrangement",
+    "tooltip": "Moves the finished arrangement as a whole to the middle of the screen.",
     "dependency": "algorithm!=grid"
   },
   "fill": {
@@ -356,8 +356,8 @@
   "expo-centered": {
     "type": "switch",
     "default": false,
-    "description": "Always center the arrangement",
-    "tooltip": "When off, the arrangement is moved toward where the real windows are, as far as the preview allows.",
+    "description": "Center the arrangement",
+    "tooltip": "Moves the finished arrangement as a whole to the middle of the preview.",
     "dependency": "expo-algorithm!=grid"
   },
   "expo-fill": {

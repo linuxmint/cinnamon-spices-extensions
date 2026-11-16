@@ -11,11 +11,10 @@
      Cinnamon extension: on 6.8 and later through
        `imports.ui.extension.getCurrentExtension().imports.spreadLayout.SpreadLayout`
        (GJS's native importer exposes the top-level `var SpreadLayout`); on 6.0-6.6
-       `require('./spreadLayout')` (Cinnamon's loader provides require() and
-       module.exports).
+       through Cinnamon's CommonJS-style loader (the export at the end of this file).
      Browser: <script src=".../spreadLayout.js">; defines the global `SpreadLayout`.
      Web Worker: the lab rebuilds the engine from `createSpreadLayout.toString()`.
-     Node (tests): `require("./spreadLayout.js")`.
+     Node (tests): loaded as a CommonJS module, through the same export.
 
    Public API
      SpreadLayout.DEFAULTS
@@ -102,17 +101,22 @@ const DEFAULTS = {
     extraGapY: 0,      // between thumbnails one above the other (for the caller's decorations)
     fidelity: 0.8,       // relative sizes: 1 = exact, 0 = all thumbnails same area, 0.5 = area ratios square-rooted
     maxScale: 0.9,     // largest thumbnail scale; 1 = never bigger than the real window
-    centered: false,   // true: always center the arrangement; false: move it toward the real windows
+    centered: false,   // true: as a last step, move the finished arrangement as a whole to the center
     fill: false,       // afterwards, grow thumbnails into free space (makes sizes uneven)
     maxGrowth: 1.5,    // fill: maximum growth factor per thumbnail
   },
-  // What a good layout is. Used by the optimizer's search, by the polish step and by score().
-  // Only the balance between the weights matters.
+  // What a good layout is: the weights of the score's cost terms (lower score is better). Used
+  // by the optimizer's search and safeguard, the polish step, and the score compute() and
+  // score() report. For comparing layouts only their balance matters; the optimizer's descent
+  // also weighs them against its own overlap weight (rising from 3 to 300, GD_MU_*), so
+  // scaling all of them changes its results. The comments give each weight as the
+  // settings window presents it, as a reward for a quality (wSizes, which only the lab offers,
+  // in the same style); in the score, its term is the cost of falling short of it.
   scoring: {
-    wSize: 3,          // reward for bigger thumbnails
-    wSizes: 5,         // penalty for uneven scaling (sizes no longer match the real windows)
-    wPlace: 2,         // penalty for thumbnails far from their real window
-    wRelations: 1,     // penalty for windows changing how they sit relative to each other
+    wSize: 3,          // "Thumbnail size": reward for bigger thumbnails
+    wSizes: 5,         // "Keep sizes" (lab only): reward for relative sizes as size fidelity sets them
+    wPlace: 2,         // "Stay in place": reward for thumbnails staying near their real window
+    wRelations: 1,     // "Keep relations": reward for windows keeping how they sit relative to each other
     relationsMethod: "direction", // relations measured as "order" (left/right, above/below) or "direction" (angles)
     neighborFocus: 0.5, // direction mode only: 0 = all pairs count equally, 1 = nearby pairs matter most
   },
@@ -175,7 +179,9 @@ const INTERNAL = {
   GD_SHAKE: 0.3,                                     // starts whose kind is taken: shaken by this (x avg size)
   START_SEED_A: 7919, START_SEED_B: 104729,          // per-start random seeds: seed * A + start * B
   // Scoring
-  W_OVERLAP: 40,                                     // overlap penalty (only matters inside the optimizer's search)
+  W_OVERLAP: 40,                                     // overlap part of the score: 0 unless thumbnails still overlap
+                                                     // (polish, safeguard, the search's final pick when weak starts
+                                                     // aren't dropped); the descent itself uses GD_MU_*
   W_REL: 4, W_DISTORT: 2,                            // internal scale of the relations and size-distortion terms
   NEAR: 0.1,                                         // direction mode: "nearby" distance, fraction of the screen diagonal
   // Polish
@@ -636,24 +642,19 @@ function layoutOptimizer(ws, S, A, info, shared) {
     return -(ls - tauC * sp) * S.wSize;
   };
 
-  // Arrangement placed as the pipeline will place it: scaled by s about the
-  // center of the box (x1, y1, x2, y2), then moved toward the real windows as
-  // far as the work area allows (or centered). Thumbnail i lands at
-  // px + (X[i] - bcx) * s, which is also base + (X[i] - ref) * s with ref =
+  // Arrangement placed as the pipeline will place it (before any final
+  // centering): scaled by s about the center of the box (x1, y1, x2, y2), then
+  // moved toward the real windows as far as the work area allows. Thumbnail i
+  // lands at px + (X[i] - bcx) * s, which is also base + (X[i] - ref) * s with ref =
   // mean(X) while the move is free (mode 0), the box's left side + pad.x / 2
-  // when held at the work area's left (1), its right side - pad.x / 2 when held
-  // at the right (2), or its center when centered (3). Same for y.
+  // when held at the work area's left (1), or its right side - pad.x / 2 when
+  // held at the right (2). Same for y.
   const place = {
     px: 0, py: 0, bcx: 0, bcy: 0, modeX: 0, modeY: 0, refX: 0, refY: 0
   };
   const placeAt = (X, Y, x1, y1, x2, y2, s) => {
     const bcx = (x1 + x2) / 2, bcy = (y1 + y2) / 2;
     place.bcx = bcx; place.bcy = bcy;
-    if (S.centered) {
-      place.px = A.cx; place.py = A.cy; place.modeX = place.modeY = 3;
-      place.refX = bcx; place.refY = bcy;
-      return;
-    }
     let mX = 0, mY = 0;
     for (let i = 0; i < n; i++) { mX += X[i]; mY += Y[i]; }
     mX /= n; mY /= n;
@@ -755,11 +756,11 @@ function layoutOptimizer(ws, S, A, info, shared) {
     // ... and through ref
     const mxm = place.modeX, mym = place.modeY;
     if (mxm === 0) for (let i = 0; i < n; i++) gX[i] -= kd * ux / n;
-    if (mxm === 1 || mxm === 3) gX[i1] -= kd * ux * (mxm === 3 ? 0.5 : 1);
-    if (mxm === 2 || mxm === 3) gX[i2] -= kd * ux * (mxm === 3 ? 0.5 : 1);
+    if (mxm === 1) gX[i1] -= kd * ux;
+    if (mxm === 2) gX[i2] -= kd * ux;
     if (mym === 0) for (let i = 0; i < n; i++) gY[i] -= kd * uy / n;
-    if (mym === 1 || mym === 3) gY[j1] -= kd * uy * (mym === 3 ? 0.5 : 1);
-    if (mym === 2 || mym === 3) gY[j2] -= kd * uy * (mym === 3 ? 0.5 : 1);
+    if (mym === 1) gY[j1] -= kd * uy;
+    if (mym === 2) gY[j2] -= kd * uy;
     // size, and movement through the scale: d(score) / d(bw), d(score) / d(bh)
     // (d(ln s) / d(ln bw) = -wa, d(ln s) / d(ln bh) = -(1 - wa))
     const f = kDisp * d + sizeCostSmooth(-smax), dlns = -sizeSlope - kd * dS;
@@ -1122,7 +1123,7 @@ function optimizerSafeguard(T, ws, S, A, info, shared) {
         {}
       );
     }
-    if (!S.centered) C = placeNearReal(C, ws, A);
+    C = placeNearReal(C, ws, A);
     if (S.polish || (k === "push" && S.pushStart.polish)) {
       // cannot win, polished or not
       if (polishLowerBound(C, ws, S, A) >= bestScore + 1e-9) continue;
@@ -1286,14 +1287,15 @@ function compute(windows, monitor, algorithm, S) {
   const A = workArea({ x: 0, y: 0, w: monitor.w, h: monitor.h }, S.margin);
   const shared = {}; // what the optimizer hands on to its safeguard
   let T = algo.run(ws, S, A, info, shared);
-  if (algo.uniformScale && !S.centered) T = placeNearReal(T, ws, A);
+  if (algo.uniformScale) T = placeNearReal(T, ws, A);
   if (algo.polishable && S.polish) {
     const r = polishLayout(T, ws, S, A);
     T = r.T; info.polishMoves = r.moved; info.polishGain = r.gain;
   }
   if (algorithm === "optimizer") T = optimizerSafeguard(T, ws, S, A, info, shared);
   if (algo.uniformScale && S.fill) T = fillGaps(T, S, A);
-  // Scored before centering: the user asked for that move, so it costs nothing.
+  // Centering is only a final move of the finished layout, like a change of
+  // viewpoint: nothing before it, the score included, depends on it.
   const sc = scoreLayout(T, ws, S, A);
   if (algo.uniformScale && S.centered) T = centerLayout(T, A);
   return {
@@ -1352,4 +1354,5 @@ return Object.freeze({
 });
 }
 var SpreadLayout = createSpreadLayout();
-if (typeof module !== "undefined" && module.exports) module.exports = SpreadLayout; // Cinnamon require() and Node
+// CommonJS-style export, only for Cinnamon 6.0-6.6 and Node (6.8 uses the `var` above)
+if (typeof module !== "undefined" && module.exports) module.exports = SpreadLayout;

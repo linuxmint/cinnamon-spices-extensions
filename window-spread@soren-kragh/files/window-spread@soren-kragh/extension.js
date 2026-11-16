@@ -51,9 +51,10 @@ const GLib = imports.gi.GLib;
 
 // Load the engine (spreadLayout.js in this folder).
 //   Cinnamon 6.8 and later: extensions are loaded by GJS's native importer, and local files
-//   are reached through Extension.getCurrentExtension().imports (require() still works there
-//   but is deprecated and logs a warning).
-//   Cinnamon 6.0-6.6: getCurrentExtension() doesn't exist; Cinnamon's loader provides require().
+//   are reached through Extension.getCurrentExtension().imports (the CommonJS-style loading
+//   below still works there but is deprecated and logs a warning).
+//   Cinnamon 6.0-6.6: getCurrentExtension() doesn't exist; Cinnamon's loader offers only the
+//   CommonJS style.
 function loadEngine() {
   const ExtensionModule = imports.ui.extension;
   if (ExtensionModule && typeof ExtensionModule.getCurrentExtension === "function") {
