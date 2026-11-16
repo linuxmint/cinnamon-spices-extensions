@@ -1,0 +1,23 @@
+# Snap Groups (snap-groups@SantiagoMerlo1337) translation.
+# This file is distributed under the same license as the extension.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: snap-groups@SantiagoMerlo1337 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-11-05 12:00-0300\n"
+"PO-Revision-Date: 2026-11-05 12:00-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Snap Groups"
+msgstr "Grupos de acoplamiento"
+
+#. metadata.json->description
+msgid "Adds an Alt+Tab entry for each group of snapped (tiled) windows, like Windows 11 Snap Groups. Pick the group to restore all its windows, or a single window to restore only that one."
+msgstr "Agrega una entrada en Alt+Tab por cada grupo de ventanas acopladas (en mosaico), como los grupos de acoplamiento de Windows 11. Elige el grupo para restaurar todas sus ventanas, o una sola ventana para restaurar solo esa."

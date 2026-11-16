@@ -1,0 +1,12 @@
+{
+    "uuid": "snap-groups@SantiagoMerlo1337",
+    "name": "Snap Groups",
+    "description": "Adds an Alt+Tab entry for each group of snapped (tiled) windows, like Windows 11 Snap Groups. Pick the group to restore all its windows, or a single window to restore only that one.",
+    "version": "1.0.0",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6"
+    ]
+}
