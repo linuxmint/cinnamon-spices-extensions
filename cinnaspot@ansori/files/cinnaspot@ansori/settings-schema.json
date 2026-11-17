@@ -227,7 +227,7 @@
    },
    "terminal_app": {
       "type": "entry",
-      "default": "x-terminal-emulator -e",
+      "default": "gnome-terminal --",
       "description": "Terminal execution command"
    }
 }
