@@ -39,7 +39,7 @@ A fast, feature-rich, Spotlight-inspired app launcher and productivity tool for 
 
 1. Copy the extension directory to your local Cinnamon extensions folder:
    ```bash
-   cp -r cinnaspot@ansori ~/.local/share/cinnamon/extensions/
+   cp -r files/cinnaspot@ansori ~/.local/share/cinnamon/extensions/
    ```
 2. Enable the extension from Cinnamon's **Extension Settings** or via command line:
    ```bash

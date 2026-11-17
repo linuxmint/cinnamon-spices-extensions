@@ -24,6 +24,14 @@ class SpotlightExtension {
         this.cachedApps = []; 
         this.searchSequence = 0;
 
+        // All Apps view state
+        this.isAllAppsOpen = false;
+        this.allAppsViewMode = 'grid'; // 'grid' or 'list'
+        this.allAppsSortMode = 'name'; // 'name' or 'category'
+        this.allAppsSearchQuery = '';
+        this.allAppsItems = [];
+        this.allAppsSelectedIndex = -1;
+
         this.keybinding = "<Super>space";
         this.custom_placeholder = "Search apps, settings, commands, calc...";
         this.show_opened_windows = true;
@@ -99,11 +107,13 @@ class SpotlightExtension {
             try { Main.popModal(this.mainContainer); } catch(e) {}
             try { Main.popModal(this.sidebarContainer); } catch(e) {}
             try { Main.popModal(this.sysInfoContainer); } catch(e) {}
+            try { Main.popModal(this.allAppsContainer); } catch(e) {}
         }
 
         if (this.mainContainer) { this.mainContainer.destroy(); this.mainContainer = null; }
         if (this.sidebarContainer) { this.sidebarContainer.destroy(); this.sidebarContainer = null; }
         if (this.sysInfoContainer) { this.sysInfoContainer.destroy(); this.sysInfoContainer = null; }
+        if (this.allAppsContainer) { this.allAppsContainer.destroy(); this.allAppsContainer = null; }
     }
 
     _cacheApplications() {
@@ -147,8 +157,6 @@ class SpotlightExtension {
     _confirmAndExecute(title, message, command) {
         this._toggleSpotlight();
         
-        // read -rsn1 membaca 1 karakter tanpa Enter dan secara diam-diam (silent)
-        // -z "$ans" menangkap input tombol [Enter] karena string bernilai kosong
         const promptScript = `
             echo -e "\\e[1;36m  [ ${title.toUpperCase()} ] \\e[0m"
             echo -e "\\e[1;36m\\e[0m                                                          \\e[0m"
@@ -226,10 +234,24 @@ class SpotlightExtension {
         if (this.clearIcon) this.clearIcon.set_style(`color: ${colors.textSecondary};`);
         this.hintLabel.set_style(`color: ${colors.textSecondary}; font-size: 11px; text-align: center; padding-top: 10px;`);
         
+        if (this.allAppsButton) {
+            this.allAppsButton.set_style(`background-color: ${colors.searchBg}; border-radius: 8px; padding: 6px 12px; border: 1px solid ${colors.border}; color: ${colors.textPrimary}; font-size: 12px; font-weight: bold;`);
+        }
+
+        // ansBox
+        if (this.allAppsContainerBox) {
+            this.allAppsContainerBox.set_style(`width: 1080px; height: 720px; background-color: ${colors.mainBg}; border-radius: 16px; padding: 24px; border: 1px solid ${colors.border}; box-shadow: 0px 20px 50px ${colors.shadow};`);
+        }
+        if (this.allAppsSearchBox) {
+            this.allAppsSearchBox.set_style(`background-color: ${colors.searchBg}; border-radius: 10px; padding: 10px 14px; border: 1px solid ${colors.border};`);
+        }
+        if (this.allAppsSearchEntry) {
+            this.allAppsSearchEntry.set_style(`font-size: 16px; background-color: transparent; color: ${colors.textPrimary}; border: none; padding: 0px;`);
+        }
+
         this.sidebarBox.set_style(`width: 360px; background-color: ${colors.sidebarBg}; border-radius: 0px 16px 16px 0px; padding: 16px; border-right: 1px solid ${colors.border}; box-shadow: 10px 0px 30px ${colors.shadow};`);
         this.sidebarTitle.set_style(`color: ${colors.textSecondary}; font-size: 14px; font-weight: bold; margin-bottom: 12px; padding-left: 4px;`);
 
-        // FIX PRESISI LEBAR: 312px (konten) + 24px (padding kiri) + 24px (padding kanan) = Total 360px.
         if (this.sysInfoBox) {
             this.sysInfoBox.set_style(`width: 312px; background-color: ${colors.sidebarBg}; border-radius: 16px 0px 0px 16px; padding: 24px; border-left: 1px solid ${colors.border}; box-shadow: -10px 0px 30px ${colors.shadow};`);
         }
@@ -263,7 +285,6 @@ class SpotlightExtension {
         headerBox.add_child(spacer);
         headerBox.add_child(valueLabel);
 
-        // Track bar disamakan persis dengan lebar konten box (312px)
         let track = new St.BoxLayout({ vertical: false, style: 'background-color: rgba(255,255,255,0.1); border-radius: 4px; height: 6px; width: 312px;' });
         let bar = new St.Widget({ style: `background-color: ${accentColor}; border-radius: 4px; height: 6px; box-shadow: 0px 0px 8px ${accentColor};` });
         bar.set_width(0);
@@ -276,7 +297,7 @@ class SpotlightExtension {
             container, track, bar, valueLabel,
             setProgress: (usage, text) => {
                 let percent = Math.max(0, Math.min(1, usage));
-                bar.set_width(percent * 312); // Lebar bar maksimal 312px
+                bar.set_width(percent * 312);
                 valueLabel.set_text(text);
             }
         };
@@ -347,16 +368,41 @@ class SpotlightExtension {
         this.resultsBox = new St.BoxLayout({ vertical: true });
         this.scrollView.add_actor(this.resultsBox);
 
-        this.hintLabel = new St.Label({ text: "" });
+        // Bottom prompt input row with All Apps button & Hint label
+        let bottomPromptBox = new St.BoxLayout({ vertical: false, style: 'padding-top: 10px;' });
+        
+        this.allAppsButton = new St.Button({
+            reactive: true, can_focus: true, track_hover: true,
+            style: 'border-radius: 8px; padding: 6px 12px;'
+        });
+        let allAppsBtnContent = new St.BoxLayout({ vertical: false });
+        let allAppsBtnIcon = new St.Icon({ icon_name: 'view-app-grid-symbolic', icon_size: 14, style: 'margin-right: 6px;' });
+        let allAppsBtnLabel = new St.Label({ text: "All Apps (Ctrl + S)", style: 'font-size: 12px; font-weight: bold;' });
+        allAppsBtnContent.add_child(allAppsBtnIcon);
+        allAppsBtnContent.add_child(allAppsBtnLabel);
+        this.allAppsButton.set_child(allAppsBtnContent);
+
+        this.allAppsButton.connect('clicked', () => {
+            this._openAllAppsView();
+        });
+
+        let promptSpacer = new St.Widget({ x_expand: true });
+        this.hintLabel = new St.Label({ text: "", style: 'padding-top: 4px;' });
+
+        bottomPromptBox.add_child(this.allAppsButton);
+        bottomPromptBox.add_child(promptSpacer);
+        bottomPromptBox.add_child(this.hintLabel);
 
         this.spotlightBox.add_child(this.searchBarBox);
         this.spotlightBox.add_child(this.scrollView);
-        this.spotlightBox.add_child(this.hintLabel);
+        this.spotlightBox.add_child(bottomPromptBox);
         this.mainContainer.add_child(this.spotlightBox);
         
-        //this.spotlightBox.set_position((global.stage.width - 720) / 2, global.stage.height * 0.18);
         this.spotlightBox.set_position((global.stage.width - 720) / 2, (global.stage.height - (global.stage.height * 0.75)) / 2);
         Main.uiGroup.add_actor(this.mainContainer);
+
+        // --- All Apps Modal UI ---
+        this._createAllAppsUI();
 
         // Sidebar Kiri (Opened Windows)
         this.sidebarContainer = new St.Widget({
@@ -378,7 +424,7 @@ class SpotlightExtension {
         this.sidebarBox.set_position(0, (global.stage.height - (global.stage.height * 0.85)) / 2);
         Main.uiGroup.add_actor(this.sidebarContainer);
 
-        // Sidebar Kanan (System Info) - Container dilebarkan menjadi total 360px
+        // Sidebar Kanan (System Info)
         this.sysInfoContainer = new St.Widget({
             visible: false, reactive: false, x: 0, y: 0,
             width: 360, height: global.stage.height
@@ -409,14 +455,337 @@ class SpotlightExtension {
         this.sysInfoBox.add_child(diskMetric.container);
 
         this.sysInfoContainer.add_child(this.sysInfoBox);
-        
-        // Container di-set persis di tepi kanan layar
         this.sysInfoContainer.set_position(global.stage.width - 360, 0); 
         this.sysInfoBox.set_position(0, (global.stage.height - (global.stage.height * 0.85)) / 2);
         
         Main.uiGroup.add_actor(this.sysInfoContainer);
 
         this._applyTheme();
+    }
+
+    _createAllAppsUI() {
+        
+        this.allAppsContainer = new St.Widget({
+            visible: false, reactive: true, x: 0, y: 0,
+            width: global.stage.width, height: global.stage.height,
+            style: 'background-color: rgba(0,0,0,0.7);'
+        });
+
+        this.allAppsContainerBox = new St.BoxLayout({ vertical: true });
+        
+        // Header Row: Title & Search + View/Sort Controls + Close Button
+        let topBar = new St.BoxLayout({ vertical: false, style: 'margin-bottom: 14px;' });
+        let titleLabel = new St.Label({ text: "All Applications", style: 'font-size: 20px; font-weight: bold; padding-top: 6px;' });
+        
+        let spacer = new St.Widget({ x_expand: true });
+        
+        // Search entry for All Apps
+        this.allAppsSearchBox = new St.BoxLayout({ vertical: false });
+        let aaSearchIcon = new St.Icon({ icon_name: 'system-search-symbolic', icon_size: 14, style: 'margin-right: 8px; margin-top: 2px;' });
+        this.allAppsSearchEntry = new St.Entry({ hint_text: "Filter apps...", track_hover: true, can_focus: true, x_expand: true });
+        this.allAppsSearchBox.add_child(aaSearchIcon);
+        this.allAppsSearchBox.add_child(this.allAppsSearchEntry);
+
+        this.allAppsSearchEntry.clutter_text.connect('key-press-event', this._onKeyPress.bind(this));
+
+        this.allAppsSearchEntry.clutter_text.connect('text-changed', () => {
+            this.allAppsSearchQuery = this.allAppsSearchEntry.get_text().toLowerCase().trim();
+            this._populateAllAppsView();
+        });
+
+        // View Mode Toggle (Grid / List)
+        this.gridButton = new St.Button({ reactive: true, can_focus: true, track_hover: true, style: 'padding: 6px 10px; border-radius: 6px 0px 0px 6px; background-color: #2563eb;' });
+        let gridIcon = new St.Icon({ icon_name: 'view-grid-symbolic', icon_size: 14 });
+        this.gridButton.set_child(gridIcon);
+        this.gridButton.connect('clicked', () => {
+            this.allAppsViewMode = 'grid';
+            this._updateAllAppsToolbarState();
+            this._populateAllAppsView();
+        });
+
+        this.listButton = new St.Button({ reactive: true, can_focus: true, track_hover: true, style: 'padding: 6px 10px; border-radius: 0px 6px 6px 0px; background-color: #1e293b;' });
+        let listIcon = new St.Icon({ icon_name: 'view-list-symbolic', icon_size: 14 });
+        this.listButton.set_child(listIcon);
+        this.listButton.connect('clicked', () => {
+            this.allAppsViewMode = 'list';
+            this._updateAllAppsToolbarState();
+            this._populateAllAppsView();
+        });
+
+        let viewToggleBox = new St.BoxLayout({ vertical: false, style: 'margin-right: 12px; margin-left: 12px;' });
+        viewToggleBox.add_child(this.gridButton);
+        viewToggleBox.add_child(this.listButton);
+
+        // Sort Mode Toggle (Name / Category)
+        this.sortNameButton = new St.Button({ reactive: true, can_focus: true, track_hover: true, style: 'padding: 6px 10px; border-radius: 6px 0px 0px 6px; background-color: #2563eb;' });
+        let sortNameLabel = new St.Label({ text: "Name (A-Z)", style: 'font-size: 12px; font-weight: bold;' });
+        this.sortNameButton.set_child(sortNameLabel);
+        this.sortNameButton.connect('clicked', () => {
+            this.allAppsSortMode = 'name';
+            this._updateAllAppsToolbarState();
+            this._populateAllAppsView();
+        });
+
+        this.sortCatButton = new St.Button({ reactive: true, can_focus: true, track_hover: true, style: 'padding: 6px 10px; border-radius: 0px 6px 6px 0px; background-color: #1e293b;' });
+        let sortCatLabel = new St.Label({ text: "Category", style: 'font-size: 12px; font-weight: bold;' });
+        this.sortCatButton.set_child(sortCatLabel);
+        this.sortCatButton.connect('clicked', () => {
+            this.allAppsSortMode = 'category';
+            this._updateAllAppsToolbarState();
+            this._populateAllAppsView();
+        });
+
+        let sortToggleBox = new St.BoxLayout({ vertical: false, style: 'margin-right: 12px;' });
+        sortToggleBox.add_child(this.sortNameButton);
+        sortToggleBox.add_child(this.sortCatButton);
+
+        // Close All Apps Button
+        let closeAaButton = new St.Button({ reactive: true, can_focus: true, track_hover: true, style: 'padding: 6px 10px; border-radius: 6px; background-color: #ef4444;' });
+        let closeAaIcon = new St.Icon({ icon_name: 'window-close-symbolic', icon_size: 14 });
+        closeAaButton.set_child(closeAaIcon);
+        closeAaButton.connect('clicked', () => {
+            this._closeAllAppsView();
+        });
+
+        topBar.add_child(titleLabel);
+        topBar.add_child(spacer);
+        topBar.add_child(this.allAppsSearchBox);
+        topBar.add_child(viewToggleBox);
+        topBar.add_child(sortToggleBox);
+        topBar.add_child(closeAaButton);
+
+        // Scrollable area for apps list/grid
+        this.allAppsScrollView = new St.ScrollView({ style: 'max-height: 670px;' });
+        this.allAppsScrollView.set_policy(St.PolicyType.NEVER, St.PolicyType.AUTOMATIC);
+        
+        this.allAppsContentBox = new St.BoxLayout({ vertical: true });
+        this.allAppsScrollView.add_actor(this.allAppsContentBox);
+
+        this.allAppsContainerBox.add_child(topBar);
+        this.allAppsContainerBox.add_child(this.allAppsScrollView);
+
+        this.allAppsContainer.add_child(this.allAppsContainerBox);
+        
+        // Center All Apps container
+        // ansBox
+        this.allAppsContainerBox.set_position((global.stage.width - 1080) / 2, (global.stage.height - 720) / 2);
+        Main.uiGroup.add_actor(this.allAppsContainer);
+    }
+
+    _updateAllAppsToolbarState() {
+        if (this.allAppsViewMode === 'grid') {
+            this.gridButton.set_style('padding: 6px 10px; border-radius: 6px 0px 0px 6px; background-color: #2563eb;');
+            this.listButton.set_style('padding: 6px 10px; border-radius: 0px 6px 6px 0px; background-color: #1e293b;');
+        } else {
+            this.gridButton.set_style('padding: 6px 10px; border-radius: 6px 0px 0px 6px; background-color: #1e293b;');
+            this.listButton.set_style('padding: 6px 10px; border-radius: 0px 6px 6px 0px; background-color: #2563eb;');
+        }
+
+        if (this.allAppsSortMode === 'name') {
+            this.sortNameButton.set_style('padding: 6px 10px; border-radius: 6px 0px 0px 6px; background-color: #2563eb;');
+            this.sortCatButton.set_style('padding: 6px 10px; border-radius: 0px 6px 6px 0px; background-color: #1e293b;');
+        } else {
+            this.sortNameButton.set_style('padding: 6px 10px; border-radius: 6px 0px 0px 6px; background-color: #1e293b;');
+            this.sortCatButton.set_style('padding: 6px 10px; border-radius: 0px 6px 6px 0px; background-color: #2563eb;');
+        }
+    }
+
+    _openAllAppsView() {
+        if (this.mainContainer) this.mainContainer.visible = false;
+        if (this.sidebarContainer) this.sidebarContainer.visible = false;
+        if (this.sysInfoContainer) this.sysInfoContainer.visible = false;
+
+        this.isAllAppsOpen = true;
+        this.allAppsContainer.visible = true;
+        Main.pushModal(this.allAppsContainer);
+        global.stage.set_key_focus(this.allAppsSearchEntry);
+
+        this._cacheApplications();
+        this._populateAllAppsView();
+    }
+
+    _closeAllAppsView() {
+        this.isAllAppsOpen = false;
+        if (this.allAppsContainer) this.allAppsContainer.visible = false;
+        try { Main.popModal(this.allAppsContainer); } catch(e) {}
+
+        if (this.isOpen) {
+            if (this.mainContainer) this.mainContainer.visible = true;
+            if (this.sidebarContainer && this.show_opened_windows) this.sidebarContainer.visible = true;
+            this._toggleSysInfoPanel();
+            global.stage.set_key_focus(this.searchEntry);
+        }
+    }
+
+    _populateAllAppsView() {
+        if (!this.allAppsContentBox) return;
+        this.allAppsContentBox.destroy_all_children();
+        this.allAppsItems = [];
+
+        let filtered = this.cachedApps.filter(app => {
+            if (!this.allAppsSearchQuery) return true;
+            let name = app.get_name() ? app.get_name().toLowerCase() : "";
+            let desc = app.get_description() ? app.get_description().toLowerCase() : "";
+            return name.includes(this.allAppsSearchQuery) || desc.includes(this.allAppsSearchQuery);
+        });
+
+        let colors = this._getThemeColors();
+
+        if (this.allAppsSortMode === 'name') {
+            filtered.sort((a, b) => {
+                let nameA = a.get_name() ? a.get_name().toLowerCase() : "";
+                let nameB = b.get_name() ? b.get_name().toLowerCase() : "";
+                return nameA.localeCompare(nameB);
+            });
+
+            if (this.allAppsViewMode === 'grid') {
+                let rowBox = null;
+                let colCount = 5;
+                filtered.forEach((app, idx) => {
+                    if (idx % colCount === 0) {
+                        rowBox = new St.BoxLayout({ vertical: false, style: 'margin-bottom: 12px;' });
+                        this.allAppsContentBox.add_child(rowBox);
+                    }
+                    let itemBox = this._createAppGridCard(app, colors);
+                    rowBox.add_child(itemBox);
+                    this.allAppsItems.push(itemBox);
+                });
+            } else {
+                // List View
+                filtered.forEach(app => {
+                    let itemBox = this._createAppListCard(app, colors);
+                    this.allAppsContentBox.add_child(itemBox);
+                    this.allAppsItems.push(itemBox);
+                });
+            }
+        } else {
+            // Grouped by Category
+            let categories = {};
+            filtered.forEach(app => {
+                let cat = "Other";
+                try {
+                    let categoriesStr = app.get_categories();
+                    if (categoriesStr) {
+                        let catList = categoriesStr.split(';').filter(c => c.trim().length > 0);
+                        if (catList.length > 0) {
+                            cat = catList[0].trim();
+                            // Capitalize nicely
+                            cat = cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase();
+                        }
+                    }
+                } catch(e) {}
+
+                if (!categories[cat]) categories[cat] = [];
+                categories[cat].push(app);
+            });
+
+            let sortedCats = Object.keys(categories).sort((a, b) => a.localeCompare(b));
+
+            sortedCats.forEach(cat => {
+                let catLabel = new St.Label({ text: cat, style: `color: ${colors.textSecondary}; font-size: 14px; font-weight: bold; margin-top: 12px; margin-bottom: 8px; padding-left: 4px;` });
+                this.allAppsContentBox.add_child(catLabel);
+
+                let catApps = categories[cat];
+                catApps.sort((a, b) => {
+                    let nameA = a.get_name() ? a.get_name().toLowerCase() : "";
+                    let nameB = b.get_name() ? b.get_name().toLowerCase() : "";
+                    return nameA.localeCompare(nameB);
+                });
+
+                if (this.allAppsViewMode === 'grid') {
+                    let rowBox = null;
+                    let colCount = 5;
+                    catApps.forEach((app, idx) => {
+                        if (idx % colCount === 0) {
+                            rowBox = new St.BoxLayout({ vertical: false, style: 'margin-bottom: 12px;' });
+                            this.allAppsContentBox.add_child(rowBox);
+                        }
+                        let itemBox = this._createAppGridCard(app, colors);
+                        rowBox.add_child(itemBox);
+                        this.allAppsItems.push(itemBox);
+                    });
+                } else {
+                    catApps.forEach(app => {
+                        let itemBox = this._createAppListCard(app, colors);
+                        this.allAppsContentBox.add_child(itemBox);
+                        this.allAppsItems.push(itemBox);
+                    });
+                }
+            });
+        }
+    }
+
+    _createAppGridCard(app, colors) {
+        let card = new St.BoxLayout({
+            vertical: true, reactive: true, track_hover: true,
+            style: `width: 170px; padding: 16px 12px; border-radius: 12px; margin-right: 12px; background-color: ${colors.searchBg}; border: 1px solid ${colors.border}; text-align: center;`
+        });
+
+        let iconSource = 'application-default-icon';
+        try { iconSource = app.get_icon() || 'application-default-icon'; } catch(e) {}
+
+        let icon;
+        if (typeof iconSource === 'object' && iconSource !== null) {
+            icon = new St.Icon({ gicon: iconSource, icon_size: 40, style: 'margin-bottom: 8px; x-align: 0.5;' });
+        } else {
+            icon = new St.Icon({ icon_name: iconSource, icon_size: 40, icon_type: St.IconType.FULLCOLOR, style: 'margin-bottom: 8px; x-align: 0.5;' });
+        }
+
+        let nameLabel = new St.Label({
+            text: app.get_name() || "Unknown",
+            style: `font-weight: bold; color: ${colors.textPrimary}; font-size: 13px; text-align: center;`
+        });
+
+        card.add_child(icon);
+        card.add_child(nameLabel);
+
+        let actionFunc = () => {
+            try { app.launch([], null); } catch(e) {}
+            this._closeAllAppsView();
+            this._toggleSpotlight();
+        };
+        card.actionFunc = actionFunc;
+        card.connect('button-press-event', () => { actionFunc(); return Clutter.EVENT_STOP; });
+
+        return card;
+    }
+
+    _createAppListCard(app, colors) {
+        let itemBox = new St.BoxLayout({
+            vertical: false, reactive: true, track_hover: true,
+            style: `padding: 10px 14px; border-radius: 8px; margin-bottom: 6px; background-color: ${colors.searchBg}; border: 1px solid ${colors.border};`
+        });
+
+        let iconSource = 'application-default-icon';
+        try { iconSource = app.get_icon() || 'application-default-icon'; } catch(e) {}
+
+        let icon;
+        if (typeof iconSource === 'object' && iconSource !== null) {
+            icon = new St.Icon({ gicon: iconSource, icon_size: 24, style: 'margin-right: 14px; margin-top: 2px;' });
+        } else {
+            icon = new St.Icon({ icon_name: iconSource, icon_size: 24, icon_type: St.IconType.FULLCOLOR, style: 'margin-right: 14px; margin-top: 2px;' });
+        }
+
+        let textBox = new St.BoxLayout({ vertical: true });
+        let titleLabel = new St.Label({ text: app.get_name() || "Unknown", style: `font-weight: bold; color: ${colors.textPrimary}; font-size: 14px;` });
+        let desc = app.get_description() ? app.get_description() : "Application";
+        let subLabel = new St.Label({ text: desc, style: `color: ${colors.textSecondary}; font-size: 11px; margin-top: 2px;` });
+        
+        textBox.add_child(titleLabel);
+        textBox.add_child(subLabel);
+
+        itemBox.add_child(icon);
+        itemBox.add_child(textBox);
+
+        let actionFunc = () => {
+            try { app.launch([], null); } catch(e) {}
+            this._closeAllAppsView();
+            this._toggleSpotlight();
+        };
+        itemBox.actionFunc = actionFunc;
+        itemBox.connect('button-press-event', () => { actionFunc(); return Clutter.EVENT_STOP; });
+
+        return itemBox;
     }
 
     _toggleSysInfoPanel() {
@@ -452,7 +821,6 @@ class SpotlightExtension {
     _updateSysInfoMetrics() {
         if (!this.isOpen || !this.show_system_info) return;
 
-        // CPU Usage
         try {
             let [success, contents] = GLib.file_get_contents("/proc/stat");
             if (success) {
@@ -476,7 +844,6 @@ class SpotlightExtension {
             }
         } catch (e) {}
 
-        // RAM & Swap Usage
         try {
             let [success, contents] = GLib.file_get_contents("/proc/meminfo");
             if (success) {
@@ -506,7 +873,6 @@ class SpotlightExtension {
             }
         } catch (e) {}
 
-        // Disk Usage
         try {
             let targetPath = this.disk_path && this.disk_path.trim() !== "" ? this.disk_path : "/";
             let file = Gio.File.new_for_path(targetPath);
@@ -528,7 +894,6 @@ class SpotlightExtension {
 
     _getActiveMonitorGeometry() {
         try {
-            // Use Cinnamon's global pointer for screen-space coordinates
             let [cx, cy] = global.get_pointer();
             let n = global.screen.get_n_monitors();
 
@@ -539,7 +904,6 @@ class SpotlightExtension {
                 }
             }
 
-            // Fallback to primary monitor
             let primary = null;
             if (typeof global.screen.get_primary_monitor === 'function') {
                 primary = global.screen.get_primary_monitor();
@@ -549,7 +913,6 @@ class SpotlightExtension {
                 return { x: g.x, y: g.y, width: g.width, height: g.height };
             }
 
-            // Fallback to monitor 0
             let g0 = global.screen.get_monitor_geometry(0);
             return { x: g0.x, y: g0.y, width: g0.width, height: g0.height };
         } catch (e) {}
@@ -557,22 +920,27 @@ class SpotlightExtension {
     }
 
     _positionUI(monitor) {
-        // Center spotlight on the active monitor
         this.spotlightBox.set_position(
             monitor.x + Math.round((monitor.width - 720) / 2),
             monitor.y + Math.round((monitor.height - (monitor.height * 0.75)) / 2)
         );
 
-        // Position opened-windows sidebar on the left side of the active monitor
         if (this.sidebarContainer) {
             this.sidebarContainer.set_position(monitor.x, monitor.y);
             this.sidebarBox.set_position(0, Math.round((monitor.height - (monitor.height * 0.85)) / 2));
         }
 
-        // Position system-info sidebar on the right side of the active monitor
         if (this.sysInfoContainer) {
             this.sysInfoContainer.set_position(monitor.x + monitor.width - 360, monitor.y);
             this.sysInfoBox.set_position(0, Math.round((monitor.height - (monitor.height * 0.85)) / 2));
+        }
+
+        // ansBox
+        if (this.allAppsContainerBox) {
+            this.allAppsContainerBox.set_position(
+                monitor.x + Math.round((monitor.width - 1080) / 2),
+                monitor.y + Math.round((monitor.height - (monitor.height * 0.75)) / 2)
+            );
         }
     }
 
@@ -580,7 +948,6 @@ class SpotlightExtension {
         this.isOpen = !this.isOpen;
 
         if (this.isOpen) {
-            // Position UI on the monitor where the cursor currently is
             let monitor = this._getActiveMonitorGeometry();
             this._positionUI(monitor);
         }
@@ -598,6 +965,7 @@ class SpotlightExtension {
             this._triggerSearch();
         } else {
             Main.popModal(this.mainContainer);
+            if (this.isAllAppsOpen) this._closeAllAppsView();
             if (this.searchEntry) this.searchEntry.set_text('');
             if (this.clearButton) this.clearButton.visible = false;
             if (this.resultsBox) this.resultsBox.destroy_all_children();
@@ -864,38 +1232,30 @@ class SpotlightExtension {
             } catch(e) {}
         }
 
-        // Hitung ukuran akhir yang proporsional
         let finalW = targetWidth;
         let finalH = maxHeight;
         
         if (originalWidth > 0 && originalHeight > 0) {
-            // Hitung skala untuk lebar dan tinggi secara terpisah
             let scaleW = targetWidth / originalWidth;
             let scaleH = maxHeight / originalHeight;
-            
-            // Gunakan skala yang paling KECIL agar seluruh jendela muat (fit/contain)
             let scale = Math.min(scaleW, scaleH);
             
             finalW = Math.round(originalWidth * scale);
             finalH = Math.round(originalHeight * scale);
         }
 
-        // Container lebarnya selalu tetap (198px), tingginya dinamis sesuai gambar (maksimal 130px)
         let thumbContainer = new St.Bin({
             width: targetWidth, 
             height: finalH, 
-            x_align: St.Align.MIDDLE, // Jika gambar lebih sempit dari 198px, letakkan di tengah
+            x_align: St.Align.MIDDLE,
             y_align: St.Align.MIDDLE, 
-            style: `width: \({targetWidth}px; height:\){finalH}px; background-color: #000000; border-radius: 6px; overflow: hidden; margin-bottom: 6px;`
+            style: `background-color: #000000; border-radius: 6px; overflow: hidden; margin-bottom: 6px;`
         });
 
         if (metaWindow) {
             try {
                 let clone = new Clutter.Clone({ source: metaWindow });
-                
-                // Kunci Utama: Tetapkan ukuran clone langsung ke perhitungan proporsional kita
                 clone.set_size(finalW, finalH);
-
                 thumbContainer.set_child(clone); 
 
                 let unmanagedId = metaWindow.connect('unmanaged', () => {
@@ -1117,8 +1477,29 @@ class SpotlightExtension {
 
     _onKeyPress(actor, event) {
         let symbol = event.get_key_symbol();
+        let state = event.get_state();
+        const isCtrl = (state & Clutter.ModifierType.CONTROL_MASK) !== 0;
+
         if (symbol === Clutter.KEY_Escape) {
-            this._toggleSpotlight();
+            if (this.isAllAppsOpen) {
+                this._closeAllAppsView();
+            } else {
+                this._toggleSpotlight();
+            }
+            return Clutter.EVENT_STOP;
+        }
+
+        if (isCtrl && (symbol === Clutter.KEY_s || symbol === Clutter.KEY_S)) {
+            this._openAllAppsView();
+            return Clutter.EVENT_STOP;
+        }
+
+        if (symbol === Clutter.KEY) {
+            if (this.isAllAppsOpen) {
+                this._closeAllAppsView();
+            } else {
+                this._toggleSpotlight();
+            }
             return Clutter.EVENT_STOP;
         }
 
