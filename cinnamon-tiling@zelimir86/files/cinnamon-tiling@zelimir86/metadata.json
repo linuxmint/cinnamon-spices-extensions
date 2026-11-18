@@ -1,0 +1,17 @@
+{
+    "uuid": "cinnamon-tiling@zelimir86",
+    "name": "Cinnamon Tiling",
+    "description": "Layout based window tiling for Cinnamon, modelled on Tiling Shell for GNOME: tiling system (Ctrl+drag), span multiple tiles, snap assistant, layout editor, screen edges, smart resize, keyboard tiling, per-workspace layouts, auto-tiling, windows suggestions, window menu buttons and focused window border.",
+    "version": "1.0.0",
+    "author": "zelimir86",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6",
+        "6.8",
+        "6.10",
+        "6.12"
+    ],
+    "url": "https://github.com/zelimir86/cinnamon-tiling"
+}

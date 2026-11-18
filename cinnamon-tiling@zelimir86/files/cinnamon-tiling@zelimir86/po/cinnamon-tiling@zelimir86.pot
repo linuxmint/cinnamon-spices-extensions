@@ -1,0 +1,649 @@
+# CINNAMON TILING
+# This file is put in the public domain.
+# zelimir86, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-tiling@zelimir86 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-11-18 15:52+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+#. extension.js:188 extension.js:275 extension.js:277 extension.js:300
+#. extension.js:302 lib/editor.js:227
+msgid "Cinnamon Tiling"
+msgstr ""
+
+#. extension.js:188
+msgid "Layouts were reset to the defaults."
+msgstr ""
+
+#. extension.js:246
+msgid "Export layouts"
+msgstr ""
+
+#. extension.js:246
+msgid "Import layouts"
+msgstr ""
+
+#. extension.js:246
+msgid "JSON files"
+msgstr ""
+
+#. extension.js:275
+#, javascript-format
+msgid "Exported %d layouts to %s."
+msgstr ""
+
+#. extension.js:277
+#, javascript-format
+msgid "Export failed: %s"
+msgstr ""
+
+#. extension.js:291
+msgid "The file contains no valid layouts."
+msgstr ""
+
+#. extension.js:300
+#, javascript-format
+msgid "Imported %d layouts."
+msgstr ""
+
+#. extension.js:302
+#, javascript-format
+msgid "Import failed: %s"
+msgstr ""
+
+#. lib/editor.js:56 lib/indicator.js:135
+msgid "New layout"
+msgstr ""
+
+#. lib/editor.js:56
+#, javascript-format
+msgid "Editing “%s”"
+msgstr ""
+
+#. lib/editor.js:59
+msgid ""
+"Click: split left/right  ·  Ctrl+click: split top/bottom  ·  Right click: "
+"delete  ·  Drag a divider: resize  ·  Ctrl+Z: undo"
+msgstr ""
+
+#. lib/editor.js:68
+msgid "Save"
+msgstr ""
+
+#. lib/editor.js:69
+msgid "Cancel"
+msgstr ""
+
+#. lib/editor.js:70
+msgid "Reset"
+msgstr ""
+
+#. lib/editor.js:76
+msgid "Delete layout"
+msgstr ""
+
+#. lib/editor.js:227
+msgid ""
+"This tile cannot be removed: no neighbouring tiles cover its whole side."
+msgstr ""
+
+#. lib/indicator.js:77
+msgid "Tiling layouts"
+msgstr ""
+
+#. lib/indicator.js:91
+msgid "All monitors"
+msgstr ""
+
+#. lib/indicator.js:92
+#, javascript-format
+msgid "Monitor %d"
+msgstr ""
+
+#. lib/indicator.js:134
+msgid "Edit current layout"
+msgstr ""
+
+#. lib/indicator.js:136
+msgid "Import layouts…"
+msgstr ""
+
+#. lib/indicator.js:137
+msgid "Export layouts…"
+msgstr ""
+
+#. lib/indicator.js:138
+msgid "Settings"
+msgstr ""
+
+#. lib/windowMenu.js:72
+msgid "Move to best tile"
+msgstr ""
+
+#. lib/windowMenu.js:76
+msgid "Tile to leftmost empty tile"
+msgstr ""
+
+#. lib/windowMenu.js:81
+msgid "Tile to rightmost empty tile"
+msgstr ""
+
+#. lib/windowMenu.js:89
+msgid "Untile"
+msgstr ""
+
+#. metadata.json->description
+msgid ""
+"Layout based window tiling for Cinnamon, modelled on Tiling Shell for GNOME: "
+"tiling system (Ctrl+drag), span multiple tiles, snap assistant, layout "
+"editor, screen edges, smart resize, keyboard tiling, per-workspace layouts, "
+"auto-tiling, windows suggestions, window menu buttons and focused window "
+"border."
+msgstr ""
+
+#. settings-schema.json->page-general->title
+#. settings-schema.json->sec-keys-general->title
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->sec-tiling->title
+msgid "Tiling system"
+msgstr ""
+
+#. settings-schema.json->sec-gaps->title
+msgid "Gaps"
+msgstr ""
+
+#. settings-schema.json->sec-behaviour->title
+msgid "Behaviour"
+msgstr ""
+
+#. settings-schema.json->sec-ui->title
+msgid "Interface"
+msgstr ""
+
+#. settings-schema.json->page-snap->title
+msgid "Snap assistant & edges"
+msgstr ""
+
+#. settings-schema.json->sec-snap->title
+msgid "Snap assistant"
+msgstr ""
+
+#. settings-schema.json->sec-edges->title
+msgid "Screen edges"
+msgstr ""
+
+#. settings-schema.json->sec-suggest->title
+msgid "Windows suggestions"
+msgstr ""
+
+#. settings-schema.json->page-layouts->title
+#. settings-schema.json->sec-layouts->title
+#. settings-schema.json->sec-keys-layouts->title
+msgid "Layouts"
+msgstr ""
+
+#. settings-schema.json->page-border->title
+msgid "Window border"
+msgstr ""
+
+#. settings-schema.json->sec-border->title
+msgid "Focused window border"
+msgstr ""
+
+#. settings-schema.json->page-keys->title
+msgid "Keyboard"
+msgstr ""
+
+#. settings-schema.json->sec-keys-move->title
+msgid "Move and span"
+msgstr ""
+
+#. settings-schema.json->sec-keys-focus->title
+msgid "Focus"
+msgstr ""
+
+#. settings-schema.json->enable-tiling-system->description
+msgid "Enable tiling system"
+msgstr ""
+
+#. settings-schema.json->enable-tiling-system->tooltip
+msgid "Show the layout while dragging a window and drop it on a tile."
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->options
+msgid "None (always active)"
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->options
+#. settings-schema.json->tiling-system-deactivation-key->options
+#. settings-schema.json->span-multiple-tiles-activation-key->options
+msgid "Ctrl"
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->options
+#. settings-schema.json->tiling-system-deactivation-key->options
+#. settings-schema.json->span-multiple-tiles-activation-key->options
+msgid "Alt"
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->options
+#. settings-schema.json->tiling-system-deactivation-key->options
+#. settings-schema.json->span-multiple-tiles-activation-key->options
+msgid "Super"
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->options
+#. settings-schema.json->tiling-system-deactivation-key->options
+#. settings-schema.json->span-multiple-tiles-activation-key->options
+msgid "Shift"
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->description
+msgid "Activation key"
+msgstr ""
+
+#. settings-schema.json->tiling-system-activation-key->tooltip
+msgid "Hold this key while dragging a window to show the tiling layout."
+msgstr ""
+
+#. settings-schema.json->tiling-system-deactivation-key->options
+msgid "None"
+msgstr ""
+
+#. settings-schema.json->tiling-system-deactivation-key->description
+msgid "Deactivation key (when activation key is None)"
+msgstr ""
+
+#. settings-schema.json->tiling-system-deactivation-key->tooltip
+msgid "Hold this key to temporarily disable the always-active tiling system."
+msgstr ""
+
+#. settings-schema.json->enable-span-multiple-tiles->description
+msgid "Span multiple tiles"
+msgstr ""
+
+#. settings-schema.json->enable-span-multiple-tiles->tooltip
+msgid ""
+"Hold the span key while using the tiling system to select several tiles at "
+"once."
+msgstr ""
+
+#. settings-schema.json->span-multiple-tiles-activation-key->description
+msgid "Span multiple tiles key"
+msgstr ""
+
+#. settings-schema.json->inner-gaps->units
+#. settings-schema.json->outer-gaps->units
+#. settings-schema.json->snap-assistant-threshold->units
+#. settings-schema.json->edge-tiling-offset->units
+#. settings-schema.json->window-border-width->units
+#. settings-schema.json->window-border-radius->units
+msgid "px"
+msgstr ""
+
+#. settings-schema.json->inner-gaps->description
+msgid "Inner gaps"
+msgstr ""
+
+#. settings-schema.json->inner-gaps->tooltip
+msgid "Space between tiled windows."
+msgstr ""
+
+#. settings-schema.json->outer-gaps->description
+msgid "Outer gaps"
+msgstr ""
+
+#. settings-schema.json->outer-gaps->tooltip
+msgid "Space between tiled windows and the screen edges."
+msgstr ""
+
+#. settings-schema.json->restore-window-original-size->description
+msgid "Restore window size when untiling"
+msgstr ""
+
+#. settings-schema.json->restore-window-original-size->tooltip
+msgid ""
+"When a tiled window is dragged out of its tile, give it back the size it had "
+"before tiling."
+msgstr ""
+
+#. settings-schema.json->resize-complementing-windows->description
+msgid "Smart resize"
+msgstr ""
+
+#. settings-schema.json->resize-complementing-windows->tooltip
+msgid "Resizing a tiled window also resizes the adjacent tiled windows."
+msgstr ""
+
+#. settings-schema.json->enable-autotiling->description
+msgid "Auto-tiling"
+msgstr ""
+
+#. settings-schema.json->enable-autotiling->tooltip
+msgid "Move new windows to the best empty tile of the current layout."
+msgstr ""
+
+#. settings-schema.json->raise-together->description
+msgid "Raise tiled windows together"
+msgstr ""
+
+#. settings-schema.json->raise-together->tooltip
+msgid "Focusing a tiled window raises the other tiled windows too."
+msgstr ""
+
+#. settings-schema.json->raise-together-current-monitor-only->description
+msgid "Only windows on the same monitor"
+msgstr ""
+
+#. settings-schema.json->sync-layout-across-workspaces->description
+msgid "Same layout on every workspace"
+msgstr ""
+
+#. settings-schema.json->sync-layout-across-workspaces->tooltip
+msgid "When off, each workspace remembers its own layout per monitor."
+msgstr ""
+
+#. settings-schema.json->show-indicator->description
+msgid "Show panel indicator"
+msgstr ""
+
+#. settings-schema.json->show-indicator->tooltip
+msgid "Show the layout selector in the panel."
+msgstr ""
+
+#. settings-schema.json->override-window-menu->description
+msgid "Tiling section in the window menu"
+msgstr ""
+
+#. settings-schema.json->override-window-menu->tooltip
+msgid "Add layout buttons and tiling actions to the window's right-click menu."
+msgstr ""
+
+#. settings-schema.json->tile-preview-animation-time->units
+#. settings-schema.json->snap-assistant-animation-time->units
+msgid "ms"
+msgstr ""
+
+#. settings-schema.json->tile-preview-animation-time->description
+msgid "Tile preview animation"
+msgstr ""
+
+#. settings-schema.json->disable-cinnamon-edge-tiling->description
+msgid "Disable Cinnamon's own edge tiling while enabled"
+msgstr ""
+
+#. settings-schema.json->disable-cinnamon-edge-tiling->tooltip
+msgid ""
+"Cinnamon's built-in edge tiling and Ctrl-snap would fight with this "
+"extension. The original value is restored when the extension is disabled."
+msgstr ""
+
+#. settings-schema.json->enable-snap-assist->description
+msgid "Enable snap assistant"
+msgstr ""
+
+#. settings-schema.json->enable-snap-assist->tooltip
+msgid ""
+"While dragging a window, move it to the top of the screen to pick a layout "
+"and a tile."
+msgstr ""
+
+#. settings-schema.json->snap-assistant-threshold->description
+msgid "Snap assistant sensitivity"
+msgstr ""
+
+#. settings-schema.json->snap-assistant-threshold->tooltip
+msgid "How close the pointer has to get before the snap assistant expands."
+msgstr ""
+
+#. settings-schema.json->snap-assist-sync-layout->description
+msgid "Make the chosen layout active"
+msgstr ""
+
+#. settings-schema.json->snap-assist-sync-layout->tooltip
+msgid ""
+"Tiling through the snap assistant also switches the monitor to that layout."
+msgstr ""
+
+#. settings-schema.json->snap-assistant-animation-time->description
+msgid "Snap assistant animation"
+msgstr ""
+
+#. settings-schema.json->active-screen-edges->description
+msgid "Tile by dragging to the screen edges"
+msgstr ""
+
+#. settings-schema.json->active-screen-edges->tooltip
+msgid ""
+"Drop a window on the left or right edge for a half, near a corner for a "
+"quarter."
+msgstr ""
+
+#. settings-schema.json->edge-tiling-mode->options
+msgid "Halves and quarters"
+msgstr ""
+
+#. settings-schema.json->edge-tiling-mode->options
+msgid "Adaptive (use the current layout)"
+msgstr ""
+
+#. settings-schema.json->edge-tiling-mode->description
+msgid "Edge tiling mode"
+msgstr ""
+
+#. settings-schema.json->edge-tiling-mode->tooltip
+msgid "Adaptive mode tiles to the layout tile touching that edge."
+msgstr ""
+
+#. settings-schema.json->top-edge-maximize->description
+msgid "Maximize at the top edge"
+msgstr ""
+
+#. settings-schema.json->edge-tiling-offset->description
+msgid "Edge sensitivity"
+msgstr ""
+
+#. settings-schema.json->edge-tiling-offset->tooltip
+msgid "Distance from the edge that activates edge tiling."
+msgstr ""
+
+#. settings-schema.json->quarter-tiling-threshold->units
+msgid "%"
+msgstr ""
+
+#. settings-schema.json->quarter-tiling-threshold->description
+msgid "Quarter tiling area"
+msgstr ""
+
+#. settings-schema.json->quarter-tiling-threshold->tooltip
+msgid ""
+"How far from a corner (percent of the screen height) quarters are used "
+"instead of halves."
+msgstr ""
+
+#. settings-schema.json->enable-tiling-system-windows-suggestions->description
+msgid "After using the tiling system"
+msgstr ""
+
+#. settings-schema.json->enable-snap-assistant-windows-
+#. suggestions->description
+msgid "After using the snap assistant"
+msgstr ""
+
+#. settings-schema.json->enable-screen-edges-windows-suggestions->description
+msgid "After using the screen edges"
+msgstr ""
+
+#. settings-schema.json->enable-window-border->description
+msgid "Border around the focused window"
+msgstr ""
+
+#. settings-schema.json->window-border-width->description
+msgid "Border width"
+msgstr ""
+
+#. settings-schema.json->window-border-radius->description
+msgid "Border radius"
+msgstr ""
+
+#. settings-schema.json->window-border-radius->tooltip
+msgid "Match the corner radius of your theme's windows."
+msgstr ""
+
+#. settings-schema.json->window-use-custom-border-color->description
+msgid "Custom border color"
+msgstr ""
+
+#. settings-schema.json->window-use-custom-border-color->tooltip
+msgid "When off, the accent color from the stylesheet is used."
+msgstr ""
+
+#. settings-schema.json->window-border-color->description
+msgid "Border color"
+msgstr ""
+
+#. settings-schema.json->enable-move-keybindings->description
+msgid "Enable window keyboard shortcuts"
+msgstr ""
+
+#. settings-schema.json->override-cinnamon-keybindings->description
+msgid "Take over conflicting Cinnamon shortcuts"
+msgstr ""
+
+#. settings-schema.json->override-cinnamon-keybindings->tooltip
+msgid ""
+"Cinnamon's own tiling shortcuts (Super+arrows by default) are disabled while "
+"the extension is enabled and restored afterwards."
+msgstr ""
+
+#. settings-schema.json->move-window-right->description
+msgid "Move window to the right tile"
+msgstr ""
+
+#. settings-schema.json->move-window-left->description
+msgid "Move window to the left tile"
+msgstr ""
+
+#. settings-schema.json->move-window-up->description
+msgid "Move window to the tile above (maximize at the top)"
+msgstr ""
+
+#. settings-schema.json->move-window-down->description
+msgid "Move window to the tile below (untile at the bottom)"
+msgstr ""
+
+#. settings-schema.json->span-window-right->description
+msgid "Span window to the right tile"
+msgstr ""
+
+#. settings-schema.json->span-window-left->description
+msgid "Span window to the left tile"
+msgstr ""
+
+#. settings-schema.json->span-window-up->description
+msgid "Span window to the tile above"
+msgstr ""
+
+#. settings-schema.json->span-window-down->description
+msgid "Span window to the tile below"
+msgstr ""
+
+#. settings-schema.json->span-window-all-tiles->description
+msgid "Span window across all tiles"
+msgstr ""
+
+#. settings-schema.json->untile-window->description
+msgid "Untile window"
+msgstr ""
+
+#. settings-schema.json->untile-all-windows->description
+msgid "Untile all windows on the workspace"
+msgstr ""
+
+#. settings-schema.json->move-window-center->description
+msgid "Center window"
+msgstr ""
+
+#. settings-schema.json->focus-window-right->description
+msgid "Focus window to the right"
+msgstr ""
+
+#. settings-schema.json->focus-window-left->description
+msgid "Focus window to the left"
+msgstr ""
+
+#. settings-schema.json->focus-window-up->description
+msgid "Focus window above"
+msgstr ""
+
+#. settings-schema.json->focus-window-down->description
+msgid "Focus window below"
+msgstr ""
+
+#. settings-schema.json->focus-window-next->description
+msgid "Focus next tiled window"
+msgstr ""
+
+#. settings-schema.json->focus-window-prev->description
+msgid "Focus previous tiled window"
+msgstr ""
+
+#. settings-schema.json->highlight-current-window->description
+msgid "Highlight focused window"
+msgstr ""
+
+#. settings-schema.json->cycle-layouts->description
+msgid "Next layout"
+msgstr ""
+
+#. settings-schema.json->cycle-layouts-backward->description
+msgid "Previous layout"
+msgstr ""
+
+#. settings-schema.json->enable-wraparound-focus->description
+msgid "Wrap around when focusing by direction"
+msgstr ""
+
+#. settings-schema.json->enable-directional-focus-tiled-only->description
+msgid "Focus by direction only between tiled windows"
+msgstr ""
+
+#. settings-schema.json->btn-open-editor->description
+msgid "Edit the current layout"
+msgstr ""
+
+#. settings-schema.json->btn-new-layout->description
+msgid "Create a new layout"
+msgstr ""
+
+#. settings-schema.json->btn-import->description
+msgid "Import layouts from a JSON file"
+msgstr ""
+
+#. settings-schema.json->btn-export->description
+msgid "Export layouts to a JSON file"
+msgstr ""
+
+#. settings-schema.json->btn-reset->description
+msgid "Reset layouts to the defaults"
+msgstr ""
+
+#. settings-schema.json->layouts-info->description
+msgid ""
+"Layout files use the same JSON format as Tiling Shell for GNOME, so layouts "
+"can be shared between the two."
+msgstr ""
