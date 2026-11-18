@@ -19,9 +19,14 @@
 // We import some modules only in the Shell process as they are not available in the
 // preferences process. They are used only in the creator function of the ShaderFactory
 // which is only called within GNOME Shell's process.
-const {ShaderFactory} =  require('./ShaderFactory.js');
+// The modules this file needs are handed in by extension.js through setModules(): the
+// file is shared by the Cinnamon 6.2 code (old module loader) and the 6.7.6+ code
+// (native importer), so it doesn't import them itself.
+let ShaderFactory = null;
+function setModules(modules) {
+  ({ShaderFactory} = modules);
+}
 const Clutter = imports.gi.Clutter;
-const GdkPixbuf = imports.gi.GdkPixbuf;
 const Cogl = imports.gi.Cogl;
 const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
@@ -30,7 +35,7 @@ const St = imports.gi.St;
 
 const UUID = "CinnamonBurnMyWindows@klangman";
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + "/locale");
 
 function _(text) {
   let locText = Gettext.dgettext(UUID, text);
@@ -70,11 +75,10 @@ var Effect = class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._shardTexture) {
-        const shardData = GdkPixbuf.Pixbuf.new_from_file( GLib.get_home_dir() +
-           '/.local/share/cinnamon/extensions/' + UUID + '/resources/img/shards.png');
-        this._shardTexture = new St.ImageContent({preferred_width: shardData.width, preferred_height: shardData.height});
-        this._shardTexture.set_data(shardData.get_pixels(), Cogl.PixelFormat.RGB_888,
-                                    shardData.width, shardData.height, shardData.rowstride);
+        // St.TextureCache loads (and caches) the image as a Cogl texture.
+        this._shardTexture = St.TextureCache.get_default().load_file_simple(
+           GLib.get_user_data_dir() + '/cinnamon/extensions/' + UUID +
+           '/resources/img/shards.png').get_content().get_texture();
       }
 
       // Store all uniform locations.
@@ -124,7 +128,7 @@ var Effect = class Effect {
                                    Cogl.PipelineFilter.LINEAR);
 
         // Bind the shard texture.
-        pipeline.set_layer_texture(1, this._shardTexture.get_texture());
+        pipeline.set_layer_texture(1, this._shardTexture);
         pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
         pipeline.set_uniform_1i(shader._uShardTexture, 1);
       });

@@ -1154,6 +1154,30 @@ function getRoundedCornersNotifier() {
    return notifier;
 }
 
+// Shared notifier between this extension and the "Desktop Cube Reloaded" extension, published as
+// global.desktopCubeNotifier. Whichever extension loads first creates it, and neither ever removes
+// it, so either can use it at any time, whatever the load order. Each extension only clears or
+// disconnects what it added itself.
+//   notifier.active               true while the cube is shown. The window group (and with it the
+//                                 desklet container and our desklet backgrounds) is hidden and only
+//                                 drawn through the cube's clones.
+//   notifier.deskletBlurProvider  set by BlurDesklets while desklets are blurred (see
+//                                 BlurDesklets.createDeskletBlur()); the cube calls it for each
+//                                 desklet on each cube face.
+//   notifier.panelBlurProvider    set by BlurPanels while panels are blurred (see
+//                                 BlurPanels.createPanelBlur()); the cube calls it for each panel
+//                                 on each cube face, when it draws the panels on the faces.
+// Desktop Cube emits "cube-starting" and "cube-finished" around the time it is shown.
+function getCubeNotifier() {
+   let notifier = global.desktopCubeNotifier;
+   if (!notifier || typeof notifier.connect !== "function" || typeof notifier.emit !== "function") {
+      notifier = { active: false, deskletBlurProvider: null, panelBlurProvider: null };
+      Signals.addSignalMethods(notifier);
+      global.desktopCubeNotifier = notifier;
+   }
+   return notifier;
+}
+
 // Manage the window clones that are attached to blurred backgrounds when Dynamic Blurring is enabled on one or more components.
 // This will create and delete window clones as needed based on whether or not there is any overlap between a window and the
 // blurred background clip regions. Also tracks windows as they appear, disappear or move and makes the appropriate changes
@@ -1318,6 +1342,11 @@ class CloneManager {
       if (background.mapped === true) {
          cloneWindowsForBackgroundNow(background, background._blurCinnamonDesktopOnly);
       } else {
+         // While Desktop Cube is shown, desklet backgrounds are unmapped (the window group is hidden)
+         // but drawn on every cube face through clones (see BlurDesklets.createDeskletBlur()), so
+         // keep their desktop window clones. They are brought up to date when they map again.
+         if (background._blurCinnamonName === "Desklet" && getCubeNotifier().active)
+            return;
          // An unmapped background can still be visible when a clone is shows (i.e Alt-Tab)
          destroyAllWindowsClones(background);
       }
@@ -3036,6 +3065,10 @@ class BlurPanels extends BlurBase {
 
       blurPanelsThis = this; // Make the 'this' pointer available in patch functions
 
+      // Draw the panel blur on Desktop Cube's faces (see createPanelBlur())
+      this._cubeNotifier = getCubeNotifier();
+      this._cubeNotifier.panelBlurProvider = this;
+
       // Monkey patch panel functions so we can manage the blurred backgrounds when the panels are hidden/shown
       this._originalPanelEnable    = Panel.Panel.prototype.enable;
       this._originalPanelDisable   = Panel.Panel.prototype.disable;
@@ -3551,6 +3584,39 @@ class BlurPanels extends BlurBase {
       // Restore the original functions that we monkey patched
       Panel.Panel.prototype.enable     = this._originalPanelEnable;
       Panel.Panel.prototype.disable    = this._originalPanelDisable;
+
+      if (this._cubeNotifier && this._cubeNotifier.panelBlurProvider === this)
+         this._cubeNotifier.panelBlurProvider = null;
+      this._cubeNotifier = null;
+   }
+
+   // Called by Desktop Cube (through global.desktopCubeNotifier) for each panel on each cube face,
+   // when it draws the panels on the faces. panel is a Cinnamon Panel object. Returns an actor that
+   // draws the panel's blurred background, positioned in stage coordinates minus offsetX/offsetY, or
+   // null if that panel isn't blurred right now. The caller owns (and destroys) the returned actor.
+   //
+   // Same approach as BlurDesklets.createDeskletBlur(): a clone of the live background (or of its
+   // viewport, which is where the effects are when there is one). The background stays mapped while
+   // the cube is shown (global.overlay_group isn't hidden, only covered), so it keeps updating. Every
+   // face gets the current workspace's blur; for the wallpaper that is the same, and a Dynamic blur
+   // only shows windows that overlap the panel, which is rare. When the panel is hidden (auto-hide,
+   // disabled, or a fullscreen window on this workspace) the background is hidden and clipped to
+   // nothing, so there is no blur to show and we return null.
+   createPanelBlur(panel, offsetX=0, offsetY=0) {
+      let blurredPanel = panel ? panel.__blurredPanel : null;
+      let background = blurredPanel ? blurredPanel.background : null;
+      if (!background || !background.visible)
+         return null;
+      let target = blurredPanel.viewport || background;
+      if (!target.visible)
+         return null;
+      // Give the clone the target's allocated size: a Clutter.Clone stretches its source to the
+      // clone's size, which would otherwise be the source's preferred size. get_allocation_box()
+      // runs any pending relayout first (target.width would return the preferred size then).
+      let box = target.get_allocation_box();
+      let [x, y] = target.get_transformed_position();
+      return new Clutter.Clone({ source: target, reactive: false, x: x - offsetX, y: y - offsetY,
+                                 width: box.x2 - box.x1, height: box.y2 - box.y1 });
    }
 
    _unblurPanel(panel) {
@@ -4901,11 +4967,6 @@ class BlurApplications extends BlurBase {
          // A signal manager for this window
          let signalManager = new SignalManager.SignalManager(null);
 
-         // Setup the window opacity
-         if (!window_opacity || window_opacity < 10 || window_opacity > 100 )
-            window_opacity = 100;
-         metaWindow.set_opacity(Math.round(window_opacity*2.55));
-
          // Plank will need a completely separate clipping path (_setClipPlank, driven by its own
          // "_PLANK_BACKGROUND_BLUR_REGION" property rather than a MetaWindow frame rect). The
          // backend in Plank has not been implmented in Plank in a way I can access here (yet).
@@ -4940,6 +5001,13 @@ class BlurApplications extends BlurBase {
          // Add blur data to the compositor while blurring is in effect
          compositor._blurCinnamonDataWindow = { effectThis: this, background: background, viewport: viewport, metaWindow: metaWindow, signalManager: signalManager, titlebarsOnly: titlebarsOnly };
 
+         // Setup the window opacity, and follow the window's maximized/fullscreen state so the
+         // "windows-opaque-maximized" option can make it opaque while it's maximized or fullscreen.
+         this._applyWindowOpacity(metaWindow, window_opacity);
+         signalManager.connect(metaWindow, "notify::fullscreen", () => this._applyWindowOpacity(metaWindow) );
+         signalManager.connect(metaWindow, "notify::maximized-horizontally", () => this._applyWindowOpacity(metaWindow) );
+         signalManager.connect(metaWindow, "notify::maximized-vertically", () => this._applyWindowOpacity(metaWindow) );
+
          // Add listeners for this window's compositor
          signalManager.connect(compositor, "destroy", () => this._unblurWindow(compositor) );
          if (metaWindow.get_wm_class() == "Plank") {
@@ -4962,6 +5030,28 @@ class BlurApplications extends BlurBase {
          if (isDynamicBlurType(blurType)) {
             this._createDynamicEffect(background, metaWindow);
          }
+      }
+   }
+
+   // Set the opacity of a blurred window. window_opacity is the inclusion list's "Opacity" (percent); it is
+   // remembered in the window's blur data, so callers reacting to a state change can omit it. When the
+   // "windows-opaque-maximized" option is enabled, a maximized or fullscreen window is made fully opaque
+   // and gets its configured opacity back once it is neither.
+   _applyWindowOpacity(metaWindow, window_opacity) {
+      let compositor = metaWindow.get_compositor_private();
+      let data = compositor ? compositor._blurCinnamonDataWindow : null;
+      if (window_opacity === undefined)
+         window_opacity = data ? data.windowOpacity : 100;
+      if (!window_opacity || window_opacity < 10 || window_opacity > 100 )
+         window_opacity = 100;
+      if (data)
+         data.windowOpacity = window_opacity;
+      if (settings.windowsOpaqueMaximized &&
+          (metaWindow.is_fullscreen() || metaWindow.get_maximized() === Meta.MaximizeFlags.BOTH))
+      {
+         metaWindow.set_opacity(255);
+      } else {
+         metaWindow.set_opacity(Math.round(window_opacity*2.55));
       }
    }
 
@@ -5124,7 +5214,7 @@ class BlurApplications extends BlurBase {
       return Math.max(0, clientRect.y - rect.y);
    }
 
-   _setClip(compositor) {
+   _setClip(compositor, showNow = false) {
       if (compositor._blurCinnamonDataWindow) {
          let data = compositor._blurCinnamonDataWindow;
          // When wrapped in a viewport (see _createBackgroundAndEffects's useViewport), data.background
@@ -5134,9 +5224,6 @@ class BlurApplications extends BlurBase {
             data.background.hide();
             if (data.viewport) data.viewport.hide();
             return;
-         } else {
-            data.background.show();
-            if (data.viewport) data.viewport.show();
          }
          let rect = data.metaWindow.get_frame_rect();
 
@@ -5150,6 +5237,21 @@ class BlurApplications extends BlurBase {
                data.background.hide();
                if (data.viewport) data.viewport.hide();
                return;
+            }
+         }
+         if (!data.background.visible || (data.viewport && !data.viewport.visible)) {
+            if (showNow) {
+               data.background.show();
+               if (data.viewport) data.viewport.show();
+            } else {
+               // Not show() here: this can run from notify::allocation, inside the stage relayout. Mapping an
+               // actor reads its allocation, which re-enters the relayout and drops the window group's queued
+               // one, so the window being shown stays invisible (i.e. Guake after F12)
+               Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+                  if (compositor._blurCinnamonDataWindow === data)
+                     this._setClip(compositor, true);
+                  return false;
+               });
             }
          }
          // Set the background position to the displays 0,0 based on the compositor's position and the shadow size
@@ -5312,9 +5414,7 @@ class BlurApplications extends BlurBase {
                // Also re-syncs the clip: the blur's sampling reach - and so the viewport's margin -
                // may have changed along with the blur type or radius.
                this._updateWindowCorners(compositor, corner_radius, top, bottom);
-               if (!window_opacity || window_opacity < 10 || window_opacity > 100 )
-                  window_opacity = 100;
-               windows[i].set_opacity(Math.round(window_opacity*2.55));
+               this._applyWindowOpacity(windows[i], window_opacity);
                if (wantsViewport && !this._isDynamicEffectActive(data.background)) {
                   this._createDynamicEffect(data.background, data.metaWindow);
                }
@@ -5768,6 +5868,10 @@ class BlurDesklets extends BlurBase {
       this._deskletIdleIds = new Map();
       blurDeskletsThis = this; // Make "this" available to monkey patched functions
 
+      // Draw the desklet blur on Desktop Cube's faces (see createDeskletBlur())
+      this._cubeNotifier = getCubeNotifier();
+      this._cubeNotifier.deskletBlurProvider = this;
+
       this.original_createDesklets = DeskletManager._createDesklets;
       DeskletManager._createDesklets = this._createDesklets;
       this.original_unloadDesklet = DeskletManager._unloadDesklet;
@@ -5852,6 +5956,38 @@ class BlurDesklets extends BlurBase {
             }
          }
       }
+   }
+
+   // Called by Desktop Cube (through global.desktopCubeNotifier) for each desklet on each cube face,
+   // while the desklets are still mapped. Returns an actor that draws deskletActor's blurred
+   // background, positioned in stage coordinates minus offsetX/offsetY, or null if that desklet
+   // isn't blurred. The caller owns (and destroys) the returned actor.
+   //
+   // It's a clone of the live background, which is fine for every blur type: a cube face shows the
+   // same wallpaper, and a desklet's Dynamic blur only clones the desktop window, which is on every
+   // workspace. ClutterOffscreenEffect renders into its texture in the actor's own coordinates and
+   // draws that with the clone's transform, so the blur also survives the cube's 3D transform, and
+   // all faces share the one texture. Clone whichever actor the effects are on: with a viewport, the
+   // background itself is only a fully transparent source, and a Clutter.Clone ignores its source's
+   // opacity, so cloning it would draw the raw, tinted expanded rect.
+   createDeskletBlur(deskletActor, offsetX=0, offsetY=0) {
+      if (this._destroyed || !deskletActor)
+         return null;
+      let desklet = DeskletManager.getDefinitions().map( (def) => def.desklet )
+                       .find( (d) => d && d.actor === deskletActor );
+      let background = desklet ? desklet._blurCinnamonBackground : null;
+      if (!background || !background.visible)
+         return null;
+      let target = background._blurCinnamonViewport || background;
+      if (!target.visible)
+         return null;
+      // Give the clone the target's allocated size: a Clutter.Clone stretches its source to the
+      // clone's size, which would otherwise be the source's preferred size. get_allocation_box()
+      // runs any pending relayout first (target.width would return the preferred size then).
+      let box = target.get_allocation_box();
+      let [x, y] = target.get_transformed_position();
+      return new Clutter.Clone({ source: target, reactive: false, x: x - offsetX, y: y - offsetY,
+                                 width: box.x2 - box.x1, height: box.y2 - box.y1 });
    }
 
    _blurDesklet(desklet) {
@@ -6090,6 +6226,10 @@ class BlurDesklets extends BlurBase {
       DeskletManager.DeskletContainer.prototype.raise = this.origianl_raise;
       DeskletManager.DeskletContainer.prototype.lower = this.origianl_lower;
 
+      if (this._cubeNotifier && this._cubeNotifier.deskletBlurProvider === this)
+         this._cubeNotifier.deskletBlurProvider = null;
+      this._cubeNotifier = null;
+
       if (blurDeskletsThis === this) blurDeskletsThis = null;
    }
 }
@@ -6205,6 +6345,7 @@ class BlurSettings {
       this.bind('windows-atrifact-mitigation', 'windowArtifactMitigation', updateArtifactMitigation);
       this.bind('windows-titlebar-blur', `windowsTitlebarBlur`, updateWindowEffects);
       this.bind('windows-rounded-corners-sync', 'windowsRoundedCornersSync', updateWindowEffects);
+      this.bind('windows-opaque-maximized', 'windowsOpaqueMaximized', updateWindowEffects);
 
       this.bind('focused-window-backlight', 'focusedWindowEffect', updateFocusedWindowEffect);
 

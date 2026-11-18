@@ -46,6 +46,7 @@
 			"type": "section",
 			"title": "Effects",
 			"keys": [
+				"wayland-click-effects-info",
 				"left-click-effect-enabled",
 				"middle-click-effect-enabled",
 				"right-click-effect-enabled",
@@ -182,6 +183,14 @@
 		"description": "Pause Effects Keybinding",
 		"default": "",
 		"tooltip": "Set keybinding to pause or continue the effects"
+	},
+	"wayland-click-effects-info": {
+		"type": "label",
+		"description": "Note: on Wayland, click effects require Cinnamon 6.8 or later"
+	},
+	"click-effects-unsupported-notified": {
+		"type": "generic",
+		"default": false
 	},
 	"left-click-effect-enabled": {
 		"type": "switch",

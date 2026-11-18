@@ -15,7 +15,13 @@
 'use strict';
 
 const GObject = imports.gi.GObject;
-const Shader = require('./Shader.js');
+// The modules this file needs are handed in by extension.js through setModules(): the
+// file is shared by the Cinnamon 6.2 code (old module loader) and the 6.7.6+ code
+// (native importer), so it doesn't import them itself.
+let Shader = null;
+function setModules(modules) {
+  ({Shader} = modules);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Each effect of Burn-My-Windows owns an instance of this class. It is used to create  //

@@ -19,7 +19,13 @@
 // We import some modules only in the Shell process as they are not available in the
 // preferences process. They are used only in the creator function of the ShaderFactory
 // which is only called within GNOME Shell's process.
-const {ShaderFactory} = require('./ShaderFactory.js');
+// The modules this file needs are handed in by extension.js through setModules(): the
+// file is shared by the Cinnamon 6.2 code (old module loader) and the 6.7.6+ code
+// (native importer), so it doesn't import them itself.
+let ShaderFactory = null;
+function setModules(modules) {
+  ({ShaderFactory} = modules);
+}
 //const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 //const Clutter       = await utils.importInShellOnly('gi://Clutter');
 const Clutter = imports.gi.Clutter;
@@ -29,7 +35,7 @@ const Gettext = imports.gettext;
 const GLib = imports.gi.GLib;
 const UUID = "CinnamonBurnMyWindows@klangman";
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + "/.local/share/locale");
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + "/locale");
 
 function _(text) {
   let locText = Gettext.dgettext(UUID, text);

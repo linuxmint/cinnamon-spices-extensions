@@ -1,0 +1,431 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "switching-page",
+            "background-page",
+            "rotating-page",
+            "edge-page",
+            "hot-corner-page",
+            "about-page"
+        ],
+        "switching-page": {
+            "type": "page",
+            "title": "General",
+            "sections": [
+                "animation-section"
+            ]
+        },
+        "animation-section": {
+            "type": "section",
+            "title": "Cube",
+            "keys": [
+                "animation-time",
+                "last-first-gap",
+                "window-parallax",
+                "auto-zoom-out",
+                "moving-window-transparency",
+                "panel-mode",
+                "per-monitor-perspective",
+                "open-workspace-settings"
+            ]
+        },
+        "hot-corner-section": {
+            "type": "section",
+            "title": "Hot corners",
+            "keys": [
+                "hot-corner-top-left",
+                "hot-corner-top-right",
+                "hot-corner-bottom-left",
+                "hot-corner-bottom-right",
+                "hot-corner-info",
+                "open-hot-corner-settings"
+            ]
+        },
+        "background-page": {
+            "type": "page",
+            "title": "Background",
+            "sections": [
+                "panorama-section"
+            ]
+        },
+        "panorama-section": {
+            "type": "section",
+            "title": "Panorama",
+            "keys": [
+                "enable-panorama",
+                "background-panorama",
+                "panorama-ready-info",
+                "panorama-info"
+            ]
+        },
+        "rotating-page": {
+            "type": "page",
+            "title": "Mouse Rotation",
+            "sections": [
+                "shortcut-section",
+                "panel-section",
+                "rotating-section"
+            ]
+        },
+        "shortcut-section": {
+            "type": "section",
+            "title": "Hold a shortcut and move the mouse",
+            "keys": [
+                "cube-shortcut"
+            ]
+        },
+        "panel-section": {
+            "type": "section",
+            "title": "Drag a panel",
+            "keys": [
+                "enable-panel-dragging"
+            ]
+        },
+        "rotating-section": {
+            "type": "section",
+            "title": "While rotating",
+            "keys": [
+                "mouse-rotation-speed",
+                "do-explode",
+                "rotating-info"
+            ]
+        },
+        "hot-corner-page": {
+            "type": "page",
+            "title": "Hot Corners",
+            "sections": [
+                "hot-corner-section"
+            ]
+        },
+        "about-page": {
+            "type": "page",
+            "title": "About",
+            "sections": [
+                "about-section"
+            ]
+        },
+        "about-section": {
+            "type": "section",
+            "title": "About Desktop Cube Reloaded",
+            "keys": [
+                "about-text"
+            ]
+        },
+        "edge-window-section": {
+            "type": "section",
+            "title": "Pushing a dragged window",
+            "keys": [
+                "enable-edge-switch",
+                "edge-switch-pressure"
+            ]
+        },
+        "edge-push-section": {
+            "type": "section",
+            "title": "Pushing the mouse",
+            "keys": [
+                "enable-edge-push",
+                "edge-push-action",
+                "edge-push-pressure",
+                "edge-push-modifier"
+            ]
+        },
+        "edge-peek-section": {
+            "type": "section",
+            "title": "Cube preview while pushing",
+            "keys": [
+                "edge-peek"
+            ]
+        },
+        "edge-page": {
+            "type": "page",
+            "title": "Screen Edges",
+            "sections": [
+                "edge-window-section",
+                "edge-push-section",
+                "edge-peek-section"
+            ]
+        }
+    },
+    "animation-time": {
+        "type": "spinbutton",
+        "default": 400,
+        "min": 100,
+        "max": 2000,
+        "step": 50,
+        "units": "milliseconds",
+        "description": "Rotation duration",
+        "tooltip": "How long the cube takes to rotate to the new workspace."
+    },
+    "last-first-gap": {
+        "type": "switch",
+        "default": true,
+        "description": "Leave a gap between the last and first workspace",
+        "tooltip": "When enabled, the workspaces cover only half a circle, so switching from the last to the first workspace rotates back through all of them. When disabled, the workspaces form a closed cube and wrapping around takes the shortest way.\n\nThis option is linked to Cinnamon's \"Allow cycling through workspaces\" setting (System Settings > Workspaces): turning cycling on turns this gap off, and turning cycling off turns the gap on. You can still change this option here, but the next change to the Cinnamon setting will override it, and so will disabling and re-enabling this extension."
+    },
+    "window-parallax": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "CompactScale",
+        "description": "Window parallax",
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.05,
+        "default": 0.5,
+        "tooltip": "How far windows float in front of the cube faces while it rotates. 0 keeps them flat on the faces.",
+        "digits": 2
+    },
+    "auto-zoom-out": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "CompactScale",
+        "description": "Zoom out while the cube moves (%)",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "default": 10,
+        "tooltip": "While the cube rotates, it moves back until it looks this much smaller than the screen, then comes forward again as it stops. When you rotate the cube with the mouse, it zooms out as you start moving the mouse. 0 turns it off.",
+        "digits": 0
+    },
+    "moving-window-transparency": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "CompactScale",
+        "description": "See-through moved window (%)",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "default": 30,
+        "tooltip": "A window you move to the next workspace (with the keyboard, or by dragging it against the screen edge) stays in front while the cube turns behind it. It becomes this much see-through while the cube moves, so you can see the cube behind it, and is solid again when the cube stops. 0 turns it off.",
+        "digits": 0
+    },
+    "panel-mode": {
+        "type": "combobox",
+        "default": "faces",
+        "description": "Panels while the cube is shown",
+        "options": {
+            "On the cube faces": "faces",
+            "Above the cube": "above",
+            "Hidden": "hide"
+        },
+        "tooltip": "On the cube faces: every face shows the panels of its monitor, which turn with the cube. Above the cube: the panels stay where they are and the cube turns behind them. Hidden: the cube is drawn above the panels. The panels themselves are not changed."
+    },
+    "per-monitor-perspective": {
+        "type": "switch",
+        "default": true,
+        "description": "Correct the perspective on each monitor",
+        "tooltip": "With several monitors, Cinnamon looks at the whole desktop from a single point in front of its center, so a cube on a monitor away from the center is seen from the side and looks skewed. This shows each monitor's cube as seen from straight in front of that monitor."
+    },
+    "enable-edge-switch": {
+        "type": "switch",
+        "default": true,
+        "description": "Switch workspaces by pushing a dragged window against the screen edge",
+        "tooltip": "While dragging a window, push it against the left or right edge of the screen to rotate to the next workspace. The window comes along."
+    },
+    "edge-switch-pressure": {
+        "type": "spinbutton",
+        "default": 200,
+        "min": 20,
+        "max": 2000,
+        "step": 10,
+        "units": "pixels",
+        "description": "Edge pressure",
+        "dependency": "enable-edge-switch",
+        "tooltip": "How far you have to push the mouse into the screen edge, within one second, before the workspace switches. Higher values make it less likely to switch by accident, for example when you only want to tile the window."
+    },
+    "enable-edge-push": {
+        "type": "switch",
+        "default": false,
+        "description": "Switch workspaces by pushing the mouse against the screen edge",
+        "tooltip": "Push the mouse pointer against the left or right edge of the screen to rotate to the next workspace. Edges between two monitors don't count."
+    },
+    "edge-push-action": {
+        "type": "combobox",
+        "default": "switch",
+        "description": "Action",
+        "dependency": "enable-edge-push",
+        "options": {
+            "Switch to the next workspace": "switch",
+            "Start free rotation": "free-rotate"
+        },
+        "tooltip": "Free rotation lets you turn the cube with the mouse, like the free rotation hot corner action. Left click or Enter switches to the workspace in front, right click or Esc goes back."
+    },
+    "edge-push-pressure": {
+        "type": "spinbutton",
+        "default": 400,
+        "min": 50,
+        "max": 3000,
+        "step": 10,
+        "units": "pixels",
+        "description": "Edge push pressure",
+        "dependency": "enable-edge-push",
+        "tooltip": "How hard you have to push the mouse into the screen edge before the workspace switches. Higher values make accidental switches less likely."
+    },
+    "edge-push-modifier": {
+        "type": "combobox",
+        "default": "none",
+        "description": "Only while holding",
+        "dependency": "enable-edge-push",
+        "options": {
+            "No key": "none",
+            "Ctrl": "ctrl",
+            "Alt": "alt",
+            "Shift": "shift"
+        },
+        "tooltip": "Only switch when this key is held while pushing against the edge."
+    },
+    "edge-peek": {
+        "type": "spinbutton",
+        "default": 5,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "units": "%",
+        "description": "Turn the cube while pushing",
+        "tooltip": "How far the cube turns towards the next workspace while you push, before it commits. 0 switches without a preview."
+    },
+    "enable-panorama": {
+        "type": "switch",
+        "default": false,
+        "description": "Show a panorama around the cube",
+        "tooltip": "Instead of black, show a 360° panorama image behind the cube. It turns with the cube and tilts with it."
+    },
+    "background-panorama": {
+        "type": "filechooser",
+        "default": "",
+        "description": "Panorama image",
+        "dependency": "enable-panorama",
+        "tooltip": "A 360° panorama in equirectangular projection (twice as wide as it is high), as used for photo spheres. Sites such as Poly Haven offer free ones."
+    },
+    "cube-shortcut": {
+        "type": "keybinding",
+        "default": "<Super><Alt>space",
+        "description": "Hold to rotate the cube",
+        "tooltip": "Keep the shortcut's modifier keys held and move the mouse anywhere on the screen: sideways rotates the cube, up and down tilts it, the scroll wheel zooms. Release the keys (or click) to switch to the workspace in front, or press Esc to go back."
+    },
+    "enable-panel-dragging": {
+        "type": "switch",
+        "default": true,
+        "description": "Rotate the cube by dragging an empty part of a panel",
+        "tooltip": "Hold the left mouse button on a panel, away from any applet, and move the mouse. Moving sideways rotates the cube, moving up or down tilts it, and the scroll wheel zooms in and out. Release the button to switch to the workspace in front, or press Esc to go back."
+    },
+    "mouse-rotation-speed": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "CompactScale",
+        "description": "Rotation speed",
+        "min": 0.5,
+        "max": 10.0,
+        "step": 0.5,
+        "default": 2.0,
+        "tooltip": "How far the cube rotates for a given mouse movement.",
+        "digits": 1
+    },
+    "do-explode": {
+        "type": "switch",
+        "default": true,
+        "description": "Spread the windows apart when the cube is tilted"
+    },
+    "panorama-ready-info": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "LabelWithTooltip",
+        "description": "After you pick a new panorama, a notification lets you know when it is ready to be shown around the cube.",
+        "dependency": "enable-panorama"
+    },
+    "panorama-info": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "LabelWithTooltip",
+        "description": "💡 Which images work? (see tooltip)",
+        "dependency": "enable-panorama",
+        "tooltip": "Use a 360° panorama in <b>equirectangular</b> projection: twice as wide as it is high, as used for photo spheres. JPEG and PNG always work; HDR formats such as .exr and .hdr only if your system can read them.\n\nA width of 4K to 8K looks good. The first time a new panorama is used, it is converted into a cube map in the background, which can take a few seconds. The result is cached in ~/.cache/desktop-cube-reloaded, so later it loads right away."
+    },
+    "rotating-info": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "LabelWithTooltip",
+        "description": "💡 Controls while rotating (see tooltip)",
+        "tooltip": "<b>Move sideways:</b> rotate the cube\n<b>Move up or down:</b> tilt the cube\n<b>Scroll wheel:</b> zoom in and out\n<b>Esc:</b> go back to the workspace you started on\n\nWhen you release the shortcut's keys (or the mouse button, when dragging a panel), the cube switches to the workspace facing you. If the mouse is still moving, the cube keeps turning a little in that direction."
+    },
+    "hot-corner-top-left": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "HotCornerChooser",
+        "corner": 0,
+        "default": "",
+        "description": "Top left corner",
+        "tooltip": "Pick a cube action to trigger it by pushing the mouse into this corner of the screen.\n\nIf Cinnamon already uses the corner for something else, that action is kept as the first item of this list: pick it again to put the corner back the way it was.\n\nThe hover delay and whether corners work over fullscreen windows are set in <i>System Settings → Hot Corners</i>."
+    },
+    "hot-corner-top-right": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "HotCornerChooser",
+        "corner": 1,
+        "default": "",
+        "description": "Top right corner",
+        "tooltip": "Pick a cube action to trigger it by pushing the mouse into this corner of the screen.\n\nIf Cinnamon already uses the corner for something else, that action is kept as the first item of this list: pick it again to put the corner back the way it was.\n\nThe hover delay and whether corners work over fullscreen windows are set in <i>System Settings → Hot Corners</i>."
+    },
+    "hot-corner-bottom-left": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "HotCornerChooser",
+        "corner": 2,
+        "default": "",
+        "description": "Bottom left corner",
+        "tooltip": "Pick a cube action to trigger it by pushing the mouse into this corner of the screen.\n\nIf Cinnamon already uses the corner for something else, that action is kept as the first item of this list: pick it again to put the corner back the way it was.\n\nThe hover delay and whether corners work over fullscreen windows are set in <i>System Settings → Hot Corners</i>."
+    },
+    "hot-corner-bottom-right": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "HotCornerChooser",
+        "corner": 3,
+        "default": "",
+        "description": "Bottom right corner",
+        "tooltip": "Pick a cube action to trigger it by pushing the mouse into this corner of the screen.\n\nIf Cinnamon already uses the corner for something else, that action is kept as the first item of this list: pick it again to put the corner back the way it was.\n\nThe hover delay and whether corners work over fullscreen windows are set in <i>System Settings → Hot Corners</i>."
+    },
+    "hot-corner-info": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "LabelWithTooltip",
+        "description": "💡 What the cube actions do (see tooltip)",
+        "tooltip": "<b>Rotate with the mouse:</b> move the mouse to turn the cube, no button or key held. Left-click (or Enter) switches to the workspace facing you; right-click (or Esc) goes back.\n\n<b>Rotate left / right:</b> switch to the workspace on the left / right, like Ctrl+Alt+Left/Right. Left-click in the corner to keep going.\n\nThese are the same corners as in <i>System Settings → Hot Corners</i>, where they show up as commands named cube-free-rotate, cube-rotate-left and cube-rotate-right. If this extension is turned off, those corners do nothing."
+    },
+    "open-workspace-settings": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "SettingsLauncher",
+        "module": "workspaces",
+        "description": "Cinnamon workspace settings",
+        "button": "Open Workspaces",
+        "tooltip": "Opens <i>System Settings → Workspaces</i>, where you can turn on \"Allow cycling through workspaces\" (linked to the gap option above) and change the workspace OSD."
+    },
+    "open-hot-corner-settings": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "SettingsLauncher",
+        "module": "hotcorner",
+        "description": "Cinnamon hot corner settings",
+        "button": "Open Hot Corners",
+        "tooltip": "Opens <i>System Settings → Hot Corners</i>, where you can set the hover delay of each corner and whether it works over fullscreen windows."
+    },
+    "ext-version": {
+        "type": "generic",
+        "default": ""
+    },
+    "gap-synced": {
+        "type": "generic",
+        "default": false
+    },
+    "new-install": {
+        "type": "generic",
+        "default": true
+    },
+    "about-text": {
+        "type": "custom",
+        "file": "CustomWidgets.py",
+        "widget": "About",
+        "description": "\n<b>Your workspaces, on a cube</b>\nVersion: ext-version\n\nDeveloped by: Kevin Langman\n<a href=\"https://github.com/klangman/Desktop-Cube-Reloaded\">Github</a> / <a href=\"https://github.com/klangman/Desktop-Cube-Reloaded/issues/new\">Report an issue</a>\n\nA port of the GNOME Shell extension <a href=\"https://github.com/Schneegans/Desktop-Cube\">Desktop Cube</a>\nby Simon Schneegans (<a href=\"https://ko-fi.com/schneegans\">Ko-fi</a> / <a href=\"https://github.com/sponsors/Schneegans\">GitHub Sponsors</a>)\n\nThe icon is a slightly modified version of Simon Schneegans' Desktop Cube icon, licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>",
+        "icon": "/icon.png"
+    }
+}

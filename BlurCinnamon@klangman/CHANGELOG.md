@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.7.1
+
+* New option: “Make windows opaque when maximized or full-screen”
+* Fixed blurred windows staying invisible after being shown (Thanks to [anthonytheinventor](https://github.com/anthonytheinventor))
+* Desktop-Cube-Reloaded interoperability
+
 ## 2.7.0
 
 ### New features

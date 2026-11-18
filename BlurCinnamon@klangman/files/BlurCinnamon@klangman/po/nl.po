@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.3.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-30 22:39-0400\n"
+"POT-Creation-Date: 2026-11-07 15:45-0500\n"
 "PO-Revision-Date: 2025-06-13 17:14+0200\n"
 "Last-Translator: qadzek\n"
 "Language-Team: \n"
@@ -16,55 +16,55 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. 6.0/extension.js:5354
+#. 6.0/extension.js:5454
 msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
 "or right-click to cancel."
 msgstr ""
 
-#. 6.0/extension.js:5365
+#. 6.0/extension.js:5465
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 
-#. 6.0/extension.js:5439
+#. 6.0/extension.js:5539
 msgid "(unknown application)"
 msgstr ""
 
-#. 6.0/extension.js:5474
+#. 6.0/extension.js:5574
 msgid ""
 "Note: The blur is only visible behind transparent windows. If this "
 "application doesn't support transparency, set its \"Opacity\" in the window "
 "list to less than 100."
 msgstr ""
 
-#. 6.0/extension.js:5477
+#. 6.0/extension.js:5577
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
 "therefore Blur Cinnamon effects can not be applied to it."
 msgstr ""
 
-#. 6.0/extension.js:5485
+#. 6.0/extension.js:5585
 #, javascript-format
 msgid "\"%s\" is already in the window list."
 msgstr ""
 
-#. 6.0/extension.js:5490
+#. 6.0/extension.js:5590
 #, javascript-format
 msgid "Enabled \"%s\" in the window list."
 msgstr ""
 
-#. 6.0/extension.js:5494
+#. 6.0/extension.js:5594
 #, javascript-format
 msgid ""
 "Added \"%s\" to the window list. Adjust its effect settings in the table."
 msgstr ""
 
-#. 6.0/extension.js:6585
+#. 6.0/extension.js:6726
 #, fuzzy
 msgid "Welcome to Blur Cinnamon"
 msgstr "Vervaag Cinnamon"
 
-#. 6.0/extension.js:6586
+#. 6.0/extension.js:6727
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -75,16 +75,16 @@ msgid ""
 "tint."
 msgstr ""
 
-#. 6.0/extension.js:6590
+#. 6.0/extension.js:6731
 #, fuzzy
 msgid "Open Blur Cinnamon Settings"
 msgstr "Vervaag Cinnamon"
 
-#. 6.0/extension.js:6696
+#. 6.0/extension.js:6837
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr ""
 
-#. 6.0/extension.js:6697
+#. 6.0/extension.js:6838
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -1533,6 +1533,18 @@ msgid ""
 "will have some minor persistent CPU costs when a dynamic blurred window is "
 "on top of two or more other windows. This option is recommended unless you "
 "are using video wallpaper like Hidamari"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->description
+msgid "Make windows opaque when maximized or full-screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->tooltip
+msgid ""
+"When enabled, windows with Blur Cinnamon effects will be made fully opaque "
+"while they are maximized or full-screen, ignoring the \"Opacity\" setting in "
+"the table above. The configured opacity is restored once the window is no "
+"longer maximized or full-screen."
 msgstr ""
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description

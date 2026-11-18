@@ -1,6 +1,6 @@
 # CinnamonBurnMyWindows
 
-Window open, close, minimize and unminimize effects for the Cinnamon desktop
+Window open, close, minimize, unminimize and raise effects for the Cinnamon desktop
 
 This is a Cinnamon port of the Gnome extension Burn-my-Windows which can be found here: 
 
@@ -43,15 +43,18 @@ To enable all the effects you need Cinnamon 6.7.6 (Mint 23) or better
 - Hexagon
 - Incinerate
 - Magic Lamp
+- Materialize - **New**
 - Mushroom
 - Pixelate
 - Pixel Wheel
 - Pixel Wipe
 - Portal
 - RGB Warp
+- Shredder - **New**
 - Team Rocket
 - TV Effect
 - TV Glitch
+- Venetian Blinds - **New**
 - Wisps
 
 ### Effects working in Cinnamon 6.7.6 (Mint 23) or better:
@@ -68,7 +71,7 @@ The first stable Cinnamon release that will run these 5 effects is 6.8 which is 
 
 ### Effects using layers (Cinnamon 6.2+)
 
-I added a "layers" feature to Cinnamon Burn My Windows which gives the effects access to 3 layers (the wallpaper, background windows and the target window). This enables new type of effects that can manipulate the desktop under an appearing/disappearing window. I added three new effects that utilize this new "layers" feature.
+I added a "layers" feature to Cinnamon Burn My Windows which gives the effects access to 3 layers (the wallpaper, background windows and the target window). This enables a new type of effect that can manipulate the desktop under an appearing/disappearing window. I added three new effects that utilize this new "layers" feature.
 
 - Aperture Panels
 - Morph
@@ -85,9 +88,9 @@ I added a "layers" feature to Cinnamon Burn My Windows which gives the effects a
 
 ## Sound Effects
 
-Burn My  Windows can now play **unique sound effects** for each type of window effect. 
+Burn My Windows can now play **unique sound effects** for each type of window effect. 
 
-By default the sound effects are disabled and **no sounds are shipped with the extension**, but you can download your own sound files and go to the "Effect Settings" tab in the Burn My Windows configuration (System-settings->Extension->Burn My Window->Configure(button)) to select different sound files to to be played when windows appear or disappear.
+By default the sound effects are disabled and **no sounds are shipped with the extension**, but you can download your own sound files and go to the "Effect Settings" tab in the Burn My Windows configuration (System-settings->Extension->Burn My Windows->Configure(button)) to select different sound files to be played when windows appear or disappear.
 
 **Burn My Windows respects the Cinnamon sound settings** and will only play sounds when the "Opening new windows", "Closing windows" and the "Minimizing windows" options are enabled under System-Setting->Sounds->Sounds(Tab), but the sound file played will be the one selected for the active Burn My Windows effect settings. The system wide sound file will play when no custom sound is selected for the active Burn My Windows effect.
 
@@ -108,7 +111,7 @@ If you like this extension, please consider making a donation to the author of t
 
 https://github.com/Schneegans/Burn-My-Windows
 
-If you want to help others find this Cinnamon extension, consider staring it here and on my Github page so that more people might learn of it's existence. The more stars it gets the more encouragement I'll have to continue working on it.
+If you want to help others find this Cinnamon extension, consider starring it here and on my Github page so that more people might learn of its existence. The more stars it gets the more encouragement I'll have to continue working on it.
 Thanks!
 
 ## Credits
