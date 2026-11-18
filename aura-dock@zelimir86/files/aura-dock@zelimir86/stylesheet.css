@@ -1,0 +1,96 @@
+/* Aura Dock - theme aware styles.
+ * The background colour is set from JavaScript so the opacity setting can
+ * change it live; everything structural lives here and can be overridden by
+ * dropping a matching block into ~/.config/cinnamon/theme/cinnamon.css. */
+
+.aura-dock {
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background-color: rgba(20, 20, 27, 0.85);
+}
+
+.aura-dock-icon {
+    padding: 3px;
+    border-radius: 12px;
+}
+
+.aura-dock-icon:hover {
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+.aura-dock-icon:focus {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Pseudo class used while another icon is dragged over this one. */
+.aura-dock-icon:drop {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+.aura-dock-icon.focused {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.aura-dock-indicator {
+    spacing: 2px;
+}
+
+.aura-dock-indicator-segment {
+    border-radius: 2px;
+    min-width: 3px;
+    min-height: 3px;
+}
+
+.aura-dock-indicator-segment.focused {
+}
+
+/* Thin strip on the screen edge that reveals a hidden dock. */
+.aura-dock-trigger {
+    background-color: rgba(255, 255, 255, 0.22);
+    border-radius: 99px;
+}
+
+.aura-dock-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+.aura-dock-menu-header {
+    font-weight: bold;
+}
+
+.aura-dock-window-title {
+    font-size: 0.92em;
+}
+
+.aura-dock-close {
+    border-radius: 99px;
+    padding: 6px;
+    min-width: 34px;
+    min-height: 34px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.aura-dock-close:hover {
+    background-color: rgba(255, 80, 80, 0.9);
+}
+
+/* Drop placeholder shown while dragging an application onto the dock. */
+.aura-dock-drop-placeholder {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 2px dashed rgba(255, 255, 255, 0.45);
+    border-radius: 12px;
+    min-width: 48px;
+    min-height: 48px;
+}
+
+.aura-dock-drop-placeholder StIcon {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.aura-dock-thumb {
+    border-radius: 6px;
+    margin-right: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
