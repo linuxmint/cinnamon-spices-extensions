@@ -1,0 +1,254 @@
+# MINT-DOCK
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mint-dock@hilyxx 1.0.1\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-10-25 21:46+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. extension.js:594
+msgid "System Settings"
+msgstr "Rendszerbeállítások"
+
+#. extension.js:598
+msgid "Application"
+msgstr "Alkalmazás"
+
+#. extension.js:951
+msgid "Unpin from dock"
+msgstr "Eltávolítás a dokkból"
+
+#. extension.js:951
+msgid "Pin to dock"
+msgstr "Rögzítés a dokkra"
+
+#. extension.js:971
+msgid "Quit"
+msgstr "Kilépés"
+
+#. extension.js:1650
+msgid "Trash"
+msgstr "Kuka"
+
+#. extension.js:1733
+msgid "Empty Trash"
+msgstr "Kuka kiürítése"
+
+#. extension.js:2058
+msgid "Dock settings"
+msgstr "Dokk beállítások"
+
+#. metadata.json->name
+msgid "Mint-Dock"
+msgstr "Mint-Dokk"
+
+#. metadata.json->description
+msgid "A native and customizable dock for Cinnamon."
+msgstr "Natív és testreszabható dokk a Cinnamonhoz."
+
+#. settings-schema.json->page_appearance->title
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#. settings-schema.json->page_behavior->title
+#. settings-schema.json->section_dock_behavior->title
+msgid "Behavior"
+msgstr "Viselkedés"
+
+#. settings-schema.json->section_dock_appearance->title
+msgid "Dock Appearance"
+msgstr "Dokk Megjelenése"
+
+#. settings-schema.json->section_dock_display->title
+msgid "Display"
+msgstr "Megjelenítés"
+
+#. settings-schema.json->section_animations->title
+msgid "Animations"
+msgstr "Animációk"
+
+#. settings-schema.json->section_windows->title
+msgid "Windows"
+msgstr "Ablakok"
+
+#. settings-schema.json->use-primary-monitor->description
+msgid "On primary display"
+msgstr "Az elsődleges képernyőn"
+
+#. settings-schema.json->monitor-index->description
+msgid "Show the dock on screen:"
+msgstr "A dokk megjelenítése a képernyőn:"
+
+#. settings-schema.json->monitor-index->tooltip
+msgid "Choose which screen to display the dock on."
+msgstr "Válaszd ki, melyik képernyőn jelenjen meg a dokk."
+
+#. settings-schema.json->dock-position->description
+msgid "Dock position on screen"
+msgstr "Dokk pozíciója a képernyőn"
+
+#. settings-schema.json->dock-position->options
+msgid "Top"
+msgstr "Fent"
+
+#. settings-schema.json->dock-position->options
+msgid "Bottom"
+msgstr "Lent"
+
+#. settings-schema.json->dock-position->options
+msgid "Left"
+msgstr "Bal"
+
+#. settings-schema.json->dock-position->options
+msgid "Right"
+msgstr "Jobb"
+
+#. settings-schema.json->dock-alignment->description
+msgid "Dock Alignment"
+msgstr "Dokk Igazítása"
+
+#. settings-schema.json->dock-alignment->options
+msgid "Start"
+msgstr "Elején"
+
+#. settings-schema.json->dock-alignment->options
+msgid "Center"
+msgstr "Közepén"
+
+#. settings-schema.json->dock-alignment->options
+msgid "End"
+msgstr "Végén"
+
+#. settings-schema.json->full-width->description
+msgid "Extend dock"
+msgstr "Dokk kiterjesztése"
+
+#. settings-schema.json->bg-color->description
+msgid "Background color"
+msgstr "Háttérszín"
+
+#. settings-schema.json->border-radius->units
+#. settings-schema.json->icon-size->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->border-radius->description
+msgid "Corner radius"
+msgstr "Sarok sugara"
+
+#. settings-schema.json->icon-size->description
+msgid "Icons size"
+msgstr "Ikon mérete"
+
+#. settings-schema.json->bg-opacity->description
+msgid "Background opacity (%)"
+msgstr "Háttér átlátszatlansága (%)"
+
+#. settings-schema.json->enable-animations->description
+msgid "Enable dock animations"
+msgstr "Dokk-animációk engedélyezése"
+
+#. settings-schema.json->spawn-animation-type->description
+msgid "Spawn animation style"
+msgstr "Megjelenési animációs stílus"
+
+#. settings-schema.json->spawn-animation-type->options
+#. settings-schema.json->click-animation-type->options
+msgid "Bounce"
+msgstr "Ruganyos"
+
+#. settings-schema.json->spawn-animation-type->options
+msgid "Slide"
+msgstr "Csúszó"
+
+#. settings-schema.json->click-animation-type->description
+msgid "Click animation style"
+msgstr "Kattintási animációs stílus"
+
+#. settings-schema.json->click-animation-type->options
+msgid "None"
+msgstr "Semmi"
+
+#. settings-schema.json->show-tooltips->description
+msgid "Show tooltips"
+msgstr "Eszköztippek megjelenítése"
+
+#. settings-schema.json->show-separators->description
+msgid "Show separators"
+msgstr "Elválasztók megjelenítése"
+
+#. settings-schema.json->show-trash->description
+msgid "Show Trash icon"
+msgstr "Kuka ikon megjelenítése"
+
+#. settings-schema.json->show-settings-icon->tooltip
+msgid ""
+"If disabled, you can still access the settings by right-clicking on the "
+"edges of the dock."
+msgstr ""
+"Ha le van tiltva, a beállításokat továbbra is elérheted, ha a dokk "
+"szélein jobb egérgombbal kattintasz."
+
+#. settings-schema.json->show-settings-icon->description
+msgid "Show dock settings icon"
+msgstr "Dokkbeállítások ikon megjelenítése"
+
+#. settings-schema.json->hide-unpinned->description
+msgid "Hide unpinned applications"
+msgstr "Nem rögzített alkalmazások elrejtése"
+
+#. settings-schema.json->hide-enabled->description
+msgid "Hide dock"
+msgstr "Dokk elrejtése"
+
+#. settings-schema.json->hide-mode->description
+msgid "Autohide mode"
+msgstr "Automatikus elrejtés módja"
+
+#. settings-schema.json->hide-mode->options
+msgid "Intelligent hide (dodges windows)"
+msgstr "Intelligens elrejtés (kikerüli az ablakokat)"
+
+#. settings-schema.json->hide-mode->options
+msgid "Auto hide"
+msgstr "Automatikus elrejtés"
+
+#. settings-schema.json->show-delay->units
+msgid "ms"
+msgstr "ms"
+
+#. settings-schema.json->show-delay->description
+msgid "Unhide delay (Sensitivity)"
+msgstr "Megjelenítési késleltetés (érzékenység)"
+
+#. settings-schema.json->show-delay->tooltip
+msgid ""
+"Time to wait before showing the dock. A higher value prevents accidental "
+"triggers (default: 500ms)."
+msgstr ""
+"A dokk megjelenítése előtti várakozási idő. A magasabb érték "
+"megakadályozza a véletlen aktiválást (alapértelmezett: 500 ms)."
+
+#. settings-schema.json->scroll-action->description
+msgid "Mouse scroll action on icons"
+msgstr "Egérgörgő-művelet az ikonokon"
+
+#. settings-schema.json->scroll-action->options
+msgid "Cycle through open windows"
+msgstr "Váltás a megnyitott ablakok között"
+
+#. settings-schema.json->scroll-action->options
+msgid "Minimize / Restore window"
+msgstr "Ablak kicsinyítése / visszaállítása"

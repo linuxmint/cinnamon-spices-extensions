@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 23:18+0100\n"
+"PO-Revision-Date: 2022-12-15 22:41+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: extension.js:172
+#, javascript-format
+msgid "%s enabled"
+msgstr "%s は有効です"
+
+#: extension.js:173
+msgid "Open the extension settings and customize your panels"
+msgstr "拡張機能の設定画面を開いてパネルをカスタマイズしましょう"
+
+#: extension.js:176
+msgid "Open settings"
+msgstr "設定を開く"
+
+#. metadata.json->name
+msgid "Transparent panels"
+msgstr "Transparent panels"
+
+#. metadata.json->description
+msgid "Transparentize your panels when there are no any maximized windows"
+msgstr "最大化されたウィンドウが無いときに、パネルを透明化"
+
+#. settings-schema.json->section-general->description
+msgid "General"
+msgstr "一般"
+
+#. settings-schema.json->transparency-type->description
+msgid "Type of transparency"
+msgstr "透明度の種類"
+
+#. settings-schema.json->transparency-type->options
+msgid "With shadow"
+msgstr "影付き"
+
+#. settings-schema.json->transparency-type->options
+msgid "Fully transparent"
+msgstr "透明"
+
+#. settings-schema.json->transparency-type->options
+msgid "Semi-transparent"
+msgstr "半透明"
+
+#. settings-schema.json->transparency-type->tooltip
+msgid "Choose the type of transparency you want."
+msgstr "お好みの透明度の種類を選びます。"
+
+#. settings-schema.json->theme-defined->description
+msgid "Use current theme styles"
+msgstr "現在のテーマスタイルを使用"
+
+#. settings-schema.json->theme-defined->tooltip
+msgid ""
+"Only for supported themes. Let the theme style the panels instead of using "
+"the extension presets. Use this in case the panels transparency is "
+"icorrectly set."
+msgstr ""
+"サポートされているテーマのみ。拡張機能のプリセットを使う代わりに、現在の"
+"テーマがパネルスタイルを決定します。パネルの透明度が正しく設定されていない"
+"場合に使用してください。"
+
+#. settings-schema.json->opacify->description
+msgid "Remove theme transparency (experimental)"
+msgstr "テーマの透明度を解除（実験的）"
+
+#. settings-schema.json->opacify->tooltip
+msgid "Remove panel transparency when it's not transparent."
+msgstr "パネルが透明でないときに透明化を解除します。"
+
+#. settings-schema.json->section-filters->description
+msgid "Filter panels"
+msgstr "パネルの選択"
+
+#. settings-schema.json->filters-description->description
+msgid "Select the panels that will be affected by this extension."
+msgstr "この拡張機能を適用するパネルを選択します。"
+
+#. settings-schema.json->panel-top->description
+msgid "Top panel"
+msgstr "上端パネル"
+
+#. settings-schema.json->panel-right->description
+msgid "Right panel"
+msgstr "右端パネル"
+
+#. settings-schema.json->panel-bottom->description
+msgid "Bottom panel"
+msgstr "下端パネル"
+
+#. settings-schema.json->panel-left->description
+msgid "Left panel"
+msgstr "左端パネル"

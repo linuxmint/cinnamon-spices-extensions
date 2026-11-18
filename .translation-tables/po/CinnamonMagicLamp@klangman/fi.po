@@ -1,0 +1,105 @@
+# MAGIC LAMP EFFECT
+# This file is put in the public domain.
+# klangman, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnamonMagicLamp@klangman 1.0.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-01 12:42-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. 5.6/extension.js:83
+msgid "ERROR"
+msgstr "VIRHE"
+
+#. 5.6/extension.js:83
+msgid "was NOT enabled"
+msgstr "eI ollut käytössä"
+
+#. 5.6/extension.js:84
+msgid "The existing extension"
+msgstr "Nykyinen laajennus"
+
+#. 5.6/extension.js:84
+msgid "conflicts with this extension."
+msgstr "on ristiriidassa tämän laajennuksen kanssa."
+
+#. metadata.json->name
+msgid "Magic Lamp Effect"
+msgstr "Magic Lamp Effect"
+
+#. metadata.json->description
+msgid ""
+"A minimize/unminimize magic lamp effect based on hermes83's Gnome extension"
+msgstr ""
+"Taikalamppu tehoste, joka perustuu Hermes83 tekemään Gnome laajennukseen"
+
+#. 5.6->settings-schema.json->keybinding-header->description
+msgid "Cinnamon Magic Lamp Settings"
+msgstr "Cinnamon Magic Lamp asetukset"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "default"
+msgstr "oletus"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "sine"
+msgstr "kaari"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "random"
+msgstr "satunnainen"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Default - Unminimize: Sine"
+msgstr "Pienennä: Oletus - Poista minimointi: Kaari"
+
+#. 5.6->settings-schema.json->effect->options
+msgid "Minimize: Sine - Unminimize: Default"
+msgstr "Pienennä: Kaari - Poista minimointi: Oletus"
+
+#. 5.6->settings-schema.json->effect->description
+msgid "The type of effect"
+msgstr "Tehosteen tyyli"
+
+#. 5.6->settings-schema.json->effect->tooltip
+msgid ""
+"Using 'default' will result in a curved effect where using 'sine' will "
+"result in a more wavy effect"
+msgstr ""
+"Oletus antaa suoremman tehosteen kun kaareva antaa enemmän aaltoilevan "
+"tehosteen"
+
+#. 5.6->settings-schema.json->duration->description
+msgid "Effect duration (ms)"
+msgstr "Tehosteen kesto (ms)"
+
+#. 5.6->settings-schema.json->duration->tooltip
+msgid "The time (in milliseconds) that the effect takes to complete"
+msgstr "Aika (millisekunteina) kun tehoste valmistuu"
+
+#. 5.6->settings-schema.json->x-tiles->description
+msgid "X Tiles"
+msgstr "X laatat"
+
+#. 5.6->settings-schema.json->x-tiles->tooltip
+msgid "This effects the quality and the cost of the animation"
+msgstr "Vaikuttaa animaation laatuun ja aikaan"
+
+#. 5.6->settings-schema.json->y-tiles->description
+msgid "Y Tiles"
+msgstr "Y laatat"
+
+#. 5.6->settings-schema.json->y-tiles->tooltip
+msgid "This effects the quality and the costs of the animation"
+msgstr "Vaikuttaa animaation laatuun ja aikaan"

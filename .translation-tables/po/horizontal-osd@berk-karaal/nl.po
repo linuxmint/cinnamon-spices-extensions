@@ -1,0 +1,252 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: horizontal-osd@berk-karaal 0.0.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-03-04 15:27+0100\n"
+"PO-Revision-Date: 2024-04-17 10:48+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Horizontal OSD"
+msgstr "Horizontale OSD"
+
+#. metadata.json->description
+msgid "Horizontal and customizable OSDs"
+msgstr "Horizontale en aanpasbare OSD's"
+
+#. settings-schema.json->general->title
+msgid "General"
+msgstr "Algemeen"
+
+#. settings-schema.json->general-osd-configs->title
+#. settings-schema.json->osd-window-colors->title
+#. settings-schema.json->advanced-osd-window-configs->title
+msgid "Osd Window"
+msgstr "OSD-venster"
+
+#. settings-schema.json->general-icon-configs->title
+#. settings-schema.json->icon-colors->title
+#. settings-schema.json->advanced-icon-configs->title
+msgid "Icon"
+msgstr "Pictogram"
+
+#. settings-schema.json->general-level-bar-configs->title
+#. settings-schema.json->level-bar-colors->title
+#. settings-schema.json->advanced-level-bar-configs->title
+msgid "Level Bar"
+msgstr "Niveaubalk"
+
+#. settings-schema.json->general-label-configs->title
+#. settings-schema.json->label-colors->title
+#. settings-schema.json->advanced-label-configs->title
+msgid "Label"
+msgstr "Label"
+
+#. settings-schema.json->colors->title
+msgid "Colors"
+msgstr "Kleuren"
+
+#. settings-schema.json->advanced->title
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#. settings-schema.json->select-horizontal-osds->title
+#. settings-schema.json->select-horizontal-osds-section->title
+msgid "Select OSDs"
+msgstr "Selecteer OSD's"
+
+#. settings-schema.json->osd-width->description
+msgid "Width of OSD window"
+msgstr "Breedte van het OSD-venster"
+
+#. settings-schema.json->osd-width->tooltip
+msgid "osd_width = this._popupSize * <this value>"
+msgstr "osd_width = this._popupSize * <this value>"
+
+#. settings-schema.json->osd-height->description
+msgid "Height of OSD window"
+msgstr "Hoogte van het OSD-venster"
+
+#. settings-schema.json->osd-height->tooltip
+msgid "osd_height = this._popupSize * <this value>"
+msgstr "osd_height = this._popupSize * <this value>"
+
+#. settings-schema.json->osd-border-radius->description
+msgid "Border radius od OSD window (in pixels)"
+msgstr "Straal van rand van het OSD-venster (in pixels)"
+
+#. settings-schema.json->osd-border-radius->tooltip
+#. settings-schema.json->level-bar-border-radius->tooltip
+msgid "border-radius: <this value>px;"
+msgstr "border-radius: <this value>px;"
+
+#. settings-schema.json->osd-position-x->description
+msgid "X position of OSD window relative to screen size by percentage"
+msgstr ""
+"X-positie van het OSD-venster relatief aan de schermgrootte in procenten"
+
+#. settings-schema.json->osd-position-x->tooltip
+msgid "0 is left, 100 is right"
+msgstr "0 is links, 100 is rechts"
+
+#. settings-schema.json->osd-position-y->description
+msgid "Y position of OSD window relative to screen size by percentage"
+msgstr ""
+"Y-positie van het OSD-venster relatief aan de schermgrootte in procenten"
+
+#. settings-schema.json->osd-position-y->tooltip
+msgid "0 is top, 100 is bottom"
+msgstr "0 is bovenaan, 100 is onderaan"
+
+#. settings-schema.json->osd-hide-timeout->description
+msgid "Hide timeout of OSD window (in milliseconds)"
+msgstr "Verbergtijd van het OSD-venster (in milliseconden)"
+
+#. settings-schema.json->icon-size->description
+msgid "Size of icon relative to OSD height by percentage"
+msgstr ""
+"Grootte van het pictogram relatief aan de hoogte van het OSD in procenten"
+
+#. settings-schema.json->icon-size->tooltip
+msgid "icon_size = osd_height * (<this value> / 100)"
+msgstr "icon_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->level-bar-size->description
+msgid "Size of level bar relative to OSD height by percentage"
+msgstr ""
+"Grootte van de niveaubalk relatief aan de hoogte van het OSD in procenten"
+
+#. settings-schema.json->level-bar-size->tooltip
+msgid "level_bar_size = osd_height * (<this value> / 100)"
+msgstr "level_bar_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->level-bar-border-radius->description
+msgid "Border radius of level bar (in pixels)"
+msgstr "Straal van rand van de niveaubalk (in pixels)"
+
+#. settings-schema.json->label-show->description
+msgid "Show label"
+msgstr "Toon label"
+
+#. settings-schema.json->label-size->description
+msgid "Size of label relative to OSD height by percentage"
+msgstr "Grootte van het label relatief aan de hoogte van het OSD in procenten"
+
+#. settings-schema.json->label-size->tooltip
+msgid "label_size = osd_height * (<this value> / 100)"
+msgstr "label_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->label-vertical-align-correction->description
+msgid ""
+"Label can not be centered correctly for now. You can adjust or decrease top "
+"margin of label here. (value: positive or negative int)"
+msgstr ""
+"Het label kan op dit moment niet correct worden gecentreerd. Je kunt hier de "
+"bovenmarge van het label aanpassen of verkleinen. (waarde: positief of "
+"negatief geheel getal)"
+
+#. settings-schema.json->label-vertical-align-correction->tooltip
+msgid "margin-top: (calculated_value + <this value>)px"
+msgstr "margin-top: (calculated_value + <this value>)px"
+
+#. settings-schema.json->osd-window-overwrite-colors->description
+msgid "Overwrite OSD window colors"
+msgstr "Overschrijf de kleuren van het OSD-venster"
+
+#. settings-schema.json->osd-window-border-color->description
+msgid "Border color of OSD window"
+msgstr "Randkleur van het OSD-venster"
+
+#. settings-schema.json->osd-window-background-color->description
+msgid "Background color of OSD window"
+msgstr "Achtergrondkleur van het OSD-venster"
+
+#. settings-schema.json->icon-overwrite-colors->description
+msgid "Overwrite icon color"
+msgstr "Overschrijf de kleur van het pictogram"
+
+#. settings-schema.json->icon-color->description
+msgid "Icon color"
+msgstr "Pictogramkleur"
+
+#. settings-schema.json->level-bar-overwrite-colors->description
+msgid "Overwrite level bar colors"
+msgstr "Overschrijf de kleuren van de niveaubalk"
+
+#. settings-schema.json->level-bar-foreground-color->description
+msgid "Level bar foreground color"
+msgstr "Voorgrondkleur van de niveaubalk"
+
+#. settings-schema.json->level-bar-background-color->description
+msgid "Level bar background color"
+msgstr "Achtergrondkleur van de niveaubalk"
+
+#. settings-schema.json->label-overwrite-colors->description
+msgid "Overwrite label color"
+msgstr "Overschrijf de kleur van het label"
+
+#. settings-schema.json->label-color->description
+msgid "Label color"
+msgstr "Labelkleur"
+
+#. settings-schema.json->osd-window-overwrite-css->description
+msgid "Overwrite CSS of OSD window"
+msgstr "Overschrijf CSS van het OSD-venster"
+
+#. settings-schema.json->osd-window-css->description
+msgid "CSS of OSD window"
+msgstr "CSS van het OSD-venster"
+
+#. settings-schema.json->icon-overwrite-css->description
+msgid "Overwrite CSS of icon"
+msgstr "Overschrijf CSS van het pictogram"
+
+#. settings-schema.json->icon-css->description
+msgid "CSS of icon"
+msgstr "CSS van het pictogram"
+
+#. settings-schema.json->level-bar-overwrite-css->description
+msgid "Overwrite CSS of level bar"
+msgstr "Overschrijf CSS van de niveaubalk"
+
+#. settings-schema.json->level-bar-background-css->description
+msgid "CSS of level bar"
+msgstr "CSS van de niveaubalk"
+
+#. settings-schema.json->level-bar-foreground-css->description
+msgid "CSS for foregorund of level bar"
+msgstr "CSS voor de voorgrond van de niveaubalk"
+
+#. settings-schema.json->label-overwrite-css->description
+msgid "Overwrite CSS of label"
+msgstr "Overschrijf CSS van het label"
+
+#. settings-schema.json->label-css->description
+msgid "CSS of label"
+msgstr "CSS van het label"
+
+#. settings-schema.json->select-osds-info-text->description
+msgid "You can choose which OSDs to be horizontal here"
+msgstr "Hier kunt u kiezen welke OSD's horizontaal moeten zijn"
+
+#. settings-schema.json->selected-volume-as-horizontal->description
+msgid "Volume OSD"
+msgstr "Volume OSD"
+
+#. settings-schema.json->selected-brightness-as-horizontal->description
+msgid "Brightness OSD"
+msgstr "Helderheid OSD"
+
+#. settings-schema.json->selected-mic-as-horizontal->description
+msgid "Microphone OSD"
+msgstr "Microfoon OSD"

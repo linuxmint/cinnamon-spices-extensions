@@ -1,0 +1,30 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: back-to-monitor@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-12 16:56+0200\n"
+"PO-Revision-Date: 2024-05-22 20:47+0800\n"
+"Last-Translator: 张鹏 <scbeta@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. metadata.json->name
+msgid "Back to Monitor"
+msgstr "回到显示器"
+
+#. metadata.json->description
+msgid "Move windows back to their original location when (re-)connecting a monitor."
+msgstr "当显示器重新连接时，移动窗口到显示器上他们原来的位置。"
+
+#. settings-schema.json->rememberState->description
+msgid "Remember window locations based on monitor connection"
+msgstr "基于显示器连接记住窗口位置"
+
+#. settings-schema.json->minimize->description
+msgid "Minimize windows when a monitor is disconnected"
+msgstr "当显示器断开连接时最小化窗口"

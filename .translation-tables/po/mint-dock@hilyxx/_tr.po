@@ -1,0 +1,14 @@
+# MINT-DOCK
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+msgid ""
+msgstr ""
+
+#. extension.js:598
+msgid "Application"
+msgstr ""
+
+#. settings-schema.json->hide-unpinned->description
+msgid "Hide unpinned applications"
+msgstr ""

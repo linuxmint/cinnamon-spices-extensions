@@ -1,0 +1,181 @@
+# CINNAMON APP LAUNCHER
+# This file is put in the public domain.
+# anaximeno, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-launcher@anaximeno 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-11-04 13:44-0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#. 6.4/launcher.js:341
+msgid "Lock Screen"
+msgstr "Pantalla de bloqueo"
+
+#. 6.4/launcher.js:342
+msgid "lock screen screensaver"
+msgstr "salvapantallas de la pantalla de bloqueo"
+
+#. 6.4/launcher.js:348
+msgid "Log Out"
+msgstr "Cerrar la sesión"
+
+#. 6.4/launcher.js:349
+msgid "logout sign out leave session"
+msgstr "cerrar sesión, salir, finalizar sesión"
+
+#. 6.4/launcher.js:355
+msgid "Shut Down"
+msgstr "Apagar"
+
+#. 6.4/launcher.js:356
+msgid "shutdown power off turn off"
+msgstr "apagar, desconectar, desactivar"
+
+#. 6.4/launcher.js:362
+msgid "Open Settings"
+msgstr "Abrir ajustes"
+
+#. 6.4/launcher.js:363
+msgid "preferences control panel"
+msgstr "panel de control de preferencias"
+
+#. 6.4/launcher.js:527
+msgid "Search apps, actions, or type a sum…"
+msgstr "Busca aplicaciones, acciones o escribe una suma…"
+
+#. 6.4/launcher.js:751
+msgid "System Action"
+msgstr "Acción del sistema"
+
+#. 6.4/launcher.js:872
+msgid "Frequently Used"
+msgstr "De uso frecuente"
+
+#. 6.4/launcher.js:874
+msgid "All Applications"
+msgstr "Todas las aplicaciones"
+
+#. 6.4/launcher.js:916
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#. 6.4/launcher.js:919
+msgid "Actions"
+msgstr "Acciones"
+
+#. metadata.json->name
+msgid "Cinnamon App Launcher"
+msgstr "Lanzador de aplicaciones Cinnamon"
+
+#. metadata.json->description
+msgid "A centered, search-first launcher for cinnamon."
+msgstr ""
+"Un lanzador centrado y con función de búsqueda prioritaria para Cinnamon."
+
+#. 6.4->settings-schema.json->main-page->title
+#. 6.4->settings-schema.json->general-section->title
+msgid "General"
+msgstr "General"
+
+#. 6.4->settings-schema.json->search-section->title
+msgid "Search"
+msgstr "Buscar"
+
+#. 6.4->settings-schema.json->open-launcher->description
+msgid "Open launcher keybinding"
+msgstr "Atajo de teclado para abrir el lanzador"
+
+#. 6.4->settings-schema.json->fuzzy-search->description
+msgid "Use fuzzy search"
+msgstr "Utiliza la búsqueda aproximada"
+
+#. 6.4->settings-schema.json->fuzzy-search->tooltip
+msgid ""
+"Matches letters in any order, like Alfred/Raycast. Disable for plain "
+"substring search, like the Cinnamon Menu."
+msgstr ""
+"Coincide con las letras en cualquier orden, como Alfred/Raycast. Desactívalo "
+"para realizar búsquedas de subcadenas sin modificadores, como en el menú de "
+"Cinnamon."
+
+#. 6.4->settings-schema.json->enable-calculator->description
+msgid "Enable the inline calculator"
+msgstr "Activar la calculadora integrada"
+
+#. 6.4->settings-schema.json->enable-calculator->tooltip
+msgid ""
+"Typing a sum like 12*(3+4) shows the result; Enter copies it to the "
+"clipboard."
+msgstr ""
+"Al escribir una operación como 12*(3+4) se muestra el resultado; al pulsar "
+"Intro, se copia en el portapapeles."
+
+#. 6.4->settings-schema.json->enable-system-actions->description
+msgid "Show system actions"
+msgstr "Mostrar acciones del sistema"
+
+#. 6.4->settings-schema.json->enable-system-actions->tooltip
+msgid ""
+"Lock Screen, Log Out, Shut Down and Open Settings, searchable from the same "
+"box."
+msgstr ""
+"Pantalla de bloqueo, cerrar sesión, apagar y abrir ajustes: todo ello "
+"accesible desde el mismo cuadro de búsqueda."
+
+#. 6.4->settings-schema.json->show-frequent-apps->description
+msgid "Show frequently used applications when the launcher opens"
+msgstr "Mostrar las aplicaciones más utilizadas al abrir el lanzador"
+
+#. 6.4->settings-schema.json->show-frequent-apps->tooltip
+msgid ""
+"Launches are tracked locally to rank frequently used applications. Disabling "
+"this stops tracking and deletes the recorded usage history."
+msgstr ""
+"Se realiza un seguimiento local de las aplicaciones que se abren para "
+"clasificar las que se utilizan con más frecuencia. Al desactivar esta "
+"función, se detiene el seguimiento y se borra el historial de uso registrado."
+
+#. 6.4->settings-schema.json->max-frequent-apps->description
+msgid "Maximum number of frequently used applications to show"
+msgstr "Número máximo de aplicaciones de uso frecuente que se mostrarán"
+
+#. 6.4->settings-schema.json->show-descriptions->description
+msgid "Show descriptions under each result"
+msgstr "Mostrar descripciones debajo de cada resultado"
+
+#. 6.4->settings-schema.json->enable-animations->description
+msgid "Enable animations"
+msgstr "Activar animaciones"
+
+#. 6.4->settings-schema.json->launcher-scale->description
+msgid "Launcher size"
+msgstr "Tamaño del lanzador"
+
+#. 6.4->settings-schema.json->launcher-scale->tooltip
+msgid "Overall size of the launcher window, independent of display scaling."
+msgstr ""
+"Tamaño total de la ventana del lanzador, independiente del escalado de la "
+"pantalla."
+
+#. 6.4->settings-schema.json->launcher-scale->options
+msgid "Small"
+msgstr "Pequeño"
+
+#. 6.4->settings-schema.json->launcher-scale->options
+msgid "Medium"
+msgstr "Medio"
+
+#. 6.4->settings-schema.json->launcher-scale->options
+msgid "Large"
+msgstr "Grande"

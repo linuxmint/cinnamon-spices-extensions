@@ -1,0 +1,180 @@
+# COMPIZ WINDOWS EFFECT
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-07-04 10:37-0400\n"
+"PO-Revision-Date: 2024-07-25 17:20+0200\n"
+"Last-Translator: Odyssey <odysseyhyd@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. extension.js:197
+msgid "Error"
+msgstr ""
+
+#. extension.js:198
+msgid ""
+"Unable to determine the application or the WM_CLASS of the previously "
+"focused window, therefore Compiz window effects can not be disabled for that "
+"window"
+msgstr ""
+
+#. metadata.json->description
+msgid "Compiz wobbly windows effect thanks to compiz plugin engine"
+msgstr ""
+"Efecte de finestres bambolejant de Compiz gràcies al motor de complements de "
+"Compiz"
+
+#. metadata.json->name
+msgid "Compiz windows effect"
+msgstr "Efecte de finestres Compiz"
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr ""
+
+#. settings-schema.json->exclude-page->title
+msgid "Exclude List"
+msgstr ""
+
+#. settings-schema.json->power-page->title
+msgid "Power"
+msgstr ""
+
+#. settings-schema.json->preset-section->title
+#, fuzzy
+msgid "Compiz windows effect configuration"
+msgstr "Efecte de finestres Compiz"
+
+#. settings-schema.json->effect-settings-section->title
+msgid "Custom effect settings"
+msgstr ""
+
+#. settings-schema.json->exclude-section->title
+msgid "Application windows where no window effects will be applied"
+msgstr ""
+
+#. settings-schema.json->power-section->title
+msgid "Manage power consumption"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+#. settings-schema.json->powerPresetList->options
+msgid "Subtle"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+#. settings-schema.json->powerPresetList->options
+msgid "Realistic"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+#. settings-schema.json->powerPresetList->options
+msgid "Exaggerated"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+#. settings-schema.json->powerPresetList->options
+msgid "Extreme"
+msgstr ""
+
+#. settings-schema.json->presetList->options
+#. settings-schema.json->powerPresetList->options
+msgid "Custom"
+msgstr ""
+
+#. settings-schema.json->presetList->description
+msgid "Effect style"
+msgstr ""
+
+#. settings-schema.json->powerPresetList->options
+msgid "None"
+msgstr ""
+
+#. settings-schema.json->powerPresetList->description
+msgid "Effect style when running on battery power"
+msgstr ""
+
+#. settings-schema.json->power-onbattery->description
+msgid "Use different effect settings when running on battery power"
+msgstr ""
+
+#. settings-schema.json->power-onbattery->tooltip
+msgid ""
+"When enabled, a set of options will appear allowing you to define the effect "
+"settings used when running on battery power and the battery charge state is "
+"less than the set limit. These settings will take precedence over the "
+"general settings when the battery charge state condition is met."
+msgstr ""
+
+#. settings-schema.json->power-percent->description
+msgid "When battery is less than (percent)"
+msgstr ""
+
+#. settings-schema.json->excludeList->description
+msgid "Application exclude list"
+msgstr ""
+
+#. settings-schema.json->excludeList->columns->title
+#, fuzzy
+msgid "Application"
+msgstr "Fricció"
+
+#. settings-schema.json->excludeList->tooltip
+msgid ""
+"Defines a list of applications where the \"Compiz window effect\" effects "
+"will not be applied."
+msgstr ""
+
+#. settings-schema.json->excludeButton->description
+msgid "Add entry for the application of the most recently focused window"
+msgstr ""
+
+#. settings-schema.json->excludeButton->tooltip
+msgid ""
+"Focus the window you want to disable window effects for, then return here "
+"and press this button."
+msgstr ""
+
+#. settings-schema.json->friction->description
+#, fuzzy
+msgid "Friction "
+msgstr "Fricció"
+
+#. settings-schema.json->springK->description
+msgid "Spring K"
+msgstr "Rebot"
+
+#. settings-schema.json->speedupFactorDivider->description
+#, fuzzy
+msgid "Speedup"
+msgstr "Factor d'acceleració"
+
+#. settings-schema.json->mass->description
+msgid "Mass      "
+msgstr ""
+
+#. settings-schema.json->xTiles->description
+#, fuzzy
+msgid "X Tiles  "
+msgstr "Mida de la quadrícula (X)"
+
+#. settings-schema.json->yTiles->description
+#, fuzzy
+msgid "Y Tiles  "
+msgstr "Mida de la quadrícula (Y)"
+
+#. settings-schema.json->maxUnmaxFactor->description
+msgid "Maximizing and Unmaximizing Factor"
+msgstr "Factor de maximització i des-maximització"

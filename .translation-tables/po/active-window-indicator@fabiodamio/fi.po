@@ -1,0 +1,71 @@
+# ACTIVE WINDOW INDICATOR
+# This file is put in the public domain.
+# fabiodamio, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: active-window-indicator@fabiodamio 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-08-04 18:18+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Active Window Indicator"
+msgstr "Active Window Indicator"
+
+#. metadata.json->description
+msgid "Highlights the active window with a customizable top bar."
+msgstr ""
+"Korostaa aktiivista ikkunaa yläpalkissa olevalla viivalla. Voit "
+"mukauttaa tätä monin tavoin."
+
+#. settings-schema.json->line-height->units
+#. settings-schema.json->slant-percent->units
+msgid "px"
+msgstr "px"
+
+#. settings-schema.json->line-height->description
+msgid "Line height"
+msgstr "Viivan korkeus"
+
+#. settings-schema.json->line-height->tooltip
+msgid "Set the height of the indicator line"
+msgstr "Aseta viivan korkeus sopivaksi"
+
+#. settings-schema.json->width-percent->units
+#. settings-schema.json->alpha-percent->units
+msgid "%"
+msgstr "%"
+
+#. settings-schema.json->width-percent->description
+msgid "Width relative to window"
+msgstr "Viivan leveys"
+
+#. settings-schema.json->slant-percent->description
+msgid "End slant"
+msgstr "Viivan kaltevuus"
+
+#. settings-schema.json->alpha-percent->description
+msgid "Opacity / Transparency"
+msgstr "Viivan läpinäkyvyys"
+
+#. settings-schema.json->anim-speed->description
+msgid "Gradient animation speed (1 = slow, 20 = fast)"
+msgstr "Liukuvärin animaatio (hidas 1-20  nopea)"
+
+#. settings-schema.json->color-start->description
+msgid "Start color"
+msgstr "Väri alkaa"
+
+#. settings-schema.json->color-end->description
+msgid "End color"
+msgstr "Väri päättyy"

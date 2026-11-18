@@ -1,0 +1,18 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->description
+msgid "Make windows opaque when maximized or full-screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->tooltip
+msgid ""
+"When enabled, windows with Blur Cinnamon effects will be made fully opaque "
+"while they are maximized or full-screen, ignoring the \"Opacity\" setting in "
+"the table above. The configured opacity is restored once the window is no "
+"longer maximized or full-screen."
+msgstr ""

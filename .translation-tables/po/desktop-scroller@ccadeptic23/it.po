@@ -1,0 +1,80 @@
+# DESKTOP SCROLLER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# ccadeptic23, 2017
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-12-22 12:37-0500\n"
+"PO-Revision-Date: 2025-08-26 18:52+0200\n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->name
+msgid "Desktop Scroller"
+msgstr "Desktop Scroller"
+
+#. metadata.json->description
+msgid ""
+"Switch between desktops by scrolling at left and right edges of the screen."
+msgstr ""
+"Passa da un desktop all'altro scorrendo sui bordi sinistro e destro dello "
+"schermo."
+
+#. settings-schema.json->showDirectionArrow->description
+msgid "Show direction arrow"
+msgstr "Mostra la freccia direzionale"
+
+#. settings-schema.json->showDirectionArrow->tooltip
+msgid "Check this to show an arrow indicating scroll direction."
+msgstr ""
+"Selezionare questa opzione per mostrare una freccia che indica la direzione "
+"di scorrimento."
+
+#. settings-schema.json->activationAreaWidth->units
+msgid "pixels"
+msgstr "pixels"
+
+#. settings-schema.json->activationAreaWidth->description
+msgid "Activation area width:"
+msgstr "Larghezza area di attivazione:"
+
+#. settings-schema.json->activationAreaWidth->tooltip
+msgid "Width of activation areas"
+msgstr "Larghezza delle aree di attivazione"
+
+#. settings-schema.json->showActivationAreas->description
+msgid "Show activation areas"
+msgstr "Mostra aree di attivazione"
+
+#. settings-schema.json->showActivationAreas->tooltip
+msgid ""
+"Check this to show the areas over which scrolling will switch the desktop."
+msgstr ""
+"Selezionare questa opzione per mostrare le aree su cui lo scorrimento "
+"commuterà il desktop."
+
+#. settings-schema.json->useSwitcherExtension->description
+msgid "Use a workspace switcher extension if installed"
+msgstr ""
+"Utilizza un'estensione per lo switcher dell'area di lavoro, se installata"
+
+#. settings-schema.json->useSwitcherExtension->tooltip
+msgid ""
+"Allow a Cinnamon extensions to animate the workspace change. This option has "
+"no effect unless a compatible extension is installed. Requires Desktop Cube "
+"2.0.2 or Flipper 2.0.0 and Cinnamon 5.4 or better."
+msgstr ""
+"Consente a un'estensione Cinnamon di animare il cambio dell'area di lavoro. "
+"Questa opzione non ha effetto a meno che non sia installata un'estensione "
+"compatibile. Richiede Desktop Cube 2.0.2 o Flipper 2.0.0 e Cinnamon 5.4 o "
+"versioni successive."
