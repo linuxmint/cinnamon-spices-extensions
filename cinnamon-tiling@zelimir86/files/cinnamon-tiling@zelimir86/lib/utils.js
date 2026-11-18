@@ -10,7 +10,7 @@ const Gettext = imports.gettext;
 var EPS = 0.002;
 var UUID = 'cinnamon-tiling@zelimir86';
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + '/locale');
 
 function _(text) {
     return Gettext.dgettext(UUID, text);

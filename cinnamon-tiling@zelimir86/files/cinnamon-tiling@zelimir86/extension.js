@@ -237,31 +237,29 @@ var Controller = class Controller {
     }
 
     _fileDialog(save, cb) {
-        const zenity = GLib.find_program_in_path('zenity');
         const fallback = GLib.build_filenamev([GLib.get_home_dir(), 'tiling-layouts.json']);
-        if (!zenity) {
+        // Gio.Subprocess searches PATH itself; without zenity it throws and the
+        // default file in the home directory is used instead.
+        const argv = ['zenity', '--file-selection', '--title', save ? _('Export layouts') : _('Import layouts'), `--file-filter=${_('JSON files')} | *.json`];
+        if (save)
+            argv.push('--save', '--confirm-overwrite', `--filename=${fallback}`);
+        let proc;
+        try {
+            proc = Gio.Subprocess.new(argv, Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_SILENCE);
+        } catch (e) {
             cb(fallback);
             return;
         }
-        const argv = [zenity, '--file-selection', '--title', save ? _('Export layouts') : _('Import layouts'), `--file-filter=${_('JSON files')} | *.json`];
-        if (save)
-            argv.push('--save', '--confirm-overwrite', `--filename=${fallback}`);
-        try {
-            const proc = Gio.Subprocess.new(argv, Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_SILENCE);
-            proc.communicate_utf8_async(null, null, (p, res) => {
-                try {
-                    const [, out] = p.communicate_utf8_finish(res);
-                    const path = (out || '').trim();
-                    if (p.get_successful() && path)
-                        cb(path);
-                } catch (e) {
-                    U.logError(e, 'file dialog');
-                }
-            });
-        } catch (e) {
-            U.logError(e, 'zenity');
-            cb(fallback);
-        }
+        proc.communicate_utf8_async(null, null, (p, res) => {
+            try {
+                const [, out] = p.communicate_utf8_finish(res);
+                const path = (out || '').trim();
+                if (p.get_successful() && path)
+                    cb(path);
+            } catch (e) {
+                U.logError(e, 'file dialog');
+            }
+        });
     }
 
     exportLayouts() {

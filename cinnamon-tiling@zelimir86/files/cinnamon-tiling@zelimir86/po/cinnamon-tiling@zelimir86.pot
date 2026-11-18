@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cinnamon-tiling@zelimir86 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-11-18 15:52+0100\n"
+"POT-Creation-Date: 2026-11-18 16:01+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. metadata.json->name
-#. extension.js:188 extension.js:275 extension.js:277 extension.js:300
-#. extension.js:302 lib/editor.js:227
+#. extension.js:188 extension.js:273 extension.js:275 extension.js:298
+#. extension.js:300 lib/editor.js:227
 msgid "Cinnamon Tiling"
 msgstr ""
 
@@ -27,38 +27,38 @@ msgstr ""
 msgid "Layouts were reset to the defaults."
 msgstr ""
 
-#. extension.js:246
+#. extension.js:243
 msgid "Export layouts"
 msgstr ""
 
-#. extension.js:246
+#. extension.js:243
 msgid "Import layouts"
 msgstr ""
 
-#. extension.js:246
+#. extension.js:243
 msgid "JSON files"
 msgstr ""
 
-#. extension.js:275
+#. extension.js:273
 #, javascript-format
 msgid "Exported %d layouts to %s."
 msgstr ""
 
-#. extension.js:277
+#. extension.js:275
 #, javascript-format
 msgid "Export failed: %s"
 msgstr ""
 
-#. extension.js:291
+#. extension.js:289
 msgid "The file contains no valid layouts."
 msgstr ""
 
-#. extension.js:300
+#. extension.js:298
 #, javascript-format
 msgid "Imported %d layouts."
 msgstr ""
 
-#. extension.js:302
+#. extension.js:300
 #, javascript-format
 msgid "Import failed: %s"
 msgstr ""
