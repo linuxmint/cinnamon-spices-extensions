@@ -1,0 +1,14 @@
+{
+    "uuid": "input-switch-popup@JozefCulen",
+    "name": "Input Switch Popup",
+    "description": "Shows your keyboard layouts at the text cursor when you switch input language, like macOS and Windows.",
+    "version": "1.0",
+    "url": "https://github.com/JozefCulen/cinnamon-input-switch-popup",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6"
+    ],
+    "author": "JozefCulen"
+}
