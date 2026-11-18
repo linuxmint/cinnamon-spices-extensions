@@ -1,0 +1,883 @@
+/* Areas where the mouse wheel changes a value or a choice instead of
+   switching tabs: they light up slightly when the mouse is over them. */
+.island-wheel {
+    border-radius: 13px;
+    transition-duration: 150ms;
+}
+
+.island-wheel:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.island-content {
+    padding: 12px 34px 10px 34px;
+    spacing: 0;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.island-main {
+    spacing: 6px;
+}
+
+.island-title {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.island-text {
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.island-empty {
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Tab orbs, on both sides of the island */
+.island-orbs {
+    spacing: 5px;
+}
+
+
+.island-orb {
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    color: rgba(255, 255, 255, 0.72);
+    background-color: rgba(18, 18, 22, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition-duration: 200ms;
+}
+
+.island-orb:hover {
+    color: white;
+    background-color: rgba(60, 60, 66, 0.9);
+}
+
+/* More than five orbs in a column: smaller and closer together, to fit */
+.island-orbs-tight {
+    spacing: 3px;
+}
+
+.island-orbs-tight .island-orb {
+    width: 22px;
+    height: 22px;
+    border-radius: 12px;
+}
+
+/* There is an unseen notification on that tab */
+.island-orb-unread {
+    color: #f2d06b;
+}
+
+.island-orb:checked {
+    color: rgb(22, 22, 26);
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 1px solid transparent;
+}
+
+/* Name of the tab on display, below the content */
+.island-tab-name {
+    text-align: center;
+    font-size: 8.5pt;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Pin and gear, in the corners of the tab name row */
+.island-button-corner {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.island-button-corner:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.island-button-corner:checked {
+    color: #69d795;
+}
+
+/* Round icon buttons */
+.island-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.island-button:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.island-button:active {
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.island-button-main {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Media tab: program volume and source tag */
+.island-media-volume {
+    width: 30px;
+    height: 100px;
+    spacing: 2px;
+}
+
+.island-source {
+    padding: 2px 9px;
+    border-radius: 10px;
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Song lyrics */
+.island-media {
+    spacing: 4px;
+}
+
+.island-lyric {
+    spacing: 3px;
+    height: 120px;
+    padding-top: 6px;
+}
+
+.island-lyric-current {
+    font-size: 14pt;
+    font-weight: bold;
+    color: white;
+}
+
+.island-lyric-near {
+    font-size: 11pt;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.island-lyric-far {
+    font-size: 11pt;
+    color: rgba(255, 255, 255, 0.26);
+}
+
+/* Media tab */
+.island-media {
+    spacing: 4px;
+}
+
+.island-music {
+    spacing: 18px;
+}
+
+.island-cover {
+    width: 76px;
+    height: 76px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.island-music-info {
+    spacing: 3px;
+}
+
+.island-progress-row {
+    spacing: 10px;
+    padding-top: 8px;
+}
+
+.island-progress {
+    height: 14px;
+}
+
+.island-time {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.island-controls {
+    spacing: 6px;
+}
+
+/* Volume tab: the mixer */
+.island-volume {
+    spacing: 14px;
+}
+
+.island-column-title {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.42);
+    padding-left: 10px;
+}
+
+.island-outputs-column {
+    width: 156px;
+    spacing: 3px;
+    padding: 4px;
+}
+
+.island-outputs-list {
+    spacing: 2px;
+}
+
+.island-output-row {
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 9pt;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.island-output-row:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.island-output-row:checked {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.island-dash {
+    width: 1px;
+    margin: 8px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.island-mixer {
+    spacing: 4px;
+}
+
+.island-channel {
+    width: 68px;
+    spacing: 2px;
+}
+
+.island-channel-value {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.6);
+    font-feature-settings: "tnum";
+}
+
+.island-slider-vertical {
+    width: 26px;
+}
+
+.island-channel-label {
+    spacing: 4px;
+}
+
+.island-channel-name {
+    font-size: 7.5pt;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.island-button-app {
+    padding: 2px 2px;
+    border-radius: 9px;
+}
+
+.island-button-app:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.island-button-app:active {
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.island-output-box {
+    spacing: 6px;
+}
+
+/* Pills and sliders, used in several tabs */
+.island-volume {
+    spacing: 2px;
+}
+
+.island-level {
+    spacing: 10px;
+}
+
+.island-slider {
+    height: 24px;
+}
+
+.island-percent {
+    width: 44px;
+    font-size: 9pt;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.island-outputs {
+    spacing: 8px;
+}
+
+.island-levels {
+    spacing: 2px;
+}
+
+.island-output {
+    padding: 4px 12px;
+    border-radius: 13px;
+    font-size: 9pt;
+    color: rgba(255, 255, 255, 0.72);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.island-output-box {
+    spacing: 6px;
+}
+
+.island-output:hover {
+    color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.island-output:checked {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    color: white;
+}
+
+/* Time tab: Pomodoro, timer and stopwatch */
+.island-time-tab {
+    spacing: 14px;
+}
+
+.island-modes {
+    width: 118px;
+    spacing: 2px;
+    padding: 4px;
+}
+
+/* Minute ruler of the timer and the Pomodoro */
+.island-ruler {
+    height: 52px;
+}
+
+.island-ruler-low {
+    height: 38px;
+}
+
+/* Pomodoro tab */
+.island-pomodoro {
+    spacing: 14px;
+}
+
+.island-clock-box {
+    width: 118px;
+}
+
+.island-phase-row {
+    spacing: 4px;
+}
+
+.island-button-small {
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+    color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.island-button-small:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.island-clock {
+    font-size: 26pt;
+    font-weight: bold;
+    font-feature-settings: "tnum";
+}
+
+/* The large number of the stopwatch */
+.island-clock-large {
+    font-size: 36pt;
+    font-weight: bold;
+    font-feature-settings: "tnum";
+}
+
+.island-phase {
+    font-size: 9pt;
+}
+
+.island-pomodoro-middle {
+    spacing: 2px;
+}
+
+.island-pomodoro-info {
+    spacing: 12px;
+}
+
+.island-cycles {
+    height: 10px;
+}
+
+.island-task {
+    padding: 3px 12px;
+    border-radius: 10px;
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.95);
+    caret-color: white;
+    selection-background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid transparent;
+}
+
+.island-task:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+.island-task:focus {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Files tab */
+.island-files-column {
+    spacing: 3px;
+}
+
+.island-files {
+    spacing: 10px;
+}
+
+.island-shelf {
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.island-shelf:hover {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+.island-file {
+    padding: 0 6px;
+    spacing: 4px;
+}
+
+.island-file-remove {
+    border-radius: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(60, 60, 64, 0.9);
+    transition-duration: 120ms;
+}
+
+.island-file-remove:hover {
+    color: #ffffff;
+    background-color: rgba(120, 120, 126, 0.95);
+}
+
+.island-file-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.island-file-name {
+    font-size: 8pt;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Notes tab */
+.island-notes {
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 8px 8px 6px 12px;
+    spacing: 4px;
+}
+
+.island-notes-text {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.95);
+    caret-color: white;
+    selection-background-color: rgba(255, 255, 255, 0.3);
+}
+
+.island-notes-hint {
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.island-notes-footer {
+    spacing: 6px;
+}
+
+.island-notes-status {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* Clipboard tab */
+.island-clipboard {
+    spacing: 3px;
+}
+
+.island-clip-list {
+    spacing: 4px;
+}
+
+.island-clip-row {
+    padding: 6px 12px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.island-clip-row:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.island-clip-row-box {
+    spacing: 8px;
+}
+
+.island-clip-tag {
+    font-size: 8.5pt;
+    width: 40px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.island-clip-text {
+    font-size: 11.5pt;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.island-clip-copy {
+    spacing: 4px;
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.island-clip-footer {
+    spacing: 10px;
+}
+
+.island-clip-clear {
+    font-size: 8pt;
+    padding: 1px 8px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.island-clip-clear:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Notifications tab (the list uses the Clipboard classes) */
+.island-notice-title {
+    font-size: 10.5pt;
+    font-weight: bold;
+    max-width: 260px;
+}
+
+.island-notice-text {
+    font-size: 10pt;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.island-notice-time {
+    font-size: 8.5pt;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* System tab */
+.island-system {
+    spacing: 10px;
+}
+
+.island-gauge {
+    padding: 8px 12px;
+    border-radius: 14px;
+    spacing: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.island-gauge-title {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.island-gauge-value {
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+.island-gauge-value-long {
+    font-size: 11.5pt;
+    padding: 3px 0 2px 0;
+}
+
+.island-gauge-bar {
+    height: 10px;
+}
+
+.island-disks {
+    spacing: 1px;
+}
+
+.island-disk-name {
+    font-size: 8.5pt;
+    font-weight: bold;
+}
+
+.island-disk-free {
+    font-size: 8pt;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.island-disk-track {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.island-disk-level {
+    height: 4px;
+    border-radius: 2px;
+}
+
+.island-gauge-graph {
+    height: 24px;
+    margin-top: 2px;
+}
+
+/* Weather tab */
+.island-weather {
+    spacing: 14px;
+}
+
+.island-weather-now {
+    spacing: 12px;
+    padding: 2px 8px;
+    border-radius: 14px;
+}
+
+.island-weather-now:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.island-weather-description {
+    font-size: 9.5pt;
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 8px;
+}
+
+.island-weather-day-name {
+    font-size: 9.5pt;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.island-weather-city {
+    font-size: 11pt;
+    color: rgba(255, 255, 255, 0.85);
+    padding-left: 8px;
+}
+
+.island-weather-tab {
+    spacing: 14px;
+}
+
+.island-weather-search {
+    spacing: 18px;
+}
+
+.island-weather-search-field {
+    width: 230px;
+    spacing: 6px;
+}
+
+.island-weather-days {
+    spacing: 16px;
+}
+
+.island-weather-day {
+    spacing: 4px;
+}
+
+.island-weather-band {
+    font-size: 10pt;
+    spacing: 5px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Agenda tab */
+.island-agenda-tab {
+    spacing: 26px;
+}
+
+.island-month {
+    spacing: 2px;
+    padding: 4px 6px;
+    border-radius: 12px;
+}
+
+.island-month:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.island-month-title {
+    font-size: 8.5pt;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.85);
+    padding-left: 4px;
+}
+
+.island-month-day {
+    width: 22px;
+    height: 13px;
+    font-size: 7.5pt;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.island-month-week {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.island-month-past {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.island-month-today {
+    border-radius: 6px;
+    font-weight: bold;
+    color: rgb(22, 22, 26);
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+.island-month-marked {
+    font-weight: bold;
+}
+
+.island-agenda {
+    spacing: 7px;
+}
+
+.island-agenda-row {
+    spacing: 10px;
+    padding: 1px 8px;
+    border-radius: 9px;
+}
+
+.island-agenda-row:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.island-agenda-day {
+    font-size: 9.5pt;
+    width: 84px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.island-agenda-time {
+    font-size: 9.5pt;
+    width: 74px;
+    font-weight: bold;
+}
+
+.island-agenda-title {
+    font-size: 10.5pt;
+}
+
+/* Tools tab */
+.island-tools {
+    spacing: 6px;
+}
+
+.island-tool {
+    padding: 12px 2px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.island-tool:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.island-tool:active {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+.island-tool:checked {
+    border: 1px solid rgba(242, 208, 107, 0.6);
+}
+
+.island-tool-box {
+    spacing: 4px;
+}
+
+.island-tool-name {
+    font-size: 8.5pt;
+    font-weight: bold;
+}
+
+.island-tool-detail {
+    font-size: 7pt;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Collapsed island */
+.island-mini {
+    padding: 0 14px;
+    spacing: 8px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.island-mini-cover {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.island-waves {
+    width: 18px;
+    height: 14px;
+}
+
+.island-mini-volume {
+    height: 14px;
+}
+
+.island-mini-clock {
+    font-size: 9.5pt;
+    font-weight: bold;
+}
+
+/* Coloured dot that marks the active item */
+.island-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+}
+
+.island-weather-low {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.island-mini-notice {
+    font-size: 9pt;
+}
+
+.island-mini-countdown {
+    spacing: 5px;
+}
