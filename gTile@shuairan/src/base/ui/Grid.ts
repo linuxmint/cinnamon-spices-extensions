@@ -566,6 +566,7 @@ export class Grid {
   }
 
   public destroy = (): void => {
+    this.Reset();
     for (let r in this.elements) {
       for (let c in this.elements[r]) {
         this.elements[r][c]._destroy();
@@ -573,10 +574,9 @@ export class Grid {
     }
 
     this.elementsDelegate._destroy();
-    // TODO: Check if needed
-    // @ts-ignore
-    this.topbar._destroy();
-    this.Reset();
+    // TopBar has no _destroy(). Destroying the grid actor also destroys
+    // the top bar, the buttons and their tooltips.
+    this.actor.destroy();
     // @ts-ignore
     this.monitor = null;
     // @ts-ignore
