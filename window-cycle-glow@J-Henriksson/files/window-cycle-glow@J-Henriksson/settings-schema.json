@@ -1,0 +1,18 @@
+{
+    "keybinding": {
+        "type": "keybinding",
+        "default": "<Alt>Escape",
+        "description": "Jump to the next window",
+        "tooltip": "Each press jumps to the next window, across all workspaces."
+    },
+    "border-color": {
+        "type": "colorchooser",
+        "default": "rgba(170,215,255,0.6)",
+        "description": "Border color"
+    },
+    "glow-color": {
+        "type": "colorchooser",
+        "default": "rgba(80,145,255,0.55)",
+        "description": "Glow color"
+    }
+}
