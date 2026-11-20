@@ -39,6 +39,7 @@
             "type": "section",
             "title": "Display",
             "keys": [
+                "follow-cursor",
                 "use-primary-monitor",
                 "monitor-index"
             ]
@@ -73,6 +74,12 @@
                 "scroll-action"
             ]
         }
+    },
+    "follow-cursor": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Follow the mouse across screens",
+        "tooltip": "Move the dock to the screen the mouse pointer is on. The screen chosen below is used at startup."
     },
     "use-primary-monitor": {
         "type": "checkbox",
