@@ -1,0 +1,487 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Aktivér Window Memory"
+
+msgid "Remember window size"
+msgstr "Husk vinduets størrelse"
+
+msgid "Remember window position"
+msgstr "Husk vinduets placering"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Gendan til den samme skærm, når den er tilsluttet"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Når den er slået fra, bevares placeringen i forhold til den skærm, som vinduet åbnes på."
+
+msgid "Remember workspace"
+msgstr "Husk arbejdsområde"
+
+msgid "Remember maximized state"
+msgstr "Husk maksimeret tilstand"
+
+msgid "Remember minimized state"
+msgstr "Husk minimeret tilstand"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Et vindue, der var minimeret, da det blev gemt, åbnes igen minimeret."
+
+msgid "Match windows by"
+msgstr "Genkend vinduer efter"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Vælger, hvilken gemt placering et vindue får, når et program har flere huskede vinduer.\n\n»Kun program«: et vindue får programmets nyeste gemte placering, som intet andet åbent vindue bruger. Det er det enkleste valg og passer til de fleste programmer.\n\n»Program og vinduestitel«: Window Memory leder først efter en gemt placering, hvor vinduet havde samme titel (der skelnes ikke mellem store og små bogstaver), så vinduer, der altid åbnes med samme titel, for eksempel det samme dokument eller websted, vender tilbage til deres egen placering. Hvis ingen titel passer, opfører det sig som »Kun program«.\n\nHvis »Husk minimeret tilstand« er slået til, foretrækkes en gemt placering, hvor vinduet ikke var minimeret, så der i det mindste åbnes ét synligt vindue, når et program havde ét minimeret og ét normalt vindue. En titel, der passer, kommer stadig først."
+
+msgid "Application only"
+msgstr "Kun program"
+
+msgid "Application and window title"
+msgstr "Program og vinduestitel"
+
+msgid "Also remember dialog windows"
+msgstr "Husk også dialogvinduer"
+
+msgid "Never remember these applications"
+msgstr "Husk aldrig disse programmer"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Husk aldrig disse programmer (WM-klasse)"
+
+msgid "Maximum remembered windows"
+msgstr "Maksimalt antal huskede vinduer"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "De vinduer, der har været usete længst, fjernes først."
+
+msgid "windows"
+msgstr "vinduer"
+
+msgid "Forget the focused window"
+msgstr "Glem det aktive vindue"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Glem alle huskede vinduer (kan ikke fortrydes, Esc annullerer)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Sikkerhedskopiér eller gendan indstillinger og huskede vinduer"
+
+msgid "Export backup…"
+msgstr "Eksportér sikkerhedskopi…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Gem alle indstillinger, listen over programmer, der aldrig huskes, og de huskede vinduer i en fil."
+
+msgid "Import backup…"
+msgstr "Importér sikkerhedskopi…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Erstat alle indstillinger og huskede vinduer med dem i en sikkerhedskopifil. Spørger først."
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Husker automatisk hvert vindues størrelse, placering, skærm, arbejdsområde, maksimerede tilstand og minimerede tilstand og gendanner dem, når programmet åbnes igen."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Det huskede vindue for %s blev glemt."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s er ikke husket, så intet blev glemt."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Det huskede vindue kunne ikke glemmes. Se loggen."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Det aktive vindue er ikke husket, så intet blev glemt."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory stoppede sig selv af sikkerhedshensyn: en funktion, det har brug for, mangler i denne version af Cinnamon."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory stoppede sig selv af sikkerhedshensyn: der var for mange fejl."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory stoppede sig selv af sikkerhedshensyn: Cinnamon blev genstartet flere gange i træk."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory stoppede sig selv af sikkerhedshensyn: det kunne ikke starte."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Når problemet er løst, kan du fortsætte ved at slette ~/.config/window-memory/safety.json. Hvis det sker igen, så rapportér et problem."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "For at fortsætte skal du slå »Aktivér Window Memory« fra og til igen i indstillingerne. Hvis det sker igen, så rapportér et problem."
+
+msgid "Forgot all remembered windows."
+msgstr "Alle huskede vinduer blev glemt."
+
+msgid "Forget all remembered windows?"
+msgstr "Vil du glemme alle huskede vinduer?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Ingen vinduer var husket, så der er intet at glemme."
+
+msgid "The remembered windows were not forgotten."
+msgstr "De huskede vinduer blev ikke glemt."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Det vides ikke, om de huskede vinduer blev glemt."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory svarede ikke i tide."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Alle huskede vinduer blev glemt, men ændringen kunne ikke gemmes."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "De huskede vinduer kan vende tilbage, næste gang Window Memory starter."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory kører ikke. Aktivér det i Systemindstillinger, og prøv så igen."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "%(count)d husket vindue blev glemt."
+msgstr[1] "%(count)d huskede vinduer blev glemt."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory bekræftede ikke gendannelsen i tide."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "De huskede vinduer er måske blevet erstattet, måske ikke, og de øvrige indstillinger blev ladt som de var. Det er sikkert at importere den samme sikkerhedskopi igen."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Filen er større end 20 MB og dermed for stor til at være en Window Memory-sikkerhedskopi."
+
+msgid "Could not save the backup."
+msgstr "Sikkerhedskopien kunne ikke gemmes."
+
+msgid "Could not restore the backup."
+msgstr "Sikkerhedskopien kunne ikke gendannes."
+
+msgid "Nothing was changed."
+msgstr "Intet blev ændret."
+
+msgid "The settings were not changed."
+msgstr "Indstillingerne blev ikke ændret."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "De huskede vinduer og de øvrige indstillinger blev ikke ændret."
+
+msgid "Importing the same backup again is safe."
+msgstr "Det er sikkert at importere den samme sikkerhedskopi igen."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Indstillingsskemaet kan ikke læses: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Indstillingsskemaet kan ikke læses: det er ikke et JSON-objekt."
+
+msgid "the state file is not valid JSON"
+msgstr "tilstandsfilen er ikke gyldig JSON"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "tilstandsfilen er ikke en tilstand i version %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Filen kan ikke læses: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Filen er ikke en almindelig fil."
+
+msgid "The file is not UTF-8 text."
+msgstr "Filen er ikke UTF-8-tekst."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Filen er ikke gyldig JSON: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien er hverken sand eller falsk."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien er ikke et heltal."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien ligger uden for intervallet %(min)s til %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien er ikke et af de mulige valg."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien er ikke en liste."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien har en post, der ikke er et objekt."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien har en post uden tekstværdien »%(column)s«."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien er ikke tekst."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Filen er ikke en Window Memory-sikkerhedskopi: den indeholder ikke et JSON-objekt."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Filen er ikke en Window Memory-sikkerhedskopi: dens »format« er ikke »%(format)s«."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Sikkerhedskopien er lavet af en nyere version af Window Memory (sikkerhedskopiformat %(found)d). Denne version kan kun læse format %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "Sikkerhedskopiens »version« er ikke %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Sikkerhedskopien har intet »settings«-objekt."
+
+msgid "The backup has no \"state\" object."
+msgstr "Sikkerhedskopien har intet »state«-objekt."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "»state«-objektets »version« i sikkerhedskopien er ikke %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "»state«-objektets »windows« i sikkerhedskopien er ikke en liste."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d indstilling"
+msgstr[1] "%(count)d indstillinger"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d husket vindue"
+msgstr[1] "%(count)d huskede vinduer"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Sikkerhedskopi gemt: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Ingen vinduer er husket endnu."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "De huskede vinduer kunne ikke læses (%(problem)s), så ingen blev gemt."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Vil du erstatte indstillingerne og %(count)d husket vindue med denne sikkerhedskopi fra %(time)s?"
+msgstr[1] "Vil du erstatte indstillingerne og %(count)d huskede vinduer med denne sikkerhedskopi fra %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Vil du erstatte indstillingerne og %(count)d husket vindue med denne sikkerhedskopi?"
+msgstr[1] "Vil du erstatte indstillingerne og %(count)d huskede vinduer med denne sikkerhedskopi?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "De nuværende indstillinger og huskede vinduer går tabt. Det kan ikke fortrydes."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "%(settings)s og %(windows)s blev gendannet."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d indstilling i sikkerhedskopien er ukendt for denne version af Window Memory og blev udeladt."
+msgstr[1] "%(count)d indstillinger i sikkerhedskopien er ukendte for denne version af Window Memory og blev udeladt."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "%(count)d husket vindue blev gendannet, men ikke alle indstillingerne."
+msgstr[1] "%(count)d huskede vinduer blev gendannet, men ikke alle indstillingerne."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Indstillingen »%(key)s« kunne ikke angives: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "%(count)d indstilling efter den blev heller ikke angivet."
+msgstr[1] "%(count)d indstillinger efter den blev heller ikke angivet."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "De huskede vinduer kunne ikke overdrages til Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Indstillingsfilen har ingen værdi for »%(key)s«."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Der kan ikke skrives til %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Indstillingen »%(key)s« kunne ikke sættes til %(value)d før gendannelsen: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Indstillingen »%(key)s« blev sat til %(new)d til gendannelsen og kunne ikke sættes tilbage til %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Eksportér sikkerhedskopi"
+
+msgid "_Cancel"
+msgstr "_Annullér"
+
+msgid "_Save"
+msgstr "_Gem"
+
+msgid "Import backup"
+msgstr "Importér sikkerhedskopi"
+
+msgid "_Open"
+msgstr "_Åbn"
+
+msgid "JSON files"
+msgstr "JSON-filer"
+
+msgid "All files"
+msgstr "Alle filer"
+
+msgid "_Replace"
+msgstr "_Erstat"
+
+msgid "unknown"
+msgstr "ukendt"
+
+msgid "(uncommitted changes)"
+msgstr "(ikke-committede ændringer)"
+
+msgid "Report an issue"
+msgstr "Rapportér et problem"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (eksperimentel)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Du bruger Cinnamons Wayland-session, som stadig er eksperimentel. Window Memory er testet med den på Cinnamon 6.0.5. Hvis et vindue ikke huskes som forventet, så brug »Rapportér et problem«."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Disse programmer starter, når du logger ind, og Window Memory sætter deres vinduer tilbage på plads, medmindre de er aktiveret på listen »Husk aldrig disse programmer«. Det er den samme liste som i Opstartsprogrammer."
+
+msgid "No applications start at login."
+msgstr "Ingen programmer starter ved login."
+
+msgid "Pick a window to start at login"
+msgstr "Vælg et vindue, der skal starte ved login"
+
+msgid "Remove"
+msgstr "Fjern"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Tilføj eller redigér i Opstartsprogrammer…"
+
+msgid "(system entry)"
+msgstr "(systempost)"
+
+msgid "delay %(seconds)d s"
+msgstr "forsinkelse %(seconds)d s"
+
+msgid "Undo"
+msgstr "Fortryd"
+
+msgid "Added %(name)s"
+msgstr "%(name)s tilføjet"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s er allerede på listen"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s slået til"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s gendannet"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s er ændret i mellemtiden og blev ikke rørt."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Kunne ikke læse opstartsprogrammerne: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Kunne ikke tilføje %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Kunne ikke ændre %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Kunne ikke starte valget: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Kunne ikke åbne Opstartsprogrammer: %(reason)s"
+
+msgid "Start at login"
+msgstr "Start ved login"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Command"
+msgstr "Kommando"
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Startup delay"
+msgstr "Opstartsforsinkelse"
+
+msgid "Cancel"
+msgstr "Annullér"
+
+msgid "Add"
+msgstr "Tilføj"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Denne kommando er et kvalificeret gæt ud fra vinduet. Tjek den, før du tilføjer."
+
+msgid "The command cannot be empty."
+msgstr "Kommandoen må ikke være tom."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Kommandoen er ikke gyldig: %(reason)s"
+
+msgid "General"
+msgstr "Generelt"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Indstillinger for window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Klik på et vindue for aldrig at huske dets program.  Esc eller højreklik annullerer."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Klik på et vindue for at starte dets program ved login.  Esc eller højreklik annullerer."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Klik her, og klik derefter på det vindue, du vil føje til listen over programmer, der aldrig huskes. Escape eller et højreklik annullerer."
+
+msgid "Enabled"
+msgstr "Aktiveret"
+
+msgid "Max windows"
+msgstr "Maks. vinduer"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Maksimalt antal huskede vinduer. De vinduer, der er set for længst siden, fjernes først."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Vælg et vindue, der aldrig skal huskes (klik på det, Esc eller højreklik annullerer)"
+
+msgid "Startup apps"
+msgstr "Opstartsapps"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Indstillingen »%(key)s« i sikkerhedskopien har en post, hvor »%(column)s« ikke er true eller false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Vinduer fra disse programmer gemmes og gendannes aldrig. Angiv WM_CLASS: kør xprop WM_CLASS i en terminal, og klik derefter på vinduet. Der skelnes ikke mellem store og små bogstaver, og en del af navnet er nok. En post uden markering bliver på listen, men ignoreres: vinduer fra det program huskes igen. Du kan også bruge knappen »Vælg et vindue« til at tilføje poster automatisk."

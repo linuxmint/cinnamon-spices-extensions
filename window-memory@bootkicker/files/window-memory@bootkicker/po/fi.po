@@ -1,0 +1,487 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Ota Window Memory käyttöön"
+
+msgid "Remember window size"
+msgstr "Muista ikkunan koko"
+
+msgid "Remember window position"
+msgstr "Muista ikkunan sijainti"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Palauta samalle näytölle, kun se on kytketty"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Kun asetus ei ole käytössä, sijainti säilytetään suhteessa siihen näyttöön, jolla ikkuna avautuu."
+
+msgid "Remember workspace"
+msgstr "Muista työtila"
+
+msgid "Remember maximized state"
+msgstr "Muista suurennettu tila"
+
+msgid "Remember minimized state"
+msgstr "Muista pienennetty tila"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Ikkuna, joka oli tallennettaessa pienennetty, avautuu uudelleen pienennettynä."
+
+msgid "Match windows by"
+msgstr "Ikkunoiden tunnistusperuste"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Valitsee, minkä tallennetun paikan ikkuna saa, kun sovelluksella on useita muistettuja ikkunoita.\n\n”Vain sovellus”: ikkuna saa sovelluksen uusimman tallennetun paikan, jota mikään muu avoin ikkuna ei käytä. Tämä on yksinkertaisin valinta, ja se sopii useimmille ohjelmille.\n\n”Sovellus ja ikkunan otsikko”: Window Memory etsii ensin tallennetun paikan, jonka ikkunalla oli sama otsikko (isoilla ja pienillä kirjaimilla ei ole merkitystä), joten ikkunat, jotka avataan aina samalla otsikolla, kuten sama asiakirja tai verkkosivu, palaavat omalle paikalleen. Jos mikään otsikko ei täsmää, toiminta on sama kuin valinnassa ”Vain sovellus”.\n\nJos ”Muista pienennetty tila” on päällä, suositaan tallennettua paikkaa, jossa ikkuna ei ollut pienennettynä, jotta silloin, kun sovelluksella oli yksi pienennetty ja yksi tavallinen ikkuna, ainakin toinen niistä avautuu näkyviin. Täsmäävä otsikko on silti etusijalla."
+
+msgid "Application only"
+msgstr "Vain sovellus"
+
+msgid "Application and window title"
+msgstr "Sovellus ja ikkunan otsikko"
+
+msgid "Also remember dialog windows"
+msgstr "Muista myös valintaikkunat"
+
+msgid "Never remember these applications"
+msgstr "Älä koskaan muista näitä sovelluksia"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Älä koskaan muista näitä sovelluksia (WM-luokka)"
+
+msgid "Maximum remembered windows"
+msgstr "Muistettavien ikkunoiden enimmäismäärä"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Vähiten viime aikoina nähdyt ikkunat poistetaan ensin."
+
+msgid "windows"
+msgstr "ikkunaa"
+
+msgid "Forget the focused window"
+msgstr "Unohda aktiivinen ikkuna"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Unohda kaikki muistetut ikkunat (ei voi kumota, Esc peruuttaa)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Varmuuskopioi tai palauta asetukset ja muistetut ikkunat"
+
+msgid "Export backup…"
+msgstr "Vie varmuuskopio…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Tallenna tiedostoon kaikki asetukset, luettelo sovelluksista, joita ei koskaan muisteta, sekä muistetut ikkunat."
+
+msgid "Import backup…"
+msgstr "Tuo varmuuskopio…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Korvaa kaikki asetukset ja muistetut ikkunat varmuuskopiotiedoston sisällöllä. Kysyy ensin."
+
+msgid "Version"
+msgstr "Versio"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Muistaa automaattisesti jokaisen ikkunan koon, sijainnin, näytön, työtilan sekä suurennetun ja pienennetyn tilan ja palauttaa ne, kun sovellus avataan uudelleen."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Sovelluksen %s muistettu ikkuna unohdettiin."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "Sovellusta %s ei ole muistettu, joten mitään ei unohdettu."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Muistettua ikkunaa ei voitu unohtaa. Katso loki."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Aktiivista ikkunaa ei ole muistettu, joten mitään ei unohdettu."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory pysäytti itsensä turvallisuussyistä: sen tarvitsema toiminto puuttuu tästä Cinnamonin versiosta."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory pysäytti itsensä turvallisuussyistä: virheitä oli liian paljon."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory pysäytti itsensä turvallisuussyistä: Cinnamon käynnistyi uudelleen toistuvasti."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory pysäytti itsensä turvallisuussyistä: se ei voinut käynnistyä."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Voit jatkaa, kun ongelma on korjattu, poistamalla tiedoston ~/.config/window-memory/safety.json. Jos tämä toistuu, ilmoita ongelmasta."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Voit jatkaa kytkemällä asetuksista kohdan ”Ota Window Memory käyttöön” pois päältä ja takaisin päälle. Jos tämä toistuu, ilmoita ongelmasta."
+
+msgid "Forgot all remembered windows."
+msgstr "Kaikki muistetut ikkunat unohdettiin."
+
+msgid "Forget all remembered windows?"
+msgstr "Unohdetaanko kaikki muistetut ikkunat?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Yhtään ikkunaa ei ollut muistettu, joten unohdettavaa ei ole."
+
+msgid "The remembered windows were not forgotten."
+msgstr "Muistettuja ikkunoita ei unohdettu."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Ei tiedetä, unohdettiinko muistetut ikkunat."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory ei vastannut ajoissa."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Kaikki muistetut ikkunat unohdettiin, mutta muutosta ei voitu tallentaa."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Muistetut ikkunat voivat palata, kun Window Memory käynnistyy seuraavan kerran."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory ei ole käynnissä. Ota se käyttöön Järjestelmäasetuksissa ja yritä sitten uudelleen."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "%(count)d muistettu ikkuna unohdettiin."
+msgstr[1] "%(count)d muistettua ikkunaa unohdettiin."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory ei vahvistanut palautusta ajoissa."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Muistetut ikkunat on voitu korvata tai sitten ei, ja muut asetukset jätettiin ennalleen. Saman varmuuskopion tuominen uudelleen on turvallista."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Tiedosto on suurempi kuin 20 MB, liian suuri ollakseen Window Memoryn varmuuskopio."
+
+msgid "Could not save the backup."
+msgstr "Varmuuskopiota ei voitu tallentaa."
+
+msgid "Could not restore the backup."
+msgstr "Varmuuskopiota ei voitu palauttaa."
+
+msgid "Nothing was changed."
+msgstr "Mitään ei muutettu."
+
+msgid "The settings were not changed."
+msgstr "Asetuksia ei muutettu."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "Muistettuja ikkunoita ja muita asetuksia ei muutettu."
+
+msgid "Importing the same backup again is safe."
+msgstr "Saman varmuuskopion tuominen uudelleen on turvallista."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Asetusskeemaa ei voi lukea: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Asetusskeemaa ei voi lukea: se ei ole JSON-objekti."
+
+msgid "the state file is not valid JSON"
+msgstr "tilatiedosto ei ole kelvollista JSONia"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "tilatiedosto ei ole version %(version)d mukainen tila"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Tiedostoa ei voi lukea: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Tiedosto ei ole tavallinen tiedosto."
+
+msgid "The file is not UTF-8 text."
+msgstr "Tiedosto ei ole UTF-8-tekstiä."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Tiedosto ei ole kelvollista JSONia: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Asetus ”%(key)s” varmuuskopiossa ei ole tosi tai epätosi."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Asetus ”%(key)s” varmuuskopiossa ei ole kokonaisluku."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Asetus ”%(key)s” varmuuskopiossa on alueen %(min)s–%(max)s ulkopuolella."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Asetus ”%(key)s” varmuuskopiossa ei ole mikään sen vaihtoehdoista."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Asetus ”%(key)s” varmuuskopiossa ei ole luettelo."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Asetuksessa ”%(key)s” varmuuskopiossa on merkintä, joka ei ole objekti."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Asetuksessa ”%(key)s” varmuuskopiossa on merkintä, josta puuttuu teksti ”%(column)s”."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Asetus ”%(key)s” varmuuskopiossa ei ole tekstiä."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Tiedosto ei ole Window Memoryn varmuuskopio: se ei sisällä JSON-objektia."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Tiedosto ei ole Window Memoryn varmuuskopio: sen ”format” ei ole ”%(format)s”."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Varmuuskopion on tehnyt Window Memoryn uudempi versio (varmuuskopion muoto %(found)d). Tämä versio lukee vain muotoa %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "Varmuuskopion ”version” ei ole %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Varmuuskopiossa ei ole ”settings”-objektia."
+
+msgid "The backup has no \"state\" object."
+msgstr "Varmuuskopiossa ei ole ”state”-objektia."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "Varmuuskopion ”state”-objektin ”version” ei ole %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "Varmuuskopion ”state”-objektin ”windows” ei ole luettelo."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d asetus"
+msgstr[1] "%(count)d asetusta"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d muistettu ikkuna"
+msgstr[1] "%(count)d muistettua ikkunaa"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Varmuuskopio tallennettu: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Yhtään ikkunaa ei ole vielä muistettu."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "Muistettuja ikkunoita ei voitu lukea (%(problem)s), joten yhtäkään ei tallennettu."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Korvataanko asetukset ja %(count)d muistettu ikkuna tällä %(time)s tehdyllä varmuuskopiolla?"
+msgstr[1] "Korvataanko asetukset ja %(count)d muistettua ikkunaa tällä %(time)s tehdyllä varmuuskopiolla?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Korvataanko asetukset ja %(count)d muistettu ikkuna tällä varmuuskopiolla?"
+msgstr[1] "Korvataanko asetukset ja %(count)d muistettua ikkunaa tällä varmuuskopiolla?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Nykyiset asetukset ja muistetut ikkunat menetetään. Tätä ei voi kumota."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Palautettiin %(settings)s ja %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "Tämä Window Memoryn versio ei tunne varmuuskopion %(count)d asetusta, joten se jätettiin pois."
+msgstr[1] "Tämä Window Memoryn versio ei tunne varmuuskopion %(count)d asetusta, joten ne jätettiin pois."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Palautettiin %(count)d muistettu ikkuna, mutta ei kaikkia asetuksia."
+msgstr[1] "Palautettiin %(count)d muistettua ikkunaa, mutta ei kaikkia asetuksia."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Asetusta ”%(key)s” ei voitu asettaa: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "Myöskään sen jälkeen tulevaa %(count)d asetusta ei asetettu."
+msgstr[1] "Myöskään sen jälkeen tulevia %(count)d asetusta ei asetettu."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "Muistettuja ikkunoita ei voitu antaa Window Memorylle: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Asetustiedostossa ei ole arvoa avaimelle ”%(key)s”."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Kohteeseen %(path)s ei voi kirjoittaa: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Asetusta ”%(key)s” ei voitu asettaa arvoon %(value)d ennen palautusta: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Asetus ”%(key)s” asetettiin arvoon %(new)d palautusta varten, eikä sitä voitu asettaa takaisin arvoon %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Vie varmuuskopio"
+
+msgid "_Cancel"
+msgstr "_Peruuta"
+
+msgid "_Save"
+msgstr "_Tallenna"
+
+msgid "Import backup"
+msgstr "Tuo varmuuskopio"
+
+msgid "_Open"
+msgstr "_Avaa"
+
+msgid "JSON files"
+msgstr "JSON-tiedostot"
+
+msgid "All files"
+msgstr "Kaikki tiedostot"
+
+msgid "_Replace"
+msgstr "_Korvaa"
+
+msgid "unknown"
+msgstr "tuntematon"
+
+msgid "(uncommitted changes)"
+msgstr "(commitoimattomat muutokset)"
+
+msgid "Report an issue"
+msgstr "Ilmoita ongelmasta"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (kokeellinen)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Käytät Cinnamonin Wayland-istuntoa, joka on vielä kokeellinen. Window Memory on testattu sen kanssa Cinnamon 6.0.5:llä. Jos ikkunaa ei muisteta odotetulla tavalla, käytä kohtaa ”Ilmoita ongelmasta”."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Nämä sovellukset käynnistyvät kirjautuessasi, ja Window Memory palauttaa niiden ikkunat paikoilleen, ellei sovellus ole käytössä luettelossa »Älä koskaan muista näitä sovelluksia«. Lista on sama kuin Käynnistyvät ohjelmat -kohdassa."
+
+msgid "No applications start at login."
+msgstr "Mikään sovellus ei käynnisty kirjautumisen yhteydessä."
+
+msgid "Pick a window to start at login"
+msgstr "Valitse ikkuna, joka käynnistetään kirjautumisen yhteydessä"
+
+msgid "Remove"
+msgstr "Poista"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Lisää tai muokkaa kohdassa Käynnistyvät ohjelmat…"
+
+msgid "(system entry)"
+msgstr "(järjestelmän kohde)"
+
+msgid "delay %(seconds)d s"
+msgstr "viive %(seconds)d s"
+
+msgid "Undo"
+msgstr "Peru"
+
+msgid "Added %(name)s"
+msgstr "%(name)s lisätty"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s on jo luettelossa"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s otettu käyttöön"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s palautettu"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s muuttui välillä, joten sitä ei muutettu."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Käynnistyvien ohjelmien lukeminen epäonnistui: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Kohteen %(name)s lisääminen epäonnistui: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Kohteen %(name)s muuttaminen epäonnistui: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Valinnan aloittaminen epäonnistui: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Käynnistyvät ohjelmat -kohdan avaaminen epäonnistui: %(reason)s"
+
+msgid "Start at login"
+msgstr "Käynnistä kirjautuessa"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Command"
+msgstr "Komento"
+
+msgid "Comment"
+msgstr "Kommentti"
+
+msgid "Startup delay"
+msgstr "Käynnistyksen viive"
+
+msgid "Cancel"
+msgstr "Peru"
+
+msgid "Add"
+msgstr "Lisää"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Tämä komento on arvaus ikkunan perusteella. Tarkista se ennen lisäämistä."
+
+msgid "The command cannot be empty."
+msgstr "Komento ei voi olla tyhjä."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Komento ei kelpaa: %(reason)s"
+
+msgid "General"
+msgstr "Yleiset"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "window-memory@bootkicker - asetukset"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Napsauta ikkunaa, jonka sovellusta ei koskaan muisteta.  Esc tai hiiren oikea painike peruuttaa."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Napsauta ikkunaa, jonka sovellus käynnistetään kirjautuessa.  Esc tai hiiren oikea painike peruuttaa."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Napsauta tätä ja napsauta sitten ikkunaa, jonka haluat lisätä luetteloon sovelluksista, joita ei koskaan muisteta. Escape tai napsautus hiiren oikealla painikkeella peruuttaa."
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+msgid "Max windows"
+msgstr "Ikkunoita enintään"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Muistettavien ikkunoiden enimmäismäärä. Pisimpään näkemättä olleet ikkunat poistetaan ensin."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Valitse ikkuna, jota ei koskaan muisteta (napsauta sitä, Esc tai oikea napsautus peruuttaa)"
+
+msgid "Startup apps"
+msgstr "Käynnistyvät ohjelmat"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Varmuuskopion asetuksessa ”%(key)s” on merkintä, jonka ”%(column)s” ei ole true eikä false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Näiden sovellusten ikkunoita ei koskaan tallenneta eikä palauteta. Anna WM_CLASS: suorita xprop WM_CLASS päätteessä ja napsauta sitten ikkunaa. Vertailussa kirjainkoolla ei ole merkitystä, ja nimestä riittää osa. Merkitsemätön merkintä pysyy luettelossa mutta sitä ei huomioida: kyseisen sovelluksen ikkunat muistetaan taas. Voit myös käyttää sen sijaan painiketta ”Valitse ikkuna”, jolloin merkinnät lisätään automaattisesti."
