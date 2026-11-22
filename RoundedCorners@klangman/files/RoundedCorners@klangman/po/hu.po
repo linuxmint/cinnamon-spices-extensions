@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RoundedCorners@klangman 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-29 09:56-0400\n"
+"POT-Creation-Date: 2026-11-22 12:30-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:51
+#. 6.0/extension.js:52
 msgid ""
 "Click a window to add its application to the inclusion list.  Esc or right-"
 "click to cancel."
@@ -26,22 +26,22 @@ msgstr ""
 "Kattintson egy ablakra, hogy hozzáadja az alkalmazását a befogadási "
 "listához.  Esc vagy jobb klikk a megszakításhoz."
 
-#. 6.0/extension.js:52
+#. 6.0/extension.js:53
 #, javascript-format
 msgid "\"%s\" is already in the inclusion list."
 msgstr "A(z) „%s” már szerepel a felvételi listán."
 
-#. 6.0/extension.js:53
+#. 6.0/extension.js:54
 #, javascript-format
 msgid "Enabled \"%s\" in the inclusion list."
 msgstr "Engedélyezve: „%s” a befogadási listában."
 
-#. 6.0/extension.js:54
+#. 6.0/extension.js:55
 #, javascript-format
 msgid "Added \"%s\" to the inclusion list."
 msgstr "„%s” hozzáadva a befogadási listához."
 
-#. 6.0/extension.js:56
+#. 6.0/extension.js:57
 msgid ""
 "Click a window to add its application to the exclusion list.  Esc or right-"
 "click to cancel."
@@ -49,22 +49,22 @@ msgstr ""
 "Kattintson egy ablakra, hogy hozzáadja az alkalmazását a kivételek "
 "listájához.  Esc vagy jobb klikk a megszakításhoz."
 
-#. 6.0/extension.js:57
+#. 6.0/extension.js:58
 #, javascript-format
 msgid "\"%s\" is already in the exclusion list."
 msgstr "A(z) „%s” már szerepel a kizárási listán."
 
-#. 6.0/extension.js:58
+#. 6.0/extension.js:59
 #, javascript-format
 msgid "Enabled \"%s\" in the exclusion list."
 msgstr "Engedélyezve: „%s” a kizárási listában."
 
-#. 6.0/extension.js:59
+#. 6.0/extension.js:60
 #, javascript-format
 msgid "Added \"%s\" to the exclusion list."
 msgstr "„%s” hozzáadva a kizárási listához."
 
-#. 6.0/extension.js:61
+#. 6.0/extension.js:62
 msgid ""
 "Click a window to add its application to the application border list.  Esc "
 "or right-click to cancel."
@@ -72,26 +72,26 @@ msgstr ""
 "Kattintson egy ablakra, hogy hozzáadja az alkalmazását az alkalmazásszegély-"
 "listához.  Esc vagy jobb klikk a megszakításhoz."
 
-#. 6.0/extension.js:62
+#. 6.0/extension.js:63
 #, javascript-format
 msgid "\"%s\" is already in the application border list."
 msgstr "A(z) „%s” már szerepel az alkalmazásszegély-listában."
 
-#. 6.0/extension.js:63
+#. 6.0/extension.js:64
 #, javascript-format
 msgid "Enabled \"%s\" in the application border list."
 msgstr "Engedélyezve: „%s” az alkalmazásszegély-listában."
 
-#. 6.0/extension.js:64
+#. 6.0/extension.js:65
 #, javascript-format
 msgid "Added \"%s\" to the application border list."
 msgstr "„%s” hozzáadva az alkalmazásszegély-listához."
 
-#. 6.0/extension.js:220
+#. 6.0/extension.js:336
 msgid "Welcome to Rounded Corners"
 msgstr "Üdvözöljük a Lekerekített Sarkoknál"
 
-#. 6.0/extension.js:221
+#. 6.0/extension.js:337
 msgid ""
 "Thanks for installing Rounded Corners!\n"
 "\n"
@@ -103,42 +103,42 @@ msgid ""
 msgstr ""
 "Köszönjük, hogy telepítetted a Lekerekített Sarkokat!\n"
 "\n"
-"Alapértelmezés szerint egyetlen ablak sarka sem lesz lekerekítve, amíg ezt "
-"a beállításokban nem engedélyezed. Nyisd meg a Rounded Corners "
-"beállításait, és válaszd ki, hogy az összes ablak sarkát lekerekítse-e a "
-"program, vagy add hozzá a kiválasztott alkalmazásokat egy engedélyezési "
-"listához. Emellett módosíthatod a sarkok lekerekítésének mértékét, valamint "
-"szegélyeket és árnyékokat is hozzáadhatsz."
+"Alapértelmezés szerint egyetlen ablak sarka sem lesz lekerekítve, amíg ezt a "
+"beállításokban nem engedélyezed. Nyisd meg a Rounded Corners beállításait, "
+"és válaszd ki, hogy az összes ablak sarkát lekerekítse-e a program, vagy add "
+"hozzá a kiválasztott alkalmazásokat egy engedélyezési listához. Emellett "
+"módosíthatod a sarkok lekerekítésének mértékét, valamint szegélyeket és "
+"árnyékokat is hozzáadhatsz."
 
-#. 6.0/extension.js:224
+#. 6.0/extension.js:340
 msgid "Open Rounded Corners Settings"
 msgstr "Lekerekített Sarkok beállításainak megnyitása"
 
-#. 6.0/extension.js:690
+#. 6.0/extension.js:1122
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 "Nem sikerült elindítani az ablakválasztót. Zárjon be minden megnyitott "
 "menüt, majd próbálja újra."
 
-#. 6.0/extension.js:764
+#. 6.0/extension.js:1196
 msgid "(unknown application)"
 msgstr "(ismeretlen alkalmazás)"
 
-#. 6.0/extension.js:800
+#. 6.0/extension.js:1232
 msgid "That window has no WM_CLASS or application id, so it can't be added."
 msgstr ""
 "Az ablak nem rendelkezik WM_CLASS-szal vagy alkalmazásazonosítóval, ezért "
 "nem adható hozzá."
 
-#. 6.0/CustomWidgets.py:135
+#. 6.0/CustomWidgets.py:137
 msgid "When off, the default colour is used"
 msgstr "Kikapcsolt állapotban az alapértelmezett szín használatos."
 
-#. 6.0/CustomWidgets.py:191
+#. 6.0/CustomWidgets.py:193
 msgid "Default"
 msgstr "Alapértelmezett"
 
-#. 6.0/CustomWidgets.py:227
+#. 6.0/CustomWidgets.py:229
 msgid "Use Default"
 msgstr "Alapértelmezett használata"
 
@@ -225,9 +225,9 @@ msgid ""
 "<b>Corners</b> tab), replacing the desktop's own shadow for those windows. "
 "Other windows keep their normal shadow."
 msgstr ""
-"Ez az árnyék csak lekerekített sarkú ablakokon rajzolódik (lásd a "
-"<b>Sarkok</b> fület), és az asztal saját árnyékát helyettesíti ezeknél az "
-"ablakoknál. A többi ablak megtartja a normál méretét."
+"Ez az árnyék csak lekerekített sarkú ablakokon rajzolódik (lásd a <b>Sarkok</"
+"b> fület), és az asztal saját árnyékát helyettesíti ezeknél az ablakoknál. A "
+"többi ablak megtartja a normál méretét."
 
 #. 6.0->settings-schema.json->auto-include->description
 msgid "Round the corners of all windows by default"
@@ -285,8 +285,7 @@ msgid ""
 msgstr ""
 "Az ablak maximalizált állapotában eltávolítja a lekerekített sarkokat, a "
 "keretet és az árnyékot, az ablak méretének csökkentésekor pedig "
-"visszaállítja azokat. A teljes képernyős ablakok sarkai sosem "
-"lekerekítettek."
+"visszaállítja azokat. A teljes képernyős ablakok sarkai sosem lekerekítettek."
 
 #. 6.0->settings-schema.json->windows-inclusion-list->description
 msgid "Application window inclusion list"
@@ -323,8 +322,8 @@ msgid ""
 msgstr ""
 "Meghatározza azon alkalmazásablakok listáját, amelyeken a lekerekített "
 "sarkok effektusai alkalmazásra kerülnek, valamint azt, hogy pontosan milyen "
-"effektusokról van szó. Az „Alkalmazás” (Application) mező megadható "
-"WM_CLASS-ként vagy egy asztali fájl (desktop file) neveként."
+"effektusokról van szó. Az „Alkalmazás” (Application) mező megadható WM_CLASS-"
+"ként vagy egy asztali fájl (desktop file) neveként."
 
 #. 6.0->settings-schema.json->windows-exclusion-list->description
 msgid "Application window exclusion list"
@@ -358,8 +357,8 @@ msgstr ""
 "Kattints ide, majd jelölj ki egy tetszőleges ablakot, hogy hozzáadd az "
 "alkalmazását a fenti listához (ez az a lista, amely az alapértelmezés "
 "szerint lekerekített sarkú ablakokat tartalmazza – vagyis a kivételek "
-"listáját –, egyéb esetben pedig a belefoglalandó elemek listáját). A "
-"művelet megszakításához nyomd meg az Esc billentyűt, vagy kattints a jobb "
+"listáját –, egyéb esetben pedig a belefoglalandó elemek listáját). A művelet "
+"megszakításához nyomd meg az Esc billentyűt, vagy kattints a jobb "
 "egérgombbal."
 
 #. 6.0->settings-schema.json->border-mode->description
@@ -368,6 +367,7 @@ msgid "Border"
 msgstr "Szegély"
 
 #. 6.0->settings-schema.json->border-mode->options
+#. 6.0->settings-schema.json->border-theme-accent->options
 msgid "None"
 msgstr "Semmi"
 
@@ -384,19 +384,19 @@ msgid "Custom"
 msgstr "Egyéni"
 
 #. 6.0->settings-schema.json->border-mode->tooltip
+#, fuzzy
 msgid ""
 "Draws a thin border just inside the rounded edge of rounded windows. Match "
 "continues the window's own border colours around the rounded corners. "
 "Automatic darkens light edges and lightens dark ones. Custom draws the "
-"colours you choose, one for the focused window and one for other windows."
+"colours you choose, one for the focused window and one for unfocused windows."
 msgstr ""
 "Vékony szegélyt rajzol a lekerekített ablakok lekerekített széleinek belső "
 "oldala mentén. A „Match” (illeszkedés) beállítás az ablak saját "
-"szegélyszíneit követi a lekerekített sarkoknál. Az "
-"„Automatic” (automatikus) mód sötétíti a világos széleket, a sötéteket "
-"pedig világosítja. A „Custom” (egyéni) beállításnál a felhasználó által "
-"választott színek jelennek meg: egy a fókuszban lévő ablakhoz, egy pedig a "
-"többi ablakhoz."
+"szegélyszíneit követi a lekerekített sarkoknál. Az „Automatic” (automatikus) "
+"mód sötétíti a világos széleket, a sötéteket pedig világosítja. A „Custom” "
+"(egyéni) beállításnál a felhasználó által választott színek jelennek meg: "
+"egy a fókuszban lévő ablakhoz, egy pedig a többi ablakhoz."
 
 #. 6.0->settings-schema.json->border-width->description
 msgid "Border width"
@@ -423,8 +423,10 @@ msgid "Border contrast"
 msgstr "Szegélykontraszt"
 
 #. 6.0->settings-schema.json->border-contrast->units
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->units
 #. 6.0->settings-schema.json->shadow-opacity->units
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->units
+#. 6.0->settings-schema.json->shadow-glow->units
 msgid "%"
 msgstr "%"
 
@@ -436,13 +438,48 @@ msgstr ""
 "Milyen mértékben tolódik el a szegély színe az ablak szélének színétől a "
 "fekete (világos szélek esetén) vagy a fehér (sötét szélek esetén) irányába."
 
+#. 6.0->settings-schema.json->border-theme-accent->description
+msgid "Use the theme's accent colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+msgid "Focused window"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+#, fuzzy
+msgid "All windows"
+msgstr "Ablakok"
+
+#. 6.0->settings-schema.json->border-theme-accent->tooltip
+msgid ""
+"Draws the border in the accent colour of the current GTK theme (for example "
+"the aqua of Mint-Y-Aqua) and follows it when the theme changes. Windows that "
+"don't get the accent colour use the border colour below. If the theme "
+"doesn't define an accent colour, the custom colours are used. Applications "
+"in the Application border list keep their own colours."
+msgstr ""
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->description
+#, fuzzy
+msgid "Accent opacity for unfocused windows"
+msgstr "Szegélyszín (fókuszált ablak)"
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->tooltip
+msgid ""
+"How opaque the accent coloured border is on every window except the one with "
+"keyboard focus. The focused window's border is always drawn at the accent "
+"colour's full opacity."
+msgstr ""
+
 #. 6.0->settings-schema.json->border-color->description
 msgid "Border colour (focused window)"
 msgstr "Szegélyszín (fókuszált ablak)"
 
 #. 6.0->settings-schema.json->border-color-unfocused->description
-msgid "Border colour (other windows)"
-msgstr "Szegélyszín (egyéb ablakok)"
+#, fuzzy
+msgid "Border colour (unfocused windows)"
+msgstr "Szegélyszín (fókuszált ablak)"
 
 #. 6.0->settings-schema.json->border-app-list->description
 msgid "Application border list"
@@ -461,8 +498,9 @@ msgid "Colour (focused)"
 msgstr "Szín (fókuszált)"
 
 #. 6.0->settings-schema.json->border-app-list->columns->title
-msgid "Colour (other)"
-msgstr "Szín (egyéb)"
+#, fuzzy
+msgid "Colour (unfocused)"
+msgstr "Szín (fókuszált)"
 
 #. 6.0->settings-schema.json->border-app-list->tooltip
 msgid ""
@@ -486,8 +524,8 @@ msgid ""
 "border list. Press Esc or right-click to cancel."
 msgstr ""
 "Kattints ide, majd kattints bármelyik ablakra, hogy hozzáadd az adott "
-"alkalmazást az alkalmazásszegély-listához. A megszakításhoz nyomd meg az "
-"Esc billentyűt vagy kattints a jobb egérgombbal."
+"alkalmazást az alkalmazásszegély-listához. A megszakításhoz nyomd meg az Esc "
+"billentyűt vagy kattints a jobb egérgombbal."
 
 #. 6.0->settings-schema.json->shadow-enabled->description
 msgid "Draw a shadow that follows the rounded corners"
@@ -520,8 +558,96 @@ msgid "Shadow strength (focused window)"
 msgstr "Árnyék erőssége (fókuszált ablak)"
 
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->description
-msgid "Shadow strength (other windows)"
-msgstr "Árnyék erőssége (egyéb ablakok)"
+#, fuzzy
+msgid "Shadow strength (unfocused windows)"
+msgstr "Árnyék erőssége (fókuszált ablak)"
+
+#. 6.0->settings-schema.json->shadow-color-mode->description
+#, fuzzy
+msgid "Shadow colour"
+msgstr "Árnyékok"
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Black"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Single colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Gradient"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Rainbow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->tooltip
+msgid ""
+"Black is a normal shadow. The other options colour it; with some glow and no "
+"vertical offset they look more like a coloured light around the window."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->description
+msgid "Colour (gradient start)"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->tooltip
+msgid ""
+"Used by Single colour, and as the gradient's start colour. Not used by "
+"Rainbow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-2->description
+msgid "Gradient end colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->description
+msgid "Gradient direction"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->units
+msgid "degrees"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->tooltip
+msgid "0 runs from left to right, 90 from top to bottom."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->description
+msgid "Glow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->tooltip
+msgid ""
+"How much the colour adds light to what's behind it instead of covering it. 0 "
+"looks like a coloured shadow, 100 like a neon glow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->description
+msgid "Rainbow turn time"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->units
+msgid "seconds"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->tooltip
+msgid ""
+"How long the rainbow takes to go once around the window. 0 keeps it still."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->description
+msgid "Colour every window's shadow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->tooltip
+msgid ""
+"Off: only the focused window gets the coloured shadow, and unfocused windows "
+"get a normal black one. On: every window gets it, and every rainbow turns, "
+"which keeps the compositor busier."
+msgstr ""
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""

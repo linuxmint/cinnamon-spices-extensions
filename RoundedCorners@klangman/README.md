@@ -7,13 +7,13 @@ A Cinnamon extension that allows you to round the corners of windows with custom
 * Round window bottoms to match window tops.
 * Increase the radius of your theme's top corner rounding
 * Customize your window border
-* Use different border colors for different application, and/or the focused window
+* Use different border colors for different applications, and/or the focused window
 * Customize your window shadows
-* Use different shadow strength the focused window
+* Use different shadow strength for the focused window
 
 ## Features
 
-- Allows you to Round the top and bottom corners of application windows.
+- Allows you to round the top and bottom corners of application windows.
 - Adds custom borders and shadows to windows that have rounding effects applied
 - Allow you to exclude specific applications when rounding <u>is</u> enabled by default
 - Allows you to select specific applications to round when rounding is <u>not</u> enabled by default
@@ -21,6 +21,8 @@ A Cinnamon extension that allows you to round the corners of windows with custom
 - Allows for different custom borders and shadow strengths for the focused window vs. all the unfocused windows.
 - Has a border matching option allowing the border of the rounded corners to match the windows natural borders
 - Supports Gtk3, libhandy, Gtk4, Adwaita and Qt application windows. It should work reasonably well for just about any type of window
+- An option to match border color with the theme's accent color
+- An option to make colored, gradient and animated rainbow shadows
 
 ## Requirements
 
@@ -85,7 +87,7 @@ Some windows use their own custom title-bars. For those applications you will ne
 
 **<u>Shadows:</u>**
 
-The stock shadows are by necessity removed by the corner effect. So this extension tells Cinnamon not to draw the stock shadows at all for windows that have cornet effects applied. The shadows need to be recreated for the clipped corners anyhow. A new shadow is therefore created in its place. By using a completely new shadow effect it gives you more control over how shadows appear. Keep in mind that the new shadow effect is only possible for windows that also have their corners rounded, see the "Corners" tab in the settings.
+The stock shadows are by necessity removed by the corner effect. So this extension tells Cinnamon not to draw the stock shadows at all for windows that have corner effects applied. The shadows need to be recreated for the clipped corners anyhow. A new shadow is therefore created in its place. By using a completely new shadow effect it gives you more control over how shadows appear. Keep in mind that the new shadow effect is only possible for windows that also have their corners rounded, see the "Corners" tab in the settings.
 
 **<u>Borders:</u>**
 
@@ -108,7 +110,7 @@ There is a bug in the Clutter.ShaderEffect class causing a VRAM memory leak. A [
 
 Please leave a comment here on cinnamon-spices.linuxmint.com or you can create an issue on my [Github](https://github.com/klangman/CinnamonRoundedCorners) to give me feedback, make a suggestion or to report any issues you find.
 
-If you like this Cinnamon extension, please give it a "star" here any maybe on my [Github](https://github.com/klangman/CinnamonRoundedCorners) repository as well to encourage me to continue working on the project. Thanks!
+If you like this Cinnamon extension, please give it a "star" here and maybe on my [Github](https://github.com/klangman/CinnamonRoundedCorners) repository as well to encourage me to continue working on the project. Thanks!
 
 ## Credits
 
