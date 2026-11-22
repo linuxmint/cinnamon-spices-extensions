@@ -66,6 +66,8 @@
                 "border-mode",
                 "border-width",
                 "border-contrast",
+                "border-theme-accent",
+                "border-accent-unfocused-opacity",
                 "border-color",
                 "border-color-unfocused"
             ]
@@ -87,7 +89,14 @@
                 "shadow-size",
                 "shadow-offset",
                 "shadow-opacity",
-                "shadow-unfocused-opacity"
+                "shadow-unfocused-opacity",
+                "shadow-color-mode",
+                "shadow-color",
+                "shadow-color-2",
+                "shadow-gradient-angle",
+                "shadow-glow",
+                "shadow-rainbow-turn-time",
+                "shadow-color-all-windows"
             ]
         },
         "section-about": {
@@ -231,7 +240,7 @@
             "Automatic (contrast with the window edge)": "auto",
             "Custom": "custom-colors"
         },
-        "tooltip": "Draws a thin border just inside the rounded edge of rounded windows. Match continues the window's own border colours around the rounded corners. Automatic darkens light edges and lightens dark ones. Custom draws the colours you choose, one for the focused window and one for other windows."
+        "tooltip": "Draws a thin border just inside the rounded edge of rounded windows. Match continues the window's own border colours around the rounded corners. Automatic darkens light edges and lightens dark ones. Custom draws the colours you choose, one for the focused window and one for unfocused windows."
     },
     "border-width": {
         "type": "spinbutton",
@@ -255,16 +264,39 @@
         "units": "%",
         "tooltip": "How far the border colour is moved from the window's edge colour towards black (on light edges) or white (on dark edges)."
     },
+    "border-theme-accent": {
+        "type": "combobox",
+        "description": "Use the theme's accent colour",
+        "dependency": "border-mode=custom-colors",
+        "default": "none",
+        "options": {
+            "None": "none",
+            "Focused window": "focused",
+            "All windows": "all"
+        },
+        "tooltip": "Draws the border in the accent colour of the current GTK theme (for example the aqua of Mint-Y-Aqua) and follows it when the theme changes. Windows that don't get the accent colour use the border colour below. If the theme doesn't define an accent colour, the custom colours are used. Applications in the Application border list keep their own colours."
+    },
+    "border-accent-unfocused-opacity": {
+        "type": "spinbutton",
+        "description": "Accent opacity for unfocused windows",
+        "dependency": "border-mode=custom-colors & border-theme-accent=all",
+        "default": 40,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "units": "%",
+        "tooltip": "How opaque the accent coloured border is on every window except the one with keyboard focus. The focused window's border is always drawn at the accent colour's full opacity."
+    },
     "border-color": {
         "type": "colorchooser",
         "description": "Border colour (focused window)",
-        "dependency": "border-mode=custom-colors",
+        "dependency": "border-mode=custom-colors & border-theme-accent=none",
         "default": "rgba(0,0,0,0.3)"
     },
     "border-color-unfocused": {
         "type": "colorchooser",
-        "description": "Border colour (other windows)",
-        "dependency": "border-mode=custom-colors",
+        "description": "Border colour (unfocused windows)",
+        "dependency": "border-mode=custom-colors & border-theme-accent!=all",
         "default": "rgba(0,0,0,0.15)"
     },
     "border-app-list": {
@@ -321,7 +353,7 @@
             },
             {
                 "id": "color_unfocused",
-                "title": "Colour (other)",
+                "title": "Colour (unfocused)",
                 "type": "string",
                 "default": "rgba(0,0,0,0.15)",
                 "color-chooser": "optional"
@@ -375,13 +407,79 @@
     },
     "shadow-unfocused-opacity": {
         "type": "spinbutton",
-        "description": "Shadow strength (other windows)",
+        "description": "Shadow strength (unfocused windows)",
         "dependency": "shadow-enabled",
         "default": 25,
         "min": 0,
         "max": 100,
         "step": 5,
         "units": "%"
+    },
+    "shadow-color-mode": {
+        "type": "combobox",
+        "description": "Shadow colour",
+        "dependency": "shadow-enabled",
+        "default": "black",
+        "options": {
+            "Black": "black",
+            "Single colour": "color",
+            "Gradient": "gradient",
+            "Rainbow": "rainbow"
+        },
+        "tooltip": "Black is a normal shadow. The other options colour it; with some glow and no vertical offset they look more like a coloured light around the window."
+    },
+    "shadow-color": {
+        "type": "colorchooser",
+        "description": "Colour (gradient start)",
+        "dependency": "shadow-color-mode!=black",
+        "default": "rgb(255,0,128)",
+        "tooltip": "Used by Single colour, and as the gradient's start colour. Not used by Rainbow."
+    },
+    "shadow-color-2": {
+        "type": "colorchooser",
+        "description": "Gradient end colour",
+        "dependency": "shadow-color-mode=gradient",
+        "default": "rgb(0,160,255)"
+    },
+    "shadow-gradient-angle": {
+        "type": "spinbutton",
+        "description": "Gradient direction",
+        "dependency": "shadow-color-mode=gradient",
+        "default": 45,
+        "min": 0,
+        "max": 359,
+        "step": 15,
+        "units": "degrees",
+        "tooltip": "0 runs from left to right, 90 from top to bottom."
+    },
+    "shadow-glow": {
+        "type": "spinbutton",
+        "description": "Glow",
+        "dependency": "shadow-color-mode!=black",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "units": "%",
+        "tooltip": "How much the colour adds light to what's behind it instead of covering it. 0 looks like a coloured shadow, 100 like a neon glow."
+    },
+    "shadow-rainbow-turn-time": {
+        "type": "spinbutton",
+        "description": "Rainbow turn time",
+        "dependency": "shadow-color-mode=rainbow",
+        "default": 8,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "units": "seconds",
+        "tooltip": "How long the rainbow takes to go once around the window. 0 keeps it still."
+    },
+    "shadow-color-all-windows": {
+        "type": "switch",
+        "description": "Colour every window's shadow",
+        "dependency": "shadow-color-mode!=black",
+        "default": false,
+        "tooltip": "Off: only the focused window gets the coloured shadow, and unfocused windows get a normal black one. On: every window gets it, and every rainbow turns, which keeps the compositor busier."
     },
     "about-text": {
         "type": "custom",

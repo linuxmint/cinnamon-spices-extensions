@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RoundedCorners@klangman 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-29 09:56-0400\n"
+"POT-Creation-Date: 2026-11-22 12:30-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.10\n"
 
-#. 6.0/extension.js:51
+#. 6.0/extension.js:52
 msgid ""
 "Click a window to add its application to the inclusion list.  Esc or right-"
 "click to cancel."
@@ -26,73 +26,72 @@ msgstr ""
 "Haz clic en una ventana para añadir su aplicación a la lista de inclusión. "
 "Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
 
-#. 6.0/extension.js:52
+#. 6.0/extension.js:53
 #, javascript-format
 msgid "\"%s\" is already in the inclusion list."
 msgstr "\"%s\" ya figura en la lista de inclusión."
 
-#. 6.0/extension.js:53
+#. 6.0/extension.js:54
 #, javascript-format
 msgid "Enabled \"%s\" in the inclusion list."
 msgstr "Se ha habilitado \"%s\" en la lista de inclusión."
 
-#. 6.0/extension.js:54
+#. 6.0/extension.js:55
 #, javascript-format
 msgid "Added \"%s\" to the inclusion list."
 msgstr "Se ha añadido \"%s\" a la lista de inclusión."
 
-#. 6.0/extension.js:56
+#. 6.0/extension.js:57
 msgid ""
 "Click a window to add its application to the exclusion list.  Esc or right-"
 "click to cancel."
 msgstr ""
-"Haz clic en una ventana para añadir su aplicación a la lista de "
-"exclusiones. Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
+"Haz clic en una ventana para añadir su aplicación a la lista de exclusiones. "
+"Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
 
-#. 6.0/extension.js:57
+#. 6.0/extension.js:58
 #, javascript-format
 msgid "\"%s\" is already in the exclusion list."
 msgstr "\"%s\" ya figura en la lista de exclusiones."
 
-#. 6.0/extension.js:58
+#. 6.0/extension.js:59
 #, javascript-format
 msgid "Enabled \"%s\" in the exclusion list."
 msgstr "Se ha activado \"%s\" en la lista de exclusiones."
 
-#. 6.0/extension.js:59
+#. 6.0/extension.js:60
 #, javascript-format
 msgid "Added \"%s\" to the exclusion list."
 msgstr "Se ha añadido \"%s\"a la lista de exclusiones."
 
-#. 6.0/extension.js:61
+#. 6.0/extension.js:62
 msgid ""
 "Click a window to add its application to the application border list.  Esc "
 "or right-click to cancel."
 msgstr ""
-"Haz clic en una ventana para añadir su aplicación a la lista de "
-"aplicaciones del borde. Pulsa 'Esc' o haz clic con el botón derecho para "
-"cancelar."
+"Haz clic en una ventana para añadir su aplicación a la lista de aplicaciones "
+"del borde. Pulsa 'Esc' o haz clic con el botón derecho para cancelar."
 
-#. 6.0/extension.js:62
+#. 6.0/extension.js:63
 #, javascript-format
 msgid "\"%s\" is already in the application border list."
 msgstr "\"%s\" ya figura en la lista de límites de la aplicación."
 
-#. 6.0/extension.js:63
+#. 6.0/extension.js:64
 #, javascript-format
 msgid "Enabled \"%s\" in the application border list."
 msgstr "Se ha activado \"%s\" en la lista de bordes de la aplicación."
 
-#. 6.0/extension.js:64
+#. 6.0/extension.js:65
 #, javascript-format
 msgid "Added \"%s\" to the application border list."
 msgstr "Se ha añadido \"%s\" a la lista de bordes de la aplicación."
 
-#. 6.0/extension.js:220
+#. 6.0/extension.js:336
 msgid "Welcome to Rounded Corners"
 msgstr "Bienvenidos a Esquinas redondeadas"
 
-#. 6.0/extension.js:221
+#. 6.0/extension.js:337
 msgid ""
 "Thanks for installing Rounded Corners!\n"
 "\n"
@@ -111,35 +110,35 @@ msgstr ""
 "aquellas cuyas esquinas quieras redondear. También puedes ajustar el radio "
 "de las esquinas y añadir bordes y sombras."
 
-#. 6.0/extension.js:224
+#. 6.0/extension.js:340
 msgid "Open Rounded Corners Settings"
 msgstr "Abrir la configuración de esquinas redondeadas"
 
-#. 6.0/extension.js:690
+#. 6.0/extension.js:1122
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 "No se ha podido iniciar el selector de ventanas. Cierra todos los menús "
 "abiertos e inténtalo de nuevo."
 
-#. 6.0/extension.js:764
+#. 6.0/extension.js:1196
 msgid "(unknown application)"
 msgstr "(aplicación desconocida)"
 
-#. 6.0/extension.js:800
+#. 6.0/extension.js:1232
 msgid "That window has no WM_CLASS or application id, so it can't be added."
 msgstr ""
 "Esa ventana no tiene ningún WM_CLASS ni identificador de aplicación, por lo "
 "que no se puede añadir."
 
-#. 6.0/CustomWidgets.py:135
+#. 6.0/CustomWidgets.py:137
 msgid "When off, the default colour is used"
 msgstr "Cuando está desactivado, se utiliza el color predeterminado"
 
-#. 6.0/CustomWidgets.py:191
+#. 6.0/CustomWidgets.py:193
 msgid "Default"
 msgstr "Predeterminado"
 
-#. 6.0/CustomWidgets.py:227
+#. 6.0/CustomWidgets.py:229
 msgid "Use Default"
 msgstr "Usar la configuración predeterminada"
 
@@ -204,8 +203,8 @@ msgid ""
 msgstr ""
 "La mayoría de los temas redondean las esquinas superiores de las barras de "
 "título, y esta extensión no puede revertir ese efecto. Si se establece un "
-"radio menor que el del tema, quedará un espacio entre el borde o la sombra "
-"y las esquinas de la ventana. Consulta la página web <a href=\"https://"
+"radio menor que el del tema, quedará un espacio entre el borde o la sombra y "
+"las esquinas de la ventana. Consulta la página web <a href=\"https://"
 "github.com/klangman/CinnamonRoundedCorners\">Esquinas redondeadas</a> para "
 "saber cómo anular el redondeo del tema."
 
@@ -265,8 +264,8 @@ msgid ""
 "appear where the theme has rounded the corners. You may have better results "
 "if you enable top rounding to match the themes rounding radius."
 msgstr ""
-"Si desactivas el redondeo de las esquinas superiores, pero el tema aplica "
-"su propio redondeo, las sombras de las esquinas superiores, que quedan "
+"Si desactivas el redondeo de las esquinas superiores, pero el tema aplica su "
+"propio redondeo, las sombras de las esquinas superiores, que quedan "
 "cuadradas, harán que aparezca una zona más clara justo donde el tema ha "
 "redondeado las esquinas. Es posible que obtengas mejores resultados si "
 "activas el redondeo de las esquinas superiores para que coincida con el "
@@ -342,8 +341,8 @@ msgid ""
 "name."
 msgstr ""
 "Define una lista de ventanas de aplicaciones a las que NO se aplicarán los "
-"efectos de esquinas redondeadas. El campo 'Aplicación' puede ser un "
-"WM_CLASS o el nombre de un archivo de escritorio."
+"efectos de esquinas redondeadas. El campo 'Aplicación' puede ser un WM_CLASS "
+"o el nombre de un archivo de escritorio."
 
 #. 6.0->settings-schema.json->pick-application-window->description
 #. 6.0->settings-schema.json->pick-border-window->description
@@ -368,6 +367,7 @@ msgid "Border"
 msgstr "Borde"
 
 #. 6.0->settings-schema.json->border-mode->options
+#. 6.0->settings-schema.json->border-theme-accent->options
 msgid "None"
 msgstr "Ninguno"
 
@@ -384,11 +384,12 @@ msgid "Custom"
 msgstr "Personalizado"
 
 #. 6.0->settings-schema.json->border-mode->tooltip
+#, fuzzy
 msgid ""
 "Draws a thin border just inside the rounded edge of rounded windows. Match "
 "continues the window's own border colours around the rounded corners. "
 "Automatic darkens light edges and lightens dark ones. Custom draws the "
-"colours you choose, one for the focused window and one for other windows."
+"colours you choose, one for the focused window and one for unfocused windows."
 msgstr ""
 "Dibuja un borde fino justo en el interior del borde redondeado de las "
 "ventanas redondeadas. La opción 'Ajustar' mantiene los colores del borde de "
@@ -412,17 +413,19 @@ msgstr ""
 "Cuántos píxeles desde el borde redondeado llega el borde. Con la opción "
 "'Ajustar', no se dibuja nada en los bordes rectos; esto establece cuántas "
 "capas de píxeles del propio borde de la ventana se extienden alrededor de "
-"las esquinas redondeadas. Establece este valor en el ancho de las líneas "
-"del borde del tema (normalmente 1 o 2): cualquier valor adicional repetirá "
-"los colores del contenido de la ventana desde los bordes hasta las esquinas."
+"las esquinas redondeadas. Establece este valor en el ancho de las líneas del "
+"borde del tema (normalmente 1 o 2): cualquier valor adicional repetirá los "
+"colores del contenido de la ventana desde los bordes hasta las esquinas."
 
 #. 6.0->settings-schema.json->border-contrast->description
 msgid "Border contrast"
 msgstr "Contraste de bordes"
 
 #. 6.0->settings-schema.json->border-contrast->units
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->units
 #. 6.0->settings-schema.json->shadow-opacity->units
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->units
+#. 6.0->settings-schema.json->shadow-glow->units
 msgid "%"
 msgstr "%"
 
@@ -435,13 +438,48 @@ msgstr ""
 "borde de la ventana hacia el negro (en bordes claros) o hacia el blanco (en "
 "bordes oscuros)."
 
+#. 6.0->settings-schema.json->border-theme-accent->description
+msgid "Use the theme's accent colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+msgid "Focused window"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+#, fuzzy
+msgid "All windows"
+msgstr "Ventanas"
+
+#. 6.0->settings-schema.json->border-theme-accent->tooltip
+msgid ""
+"Draws the border in the accent colour of the current GTK theme (for example "
+"the aqua of Mint-Y-Aqua) and follows it when the theme changes. Windows that "
+"don't get the accent colour use the border colour below. If the theme "
+"doesn't define an accent colour, the custom colours are used. Applications "
+"in the Application border list keep their own colours."
+msgstr ""
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->description
+#, fuzzy
+msgid "Accent opacity for unfocused windows"
+msgstr "Color del borde (ventana activa)"
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->tooltip
+msgid ""
+"How opaque the accent coloured border is on every window except the one with "
+"keyboard focus. The focused window's border is always drawn at the accent "
+"colour's full opacity."
+msgstr ""
+
 #. 6.0->settings-schema.json->border-color->description
 msgid "Border colour (focused window)"
 msgstr "Color del borde (ventana activa)"
 
 #. 6.0->settings-schema.json->border-color-unfocused->description
-msgid "Border colour (other windows)"
-msgstr "Color del borde (demás ventanas)"
+#, fuzzy
+msgid "Border colour (unfocused windows)"
+msgstr "Color del borde (ventana activa)"
 
 #. 6.0->settings-schema.json->border-app-list->description
 msgid "Application border list"
@@ -460,8 +498,9 @@ msgid "Colour (focused)"
 msgstr "Color (enfoque)"
 
 #. 6.0->settings-schema.json->border-app-list->columns->title
-msgid "Colour (other)"
-msgstr "Color (otro)"
+#, fuzzy
+msgid "Colour (unfocused)"
+msgstr "Color (enfoque)"
 
 #. 6.0->settings-schema.json->border-app-list->tooltip
 msgid ""
@@ -474,10 +513,9 @@ msgstr ""
 "Asigna a determinadas aplicaciones su propio borde, anulando la "
 "configuración anterior. El campo 'Aplicación' puede ser un WM_CLASS o el "
 "nombre de un archivo de escritorio. El contraste solo se utiliza en el modo "
-"'Automático', y los colores, únicamente en el modo 'Personalizado'. Haz "
-"clic en un color de la lista para cambiarlo. Si se establece un color como "
-"'Predeterminado', se utilizará el color correspondiente de la lista "
-"anterior."
+"'Automático', y los colores, únicamente en el modo 'Personalizado'. Haz clic "
+"en un color de la lista para cambiarlo. Si se establece un color como "
+"'Predeterminado', se utilizará el color correspondiente de la lista anterior."
 
 #. 6.0->settings-schema.json->pick-border-window->tooltip
 msgid ""
@@ -520,8 +558,96 @@ msgid "Shadow strength (focused window)"
 msgstr "Intensidad de la sombra (ventana seleccionada)"
 
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->description
-msgid "Shadow strength (other windows)"
-msgstr "Intensidad de la sombra (otras ventanas)"
+#, fuzzy
+msgid "Shadow strength (unfocused windows)"
+msgstr "Intensidad de la sombra (ventana seleccionada)"
+
+#. 6.0->settings-schema.json->shadow-color-mode->description
+#, fuzzy
+msgid "Shadow colour"
+msgstr "Sombras"
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Black"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Single colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Gradient"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Rainbow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->tooltip
+msgid ""
+"Black is a normal shadow. The other options colour it; with some glow and no "
+"vertical offset they look more like a coloured light around the window."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->description
+msgid "Colour (gradient start)"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->tooltip
+msgid ""
+"Used by Single colour, and as the gradient's start colour. Not used by "
+"Rainbow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-2->description
+msgid "Gradient end colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->description
+msgid "Gradient direction"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->units
+msgid "degrees"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->tooltip
+msgid "0 runs from left to right, 90 from top to bottom."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->description
+msgid "Glow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->tooltip
+msgid ""
+"How much the colour adds light to what's behind it instead of covering it. 0 "
+"looks like a coloured shadow, 100 like a neon glow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->description
+msgid "Rainbow turn time"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->units
+msgid "seconds"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->tooltip
+msgid ""
+"How long the rainbow takes to go once around the window. 0 keeps it still."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->description
+msgid "Colour every window's shadow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->tooltip
+msgid ""
+"Off: only the focused window gets the coloured shadow, and unfocused windows "
+"get a normal black one. On: every window gets it, and every rainbow turns, "
+"which keeps the compositor busier."
+msgstr ""
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""

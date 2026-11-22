@@ -30,6 +30,20 @@ uniform float shadow_opacity;   // 0..1 at the window edge
 uniform float shadow_offset_y;  // pixels the shadow is moved down
 uniform float cutout_inset;     // the no-shadow area is this much smaller than the rect
 
+// Shadow colour
+uniform int   shadow_color_mode;  // 0 = black, 1 = single colour, 2 = linear gradient, 3 = rainbow
+uniform float color1_r;           // the colour, or the gradient's start (0..1, not premultiplied)
+uniform float color1_g;
+uniform float color1_b;
+uniform float color1_a;
+uniform float color2_r;           // the gradient's end
+uniform float color2_g;
+uniform float color2_b;
+uniform float color2_a;
+uniform float grad_angle;         // gradient direction, radians (0 = left to right, pi/2 = top to bottom)
+uniform float glow;               // 0 = covers what's behind (a shadow), 1 = adds light to it (a glow)
+uniform float hue_offset;         // rainbow rotation, in turns (animated for the focused window)
+
 // Signed distance from p to the edge of a rounded box: < 0 inside, > 0 outside
 float rounded_box_sdf(vec2 p, vec2 center, vec2 half_size, float r) {
     vec2 q = abs(p - center) - half_size + r;
@@ -48,6 +62,30 @@ vec2 erf2(vec2 x) {
     vec2 t = 1. + (0.278393 + (0.230389 + 0.078108 * (a * a)) * a) * a;
     t *= t;
     return s - s / (t * t);
+}
+
+// Fully saturated colour for a hue in 0..1
+vec3 hue_to_rgb(float h) {
+    return clamp(abs(mod(h * 6. + vec3(0., 4., 2.), 6.) - 3.) - 1., 0., 1.);
+}
+
+// The shadow's colour at p (relative to the window centre), not premultiplied
+vec4 shadow_color(vec2 p, vec2 half_size) {
+    if (shadow_color_mode == 0)
+        return vec4(0., 0., 0., 1.);
+    vec4 c1 = vec4(color1_r, color1_g, color1_b, color1_a);
+    if (shadow_color_mode == 1)
+        return c1;
+    // Relative to the window's size, so colours spread the same way on any window shape
+    vec2 n = p / max(half_size, vec2(1.));
+    if (shadow_color_mode == 2) {
+        vec2 dir = vec2(cos(grad_angle), sin(grad_angle));
+        // Scaled so the window's corners in the gradient direction get exactly the end colours
+        float t = clamp(0.5 + 0.5 * dot(n, dir) / (abs(dir.x) + abs(dir.y)), 0., 1.);
+        return mix(c1, vec4(color2_r, color2_g, color2_b, color2_a), t);
+    }
+    // Rainbow: hue goes once around the window, red at the top (before any rotation)
+    return vec4(hue_to_rgb(fract(atan(n.x, -n.y) / 6.2831853 + 1. + hue_offset)), 1.);
 }
 
 float gaussian(float x, float sigma) {
@@ -106,8 +144,11 @@ void main(void) {
 
     // A blurred edge is at 50% coverage, so double it: shadow_opacity is then the
     // strength right at a straight window edge, and corners fall off more, as in a real blur
-    float a = shadow_opacity * min(1., 2. * blur) * (1. - window_coverage);
+    vec4 color = shadow_color(p, half_size);
+    float a = shadow_opacity * min(1., 2. * blur) * (1. - window_coverage) * color.a;
 
-    // cogl_color_in carries the actor's paint opacity (e.g. window fade animations)
-    cogl_color_out = vec4(0., 0., 0., a) * cogl_color_in.a;
+    // Premultiplied. Writing less alpha than coverage moves the blend toward additive
+    // (DST * (1 - SRC_A) keeps more of what's behind), which reads as a glow rather than
+    // a shadow. cogl_color_in carries the actor's paint opacity (e.g. window fade animations)
+    cogl_color_out = vec4(color.rgb * a, a * (1. - glow)) * cogl_color_in.a;
 }

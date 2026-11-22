@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: RoundedCorners@klangman 1.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-10-29 09:56-0400\n"
+"POT-Creation-Date: 2026-11-22 12:30-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Thanos D (alfa3delta)\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:51
+#. 6.0/extension.js:52
 msgid ""
 "Click a window to add its application to the inclusion list.  Esc or right-"
 "click to cancel."
@@ -26,22 +26,22 @@ msgstr ""
 "Κάντε κλικ σε ένα παράθυρο για να προσθέσετε την εφαρμογή του στη λίστα "
 "συμπερίληψης. Πατήστε Esc ή κάντε δεξί κλικ για ακύρωση."
 
-#. 6.0/extension.js:52
+#. 6.0/extension.js:53
 #, javascript-format
 msgid "\"%s\" is already in the inclusion list."
 msgstr "\"%s\" βρίσκεται ήδη στη λίστα συμπερίληψης."
 
-#. 6.0/extension.js:53
+#. 6.0/extension.js:54
 #, javascript-format
 msgid "Enabled \"%s\" in the inclusion list."
 msgstr "Ενεργοποιήθηκε \"%s\" στη λίστα συμπερίληψης."
 
-#. 6.0/extension.js:54
+#. 6.0/extension.js:55
 #, javascript-format
 msgid "Added \"%s\" to the inclusion list."
 msgstr "Προστέθηκε \"%s\" στη λίστα συμπερίληψης."
 
-#. 6.0/extension.js:56
+#. 6.0/extension.js:57
 msgid ""
 "Click a window to add its application to the exclusion list.  Esc or right-"
 "click to cancel."
@@ -49,22 +49,22 @@ msgstr ""
 "Κάντε κλικ σε ένα παράθυρο για να προσθέσετε την εφαρμογή του στη λίστα "
 "εξαιρέσεων. Πατήστε Esc ή κάντε δεξί κλικ για ακύρωση."
 
-#. 6.0/extension.js:57
+#. 6.0/extension.js:58
 #, javascript-format
 msgid "\"%s\" is already in the exclusion list."
 msgstr "\"%s\" βρίσκεται ήδη στη λίστα εξαιρέσεων."
 
-#. 6.0/extension.js:58
+#. 6.0/extension.js:59
 #, javascript-format
 msgid "Enabled \"%s\" in the exclusion list."
 msgstr "Ενεργοποιήθηκε \"%s\" στη λίστα εξαιρέσεων."
 
-#. 6.0/extension.js:59
+#. 6.0/extension.js:60
 #, javascript-format
 msgid "Added \"%s\" to the exclusion list."
 msgstr ""
 
-#. 6.0/extension.js:61
+#. 6.0/extension.js:62
 msgid ""
 "Click a window to add its application to the application border list.  Esc "
 "or right-click to cancel."
@@ -72,26 +72,26 @@ msgstr ""
 "Κάντε κλικ σε ένα παράθυρο για να προσθέσετε την εφαρμογή του στη λίστα του "
 "πλαισίου εφαρμογών. Πατήστε Esc ή κάντε δεξί κλικ για ακύρωση."
 
-#. 6.0/extension.js:62
+#. 6.0/extension.js:63
 #, javascript-format
 msgid "\"%s\" is already in the application border list."
 msgstr "\"%s\" είναι ήδη στη λίστα του πλαισίου εφαρμογών."
 
-#. 6.0/extension.js:63
+#. 6.0/extension.js:64
 #, javascript-format
 msgid "Enabled \"%s\" in the application border list."
 msgstr "Ενεργοποιήθηκε \"%s\" στη λίστα του πλαισίου εφαρμογών."
 
-#. 6.0/extension.js:64
+#. 6.0/extension.js:65
 #, javascript-format
 msgid "Added \"%s\" to the application border list."
 msgstr "Προστέθηκε \"%s\" στη λίστα του πλαισίου εφαρμογών."
 
-#. 6.0/extension.js:220
+#. 6.0/extension.js:336
 msgid "Welcome to Rounded Corners"
 msgstr "Καλώς ήρθατε στο Rounded Corners"
 
-#. 6.0/extension.js:221
+#. 6.0/extension.js:337
 msgid ""
 "Thanks for installing Rounded Corners!\n"
 "\n"
@@ -106,39 +106,39 @@ msgstr ""
 "Από προεπιλογή, οι γωνίες των παραθύρων δεν θα είναι στρογγυλεμένες, εκτός "
 "εάν αλλάξετε τις ρυθμίσεις ώστε να το επιτρέψετε. Ανοίξτε τις ρυθμίσεις του "
 "Rounded Corners για να στρογγυλέψετε τις γωνίες όλων των παραθύρων ή για να "
-"προσθέσετε στη λίστα συμπερίληψης τις εφαρμογές των οποίων τις γωνίες "
-"θέλετε να στρογγυλέψετε. Μπορείτε επίσης να προσαρμόσετε την ακτίνα των "
-"γωνιών, καθώς και να προσθέσετε περιγράμματα και σκιές."
+"προσθέσετε στη λίστα συμπερίληψης τις εφαρμογές των οποίων τις γωνίες θέλετε "
+"να στρογγυλέψετε. Μπορείτε επίσης να προσαρμόσετε την ακτίνα των γωνιών, "
+"καθώς και να προσθέσετε περιγράμματα και σκιές."
 
-#. 6.0/extension.js:224
+#. 6.0/extension.js:340
 msgid "Open Rounded Corners Settings"
 msgstr "Άνοιγμα ρυθμίσεων Rounded Corners"
 
-#. 6.0/extension.js:690
+#. 6.0/extension.js:1122
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 "Δεν ήταν δυνατή η εκκίνηση του επιλογέα παραθύρων. Κλείστε τυχόν ανοιχτά "
 "μενού και δοκιμάστε ξανά."
 
-#. 6.0/extension.js:764
+#. 6.0/extension.js:1196
 msgid "(unknown application)"
 msgstr "(άγνωστη εφαρμογή)"
 
-#. 6.0/extension.js:800
+#. 6.0/extension.js:1232
 msgid "That window has no WM_CLASS or application id, so it can't be added."
 msgstr ""
 "Αυτό το παράθυρο δεν διαθέτει WM_CLASS ή αναγνωριστικό εφαρμογής, επομένως "
 "δεν είναι δυνατή η προσθήκη του."
 
-#. 6.0/CustomWidgets.py:135
+#. 6.0/CustomWidgets.py:137
 msgid "When off, the default colour is used"
 msgstr "Όταν είναι απενεργοποιημένο, χρησιμοποιείται το προεπιλεγμένο χρώμα"
 
-#. 6.0/CustomWidgets.py:191
+#. 6.0/CustomWidgets.py:193
 msgid "Default"
 msgstr "Προεπιλογή"
 
-#. 6.0/CustomWidgets.py:227
+#. 6.0/CustomWidgets.py:229
 msgid "Use Default"
 msgstr "Χρήση προεπιλογής"
 
@@ -215,8 +215,8 @@ msgid ""
 "its windows are also rounded."
 msgstr ""
 "Τα περιγράμματα σχεδιάζονται μόνο σε παράθυρα που έχουν στρογγυλεμένες "
-"γωνίες (βλ. την καρτέλα <b>Γωνίες</b>). Μια εφαρμογή στην παρακάτω λίστα "
-"δεν αποκτά περίγραμμα, εκτός εάν τα παράθυρά της είναι επίσης στρογγυλεμένα."
+"γωνίες (βλ. την καρτέλα <b>Γωνίες</b>). Μια εφαρμογή στην παρακάτω λίστα δεν "
+"αποκτά περίγραμμα, εκτός εάν τα παράθυρά της είναι επίσης στρογγυλεμένα."
 
 #. 6.0->settings-schema.json->note-shadows->description
 msgid ""
@@ -225,9 +225,9 @@ msgid ""
 "Other windows keep their normal shadow."
 msgstr ""
 "Αυτή η σκιά σχεδιάζεται μόνο σε παράθυρα που έχουν στρογγυλεμένες γωνίες "
-"(βλ. καρτέλα <b>Γωνίες</b>), αντικαθιστώντας τη σκιά της επιφάνειας "
-"εργασίας για τα συγκεκριμένα παράθυρα. Τα υπόλοιπα παράθυρα διατηρούν την "
-"κανονική τους σκιά."
+"(βλ. καρτέλα <b>Γωνίες</b>), αντικαθιστώντας τη σκιά της επιφάνειας εργασίας "
+"για τα συγκεκριμένα παράθυρα. Τα υπόλοιπα παράθυρα διατηρούν την κανονική "
+"τους σκιά."
 
 #. 6.0->settings-schema.json->auto-include->description
 msgid "Round the corners of all windows by default"
@@ -250,8 +250,8 @@ msgid ""
 "default (those not in the exclusion list)."
 msgstr ""
 "Η ακτίνα των στρογγυλεμένων γωνιών που εφαρμόζεται σε παράθυρα τα οποία "
-"είναι στρογγυλεμένα από προεπιλογή (εκείνα που δεν περιλαμβάνονται στη "
-"λίστα εξαιρέσεων)."
+"είναι στρογγυλεμένα από προεπιλογή (εκείνα που δεν περιλαμβάνονται στη λίστα "
+"εξαιρέσεων)."
 
 #. 6.0->settings-schema.json->corners-top->description
 msgid "Round the top corners (recommended)"
@@ -266,8 +266,8 @@ msgid ""
 msgstr ""
 "Αν απενεργοποιήσετε τη στρογγυλοποίηση στις επάνω γωνίες, αλλά το θέμα "
 "εφαρμόζει τη δική του στρογγυλοποίηση, οι σκιές στις τετραγωνισμένες επάνω "
-"γωνίες θα δημιουργήσουν μια πιο ανοιχτόχρωμη περιοχή στα σημεία όπου το "
-"θέμα έχει στρογγυλοποιήσει τις γωνίες. Ίσως έχετε καλύτερα αποτελέσματα αν "
+"γωνίες θα δημιουργήσουν μια πιο ανοιχτόχρωμη περιοχή στα σημεία όπου το θέμα "
+"έχει στρογγυλοποιήσει τις γωνίες. Ίσως έχετε καλύτερα αποτελέσματα αν "
 "ενεργοποιήσετε τη στρογγυλοποίηση στις επάνω γωνίες, ώστε να συμπίπτει με "
 "την ακτίνα στρογγυλοποίησης του θέματος."
 
@@ -343,8 +343,8 @@ msgid ""
 "name."
 msgstr ""
 "Καθορίζει μια λίστα παραθύρων εφαρμογών στα οποία ΔΕΝ θα εφαρμόζονται εφέ "
-"στρογγυλεμένων γωνιών. Το πεδίο «Εφαρμογή» (Application) μπορεί να είναι "
-"ένα WM_CLASS ή το όνομα ενός αρχείου του περιβάλλοντος εργασίας."
+"στρογγυλεμένων γωνιών. Το πεδίο «Εφαρμογή» (Application) μπορεί να είναι ένα "
+"WM_CLASS ή το όνομα ενός αρχείου του περιβάλλοντος εργασίας."
 
 #. 6.0->settings-schema.json->pick-application-window->description
 #. 6.0->settings-schema.json->pick-border-window->description
@@ -359,8 +359,8 @@ msgid ""
 msgstr ""
 "Κάντε κλικ εδώ και, στη συνέχεια, κάντε κλικ σε οποιοδήποτε παράθυρο για να "
 "προσθέσετε την εφαρμογή του στη λίστα παραπάνω (τη λίστα εξαιρέσεων όταν τα "
-"παράθυρα έχουν στρογγυλεμένες γωνίες από προεπιλογή, ή διαφορετικά, τη "
-"λίστα συμπεριλήψεων). Πατήστε το πλήκτρο Esc ή κάντε δεξί κλικ για ακύρωση."
+"παράθυρα έχουν στρογγυλεμένες γωνίες από προεπιλογή, ή διαφορετικά, τη λίστα "
+"συμπεριλήψεων). Πατήστε το πλήκτρο Esc ή κάντε δεξί κλικ για ακύρωση."
 
 #. 6.0->settings-schema.json->border-mode->description
 #. 6.0->settings-schema.json->border-app-list->columns->title
@@ -368,6 +368,7 @@ msgid "Border"
 msgstr "Περίγραμμα"
 
 #. 6.0->settings-schema.json->border-mode->options
+#. 6.0->settings-schema.json->border-theme-accent->options
 msgid "None"
 msgstr "Κανένα"
 
@@ -384,19 +385,20 @@ msgid "Custom"
 msgstr "Προσαρμοσμένο"
 
 #. 6.0->settings-schema.json->border-mode->tooltip
+#, fuzzy
 msgid ""
 "Draws a thin border just inside the rounded edge of rounded windows. Match "
 "continues the window's own border colours around the rounded corners. "
 "Automatic darkens light edges and lightens dark ones. Custom draws the "
-"colours you choose, one for the focused window and one for other windows."
+"colours you choose, one for the focused window and one for unfocused windows."
 msgstr ""
 "Σχεδιάζει ένα λεπτό περίγραμμα ακριβώς στο εσωτερικό της στρογγυλεμένης "
 "ακμής των παραθύρων με στρογγυλεμένες γωνίες. Η επιλογή «Ταύτιση» (Match) "
-"επεκτείνει τα χρώματα του περιγράμματος του ίδιου του παραθύρου γύρω από "
-"τις στρογγυλεμένες γωνίες. Η επιλογή «Αυτόματα» (Automatic) σκουραίνει τις "
-"ανοιχτόχρωμες ακμές και φωτίζει τις σκουρόχρωμες. Η επιλογή "
-"«Προσαρμοσμένο» (Custom) εφαρμόζει τα χρώματα που επιλέγετε: ένα για το "
-"ενεργό παράθυρο και ένα για τα υπόλοιπα παράθυρα."
+"επεκτείνει τα χρώματα του περιγράμματος του ίδιου του παραθύρου γύρω από τις "
+"στρογγυλεμένες γωνίες. Η επιλογή «Αυτόματα» (Automatic) σκουραίνει τις "
+"ανοιχτόχρωμες ακμές και φωτίζει τις σκουρόχρωμες. Η επιλογή «Προσαρμοσμένο» "
+"(Custom) εφαρμόζει τα χρώματα που επιλέγετε: ένα για το ενεργό παράθυρο και "
+"ένα για τα υπόλοιπα παράθυρα."
 
 #. 6.0->settings-schema.json->border-width->description
 msgid "Border width"
@@ -410,12 +412,12 @@ msgid ""
 "width of the theme's border lines (usually 1 or 2): any extra repeats the "
 "window's content colours from the edges into the corners."
 msgstr ""
-"Καθορίζει πόσα εικονοστοιχεία (px) από τη στρογγυλεμένη άκρη εκτείνεται το περίγραμμα. Με "
-"την επιλογή «Match» (Ταύτιση), δεν σχεδιάζεται τίποτα στις ευθείες ακμές· η "
-"ρύθμιση αυτή καθορίζει πόσα επίπεδα pixel από την άκρη του ίδιου του "
-"παραθύρου μεταφέρονται γύρω από τις στρογγυλεμένες γωνίες. Ορίστε την τιμή "
-"ίση με το πάχος των γραμμών περιγράμματος του θέματος (συνήθως 1 ή 2)· "
-"τυχόν επιπλέον χώρος καλύπτεται επαναλαμβάνοντας τα χρώματα του "
+"Καθορίζει πόσα εικονοστοιχεία (px) από τη στρογγυλεμένη άκρη εκτείνεται το "
+"περίγραμμα. Με την επιλογή «Match» (Ταύτιση), δεν σχεδιάζεται τίποτα στις "
+"ευθείες ακμές· η ρύθμιση αυτή καθορίζει πόσα επίπεδα pixel από την άκρη του "
+"ίδιου του παραθύρου μεταφέρονται γύρω από τις στρογγυλεμένες γωνίες. Ορίστε "
+"την τιμή ίση με το πάχος των γραμμών περιγράμματος του θέματος (συνήθως 1 ή "
+"2)· τυχόν επιπλέον χώρος καλύπτεται επαναλαμβάνοντας τα χρώματα του "
 "περιεχομένου του παραθύρου, από τις ακμές προς τις γωνίες."
 
 #. 6.0->settings-schema.json->border-contrast->description
@@ -423,8 +425,10 @@ msgid "Border contrast"
 msgstr "Αντίθεση περιγράμματος"
 
 #. 6.0->settings-schema.json->border-contrast->units
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->units
 #. 6.0->settings-schema.json->shadow-opacity->units
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->units
+#. 6.0->settings-schema.json->shadow-glow->units
 msgid "%"
 msgstr ""
 
@@ -437,13 +441,48 @@ msgstr ""
 "του παραθύρου προς το μαύρο (για ανοιχτόχρωμες ακμές) ή προς το λευκό (για "
 "σκουρόχρωμες ακμές)."
 
+#. 6.0->settings-schema.json->border-theme-accent->description
+msgid "Use the theme's accent colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+msgid "Focused window"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+#, fuzzy
+msgid "All windows"
+msgstr "Παράθυρα"
+
+#. 6.0->settings-schema.json->border-theme-accent->tooltip
+msgid ""
+"Draws the border in the accent colour of the current GTK theme (for example "
+"the aqua of Mint-Y-Aqua) and follows it when the theme changes. Windows that "
+"don't get the accent colour use the border colour below. If the theme "
+"doesn't define an accent colour, the custom colours are used. Applications "
+"in the Application border list keep their own colours."
+msgstr ""
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->description
+#, fuzzy
+msgid "Accent opacity for unfocused windows"
+msgstr "Χρώμα περιγράμματος (εστιασμένο παράθυρο)"
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->tooltip
+msgid ""
+"How opaque the accent coloured border is on every window except the one with "
+"keyboard focus. The focused window's border is always drawn at the accent "
+"colour's full opacity."
+msgstr ""
+
 #. 6.0->settings-schema.json->border-color->description
 msgid "Border colour (focused window)"
 msgstr "Χρώμα περιγράμματος (εστιασμένο παράθυρο)"
 
 #. 6.0->settings-schema.json->border-color-unfocused->description
-msgid "Border colour (other windows)"
-msgstr "Χρώμα περιγράμματος (υπόλοιπα παράθυρα)"
+#, fuzzy
+msgid "Border colour (unfocused windows)"
+msgstr "Χρώμα περιγράμματος (εστιασμένο παράθυρο)"
 
 #. 6.0->settings-schema.json->border-app-list->description
 msgid "Application border list"
@@ -462,8 +501,9 @@ msgid "Colour (focused)"
 msgstr "Χρώμα (εστιασμένο)"
 
 #. 6.0->settings-schema.json->border-app-list->columns->title
-msgid "Colour (other)"
-msgstr "Χρώμα (υπόλοιπα)"
+#, fuzzy
+msgid "Colour (unfocused)"
+msgstr "Χρώμα (εστιασμένο)"
 
 #. 6.0->settings-schema.json->border-app-list->tooltip
 msgid ""
@@ -521,8 +561,96 @@ msgid "Shadow strength (focused window)"
 msgstr "Ένταση σκιάς (εστιασμένο παράθυρο)"
 
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->description
-msgid "Shadow strength (other windows)"
-msgstr "Ένταση σκιάς (υπόλοιπα παράθυρα)"
+#, fuzzy
+msgid "Shadow strength (unfocused windows)"
+msgstr "Ένταση σκιάς (εστιασμένο παράθυρο)"
+
+#. 6.0->settings-schema.json->shadow-color-mode->description
+#, fuzzy
+msgid "Shadow colour"
+msgstr "Σκιές"
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Black"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Single colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Gradient"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Rainbow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->tooltip
+msgid ""
+"Black is a normal shadow. The other options colour it; with some glow and no "
+"vertical offset they look more like a coloured light around the window."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->description
+msgid "Colour (gradient start)"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->tooltip
+msgid ""
+"Used by Single colour, and as the gradient's start colour. Not used by "
+"Rainbow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-2->description
+msgid "Gradient end colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->description
+msgid "Gradient direction"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->units
+msgid "degrees"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->tooltip
+msgid "0 runs from left to right, 90 from top to bottom."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->description
+msgid "Glow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->tooltip
+msgid ""
+"How much the colour adds light to what's behind it instead of covering it. 0 "
+"looks like a coloured shadow, 100 like a neon glow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->description
+msgid "Rainbow turn time"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->units
+msgid "seconds"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->tooltip
+msgid ""
+"How long the rainbow takes to go once around the window. 0 keeps it still."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->description
+msgid "Colour every window's shadow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->tooltip
+msgid ""
+"Off: only the focused window gets the coloured shadow, and unfocused windows "
+"get a normal black one. On: every window gets it, and every rainbow turns, "
+"which keeps the compositor busier."
+msgstr ""
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""

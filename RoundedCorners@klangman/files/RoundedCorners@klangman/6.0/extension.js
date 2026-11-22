@@ -28,6 +28,7 @@ const MessageTray    = imports.ui.messageTray;
 const Util           = imports.misc.util;
 const Cinnamon       = imports.gi.Cinnamon;
 const GLib           = imports.gi.GLib;
+const GObject        = imports.gi.GObject;
 const Gio            = imports.gi.Gio;
 const Gettext        = imports.gettext;
 
@@ -65,7 +66,11 @@ function getListMessages(listKey) {
    }
 }
 
-const CornerEffect = require("./corner");
+// Cinnamon 6.7.6+ loads xlet modules with the native importer and deprecates require() (it logs a
+// warning and evaluates the module twice). Older versions only have require().
+const Extension = imports.ui.extension;
+const Me = (typeof Extension.getCurrentExtension === "function") ? Extension.getCurrentExtension() : null;
+const CornerEffect = (Me && Me.imports) ? Me.imports.corner : require("./corner");
 
 const CORNER_EFFECT_NAME = "corner";
 const PADDING_EFFECT_NAME = "corner-shadow-padding";
@@ -121,6 +126,21 @@ const NO_INSET = { left: 0, top: 0, right: 0, bottom: 0 };
 // Per-app CLIP_INSETS are applied on top of this.
 const BORDER_OUTSET = 1;
 
+// A new window's actor exists (with its full size) before the app has drawn anything into it.
+// Until then the surface is empty, but the border and shadow would still be drawn around it,
+// a visible empty frame for as long as the app takes to draw (a second or more for slow
+// starters like Resources). So new windows are rounded only once Muffin says the first frame
+// is on screen. If that never comes, round them anyway after this long. It only matters if the
+// first-frame signal is missed, and a window left square for good would be worse than a late border.
+const FIRST_FRAME_TIMEOUT_MS = 10000;
+const HAS_FIRST_FRAME_SIGNAL = (() => {
+   try {
+      return GObject.signal_lookup("first-frame", Meta.WindowActor) !== 0;
+   } catch (e) {
+      return false;
+   }
+})();
+
 // Convert a colour value ("rgb(r,g,b)", "rgba(r,g,b,a)", "#rrggbb" or "#rrggbbaa") to [r, g, b, a], each 0..1.
 // Returns null if the value can't be parsed.
 function tryParseColor(value) {
@@ -143,6 +163,82 @@ function tryParseColor(value) {
 function parseColor(value) {
    return tryParseColor(value) || [0, 0, 0, 0.3];
 }
+
+// Read a text file asynchronously. Resolves to its text, or null if it can't be read or the read is cancelled.
+function loadTextFile(path, cancellable) {
+   return new Promise(resolve => {
+      Gio.File.new_for_path(path).load_contents_async(cancellable, (file, result) => {
+         try {
+            let [ok, bytes] = file.load_contents_finish(result);
+            if (!ok)
+               resolve(null);
+            else   // TextDecoder is missing from older cjs releases
+               resolve(typeof TextDecoder !== "undefined" ? new TextDecoder().decode(bytes) : imports.byteArray.toString(bytes));
+         } catch (e) {
+            resolve(null);
+         }
+      });
+   });
+}
+
+// Collect the @define-color names of a GTK CSS file (and the files it @imports) into defines.
+// Later definitions replace earlier ones, as in GTK. Resolves to false if the file can't be read.
+async function collectColorDefines(path, defines, cancellable, depth = 0) {
+   let text = depth < 8 ? await loadTextFile(path, cancellable) : null;
+   if (!text)
+      return false;
+   text = text.replace(/\/\*[\s\S]*?\*\//g, "");
+   let dir = GLib.path_get_dirname(path);
+   // Walk the @import and @define-color rules in file order
+   let rule = /@import\s+(?:url\(\s*)?["']?([^"')\s;]+)["']?\s*\)?\s*;|@define-color\s+([\w-]+)\s+([^;]+);/g;
+   let m;
+   while ((m = rule.exec(text)) !== null) {
+      if (m[1]) {
+         if (!m[1].includes(":"))   // relative or absolute paths only, not resource: or other URIs
+            await collectColorDefines(GLib.path_is_absolute(m[1]) ? m[1] : GLib.build_filenamev([dir, m[1]]), defines, cancellable, depth + 1);
+      } else {
+         defines[m[2]] = m[3].trim();
+      }
+   }
+   return true;
+}
+
+// Resolve a @define-color name to [r, g, b, a], following "@other" references.
+// Colour expressions (shade(), mix(), alpha()...) aren't evaluated and give null.
+function resolveColorDefine(name, defines, depth = 0) {
+   let value = defines[name];
+   if (!value || depth > 8)
+      return null;
+   if (value.startsWith("@"))
+      return resolveColorDefine(value.substring(1), defines, depth + 1);
+   return tryParseColor(value);
+}
+
+// Resolves to the GTK theme's accent colour as [r, g, b, a], or null if the theme doesn't define one.
+// Most GTK3 themes (Mint-Y included) define theme_selected_bg_color, and it follows the theme's
+// colour variant. The theme's CSS is read directly rather than through a Gtk.StyleContext: under
+// Wayland Cinnamon's process has no GDK display (and GTK aborts if a style context is created
+// without one), and when it does have one its theme isn't necessarily the user's GTK theme.
+async function lookupThemeAccentColor(themeName, cancellable) {
+   if (!themeName)
+      return null;
+   let dirs = [GLib.build_filenamev([GLib.get_home_dir(), ".themes"]),
+               GLib.build_filenamev([GLib.get_user_data_dir(), "themes"])];
+   for (let dir of GLib.get_system_data_dirs())
+      dirs.push(GLib.build_filenamev([dir, "themes"]));
+   // The first folder that has the theme is the one GTK uses
+   for (let dir of dirs) {
+      let defines = {};
+      if (await collectColorDefines(GLib.build_filenamev([dir, themeName, "gtk-3.0", "gtk.css"]), defines, cancellable))
+         return resolveColorDefine("theme_selected_bg_color", defines);
+      if (cancellable.is_cancelled())
+         return null;
+   }
+   return null;
+}
+
+// The shadow-color-mode setting's values, as shadow.glsl's shadow_color_mode
+const SHADOW_COLOR_MODES = { black: 0, color: 1, gradient: 2, rainbow: 3 };
 
 // Muffin's per-window shadow mode (MetaShadowMode: AUTO=0, FORCED_OFF=1, FORCED_ON=2)
 const SHADOW_MODE_FORCED_OFF = Meta.ShadowMode ? Meta.ShadowMode.FORCED_OFF : 1;
@@ -175,16 +271,36 @@ class RoundedCorners {
       this.settings.bind("border-contrast",          "borderContrast",   refresh);
       this.settings.bind("border-color",             "borderColor",      refresh);
       this.settings.bind("border-color-unfocused",   "borderColorUnfocused", refresh);
+      this.settings.bind("border-theme-accent",      "borderThemeAccent", refresh);
+      this.settings.bind("border-accent-unfocused-opacity", "borderAccentUnfocusedOpacity", refresh);
       this.settings.bind("border-app-list",          "borderAppList",    refresh);
       this.settings.bind("shadow-enabled",           "shadowEnabled",    refresh);
       this.settings.bind("shadow-size",              "shadowSize",       refresh);
       this.settings.bind("shadow-offset",            "shadowOffset",     refresh);
       this.settings.bind("shadow-opacity",           "shadowOpacity",    refresh);
       this.settings.bind("shadow-unfocused-opacity", "shadowUnfocusedOpacity", refresh);
+      this.settings.bind("shadow-color-mode",        "shadowColorMode",  refresh);
+      this.settings.bind("shadow-color",             "shadowColor",      refresh);
+      this.settings.bind("shadow-color-2",           "shadowColor2",     refresh);
+      this.settings.bind("shadow-gradient-angle",    "shadowGradientAngle", refresh);
+      this.settings.bind("shadow-glow",              "shadowGlow",       refresh);
+      this.settings.bind("shadow-color-all-windows", "shadowColorAllWindows", refresh);
+      this.settings.bind("shadow-rainbow-turn-time", "shadowRainbowTurnTime", () => this._updateRainbowAnimation());
 
+      this._waitingWindows = new Set();
       this._signalManager = new SignalManager.SignalManager(null);
       this._signalManager.connect(global.display, "window-created", this._windowAdded, this);
+      this._signalManager.connect(global.window_manager, "map", this._windowMapped, this);
       this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
+
+      // Follow GTK theme changes so the theme accent border colour can change with the theme
+      // (the colour is read asynchronously; windows are redrawn when it arrives)
+      this._themeChangeTimeoutId = 0;
+      this._themeCancellable = null;
+      this._themeAccentColor = null;
+      this._interfaceSettings = new Gio.Settings({ schema_id: "org.cinnamon.desktop.interface" });
+      this._signalManager.connect(this._interfaceSettings, "changed::gtk-theme", this._onGtkThemeChanged, this);
+      this._updateThemeAccentColor();
       //this._signalManager.connect(global.display, "grab-op-begin", this._onWindowGrabbed, this);
 
       // WindowTracker so we can map windows to application
@@ -240,6 +356,37 @@ class RoundedCorners {
          this._watchWindowState(windows[i]);
          this._roundWindow(windows[i]);
       }
+      this._updateRainbowAnimation();
+   }
+
+   // The GTK theme changed: re-read its accent colour.
+   // The short delay lets a theme switcher that changes several settings in a row finish first.
+   _onGtkThemeChanged() {
+      if (this._themeChangeTimeoutId)
+         GLib.source_remove(this._themeChangeTimeoutId);
+      this._themeChangeTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+         this._themeChangeTimeoutId = 0;
+         this._updateThemeAccentColor();
+         return GLib.SOURCE_REMOVE;
+      });
+   }
+
+   // Read the current GTK theme's accent colour, replacing any read still in progress,
+   // and redraw the windows if the colour changed while it is in use
+   _updateThemeAccentColor() {
+      if (this._themeCancellable)
+         this._themeCancellable.cancel();
+      let cancellable = new Gio.Cancellable();
+      this._themeCancellable = cancellable;
+      lookupThemeAccentColor(this._interfaceSettings.get_string("gtk-theme"), cancellable).then(color => {
+         if (cancellable.is_cancelled())
+            return;
+         this._themeCancellable = null;
+         let changed = JSON.stringify(color) !== JSON.stringify(this._themeAccentColor);
+         this._themeAccentColor = color;
+         if (changed && this.borderThemeAccent !== "none")
+            this._refreshAllWindows();
+      }).catch(e => global.logError(`${UUID}: failed to read the GTK theme's accent colour: ${e}`));
    }
 
    _onFocusChanged() {
@@ -255,11 +402,142 @@ class RoundedCorners {
             this._setClip(window);
          this.windowWithFocus = window;
       }
+      this._updateRainbowAnimation();
+   }
+
+   // True if this window's shadow gets the chosen colour: always for the focused window,
+   // and for every window if "Colour every window's shadow" is on. Others get a black shadow.
+   _hasColorShadow(metaWindow) {
+      return this.shadowColorMode !== "black" && (this.shadowColorAllWindows || this._isFocused(metaWindow));
+   }
+
+   // The rounding data of the windows whose rainbow shadow should turn: the focused window,
+   // or every coloured window if "Colour every window's shadow" is on.
+   // visibleOnly: leave out windows that aren't on screen (minimized, on another workspace).
+   _getRainbowWindows(visibleOnly) {
+      if (!this.shadowEnabled || this.shadowColorMode !== "rainbow" || !(this.shadowRainbowTurnTime > 0))
+         return [];
+      let windows = this.shadowColorAllWindows ? global.display.list_windows(0) : [global.display.get_focus_window()];
+      let result = [];
+      for (let window of windows) {
+         let compositor = window ? window.get_compositor_private() : null;
+         let data = compositor ? compositor._roundedCornerData : null;
+         if (!data || !data.shadowEffect || !data.shadowActor || !data.shadowActor.visible)
+            continue;
+         if (visibleOnly && !(compositor.visible && compositor.mapped))
+            continue;
+         result.push(data);
+      }
+      return result;
+   }
+
+   // Run the rainbow timeline only while there is something to turn, so a desktop without
+   // turning rainbows doesn't keep the compositor busy. With only the focused window coloured,
+   // a window keeps its last colours when it loses focus (it then turns black anyway).
+   _updateRainbowAnimation() {
+      let wanted = this._getRainbowWindows(false).length > 0;
+      if (wanted && !this._rainbowTimeline) {
+         // Newer Clutter drives timelines from an actor's frame clock; older Clutter has no
+         // "actor" property and uses the master clock
+         let props = { duration: 1000, repeat_count: -1 };
+         try {
+            this._rainbowTimeline = new Clutter.Timeline(Object.assign({ actor: global.stage }, props));
+         } catch (e) {
+            this._rainbowTimeline = new Clutter.Timeline(props);
+         }
+         this._rainbowTimeline.connect("new-frame", () => this._onRainbowFrame());
+         this._rainbowTimeline.start();
+      } else if (!wanted && this._rainbowTimeline) {
+         this._stopRainbowAnimation();
+      }
+   }
+
+   _stopRainbowAnimation() {
+      if (this._rainbowTimeline) {
+         this._rainbowTimeline.stop();
+         this._rainbowTimeline.run_dispose();
+         this._rainbowTimeline = null;
+      }
+   }
+
+   _onRainbowFrame() {
+      if (this._getRainbowWindows(false).length === 0) {
+         // The windows were unrounded or closed without a focus or settings change
+         this._stopRainbowAnimation();
+         return;
+      }
+      // From the clock rather than the timeline, so the speed can change without a jump, and
+      // all windows turn in step. Negative: hue_offset moves colours anticlockwise, this turns
+      // them clockwise. Hidden windows aren't repainted; they catch up when shown again.
+      let seconds = GLib.get_monotonic_time() / 1000000;
+      let turns = 1 - (seconds / this.shadowRainbowTurnTime) % 1;
+      for (let data of this._getRainbowWindows(true))
+         data.shadowEffect.setHueOffset(turns);
    }
 
    _windowAdded(display, metaWindow) {
       this._watchWindowState(metaWindow);
+      this._waitForFirstFrame(metaWindow);
       this._roundWindow(metaWindow);
+      this._updateRainbowAnimation();
+   }
+
+   // Hold off rounding a new window until its first frame has been drawn (see
+   // FIRST_FRAME_TIMEOUT_MS). _roundWindow() does nothing for the window while it waits.
+   _waitForFirstFrame(metaWindow) {
+      let compositor = metaWindow.get_compositor_private();
+      if (!HAS_FIRST_FRAME_SIGNAL || !compositor || compositor._roundedCornersWaiting)
+         return;
+      let waiting = { compositor: compositor, frameId: 0, destroyId: 0, timeoutId: 0 };
+      compositor._roundedCornersWaiting = waiting;
+      this._waitingWindows.add(waiting);
+      let done = (round) => {
+         this._stopWaiting(waiting);
+         if (round)
+            this._updateWindow(metaWindow);
+      };
+      waiting.frameId = compositor.connect("first-frame", () => done(true));
+      waiting.destroyId = compositor.connect("destroy", () => done(false));
+      waiting.timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, FIRST_FRAME_TIMEOUT_MS, () => {
+         waiting.timeoutId = 0;
+         done(true);
+         return GLib.SOURCE_REMOVE;
+      });
+   }
+
+   _stopWaiting(waiting) {
+      if (!this._waitingWindows.delete(waiting))
+         return;
+      let compositor = waiting.compositor;
+      if (waiting.frameId)
+         compositor.disconnect(waiting.frameId);
+      if (waiting.destroyId)
+         compositor.disconnect(waiting.destroyId);
+      if (waiting.timeoutId)
+         GLib.source_remove(waiting.timeoutId);
+      compositor._roundedCornersWaiting = undefined;
+   }
+
+   _windowMapped(_wm, actor) {
+      if (getSurfaceActor(actor)) {
+         this._updateWindow(actor.meta_window);
+         return;
+      }
+      if (this._signalManager.isConnected("actor-added", actor))
+         return;
+
+      // XWayland can map a window before attaching its surface.
+      let stopWatching = () => {
+         this._signalManager.disconnect("actor-added", actor);
+         this._signalManager.disconnect("destroy", actor);
+      };
+      this._signalManager.connect(actor, "destroy", stopWatching);
+      this._signalManager.connect(actor, "actor-added", () => {
+         if (getSurfaceActor(actor)) {
+            stopWatching();
+            this._updateWindow(actor.meta_window);
+         }
+      });
    }
 
    // Watch a window's maximized/fullscreen state so its rounding can be removed and
@@ -299,12 +577,25 @@ class RoundedCorners {
          this._unroundWindow(compositor);
       else if (!rounded && wanted)
          this._roundWindow(metaWindow);
+      this._updateRainbowAnimation();
    }
 
    disable() {
       this._endPick();
+      this._stopRainbowAnimation();
       // Stop watching for new windows, focus changes and settings changes
       this._signalManager.disconnectAllSignals();
+      for (let waiting of [...this._waitingWindows])
+         this._stopWaiting(waiting);
+      if (this._themeChangeTimeoutId) {
+         GLib.source_remove(this._themeChangeTimeoutId);
+         this._themeChangeTimeoutId = 0;
+      }
+      if (this._themeCancellable) {
+         this._themeCancellable.cancel();
+         this._themeCancellable = null;
+      }
+      this._interfaceSettings = null;
       // If disable was called to remove the extension entirely rather than a reload
       // we can reset the "new-install" value so that if the user adds the extension
       // again in the future, we can show the welcome notification again!
@@ -347,7 +638,7 @@ class RoundedCorners {
       // offscreen texture of any effect added here. So the effect goes on the
       // surface actor (the window's image only), whose texture always matches its size.
       let compositor = metaWindow.get_compositor_private();
-      if (!compositor || compositor._roundedCornerData)
+      if (!compositor || compositor._roundedCornerData || compositor._roundedCornersWaiting)
          return;
       let surface = getSurfaceActor(compositor);
       if (!surface)
@@ -404,8 +695,42 @@ class RoundedCorners {
 
          // Add listeners for this window
          signalManager.connect(compositor, "destroy", () => this._unroundWindow(compositor) );
+         // notify::size follows the actor's real size, i.e. what the app has actually drawn.
+         // size-changed fires earlier, as soon as Muffin asks for a new size; _setClip() then
+         // keeps the old geometry until the surface catches up, so it is harmless, and it
+         // still catches state changes (e.g. shading) that don't change the actor's size.
          signalManager.connect(compositor, "notify::size", () => this._setClip(metaWindow) );
          signalManager.connect(metaWindow, "size-changed", () => this._setClip(metaWindow) );
+         // The surface gets its new size when the app's new pixmap arrives, which can be after
+         // both of the above (and Muffin doesn't resize the window actor at all while a window
+         // effect, e.g. restore, is running). _setClip() only takes new edge gaps once the surface
+         // matches the buffer rect, so it has to run again when the surface catches up.
+         signalManager.connect(surface, "notify::size", () => this._setClip(metaWindow) );
+         // The gaps can also change with a move alone, e.g. when an app changes its
+         // _GTK_FRAME_EXTENTS (Electron apps do on restore) and only the buffer's position moves
+         signalManager.connect(metaWindow, "position-changed", () => this._checkEdges(metaWindow) );
+         // Keep the gaps from the moment the window is minimized (see _setClip()). When it is
+         // restored, stop keeping them after a second at the latest, in case nothing else does.
+         signalManager.connect(metaWindow, "notify::minimized", () => {
+            let data = compositor._roundedCornerData;
+            if (!data)
+               return;
+            if (data.holdTimeoutId) {
+               GLib.source_remove(data.holdTimeoutId);
+               data.holdTimeoutId = 0;
+            }
+            if (!metaWindow.minimized) {
+               data.holdTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+                  data.holdTimeoutId = 0;
+                  if (compositor._roundedCornerData === data && data.holdEdges && !metaWindow.minimized) {
+                     data.holdEdges = false;
+                     this._setClip(metaWindow);
+                  }
+                  return GLib.SOURCE_REMOVE;
+               });
+            }
+            this._setClip(metaWindow);
+         });
          signalManager.connect(metaWindow, "focus", () => this._setClip(metaWindow) );
       }
    }
@@ -430,6 +755,12 @@ class RoundedCorners {
          data.padding = new CornerEffect.ShadowPaddingEffect();
          surface.add_effect_with_name( CORNER_EFFECT_NAME, data.effect );
          surface.add_effect_with_name( PADDING_EFFECT_NAME, data.padding );
+         // Follow the new surface's size instead of the old one's (see _roundWindow())
+         try {
+            data.signalManager.disconnect("notify::size", data.surface);
+         } catch (e) {
+         }
+         data.signalManager.connect(surface, "notify::size", () => this._setClip(metaWindow) );
          data.surface = surface;
       }
 
@@ -437,12 +768,66 @@ class RoundedCorners {
       // invisible borders). Clip to the visible frame rect, relative to the buffer.
       let frame = metaWindow.get_frame_rect();
       let buffer = metaWindow.get_buffer_rect();
-      let rect = { x: frame.x, y: frame.y, width: frame.width, height: frame.height };
+      // The gap between the buffer and frame rects on each side (invisible borders or a
+      // client-side shadow). It doesn't change while the window is being resized.
+      let edges = { left: frame.x - buffer.x, top: frame.y - buffer.y,
+                    right: buffer.x + buffer.width - (frame.x + frame.width),
+                    bottom: buffer.y + buffer.height - (frame.y + frame.height) };
+      // The frame and buffer rects are the geometry Muffin has asked for, and they change as
+      // soon as the mouse moves during a resize. The surface still shows the last frame the app
+      // drew, at its old size and position, until the app catches up. Size the clip from the
+      // surface itself so it always matches what is on screen; otherwise, when resizing from the
+      // left edge, the clip and shadow overshoot or cut into the right edge on every motion.
+      // Only trust the edge gaps when the surface and buffer rect agree, else use the last ones.
+      let surfaceWidth = data.surface ? Math.round(data.surface.width) : buffer.width;
+      let surfaceHeight = data.surface ? Math.round(data.surface.height) : buffer.height;
+      // A minimized app doesn't redraw. If it changes its buffer anyway (Electron drops its
+      // client-side shadow margins when minimized and adds them back when restored), X keeps the
+      // old pixels, anchored at the top left: the picture still has the old gaps at its left and
+      // top and is cut off at the right and bottom, even though the surface is the size of the
+      // new buffer rect. So from the moment a window is minimized, keep the gaps it had. They are
+      // trusted again once it is restored and the surface has changed size since (the picture
+      // for the restored buffer rect), or the rects agree with the kept gaps anyway (the usual
+      // case, an app that changed nothing), or after a short while (see _roundWindow()).
+      let minimized = !!metaWindow.minimized;
+      if (minimized && data.edges) {
+         data.holdEdges = true;
+         data.holdSize = [surfaceWidth, surfaceHeight];
+      }
+      let sizeMatches = (surfaceWidth === buffer.width && surfaceHeight === buffer.height);
+      if (data.holdEdges && !minimized && sizeMatches) {
+         let e = data.edges;
+         if ((e.left === edges.left && e.top === edges.top && e.right === edges.right && e.bottom === edges.bottom) ||
+             surfaceWidth !== data.holdSize[0] || surfaceHeight !== data.holdSize[1])
+            data.holdEdges = false;
+      }
+      if ((sizeMatches && !data.holdEdges) || !data.edges) {
+         data.edges = edges;
+         // The size of the frame in the picture these gaps belong to
+         data.frameSize = [frame.width, frame.height];
+      }
       // A shaded window keeps its full-size frame rect, but only its title bar is shown
       // (the surface shrinks to it). The bottom of a shaded title bar is square.
       let shaded = metaWindow.is_shaded();
-      if (shaded)
-         rect.height = this._getShadedHeight(metaWindow, frame, buffer);
+      let rect;
+      if (shaded) {
+         rect = { x: edges.left, y: edges.top, width: frame.width,
+                  height: this._getShadedHeight(metaWindow, frame, buffer) };
+      } else {
+         edges = data.edges;
+         rect = { x: edges.left, y: edges.top,
+                  width: Math.max(1, surfaceWidth - edges.left - edges.right),
+                  height: Math.max(1, surfaceHeight - edges.top - edges.bottom) };
+         if (data.holdEdges) {
+            // The picture's frame starts at the kept gaps and runs to its old size, or to the
+            // edge of the surface if X cut it off there
+            rect.width = Math.max(1, Math.min(data.frameSize[0], surfaceWidth - edges.left));
+            rect.height = Math.max(1, Math.min(data.frameSize[1], surfaceHeight - edges.top));
+            edges = { left: edges.left, top: edges.top,
+                      right: Math.max(0, surfaceWidth - edges.left - rect.width),
+                      bottom: Math.max(0, surfaceHeight - edges.top - rect.height) };
+         }
+      }
       let bottom = data.bottom && !shaded;
       if (data.effect.corners_bottom !== bottom)
          data.effect.corners_bottom = bottom;
@@ -455,12 +840,10 @@ class RoundedCorners {
       let inset = Object.assign({}, CLIP_INSETS[metaWindow.get_wm_class()] || NO_INSET);
       // Don't let the outset reach past the surface (e.g. maximized/tiled CSD windows,
       // or apps without invisible borders, where the buffer rect equals the frame rect)
-      let avail = { left: frame.x - buffer.x, top: frame.y - buffer.y,
-                    right: buffer.x + buffer.width - (frame.x + frame.width),
-                    bottom: buffer.y + buffer.height - (frame.y + frame.height) };
       for (let side of ["left", "top", "right", "bottom"])
-         inset[side] = Math.max(inset[side] - BORDER_OUTSET, -avail[side]);
-      let clip = [rect.x - buffer.x + inset.left, rect.y - buffer.y + inset.top,
+         inset[side] = Math.max(inset[side] - BORDER_OUTSET, -edges[side]);
+      // rect is already relative to the surface (= the buffer rect)
+      let clip = [rect.x + inset.left, rect.y + inset.top,
                   rect.width - inset.left - inset.right, rect.height - inset.top - inset.bottom];
       data.effect.clip = clip;
       // The custom border colour depends on focus
@@ -492,6 +875,23 @@ class RoundedCorners {
       }
    }
 
+   // Called when a window moves: redo the clip only if the gaps between its buffer and frame
+   // rects are no longer the ones the clip was made with. Cheap, as it runs on every motion
+   // of a window drag.
+   _checkEdges(metaWindow) {
+      let compositor = metaWindow.get_compositor_private();
+      let data = compositor ? compositor._roundedCornerData : null;
+      if (!data)
+         return;
+      let old = data.edges;
+      let frame = metaWindow.get_frame_rect();
+      let buffer = metaWindow.get_buffer_rect();
+      if (!old || old.left !== frame.x - buffer.x || old.top !== frame.y - buffer.y ||
+          old.right !== buffer.x + buffer.width - (frame.x + frame.width) ||
+          old.bottom !== buffer.y + buffer.height - (frame.y + frame.height))
+         this._setClip(metaWindow);
+   }
+
    // The visible height of a shaded window: its title bar plus the frame's visible bottom
    // border. Muffin shrinks a shaded window's frame to borders.total.top + borders.total.bottom;
    // frame_rect_to_client_rect() takes off the visible borders, so the difference is their sum.
@@ -517,6 +917,10 @@ class RoundedCorners {
       if (data) {
          debugMsg( "unrounding a window" );
          data.signalManager.disconnectAllSignals();
+         if (data.holdTimeoutId) {
+            GLib.source_remove(data.holdTimeoutId);
+            data.holdTimeoutId = 0;
+         }
          this._removeEffects(data);
          // Back to the pools for the next window. The shadow effect is detached before its actor is
          // destroyed, so that it can be reused.
@@ -594,10 +998,27 @@ class RoundedCorners {
       if (!this.shadowEnabled)
          return { size: 0, opacity: 0, offsetY: 0 };
       let focused = this._isFocused(metaWindow);
+      // The size and offset settings are in logical pixels: scale them on HiDPI desktops,
+      // as the corner radius is, so the shadow looks the same at every scale factor
+      let scale = St.ThemeContext.get_for_stage(global.stage).scale_factor;
       return {
-         size: this.shadowSize,
+         size: this.shadowSize * scale,
          opacity: (focused ? this.shadowOpacity : this.shadowUnfocusedOpacity) / 100,
-         offsetY: this.shadowOffset
+         offsetY: this.shadowOffset * scale,
+         ...this._getShadowColorSettings(metaWindow)
+      };
+   }
+
+   // The colour part of the shadow settings: a plain black shadow unless this window gets colour
+   _getShadowColorSettings(metaWindow) {
+      if (!this._hasColorShadow(metaWindow))
+         return { colorMode: 0, glow: 0 };
+      return {
+         colorMode: SHADOW_COLOR_MODES[this.shadowColorMode] ?? 0,
+         color1: tryParseColor(this.shadowColor) || [0, 0, 0, 1],
+         color2: tryParseColor(this.shadowColor2) || [0, 0, 0, 1],
+         angle: this.shadowGradientAngle || 0,
+         glow: (this.shadowGlow || 0) / 100
       };
    }
 
@@ -608,7 +1029,18 @@ class RoundedCorners {
       let modes = { none: CornerEffect.BorderMode.NONE, auto: CornerEffect.BorderMode.AUTO, match: CornerEffect.BorderMode.MATCH,
                     "custom-colors": CornerEffect.BorderMode.CUSTOM };
       let focused = this._isFocused(metaWindow);
+      // "Use the theme's accent colour" replaces the chosen colour with the GTK theme's accent for
+      // the focused window or for all windows; the chosen colours are the fallback for themes
+      // that don't define an accent colour.
       let globalColor = parseColor(focused ? this.borderColor : this.borderColorUnfocused);
+      let useAccent = this.borderThemeAccent === "all" || (this.borderThemeAccent === "focused" && focused);
+      if (useAccent && this._themeAccentColor) {
+         let [r, g, b, a] = this._themeAccentColor;
+         // With "All windows", other windows get a fainter accent so the focused window still stands out
+         if (!focused)
+            a *= Math.max(0, Math.min(100, this.borderAccentUnfocusedOpacity ?? 40)) / 100;
+         globalColor = [r, g, b, a];
+      }
       // An enabled entry in the application border list overrides the global border settings.
       // An empty or unparsable colour falls back to the global colour.
       let ids = this._getWindowIds(metaWindow);

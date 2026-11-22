@@ -9,7 +9,15 @@ const Cogl     = imports.gi.Cogl;
 const Gio      = imports.gi.Gio;
 const GLib     = imports.gi.GLib;
 
-const EffectBaseModule = (typeof global === 'undefined') ? null : require("./effect_base");
+// Cinnamon 6.7.6+ deprecates require() in favour of the extension's native importer (see extension.js)
+function loadEffectBase() {
+    if (typeof global === 'undefined')
+        return null;
+    const Extension = imports.ui.extension;
+    const Me = (typeof Extension.getCurrentExtension === 'function') ? Extension.getCurrentExtension() : null;
+    return (Me && Me.imports) ? Me.imports.effect_base : require("./effect_base");
+}
+const EffectBaseModule = loadEffectBase();
 const EffectBase = EffectBaseModule ? EffectBaseModule.EffectBase : null;
 
 const SHADER_FILENAME = 'corner.glsl';
@@ -477,7 +485,8 @@ var ShadowEffect = (typeof global === 'undefined') ? null :
 
         // width/height: the shadow actor's size
         // rect: the window's rounded rectangle in the shadow actor's pixels [x0, y0, x1, y1]
-        // shadow: {size, opacity (0..1), offsetY, radius, top, bottom}
+        // shadow: {size, opacity (0..1), offsetY, radius, top, bottom,
+        //          colorMode (0..3), color1/color2 ([r, g, b, a] 0..1), angle (degrees), glow (0..1)}
         update(width, height, rect, shadow) {
             let fx = fboGeometry(0, width);
             let fy = fboGeometry(0, height);
@@ -489,13 +498,33 @@ var ShadowEffect = (typeof global === 'undefined') ? null :
             this.set_uniform_value('rect_y0', asFloat(rect[1]));
             this.set_uniform_value('rect_x1', asFloat(rect[2]));
             this.set_uniform_value('rect_y1', asFloat(rect[3]));
-            this.set_uniform_value('radius', asFloat(Math.min(shadow.radius, (rect[2] - rect[0]) / 2, (rect[3] - rect[1]) / 2)));
+            // Scaled like CornerEffect's radius (see update_radius()), so the shadow follows
+            // the window's corners on HiDPI desktops; rect is already in physical pixels
+            let scale = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+            this.set_uniform_value('radius', asFloat(Math.min(shadow.radius * scale, (rect[2] - rect[0]) / 2, (rect[3] - rect[1]) / 2)));
             this.set_uniform_value('corners_top', shadow.top ? 1 : 0);
             this.set_uniform_value('corners_bottom', shadow.bottom ? 1 : 0);
             this.set_uniform_value('shadow_size', asFloat(shadow.size));
             this.set_uniform_value('shadow_opacity', asFloat(shadow.opacity));
             this.set_uniform_value('shadow_offset_y', asFloat(shadow.offsetY));
             this.set_uniform_value('cutout_inset', asFloat(shadow.cutoutInset || 0));
+            let c1 = shadow.color1 || [0, 0, 0, 1];
+            let c2 = shadow.color2 || c1;
+            this.set_uniform_value('shadow_color_mode', Math.round(shadow.colorMode || 0));
+            ['r', 'g', 'b', 'a'].forEach((ch, i) => {
+                this.set_uniform_value(`color1_${ch}`, asFloat(c1[i] ?? 1));
+                this.set_uniform_value(`color2_${ch}`, asFloat(c2[i] ?? 1));
+            });
+            this.set_uniform_value('grad_angle', asFloat((shadow.angle || 0) * Math.PI / 180));
+            this.set_uniform_value('glow', asFloat(shadow.glow || 0));
+        }
+
+        // Rotates the rainbow (in turns, 0..1). Only the shadow's own actor needs repainting.
+        setHueOffset(turns) {
+            this.set_uniform_value('hue_offset', asFloat(turns));
+            let actor = this.get_actor();
+            if (actor)
+                actor.queue_redraw();
         }
     });
 
