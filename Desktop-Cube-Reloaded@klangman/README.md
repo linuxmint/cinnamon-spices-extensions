@@ -9,12 +9,13 @@ This Cinnamon port is called "Reloaded" because Cinnamon already has a simpler D
 ## Features
 
 - A Desktop-Cube style animation for workspace switching similar to the Compiz effect.
-- Mouse Rotation: freely rotate the Cube initiated by left clicking on a free space on the panel, using the Alt+Super+Space hotkey. In addition you can enable a Hot Corner option or enable mouse-pushing option to enter mouse rotation mode. Using the mouse scroll-wheel zooms in/out the cube.
+- Mouse Rotation: freely rotate the Cube initiated by left clicking on a free space on the panel, or using the Alt+Super+Space hotkey. In addition you can enable a Hot Corner option or enable mouse-pushing option to enter mouse rotation mode. Using the mouse scroll-wheel zooms in/out the cube.
 - Panels can be hidden, shown on top of the cube or shown on the face of the cubes.
 - Supports multi-monitors setups, showing a cube on each monitor in the correct perspective.
-- Skybox: Shows a 360 degree panorama type backdrop using HDRI type images which you can find on the internet.
-- Allow you to drag windows to the screen edge to move windows to adjacent cube faces (workspaces)
-- Mouse pushing and window  drag pushing shows a cube preview hint so you know when a cube flip is about to happen. This gives you the opportunity to cancel the change by backing off the mouse pressure.
+- Skybox: Shows a 360° panorama type backdrop using HDRI type images which you can find on the internet. The brightness of the image can be adjusted.
+- Regular flat images can also be used in a zoomed, scaled or stretched format.
+- Allow you to drag windows to the screen edge to move windows to adjacent cube faces (workspaces).
+- Mouse pushing and window drag pushing shows a cube preview hint so you know when a cube flip is about to happen. This gives you the opportunity to cancel the change by backing off the mouse pressure.
 - Works with Blur Cinnamon so blurred elements look correct on the Cube faces
 - Supports Wayland in Cinnamon 6.8 (Mint 27).
 
@@ -27,7 +28,7 @@ If you have installed any of the following Cinnamon extensions, you should **dis
 - Desktop-Cube
 - Flipper
 
-Desktop-Cube-Reloaded will refuse to operate when one of these extensions are already loaded, but attempting to load these extension after loading Desktop-Cube-Reloaded will just break things.
+Desktop-Cube-Reloaded will refuse to operate when one of these extensions is already loaded, but attempting to load these extensions after loading Desktop-Cube-Reloaded will just break things.
 
 ## Limitations
 
@@ -51,7 +52,7 @@ If you like this Cinnamon extension, please give it a "star" here and maybe on m
 
 ## Credits
 
-The majority of code is a copy from Simon Schneegans' [Desktop Cube](https://github.com/Schneegans/Desktop-Cube)  (the Gnome version), my own [Blur Cinnamon](https://github.com/klangman/BlurCinnamon) or written by Claude AI based on my prompting. I have done code reviews of all the AI generated code.
+The majority of code is a copy from Simon Schneegans' [Desktop Cube](https://github.com/Schneegans/Desktop-Cube) (the Gnome version), my own [Blur Cinnamon](https://github.com/klangman/BlurCinnamon) or written by Claude AI based on my prompting. I have done code reviews of all the AI generated code.
 
 The extension icon is a slightly modified version of Simon Schneegans' Desktop Cube icon, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 

@@ -370,6 +370,24 @@ class DesktopCube {
     this._settings.bind('enable-panorama', 'enablePanorama', () => this._updateSkybox(true));
     this._settings.bind('background-panorama', 'backgroundPanorama',
                         () => this._updateSkybox(true));
+    this._settings.bind('background-mode', 'backgroundMode',
+                        () => this._updateSkybox(true));
+    // Every new brightness converts the panorama again, so wait until the value has
+    // stopped changing (e.g. while the spin button's arrow is held).
+    this._skyboxTimer = 0;
+    this._settings.bind('panorama-brightness', 'panoramaBrightness', () => {
+      if (this._skyboxTimer) {
+        GLib.source_remove(this._skyboxTimer);
+      }
+      this._skyboxTimer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
+        this._skyboxTimer = 0;
+        // Only the panorama uses the brightness.
+        if (this._skybox && !this._skybox.flat) {
+          this._updateSkybox(true);
+        }
+        return GLib.SOURCE_REMOVE;
+      });
+    });
     this._updateSkybox(false);
 
     // The first time the extension runs, explain how to use it.
@@ -411,6 +429,10 @@ class DesktopCube {
     this._draggedWindow = null;
     this._finish();
 
+    if (this._skyboxTimer) {
+      GLib.source_remove(this._skyboxTimer);
+      this._skyboxTimer = 0;
+    }
     if (this._skybox) {
       this._skybox.destroy();
       this._skybox = null;
@@ -556,6 +578,10 @@ class DesktopCube {
   // `notifyWhenReady` is set when the user changed the settings, so they hear when the
   // new panorama is ready; at startup the panorama loads quietly.
   _updateSkybox(notifyWhenReady) {
+    if (this._skyboxTimer) {
+      GLib.source_remove(this._skyboxTimer);
+      this._skyboxTimer = 0;
+    }
     if (this._skybox) {
       this._skybox.destroy();
       this._skybox = null;
@@ -563,7 +589,13 @@ class DesktopCube {
 
     const file = this._settings.getValue('background-panorama');
     if (this._settings.getValue('enable-panorama') && file) {
-      this._skybox = new Skybox(file, this._meta.uuid, notifyWhenReady);
+      // Either a 360° panorama around the cube, or an ordinary picture scaled to the
+      // screen. Both offer the same interface to the scene.
+      const mode = this._settings.getValue('background-mode');
+      this._skybox = BACKDROP_MODES.includes(mode) ?
+        new Backdrop(file, mode, this._meta.uuid, notifyWhenReady) :
+        new Skybox(file, this._meta.uuid, notifyWhenReady,
+                   (this._settings.getValue('panorama-brightness') || 100) / 100);
     }
   }
 
@@ -1263,7 +1295,10 @@ class DesktopCube {
         root.add_child(wrapper);
         anim.cubes.push({monitor: monitor, monitorIndex: index, actor: cube, faces: faces});
 
-        if (skybox) {
+        if (skybox && skybox.flat) {
+          // An ordinary picture: it fills the monitor and stays put behind the cube.
+          anim.skyLayer.add_child(skybox.createActor(monitor));
+        } else if (skybox) {
           const clip = new Clutter.Actor();
           clip.set_clip(monitor.x, monitor.y, monitor.width, monitor.height);
           const skyWrapper = new Clutter.Actor();
@@ -1681,15 +1716,26 @@ class DesktopCube {
         });
       });
 
-      // Clutter has no depth buffer here, so paint order is depth order. Within a face,
-      // the windows are parallel planes: painting them in stacking order is right when
-      // the face is seen from the front, and has to be reversed when seen from behind.
+      // Clutter has no depth buffer here, so paint order is depth order. The wallpaper
+      // layers lie on the face's plane and the windows on parallel planes at translation_z
+      // in front of it. The wallpaper goes first when the face is seen from the front and
+      // last when seen from behind. The windows are painted farthest plane first, by their
+      // distance from the camera along the face's normal. A single front/back flip is not
+      // enough for them: at grazing angles the camera lies between the window planes, sees
+      // the lower windows from the front and the higher ones from behind. Planes on
+      // opposite sides of the camera never overlap on screen, so this order is always right.
       cube.faces.forEach(face => {
-        const frontFacing = this._isFrontFacing(face, camera);
+        const c = this._getCameraOffset(face, camera);
+        const frontFacing = c > 0;
         if (frontFacing !== face._frontFacing) {
           face._frontFacing = frontFacing;
           this._reverseChildren(face);
-          this._reverseChildren(face._windows);
+        }
+        const windows = face._windows.get_children();
+        const sortedWindows = windows.slice().sort((a, b) =>
+          Math.abs(c - b.translation_z) - Math.abs(c - a.translation_z));
+        if (sortedWindows.some((w, k) => w !== windows[k])) {
+          sortedWindows.forEach((w, k) => face._windows.set_child_at_index(w, k));
         }
       });
 
@@ -1704,23 +1750,32 @@ class DesktopCube {
     actor.get_children().reverse().forEach((child, k) => actor.set_child_at_index(child, k));
   }
 
-  // Whether the camera sees the front side of the face. We transform the face's center
-  // and a point one pixel in front of it to stage coordinates; the face is front facing
-  // if the camera is on the side that point lies on.
-  _isFrontFacing(face, camera) {
+  // Signed distance of the camera from the face's plane, in the face's own z units:
+  // positive in front of the face, negative behind it. A window clone with
+  // translation_z = d lies on the parallel plane at d. We transform the face's center and
+  // a point one unit in front of it to stage coordinates, and project the camera onto
+  // that normal.
+  _getCameraOffset(face, camera) {
     // Right after the scene is built nothing has been allocated yet, and the transforms
     // below come out wrong (seen on Cinnamon 6.8): the front face was taken for one seen
     // from behind, so its wallpaper was painted over its windows for the first frame.
-    // Until then, judge by the face's angle alone.
+    // Until then, judge by the face's angle alone. A camera far in front (or behind)
+    // gives plain stacking order (or its reverse).
     if (!face.has_allocation()) {
-      return Math.abs(face._angle || 0) < 90;
+      return Math.abs(face._angle || 0) < 90 ? 1e9 : -1e9;
     }
     const x = face.width / 2;
     const y = face.height / 2;
     const a = face.apply_relative_transform_to_point(null, new Graphene.Point3D({x, y, z: 0}));
     const b = face.apply_relative_transform_to_point(null, new Graphene.Point3D({x, y, z: 1}));
-    return (camera.x - a.x) * (b.x - a.x) + (camera.y - a.y) * (b.y - a.y) +
-      (camera.z - a.z) * (b.z - a.z) > 0;
+    const nx = b.x - a.x;
+    const ny = b.y - a.y;
+    const nz = b.z - a.z;
+    const nn = nx * nx + ny * ny + nz * nz;
+    if (nn === 0) {
+      return Math.abs(face._angle || 0) < 90 ? 1e9 : -1e9;
+    }
+    return ((camera.x - a.x) * nx + (camera.y - a.y) * ny + (camera.z - a.z) * nz) / nn;
   }
 
   // ------------------------------------------------- cube geometry (from the GNOME code)
@@ -1869,7 +1924,10 @@ class DesktopCube {
     // 0 when facing a workspace, 1 when looking at an edge / when fully tilted.
     const fraction = ((progress % 1) + 1) % 1;
     const hFactor = 1.0 - 2.0 * Math.abs(fraction - 0.5);
-    const vFactor = Math.abs(pitch);
+    // Eased in (smoothstep) so a slight, unintended tilt during a mouse drag doesn't lift
+    // the windows off the wallpaper; full tilt still gives the full effect.
+    const tilt = Math.abs(pitch);
+    const vFactor = tilt * tilt * (3 - 2 * tilt);
 
     // Horizontal: move back far enough that the cube's corners stay behind the screen
     // plane. The topmost window then stays at a constant depth.
@@ -1927,7 +1985,8 @@ class DesktopCube {
 // exist.
 //
 // The finished faces are saved as PNG files in ~/.cache/desktop-cube-reloaded/<key>/,
-// where the key depends on the panorama's path, size and modification time. Next time
+// where the key depends on the panorama's path, size, modification time and the
+// brightness setting. Next time
 // (e.g. after logging in), the faces are simply loaded from there. Only the cache for
 // the current panorama is kept.
 const SKY_FACE_TILES = 8;
@@ -1979,8 +2038,12 @@ function gioAsync(obj, name, ...args) {
 }
 
 class Skybox {
-  constructor(file, uuid, notifyWhenReady = false) {
+  constructor(file, uuid, notifyWhenReady = false, brightness = 1) {
+    this.flat = false;
     this._uuid = uuid;
+    // Every pixel is multiplied by this when the panorama is converted. Dark images,
+    // such as high-resolution star maps, show more that way.
+    this._brightness = brightness;
     this._notifyWhenReady = notifyWhenReady;
     this.ready = false;
     this._destroyed = false;
@@ -2070,7 +2133,8 @@ class Skybox {
       const key = GLib.compute_checksum_for_string(
         GLib.ChecksumType.SHA256,
         [SKY_CACHE_VERSION, gfile.get_uri(), info.get_attribute_uint64('time::modified'),
-         info.get_size(), SKY_MAX_FACE_SIZE, SKY_FACE_TILES].join('|'),
+         info.get_size(), SKY_MAX_FACE_SIZE, SKY_FACE_TILES,
+         this._brightness.toFixed(2)].join('|'),
         -1);
       this._cacheRoot = GLib.build_filenamev([GLib.get_user_cache_dir(), SKY_CACHE_DIR]);
       this._cacheDir = GLib.build_filenamev([this._cacheRoot, key]);
@@ -2482,6 +2546,7 @@ class Skybox {
 
     const p = src.pixels;
     const c = src.channels;
+    const gain = this._brightness;
     const i00 = ya * src.rowstride + xa * c;
     const i10 = ya * src.rowstride + xb * c;
     const i01 = yb * src.rowstride + xa * c;
@@ -2490,8 +2555,151 @@ class Skybox {
     for (let k = 0; k < 3; k++) {
       const top = p[i00 + k] + (p[i10 + k] - p[i00 + k]) * wx;
       const bottom = p[i01 + k] + (p[i11 + k] - p[i01 + k]) * wx;
-      out[offset + k] = top + (bottom - top) * wy;
+      // Clamped: a Uint8Array would wrap values above 255 around.
+      out[offset + k] = Math.min(255, (top + (bottom - top) * wy) * gain);
     }
+  }
+}
+
+// ------------------------------------------------------------- flat background picture
+//
+// The alternative to the panorama, for ordinary pictures such as a 1920 × 1080 photo or
+// a wallpaper: the picture is scaled to each rotating monitor and stays put behind the
+// cube, like a wallpaper behind the whole scene. Wrapped around the cube as a panorama,
+// such a picture would be stretched over 360° and look blurry and distorted.
+//
+// Modes (the 'background-mode' setting; anything else means panorama):
+//   zoom    - scaled to cover the monitor, keeping its shape; the overhang is cut off
+//   fit     - scaled to fit inside the monitor, keeping its shape; the rest stays black
+//   stretch - stretched to exactly the monitor's size
+//
+// It has the same interface as Skybox as far as the scene is concerned (ready, flat,
+// placeAtCamera(), setRotation(), destroy()), plus createActor().
+const BACKDROP_MODES = ['zoom', 'fit', 'stretch'];
+const BACKDROP_MIN_TEXTURE_LIMIT = 4096;
+
+class Backdrop {
+  constructor(file, mode, uuid, notifyWhenReady = false) {
+    this.flat = true;
+    this.ready = false;
+    this._mode = mode;
+    this._uuid = uuid;
+    this._notifyWhenReady = notifyWhenReady;
+    this._destroyed = false;
+    this._cancellable = new Gio.Cancellable();  // Stops file I/O on destroy.
+    this._image = null;
+    this._width = 0;
+    this._height = 0;
+
+    // The settings widget may store a URI or a plain path.
+    const gfile = file.startsWith('file://') ?
+      Gio.File.new_for_uri(file) : Gio.File.new_for_path(file);
+    this._name = gfile.get_basename() || file;
+    this._file = file;
+    this._load(gfile);
+  }
+
+  // Actors made by createActor() belong to the scene and keep the image alive for as
+  // long as they need it.
+  destroy() {
+    this._destroyed = true;
+    this._cancellable.cancel();
+    this._image = null;
+  }
+
+  // The picture doesn't move with the cube.
+  placeAtCamera(camera) {}
+  setRotation(progress, pitch, nWorkspaces) {}
+
+  // Returns an actor (in stage coordinates) showing the picture on the given monitor.
+  createActor(monitor) {
+    const clip = new Clutter.Actor();
+    clip.set_clip(monitor.x, monitor.y, monitor.width, monitor.height);
+
+    let width = monitor.width;
+    let height = monitor.height;
+    if (this._mode !== 'stretch') {
+      const sx = monitor.width / this._width;
+      const sy = monitor.height / this._height;
+      const scale = this._mode === 'fit' ? Math.min(sx, sy) : Math.max(sx, sy);
+      width = Math.round(this._width * scale);
+      height = Math.round(this._height * scale);
+    }
+
+    const picture = new Clutter.Actor({
+      x: monitor.x + Math.round((monitor.width - width) / 2),
+      y: monitor.y + Math.round((monitor.height - height) / 2),
+      width: width,
+      height: height,
+      content: this._image,
+    });
+    picture.set_content_scaling_filters(Clutter.ScalingFilter.TRILINEAR,
+                                        Clutter.ScalingFilter.LINEAR);
+    clip.add_child(picture);
+    return clip;
+  }
+
+  _load(gfile) {
+    gfile.read_async(GLib.PRIORITY_DEFAULT, this._cancellable, (obj, readResult) => {
+      let stream;
+      try {
+        stream = gfile.read_finish(readResult);
+      } catch (e) {
+        this._fail(e);
+        return;
+      }
+
+      GdkPixbuf.Pixbuf.new_from_stream_async(stream, this._cancellable, (obj2, result) => {
+        try {
+          let pixbuf = GdkPixbuf.Pixbuf.new_from_stream_finish(result);
+          if (this._destroyed) {
+            return;
+          }
+
+          // The picture becomes a single texture, so a very large one is scaled down
+          // to stay within what graphics cards accept. Nothing is lost on screen: the
+          // limit is never smaller than the screen.
+          const limit = Math.max(BACKDROP_MIN_TEXTURE_LIMIT, global.screen_width,
+                                 global.screen_height);
+          const shrink = Math.min(1, limit / pixbuf.width, limit / pixbuf.height);
+          if (shrink < 1) {
+            pixbuf = pixbuf.scale_simple(Math.max(1, Math.round(pixbuf.width * shrink)),
+                                         Math.max(1, Math.round(pixbuf.height * shrink)),
+                                         GdkPixbuf.InterpType.BILINEAR);
+          }
+
+          const image = new Clutter.Image();
+          image.set_data(pixbuf.get_pixels(),
+                         pixbuf.get_has_alpha() ? Cogl.PixelFormat.RGBA_8888 :
+                                                  Cogl.PixelFormat.RGB_888,
+                         pixbuf.width, pixbuf.height, pixbuf.rowstride);
+          this._image = image;
+          this._width = pixbuf.width;
+          this._height = pixbuf.height;
+          this.ready = true;
+          if (this._notifyWhenReady) {
+            Main.notify(
+              _('Desktop Cube Reloaded: the background image is ready'),
+              _('"%s" has been loaded and will be shown behind the cube the next time ' +
+                'it rotates.').format(this._name));
+          }
+        } catch (e) {
+          this._fail(e);
+        }
+      });
+    });
+  }
+
+  _fail(error) {
+    if (this._destroyed) {
+      return;  // Cancelled by destroy().
+    }
+    global.logError(`${this._uuid}: could not load background image ${this._file}: ` +
+                    `${error}`);
+    Main.warningNotify(
+      _('Desktop Cube Reloaded: the background image could not be loaded'),
+      _('"%s" could not be read as an image. Use a JPEG or PNG file. The cube is shown ' +
+        'on black for now.').format(this._name));
   }
 }
 
