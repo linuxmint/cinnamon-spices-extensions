@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Desktop-Cube-Reloaded@klangman 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-11-14 11:47-0500\n"
+"POT-Creation-Date: 2026-11-22 13:56-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.10\n"
 
-#. 6.0/extension.js:478
+#. 6.0/extension.js:500
 #, javascript-format
 msgid "Desktop Cube Reloaded can not be used together with: %s"
 msgstr "Desktop Cube Reloaded no se puede utilizar junto con: %s"
 
-#. 6.0/extension.js:480
+#. 6.0/extension.js:502
 msgid ""
 "Both change how Cinnamon switches workspaces, so Desktop Cube Reloaded will "
 "do nothing until the other extension is removed. After removing it, disable "
@@ -34,15 +34,15 @@ msgstr ""
 "extensión. Una vez eliminada, desactiva Desktop Cube Reloaded y vuelve a "
 "activarla."
 
-#. 6.0/extension.js:485
+#. 6.0/extension.js:507
 msgid "Desktop Cube Reloaded is not running"
 msgstr "Desktop Cube Reloaded no se está ejecutando"
 
-#. 6.0/extension.js:486
+#. 6.0/extension.js:508
 msgid "Open Extensions Settings"
 msgstr "Abrir la configuración de extensiones"
 
-#. 6.0/extension.js:522
+#. 6.0/extension.js:544
 #, javascript-format
 msgid ""
 "To spin the cube freely, drag an empty part of a panel with the left mouse "
@@ -51,7 +51,7 @@ msgstr ""
 "Para girar el cubo libremente, arrastra una parte vacía del panel con el "
 "botón izquierdo del ratón, o mantén pulsada la tecla %s y mueve el ratón."
 
-#. 6.0/extension.js:524
+#. 6.0/extension.js:546
 msgid ""
 "To spin the cube freely, drag an empty part of a panel with the left mouse "
 "button."
@@ -59,14 +59,14 @@ msgstr ""
 "Para girar el cubo libremente, arrastra una parte vacía del panel con el "
 "botón izquierdo del ratón."
 
-#. 6.0/extension.js:526
+#. 6.0/extension.js:548
 msgid ""
 "Switching workspaces now rotates your desktop as the faces of a 3D cube."
 msgstr ""
 "Al cambiar de espacio de trabajo, ahora el escritorio gira como las caras de "
 "un cubo en 3D."
 
-#. 6.0/extension.js:528
+#. 6.0/extension.js:550
 msgid ""
 "Move sideways to rotate, up or down to tilt, and scroll to zoom. Let go to "
 "switch to the workspace facing you, or press Esc to go back."
@@ -75,7 +75,7 @@ msgstr ""
 "y desliza el dedo para ampliar o reducir. Suelta el dedo para cambiar al "
 "espacio de trabajo que tienes delante o pulsa Esc para volver atrás."
 
-#. 6.0/extension.js:530
+#. 6.0/extension.js:552
 msgid ""
 "In the settings you can also set a hot corner that starts free rotation, and "
 "add a panorama image around the cube on the Background tab."
@@ -84,19 +84,19 @@ msgstr ""
 "la rotación libre y añadir una imagen panorámica alrededor del cubo en la "
 "pestaña 'Fondo'."
 
-#. 6.0/extension.js:534
+#. 6.0/extension.js:556
 msgid "Welcome to Desktop Cube Reloaded"
 msgstr "Bienvenido a Desktop Cube Reloaded"
 
-#. 6.0/extension.js:535
+#. 6.0/extension.js:557
 msgid "Open Desktop Cube Reloaded Settings"
 msgstr "Abrir la configuración de Desktop Cube Reloaded"
 
-#. 6.0/extension.js:2115
+#. 6.0/extension.js:2179
 msgid "Desktop Cube Reloaded: the panorama is ready"
 msgstr "Desktop Cube Reloaded: la imagen panorámica ya está lista"
 
-#. 6.0/extension.js:2116
+#. 6.0/extension.js:2180
 #, javascript-format
 msgid ""
 "\"%s\" has been loaded and will be shown around the cube the next time it "
@@ -104,11 +104,11 @@ msgid ""
 msgstr ""
 "Se ha cargado '%s' y se mostrará alrededor del cubo la próxima vez que gire."
 
-#. 6.0/extension.js:2127
+#. 6.0/extension.js:2191
 msgid "Desktop Cube Reloaded: the panorama could not be loaded"
 msgstr "Desktop Cube Reloaded: no se ha podido cargar la imagen panorámica"
 
-#. 6.0/extension.js:2128
+#. 6.0/extension.js:2192 6.0/extension.js:2701
 #, javascript-format
 msgid ""
 "\"%s\" could not be read as an image. Use a JPEG or PNG file. The cube is "
@@ -117,11 +117,11 @@ msgstr ""
 "No se ha podido leer '%s' como imagen. Utiliza un archivo JPEG o PNG. Por "
 "ahora, el cubo se muestra sobre fondo negro."
 
-#. 6.0/extension.js:2214
+#. 6.0/extension.js:2278
 msgid "Desktop Cube Reloaded: the panorama has an unusual shape"
 msgstr "Desktop Cube Reloaded: la imagen panorámica tiene una forma inusual"
 
-#. 6.0/extension.js:2215
+#. 6.0/extension.js:2279
 #, javascript-format
 msgid ""
 "\"%s\" is %d × %d pixels. A 360° panorama should be twice as wide as it is "
@@ -130,40 +130,58 @@ msgstr ""
 "'%s' mide %d × %d píxeles. Una panorámica de 360° debe tener el doble de "
 "ancho que de alto; de lo contrario, se verá estirada."
 
-#. 6.0/CustomWidgets.py:227
+#. 6.0/extension.js:2682
+#, fuzzy
+msgid "Desktop Cube Reloaded: the background image is ready"
+msgstr "Desktop Cube Reloaded: la imagen panorámica ya está lista"
+
+#. 6.0/extension.js:2683
+#, fuzzy, javascript-format
+msgid ""
+"\"%s\" has been loaded and will be shown behind the cube the next time it "
+"rotates."
+msgstr ""
+"Se ha cargado '%s' y se mostrará alrededor del cubo la próxima vez que gire."
+
+#. 6.0/extension.js:2700
+#, fuzzy
+msgid "Desktop Cube Reloaded: the background image could not be loaded"
+msgstr "Desktop Cube Reloaded: no se ha podido cargar la imagen panorámica"
+
+#. 6.0/CustomWidgets.py:389
 msgid "Cube: rotate with the mouse"
 msgstr "Cubo: girar con el ratón"
 
-#. 6.0/CustomWidgets.py:228
+#. 6.0/CustomWidgets.py:390
 msgid "Cube: rotate left"
 msgstr "Cubo: girar a la izquierda"
 
-#. 6.0/CustomWidgets.py:229
+#. 6.0/CustomWidgets.py:391
 msgid "Cube: rotate right"
 msgstr "Cubo: girar a la derecha"
 
-#. 6.0/CustomWidgets.py:257 6.0/CustomWidgets.py:332
+#. 6.0/CustomWidgets.py:419 6.0/CustomWidgets.py:494
 msgid "Off"
 msgstr "Desactivar"
 
-#. 6.0/CustomWidgets.py:259
+#. 6.0/CustomWidgets.py:421
 msgid "Show all workspaces (Expo)"
 msgstr "Mostrar todos los espacios de trabajo (Expo)"
 
-#. 6.0/CustomWidgets.py:260
+#. 6.0/CustomWidgets.py:422
 msgid "Show all windows (Scale)"
 msgstr "Mostrar todas las ventanas (Escala)"
 
-#. 6.0/CustomWidgets.py:261
+#. 6.0/CustomWidgets.py:423
 msgid "Show the desktop"
 msgstr "Mostrar el escritorio"
 
-#. 6.0/CustomWidgets.py:263
+#. 6.0/CustomWidgets.py:425
 #, python-format
 msgid "Run: %s"
 msgstr "Ejecutar: %s"
 
-#. 6.0/CustomWidgets.py:392
+#. 6.0/CustomWidgets.py:554
 msgid "Open"
 msgstr "Abrir"
 
@@ -196,8 +214,9 @@ msgid "Background"
 msgstr "Fondo"
 
 #. 6.0->settings-schema.json->panorama-section->title
-msgid "Panorama"
-msgstr "Imagen parorámica"
+#, fuzzy
+msgid "Background image"
+msgstr "Fondo"
 
 #. 6.0->settings-schema.json->rotating-page->title
 msgid "Mouse Rotation"
@@ -290,9 +309,11 @@ msgid "Window parallax"
 msgstr "Paralaje de ventana"
 
 #. 6.0->settings-schema.json->window-parallax->tooltip
+#, fuzzy
 msgid ""
-"How far windows float in front of the cube faces while it rotates. 0 keeps "
-"them flat on the faces."
+"How far windows float in front of the cube faces while it rotates sideways. "
+"0 keeps them flat on the faces. Tilting the cube up or down uses the "
+"\"Spread the windows apart when the cube is tilted\" option instead."
 msgstr ""
 "La distancia a la que las ventanas flotan frente a las caras del cubo "
 "mientras este gira. El valor 0 hace que permanezcan pegadas a las caras."
@@ -488,6 +509,7 @@ msgstr ""
 "se ejerce presión contra el borde."
 
 #. 6.0->settings-schema.json->edge-peek->units
+#. 6.0->settings-schema.json->panorama-brightness->units
 msgid "%"
 msgstr "%"
 
@@ -505,29 +527,85 @@ msgstr ""
 "que no hay vista previa."
 
 #. 6.0->settings-schema.json->enable-panorama->description
-msgid "Show a panorama around the cube"
+#, fuzzy
+msgid "Show an image behind the cube"
 msgstr "Mostrar una vista panorámica alrededor del cubo"
 
 #. 6.0->settings-schema.json->enable-panorama->tooltip
+#, fuzzy
 msgid ""
-"Instead of black, show a 360° panorama image behind the cube. It turns with "
-"the cube and tilts with it."
+"Instead of black, show an image behind the cube: either a 360° panorama that "
+"turns and tilts with the cube, or an ordinary picture scaled to the screen."
 msgstr ""
 "En lugar de negro, muestra una imagen panorámica de 360° detrás del cubo. "
 "Gira y se inclina junto con el cubo."
 
 #. 6.0->settings-schema.json->background-panorama->description
-msgid "Panorama image"
-msgstr "Imagen panorámica"
+msgid "Image"
+msgstr ""
 
 #. 6.0->settings-schema.json->background-panorama->tooltip
+#, fuzzy
 msgid ""
-"A 360° panorama in equirectangular projection (twice as wide as it is high), "
-"as used for photo spheres. Sites such as Poly Haven offer free ones."
+"Either a 360° panorama in equirectangular projection (twice as wide as it is "
+"high), as used for photo spheres, or any ordinary picture such as a "
+"wallpaper. Sites such as Poly Haven offer free panoramas."
 msgstr ""
 "Una panorámica de 360° en proyección equirrectangular (dos veces más ancha "
 "que alta), como las que se utilizan para las fotosféricas. Hay sitios web, "
 "como Poly Haven, que ofrecen estas imágenes de forma gratuita."
+
+#. 6.0->settings-schema.json->background-mode->description
+#, fuzzy
+msgid "Show the image as"
+msgstr "Mostrar el escritorio"
+
+#. 6.0->settings-schema.json->background-mode->options
+#, fuzzy
+msgid "A 360° panorama around the cube"
+msgstr "Mostrar una vista panorámica alrededor del cubo"
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture zoomed to fill the screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture scaled to fit the screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture stretched to the screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->tooltip
+msgid ""
+"A 360° panorama is wrapped around the cube and turns with it. An ordinary "
+"picture (for example 1920 × 1080) looks blurry and distorted that way; "
+"choose one of the picture options to show it flat behind the cube instead, "
+"like a wallpaper.\n"
+"\n"
+"<b>Zoomed:</b> fills the screen, cutting off what doesn't fit\n"
+"<b>Scaled:</b> the whole picture is visible, with black bars if its shape "
+"differs from the screen\n"
+"<b>Stretched:</b> fills the screen exactly, changing the picture's shape if "
+"needed"
+msgstr ""
+
+#. 6.0->settings-schema.json->panorama-brightness->description
+#, fuzzy
+msgid "Panorama brightness"
+msgstr "Imagen panorámica"
+
+#. 6.0->settings-schema.json->panorama-brightness->tooltip
+msgid ""
+"Makes a 360° panorama brighter or darker. Dark panoramas such as star maps "
+"often show far fewer stars at a higher resolution, because every pixel then "
+"holds less light: an 8K star map needs about 400% to look like its 4K "
+"version.\n"
+"\n"
+"The panorama is converted again after each change, which takes a few "
+"seconds. This has no effect on a picture shown flat behind the cube."
+msgstr ""
 
 #. 6.0->settings-schema.json->cube-shortcut->description
 msgid "Hold to rotate the cube"
@@ -579,9 +657,10 @@ msgid "Spread the windows apart when the cube is tilted"
 msgstr "Separa las ventanas cuando se incline el cubo"
 
 #. 6.0->settings-schema.json->panorama-ready-info->description
+#, fuzzy
 msgid ""
-"After you pick a new panorama, a notification lets you know when it is ready "
-"to be shown around the cube."
+"After you pick a new image, a notification lets you know when it is ready to "
+"be shown around the cube."
 msgstr ""
 "Una vez que hayas elegido una nueva imagen panorámica, recibirás una "
 "notificación que te indicará cuándo estará lista para mostrarse en el cubo."
