@@ -2,6 +2,7 @@ import { Column, Config, Row } from "../config";
 import { KEYCONTROL, SETTINGS_ANIMATION, SETTINGS_AUTO_CLOSE } from "../constants";
 import { addSignals, getAdjacentMonitor, GetMonitorAspectRatio, getMonitorKey, objHasKey, SignalOverload } from "../utils";
 import { AutoTileMainAndList } from "./AutoTileMainAndList";
+import { AutoTilePresetGrid } from "./AutoTilePresetGrid";
 import { AutoTileTwoList } from "./AutoTileTwoList";
 import { GridElement } from "./GridElement";
 import { GridElementDelegate } from "./GridElementDelegate";
@@ -148,6 +149,13 @@ export class Grid {
     this.veryBottomBar.add(actionTwo.actor, { row: 0, col: 3, x_fill: false, y_fill: false });
 
     actionTwo.connect('resize-done',
+      this.OnResize
+    );
+
+    const actionPreset = new AutoTilePresetGrid(this.app);
+    this.veryBottomBar.add(actionPreset.actor, { row: 0, col: 4, x_fill: false, y_fill: false });
+
+    actionPreset.connect('resize-done',
       this.OnResize
     );
 
