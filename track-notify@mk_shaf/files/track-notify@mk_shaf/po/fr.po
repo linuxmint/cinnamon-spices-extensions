@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: track-notify@mk_shaf\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 00:00+0300\n"
+"PO-Revision-Date: 2026-07-25 00:00+0300\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Popup overlay with the current track (MPRIS)"
+msgstr "Superposition contextuelle avec la piste en cours (MPRIS)"
+
+msgid "Preview"
+msgstr "Aperçu"
+
+msgid "Show notification"
+msgstr "Afficher la notification"
+
+msgid "Appearance"
+msgstr "Apparence"
+
+msgid "Background color"
+msgstr "Couleur de fond"
+
+msgid "Background opacity (%)"
+msgstr "Opacité du fond (%)"
+
+msgid "Text color"
+msgstr "Couleur du texte"
+
+msgid "Font size (px)"
+msgstr "Taille de police (px)"
+
+msgid "Header text"
+msgstr "Texte d'en-tête"
+
+msgid "Show cover art"
+msgstr "Afficher la pochette"
+
+msgid "Cover size (px)"
+msgstr "Taille de la pochette (px)"
+
+msgid "Behavior"
+msgstr "Comportement"
+
+msgid "Display time (sec)"
+msgstr "Durée d'affichage (s)"
+
+msgid "Fade in/out duration (ms)"
+msgstr "Durée du fondu (ms)"
+
+msgid "Opacity on hover (%)"
+msgstr "Opacité au survol (%)"
+
+msgid "Delay before showing, ms (duplicate protection)"
+msgstr "Délai avant affichage, ms (anti-doublon)"
+
+msgid "Position"
+msgstr "Position"
+
+msgid "Screen position"
+msgstr "Position à l'écran"
+
+msgid "Top left"
+msgstr "Haut gauche"
+
+msgid "Top center"
+msgstr "Haut centre"
+
+msgid "Top right"
+msgstr "Haut droite"
+
+msgid "Bottom left"
+msgstr "Bas gauche"
+
+msgid "Bottom center"
+msgstr "Bas centre"
+
+msgid "Bottom right"
+msgstr "Bas droite"
+
+msgid "Screen edge margin (px)"
+msgstr "Marge par rapport au bord de l'écran (px)"
+
+msgid "Maximum text width (px)"
+msgstr "Largeur maximale du texte (px)"
+
+msgid "Test artist"
+msgstr "Artiste de test"
+
+msgid "Test track title"
+msgstr "Titre de piste de test"
