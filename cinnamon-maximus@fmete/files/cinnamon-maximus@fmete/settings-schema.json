@@ -51,6 +51,35 @@
     "description": "Auto Undecorating Apps (use \",\" for seperate apps, partial match and regexp allowed)",
     "default": "gnome-terminal"
   },
+  "overlayHead" : {
+    "type" : "header",
+    "description" : "Overlay window buttons"
+  },
+  "overlayButtons" : {
+    "type" : "checkbox",
+    "default" : true,
+    "description": "Draw minimize/maximize/close buttons at the top corner of undecorated windows"
+  },
+  "overlayIdleOpacity" : {
+    "type" : "spinbutton",
+    "default" : 100,
+    "min" : 0,
+    "max" : 100,
+    "step" : 5,
+    "units" : "%",
+    "dependency" : "overlayButtons",
+    "description": "Button opacity when the mouse is not over them (0 = reveal only on hover)"
+  },
+  "overlayButtonSize" : {
+    "type" : "spinbutton",
+    "default" : 16,
+    "min" : 12,
+    "max" : 32,
+    "step" : 2,
+    "units" : "px",
+    "dependency" : "overlayButtons",
+    "description": "Button icon size"
+  },
   "keepQTAppsFocus" : {
     "type" : "checkbox",
     "default" : false,
