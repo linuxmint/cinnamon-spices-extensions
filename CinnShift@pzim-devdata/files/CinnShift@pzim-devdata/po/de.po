@@ -1,0 +1,107 @@
+# German translation for CinnShift.
+# Copyright (C) 2026 pzim-devdata
+# This file is distributed under the same license as the CinnShift package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CinnShift@pzim-devdata 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/pzim-devdata/CinnShift\n"
+"POT-Creation-Date: 2026-09-12 12:00+0000\n"
+"PO-Revision-Date: 2026-09-12 12:00+0000\n"
+"Last-Translator: pzim-devdata\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Color"
+msgstr "Farbe"
+
+msgid "Fixed accent color (used in 'manual' mode)"
+msgstr "Feste Akzentfarbe (im Modus „manual“)"
+
+msgid "Leave default purple and switch mode to change it"
+msgstr "Standardviolett lassen und den Modus wechseln, um sie zu ändern"
+
+msgid "Manual hex color (overrides the picker)"
+msgstr "Manueller Hex-Farbwert (überschreibt die Auswahl)"
+
+msgid "Six digits with #, e.g. #6d4aff. Used when Color mode is manual and this field is valid."
+msgstr "Sechs Ziffern mit #, z. B. #6d4aff. Wird verwendet, wenn der Farbmodus manuell ist und dieses Feld gültig ist."
+
+msgid "Color mode"
+msgstr "Farbmodus"
+
+msgid "manual: use the color above; random: new random color; none: keep the existing accent"
+msgstr "manual: obige Farbe verwenden; random: neue Zufallsfarbe; none: vorhandenen Akzent beibehalten"
+
+msgid "Palette constraint"
+msgstr "Paletten-Einschränkung"
+
+msgid "Constrains the chosen color, or transforms the existing accent when no color is applied"
+msgstr "Schränkt die gewählte Farbe ein oder wandelt den vorhandenen Akzent um, wenn keine Farbe angewendet wird"
+
+msgid "Recommended CSS selectors"
+msgstr "Empfohlene CSS-Selektoren"
+
+msgid "Not recommended (unchecked by default)"
+msgstr "Nicht empfohlen (standardmäßig deaktiviert)"
+
+msgid "Use with caution (background carriers)"
+msgstr "Mit Vorsicht verwenden (Hintergrundträger)"
+
+msgid "Custom CSS selectors (advanced)"
+msgstr "Eigene CSS-Selektoren (erweitert)"
+
+msgid "Extra CSS selectors"
+msgstr "Zusätzliche CSS-Selektoren"
+
+msgid "Comma or semicolon separated. Terminate with , or ; to apply. Generic selectors recolor whole blocks: use with caution."
+msgstr "Durch Komma oder Semikolon getrennt. Die Anwendung startet, wenn ein Trennzeichen eingegeben wird. Generische Selektoren färben ganze Blöcke um: mit Vorsicht verwenden."
+
+msgid "Syntax: separate several selectors with , or ; \nThe shift starts when a separator is typed. \nExamples: .menu-application-button, .menu-favorites-box,"
+msgstr "Syntax: mehrere Selektoren mit , oder ; trennen \nDie Anwendung startet bei Eingabe eines Trennzeichens. \nBeispiele: .menu-application-button, .menu-favorites-box,"
+
+msgid "Find a selector for an Applet: grep -rn 'application' ~/.local/share/cinnamon/applets/Cinnamenu@json/ \nOr find a selector in a Theme : grep -i 'menu' /usr/share/cinnamon/theme/cinnamon.css. \nSee the README for examples and grep tips."
+msgstr "Einen Selektor für ein Applet finden: grep -rn 'application' ~/.local/share/cinnamon/applets/Cinnamenu@json/ \nOder einen Selektor in einem Thema finden: grep -i 'menu' /usr/share/cinnamon/theme/cinnamon.css. \nSiehe README für Beispiele und grep-Tipps."
+
+msgid "There is a command-line version in Python : CinnShift CLI for scripting theme shifting at startup or via cron, with per-selector flags and variant control. See the README."
+msgstr "Es gibt eine Python-Befehlszeilenversion: CinnShift CLI, um den Themenwechsel beim Start oder über cron zu automatisieren, mit Selektor-Optionen und Variantensteuerung. Siehe README."
+
+msgid "MIT License Copyright (c) 2026 pzim-devdata \nhttps://github.com/pzim-devdata/CinnShift"
+msgstr "MIT-Lizenz Copyright (c) 2026 pzim-devdata \nhttps://github.com/pzim-devdata/CinnShift"
+
+msgid "Theme not found: "
+msgstr "Thema nicht gefunden: "
+
+msgid "Accent color not detected for "
+msgstr "Akzentfarbe nicht erkannt für "
+
+msgid "Nothing to do (no color, no selector)"
+msgstr "Nichts zu tun (keine Farbe, kein Selektor)"
+
+msgid " file(s), "
+msgstr " Datei(en), "
+
+msgid " selector sub(s)"
+msgstr " Selektor-Ersetzung(en)"
+
+msgid "CinnShift failed: "
+msgstr "CinnShift fehlgeschlagen: "
+
+msgid "Applications="
+msgstr "Applications="
+
+msgid "Desktop="
+msgstr "Desktop="
+
+msgid ""
+"Shift the accent color of the active Cinnamon and GTK themes. Pick a "
+"color, generate a random one, choose palettes and CSS selectors, apply "
+"instantly. The original themes are never modified."
+msgstr ""
+"Verschiebt die Akzentfarbe der aktiven Cinnamon- und GTK-Themen. Wählen "
+"Sie eine Farbe, erzeugen Sie eine zufällige, wählen Sie Paletten und "
+"CSS-Selektoren, sofort anwenden. Die Original-Themen werden nie "
+"verändert."
