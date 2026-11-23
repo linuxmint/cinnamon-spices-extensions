@@ -1,0 +1,53 @@
+{
+    "head-matching": {
+        "type": "header",
+        "description": "Matching"
+    },
+    "min-chars": {
+        "type": "spinbutton",
+        "default": 2,
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "units": "characters",
+        "description": "Minimum query length",
+        "tooltip": "A one or two letter query, retyped into another layout, matches almost everything. Raise this if the menu feels noisy."
+    },
+    "max-results": {
+        "type": "spinbutton",
+        "default": 6,
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "units": "results",
+        "description": "Maximum extra results",
+        "tooltip": "How many wrong-layout matches to add. Results found in the layout you actually typed in are never limited."
+    },
+    "skip-when-native-matches": {
+        "type": "switch",
+        "default": false,
+        "description": "Only search other layouts when the menu found nothing",
+        "tooltip": "Keeps the list short, at the cost of hiding a wrong-layout match whenever the query also happens to match something in the current layout."
+    },
+    "head-fields": {
+        "type": "header",
+        "description": "Fields searched"
+    },
+    "match-keywords": {
+        "type": "switch",
+        "default": true,
+        "description": "Application keywords"
+    },
+    "match-description": {
+        "type": "switch",
+        "default": true,
+        "description": "Application descriptions",
+        "tooltip": "Descriptions are long, so they match more loosely than names do."
+    },
+    "match-desktop-id": {
+        "type": "switch",
+        "default": true,
+        "description": "Desktop file names",
+        "tooltip": "Matches names like dev.vencord.Vesktop.desktop, which is often what a launcher is really called."
+    }
+}

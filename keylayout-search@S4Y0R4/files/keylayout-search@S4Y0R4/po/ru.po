@@ -1,0 +1,98 @@
+# Russian translation for keylayout-search@S4Y0R4.
+# This file is put in the public domain.
+# S4Y0R4, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keylayout-search@S4Y0R4 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-08-11 23:43+0200\n"
+"PO-Revision-Date: 2026-08-11 23:45+0200\n"
+"Last-Translator: S4Y0R4\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#. metadata.json->name
+msgid "Keyboard layout search"
+msgstr "Поиск с учётом раскладки"
+
+#. metadata.json->description
+msgid ""
+"Find applications in the menu by the keys you pressed, whatever keyboard "
+"layout is active. Type a program's name with the wrong layout selected and "
+"the menu still finds it, because the query is retyped into every layout you "
+"have enabled."
+msgstr "Поиск приложений в меню по нажатым клавишам, независимо от активной раскладки. Наберите имя программы в неправильной раскладке — меню всё равно её найдёт, потому что запрос перенабирается во все включённые раскладки."
+
+#. settings-schema.json->head-matching->description
+msgid "Matching"
+msgstr "Совпадения"
+
+#. settings-schema.json->min-chars->units
+msgid "characters"
+msgstr "символов"
+
+#. settings-schema.json->min-chars->description
+msgid "Minimum query length"
+msgstr "Минимальная длина запроса"
+
+#. settings-schema.json->min-chars->tooltip
+msgid ""
+"A one or two letter query, retyped into another layout, matches almost "
+"everything. Raise this if the menu feels noisy."
+msgstr "Запрос из одной-двух букв после перенабора в другую раскладку совпадает почти со всем. Увеличьте, если в меню слишком много лишнего."
+
+#. settings-schema.json->max-results->units
+msgid "results"
+msgstr "результатов"
+
+#. settings-schema.json->max-results->description
+msgid "Maximum extra results"
+msgstr "Максимум дополнительных результатов"
+
+#. settings-schema.json->max-results->tooltip
+msgid ""
+"How many wrong-layout matches to add. Results found in the layout you "
+"actually typed in are never limited."
+msgstr "Сколько совпадений из других раскладок добавлять. Результаты, найденные в той раскладке, в которой вы набирали, не ограничиваются."
+
+#. settings-schema.json->skip-when-native-matches->description
+msgid "Only search other layouts when the menu found nothing"
+msgstr "Искать в других раскладках только если меню ничего не нашло"
+
+#. settings-schema.json->skip-when-native-matches->tooltip
+msgid ""
+"Keeps the list short, at the cost of hiding a wrong-layout match whenever "
+"the query also happens to match something in the current layout."
+msgstr "Список остаётся коротким, но совпадение из другой раскладки скрывается всякий раз, когда запрос попадает и в текущую раскладку."
+
+#. settings-schema.json->head-fields->description
+msgid "Fields searched"
+msgstr "Поля поиска"
+
+#. settings-schema.json->match-keywords->description
+msgid "Application keywords"
+msgstr "Ключевые слова приложений"
+
+#. settings-schema.json->match-description->description
+msgid "Application descriptions"
+msgstr "Описания приложений"
+
+#. settings-schema.json->match-description->tooltip
+msgid "Descriptions are long, so they match more loosely than names do."
+msgstr "Описания длинные, поэтому совпадают менее точно, чем имена."
+
+#. settings-schema.json->match-desktop-id->description
+msgid "Desktop file names"
+msgstr "Имена desktop-файлов"
+
+#. settings-schema.json->match-desktop-id->tooltip
+msgid ""
+"Matches names like dev.vencord.Vesktop.desktop, which is often what a "
+"launcher is really called."
+msgstr "Совпадает с именами вида dev.vencord.Vesktop.desktop — часто лончер называется именно так."
