@@ -1,0 +1,316 @@
+# Bing Wallpaper - Cinnamon extension
+# This file is put in the public domain.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bing-wallpaper@bigmalove 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/bigmalove/cinnamon-bing-wallpaper/issues\n"
+"POT-Creation-Date: 2026-09-04 19:10+0800\n"
+"PO-Revision-Date: 2026-09-04 19:10+0800\n"
+"Last-Translator: bigmalove\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: metadata.json->name
+msgid "Bing Wallpaper"
+msgstr "Bing 壁纸"
+
+#: metadata.json->description
+msgid "Downloads the Bing image of the day and sets it as your desktop wallpaper automatically"
+msgstr "自动下载 Bing 每日一图并设为桌面壁纸"
+
+#: extension.js:478
+msgid "No Bing image has been downloaded yet."
+msgstr "尚未下载任何 Bing 图片。"
+
+#: extension.js:755
+msgid "Could not update the Bing wallpaper"
+msgstr "无法更新 Bing 壁纸"
+
+#: extension.js:756
+msgid "It will be retried automatically."
+msgstr "稍后将自动重试。"
+
+#: extension.js:781
+msgid "The wallpaper is already up to date"
+msgstr "壁纸已经是最新的"
+
+#: extension.js:881
+msgid "Bing image of the day"
+msgstr "Bing 每日一图"
+
+#: settings-schema.json->layout->page-general->title
+msgid "General"
+msgstr "常规"
+
+#: settings-schema.json->layout->page-storage->title
+msgid "Storage and updates"
+msgstr "存储与更新"
+
+#: settings-schema.json->layout->section-image->title
+msgid "Bing image"
+msgstr "Bing 图片"
+
+#: settings-schema.json->layout->section-desktop->title
+msgid "Desktop"
+msgstr "桌面"
+
+#: settings-schema.json->layout->section-overlay->title
+msgid "Image information on the desktop"
+msgstr "桌面上的图片信息"
+
+#: settings-schema.json->layout->section-actions->title
+msgid "Actions"
+msgstr "操作"
+
+#: settings-schema.json->layout->section-folder->title
+msgid "Download folder"
+msgstr "下载目录"
+
+#: settings-schema.json->layout->section-updates->title
+msgid "Update checks"
+msgstr "更新检查"
+
+#: settings-schema.json->market->description
+msgid "Bing region (market)"
+msgstr "Bing 地区（市场）"
+
+#: settings-schema.json->market->tooltip
+msgid "Some regions get a different image of the day. 'Automatic' follows the system language."
+msgstr "部分地区的每日图片不同。“自动”表示跟随系统语言。"
+
+#: settings-schema.json->market->options
+msgid "Automatic (system language)"
+msgstr "自动（跟随系统语言）"
+
+#: settings-schema.json->market->options
+msgid "China (zh-CN)"
+msgstr "中国 (zh-CN)"
+
+#: settings-schema.json->market->options
+msgid "United States (en-US)"
+msgstr "美国 (en-US)"
+
+#: settings-schema.json->market->options
+msgid "United Kingdom (en-GB)"
+msgstr "英国 (en-GB)"
+
+#: settings-schema.json->market->options
+msgid "Canada - English (en-CA)"
+msgstr "加拿大 - 英语 (en-CA)"
+
+#: settings-schema.json->market->options
+msgid "Canada - French (fr-CA)"
+msgstr "加拿大 - 法语 (fr-CA)"
+
+#: settings-schema.json->market->options
+msgid "Australia (en-AU)"
+msgstr "澳大利亚 (en-AU)"
+
+#: settings-schema.json->market->options
+msgid "New Zealand (en-NZ)"
+msgstr "新西兰 (en-NZ)"
+
+#: settings-schema.json->market->options
+msgid "India (en-IN)"
+msgstr "印度 (en-IN)"
+
+#: settings-schema.json->market->options
+msgid "Japan (ja-JP)"
+msgstr "日本 (ja-JP)"
+
+#: settings-schema.json->market->options
+msgid "Germany (de-DE)"
+msgstr "德国 (de-DE)"
+
+#: settings-schema.json->market->options
+msgid "France (fr-FR)"
+msgstr "法国 (fr-FR)"
+
+#: settings-schema.json->market->options
+msgid "Spain (es-ES)"
+msgstr "西班牙 (es-ES)"
+
+#: settings-schema.json->market->options
+msgid "Italy (it-IT)"
+msgstr "意大利 (it-IT)"
+
+#: settings-schema.json->market->options
+msgid "Brazil (pt-BR)"
+msgstr "巴西 (pt-BR)"
+
+#: settings-schema.json->resolution->description
+msgid "Image resolution"
+msgstr "图片分辨率"
+
+#: settings-schema.json->resolution->tooltip
+msgid "If the chosen resolution is not available for an image, 1920x1200 or 1920x1080 is used instead."
+msgstr "若某张图片没有所选分辨率，将改用 1920x1200 或 1920x1080。"
+
+#: settings-schema.json->resolution->options
+msgid "4K UHD (3840x2160)"
+msgstr "4K 超高清 (3840x2160)"
+
+#: settings-schema.json->resolution->options
+msgid "1920x1200"
+msgstr "1920x1200"
+
+#: settings-schema.json->resolution->options
+msgid "1920x1080"
+msgstr "1920x1080"
+
+#: settings-schema.json->resolution->options
+msgid "1366x768"
+msgstr "1366x768"
+
+#: settings-schema.json->picture-options->description
+msgid "Picture aspect"
+msgstr "图片显示方式"
+
+#: settings-schema.json->picture-options->options
+msgid "Zoom"
+msgstr "放大"
+
+#: settings-schema.json->picture-options->options
+msgid "Scaled"
+msgstr "缩放"
+
+#: settings-schema.json->picture-options->options
+msgid "Stretched"
+msgstr "拉伸"
+
+#: settings-schema.json->picture-options->options
+msgid "Centered"
+msgstr "居中"
+
+#: settings-schema.json->picture-options->options
+msgid "Spanned"
+msgstr "跨屏"
+
+#: settings-schema.json->picture-options->options
+msgid "Mosaic"
+msgstr "马赛克"
+
+#: settings-schema.json->picture-options->options
+msgid "Keep the current system setting"
+msgstr "保持系统当前设置"
+
+#: settings-schema.json->notify-on-change->description
+msgid "Show a notification when the wallpaper changes"
+msgstr "壁纸更换时显示通知"
+
+#: settings-schema.json->refresh-now->description
+msgid "Refresh now"
+msgstr "立即刷新"
+
+#: settings-schema.json->show-info-overlay->description
+msgid "Show the title and copyright of the current image on the desktop"
+msgstr "在桌面上显示当前图片的标题和版权信息"
+
+#: settings-schema.json->show-info-overlay->tooltip
+msgid "Plain text in the top-right corner of the primary monitor, below the panel. It sits on the desktop behind application windows."
+msgstr "在主显示器右上角（面板下方）以文字显示。文字位于桌面层，在应用程序窗口之后。"
+
+#: settings-schema.json->overlay-color->description
+msgid "Text color"
+msgstr "文字颜色"
+
+#: settings-schema.json->overlay-effect->description
+msgid "Text effect"
+msgstr "文字特效"
+
+#: settings-schema.json->overlay-effect->tooltip
+msgid "Makes the text easier to read on bright or busy wallpapers."
+msgstr "提高文字在明亮或复杂壁纸上的辨识度。"
+
+#: settings-schema.json->overlay-effect->options
+msgid "None"
+msgstr "无"
+
+#: settings-schema.json->overlay-effect->options
+msgid "Shadow"
+msgstr "阴影"
+
+#: settings-schema.json->overlay-effect->options
+msgid "Strong shadow"
+msgstr "阴影增强"
+
+#: settings-schema.json->overlay-effect->options
+msgid "Glow"
+msgstr "发光效果"
+
+#: settings-schema.json->overlay-effect->options
+msgid "Outline"
+msgstr "文字描边"
+
+#: settings-schema.json->overlay-effect->options
+msgid "Background block"
+msgstr "独立文字背景"
+
+#: settings-schema.json->overlay-chars-per-line->description
+msgid "Characters per line"
+msgstr "每行字数"
+
+#: settings-schema.json->overlay-chars-per-line->tooltip
+msgid "Lines are broken after this many characters. Spaces are preferred as break points when there are any."
+msgstr "每行最多显示的字符数，超过即换行；有空格时优先在空格处换行。"
+
+#: settings-schema.json->overlay-chars-per-line->units
+msgid "characters"
+msgstr "字"
+
+#: settings-schema.json->overlay-font-size->description
+msgid "Font size (0 = theme default)"
+msgstr "字号（0 = 跟随主题）"
+
+#: settings-schema.json->overlay-font-size->units
+msgid "pt"
+msgstr "pt"
+
+#: settings-schema.json->open-bing->description
+msgid "Open the image description on Bing"
+msgstr "在 Bing 上查看图片介绍"
+
+#: settings-schema.json->open-folder->description
+msgid "Open the wallpaper folder"
+msgstr "打开壁纸目录"
+
+#: settings-schema.json->save-dir->description
+msgid "Save wallpapers to"
+msgstr "壁纸保存位置"
+
+#: settings-schema.json->save-dir->tooltip
+msgid "Leave empty to use the 'BingWallpapers' folder inside your Pictures folder."
+msgstr "留空则使用“图片”目录下的 BingWallpapers 文件夹。"
+
+#: settings-schema.json->keep-count->description
+msgid "Number of downloaded images to keep"
+msgstr "保留的图片数量"
+
+#: settings-schema.json->keep-count->tooltip
+msgid "Older Bing images in the download folder are deleted automatically. Other files are never touched."
+msgstr "下载目录中较旧的 Bing 图片会被自动删除，其他文件不会被改动。"
+
+#: settings-schema.json->keep-count->units
+msgid "images"
+msgstr "张"
+
+#: settings-schema.json->check-interval->description
+msgid "Check for a new image every"
+msgstr "检查新图片的间隔"
+
+#: settings-schema.json->check-interval->tooltip
+msgid "Bing publishes one image per day. A check is a very small request."
+msgstr "Bing 每天发布一张图片，检查本身只是一个很小的请求。"
+
+#: settings-schema.json->check-interval->units
+msgid "minutes"
+msgstr "分钟"
+
+#: settings-schema.json->skip-metered->description
+msgid "Do not download on metered connections"
+msgstr "按流量计费的网络下不下载"
