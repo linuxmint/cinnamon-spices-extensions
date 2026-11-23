@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1
+
+* Fix Layered effects when desktop scaling is enabled.
+* Move the Matrix effect so that it's in alphabetical order.
+* Delay starting effects until a window's first frame has been drawn, helps with slow starting applications.
+
 ## 1.2.0
 
 * New effects: **Materialize** (by eboye), **Shredder** and **Venetian Blinds** (by Ido Greenfeld), all ported from the Gnome version.

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: CinnamonBurnMyWindows@klangman 1.0.3\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-11-10 23:09-0500\n"
+"POT-Creation-Date: 2026-11-22 20:34-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: loccun <huynhloc.contact@gmail.com>\n"
 "Language-Team: \n"
@@ -18,48 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.2/extension.js:295 6.2/extension.js:492 6.7.6/extension.js:297
-#. 6.7.6/extension.js:494
+#. 6.2/extension.js:309 6.2/extension.js:513 6.7.6/extension.js:311
+#. 6.7.6/extension.js:515
 msgid "Error"
 msgstr "Lỗi"
 
-#. 6.2/extension.js:295 6.7.6/extension.js:297
+#. 6.2/extension.js:309 6.7.6/extension.js:311
 msgid "was NOT enabled"
 msgstr "đã KHÔNG được bật"
 
-#. 6.2/extension.js:296 6.2/extension.js:493 6.7.6/extension.js:298
-#. 6.7.6/extension.js:495
+#. 6.2/extension.js:310 6.2/extension.js:514 6.7.6/extension.js:312
+#. 6.7.6/extension.js:516
 msgid "The existing extension"
 msgstr "Tiện ích mở rộng hiện có"
 
-#. 6.2/extension.js:296 6.7.6/extension.js:298
+#. 6.2/extension.js:310 6.7.6/extension.js:312
 msgid "conflicts with this extension."
 msgstr "xung đột với tiện ích mở rộng này."
 
-#. 6.2/extension.js:492 6.7.6/extension.js:494
+#. 6.2/extension.js:513 6.7.6/extension.js:515
 msgid "minimize/unminimize effects can not be enabled"
 msgstr "hiệu ứng thu nhỏ/phục hồi không thể được bật"
 
-#. 6.2/extension.js:493 6.7.6/extension.js:495
+#. 6.2/extension.js:514 6.7.6/extension.js:516
 msgid "already handles minimize/unminimize animation events."
 msgstr "đã xử lý sự kiện hoạt ảnh thu nhỏ/phục hồi."
 
-#. 6.2/extension.js:1363 6.7.6/extension.js:1365
+#. 6.2/extension.js:1463 6.7.6/extension.js:1465
 msgid ""
 "Click a window to add its application to the application specific rules.  "
 "Esc or right-click to cancel."
 msgstr ""
 
-#. 6.2/extension.js:1374 6.7.6/extension.js:1376
+#. 6.2/extension.js:1474 6.7.6/extension.js:1476
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 
-#. 6.2/extension.js:1448 6.7.6/extension.js:1450
+#. 6.2/extension.js:1548 6.7.6/extension.js:1550
 #, fuzzy
 msgid "(unknown application)"
 msgstr "Ứng dụng"
 
-#. 6.2/extension.js:1488 6.7.6/extension.js:1490
+#. 6.2/extension.js:1588 6.7.6/extension.js:1590
 #, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
@@ -68,20 +68,20 @@ msgstr ""
 "Không thể xác định ứng dụng hoặc WM_CLASS của cửa sổ được tập trung trước "
 "đó, do đó hiệu ứng cụ thể cho ứng dụng không thể áp dụng cho cửa sổ đó"
 
-#. 6.2/extension.js:1496 6.7.6/extension.js:1498
+#. 6.2/extension.js:1596 6.7.6/extension.js:1598
 msgid "There is already an entry for"
 msgstr ""
 
-#. 6.2/extension.js:1497 6.7.6/extension.js:1499
+#. 6.2/extension.js:1597 6.7.6/extension.js:1599
 #, fuzzy
 msgid "not enabled"
 msgstr "Đã bật"
 
-#. 6.2/extension.js:1510 6.7.6/extension.js:1512
+#. 6.2/extension.js:1610 6.7.6/extension.js:1612
 msgid "Added an entry for"
 msgstr ""
 
-#. 6.2/extension.js:1510 6.7.6/extension.js:1512
+#. 6.2/extension.js:1610 6.7.6/extension.js:1612
 msgid "Choose its effects, then enable it."
 msgstr ""
 
@@ -395,9 +395,10 @@ msgid "Burn My Windows"
 msgstr "Burn My Windows"
 
 #. metadata.json->description
+#, fuzzy
 msgid ""
-"Window open/close/minimize/unminimize effects based on the Burn-My-Windows "
-"Gnome extension by Schneegans"
+"Window open/close/minimize/unminimize/raise effects based on the Burn-My-"
+"Windows Gnome extension by Schneegans"
 msgstr ""
 "Hiệu ứng mở/đóng/thu nhỏ/phục hồi cửa sổ dựa trên tiện ích mở rộng Burn-My-"
 "Windows Gnome của Schneegans"
