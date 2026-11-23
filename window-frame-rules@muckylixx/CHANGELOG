@@ -1,0 +1,13 @@
+# Changelog
+
+## 1.0.0 — 2026-06-14
+
+- Initial public release.
+- Configurable colored window frames for Cinnamon.
+- Rule matching by title, class, instance and window type.
+- Separate active and inactive colors.
+- Adjustable frame width, corner radius, opacity, glow and edge offsets.
+- Per-rule frame width and corner radius.
+- Live configuration reload.
+- Graphical GTK 3 configurator.
+- Default rules for local terminals, SSH hosts and root shells.
