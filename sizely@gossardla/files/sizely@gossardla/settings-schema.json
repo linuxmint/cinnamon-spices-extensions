@@ -1,0 +1,245 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "generalPage",
+            "presetsPage",
+            "standardPage"
+        ],
+        "generalPage": {
+            "type": "page",
+            "title": "General",
+            "sections": [
+                "menuSection",
+                "sizeSection",
+                "shortcutSection"
+            ]
+        },
+        "presetsPage": {
+            "type": "page",
+            "title": "Custom Sizes",
+            "sections": [
+                "presetsSection"
+            ]
+        },
+        "standardPage": {
+            "type": "page",
+            "title": "Standard Resolutions",
+            "sections": [
+                "standardSection",
+                "ratioSection"
+            ]
+        },
+        "menuSection": {
+            "type": "section",
+            "title": "Window menu",
+            "keys": [
+                "show-in-window-menu",
+                "use-submenu",
+                "show-center-item"
+            ]
+        },
+        "sizeSection": {
+            "type": "section",
+            "title": "Sizes",
+            "keys": [
+                "size-unit"
+            ]
+        },
+        "shortcutSection": {
+            "type": "section",
+            "title": "Keyboard shortcut",
+            "keys": [
+                "center-keybinding"
+            ]
+        },
+        "presetsSection": {
+            "type": "section",
+            "title": "Custom sizes",
+            "keys": [
+                "presets-hint",
+                "presets"
+            ]
+        },
+        "standardSection": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "standard-hint",
+                "show-standard-resolutions",
+                "standard-center",
+                "standard-fit-only"
+            ]
+        },
+        "ratioSection": {
+            "type": "section",
+            "title": "Aspect ratios",
+            "keys": [
+                "standard-family-16-9",
+                "standard-family-16-10",
+                "standard-family-4-3",
+                "standard-family-21-9",
+                "standard-family-32-9",
+                "standard-family-phones",
+                "standard-family-dci"
+            ]
+        }
+    },
+    "size-unit": {
+        "type": "combobox",
+        "default": "logical",
+        "description": "Unit for all sizes",
+        "tooltip": "Logical: sizes are multiplied by the UI scaling factor, so \"1920 x 1080\" covers the same area a Full HD screen would. Physical: raw screen pixels.",
+        "options": {
+            "Logical pixels (HiDPI-scaled)": "logical",
+            "Physical pixels": "physical"
+        }
+    },
+    "use-submenu": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Group custom sizes in a \"Size\" submenu",
+        "tooltip": "Off: every custom size sits directly in the window menu — one click instead of two. Handy when you only have a few."
+    },
+    "show-center-item": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show \"Center on Monitor\" in the window menu"
+    },
+    "show-in-window-menu": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Extend the window menu (right-click on the title bar)",
+        "tooltip": "When off, only the keyboard shortcuts are active."
+    },
+    "center-keybinding": {
+        "type": "keybinding",
+        "default": "<Super><Shift>c",
+        "description": "Shortcut for \"Center on Monitor\"",
+        "tooltip": "Centers the focused window on the monitor it currently sits on, without changing its size."
+    },
+    "presets-hint": {
+        "type": "label",
+        "description": "Sizes you define yourself. Every row becomes an entry in the window menu. \"Center\" places the window in the middle of the current monitor after resizing."
+    },
+    "presets": {
+        "type": "list",
+        "description": "Custom sizes",
+        "columns": [
+            {
+                "id": "label",
+                "title": "Name",
+                "type": "string"
+            },
+            {
+                "id": "width",
+                "title": "Width",
+                "type": "integer",
+                "default": 1280,
+                "min": 100,
+                "max": 32768,
+                "align": 1.0
+            },
+            {
+                "id": "height",
+                "title": "Height",
+                "type": "integer",
+                "default": 800,
+                "min": 100,
+                "max": 32768,
+                "align": 1.0
+            },
+            {
+                "id": "center",
+                "title": "Center",
+                "type": "boolean",
+                "default": false
+            }
+        ],
+        "default": [
+            {
+                "label": "Small  1280 × 800",
+                "width": 1280,
+                "height": 800,
+                "center": false
+            },
+            {
+                "label": "Medium  1600 × 1000",
+                "width": 1600,
+                "height": 1000,
+                "center": false
+            },
+            {
+                "label": "Large  1920 × 1200",
+                "width": 1920,
+                "height": 1200,
+                "center": false
+            }
+        ]
+    },
+    "standard-hint": {
+        "type": "label",
+        "description": "A built-in list of common display resolutions, grouped by aspect ratio. They follow the unit setting above."
+    },
+    "show-standard-resolutions": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show the \"Standard resolutions\" submenu"
+    },
+    "standard-center": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Center the window after picking a standard resolution",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-fit-only": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Only list resolutions that fit on the current monitor",
+        "tooltip": "Resolutions larger than the monitor's work area would just be clamped to it, so they are hidden by default. The check uses the scaled size.",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-16-9": {
+        "type": "checkbox",
+        "default": true,
+        "description": "16:9",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-16-10": {
+        "type": "checkbox",
+        "default": true,
+        "description": "16:10",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-4-3": {
+        "type": "checkbox",
+        "default": false,
+        "description": "4:3 / 5:4",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-21-9": {
+        "type": "checkbox",
+        "default": false,
+        "description": "21:9",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-32-9": {
+        "type": "checkbox",
+        "default": false,
+        "description": "32:9",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-phones": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Phones",
+        "tooltip": "CSS viewport sizes, not panel resolutions — that is what a browser window needs for responsive testing.",
+        "dependency": "show-standard-resolutions"
+    },
+    "standard-family-dci": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Digital Cinema",
+        "dependency": "show-standard-resolutions"
+    }
+}
