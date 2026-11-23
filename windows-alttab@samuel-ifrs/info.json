@@ -1,0 +1,7 @@
+{
+  "uuid": "windows-alttab@samuel-ifrs",
+  "name": "Windows Alt+Tab",
+  "description": "Alt+Tab window switcher with live window thumbnails (previews), in the classic Windows style. Middle-click a thumbnail to close that window; right-click for the window menu.",
+  "author": "samuel-ifrs",
+  "license": "GPL-3.0"
+}
