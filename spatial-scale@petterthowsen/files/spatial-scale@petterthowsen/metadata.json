@@ -1,0 +1,16 @@
+{
+    "uuid": "spatial-scale@petterthowsen",
+    "name": "Spatial Scale",
+    "description": "Lays out the Scale (window overview) grid so each window's slot reflects where the window actually is on screen, instead of stacking order.",
+    "url": "https://github.com/petterthowsen/cinnamon-spatial-scale",
+    "author": "petterthowsen",
+    "license": "GPL-2.0-or-later",
+    "version": "1.0",
+    "cinnamon-version": [
+        "6.0",
+        "6.2",
+        "6.4",
+        "6.6",
+        "6.8"
+    ]
+}
