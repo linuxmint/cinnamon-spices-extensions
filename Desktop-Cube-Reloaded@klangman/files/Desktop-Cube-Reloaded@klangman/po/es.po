@@ -131,22 +131,21 @@ msgstr ""
 "ancho que de alto; de lo contrario, se verá estirada."
 
 #. 6.0/extension.js:2682
-#, fuzzy
 msgid "Desktop Cube Reloaded: the background image is ready"
-msgstr "Desktop Cube Reloaded: la imagen panorámica ya está lista"
+msgstr "Desktop Cube Reloaded: la imagen de fondo ya está lista"
 
 #. 6.0/extension.js:2683
-#, fuzzy, javascript-format
+#, javascript-format
 msgid ""
 "\"%s\" has been loaded and will be shown behind the cube the next time it "
 "rotates."
 msgstr ""
-"Se ha cargado '%s' y se mostrará alrededor del cubo la próxima vez que gire."
+"Se ha cargado \"%s\" y aparecerá detrás del cubo la próxima vez que este "
+"gire."
 
 #. 6.0/extension.js:2700
-#, fuzzy
 msgid "Desktop Cube Reloaded: the background image could not be loaded"
-msgstr "Desktop Cube Reloaded: no se ha podido cargar la imagen panorámica"
+msgstr "Desktop Cube Reloaded: no se ha podido cargar la imagen de fondo"
 
 #. 6.0/CustomWidgets.py:389
 msgid "Cube: rotate with the mouse"
@@ -214,9 +213,8 @@ msgid "Background"
 msgstr "Fondo"
 
 #. 6.0->settings-schema.json->panorama-section->title
-#, fuzzy
 msgid "Background image"
-msgstr "Fondo"
+msgstr "Imagen de fondo"
 
 #. 6.0->settings-schema.json->rotating-page->title
 msgid "Mouse Rotation"
@@ -309,14 +307,15 @@ msgid "Window parallax"
 msgstr "Paralaje de ventana"
 
 #. 6.0->settings-schema.json->window-parallax->tooltip
-#, fuzzy
 msgid ""
 "How far windows float in front of the cube faces while it rotates sideways. "
 "0 keeps them flat on the faces. Tilting the cube up or down uses the "
 "\"Spread the windows apart when the cube is tilted\" option instead."
 msgstr ""
-"La distancia a la que las ventanas flotan frente a las caras del cubo "
-"mientras este gira. El valor 0 hace que permanezcan pegadas a las caras."
+"La distancia a la que flotan las ventanas frente a las caras del cubo "
+"mientras este gira lateralmente. El valor 0 hace que permanezcan pegadas a "
+"las caras. Al inclinar el cubo hacia arriba o hacia abajo, se utiliza en su "
+"lugar la opción \"Separar las ventanas cuando se inclina el cubo\"."
 
 #. 6.0->settings-schema.json->auto-zoom-out->description
 msgid "Zoom out while the cube moves (%)"
@@ -527,55 +526,52 @@ msgstr ""
 "que no hay vista previa."
 
 #. 6.0->settings-schema.json->enable-panorama->description
-#, fuzzy
 msgid "Show an image behind the cube"
-msgstr "Mostrar una vista panorámica alrededor del cubo"
+msgstr "Mostrar una imagen detrás del cubo"
 
 #. 6.0->settings-schema.json->enable-panorama->tooltip
-#, fuzzy
 msgid ""
 "Instead of black, show an image behind the cube: either a 360° panorama that "
 "turns and tilts with the cube, or an ordinary picture scaled to the screen."
 msgstr ""
-"En lugar de negro, muestra una imagen panorámica de 360° detrás del cubo. "
-"Gira y se inclina junto con el cubo."
+"En lugar de negro, muestra una imagen detrás del cubo: bien una panorámica "
+"de 360° que gire y se incline junto con el cubo, bien una imagen normal "
+"ajustada al tamaño de la pantalla."
 
 #. 6.0->settings-schema.json->background-panorama->description
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #. 6.0->settings-schema.json->background-panorama->tooltip
-#, fuzzy
 msgid ""
 "Either a 360° panorama in equirectangular projection (twice as wide as it is "
 "high), as used for photo spheres, or any ordinary picture such as a "
 "wallpaper. Sites such as Poly Haven offer free panoramas."
 msgstr ""
-"Una panorámica de 360° en proyección equirrectangular (dos veces más ancha "
-"que alta), como las que se utilizan para las fotosféricas. Hay sitios web, "
-"como Poly Haven, que ofrecen estas imágenes de forma gratuita."
+"Puede ser una panorámica de 360° en proyección equirrectangular (con el "
+"doble de ancho que de alto), como las que se utilizan para las fotosféricas, "
+"o cualquier imagen normal, como un fondo de pantalla. Sitios web como Poly "
+"Haven ofrecen panorámicas gratuitas."
 
 #. 6.0->settings-schema.json->background-mode->description
-#, fuzzy
 msgid "Show the image as"
-msgstr "Mostrar el escritorio"
+msgstr "Mostrar la imagen como"
 
 #. 6.0->settings-schema.json->background-mode->options
-#, fuzzy
 msgid "A 360° panorama around the cube"
-msgstr "Mostrar una vista panorámica alrededor del cubo"
+msgstr "Un panorama de 360° alrededor del cubo"
 
 #. 6.0->settings-schema.json->background-mode->options
 msgid "A picture zoomed to fill the screen"
-msgstr ""
+msgstr "Una imagen ampliada hasta ocupar toda la pantalla"
 
 #. 6.0->settings-schema.json->background-mode->options
 msgid "A picture scaled to fit the screen"
-msgstr ""
+msgstr "Una imagen ajustada al tamaño de la pantalla"
 
 #. 6.0->settings-schema.json->background-mode->options
 msgid "A picture stretched to the screen"
-msgstr ""
+msgstr "Una imagen que ocupa toda la pantalla"
 
 #. 6.0->settings-schema.json->background-mode->tooltip
 msgid ""
@@ -590,11 +586,20 @@ msgid ""
 "<b>Stretched:</b> fills the screen exactly, changing the picture's shape if "
 "needed"
 msgstr ""
+"Una panorámica de 360° envuelve el cubo y gira con él. Una imagen normal "
+"(por ejemplo, 1920 × 1080) se ve borrosa y distorsionada de esa forma; elige "
+"una de las opciones de imagen para mostrarla plana detrás del cubo, como si "
+"fuera un fondo de pantalla.\n"
+"\n"
+"<b>Ampliada:</b> ocupa toda la pantalla, recortando lo que no cabe\n"
+"<b>A escala:</b> se ve la imagen completa, con barras negras si su forma "
+"difiere de la de la pantalla\n"
+"<b>Estirada:</b> ocupa exactamente toda la pantalla, cambiando la forma de "
+"la imagen si es necesario"
 
 #. 6.0->settings-schema.json->panorama-brightness->description
-#, fuzzy
 msgid "Panorama brightness"
-msgstr "Imagen panorámica"
+msgstr "Brillo de la imagen panorámica"
 
 #. 6.0->settings-schema.json->panorama-brightness->tooltip
 msgid ""
@@ -606,6 +611,15 @@ msgid ""
 "The panorama is converted again after each change, which takes a few "
 "seconds. This has no effect on a picture shown flat behind the cube."
 msgstr ""
+"Aclara u oscurece una panorámica de 360°. Las panorámicas oscuras, como los "
+"mapas estelares, suelen mostrar muchas menos estrellas a una resolución más "
+"alta, ya que cada píxel contiene entonces menos luz: un mapa estelar en 8K "
+"necesita aproximadamente un 400 % para tener el mismo aspecto que su versión "
+"en 4K.\n"
+"\n"
+"La panorámica se vuelve a convertir tras cada cambio, lo que tarda unos "
+"segundos. Esto no afecta a una imagen que se muestra en plano detrás del "
+"cubo."
 
 #. 6.0->settings-schema.json->cube-shortcut->description
 msgid "Hold to rotate the cube"
@@ -657,13 +671,12 @@ msgid "Spread the windows apart when the cube is tilted"
 msgstr "Separa las ventanas cuando se incline el cubo"
 
 #. 6.0->settings-schema.json->panorama-ready-info->description
-#, fuzzy
 msgid ""
 "After you pick a new image, a notification lets you know when it is ready to "
 "be shown around the cube."
 msgstr ""
-"Una vez que hayas elegido una nueva imagen panorámica, recibirás una "
-"notificación que te indicará cuándo estará lista para mostrarse en el cubo."
+"Una vez que hayas elegido una nueva imagen, recibirás una notificación que "
+"te indicará cuándo estará lista para mostrarse en todo el cubo."
 
 #. 6.0->settings-schema.json->panorama-info->description
 msgid "💡 Which images work? (see tooltip)"
