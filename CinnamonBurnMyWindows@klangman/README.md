@@ -19,7 +19,7 @@ Cinnamon 6.2 (Mint 22) or better.
 
 This extension needs the Cinnamon.GLSLEffect class which is only available in Cinnamon 6.2 or better.
 
-To enable all the effects you need Cinnamon 6.7.6 (Mint 23) or better
+To enable all the effects you need Cinnamon 6.8 (Mint 27) or better
 
 ## Known issues
 
@@ -57,7 +57,7 @@ To enable all the effects you need Cinnamon 6.7.6 (Mint 23) or better
 - Venetian Blinds - **New**
 - Wisps
 
-### Effects working in Cinnamon 6.7.6 (Mint 23) or better:
+### Effects working in Cinnamon 6.8 (Mint 27) or better:
 
 After adding a new API to Cinnamon 6.7.6 the following effects have been enabled:
 
@@ -67,7 +67,7 @@ After adding a new API to Cinnamon 6.7.6 the following effects have been enabled
 - Snap Of Disintegration
 - TRex Attack
 
-The first stable Cinnamon release that will run these 5 effects is 6.8 which is expected later this year (2026) with Linux Mint 23. 
+The first stable Cinnamon release that will run these 5 effects is 6.8, which will ship with Linux Mint 27 (expected December 2026).
 
 ### Effects using layers (Cinnamon 6.2+)
 

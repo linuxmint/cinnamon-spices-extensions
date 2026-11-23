@@ -106,9 +106,9 @@ const Effect = {
   Incinerate:  {idx: 9,  name: "Incinerate"},
   MagicLamp:   {idx: 26, name: "Magic Lamp"},
   Materialize: {idx: 30, name: "Materialize"},
+  //Matrix:      {idx: 10, name: "Matrix"},
   Morph:       {idx: 29, name: "Morph"},
   Mushroom:    {idx: 25, name: "Mushroom"},
-  //Matrix:      {idx: 10, name: "Matrix"},
   //PaintBrush:  {idx: 11, name: "Paint Brush"},
   Pixelate:    {idx: 12, name: "Pixelate"},
   PixelWheel:  {idx: 13, name: "Pixel Wheel"},
@@ -163,6 +163,20 @@ const USE_UNSCALED_CANVAS  = true;        // false = old behaviour: scale the wi
 const CANVAS_BEHIND_MARGIN = 64;          // px around the window covered by the behind layer
 // How Clutter splits the 3px offscreen-texture padding: see TEX_PADDING in LayeredEffect.js.
 const CANVAS_TEX_PADDING   = Layers.TEX_PADDING;
+
+// A new window's actor is mapped (with its full size) before the app has drawn anything into it.
+// Starting the open effect then animates an empty window, and the content only pops in afterwards
+// (a second or more for slow starters like Resources). So the open effect is started once Muffin
+// says the window's first frame has been drawn. If that hasn't happened after this long, the effect
+// is dropped and the window is simply shown.
+const FIRST_FRAME_TIMEOUT_MS = 3000;
+const HAS_FIRST_FRAME_SIGNAL = (() => {
+  try {
+    return GObject.signal_lookup("first-frame", Meta.WindowActor) !== 0;
+  } catch (e) {
+    return false;
+  }
+})();
 
 var extensionThis;
 
@@ -309,6 +323,11 @@ class BurnMyWindows {
       this._enableSounds();
 
       // Make sure to remove any effects if requested by the window manager.
+      // Watch new windows for their first frame (see FIRST_FRAME_TIMEOUT_MS)
+      this._firstFrameWatches = new Set();
+      if (HAS_FIRST_FRAME_SIGNAL)
+         this._signalManager.connect(global.display, "window-created", this._watchFirstFrame, this);
+
       this._killEffectsSignal = global.window_manager.connect('kill-window-effects', (wm, actor) => {
          const shader = actor.get_effect('burn-my-windows-effect');
          if (shader) {
@@ -364,15 +383,17 @@ class BurnMyWindows {
     return {all, effectsOnly};
   }
 
-  // Simple equality check for two "name -> idx" option maps, used to avoid rewriting (and
+  // Simple equality check (including order) for two "name -> idx" option maps, used to avoid rewriting (and
   // re-saving) the settings file on every enable() when nothing has actually changed.
   _optionsEqual(a, b) {
     if (!a) return false;
     let aKeys = Object.keys(a);
     let bKeys = Object.keys(b);
     if (aKeys.length !== bKeys.length) return false;
-    for (let key of aKeys) {
-      if (a[key] !== b[key]) return false;
+    for (let i = 0; i < aKeys.length; i++) {
+      // Order matters too: the comboboxes list the options in this order, so a reordered
+      // Effect const has to be written back to the settings file.
+      if (aKeys[i] !== bKeys[i] || a[aKeys[i]] !== b[bKeys[i]]) return false;
     }
     return true;
   }
@@ -539,17 +560,22 @@ class BurnMyWindows {
             break;
       }
 
-      // If sound effects are enabled and there is a sound to play, then play it now
-      if (extensionThis.enableSound) {
-        let soundSettings = new Gio.Settings({ schema_id: "org.cinnamon.sounds" });
-        if (soundSettings && soundSettings.get_boolean(eventName+"-enabled")) {
-           let sfx = chosenEffect.effect.constructor.getSFX(chosenEffect.profile, (event & ShouldAnimateManager.Events.MapWindow) || (event & ShouldAnimateManager.Events.Unminimize) );
-           if (sfx)
-              Main.soundManager.playSoundFile(0, sfx);
-           else
-              extensionThis._originalPlay.call(Main.soundManager, eventName);
+      // If sound effects are enabled and there is a sound to play, play it as the effect starts
+      const playSound = () => {
+        if (extensionThis.enableSound && extensionThis._originalPlay) {
+          let soundSettings = new Gio.Settings({ schema_id: "org.cinnamon.sounds" });
+          if (soundSettings && soundSettings.get_boolean(eventName+"-enabled")) {
+             let sfx = chosenEffect.effect.constructor.getSFX(chosenEffect.profile, (event & ShouldAnimateManager.Events.MapWindow) || (event & ShouldAnimateManager.Events.Unminimize) );
+             if (sfx)
+                Main.soundManager.playSoundFile(0, sfx);
+             else
+                extensionThis._originalPlay.call(Main.soundManager, eventName);
+          }
         }
-      }
+      };
+      // A new window's effect (and so its sound) may wait for the window's first frame, see below
+      if (event !== ShouldAnimateManager.Events.MapWindow)
+        playSound();
 
       // Record the windows current position before Cinnamon mucks with it's position
       let actorX = actor.x;
@@ -570,8 +596,25 @@ class BurnMyWindows {
          // Quickly restore the original behavior. Nobody noticed, I guess :D
          actor.ease = orig;
 
-         // And then create the effect!
-         extensionThis._setupEffect(actor, event, chosenEffect.effect, chosenEffect.profile);
+         // And then create the effect! A new window's effect waits until the window has drawn its
+         // first frame (see FIRST_FRAME_TIMEOUT_MS); Cinnamon has already made it transparent.
+         if (event === ShouldAnimateManager.Events.MapWindow) {
+            extensionThis._whenFirstFrameDrawn(actor, (timedOut) => {
+               // The map may have been ended while we waited (e.g. the window was closed)
+               if (!Main.wm._mapping.has(actor))
+                  return;
+               if (timedOut) {
+                  // Still nothing drawn: show the window without an effect (or sound) rather
+                  // than animate an empty window
+                  Main.wm._mapWindowDone(global.window_manager, actor);
+                  return;
+               }
+               playSound();
+               extensionThis._setupEffect(actor, event, chosenEffect.effect, chosenEffect.profile);
+            });
+         } else {
+            extensionThis._setupEffect(actor, event, chosenEffect.effect, chosenEffect.profile);
+         }
 
          // Restore the original cinnamon new window, closing window & minimize effect settings
          Main.wm.desktop_effects_map_type = orig_desktop_effects_map_type;
@@ -601,6 +644,14 @@ class BurnMyWindows {
     // Stop monitoring signals
     this._signalManager.disconnectAllSignals();
 
+    // Stop waiting for first frames. Windows still waiting to start their open effect are shown now.
+    for (let watch of [...this._firstFrameWatches]) {
+      const waiting = watch.onDrawn !== null;
+      this._endFirstFrameWatch(watch, false);
+      if (waiting)
+        Main.wm._mapWindowDone(global.window_manager, watch.actor);
+    }
+
     // Free all effect resources.
     this._ALL_EFFECTS = [];
 
@@ -617,6 +668,55 @@ class BurnMyWindows {
 
     this._settings.finalize();
     this._settings = null;
+  }
+
+  // Note when a new window has drawn its first frame (see FIRST_FRAME_TIMEOUT_MS)
+  _watchFirstFrame(display, metaWindow) {
+    const actor = metaWindow.get_compositor_private();
+    if (!actor || actor._bmwFirstFrameWatch)
+      return;
+    const watch = {actor: actor, onDrawn: null, frameId: 0, destroyId: 0, timeoutId: 0};
+    actor._bmwFirstFrameWatch = watch;
+    this._firstFrameWatches.add(watch);
+    watch.frameId   = actor.connect("first-frame", () => this._endFirstFrameWatch(watch, true));
+    watch.destroyId = actor.connect("destroy", () => this._endFirstFrameWatch(watch, false));
+  }
+
+  // Call callback(timedOut) once the window has drawn its first frame: right away if it already has,
+  // or if it isn't being watched (it existed before the extension was enabled, or Muffin has no
+  // first-frame signal), otherwise when the frame arrives. If it hasn't arrived after
+  // FIRST_FRAME_TIMEOUT_MS, callback(true) is called instead.
+  _whenFirstFrameDrawn(actor, callback) {
+    const watch = actor._bmwFirstFrameWatch;
+    if (!watch || !this._firstFrameWatches.has(watch) || watch.onDrawn) {
+      callback(false);
+      return;
+    }
+    watch.onDrawn = callback;
+    watch.timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, FIRST_FRAME_TIMEOUT_MS, () => {
+      watch.timeoutId = 0;
+      this._endFirstFrameWatch(watch, true, true);
+      return GLib.SOURCE_REMOVE;
+    });
+  }
+
+  // Stop watching a window for its first frame, calling the waiting callback (if any) when run is
+  // true. timedOut is passed on to the callback.
+  _endFirstFrameWatch(watch, run, timedOut = false) {
+    if (!this._firstFrameWatches.delete(watch))
+      return;
+    const actor = watch.actor;
+    if (watch.frameId)
+      actor.disconnect(watch.frameId);
+    if (watch.destroyId)
+      actor.disconnect(watch.destroyId);
+    if (watch.timeoutId)
+      GLib.source_remove(watch.timeoutId);
+    actor._bmwFirstFrameWatch = undefined;
+    const callback = watch.onDrawn;
+    watch.onDrawn = null;
+    if (run && callback)
+      callback(timedOut);
   }
 
   // Choose an effect based on the users preferences as defined in the setting for the current window action
