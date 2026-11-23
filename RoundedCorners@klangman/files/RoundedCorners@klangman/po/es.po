@@ -384,7 +384,6 @@ msgid "Custom"
 msgstr "Personalizado"
 
 #. 6.0->settings-schema.json->border-mode->tooltip
-#, fuzzy
 msgid ""
 "Draws a thin border just inside the rounded edge of rounded windows. Match "
 "continues the window's own border colours around the rounded corners. "
@@ -396,7 +395,7 @@ msgstr ""
 "la propia ventana alrededor de las esquinas redondeadas. La opción "
 "'Automático' oscurece los bordes claros y aclara los oscuros. La opción "
 "'Personalizado' dibuja los colores que elijas: uno para la ventana activa y "
-"otro para el resto de ventanas."
+"otro para las ventanas inactivas."
 
 #. 6.0->settings-schema.json->border-width->description
 msgid "Border width"
@@ -440,16 +439,15 @@ msgstr ""
 
 #. 6.0->settings-schema.json->border-theme-accent->description
 msgid "Use the theme's accent colour"
-msgstr ""
+msgstr "Usar el color de contraste del tema"
 
 #. 6.0->settings-schema.json->border-theme-accent->options
 msgid "Focused window"
-msgstr ""
+msgstr "Ventana activa"
 
 #. 6.0->settings-schema.json->border-theme-accent->options
-#, fuzzy
 msgid "All windows"
-msgstr "Ventanas"
+msgstr "Todas las ventanas"
 
 #. 6.0->settings-schema.json->border-theme-accent->tooltip
 msgid ""
@@ -459,11 +457,18 @@ msgid ""
 "doesn't define an accent colour, the custom colours are used. Applications "
 "in the Application border list keep their own colours."
 msgstr ""
+"Dibuja el borde con el color de acento del tema GTK actual (por ejemplo, "
+"aqua de Mint-Y-Aqua) y se adapta a él cuando cambia el tema. Las ventanas "
+"que no tienen color de acento utilizan el color de borde que se indica a "
+"continuación. Si el tema no define un color de acento, se utilizan los "
+"colores personalizados. Las aplicaciones de la lista 'Borde de la "
+"aplicación' conservan sus propios colores."
 
 #. 6.0->settings-schema.json->border-accent-unfocused-opacity->description
-#, fuzzy
 msgid "Accent opacity for unfocused windows"
-msgstr "Color del borde (ventana activa)"
+msgstr ""
+"Opacidad de los elementos de resaltado en ventanas que no están en primer "
+"plano"
 
 #. 6.0->settings-schema.json->border-accent-unfocused-opacity->tooltip
 msgid ""
@@ -471,15 +476,17 @@ msgid ""
 "keyboard focus. The focused window's border is always drawn at the accent "
 "colour's full opacity."
 msgstr ""
+"El grado de opacidad del borde con color de acento en todas las ventanas, "
+"excepto en la que tiene el foco del teclado. El borde de la ventana con el "
+"foco siempre se dibuja con la opacidad máxima del color de acento."
 
 #. 6.0->settings-schema.json->border-color->description
 msgid "Border colour (focused window)"
 msgstr "Color del borde (ventana activa)"
 
 #. 6.0->settings-schema.json->border-color-unfocused->description
-#, fuzzy
 msgid "Border colour (unfocused windows)"
-msgstr "Color del borde (ventana activa)"
+msgstr "Color del borde (ventanas desenfocadas)"
 
 #. 6.0->settings-schema.json->border-app-list->description
 msgid "Application border list"
@@ -498,9 +505,8 @@ msgid "Colour (focused)"
 msgstr "Color (enfoque)"
 
 #. 6.0->settings-schema.json->border-app-list->columns->title
-#, fuzzy
 msgid "Colour (unfocused)"
-msgstr "Color (enfoque)"
+msgstr "Color (ventanas desenfocadas)"
 
 #. 6.0->settings-schema.json->border-app-list->tooltip
 msgid ""
@@ -558,89 +564,97 @@ msgid "Shadow strength (focused window)"
 msgstr "Intensidad de la sombra (ventana seleccionada)"
 
 #. 6.0->settings-schema.json->shadow-unfocused-opacity->description
-#, fuzzy
 msgid "Shadow strength (unfocused windows)"
-msgstr "Intensidad de la sombra (ventana seleccionada)"
+msgstr "Intensidad de las sombras (ventanas desenfocadas)"
 
 #. 6.0->settings-schema.json->shadow-color-mode->description
-#, fuzzy
 msgid "Shadow colour"
-msgstr "Sombras"
+msgstr "Color de la sombra"
 
 #. 6.0->settings-schema.json->shadow-color-mode->options
 msgid "Black"
-msgstr ""
+msgstr "Negro"
 
 #. 6.0->settings-schema.json->shadow-color-mode->options
 msgid "Single colour"
-msgstr ""
+msgstr "Un solo color"
 
 #. 6.0->settings-schema.json->shadow-color-mode->options
 msgid "Gradient"
-msgstr ""
+msgstr "Gradiente"
 
 #. 6.0->settings-schema.json->shadow-color-mode->options
 msgid "Rainbow"
-msgstr ""
+msgstr "Arcoíris"
 
 #. 6.0->settings-schema.json->shadow-color-mode->tooltip
 msgid ""
 "Black is a normal shadow. The other options colour it; with some glow and no "
 "vertical offset they look more like a coloured light around the window."
 msgstr ""
+"El negro es una sombra normal. Las demás opciones le dan color; con algo de "
+"resplandor y sin desplazamiento vertical, parecen más bien una luz de color "
+"alrededor de la ventana."
 
 #. 6.0->settings-schema.json->shadow-color->description
 msgid "Colour (gradient start)"
-msgstr ""
+msgstr "Color (inicio del degradado)"
 
 #. 6.0->settings-schema.json->shadow-color->tooltip
 msgid ""
 "Used by Single colour, and as the gradient's start colour. Not used by "
 "Rainbow."
 msgstr ""
+"Se utiliza en 'Un solo color' y como color inicial del degradado. No se "
+"utiliza en 'Arcoíris'."
 
 #. 6.0->settings-schema.json->shadow-color-2->description
 msgid "Gradient end colour"
-msgstr ""
+msgstr "Color final del degradado"
 
 #. 6.0->settings-schema.json->shadow-gradient-angle->description
 msgid "Gradient direction"
-msgstr ""
+msgstr "Dirección del gradiente"
 
 #. 6.0->settings-schema.json->shadow-gradient-angle->units
 msgid "degrees"
-msgstr ""
+msgstr "grados"
 
 #. 6.0->settings-schema.json->shadow-gradient-angle->tooltip
 msgid "0 runs from left to right, 90 from top to bottom."
-msgstr ""
+msgstr "0 va de izquierda a derecha, 90 de arriba abajo."
 
 #. 6.0->settings-schema.json->shadow-glow->description
 msgid "Glow"
-msgstr ""
+msgstr "Brillo"
 
 #. 6.0->settings-schema.json->shadow-glow->tooltip
 msgid ""
 "How much the colour adds light to what's behind it instead of covering it. 0 "
 "looks like a coloured shadow, 100 like a neon glow."
 msgstr ""
+"En qué medida el color aporta luminosidad a lo que hay detrás de él, en "
+"lugar de ocultarlo. Un valor de 0 se asemeja a una sombra de color, mientras "
+"que un valor de 100 se asemeja a un resplandor de neón."
 
 #. 6.0->settings-schema.json->shadow-rainbow-turn-time->description
 msgid "Rainbow turn time"
-msgstr ""
+msgstr "Tiempo de respuesta del arcoíris"
 
 #. 6.0->settings-schema.json->shadow-rainbow-turn-time->units
 msgid "seconds"
-msgstr ""
+msgstr "segundos"
 
 #. 6.0->settings-schema.json->shadow-rainbow-turn-time->tooltip
 msgid ""
 "How long the rainbow takes to go once around the window. 0 keeps it still."
 msgstr ""
+"Cuánto tarda el arcoíris en dar una vuelta completa alrededor de la ventana. "
+"El 0 lo mantiene quieto."
 
 #. 6.0->settings-schema.json->shadow-color-all-windows->description
 msgid "Colour every window's shadow"
-msgstr ""
+msgstr "Pinta de color la sombra de cada ventana"
 
 #. 6.0->settings-schema.json->shadow-color-all-windows->tooltip
 msgid ""
@@ -648,6 +662,10 @@ msgid ""
 "get a normal black one. On: every window gets it, and every rainbow turns, "
 "which keeps the compositor busier."
 msgstr ""
+"Desactivado: solo la ventana activa tiene la sombra de color, mientras que "
+"las ventanas inactivas tienen una sombra negra normal. Activado: todas las "
+"ventanas la tienen, y todos los arcoíris giran, lo que mantiene al "
+"compositor más ocupado."
 
 #. 6.0->settings-schema.json->about-text->description
 msgid ""
