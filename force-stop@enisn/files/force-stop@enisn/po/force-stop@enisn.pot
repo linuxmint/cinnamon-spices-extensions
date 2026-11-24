@@ -1,0 +1,69 @@
+# Force Stop for Cinnamon.
+# Copyright (C) 2026 enisn
+# This file is distributed under the same license as the force-stop@enisn package.
+# enisn, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: force-stop@enisn 0.2.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-11-24 14:31+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: extension.js:29
+msgid "Cancel"
+msgstr ""
+
+#. metadata.json->name
+#: extension.js:30 extension.js:200
+msgid "Force Stop"
+msgstr ""
+
+#: extension.js:236
+#, javascript-format
+msgid ""
+"Process %d and the processes it started will be stopped immediately, "
+"together with all of its windows. Unsaved changes will be lost."
+msgstr ""
+
+#: extension.js:237
+#, javascript-format
+msgid ""
+"Process %d will be stopped immediately, together with all of its windows. "
+"Unsaved changes will be lost."
+msgstr ""
+
+#: extension.js:238
+#, javascript-format
+msgid "Force Stop \"%s\"?"
+msgstr ""
+#. settings-schema.json->behavior->description
+msgid "Behavior"
+msgstr ""
+
+#. settings-schema.json->confirm->description
+msgid "Ask before stopping an application"
+msgstr ""
+
+#. settings-schema.json->confirm->tooltip
+msgid "Show a confirmation dialog, so that a stray click cannot discard unsaved work"
+msgstr ""
+
+#. settings-schema.json->kill-children->description
+msgid "Also stop the processes it started"
+msgstr ""
+
+#. settings-schema.json->kill-children->tooltip
+msgid "Stop the helper processes of the application too, for example a server launched from its built-in terminal"
+msgstr ""
+
+#. metadata.json->description
+msgid "Adds a Force Stop item to the grouped window list's right-click menu, to kill applications that no longer respond."
+msgstr ""
+
