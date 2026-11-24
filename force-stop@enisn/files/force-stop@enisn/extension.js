@@ -15,7 +15,7 @@ const Settings = imports.ui.settings;
 const UUID = 'force-stop@enisn';
 const WINDOW_LIST_UUID = 'grouped-window-list@cinnamon.org';
 
-Gettext.bindtextdomain(UUID, GLib.get_home_dir() + '/.local/share/locale');
+Gettext.bindtextdomain(UUID, GLib.get_user_data_dir() + '/locale');
 
 function _(text) {
     return Gettext.dgettext(UUID, text);
@@ -52,20 +52,20 @@ function isWindowListMenu(menu) {
     return Object.prototype.hasOwnProperty.call(Object.getPrototypeOf(menu), 'populateMenu');
 }
 
-// /proc/<pid> is owned by the user a process runs as. Signals only reach our own processes. The menu
-// needs the answer before it opens, and /proc answers from memory, so this lookup stays synchronous.
-function processUserId(pid) {
-    try {
-        return Gio.File.new_for_path(`/proc/${pid}`)
-            .query_info('unix::uid', Gio.FileQueryInfoFlags.NONE, null)
-            .get_attribute_uint32('unix::uid');
-    } catch (error) {
-        return -1;
-    }
+// /proc/<pid> is owned by the user a process runs as. The owner is looked up without blocking, and
+// -1 is reported for a process that has already exited.
+function userIdOf(path, callback) {
+    Gio.File.new_for_path(path).query_info_async('unix::uid', Gio.FileQueryInfoFlags.NONE,
+        GLib.PRIORITY_DEFAULT, null, (file, result) => {
+            let userId = -1;
+            try {
+                userId = file.query_info_finish(result).get_attribute_uint32('unix::uid');
+            } catch (error) {
+                // The process has already exited.
+            }
+            callback(userId);
+        });
 }
-
-const OWN_USER_ID = processUserId('self');
-const isOwnProcess = (pid) => OWN_USER_ID >= 0 && processUserId(pid) === OWN_USER_ID;
 
 // Lists the child processes of a process. They can be parented to any of its threads, so the
 // "children" file of every thread is read. /proc lives in memory, so this touches no disk.
@@ -135,9 +135,13 @@ class ForceStop {
         this._closingMenu = null;
         this._dialog = null;
         this._menuPrototype = null;
+        this._userId = -1;
     }
 
     enable() {
+        userIdOf('/proc/self', (userId) => {
+            this._userId = userId;
+        });
         const forceStop = this;
         this._originalAddMenu = PopupMenu.PopupMenuManager.prototype.addMenu;
         this._addMenuWrapper = function(menu, position) {
@@ -198,14 +202,26 @@ class ForceStop {
         if (!metaWindow || !metaWindows.length) return;
 
         const item = new PopupMenu.PopupIconMenuItem(_('Force Stop'), 'process-stop', St.IconType.SYMBOLIC);
-        // Without a process of our own to signal there is nothing Force Stop could do.
-        item.setSensitive(isOwnProcess(metaWindow.get_pid()));
+        this._letOnlyOwnProcessStop(item, metaWindow.get_pid());
         item.connect('activate', () => this._afterMenuCloses(menu, () => this._forceStop(metaWindow, appName)));
 
         // The stock menu ends its window controls with a separator, so keep Force Stop in that block.
         const items = menu._getMenuItems();
         const lastItem = items[items.length - 1];
         menu.addMenuItem(item, lastItem instanceof PopupMenu.PopupSeparatorMenuItem ? items.length - 1 : undefined);
+    }
+
+    // Signals only reach processes of our own user, so the item is greyed out for any other, such
+    // as an application running as root. Opening the menu does not wait for the answer: it arrives
+    // a moment later and the item is then updated while the menu is open.
+    _letOnlyOwnProcessStop(item, pid) {
+        if (pid <= 0) {
+            item.setSensitive(false);
+            return;
+        }
+        userIdOf(`/proc/${pid}`, (userId) => {
+            if (this._userId >= 0) item.setSensitive(userId === this._userId);
+        });
     }
 
     // A popup menu holds an input grab while it is open. A modal dialog opened on top of it would

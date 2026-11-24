@@ -43,7 +43,7 @@ The window list is changed in memory only. No file of Cinnamon is touched. The e
 
 ## Translations
 
-User-visible strings are translatable. `force-stop@enisn/po/force-stop@enisn.pot` is the template.
+User-visible strings are translatable. `force-stop@enisn/po/force-stop@enisn.pot` is the template; regenerate it with `python3 tools/make_pot.py` after changing a string.
 
 ## Source
 

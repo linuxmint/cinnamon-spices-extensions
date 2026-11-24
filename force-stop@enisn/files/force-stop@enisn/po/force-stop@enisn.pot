@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: force-stop@enisn 0.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
-"POT-Creation-Date: 2026-11-24 14:31+0300\n"
+"POT-Creation-Date: 2026-11-24 11:48+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,25 +21,25 @@ msgid "Cancel"
 msgstr ""
 
 #. metadata.json->name
-#: extension.js:30 extension.js:200
+#: extension.js:30 extension.js:204
 msgid "Force Stop"
 msgstr ""
 
-#: extension.js:236
+#: extension.js:252
 #, javascript-format
 msgid ""
 "Process %d and the processes it started will be stopped immediately, "
 "together with all of its windows. Unsaved changes will be lost."
 msgstr ""
 
-#: extension.js:237
+#: extension.js:253
 #, javascript-format
 msgid ""
 "Process %d will be stopped immediately, together with all of its windows. "
 "Unsaved changes will be lost."
 msgstr ""
 
-#: extension.js:238
+#: extension.js:254
 #, javascript-format
 msgid "Force Stop \"%s\"?"
 msgstr ""
