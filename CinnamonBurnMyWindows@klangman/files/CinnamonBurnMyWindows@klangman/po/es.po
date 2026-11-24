@@ -391,13 +391,12 @@ msgid "Burn My Windows"
 msgstr "Burn My Windows"
 
 #. metadata.json->description
-#, fuzzy
 msgid ""
 "Window open/close/minimize/unminimize/raise effects based on the Burn-My-"
 "Windows Gnome extension by Schneegans"
 msgstr ""
-"Efectos de apertura/cierre/minimización/maximización de ventanas basados en "
-"la extensión Burn-My-Windows Gnome de Schneegans"
+"Efectos de apertura, cierre, minimización, restauración y primer plano de "
+"ventanas, basados ​​en la extensión de GNOME 'Burn-My-Windows' de Schneegans"
 
 #. 6.2->settings-schema.json->general-page->title
 #. 6.7.6->settings-schema.json->general-page->title
