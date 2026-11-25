@@ -1,0 +1,10 @@
+{
+  "uuid": "force-stop@enisn",
+  "name": "Force Stop",
+  "description": "Adds a Force Stop item to the grouped window list's right-click menu, to kill applications that no longer respond.",
+  "version": "0.2.0",
+  "cinnamon-version": [
+    "6.6"
+  ],
+  "url": "https://github.com/enisn/cinnamon-force-stop"
+}

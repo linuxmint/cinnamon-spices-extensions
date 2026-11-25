@@ -1,0 +1,18 @@
+{
+    "behavior": {
+        "type": "header",
+        "description": "Behavior"
+    },
+    "confirm": {
+        "type": "switch",
+        "default": true,
+        "description": "Ask before stopping an application",
+        "tooltip": "Show a confirmation dialog, so that a stray click cannot discard unsaved work"
+    },
+    "kill-children": {
+        "type": "switch",
+        "default": false,
+        "description": "Also stop the processes it started",
+        "tooltip": "Stop the helper processes of the application too, for example a server launched from its built-in terminal"
+    }
+}
