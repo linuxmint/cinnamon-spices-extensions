@@ -1612,7 +1612,7 @@ msgstr ""
 "Når denne funktion er aktiveret, bliver vinduer med Sløret Cinnamon-effekter "
 "gjort fuldstændigt uigennemsigtige, mens de er maksimeret eller i fuldskærmstilstand, "
 "uanset indstillingen for “Uigennemsigtighed” i tabellen ovenfor. Den indstillede "
-uigennemsigtighed genoprettes, så snart vinduet ikke længere er maksimeret eller i "
+"uigennemsigtighed genoprettes, så snart vinduet ikke længere er maksimeret eller i "
 "fuldskærmstilstand."
 
 #. 6.0->settings-schema.json->windows-titlebar-blur->description
