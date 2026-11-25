@@ -1,0 +1,239 @@
+/* Cinnamon Tiling — accent colour: rgb(53,132,228) */
+
+/* ---- layout thumbnails ---- */
+.tiling-thumb {
+    border-radius: 4px;
+}
+.tiling-thumb-tile {
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 3px;
+}
+.tiling-thumb-button:hover,
+.tiling-thumb-tile:hover {
+    background-color: rgba(53, 132, 228, 0.85);
+    border-color: rgba(120, 180, 255, 1);
+}
+
+/* ---- panel indicator ---- */
+.tiling-indicator {
+    padding: 0 6px;
+}
+.tiling-indicator-icon-tile {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 1px;
+}
+.tiling-menu-header {
+    font-weight: bold;
+    padding: 2px 0;
+}
+.tiling-layout-grid {
+    spacing: 8px;
+    padding: 4px 0;
+}
+.tiling-layout-row {
+    spacing: 8px;
+}
+.tiling-layout-button {
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+.tiling-layout-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.tiling-layout-button:checked {
+    background-color: rgba(53, 132, 228, 0.25);
+    border-color: rgba(53, 132, 228, 0.9);
+}
+.tiling-layout-name {
+    font-size: 0.8em;
+    padding-top: 4px;
+}
+.tiling-monitor-row {
+    spacing: 6px;
+}
+.tiling-monitor-button {
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tiling-monitor-button:checked {
+    background-color: rgba(53, 132, 228, 0.6);
+}
+
+/* ---- previews while dragging ---- */
+.tiling-tile-preview {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 2px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
+.tiling-selection-preview {
+    background-color: rgba(53, 132, 228, 0.32);
+    border: 2px solid rgba(53, 132, 228, 0.9);
+    border-radius: 12px;
+}
+
+/* ---- snap assistant ---- */
+.tiling-snap-assist {
+    background-color: rgba(30, 30, 34, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px;
+    spacing: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+.tiling-snap-layout {
+    padding: 4px;
+    border-radius: 8px;
+}
+.tiling-snap-layout:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.tiling-snap-tile:hover {
+    background-color: rgba(53, 132, 228, 0.95);
+    border-color: rgba(140, 190, 255, 1);
+}
+
+/* ---- layout editor ---- */
+.tiling-editor {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+.tiling-editor-tile {
+    background-color: rgba(53, 132, 228, 0.18);
+    border: 2px solid rgba(53, 132, 228, 0.75);
+    border-radius: 10px;
+}
+.tiling-editor-tile-label {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1em;
+}
+.tiling-editor-slider {
+    background-color: rgba(255, 255, 255, 0.28);
+    border-radius: 7px;
+}
+.tiling-editor-slider:hover,
+.tiling-editor-slider:active {
+    background-color: rgba(255, 255, 255, 0.55);
+}
+.tiling-editor-slider:active {
+    background-color: rgba(53, 132, 228, 1);
+}
+.tiling-editor-hover-line {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.tiling-editor-toolbar {
+    background-color: rgba(30, 30, 34, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px 18px;
+    spacing: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+.tiling-editor-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #ffffff;
+}
+.tiling-editor-help {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9em;
+}
+.tiling-editor-buttons {
+    spacing: 8px;
+    padding-top: 6px;
+}
+.tiling-editor-button {
+    padding: 5px 14px;
+    border-radius: 7px;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.tiling-editor-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.tiling-editor-button.suggested {
+    background-color: rgba(53, 132, 228, 0.9);
+}
+.tiling-editor-button.suggested:hover {
+    background-color: rgba(80, 155, 240, 1);
+}
+.tiling-editor-button.destructive {
+    background-color: rgba(192, 28, 40, 0.8);
+}
+
+/* ---- windows suggestions ---- */
+.tiling-suggestions-backdrop {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+.tiling-suggestions-tile {
+    background-color: rgba(30, 30, 34, 0.9);
+    border: 2px solid rgba(53, 132, 228, 0.7);
+    border-radius: 12px;
+    padding: 12px;
+}
+.tiling-suggestions-grid,
+.tiling-suggestions-row {
+    spacing: 10px;
+}
+.tiling-suggestion {
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+.tiling-suggestion:hover,
+.tiling-suggestion:focus {
+    background-color: rgba(53, 132, 228, 0.3);
+    border-color: rgba(53, 132, 228, 0.9);
+}
+.tiling-suggestion-title-box {
+    spacing: 6px;
+    padding-top: 6px;
+}
+.tiling-suggestion-title {
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+/* ---- window menu ---- */
+.tiling-window-menu-grid,
+.tiling-window-menu-row {
+    spacing: 8px;
+}
+
+/* ---- layout OSD ---- */
+.tiling-layout-osd {
+    background-color: rgba(30, 30, 34, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 14px;
+    spacing: 8px;
+}
+.tiling-layout-osd-row {
+    spacing: 10px;
+}
+.tiling-layout-osd-item {
+    padding: 6px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+}
+.tiling-layout-osd-item:checked {
+    border-color: rgba(53, 132, 228, 1);
+    background-color: rgba(53, 132, 228, 0.25);
+}
+.tiling-layout-osd-label {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ---- focused window border / highlight ---- */
+.tiling-window-border {
+    border: 3px solid rgba(53, 132, 228, 1);
+    border-radius: 8px;
+}
+.tiling-highlight {
+    border: 4px solid rgba(53, 132, 228, 1);
+    border-radius: 10px;
+    background-color: rgba(53, 132, 228, 0.12);
+}

@@ -1,0 +1,791 @@
+{
+  "layout": {
+    "type": "layout",
+    "pages": [
+      "page-general",
+      "page-snap",
+      "page-layouts",
+      "page-border",
+      "page-keys"
+    ],
+    "page-general": {
+      "type": "page",
+      "title": "General",
+      "sections": [
+        "sec-tiling",
+        "sec-gaps",
+        "sec-behaviour",
+        "sec-ui"
+      ]
+    },
+    "sec-tiling": {
+      "type": "section",
+      "title": "Tiling system",
+      "keys": [
+        "enable-tiling-system",
+        "tiling-system-activation-key",
+        "tiling-system-deactivation-key",
+        "enable-span-multiple-tiles",
+        "span-multiple-tiles-activation-key"
+      ]
+    },
+    "sec-gaps": {
+      "type": "section",
+      "title": "Gaps",
+      "keys": [
+        "inner-gaps",
+        "outer-gaps"
+      ]
+    },
+    "sec-behaviour": {
+      "type": "section",
+      "title": "Behaviour",
+      "keys": [
+        "restore-window-original-size",
+        "resize-complementing-windows",
+        "enable-autotiling",
+        "raise-together",
+        "raise-together-current-monitor-only",
+        "sync-layout-across-workspaces",
+        "disable-cinnamon-edge-tiling"
+      ]
+    },
+    "sec-ui": {
+      "type": "section",
+      "title": "Interface",
+      "keys": [
+        "show-indicator",
+        "override-window-menu",
+        "tile-preview-animation-time"
+      ]
+    },
+    "page-snap": {
+      "type": "page",
+      "title": "Snap assistant & edges",
+      "sections": [
+        "sec-snap",
+        "sec-edges",
+        "sec-suggest"
+      ]
+    },
+    "sec-snap": {
+      "type": "section",
+      "title": "Snap assistant",
+      "keys": [
+        "enable-snap-assist",
+        "snap-assistant-threshold",
+        "snap-assist-sync-layout",
+        "snap-assistant-animation-time"
+      ]
+    },
+    "sec-edges": {
+      "type": "section",
+      "title": "Screen edges",
+      "keys": [
+        "active-screen-edges",
+        "edge-tiling-mode",
+        "top-edge-maximize",
+        "edge-tiling-offset",
+        "quarter-tiling-threshold"
+      ]
+    },
+    "sec-suggest": {
+      "type": "section",
+      "title": "Windows suggestions",
+      "keys": [
+        "enable-tiling-system-windows-suggestions",
+        "enable-snap-assistant-windows-suggestions",
+        "enable-screen-edges-windows-suggestions"
+      ]
+    },
+    "page-layouts": {
+      "type": "page",
+      "title": "Layouts",
+      "sections": [
+        "sec-layouts"
+      ]
+    },
+    "sec-layouts": {
+      "type": "section",
+      "title": "Layouts",
+      "keys": [
+        "btn-open-editor",
+        "btn-new-layout",
+        "btn-import",
+        "btn-export",
+        "btn-reset",
+        "layouts-info"
+      ]
+    },
+    "page-border": {
+      "type": "page",
+      "title": "Window border",
+      "sections": [
+        "sec-border"
+      ]
+    },
+    "sec-border": {
+      "type": "section",
+      "title": "Focused window border",
+      "keys": [
+        "enable-window-border",
+        "window-border-width",
+        "window-border-radius",
+        "window-use-custom-border-color",
+        "window-border-color"
+      ]
+    },
+    "page-keys": {
+      "type": "page",
+      "title": "Keyboard",
+      "sections": [
+        "sec-keys-general",
+        "sec-keys-move",
+        "sec-keys-focus",
+        "sec-keys-layouts"
+      ]
+    },
+    "sec-keys-general": {
+      "type": "section",
+      "title": "General",
+      "keys": [
+        "enable-move-keybindings",
+        "override-cinnamon-keybindings",
+        "enable-wraparound-focus",
+        "enable-directional-focus-tiled-only"
+      ]
+    },
+    "sec-keys-move": {
+      "type": "section",
+      "title": "Move and span",
+      "keys": [
+        "move-window-right",
+        "move-window-left",
+        "move-window-up",
+        "move-window-down",
+        "span-window-right",
+        "span-window-left",
+        "span-window-up",
+        "span-window-down",
+        "span-window-all-tiles",
+        "untile-window",
+        "untile-all-windows",
+        "move-window-center"
+      ]
+    },
+    "sec-keys-focus": {
+      "type": "section",
+      "title": "Focus",
+      "keys": [
+        "focus-window-right",
+        "focus-window-left",
+        "focus-window-up",
+        "focus-window-down",
+        "focus-window-next",
+        "focus-window-prev",
+        "highlight-current-window"
+      ]
+    },
+    "sec-keys-layouts": {
+      "type": "section",
+      "title": "Layouts",
+      "keys": [
+        "cycle-layouts",
+        "cycle-layouts-backward"
+      ]
+    }
+  },
+  "enable-tiling-system": {
+    "type": "switch",
+    "default": true,
+    "description": "Enable tiling system",
+    "tooltip": "Show the layout while dragging a window and drop it on a tile."
+  },
+  "tiling-system-activation-key": {
+    "type": "combobox",
+    "default": "ctrl",
+    "options": {
+      "None (always active)": "none",
+      "Ctrl": "ctrl",
+      "Alt": "alt",
+      "Super": "super",
+      "Shift": "shift"
+    },
+    "description": "Activation key",
+    "tooltip": "Hold this key while dragging a window to show the tiling layout.",
+    "dependency": "enable-tiling-system"
+  },
+  "tiling-system-deactivation-key": {
+    "type": "combobox",
+    "default": "none",
+    "options": {
+      "None": "none",
+      "Ctrl": "ctrl",
+      "Alt": "alt",
+      "Super": "super",
+      "Shift": "shift"
+    },
+    "description": "Deactivation key (when activation key is None)",
+    "tooltip": "Hold this key to temporarily disable the always-active tiling system.",
+    "dependency": "enable-tiling-system"
+  },
+  "enable-span-multiple-tiles": {
+    "type": "switch",
+    "default": true,
+    "description": "Span multiple tiles",
+    "tooltip": "Hold the span key while using the tiling system to select several tiles at once.",
+    "dependency": "enable-tiling-system"
+  },
+  "span-multiple-tiles-activation-key": {
+    "type": "combobox",
+    "default": "alt",
+    "options": {
+      "Ctrl": "ctrl",
+      "Alt": "alt",
+      "Super": "super",
+      "Shift": "shift"
+    },
+    "description": "Span multiple tiles key",
+    "dependency": "enable-span-multiple-tiles"
+  },
+  "inner-gaps": {
+    "type": "spinbutton",
+    "default": 8,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "px",
+    "description": "Inner gaps",
+    "tooltip": "Space between tiled windows."
+  },
+  "outer-gaps": {
+    "type": "spinbutton",
+    "default": 8,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "px",
+    "description": "Outer gaps",
+    "tooltip": "Space between tiled windows and the screen edges."
+  },
+  "restore-window-original-size": {
+    "type": "switch",
+    "default": true,
+    "description": "Restore window size when untiling",
+    "tooltip": "When a tiled window is dragged out of its tile, give it back the size it had before tiling."
+  },
+  "resize-complementing-windows": {
+    "type": "switch",
+    "default": true,
+    "description": "Smart resize",
+    "tooltip": "Resizing a tiled window also resizes the adjacent tiled windows."
+  },
+  "enable-autotiling": {
+    "type": "switch",
+    "default": false,
+    "description": "Auto-tiling",
+    "tooltip": "Move new windows to the best empty tile of the current layout."
+  },
+  "raise-together": {
+    "type": "switch",
+    "default": false,
+    "description": "Raise tiled windows together",
+    "tooltip": "Focusing a tiled window raises the other tiled windows too."
+  },
+  "raise-together-current-monitor-only": {
+    "type": "switch",
+    "default": true,
+    "description": "Only windows on the same monitor",
+    "dependency": "raise-together"
+  },
+  "sync-layout-across-workspaces": {
+    "type": "switch",
+    "default": true,
+    "description": "Same layout on every workspace",
+    "tooltip": "When off, each workspace remembers its own layout per monitor."
+  },
+  "show-indicator": {
+    "type": "switch",
+    "default": true,
+    "description": "Show panel indicator",
+    "tooltip": "Show the layout selector in the panel."
+  },
+  "override-window-menu": {
+    "type": "switch",
+    "default": true,
+    "description": "Tiling section in the window menu",
+    "tooltip": "Add layout buttons and tiling actions to the window's right-click menu."
+  },
+  "tile-preview-animation-time": {
+    "type": "spinbutton",
+    "default": 100,
+    "min": 0,
+    "max": 1000,
+    "step": 10,
+    "units": "ms",
+    "description": "Tile preview animation"
+  },
+  "disable-cinnamon-edge-tiling": {
+    "type": "switch",
+    "default": true,
+    "description": "Disable Cinnamon's own edge tiling while enabled",
+    "tooltip": "Cinnamon's built-in edge tiling and Ctrl-snap would fight with this extension. The original value is restored when the extension is disabled."
+  },
+  "enable-snap-assist": {
+    "type": "switch",
+    "default": true,
+    "description": "Enable snap assistant",
+    "tooltip": "While dragging a window, move it to the top of the screen to pick a layout and a tile."
+  },
+  "snap-assistant-threshold": {
+    "type": "spinbutton",
+    "default": 54,
+    "min": 0,
+    "max": 400,
+    "step": 2,
+    "units": "px",
+    "description": "Snap assistant sensitivity",
+    "tooltip": "How close the pointer has to get before the snap assistant expands.",
+    "dependency": "enable-snap-assist"
+  },
+  "snap-assist-sync-layout": {
+    "type": "switch",
+    "default": false,
+    "description": "Make the chosen layout active",
+    "tooltip": "Tiling through the snap assistant also switches the monitor to that layout.",
+    "dependency": "enable-snap-assist"
+  },
+  "snap-assistant-animation-time": {
+    "type": "spinbutton",
+    "default": 180,
+    "min": 0,
+    "max": 1000,
+    "step": 10,
+    "units": "ms",
+    "description": "Snap assistant animation",
+    "dependency": "enable-snap-assist"
+  },
+  "active-screen-edges": {
+    "type": "switch",
+    "default": true,
+    "description": "Tile by dragging to the screen edges",
+    "tooltip": "Drop a window on the left or right edge for a half, near a corner for a quarter."
+  },
+  "edge-tiling-mode": {
+    "type": "combobox",
+    "default": "default",
+    "options": {
+      "Halves and quarters": "default",
+      "Adaptive (use the current layout)": "adaptive"
+    },
+    "description": "Edge tiling mode",
+    "tooltip": "Adaptive mode tiles to the layout tile touching that edge.",
+    "dependency": "active-screen-edges"
+  },
+  "top-edge-maximize": {
+    "type": "switch",
+    "default": false,
+    "description": "Maximize at the top edge",
+    "dependency": "active-screen-edges"
+  },
+  "edge-tiling-offset": {
+    "type": "spinbutton",
+    "default": 16,
+    "min": 1,
+    "max": 200,
+    "step": 1,
+    "units": "px",
+    "description": "Edge sensitivity",
+    "tooltip": "Distance from the edge that activates edge tiling.",
+    "dependency": "active-screen-edges"
+  },
+  "quarter-tiling-threshold": {
+    "type": "spinbutton",
+    "default": 40,
+    "min": 5,
+    "max": 50,
+    "step": 1,
+    "units": "%",
+    "description": "Quarter tiling area",
+    "tooltip": "How far from a corner (percent of the screen height) quarters are used instead of halves.",
+    "dependency": "active-screen-edges"
+  },
+  "enable-tiling-system-windows-suggestions": {
+    "type": "switch",
+    "default": true,
+    "description": "After using the tiling system"
+  },
+  "enable-snap-assistant-windows-suggestions": {
+    "type": "switch",
+    "default": true,
+    "description": "After using the snap assistant"
+  },
+  "enable-screen-edges-windows-suggestions": {
+    "type": "switch",
+    "default": false,
+    "description": "After using the screen edges"
+  },
+  "enable-window-border": {
+    "type": "switch",
+    "default": false,
+    "description": "Border around the focused window"
+  },
+  "window-border-width": {
+    "type": "spinbutton",
+    "default": 3,
+    "min": 1,
+    "max": 20,
+    "step": 1,
+    "units": "px",
+    "description": "Border width",
+    "dependency": "enable-window-border"
+  },
+  "window-border-radius": {
+    "type": "spinbutton",
+    "default": 8,
+    "min": 0,
+    "max": 40,
+    "step": 1,
+    "units": "px",
+    "description": "Border radius",
+    "tooltip": "Match the corner radius of your theme's windows.",
+    "dependency": "enable-window-border"
+  },
+  "window-use-custom-border-color": {
+    "type": "switch",
+    "default": false,
+    "description": "Custom border color",
+    "tooltip": "When off, the accent color from the stylesheet is used.",
+    "dependency": "enable-window-border"
+  },
+  "window-border-color": {
+    "type": "colorchooser",
+    "default": "rgb(53,132,228)",
+    "description": "Border color",
+    "dependency": "window-use-custom-border-color"
+  },
+  "enable-move-keybindings": {
+    "type": "switch",
+    "default": true,
+    "description": "Enable window keyboard shortcuts"
+  },
+  "override-cinnamon-keybindings": {
+    "type": "switch",
+    "default": true,
+    "description": "Take over conflicting Cinnamon shortcuts",
+    "tooltip": "Cinnamon's own tiling shortcuts (Super+arrows by default) are disabled while the extension is enabled and restored afterwards."
+  },
+  "move-window-right": {
+    "type": "keybinding",
+    "default": "<Super>Right",
+    "description": "Move window to the right tile"
+  },
+  "move-window-left": {
+    "type": "keybinding",
+    "default": "<Super>Left",
+    "description": "Move window to the left tile"
+  },
+  "move-window-up": {
+    "type": "keybinding",
+    "default": "<Super>Up",
+    "description": "Move window to the tile above (maximize at the top)"
+  },
+  "move-window-down": {
+    "type": "keybinding",
+    "default": "<Super>Down",
+    "description": "Move window to the tile below (untile at the bottom)"
+  },
+  "span-window-right": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Span window to the right tile"
+  },
+  "span-window-left": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Span window to the left tile"
+  },
+  "span-window-up": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Span window to the tile above"
+  },
+  "span-window-down": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Span window to the tile below"
+  },
+  "span-window-all-tiles": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Span window across all tiles"
+  },
+  "untile-window": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Untile window"
+  },
+  "untile-all-windows": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Untile all windows on the workspace"
+  },
+  "move-window-center": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Center window"
+  },
+  "focus-window-right": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Focus window to the right"
+  },
+  "focus-window-left": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Focus window to the left"
+  },
+  "focus-window-up": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Focus window above"
+  },
+  "focus-window-down": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Focus window below"
+  },
+  "focus-window-next": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Focus next tiled window"
+  },
+  "focus-window-prev": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Focus previous tiled window"
+  },
+  "highlight-current-window": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Highlight focused window"
+  },
+  "cycle-layouts": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Next layout"
+  },
+  "cycle-layouts-backward": {
+    "type": "keybinding",
+    "default": "",
+    "description": "Previous layout"
+  },
+  "enable-wraparound-focus": {
+    "type": "switch",
+    "default": false,
+    "description": "Wrap around when focusing by direction"
+  },
+  "enable-directional-focus-tiled-only": {
+    "type": "switch",
+    "default": false,
+    "description": "Focus by direction only between tiled windows"
+  },
+  "btn-open-editor": {
+    "type": "button",
+    "description": "Edit the current layout",
+    "callback": "openEditor"
+  },
+  "btn-new-layout": {
+    "type": "button",
+    "description": "Create a new layout",
+    "callback": "newLayout"
+  },
+  "btn-import": {
+    "type": "button",
+    "description": "Import layouts from a JSON file",
+    "callback": "importLayouts"
+  },
+  "btn-export": {
+    "type": "button",
+    "description": "Export layouts to a JSON file",
+    "callback": "exportLayouts"
+  },
+  "btn-reset": {
+    "type": "button",
+    "description": "Reset layouts to the defaults",
+    "callback": "resetLayouts"
+  },
+  "layouts-info": {
+    "type": "label",
+    "description": "Layout files use the same JSON format as Tiling Shell for GNOME, so layouts can be shared between the two."
+  },
+  "layouts-json": {
+    "type": "generic",
+    "default": [
+      {
+        "id": "Layout 1",
+        "tiles": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 0.22,
+            "height": 0.5,
+            "groups": []
+          },
+          {
+            "x": 0,
+            "y": 0.5,
+            "width": 0.22,
+            "height": 0.5,
+            "groups": []
+          },
+          {
+            "x": 0.22,
+            "y": 0,
+            "width": 0.56,
+            "height": 1,
+            "groups": []
+          },
+          {
+            "x": 0.78,
+            "y": 0,
+            "width": 0.22,
+            "height": 0.5,
+            "groups": []
+          },
+          {
+            "x": 0.78,
+            "y": 0.5,
+            "width": 0.22,
+            "height": 0.5,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "Layout 2",
+        "tiles": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 0.22,
+            "height": 1,
+            "groups": []
+          },
+          {
+            "x": 0.22,
+            "y": 0,
+            "width": 0.56,
+            "height": 1,
+            "groups": []
+          },
+          {
+            "x": 0.78,
+            "y": 0,
+            "width": 0.22,
+            "height": 1,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "Layout 3",
+        "tiles": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 0.33,
+            "height": 1,
+            "groups": []
+          },
+          {
+            "x": 0.33,
+            "y": 0,
+            "width": 0.67,
+            "height": 1,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "Layout 4",
+        "tiles": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 0.67,
+            "height": 1,
+            "groups": []
+          },
+          {
+            "x": 0.67,
+            "y": 0,
+            "width": 0.33,
+            "height": 1,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "Halves",
+        "tiles": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 0.5,
+            "height": 1,
+            "groups": []
+          },
+          {
+            "x": 0.5,
+            "y": 0,
+            "width": 0.5,
+            "height": 1,
+            "groups": []
+          }
+        ]
+      },
+      {
+        "id": "Grid 2x2",
+        "tiles": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 0.5,
+            "height": 0.5,
+            "groups": []
+          },
+          {
+            "x": 0.5,
+            "y": 0,
+            "width": 0.5,
+            "height": 0.5,
+            "groups": []
+          },
+          {
+            "x": 0,
+            "y": 0.5,
+            "width": 0.5,
+            "height": 0.5,
+            "groups": []
+          },
+          {
+            "x": 0.5,
+            "y": 0.5,
+            "width": 0.5,
+            "height": 0.5,
+            "groups": []
+          }
+        ]
+      }
+    ]
+  },
+  "selected-layouts": {
+    "type": "generic",
+    "default": {}
+  },
+  "overridden-settings": {
+    "type": "generic",
+    "default": {}
+  }
+}
