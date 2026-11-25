@@ -1,0 +1,30 @@
+# BLUR CINNAMON
+# This file is put in the public domain.
+# klangman, 2025
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BlurCinnamon@klangman 2.7.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-11-07 15:45-0500\n"
+"PO-Revision-Date: 2026-11-05 12:39-0300\n"
+"Last-Translator: Lucas Xavier\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->description
+msgid "Make windows opaque when maximized or full-screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->windows-opaque-maximized->tooltip
+msgid ""
+"When enabled, windows with Blur Cinnamon effects will be made fully opaque "
+"while they are maximized or full-screen, ignoring the \"Opacity\" setting in "
+"the table above. The configured opacity is restored once the window is no "
+"longer maximized or full-screen."
+msgstr ""

@@ -1,0 +1,247 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: horizontal-osd@berk-karaal 0.0.2\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2024-03-04 15:27+0100\n"
+"PO-Revision-Date: 2024-05-30 9:50+1\n"
+"Last-Translator: Muxutruk <muxutruk2@users.noreply.github.com>\n"
+"Language-Team: Basque <muxutruk2@users.noreply.github.com>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. metadata.json->name
+msgid "Horizontal OSD"
+msgstr "OSD horizontala"
+
+#. metadata.json->description
+msgid "Horizontal and customizable OSDs"
+msgstr "OSD horizontalak eta pertsonalizagarriak"
+
+#. settings-schema.json->general->title
+msgid "General"
+msgstr "Orokorra"
+
+#. settings-schema.json->general-osd-configs->title
+#. settings-schema.json->osd-window-colors->title
+#. settings-schema.json->advanced-osd-window-configs->title
+msgid "Osd Window"
+msgstr "Osd Leihoa"
+
+#. settings-schema.json->general-icon-configs->title
+#. settings-schema.json->icon-colors->title
+#. settings-schema.json->advanced-icon-configs->title
+msgid "Icon"
+msgstr "Ikonoa"
+
+#. settings-schema.json->general-level-bar-configs->title
+#. settings-schema.json->level-bar-colors->title
+#. settings-schema.json->advanced-level-bar-configs->title
+msgid "Level Bar"
+msgstr "Maila-barra"
+
+#. settings-schema.json->general-label-configs->title
+#. settings-schema.json->label-colors->title
+#. settings-schema.json->advanced-label-configs->title
+msgid "Label"
+msgstr "Etiketa"
+
+#. settings-schema.json->colors->title
+msgid "Colors"
+msgstr "Koloreak"
+
+#. settings-schema.json->advanced->title
+msgid "Advanced"
+msgstr "Aurreratua"
+
+#. settings-schema.json->select-horizontal-osds->title
+#. settings-schema.json->select-horizontal-osds-section->title
+msgid "Select OSDs"
+msgstr "Aukeratu OSDak"
+
+#. settings-schema.json->osd-width->description
+msgid "Width of OSD window"
+msgstr "OSD leihoaren zabalera"
+
+#. settings-schema.json->osd-width->tooltip
+msgid "osd_width = this._popupSize * <this value>"
+msgstr "osd_width = this._popupSize* <this value>"
+
+#. settings-schema.json->osd-height->description
+msgid "Height of OSD window"
+msgstr "OSD leihoaren altuera"
+
+#. settings-schema.json->osd-height->tooltip
+msgid "osd_height = this._popupSize * <this value>"
+msgstr "osd_height = this._popupSize* <this value>"
+
+#. settings-schema.json->osd-border-radius->description
+msgid "Border radius od OSD window (in pixels)"
+msgstr "Mugako erradioa OSD leihoan (pixeletan)"
+
+#. settings-schema.json->osd-border-radius->tooltip
+#. settings-schema.json->level-bar-border-radius->tooltip
+msgid "border-radius: <this value>px;"
+msgstr "border-radius: px; <this value>"
+
+#. settings-schema.json->osd-position-x->description
+msgid "X position of OSD window relative to screen size by percentage"
+msgstr "X posizioa OSD leihoan pantailaren tamainaren arabera, ehunekotan"
+
+#. settings-schema.json->osd-position-x->tooltip
+msgid "0 is left, 100 is right"
+msgstr "0 ezkerra da, 100 eskuma da"
+
+#. settings-schema.json->osd-position-y->description
+msgid "Y position of OSD window relative to screen size by percentage"
+msgstr "Y posizioa OSD leihoan pantailaren tamainaren arabera, ehunekotan"
+
+#. settings-schema.json->osd-position-y->tooltip
+msgid "0 is top, 100 is bottom"
+msgstr "0 gora da, 100 behera da"
+
+#. settings-schema.json->osd-hide-timeout->description
+msgid "Hide timeout of OSD window (in milliseconds)"
+msgstr "Ezkutatzeko denbora OSD leihoan (millisegundoetan)"
+
+#. settings-schema.json->icon-size->description
+msgid "Size of icon relative to OSD height by percentage"
+msgstr "Ikonoaren tamaina, OSDren altueraren arabera, ehunekotan"
+
+#. settings-schema.json->icon-size->tooltip
+msgid "icon_size = osd_height * (<this value> / 100)"
+msgstr "icon_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->level-bar-size->description
+msgid "Size of level bar relative to OSD height by percentage"
+msgstr "Maila-barraren tamaina, OSDren altuerari dagokionez, ehunekotan"
+
+#. settings-schema.json->level-bar-size->tooltip
+msgid "level_bar_size = osd_height * (<this value> / 100)"
+msgstr "level_bar_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->level-bar-border-radius->description
+msgid "Border radius of level bar (in pixels)"
+msgstr "Maila-barraren mugako erradioa (pixeletan)"
+
+#. settings-schema.json->label-show->description
+msgid "Show label"
+msgstr "Erakutsi etiketa"
+
+#. settings-schema.json->label-size->description
+msgid "Size of label relative to OSD height by percentage"
+msgstr "Etiketaren tamaina, OSDren altueraren eta ehunekoaren arabera"
+
+#. settings-schema.json->label-size->tooltip
+msgid "label_size = osd_height * (<this value> / 100)"
+msgstr "label_size = osd_height * (<this value> / 100)"
+
+#. settings-schema.json->label-vertical-align-correction->description
+msgid ""
+"Label can not be centered correctly for now. You can adjust or decrease top "
+"margin of label here. (value: positive or negative int)"
+msgstr ""
+"Etiketa ezin da ondo zentratu. Etiketaren goiko aldea doitu edo gutxitu "
+"dezakezu hemen (balorea: zenbaki oso negatibo edo positiboa)"
+
+#. settings-schema.json->label-vertical-align-correction->tooltip
+msgid "margin-top: (calculated_value + <this value>)px"
+msgstr "margin-top: (calculated_value + <this value>)px"
+
+#. settings-schema.json->osd-window-overwrite-colors->description
+msgid "Overwrite OSD window colors"
+msgstr "OSD leihoaren koloreak gainidatzi"
+
+#. settings-schema.json->osd-window-border-color->description
+msgid "Border color of OSD window"
+msgstr "OSD leihoaren mugako kolorea"
+
+#. settings-schema.json->osd-window-background-color->description
+msgid "Background color of OSD window"
+msgstr "OSD leihoaren atzeko kolorea"
+
+#. settings-schema.json->icon-overwrite-colors->description
+msgid "Overwrite icon color"
+msgstr "Ikonoaren kolorearen gainidazketa"
+
+#. settings-schema.json->icon-color->description
+msgid "Icon color"
+msgstr "Ikonoaren kolorea"
+
+#. settings-schema.json->level-bar-overwrite-colors->description
+msgid "Overwrite level bar colors"
+msgstr "Maila-barraren koloreen gainidazketa"
+
+#. settings-schema.json->level-bar-foreground-color->description
+msgid "Level bar foreground color"
+msgstr "Maila-barraren lehen planoko kolorea"
+
+#. settings-schema.json->level-bar-background-color->description
+msgid "Level bar background color"
+msgstr "Maila-barraren atzeko kolorearen maila"
+
+#. settings-schema.json->label-overwrite-colors->description
+msgid "Overwrite label color"
+msgstr "Etiketaren kolorearen gainidazketa"
+
+#. settings-schema.json->label-color->description
+msgid "Label color"
+msgstr "Etiketaren kolorea"
+
+#. settings-schema.json->osd-window-overwrite-css->description
+msgid "Overwrite CSS of OSD window"
+msgstr "OSD leihoaren CSSaren gainidazketa"
+
+#. settings-schema.json->osd-window-css->description
+msgid "CSS of OSD window"
+msgstr "OSD leihoko CSSa"
+
+#. settings-schema.json->icon-overwrite-css->description
+msgid "Overwrite CSS of icon"
+msgstr "Ikonoaren CSSa gainidaztea"
+
+#. settings-schema.json->icon-css->description
+msgid "CSS of icon"
+msgstr "Ikonoaren CSSa"
+
+#. settings-schema.json->level-bar-overwrite-css->description
+msgid "Overwrite CSS of level bar"
+msgstr "Maila-barrako CSSaren gainidazketa"
+
+#. settings-schema.json->level-bar-background-css->description
+msgid "CSS of level bar"
+msgstr "Maila-barrako CSSa"
+
+#. settings-schema.json->level-bar-foreground-css->description
+msgid "CSS for foregorund of level bar"
+msgstr "CSS, maina-barraren aurreko planorako"
+
+#. settings-schema.json->label-overwrite-css->description
+msgid "Overwrite CSS of label"
+msgstr "Gainidatzi etiketaren CSSa"
+
+#. settings-schema.json->label-css->description
+msgid "CSS of label"
+msgstr "Etiketaren CSSa"
+
+#. settings-schema.json->select-osds-info-text->description
+msgid "You can choose which OSDs to be horizontal here"
+msgstr "Aukera dezakezu zein OSD izango diren horizontalak hemen"
+
+#. settings-schema.json->selected-volume-as-horizontal->description
+msgid "Volume OSD"
+msgstr "Bolumenaren OSDa"
+
+#. settings-schema.json->selected-brightness-as-horizontal->description
+msgid "Brightness OSD"
+msgstr "Argitasunaren OSDa"
+
+#. settings-schema.json->selected-mic-as-horizontal->description
+msgid "Microphone OSD"
+msgstr "Mikrofonoaren OSDa"

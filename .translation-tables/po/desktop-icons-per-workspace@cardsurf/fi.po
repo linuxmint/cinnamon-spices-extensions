@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-02 19:30+0000\n"
+"PO-Revision-Date: 2026-10-09 11:51+0300\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. metadata.json->description
+msgid "Set positions of desktop icons per workspace"
+msgstr "Määritä työpöydän kuvakkeiden sijainnit työtiloittain"
+
+#. metadata.json->name
+msgid "Desktop icons per workspace"
+msgstr "Desktop icons per workspace"
+
+#. settings-schema.json->configuration_start->description
+msgid "Configuration"
+msgstr "Määritykset"
+
+#. settings-schema.json->refresh_delay_start->units
+#. settings-schema.json->refresh_delay_switch->units
+msgid "milliseconds"
+msgstr "ms"
+
+#. settings-schema.json->refresh_delay_start->description
+msgid "Desktop refresh delay on start"
+msgstr "Työpöydän päivitysviive käynnistyksessä"
+
+#. settings-schema.json->refresh_delay_start->tooltip
+msgid ""
+"A number of milliseconds to wait for initial desktop refresh after the "
+"extension is started"
+msgstr ""
+"Viive ennen työpöydän ensimmäistä virkistystä laajennuksen käynnistämisen "
+"jälkeen"
+
+#. settings-schema.json->refresh_delay_switch->description
+msgid "Desktop refresh completed delay"
+msgstr "Työpöydän päivityksen valmistumisviive"
+
+#. settings-schema.json->refresh_delay_switch->tooltip
+msgid "A number of milliseconds to wait before completing desktop refresh"
+msgstr ""
+"Työpöydän päivityksen viimeistelyä edeltävä odotusaika millisekunteina"
+
+#. settings-schema.json->save_every->units
+msgid "seconds"
+msgstr "sekuntia"
+
+#. settings-schema.json->save_every->description
+msgid "Save every"
+msgstr "Tallenna joka"
+
+#. settings-schema.json->save_every->tooltip
+msgid ""
+"How often to save desktop icon positions to the file. 0 means no saving to "
+"the file."
+msgstr ""
+"Kuinka usein työpöydän kuvakkeiden sijainnit tallennetaan tiedostoon. Arvo "
+"0 tarkoittaa, ettei tietoja tallenneta tiedostoon."

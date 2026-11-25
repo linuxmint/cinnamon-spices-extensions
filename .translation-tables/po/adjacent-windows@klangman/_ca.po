@@ -1,0 +1,17 @@
+# ADJACENT WINDOWS
+# This file is put in the public domain.
+# Odyssey <odysseyhyd@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+
+#. 5.4->settings-schema.json->enable-wrap-around->description
+msgid "Wrap around to the opposite edge when no window is found"
+msgstr ""
+
+#. 5.4->settings-schema.json->enable-wrap-around->tooltip
+msgid ""
+"When enabled, if there is no window in the selected direction, focus will "
+"wrap around to the window on the opposite edge of the screen (e.g., pressing "
+"left with no windows to the left will focus the rightmost window)"
+msgstr ""

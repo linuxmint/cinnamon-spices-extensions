@@ -1,0 +1,292 @@
+# CINNAMON DYNAMIC WALLPAPER
+# This file is put in the public domain.
+# TobiZog, 2023
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-dynamic-wallpaper@TobiZog 2.4\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2024-08-08 19:35+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: 5.4/extension.js:75
+msgid "Welcome to Cinnamon Dynamic Wallpaper"
+msgstr "Benvenuto in Cinnamon Dynamic Wallpaper"
+
+#: 5.4/extension.js:76
+msgid "Check the preferences to choose a dynamic wallpaper"
+msgstr "Controlla le preferenze per scegliere uno sfondo dinamico"
+
+#: 5.4/extension.js:85
+msgid "imagemagick is not installed"
+msgstr "imagemagick non è installato"
+
+#: 5.4/extension.js:86
+msgid "Please install the package manually for the full range of functions"
+msgstr "Per favore installa il pacchetto manualmente per tutte le funzionalità"
+
+#: 5.4/extension.js:125
+msgid "Error!"
+msgstr "Errore!"
+
+#: 5.4/extension.js:126
+msgid ""
+"Cinnamon Dynamic Wallpaper got an error while running the loop script. "
+"Please create an issue on GitHub."
+msgstr ""
+"Cinnamon Dynamic Wallpaper ha riscontrato un errore durante l'esecuzione "
+"dello script. Per favore crea una segnalazione su GitHub."
+
+#: 5.4/extension.js:151
+msgid "Open settings"
+msgstr "Apri le Impostazioni"
+
+#. metadata.json->name
+msgid "Cinnamon Dynamic Wallpaper"
+msgstr "Cinnamon Dynamic Wallpaper"
+
+#. metadata.json->description
+msgid ""
+"Cinnamon extension for dynamic desktop backgrounds based on time and location"
+msgstr ""
+"Estensione di Cinnamon per sfondi dinamici basati su orario e posizione"
+
+#: 5.4/res/preferences.glade:135
+msgid "Image Source"
+msgstr "Fonte immagine"
+
+#: 5.4/res/preferences.glade:186
+msgid "Image Set"
+msgstr "Set di immagini"
+
+#: 5.4/res/preferences.glade:208
+msgid ""
+"Please install 'imagemagick' manually and reopen this configuration window"
+msgstr ""
+"Per favore installa 'imagemagick' manualmente e riapri questa finestra di "
+"configurazione"
+
+#: 5.4/res/preferences.glade:237
+msgid "HEIC file"
+msgstr "File HEIC"
+
+#: 5.4/res/preferences.glade:287
+msgid "Source Folder"
+msgstr "Cartella sorgente"
+
+#: 5.4/res/preferences.glade:337
+msgid "Select an image set"
+msgstr "Seleziona un set di immagini"
+
+#: 5.4/res/preferences.glade:380
+msgid "Select a heic file to import"
+msgstr "Seleziona un file heic da importare"
+
+#: 5.4/res/preferences.glade:431
+msgid "Select a source folder"
+msgstr "Seleziona una cartella sorgente"
+
+#: 5.4/res/preferences.glade:441
+msgid "Open file selection dialog"
+msgstr "Apri la finestra di selezione file"
+
+#: 5.4/res/preferences.glade:493
+msgid "Image Selection"
+msgstr "Selezione immagini"
+
+#: 5.4/res/preferences.glade:931
+msgid "Image Configuration"
+msgstr "Configurazione immagine"
+
+#: 5.4/res/preferences.glade:949
+msgid "Period estimation"
+msgstr "Stima del periodo"
+
+#: 5.4/res/preferences.glade:1002
+msgid "Use Network Location"
+msgstr "Usa posizione di rete"
+
+#: 5.4/res/preferences.glade:1052
+msgid "Custom Location"
+msgstr "Posizione personalizzata"
+
+#: 5.4/res/preferences.glade:1104
+msgid "Custom Time Periods"
+msgstr "Periodi temporali personalizzati"
+
+#: 5.4/res/preferences.glade:1133
+msgid "Location estimation"
+msgstr "Stima della posizione"
+
+#: 5.4/res/preferences.glade:1168
+msgid "Interval time to refresh location via network (min)"
+msgstr "Intervallo di tempo per aggiornare la posizione via rete (minuti)"
+
+#: 5.4/res/preferences.glade:1213
+msgid "Location provider"
+msgstr "Fornitore posizione"
+
+#: 5.4/res/preferences.glade:1275
+msgid "Latitude"
+msgstr "Latitudine"
+
+#: 5.4/res/preferences.glade:1318
+msgid "Longitude"
+msgstr "Longitudine"
+
+#: 5.4/res/preferences.glade:1358
+msgid "Period 1"
+msgstr "Periodo 1"
+
+#: 5.4/res/preferences.glade:1372
+msgid "Period 2"
+msgstr "Periodo 2"
+
+#: 5.4/res/preferences.glade:1386
+msgid "Period 3"
+msgstr "Periodo 3"
+
+#: 5.4/res/preferences.glade:1400
+msgid "Period 4"
+msgstr "Periodo 4"
+
+#: 5.4/res/preferences.glade:1414
+msgid "Period 5"
+msgstr "Periodo 5"
+
+#: 5.4/res/preferences.glade:1915
+msgid "Period 6"
+msgstr "Periodo 6"
+
+#: 5.4/res/preferences.glade:1929
+msgid "Period 7"
+msgstr "Periodo 7"
+
+#: 5.4/res/preferences.glade:1943
+msgid "Period 9"
+msgstr "Periodo 9"
+
+#: 5.4/res/preferences.glade:1957
+msgid "Period 8"
+msgstr "Periodo 8"
+
+#: 5.4/res/preferences.glade:1971
+msgid "Period 10"
+msgstr "Periodo 10"
+
+#: 5.4/res/preferences.glade:2462
+msgid "Location & Times"
+msgstr "Posizione e Orari"
+
+#: 5.4/res/preferences.glade:2481
+msgid "Scaling"
+msgstr "Ridimensionamento"
+
+#: 5.4/res/preferences.glade:2520
+msgid "Picture aspect"
+msgstr "Aspetto immagine"
+
+#: 5.4/res/preferences.glade:2557
+msgid "Login Screen"
+msgstr "Schermata di accesso"
+
+#: 5.4/res/preferences.glade:2594
+msgid "Set the background image as Login Screen background"
+msgstr "Imposta l'immagine di sfondo per la schermata di accesso"
+
+#: 5.4/res/preferences.glade:2631
+msgid "Dynamic Background color"
+msgstr "Colore sfondo dinamico"
+
+#: 5.4/res/preferences.glade:2668
+msgid "Use dynamic Background color to create a gradient"
+msgstr "Usa il colore sfondo dinamico per creare una sfumatura"
+
+#: 5.4/res/preferences.glade:2715
+msgid "Behaviour"
+msgstr "Comportamento"
+
+#: 5.4/res/preferences.glade:2734
+msgid "About the project"
+msgstr "Informazioni sul progetto"
+
+#: 5.4/res/preferences.glade:2763
+msgid ""
+"Based on a location or by user choice, this extensions calculates the "
+"periods of a day and switches the background image of your Cinnamon desktop. "
+"The extension offers as image sources a set of preconfigured wallpapers, a "
+"heic image import by the user or a custom folder with single images."
+msgstr ""
+"Basata sulla posizione o scelta utente, questa estensione calcola i periodi "
+"della giornata e cambia lo sfondo del desktop Cinnamon. L'estensione offre "
+"come fonte immagini un set di sfondi preconfigurati, un import HEIC utente o "
+"una cartella personalizzata con immagini singole."
+
+#: 5.4/res/preferences.glade:2782
+msgid "Developed by TobiZog"
+msgstr "Sviluppato da TobiZog"
+
+#: 5.4/res/preferences.glade:2799
+msgid ""
+"If you need more information or want to rate the extension, you can visit "
+"the Cinnamon Spices Website."
+msgstr ""
+"Se necessiti di maggiori informazioni o vuoi valutare l'estensione, puoi "
+"visitare il sito Cinnamon Spices."
+
+#: 5.4/res/preferences.glade:2810
+msgid "Cinnamon Dynamic Wallpaper at Cinnamon Spices Website"
+msgstr "Cinnamon Dynamic Wallpaper sul sito Cinnamon Spices"
+
+#: 5.4/res/preferences.glade:2835
+msgid "Source Code"
+msgstr "Codice sorgente"
+
+#: 5.4/res/preferences.glade:2864
+msgid ""
+"This project is Open Source. You can take a look inside the whole source "
+"code of this extension on GitHub."
+msgstr ""
+"Questo progetto è Open Source. Puoi vedere tutto il codice sorgente "
+"dell'estensione su GitHub."
+
+#: 5.4/res/preferences.glade:2875
+msgid "Source Code on GitHub"
+msgstr "Codice sorgente su GitHub"
+
+#: 5.4/res/preferences.glade:2900
+msgid "Issues and Enhancements"
+msgstr "Segnalazioni e miglioramenti"
+
+#: 5.4/res/preferences.glade:2929
+msgid ""
+"Do you find an issue? Or want a new feature? Go to the GitHub repository and "
+"create a new issue."
+msgstr ""
+"Hai trovato un problema? O vuoi una nuova funzionalità? Vai nel repository "
+"GitHub e crea una nuova segnalazione."
+
+#: 5.4/res/preferences.glade:2940
+msgid "Create a new issue on GitHub"
+msgstr "Crea una nuova segnalazione su GitHub"
+
+#: 5.4/res/preferences.glade:2965
+msgid "About"
+msgstr "Informazioni"
+
+#: 5.4/res/preferences.glade:2993
+msgid "Apply and close this window"
+msgstr "Applica e chiudi questa finestra"
+
+#: 5.4/res/preferences.glade:3005
+msgid "Apply the settings without closing this window"
+msgstr "Applica le impostazioni senza chiudere questa finestra"

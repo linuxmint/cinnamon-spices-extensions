@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: user-shadows@nathan818fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 12:05+0200\n"
+"PO-Revision-Date: 2024-04-17 11:11+0200\n"
+"Last-Translator: qadzek\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: custom-settings-widgets.py:19
+msgid "Radius"
+msgstr "Radius"
+
+#: custom-settings-widgets.py:20
+msgid "Top Fade"
+msgstr "Bovenste vervaging"
+
+#: custom-settings-widgets.py:21
+msgid "X Offset"
+msgstr "X-offset"
+
+#: custom-settings-widgets.py:22
+msgid "Y Offset"
+msgstr "Y-offset"
+
+#: custom-settings-widgets.py:23
+msgid "Opacity"
+msgstr "Doorzichtigheid"
+
+#: custom-settings-widgets.py:46
+msgid "Class Name"
+msgstr "Klasse naam"
+
+#: custom-settings-widgets.py:49
+msgid "State"
+msgstr "Status"
+
+#: custom-settings-widgets.py:109
+msgid "Import"
+msgstr "Importeren"
+
+#: custom-settings-widgets.py:113
+msgid "Export"
+msgstr "Exporteren"
+
+#: custom-settings-widgets.py:117
+msgid "Set from..."
+msgstr "Instellen vanuit..."
+
+#: custom-settings-widgets.py:176
+msgid "Choose where to save your configuration"
+msgstr "Kies waar u uw configuratie wilt opslaan"
+
+#: custom-settings-widgets.py:176
+msgid "Choose a configuration to load"
+msgstr "Kies een configuratie om te laden"
+
+#. metadata.json->name
+msgid "User Shadows"
+msgstr "Gebruikersschaduwen"
+
+#. metadata.json->description
+msgid "Customize the shadows of cinnamon windows"
+msgstr "Pas de schaduwen van Cinnamon-vensters aan"
+
+#. settings-schema.json->preset->description
+msgid "Shadows preset"
+msgstr "Schaduwvoorinstelling"
+
+#. settings-schema.json->preset->options
+msgid "Default"
+msgstr "Standaard"
+
+#. settings-schema.json->preset->options
+msgid "No Shadows"
+msgstr "Geen schaduwen"
+
+#. settings-schema.json->preset->options
+msgid "Custom"
+msgstr "Aangepast"

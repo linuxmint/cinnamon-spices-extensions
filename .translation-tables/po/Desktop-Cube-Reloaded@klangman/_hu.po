@@ -1,0 +1,108 @@
+# DESKTOP CUBE RELOADED
+# This file is put in the public domain.
+# klangman, 2026
+#
+msgid ""
+msgstr ""
+
+#. 6.0/extension.js:2682
+msgid "Desktop Cube Reloaded: the background image is ready"
+msgstr ""
+
+#. 6.0/extension.js:2683
+#, javascript-format
+msgid ""
+"\"%s\" has been loaded and will be shown behind the cube the next time it "
+"rotates."
+msgstr ""
+
+#. 6.0/extension.js:2700
+msgid "Desktop Cube Reloaded: the background image could not be loaded"
+msgstr ""
+
+#. 6.0->settings-schema.json->panorama-section->title
+msgid "Background image"
+msgstr ""
+
+#. 6.0->settings-schema.json->window-parallax->tooltip
+msgid ""
+"How far windows float in front of the cube faces while it rotates sideways. "
+"0 keeps them flat on the faces. Tilting the cube up or down uses the "
+"\"Spread the windows apart when the cube is tilted\" option instead."
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-panorama->description
+msgid "Show an image behind the cube"
+msgstr ""
+
+#. 6.0->settings-schema.json->enable-panorama->tooltip
+msgid ""
+"Instead of black, show an image behind the cube: either a 360 panorama that "
+"turns and tilts with the cube, or an ordinary picture scaled to the screen."
+msgstr ""
+
+#. 6.0->settings-schema.json->background-panorama->description
+msgid "Image"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-panorama->tooltip
+msgid ""
+"Either a 360 panorama in equirectangular projection (twice as wide as it is "
+"high), as used for photo spheres, or any ordinary picture such as a "
+"wallpaper. Sites such as Poly Haven offer free panoramas."
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->description
+msgid "Show the image as"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A 360 panorama around the cube"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture zoomed to fill the screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture scaled to fit the screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture stretched to the screen"
+msgstr ""
+
+#. 6.0->settings-schema.json->background-mode->tooltip
+msgid ""
+"A 360 panorama is wrapped around the cube and turns with it. An ordinary "
+"picture (for example 1920  1080) looks blurry and distorted that way; choose "
+"one of the picture options to show it flat behind the cube instead, like a "
+"wallpaper.\n"
+"\n"
+"<b>Zoomed:</b> fills the screen, cutting off what doesn't fit\n"
+"<b>Scaled:</b> the whole picture is visible, with black bars if its shape "
+"differs from the screen\n"
+"<b>Stretched:</b> fills the screen exactly, changing the picture's shape if "
+"needed"
+msgstr ""
+
+#. 6.0->settings-schema.json->panorama-brightness->description
+msgid "Panorama brightness"
+msgstr ""
+
+#. 6.0->settings-schema.json->panorama-brightness->tooltip
+msgid ""
+"Makes a 360 panorama brighter or darker. Dark panoramas such as star maps "
+"often show far fewer stars at a higher resolution, because every pixel then "
+"holds less light: an 8K star map needs about 400% to look like its 4K "
+"version.\n"
+"\n"
+"The panorama is converted again after each change, which takes a few "
+"seconds. This has no effect on a picture shown flat behind the cube."
+msgstr ""
+
+#. 6.0->settings-schema.json->panorama-ready-info->description
+msgid ""
+"After you pick a new image, a notification lets you know when it is ready to "
+"be shown around the cube."
+msgstr ""

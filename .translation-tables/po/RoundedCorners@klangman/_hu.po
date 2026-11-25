@@ -1,0 +1,144 @@
+# ROUNDED CORNERS
+# This file is put in the public domain.
+# klangman, 2026
+#
+msgid ""
+msgstr ""
+
+#. 6.0->settings-schema.json->border-mode->tooltip
+msgid ""
+"Draws a thin border just inside the rounded edge of rounded windows. Match "
+"continues the window's own border colours around the rounded corners. "
+"Automatic darkens light edges and lightens dark ones. Custom draws the "
+"colours you choose, one for the focused window and one for unfocused windows."
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->description
+msgid "Use the theme's accent colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+msgid "Focused window"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->options
+msgid "All windows"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-theme-accent->tooltip
+msgid ""
+"Draws the border in the accent colour of the current GTK theme (for example "
+"the aqua of Mint-Y-Aqua) and follows it when the theme changes. Windows that "
+"don't get the accent colour use the border colour below. If the theme "
+"doesn't define an accent colour, the custom colours are used. Applications "
+"in the Application border list keep their own colours."
+msgstr ""
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->description
+msgid "Accent opacity for unfocused windows"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-accent-unfocused-opacity->tooltip
+msgid ""
+"How opaque the accent coloured border is on every window except the one with "
+"keyboard focus. The focused window's border is always drawn at the accent "
+"colour's full opacity."
+msgstr ""
+
+#. 6.0->settings-schema.json->border-color-unfocused->description
+msgid "Border colour (unfocused windows)"
+msgstr ""
+
+#. 6.0->settings-schema.json->border-app-list->columns->title
+msgid "Colour (unfocused)"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-unfocused-opacity->description
+msgid "Shadow strength (unfocused windows)"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->description
+msgid "Shadow colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Black"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Single colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Gradient"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->options
+msgid "Rainbow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-mode->tooltip
+msgid ""
+"Black is a normal shadow. The other options colour it; with some glow and no "
+"vertical offset they look more like a coloured light around the window."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->description
+msgid "Colour (gradient start)"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color->tooltip
+msgid ""
+"Used by Single colour, and as the gradient's start colour. Not used by "
+"Rainbow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-2->description
+msgid "Gradient end colour"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->description
+msgid "Gradient direction"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->units
+msgid "degrees"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-gradient-angle->tooltip
+msgid "0 runs from left to right, 90 from top to bottom."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->description
+msgid "Glow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-glow->tooltip
+msgid ""
+"How much the colour adds light to what's behind it instead of covering it. 0 "
+"looks like a coloured shadow, 100 like a neon glow."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->description
+msgid "Rainbow turn time"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->units
+msgid "seconds"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-rainbow-turn-time->tooltip
+msgid ""
+"How long the rainbow takes to go once around the window. 0 keeps it still."
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->description
+msgid "Colour every window's shadow"
+msgstr ""
+
+#. 6.0->settings-schema.json->shadow-color-all-windows->tooltip
+msgid ""
+"Off: only the focused window gets the coloured shadow, and unfocused windows "
+"get a normal black one. On: every window gets it, and every rainbow turns, "
+"which keeps the compositor busier."
+msgstr ""

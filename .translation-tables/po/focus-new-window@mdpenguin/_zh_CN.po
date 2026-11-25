@@ -1,0 +1,30 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+
+#. metadata.json->name
+msgid "Focus New Window"
+msgstr ""
+
+#. settings-schema.json->raiseSome->description
+msgid "Raise windows only of listed programs"
+msgstr ""
+
+#. settings-schema.json->raiseSome->tooltip
+msgid ""
+"Disabling this will cause windows from all programs to receive focus if they "
+"demand attention"
+msgstr ""
+
+#. settings-schema.json->programList->description
+msgid "Programs to include"
+msgstr ""
+
+#. settings-schema.json->programList->tooltip
+msgid ""
+"Comma separated list of programs that should always have their windows "
+"receive focus"
+msgstr ""

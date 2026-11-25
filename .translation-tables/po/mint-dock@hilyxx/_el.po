@@ -1,0 +1,73 @@
+# MINT-DOCK
+# This file is put in the public domain.
+# hilyxx, 2017
+#
+msgid ""
+msgstr ""
+
+#. extension.js:598
+msgid "Application"
+msgstr ""
+
+#. extension.js:971
+msgid "Quit"
+msgstr ""
+
+#. metadata.json->name
+msgid "Mint-Dock"
+msgstr ""
+
+#. settings-schema.json->page_appearance->title
+msgid "Appearance"
+msgstr ""
+
+#. settings-schema.json->page_behavior->title
+#. settings-schema.json->section_dock_behavior->title
+msgid "Behavior"
+msgstr ""
+
+#. settings-schema.json->section_dock_display->title
+msgid "Display"
+msgstr ""
+
+#. settings-schema.json->section_windows->title
+msgid "Windows"
+msgstr ""
+
+#. settings-schema.json->dock-position->options
+msgid "Top"
+msgstr ""
+
+#. settings-schema.json->dock-position->options
+msgid "Bottom"
+msgstr ""
+
+#. settings-schema.json->dock-position->options
+msgid "Left"
+msgstr ""
+
+#. settings-schema.json->dock-position->options
+msgid "Right"
+msgstr ""
+
+#. settings-schema.json->border-radius->units
+#. settings-schema.json->icon-size->units
+msgid "px"
+msgstr ""
+
+#. settings-schema.json->spawn-animation-type->options
+#. settings-schema.json->click-animation-type->options
+msgid "Bounce"
+msgstr ""
+
+#. settings-schema.json->spawn-animation-type->options
+msgid "Slide"
+msgstr ""
+
+#. settings-schema.json->click-animation-type->options
+msgid "None"
+msgstr ""
+
+#. settings-schema.json->show-delay->units
+msgid "ms"
+msgstr ""

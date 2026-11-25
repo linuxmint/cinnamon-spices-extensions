@@ -1,0 +1,871 @@
+# DESKTOP CUBE RELOADED
+# This file is put in the public domain.
+# klangman, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Desktop-Cube-Reloaded@klangman 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
+"extensions/issues\n"
+"POT-Creation-Date: 2026-11-22 13:56-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.10\n"
+
+#. 6.0/extension.js:500
+#, javascript-format
+msgid "Desktop Cube Reloaded can not be used together with: %s"
+msgstr "Desktop Cube Reloaded no se puede utilizar junto con: %s"
+
+#. 6.0/extension.js:502
+msgid ""
+"Both change how Cinnamon switches workspaces, so Desktop Cube Reloaded will "
+"do nothing until the other extension is removed. After removing it, disable "
+"Desktop Cube Reloaded and enable it again."
+msgstr ""
+"Ambas modifican la forma en que Cinnamon cambia de espacio de trabajo, por "
+"lo que 'Desktop Cube Reloaded no funcionará hasta que se elimine la otra "
+"extensión. Una vez eliminada, desactiva Desktop Cube Reloaded y vuelve a "
+"activarla."
+
+#. 6.0/extension.js:507
+msgid "Desktop Cube Reloaded is not running"
+msgstr "Desktop Cube Reloaded no se está ejecutando"
+
+#. 6.0/extension.js:508
+msgid "Open Extensions Settings"
+msgstr "Abrir la configuración de extensiones"
+
+#. 6.0/extension.js:544
+#, javascript-format
+msgid ""
+"To spin the cube freely, drag an empty part of a panel with the left mouse "
+"button, or hold %s and move the mouse."
+msgstr ""
+"Para girar el cubo libremente, arrastra una parte vacía del panel con el "
+"botón izquierdo del ratón, o mantén pulsada la tecla %s y mueve el ratón."
+
+#. 6.0/extension.js:546
+msgid ""
+"To spin the cube freely, drag an empty part of a panel with the left mouse "
+"button."
+msgstr ""
+"Para girar el cubo libremente, arrastra una parte vacía del panel con el "
+"botón izquierdo del ratón."
+
+#. 6.0/extension.js:548
+msgid ""
+"Switching workspaces now rotates your desktop as the faces of a 3D cube."
+msgstr ""
+"Al cambiar de espacio de trabajo, ahora el escritorio gira como las caras de "
+"un cubo en 3D."
+
+#. 6.0/extension.js:550
+msgid ""
+"Move sideways to rotate, up or down to tilt, and scroll to zoom. Let go to "
+"switch to the workspace facing you, or press Esc to go back."
+msgstr ""
+"Desplázate lateralmente para girar, hacia arriba o hacia abajo para inclinar "
+"y desliza el dedo para ampliar o reducir. Suelta el dedo para cambiar al "
+"espacio de trabajo que tienes delante o pulsa Esc para volver atrás."
+
+#. 6.0/extension.js:552
+msgid ""
+"In the settings you can also set a hot corner that starts free rotation, and "
+"add a panorama image around the cube on the Background tab."
+msgstr ""
+"En la configuración también puedes establecer una esquina activa que active "
+"la rotación libre y añadir una imagen panorámica alrededor del cubo en la "
+"pestaña 'Fondo'."
+
+#. 6.0/extension.js:556
+msgid "Welcome to Desktop Cube Reloaded"
+msgstr "Bienvenido a Desktop Cube Reloaded"
+
+#. 6.0/extension.js:557
+msgid "Open Desktop Cube Reloaded Settings"
+msgstr "Abrir la configuración de Desktop Cube Reloaded"
+
+#. 6.0/extension.js:2179
+msgid "Desktop Cube Reloaded: the panorama is ready"
+msgstr "Desktop Cube Reloaded: la imagen panorámica ya está lista"
+
+#. 6.0/extension.js:2180
+#, javascript-format
+msgid ""
+"\"%s\" has been loaded and will be shown around the cube the next time it "
+"rotates."
+msgstr ""
+"Se ha cargado '%s' y se mostrará alrededor del cubo la próxima vez que gire."
+
+#. 6.0/extension.js:2191
+msgid "Desktop Cube Reloaded: the panorama could not be loaded"
+msgstr "Desktop Cube Reloaded: no se ha podido cargar la imagen panorámica"
+
+#. 6.0/extension.js:2192 6.0/extension.js:2701
+#, javascript-format
+msgid ""
+"\"%s\" could not be read as an image. Use a JPEG or PNG file. The cube is "
+"shown on black for now."
+msgstr ""
+"No se ha podido leer '%s' como imagen. Utiliza un archivo JPEG o PNG. Por "
+"ahora, el cubo se muestra sobre fondo negro."
+
+#. 6.0/extension.js:2278
+msgid "Desktop Cube Reloaded: the panorama has an unusual shape"
+msgstr "Desktop Cube Reloaded: la imagen panorámica tiene una forma inusual"
+
+#. 6.0/extension.js:2279
+#, javascript-format
+msgid ""
+"\"%s\" is %d × %d pixels. A 360° panorama should be twice as wide as it is "
+"high, otherwise it looks stretched."
+msgstr ""
+"'%s' mide %d × %d píxeles. Una panorámica de 360° debe tener el doble de "
+"ancho que de alto; de lo contrario, se verá estirada."
+
+#. 6.0/extension.js:2682
+msgid "Desktop Cube Reloaded: the background image is ready"
+msgstr "Desktop Cube Reloaded: la imagen de fondo ya está lista"
+
+#. 6.0/extension.js:2683
+#, javascript-format
+msgid ""
+"\"%s\" has been loaded and will be shown behind the cube the next time it "
+"rotates."
+msgstr ""
+"Se ha cargado \"%s\" y aparecerá detrás del cubo la próxima vez que este "
+"gire."
+
+#. 6.0/extension.js:2700
+msgid "Desktop Cube Reloaded: the background image could not be loaded"
+msgstr "Desktop Cube Reloaded: no se ha podido cargar la imagen de fondo"
+
+#. 6.0/CustomWidgets.py:389
+msgid "Cube: rotate with the mouse"
+msgstr "Cubo: girar con el ratón"
+
+#. 6.0/CustomWidgets.py:390
+msgid "Cube: rotate left"
+msgstr "Cubo: girar a la izquierda"
+
+#. 6.0/CustomWidgets.py:391
+msgid "Cube: rotate right"
+msgstr "Cubo: girar a la derecha"
+
+#. 6.0/CustomWidgets.py:419 6.0/CustomWidgets.py:494
+msgid "Off"
+msgstr "Desactivar"
+
+#. 6.0/CustomWidgets.py:421
+msgid "Show all workspaces (Expo)"
+msgstr "Mostrar todos los espacios de trabajo (Expo)"
+
+#. 6.0/CustomWidgets.py:422
+msgid "Show all windows (Scale)"
+msgstr "Mostrar todas las ventanas (Escala)"
+
+#. 6.0/CustomWidgets.py:423
+msgid "Show the desktop"
+msgstr "Mostrar el escritorio"
+
+#. 6.0/CustomWidgets.py:425
+#, python-format
+msgid "Run: %s"
+msgstr "Ejecutar: %s"
+
+#. 6.0/CustomWidgets.py:554
+msgid "Open"
+msgstr "Abrir"
+
+#. metadata.json->name
+msgid "Desktop Cube Reloaded"
+msgstr "Desktop Cube Reloaded"
+
+#. metadata.json->description
+msgid ""
+"Rotate your workspaces as the faces of a 3D cube. A port of the GNOME "
+"Desktop Cube extension by Simon Schneegans."
+msgstr ""
+"Gira tus espacios de trabajo como si fueran las caras de un cubo 3D. Una "
+"adaptación de la extensión 'GNOME Desktop Cube' de Simon Schneegans."
+
+#. 6.0->settings-schema.json->switching-page->title
+msgid "General"
+msgstr "General"
+
+#. 6.0->settings-schema.json->animation-section->title
+msgid "Cube"
+msgstr "Cubo"
+
+#. 6.0->settings-schema.json->hot-corner-section->title
+msgid "Hot corners"
+msgstr "Esquinas activas"
+
+#. 6.0->settings-schema.json->background-page->title
+msgid "Background"
+msgstr "Fondo"
+
+#. 6.0->settings-schema.json->panorama-section->title
+msgid "Background image"
+msgstr "Imagen de fondo"
+
+#. 6.0->settings-schema.json->rotating-page->title
+msgid "Mouse Rotation"
+msgstr "Rotación del ratón"
+
+#. 6.0->settings-schema.json->shortcut-section->title
+msgid "Hold a shortcut and move the mouse"
+msgstr "Mantén pulsada una tecla de acceso rápido y mueve el ratón"
+
+#. 6.0->settings-schema.json->panel-section->title
+msgid "Drag a panel"
+msgstr "Arrastrar un panel"
+
+#. 6.0->settings-schema.json->rotating-section->title
+msgid "While rotating"
+msgstr "Mientras gira"
+
+#. 6.0->settings-schema.json->hot-corner-page->title
+msgid "Hot Corners"
+msgstr "Esquinas activas"
+
+#. 6.0->settings-schema.json->about-page->title
+msgid "About"
+msgstr "Acerca de"
+
+#. 6.0->settings-schema.json->about-section->title
+msgid "About Desktop Cube Reloaded"
+msgstr "Acerca de Desktop Cube Reloaded"
+
+#. 6.0->settings-schema.json->edge-window-section->title
+msgid "Pushing a dragged window"
+msgstr "Mover una ventana arrastrada"
+
+#. 6.0->settings-schema.json->edge-push-section->title
+msgid "Pushing the mouse"
+msgstr "Mover el ratón"
+
+#. 6.0->settings-schema.json->edge-peek-section->title
+msgid "Cube preview while pushing"
+msgstr "Vista previa del cubo al empujar"
+
+#. 6.0->settings-schema.json->edge-page->title
+msgid "Screen Edges"
+msgstr "Bordes de la pantalla"
+
+#. 6.0->settings-schema.json->animation-time->units
+msgid "milliseconds"
+msgstr "milisegundos"
+
+#. 6.0->settings-schema.json->animation-time->description
+msgid "Rotation duration"
+msgstr "Duración de la rotación"
+
+#. 6.0->settings-schema.json->animation-time->tooltip
+msgid "How long the cube takes to rotate to the new workspace."
+msgstr ""
+"Cuánto tiempo tarda el cubo en girar hacia el nuevo espacio de trabajo."
+
+#. 6.0->settings-schema.json->last-first-gap->description
+msgid "Leave a gap between the last and first workspace"
+msgstr "Deja un espacio entre el último y el primer espacio de trabajo"
+
+#. 6.0->settings-schema.json->last-first-gap->tooltip
+msgid ""
+"When enabled, the workspaces cover only half a circle, so switching from the "
+"last to the first workspace rotates back through all of them. When disabled, "
+"the workspaces form a closed cube and wrapping around takes the shortest "
+"way.\n"
+"\n"
+"This option is linked to Cinnamon's \"Allow cycling through workspaces\" "
+"setting (System Settings > Workspaces): turning cycling on turns this gap "
+"off, and turning cycling off turns the gap on. You can still change this "
+"option here, but the next change to the Cinnamon setting will override it, "
+"and so will disabling and re-enabling this extension."
+msgstr ""
+"Cuando está activada, los espacios de trabajo abarcan solo medio círculo, "
+"por lo que al pasar del último al primero se recorren todos en orden "
+"inverso. Cuando está desactivada, los espacios de trabajo forman un cubo "
+"cerrado y el recorrido se realiza por la ruta más corta.\n"
+"\n"
+"Esta opción está vinculada al ajuste de Cinnamon 'Permitir recorrer los "
+"espacios de trabajo' (Configuración del sistema > Espacios de trabajo): al "
+"activar el recorrido, se desactiva este salto, y al desactivarlo, se activa "
+"el salto. Aún así, puedes cambiar esta opción aquí, pero el siguiente cambio "
+"en la configuración de Cinnamon la anulará, al igual que lo hará desactivar "
+"y volver a activar esta extensión."
+
+#. 6.0->settings-schema.json->window-parallax->description
+msgid "Window parallax"
+msgstr "Paralaje de ventana"
+
+#. 6.0->settings-schema.json->window-parallax->tooltip
+msgid ""
+"How far windows float in front of the cube faces while it rotates sideways. "
+"0 keeps them flat on the faces. Tilting the cube up or down uses the "
+"\"Spread the windows apart when the cube is tilted\" option instead."
+msgstr ""
+"La distancia a la que flotan las ventanas frente a las caras del cubo "
+"mientras este gira lateralmente. El valor 0 hace que permanezcan pegadas a "
+"las caras. Al inclinar el cubo hacia arriba o hacia abajo, se utiliza en su "
+"lugar la opción \"Separar las ventanas cuando se inclina el cubo\"."
+
+#. 6.0->settings-schema.json->auto-zoom-out->description
+msgid "Zoom out while the cube moves (%)"
+msgstr "Alejar la imagen mientras se mueve el cubo (%)"
+
+#. 6.0->settings-schema.json->auto-zoom-out->tooltip
+msgid ""
+"While the cube rotates, it moves back until it looks this much smaller than "
+"the screen, then comes forward again as it stops. When you rotate the cube "
+"with the mouse, it zooms out as you start moving the mouse. 0 turns it off."
+msgstr ""
+"Mientras el cubo gira, se aleja hasta que parece mucho más pequeño que la "
+"pantalla y, luego, vuelve a acercarse al detenerse. Cuando giras el cubo con "
+"el ratón, se aleja a medida que empiezas a mover el ratón. Al introducir un "
+"0, se desactiva."
+
+#. 6.0->settings-schema.json->moving-window-transparency->description
+msgid "See-through moved window (%)"
+msgstr "Ventana transparente desplazada (%)"
+
+#. 6.0->settings-schema.json->moving-window-transparency->tooltip
+msgid ""
+"A window you move to the next workspace (with the keyboard, or by dragging "
+"it against the screen edge) stays in front while the cube turns behind it. "
+"It becomes this much see-through while the cube moves, so you can see the "
+"cube behind it, and is solid again when the cube stops. 0 turns it off."
+msgstr ""
+"Una ventana que desplaces al siguiente espacio de trabajo (con el teclado o "
+"arrastrándola hasta el borde de la pantalla) permanece en primer plano "
+"mientras el cubo gira detrás de ella. Se vuelve transparente en esta medida "
+"mientras el cubo se mueve, de modo que puedas ver el cubo que hay detrás, y "
+"vuelve a ser opaca cuando el cubo se detiene. El valor 0 desactiva esta "
+"función."
+
+#. 6.0->settings-schema.json->panel-mode->description
+msgid "Panels while the cube is shown"
+msgstr "Paneles mientras se muestra el cubo"
+
+#. 6.0->settings-schema.json->panel-mode->options
+msgid "On the cube faces"
+msgstr "En las caras del cubo"
+
+#. 6.0->settings-schema.json->panel-mode->options
+msgid "Above the cube"
+msgstr "Por encima del cubo"
+
+#. 6.0->settings-schema.json->panel-mode->options
+msgid "Hidden"
+msgstr "Oculto"
+
+#. 6.0->settings-schema.json->panel-mode->tooltip
+msgid ""
+"On the cube faces: every face shows the panels of its monitor, which turn "
+"with the cube. Above the cube: the panels stay where they are and the cube "
+"turns behind them. Hidden: the cube is drawn above the panels. The panels "
+"themselves are not changed."
+msgstr ""
+"En las caras del cubo: cada cara muestra las pantallas de su monitor, que "
+"giran junto con el cubo. Por encima del cubo: las pantallas permanecen fijas "
+"y el cubo gira detrás de ellas. Oculto: el cubo se dibuja por encima de las "
+"pantallas. Las pantallas en sí no cambian."
+
+#. 6.0->settings-schema.json->per-monitor-perspective->description
+msgid "Correct the perspective on each monitor"
+msgstr "Ajusta la perspectiva en cada monitor"
+
+#. 6.0->settings-schema.json->per-monitor-perspective->tooltip
+msgid ""
+"With several monitors, Cinnamon looks at the whole desktop from a single "
+"point in front of its center, so a cube on a monitor away from the center is "
+"seen from the side and looks skewed. This shows each monitor's cube as seen "
+"from straight in front of that monitor."
+msgstr ""
+"Cuando hay varios monitores, Cinnamon visualiza todo el escritorio desde un "
+"único punto situado frente a su centro, por lo que un cubo situado en un "
+"monitor alejado del centro se ve de perfil y parece deformado. Aquí se "
+"muestra el cubo de cada monitor tal y como se vería desde justo delante de "
+"ese monitor."
+
+#. 6.0->settings-schema.json->enable-edge-switch->description
+msgid "Switch workspaces by pushing a dragged window against the screen edge"
+msgstr ""
+"Para cambiar de espacio de trabajo, desplaza una ventana arrastrada hasta el "
+"borde de la pantalla"
+
+#. 6.0->settings-schema.json->enable-edge-switch->tooltip
+msgid ""
+"While dragging a window, push it against the left or right edge of the "
+"screen to rotate to the next workspace. The window comes along."
+msgstr ""
+"Mientras arrastras una ventana, acércala al borde izquierdo o derecho de la "
+"pantalla para pasar al siguiente espacio de trabajo. La ventana se "
+"desplazará contigo."
+
+#. 6.0->settings-schema.json->edge-switch-pressure->units
+#. 6.0->settings-schema.json->edge-push-pressure->units
+msgid "pixels"
+msgstr "pixeles"
+
+#. 6.0->settings-schema.json->edge-switch-pressure->description
+msgid "Edge pressure"
+msgstr "Presión en los bordes"
+
+#. 6.0->settings-schema.json->edge-switch-pressure->tooltip
+msgid ""
+"How far you have to push the mouse into the screen edge, within one second, "
+"before the workspace switches. Higher values make it less likely to switch "
+"by accident, for example when you only want to tile the window."
+msgstr ""
+"La distancia a la que hay que desplazar el ratón hacia el borde de la "
+"pantalla, en un segundo, para que cambie el espacio de trabajo. Cuanto mayor "
+"sea el valor, menos probable será que el cambio se produzca por accidente, "
+"por ejemplo, cuando solo se quiera colocar la ventana en mosaico."
+
+#. 6.0->settings-schema.json->enable-edge-push->description
+msgid "Switch workspaces by pushing the mouse against the screen edge"
+msgstr ""
+"Para cambiar de espacio de trabajo, desliza el ratón hacia el borde de la "
+"pantalla"
+
+#. 6.0->settings-schema.json->enable-edge-push->tooltip
+msgid ""
+"Push the mouse pointer against the left or right edge of the screen to "
+"rotate to the next workspace. Edges between two monitors don't count."
+msgstr ""
+"Mueve el puntero del ratón hacia el borde izquierdo o derecho de la pantalla "
+"para pasar al siguiente espacio de trabajo. Los bordes entre dos monitores "
+"no cuentan."
+
+#. 6.0->settings-schema.json->edge-push-action->description
+msgid "Action"
+msgstr "Acción"
+
+#. 6.0->settings-schema.json->edge-push-action->options
+msgid "Switch to the next workspace"
+msgstr "Cambiar al siguiente espacio de trabajo"
+
+#. 6.0->settings-schema.json->edge-push-action->options
+msgid "Start free rotation"
+msgstr "Iniciar rotación libre"
+
+#. 6.0->settings-schema.json->edge-push-action->tooltip
+msgid ""
+"Free rotation lets you turn the cube with the mouse, like the free rotation "
+"hot corner action. Left click or Enter switches to the workspace in front, "
+"right click or Esc goes back."
+msgstr ""
+"La rotación libre te permite girar el cubo con el ratón, igual que la acción "
+"de rotación libre de la esquina activa. Al hacer clic con el botón izquierdo "
+"o pulsar 'Intro' se cambia al espacio de trabajo que está delante; al hacer "
+"clic con el botón derecho o pulsar 'Esc' se vuelve atrás."
+
+#. 6.0->settings-schema.json->edge-push-pressure->description
+msgid "Edge push pressure"
+msgstr "Presión de empuje en el borde"
+
+#. 6.0->settings-schema.json->edge-push-pressure->tooltip
+msgid ""
+"How hard you have to push the mouse into the screen edge before the "
+"workspace switches. Higher values make accidental switches less likely."
+msgstr ""
+"La fuerza con la que hay que empujar el ratón hacia el borde de la pantalla "
+"para que cambie el espacio de trabajo. Cuanto mayor sea el valor, menos "
+"probable será que el cambio se produzca de forma accidental."
+
+#. 6.0->settings-schema.json->edge-push-modifier->description
+msgid "Only while holding"
+msgstr "Solo mientras se mantiene pulsado"
+
+#. 6.0->settings-schema.json->edge-push-modifier->options
+msgid "No key"
+msgstr "Sin tecla"
+
+#. 6.0->settings-schema.json->edge-push-modifier->options
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#. 6.0->settings-schema.json->edge-push-modifier->options
+msgid "Alt"
+msgstr "Alt"
+
+#. 6.0->settings-schema.json->edge-push-modifier->options
+msgid "Shift"
+msgstr "Shift"
+
+#. 6.0->settings-schema.json->edge-push-modifier->tooltip
+msgid "Only switch when this key is held while pushing against the edge."
+msgstr ""
+"El interruptor solo se activa cuando se mantiene pulsada esta tecla mientras "
+"se ejerce presión contra el borde."
+
+#. 6.0->settings-schema.json->edge-peek->units
+#. 6.0->settings-schema.json->panorama-brightness->units
+msgid "%"
+msgstr "%"
+
+#. 6.0->settings-schema.json->edge-peek->description
+msgid "Turn the cube while pushing"
+msgstr "Gira el cubo mientras lo empujas"
+
+#. 6.0->settings-schema.json->edge-peek->tooltip
+msgid ""
+"How far the cube turns towards the next workspace while you push, before it "
+"commits. 0 switches without a preview."
+msgstr ""
+"La distancia a la que gira el cubo hacia el siguiente espacio de trabajo "
+"mientras lo empujas, antes de que se aplique el cambio. El valor 0 implica "
+"que no hay vista previa."
+
+#. 6.0->settings-schema.json->enable-panorama->description
+msgid "Show an image behind the cube"
+msgstr "Mostrar una imagen detrás del cubo"
+
+#. 6.0->settings-schema.json->enable-panorama->tooltip
+msgid ""
+"Instead of black, show an image behind the cube: either a 360° panorama that "
+"turns and tilts with the cube, or an ordinary picture scaled to the screen."
+msgstr ""
+"En lugar de negro, muestra una imagen detrás del cubo: bien una panorámica "
+"de 360° que gire y se incline junto con el cubo, bien una imagen normal "
+"ajustada al tamaño de la pantalla."
+
+#. 6.0->settings-schema.json->background-panorama->description
+msgid "Image"
+msgstr "Imagen"
+
+#. 6.0->settings-schema.json->background-panorama->tooltip
+msgid ""
+"Either a 360° panorama in equirectangular projection (twice as wide as it is "
+"high), as used for photo spheres, or any ordinary picture such as a "
+"wallpaper. Sites such as Poly Haven offer free panoramas."
+msgstr ""
+"Puede ser una panorámica de 360° en proyección equirrectangular (con el "
+"doble de ancho que de alto), como las que se utilizan para las fotosféricas, "
+"o cualquier imagen normal, como un fondo de pantalla. Sitios web como Poly "
+"Haven ofrecen panorámicas gratuitas."
+
+#. 6.0->settings-schema.json->background-mode->description
+msgid "Show the image as"
+msgstr "Mostrar la imagen como"
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A 360° panorama around the cube"
+msgstr "Un panorama de 360° alrededor del cubo"
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture zoomed to fill the screen"
+msgstr "Una imagen ampliada hasta ocupar toda la pantalla"
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture scaled to fit the screen"
+msgstr "Una imagen ajustada al tamaño de la pantalla"
+
+#. 6.0->settings-schema.json->background-mode->options
+msgid "A picture stretched to the screen"
+msgstr "Una imagen que ocupa toda la pantalla"
+
+#. 6.0->settings-schema.json->background-mode->tooltip
+msgid ""
+"A 360° panorama is wrapped around the cube and turns with it. An ordinary "
+"picture (for example 1920 × 1080) looks blurry and distorted that way; "
+"choose one of the picture options to show it flat behind the cube instead, "
+"like a wallpaper.\n"
+"\n"
+"<b>Zoomed:</b> fills the screen, cutting off what doesn't fit\n"
+"<b>Scaled:</b> the whole picture is visible, with black bars if its shape "
+"differs from the screen\n"
+"<b>Stretched:</b> fills the screen exactly, changing the picture's shape if "
+"needed"
+msgstr ""
+"Una panorámica de 360° envuelve el cubo y gira con él. Una imagen normal "
+"(por ejemplo, 1920 × 1080) se ve borrosa y distorsionada de esa forma; elige "
+"una de las opciones de imagen para mostrarla plana detrás del cubo, como si "
+"fuera un fondo de pantalla.\n"
+"\n"
+"<b>Ampliada:</b> ocupa toda la pantalla, recortando lo que no cabe\n"
+"<b>A escala:</b> se ve la imagen completa, con barras negras si su forma "
+"difiere de la de la pantalla\n"
+"<b>Estirada:</b> ocupa exactamente toda la pantalla, cambiando la forma de "
+"la imagen si es necesario"
+
+#. 6.0->settings-schema.json->panorama-brightness->description
+msgid "Panorama brightness"
+msgstr "Brillo de la imagen panorámica"
+
+#. 6.0->settings-schema.json->panorama-brightness->tooltip
+msgid ""
+"Makes a 360° panorama brighter or darker. Dark panoramas such as star maps "
+"often show far fewer stars at a higher resolution, because every pixel then "
+"holds less light: an 8K star map needs about 400% to look like its 4K "
+"version.\n"
+"\n"
+"The panorama is converted again after each change, which takes a few "
+"seconds. This has no effect on a picture shown flat behind the cube."
+msgstr ""
+"Aclara u oscurece una panorámica de 360°. Las panorámicas oscuras, como los "
+"mapas estelares, suelen mostrar muchas menos estrellas a una resolución más "
+"alta, ya que cada píxel contiene entonces menos luz: un mapa estelar en 8K "
+"necesita aproximadamente un 400 % para tener el mismo aspecto que su versión "
+"en 4K.\n"
+"\n"
+"La panorámica se vuelve a convertir tras cada cambio, lo que tarda unos "
+"segundos. Esto no afecta a una imagen que se muestra en plano detrás del "
+"cubo."
+
+#. 6.0->settings-schema.json->cube-shortcut->description
+msgid "Hold to rotate the cube"
+msgstr "Mantén pulsado para girar el cubo"
+
+#. 6.0->settings-schema.json->cube-shortcut->tooltip
+msgid ""
+"Keep the shortcut's modifier keys held and move the mouse anywhere on the "
+"screen: sideways rotates the cube, up and down tilts it, the scroll wheel "
+"zooms. Release the keys (or click) to switch to the workspace in front, or "
+"press Esc to go back."
+msgstr ""
+"Mantén pulsadas las teclas modificadoras del atajo y mueve el ratón a "
+"cualquier punto de la pantalla: los movimientos laterales giran el cubo, los "
+"movimientos hacia arriba y hacia abajo lo inclinan, y la rueda de "
+"desplazamiento permite ampliar o reducir la imagen. Suelta las teclas (o haz "
+"clic) para cambiar al espacio de trabajo que tienes delante, o pulsa Esc "
+"para volver atrás."
+
+#. 6.0->settings-schema.json->enable-panel-dragging->description
+msgid "Rotate the cube by dragging an empty part of a panel"
+msgstr "Gira el cubo arrastrando una parte vacía de un panel"
+
+#. 6.0->settings-schema.json->enable-panel-dragging->tooltip
+msgid ""
+"Hold the left mouse button on a panel, away from any applet, and move the "
+"mouse. Moving sideways rotates the cube, moving up or down tilts it, and the "
+"scroll wheel zooms in and out. Release the button to switch to the workspace "
+"in front, or press Esc to go back."
+msgstr ""
+"Mantén pulsado el botón izquierdo del ratón sobre un panel, lejos de "
+"cualquier applet, y mueve el ratón. Al moverlo lateralmente, el cubo gira; "
+"al moverlo hacia arriba o hacia abajo, se inclina; y la rueda de "
+"desplazamiento permite acercar y alejar la imagen. Suelta el botón para "
+"cambiar al espacio de trabajo que tienes delante, o pulsa Esc para volver "
+"atrás."
+
+#. 6.0->settings-schema.json->mouse-rotation-speed->description
+msgid "Rotation speed"
+msgstr "Velocidad de rotación"
+
+#. 6.0->settings-schema.json->mouse-rotation-speed->tooltip
+msgid "How far the cube rotates for a given mouse movement."
+msgstr ""
+"La distancia a la que gira el cubo con un movimiento determinado del ratón."
+
+#. 6.0->settings-schema.json->do-explode->description
+msgid "Spread the windows apart when the cube is tilted"
+msgstr "Separa las ventanas cuando se incline el cubo"
+
+#. 6.0->settings-schema.json->panorama-ready-info->description
+msgid ""
+"After you pick a new image, a notification lets you know when it is ready to "
+"be shown around the cube."
+msgstr ""
+"Una vez que hayas elegido una nueva imagen, recibirás una notificación que "
+"te indicará cuándo estará lista para mostrarse en todo el cubo."
+
+#. 6.0->settings-schema.json->panorama-info->description
+msgid "💡 Which images work? (see tooltip)"
+msgstr "💡 ¿Qué imágenes funcionan? (ver información sobre la herramienta)"
+
+#. 6.0->settings-schema.json->panorama-info->tooltip
+msgid ""
+"Use a 360° panorama in <b>equirectangular</b> projection: twice as wide as "
+"it is high, as used for photo spheres. JPEG and PNG always work; HDR formats "
+"such as .exr and .hdr only if your system can read them.\n"
+"\n"
+"A width of 4K to 8K looks good. The first time a new panorama is used, it is "
+"converted into a cube map in the background, which can take a few seconds. "
+"The result is cached in ~/.cache/desktop-cube-reloaded, so later it loads "
+"right away."
+msgstr ""
+"Utiliza una panorámica de 360° en proyección <b>equirrectangular</b>: con el "
+"doble de ancho que de alto, como se utiliza para las fotosféricas. Los "
+"formatos JPEG y PNG siempre funcionan; los formatos HDR, como .exr y .hdr, "
+"solo si tu sistema puede leerlos.\n"
+"\n"
+"Un ancho de entre 4K y 8K queda bien. La primera vez que se utiliza una "
+"nueva panorámica, se convierte en un mapa cúbico en segundo plano, lo que "
+"puede tardar unos segundos. El resultado se almacena en la caché en ~/.cache/"
+"desktop-cube-reloaded, por lo que más adelante se carga al instante."
+
+#. 6.0->settings-schema.json->rotating-info->description
+msgid "💡 Controls while rotating (see tooltip)"
+msgstr ""
+"💡 Controles durante la rotación (ver información sobre la herramienta)"
+
+#. 6.0->settings-schema.json->rotating-info->tooltip
+msgid ""
+"<b>Move sideways:</b> rotate the cube\n"
+"<b>Move up or down:</b> tilt the cube\n"
+"<b>Scroll wheel:</b> zoom in and out\n"
+"<b>Esc:</b> go back to the workspace you started on\n"
+"\n"
+"When you release the shortcut's keys (or the mouse button, when dragging a "
+"panel), the cube switches to the workspace facing you. If the mouse is still "
+"moving, the cube keeps turning a little in that direction."
+msgstr ""
+"<b>Desplazarse lateralmente:</b> girar el cubo\n"
+"<b>Subir o bajar:</b> inclinar el cubo\n"
+"<b>Rueda de desplazamiento:</b> acercar y alejar la imagen\n"
+"<b>Esc:</b> volver al espacio de trabajo inicial\n"
+"\n"
+"Al soltar las teclas de atajo (o el botón del ratón, al arrastrar un panel), "
+"el cubo cambia al espacio de trabajo que tienes delante. Si el ratón sigue "
+"moviéndose, el cubo continúa girando ligeramente en esa dirección."
+
+#. 6.0->settings-schema.json->hot-corner-top-left->description
+msgid "Top left corner"
+msgstr "Esquina superior izquierda"
+
+#. 6.0->settings-schema.json->hot-corner-top-left->tooltip
+#. 6.0->settings-schema.json->hot-corner-top-right->tooltip
+#. 6.0->settings-schema.json->hot-corner-bottom-left->tooltip
+#. 6.0->settings-schema.json->hot-corner-bottom-right->tooltip
+msgid ""
+"Pick a cube action to trigger it by pushing the mouse into this corner of "
+"the screen.\n"
+"\n"
+"If Cinnamon already uses the corner for something else, that action is kept "
+"as the first item of this list: pick it again to put the corner back the way "
+"it was.\n"
+"\n"
+"The hover delay and whether corners work over fullscreen windows are set in "
+"<i>System Settings → Hot Corners</i>."
+msgstr ""
+"Elige una acción de esquina para activarla colocando el cursor del ratón en "
+"esta esquina de la pantalla.\n"
+"\n"
+"Si Cinnamon ya utiliza esa esquina para otra función, dicha acción se "
+"mantendrá como la primera opción de esta lista: selecciónala de nuevo para "
+"que la esquina vuelva a funcionar como antes.\n"
+"\n"
+"El tiempo de espera al pasar el cursor y la opción de que las esquinas "
+"funcionen en ventanas a pantalla completa se configuran en <i>Configuración "
+"del sistema → Esquinas activas</i>."
+
+#. 6.0->settings-schema.json->hot-corner-top-right->description
+msgid "Top right corner"
+msgstr "Esquina superior derecha"
+
+#. 6.0->settings-schema.json->hot-corner-bottom-left->description
+msgid "Bottom left corner"
+msgstr "Esquina inferior izquierda"
+
+#. 6.0->settings-schema.json->hot-corner-bottom-right->description
+msgid "Bottom right corner"
+msgstr "Esquina inferior derecha"
+
+#. 6.0->settings-schema.json->hot-corner-info->description
+msgid "💡 What the cube actions do (see tooltip)"
+msgstr ""
+"💡 Para qué sirven las acciones del cubo (ver información sobre la "
+"herramienta)"
+
+#. 6.0->settings-schema.json->hot-corner-info->tooltip
+msgid ""
+"<b>Rotate with the mouse:</b> move the mouse to turn the cube, no button or "
+"key held. Left-click (or Enter) switches to the workspace facing you; right-"
+"click (or Esc) goes back.\n"
+"\n"
+"<b>Rotate left / right:</b> switch to the workspace on the left / right, "
+"like Ctrl+Alt+Left/Right. Left-click in the corner to keep going.\n"
+"\n"
+"These are the same corners as in <i>System Settings → Hot Corners</i>, where "
+"they show up as commands named cube-free-rotate, cube-rotate-left and cube-"
+"rotate-right. If this extension is turned off, those corners do nothing."
+msgstr ""
+"<b>Girar con el ratón:</b> mueve el ratón para girar el cubo, sin mantener "
+"pulsado ningún botón ni tecla. Al hacer clic con el botón izquierdo (o "
+"pulsar Intro) se cambia al espacio de trabajo que tienes delante; al hacer "
+"clic con el botón derecho (o pulsar Esc) se vuelve atrás.\n"
+"\n"
+"<b>Girar a la izquierda/derecha:</b> cambia al espacio de trabajo de la "
+"izquierda/derecha, igual que con Ctrl+Alt+Flecha izquierda/derecha. Haz clic "
+"con el botón izquierdo en la esquina para continuar.\n"
+"\n"
+"Son las mismas esquinas que en <i>Configuración del sistema → Esquinas "
+"activas</i>, donde aparecen como comandos denominados 'cube-free-rotate', "
+"'cube-rotate-left' y 'cube-rotate-right'. Si esta extensión está "
+"desactivada, esas esquinas no realizan ninguna acción."
+
+#. 6.0->settings-schema.json->open-workspace-settings->description
+msgid "Cinnamon workspace settings"
+msgstr "Configuración del entorno de trabajo Cinnamon"
+
+#. 6.0->settings-schema.json->open-workspace-settings->tooltip
+msgid ""
+"Opens <i>System Settings → Workspaces</i>, where you can turn on \"Allow "
+"cycling through workspaces\" (linked to the gap option above) and change the "
+"workspace OSD."
+msgstr ""
+"Abre <i>Configuración del sistema → Espacios de trabajo</i>, donde puedes "
+"activar la opción 'Permitir alternar entre espacios de trabajo' (vinculada a "
+"la opción 'gap' mencionada anteriormente) y modificar la OSD del espacio de "
+"trabajo."
+
+#. 6.0->settings-schema.json->open-hot-corner-settings->description
+msgid "Cinnamon hot corner settings"
+msgstr "Configuración de las esquinas activas en Cinnamon"
+
+#. 6.0->settings-schema.json->open-hot-corner-settings->tooltip
+msgid ""
+"Opens <i>System Settings → Hot Corners</i>, where you can set the hover "
+"delay of each corner and whether it works over fullscreen windows."
+msgstr ""
+"Abre <i>Configuración del sistema → Esquinas activas</i>, donde puedes "
+"ajustar el retardo al pasar el cursor por cada esquina y determinar si la "
+"función opera sobre ventanas en pantalla completa."
+
+#. 6.0->settings-schema.json->about-text->description
+msgid ""
+"\n"
+"<b>Your workspaces, on a cube</b>\n"
+"Version: ext-version\n"
+"\n"
+"Developed by: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/Desktop-Cube-Reloaded\">Github</a> / "
+"<a href=\"https://github.com/klangman/Desktop-Cube-Reloaded/issues/"
+"new\">Report an issue</a>\n"
+"\n"
+"A port of the GNOME Shell extension <a href=\"https://github.com/Schneegans/"
+"Desktop-Cube\">Desktop Cube</a>\n"
+"by Simon Schneegans (<a href=\"https://ko-fi.com/schneegans\">Ko-fi</a> / <a "
+"href=\"https://github.com/sponsors/Schneegans\">GitHub Sponsors</a>)\n"
+"\n"
+"The icon is a slightly modified version of Simon Schneegans' Desktop Cube "
+"icon, licensed under <a href=\"https://creativecommons.org/licenses/by/"
+"4.0/\">CC BY 4.0</a>"
+msgstr ""
+"\n"
+"<b>Tus espacios de trabajo, en un cubo</b>\n"
+"Versión: ext-version\n"
+"\n"
+"Desarrollado por: Kevin Langman\n"
+"<a href=\"https://github.com/klangman/Desktop-Cube-Reloaded\">Github</a> / "
+"<a href=\"https://github.com/klangman/Desktop-Cube-Reloaded/issues/"
+"new\">Informar de un problema</a>\n"
+"\n"
+"Una adaptación de la extensión de GNOME Shell <a href=\"https://github.com/"
+"Schneegans/Desktop-Cube\">Desktop Cube</a>\n"
+"por Simon Schneegans (<a href=\"https://ko-fi.com/schneegans\">Ko-fi</a> / "
+"<a href=\"https://github.com/sponsors/Schneegans\">Patrocinadores de GitHub</"
+"a>)\n"
+"\n"
+"El icono es una versión ligeramente modificada del icono de Desktop Cube de "
+"Simon Schneegans, con licencia <a href=\"https://creativecommons.org/"
+"licenses/by/4.0/\">CC BY 4.0</a>"

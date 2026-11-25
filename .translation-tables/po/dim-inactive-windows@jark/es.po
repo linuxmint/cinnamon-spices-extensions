@@ -1,0 +1,85 @@
+# Dim Inactive Windows - translation template.
+# Copyright (C) 2026
+# This file is distributed under the same license as the extension.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dim-inactive-windows@jark 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-04 00:00+0000\n"
+"PO-Revision-Date: 2026-07-05 10:39-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#. metadata.json->name
+msgid "Dim Inactive Windows"
+msgstr "Atenuar las ventanas inactivas"
+
+#. metadata.json->description
+msgid ""
+"Dims and desaturates inactive windows (per window, not per app) so the "
+"focused window is unmistakable."
+msgstr ""
+"Aténua y desatura las ventanas inactivas (por ventana, no por aplicación) "
+"para que la ventana activa se distinga claramente."
+
+#. settings-schema.json->head-effect->description
+msgid "Effect for inactive windows"
+msgstr "Efecto en las ventanas inactivas"
+
+#. settings-schema.json->mode->description
+msgid "What happens to inactive windows"
+msgstr "Qué ocurre con las ventanas inactivas"
+
+#. settings-schema.json->mode->options
+msgid "Dim and desaturate"
+msgstr "Atenuar y desaturar"
+
+#. settings-schema.json->mode->options
+msgid "Dim only"
+msgstr "Solo atenuar"
+
+#. settings-schema.json->mode->options
+msgid "Desaturate only"
+msgstr "Solo desaturar"
+
+#. settings-schema.json->dim-amount->description
+msgid "Dim strength (0 = none, 0.8 = very dark)"
+msgstr "Intensidad de la luz (0 = ninguna, 0,8 = muy oscura)"
+
+#. settings-schema.json->desaturate-amount->description
+msgid "Desaturation strength (0 = full color, 1 = grayscale)"
+msgstr "Intensidad de desaturación (0 = a todo color, 1 = escala de grises)"
+
+#. settings-schema.json->animation-time->description
+msgid "Fade duration on focus change (0 = instant)"
+msgstr "Duración del fundido al cambiar el foco (0 = instantáneo)"
+
+#. settings-schema.json->head-behavior->description
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#. settings-schema.json->respect-transient->description
+msgid ""
+"Keep a window bright while a MODAL dialog of it holds focus. Off = strict "
+"per-window (recommended; treats e.g. a PhpStorm floating window as its own "
+"window)"
+msgstr ""
+"Mantener una ventana iluminada mientras un cuadro de diálogo MODAL de "
+"dicha ventana tiene el foco. Desactivado = aplicación estricta por ventana "
+"(recomendado; trata, por ejemplo, una ventana flotante de PhpStorm como "
+"una ventana independiente)"
+
+#. settings-schema.json->dim-when-no-focus->description
+msgid ""
+"Also dim every window when nothing is focused (e.g. after clicking the "
+"desktop)"
+msgstr ""
+"Además, atenúa todas las ventanas cuando no haya ninguna seleccionada (por "
+"ejemplo, tras hacer clic en el escritorio)."
