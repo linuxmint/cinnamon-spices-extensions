@@ -1,0 +1,14 @@
+{
+  "uuid": "window-spread@soren-kragh",
+  "name": "Window Spread",
+  "description": "Arranges \"Show all windows\" and the windows in \"Show all workspaces\" by where windows really are and how big they are, never by stacking order or focus history.",
+  "cinnamon-version": [
+    "6.0",
+    "6.2",
+    "6.4",
+    "6.6",
+    "6.8"
+  ],
+  "version": "1.0",
+  "url": "https://github.com/soren-kragh/window-spread"
+}
