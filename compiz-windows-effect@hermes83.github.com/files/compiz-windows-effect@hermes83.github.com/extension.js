@@ -25,6 +25,7 @@
 const Lang = imports.lang;
 const Meta = imports.gi.Meta;
 const Clutter = imports.gi.Clutter;
+const GObject = imports.gi.GObject;
 const Settings = imports.ui.settings;
 const Config = imports.misc.config;
 const SignalManager = imports.misc.signalManager;
@@ -509,7 +510,11 @@ const WobblyEffect = new Lang.Class({
                 this.ended = true;
             } else {
                 this.wobblyModel.grab(this.mouseX - this.newX, this.mouseY - this.newY);
-                this.moveEvent = actor.connect('allocation-changed', Lang.bind(this, this.on_move_event));
+                // Cinnamon 6.8 removed Clutter's allocation-changed signal.
+                const moveSignal = GObject.signal_lookup('allocation-changed', actor.constructor.$gtype)
+                    ? 'allocation-changed'
+                    : 'notify::allocation';
+                this.moveEvent = actor.connect(moveSignal, Lang.bind(this, this.on_move_event));
                 this.resizedEvent = actor.connect('notify::size', Lang.bind(this, this.on_resized_event));
             }
 
@@ -567,7 +572,7 @@ const WobblyEffect = new Lang.Class({
         this.ended = true;
     },
 
-    on_move_event: function(actor, allocation, flags) {
+    on_move_event: function(actor) {
         [this.oldX, this.oldY, this.newX, this.newY] = [this.newX, this.newY, actor.get_x(), actor.get_y()];
         this.wobblyModel.move(this.newX - this.oldX, this.newY - this.oldY);
         this.deltaX -= this.newX - this.oldX;
