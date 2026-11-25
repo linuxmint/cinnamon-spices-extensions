@@ -509,7 +509,7 @@ const WobblyEffect = new Lang.Class({
                 this.ended = true;
             } else {
                 this.wobblyModel.grab(this.mouseX - this.newX, this.mouseY - this.newY);
-                this.moveEvent = actor.connect('allocation-changed', Lang.bind(this, this.on_move_event));
+                this.moveEvent = actor.connect('notify::allocation', Lang.bind(this, this.on_move_event));
                 this.resizedEvent = actor.connect('notify::size', Lang.bind(this, this.on_resized_event));
             }
 
