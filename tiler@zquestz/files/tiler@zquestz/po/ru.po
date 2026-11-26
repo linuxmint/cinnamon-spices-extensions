@@ -1,0 +1,448 @@
+# TILER
+# This file is put in the public domain.
+# zquestz, 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tiler@zquestz 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-09-03 17:29-1000\n"
+"PO-Revision-Date: 2026-07-28 19:50-1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#. tiler.js:1200
+msgid "Main Left"
+msgstr "Главное слева"
+
+#. tiler.js:1202
+msgid ""
+"The focused window keeps the left half. The rest share the right, each "
+"newcomer halving the largest cell."
+msgstr ""
+"Активное окно занимает левую половину. Остальные делят правую, и каждое новое"
+" окно делит пополам самую большую ячейку."
+
+#. tiler.js:1207
+msgid "Main Right"
+msgstr "Главное справа"
+
+#. tiler.js:1209
+msgid ""
+"The focused window keeps the right half. The rest share the left, each "
+"newcomer halving the largest cell."
+msgstr ""
+"Активное окно занимает правую половину. Остальные делят левую, и каждое новое"
+" окно делит пополам самую большую ячейку."
+
+#. tiler.js:1214
+msgid "Equal Left"
+msgstr "Поровну слева"
+
+#. tiler.js:1216
+msgid ""
+"Every window shares the screen, led from the left, each newcomer halving the "
+"largest cell."
+msgstr ""
+"Все окна делят экран, начиная слева, и каждое новое окно делит пополам самую "
+"большую ячейку."
+
+#. tiler.js:1221
+msgid "Equal Right"
+msgstr "Поровну справа"
+
+#. tiler.js:1223
+msgid ""
+"Every window shares the screen, led from the right, each newcomer halving the"
+" largest cell."
+msgstr ""
+"Все окна делят экран, начиная справа, и каждое новое окно делит пополам самую"
+" большую ячейку."
+
+#. keybindings.py:26
+msgid "Arrows"
+msgstr "Стрелки"
+
+#. keybindings.py:26
+msgid "Move the selection"
+msgstr "Переместить выделение"
+
+#. keybindings.py:27
+msgid "Shift+Arrow"
+msgstr "Shift+Стрелка"
+
+#. keybindings.py:27
+msgid "Grow the selection"
+msgstr "Расширить выделение"
+
+#. keybindings.py:28
+msgid "1-4"
+msgstr "1-4"
+
+#. keybindings.py:28
+msgid "Switch between grids"
+msgstr "Переключить сетку"
+
+#. keybindings.py:29
+msgid "L / R"
+msgstr "L / R"
+
+#. keybindings.py:29
+msgid "Main Left, Main Right"
+msgstr "Главное слева, Главное справа"
+
+#. keybindings.py:30
+msgid "Shift+L / R"
+msgstr "Shift+L / R"
+
+#. keybindings.py:30
+msgid "Equal Left, Equal Right"
+msgstr "Поровну слева, Поровну справа"
+
+#. keybindings.py:31
+msgid "Enter/Space"
+msgstr "Enter/Пробел"
+
+#. keybindings.py:31
+msgid "Confirm selection"
+msgstr "Подтвердить выделение"
+
+#. keybindings.py:32
+msgid "Escape"
+msgstr "Esc"
+
+#. keybindings.py:32
+msgid "Cancel"
+msgstr "Отмена"
+
+#. metadata.json->name
+msgid "Tiler"
+msgstr "Tiler"
+
+#. metadata.json->description
+msgid ""
+"Grid-based window tiling with gaps, reserved screen space, and one-press "
+"auto-tiling. Super+Arrow tiling follows the same spacing. Inspired by gTile."
+msgstr ""
+"Плиточное размещение окон по сетке с отступами, зарезервированным местом на "
+"экране и авторазмещением одним нажатием. Размещение по Super+стрелка "
+"использует те же промежутки. Вдохновлено gTile."
+
+#. settings-schema.json->general-page->title
+msgid "General"
+msgstr "Общие"
+
+#. settings-schema.json->spacing-page->title
+msgid "Spacing"
+msgstr "Отступы"
+
+#. settings-schema.json->hotkeys-section->title
+msgid "Hotkeys"
+msgstr "Горячие клавиши"
+
+#. settings-schema.json->tiling-section->title
+msgid "Tiling options"
+msgstr "Параметры размещения"
+
+#. settings-schema.json->gaps-section->title
+msgid "Gaps"
+msgstr "Промежутки"
+
+#. settings-schema.json->reserved-section->title
+msgid "Reserved space"
+msgstr "Зарезервированное место"
+
+#. settings-schema.json->grids-page->title
+msgid "Grids"
+msgstr "Сетки"
+
+#. settings-schema.json->grid-1-section->title
+msgid "Grid 1"
+msgstr "Сетка 1"
+
+#. settings-schema.json->grid-2-section->title
+msgid "Grid 2"
+msgstr "Сетка 2"
+
+#. settings-schema.json->grid-3-section->title
+msgid "Grid 3"
+msgstr "Сетка 3"
+
+#. settings-schema.json->grid-4-section->title
+msgid "Grid 4"
+msgstr "Сетка 4"
+
+#. settings-schema.json->keybindings-section->title
+msgid "Keybindings"
+msgstr "Клавиши"
+
+#. settings-schema.json->hotkey->description
+msgid "Tile the focused window"
+msgstr "Разместить активное окно"
+
+#. settings-schema.json->hotkey->tooltip
+msgid "Keyboard shortcut that opens Tiler for the focused window."
+msgstr "Сочетание клавиш, открывающее Tiler для активного окна."
+
+#. settings-schema.json->use-push-tile->description
+msgid "Use Cinnamon's tiling shortcuts"
+msgstr "Использовать сочетания клавиш размещения Cinnamon"
+
+#. settings-schema.json->use-push-tile->tooltip
+msgid ""
+"Super with an arrow key tiles the focused window as it always has, but with "
+"Tiler's gaps and reserved space. Turn this off to leave those shortcuts to "
+"Cinnamon."
+msgstr ""
+"Super со стрелкой размещает активное окно как и прежде, но с промежутками и "
+"зарезервированным местом Tiler. Отключите это, чтобы оставить эти сочетания "
+"клавиш Cinnamon."
+
+#. settings-schema.json->center-on-window->description
+msgid "Center the grid on the focused window"
+msgstr "Центрировать сетку по активному окну"
+
+#. settings-schema.json->center-on-window->tooltip
+msgid ""
+"The grid normally appears in the middle of the screen. Turn this on to have "
+"it appear over the window being tiled instead."
+msgstr ""
+"Обычно сетка появляется в центре экрана. Включите, чтобы она появлялась над "
+"размещаемым окном."
+
+#. settings-schema.json->tile-dialogs->description
+msgid "Tile dialog windows"
+msgstr "Размещать диалоговые окна"
+
+#. settings-schema.json->tile-dialogs->tooltip
+msgid ""
+"Ordinary windows are always tiled. This adds dialogs such as preferences and "
+"file choosers; dialogs that cannot be resized are skipped."
+msgstr ""
+"Обычные окна размещаются всегда. Это добавляет диалоги, такие как настройки и"
+" выбор файлов; диалоги фиксированного размера пропускаются."
+
+#. settings-schema.json->tile-toolboxes->description
+msgid "Tile toolboxes and palettes"
+msgstr "Размещать панели инструментов и палитры"
+
+#. settings-schema.json->tile-toolboxes->tooltip
+msgid "Floating tool windows, like the ones used by image editors."
+msgstr "Плавающие окна инструментов, как в графических редакторах."
+
+#. settings-schema.json->show-autotile->description
+msgid "Show auto-tile actions on the grid"
+msgstr "Показывать действия авторазмещения на сетке"
+
+#. settings-schema.json->show-autotile->tooltip
+msgid ""
+"Adds a row of arrangements to the grid that tile every window on the "
+"workspace at once: a main window beside the rest, or everything shared out "
+"equally, each newcomer halving the largest cell."
+msgstr ""
+"Добавляет на сетку ряд расположений, размещающих все окна рабочей области "
+"сразу: главное окно рядом с остальными или всё поровну, и каждое новое окно "
+"делит пополам самую большую ячейку."
+
+#. settings-schema.json->overflow-windows->description
+msgid "Windows that do not fit"
+msgstr "Окна, которые не помещаются"
+
+#. settings-schema.json->overflow-windows->tooltip
+msgid ""
+"When an auto-tile arrangement has no room for a window, this says what "
+"becomes of it: left where it was, taken out of the way, or gathered around "
+"the middle of the screen."
+msgstr ""
+"Когда в расположении нет места для окна, это определяет, что с ним "
+"произойдёт: оставить на месте, убрать с дороги или собрать по центру экрана."
+
+#. settings-schema.json->overflow-windows->options
+msgid "Ignore"
+msgstr "Игнорировать"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Minimize"
+msgstr "Свернуть"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Center"
+msgstr "По центру"
+
+#. settings-schema.json->overflow-windows->options
+msgid "Cascade"
+msgstr "Каскадом"
+
+#. settings-schema.json->window-gap->units
+#. settings-schema.json->edge-gap->units
+#. settings-schema.json->reserved-top->units
+#. settings-schema.json->reserved-bottom->units
+#. settings-schema.json->reserved-left->units
+#. settings-schema.json->reserved-right->units
+msgid "pixels"
+msgstr "пикселей"
+
+#. settings-schema.json->window-gap->description
+msgid "Gap between windows"
+msgstr "Промежуток между окнами"
+
+#. settings-schema.json->window-gap->tooltip
+msgid "Space left between two windows tiled next to each other."
+msgstr "Расстояние между двумя окнами, размещёнными рядом."
+
+#. settings-schema.json->edge-gap->description
+msgid "Gap at screen edges"
+msgstr "Промежуток у краёв экрана"
+
+#. settings-schema.json->edge-gap->tooltip
+msgid ""
+"Space left between a tiled window and the edge of the usable screen area."
+msgstr "Расстояние между размещённым окном и краем полезной области экрана."
+
+#. settings-schema.json->reserved-scope->description
+msgid "Reserve space on"
+msgstr "Резервировать место на"
+
+#. settings-schema.json->reserved-scope->tooltip
+msgid ""
+"Choose whether reserved space applies to every monitor or only the primary "
+"monitor."
+msgstr ""
+"Выберите, действует ли зарезервированное место на всех мониторах или только "
+"на основном."
+
+#. settings-schema.json->reserved-scope->options
+msgid "All monitors"
+msgstr "Все мониторы"
+
+#. settings-schema.json->reserved-scope->options
+msgid "Primary monitor only"
+msgstr "Только основной монитор"
+
+#. settings-schema.json->reserved-top->description
+msgid "Reserved space at the top"
+msgstr "Зарезервированное место сверху"
+
+#. settings-schema.json->reserved-top->tooltip
+#. settings-schema.json->reserved-bottom->tooltip
+#. settings-schema.json->reserved-left->tooltip
+#. settings-schema.json->reserved-right->tooltip
+msgid ""
+"Windows are never tiled into this area. Useful for Conky or docks that do not"
+" reserve space themselves."
+msgstr ""
+"Окна никогда не размещаются в этой области. Полезно для Conky или док-"
+"панелей, которые сами не резервируют место."
+
+#. settings-schema.json->reserved-bottom->description
+msgid "Reserved space at the bottom"
+msgstr "Зарезервированное место снизу"
+
+#. settings-schema.json->reserved-left->description
+msgid "Reserved space on the left"
+msgstr "Зарезервированное место слева"
+
+#. settings-schema.json->reserved-right->description
+msgid "Reserved space on the right"
+msgstr "Зарезервированное место справа"
+
+#. settings-schema.json->grid-1-cols->units
+#. settings-schema.json->grid-2-cols->units
+#. settings-schema.json->grid-3-cols->units
+#. settings-schema.json->grid-4-cols->units
+msgid "columns"
+msgstr "столбцов"
+
+#. settings-schema.json->grid-1-cols->description
+#. settings-schema.json->grid-2-cols->description
+#. settings-schema.json->grid-3-cols->description
+#. settings-schema.json->grid-4-cols->description
+msgid "Columns"
+msgstr "Столбцы"
+
+#. settings-schema.json->grid-1-cols->tooltip
+#. settings-schema.json->grid-2-cols->tooltip
+#. settings-schema.json->grid-3-cols->tooltip
+#. settings-schema.json->grid-4-cols->tooltip
+msgid "How many columns this grid is divided into."
+msgstr "На сколько столбцов делится эта сетка."
+
+#. settings-schema.json->grid-1-rows->units
+#. settings-schema.json->grid-2-rows->units
+#. settings-schema.json->grid-3-rows->units
+#. settings-schema.json->grid-4-rows->units
+msgid "rows"
+msgstr "строк"
+
+#. settings-schema.json->grid-1-rows->description
+#. settings-schema.json->grid-2-rows->description
+#. settings-schema.json->grid-3-rows->description
+#. settings-schema.json->grid-4-rows->description
+msgid "Rows"
+msgstr "Строки"
+
+#. settings-schema.json->grid-1-rows->tooltip
+#. settings-schema.json->grid-2-rows->tooltip
+#. settings-schema.json->grid-3-rows->tooltip
+#. settings-schema.json->grid-4-rows->tooltip
+msgid "How many rows this grid is divided into."
+msgstr "На сколько строк делится эта сетка."
+
+#. settings-schema.json->grid-1-layout->description
+#. settings-schema.json->grid-2-layout->description
+#. settings-schema.json->grid-3-layout->description
+#. settings-schema.json->grid-4-layout->description
+msgid "Layout"
+msgstr "Компоновка"
+
+#. settings-schema.json->grid-1-layout->tooltip
+#. settings-schema.json->grid-2-layout->tooltip
+#. settings-schema.json->grid-3-layout->tooltip
+#. settings-schema.json->grid-4-layout->tooltip
+msgid ""
+"Columns, then rows. Sizes can be given one by one to make some tracks larger "
+"than others, so 1,2,1 x 1,1 is three columns whose middle one is twice the "
+"width of its neighbors. Changing the numbers above rewrites this, and "
+"anything that cannot be read falls back to them."
+msgstr ""
+"Столбцы, затем строки. Размеры можно задавать по одному, чтобы одни дорожки "
+"были больше других: 1,2,1 x 1,1 задаёт три столбца, средний из которых вдвое "
+"шире соседних. Изменение чисел выше перезаписывает это поле, а всё нечитаемое"
+" возвращается к ним."
+
+#. settings-schema.json->grid-1-name->description
+#. settings-schema.json->grid-2-name->description
+#. settings-schema.json->grid-3-name->description
+#. settings-schema.json->grid-4-name->description
+msgid "Name"
+msgstr "Название"
+
+#. settings-schema.json->grid-1-name->tooltip
+#. settings-schema.json->grid-2-name->tooltip
+#. settings-schema.json->grid-3-name->tooltip
+#. settings-schema.json->grid-4-name->tooltip
+msgid ""
+"What this grid is called on the grid selector. Long names are shortened to "
+"fit. Left empty, it is named after its size."
+msgstr ""
+"Название этой сетки в переключателе сеток. Длинные названия сокращаются. Если"
+" оставить пустым, сетка получает имя по своему размеру."
+
+#. settings-schema.json->grid-1-tooltip->description
+#. settings-schema.json->grid-2-tooltip->description
+#. settings-schema.json->grid-3-tooltip->description
+#. settings-schema.json->grid-4-tooltip->description
+msgid "Description"
+msgstr "Описание"
+
+#. settings-schema.json->grid-1-tooltip->tooltip
+#. settings-schema.json->grid-2-tooltip->tooltip
+#. settings-schema.json->grid-3-tooltip->tooltip
+#. settings-schema.json->grid-4-tooltip->tooltip
+msgid "Shown when hovering this grid on the selector."
+msgstr "Показывается при наведении на эту сетку в переключателе."
