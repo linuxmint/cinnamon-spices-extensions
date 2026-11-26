@@ -1,0 +1,479 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "啟用 Window Memory"
+
+msgid "Remember window size"
+msgstr "記住視窗大小"
+
+msgid "Remember window position"
+msgstr "記住視窗位置"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "同一螢幕已連接時，還原到該螢幕"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "關閉時，位置會相對於視窗開啟時所在的螢幕保留。"
+
+msgid "Remember workspace"
+msgstr "記住工作區"
+
+msgid "Remember maximized state"
+msgstr "記住最大化狀態"
+
+msgid "Remember minimized state"
+msgstr "記住最小化狀態"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "儲存時處於最小化狀態的視窗會以最小化狀態重新開啟。"
+
+msgid "Match windows by"
+msgstr "視窗比對方式"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "選擇當一個應用程式有多個已記住的視窗時，每個視窗使用哪個已儲存的位置。\n\n僅應用程式：視窗會使用其應用程式最新的、沒有被其他已開啟視窗佔用的已儲存位置。這是最簡單的選擇，適合大多數程式。\n\n應用程式與視窗標題：Window Memory 會先尋找視窗標題相同的已儲存位置（不分大小寫），這樣總是以相同標題開啟的視窗（例如同一份文件或網站）就會回到各自的位置。如果沒有標題相符，則與「僅應用程式」的行為相同。\n\n如果開啟了「記住最小化狀態」，則優先使用視窗未最小化的已儲存位置，這樣當一個應用程式有一個最小化視窗和一個正常視窗時，至少有一個會以可見狀態開啟。標題相符的位置仍然優先。"
+
+msgid "Application only"
+msgstr "僅應用程式"
+
+msgid "Application and window title"
+msgstr "應用程式與視窗標題"
+
+msgid "Also remember dialog windows"
+msgstr "同時記住對話視窗"
+
+msgid "Never remember these applications"
+msgstr "永不記住這些應用程式"
+
+msgid "Never remember these applications (WM class)"
+msgstr "永不記住這些應用程式（WM 類別）"
+
+msgid "Maximum remembered windows"
+msgstr "已記住的視窗數上限"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "最久沒有出現的視窗會最先被捨棄。"
+
+msgid "windows"
+msgstr "個視窗"
+
+msgid "Forget the focused window"
+msgstr "忘記使用中的視窗"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "忘記所有已記住的視窗（無法復原，按 Esc 取消）"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "備份或還原設定與已記住的視窗"
+
+msgid "Export backup…"
+msgstr "匯出備份…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "將所有設定、「永不記住」清單與已記住的視窗儲存到檔案。"
+
+msgid "Import backup…"
+msgstr "匯入備份…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "以備份檔案中的內容取代所有設定與已記住的視窗。會先詢問確認。"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "自動記住每個視窗的大小、位置、螢幕、工作區、最大化狀態與最小化狀態，並在應用程式再次開啟時還原。"
+
+msgid "Forgot the remembered window of %s."
+msgstr "已忘記 %s 的已記住視窗。"
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s 未被記住，因此沒有忘記任何內容。"
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "無法忘記已記住的視窗。請查看記錄檔。"
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "使用中的視窗未被記住，因此沒有忘記任何內容。"
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory 基於安全考量已自行停止：此版本的 Cinnamon 缺少它所需的功能。"
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory 基於安全考量已自行停止：錯誤過多。"
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory 基於安全考量已自行停止：Cinnamon 反覆重新啟動。"
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory 基於安全考量已自行停止：無法啟動。"
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "問題解決後，若要恢復運作，請刪除 ~/.config/window-memory/safety.json。如果再次發生這種情況，請回報問題。"
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "若要恢復運作，請在其設定中先關閉再重新開啟「啟用 Window Memory」。如果再次發生這種情況，請回報問題。"
+
+msgid "Forgot all remembered windows."
+msgstr "已忘記所有已記住的視窗。"
+
+msgid "Forget all remembered windows?"
+msgstr "要忘記所有已記住的視窗嗎？"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "沒有已記住的視窗，因此沒有需要忘記的內容。"
+
+msgid "The remembered windows were not forgotten."
+msgstr "已記住的視窗未被忘記。"
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "無法確定已記住的視窗是否已被忘記。"
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory 未在時限內回應。"
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "已忘記所有已記住的視窗，但無法儲存此變更。"
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "下次 Window Memory 啟動時，已記住的視窗可能會再次出現。"
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory 未在執行。請在「系統設定」中啟用，然後再試一次。"
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "已忘記 %(count)d 個已記住的視窗。"
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory 未在時限內確認還原。"
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "已記住的視窗可能已被取代，也可能沒有，其他設定則維持原樣。再次匯入同一份備份是安全的。"
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "檔案大於 20 MB，對 Window Memory 備份來說太大。"
+
+msgid "Could not save the backup."
+msgstr "無法儲存備份。"
+
+msgid "Could not restore the backup."
+msgstr "無法還原備份。"
+
+msgid "Nothing was changed."
+msgstr "未變更任何內容。"
+
+msgid "The settings were not changed."
+msgstr "設定未變更。"
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "已記住的視窗與其他設定均未變更。"
+
+msgid "Importing the same backup again is safe."
+msgstr "再次匯入同一份備份是安全的。"
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "無法讀取設定綱要：%(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "無法讀取設定綱要：它不是 JSON 物件。"
+
+msgid "the state file is not valid JSON"
+msgstr "狀態檔案不是有效的 JSON"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "狀態檔案不是版本 %(version)d 的狀態"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "無法讀取該檔案：%(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "該檔案不是一般檔案。"
+
+msgid "The file is not UTF-8 text."
+msgstr "該檔案不是 UTF-8 文字。"
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "該檔案不是有效的 JSON：%(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "備份中的設定「%(key)s」不是 true 或 false。"
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "備份中的設定「%(key)s」不是整數。"
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "備份中的設定「%(key)s」超出 %(min)s 到 %(max)s 的範圍。"
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "備份中的設定「%(key)s」不是其可用選項之一。"
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "備份中的設定「%(key)s」不是清單。"
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "備份中的設定「%(key)s」含有不是物件的項目。"
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "備份中的設定「%(key)s」含有缺少文字「%(column)s」的項目。"
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "備份中的設定「%(key)s」不是文字。"
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "該檔案不是 Window Memory 備份：其中不含 JSON 物件。"
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "該檔案不是 Window Memory 備份：其「format」不是「%(format)s」。"
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "此備份由較新版本的 Window Memory 建立（備份格式 %(found)d）。這個版本只能讀取格式 %(supported)d。"
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "備份的「version」不是 %(version)d。"
+
+msgid "The backup has no \"settings\" object."
+msgstr "備份中沒有「settings」物件。"
+
+msgid "The backup has no \"state\" object."
+msgstr "備份中沒有「state」物件。"
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "備份中「state」的「version」不是 %(version)d。"
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "備份中「state」的「windows」不是清單。"
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d 項設定"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d 個已記住的視窗"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "備份已儲存：%(settings)s，%(windows)s。"
+
+msgid "No windows are remembered yet."
+msgstr "尚未記住任何視窗。"
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "無法讀取已記住的視窗（%(problem)s），因此未儲存任何視窗。"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "要以 %(time)s 的這份備份取代設定與 %(count)d 個已記住的視窗嗎？"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "要以這份備份取代設定與 %(count)d 個已記住的視窗嗎？"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "目前的設定與已記住的視窗將會遺失。此動作無法復原。"
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "已還原 %(settings)s與 %(windows)s。"
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "備份中有 %(count)d 項設定不為此版本的 Window Memory 所識別，已略過。"
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "已還原 %(count)d 個已記住的視窗，但並非所有設定都已還原。"
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "無法套用設定「%(key)s」：%(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "其後的 %(count)d 項設定也未能套用。"
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "無法將已記住的視窗交給 Window Memory：%(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "設定檔案中沒有「%(key)s」的值。"
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "無法寫入 %(path)s：%(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "還原之前無法將設定「%(key)s」設為 %(value)d：%(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "為了還原，設定「%(key)s」已設為 %(new)d，但無法改回 %(old)d：%(reason)s"
+
+msgid "Export backup"
+msgstr "匯出備份"
+
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+msgid "_Save"
+msgstr "儲存(_S)"
+
+msgid "Import backup"
+msgstr "匯入備份"
+
+msgid "_Open"
+msgstr "開啟(_O)"
+
+msgid "JSON files"
+msgstr "JSON 檔案"
+
+msgid "All files"
+msgstr "所有檔案"
+
+msgid "_Replace"
+msgstr "取代(_R)"
+
+msgid "unknown"
+msgstr "未知"
+
+msgid "(uncommitted changes)"
+msgstr "（有未提交的變更）"
+
+msgid "Report an issue"
+msgstr "回報問題"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland（實驗性）"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "您正在使用 Cinnamon 的 Wayland 工作階段，該工作階段仍處於實驗階段。Window Memory 已在 Cinnamon 6.0.5 上對其進行過測試。如果某個視窗沒有如預期被記住，請使用「回報問題」。"
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "這些應用程式會在登入時啟動，Window Memory 會把它們的視窗放回原位，但在「永不記住這些應用程式」清單中已啟用的除外。此清單與「系統啟動應用程式」中的清單相同。"
+
+msgid "No applications start at login."
+msgstr "沒有在登入時啟動的應用程式。"
+
+msgid "Pick a window to start at login"
+msgstr "選取要在登入時啟動的視窗"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "在「系統啟動應用程式」中新增或修改…"
+
+msgid "(system entry)"
+msgstr "（系統項目）"
+
+msgid "delay %(seconds)d s"
+msgstr "延遲 %(seconds)d 秒"
+
+msgid "Undo"
+msgstr "取消動作"
+
+msgid "Added %(name)s"
+msgstr "已新增 %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s 已在清單中"
+
+msgid "%(name)s switched on"
+msgstr "已啟用 %(name)s"
+
+msgid "%(name)s brought back"
+msgstr "已還原 %(name)s"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s 在此期間已被更改，已維持原樣。"
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "無法讀取系統啟動應用程式：%(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "無法新增 %(name)s：%(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "無法變更 %(name)s：%(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "無法開始選取：%(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "無法開啟「系統啟動應用程式」：%(reason)s"
+
+msgid "Start at login"
+msgstr "登入時啟動"
+
+msgid "Name"
+msgstr "名稱"
+
+msgid "Command"
+msgstr "指令"
+
+msgid "Comment"
+msgstr "評論"
+
+msgid "Startup delay"
+msgstr "系統啟動延遲"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Add"
+msgstr "新增"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "此指令是根據視窗推測的。新增前請檢查。"
+
+msgid "The command cannot be empty."
+msgstr "指令不能為空。"
+
+msgid "The command is not valid: %(reason)s"
+msgstr "指令無效：%(reason)s"
+
+msgid "General"
+msgstr "一般"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "window-memory@bootkicker 的設定值"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "按一下視窗，永不記住其應用程式。按 Esc 鍵或按滑鼠右鍵取消。"
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "按一下視窗，登入時啟動其應用程式。按 Esc 鍵或按滑鼠右鍵取消。"
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "先按一下此處，然後按一下要加入「永不記住」清單的視窗。按 Escape 鍵或按滑鼠右鍵取消。"
+
+msgid "Enabled"
+msgstr "已啟用"
+
+msgid "Max windows"
+msgstr "最大視窗數"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "已記住視窗數的上限。最久未見的視窗會最先被捨棄。"
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "選取永不記住的視窗（按一下視窗，按 Esc 或按滑鼠右鍵取消）"
+
+msgid "Startup apps"
+msgstr "開機啟動應用"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "備份中的設定「%(key)s」有一個項目，其「%(column)s」不是 true 或 false。"
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "這些應用程式的視窗永遠不會被儲存或還原。請輸入 WM_CLASS：在終端機中執行 xprop WM_CLASS，然後按一下該視窗。比對時不分大小寫，且接受名稱的一部分。取消勾選的項目會保留在清單中但會被忽略：該應用程式的視窗將重新被記住。您也可以改用「選取視窗」按鈕來自動加入項目。"

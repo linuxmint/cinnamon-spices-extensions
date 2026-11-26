@@ -1,0 +1,495 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Включить Window Memory"
+
+msgid "Remember window size"
+msgstr "Запоминать размер окна"
+
+msgid "Remember window position"
+msgstr "Запоминать положение окна"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Восстанавливать на том же мониторе, если он подключён"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Если выключено, положение хранится относительно монитора, на котором открывается окно."
+
+msgid "Remember workspace"
+msgstr "Запоминать рабочую область"
+
+msgid "Remember maximized state"
+msgstr "Запоминать развёрнутое состояние"
+
+msgid "Remember minimized state"
+msgstr "Запоминать свёрнутое состояние"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Окно, которое было свёрнуто при сохранении, снова открывается свёрнутым."
+
+msgid "Match windows by"
+msgstr "Способ сопоставления окон"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Определяет, какое сохранённое место получит окно, если у приложения несколько запомненных окон.\n\nТолько приложение: окно получает самое новое сохранённое место своего приложения, которое не занято другим открытым окном. Это самый простой вариант, и он подходит для большинства программ.\n\nПриложение и заголовок окна: Window Memory сначала ищет сохранённое место, окно которого имело такой же заголовок (регистр букв не важен), поэтому окна, которые всегда открываются с одним и тем же заголовком, например один и тот же документ или сайт, возвращаются на своё место. Если ни один заголовок не совпал, работает так же, как «Только приложение».\n\nЕсли включено «Запоминать свёрнутое состояние», предпочтение отдаётся сохранённому месту, где окно не было свёрнуто, чтобы, когда у приложения было одно свёрнутое и одно обычное окно, хотя бы одно из них открывалось видимым. Совпавший заголовок по-прежнему важнее."
+
+msgid "Application only"
+msgstr "Только приложение"
+
+msgid "Application and window title"
+msgstr "Приложение и заголовок окна"
+
+msgid "Also remember dialog windows"
+msgstr "Запоминать также диалоговые окна"
+
+msgid "Never remember these applications"
+msgstr "Никогда не запоминать эти приложения"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Никогда не запоминать эти приложения (класс WM)"
+
+msgid "Maximum remembered windows"
+msgstr "Максимум запомненных окон"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Первыми удаляются окна, которые не появлялись дольше всего."
+
+msgid "windows"
+msgstr "окон"
+
+msgid "Forget the focused window"
+msgstr "Забыть активное окно"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Забыть все запомненные окна (нельзя отменить, Esc — отмена)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Резервное копирование и восстановление настроек и запомненных окон"
+
+msgid "Export backup…"
+msgstr "Экспорт резервной копии…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Сохранить в файл все настройки, список «никогда не запоминать» и запомненные окна."
+
+msgid "Import backup…"
+msgstr "Импорт резервной копии…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Заменить все настройки и запомненные окна содержимым файла резервной копии. Сначала запрашивает подтверждение."
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Автоматически запоминает размер, положение, монитор, рабочую область, а также развёрнутое и свёрнутое состояние каждого окна и восстанавливает их при повторном открытии приложения."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Запомненное окно приложения %s забыто."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "Окно %s не запомнено, поэтому забывать нечего."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Не удалось забыть запомненное окно. См. журнал."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Активное окно не запомнено, поэтому забывать нечего."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory остановился сам из соображений безопасности: в этой версии Cinnamon отсутствует нужная ему функция."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory остановился сам из соображений безопасности: слишком много ошибок."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory остановился сам из соображений безопасности: Cinnamon несколько раз подряд перезапускался."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory остановился сам из соображений безопасности: его не удалось запустить."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Чтобы возобновить работу после устранения проблемы, удалите ~/.config/window-memory/safety.json. Если это повторится, сообщите о проблеме."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Чтобы возобновить работу, выключите и снова включите «Включить Window Memory» в его настройках. Если это повторится, сообщите о проблеме."
+
+msgid "Forgot all remembered windows."
+msgstr "Все запомненные окна забыты."
+
+msgid "Forget all remembered windows?"
+msgstr "Забыть все запомненные окна?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Запомненных окон не было, поэтому забывать нечего."
+
+msgid "The remembered windows were not forgotten."
+msgstr "Запомненные окна не были забыты."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Неизвестно, были ли забыты запомненные окна."
+
+msgid "Window Memory did not answer in time."
+msgstr "Расширение Window Memory не ответило вовремя."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Все запомненные окна забыты, но изменение не удалось сохранить."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Запомненные окна могут вернуться при следующем запуске Window Memory."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Расширение Window Memory не запущено. Включите его в «Параметрах системы» и повторите попытку."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "Забыто %(count)d запомненное окно."
+msgstr[1] "Забыто %(count)d запомненных окна."
+msgstr[2] "Забыто %(count)d запомненных окон."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Расширение Window Memory не подтвердило восстановление вовремя."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Запомненные окна могли быть заменены, а могли и нет; остальные настройки остались без изменений. Повторный импорт той же резервной копии безопасен."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Файл больше 20 МБ — слишком велик для резервной копии Window Memory."
+
+msgid "Could not save the backup."
+msgstr "Не удалось сохранить резервную копию."
+
+msgid "Could not restore the backup."
+msgstr "Не удалось восстановить резервную копию."
+
+msgid "Nothing was changed."
+msgstr "Ничего не изменено."
+
+msgid "The settings were not changed."
+msgstr "Настройки не изменены."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "Запомненные окна и остальные настройки не изменены."
+
+msgid "Importing the same backup again is safe."
+msgstr "Повторный импорт той же резервной копии безопасен."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Не удаётся прочитать схему настроек: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Не удаётся прочитать схему настроек: это не объект JSON."
+
+msgid "the state file is not valid JSON"
+msgstr "файл состояния не является корректным JSON"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "файл состояния не является состоянием версии %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Не удаётся прочитать файл: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Файл не является обычным файлом."
+
+msgid "The file is not UTF-8 text."
+msgstr "Файл не является текстом UTF-8."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Файл не является корректным JSON: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Настройка «%(key)s» в резервной копии не равна true или false."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Настройка «%(key)s» в резервной копии не является целым числом."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Настройка «%(key)s» в резервной копии выходит за пределы диапазона от %(min)s до %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Настройка «%(key)s» в резервной копии не является одним из допустимых вариантов."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Настройка «%(key)s» в резервной копии не является списком."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "В настройке «%(key)s» в резервной копии есть запись, которая не является объектом."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "В настройке «%(key)s» в резервной копии есть запись без текстового поля «%(column)s»."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Настройка «%(key)s» в резервной копии не является текстом."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Файл не является резервной копией Window Memory: в нём нет объекта JSON."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Файл не является резервной копией Window Memory: значение «format» в нём не равно «%(format)s»."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Резервная копия создана более новой версией Window Memory (формат копии %(found)d). Эта версия читает только формат %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "Значение «version» в резервной копии не равно %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "В резервной копии нет объекта «settings»."
+
+msgid "The backup has no \"state\" object."
+msgstr "В резервной копии нет объекта «state»."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "Значение «version» в «state» резервной копии не равно %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "Значение «windows» в «state» резервной копии не является списком."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d настройка"
+msgstr[1] "%(count)d настройки"
+msgstr[2] "%(count)d настроек"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d запомненное окно"
+msgstr[1] "%(count)d запомненных окна"
+msgstr[2] "%(count)d запомненных окон"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Резервная копия сохранена: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Запомненных окон пока нет."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "Не удалось прочитать запомненные окна (%(problem)s), поэтому ни одно не сохранено."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Заменить настройки и %(count)d запомненное окно содержимым этой резервной копии от %(time)s?"
+msgstr[1] "Заменить настройки и %(count)d запомненных окна содержимым этой резервной копии от %(time)s?"
+msgstr[2] "Заменить настройки и %(count)d запомненных окон содержимым этой резервной копии от %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Заменить настройки и %(count)d запомненное окно содержимым этой резервной копии?"
+msgstr[1] "Заменить настройки и %(count)d запомненных окна содержимым этой резервной копии?"
+msgstr[2] "Заменить настройки и %(count)d запомненных окон содержимым этой резервной копии?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Текущие настройки и запомненные окна будут потеряны. Это нельзя отменить."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Восстановлено: %(settings)s и %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d настройка из резервной копии неизвестна этой версии Window Memory и пропущена."
+msgstr[1] "%(count)d настройки из резервной копии неизвестны этой версии Window Memory и пропущены."
+msgstr[2] "%(count)d настроек из резервной копии неизвестны этой версии Window Memory и пропущены."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Восстановлено %(count)d запомненное окно, но не все настройки."
+msgstr[1] "Восстановлено %(count)d запомненных окна, но не все настройки."
+msgstr[2] "Восстановлено %(count)d запомненных окон, но не все настройки."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Не удалось задать настройку «%(key)s»: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "%(count)d настройка после неё тоже не задана."
+msgstr[1] "%(count)d настройки после неё тоже не заданы."
+msgstr[2] "%(count)d настроек после неё тоже не заданы."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "Не удалось передать запомненные окна в Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "В файле настроек нет значения для «%(key)s»."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Не удаётся записать %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Не удалось задать настройке «%(key)s» значение %(value)d перед восстановлением: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Настройке «%(key)s» для восстановления задано значение %(new)d, и вернуть значение %(old)d не удалось: %(reason)s"
+
+msgid "Export backup"
+msgstr "Экспорт резервной копии"
+
+msgid "_Cancel"
+msgstr "_Отмена"
+
+msgid "_Save"
+msgstr "_Сохранить"
+
+msgid "Import backup"
+msgstr "Импорт резервной копии"
+
+msgid "_Open"
+msgstr "_Открыть"
+
+msgid "JSON files"
+msgstr "Файлы JSON"
+
+msgid "All files"
+msgstr "Все файлы"
+
+msgid "_Replace"
+msgstr "_Заменить"
+
+msgid "unknown"
+msgstr "неизвестно"
+
+msgid "(uncommitted changes)"
+msgstr "(незафиксированные изменения)"
+
+msgid "Report an issue"
+msgstr "Сообщить о проблеме"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (экспериментально)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Вы используете сеанс Wayland в Cinnamon, который пока остаётся экспериментальным. Работа Window Memory в этом сеансе проверялась на Cinnamon 6.0.5. Если окно запоминается не так, как ожидается, воспользуйтесь ссылкой «Сообщить о проблеме»."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Эти приложения запускаются при входе в систему, а Window Memory возвращает их окна на место, если только они не включены в списке «Никогда не запоминать эти приложения». Это тот же список, что и в разделе «Автозагрузка»."
+
+msgid "No applications start at login."
+msgstr "Нет приложений, запускаемых при входе."
+
+msgid "Pick a window to start at login"
+msgstr "Выбрать окно для запуска при входе"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Добавить или изменить в «Автозагрузке»…"
+
+msgid "(system entry)"
+msgstr "(системная запись)"
+
+msgid "delay %(seconds)d s"
+msgstr "задержка %(seconds)d с"
+
+msgid "Undo"
+msgstr "Вернуть"
+
+msgid "Added %(name)s"
+msgstr "Добавлено: %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s уже в списке"
+
+msgid "%(name)s switched on"
+msgstr "Включено: %(name)s"
+
+msgid "%(name)s brought back"
+msgstr "Возвращено: %(name)s"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "Запись %(name)s изменилась за это время и оставлена без изменений."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Не удалось прочитать список автозагрузки: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Не удалось добавить %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Не удалось изменить %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Не удалось начать выбор: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Не удалось открыть «Автозагрузку»: %(reason)s"
+
+msgid "Start at login"
+msgstr "Запуск при входе"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Command"
+msgstr "Команда"
+
+msgid "Comment"
+msgstr "Описание"
+
+msgid "Startup delay"
+msgstr "Задержка автозапуска"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Эта команда определена приблизительно по окну. Проверьте её перед добавлением."
+
+msgid "The command cannot be empty."
+msgstr "Команда не может быть пустой."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Недопустимая команда: %(reason)s"
+
+msgid "General"
+msgstr "Общие"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Параметры для window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Нажмите на окно, чтобы никогда не запоминать его приложение.  Esc или правый щелчок — отмена."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Нажмите на окно, чтобы запускать его приложение при входе.  Esc или правый щелчок — отмена."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Нажмите здесь, а затем нажмите на окно, которое нужно добавить в список «никогда не запоминать». Esc или правый щелчок отменяет выбор."
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Max windows"
+msgstr "Макс. окон"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Максимум запомненных окон. Окна, которые не появлялись дольше всех, удаляются первыми."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Выбрать окно, которое никогда не запоминать (нажмите на него, Esc или правый щелчок — отмена)"
+
+msgid "Startup apps"
+msgstr "Автозагрузка"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "В настройке «%(key)s» резервной копии есть запись, у которой «%(column)s» не равно ни true, ни false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Окна этих приложений никогда не сохраняются и не восстанавливаются. Укажите WM_CLASS: выполните xprop WM_CLASS в терминале, затем нажмите на окно. Регистр при сравнении не учитывается, достаточно части имени. Запись без отметки остаётся в списке, но игнорируется: окна этого приложения снова запоминаются. Можно также воспользоваться кнопкой «Выбрать окно», чтобы добавлять записи автоматически."

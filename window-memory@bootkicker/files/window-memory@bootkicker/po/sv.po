@@ -1,0 +1,487 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Aktivera Window Memory"
+
+msgid "Remember window size"
+msgstr "Kom ihåg fönsterstorlek"
+
+msgid "Remember window position"
+msgstr "Kom ihåg fönsterposition"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Återställ till samma bildskärm när den är ansluten"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "När det är avstängt behålls positionen i förhållande till den bildskärm som fönstret öppnas på."
+
+msgid "Remember workspace"
+msgstr "Kom ihåg arbetsyta"
+
+msgid "Remember maximized state"
+msgstr "Kom ihåg maximerat läge"
+
+msgid "Remember minimized state"
+msgstr "Kom ihåg minimerat läge"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Ett fönster som var minimerat när det sparades öppnas minimerat igen."
+
+msgid "Match windows by"
+msgstr "Matcha fönster efter"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Väljer vilken sparad plats ett fönster får när ett program har flera ihågkomna fönster.\n\nEndast program: ett fönster får den senaste sparade platsen för sitt program som inget annat öppet fönster använder. Det är det enklaste valet och passar de flesta program.\n\nProgram och fönstertitel: Window Memory letar först efter en sparad plats vars fönster hade samma titel (stora och små bokstäver spelar ingen roll), så att fönster som alltid öppnas med samma titel, till exempel samma dokument eller webbplats, går tillbaka till sin egen plats. Om ingen titel matchar fungerar det som ”Endast program”.\n\nOm ”Kom ihåg minimerat läge” är på föredras en sparad plats där fönstret inte var minimerat, så att minst ett fönster öppnas synligt när ett program hade ett minimerat och ett vanligt fönster. En matchande titel går fortfarande först."
+
+msgid "Application only"
+msgstr "Endast program"
+
+msgid "Application and window title"
+msgstr "Program och fönstertitel"
+
+msgid "Also remember dialog windows"
+msgstr "Kom också ihåg dialogfönster"
+
+msgid "Never remember these applications"
+msgstr "Kom aldrig ihåg dessa program"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Kom aldrig ihåg dessa program (WM-klass)"
+
+msgid "Maximum remembered windows"
+msgstr "Högsta antal sparade fönster"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "De fönster som inte har setts på längst tid tas bort först."
+
+msgid "windows"
+msgstr "fönster"
+
+msgid "Forget the focused window"
+msgstr "Glöm det fokuserade fönstret"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Glöm alla sparade fönster (kan inte ångras, Esc avbryter)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Säkerhetskopiera eller återställ inställningar och sparade fönster"
+
+msgid "Export backup…"
+msgstr "Exportera säkerhetskopia…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Spara alla inställningar, ”Kom aldrig ihåg”-listan och de sparade fönstren i en fil."
+
+msgid "Import backup…"
+msgstr "Importera säkerhetskopia…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Ersätt alla inställningar och sparade fönster med innehållet i en säkerhetskopia. Frågar först."
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Kommer automatiskt ihåg varje fönsters storlek, position, bildskärm, arbetsyta samt maximerat och minimerat läge och återställer dem när programmet öppnas igen."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Glömde det sparade fönstret för %s."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "Fönstret för %s är inte sparat, så inget glömdes."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Det gick inte att glömma det sparade fönstret. Se loggen."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Det fokuserade fönstret är inte sparat, så inget glömdes."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory stoppade sig självt av säkerhetsskäl: en funktion som programmet behöver saknas i den här versionen av Cinnamon."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory stoppade sig självt av säkerhetsskäl: för många fel."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory stoppade sig självt av säkerhetsskäl: Cinnamon startade om flera gånger i rad."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory stoppade sig självt av säkerhetsskäl: det kunde inte starta."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Ta bort ~/.config/window-memory/safety.json för att återuppta när problemet är åtgärdat. Om det händer igen, rapportera ett problem."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Stäng av och slå på ”Aktivera Window Memory” igen i dess inställningar för att återuppta. Om det händer igen, rapportera ett problem."
+
+msgid "Forgot all remembered windows."
+msgstr "Glömde alla sparade fönster."
+
+msgid "Forget all remembered windows?"
+msgstr "Glömma alla sparade fönster?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Inga fönster var sparade, så det finns inget att glömma."
+
+msgid "The remembered windows were not forgotten."
+msgstr "De sparade fönstren glömdes inte."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Det är okänt om de sparade fönstren glömdes."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory svarade inte i tid."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Glömde alla sparade fönster, men ändringen kunde inte sparas."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "De sparade fönstren kan komma tillbaka nästa gång Window Memory startar."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory körs inte. Aktivera det i Systeminställningar och försök igen."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "%(count)d sparat fönster glömdes."
+msgstr[1] "%(count)d sparade fönster glömdes."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory bekräftade inte återställningen i tid."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "De sparade fönstren kan ha ersatts eller inte, och övriga inställningar lämnades som de var. Det är säkert att importera samma säkerhetskopia igen."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Filen är större än 20 MB, för stor för att vara en säkerhetskopia från Window Memory."
+
+msgid "Could not save the backup."
+msgstr "Det gick inte att spara säkerhetskopian."
+
+msgid "Could not restore the backup."
+msgstr "Det gick inte att återställa säkerhetskopian."
+
+msgid "Nothing was changed."
+msgstr "Inget ändrades."
+
+msgid "The settings were not changed."
+msgstr "Inställningarna ändrades inte."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "De sparade fönstren och övriga inställningar ändrades inte."
+
+msgid "Importing the same backup again is safe."
+msgstr "Det är säkert att importera samma säkerhetskopia igen."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Inställningsschemat kan inte läsas: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Inställningsschemat kan inte läsas: det är inget JSON-objekt."
+
+msgid "the state file is not valid JSON"
+msgstr "tillståndsfilen är inte giltig JSON"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "tillståndsfilen är inte ett tillstånd av version %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Filen kan inte läsas: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Filen är inte en vanlig fil."
+
+msgid "The file is not UTF-8 text."
+msgstr "Filen är inte UTF-8-text."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Filen är inte giltig JSON: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian är varken true eller false."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian är inte ett heltal."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian ligger utanför intervallet %(min)s till %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian är inte ett av de tillåtna alternativen."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian är ingen lista."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian har en post som inte är ett objekt."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian har en post utan textfältet ”%(column)s”."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian är inte text."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Filen är ingen Window Memory-säkerhetskopia: den innehåller inget JSON-objekt."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Filen är ingen Window Memory-säkerhetskopia: dess ”format” är inte ”%(format)s”."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Säkerhetskopian skapades av en nyare version av Window Memory (säkerhetskopieformat %(found)d). Den här versionen läser bara format %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "”version” i säkerhetskopian är inte %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Säkerhetskopian har inget ”settings”-objekt."
+
+msgid "The backup has no \"state\" object."
+msgstr "Säkerhetskopian har inget ”state”-objekt."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "”version” i ”state” i säkerhetskopian är inte %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "”windows” i ”state” i säkerhetskopian är ingen lista."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d inställning"
+msgstr[1] "%(count)d inställningar"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d sparat fönster"
+msgstr[1] "%(count)d sparade fönster"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Säkerhetskopia sparad: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Inga fönster har sparats än."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "De sparade fönstren kunde inte läsas (%(problem)s), så inga sparades."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Ersätt inställningarna och det %(count)d sparade fönstret med den här säkerhetskopian från %(time)s?"
+msgstr[1] "Ersätt inställningarna och de %(count)d sparade fönstren med den här säkerhetskopian från %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Ersätt inställningarna och det %(count)d sparade fönstret med den här säkerhetskopian?"
+msgstr[1] "Ersätt inställningarna och de %(count)d sparade fönstren med den här säkerhetskopian?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Nuvarande inställningar och sparade fönster går förlorade. Detta kan inte ångras."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Återställde %(settings)s och %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d inställning i säkerhetskopian är okänd för den här versionen av Window Memory och utelämnades."
+msgstr[1] "%(count)d inställningar i säkerhetskopian är okända för den här versionen av Window Memory och utelämnades."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Återställde %(count)d sparat fönster, men inte alla inställningar."
+msgstr[1] "Återställde %(count)d sparade fönster, men inte alla inställningar."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Inställningen ”%(key)s” kunde inte ställas in: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "%(count)d inställning efter den ställdes inte heller in."
+msgstr[1] "%(count)d inställningar efter den ställdes inte heller in."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "De sparade fönstren kunde inte överlämnas till Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Inställningsfilen har inget värde för ”%(key)s”."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "%(path)s kan inte skrivas: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Inställningen ”%(key)s” kunde inte ställas in på %(value)d före återställningen: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Inställningen ”%(key)s” ställdes in på %(new)d för återställningen och kunde inte ställas tillbaka till %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Exportera säkerhetskopia"
+
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+msgid "_Save"
+msgstr "_Spara"
+
+msgid "Import backup"
+msgstr "Importera säkerhetskopia"
+
+msgid "_Open"
+msgstr "_Öppna"
+
+msgid "JSON files"
+msgstr "JSON-filer"
+
+msgid "All files"
+msgstr "Alla filer"
+
+msgid "_Replace"
+msgstr "_Ersätt"
+
+msgid "unknown"
+msgstr "okänd"
+
+msgid "(uncommitted changes)"
+msgstr "(ej committade ändringar)"
+
+msgid "Report an issue"
+msgstr "Rapportera ett problem"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (experimentell)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Du använder Cinnamons Wayland-session, som fortfarande är experimentell. Window Memory har testats med den på Cinnamon 6.0.5. Om Window Memory inte kommer ihåg ett fönster som förväntat, använd ”Rapportera ett problem”."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "De här programmen startar när du loggar in, och Window Memory lägger tillbaka deras fönster på plats, om de inte är aktiverade i listan ”Kom aldrig ihåg dessa program”. Det är samma lista som i Uppstartsprogram."
+
+msgid "No applications start at login."
+msgstr "Inga program startar vid inloggning."
+
+msgid "Pick a window to start at login"
+msgstr "Välj ett fönster att starta vid inloggning"
+
+msgid "Remove"
+msgstr "Ta bort"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Lägg till eller redigera i Uppstartsprogram…"
+
+msgid "(system entry)"
+msgstr "(systempost)"
+
+msgid "delay %(seconds)d s"
+msgstr "fördröjning %(seconds)d s"
+
+msgid "Undo"
+msgstr "Ångra"
+
+msgid "Added %(name)s"
+msgstr "Lade till %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s finns redan i listan"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s aktiverades"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s återställdes"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s ändrades under tiden och lämnades orörd."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Kunde inte läsa uppstartsprogrammen: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Kunde inte lägga till %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Kunde inte ändra %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Kunde inte starta valet: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Kunde inte öppna Uppstartsprogram: %(reason)s"
+
+msgid "Start at login"
+msgstr "Starta vid inloggning"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Command"
+msgstr "Kommando"
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Startup delay"
+msgstr "Tidsfördröjning vid uppstart"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Det här kommandot är en kvalificerad gissning utifrån fönstret. Kontrollera det innan du lägger till."
+
+msgid "The command cannot be empty."
+msgstr "Kommandot får inte vara tomt."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Kommandot är inte giltigt: %(reason)s"
+
+msgid "General"
+msgstr "Allmänt"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Inställningar för window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Klicka på ett fönster för att aldrig komma ihåg dess program.  Esc eller högerklick avbryter."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Klicka på ett fönster för att starta dess program vid inloggning.  Esc eller högerklick avbryter."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Klicka här och klicka sedan på fönstret du vill lägga till i ”Kom aldrig ihåg”-listan. Esc eller högerklick avbryter."
+
+msgid "Enabled"
+msgstr "Aktiverat"
+
+msgid "Max windows"
+msgstr "Max antal fönster"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Högsta antal sparade fönster. De fönster som setts längst tid sedan tas bort först."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Välj ett fönster att aldrig komma ihåg (klicka på det, Esc eller högerklick avbryter)"
+
+msgid "Startup apps"
+msgstr "Uppstartsappar"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Inställningen ”%(key)s” i säkerhetskopian har en post där ”%(column)s” varken är true eller false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Fönster för dessa program sparas eller återställs aldrig. Ange WM_CLASS: kör xprop WM_CLASS i en terminal och klicka sedan på fönstret. Matchningen skiljer inte på stora och små bokstäver och godtar en del av namnet. En omarkerad post finns kvar i listan men ignoreras: fönster för det programmet sparas igen. Du kan också använda knappen ”Välj ett fönster” för att lägga till poster automatiskt."

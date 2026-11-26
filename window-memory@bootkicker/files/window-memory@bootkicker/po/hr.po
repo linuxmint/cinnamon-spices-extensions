@@ -1,0 +1,495 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Omogući Window Memory"
+
+msgid "Remember window size"
+msgstr "Pamti veličinu prozora"
+
+msgid "Remember window position"
+msgstr "Pamti položaj prozora"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Vrati na isti monitor kada je spojen"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Kada je isključeno, položaj se čuva u odnosu na monitor na kojem se prozor otvara."
+
+msgid "Remember workspace"
+msgstr "Pamti radni prostor"
+
+msgid "Remember maximized state"
+msgstr "Pamti maksimizirano stanje"
+
+msgid "Remember minimized state"
+msgstr "Pamti minimizirano stanje"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Prozor koji je bio minimiziran kad je spremljen ponovno se otvara minimiziran."
+
+msgid "Match windows by"
+msgstr "Prepoznaj prozore prema"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Određuje koje spremljeno mjesto dobiva prozor kada aplikacija ima nekoliko zapamćenih prozora.\n\n„Samo aplikacija”: prozor dobiva najnovije spremljeno mjesto svoje aplikacije koje ne koristi nijedan drugi otvoreni prozor. To je najjednostavniji izbor i odgovara većini programa.\n\n„Aplikacija i naslov prozora”: Window Memory prvo traži spremljeno mjesto čiji je prozor imao isti naslov (velika i mala slova nisu bitna), pa se prozori koji se uvijek otvaraju s istim naslovom, na primjer isti dokument ili ista web-stranica, vraćaju na svoje mjesto. Ako nijedan naslov ne odgovara, ponaša se kao „Samo aplikacija”.\n\nAko je „Pamti minimizirano stanje” uključeno, prednost ima spremljeno mjesto na kojem prozor nije bio minimiziran, tako da se, kada je aplikacija imala jedan minimizirani i jedan običan prozor, barem jedan od njih otvori vidljiv. Naslov koji odgovara i dalje ima prvenstvo."
+
+msgid "Application only"
+msgstr "Samo aplikacija"
+
+msgid "Application and window title"
+msgstr "Aplikacija i naslov prozora"
+
+msgid "Also remember dialog windows"
+msgstr "Pamti i dijaloške prozore"
+
+msgid "Never remember these applications"
+msgstr "Nikad ne pamti ove aplikacije"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Nikad ne pamti ove aplikacije (WM klasa)"
+
+msgid "Maximum remembered windows"
+msgstr "Najveći broj zapamćenih prozora"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Najdavnije viđeni prozori odbacuju se prvi."
+
+msgid "windows"
+msgstr "prozora"
+
+msgid "Forget the focused window"
+msgstr "Zaboravi aktivni prozor"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Zaboravi sve zapamćene prozore (ne može se poništiti, Esc za odustajanje)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Sigurnosno kopiranje i vraćanje postavki i zapamćenih prozora"
+
+msgid "Export backup…"
+msgstr "Izvezi sigurnosnu kopiju…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Spremi sve postavke, popis aplikacija koje se nikad ne pamte i zapamćene prozore u datoteku."
+
+msgid "Import backup…"
+msgstr "Uvezi sigurnosnu kopiju…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Zamijeni sve postavke i zapamćene prozore onima iz datoteke sigurnosne kopije. Prethodno traži potvrdu."
+
+msgid "Version"
+msgstr "Inačica"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Automatski pamti veličinu, položaj, monitor, radni prostor, maksimizirano i minimizirano stanje svakog prozora i vraća ih kada se aplikacija ponovno otvori."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Zaboravljen je zapamćeni prozor aplikacije %s."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s nije među zapamćenima, pa ništa nije zaboravljeno."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "Zapamćeni prozor nije bilo moguće zaboraviti. Pogledajte zapisnik."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "Aktivni prozor nije zapamćen, pa ništa nije zaboravljeno."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory se sam zaustavio radi sigurnosti: nedostaje funkcija koja mu je potrebna u ovoj verziji programa Cinnamon."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory se sam zaustavio radi sigurnosti: previše pogrešaka."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory se sam zaustavio radi sigurnosti: Cinnamon se više puta ponovno pokrenuo."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory se sam zaustavio radi sigurnosti: nije se mogao pokrenuti."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Za nastavak nakon što se problem riješi, izbrišite ~/.config/window-memory/safety.json. Ako se ovo ponovi, prijavite problem."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Za nastavak isključite i ponovno uključite „Omogući Window Memory” u njegovim postavkama. Ako se ovo ponovi, prijavite problem."
+
+msgid "Forgot all remembered windows."
+msgstr "Zaboravljeni su svi zapamćeni prozori."
+
+msgid "Forget all remembered windows?"
+msgstr "Zaboraviti sve zapamćene prozore?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "Nijedan prozor nije bio zapamćen, pa nema ničega za zaboraviti."
+
+msgid "The remembered windows were not forgotten."
+msgstr "Zapamćeni prozori nisu zaboravljeni."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "Nije poznato jesu li zapamćeni prozori zaboravljeni."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory nije odgovorio na vrijeme."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Zaboravljeni su svi zapamćeni prozori, ali promjena se nije mogla spremiti."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Zapamćeni prozori mogli bi se ponovno pojaviti pri sljedećem pokretanju programa Window Memory."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory nije pokrenut. Omogućite ga u Postavkama sustava, zatim pokušajte ponovno."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "Zaboravljen je %(count)d zapamćeni prozor."
+msgstr[1] "Zaboravljena su %(count)d zapamćena prozora."
+msgstr[2] "Zaboravljeno je %(count)d zapamćenih prozora."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory nije na vrijeme potvrdio vraćanje."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Zapamćeni prozori mogu, ali ne moraju biti zamijenjeni, a ostale postavke ostale su kakve su bile. Ponovni uvoz iste sigurnosne kopije je siguran."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "Datoteka je veća od 20 MB, prevelika da bi bila sigurnosna kopija programa Window Memory."
+
+msgid "Could not save the backup."
+msgstr "Sigurnosnu kopiju nije bilo moguće spremiti."
+
+msgid "Could not restore the backup."
+msgstr "Sigurnosnu kopiju nije bilo moguće vratiti."
+
+msgid "Nothing was changed."
+msgstr "Ništa nije promijenjeno."
+
+msgid "The settings were not changed."
+msgstr "Postavke nisu promijenjene."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "Zapamćeni prozori i ostale postavke nisu promijenjeni."
+
+msgid "Importing the same backup again is safe."
+msgstr "Ponovni uvoz iste sigurnosne kopije je siguran."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "Shema postavki ne može se pročitati: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "Shema postavki ne može se pročitati: nije JSON objekt."
+
+msgid "the state file is not valid JSON"
+msgstr "datoteka stanja nije valjan JSON"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "datoteka stanja nije stanje inačice %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "Datoteka se ne može pročitati: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "Datoteka nije obična datoteka."
+
+msgid "The file is not UTF-8 text."
+msgstr "Datoteka nije UTF-8 tekst."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "Datoteka nije valjan JSON: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji nije vrijednost „točno” ili „netočno”."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji nije cijeli broj."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji izvan je raspona od %(min)s do %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji nije jedan od ponuđenih izbora."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji nije popis."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji ima unos koji nije objekt."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji ima unos bez tekstualne vrijednosti „%(column)s”."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji nije tekst."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "Datoteka nije sigurnosna kopija programa Window Memory: ne sadrži JSON objekt."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "Datoteka nije sigurnosna kopija programa Window Memory: njezin „format” nije „%(format)s”."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "Sigurnosnu kopiju izradila je novija inačica programa Window Memory (format sigurnosne kopije %(found)d). Ova inačica čita samo format %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "Vrijednost „version” u sigurnosnoj kopiji nije %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "Sigurnosna kopija nema objekt „settings”."
+
+msgid "The backup has no \"state\" object."
+msgstr "Sigurnosna kopija nema objekt „state”."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "Vrijednost „version” objekta „state” u sigurnosnoj kopiji nije %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "Vrijednost „windows” objekta „state” u sigurnosnoj kopiji nije popis."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d postavka"
+msgstr[1] "%(count)d postavke"
+msgstr[2] "%(count)d postavki"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d zapamćeni prozor"
+msgstr[1] "%(count)d zapamćena prozora"
+msgstr[2] "%(count)d zapamćenih prozora"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Sigurnosna kopija spremljena: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Još nijedan prozor nije zapamćen."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "Zapamćeni prozori nisu se mogli pročitati (%(problem)s), pa nijedan nije spremljen."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "Zamijeniti postavke i %(count)d zapamćeni prozor ovom sigurnosnom kopijom od %(time)s?"
+msgstr[1] "Zamijeniti postavke i %(count)d zapamćena prozora ovom sigurnosnom kopijom od %(time)s?"
+msgstr[2] "Zamijeniti postavke i %(count)d zapamćenih prozora ovom sigurnosnom kopijom od %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "Zamijeniti postavke i %(count)d zapamćeni prozor ovom sigurnosnom kopijom?"
+msgstr[1] "Zamijeniti postavke i %(count)d zapamćena prozora ovom sigurnosnom kopijom?"
+msgstr[2] "Zamijeniti postavke i %(count)d zapamćenih prozora ovom sigurnosnom kopijom?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Trenutačne postavke i zapamćeni prozori bit će izgubljeni. Ovo se ne može poništiti."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Vraćeno je: %(settings)s i %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d postavka u sigurnosnoj kopiji nije poznata ovoj inačici programa Window Memory i izostavljena je."
+msgstr[1] "%(count)d postavke u sigurnosnoj kopiji nisu poznate ovoj inačici programa Window Memory i izostavljene su."
+msgstr[2] "%(count)d postavki u sigurnosnoj kopiji nije poznato ovoj inačici programa Window Memory i izostavljeno je."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Vraćen je %(count)d zapamćeni prozor, ali ne sve postavke."
+msgstr[1] "Vraćena su %(count)d zapamćena prozora, ali ne sve postavke."
+msgstr[2] "Vraćeno je %(count)d zapamćenih prozora, ali ne sve postavke."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "Postavku „%(key)s” nije bilo moguće postaviti: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "%(count)d postavka nakon nje također nije postavljena."
+msgstr[1] "%(count)d postavke nakon nje također nisu postavljene."
+msgstr[2] "%(count)d postavki nakon nje također nije postavljeno."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "Zapamćene prozore nije bilo moguće predati programu Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "Datoteka postavki nema vrijednost za „%(key)s”."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "Nije moguće pisati u %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "Postavku „%(key)s” nije bilo moguće postaviti na %(value)d prije vraćanja: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "Postavka „%(key)s” postavljena je na %(new)d za vraćanje i nije se mogla postaviti natrag na %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Izvezi sigurnosnu kopiju"
+
+msgid "_Cancel"
+msgstr "O_dustani"
+
+msgid "_Save"
+msgstr "_Spremi"
+
+msgid "Import backup"
+msgstr "Uvezi sigurnosnu kopiju"
+
+msgid "_Open"
+msgstr "_Otvori"
+
+msgid "JSON files"
+msgstr "JSON datoteke"
+
+msgid "All files"
+msgstr "Sve datoteke"
+
+msgid "_Replace"
+msgstr "_Zamijeni"
+
+msgid "unknown"
+msgstr "nepoznata"
+
+msgid "(uncommitted changes)"
+msgstr "(nepredane promjene)"
+
+msgid "Report an issue"
+msgstr "Prijavi problem"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (eksperimentalno)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Koristite Cinnamonovu Wayland sesiju, koja je još eksperimentalna. Window Memory testiran je s njom na Cinnamonu 6.0.5. Ako se prozor ne pamti kako se očekuje, upotrijebite „Prijavi problem”."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Ove se aplikacije pokreću pri prijavi, a Window Memory vraća njihove prozore na mjesto, osim ako su omogućene na popisu „Nikad ne pamti ove aplikacije“. To je isti popis kao u odjeljku Pokrenute aplikacije."
+
+msgid "No applications start at login."
+msgstr "Nijedna se aplikacija ne pokreće pri prijavi."
+
+msgid "Pick a window to start at login"
+msgstr "Odaberite prozor koji se pokreće pri prijavi"
+
+msgid "Remove"
+msgstr "Ukloni"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Dodaj ili uredi u odjeljku Pokrenute aplikacije…"
+
+msgid "(system entry)"
+msgstr "(sistemski unos)"
+
+msgid "delay %(seconds)d s"
+msgstr "odgoda %(seconds)d s"
+
+msgid "Undo"
+msgstr "Vrati"
+
+msgid "Added %(name)s"
+msgstr "Dodano: %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s je već na popisu"
+
+msgid "%(name)s switched on"
+msgstr "Uključeno: %(name)s"
+
+msgid "%(name)s brought back"
+msgstr "Vraćeno: %(name)s"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "Stavka %(name)s promijenila se u međuvremenu i ostavljena je kakva jest."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "Nije moguće pročitati pokrenute aplikacije: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "Nije moguće dodati %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "Nije moguće promijeniti %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "Nije moguće pokrenuti odabir: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "Nije moguće otvoriti Pokrenute aplikacije: %(reason)s"
+
+msgid "Start at login"
+msgstr "Pokreni pri prijavi"
+
+msgid "Name"
+msgstr "Ime"
+
+msgid "Command"
+msgstr "Naredba"
+
+msgid "Comment"
+msgstr "Komentar"
+
+msgid "Startup delay"
+msgstr "Odgoda pokretanja"
+
+msgid "Cancel"
+msgstr "Odustani"
+
+msgid "Add"
+msgstr "Dodaj"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Ova je naredba pretpostavka na temelju prozora. Provjerite je prije dodavanja."
+
+msgid "The command cannot be empty."
+msgstr "Naredba ne smije biti prazna."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "Naredba nije valjana: %(reason)s"
+
+msgid "General"
+msgstr "Općenito"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Postavke za window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Kliknite na prozor kako se njegova aplikacija nikad ne bi pamtila.  Esc ili desni klik za odustajanje."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Kliknite na prozor kako bi se njegova aplikacija pokretala pri prijavi.  Esc ili desni klik za odustajanje."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Kliknite ovdje, a zatim kliknite na prozor koji želite dodati na popis aplikacija koje se nikad ne pamte. Escape ili desni klik prekida odabir."
+
+msgid "Enabled"
+msgstr "Omogućeno"
+
+msgid "Max windows"
+msgstr "Najv. broj prozora"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Najveći broj zapamćenih prozora. Prozori koji najduže nisu viđeni najprije se odbacuju."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Odaberite prozor koji se nikad neće pamtiti (kliknite na njega, Esc ili desni klik za odustajanje)"
+
+msgid "Startup apps"
+msgstr "Pokrenute aplikacije"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "Postavka „%(key)s” u sigurnosnoj kopiji ima unos čiji „%(column)s” nije true ni false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Prozori ovih aplikacija nikad se ne spremaju niti vraćaju. Unesite WM_CLASS: pokrenite xprop WM_CLASS u terminalu, zatim kliknite na prozor. Podudaranje ne razlikuje velika i mala slova i prihvaća dio naziva. Neoznačeni unos ostaje na popisu, ali se zanemaruje: prozori te aplikacije ponovno se pamte. Umjesto toga možete upotrijebiti i gumb „Odaberite prozor” za automatsko dodavanje unosa."

@@ -1,0 +1,487 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Activar Window Memory"
+
+msgid "Remember window size"
+msgstr "Recordar el tamaño de la ventana"
+
+msgid "Remember window position"
+msgstr "Recordar la posición de la ventana"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "Restaurar en el mismo monitor cuando esté conectado"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "Si está desactivado, la posición se mantiene relativa al monitor en el que se abre la ventana."
+
+msgid "Remember workspace"
+msgstr "Recordar el área de trabajo"
+
+msgid "Remember maximized state"
+msgstr "Recordar el estado maximizado"
+
+msgid "Remember minimized state"
+msgstr "Recordar el estado minimizado"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "Una ventana que estaba minimizada al guardarse se vuelve a abrir minimizada."
+
+msgid "Match windows by"
+msgstr "Identificar ventanas por"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "Elige qué posición guardada recibe una ventana cuando una aplicación tiene varias ventanas recordadas.\n\n«Solo aplicación»: una ventana toma la posición guardada más reciente de su aplicación que no esté usando ninguna otra ventana abierta. Es la opción más sencilla y es la adecuada para la mayoría de los programas.\n\n«Aplicación y título de la ventana»: Window Memory busca primero una posición guardada cuya ventana tuviera el mismo título (las mayúsculas y minúsculas no importan), de modo que las ventanas que siempre se abren con el mismo título, como el mismo documento o sitio web, vuelven a su propia posición. Si ningún título coincide, se comporta como «Solo aplicación».\n\nSi «Recordar el estado minimizado» está activado, se prefiere una posición guardada en la que la ventana no estaba minimizada, para que, cuando una aplicación tenía una ventana minimizada y otra normal, al menos una de ellas se abra visible. Un título coincidente sigue teniendo prioridad."
+
+msgid "Application only"
+msgstr "Solo aplicación"
+
+msgid "Application and window title"
+msgstr "Aplicación y título de la ventana"
+
+msgid "Also remember dialog windows"
+msgstr "Recordar también las ventanas de diálogo"
+
+msgid "Never remember these applications"
+msgstr "Nunca recordar estas aplicaciones"
+
+msgid "Never remember these applications (WM class)"
+msgstr "Nunca recordar estas aplicaciones (clase WM)"
+
+msgid "Maximum remembered windows"
+msgstr "Máximo de ventanas recordadas"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "Las ventanas vistas hace más tiempo se descartan primero."
+
+msgid "windows"
+msgstr "ventanas"
+
+msgid "Forget the focused window"
+msgstr "Olvidar la ventana activa"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "Olvidar todas las ventanas recordadas (no se puede deshacer, Esc para cancelar)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "Copia de seguridad o restauración de los ajustes y las ventanas recordadas"
+
+msgid "Export backup…"
+msgstr "Exportar copia de seguridad…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "Guarda todos los ajustes, la lista de aplicaciones que nunca se recuerdan y las ventanas recordadas en un archivo."
+
+msgid "Import backup…"
+msgstr "Importar copia de seguridad…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "Reemplaza todos los ajustes y ventanas recordadas con los de un archivo de copia de seguridad. Pregunta antes."
+
+msgid "Version"
+msgstr "Versión"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "Recuerda automáticamente el tamaño, la posición, el monitor, el área de trabajo y el estado maximizado y minimizado de cada ventana, y los restaura cuando la aplicación se vuelve a abrir."
+
+msgid "Forgot the remembered window of %s."
+msgstr "Se olvidó la ventana recordada de %s."
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "No hay ninguna ventana recordada de %s, así que no se olvidó nada."
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "No se pudo olvidar la ventana recordada. Consulte el registro."
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "La ventana activa no está recordada, así que no se olvidó nada."
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory se detuvo por seguridad: falta una función que necesita en esta versión de Cinnamon."
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory se detuvo por seguridad: hubo demasiados errores."
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory se detuvo por seguridad: Cinnamon se reinició varias veces seguidas."
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory se detuvo por seguridad: no pudo iniciarse."
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "Para reanudarlo cuando se haya solucionado el problema, elimina ~/.config/window-memory/safety.json. Si vuelve a ocurrir, informa de un problema."
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "Para reanudarlo, desactiva y vuelve a activar «Activar Window Memory» en su configuración. Si vuelve a ocurrir, informa de un problema."
+
+msgid "Forgot all remembered windows."
+msgstr "Se olvidaron todas las ventanas recordadas."
+
+msgid "Forget all remembered windows?"
+msgstr "¿Olvidar todas las ventanas recordadas?"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "No había ventanas recordadas, así que no hay nada que olvidar."
+
+msgid "The remembered windows were not forgotten."
+msgstr "No se olvidaron las ventanas recordadas."
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "No se sabe si se olvidaron las ventanas recordadas."
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory no respondió a tiempo."
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "Se olvidaron todas las ventanas recordadas, pero no se pudo guardar el cambio."
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "Las ventanas recordadas podrían volver la próxima vez que se inicie Window Memory."
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory no se está ejecutando. Actívelo en Configuración del sistema y vuelva a intentarlo."
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "Se olvidó %(count)d ventana recordada."
+msgstr[1] "Se olvidaron %(count)d ventanas recordadas."
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory no confirmó la restauración a tiempo."
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "Puede que las ventanas recordadas se hayan reemplazado o no, y los demás ajustes se dejaron como estaban. Volver a importar la misma copia de seguridad es seguro."
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "El archivo supera los 20 MB, demasiado grande para ser una copia de seguridad de Window Memory."
+
+msgid "Could not save the backup."
+msgstr "No se pudo guardar la copia de seguridad."
+
+msgid "Could not restore the backup."
+msgstr "No se pudo restaurar la copia de seguridad."
+
+msgid "Nothing was changed."
+msgstr "No se cambió nada."
+
+msgid "The settings were not changed."
+msgstr "No se cambiaron los ajustes."
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "No se cambiaron las ventanas recordadas ni los demás ajustes."
+
+msgid "Importing the same backup again is safe."
+msgstr "Volver a importar la misma copia de seguridad es seguro."
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "No se puede leer el esquema de ajustes: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "No se puede leer el esquema de ajustes: no es un objeto JSON."
+
+msgid "the state file is not valid JSON"
+msgstr "el archivo de estado no es un JSON válido"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "el archivo de estado no es de la versión %(version)d"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "No se puede leer el archivo: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "El archivo no es un archivo normal."
+
+msgid "The file is not UTF-8 text."
+msgstr "El archivo no es texto UTF-8."
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "El archivo no es un JSON válido: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "El ajuste «%(key)s» de la copia de seguridad no es verdadero ni falso."
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "El ajuste «%(key)s» de la copia de seguridad no es un número entero."
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "El ajuste «%(key)s» de la copia de seguridad está fuera del rango de %(min)s a %(max)s."
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "El ajuste «%(key)s» de la copia de seguridad no es una de sus opciones."
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "El ajuste «%(key)s» de la copia de seguridad no es una lista."
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "El ajuste «%(key)s» de la copia de seguridad tiene una entrada que no es un objeto."
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "El ajuste «%(key)s» de la copia de seguridad tiene una entrada sin valor de texto «%(column)s»."
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "El ajuste «%(key)s» de la copia de seguridad no es texto."
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "El archivo no es una copia de seguridad de Window Memory: no contiene un objeto JSON."
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "El archivo no es una copia de seguridad de Window Memory: su «format» no es «%(format)s»."
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "La copia de seguridad fue creada por una versión más reciente de Window Memory (formato de copia de seguridad %(found)d). Esta versión solo lee el formato %(supported)d."
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "La «version» de la copia de seguridad no es %(version)d."
+
+msgid "The backup has no \"settings\" object."
+msgstr "La copia de seguridad no tiene ningún objeto «settings»."
+
+msgid "The backup has no \"state\" object."
+msgstr "La copia de seguridad no tiene ningún objeto «state»."
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "La «version» de «state» en la copia de seguridad no es %(version)d."
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "«windows» de «state» en la copia de seguridad no es una lista."
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "%(count)d ajuste"
+msgstr[1] "%(count)d ajustes"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "%(count)d ventana recordada"
+msgstr[1] "%(count)d ventanas recordadas"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "Copia de seguridad guardada: %(settings)s, %(windows)s."
+
+msgid "No windows are remembered yet."
+msgstr "Todavía no hay ventanas recordadas."
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "No se pudieron leer las ventanas recordadas (%(problem)s), por lo que no se guardó ninguna."
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "¿Reemplazar los ajustes y %(count)d ventana recordada con esta copia de seguridad del %(time)s?"
+msgstr[1] "¿Reemplazar los ajustes y %(count)d ventanas recordadas con esta copia de seguridad del %(time)s?"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "¿Reemplazar los ajustes y %(count)d ventana recordada con esta copia de seguridad?"
+msgstr[1] "¿Reemplazar los ajustes y %(count)d ventanas recordadas con esta copia de seguridad?"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "Los ajustes y las ventanas recordadas actuales se perderán. Esto no se puede deshacer."
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "Restauración completada: %(settings)s y %(windows)s."
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "%(count)d ajuste de la copia de seguridad es desconocido para esta versión de Window Memory y se omitió."
+msgstr[1] "%(count)d ajustes de la copia de seguridad son desconocidos para esta versión de Window Memory y se omitieron."
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "Se restauró %(count)d ventana recordada, pero no todos los ajustes."
+msgstr[1] "Se restauraron %(count)d ventanas recordadas, pero no todos los ajustes."
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "No se pudo establecer el ajuste «%(key)s»: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "%(count)d ajuste posterior tampoco se estableció."
+msgstr[1] "%(count)d ajustes posteriores tampoco se establecieron."
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "No se pudieron enviar las ventanas recordadas a Window Memory: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "El archivo de ajustes no tiene ningún valor para «%(key)s»."
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "No se puede escribir %(path)s: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "No se pudo establecer el ajuste «%(key)s» en %(value)d antes de la restauración: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "El ajuste «%(key)s» se estableció en %(new)d para la restauración y no se pudo volver a establecer en %(old)d: %(reason)s"
+
+msgid "Export backup"
+msgstr "Exportar copia de seguridad"
+
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+msgid "_Save"
+msgstr "_Guardar"
+
+msgid "Import backup"
+msgstr "Importar copia de seguridad"
+
+msgid "_Open"
+msgstr "_Abrir"
+
+msgid "JSON files"
+msgstr "Archivos JSON"
+
+msgid "All files"
+msgstr "Todos los archivos"
+
+msgid "_Replace"
+msgstr "_Reemplazar"
+
+msgid "unknown"
+msgstr "desconocida"
+
+msgid "(uncommitted changes)"
+msgstr "(cambios sin confirmar)"
+
+msgid "Report an issue"
+msgstr "Informar de un problema"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (experimental)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Está usando la sesión Wayland de Cinnamon, que todavía es experimental. Window Memory se ha probado con ella en Cinnamon 6.0.5. Si una ventana no se recuerda como se espera, use «Informar de un problema»."
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "Estas aplicaciones se inician al iniciar sesión, y Window Memory vuelve a colocar sus ventanas en su sitio, a menos que estén activadas en la lista «Nunca recordar estas aplicaciones». Es la misma lista que en Aplicaciones al inicio."
+
+msgid "No applications start at login."
+msgstr "Ninguna aplicación se inicia al iniciar sesión."
+
+msgid "Pick a window to start at login"
+msgstr "Elegir una ventana para iniciarla al inicio de sesión"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "Añadir o editar en Aplicaciones al inicio…"
+
+msgid "(system entry)"
+msgstr "(entrada del sistema)"
+
+msgid "delay %(seconds)d s"
+msgstr "retraso %(seconds)d s"
+
+msgid "Undo"
+msgstr "Deshacer"
+
+msgid "Added %(name)s"
+msgstr "Se añadió %(name)s"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s ya está en la lista"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s activado"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s restaurado"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s cambió mientras tanto y se dejó como estaba."
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "No se pudieron leer las aplicaciones al inicio: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "No se pudo añadir %(name)s: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "No se pudo cambiar %(name)s: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "No se pudo iniciar la selección: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "No se pudo abrir Aplicaciones al inicio: %(reason)s"
+
+msgid "Start at login"
+msgstr "Iniciar al inicio de sesión"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Command"
+msgstr "Orden"
+
+msgid "Comment"
+msgstr "Comentario"
+
+msgid "Startup delay"
+msgstr "Retraso al inicio"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Add"
+msgstr "Añadir"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "Esta orden es una suposición a partir de la ventana. Compruébela antes de añadirla."
+
+msgid "The command cannot be empty."
+msgstr "La orden no puede estar vacía."
+
+msgid "The command is not valid: %(reason)s"
+msgstr "La orden no es válida: %(reason)s"
+
+msgid "General"
+msgstr "General"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "Configuración de window-memory@bootkicker"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "Haga clic en una ventana para no recordar nunca su aplicación.  Esc o clic derecho para cancelar."
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "Haga clic en una ventana para iniciar su aplicación al iniciar sesión.  Esc o clic derecho para cancelar."
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "Haga clic aquí y después en la ventana que quiera añadir a la lista de aplicaciones que nunca se recuerdan. Esc o un clic derecho cancela."
+
+msgid "Enabled"
+msgstr "Activado"
+
+msgid "Max windows"
+msgstr "Máx. de ventanas"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "Máximo de ventanas recordadas. Las ventanas vistas hace más tiempo se descartan primero."
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "Elegir una ventana que no se recordará nunca (haga clic en ella, Esc o clic derecho para cancelar)"
+
+msgid "Startup apps"
+msgstr "Apps al inicio"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "El ajuste «%(key)s» de la copia de seguridad tiene una entrada cuyo «%(column)s» no es true ni false."
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "Las ventanas de estas aplicaciones nunca se guardan ni se restauran. Introduzca la WM_CLASS: ejecute xprop WM_CLASS en un terminal y haga clic en la ventana. La coincidencia no distingue mayúsculas de minúsculas y acepta parte del nombre. Una entrada sin marcar permanece en la lista, pero se ignora: las ventanas de esa aplicación vuelven a recordarse. También puede usar en su lugar el botón «Elegir una ventana» para añadir entradas automáticamente."

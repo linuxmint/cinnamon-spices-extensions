@@ -1,0 +1,479 @@
+# Window Memory translation. If something reads wrong in your language, please open an issue.
+msgid ""
+msgstr ""
+"Project-Id-Version: window-memory@bootkicker\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: \n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Language-Team: \n"
+
+msgid "Enable Window Memory"
+msgstr "Window Memory を有効にする"
+
+msgid "Remember window size"
+msgstr "ウィンドウのサイズを記憶する"
+
+msgid "Remember window position"
+msgstr "ウィンドウの位置を記憶する"
+
+msgid "Restore to the same monitor when it is connected"
+msgstr "同じモニターが接続されている場合はそのモニターに復元する"
+
+msgid "When off, the position is kept relative to the monitor the window opens on."
+msgstr "オフにすると、位置はウィンドウが開くモニターを基準にした相対位置で保持されます。"
+
+msgid "Remember workspace"
+msgstr "ワークスペースを記憶する"
+
+msgid "Remember maximized state"
+msgstr "最大化の状態を記憶する"
+
+msgid "Remember minimized state"
+msgstr "最小化の状態を記憶する"
+
+msgid "A window that was minimized when saved reopens minimized."
+msgstr "保存時に最小化されていたウィンドウは、最小化された状態で再び開きます。"
+
+msgid "Match windows by"
+msgstr "ウィンドウの照合方法"
+
+msgid "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first."
+msgstr "アプリケーションに記憶されたウィンドウが複数ある場合に、ウィンドウがどの保存位置を使うかを選びます。\n\n「アプリケーションのみ」: ウィンドウは、そのアプリケーションの保存位置のうち、ほかの開いているウィンドウが使っていない最新のものを使います。最も簡単な選択肢で、ほとんどのプログラムに適しています。\n\n「アプリケーションとウィンドウタイトル」: Window Memory はまず、同じタイトルのウィンドウだった保存位置を探します (大文字と小文字は区別されません)。そのため、同じ文書やウェブサイトなど、いつも同じタイトルで開くウィンドウは、それぞれ元の位置に戻ります。タイトルが一致するものがない場合は、「アプリケーションのみ」と同じように動作します。\n\n「最小化の状態を記憶する」がオンの場合は、ウィンドウが最小化されていなかった保存位置が優先されます。これにより、アプリケーションに最小化されたウィンドウと通常のウィンドウが 1 つずつあった場合でも、少なくとも 1 つは表示された状態で開きます。タイトルが一致する場合は、それが引き続き最優先です。"
+
+msgid "Application only"
+msgstr "アプリケーションのみ"
+
+msgid "Application and window title"
+msgstr "アプリケーションとウィンドウタイトル"
+
+msgid "Also remember dialog windows"
+msgstr "ダイアログウィンドウも記憶する"
+
+msgid "Never remember these applications"
+msgstr "これらのアプリケーションは記憶しない"
+
+msgid "Never remember these applications (WM class)"
+msgstr "これらのアプリケーションは記憶しない (WM クラス)"
+
+msgid "Maximum remembered windows"
+msgstr "記憶したウィンドウの最大数"
+
+msgid "The least recently seen windows are dropped first."
+msgstr "最後に確認された日時が最も古いウィンドウから先に破棄されます。"
+
+msgid "windows"
+msgstr "ウィンドウ"
+
+msgid "Forget the focused window"
+msgstr "フォーカス中のウィンドウを忘れる"
+
+msgid "Forget all remembered windows (Cannot be undone, Esc to cancel)"
+msgstr "記憶したウィンドウをすべて忘れる (元に戻せません、Esc でキャンセル)"
+
+msgid "Back up or restore settings and remembered windows"
+msgstr "設定と記憶したウィンドウのバックアップと復元"
+
+msgid "Export backup…"
+msgstr "バックアップをエクスポート…"
+
+msgid "Save every setting, the never-remember list and the remembered windows to a file."
+msgstr "すべての設定、記憶しないリスト、記憶したウィンドウをファイルに保存します。"
+
+msgid "Import backup…"
+msgstr "バックアップをインポート…"
+
+msgid "Replace every setting and remembered window with the ones in a backup file. Asks first."
+msgstr "すべての設定と記憶したウィンドウを、バックアップファイルの内容に置き換えます。事前に確認します。"
+
+msgid "Version"
+msgstr "バージョン"
+
+msgid "Window Memory"
+msgstr "Window Memory"
+
+msgid "Automatically remembers each window's size, position, monitor, workspace, maximized state and minimized state and restores them when the application opens again."
+msgstr "各ウィンドウのサイズ、位置、モニター、ワークスペース、最大化の状態、最小化の状態を自動的に記憶し、アプリケーションを再び開いたときに復元します。"
+
+msgid "Forgot the remembered window of %s."
+msgstr "%s の記憶したウィンドウを忘れました。"
+
+msgid "%s is not remembered, so nothing was forgotten."
+msgstr "%s は記憶されていないため、何も忘れませんでした。"
+
+msgid "Could not forget the remembered window. See the log."
+msgstr "記憶したウィンドウを忘れられませんでした。ログを確認してください。"
+
+msgid "The focused window is not remembered, so nothing was forgotten."
+msgstr "フォーカス中のウィンドウは記憶されていないため、何も忘れませんでした。"
+
+msgid "Window Memory stopped itself for safety: a function it needs is missing from this version of Cinnamon."
+msgstr "Window Memory は安全のため自動的に停止しました。必要な機能が、お使いの Cinnamon のバージョンにありません。"
+
+msgid "Window Memory stopped itself for safety: too many errors."
+msgstr "Window Memory は安全のため自動的に停止しました。エラーが多すぎました。"
+
+msgid "Window Memory stopped itself for safety: Cinnamon restarted repeatedly."
+msgstr "Window Memory は安全のため自動的に停止しました。Cinnamon が繰り返し再起動しました。"
+
+msgid "Window Memory stopped itself for safety: it could not start."
+msgstr "Window Memory は安全のため自動的に停止しました。起動できませんでした。"
+
+msgid "To resume once the problem is fixed, delete ~/.config/window-memory/safety.json. If this happens again, please report an issue."
+msgstr "問題が解決したら、~/.config/window-memory/safety.json を削除すると再開できます。再び発生した場合は、問題を報告してください。"
+
+msgid "To resume, turn \"Enable Window Memory\" off and on in its settings. If this happens again, please report an issue."
+msgstr "再開するには、設定で「Window Memory を有効にする」をオフにしてからオンにしてください。再び発生した場合は、問題を報告してください。"
+
+msgid "Forgot all remembered windows."
+msgstr "記憶したウィンドウをすべて忘れました。"
+
+msgid "Forget all remembered windows?"
+msgstr "記憶したウィンドウをすべて忘れますか？"
+
+msgid "No windows were remembered, so there is nothing to forget."
+msgstr "記憶したウィンドウがないため、忘れるものはありません。"
+
+msgid "The remembered windows were not forgotten."
+msgstr "記憶したウィンドウは忘れられませんでした。"
+
+msgid "It is not known whether the remembered windows were forgotten."
+msgstr "記憶したウィンドウを忘れたかどうかは不明です。"
+
+msgid "Window Memory did not answer in time."
+msgstr "Window Memory が時間内に応答しませんでした。"
+
+msgid "Forgot all remembered windows, but the change could not be saved."
+msgstr "記憶したウィンドウをすべて忘れましたが、変更を保存できませんでした。"
+
+msgid "The remembered windows may come back the next time Window Memory starts."
+msgstr "次回 Window Memory が起動したときに、記憶したウィンドウが戻る場合があります。"
+
+msgid "Window Memory is not running. Enable it in System Settings, then try again."
+msgstr "Window Memory は実行されていません。システム設定で有効にしてから、もう一度お試しください。"
+
+msgid "%(count)d remembered window was forgotten."
+msgid_plural "%(count)d remembered windows were forgotten."
+msgstr[0] "記憶したウィンドウ %(count)d 個を忘れました。"
+
+msgid "Window Memory did not confirm the restore in time."
+msgstr "Window Memory が時間内に復元を確認しませんでした。"
+
+msgid "The remembered windows may or may not have been replaced, and the other settings were left as they were. Importing the same backup again is safe."
+msgstr "記憶したウィンドウは置き換えられた可能性も、置き換えられていない可能性もあります。ほかの設定は変更されていません。同じバックアップをもう一度インポートしても問題ありません。"
+
+msgid "The file is larger than 20 MB, too large to be a Window Memory backup."
+msgstr "ファイルが 20 MB を超えており、Window Memory のバックアップとしては大きすぎます。"
+
+msgid "Could not save the backup."
+msgstr "バックアップを保存できませんでした。"
+
+msgid "Could not restore the backup."
+msgstr "バックアップを復元できませんでした。"
+
+msgid "Nothing was changed."
+msgstr "何も変更されていません。"
+
+msgid "The settings were not changed."
+msgstr "設定は変更されていません。"
+
+msgid "The remembered windows and the other settings were not changed."
+msgstr "記憶したウィンドウとほかの設定は変更されていません。"
+
+msgid "Importing the same backup again is safe."
+msgstr "同じバックアップをもう一度インポートしても問題ありません。"
+
+msgid "The settings schema cannot be read: %(reason)s"
+msgstr "設定スキーマを読み取れません: %(reason)s"
+
+msgid "The settings schema cannot be read: it is not a JSON object."
+msgstr "設定スキーマを読み取れません: JSON オブジェクトではありません。"
+
+msgid "the state file is not valid JSON"
+msgstr "状態ファイルが有効な JSON ではありません"
+
+msgid "the state file is not a state of version %(version)d"
+msgstr "状態ファイルがバージョン %(version)d の状態ではありません"
+
+msgid "The file cannot be read: %(reason)s"
+msgstr "ファイルを読み取れません: %(reason)s"
+
+msgid "The file is not a regular file."
+msgstr "ファイルは通常のファイルではありません。"
+
+msgid "The file is not UTF-8 text."
+msgstr "ファイルは UTF-8 のテキストではありません。"
+
+msgid "The file is not valid JSON: %(reason)s"
+msgstr "ファイルは有効な JSON ではありません: %(reason)s"
+
+msgid "The setting \"%(key)s\" in the backup is not true or false."
+msgstr "バックアップ内の設定「%(key)s」は true でも false でもありません。"
+
+msgid "The setting \"%(key)s\" in the backup is not a whole number."
+msgstr "バックアップ内の設定「%(key)s」は整数ではありません。"
+
+msgid "The setting \"%(key)s\" in the backup is outside the range %(min)s to %(max)s."
+msgstr "バックアップ内の設定「%(key)s」は %(min)s から %(max)s の範囲外です。"
+
+msgid "The setting \"%(key)s\" in the backup is not one of its choices."
+msgstr "バックアップ内の設定「%(key)s」は選択肢のいずれでもありません。"
+
+msgid "The setting \"%(key)s\" in the backup is not a list."
+msgstr "バックアップ内の設定「%(key)s」はリストではありません。"
+
+msgid "The setting \"%(key)s\" in the backup has an entry that is not an object."
+msgstr "バックアップ内の設定「%(key)s」に、オブジェクトではないエントリーがあります。"
+
+msgid "The setting \"%(key)s\" in the backup has an entry without a text \"%(column)s\"."
+msgstr "バックアップ内の設定「%(key)s」に、テキストの「%(column)s」がないエントリーがあります。"
+
+msgid "The setting \"%(key)s\" in the backup is not text."
+msgstr "バックアップ内の設定「%(key)s」はテキストではありません。"
+
+msgid "The file is not a Window Memory backup: it does not hold a JSON object."
+msgstr "ファイルは Window Memory のバックアップではありません: JSON オブジェクトが含まれていません。"
+
+msgid "The file is not a Window Memory backup: its \"format\" is not \"%(format)s\"."
+msgstr "ファイルは Window Memory のバックアップではありません: 「format」が「%(format)s」ではありません。"
+
+msgid "The backup was made by a newer version of Window Memory (backup format %(found)d). This version reads format %(supported)d only."
+msgstr "このバックアップは、より新しいバージョンの Window Memory で作成されました (バックアップ形式 %(found)d)。このバージョンが読み取れるのは形式 %(supported)d のみです。"
+
+msgid "The \"version\" of the backup is not %(version)d."
+msgstr "バックアップの「version」は %(version)d ではありません。"
+
+msgid "The backup has no \"settings\" object."
+msgstr "バックアップに「settings」オブジェクトがありません。"
+
+msgid "The backup has no \"state\" object."
+msgstr "バックアップに「state」オブジェクトがありません。"
+
+msgid "The \"version\" of the \"state\" in the backup is not %(version)d."
+msgstr "バックアップ内の「state」の「version」は %(version)d ではありません。"
+
+msgid "The \"windows\" of the \"state\" in the backup are not a list."
+msgstr "バックアップ内の「state」の「windows」はリストではありません。"
+
+msgid "%(count)d setting"
+msgid_plural "%(count)d settings"
+msgstr[0] "設定 %(count)d 項目"
+
+msgid "%(count)d remembered window"
+msgid_plural "%(count)d remembered windows"
+msgstr[0] "記憶したウィンドウ %(count)d 個"
+
+msgid "Backup saved: %(settings)s, %(windows)s."
+msgstr "バックアップを保存しました: %(settings)s、%(windows)s。"
+
+msgid "No windows are remembered yet."
+msgstr "記憶したウィンドウはまだありません。"
+
+msgid "The remembered windows could not be read (%(problem)s), so none were saved."
+msgstr "記憶したウィンドウを読み取れなかったため (%(problem)s)、1 つも保存されませんでした。"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup from %(time)s?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup from %(time)s?"
+msgstr[0] "設定と記憶したウィンドウ %(count)d 個を、%(time)s のこのバックアップで置き換えますか？"
+
+msgid "Replace the settings and the %(count)d remembered window with this backup?"
+msgid_plural "Replace the settings and the %(count)d remembered windows with this backup?"
+msgstr[0] "設定と記憶したウィンドウ %(count)d 個を、このバックアップで置き換えますか？"
+
+msgid "The current settings and remembered windows are lost. This cannot be undone."
+msgstr "現在の設定と記憶したウィンドウは失われます。この操作は元に戻せません。"
+
+msgid "Restored %(settings)s and %(windows)s."
+msgstr "%(settings)sと%(windows)sを復元しました。"
+
+msgid "%(count)d setting in the backup is not known to this version of Window Memory and was left out."
+msgid_plural "%(count)d settings in the backup are not known to this version of Window Memory and were left out."
+msgstr[0] "バックアップ内の設定 %(count)d 項目は、このバージョンの Window Memory が認識しないため除外されました。"
+
+msgid "Restored %(count)d remembered window, but not all the settings."
+msgid_plural "Restored %(count)d remembered windows, but not all the settings."
+msgstr[0] "記憶したウィンドウ %(count)d 個を復元しましたが、一部の設定は復元できませんでした。"
+
+msgid "The setting \"%(key)s\" could not be set: %(reason)s"
+msgstr "設定「%(key)s」を適用できませんでした: %(reason)s"
+
+msgid "%(count)d setting after it was not set either."
+msgid_plural "%(count)d settings after it were not set either."
+msgstr[0] "後続の設定 %(count)d 項目も適用されませんでした。"
+
+msgid "The remembered windows could not be handed to Window Memory: %(reason)s"
+msgstr "記憶したウィンドウを Window Memory に渡せませんでした: %(reason)s"
+
+msgid "The settings file has no value for \"%(key)s\"."
+msgstr "設定ファイルに「%(key)s」の値がありません。"
+
+msgid "%(path)s cannot be written: %(reason)s"
+msgstr "%(path)s に書き込めません: %(reason)s"
+
+msgid "The setting \"%(key)s\" could not be set to %(value)d before the restore: %(reason)s"
+msgstr "復元の前に、設定「%(key)s」を %(value)d に設定できませんでした: %(reason)s"
+
+msgid "The setting \"%(key)s\" was set to %(new)d for the restore and could not be set back to %(old)d: %(reason)s"
+msgstr "設定「%(key)s」は復元のため %(new)d に設定されましたが、%(old)d に戻せませんでした: %(reason)s"
+
+msgid "Export backup"
+msgstr "バックアップをエクスポート"
+
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
+
+msgid "_Save"
+msgstr "保存(_S)"
+
+msgid "Import backup"
+msgstr "バックアップをインポート"
+
+msgid "_Open"
+msgstr "開く(_O)"
+
+msgid "JSON files"
+msgstr "JSON ファイル"
+
+msgid "All files"
+msgstr "すべてのファイル"
+
+msgid "_Replace"
+msgstr "置き換え(_R)"
+
+msgid "unknown"
+msgstr "不明"
+
+msgid "(uncommitted changes)"
+msgstr "(コミットされていない変更)"
+
+msgid "Report an issue"
+msgstr "問題を報告"
+
+msgid "Wayland (experimental)"
+msgstr "Wayland (実験的)"
+
+msgid "You are using Cinnamon's Wayland session, which is still experimental. Window Memory has been tested with it on Cinnamon 6.0.5. If a window is not remembered as expected, please use Report an issue."
+msgstr "Cinnamon の Wayland セッションを使用しています。このセッションはまだ実験的なものです。Window Memory は Cinnamon 6.0.5 上でこのセッションを使ってテストされています。ウィンドウが期待どおりに記憶されない場合は、「問題を報告」をご利用ください。"
+
+msgid "These applications start when you log in, and Window Memory puts their windows back in place, unless they are enabled in the never remember list. It is the same list as in Startup Applications."
+msgstr "これらのアプリケーションはログイン時に開始され、「これらのアプリケーションは記憶しない」の一覧で有効になっているものを除き、Window Memory がそのウィンドウを元の位置に戻します。「自動開始させるアプリ」と同じ一覧です。"
+
+msgid "No applications start at login."
+msgstr "ログイン時に開始するアプリケーションはありません。"
+
+msgid "Pick a window to start at login"
+msgstr "ログイン時に開始するウィンドウを選択"
+
+msgid "Remove"
+msgstr "削除"
+
+msgid "Add or edit in Startup Applications…"
+msgstr "「自動開始させるアプリ」で追加または編集…"
+
+msgid "(system entry)"
+msgstr "(システムエントリ)"
+
+msgid "delay %(seconds)d s"
+msgstr "遅延 %(seconds)d 秒"
+
+msgid "Undo"
+msgstr "元に戻す"
+
+msgid "Added %(name)s"
+msgstr "%(name)s を追加しました"
+
+msgid "%(name)s is already in the list"
+msgstr "%(name)s はすでに一覧にあります"
+
+msgid "%(name)s switched on"
+msgstr "%(name)s を有効にしました"
+
+msgid "%(name)s brought back"
+msgstr "%(name)s を元に戻しました"
+
+msgid "%(name)s changed in the meantime and was left as it is."
+msgstr "%(name)s は途中で変更されたため、そのままにしました。"
+
+msgid "Could not read the startup applications: %(reason)s"
+msgstr "自動開始させるアプリを読み込めませんでした: %(reason)s"
+
+msgid "Could not add %(name)s: %(reason)s"
+msgstr "%(name)s を追加できませんでした: %(reason)s"
+
+msgid "Could not change %(name)s: %(reason)s"
+msgstr "%(name)s を変更できませんでした: %(reason)s"
+
+msgid "Could not start the pick: %(reason)s"
+msgstr "選択を開始できませんでした: %(reason)s"
+
+msgid "Could not open Startup Applications: %(reason)s"
+msgstr "「自動開始させるアプリ」を開けませんでした: %(reason)s"
+
+msgid "Start at login"
+msgstr "ログイン時に開始"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "Command"
+msgstr "コマンド"
+
+msgid "Comment"
+msgstr "説明"
+
+msgid "Startup delay"
+msgstr "開始遅延時間"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Add"
+msgstr "追加"
+
+msgid "This command is a best guess from the window. Check it before adding."
+msgstr "このコマンドはウィンドウから推測したものです。追加する前に確認してください。"
+
+msgid "The command cannot be empty."
+msgstr "コマンドを空にすることはできません。"
+
+msgid "The command is not valid: %(reason)s"
+msgstr "コマンドが無効です: %(reason)s"
+
+msgid "General"
+msgstr "一般"
+
+msgid "Settings for window-memory@bootkicker"
+msgstr "window-memory@bootkicker の設定"
+
+msgid "Click a window to never remember its application.  Esc or right-click to cancel."
+msgstr "ウィンドウをクリックすると、そのアプリケーションを記憶しません。Esc キーまたは右クリックでキャンセルします。"
+
+msgid "Click a window to start its application at login.  Esc or right-click to cancel."
+msgstr "ウィンドウをクリックすると、そのアプリケーションをログイン時に起動します。Esc キーまたは右クリックでキャンセルします。"
+
+msgid "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels."
+msgstr "ここをクリックしてから、記憶しないリストに追加したいウィンドウをクリックします。Escape キーまたは右クリックでキャンセルします。"
+
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Max windows"
+msgstr "最大ウィンドウ数"
+
+msgid "Maximum remembered windows. The least recently seen windows are dropped first."
+msgstr "記憶するウィンドウの最大数です。最後に見た時期が古いウィンドウから順に破棄されます。"
+
+msgid "Pick a window to never remember (Click it, Esc or right-click to cancel)"
+msgstr "記憶しないウィンドウを選択 (クリックで決定、Esc または右クリックでキャンセル)"
+
+msgid "Startup apps"
+msgstr "自動開始アプリ"
+
+msgid "The setting \"%(key)s\" in the backup has an entry whose \"%(column)s\" is not true or false."
+msgstr "バックアップ内の設定「%(key)s」に、「%(column)s」が true でも false でもないエントリーがあります。"
+
+msgid "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically."
+msgstr "これらのアプリケーションのウィンドウは保存も復元もされません。WM_CLASS を入力してください。ターミナルで xprop WM_CLASS を実行し、ウィンドウをクリックすると確認できます。照合では大文字と小文字は区別されず、名前の一部でも一致します。チェックを外したエントリーはリストに残りますが無視され、そのアプリケーションのウィンドウは再び記憶されます。代わりに「ウィンドウを選択」ボタンを使うと、エントリーを自動的に追加することもできます。"

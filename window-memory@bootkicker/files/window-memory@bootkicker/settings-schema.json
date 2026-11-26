@@ -1,0 +1,175 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": ["general", "login"],
+        "general": {
+            "type": "page",
+            "title": "General",
+            "sections": ["general-section"]
+        },
+        "login": {
+            "type": "page",
+            "title": "Startup apps",
+            "sections": ["login-section"]
+        },
+        "general-section": {
+            "type": "section",
+            "title": "Settings for window-memory@bootkicker",
+            "keys": [
+                "enabled",
+                "remember-size",
+                "remember-position",
+                "remember-monitor",
+                "remember-workspace",
+                "remember-maximized",
+                "remember-minimized",
+                "match-by-title",
+                "include-dialogs",
+                "excluded-apps",
+                "pick-window",
+                "forget-focused",
+                "forget-all",
+                "backup",
+                "version-info"
+            ]
+        },
+        "login-section": {
+            "type": "section",
+            "title": "Settings for window-memory@bootkicker",
+            "keys": ["startup-list", "version-info-login"]
+        }
+    },
+    "enabled": {
+        "type": "switch",
+        "default": true,
+        "description": "Enable Window Memory"
+    },
+    "remember-size": {
+        "type": "switch",
+        "default": true,
+        "description": "Remember window size"
+    },
+    "remember-position": {
+        "type": "switch",
+        "default": true,
+        "description": "Remember window position"
+    },
+    "remember-monitor": {
+        "type": "switch",
+        "default": true,
+        "description": "Restore to the same monitor when it is connected",
+        "tooltip": "When off, the position is kept relative to the monitor the window opens on."
+    },
+    "remember-workspace": {
+        "type": "switch",
+        "default": true,
+        "description": "Remember workspace"
+    },
+    "remember-maximized": {
+        "type": "switch",
+        "default": true,
+        "description": "Remember maximized state"
+    },
+    "remember-minimized": {
+        "type": "switch",
+        "default": true,
+        "description": "Remember minimized state",
+        "tooltip": "A window that was minimized when saved reopens minimized."
+    },
+    "match-by-title": {
+        "type": "combobox",
+        "default": "class",
+        "description": "Match windows by",
+        "tooltip": "Chooses which saved place a window gets when an application has several remembered windows.\n\nApplication only: a window takes the newest saved place of its application that no other open window is using. This is the simplest choice and is right for most programs.\n\nApplication and window title: Window Memory first looks for a saved place whose window had the same title (capital letters do not matter), so windows that are always opened with the same title, such as the same document or website, go back to their own place. If no title matches, it behaves like \"Application only\".\n\nIf \"Remember minimized state\" is on, a saved place where the window was not minimized is preferred, so that when an application had one minimized and one normal window, at least one of them opens visible. A matching title still comes first.",
+        "options": {
+            "Application only": "class",
+            "Application and window title": "class+title"
+        }
+    },
+    "include-dialogs": {
+        "type": "switch",
+        "default": false,
+        "description": "Also remember dialog windows"
+    },
+    "excluded-apps": {
+        "type": "list",
+        "default": [],
+        "description": "Never remember these applications",
+        "tooltip": "Windows of these applications are never saved or restored. Enter the WM_CLASS: run xprop WM_CLASS in a terminal, then click the window. Matching ignores case and accepts part of the name. An unchecked entry stays in the list but is ignored: windows of that application are remembered again. You can also use the \"Pick a window\" button instead to add entries automatically.",
+        "columns": [
+            {
+                "id": "enabled",
+                "title": "Enabled",
+                "type": "boolean",
+                "default": true,
+                "align": 0.5
+            },
+            {
+                "id": "wmclass",
+                "title": "Never remember these applications (WM class)",
+                "type": "string"
+            }
+        ]
+    },
+    "pick-window": {
+        "type": "custom",
+        "file": "pick_button.py",
+        "widget": "PickWindowButton",
+        "description": "Pick a window to never remember (Click it, Esc or right-click to cancel)",
+        "tooltip": "Click here, then click the window you want to add to the never-remember list. Escape or a right-click cancels.",
+        "callback": "pickWindow"
+    },
+    "max-entries": {
+        "type": "spinbutton",
+        "default": 500,
+        "min": 10,
+        "max": 5000,
+        "step": 10,
+        "units": "windows",
+        "description": "Maximum remembered windows",
+        "tooltip": "The least recently seen windows are dropped first."
+    },
+    "startup-list": {
+        "type": "custom",
+        "file": "startup_list.py",
+        "widget": "StartupList"
+    },
+    "startup-pick": {
+        "type": "generic",
+        "default": ""
+    },
+    "forget-focused": {
+        "type": "keybinding",
+        "default": "",
+        "description": "Forget the focused window"
+    },
+    "forget-all": {
+        "type": "custom",
+        "file": "forget_button.py",
+        "widget": "ForgetAllButton",
+        "description": "Forget all remembered windows (Cannot be undone, Esc to cancel)",
+        "callback": "forgetAll"
+    },
+    "backup": {
+        "type": "custom",
+        "file": "backup_buttons.py",
+        "widget": "BackupButtons",
+        "description": "Back up or restore settings and remembered windows",
+        "buttons": [
+            {"label": "Export backup…", "tooltip": "Save every setting, the never-remember list and the remembered windows to a file."},
+            {"label": "Import backup…", "tooltip": "Replace every setting and remembered window with the ones in a backup file. Asks first."}
+        ]
+    },
+    "version-info": {
+        "type": "custom",
+        "file": "version_info.py",
+        "widget": "VersionInfo",
+        "description": "Version"
+    },
+    "version-info-login": {
+        "type": "custom",
+        "file": "version_info.py",
+        "widget": "VersionInfo",
+        "description": "Version"
+    }
+}
