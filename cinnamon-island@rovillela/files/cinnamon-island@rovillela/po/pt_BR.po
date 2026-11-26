@@ -1,0 +1,631 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cinnamon-island@rovillela 0.1.0\n"
+"PO-Revision-Date: 2026-10-10 18:00-0300\n"
+"Last-Translator: Rodrigo Villela\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Cinnamon Island"
+msgstr "Cinnamon Island"
+
+msgid "Media"
+msgstr "Mídia"
+
+msgid "Volume"
+msgstr "Volume"
+
+msgid "Nothing playing"
+msgstr "Nada tocando"
+
+msgid "No audio output found"
+msgstr "Nenhuma saída de áudio encontrada"
+
+msgid "The Cinnamon Island engine is not running"
+msgstr "O motor do Cinnamon Island não está rodando"
+
+msgid "A glass notch on the screen edge that expands into tabs on hover (dynamic island for Cinnamon)"
+msgstr "Um notch de vidro na borda da tela que expande em abas ao passar o mouse (dynamic island para o Cinnamon)"
+
+msgid "Island"
+msgstr "Cinnamon Island"
+
+msgid "Position on the screen"
+msgstr "Posição na tela"
+
+msgid "Top"
+msgstr "Em cima"
+
+msgid "Bottom"
+msgstr "Embaixo"
+
+msgid "Left"
+msgstr "Esquerda"
+
+msgid "Right"
+msgstr "Direita"
+
+msgid "Shortcut to open and close"
+msgstr "Atalho para abrir e fechar"
+
+msgid "Delay before collapsing when the mouse leaves"
+msgstr "Atraso antes de recolher quando o mouse sai"
+
+msgid "Glass"
+msgstr "Vidro"
+
+msgid "Blur what is behind the island"
+msgstr "Desfocar o que está atrás da ilha"
+
+msgid "Glass tint opacity (%)"
+msgstr "Opacidade do vidro (%)"
+
+msgid "General"
+msgstr "Geral"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Same as the system"
+msgstr "O mesmo do sistema"
+
+msgid "Display"
+msgstr "Monitor"
+
+msgid "Headphones"
+msgstr "Fones"
+
+msgid "Digital output"
+msgstr "Saída digital"
+
+msgid "Speakers"
+msgstr "Caixas de som"
+
+msgid "Pomodoro"
+msgstr "Pomodoro"
+
+msgid "What are you working on?"
+msgstr "No que você está trabalhando?"
+
+msgid "Focus"
+msgstr "Foco"
+
+msgid "Short break"
+msgstr "Pausa curta"
+
+msgid "Long break"
+msgstr "Pausa longa"
+
+msgid "Today: %d · This week: %d"
+msgstr "Hoje: %d · Semana: %d"
+
+msgid "Focus time"
+msgstr "Tempo de foco"
+
+msgid "Focus cycles before a long break"
+msgstr "Ciclos de foco até a pausa longa"
+
+msgid "Pause the music when a break starts"
+msgstr "Pausar a música quando a pausa começa"
+
+msgid "Play a sound when a cycle ends"
+msgstr "Tocar um som quando um ciclo termina"
+
+msgid "Sound"
+msgstr "Som"
+
+msgid "Files"
+msgstr "Arquivos"
+
+msgid "Notes"
+msgstr "Notas"
+
+msgid "Drag files here"
+msgstr "Arraste arquivos para cá"
+
+msgid "Write a quick note…"
+msgstr "Escreva uma nota rápida…"
+
+msgid "Times the sound plays"
+msgstr "Quantas vezes o som toca"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Copied"
+msgstr "Copiado"
+
+msgid "Save to Files"
+msgstr "Salvar em Arquivos"
+
+msgid "Saved automatically"
+msgstr "Salva automaticamente"
+
+msgid "Clipboard"
+msgstr "Clipboard"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Weather"
+msgstr "Clima"
+
+msgid "Nothing copied yet"
+msgstr "Nada copiado ainda"
+
+msgid "CPU"
+msgstr "CPU"
+
+msgid "Memory"
+msgstr "Memória"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Network"
+msgstr "Rede"
+
+msgid "Processor"
+msgstr "Processador"
+
+msgid "Clear sky"
+msgstr "Céu limpo"
+
+msgid "Partly cloudy"
+msgstr "Parcialmente nublado"
+
+msgid "Cloudy"
+msgstr "Nublado"
+
+msgid "Fog"
+msgstr "Neblina"
+
+msgid "Drizzle"
+msgstr "Garoa"
+
+msgid "Rain"
+msgstr "Chuva"
+
+msgid "Snow"
+msgstr "Neve"
+
+msgid "Showers"
+msgstr "Pancadas de chuva"
+
+msgid "Thunderstorm"
+msgstr "Tempestade"
+
+msgid "Today"
+msgstr "Hoje"
+
+msgid "Tomorrow"
+msgstr "Amanhã"
+
+msgid "Sun"
+msgstr "dom."
+
+msgid "Mon"
+msgstr "seg."
+
+msgid "Tue"
+msgstr "ter."
+
+msgid "Wed"
+msgstr "qua."
+
+msgid "Thu"
+msgstr "qui."
+
+msgid "Fri"
+msgstr "sex."
+
+msgid "Sat"
+msgstr "sáb."
+
+msgid "Set your city in the Cinnamon Island settings"
+msgstr "Informe sua cidade nas configurações do Cinnamon Island"
+
+msgid "Loading the forecast…"
+msgstr "Carregando a previsão…"
+
+msgid "City not found"
+msgstr "Cidade não encontrada"
+
+msgid "Couldn't load the forecast"
+msgstr "Não foi possível carregar a previsão"
+
+msgid "Add your calendar address in the Cinnamon Island settings"
+msgstr "Adicione o endereço da sua agenda nas configurações do Cinnamon Island"
+
+msgid "Couldn't load the calendar"
+msgstr "Não foi possível carregar a agenda"
+
+msgid "No upcoming events"
+msgstr "Nenhum compromisso próximo"
+
+msgid "Weather and calendar"
+msgstr "Clima e agenda"
+
+msgid "City for the forecast"
+msgstr "Cidade da previsão"
+
+msgid "Calendar address (iCal)"
+msgstr "Endereço da agenda (iCal)"
+
+msgid "In Google Calendar: Settings > your calendar > Secret address in iCal format"
+msgstr "No Google Agenda: Configurações > sua agenda > Endereço secreto no formato iCal"
+
+msgid "Search for a city…"
+msgstr "Buscar cidade…"
+
+msgid "Searching…"
+msgstr "Buscando…"
+
+msgid "No city found"
+msgstr "Nenhuma cidade encontrada"
+
+msgid "Type the name and pick from the list"
+msgstr "Digite o nome e escolha na lista"
+
+msgid "The calendar link in the settings isn't a valid link"
+msgstr "O link da agenda nas configurações não é um link válido"
+
+msgid "To see your events here, add your calendar link in the Cinnamon Island settings"
+msgstr "Para ver seus compromissos aqui, adicione o link da sua agenda nas configurações do Cinnamon Island"
+
+msgid "Calendar"
+msgstr "Agenda"
+
+msgid "Calendar link (iCal)"
+msgstr "Link da agenda (iCal)"
+
+msgid "A web link that lets Cinnamon Island read your events. In Google Calendar: Settings > your calendar > Secret address in iCal format. It starts with https://"
+msgstr "Um link da internet que deixa o Cinnamon Island ler seus compromissos. No Google Agenda: Configurações > sua agenda > Endereço secreto no formato iCal. Começa com https://"
+
+msgid "current"
+msgstr "atual"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Text"
+msgstr "Texto"
+
+msgid "Clear all"
+msgstr "Limpar tudo"
+
+msgid "Click a card to copy it again · right-click removes it"
+msgstr "Clique num cartão para copiar de novo · botão direito remove"
+
+msgid "Agenda"
+msgstr "Agenda"
+
+msgid "all day"
+msgstr "dia inteiro"
+
+msgid "Tabs"
+msgstr "Abas"
+
+msgid "Tabs shown on the island"
+msgstr "Abas que aparecem na ilha"
+
+msgid "Times"
+msgstr "Tempos"
+
+msgid "When a cycle ends"
+msgstr "Quando um ciclo termina"
+
+msgid "Opening Spotify…"
+msgstr "Abrindo o Spotify…"
+
+msgid "Last played on Spotify"
+msgstr "Última música no Spotify"
+
+msgid "Open Spotify"
+msgstr "Abrir o Spotify"
+
+msgid "now"
+msgstr "agora"
+
+msgid "%d min"
+msgstr "%d min"
+
+msgid "in %d min"
+msgstr "em %d min"
+
+msgid "Microphone muted"
+msgstr "Microfone no mudo"
+
+msgid "Microphone on"
+msgstr "Microfone ligado"
+
+msgid "%s connected"
+msgstr "%s conectado"
+
+msgid "Device"
+msgstr "Aparelho"
+
+msgid "%s: %d% battery"
+msgstr "%s: %d% de bateria"
+
+msgid "Notices"
+msgstr "Avisos"
+
+msgid "Shown on the closed island"
+msgstr "Aparecem na ilha fechada"
+
+msgid "A download finished"
+msgstr "Um download terminou"
+
+msgid "Countdown to the next calendar event"
+msgstr "Contagem para o próximo compromisso"
+
+msgid "An accessory connected or its battery is low"
+msgstr "Um acessório conectou ou está com pouca bateria"
+
+msgid "No app is playing sound"
+msgstr "Nenhum aplicativo tocando som"
+
+msgid "Apps"
+msgstr "Aplicativos"
+
+msgid "Sound shortcuts"
+msgstr "Atalhos de som"
+
+msgid "Mute or unmute the microphone"
+msgstr "Ligar ou desligar o microfone"
+
+msgid "Switch to the next audio output"
+msgstr "Passar para a próxima saída de áudio"
+
+msgid "Turn on lyrics"
+msgstr "Ativar letras"
+
+msgid "Lyrics"
+msgstr "Letra"
+
+msgid "Up next: %s"
+msgstr "A seguir: %s"
+
+msgid "To find lyrics, Cinnamon Island sends the song's title and artist to lrclib.net."
+msgstr "Para buscar a letra, o Cinnamon Island envia o título e o artista da música ao lrclib.net."
+
+msgid "Looking for the lyrics…"
+msgstr "Procurando a letra…"
+
+msgid "Couldn't load the lyrics"
+msgstr "Não foi possível carregar a letra"
+
+msgid "No synced lyrics for this one"
+msgstr "Sem letra sincronizada para esta música"
+
+msgid "Music"
+msgstr "Música"
+
+msgid "Bars on the closed island follow the sound"
+msgstr "As barrinhas da ilha fechada acompanham o som"
+
+msgid "Cinnamon Island listens to what your computer is playing to move the bars. Nothing is saved or sent anywhere."
+msgstr "O Cinnamon Island escuta o que o computador está tocando para mexer as barrinhas. Nada é guardado nem enviado."
+
+msgid "Look up synced lyrics online"
+msgstr "Buscar letras sincronizadas na internet"
+
+msgid "Sends the title, artist, album and length of the song to lrclib.net. Never used for what plays in web browsers."
+msgstr "Envia o título, o artista, o álbum e a duração da música ao lrclib.net. Nunca é usado para o que toca em navegadores."
+
+msgid "Timer"
+msgstr "Timer"
+
+msgid "Time's up"
+msgstr "Acabou"
+
+msgid "Stopwatch"
+msgstr "Cronômetro"
+
+msgid "Clock"
+msgstr "Relógio"
+
+msgid "Output"
+msgstr "Saída"
+
+msgid "Master"
+msgstr "Geral"
+
+msgid "Mic"
+msgstr "Mic"
+
+msgid "Opening and closing"
+msgstr "Abrir e fechar"
+
+msgid "Open the island"
+msgstr "Abrir a ilha"
+
+msgid "When the mouse passes over it"
+msgstr "Quando o mouse passa por cima"
+
+msgid "With a click"
+msgstr "Com um clique"
+
+msgid "Wait before opening on hover"
+msgstr "Espera antes de abrir com o mouse"
+
+msgid "Hide the island while it is closed"
+msgstr "Esconder a ilha enquanto está fechada"
+
+msgid "It comes back when the mouse touches the screen edge where it sits, and whenever there is a notice to show."
+msgstr "Ela volta quando o mouse encosta na borda da tela onde ela fica, e sempre que há um aviso para mostrar."
+
+msgid "Order and visibility (the first tab, Volume, is always shown)"
+msgstr "Ordem e quais aparecem (a aba Volume aparece sempre)"
+
+msgid "Tab"
+msgstr "Aba"
+
+msgid "Show"
+msgstr "Mostrar"
+
+msgid "Clicking the calendar opens"
+msgstr "Clicar no calendário abre"
+
+msgid "Google Calendar in the browser"
+msgstr "O Google Agenda no navegador"
+
+msgid "The default calendar app"
+msgstr "O programa de calendário padrão"
+
+msgid "Nothing"
+msgstr "Nada"
+
+msgid "Tools"
+msgstr "Ferramentas"
+
+msgid "Until turned off"
+msgstr "Até desligar"
+
+msgid "Keep awake"
+msgstr "Manter acordado"
+
+msgid "Color picker"
+msgstr "Conta-gotas"
+
+msgid "Capture area"
+msgstr "Capturar área"
+
+msgid "Capture screen"
+msgstr "Capturar tela"
+
+msgid "Copy text"
+msgstr "Copiar texto"
+
+msgid "Copies the color code"
+msgstr "Copia o código da cor"
+
+msgid "Goes to Files"
+msgstr "Vai para Arquivos"
+
+msgid "Off"
+msgstr "Desligado"
+
+msgid "From an area of the screen"
+msgstr "De uma área da tela"
+
+msgid "Needs tesseract-ocr"
+msgstr "Precisa do tesseract-ocr"
+
+msgid "%s copied"
+msgstr "%s copiado"
+
+msgid "Text copied (%d characters)"
+msgstr "Texto copiado (%d caracteres)"
+
+msgid "No text found in that area"
+msgstr "Nenhum texto encontrado nessa área"
+
+msgid "Couldn't keep the screen awake"
+msgstr "Não foi possível manter a tela acordada"
+
+msgid "Couldn't read the color"
+msgstr "Não foi possível ler a cor"
+
+msgid "Something went wrong"
+msgstr "Algo deu errado"
+
+msgid "Click a line to copy it again · right-click removes it"
+msgstr "Clique numa linha para copiar de novo · botão direito remove"
+
+msgid "Cities"
+msgstr "Cidades"
+
+msgid "Add city"
+msgstr "Adicionar"
+
+msgid "Camera"
+msgstr "Câmera"
+
+msgid "On · click to close"
+msgstr "Ligada · clique para fechar"
+
+msgid "Mirror below the island"
+msgstr "Espelho abaixo da ilha"
+
+msgid "Couldn't open the camera"
+msgstr "Não foi possível abrir a câmera"
+
+msgid "Click opens · drag it out to use it · × removes"
+msgstr "Clique abre · arraste para fora para usar · × tira"
+
+msgid "Link cleaned of trackers"
+msgstr "Link limpo de rastreadores"
+
+msgid "Remove trackers from copied links"
+msgstr "Tirar rastreadores dos links copiados"
+
+msgid "When you copy a web link, Cinnamon Island replaces it with the same link without tracking codes (utm_…, fbclid, si and the like)."
+msgstr "Quando você copia um link, o Cinnamon Island o troca pelo mesmo link sem os códigos de rastreamento (utm_…, fbclid, si e parecidos)."
+
+msgid "Graphics"
+msgstr "Vídeo"
+
+msgid "Disk"
+msgstr "Disco"
+
+msgid "Battery"
+msgstr "Bateria"
+
+msgid "%s free"
+msgstr "%s livres"
+
+msgid "Charging"
+msgstr "Carregando"
+
+msgid "On battery"
+msgstr "Na bateria"
+
+msgid "Plugged in"
+msgstr "Na tomada"
+
+msgid "HDD"
+msgstr "HD"
+
+msgid "SSD"
+msgstr "SSD"
+
+msgid "USB"
+msgstr "USB"
+
+msgid "not mounted"
+msgstr "não montado"
+
+msgid "Notifications"
+msgstr "Notificações"
+
+msgid "Click opens the app · right-click dismisses"
+msgstr "Clique abre o programa · botão direito dispensa"
+
+msgid "Could not listen to system notifications"
+msgstr "Não foi possível escutar as notificações do sistema"
+
+msgid "Notifications are turned off in the settings"
+msgstr "As notificações estão desligadas nas configurações"
+
+msgid "No notifications"
+msgstr "Nenhuma notificação"
+
+msgid "System notifications"
+msgstr "Notificações do sistema"
+
+msgid "Shows the notifications apps send, and keeps them in the Notifications tab until you dismiss them. Nothing is saved to disk. Your desktop keeps showing its own notifications as before."
+msgstr "Mostra as notificações que os programas mandam e as guarda na aba Notificações até você dispensar. Nada é gravado em disco. O sistema continua mostrando as notificações dele como antes."
+
+msgid "Couldn't find the program to open"
+msgstr "Não achei o programa para abrir"
+
+msgid "System notifications (adds the Notifications tab)"
+msgstr "Notificações do sistema (acrescenta a aba Notificações)"
+
+msgid "Off by default. When on, the island shows the notifications apps send and keeps them in a Notifications tab until you dismiss them. Nothing is saved to disk. Your desktop keeps showing its own notifications as before."
+msgstr "Desligada por padrão. Ligada, a ilha mostra as notificações que os programas mandam e as guarda numa aba Notificações até você dispensar. Nada é gravado em disco. O sistema continua mostrando as notificações dele como antes."

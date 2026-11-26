@@ -1,0 +1,412 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": [
+            "page-general",
+            "page-tabs",
+            "page-media",
+            "page-notices",
+            "page-pomodoro",
+            "page-agenda"
+        ],
+        "page-general": {
+            "type": "page",
+            "title": "General",
+            "sections": [
+                "sec-island",
+                "sec-behavior",
+                "sec-sound-keys",
+                "sec-clipboard",
+                "sec-glass"
+            ]
+        },
+        "page-tabs": {
+            "type": "page",
+            "title": "Tabs",
+            "sections": [
+                "sec-tabs"
+            ]
+        },
+        "page-pomodoro": {
+            "type": "page",
+            "title": "Pomodoro",
+            "sections": [
+                "sec-times",
+                "sec-alert"
+            ]
+        },
+        "page-agenda": {
+            "type": "page",
+            "title": "Agenda",
+            "sections": [
+                "sec-calendar"
+            ]
+        },
+        "sec-island": {
+            "type": "section",
+            "title": "Island",
+            "keys": [
+                "language",
+                "position",
+                "hotkey"
+            ]
+        },
+        "sec-glass": {
+            "type": "section",
+            "title": "Glass",
+            "keys": [
+                "blur",
+                "glass-opacity"
+            ]
+        },
+        "sec-tabs": {
+            "type": "section",
+            "title": "Tabs shown on the island",
+            "keys": [
+                "tab-order"
+            ]
+        },
+        "sec-times": {
+            "type": "section",
+            "title": "Times",
+            "keys": [
+                "pomodoro-focus-minutes",
+                "pomodoro-short-break-minutes",
+                "pomodoro-long-break-minutes",
+                "pomodoro-cycles"
+            ]
+        },
+        "sec-alert": {
+            "type": "section",
+            "title": "When a cycle ends",
+            "keys": [
+                "pomodoro-pause-music",
+                "pomodoro-sound",
+                "pomodoro-sound-file",
+                "pomodoro-sound-repeat"
+            ]
+        },
+        "sec-calendar": {
+            "type": "section",
+            "title": "Calendar",
+            "keys": [
+                "calendar-url",
+                "calendar-click"
+            ]
+        },
+        "page-notices": {
+            "type": "page",
+            "title": "Notices",
+            "sections": [
+                "sec-notices"
+            ]
+        },
+        "sec-notices": {
+            "type": "section",
+            "title": "Shown on the closed island",
+            "keys": [
+                "notice-downloads",
+                "notice-events",
+                "notice-devices",
+                "notice-notifications"
+            ]
+        },
+        "sec-sound-keys": {
+            "type": "section",
+            "title": "Sound shortcuts",
+            "keys": [
+                "hotkey-mic-mute",
+                "hotkey-next-output"
+            ]
+        },
+        "page-media": {
+            "type": "page",
+            "title": "Media",
+            "sections": [
+                "sec-media"
+            ]
+        },
+        "sec-media": {
+            "type": "section",
+            "title": "Music",
+            "keys": [
+                "real-waves",
+                "lyrics-enabled"
+            ]
+        },
+        "sec-behavior": {
+            "type": "section",
+            "title": "Opening and closing",
+            "keys": [
+                "open-mode",
+                "open-delay",
+                "close-delay",
+                "hide-closed"
+            ]
+        },
+        "sec-clipboard": {
+            "type": "section",
+            "title": "Clipboard",
+            "keys": [
+                "clean-links"
+            ]
+        }
+    },
+    "language": {
+        "type": "combobox",
+        "default": "system",
+        "description": "Language",
+        "options": {
+            "Same as the system": "system",
+            "Português (Brasil)": "pt_BR",
+            "English": "en"
+        }
+    },
+    "position": {
+        "type": "combobox",
+        "default": "top",
+        "description": "Position on the screen",
+        "options": {
+            "Top": "top",
+            "Bottom": "bottom",
+            "Left": "left",
+            "Right": "right"
+        }
+    },
+    "hotkey": {
+        "type": "keybinding",
+        "default": "<Super>i",
+        "description": "Shortcut to open and close"
+    },
+    "close-delay": {
+        "type": "spinbutton",
+        "default": 350,
+        "min": 0,
+        "max": 2000,
+        "step": 50,
+        "units": "ms",
+        "description": "Delay before collapsing when the mouse leaves"
+    },
+    "blur": {
+        "type": "switch",
+        "default": true,
+        "description": "Blur what is behind the island"
+    },
+    "glass-opacity": {
+        "type": "scale",
+        "default": 45,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "description": "Glass tint opacity (%)"
+    },
+    "pomodoro-focus-minutes": {
+        "type": "spinbutton",
+        "default": 25,
+        "min": 1,
+        "max": 180,
+        "step": 1,
+        "units": "min",
+        "description": "Focus time"
+    },
+    "pomodoro-short-break-minutes": {
+        "type": "spinbutton",
+        "default": 5,
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "units": "min",
+        "description": "Short break"
+    },
+    "pomodoro-long-break-minutes": {
+        "type": "spinbutton",
+        "default": 15,
+        "min": 1,
+        "max": 120,
+        "step": 1,
+        "units": "min",
+        "description": "Long break"
+    },
+    "pomodoro-cycles": {
+        "type": "spinbutton",
+        "default": 4,
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "description": "Focus cycles before a long break"
+    },
+    "pomodoro-pause-music": {
+        "type": "switch",
+        "default": true,
+        "description": "Pause the music when a break starts"
+    },
+    "pomodoro-sound": {
+        "type": "switch",
+        "default": true,
+        "description": "Play a sound when a cycle ends"
+    },
+    "pomodoro-sound-file": {
+        "type": "soundfilechooser",
+        "default": "/usr/share/sounds/freedesktop/stereo/complete.oga",
+        "description": "Sound",
+        "dependency": "pomodoro-sound"
+    },
+    "pomodoro-sound-repeat": {
+        "type": "spinbutton",
+        "default": 3,
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "description": "Times the sound plays",
+        "dependency": "pomodoro-sound"
+    },
+    "calendar-url": {
+        "type": "entry",
+        "default": "",
+        "description": "Calendar link (iCal)",
+        "tooltip": "A web link that lets Cinnamon Island read your events. In Google Calendar: Settings > your calendar > Secret address in iCal format. It starts with https://"
+    },
+    "notice-downloads": {
+        "type": "switch",
+        "default": true,
+        "description": "A download finished"
+    },
+    "notice-events": {
+        "type": "switch",
+        "default": true,
+        "description": "Countdown to the next calendar event"
+    },
+    "notice-devices": {
+        "type": "switch",
+        "default": true,
+        "description": "An accessory connected or its battery is low"
+    },
+    "hotkey-mic-mute": {
+        "type": "keybinding",
+        "default": "<Super>m",
+        "description": "Mute or unmute the microphone"
+    },
+    "hotkey-next-output": {
+        "type": "keybinding",
+        "default": "<Super><Alt>o",
+        "description": "Switch to the next audio output"
+    },
+    "real-waves": {
+        "type": "switch",
+        "default": true,
+        "description": "Bars on the closed island follow the sound",
+        "tooltip": "Cinnamon Island listens to what your computer is playing to move the bars. Nothing is saved or sent anywhere."
+    },
+    "lyrics-enabled": {
+        "type": "switch",
+        "default": false,
+        "description": "Look up synced lyrics online",
+        "tooltip": "Sends the title, artist, album and length of the song to lrclib.net. Never used for what plays in web browsers."
+    },
+    "last-tab": {
+        "type": "generic",
+        "default": "Volume"
+    },
+    "open-mode": {
+        "type": "combobox",
+        "default": "hover",
+        "description": "Open the island",
+        "options": {
+            "When the mouse passes over it": "hover",
+            "With a click": "click"
+        }
+    },
+    "open-delay": {
+        "type": "spinbutton",
+        "default": 0,
+        "min": 0,
+        "max": 2000,
+        "step": 50,
+        "units": "ms",
+        "description": "Wait before opening on hover",
+        "dependency": "open-mode=hover"
+    },
+    "hide-closed": {
+        "type": "switch",
+        "default": false,
+        "description": "Hide the island while it is closed",
+        "tooltip": "It comes back when the mouse touches the screen edge where it sits, and whenever there is a notice to show."
+    },
+    "tab-order": {
+        "type": "list",
+        "description": "Order and visibility (the first tab, Volume, is always shown)",
+        "columns": [
+            {
+                "id": "name",
+                "title": "Tab",
+                "type": "string"
+            },
+            {
+                "id": "enabled",
+                "title": "Show",
+                "type": "boolean",
+                "default": true
+            }
+        ],
+        "default": [
+            {
+                "name": "Volume",
+                "enabled": true
+            },
+            {
+                "name": "Media",
+                "enabled": true
+            },
+            {
+                "name": "Clock",
+                "enabled": true
+            },
+            {
+                "name": "Agenda",
+                "enabled": true
+            },
+            {
+                "name": "Notes",
+                "enabled": true
+            },
+            {
+                "name": "Clipboard",
+                "enabled": true
+            },
+            {
+                "name": "Files",
+                "enabled": true
+            },
+            {
+                "name": "Weather",
+                "enabled": true
+            },
+            {
+                "name": "System",
+                "enabled": true
+            }
+        ]
+    },
+    "calendar-click": {
+        "type": "combobox",
+        "default": "google",
+        "description": "Clicking the calendar opens",
+        "options": {
+            "Google Calendar in the browser": "google",
+            "The default calendar app": "app",
+            "Nothing": "none"
+        }
+    },
+    "clean-links": {
+        "type": "switch",
+        "default": true,
+        "description": "Remove trackers from copied links",
+        "tooltip": "When you copy a web link, Cinnamon Island replaces it with the same link without tracking codes (utm_…, fbclid, si and the like)."
+    },
+    "notice-notifications": {
+        "type": "switch",
+        "default": false,
+        "description": "System notifications (adds the Notifications tab)",
+        "tooltip": "Off by default. When on, the island shows the notifications apps send and keeps them in a Notifications tab until you dismiss them. Nothing is saved to disk. Your desktop keeps showing its own notifications as before."
+    }
+}
