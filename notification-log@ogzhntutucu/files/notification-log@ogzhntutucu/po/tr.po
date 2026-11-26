@@ -1,0 +1,229 @@
+# NOTIFICATION LOG - Turkish translation
+# This file is put in the public domain.
+# ogzhntutucu, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: notification-log@ogzhntutucu 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\n"
+"POT-Creation-Date: 2026-10-17 21:37+0300\n"
+"PO-Revision-Date: 2026-10-13 20:48+0300\n"
+"Last-Translator: ogzhntutucu\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: settings.py:99
+msgid "Search"
+msgstr "Ara"
+
+#: settings.py:110
+msgid "Refresh"
+msgstr "Yenile"
+
+#: settings.py:122
+msgid "Time"
+msgstr "Saat"
+
+#: settings.py:122
+msgid "App"
+msgstr "Uygulama"
+
+#: settings.py:122
+msgid "Title"
+msgstr "Başlık"
+
+#: settings.py:122
+msgid "Text"
+msgstr "Metin"
+
+#: settings.py:171
+msgid "All"
+msgstr "Tümü"
+
+#: settings.py:171
+msgid "None"
+msgstr "Hiçbiri"
+
+#: settings.py:212
+#, python-format
+msgid "Apps (%d/%d)"
+msgstr "Uygulamalar (%d/%d)"
+
+#: settings.py:214
+msgid ""
+"No notifications logged yet. New notifications will appear here after you "
+"press Refresh."
+msgstr ""
+"Henüz kaydedilmiş bildirim yok. Yeni bildirimler Yenile düğmesine bastıktan "
+"sonra burada görünür."
+
+#: settings.py:219
+#, python-format
+msgid "%d notification. Right-click a row for more actions."
+msgid_plural "%d notifications. Right-click a row for more actions."
+msgstr[0] "%d bildirim. Diğer işlemler için bir satıra sağ tıklayın."
+msgstr[1] "%d bildirim. Diğer işlemler için bir satıra sağ tıklayın."
+
+#: settings.py:223
+#, python-format
+msgid "Showing %d of %d notification. Right-click a row for more actions."
+msgid_plural ""
+"Showing %d of %d notifications. Right-click a row for more actions."
+msgstr[0] ""
+"%d / %d bildirim gösteriliyor. Diğer işlemler için bir satıra sağ tıklayın."
+msgstr[1] ""
+"%d / %d bildirim gösteriliyor. Diğer işlemler için bir satıra sağ tıklayın."
+
+#: settings.py:267
+msgid "Copy text"
+msgstr "Metni kopyala"
+
+#: settings.py:271
+#, python-format
+msgid "Hide notifications from \"%s\""
+msgstr "\"%s\" bildirimlerini gizle"
+
+#: settings.py:274
+#, python-format
+msgid "Hide notifications from site \"%s\""
+msgstr "\"%s\" sitesinin bildirimlerini gizle"
+
+#: settings.py:276
+msgid "Delete this record"
+msgstr "Bu kaydı sil"
+
+#: settings.py:296
+#, python-format
+msgid "Notifications matching \"%s\" will no longer be logged."
+msgstr "\"%s\" ile eşleşen bildirimlerin metni artık kaydedilmeyecek."
+
+#: settings.py:297
+#, python-format
+msgid "Also hide the text of the record already logged?"
+msgid_plural "Also hide the text of the %d records already logged?"
+msgstr[0] "Daha önce kaydedilmiş %d kaydın metni de gizlensin mi?"
+msgstr[1] "Daha önce kaydedilmiş %d kaydın metni de gizlensin mi?"
+
+#: settings.py:300
+msgid "Hide existing records"
+msgstr "Mevcut kayıtları gizle"
+
+#: settings.py:323 settings.py:359
+msgid "Keep"
+msgstr "Vazgeç"
+
+#: settings.py:335
+msgid "Open log folder"
+msgstr "Kayıt klasörünü aç"
+
+#: settings.py:338
+msgid "Delete all logs…"
+msgstr "Tüm kayıtları sil…"
+
+#: settings.py:347
+#, python-format
+msgid "%d file, %s"
+msgid_plural "%d files, %s"
+msgstr[0] "%d dosya, %s"
+msgstr[1] "%d dosya, %s"
+
+#: settings.py:357
+msgid "Delete all logged notifications?"
+msgstr "Kaydedilen bütün bildirimler silinsin mi?"
+
+#: settings.py:358
+msgid "This cannot be undone. New notifications will still be logged."
+msgstr "Bu işlem geri alınamaz. Yeni bildirimler kaydedilmeye devam eder."
+
+#: settings.py:360
+msgid "Delete all"
+msgstr "Tümünü sil"
+
+#. metadata.json->name
+msgid "Notification Log"
+msgstr "Bildirim Kaydı"
+
+#. metadata.json->description
+msgid ""
+"Keep a persistent log of every notification, including Cinnamon's own, as "
+"JSON lines in ~/.local/state/notifications."
+msgstr ""
+"Cinnamon'un kendi bildirimleri dahil her bildirimi "
+"~/.local/state/notifications içinde JSON satırları olarak kalıcı biçimde "
+"kaydeder."
+
+#. settings-schema.json->history-page->title
+msgid "History"
+msgstr "Geçmiş"
+
+#. settings-schema.json->privacy-page->title
+msgid "Privacy"
+msgstr "Gizlilik"
+
+#. settings-schema.json->privacy-section->title
+#. settings-schema.json->hidden-apps->description
+msgid "Private apps and sites"
+msgstr "Gizli uygulamalar ve siteler"
+
+#. settings-schema.json->storage-page->title
+#. settings-schema.json->storage-section->title
+msgid "Storage"
+msgstr "Depolama"
+
+#. settings-schema.json->privacy-help->description
+msgid ""
+"Notifications are saved as plain text in your home folder, readable only by "
+"you. For a matching app or site, only the time and app are saved: the text "
+"becomes [hidden], and so does the title unless you untick \"Hide title too\""
+" (messengers put the sender's name in the title). An entry matches part of "
+"the app's name or desktop file id (\"discord\" also matches "
+"\"com.discordapp.Discord\"), or part of the text, which is where browsers "
+"show the site (\"mail.example.com\"). You can also add entries from the "
+"History tab."
+msgstr ""
+"Bildirimler ev klasörünüzde düz metin olarak saklanır ve yalnızca siz "
+"okuyabilirsiniz. Eşleşen bir uygulama ya da site için yalnızca saat ve "
+"uygulama kaydedilir: metin [hidden] olur, \"Başlığı da gizle\" işaretini "
+"kaldırmadıkça başlık da (mesajlaşma uygulamaları gönderenin adını başlığa "
+"yazar). Bir girdi, uygulamanın adının ya da masaüstü dosyası kimliğinin bir "
+"parçasıyla (\"discord\", \"com.discordapp.Discord\" ile de eşleşir) veya "
+"tarayıcıların siteyi gösterdiği metnin bir parçasıyla (\"mail.example.com\")"
+" eşleşir. Girdileri Geçmiş sekmesinden de ekleyebilirsiniz."
+
+#. settings-schema.json->hidden-apps->columns->title
+msgid "Enabled"
+msgstr "Etkin"
+
+#. settings-schema.json->hidden-apps->columns->title
+msgid "App or text"
+msgstr "Uygulama ya da metin"
+
+#. settings-schema.json->hidden-apps->columns->title
+msgid "Hide title too"
+msgstr "Başlığı da gizle"
+
+#. settings-schema.json->storage-help->description
+msgid "Logs are kept in ~/.local/state/notifications, one file per month."
+msgstr ""
+"Kayıtlar ~/.local/state/notifications içinde, her ay için bir dosya olarak "
+"tutulur."
+
+#. settings-schema.json->retention-days->description
+msgid "Keep logs for"
+msgstr "Kayıtları sakla"
+
+#. settings-schema.json->retention-days->units
+msgid "days"
+msgstr "gün"
+
+#. settings-schema.json->retention-days->tooltip
+msgid ""
+"A monthly file is deleted once the whole month is older than this. 0 keeps "
+"everything."
+msgstr ""
+"Bir aylık dosya, ayın tamamı bu süreden eski olunca silinir. 0 her şeyi "
+"saklar."

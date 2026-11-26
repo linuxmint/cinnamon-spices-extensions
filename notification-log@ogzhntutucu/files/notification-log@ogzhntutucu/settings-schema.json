@@ -1,0 +1,74 @@
+{
+    "layout": {
+        "type": "layout",
+        "pages": ["history-page", "privacy-page", "storage-page"],
+        "history-page": {
+            "type": "custom",
+            "title": "History",
+            "file": "settings.py",
+            "widget": "HistoryPage"
+        },
+        "privacy-page": {
+            "type": "page",
+            "title": "Privacy",
+            "sections": ["privacy-section"]
+        },
+        "privacy-section": {
+            "type": "section",
+            "title": "Private apps and sites",
+            "keys": ["privacy-help", "hidden-apps"]
+        },
+        "storage-page": {
+            "type": "page",
+            "title": "Storage",
+            "sections": ["storage-section"]
+        },
+        "storage-section": {
+            "type": "section",
+            "title": "Storage",
+            "keys": ["storage-help", "retention-days", "storage-tools"]
+        }
+    },
+    "privacy-help": {
+        "type": "label",
+        "description": "Notifications are saved as plain text in your home folder, readable only by you. For a matching app or site, only the time and app are saved: the text becomes [hidden], and so does the title unless you untick \"Hide title too\" (messengers put the sender's name in the title). An entry matches part of the app's name or desktop file id (\"discord\" also matches \"com.discordapp.Discord\"), or part of the text, which is where browsers show the site (\"mail.example.com\"). You can also add entries from the History tab."
+    },
+    "hidden-apps": {
+        "type": "list",
+        "description": "Private apps and sites",
+        "columns": [
+            {"id": "enabled", "title": "Enabled", "type": "boolean", "default": true},
+            {"id": "app", "title": "App or text", "type": "string"},
+            {"id": "hide-title", "title": "Hide title too", "type": "boolean", "default": true}
+        ],
+        "default": [
+            {"enabled": true, "app": "discord", "hide-title": true},
+            {"enabled": true, "app": "telegram", "hide-title": true},
+            {"enabled": true, "app": "signal", "hide-title": true},
+            {"enabled": true, "app": "whatsapp", "hide-title": true}
+        ]
+    },
+    "storage-help": {
+        "type": "label",
+        "description": "Logs are kept in ~/.local/state/notifications, one file per month."
+    },
+    "retention-days": {
+        "type": "spinbutton",
+        "description": "Keep logs for",
+        "units": "days",
+        "min": 0,
+        "max": 3650,
+        "step": 1,
+        "default": 90,
+        "tooltip": "A monthly file is deleted once the whole month is older than this. 0 keeps everything."
+    },
+    "history-hidden-sources": {
+        "type": "generic",
+        "default": []
+    },
+    "storage-tools": {
+        "type": "custom",
+        "file": "settings.py",
+        "widget": "StorageTools"
+    }
+}

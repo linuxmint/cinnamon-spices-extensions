@@ -1,0 +1,7 @@
+{
+    "uuid": "notification-log@ogzhntutucu",
+    "name": "Notification Log",
+    "description": "Keep a persistent log of every notification, including Cinnamon's own, as JSON lines in ~/.local/state/notifications.",
+    "version": "1.0",
+    "cinnamon-version": ["6.0", "6.2", "6.4", "6.6", "6.8"]
+}
