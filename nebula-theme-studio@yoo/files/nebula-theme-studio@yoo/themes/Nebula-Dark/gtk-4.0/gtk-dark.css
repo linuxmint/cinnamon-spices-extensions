@@ -1,0 +1,4 @@
+/* Nebula GTK4 深色变体: 内容与 gtk.css 同步 */
+/* 同 gtk-3.0/gtk-dark.css: 拦住应用级 prefer-dark 的深色回落,
+   避免 GTK4 应用(libatk-bridge / libadwaita 系)回落到 Adwaita-dark */
+@import url("gtk.css");

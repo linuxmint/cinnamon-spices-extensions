@@ -1,0 +1,1632 @@
+/* ===== Nebula 调色板 (Cinnamon / St) ===== */
+/* 色值来源: 规格文档第 3 节色彩系统,全部以 rgba() 表达透明度 */
+
+@define-color nebula_bg             rgba(13, 17, 23, 0.85);
+@define-color nebula_bg_solid       #0d1117;
+@define-color nebula_bg_alt         rgba(22, 27, 34, 0.80);
+@define-color nebula_panel          rgba(28, 33, 40, 0.70);
+@define-color nebula_hover          rgba(33, 38, 45, 0.60);
+@define-color nebula_border         rgba(48, 54, 61, 0.40);
+@define-color nebula_fg             #e6edf3;
+@define-color nebula_fg_dim         #8b949e;
+@define-color nebula_accent         #58a6ff;
+@define-color nebula_accent_border  rgba(88, 166, 255, 0.80);
+@define-color nebula_ok             #3fb950;
+@define-color nebula_warn           #d29922;
+@define-color nebula_err            #f85149;
+
+/* ===== M4 阶段: Cinnamon 全量样式 ===== */
+/* 说明: St 引擎不解析 @ 变量引用,以下规则一律使用调色板的字面色值
+   (与规格 §7.2 骨架一致);选择器命名已对照
+   /usr/share/cinnamon/theme/cinnamon.css (Cinnamon 6.x) 核对 */
+
+/* ===== 舞台全局 ===== */
+
+stage {
+  color: #e6edf3;
+}
+
+/* ===== 面板 ===== */
+
+#panel, .panel {
+  background-color: rgba(28, 33, 40, 0.70);
+  color: #e6edf3;
+  font-size: 10pt;
+  height: 40px;
+}
+
+.panel-top {
+  background-color: rgba(28, 33, 40, 0.70);
+  border-bottom: 1px solid rgba(48, 54, 61, 0.40);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #e6edf3;
+}
+
+.panel-bottom {
+  background-color: rgba(28, 33, 40, 0.70);
+  border-top: 1px solid rgba(48, 54, 61, 0.40);
+  color: #e6edf3;
+}
+
+.panel-left {
+  background-color: rgba(28, 33, 40, 0.70);
+  border-right: 1px solid rgba(48, 54, 61, 0.40);
+  color: #e6edf3;
+}
+
+.panel-right {
+  background-color: rgba(28, 33, 40, 0.70);
+  border-left: 1px solid rgba(48, 54, 61, 0.40);
+  color: #e6edf3;
+}
+
+#panel:highlight {
+  background-color: rgba(88, 166, 255, 0.35);
+  border: 1px solid rgba(88, 166, 255, 0.80);
+}
+
+.panel-dummy {
+  background-color: rgba(248, 81, 73, 0.35);
+  border: 1px solid rgba(248, 81, 73, 0.60);
+}
+
+.applet-box {
+  color: #e6edf3;
+  padding: 0 4px;
+  spacing: 4px;
+}
+
+.applet-box:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+  color: #e6edf3;
+}
+
+.applet-box:active, .applet-box:checked {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+.applet-label {
+  color: #e6edf3;
+  font-size: 10pt;
+  padding: 0 4px;
+}
+
+.applet-icon {
+  color: #e6edf3;
+  icon-size: 24px;
+}
+
+#panel .panel-button, .panel .panel-button {
+  color: #e6edf3;
+  icon-size: 24px;
+  padding: 0 6px;
+}
+
+#panel .panel-button:hover, .panel .panel-button:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+#panel .panel-button:active, .panel .panel-button:active,
+#panel .panel-button:checked, .panel .panel-button:checked {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+.panel-launchers {
+  spacing: 4px;
+  padding: 0 4px;
+}
+
+/* 启动器常驻内边距(图标不再顶满盒子,悬停底可见;两态同值避免重排抖动) */
+
+.panel-launchers .launcher {
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.panel-launchers .launcher .icon-box {
+  padding: 1px;
+}
+
+.panel-launchers .launcher:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+}
+
+.panel-launchers .launcher:active {
+  background-color: rgba(88, 166, 255, 0.35);
+  border-radius: 6px;
+}
+
+.panel-status-button {
+  color: #e6edf3;
+  icon-size: 24px;
+  padding: 0 6px;
+}
+
+.panel-status-button:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+.panel-status-button:active, .panel-status-button:checked {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+/* ===== 开始菜单 ===== */
+
+.menu-background {
+  background-color: rgba(22, 27, 34, 0.80);
+}
+
+.menu {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 6px;
+}
+
+.menu-favorites-box {
+  background-color: rgba(13, 17, 23, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.menu-favorites-button {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.menu-favorites-button:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+}
+
+.menu-application-button {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.menu-application-button:hover,
+.menu-application-button-selected {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.menu-application-button-label {
+  color: #e6edf3;
+  padding-left: 8px;
+}
+
+.menu-application-button-description {
+  color: #8b949e;
+  padding-left: 8px;
+}
+
+.menu-category-button {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.menu-category-button:hover,
+.menu-category-button-selected {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.menu-category-button-greyed {
+  border-radius: 6px;
+  color: #8b949e;
+  padding: 6px 10px;
+}
+
+.menu-selected-app-box {
+  background-color: rgba(33, 38, 45, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 8px;
+  color: #e6edf3;
+  padding: 8px;
+}
+
+.menu-selected-app-title {
+  color: #e6edf3;
+  font-weight: bold;
+}
+
+.menu-selected-app-description {
+  color: #8b949e;
+}
+
+#menu-search-entry {
+  background-color: rgba(13, 17, 23, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.50);
+  border-radius: 6px;
+  caret-color: #58a6ff;
+  caret-size: 1px;
+  color: #e6edf3;
+  padding: 6px 10px;
+  selected-color: #e6edf3;
+  selection-background-color: rgba(88, 166, 255, 0.35);
+}
+
+#menu-search-entry:focus {
+  border: 1px solid rgba(88, 166, 255, 0.80);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+
+.menu-search-entry-icon {
+  color: #8b949e;
+  icon-size: 16px;
+}
+
+/* ===== 官方菜单小程序 (menu@cinnamon.org,appmenu-* 命名空间) ===== */
+/* 与 Cinnamenu 侧同 spacing;官方小程序同样用整类名替换标记选中,选中态须自带 padding */
+
+.appmenu-background {
+  background-color: rgba(22, 27, 34, 0.80);
+}
+
+.appmenu-background .popup-menu-content {
+  padding: 0;
+}
+
+.appmenu-category-button-greyed, .appmenu-category-button-selected,
+.appmenu-category-button, .appmenu-application-button-selected,
+.appmenu-application-button {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+  spacing: 4px;
+}
+
+.appmenu-category-button:hover, .appmenu-category-button-selected,
+.appmenu-application-button:hover, .appmenu-application-button-selected {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.appmenu-sidebar-button {
+  border-radius: 6px;
+  color: #e6edf3;
+  margin: 0 10px;
+  padding: 3px 6px;
+}
+
+.appmenu-sidebar-button:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+  color: #e6edf3;
+  margin: 0 10px;
+  padding: 3px 6px;
+}
+
+.appmenu-category-button-greyed {
+  color: #8b949e;
+  font-style: italic;
+  padding: 6px 10px;
+}
+
+.appmenu-application-button-label, .appmenu-category-button-label {
+  color: #e6edf3;
+  padding-left: 8px;
+}
+
+.appmenu-application-button-description {
+  color: #8b949e;
+  padding-left: 8px;
+}
+
+.appmenu-application-button:highlighted,
+.appmenu-application-button-selected:highlighted {
+  font-weight: bold;
+}
+
+.appmenu-main-box {
+  spacing: 10px;
+}
+
+.appmenu-right-box {
+  padding: 10px;
+  spacing: 5px;
+}
+
+.appmenu-categories-applications-box {
+  spacing: 15px;
+}
+
+.appmenu-categories-applications-box:top {
+  padding-top: 5px;
+}
+
+.appmenu-applications-box {
+  padding-right: 5px;
+}
+
+.appmenu-search-box {
+  spacing: 10px;
+}
+
+.appmenu-sidebar {
+  background-color: rgba(22, 27, 34, 0.80);
+  border-radius: 8px 0 0 8px;
+  border-right: 1px solid rgba(48, 54, 61, 0.40);
+  padding: 10px 0;
+}
+
+.appmenu-sidebar-user-box {
+  padding: 6px 10px;
+  spacing: 8px;
+}
+
+.appmenu-system-box, .appmenu-favs-box, .appmenu-places-box {
+  spacing: 10px;
+}
+
+.appmenu-system-button {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 50%;
+  color: #e6edf3;
+  padding: 8px;
+}
+
+.appmenu-system-button-lock:hover, .appmenu-system-button-logout:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+}
+
+.appmenu-system-button-shutdown {
+  background-color: rgba(248, 81, 73, 0.35);
+  border: 1px solid rgba(248, 81, 73, 0.60);
+  color: #e6edf3;
+}
+
+.appmenu-system-button-shutdown:hover {
+  background-color: rgba(248, 81, 73, 0.55);
+}
+
+#appmenu-search-entry {
+  background-color: rgba(13, 17, 23, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.50);
+  border-radius: 6px;
+  caret-color: #58a6ff;
+  caret-size: 1px;
+  color: #e6edf3;
+  padding: 6px 10px;
+  selected-color: #e6edf3;
+  selection-background-color: rgba(88, 166, 255, 0.35);
+}
+
+#appmenu-search-entry:focus {
+  border: 1px solid rgba(88, 166, 255, 0.80);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+
+.appmenu-search-entry-icon {
+  color: #8b949e;
+  icon-size: 16px;
+}
+
+/* ===== 弹出菜单 ===== */
+
+/* 气泡整体(含箭头)由 boxpointer 一层绘制,避免与 content 形成内外双层 */
+
+.popup-menu-boxpointer {
+  -arrow-border-radius: 12px;
+  -arrow-background-color: rgba(22, 27, 34, 0.80);
+  -arrow-border-width: 1px;
+  -arrow-border-color: rgba(48, 54, 61, 0.40);
+  -arrow-base: 24px;
+  -arrow-rise: 11px;
+  -arrow-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  -boxpointer-gap: 6px;
+  color: #e6edf3;
+}
+
+.popup-menu {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: #e6edf3;
+  min-width: 15em;
+}
+
+/* Cinnamon 3.2+ 新菜单实现: 独立单层气泡 */
+/* 注意: padding 必须为 0(内边距由 .popup-menu-content 提供),否则 Blur 扩展
+   按 actor padding 内缩模糊底时,会在边框与模糊底之间留出透明环形成双线 */
+
+.menu {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  margin: 6px;
+  padding: 0;
+}
+
+.popup-menu-content {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: #e6edf3;
+  padding: 6px;
+}
+
+.popup-menu-item {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 12px;
+  spacing: 8px;
+}
+
+.popup-menu-item:hover, .popup-menu-item:active {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-radius: 6px;
+}
+
+.popup-menu-item:disabled {
+  color: #8b949e;
+}
+
+.popup-menu-item-dot {
+  color: #58a6ff;
+}
+
+.popup-sub-menu {
+  background-color: rgba(13, 17, 23, 0.60);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.popup-submenu-menu-item:open {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+.popup-separator-menu-item {
+  background-color: rgba(48, 54, 61, 0.40);
+  height: 1px;
+  margin: 6px 4px;
+}
+
+.popup-alternating-menu-item:alternate {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+}
+
+.popup-combo-menu {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 6px;
+}
+
+.popup-combobox-item {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 12px;
+}
+
+.popup-combobox-item:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+.popup-image-menu-item {
+  color: #e6edf3;
+}
+
+/* ===== 通知 ===== */
+
+/* width 与屏幕边距必须显式声明(St 表格无内容时不会自行撑开,缺失会导致横幅压成窄条) */
+
+#notification {
+  width: 34em;
+  margin-from-right-edge-of-screen: 20px;
+}
+
+#notification, .notification, .notification-banner {
+  background-color: rgba(28, 33, 40, 0.85);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 12px;
+  spacing-rows: 10px;
+  spacing-columns: 10px;
+}
+
+#notification-body {
+  spacing: 6px;
+}
+
+.notification-button {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 14px;
+}
+
+.notification-button:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+}
+
+.notification-button:active {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+.notification-icon-button {
+  background-color: transparent;
+  border-radius: 6px;
+  color: #8b949e;
+  icon-size: 16px;
+  padding: 4px;
+}
+
+.notification-icon-button:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  color: #e6edf3;
+}
+
+.notification-applet-padding {
+  padding: 4px;
+}
+
+/* ===== 日历 / 日期菜单 ===== */
+
+.calendar {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 8px;
+  spacing-rows: 2px;
+  spacing-columns: 4px;
+}
+
+/* 日期/事件两盒去底色,仅以事件盒右细线分隔(仿默认主题结构) */
+
+.calendar-main-box {
+  background-color: transparent;
+  border: none;
+  margin: 8px;
+}
+
+.calendar-month-label {
+  color: #e6edf3;
+  font-weight: bold;
+  margin: 2px 4px;
+  padding: 6px;
+  text-align: center;
+}
+
+/* 月/年切换箭头为空按钮,图标由背景图绘制(仿 Orchidea) */
+
+.calendar-change-month-back, .calendar-change-month-forward {
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  min-height: 20px;
+  min-width: 20px;
+  padding: 2px;
+}
+
+.calendar-change-month-back {
+  background-image: url("assets/calendar-arrow-left.svg");
+}
+
+.calendar-change-month-forward {
+  background-image: url("assets/calendar-arrow-right.svg");
+}
+
+.calendar-change-month-back:rtl {
+  background-image: url("assets/calendar-arrow-right.svg");
+}
+
+.calendar-change-month-forward:rtl {
+  background-image: url("assets/calendar-arrow-left.svg");
+}
+
+.calendar-change-month-back:hover, .calendar-change-month-forward:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+.calendar-change-month-back:hover {
+  background-image: url("assets/calendar-arrow-left-hover.svg");
+}
+
+.calendar-change-month-forward:hover {
+  background-image: url("assets/calendar-arrow-right-hover.svg");
+}
+
+.calendar-change-month-back:rtl:hover {
+  background-image: url("assets/calendar-arrow-right-hover.svg");
+}
+
+.calendar-change-month-forward:rtl:hover {
+  background-image: url("assets/calendar-arrow-left-hover.svg");
+}
+
+.calendar-change-month-back:active, .calendar-change-month-forward:active {
+  background-color: rgba(88, 166, 255, 0.35);
+}
+
+.calendar-day-heading {
+  color: #8b949e;
+  font-size: 9pt;
+  font-weight: bold;
+  height: 21px;
+  padding: 7px 0 0;
+  text-align: center;
+  width: 28px;
+}
+
+.calendar-week-number {
+  background-color: rgba(33, 38, 45, 0.60);
+  border-radius: 6px;
+  color: #8b949e;
+  font-size: 9pt;
+  font-weight: bold;
+  height: 21px;
+  margin: 4px 0;
+  text-align: center;
+  width: 28px;
+}
+
+.calendar-day-base {
+  border-radius: 50%;
+  color: #e6edf3;
+  font-size: 10pt;
+  height: 28px;
+  margin: 2px;
+  padding: 0;
+  text-align: center;
+  width: 28px;
+}
+
+.calendar-day-base:hover {
+  background-color: rgba(88, 166, 255, 0.15);
+}
+
+.calendar-today {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 50%;
+  color: #0d1117;
+  font-weight: bold;
+}
+
+.calendar-day-base:selected, .calendar-day:selected {
+  background-color: rgba(88, 166, 255, 0.35);
+  border-radius: 50%;
+  color: #e6edf3;
+}
+
+.calendar-today:selected {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 50%;
+  color: #0d1117;
+  font-weight: bold;
+}
+
+.calendar-other-month-day {
+  color: rgba(139, 148, 158, 0.60);
+}
+
+.calendar-nonwork-day {
+  color: #e6edf3;
+}
+
+.calendar-day-event-dot-box {
+  spacing: 2px;
+}
+
+.calendar-day-event-dot {
+  background-color: #58a6ff;
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+}
+
+.datemenu-date-label {
+  color: #e6edf3;
+  font-size: 14pt;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+.calendar-events-main-box {
+  background-color: transparent;
+  border: none;
+  border-right: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 0;
+  box-shadow: none;
+  height: 300px;
+  margin-right: 16px;
+  min-width: 350px;
+  padding: 8px;
+  spacing: 6px;
+}
+
+.calendar-event-button {
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 10px;
+}
+
+.calendar-event-button:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+}
+
+.calendar-event-time-present {
+  color: #58a6ff;
+  font-weight: bold;
+}
+
+.calendar-event-time-past, .calendar-event-time-future {
+  color: #8b949e;
+}
+
+.calendar-event-countdown {
+  color: #8b949e;
+  font-weight: bold;
+}
+
+.calendar-today-day-label {
+  color: #e6edf3;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.calendar-today-date-label {
+  color: #8b949e;
+  font-size: 10pt;
+}
+
+.calendar-today-home-button, .calendar-today-home-button-enabled {
+  border-radius: 6px;
+  color: #8b949e;
+  padding: 4px 10px;
+}
+
+.calendar-today-home-button-enabled:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  color: #e6edf3;
+}
+
+/* ===== 窗口列表 ===== */
+
+.window-list-item-box {
+  border-radius: 6px;
+  color: #8b949e;
+  padding: 2px 6px;
+  spacing: 4px;
+}
+
+.window-list-item-box:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  color: #e6edf3;
+}
+
+.window-list-item-box:active, .window-list-item-box:checked, .window-list-item-box:focus {
+  background-color: rgba(22, 27, 34, 0.70);
+  color: #e6edf3;
+}
+
+/* 任务栏图标三态(applet 语义:运行=:active,前台=:active+:focus,悬停=:hover):
+   未运行透明干净;运行蓝线无底;前台蓝底(:focus 写在 :active 之后,同权重靠后者胜) */
+
+.grouped-window-list-item-box {
+  background-color: transparent;
+  border-color: transparent;
+  color: #8b949e;
+  padding: 0 6px;
+  spacing: 4px;
+}
+
+.grouped-window-list-item-box.top, .grouped-window-list-item-box.bottom {
+  border-bottom-width: 2px;
+}
+
+.grouped-window-list-item-box.left {
+  border-left-width: 2px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.grouped-window-list-item-box.right {
+  border-right-width: 2px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.grouped-window-list-item-box:active {
+  background-color: transparent;
+  border-color: #58a6ff;
+  color: #e6edf3;
+}
+
+.grouped-window-list-item-box:hover {
+  background-color: rgba(33, 38, 45, 0.60);
+  color: #e6edf3;
+}
+
+.grouped-window-list-item-box:focus {
+  background-color: rgba(88, 166, 255, 0.35);
+  border-color: #58a6ff;
+  border-radius: 6px;
+  color: #e6edf3;
+}
+
+.grouped-window-list-item-demands-attention {
+  background-color: rgba(248, 81, 73, 0.35);
+}
+
+.grouped-window-list-item-box .progress {
+  background-color: rgba(88, 166, 255, 0.80);
+  border-radius: 4px;
+}
+
+/* 任务栏 hover 窗口预览(缩略图气泡)
+   基底 /usr/share/cinnamon/theme/cinnamon.css 给 .grouped-window-list-thumbnail-menu
+   定了不透明的 background-color:#242424 + 1px solid #333333。St 是「合并」基底而非
+   替换, 不显式覆盖这些属性就会原样透出来 —— 表现为预览图黑底 + 黑边、不透明。
+   底色为半透明, 故描边按本主题既定原则取 @nebula_float_border(比 @nebula_border 更亮)。*/
+.grouped-window-list-thumbnail-menu {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(139, 148, 158, 0.38);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  margin: 6px;
+}
+
+/* 缩略图自身不再带底色与描边: 外层已是 0.80 半透明, 内层再叠 0.80 会让合成
+   不透明度达 1-(0.2x0.2)=0.96, 毛玻璃感尽失。相邻缩略图之间也不留描边接缝。*/
+.grouped-window-list-thumbnail-menu .item-box {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: #e6edf3;
+  padding: 8px;
+  spacing: 8px;
+}
+
+/* 基底对首/末缩略图做了单侧圆角(为「连成一排」的设计, 特异性 0,4,0 高于上面的
+   0,3,0), 这里显式归零让缩略图整齐贴合预览表面。*/
+.grouped-window-list-thumbnail-menu .item-box:first-child,
+.grouped-window-list-thumbnail-menu .item-box:last-child {
+  border-radius: 0;
+}
+
+/* 鼠标所指窗口的强调框。padding 6px + 2px 描边 = 8px, 与常态总宽一致, 切换时不跳动。*/
+.grouped-window-list-thumbnail-menu .item-box:outlined,
+.grouped-window-list-thumbnail-menu .item-box:outlined:first-child,
+.grouped-window-list-thumbnail-menu .item-box:outlined:last-child {
+  border: 2px solid rgba(88, 166, 255, 0.80);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.grouped-window-list-thumbnail-label {
+  color: #e6edf3;
+  padding-left: 4px;
+}
+
+.grouped-window-list-number-label {
+  color: #e6edf3;
+  padding: 0;
+}
+
+.grouped-window-list-badge {
+  background-color: rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+}
+
+.grouped-window-list-button-label {
+  color: #e6edf3;
+  padding-left: 4px;
+}
+
+.grouped-window-list-thumbnail-alert {
+  background-color: rgba(248, 81, 73, 0.35);
+}
+
+.window-list-preview {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 8px;
+  spacing: 6px;
+}
+
+/* ===== 概览 / 工作区 ===== */
+
+#overview {
+  background-color: rgba(13, 17, 23, 0.85);
+  spacing: 12px;
+}
+
+.workspace-button {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+  color: #8b949e;
+  padding: 4px 12px;
+  spacing: 8px;
+}
+
+.workspace-button:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+  color: #e6edf3;
+}
+
+.workspace-button:outlined {
+  background-color: rgba(88, 166, 255, 0.35);
+  border: 1px solid rgba(88, 166, 255, 0.80);
+  color: #e6edf3;
+}
+
+.workspace-graph {
+  padding: 8px;
+  spacing: 6px;
+}
+
+.workspace-thumbnails {
+  spacing: 26px;
+}
+
+.workspace-thumbnails-background {
+  padding: 8px;
+}
+
+.workspace-overview-background-shade {
+  background-color: rgba(0, 0, 0, 0.20);
+}
+
+.expo-background {
+  background-color: rgba(13, 17, 23, 0.85);
+}
+
+.expo-workspace-thumbnail-frame {
+  border: 1px solid rgba(48, 54, 61, 0.40);
+}
+
+.expo-workspace-thumbnail-frame#active {
+  border: 2px solid rgba(88, 166, 255, 0.80);
+}
+
+.workspace-add-button {
+  background-image: url("assets/add-workspace.svg");
+  background-size: contain;
+  height: 200px;
+  width: 35px;
+}
+
+.workspace-add-button:hover {
+  background-image: url("assets/add-workspace-hover.svg");
+}
+
+.workspace-close-button {
+  background-image: url("assets/close.svg");
+  background-size: contain;
+  height: 26px;
+  width: 26px;
+}
+
+.window-close-area {
+  background-image: url("assets/trash-icon.svg");
+  background-size: contain;
+  height: 120px;
+  width: 400px;
+}
+
+.window-caption {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 8px;
+  color: #e6edf3;
+  min-height: 22px;
+  padding: 6px 10px;
+  spacing: 8px;
+}
+
+.window-caption:focus {
+  background-color: rgba(33, 38, 45, 0.60);
+}
+
+.window-close {
+  background-color: rgba(33, 38, 45, 0.50);
+  background-image: url("assets/close.svg");
+  background-size: 14px;
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 50%;
+  color: #e6edf3;
+  height: 24px;
+  icon-size: 16px;
+  width: 24px;
+}
+
+.window-close:hover {
+  background-color: rgba(248, 81, 73, 0.35);
+  border: 1px solid rgba(248, 81, 73, 0.60);
+  color: #e6edf3;
+}
+
+/* ===== 提示框(托盘悬停等,actor 名为 Tooltip,须用 #Tooltip 匹配) ===== */
+
+#Tooltip {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  margin: 4px;
+  padding: 6px 10px;
+}
+
+#Tooltip StLabel {
+  color: #e6edf3;
+}
+
+.expo-workspaces-name-entry {
+  background-color: rgba(13, 17, 23, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.50);
+  border-radius: 6px;
+  caret-color: #58a6ff;
+  caret-size: 1px;
+  color: #e6edf3;
+  padding: 6px 10px;
+  selected-color: #e6edf3;
+  selection-background-color: rgba(88, 166, 255, 0.35);
+}
+
+.expo-workspaces-name-entry:focus {
+  border: 1px solid rgba(88, 166, 255, 0.80);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+
+/* ===== Alt-Tab 切换器 ===== */
+
+.switcher-list {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 18px;
+}
+
+.switcher-list-item-container {
+  spacing: 12px;
+}
+
+.switcher-list .item-box {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #e6edf3;
+  padding: 8px;
+  spacing: 8px;
+}
+
+.switcher-list .item-box:outlined {
+  border-color: rgba(88, 166, 255, 0.80);
+}
+
+.switcher-list .item-box:selected {
+  background-color: rgba(88, 166, 255, 0.15);
+  border-color: rgba(48, 54, 61, 0.40);
+}
+
+.switcher-list .thumbnail-box {
+  padding: 0;
+  spacing: 4px;
+}
+
+.switcher-list .thumbnail {
+  width: 256px;
+}
+
+.switcher-arrow {
+  color: #8b949e;
+}
+
+.switcher-arrow:highlighted {
+  color: #58a6ff;
+}
+
+.switcher-preview-backdrop {
+  background-color: rgba(13, 17, 23, 0.85);
+}
+
+.thumbnail-scroll-gradient-left, .thumbnail-scroll-gradient-right {
+  background-gradient-direction: horizontal;
+  background-gradient-start: rgba(13, 17, 23, 0.85);
+  background-gradient-end: rgba(13, 17, 23, 0.0);
+  width: 24px;
+}
+
+/* ===== 屏幕显示浮层 / 滑动条 ===== */
+
+.osd-window, .info-osd {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 12px;
+  spacing: 8px;
+  text-align: center;
+}
+
+.osd-window .level {
+  height: 6px;
+}
+
+.slider {
+  -slider-height: 4px;
+  -slider-background-color: rgba(48, 54, 61, 0.40);
+  -slider-border-color: rgba(48, 54, 61, 0.50);
+  -slider-active-background-color: rgba(88, 166, 255, 0.80);
+  -slider-active-border-color: rgba(88, 166, 255, 0.80);
+  -slider-border-width: 1px;
+  -slider-handle-radius: 8px;
+  color: #58a6ff;
+  height: 18px;
+  min-width: 160px;
+}
+
+.seek-slider {
+  -slider-height: 4px;
+  -slider-background-color: rgba(48, 54, 61, 0.40);
+  -slider-border-color: rgba(48, 54, 61, 0.50);
+  -slider-active-background-color: rgba(88, 166, 255, 0.80);
+  -slider-active-border-color: rgba(88, 166, 255, 0.80);
+  -slider-border-width: 1px;
+  -slider-handle-radius: 8px;
+  color: #58a6ff;
+  height: 18px;
+  min-width: 160px;
+}
+
+/* ===== 开关 / 复选框 (St) ===== */
+
+/* 开关旋钮画在 SVG 资源内,此处只做图片引用(仿 Orchidea 做法) */
+
+.toggle-switch {
+  background-size: contain;
+  height: 24px;
+  width: 44px;
+}
+
+.toggle-switch-us, .toggle-switch-intl {
+  background-image: url("assets/toggle-off.svg");
+}
+
+.toggle-switch-us:checked, .toggle-switch-intl:checked {
+  background-image: url("assets/toggle-on.svg");
+}
+
+.check-box StLabel {
+  color: #e6edf3;
+}
+
+.check-box StBin {
+  background-color: transparent;
+  background-image: url("assets/checkbox/checkbox-unchecked.svg");
+  border: 1px solid transparent;
+  height: 16px;
+  width: 16px;
+}
+
+.check-box:checked StBin {
+  background-image: url("assets/checkbox/checkbox-checked.svg");
+}
+
+.check-box:focus StBin {
+  border: 1px solid rgba(88, 166, 255, 0.80);
+  border-radius: 6px;
+}
+
+.radiobutton CinnamonGenericContainer {
+  height: 26px;
+  padding-top: 2px;
+  spacing: 8px;
+}
+
+.radiobutton StBin {
+  background-color: transparent;
+  background-image: url("assets/checkbox/radio-unchecked.svg");
+  border: 1px solid transparent;
+  height: 16px;
+  width: 16px;
+}
+
+.radiobutton:focus StBin {
+  background-image: url("assets/checkbox/radio-unchecked.svg");
+}
+
+.radiobutton:checked StBin {
+  background-image: url("assets/checkbox/radio-checked.svg");
+}
+
+.radiobutton:focus:checked StBin {
+  background-image: url("assets/checkbox/radio-checked.svg");
+}
+
+.radiobutton StLabel {
+  color: #e6edf3;
+  padding-top: 4px;
+}
+
+/* ===== 对话框 ===== */
+
+.modal-dialog {
+  background-color: rgba(13, 17, 23, 0.90);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 16px;
+}
+
+.modal-dialog-button {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 6px 14px;
+}
+
+.modal-dialog-button:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+}
+
+.modal-dialog-button:active {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+.modal-dialog-button-box {
+  spacing: 8px;
+}
+
+/* 焦点只用内描边表达, 不设 background-color ——
+   :focus 与 :hover 同特异度(0,2,0), 一旦 :focus 写在后面且带背景色,
+   就会把悬停底色整个盖掉: 对话框按钮默认带键盘焦点, 于是"鼠标悬停
+   确定/取消没有高亮"。焦点环用 inset 画在内侧, 不受按钮盒裁剪影响。 */
+
+.modal-dialog-button:focus {
+  box-shadow: inset 0 0 0 2px rgba(88, 166, 255, 0.45);
+}
+
+.run-dialog {
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.run-dialog-label {
+  color: #e6edf3;
+  padding-bottom: 8px;
+}
+
+.run-dialog-description {
+  color: #8b949e;
+  font-size: 0.9em;
+}
+
+.run-dialog-error-label {
+  color: #f85149;
+}
+
+.run-dialog-error-box {
+  padding-top: 8px;
+  spacing: 6px;
+}
+
+.run-dialog-completion-box {
+  padding-left: 8px;
+}
+
+/* ===== 确认 / 消息对话框 (dialog.js: 注销确认、小程序移除确认等) ===== */
+
+.dialog {
+  background-color: rgba(13, 17, 23, 0.90);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #e6edf3;
+  padding: 18px;
+}
+
+.dialog .dialog-content-box {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  spacing: 16px;
+  max-width: 28em;
+}
+
+.dialog .confirm-dialog-title {
+  text-align: center;
+  color: #e6edf3;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.dialog-button-box {
+  spacing: 8px;
+}
+
+.dialog-button {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: 8px 14px;
+}
+
+.dialog-button:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+}
+
+.dialog-button:active {
+  background-color: rgba(22, 27, 34, 0.70);
+}
+
+/* 同上: :focus 不设背景色, 只加内描边焦点环, 把悬停底色让给 :hover */
+
+.dialog-button:focus {
+  box-shadow: inset 0 0 0 2px rgba(88, 166, 255, 0.45);
+}
+
+.dialog-button:disabled {
+  background-color: rgba(33, 38, 45, 0.30);
+  color: #8b949e;
+}
+
+.dialog-button:destructive-action {
+  background-color: rgba(248, 81, 73, 0.35);
+  border: 1px solid rgba(248, 81, 73, 0.60);
+  color: #e6edf3;
+}
+
+.dialog-button:destructive-action:hover {
+  background-color: rgba(248, 81, 73, 0.55);
+  border: 1px solid rgba(248, 81, 73, 0.80);
+}
+
+.dialog-button:destructive-action:active {
+  background-color: rgba(248, 81, 73, 0.70);
+}
+
+.message-dialog-content {
+  spacing: 12px;
+}
+
+.message-dialog-content .message-dialog-title {
+  color: #e6edf3;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.message-dialog-content .message-dialog-description {
+  color: #e6edf3;
+  text-align: center;
+}
+
+.message-dialog-content .message-dialog-caption {
+  color: #8b949e;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.end-session-dialog {
+  min-width: 40em;
+}
+
+.end-session-dialog .dialog-content-box {
+  spacing: 8px;
+}
+
+.end-session-dialog .dialog-list {
+  spacing: 4px;
+}
+
+.end-session-dialog .dialog-list .dialog-list-title {
+  background-color: rgba(210, 153, 34, 0.35);
+  border-radius: 8px;
+  color: #e6edf3;
+  margin: 4px 0;
+  padding: 9px;
+}
+
+.dialog-list {
+  spacing: 12px;
+}
+
+.dialog-list .dialog-list-title {
+  color: #e6edf3;
+  text-align: center;
+}
+
+.dialog-list .dialog-list-scrollview {
+  max-height: 200px;
+}
+
+.dialog-list .dialog-list-box {
+  spacing: 8px;
+}
+
+.dialog-list .dialog-list-box .dialog-list-item {
+  spacing: 8px;
+}
+
+.dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-title {
+  color: #e6edf3;
+  font-weight: bold;
+}
+
+.dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-description {
+  color: #8b949e;
+}
+
+.run-dialog-entry {
+  background-color: rgba(13, 17, 23, 0.60);
+  border: 1px solid rgba(48, 54, 61, 0.50);
+  border-radius: 6px;
+  caret-color: #58a6ff;
+  caret-size: 1px;
+  color: #e6edf3;
+  padding: 6px 10px;
+  selected-color: #e6edf3;
+  selection-background-color: rgba(88, 166, 255, 0.35);
+}
+
+.run-dialog-entry:focus {
+  border: 1px solid rgba(88, 166, 255, 0.80);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+
+.prompt-dialog-headline {
+  color: #e6edf3;
+  font-weight: bold;
+}
+
+.prompt-dialog-error-label {
+  color: #f85149;
+}
+
+.polkit-dialog-user-layout {
+  spacing: 10px;
+}
+
+.polkit-dialog-user-root-label {
+  color: #d29922;
+}
+
+/* ===== 屏幕键盘 ===== */
+
+#keyboard {
+  background-color: rgba(22, 27, 34, 0.80);
+  border-top: 1px solid rgba(48, 54, 61, 0.40);
+}
+
+.keyboard-key {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+  color: #e6edf3;
+  font-size: 14pt;
+  min-height: 48px;
+  min-width: 48px;
+}
+
+.keyboard-key:hover {
+  background-color: rgba(48, 54, 61, 0.60);
+}
+
+.keyboard-key:active, .keyboard-key:checked {
+  background-color: rgba(88, 166, 255, 0.35);
+  border: 1px solid rgba(88, 166, 255, 0.80);
+}
+
+.keyboard-key:grayed {
+  background-color: rgba(33, 38, 45, 0.30);
+  color: #8b949e;
+}
+
+.keyboard-subkeys {
+  background-color: rgba(22, 27, 34, 0.80);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 6px;
+}
+
+/* ===== 声音小程序 ===== */
+
+.sound-player {
+  spacing: 8px;
+}
+
+.sound-player > StBoxLayout {
+  padding: 4px;
+  spacing: 6px;
+}
+
+.sound-player-overlay {
+  background-color: rgba(13, 17, 23, 0.60);
+  border-radius: 8px;
+  color: #e6edf3;
+  padding: 8px;
+  spacing: 6px;
+}
+
+/* ===== 工作区切换器小程序 ===== */
+
+.workspace-switcher {
+  spacing: 4px;
+  padding: 0 4px;
+}
+
+.workspace-switcher .workspace {
+  background-color: rgba(33, 38, 45, 0.50);
+  border: 1px solid rgba(48, 54, 61, 0.40);
+  border-radius: 6px;
+}
+
+.workspace-switcher .workspace:active {
+  background-color: rgba(88, 166, 255, 0.35);
+  border: 1px solid rgba(88, 166, 255, 0.80);
+}
+
+/* ===== 系统托盘 / 角栏 ===== */
+
+.systray {
+  spacing: 4px;
+}
+
+#vfade {
+  background-gradient-direction: vertical;
+  background-gradient-start: rgba(13, 17, 23, 0.0);
+  background-gradient-end: rgba(13, 17, 23, 0.85);
+}
+
+.flashspot {
+  background-color: rgba(88, 166, 255, 0.35);
+}
+
+/* ===== 桌面图标 (Nemo 桌面) ===== */
+
+.nemo-desktop.nemo-canvas-item {
+  color: #e6edf3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.60);
+}
+
+.nemo-desktop.nemo-canvas-item:active, .nemo-desktop.nemo-canvas-item:selected {
+  background-color: rgba(88, 166, 255, 0.35);
+  border-radius: 6px;
+  color: #e6edf3;
+}
