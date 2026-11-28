@@ -27,5 +27,16 @@ void blurcinnamon_main() {
 // the opacity exactly once. Without this, actor.opacity has no effect on any actor using these effects.
 void main() {
     blurcinnamon_main();
+    // The scene being blurred is meant to be opaque, but something drawn into it with the wrong blend can
+    // leave its alpha a little below 1 (e.g. another extension's GLSLEffect over the wallpaper: right
+    // colour, alpha of a*a + (1-a)). Every inner pass of an effect chain then stores that alpha squared
+    // (see SNIPPET_CODE in effect_base.js), so after a few passes the unblurred scene behind shows through
+    // on top of the blurred colour: a bright, unblurred band, worst with Dual Kawase's many passes. So
+    // treat a mostly opaque result as opaque. The colour is left alone, it is already right. A mostly
+    // transparent result (no content there at all) is passed on unchanged.
+    if (cogl_color_out.a >= 0.5)
+        cogl_color_out.a = 1.0;
     cogl_color_out *= cogl_color_in;
+    // Break up the banding of 8-bit output, see effect_base.js
+    cogl_color_out = blurcinnamon_dither(cogl_color_out);
 }

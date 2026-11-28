@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-11-07 15:45-0500\n"
+"POT-Creation-Date: 2026-11-28 12:56-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dragone2 <dragone2@risposteinformatiche.it>\n"
 "Language-Team: \n"
@@ -18,29 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:5454
+#. 6.0/extension.js:6401
 msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
 "or right-click to cancel."
 msgstr ""
 
-#. 6.0/extension.js:5465
+#. 6.0/extension.js:6412
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 
-#. 6.0/extension.js:5539
+#. 6.0/extension.js:6486
 #, fuzzy
 msgid "(unknown application)"
 msgstr "Applicazione"
 
-#. 6.0/extension.js:5574
+#. 6.0/extension.js:6521
 msgid ""
 "Note: The blur is only visible behind transparent windows. If this "
 "application doesn't support transparency, set its \"Opacity\" in the window "
 "list to less than 100."
 msgstr ""
 
-#. 6.0/extension.js:5577
+#. 6.0/extension.js:6524
 #, fuzzy
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
@@ -50,27 +50,27 @@ msgstr ""
 "precedentemente attiva, pertanto gli effetti Sfoca Cinnamon non possono "
 "essere applicati a tale finestra."
 
-#. 6.0/extension.js:5585
+#. 6.0/extension.js:6532
 #, javascript-format
 msgid "\"%s\" is already in the window list."
 msgstr ""
 
-#. 6.0/extension.js:5590
+#. 6.0/extension.js:6537
 #, javascript-format
 msgid "Enabled \"%s\" in the window list."
 msgstr ""
 
-#. 6.0/extension.js:5594
+#. 6.0/extension.js:6541
 #, javascript-format
 msgid ""
 "Added \"%s\" to the window list. Adjust its effect settings in the table."
 msgstr ""
 
-#. 6.0/extension.js:6726
+#. 6.0/extension.js:7741
 msgid "Welcome to Blur Cinnamon"
 msgstr "Benvenuti in Sfoca Cinnamom"
 
-#. 6.0/extension.js:6727
+#. 6.0/extension.js:7742
 #, fuzzy
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
@@ -90,15 +90,15 @@ msgstr ""
 "predefinita. Puoi anche modificare le proprietà dell'effetto, come "
 "l'intensità della sfocatura, la saturazione del colore e l'attenuazione."
 
-#. 6.0/extension.js:6731
+#. 6.0/extension.js:7746
 msgid "Open Blur Cinnamon Settings"
 msgstr "Apri le Impostazioni di Sfoca Cinnamom"
 
-#. 6.0/extension.js:6837
+#. 6.0/extension.js:7852
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr "Notifica di prova di Effetti di Sfocatura Cinnamon"
 
-#. 6.0/extension.js:6838
+#. 6.0/extension.js:7853
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -847,6 +847,12 @@ msgid "Saturation"
 msgstr "Saturazione"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Grain"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Custom CSS"
 msgstr "CSS Personalizzato"
 
@@ -905,6 +911,36 @@ msgstr ""
 "luminosità del pannello a 0 e la saturazione a 100 in modo che il pannello "
 "appaia più luminoso. Questa impostazione è efficace solo quando la "
 "luminosità è maggiore di 0 o la saturazione è inferiore a 100."
+
+#. 6.0->settings-schema.json->dim-panel-hover->description
+#, fuzzy
+msgid "Dim the background of hovered panel applets"
+msgstr "Che tipo di effetto di sfondo dovrebbe essere applicato?"
+
+#. 6.0->settings-schema.json->dim-panel-hover->tooltip
+msgid ""
+"Replace the theme's solid highlight shown when the mouse hovers over a panel "
+"applet with a darkened (or tinted) view of the blurred panel background."
+msgstr ""
+
+#. 6.0->settings-schema.json->dim-panel-hover-opacity->description
+#, fuzzy
+msgid "Hover dimming strength (%)"
+msgstr "Attenua/colora lo sfondo (%)"
+
+#. 6.0->settings-schema.json->dim-panel-hover-color->description
+msgid "Hover dimming color"
+msgstr ""
+
+#. 6.0->settings-schema.json->dim-panel-hover-color->tooltip
+#, fuzzy
+msgid ""
+"The color blended over the panel background behind a hovered applet, "
+"weighted by the strength above. Use black to darken, or white to lighten."
+msgstr ""
+"Definisce il colore che viene sfumato sullo sfondo in base al controllo di "
+"attenuazione sopra. Utilizzare il nero per un effetto di attenuazione "
+"normale o un altro colore per un effetto di sfumatura."
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -1155,6 +1191,38 @@ msgid ""
 msgstr ""
 "Regola la saturazione del colore dell'immagine di sfondo, passando dalla "
 "scala di grigi al colore pieno."
+
+#. 6.0->settings-schema.json->grain->description
+#. 6.0->settings-schema.json->overview-grain->description
+#. 6.0->settings-schema.json->expo-grain->description
+#. 6.0->settings-schema.json->panels-grain->description
+#. 6.0->settings-schema.json->popup-grain->description
+#. 6.0->settings-schema.json->desktop-grain->description
+#. 6.0->settings-schema.json->notification-grain->description
+#. 6.0->settings-schema.json->appswitcher-grain->description
+#. 6.0->settings-schema.json->tooltips-grain->description
+#. 6.0->settings-schema.json->desklets-grain->description
+#. 6.0->settings-schema.json->osd-grain->description
+#, fuzzy
+msgid "Blur grain"
+msgstr "Sfoca Cinnamom"
+
+#. 6.0->settings-schema.json->grain->tooltip
+#. 6.0->settings-schema.json->overview-grain->tooltip
+#. 6.0->settings-schema.json->expo-grain->tooltip
+#. 6.0->settings-schema.json->panels-grain->tooltip
+#. 6.0->settings-schema.json->popup-grain->tooltip
+#. 6.0->settings-schema.json->desktop-grain->tooltip
+#. 6.0->settings-schema.json->notification-grain->tooltip
+#. 6.0->settings-schema.json->appswitcher-grain->tooltip
+#. 6.0->settings-schema.json->tooltips-grain->tooltip
+#. 6.0->settings-schema.json->desklets-grain->tooltip
+#. 6.0->settings-schema.json->osd-grain->tooltip
+msgid ""
+"Adds a fine grain to the blur that hides the bands its smooth gradients "
+"would otherwise show. Raise it if bands still show, for example through a "
+"translucent window, or set it to 0 to turn it off."
+msgstr ""
 
 #. 6.0->settings-schema.json->effect-specific-type->options
 #. 6.0->settings-schema.json->overview-blurType->options

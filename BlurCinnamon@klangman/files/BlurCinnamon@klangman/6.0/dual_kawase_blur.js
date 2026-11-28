@@ -3,11 +3,20 @@
 
 const GObject  = imports.gi.GObject;
 const St       = imports.gi.St;
-const Utils    = require("./utils.js");
+// Cinnamon 6.8+ deprecates require() in favour of the xlet's own importer (which only exposes
+// top-level var/function names). Older Cinnamon has no getCurrentExtension(), so fall back to
+// require() there - and when loaded outside of Cinnamon (no global), as before.
+const Me = (typeof global !== 'undefined' && imports.ui.extension.getCurrentExtension) ?
+              imports.ui.extension.getCurrentExtension() : null;
+function importLocal(name) {
+   return Me ? Me.imports[name] : require("./" + name);
+}
+
+const Utils    = importLocal("utils");
 const Clutter  = imports.gi.Clutter;
 const GLib     = imports.gi.GLib;
 
-const EffectBaseModule = require("./effect_base");
+const EffectBaseModule = importLocal("effect_base");
 const EffectBase = EffectBaseModule.EffectBase;
 
 const UUID = "BlurCinnamon@klangman";
@@ -39,7 +48,7 @@ function _baseOffsetMultiplier(total_passes) {
 const DEFAULT_PARAMS = {
     radius: 0, brightness: 1,
     width: 0, height: 0, 
-    pass_index: 0, total_passes: 1
+    pass_index: 0, total_passes: 1, grain: 0
 };
 
 // Pools of released pyramid sub-effects, kept separate by role (downsample vs. upsample) since
@@ -66,6 +75,7 @@ function _acquireSubEffect(is_downsample, params) {
         effect.brightness = params.brightness;
         effect.width = params.width;
         effect.height = params.height;
+        effect.grain = params.grain;
         // Force a recompute of 'offset' regardless of whether any of the property setters above
         // actually changed a value - their own early-exit only re-runs _update_uniforms() when
         // the *value* changes, but 'offset' also depends on pass_index/total_passes, which will
@@ -144,6 +154,14 @@ function makeEffectClass(kind, shader_file) {
                 1, 16,
                 1,
             ),
+            'grain': GObject.ParamSpec.double(
+                `grain`,
+                `Grain`,
+                `Blur grain`,
+                GObject.ParamFlags.READWRITE,
+                0.0, 100.0,
+                0.0,
+            ),
         }
     }, class DualFilteringBlurEffect extends EffectBase {
         constructor(params) {
@@ -157,6 +175,7 @@ function makeEffectClass(kind, shader_file) {
             this.brightness = params?.brightness ?? 1;
             this.width = params?.width ?? 0;
             this.height = params?.height ?? 0;
+            this.grain = params?.grain ?? 0;
 
             // Fetches the scale factor safely
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
@@ -241,6 +260,28 @@ function makeEffectClass(kind, shader_file) {
                     reach += 1.5 * base * Math.pow(2.0, (total - 1) - i);
             }
             return reach;
+        }
+
+        // For dithering (see effect_base.js). Clutter applies an actor's effects in reverse order, so the
+        // passes run from the highest pass_index down to 0. Under Liquid Glass, the refraction pass runs
+        // after pass 0.
+        get passes_after() {
+            return this.pass_index + (this.glass_backdrop ? 1 : 0);
+        }
+
+        get grain() {
+            return this._grain;
+        }
+
+        set grain(value) {
+            if (this._grain !== value) {
+                this._grain = value;
+
+                if (this._sub_effects) {
+                    EffectBaseModule.updateDither(this);
+                    this._sub_effects.forEach(effect => { effect.grain = value; });
+                }
+            }
         }
 
         get brightness() {
@@ -412,8 +453,11 @@ function makeEffectClass(kind, shader_file) {
                             width: this.width, 
                             height: this.height, 
                             pass_index: i,
-                            total_passes: total_depth 
+                            total_passes: total_depth,
+                            grain: this.grain
                         });
+                        // Set either way: a pooled pass may come from a Liquid Glass blur, or go into one
+                        new_pass.glass_backdrop = this.glass_backdrop;
 
                         this._sub_effects.push(new_pass);
                         actor.add_effect(new_pass);

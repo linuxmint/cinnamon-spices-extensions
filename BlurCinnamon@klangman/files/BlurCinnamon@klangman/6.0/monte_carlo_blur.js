@@ -4,11 +4,21 @@
 const GObject = imports.gi.GObject;
 
 const St = imports.gi.St;
-const Utils    = require("./utils.js");
+// Cinnamon 6.8+ deprecates require() in favour of the xlet's own importer (which only exposes
+// top-level var/function names). Older Cinnamon has no getCurrentExtension(), so fall back to
+// require() there - and when loaded outside of Cinnamon (no global), as before.
+const Me = (typeof global !== 'undefined' && imports.ui.extension.getCurrentExtension) ?
+              imports.ui.extension.getCurrentExtension() : null;
+function importLocal(name) {
+   return Me ? Me.imports[name] : require("./" + name);
+}
+
+const Utils    = importLocal("utils");
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 
-const EffectBase = require("./effect_base").EffectBase;
+const EffectBaseModule = importLocal("effect_base");
+const EffectBase = EffectBaseModule.EffectBase;
 
 const UUID = "BlurCinnamon@klangman";
 
@@ -16,11 +26,11 @@ const SHADER_FILENAME = 'monte_carlo_blur.glsl';
 const DEFAULT_PARAMS = {
     radius: 2., iterations: 5, brightness: .6,
     width: 0, height: 0, use_base_pixel: true,
-    prefer_closer_pixels: true
+    prefer_closer_pixels: true, grain: 0
 };
 
 
-const MonteCarloBlurEffect =
+var MonteCarloBlurEffect =
     new GObject.registerClass({
         GTypeName: `MonteCarloBlurEffect_${Math.floor(Math.random() * 100000) + 1}`,
         Properties: {
@@ -78,6 +88,14 @@ const MonteCarloBlurEffect =
                 GObject.ParamFlags.READWRITE,
                 true,
             ),
+            'grain': GObject.ParamSpec.double(
+                `grain`,
+                `Grain`,
+                `Blur grain`,
+                GObject.ParamFlags.READWRITE,
+                0.0, 100.0,
+                0.0,
+            ),
         }
     }, class MonteCarloBlurEffect extends EffectBase {
         constructor(params) {
@@ -118,6 +136,11 @@ const MonteCarloBlurEffect =
             else
                this.prefer_closer_pixels = true;
 
+            if (params && params.grain != undefined )
+               this.grain = params.grain;
+            else
+               this.grain = 0;
+
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
             this.set_uniform_value('radius', parseFloat(this._radius * theme_context.scale_factor - 1e-6));
         }
@@ -134,6 +157,23 @@ const MonteCarloBlurEffect =
 
         static get default_params() {
             return DEFAULT_PARAMS;
+        }
+
+        // For dithering: the only pass (see effect_base.js)
+        get passes_after() {
+            return 0;
+        }
+
+        get grain() {
+            return this._grain;
+        }
+
+        set grain(value) {
+            if (this._grain !== value) {
+                this._grain = value;
+
+                EffectBaseModule.updateDither(this);
+            }
         }
 
         get radius() {

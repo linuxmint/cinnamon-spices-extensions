@@ -38,7 +38,7 @@
       "generic-effect-settings" : {
          "type" : "section",
          "title" : "Generic effect settings",
-         "keys" : ["opacity", "blendColor", "blurType", "show-blur-info", "radius", "saturation"]
+         "keys" : ["opacity", "blendColor", "blurType", "show-blur-info", "radius", "saturation", "grain"]
       },
 
       "effect-specific-settings" : {
@@ -58,17 +58,17 @@
       "component-specific-section" : {
          "type" : "section",
          "title" : "Component Specific Settings",
-         "keys" : [ "overview-warning", "enable-overview-override", "overview-opacity", "overview-blendColor", "overview-blurType", "overview-radius", "overview-saturation",
-                    "osd-warning", "enable-osd-override", "allow-transparent-color-osd", "osd-slider-effects", "osd-workspace-effects", "osd-opacity", "osd-blendColor", "osd-blurType", "osd-radius", "osd-saturation",
-                    "expo-warning", "enable-expo-override", "expo-opacity", "expo-blendColor", "expo-blurType", "expo-radius", "expo-saturation",
-                    "panel-warning", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized", "hover-brighten-panels", "enable-panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation", "panel-unique-settings",
-                    "popup-warning", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup", "popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation",
-                    "desktop-warning", "enable-desktop-override", "desktop-without-focus", "desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation",
-                    "notification-warning", "enable-notification-override", "allow-transparent-color-notifications", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-test-button",
-                    "appswitcher-warning", "enable-appswitcher-override", "appswitcher-disable-3d-panels", "appswitcher-allow-classic", "allow-transparent-color-switcher", "appswitcher-allow-3d", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation",
-                    "tooltips-warning", "enable-tooltips-override", "allow-transparent-color-tooltips", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation",
+         "keys" : [ "overview-warning", "enable-overview-override", "overview-opacity", "overview-blendColor", "overview-blurType", "overview-radius", "overview-saturation", "overview-grain",
+                    "osd-warning", "enable-osd-override", "allow-transparent-color-osd", "osd-slider-effects", "osd-workspace-effects", "osd-opacity", "osd-blendColor", "osd-blurType", "osd-radius", "osd-saturation", "osd-grain",
+                    "expo-warning", "enable-expo-override", "expo-opacity", "expo-blendColor", "expo-blurType", "expo-radius", "expo-saturation", "expo-grain",
+                    "panel-warning", "enable-panels-override", "allow-transparent-color-panels", "no-panel-effects-maximized", "hover-brighten-panels", "dim-panel-hover", "dim-panel-hover-opacity", "dim-panel-hover-color", "enable-panel-unique-settings", "panels-opacity", "panels-blendColor", "panels-blurType", "panels-radius", "panels-saturation", "panels-grain", "panel-unique-settings",
+                    "popup-warning", "enable-popup-override", "popup-applet-menu-effects", "popup-panel-menu-effects", "popup-title-menu-effects", "allow-transparent-color-popup", "popup-opacity", "popup-accent-opacity", "popup-blendColor", "popup-blurType", "popup-radius", "popup-saturation", "popup-grain",
+                    "desktop-warning", "enable-desktop-override", "desktop-without-focus", "desktop-with-focus", "desktop-opacity", "desktop-blendColor", "desktop-blurType", "desktop-radius", "desktop-saturation", "desktop-grain",
+                    "notification-warning", "enable-notification-override", "allow-transparent-color-notifications", "notification-opacity", "notification-blendColor", "notification-blurType", "notification-radius", "notification-saturation", "notification-grain", "notification-test-button",
+                    "appswitcher-warning", "enable-appswitcher-override", "appswitcher-disable-3d-panels", "appswitcher-allow-classic", "allow-transparent-color-switcher", "appswitcher-allow-3d", "window-settings-button", "appswitcher-opacity", "appswitcher-blendColor", "appswitcher-blurType", "appswitcher-radius", "appswitcher-saturation", "appswitcher-grain",
+                    "tooltips-warning", "enable-tooltips-override", "allow-transparent-color-tooltips", "tooltips-opacity", "tooltips-blendColor", "tooltips-blurType", "tooltips-radius", "tooltips-saturation", "tooltips-grain",
                     "windows-warning", "windows-inclusion-list", "windows-label", "windows-add-button", "windows-opaque-maximized", "windows-titlebar-blur", "windows-rounded-corners-sync", "windows-atrifact-mitigation", "windows-compiz-mitigation",
-                    "desklets-warning", "enable-desklets-override", "enable-desklets-unique-settings", "desklets-opacity", "desklets-blendColor", "desklets-blurType", "desklets-radius", "desklets-saturation", "desklets-list", "desklets-auto", "desklets-label",
+                    "desklets-warning", "enable-desklets-override", "enable-desklets-unique-settings", "desklets-opacity", "desklets-blendColor", "desklets-blurType", "desklets-radius", "desklets-saturation", "desklets-grain", "desklets-list", "desklets-auto", "desklets-label",
                     "info-label"
                   ]
       },
@@ -416,6 +416,7 @@
             {"id": "blurtype",  "title": "Background","type": "integer", "default": 8, "options": { "Transparent": 3, "Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4, "Monte Carlo static blur": 5, "Monte Carlo dynamic blur": 6, "Dual Kawase static blur": 7, "Dual Kawase dynamic blur": 8, "Liquid Glass static blur": 9, "Liquid Glass dynamic blur": 10 } },
             {"id": "radius",    "title": "Intensity", "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation","title": "Saturation","type": "integer", "default": 100, "min": 0, "max": 100},
+            {"id": "grain",     "title": "Grain",     "type": "integer", "default": 2,   "min": 0, "max": 10},
             {"id": "customCSS", "title": "Custom CSS","type": "string",  "default": ""}
         ],
         "tooltip": "Defines the effects applied to different panels. If a panel does not meet the criteria of any enabled entry in this list, it will have no effects applied. The settings of the first entry in this list that can apply to a given panel will take effect. The \"Custom\" check box determines if the generic effect settings are uses or this tables custom settings. Click a color in the table to change it",
@@ -441,6 +442,34 @@
         "dependency" : "enable-panels-effects & component-selector=7",
         "tooltip": "While the mouse is hovering over a panel, set the panels tint strength to 0 and the saturation to 100 so that the panel appears brighter. This setting is only effective when either the tint strength is greater than 0 or saturation is less than 100.",
         "default": false
+    },
+
+    "dim-panel-hover" : {
+        "type": "switch",
+        "description": "Dim the background of hovered panel applets",
+        "dependency" : "enable-panels-effects & component-selector=7 & allow-transparent-color-panels",
+        "tooltip": "Replace the theme's solid highlight shown when the mouse hovers over a panel applet with a darkened (or tinted) view of the blurred panel background.",
+        "default": true
+    },
+
+    "dim-panel-hover-opacity" : {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description": "Hover dimming strength (%)",
+        "min": 0,
+        "max": 100,
+        "default": 30,
+        "step": 1,
+        "dependency" : "enable-panels-effects & component-selector=7 & allow-transparent-color-panels & dim-panel-hover"
+    },
+
+    "dim-panel-hover-color": {
+        "type": "colorchooser",
+        "description" : "Hover dimming color",
+        "default": "rgb(0,0,0)",
+        "dependency" : "enable-panels-effects & component-selector=7 & allow-transparent-color-panels & dim-panel-hover",
+        "tooltip": "The color blended over the panel background behind a hovered applet, weighted by the strength above. Use black to darken, or white to lighten."
     },
 
     "opacity" : {
@@ -511,6 +540,18 @@
         "step" : 0.1,
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100
+    },
+
+    "grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2
     },
 
     "effect-specific-type": {
@@ -738,6 +779,19 @@
         "default": 100
     },
 
+    "overview-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "dependency" : "enable-overview-effects & component-selector=6 & overview-blurType>1 & enable-overview-override",
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2
+    },
+
 
     "expo-opacity" : {
         "type" : "custom",
@@ -798,6 +852,19 @@
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "dependency" : "enable-expo-effects & component-selector=3 & enable-expo-override",
         "default": 100
+    },
+
+    "expo-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-expo-effects & component-selector=3 & expo-blurType>1 & enable-expo-override"
     },
 
 
@@ -866,6 +933,19 @@
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100,
         "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & enable-panels-override & panels-blurType!=3"
+    },
+
+    "panels-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-panels-effects & component-selector=7 & !enable-panel-unique-settings & panels-blurType>1 & panels-blurType!=3 & enable-panels-override"
     },
 
 
@@ -970,6 +1050,19 @@
         "default": 100
     },
 
+    "popup-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-popup-effects & component-selector=4 & popup-blurType>1 & popup-blurType!=3 & enable-popup-override"
+    },
+
 
     "desktop-without-focus" : {
         "type": "switch",
@@ -1047,6 +1140,19 @@
         "default": 100,
         "dependency" : "enable-desktop-effects & component-selector=2 & enable-desktop-override"
     },
+
+    "desktop-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-desktop-effects & component-selector=2 & desktop-blurType>1 & enable-desktop-override"
+    },
     
     "notification-opacity" : {
         "type" : "custom",
@@ -1113,6 +1219,19 @@
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "dependency" : "enable-notification-effects & component-selector=5 & enable-notification-override & notification-blurType!=3",
         "default": 100
+    },
+
+    "notification-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-notification-effects & component-selector=5 & notification-blurType>1 & notification-blurType!=3 & enable-notification-override"
     },
 
    "notification-test-button" : {
@@ -1213,6 +1332,19 @@
         "default": 100
     },
 
+    "appswitcher-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-appswitcher-effects & component-selector=0 & appswitcher-blurType>1 & enable-appswitcher-override"
+    },
+
     "tooltips-opacity" : {
         "type" : "custom",
         "file" : "CustomWidgets.py",
@@ -1280,6 +1412,19 @@
         "default": 100
     },
 
+    "tooltips-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-tooltips-effects & component-selector=8 & tooltips-blurType>1 & tooltips-blurType!=3 & enable-tooltips-override"
+    },
+
 
     "desklets-opacity" : {
         "type" : "custom",
@@ -1345,6 +1490,19 @@
         "tooltip": "Adjusts the color saturation of the background image from gray-scale to full color.",
         "default": 100,
         "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & enable-desklets-override"
+    },
+
+    "desklets-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-desklet-effects & component-selector=1 & !enable-desklets-unique-settings & desklets-blurType>1 & enable-desklets-override"
     },
 
 
@@ -1428,6 +1586,19 @@
         "dependency" : "enable-osd-effects & component-selector=10 &  enable-osd-override"
     },
 
+    "osd-grain": {
+        "type" : "custom",
+        "file" : "CustomWidgets.py",
+        "widget" : "CompactScale",
+        "description" : "Blur grain",
+        "min" : 0.0,
+        "max" : 10,
+        "step" : 1,
+        "tooltip": "Adds a fine grain to the blur that hides the bands its smooth gradients would otherwise show. Raise it if bands still show, for example through a translucent window, or set it to 0 to turn it off.",
+        "default": 2,
+        "dependency" : "enable-osd-effects & component-selector=10 & osd-blurType>1 & enable-osd-override"
+    },
+
 
     "windows-inclusion-list" : {
         "type" : "list",
@@ -1444,6 +1615,7 @@
             {"id": "blurtype",      "title": "Background",   "type": "integer", "default": 8, "options": {"Transparent to wallpaper": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4, "Monte Carlo static blur": 5, "Monte Carlo dynamic blur": 6, "Dual Kawase static blur": 7, "Dual Kawase dynamic blur": 8, "Liquid Glass static blur": 9, "Liquid Glass dynamic blur": 10 } },
             {"id": "radius",        "title": "Intensity",    "type": "integer", "default": 10,  "min": 0, "max": 100},
             {"id": "saturation",    "title": "Saturation",   "type": "integer", "default": 100, "min": 0, "max": 100},
+            {"id": "grain",         "title": "Grain",        "type": "integer", "default": 2,   "min": 0, "max": 10},
             {"id": "corner_radius", "title": "Corner Radius","type": "integer", "default": 10, "min": 0, "max": 25},
             {"id": "corner_top",    "title": "Rounded Top","type": "boolean", "default": true},
             {"id": "corner_bottom", "title": "Rounded Bottom","type": "boolean", "default": false}
@@ -1531,7 +1703,8 @@
             {"id": "color",      "title": "Color",      "type": "string",  "default": "rgb(0,0,0)", "color-chooser": "opaque"},
             {"id": "blurtype",   "title": "Blur",       "type": "integer", "default": 8, "options": { "None": 0, "Simple static blur": 1, "Gaussian static blur": 2, "Gaussian dynamic blur": 4, "Monte Carlo static blur": 5, "Monte Carlo dynamic blur": 6, "Dual Kawase static blur": 7, "Dual Kawase dynamic blur": 8, "Liquid Glass static blur": 9, "Liquid Glass dynamic blur": 10 } },
             {"id": "radius",     "title": "Intensity",  "type": "integer", "default": 10,  "min": 0, "max": 100},
-            {"id": "saturation", "title": "Saturation", "type": "integer", "default": 100, "min": 0, "max": 100}
+            {"id": "saturation", "title": "Saturation", "type": "integer", "default": 100, "min": 0, "max": 100},
+            {"id": "grain",      "title": "Grain",      "type": "integer", "default": 2,   "min": 0, "max": 10}
         ],
         "tooltip": "The \"Enabled\" check box controls which Desklets will have effects applied. The \"Custom\" check box controls if a Desklet will use the generic effect settings or the custom settings defined in this table. The custom settings can be modified by double clicking on a table row.",
         "default" : [ ]

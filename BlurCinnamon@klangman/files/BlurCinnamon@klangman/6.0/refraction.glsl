@@ -399,4 +399,6 @@ void blurcinnamon_main() {
 void main() {
     blurcinnamon_main();
     cogl_color_out *= cogl_color_in;
+    // Break up the banding of 8-bit output, see effect_base.js
+    cogl_color_out = blurcinnamon_dither(cogl_color_out);
 }
