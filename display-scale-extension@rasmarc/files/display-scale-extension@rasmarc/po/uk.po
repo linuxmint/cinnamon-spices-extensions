@@ -1,0 +1,14 @@
+# Ukrainian translation of Display Scale - Additional Features.
+# Copyright (C) 2026 rasmarc
+# SPDX-License-Identifier: GPL-2.0-or-later
+# AI-assisted translation; native-speaker review is welcome.
+msgid ""
+msgstr "Project-Id-Version: Display Scale - Additional Features 1.0.4\nReport-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-extensions/issues\nPO-Revision-Date: 2026-11-01 21:10+0100\nLast-Translator: rasmarc\nLanguage-Team: Ukrainian\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: display-scale-extension@rasmarc/metadata.json
+msgid "Display Scale - Additional Features"
+msgstr "Display Scale – Додаткові функції"
+
+#: display-scale-extension@rasmarc/metadata.json
+msgid "Optional panel, desklet and OSD150 adjustments for the Display Scale applet."
+msgstr "Необов’язкове пристосування панелей, десклетів і OSD150 для аплету Display Scale."

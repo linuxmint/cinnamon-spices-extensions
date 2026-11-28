@@ -1,0 +1,13 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Display Scale - Additional Features 1.0.4\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: display-scale-extension@rasmarc/metadata.json
+msgid "Display Scale - Additional Features"
+msgstr ""
+
+#: display-scale-extension@rasmarc/metadata.json
+msgid "Optional panel, desklet and OSD150 adjustments for the Display Scale applet."
+msgstr ""

@@ -1,0 +1,24 @@
+# German translation of Display Scale.
+# Copyright (C) 2026 rasmarc
+# This file is distributed under the same license as Display Scale.
+msgid ""
+msgstr ""
+"Project-Id-Version: Display Scale 1.0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-01 16:00+0100\n"
+"PO-Revision-Date: 2026-11-01 16:00+0100\n"
+"Last-Translator: rasmarc\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: display-scale-extension@rasmarc/metadata.json
+msgid "Display Scale - Additional Features"
+msgstr "Darstellungsgröße – Zusatzfunktionen"
+
+#: display-scale-extension@rasmarc/metadata.json
+msgid "Optional panel, desklet and OSD150 adjustments for the Display Scale applet."
+msgstr "Optionaler Ausgleich für Leisten, Desklets und OSD150 beim Applet Darstellungsgröße."
