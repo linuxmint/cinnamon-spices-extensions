@@ -242,7 +242,8 @@ Cube.prototype = {
         clone.set_size(global.stage.width, global.stage.height);
 
         let background = new St.Group();
-        background.add_child(Meta.BackgroundActor.new_for_screen(global.screen));
+        // In Cinnamon 6.8 (CJS 140), `Meta.BackgroundActor.new_for_screen` crashes when calling `logError(string)`, so we create `X11BackgroundActor` directly.
+        background.add_child(Meta.X11BackgroundActor.new_for_display(global.display) || new Clutter.Actor());
         clone.add_child(background);
 
         let deskletClone = new Clutter.Clone({source : Main.deskletContainer.actor});
@@ -789,7 +790,8 @@ Cube.prototype = {
         this._backgroundGroup = new St.Group({});
         Main.uiGroup.add_child(this._backgroundGroup);
         this._backgroundGroup.hide();
-        this.metaBackgroundActor = Meta.BackgroundActor.new_for_screen(global.screen);
+        // Creating X11BackgroundActor directly for compatibility with Cinnamon 6.8
+        this.metaBackgroundActor = Meta.X11BackgroundActor.new_for_display(global.display) || new Clutter.Actor();
         this._backgroundGroup.add_child(this.metaBackgroundActor);
         Main.uiGroup.set_child_above_sibling(this._backgroundGroup, null);
         Main.uiGroup.set_child_below_sibling(this._backgroundGroup, this.actor);
